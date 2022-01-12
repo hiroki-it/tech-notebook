@@ -1,3 +1,9 @@
 site_name: 俺のドキュメントサイト
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tabs.expand
+    - navigation.top
+    - toc.integrate
