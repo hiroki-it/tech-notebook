@@ -7,3 +7,5 @@ theme:
     - navigation.tabs.expand
     - navigation.top
     - toc.integrate
+extra_css:
+  - stylesheets/extra.css
