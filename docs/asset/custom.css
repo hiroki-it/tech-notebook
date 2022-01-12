@@ -4,3 +4,12 @@
 .md-grid {
     max-width: 85%;
 }
+
+/***************
+ 画像全体
+***************/
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
