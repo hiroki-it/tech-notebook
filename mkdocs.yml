@@ -1,6 +1,7 @@
 site_name: 俺のドキュメントサイト
 theme:
   name: material
+  language: 'ja'
   features:
     - navigation.tabs
     - navigation.tabs.sticky
