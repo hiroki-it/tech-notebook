@@ -9,3 +9,7 @@ theme:
     - toc.integrate
 extra_css:
   - asset/custom.css
+plugins:
+  - exclude:
+      glob:
+        - private
