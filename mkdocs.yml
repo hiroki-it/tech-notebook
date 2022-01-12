@@ -4,7 +4,6 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.tabs.expand
     - navigation.top
     - toc.integrate
 extra_css:
