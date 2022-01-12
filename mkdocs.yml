@@ -8,6 +8,7 @@ theme:
     - navigation.top
 extra_css:
   - asset/custom.css
+  - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 plugins:
   - exclude:
       glob:
