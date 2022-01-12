@@ -13,3 +13,91 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+
+/***************
+ 見出し背景
+***************/
+
+/* 題 */
+h1 {
+
+    background: black;
+
+    border-radius: 0.45em;
+
+    color: white;
+
+    padding: 0.6em;
+
+    position: relative;
+}
+
+/* 章 */
+h2 {
+    /* 背景：色 */
+    background: #d7d7d7;
+    /* 左線：太さ，色 */
+    border-left: 0.95em solid #2980B9;
+    /* 文字：色 */
+    color: #010101;
+    /* 上外部余白：大きさ */
+    margin-top: 1.5em;
+    /* 内部余白：文字周り */
+    padding: 0.6em;
+}
+
+/* 節 */
+h3 {
+    background: #ffffd5;
+
+    border-bottom: dotted 0.06em gray;
+
+    border-top: dotted 0.06em gray;
+    /*文字色*/
+    color: black;
+    /*行高*/
+    line-height: 1.4;
+    /*アイコン分のスペース*/
+    padding: 0.5em 0.5em 0.5em 1.5em;
+
+    /* 画像より背面 */
+    position: relative;
+    z-index: 1;
+}
+
+h3:before {
+    /*アイコン色*/
+    color: #2980B9;
+    /*アイコンのユニコード*/
+    content: "\f138";
+    /*絶対位置*/
+    position: absolute;
+
+    font-family: "FontAwesome", serif;
+    /*サイズ*/
+    font-size: 1.1em;
+    /*アイコンの位置*/
+    left: 0.25em;
+    /*アイコンの位置*/
+    top: 0.5em;
+}
+
+/***************
+ 文字
+***************/
+
+.md-typeset h1 {
+    font-size: 1.7em;
+}
+
+.md-typeset h2 {
+    font-size: 1.4em;
+}
+
+.md-typeset h3 {
+    font-size: 1.3em;
+}
+
+.md-typeset h4 {
+    font-size: 1.2em;
+}
