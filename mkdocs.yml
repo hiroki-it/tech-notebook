@@ -48,11 +48,11 @@ plugins:
 
 # ナビゲーション
 nav:
-  - 俺のドキュメントサイトについて: md/about.md
+  - 目次: md/index.md
+
+  - 当サイトについて: md/about.md
 
   - サイト管理者: md/self_introduction.md
-
-  - 目次: md/summary.md
 
   - 🧬 ソフトウェア:
     - ソフトウェア: md/software/software.md
