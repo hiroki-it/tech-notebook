@@ -17,11 +17,13 @@ theme:
 
 extra:
   generator: false
+  homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/md
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hiroki-it
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/Hiroki__IT
+
 # CSS
 extra_css:
   - asset/custom.css
