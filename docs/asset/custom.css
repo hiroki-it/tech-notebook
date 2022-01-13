@@ -38,6 +38,11 @@ h1 {
     position: relative;
 }
 
+h1.md-search-result__title {
+    background: white;
+}
+
+
 /* 章 */
 h2 {
     /* 背景：色 */
