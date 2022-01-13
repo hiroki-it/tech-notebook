@@ -8,7 +8,7 @@ theme:
   logo: asset/logo.png
   favicon: asset/logo.png
   font:
-    text: Yu Gothic
+    text: Meiryo
   palette:
     scheme: dark
   features:
