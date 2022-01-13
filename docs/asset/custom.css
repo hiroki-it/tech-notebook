@@ -95,24 +95,25 @@ h3:before {
 ***************/
 
 .md-typeset {
-    font-size: 1.35em
+    font-size: 1.3em;
 }
 
 .md-typeset h1 {
     color: white;
-    font-size: 1.5em;
+    font-size: 1.9em;
+    font-weight: bold;
 }
 
 .md-typeset h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .md-typeset h3 {
-    font-size: 1.1em;
+    font-size: 1.4em;
 }
 
 .md-typeset h4 {
-    font-size: 1.0em;
+    font-size: 1.4em;
 }
 
 /***************
