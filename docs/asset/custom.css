@@ -126,8 +126,14 @@ h3:before {
 /***************
  サイドバー
 ***************/
+.md-nav--lifted>.md-nav__list>.md-nav__item--active>.md-nav__link {
+    /** タイトルのテキスト **/
+    font-size: 1.5em;
+}
+
 .md-nav {
-    font-size: 0.7rem;
+    /** 以外のテキスト **/
+    font-size: 0.63rem;
 }
 
 .md-sidebar {
