@@ -282,4 +282,3 @@ Istioのインストールや、Istioオブジェクトの操作が可能なオ�
 | ---------------- | ------------------------------------------------------------ |
 | Deplay Injection | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
 | Abort Injection  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
-
