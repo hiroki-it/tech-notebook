@@ -41,6 +41,10 @@ plugins:
   - exclude:
       glob:
         - private
+  - search:
+      lang: ja
+      prebuild_index: true
+      separator: '[\s\-\.]'
 
 # ナビゲーション
 nav:
