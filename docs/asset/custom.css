@@ -219,3 +219,14 @@ th, td {
 .md-typeset a {
     font-size: 0.88em
 }
+
+/***************
+ コードブロック
+***************/
+.linenos {
+    background-color: #313131 !important;
+}
+
+.highlighttable .linenodiv pre {
+    color: white
+}
