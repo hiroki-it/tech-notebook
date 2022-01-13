@@ -102,6 +102,10 @@ h3:before {
     font-size: 1.0em;
 }
 
+.md-nav {
+    font-size: 0.65rem;
+}
+
 /***************
  URL
 ***************/
