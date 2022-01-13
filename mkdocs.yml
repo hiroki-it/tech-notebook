@@ -27,7 +27,16 @@ extra_css:
   - asset/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 
-# プラグイン
+# 標準プラグイン
+markdown_extensions:
+  # コードブロックのハイライト化
+  - pymdownx.highlight:
+      pygments_style: monokai
+  - pymdownx.superfences
+  # URLテキストのリンク化
+  - pymdownx.magiclink
+
+# 外部プラグイン
 plugins:
   - exclude:
       glob:
