@@ -64,120 +64,120 @@ nav:
   - サイト管理者: md/self_introduction.md
 
   - 🧬 ソフトウェア:
-    - ■ ソフトウェア: md/software/software.md
+    - ソフトウェア: md/software/software.md
     - ■ 基本ソフトウェア（OS）:
-        - カーネル:
+        - ■ カーネル:
             - カーネル: md/software/software_basic_kernel.md
             - メモリ管理: md/software/software_basic_kernel_memory_management.md
-        - ユーティリティ:
+        - ■ ユーティリティ:
             - ユーティリティ: md/software/software_basic_utility.md
             - パッケージ: md/software/software_basic_utility_package.md
             - パッケージ管理ユーティリティ: md/software/software_basic_utility_package_management.md
             - シェル: md/software/software_basic_utility_shell.md
-        - 言語プロセッサ:
+        - ■ 言語プロセッサ:
             - 言語プロセッサ: md/software/software_basic_language_processor.md
             - 言語別の処理方式: md/software/software_basic_language_processor_process_mode.md
             - 機械語と進数: md/software/software_basic_language_processor_machine_language_and_radix.md
     - ■ ミドルウェア:
-        - Linux系:
+        - ■ Linux系:
             - 標準搭載ミドルウェア: md/software/software_middleware_linux.md
-        - Web系:
-            - Nginx:
+        - ■ Web系:
+            - ■ Nginx:
                 - nginx.conf: md/software/software_middleware_web_nginx_conf.md
                 - nginxコマンド: md/software/software_middleware_web_nginx_command.md
-            - Apache:
+            - ■ Apache:
                 - apache.conf: md/software/software_middleware_web_apache_conf.md
                 - apacheコマンド: md/software/software_middleware_web_apache_command.md
-        - アプリケーション系:
+        - ■ アプリケーション系:
             - PHP-FPM: md/software/software_middleware_application_php_fpm.md
-        - データベース系:
+        - ■ データベース系:
             - データベース: md/software/software_middleware_database.md
             - My︎SQL: md/software/software_middleware_database_mysql.md
     - ■ アプリケーションソフトウェア:
-        - アーキテクチャ:
+        - ■ アーキテクチャ:
             - オブジェクト指向分析設計: md/software/software_application_architecture_object_oriented_analysis_and_design.md
-            - バックエンド:
+            - ■ バックエンド:
                 - マイクロサービスアーキテクチャ: md/software/software_application_architecture_backend_microservices.md
                 - ドメイン駆動設計: md/software/software_application_architecture_backend_domain_driven_design.md
                 - クリーンアーキテクチャ: md/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
                 - CQRS: md/software/software_application_architecture_backend_cqrs.md
-            - フロントエンド:
+            - ■ フロントエンド:
                 - フロントエンドアーキテクチャ: md/software/software_application_architecture_frontend.md
-        - アプリケーション間連携:
+        - ■ アプリケーション間連携:
             - JSON: md/software/software_application_collaboration_json.md
             - アプリケーション間通信: md/software/software_application_collaboration_communication.md
-            - RESTful-API:
+            - ■ RESTful-API:
                 - RESTful-API: md/software/software_application_collaboration_api_restful.md
                 - API仕様書: md/software/software_application_collaboration_api_restful_api_specification.md
-        - 言語:
-            - オブジェクト指向型言語:
-                - PHP:
+        - ■ 言語:
+            - ■ オブジェクト指向型言語:
+                - ■ PHP:
                     - PHPコマンドと設定: md/software/software_application_object_oriented_language_php_command_and_configuration.md
-                    - クラスベース:
+                    - ■ クラスベース:
                         - クラス: md/software/software_application_object_oriented_language_php_class_based.md
                         - メソッド/データ: md/software/software_application_object_oriented_language_php_class_based_method_data.md
                         - データ構造: md/software/software_application_object_oriented_language_php_class_based_data_structure.md
-                    - ロジック:
+                    - ■ ロジック:
                         - 検証ロジック: md/software/software_application_object_oriented_language_php_logic_validation.md
                         - エラーとエラーハンドリング: md/software/software_application_object_oriented_language_php_logic_error_and_error_handling.md
                         - 反復ロジック: md/software/software_application_object_oriented_language_php_logic_iteration.md
                         - アルゴリズム: md/software/software_application_object_oriented_language_php_logic_algorithm.md
-                    - フレームワーク:
-                        - Laravel:
+                    - ■ フレームワーク:
+                        - ■ Laravel:
                             - Laravelコンポーネント: md/software/software_application_object_oriented_language_php_framework_laravel_component.md
                             - Eloquent: md/software/software_application_object_oriented_language_php_framework_laravel_eloquent.md
                             - 認証認可: md/software/software_application_object_oriented_language_php_framework_laravel_auth.md
                         - Symfony: md/software/software_application_object_oriented_language_php_framework_symfony.md
-                    - パッケージ:
+                    - ■ パッケージ:
                         - パッケージ管理: md/software/software_application_object_oriented_language_php_package_management.md
                         - MySQLパッケージ: md/software/software_application_object_oriented_language_php_package_mysql.md
                         - その他パッケージ: md/software/software_application_object_oriented_language_php_package_others.md
-                    - テスト:
+                    - ■ テスト:
                         - テスト: md/software/software_application_object_oriented_language_php_testing.md
                         - コードベースのテスト: md/software/software_application_object_oriented_language_php_testing_based_on_code.md
                         - テスト仕様書ベースのテスト: md/software/software_application_object_oriented_language_php_testing_based_on_test_specification.md
-                    - デバッグ:
+                    - ■ デバッグ:
                         - デバッグ: md/software/software_application_object_oriented_language_php_debug.md
-                - JavaScript:
-                    - プロトタイプベース:
+                - ■ JavaScript:
+                    - ■ プロトタイプベース:
                         - プロトタイプ: md/software/software_application_object_oriented_language_js_prototype_based.md
                         - メソッド/データ: md/software/software_application_object_oriented_language_js_prototype_based_method_data.md
-                    - ロジック:
+                    - ■ ロジック:
                         - 検証ロジック: md/software/software_application_object_oriented_language_js_logic_validation.md
                         - 非同期処理ロジック: md/software/software_application_object_oriented_language_js_logic_asynchronous_process.md
-                    - パッケージ/フレームワーク:
+                    - ■ パッケージ/フレームワーク:
                         - パッケージ: md/software/software_application_object_oriented_language_js_package.md
                         - Vue.js: md/software/software_application_object_oriented_language_js_framework_vuejs.md
                         - Nuxt.js: md/software/software_application_object_oriented_language_js_framework_nuxtjs.md
-                    - デバッグ:
+                    - ■ デバッグ:
                         - デバッグ: md/software/software_application_object_oriented_language_js_debug.md
-                    - ブラウザ:
+                    - ■ ブラウザ:
                         - ブラウザレンダリング: md/software/software_application_object_oriented_language_js_browser_rendering.md
-            - 手続き型言語:
-                - Go:
+            - ■ 手続き型言語:
+                - ■ Go:
                     - Goとは: md/software/software_application_procedural_language_go.md
                     - Goコマンドと設定: md/software/software_application_procedural_language_go_command_and_configuration.md
-                    - ロジック:
+                    - ■ ロジック:
                         - メソッド/データ: md/software/software_application_procedural_language_go_logic_method_data.md
-                    - パッケージ/フレームワーク:
+                    - ■ パッケージ/フレームワーク:
                         - パッケージ: md/software/software_application_procedural_language_go_package.md
                         - Gin: md/software/software_application_procedural_language_go_framework_gin.md
 
   - 💻 ハードウェア:
-    - ■ ハードウェア: md/hardware/hardware.md
-    - ■ 組み込み機器: md/hardware/hardware_embedded_system.md
+    - ハードウェア: md/hardware/hardware.md
+    - 組み込み機器: md/hardware/hardware_embedded_system.md
 
   - 🌏 ネットワーク:
-    - ■ ネットワーク: md/network/network.md
-    - ■ OSI参照モデル/TCP階層モデル: md/network/network_osi_tcp_model.md
+    - ネットワーク: md/network/network.md
+    - OSI参照モデル/TCP階層モデル: md/network/network_osi_tcp_model.md
 
   - 🔐 セキュリティ:
-    - ■ サイバー攻撃: md/security/security_cyber_attacks.md
-    - ■ 通信データの暗号化技術: md/security/security_encryption_technology.md
-    - ■ 認証/認可: md/security/security_authentication_authorization.md
+    - サイバー攻撃: md/security/security_cyber_attacks.md
+    - 通信データの暗号化技術: md/security/security_encryption_technology.md
+    - 認証/認可: md/security/security_authentication_authorization.md
 
   - ⛅️ クラウドコンピューティング:
-    - ■ クラウドコンピューティング: md/cloud_computing/cloud_computing.md
+    - クラウドコンピューティング: md/cloud_computing/cloud_computing.md
     - ■ AWS:
         - AWS: md/cloud_computing/cloud_computing_aws.md
         - API Gatewayへのymlインポート: md/cloud_computing/cloud_computing_aws_api_gateway_import.md
@@ -187,7 +187,7 @@ nav:
         - GCP: md/cloud_computing/cloud_computing_gcp.md
 
   - 📦 仮想化:
-    - ■ 仮想化: md/virtualization/virtualization.md
+    - 仮想化: md/virtualization/virtualization.md
     - ■ コンテナ:
         - Docker: md/virtualization/virtualization_container_docker.md
     - ■ コンテナオーケストレーション:
@@ -199,53 +199,53 @@ nav:
         - Envoy: md/virtualization/virtualization_service_mesh_envoy.md
 
   - ⚙️ Infrastructure as Code:
-    - ■ Infrastructure as Code: md/infrastructure_as_code/infrastructure_as_code.md
+    - Infrastructure as Code: md/infrastructure_as_code/infrastructure_as_code.md
     - ■ サーバープロビジョニング:
         - Vagrant:
             - Vagrant: md/infrastructure_as_code/infrastructure_as_code_server_vagrant.md
             - vagrantコマンド: md/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
             - Vagrantfile: md/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
     - ■ コンテナプロビジョニング:
-        - コンテナ:
-            - Docker:
+        - ■ コンテナ:
+            - ■ Docker:
                 - dockerコマンド: md/infrastructure_as_code/infrastructure_as_code_container_docker_command.md
                 - Dockerfile: md/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
-        - コンテナオーケストレーション:
-            - Docker Compose:
+        - ■ コンテナオーケストレーション:
+            - ■ Docker Compose:
                 - docker-composeコマンド: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.md
                 - docker-compose.yml: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.md
-            - Kubernetes:
+            - ■ Kubernetes:
                 - kubectlコマンド: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md
                 - minikubeコマンド: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md
                 - manifest.yml: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md
-                - skaffold:
+                - ■ skaffold:
                     - skaffoldコマンド: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md
                     - skaffold.yml: md/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md
-        - サービスメッシュ:
-            - Istio:
+        - ■ サービスメッシュ:
+            - ■ Istio:
                 - istioctlコマンド: md/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md
                 - manifest.yml: md/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md
-            - Envoy:
+            - ■ Envoy:
                 - envoy.yml: md/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md
     - ■ クラウドインフラプロビジョニング:
-        - Terraform:
+        - ■ Terraform:
             - terraformコマンド: md/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
             - ロジック: md/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md
             - ポリシー: md/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
             - AWSプロバイダー: md/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md
             - CI/CD: md/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
-        - Serverless Framework:
+        - ■ Serverless Framework:
             - serverlessコマンド: md/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
             - serverless.yml: md/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
 
   - ♾️ CI/CD:
-    - ■ CI/CD: md/ci_cd/ci_cd.md
-    - ■ CircleCI: md/ci_cd/ci_cd_circleci.md
-    - ■ Capistrano: md/ci_cd/ci_cd_capistrano.md
+    - CI/CD: md/ci_cd/ci_cd.md
+    - CircleCI: md/ci_cd/ci_cd_circleci.md
+    - Capistrano: md/ci_cd/ci_cd_capistrano.md
 
   - 🔎 可観測性/監視:
-    - ■ 可観測性: md/observability_monitering/observability.md
-    - ■ 監視: md/observability_monitering/monitering.md
+    - 可観測性: md/observability_monitering/observability.md
+    - 監視: md/observability_monitering/monitering.md
     - ■ Fluentd/FluentBit:
         - Fluentd/FluentBit: md/observability_monitering/observability_fluentd_and_fluentbit.md
         - FluentBit: md/observability_monitering/observability_fluentbit.md
@@ -257,12 +257,12 @@ nav:
         - 監視: md/observability_monitering/observability_datadog_monitering.md
 
   - 👥 ソフトウェア開発手法論/SRE:
-    - ■ ソフトウェア開発手法論: md/software_development_methodology/software_development_methodology.md
-    - ■ SRE：Site Reliability Engineering: md/software_development_methodology/software_development_methodology_site_reliability_engineering.md
-    - ■ プロジェクト管理: md/software_development_methodology/software_development_methodology_project_management.md
+    - ソフトウェア開発手法論: md/software_development_methodology/software_development_methodology.md
+    - SRE：Site Reliability Engineering: md/software_development_methodology/software_development_methodology_site_reliability_engineering.md
+    - プロジェクト管理: md/software_development_methodology/software_development_methodology_project_management.md
     - ■ Git:
         - GitHub: md/software_development_methodology/software_development_methodology_git_github.md
         - Gitコマンド: md/software_development_methodology/software_development_methodology_git_command.md
 
   - 📊 統計分析:
-    - ■ R言語: md/statistic_analysis/statistic_analysis_r.md
+    - R言語: md/statistic_analysis/statistic_analysis_r.md
