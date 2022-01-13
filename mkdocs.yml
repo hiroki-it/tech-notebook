@@ -5,6 +5,8 @@ site_name: 俺のドキュメントサイト
 theme:
   name: material
   language: 'ja'
+  logo: asset/logo.png
+  favicon: asset/logo.png
   font:
     text: Yu Gothic
   palette:
