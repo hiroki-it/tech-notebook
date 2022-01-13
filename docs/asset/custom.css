@@ -9,8 +9,8 @@
  中央コンテンツ
 ***************/
 [dir=ltr] .md-sidebar--secondary:not([hidden])~.md-content>.md-content__inner {
-    margin-right: 5.5rem;
-    margin-left: 5.5rem;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
 }
 
 /***************
