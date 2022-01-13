@@ -81,19 +81,30 @@ h3:before {
  文字
 ***************/
 
+.md-typeset {
+    font-size: 1.35em
+}
+
 .md-typeset h1 {
     color: white;
     font-size: 1.5em;
 }
 
 .md-typeset h2 {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 .md-typeset h3 {
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 .md-typeset h4 {
-    font-size: 1.2em;
+    font-size: 1.0em;
+}
+
+/***************
+ URL
+***************/
+.md-typeset a {
+    font-size: 0.88em
 }
