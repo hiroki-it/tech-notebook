@@ -4,7 +4,7 @@
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/
 
 <br>
 
@@ -27,9 +27,9 @@ $ npm init
 ```bash
 {
   # npmパッケージ名。全てのnpmパッケージの中で、一意の名前でなければならない。
-  "name": "tech-notebook-mkdocs",
+  "name": "tech-notebook-mkdocs/md",
   "version": "1.0.0",
-  "description": "tech-notebook-mkdocs",
+  "description": "tech-notebook-mkdocs/md",
   "main": "index.js",
   "directories": {},
   # 本番環境と開発環境で依存するパッケージ名。パッケージ名は一意に識別できる。
@@ -53,7 +53,7 @@ $ npm init
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs.git"
+    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs/md.git"
   },
   # 著者名
   "author": {
@@ -63,9 +63,9 @@ $ npm init
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs/issues"
+    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs/md/issues"
   },
-  "homepage": "https://github.com/hiroki-it/tech-notebook-mkdocs"
+  "homepage": "https://github.com/hiroki-it/tech-notebook-mkdocs/md"
 }
 ```
 

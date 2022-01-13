@@ -4,7 +4,7 @@
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/
 
 <br>
 
@@ -2041,7 +2041,7 @@ class DogOrder
 
 #### ・DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/?q=%E4%BE%9D%E5%AD%98%E6%80%A7%E9%80%86%E8%BB%A2
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/?q=%E4%BE%9D%E5%AD%98%E6%80%A7%E9%80%86%E8%BB%A2
 
 #### ・発表スライド
 

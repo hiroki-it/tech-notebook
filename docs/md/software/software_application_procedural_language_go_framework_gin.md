@@ -4,7 +4,7 @@
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook-mkdocs/
+https://hiroki-it.github.io/tech-notebook-mkdocs/md/
 
 <br>
 
