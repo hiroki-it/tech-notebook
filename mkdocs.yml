@@ -17,6 +17,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - search.highlight
+    - toc.integrate
 
 # URL
 use_directory_urls: false
