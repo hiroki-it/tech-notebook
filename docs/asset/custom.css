@@ -115,8 +115,10 @@ h3:before {
 ***************/
 .md-nav {
     font-size: 0.7rem;
-    text-align: justify;
-    text-justify: distribute-all-lines;
+}
+
+.md-sidebar {
+    width: 18.0rem;
 }
 
 /***************
