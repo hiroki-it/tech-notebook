@@ -120,6 +120,30 @@ h3:before {
 }
 
 /***************
+ ヘッダー
+***************/
+
+.md-tabs__list {
+    /** 均等に配置 **/
+    display: flex;
+    justify-content: space-between;
+}
+
+.md-tabs__item {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    /** 段数を増やす場合
+    float:left;
+    **/
+}
+
+.md-tabs__link {
+    color: white;
+    font-size: 0.6rem;
+    opacity: 1;
+}
+
+/***************
  URL
 ***************/
 .md-typeset a {
