@@ -177,6 +177,9 @@ h3:before {
 /***************
  テーブル
 ***************/
+/**
+@see https://blog.ktz.me/making-mkdocs-tables-look-like-github-markdown-tables/
+ */
 
 th, td {
     border: 1px solid var(--md-typeset-table-color);
