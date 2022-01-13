@@ -134,6 +134,7 @@ h3:before {
 .md-ellipsis {
     font-family: 'メイリオ', 'Meiryo', sans-serif;
     font-size: 1.3em;
+    font-weight: bold;
 }
 
 .md-tabs__list {
@@ -143,8 +144,8 @@ h3:before {
 }
 
 .md-tabs__item {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
     /** 段数を増やす場合
     float:left;
     **/
@@ -153,6 +154,7 @@ h3:before {
 .md-tabs__link {
     color: white;
     font-size: 0.6rem;
+    font-weight: bold;
     opacity: 1;
 }
 
