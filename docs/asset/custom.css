@@ -159,6 +159,15 @@ h3:before {
 }
 
 /***************
+ ロゴ
+***************/
+
+.md-header__button.md-logo {
+    margin: 0;
+    padding: 0;
+}
+
+/***************
  URL
 ***************/
 .md-typeset a {
