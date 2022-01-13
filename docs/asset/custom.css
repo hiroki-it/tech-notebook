@@ -6,6 +6,13 @@
 }
 
 /***************
+ テーマ
+***************/
+[data-md-color-scheme="dark"] {
+    --md-primary-fg-color: #313131
+}
+
+/***************
  中央コンテンツ
 ***************/
 [dir=ltr] .md-sidebar--secondary:not([hidden])~.md-content>.md-content__inner {

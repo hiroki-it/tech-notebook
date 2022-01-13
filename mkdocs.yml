@@ -8,7 +8,7 @@ theme:
   font:
     text: Yu Gothic
   palette:
-    primary: black
+    scheme: dark
   features:
     - navigation.expand
     - navigation.tabs
