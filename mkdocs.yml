@@ -1,4 +1,7 @@
+# サイト名
 site_name: 俺のドキュメントサイト
+
+# テーマ
 theme:
   name: material
   language: 'ja'
@@ -6,13 +9,19 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+
+# CSS
 extra_css:
   - asset/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+
+# プラグイン
 plugins:
   - exclude:
       glob:
         - private
+
+# ナビゲーション
 nav:
   - 俺のドキュメントサイトについて: md/about.md
 
