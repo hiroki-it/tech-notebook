@@ -114,7 +114,9 @@ h3:before {
  サイドバー
 ***************/
 .md-nav {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    text-align: justify;
+    text-justify: distribute-all-lines;
 }
 
 /***************

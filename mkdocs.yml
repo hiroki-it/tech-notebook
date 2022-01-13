@@ -5,11 +5,23 @@ site_name: 俺のドキュメントサイト
 theme:
   name: material
   language: 'ja'
+  font:
+    text: Yu Gothic
+  palette:
+    primary: black
   features:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+    - search.highlight
 
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hiroki-it
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/Hiroki__IT
 # CSS
 extra_css:
   - asset/custom.css
