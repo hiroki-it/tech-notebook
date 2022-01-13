@@ -123,6 +123,11 @@ h3:before {
  ヘッダー
 ***************/
 
+.md-ellipsis {
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    font-size: 1.3em;
+}
+
 .md-tabs__list {
     /** 均等に配置 **/
     display: flex;
