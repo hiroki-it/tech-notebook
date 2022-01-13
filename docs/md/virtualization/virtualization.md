@@ -83,4 +83,3 @@ Docker、LXC、OpenVZ、など
 sysbenchというベンチマークツールを用いて、CPU・メモリ・ファイルI/Oに着目し、物理マシン・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もOverheadが小さい。
 
 ![各仮想化の比較](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
-
