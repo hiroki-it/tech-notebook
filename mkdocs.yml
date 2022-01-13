@@ -18,6 +18,9 @@ theme:
     - navigation.top
     - search.highlight
 
+# URL
+use_directory_urls: false
+
 extra:
   generator: false
   homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/md
