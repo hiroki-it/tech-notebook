@@ -3,4 +3,5 @@ deploy:
 	git checkout main
 	git add docs/md
 	git commit -m "update ノートを更新した．"
+	git push
 	mkdocs gh-deploy
