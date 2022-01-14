@@ -87,4 +87,3 @@ API Gateway、Route53やALBによる重み付けルーティング
 #### ・利用例
 
 ECS、EKS、Kubernetes
-
