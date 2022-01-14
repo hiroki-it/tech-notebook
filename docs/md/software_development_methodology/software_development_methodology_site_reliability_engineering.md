@@ -8,9 +8,9 @@
 
 <br>
 
-## 01. SREとは
+## 01. SREに関する見解
 
-### 定義
+### SREとは
 
 #### ・参考：サイトリライアビリティエンジニアリング
 
@@ -34,6 +34,22 @@ URL：https://eh-career.com/engineerhub/entry/2019/12/05/103000
 
 SREの具体的な行動を明確にするためには、Webサイトの信頼性を表す指標（SLI）と、指標の具体的な目標値（SLO）を定義する必要がある。エラーバジェットの残量を考慮に入れ、リスクを取りながら、Webサイトの信頼性の維持に努める。
 
+#### ・参考：SREの基本と組織への導入
+
+URL：https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
+
+ソフトウェアの最も重要な機能は信頼性であり、信頼性の程度はサイトのユーザーによって決められるべきである。ユーザーは、SLIを信頼性の指標とし、SLOに至った場合に信頼できるサイトと見なす。
+
+<br>
+
+### SLOとSLIの決め方
+
+#### ・参考：SREの基本と組織への導入
+
+URL：https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
+
+クリティカルジャーニーに関連するメトリクスをSLIに選ぶとよい。具体的には、リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延、に関するメトリクスが有用である。
+
 <br>
 
 ### 信頼性の目標値を達成するための行動
@@ -42,15 +58,11 @@ SREの具体的な行動を明確にするためには、Webサイトの信頼�
 
 URL：https://www.nic.ad.jp/ja/materials/iw/2017/proceedings/s15/s15-fujisaki.pdf
 
-信頼性の目標値
-
-- 可用性の向上
-- レイテンシーの抑制
-- パフォーマンスの向上
-- 開発効率の向上
-- 変更管理
+- 可用性の向上（障害ドメインと更新ドメインを考慮した冗長化）
+- パフォーマンスの向上（レイテンシーの抑制 ）
+- 開発効率の向上（変更管理、
 - 適切なモニタリング
-- インシデント対応
+- インシデント管理
 - キャパシティプランニング
 
 <br>
@@ -149,4 +161,3 @@ SREチームのValueから、SREの技術的な使命がわかる。
 ### SREに入門しよう
 
 <iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/9ef17a127836454eba769084baddf60f" title="SREに入門しよう" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
-

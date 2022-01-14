@@ -300,7 +300,7 @@ provider:
 
 <br>
 
-### lambdaHashingVersio
+### lambdaHashingVersion
 
 Lambda関数のハッシュバージョンを設定する。
 

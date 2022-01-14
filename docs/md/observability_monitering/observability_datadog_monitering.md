@@ -183,9 +183,7 @@ Datadog社のサーバーからリクエストが送信される。サーバー�
 
 <br>
 
+## 06. コスト
 
-
-
-
-
+https://docs.datadoghq.com/ja/account_management/billing/usage_details/
 
