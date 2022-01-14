@@ -88,5 +88,3 @@ API Gateway、Route53やALBによる重み付けルーティング
 
 ECS、EKS、Kubernetes
 
-
-
