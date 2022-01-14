@@ -13,14 +13,6 @@
 }
 
 /***************
- 中央コンテンツ
-***************/
-[dir=ltr] .md-sidebar--secondary:not([hidden])~.md-content>.md-content__inner {
-    margin-right: 2.5rem;
-    margin-left: 2.5rem;
-}
-
-/***************
  画像
 ***************/
 img {
@@ -128,7 +120,7 @@ h3:before {
 /***************
  サイドバー
 ***************/
-.md-nav--lifted>.md-nav__list>.md-nav__item--active>.md-nav__link {
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
     /** タイトルのテキスト **/
     font-size: 1.5em;
 }
@@ -136,10 +128,6 @@ h3:before {
 .md-nav {
     /** 以外のテキスト **/
     font-size: 0.63rem;
-}
-
-.md-sidebar {
-    width: 18.0rem;
 }
 
 /***************
@@ -218,7 +206,7 @@ th, td {
 
 /* dark mode alternating table bg colors */
 [data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
-    background-color: hsla(var(--md-hue),25%,25%,1)
+    background-color: hsla(var(--md-hue), 25%, 25%, 1)
 }
 
 /***************
@@ -237,4 +225,23 @@ th, td {
 
 .highlighttable .linenodiv pre {
     color: white
+}
+
+/***************
+ レスポンシブ
+***************/
+
+/* 画像の配置が崩れないようにする */
+* {
+    float: none;
+    position: static;
+}
+
+/* PCのみ */
+@media screen and (min-width: 100em) {
+
+    /* サイドバー */
+    .md-sidebar {
+        width: 18.0rem;
+    }
 }
