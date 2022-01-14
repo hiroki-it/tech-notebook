@@ -25,7 +25,7 @@ use_directory_urls: false
 extra:
   analytics:
     provider: google
-    property: G-Q7WY3CCTTJ
+    property: G-PQ56RB3KS2
   analytics:
     provider: google
     property: UA-127492119-2
