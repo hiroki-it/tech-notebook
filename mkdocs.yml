@@ -23,6 +23,13 @@ theme:
 use_directory_urls: false
 
 extra:
+  analytics:
+    provider: google
+    property: G-Q7WY3CCTTJ
+  analytics:
+    provider: google
+    property: UA-127492119-2
+    
   generator: false
   homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/md
   social:
