@@ -8,7 +8,10 @@ theme:
   logo: asset/logo.png
   favicon: asset/logo.png
   font:
-    text: Meiryo
+    # Google-APIからフォントをインストール
+    # @see https://fonts.google.com/
+    text: "Noto Sans Japanese"
+    code: "Noto Sans Mono"
   palette:
     scheme: dark
   features:

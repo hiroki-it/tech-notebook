@@ -134,10 +134,9 @@ h3:before {
  ヘッダー
 ***************/
 
+/** サイト名 **/
 .md-ellipsis {
-    font-family: 'メイリオ', 'Meiryo', sans-serif;
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .md-tabs__list {
