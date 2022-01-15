@@ -118,6 +118,13 @@ h3:before {
 }
 
 /***************
+ リスト
+***************/
+[dir=ltr] .md-typeset ol li, [dir=ltr] .md-typeset ul li {
+     margin-bottom: 0;
+ }
+
+/***************
  サイドバー
 ***************/
 .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
