@@ -428,7 +428,7 @@ default_type application/octet-stream
 
 #### ・```listen```
 
-受信可能なインバウンド通信のポート番号を設定する。
+インバウンド通信を受信するポート番号を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
@@ -460,7 +460,7 @@ sendfile on;
 
 #### ・```server_name```
 
-受信可能なインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
+受信するインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 

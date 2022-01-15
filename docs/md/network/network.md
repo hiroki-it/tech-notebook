@@ -263,7 +263,7 @@ nnn.nnn.n.n example.com
 
 #### ・```/etc/resolv.conf```ファイル
 
-名前解決に使用するDNSサーバのIPアドレスや、問い合わせで使用するドメイン名の後に付与する文字列を定義する。名前解決では、まず最初に、```/etc/resolv.conf```ファイルに定義されたDNSサーバに問い合わせる。
+名前解決に用いるDNSサーバのIPアドレスや、問い合わせで用いるドメイン名の後に付与する文字列を定義する。名前解決では、まず最初に、```/etc/resolv.conf```ファイルに定義されたDNSサーバに問い合わせる。
 
 参考：https://linuc.org/study/knowledge/507/
 
@@ -274,7 +274,7 @@ nnn.nnn.n.n example.com
 ```bash
 nameserver  nnn.nnn.n.n
 domain      foo # ドメイン名の後に付与する文字列
-search      bar   baz # domain値で問い合わせに失敗した場合に使用する文字列
+search      bar   baz # domain値で問い合わせに失敗した場合に用いる文字列
 ```
 
 ```bash

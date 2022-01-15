@@ -141,7 +141,7 @@ functions:
 
 #### ・name
 
-Lambda関数で使用するイメージのエイリアスを設定する。
+Lambda関数で用いるイメージのエイリアスを設定する。
 
 **＊実装例＊**
 
@@ -216,14 +216,14 @@ functions:
 
 ### runtime
 
-Lambda関数で使用する言語とバージョンを設定する。
+Lambda関数で用いる言語とバージョンを設定する。
 
 **＊実装例＊**
 
 ```yaml
 functions:
   main:
-    runtime: <使用する言語バージョン>
+    runtime: <用いる言語バージョン>
 ```
 
 <br>

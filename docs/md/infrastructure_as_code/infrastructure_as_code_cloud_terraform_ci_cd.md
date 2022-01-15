@@ -284,7 +284,7 @@ workflows:
 
 #### ・```assume_role.sh```ファイル
 
-Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
+Assume Roleを実行し、CircleCIで用いるIAMユーザーにロールを一時的に委譲する。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/cloud_computing/cloud_computing_aws.html
 

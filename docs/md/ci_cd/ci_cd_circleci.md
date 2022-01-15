@@ -20,7 +20,7 @@ https://circleci.com/docs/reference-2-1/#circleci-2-1-reference
 
 #### ・Webhook
 
-CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを使用することが推奨されている。なお、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
+CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを用いることが推奨されている。なお、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
 
 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 

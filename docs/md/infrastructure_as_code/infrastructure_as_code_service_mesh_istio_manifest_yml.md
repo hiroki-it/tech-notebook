@@ -131,7 +131,7 @@ spec:
 
 #### ・sidecar.istio.io/proxyCPU
 
-Envoyコンテナで使用するCPU容量を設定する。
+Envoyコンテナで用いるCPU容量を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -146,7 +146,7 @@ spec:
 
 #### ・sidecar.istio.io/proxyImage
 
-Envoyコンテナの構築に使用するDockerイメージを設定する。
+Envoyコンテナの構築に用いるDockerイメージを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -161,7 +161,7 @@ spec:
 
 #### ・sidecar.istio.io/proxyMemory
 
-Envoyコンテナで使用するメモリ容量を設定する。
+Envoyコンテナで用いるメモリ容量を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -177,6 +177,38 @@ spec:
 <br>
 
 ## 04. spec（DestinationRuleの場合）
+
+### exportTo
+
+#### ・exportToとは
+
+DestinationRule上のインバウンド通信をルーティングできる名前空間を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+
+#### ・```*```（アスタリスク）
+
+全ての名前空間で使用できるようにする。
+
+```yaml
+kind: DestinationRule
+spec:
+  exportTo:
+    - "*"
+```
+
+#### ・```.```（ドット）
+
+現在の名前空間で使用できるようにする。
+
+```yaml
+kind: DestinationRule
+spec:
+  exportTo:
+    - "."
+```
+
+<br>
 
 ### host
 
@@ -194,7 +226,7 @@ spec:
 
 <br>
 
-### subnets
+### subsets
 
 VirtualServiceのサブセット名に関して、ルーティング対象とするPodのラベルを設定する
 
@@ -225,20 +257,32 @@ spec:
 
 #### ・loadBalancer
 
+Podへのルーティング時に用いるロードバランシングアルゴリズムを設定する。
+
 ```yaml
 kind: DestinationRule
 spec:
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
+```
+
+#### ・portLevelSettings.loadBalancer
+
+ポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
+
+```yaml
+kind: DestinationRule
+spec:
+  trafficPolicy:
     portLevelSettings:
-      - port:
-          number: 9000
-        loadBalancer:
+      - loadBalancer:
           simple: ROUND_ROBIN
 ```
 
-#### ・portLevelSettings
+#### ・portLevelSettings.port
+
+ポート番号別のルーティングで用いるポート番号を設定する。
 
 ```yaml
 kind: DestinationRule
@@ -246,9 +290,19 @@ spec:
   trafficPolicy:
     portLevelSettings:
       - port:
-          number: 9000
-        loadBalancer:
-          simple: ROUND_ROBIN
+          number: 80
+```
+
+#### ・tls.mode
+
+Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
+
+```yaml
+kind: DestinationRule
+spec:
+  trafficPolicy:
+    tls:
+      mode: DISABLE
 ```
 
 <br>
@@ -352,16 +406,44 @@ Gatewayの適用対象のIngressGatewayに付与されたラベルを設定す�
 kind: Gateway
 spec:
   selector:
-    istio: ingress-gateway
+    istio: istio-ingressgateway
 ```
 
 <br>
 
 ### servers
 
-#### ・port
+#### ・port.number
 
-受信するインバウンド通信のプロトコルを設定する。プロトコルに応じて、自動的に
+ポート名を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
+```yaml
+kind: Gateway
+spec:
+  servers:
+  - port:
+      name: http
+```
+
+#### ・port.number
+
+インバウンド通信を受信するポート番号を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
+```yaml
+kind: Gateway
+spec:
+  servers:
+  - port:
+      number: 80
+```
+
+#### ・port.protocol
+
+受信するインバウンド通信のプロトコルを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -372,9 +454,7 @@ kind: Gateway
 spec:
   servers:
   - port:
-      name: http
       protocol: HTTP
-      number: 80
 ```
 
 #### ・hosts
@@ -393,7 +473,19 @@ spec:
       - "*" 
 ```
 
-#### ・tls
+#### ・tls.privateKey
+
+参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
+```yaml
+kind: Gateway
+spec:
+  servers:
+  - tls:
+      privateKey: /etc/certs/privatekey.pem
+```
+
+#### ・tls.serverCertificate
 
 受信するインバウンド通信がHTTPS、またはVirtualServiceへの転送でHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
 
@@ -406,9 +498,7 @@ kind: Gateway
 spec:
   servers:
   - tls:
-      mode: SIMPLE
       serverCertificate: /etc/certs/server.pem
-      privateKey: /etc/certs/privatekey.pem
 ```
 
 <br>
@@ -578,7 +668,7 @@ spec:
 
 #### ・ingressSelector
 
-全てのEnvoyコンテナに関して、使用するGatewayの```istio```ラベル値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、用いるGatewayの```istio```ラベル値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator
@@ -589,7 +679,7 @@ spec:
 
 #### ・ingressService
 
-全てのEnvoyコンテナに関して、使用するIngressコントローラーの```istio```ラベル値を設定する。IngressGatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、用いるIngressコントローラーの```istio```ラベル値を設定する。IngressGatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator
@@ -638,7 +728,7 @@ spec:
 
 ### profile
 
-インストールに使用するプロファイルを設定する。
+インストールに用いるプロファイルを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -703,18 +793,60 @@ spec:
 
 ## 08. spec（VirtualServiceの場合）
 
+### exportTo
+
+#### ・exportToとは
+
+VirtualService上のインバウンド通信をルーティングできる名前空間を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+
+#### ・```*```（アスタリスク）
+
+全ての名前空間で使用できるようにする。
+
+```yaml
+kind: VirtualService
+spec:
+  exportTo:
+    - "*"
+```
+
+#### ・```.```（ドット）
+
+現在の名前空間で使用できるようにする。
+
+```yaml
+kind: VirtualService
+spec:
+  exportTo:
+    - "."
+```
+
+<br>
+
 ### gateways
 
+#### ・gatewaysとは
+
 インバウンド通信をいずれのGatewayから受信するかを設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+
+#### ・<名前空間>/<Gateway名>
+
+Gateway名とこれの名前空間を設定する。VirtualServiceとGatewayが同じ名前空間にある場合は、名前空間を省略できる。
 
 ```yaml
 kind: VirtualService
 spec:
   gateways:
-  - foo-gateway
+  - foo-namespace/foo-gateway
 ```
 
-マイクロサービス間で通信を行う場合は、```mesh```を指定する必要がある。
+#### ・mesh
+
+マイクロサービス間の通信を有効化する。
 
 ```yaml
 kind: VirtualService
@@ -731,7 +863,10 @@ spec:
 
 HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
-参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
+参考：
+
+- https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
+- https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
 #### ・match
 
@@ -763,11 +898,11 @@ spec:
           prefix: /foo
 ```
 
-#### ・route
+#### ・route.destination.host
 
-受信するインバウンド通信のルーティング先のServiceやポートを設定する。
+受信するインバウンド通信のルーティング先のドメイン名あるいはService名を設定する。
 
-**＊実装例＊**
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 ```yaml
 kind: VirtualService
@@ -775,9 +910,72 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service # または、Serviceの完全修飾ドメイン名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+```
+
+#### ・route.destination.port
+
+受信するインバウンド通信のルーティング先のポート番号を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+```yaml
+kind: VirtualService
+spec:
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
+```
+
+#### ・route.destination.subset
+
+Serviceのサブセット名を設定する。DestinationRuleにて、ルーティング先の設定に用いる。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+```yaml
+kind: VirtualService
+spec:
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 80
+            subset: v1
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 80
+            subset: v2
+```
+
+#### ・route.weight
+
+重み付けルーティングの割合を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
+
+```yaml
+kind: VirtualService
+spec:
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 80
+            subset: v1
+          weight: 70
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 80
+            subset: v1
+          weight: 30
 ```
 
 <br>
@@ -787,4 +985,65 @@ spec:
 #### ・tcpとは
 
 TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする。
+
+参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
+
+#### ・match
+
+```yaml
+kind: VirtualService
+spec:
+  tcp:
+    - match:
+        - port: 9000
+```
+
+#### ・route.destination.host
+
+httpの場合と同じである。
+
+```yaml
+kind: VirtualService
+spec:
+  tcp:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+```
+
+#### ・route.destination.port
+
+httpの場合と同じである。
+
+```yaml
+kind: VirtualService
+spec:
+  tcp:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 9000
+```
+
+#### ・route.destination.subset
+
+httpの場合と同じである。
+
+```yaml
+kind: VirtualService
+spec:
+  tcp:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 9000
+            subset: v1
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            port:
+              number: 9000
+            subset: v2
+```
 

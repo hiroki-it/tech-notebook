@@ -33,7 +33,7 @@ apiVersion: v1
 | Namespace |  |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
-| Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
+| Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
 | ReplicaController     | 旧Deployment。非推奨である。<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
 | ReplicaSet            |                                                              |
 | Service               |                                                              |
@@ -220,7 +220,7 @@ spec:
 
 #### ・ReadWriteMany
 
-ボリュームに対して、複数ノードから読み出し/書き込みできるようにする。ノード間でDBを共有したい場合に使用する。
+ボリュームに対して、複数ノードから読み出し/書き込みできるようにする。ノード間でDBを共有したい場合に用いる。
 
 **＊実装例＊**
 
@@ -233,7 +233,7 @@ spec:
 
 #### ・ReadOnlyMany
 
-ボリュームに対して、複数ノードから読み出しでき、また単一ノードのみから書き込みできるようにする。ノード間で読み出し処理のみDBを共有したい場合に使用する。
+ボリュームに対して、複数ノードから読み出しでき、また単一ノードのみから書き込みできるようにする。ノード間で読み出し処理のみDBを共有したい場合に用いる。
 
 **＊実装例＊**
 
@@ -246,7 +246,7 @@ spec:
 
 #### ・ReadWriteOnce
 
-ボリュームに対して、単一ノードからのみ読み出し/書き込みできるようにする。ノードごとにDBを分割したい場合に使用する。
+ボリュームに対して、単一ノードからのみ読み出し/書き込みできるようにする。ノードごとにDBを分割したい場合に用いる。
 
 **＊実装例＊**
 
@@ -407,7 +407,7 @@ spec:
 
 #### ・fast
 
-SSDをPersistentVolumeとして使用する。
+SSDをPersistentVolumeとして用いる。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
@@ -421,7 +421,7 @@ spec:
 
 #### ・slow
 
-HDをPersistentVolumeとして使用する。
+HDをPersistentVolumeとして用いる。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
@@ -539,7 +539,7 @@ spec:
 
 #### ・persistentVolumeClaim.claimName
 
-使用するPersistentVolumeClaimオブジェクトの名前を設定する。
+用いるPersistentVolumeClaimオブジェクトの名前を設定する。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -624,7 +624,7 @@ spec:
 
 #### ・appProtocol
 
-受信可能なインバウンド通信のプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+受信するインバウンド通信のプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
 
 ```yaml
  kind: Service
@@ -633,16 +633,31 @@ spec:
    - appProtocol: http
 ```
 
+```yaml
+ kind: Service
+ spec:
+   ports:
+   - appProtocol: tcp
+```
+
 もしIstio VirtualServiceからインバウンド通信を受信する場合に、```appProtocol```キーが使用しなければ、```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 
 ```yaml
+# appProtocolを用いない場合
 kind: Service
 spec:
   ports:
   - name: http-foo # Istio Gatewayからインバウンド通信を受信
-    # appProtocolを用いない。
+```
+
+```yaml
+# appProtocolを用いない場合
+kind: Service
+spec:
+  ports:
+  - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
 ```
 
 #### ・name
@@ -656,9 +671,16 @@ spec:
    - name: http
 ```
 
+```yaml
+ kind: Service
+ spec:
+   ports:
+   - name: tcp
+```
+
 #### ・protocol
 
-受信可能なインバウンド通信のプロトコルを設定する。
+受信するインバウンド通信のプロトコルを設定する。
 
 **＊実装例＊**
 
@@ -669,9 +691,30 @@ spec:
   - protocol: TCP
 ```
 
+```yaml
+kind: Service
+spec:
+  ports:
+  - protocol: TCP
+```
+
+```yaml
+kind: Service
+spec:
+  ports:
+  - protocol: SCTP
+```
+
+ちなみに、FastCGIプロトコルには変換できず、別にNginxを用いてプロトコルを変換する必要がある。
+
+参考：
+
+- https://github.com/search?q=php-fpm+kubernetes
+- https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
+
 #### ・port
 
-受信可能なインバウンド通信のポート番号を設定する。
+インバウンド通信を受信するポート番号を設定する。
 
 **＊実装例＊**
 
@@ -682,9 +725,16 @@ spec:
   - port: 80
 ```
 
+```yaml
+kind: Service
+spec:
+  ports:
+    - port: 9000
+```
+
 ####  ・targetPort
 
-受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するかどうかを設定する。Pod内で最初に通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するかどうかを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
 
 **＊実装例＊**
 
@@ -692,7 +742,14 @@ spec:
 kind: Service
 spec:
   ports:
-  - targetPort: 9376
+  - targetPort: 80
+```
+
+```yaml
+kind: Service
+spec:
+  ports:
+    - targetPort: 9000
 ```
 
 <br>

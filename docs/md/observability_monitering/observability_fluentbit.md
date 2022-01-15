@@ -213,7 +213,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ・forwardプラグイン
 
-受信したログを指定されたポートでリッスンし、パイプラインに入力する。
+受信したログを指定されたポートで受信し、パイプラインに入力する。
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
@@ -224,7 +224,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
     # プラグイン名
     Name        forward
     Listen      0.0.0.0
-    # プロセスのリッスンポート
+    # プロセスの受信ポート
 ```
 
 **＊実行ログ例＊**

@@ -137,7 +137,7 @@ IngressGatewayの機能のうち、クラスター外部から送信されるイ
 
 #### ・VirtualServiceとは
 
-IngressGatewayの機能のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。
+IngressGatewayの機能のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。ルーティング先のServiceが見つからないと、404ステータスを返信する。
 
 参考：
 
