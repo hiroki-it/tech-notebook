@@ -212,7 +212,13 @@ th, td {
  URL
 ***************/
 .md-typeset a {
-    font-size: 0.88em
+    color: blue;
+    font-size: 0.80em;
+}
+
+.md-typeset a:hover {
+    color: blue;
+    text-decoration: underline;
 }
 
 /***************
