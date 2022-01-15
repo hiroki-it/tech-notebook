@@ -5,8 +5,8 @@ site_name: 俺のドキュメントサイト
 theme:
   name: material
   language: 'ja'
-  logo: assets/logo.png
-  favicon: assets/logo.png
+  logo: assets/images/logo.png
+  favicon: assets/images/logo.png
   font:
     # Google-APIからフォントをインストール
     # @see https://fonts.google.com/
@@ -40,7 +40,7 @@ extra:
 
 # CSS
 extra_css:
-  - assets/custom.css
+  - assets/css/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 
 # 標準プラグイン
