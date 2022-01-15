@@ -189,7 +189,7 @@ th, td {
 }
 
 .md-typeset__table table:not([class]) {
-    font-size: .74rem;
+    font-size: 0.68rem;
     border-right: none;
 }
 
