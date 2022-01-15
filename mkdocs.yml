@@ -256,6 +256,7 @@ nav:
   - 🔎 可観測性/監視:
     - 可観測性: md/observability_monitering/observability.md
     - 監視: md/observability_monitering/monitering.md
+    - Googleアナリティクス: md/observability_monitering/monitering_google_analytics.md
     - ■ Fluentd/FluentBit:
         - Fluentd/FluentBit: md/observability_monitering/observability_fluentd_and_fluentbit.md
         - FluentBit: md/observability_monitering/observability_fluentbit.md
