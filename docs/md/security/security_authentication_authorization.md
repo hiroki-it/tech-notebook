@@ -35,10 +35,10 @@
 | ユーザー       | クライアントを用いている人物のこと。                       |
 | サーバー       | クライアントからリクエストを受信し、レスポンスを送信するアプリケーションのこと。 |
 
-最初、クライアントは、認証後にアクセスできるページのリクエストをサーバーに送信する。
+最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
 
 ```http
-GET https://example.com/foo-form HTTP/2
+GET https://example.com/foo-form
 ```
 
 サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。ユーザーに表示するための認証領域には、任意の値を持たせることができ、サイト名が設定されることが多い。
@@ -51,11 +51,11 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 『```<ユーザー名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
 
 ```http
-POST https://example.com/foo-form HTTP/2
+POST https://example.com/foo-form
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後ページのレスポンスを送信する。また、認証情報をブラウザのWebストレージに保存する。
+サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。また、認証情報をブラウザのWebストレージに保存する。
 
 ```http
 200 OK
@@ -67,7 +67,7 @@ WWW-Authenticate: Basic realm=""
 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```http
-POST https://example.com/foo-form/logout HTTP/2
+POST https://example.com/foo-form/logout
 authorization: Basic <誤った認証情報>
 ```
 
@@ -91,7 +91,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```http
-POST https://example.com/foo-form HTTP/2
+POST https://example.com/foo-form
 authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -119,7 +119,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成し
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
 ```http
-POST https://example.com/foo HTTP/2
+POST https://example.com/foo
 Content-Type: application/x-www-form-urlencoded
     
 # ボディ
@@ -154,11 +154,11 @@ Content-Type: application/json
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
 ```http
-POST https://example.com/foo HTTP/2
+POST https://example.com/foo
 authorization: Bearer <Bearerトークン>
 ```
 
-サーバーは、Bearerトークンを照合し、合致していれば、認証後ページのレスポンスを送信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
+サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
 
 ```http
 200 OK
@@ -245,7 +245,7 @@ OAuthの項目を参考にせよ。
 最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をデータベースに保存する。
 
 ```http
-POST https://example.com/users HTTP/2
+POST https://example.com/users
 
 {
     "email_address": "foo@gmail.com",
@@ -256,7 +256,7 @@ POST https://example.com/users HTTP/2
 次回の認証時に、再びユーザーが認証情報を送信する。
 
 ```http
-POST https://example.com/foo-form HTTP/2
+POST https://example.com/foo-form
 
 {
     "email_address": "foo@gmail.com",
@@ -281,7 +281,7 @@ Set-Cookie: sessionid=<セッションID>
 サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを用いて、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
 
 ```http
-POST https://example.com/foo-form HTTP/2
+POST https://example.com/foo-form
 cookie: sessionid=<セッションID>
 ```
 
@@ -323,7 +323,7 @@ cookie: sessionid=<セッションID>
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_application_collaboration_api_restful.html
 
 ```http
-GET https://example.com/bar.php HTTP/2
+GET https://example.com/bar.php
 x-api-key: <APIキー>
 ```
 
@@ -338,7 +338,7 @@ x-api-key: <APIキー>
 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```http
-GET https://example.com/bar.php HTTP/2
+GET https://example.com/bar.php
 authorization: <Personal Acccess Token>
 ```
 
@@ -441,7 +441,7 @@ OAuth認証には、仕組み別に『認可コードフロー』『インプリ
 （３）一時的に有効な認可コードを発行してもらうため、FacebookはInstagram認可サーバーに認可リクエストを送信する。
 
 ```http
-GET https://www.instagram.com/auth?<下表で説明> HTTP/1.1
+GET https://www.instagram.com/auth?<下表で説明>
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
@@ -470,7 +470,7 @@ Location: https://www.facebook.com/login?<下表で説明>
 （５）Facebookは、認可コードを割り当てた認可リクエストをInstagramのサーバーに送信する。
 
 ```http
-POST https://www.instagram.com/auth? HTTP/1.1
+POST https://www.instagram.com/auth?
 Host: authorization-server.com # 認可サーバーのホスト
 Content-Type: application/x-www-form-urlencoded
 
@@ -549,7 +549,7 @@ OAuth認証では、認証スキーマとしてBearer認証が選ばれること
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし、ドットでつないだトークン。Bear認証やOauth認証のトークンとして使用できる。ランダムな文字列をこれら認証のトークンとするより、JWTを用いた方がより安全である。
 
 ```http
-GET https://example.com/bar.php HTTP/2
+GET https://example.com/bar.php
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 

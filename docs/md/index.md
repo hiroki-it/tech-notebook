@@ -2,7 +2,7 @@
 
 ## 🧬 ソフトウェア
 
-### 概論
+### ソフトウェア
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software.html)
 
@@ -220,6 +220,7 @@
 
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability.html)
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/monitering.html)
+* [📖 ︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/monitering_google_analytics.html)
 * Fluentd/FluentBit
     * [📖 ︎Fluentd/FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_fluentd_and_fluentbit.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_fluentbit.html)

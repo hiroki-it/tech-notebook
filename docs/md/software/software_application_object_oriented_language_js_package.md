@@ -160,7 +160,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 #### ・読み込むパッケージをまとめる
 
-JavaScriptファイルを読み込むscriptタグを1つにまとめる。HTMLがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、ページの読み込みが早くなる。
+JavaScriptファイルを読み込むscriptタグを1つにまとめる。HTMLがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、Webページの読み込みが早くなる。
 
 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 

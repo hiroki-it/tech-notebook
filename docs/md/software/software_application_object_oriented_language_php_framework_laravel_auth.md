@@ -130,11 +130,11 @@ final class AuthenticationController
             // セッションID固定化を防ぐために、認証後にセッションを再作成します。
             $authenticationRequest->session()->regenerate();
 
-            // 認証後ページにリダイレクトします。
+            // 認証後のWebページにリダイレクトします。
             return redirect(RouteServiceProvider::HOME);
         }
 
-        // 未認証ページにリダイレクトします。
+        // 未認証のWebページにリダイレクトします。
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
@@ -158,7 +158,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ・一部のユーザーが異なる権限を持つ場合
 
-ユーザーごとに認証方法を区別しつつ、同一の認証後ページにリダイレクトさせられる。
+ユーザーごとに認証方法を区別しつつ、同一の認証後のWebページにリダイレクトさせられる。
 
 参考：https://blog.capilano-fw.com/?p=8159
 
@@ -239,11 +239,11 @@ final class AuthenticationController
             // セッションID固定化を防ぐために、認証後にセッションを再作成します。
             $authenticationRequest->session()->regenerate();
 
-            // ユーザー用認証後ページにリダイレクトします。
+            // ユーザー用認証後のWebページにリダイレクトします。
             return redirect(RouteServiceProvider::HOME);
         }
 
-        // 未認証ページにリダイレクトします。
+        // 未認証のWebページにリダイレクトします。
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
@@ -298,7 +298,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (auth()->guard($guard)->check()) {
-                // ユーザーが認証済みの場合は、認証後のページにリダイレクトします。
+                // ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。
                 return redirect(RouteServiceProvider::HOME);
             }
         }
@@ -557,7 +557,7 @@ Ouath認証を実装できる。OAuth認証については、以下のリンク�
 
 <br>
 
-### 導入方法
+### セットアップ
 
 #### ・インストール
 
@@ -945,7 +945,7 @@ APIキー認証とセッションIDを用いたForm認証については、以�
 
 <br>
 
-### 導入方法
+### セットアップ
 
 #### ・インストール
 
@@ -1005,7 +1005,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 <br>
 
-### 導入方法
+### セットアップ
 
 参考：https://github.com/laravel/breeze
 
@@ -1037,7 +1037,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 <br>
 
-### 導入方法
+### セットアップ
 
 #### ・インストール
 

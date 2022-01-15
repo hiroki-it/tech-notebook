@@ -4,7 +4,7 @@
 
 ### OpenAPI仕様とは
 
-RESTful APIの仕様を実装により説明するためのフォーマットのこと。JSON型またはYAML型で実装できる。いくつかのフィールドから構成されている。
+RESTful-APIの仕様を実装により説明するためのフォーマットのこと。JSON型またはYAML型で実装できる。いくつかのフィールドから構成されている。
 
 参考：https://spec.openapis.org/oas/v3.1.0#fixed-fields
 

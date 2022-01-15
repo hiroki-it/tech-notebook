@@ -156,7 +156,7 @@ Google play で、過去にアプリとして忍び込んでいたトロイの�
 
 #### ・CSRFとは
 
-ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトにアクセスしたとする。悪意のあるサイトのサーバーは、ユーザーのセッションIDを用いて、元々ログインしていたサイトのサーバーを攻撃する。サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
+ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトにアクセスしたとする。悪意のあるサイトのサーバーは、ユーザーのセッションIDを用いて、ログインしていた元のサイトのサーバーを攻撃する。サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
 
 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
@@ -195,7 +195,7 @@ X-CSRF-TOKEN: <トークン>
 認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。どちらを用いるかは、バックエンド側の仕様によって異なる。
 
 ```http
-POST https://example.com/bar-form.php HTTP/2
+POST https://example.com/bar-form.php
 # 独自ヘッダー
 x-csrf-token: <トークン>
 
@@ -307,7 +307,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
 ```http
-GET https://foo.com/bar HTTP/2
+GET https://foo.com/bar
 # 送信元オリジン
 Origin: https://example.com
 ```
@@ -378,7 +378,7 @@ Set-Cookie: domain=example.com
 ```
 
 ```http
-POST http://foo.example.com/bar-form.php HTTP/2
+POST http://foo.example.com/bar-form.php
 # 送信元オリジン
 Origin: https://example.com
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>
@@ -512,7 +512,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 #### ・DNS Cache Poisoningとは
 
-キャッシュDNSサーバーがもつIPアドレスを偽のIPアドレスに変え、偽のWebサイトに強制的にアクセスさせる手法。
+キャッシュDNSサーバーがもつIPアドレスを偽のIPアドレスに変え、偽のサイトに強制的にアクセスさせる手法。
 
 ![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DNSキャッシュポイズニング.gif)
 
@@ -522,7 +522,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 #### ・Back Doorとは
 
-例えば、Webサイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
+例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
 
 ![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バックドア.png)
 

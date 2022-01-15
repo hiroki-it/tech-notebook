@@ -103,7 +103,7 @@ header("Content-Type: text/html; charset=UTF-8");
 
 ## 02. Xdebugによるデバッグ
 
-### 導入方法
+### セットアップ
 
 #### 1. ローカルサーバーへのインストール
 

@@ -1,5 +1,13 @@
 # コスト管理
 
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
+
+<br>
+
 ## 01. コスト管理の観点
 
 スペック、時間単価、数量、月額料金

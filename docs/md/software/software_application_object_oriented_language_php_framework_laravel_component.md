@@ -1434,7 +1434,7 @@ class FooController extends Controller
 
         // バリデーション時にエラーが起こった場合
         if ($validator->fails()) {
-            // 指定したページにリダイレクト
+            // 指定したWebページにリダイレクト
             // validatorを渡すことでエラーメッセージをViewに渡せる。
             return redirect("error")->withErrors($validator)
                 ->withInput();
@@ -1447,7 +1447,7 @@ class FooController extends Controller
 
 #### ・```validate```メソッド
 
-Validatorクラスの```validate```メソッドを用いると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+Validatorクラスの```validate```メソッドを用いると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 ```php
 <?php
@@ -1466,7 +1466,7 @@ class FooController extends Controller
      */
     public function update(Request $request)
     {
-        // 元のページにリダイレクトする場合は、validateメソッドを用いる。
+        // 元のWebページにリダイレクトする場合は、validateメソッドを用いる。
         $validator = Validator::make(
             $request->all(),
             [
@@ -1476,7 +1476,7 @@ class FooController extends Controller
 
         // バリデーション時にエラーが起こった場合
         if ($validator->fails()) {
-            // 指定したページにリダイレクト
+            // 指定したWebページにリダイレクト
             // validatorを渡すことでエラーメッセージをViewに渡せる。
             return redirect("error")->withErrors($validator)
                 ->withInput();
@@ -2284,7 +2284,7 @@ $ php artisan make:request <Request名>
 
 #### ・ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを用いて、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを用いて、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 参考：
 
@@ -2308,7 +2308,7 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメータのバリデーションを実行する。
-        // エラーが起こった場合は元々のページにリダイレクト
+        // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "limit" => ["required", Rule::in([25, 50, 100])],
             "order" => ["required", Rule::in(["ascend", "descend"])],
@@ -2323,7 +2323,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // ルールの定義、バリデーションの実行
-        // エラーが起こった場合は元々のページにリダイレクト
+        // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "title" => ["required", "string", "max:255"],
             "body"  => ["required", "string", "max:255"],
@@ -2354,7 +2354,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // ルールの定義、メッセージボディのバリデーションを実行する。
-        // エラーが起こった場合は元々のページにリダイレクト
+        // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "title" => "required|string|max:5255",
             "body"  => "required|string|max:255",
@@ -2368,7 +2368,7 @@ class FooController extends Controller
 
 #### ・ルール定義 & バリデーション自動実行
 
-Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを用いて、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを用いて、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 **＊実装例＊**
 
@@ -2387,7 +2387,7 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメータのバリデーションを実行する。
-        // エラーが起こった場合は元々のページにリダイレクト
+        // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
         // 続きの処理
@@ -2399,7 +2399,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // メッセージボディのバリデーションを実行する。
-        // エラーが起こった場合は元々のページにリダイレクト
+        // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
         // 続きの処理

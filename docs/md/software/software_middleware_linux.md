@@ -1,5 +1,13 @@
 # 標準搭載ミドルウェア
 
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
+
+<br>
+
 ## 01. セキュリティ系
 
 ### SELinux：Security Enhanced Linux
