@@ -20,9 +20,9 @@
 
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
-#### ・Proxyサーバーによるアプリケーションゲートウェイ型ファイアウォール
+#### ・プロキシサーバーによるアプリケーションゲートウェイ型ファイアウォール
 
-Proxyサーバー上で、SSL証明書の検証、セキュリティ系のソフトウェアの稼働、を行い、ファイアウォールとして用いる。Proxyサーバーセキュリティ精度を重視する場合はこちら。
+プロキシサーバー上で、SSL証明書の検証、セキュリティ系のソフトウェアの稼働、を行い、ファイアウォールとして用いる。プロキシサーバーセキュリティ精度を重視する場合はこちら。
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 

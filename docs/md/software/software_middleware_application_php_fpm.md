@@ -43,6 +43,9 @@ CGIプロトコルのパフォーマンスを向上させたプロトコル仕�
 
 ```bash
 $ apt-get install php-fpm
+
+# またはこちら
+$ apt install php-fpm
 ```
 
 <br>
@@ -51,7 +54,7 @@ $ apt-get install php-fpm
 
 #### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからインバウンド通信を受信する場合、```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
+PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからインバウンド通信を受信する場合、```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 

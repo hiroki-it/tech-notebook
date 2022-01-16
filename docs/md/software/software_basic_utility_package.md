@@ -14,8 +14,11 @@
 
 #### ・apt-get経由
 
-``` bash
+```bash
 $ apt-get install dnsutils
+
+# またはこちら
+$ apt install dnsutils
 ```
 
 #### ・yum経由
@@ -100,7 +103,10 @@ ns4.google.com  internet address = 216.239.38.10
 #### ・apt-get経由
 
 ```bash
-$ apt-get install net-tools 
+$ apt-get install net-tools
+
+# またはこちら
+$ apt install net-tools 
 ```
 
 #### ・yum経由
@@ -425,6 +431,9 @@ $ supervisorctl update
 
 ```bash
 $ apt-get install systemd
+
+# またはこちら
+$ apt-get install systemd
 ```
 
 <br>
@@ -553,6 +562,9 @@ $ sudo systemctl stop nginx
 
 ```bash
 $ apt-get install tcpdump
+
+# またはこちら
+$ apt install tcpdump
 ```
 
 #### ・yum経由

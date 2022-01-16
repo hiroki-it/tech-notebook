@@ -36,6 +36,8 @@
 
 端末のシステムによって稼働するアプリのこと。一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
 
+参考：https://www.sbbit.jp/article/cont1/28197
+
 **＊例＊**
 
 Office、BookLiveのアプリ版
@@ -49,6 +51,8 @@ Office、BookLiveのアプリ版
 #### ・Webアプリケーション
 
 Webサーバー上で稼働するソフトウェアのこと。URLをWebサーバーにリクエストすることで利用でき、随時、Webサーバーとデータ通信を行う。全ての人が無料で利用できるものと、お金を払った人だけが利用できるものがある。
+
+参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -72,6 +76,8 @@ Google Drive、Dropbox
 
 端末でWebviewを稼働させ、ソフトウェアのHTLMファイルのレンダリングをWebview上で行うアプリのこと。
 
+参考：https://www.sbbit.jp/article/cont1/28197
+
 **＊例＊**
 
 クックパッド
@@ -82,37 +88,33 @@ Google Drive、Dropbox
 
 ### Webサーバーのミドルウェア
 
-#### ・Apache
+- Apache
+- Nginx
+- IIS
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_middleware_web_apache_conf.html
-
-#### ・Nginx
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_middleware_web_nginx_conf.html
+参考：https://thinkit.co.jp/article/11837
 
 <br>
 
 ### Appサーバーのミドルウェア
 
-#### ・Apacheの拡張モジュール
+- Apacheの拡張モジュール
+- PHP-FPM
+- NGINX Unit（WebサーバーのNginxと組み合わせて使用できるミドルウェア）
+- Tomcat
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_middleware_web_apache_conf.html
-
-#### ・PHP-FPM：PHP FastCGI Process Manager
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_middleware_application_php_fpm.html
-
-#### ・NGINX Unit
-
-WebサーバーのNginxと組み合わせて使用できるミドルウェア。
+参考：https://thinkit.co.jp/article/11837
 
 <br>
 
 ### DBサーバーのミドルウェア
 
-#### ・MySQL
+- MySQL
+- MariaDB
+- PostgreSQL
+- Oracle Database
 
-#### ・MariaDB
+参考：https://thinkit.co.jp/article/11837
 
 <br>
 

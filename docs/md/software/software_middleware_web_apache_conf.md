@@ -8,25 +8,43 @@
 
 <br>
 
-## 01. 使い方の種類
+## 01. セットアップ
 
-### Webサーバーのミドルウェアとして
+### インストール
 
-![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
+#### ・apt-get経由
+
+```bash
+$ apt install apache2
+```
 
 <br>
 
-### Appサーバーのミドルウェアとして
+## 02. リバースプロキシのミドルウェアとして
+
+### HTTP/HTTPSプロトコルでルーティング
+
+<br>
+
+### FastCGIプロトコルでルーティング
+
+mod_fcgidモジュールを読み込むことによって、FastCGIプロトコルでルーティングできるようになる。
+
+参考：https://httpd.apache.org/mod_fcgid/
+
+<br>
+
+## 02-02. Appサーバーのミドルウェアとして
 
 mod_phpモジュールを読み込むことによって、Appサーバーのミドルウェアとしても機能させられる。
 
 <br>
 
-## 02. Coreにおける設定ディレクティブ
+## 03. Coreにおける設定ディレクティブ
 
 ### ServerRoot
 
-#### ・```ServerRoot```とは
+#### ・ServerRootとは
 
 他の設定ディレクティブで、相対パスが設定されている場合に適用される。そのルートディレクトリを定義する。
 
@@ -48,7 +66,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 ### VirtualHost
 
-#### ・```VirtualHost```とは
+#### ・VirtualHostとは
 
 ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを定義する。VirtualHostという名前の通り、1 つのサーバー上で、仮想的に複数のドメインを扱うような処理も定義できる。複数のVirtualHostを設定した場合、1つ目がデフォルト設定として認識される。
 
@@ -60,27 +78,27 @@ NameVirtualHost *:80
 
 # Defaultサーバーとして扱う。
 <VirtualHost *:80>
-    DocumentRoot /www/foo
-    ServerName www.example.com
+    DocumentRoot /var/www/foo
+    ServerName example.com
 </VirtualHost>
 
 <VirtualHost *:80>
-    DocumentRoot /www/bar
-    ServerName www.example.org
+    DocumentRoot /var/www/bar
+    ServerName example.org
 </VirtualHost>
 ```
-#### ・IPベース```VirtualHost```
+#### ・IPベースVirtualHost
 
 各ドメインに異なるIPアドレスを割り振るバーチャルホスト。
 
-#### ・名前ベース```VirtualHost```
+#### ・名前ベースVirtualHost
 全てのドメインに同じIPアドレスを割り振るバーチャルホスト。
 
 <br>
 
 ### DocumentRoot
 
-#### ・```DocumentRoot```とは
+#### ・DocumentRootとは
 
 ドキュメントのルートディレクトリを定義する。ドキュメントルートに『```index.html```』というファイルを置くと、ファイル名を指定しなくとも、ルートディレクトリ内の```index.html```ファイルが、エントリーポイントとして自動的に認識されて表示される。
 
@@ -88,8 +106,8 @@ NameVirtualHost *:80
 
 ```apacheconf
 <VirtualHost *:80>
-    DocumentRoot /www/foo:
-    ServerName www.example.com
+    DocumentRoot /var/www/foo:
+    ServerName example.com
 </VirtualHost>
 ```
 
@@ -99,8 +117,8 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 ```apacheconf
 <VirtualHost *:80>
-    DocumentRoot /www/foo:/start-up.html
-    ServerName www.example.com
+    DocumentRoot /var/www/foo:/start-up.html
+    ServerName example.com
 </VirtualHost>
 ```
 
@@ -108,7 +126,7 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 ### Directory
 
-#### ・```Directory```とは
+#### ・Directoryとは
 
 ディレクティブを囲うディレクティブの一種。指定したディレクトリ内にリクエストがあった時に実行するディレクティブを定義する。
 
@@ -125,7 +143,7 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 ### User、Group
 
-#### ・```User```とは
+#### ・Userとは
 
 httpdプロセスのユーザ名を定義する。httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
 
@@ -135,7 +153,7 @@ httpdプロセスのユーザ名を定義する。httpdプロセスによって�
 User apache
 ```
 
-#### ・```Group```とは
+#### ・Groupとは
 
 httpdプロセスのグループ名を定義する。httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
 
@@ -149,7 +167,7 @@ Group apache
 
 ### KeepAlive、MaxKeepAliveRequests、KeepAliveTimeout
 
-#### ・```KeepAlive```とは
+#### ・KeepAliveとは
 
 HTTPプロトコルのリクエストのクライアントに対して、セッションIDを付与するかどうか、を定義する。
 
@@ -159,7 +177,7 @@ HTTPプロトコルのリクエストのクライアントに対して、セッ�
 KeepAlive On
 ```
 
-#### ・```KeepAliveTimeout```
+#### ・KeepAliveTimeout
 
 セッションIDを付与中のクライアントで、再びリクエストを送信するまでに何秒間空いたら、セッションIDを破棄するか、を定義する。
 
@@ -170,7 +188,7 @@ KeepAlive On
 KeepAliveTimeout 5
 ```
 
-#### ・```MaxKeepAliveRequests```
+#### ・MaxKeepAliveRequests
 
 セッションIDを付与中のクライアントで、リクエストのファイルの最大数を定義する。
 
@@ -183,7 +201,7 @@ MaxKeepAliveRequests 1000
 
 <br>
 
-## 03. mod_soにおける設定ディレクティブ
+## 04. mod_soにおける設定ディレクティブ
 
 ### LoadModule
 
@@ -203,7 +221,7 @@ LoadModule dir_module modules/mod_dir.so
 
 <br>
 
-## 04. mod_dirにおける設定ディレクティブ
+## 05. mod_dirにおける設定ディレクティブ
 
 ### DirectoryIndex
 
@@ -231,7 +249,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 ### AllowOverride
 
-#### ・```AllowOverride```とは
+#### ・AllowOverrideとは
 
 別に用意した```.htaccess```ファイルにて、有効化するディレクティブを定義する。
 
@@ -244,7 +262,7 @@ Directoryディレクティブによってリクエストされたディレク�
 </Directory>
 ```
 
-#### ・```All```
+#### ・All
 
 別に用意した```.htaccess```ファイルにて、実装可能なディレクティブを全て有効化する。
 
@@ -254,7 +272,7 @@ Directoryディレクティブによってリクエストされたディレク�
 AllowOverride All
 ```
 
-#### ・```None```
+#### ・None
 
 別に用意した```.htaccess```ファイルにて、実装可能なディレクティブを全て無効化する。
 
@@ -264,7 +282,7 @@ AllowOverride All
 AllowOverride None
 ```
 
-#### ・```Indexes```
+#### ・Indexes
 
 別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化する。
 
@@ -276,11 +294,11 @@ AllowOverride Indexes
 
 <br>
 
-## 05. mod_writeにおける設定ディレクティブ
+## 06. mod_writeにおける設定ディレクティブ
 
 ### RewriteCond
 
-#### ・```RewriteCond```とは
+#### ・RewriteCondとは
 
 条件分岐と、それによる処理を定義する。
 
@@ -306,7 +324,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_application_collaboration_api_restful.html
 
-#### ・```RewriteRule```とは
+#### ・RewriteRuleとは
 
 条件分岐による処理を定義する。
 
@@ -324,11 +342,11 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 <br>
 
-## 06. mod_setenvifにおける設定ディレクティブ
+## 07. mod_setenvifにおける設定ディレクティブ
 
 ### SetEnvIf
 
-#### ・```SetEnvIf```とは
+#### ・SetEnvIfとは
 
 条件分岐と環境変数の設定を定義する。
 
@@ -343,11 +361,11 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 <br>
 
-## 07. mod_log_configにおける設定ディレクティブ
+## 08. mod_log_configにおける設定ディレクティブ
 
 ### LogFormat
 
-#### ・```LogFormat```とは
+#### ・LogFormatとは
 
 アクセスログファイルの書式を定義する。
 
@@ -396,7 +414,7 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 ### ErrorLog
 
-#### ・```ErrorLog```とは
+#### ・ErrorLogとは
 
 エラーログファイルの書式を定義する。
 
@@ -414,7 +432,7 @@ ErrorLog /var/log/httpd/error_log
 
 ### LogLevel
 
-#### ・```LogLevel```とは
+#### ・LogLevelとは
 
 どのレベルまでログを出力するかを定義する。
 
@@ -431,11 +449,11 @@ ErrorLog /var/log/httpd/error_log
 
 <br>
 
-## 08. mod_sslにおける設定ディレクティブ 
+## 09. mod_sslにおける設定ディレクティブ 
 
 ### SSLCertificateFile
 
-#### ・```SSLCertificateFile```とは
+#### ・SSLCertificateFileとは
 
 PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを定義する。本番環境ではAWSのACM証明書を用いることが多いため、基本的な用途としては、ローカル開発でのオレオレ証明書読み込みのために用いる。
 
@@ -449,7 +467,7 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 
 ### SSLCertificateKeyFile
 
-#### ・```SSLCertificateKeyFile```とは
+#### ・SSLCertificateKeyFileとは
 
 PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを定義する。
 
@@ -461,15 +479,15 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 <br>
 
-## 09. mod_headersにおける設定ディレクティブ
+## 10. mod_headersにおける設定ディレクティブ
 
 ### Header
 
-#### ・```Header```とは
+#### ・Headerとは
 
 レスポンスヘッダーを定義する。```set```、```append```、```add```、```unset```、```echo```オプションを設定できる。デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される。オプションとして、```always```を設定することで、全てのステータスコードでヘッダーを設定する。
 
-#### ・```set```
+#### ・set
 
 レスポンスヘッダーを追加する。
 
@@ -487,7 +505,7 @@ Header set Referrer-Policy "no-referrer-when-downgrade"
 Header set Referrer-Policy "no-referrer-when-downgrade" always
 ```
 
-#### ・```unset```
+#### ・unset
 
 レスポンスヘッダーを削除する。
 
@@ -505,7 +523,7 @@ Header unset Referrer-Policy "no-referrer-when-downgrade" always
 
 <br>
 
-## 10. htaccess
+## 11. htaccess
 
 ### 影響範囲
 

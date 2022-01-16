@@ -137,17 +137,17 @@ $ ./hello.sh
 
 #### ・ターゲット
 
-ターゲットとして、単一/複数の名前を定義できる。
+ターゲットとして、単一/複数の名前を定義できる。コマンドはタブで改行する必要がある。
 
 ```makefile
 foo:
-  echo "foo"
+    echo "foo"
   
 bar:
-  echo "bar"
+    echo "bar"
   
 baz qux: # 複数のターゲット名
-  echo "baz"
+    echo "baz"
 ```
 
 #### ・ターゲット間依存関係
@@ -156,13 +156,13 @@ baz qux: # 複数のターゲット名
 
 ```makefile
 foo:
-  echo "foo"
+    echo "foo"
   
 bar: foo # fooを事前に実行する。
-  echo "bar"
+    echo "bar"
   
 baz: foo baz # foo、bazを事前に実行する。
-  echo "baz"
+    echo "baz"
 ```
 
 #### ・```.PHONY```
@@ -176,13 +176,13 @@ baz: foo baz # foo、bazを事前に実行する。
 .PHONY: foo bar baz qux
 
 foo: # fooという名前のファイルがあると、実行できない。
-  echo "foo"
+    echo "foo"
   
 bar:
-  echo "bar"
+    echo "bar"
   
 baz qux:
-  echo "baz"
+    echo "baz"
 ```
 
 <br>
@@ -207,7 +207,7 @@ $ make foo FOO=foo
 FOO=default
 
 foo:
-  echo ${FOO}
+    echo ${FOO}
 ```
 
 <br>

@@ -8,62 +8,63 @@
 
 <br>
 
-## 01. 使い方の種類
+## 01. セットアップ
 
-### Webサーバーのミドルウェアとして
+### インストール
 
-#### ・PHP-FPMとの組み合わせ
+#### ・apt経由
 
-![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
+nginxを```apt-get```コマンドでインストールすると、古いバージョンが指定されるため、```apt```コマンドを使用する。
 
-静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。
+参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
- ```bash
-# 設定ファイルのバリデーション
-$ php-fpm -t
- ```
+```bash
+$ apt install nginx
+```
 
-**＊実装例＊**
+#### ・yum経由
+
+```bash
+$ yum install nginx
+```
+
+<br>
+
+### 設定ファイル
+
+#### ・```/etc/nginx/conf.d/*.conf```ファイル
+
+デフォルトの設定が定義されているいくつかのファイル。基本的には読み込むようにする。ただし、nginx.confファイルの設定が上書きされてしまわないかを注意する。
 
 ```nginx
-#-------------------------------------
-# HTTPリクエスト
-#-------------------------------------
-server {
-    listen      80;
-    server_name example.com;
-    root        /var/www/example/public;
-    index       index.php index.html;
+include /etc/nginx/conf.d/*.conf;
+```
 
-    include /etc/nginx/default/foo.conf;
+#### ・```/etc/nginx/mime.types```ファイル
 
-    #『/』で始まる全てのインバウンド通信の場合
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-    
-    #--------------------------------------------------
-    # インバウンド通信をFastCGIプロトコルでルーティングする。
-    # OSによって、fastcgi_paramsファイルの必要な設定が異なる
-    #--------------------------------------------------
-    location ~ \.php$ {
-        # リダイレクト先のTCPソケット
-        fastcgi_pass   127.0.0.1:9000;
-        # もしくは、Unixソケット
-        # fastcgi_pass unix:/run/php-fpm/www.sock;
-        
-        # リダイレクト先のURL（rootディレクティブ値+パスパラメータ）
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
 
-        # 設定ファイルからデフォルト値を読み込む
-        include        fastcgi_params;
-    }
-}
+```nginx
+include /etc/nginx/mime.types;
+```
+
+#### ・```/usr/share/nginx/modules/*.conf```ファイル
+
+モジュールの読み込み処理が定義されているファイル。
+
+```nginx
+include  /usr/share/nginx/modules/*.conf;
+```
+
+例えば、```mod-http-image-filter.conf```ファイルの内容は以下の通り。
+
+```nginx
+load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
 ```
 
 #### ・```/etc/nginx/fastcgi_params```ファイル
 
-アプリケーションで使用できる変数を定義する。```nginx.conf```ファイルによって読み込まれる。OSやそのバージョンによっては、変数のデフォルト値が書き換えられていることがある。実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。以下は、Debian 10のデフォルト値である。
+FastCGIプロトコルでルーティングする場合に用いる。アプリケーションで使用できる変数を定義する。```nginx.conf```ファイルによって読み込まれる。OSやそのバージョンによっては、変数のデフォルト値が書き換えられていることがある。実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。以下は、Debian 10のデフォルト値である。
 
 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
@@ -101,7 +102,100 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 <br>
 
-### ロードバランサ－のミドルウェアとして
+## 02. リバースProxyのミドルウェアとして
+
+### HTTP/HTTPSプロトコルでルーティング
+
+![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
+
+前提として、ロードバランサ－からルーティングされたインバウンド通信を受信する例を考える。静的コンテンツのインバウンド通信は、リバースProxy（Nginx）でレスポンスを返信する。Webサーバーは、必ずリバースProxyを経由して、動的なインバウンド通信を受信する。
+
+**＊実装例＊**
+
+```nginx
+#-------------------------------------
+# HTTPリクエスト
+#-------------------------------------
+server {
+    server_name example.com;
+    listen 80;
+    return 301 https://$host$request_uri;
+    
+    #-------------------------------------
+    # 静的ファイルであればNginxでレスポンス
+    #-------------------------------------
+    location ~ ^/(images|javascript|js|css|flash|media|static)/ {
+        root /var/www/foo/static;
+        expires 30d;
+    }
+
+    #-------------------------------------
+    # 動的ファイルであればWebサーバーにルーティング
+    #-------------------------------------
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+```
+
+<br>
+
+### FastCGIプロトコルでルーティング
+
+#### ・PHP-FPMへのルーティング
+
+![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
+
+PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。
+
+```bash
+# 設定ファイルのバリデーション
+$ php-fpm -t
+```
+
+**＊実装例＊**
+
+```nginx
+#-------------------------------------
+# HTTPリクエスト
+#-------------------------------------
+server {
+    listen      80;
+    server_name example.com;
+    root        /var/www/foo/public;
+    index       index.php index.html;
+
+    include /etc/nginx/default/nginx.conf;
+
+    #『/』で始まる全てのインバウンド通信の場合
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    
+    #--------------------------------------------------
+    # インバウンド通信をFastCGIプロトコルでルーティングする。
+    # OSによって、fastcgi_paramsファイルの必要な設定が異なる
+    #--------------------------------------------------
+    location ~ \.php$ {
+        # リダイレクト先のTCPソケット
+        fastcgi_pass   localhost:9000;
+        # もしくは、Unixソケット
+        # fastcgi_pass unix:/run/php-fpm/www.sock;
+        
+        # リダイレクト先のURL（rootディレクティブ値+パスパラメータ）
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+        # 設定ファイルからデフォルト値を読み込む
+        include        fastcgi_params;
+    }
+}
+```
+
+<br>
+
+## 02-02. ロードバランサ－のミドルウェアとして
+
+### HTTP/HTTPSプロトコルでルーティング
 
 HTTPプロトコルで受信したインバウンド通信を、HTTPSプロトコルに変換してルーティングする。
 
@@ -145,47 +239,11 @@ server {
 
 <br>
 
-### リバースProxyのミドルウェアとして
-
-![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
-
-前提として、ロードバランサ－からルーティングされたインバウンド通信を受信する例を考える。静的コンテンツのインバウンド通信は、リバースProxy（Nginx）でレスポンスを返信する。Webサーバーは、必ずリバースProxyを経由して、動的なインバウンド通信を受信する。
-
-**＊実装例＊**
-
-```nginx
-#-------------------------------------
-# HTTPリクエスト
-#-------------------------------------
-server {
-    server_name example.com;
-    listen 80;
-    return 301 https://$host$request_uri;
-    
-    #-------------------------------------
-    # 静的ファイルであればNginxでレスポンス
-    #-------------------------------------
-    location ~ ^/(images|javascript|js|css|flash|media|static)/ {
-        root /var/www/example/static;
-        expires 30d;
-    }
-
-    #-------------------------------------
-    # 動的ファイルであればWebサーバーにルーティング
-    #-------------------------------------
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-    }
-}
-```
-
-<br>
-
-## 02. Core機能
+## 03. Core機能
 
 ### ブロック
 
-#### ・```events```
+#### ・events
 
 参考：https://nginx.org/en/docs/ngx_core_module.html#events
 
@@ -201,7 +259,7 @@ events {
 
 ### ディレクティブ
 
-#### ・```user```
+#### ・user
 
 本設定ファイルの実行ユーザとグループを設定する。グループ名を入力しなかった場合、ユーザ名と同じものが自動的に設定される。
 
@@ -209,13 +267,13 @@ events {
 user  www www;
 ```
 
-#### ・```error_log```
+#### ・error_log
 
 ```nginx
 error_log  logs/error.log;
 ```
 
-#### ・```include```
+#### ・include
 
 共通化された設定ファイルを読み込む。アスタリスクによるワイルドカードに対応している。
 
@@ -223,13 +281,13 @@ error_log  logs/error.log;
 include /etc/nginx/conf.d/*.conf;
 ```
 
-#### ・```pid``` 
+#### ・pid
 
 ```nginx
 pid  logs/nginx.pid;
 ```
 
-#### ・```worker_connections```
+#### ・worker_connections
 
 workerプロセスが同時に処理可能なコネクションの最大数を設定する。
 
@@ -239,13 +297,13 @@ workerプロセスが同時に処理可能なコネクションの最大数を�
 worker_connections  1024;
 ```
 
-#### ・```worker_processes```
+#### ・worker_processes
 
 ```nginx
 worker_processes  5;
 ```
 
-#### ・```worker_rlimit_nofile```
+#### ・worker_rlimit_nofile
 
 ```nginx
 worker_rlimit_nofile  8192;
@@ -253,45 +311,11 @@ worker_rlimit_nofile  8192;
 
 <br>
 
-### 設定ファイルの種類
-
-#### ・```/etc/nginx/conf.d/*.conf```ファイル
-
-デフォルトの設定が定義されているいくつかのファイル。基本的には読み込むようにする。ただし、nginx.confファイルの設定が上書きされてしまわないかを注意する。
-
-```nginx
-include /etc/nginx/conf.d/*.conf;
-```
-
-#### ・```/etc/nginx/mime.types```ファイル
-
-リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
-
-```nginx
-include /etc/nginx/mime.types;
-```
-
-#### ・```/usr/share/nginx/modules/*.conf```ファイル
-
-モジュールの読み込み処理が定義されているファイル。
-
-```nginx
-include  /usr/share/nginx/modules/*.conf;
-```
-
-例えば、```mod-http-image-filter.conf```ファイルの内容は以下の通り。
-
-```nginx
-load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
-```
-
-<br>
-
-## 03. http_core_module
+## 04. http_core_module
 
 ### ブロック
 
-#### ・```http```
+#### ・http
 
 全てのインバウンド通信に共通する処理を設定する。
 
@@ -325,7 +349,7 @@ http {
 }
 ```
 
-#### ・```location```
+#### ・location
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
@@ -373,7 +397,7 @@ location / {
 |    4     | ```~*``` | 正規表現（大文字・小文字を区別しない）。 | ```https://example.com/images/foo.jpg```                     |
 |    5     |   なし   | 指定したルートで始まる場合。             | ・```https://example.com/foo.html```<br>・```https://example.com/docs/foo.html``` |
 
-#### ・```server```
+#### ・server
 
 特定のルーティング先に関する処理を設定する。
 
@@ -387,7 +411,7 @@ server {
     listen      80;
     # Hostヘッダーの値
     server_name example.com;
-    root        /var/www/example;
+    root        /var/www/foo;
     index       index.php index.html;
     
     location / {
@@ -412,7 +436,7 @@ server {
 
 ### ディレクティブ
 
-#### ・```default_type```
+#### ・default_type
 
 Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
@@ -426,7 +450,7 @@ Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであ�
 default_type application/octet-stream
 ```
 
-#### ・```listen```
+#### ・listen
 
 インバウンド通信を受信するポート番号を設定する。
 
@@ -446,7 +470,7 @@ listen 80;
 listen 443 ssl;
 ```
 
-#### ・```sendfile```
+#### ・sendfile
 
 クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを用いるかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
@@ -458,7 +482,7 @@ listen 443 ssl;
 sendfile on;
 ```
 
-#### ・```server_name```
+#### ・server_name
 
 受信するインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
@@ -474,13 +498,13 @@ server_name example.com;
 server_name 192.168.0.0;
 ```
 
-なお、インバウンド通信のHostヘッダーでlocalhostが指定されている場合は、```localhost```を設定できる。```127.0.0.1```でもよいが、localhostのIPアドレスが```127.0.0.1```でない場合も考慮して、```localhost```とした方が良い。
+なお、同一のIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信のHostヘッダーの値は常に```localhost```（```127.0.0.1```）であるため、```localhost```を設定できる。```127.0.0.1```としてもよいが、```localhost```のIPアドレスが```127.0.0.1```でない場合も考慮して、```localhost```とした方が良い。
 
 ```nginx
 server_name localhost;
 ```
 
-#### ・```ssl```
+#### ・ssl
 
 HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効にする必要がある。
 
@@ -492,7 +516,7 @@ HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効�
 ssl on;
 ```
 
-#### ・```ssl_certificate```
+#### ・ssl_certificate
 
 HTTPSプロトコルを受信する場合に、PEM証明書のファイルパスを設定する。
 
@@ -502,7 +526,7 @@ HTTPSプロトコルを受信する場合に、PEM証明書のファイルパス
 ssl_certificate /etc/nginx/ssl/server.crt;
 ```
 
-#### ・```ssl_certificate_key```
+#### ・ssl_certificate_key
 
 HTTPSプロトコルを受信する場合に、PEM秘密鍵のファイルパスを設定する。
 
@@ -512,7 +536,7 @@ HTTPSプロトコルを受信する場合に、PEM秘密鍵のファイルパス
 ssl_certificate_key /etc/nginx/ssl/server.key;
 ```
 
-#### ・```tcp_nopush```
+#### ・tcp_nopush
 
 上述のLinuxの```sendfile```システムコールを用いる場合、適用できる。クライアントへのレスポンス時、ヘッダーとファイルを、1つのパケットにまとめて返信するかどうかを設定する。
 
@@ -522,7 +546,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 tcp_nopush on;
 ```
 
-#### ・```try_files```
+#### ・try_files
 
 指定されたパスのファイルを順に探してアクセスする。また、最後のパラメータで内部リダイレクトする。最後のパラメータでは、異なるパスまたはステータスコードを指定できる。もし、nginxとアプリケーションを別々の仮想環境で稼働させている場合、```try_files```ディレクティブがファイル探索の対象とする場所は、あくまでnginxの稼働する仮想環境内になることに注意する。内部リダイレクトによって、nginx内でリクエストが再処理される。異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックで改めて処理される。内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。
 
@@ -553,7 +577,7 @@ location / {
 # 内部リダイレクト後は、『/index.php?foo=bar』のため、以下で処理される。
 location ~ \.php$ {
     # php-fpmにルーティングされる。
-    fastcgi_pass  127.0.0.1:9000;
+    fastcgi_pass  localhost:9000;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include       fastcgi_params;
 }
@@ -573,7 +597,7 @@ Webサーバーのみヘルスチェックを受信する。ヘルスチェッ�
 server {
     listen 80      default_server;
     listen [::]:80 default_server;
-    root           /var/www/example;
+    root           /var/www/foo;
     index          index.php index.html;
 
     location /healthcheck {
@@ -594,7 +618,7 @@ Webサーバーとアプリケーションの両方でヘルスチェックを�
 server {
     listen 80      default_server;
     listen [::]:80 default_server;
-    root           /var/www/example;
+    root           /var/www/foo;
     index          index.php index.html;
 
     location /healthcheck {
@@ -606,11 +630,11 @@ server {
 
 <br>
 
-## 04. http_index_module
+## 05. http_index_module
 
 ### ディレクティブ
 
-#### ・```index```
+#### ・index
 
 リクエストのURLがトレイリングスラッシュで終わる全ての場合、指定されたファイルをURLの末尾に追加する。
 
@@ -624,11 +648,11 @@ index index.php;
 
 <br>
 
-## 05. http_headers_module
+## 06. http_headers_module
 
 ### ディレクティブ
 
-#### ・```add_header```
+#### ・add_header
 
 レスポンス時に付与するレスポンスヘッダーを設定する。
 
@@ -643,11 +667,11 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 <br>
 
-## 06. http_upstream_module
+## 09. http_upstream_module
 
 ### ブロック
 
-#### ・```upstream```
+#### ・upstream
 
 インバウンド通信のルーティング先をグループ化する。デフォルトでは、加重ラウンドロビン方式に基づいて通信をルーティングする。
 
@@ -668,7 +692,7 @@ upstream foo_servers {
 
 ### ディレクティブ
 
-#### ・```fastcgi_params```
+#### ・fastcgi_params
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で用いる変数とその値を設定する。
 
@@ -680,7 +704,7 @@ FastCGIプロトコルでインバウンド通信をルーティングする場�
 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 ```
 
-#### ・```fastcgi_pass```
+#### ・fastcgi_pass
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
@@ -689,7 +713,7 @@ FastCGIプロトコルでインバウンド通信をルーティングする場�
 **＊実装例＊**
 
 ```nginx
-fastcgi_pass 127.0.0.1:9000;
+fastcgi_pass localhost:9000;
 ```
 
 <br>
@@ -698,7 +722,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 ### ディレクティブ
 
-#### ・```proxy_pass```
+#### ・proxy_pass
 
 HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
@@ -707,6 +731,6 @@ HTTPプロトコルでインバウンド通信をルーティングする場合�
 **＊実装例＊**
 
 ```nginx
-proxy_pass http://127.0.0.1:80;
+proxy_pass http://localhost:80;
 ```
 

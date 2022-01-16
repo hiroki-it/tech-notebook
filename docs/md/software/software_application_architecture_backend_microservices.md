@@ -219,11 +219,11 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ・HTTP
 
-従来のHTTPプロトコルを使用する。
+従来のHTTPプロトコルを用いる。
 
 #### ・gRPC
 
-HTTPに代わるgRPCプロトコルを使用する。HTTPであると、通信相手のサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のサービスのメソッドを直接実行できる。そのため、HTTPよりも分散システムの連携に適している。
+HTTPに代わるgRPCプロトコルを用いる。HTTPであると、通信相手のサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のサービスのメソッドを直接実行できる。そのため、HTTPよりも分散システムの連携に適している。
 
 参考：https://techdozo.dev/grpc-for-microservices-communication/
 
@@ -235,9 +235,14 @@ HTTPに代わるgRPCプロトコルを使用する。HTTPであると、通信�
 
 #### ・API Gatewayパターン
 
+![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_api-gateway-pattern.png)
+
 受信したインバウンド通信を適切なマイクロサービスにルーティングする他、認証認可など、クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
 
-参考：https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
+参考：
+
+- https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
+- https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
 
 #### ・ツール
 
