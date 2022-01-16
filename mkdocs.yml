@@ -73,7 +73,8 @@ nav:
 
   - 自己紹介: md/self_introduction.md
 
-  - 🌳 システム: md/system/system.md
+  - 🌳 システム:
+    - システム: md/system/system.md
 
   - 🧬 ソフトウェア:
     - ソフトウェア: md/software/software.md
