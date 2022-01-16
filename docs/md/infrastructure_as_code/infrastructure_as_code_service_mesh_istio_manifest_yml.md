@@ -237,7 +237,7 @@ VirtualServiceのサブセット名に関して、ルーティング対象とす
 
 **＊実装例＊**
 
-VirtualServiceのサブセット名が```v1```のインバウンド通信では、```version```タグが```v1```であるPodに転送する。```v2```も同様である。
+VirtualServiceのサブセット名が```v1```のインバウンド通信では、```version```タグが```v1```であるPodにルーティングする。```v2```も同様である。
 
 ```yaml
 kind: DestinationRule
@@ -487,7 +487,7 @@ spec:
 
 #### ・tls.serverCertificate
 
-受信するインバウンド通信がHTTPS、またはVirtualServiceへの転送でHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
+受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 

@@ -36,7 +36,7 @@ $ vagrant box list
 
 ### global-status
 
-起動中の仮想サーバーの一覧を表示する。
+起動中の仮想環境の一覧を表示する。
 
 参考：https://www.vagrantup.com/docs/cli/global-status
 
@@ -48,7 +48,7 @@ $ vagrant global-status
 
 ### halt
 
-仮想サーバーを停止する。
+仮想環境を停止する。
 
 参考：https://www.vagrantup.com/docs/cli/halt
 
@@ -60,7 +60,7 @@ $ vagrant halt
 
 ### reload
 
-仮想サーバーを再起動する。
+仮想環境を再起動する。
 
 ```bash
 $ vagrant reload
@@ -70,7 +70,7 @@ $ vagrant reload
 
 ### ssh
 
-仮想サーバーにSSH接続を行う。
+仮想環境にSSH接続を行う。
 
 参考：https://www.vagrantup.com/docs/cli/ssh
 
@@ -82,7 +82,7 @@ $ vagrant ssh
 
 ### up
 
-仮想サーバーを起動する。
+仮想環境を起動する。
 
 参考：https://www.vagrantup.com/docs/cli/up
 

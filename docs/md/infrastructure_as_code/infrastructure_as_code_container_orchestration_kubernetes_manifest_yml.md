@@ -695,7 +695,7 @@ spec:
 kind: Service
 spec:
   ports:
-  - protocol: TCP
+  - protocol: UDP
 ```
 
 ```yaml

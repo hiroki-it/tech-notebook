@@ -74,10 +74,11 @@ $ docker-compose up --build -d <サービス名>
 
 #### ・-f
 
-```
-```
+ファイルを指定して、docker-composeを実行する。
 
-
+```bash
+$ docker-compose up -f foo-docker-compose.yml
+```
 
 <br>
 

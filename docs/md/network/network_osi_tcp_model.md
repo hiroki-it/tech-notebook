@@ -212,7 +212,9 @@ GET http://127.0.0.1:8080
 
 #### ・Well known ポート番号（```0``` ～ ```1023```）
 
-IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。
+IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。主要ポートが使われている場合は、代替ポートを使用することになる。各プロトコルで慣例として使われているが代替ポートは、以下の検索サイトを参考にせよ。
+
+参考：https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 
 ![ポート番号とプロトコルの対応関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ポート番号とプロトコルの対応関係.png)
 
@@ -407,3 +409,34 @@ GET https://example.com:53
 
 ![napt変換_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt変換_2.png)
 
+<br>
+
+## 05-03. フォワード/リバースプロキシサーバー
+
+### 機能
+
+#### ・ルーティング機能
+
+通信をルーティングする。代理でアウトバウンド通信をルーティングするプロキシサーバーと、インバウンド通信をルーティングするリバースプロキシサーバーに分類できる。
+
+![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
+
+#### ・キャッシュ機能
+
+リバースプロキシサーバーに、Webページのコンテンツのキャッシュを作成することによって、Webサーバーのアクセス負荷を抑える。ちなみに、ブラウザもキャッシュ機能を持っている。
+
+![プロキシサーバーのキャッシュ機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーのキャッシュ機能.png)
+
+<br>
+
+### 設置場所
+
+#### ・物理サーバーの場合
+
+フォワードプロキシサーバーはプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに設置されている。
+
+![プロキシサーバの設置場所](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーの設置場所.png)
+
+#### ・クラウド上の場合
+
+クラウドの場合も、仮想サーバーやコンテナが構築されるだけで、設置場所は同じである。

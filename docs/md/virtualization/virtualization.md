@@ -12,7 +12,7 @@
 
 ###  仮想化とは
 
-自身の開発環境でサイトを動かしたい場合、まず、パソコン内にLinux環境のWebサーバー、Appサーバー、DBサーバーなどの物理サーバーを仮想的に構築する。そして、自身のパソコンをクライアント、各仮想サーバーをリクエスト先に見立てて、SSHプロトコルを用いてこれらのサーバーにリモートログインする。仮想環境の構築方法にはいくつか種類がある。
+一つの物理サーバー上で仮想的なハードウェアを稼働させる技術のこと。仮想的あハードウェアの構築方法にはいくつか種類がある。
 
 <br>
 
@@ -20,7 +20,7 @@
 
 #### ・ホスト型仮想化とは
 
-ホスト上で、各サーバーを仮想的に構築する。
+物理サーバーのホスト上で、仮想サーバー（仮想マシン）を構築する。
 
 #### ・Provider例
 
@@ -34,7 +34,7 @@ VMware Workstation、Oracle VM VirtualBox、など
 
 #### ・ハイパーバイザー型仮想化とは
 
-BIOSから起動したハイパーバイザー上で、各サーバーを仮想的に構築する（※ホストは用いない）。
+物理サーバーのBIOSから起動したハイパーバイザー上で、仮想サーバー（仮想マシン）を構築する。この時、ホストは用いない。
 
 #### ・Provider例
 
@@ -48,7 +48,7 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 #### ・コンテナ型仮想化とは
 
-ホスト上で、サーバーではなく、サーバーとしての機能を持つコンテナを仮想的に構築する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを用いて、単一のOS上に独立したコンテナを構築する。
+物理サーバーのホスト上で、仮想サーバーと同様の機能を持つコンテナを構築する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを用いて、単一のOS上に独立したコンテナを構築する。
 
 → DockerToolboxがちょい違う
 
@@ -80,7 +80,80 @@ Docker、LXC、OpenVZ、など
 
 #### ・Overheadの比較
 
-sysbenchというベンチマークツールを用いて、CPU・メモリ・ファイルI/Oに着目し、物理マシン・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もOverheadが小さい。
+sysbenchというベンチマークツールを用いて、CPU・メモリ・ファイルI/Oに着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もOverheadが小さい。
 
 ![各仮想化の比較](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 
+<br>
+
+## 02. スケーリング
+
+### スケーリングとは
+
+ハードウェアのスペックや台数を変更することで、処理能力を向上させること。ただし、実際のハードウェアを調達することは大変なため、仮想環境の文脈で説明されることが多い。
+
+<br>
+
+### 垂直スケーリング（スケールアップ ⇔ スケールダウン）
+
+#### ・垂直スケーリングとは
+
+仮想環境自体のスペックをより高くすることで、仮想環境当たりの処理能力を向上させる。その逆は、スケールダウン。設定でスペックを上げることも、これに該当する。
+
+![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
+
+<br>
+
+### 水平スケーリング（スケールアウト ⇔ スケールイン）
+
+#### ・水平スケーリングとは
+
+仮想環境の台数を増やすことで、仮想環境全体の処理能力を向上させる。その逆は、スケールイン。
+
+![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
+
+<br>
+
+## 03. 冗長化
+
+### 冗長化とは
+
+ソフトウェアの稼働する
+
+<br>
+
+### Dualシステム
+
+同じ処理を行う2つのシステムからなるシステム構成のこと。随時、処理結果を照合する。いずれかが故障した場合、異常が発生したシステムを切り離し、残る片方で処理を続けることによって、故障を乗り切る。
+
+![デュアルシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュアルシステム.png)
+
+<br>
+
+### Duplexシステム
+
+オンライン処理を行う主系システムと、バッチ処理を行う従系システムからなるシステム構成のこと。主系システムが故障した場合、主系システムのオンライン処理を従系システムに引き継ぎ、処理を続けることによって、故障を乗り切る。
+
+![デュプレックスシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュプレックスシステム.png)
+
+従系システムの待機方法には2つの種類がある。
+
+#### ・ホットスタンバイ
+
+![p613-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-1.png)
+
+#### ・コールドスタンバイ
+
+![p613-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-2.png)
+
+<br>
+
+### 稼働率
+
+並列システムの場合、両方の非稼働率をかけて、全体から引く。
+
+**＊例＊**
+
+１－(1－0.81) × (1－0.64) = 0.9316
+
+![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/稼働率の計算.jpg)

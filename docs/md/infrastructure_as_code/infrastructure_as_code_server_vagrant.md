@@ -22,7 +22,7 @@ Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し
 
 ### プロバイダーとは
 
-基本ソフトウェアの制御プログラムや一連のハードウェアを仮想的に構築できる。これを、仮想サーバー（仮想マシンとも）という。構築方法の違いによって、『ホスト型』、『ハイパーバイザ型』に分類できる。
+仮想環境（仮想サーバー/コンテナ）を提供する。
 
 参考：https://www.vagrantup.com/docs/providers
 
@@ -52,7 +52,7 @@ Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し
 
 ### プロビジョナー
 
-プロバイダーによって構築された仮想サーバーに、ソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
+プロバイダーによって構築された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
 
 参考：https://www.vagrantup.com/docs/provisioning
 
@@ -62,24 +62,36 @@ Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し
 
 #### ・シェル
 
+Vagrantfile自体をプロビジョニングツールとして用いる。
+
 参考：https://www.vagrantup.com/docs/provisioning/shell
 
 #### ・Ansible
+
+Vagrantfileでプロビジョニングを実行する代わりに、Ansibleを用いる。
 
 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
 #### ・CFEngine
 
+Vagrantfileでプロビジョニングを実行する代わりに、CFEngineを用いる。
+
 参考：https://www.vagrantup.com/docs/provisioning/cfengine
 
 #### ・Chef
+
+Vagrantfileでプロビジョニングを実行する代わりに、Chefを用いる。
 
 参考：https://www.vagrantup.com/docs/provisioning/chef_common
 
 #### ・Docker
 
+Vagrantfileでプロビジョニングを実行する代わりに、Dockerを用いる。
+
 参考：https://www.vagrantup.com/docs/provisioning/docker
 
 #### ・Puppet
+
+Vagrantfileでプロビジョニングを実行する代わりに、Puppetを用いる。
 
 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply

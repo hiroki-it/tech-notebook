@@ -164,7 +164,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・同じPod内/異なるPod間の通信方法
 
-同じPod内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
+Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
 
 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 

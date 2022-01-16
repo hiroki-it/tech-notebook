@@ -12,9 +12,13 @@
 
 ### IaCとは
 
-構成ファイルの実装に基づくプロビジョニングによって、物理インフラや仮想インフラの構成を管理する手法のこと。
+構成ファイルの実装に基づくプロビジョニングによって、インフラの構成を管理する手法のこと。
 
-https://en.wikipedia.org/wiki/Infrastructure_as_code
+参考：https://en.wikipedia.org/wiki/Infrastructure_as_code
+
+なお、ここでいう『インフラ』は、ハードウェアと一部のソフトウェア（OS、ミドルウェア）を合わせたものである。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software.html
 
 <br>
 
@@ -60,7 +64,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 #### ・サーバープロビジョニングとは
 
-物理/仮想サーバーを最終的な状態に至らせるまでの一連の処理のこと。
+サーバーを最終的な状態に至らせるまでの一連の処理のこと。
 
 参考：
 
@@ -92,7 +96,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### ツールの種類
 
-#### ・物理/仮想サーバー（仮想マシン）
+#### ・サーバー（物理/仮想）
 
 - Ansible
 - Chef
@@ -123,7 +127,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### ツールの種類
 
-#### ・物理/仮想サーバー（仮想マシン）
+#### ・サーバー(物理/仮想)
 
 - CFEngine
 - Puppet
