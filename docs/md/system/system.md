@@ -20,6 +20,14 @@
 
 <br>
 
+### 構成要素の関係性
+
+ユーザーの操作による命令が、ソフトウェアを介して、ハードウェアに伝わるまで、を以下に示す。
+
+![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソフトウェアとハードウェア.png)
+
+<br>
+
 ## 02. Webシステム
 
 ### Webシステムとは
