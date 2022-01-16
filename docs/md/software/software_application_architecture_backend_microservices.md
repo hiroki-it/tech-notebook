@@ -233,14 +233,17 @@ HTTPに代わるgRPCプロトコルを使用する。HTTPであると、通信�
 
 ### 分散システム全体のプロキシ
 
-#### ・役割
+#### ・API Gatewayパターン
 
-受信したインバウンド通信を適切なマイクロサービスにルーティングする。
+受信したインバウンド通信を適切なマイクロサービスにルーティングする他、認証認可など、クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
+
+参考：https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 
 #### ・ツール
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
+- gatewayサービスを自前で実装する。
 - AWS API Gateway
 - Kong
 - Tyk
@@ -250,7 +253,7 @@ HTTPに代わるgRPCプロトコルを使用する。HTTPであると、通信�
 
 ### 各分散システムのプロキシ
 
-#### ・役割
+#### ・プロキシコンテナ
 
 マイクロサービスへのインバウンド通信をマイクロサービスにルーティングする。単なるプロキシではなく、サービスメッシュの仕組みを取り入れる必要がある。
 
