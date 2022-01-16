@@ -2,8 +2,6 @@
 
 ## 🌳 システム
 
-### システム
-
 - [📖 ︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/md/system/system.html)
 
 <br>

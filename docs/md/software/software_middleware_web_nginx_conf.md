@@ -474,6 +474,12 @@ server_name example.com;
 server_name 192.168.0.0;
 ```
 
+なお、インバウンド通信のHostヘッダーでlocalhostが指定されている場合は、```localhost```を設定できる。```127.0.0.1```でもよいが、localhostのIPアドレスが```127.0.0.1```でない場合も考慮して、```localhost```とした方が良い。
+
+```nginx
+server_name localhost;
+```
+
 #### ・```ssl```
 
 HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効にする必要がある。

@@ -215,7 +215,44 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-### 通信方法
+### 連携のためのプロトコル
+
+#### ・HTTP
+
+従来のHTTPプロトコルを使用する。
+
+#### ・gRPC
+
+HTTPに代わるgRPCプロトコルを使用する。HTTPであると、通信相手のサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のサービスのメソッドを直接実行できる。そのため、HTTPよりも分散システムの連携に適している。
+
+参考：https://techdozo.dev/grpc-for-microservices-communication/
+
+<br>
+
+## 04. 分散システムのプロキシ
+
+### 分散システム全体のプロキシ
+
+#### ・役割
+
+受信したインバウンド通信を適切なマイクロサービスにルーティングする。
+
+#### ・ツール
+
+参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
+
+- AWS API Gateway
+- Kong
+- Tyk
+- Apigee
+
+<br>
+
+### 各分散システムのプロキシ
+
+#### ・役割
+
+マイクロサービスへのインバウンド通信をマイクロサービスにルーティングする。単なるプロキシではなく、サービスメッシュの仕組みを取り入れる必要がある。
 
 #### ・サービスメッシュ
 
@@ -235,15 +272,9 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 - https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 
-#### ・gRPC
-
-HTTPに代わる通信プロトコル。HTTPであると、通信相手のサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のサービスのメソッドを直接実行できる。そのため、HTTPよりも分散システムの連携に適している。
-
-参考：https://techdozo.dev/grpc-for-microservices-communication/
-
 <br>
 
-## 04. データ永続化方式
+## 05. データ永続化方式
 
 ### ローカルトランザクション
 
@@ -284,7 +315,7 @@ HTTPに代わる通信プロトコル。HTTPであると、通信相手のサー
 
 <br>
 
-## 05. オブジェクトモデリング方式
+## 06. オブジェクトモデリング方式
 
 ### イベントソーシング
 
@@ -309,7 +340,7 @@ HTTPに代わる通信プロトコル。HTTPであると、通信相手のサー
 
 <br>
 
-## 06. 分散システムにおけるテスト
+## 07. 分散システムにおけるテスト
 
 ### CDCテスト：Consumer Drive Contract
 
@@ -343,7 +374,7 @@ HTTPに代わる通信プロトコル。HTTPであると、通信相手のサー
 
 <br>
 
-## 07. 運用
+## 08. 運用
 
 ### 障害対策
 

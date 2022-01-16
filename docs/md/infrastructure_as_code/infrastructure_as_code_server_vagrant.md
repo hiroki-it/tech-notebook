@@ -10,7 +10,7 @@
 
 ## 01. Vagrantとは
 
-Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し、仮想サーバーを構築する。
+Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し、仮想サーバーを構築する。Vagrantfile自体をプロビジョナーとして用いることもできる。
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -86,7 +86,7 @@ Vagrantfileでプロビジョニングを実行する代わりに、Chefを用�
 
 #### ・Docker
 
-Vagrantfileでプロビジョニングを実行する代わりに、Dockerを用いる。
+Vagrantfileでプロビジョニングを実行する代わりに、Dockerfile（に似た記述）を用いる。
 
 参考：https://www.vagrantup.com/docs/provisioning/docker
 
@@ -95,3 +95,4 @@ Vagrantfileでプロビジョニングを実行する代わりに、Dockerを用
 Vagrantfileでプロビジョニングを実行する代わりに、Puppetを用いる。
 
 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply
+

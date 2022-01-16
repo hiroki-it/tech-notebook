@@ -212,7 +212,7 @@ GET http://127.0.0.1:8080
 
 #### ・Well known ポート番号（```0``` ～ ```1023```）
 
-IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。主要ポートが使われている場合は、代替ポートを使用することになる。各プロトコルで慣例として使われているが代替ポートは、以下の検索サイトを参考にせよ。
+IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。主要ポートが使われている場合は、代替ポートを用いることになる。各プロトコルで慣例として使われているが代替ポートは、以下の検索サイトを参考にせよ。
 
 参考：https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 

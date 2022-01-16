@@ -295,7 +295,7 @@ spec:
 
 #### ・tls.mode
 
-Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
+Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
 
 ```yaml
 kind: DestinationRule
