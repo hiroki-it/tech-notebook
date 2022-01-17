@@ -214,7 +214,7 @@ nav:
   - ⚙️ Infrastructure as Code:
     - Infrastructure as Code: md/infrastructure_as_code/infrastructure_as_code.md
     - ■ サーバープロビジョニング:
-        - Vagrant:
+        - ■ Vagrant:
             - Vagrant: md/infrastructure_as_code/infrastructure_as_code_server_vagrant.md
             - vagrantコマンド: md/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
             - Vagrantfile: md/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
@@ -269,6 +269,7 @@ nav:
         - 分散トレース収集: md/observability_monitering/observability_datadog_distributed_trace.md
         - テレメトリー間の紐づけ: md/observability_monitering/observability_datadog_telemetry_association.md
         - 監視: md/observability_monitering/observability_datadog_monitering.md
+        - インテグレーション: md/observability_monitering/observability_datadog_integration.md
 
   - 👥 ソフトウェア開発手法論/SRE:
     - ソフトウェア開発手法論: md/software_development_methodology/software_development_methodology.md
