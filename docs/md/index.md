@@ -236,6 +236,7 @@
     * [📖 分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_datadog_distributed_trace.html)
     * [📖 テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_datadog_telemetry_association.html)
     * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_datadog_monitering.html)
+    * [📖 ︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/md/observability_monitering/observability_datadog_integration.html)
 
 <br>
 

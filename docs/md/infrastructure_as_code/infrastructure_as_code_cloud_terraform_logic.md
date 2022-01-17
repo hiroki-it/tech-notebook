@@ -1237,7 +1237,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 **＊実装例＊**
 
-例として、ACM証明書を示す。ACM証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
+例として、ACMのSSL証明書を示す。ACMのSSL証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。
 
 ```elixir
 ###############################################
@@ -1247,7 +1247,7 @@ resource "aws_acm_certificate" "foo" {
 
   # ～ 中略 ～
 
-  # 新しい証明書を構築した後に削除する。
+  # 新しいSSL証明書を構築した後に削除する。
   lifecycle {
     create_before_destroy = true
   }

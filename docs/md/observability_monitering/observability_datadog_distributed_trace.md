@@ -339,13 +339,3 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 - https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
 - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
-
-<br>
-
-## 04. 分散トレースインテグレーション
-
-### 分散トレースインテグレーションとは
-
-言語/フレームワーク/ツール、などに関して、専用の分散トレースを収集できるようになる。アプリケーションとして用いられる言語/フレームワークの場合、トレースエージェントがインテグレーション処理を持つため、仮想環境へのインストールは不要である。については、以下のリンク先を参考にせよ。
-
-参考：https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations

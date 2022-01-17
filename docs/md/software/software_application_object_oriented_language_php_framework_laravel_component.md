@@ -2165,7 +2165,7 @@ class FooAfterMiddleware
 
 #### ・StartSession
 
-セッションの開始の起点になる。
+セッションの開始の開始点になる。
 
 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 

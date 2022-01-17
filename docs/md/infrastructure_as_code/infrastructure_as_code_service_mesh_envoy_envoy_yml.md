@@ -10,7 +10,53 @@
 
 ## 01. セットアップ
 
-### Dockerイメージに組み込む場合
+### Istioから自動で組み込む場合
+
+#### ・VirtualService、DestinationRuleの定義
+
+VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適用される。
+
+参考：
+
+- https://sreake.com/blog/istio/
+- https://istio.io/latest/docs/reference/config/networking/virtual-service/
+- https://istio.io/latest/docs/reference/config/networking/destination-rule/
+
+#### ・EnvoyFilterの定義
+
+istio-proxyコンテナの設定を上書きできる。
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+
+#### ・annotationsの定義
+
+Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+#### ・istio-proxyコンテナの定義
+
+DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きできる。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: foo-container
+          image: foo-mage
+        - name: istio-proxy
+```
+
+<br>
+
+### 手動で組み込む場合
+
+#### ・Dockerfileの定義
 
 Dockerfileにて、独自の```envoy.yml```ファイルを組み込む。
 
@@ -21,14 +67,6 @@ FROM envoyproxy/envoy:v1.20.1
 COPY envoy.yml /etc/envoy/envoy.yml
 RUN chmod go+r /etc/envoy/envoy.yml
 ```
-
-<br>
-
-### annotationsに組み込む場合
-
-Kubernetesオブジェクトの```annotations```の```proxy.istio.io/config```にて、独自の```envoy.yml```ファイルを組み込む。または、オプションを設定する。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html
 
 <br>
 

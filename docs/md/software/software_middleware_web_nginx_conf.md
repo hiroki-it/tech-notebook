@@ -197,7 +197,9 @@ server {
 
 ### HTTP/HTTPSプロトコルでルーティング
 
-HTTPプロトコルで受信したインバウンド通信を、HTTPSプロトコルに変換してルーティングする。
+HTTPプロトコルで受信したインバウンド通信を、HTTPSプロトコルにリダイレクトする。また、HTTPSプロトコルであれば、HTTPに変換してルーティングする。HTTPSプロトコルのインバウンド通信を受信するために、SSL証明書を設定する必要がある。
+
+参考：http://nginx.org/en/docs/http/load_balancing.html
 
 **＊実装例＊**
 
@@ -208,6 +210,7 @@ HTTPプロトコルで受信したインバウンド通信を、HTTPSプロト�
 server {
     server_name example.com;
     listen 80;
+    # リダイレクト
     return 301 https://$host$request_uri;
 }
 
@@ -228,11 +231,18 @@ server {
     add_header Strict-Transport-Security "max-age=86400";
 
     location / {
-        proxy_pass http://app1;
+        proxy_pass http://foo_servers;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Port $remote_port;
+    }
+    
+    # ルーティング先のリスト
+    upstream foo_servers {
+        server srv1.example.com;
+        server srv2.example.com;
+        server srv3.example.com;
     }
 }
 ```

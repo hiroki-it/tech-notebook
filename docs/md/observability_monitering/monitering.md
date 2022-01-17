@@ -70,9 +70,15 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 参考：https://bit.ly/2y494hq
 
-ちなみに、Googleアナリティクスもリアルユーザ監視の一種である。
+#### ・Googleアナリティクス監視
 
-参考：https://www.amazon.co.jp/dp/4873118646
+ユーザーエンゲージメントを監視する。リアルユーザー監視の一種ともみなせるが、パフォーマンスの監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
+
+参考：
+
+- https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
+- https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
+- https://www.amazon.co.jp/dp/4873118646
 
 #### ・合成監視（外部監視）
 

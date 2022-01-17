@@ -99,7 +99,7 @@ https://circleci.com/docs/2.0/insights-tests/
 
 1. テストクラスを実装したうえで、新機能を設計実装する。
 
-2. リポジトリへPushすると、CIツールがGituHubからブランチの状態を取得する。
+2. リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。
 
 3. CIツールによって、DockerHubから取得したDockerfileのビルド、PHPUnitなどが自動実行される。
 

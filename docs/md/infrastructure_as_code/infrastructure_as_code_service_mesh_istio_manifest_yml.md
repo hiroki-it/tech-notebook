@@ -80,26 +80,6 @@ Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコ�
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
-ただし、Envoyコンテナごとのオプション値を```annotations```キーから設定することは非推奨であり、DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きした方が良い。
-
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-spec:
-  template:
-    spec:
-      containers:
-        - name: foo-container
-          image: foo-mage
-        - name: istio-proxy
-```
-
-ちなみに、Envoyコンテナではなく```envoy.yaml```ファイルの設定値は、VirtualServiceとDestinationRuleの設定値に相当する。
-
-参考：https://sreake.com/blog/istio/
-
 #### ・proxy.istio.io/config.configPath
 
 Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリにファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。

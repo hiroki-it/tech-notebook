@@ -948,52 +948,13 @@ error   @http.status_code:[500 TO 599]
 
 <br>
 
-## 07-02. ログインテグレーション
-
-### ログインテグレーションとは
-
-アプリケーション、ミドルウェア、クラウドインフラ、などのログを集約的に収集しやすくなるインテグレーションパイプラインライブラリを提供する。
-
-<br>
-
-### インテグレーションパイプラインライブラリ
-
-#### ・インテグレーションパイプラインライブラリとは
-
-ログの生成元に合わせて、プロセッサーのセットが組み込まれたパイプラインを提供してくれる。
-
-参考：
-
-- https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#integration-pipelines
-- https://docs.datadoghq.com/integrations/#cat-log-collection
-
-#### ・AWSの場合
-
-AWSリソースで生成されたログをDaadogに転送できるようにし、また構造化ログとして検索できるようにする。次の方法でセットアップする。
-
-（１）DatadogのAWSアカウントの登録画面で、CloudFormationによる自動セットアップを選択する。
-
-参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
-
-（２）CloudFormationにより、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを構築する。構築されたIAMロール（```DatadogIntegrationRole```）をDatadogのIAMユーザー（```464622532012```）に委譲できるように、アカウントIDとロール名をDatadogの設定画面に入力する。
-
-参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
-
-（３）ここではログを転送できるように、LambdaのトリガーとしてCloudWatchログやS3を設定する。トリガーとして設定せずに、自動で転送することも可能であるが、自動認識されるログの種類が少ないので、手動で設定した方が良い。
-
-参考：https://docs.datadoghq.com/logs/guide/send-aws-services-logs-with-the-datadog-lambda-function/?tab=awsconsole#automatically-set-up-triggers
-
-（４）送信元のAWSリソースの命名によって、ログの```service```属性の値が変わる。例えば、CloudWatchログのロググループ名が『```api-gateway-*****```』から始まる場合、属性値は```apigateway```になる。
-
-<br>
-
-## 07-03. ログパイプラインの後処理
+## 07-02. ログパイプラインの後処理
 
 ### 標準属性の付与
 
 <br>
 
-## 07-04. オプション処理
+## 07-03. オプション処理
 
 ### ログのメトリクス
 
