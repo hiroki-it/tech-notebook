@@ -229,40 +229,43 @@ HTTPに代わるgRPCプロトコルを用いる。HTTPであると、通信相�
 
 <br>
 
-## 04. 分散システムのプロキシ
+## 04. 分散システム全体のリバースプロキシサーバー
 
-### 分散システム全体のプロキシ
+### API Gatewayパターン
 
-#### ・API Gatewayパターン
+#### ・API Gatewayパターンとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_api-gateway-pattern.png)
 
-受信したインバウンド通信を適切なマイクロサービスにルーティングする他、認証認可など、クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
+クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
+
+- 受信したインバウンド通信を適切なマイクロサービスにルーティング
+- 認証認可
+- トレースIDの付与
+- キャッシュの作成
+- リクエスト制限
 
 参考：
 
 - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
 
-#### ・ツール
+#### ・実装方法
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
-- gatewayサービスを自前で実装する。
-- AWS API Gateway
-- Kong
-- Tyk
-- Apigee
+| 方法                                          | ツール                                                       |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| API Gatewayをサービスメッシュで管理する場合   | 自前で実装<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
+| API Gatewayをサービスメッシュで管理しない場合 | AWS API Gateway、Kong、Tyk、Apigee<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 
 <br>
 
-### 各分散システムのプロキシ
+## 04-02. 各分散システムのリバースプロキシサーバー
 
-#### ・プロキシコンテナ
+### サービスメッシュ
 
-マイクロサービスへのインバウンド通信をマイクロサービスにルーティングする。単なるプロキシではなく、サービスメッシュの仕組みを取り入れる必要がある。
-
-#### ・サービスメッシュ
+#### ・サービスメッシュとは
 
 ![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
 
@@ -273,12 +276,17 @@ HTTPに代わるgRPCプロトコルを用いる。HTTPであると、通信相�
 - 鍵とSSL証明書を管理しきれない。
 - ソフトウェアの全体像が把握できない
 
-そこで、マイクロサービス間で直接リクエストを送受信するのではなく、これをプロキシ機能を持つサイドカーコンテナ経由で行う。また、各サイドカーコンテナをコントロールプレーンで統括的に管理する。
+そこで、マイクロサービス間で直接リクエストを送受信するのではなく、これをサイドカーパターンで設置したリバースプロキシコンテナ経由で行う。また、各サイドカーコンテナをコントロールプレーンで統括的に管理する。これにより、マイクロサービス間の通信をより簡単に管理できる。
 
 参考：
 
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
+
 - https://qiita.com/Ladicle/items/4ba57078128d6affadd5
+
+#### ・リバースプロキシコンテナ
+
+マイクロサービスへのインバウンド通信をマイクロサービスにルーティングする。
 
 <br>
 

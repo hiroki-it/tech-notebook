@@ -498,7 +498,7 @@ OSを再起動すると、```export```コマンドの結果は消去されてし
 ```bash
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # User specific environment
@@ -731,6 +731,42 @@ $ swapon -s
 ```bash
 # スワップ領域を無効化
 $ swapoff /swap_volume
+```
+
+<br>
+
+### nc：netcat
+
+#### ・オプション無し
+
+指定したIPアドレス/ドメインに、TCPプロトコルでパケットを送信する。
+
+参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+
+```bash
+$ nc <IPアドレス/ドメイン> <ポート番号>
+```
+
+#### ・-v
+
+ログを出力しつつ、```nc```コマンドを実行する。
+
+```bash
+$ nc -v <IPアドレス、ドメイン> <ポート番号>
+```
+
+**＊実行例＊**
+
+パケットに```9000```番ポートに送信する。
+
+```bash
+$ nc -v 127.0.0.1 9000
+
+# 失敗の場合
+nc: connect to 127.0.0.1 port 9000 (tcp) failed: Connection refused
+
+# 成功の場合
+Connection to 127.0.0.1 9000 port [tcp/*] succeeded!
 ```
 
 <br>

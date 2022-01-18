@@ -1008,7 +1008,7 @@ LBリスナーがターゲットグループに依存しているが、Terraform
 
 ```bash
 Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
-	status code: 400, request id: *****
+status code: 400, request id: *****
 ```
 
 このエラーが発生した場合、コンソール画面上でLBリスナーを削除したうえで、もう一度applyする。

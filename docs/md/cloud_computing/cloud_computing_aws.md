@@ -24,7 +24,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| リスナー             | ALBに割り振るポート番号と受信するプロトコルを設定する。リバースプロキシかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。 |                                                              |
+| リスナー             | ALBに割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。 |                                                              |
 | セキュリティポリシー | リクエストの送信者が用いるSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、ALBが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース（CloudFrontなど）、などを含む。<br>・参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
 | ルール               | リクエストのルーティングのロジックを設定する。               |                                                              |
 | ターゲットグループ   | ルーティング時に用いるプロトコルと、ルーティング先のアプリケーションに割り当てられたポート番号を設定する。 | ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる。 |
@@ -173,7 +173,6 @@ SSGの場合、静的ファイルをデプロイしさえすれば、アプリ�
 | -------------------- | -------------------------------- | ------------------------------------------------------------ |
 | 本番稼働ブランチ     | 基点ブランチを設定する。         | Amplifyを本番運用しない場合は、developブランチを設定すればよい。 |
 | Branch autodetection | ブランチの自動検出を有効化する。 | ワイルドカードを組み込む場合、アスタリスクを二つ割り当てないと、ブランチが検知されないことがある。 |
-|                      |                                  |                                                              |
 
 <br>
 
@@ -840,7 +839,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 | 設定項目               | 説明                                                         | 補足                                                         |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Origin Domain Name     | CloudFrontをリバースプロキシとして、AWSリソースのエンドポイントやDNSにルーティングする。 | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であってもよい。 |
+| Origin Domain Name     | CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。 | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であってもよい。 |
 | Origin Path            | オリジンのルートディレクトリを設定する。                     | ・何も設定しないと、デフォルトは『```/```』のなる。Behaviorでは、『```/```』の後にパスが追加される。<br>・『```/var/www/app```』を設定すると、Behaviorで設定したパスが『```/var/www/app/foo```』のように追加される。 |
 | Origin Access Identity | リクエストのルーティング先となるAWSリソースでアクセス権限のアタッチが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーをアタッチする。 | CloudFrontがS3に対して読み出しを行うために必要。             |
 | Origin Protocol Policy | リクエストのルーティング先となるAWSリソースに対して、HTTPとHTTPSのいずれのプロトコルでルーティングするかを設定する。 | ・ALBで必要。ALBのリスナーのプロトコルに合わせて設定する。<br>・```HTTP Only```：HTTPでルーティング<br>・```HTTPS Only```：HTTPSでルーティング<br>・```Match Viewer```：両方でルーティング |
@@ -878,7 +877,7 @@ Via: 2.0 77c20654dd474081d033f27ad1b56e1e.cloudfront.net (CloudFront)
 # 各Cookieの値（二回目のリクエスト時に設定される）
 Cookie: sessionid=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
 # 送信元IPアドレス
-# ※プロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
+# ※プロキシ（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスが順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 Accept-Language: ja,en;q=0.9
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
@@ -5979,7 +5978,7 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 
 #### ・紐付け
 
-| 種類                     | 補足                                                         |
+| 紐付け名                     | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ |
 | EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 | ENIとの紐付け          | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
@@ -6172,7 +6171,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
-| 種類         | 説明                                                         |
+| ルール名         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する。 |
 | レギュラー   | リクエスト数は制限しない。                                   |

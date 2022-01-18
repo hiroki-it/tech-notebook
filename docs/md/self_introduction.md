@@ -32,11 +32,11 @@
 
 知見の共有になれば幸いです。
 
-▶ Clean-Arch、Laravel、GitHub Actions：https://github.com/hiroki-it/ddd-api-with-laravel
+▶ https://github.com/hiroki-it/ddd-api-with-laravel（Clean-Arch、Laravel、GitHub Actions）
 
-▶ Clean-Arch、Gin：https://github.com/hiroki-it/ddd-api-with-go-gin
+▶ https://github.com/hiroki-it/ddd-api-with-go-gin（Clean-Arch、Gin）
 
-▶ Clean-Arch、Go、Serverless Framework、CircleCI：https://github.com/hiroki-it/notify-slack-of-amplify-events
+▶ https://github.com/hiroki-it/notify-slack-of-amplify-events（Clean-Arch、Go、Serverless Framework、CircleCI）
 
 <br>
 

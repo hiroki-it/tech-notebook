@@ -423,7 +423,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 #### ・proxyとは
 
-ローカルホストとkube-apiserverの間にプロキシとして機能するオブジェクトを作成する。kube-proxyとは異なるオブジェクトであることに注意する。
+ローカルホストとkube-apiserverの間にフォワード/リバースプロキシサーバーとして機能するオブジェクトを作成する。kube-proxyとは異なるオブジェクトであることに注意する。
 
 #### ・--address、--accept-hosts
 

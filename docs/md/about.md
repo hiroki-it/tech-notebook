@@ -2,7 +2,7 @@
 
 ## 俺のドキュメントサイトとは
 
-**俺**（長谷川広樹）が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
+**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/md/self_introduction.html) ）が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
 
 <br>
 
@@ -44,6 +44,8 @@
 - 概念図（視覚優位な学習）
 
 そのため、冗長な記載となることをご容赦いただけると幸いです。
+
+文章の書き方：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
 
 <br>
 

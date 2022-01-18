@@ -62,7 +62,7 @@
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 
-| 種類                     | 説明                                                         | 補足                                                   |
+| 使い方名                     | 説明                                                         | 補足                                                   |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
 | オンデマンドインスタンス |                                                              | 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/ |
 | Savings Plans            |                                                              |                                                        |
@@ -110,7 +110,7 @@
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 
-| 種類                     | 説明                                                         |
+| 使い方名                     | 説明                                                         |
 | :----------------------- | ------------------------------------------------------------ |
 | オンデマンドインスタンス | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html |
 | リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |

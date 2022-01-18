@@ -644,7 +644,7 @@ const s3 = new aws.S3();
 
 exports.handler = (event, context, callback) => {
 
-  // API Gatewayとのプロキシ統合を意識したJSON構造にする	
+  // API Gatewayとのプロキシ統合を意識したJSON構造にする。
   // レスポンスメッセージの初期値
   const response = {
     "statusCode": null,

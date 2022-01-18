@@ -14,7 +14,7 @@
 
 #### ・グローバルサイトタグとは
 
-Webページのローディング時に、非同期通信を用いてGoogleのCollection-APIにメトリクスを送信する。送信されたデータは、Googleアナリティクスコンソールから確認できる。
+WebWebページのローディング時に、非同期通信を用いてGoogleのCollection-APIにメトリクスを送信する。送信されたデータは、Googleアナリティクスコンソールから確認できる。
 
 参考：
 
@@ -62,13 +62,49 @@ POST https://www.google-analytics.com/g/collect
 
 <br>
 
-## 02. アカウント
+## 02. 使い方
+
+### Googleアナリティクス用語
+
+#### ・計測値
+
+| 指標名             | 説明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| セッション数       | ユーザーがWebサイトに訪問してから離脱するまでを１セッションとした時に、この数のこと。<br>参考：https://support.google.com/analytics/answer/9191807?hl=ja&ref_topic=11151952 |
+| 直帰数             | ユーザーがWebサイトに訪問した後に、Webページのどの部分もクリックせずに離脱した場合に、このセッション数のこと。<br>参考：https://support.google.com/analytics/answer/1009409?hl=ja |
+| 新規ユーザー数     | 新しく訪問したユーザー数のこと。リクエストのIPアドレスやユーザエージェントの組み合わせに基づいて、新規ユーザーか否かを判定する。セッションの違いに影響されない。<br>参考：https://www.mitsue.co.jp/case/glossary/l_009.html |
+| ページビュー数     | Webページの閲覧数のこと。リロードしても```+1```される。<br>参考：<br>・https://support.google.com/analytics/answer/6086080?hl=ja<br>・http://www.designcross.net/google-analytics/pageviews.html |
+| 離脱数             | セッションの最後で発生したイベント数のこと。<br>参考：https://support.google.com/analytics/answer/11080047?hl=ja# |
+| ランディングページ | ユーザーが最初に訪問したWebページのこと。<br>参考：https://support.google.com/google-ads/answer/14086?hl=ja |
+| コンバージョン     | セッションの間で何らかの目標が達成されること。目標達成に至ったセッション数はコンバージョン数というこれを計測するためには、Googleアナリティクスの画面で達成条件の設定が必要である。<br/>参考：<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3 |
+| 参照URL            | ユーザーが最初のページに訪問する前に滞在していたURLのこと。  |
+
+#### ・計測率
+
+| 指標名                      | 説明                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| 直帰率                      | 全セッションのうちで、直帰に至ったセッション数が占める割合のこと。（```直帰数/セッション数```』）<br>参考：https://support.google.com/analytics/answer/1009409?hl=ja |
+| コンバージョン率            | 全てのセッション数のうちで、コンバージョンに至ったセッション数の割合のこと。（```コンバージョン数/全てのセッション数```） |
+| 離脱率                      | １ページビュー当たりの離脱数のこと。（```離脱数/ページビュー数```）<br>参考：https://support.google.com/analytics/answer/11080047?hl=ja |
+| ページ/セッション（回遊率） | １セッション当たりのページビュー数のこと。<br>参考：https://pro-atmedia.jp/media/page-views-per-visit/#toc2 |
 
 <br>
 
-## 03. プロパティ
+### X当たりのY
+
+Xを指定するために、項目に進む。
+
+- Webページ当たりであれば、『全てのWebページ』
 
 <br>
 
-## 04. ビュー
+### 値が非表示になる原因
+
+#### ・not set
+
+- 検索エンジン以外からの訪問
+- バナー広告からの訪問
+- リダイレクトによる訪問
+
+<br>
 

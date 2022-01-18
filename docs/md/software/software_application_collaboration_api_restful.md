@@ -479,7 +479,7 @@ Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 遷移元のページ
 Referer: https://foo.co.jp/
 # 送信元IPアドレス
-# ※プロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
+# ※ リバースプロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ```
 
@@ -514,7 +514,7 @@ Referer: https://foo.co.jp/
 # 各Cookieの値（二回目のリクエスト時に設定される）
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 # 送信元IPアドレス
-# ※プロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
+# ※ リバースプロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 
 # ボディ。（SSLによって暗号化されるため閲覧不可）

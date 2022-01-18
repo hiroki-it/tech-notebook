@@ -8,7 +8,74 @@
 
 <br>
 
-## 01. apiVersion
+## 01. セットアップ
+
+### インストール
+
+#### ・istioctl経由
+
+プロファイルを指定し、Istioオブジェクトをインストールする。
+
+参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+
+```bash
+$ istioctl install --set profile=demo
+```
+
+#### ・IstioOperatorオブジェクト経由
+
+（１）まずは、IstioOperatorオブジェクトをインストールする。IstioOperatorオブジェクトは、デフォルトで```istio-system```にIstioオブジェクトをインストールするようになっている。
+
+参考：https://istio.io/latest/docs/setup/install/operator/
+
+```bash
+$ istioctl operator init
+
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Operator controller will watch namespaces: istio-system
+✔ Istio operator installed
+✔ Installation complete
+```
+
+（２）IstioOperatorオブジェクトが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドで操作し、Istioオブジェクトをインストールする。```kubectl```コマンドの実行結果は、インストールされたことがわかりにくいことに注意する。
+
+```bash
+# istioctlコマンド
+$ istioctl install -y -f ./istio-manifests/operator.yml
+✔ Istio core installed
+✔ Istiod installed
+✔ Ingress gateways installed
+✔ Installation complete
+Making this installation the default for injection and validation.
+```
+
+```bash
+# kubectlコマンド
+$ kubectl apply -f ./istio-manifests/operator.yml
+
+istiooperator.install.istio.io/istio-operator created
+```
+
+参考：
+
+- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+- https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+
+<br>
+
+### アンインストール
+
+#### ・istioctl経由
+
+Istioオブジェクトを全てアンインストールする。
+
+```bash
+$ istioctl x uninstall --purge
+```
+
+<br>
+
+## 02. apiVersion
 
 ### apiVersionとは
 
@@ -20,7 +87,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 02. kind
+## 03. kind
 
 ### kindとは
 
@@ -32,7 +99,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 03. metadata
+## 04. metadata
 
 ### metadataとは
 
@@ -51,7 +118,7 @@ metadata:
 
 <br>
 
-## 03-02. metadata（KubernetesのNamespaceにて）
+## 04-02. metadata（KubernetesのNamespaceにて）
 
 ### labels
 
@@ -70,7 +137,7 @@ metadata:
 
 <br>
 
-## 03-03. metadata（KubernetesnのPodにて）
+## 04-03. metadata（KubernetesnのPodにて）
 
 ### annotations
 
@@ -156,7 +223,7 @@ spec:
 
 <br>
 
-## 04. spec（DestinationRuleの場合）
+## 05. spec（DestinationRuleの場合）
 
 ### exportTo
 
@@ -287,7 +354,7 @@ spec:
 
 <br>
 
-## 05. spec（EnvoyFilterの場合）
+## 06. spec（EnvoyFilterの場合）
 
 ### configPatches
 
@@ -372,7 +439,7 @@ spec:
 
 <br>
 
-## 06. spec（Gatewayの場合）
+## 07. spec（Gatewayの場合）
 
 ### selector
 
@@ -483,7 +550,7 @@ spec:
 
 <br>
 
-## 07. spec（IstioOperatorの場合）
+## 08. spec（IstioOperatorの場合）
 
 ### component
 
@@ -771,7 +838,7 @@ spec:
 
 <br>
 
-## 08. spec（VirtualServiceの場合）
+## 09. spec（VirtualServiceの場合）
 
 ### exportTo
 

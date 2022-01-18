@@ -255,7 +255,7 @@ provider "aws" {
 
 #### ・credentialsファイルによる設定
 
-　AWSアカウント情報は、```~/.aws/credentials```ファイルに記載されている。
+AWSアカウント情報は、```~/.aws/credentials```ファイルに記載されている。
 
 ```
 # 標準プロファイル
