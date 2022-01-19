@@ -28,4 +28,4 @@ jobs:
           find docs/md/* -name "*.md" -type f | xargs sed -e 's/，/、/g' -e 's/．/。/g'
       - name: Deploy MkDocs
         run: |
-          mkdocs gh-deploy
+          mkdocs gh-deploy -force
