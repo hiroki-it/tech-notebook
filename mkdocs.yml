@@ -28,7 +28,7 @@ theme:
     - navigation.tracking
     - search.highlight
 
-# URL
+# URL形式
 use_directory_urls: false
 
 extra:
