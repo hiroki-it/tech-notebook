@@ -25,7 +25,7 @@ jobs:
           pip3 install -r requirements.txt
       - name: Sed
         run: |
-          find docs/md/* -name "*.md" -type f | xargs sed -i -e 's/，/、/g' -e 's/．/。/g'
+          find docs/* -name "*.md" -type f | xargs sed -i -e 's/，/、/g' -e 's/．/。/g'
       - name: Deploy MkDocs
         run: |
           mkdocs gh-deploy --force
