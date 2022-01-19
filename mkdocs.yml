@@ -4,6 +4,9 @@ site_name: 俺のドキュメントサイト
 # サイト所有者
 site_author: Hiroki Hasegawa
 
+# サイトのURL
+site_url: https://hiroki-it.github.io/tech-notebook-mkdocs/
+
 # テーマ
 theme:
   name: material
