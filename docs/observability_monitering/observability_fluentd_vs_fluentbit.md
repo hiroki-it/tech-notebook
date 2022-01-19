@@ -1,14 +1,14 @@
-# Fluentd/FluentBit
+# Fluentd vs. FluentBit
 
 ## はじめに
 
 本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 01. Fluentd/FluentBitとは
+## 01. Fluentd，FluentBitとは
 
 ### 概要
 
