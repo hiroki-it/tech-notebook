@@ -1,6 +1,9 @@
 # サイト名
 site_name: 俺のドキュメントサイト
 
+# サイト所有者
+site_author: Hiroki Hasegawa
+
 # テーマ
 theme:
   name: material
