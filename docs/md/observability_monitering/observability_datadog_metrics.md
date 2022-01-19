@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,7 +14,7 @@
 
 #### ・サーバーdatadogエージェントとは
 
-常駐プログラムであり、アプリケーションをメトリクスを収集し、Datadogに転送する。
+常駐プログラムであり，アプリケーションをメトリクスを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -28,40 +28,40 @@
 
 #### ・コンテナdatadogエージェントとは
 
-常駐プログラムであり、アプリケーションからメトリクスをDatadogに転送する。
+常駐プログラムであり，アプリケーションからメトリクスをDatadogに転送する．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
 #### ・環境変数
 
-グローバルオプションとして役立つ環境変数を以下に示す。
+グローバルオプションとして役立つ環境変数を以下に示す．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
-| ```DD_API_KEY```  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である。 |                                                              |                                              |
-| ```DD_ENV```      | APMを用いる場合、サービスやトレース画面にて、```env```タグに値を設定する。 | サービス単位で絞り込めるように、```prd-foo```や```stg-foo```とした方が良い。 | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | コンテナのホスト名を設定する。                               | Fargateを用いる場合は、これを用いないようにする。<br>参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
-| ```ECS_FARGATE``` | Fargateを用いる場合、これを宣言する。                      |                                                              |                                              |
+| ```DD_API_KEY```  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
+| ```DD_ENV```      | APMを用いる場合，サービスやトレース画面にて，```env```タグに値を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateを用いる場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
+| ```ECS_FARGATE``` | Fargateを用いる場合，これを宣言する．                      |                                                              |                                              |
 
-任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す。一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
+任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す．一部のメトリクスは，デフォルトでは収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8F%8E%E9%9B%86-agent
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化する。                                | Fargateを用いている場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、サービスにパッケージのインストールが必要である。<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，サービスにパッケージのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
 | ```DD_LOGS_ENABLED```          | -                                                            |                                                              |                                      |
-| ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
+| ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
-カスタムメトリクスの収集として役立つ環境変数を以下に示す。
+カスタムメトリクスの収集として役立つ環境変数を以下に示す．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#dogstatsd-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
 
 | 変数名                               | 説明                                                    | DatadogコンソールURL |
 | ------------------------------------ | ------------------------------------------------------- | -------------------- |
-| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | Datadogコンテナのカスタムメトリクスの受信を有効化する。 |                      |
+| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | Datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
 
 <br>
 
@@ -69,7 +69,7 @@
 
 #### ・トレースエージェントとは
 
-dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true```を割り当てると、トレースエージェントが有効になる。APMエージェントを有効化し、分散トレースを収集できる。APMでは、分散トレースを元にして、サービス間の依存関係をサービスマップとして確認できる。
+dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true```を割り当てると，トレースエージェントが有効になる．APMエージェントを有効化し，分散トレースを収集できる．APMでは，分散トレースを元にして，サービス間の依存関係をサービスマップとして確認できる．
 
 参考：
 
@@ -78,13 +78,13 @@ dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・環境変数
 
-一部の環境変数は、dockerエージェントの環境変数と重なる。
+一部の環境変数は，dockerエージェントの環境変数と重なる．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0
 
 | 変数名             | 説明                                | 補足 |
 | ------------------ | ----------------------------------- | ---- |
-| ```DD_LOG_LEVEL``` | APMに送信するログレベルを設定する。 |      |
+| ```DD_LOG_LEVEL``` | APMに送信するログレベルを設定する． |      |
 
 <br>
 
@@ -92,7 +92,7 @@ dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・Datadogコンテナとは
 
-Datadogが提供するdatadogイメージによって構築されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスを収集し、Datadogにこれを転送する。
+Datadogが提供するdatadogイメージによって構築されるコンテナであり，コンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadog dockerエージェントが，コンテナからメトリクスを収集し，Datadogにこれを転送する．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E6%A6%82%E8%A6%81
 
@@ -185,7 +185,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 #### ・IAMロール
 
-Datadogコンテナがコンテナからメトリクスを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
+Datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
 
@@ -212,7 +212,7 @@ Datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### セットアップ
 
-いくつかの方法で、収集されたメトリクスを送信できる。
+いくつかの方法で，収集されたメトリクスを送信できる．
 
 参考：https://docs.datadoghq.com/ja/metrics/#datadog-%E3%81%B8%E3%81%AE%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E9%80%81%E4%BF%A1
 
@@ -220,13 +220,13 @@ Datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### インテグレーションのセットアップ
 
-Datadogでインテグレーションを有効化すると同時に、アプリケーションにエージェントをインストールする。
+Datadogでインテグレーションを有効化すると同時に，アプリケーションにエージェントをインストールする．
 
 <br>
 
 ### メトリクスの削除
 
-Datadogに送信されなくなったメトリクスは、時間経過とともにDatadogから削除される。
+Datadogに送信されなくなったメトリクスは，時間経過とともにDatadogから削除される．
 
 参考：https://docs.datadoghq.com/ja/dashboards/faq/historical-data/
 

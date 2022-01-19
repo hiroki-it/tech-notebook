@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -38,7 +38,7 @@ $ serverless print --FOO foo
 
 #### ・オプション無し
 
-クラウドインフラを構築する。
+クラウドインフラを構築する．
 
 ```bash
 $ serverless deploy
@@ -46,7 +46,7 @@ $ serverless deploy
 
 #### ・パラメータ
 
-パラメータを```serverless.yml```ファイルに渡し、```deploy```コマンドを実行する。
+パラメータを```serverless.yml```ファイルに渡し，```deploy```コマンドを実行する．
 
 ```bash
 $ serverless deploy --FOO foo
@@ -54,7 +54,7 @@ $ serverless deploy --FOO foo
 
 #### ・-v
 
-実行ログを表示しつつ、```deploy```コマンドを実行する。
+実行ログを表示しつつ，```deploy```コマンドを実行する．
 
 ```bash
 $ serverless deploy -v

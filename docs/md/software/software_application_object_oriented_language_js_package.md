@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,7 +14,7 @@
 
 #### ・```package.json```ファイルの作成
 
-プロジェクトの```package.json```ファイルを作成する。
+プロジェクトの```package.json```ファイルを作成する．
 
 ```bash
 $ npm init
@@ -26,13 +26,13 @@ $ npm init
 
 ```bash
 {
-  # npmパッケージ名。全てのnpmパッケージの中で、一意の名前でなければならない。
+  # npmパッケージ名．全てのnpmパッケージの中で，一意の名前でなければならない．
   "name": "tech-notebook-mkdocs/md",
   "version": "1.0.0",
   "description": "tech-notebook-mkdocs/md",
   "main": "index.js",
   "directories": {},
-  # 本番環境と開発環境で依存するパッケージ名。パッケージ名は一意に識別できる。
+  # 本番環境と開発環境で依存するパッケージ名．パッケージ名は一意に識別できる．
   "dependencies": {
     "gitbook-plugin-advanced-emoji": "^0.2.2",
     "gitbook-plugin-anchors": "^0.7.1",
@@ -42,13 +42,13 @@ $ npm init
     "gitbook-plugin-github-buttons": "^3.0.0",
     "gitbook-plugin-hide-published-with": "^1.0.3",
     "gitbook-plugin-intopic-toc": "^1.1.1",
-    # パッケージとして登録されていないもの『リポジトリURLから直接参照する。『git+』を忘れないこと。
+    # パッケージとして登録されていないもの『リポジトリURLから直接参照する．『git+』を忘れないこと．
     "gitbook-plugin-prism": "git+https://github.com/hiroki-it/gitbook-plugin-prism.git",
     "gitbook-plugin-search-pro-fixed": "^1.0.1",
     "gitbook-plugin-sunlight-highlighter": "^0.4.3",
     "gitbook-plugin-toolbar": "^0.6.0"
   },
-  # 開発環境のみ依存するパッケージ名。
+  # 開発環境のみ依存するパッケージ名．
   "devDependencies": {},
   "scripts": {},
   "repository": {
@@ -75,7 +75,7 @@ $ npm init
 
 #### ・オプション無し
 
-アプリケーションにて、```package.lock```ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。```package.lock```ファイルのおかげで、リポジトリの利用者が、```npm install```の実行時に、共通のバージョンのパッケージをインストールできる。
+アプリケーションにて，```package.lock```ファイルに実装されたパッケージのうちで，インスールされていないものをインストールする．```package.lock```ファイルのおかげで，リポジトリの利用者が，```npm install```の実行時に，共通のバージョンのパッケージをインストールできる．
 
 ```bash
 $ npm install
@@ -83,7 +83,7 @@ $ npm install
 
 #### ・--force
 
-パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止することがある。これを無視してインストールを行う。
+パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
 
 ```bash
 $ npm install --force
@@ -91,7 +91,7 @@ $ npm install --force
 
 #### ・--save
 
-デフォルトで有効化されている。パッケージのインストール時に、依存するパッケージとして、```dependencies```キーにパッケージ名とバージョンを書き込む。
+デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
 
 ```bash
 $ npm install --save
@@ -103,7 +103,7 @@ $ npm install --save
 
 #### ・オプション無し
 
-アプリケーションにて、```package.json```ファイルに実装されたバージョンの指定をもとに、更新可能なパッケージを更新する。
+アプリケーションにて，```package.json```ファイルに実装されたバージョンの指定をもとに，更新可能なパッケージを更新する．
 
 ```bash
 $ npm update
@@ -115,13 +115,13 @@ $ npm update
 
 #### ・オプション無し
 
-ユーザーが定義したエイリアス名のコマンドを実行する。
+ユーザーが定義したエイリアス名のコマンドを実行する．
 
 ```bash
 $ npm run <エイリアス名>
 ```
 
-あらかじめ、任意のエイリアス名を```scripts```キー下に定義する。エイリアスの中で、実行するコマンドのセットを定義する。ちなみに、実行するコマンドの中で、再度```run```コマンドを定義することも可能である。
+あらかじめ，任意のエイリアス名を```scripts```キー下に定義する．エイリアスの中で，実行するコマンドのセットを定義する．ちなみに，実行するコマンドの中で，再度```run```コマンドを定義することも可能である．
 
 ```bash
 {
@@ -142,7 +142,7 @@ $ npm run <エイリアス名>
 
 ### NODE_OPTIONS
 
-メモリ上限を設定する。
+メモリ上限を設定する．
 
 ```bash
 $ export NODE_OPTIONS="--max-old-space-size=2048"
@@ -160,13 +160,13 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 #### ・読み込むパッケージをまとめる
 
-JavaScriptファイルを読み込むscriptタグを1つにまとめる。HTMLがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、Webページの読み込みが早くなる。
+JavaScriptファイルを読み込むscriptタグを1つにまとめる．HTMLがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，Webページの読み込みが早くなる．
 
 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 
-以下のようなHTMLファイルがあるとする。
+以下のようなHTMLファイルがあるとする．
 
 ```html
 <!DOCTYPE html>
@@ -182,7 +182,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。HTML�
 </html>
 ```
 
-モジュールバンドルは、scriptタグでのパッケージの読み込みをまとめる。
+モジュールバンドルは，scriptタグでのパッケージの読み込みをまとめる．
 
 ```html
 <!DOCTYPE html>

@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,7 +12,7 @@
 
 ### configValidationModeとは
 
-設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
+設定ファイルのバリデーションの実行時に，エラーを出力するレベルを設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
@@ -28,7 +28,7 @@ configValidationMode: warn
 
 ### customとは
 
-スコープが```serverless.yml```ファイル内のみの変数を設定する。
+スコープが```serverless.yml```ファイル内のみの変数を設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
 
@@ -45,7 +45,7 @@ custom:
 
 ### frameworkVersionとは
 
-Serverless Frameworkのバージョンを設定する。
+Serverless Frameworkのバージョンを設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
@@ -67,7 +67,7 @@ frameworkVersion: '2'
 
 ### description
 
-Lambda関数の説明文を設定する。
+Lambda関数の説明文を設定する．
 
 **＊実装例＊**
 
@@ -81,7 +81,7 @@ functions:
 
 ### environment
 
-Lambda関数の環境変数を設定する。
+Lambda関数の環境変数を設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 
@@ -102,13 +102,13 @@ functions:
 
 #### ・eventBridge
 
-Lambda関数に紐づけて構築するEventBridgeを設定する。
+Lambda関数に紐づけて構築するEventBridgeを設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
 
 **＊実装例＊**
 
-イベントパターンとして、JSONファイルを読み込む
+イベントパターンとして，JSONファイルを読み込む
 
 ```yaml
 functions:
@@ -120,7 +120,7 @@ functions:
 
 #### ・sqs
 
-Lambda関数に紐づけるSQSを設定する。新しくSQSを構築できず、既存のSQSと紐づける機能しかないことに注意する。
+Lambda関数に紐づけるSQSを設定する．新しくSQSを構築できず，既存のSQSと紐づける機能しかないことに注意する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
@@ -141,7 +141,7 @@ functions:
 
 #### ・name
 
-Lambda関数で用いるイメージのエイリアスを設定する。
+Lambda関数で用いるイメージのエイリアスを設定する．
 
 **＊実装例＊**
 
@@ -156,7 +156,7 @@ functions:
 
 ### maximumRetryAttempts
 
-Lambda関数の再試行回数を設定する。
+Lambda関数の再試行回数を設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
@@ -172,7 +172,7 @@ functions:
 
 ### memorySize
 
-Lambda関数のメモリサイズを設定する。
+Lambda関数のメモリサイズを設定する．
 
 **＊実装例＊**
 
@@ -186,7 +186,7 @@ functions:
 
 ### name
 
-Lambda関数の名前を設定する。
+Lambda関数の名前を設定する．
 
 **＊実装例＊**
 
@@ -200,11 +200,11 @@ functions:
 
 ### role
 
-Lambda関数に紐づけるIAMロールを設定する。
+Lambda関数に紐づけるIAMロールを設定する．
 
 **＊実装例＊**
 
-別に```resources.Resources```を用いて構築したIAMロールを設定する。
+別に```resources.Resources```を用いて構築したIAMロールを設定する．
 
 ```yaml
 functions:
@@ -216,7 +216,7 @@ functions:
 
 ### runtime
 
-Lambda関数で用いる言語とバージョンを設定する。
+Lambda関数で用いる言語とバージョンを設定する．
 
 **＊実装例＊**
 
@@ -232,7 +232,7 @@ functions:
 
 ### packageとは
 
-生成されるアーティファクトのファイルパスを設定する。
+生成されるアーティファクトのファイルパスを設定する．
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 
@@ -254,7 +254,7 @@ package:
 
 ### providerとは
 
-Serverless Frameworkで操作するクラウドインフラベンダーを設定する。ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
+Serverless Frameworkで操作するクラウドインフラベンダーを設定する．ベンダーでのアカウント認証のため，クレデンシャル情報を渡す必要がある．
 
 <br>
 
@@ -272,7 +272,7 @@ provider:
 
 #### ・images
 
-Lambda関数のベースイメージを指定し、エイリアス名を付ける。名前は全て小文字である必要がある。
+Lambda関数のベースイメージを指定し，エイリアス名を付ける．名前は全て小文字である必要がある．
 
 **＊実装例＊**
 
@@ -290,7 +290,7 @@ provider:
 
 #### ・useCloudFormation
 
-EventBridgeをCloudFormationで構築するか否かを設定する。
+EventBridgeをCloudFormationで構築するか否かを設定する．
 
 ```yaml
 provider:
@@ -302,7 +302,7 @@ provider:
 
 ### lambdaHashingVersion
 
-Lambda関数のハッシュバージョンを設定する。
+Lambda関数のハッシュバージョンを設定する．
 
 **＊実装例＊**
 
@@ -315,7 +315,7 @@ provider:
 
 ### name
 
-クラウドインフラベンダー名を設定する。
+クラウドインフラベンダー名を設定する．
 
 **＊実装例＊**
 
@@ -328,7 +328,7 @@ provider:
 
 ### region
 
-クラウドインフラを構築するリージョンを設定する。
+クラウドインフラを構築するリージョンを設定する．
 
 ```yaml
 provider:
@@ -339,7 +339,7 @@ provider:
 
 ### stackName
 
-CloudFormationのスタック名を設定する。
+CloudFormationのスタック名を設定する．
 
 **＊実装例＊**
 
@@ -352,7 +352,7 @@ provider:
 
 ### stage
 
-ステージ名を設定する。クラウドインフラの実行環境名と考えてよい。
+ステージ名を設定する．クラウドインフラの実行環境名と考えてよい．
 
 **＊実装例＊**
 
@@ -373,11 +373,11 @@ provider:
 
 ### IAMロール
 
-IAMロールを構築する。
+IAMロールを構築する．
 
 **＊実装例＊**
 
-IAMロールに紐づけるIAMポリシーは、JSONファイルで切り分けておいた方が良い。
+IAMロールに紐づけるIAMポリシーは，JSONファイルで切り分けておいた方が良い．
 
 ```yaml
 resources:

@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -19,7 +19,7 @@
 | Rendering                      | ブラウザ |
 | Paiting                        | ブラウザ |
 
-1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを生成する方法のこと。クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。非同期通信は、Ajaxの手法を用いて実現される。また、静的ファイルの部分的な生成は、MVVMアーキテクチャによって実現する。SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。
+1つのWebページの中で，サーバーとデータを非同期通信し，ブラウザ側で部分的に静的ファイルを生成する方法のこと．クライアント側でレンダリングを行うため，SSRと比較してCSR：Client Server side Renderingともいう．非同期通信は，Ajaxの手法を用いて実現される．また，静的ファイルの部分的な生成は，MVVMアーキテクチャによって実現する．SPAでは，ページ全体の静的ファイルをリクエストするのは最初のみで，それ以降はページ全体をリクエストすることはない．２回目以降は，ページ部分的にリクエストを行い，サーバー側からJSONを受け取っていく．
 
 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications?hl=ja
 
@@ -31,7 +31,7 @@
 
 #### ・MVVMアーキテクチャ
 
-View層とModel層の間にViewModel層を置き、View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって、View層とModel層の間を疎結合にするための設計手法の一種。Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。詳しくは、以下のリンク先を参考にせよ。
+View層とModel層の間にViewModel層を置き，View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって，View層とModel層の間を疎結合にするための設計手法の一種．Vue.jsでは，意識せずにMVVMアーキテクチャで実装できるようになっている．詳しくは，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_application_object_oriented_language_js_framework_vuejs.html
 
@@ -43,7 +43,7 @@ View層とModel層の間にViewModel層を置き、View層とViewModel層の間�
 
 #### ・処理速度
 
-MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータだけを通信すればよく、レンダリングが速い。
+MPAと比較して，データを非同期的に通信できるため，1つのWebページの中で必要なデータだけを通信すればよく，レンダリングが速い．
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
@@ -53,7 +53,7 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### 広義のSSRとは
 
-ブラウザ側ではなくサーバー側で静的ファイルを生成する方法のこと。フレームワークのテンプレートエンジンやCGIを用いて、サーバー側で静的ファイルを生成すること、も含まれる。
+ブラウザ側ではなくサーバー側で静的ファイルを生成する方法のこと．フレームワークのテンプレートエンジンやCGIを用いて，サーバー側で静的ファイルを生成すること，も含まれる．
 
 参考：
 
@@ -71,7 +71,7 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### 狭義のSSRとは
 
-広義のSSRにSPAを取り入れた方法のこと。ブラウザ側ではなくサーバー側で静的ファイルを生成する。広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。
+広義のSSRにSPAを取り入れた方法のこと．ブラウザ側ではなくサーバー側で静的ファイルを生成する．広義のSSRと異なる点は，ブラウザ側にレンダリングされた後，アイソモーフィックJavaScriptという仕組みでSPAとして動作する．
 
 参考：
 
@@ -84,7 +84,7 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### SSGとは
 
-事前にビルドを行って静的ファイルを生成しておく。そして、これをレンダリングし、静的サイトとして稼働させる。動的な要素（例：ランダム表示）を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。
+事前にビルドを行って静的ファイルを生成しておく．そして，これをレンダリングし，静的サイトとして稼働させる．動的な要素（例：ランダム表示）を含む静的ファイルについては，該当の部分でAjaxを使用できるようにしておく．
 
 <br>
 
@@ -92,7 +92,7 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### ISRとは
 
-SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファイルを生成しない。その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、レンダリングされる。クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。
+SSGの発展型．SSGとは異なり，事前にビルドせず，静的ファイルを生成しない．その代わり，クライアントからリクエストがあって初めて，そのWebページのみビルドが実行され，レンダリングされる．クライアントから一回でもリクエストがあったWebページでは，初回時にビルドされた静的ファイルがその都度レンダリングされる．
 
 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
@@ -102,7 +102,7 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 ### Atmic Designとは
 
-フロントエンドを構成する要素を、５つのレイヤー（Atoms、Molecules、Organisms、Templates、Pages）に分ける設計方法のこと。
+フロントエンドを構成する要素を，５つのレイヤー（Atoms，Molecules，Organisms，Templates，Pages）に分ける設計方法のこと．
 
 参考：https://atomicdesign.bradfrost.com/
 
@@ -110,13 +110,13 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 ### Nuxt.jsを参考に考える
 
-Nuxt.jsとAtomic Designのレイヤーは以下のように対応する。
+Nuxt.jsとAtomic Designのレイヤーは以下のように対応する．
 
 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
 | Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
 | --------------------- | --------------------------- |
-| components            | Atoms、Molecules、Organisms |
+| components            | Atoms，Molecules，Organisms |
 | pages                 | Pages                       |
 | layouts               | Templates                   |
 
@@ -128,7 +128,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下のように対応する。
 
 #### ・UI部品合成とは
 
-フロントエンドのコンポーネントを、各サービスに対応するように分割する設計方法。
+フロントエンドのコンポーネントを，各サービスに対応するように分割する設計方法．
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
 
@@ -138,6 +138,6 @@ Nuxt.jsとAtomic Designのレイヤーは以下のように対応する。
 
 #### ・BFFパターンとは
 
-クライアントの種類（モバイル、Web、デスクトップ）に応じたAPIを構築し、このAPIから各サービスにルーティングする設計方法。BFFパターンを実装は可能であるが、AWSでいうAPI Gatewayで代用するとより簡単に実現できる。
+クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各サービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
 
 ![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)

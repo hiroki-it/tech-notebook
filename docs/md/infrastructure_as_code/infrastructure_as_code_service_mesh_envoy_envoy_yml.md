@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -10,55 +10,17 @@
 
 ## 01. セットアップ
 
-### Istioから自動で組み込む場合
+### インストール
 
-#### ・VirtualService、DestinationRuleの定義
+かなり大変なので，DockerfileやIstio経由でインストールすることが推奨．
 
-VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適用される。
-
-参考：
-
-- https://sreake.com/blog/istio/
-- https://istio.io/latest/docs/reference/config/networking/virtual-service/
-- https://istio.io/latest/docs/reference/config/networking/destination-rule/
-
-#### ・EnvoyFilterの定義
-
-istio-proxyコンテナの設定を上書きできる。
-
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
-
-#### ・annotationsの定義
-
-Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
-
-参考：https://istio.io/latest/docs/reference/config/annotations/
-
-#### ・istio-proxyコンテナの定義
-
-DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きできる。
-
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-spec:
-  template:
-    spec:
-      containers:
-        - name: foo-container
-          image: foo-mage
-        - name: istio-proxy
-```
+参考：https://www.envoyproxy.io/docs/envoy/latest/start/install
 
 <br>
 
-### 手動で組み込む場合
+### Dockerfile
 
-#### ・Dockerfileの定義
-
-Dockerfileにて、独自の```envoy.yml```ファイルを組み込む。
+Dockerfileにて，独自の```envoy.yml```ファイルを組み込む．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -67,6 +29,22 @@ FROM envoyproxy/envoy:v1.20.1
 COPY envoy.yml /etc/envoy/envoy.yml
 RUN chmod go+r /etc/envoy/envoy.yml
 ```
+
+<br>
+
+### Istio
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html
+
+<br>
+
+## 01-02. カスタマイズ
+
+
+
+### envoy.ymlファイルから
+
+Dockerfileに組み込む```envoy.yml```ファイルの設定値を変更する．
 
 <br>
 
@@ -88,7 +66,7 @@ RUN chmod go+r /etc/envoy/envoy.yml
 
 #### ・protocol
 
-管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する。
+管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する．
 
 ```yaml
 admin:
@@ -99,7 +77,7 @@ admin:
 
 #### ・address
 
-管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する。『```0.0.0.0```』とすると、全てのIPアドレスを指定できる。
+管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する．『```0.0.0.0```』とすると，全てのIPアドレスを指定できる．
 
 ```yaml
 admin:
@@ -110,7 +88,7 @@ admin:
 
 #### ・port_value
 
-管理ダッシュボードでインバウンド通信を受信するポート番号を設定する。
+管理ダッシュボードでインバウンド通信を受信するポート番号を設定する．
 
 ```yaml
 admin:
@@ -125,7 +103,7 @@ admin:
 
 ### static_resourcesとは
 
-固定値を設定する。
+固定値を設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
 
@@ -135,7 +113,7 @@ admin:
 
 ### listenersとは
 
-受信するインバウンド通信のリスナーを設定する。
+受信するインバウンド通信のリスナーを設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
@@ -145,7 +123,7 @@ admin:
 
 #### ・protocol
 
-受信するインバウンド通信のプロトコルを設定する。
+受信するインバウンド通信のプロトコルを設定する．
 
 ```yaml
 static_resources:
@@ -157,7 +135,7 @@ static_resources:
 
 #### ・address
 
-受信するインバウンド通信の送信元IPアドレスを設定する。
+受信するインバウンド通信の送信元IPアドレスを設定する．
 
 ```yaml
 static_resources:
@@ -169,7 +147,7 @@ static_resources:
 
 #### ・port_value
 
-インバウンド通信を受信するポート番号を設定する。
+インバウンド通信を受信するポート番号を設定する．
 
 
 ```yaml
@@ -186,7 +164,7 @@ static_resources:
 
 #### ・name
 
-特定のインバウンド通信を処理するフィルターを設定する。
+特定のインバウンド通信を処理するフィルターを設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
@@ -200,7 +178,7 @@ static_resources:
 
 #### ・typed_config.access_log
 
-Envoyのアクセスログの出力先を設定する。
+Envoyのアクセスログの出力先を設定する．
 
 ```yaml
 static_resources:
@@ -233,12 +211,12 @@ static_resources:
 
 #### ・typed_config.route_config
 
-特定のルーティング先に関する処理を設定する。
+特定のルーティング先に関する処理を設定する．
 
 | 項目                | 説明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| ```name```          | ルーティング名を設定する。                                   |
-| ```virtual_hosts``` | ルーティング対象を設定する。特に```domains```キーには、受信するインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
+| ```name```          | ルーティング名を設定する．                                   |
+| ```virtual_hosts``` | ルーティング対象を設定する．特に```domains```キーには，受信するインバウンド通信のHostヘッダーの値を設定する．ちなみにHostヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている． |
 
 参考：
 
@@ -265,7 +243,7 @@ static_resources:
 
 #### ・typed_config.stat_prefix
 
-統計ダッシュボードのメトリクスのプレフィクスを設定する。
+統計ダッシュボードのメトリクスのプレフィクスを設定する．
 
 参考：
 
@@ -296,7 +274,7 @@ static_resources:
 
 ### name
 
-インバウンド通信を受信するリスナーの名前を設定する。
+インバウンド通信を受信するリスナーの名前を設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
 
@@ -312,7 +290,7 @@ static_resources:
 
 ### clustersとは
 
-インバウンド通信のルーティング対象のマイクロサービスをグループ化する。対象が一つであっても、```clusters```キーは必須である。
+インバウンド通信のルーティング対象のマイクロサービスをグループ化する．対象が一つであっても，```clusters```キーは必須である．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -320,7 +298,7 @@ static_resources:
 
 ### connect_timeout
 
-タイムアウトまでの時間を設定する。
+タイムアウトまでの時間を設定する．
 
 ```yaml
 static_resources:  
@@ -342,7 +320,7 @@ static_resources:
 
 ### lb_policy
 
-ルーティングのアルゴリズムを設定する。
+ルーティングのアルゴリズムを設定する．
 
 ```yaml
 static_resources:  
@@ -356,7 +334,7 @@ static_resources:
 
 #### ・endpoints
 
-ルーティング対象のIPアドレスとポート番号のリストを設定する。
+ルーティング対象のIPアドレスとポート番号のリストを設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 
@@ -379,7 +357,7 @@ static_resources:
 
 #### ・cluster_name
 
-ルーティング対象のグループの名前を設定する。
+ルーティング対象のグループの名前を設定する．
 
 ```yaml
 static_resources:  
@@ -392,7 +370,7 @@ static_resources:
 
 ### name
 
-ルーティング対象のグループの名前を設定する。
+ルーティング対象のグループの名前を設定する．
 
 ```yaml
 static_resources:  
@@ -406,7 +384,7 @@ static_resources:
 
 #### ・name
 
-ルーティング時に用いるソケット名を設定する。
+ルーティング時に用いるソケット名を設定する．
 
 ```yaml
 static_resources:  
@@ -430,7 +408,7 @@ static_resources:
 
 ### type
 
-サービスディスカバリーの種類を設定する。ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
+サービスディスカバリーの種類を設定する．ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合，必須である．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
 

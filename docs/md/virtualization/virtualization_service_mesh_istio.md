@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,7 +12,7 @@
 
 ### Istioオブジェクトとは
 
-Istioを構成するオブジェクトことで、実体はKubernetesのカスタムリソースである。
+Istioを構成するオブジェクトことで，実体はKubernetesのカスタムリソースである．
 
 <br>
 
@@ -20,7 +20,7 @@ Istioを構成するオブジェクトことで、実体はKubernetesのカス�
 
 #### ・Istioメッシュとは
 
-Istioオブジェクトを組み合わせて、サービスメッシュを実装する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。Istioを必ずしも用いる必要はなく、KubernetesやOpenShiftの機能でこれを実現してもよい。
+Istioオブジェクトを組み合わせて，サービスメッシュを実装する．マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている．Istioを必ずしも用いる必要はなく，KubernetesやOpenShiftの機能でこれを実現してもよい．
 
 参考：
 
@@ -31,7 +31,7 @@ Istioオブジェクトを組み合わせて、サービスメッシュを実装
 
 #### ・istio-proxyコンテナ
 
-Istioによって、プロキシ機能を持つistio-proxyコンテナが自動的に構築される。istio-proxyコンテナではEnvoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。
+Istioによって，プロキシ機能を持つistio-proxyコンテナが自動的に構築される．istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される．
 
 参考：https://sreake.com/blog/istio/
 
@@ -45,7 +45,7 @@ Istioによって、プロキシ機能を持つistio-proxyコンテナが自動�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、Service、DestinationRuleの設定に基づいて、クラスター外部から送信されるインバウンド通信をPodにルーティングする。
+Gateway，Service，DestinationRuleの設定に基づいて，クラスター外部から送信されるインバウンド通信をPodにルーティングする．
 
 参考：
 
@@ -60,7 +60,7 @@ Gateway、Service、DestinationRuleの設定に基づいて、クラスター外
 
 #### ・Gatewayとは
 
-IngressGatewayの機能のうち、クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う。
+IngressGatewayの機能のうち，クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う．
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
@@ -70,7 +70,7 @@ IngressGatewayの機能のうち、クラスター外部から送信されるイ
 
 #### ・VirtualServiceとは
 
-IngressGatewayの機能のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。ルーティング先のServiceが見つからないと、404ステータスを返信する。
+IngressGatewayの機能のうち，IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか，を決定する機能を担う．Service自体の設定は，IstioではなくKubernetesで行うことに注意する．ルーティング先のServiceが見つからないと，404ステータスを返信する．
 
 参考：
 
@@ -79,25 +79,7 @@ IngressGatewayの機能のうち、IngressGatewayで受信したインバウン�
 
 #### ・Envoyの設定値として
 
-VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioオブジェクトに適用される。
-
-参考：
-
-- https://istio.io/latest/docs/concepts/traffic-management/
-- http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
-- https://sreake.com/blog/istio/
-
-<br>
-
-### DestinationRule
-
-#### ・DestinationRule
-
-IngressGatewayの機能のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。
-
-#### ・Envoyの設定値として
-
-DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値としてistio-proxyコンテナに適用される。
+VirtualServiceの設定値は，Envoyのフロントプロキシの設定値としてIstioオブジェクトに適用される．
 
 参考：
 
@@ -113,7 +95,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 #### ・EgressGatewayとは
 
-クラスター内部から送信されるアウトバウンド通信をフィルタリングし、パブリックネットワークにルーティングする。
+クラスター内部から送信されるアウトバウンド通信をフィルタリングし，パブリックネットワークにルーティングする．
 
 参考：https://knowledge.sakura.ad.jp/20489/
 
@@ -125,7 +107,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 #### ・ServiceEntryとは
 
-アウトバウンド通信のうち、送信可能なもののみを指定したドメインやEgressGatewayにルーティングする。ServiceEntryを使用しない場合は、全てのアウトバウンド通信がルーティングされる。
+アウトバウンド通信のうち，送信可能なもののみを指定したドメインやEgressGatewayにルーティングする．ServiceEntryを使用しない場合は，全てのアウトバウンド通信がルーティングされる．
 
 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 
@@ -133,11 +115,34 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 <br>
 
+## 01-04. 両方向通信に関するオブジェクト
+
+### DestinationRule
+
+#### ・DestinationRuleとは
+
+| 通信方向       | 機能                                                         | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| インバウンド   | IngressGatewayの機能のうち，Serviceで受信したインバウンド通信をいずれのPodにルーティングするか，を決定する機能を担う．Service自体の設定は，IstioではなくKubernetesで行うことに注意する． |                                                              |
+| アウトバウンド | istio-proxyコンテナの送信するアウトバウンド通信をTLSで暗号化するかどうか，を決定する機能を担う． | 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+
+#### ・Envoyの設定値として
+
+DestinationRuleの設定値は，Envoyのリバースプロキシコンテナの設定値としてistio-proxyコンテナに適用される．
+
+参考：
+
+- https://istio.io/latest/docs/concepts/traffic-management/
+- http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
+- https://sreake.com/blog/istio/
+
+<br>
+
 ## 02. Istiod
 
 ### Istiodとは
 
-Envoyコンテナを統括的に管理する。
+Envoyコンテナを統括的に管理する．
 
 参考：
 
@@ -150,7 +155,7 @@ Envoyコンテナを統括的に管理する。
 
 #### ・Citadalとは
 
-暗号鍵やSSL証明書を管理する。
+暗号鍵やSSL証明書を管理する．
 
 参考：https://knowledge.sakura.ad.jp/20489/
 
@@ -166,7 +171,7 @@ Envoyコンテナを統括的に管理する。
 
 #### ・sidecar-injectorとは
 
-Envoyコンテナをサイドカーとして稼働させる。
+Envoyコンテナをサイドカーとして稼働させる．
 
 <br>
 
@@ -174,7 +179,7 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 #### ・Mixerとは
 
-認証やデータ収集を行う。
+認証やデータ収集を行う．
 
 <br>
 
@@ -182,7 +187,7 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 #### ・Pilotとは
 
-Serviceディスカバリやトラフィックの管理を行う。
+Serviceディスカバリやトラフィックの管理を行う．
 
 <br>
 
@@ -190,7 +195,7 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 ### IstioOperatorとは
 
-Istioのインストールや、Istioオブジェクトの操作が可能なオブジェクトのこと。
+Istioのインストールや，Istioオブジェクトの操作が可能なオブジェクトのこと．
 
 参考：
 
@@ -205,7 +210,7 @@ Istioのインストールや、Istioオブジェクトの操作が可能なオ�
 
 #### ・Fault Injectionとは
 
-障害を意図的に注入し、サービスメッシュの動作を検証する。
+障害を意図的に注入し，サービスメッシュの動作を検証する．
 
 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
@@ -213,6 +218,6 @@ Istioのインストールや、Istioオブジェクトの操作が可能なオ�
 
 | テスト名         | 内容                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Deplay Injection | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abort Injection  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| Deplay Injection | マイクロサービスに対するインバウンド通信にて，意図的に通信の遅延を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abort Injection  | マイクロサービスに対するインバウンド通信にて，意図的に通信の中止を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 

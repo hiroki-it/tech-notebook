@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,7 +12,7 @@
 
 ### 様々な管理ユーティリティ
 
-様々な粒度のプログラムを対象にした管理ユーティリティがある。
+様々な粒度のプログラムを対象にした管理ユーティリティがある．
 
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
 
@@ -67,7 +67,7 @@ $ yum install nodejs
 
 #### ・init
 
-package.jsonを生成する。
+package.jsonを生成する．
 
 ```bash
 $ npm init
@@ -93,7 +93,7 @@ $ npm install -g <パッケージ名>
 
 #### ・install
 
-指定したライブラリをインストールする。
+指定したライブラリをインストールする．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
@@ -112,7 +112,7 @@ pip install -r requirements.txt　--prefix=/usr/local
 
 #### ・freeze
 
-pipでインストールされたパッケージを元に、要件ファイルを作成する。
+pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
@@ -126,7 +126,7 @@ $ pip freeze > uninstall.txt
 
 #### ・show
 
-pipでインストールしたパッケージ情報を表示する。
+pipでインストールしたパッケージ情報を表示する．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
@@ -150,7 +150,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 #### ・uninstall
 
-指定したライブラリをインストールする。
+指定したライブラリをインストールする．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
@@ -171,7 +171,7 @@ $ pip uninstall -y -r uninstall.txt
 
 #### ・search
 
-指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
+指定したファイルを持つパッケージを検索する．拡張子も指定しても，ファイル名までしか絞れない．
 
 参考：
 
@@ -179,12 +179,12 @@ $ pip uninstall -y -r uninstall.txt
 - https://embedded.hatenadiary.org/entry/20081101/p3
 
 ```bash
-# apt-fileパッケージをインストールする。
+# apt-fileパッケージをインストールする．
 $ apt-get install apt-file
 
 $ apt-file update
 
-# zlib.hファイルを持つパッケージを検索する。
+# zlib.hファイルを持つパッケージを検索する．
 $ apt-file search zlib.h
 
 autoconf-archive: /usr/share/doc/autoconf-archive/html/ax_005fcheck_005fzlib.html
@@ -206,7 +206,7 @@ zlib1g-dev: /usr/include/zlib.h
 
 #### ・-ivh
 
-パッケージをインストールまたは更新する。一度に複数のオプションを組み合わせて記述する。インストール時にパッケージ間の依存関係を解決できないので注意。
+パッケージをインストールまたは更新する．一度に複数のオプションを組み合わせて記述する．インストール時にパッケージ間の依存関係を解決できないので注意．
 
 ```bash
 # パッケージをインストール
@@ -222,7 +222,7 @@ $ rpm -Uvh <パッケージ名>
 
 #### ・-qa
 
-インストールされた全てのパッケージの中で、指定した文字を名前に含むものを表示する。
+インストールされた全てのパッケージの中で，指定した文字を名前に含むものを表示する．
 
 ```bash
 # -qa：
@@ -231,7 +231,7 @@ $ rpm -qa | grep <検索文字>
 
 #### ・-ql
 
-指定したパッケージ名で、関連する全てのファイルの場所を表示する。
+指定したパッケージ名で，関連する全てのファイルの場所を表示する．
 
 ```bash
 # -ql：
@@ -240,7 +240,7 @@ $ rpm -ql <パッケージ名>
 
 #### ・-qi
 
-指定したパッケージ名で、インストール日などの情報を表示する。
+指定したパッケージ名で，インストール日などの情報を表示する．
 
 ```bash
 # -qi：
@@ -249,34 +249,34 @@ $ rpm -qi <パッケージ名>
 
 <br>
 
-### yum、dnf（RedHat系）
+### yum，dnf（RedHat系）
 
-#### ・install、reinstall
+#### ・install，reinstall
 
-rpmと同様の使い方ができる。また、インストール時にパッケージ間の依存関係を解決できる。
+rpmと同様の使い方ができる．また，インストール時にパッケージ間の依存関係を解決できる．
 
 ```bash
 # パッケージをインストール
 $ yum install -y <パッケージ名>
 
-# 再インストールする時は、reinstallとすること
+# 再インストールする時は，reinstallとすること
 $ yum reinstall -y <パッケージ名>
 ```
 
 #### ・list
 
-インストールされた全てのパッケージを表示する。
+インストールされた全てのパッケージを表示する．
 
 ```bash
-# 指定した文字を名前に含むものを表示。
+# 指定した文字を名前に含むものを表示．
 $ yum list | grep <検索文字>
 ```
 
-#### ・EPELリポジトリ、Remiリポジトリ
+#### ・EPELリポジトリ，Remiリポジトリ
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを用いると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを用いると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
 
-1. CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、/etc/yu.repos.d/* に配置される。
+1. CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，/etc/yu.repos.d/* に配置される．
 
 ```bash
 # CentOS7系の場合
@@ -289,7 +289,7 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-2. CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d/*```に配置される。
+2. CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d/*```に配置される．
 
 ```bash
 # CentOS7系の場合
@@ -299,7 +299,7 @@ $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-4. 設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
+4. 設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
 
 ```bash
 [epel]
@@ -330,7 +330,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 gpgcheck=1
 ```
 
-5. Remiリポジトリの有効化オプションを永続的に使用できるようにする。
+5. Remiリポジトリの有効化オプションを永続的に使用できるようにする．
 
 ```bash
 # CentOS7の場合
@@ -343,11 +343,11 @@ $ yum-config-manager --enable remi-php74
 $ dnf module enable php:remi-7.4
 ```
 
-6. remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
+6. remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを用いて、明示的にremiを指定
+# 一時的に有効化できるオプションを用いて，明示的にremiを指定
 $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 
@@ -356,11 +356,11 @@ $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
-7. 再インストールする時は、reinstallとすること。
+7. 再インストールする時は，reinstallとすること．
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを用いて、明示的にremiを指定
+# 一時的に有効化できるオプションを用いて，明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 

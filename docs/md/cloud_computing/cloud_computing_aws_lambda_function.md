@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,7 +12,7 @@
 
 ### ハンドラ関数とは
 
-自身から起動することはなく、外部から要求されて実行される関数のこと。
+自身から起動することはなく，外部から要求されて実行される関数のこと．
 
 参考：https://garop.com/36/
 
@@ -22,13 +22,13 @@
 
 #### ・非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。ハンドラ関数の初期名は```handler```メソッドであるが別名でもよい。```return```または```throw```を用いて、Lambdaのコール元にレスポンスを送信する。レスポンスとして、Promiseオブジェクトを送信することもできる。
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でもよい．```return```または```throw```を用いて，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 **＊実装例＊**
 
-Node.jsの場合を示す。
+Node.jsの場合を示す．
 
 ```javascript
 exports.handler = async (event) => {
@@ -41,7 +41,7 @@ exports.handler = async (event) => {
     response.statusCode = 200;
     response.body = "Hello World!"
 
-    // もしくはthrowを用いて、レスポンスを送信する。
+    // もしくはthrowを用いて，レスポンスを送信する．
     return response;
 }
 ```
@@ -52,7 +52,7 @@ const s3 = new aws.S3();
 
 exports.handler = async function(event) {
     
-    // Promiseオブジェクトをレスポンスとして送信する。
+    // Promiseオブジェクトをレスポンスとして送信する．
     return s3.listBuckets().promise();
 }
 ```
@@ -60,7 +60,7 @@ exports.handler = async function(event) {
 ```javascript
 exports.handler = async (event) => {
     
-    // Promiseオブジェクトをレスポンスとして送信する。
+    // Promiseオブジェクトをレスポンスとして送信する．
     return new Promise((resolve, reject) => {
         // 何らかの処理
     }
@@ -69,15 +69,15 @@ exports.handler = async (event) => {
 
 #### ・同期ハンドラ関数（Non-async handlers）
 
-Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。このオブジェクトにはメソッドとプロパティを持つ。ハンドラ関数の初期名は```handler```であるが別名でもよい。```callback```メソッドを用いて、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
+Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でもよい．```callback```メソッドを用いて，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
-（※『Non』が翻訳をおかしくしているため、英語版を推奨）
+（※『Non』が翻訳をおかしくしているため，英語版を推奨）
 
 **＊実装例＊**
 
-Node.jsの場合を示す。レスポンスを返信するには、```done```メソッド、```succeed```メソッド、```callback```メソッドが必要である。また、処理を終える場合は```return```で返却する必要がある。
+Node.jsの場合を示す．レスポンスを返信するには，```done```メソッド，```succeed```メソッド，```callback```メソッドが必要である．また，処理を終える場合は```return```で返却する必要がある．
 
 ```javascript
 exports.handler = (event, context, callback) => {
@@ -110,7 +110,7 @@ exports.handler = (event, context, callback) => {
     
     // なんらかの処理
     
-    // callback以前の処理を待機する。
+    // callback以前の処理を待機する．
     callback(null, /*レスポンス*/);
     
     // 処理を終える場合
@@ -122,13 +122,13 @@ exports.handler = (event, context, callback) => {
 
 | 引数                | 説明                                                         | 補足                                                         |
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。               | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。 | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
-| callback関数        | 代入されている関数の実体は不明である。全ての処理が終わるまで実行が待機され、Lambdaのコール元にレスポンスを送信する。 | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている．               | Lambdaにリクエストを送信するAWSリソースごとに，オブジェクトの構造が異なる．構造は以下の通り．<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | Lambdaに関するデータ（名前，バージョンなど）を取得できるメソッドとプロパティが代入されている． | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
+| callback関数        | 代入されている関数の実体は不明である．全ての処理が終わるまで実行が待機され，Lambdaのコール元にレスポンスを送信する． | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
 
 #### ・テストとデバッグ
 
-Lambdaで関数を作成すると、CloudWatchログのロググループに、『```/aws/lambda/<関数名>```』というグループが自動的に作成される。Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため、都度確認すること。
+Lambdaで関数を作成すると，CloudWatchログのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
 
 #### ・ベストプラクティス
 
@@ -148,11 +148,11 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 #### ・aws-lambda-goとは
 
-Goを用いて、Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
+Goを用いて，Lambda-APIに対してリクエストを送信し，AWSリソースを操作できる．
 
 #### ・```Start```関数
 
-Lamda関数を実行するための関数。```Start```関数に渡すパラメータには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。もし含まれていない場合は、Lambdaで内部エラーが起こる。
+Lamda関数を実行するための関数．```Start```関数に渡すパラメータには，必ず1つでもerrorインターフェースの実装が含まれている必要がある．もし含まれていない場合は，Lambdaで内部エラーが起こる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html
 
@@ -169,20 +169,20 @@ type MyEvent struct {
 	Name string `json:"name"`
 }
 
-// HandleRequest リクエストをハンドリングします。
+// HandleRequest リクエストをハンドリングします．
 func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
 	return fmt.Sprintf("Hello %s!", name.Name), nil
 }
 
 func main() {
-	// Lambda関数を実行します。
+	// Lambda関数を実行します．
 	lambda.Start(HandleRequest)
 }
 ```
 
 #### ・パラメータ
 
-contextオブジェクトとeventオブジェクトをパラメータとして使用できる。
+contextオブジェクトとeventオブジェクトをパラメータとして使用できる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
 
@@ -275,21 +275,21 @@ func main() {
 
 #### ・正常系
 
-正常系レスポンスの構成要素については以下のリンク先を参考にせよ。
+正常系レスポンスの構成要素については以下のリンク先を参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
-文字列を返却すると、Lambdaはその文字列をそのまま返信する。また、JSONをレスポンスすることもできる。
+文字列を返却すると，Lambdaはその文字列をそのまま返信する．また，JSONをレスポンスすることもできる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
 #### ・異常系
 
-Lambdaのエラーレスポンスのステータスコードについては以下のリンク先を参考にせよ。
+Lambdaのエラーレスポンスのステータスコードについては以下のリンク先を参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
-エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。
+エラーレスポンスのメッセージボディには以下のJSONが割り当てられる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
@@ -300,7 +300,7 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 }
 ```
 
-errorsパッケージの```New```関数を用いると、内部で発生したエラーメッセージをオーバーライドできる。
+errorsパッケージの```New```関数を用いると，内部で発生したエラーメッセージをオーバーライドできる．
 
 ```go
 package main
@@ -342,7 +342,7 @@ func main() {
 
 #### ・ログの出力方法
 
-標準パッケージの```fmt```、または任意のロギングパッケージを使用し、標準出力/標準エラー出力に出力する。CloudWatchログにてこれを確認する。
+標準パッケージの```fmt```，または任意のロギングパッケージを使用し，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-logging.html
 
@@ -360,12 +360,12 @@ func main() {
 
 ### デフォルトで使用可能なパッケージ
 
-以下のパッケージでは、npmを用いる必要はない。パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。もし後続の処理で非同期処理の結果を用いたい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。
+以下のパッケージでは，npmを用いる必要はない．パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている．もし後続の処理で非同期処理の結果を用いたい場合，非同期処理の状態をPromiseオブジェクトで管理する必要がある．
 
 | パッケージ名            | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる              | 参考：https://nodejs.org/api/index.html                      |
-| aws-sdk.js              | JavaScriptを用いて、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| aws-sdk.js              | JavaScriptを用いて，AWS-APIに対してリクエストを送信し，AWSリソースを操作できる． | 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 <br>
 
@@ -375,7 +375,7 @@ func main() {
 
 #### ・aws-sdk.jsの場合
 
-各AWSオブジェクトのメソッドの後に、```promise```メソッドをチェーンできる。これにより、各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる。
+各AWSオブジェクトのメソッドの後に，```promise```メソッドをチェーンできる．これにより，各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる．
 
 参考：https://docs.aws.amazon.com/ja_jp/sdk-for-javascript/v2/developer-guide/using-promises.html
 
@@ -414,7 +414,7 @@ exports.handler = async (event) => {
 
 **＊実装例＊**
 
-AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AmplifyのイベントをEventBridgeでキャッチし，これをLambdaに転送する．Lambdaでは，メッセージを構成し，Slack-APIに送信する．
 
 参考：
 
@@ -447,7 +447,7 @@ exports.handler = async (event) => {
 
   try {
 
-    // Amplifyのブランチ情報を取得します。
+    // Amplifyのブランチ情報を取得します．
     const app = await amplify.getBranch(option).promise();
 
     console.log(JSON.stringify({app}, null, 2));
@@ -470,7 +470,7 @@ exports.handler = async (event) => {
 };
 
 /**
- * メッセージを作成します。
+ * メッセージを作成します．
  *
  * @param event
  * @param app
@@ -558,14 +558,14 @@ const buildMessage = (event, app) => {
 };
 
 /**
- * メッセージを送信します。
+ * メッセージを送信します．
  *
  * @param message
  * @returns Promise<json>
  */
 const postMessageToSlack = (message) => {
 
-  // 非同期処理を持つ関数をコンストラクタに渡し、非同期処理を管理します。
+  // 非同期処理を持つ関数をコンストラクタに渡し，非同期処理を管理します．
   return new Promise((resolve, reject) => {
 
     const options = {
@@ -586,18 +586,18 @@ const postMessageToSlack = (message) => {
 
       let tmp;
 
-      // 正常なレスポンスからデータを取り出します。
+      // 正常なレスポンスからデータを取り出します．
       response.on("data", (data) => {
         tmp = data;
       });
 
-      // 異常なレスポンスからエラーを取り出します。
+      // 異常なレスポンスからエラーを取り出します．
       response.on("error", (error) => {
         tmp = error;
       });
 
-      //  data、error、end、の間でawaitの効力は横断できない。
-      // そのため、できるだけendで事後処理を実装し、awaitを用いるようにする。
+      //  data，error，end，の間でawaitの効力は横断できない．
+      // そのため，できるだけendで事後処理を実装し，awaitを用いるようにする．
       response.on("end", async () => {
         tmp = param.toString(tmp);
         const body = JSON.parse(tmp);
@@ -617,7 +617,7 @@ const postMessageToSlack = (message) => {
     });
 
 
-    // メッセージボディを設定して、リクエストを送信します。
+    // メッセージボディを設定して，リクエストを送信します．
     request.write(message);
 
     request.end();
@@ -633,7 +633,7 @@ const postMessageToSlack = (message) => {
 
 **＊実装例＊**
 
-API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチしておく必要がある。
+API Gatewayでリクエストを受信し，それに応じて特定のデータをS3に保存する．LambdaがS3に対してアクションを実行できるように，事前に，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチしておく必要がある．
 
 ```javascript
 "use strict";
@@ -644,7 +644,7 @@ const s3 = new aws.S3();
 
 exports.handler = (event, context, callback) => {
 
-  // API Gatewayとのプロキシ統合を意識したJSON構造にする。
+  // API Gatewayとのプロキシ統合を意識したJSON構造にする．
   // レスポンスメッセージの初期値
   const response = {
     "statusCode": null,

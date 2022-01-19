@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -18,7 +18,7 @@
 
 ### 外部設計の詳細
 
-  外部設計では、ユーザ向けのソフトウェア設計が行われる。
+  外部設計では，ユーザ向けのソフトウェア設計が行われる．
 
 ![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/外部設計の詳細.png)
 
@@ -28,7 +28,7 @@
 
 ### プロトタイプ型開発とは
 
-ソフトウェア設計に入るまでに試作品を作り、要件定義をより正確にする開発方法。
+ソフトウェア設計に入るまでに試作品を作り，要件定義をより正確にする開発方法．
 
 ![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p456.png)
 
@@ -38,7 +38,7 @@
 
 ### レビューとは
 
-各工程が完了した段階で、レビューを行う開発方法。
+各工程が完了した段階で，レビューを行う開発方法．
 
 ![p458](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p458.png)
 
@@ -48,7 +48,7 @@
 
 ### RADとは
 
-Visual Basicなどの開発支援ツールを用いて、短期間で設計～テストまでを繰り返す開発方法。
+Visual Basicなどの開発支援ツールを用いて，短期間で設計～テストまでを繰り返す開発方法．
 
 ![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-1.png)
 
@@ -60,7 +60,7 @@ Visual Basicなどの開発支援ツールを用いて、短期間で設計～�
 
 ### スパイラル型開発とは
 
-ソフトウェアをいくつかのサブシステムに分割し、ウォーターフォール型開発で各サブシステムを開発していく方法。
+ソフトウェアをいくつかのサブシステムに分割し，ウォーターフォール型開発で各サブシステムを開発していく方法．
 
 ![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p457.png)
 
@@ -70,7 +70,7 @@ Visual Basicなどの開発支援ツールを用いて、短期間で設計～�
 
 ### アジャイル型開発とは
 
-スパイラルモデルの派生型。スパイラルモデルよりも短い期間で、設計～テストまでを繰り返す開発方法。
+スパイラルモデルの派生型．スパイラルモデルよりも短い期間で，設計～テストまでを繰り返す開発方法．
 
 ![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p463.png)
 
@@ -80,13 +80,13 @@ Visual Basicなどの開発支援ツールを用いて、短期間で設計～�
 
 ### CASEツールとは
 
-ソフトウェア開発をサポートするツール群のこと。
+ソフトウェア開発をサポートするツール群のこと．
 
 <br>
 
 ### 上流CASEツール
 
-  データフロー図、ER図
+  データフロー図，ER図
 
 <br>
 

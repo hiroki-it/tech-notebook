@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -10,7 +10,7 @@
 
 ## 01. Vagrantfileとは
 
-プロバイダーとプロビジョナーの一連の操作内容を設定する。チームメンバーが別々に仮想サーバーを構築する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
+プロバイダーとプロビジョナーの一連の操作内容を設定する．チームメンバーが別々に仮想サーバーを構築する場合，プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に，違いが生じてしまう．Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば，チームメンバーが同じソフトウェアの下で，仮想サーバーを構築し，ソフトウェアをインストールできる．
 
 <br>
 
@@ -18,14 +18,14 @@
 
 ### Vagrant.configureとは
 
-Vagrantfileのバージョンを設定する。
+Vagrantfileのバージョンを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
 ```bash
 Vagrant.configure("2") do |config|
 
-  # その他の全てのオプションを設定する。
+  # その他の全てのオプションを設定する．
 
 end
 ```
@@ -36,7 +36,7 @@ end
 
 ### config.vmとは
 
-仮想環境の構成を設定する。
+仮想環境の構成を設定する．
 
 <br>
 
@@ -44,7 +44,7 @@ end
 
 #### ・boxとは
 
-仮想環境のベースとするボックス名を設定する。
+仮想環境のベースとするボックス名を設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
@@ -58,7 +58,7 @@ config.vm.box = "foo"
 
 #### ・box_check_updateとは
 
-Vagrantの更新通知を設定する。
+Vagrantの更新通知を設定する．
 
 ```bash
 config.vm.box_check_update = false
@@ -70,13 +70,13 @@ config.vm.box_check_update = false
 
 #### ・networkとは
 
-仮想環境のネットワークを設定する。
+仮想環境のネットワークを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ・forwarded_port
 
-ホストから仮想環境へポートフォワーディングを設定する。
+ホストから仮想環境へポートフォワーディングを設定する．
 
 参考；https://www.vagrantup.com/docs/networking/forwarded_ports
 
@@ -86,7 +86,7 @@ config.vm.network "forwarded_port", guest: 80, host: 8080
 
 #### ・private_network
 
-仮想環境のプライベートIPアドレスを設定する。他の仮想環境とIPアドレスが重複しないようにする必要がある。
+仮想環境のプライベートIPアドレスを設定する．他の仮想環境とIPアドレスが重複しないようにする必要がある．
 
 参考：https://www.vagrantup.com/docs/networking/private_network
 
@@ -100,7 +100,7 @@ config.vm.network "private_network", ip: "10.0.0.2"
 
 #### ・providerとは
 
-プロバイダー固有のオプションを設定する。
+プロバイダー固有のオプションを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
@@ -134,7 +134,7 @@ end
 
 #### ・provisionとは
 
-仮想環境のプロビジョニングを設定する。
+仮想環境のプロビジョニングを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
@@ -151,7 +151,7 @@ SHELL
 
 #### ・synced_folderとは
 
-ホスト上のディレクトリを仮想環境にマウントする。
+ホスト上のディレクトリを仮想環境にマウントする．
 
 ```bash
 config.vm.synced_folder ".", "/var/www/foo"

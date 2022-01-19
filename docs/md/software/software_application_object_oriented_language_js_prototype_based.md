@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -13,13 +13,13 @@
 
 ### 標準ビルトインオブジェクトとは
 
-JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト。
+JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト．
 
 <br>
 
 ### Object
 
-オブジェクトを生成するオブジェクト。他の全ての標準ビルトインオブジェクトの継承元になっているため、標準ビルトインオブジェクトは、Objectが持つメソッドとデータを使える。
+オブジェクトを生成するオブジェクト．他の全ての標準ビルトインオブジェクトの継承元になっているため，標準ビルトインオブジェクトは，Objectが持つメソッドとデータを使える．
 
 **＊実装例＊**
 
@@ -44,14 +44,14 @@ const obj = new Object();
 
 #### ・```Array.prototype.entries```メソッド
 
-配列からkeyとvalueを取得する。
+配列からkeyとvalueを取得する．
 
 **＊実装例＊**
 
 ```javascript
 const array = ["foo", "bar", "baz"];
 
-// key、valueを取得できる。
+// key，valueを取得できる．
 const iterator = array.entries();
 
 // for-ofで展開
@@ -83,7 +83,7 @@ for (const value of iterator) {
 
 #### ・```Array.length```
 
-要素数を出力する。
+要素数を出力する．
 
 **＊実装例＊**
 
@@ -103,7 +103,7 @@ console.log(
 
 #### ・```JSON.parse```メソッド
 
-JavaScriptからJSONにシリアライズする。
+JavaScriptからJSONにシリアライズする．
 
 **＊実装例＊**
 
@@ -122,7 +122,7 @@ console.log(
 
 #### ・```stringify```メソッド
 
-JSONからJavaScriptにデシリアライズする。
+JSONからJavaScriptにデシリアライズする．
 
 **＊実装例＊**
 
@@ -141,11 +141,11 @@ console.log(
 
 <br>
 
-## 02. オブジェクトの生成、初期化
+## 02. オブジェクトの生成，初期化
 
 ### リテラル表記の使用
 
-オブジェクトをリテラル表記で生成する方法。キャメルケース（小文字から始める記法）を用いる。
+オブジェクトをリテラル表記で生成する方法．キャメルケース（小文字から始める記法）を用いる．
 
 #### ・非省略形
 
@@ -155,7 +155,7 @@ console.log(
 // リテラル表記
 const foo = {
   
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
   
   alertValue: (value) => {
@@ -174,7 +174,7 @@ const foo = {
 
 #### ・省略形
 
-リテラル表記で、```methodA(): fucntion{}``` とするところを、```methodA() {}```と記述できる。
+リテラル表記で，```methodA(): fucntion{}``` とするところを，```methodA() {}```と記述できる．
 
 ```javascript
 // リテラル表記
@@ -196,14 +196,14 @@ const foo = {
 
 #### ・```Object```コンストラクタ関数
 
-キャメルケース（小文字から始める記法）を用いる。プロパティを生成するためには、値を格納する必要がある。関数宣言あるいは関数式で記述する。パスカルケース（大文字から始める記法）を用いる。ちなみに、オブジェクトのプロパティ値として生成された関数を、メソッドと呼ぶ。
+キャメルケース（小文字から始める記法）を用いる．プロパティを生成するためには，値を格納する必要がある．関数宣言あるいは関数式で記述する．パスカルケース（大文字から始める記法）を用いる．ちなみに，オブジェクトのプロパティ値として生成された関数を，メソッドと呼ぶ．
 
 **＊実装例＊**
 
 ```javascript
 const foo = new Object({
 
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
 
   setValue(value) {
@@ -224,7 +224,7 @@ const foo = new Object({
 const Foo = new Function();
 ```
 
-ただし、公式からこのような記法は、非推奨とされている。以下の関数宣言、関数式、アロー関数による関数式省略、の記法が推奨される。特にアロー関数では、```this```が宣言されたオブジェクト自身を指すため、保守性が高くおすすめである。
+ただし，公式からこのような記法は，非推奨とされている．以下の関数宣言，関数式，アロー関数による関数式省略，の記法が推奨される．特にアロー関数では，```this```が宣言されたオブジェクト自身を指すため，保守性が高くおすすめである．
 
 **＊実装例＊**
 
@@ -232,10 +232,10 @@ const Foo = new Function();
 // 関数宣言
 function Foo() {
     
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
 
-    // プロパティ値として宣言した関数を、メソッドという。
+    // プロパティ値として宣言した関数を，メソッドという．
     this.setValue = (value)  => {
         this._property = value;
     };   
@@ -253,7 +253,7 @@ const Foo = new Foo();
 // 関数式
 const Foo = (value)  => {
     
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
     this.setValue = (value)  => {
@@ -268,7 +268,7 @@ const Foo = (value)  => {
 // アロー関数による関数式の省略記法
 const Foo = (value) => {
     
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
     this.setValue = (value)  => {
@@ -281,7 +281,7 @@ const Foo = (value) => {
 }
 ```
 
-リテラル表記と```Object```コンストラクタ関数による生成とは異なり、コンストラクタ関数によって宣言されたオブジェクトは、暗示的に```prototype```プロパティを持つ。
+リテラル表記と```Object```コンストラクタ関数による生成とは異なり，コンストラクタ関数によって宣言されたオブジェクトは，暗示的に```prototype```プロパティを持つ．
 
 **＊実装例＊**
 
@@ -309,7 +309,7 @@ console.log(
 
 #### ・JavaScriptのクラスとは
 
-ES6から、糖衣構文の```class```によって、オブジェクトを宣言できるようになった。クラス宣言あるいはクラス式で記述する。オブジェクトの生成時、```constructor```メソッドでオブジェクトの初期化を行う。パスカルケース（大文字から始める記法）を用いる。
+ES6から，糖衣構文の```class```によって，オブジェクトを宣言できるようになった．クラス宣言あるいはクラス式で記述する．オブジェクトの生成時，```constructor```メソッドでオブジェクトの初期化を行う．パスカルケース（大文字から始める記法）を用いる．
 
 #### ・クラス宣言記法
 
@@ -319,9 +319,9 @@ ES6から、糖衣構文の```class```によって、オブジェクトを宣言
 // named exportによる出力
 export class Foo {
     
-    // classでしか使えない。
-    // Setterの代わりにコンストラクタでImmutableを実現。
-    // データの宣言と格納が同時に行われる。
+    // classでしか使えない．
+    // Setterの代わりにコンストラクタでImmutableを実現．
+    // データの宣言と格納が同時に行われる．
     constructor(value) {
         this.property = value;
     }
@@ -336,7 +336,7 @@ export class Foo {
 // ファイルの読み込み
 import {Foo} from "./foo.js";
 
-// 生成、初期化
+// 生成，初期化
 const foo = new Foo(1);
 
 // メソッドのコール
@@ -349,9 +349,9 @@ foo.getValue();
 // named exportによる出力
 export const Foo = class {
     
-    // classでしか使えない。
-    // Setterの代わりにコンストラクタでImmutableを実現。
-    // データの宣言と格納が同時に行われる。
+    // classでしか使えない．
+    // Setterの代わりにコンストラクタでImmutableを実現．
+    // データの宣言と格納が同時に行われる．
     constructor(value) {
         this._property = value;
     }
@@ -366,7 +366,7 @@ export const Foo = class {
 // ファイルの読み込み
 import { Foo } from "./foo.js";
 
-// 生成、初期化
+// 生成，初期化
 const foo = new Foo(1);
 
 // メソッドのコール
@@ -381,18 +381,18 @@ foo.getValue();
 
 #### ・プロトタイプチェーンとは
 
-オブジェクトが暗示的に持つ```prototype```プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。クラスベースのオブジェクト指向で用いられるクラスチェーンについては、別ノートを参照せよ。
+オブジェクトが暗示的に持つ```prototype```プロパティに，別のオブジェクトのメンバを追加することによって，そのオブジェクトのプロトタイプを継承できる．オブジェクトからプロパティやメソッドをコールした時，そのオブジェクトにこれらが存在しなければ，継承元まで辿る仕組みを『プロトタイプチェーン』という．クラスベースのオブジェクト指向で用いられるクラスチェーンについては，別ノートを参照せよ．
 
 #### ・```new Obejct```メソッドを用いた継承
 
 **＊実装例＊**
 
 ```javascript
-// 大元となるオブジェクトは個別ファイルで管理しておくのがベター。
-// コンストラクタ関数の関数式による宣言。
+// 大元となるオブジェクトは個別ファイルで管理しておくのがベター．
+// コンストラクタ関数の関数式による宣言．
 const Foo = (value)  => {
   
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
     this.setValue = (value)  => {
@@ -405,16 +405,16 @@ const Foo = (value)  => {
 }
 ```
 
-別クラスで、以下のように継承する。
+別クラスで，以下のように継承する．
 
 **＊実装例＊**
 
 ```javascript
-// 継承元のオブジェクトのファイルを読み込むことも忘れずに。
-// prototypeプロパティの継承先のオブジェクトを宣言。
+// 継承元のオブジェクトのファイルを読み込むことも忘れずに．
+// prototypeプロパティの継承先のオブジェクトを宣言．
 const SubFoo = (subValue) => {
     
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     this.subProperty = subValue;
   
     this.setSubValue = (subValue) => {
@@ -426,11 +426,11 @@ const SubFoo = (subValue) => {
     };
 }
 
-// new Foo()を用いた継承。
+// new Foo()を用いた継承．
 SubFoo.prototype = new Foo();
 
-// SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）。
+// SubFooクラスにはgetValue()は無い．
+// 継承元まで辿り，Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）．
 const result = SubFoo.getValue()
 console.log(result);
 ```
@@ -440,11 +440,11 @@ console.log(result);
 **＊実装例＊**
 
 ```javascript
-// 継承元のオブジェクトのファイルを読み込むことも忘れずに。
-// prototypeプロパティの継承先のオブジェクトを宣言。
+// 継承元のオブジェクトのファイルを読み込むことも忘れずに．
+// prototypeプロパティの継承先のオブジェクトを宣言．
 const SubFoo = () => {
     
-    // 慣習的にアンダーバーでprivateを表す。
+    // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
     this.setSubValue = (subValue) => {
@@ -456,21 +456,21 @@ const SubFoo = () => {
     };
 };
 
-// Object.create()を用いた継承。
+// Object.create()を用いた継承．
 SubFoo.prototype = Object.create(Foo.prototype);
 
-// SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）。
+// SubFooクラスにはgetValue()は無い．
+// 継承元まで辿り，Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）．
 const result = SubFoo.getValue();
 console.log(result);
 ```
 
-また、```Object.create```メソッドを用いる場合、継承だけでなく、メンバを新しく追加することもできる。
+また，```Object.create```メソッドを用いる場合，継承だけでなく，メンバを新しく追加することもできる．
 
 **＊実装例＊**
 
 ```javascript
-// Object.create()による継承。
+// Object.create()による継承．
 SubFoo.prototype = Object.create(Foo.prototype, {
 
     // データを定義
@@ -478,12 +478,12 @@ SubFoo.prototype = Object.create(Foo.prototype, {
     
     // メソッドを定義
     printSubValue: () => {
-        return "これは" + this.subProperty + "です。";
+        return "これは" + this.subProperty + "です．";
     }
   
 });
 
-// SubFooクラスにはprintSubValue()が追加された。
+// SubFooクラスにはprintSubValue()が追加された．
 const result = SubFoo.printSubValue();
 console.log(result);
 ```
@@ -494,14 +494,14 @@ console.log(result);
 
 ### メソッドとしてコールする場合
 
-メソッド内の```this```は、fooオブジェクトを指す。
+メソッド内の```this```は，fooオブジェクトを指す．
 
 **＊実装例＊**
 
 ```javascript
 const foo = {
 
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
 
   setValue(value) {
@@ -515,7 +515,7 @@ const foo = {
 ```
 
 ```javascript
-// メソッド内のthisは、fooオブジェクトを指す。
+// メソッド内のthisは，fooオブジェクトを指す．
 foo.setValue(1);
 foo.getValue(); // 1
 ```
@@ -526,7 +526,7 @@ foo.getValue(); // 1
 
 #### ・関数宣言と関数式によるコンストラクタ関数内の```this```の場合
 
-コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
+コンストラクタ関数内のthisは，自身がコールされたオブジェクトを指す．
 
 **＊実装例＊**
 
@@ -554,8 +554,8 @@ const object2 = {
 
 ```javascript
 /* コンストラクタ関数内のthisの場合
-コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
-ここでは、object1とobject2
+コンストラクタ関数内のthisは，自身がコールされたオブジェクトを指す．
+ここでは，object1とobject2
 */
 
 object1.printParam; // object1 param
@@ -564,7 +564,7 @@ object2.printParam; // object2 param
 
 #### ・アロー関数によるコンストラクタ関数内の```this```の場合
 
-アロー関数内の```this```の参照先には、十分な注意が必要である。今まで、JavaScriptでは、```this```の参照先が文脈によって変わることに批判が集まっていた。そこで、参照先が文脈によって変わらない機能が追加された。```this```は、自身が宣言されたオブジェクトを指す。
+アロー関数内の```this```の参照先には，十分な注意が必要である．今まで，JavaScriptでは，```this```の参照先が文脈によって変わることに批判が集まっていた．そこで，参照先が文脈によって変わらない機能が追加された．```this```は，自身が宣言されたオブジェクトを指す．
 
 **＊実装例＊**
 
@@ -592,13 +592,13 @@ const object2 = {
 
 ```javascript
 /* アロー関数内のthisの場合
-thisは、自身が宣言されたオブジェクトを指す。
-ここでは、一番外側のWindowオブジェクトであり、object1とobject2ではない。
-参照先は文脈によって変わらない。
+thisは，自身が宣言されたオブジェクトを指す．
+ここでは，一番外側のWindowオブジェクトであり，object1とobject2ではない．
+参照先は文脈によって変わらない．
 */
 
 object1.printParam; // global param
 object2.printParam; // global param
 ```
 
-また、アロー関数がコールバック関数の引数となっている場合…（要勉強）
+また，アロー関数がコールバック関数の引数となっている場合…（要勉強）

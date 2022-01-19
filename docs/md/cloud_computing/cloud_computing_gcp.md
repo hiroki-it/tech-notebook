@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -10,23 +10,23 @@
 
 ## 01. GCPによるWebサービスのリリース
 
-GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供され、Webサービスがリリースされる。
+GCPから，グローバルIPアドレスと完全修飾ドメイン名が提供され，Webサービスがリリースされる．
 
 ### クラウドデザイン例
 
-以下のデザイン例では、Dualシステムが採用されている。
+以下のデザイン例では，Dualシステムが採用されている．
 
 ![GCPのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GCPのクラウドデザイン一例.png)
 
 ### GAE：Google App Engine：GAE
 
-クラウドデプロイサーバーとして働く。AWSのElastic Beanstalkに相当する。
+クラウドデプロイサーバーとして働く．AWSのElastic Beanstalkに相当する．
 
 
 
 ### GCE：Google Compute Engine
 
-クラウドWebサーバーとして働く。AWSのEC2に相当する。
+クラウドWebサーバーとして働く．AWSのEC2に相当する．
 
 
 

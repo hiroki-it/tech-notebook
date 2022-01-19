@@ -4,7 +4,7 @@
 
 ### OpenAPI仕様とは
 
-RESTful-APIの仕様を実装により説明するためのフォーマットのこと。JSON型またはYAML型で実装できる。いくつかのフィールドから構成されている。
+RESTful-APIの仕様を実装により説明するためのフォーマットのこと．JSON型またはYAML型で実装できる．いくつかのフィールドから構成されている．
 
 参考：https://spec.openapis.org/oas/v3.1.0#fixed-fields
 
@@ -32,7 +32,7 @@ externalDocs: # externalDocsフィールド
 
 ### API Gatewayによるインポート
 
-API GatewayによるOpenAPI仕様のインポートについては、以下を参考にせよ。
+API GatewayによるOpenAPI仕様のインポートについては，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
@@ -42,7 +42,7 @@ API GatewayによるOpenAPI仕様のインポートについては、以下を�
 
 #### ・openapiフィールド（必須）
 
-OpenAPI仕様のバージョンを定義する。
+OpenAPI仕様のバージョンを定義する．
 
 **＊実装例＊**
 
@@ -52,7 +52,7 @@ openapi: 3.0.0
 
 #### ・infoフィールド（必須）
 
-API名、作成者名、メールアドレス、ライセンス、などを定義する。
+API名，作成者名，メールアドレス，ライセンス，などを定義する．
 
 **＊実装例＊**
 
@@ -73,7 +73,7 @@ info:
 
 #### ・serversフィールド
 
-API自体のURL、などを定義する。
+API自体のURL，などを定義する．
 
 **＊実装例＊**
 
@@ -92,7 +92,7 @@ servers:
 
 #### ・pathsフィールド（必須）
 
-APIのエンドポイント、HTTPメソッド、ステータスコード、などを定義する。
+APIのエンドポイント，HTTPメソッド，ステータスコード，などを定義する．
 
 ```yaml
 paths:
@@ -103,11 +103,11 @@ paths:
     #===========================
     # path itemオブジェクト
     #===========================
-    get: # GETメソッドを設定する。
+    get: # GETメソッドを設定する．
       tags:
         - ユーザー情報取得エンドポイント
       summary: ユーザー情報取得
-      description: 全ユーザー情報を取得する。
+      description: 全ユーザー情報を取得する．
       #===========================
       # リクエスト
       #===========================
@@ -126,7 +126,7 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
         '400':
           description: Bad Request レスポンス
           content:
@@ -136,32 +136,32 @@ paths:
                 title: Bad Request
                 errors:
                 messages: [
-                    "不正なリクエストです。"
+                    "不正なリクエストです．"
                 ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
     #===========================
     # path itemオブジェクト
     #===========================
-    post: # POSTメソッドを設定する。
+    post: # POSTメソッドを設定する．
       tags:
         - ユーザー情報作成エンドポイント
       summary: ユーザー情報作成
-      description: ユーザー情報を作成する。
+      description: ユーザー情報を作成する．
       #===========================
       # リクエスト
       #===========================
       parameters: []
-      requestBody: # メッセージボディにパラメータを割り当てる。
+      requestBody: # メッセージボディにパラメータを割り当てる．
         description: ユーザーID
         content:
           application/json: # MIME type
             foo: # メッセージボディ例
               userId: 1
             schema: # スキーマ
-              $ref: "#/components/schemas/user" # Userモデルを参照する。
+              $ref: "#/components/schemas/user" # Userモデルを参照する．
       #===========================
       # レスポンス
       #===========================
@@ -173,7 +173,7 @@ paths:
               foo: # レスポンスボディ例
                 userId: 1
               schema:
-                $ref: "#/components/schemas/normal" # スキーマとして、正常系モデルを参照する。
+                $ref: "#/components/schemas/normal" # スキーマとして，正常系モデルを参照する．
         '400':
           description: Bad Request レスポンス
           content:
@@ -183,12 +183,12 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # スキーマとして、異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # スキーマとして，異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
   #===========================
   # pathsオブジェクト
   #===========================
@@ -200,12 +200,12 @@ paths:
       tags:
         - ユーザー情報取得エンドポイント
       summary: 指定ユーザー情報取得
-      description: 指定したユーザー情報を取得する。
+      description: 指定したユーザー情報を取得する．
       #===========================
       # リクエスト
       #===========================
       parameters:
-        - in: path # パスにパラメータを割り当てる。
+        - in: path # パスにパラメータを割り当てる．
           name: userId
           required: true
           description: ユーザーID
@@ -225,7 +225,7 @@ paths:
                 userId: 1
                 name: Hiroki
               schema: # スキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
         '400':
           description: Bad Request レスポンス
           content:
@@ -235,12 +235,12 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -250,10 +250,10 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザーが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
     #===========================
     # path itemオブジェクト
     #===========================                
@@ -261,12 +261,12 @@ paths:
       tags:
         - ユーザー情報更新エンドポイント
       summary: 指定ユーザー更新
-      description: 指定したユーザー情報を更新する。
+      description: 指定したユーザー情報を更新する．
       #===========================
       # リクエスト
       #===========================
       parameters:
-        - in: path # パスにパラメータを割り当てる。
+        - in: path # パスにパラメータを割り当てる．
           name: userId
           required: true
           description: ユーザーID
@@ -286,7 +286,7 @@ paths:
                 userId: 1
                 name: Hiroki
               schema: # スキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
         '400':
           description: Bad Request レスポンス
           content:
@@ -296,12 +296,12 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -311,15 +311,15 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザーが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する。                 
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．                 
 ```
 
 #### ・componentsフィールド（必須）
 
-スキーマなど、他の項目で共通して利用するものを定義する。
+スキーマなど，他の項目で共通して利用するものを定義する．
 
 ```yaml
 components:
@@ -344,10 +344,10 @@ components:
             title: Unauthorized
             errors:
               messages: [
-                  "APIキーの認可に失敗しました。"
+                  "APIキーの認可に失敗しました．"
               ]
           schema:
-            $ref: "#/components/schemas/error" # 異常系モデルを参照する。              
+            $ref: "#/components/schemas/error" # 異常系モデルを参照する．              
   #===========================
   # schemaキーの共通化
   #===========================
@@ -392,7 +392,7 @@ components:
     apiKeyAuth:
       description: APIキー認証
       type: apiKey
-      name: x-api-key # ヘッダ名は『x-api-key』とする。小文字が推奨である。
+      name: x-api-key # ヘッダ名は『x-api-key』とする．小文字が推奨である．
       in: header
 ```
 
@@ -400,7 +400,7 @@ components:
 
 #### ・securityフィールド
 
-componentsフィールドで定義した認証方法を宣言する。ルートで宣言すると、全てのパスに適用できる。
+componentsフィールドで定義した認証方法を宣言する．ルートで宣言すると，全てのパスに適用できる．
 
 **＊実装例＊**
 
@@ -411,7 +411,7 @@ security:
 
 #### ・tagsフィールド
 
-各項目に付けるタグを定義する。同名のタグをつけると、自動的にまとめられる。
+各項目に付けるタグを定義する．同名のタグをつけると，自動的にまとめられる．
 
 **＊実装例＊**
 
@@ -423,7 +423,7 @@ tags:
 
 #### ・externalDocsフィールド
 
-APIを説明するドキュメントのリンクを定義する。
+APIを説明するドキュメントのリンクを定義する．
 
 **＊実装例＊**
 
@@ -439,17 +439,17 @@ externalDocs:
 
 #### ・スキーマとは
 
-APIに対して送信されるリクエストメッセージのデータ、またはAPIから返信されるレスポンスメッセージのデータについて、データ型や必須データを、JSON型またはYAML型で実装しておいたもの。リクエスト/レスポンス時のデータのバリデーションに用いる。
+APIに対して送信されるリクエストメッセージのデータ，またはAPIから返信されるレスポンスメッセージのデータについて，データ型や必須データを，JSON型またはYAML型で実装しておいたもの．リクエスト/レスポンス時のデータのバリデーションに用いる．
 
 #### ・スキーマによるバリデーション
 
-データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを行う。
+データ型や必須データにより，リクエスト/レスポンスのデータのバリデーションを行う．
 
 参考：https://spec.openapis.org/oas/v3.1.0#data-types
 
 **＊実装例＊**
 
-例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。
+例えば，APIがレスポンス時に以下のようなJSON型データを返信する例を考える．
 
 ```bash
 {
@@ -461,7 +461,7 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 }
 ```
 
-ここで、スキーマを以下のように定義しておき、APIからデータをレスポンスする時のバリデーションを行う。
+ここで，スキーマを以下のように定義しておき，APIからデータをレスポンスする時のバリデーションを行う．
 
 ```bash
 {
@@ -495,7 +495,7 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 
 #### ・API Gatewayにおけるスキーマ設定
 
-API Gatewayにて、バリデーションのためにスキーマを設定できる。詳しくは、以下のノートを参考にせよ。
+API Gatewayにて，バリデーションのためにスキーマを設定できる．詳しくは，以下のノートを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/cloud_computing/cloud_computing_aws.html
 

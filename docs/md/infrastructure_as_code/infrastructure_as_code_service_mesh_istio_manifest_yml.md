@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,7 +14,7 @@
 
 #### ・istioctl経由
 
-プロファイルを指定し、Istioオブジェクトをインストールする。
+プロファイルを指定し，Istioオブジェクトをインストールする．
 
 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
@@ -24,7 +24,7 @@ $ istioctl install --set profile=demo
 
 #### ・IstioOperatorオブジェクト経由
 
-（１）まずは、IstioOperatorオブジェクトをインストールする。IstioOperatorオブジェクトは、デフォルトで```istio-system```にIstioオブジェクトをインストールするようになっている。
+（１）まずは，IstioOperatorオブジェクトをインストールする．IstioOperatorオブジェクトは，デフォルトで```istio-system```にIstioオブジェクトをインストールするようになっている．
 
 参考：https://istio.io/latest/docs/setup/install/operator/
 
@@ -37,7 +37,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorオブジェクトが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドで操作し、Istioオブジェクトをインストールする。```kubectl```コマンドの実行結果は、インストールされたことがわかりにくいことに注意する。
+（２）IstioOperatorオブジェクトが定義されたマニフェストファイルを，```istioctl```コマンドまたは```kubectl```コマンドで操作し，Istioオブジェクトをインストールする．```kubectl```コマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
 
 ```bash
 # istioctlコマンド
@@ -67,10 +67,54 @@ istiooperator.install.istio.io/istio-operator created
 
 #### ・istioctl経由
 
-Istioオブジェクトを全てアンインストールする。
+Istioオブジェクトを全てアンインストールする．
 
 ```bash
 $ istioctl x uninstall --purge
+```
+
+<br>
+
+### Envoyのカスタマイズ方法まとめ
+
+#### ・VirtualService，DestinationRuleの定義
+
+VirtualServiceとDestinationRuleの設定値は，istio-proxyコンテナに適用される．
+
+参考：
+
+- https://sreake.com/blog/istio/
+- https://istio.io/latest/docs/reference/config/networking/virtual-service/
+- https://istio.io/latest/docs/reference/config/networking/destination-rule/
+
+#### ・EnvoyFilterの定義
+
+istio-proxyコンテナの設定を上書きできる．
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+
+#### ・annotationsの定義
+
+DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの場合は，```template```キーよりも下層の```metadata```キーを使用することに注意する．
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+#### ・istio-proxyコンテナの定義
+
+DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きできる．
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: foo-container
+          image: foo-mage
+        - name: istio-proxy
 ```
 
 <br>
@@ -79,7 +123,7 @@ $ istioctl x uninstall --purge
 
 ### apiVersionとは
 
-Istio-APIのバージョンを設定する。Kubernetesとは異なることに注意する。
+Istio-APIのバージョンを設定する．Kubernetesとは異なることに注意する．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -91,7 +135,7 @@ apiVersion: networking.istio.io/v1beta1
 
 ### kindとは
 
-構築するIstioオブジェクトを設定する。
+構築するIstioオブジェクトを設定する．
 
 - DestinationRule
 - Gateway
@@ -103,13 +147,13 @@ apiVersion: networking.istio.io/v1beta1
 
 ### metadataとは
 
-Istioオブジェクトの一意に識別するための情報を設定する。
+Istioオブジェクトの一意に識別するための情報を設定する．
 
 <br>
 
 ### namespace
 
-Istioオブジェクトを作成する名前空間を設定する。デフォルトで```istio-system```になる。
+Istioオブジェクトを作成する名前空間を設定する．デフォルトで```istio-system```になる．
 
 ```yaml
 metadata:
@@ -124,7 +168,7 @@ metadata:
 
 #### ・istio-injection
 
-アドミッションコントローラーを用いて、Envoyコンテナを自動的に構築するかどうかを設定する。
+アドミッションコントローラーを用いて，Envoyコンテナを自動的に構築するかどうかを設定する．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -143,13 +187,13 @@ metadata:
 
 #### ・annotations
 
-Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```template```キーやPodの```metadata```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの```metadata```キーで定義しないように注意する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ・proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリにファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+Envoyコンテナのプロセスの設定値をファイルとして生成するために，これの生成先ディレクトリを設定する．デフォルトでは，```./etc/istio/proxy```ディレクトリにファイルが生成される．```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる．
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -165,7 +209,7 @@ spec:
 
 #### ・sidecar.istio.io/inject
 
-Envoyコンテナを自動的に構築しないようにする。
+特定のポッドでのみ，Envoyコンテナを自動的に構築しないようにする．
 
 ```yaml
 kind: Deployment # もしくはPod
@@ -173,12 +217,12 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/inject: false
+        sidecar.istio.io/inject: "false"
 ```
 
 #### ・sidecar.istio.io/proxyCPU
 
-Envoyコンテナで用いるCPU容量を設定する。
+Envoyコンテナで用いるCPU容量を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -193,7 +237,7 @@ spec:
 
 #### ・sidecar.istio.io/proxyImage
 
-Envoyコンテナの構築に用いるDockerイメージを設定する。
+Envoyコンテナの構築に用いるDockerイメージを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -208,7 +252,7 @@ spec:
 
 #### ・sidecar.istio.io/proxyMemory
 
-Envoyコンテナで用いるメモリ容量を設定する。
+Envoyコンテナで用いるメモリ容量を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -229,13 +273,13 @@ spec:
 
 #### ・exportToとは
 
-DestinationRule上のインバウンド通信をルーティングできる名前空間を設定する。
+DestinationRule上のインバウンド通信をルーティングできる名前空間を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ・```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする。
+全ての名前空間で使用できるようにする．
 
 ```yaml
 kind: DestinationRule
@@ -246,7 +290,7 @@ spec:
 
 #### ・```.```（ドット）
 
-現在の名前空間で使用できるようにする。
+現在の名前空間で使用できるようにする．
 
 ```yaml
 kind: DestinationRule
@@ -259,7 +303,7 @@ spec:
 
 ### host
 
-紐づけるServiceの名前を設定する。
+紐づけるServiceの名前を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
@@ -268,14 +312,14 @@ spec:
 ```yaml
 kind: DestinationRule
 spec:
-  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
+  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い．
 ```
 
 <br>
 
 ### subsets
 
-VirtualServiceのサブセット名に関して、ルーティング対象とするPodのラベルを設定する
+VirtualServiceのサブセット名に関して，ルーティング対象とするPodのラベルを設定する
 
 参考：
 
@@ -284,7 +328,7 @@ VirtualServiceのサブセット名に関して、ルーティング対象とす
 
 **＊実装例＊**
 
-VirtualServiceのサブセット名が```v1```のインバウンド通信では、```version```タグが```v1```であるPodにルーティングする。```v2```も同様である。
+VirtualServiceのサブセット名が```v1```のインバウンド通信では，```version```タグが```v1```であるPodにルーティングする．```v2```も同様である．
 
 ```yaml
 kind: DestinationRule
@@ -304,7 +348,9 @@ spec:
 
 #### ・loadBalancer
 
-Podへのルーティング時に用いるロードバランシングアルゴリズムを設定する。
+Podへのルーティング時に用いるロードバランシングアルゴリズムを設定する．
+
+参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
 ```yaml
 kind: DestinationRule
@@ -316,7 +362,9 @@ spec:
 
 #### ・portLevelSettings.loadBalancer
 
-ポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
+ポート番号別のルーティングのロードバランシングアルゴリズムを設定する．
+
+参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 ```yaml
 kind: DestinationRule
@@ -329,7 +377,9 @@ spec:
 
 #### ・portLevelSettings.port
 
-ポート番号別のルーティングで用いるポート番号を設定する。
+ポート番号別のルーティングで用いるポート番号を設定する．
+
+参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 ```yaml
 kind: DestinationRule
@@ -342,7 +392,9 @@ spec:
 
 #### ・tls.mode
 
-Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
+Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する．HTTPSプロトコルを使用しない場合は，```DISABLE```とする．
+
+参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
 ```yaml
 kind: DestinationRule
@@ -360,7 +412,7 @@ spec:
 
 #### ・ApplyTo
 
-変更を適用する```envoy.yaml```ファイルの項目を設定する。
+変更を適用する```envoy.yaml```ファイルの項目を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
@@ -373,7 +425,7 @@ spec:
 
 #### ・ClusterMatch
 
-変更を適用するクラスターを設定する。
+変更を適用するクラスターを設定する．
 
 ```yaml
 kind: EnvoyFilter
@@ -386,7 +438,7 @@ spec:
 
 #### ・ListenerMatch
 
-変更を適用するリスナーを設定する。
+変更を適用するリスナーを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
@@ -403,7 +455,7 @@ spec:
 
 #### ・PatchContext
 
-変更を適用する通信の方向を設定する。
+変更を適用する通信の方向を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
@@ -417,7 +469,7 @@ spec:
 
 #### ・Patch
 
-変更方法と変更内容を設定する。
+変更方法と変更内容を設定する．
 
 ```yaml
 kind: EnvoyFilter
@@ -445,7 +497,7 @@ spec:
 
 #### ・selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与されたラベルを設定する。
+Gatewayの適用対象のIngressGatewayに付与されたラベルを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
@@ -462,7 +514,7 @@ spec:
 
 #### ・port.number
 
-ポート名を設定する。
+ポート名を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -476,7 +528,7 @@ spec:
 
 #### ・port.number
 
-インバウンド通信を受信するポート番号を設定する。
+インバウンド通信を受信するポート番号を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -490,7 +542,7 @@ spec:
 
 #### ・port.protocol
 
-受信するインバウンド通信のプロトコルを設定する。
+受信するインバウンド通信のプロトコルを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -506,7 +558,7 @@ spec:
 
 #### ・hosts
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。ワイルドカードを使用できる。
+Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワイルドカードを使用できる．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -534,7 +586,7 @@ spec:
 
 #### ・tls.serverCertificate
 
-受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
+受信するインバウンド通信がHTTPS，またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合に，SSL/TLS証明書を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -556,13 +608,13 @@ spec:
 
 #### ・componentとは
 
-IstioOperator経由でIstioオブジェクトをインストールする。
+IstioOperator経由でIstioオブジェクトをインストールする．
 
 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
 #### ・ingressGateways
 
-IstioOperator経由でインストールされるIngressGatewayのオプションを設定する。Gatewayとは異なるオブジェクトであることに注意する。ingressGatewaysの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+IstioOperator経由でインストールされるIngressGatewayのオプションを設定する．Gatewayとは異なるオブジェクトであることに注意する．ingressGatewaysの設定値を変更する場合は，```runAsRoot```キーでルート権限を有効化する必要がある．
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -586,14 +638,14 @@ spec:
         runAsRoot: true
 ```
 
-ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
+ちなみに，以下の方法で独自のIngressGatewayを作成できる（かなり大変）．
 
 参考：
 
 - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 - https://github.com/istio/istio/issues/23303
 
-最終的な設定値は、```kubectl get```コマンドで確認できる。
+最終的な設定値は，```kubectl get```コマンドで確認できる．
 
 ```yaml
 $ kubectl -n istio-system get service istio-ingressgateway -o yaml
@@ -603,7 +655,7 @@ kind: Service
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {...} # ここにも、JSON形式で設定値が記載されている。
+      {...} # ここにも，JSON形式で設定値が記載されている．
   creationTimestamp: "2022-01-01T12:00:00Z"
   labels:
     app: istio-ingressgateway
@@ -658,7 +710,7 @@ status:
 
 #### ・egressGateways
 
-IstioOperator経由でインストールされるEgressGatewayのオプションを設定する。
+IstioOperator経由でインストールされるEgressGatewayのオプションを設定する．
 
 ```yaml
 kind: IstioOperator
@@ -675,13 +727,13 @@ spec:
 
 #### ・meshConfigとは
 
-全てのEnvoyコンテナに共通する値を設定する。ここではEnvoyを用いた場合を説明する。
+全てのEnvoyコンテナに共通する値を設定する．ここではEnvoyを用いた場合を説明する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ・accessLogFile
 
-全てのEnvoyコンテナに関して、アクセスログの出力先を設定する。
+全てのEnvoyコンテナに関して，アクセスログの出力先を設定する．
 
 ```yaml
 kind: IstioOperator
@@ -692,7 +744,7 @@ spec:
 
 #### ・defaultConfig
 
-Envoyコンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
+Envoyコンテナ別に設定値を上書きしたい時に，そのデフォルト値を設定する．これを上書きしたい場合は，各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する．
 
 ```yaml
 kind: IstioOperator
@@ -704,7 +756,7 @@ spec:
 
 #### ・enableTracing
 
-全てのEnvoyコンテナに関して、分散トレースの収集を有効化するかどうかを設定する。
+全てのEnvoyコンテナに関して，分散トレースの収集を有効化するかどうかを設定する．
 
 ```yaml
 kind: IstioOperator
@@ -715,7 +767,7 @@ spec:
 
 #### ・ingressSelector
 
-全てのEnvoyコンテナに関して、用いるGatewayの```istio```ラベル値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して，用いるGatewayの```istio```ラベル値を設定する．IngressGatewayをIngressコントローラーとして使用でき，デフォルトではは```ingressgateway```が設定される．
 
 ```yaml
 kind: IstioOperator
@@ -726,7 +778,7 @@ spec:
 
 #### ・ingressService
 
-全てのEnvoyコンテナに関して、用いるIngressコントローラーの```istio```ラベル値を設定する。IngressGatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して，用いるIngressコントローラーの```istio```ラベル値を設定する．IngressGatewayをIngressとして使用でき，デフォルトではは```ingressgateway```が設定される．
 
 ```yaml
 kind: IstioOperator
@@ -737,7 +789,7 @@ spec:
 
 #### ・proxyHttpPort
 
-全てのEnvoyコンテナに関して、クラスター外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する。
+全てのEnvoyコンテナに関して，クラスター外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する．
 
 ```yaml
 kind: IstioOperator
@@ -748,7 +800,7 @@ spec:
 
 #### ・proxyListenPort
 
-全てのEnvoyコンテナに関して、他マイクロサービスからのインバウンド通信を受信するポート番号を設定する。
+全てのEnvoyコンテナに関して，他マイクロサービスからのインバウンド通信を受信するポート番号を設定する．
 
 ```yaml
 kind: IstioOperator
@@ -761,7 +813,7 @@ spec:
 
 ### namespace
 
-IstioOperator経由でインストールされるIstioオブジェクトの名前空間を設定する。
+IstioOperator経由でインストールされるIstioオブジェクトの名前空間を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -775,7 +827,7 @@ spec:
 
 ### profile
 
-インストールに用いるプロファイルを設定する。
+インストールに用いるプロファイルを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -789,7 +841,7 @@ spec:
 
 ### tag
 
-PilotのDockerイメージのバージョンを設定する。
+PilotのDockerイメージのバージョンを設定する．
 
 参考：
 
@@ -819,7 +871,7 @@ spec:
 
 #### ・sidecarInjectorWebhook
 
-Envoyコンテナごとのオプション値を設定する。
+Envoyコンテナごとのオプション値を設定する．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 
@@ -838,19 +890,48 @@ spec:
 
 <br>
 
-## 09. spec（VirtualServiceの場合）
+## 09. spec:（PeerAuthenticationの場合）
+
+### mtls
+
+#### ・mtls
+
+istio-proxyコンテナ間の通信で相互TLSを有効化するかどうかを設定する．
+
+#### ・mode
+
+相互TLSのタイプを設定する．
+
+参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
+
+```yaml
+kind: IstioOperator
+spec:
+  mtls:
+    mode: DISABLE # 相互TLSを使用しない．
+```
+
+相互TLSを有効化する場合はSSL証明書が必要になり，これがないと以下のようなエラーになる．
+
+```bash
+transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
+```
+
+<br>
+
+## 10. spec（VirtualServiceの場合）
 
 ### exportTo
 
 #### ・exportToとは
 
-VirtualService上のインバウンド通信をルーティングできる名前空間を設定する。
+VirtualService上のインバウンド通信をルーティングできる名前空間を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ・```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする。
+全ての名前空間で使用できるようにする．
 
 ```yaml
 kind: VirtualService
@@ -861,7 +942,7 @@ spec:
 
 #### ・```.```（ドット）
 
-現在の名前空間で使用できるようにする。
+現在の名前空間で使用できるようにする．
 
 ```yaml
 kind: VirtualService
@@ -876,13 +957,13 @@ spec:
 
 #### ・gatewaysとは
 
-インバウンド通信をいずれのGatewayから受信するかを設定する。
+インバウンド通信をいずれのGatewayから受信するかを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ・<名前空間>/<Gateway名>
 
-Gateway名とこれの名前空間を設定する。VirtualServiceとGatewayが同じ名前空間にある場合は、名前空間を省略できる。
+Gateway名とこれの名前空間を設定する．VirtualServiceとGatewayが同じ名前空間にある場合は，名前空間を省略できる．
 
 ```yaml
 kind: VirtualService
@@ -893,7 +974,7 @@ spec:
 
 #### ・mesh
 
-マイクロサービス間の通信を有効化する。
+マイクロサービス間の通信を有効化する．
 
 ```yaml
 kind: VirtualService
@@ -908,7 +989,7 @@ spec:
 
 #### ・httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+HTTP/1.1，HTTP/2，gRPC，のプロトコルによるインバウンド通信をServiceにルーティングする．ルーティング先のServiceを厳格に指定するために，Serviceの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある．
 
 参考：
 
@@ -917,11 +998,11 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 
 #### ・match
 
-受信するインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
+受信するインバウンド通信のうち，ルールを適用するもののメッセージ構造を設定する．
 
 **＊実装例＊**
 
-インバウンド通信のうち、```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する。
+インバウンド通信のうち，```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する．
 
 ```yaml
 kind: VirtualService
@@ -933,7 +1014,7 @@ spec:
           exact: bar
 ```
 
-インバウンド通信のうち、URLのプレフィクスが```/foo```のものだけにルールを適用する。
+インバウンド通信のうち，URLのプレフィクスが```/foo```のものだけにルールを適用する．
 
 ```yaml
 kind: VirtualService
@@ -947,7 +1028,7 @@ spec:
 
 #### ・route.destination.host
 
-受信するインバウンド通信のルーティング先のドメイン名あるいはService名を設定する。
+受信するインバウンド通信のルーティング先のドメイン名あるいはService名を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -957,12 +1038,12 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
 ```
 
 #### ・route.destination.port
 
-受信するインバウンド通信のルーティング先のポート番号を設定する。
+受信するインバウンド通信のルーティング先のポート番号を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -979,7 +1060,7 @@ spec:
 
 #### ・route.destination.subset
 
-Serviceのサブセット名を設定する。DestinationRuleにて、ルーティング先の設定に用いる。
+Serviceのサブセット名を設定する．DestinationRuleにて，ルーティング先の設定に用いる．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -989,12 +1070,12 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 80
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 80
             subset: v2
@@ -1002,7 +1083,7 @@ spec:
 
 #### ・route.weight
 
-重み付けルーティングの割合を設定する。
+重み付けルーティングの割合を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
@@ -1012,13 +1093,13 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 80
             subset: v1
@@ -1031,7 +1112,7 @@ spec:
 
 #### ・tcpとは
 
-TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする。
+TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
@@ -1047,7 +1128,7 @@ spec:
 
 #### ・route.destination.host
 
-httpの場合と同じである。
+httpの場合と同じである．
 
 ```yaml
 kind: VirtualService
@@ -1055,12 +1136,12 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
 ```
 
 #### ・route.destination.port
 
-httpの場合と同じである。
+httpの場合と同じである．
 
 ```yaml
 kind: VirtualService
@@ -1075,7 +1156,7 @@ spec:
 
 #### ・route.destination.subset
 
-httpの場合と同じである。
+httpの場合と同じである．
 
 ```yaml
 kind: VirtualService
@@ -1083,12 +1164,12 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 9000
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい。
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
             port:
               number: 9000
             subset: v2

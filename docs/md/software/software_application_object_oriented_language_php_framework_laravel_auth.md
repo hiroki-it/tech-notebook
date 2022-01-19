@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,22 +14,22 @@
 
 #### ・ガードとは
 
-ドライバーとプロバイダーを定義する。
+ドライバーとプロバイダーを定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| Webガード    | セッションIDを用いたForm認証のために用いる。                 |
-| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために用いる。それぞれの認証方法に違いについては、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/security/security_authentication_authorization.html |
+| Webガード    | セッションIDを用いたForm認証のために用いる．                 |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために用いる．それぞれの認証方法に違いについては，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/security/security_authentication_authorization.html |
 
 #### ・カスタムガード
 
-Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。
+Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
-APIガードの認証で用いるトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
+APIガードの認証で用いるトークンをJWTに変更したい時には，以下のパッケージがおすすめ．
 
 参考：https://github.com/tymondesigns/jwt-auth
 
@@ -43,9 +43,9 @@ APIガードの認証で用いるトークンをJWTに変更したい時には�
 | ドライバーの種類  | 認証の種類                         | 実装クラス         | 備考                                                         |
 | ----------------- | ---------------------------------- | ------------------ | ------------------------------------------------------------ |
 | sessionドライバー | セッションIDを用いたForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| tokenドライバー   | Bearer認証、APIキー認証、OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
+| tokenドライバー   | Bearer認証，APIキー認証，OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
 
-ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。```auth.php```ファイルにて、例えばtokenドライバーを選んだ場合は、TokenGuardクラスが返却される。
+ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選んだ場合は，TokenGuardクラスが返却される．
 
 参考：
 
@@ -79,7 +79,7 @@ return [
 
 #### ・ルーティングの保護
 
-BeforeMiddlwareで認証済みのユーザーかどうかを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
+BeforeMiddlwareで認証済みのユーザーかどうかを検証し，もし未認証の場合は，ログインページにリダイレクトさせる．これにより，未認証のユーザーがコントローラーを実行することを防ぐ．
 
 参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
 
@@ -89,7 +89,7 @@ BeforeMiddlwareで認証済みのユーザーかどうかを検証し、もし�
 
 #### ・プロバイダとは
 
-認証データをDBから取得するオブジェクトを定義する。
+認証データをDBから取得するオブジェクトを定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
@@ -99,11 +99,11 @@ BeforeMiddlwareで認証済みのユーザーかどうかを検証し、もし�
 
 #### ・sessionドライバー
 
-sessionドライバーを選択する。
+sessionドライバーを選択する．
 
 #### ・全てのユーザーが同一権限を持つ場合
 
-SessionGuardクラスの```attempt```メソッドをコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。認証が成功すると、認証セッションを開始する。```redirect```メソッドで、認証後の初期ページにリダイレクトする。
+SessionGuardクラスの```attempt```メソッドをコールしてパスワードをハッシュ化し，DBのハッシュ値と照合する．認証が成功すると，認証セッションを開始する．```redirect```メソッドで，認証後の初期ページにリダイレクトする．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
@@ -127,20 +127,20 @@ final class AuthenticationController
         $validated = $authenticationRequest->validated();
 
         if (Auth::attempt($validated)) {
-            // セッションID固定化を防ぐために、認証後にセッションを再作成します。
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
             $authenticationRequest->session()->regenerate();
 
-            // 認証後のWebページにリダイレクトします。
+            // 認証後のWebページにリダイレクトします．
             return redirect(RouteServiceProvider::HOME);
         }
 
-        // 未認証のWebページにリダイレクトします。
+        // 未認証のWebページにリダイレクトします．
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
 ```
 
-認証後のページはRouteServiceProviderクラスで定義しておく。
+認証後のページはRouteServiceProviderクラスで定義しておく．
 
 ```php
 <?php
@@ -158,13 +158,13 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ・一部のユーザーが異なる権限を持つ場合
 
-ユーザーごとに認証方法を区別しつつ、同一の認証後のWebページにリダイレクトさせられる。
+ユーザーごとに認証方法を区別しつつ，同一の認証後のWebページにリダイレクトさせられる．
 
 参考：https://blog.capilano-fw.com/?p=8159
 
 **＊実装例＊**
 
-権限の異なるユーザーに応じたガード、またガードに紐付けるEloquentモデルをプロバイダを定義しておく。
+権限の異なるユーザーに応じたガード，またガードに紐付けるEloquentモデルをプロバイダを定義しておく．
 
 ```php
 <?php
@@ -212,7 +212,7 @@ return [
 
 ```
 
-Authファサードの```guard```メソッドを用いて、ガードに応じた認証を実行する。これにより、同一の認証後ページにリダイレクトした後に、ユーザーのEloquentモデルに応じた処理を実行できるようになる。
+Authファサードの```guard```メソッドを用いて，ガードに応じた認証を実行する．これにより，同一の認証後ページにリダイレクトした後に，ユーザーのEloquentモデルに応じた処理を実行できるようになる．
 
 ```php
 <?php
@@ -233,17 +233,17 @@ final class AuthenticationController
     {
         $validated = $authenticationRequest->validated();
 
-        // guardに応じた認証を行います。
+        // guardに応じた認証を行います．
         if (Auth::guard($authenticationRequest->guard)->attempt($validated)) {
             
-            // セッションID固定化を防ぐために、認証後にセッションを再作成します。
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
             $authenticationRequest->session()->regenerate();
 
-            // ユーザー用認証後のWebページにリダイレクトします。
+            // ユーザー用認証後のWebページにリダイレクトします．
             return redirect(RouteServiceProvider::HOME);
         }
 
-        // 未認証のWebページにリダイレクトします。
+        // 未認証のWebページにリダイレクトします．
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
@@ -256,23 +256,23 @@ final class AuthenticationController
 
 #### ・```user```メソッド
 
-現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。
+現在のセッションにおけるユーザーが認証済みであれば，ユーザーのEloquentモデルを取得する．
 
 ```php
 <?php
 
 // Illuminate\Contracts\Auth\Guard
-// ドライバーに応じて、リゾルブされるGuardの実装クラス決まる
+// ドライバーに応じて，リゾルブされるGuardの実装クラス決まる
 $user = auth()->user();
 ```
 
 #### ・```check```メソッド
 
-現在のセッションにおけるユーザーが認証済みであれば、```true```を返却する。
+現在のセッションにおけるユーザーが認証済みであれば，```true```を返却する．
 
 **＊実装例＊**
 
-認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを用いて、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
+認証済みのユーザーがブラウザを閉じたとしても，セッションが続いている（例：ログアウトしない）限り，認証処理を改めて実行する必要はない．そのために，BeforeMiddlewareを用いて，認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる．
 
 ````php
 <?php
@@ -298,7 +298,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (auth()->guard($guard)->check()) {
-                // ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。
+                // ユーザーが認証済みの場合は，認証後のWebページにリダイレクトします．
                 return redirect(RouteServiceProvider::HOME);
             }
         }
@@ -317,7 +317,7 @@ class RedirectIfAuthenticated
 
 #### ・ゲートとは
 
-Eloquentモデルレベルの認可スコープを定義する。指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる。
+Eloquentモデルレベルの認可スコープを定義する．指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる．
 
 <br>
 
@@ -325,7 +325,7 @@ Eloquentモデルレベルの認可スコープを定義する。指定したElo
 
 #### ・ポリシーとは
 
-DBレコードレベルの認可スコープを定義する。Eloquentモデルに紐付く特定のレコードにアクセスできなくなる。Policyクラスのメソッドによって、リクエスト中の認証済みユーザーが自動的にインジェクションされる。EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
+DBレコードレベルの認可スコープを定義する．Eloquentモデルに紐付く特定のレコードにアクセスできなくなる．Policyクラスのメソッドによって，リクエスト中の認証済みユーザーが自動的にインジェクションされる．EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
 
 参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
@@ -418,7 +418,7 @@ class AuthServiceProvider extends ServiceProvider
 
 #### ・AuthorizeMiddlewareによる認可
 
-ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合するようにする。インスタンスを渡す場合は、暗黙のモデル結合を用いる必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
+ルーティング時にDBレコードレベルの認可スコープを定義する．AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり，Kernelクラスに定義されている．第一引数にPolicyクラスのメソッド名，第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す．名前空間を渡す場合は，これをハードコーディングせず，関数で名前空間を取得して文字列と結合するようにする．インスタンスを渡す場合は，暗黙のモデル結合を用いる必要がある．認可に失敗した場合，```403```ステータスのレスポンスを返信する．
 
 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
@@ -445,7 +445,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 #### ・```authorization```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内かどうかを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスするようにする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する．基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき，現在認証されているユーザーのDBアクセスが認可スコープの範囲内かどうかを検証する．第二引数に，ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す．認可に失敗した場合にAuthorizationExceptionを投げるため，その後は自前で```403```ステータスのレスポンスするようにする．
 
 参考：
 
@@ -454,7 +454,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 **＊実装例＊**
 
-ユーザーが該当IDのFooモデルを更新する権限があるかどうかを検証する。
+ユーザーが該当IDのFooモデルを更新する権限があるかどうかを検証する．
 
 ```php
 <?php
@@ -479,7 +479,7 @@ class FooController extends Controller
         try {
             $foo = new Foo();
 
-            // 認可が失敗した場合、AuthorizationExceptionを投げる。
+            // 認可が失敗した場合，AuthorizationExceptionを投げる．
             $this->authorize('update', [$foo->find($id), $request->barId]);
 
             // Eloquentモデルが不要な検証であれば名前空間
@@ -487,7 +487,7 @@ class FooController extends Controller
 
             $foo->fill($request->all())->save();
         } catch (Throwable $e) {
-            // 自前で403ステータスのレスポンスを返信する。
+            // 自前で403ステータスのレスポンスを返信する．
             return response()->json(['error' => $e->getMessage()], 403);
         }
 
@@ -499,7 +499,7 @@ class FooController extends Controller
 
 #### ・```can```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザーのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザーの認可スコープの範囲内かどうかを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスするようにする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する．現在認証されているユーザーのインスタンスから```can```メソッドをコールできる．第二引数として，ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す．DBアクセスが，そのユーザーの認可スコープの範囲内かどうかを検証する．認可に失敗した場合に```false```を返却するため，その後は自前で```403```ステータスのレスポンスするようにする．
 
 参考：
 
@@ -508,7 +508,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-ユーザーがFooモデルを作成する権限があるかどうかを検証する。
+ユーザーがFooモデルを作成する権限があるかどうかを検証する．
 
 ```php
 <?php
@@ -531,9 +531,9 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        // 認可が失敗した場合、falseが返却される。
+        // 認可が失敗した場合，falseが返却される．
         if (!auth()->user()->can('update', [$foo->find($id), $request->barId])) {
-            // 自前で403ステータスのレスポンスを返信する。
+            // 自前で403ステータスのレスポンスを返信する．
             return response()->json(['error' => '認可エラー'], 403);
         }
 
@@ -551,7 +551,7 @@ class FooController extends Controller
 
 ### Passportパッケージとは
 
-Ouath認証を実装できる。OAuth認証については、以下のリンク先を参考にせよ。
+Ouath認証を実装できる．OAuth認証については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/security/security_authentication_authorization.html
 
@@ -561,7 +561,7 @@ Ouath認証を実装できる。OAuth認証については、以下のリンク�
 
 #### ・インストール
 
-composerでインストールする必要がある。
+composerでインストールする必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/passport.html
 
@@ -571,7 +571,7 @@ $ composer require laravel/passport
 
 #### ・OAuth認証のトークン管理テーブルを生成
 
-事前に、Passportの管理テーブルを生成する必要があるため、マイグレーションを実行する。
+事前に，Passportの管理テーブルを生成する必要があるため，マイグレーションを実行する．
 
 ```bash
 $ php artisan migrate
@@ -592,19 +592,19 @@ Migrating: 2016_06_01_000005_create_oauth_personal_access_clients_table
 Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table 
 ```
 
-マイグレーション後、以下のテーブルが作成される。
+マイグレーション後，以下のテーブルが作成される．
 
 | テーブル名                    | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
-| oauth_access_tokens           | 全てのアクセストークンを管理する。                           |
-| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。             |
-| oauth_clients                 | Passportで用いている付与タイプを管理する。                   |
-| oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する。                |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再生成をリクエストするために用いる。<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_access_tokens           | 全てのアクセストークンを管理する．                           |
+| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する．             |
+| oauth_clients                 | Passportで用いている付与タイプを管理する．                   |
+| oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する．                |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する．アクセストークンの有効期限が切れた時に，再生成をリクエストするために用いる．<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ・トークンを生成
 
-コマンド実行により、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを生成する。
+コマンド実行により，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを生成する．
 
 ```bash
 $ php artisan passport:install
@@ -617,20 +617,20 @@ Client ID: 2
 Client secret: *****
 ```
 
-これにより、例えばoauth_clientsテーブルでは以下が作成される。
+これにより，例えばoauth_clientsテーブルでは以下が作成される．
 
 | id      | user_id    | name                                 | secret      | ...  |
 | ------- | ---------- | ------------------------------------ | ----------- | ---- |
 | ```1``` | ```NULL``` | ```Laravel Personal Access Client``` | ```*****``` | ...  |
 | ```2``` | ```NULL``` | ```Laravel Password Grant Client```  | ```*****``` | ...  |
 
-あるいは、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを個別に作成してもよい。
+あるいは，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを個別に作成してもよい．
 
 ```bash
 # oauthキーを生成
 $ php artisan passport:keys
 
-# Persinal Access Tokenを作成する。
+# Persinal Access Tokenを作成する．
 $ php artisan passport:client --personal
 
 ## Password Grant Tokenの場合
@@ -643,7 +643,7 @@ $ php artisan passport:client --password
 
 #### ・OAuth認証
 
-OAuth認証に関して、以下のトークン付与タイプを実装できる。
+OAuth認証に関して，以下のトークン付与タイプを実装できる．
 
 | 付与タイプ               | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
@@ -664,7 +664,7 @@ OAuth認証に関して、以下のトークン付与タイプを実装できる
 
 #### ・バックエンド側の実装
 
-1. ```guards```キーにて、認証方式を設定する。ここでは、```api```を設定する。
+1. ```guards```キーにて，認証方式を設定する．ここでは，```api```を設定する．
 
 ```php
 return [
@@ -680,7 +680,7 @@ return [
 ];
 ```
 
-2. OAuth認証（認証フェーズ＋認可フェーズ）を行うために、```auth.php```ファイルで、```driver```キーにpassportドライバを設定する。また、```provider```キーで、```users```を設定する。
+2. OAuth認証（認証フェーズ＋認可フェーズ）を行うために，```auth.php```ファイルで，```driver```キーにpassportドライバを設定する．また，```provider```キーで，```users```を設定する．
 
 **＊実装例＊**
 
@@ -706,7 +706,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを用いたい場合は、```database```ドライバを設定する。
+3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquentモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを用いたい場合は，```database```ドライバを設定する．
 
 ```php
 return [
@@ -716,7 +716,7 @@ return [
     "providers" => [
         "users" => [
             "driver" => "eloquent",
-            // Eloquentモデルは自由に指定できる。
+            // Eloquentモデルは自由に指定できる．
             "model"  => App\Models\User::class,
         ],
 
@@ -730,7 +730,7 @@ return [
 ];
 ```
 
-4. Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuth認証に成功したユーザーのみがルーティングを行えるようになる。
+4. Userへのルーティング時に，```middleware```メソッドによる認証ガードを行う．これにより，OAuth認証に成功したユーザーのみがルーティングを行えるようになる．
 
 **＊実装例＊**
 
@@ -738,7 +738,7 @@ return [
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
-5. 認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールするようにする。
+5. 認証ガードを行ったEloquentモデルに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
 
 **＊実装例＊**
 
@@ -759,7 +759,7 @@ class User extends Authenticatable
 }
 ```
 
-6. Passportの```routes```メソッドをコールするようにする。これにより、Passportの認証フェーズに関わる全てのルーティング（``````/oauth/xxx``````）が有効になる。また、アクセストークンを発行できるよになる。
+6. Passportの```routes```メソッドをコールするようにする．これにより，Passportの認証フェーズに関わる全てのルーティング（``````/oauth/xxx``````）が有効になる．また，アクセストークンを発行できるよになる．
 
 **＊実装例＊**
 
@@ -781,7 +781,7 @@ class AuthServiceProvider extends ServiceProvider
 }
 ```
 
-7. 暗号キーとユーザーを作成する。
+7. 暗号キーとユーザーを作成する．
 
 ```bash
 $ php artisan passport:keys
@@ -791,7 +791,7 @@ $ php artisan passport:client --password
 
 #### ・クライアントアプリ側の実装
 
-1. 『認証』のために、アクセストークンのリクエストを送信する。ユーザー側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを用いて、リクエストを送信するものとする。
+1. 『認証』のために，アクセストークンのリクエストを送信する．ユーザー側のアプリケーションは，```/oauth/authorize```へリクエストを送信する必要がある．ここでは，リクエストGuzzleパッケージを用いて，リクエストを送信するものとする．
 
 **＊実装例＊**
 
@@ -812,7 +812,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 ]);
 ```
 
-2. アクセストークンを含むJSON型データを受信する。
+2. アクセストークンを含むJSON型データを受信する．
 
 **＊実装例＊**
 
@@ -824,7 +824,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 }
 ```
 
-3. ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。レスポンスのメッセージボディからデータを取得する。
+3. ヘッダーにアクセストークンを含めて，認証ガードの設定されたバックエンド側のルーティングに対して，リクエストを送信する．レスポンスのメッセージボディからデータを取得する．
 
 **＊実装例＊**
 
@@ -865,10 +865,10 @@ class CreateUsersTable extends Migration
             $table->string("name")->comment("ユーザー名");
             $table->string("api_token")->unique()->comment("APIトークン");
 
-            // MigrationMacroServiceProviderのメソッドを用いる。
+            // MigrationMacroServiceProviderのメソッドを用いる．
             $table->systemColumns();
 
-            // deleted_atカラムを追加する。
+            // deleted_atカラムを追加する．
             $table->softDeletes();
         });
     }
@@ -889,7 +889,7 @@ class CreateUsersTable extends Migration
 
 #### ・バックエンド側の実装
 
-1. 暗号キーとユーザーを作成する。
+1. 暗号キーとユーザーを作成する．
 
 ```bash
 $ php artisan passport:keys
@@ -897,7 +897,7 @@ $ php artisan passport:keys
 $ php artisan passport:client --personal
 ```
 
-2. 作成したユーザーに、クライアントIDを付与する。
+2. 作成したユーザーに，クライアントIDを付与する．
 
 ```php
 /**
@@ -915,7 +915,7 @@ public function boot()
 }
 ```
 
-3. ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
+3. ユーザーからのリクエスト時，クライアントIDを元に『認証』を行い，アクセストークンをレスポンスする．
 
 ```php
 <?php
@@ -935,11 +935,11 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 ### Sanctumパッケージとは
 
-APIキー認証とセッションIDを用いたForm認証機能の認証処理のみを提供する。ルーティングとDBアクセスに関する処理は提供しない。
+APIキー認証とセッションIDを用いたForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
-APIキー認証とセッションIDを用いたForm認証については、以下のリンク先を参考にせよ。
+APIキー認証とセッションIDを用いたForm認証については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/security/security_authentication_authorization.html
 
@@ -957,7 +957,7 @@ $ composer require laravel/sanctum
 
 ### APIトークン認証
 
-フロントエンド（外部のアプリケーションを含む）は任意とし、APIのみを実装する場合、使用が適している。
+フロントエンド（外部のアプリケーションを含む）は任意とし，APIのみを実装する場合，使用が適している．
 
 参考：
 
@@ -969,7 +969,7 @@ $ composer require laravel/sanctum
 
 ### SPA認証
 
-フロントエンドにファーストパーティのSPA（自社のSPA）を使用し、バックエンドのAPIを実装する場合、使用が適している。
+フロントエンドにファーストパーティのSPA（自社のSPA）を使用し，バックエンドのAPIを実装する場合，使用が適している．
 
 参考：
 
@@ -983,7 +983,7 @@ $ composer require laravel/sanctum
 
 ### Fortifyパッケージとは
 
-Laravelが持つ全ての認証機能のバックエンド処理を提供する。
+Laravelが持つ全ての認証機能のバックエンド処理を提供する．
 
 参考：
 
@@ -996,7 +996,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 ### Breezeパッケージとは
 
-Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と、これに対応するフロントエンド処理を提供する。
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
 
 参考：
 
@@ -1011,7 +1011,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 #### ・インストール
 
-パッケージをインストールする。
+パッケージをインストールする．
 
 ``` sh
 $ composer require laravel/breeze:^1.0 --dev
@@ -1019,7 +1019,7 @@ $ composer require laravel/breeze:^1.0 --dev
 
 #### ・認証処理ファイルの自動生成
 
-認証処理に関連するクラスを自動生成できる。Bladeに組み合わせるJavaScriptを選べる。
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
 
 ```bash
 $ php artisan breeze:install
@@ -1031,7 +1031,7 @@ $ php artisan breeze:install
 
 ### UIパッケージとは
 
-Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と、これに対応するフロントエンド処理を提供する。
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
 
 参考：https://readouble.com/laravel/7.x/ja/authentication.html
 
@@ -1041,7 +1041,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 #### ・インストール
 
-パッケージをインストールする。
+パッケージをインストールする．
 
 ```bash
 $ composer require laravel/ui:^1.0 --dev
@@ -1049,16 +1049,16 @@ $ composer require laravel/ui:^1.0 --dev
 
 #### ・認証処理ファイルの自動生成
 
-認証処理に関連するクラスを自動生成できる。Bladeに組み合わせるJavaScriptを選べる。
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
 
 ```bash
-# Vuejsを用いる場合。
+# Vuejsを用いる場合．
 $ php artisan ui vue --auth
 
 # Reactを用いる場合
 $ php artisan ui react --auth
 
-# Bootstrapを用いる場合。
+# Bootstrapを用いる場合．
 $ php artisan ui bootstrap --auth 
 ```
 

@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,13 +12,13 @@
 
 ### オンプレミスとは
 
-ユーザーの自社設備によって、システムを運用すること。
+ユーザーの自社設備によって，システムを運用すること．
 
 <br>
 
 ### クラウドコンピューティングとは
 
-インターネットを経由して、ベンダーのサーバーに自身のデータを保存し、利用すること。ベンダーが、システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって、サービスの名称が異なる。
+インターネットを経由して，ベンダーのサーバーに自身のデータを保存し，利用すること．ベンダーが，システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって，サービスの名称が異なる．
 
 ![on-premises_hosting_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_hosting_iaas_caas_paas_faas_saas.png)
 
@@ -57,7 +57,7 @@
 
 ### FaaS：Platform as a Service
 
-ユーザー側は関数プログラムの実装のみを行い、それ以外はベンダー側に管理してもらうサービスのこと。
+ユーザー側は関数プログラムの実装のみを行い，それ以外はベンダー側に管理してもらうサービスのこと．
 
 **＊例＊**
 
@@ -67,8 +67,8 @@ Lambda
 
 ### SaaS：Software as a Service
 
-従来はパッケージとして提供していたアプリケーションを、Webアプリケーションとして提供するサービスのこと。
+従来はパッケージとして提供していたアプリケーションを，Webアプリケーションとして提供するサービスのこと．
 
 **＊例＊**
 
-Google Apps（Google Map、Google Cloud、Google Calender など）
+Google Apps（Google Map，Google Cloud，Google Calender など）

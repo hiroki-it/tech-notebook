@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -25,8 +25,8 @@ Symfony
 │   └── symfony_requirements
 │
 ├── public    
-|   ├── index.php # 本番環境で、カーネルとして動く
-|   └── index_dev.php # 開発環境で、カーネルとして動く
+|   ├── index.php # 本番環境で，カーネルとして動く
+|   └── index_dev.php # 開発環境で，カーネルとして動く
 │
 ├── src　# 主要なPHPファイル
 │   ├── AppBundle # アプリケーションのソースコード
@@ -176,7 +176,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 #### ・CLIとは
 
-シェルスクリプト（```.sh```）、またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる。
+シェルスクリプト（```.sh```），またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる．
 
 **＊実装例＊**
 
@@ -200,7 +200,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
         $this->addArgument(
           "year-month",
           InputArgument::REQUIRED,
-          "処理年月を設定してください。"
+          "処理年月を設定してください．"
         );
     }
   
@@ -208,7 +208,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
     protected function execute(InputeInterface $input, OutputInterface $output)
     {
         try {
-                // 日時フォーマットからCarbonインスタンスを作成する。
+                // 日時フォーマットからCarbonインスタンスを作成する．
                 $year_month = Carbon::createFromFormat(
                   "Y-m",
                   $input->getArgument("year-month")
@@ -228,7 +228,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 #### ・```for```
 
 ```bash
-# txtファイルを変数fに繰り返し格納し、処理を行う。
+# txtファイルを変数fに繰り返し格納し，処理を行う．
 for f in *txt do echo $f; done;
 ```
 
@@ -236,15 +236,15 @@ for f in *txt do echo $f; done;
 
 **＊例＊**
 
-10秒ごとに、コマンドを自動実行する。
+10秒ごとに，コマンドを自動実行する．
 
 ```bash
-# 10秒ごとに、コマンド処理を実行。
+# 10秒ごとに，コマンド処理を実行．
 for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 ```
 
 ```bash
-# 15時ごとに、コマンド処理を実行。
+# 15時ごとに，コマンド処理を実行．
 0 15 * * * * create:example;
 ```
 
@@ -264,7 +264,7 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 
 1. カーネルオブジェクトの```handle```メソッド
 
-   送られてきたURLを基にしたコントローラー/アクションへのルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
+   送られてきたURLを基にしたコントローラー/アクションへのルートの特定，特定されたコントローラー/アクションの実行，テンプレートのレンダリング
 
 1. Responseオブジェクト
 
@@ -272,10 +272,10 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 
 #### ・オブジェクトから取り出されたメソッドの役割
 
-1. カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
-1. カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを生成。
-1. カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
-   このカーネルを、特別に『HTTPカーネル』と呼ぶ。
+1. カーネルが，クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る．
+1. カーネルが，送られてきたURLとルート定義を基に，リクエストに対応するコントローラーアクションを探し，実行させる．その後，テンプレートがURLを生成．
+1. カーネルが，その結果をレスポンスオブジェクトとしてクライアントに返す．
+   このカーネルを，特別に『HTTPカーネル』と呼ぶ．
 
 **【app.phpの実装例】**
 
@@ -293,7 +293,7 @@ if (PHP_VERSION_ID < 70000) {
 
 $request = Request::createFromGlobals();  //（１）
 
-// 以下の実装ファイルも参照せよ。
+// 以下の実装ファイルも参照せよ．
 $response = $kernel->handle($request); //（２）
 
 $response->send(); //（３）
@@ -301,7 +301,7 @@ $response->send(); //（３）
 $kernel->terminate($request, $response);
 ```
 
-上記の```handle```メソッドが定義されているファイル。ここで定義された```handle```メソッドが、C/Aへのルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+上記の```handle```メソッドが定義されているファイル．ここで定義された```handle```メソッドが，C/Aへのルートの特定，特定されたC/Aの実行，テンプレートのレンダリングを行う．
 
 ```php
 <?php
@@ -330,12 +330,12 @@ public function handle
 
 <br>
 
-### Request、Response
+### Request，Response
 
-#### ・リクエストメッセージからのデータ取得、JSON型データのレスポンス
+#### ・リクエストメッセージからのデータ取得，JSON型データのレスポンス
 
-1. Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。
-2. Ajaxによるリクエストでない場合、ページレンダリングのみ
+1. Ajaxによるリクエストの場合，JSON型データをレスポンスし，かつページレンダリング．
+2. Ajaxによるリクエストでない場合，ページレンダリングのみ
 
 ```php
 <?php
@@ -349,15 +349,15 @@ class ExampleController extends AbstractController
 {
     public function get(Request $req)
     {
-        // Ajaxによるリクエストの場合。
+        // Ajaxによるリクエストの場合．
         if ($req->headers->get("content-type") === "application/json") {
             
             $fooRepository = new FooRepository;
             $entityObject = $FooRepository->getEntity();
             
-            //-- entityをObject型からArray型に変換する何らかの処理。--//
+            //-- entityをObject型からArray型に変換する何らかの処理．--//
             
-            // Ajaxにレンスポンス。
+            // Ajaxにレンスポンス．
             return new JsonResponse([ 
                 "value" => $entityArray
               ]);
@@ -412,7 +412,7 @@ $request->get('hoge');
 
 ### Service Container
 
-Symfonyから提供されるDIコンテナのこと。
+Symfonyから提供されるDIコンテナのこと．
 
 <br>
 
@@ -422,7 +422,7 @@ Symfonyから提供されるDIコンテナのこと。
 
 #### ・RoutingConfiguratorとは
 
-コントローラーへのルーティングを設定する。
+コントローラーへのルーティングを設定する．
 
 ```php
 <?php
@@ -450,7 +450,7 @@ return function (RoutingConfigurator $routes) {
 
 #### ・FilesystemAdapterとは
 
-データをキャッシングできる。オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
+データをキャッシングできる．オプションで，名前空間，キャッシュ存続時間，キャッシュルートパスを指定できる．
 
 ```php
 <?php
@@ -462,15 +462,15 @@ $cache = new FilesystemAdapter("", 0, "example/cache/");
 // キャッシュIDに紐付くキャッシュアイテムオブジェクトを取得
 $cacheItemObj = $cache->getItem("stats.products_count");
 
-// キャッシュIDに紐付くキャッシュアイテムオブジェクトに、データが設定されていない場合
+// キャッシュIDに紐付くキャッシュアイテムオブジェクトに，データが設定されていない場合
 if (!$cacheItemObj->isHit()) {
-  // キャッシュアイテムオブジェクトに、データを設定
+  // キャッシュアイテムオブジェクトに，データを設定
   $cacheItemObj->set(777);
-  // キャッシュアイテムオブジェクトを紐付ける。
+  // キャッシュアイテムオブジェクトを紐付ける．
   $cache->save($cacheItemObj);
 }
 
-// キャッシュIDに紐付くデータがあった場合、キャッシュアイテムオブジェクトを取得。
+// キャッシュIDに紐付くデータがあった場合，キャッシュアイテムオブジェクトを取得．
 $cacheItemObj = $cache->get();
 
 ```

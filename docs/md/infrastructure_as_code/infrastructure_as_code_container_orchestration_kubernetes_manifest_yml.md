@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -12,7 +12,7 @@
 
 ### apiVersionとは
 
-Kubernetes-APIのバージョンを設定する。
+Kubernetes-APIのバージョンを設定する．
 
 ```yaml
 apiVersion: v1
@@ -24,17 +24,17 @@ apiVersion: v1
 
 ### kindとは
 
-作成されるオブジェクトの種類を設定する。
+作成されるオブジェクトの種類を設定する．
 
 | オブジェクト名                  | 補足                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | Deployment            |                                                              |
-| Ingress               | 他のオブジェクトとはapiVersionが異なり、```networking.k8s.io/v1```を指定する必要がある。 |
+| Ingress               | 他のオブジェクトとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある． |
 | Namespace |  |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
-| Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
-| ReplicaController     | 旧Deployment。非推奨である。<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
+| Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である．<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
+| ReplicaController     | 旧Deployment．非推奨である．<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
 | ReplicaSet            |                                                              |
 | Service               |                                                              |
 | StatefulSet           |                                                              |
@@ -45,7 +45,7 @@ apiVersion: v1
 
 ### metadataとは
 
-Kubernetesオブジェクトの一意に識別するための情報を設定する。
+Kubernetesオブジェクトの一意に識別するための情報を設定する．
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
@@ -53,7 +53,7 @@ Kubernetesオブジェクトの一意に識別するための情報を設定す�
 
 ### name
 
-Kubernetesオブジェクトを一意に識別するための名前を設定する。
+Kubernetesオブジェクトを一意に識別するための名前を設定する．
 
 ```yaml
 metadata:
@@ -66,7 +66,7 @@ metadata:
 
 ### replicas
 
-Podの複製数を設定する。
+Podの複製数を設定する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
@@ -80,7 +80,7 @@ spec:
 
 ### revisionHistoryLimit
 
-保存されるリビジョン番号の履歴数を設定する。もし依存のリビジョン番号にロールバックすることがあるのであれば、必要数を設定しておく。
+保存されるリビジョン番号の履歴数を設定する．もし依存のリビジョン番号にロールバックすることがあるのであれば，必要数を設定しておく．
 
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
@@ -96,7 +96,7 @@ spec:
 
 #### ・matchLabels
 
-Deploymentで管理するPodのラベルを指定する。Podに複数のラベルが付与されている時は、これらを全て指定する必要がある。
+Deploymentで管理するPodのラベルを指定する．Podに複数のラベルが付与されている時は，これらを全て指定する必要がある．
 
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -124,7 +124,7 @@ spec:
 
 #### ・RollingUpdate
 
-ローリングアップデートを用いて、新しいPodをデプロイする。
+ローリングアップデートを用いて，新しいPodをデプロイする．
 
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -134,11 +134,11 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをデプロイする。
-      maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
+      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをデプロイする．
+      maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする．
 ```
 
-もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをデプロイするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```オプションを```100```%，また```maxUnavailable```オプションを```0```%とすると，ローリングアップデート時に，Podのレプリカ数と同じ数だけ新しいPodをデプロイするようになる．また，Podの停止数がレプリカ数を下回らないようになる．
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 
@@ -146,7 +146,7 @@ spec:
 
 ### template
 
-スケーリング時に複製の鋳型とするPodを設定する。
+スケーリング時に複製の鋳型とするPodを設定する．
 
 **＊実装例＊**
 
@@ -175,7 +175,7 @@ spec:
 
 ### rules
 
-Serviceへのルーティングルールを設定する。複数のServiceにインバウンド通信を振り分けられる。
+Serviceへのルーティングルールを設定する．複数のServiceにインバウンド通信を振り分けられる．
 
 ```yaml
 kind: Ingress
@@ -213,14 +213,14 @@ spec:
 
 #### ・accessModesとは
 
-ボリュームへのアクセス権限を設定する。
+ボリュームへのアクセス権限を設定する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
 
 #### ・ReadWriteMany
 
-ボリュームに対して、複数ノードから読み出し/書き込みできるようにする。ノード間でDBを共有したい場合に用いる。
+ボリュームに対して，複数ノードから読み出し/書き込みできるようにする．ノード間でDBを共有したい場合に用いる．
 
 **＊実装例＊**
 
@@ -233,7 +233,7 @@ spec:
 
 #### ・ReadOnlyMany
 
-ボリュームに対して、複数ノードから読み出しでき、また単一ノードのみから書き込みできるようにする。ノード間で読み出し処理のみDBを共有したい場合に用いる。
+ボリュームに対して，複数ノードから読み出しでき，また単一ノードのみから書き込みできるようにする．ノード間で読み出し処理のみDBを共有したい場合に用いる．
 
 **＊実装例＊**
 
@@ -246,7 +246,7 @@ spec:
 
 #### ・ReadWriteOnce
 
-ボリュームに対して、単一ノードからのみ読み出し/書き込みできるようにする。ノードごとにDBを分割したい場合に用いる。
+ボリュームに対して，単一ノードからのみ読み出し/書き込みできるようにする．ノードごとにDBを分割したい場合に用いる．
 
 **＊実装例＊**
 
@@ -280,7 +280,7 @@ spec:
 
 #### ・hostPathとは
 
-ノード上にストレージ領域を新しく作成し、これをボリュームとする。
+ノード上にストレージ領域を新しく作成し，これをボリュームとする．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -300,7 +300,7 @@ spec:
 
 #### ・localとは
 
-ノード上にストレージ領域を新しく作成し、これをボリュームとする。```nodeAffinity```キーの設定が必須であり、ノードを明示的に指定できる。
+ノード上にストレージ領域を新しく作成し，これをボリュームとする．```nodeAffinity```キーの設定が必須であり，ノードを明示的に指定できる．
 
 参考：
 
@@ -361,13 +361,13 @@ spec:
 
 #### ・persistentVolumeReclaimPolicyとは
 
-PersistentVolumeのライフサイクルを設定する。
+PersistentVolumeのライフサイクルを設定する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
 
 #### ・Delete
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolumeも自動的に削除する。
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に，PersistentVolumeも自動的に削除する．
 
 **＊実装例＊**
 
@@ -379,7 +379,7 @@ spec:
 
 #### ・Recycle
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に，PersistentVolume内のデータのみを削除し，PersistentVolume自体は削除しない．
 
 **＊実装例＊**
 
@@ -391,7 +391,7 @@ spec:
 
 #### ・Retain
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除されたとしても、PersistentVolumeは削除しない。
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除されたとしても，PersistentVolumeは削除しない．
 
 **＊実装例＊**
 
@@ -407,7 +407,7 @@ spec:
 
 #### ・fast
 
-SSDをPersistentVolumeとして用いる。
+SSDをPersistentVolumeとして用いる．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
@@ -421,7 +421,7 @@ spec:
 
 #### ・slow
 
-HDをPersistentVolumeとして用いる。
+HDをPersistentVolumeとして用いる．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
@@ -467,9 +467,9 @@ spec:
 
 ### containers
 
-#### ・name、image、port
+#### ・name，image，port
 
-Podを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
+Podを構成するコンテナの名前，ベースイメージ，受信ポートを設定する．
 
 **＊実装例＊**
 
@@ -489,7 +489,7 @@ spec:
 
 #### ・volumeMount
 
-ボリュームマウントを実行する。```spec.volume```で設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+ボリュームマウントを実行する．```spec.volume```で設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．
 
 **＊実装例＊**
 
@@ -517,7 +517,7 @@ spec:
 
 ### hostname
 
-Podのホスト名を設定する。また、```spec.hostname```が設定されていない時は、```metadata.name```がホスト名として使用される。
+Podのホスト名を設定する．また，```spec.hostname```が設定されていない時は，```metadata.name```がホスト名として使用される．
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
@@ -535,11 +535,11 @@ spec:
 
 #### ・name
 
-要求によって作成するボリューム名を設定する。
+要求によって作成するボリューム名を設定する．
 
 #### ・persistentVolumeClaim.claimName
 
-用いるPersistentVolumeClaimオブジェクトの名前を設定する。
+用いるPersistentVolumeClaimオブジェクトの名前を設定する．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -554,7 +554,7 @@ spec:
         claimName: foo-slow-volume-claim
 ```
 
-persistentVolumeは別途作成しておく必要がある。
+persistentVolumeは別途作成しておく必要がある．
 
 **＊実装例＊**
 
@@ -576,7 +576,7 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する。そのため、『Pod』が削除されるとこのボリュームも同時に削除される。
+EmptyDirボリュームを作成する．そのため，『Pod』が削除されるとこのボリュームも同時に削除される．
 
 参考：
 
@@ -597,7 +597,7 @@ spec:
 
 #### ・hostPath
 
-HostPathボリュームを作成する。そのため、『ノード』が削除されるとこのボリュームも同時に削除される。
+HostPathボリュームを作成する．そのため，『ノード』が削除されるとこのボリュームも同時に削除される．
 
 参考：
 
@@ -624,7 +624,7 @@ spec:
 
 #### ・appProtocol
 
-受信するインバウンド通信のプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+受信するインバウンド通信のプロトコルを設定する．```protocol```キーとは異なり，アプリケーション層のプロトコルを明示的に指定できる．
 
 ```yaml
  kind: Service
@@ -640,7 +640,7 @@ spec:
    - appProtocol: tcp
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合に、```appProtocol```キーが使用しなければ、```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
+もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが使用しなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 
@@ -662,7 +662,7 @@ spec:
 
 #### ・name
 
-プロトコルのポート名を設定する。
+プロトコルのポート名を設定する．
 
 ```yaml
  kind: Service
@@ -680,7 +680,7 @@ spec:
 
 #### ・protocol
 
-受信するインバウンド通信のプロトコルを設定する。
+受信するインバウンド通信のプロトコルを設定する．
 
 **＊実装例＊**
 
@@ -705,7 +705,7 @@ spec:
   - protocol: SCTP
 ```
 
-ちなみに、FastCGIプロトコルには変換できず、別にNginxを用いてプロトコルを変換する必要がある。
+ちなみに，FastCGIプロトコルには変換できず，別にNginxを用いてプロトコルを変換する必要がある．
 
 参考：
 
@@ -714,7 +714,7 @@ spec:
 
 #### ・port
 
-インバウンド通信を受信するポート番号を設定する。
+インバウンド通信を受信するポート番号を設定する．
 
 **＊実装例＊**
 
@@ -734,7 +734,7 @@ spec:
 
 ####  ・targetPort
 
-受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するかどうかを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に，いずれのポート番号を指定するかどうかを設定する．Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする．
 
 **＊実装例＊**
 
@@ -756,7 +756,7 @@ spec:
 
 ### selector
 
-インバウンド通信の転送先とするPodのラベルのキー名と値を設定する。
+インバウンド通信の転送先とするPodのラベルのキー名と値を設定する．
 
 参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
@@ -773,7 +773,7 @@ spec:
 
 ### type
 
-Serviceのタイプを設定する。
+Serviceのタイプを設定する．
 
 参考：
 
@@ -792,7 +792,7 @@ Serviceのタイプを設定する。
 
 ### hosts
 
-送信可能なアウトバウンド通信のドメイン名を設定する。
+送信可能なアウトバウンド通信のドメイン名を設定する．
 
 ```yaml
 kind: ServiceEntry
@@ -805,7 +805,7 @@ spec:
 
 ### ports
 
-送信可能なアウトバウンド通信のポート番号を設定する。
+送信可能なアウトバウンド通信のポート番号を設定する．
 
 ```yaml
 kind: ServiceEntry
@@ -823,12 +823,12 @@ spec:
 
 ### resolution
 
-送信可能なアウトバウンド通信のIPアドレスの設定する。
+送信可能なアウトバウンド通信のIPアドレスの設定する．
 
 ```yaml
 kind: ServiceEntry
 spec:
-  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
+  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する．
 ```
 
 <br>
@@ -837,7 +837,7 @@ spec:
 
 ### volumeClaimTemplates
 
-PersistentVolumeClaimを作成する。設定の項目は```kind: PersistentVolumeClaim```の場合と同じである。StatefulSetが削除されても、これは削除されない。
+PersistentVolumeClaimを作成する．設定の項目は```kind: PersistentVolumeClaim```の場合と同じである．StatefulSetが削除されても，これは削除されない．
 
 **＊実装例＊**
 

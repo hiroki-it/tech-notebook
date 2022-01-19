@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,7 +14,7 @@
 
 #### ・JSON：JavaScript Object Notation
 
-一番外側を波括弧で囲う。
+一番外側を波括弧で囲う．
 
 ```json
 {
@@ -37,23 +37,23 @@ fruit:
 
 #### ・マークアップ言語
 
-詳しくは以下のノートを参考にせよ。
+詳しくは以下のノートを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_application_object_oriented_language_js_browser_rendering.html
 
 #### ・CSV：Comma Separated Vector
 
-データ解析の入力ファイルとしてよく使うやつ。
+データ解析の入力ファイルとしてよく使うやつ．
 
 <br>
 
-## 02-01. JS型オブジェクト、JSON、PHP型オブジェクト
+## 02-01. JS型オブジェクト，JSON，PHP型オブジェクト
 
 ### JS型オブジェクト
 
 #### ・定義方法
 
-キーはクオーテーションで囲う必要が無い。
+キーはクオーテーションで囲う必要が無い．
 
 **＊実装例＊**
 
@@ -82,7 +82,7 @@ class Foo {
 
 #### ・定義方法
 
-キーを、シングルクオーテーションではなく、クオーテーションで囲う必要がある。
+キーを，シングルクオーテーションではなく，クオーテーションで囲う必要がある．
 
 **＊実装例＊**
 
@@ -121,10 +121,10 @@ const json = {}
 // areaというキーの値を追加
 json.prefecture = "Tokyo";
 
-// もしくは、
+// もしくは，
 json["prefecture"] = "Tokyo";
 
-// 以下は。undefined になる。二段階の定義はできない。
+// 以下は．undefined になる．二段階の定義はできない．
 //// json.prefecture.area = "Shibuya";
 ```
 
@@ -140,13 +140,13 @@ const json = {
 // areaというキーの値を追加
 json.prefecture = "Tokyo";
 
-// もしくは、
+// もしくは，
 json["prefecture"] = "Tokyo";
 ```
 
 #### ・キーの並び順
 
-キーはアルファベット順に並べると良い。以下のサイトで並び替えられる。
+キーはアルファベット順に並べると良い．以下のサイトで並び替えられる．
 
 参考：https://r37r0m0d3l.github.io/json_sort/
 
@@ -178,17 +178,17 @@ class Foo
 
 ## 02-02. 相互パース（シリアライズ＋デシリアライズ）
 
-### シリアライズ、デシリアライズとは
+### シリアライズ，デシリアライズとは
 
 #### ・バックエンドとフロントエンド間
 
-データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
+データ送信のためにオブジェクト（JS型，PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（JS型，PHP型）に変換する処理はデシリアライズである．
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
 #### ・バックエンドとデータベース間
 
-データ送信のためにオブジェクト（PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
+データ送信のためにオブジェクト（PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである．
 
 <br>
 
@@ -196,7 +196,7 @@ class Foo
 
 #### ・シリアライズ：JS型からJSON
 
-JS型オブジェクトからJSONへの変換には、```JSON.stringfy```メソッドを用いる。
+JS型オブジェクトからJSONへの変換には，```JSON.stringfy```メソッドを用いる．
 
 **＊実装例＊**
 
@@ -215,7 +215,7 @@ console.log(json);
 
 #### ・デシリアライズ：JSONからJS型
 
-JSONからJS型オブジェクトへの変換には、```JSON.parse```メソッドを用いる。レスポンスされたJSONはエスケープされていることに注意する。
+JSONからJS型オブジェクトへの変換には，```JSON.parse```メソッドを用いる．レスポンスされたJSONはエスケープされていることに注意する．
 
 **＊実装例＊**
 
@@ -235,7 +235,7 @@ console.log(object);
 
 **＊実装例＊**
 
-シリアライズとデシリアライズを行うクラスを以下に示す。
+シリアライズとデシリアライズを行うクラスを以下に示す．
 
 ```javascript
 class StaffParser {
@@ -269,7 +269,7 @@ class StaffParser {
 
     // ID
     if (criteria.id) {
-      // JSONが生成される。
+      // JSONが生成される．
       json.id = _.trim(criteria.id);
     }
 
@@ -287,7 +287,7 @@ class StaffParser {
 
 #### ・デシリアライズ：JSONからPHP型
 
-JSONからPHP型オブジェクトの変換には。```json_decode```メソッドを用いる。第二引数が```false```の場合、object形式オブジェクトに変換する。リクエストで送信するJSONはエスケープする必要があることに注意する。
+JSONからPHP型オブジェクトの変換には．```json_decode```メソッドを用いる．第二引数が```false```の場合，object形式オブジェクトに変換する．リクエストで送信するJSONはエスケープする必要があることに注意する．
 
 ```php
 <?php
@@ -312,7 +312,7 @@ var_dump($object);
 //  }
 ```
 
-第二引数が```true```の場合、連想配列形式に変換する。
+第二引数が```true```の場合，連想配列形式に変換する．
 
 ```php
 <?php

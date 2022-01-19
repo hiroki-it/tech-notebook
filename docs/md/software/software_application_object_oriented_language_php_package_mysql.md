@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,11 +14,11 @@
 
 #### ・フェッチとは
 
-読み出したレコードをに一度に全て取得してしまうと、サーバー側のメモリを圧迫してしまう。そこで、少しずつ取得する。
+読み出したレコードをに一度に全て取得してしまうと，サーバー側のメモリを圧迫してしまう．そこで，少しずつ取得する．
 
 #### ・フェッチのメソッド名に関する注意点
 
-注意点として、```FETCH```関数は、ベンダーによって名前が異なっていることがある。そのため、同じ名前でも同じ分だけレコードを取得するとは限らない。
+注意点として，```FETCH```関数は，ベンダーによって名前が異なっていることがある．そのため，同じ名前でも同じ分だけレコードを取得するとは限らない．
 
 <br>
 
@@ -28,15 +28,15 @@
 
 #### ・```prepare```メソッド
 
-プリペアードステートメントを用いてSQLを定義する。プリアードステートメントによるSQLインジェクションの防御については、以下のリンク先を参考にせよ。
+プリペアードステートメントを用いてSQLを定義する．プリアードステートメントによるSQLインジェクションの防御については，以下のリンク先を参考にせよ．
 
 #### ・```fetch```メソッド
 
-読み出された全てのレコードのうち、最初のレコードの全てのカラムを取得し、一次元の連想配列で返却する。
+読み出された全てのレコードのうち，最初のレコードの全てのカラムを取得し，一次元の連想配列で返却する．
 
 #### ・```fetchAll```メソッド
 
-読み出された全てのレコードの、全てのカラムを取得し、二次元の連想配列で返却する。
+読み出された全てのレコードの，全てのカラムを取得し，二次元の連想配列で返却する．
 
 **＊実装例＊**
 
@@ -44,17 +44,17 @@
 <?php
     
 $sql = "SELECT * FROM doraemon_characters";
-$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義。
-$stmt->execute(); // 実行。
+$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
+$stmt->execute(); // 実行．
 
 
-// 全てのレコードを取得する。
+// 全てのレコードを取得する．
 $data = $stmt->fetchAll();
 
 // 出力
 print_r($data);
 
-// カラム名と値の連想配列として取得できる。
+// カラム名と値の連想配列として取得できる．
 // Array
 // (
 //     [0] => Array
@@ -76,7 +76,7 @@ print_r($data);
 
 #### ・```fetchColumn```メソッド
 
-読み出された全てのレコードのうち、最初のレコードの一番左のカラムのみを取得し、混合型で返却する。主に、```COUNT```関数の場合に用いる
+読み出された全てのレコードのうち，最初のレコードの一番左のカラムのみを取得し，混合型で返却する．主に，```COUNT```関数の場合に用いる
 
 **＊実装例＊**
 
@@ -84,10 +84,10 @@ print_r($data);
 <?php
     
 $sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
-$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義。
-$stmt->execute(); // 実行。
+$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
+$stmt->execute(); // 実行．
 
-// レコードを取得する。
+// レコードを取得する．
 $data = $stmt->fetchColumn();
 
 // 出力
@@ -105,12 +105,12 @@ print_r($data);
 ```php
 <?php
     
-// $_POSTを用いて、送信されたpostメソッドのリクエストを受け取り、属性から各値を取得する。
+// $_POSTを用いて，送信されたpostメソッドのリクエストを受け取り，属性から各値を取得する．
 $staff_name = $_POST["name"];
 $staff_pass = $_POST["pass"];
 
 
-// HTMLとして変数の内容を出力する際、『<』『>』などの特殊文字をエスケープ（無害化）
+// HTMLとして変数の内容を出力する際，『<』『>』などの特殊文字をエスケープ（無害化）
 $staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
 $staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 
@@ -130,7 +130,7 @@ $sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
 $stmt = $dbh->prepare($sql);
 
 
-// 配列に値を格納（格納する値の順番と、SQLでの引数の順番は、合わせる必要がある）
+// 配列に値を格納（格納する値の順番と，SQLでの引数の順番は，合わせる必要がある）
 $data[] = $staff_name;
 $data[] = $staff_pass;
 
@@ -161,7 +161,7 @@ $dbh = null;
 
 ### Doctrineとは
 
-RDBの読み込み系/書き込み系の操作を行うパッケージ。他の同様パッケージとして、PDOがある。PDOについては、以下のノートを参考にせよ。
+RDBの読み込み系/書き込み系の操作を行うパッケージ．他の同様パッケージとして，PDOがある．PDOについては，以下のノートを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/software/software_middleware_database.html
 
@@ -171,7 +171,7 @@ RDBの読み込み系/書き込み系の操作を行うパッケージ。他の�
 
 #### ・```createQueryBuilder```メソッド
 
-CRUD処理に必要なSQLを保持し、トランザクションによってSQLを実行する。
+CRUD処理に必要なSQLを保持し，トランザクションによってSQLを実行する．
 
 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
 
@@ -180,7 +180,7 @@ CRUD処理に必要なSQLを保持し、トランザクションによってSQL�
 ```php
 <?php
     
-// QueryBuilderインスタンスを作成。
+// QueryBuilderインスタンスを作成．
 $queryBuilder = $this->createQueryBuilder();
 ```
 
@@ -190,7 +190,7 @@ $queryBuilder = $this->createQueryBuilder();
 
 #### ・```select```メソッド
 
-QueryBuilderクラスにおける```select```メソッドに、値を設定する。
+QueryBuilderクラスにおける```select```メソッドに，値を設定する．
 
 **＊実装例＊**
 
@@ -208,7 +208,7 @@ $queryBuilder
 
 #### ・```insert```メソッド
 
-QueryBuilderクラスにおける```insert```メソッドに、値を設定する。
+QueryBuilderクラスにおける```insert```メソッドに，値を設定する．
 
 **＊実装例＊**
 
@@ -221,7 +221,7 @@ $queryBuilder
 
 #### ・```update```メソッド
 
-QueryBuilderクラスにおける```update```メソッドに、値を設定する。
+QueryBuilderクラスにおける```update```メソッドに，値を設定する．
 
 **＊実装例＊**
 
@@ -234,7 +234,7 @@ $queryBuilder
 
 #### ・```delete```メソッド
 
-QueryBuilderクラスにおける```delete```メソッドに、値を設定する。
+QueryBuilderクラスにおける```delete```メソッドに，値を設定する．
 
 **＊実装例＊**
 
@@ -249,18 +249,18 @@ $queryBuilder
 
 ### 実行
 
-#### ・ ```getConnection```メソッド、```executeQuery```メソッド、```fetchAll```メソッド
+#### ・ ```getConnection```メソッド，```executeQuery```メソッド，```fetchAll```メソッド
 
-データベースへの接続し、SQLの実行する。データベース接続に関わる```getConnection```メソッドを開始点として、返り値から繰り返しメソッドを取得し、```fetchAll```メソッドで、テーブルのクエリ名をキーとした連想配列が返される。
+データベースへの接続し，SQLの実行する．データベース接続に関わる```getConnection```メソッドを開始点として，返り値から繰り返しメソッドを取得し，```fetchAll```メソッドで，テーブルのクエリ名をキーとした連想配列が返される．
 
 **＊実装例＊**
 
 ```php
 <?php
     
-// データベースに接続。
+// データベースに接続．
 $queryBuilder->getConnection()
-    // SQLを実行し、レコードを読み出す。
+    // SQLを実行し，レコードを読み出す．
     ->executeQuery($queryBuilder->getSQL(),
           $queryBuilder->getParameters()
     )->fetchAll();
@@ -272,7 +272,7 @@ $queryBuilder->getConnection()
 
 #### ・プレースホルダー
 
-プリペアードステートメントのSQL中にパラメータを設定し、値をパラメータに渡した上で、SQLとして発行する方法。処理速度が速い。また、パラメータに誤ってSQLが渡されても、これを実行できなくなるため、SQLインジェクションの対策にもなる。SQLインジェクションについては、以下のリンク先を参考にせよ。
+プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策にもなる．SQLインジェクションについては，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/security/security_cyber_attacks.html
 
@@ -285,10 +285,10 @@ use Doctrine\DBAL\Connection;
 
 class DogToyQuery
 {
-    // READ処理のSQLを定義するメソッド。
+    // READ処理のSQLを定義するメソッド．
     public function read(Value $toyType): Array
     {
-        // QueryBuilderインスタンスを作成。
+        // QueryBuilderインスタンスを作成．
         $queryBuilder = $this->createQueryBuilder();
         
         // プリペアードステートメントの定義
@@ -300,19 +300,19 @@ class DogToyQuery
           "dog_toy.color_value AS color_value"
         ])
           
-          // FROMを設定する。
+          // FROMを設定する．
           ->from("mst_dog_toy", "dog_toy")
           
-          // WHEREを設定する。この時、値はプレースホルダーとしておく。
+          // WHEREを設定する．この時，値はプレースホルダーとしておく．
           ->where("dog_toy.type = :type")
           
-          // プレースホルダーに値を設定する。ここでは、引数で渡す『$toyType』とする。
+          // プレースホルダーに値を設定する．ここでは，引数で渡す『$toyType』とする．
           ->setParameter("type", $toyType);
         
-        // データベースに接続。
+        // データベースに接続．
         return $queryBuilder->getConnection()
           
-          // SQLを実行し、レコードを読み出す。
+          // SQLを実行し，レコードを読み出す．
           ->executeQuery($queryBuilder->getSQL(),
             $queryBuilder->getParameters()
           )->fetchAll();
@@ -322,7 +322,7 @@ class DogToyQuery
 
 #### ・データのキャッシュ
 
-読み出し系で取得したデータをキャッシュできる。
+読み出し系で取得したデータをキャッシュできる．
 
 ```php
 <?php
@@ -335,14 +335,14 @@ class Foo
     public function find()
     {
         
-        // QueryBuilderインスタンスを作成。
+        // QueryBuilderインスタンスを作成．
         $queryBuilder = $this->createQueryBuilder();
         
         // 何らかのSQLを定義
         $query = $queryBuilder->select()->from()
         
-        // キャッシュがある場合、ArrayStatementオブジェクトを格納
-        // キャッシュがない場合、ResultCacheStatementを格納
+        // キャッシュがある場合，ArrayStatementオブジェクトを格納
+        // キャッシュがない場合，ResultCacheStatementを格納
         $statement = $this->connection->executeQuery(
           $query->getSQL(),
           $query->getParameters(),
@@ -362,11 +362,11 @@ class Foo
 
 ### 書き込み系の操作
 
-#### ・トランザクション、コミット、ロールバック
+#### ・トランザクション，コミット，ロールバック
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
-RDBの処理用語に相当する```beginTransaction```メソッド、```commit```メソッド、```rollBack```メソッドを用いて、RDBを操作する。
+RDBの処理用語に相当する```beginTransaction```メソッド，```commit```メソッド，```rollBack```メソッドを用いて，RDBを操作する．
 
 参照：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
 
@@ -398,17 +398,17 @@ try{
 
 #### ・マイグレーションとは
 
-DBに保存されているデータを保持したまま、テーブルの作成やカラムの変更などを行うための機能のこと。マイグレーションファイルと呼ばれるスクリプトファイルを作成し、テーブルの新規作成やカラムの追加はこのスクリプトファイルに記述していく。
+DBに保存されているデータを保持したまま，テーブルの作成やカラムの変更などを行うための機能のこと．マイグレーションファイルと呼ばれるスクリプトファイルを作成し，テーブルの新規作成やカラムの追加はこのスクリプトファイルに記述していく．
 
 <br>
 
 ### 運用手順
 
-1. 誰かが以下のMigrationファイルをプッシュする。
+1. 誰かが以下のMigrationファイルをプッシュする．
 
 2. Migrationファイルをローカル環境にPull
 
-3. データベース更新バッチを実行し、ローカル環境のデータベーススキーマとレコードを更新
+3. データベース更新バッチを実行し，ローカル環境のデータベーススキーマとレコードを更新
 
 **＊実装例＊**
 

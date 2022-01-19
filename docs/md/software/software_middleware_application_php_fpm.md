@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/md/about.html
 
@@ -14,7 +14,7 @@
 
 ![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
 
-PHPのために実装されたFastCGIのこと。WebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPのプロセスは独立している。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
+PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイルの間でデータ通信を行う．PHP-FPMとPHPのプロセスは独立している．そのため，設定値を別々に設定する必要がある．例えば，ログの出力先はそれぞれ個別に設定する必要がある．
 
 参考：
 
@@ -31,7 +31,7 @@ PHPのために実装されたFastCGIのこと。WebサーバーとPHPファイ�
 
 #### ・FastCGI：Fast Common Gateway Interface
 
-CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと。
+CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと．
 
 <br>
 
@@ -54,7 +54,7 @@ $ apt install php-fpm
 
 #### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからインバウンド通信を受信する場合、```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
+PHP-FPMのログ以外の項目を設定する．PHP-FPM@Dockerでは，```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザ名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザ名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
@@ -63,14 +63,14 @@ PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/
 ```bash
 [www]
 
-# プロセスのユーザ名、グループ名
+# プロセスのユーザ名，グループ名
 user = www-data
 group = www-data
 
-# UNIXドメインソケットを用いるために、sockファイルを指定
+# UNIXドメインソケットを用いるために，sockファイルを指定
 listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
 
-# UNIXドメインソケットを用いるために、プロセスのユーザ名を変更
+# UNIXドメインソケットを用いるために，プロセスのユーザ名を変更
 listen.owner = www-data
 listen.group = www-data
 
@@ -96,21 +96,21 @@ pm.max_spare_servers = 35
 slowlog = /var/log/php-fpm/www-slow.log
 
 # エラーログファイルの場所
-# 開発環境では、エラーログファイル（/var/log/php-fpm/www-error.log）に出力
+# 開発環境では，エラーログファイル（/var/log/php-fpm/www-error.log）に出力
 php_admin_value[error_log] = /dev/stderr
 
 php_admin_flag[log_errors] = on
 
-# セッションの保存方法。ここではredisのキーとして保存（デフォルト値はfiles）
+# セッションの保存方法．ここではredisのキーとして保存（デフォルト値はfiles）
 php_value[session.save_handler] = redis
 
-# セッションの保存場所（デフォルト値は、/var/lib/php/session）
+# セッションの保存場所（デフォルト値は，/var/lib/php/session）
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 
 php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 ```
 
-PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
+PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
 
@@ -120,18 +120,18 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 #### ・```/usr/local/etc/php-fpm.d/docker.conf```ファイル
 
-PHP-FPMの特にログ項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。
+PHP-FPMの特にログ項目を設定する．PHP-FPM@Dockerでは，```/usr/local/etc/php-fpm.d```以下に配置されている．
 
 ```bash
 [global]
-error_log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+error_log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
 
 ; https://github.com/docker-library/php/pull/725#issuecomment-443540114
 log_limit = 8192
 
 [www]
 ; if we send this to /proc/self/fd/1, it never appears
-access.log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+access.log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
 
 clear_env = no
 
