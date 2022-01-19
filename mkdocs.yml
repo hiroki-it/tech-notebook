@@ -31,8 +31,7 @@ use_directory_urls: false
 extra:
   analytics:
     provider: google
-    property: G-PQ56RB3KS2
-    
+    property: G-HPJGWKTH9W
   generator: false
   homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/
   social:
