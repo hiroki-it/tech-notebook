@@ -130,7 +130,7 @@ nav:
         - ■ 言語:
             - ■ オブジェクト指向型言語:
                 - ■ PHP:
-                    - PHPコマンドと設定: software/software_application_object_oriented_language_php_command_and_configuration.md
+                    - phpコマンドと設定: software/software_application_object_oriented_language_php_command_and_configuration.md
                     - ■ クラスベース:
                         - クラス: software/software_application_object_oriented_language_php_class_based.md
                         - メソッド/データ: software/software_application_object_oriented_language_php_class_based_method_data.md
@@ -142,9 +142,9 @@ nav:
                         - アルゴリズム: software/software_application_object_oriented_language_php_logic_algorithm.md
                     - ■ フレームワーク:
                         - ■ Laravel:
-                            - Laravelコンポーネント: software/software_application_object_oriented_language_php_framework_laravel_component.md
+                            - コンポーネント: software/software_application_object_oriented_language_php_framework_laravel_component.md
                             - Eloquent: software/software_application_object_oriented_language_php_framework_laravel_eloquent.md
-                            - 認証認可: software/software_application_object_oriented_language_php_framework_laravel_auth.md
+                            - 認証/認可: software/software_application_object_oriented_language_php_framework_laravel_auth.md
                         - Symfony: software/software_application_object_oriented_language_php_framework_symfony.md
                     - ■ パッケージ:
                         - パッケージ管理: software/software_application_object_oriented_language_php_package_management.md
@@ -174,7 +174,7 @@ nav:
             - ■ 手続き型言語:
                 - ■ Go:
                     - Goとは: software/software_application_procedural_language_go.md
-                    - Goコマンドと設定: software/software_application_procedural_language_go_command_and_configuration.md
+                    - goコマンドと設定: software/software_application_procedural_language_go_command_and_configuration.md
                     - ■ ロジック:
                         - メソッド/データ: software/software_application_procedural_language_go_logic_method_data.md
                     - ■ パッケージ/フレームワーク:
@@ -284,7 +284,7 @@ nav:
     - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
     - ■ Git:
         - GitHub: software_development_methodology/software_development_methodology_git_github.md
-        - Gitコマンド: software_development_methodology/software_development_methodology_git_command.md
+        - gitコマンド: software_development_methodology/software_development_methodology_git_command.md
 
   - 📊 統計分析:
     - R言語: statistic_analysis/statistic_analysis_r.md
