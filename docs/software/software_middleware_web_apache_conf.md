@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】apache.conf
+title: 【知見を記録するサイト】apache.conf
 ---
 
 # apache.conf

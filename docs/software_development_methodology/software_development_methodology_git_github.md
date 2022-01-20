@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】GitHub
+title: 【知見を記録するサイト】GitHub
 ---
 
 # GitHub

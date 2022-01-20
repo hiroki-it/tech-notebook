@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】serverless.yml@AWS
+title: 【知見を記録するサイト】serverless.yml@AWS
 ---
 
 # serverless.yml@AWS

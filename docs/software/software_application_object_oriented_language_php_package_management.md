@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Composer
+title: 【知見を記録するサイト】Composer
 ---
 
 # Composer

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】CI/CD@Terraform
+title: 【知見を記録するサイト】CI/CD@Terraform
 ---
 
 # CI/CD@Terraform

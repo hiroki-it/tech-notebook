@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】認証/認可@Laravel
+title: 【知見を記録するサイト】認証/認可@Laravel
 ---
 
 # 認証/認可@Laravel

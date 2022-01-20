@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】PHP-FPM：PHP FastCGI Process Manager
+title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager
 ---
 
 # PHP-FPM：PHP FastCGI Process Manager

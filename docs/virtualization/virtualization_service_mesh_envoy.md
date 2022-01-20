@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Envoy
+title: 【知見を記録するサイト】Envoy
 ---
 
 # Envoy

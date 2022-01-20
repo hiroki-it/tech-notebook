@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】FluentBit
+title: 【知見を記録するサイト】FluentBit
 ---
 
 # FluentBit

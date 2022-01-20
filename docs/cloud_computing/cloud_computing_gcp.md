@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】GCP：Google Cloud Platform
+title: 【知見を記録するサイト】GCP：Google Cloud Platform
 ---
 
 # GCP：Google Cloud Platform

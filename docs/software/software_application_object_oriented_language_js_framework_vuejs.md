@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Vue.js
+title: 【知見を記録するサイト】Vue.js
 ---
 
 # Vue.js

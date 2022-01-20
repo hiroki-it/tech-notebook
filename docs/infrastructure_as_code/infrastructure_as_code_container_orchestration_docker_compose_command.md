@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】docker-composeコマンド
+title: 【知見を記録するサイト】docker-composeコマンド
 ---
 
 # docker-composeコマンド

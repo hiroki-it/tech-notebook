@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】ポリシー@Terraform
+title: 【知見を記録するサイト】ポリシー@Terraform
 ---
 
 # ポリシー@Terraform

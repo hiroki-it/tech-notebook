@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】docker-compose.yml
+title: 【知見を記録するサイト】docker-compose.yml
 ---
 
 # docker-compose.yml

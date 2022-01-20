@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】ログ収集@Datadog
+title: 【知見を記録するサイト】ログ収集@Datadog
 ---
 
 # ログ収集@Datadog

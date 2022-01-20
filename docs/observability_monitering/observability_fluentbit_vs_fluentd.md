@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】FluentBit vs. Fluentd
+title: 【知見を記録するサイト】FluentBit vs. Fluentd
 ---
 
 # FluentBit vs. Fluentd

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Eloquent
+title: 【知見を記録するサイト】Eloquent
 ---
 
 # Eloquent

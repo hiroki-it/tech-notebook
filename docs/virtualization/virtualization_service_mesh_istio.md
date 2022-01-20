@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Istio
+title: 【知見を記録するサイト】Istio
 ---
 
 # Istio

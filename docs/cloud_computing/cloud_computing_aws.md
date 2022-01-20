@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】AWS：Amazon Web Service
+title: 【知見を記録するサイト】AWS：Amazon Web Service
 ---
 
 # AWS：Amazon Web Service

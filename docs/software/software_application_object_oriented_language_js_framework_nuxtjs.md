@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Nuxt.js
+title: 【知見を記録するサイト】Nuxt.js
 ---
 
 # Nuxt.js

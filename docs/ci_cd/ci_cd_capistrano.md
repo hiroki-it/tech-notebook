@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Capistrano
+title: 【知見を記録するサイト】Capistrano
 ---
 
 # Capistrano

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】API Gatewayへのymlインポート
+title: 【知見を記録するサイト】API Gatewayへのymlインポート
 ---
 
 # API Gatewayへのymlインポート

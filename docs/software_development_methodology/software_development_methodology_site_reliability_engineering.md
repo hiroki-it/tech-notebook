@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】SRE：Site Reliability Engineering
+title: 【知見を記録するサイト】SRE：Site Reliability Engineering
 ---
 
 # SRE：Site Reliability Engineering

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】istioctlコマンド
+title: 【知見を記録するサイト】istioctlコマンド
 ---
 
 # istioctlコマンド

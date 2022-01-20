@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】ロジック@Terraform
+title: 【知見を記録するサイト】ロジック@Terraform
 ---
 
 # ロジック@Terraform

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】CQRS：Command Query Responsibility Segregation
+title: 【知見を記録するサイト】CQRS：Command Query Responsibility Segregation
 ---
 
 # CQRS：Command Query Responsibility Segregation

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Vagrantfile
+title: 【知見を記録するサイト】Vagrantfile
 ---
 
 # Vagrantfile

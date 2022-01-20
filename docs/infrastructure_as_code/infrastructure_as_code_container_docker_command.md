@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】dockerコマンド
+title: 【知見を記録するサイト】dockerコマンド
 ---
 
 # dockerコマンド

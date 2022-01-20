@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】manifest.yml@Istio
+title: 【知見を記録するサイト】manifest.yml@Istio
 ---
 
 # manifest.yml@Istio

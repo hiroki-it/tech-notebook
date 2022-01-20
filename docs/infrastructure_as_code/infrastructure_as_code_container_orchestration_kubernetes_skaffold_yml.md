@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】skaffold.yml
+title: 【知見を記録するサイト】skaffold.yml
 ---
 
 # skaffold.yml

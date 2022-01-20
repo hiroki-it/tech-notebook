@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】MySQLパッケージ@PHP
+title: 【知見を記録するサイト】MySQLパッケージ@PHP
 ---
 
 # MySQLパッケージ@PHP

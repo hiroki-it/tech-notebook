@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】監視@Datadog
+title: 【知見を記録するサイト】監視@Datadog
 ---
 
 # 監視@Datadog

@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】MySQL
+title: 【知見を記録するサイト】MySQL
 ---
 
 # MySQL

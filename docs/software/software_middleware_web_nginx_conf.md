@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】nginx.conf
+title: 【知見を記録するサイト】nginx.conf
 ---
 
 # nginx.conf

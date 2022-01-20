@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Kubernetes
+title: 【知見を記録するサイト】Kubernetes
 ---
 
 # Kubernetes

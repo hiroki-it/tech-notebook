@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】kubectlコマンド
+title: 【知見を記録するサイト】kubectlコマンド
 ---
 
 # kubectlコマンド

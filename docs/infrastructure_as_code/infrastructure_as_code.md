@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Infrastructure as Code
+title: 【知見を記録するサイト】Infrastructure as Code
 ---
 
 # Infrastructure as Code

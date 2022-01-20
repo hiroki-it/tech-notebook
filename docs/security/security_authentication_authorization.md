@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Authenticate（認証）/Authorization（認可）
+title: 【知見を記録するサイト】Authenticate（認証）/Authorization（認可）
 ---
 
 # Authenticate（認証）/Authorization（認可）

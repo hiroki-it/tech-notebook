@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】apacheコマンド
+title: 【知見を記録するサイト】apacheコマンド
 ---
 
 # apacheコマンド

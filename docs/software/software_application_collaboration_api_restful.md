@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】RESTful-API
+title: 【知見を記録するサイト】RESTful-API
 ---
 
 # RESTful-API

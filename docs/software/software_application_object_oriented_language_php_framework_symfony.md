@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】Symfony
+title: 【知見を記録するサイト】Symfony
 ---
 
 # Symfony

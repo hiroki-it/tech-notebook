@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】JSON
+title: 【知見を記録するサイト】JSON
 ---
 
 # JSON

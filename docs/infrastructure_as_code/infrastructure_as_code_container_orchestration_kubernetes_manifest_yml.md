@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】manifest.yml@Kubernetes
+title: 【知見を記録するサイト】manifest.yml@Kubernetes
 ---
 
 # manifest.yml@Kubernetes

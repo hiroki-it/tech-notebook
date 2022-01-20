@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】パッケージ@JavaScript
+title: 【知見を記録するサイト】パッケージ@JavaScript
 ---
 
 # パッケージ@JavaScript

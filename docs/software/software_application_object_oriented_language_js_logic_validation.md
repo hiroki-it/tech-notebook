@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】検証ロジック@JavaScript
+title: 【知見を記録するサイト】検証ロジック@JavaScript
 ---
 
 # 検証ロジック@JavaScript

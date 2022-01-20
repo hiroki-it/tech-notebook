@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】skaffoldコマンド
+title: 【知見を記録するサイト】skaffoldコマンド
 ---
 
 # skaffoldコマンド

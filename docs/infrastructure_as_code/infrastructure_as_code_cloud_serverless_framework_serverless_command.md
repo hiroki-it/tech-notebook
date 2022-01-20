@@ -1,5 +1,5 @@
 ---
-title: 【知見を書きなぐるサイト】serverlessコマンド
+title: 【知見を記録するサイト】serverlessコマンド
 ---
 
 # serverlessコマンド
