@@ -141,11 +141,6 @@ h3:before {
  ヘッダー
 ***************/
 
-/** サイト名 **/
-.md-ellipsis {
-    font-size: 1.5em;
-}
-
 .md-tabs__list {
     /** 均等に配置 **/
     display: flex;
@@ -239,8 +234,22 @@ th, td {
 /* PCのみ */
 @media screen and (min-width: 100em) {
 
+    /** サイト名 **/
+    .md-ellipsis {
+        font-size: 1.5em;
+    }
+
     /* サイドバー */
     .md-sidebar {
         width: 18.0rem;
+    }
+}
+
+/* SPのみ */
+@media screen and (max-width: 100em) {
+
+    /** サイト名 **/
+    .md-ellipsis {
+        font-size: 0.90em;
     }
 }
