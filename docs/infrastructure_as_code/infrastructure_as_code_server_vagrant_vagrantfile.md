@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】Vagrantfile
+---
+
 # Vagrantfile
 
 ## はじめに

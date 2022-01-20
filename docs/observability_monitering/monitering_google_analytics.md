@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】Googleアナリティクス
+---
+
 # Googleアナリティクス
 
 ## はじめに
@@ -74,7 +78,7 @@ POST https://www.google-analytics.com/g/collect
 | ページビュー数     | Webページの閲覧数のこと．リロードしても```+1```される．<br>参考：<br>・https://support.google.com/analytics/answer/6086080?hl=ja<br>・http://www.designcross.net/google-analytics/pageviews.html |
 | 離脱数             | セッションの最後で発生したイベント数のこと．<br>参考：https://support.google.com/analytics/answer/11080047?hl=ja# |
 | ランディングページ | ユーザーが最初に訪問したWebページのこと．<br>参考：https://support.google.com/google-ads/answer/14086?hl=ja |
-| コンバージョン     | セッションの間で何らかの目標が達成されること．目標達成に至ったセッション数はコンバージョン数というこれを計測するためには，Googleアナリティクスの画面で達成条件の設定が必要である．<br/>参考：<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3 |
+| コンバージョン     | セッションの間で，ユーザーが目標達成条件を満たす行動を行ったこと．目標達成に至ったセッション数はコンバージョン数というこれを計測するためには，Googleアナリティクスの画面で達成条件の設定が必要である．<br/>参考：<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3<br>ちなみに，『単なる消費者から顧客に転換する』ことから，コンバージョンという単語が使われている．<br>参考：https://e-words.jp/w/%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3.html |
 | 参照URL            | ユーザーが最初のページに訪問する前に滞在していたURLのこと．  |
 
 <br>
@@ -94,7 +98,7 @@ POST https://www.google-analytics.com/g/collect
 
 ### ```X```当たりの```Y```
 
-```X```を指定するために，Googleアナリティクスに進む．その後，```Y```を指定するために，セカンドディメンションを設定する．
+Googleアナリティクスに```X```を指定するために，コンソールの項目（ファーストディメンション）に進む．その後，```Y```を指定するために，セカンドディメンションを設定する．
 
 - Webページ当たりであれば，『全てのWebページ』の項目に進む．その後，セカンドディメンションにデバイスタイプを設定する．これにより，Webページ当たりのデバイスタイプを確認できる．
 - ランディングページ当たりであれば，『ランディングページ』の項目に進む．その後，セカンドディメンションにデバイスタイプを設定する．これにより，ランディングページ当たりのデバイスタイプを確認できる．

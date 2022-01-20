@@ -1,4 +1,8 @@
-# メソッド，データ
+---
+title: 【知見を書きなぐるサイト】メソッド/データ@Go
+---
+
+# メソッド/データ@Go
 
 ## はじめに
 
@@ -2932,7 +2936,7 @@ func main() {
 	byteJson, err := json.Marshal(user)
 
 	response, err := http.Post(
-		"http://xxx/api.com",      // URL
+		"http://foo-api.com",      // URL
 		"application/json",        // Content-Type
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)

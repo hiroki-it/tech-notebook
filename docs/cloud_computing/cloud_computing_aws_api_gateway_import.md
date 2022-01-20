@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】API Gatewayへのymlインポート
+---
+
 # API Gatewayへのymlインポート
 
 ## はじめに
@@ -223,7 +227,7 @@ x-amazon-apigateway-request-validators:
 openapi: 3.0.0
 
 info:
-  title: example-api-with-proxy-integration # API名
+  title: foo-api-with-proxy-integration # API名
   description: The API for example with proxy integration # APIの説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:
@@ -633,7 +637,7 @@ components:
 openapi: 3.0.0
 
 info:
-  title: example-api-with-non-proxy-integration # API名
+  title: foo-api-with-non-proxy-integration # API名
   description: The API for example with non-proxy integration. # APIの説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:
@@ -1081,7 +1085,7 @@ X-API-Key：*****
 openapi: 3.0.0
 
 info:
-  title: example-api-with-mock-integration # API名
+  title: foo-api-with-mock-integration # API名
   description: The API for example with mock integration # APIの説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:

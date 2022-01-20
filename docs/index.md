@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】目次
+---
+
 # 目次
 
 ## 🌳 システム
@@ -70,7 +74,7 @@
 * 言語
     * オブジェクト指向型言語
         * PHP
-            * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command_and_configuration.html)
+            * [📖 goコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command_and_configuration.html)
             * クラスベース
                 * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html)
                 * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_method_data.html)
@@ -82,9 +86,9 @@
                 * [📖 ︎アルゴリズム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_algorithm.html)
             * フレームワーク
                 * Laravel
-                    * [📖 ︎Laravelコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component.html)
+                    * [📖 ︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component.html)
                     * [📖 ︎Eloquent](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_eloquent.html)
-                    * [📖 ︎認証認可](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_auth.html)
+                    * [📖 ︎認証/認可](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_auth.html)
                 * [📖 ︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html)
             * パッケージ
                 * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html)
@@ -114,7 +118,7 @@
     * 手続き型言語
         * Go
             * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go.html)
-            * [📖 Goコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command_and_configuration.html)
+            * [📖 goコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command_and_configuration.html)
             * ロジック
                 * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html)
             * パッケージ/フレームワーク
@@ -227,8 +231,8 @@
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html)
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html)
 * [📖 ︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_analytics.html)
-* Fluentd/FluentBit
-    * [📖 ︎Fluentd/FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentd_vs_fluentbit.html)
+* FluentBit/Fluentd
+    * [📖 FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html)
 * Datadog
     * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html)
@@ -247,7 +251,7 @@
 * [📖 ︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_project_management.html)
 * Git
     * [📖 ︎GitHub](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_github.html)
-    * [📖 ︎Gitコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_command.html)
+    * [📖 ︎gitコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_command.html)
 
 <br>
 

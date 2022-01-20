@@ -1,4 +1,8 @@
-# ロジック
+---
+title: 【知見を書きなぐるサイト】ロジック@Terraform
+---
+
+# ロジック@Terraform
 
 ## はじめに
 
@@ -9,8 +13,6 @@
 <br>
 
 ## 01. ルートモジュールにおける実装
-
-
 
 ### tfstateファイル
 
@@ -203,7 +205,7 @@ resource "aws_acm_certificate" "example" {
   validation_method         = "DNS"
 
   tags = {
-    Name = "prd-foo-example-cert"
+    Name = "prd-foo-cert"
   }
 
   lifecycle {

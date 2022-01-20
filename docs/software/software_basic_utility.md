@@ -1,4 +1,8 @@
-# ユーティリティ（サービスプログラム）
+---
+title: 【知見を書きなぐるサイト】ユーティリティ（サービスプログラム）@OS
+---
+
+# ユーティリティ（サービスプログラム）@OS
 
 ## はじめに
 
@@ -322,7 +326,7 @@ foo.txt: ASCII text
 GETリクエストを送信する．```jq```コマンドを用いると，レスポンスを整形できる．
 
 ```bash
-$ curl https://example.com/foos/1 | jq . 
+$ curl https://example.com/foo/1 | jq . 
 ```
 
 #### ・-L
@@ -330,7 +334,7 @@ $ curl https://example.com/foos/1 | jq .
 指定したURLでリダイレクトが行われても，リダイレクト後のURLからファイルをインストールする．
 
 ```bash
-$ curl -L https://example.com/foos
+$ curl -L https://example.com/foo
 ```
 
 #### ・-o（小文字）
@@ -366,7 +370,7 @@ $ curl --resolve example.com:80:127.0.0.1 https://example.com
 Content-Typeを指定して，POSTリクエストを送信する．
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foos
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
 ```
 
 #### 
@@ -504,8 +508,8 @@ fi
 # User specific environment
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-# xxxバイナリファイルのファイルパスを追加 を追加 <--- ここに追加
-PATH=$PATH:/usr/local/sbin/xxxx
+# fooバイナリファイルのファイルパスを追加 を追加 <--- ここに追加
+PATH=$PATH:/usr/local/sbin/foo
 
 export PATH
 
@@ -554,12 +558,12 @@ foo.txt: ASCII text, with CR line terminators<br>
 ファイルを検索するためのユーティリティ．アスタリスクを付けなくとも，自動的にワイルドカードが働く．
 
 ```bash
-$ find /* -type f | xargs grep "<検索文字>"
+$ find ./* -type f | xargs grep "<検索文字>"
 ```
 
 ```bash
 # パーミッションエラーなどのログを破棄して検索．
-$ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
+$ find ./* -type f | xargs grep "<検索文字>" 2> /dev/null
 ```
 
 #### ・-name
@@ -567,19 +571,19 @@ $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 ファイル名が```.conf``` で終わるものを全て検索する．
 
 ```bash
-$ find /* -name "*.conf" -type f
+$ find ./* -name "*.conf" -type f
 ```
 
 名前が dir で終わるディレクトリを全て検索する．
 
 ```bash
-$ find /* -name "*dir" -type d
+$ find ./* -name "*dir" -type d
 ```
 
 ルートディレクトリ以下で， ```<検索文字> ```という文字をもち，ファイル名が```.conf```で終わるファイルを全て検索する．
 
 ```bash
-$ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
+$ find ./* -name "*.conf" -type f | xargs grep "<検索文字>"
 ```
 
 <br>
@@ -841,17 +845,55 @@ $ rm -R <ディレクトリ名>
 文字列を置換する．```find```コマンドと組み合わせて，特定のファイルのみで実行できるようにすると良い．複数の置換を実行する場合は，```-e```オプションを並べる．
 
 ```bash
-$ find /* \
+$ find ./* \
   -name "*.md" \
-  -type f | xargs sed -i '' -e 's/，/、/g' -e 's/．/。/g'
+  -type f | xargs sed -i -e 's/，/、/g' -e 's/．/。/g'
 ```
 
 ちなみに，スラッシュを含む文字列を置換する場合には，スラッシュをエスケープする必要である．
 
 ```bash
-$ find /* \
+$ find ./* \
+  -name "*.md" \
+  -type f | xargs sed -i -e 's/foo\/bar/FooBar/g'
+```
+
+#### ・-i
+
+置換後に元々のファイルを上書きする．
+
+```bash
+$ find ./* \
+  -name "*.md" \
+  -type f | xargs sed -i -e 's/foo\/bar/FooBar/g'
+```
+
+ちなみにMacOSで```-i```オプションを使用する場合は，オプションの引数に空文字を渡す必要がある．
+
+```bash
+# MacOSの場合
+$ find ./* \
   -name "*.md" \
   -type f | xargs sed -i '' -e 's/foo\/bar/FooBar/g'
+```
+
+#### ・1s/^
+
+ファイルの一行目にテキストを追加する．
+
+参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
+
+```bash
+find ./* \
+  -name "*.md" \
+  -type f | xargs sed -i '1s/^/一行目にFooを挿入して改行\n\n/'
+```
+
+```bash
+# MacOSの場合
+find ./* \
+  -name "*.md" \
+  -type f | xargs sed -i '' '1s/^/一行目にFooを挿入して改行\n\n/'
 ```
 
 <br>

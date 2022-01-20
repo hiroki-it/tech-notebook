@@ -1,4 +1,8 @@
-# 分散トレース収集
+---
+title: 【知見を書きなぐるサイト】分散トレース収集@Datadog
+---
+
+# 分散トレース収集@Datadog
 
 ## はじめに
 
@@ -218,7 +222,7 @@ Datadogで，スパンはJSON型データとして定義される．アプリケ
       },
       "name": "laravel.request", # スパン名
       "parent_id": 123,          # 親スパンID
-      "resource": "/foos",       # アクセスされたリソース
+      "resource": "/foo",       # アクセスされたリソース
       "service": "laravel",      # サービス名
       "span_id": 123456789,      # スパンID
       "start": 0,                # 処理開始時間
@@ -244,9 +248,9 @@ PHPトレーサーでlaravel内からタグを収集した例
     "http": {
         "host": "example.com",
         "method": "GET",
-        "path_group": "/foos",
+        "path_group": "/foo",
         "status_code": 200,
-        "url": "https://example.com/foos/1"
+        "url": "https://example.com/foo/1"
     },
     "laravel": {
         "route": {

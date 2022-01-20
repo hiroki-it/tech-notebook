@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】SRE：Site Reliability Engineering
+---
+
 # SRE：Site Reliability Engineering
 
 ## はじめに
@@ -138,11 +142,11 @@ esaなどのドキュメント作成ツールを用いると，フィードバ�
 
 <br>
 
-## 04. SREの事例集
+## 04. SREに必要な技術
 
 ### Wantedly
 
-SREチームのValueから，SREの技術的な使命がわかる．
+SREチームのValueから，SREに必要な技術がわかる．
 
 参考：[https://gist.github.com/south37/85d97e02d7816a31053971d63c164880](https://gist.github.com/south37/85d97e02d7816a31053971d63c164880)
 
@@ -150,7 +154,7 @@ SREチームのValueから，SREの技術的な使命がわかる．
 
 ### Topotal
 
-提供しているサービス（SRE as a Service）から，SREの技術的な使命がわかる．
+提供しているサービス（SRE as a Service）から，SREに必要な技術がわかる．
 
 参考：https://topotal.com/services/sre-as-a-service
 

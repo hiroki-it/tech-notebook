@@ -1,4 +1,8 @@
-# コードベースのテスト
+---
+title: 【知見を書きなぐるサイト】コードベースのテスト@PHP
+---
+
+# コードベースのテスト@PHP
 
 ## はじめに
 
@@ -442,7 +446,7 @@ class FooControllerTest extends TestCase
 |              | 異常系 | リクエストのボディにて，パラメータに参照禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
 | DELETE       | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | ・Controllerが200ステータスのレスポンスを返信すること．<br>・削除されたデータのIDが期待通りであること．<br>・レスポンスされたデータが期待通りであること． |
 |              | 異常系 | リクエストのボディにて，パラメータに削除禁止のデータが割り当てられている場合（認可の失敗）． | ・Controllerが400ステータスのレスポンスを返信すること．<br>・レスポンスされたデータが期待通りであること． |
-| 認証認可     | 正常系 | リクエストのヘッダーにて，認証されているトークンが割り当てられている場合（認証の成功）． | Controllerが200ステータスのレスポンスを返信すること．        |
+| 認証/認可     | 正常系 | リクエストのヘッダーにて，認証されているトークンが割り当てられている場合（認証の成功）． | Controllerが200ステータスのレスポンスを返信すること．        |
 |              | 異常系 | リクエストのヘッダーにて，認証されていないトークンが割り当てられている場合（認証の失敗）． | Controllerが401ステータスのレスポンスを返信すること．        |
 |              |        | リクエストのボディにて，パラメータにアクセス禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
 
@@ -617,7 +621,7 @@ class FooTest extends TestCase
      * @test
      * @dataProvider methodDataProvider
      */
-    public function testFind_Xxx_Xxx($paramA, $paramB, $paramC)
+    public function testFind_Bar_Baz($paramA, $paramB, $paramC)
     {
         // 何らかの処理 
     }
@@ -906,7 +910,7 @@ class FooTest extends TestCase
    /**
     * @test
     */    
-    public function testFoo_Xxx_Xxx()
+    public function testFoo_Bar_Baz()
     {    
         // モックとして用いる擬似オブジェクトを作成する．
         $mockFooRepository = Phake::mock(FooRepository::class);

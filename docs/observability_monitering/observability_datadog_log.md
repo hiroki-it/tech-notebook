@@ -1,4 +1,8 @@
-# ログ収集
+---
+title: 【知見を書きなぐるサイト】ログ収集@Datadog
+---
+
+# ログ収集@Datadog
 
 ## はじめに
 
@@ -320,7 +324,7 @@ logs:
 
 FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンク先を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentd_vs_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html
 
 <br>
 
@@ -836,7 +840,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 これに対して，ストリングビルダープロセッサーのルールを定義する．構造化ログの```http.url```の値を出力して完全なURLを生成し，これを```http.url_full```属性として新しく付与する．
 
 ```
-https://exmaple.jp%{http.url}
+https://example.com%{http.url}
 ```
 
 これにより，以下の構造化ログが得られる．
@@ -851,7 +855,7 @@ https://exmaple.jp%{http.url}
   
     # ～ 中略 ～
     
-    "url_full": "https://exmaple.jp/users?paginate=10&fooId=1"
+    "url_full": "https://example.com/users?paginate=10&fooId=1"
     
   },
   

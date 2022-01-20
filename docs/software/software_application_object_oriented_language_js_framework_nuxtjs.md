@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】Nuxt.js
+---
+
 # Nuxt.js
 
 ## はじめに
@@ -281,8 +285,8 @@ const nuxtConfig: Configuration = {
 
   serverMiddleware: [
     {
-      path: '/foos',
-      handler: '~/foos/index.js'
+      path: '/foo',
+      handler: '~/foo/index.js'
     },
   ]
 }

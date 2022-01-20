@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】AWS：Amazon Web Service
+---
+
 # AWS：Amazon Web Service
 
 ## はじめに
@@ -1575,9 +1579,9 @@ $ aws cloudwatch set-alarm-state \
 
 <br>
 
-## 09-05. CloudWatch Synthetics
+## 09-05. CloudWatchシンセティック
 
-### CloudWatch Syntheticsとは
+### CloudWatchシンセティックとは
 
 合成監視を行えるようになる．
 
@@ -5215,7 +5219,7 @@ DBインスタンスがマルチAZ構成の場合，以下の手順を用いて�
 
 #### ・署名付きURLとは
 
-認証認可情報をパラメータに持つURLのこと．S3では，署名付きURLを発行し，S3へのアクセス権限を外部のユーザーに一時的に付与する．
+認証/認可情報をパラメータに持つURLのこと．S3では，署名付きURLを発行し，S3へのアクセス権限を外部のユーザーに一時的に付与する．
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
 
@@ -5472,7 +5476,7 @@ An error occurred (ClientException) when calling the ExecuteCommand operation: U
 | サブスクリプション       | サブスクリプションを登録する．                               |
 | アクセスポリシー         | トピックへのアクセス権限を設定する．                         |
 | 配信再試行ポリシー       | サブスクリプションのHTTP/Sエンドポイントが失敗した時のリトライ方法を設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/sns/latest/dg/sns-message-delivery-retries.html |
-| 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchLogsに転送するように設定する． |
+| 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する． |
 | 暗号化                   |                                                              |
 
 #### ・サブスクリプション

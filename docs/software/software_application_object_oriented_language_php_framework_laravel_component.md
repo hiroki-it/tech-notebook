@@ -1,4 +1,8 @@
-# Laravelコンポーネント
+---
+title: 【知見を書きなぐるサイト】コンポーネント@Laravel
+---
+
+# コンポーネント@Laravel
 
 ## はじめに
 
@@ -1055,11 +1059,11 @@ use App\Http\Controllers\Foo\FooController;
 
 // authエイリアスを設定する．
 Route::middleware("auth")->group(function () {
-    Route::get("/foos", [FooController::class, "getFoo"]);
-    Route::get("/foos/{fooId}", [FooController::class, "index"]);
-    Route::post("/foos", [FooController::class, "createFoo"]);
-    Route::put("/foos/{fooId}", [FooController::class, "updateFoo"]);
-    Route::delete("/foos/{fooId}", [FooController::class, "deleteFoo"]);
+    Route::get("/foo", [FooController::class, "getFoo"]);
+    Route::get("/foo/{fooId}", [FooController::class, "index"]);
+    Route::post("/foo", [FooController::class, "createFoo"]);
+    Route::put("/foo/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/foo/{fooId}", [FooController::class, "deleteFoo"]);
 });
 
 ```
@@ -1689,9 +1693,9 @@ class FooController extends Controller
 ```php
 <?php
     
-Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
+Route::get('/foo', [FooController::class, 'index'])->name('foos_index');
     
-// https://example.com/foos
+// https://example.com/foo
 $url = route('foos_index');
 ```
 
@@ -1754,8 +1758,8 @@ $path = storage_path("app/file.txt");
 ```php
 <?php
 
-// https://example.com/foos
-$url = url('/foos');
+// https://example.com/foo
+$url = url('/foo');
 ```
 
 <br>

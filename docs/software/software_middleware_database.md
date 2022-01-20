@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】データベース
+---
+
 # データベース
 
 ## はじめに
@@ -334,7 +338,7 @@ try{
 
 ```sql
 -- --------------------------------------------------------
--- Host:                         xxxxx
+-- Host:                         example.com
 -- Server version:               10.1.38-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             10.2.0.5611

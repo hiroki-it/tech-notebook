@@ -1,4 +1,8 @@
-# カーネル（制御プログラム）
+---
+title: 【知見を書きなぐるサイト】カーネル（制御プログラム）@OS
+---
+
+# カーネル（制御プログラム）@OS
 
 ## はじめに
 
@@ -189,7 +193,7 @@ crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-物理ストレージの仮想的な仕切りを『ボリューム』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけることができる．```/dev```ディレクトリ以下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．Windowsでは，CドライブとDドライブがパーティションに相当する．
+物理ストレージの仮想的な仕切りを『パーティション』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけることができる．```/dev```ディレクトリ以下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．Windowsでは，CドライブとDドライブがパーティションに相当する．
 
 参考：
 
@@ -209,20 +213,20 @@ $ diskutil list
 /dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *500.3 GB   disk0
-   1:                        EFI ⁨EFI⁩                     314.6 MB   disk0s1
-   2:                 Apple_APFS ⁨Container disk1⁩         500.0 GB   disk0s2
+   1:                        EFI    EFI                        314.6 MB   disk0s1
+   2:                 Apple_APFS    Container disk1            500.0 GB   disk0s2
 
 # 物理ストレージdisk1
 /dev/disk1 (synthesized):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      APFS Container Scheme -                      +500.0 GB   disk1
                                  Physical Store disk0s2
-   1:                APFS Volume ⁨Macintosh HD⁩            22.7 GB    disk1s1
-   2:              APFS Snapshot ⁨com.apple.os.update-...⁩ 22.7 GB    disk1s1s1
-   3:                APFS Volume ⁨Macintosh HD - Data⁩     147.0 GB   disk1s2
-   4:                APFS Volume ⁨Preboot⁩                 396.3 MB   disk1s3
-   5:                APFS Volume ⁨Recovery⁩                622.1 MB   disk1s4
-   6:                APFS Volume ⁨VM⁩                      3.2 GB     disk1s5
+   1:                APFS Volume    Macintosh HD               22.7 GB    disk1s1
+   2:              APFS Snapshot    com.apple.os.update-...    22.7 GB    disk1s1s1
+   3:                APFS Volume    Macintosh HD - Data        147.0 GB   disk1s2
+   4:                APFS Volume    Preboot                    396.3 MB   disk1s3
+   5:                APFS Volume    Recovery                   622.1 MB   disk1s4
+   6:                APFS Volume    VM                         3.2 GB     disk1s5
 ```
 
 <br>

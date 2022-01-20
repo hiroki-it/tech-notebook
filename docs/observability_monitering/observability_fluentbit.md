@@ -1,3 +1,7 @@
+---
+title: 【知見を書きなぐるサイト】FluentBit
+---
+
 # FluentBit
 
 ## 01. ログパイプライン
@@ -461,7 +465,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
 
-チャンク化されたログにタグ付けを行う．タグ付けされたログは，パイプラインのINPUTに再度取り込まれ，処理し直される．
+現在のデータストリームからログを抽出し，新しいストリームを作成する．このストリームは，パイプラインのINPUTに再び取り込まれ，処理し直される．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
@@ -479,15 +483,22 @@ STREAM_TASKセッションは，独自のSQLステートメントで定義され
 
 SELECTステートメントの結果を用いて，データストリームを作成する．
 
-参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
+参考：
+
+- https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
+- https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
+
+**＊実装例＊**
 
 ```bash
 [STREAM_TASK]
     Name foo-stream-task
+    # SELECT句の結果からfooデータストリームを作成する．
     Exec CREATE STREAM foo AS SELECT * FROM TAG:'foo';
     
 [STREAM_TASK]
     Name bar-stream-task
+    # SELECT句の結果に，WITH句でbarタグを付与し，barデータストリームを作成する．
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
