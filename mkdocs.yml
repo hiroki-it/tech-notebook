@@ -265,8 +265,8 @@ nav:
     - 可観測性: observability_monitering/observability.md
     - 監視: observability_monitering/monitering.md
     - Googleアナリティクス: observability_monitering/monitering_google_analytics.md
-    - ■ Fluentd/FluentBit:
-        - Fluentd vs. FluentBit: observability_monitering/observability_fluentd_vs_fluentbit.md
+    - ■ FluentBit/Fluentd:
+        - FluentBit vs. Fluentd: observability_monitering/observability_fluentbit_vs_fluentd.md
         - FluentBit: observability_monitering/observability_fluentbit.md
     - ■ Datadog:
         - メトリクス収集: observability_monitering/observability_datadog_metrics.md
