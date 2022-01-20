@@ -60,6 +60,8 @@ markdown_extensions:
    # 見出しのリンク
   - toc:
       permalink: true
+  # メタタグの有効化
+  - meta
 
 # 外部プラグイン
 plugins:
