@@ -517,7 +517,7 @@ SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 ```
 
 ```bash
-# 本来は改行はないが，わかりやすいように改行している．
+# 本来，改行はないが，わかりやすいように改行している．
 # <コンテナ名>-firelens-<タスクID>
 [0] foo-firelens-*****: [
     *****,
@@ -1100,7 +1100,7 @@ STREAM_TASKにて，ログのタグ付けを定義する．FireLensコンテナ�
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ```bash
-# 本来は改行はないが，わかりやすいように改行している．
+# 本来，改行はないが，わかりやすいように改行している．
 # <コンテナ名>-firelens-<タスクID>
 [0] foo-firelens-*****: [
     *****,

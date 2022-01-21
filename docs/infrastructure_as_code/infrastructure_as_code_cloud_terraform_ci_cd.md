@@ -18,7 +18,7 @@ title: 【知見を記録するサイト】CI/CD@Terraform
 
 #### ・大前提：PullReqを1つずつリリース
 
-基本的には，PullReqを1つずつリリースするようにする．ただ，軽微なupdate処理が実行されるPullReqであれば，まとめてリリースしてもよい．もしリリース時に問題が起こった場合，インフラのバージョンのロールバックを行う必要がある．経験則で，create処理やdestroy処理よりもupdate処理の方がエラーが少ないため，ロールバックにもたつきにくい．PullReqを複数まとめてリリースすると，create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる．
+基本的には，PullReqを1つずつリリースするようにする．ただ，軽微なupdate処理が実行されるPullReqであれば，まとめてリリースしても良い．もしリリース時に問題が起こった場合，インフラのバージョンのロールバックを行う必要がある．経験則で，create処理やdestroy処理よりもupdate処理の方がエラーが少ないため，ロールバックにもたつきにくい．PullReqを複数まとめてリリースすると，create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる．
 
 #### ・既存のリソースに対して，新しいリソースを紐づける場合
 
@@ -458,7 +458,7 @@ terraform -chdir=./${ENV} validate
 
 ### tfnotifyとは
 
-terraformの```plan```コマンドまたは```apply```コマンドの処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．CircleCIで利用する場合は，ダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくとよい．
+terraformの```plan```コマンドまたは```apply```コマンドの処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．CircleCIで利用する場合は，ダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくと良い．
 
 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 

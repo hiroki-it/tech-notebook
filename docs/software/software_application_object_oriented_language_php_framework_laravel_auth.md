@@ -628,7 +628,7 @@ Client secret: *****
 | ```1``` | ```NULL``` | ```Laravel Personal Access Client``` | ```*****``` | ...  |
 | ```2``` | ```NULL``` | ```Laravel Password Grant Client```  | ```*****``` | ...  |
 
-あるいは，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを個別に作成してもよい．
+あるいは，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを個別に作成しても良い．
 
 ```bash
 # oauthキーを生成

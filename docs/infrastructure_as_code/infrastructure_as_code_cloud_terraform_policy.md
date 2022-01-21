@@ -527,7 +527,7 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 #### ・種類が無い場合
 
-リソース名が```this```である場合，```output```名ではこれを省略してもよい．
+リソース名が```this```である場合，```output```名ではこれを省略しても良い．
 
 **＊実装例＊**
 

@@ -137,6 +137,10 @@ title: 【知見を記録するサイト】Infrastructure as Code
 - Puppet
 - Vagrantfile
 
+#### ・コンテナ
+
+- Vagrantfile（機能としてはあるが，あまり用いない）
+
 #### ・コンテナオーケストレーション
 
 - Docker compose

@@ -465,7 +465,7 @@ workflows:
 
 #### ・jobsとは
 
-複数の```job```を定義する．Workflowsを使わない場合は，少なくとも1つの```job```には```build```という名前を使用しなければならない．
+複数の```job```を定義する．Workflowsを用いない場合は，少なくとも1つの```job```には```build```という名前を使用しなければならない．
 
 #### ・jobの粒度
 
@@ -473,7 +473,7 @@ workflows:
 
 | 粒度   | 説明                                                         | 備考                                                       |
 | ------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
-| build  | プログラムの実行環境を構築する．                             | buildとtestを分割しにくい場合は，同じjobで定義してもよい． |
+| build  | プログラムの実行環境を構築する．                             | buildとtestを分割しにくい場合は，同じjobで定義しても良い． |
 | test   | 種々のテスト（Unitテスト，Functionalテスト，など）を実行する． |                                                            |
 | deploy | ステージング環境または本番環境へのデプロイを実行する．       |                                                            |
 
@@ -702,7 +702,7 @@ jobs:
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
-CircleCIでは，jobごとに異なる仮想環境が構築されるため，他の```job```で使用された一時ファイルを再利用したい場合，これを使う．
+CircleCIでは，jobごとに異なる仮想環境が構築されるため，他の```job```で使用された一時ファイルを再利用したい場合，これを用いる．
 
 **＊実装例＊**
 
@@ -729,7 +729,7 @@ jobs:
         at: /tmp/workspace
 ```
 
-全てのディレクトリを保持するような場合がほとんどと思われるため，カレントディレクトリ以下（```.```）を指定するのがよい．
+全てのディレクトリを保持するような場合がほとんどと思われるため，カレントディレクトリ以下（```.```）を指定するのが良い．
 
 **＊実装例＊**
 
@@ -925,7 +925,7 @@ workflows:
                 command: echo "upload artifact to s3"
 ```
 
-Orbsを使う場合は，オプションに引数を渡す前に定義する．
+Orbsを用いる場合は，オプションに引数を渡す前に定義する．
 
 **＊実装例＊**
 
@@ -1260,7 +1260,7 @@ jobs:
 
 #### ・docker/install-dockerize
 
-CircleCIでDocker Composeを用いる場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにもかかわらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．dockerizeの代わりの方法として，sleepコマンドを用いてもよい．
+CircleCIでDocker Composeを用いる場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにもかかわらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．dockerizeの代わりの方法として，sleepコマンドを用いても良い．
 
 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
@@ -1327,7 +1327,7 @@ jobs:
       - run:
           name: Wait for MySQL to be ready
           command: |
-            # 代わりにsleepコマンドでもよい．
+            # 代わりにsleepコマンドでも良い．
             dockerize -wait tcp://localhost:3306 -timeout 1m
       # dockerコンテナに対してマイグレーションコマンドを送信
       - run:
@@ -1358,7 +1358,7 @@ CircleCIでdockerイメージをビルドした後，各イメージレイヤー
 
 #### ・使用例
 
-machineタイプで用いる場合，machineキーの下で```docker_layer_caching```を使う．
+machineタイプで用いる場合，machineキーの下で```docker_layer_caching```を用いる．
 
 **＊実装例＊**
 
@@ -1393,7 +1393,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-dockerタイプで用いる場合，dockerキーの下で```docker_layer_caching```を使う．
+dockerタイプで用いる場合，dockerキーの下で```docker_layer_caching```を用いる．
 
 **＊実装例＊**
 

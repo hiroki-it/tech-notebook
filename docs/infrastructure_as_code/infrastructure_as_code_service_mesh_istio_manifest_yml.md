@@ -1042,7 +1042,7 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
 ```
 
 #### ・route.destination.port
@@ -1074,12 +1074,12 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 80
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 80
             subset: v2
@@ -1097,13 +1097,13 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 80
             subset: v1
@@ -1140,7 +1140,7 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
 ```
 
 #### ・route.destination.port
@@ -1168,12 +1168,12 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 9000
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でもよい．
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い．
             port:
               number: 9000
             subset: v2

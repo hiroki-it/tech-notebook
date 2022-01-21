@@ -58,7 +58,7 @@ if ($x = 1){
 }
 
 if ($x = 2){
-  var_dump("文字列"); // echo "文字列" でもよい．
+  var_dump("文字列"); // echo "文字列" でも良い．
   return 2;
 }
 

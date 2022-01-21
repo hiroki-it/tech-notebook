@@ -568,7 +568,7 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 #### ・```create```メソッド
 
-INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入対象のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行してもよい．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリキーが取得され，EloquentモデルのID値のプロパティに保持される．
+INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入対象のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行しても良い．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリキーが取得され，EloquentモデルのID値のプロパティに保持される．
 
 参考：
 
@@ -738,7 +738,7 @@ class FooController extends Controller
 
 #### ・```limit```メソッド，```offset```メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションで，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すとよい．
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションで，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すと良い．
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -1159,7 +1159,7 @@ select * from `employees` where `department_id` = 3
 
 #### ・解決方法
 
-反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを用いると，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
 
 ```php
 <?php
@@ -1167,7 +1167,7 @@ select * from `employees` where `department_id` = 3
 $departments = Department::with('employees')->get(); // SQL発行（2回）
 
 foreach($departments as $department) {
-    $department->employees; // キャッシュを使うのでSQLの発行はされない（0回）
+    $department->employees; // キャッシュを用いるのでSQLの発行はされない（0回）
 }
 ```
 
@@ -1302,7 +1302,7 @@ class FooRepository extends Repository implements DomainFooRepository
                 "age"   => $foo->age(),
             ]);
 
-//        以下の実装でもよい．
+//        以下の実装でも良い．
 //        $this->fooDTO
 //            ->fill([
 //                "name"  => $foo->name(),

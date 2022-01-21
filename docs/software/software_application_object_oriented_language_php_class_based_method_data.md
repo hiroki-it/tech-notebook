@@ -45,7 +45,7 @@ class Foo
 
 #### ・ データ（プロパティ）とは
 
-クラスは，データを持つ．このデータはプロパティとも呼ばれる．本ノートでは，データであることを意識するために，プロパティという言葉を使わないものとする．
+クラスは，データを持つ．このデータはプロパティとも呼ばれる．本ノートでは，データであることを意識するために，プロパティという言葉を用いないものとする．
 
 **＊実装例＊**
 
@@ -978,7 +978,7 @@ class ResultCacher
             $this->resultCollection[$funcName] = $this->dispatch($funcName);
         }
 
-        // 返却値が設定されていた場合,そのまま使う．
+        // 返却値が設定されていた場合,そのまま用いる．
         return $this->resultCollection[$funcName];
     }
 
@@ -1057,7 +1057,7 @@ $item = new Item;
 
 // 最初の括弧を用いないことで，普段よくやっている値渡しのメソッドを定義しているのと同じになる．
 // 親メソッド（$optionName）のスコープの$itemを，use()に渡す．
-// $paramは，コール時に使う変数．
+// $paramは，コール時に用いる変数．
 $optionName = function ($para) use ($item) {
     $item->optionName() . $para;
 };
@@ -1090,7 +1090,7 @@ $item = new Item;
 
 // 最初の括弧を用いないことで，普段よくやっている値渡しのメソッドを定義しているのと同じになる．
 // use()に，親メソッドのスコープの$itemを渡す．
-// $paramは，コール時に使う変数．
+// $paramは，コール時に用いる変数．
 $option = new Option;
 
 // データの値に無名関数を格納する．
@@ -1126,7 +1126,7 @@ $param = "BC";
 
 // use()に，親メソッドのスコープの$itemを渡す．
 // 無名関数を定義し，同時にcall_user_func()で即コールする．
-// $paramは，コール時に使う変数．
+// $paramは，コール時に用いる変数．
 $optionName = call_user_func(function ($param) use ($item) {
     $item->optionName() . $param;
 });

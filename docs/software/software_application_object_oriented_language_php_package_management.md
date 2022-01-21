@@ -275,7 +275,7 @@ $ composer install --prefer-source
 $ composer reinstall <パッケージ名>
 ```
 
-再インストールで問題を解決できなければ，全てのパッケージを再インストールするとよい．composerキャッシュと```vendor```ディレクトリを削除し，```install```コマンドを実行する．
+再インストールで問題を解決できなければ，全てのパッケージを再インストールすると良い．composerキャッシュと```vendor```ディレクトリを削除し，```install```コマンドを実行する．
 
 ```bash
 $ composer clearcache

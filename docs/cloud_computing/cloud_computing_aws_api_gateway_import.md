@@ -12,11 +12,11 @@ title: 【知見を記録するサイト】API Gatewayへのymlインポート
 
 <br>
 
-## 01. APIGateway拡張機能
+## 01. API Gateway拡張機能
 
 #### ・必要なキー
 
-APIGatewayのインポートに当たり，OpenAPIのYAMLファイルにキーを新たに実装する必要がある．
+API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキーを新たに実装する必要がある．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 

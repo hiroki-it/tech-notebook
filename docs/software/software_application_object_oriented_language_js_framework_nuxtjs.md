@@ -118,7 +118,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```.env```ファイルの読み込み
 
-あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入するとよい．
+あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入すると良い．
 
 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 

@@ -506,7 +506,7 @@ sendfile on;
 server_name example.com;
 ```
 
-パブリックIPアドレスを直接記述してもよい．
+パブリックIPアドレスを直接記述しても良い．
 
 ```nginx
 server_name 192.168.0.0;

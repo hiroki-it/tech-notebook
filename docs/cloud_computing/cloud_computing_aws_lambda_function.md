@@ -26,7 +26,7 @@ title: 【知見を記録するサイト】Lambda関数の実装
 
 #### ・非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でもよい．```return```または```throw```を用いて，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を用いて，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
@@ -73,7 +73,7 @@ exports.handler = async (event) => {
 
 #### ・同期ハンドラ関数（Non-async handlers）
 
-Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でもよい．```callback```メソッドを用いて，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
+Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でも良い．```callback```メソッドを用いて，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -248,7 +248,7 @@ func main() {
 }
 ```
 
-#### ・APIGatewayイベントの場合
+#### ・API Gatewayイベントの場合
 
 ```go
 package main

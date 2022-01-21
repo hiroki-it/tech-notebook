@@ -82,7 +82,7 @@ func main() {
 
 #### ・ローカルPCからインポート
 
-ローカルPCでのみ用いる独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を用いてインポートする必要がある．独自共有の全パッケージでパッケージ名を置換する必要はなく，プロジェクトのルートパスについてのみ定義すればよい．パス実際，```unknown revision```のエラーで，バージョンを見つけられない．
+ローカルPCでのみ用いる独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を用いてインポートする必要がある．独自共有の全パッケージでパッケージ名を置換する必要はなく，プロジェクトのルートパスについてのみ定義すれば良い．パス実際，```unknown revision```のエラーで，バージョンを見つけられない．
 
 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
@@ -148,7 +148,7 @@ PHPにおける```composer.lock```ファイルに相当する．```go.mod```フ�
 
 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
-ポインタ型から文字列型に変換する```ToString```関数や，反対に文字列型からポインタ型に変換する```String```関数をよく使う．
+ポインタ型から文字列型に変換する```ToString```関数や，反対に文字列型からポインタ型に変換する```String```関数をよく用いる．
 
 参考：
 
@@ -475,7 +475,7 @@ db.Save(&user)
 
 #### ・モック化
 
-| よく使うメソッド | 説明                                                         |
+| よく用いるメソッド | 説明                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
 
@@ -502,7 +502,7 @@ type MockedAwsClient struct {
 
 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
-| よく使うメソッド              | 説明                                                         |
+| よく用いるメソッド              | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
 | ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に用いる．関数に値が渡されたことをモックに伝える． |
 | ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に用いる．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
@@ -541,7 +541,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
 
-| よく使うメソッド                      | 説明                                                         |
+| よく用いるメソッド                      | 説明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ```Mock.On```メソッド                 | 関数の検証時に用いる．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
 | ```Mock.AssertExpectations```メソッド | 関数の検証時に用いる．関数内部のスタブが正しく実行されたかどうかを検証する． |
@@ -549,7 +549,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ・前処理と後処理
 
-テスト関数を実行する直前に，前処理を実行する．モックの生成のために用いるとよい．PHPUnitにおける前処理と後処理については，以下のリンク先を参考にせよ．
+テスト関数を実行する直前に，前処理を実行する．モックの生成のために用いると良い．PHPUnitにおける前処理と後処理については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
 
@@ -557,7 +557,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
-| よく使う関数        | 実行タイミング | 説明                                                         |
+| よく用いる関数        | 実行タイミング | 説明                                                         |
 | ------------------- | -------------- | ------------------------------------------------------------ |
 | ```SetupSuite```    | 1              | テストスイート内の全てのテストの前処理として，一回だけ実行する． |
 | ```SetupTest```     | 2              | テストスイート内の各テストの前処理として，テストの度に事前に実行する．```BeforeTest```関数よりも前に実行されることに注意する． |

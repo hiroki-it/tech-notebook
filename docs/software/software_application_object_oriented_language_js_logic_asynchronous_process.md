@@ -134,7 +134,7 @@ console.log(asyncFunc());
 
 #### ・コンストラクタを用いない場合
 
-別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしてもよい．この場合，必ず```return```で返却する必要がある．```return```を用いないと，何も返却されない．
+別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしても良い．この場合，必ず```return```で返却する必要がある．```return```を用いないと，何も返却されない．
 
 ```javascript
 const asyncFunc = () => {
@@ -295,7 +295,7 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-また，axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを用いてもよい．
+また，axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを用いても良い．
 
 **＊実装例＊**
 

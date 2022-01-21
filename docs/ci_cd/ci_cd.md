@@ -40,16 +40,27 @@ title: 【知見を記録するサイト】CI/CD
 
 #### ・インプレースデプロイメントとは
 
-サーバーにアプリケーションをデプロイする場合に用いる．サーバーはそのままに，ソースコードのみを入れ替える．
+サーバーにアプリケーションをデプロイする場合に用いる．最初に古いアプリケーションを停止し，サーバーのOSとミドルウェアの構成はそのままで，アプリケーションのみを上書きする．その後，アプリケーションを再起動する．
 
 参考：
 
 - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 - https://developer.hatenastaff.com/entry/2020/06/26/150300
 
+#### ・ダウンタイムの有無
+
+古いアプリケーションの停止から新しいアプリケーションの再起動まで，に相当する時間のダウンタイムが発生する．ただし，CodeDeployの様に，新旧環境のサーバーとロードバランサ－を用いるとダウンタイムを防げる．
+
+参考：
+
+- https://garafu.blogspot.com/2018/11/release-strategy.html
+- https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+
 #### ・利用例
 
-Capistorano，Fablic
+Capistorano，CodeDeploy，Fablic，Git（手動で```git pull```コマンド）
+
+参考：https://qiita.com/zaburo/items/8886be1a733aaf581045
 
 <br>
 
@@ -63,6 +74,12 @@ Capistorano，Fablic
 
 - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 - https://developer.hatenastaff.com/entry/2020/06/26/150300
+
+#### ・ダウンタイムの有無
+
+新しいアプリケーションの起動を確認してから，古いアプリケーションを停止するため，ダウンタイムが発生しない．
+
+参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
 #### ・利用例
 
@@ -87,6 +104,12 @@ API Gateway，Route53やALBによる重み付けルーティング
 #### ・ローリングアップデートとは
 
 参考：https://webapp.io/blog/what-are-rolling-deployments/
+
+#### ・ダウンタイムの有無
+
+新しいアプリケーションの起動を確認してから，古いアプリケーションを停止するため，ダウンタイムが発生しない．
+
+参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
 #### ・利用例
 
