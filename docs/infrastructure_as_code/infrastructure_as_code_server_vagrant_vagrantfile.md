@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】Vagrantfile
+title: 【知見を記録するサイト】Vagrantfile@Vagrant
 ---
 
-# Vagrantfile
+# Vagrantfile@Vagrant
 
 ## はじめに
 

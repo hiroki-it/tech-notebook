@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】Lambda関数の実装
+title: 【知見を記録するサイト】Lambda関数の実装@AWS
 ---
 
-# Lambda関数の実装
+# Lambda関数の実装@AWS
 
 ## はじめに
 

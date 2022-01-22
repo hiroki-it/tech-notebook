@@ -37,8 +37,7 @@ title: 【知見を記録するサイト】目次
 
 ### ミドルウェア
 
-* Linux系
-    * [📖 ︎︎標準搭載ミドルウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
+* [📖 ︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
 * Web系
     * Nginx
         * [📖 ︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)

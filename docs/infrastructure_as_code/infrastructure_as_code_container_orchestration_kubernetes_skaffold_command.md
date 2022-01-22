@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】skaffoldコマンド
+title: 【知見を記録するサイト】skaffoldコマンド@Skaffold
 ---
 
-# skaffoldコマンド
+# skaffoldコマンド@Skaffold
 
 ## はじめに
 

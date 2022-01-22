@@ -1238,7 +1238,7 @@ MULTILINE_PARSERにて，スタックトレースログの各行の結合を定�
 
 #### ・name
 
-FireLensコンテナをサイドカーとして構築するために，コンテナ定義を実装する．FireLensコンテナは『log_routeter』とする．
+FireLensコンテナをサイドカーとして構築するために，コンテナ定義を実装する．FireLensコンテナは『log_router』とする．
 
 #### ・logConfiguration
 

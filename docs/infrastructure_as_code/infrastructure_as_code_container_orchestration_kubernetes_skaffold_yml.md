@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】skaffold.yml
+title: 【知見を記録するサイト】skaffold.yml@Skaffold
 ---
 
-# skaffold.yml
+# skaffold.yml@Skaffold
 
 ## はじめに
 

@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】nginxコマンド
+title: 【知見を記録するサイト】nginxコマンド@Nginx
 ---
 
-# nginxコマンド
+# nginxコマンド@Nginx
 
 ## はじめに
 

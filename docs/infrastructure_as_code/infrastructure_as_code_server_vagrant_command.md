@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】vagrantコマンド
+title: 【知見を記録するサイト】vagrantコマンド@Vagrant
 ---
 
-# vagrantコマンド
+# vagrantコマンド@Vagrant
 
 ## はじめに
 

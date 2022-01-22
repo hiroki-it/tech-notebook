@@ -84,7 +84,7 @@ title: 【知見を記録するサイト】監視@Datadog
 
 ```markdown
 <!-- タグ変数を出力する -->
-【{{log.attributes.service}}】ｈ環境でエラーを検知しました
+【{{log.attributes.service}}】環境でエラーを検知しました
 ```
 
 #### ・本文

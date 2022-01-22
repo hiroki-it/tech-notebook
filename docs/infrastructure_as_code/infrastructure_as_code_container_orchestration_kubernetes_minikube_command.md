@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】minikubeコマンド
+title: 【知見を記録するサイト】minikubeコマンド@Kubernetes
 ---
 
-# minikubeコマンド
+# minikubeコマンド@Kubernetes
 
 ## はじめに
 

@@ -256,7 +256,7 @@ redirect_stderr=true
 
 #### ・user
 
-supervisordの実行ユーザを設定する．
+supervisordの実行ユーザーを設定する．
 
 ```bash
 user=root
@@ -359,7 +359,7 @@ stdout_logfile_maxbytes=50MB
 
 #### ・user
 
-常駐プロセスの実行ユーザを設定する．
+常駐プロセスの実行ユーザーを設定する．
 
 ```bash
 user=root

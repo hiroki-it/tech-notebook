@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager
+title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager@ミドルウェア
 ---
 
-# PHP-FPM：PHP FastCGI Process Manager
+# PHP-FPM：PHP FastCGI Process Manager@ミドルウェア
 
 ## はじめに
 
@@ -58,7 +58,7 @@ $ apt install php-fpm
 
 #### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMのログ以外の項目を設定する．PHP-FPM@Dockerでは，```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザ名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザ名のデフォルト値である．
+PHP-FPMのログ以外の項目を設定する．PHP-FPM@Dockerでは，```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザー名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
@@ -67,14 +67,14 @@ PHP-FPMのログ以外の項目を設定する．PHP-FPM@Dockerでは，```/usr/
 ```bash
 [www]
 
-# プロセスのユーザ名，グループ名
+# プロセスのユーザー名，グループ名
 user = www-data
 group = www-data
 
 # UNIXドメインソケットを用いるために，sockファイルを指定
 listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
 
-# UNIXドメインソケットを用いるために，プロセスのユーザ名を変更
+# UNIXドメインソケットを用いるために，プロセスのユーザー名を変更
 listen.owner = www-data
 listen.group = www-data
 

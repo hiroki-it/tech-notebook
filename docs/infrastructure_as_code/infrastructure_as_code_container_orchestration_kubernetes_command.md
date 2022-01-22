@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】kubectlコマンド
+title: 【知見を記録するサイト】kubectlコマンド@Kubernetes
 ---
 
-# kubectlコマンド
+# kubectlコマンド@Kubernetes
 
 ## はじめに
 

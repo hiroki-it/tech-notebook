@@ -296,7 +296,7 @@ const object1 = {};
 // Objectコンストラクタ関数による生成
 const object2 = new Object({});
 
-// ユーザ宣言Functionコンストラクタ関数による生成
+// ユーザー宣言Functionコンストラクタ関数による生成
 const Object3 = () => {};
 
 // 出力結果
