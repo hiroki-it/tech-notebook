@@ -133,7 +133,7 @@ FROM data/agent:latest
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript
 
-#### ・パラメータ
+#### ・パラメーター
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript/#%E5%88%9D%E6%9C%9F%E5%8C%96%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC
 
@@ -584,7 +584,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 #### ・Urlパーサー
 
-構造化ログのURL値からパスパラメータやクエリパラメータを検出し，詳細な属性として新しく付与する．
+構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し，詳細な属性として新しく付与する．
 
 参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
 
@@ -638,7 +638,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 }
 ```
 
-これに対して，Urlパーサのルールを定義する．```http.url```属性からパスパラメータやクエリパラメータを検出し，```http.url_details```属性として新しく付与する．
+これに対して，Urlパーサのルールを定義する．```http.url```属性からパスパラメーターやクエリパラメーターを検出し，```http.url_details```属性として新しく付与する．
 
 ```bash
 {

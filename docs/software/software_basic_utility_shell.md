@@ -12,7 +12,27 @@ title: 【知見を記録するサイト】シェル
 
 <br>
 
-## 01. シェルスクリプト
+## 01. シェルとは
+
+### 仕組み
+
+標準入力からの入力を解釈し，カーネルを操作する．また，カーネルの処理結果を解釈し，標準出力/標準エラー出力に出力する．
+
+参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+
+![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell.png)
+
+<br>
+
+### 種類
+
+参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
+
+![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
+
+<br>
+
+## 01-02. シェルスクリプト
 
 ### シェルスクリプトとは
 
@@ -138,6 +158,25 @@ $ ./hello.sh
 <br>
 
 ### ロジック
+
+#### ・シェルの選択
+
+シェルの種類を選択する．種類ごとに使用できるオプションがやや異なる．また同時に，```set```コマンドのオプションを有効化できる．
+
+参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
+
+```makefile
+SHELL=/bin/bash -xeu
+```
+
+シェルによって使用できるオプションが少しだけ異なることに注意する．
+
+```makefile
+# bashのpipefailオプションを使用する．
+SHELL=/bin/bash -o pipefail
+```
+
+参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
 
 #### ・ターゲット
 

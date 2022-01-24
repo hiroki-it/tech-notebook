@@ -137,7 +137,7 @@ version: 2.1
 
 #### ・parametersとは
 
-| パラメータ名                | 参照範囲                                                     | 値を設定する場所 |
+| パラメーター名                | 参照範囲                                                     | 値を設定する場所 |
 | ------------------- | ------------------------------------------------------------ | ---------------- |
 | command parameters  | ```command```内で定義する．定義された```command```内のみで定義できる． | ```workflows```  |
 | job parameters      | ```job```内で定義する．定義された```job```内のみで参照できる． | ```workflows```  |
@@ -487,7 +487,7 @@ jobを実行する仮想環境を選択できる．
 
 #### ・dockerタイプとは
 
-dockerコンテナを実行環境として設定する．これを選択したうえで，dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を用いて，実行環境dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合，```setup_remote_docker```を有効化すると，これを使用できるようになる．```machine```タイプを選んだ場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
+dockerコンテナを実行環境として設定する．これを選択したうえで，dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を用いて，実行環境dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合，```setup_remote_docker```を有効化すると，これを使用できるようになる．```machine```タイプを選択した場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -717,7 +717,7 @@ jobs:
           # jobAにて，Workspaceとするディレクトリのroot
           root: /tmp/workspace
           # Rootディレクトリを基準とした相対パス（"./"以外の場合は，ディレクトリの作成が必要）
-          # パラメータは環境変数として出力できないので注意
+          # パラメーターは環境変数として出力できないので注意
           paths:
             - target/application.jar
             - build/*

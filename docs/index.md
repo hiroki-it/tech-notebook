@@ -6,7 +6,7 @@ title: 【知見を記録するサイト】目次
 
 ## 🌳 システム
 
-- [📖 ︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system.html)
+* [📖 ︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system.html)
 
 <br>
 

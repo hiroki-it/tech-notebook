@@ -26,7 +26,7 @@ title: 【知見を記録するサイト】serverlessコマンド
 $ serverless print
 ```
 
-#### ・パラメータ有
+#### ・パラメーター有
 
 ```bash
 $ serverless print --FOO foo
@@ -48,9 +48,9 @@ $ serverless print --FOO foo
 $ serverless deploy
 ```
 
-#### ・パラメータ
+#### ・パラメーター
 
-パラメータを```serverless.yml```ファイルに渡し，```deploy```コマンドを実行する．
+パラメーターを```serverless.yml```ファイルに渡し，```deploy```コマンドを実行する．
 
 ```bash
 $ serverless deploy --FOO foo

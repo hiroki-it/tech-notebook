@@ -738,7 +738,7 @@ class FooController extends Controller
 
 #### ・```limit```メソッド，```offset```メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションで，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すと良い．
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションで，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメーターはクエリパラメーターとして渡すと良い．
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 

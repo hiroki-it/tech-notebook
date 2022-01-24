@@ -14,7 +14,7 @@ title: 【知見を記録するサイト】Vagrant
 
 ## 01. Vagrantとは
 
-Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして用いることもできる．仮想環境として仮想サーバーとコンテナを選べるが，Vagrantは仮想サーバーの構築のために用いることが多い．
+Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして用いることもできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために用いることが多い．
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 

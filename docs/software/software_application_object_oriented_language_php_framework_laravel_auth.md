@@ -49,7 +49,7 @@ APIガードの認証で用いるトークンをJWTに変更したい時には�
 | sessionドライバー | セッションIDを用いたForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
 | tokenドライバー   | Bearer認証，APIキー認証，OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
 
-ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選んだ場合は，TokenGuardクラスが返却される．
+ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選択した場合は，TokenGuardクラスが返却される．
 
 参考：
 
@@ -1023,7 +1023,7 @@ $ composer require laravel/breeze:^1.0 --dev
 
 #### ・認証処理ファイルの自動生成
 
-認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選択できる．
 
 ```bash
 $ php artisan breeze:install
@@ -1053,7 +1053,7 @@ $ composer require laravel/ui:^1.0 --dev
 
 #### ・認証処理ファイルの自動生成
 
-認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選択できる．
 
 ```bash
 # Vuejsを用いる場合．

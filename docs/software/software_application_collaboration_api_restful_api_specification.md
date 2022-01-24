@@ -158,7 +158,7 @@ paths:
       # リクエスト
       #===========================
       parameters: []
-      requestBody: # メッセージボディにパラメータを割り当てる．
+      requestBody: # メッセージボディにパラメーターを割り当てる．
         description: ユーザーID
         content:
           application/json: # MIME type
@@ -209,13 +209,13 @@ paths:
       # リクエスト
       #===========================
       parameters:
-        - in: path # パスにパラメータを割り当てる．
+        - in: path # パスにパラメーターを割り当てる．
           name: userId
           required: true
           description: ユーザーID
           schema:
             type: string
-            foo: # パスパラメータ例
+            foo: # パスパラメーター例
               userId=1
       #===========================
       # レスポンス
@@ -270,13 +270,13 @@ paths:
       # リクエスト
       #===========================
       parameters:
-        - in: path # パスにパラメータを割り当てる．
+        - in: path # パスにパラメーターを割り当てる．
           name: userId
           required: true
           description: ユーザーID
           schema:
             type: string
-            foo: # パスパラメータ例
+            foo: # パスパラメーター例
               userId=1
       #===========================
       # レスポンス

@@ -432,9 +432,9 @@ class Foo
     {
         try {
 
-            // 外部APIのURL，送信方法，トークンなどのパラメータが存在するかを検証．
+            // 外部APIのURL，送信方法，トークンなどのパラメーターが存在するかを検証．
             // 外部APIのためのリクエストメッセージを生成．
-            // 外部APIのURL，送信方法，トークンなどのパラメータを設定．
+            // 外部APIのURL，送信方法，トークンなどのパラメーターを設定．
 
         } catch (\HttpRequestErrorException $exception) {
             

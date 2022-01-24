@@ -356,7 +356,7 @@ EXPOSE 80
 
 #### ・対応可能なCPUアーキテクチャの種類
 
-Dockerは全てのPCで稼働できるわけではなく，イメージごとに対応可能なCPUアーキテクチャ（AMD系，ARM系，など）がある．同じOSでも，機種ごとに搭載されるCPUアーキテクチャは異なる．例えば，MacBook 2020 にはIntel，またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため，ARMに対応したイメージを選ぶ必要がある．ただし，イメージがOSのCPUアーキテクチャに対応しているかどうかを開発者が気にする必要はなく，```docker pull```時に，OSのCPUアーキテクチャに対応したイメージが自動的に選択されるようになっている．
+Dockerは全てのPCで稼働できるわけではなく，イメージごとに対応可能なCPUアーキテクチャ（AMD系，ARM系，など）がある．同じOSでも，機種ごとに搭載されるCPUアーキテクチャは異なる．例えば，MacBook 2020 にはIntel，またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため，ARMに対応したイメージを選択する必要がある．ただし，イメージがOSのCPUアーキテクチャに対応しているかどうかを開発者が気にする必要はなく，```docker pull```時に，OSのCPUアーキテクチャに対応したイメージが自動的に選択されるようになっている．
 
 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 

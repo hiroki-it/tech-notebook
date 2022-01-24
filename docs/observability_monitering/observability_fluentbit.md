@@ -82,7 +82,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 ```bash
 [SERVICE]
-    # バッファに蓄えられた全てのログを宛先に出力する間隔
+    # バッファに蓄えられた全てのログを宛先にアウトプットする間隔
     Flush 1
     # 猶予時間
     Grace 30
@@ -144,11 +144,11 @@ Fluent Bit v1.8.6
 
 ### INPUTとは
 
-ログのパイプラインへの入力方法を定義する．
+ログのパイプラインへのインプット方法を定義する．
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-プラグインを用いて，ログの入力方法を設定する．
+プラグインを用いて，ログのインプット方法を設定する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
@@ -191,7 +191,7 @@ Inputs
 
 #### ・dummyプラグインとは
 
-ダミーの構造化ログをパイプラインに入力する．非構造化ログは入力データとして使用できない．ローカル環境でパイプラインの動作を確認するために役立つ．
+ダミーの構造化ログをパイプラインにインプットする．非構造化ログはインプットデータとして使用できない．ローカル環境でパイプラインの動作を確認するために役立つ．
 
 参考：
 
@@ -227,7 +227,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ・forwardプラグインとは
 
-受信したログを指定されたポートで受信し，パイプラインに入力する．
+受信したログを指定されたポートで受信し，パイプラインにインプットする．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
@@ -275,7 +275,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 #### ・tailプラグインとは
 
-指定したパスに継続的に出力されるログファイルを順次結合し，パイプラインに入力する．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
+指定したパスに継続的にアウトプットされるログファイルを順次結合し，パイプラインにインプットする．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
@@ -341,7 +341,15 @@ $ fluent-bit \
 
 ### PARSEとは
 
-### MULTILINE_PARSER
+参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+
+<br>
+
+## 02-04. MULTILINE_PARSER
+
+### MULTILINE_PARSERとは
+
+分割してインプットされたログを結合する．
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
@@ -373,7 +381,7 @@ Laravelのスタックトレースを結合する．
 
 <br>
 
-## 02-04. FILTER
+## 02-05. FILTER
 
 ### FILTERとは
 
@@ -385,9 +393,14 @@ Laravelのスタックトレースを結合する．
 
 #### ・multilineプラグインとは
 
+MULTILINE_PARSERを有効化する．同時に，SERVICEでMULTILINE_PARSERの設定ファイルを読み込む必要がある．
+
 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
 ```bash
+[SERVICE]
+    Parsers_File parsers_multiline.conf
+    
 [FILTER]
     # プラグイン名
     name                  multiline
@@ -467,15 +480,20 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 02-05. STREAM_TASK
+## 02-06. STREAM_TASK
 
 ### STREAM_TASKとは
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
 
-現在のデータストリームからログを抽出し，新しいストリームを作成する．このストリームは，パイプラインのINPUTに再び取り込まれ，処理し直される．
+現在のデータストリームからログを抽出し，新しいストリームを作成する．このストリームは，パイプラインのINPUTに再び取り込まれ，処理し直される．同時に，SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+
+```bash
+[SERVICE]
+    Streams_File stream_processor.conf
+```
 
 <br>
 
@@ -540,11 +558,11 @@ SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 
 <br>
 
-## 02-06. OUTPUT
+## 02-07. OUTPUT
 
 ### OUTPUTとは
 
-チャンクとして蓄えられたログの出力先を定義する．設定可能な出力先の種類については，以下を参考にせよ．
+チャンクとして蓄えられたログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下を参考にせよ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -635,7 +653,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     region            ap-northeast-1
     # 予約変数あり．
     log_group_name    /prd-foo-ecs-container/laravel/log
-    # ログストリーム名．予約変数あり．タスクIDなど出力できる．
+    # ログストリーム名．予約変数あり．タスクIDなどアウトプットできる．
     log_stream_name   container/laravel/$(ecs_task_id)
     
 [OUTPUT]
@@ -774,7 +792,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 #### ・stdoutプラグインとは
 
-標準出力に出力する，FluentBitの実行ログに混じって，対象のログが出力されることになる．
+標準出力にアウトプットする，FluentBitの実行ログに混じって，対象のログがアウトプットされることになる．
 
 ```bash
  [OUTPUT]
@@ -788,7 +806,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 #### ・nullプラグインとは
 
-出力を破棄する．
+アウトプットを破棄する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs/null
 
@@ -814,7 +832,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 <br>
 
-## 02-07. BUFFER
+## 02-08. BUFFER
 
 ### BUFFERとは
 
@@ -1211,7 +1229,7 @@ MULTILINE_PARSERにて，スタックトレースログの各行の結合を定�
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        # FireLensコンテナ自体がCloudWatchログにログ出力
+        # FireLensコンテナ自体がCloudWatchログにログアウトプット
         "awslogs-group": "<ロググループ名>",
         "awslogs-region": "<リージョン>",
         "awslogs-stream-prefix": "<プレフィクス>"
@@ -1233,11 +1251,11 @@ MULTILINE_PARSERにて，スタックトレースログの各行の結合を定�
     "secrets": [
       {
         "name": "DD_API_KEY",
-        "valueFrom": "<SSMパラメータで管理する環境変数名>"
+        "valueFrom": "<SSMパラメーターで管理する環境変数名>"
       },
       {
         "name": "DD_ENV",
-        "valueFrom": "<SSMパラメータで管理する環境変数名>"
+        "valueFrom": "<SSMパラメーターで管理する環境変数名>"
       }
     ]
   }
@@ -1252,11 +1270,11 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
-| 項目                                          | 説明                                                         |
-| --------------------------------------------- | ------------------------------------------------------------ |
-| ```type```                                    | メインコンテナからFireLensコンテナにログを送信できるように，ログドライバーのタイプとして『```fluentbit```』を設定する． |
-| ```config-file-type```                        | FluentBitの設定ファイルを読み込むために，```file```とする．  |
-| ```config-file-value```                       | ```options```キーにて，ログルーティングを設定できるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする． |
+| 項目                                                | 説明                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| ```type```                                          | メインコンテナからFireLensコンテナにログを送信できるように，ログドライバーのタイプとして『```fluentbit```』を設定する． |
+| ```config-file-type```                              | FluentBitの設定ファイルを読み込むために，```file```とする．  |
+| ```config-file-value```                             | ```options```キーにて，ログルーティングを設定できるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする． |
 | ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
-| ```environment```，```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する． |
+| ```environment```，```secrets```                    | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように，コンテナの環境変数に値を定義する． |
 

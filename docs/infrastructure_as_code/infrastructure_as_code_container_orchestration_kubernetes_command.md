@@ -46,13 +46,13 @@ pod/foo-pod configured
 
 #### ・configとは
 
-kubernetesコマンドに関するパラメータを操作する．
+kubernetesコマンドに関するパラメーターを操作する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ・view
 
-パラメータのデフォルト値が設定された```~/.kude/config```ファイルを表示する．
+パラメーターのデフォルト値が設定された```~/.kude/config```ファイルを表示する．
 
 **＊例＊**
 
@@ -193,7 +193,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 [root@<Pod名>] $ ls -la 
 ```
 
-コンテナを指定しない場合は，デフォルトのコンテナが選ばれる．Podのラベル名ではなく，Pod名であることに注意する．
+コンテナを指定しない場合は，デフォルトのコンテナが選択される．Podのラベル名ではなく，Pod名であることに注意する．
 
 ```bash
 $ kubectl exec -it <Pod名> -- bash

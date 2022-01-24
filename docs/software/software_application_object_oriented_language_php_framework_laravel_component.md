@@ -164,7 +164,7 @@ class FooCommand extends Command
     {
         Log::info('START: artisan do-foo');
         
-        // パラメータを取得します．
+        // パラメーターを取得します．
         $bar = $this->argument('bar');
 
         // 何らかのコマンド処理
@@ -1945,9 +1945,9 @@ $ php artisan make:controller <Controller名>
 
 ### リクエストパラメータの取得
 
-#### ・クエリパラメータ/メッセージボディ
+#### ・クエリパラメーター/メッセージボディ
 
-クエリパラメータとメッセージボディの両方を取得する．
+クエリパラメーターとメッセージボディの両方を取得する．
 
 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
@@ -1967,13 +1967,13 @@ class FooController extends Controller
      */
     public function update(Request $request)
     {
-        $params = $request->all(); // 全てのパラメータを連想配列で取得する．
+        $params = $request->all(); // 全てのパラメーターを連想配列で取得する．
 
         $foo = $request->input('foo'); // 指定したパラメータの値を取得する．
         
         $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する．
 
-        $params = $request->only(['foo', 'bar']); // 指定したパラメータを連想配列で取得する．
+        $params = $request->only(['foo', 'bar']); // 指定したパラメーターを連想配列で取得する．
 
         $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する．
 
@@ -1984,9 +1984,9 @@ class FooController extends Controller
 }
 ```
 
-#### ・クエリパラメータ
+#### ・クエリパラメーター
 
-クエリパラメータを取得する．
+クエリパラメーターを取得する．
 
 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
@@ -2006,7 +2006,7 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        $params = $request->query(); // 全てのパラメータを連想配列で取得する．
+        $params = $request->query(); // 全てのパラメーターを連想配列で取得する．
 
         $foo = $request->query('foo'); // 指定したパラメータの値を取得する．
     }
@@ -2015,7 +2015,7 @@ class FooController extends Controller
 
 #### ・パスパラメータ
 
-パスパラメータを取得する．
+パスパラメーターを取得する．
 
 参考：
 
@@ -2039,7 +2039,7 @@ class FooController extends Controller
      */
     public function update(Request $request)
     {
-        $params = $request->route(); // 全てのパラメータを連想配列で取得する．
+        $params = $request->route(); // 全てのパラメーターを連想配列で取得する．
 
         $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する．
 
@@ -2048,7 +2048,7 @@ class FooController extends Controller
 }
 ```
 
-あるいは，コントローラーの第二引数にパスパラメータ名を記述することで，パスパラメータの値を取得できる．
+あるいは，コントローラーの第二引数にパスパラメーター名を記述することで，パスパラメータの値を取得できる．
 
 **＊実装例＊**
 
@@ -2284,7 +2284,7 @@ $ php artisan make:request <Request名>
 
 <br>
 
-### クエリパラメータ/メッセージボディのバリデーション
+### クエリパラメーター/メッセージボディのバリデーション
 
 #### ・ルール定義 ＆ バリデーション手動実行
 
@@ -2311,7 +2311,7 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        // クエリパラメータのバリデーションを実行する．
+        // クエリパラメーターのバリデーションを実行する．
         // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "limit" => ["required", Rule::in([25, 50, 100])],
@@ -2390,7 +2390,7 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        // クエリパラメータのバリデーションを実行する．
+        // クエリパラメーターのバリデーションを実行する．
         // エラーが起こった場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
@@ -3964,13 +3964,13 @@ class Kernel extends HttpKernel
 
 #### ・コントローラー使用時
 
-ルーティング時に用いるパラメータ名とコントローラーのメソッドの引数型と変数名が同じであり，かつパラメータに数値が割り当てられた場合，その数値をIDとするEloquentモデルが自動的にインジェクションされる．
+ルーティング時に用いるパラメーター名とコントローラーのメソッドの引数型と変数名が同じであり，かつパラメータに数値が割り当てられた場合，その数値をIDとするEloquentモデルが自動的にインジェクションされる．
 
 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
 **＊実装例＊**
 
-ルーティング時に，パスパラメータ名を```user```としておく．
+ルーティング時に，パスパラメーター名を```user```としておく．
 
 ```php
 <?php

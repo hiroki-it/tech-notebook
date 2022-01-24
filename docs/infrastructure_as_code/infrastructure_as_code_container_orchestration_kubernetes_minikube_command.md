@@ -92,7 +92,7 @@ $ minikube addons list
 
 #### ・configとは
 
-minikubeコマンドに関するパラメータを操作する．
+minikubeコマンドに関するパラメーターを操作する．
 
 #### ・set
 
