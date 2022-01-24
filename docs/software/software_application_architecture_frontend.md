@@ -132,7 +132,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下のように対応する．
 
 #### ・UI部品合成とは
 
-フロントエンドのコンポーネントを，各サービスに対応するように分割する設計方法．
+フロントエンドのコンポーネントを，各マイクロサービスに対応するように分割する設計方法．
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
 
@@ -142,6 +142,6 @@ Nuxt.jsとAtomic Designのレイヤーは以下のように対応する．
 
 #### ・BFFパターンとは
 
-クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各サービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
+クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各マイクロサービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
 
 ![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)

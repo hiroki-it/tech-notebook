@@ -355,12 +355,20 @@ Laravelのスタックトレースを結合する．
     name          laravel
     # パーサータイプ
     type          regex
+    # フラッシュ時間
     flush_timeout 1000
+    
     # パーサールール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
+    # 開始地点
     # [%Y-%m-%d %H:%M:%S] をスタックトレースの開始地点とする．
     rule          "start_state" "/\[[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\s+([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\].*/" "cont"
+    
+    # スタックトレース
     # [stacktrace]，[previous exception]，#，行間，"} ，で始まる文字の場合に結合する．
     rule          "cont" "/(\[(stacktrace|previous exception)\]|#|\n\n|"\}).*/" "cont"
+    
+    # アプリケーション独自仕様のログ
+    rule          "cont" "/・.*/" "cont"
 ```
 
 <br>
@@ -888,7 +896,7 @@ $ ls -ls /var/log/fluentbit/cpu.0
 
 #### ・FireLensコンテナとは
 
-AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり，Fargateコンテナのサイドカーコンテナとして配置される．Fargateコンテナからログが送信されると，コンテナ内で稼働するFluentBit/Fluentdがこれを収集し，これを他のサービスにルーティングする．構築のための実装例については，以下のリンクを参考にせよ．
+AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり，Fargateコンテナのサイドカーコンテナとして配置される．Fargateコンテナからログが送信されると，コンテナ内で稼働するFluentBit/Fluentdがこれを収集し，これを外部にルーティングする．構築のための実装例については，以下のリンクを参考にせよ．
 
 参考：
 
@@ -897,7 +905,7 @@ AWSが提供するFluentBit/Fluentdイメージによって構築されるコン
 
 #### ・ログのルーティング先
 
-FluentBit/Fluentdが対応する他のサービスにログをルーティングできる．
+FluentBit/Fluentdが対応する他のマイクロサービスにログをルーティングできる．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -925,7 +933,7 @@ FluentBit/Fluentdが対応する他のサービスにログをルーティング
 
 3. コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され，FluentBitはログを処理する．
 
-4. OUTPUTに渡され，FluentBitは指定した外部サービスにログをルーティングする．
+4. OUTPUTに渡され，FluentBitは指定した外部にログをルーティングする．
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 

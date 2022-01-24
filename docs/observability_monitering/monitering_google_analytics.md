@@ -56,7 +56,7 @@ Googleアナリティクスでメトリクスを収集するためには，ア�
 
 #### ・ブラウザのdeveloperツール
 
-ブラウザのdeveloperツールで，グローバルサイトタグが非同期通信を実行しているかを確認する．Chromeであれば，networkタブにて，『```www.google-analytics.com/collect```』に対するリクエストを探す．これが200系ステータスになっていれば，正しく動作していると見なせる．
+ブラウザのdeveloperツールで，グローバルサイトタグが非同期通信を実行しているかを確認する．Chromeであれば，networkタブにて，『```www.google-analytics.com/collect```』に対するリクエストを探す．これが```200```系ステータスになっていれば，正しく動作していると見なせる．
 
 参考：https://developers.google.com/analytics/devguides/collection/protocol/v1/reference#endpoint
 
