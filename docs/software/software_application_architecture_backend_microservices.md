@@ -182,7 +182,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・リクエストリプライ方式
 
-オーケストレーションでは，個々のマイクロサービス間の連携方式にリクエストリプライ方式を採用する．この方式では，マイクロサービス間でRESTfulAPIを用いた同期通信を実行する．
+オーケストレーションでは，個々のマイクロサービス間の連携方式にリクエストリプライ方式を採用する．この方式では，マイクロサービス間で同期通信を実行することになる．
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
@@ -203,13 +203,13 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・イベント駆動方式
 
-コレオグラフィでは，上流/下流のマイクロサービス間の連携方式にイベントドリブン方式を採用する．この方式では，マイクロサービス間でサービスメッシュあるいはメッセージキューを用いた非同期通信を行う．
+コレオグラフィでは，上流/下流のマイクロサービス間の連携方式にイベントドリブン方式を採用する．この方式では，マイクロサービス間で非同期通信を行うことになる．
 
 ![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
 
 <br>
 
-### マイクロサービス間の非同期通信
+### マイクロサービス間の同期/非同期通信
 
 #### ・直接送受信
 
@@ -244,7 +244,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 - https://qiita.com/Ladicle/items/4ba57078128d6affadd5
-- https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
+- https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
 
 <br>
 
