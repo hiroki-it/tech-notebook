@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】API Gatewayへのymlインポート
+title: 【知見を記録するサイト】API Gatewayへのymlインポート@AWS
 ---
 
-# API Gatewayへのymlインポート
+# API Gatewayへのymlインポート@AWS
 
 ## はじめに
 

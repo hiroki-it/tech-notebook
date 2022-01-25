@@ -462,409 +462,6 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 
 <br>
 
-### パーサー系
-
-#### ・Grokパーサー
-
-パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，```message```属性に割り当てられた非構造化ログを構造化し，構造化ログに付与する．また，Extract機能を用いると，```message```属性以外に対してGrokパーサーを用いることができるようになるため，構造化ログも扱えるようになる．
-
-参考：
-
-- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
-- https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
-- https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
-
-**＊例＊**
-
-Laravelから，以下のような非構造化ログを受信する例を考える．
-
-```log
-[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
-```
-
-```log
-[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
-```
-
-非構造化ログのため，ログは基底構造化ログの```message```属性に割り当てられる．
-
-```bash
-{
-  "content": {
-    "attributes": {
-      # ～ 中略 ～
-    },
-    "message": "[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ",
-    "service": "prd-foo",
-    "tags": [
-      # ～ 中略 ～
-    ]
-  },
-  "id": "*****"
-}
-```
-
-以下のようなGrokパーサールールを定義する．```date```マッチャーを用いて，```date```属性にタイムスタンプ値を割り当てる．また，```word```マッチャーを用いて，```log_status```カスタム属性にステータス値を割り当てる．任意のルール名を設定できる．
-
-```bash
-FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
-```
-
-これにより，非構造化ログは以下のように構造化され，構造化ログに付与される．
-
-```bash
-{
-  "date": 1630454400000,
-  "log_status": "INFO"
-}
-```
-
-**＊例＊**
-
-AWS WAFから以下のような構造化ログを受信する例を考える．
-
-```bash
-{
-    "timestamp": 1639459445119,
-    "formatVersion": 1,
-    "webaclId": "arn:aws:wafv2:ap-northeast-1:123456789:regional/webacl/prd-foo-alb-waf/123456789",
-    "terminatingRuleId": "block-according-to-core-rule-set",
-    "action": "ALLOW",
-    "ruleGroupList": [
-        {
-            "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
-            "terminatingRule": null,
-            "nonTerminatingMatchingRules": [],
-            "excludedRules": [
-                {
-                    "exclusionType": "EXCLUDED_AS_COUNT",
-                    "ruleId": "NoUserAgent_HEADER"
-                }
-            ]
-        },
-        {
-            "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
-            "terminatingRule": null,
-            "nonTerminatingMatchingRules": [],
-            "excludedRules": null
-        },
-        {
-            "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
-            "terminatingRule": null,
-            "nonTerminatingMatchingRules": [],
-            "excludedRules": null
-        },
-        {
-            "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
-            "terminatingRule": null,
-            "nonTerminatingMatchingRules": [],
-            "excludedRules": null
-        }
-    ],
-    "uri": "/foo",
-    "args": "",
-    "httpVersion": "HTTP/1.1",
-    "httpMethod": "GET",
-}
-```
-
-以下のようなGrokパーサールールを定義する．
-
-```bash
-Rule .*\/webacl\/%{data:wafacl_name}\/.*
-```
-
-また，Extract機能の対象キーを```webaclId```属性とする．これにより，```webaclId```属性の非構造化ログは以下のように構造化され，構造化ログに付与される．
-
-```bash
-{
-  "wafacl_name": "prd-foo-alb-waf"
-}
-```
-
-#### ・Urlパーサー
-
-構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し，詳細な属性として新しく付与する．
-
-参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
-
-**＊例＊**
-
-とあるアプリケーションから，以下のような非構造化ログを受信する例を考える．
-
-```log
-192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
-```
-
-非構造化ログのため，ログは基底構造化ログの```message```属性に割り当てられる．
-
-```bash
-{
-  "content": {
-    "attributes": {
-      # ～ 中略 ～
-    },
-    "message": "192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200",
-    "service": "prd-foo",
-    "tags": [
-      # ～ 中略 ～
-    ]
-  },
-  "id": "*****"
-}
-```
-
-以下のようなGrokパーサのルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
-
-```bash
-FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.url}\s+%{integer:http.status_code}
-```
-
-これにより，構造化ログの各属性に値が割り当てられる．
-
-```bash
-{
-  "date": 1609502400000,
-  "http": {
-    "method": "GET",
-    "status_code": 200,
-    "url": "/users?paginate=10&fooId=1"
-  },
-  "network": {
-    "client": {
-      "ip": "192.168.0.1"
-    }
-  }
-}
-```
-
-これに対して，Urlパーサのルールを定義する．```http.url```属性からパスパラメーターやクエリパラメーターを検出し，```http.url_details```属性として新しく付与する．
-
-```bash
-{
-  "date": 1609502400000,
-  "http": {
-    "method": "GET",
-    "status_code": 200,
-    "url": "/users?paginate=10&fooId=1",
-    "url_details": {
-      "path": "/users",
-      "queryString": {
-        "fooId": 1,
-        "paginate": 10
-      }
-    }
-  },
-  "network": {
-    "client": {
-      "ip": "192.168.0.1"
-    }
-  }
-}
-```
-
-**＊例＊**
-
-CloudWatchログから，以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える．
-
-```bash
-{
-  "content": {
-    "attributes": {
-      "aws": {
-        "awslogs": {
-          "logGroup": "prd-foo-api-access-log",
-          "logStream": "*****",
-          "owner": "123456789"
-        },
-        "function_version": "$LATEST",
-        "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
-      },
-      "caller": "-",
-      "host": "prd-foo-api-access-log",
-      "httpMethod": "GET",
-      "id": "*****",
-      "ip": "nnn.nn.nnn.nnn",
-      "protocol": "HTTP/1.1",
-      "requestId": "*****",
-      "requestTime": "01/Jan/2021:12:00:00 +0000",
-      "resourcePath": "/users/{userId}",
-      "responseLength": "26",
-      "service": "apigateway",
-      "status": 200,
-      "timestamp": 1635497933028,
-      "user": "-"
-    },
-    "host": "prd-foo-api-access-log",
-    "service": "apigateway",
-    "tags": [
-      "forwardername:datadog-forwarderstack-*****-forwarder-*****",
-      "source:apigateway",
-      "sourcecategory:aws",
-      "forwarder_memorysize:1024",
-      "forwarder_version:3.39.0"
-    ],
-    "timestamp": "2021-01-01T12:00:00.000Z"
-  },
-  "id": "*****"
-}
-```
-
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与するようにする．この属性を用いる理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
-
-```bash
-foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
-bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:987654321:function:datadog-ForwarderStack-*****-Forwarder-*****"
-baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:192837465:function:datadog-ForwarderStack-*****-Forwarder-*****"
-```
-
-これにより，構造化ログの```service```属性にサービス値が割り当てられる．なお，```service```属性以外は元の構造化ログと同じため，省略している．
-
-```bash
-{
-  "content": {
-  
-    # ～ 中略 ～
-    
-    "service": "foo-apigateway",
-    
-    # ～ 中略 ～
-    
-  },
-  
-  # ～ 中略 ～
-
-}
-```
-
-これに対して，サービスリマッパーのルールを定義する．```service```属性のサービス値が，サービスファセットとして登録されるようにする．
-
-#### ・ユーザーエージェントパーサー
-
-ユーザーエージェントの文字列を解析し，詳細な項目ごとに分解した構造化ログとして出力する．
-
-**＊例＊**
-
-Nginxから，以下のような非構造化ログを受信する例を考える．
-
-```log
-nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
-```
-
-これに対して，以下のようなGrokパーサーのルールを定義する．```http.useragent```属性にユーザーエージェント値を割り当てる．
-
-```bash
-access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
-access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
-```
-
-これにより，構造化ログの各属性に値が割り当てられる．
-
-```bash
-{
-  "date_access": 12345,
-  "http": {
-    "method": "GET",
-    "referer": "-",
-    "status_code": 200,
-    "url": "/healthcheck",
-    "useragent": "ELB-HealthChecker/2.0",
-    "version": "1.1"
-  },
-  "network": {
-    "bytes_written": 17,
-    "client": {
-      "ip": "nn.nnn.nnn.nn"
-    }
-  }
-}
-```
-
-これに対して，ユーザーエージェントパーサーのルールを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分けるようにする．これにより，構造化ログの各属性に値が割り当てられる．
-
-```bash
-{
-  # ～ 中略 ～
-
-  "useragent_details": {
-    "browser": {
-      "family": "Chrome"
-    },
-    "device": {
-      "category": "Other",
-      "family": "Other"
-    },
-    "os": {
-      "family": "Linux"
-    }
-  }
-  
-  # ～ 中略 ～
-}
-```
-
-#### ・ストリングビルダープロセッサー
-
-構造化ログの属性にアクセスし，ルールに基づいて属性値を出力し，新しい文字列を生成する．配列値のキー名にアクセスするようにルールを定義した場合，そのキーの全ての値をカンマ区切りで出力できる．また，配列状のオブジェクトのキー名にアクセスするようにルールを定義した場合，各オブジェクトの同キーの値をカンマ区切りで出力できる．
-
-参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#string-builder-processor
-
-**＊例＊**
-
-ログパイプラインを経て，以下のような構造化ログが生成されているとする．
-
-```bash
-{
-  "date": 1609502400000,
-  "http": {
-    "method": "GET",
-    "status_code": 200,
-    "url": "/users?paginate=10&fooId=1",
-    "url_details": {
-      "path": "/users",
-      "queryString": {
-        "fooId": 1,
-        "paginate": 10
-      }
-    }
-  },
-  "network": {
-    "client": {
-      "ip": "192.168.0.1"
-    }
-  }
-}
-```
-
-これに対して，ストリングビルダープロセッサーのルールを定義する．構造化ログの```http.url```の値を出力して完全なURLを生成し，これを```http.url_full```属性として新しく付与する．
-
-```
-https://example.com%{http.url}
-```
-
-これにより，以下の構造化ログが得られる．
-
-```bash
-{
-  "date": 1609502400000,
-  
-  # ～ 中略 ～
-  
-  "http": {
-  
-    # ～ 中略 ～
-    
-    "url_full": "https://example.com/users?paginate=10&fooId=1"
-    
-  },
-  
-    # ～ 中略 ～
-}
-```
-
-<br>
-
 ### プロセッサー系
 
 #### ・カテゴリプロセッサー
@@ -952,13 +549,545 @@ error   @http.status_code:[500 TO 599]
 
 <br>
 
-## 07-02. ログパイプラインの後処理
+## 07-02. パーサー系
+
+### Grokパーサー
+
+#### ・Grokパーサーとは
+
+パースルール（```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```）を用いて，```message```属性に割り当てられた非構造化ログを構造化し，構造化ログに付与する．また，Extract機能を用いると，```message```属性以外に対してGrokパーサーを用いることができるようになるため，構造化ログも扱えるようになる．
+
+参考：
+
+- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
+- https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
+- https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
+
+#### ・パースルール
+
+| 名前             | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する．それぞれマッチャーは，検出後に何らかの処理を行う． | 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter |
+| エクストラクト名 | 処理結果の出力先の属性を設定する．                           | 出力先の属性が存在しない場合，これを新しく作成する．存在する場合は，既存の属性値を上書きする． |
+| フィルター名     | マッチャーの追加処理を行うフィルター関数を設定する．         | 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter |
+
+#### ・例１
+
+Laravelから，以下のような非構造化ログを受信する例を考える．
+
+```log
+[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
+```
+
+```log
+[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
+```
+
+非構造化ログのため，ログは基底構造化ログの```message```属性に割り当てられる．
+
+```bash
+{
+  "content": {
+    "attributes": {
+      # ～ 中略 ～
+    },
+    "message": "[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ",
+    "service": "prd-foo",
+    "tags": [
+      # ～ 中略 ～
+    ]
+  },
+  "id": "*****"
+}
+```
+
+以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．
+
+```bash
+FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
+```
+
+これにより，非構造化ログは以下のように構造化され，構造化ログに付与される．
+
+```bash
+{
+  "date": 1630454400000,
+  "log_status": "INFO"
+}
+```
+
+#### ・例２
+
+AWS WAFから以下のような構造化ログを受信する例を考える．
+
+```bash
+{
+    "timestamp": 1639459445119,
+    "formatVersion": 1,
+    "webaclId": "arn:aws:wafv2:ap-northeast-1:123456789:regional/webacl/prd-foo-alb-waf/123456789",
+    "terminatingRuleId": "block-according-to-core-rule-set",
+    "action": "ALLOW",
+    "ruleGroupList": [
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": [
+                {
+                    "exclusionType": "EXCLUDED_AS_COUNT",
+                    "ruleId": "NoUserAgent_HEADER"
+                }
+            ]
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        }
+    ],
+    "uri": "/foo",
+    "args": "",
+    "httpVersion": "HTTP/1.1",
+    "httpMethod": "GET",
+}
+```
+
+以下のようなGrokパーサールールを定義する．```data```マッチャーを用い，また```wafacl_name```カスタム属性をエクストラクト先とする．
+
+```bash
+Rule .*\/webacl\/%{data:wafacl_name}\/.*
+```
+
+また，Extract機能の対象キーを```webaclId```属性とする．これにより，```webaclId```属性の非構造化ログは以下のように構造化され，構造化ログに付与される．
+
+```bash
+{
+  "wafacl_name": "prd-foo-alb-waf"
+}
+```
+
+<br>
+
+### Urlパーサー
+
+#### ・Urlパーサーとは
+
+構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し，詳細な属性として新しく付与する．
+
+参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+
+#### ・例１
+
+とあるアプリケーションから，以下のような非構造化ログを受信する例を考える．
+
+```log
+192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
+```
+
+非構造化ログのため，ログは基底構造化ログの```message```属性に割り当てられる．
+
+```bash
+{
+  "content": {
+    "attributes": {
+      # ～ 中略 ～
+    },
+    "message": "192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200",
+    "service": "prd-foo",
+    "tags": [
+      # ～ 中略 ～
+    ]
+  },
+  "id": "*****"
+}
+```
+
+以下のようなGrokパーサのルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
+
+```bash
+FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.url}\s+%{integer:http.status_code}
+```
+
+これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1"
+  },
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  }
+}
+```
+
+これに対して，Urlパーサのルールを定義する．```http.url```属性からパスパラメーターやクエリパラメーターを検出し，```http.url_details```属性として新しく付与する．
+
+```bash
+{
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1",
+    "url_details": {
+      "path": "/users",
+      "queryString": {
+        "fooId": 1,
+        "paginate": 10
+      }
+    }
+  },
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  }
+}
+```
+
+#### ・例２
+
+CloudWatchログから，以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える．
+
+```bash
+{
+  "content": {
+    "attributes": {
+      "aws": {
+        "awslogs": {
+          "logGroup": "prd-foo-api-access-log",
+          "logStream": "*****",
+          "owner": "123456789"
+        },
+        "function_version": "$LATEST",
+        "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
+      },
+      "caller": "-",
+      "host": "prd-foo-api-access-log",
+      "httpMethod": "GET",
+      "id": "*****",
+      "ip": "nnn.nn.nnn.nnn",
+      "protocol": "HTTP/1.1",
+      "requestId": "*****",
+      "requestTime": "01/Jan/2021:12:00:00 +0000",
+      "resourcePath": "/users/{userId}",
+      "responseLength": "26",
+      "service": "apigateway",
+      "status": 200,
+      "timestamp": 1635497933028,
+      "user": "-"
+    },
+    "host": "prd-foo-api-access-log",
+    "service": "apigateway",
+    "tags": [
+      "forwardername:datadog-forwarderstack-*****-forwarder-*****",
+      "source:apigateway",
+      "sourcecategory:aws",
+      "forwarder_memorysize:1024",
+      "forwarder_version:3.39.0"
+    ],
+    "timestamp": "2021-01-01T12:00:00.000Z"
+  },
+  "id": "*****"
+}
+```
+
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与するようにする．この属性を用いる理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
+
+```bash
+foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
+bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:987654321:function:datadog-ForwarderStack-*****-Forwarder-*****"
+baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:192837465:function:datadog-ForwarderStack-*****-Forwarder-*****"
+```
+
+これにより，構造化ログの```service```属性にサービス値が割り当てられる．なお，```service```属性以外は元の構造化ログと同じため，省略している．
+
+```bash
+{
+  "content": {
+  
+    # ～ 中略 ～
+    
+    "service": "foo-apigateway",
+    
+    # ～ 中略 ～
+    
+  },
+  
+  # ～ 中略 ～
+
+}
+```
+
+これに対して，サービスリマッパーのルールを定義する．```service```属性のサービス値が，サービスファセットとして登録されるようにする．
+
+<br>
+
+### ユーザーエージェントパーサー
+
+#### ・ユーザーエージェントパーサーとは
+
+ユーザーエージェントの文字列を解析し，詳細な項目ごとに分解した構造化ログとして出力する．
+
+#### ・例１
+
+Nginxから，以下のような非構造化ログを受信する例を考える．
+
+```log
+nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+```
+
+これに対して，以下のようなGrokパーサーのルールを定義する．```http.useragent```属性にユーザーエージェント値を割り当てる．
+
+```bash
+access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
+access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
+```
+
+これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  "date_access": 12345,
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {
+    "bytes_written": 17,
+    "client": {
+      "ip": "nn.nnn.nnn.nn"
+    }
+  }
+}
+```
+
+これに対して，ユーザーエージェントパーサーのルールを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分けるようにする．これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  # ～ 中略 ～
+
+  "useragent_details": {
+    "browser": {
+      "family": "Chrome"
+    },
+    "device": {
+      "category": "Other",
+      "family": "Other"
+    },
+    "os": {
+      "family": "Linux"
+    }
+  }
+  
+  # ～ 中略 ～
+}
+```
+
+<br>
+
+### ストリングビルダープロセッサー
+
+#### ・ストリングビルダープロセッサーとは
+
+構造化ログの属性にアクセスし，ルールに基づいて属性値を出力し，新しい文字列を生成する．配列値のキー名にアクセスするようにルールを定義した場合，そのキーの全ての値をカンマ区切りで出力できる．また，配列状のオブジェクトのキー名にアクセスするようにルールを定義した場合，各オブジェクトの同キーの値をカンマ区切りで出力できる．
+
+参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#string-builder-processor
+
+#### ・例１
+
+ログパイプラインを経て，以下のような構造化ログが生成されているとする．
+
+```bash
+{
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1",
+    "url_details": {
+      "path": "/users",
+      "queryString": {
+        "fooId": 1,
+        "paginate": 10
+      }
+    }
+  },
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  }
+}
+```
+
+これに対して，ストリングビルダープロセッサーのルールを定義する．構造化ログの```http.url```の値を出力して完全なURLを生成し，これを```http.url_full```属性として新しく付与する．
+
+```
+https://example.com%{http.url}
+```
+
+これにより，以下の構造化ログが得られる．
+
+```bash
+{
+  "date": 1609502400000,
+  
+  # ～ 中略 ～
+  
+  "http": {
+  
+    # ～ 中略 ～
+    
+    "url_full": "https://example.com/users?paginate=10&fooId=1"
+    
+  },
+  
+    # ～ 中略 ～
+}
+```
+
+<br>
+
+## 07-03. 設定ポリシー
+
+### 名前
+
+#### ・パイプライン
+
+| 規則                                | 例                   | 用途                                          |
+| ----------------------------------- | -------------------- | --------------------------------------------- |
+| ```<マイクロサービス名>-pipeline``` | ```order-pipeline``` | ```order```マイクロサービスのログを処理する． |
+
+#### ・プロセッサー系
+
+| 規則                                                  | 例                                | 用途                                                         |
+| ----------------------------------------------------- | --------------------------------- | ------------------------------------------------------------ |
+| ```<プロセッサーに合わせた動詞> <属性へのアクセス>``` | ```Categorize http.status_code``` | ```http.status_code```属性にアクセスし，値に応じてカテゴリプロセッサーを実行する． |
+
+#### ・パーサー系
+
+| 規則                              | パーサーの種類   | 例                                                           | 用途                                                     |
+| --------------------------------- | ---------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
+| ```Parse <属性へのアクセス名>```  | Grokパーサー以外 | ```Parse http.url```                                         | ```http.url```属性にアクセスし，パーサーを実行する．     |
+| ```Parse <タグ名> <ログの種類>``` | Grokパーサー     | ・```Parse php-fpm access logs```<br>・```Parse php-fpm error logs``` | 指定したタグの付いたログに対してGrokパーサーを実行する． |
+
+#### ・リマッパー系
+
+| 規則                             | 例                               | 用途                                                         |
+| -------------------------------- | -------------------------------- | ------------------------------------------------------------ |
+| ```Remap <属性へのアクセス名>``` | ```Remap http.status_category``` | ```http.status_category```属性にアクセスし，属性のリマップを実行する． |
+
+<br>
+
+### 粒度
+
+#### ・service流入パターン
+
+serviceタグで流入させたログをsourceタグで振り分ける場合を示す．
+
+```bash
+log-pipeline
+├── foo-pipeline # service:foo でログ流入
+|   ├── 共通処理
+│   ├── laravel-pipeline # source:laravel のログを処理
+│   ├── php-fpm-pipeline # source:laravel のログのうち，php-fpmのものだけを処理
+|   └── 共通処理
+│ 
+├── bar-pipeline
+|   └── gin-pipeline # source:gin のログを処理
+|
+...
+```
+
+<br>
+
+#### ・source流入パターン
+
+sourceタグで流入させたログをserviceタグで振り分ける場合を示す．
+
+```bash
+log-pipeline
+├── aws-waf-pipeline # source:waf でログ流入
+|   ├── 共通処理
+│   ├── foo-pipeline # service:foo のログを処理
+│   ├── bar-pipeline # service:bar のログを処理
+|   └── 共通処理
+│ 
+...
+```
+
+<br>
+
+###  データ型
+
+#### ・リマッパーによる定義
+
+リマッパーでは，```Force attribute type```の項目で，再配置する属性のデータ型を指定できる．ログコンソールでフィルタリングする時に，ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない．そのため，リマッパーを使用する時は明示的にデータ型を設定する．
+
+![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-pipeline_data-type.png)
+
+<br>
+
+### パーサーに関して
+
+#### ・Grokパーサーのルールにコメント
+
+ベストプラクティス通り，Grokパーサーではコメントでログサンプルを示すようにする．ログの種類が一つしかない場合は任意であるが，ログの種類が複数あり，それぞれを解析するルールも複数ある場合は必ずコメントする．
+
+参考：https://docs.datadoghq.com/ja/logs/guide/log-parsing-best-practice/
+
+```bash
+# [2022-01-20 19:02:48] production.INFO: ...
+autoFilledRule1 ...
+
+# [2022-01-21 20:17:26] production.INFO: ...
+autoFilledRule2 ...
+
+# [2021-09-01 00:00:00] staging.INFO: ...
+autoFilledRule3 ...
+```
+
+#### ・ヘルパールールを使用する
+
+ヘルパールールを使用すると，正規表現ルールを共通化し，複数のルールで使いまわせる．
+
+参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#using-helper-rules-to-factorize-multiple-parsing-rules
+
+<br>
+
+## 07-04. ログパイプラインの後処理
 
 ### 標準属性の付与
 
 <br>
 
-## 07-03. オプション処理
+## 07-05. オプション処理
 
 ### ログのメトリクス
 

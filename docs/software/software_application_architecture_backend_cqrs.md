@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】CQRS：Command Query Responsibility Segregation
+title: 【知見を記録するサイト】CQRS：Command Query Responsibility Segregation＠アーキテクチャ
 ---
 
-# CQRS：Command Query Responsibility Segregation
+# CQRS：Command Query Responsibility Segregation＠アーキテクチャ
 
 ## はじめに
 

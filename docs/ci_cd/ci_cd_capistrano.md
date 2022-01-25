@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】Capistrano
+title: 【知見を記録するサイト】Capistrano@CI/CD
 ---
 
-# Capistrano
+# Capistrano@CI/CD
 
 ## はじめに
 

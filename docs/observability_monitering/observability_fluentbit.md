@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】FluentBit
+title: 【知見を記録するサイト】FluentBit＠可観測性
 ---
 
-# FluentBit
+# FluentBit＠可観測性
 
 ## 01. ログパイプライン
 

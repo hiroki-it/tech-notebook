@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】FluentBit vs. Fluentd
+title: 【知見を記録するサイト】FluentBit vs. Fluentd＠可観測性
 ---
 
-# FluentBit vs. Fluentd
+# FluentBit vs. Fluentd＠可観測性
 
 ## はじめに
 

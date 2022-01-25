@@ -2252,7 +2252,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを用いな�
 | Control Plane（コンテナオーケストレーション環境） | Data Plane（コンテナ実行環境） | 説明                                                         |
 | ------------------------------------------------- | ------------------------------ | ------------------------------------------------------------ |
 | ECS：Elastic Container Service                    | Fargate，EC2                   | 単一のOS上でコンテナオーケストレーションを実行する．         |
-| EKS：Elastic Kubernetes Service                   | EC2                            | 複数のOS上それぞれでコンテナオーケストレーションを実行する． |
+| EKS：Elastic Kubernetes Service                   | Fargate，EC2                   | 複数のOS上それぞれでコンテナオーケストレーションを実行する．<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
 
 <br>
 
@@ -2812,7 +2812,21 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 <br>
 
-## 14-04. EKS
+## 14-04. EKS on Fargate
+
+### EKSクラスター
+
+#### ・EKSクラスターとは
+
+KubernetesのClusterに相当する．
+
+<br>
+
+### Fargate Node
+
+KubernetesのNodeに相当する．
+
+<br>
 
 ### シークレット
 

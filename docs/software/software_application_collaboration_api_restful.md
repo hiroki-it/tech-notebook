@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】RESTful-API
+title: 【知見を記録するサイト】RESTful-API＠アプリケーション連携
 ---
 
-# RESTful-API
+# RESTful-API＠アプリケーション連携
 
 ## はじめに
 

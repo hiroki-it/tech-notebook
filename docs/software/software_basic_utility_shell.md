@@ -161,7 +161,7 @@ $ ./hello.sh
 
 #### ・シェルの選択
 
-シェルの種類を選択する．種類ごとに使用できるオプションがやや異なる．また同時に，```set```コマンドのオプションを有効化できる．
+シェルの種類を選択する．種類ごとに使用できるオプションがやや異なる．また同時に，```set```コマンドのオプションを有効化でき，これは全てのターゲットに適用される．
 
 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
 
@@ -318,7 +318,7 @@ $ make clean
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.jpg)
 
-#### ・stddin（標準入力）
+#### ・stdin（標準入力）
 
 キーボードからのコマンドに対して，データを入力するためのインターフェースのこと．プロセスごとに存在する．
 
@@ -421,6 +421,12 @@ $ echo "text" | tee stdout.log
 『```|```』の縦棒記号のこと．複数のプログラムの入出力を繋げる．
 
 ![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
+
+シェルは，プロセスの処理結果をパイプラインに出力する．その後，パイプラインから出力内容をそのまま受け取り，別のプロセスに再び入力する．
+
+参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+
+![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
 
 <br>
 

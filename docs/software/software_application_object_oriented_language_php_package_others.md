@@ -335,7 +335,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ### linecorp/line-bot-sdkとは
 
-![line_messaging-api](C:\Users\h.hasegawa\Documents\Drive 1st\プログラミング\tech-notebook\images\line_messaging-api.png)
+![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/line_messaging-api.png)
 
 ボットサーバーにて，LINEプラットフォームに返信するためのレスポンスを作成する．
 
