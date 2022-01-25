@@ -1,0 +1,23 @@
+name: markdown-link-check
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup markdown-link-check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          base-branch: main
+          folder-path: docs
+          max-depth: -1
+          use-quiet-mode: yes
+          use-verbose-mode: yes
