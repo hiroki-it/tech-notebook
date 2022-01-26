@@ -246,7 +246,7 @@ func main() {
 
 #### ・DI（依存性注入）
 
-構造体のフィールドとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンク先を参考にせよ．
+構造体のフィールドとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
@@ -598,7 +598,7 @@ func main() {
 
 #### ・参照演算子（```&```）
 
-定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを参照できる．参照したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくて良い．PHPにおけるポインタは，以下を参考にせよ．
+定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを参照できる．参照したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくて良い．PHPにおけるポインタは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_method_data.html
 
@@ -1149,8 +1149,6 @@ func main() {
 Goには，標準搭載されているインターフェースがある．このインターフェースが強制するメソッドを実装した構造体を定義すると，自動的に委譲が行われる．
 
 **＊例＊**
-
-errorインターフェースの委譲については，本ノート内の説明を参考にせよ．
 
 ```go
 type error interface {
@@ -2346,7 +2344,7 @@ if err != nil {
 
 #### ・構成
 
-ブラックボックステストとホワイトボックステストから構成される．以下のリンク先を参考にせよ．
+ブラックボックステストとホワイトボックステストから構成される．以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
 
@@ -2368,7 +2366,7 @@ if err != nil {
 
 #### ・網羅率
 
-網羅率はパッケージを単位として解析される．網羅については，以下のリンク先を参考にせよ．
+網羅率はパッケージを単位として解析される．網羅については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
 
@@ -2386,7 +2384,7 @@ if err != nil {
 
 #### ・回帰テスト
 
-回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下を参考にせよ．
+回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
 

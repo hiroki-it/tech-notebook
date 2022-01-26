@@ -55,7 +55,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ### 標準例外クラス
 
-いずれもThrowableインターフェースを実装している．以下リンク先を参考にせよ．
+いずれもThrowableインターフェースを実装している．以下リンクを参考にせよ．
 
 参考：https://www.php.net/manual/ja/reserved.exceptions.php
 
@@ -165,7 +165,7 @@ function value() {
 
 ### アーキテクチャにおける層別の例外スロー
 
-層別の例外については，以下を参考にせよ．
+層別の例外については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 

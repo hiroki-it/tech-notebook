@@ -110,7 +110,7 @@ title: 【知見を記録するサイト】コスト管理@AWS
 
 #### ・料金体系
 
-以下のリンク先を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 

@@ -36,7 +36,7 @@ externalDocs: # externalDocsフィールド
 
 ### API Gatewayによるインポート
 
-API GatewayによるOpenAPI仕様のインポートについては，以下を参考にせよ．
+API GatewayによるOpenAPI仕様のインポートについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
@@ -499,7 +499,7 @@ APIに対して送信されるリクエストメッセージのデータ，ま�
 
 #### ・API Gatewayにおけるスキーマ設定
 
-API Gatewayにて，バリデーションのためにスキーマを設定できる．詳しくは，以下のノートを参考にせよ．
+API Gatewayにて，バリデーションのためにスキーマを設定できる．詳しくは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 

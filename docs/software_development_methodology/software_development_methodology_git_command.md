@@ -258,8 +258,8 @@ $ git cherry-pick 1d0ddeb9e52
 PullReqのマージによるマージコミットを指定すると，そのPullReqで変更されたファイルのみがコミットの内容として取得できる．これにより，developブランチ上の必要な変更のみをリリースすることも可能である．ただし，マージコミットを指定する時は```-m```オプションを有効化しないとエラーになることに注意する．また，マージコミットには2つの親がおり，マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである．前者は1番，また後者は2番となっており，1番を選択すること．
 
 ```bash
-# cherrypickブランチにチェックアウト
-$ git checkout cherrypick
+# mainブランチ上でreleaseブランチを作成し，チェックアウトする
+$ git checkout -b release
 
 # mオプションがないとエラー
 $ git cherry-pick d7e49b04
@@ -273,6 +273,9 @@ $ git cherry-pick -m 1 d7e49b04
  Author: hiroki-it <*****@users.noreply.github.com>
  Date: Wed Sep 15 00:00:00 2021 +0900
  1 file changed, 7 insertions(+)
+ 
+# 指定したコミットのみがマージされているかを確認する．
+$ git log
 ```
 
 <br>

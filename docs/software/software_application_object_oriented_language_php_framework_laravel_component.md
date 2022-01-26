@@ -2173,7 +2173,7 @@ class FooAfterMiddleware
 
 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
-また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンク先を参考にせよ．
+また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
@@ -2457,7 +2457,7 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 #### ・標準のエラーメッセージ
 
-標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンク先を参考にせよ．
+標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
 
 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
@@ -4218,7 +4218,7 @@ $ php artisan make:provider <クラス名>
 
 #### ・ServiceContainer，バインド，リゾルブとは
 
-ServiceContainer，バインド，リゾルブについては，以下を参考にせよ．
+ServiceContainer，バインド，リゾルブについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 

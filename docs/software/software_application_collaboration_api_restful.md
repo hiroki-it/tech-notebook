@@ -403,12 +403,12 @@ x-api-key: *****
 | 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表す．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に用いる．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである．リソースへのアクセスに失敗したことを表す． |
 | 422    | バリデーションエラー                           | 誤ったリクエストである．送信されたパラメーターが誤っていることを表す． |
-| 500    | サーバーエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す．エラーの種類については，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| 500    | サーバーエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                         | エラーは起こらないが，ビジネス上ありえないデータをリクエストしていることを表す． |
 
 #### ・リダイレクトとリライトの違い
 
-リダイレクトでは，リクエストされたURLをサーバー側で新しいURLに書き換えてブラウザに返信し，ブラウザがリクエストを再送信する．そのため，クライアント側は新しいURLで改めてリクエストを送信することになる．一方で，リライトでは，リクエストされたURLをサーバー側で異なるURLに書き換え，サーバーがそのままリクエストを送信する．そのため，クライアント側は古いURLのままリクエストを送信することになる．その他の違いについては，以下を参考にせよ．
+リダイレクトでは，リクエストされたURLをサーバー側で新しいURLに書き換えてブラウザに返信し，ブラウザがリクエストを再送信する．そのため，クライアント側は新しいURLで改めてリクエストを送信することになる．一方で，リライトでは，リクエストされたURLをサーバー側で異なるURLに書き換え，サーバーがそのままリクエストを送信する．そのため，クライアント側は古いURLのままリクエストを送信することになる．その他の違いについては，以下のリンクを参考にせよ．
 
 参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
 
@@ -858,7 +858,7 @@ Cookie: sessionid=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 Set-Cookie: sessionId=<セッションID>
 ```
 
-セッション数はGoogleコンソールで確認できる．GoogleConsoleにおけるセッションについては，以下のリンク先を参考にせよ．
+セッション数はGoogleコンソールで確認できる．GoogleConsoleにおけるセッションについては，以下のリンクを参考にせよ．
 
 参考：https://support.google.com/analytics/answer/6086069?hl=ja
 
@@ -891,7 +891,7 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-セッションファイルは，サーバー外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンク先を参考にせよ．
+セッションファイルは，サーバー外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 

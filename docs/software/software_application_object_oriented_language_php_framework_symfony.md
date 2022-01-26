@@ -14,7 +14,7 @@ title: 【知見を記録するサイト】Symfony
 
 ## 01. 参考になるリファレンス
 
-参考：https://symfony.com/doc/current/the-fast-track/ja/index.html
+参考：https://symfony.com/doc/current/the-fast-track/ja/
 
 <br>
 

@@ -184,7 +184,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 #### ・プリンタの印字速度
 
-![CPS と PPM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CPS と PPM.jpg)
+![CPS と PPM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CPSとPPM.jpg)
 
 <br>
 
@@ -197,7 +197,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ![パラレルインターフェイスは配線の長さが関係してくる](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パラレルインターフェイスは配線の長さが関係してくる.png)
 
-![シリアルvs パラレル の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアルvs パラレル の違い.jpeg)
+![シリアルvs パラレル の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアルvsパラレルの違い.jpeg)
 
 <br>
 

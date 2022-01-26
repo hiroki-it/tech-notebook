@@ -562,7 +562,7 @@ SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 
 ### OUTPUTとは
 
-チャンクとして蓄えられたログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下を参考にせよ．
+チャンクとして蓄えられたログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -943,7 +943,7 @@ FluentBit/Fluentdが対応する他のマイクロサービスにログをルー
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
-1. awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり，ログをFireLensコンテナに送信する．Fluentdログドライバーについては，以下を参考にせよ．
+1. awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり，ログをFireLensコンテナに送信する．Fluentdログドライバーについては，以下のリンクを参考にせよ．
 
    参考：https://docs.docker.com/config/containers/logging/fluentd/
 

@@ -64,6 +64,12 @@ SREには，継続的な改善によって，システムの信頼性を向上�
 
 #### ・参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
+MTTxメトリクスとそのダッシュボードを作成するとよい．MTTxメトリクスについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_monitering.html
+
+#### ・参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
+
 可用性やQoS：Quality of Serviceに関するメトリクスをSLIに選択すると良い．具体的には，可用性は稼働時間に基づいて定量化できる．SLOは，サイト提供者会社内部で決める目標値である．```q(0.99)```は，```99%```以上が5```ms```未満であることを示す．
 
 <br>

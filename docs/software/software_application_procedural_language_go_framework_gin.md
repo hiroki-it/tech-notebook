@@ -207,7 +207,7 @@ c.JSON(400, gin.H{
 
 #### ・binding
 
-バリデーションのルールを定義する．標準のルールの一覧は，以下のリンク先を参考にせよ．
+バリデーションのルールを定義する．標準のルールの一覧は，以下のリンクを参考にせよ．
 
 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
 

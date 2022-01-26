@@ -25,7 +25,7 @@ title: 【知見を記録するサイト】認証/認可@Laravel
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを用いたForm認証のために用いる．                 |
-| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために用いる．それぞれの認証方法に違いについては，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために用いる．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 
 #### ・カスタムガード
 
@@ -555,7 +555,7 @@ class FooController extends Controller
 
 ### Passportパッケージとは
 
-Ouath認証を実装できる．OAuth認証については，以下のリンク先を参考にせよ．
+Ouath認証を実装できる．OAuth認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
 
@@ -943,7 +943,7 @@ APIキー認証とセッションIDを用いたForm認証機能の認証処理�
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
-APIキー認証とセッションIDを用いたForm認証については，以下のリンク先を参考にせよ．
+APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
 

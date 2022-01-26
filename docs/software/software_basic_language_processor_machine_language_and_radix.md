@@ -26,7 +26,7 @@ title: 【知見を記録するサイト】機械語と進数
 
 しかし，人間が扱う上では8進数あるいは16進数に変換して表現することが適している．2進数1ケタが『1 bit』と定義されている．8進数の1ケタは2進数の3ケタ（＝3 bit）に相当し，16進数の1ケタは2進数の4ケタ（4 bit）に相当する．
 
-![-bit と Byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bit vs Byte.png)
+![-bit と Byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bitvsByte.png)
 
 ![進数表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/進数表.png)
 
@@ -313,13 +313,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 固定小数点数
 
-『この位置に小数点がある』な前提で数字を扱うことによって，小数点を含む数値を表現する方法．
-
-![固定小数点-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/固定小数点-1.png)
-
-CPUは，数値に対し，特定の位置に小数点を打つ．
-
-![固定小数点-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/固定小数点-2.png)
+『この位置に小数点がある』な前提で数字を扱うことによって，小数点を含む数値を表現する方法．CPUは，数値に対し，特定の位置に小数点を打つ．
 
 ### 浮動小数点数
 

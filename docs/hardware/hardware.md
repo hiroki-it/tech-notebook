@@ -103,7 +103,7 @@ CPUが1秒間に何回命令を実行するかを表す．
 
   メインメモリとして用いられる．よく見るやつ．
 
-![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic RAM.jpg)
+![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic_RAM.jpg)
 
 <br>
 
@@ -200,7 +200,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
  キャッシュメモリとして用いられる．
 
-![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Static RAM.jpg)
+![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Static_RAM.jpg)
 
 <br>
 

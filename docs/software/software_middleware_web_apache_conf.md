@@ -324,7 +324,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 #### ・リダイレクトとリライトの違い
 
-以下のリンク先を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -497,7 +497,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 **＊実装例＊**
 
-Referrer-Policyヘッダーを追加し，値を```no-referrer-when-downgrade```とする．ちなみに，Chrome85以降のReferrer-Policyヘッダー初期値の仕様変更については，以下を参考にせよ．
+Referrer-Policyヘッダーを追加し，値を```no-referrer-when-downgrade```とする．ちなみに，Chrome85以降のReferrer-Policyヘッダー初期値の仕様変更については，以下のリンクを参考にせよ．
 
 参考：https://www.chromestatus.com/feature/6251880185331712
 

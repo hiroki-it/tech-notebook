@@ -28,7 +28,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ・Active Recordパターンとは
 
-テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンク先を参考せよ．
+テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
@@ -98,7 +98,7 @@ ER図における各テーブルのリレーションシップを元に，モデ
 - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
 - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
 
-ER図については，以下を参考にせよ．
+ER図については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
 
@@ -539,7 +539,7 @@ Eloquentモデルを継承すると，以下のクラスからメソッドをコ
 
 #### ・Eloquentビルダー
 
-Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンク先を参考にせよ．
+Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
@@ -552,7 +552,7 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 #### ・Eloquentモデル
 
-Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンク先を参考にせよ．
+Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
@@ -1183,7 +1183,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを用いたい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の1つになる．リポジトリパターンについては，以下のリンク先を参考にせよ．
+LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを用いたい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の1つになる．リポジトリパターンについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 

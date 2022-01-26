@@ -327,13 +327,13 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ステージ                 | API Gatewayをデプロイする環境を定義する．                    |                                                              |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを用いて，認可プロセスを定義する． |                                                              |
 | ゲートウェイのレスポンス |                                                              |                                                              |
-| モデル                   | リクエスト/レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| モデル                   | リクエスト/レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
 | リソースポリシー         | ポリシーを用いて，API Gatewayにセキュリティを定義づける．  |                                                              |
 | ドキュメント             |                                                              |                                                              |
 | ダッシュボード           |                                                              |                                                              |
 | APIの設定                |                                                              |                                                              |
 | 使用量プラン             | 有料サービスとしてAPIを公開し，料金体系に応じてリクエスト量を制限するために用いる．APIキーにリクエスト量のレートを設定する． | 有料サービスとして使用しないAPIの場合は，レートを設定する必要はない． |
-| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 | クライアント証明書       | SSL証明書をAPI Gatewayに割り当てる．                   | APIが，API Gatewayからルーティングされたリクエストであること識別できるようになる． |
 | CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう，ロールを設定する． | 1つのAWS環境につき，1つのロールを設定すれば良い．          |
 
@@ -382,13 +382,13 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 #### ・OpenAPI仕様のインポート
 
-以下のリンク先を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
 #### ・CORSの有効化
 
-CORSを有効化し，異なるオリジンによって表示されたページからのリクエストを許可する．以下のリンク先を参考にせよ．
+CORSを有効化し，異なるオリジンによって表示されたページからのリクエストを許可する．以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/how-to-cors.html
 
@@ -542,7 +542,7 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 #### ・ステージ変数
 
-デプロイされるステージ固有の環境変数を設定できる．Lambda関数名，エンドポイントURL，パラメーターマッピング，マッピングテンプレートで値を出力できる．以下のリンク先を参考にせよ．
+デプロイされるステージ固有の環境変数を設定できる．Lambda関数名，エンドポイントURL，パラメーターマッピング，マッピングテンプレートで値を出力できる．以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
 
@@ -779,7 +779,7 @@ SNSを経由して，CloudWatchからの通知をチャットアプリに転送�
 
 #### ・サポート対象のイベント
 
-AWSリソースのイベントを，EventBridge（CloudWatchイベント）を用いて，Chatbotに転送できるが，全てのAWSリソースをサポートしているわけではない．サポート対象のAWSリソースは以下のリンク先を参考にせよ．
+AWSリソースのイベントを，EventBridge（CloudWatchイベント）を用いて，Chatbotに転送できるが，全てのAWSリソースをサポートしているわけではない．サポート対象のAWSリソースは以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
@@ -1309,7 +1309,7 @@ RDS（非Aurora）で注視するべきメトリクスを示す．RDSのコン�
 
 #### ・パフォーマンスインサイト
 
-RDS（Aurora，非Aurora）のパフォーマンスに関するメトリクスを収集する．SQLレベルで監視できるようになる．パラメーターグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンク先を参考にせよ．
+RDS（Aurora，非Aurora）のパフォーマンスに関するメトリクスを収集する．SQLレベルで監視できるようになる．パラメーターグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．
 
 参考：
 
@@ -1330,7 +1330,7 @@ Lambdaのパフォーマンスに関するメトリクスを収集する．
 
 ### CloudWatchログ
 
-クラウドログサーバーとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンク先を参考にせよ．
+クラウドログサーバーとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html
 
@@ -1848,7 +1848,7 @@ Resources:
 
 ### EC2とは
 
-クラウドサーバーとして働く．注意点があるものだけまとめる．ベストプラクティスについては，以下のリンク先を参考にせよ．
+クラウドサーバーとして働く．注意点があるものだけまとめる．ベストプラクティスについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-best-practices.html
 
@@ -1908,7 +1908,7 @@ Resources:
 
 #### ・CPUバーストモード
 
-バーストモードのインスタンスタイプの場合，一定水準のベースラインCPU使用率を提供しつつ，これを超過できる．CPU使用率がベースラインを超えたとき，超過した分だけEC2はCPUクレジットを消費する．CPUクレジットは一定の割合で回復する．蓄積できる最大CPUクレジット，クレジットの回復率，ベースラインCPU使用率は，インスタンスタイプによって異なる．詳しくは以下のリンク先を参考にせよ．
+バーストモードのインスタンスタイプの場合，一定水準のベースラインCPU使用率を提供しつつ，これを超過できる．CPU使用率がベースラインを超えたとき，超過した分だけEC2はCPUクレジットを消費する．CPUクレジットは一定の割合で回復する．蓄積できる最大CPUクレジット，クレジットの回復率，ベースラインCPU使用率は，インスタンスタイプによって異なる．詳しくは以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 
@@ -2733,7 +2733,7 @@ awsの独自ネットワークモード．タスクはElastic Networkインタ�
 
 #### ・ブルー/グリーンデプロイメント
 
-CodeDeployを用いてデプロイを行う．本ノート内を検索せよ．
+CodeDeployを用いてデプロイを行う．
 
 <br>
 
@@ -2769,9 +2769,9 @@ VPCエンドポイントを設け，これに対してアウトバウンド通�
 
 #### ・FireLensコンテナとは
 
-以下のノートを参考にせよ．
+以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/summary.html?q=firelens
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html
 
 <br>
 
@@ -2987,7 +2987,7 @@ Redisノードのグループ．同じRedisシャード内にあるRedisノー�
 
 #### ・セッション管理機能とは
 
-サーバー内のセッションファイルの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．セッションIDについては，以下のリンク先を参考にせよ．
+サーバー内のセッションファイルの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．セッションIDについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -3142,7 +3142,7 @@ Redisクラスターでは，エンジンバージョンなどのアップグレ
 
 ### EventBridge（CloudWatchイベント）とは
 
-AWSリソースで起こったイベントを，他のAWSリソースに転送する．サポート対象のAWSリソースは以下のリンク先を参考にせよ．
+AWSリソースで起こったイベントを，他のAWSリソースに転送する．サポート対象のAWSリソースは以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
 
@@ -3281,7 +3281,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 }
 ```
 
-入力テンプレートにて，転送するJSONを定義する．例えばここでは，Slackに送信するJSONに出力する．出力するときは，入力パスの変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンク先を参考にせよ．
+入力テンプレートにて，転送するJSONを定義する．例えばここでは，Slackに送信するJSONに出力する．出力するときは，入力パスの変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンクを参考にせよ．
 
 参考：https://app.slack.com/block-kit-builder
 
@@ -3457,7 +3457,7 @@ IAMステートメントのセットを定義する．
 
 ####  ・IAMステートメントとは
 
-AWSリソースに関する認可のスコープを定義する．各アクションについては以下のリンク先を参考にせよ．
+AWSリソースに関する認可のスコープを定義する．各アクションについては以下のリンクを参考にせよ．
 
 | AWSリソースの種類 | リンク                                                       |
 | ----------------- | ------------------------------------------------------------ |
@@ -3523,7 +3523,7 @@ AWSリソースの識別子のこと．
 
 #### ・サービスリンクロール
 
-AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている．『```AWSServiceRoleFor*****```』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．関連するリソースを削除するまで，ロール自体できない．サービスリンクロールの一覧については，以下のリンク先を参考にせよ．
+AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている．『```AWSServiceRoleFor*****```』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．関連するリソースを削除するまで，ロール自体できない．サービスリンクロールの一覧については，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
@@ -3867,7 +3867,7 @@ $ aws iam update-user \
 
 ### Lambdaとは
 
-他のAWSリソースのイベントによって駆動する関数を管理できる．ユースケースについては，以下のリンク先を参考にせよ．
+他のAWSリソースのイベントによって駆動する関数を管理できる．ユースケースについては，以下のリンクを参考にせよ．
 
 参考：参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/applications-usecases.html
 
@@ -4016,7 +4016,7 @@ $ curl \
 
 #### ・Goの使用例
 
-以下のリンク先を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：
 
@@ -4025,7 +4025,7 @@ $ curl \
 
 #### ・Node.jsの使用例
 
-以下のリンク先を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：
 
@@ -4124,7 +4124,7 @@ CloudFrontのビューワーリクエスト，オリジンリクエスト，オ�
 
 #### ・各トリガーのeventオブジェクトへのマッピング
 
-各トリガーのeventオブジェクトへのマッピングは，リンク先を参考にせよ．
+各トリガーのeventオブジェクトへのマッピングは，リンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
@@ -4804,7 +4804,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する．ただし，MySQ
 
 #### ・ユニークキーまたはインデックスの利用
 
-スロークエリを検出し，そのSQLで対象としているカラムにユニークキーやインデックスを設定する．スロークエリを検出する方法として，RDSの```long_query_time```パラメーターに基づいた検出や，```EXPLAIN```句による予想実行時間の比較などがある．ユニークキー，インデックス，```EXPLAIN```句，については以下のリンク先を参考にせよ．
+スロークエリを検出し，そのSQLで対象としているカラムにユニークキーやインデックスを設定する．スロークエリを検出する方法として，RDSの```long_query_time```パラメーターに基づいた検出や，```EXPLAIN```句による予想実行時間の比較などがある．ユニークキー，インデックス，```EXPLAIN```句，については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html
 
@@ -5105,7 +5105,7 @@ DBインスタンスがマルチAZ構成の場合，以下の手順を用いて�
 
 #### ・ALBのアクセスログの保存を許可
 
-パブリックアクセスが無効化されたS3に対して，ALBへのアクセスログを保存したい場合，バケットポリシーを設定する必要がある．バケットポリシーには，ALBからS3へのログ書き込み権限を実装する．『```"AWS": "arn:aws:iam::582318560864:root"```』では，```582318560864```はALBアカウントIDと呼ばれ，リージョンごとに値が決まっている．これは，東京リージョンのアカウントIDである．その他のリージョンのアカウントIDについては，以下のリンク先を参考にせよ．
+パブリックアクセスが無効化されたS3に対して，ALBへのアクセスログを保存したい場合，バケットポリシーを設定する必要がある．バケットポリシーには，ALBからS3へのログ書き込み権限を実装する．『```"AWS": "arn:aws:iam::582318560864:root"```』では，```582318560864```はALBアカウントIDと呼ばれ，リージョンごとに値が決まっている．これは，東京リージョンのアカウントIDである．その他のリージョンのアカウントIDについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
@@ -5412,9 +5412,9 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 #### ・AWSにおけるSMTP-AUTHの仕組み
 
-一般的なSMTP-AUTHでは，クライアントユーザーの認証が必要である．同様にして，AWSでもこれが必要であり，IAMユーザーを用いてこれを実現する．送信元となるアプリケーションにIAMユーザーを紐付け，このIAMユーザーにはユーザー名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザー名とパスワードを用いた認証を実行する．ユーザー名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンク先を参考にせよ．
+一般的なSMTP-AUTHでは，クライアントユーザーの認証が必要である．同様にして，AWSでもこれが必要であり，IAMユーザーを用いてこれを実現する．送信元となるアプリケーションにIAMユーザーを紐付け，このIAMユーザーにはユーザー名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザー名とパスワードを用いた認証を実行する．ユーザー名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html?h=smtp
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
 
 <br>
 
@@ -5822,7 +5822,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 ### VPCとは
 
-クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるアベイラビリティゾーンに渡ってEC2を立ち上げることによって，クラウドサーバーをデュアル化することできる．VPCのパケット通信の仕組みについては，以下のリンク先を参考にせよ．
+クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるアベイラビリティゾーンに渡ってEC2を立ち上げることによって，クラウドサーバーをデュアル化することできる．VPCのパケット通信の仕組みについては，以下のリンクを参考にせよ．
 
 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
@@ -5836,13 +5836,13 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 #### ・Internet Gatewayとは
 
-VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．1つのパブリックIPに対して，1つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンク先を参考にせよ．
+VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．1つのパブリックIPに対して，1つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
 
 #### ・NAT Gatewayとは
 
-NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンク先を参考にせよ．
+NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
 
@@ -5862,7 +5862,7 @@ NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，�
 
 #### ・ルートテーブルとは
 
-クラウドルータのマッピングテーブルとして働く．ルータについては，別ノートのNATとNAPTを参考にせよ．
+クラウドルータのマッピングテーブルとして働く．
 
 | Destination（プライベートIPの範囲） |                Target                 |
 | :---------------------------------: | :-----------------------------------: |
@@ -5971,7 +5971,7 @@ ECS Fargateをプライベートサブネットに置いた場合，ECS Fargate�
 
 #### ・ENIとは
 
-クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下を参考にせよ．
+クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
 
@@ -6113,7 +6113,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 ### 設定項目
 
-定義できるルール数や文字数に制限がある．以下のリンク先を参考にせよ．
+定義できるルール数や文字数に制限がある．以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/limits.html
 
@@ -6160,7 +6160,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Overview                 | WAFによって許可/拒否されたリクエストのアクセスログを確認できる． |                                                              |
-| Rules                    | 順番にルールを判定し，一致するルールがあればアクションを実行する．この時，一致するルールの後にあるルールは．判定されない． | AWSマネージドルールについては，以下のリンク先を参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Rules                    | 順番にルールを判定し，一致するルールがあればアクションを実行する．この時，一致するルールの後にあるルールは．判定されない． | AWSマネージドルールについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
 | Associated AWS resources | WAFをアタッチするAWSリソースを設定する．                     | CloudFront，ALBなどにアタッチできる．                        |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する． |                                                              |
 

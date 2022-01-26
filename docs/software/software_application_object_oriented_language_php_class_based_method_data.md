@@ -439,7 +439,7 @@ $foo->hoge;
 
 #### ・```__set```メソッド
 
-定義されていないデータや，アクセス権のないデータに値を設定しようとした時に，代わりにコールされる．オブジェクトの不変性を実現するために用いられる．オブジェクトの不変性は，以下のノートを参考にせよ．
+定義されていないデータや，アクセス権のないデータに値を設定しようとした時に，代わりにコールされる．オブジェクトの不変性を実現するために用いられる．オブジェクトの不変性は，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
@@ -701,7 +701,7 @@ $D = objB()->objC()->objC();
 
 **＊実装例＊**
 
-以下のノートも参考にせよ．
+以下のリンクも参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_algorithm.html
 
@@ -914,7 +914,7 @@ $dispatcher->dispatch("foo", "test");
 
 **＊実装例＊**
 
-フレームワークの```EventDispatcher```クラスが簡単である．以下のノートを参考にせよ．
+フレームワークの```EventDispatcher```クラスが簡単である．以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html
 

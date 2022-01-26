@@ -95,9 +95,9 @@ title: 【知見を記録するサイト】メモリ管理@OS
 
 #### ・アルゴリズム
 
-ガベージコレクションには様々なアルゴリズムがあり，採用されているアルゴリズムは言語ごとに異なる．Goのガベージコレクションについては，以下を参考にせよ．
+ガベージコレクションには様々なアルゴリズムがあり，採用されているアルゴリズムは言語ごとに異なる．Goのガベージコレクションについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html
 
 <br>
 

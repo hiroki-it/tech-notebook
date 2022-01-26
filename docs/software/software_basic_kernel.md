@@ -233,7 +233,7 @@ $ diskutil list
 
 ## 05. メモリ管理（記憶管理）
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/hardware/software_basic_kernel_memory_management.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
 
 <br>
 

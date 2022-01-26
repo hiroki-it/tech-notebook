@@ -211,7 +211,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ・```Authorization```ヘッダーのトークンのクライアント保持
 
-不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage/SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンク先を参考にせよ
+不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage/SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンクを参考にせよ
 
 参考：
 
@@ -303,7 +303,7 @@ cookie: sessionid=<セッションID>
 
 #### ・```Cookie```ヘッダーの値のクライアント保持
 
-再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルPCに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンク先を参考にせよ．
+再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルPCに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
 
 参考：
 
@@ -316,13 +316,13 @@ cookie: sessionid=<セッションID>
 
 #### ・APIキー認証とは
 
-事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下を参考にせよ．
+事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 #### ・照合情報の送信方法
 
-独自ヘッダーとして，```x-api-key```ヘッダーを定義する．これにAPIキーを割り当て，リクエストを送信する．リクエストヘッダへのパラメータの割り当てについては，以下を参考にせよ．
+独自ヘッダーとして，```x-api-key```ヘッダーを定義する．これにAPIキーを割り当て，リクエストを送信する．リクエストヘッダへのパラメータの割り当てについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -408,7 +408,7 @@ authorization: <Personal Acccess Token>
 
 #### ・ステータスコードの違い
 
-認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，```401```ステータスを用いる．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，```403```ステータスを用いる．ステータスコードについては，以下のリンク先を参考にせよ．
+認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，```401```ステータスを用いる．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，```403```ステータスを用いる．ステータスコードについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 

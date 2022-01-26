@@ -32,7 +32,7 @@ title: 【知見を記録するサイト】検証ロジック@PHP
 
 ✕：```FALSE```
 
-フロントエンドの検証については以下を参考にせよ．
+フロントエンドの検証については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_validation.html
 

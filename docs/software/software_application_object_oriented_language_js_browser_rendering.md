@@ -312,7 +312,7 @@ img { float: right }
 
 ![DOMツリーが生成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが生成されるまで.png)
 
-HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．DOMのインターフェースについては，以下のリンク先を参考にせよ．
+HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．DOMのインターフェースについては，以下のリンクを参考にせよ．
 
 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
@@ -360,8 +360,6 @@ JavaScriptのインタプリタのこと．JavaScriptエンジンは，レンダ
 JavaScriptエンジンは，ソースコードを，字句解析，構造解析，意味解釈，命令の実行，をコード一行ずつに対し，繰り返し行う．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html
-
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
 
 ## 03-02. イベント
 
@@ -519,7 +517,7 @@ DOMツリーの各ノードを，ブラウザ上に描画する．
 
 #### ・ブラウザにおけるキャッシュ
 
-クライアントのブラウザで，レスポンスされた静的コンテンツのキャッシュが作成される．Chromeの場合は，CacheStorageに保持される．確認方法については，以下のリンク先を参考にせよ．
+クライアントのブラウザで，レスポンスされた静的コンテンツのキャッシュが作成される．Chromeの場合は，CacheStorageに保持される．確認方法については，以下のリンクを参考にせよ．
 
 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
@@ -531,7 +529,7 @@ DOMツリーの各ノードを，ブラウザ上に描画する．
 
 #### ・アプリケーションにおけるキャッシュ
 
-オブジェクトのプロパティで，メソッド処理結果のキャッシュが作成される．必要な場合，これを取り出して再利用する．Laravelのキャッシュ機能については，以下のリンク先を参考にせよ．
+オブジェクトのプロパティで，メソッド処理結果のキャッシュが作成される．必要な場合，これを取り出して再利用する．Laravelのキャッシュ機能については，以下のリンクを参考にせよ．
 
 参考：https://readouble.com/laravel/8.x/ja/cache.html
 

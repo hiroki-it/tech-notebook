@@ -140,7 +140,7 @@ class FormatValidator
 
 #### ・ユースケース図
 
-ユースケース図については，以下のリンク先を参考にせよ．
+ユースケース図については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
 
@@ -2025,7 +2025,7 @@ class DogOrder
 
 #### ・集約とは
 
-データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
+データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
@@ -2045,7 +2045,7 @@ class DogOrder
 
 #### ・DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html?q=%E4%BE%9D%E5%AD%98%E6%80%A7%E9%80%86%E8%BB%A2
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
 #### ・発表スライド
 
@@ -2088,7 +2088,7 @@ class DogOrder
 
 #### ・実装リポジトリ
 
-リポジトリパターンを用いる．責務として，DBに対してデータの書き込み/読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として定義する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．そのため，引数の型はルートエンティティのドメインモデル型になる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンク先を参考にせよ．
+リポジトリパターンを用いる．責務として，DBに対してデータの書き込み/読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として定義する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．そのため，引数の型はルートエンティティのドメインモデル型になる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html
 
@@ -2475,7 +2475,7 @@ class DogComboFactory
 
 ### スローされた例外の扱い
 
-各レイヤーでは例外をスローするだけに留まり，スローされた例外を対処する責務は，より上位レイヤーに持たせる．より上位レイヤーでは，そのレイヤーに合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下を参考にせよ．
+各レイヤーでは例外をスローするだけに留まり，スローされた例外を対処する責務は，より上位レイヤーに持たせる．より上位レイヤーでは，そのレイヤーに合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
 

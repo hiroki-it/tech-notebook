@@ -52,7 +52,7 @@ title: 【知見を記録するサイト】オブジェクト指向分析設計�
 
 #### 2. シーケンス図の作成
 
-オブジェクト図を参考にしつつ，これに時系列を取り入れ，シーケンス図を作成する．シーケンス図ではソフトウェアの『構造』を設計できないため，これはクラス図に託す．システムシーケンス図とシーケンス図の違いについて，以下のリンク先を参考にせよ．
+オブジェクト図を参考にしつつ，これに時系列を取り入れ，シーケンス図を作成する．シーケンス図ではソフトウェアの『構造』を設計できないため，これはクラス図に託す．システムシーケンス図とシーケンス図の違いについて，以下のリンクを参考にせよ．
 
 参考：
 
@@ -301,7 +301,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
-『has-one』『has-many』な関係と表現され，より具体的に説明すると，とデータとして保持する関係性である．Association（関連），Aggregation（集約），Composition（合成）が用いられる．『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．実装例は以下のリンク先を参考にせよ．
+『has-one』『has-many』な関係と表現され，より具体的に説明すると，とデータとして保持する関係性である．Association（関連），Aggregation（集約），Composition（合成）が用いられる．『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
@@ -309,7 +309,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
-『is-a-kind-of』な関係と表現され，より具体的に説明すると，とグループとメンバーの関係性である．Generalization（汎化），Realization（実現）が用いられる．実装例は以下のリンク先を参考にせよ．
+『is-a-kind-of』な関係と表現され，より具体的に説明すると，とグループとメンバーの関係性である．Generalization（汎化），Realization（実現）が用いられる．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 
@@ -317,7 +317,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![引数型または返却値型として用いる関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として用いる関係性.png)
 
-『use』な関係と表現され，より具体的に説明すると，と引数型/返却値型として用いる関係性である．Dependency（依存）が用いられる．実装例は以下のリンク先を参考にせよ．
+『use』な関係と表現され，より具体的に説明すると，と引数型/返却値型として用いる関係性である．Dependency（依存）が用いられる．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
 

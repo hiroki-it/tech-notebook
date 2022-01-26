@@ -24,7 +24,7 @@ title: 【知見を記録するサイト】反復ロジック@PHP
 
 #### ・内部ポインタと配列の関係
 
-『内部ポインタ』とは，PHPの配列で，参照したい要素を位置で指定するためのカーソルのこと．Goにおけるポインタは，以下を参考にせよ．
+『内部ポインタ』とは，PHPの配列で，参照したい要素を位置で指定するためのカーソルのこと．Goにおけるポインタは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html
 

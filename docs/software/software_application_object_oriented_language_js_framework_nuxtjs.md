@@ -104,7 +104,7 @@ https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E
 
 #### ・```nuxt.config.js```ファイルとは
 
-Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる．各プロパティは以下のリンク先を参考にせよ．
+Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる．各プロパティは以下のリンクを参考にせよ．
 
 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 

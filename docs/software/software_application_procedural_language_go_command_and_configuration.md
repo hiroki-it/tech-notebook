@@ -183,7 +183,7 @@ $ go test -v ./...
 
 #### ・-cover
 
-テスト時に，```foo_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する．反対に，```foo_test.go```ファイルがなければ，そのパッケージの網羅率は解析しない．網羅条件については，以下のリンク先を参考にせよ．
+テスト時に，```foo_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する．反対に，```foo_test.go```ファイルがなければ，そのパッケージの網羅率は解析しない．網羅条件については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
 

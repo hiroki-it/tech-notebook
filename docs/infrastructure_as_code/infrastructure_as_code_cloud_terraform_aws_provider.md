@@ -221,7 +221,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 ### （＊）ステージ名を取得する方法はない
 
-API Gatewayのステージ名を参照するためには，resourceを用いる必要があり，dataではこれを取得できない．もしステージをコンソール画面上から構築している場合，ステージのARNを参照できないため，ARNを自力で作る必要がある．API Gatewayの各ARNについては，以下を参考にせよ．
+API Gatewayのステージ名を参照するためには，resourceを用いる必要があり，dataではこれを取得できない．もしステージをコンソール画面上から構築している場合，ステージのARNを参照できないため，ARNを自力で作る必要がある．API Gatewayの各ARNについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
 
@@ -1000,7 +1000,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ### （３）NLBスティッキーネスは明示的に無効化
 
-スティッキネス機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンク先のNOTE文を参考にせよ．
+スティッキネス機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンクのNOTE文を参考にせよ．
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 

@@ -173,6 +173,20 @@ secret/foo-secret created
 
 <br>
 
+### describe
+
+#### ・describeとは
+
+オブジェクトの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを使用する．
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+
+```bash
+$ kubectl describe nodes 
+```
+
+<br>
+
 ### exec
 
 #### ・execとは
@@ -242,7 +256,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 #### ・getとは
 
-オブジェクトを参照する．
+オブジェクトの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを使用する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
@@ -377,6 +391,29 @@ I1211 05:34:22.289506       1 config.go:224] Starting endpoint slice config cont
 I1211 05:34:22.289525       1 shared_informer.go:240] Waiting for caches to sync for endpoint slice config
 I1211 05:34:22.389800       1 shared_informer.go:247] Caches are synced for endpoint slice config 
 I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for service config 
+```
+
+<br>
+
+### rollout
+
+#### ・rolloutとは
+
+Kubernetesオブジェクトをダウンタイム無しで更新する．
+
+参考：
+
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
+- https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
+
+####  ・restart
+
+指定したKubernetesをローリングリスタートする．
+
+参考：https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
+
+```bash
+$ kubectl rollout restart deployment
 ```
 
 <br>

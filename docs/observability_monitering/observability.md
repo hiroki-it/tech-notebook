@@ -113,6 +113,22 @@ title: 【知見を記録するサイト】可観測性
 
 <br>
 
+### ツール
+
+参考：
+
+- https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+- https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
+
+| アクション | ツール名            |
+| ---------- | ------------------- |
+| 収集       | Datadog，cAdvisor   |
+| 保管       | -                   |
+| 可視化     | Datadog，Prometheus |
+| 分析       | Datadog，Prometheus |
+
+<br>
+
 ## 03. ログ
 
 ### ログとは 
@@ -162,6 +178,22 @@ title: 【知見を記録するサイト】可観測性
 マイクロサービスアーキテクチャの各サービスから収集されたログを，一元的に分析/管理する方法のこと．
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
+
+<br>
+
+### ツール
+
+参考：
+
+- https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+- https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
+
+| アクション | ツール名                 |
+| ---------- | ------------------------ |
+| 収集       | FluetBit，Fluentd        |
+| 保管       | Datadog，ElasticSearch   |
+| 可視化     | Datadog，Kibana，Grafana |
+| 分析       | Datadog，ElasticSearch   |
 
 <br>
 
@@ -239,3 +271,17 @@ title: 【知見を記録するサイト】可観測性
 #### ・データポイント化
 
 スパンが持つデータをデータポイントとして集計することにより，メトリクスを収集できる．
+
+<br>
+
+### ツール
+
+参考：https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+
+| アクション | ツール名        |
+| ---------- | --------------- |
+| 収集       | Datadog，Jaeger |
+| 保管       | -               |
+| 可視化     | Datadog，Jaeger |
+| 分析       | Datadog，Jaeger |
+
