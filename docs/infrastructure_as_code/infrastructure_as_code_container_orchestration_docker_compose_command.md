@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】docker-composeコマンド@Docker compose
+description: docker-composeコマンド@Docker composeの知見をまとめました。
 ---
 
 # docker-composeコマンド@Docker compose

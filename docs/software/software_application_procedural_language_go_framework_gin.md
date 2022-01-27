@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Gin
+description: Ginの知見をまとめました。
 ---
 
 # Gin

@@ -1,8 +1,9 @@
 ---
-title: 【知見を記録するサイト】serverlessコマンド
+title: 【知見を記録するサイト】serverlessコマンド@Serverless Framework
+description: serverlessコマンド@Serverless Frameworkの知見をまとめました。
 ---
 
-# serverlessコマンド
+# serverlessコマンド@Serverless Framework
 
 ## はじめに
 

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】docker-compose.yml@Docker compose
+description: docker-compose.yml@Docker composeの知見をまとめました。
 ---
 
 # docker-compose.yml@Docker compose

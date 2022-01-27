@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Dockerfile@Docker
+description: Dockerfile@Dockerの知見をまとめました。
 ---
 
 # Dockerfile@Docker

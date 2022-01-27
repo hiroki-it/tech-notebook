@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】ロジック@Terraform
+description: ロジック@Terraformの知見をまとめました。
 ---
 
 # ロジック@Terraform

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】インテグレーション@Datadog
+description: インテグレーション@Datadogの知見をまとめました。
 ---
 
 # インテグレーション@Datadog

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】gitコマンド
+description: gitコマンドの知見をまとめました。
 ---
 
 # gitコマンド

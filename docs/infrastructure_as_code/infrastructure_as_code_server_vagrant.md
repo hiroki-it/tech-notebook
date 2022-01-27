@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Vagrant
+description: Vagrantの知見をまとめました。
 ---
 
 # Vagrant

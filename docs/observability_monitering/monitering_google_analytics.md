@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Googleアナリティクス＠監視
+description: Googleアナリティクス＠監視の知見をまとめました。
 ---
 
 # Googleアナリティクス＠監視

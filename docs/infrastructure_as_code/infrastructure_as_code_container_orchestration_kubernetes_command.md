@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】kubectlコマンド@Kubernetes
+description: kubectlコマンド@Kubernetesの知見をまとめました。
 ---
 
 # kubectlコマンド@Kubernetes

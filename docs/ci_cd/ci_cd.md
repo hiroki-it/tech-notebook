@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】CI/CD
+description: CI/CDの知見をまとめました。
 ---
 
 # CI/CD

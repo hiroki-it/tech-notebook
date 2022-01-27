@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Capistrano@CI/CD
+description: Capistrano@CI/CDの知見をまとめました。
 ---
 
 # Capistrano@CI/CD

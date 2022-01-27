@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】認証/認可@Laravel
+description: 認証/認可@Laravelの知見をまとめました。
 ---
 
 # 認証/認可@Laravel

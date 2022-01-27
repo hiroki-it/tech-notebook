@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】FluentBit＠可観測性
+description: FluentBit＠可観測性の知見をまとめました。
 ---
 
 # FluentBit＠可観測性
@@ -9,8 +10,6 @@ title: 【知見を記録するサイト】FluentBit＠可観測性
 ### ログパイプラインとは
 
 FluentBitにて，ログを処理する一連のセクションのこと．
-
-![fluent-bit-log-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_log-pipeline.png)
 
 <br>
 
@@ -144,6 +143,8 @@ Fluent Bit v1.8.6
 
 ### INPUTとは
 
+![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
+
 ログのパイプラインへのインプット方法を定義する．
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
@@ -204,6 +205,8 @@ Inputs
 }
 ```
 
+#### ・セットアップ
+
 **＊実装例＊**
 
 ```bash
@@ -228,6 +231,8 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 #### ・forwardプラグインとは
 
 受信したログを指定されたポートで受信し，パイプラインにインプットする．
+
+#### ・セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
@@ -276,6 +281,8 @@ $ /fluent-bit/bin/fluent-bit \
 #### ・tailプラグインとは
 
 指定したパスに継続的にアウトプットされるログファイルを順次結合し，パイプラインにインプットする．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
+
+#### ・セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
@@ -337,19 +344,136 @@ $ fluent-bit \
 
 <br>
 
-## 02-03. PARSE
+## 02-03. PARSER
 
-### PARSEとは
+### PARSERとは
 
-参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_parser.png)
+
+非構造化ログを構造化ログに変換する．
+
+参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
 
 <br>
 
-## 02-04. MULTILINE_PARSER
+## 02-04. FILTER
 
-### MULTILINE_PARSERとは
+### FILTERとは
 
-分割してインプットされたログを結合する．
+![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_filter.png)
+
+ログのキーや値を加工する．
+
+参考：
+
+- https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
+- https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
+
+<br>
+
+### grepプラグイン
+
+#### ・grepプラグインとは
+
+ログが構造化ログの場合に，マッチしたキーにマッチするログ以外を破棄する．
+
+#### ・セットアップ
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/grep
+
+```
+[FILTER]
+    name   grep
+    match  *
+    regex  log foo
+```
+
+<br>
+
+### modifyプラグイン
+
+#### ・modifyプラグインとは
+
+ログが構造化ログの場合に，キーや値の追加/コピー/変更/削除を実行する．
+
+#### ・セットアップ
+
+参考：
+
+- https://docs.fluentbit.io/manual/pipeline/filters/modify
+- https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
+
+```bash
+[FILTER]
+    Name            modify
+    Match           *
+    # 追加するキーと値
+    Add             filter_type modify
+    # コピーするキーと値
+    Copy            copied_key copied_value
+    # 変更するキーと値
+    Set             updated_key updated_value
+    # 削除するキー
+    Remove          deleted_key
+    # 削除対象キーの最初の文字（前方一致）．
+    # もしこれ以外の文字で始まる場合は，削除の非対象とする．
+    Remove_wildcard ignored_key
+```
+
+<br>
+
+### multilineプラグイン
+
+#### ・multilineプラグインとは
+
+マッチした複数行のログを結合する．結合ルールは，MULTILINE_PARSERの設定ファイルに定義し，これをSERVICEで読み込む必要がある．ただ，本番環境ではログが複数行にならないようにアプリケーション側で実装を行い，ログを収集して可視化する段階でフィルタリングできれば問題ない，という考え方もある．
+
+参考：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
+
+#### ・セットアップ
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+
+```bash
+[SERVICE]
+    # 読み込むファイル
+    Parsers_File parsers_multiline.conf
+    
+[FILTER]
+    # プラグイン名
+    name                  multiline
+    # マッチさせるログ
+    match                 *
+    multiline.key_content log
+    # 用いるパーサー名
+    multiline.parser      laravel
+```
+
+コマンドの```-f```オプションでINPUT名を指定し，実行することもできる．
+
+```bash
+Filters
+  alter_size              Alter incoming chunk size
+  aws                     Add AWS Metadata
+  checklist               Check records and flag them
+  record_modifier         modify record
+  throttle                Throttle messages using sliding window algorithm
+  kubernetes              Filter to append Kubernetes metadata
+  modify                  modify records by applying rules
+  multiline               Concatenate multiline messages
+  nest                    nest events by specified field values
+  parser                  Parse events
+  expect                  Validate expected keys and values
+  grep                    grep events by specified field values
+  rewrite_tag             Rewrite records tags
+  lua                     Lua Scripting Filter
+  stdout                  Filter events to STDOUT
+  geoip2                  add geoip information to records
+```
+
+#### ・MULTILINE_PARSER
+
+複数行のログを結合するためのルールを設定する．ここで定義したパーサー名を，multilineプラグインで指定する必要がある．
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
@@ -381,60 +505,15 @@ Laravelのスタックトレースを結合する．
 
 <br>
 
-## 02-05. FILTER
-
-### FILTERとは
-
-特定の文字列を持つログのみをBUFFERに移行する．
-
-<br>
-
-### multilineプラグイン
-
-#### ・multilineプラグインとは
-
-MULTILINE_PARSERを有効化する．同時に，SERVICEでMULTILINE_PARSERの設定ファイルを読み込む必要がある．
-
-参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
-
-```bash
-[SERVICE]
-    Parsers_File parsers_multiline.conf
-    
-[FILTER]
-    # プラグイン名
-    name                  multiline
-    match                 *
-    multiline.key_content log
-    # 用いるパーサー名
-    multiline.parser      laravel
-```
-
-コマンドの```-f```オプションでINPUT名を指定し，実行することもできる．
-
-```bash
-Filters
-  alter_size              Alter incoming chunk size
-  aws                     Add AWS Metadata
-  checklist               Check records and flag them
-  record_modifier         modify record
-  throttle                Throttle messages using sliding window algorithm
-  kubernetes              Filter to append Kubernetes metadata
-  modify                  modify records by applying rules
-  multiline               Concatenate multiline messages
-  nest                    nest events by specified field values
-  parser                  Parse events
-  expect                  Validate expected keys and values
-  grep                    grep events by specified field values
-  rewrite_tag             Rewrite records tags
-  lua                     Lua Scripting Filter
-  stdout                  Filter events to STDOUT
-  geoip2                  add geoip information to records
-```
-
 <br>
 
 ### stdoutプラグイン
+
+#### ・stdoutプラグインとは
+
+マッチしたログを，OUTPUTを経ずにそのまま標準出力に出力する．FILTERまでのパイプラインが正しく機能しているかのデバッグとして役立つ．
+
+#### ・セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
 
@@ -475,12 +554,11 @@ Fluent Bit v1.8.6
 [0] cpu.0: [1634710733.114477665, {"cpu_p"=>0.166667, "user_p"=>0.000000, "system_p"=>0.166667, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>1.000000, "cpu1.p_user"=>0.000000, "cpu1.p_system"=>1.000000, "cpu2.p_cpu"=>0.000000, "cpu2.p_user"=>0.000000, "cpu2.p_system"=>0.000000, "cpu3.p_cpu"=>0.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>0.000000, "cpu4.p_cpu"=>0.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>0.000000, "cpu5.p_cpu"=>0.000000, "cpu5.p_user"=>0.000000, "cpu5.p_system"=>0.000000}]
 [0] cpu.0: [1634710734.115201385, {"cpu_p"=>0.333333, "user_p"=>0.166667, "system_p"=>0.166667, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>0.000000, "cpu1.p_user"=>0.000000, "cpu1.p_system"=>0.000000, "cpu2.p_cpu"=>0.000000, "cpu2.p_user"=>0.000000, "cpu2.p_system"=>0.000000, "cpu3.p_cpu"=>0.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>0.000000, "cpu4.p_cpu"=>0.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>0.000000, "cpu5.p_cpu"=>0.000000, "cpu5.p_user"=>0.000000, "cpu5.p_system"=>0.000000}]
 [0] cpu.0: [1634710735.114646610, {"cpu_p"=>1.500000, "user_p"=>0.666667, "system_p"=>0.833333, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>3.000000, "cpu1.p_user"=>2.000000, "cpu1.p_system"=>1.000000, "cpu2.p_cpu"=>2.000000, "cpu2.p_user"=>1.000000, "cpu2.p_system"=>1.000000, "cpu3.p_cpu"=>1.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>1.000000, "cpu4.p_cpu"=>1.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>1.000000, "cpu5.p_cpu"=>2.000000, "cpu5.p_user"=>1.000000, "cpu5.p_system"=>1.000000}]
-
 ```
 
 <br>
 
-## 02-06. STREAM_TASK
+## 02-05. STREAM_TASK
 
 ### STREAM_TASKとは
 
@@ -530,7 +608,7 @@ SELECTステートメントの結果を用いて，データストリームを�
 
 #### ・SELECT
 
-指定したログから，指定したキーを抽出する．
+マッチしたログから，指定したキーを抽出する．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
 
@@ -558,13 +636,42 @@ SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 
 <br>
 
-## 02-07. OUTPUT
+## 02-06. BUFFER
 
-### OUTPUTとは
+### BUFFERとは
 
-チャンクとして蓄えられたログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
+![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_buffer.png)
 
-参考：https://docs.fluentbit.io/manual/pipeline/outputs
+ログを蓄え，またこれを順番にROUTINGに渡す．
+
+参考：
+
+- https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
+- https://docs.fluentbit.io/manual/administration/buffering-and-storage
+
+![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
+
+Fluentdから概念図を拝借した．バッファーとして機能するメモリ/ファイルにて，チャンク化されたログテキスト（```*-*****.****.flb```）は一旦ステージに蓄えられる．ステージに一定量のチャンクが蓄えられると，チャンクはキューに格納される．キューは，ログテキストを指定された形式でROUTINGに渡す．プロセスが再起動されると，メモリ/ファイルに蓄えられたログテキストは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
+
+参考：
+
+- https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
+- https://www.alpha.co.jp/blog/202103_01
+
+<br>
+
+## 02-07. ROUTING，OUTPUT
+
+### ROUTING，OUTPUTとは
+
+![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_output.png)
+
+ログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://docs.fluentbit.io/manual/concepts/data-pipeline/output
+- https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
 コマンドの```-o```オプションでINPUT名を指定し，実行することもできる．
 
@@ -611,7 +718,7 @@ Outputs
 
 ### AWS全部入り
 
-#### ・AWS全部入りおは
+#### ・AWS全部入り
 
 全てのAWS系プラグインを含んでいる
 
@@ -829,22 +936,6 @@ $ /fluent-bit/bin/fluent-bit \
   -m '*' \
   -o null
 ```
-
-<br>
-
-## 02-08. BUFFER
-
-### BUFFERとは
-
-![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
-
-Fluentdから概念図を拝借した．バッファーとして機能するメモリ/ファイルにて，チャンク化されたログテキスト（```*-*****.****.flb```）は一旦ステージに蓄えられる．ステージに一定量のチャンクが蓄えられると，チャンクはキューに格納される．キューは，ログテキストを指定された形式でターゲットに順番にルーティングする．プロセスが再起動されると，メモリ/ファイルに蓄えられたログテキストは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
-
-参考：
-
-- https://docs.fluentbit.io/manual/administration/buffering-and-storage
-- https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
-- https://www.alpha.co.jp/blog/202103_01
 
 <br>
 

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Nuxt.js
+description: Nuxt.js
 ---
 
 # Nuxt.js

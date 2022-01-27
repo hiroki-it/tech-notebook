@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】テンプレート管理＠Kubernetes
+description: テンプレート管理＠Kubernetesの知見をまとめました。
 ---
 
 # テンプレート管理＠Kubernetes
