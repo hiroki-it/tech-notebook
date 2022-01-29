@@ -27,9 +27,7 @@ description: CI/CD@Terraformの知見をまとめました。
 
 #### ・Terraformとプロバイダーの両方をアップグレードする場合
 
-Teraformとプロバイダーを別々にリリースする．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform.html
+Terraformとプロバイダーを別々にリリースする．
 
 #### ・DBインスタンスの設定変更でダウンタイムが発生する場合
 

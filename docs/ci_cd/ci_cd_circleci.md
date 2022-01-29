@@ -17,7 +17,7 @@ description: CircleCI@CI/CDの知見をまとめました。
 
 ### 設定ファイルの参考ドキュメント
 
-https://circleci.com/docs/reference-2-1/#circleci-2-1-reference
+https://circleci.com/docs/
 
 <br>
 

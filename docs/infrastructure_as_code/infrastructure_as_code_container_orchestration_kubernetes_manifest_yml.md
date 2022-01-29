@@ -482,14 +482,10 @@ Podを構成するコンテナの名前，ベースイメージ，受信ポー�
 kind: Pod
 spec:
   containers:
-    - name: foo-lumen
-      image: foo-lumen:latest
+    - name: foo-gin
+      image: foo-gin:latest
       ports:
-        - containerPort: 9000
-    - name: foo-nginx
-      image: foo-nginx:latest
-      ports:
-        - containerPort: 8000
+        - containerPort: 8080
 ```
 
 #### ・volumeMount
@@ -507,15 +503,30 @@ spec:
       ports:
         - containerPort: 9000
       volumeMounts:
-         - name: foo-nginx
+         - name: foo-volume
            mountPath: /var/www/foo
-    - name: foo-lumen
-      image: foo-lumen:latest
+    - name: foo-nginx
+      image: foo-nginx:latest
       ports:
-        - containerPort: 9000
+        - containerPort: 8080
       volumeMounts:
-         - name: foo-nginx
-           mountPath: /var/www/foo           
+         - name: foo-volume
+           mountPath: /var/www/foo    
+```
+
+#### ・workingDir
+
+コンテナの作業ディレクトリを設定する．ただし，作業ディレクトリの設定はアプリケーション側の責務のため，Kubernetesで設定するよりもDockerfileで定義した方が良い．
+
+```yaml
+kind: Pod
+spec:
+  containers:
+    - name: foo-flask
+      image: foo-flask:latest
+      ports:
+        - containerPort: 8080
+      workingDir: /var/www/foo
 ```
 
 <br>

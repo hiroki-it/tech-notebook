@@ -331,7 +331,7 @@ $ export AWS_PROFILE="bar-profile"
 $ export AWS_SESSION_TOKEN="*****"
 ```
 
-環境変数を設定した上でteraformを実行すると，値が```provider```に自動的に出力される．CircleCIのような，一時的に環境変数が必要になるような状況では有効な方法である．
+環境変数を設定すると，値が```provider```に自動的に出力される．CircleCIのような，一時的に環境変数が必要になるような状況では有効な方法である．
 
 ```elixir
 terraform {

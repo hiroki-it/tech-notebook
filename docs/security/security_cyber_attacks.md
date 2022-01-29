@@ -294,7 +294,7 @@ max_input_vars = 1000
 
 WebアプリケーションによるHTML出力のエスケープ処理の欠陥を悪用し，利用者のWebブラウザで悪意のあるスクリプトを実行させる ．
 
-![Cross Cite Scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Cross Cite Scripting.png)
+![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cross-cite-scripting.png)
 
 #### ・【対策】CORS：Cross-Origin Resource Sharing（オリジン間リソース共有）
 
@@ -441,7 +441,7 @@ Set-Cookie: Secure
 
 Brute-forceは力ずくの意味．IDを固定して，パスワードを総当たりで試す手法．例えば，5桁数字のパスワードなら，9の5乗通りの組み合わせを試す．一方で，Reverse Brute-forceは，パスワードを固定して，IDを総当たりで試す手法．
 
-![Brute-force攻撃とReverse Brute-force攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Brute-force攻撃とReverse Brute-force攻撃.png)
+![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
 #### ・パスワードのパターン数
 

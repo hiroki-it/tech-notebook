@@ -211,7 +211,7 @@ Webコンテンツデータ，メールデータ，その他
 
 このリモートサーバーが，仮想環境の場合もあり，ホストと仮想環境の接続でもSSHポートフォワーディングが用いられている．ホスト外部のパソコンから，ホスト上の仮想環境に接続したい場合，SSHポートフォワーディングを用いることによって，ホストを踏み台とした仮想環境への接続が行えるようになる．
 
-![docker_port-fowarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_port-fowarding.png)
+![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_port-forwarding.png)
 
 <br>
 

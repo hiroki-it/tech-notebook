@@ -27,7 +27,7 @@ description: 機械語と進数の知見をまとめました。
 
 しかし，人間が扱う上では8進数あるいは16進数に変換して表現することが適している．2進数1ケタが『1 bit』と定義されている．8進数の1ケタは2進数の3ケタ（＝3 bit）に相当し，16進数の1ケタは2進数の4ケタ（4 bit）に相当する．
 
-![-bit と Byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bitvsByte.png)
+![bit_byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bit_byte.png)
 
 ![進数表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/進数表.png)
 

@@ -36,11 +36,11 @@ title: 【知見を記録するサイト】自己紹介
 
 知見の共有になれば幸いです．
 
-▶ https://github.com/hiroki-it/ddd-api-with-laravel（Clean-Arch，Laravel，GitHub Actions）
+▶ https://github.com/hiroki-it/ddd-api-with-laravel （Clean-Arch，Laravel，GitHub Actions）
 
-▶ https://github.com/hiroki-it/ddd-api-with-go-gin（Clean-Arch，Gin）
+▶ https://github.com/hiroki-it/ddd-api-with-go-gin （Clean-Arch，Gin）
 
-▶ https://github.com/hiroki-it/notify-slack-of-amplify-events（Clean-Arch，Go，Serverless Framework，CircleCI）
+▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （Clean-Arch，Go，Serverless Framework，CircleCI）
 
 <br>
 

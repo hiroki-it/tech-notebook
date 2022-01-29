@@ -198,7 +198,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ![パラレルインターフェイスは配線の長さが関係してくる](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パラレルインターフェイスは配線の長さが関係してくる.png)
 
-![シリアルvs パラレル の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアルvsパラレルの違い.jpeg)
+![serial_parallel](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/serial_parallel.jpeg)
 
 <br>
 
