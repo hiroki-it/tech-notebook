@@ -1323,9 +1323,9 @@ output "rds_db_port_ssm_parameter_value" {
 
 <br>
 
-### （１）```plan```コマンド時に非表示
+### （１）```terraform plan```コマンド時に非表示
 
-CIの```plan```コマンド時に値が公開されないように```output```で```sensitive```オプションを有効化する．
+CIの```terraform plan```コマンド時に値が公開されないように```output```で```sensitive```オプションを有効化する．
 
 <br>
 

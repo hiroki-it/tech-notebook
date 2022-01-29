@@ -79,7 +79,7 @@ POST https://www.google-analytics.com/g/collect
 | ページビュー数     | Webページの閲覧数のこと．リロードしても```+1```される．<br>参考：<br>・https://support.google.com/analytics/answer/6086080?hl=ja<br>・http://www.designcross.net/google-analytics/pageviews.html |
 | 離脱数             | セッションの最後で発生したイベント数のこと．<br>参考：https://support.google.com/analytics/answer/11080047?hl=ja# |
 | ランディングページ | ユーザーが最初に訪問したWebページのこと．<br>参考：https://support.google.com/google-ads/answer/14086?hl=ja |
-| コンバージョン     | セッションの間で，ユーザーが目標達成条件を満たす行動を行ったこと．目標達成に至ったセッション数はコンバージョン数というこれを計測するためには，Googleアナリティクスの画面で達成条件の設定が必要である．<br/>参考：<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3<br>ちなみに，『単なる消費者から顧客に転換する』ことから，コンバージョンという単語が使われている．<br>参考：https://e-words.jp/w/%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3.html |
+| コンバージョン     | セッションの間で，ユーザーが目標達成条件を満たす行動を行ったこと．目標達成に至ったセッション数はコンバージョン数というこれを計測するためには，Googleアナリティクスの画面で達成条件の設定が必要である．<br>参考：<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3<br>ちなみに，『単なる消費者から顧客に転換する』ことから，コンバージョンという単語が使われている．<br>参考：https://e-words.jp/w/%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3.html |
 | 参照URL            | ユーザーが最初のページに訪問する前に滞在していたURLのこと．  |
 
 <br>

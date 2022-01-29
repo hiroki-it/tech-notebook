@@ -25,7 +25,7 @@ description: kubectlコマンド@Kubernetesの知見をまとめました。
 
 **＊例＊**
 
-マニフェストファイルを指定し，```apply```コマンドを実行する．
+マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．
 
 ```bash
 # オブジェクトを作成する．
@@ -200,7 +200,7 @@ $ kubectl describe nodes
 
 **＊例＊**
 
-コンテナを指定して，デタッチモードで ```exec```コマンドを実行する．
+コンテナを指定して，デタッチモードで ```kubectl exec```コマンドを実行する．
 
 ```bash
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash

@@ -32,7 +32,7 @@ title: 【知見を記録するサイト】パッケージ@Go
 $ go mod tidy
 ```
 
-もし```go.sum```ファイルがあるのにもかかわらず，以下のようなエラーが出る時は，```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある．
+もし```go.sum```ファイルがあるのにも関わらず，以下のようなエラーが出る時は，```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある．
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:

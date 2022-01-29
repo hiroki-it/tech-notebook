@@ -4750,7 +4750,7 @@ NOW()
 
 ![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_read-replica.png)
 
-<b>
+<br>
 
 ### フェイルオーバー
 
@@ -4848,7 +4848,7 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 | 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
 | ------------------------------------ | ------------------ | ------------------------------------------------------------ |
-| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると，次のようなイベントを確認できる．インスタンスが複数回再起動することからわかる通り，長いダウンタイム（約```6```～```8```分）が発生する．そのため，フェイルオーバーを利用したダウンタイムの最小化を行う．<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br/>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
+| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると，次のようなイベントを確認できる．インスタンスが複数回再起動することからわかる通り，長いダウンタイム（約```6```～```8```分）が発生する．そのため，フェイルオーバーを利用したダウンタイムの最小化を行う．<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
 | サブネットグループ                   | あり               |                                                              |
 | エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する．この時間は，ワークロード，クラスターサイズ，バイナリログデータの量，ゼロダウンタイムパッチ適用の発動可否，によって変動する．<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU<br>また，メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
 | メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で，メンテナンス時間を現在が含まれるように変更すると，保留中の操作がすぐに適用される．そのため，ダウンタイムが発生する． |
@@ -6238,7 +6238,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 - ブラウザからのリクエスト自体が悪意判定されているかどうか
 - サイトのURLの記法によって，悪意判定されているかどうか
-- 送信元の国名が『日本』であるのにもかかわらず，悪意判定されているかどうか
+- 送信元の国名が『日本』であるのにも関わらず，悪意判定されているかどうか
 - サイトに送信された全リクエストのうち，カウントで検知されたリクエストの数が多すぎないかどうか
 
 #### ・連携するアプリケーションを送信元とした場合

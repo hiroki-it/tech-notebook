@@ -365,13 +365,21 @@ DBテーブルのカラム間の関係性に基づいて，DBの構造を表現�
 
 #### ・エンティティ，属性
 
+テーブルに相当するエンティティと，カラムに相当する属性がある．
+
 ![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/エンティティとアトリビュート.png)
 
 #### ・リレーション，カーディナリティ
 
-  エンティティ間の関係を表現する．
+ リレーションとカーディナリティを組み合わせて，エンティティ間の関係性の強さを表現する．```(カラム数/レコード数)```で導かれ，カーディナリティが高いほど，より効率的なDBインデックスを作成できる．
+
+参考：https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb
 
 ![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リレーションとカーディナリティ.png)
+
+<br>
+
+### 関係性の種類
 
 #### ・1：1
 

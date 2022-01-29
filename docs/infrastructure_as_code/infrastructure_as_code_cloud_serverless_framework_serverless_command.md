@@ -51,7 +51,7 @@ $ serverless deploy
 
 #### ・パラメーター
 
-パラメーターを```serverless.yml```ファイルに渡し，```deploy```コマンドを実行する．
+パラメーターを```serverless.yml```ファイルに渡し，```serverless deploy```コマンドを実行する．
 
 ```bash
 $ serverless deploy --FOO foo
@@ -59,7 +59,7 @@ $ serverless deploy --FOO foo
 
 #### ・-v
 
-実行ログを表示しつつ，```deploy```コマンドを実行する．
+実行ログを表示しつつ，```serverless deploy```コマンドを実行する．
 
 ```bash
 $ serverless deploy -v

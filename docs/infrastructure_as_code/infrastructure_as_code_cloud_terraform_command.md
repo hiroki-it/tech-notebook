@@ -275,7 +275,7 @@ actions need to be performed.
 
 #### ・-target
 
-特定のリソースに対して，```plan```コマンドを実行する．
+特定のリソースに対して，```terraform plan```コマンドを実行する．
 
 ```bash
 $ terraform plan \
@@ -293,7 +293,7 @@ $ terraform plan \
 
 #### ・-refresh
 
-このオプションをつければ，```refresh```コマンドを同時に実行してくれる．ただ，デフォルトで```true```なので，不要である．
+このオプションをつければ，```terraform refresh```コマンドを同時に実行してくれる．ただ，デフォルトで```true```なので，不要である．
 
 ```bash
 $ terraform plan \
@@ -315,7 +315,7 @@ $ terraform plan \
 
 #### ・-out
 
-実行プランファイルを生成する．```apply```コマンドのために使用できる．
+実行プランファイルを生成する．```terraform apply```コマンドのために使用できる．
 
 ```bash
 $ terraform plan \
@@ -350,7 +350,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 #### ・-target
 
-特定のリソースに対して，```apply```コマンドを実行する．
+特定のリソースに対して，```terraform apply```コマンドを実行する．
 
 ```bash
 $ terraform apply \
@@ -378,7 +378,7 @@ $ terraform apply \
 
 #### ・実行プランファイル
 
-事前に，```plan```コマンドによって生成された実行プランファイルを元に，```apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
+事前に，```terraform plan```コマンドによって生成された実行プランファイルを元に，```terraform apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
 
 ```bash
 $ terraform apply foo.tfplan
@@ -398,7 +398,7 @@ $ terraform taint \
     module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
-この後の```plan```コマンドのログからも，```-/+```で削除が行われる想定で，差分を比較していることがわかる．
+この後の```terraform plan```コマンドのログからも，```-/+```で削除が行われる想定で，差分を比較していることがわかる．
 
 ```bash
 $ terraform plan -var-file=foo.tfvars

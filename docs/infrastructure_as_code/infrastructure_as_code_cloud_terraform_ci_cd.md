@@ -355,7 +355,7 @@ EOT
 
 #### ・```terraform_apply.sh```ファイル
 
-特定のAWS環境に対して```apply```コマンドを実行する．
+特定のAWS環境に対して```terraform apply```コマンドを実行する．
 
 **＊実装例＊**
 
@@ -376,7 +376,7 @@ terraform -chdir=./${ENV} apply \
 
 #### ・```terraform_fmt.sh```ファイル
 
-GitHubにプッシュされたコードに対して```fmt```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform fmt```コマンドを実行する．
 
 **＊実装例＊**
 
@@ -394,7 +394,7 @@ terraform fmt \
 
 #### ・```terraform_init.sh```ファイル
 
-GitHubにプッシュされたコードに対して```init```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform init```コマンドを実行する．
 
 **＊実装例＊**
 
@@ -419,7 +419,7 @@ terraform -chdir=./${ENV} init \
 
 #### ・```terraform_plan.sh```ファイル
 
-特定のAWS環境に対して```plan```コマンドを実行する．
+特定のAWS環境に対して```terraform plan```コマンドを実行する．
 
 **＊実装例＊**
 
@@ -441,7 +441,7 @@ terraform -chdir=./${ENV} plan \
 
 #### ・```terraform_validate.sh```ファイル
 
-GitHubにプッシュされたコードに対して```validate```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform validate```コマンドを実行する．
 
 **＊実装例＊**
 
@@ -459,7 +459,7 @@ terraform -chdir=./${ENV} validate
 
 ### tfnotifyとは
 
-terraformの```plan```コマンドまたは```apply```コマンドの処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．CircleCIで利用する場合は，ダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくと良い．
+terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．CircleCIで利用する場合は，ダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくと良い．
 
 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 

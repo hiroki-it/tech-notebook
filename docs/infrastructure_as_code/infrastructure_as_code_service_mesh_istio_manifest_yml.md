@@ -772,7 +772,7 @@ spec:
 
 #### ・ingressSelector
 
-全てのEnvoyコンテナに関して，用いるGatewayの```istio```ラベル値を設定する．IngressGatewayをIngressコントローラーとして使用でき，デフォルトではは```ingressgateway```が設定される．
+全てのEnvoyコンテナに関して，用いるGatewayの```istio```ラベル値を設定する．IngressGatewayをIngressコントローラーとして使用でき，デフォルトでは```ingressgateway```が設定される．
 
 ```yaml
 kind: IstioOperator
@@ -783,7 +783,7 @@ spec:
 
 #### ・ingressService
 
-全てのEnvoyコンテナに関して，用いるIngressコントローラーの```istio```ラベル値を設定する．IngressGatewayをIngressとして使用でき，デフォルトではは```ingressgateway```が設定される．
+全てのEnvoyコンテナに関して，用いるIngressコントローラーの```istio```ラベル値を設定する．IngressGatewayをIngressとして使用でき，デフォルトでは```ingressgateway```が設定される．
 
 ```yaml
 kind: IstioOperator
