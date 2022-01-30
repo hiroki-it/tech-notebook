@@ -2,7 +2,7 @@
 title: 【知見を記録するサイト】MySQL
 ---
 
-# MySQL
+# SQL@MySQL
 
 ## はじめに
 
