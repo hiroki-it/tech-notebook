@@ -49,9 +49,10 @@ title: 【知見を記録するサイト】目次
     * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_php_fpm.html)
 * データベース系
     * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html)
-    * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html)
-
-<br>
+    * MySQL
+        * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html)
+        * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_sql.html)
+        <br>
 
 ### アプリケーションソフトウェア
 
@@ -73,6 +74,7 @@ title: 【知見を記録するサイト】目次
 * 言語
     * オブジェクト指向型言語
         * PHP
+            * [📖 PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php.html)
             * [📖 phpコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command.html)
             * クラスベース
                 * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html)

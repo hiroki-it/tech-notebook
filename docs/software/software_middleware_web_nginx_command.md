@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】nginxコマンド@Nginx
+description: nginxコマンド@Nginxの知見をまとめました。
 ---
 
 # nginxコマンド@Nginx
