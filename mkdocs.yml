@@ -111,7 +111,7 @@ nav:
             - PHP-FPM: software/software_middleware_application_php_fpm.md
         - ■ データベース系:
             - データベース: software/software_middleware_database.md
-            ■ My︎SQL:
+            - ■ My︎SQL:
                 - MySQL: software/software_middleware_database_mysql.md
                 - SQL: software/software_middleware_database_mysql_sql.md
     - ■ アプリケーションソフトウェア:
