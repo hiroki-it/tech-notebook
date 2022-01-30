@@ -111,7 +111,9 @@ nav:
             - PHP-FPM: software/software_middleware_application_php_fpm.md
         - ■ データベース系:
             - データベース: software/software_middleware_database.md
-            - My︎SQL: software/software_middleware_database_mysql.md
+            ■ My︎SQL:
+                - MySQL: software/software_middleware_database_mysql.md
+                - SQL: software/software_middleware_database_mysql_sql.md
     - ■ アプリケーションソフトウェア:
         - ■ アーキテクチャ:
             - オブジェクト指向分析設計: software/software_application_architecture_object_oriented_analysis_and_design.md
@@ -131,7 +133,8 @@ nav:
         - ■ 言語:
             - ■ オブジェクト指向型言語:
                 - ■ PHP:
-                    - phpコマンドと設定: software/software_application_object_oriented_language_php_command_and_configuration.md
+                    - PHP: software/software_application_object_oriented_language_php.md
+                    - phpコマンド: software/software_application_object_oriented_language_php_command.md
                     - ■ クラスベース:
                         - クラス: software/software_application_object_oriented_language_php_class_based.md
                         - メソッド/データ: software/software_application_object_oriented_language_php_class_based_method_data.md
@@ -174,8 +177,8 @@ nav:
                         - ブラウザレンダリング: software/software_application_object_oriented_language_js_browser_rendering.md
             - ■ 手続き型言語:
                 - ■ Go:
-                    - Goとは: software/software_application_procedural_language_go.md
-                    - goコマンドと設定: software/software_application_procedural_language_go_command_and_configuration.md
+                    - Go: software/software_application_procedural_language_go.md
+                    - goコマンド: software/software_application_procedural_language_go_command.md
                     - ■ ロジック:
                         - メソッド/データ: software/software_application_procedural_language_go_logic_method_data.md
                     - ■ パッケージ/フレームワーク:
