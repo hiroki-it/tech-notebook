@@ -73,7 +73,7 @@ title: 【知見を記録するサイト】目次
 * 言語
     * オブジェクト指向型言語
         * PHP
-            * [📖 goコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command_and_configuration.html)
+            * [📖 phpコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command.html)
             * クラスベース
                 * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html)
                 * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_method_data.html)
@@ -116,8 +116,8 @@ title: 【知見を記録するサイト】目次
                 * [📖 ︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_browser_rendering.html)
     * 手続き型言語
         * Go
-            * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go.html)
-            * [📖 goコマンドと設定](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command_and_configuration.html)
+            * [📖 Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go.html)
+            * [📖 goコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command.html)
             * ロジック
                 * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html)
             * パッケージ/フレームワーク

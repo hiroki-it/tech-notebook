@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】RESTful-API＠アプリケーション連携
+description: RESTful-API＠アプリケーション連携の知見をまとめました。
 ---
 
 # RESTful-API＠アプリケーション連携

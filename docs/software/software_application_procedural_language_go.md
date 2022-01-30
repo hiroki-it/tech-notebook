@@ -1,8 +1,9 @@
 ---
-title: 【知見を記録するサイト】Goとは
+title: 【知見を記録するサイト】Go
+description: Goの知見をまとめました。
 ---
 
-# Goとは
+# Go
 
 ## はじめに
 
@@ -56,7 +57,65 @@ title: 【知見を記録するサイト】Goとは
 
 <br>
 
-## 02. 実装規則
+## 02. セットアップ（コンテナ）
+
+注意するべきことをコメントアウトで示す．
+
+```dockerfile
+#===================
+# Global ARG
+#===================
+ARG GO_VERSION=1.16.5
+ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+
+#===================
+# Build Stage
+#===================
+FROM golang:${GO_VERSION} as build
+
+# Goのディレクトリ構成のベストプラクティスに則った方法にする．
+WORKDIR /go/src
+
+# インストールのキャッシュを活用するためにコピーしておく．
+COPY go.mod go.sum /go/src/
+
+# ライブラリをインストールする．
+RUN go get github.com/cosmtrek/air@v1.27.3
+
+COPY . /go/src/
+
+# go mod tidyの実行を忘れると，次回のイメージのビルド時に，goのビルドに失敗するようになってしまう．
+# そのため，保険としてgo mod tidyを実行しておく．
+RUN go mod tidy \
+  # リクエストを受信する場合，アプリケーションを実行後にコンテナがすぐ終了しないよう，起動前にフレームワークをインストールしておく．
+  # これにより，アプリケーションの実行でインバウンド通信の受信が開始される．
+  # Goでインバウンド通信を受信しないアプリケーションであれば，パッケージのインストールはコンテナ起動後に実行しても良い．
+  && go mod download -x \
+  # ビルドのアーティファクトを/go/binに配置する．
+  # netパッケージは標準で動的リンクのため，静的リンクを明示的に指定する必要がある．
+  && go build -x -a -tags netgo -installsuffix netgo -o /go/bin ./cmd
+
+#===================
+# Production Stage
+#===================
+FROM golang:${GO_VERSION}-alpine
+
+LABEL maintainer=${LABEL}
+
+# マルチステージビルド
+# /go/binにパスを通す．
+ENV PATH $PATH:/go/bin
+
+COPY --from=build /go /go/
+
+WORKDIR /go/src
+
+CMD ["/go/bin/cmd"]
+```
+
+<br>
+
+## 03. 実装ポリシー
 
 ### ディレクトリ構造
 
@@ -259,62 +318,3 @@ func main() {
 Uber社が採用しているお作法．
 
 参考：https://github.com/uber-go/guide/blob/master/style.md
-
-<br>
-
-## 03. Dockerfile
-
-注意するべきことをコメントアウトで示す．
-
-```dockerfile
-#===================
-# Global ARG
-#===================
-ARG GO_VERSION=1.16.5
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
-
-#===================
-# Build Stage
-#===================
-FROM golang:${GO_VERSION} as build
-
-# Goのディレクトリ構成のベストプラクティスに則った方法にする．
-WORKDIR /go/src
-
-# インストールのキャッシュを活用するためにコピーしておく．
-COPY go.mod go.sum /go/src/
-
-# ライブラリをインストールする．
-RUN go get github.com/cosmtrek/air@v1.27.3
-
-COPY . /go/src/
-
-# go mod tidyの実行を忘れると，次回のイメージのビルド時に，goのビルドに失敗するようになってしまう．
-# そのため，保険としてgo mod tidyを実行しておく．
-RUN go mod tidy \
-  # リクエストを受信する場合，アプリケーションを実行後にコンテナがすぐ終了しないよう，起動前にフレームワークをインストールしておく．
-  # これにより，アプリケーションの実行でインバウンド通信の受信が開始される．
-  # Goでインバウンド通信を受信しないアプリケーションであれば，パッケージのインストールはコンテナ起動後に実行しても良い．
-  && go mod download -x \
-  # ビルドのアーティファクトを/go/binに配置する．
-  # netパッケージは標準で動的リンクのため，静的リンクを明示的に指定する必要がある．
-  && go build -x -a -tags netgo -installsuffix netgo -o /go/bin ./cmd
-
-#===================
-# Production Stage
-#===================
-FROM golang:${GO_VERSION}-alpine
-
-LABEL maintainer=${LABEL}
-
-# マルチステージビルド
-# /go/binにパスを通す．
-ENV PATH $PATH:/go/bin
-
-COPY --from=build /go /go/
-
-WORKDIR /go/src
-
-CMD ["/go/bin/cmd"]
-```
-

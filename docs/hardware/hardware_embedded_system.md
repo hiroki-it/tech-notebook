@@ -185,7 +185,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 #### ・プリンタの印字速度
 
-![CPS と PPM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CPSとPPM.jpg)
+![cps_ppm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cps_ppm.jpg)
 
 <br>
 
