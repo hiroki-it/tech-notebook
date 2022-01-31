@@ -2091,7 +2091,7 @@ class DogOrder
 
 リポジトリパターンを用いる．責務として，DBに対してデータの書き込み/読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として定義する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．そのため，引数の型はルートエンティティのドメインモデル型になる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
 
 #### ・インターフェースリポジトリ
 

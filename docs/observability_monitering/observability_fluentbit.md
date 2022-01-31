@@ -377,9 +377,9 @@ $ fluent-bit \
 
 ログが構造化ログの場合に，マッチしたキーにマッチするログ以外を破棄する．
 
-#### ・セットアップ
-
 参考：https://docs.fluentbit.io/manual/pipeline/filters/grep
+
+#### ・セットアップ
 
 ```
 [FILTER]
@@ -505,6 +505,34 @@ Laravelのスタックトレースを結合する．
 
 <br>
 
+### parserプラグイン
+
+#### ・parserプラグインとは
+
+マッチしたログを解析し，新しいキーに文字列を抽出する．
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+
+#### ・セットアップ
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+
+```bash
+[SERVICE]
+    Parsers_File    parser.conf
+    
+[FILTER]
+    Name            parser
+    Match           *
+    Key_Name        container_name
+    # 使用するパーサールール
+    Parser          docker-name-parser
+    # 解析されたキーの元の値を保持するかどうか
+    Preserve_Key    false
+    # 解析されたキー以外を保持するかどうか
+    Reserve_Data    true
+```
+
 <br>
 
 ### stdoutプラグイン
@@ -513,9 +541,9 @@ Laravelのスタックトレースを結合する．
 
 マッチしたログを，OUTPUTを経ずにそのまま標準出力に出力する．FILTERまでのパイプラインが正しく機能しているかのデバッグとして役立つ．
 
-#### ・セットアップ
-
 参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
+
+#### ・セットアップ
 
 ```bash
 [FILTER]

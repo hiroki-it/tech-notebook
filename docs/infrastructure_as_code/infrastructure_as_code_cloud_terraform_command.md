@@ -67,7 +67,7 @@ $ terraform init -reconfigure
 
 #### ・-upgrade
 
-現在のバージョンに基づいて，```lock```ファイル，モジュール，プラグインのアップグレード/ダウングレードを行う．
+現在のバージョンを基に，```lock```ファイル，モジュール，プラグインのアップグレード/ダウングレードを行う．
 
 参考：https://www.terraform.io/docs/cli/commands/init.html#upgrade
 

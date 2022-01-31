@@ -48,11 +48,13 @@ title: 【知見を記録するサイト】目次
 * アプリケーション系
     * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_php_fpm.html)
 * データベース系
-    * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html)
-    * MySQL
-        * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html)
-        * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_sql.html)
-        <br>
+    * RDBMS
+        * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
+        * MySQL
+            * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
+            * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html)
+
+<br>
 
 ### アプリケーションソフトウェア
 

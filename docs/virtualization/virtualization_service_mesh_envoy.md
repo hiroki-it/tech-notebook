@@ -42,7 +42,7 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 #### ・サービスディスカバリ
 
-サービスレジストリに登録された情報に基づいて，マイクロサービスを識別する．
+サービスレジストリに登録された情報を基に，マイクロサービスを識別する．
 
 参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
 

@@ -160,7 +160,7 @@ class Employee extends Model
 }
 ```
 
-リレーションに基づいてJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる．
+リレーションを基にJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる．
 
 ```php
 <?php

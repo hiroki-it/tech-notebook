@@ -75,7 +75,7 @@ POST https://www.google-analytics.com/g/collect
 | ------------------ | ------------------------------------------------------------ |
 | セッション数       | ユーザーがWebサイトに訪問してから離脱するまでを１セッションとした時に，この数のこと．<br>参考：https://support.google.com/analytics/answer/9191807?hl=ja&ref_topic=11151952 |
 | 直帰数             | ユーザーがWebサイトに訪問した後に，Webページのどの部分もクリックせずに離脱した場合に，このセッション数のこと．<br>参考：https://support.google.com/analytics/answer/1009409?hl=ja |
-| 新規ユーザー数     | 新しく訪問したユーザー数のこと．リクエストのIPアドレスやユーザエージェントの組み合わせに基づいて，新規ユーザーか否かを判定する．セッションの違いに影響されない．<br>参考：https://www.mitsue.co.jp/case/glossary/l_009.html |
+| 新規ユーザー数     | 新しく訪問したユーザー数のこと．リクエストのIPアドレスやユーザエージェントの組み合わせを基に，新規ユーザーか否かを判定する．セッションの違いに影響されない．<br>参考：https://www.mitsue.co.jp/case/glossary/l_009.html |
 | ページビュー数     | Webページの閲覧数のこと．リロードしても```+1```される．<br>参考：<br>・https://support.google.com/analytics/answer/6086080?hl=ja<br>・http://www.designcross.net/google-analytics/pageviews.html |
 | 離脱数             | セッションの最後で発生したイベント数のこと．<br>参考：https://support.google.com/analytics/answer/11080047?hl=ja# |
 | ランディングページ | ユーザーが最初に訪問したWebページのこと．<br>参考：https://support.google.com/google-ads/answer/14086?hl=ja |

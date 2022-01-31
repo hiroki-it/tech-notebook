@@ -28,18 +28,6 @@ PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイ�
 
 <br>
 
-### CGI
-
-#### ・CGIとは
-
-![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
-
-#### ・FastCGI：Fast Common Gateway Interface
-
-CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと．
-
-<br>
-
 ## 02. セットアップ（サーバー）
 
 ### インストール

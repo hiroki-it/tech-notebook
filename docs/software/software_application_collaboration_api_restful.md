@@ -401,7 +401,7 @@ x-api-key: *****
 | 〃     | 送信元IPアドレスの閲覧禁止                     | 誤ったリクエストである．APIに認証/認可プロセスが存在せず，トークン発行と閲覧権限検証が不要だとする．送信元IPアドレスに閲覧権限がないと判定されてことを表す． |
 | 404    | Webページが見つからない                           | 誤ったリクエストである．存在しないデータをリクエストしていることを表す． |
 | 405    | 許可されていないHTTPメソッド                   | 誤ったリクエストである．エンドポイントのパスは正しいが，HTTPメソッドは誤っていることを表す． |
-| 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表す．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に用いる．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database.html |
+| 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表す．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に用いる．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである．リソースへのアクセスに失敗したことを表す． |
 | 422    | バリデーションエラー                           | 誤ったリクエストである．送信されたパラメーターが誤っていることを表す． |
 | 500    | サーバーエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |

@@ -86,7 +86,7 @@ kubernetesクライアントにkueneretes-APIを公開する．クライアン�
 
 #### ・kube-schedulerとは
 
-ワーカーノードとPodのスペックに基づいて，ワーカーノードに配置される適切なPod数を決定する．
+ワーカーノードとPodのスペックを基に，ワーカーノードに配置される適切なPod数を決定する．
 
 参考：https://thinkit.co.jp/article/17453
 

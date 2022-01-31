@@ -687,7 +687,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 #### ・upstream
 
-インバウンド通信のルーティング先をグループ化する．デフォルトでは，加重ラウンドロビン方式に基づいて通信をルーティングする．
+インバウンド通信のルーティング先をグループ化する．デフォルトでは，加重ラウンドロビン方式を基に通信をルーティングする．
 
 参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 

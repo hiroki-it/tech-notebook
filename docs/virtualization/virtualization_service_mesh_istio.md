@@ -49,7 +49,7 @@ Istioによって，プロキシ機能を持つistio-proxyコンテナが自動�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway，Service，DestinationRuleの設定に基づいて，クラスター外部から送信されるインバウンド通信をPodにルーティングする．
+Gateway，Service，DestinationRuleの設定を基に，クラスター外部から送信されるインバウンド通信をPodにルーティングする．
 
 参考：
 

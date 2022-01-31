@@ -401,7 +401,7 @@ VPNゲートウェイとのSSL/TLS通信によって，インターネットVPN�
 
 #### ・VPNとは
 
-異なるネットワーク間で安全な通信を行うための仕組み．使用されているセキュアプロトコルに基づいて，『PPTP-VPN』，『SSL/TLS-VPN』，『IPsec-VPN』がある．
+異なるネットワーク間で安全な通信を行うための仕組み．使用されているセキュアプロトコルを基に，『PPTP-VPN』，『SSL/TLS-VPN』，『IPsec-VPN』がある．
 
 ![i](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPN（ネットワーク間）.png)
 
