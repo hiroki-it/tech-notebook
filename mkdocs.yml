@@ -110,10 +110,11 @@ nav:
         - ■ アプリケーション系:
             - PHP-FPM: software/software_middleware_application_php_fpm.md
         - ■ データベース系:
-            - データベース: software/software_middleware_database.md
-            - ■ My︎SQL:
-                - MySQL: software/software_middleware_database_mysql.md
-                - SQL: software/software_middleware_database_mysql_sql.md
+            - ■ RDBMS: 
+                - RDBMS: software/software_middleware_database_rdbms.md
+                - ■ My︎SQL:
+                    - MySQL: software/software_middleware_database_rdbms_mysql.md
+                    - SQL: software/software_middleware_database_rdbms_mysql_sql.md
     - ■ アプリケーションソフトウェア:
         - ■ アーキテクチャ:
             - オブジェクト指向分析設計: software/software_application_architecture_object_oriented_analysis_and_design.md
