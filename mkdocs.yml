@@ -168,24 +168,28 @@ nav:
                     - ■ ロジック:
                         - 検証ロジック: software/software_application_object_oriented_language_js_logic_validation.md
                         - 非同期処理ロジック: software/software_application_object_oriented_language_js_logic_asynchronous_process.md
-                    - ■ パッケージ/フレームワーク:
-                        - パッケージ: software/software_application_object_oriented_language_js_package.md
+                    - ■ フレームワーク:
                         - Vue.js: software/software_application_object_oriented_language_js_framework_vuejs.md
                         - Nuxt.js: software/software_application_object_oriented_language_js_framework_nuxtjs.md
+                    - ■ パッケージ:
+                        - パッケージ管理: software/software_application_object_oriented_language_js_package_management.md
                     - ■ デバッグ:
                         - デバッグ: software/software_application_object_oriented_language_js_debug.md
                     - ■ ブラウザ:
                         - ブラウザレンダリング: software/software_application_object_oriented_language_js_browser_rendering.md
+                - ■ Python:
+                    - ■ パッケージ/フレームワーク
+                        - 
             - ■ 手続き型言語:
                 - ■ Go:
                     - Go: software/software_application_procedural_language_go.md
                     - goコマンド: software/software_application_procedural_language_go_command.md
                     - ■ ロジック:
                         - メソッド/データ: software/software_application_procedural_language_go_logic_method_data.md
-                    - ■ パッケージ/フレームワーク:
-                        - パッケージ: software/software_application_procedural_language_go_package.md
+                    - ■ フレームワーク:
                         - Gin: software/software_application_procedural_language_go_framework_gin.md
-
+                    - ■ パッケージ:
+                        - パッケージ: software/software_application_procedural_language_go_package.md
   - 💻 ハードウェア:
     - ハードウェア: hardware/hardware.md
     - 組み込み機器: hardware/hardware_embedded_system.md
