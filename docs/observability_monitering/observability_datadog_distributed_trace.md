@@ -31,7 +31,9 @@ APM機能を用いる時に，トレースエージェントが稼働するDatad
 
 <br>
 
-### PHPトレーサー
+## 01-02. PHPトレーサー
+
+### セットアップ
 
 #### ・インストール
 
@@ -49,6 +51,8 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
   # 残骸ファイルを削除
   && rm datadog-php-tracer.deb
 ```
+
+#### ・動作確認
 
 アプリケーションがパッケージを読み込んだか否かをコマンドで確認できる．
 
@@ -73,7 +77,11 @@ $  php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 
-#### ・環境変数
+<br>
+
+### 環境変数
+
+#### ・種類
 
 環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
 
@@ -85,6 +93,8 @@ Extension 'ddtrace' not present.
 | ```DD_SERVICE_NAME```                         | 分散トレースにマイクロサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）． |                                        |
 | ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．デフォルトで全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
 | ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
+
+#### ・動作確認
 
 トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
 
@@ -141,11 +151,13 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 <br>
 
-### Node.jsトレーサー
+## 01-03. Node.jsトレーサー
 
-#### ・TypeScriptやモジュールバンドルを使っている場合
+### セットアップ
 
-エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
+#### ・インストール
+
+TypeScriptやモジュールバンドルを使っている場合，エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
@@ -155,7 +167,11 @@ import 'dd-trace/init'
 // フレームワークを含むパッケージのインポートが続く
 ```
 
-また，初期化時に設定した環境変数を使用できる．APMのマイクロサービスのタグ名に反映される．
+<br>
+
+### 環境変数
+
+初期化時に環境変数を設定できる．APMのマイクロサービスのタグ名に反映される．
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 

@@ -112,6 +112,33 @@ Array
 
 <br>
 
+### -r
+
+コマンドラインからコードを実行できる．
+
+参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
+
+**＊例＊**
+
+```bash
+# PHPなので，処理終わりにセミコロンが必要
+$ php -r "<何らかの処理>"
+
+# Hello Worldを出力
+$ php -r "echo "Hello World";"
+
+# phpinfoメソッドを実行
+$ php -r "phpinfo();"
+
+# phpinfoメソッドの実行結果から，特定の設定のみを取り出す．
+$ php -r 'phpinfo();' | grep php.ini
+
+# phpinfoメソッドの実行結果をテキストファイルに保存
+$ php -r "phpinfo();" > phpinfo.txt
+```
+
+<br>
+
 ### --ri
 
 拡張モジュールの設定値を表示する．

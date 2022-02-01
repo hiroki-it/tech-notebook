@@ -124,7 +124,7 @@ $ chmod go+r <ファイル名>
 
 #### ・-Rp
 
-ディレクトリの属性情報も含めて，ディレクトリ構造とファイルを再帰的にコピー．
+ディレクトリの属性情報も含めて，ディレクトリとファイルを再帰的にコピー．
 
 ```bash
 $ cp -Rp /<ディレクトリ名1>/<ディレクトリ名2> /<ディレクトリ名1>/<ディレクトリ名2>
@@ -1110,5 +1110,83 @@ vim上でファイルを開く．
 
 ```bash
 $ vim <ファイル名>
+```
+
+## 04. pipeline
+
+### pipelineとは
+
+『```|```』の縦棒記号のこと．複数のプログラムの入出力を繋げる．
+
+![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
+
+シェルは，プロセスの処理結果をパイプラインに出力する．その後，パイプラインから出力内容をそのまま受け取り，別のプロセスに再び入力する．
+
+参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+
+![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
+
+<br>
+
+### 組み合わせ技
+
+#### ・awkとの組み合わせ
+
+コマンドの出力結果に対して，```awk```コマンドを行う．
+
+**＊例＊**
+
+検索されたファイルの容量を合計する．
+
+```bash
+$ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+$ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+$ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+```
+
+#### ・echoとの組み合わせ
+
+終了ステータスを```echo```コマンドに渡し，値を出力する．
+
+```bash
+$ <任意のコマンド> | echo $?
+```
+
+#### ・grepとの組み合わせ
+
+コマンドの出力結果を```grep```コマンドに渡し，フィルタリングを行う．
+
+**＊例＊**
+
+検索されたファイル内で，さらに文字列を検索する．
+
+```bash
+$ find ./* \
+  -type f | xargs grep "<検索文字>"
+```
+
+#### ・killとの組み合わせ
+
+コマンドの出力結果に対して，```kill```コマンドを行う．
+
+**＊例＊**
+
+フィルタリングされたプロセスを削除する．
+
+```bash
+$ sudo pgrep \
+  -f <コマンド名> | sudo xargs kill -9
+```
+
+#### ・sortとの組み合わせ
+
+コマンドの出力結果に対して，並び順を変更する．
+
+**＊例＊**
+
+表示された環境変数をAZ昇順に並び替える．
+
+```bash
+$ printenv | sort -f
 ```
 

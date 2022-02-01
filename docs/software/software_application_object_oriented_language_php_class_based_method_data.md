@@ -1708,7 +1708,7 @@ var_dump($result); // 1
 
 #### ・ワイルドカード
 
-ワイルドカードは『```.*```』で表現する．
+ワイルドカードは『```.*```』または『```.+```』で意味する．ドットは任意の文字，アスタリスクは直前の文字が```0```回以上反復すること，プラスは```1```回以上反復することを意味する．
 
 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
 
@@ -1719,8 +1719,36 @@ var_dump($result); // 1
 
 $var = "FooBarBaz";
 
+// 前方の一致
 $result = preg_match("/Foo.*/", $var);
     
+var_dump($result); // 1
+```
+```php
+<?php
+
+$var = "FooBarBaz";
+
+// 後方の一致
+$result = preg_match("/.*Baz/", $var);
+
+var_dump($result); // 1
+```
+
+#### ・クエスチョン
+
+クエスチョンの前に記載された文字に関して，あってもなくても問題ないことを意味する．
+
+参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
+
+```php
+<?php
+
+$var = "FooBarBaz";
+
+# zはあってもなくてもも
+$result = preg_match("/FooBarBaz?/", $var);
+
 var_dump($result); // 1
 ```
 
@@ -1747,6 +1775,23 @@ $var = "JPEG";
 // jpegの大文字小文字
 $result = preg_match("/jpeg$/i", $var);
 
+var_dump($result); // 1
+```
+
+#### ・グループ化
+
+文字列をグループ化する．正規表現に規則性がある場合に有効である．
+
+参考：http://www.turtle.gr.jp/techno/regular-expression.html
+
+```php
+<?php
+
+$var = "abcabcabc";
+
+# abcが任意数だけ反復する
+$result = preg_match("/(abc)*/", $var);
+    
 var_dump($result); // 1
 ```
 

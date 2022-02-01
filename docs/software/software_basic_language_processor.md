@@ -93,7 +93,7 @@ Java，Scala，Groovy，Kotlin，など．
 
 ## 02-03. コンパイラ型言語の機械語翻訳
 
-### コンパイラ方式
+### コンパイラ方式の流れ
 
 #### ・機械語翻訳と実行
 
@@ -152,7 +152,7 @@ Java，Scala，Groovy，Kotlin，など．
 
 ## 02-04. インタプリタ型言語の機械語翻訳
 
-### インタプリタ方式
+### インタプリタ方式の流れ
 
 #### ・機械語翻訳と実行
 
@@ -165,34 +165,9 @@ Java，Scala，Groovy，Kotlin，など．
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 
-コマンドラインでそのまま入力し，機械語翻訳と実行を行える．
-
-```bash
-#===========
-# PHPの場合
-#===========
-
-# PHPなので，処理終わりにセミコロンが必要
-$ php -r "<何らかの処理>"
-
-# Hello Worldを出力
-$ php -r "echo "Hello World";"
-
-# phpinfoを出力
-$ php -r "phpinfo();"
-
-# （おまけ）phpinfoの出力をテキストファイルに保存
-$ php -r "phpinfo();" > phpinfo.txt
-```
-
-```bash
-# php.iniの読み込み状況を出力
-$ php --ini
-```
-
 <br>
 
-### 仕組み
+### 機械語翻訳の仕組み
 
 ![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
 

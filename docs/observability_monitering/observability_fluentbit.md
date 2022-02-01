@@ -509,9 +509,26 @@ Laravelのスタックトレースを結合する．
 
 #### ・parserプラグインとは
 
-マッチしたログを解析し，新しいキーに文字列を抽出する．
+マッチしたログを解析し，正規表現の名前付きキャプチャ機能（```?<foo>```）を用いて新しいキーに文字列を抽出する．
 
-参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
+参考：
+
+- https://docs.fluentbit.io/manual/pipeline/filters/parser
+- https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression
+
+FluentBitでの名前付きキャプチャについては，Fluentdのドキュメントを参考にせよ．
+
+参考：https://docs.fluentd.org/parser/regexp
+
+#### ・バリデーション
+
+FluentBitは，内部的にはruby製関数を用いて正規表現を検証している．そのため，これを確認できるバリデーションツールを使用する．
+
+参考：http://rubular.com/
+
+あるいは，Fluentdの正規表現チェッカーでも良い．
+
+参考：http://fluentular.herokuapp.com/
 
 #### ・セットアップ
 
@@ -531,6 +548,22 @@ Laravelのスタックトレースを結合する．
     Preserve_Key    false
     # 解析されたキー以外を保持するかどうか
     Reserve_Data    true
+```
+
+例えば，ECSのプラットフォームバージョンが```v1.3```の時，メタデータのDockerNameは『```ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．コンテナ名だけに加工すると，FireLensコンテナのFluentBitのログクエリで抽出しやすくなる．
+
+```bash
+[PARSER]
+    Name      docker-name-parser
+    Format    regex
+    Regex     ^\/ecs-.*-(?<container_name>.*)-.*$
+```
+
+```bash
+# WHERE句でコンテナ名を指定
+[STREAM_TASK]
+    Name bar-stream-task
+    Exec CREATE STREAM bar WITH (tag='bar') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'bar';
 ```
 
 <br>
