@@ -182,9 +182,6 @@ nav:
                         - デバッグ: software/software_application_object_oriented_language_js_debug.md
                     - ■ ブラウザ:
                         - ブラウザレンダリング: software/software_application_object_oriented_language_js_browser_rendering.md
-                - ■ Python:
-                    - ■ パッケージ/フレームワーク
-                        - 
             - ■ 手続き型言語:
                 - ■ Go:
                     - Go: software/software_application_procedural_language_go.md
