@@ -2,7 +2,7 @@
 title: 【知見を記録するサイト】Composer
 ---
 
-# Composer
+# パッケージ管理@PHP
 
 ## はじめに
 
@@ -12,9 +12,17 @@ title: 【知見を記録するサイト】Composer
 
 <br>
 
-## 01. プロパティ
+## 01. Composerによる管理
 
-### autoload
+### セットアップ
+
+参考：https://getcomposer.org/download/
+
+<br>
+
+### ```composer.json```ファイル
+
+#### ・autoload
 
 名前空間とファイルパスの対応関係を設定する．```require```関数を使用せずに，クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる．
 
@@ -40,9 +48,7 @@ title: 【知見を記録するサイト】Composer
 }
 ```
 
-<br>
-
-### require
+#### ・require
 
 インストールされるパッケージとバージョンを設定する．
 
@@ -83,9 +89,7 @@ title: 【知見を記録するサイト】Composer
 }
 ```
 
-<br>
-
-### scripts
+#### ・scripts
 
 コマンドのエイリアスを設定する．
 
@@ -112,7 +116,7 @@ title: 【知見を記録するサイト】Composer
 
 <br>
 
-### version
+#### ・version
 
 composerのバージョンを設定する．インストールされているcomposerと齟齬がないようにする．
 
@@ -126,7 +130,7 @@ composerのバージョンを設定する．インストールされているcom
 
 <br>
 
-## 02. コマンド
+## 01-02. コマンド
 
 ### clear-cache
 
@@ -341,7 +345,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -vvv
 
 <br>
 
-## 03. パッケージの読み込み
+## 01-03. パッケージの読み込み
 
 ### ```autoload.php```ファイルの読み込み
 
@@ -357,7 +361,7 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 
 <br>
 
-## 04. バージョンアップの手順
+## 02. バージョンアップの手順
 
 ### 事前確認の重要性
 

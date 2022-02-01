@@ -12,7 +12,7 @@ title: 【知見を記録するサイト】管理ユーティリティ@OS
 
 <br>
 
-##  01. 管理ユーティリティの種類
+## 01. 管理ユーティリティの種類
 
 ### 様々な管理ユーティリティ
 
@@ -22,154 +22,7 @@ title: 【知見を記録するサイト】管理ユーティリティ@OS
 
 <br>
 
-### ライブラリ管理ユーティリティ
-
-| ユーティリティ名                  | 対象プログラミング言語 |
-| --------------------------------- | ---------------------- |
-| composer.phar：Composer           | PHP                    |
-| pip：Package Installer for Python | Python                 |
-| npm：Node Package Manager         | Node.js                |
-| maven：Apache Maven               | Java                   |
-| gem：Ruby Gems                    | Ruby                   |
-
-<br>
-
-### パッケージ管理ユーティリティ
-
-| ユーティリティ名                                       | 対象OS       | 依存関係のインストール可否 |
-| ------------------------------------------------------ | ------------ | -------------------------- |
-| Rpm：Red Hat Package Manager                           | RedHat系     | ✕                          |
-| Yum：Yellow dog Updater Modified<br>DNF：Dandified Yum | RedHat系     | 〇                         |
-| Apt：Advanced Packaging Tool                           | Debian系     | 〇                         |
-| Apk：Alpine Linux package management                   | Alpine Linux | 〇                         |
-
-<br>
-
-### 言語バージョン管理ユーティリティ
-
-| ユーティリティ名 | 対象プログラミング言語 |
-| ---------------- | ---------------------- |
-| phpenv           | PHP                    |
-| pyenv            | Python                 |
-| rbenv            | Ruby                   |
-
-<br>
-
-## 02. ライブラリ管理ユーティリティ
-
-### npm（Node.js）
-
-#### ・入手方法
-
-```bash
-# リポジトリの作成
-$ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
-
-# nodejsのインストールにnpmも含まれる
-$ yum install nodejs
-```
-
-#### ・init
-
-package.jsonを生成する．
-
-```bash
-$ npm init
-```
-
-#### ・install
-
-ディレクトリにパッケージをインストール
-
-```bash
-# ローカルディレクトリにパッケージをインストール
-$ npm install <パッケージ名>
-```
-
-```bash
-# グローバルディレクトリにインストール（あまり用いない）
-$ npm install -g <パッケージ名>
-```
-
-<br>
-
-### pip（Python）
-
-#### ・install
-
-指定したライブラリをインストールする．
-
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
-
-```bash
-# /usr/local 以下にインストール
-$ pip install --user <ライブラリ名>
-```
-
-```bash
-# requirements.txt を元にライブラリをインストール
-$ pip install -r requirements.txt
-
-# 指定したディレクトリにライブラリをインストール
-pip install -r requirements.txt　--prefix=/usr/local
-```
-
-#### ・freeze
-
-pipでインストールされたパッケージを元に，要件ファイルを作成する．
-
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
-
-```bash
-# インストールのため
-$ pip freeze > requirements.txt
-
-# アンインストールのため
-$ pip freeze > uninstall.txt
-```
-
-#### ・show
-
-pipでインストールしたパッケージ情報を表示する．
-
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
-
-```bash
-$ pip show sphinx
-
-Name: Sphinx
-Version: 3.2.1
-Summary: Python documentation generator
-Home-page: http://sphinx-doc.org/
-Author: Georg Brandl
-Author-email: georg@python.org
-License: BSD
-# インストール場所
-Location: /usr/local/lib/python3.8/site-packages
-# このパッケージの依存対象
-Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializinghtml, snowballstemmer, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-jsmath, setuptools, packaging, Pygments, babel, alabaster, sphinxcontrib-qthelp, requests, Jinja2
-# このパッケージを依存対象としているパッケージ
-Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
-```
-
-#### ・uninstall
-
-指定したライブラリをインストールする．
-
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
-
-```bash
-$ pip uninstall -y <ライブラリ名>
-```
-
-```bash
-# uninstall.txt を元にライブラリをアンインストール
-$ pip uninstall -y -r uninstall.txt
-```
-
-<br>
-
-## 03. パッケージ管理ユーティリティ
+## 02. パッケージ管理ユーティリティ
 
 ### apt-file（Debian系）
 
@@ -375,7 +228,11 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 <br>
 
-## 04. 言語バージョン管理ユーティリティ
+## 03. 言語バージョン管理ユーティリティ
+
+### phpenv（PHP）
+
+<br>
 
 ### pyenv（Python）
 
@@ -387,3 +244,6 @@ $ pyenv which python
 /.pyenv/versions/3.8.0/bin/python
 ```
 
+<br>
+
+### rbenv（Ruby）

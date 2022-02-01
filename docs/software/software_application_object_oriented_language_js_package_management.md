@@ -2,7 +2,7 @@
 title: 【知見を記録するサイト】パッケージ@JavaScript
 ---
 
-# パッケージ@JavaScript
+# パッケージ管理@JavaScript
 
 ## はじめに
 
@@ -12,7 +12,23 @@ title: 【知見を記録するサイト】パッケージ@JavaScript
 
 <br>
 
-## 01. npmによるパッケージの管理
+## 01. Npmによる管理：Node Package Manager
+
+### npm（Node.js）
+
+### セットアップ
+
+#### ・yum経由
+
+```bash
+# リポジトリの作成
+$ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
+
+# nodejsのインストールにnpmも含まれる
+$ yum install nodejs
+```
+
+<br>
 
 ### init
 
@@ -85,6 +101,12 @@ $ npm init
 $ npm install
 ```
 
+指定したパッケージをインストールすることもできる．
+
+```bash
+$ npm install <パッケージ名>
+```
+
 #### ・--force
 
 パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
@@ -154,7 +176,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 <br>
 
-## 02. yarnによるパッケージ管理
+## 02. Yarnによる管理
 
 <br>
 

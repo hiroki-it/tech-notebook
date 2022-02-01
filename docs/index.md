@@ -103,6 +103,11 @@ title: 【知見を記録するサイト】目次
                 * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_test_specification.html)
             * デバッグ
                 * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_debug.html)
+        * Python
+            * フレームワーク
+                * [📖 ︎Flask](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_framework_flask.html)
+            * パッケージ
+                * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_package_management.html)
         * JavaScript
             * プロトタイプベース
                 * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based.html)
@@ -110,10 +115,11 @@ title: 【知見を記録するサイト】目次
             * ロジック
                 * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_validation.html)
                 * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_asynchronous_process.html)
-            * パッケージ/フレームワーク
-                * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_package.html)
+            * フレームワーク
                 * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_vuejs.html)
                 * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_nuxtjs.html)
+            * パッケージ
+                * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_package_management.html)
             * デバッグ
                 * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_debug.html)
             * ブラウザ
@@ -124,9 +130,10 @@ title: 【知見を記録するサイト】目次
             * [📖 goコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command.html)
             * ロジック
                 * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html)
-            * パッケージ/フレームワーク
-                * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_package.html)
+            * フレームワーク
                 * [📖 Gin](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_framework_gin.html)
+            * パッケージ
+                * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_package.html)
 
 <br>
 

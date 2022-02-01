@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager@ミドルウェア
+title: 【知見を記録するサイト】アプリケーション系ミドルウェア
 description: アプリケーション系ミドルウェアの知見をまとめました。
 ---
 
@@ -12,6 +12,8 @@ description: アプリケーション系ミドルウェアの知見をまとめ�
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
+
+## 01. 種類
 
 ### CGI
 
