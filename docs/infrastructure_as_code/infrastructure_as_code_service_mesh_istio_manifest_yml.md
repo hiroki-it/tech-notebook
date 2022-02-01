@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】manifest.yml@Istio
-description: manifest.yml@Istioの知見をまとめました。
+title: 【知見を記録するサイト】manifest.yml＠Istio
+description: manifest.yml＠Istioの知見をまとめました。
 ---
 
-# manifest.yml@Istio
+# manifest.yml＠Istio
 
 ## はじめに
 

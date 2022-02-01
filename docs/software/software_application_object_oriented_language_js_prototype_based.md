@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】プロトタイプ@JavaScript
+title: 【知見を記録するサイト】プロトタイプ＠JavaScript
 ---
 
-# プロトタイプ@JavaScript
+# プロトタイプ＠JavaScript
 
 ## はじめに
 

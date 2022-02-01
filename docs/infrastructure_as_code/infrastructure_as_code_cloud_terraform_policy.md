@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】ポリシー@Terraform
+title: 【知見を記録するサイト】ポリシー＠Terraform
 ---
 
-# ポリシー@Terraform
+# ポリシー＠Terraform
 
 ## はじめに
 

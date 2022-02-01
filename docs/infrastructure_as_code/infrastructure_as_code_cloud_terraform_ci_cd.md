@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】CI/CD@Terraform
-description: CI/CD@Terraformの知見をまとめました。
+title: 【知見を記録するサイト】CI/CD＠Terraform
+description: CI/CD＠Terraformの知見をまとめました。
 ---
 
-# CI/CD@Terraform
+# CI/CD＠Terraform
 
 ## はじめに
 

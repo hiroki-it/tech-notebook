@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】vagrantコマンド@Vagrant
-description: vagrantコマンド@Vagrantの知見をまとめました。
+title: 【知見を記録するサイト】vagrantコマンド＠Vagrant
+description: vagrantコマンド＠Vagrantの知見をまとめました。
 ---
 
-# vagrantコマンド@Vagrant
+# vagrantコマンド＠Vagrant
 
 ## はじめに
 

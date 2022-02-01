@@ -12,7 +12,7 @@ title: 【知見を記録するサイト】MySQL
 
 <br>
 
-## 01. セットアップ（サーバー）
+## 01. セットアップ
 
 ### インストール
 
@@ -70,13 +70,11 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-## 01-02. セットアップ（コンテナ）
-
 ### 設定ファイル
 
 #### ・```/etc/mysql/my.cnf```ファイル
 
-MySQLの設定値を定義する．MySQL@Dockerコンテナでは，```/etc/mysql```ディレクトリに配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている．
+MySQLの設定値を定義する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリに配置されている（※ Dockerの場合）．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている．
 
 ```bash
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.

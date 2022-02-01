@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】apacheコマンド@Apache
-description: apacheコマンド@Apacheの知見をまとめました。
+title: 【知見を記録するサイト】apacheコマンド＠Apache
+description: apacheコマンド＠Apacheの知見をまとめました。
 ---
 
-# apacheコマンド@Apache
+# apacheコマンド＠Apache
 
 ## はじめに
 

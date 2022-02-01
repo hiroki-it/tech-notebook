@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】非同期処理ロジック@JavaScript
+title: 【知見を記録するサイト】非同期処理ロジック＠JavaScript
 ---
 
-# 非同期処理ロジック@JavaScript
+# 非同期処理ロジック＠JavaScript
 
 ## 01. 非同期処理
 

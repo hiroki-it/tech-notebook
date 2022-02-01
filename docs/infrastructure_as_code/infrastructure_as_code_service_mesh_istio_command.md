@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】istioctlコマンド@Istio
+title: 【知見を記録するサイト】istioctlコマンド＠Istio
 ---
 
-# istioctlコマンド@Istio
+# istioctlコマンド＠Istio
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】nginxコマンド@Nginx
-description: nginxコマンド@Nginxの知見をまとめました。
+title: 【知見を記録するサイト】nginxコマンド＠Nginx
+description: nginxコマンド＠Nginxの知見をまとめました。
 ---
 
-# nginxコマンド@Nginx
+# nginxコマンド＠Nginx
 
 ## はじめに
 

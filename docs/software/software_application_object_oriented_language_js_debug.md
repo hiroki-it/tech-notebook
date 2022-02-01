@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】デバッグの豆知識@JavaScript
+title: 【知見を記録するサイト】デバッグの豆知識＠JavaScript
 ---
 
-# デバッグの豆知識@JavaScript
+# デバッグの豆知識＠JavaScript
 
 ## はじめに
 

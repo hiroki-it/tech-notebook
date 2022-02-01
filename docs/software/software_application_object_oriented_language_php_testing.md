@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】テスト@PHP
-description: テスト@PHPの知見をまとめました。
+title: 【知見を記録するサイト】テスト＠PHP
+description: テスト＠PHPの知見をまとめました。
 ---
 
-# テスト@PHP
+# テスト＠PHP
 
 ## はじめに
 

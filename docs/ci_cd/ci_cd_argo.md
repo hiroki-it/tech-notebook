@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Argo@CI/CD
-description: Argo@CI/CDの知見をまとめました。
+title: 【知見を記録するサイト】Argo＠CI/CD
+description: Argo＠CI/CDの知見をまとめました。
 ---
 
-# Argo@CI/CD
+# Argo＠CI/CD
 
 ## はじめに
 

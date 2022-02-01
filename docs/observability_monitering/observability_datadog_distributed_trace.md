@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】分散トレース収集@Datadog
-description: 分散トレース収集@Datadogの知見をまとめました。
+title: 【知見を記録するサイト】分散トレース収集＠Datadog
+description: 分散トレース収集＠Datadogの知見をまとめました。
 ---
 
-# 分散トレース収集@Datadog
+# 分散トレース収集＠Datadog
 
 ## はじめに
 

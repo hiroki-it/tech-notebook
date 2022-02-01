@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】serverless.yml@Serverless Framework
-description: serverless.yml@Serverless Frameworkの知見をまとめました。
+title: 【知見を記録するサイト】serverless.yml＠Serverless Framework
+description: serverless.yml＠Serverless Frameworkの知見をまとめました。
 ---
 
-# serverless.yml@Serverless Framework
+# serverless.yml＠Serverless Framework
 
 ## はじめに
 

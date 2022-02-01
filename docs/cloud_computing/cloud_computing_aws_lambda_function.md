@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Lambda関数の実装@AWS
-description: Lambda関数の実装@AWSの知見をまとめました。
+title: 【知見を記録するサイト】Lambda関数の実装＠AWS
+description: Lambda関数の実装＠AWSの知見をまとめました。
 ---
 
-# Lambda関数の実装@AWS
+# Lambda関数の実装＠AWS
 
 ## はじめに
 

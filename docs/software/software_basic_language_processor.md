@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】言語プロセッサ（言語処理プログラム）@OS
-description: 言語プロセッサ（言語処理プログラム）@OSの知見をまとめました。
+title: 【知見を記録するサイト】言語プロセッサ（言語処理プログラム）＠OS
+description: 言語プロセッサ（言語処理プログラム）＠OSの知見をまとめました。
 ---
 
-# 言語プロセッサ（言語処理プログラム）@OS
+# 言語プロセッサ（言語処理プログラム）＠OS
 
 ## はじめに
 
@@ -120,13 +120,17 @@ Java，Scala，Groovy，Kotlin，など．
 
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解する． 以下に，トークンの分類方法の例を以下に示す．
+ソースコードの文字列を言語の最小単位（トークン）の列に分解する． 以下に，トークンの分類方法の例を以下に示す．字句解析のアルゴリズムは，LexやFlexで実装されている．
+
+参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
 #### （２）Syntax analysis（構文解析）
 
-トークンの列をツリー構造に変換する．
+トークンの列をツリー構造に変換する．構文解析のアルゴリズムは，BisonやYaccで実装されている．コンパイラ型言語の構文解析に失敗した時，これらの構文解析言語はシンタックスエラーを出力する．
+
+参考：https://ja.wikipedia.org/wiki/Bison
 
 #### （３）Semantics analysis（意味解析）
 
@@ -169,25 +173,21 @@ Java，Scala，Groovy，Kotlin，など．
 
 ### 機械語翻訳の仕組み
 
-![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
-
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を以下に示す．
-
-![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
+コンパイラ型言語と同じである．
 
 #### （２）Syntax analysis（構文解析）
 
-トークンの列をツリー構造に変換．ソースコードから構造体を構築することを構文解析といい，htmlを構文解析してDOMツリーを構築する処理とは別物なので注意．
+コンパイラ型言語と同じである．
 
 #### （３）Semantics analysis（意味解析）
 
-ツリー構造を基に，ソースコードに論理的な誤りがないか解析．
+コンパイラ型言語と同じである．
 
 #### （４）命令の実行
 
-意味解析の結果を基に，命令が実行される．
+コンパイラ型言語と同じである．
 
 #### （５）１から４をコード行ごとに繰り返す
 

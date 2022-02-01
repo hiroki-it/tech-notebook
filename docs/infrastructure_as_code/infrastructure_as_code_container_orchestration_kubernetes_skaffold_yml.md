@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】skaffold.yml@Skaffold
-description: skaffold.yml@Skaffoldの知見をまとめました。
+title: 【知見を記録するサイト】skaffold.yml＠Skaffold
+description: skaffold.yml＠Skaffoldの知見をまとめました。
 ---
 
-# skaffold.yml@Skaffold
+# skaffold.yml＠Skaffold
 
 ## はじめに
 

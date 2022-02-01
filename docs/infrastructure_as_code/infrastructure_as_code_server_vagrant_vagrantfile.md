@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Vagrantfile@Vagrant
-description: Vagrantfile@Vagrantの知見をまとめました。
+title: 【知見を記録するサイト】Vagrantfile＠Vagrant
+description: Vagrantfile＠Vagrantの知見をまとめました。
 ---
 
-# Vagrantfile@Vagrant
+# Vagrantfile＠Vagrant
 
 ## はじめに
 

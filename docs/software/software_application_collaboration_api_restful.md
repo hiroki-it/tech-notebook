@@ -753,16 +753,16 @@ POST/PUT送信で，ボディパラメーターのデータ形式を表現する
 | トップレベルタイプ | サブレベルタイプ      | 意味                                |
 | ------------------ | --------------------- | ----------------------------------- |
 | application        | octet-stream          | 任意のMIME type（指定なし）を示す． |
-|                    | javascript            |                                     |
-|                    | json                  |                                     |
+|                    | javascript            | jsファイル                                    |
+|                    | json                  | jsonファイル                                    |
 |                    | x-www-form-urlencoded | POST送信のデータ                    |
-|                    | zip                   |                                     |
-| text               | html                  | HTMLテキスト                        |
-|                    | css                   | CSSテキスト                         |
+|                    | zip                   | zipファイル                                    |
+| text               | html                  | htmlファイル                        |
+|                    | css                   | cssファイル                         |
 |                    | plane                 | プレーンテキスト                    |
-| image              | png                   |                                     |
-|                    | jpeg                  |                                     |
-|                    | gif                   |                                     |
+| image              | png                   | pngファイル                                    |
+|                    | jpeg                  | jpegファイル                                    |
+|                    | gif                   | gifファイル                                    |
 
 #### ・データ型の指定方法
 

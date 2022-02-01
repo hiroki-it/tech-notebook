@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager@ミドルウェア
-description: PHP-FPM@ミドルウェアの知見をまとめました。
+title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
+description: PHP-FPM＠ミドルウェアの知見をまとめました。
 ---
 
-# PHP-FPM：PHP FastCGI Process Manager@ミドルウェア
+# PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
 
 ## はじめに
 
@@ -28,7 +28,7 @@ PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイ�
 
 <br>
 
-## 02. セットアップ（サーバー）
+## 02. セットアップ
 
 ### インストール
 
@@ -43,13 +43,11 @@ $ apt install php-fpm
 
 <br>
 
-## 02-02. セットアップ（コンテナ）
-
 ### 設定ファイル
 
 #### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMのログ以外の項目を設定する．PHP-FPM@Dockerコンテナでは，```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザー名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+PHP-FPMのログ以外の項目を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ以下に配置されている（※ Dockerの場合）．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザー名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 

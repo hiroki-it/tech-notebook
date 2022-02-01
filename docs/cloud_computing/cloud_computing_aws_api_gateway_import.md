@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】API Gatewayへのymlインポート@AWS
-description: API Gatewayへのymlインポート@AWSの知見をまとめました。
+title: 【知見を記録するサイト】API Gatewayへのymlインポート＠AWS
+description: API Gatewayへのymlインポート＠AWSの知見をまとめました。
 ---
 
-# API Gatewayへのymlインポート@AWS
+# API Gatewayへのymlインポート＠AWS
 
 ## はじめに
 

@@ -23,24 +23,17 @@ description: Pythonの知見をまとめました。
 
 #### ・package，subpackage
 
-パッケージとして扱うディレクトリには．```__init__.py```ファイルを配置する必要がある．一方で，名前空間パッケージではこれが不要である．
+ディレクトリに相当する．通常パッケージとして扱うディレクトリには．```__init__.py```ファイルを配置する必要がある．一方で，名前空間パッケージではこれが不要である．
 
 参考：
 
-- https://rinatz.github.io/python-book/ch04-02-packages/
-- https://qiita.com/msi/items/d91ea3900373ff8b09d7
-
-バージョンが```v3.3```以降であれば，サブパッケージには必要になる．
-
-参考：
-
-- https://shino-tec.com/2019/04/21/init-py-necessity/
-- https://isolution.pro/q/so50137584/python-3-3-iko-no-pakke-ji-ni-wa-init-py-wa-hitsuyo-arimasen-ka
+- https://docs.python.org/ja/3/reference/import.html#packages
 - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
+- https://rinatz.github.io/python-book/ch04-02-packages/
 
 #### ・module
 
-パッケージ内の各ファイルのこと．
+パッケージ内の各ファイルに相当する．
 
 参考：
 
@@ -49,10 +42,10 @@ description: Pythonの知見をまとめました。
 
 #### ・import
 
-存在しないパッケージをインポートしようとすると，インポートエラーになる．
+パッケージとして定義したディレクトリを読み込む．存在しないパッケージをインポートしようとすると，インポートエラーになる．
 
 ```python
-from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <関数名>
+from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名，関数名>
 ```
 
 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30

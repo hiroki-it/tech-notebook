@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Capistrano@CI/CD
-description: Capistrano@CI/CDの知見をまとめました。
+title: 【知見を記録するサイト】Capistrano＠CI/CD
+description: Capistrano＠CI/CDの知見をまとめました。
 ---
 
-# Capistrano@CI/CD
+# Capistrano＠CI/CD
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】minikubeコマンド@Kubernetes
-description: minikubeコマンド@Kubernetesの知見をまとめました。
+title: 【知見を記録するサイト】minikubeコマンド＠Kubernetes
+description: minikubeコマンド＠Kubernetesの知見をまとめました。
 ---
 
-# minikubeコマンド@Kubernetes
+# minikubeコマンド＠Kubernetes
 
 ## はじめに
 

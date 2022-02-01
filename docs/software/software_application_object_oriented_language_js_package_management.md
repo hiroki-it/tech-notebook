@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】パッケージ@JavaScript
+title: 【知見を記録するサイト】パッケージ＠JavaScript
 ---
 
-# パッケージ管理@JavaScript
+# パッケージ管理＠JavaScript
 
 ## はじめに
 
