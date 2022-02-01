@@ -46,7 +46,10 @@ title: 【知見を記録するサイト】目次
         * [📖 ︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
         * [📖 ︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
 * アプリケーション系
-    * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_php_fpm.html)
+    * GI:
+        * [📖 ︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html) 
+        * FastCGI
+            * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
 * データベース系
     * RDBMS
         * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)

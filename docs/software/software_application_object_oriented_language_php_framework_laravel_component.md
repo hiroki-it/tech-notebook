@@ -2797,7 +2797,7 @@ $ chmod -R 777 /var/www/foo/storage
 
 LaravelとPHP-FPMのプロセスはそれぞれ独立しているため，Laravelのログの出力先を変更しても，PHP-FPMのログの出力先は変更されない．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_php_fpm.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
 #### ・```stack```キー
 

@@ -1,9 +1,10 @@
 ---
-title: 【知見を記録するサイト】アプリケーション系ミドルウェア
-description: アプリケーション系ミドルウェアの知見をまとめました。
+title: 【知見を記録するサイト】GI：Gateway Interface＠ミドルウェア
+description: GI：Gateway Interface＠ミドルウェアの知見をまとめました。
+
 ---
 
-# アプリケーション系ミドルウェア
+# GI：Gateway Interface＠ミドルウェア
 
 ## はじめに
 
@@ -13,25 +14,16 @@ description: アプリケーション系ミドルウェアの知見をまとめ�
 
 <br>
 
-## 01. 種類
-
-### CGI
-
-#### ・CGIとは
+## 01. CGI
 
 ![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
 
 <br>
 
-### FastCGI：Fast Common Gateway Interface
-
-#### ・FastCGIとは
+## 02. FastCGIとは
 
 CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと．
 
 <br>
 
-### WSGI：Web Server Gateway Interface
-
-#### ・WSGIとは
-
+## 03. WSGI
