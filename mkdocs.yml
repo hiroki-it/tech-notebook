@@ -161,6 +161,11 @@ nav:
                         - テスト仕様書ベースのテスト: software/software_application_object_oriented_language_php_testing_based_on_test_specification.md
                     - ■ デバッグ:
                         - デバッグ: software/software_application_object_oriented_language_php_debug.md
+                - ■ Pyhon:
+                    - ■ フレームワーク:
+                        - Flask: software_application_object_oriented_language_python_framework_flask.md
+                    - ■ パッケージ:
+                        - パッケージ管理: software_application_object_oriented_language_python_package_management.md
                 - ■ JavaScript:
                     - ■ プロトタイプベース:
                         - プロトタイプ: software/software_application_object_oriented_language_js_prototype_based.md
