@@ -100,7 +100,7 @@ istio-proxyコンテナの設定を上書きできる．
 
 #### ・annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの場合は，```template```キーよりも下層の```metadata```キーを使用することに注意する．
+DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの場合は，```template```キーよりも下層の```metadata```キーを用いることに注意する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -198,7 +198,7 @@ Deploymentの```template```キーやPodの```metadata```キーにて，Envoyコ�
 
 #### ・proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために，これの生成先ディレクトリを設定する．デフォルトでは，```./etc/istio/proxy```ディレクトリにファイルが生成される．```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる．
+Envoyコンテナのプロセスの設定値をファイルとして生成するために，これの生成先ディレクトリを設定する．デフォルトでは，```./etc/istio/proxy```ディレクトリ下にファイルが生成される．```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる．
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 

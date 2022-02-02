@@ -27,24 +27,33 @@ description: Nuxt.js
 
 ローカル環境として用いるため，アプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt dev
+# リファレンスでは nuxt devとなっているが，yarn devで問題ない．
+$ yarn dev
 ```
 
 #### ・```build```
 
 本番環境として用いるため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt build
+# リファレンスでは nuxt buildとなっているが，yarn buildで問題ない．
+$ yarn build
 ```
 
 #### ・```start```
 
 本番環境として用いるため，ビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt start
+# リファレンスでは nuxt startとなっているが，yarn startで問題ない．
+$ yarn start
 ```
 
 <br>
@@ -61,24 +70,32 @@ $ nuxt start
 
 ローカル環境でSSGを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt dev
+# リファレンスでは nuxt devとなっているが，yarn devで問題ない．
+$ yarn dev
 ```
 
 #### ・```build```
 
 Node.jsを用いてテストフレームワークを動かすために用いる．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt build
+$ yarn build
 ```
 
 #### ・```generate```
 
 本番環境でSSGを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
 
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+
 ```bash
-$ nuxt generate
+# リファレンスでは nuxt generateとなっているが，yarn generateで問題ない．
+$ yarn generate
 ```
 
 #### ・```start```
@@ -86,7 +103,8 @@ $ nuxt generate
 静的ホスティングサイトを起動する．
 
 ```bash
-$ nuxt start
+# リファレンスでは nuxt startとなっているが，yarn startで問題ない．
+$ yarn start
 ```
 
 <br>

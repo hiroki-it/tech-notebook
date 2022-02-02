@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】CQRS：Command Query Responsibility Segregation＠アーキテクチャ
-description: CQRS@アーキテクチャの知見をまとめました。
+description: CQRS＠アーキテクチャの知見をまとめました。
 ---
 
 # CQRS：Command Query Responsibility Segregation＠アーキテクチャ

@@ -27,7 +27,7 @@ description: ロジック＠Terraformの知見をまとめました。
 
 #### ・terraform settingsとは
 
-terraformの実行時に，エントリポイントとして機能するファイル．
+terraformの実行時に，エントリーポイントとして機能するファイル．
 
 #### ・required_providers
 

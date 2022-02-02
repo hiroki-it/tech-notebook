@@ -178,7 +178,7 @@ secret/foo-secret created
 
 #### ・describeとは
 
-オブジェクトの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを使用する．
+オブジェクトの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを用いる．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
@@ -257,7 +257,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 #### ・getとは
 
-オブジェクトの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを使用する．
+オブジェクトの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを用いる．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 

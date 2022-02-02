@@ -18,7 +18,7 @@ title: 【知見を記録するサイト】nginx.conf@Nginx
 
 #### ・apt経由
 
-nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを使用する．
+nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを用いる．
 
 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
@@ -183,7 +183,7 @@ server {
     location ~ \.php$ {
         # リダイレクト先のTCPソケット
         fastcgi_pass   localhost:9000;
-        # もしくは，Unixソケット
+        # もしくは，UNIXドメインソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
         
         # リダイレクト先のURL（rootディレクティブ値+パスパラメータ）

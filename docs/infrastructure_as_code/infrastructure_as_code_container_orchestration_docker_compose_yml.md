@@ -686,7 +686,7 @@ volumes:
 
 #### ・ビルド時にSQL実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，バインドマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下のリンクを参考にせよ．
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリ下に配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，バインドマウントを用いてこのディレクトリ下にファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下のリンクを参考にせよ．
 
 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
@@ -722,7 +722,7 @@ volumes:
   mysql_volume:
 ```
 
-また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．
+また，```docker-entrypoint-initdb.d```ディレクトリ下に配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．
 
 ```sql
 -- /infra/docker/mysql/initにSQLファイルを置く．

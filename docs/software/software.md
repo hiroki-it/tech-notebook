@@ -136,13 +136,13 @@ Google Drive，Dropbox
 
 ### 基本ソフトウェアの種類
 
-#### ・Unix系OS
+#### ・UNIX系OS
 
-Unixを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の三つに分けられる．
+UNIXを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の三つに分けられる．
 
 ※ちなみに，MacOSはBSD系統
 
-![Unix系OSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Unix系OSの歴史.png)
+![UNIX系OSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Unix系OSの歴史.png)
 
 #### ・WindowsOS
 
@@ -160,7 +160,7 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 <br>
 
-## 04-02. Unix系OS
+## 04-02. UNIX系OS
 
 ### Linux系統
 

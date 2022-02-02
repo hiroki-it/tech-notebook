@@ -55,13 +55,13 @@ mod_phpモジュールを読み込むことによって，Appサーバーのミ�
 
 **＊実装例＊**
 
-通常であれば，etcディレクトリ以下にconfファイルが配置される．
+通常であれば，etcディレクトリ下にconfファイルが配置される．
 
 ```apacheconf
 ServerRoot /etc/httpd
 ```
 
-CentOSのEPELリポジトリ経由でインストールした場合，Apacheのインストール後に，optディレクトリ以下にconfファイルが設置される．
+CentOSのEPELリポジトリ経由でインストールした場合，Apacheのインストール後に，optディレクトリ下にconfファイルが設置される．
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd
@@ -540,7 +540,7 @@ Header unset Referrer-Policy "no-referrer-when-downgrade" always
 
 #### ・それ以外のディレクトリの場合
 
-設置したディレクトリ以下の階層のファイルに対して適用される．
+設置したディレクトリ下の階層のファイルに対して適用される．
 
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 

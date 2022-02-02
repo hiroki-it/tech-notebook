@@ -18,7 +18,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ・サーバーdatadogエージェントとは
 
-常駐プログラムであり，アプリケーションをメトリクスを収集し，Datadogに転送する．
+常駐プログラムであり，アプリケーションからメトリクスを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -26,13 +26,21 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 <br>
 
+### セットアップ
+
+#### ・インストール
+
+使用しているOSやIaCツールごとに，インストール方法が異なる．
+
+参考：https://app.datadoghq.com/account/settings#agent
+
 ## 02. コンテナのメトリクス収集（AWSの場合）
 
 ### コンテナdatadogエージェント
 
 #### ・コンテナdatadogエージェントとは
 
-常駐プログラムであり，アプリケーションからメトリクスをDatadogに転送する．
+常駐プログラムであり，アプリケーションから送信されたメトリクスをDatadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 

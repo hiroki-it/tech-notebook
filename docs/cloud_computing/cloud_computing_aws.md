@@ -837,7 +837,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | CNAME               | CloudFrontのデフォルトドメイン名（```*****.cloudfront.net.```）に紐付けるRoute53レコード名を設定する． | ・Route53からルーティングする場合は必須．<br>・複数のレコード名を設定できる． |
 | SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する．          | 上述のCNAMEを設定した場合，SSL証明書が別途必要になる．また，Certificate Managerを用いる場合，この証明書は『バージニア北部』で申請する必要がある． |
 | Security Policy     | リクエストの送信者が用いるSSL/TLSプロトコルや暗号化方式のバージョンに合わせて，CloudFrontが受信できるこれらのバージョンを設定する． | ・リクエストの送信者には，ブラウザ，APIにリクエストを送信する外部サービス，ルーティング元のAWSリソース，などを含む．<br>・参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
-| Default Root Object | オリジンのドキュメントルートを設定する．                     | ・何も設定しない場合，ドキュメントルートは指定されず，Behaviorで明示的にルーティングする必要がある．<br>・index.htmlを設定すると，『```/```』でリクエストした時に，オリジンのルートディレクトリにある```index,html```ファイルがドキュメントルートになる． |
+| Default Root Object | オリジンのドキュメントルートを設定する．                     | ・何も設定しない場合，ドキュメントルートは指定されず，Behaviorで明示的にルーティングする必要がある．<br>・index.htmlを設定すると，『```/```』でリクエストした時に，オリジンのルートディレクトリ下にある```index,html```ファイルがドキュメントルートになる． |
 | Standard Logging    | CloudFrontのアクセスログをS3に生成するかどうかを設定する．   |                                                              |
 
 #### ・Origin and Origin Groups
@@ -3723,7 +3723,7 @@ $ aws configure set aws_default_region "リージョン>"
 ```
 
 ```bash
-# Linux，Unixの場合：$HOME/.aws/<credentialsファイル名>
+# Linux，UNIXの場合：$HOME/.aws/<credentialsファイル名>
 # Windowsの場合：%USERPROFILE%\.aws\<credentialsファイル名>
 
 [default]
@@ -3963,10 +3963,10 @@ RIEであっても，稼働させるためにAWSのクレデンシャル情報�
 
 ```bash
 $ docker run --rm \
-    # エミュレーターをエントリポイントをバインドする．
+    # エミュレーターをエントリーポイントをバインドする．
     -v ~/.aws-lambda-rie:/aws-lambda \
     -p 9000:8080 \
-    # エミュレーターをエントリポイントとして設定する．
+    # エミュレーターをエントリーポイントとして設定する．
     --entrypoint /aws-lambda/aws-lambda-rie \
     <イメージ名>:<タグ名> /go/bin/cmd
 ```
@@ -3989,14 +3989,14 @@ services:
       context: .
       dockerfile: ./build/Dockerfile
     container_name: lambda
-    # エミュレーターをエントリポイントとして設定する．
+    # エミュレーターをエントリーポイントとして設定する．
     entrypoint: /aws-lambda/aws-lambda-rie
     env_file:
       - .docker.env
     image: <イメージ名>:<タグ名>
     ports:
       - 9000:8080
-    # エミュレーターをエントリポイントをバインドする．
+    # エミュレーターをエントリーポイントをバインドする．
     volumes:
       - ~/.aws-lambda-rie:/aws-lambda
 ```

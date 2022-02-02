@@ -17,7 +17,7 @@ FluentBitにて，ログを処理する一連のセクションのこと．
 
 #### ・confファイル
 
-confファイルでセクションを設定できる．
+セクションを設定できる．
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
 
@@ -522,7 +522,7 @@ FluentBitでの名前付きキャプチャについては，Fluentdのドキュ�
 
 #### ・バリデーション
 
-FluentBitは，内部的にはruby製関数を用いて正規表現を検証している．そのため，これを確認できるバリデーションツールを使用する．
+FluentBitは，内部的にはruby製関数を用いて正規表現を検証している．そのため，これを確認できるバリデーションツールを用いる．
 
 参考：http://rubular.com/
 
@@ -542,7 +542,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
     Name            parser
     Match           *
     Key_Name        container_name
-    # 使用するパーサールール
+    # 用いるパーサールール
     Parser          docker-name-parser
     # 解析されたキーの元の値を保持するかどうか
     Preserve_Key    false
@@ -1008,7 +1008,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 #### ・storage.type
 
-バッファーとして使用する媒体を設定する．
+バッファーとして用いる媒体を設定する．
 
 **＊実装例＊**
 

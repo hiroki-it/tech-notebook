@@ -70,11 +70,11 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-### 設定ファイル
+### 設定ファイル（※ Dockerの場合）
 
 #### ・```/etc/mysql/my.cnf```ファイル
 
-MySQLの設定値を定義する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリに配置されている（※ Dockerの場合）．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている．
+MySQLの設定値を定義する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ下にある```*.cnf```ファイルを読み込むようになっている．
 
 ```bash
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.

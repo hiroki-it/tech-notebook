@@ -19,7 +19,7 @@ description: Flaskの知見をまとめました。
 
 #### ・Flaskクラスとは
 
-WSGIアプリケーションの実行に関するメソッドを持つ．クラスの引数に，```__name__```変数あるいはエントリポイントのパスを直接設定する．環境変数の```FLASK_APP```で指定したエントリポイントでは，必ずFlaskクラスのインスタンスを作成する必要がある．
+WSGIアプリケーションの実行に関するメソッドを持つ．クラスの引数に，```__name__```変数あるいはエントリーポイントのパスを直接設定する．環境変数の```FLASK_APP```で指定したエントリーポイントでは，必ずFlaskクラスのインスタンスを作成する必要がある．
 
 参考：https://flask.palletsprojects.com/en/2.0.x/api/
 
@@ -72,6 +72,14 @@ app.run()
 
 既存の```run```コマンドに代わる新しいリッスン方法．開発環境のみで推奨される方法である．```run```メソッドとは異なり，実行前に```FLASK_APP```を環境変数に設定する必要がある．実行時に```flask run```コマンドを実行する場合には，```run```メソッドの実行は不要である．
 
+```bash
+# 事前に環境変数を出力しておく
+$ export FLASK_APP=main.py
+$ export FLASK_ENV=development
+
+$ flask run
+```
+
 参考：
 
 - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
@@ -123,7 +131,10 @@ def create_app():
 
 #### ・開発環境と本番環境の違い
 
-本番環境では，アプリケーションの実行に```run```コマンドと```flask run```コマンドを使用しないようにする．代わりに，uWSGIやgunicornを使用する．本番環境と開発環境を同様にするために，本番環境だけでなく開発環境でもコマンドを使用しないようにしても良い．
+本番環境では，アプリケーションの実行に```run```コマンドと```flask run```コマンドを使用しないようにする．代わりに，uWSGIやgunicornを使用し，エントリーポイントの関数を直接コールする．本番環境と開発環境を同様にするために，本番環境だけでなく開発環境でもコマンドを使用しないようにしても良い．
 
-参考：https://serip39.hatenablog.com/entry/2020/07/06/070000
+参考：
+
+- https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
+- https://serip39.hatenablog.com/entry/2020/07/06/070000
 

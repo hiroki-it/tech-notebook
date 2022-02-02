@@ -55,6 +55,12 @@ description: ログ収集＠Datadogの知見をまとめました。
 
 ### セットアップ
 
+#### ・インストール
+
+使用しているOSやIaCツールごとに，インストール方法が異なる．
+
+参考：https://app.datadoghq.com/account/settings#agent
+
 #### ・ログ収集の有効化
 
 ログの収集はデフォルトで無効化されている．```/etc/datadog-agent/datadog.yml```ファイルにて，これを有効化する．
@@ -69,7 +75,7 @@ logs_enabled: true
 
 ### コンテナdatadogエージェント
 
-コンテナdatadogエージェントはコンテナからログを収集できないため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
+サーバーの場合とは異なり，自身が収集しにいくことはできない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
 
 参考：
 
@@ -188,7 +194,7 @@ FROM data/agent:latest
 
 **＊実装例＊**
 
-Nuxt.jsの場合，エントリポイントは```nuxt.config```ファイルである．プラグインとして実装し，これをエントリポイントで読み込むようにする．
+Nuxt.jsの場合，エントリーポイントは```nuxt.config```ファイルである．プラグインとして実装し，これをエントリーポイントで読み込むようにする．
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -1046,7 +1052,7 @@ log-pipeline
 
 #### ・リマッパーによる定義
 
-リマッパーでは，```Force attribute type```の項目で，再配置する属性のデータ型を指定できる．ログコンソールでフィルタリングする時に，ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない．そのため，リマッパーを使用する時は明示的にデータ型を設定する．
+リマッパーでは，```Force attribute type```の項目で，再配置する属性のデータ型を指定できる．ログコンソールでフィルタリングする時に，ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない．そのため，リマッパーを用いる時は明示的にデータ型を設定する．
 
 ![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-pipeline_data-type.png)
 
@@ -1071,9 +1077,9 @@ autoFilledRule2 ...
 autoFilledRule3 ...
 ```
 
-#### ・ヘルパールールを使用する
+#### ・ヘルパールールを用いる
 
-ヘルパールールを使用すると，正規表現ルールを共通化し，複数のルールで使いまわせる．
+ヘルパールールを用いると，正規表現ルールを共通化し，複数のルールで使いまわせる．
 
 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#using-helper-rules-to-factorize-multiple-parsing-rules
 

@@ -1,8 +1,8 @@
 ---
-title: 【知見を記録するサイト】Composer
+title: 【知見を記録するサイト】パッケージ管理＠Python
 ---
 
-# パッケージ管理@Python
+# パッケージ管理＠Python
 
 ## はじめに
 

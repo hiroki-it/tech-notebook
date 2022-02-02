@@ -13,17 +13,44 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 
 <br>
 
-## 01. トレーサー
+## 01. サーバーの分散トレース収集
 
-### トレーサーとは
+### サーバーdatadogエージェント
 
-APM機能を用いる時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，マイクロサービスのコンテナでトレーサーをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
+常駐プログラムであり，アプリケーションから分散トレースを収集し，Datadogに転送する．
 
-参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+
+<br>
+
+### セットアップ
+
+#### ・インストール
+
+使用しているOSやIaCツールごとに，インストール方法が異なる．
+
+参考：https://app.datadoghq.com/account/settings#agent
+
+<br>
+
+## 02. コンテナの分散トレース収集（AWSの場合）
+
+### コンテナdatadogエージェント
+
+常駐プログラムであり，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースライブラリは分散トレースを生成し，Datadogコンテナの『```http://localhost:8126```』にこれを送信する．Datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
+
+参考：
+
+- https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+- https://inokara.hateblo.jp/entry/2017/10/01/164446
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-tracer.png)
 
 <br>
+
+## 03. トレーサー
 
 ### パッケージ一覧
 
@@ -31,13 +58,26 @@ APM機能を用いる時に，トレースエージェントが稼働するDatad
 
 <br>
 
-## 01-02. PHPトレーサー
+## 03-02. PHPトレーサー
 
-### セットアップ
+### セットアップ（サーバーの場合）
 
 #### ・インストール
 
-各マイクロサービスのDockerfileにて，パッケージをインストールする．
+使用しているミドルウェアごとに，インストール方法が異なる．
+
+参考：
+
+- https://docs.datadoghq.com/ja/tracing/setup/php/
+- https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
+
+<br>
+
+### セットアップ（コンテナの場合）
+
+#### ・インストール
+
+アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
@@ -151,13 +191,13 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 <br>
 
-## 01-03. Node.jsトレーサー
+## 03-03. Node.jsトレーサー
 
 ### セットアップ
 
 #### ・インストール
 
-TypeScriptやモジュールバンドルを使っている場合，エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
+TypeScriptやモジュールバンドルを使っている場合，エントリーポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
@@ -177,7 +217,7 @@ import 'dd-trace/init'
 
 <br>
 
-## 02. 分散トレースの生成
+## 04. 分散トレースの生成
 
 ### 分散トレース
 
@@ -335,7 +375,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 <br>
 
-## 03. マイクロサービスの識別
+## 05. マイクロサービスの識別
 
 ### マイクロサービスタイプ
 

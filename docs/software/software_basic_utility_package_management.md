@@ -24,7 +24,16 @@ title: 【知見を記録するサイト】管理ユーティリティ＠OS
 
 ## 02. パッケージ管理ユーティリティ
 
-### apt-file（Debian系）
+| OS系統   | ユーティリティ         |
+| -------- | ---------------------- |
+| Debian系 | apt，apt-get，apt-file |
+| RedHat系 | rpm，yum，dnf          |
+
+<br>
+
+## 02-02. Debian系
+
+### apt-file
 
 #### ・search
 
@@ -59,7 +68,9 @@ zlib1g-dev: /usr/include/zlib.h
 
 <br>
 
-### rpm（RedHat系）
+## 02-03. RedHat系
+
+### rpm：RedHat Package Manager
 
 #### ・-ivh
 
@@ -106,7 +117,7 @@ $ rpm -qi <パッケージ名>
 
 <br>
 
-### yum，dnf（RedHat系）
+### yum，dnf
 
 #### ・install，reinstall
 
@@ -122,18 +133,53 @@ $ yum reinstall -y <パッケージ名>
 
 #### ・list
 
-インストールされた全てのパッケージを表示する．
+インストールされたパッケージの一覧を表示する．
 
 ```bash
 # 指定した文字を名前に含むものを表示．
 $ yum list | grep <検索文字>
 ```
 
-#### ・EPELリポジトリ，Remiリポジトリ
+#### ・repolist
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを用いると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
+リポジトリか有効かどうかの一覧を表示する．
 
-1. CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，/etc/yu.repos.d/* に配置される．
+参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
+
+```bash
+$ yum repolist all
+
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: download.cf.centos.org
+ * epel: ftp.riken.jp
+ * extras: download.cf.centos.org
+ * remi-safe: ftp.riken.jp
+ * updates: download.cf.centos.org
+repo id                          repo name                       status
+C7.0.1406-base/x86_64            CentOS-7.0.1406 - Base          disabled
+C7.0.1406-centosplus/x86_64      CentOS-7.0.1406 - CentOSPlus    disabled
+C7.0.1406-extras/x86_64          CentOS-7.0.1406 - Extras        disabled
+
+# ～ 中略 ～
+
+remi-test-debuginfo/x86_64       Remi's test RPM repository for  disabled
+!updates/7/x86_64                CentOS-7 - Updates              enabled:  3,323
+updates-source/7                 CentOS-7 - Updates Sources      disabled
+repolist: 34,344
+```
+
+<br>
+
+### リポジトリ
+
+#### ・リポジトリとは
+
+CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを用いると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（RPM，EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
+
+#### ・手順
+
+（１）CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ下に配置される．
 
 ```bash
 # CentOS7系の場合
@@ -146,7 +192,7 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-2. CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d/*```に配置される．
+（２）CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ下に配置される．
 
 ```bash
 # CentOS7系の場合
@@ -156,7 +202,7 @@ $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-4. 設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
+（３）設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
 
 ```bash
 [epel]
@@ -187,7 +233,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 gpgcheck=1
 ```
 
-5. Remiリポジトリの有効化オプションを永続的に使用できるようにする．
+（４）Remiリポジトリの有効化オプションを永続的に使用できるようにする．
 
 ```bash
 # CentOS7の場合
@@ -200,7 +246,7 @@ $ yum-config-manager --enable remi-php74
 $ dnf module enable php:remi-7.4
 ```
 
-6. remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
+（５）remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
 
 ```bash
 # CentOS7の場合
@@ -213,7 +259,7 @@ $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
-7. 再インストールする時は，reinstallとすること．
+（６）再インストールする時は，reinstallとすること．
 
 ```bash
 # CentOS7の場合
