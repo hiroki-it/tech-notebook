@@ -1061,7 +1061,7 @@ jobs:
       - run:
           name: Make env file
           command: |
-            # エンコード値をデコードし，envファイルを複製
+            # エンコード値をデコードし，.envファイルを複製
             echo $ENV_FILE | base64 -di > .env
        - run:
            name: Install node module

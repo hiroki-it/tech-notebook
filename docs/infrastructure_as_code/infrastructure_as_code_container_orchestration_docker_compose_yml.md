@@ -162,6 +162,7 @@ services:
 
 ```bash
 # .envファイル
+
 MYSQL_ROOT_PASSWORD=foo # rootユーザーのパス
 MYSQL_DATABASE=bar # データベース名
 MYSQL_USER=baz # 一般ユーザー名

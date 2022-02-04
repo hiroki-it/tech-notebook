@@ -683,7 +683,7 @@ use PHPUnit\Framework\TestCase;
 
 class FooTest extends TestCase
 {
-    protected $hoge;
+    protected $foo;
     
     protected function setUp()
     {
@@ -691,13 +691,13 @@ class FooTest extends TestCase
         parent::setUp();
         
         // 事前にモックを生成しておく．
-        $this->hoge = Phake::mock(Hoge::class);
+        $this->bar = Phake::mock(Bar::class);
     }
     
     public function testFoo_Xxx_Xxx()
     {
-        // 実際の処理では，インスタンス化時に，FooクラスはHogeクラスに依存している．
-        $foo = new Foo($this->hoge)
+        // 実際の処理では，インスタンス化時に，FooクラスはBarクラスに依存している．
+        $foo = new Foo($this->bar)
             
         // 何らかのテストコード
     }

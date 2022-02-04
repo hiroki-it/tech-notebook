@@ -132,7 +132,7 @@ globalNum = globalNum * 10;
 
 <script>
 document.write("<p>結果は" + globalNum + "です</p>");
-var hoge = true;
+var foo = true;
 </script>
 
 <script src="sample.js"></script>
@@ -143,8 +143,8 @@ var hoge = true;
 // 無名関数の即時実行．定義と呼び出しを同時に行う．
 (function () {
     
-    // 外側の変数（hoge）を参照できる．
-    if(hoge) {
+    // 外側の変数（foo）を参照できる．
+    if(foo) {
       console.log("外部ファイルを読み込みました");
     }
     
@@ -168,13 +168,13 @@ var globalNum = 10;
 localNum = localNum * 10;
     
 document.write("<p>結果は" + num + "です</p>");
-var hoge = true;
+var foo = true;
 
 // 無名関数の即時実行．定義と呼び出しを同時に行う．
 (function () {
     
-    // 外側の変数（hoge）を参照できる．
-    if(hoge) {
+    // 外側の変数（foo）を参照できる．
+    if(foo) {
       console.log("外部ファイルを読み込みました");
     }
     

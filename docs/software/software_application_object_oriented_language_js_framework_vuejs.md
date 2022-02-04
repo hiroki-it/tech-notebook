@@ -806,7 +806,7 @@ module.exports = new Vuex.Store({
     computed: {
 
       /* mapGettersヘルパー．
-      StoreのGetterをローカルのcomputed:{}にマッピングし，コールできるように．
+      StoreのGetterをローカルPCのcomputed:{}にマッピングし，コールできるように．
       */
       ...mapGetters([
         "x-Function"
@@ -877,7 +877,7 @@ new Vue({
     
   data(){
     return{
-      hoge:"Hiroki"
+      foo:"Hiroki"
     }
   },
     

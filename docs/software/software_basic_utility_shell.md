@@ -64,15 +64,15 @@ echo "baz"
 
 cat << EOF > "echo.sh"
 #!/bin/bash
-hoge
-fuga
+foo
+bar
 EOF
 ```
 
 ```bash
 #!/bin/bash
-echo hoge
-echo fuga
+echo foo
+echo bar
 ```
 
 #### ・for

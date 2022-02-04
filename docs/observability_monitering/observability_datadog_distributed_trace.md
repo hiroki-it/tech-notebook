@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】分散トレース収集＠Datadog
-description: 分散トレース収集＠Datadogの知見をまとめました。
+description: 分散トレース収集＠Datadogの知見をまとめました．
 ---
 
 # 分散トレース収集＠Datadog
@@ -58,11 +58,36 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 
 <br>
 
+### デバッグ
+
+#### ・起動ログの有効化
+
+環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することで，起動ログを標準出力に出力できるようにする．起動ログから，トレーサーの設定値を確認できる．
+
+参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support
+
+#### ・デバッグログの有効化
+
+各トレーサーが持つデバッグパラメーターを有効化することで，デバッグログを標準出力に出力できるようにする．デバッグログから，実際にDatadogに送信されるスパンデータを確認できる．
+
+参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad
+
+#### ・Agent Flareコマンドの実行
+
+Datadogコンテナ内でAgent Flareコマンドを実行し，DatadogサポートにDatadogコンテナの構成情報をメール送信する．
+
+参考：
+
+- https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad
+- https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7
+
+<br>
+
 ## 03-02. PHPトレーサー
 
-### セットアップ（サーバーの場合）
+### セットアップ
 
-#### ・インストール
+#### ・インストール（サーバーの場合）
 
 使用しているミドルウェアごとに，インストール方法が異なる．
 
@@ -71,11 +96,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 - https://docs.datadoghq.com/ja/tracing/setup/php/
 - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
-<br>
-
-### セットアップ（コンテナの場合）
-
-#### ・インストール
+#### ・インストール（コンテナの場合）
 
 アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．
 
@@ -92,9 +113,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
   && rm datadog-php-tracer.deb
 ```
 
-#### ・動作確認
-
-アプリケーションがパッケージを読み込んだか否かをコマンドで確認できる．
+アプリケーションが，インストールされたパッケージを読み込んだか否かをコマンドで確認できる．
 
 ```bash
 # 成功の場合
@@ -117,26 +136,11 @@ $  php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 
-<br>
+#### ・起動ログの確認
 
-### 環境変数
+トレーサーの起動ログは，```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる．
 
-#### ・種類
-
-環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
-
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-
-| 変数名                                        | 説明                                                         | 画面                                   |
-| --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
-| ```DD_SERVICE_MAPPING```                      | 分散トレースにマイクロサービス名を設定する．マイクロサービス名はデフォルトのインテグレーション名になるが，これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
-| ```DD_SERVICE_NAME```                         | 分散トレースにマイクロサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）． |                                        |
-| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．デフォルトで全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
-| ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
-
-#### ・動作確認
-
-トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
+参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
 ```bash
 $ php --ri=ddtrace
@@ -145,7 +149,7 @@ Datadog tracing support => enabled
 Version => 0.57.0
 DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得られる
 
-# 得られたJSONを整形
+# 得られたJSONを整形している
 {
     "date": "2021-00-00T09:00:00Z",
     "os_name": "Linux ***** 5.10.25-linuxkit #1 SMP Tue Mar 23 09:27:39 UTC 2021 x86_64",
@@ -191,20 +195,96 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 <br>
 
+### 環境変数
+
+#### ・種類
+
+環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+| 変数名                                        | 説明                                                         | 画面                                   |
+| --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| ```DD_SERVICE_MAPPING```                      | 分散トレースにマイクロサービス名を設定する．マイクロサービス名はデフォルトのインテグレーション名になるが，これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| ```DD_SERVICE_NAME```                         | 分散トレースにマイクロサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）． |                                        |
+| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．デフォルトで全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
+| ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
+
+<br>
+
 ## 03-03. Node.jsトレーサー
 
 ### セットアップ
 
 #### ・インストール
 
-TypeScriptやモジュールバンドルを使っている場合，エントリーポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
+TypeScriptやモジュールバンドルを使っている場合，パッケージの読み込み処理が巻き上げられ，意図しない読み込みの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）で読み込むようにする．
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
-```javascript
-import 'dd-trace/init'
 
-// フレームワークを含むパッケージのインポートが続く
+```javascript
+import tracer from 'dd-trace'
+
+tracer.init({
+  env: DD_ENV,
+  service: DD_SERVICE + '-ssr',
+  version: DD_VERSION,
+    
+  // 検証時のオプション
+  debug: true,
+  startupLogs: true,
+})
+
+export default tracer
+```
+
+```javascript
+import './datadog/tracer'
+import { Configuration } from '@nuxt/types'
+```
+
+#### ・起動ログの確認
+
+トレーサーの起動ログは，```init```メソッドの```startupLogs```オプションを有効化すると確認できる．
+
+```bash
+DATADOG TRACER CONFIGURATION -
+{
+    "date": "2022-01-02T00:00:00.541Z",
+    "os_name": "Darwin",
+    "os_version": "20.6.0",
+    "architecture": "arm64",
+    "version": "2.0.1",
+    "lang": "nodejs",
+    "lang_version": "14.18.2",
+    "env": "prd",
+    "service": "foo",
+    "agent_url": "http://127.0.0.1:8126",
+    "agent_error": "Network error trying to reach the agent: socket hang up",
+    "debug": false,
+    "sample_rate": 1,
+    "sampling_rules": [],
+    "tags": {
+        "service": "foo",
+        "env": "prd",
+        "version": "1.0.0",
+        "runtime-id": "*****"
+    },
+    "dd_version": "1.0.0",
+    "log_injection_enabled": false,
+    "runtime_metrics_enabled": false,
+    "profiling_enabled": false,
+    "integrations_loaded": [
+        "connect@3.7.0",
+        "fs",
+        "http",
+        "https"
+    ],
+    "appsec_enabled": false
+}
+
+WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the agent: socket hang up 
 ```
 
 <br>

@@ -117,7 +117,7 @@ parallelライブラリを用いる．
 
 #### ・JavaScriptの場合
 
-  WebWorkerを用いる．
+  Web Workerを用いる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 

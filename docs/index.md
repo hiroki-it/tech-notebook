@@ -242,8 +242,8 @@ title: 【知見を記録するサイト】目次
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html)
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html)
 * Googleアプリ
-  * [📖 ︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_analytics.html)
-  * [📖 ︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_search_console.html)
+    * [📖 ︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_analytics.html)
+    * [📖 ︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_search_console.html)
 * FluentBit/Fluentd
     * [📖 FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html)

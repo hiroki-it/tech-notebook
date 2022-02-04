@@ -240,7 +240,23 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 }
 ```
 
+<br>
 
+## 04. CloudWatchログ
+
+### まとめ
+
+```elixir
+resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
+  name = "/${var.environment}-${var.service}-ecs-service/container/datadog/log"
+}
+```
+
+<br>
+
+### （１）ECSサービス名をルートとした命名
+
+同じAWSアカウントの異なるECSサービスを構築することがある．この場合，コンテナ名が重複することになるため，CloudWatchログのロググループはECSサービスをルートとして命名する必要がある．
 
 <br>
 
@@ -623,7 +639,7 @@ resource "aws_instance" "bastion" {
 
 **＊実装例＊**
 
-ローカルからAWS CLIコマンドを実行する必要がある場合，コマンドを特定の送信元IPアドレスを特定のものに限定する．事前に，list型でIPアドレスを定義する．
+ローカルPCからAWS CLIコマンドを実行する必要がある場合，コマンドを特定の送信元IPアドレスを特定のものに限定する．事前に，list型でIPアドレスを定義する．
 
 ```elixir
 ###############################################

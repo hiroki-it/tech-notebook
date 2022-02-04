@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Nuxt.js
-description: Nuxt.js
+description: Nuxt.jsの知見をまとめました．
 ---
 
 # Nuxt.js
@@ -25,7 +25,7 @@ description: Nuxt.js
 
 #### ・```dev```
 
-ローカル環境として用いるため，アプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+開発環境のため，アプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
 
@@ -34,9 +34,13 @@ description: Nuxt.js
 $ yarn dev
 ```
 
+ちなみに，```yarn dev```コマンドを実行した場合，環境変数の```NODE_ENV```が```development```になる．
+
+参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+
 #### ・```build```
 
-本番環境として用いるため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
+本番環境のため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
 
@@ -47,7 +51,7 @@ $ yarn build
 
 #### ・```start```
 
-本番環境として用いるため，ビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
+本番環境のため，```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
 
@@ -55,6 +59,10 @@ $ yarn build
 # リファレンスでは nuxt startとなっているが，yarn startで問題ない．
 $ yarn start
 ```
+
+ちなみに，```yarn start```コマンドを実行した場合，環境変数の```NODE_ENV```が```production```になる．
+
+参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -68,7 +76,7 @@ $ yarn start
 
 #### ・```dev```
 
-ローカル環境でSSGを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+開発環境でSSGを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
 
@@ -76,6 +84,10 @@ $ yarn start
 # リファレンスでは nuxt devとなっているが，yarn devで問題ない．
 $ yarn dev
 ```
+
+ちなみに，```yarn dev```コマンドを実行した場合，環境変数の```NODE_ENV```が```development```になる．
+
+参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ・```build```
 
@@ -106,6 +118,10 @@ $ yarn generate
 # リファレンスでは nuxt startとなっているが，yarn startで問題ない．
 $ yarn start
 ```
+
+ちなみに，```yarn start```コマンドを実行した場合，環境変数の```NODE_ENV```が```production```になる．
+
+参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
@@ -222,6 +238,7 @@ const nuxtConfig: Configuration = {
 
 ```bash
 # .envファイル
+
 API_KEY=*****
 ```
 

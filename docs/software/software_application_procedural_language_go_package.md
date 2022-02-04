@@ -114,7 +114,7 @@ module foo.com/hiroki-it/foo_repository/local-pkg
 go 1.16
 ```
 
-これらにより，ローカルのパッケージをインポートできるようになる．
+これらにより，ローカルPCのパッケージをインポートできるようになる．
 
 ```go
 import "local.packages/local-pkg"

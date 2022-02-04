@@ -444,7 +444,7 @@ $ apt-get install systemd
 
 ### disable
 
-マシン起動時にデーモンが自動起動しないように設定する．
+OSの起動時にデーモンが自動起動しないように設定する．
 
 ```bash
 $ systemctl disable <プロセス名>
@@ -456,7 +456,7 @@ $ systemctl disable httpd.service
 
 ### enable
 
-マシン起動時にデーモンが自動起動するように設定する．
+OSの起動時にデーモンが自動起動するように設定する．
 
 ```bash
 $ systemctl enable <プロセス名>

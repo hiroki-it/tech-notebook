@@ -1078,18 +1078,18 @@ import (
 )
 
 func main() {
-	var x interface{}
+	var foo interface{}
 
-	x = 1
-	fmt.Printf("%#v\n", x) // 1
+	foo = 1
+	fmt.Printf("%#v\n", foo) // 1
 
-	x = 3.14
-	fmt.Printf("%#v\n", x) // 3.14
+	foo = 3.14
+	fmt.Printf("%#v\n", foo) // 3.14
 
-	x = "Hiroki"
-	fmt.Printf("%#v\n", x) // "Hiroki"
+	foo = "Hiroki"
+	fmt.Printf("%#v\n", foo) // "Hiroki"
 
-	x = [...]uint8{1, 2, 3, 4, 5}
+	foo = [...]uint8{1, 2, 3, 4, 5}
 	fmt.Printf("%#v\n", x) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
 }
 ```
@@ -1104,18 +1104,18 @@ import (
 )
 
 func main() {
-	var x, y interface{}
+	var foo, bar interface{}
 
 	// インターフェース型
-	x, y = 1, 2
-	fmt.Printf("%#v\n", x) // 1
-	fmt.Printf("%#v\n", y) // 2
+	foo, bar = 1, 2
+	fmt.Printf("%#v\n", foo) // 1
+	fmt.Printf("%#v\n", bar) // 2
 
 	// エラーになる．
-	// invalid operation: x + y (operator + not defined on interface)
-	z := x + y
+	// invalid operation: foo + bar (operator + not defined on interface)
+	baz := foo + bar
 
-	fmt.Printf("%#v\n", z)
+	fmt.Printf("%#v\n", baz)
 }
 ```
 
@@ -1131,10 +1131,10 @@ import (
 )
 
 func main() {
-	var x, y interface{}
+	var foo, bar interface{}
 
 	// インターフェース型
-	x, y = 1, 2
+	foo, bar = 1, 2
 
 	// インターフェース型から整数型に変換（変換しないと演算できない）
 	a := x.(int)
@@ -1222,9 +1222,9 @@ package main
 import "fmt"
 
 func main() {
-	var x interface{}
+	var foo interface{}
 
-	fmt.Printf("%#v\n", x) // <nil>
+	fmt.Printf("%#v\n", foo) // <nil>
 }
 ```
 
@@ -1283,8 +1283,8 @@ package main
 import "fmt"
 
 // 頭文字を大文字する
-func Foo(x string) string {
-	fmt.Println(x)
+func Foo(foo string) string {
+	fmt.Println(foo)
 }
 
 func main() {
@@ -1627,8 +1627,8 @@ number = 5
 var number int = 5
 
 // 複数の変数を定義
-var x, y, z int
-x, y, z = 1, 3, 5
+var foo, bar, baz int
+foo, bar, baz = 1, 3, 5
 ```
 
 #### ・暗黙的な定義（型推論）
@@ -1645,7 +1645,7 @@ z := "abc"
 var w = 1
 
 var (
-    x = true
+    foo = true
     y = 3.14
     z = "abc"
 )
@@ -1687,7 +1687,7 @@ func main() {
 	x := 1
 
 	// 新しい変数の宣言が含まれている
-	x, y := 2, 3
+	foo, bar := 2, 3
 
 	fmt.Printf("%#v\n", x) // 2
 	fmt.Printf("%#v\n", y) // 3
@@ -1788,7 +1788,7 @@ import (
 )
 
 func main() {
-    fmt.Printf("%#v\n", X) // X
+    fmt.Printf("%#v\n", foo) // foo
 }
 ```
 
@@ -2868,7 +2868,7 @@ package mainimport "fmt"func main() {    var first string = "Hiroki"        var 
 
 #### ・httpパッケージとは
 
-HTTPクライアントまたはWebサーバを提供する．そのため，GoではNginxやApacheが不要である．ただ，GoによるWebサーバは機能が不十分である，そのため，NginxやApacheをWebサーバとして，GoをAppサーバとして用いた方が良い．
+HTTPクライアントまたはWebサーバを提供する．そのため，GoではNginxやApacheが不要である．ただ，GoによるWebサーバーは機能が不十分である，そのため，NginxやApacheをWebサーバとして，GoをAppサーバとして用いた方が良い．
 
 参考：
 
@@ -3017,7 +3017,7 @@ func main() {
 
 #### ・```ListenAndServe```メソッド
 
-サーバを起動する．第一引数にサーバのURL，第二引数にServeMux関数（マルチプレクサ関数）を渡す．第二引数に```nil```を渡した場合，デフォルト引数として```http.DefaultServeMux```が渡される．
+サーバを起動する．第一引数にサーバーのURL，第二引数にServeMux関数（マルチプレクサ関数）を渡す．第二引数に```nil```を渡した場合，デフォルト引数として```http.DefaultServeMux```が渡される．
 
 **＊実装例＊**
 

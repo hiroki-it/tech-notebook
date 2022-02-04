@@ -328,7 +328,7 @@ service           = "bar"
 
 
 # 種類がある時
-# 例：ecs_task_lumonde_front_ssr_cpu = 1024
+# 例：ecs_task_cpu = 1024
 <用いるAWSリソースの名前>_<種類名>_<オプション名> = ****
 ```
 

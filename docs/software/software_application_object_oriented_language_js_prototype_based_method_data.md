@@ -186,13 +186,13 @@ undefinedを返却する場合，```return```のみを記述する．
 **＊実装例＊**
 
 ```javascript
-function hoge(){
+function foo(){
     return; // 空の『return文』．空なので『undefined』を返す．
 }
 
-const x = hoge(); // 変数『x』には関数『hoge』から返ってきた『undefined』が代入される．
+const foo = foo(); // 変数『foo』には関数『foo』から返ってきた『undefined』が代入される．
  
-console.log(x); // 『undefined』が出力される．
+console.log(foo); // 『undefined』が出力される．
 ```
 
 <br>
@@ -217,17 +217,17 @@ console.log(x); // 『undefined』が出力される．
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  const x = "foo";
+  const foo = "foo";
     
   // 再宣言不可
-  const x = "bar"; // ERROR
+  const foo = "bar"; // ERROR
   
   // 再代入不可
-  x = "baz"; // ERROR
+  foo = "baz"; // ERROR
 }
 
 // ブロック内のconstにアクセス不可
-console.log(x); // ERROR
+console.log(foo); // ERROR
 ```
 
 #### ・ ```let```
@@ -238,17 +238,17 @@ console.log(x); // ERROR
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  let x = "foo";
+  let foo = "foo";
     
   // 再宣言不可
-  let x = "bar"; // ERROR
+  let foo = "bar"; // ERROR
   
   // 再代入可能
-  x = "baz";
+  foo = "baz";
 }
 
 // ブロック内のletにアクセス不可
-console.log(x); // ERROR
+console.log(foo); // ERROR
 ```
 
 また，```try-catch```構文では変数への代入が保証されていないため，```let```を用いて，あらかじめ初期化しておく必要がある．
@@ -280,55 +280,86 @@ const asyncFunc = async () => {
 ```javascript
 if (true) {
   // ブロック外からアクセス可
-  var x = "hoge";
+  var foo = "foo";
     
   // 再宣言
-  var x = "fuga";
+  var foo = "bar";
     
   // 再代入可能
-  x = "fuga";
+  foo = "foo";
 }
 
 // ブロック内のvarにアクセス可能
-console.log(x); // fuga
+console.log(foo); // foo
 ```
 
 <br>
 
-### 変数の巻き上げ
+### 変数の巻き上げ（ホイスト）
 
-#### ・巻き上げの対策
+#### ・巻き上げとは
 
-意図しない挙動を防ぐため，javascriptで，変数の宣言と代入は，スコープの最初に行う．
-
-#### ・```var```
-
-確認のため```console.log```メソッドを実行した場合，```x```を宣言していないため，『x is not defined 』エラーになりそうである．しかし実際は，宣言が既に済んでおり，```x```に値が代入されていないことを示す『undefined』となる．
+巻き上げは，```var```を用いて変数を宣言した時や，関数をに起こり得る．確認のため```console.log```メソッドを実行した場合，```foo```を宣言していないため，『x is not defined 』エラーになりそうである．しかし実際は，宣言が既に済んでおり，```foo```に値が代入されていないことを示す『undefined』となる．
 
 ```javascript
-console.log(x); // undefined
+console.log(foo); // undefined
 
-var x = "hoge"; // 宣言と代入
+var foo = "foo"; // 宣言と代入
 ```
 
 これは，スコープの範囲内で宣言と代入を実行した変数で，宣言処理がスコープの最初に行ったことになるという仕様のためである．
 
 ```javascript
-// var x 宣言処理したことになる
+// 内部的には，最初に宣言処理したことになる
+// var foo
 
-console.log(x); // undefined
+console.log(foo); // undefined
 
-var x = "hoge"; // 宣言と代入により，実際は宣言処理を実装していなくとも，行なったことになる．
+var foo = "foo"; // 宣言と代入により，実際は宣言処理を実装していなくとも，行なったことになる．
 ```
 
-#### ・```let```,```const```
+これは関数の代入時にも起こる．
 
-宣言に```let```，```const```を用いた場合，巻き上げは起こらない．
+参考：https://jsprimer.net/basic/function-scope/#function-declaration-hoisting
 
 ```javascript
-console.log(x); // x is not defined
+// 内部的には，最初に宣言処理したことになる
+// var foo
 
-let x = "hoge";
+foo(); // foo is not a function
+
+var foo = function(){
+    return "foo";
+}
+```
+
+#### ・```var```使用時の対策
+
+意図しない挙動を防ぐため，変数の宣言と代入はスコープの最初に行うようにする．
+
+```javascript
+var foo = "foo"; // スコープの最初に宣言する．
+
+console.log(foo); // foo
+```
+これは関数の代入時も同じである．
+
+```javascript
+var foo = function(){
+    return "foo";
+}
+
+foo(); // foo
+```
+
+#### ・```let```,```const```使用時の対策
+
+宣言に```let```，```const```を用いた場合，巻き上げは起こらないため，宣言と代入の場所を気にしなくともよくなる．
+
+```javascript
+console.log(foo); // foo is not defined
+
+let foo = "foo";
 ```
 
 <br>
@@ -369,7 +400,7 @@ const obj = {
 const {foo, baz} = obj;
 
 console.log(foo); // 1
-console.log(bar); // 3
+console.log(baz); // 3
 ```
 
 <br>

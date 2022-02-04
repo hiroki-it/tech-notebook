@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Infrastructure as Code
-description: Infrastructure as Codeの知見をまとめました。
+description: Infrastructure as Codeの知見をまとめました．
 ---
 
 # Infrastructure as Code

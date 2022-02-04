@@ -19,7 +19,7 @@ description: Flaskの知見をまとめました。
 
 #### ・Flaskクラスとは
 
-WSGIアプリケーションの実行に関するメソッドを持つ．クラスの引数に，```__name__```変数あるいはエントリーポイントのパスを直接設定する．環境変数の```FLASK_APP```で指定したエントリーポイントでは，必ずFlaskクラスのインスタンスを作成する必要がある．
+WSGIアプリケーションの実行に関するメソッドを持つ．クラスの引数に，グローバル変数の『```__name__```』あるいはエントリーポイントのパスを直接設定する．環境変数の```FLASK_APP```で指定したエントリーポイントでは，必ずFlaskクラスのインスタンスを作成する必要がある．
 
 参考：https://flask.palletsprojects.com/en/2.0.x/api/
 
@@ -104,11 +104,11 @@ $ flask run
 
 <br>
 
-### Appのベストプラクティス
+### ベストプラクティス
 
-#### ・```__init__.py```ファイル
+#### ・```src/__init__.py```ファイル
 
-アプリケーションのルートに```__init__.py```ファイルを配置し，ここでFlaskクラスのインスタンスを作成するメソッドを定義する．また，ルーティングもここで定義する．
+Pythonのソースコードを配置するディレクトリに```__init__.py```ファイルを配置し，ここでFlaskクラスのインスタンスを作成するメソッドを定義する．また，ルーティングもここで定義する．
 
 参考：
 
@@ -127,6 +127,21 @@ def create_app():
         return 'Hello World'
     
     return app
+```
+
+#### ・```main.py```
+
+プロジェクトのルートディレクトリに，```create_app```メソッドを実行するエントリーポイントを配置する．名前空間を判定する条件分の外で```create_app```メソッドを実行しないと，uwsgiがapp変数を見つけられない．
+
+参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
+
+```python
+from src import create_app
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run()
 ```
 
 #### ・開発環境と本番環境の違い

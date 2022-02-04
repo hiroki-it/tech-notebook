@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】ログ収集＠Datadog
-description: ログ収集＠Datadogの知見をまとめました。
+description: ログ収集＠Datadogの知見をまとめました．
 ---
 
 # ログ収集＠Datadog
@@ -196,38 +196,74 @@ FROM data/agent:latest
 
 Nuxt.jsの場合，エントリーポイントは```nuxt.config```ファイルである．プラグインとして実装し，これをエントリーポイントで読み込むようにする．
 
+
+```bash
+# .env.datadogファイル
+
+# Datadogにおけるクライアントトークン
+DATADOG_CLIENT_TOKEN=*****
+# Datadogにおけるログのタグ値
+DATADOG_ENV=prd
+DATADOG_SERVICE=foo
+DATADOG_VERSION=1.0.0
+```
+
+
 ```javascript
+// nuxt.configファイル
 import { Configuration } from '@nuxt/types'
 import baseConfig from './nuxt.config'
 
+// .env.datadogファイルの読み込み
+dotenv.config({ path: resolve(process.cwd(), '.env.datadog') })
+const {
+  DATADOG_CLIENT_TOKEN,
+  DATADOG_ENV,
+  DATADOG_SERVICE,
+  DATADOG_VERSION,
+} = process.env
+
 const nuxtConfig: Configuration = {
+
+  publicRuntimeConfig: {
+    datadog: {
+      // SSGで参照するためpublicに定義する
+      clientToken: DATADOG_CLIENT_TOKEN,
+      env: DATADOG_ENV,
+      service: DATADOG_SERVICE,
+      version: DATADOG_VERSION,
+    },
+  },
     
-    // ～ 中略 ～
-    
-    plugins: [
-        ...(baseConfig.plugins || []),
-        // SSGのみで用いるため，clinetモードとする．
-        { src: '@/plugins/datadog/browserLogsForSsg', mode: 'client' },
-    ],
-        
-    // ～ 中略 ～   
-     
+  // ～ 中略 ～
+
+  plugins: [
+    ...(baseConfig.plugins || []),
+    // SSGのみで用いるため，clinetモードとする．
+    {
+      src: '@/plugins/datadog/browserLogsForSsg',
+      mode: 'client'
+    },
+  ],
+
+  // ～ 中略 ～   
+
 }
 ```
 
 ```javascript
-
+// プラグインファイル
 import { Plugin, Context } from '@nuxt/types'
 import { datadogLogs } from '@datadog/browser-logs'
 
 const browserLogsForSsgPlugin: Plugin = ({ $config }: Context) => {
 
-  // クライアントトークンが設定されていない環境ではログ収集を開始しない．
+  // パフォーマンスとログの重要性の観点から，開発環境のログを送信しないようにする
   if (!$config.datadog.clientToken) {
     return
   }
 
-  // ログ収集を開始する．
+  // 初期化
   datadogLogs.init({
     clientToken: $config.datadog.clientToken,
     env: $config.datadog.env,
@@ -237,17 +273,6 @@ const browserLogsForSsgPlugin: Plugin = ({ $config }: Context) => {
 }
 
 export default browserLogsForSsgPlugin
-```
-
-```bash
-# ～ 中略 ～
-
-# Datadogにおけるクライアントトークン
-DATADOG_CLIENT_TOKEN=
-# Datadogにおけるログのタグ値
-DATADOG_ENV=
-DATADOG_SERVICE=
-DATADOG_VERSION=
 ```
 
 <br>

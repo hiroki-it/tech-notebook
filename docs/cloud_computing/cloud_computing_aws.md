@@ -1952,7 +1952,7 @@ EBSで管理されているルートデバイスボリュームで，推奨の�
 
 #### ・キーペアのフィンガープリント値
 
-ローカルに置かれている秘密鍵が，該当するEC2に置かれている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
+ローカルPCに置かれている秘密鍵が，該当するEC2に置かれている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
 
 ```bash
 $ openssl pkcs8 \
@@ -2244,9 +2244,9 @@ Dockerのベストプラクティスに則り，タグ名にlatestを用いな�
 
 <br>
 
-## 14. ECS，EKS：Elastic Container/Kubernetes Service
+## 14. ECS/EKS：Elastic Container/Kubernetes Service
 
-### ECS，EKSとは
+### ECS/EKSとは
 
 コンテナオーケストレーションを実行する環境を提供する．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
 
@@ -2254,6 +2254,16 @@ Dockerのベストプラクティスに則り，タグ名にlatestを用いな�
 | ------------------------------------------------- | ------------------------------ | ------------------------------------------------------------ |
 | ECS：Elastic Container Service                    | Fargate，EC2                   | 単一のOS上でコンテナオーケストレーションを実行する．         |
 | EKS：Elastic Kubernetes Service                   | Fargate，EC2                   | 複数のOS上それぞれでコンテナオーケストレーションを実行する．<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
+
+<br>
+
+### ECS vs EKS
+
+どちらもイメージをビルドする機能は無く，コンテナオーケストレーションのみを実行する．ビルド済みのイメージをECRで管理しておき，コンテナオーケストレーション時にこれをプルする．
+
+参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+
+![ecs_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/imagesecs_eks.png)
 
 <br>
 
@@ -2279,6 +2289,10 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 #### ・ECSクラスターとは
 
+ECSサービスの管理グループ単位のこと．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/clusters.html
+
 ![ECSクラスター](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ECSクラスター.png)
 
 <br>
@@ -2287,7 +2301,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 #### ・ECSサービスとは
 
-ECSタスクへのロードバランシング，タスクの数の維持管理や，リリースの成否の管理を行う機能のこと．
+ECSタスクの管理グループ単位のこと．ECSタスクへのロードバランシング，タスクの数の維持管理や，リリースの成否の管理を行う．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/service_definition_parameters.html
 
@@ -2300,7 +2314,7 @@ ECSタスクへのロードバランシング，タスクの数の維持管理�
 | タスクの必要数               | 非スケーリング時またはデプロイ時のタスク数を設定する．       | 最小ヘルス率と最大率の設定値に影響する．                     |
 | 最小ヘルス率                 | ECSタスクの必要数の設定を```100```%とし，新しいタスクのデプロイ時に，稼働中タスクの最低合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスクヘルス最小率を50%とすれば，稼働中タスクの最低合計数は２個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
 | 最大率                       | ECSタスクの必要数の設定を```100```%とし，新しいタスクのデプロイ時に，稼働中/停止中タスクの最高合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスク最大率を200%とすれば，稼働中/停止中タスクの最高合計数は８個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する．猶予期間を過ぎても，ALB/NLBのヘルスチェックが失敗していれば，サービスはタスクを停止し，新しいタスクを再起動する． | ALB/NLBではターゲットを登録し，ヘルスチェックを実行するプロセスがある．特にNLBでは，これに時間がかかる．またアプリケーションによっては，コンテナの構築に時間がかかる．そのため，NLBのヘルスチェックが完了する前に，ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある．例えば，NLBとLaravelを用いる場合は，ターゲット登録とLaravelコンテナの築の時間を加味して，```330```秒以上を目安とする．例えば，ALBとNuxt.js（SSRモード）を用いる場合は，```600```秒以上を目安とする．なお，アプリケーションのコンテナ構築にかかる時間は，ローカル環境での所要時間を参考にする． |
+| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する．猶予期間を過ぎても，ALB/NLBのヘルスチェックが失敗していれば，サービスはタスクを停止し，新しいタスクを再起動する． | ALB/NLBではターゲットを登録し，ヘルスチェックを実行するプロセスがある．特にNLBでは，これに時間がかかる．またアプリケーションによっては，コンテナの構築に時間がかかる．そのため，NLBのヘルスチェックが完了する前に，ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある．例えば，NLBとLaravelを用いる場合は，ターゲット登録とLaravelコンテナの築の時間を加味して，```330```秒以上を目安とする．例えば，ALBとNuxt.js（SSRモード）を用いる場合は，```600```秒以上を目安とする．なお，アプリケーションのコンテナ構築にかかる時間は，開発環境での所要時間を参考にする． |
 | タスクの最小数               | スケーリング時のタスク数の最小数を設定する．                 |                                                              |
 | タスクの最大数               | スケーリング時のタスク数の最大数を設定する．                 |                                                              |
 | ロードバランシング           | ALBでルーティングするコンテナを設定する．                    |                                                              |
@@ -2334,9 +2348,9 @@ ECSタスクへのロードバランシング，タスクの数の維持管理�
 
 ![タスクとタスク定義](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/タスクとタスク定義.png)
 
-#### ・ECSタスク
+#### ・ECSタスクとは
 
-グルーピングされたコンテナ群のこと
+コンテナインスタンスの管理グループ単位のこと
 
 #### ・タスク定義とは
 
@@ -2372,7 +2386,7 @@ ECSタスクは，デプロイ/自動スケーリング/手動操作の時にラ
 
 #### ・新しいECSタスクを一時的に実行
 
-現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．CI/CDツールで実行する以外に，ローカルから手動で実行する場合もある．起動時に，```overrides```オプションを用いて，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
+現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．CI/CDツールで実行する以外に，ローカルPCから手動で実行する場合もある．起動時に，```overrides```オプションを用いて，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
 
 **＊実装例＊**
 
@@ -2556,14 +2570,14 @@ aws ecs execute-command \
 | cpu                              | ```--cpus```                                 | タスク全体に割り当てられたCPU（タスクCPU）のうち，該当のコンテナに割り当てるCPU分を設定する． |  |
 | dnsServers                       | ```--dns```                                  | コンテナが名前解決に用いるDNSサーバーのIPアドレスを設定する． |                                                              |
 | essential                        |                                              | コンテナが必須か否かを設定する．                             | ・```true```の場合，コンテナが停止すると，タスクに含まれる全コンテナが停止する．<br>```false```の場合，コンテナが停止しても，その他のコンテナは停止しない． |
-| healthCheck<br>(command)         | ```--health-cmd```                           | ホストマシンからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
+| healthCheck<br>(command)         | ```--health-cmd```                           | ホストからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
 | healthCheck<br>(interval)        | ```--health-interval```                      | ヘルスチェックの間隔を設定する．                             |                                                              |
 | healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
 | hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
 | image                            |                                              | ECRのURLを設定する．                                         |                                                              |
 | logConfiguration<br>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば『awslogs，awsfirelens，splunk』に設定できる．EC2であれば『awslogs，json-file，syslog，journald，fluentd，gelf，logentries』を設定できる． |
 | logConfiguration<br>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
-| portMapping                      | ```--publish```<br>```--expose```            | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
+| portMapping                      | ```--publish```<br>```--expose```            | ホストとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)         |                                              | パラメーターストアから出力する環境変数を設定する．            |  |
 | memory                           | ```--memory```<br>```--memory-reservation``` | タスク全体に割り当てられたメモリ（タスクメモリ）のうち，該当のコンテナに割り当てるメモリ分を設定する． |  |
 | mountPoints                      |                                              |                                                              |                                                              |
@@ -2819,13 +2833,23 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 #### ・EKSクラスターとは
 
-KubernetesのClusterに相当する．
+Fargate Nodeの管理グループ単位のこと．KubernetesのClusterに相当する．
+
+参考：https://www.sunnycloud.jp/column/20210315-01/
+
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
 <br>
 
 ### Fargate Node
 
-KubernetesのNodeに相当する．
+#### ・Fargate Nodeとは
+
+Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに相当する．on EC2と比べてカスタマイズ性が低く，Node当たりで稼働するPod数はAWSが管理する．一方で，各EC2のサチュレーションをユーザーが管理しなくてもよいため，Kubernetesのホストの管理が楽である．
+
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+
+<br>
 
 <br>
 
@@ -2836,6 +2860,28 @@ KubernetesのNodeに相当する．
 参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/integrating_csi_driver.html
 
 <br>
+
+## 14-05. EKS on EC2
+
+### EKSクラスター
+
+#### ・EKSクラスターとは
+
+EC2 Nodeの管理グループ単位のこと．KubernetesのClusterに相当する．
+
+<br>
+
+### EC2ノード
+
+#### ・EC2ノードとは
+
+EC2で稼働するKubernetesのホストのこと．on Fargateと比べてカスタマイズ性が高く，Node当たりで稼働するPod数に重み付けを設定できる．一方で，各EC2のサチュレーションをユーザーが管理しなければならないため，Kubernetesのホストの管理が大変である．
+
+参考：https://www.sunnycloud.jp/column/20210315-01/
+
+![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
+
+
 
 ## 15. EFS：Elastic File System
 

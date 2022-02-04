@@ -377,20 +377,20 @@ class ExampleController extends AbstractController
 ```php
 <?php
     
-// $_GET['hoge']
-$request->query->get('hoge');
+// $_GET['foo']
+$request->query->get('foo');
  
-// $_POST['hoge']
-$request->request->get('hoge');
+// $_POST['foo']
+$request->request->get('foo');
  
-// ルーティングパラメータ / ex) @Route('/{hoge}')
-$request->attributes->get('hoge');
+// ルーティングパラメータ / ex) @Route('/{foo}')
+$request->attributes->get('foo');
  
-// $_COOKIE['hoge']
-$request->cookies->get('hoge');
+// $_COOKIE['foo']
+$request->cookies->get('foo');
  
-// $_FILES['hoge']
-$request->files->get('hoge');
+// $_FILES['foo']
+$request->files->get('foo');
  
 // $_SERVER['SCRIPT_FILENAME']
 $request->server->get('SCRIPT_FILENAME');
@@ -399,7 +399,7 @@ $request->server->get('SCRIPT_FILENAME');
 $request->headers->get('User-Agent');
  
 // query > attribute  > request の順で検索
-$request->get('hoge');
+$request->get('foo');
 ```
 
 <br>

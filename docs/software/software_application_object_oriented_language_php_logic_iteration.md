@@ -82,9 +82,9 @@ foreach ($array as &$value) {
 $a = [1, -1, 2];
 $sum = 0;
 
-foreach ($a as $x) {
-    if ($x > 0) {
-        $sum += $x;
+foreach ($a as $foo) {
+    if ($foo > 0) {
+        $sum += $foo;
     }
 }
 ```
@@ -306,10 +306,10 @@ while (true) {
         break;
     }
     
-    $x = $a[$i];
+    $foo = $a[$i];
     
-    if($x > 0) {
-        $sum += $x;
+    if($foo > 0) {
+        $sum += $foo;
     }
     
     // 代入加算
@@ -359,9 +359,9 @@ $a = [1, -1, 2];
 $sum = 0;
 
 for ($i = 0; $i < 2; $i++) {
-    $x = $a[$i];
-    if ($x > 0) {
-        $sum += $x;
+    $foo = $a[$i];
+    if ($foo > 0) {
+        $sum += $foo;
     }
 }
 

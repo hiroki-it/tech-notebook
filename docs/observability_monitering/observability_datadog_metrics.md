@@ -46,7 +46,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ・環境変数
 
-グローバルオプションとして役立つ環境変数を以下に示す．
+グローバルオプションとして役立つ環境変数を以下に示す．datadogコンテナの環境変数として設定する．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3
 
@@ -162,19 +162,8 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
                 "value": "true"
             },
             {
-                # アプリケーションに対するenvタグ
                 "name": "DD_ENV",
                 "value": "foo"
-            },            
-            {
-                # アプリケーションに対するserviceタグ
-                "name": "DD_SERVICE",
-                "value": "foo"
-            },
-            {
-                # アプリケーションに対するversionタグ            
-                "name": "DD_VERSION",
-                "value": "latest"
             }
         ],
         "secrets": [
