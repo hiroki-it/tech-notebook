@@ -50,6 +50,8 @@ title: 【知見を記録するサイト】目次
         * [📖 ︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html) 
         * FastCGI
             * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
+        * WSGI 
+            * [📖 ︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
 * データベース系
     * RDBMS
         * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)

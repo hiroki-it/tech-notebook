@@ -76,7 +76,7 @@ SET time_zone = "Asia/Tokyo";
 
 MySQLの設定値を定義する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ下にある```*.cnf```ファイルを読み込むようになっている．
 
-```bash
+```ini
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -105,7 +105,7 @@ MySQLの設定値を定義する．```my.cnf```ファイルは，```/etc/mysql``
 
 このファイルを上書きすることで，設定値を上書きできる．
 
-```bash
+```ini
 [mysqld]
 skip-host-cache # 記述なし
 skip-name-resolve # 記述なし

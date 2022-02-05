@@ -381,7 +381,7 @@ $ fluent-bit \
 
 #### ・セットアップ
 
-```
+```bash
 [FILTER]
     name   grep
     match  *
@@ -1240,7 +1240,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
     Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<アカウントID>:task/prd-foo-ecs-cluster/*****
     Record ecs_task_definition prd-foo-ecs-task-definition:1
     
-# INCLUDE文が挿入される．ユーザ定義の設定ファイルが読み込まれる．
+# INCLUDE文が挿入される．ユーザー定義の設定ファイルが読み込まれる．
 @INCLUDE /fluent-bit/etc/fluent-bit_custom.conf
 
 [OUTPUT]

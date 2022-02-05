@@ -13,9 +13,9 @@ description: PHP-FPM＠ミドルウェアの知見をまとめました。
 
 <br>
 
-## 01. PHP-FPM
+## 01. PHP-FPMの仕組み
 
-### PHP-FPMとは
+### FastCGIとして
 
 ![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
 
@@ -43,65 +43,17 @@ $ apt install php-fpm
 
 <br>
 
-### 設定ファイル（※ Dockerの場合）
+## 03. 設定ファイル（※ Dockerの場合）
 
-#### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
+### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMのログ以外の項目を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからインバウンド通信を受信する場合，```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザー名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+#### ・```www.conf```ファイルとは
+
+PHP-FPMのログ以外の項目を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
-**＊実装例＊**
-
-```bash
-[www]
-
-# プロセスのユーザー名，グループ名
-user = www-data
-group = www-data
-
-# UNIXドメインソケットを用いるために，sockファイルを指定
-listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
-
-# UNIXドメインソケットを用いるために，プロセスのユーザー名を変更
-listen.owner = www-data
-listen.group = www-data
-
-listen.mode = 0660
-
-# コメントアウト推奨 
-;listen.acl_users = apache,nginx
-
-# TCPソケットのIPアドレス
-listen.allowed_clients = 127.0.0.1
-
-pm = dynamic
-
-pm.max_children = 50
-
-pm.start_servers = 5
-
-pm.min_spare_servers = 5
-
-pm.max_spare_servers = 35
-
-# システムログファイルの場所
-slowlog = /var/log/php-fpm/www-slow.log
-
-# エラーログファイルの場所
-# 開発環境では，エラーログファイル（/var/log/php-fpm/www-error.log）に出力
-php_admin_value[error_log] = /dev/stderr
-
-php_admin_flag[log_errors] = on
-
-# セッションの保存方法．ここではredisのキーとして保存（デフォルト値はfiles）
-php_value[session.save_handler] = redis
-
-# セッションの保存場所（デフォルト値は，/var/lib/php/session）
-php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
-
-php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
-```
+#### ・```zz-docker.conf ```ファイルについて
 
 PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
@@ -111,11 +63,15 @@ PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込�
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
-#### ・```/usr/local/etc/php-fpm.d/docker.conf```ファイル
+<br>
+
+### ```/usr/local/etc/php-fpm.d/docker.conf```ファイル
+
+#### ・```docker.conf```ファイルとは
 
 PHP-FPMの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```以下に配置されている．
 
-```bash
+```ini
 [global]
 error_log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
 
@@ -135,7 +91,202 @@ decorate_workers_output = no
 
 <br>
 
-## 03. ログ
+## 04. wwwセクション
+
+### group
+
+プロセスの実行グループ名を設定する．
+
+```ini
+[www]
+group = www-data
+```
+
+<br>
+
+### listen
+
+生成されたUNIXドメインソケットファイルの場所を設定する．
+
+```ini
+[www]
+listen = /var/run/php-fpm/php-fpm.sock
+```
+
+<br>
+
+### listen.acl_users
+
+コメントアウトが推奨である．代わりに，```listen.owner```と```listen.group```を設定する．
+
+```ini
+[www]
+;listen.acl_users = apache,nginx
+```
+
+<br>
+
+### listen.allowed_clients
+
+受信するIPアドレスを設定する．
+
+```ini
+[www]
+listen.allowed_clients = 127.0.0.1
+```
+
+<br>
+
+### listen.group
+
+プロセスの所有グループ名を設定する．
+
+```ini
+[www]
+listen.group = www-data
+```
+
+<br>
+
+### listen.mode
+
+```ini
+[www]
+listen.mode = 0660
+```
+
+<br>
+
+### listen.owner
+
+プロセスの所有ユーザー名を設定する．
+
+```ini
+[www]
+listen.owner = www-data
+```
+
+<br>
+
+### php_admin_flag[log_errors]
+
+```ini
+[www]
+php_admin_flag[log_errors] = on
+```
+
+<br>
+
+### php_admin_value[error_log]
+
+エラーログの出力先を設定する．開発環境ではエラーログファイル（```/var/log/php-fpm/www-error.log```）に出力し，本番環境では標準エラー出力に出力するとよい．
+
+```ini
+[www]
+php_admin_value[error_log] = /dev/stderr
+```
+
+<br>
+
+### php_value[session.save_handler]
+
+セッションの保存方法を設定する．ファイル形式やRedisキーマップ形式を設定できる．デフォルト値は```files```である．
+
+```ini
+[www]
+php_value[session.save_handler] = redis
+```
+
+<br>
+
+### php_value[session.save_path]
+
+セッションの保存先のディレクトリを設定する．保存方法にRedisを設定した場合には，Redisストレージを設定できる．デフォルト値は```/var/lib/php/session```ディレクトリである．
+
+```ini
+[www]
+php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
+```
+
+<br>
+
+### php_value[soap.wsdl_cache_dir]
+
+```ini
+[www]
+php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
+```
+
+<br>
+
+### pm
+
+```ini
+[www]
+pm = dynamic
+```
+
+<br>
+
+### pm.max_children
+
+```ini
+[www]
+pm.max_children = 50
+```
+
+<br>
+
+### pm.start_servers
+
+```ini
+[www]
+pm.start_servers = 5
+```
+
+<br>
+
+### pm.min_spare_servers
+
+```ini
+[www]
+pm.min_spare_servers = 5
+```
+
+<br>
+
+### pm.max_spare_servers
+
+```ini
+[www]
+pm.max_spare_servers = 35
+```
+
+<br>
+
+### slowlog
+
+システムログの出力先を設定する．
+
+```ini
+[www]
+slowlog = /var/log/php-fpm/www-slow.log
+```
+
+<br>
+
+### user
+
+プロセスの実行ユーザー名を設定する．
+
+```ini
+[www]
+user = www-data
+```
+
+<br>
+
+## 05. ログ
 
 ### ログの種類
 

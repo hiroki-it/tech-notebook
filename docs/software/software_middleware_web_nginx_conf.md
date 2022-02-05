@@ -12,103 +12,11 @@ title: 【知見を記録するサイト】nginx.conf@Nginx
 
 <br>
 
-## 01. セットアップ
+## 01. Nginxの仕組み
 
-### インストール
+### リバースプロキシサーバーのミドルウェアとして
 
-#### ・apt経由
-
-nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを用いる．
-
-参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
-
-```bash
-$ apt install nginx
-```
-
-#### ・yum経由
-
-```bash
-$ yum install nginx
-```
-
-<br>
-
-### 設定ファイル
-
-#### ・```/etc/nginx/conf.d/*.conf```ファイル
-
-デフォルトの設定が定義されているいくつかのファイル．基本的には読み込むようにする．ただし，nginx.confファイルの設定が上書きされてしまわないかを注意する．
-
-```nginx
-include /etc/nginx/conf.d/*.conf;
-```
-
-#### ・```/etc/nginx/mime.types```ファイル
-
-リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル．
-
-```nginx
-include /etc/nginx/mime.types;
-```
-
-#### ・```/usr/share/nginx/modules/*.conf```ファイル
-
-モジュールの読み込み処理が定義されているファイル．
-
-```nginx
-include  /usr/share/nginx/modules/*.conf;
-```
-
-例えば，```mod-http-image-filter.conf```ファイルの内容は以下の通り．
-
-```nginx
-load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
-```
-
-#### ・```/etc/nginx/fastcgi_params```ファイル
-
-FastCGIプロトコルでルーティングする場合に用いる．アプリケーションで使用できる変数を定義する．```nginx.conf```ファイルによって読み込まれる．OSやそのバージョンによっては，変数のデフォルト値が書き換えられていることがある．実際にインバウンド通信のルーティング先に接続し，上書き設定が必要なものと不要なものを判断する必要がある．以下は，Debian 10のデフォルト値である．
-
-参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
-
-**＊実装例＊**
-
-```nginx
-#-------------------------------------------------------
-# OSによって，fastcgi_paramsファイルの必要な設定が異なる
-#-------------------------------------------------------
-fastcgi_param  QUERY_STRING       $query_string;
-fastcgi_param  REQUEST_METHOD     $request_method;
-fastcgi_param  CONTENT_TYPE       $content_type;
-fastcgi_param  CONTENT_LENGTH     $content_length;
-
-fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
-fastcgi_param  REQUEST_URI        $request_uri;
-fastcgi_param  DOCUMENT_URI       $document_uri;
-fastcgi_param  DOCUMENT_ROOT      $document_root;
-fastcgi_param  SERVER_PROTOCOL    $server_protocol;
-fastcgi_param  REQUEST_SCHEME     $scheme;
-fastcgi_param  HTTPS              $https if_not_empty;
-
-fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
-fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
-
-fastcgi_param  REMOTE_ADDR        $remote_addr;
-fastcgi_param  REMOTE_PORT        $remote_port;
-fastcgi_param  SERVER_ADDR        $server_addr;
-fastcgi_param  SERVER_PORT        $server_port;
-fastcgi_param  SERVER_NAME        $server_name;
-
-# PHPだけで必要な設定
-fastcgi_param  REDIRECT_STATUS    200;
-```
-
-<br>
-
-## 02. リバースプロキシサーバーのミドルウェアとして
-
-### HTTP/HTTPSプロトコルでルーティング
+#### ・HTTP/HTTPSプロトコルでルーティング
 
 ![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
 
@@ -144,9 +52,7 @@ server {
 
 <br>
 
-### FastCGIプロトコルでルーティング
-
-#### ・PHP-FPMへのルーティング
+####  ・FastCGIプロトコルでルーティング
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
@@ -197,9 +103,9 @@ server {
 
 <br>
 
-## 02-02. ロードバランサ－のミドルウェアとして
+### ロードバランサ－のミドルウェアとして
 
-### HTTP/HTTPSプロトコルでルーティング
+#### ・HTTP/HTTPSプロトコルでルーティング
 
 HTTPプロトコルで受信したインバウンド通信を，HTTPSプロトコルにリダイレクトする．また，HTTPSプロトコルであれば，HTTPに変換してルーティングする．HTTPSプロトコルのインバウンド通信を受信するために，SSL証明書を設定する必要がある．
 
@@ -253,7 +159,119 @@ server {
 
 <br>
 
-## 03. Core機能
+## 02. セットアップ
+
+### インストール
+
+#### ・apt経由
+
+nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを用いる．
+
+参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+
+```bash
+$ apt install nginx
+```
+
+#### ・yum経由
+
+```bash
+$ yum install nginx
+```
+
+<br>
+
+## 03. 設定ファイルの種類
+
+### ```/etc/nginx/conf.d/*.conf```ファイル
+
+#### ・```.../conf.d/*.conf```ファイルとは
+
+デフォルトの設定が定義されているいくつかのファイル．基本的には読み込むようにする．ただし，nginx.confファイルの設定が上書きされてしまわないかを注意する．
+
+```nginx
+include /etc/nginx/conf.d/*.conf;
+```
+
+<br>
+
+### ```/usr/share/nginx/modules/*.conf```ファイル
+
+#### ・```.../modules/*.conf```ファイルとは
+
+モジュールの読み込み処理が定義されているファイル．
+
+```nginx
+include  /usr/share/nginx/modules/*.conf;
+```
+
+例えば，```mod-http-image-filter.conf```ファイルの内容は以下の通り．
+
+```nginx
+load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
+```
+
+<br>
+
+### ```/etc/nginx/mime.types```ファイル
+
+#### ・```mime.types```ファイルとは
+
+リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル．
+
+```nginx
+include /etc/nginx/mime.types;
+```
+
+<br>
+
+### ```/etc/nginx/fastcgi_params```ファイル
+
+#### ・```fastcgi_params```ファイルとは
+
+FastCGIプロトコルでルーティングする場合に用いる．アプリケーションで使用できる変数を定義する．```nginx.conf```ファイルによって読み込まれる．OSやそのバージョンによっては，変数のデフォルト値が異なることがある．実際にインバウンド通信のルーティング先に接続し，上書き設定が必要なものと不要なものを判断する必要がある．
+
+#### ・Debian系の場合
+
+Debian10の設定ファイルを以下に示す．
+
+参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
+
+**＊実装例＊**
+
+```nginx
+#-------------------------------------------------------
+# OSによって，fastcgi_paramsファイルの必要な設定が異なる
+#-------------------------------------------------------
+fastcgi_param  QUERY_STRING       $query_string;
+fastcgi_param  REQUEST_METHOD     $request_method;
+fastcgi_param  CONTENT_TYPE       $content_type;
+fastcgi_param  CONTENT_LENGTH     $content_length;
+
+fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
+fastcgi_param  REQUEST_URI        $request_uri;
+fastcgi_param  DOCUMENT_URI       $document_uri;
+fastcgi_param  DOCUMENT_ROOT      $document_root;
+fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+fastcgi_param  REQUEST_SCHEME     $scheme;
+fastcgi_param  HTTPS              $https if_not_empty;
+
+fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
+fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+
+fastcgi_param  REMOTE_ADDR        $remote_addr;
+fastcgi_param  REMOTE_PORT        $remote_port;
+fastcgi_param  SERVER_ADDR        $server_addr;
+fastcgi_param  SERVER_PORT        $server_port;
+fastcgi_param  SERVER_NAME        $server_name;
+
+# PHPだけで必要な設定
+fastcgi_param  REDIRECT_STATUS    200;
+```
+
+<br>
+
+## 04. Core機能
 
 ### ブロック
 
@@ -325,7 +343,7 @@ worker_rlimit_nofile  8192;
 
 <br>
 
-## 04. http_core_module
+## 04-02. http_core_module
 
 ### ブロック
 
@@ -644,7 +662,7 @@ server {
 
 <br>
 
-## 05. http_index_module
+## 04-03. http_index_module
 
 ### ディレクティブ
 
@@ -662,7 +680,7 @@ index index.php;
 
 <br>
 
-## 06. http_headers_module
+## 04-04. http_headers_module
 
 ### ディレクティブ
 
@@ -681,7 +699,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 <br>
 
-## 09. http_upstream_module
+## 04-05. http_upstream_module
 
 ### ブロック
 
@@ -702,7 +720,7 @@ upstream foo_servers {
 
 <br>
 
-## 07. http_fast_cgi_module
+## 04-06. http_fast_cgi_module
 
 ### ディレクティブ
 
@@ -732,7 +750,7 @@ fastcgi_pass localhost:9000;
 
 <br>
 
-## 08. http_proxy_module
+## 04-07. http_proxy_module
 
 ### ディレクティブ
 

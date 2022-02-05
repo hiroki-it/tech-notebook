@@ -2263,7 +2263,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを用いな�
 
 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
-![ecs_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/imagesecs_eks.png)
+![ecs_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_eks.png)
 
 <br>
 

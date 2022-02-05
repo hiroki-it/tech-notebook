@@ -13,7 +13,27 @@ description: apache.conf@Apacheの知見をまとめました。
 
 <br>
 
-## 01. セットアップ
+## 01. Apacheの仕組み
+
+### リバースプロキシサーバーのミドルウェアとして
+
+#### ・HTTP/HTTPSプロトコルでルーティング
+
+#### ・FastCGIプロトコルでルーティング
+
+mod_fcgidモジュールを読み込むことによって，FastCGIプロトコルでルーティングできるようになる．
+
+参考：https://httpd.apache.org/mod_fcgid/
+
+<br>
+
+### Appサーバーのミドルウェアとして
+
+mod_phpモジュールを読み込むことによって，Appサーバーのミドルウェアとしても機能させられる．
+
+<br>
+
+## 02. セットアップ
 
 ### インストール
 
@@ -25,27 +45,46 @@ $ apt install apache2
 
 <br>
 
-## 02. リバースプロキシサーバーのミドルウェアとして
+## 03. 設定ファイルの種類
 
-### HTTP/HTTPSプロトコルでルーティング
+### ```httpd.conf```ファイル
 
-<br>
+Apacheの主要な設定ファイル．Includeディレクティブを使用すれば，任意の名前で設定ファイルを追加できる．
 
-### FastCGIプロトコルでルーティング
-
-mod_fcgidモジュールを読み込むことによって，FastCGIプロトコルでルーティングできるようになる．
-
-参考：https://httpd.apache.org/mod_fcgid/
+参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
 <br>
 
-## 02-02. Appサーバーのミドルウェアとして
+### ```.htaccess```ファイル
 
-mod_phpモジュールを読み込むことによって，Appサーバーのミドルウェアとしても機能させられる．
+#### ・```.htaccess```ファイルとは
+
+基本的に，```httpd.conf```ファイルで全ての設定が可能である．ただし，このファイルはインフラエンジニアの責務であり，アプリケーションエンジニアでApacheの設定を定義したい場合に，```.htaccess```ファイルを使用する．
+
+参考：
+
+- https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
+- https://ja.wikipedia.org/wiki/.htaccess
+
+#### ・ルートディレクトリに置いた場合
+
+全てのファイルに対して，ディレクティブが適用される．
+
+参考：https://htaccess.cman.jp/attention/
+
+![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
+
+#### ・それ以外のディレクトリに置いた場合
+
+設置したディレクトリ下の階層のファイルに対して適用される．
+
+参考：https://htaccess.cman.jp/attention/
+
+![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 
 <br>
 
-## 03. Coreにおける設定ディレクティブ
+## 04. Coreにおける設定ディレクティブ
 
 ### ServerRoot
 
@@ -206,7 +245,7 @@ MaxKeepAliveRequests 1000
 
 <br>
 
-## 04. mod_soにおける設定ディレクティブ
+## 04-02. mod_soにおける設定ディレクティブ
 
 ### LoadModule
 
@@ -226,7 +265,7 @@ LoadModule dir_module modules/mod_dir.so
 
 <br>
 
-## 05. mod_dirにおける設定ディレクティブ
+## 04-03. mod_dirにおける設定ディレクティブ
 
 ### DirectoryIndex
 
@@ -299,7 +338,7 @@ AllowOverride Indexes
 
 <br>
 
-## 06. mod_writeにおける設定ディレクティブ
+## 04-04. mod_writeにおける設定ディレクティブ
 
 ### RewriteCond
 
@@ -347,7 +386,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 <br>
 
-## 07. mod_setenvifにおける設定ディレクティブ
+## 04-05. mod_setenvifにおける設定ディレクティブ
 
 ### SetEnvIf
 
@@ -366,7 +405,7 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 <br>
 
-## 08. mod_log_configにおける設定ディレクティブ
+## 04-06. mod_log_configにおける設定ディレクティブ
 
 ### LogFormat
 
@@ -454,7 +493,7 @@ ErrorLog /var/log/httpd/error_log
 
 <br>
 
-## 09. mod_sslにおける設定ディレクティブ 
+## 04-07. mod_sslにおける設定ディレクティブ 
 
 ### SSLCertificateFile
 
@@ -484,7 +523,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 <br>
 
-## 10. mod_headersにおける設定ディレクティブ
+## 04-08. mod_headersにおける設定ディレクティブ
 
 ### Header
 
@@ -526,21 +565,5 @@ Header unset Referrer-Policy "no-referrer-when-downgrade
 Header unset Referrer-Policy "no-referrer-when-downgrade" always
 ```
 
-<br>
 
-## 11. htaccess
-
-### 影響範囲
-
-#### ・ルートディレクトリの場合
-
-全てのファイルに対して，ディレクティブが適用される．
-
-![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
-
-#### ・それ以外のディレクトリの場合
-
-設置したディレクトリ下の階層のファイルに対して適用される．
-
-![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 

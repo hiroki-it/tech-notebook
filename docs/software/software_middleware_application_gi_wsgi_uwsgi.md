@@ -8,7 +8,9 @@
 
 <br>
 
-## 01. uWSGI
+## 01. uWSGIの仕組み
+
+### WSGIとして
 
 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 
@@ -28,61 +30,22 @@ $ pip install uwsgi
 
 <br>
 
-### 設定ファイル
+## 03. 設定ファイルの種類
 
-#### ・```uwsgi.ini```ファイル
+### ```uwsgi.ini```ファイル
+
+#### ・```uwsgi.ini```ファイルとは
+
+uWSGIの起動に関する設定値を定義する．JSON形式やXML形式でも問題ない．
 
 参考：
 
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 - https://qiita.com/11ohina017/items/da2ae5b039257752e558
 
-```bash
-[uwsgi]
+#### ・起動ログ
 
-# アプリケーションのインスタンスの変数名（デフォルト値：application）
-# 参考：https://laplace-daemon.com/nginx-uwsgi-flask/
-callable = app
-
-# 作業ディレクトリから移動する
-chdir=/var/www/foo
-
-# UNIXドメインソケットファイルの権限
-chmod-socket = 666
-
-die-on-term = true
-
-# HTTPプロトコルを用いる場合 
-http = 0.0.0.0:8080
-
-# ログの出力先
-logto = /dev/stdout
-
-# マスターモードで起動するかどうか
-master = true
-
-processes = 1
-
-py-autoreload = 1
-
-# アプリケーションのあるディレクトリ
-python-path = /var/www/foo
-
-# UNIXドメインソケットを用いる場合
-# <ソケットファイルの配置場所>:<ルーティング先ポート番号>
-# https://qiita.com/koyoru1214/items/57461b920dfc11f67683
-socket = /etc/uwsgi/uwsgi.sock:8080
-
-# uwsgiプロセス終了時にソケットファイルを削除するかどうか
-vacuum = true
-
-
-# エントリーポイントのファイル
-# 参考：https://django.kurodigi.com/uwsgi-basic/
-wsgi-file = main.py
-```
-
-以下のようなログになれば成功である．
+起動時に，以下のようなログが出力される．
 
 ```bash
 [uWSGI] getting INI configuration from /etc/wsgi/wsgi.ini
@@ -132,3 +95,153 @@ spawned uWSGI worker 1 (pid: 9, cores: 1)
 spawned uWSGI http 1 (pid: 10)
 ```
 
+<br>
+
+## 04. uwsgiセクション
+
+### uwsgiセクションとは
+
+uWSGIの設定値を定義する．
+
+<br>
+
+### callable
+
+ アプリケーションのインスタンスの変数名を設定する．デフォルト値は，```application```である．
+
+参考：https://laplace-daemon.com/nginx-uwsgi-flask/
+
+```ini
+[uwsgi]
+callable = app
+```
+
+<br>
+
+### chdir
+
+作業ディレクトリから移動する
+
+```ini
+[uwsgi]
+chdir=/var/www/foo
+```
+
+<br>
+
+### chmod-socket
+
+UNIXドメインソケットファイルの権限を設定する．
+
+```ini
+[uwsgi]
+chmod-socket = 666
+```
+
+<br>
+
+### die-on-term
+
+```ini
+[uwsgi]
+die-on-term = true
+```
+
+<br>
+
+### http
+
+HTTPプロトコルを用いる場合に，受信するIPアドレスとポート番号を設定する．
+
+```ini
+[uwsgi]
+http = 0.0.0.0:8080
+```
+
+<br>
+
+### logto
+
+ログの出力先を設定する．
+
+```ini
+[uwsgi]
+logto = /dev/stdout
+```
+
+<br>
+
+### master
+
+マスターモードで起動するかどうかを設定する
+
+```ini
+[uwsgi]
+master = true
+```
+
+<br>
+
+### processes
+
+```ini
+[uwsgi]
+processes = 1
+```
+
+<br>
+
+### py-autoreload
+
+```ini
+[uwsgi]
+py-autoreload = 1
+```
+
+<br>
+
+### python-path
+
+アプリケーションのあるディレクトリを設定する．
+
+```ini
+[uwsgi]
+python-path = /var/www/foo
+```
+
+<br>
+
+### socket
+
+UNIXドメインソケットを用いる場合に，ソケットファイルの生成場所と受信するポート番号を設定する．
+
+参考： https://qiita.com/koyoru1214/items/57461b920dfc11f67683
+
+```ini
+[uwsgi]
+socket = /etc/uwsgi/uwsgi.sock:8080
+```
+
+<br>
+
+### vacuum
+
+uwsgiプロセス終了時にソケットファイルを削除するかどうかを設定する．
+
+```ini
+[uwsgi]
+vacuum = true
+```
+
+<br>
+
+### wsgi-file
+
+エントリーポイントとするファイルを設定する．
+
+参考：https://django.kurodigi.com/uwsgi-basic/
+
+```ini
+[uwsgi]
+wsgi-file = main.py
+```
