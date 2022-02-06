@@ -57,7 +57,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 #### ・インストール
 
-使用しているOSやIaCツールごとに，インストール方法が異なる．
+用いているOSやIaCツールごとに，インストール方法が異なる．
 
 参考：https://app.datadoghq.com/account/settings#agent
 

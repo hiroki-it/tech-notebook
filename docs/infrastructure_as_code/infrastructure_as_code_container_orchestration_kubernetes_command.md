@@ -297,7 +297,7 @@ kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 
 **＊例＊**
 
-指定したSecretをYAML形式で表示する．
+指定したSecretをYAML形式で表示する．正規表現と同様に，一部の文字列ではエスケープする必要がある．
 
 ```bash
 $ kubectl get secret <Secret名> -o yaml
@@ -316,6 +316,28 @@ metadata:
   uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
 ```
+
+**＊例＊**
+
+Istioのバージョンを取得する．
+
+```bash
+$ kubectl get customResourceDefinition/istiooperators.install.istio.io \
+  --namespace=istio-system \
+  -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
+```
+
+**＊例＊**
+
+ロードバランサーのIPアドレスを取得する．
+
+```bash
+$ kubectl get service/istio-ingressgateway \
+  --namespace=istio-system \
+  -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
+```
+
+
 
 <br>
 

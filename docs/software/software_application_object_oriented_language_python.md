@@ -13,7 +13,72 @@ description: Pythonの知見をまとめました。
 
 <br>
 
-## 01. 実装ポリシー
+## 01. セットアップ
+
+### インストール
+
+#### ・yum経由
+
+```bash
+$ yum install -y python3
+```
+
+<br>
+
+### Dockerfile
+
+#### ・Flask，uWSGIを用いる場合
+
+```dockerfile
+#===================
+# Global ARG
+#===================
+ARG PYTHON_VERSION=3.10
+ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+
+#===================
+# Base Stage
+#===================
+FROM python:${PYTHON_VERSION}-slim as base
+
+WORKDIR /var/www/foo
+
+ENV TZ Asia/Tokyo
+
+COPY ./requirements.txt /var/www/foo/requirements.txt
+
+RUN apt-get update -y \
+  # uwsgiの要件をインストール．
+  && apt-get install -y gcc \
+  # uESGIの起動時にFlaskが必要なため，パッケージを先にインストール．
+  && pip install \
+    --upgrade pip \
+    -r requirements.txt
+
+COPY ./docker/flask/uwsgi.ini /etc/wsgi/wsgi.ini
+
+#===================
+# development Stage
+#===================
+FROM base as development
+LABEL mantainer=${LABEL}
+
+CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
+
+#===================
+# Production Stage
+#===================
+FROM base as production
+LABEL mantainer=${LABEL}
+
+COPY ./ /var/www/foo/
+
+CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
+```
+
+<br>
+
+## 02. 実装ポリシー
 
 ### ディレクトリ構成
 

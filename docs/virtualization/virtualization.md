@@ -70,7 +70,7 @@ Docker，LXC，OpenVZ，など
 
 ホスト型とハイパーバイザ型では，ハードウェア（CPU，メモリ，ハードディスク）とゲストOSを仮想化することが必要である．一方で，コンテナ型では，ハードウェアとゲストOSの仮想化は行わず，namespaceを用いてコンテナを構成するため，その分起動が速い．
 
-![サーバー仮想化](https://user-images.githubusercontent.com/42175286/60386143-57e2d480-9acc-11e9-88b7-99a566346aba.png)
+![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
 <br>
 
@@ -80,13 +80,13 @@ Docker，LXC，OpenVZ，など
 
 ゲストOS上のアプリを操作する場合，ホスト型とハイパーバイザ型では，ハードウェアやハイパーバイザーを経由する必要がある．この分だけ，時間（Overhead）を要する．一方で，コンテナ型では，各コンテナがホストとカーネルを共有するため，Overheadが小さい．
 
-![仮想化](https://user-images.githubusercontent.com/42175286/60386143-57e2d480-9acc-11e9-88b7-99a566346aba.png)
+![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
 #### ・Overheadの比較
 
 sysbenchというベンチマークツールを用いて，CPU・メモリ・ファイルI/Oに着目し，物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると，コンテナ型であるDockerは最もOverheadが小さい．
 
-![各仮想化の比較](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
+![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 
 <br>
 

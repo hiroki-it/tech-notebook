@@ -786,7 +786,7 @@ $foo->method();
 
 #### ・Facadeの静的プロキシ機能を用いる場合
 
-静的メソッドの記法でコールできる．ただし，自作クラスをFacadeの機能を用いてインスタンス化すると，スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう．例えば，Facadeの中でも，```Route```のような，代替するよりもFacadeを使ったほうが断然便利である部分以外は，使用しないほうが良い．
+静的メソッドの記法でコールできる．ただし，自作クラスをFacadeの機能を用いてインスタンス化すると，スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう．例えば，Facadeの中でも，```Route```のような，代替するよりもFacadeを使ったほうが断然便利である部分以外は，用いないほうが良い．
 
 **＊実装例＊**
 
@@ -833,7 +833,7 @@ Facadeがトレイトの代わりになる場合，Facadeを用いることに�
 
 **＊例＊**
 
-NotifiableトレイトをUserクラスで使用せずに，Notificationファサードによるオンデマンド通知を用いることにより，Userクラスが通知処理の責務を持たずに済む．詳しくは，オンデマンド通知の説明を参考にせよ．
+NotifiableトレイトをUserクラスで用いずに，Notificationファサードによるオンデマンド通知を用いることにより，Userクラスが通知処理の責務を持たずに済む．詳しくは，オンデマンド通知の説明を参考にせよ．
 
 #### ・標準登録されたFacadeクラスの種類
 
@@ -905,7 +905,7 @@ NotifiableトレイトをUserクラスで使用せずに，Notificationファサ
 
 #### ・```transaction```メソッド
 
-一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま使用できる．ちなみに，トランザクション処理は必須ではなく，用いるとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う/行わない場合を比較して，処理時間が17%弱長くなったとのこと．
+一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま使用できる．ちなみに，トランザクション処理は必須ではなく，用いるとアプリケーションがデータベースを操作するために要する時間が増えるため，用いなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う/行わない場合を比較して，処理時間が17%弱長くなったとのこと．
 
 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -2339,7 +2339,7 @@ class FooController extends Controller
 }
 ```
 
-なお，ルールによっては，配列を使用せずとも定義できる．
+なお，ルールによっては，配列を用いずとも定義できる．
 
 **＊実装例＊**
 
@@ -5536,7 +5536,7 @@ PHPStromでLaravelを開発する場合，拡張機能を提供する．
 - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 - https://pleiades.io/help/phpstorm/laravel.html
 
-プロバイダーの登録が必要．
+プロバイダーを```app.php```ファイルに登録する必要がある．
 
 ```php
 <?php
@@ -5580,7 +5580,7 @@ $ php artisan ide-helper:models
 
 #### ・予測表示
 
-PHPStromで，Laravelのメソッドを予測表示できるように，phpstorm.meta.php```ファイルを生成する．
+PHPStromで，Laravelのメソッドを予測表示できるように，```phpstorm.meta.php```ファイルを生成する．
 
 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

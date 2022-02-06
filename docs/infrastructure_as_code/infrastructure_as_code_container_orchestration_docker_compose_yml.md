@@ -142,7 +142,7 @@ services:
 
 ### ```env_file```，```environment```
 
-コンテナで展開する環境変数を定義する．Dockerfile内での環境変数とは異なり，マルチステージビルドの全ステージで使用できる．dotenv系ライブラリを使用しなくてもよくなる．
+コンテナで展開する環境変数を定義する．Dockerfile内での環境変数とは異なり，マルチステージビルドの全ステージで使用できる．dotenv系ライブラリを用いなくてもよくなる．
 
 **＊実装例＊**
 
@@ -673,7 +673,7 @@ services:
       
 volumes:
   example:
-    driver_opts: # NFSプラグインを使用し，NFSストレージに保存．
+    driver_opts: # NFSプラグインを用いて，NFSストレージに保存．
       type: "nfs"
       o: "addr=10.40.0.199,nolock,soft,rw"
       device: ":/nfs/example"

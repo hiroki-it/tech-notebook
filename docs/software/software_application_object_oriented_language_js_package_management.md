@@ -25,7 +25,7 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 $ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
 
 # nodejsのインストールにnpmも含まれる
-$ yum install nodejs
+$ yum install -y nodejs
 ```
 
 <br>

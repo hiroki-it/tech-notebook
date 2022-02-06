@@ -16,19 +16,22 @@ title: 【知見を記録するサイト】パッケージ＠OS
 
 ### インストール
 
+#### ・apt経由
+
+```bash
+$ apt install dnsutils
+```
+
 #### ・apt-get経由
 
 ```bash
 $ apt-get install dnsutils
-
-# またはこちら
-$ apt install dnsutils
 ```
 
 #### ・yum経由
 
 ```bash
-$ yum install bind-utils
+$ yum install -y bind-utils
 ```
 
 <br>
@@ -104,19 +107,22 @@ ns4.google.com  internet address = 216.239.38.10
 
 ### インストール
 
+#### ・apt経由
+
+```bash
+$ apt install net-tools 
+```
+
 #### ・apt-get経由
 
 ```bash
 $ apt-get install net-tools
-
-# またはこちら
-$ apt install net-tools 
 ```
 
 #### ・yum経由
 
 ```bash
-$ yum install net-tools 
+$ yum install -y net-tools 
 ```
 
 <br>
@@ -156,7 +162,47 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 <br>
 
-## 03. supervisor
+## 03. pstree
+
+### インストール
+
+#### ・apt経由
+
+```bash
+$ apt install pstree
+```
+
+#### ・apt-get経由
+
+```bash
+$ apt-get install pstree
+```
+
+<br>
+
+### pstree
+
+#### ・オプション無し
+
+プロセスの親子関係をツリー状に表示する．
+
+```bash
+# MacOSの場合
+$ pstree
+
+-+= 00001 root /sbin/launchd
+ |--= 00059 root /usr/sbin/syslogd
+ |--= 00060 root /usr/libexec/UserEventAgent (System)
+ |-+= 00062 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_ctl
+ | \-+= 00286 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon
+ |   |--- 00323 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon --scan-process
+ |   |--- 00455 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_fcor
+...
+```
+
+<br>
+
+## 04. supervisor
 
 ### インストール
 
@@ -275,7 +321,7 @@ user=root
 - http://supervisord.org/configuration.html#program-x-section-settings
 - https://christina04.hatenablog.com/entry/2015/07/21/215525
 
-```bash
+```ini
 [program:php-fpm]
 
 # 〜 中略 〜
@@ -289,7 +335,7 @@ user=root
 
 常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する．
 
-```bash
+```ini
 autorestart=true
 ```
 
@@ -297,7 +343,7 @@ autorestart=true
 
 supervisordの起動時に常駐プロセスを自動的に起動させるかどうか，を設定する．
 
-```bash
+```ini
 autostart=true
 ```
 
@@ -305,7 +351,7 @@ autostart=true
 
 常駐プロセスの起動コマンドを設定する．
 
-```bash
+```ini
 command=/usr/sbin/crond -n
 ```
 
@@ -313,7 +359,7 @@ command=/usr/sbin/crond -n
 
 常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する．
 
-```bash
+```ini
 redirect_stderr=true
 ```
 
@@ -321,7 +367,7 @@ redirect_stderr=true
 
 常駐プロセスの起動に失敗した場合に，何回再試行するかを設定する．
 
-```bash
+```ini
 startretries=10
 ```
 
@@ -331,7 +377,7 @@ startretries=10
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
-```bash
+```ini
 # 標準出力の場所
 stdout_logfile=/dev/stdout
 stdout_logfile_maxbytes=0
@@ -345,7 +391,7 @@ stderr_logfile_maxbytes=0
 
 ログローテートによって作成されるバックアップの世代数．
 
-```bash
+```ini
 stdout_logfile_backups=10
 ```
 
@@ -353,7 +399,7 @@ stdout_logfile_backups=10
 
 ログファイルの最大サイズ．設定値を超えると，ログローテートが実行される．これにより，ログファイルがバックアップとして保存され，新しいログファイルが作成される．
 
-```bash
+```ini
 stdout_logfile_maxbytes=50MB
 ```
 
@@ -361,7 +407,7 @@ stdout_logfile_maxbytes=50MB
 
 常駐プロセスの実行ユーザーを設定する．
 
-```bash
+```ini
 user=root
 ```
 
@@ -371,7 +417,7 @@ user=root
 
 #### ・priority
 
-```bash
+```ini
 priority=999
 ```
 
@@ -379,7 +425,7 @@ priority=999
 
 グループ化する常駐プロセス名を設定する．
 
-```bash
+```ini
 programs=bar,baz
 ```
 
@@ -409,7 +455,7 @@ $ supervisorctl update
 
 <br>
 
-## 04. systemctl：system control（旧service）
+## 05. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
@@ -431,12 +477,17 @@ $ supervisorctl update
 
 ### インストール
 
+#### ・apt経由
+
+```bash
+$ apt install systemd
+```
+
+
+
 #### ・apt-get経由
 
 ```bash
-$ apt-get install systemd
-
-# またはこちら
 $ apt-get install systemd
 ```
 
@@ -558,23 +609,26 @@ $ sudo systemctl stop nginx
 
 <br>
 
-## 05. tcpdump
+## 06. tcpdump
 
 ### インストール
+
+#### ・apt経由
+
+```bash
+$ apt install tcpdump
+```
 
 #### ・apt-get経由
 
 ```bash
 $ apt-get install tcpdump
-
-# またはこちら
-$ apt install tcpdump
 ```
 
 #### ・yum経由
 
 ```bash
-$ yum install tcpdump
+$ yum install -y tcpdump
 ```
 
 <br>
@@ -585,7 +639,7 @@ $ yum install tcpdump
 
 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
-```
+```bash
 sudo tcpdump -i eth0
 ```
 

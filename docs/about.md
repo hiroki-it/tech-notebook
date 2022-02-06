@@ -55,7 +55,7 @@ title: 【知見を記録するサイト】当サイトについて
 
 ## サイトの作成方法
 
-MkDocsを使用して，mdファイルからHTMLを生成しております．こちらのリポジトリでバージョン管理しております．
+MkDocsを用いて，mdファイルからHTMLを生成しております．こちらのリポジトリでバージョン管理しております．
 
 参考：https://github.com/hiroki-it/tech-notebook-mkdocs
 

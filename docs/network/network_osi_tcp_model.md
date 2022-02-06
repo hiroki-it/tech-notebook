@@ -102,7 +102,7 @@ NIC：Network Interface Card（例：LANアダプタ，LANボード，LANカー�
 
 ![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/application_expose-port.png)
 
-ちなみに，ポート番号を使用しているプロセスの一覧は，以下のコマンドで表示できる．
+ちなみに，ポート番号を用いているプロセスの一覧は，以下のコマンドで表示できる．
 
 ```bash
 $ sudo lsof -i -P | grep "LISTEN"

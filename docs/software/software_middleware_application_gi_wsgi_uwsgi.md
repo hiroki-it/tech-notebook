@@ -36,7 +36,7 @@ $ pip install uwsgi
 
 #### ・```uwsgi.ini```ファイルとは
 
-uWSGIの起動に関する設定値を定義する．JSON形式やXML形式でも問題ない．
+uWSGIの起動時の値を設定する．JSON形式やXML形式でも問題ない．
 
 参考：
 
@@ -101,7 +101,7 @@ spawned uWSGI http 1 (pid: 10)
 
 ### uwsgiセクションとは
 
-uWSGIの設定値を定義する．
+uWSGIを設定する．
 
 <br>
 

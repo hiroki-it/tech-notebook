@@ -176,7 +176,7 @@ $ apt install nginx
 #### ・yum経由
 
 ```bash
-$ yum install nginx
+$ yum install -y nginx
 ```
 
 <br>
@@ -504,7 +504,7 @@ listen 443 ssl;
 
 #### ・sendfile
 
-クライアントへのレスポンス時に，ファイル送信のためにLinuxのsendfileシステムコールを用いるかどうかを設定する．ファイル返信処理をOS内で行うため，処理が速くなる．使用しない場合，Nginxがレスポンス時に自身でファイル返信処理を行う．
+クライアントへのレスポンス時に，ファイル送信のためにLinuxのsendfileシステムコールを用いるかどうかを設定する．ファイル返信処理をOS内で行うため，処理が速くなる．用いない場合，Nginxがレスポンス時に自身でファイル返信処理を行う．
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 

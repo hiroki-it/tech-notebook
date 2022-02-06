@@ -347,7 +347,7 @@ func main() {
 
 #### ・ログの出力方法
 
-標準パッケージの```fmt```，または任意のロギングパッケージを使用し，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
+標準パッケージの```fmt```，または任意のロギングパッケージを用いて，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-logging.html
 

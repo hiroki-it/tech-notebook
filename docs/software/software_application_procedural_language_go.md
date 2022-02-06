@@ -37,9 +37,22 @@ description: Goの知見をまとめました。
 
 ## 02. セットアップ
 
+### インストール
+
+#### ・yum経由
+
+参考：https://www.cyberithub.com/install-go-on-centos/
+
+```bash
+$ yum install -y epel-release
+$ yum install -y golang
+```
+
+<br>
+
 ### Dockerfile
 
-注意するべきことをコメントアウトで示す．
+#### ・Ginを用いる場合
 
 ```dockerfile
 #===================

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】マイクロサービスアーキテクチャ＠アーキテクチャ
+description: マイクロサービスアーキテクチャ＠アーキテクチャの知見をまとめました。
 ---
 
 # マイクロサービスアーキテクチャ＠アーキテクチャ
@@ -404,7 +405,7 @@ HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相�
 
 ### 障害対策
 
-#### ・サーキットブレイカーとは
+#### ・サーキットブレイカー
 
 マイクロサービス間に設置され，他のマイクロサービスに連鎖する障害を吸収するプログラムのこと．下流マイクロサービスに障害が起こった時に，上流マイクロサービスにエラーを返してしまわないよう，直近の成功時の処理結果を返信する．
 
@@ -414,19 +415,11 @@ HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相�
 
 ### 横断的な監視
 
-#### ・分散トレーシングとは
+#### ・分散トレーシング
 
 マイクロサービス間で分散してしまう各ログを，一意なIDで紐付ける方法．
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
-
-#### ・モニタリング
-
-Datadogによる分散トレースの監視については，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_distributed_trace.html
-
-<br>
 
 
 

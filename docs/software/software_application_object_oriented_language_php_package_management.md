@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】Composer
+title: 【知見を記録するサイト】パッケージ管理＠PHP
 ---
 
 # パッケージ管理＠PHP
@@ -16,7 +16,23 @@ title: 【知見を記録するサイト】Composer
 
 ### セットアップ
 
+#### ・インストール
+
 参考：https://getcomposer.org/download/
+
+```bash
+# インストーラーをダウンロードする．
+$ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+# インストーラーのハッシュ値を確認する．
+$ php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+# インストーラーを実行する．
+$ php composer-setup.php
+
+# インストーラーを削除する．
+$ php -r "unlink('composer-setup.php');"
+```
 
 <br>
 
@@ -24,7 +40,7 @@ title: 【知見を記録するサイト】Composer
 
 #### ・autoload
 
-名前空間とファイルパスの対応関係を設定する．```require```関数を使用せずに，クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる．
+名前空間とファイルパスの対応関係を設定する．```require```関数を用いずに，クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる．
 
 参考：
 
@@ -33,6 +49,9 @@ title: 【知見を記録するサイト】Composer
 
 ```bash
 {
+
+    # 〜 中略 〜
+    
     "autoload": {
         "psr-4": {
              # "<名前空間>": "<ファイルパス>",
@@ -45,6 +64,40 @@ title: 【知見を記録するサイト】Composer
             "database/factories"
         ]
     }
+    
+    # 〜 中略 〜
+
+}
+```
+
+composerに登録された対応関係は，```php```コマンドで確認するとよい．
+
+```bash
+$ php -r '
+    $autoloader = require "vendor/autoload.php";
+    echo json_encode($autoloader->getPrefixesPsr4(), JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
+  '
+```
+
+#### ・config
+
+composerコマンドのオプションのデフォルト値を設定する．
+
+参考：https://getcomposer.org/doc/04-schema.md#config
+
+```bash
+{
+
+    # 〜 中略 〜
+    
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+    
+    # 〜 中略 〜
+
 }
 ```
 
@@ -58,34 +111,52 @@ title: 【知見を記録するサイト】Composer
 # 個人的に一番おすすめ
 # キャレット表記
 {
-  "require": {
-    "foo": "^1.1.1",  # >=1.1.1 and <1.2.0
-    "bar": "^1.1",    # >=1.1.0 and <1.2.0
-    "baz": "^0.0.1"   # >=0.0.1 and <0.0.2
-  }
+
+    # 〜 中略 〜
+ 
+    "require": {
+        "foo": "^1.1.1",  # >=1.1.1 and <1.2.0
+        "bar": "^1.1",    # >=1.1.0 and <1.2.0
+        "baz": "^0.0.1"   # >=0.0.1 and <0.0.2
+    }
+  
+    # 〜 中略 〜
+    
 }
 ```
 
 ```bash
 # チルダ表記
 {
-  "require": {
-    "foo": "~1.1.1",  # >=1.1.1 and <2.0.0
-    "bar": "~1.1",    # >=1.1.0 and <2.0.0
-    "baz": "~1"       # >=1.1.0 and <2.0.0
-  }
+
+    # 〜 中略 〜
+    
+    "require": {
+        "foo": "~1.1.1",  # >=1.1.1 and <2.0.0
+        "bar": "~1.1",    # >=1.1.0 and <2.0.0
+        "baz": "~1"       # >=1.1.0 and <2.0.0
+    }
+  
+    # 〜 中略 〜
+    
 }
 ```
 
 ```bash
 # エックス，アスタリスク表記
 {
-  "require": {
-    "foo": "*",     # どんなバージョンでもOK
-    "bar": "1.1.x", # >=1.1.0 and <1.2.0 
-    "baz": "1.X",   # >=1.0.0 and <2.0.0
-    "qux": ""       # "*"と同じことになる = どんなバージョンでもOK
-  }
+
+    # 〜 中略 〜
+
+    "require": {
+        "foo": "*",     # どんなバージョンでもOK
+        "bar": "1.1.x", # >=1.1.0 and <1.2.0 
+        "baz": "1.X",   # >=1.0.0 and <2.0.0
+        "qux": ""       # "*"と同じことになる = どんなバージョンでもOK
+    }
+
+    # 〜 中略 〜
+  
 }
 ```
 
@@ -97,6 +168,9 @@ title: 【知見を記録するサイト】Composer
 
 ```bash
 {
+
+    # 〜 中略 〜
+  
     "scripts": {
         # エイリアス名
         "post-autoload-dump": [
@@ -111,6 +185,9 @@ title: 【知見を記録するサイト】Composer
             "@php artisan key:generate --ansi"
         ]
     }
+    
+    # 〜 中略 〜
+  
 }
 ```
 
@@ -124,7 +201,11 @@ composerのバージョンを設定する．インストールされているcom
 
 ```bash
 {
-  "version": "1.10.23"
+    # 〜 中略 〜
+
+    "version": "1.10.23"
+  
+    # 〜 中略 〜
 }
 ```
 
@@ -293,7 +374,7 @@ $ composer install
 
 #### ・オプション無し
 
-パッケージ名を```composer.json```ファイルを書き込む．インストールは行わない．コマンドを使用せずに自分で実装しても良い．
+パッケージ名を```composer.json```ファイルを書き込む．インストールは行わない．コマンドを用いずに自分で実装しても良い．
 
 ```bash
 $ composer require <パッケージ名>:^x.x

@@ -37,7 +37,7 @@ $ docker-compose config
 
 #### ・--no-cache
 
-キャッシュを使用せずにイメージをビルドする．
+キャッシュを用いずにイメージをビルドする．
 
 ```bash
 $ docker-compose build --no-cache

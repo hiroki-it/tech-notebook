@@ -214,7 +214,7 @@ const nuxtConfig: Configuration = {
 
 ####  ・```privateRuntimeConfig```
 
-クライアントサイドのみで参照できる環境変数を定義する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
+クライアントサイドのみで参照できる環境変数を設定する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -254,7 +254,7 @@ export function foo() {
 
 #### ・```publicRuntimeConfig```
 
-サーバーサイドとクライアントサイドの両方で参照できる環境変数を定義する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
+サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -310,7 +310,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```serverMiddleware```
 
-リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を定義する．
+リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を設定する．
 
 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 

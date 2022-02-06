@@ -962,7 +962,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 <br>
 
-## 10. LBリスナーとターゲットグループ
+## 10. リスナーとターゲットグループ
 
 ### まとめ
 
@@ -1025,14 +1025,14 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ### （＊）ターゲットグループの削除時にリスナーを先に削除できない．
 
-LBリスナーがターゲットグループに依存しているが，Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため，以下のようなエラーが発生する．
+リスナーがターゲットグループに依存しているが，Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため，以下のようなエラーが発生する．
 
 ```bash
 Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
 status code: 400, request id: *****
 ```
 
-このエラーが発生した場合，コンソール画面上でLBリスナーを削除したうえで，もう一度applyする．
+このエラーが発生した場合，コンソール画面上でリスナーを削除したうえで，もう一度applyする．
 
 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 

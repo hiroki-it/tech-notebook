@@ -656,7 +656,7 @@ spec:
    - appProtocol: tcp
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが使用しなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
+もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが用いなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 

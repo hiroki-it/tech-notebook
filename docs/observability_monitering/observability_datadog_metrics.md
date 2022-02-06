@@ -30,7 +30,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ・インストール
 
-使用しているOSやIaCツールごとに，インストール方法が異なる．
+用いているOSやIaCツールごとに，インストール方法が異なる．
 
 参考：https://app.datadoghq.com/account/settings#agent
 

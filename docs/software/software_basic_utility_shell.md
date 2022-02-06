@@ -229,6 +229,19 @@ baz qux:
 	echo "baz"
 ```
 
+#### ・変数への代入
+
+ターゲット内では処理結果を変数に代入できず，環境変数として定義する必要がある．また，```$(shell ...)```とする必要がある．
+
+参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
+
+```makefile
+FOO=$(shell echo "foo")
+
+echo:
+	echo ${FOO}
+```
+
 <br>
 
 ### 実行方法とオプション

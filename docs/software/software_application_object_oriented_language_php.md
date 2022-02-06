@@ -15,11 +15,80 @@ description: PHPの知見をまとめました。
 
 ## 01. セットアップ
 
-### 設定ファイル（※ Dockerの場合）
+### インストール
 
-#### ・```php.ini```ファイル
+#### ・apt経由
 
-PHPの設定値を定義する．```php.ini```ファイルは，```/usr/local/etc/php```ディレクトリ下に配置されている．追加ディレクト以下に配置された任意の```ini```ファイルに実装された設定値が，ユーザー定義のカスタム値として読み込まれる．また，それ以外の設定値はデフォルト値となる．
+参考：https://loop-never-ends.com/ubuntu-php-install/
+
+```bash
+# 外部リポジトリをインストールする．
+$ apt -y install software-properties-common
+
+# PHPのリポジトリを登録する．
+$ add-apt-repository ppa:ondrej/php
+
+$ apt-get update
+
+# PHPをインストールする．
+$ apt -y install php<バージョン>
+```
+
+<br>
+
+### Dockerfile
+
+#### ・Laravel，PHP-FPMを用いる場合
+
+```dockerfile
+#===================
+# Global ARG
+#===================
+ARG PHP_FPM_VERSION="8.0.13"
+ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+
+#===================
+# Base Stage
+#===================
+FROM php:${PHP_FPM_VERSION}-fpm as base
+
+RUN apt-get update -y \
+  && apt-get install -y \
+      git \
+      vim \
+      unzip \
+      zip \
+  && docker-php-ext-install \
+      bcmath \
+      pdo_mysql \
+  && apt-get clean
+
+COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
+
+#===================
+# Development Stage
+#===================
+FROM base as development
+LABEL mantainer=${LABEL}
+
+#===================
+# Production Stage
+#===================
+FROM base as production
+LABEL mantainer=${LABEL}
+
+COPY ./ /var/www/foo/
+```
+
+<br>
+
+## 02. 設定ファイルの種類（※ Dockerの場合）
+
+### ```php.ini```ファイル
+
+#### ・```php.ini```ファイルとは
+
+PHPの起動時の値を設定する．```php.ini```ファイルは，```/usr/local/etc/php```ディレクトリ下に配置されている．追加ディレクト以下に配置された任意の```ini```ファイルに実装された設定値が，ユーザー定義のカスタム値として読み込まれる．また，それ以外の設定値はデフォルト値となる．
 
 参考：https://www.php.net/manual/ja/configuration.file.php
 
@@ -34,7 +103,7 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
 
-Docker PHPでは，```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている．これをコピーして設定値を変更し，読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）．あるいは，最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し，同じく配置しても良い．
+PHPでは，```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている．これをコピーして設定値を変更し，読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）．あるいは，最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し，同じく配置しても良い．
 
 ```bash
 $ ls -la /usr/local/etc/php
@@ -162,7 +231,7 @@ opcache.preload_user = www-data
 
 <br>
 
-## 02. 拡張機能
+## 03. 拡張機能
 
 ### OPcache
 

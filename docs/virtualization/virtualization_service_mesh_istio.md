@@ -111,7 +111,7 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 
 #### ・ServiceEntryとは
 
-アウトバウンド通信のうち，送信可能なもののみを指定したドメインやEgressGatewayにルーティングする．ServiceEntryを使用しない場合は，全てのアウトバウンド通信がルーティングされる．
+アウトバウンド通信のうち，送信可能なもののみを指定したドメインやEgressGatewayにルーティングする．ServiceEntryを用いない場合は，全てのアウトバウンド通信がルーティングされる．
 
 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 

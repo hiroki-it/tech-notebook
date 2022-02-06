@@ -32,13 +32,16 @@ PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイ�
 
 ### インストール
 
+#### ・apt経由
+
+```bash
+$ apt install php-fpm
+```
+
 #### ・apt-get経由
 
 ```bash
 $ apt-get install php-fpm
-
-# またはこちら
-$ apt install php-fpm
 ```
 
 <br>
@@ -150,6 +153,8 @@ listen.group = www-data
 
 ### listen.mode
 
+プロセスの実行権限を設定する．
+
 ```ini
 [www]
 listen.mode = 0660
@@ -190,7 +195,7 @@ php_admin_value[error_log] = /dev/stderr
 
 ### php_value[session.save_handler]
 
-セッションの保存方法を設定する．ファイル形式やRedisキーマップ形式を設定できる．デフォルト値は```files```である．
+セッションの保存方法を設定する．ファイル形式やRedisマップ形式を設定できる．デフォルト値は```files```である．
 
 ```ini
 [www]
@@ -221,6 +226,10 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 ### pm
 
+子プロセス数の増減タイプを設定する．```static```の場合は，リクエスト数によらず一定数の子プロセスをメモリに割り当て，```dynamic```の場合はリクエスト数によって子プロセスを増減させる．
+
+参考：https://life.iua.jp/?p=230
+
 ```ini
 [www]
 pm = dynamic
@@ -230,6 +239,13 @@ pm = dynamic
 
 ### pm.max_children
 
+子プロセスの最大数を設定する．子プロセスの最大数は，同時に処理可能なリクエストの最大数に相当する．
+
+参考：
+
+- https://life.iua.jp/?p=230
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
+
 ```ini
 [www]
 pm.max_children = 50
@@ -237,16 +253,24 @@ pm.max_children = 50
 
 <br>
 
-### pm.start_servers
+### pm.max_spare_servers
+
+アイドル状態にしておく子プロセスの最大数を設定する．
+
+参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
-pm.start_servers = 5
+pm.max_spare_servers = 35
 ```
 
 <br>
 
 ### pm.min_spare_servers
+
+アイドル状態にしておく子プロセスの最小数を設定する．
+
+参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -255,11 +279,15 @@ pm.min_spare_servers = 5
 
 <br>
 
-### pm.max_spare_servers
+### pm.start_servers
+
+PHP-FPM起動時の子プロセス数を設定する．
+
+参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
-pm.max_spare_servers = 35
+pm.start_servers = 5
 ```
 
 <br>

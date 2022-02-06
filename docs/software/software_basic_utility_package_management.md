@@ -251,7 +251,7 @@ $ dnf module enable php:remi-7.4
 ```bash
 # CentOS7の場合
 # 一時的に有効化できるオプションを用いて，明示的にremiを指定
-$ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
+$ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
 # CentOS8の場合

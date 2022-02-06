@@ -118,15 +118,15 @@ description: 可観測性の知見をまとめました。
 
 参考：
 
-- https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+- https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 - https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
 
-| アクション | ツール名            |
-| ---------- | ------------------- |
-| 収集       | Datadog，cAdvisor   |
-| 保管       | -                   |
-| 可視化     | Datadog，Prometheus |
-| 分析       | Datadog，Prometheus |
+| アクション | ツール名                   |
+| ---------- | -------------------------- |
+| 収集       | Datadog，cAdvisor          |
+| 保管       | -                          |
+| 可視化     | Datadog，Prometheus，Kiali |
+| 分析       | Datadog，Prometheus，Kiali |
 
 <br>
 
@@ -186,7 +186,7 @@ description: 可観測性の知見をまとめました。
 
 参考：
 
-- https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+- https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 - https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
 
 | アクション | ツール名                 |
@@ -277,7 +277,7 @@ description: 可観測性の知見をまとめました。
 
 ### ツール
 
-参考：https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+参考：https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 
 | アクション | ツール名        |
 | ---------- | --------------- |

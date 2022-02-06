@@ -71,7 +71,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 ### SERVICEとは
 
-パイプライン全体の設定やファイルの読み込みを定義する．各設定の頭文字は大文字とする．
+パイプライン全体の設定やファイルの読み込みを設定する．各設定の頭文字は大文字とする．
 
 **＊実装例＊**
 
@@ -145,7 +145,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
 
-ログのパイプラインへのインプット方法を定義する．
+ログのパイプラインへのインプット方法を設定する．
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
@@ -727,7 +727,7 @@ Fluentdから概念図を拝借した．バッファーとして機能するメ�
 
 ![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_output.png)
 
-ログのアウトプット先を定義する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
+ログのアウトプット先を設定する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
 
 参考：
 
@@ -1109,7 +1109,7 @@ FluentBit/Fluentdが対応する他のマイクロサービスにログをルー
 
 #### ・ログルーティングプロセス
 
-FireLensコンテナでは，FluentBitまたはFlunetdがログルーティングプロセスとして稼働する．FireLensコンテナを使用せずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを用いれば，主要なセットアップがされているため，より簡単な設定でFluentBitまたはFlunetdを使用できる．FluentBitの方がより低負荷で稼働するため，FluentBitが推奨されている．
+FireLensコンテナでは，FluentBitまたはFlunetdがログルーティングプロセスとして稼働する．FireLensコンテナを用いずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを用いれば，主要なセットアップがされているため，より簡単な設定でFluentBitまたはFlunetdを使用できる．FluentBitの方がより低負荷で稼働するため，FluentBitが推奨されている．
 
 参考：
 
@@ -1273,7 +1273,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
 
 #### ・```stream_processor.conf```ファイル
 
-STREAM_TASKにて，ログのタグ付けを定義する．FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．ちなみに，STREAM_TASKでタグ付けされたログは，INPUTから再び処理し直される．
+STREAM_TASKにて，ログのタグ付けを設定する．FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．ちなみに，STREAM_TASKでタグ付けされたログは，INPUTから再び処理し直される．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
@@ -1320,7 +1320,7 @@ STREAM_TASKにて，ログのタグ付けを定義する．FireLensコンテナ�
 
 #### ・```parsers_multiline.conf```ファイル
 
-MULTILINE_PARSERにて，スタックトレースログの各行の結合を定義する．
+MULTILINE_PARSERにて，スタックトレースログの各行の結合を設定する．
 
 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
 
@@ -1428,5 +1428,5 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 | ```config-file-type```                              | FluentBitの設定ファイルを読み込むために，```file```とする．  |
 | ```config-file-value```                             | ```options```キーにて，ログルーティングを設定できるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする． |
 | ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
-| ```environment```，```secrets```                    | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように，コンテナの環境変数に値を定義する． |
+| ```environment```，```secrets```                    | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように，コンテナの環境変数に値を設定する． |
 

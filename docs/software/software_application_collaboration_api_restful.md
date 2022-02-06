@@ -280,7 +280,7 @@ PUT https://example.com/users/{id}
 DELETE https://example.com/users/{id}
 ```
 
-#### ・数字，バージョン番号を可能な限り使用しないこと
+#### ・数字，バージョン番号を可能な限り用いないこと
 
 **＊悪い実装例＊**
 

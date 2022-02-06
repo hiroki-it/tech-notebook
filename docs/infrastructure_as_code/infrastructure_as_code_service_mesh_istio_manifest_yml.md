@@ -397,7 +397,7 @@ spec:
 
 #### ・tls.mode
 
-Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する．HTTPSプロトコルを使用しない場合は，```DISABLE```とする．
+Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する．HTTPSプロトコルを用いない場合は，```DISABLE```とする．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
@@ -913,7 +913,7 @@ istio-proxyコンテナ間の通信で相互TLSを有効化するかどうかを
 kind: IstioOperator
 spec:
   mtls:
-    mode: DISABLE # 相互TLSを使用しない．
+    mode: DISABLE # 相互TLSを用いない．
 ```
 
 相互TLSを有効化する場合はSSL証明書が必要になり，これがないと以下のようなエラーになる．
