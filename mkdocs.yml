@@ -153,7 +153,8 @@ nav:
                         - ■ Laravel:
                             - コンポーネント: software/software_application_object_oriented_language_php_framework_laravel_component.md
                             - Eloquent: software/software_application_object_oriented_language_php_framework_laravel_eloquent.md
-                            - 認証/認可: software/software_application_object_oriented_language_php_framework_laravel_auth.md
+                            - パッケージ: software/software_application_object_oriented_language_php_framework_laravel_package.md
+                            - 認証/認可系パッケージ: software/software_application_object_oriented_language_php_framework_laravel_package_auth.md
                         - Symfony: software/software_application_object_oriented_language_php_framework_symfony.md
                     - ■ パッケージ:
                         - パッケージ管理: software/software_application_object_oriented_language_php_package_management.md
