@@ -70,9 +70,11 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-### 設定ファイル（※ Dockerの場合）
+## 02. 設定ファイルの種類（※ Dockerの場合）
 
-#### ・```/etc/mysql/my.cnf```ファイル
+### ```/etc/mysql/my.cnf```ファイル
+
+#### ・```/etc/mysql/my.cnf```ファイルとは
 
 MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ下にある```*.cnf```ファイルを読み込むようになっている．
 
@@ -102,51 +104,6 @@ MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/m
 !includedir /etc/mysql/conf.d/
 !includedir /etc/mysql/mysql.conf.d/
 ```
-
-このファイルを上書きすることで，設定値を上書きできる．
-
-```ini
-[mysqld]
-skip-host-cache # 記述なし
-skip-name-resolve # 記述なし
-datadir = /var/lib/mysql
-socket = /var/lib/mysql/mysql.sock
-secure-file-priv = /var/lib/mysql-files
-user = mysql
-
-pid-file = /var/run/mysqld/mysqld.pid
-
-# character set / collation
-character_set_server = utf8mb4 # latin1
-collation_server = utf8mb4_general_ci # latin1
-
-# timezone
-default-time-zone = SYSTEM
-log_timestamps = SYSTEM # UTC
-
-# Error Log
-log-error = mysql-error.log # /var/log/mysqld.log
-
-# Slow Query Log
-slow_query_log = 1 # off
-slow_query_log_file = mysql-slow.log # host_name-slow.log
-long_query_time = 3 # 10
-log_queries_not_using_indexes = 0 # off
-
-# General Log
-general_log = 1 # off
-general_log_file = mysql-general.log # host_name.log
-
-[mysql]
-default-character-set = utf8mb4 # utf8
-
-[client]
-default-character-set = utf8mb4 # utf8
-```
-
-<br>
-
-### ディレクトリ
 
 #### ・```datadir```ディレクトリ
 
@@ -178,3 +135,201 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 ```
 
 <br>
+
+## 03. mysqldセクション
+
+### mysqldセクション
+
+mysqlサーバーを設定する．
+
+<br>
+
+### character-set-server
+
+データベースの作成時に適用する文字コードを設定する．
+
+```ini
+[mysql]
+character-set-server = utf8mb4
+```
+
+<br>
+
+### collation_server
+
+照合順序を設定する．
+
+```ini
+[mysqld]
+collation_server = utf8mb4_general_ci
+```
+
+<br>
+
+### default-time-zone
+
+デフォルトのタイムゾーンを設定する．
+
+```ini
+[mysqld]
+default-time-zone = SYSTEM
+```
+
+<br>
+
+### datadir
+
+テーブル情報のファイルを生成するディレクトリを設定する．
+
+```ini
+[mysqld]
+datadir = /var/lib/mysql
+```
+
+<br>
+
+### log-error
+
+エラーログの出力先を設定する．
+
+```ini
+[mysqld]
+log-error = mysql-error.log
+```
+
+<br>
+
+### log_timestamps
+
+ログのタイムゾーンを設定する．
+
+```ini
+[mysqld]
+log_timestamps = SYSTEM
+```
+
+<br>
+
+### general_log
+
+一般ログを出力するかどうかを設定する．
+
+```ini
+[mysqld]
+general_log = 1
+```
+
+<br>
+
+### general_log_file
+
+一般ログの出力先のファイルを設定する．
+
+```ini
+[mysqld]
+general_log_file = mysql-general.log
+```
+
+<br>
+
+### log_queries_not_using_indexes
+
+DBインデックスを用いるかどうかを設定する．
+
+```ini
+[mysqld]
+log_queries_not_using_indexes = 0
+```
+
+<br>
+
+### long_query_time
+
+スロークエリログと見なす実行秒数を設定する．
+
+```ini
+[mysqld]
+long_query_time = 3
+```
+
+<br>
+
+### pid-file
+
+プロセスIDファイルの生成先を設定する．
+
+```ini
+[mysqld]
+pid-file = /var/run/mysqld/mysqld.pid
+```
+
+<br>
+
+### secure-file-priv
+
+```ini
+[mysqld]
+secure-file-priv = /var/lib/mysql-files
+```
+
+<br>
+
+### slow_query_log
+
+スロークエリログを出力するかどうかを設定する．
+
+```ini
+[mysqld]
+slow_query_log = 1
+```
+
+<br>
+
+### slow_query_log_file
+
+スロークエリログの出力先のファイルを設定する．
+
+```ini
+[mysqld]
+slow_query_log_file = mysql-slow.log
+```
+
+<br>
+
+### socket
+
+```ini
+[mysqld]
+socket = /var/lib/mysql/mysql.sock
+```
+
+<br>
+
+### user
+
+プロセスの実行ユーザ名を設定する．
+
+```ini
+[mysqld]
+user = mysql
+```
+
+<br>
+
+## 03-02. clientセクション
+
+### clientセクションとは
+
+mysqlクライアントツールを設定する．
+
+<br>
+
+### default-character-set
+
+デフォルトの文字コードを設定する．
+
+```ini
+[mysqld]
+default-character-set = utf8mb4
+```
+

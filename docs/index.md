@@ -95,8 +95,9 @@ title: 【知見を記録するサイト】目次
             * フレームワーク
                 * Laravel
                     * [📖 ︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component.html)
-                    * [📖 ︎Eloquent](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_eloquent.html)
-                    * [📖 ︎認証/認可](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_auth.html)
+                    * [📖 ︎Eloquentコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component_eloquent.html)
+                    * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package.html)
+                    * [📖 ︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package_auth.html)
                 * [📖 ︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html)
             * パッケージ
                 * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html)

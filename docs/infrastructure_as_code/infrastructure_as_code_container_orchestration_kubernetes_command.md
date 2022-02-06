@@ -534,3 +534,16 @@ $ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<タグ名> --p
 $ kubectl run <ジョブ名> --restart=OnFailure --image=<イメージ名>:<タグ名> --port=<ポート番号>
 ```
 
+<br>
+
+### top
+
+NodeやPodのサチュレーションを表示する．
+
+```bash
+$ kubectl top node
+
+NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+minikube   523m         13%    4393Mi          27%       
+```
+

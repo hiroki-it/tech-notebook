@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】コンポーネント@Laravel
+description: 認証/認可@Laravelの知見をまとめました。
 ---
 
 # コンポーネント@Laravel
@@ -1943,334 +1944,9 @@ $ php artisan make:controller <Controller名>
 
 <br>
 
-### リクエストパラメータの取得
 
-#### ・クエリパラメーター/メッセージボディ
 
-クエリパラメーターとメッセージボディの両方を取得する．
-
-参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
-    {
-        $params = $request->all(); // 全てのパラメーターを連想配列で取得する．
-
-        $foo = $request->input('foo'); // 指定したパラメータの値を取得する．
-        
-        $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する．
-
-        $params = $request->only(['foo', 'bar']); // 指定したパラメーターを連想配列で取得する．
-
-        $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する．
-
-        $foo = $request->foo; // 指定したパラメータの値を取得する．
-
-        $foo = request('foo'); // 指定したパラメータの値を取得する．
-    }
-}
-```
-
-#### ・クエリパラメーター
-
-クエリパラメーターを取得する．
-
-参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     */
-    public function index(Request $request)
-    {
-        $params = $request->query(); // 全てのパラメーターを連想配列で取得する．
-
-        $foo = $request->query('foo'); // 指定したパラメータの値を取得する．
-    }
-}
-```
-
-#### ・パスパラメータ
-
-パスパラメーターを取得する．
-
-参考：
-
-- https://technote.space/posts/wpdb-laravel-get-url-parameter/
-- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
-- https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
-    {
-        $params = $request->route(); // 全てのパラメーターを連想配列で取得する．
-
-        $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する．
-
-        $fooId = $request->route->parameter('fooId'); // 指定したパラメータの値を取得する．
-    }
-}
-```
-
-あるいは，コントローラーの第二引数にパスパラメーター名を記述することで，パスパラメータの値を取得できる．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     * @param         $fooId
-     */
-    public function update(Request $request, $fooId)
-    {
-
-    }
-}
-```
-
-<br>
-
-## 10-02. HTTP｜Middleware
-
-### artisanコマンド
-
-#### ・クラスの自動生成
-
-Middlewareクラスを自動生成する．
-
-```bash
-$ php artisan make:middleware <Middleware名>
-```
-
-<br>
-
-### Middlewareの仕組み
-
-#### ・Middlewareの種類
-
-ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと，レスポンスの実行時にコールされるAfterMiddlewareがある
-
-![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
-
-#### ・BeforeMiddleware
-
-ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる．一連の処理を終えた後，FormRequestクラスを，次のMiddlewareクラスやControllerクラスに渡す必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Middleware;
-
-use Closure;
-
-class FooBeforeMiddleware
-{
-    /**
-     * @param  Request  $request
-     * @param  \Closure  $next
-     */
-    public function handle($request, Closure $next)
-    {
-        // 何らかの処理
-
-        // 次のMiddlewareクラスやControllerクラスに，FormRequestクラスを渡す．
-        return $next($request);
-    }
-}
-```
-
-#### ・AfterMiddleware
-
-コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる．あらかじめ，FormRequestクラスを，前のMiddlewareクラスやControllerクラスから受け取る必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
-
-**＊実装例＊**
-
-
-```php
-<?php
-
-namespace App\Http\Middleware;
-
-use Closure;
-
-class FooAfterMiddleware
-{
-    /**
-     * @param  Request  $request
-     * @param  \Closure  $next
-     */    
-    public function handle($request, Closure $next)
-    {
-        $response = $next($request);
-
-        // 何らかの処理
-
-        // 前のMiddlewareクラスやControllerクラスから，FormRequestクラスを受け取る．
-        return $response;
-    }
-}
-```
-
-<br>
-
-### 標準のMiddleware
-
-#### ・EncryptCookies
-
-レスポンス時に，```Cookie```ヘッダーの全ての値を暗号化する．暗号化したくない場合は，```Cookie```ヘッダーのキー名を```except```プロパティに設定する．
-
-参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
-
-#### ・StartSession
-
-セッションの開始の開始点になる．
-
-参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
-
-また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
-
-#### ・VerifyCsrfToken
-
-セッションファイルに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションファイルは```storage/framework/sessions```ディレクトリ下に配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを用いる必要がある．
-
-参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
-
-<br>
-
-### コール方法のカスタマイズ
-
-#### ・Kernel
-
-Middlewareクラスをコールする時の方法をカスタマイズできる．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http;
-
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
-class Kernel extends HttpKernel
-{
-    /**
-     * 全てのHTTPリクエストに適用するミドルウェアを定義します．
-     *
-     * @var array
-     */
-    protected $middleware = [
-        \App\Http\Middleware\Auth\TrustProxies::class,
-        \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
-        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Http\Middleware\Auth\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-    ];
-
-    /**
-     * エイリアス名とミドルウェアグループを定義します．
-     *
-     * @var array
-     */
-    protected $middlewareGroups = [
-        'web' => [
-        ],
-
-        'api' => [
-            'throttle:60,1',
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-    ];
-
-    /**
-     * エイリアス名と個別のミドルウェアを定義します．
-     *
-     * @var array
-     */
-    protected $routeMiddleware = [
-        'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
-        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
-        'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-
-        // Fooミドルウェアクラス
-        'foo' => \App\Http\Middleware\Before\FooMiddleware::class
-    ];
-
-    /**
-     * ミドルウェアをコールする順番を定義します．
-     *
-     * @var string[]
-     */
-    protected $middlewarePriority = [
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\Auth\Authenticate::class,
-        \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \Illuminate\Auth\Middleware\Authorize::class,
-    ];
-}
-```
-
-<br>
-
-## 10-03. HTTP｜FormRequest
+## 10-02. HTTP｜FormRequest
 
 ### artisanコマンド
 
@@ -2744,7 +2420,7 @@ $request->session()
 
 <br>
 
-### Requestの認証
+### 認証
 
 #### ・```authorize```メソッド
 
@@ -2769,6 +2445,363 @@ public function authorize()
 #### ・Authファサード
 
 Authファサードの説明を参考にせよ．
+
+<br>
+
+## 10-03. HTTP｜Middleware
+
+### artisanコマンド
+
+#### ・クラスの自動生成
+
+Middlewareクラスを自動生成する．
+
+```bash
+$ php artisan make:middleware <Middleware名>
+```
+
+<br>
+
+### Middlewareの仕組み
+
+#### ・Middlewareの種類
+
+ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと，レスポンスの実行時にコールされるAfterMiddlewareがある
+
+![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+
+#### ・BeforeMiddleware
+
+ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる．一連の処理を終えた後，FormRequestクラスを，次のMiddlewareクラスやControllerクラスに渡す必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class FooBeforeMiddleware
+{
+    /**
+     * @param  Request  $request
+     * @param  \Closure  $next
+     */
+    public function handle($request, Closure $next)
+    {
+        // 何らかの処理
+
+        // 次のMiddlewareクラスやControllerクラスに，FormRequestクラスを渡す．
+        return $next($request);
+    }
+}
+```
+
+#### ・AfterMiddleware
+
+コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる．あらかじめ，FormRequestクラスを，前のMiddlewareクラスやControllerクラスから受け取る必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class FooAfterMiddleware
+{
+    /**
+     * @param  Request  $request
+     * @param  \Closure  $next
+     */    
+    public function handle($request, Closure $next)
+    {
+        $response = $next($request);
+
+        // 何らかの処理
+
+        // 前のMiddlewareクラスやControllerクラスから，FormRequestクラスを受け取る．
+        return $response;
+    }
+}
+```
+
+<br>
+
+### 標準のMiddleware
+
+#### ・EncryptCookies
+
+レスポンス時に，```Cookie```ヘッダーの全ての値を暗号化する．暗号化したくない場合は，```Cookie```ヘッダーのキー名を```except```プロパティに設定する．
+
+参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+
+#### ・StartSession
+
+セッションの開始の開始点になる．
+
+参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
+
+また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+
+#### ・VerifyCsrfToken
+
+セッションファイルに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションファイルは```storage/framework/sessions```ディレクトリ下に配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを用いる必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+
+<br>
+
+### コール方法のカスタマイズ
+
+#### ・Kernel
+
+Middlewareクラスをコールする時の方法をカスタマイズできる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    /**
+     * 全てのHTTPリクエストに適用するミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $middleware = [
+        \App\Http\Middleware\Auth\TrustProxies::class,
+        \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\Auth\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+    ];
+
+    /**
+     * エイリアス名とミドルウェアグループを定義します．
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+        ],
+
+        'api' => [
+            'throttle:60,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    /**
+     * エイリアス名と個別のミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
+        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
+        'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        // Fooミドルウェアクラス
+        'foo' => \App\Http\Middleware\Before\FooMiddleware::class
+    ];
+
+    /**
+     * ミドルウェアをコールする順番を定義します．
+     *
+     * @var string[]
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Auth\Authenticate::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
+}
+```
+
+<br>
+
+## 10-04. HTTP｜Request
+
+### リクエストパラメータの取得
+
+#### ・クエリパラメーター/メッセージボディ
+
+クエリパラメーターとメッセージボディの両方を取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $params = $request->all(); // 全てのパラメーターを連想配列で取得する．
+
+        $foo = $request->input('foo'); // 指定したパラメータの値を取得する．
+        
+        $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する．
+
+        $params = $request->only(['foo', 'bar']); // 指定したパラメーターを連想配列で取得する．
+
+        $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する．
+
+        $foo = $request->foo; // 指定したパラメータの値を取得する．
+
+        $foo = request('foo'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+#### ・クエリパラメーター
+
+クエリパラメーターを取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        $params = $request->query(); // 全てのパラメーターを連想配列で取得する．
+
+        $foo = $request->query('foo'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+#### ・パスパラメータ
+
+パスパラメーターを取得する．
+
+参考：
+
+- https://technote.space/posts/wpdb-laravel-get-url-parameter/
+- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
+- https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $params = $request->route(); // 全てのパラメーターを連想配列で取得する．
+
+        $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する．
+
+        $fooId = $request->route->parameter('fooId'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+あるいは，コントローラーの第二引数にパスパラメーター名を記述することで，パスパラメータの値を取得できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param         $fooId
+     */
+    public function update(Request $request, $fooId)
+    {
+
+    }
+}
+```
+
+<br>
+
+### バリデーション
+
+Requestではなく，FormRequestを用いた方がバリデーションがおすすめである．
+
+参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
+
+```php
+namespace App\Http\Controllers;
+ 
+use Illuminate\Http\Request;
+ 
+class FooController extends Controller
+{
+    public function update(Request $request)
+    {
+        // リクエストのバリデーション
+        $validated = $request->validate([
+            'name'  => 'required',
+            'email' => 'required|email',
+        ]);
+        
+        // 〜 中略 〜
+    }
+}
+```
 
 <br>
 
@@ -2804,6 +2837,8 @@ LaravelとPHP-FPMのプロセスはそれぞれ独立しているため，Larave
 他の単一/複数のチャンネルを利用するチャンネル．
 
 ```php
+<?php
+    
 return [
 
     // ～ 中略 ～    
@@ -2828,6 +2863,8 @@ return [
 全てのログを```/storage/logs/laravel.log```ファイルに対して出力する．
 
 ```php
+<?php
+
 return [
 
     // ～ 中略 ～    
@@ -3332,7 +3369,9 @@ $ php artisan migrate
 
 #### ・```bigIncrements```メソッド
 
-AutoIncrementのINT型カラムを作成する．
+自動増分ありのINT型カラムを作成する．プライマリキーとするIDカラムのために用いる．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
 **＊実装例＊**
 
@@ -3342,6 +3381,25 @@ Schema::create("foos", function (Blueprint $table) {
     // ～ 中略 ～
     
     $table->bigIncrements("foo_id");
+    
+    // ～ 中略 ～
+    
+});
+```
+
+#### ・```unsignedBigInteger```メソッド
+
+自動増分なしのINT型カラムを作成する．プライマリキーではないIDカラムのために用いる．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
+
+```php
+Schema::create("foos", function (Blueprint $table) {
+    
+    // ～ 中略 ～
+    
+    $table->bigIncrements("foo_id");
+    $table->unsignedBigInteger("bar_id");
     
     // ～ 中略 ～
     
@@ -5396,195 +5454,5 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 {% block content %} <!-- @section("content") に相当 -->
     <p>子テンプレートのコンテンツになる要素</p>
 {% endblock %}
-```
-
-<br>
-
-## 21. Laravel Mixパッケージ
-
-### Laravel Mixパッケージとは
-
-WebpackをLaravelを介して操作できるパッケージのこと．Breezeパッケージにも同梱されている．
-
-参考：https://readouble.com/laravel/8.x/ja/mix.html
-
-<br>
-
-### Webpackを操作するコマンド
-
-#### ・アセットの初期コンパイル
-
-アセットのコンパイルを実行する．
-
-```bash
-$ npm run dev
-```
-
-#### ・アセットの自動再コンパイル
-
-アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
-
-```bash
-$ npm run watch
-```
-
-<br>
-
-## 22. 非公式パッケージ
-
-### laravel-enum
-
-#### ・ソースコード
-
-参考：https://github.com/BenSampo/laravel-enum
-
-#### ・Enumクラスの定義
-
-BenSampoのEnumクラスを継承し，区分値と判定メソッドを実装する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\ValueObject\Type;
-
-use BenSampo\Enum\Enum;
-
-class RoleType extends Enum
-{
-    public const CALL_ROLE = 1;        // コールセンター職  
-    public const DEVELOPMENT_ROLE = 2; // 開発職    
-    public const FINANCE_ROLE = 3;     // 経理職     
-    public const PLAN_ROLE = 4;        // 企画職       
-    public const SALES_ROLE = 5;       // 営業職
-    
-    /**
-     * コールセンター職の区分値を持つかどうかを判定します．
-     */    
-    public function isCallRole()
-    {
-        return $this->is(self::CALL_ROLE);
-    }
-    
-    /**
-     * 開発職の区分値を持つかを判定します．
-     */       
-    public function isDevelopmentRole()
-    {
-        return $this->is(self::DEVELOPMENT_ROLE);
-    }
-    
-    /**
-     * 経理職の区分値を持つかどうかを判定します．
-     */       
-    public function isFinanceRole()
-    {
-        return $this->is(self::FINANCE_ROLE);
-    }
-    
-    /**
-     * 企画職の区分値を持つかどうかを判定します．
-     */       
-    public function isPlanRole()
-    {
-        return $this->is(self::PLAN_ROLE);
-    }  
-    
-    /**
-     * 営業職の区分値を持つかどうかを判定します．
-     */       
-    public function isSalesRole()
-    {
-        return $this->is(self::SALES_ROLE);
-    }        
-}
-```
-
-#### ・Enumクラスの使い方
-
-**＊実装例＊**
-
-データベースから区分値をSELECTした後，これを元にEnumクラスを作成する．
-
-```php
-<?php
-
-// Staff
-$staff = new Staff();
- 
-// データベースから取得した区分値（開発職：2）からEnumクラスを作成
-$staff->roleType = new RoleType($fetched["role_type"]);
-// 以下の方法でも良い．
-// $staff->roleType = RoleType::fromValue($fetched["role_type"]);
-
-// StaffがいずれのRoleTypeを持つか
-$staff->roleType->isDevelopmentRole(); // true
-$staff->roleType->isSalesRole(); // false
-```
-
-<br>
-
-### laravel-ide-helper
-
-#### ・laravel-ide-helperとは
-
-PHPStromでLaravelを開発する場合，拡張機能を提供する．
-
-参考：
-
-- https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
-- https://pleiades.io/help/phpstorm/laravel.html
-
-プロバイダーを```app.php```ファイルに登録する必要がある．
-
-```php
-<?php
-    
-return [
-
-    // ...
-
-    'providers' => [
-        
-        // ...
-        
-        // Laravel IDE helper
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class',
-    ],
-    
-    // ...
-
-];
-```
-
-#### ・Facade
-
-PHPStromで，メソッドが定義された場所にジャンプできるように，```_ide_helper.php```ファイルを生成する．
-
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
-
-```bash
-$ php artisan ide-helper:generate
-```
-
-#### ・アノテーション生成
-
-PHPStromで，LaravelのEloquentモデルでのアノテーションを自動生成する．
-
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
-
-```bash
-$ php artisan ide-helper:models
-```
-
-#### ・予測表示
-
-PHPStromで，Laravelのメソッドを予測表示できるように，```phpstorm.meta.php```ファイルを生成する．
-
-参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
-
-```bash
-$ php artisan ide-helper:meta
 ```
 

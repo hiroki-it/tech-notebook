@@ -1,8 +1,9 @@
 ---
-title: 【知見を記録するサイト】Eloquent
+title: 【知見を記録するサイト】Eloquentコンポーネント@Laravel
+description: Eloquentコンポーネント@Laravelの知見をまとめました。
 ---
 
-# Eloquent
+# Eloquentコンポーネント@Laravel
 
 ## はじめに
 
@@ -174,7 +175,7 @@ $employees = $department->employees()
 
 #### ・主キーカラムの定義
 
-Eloquentは，```primaryKey```プロパティの値を主キーのカラム名と見なす．```keyType```プロパティで主キーのデータ型，また```incrementing```プロパティで主キーのAutoIncrementを有効化するか否か，を設定できる．
+Eloquentは，```primaryKey```プロパティの値を主キーのカラム名と見なす．```keyType```プロパティで主キーのデータ型，また```incrementing```プロパティで主キーの自動増分を有効化するか否か，を設定できる．
 
 **＊実装例＊**
 
@@ -200,7 +201,7 @@ class Foo extends Model
     /**
      * @var bool 
      */
-    public $incrementing = true; // 主キーのAutoIncrementの有効化します．
+    public $incrementing = true; // 主キーの自動増分の有効化します．
 }
 ```
 

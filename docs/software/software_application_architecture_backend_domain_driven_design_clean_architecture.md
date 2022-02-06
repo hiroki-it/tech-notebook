@@ -2199,7 +2199,7 @@ class DogToyRepository
         // SQLを定義する．
         $query->insert("dog_toy_table")
             ->values([
-                // ルートエンティティの要素をカラム値として設定する．（IDはAutoIncrement）
+                // ルートエンティティの要素をカラム値として設定する．（IDは自動増分）
                 "name"  => $dogToy->getName()->value(),
                 "type"  => $dogToy->getType()->value(),
                 "price" => $dogToy->getPriceVO()->value(),

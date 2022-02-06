@@ -13,7 +13,7 @@ description: Argo＠CI/CDの知見をまとめました．
 
 <br>
 
- ## 仕組み
+## 仕組み
 
 参考：
 
