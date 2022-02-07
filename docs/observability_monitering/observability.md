@@ -204,13 +204,38 @@ description: 可観測性の知見をまとめました。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
-マイクロサービスから収集されたスパンのセットのこと．スパンを紐付けることによって，異なるマイクロサービスを横断する処理を，一繋ぎなものとして認識できるようになる．
+マイクロサービスから収集されたスパンのセットのこと．スパンを紐付けることによって，異なるマイクロサービスを横断するを一繋ぎにし，リクエストによる一連の処理を認識できるようになる．
 
 参考：
 
 - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
 - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
+
+<br>
+
+### スパン
+
+#### ・スパンとは
+
+マイクロサービスアーキテクチャの特定のサービスにて，一つのリクエストで発生したデータのセットのこと．JSON型で定義されることが多い．SaaSツールによってJSON型の構造が異なる．
+
+参考：
+
+- https://opentracing.io/docs/overview/spans/
+- https://docs.datadoghq.com/ja/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
+- https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
+
+
+#### ・スパン間の紐付け
+
+リクエストヘッダーやボディにIDを割り当て，異なるマイクロサービスのスパン間を紐付ける．AWSを用いている場合，例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため，アプリケーションでリクエストIDを実装せずに分散トレースを実現できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+
+#### ・データポイント化
+
+スパンが持つデータをデータポイントとして集計することにより，メトリクスを収集できる．
 
 <br>
 
@@ -247,31 +272,6 @@ description: 可観測性の知見をまとめました。
 （７）```a3```：アプリケーションがレスポンスをクライアントに返信する．
 
 ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
-
-<br>
-
-### スパン
-
-#### ・スパンとは
-
-マイクロサービスアーキテクチャの特定のサービスで発生したデータのセットのこと．JSON型で定義されることが多い．SaaSツールによってJSON型の構造が異なる．
-
-参考：
-
-- https://opentracing.io/docs/overview/spans/
-- https://docs.datadoghq.com/ja/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
-- https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
-
-
-#### ・スパン間の紐付け
-
-リクエストヘッダーやボディにIDを割り当て，異なるマイクロサービスのスパン間を紐付ける．AWSを用いている場合，例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため，アプリケーションでリクエストIDを実装せずに分散トレースを実現できる．
-
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
-
-#### ・データポイント化
-
-スパンが持つデータをデータポイントとして集計することにより，メトリクスを収集できる．
 
 <br>
 

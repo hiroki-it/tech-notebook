@@ -329,7 +329,7 @@ mysqlクライアントツールを設定する．
 デフォルトの文字コードを設定する．
 
 ```ini
-[mysqld]
+[client]
 default-character-set = utf8mb4
 ```
 

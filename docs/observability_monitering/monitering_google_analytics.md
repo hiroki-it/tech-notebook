@@ -35,7 +35,7 @@ Googleアナリティクスでメトリクスを収集するためには，ア�
 ```html
 <head>
 
-  <!-- 中略 -->
+  <!-- ～ 中略 ～ -->
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-*****"></script>
@@ -46,7 +46,7 @@ Googleアナリティクスでメトリクスを収集するためには，ア�
     gtag('config', 'G-*****');
   </script>
 
-  <!-- 中略 -->
+  <!-- ～ 中略 ～ -->
   
 </head>
 ```

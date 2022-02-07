@@ -107,7 +107,7 @@ SSGの発展型．SSGとは異なり，事前にビルドせず，静的ファ�
 
 ### Atmic Designとは
 
-フロントエンドを構成する要素を，５つのレイヤー（Atoms，Molecules，Organisms，Templates，Pages）に分ける設計方法のこと．
+フロントエンドを構成する要素を，5つのレイヤー（Atoms，Molecules，Organisms，Templates，Pages）に分ける設計方法のこと．
 
 参考：https://atomicdesign.bradfrost.com/
 

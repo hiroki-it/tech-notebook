@@ -193,6 +193,16 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 }
 ```
 
+#### ・受信ログの確認
+
+Datadogコンテナにトレースが送信されている場合は，受信できていることを表すログを確認できる．
+
+```log
+2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0
+```
+
+
+
 <br>
 
 ### 環境変数
@@ -218,15 +228,17 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 #### ・インストール
 
-TypeScriptやモジュールバンドルを使っている場合，パッケージの読み込み処理が巻き上げられ，意図しない読み込みの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）で読み込むようにする．
+TypeScriptやモジュールバンドルを使っている場合，パッケージの読み込み処理が巻き上げられ，意図しない読み込みの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする．また，フレームワークよりも先に読み込むことになるため，```.env```ファイル参照機能を使えない．そこで，環境変数はインフラ側で設定するようにする．
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
 
 ```javascript
+// datadogTracer.tsファイル
 import tracer from 'dd-trace'
 
 tracer.init({
+  // フレームワークの.envファイル参照機能を使用できない 
   env: DD_ENV,
   service: DD_SERVICE + '-ssr',
   version: DD_VERSION,
@@ -236,12 +248,16 @@ tracer.init({
   startupLogs: true,
 })
 
-export default tracer
+export default datadogTracer
 ```
 
 ```javascript
-import './datadog/tracer'
+// nuxt.config.tsファイル
+// 先頭で読み込む
+import './datadogTracer'
 import { Configuration } from '@nuxt/types'
+
+// ～ 中略 ～
 ```
 
 #### ・起動ログの確認
@@ -352,14 +368,14 @@ Datadogで，スパンはJSON型データとして定義される．アプリケ
       "duration": 123,           # 処理の所要時間
       "error": 0,                # エラーの有無
       "meta": {
-        "env": "prd"           # タグのり
+        "env": "prd"             # タグのり
       },
       "metrics": {
-        "baz-sum": 123         # マイクロサービスのメトリクス
+        "baz-sum": 123           # マイクロサービスのメトリクス
       },
       "name": "laravel.request", # スパン名
       "parent_id": 123,          # 親スパンID
-      "resource": "/foo",       # アクセスされたリソース
+      "resource": "/foo",        # アクセスされたリソース
       "service": "laravel",      # マイクロサービス名
       "span_id": 123456789,      # スパンID
       "start": 0,                # 処理開始時間

@@ -3369,7 +3369,7 @@ $ php artisan migrate
 
 #### ・```bigIncrements```メソッド
 
-自動増分ありのINT型カラムを作成する．プライマリキーとするIDカラムのために用いる．
+自動増分ありのINT型カラムを作成する．プライマリキーとするIDカラムのために用いる．自動増分のカラムは1つのテーブルに1つしか定義できず，他のIDカラムは```unsignedBigInteger```メソッドを用いて定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
@@ -4677,14 +4677,14 @@ class CreateFooTable extends Migration
 
 return [
     
-    # 中略
+    # ～ 中略 ～
     
     'providers' => [
         // マクロサービスプロバイダー
         App\Providers\MigrationMacroServiceProvider::class,  
     ],
     
-    # 中略
+    # ～ 中略 ～
     
 ];        
 ```
@@ -5379,7 +5379,8 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 ```html
 <!-- 親テンプレート -->
 
-<html>
+<!DOCTYPE html>
+<html lang="">
     <head>
         <title>@yield("title")</title>
     </head>
@@ -5420,7 +5421,8 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 ```html
 <!-- 親テンプレート -->
 
-<html>
+<!DOCTYPE html>
+<html lang="">
     <head>
         <title>{% block title %}{% endblock %}</title>
     </head>

@@ -5,6 +5,14 @@ description: FluentBit＠可観測性の知見をまとめました。
 
 # FluentBit＠可観測性
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
 ## 01. ログパイプライン
 
 ### ログパイプラインとは
