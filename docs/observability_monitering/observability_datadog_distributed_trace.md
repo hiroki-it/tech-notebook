@@ -39,7 +39,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### コンテナdatadogエージェント
 
-常駐プログラムであり，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースライブラリは分散トレースを生成し，Datadogコンテナの『```http://localhost:8126```』にこれを送信する．Datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
+常駐プログラムであり，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースライブラリは分散トレースを生成し，datadogコンテナの『```http://localhost:8126```』にこれを送信する．datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
 
 参考：
 
@@ -74,7 +74,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 #### ・Agent Flareコマンドの実行
 
-Datadogコンテナ内でAgent Flareコマンドを実行し，DatadogサポートにDatadogコンテナの構成情報をメール送信する．
+datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポートにdatadogコンテナの構成情報をメール送信する．
 
 参考：
 
@@ -195,7 +195,7 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 #### ・受信ログの確認
 
-Datadogコンテナにトレースが送信されている場合は，受信できていることを表すログを確認できる．
+datadogコンテナにトレースが送信されている場合は，受信できていることを表すログを確認できる．
 
 ```log
 2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0

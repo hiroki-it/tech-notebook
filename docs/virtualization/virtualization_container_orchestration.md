@@ -55,7 +55,7 @@ FluentBitコンテナをサイドカーコンテナとして稼働させ，ア�
 
 #### ・メトリクス収集コンテナの配置
 
-Datadogコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナからメトリクスを収集する．
+datadogコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナからメトリクスを収集する．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html
 

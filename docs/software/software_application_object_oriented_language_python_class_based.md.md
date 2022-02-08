@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】クラス＠Python
-description: クラス＠Pythonの知見をまとめました。
+description: クラス＠Pythonの知見をまとめました．
 
 ---
 

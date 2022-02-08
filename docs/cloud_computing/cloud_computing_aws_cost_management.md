@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】コスト管理＠AWS
-description: コスト管理＠AWSの知見をまとめました。
+description: コスト管理＠AWSの知見をまとめました．
 ---
 
 # コスト管理＠AWS

@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Ansible
-description: Ansibleの知見をまとめました。
+description: Ansibleの知見をまとめました．
 ---
 
 # Ansible

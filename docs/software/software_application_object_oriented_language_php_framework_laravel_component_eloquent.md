@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Eloquentコンポーネント@Laravel
-description: Eloquentコンポーネント@Laravelの知見をまとめました。
+description: Eloquentコンポーネント@Laravelの知見をまとめました．
 ---
 
 # Eloquentコンポーネント@Laravel

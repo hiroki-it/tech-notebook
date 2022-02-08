@@ -14,8 +14,6 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 
 ## 01. Npmによる管理：Node Package Manager
 
-### npm（Node.js）
-
 ### セットアップ
 
 #### ・yum経由
@@ -30,6 +28,144 @@ $ yum install -y nodejs
 
 <br>
 
+### ```package.json```ファイル
+
+#### ・author
+
+パッケージの作成者名を設定する．
+
+```bash
+{
+  "author": {
+    "name": "Hiroki Hasegawa",
+    "email": "example@gmail.com",
+    "url": "https://github.com/hiroki-it"
+  },
+}
+```
+
+#### ・bug
+
+不具合の報告先のURLを設定する．
+
+```bash
+{
+  "bugs": {
+    "url": "https://github.com/hiroki-it/foo/issues"
+  },
+}
+```
+
+#### ・dependencies
+
+本番環境と開発環境で依存するパッケージ名を設定する．NPMに登録されていないパッケージは，『```git+<リポジトリURL>```』を指定する．
+
+```bash
+{
+  "dependencies": {
+    "foo": "^1.1.1",
+    "baz": "^1.0.1",
+    "baz": "git+https://github.com/baz/baz-package.git",
+  },
+}
+```
+
+#### ・description
+
+```bash
+{
+  "description": "This is foo package",
+}
+```
+
+#### ・devDependencies
+
+開発環境のみ依存するパッケージ名を設定する．
+
+```bash
+{
+  "devDependencies": {},
+}
+```
+
+#### ・directories
+
+```bash
+{
+  "directories": {},
+}
+```
+
+#### ・homepage
+
+```bash
+{
+  "homepage": "https://example.com"
+}
+```
+#### ・main
+
+```bash
+{
+  "main": "index.js",
+}
+```
+
+#### ・name
+
+npmパッケージ名を設定する．全てのnpmパッケージの中で，一意の名前でなければならない．
+
+```bash
+{
+  "name": "foo",
+}
+```
+
+#### ・repository
+
+```bash
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiroki-it/foo.git"
+  }
+}
+```
+
+#### ・scripts
+
+汎用コマンドとエイリアスを設定する．
+
+```bash
+{
+  "scripts": {
+    "foo": "npm install"
+  }
+}
+```
+
+#### ・version
+
+パッケージのバージョンを設定する．
+
+```bash
+{
+  "version": "1.0.0",
+}
+```
+
+<br>
+
+### ```package.lock```ファイル
+
+Composerの```composer.lock```ファイルに相当する．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html
+
+<br>
+
+## 01-02. コマンド
+
 ### init
 
 #### ・```package.json```ファイルの作成
@@ -38,55 +174,6 @@ $ yum install -y nodejs
 
 ```bash
 $ npm init
-```
-
-<br>
-
-#### ・```package.json```ファイルの構造
-
-```bash
-{
-  # npmパッケージ名．全てのnpmパッケージの中で，一意の名前でなければならない．
-  "name": "tech-notebook-mkdocs",
-  "version": "1.0.0",
-  "description": "tech-notebook-mkdocs",
-  "main": "index.js",
-  "directories": {},
-  # 本番環境と開発環境で依存するパッケージ名．パッケージ名は一意に識別できる．
-  "dependencies": {
-    "gitbook-plugin-advanced-emoji": "^0.2.2",
-    "gitbook-plugin-anchors": "^0.7.1",
-    "gitbook-plugin-back-to-top-button": "^0.1.4",
-    "gitbook-plugin-copy-code-button": "^0.0.2",
-    "gitbook-plugin-ga": "^1.0.1",
-    "gitbook-plugin-github-buttons": "^3.0.0",
-    "gitbook-plugin-hide-published-with": "^1.0.3",
-    "gitbook-plugin-intopic-toc": "^1.1.1",
-    # パッケージとして登録されていないもの『リポジトリURLから直接参照する．『git+』を忘れないこと．
-    "gitbook-plugin-prism": "git+https://github.com/hiroki-it/gitbook-plugin-prism.git",
-    "gitbook-plugin-search-pro-fixed": "^1.0.1",
-    "gitbook-plugin-sunlight-highlighter": "^0.4.3",
-    "gitbook-plugin-toolbar": "^0.6.0"
-  },
-  # 開発環境のみ依存するパッケージ名．
-  "devDependencies": {},
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs.git"
-  },
-  # 著者名
-  "author": {
-    "name": "Hiroki Hasegawa",
-    "email": "example@gmail.com",
-    "url": "https://github.com/hiroki-it"
-  },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hiroki-it/tech-notebook-mkdocs/issues"
-  },
-  "homepage": "https://github.com/hiroki-it/tech-notebook-mkdocs"
-}
 ```
 
 <br>
@@ -129,7 +216,7 @@ $ npm install --save
 
 #### ・オプション無し
 
-アプリケーションにて，```package.json```ファイルに実装されたバージョンの指定を基に，更新可能なパッケージを更新する．
+全てのパッケージのバージョンを，```package.json```ファイルの範囲内でアップグレードする．
 
 ```bash
 $ npm update
@@ -177,6 +264,116 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 <br>
 
 ## 02. Yarnによる管理
+
+### セットアップ
+
+#### ・apt-get経由
+
+参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+
+```bash
+$ apt-get install yarn
+```
+
+#### ・npm経由
+
+参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
+
+```bash
+$ npm install --global yarn
+```
+
+<br>
+
+### ```package.json```ファイル
+
+Npmと同じ．
+
+<br>
+
+### ```yarn.lock```ファイル
+
+Composerの```composer.lock```ファイルに相当する．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html
+
+<br>
+
+## 02-02. コマンド
+
+### add
+
+指定したパッケージのバージョンを，```package.json```ファイルを無視してインストールする．
+
+```bash
+$ yarn add <パッケージ名>@<バージョン>
+```
+
+<br>
+
+### install
+
+#### ・オプション無し
+
+指定したバージョンのパッケージを，```package.json```ファイルの範囲内でインストールする．
+
+```bash
+$ yarn add <パッケージ名>@<バージョン>
+```
+
+#### ・--check-files
+
+必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ，不足があれば```install```コマンドを実行する．
+
+参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+
+```bash
+$ yarn install --check-files
+```
+
+<br>
+
+### list
+
+指定したパッケージのバージョンを表示する．
+
+```bash
+$ yarn list --depth=0 | grep <パッケージ名>
+```
+
+<br>
+
+### remove
+
+指定したパッケージをアンインストールする．
+
+```bash
+$ yarn remove <パッケージ名>
+```
+
+<br>
+
+### upgrade
+
+#### ・オプション無し
+
+指定したパッケージを```package.json```ファイルの範囲内でアップグレードする．
+
+参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+
+```bash
+$ yarn upgrade <パッケージ名>@<バージョン>
+```
+
+#### ・latest
+
+全てのパッケージを，```package.json```ファイルを無視して最新までアップグレードする．
+
+参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+
+```
+yarn upgrade --latest
+```
 
 <br>
 

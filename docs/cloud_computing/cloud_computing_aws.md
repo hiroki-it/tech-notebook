@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
+description: AWS：Amazon Web Serviceの知見をまとめました．
 ---
 
 # AWS：Amazon Web Service
@@ -2577,19 +2577,20 @@ aws ecs execute-command \
 
 | 設定項目                         | 対応するdockerコマンドオプション             | 説明                                                         | 補足                                                         |
 | -------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| cpu                              | ```--cpus```                                 | タスク全体に割り当てられたCPU（タスクCPU）のうち，該当のコンテナに割り当てるCPU分を設定する． |  |
+| cpu                              | ```--cpus```                                 | タスク全体に割り当てられたメモリ（タスクメモリ）のうち，該当のコンテナに最低限割り当てるCPUユニット数を設定する．cpuReservationという名前になっていないことに注意する． CPUユニット数の比率に基づいて，タスク全体のCPUが各コンテナに割り当てられる．『ソフト制限』ともいう． | 参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment<br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                       | ```--dns```                                  | コンテナが名前解決に用いるDNSサーバーのIPアドレスを設定する． |                                                              |
 | essential                        |                                              | コンテナが必須か否かを設定する．                             | ・```true```の場合，コンテナが停止すると，タスクに含まれる全コンテナが停止する．<br>```false```の場合，コンテナが停止しても，その他のコンテナは停止しない． |
 | healthCheck<br>(command)         | ```--health-cmd```                           | ホストからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
 | healthCheck<br>(interval)        | ```--health-interval```                      | ヘルスチェックの間隔を設定する．                             |                                                              |
 | healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
 | hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
-| image                            |                                              | ECRのURLを設定する．                                         |                                                              |
+| image                            |                                              | ECRのURLを設定する．                                         | 指定できるURLの記法は，Dockerfileの```FROM```と同じである．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html |
 | logConfiguration<br>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば『awslogs，awsfirelens，splunk』に設定できる．EC2であれば『awslogs，json-file，syslog，journald，fluentd，gelf，logentries』を設定できる． |
 | logConfiguration<br>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
 | portMapping                      | ```--publish```<br>```--expose```            | ホストとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)         |                                              | パラメーターストアから出力する環境変数を設定する．            |  |
-| memory                           | ```--memory```<br>```--memory-reservation``` | タスク全体に割り当てられたメモリ（タスクメモリ）のうち，該当のコンテナに割り当てるメモリ分を設定する． |  |
+| memory                           | ```--memory``` | コンテナのメモリ使用量の閾値を設定し，これを超えた場合にコンテナを停止するようにする『ハード制限』ともいう． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
+| memoryReservation | ```--memory-reservation``` | タスク全体に割り当てられたメモリ（タスクメモリ）のうち，該当のコンテナに最低限割り当てるメモリ分を設定する．『ソフト制限』ともいう． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                      |                                              |                                                              |                                                              |
 | ulimit                           | Linuxコマンドの<br>```--ulimit```に相当      |                                                              |                                                              |
 
@@ -2692,7 +2693,7 @@ aws ecs execute-command \
 
 **＊実装例＊**
 
-DatadogエージェントがECSクラスターやコンテナにアクセスできるように，ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする．
+datadogエージェントがECSクラスターやコンテナにアクセスできるように，ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする．
 
 ```bash
 {

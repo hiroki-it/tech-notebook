@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】minikubeコマンド＠Kubernetes
-description: minikubeコマンド＠Kubernetesの知見をまとめました。
+description: minikubeコマンド＠Kubernetesの知見をまとめました．
 ---
 
 # minikubeコマンド＠Kubernetes
@@ -162,6 +162,32 @@ export MINIKUBE_ACTIVE_DOCKERD="minikube"
 # eval $(minikube -p minikube docker-env)
 
 $ eval $(minikube -p minikube docker-env)
+```
+
+これにより，以下の環境変数が追加される．
+
+```bash
+$ env | grep DOCKER    
+
+DOCKER_TLS_VERIFY=1
+DOCKER_HOST=tcp://nnn.nnn.nn.n:2376
+DOCKER_CERT_PATH=/Users/h.hasegawa/.minikube/certs
+MINIKUBE_ACTIVE_DOCKERD=minikube
+```
+
+もし， Makefileのターゲット内でこれを実行する場合は，```$(shell ...)```とする．
+
+```makefile
+docker-env:
+	eval $(shell minikube -p minikube docker-env)
+```
+
+#### ・-u
+
+ホスト側のdockerデーモンを指定できるように，元に戻す．
+
+```bash
+$ eval $(minikube docker-env -u)
 ```
 
 <br>

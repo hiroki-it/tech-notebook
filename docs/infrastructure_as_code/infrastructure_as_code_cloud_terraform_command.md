@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】terraformコマンド＠Terraform
-description: terraformコマンド＠Terraformの知見をまとめました。
+description: terraformコマンド＠Terraformの知見をまとめました．
 ---
 
 # terraformコマンド＠Terraform

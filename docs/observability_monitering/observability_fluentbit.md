@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】FluentBit＠可観測性
-description: FluentBit＠可観測性の知見をまとめました。
+description: FluentBit＠可観測性の知見をまとめました．
 ---
 
 # FluentBit＠可観測性

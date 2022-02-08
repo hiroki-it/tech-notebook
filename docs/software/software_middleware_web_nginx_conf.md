@@ -1,8 +1,9 @@
 ---
-title: 【知見を記録するサイト】nginx.conf@Nginx
+title: 【知見を記録するサイト】nginx.conf＠Nginx
+description: nginx.conf＠Nginxの知見をまとめました．
 ---
 
-# nginx.conf@Nginx
+# nginx.conf＠Nginx
 
 ## はじめに
 

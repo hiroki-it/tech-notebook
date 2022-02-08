@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】PHP
-description: PHPの知見をまとめました。
+description: PHPの知見をまとめました．
 ---
 
 # PHP

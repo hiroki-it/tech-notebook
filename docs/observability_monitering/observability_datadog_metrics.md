@@ -52,7 +52,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
-| ```DD_API_KEY```  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
+| ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
 | ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． | マイクロサービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
 | ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateを用いる場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
 | ```ECS_FARGATE``` | Fargateを用いる場合，これを宣言する．                      |                                                              |                                              |
@@ -73,7 +73,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 | 変数名                               | 説明                                                    | DatadogコンソールURL |
 | ------------------------------------ | ------------------------------------------------------- | -------------------- |
-| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | Datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
+| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
 
 <br>
 
@@ -100,15 +100,15 @@ dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 <br>
 
-### Datadogコンテナ
+### datadogコンテナ
 
-#### ・Datadogコンテナとは
+#### ・datadogコンテナとは
 
 Datadogが提供するdatadogイメージによって構築されるコンテナであり，コンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadog dockerエージェントが，コンテナからメトリクスを収集し，Datadogにこれを転送する．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E6%A6%82%E8%A6%81
 
-#### ・Datadogコンテナの配置
+#### ・datadogコンテナの配置
 
 ```bash
 [
@@ -186,7 +186,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 #### ・IAMロール
 
-Datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
+datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
 

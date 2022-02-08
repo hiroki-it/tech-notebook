@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】serverlessコマンド＠Serverless Framework
-description: serverlessコマンド＠Serverless Frameworkの知見をまとめました。
+description: serverlessコマンド＠Serverless Frameworkの知見をまとめました．
 ---
 
 # serverlessコマンド＠Serverless Framework

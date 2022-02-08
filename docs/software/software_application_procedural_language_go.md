@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Go
-description: Goの知見をまとめました。
+description: Goの知見をまとめました．
 ---
 
 # Go

@@ -19,7 +19,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 ![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-collection.png)
 
-（１）サーバーの場合，稼働するDatadogエージェントが，Datadog-APIにアプリケーションログを送信する．コンテナの場合，FluentBitが代わりにアプリケーションログを送信する．
+（１）サーバーの場合，稼働するdatadogエージェントが，datadog-APIにアプリケーションログを送信する．コンテナの場合，FluentBitが代わりにアプリケーションログを送信する．
 
 （２）Datadogにて，ログはパイプラインで処理され，構造化ログになる．
 
@@ -96,11 +96,35 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 
 #### ・ベースイメージ
 
-DatadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
+datadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
 
-#### ・パブリックECRリポジトリを用いる場合
+#### ・DockerHubを用いる場合
 
-ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているymlファイルの設定をそのまま用いる場合は，こちらを採用する．
+ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+
+参考：https://hub.docker.com/r/datadog/agent
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "datadog/agent:latest"
+  }
+]
+```
+
+#### ・ECRパブリックギャラリーを用いる場合
+
+ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "public.ecr.aws/datadog/agent:latest"
+  }
+]
+```
 
 参考：
 
@@ -109,12 +133,23 @@ ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指�
 
 #### ・プライベートECRリポジトリを用いる場合
 
-あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているYAMLファイルの設定を上書きしたい場合は，こちらを採用する．
+あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は，こちらを採用する．
 
 参考：https://hub.docker.com/r/datadog/agent
 
 ```dockerfile
 FROM data/agent:latest
+
+# 何らかのインストール
+```
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****"
+  }
+]
 ```
 
 <br>
@@ -287,7 +322,7 @@ export default browserLogsForSsgPlugin
 
 | 属性名                  | 説明                                           | 補足                                                         | 例                                                           |
 | ----------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```              | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いて```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```host```              | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いて```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
 | ```source```            | ログの生成元の名前を示す．                     | ベンダー名を用いるとわかりやすい．                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
 | ```status```            | ログのレベルを示す．                           |                                                              |                                                              |
 | ```service```           | ログの生成元のアプリケーション名を示す．       | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある． | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |

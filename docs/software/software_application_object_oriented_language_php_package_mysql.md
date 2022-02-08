@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】MySQLパッケージ＠PHP
-description: MySQLパッケージ＠PHPの知見をまとめました。
+description: MySQLパッケージ＠PHPの知見をまとめました．
 ---
 
 # MySQLパッケージ＠PHP

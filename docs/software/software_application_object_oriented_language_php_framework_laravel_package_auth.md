@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】認証/認可系パッケージ@Laravel
-description: 認証/認可系パッケージ@Laravelの知見をまとめました。
+description: 認証/認可系パッケージ@Laravelの知見をまとめました．
 ---
 
 # 認証/認可系パッケージ@Laravel

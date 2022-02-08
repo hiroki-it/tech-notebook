@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】AWSプロバイダー＠Terraform
-description: AWSプロバイダー＠Terraformの知見をまとめました。
+description: AWSプロバイダー＠Terraformの知見をまとめました．
 ---
 
 # AWSプロバイダー＠Terraform

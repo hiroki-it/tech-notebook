@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】goコマンド
-description: goコマンドの知見をまとめました。
+description: goコマンドの知見をまとめました．
 ---
 
 # goコマンド

@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】反復ロジック＠PHP
-description: 反復ロジック＠PHPの知見をまとめました。
+description: 反復ロジック＠PHPの知見をまとめました．
 ---
 
 # 反復ロジック＠PHP

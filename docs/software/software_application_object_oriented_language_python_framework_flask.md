@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】Flask
-description: Flaskの知見をまとめました。
+description: Flaskの知見をまとめました．
 ---
 
 # Flask

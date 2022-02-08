@@ -40,7 +40,7 @@ $ yarn dev
 
 #### ・```build```
 
-本番環境のため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
+本番環境のため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込み用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
 
@@ -89,16 +89,6 @@ $ yarn dev
 
 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
-#### ・```build```
-
-Node.jsを用いてテストフレームワークを動かすために用いる．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
-
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
-
-```bash
-$ yarn build
-```
-
 #### ・```generate```
 
 本番環境でSSGを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
@@ -133,11 +123,19 @@ https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E
 
 <br>
 
-## 02. プロパティ
+### キャッシュ削除
 
-### ```nuxt.config.js```ファイル
+Nuxt.jsのキャッシュは```node_modules/.cache```ディレクトリ下に作成される．そのため，キャッシュを削除したい場合はこのディレクトリごと削除する．
 
-#### ・```nuxt.config.js```ファイルとは
+```bash
+$ rm -rf node_modules/.cache/hard-source/
+```
+
+<br>
+
+## 02. ```nuxt.config.js```ファイル
+
+### ```nuxt.config.js```ファイルとは
 
 Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる．各プロパティは以下のリンクを参考にせよ．
 
@@ -150,6 +148,10 @@ const nuxtConfig: Configuration = {
   // プロパティ
 }
 ```
+
+<br>
+
+### 環境変数
 
 #### ・```.env```ファイルの読み込み
 
@@ -193,9 +195,11 @@ const nuxtConfig: Configuration = {
 
 <br>
 
-### プロパティ一覧
+## 02-02. プロパティ
 
-#### ・```hardSource```
+### build
+
+#### ・hardSource
 
 ビルド時のキャッシュを有効化する．ビルドの完了が早くなる．
 
@@ -212,7 +216,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-####  ・```privateRuntimeConfig```
+####  ・privateRuntimeConfig
 
 クライアントサイドのみで参照できる環境変数を設定する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
@@ -252,7 +256,7 @@ export function foo() {
 
 ```
 
-#### ・```publicRuntimeConfig```
+#### ・publicRuntimeConfig
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
@@ -291,7 +295,7 @@ export function foo() {
 
 ```
 
-#### ・```quiet```
+#### ・quiet
 
 ビルド時にログを最小限にする．CI/CDツールでログが確認できなくなるため，無効化しておいた方が良い．
 
@@ -308,7 +312,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-#### ・```serverMiddleware```
+#### ・serverMiddleware
 
 リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を設定する．
 
@@ -325,6 +329,29 @@ const nuxtConfig: Configuration = {
       handler: '~/foo/index.js'
     },
   ]
+}
+```
+
+<br>
+
+### buildModules
+
+#### ・buildModules
+
+SSG/SSRモードの```yarn dev```（開発用コマンド）とSSGモードの```yarn build```の時のみ，```node_module```ディレクトリ内に生成するパッケージを設定する．
+
+参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const nuxtConfig: Configuration = {
+    
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/composition-api',
+  ],
+    
 }
 ```
 
