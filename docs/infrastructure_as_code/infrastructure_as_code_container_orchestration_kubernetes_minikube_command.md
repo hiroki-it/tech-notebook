@@ -17,7 +17,7 @@ description: minikubeコマンド＠Kubernetesの知見をまとめました．
 
 ### minikubeコマンドとは
 
-ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーノードを持つクラスターを作成するコマンド．
+ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーNodeを持つClusterを作成するコマンド．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/
 
@@ -144,7 +144,7 @@ $ minikube dashboard
 
 #### ・docker-envとは
 
-ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーノードのdockerデーモンをコールできるように環境変数を設定する．イメージタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
+ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する．イメージタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
@@ -196,7 +196,7 @@ $ eval $(minikube docker-env -u)
 
 #### ・ipとは
 
-ゲスト仮想環境内のワーカーノードのIPアドレスを表示する．
+ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する．
 
 #### ・オプションなし
 
@@ -279,7 +279,7 @@ http://nnn.nnn.nn.n:57761
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
 ```
 
-表示されるIPアドレスは，ワーカーノードのIPアドレスである．
+表示されるIPアドレスは，ワーカーNodeのIPアドレスである．
 
 ```bash
 $ minikube ip
@@ -304,19 +304,19 @@ $ curl http://nnn.nnn.nn.n:57761
 
 #### ・sshとは
 
-仮想環境内のワーカーノードにSSH接続を行う．
+仮想環境内のワーカーNodeにSSH接続を行う．
 
 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/ssh/
 - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
-ワーカーノードの中では```docker```コマンドを実行でき，イメージのデバッグも可能である．
+ワーカーNodeの中では```docker```コマンドを実行でき，イメージのデバッグも可能である．
 
 ```bash
 $ minikube ssh  
 
-# ワーカーノードの中
+# ワーカーNodeの中
 $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 # コンテナの中
@@ -367,7 +367,7 @@ $ pwd
 
 #### ・startとは
 
-ゲスト仮想環境を構築し，仮想環境内にワーカーノードを作成する．
+ゲスト仮想環境を構築し，仮想環境内にワーカーNodeを作成する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
@@ -396,7 +396,7 @@ $ minikube start
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-ワーカーノードが構築されていることを確認できる．
+ワーカーNodeが構築されていることを確認できる．
 
 ```bash
 $ kubectl get nodes
@@ -440,7 +440,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki-it/projects/foo:/dat
 
 #### ・--nodes
 
-作成するワーカーノード数を指定し，```start```コマンドを実行する．
+作成するワーカーNode数を指定し，```start```コマンドを実行する．
 
 **＊例＊**
 
@@ -460,7 +460,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ・tunnelとは
 
-LoadBalancerServiceを用いている場合に，ServiceのクラスターIPを外部エンドポイントにし，Serviceを公開する．```minikube ssh```コマンドでワーカーノードに接続しつつ，公開されたServiceにリクエストを送信できる．
+LoadBalancerServiceを用いている場合に，ServiceのClusterIPを外部エンドポイントにし，Serviceを公開する．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
 
 参考：
 
@@ -479,11 +479,11 @@ $ minikube tunnel
 
 ## 02. マウント
 
-### ホスト-ワーカーノード間マウント
+### ホスト-ワーカーNode間マウント
 
-#### ・標準のホスト-ワーカーノード間マウント
+#### ・標準のホスト-ワーカーNode間マウント
 
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーノードのルート直下にマウントされる．
+ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
@@ -496,13 +496,13 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-#### ・仮想化ドライバー別のホスト-ワーカーノード間マウント
+#### ・仮想化ドライバー別のホスト-ワーカーNode間マウント
 
-ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーノードの決められたディレクトリにマウントされる．
+ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
-| ドライバー名  | OS      | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーノードのディレクトリ |
+| ドライバー名  | OS      | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
 | ------------- | ------- | ------------------------- | -------------------------------------- |
 | VirtualBox    | Linux   | ```/home```               | ```/hosthome```                        |
 | VirtualBox    | macOS   | ```/Users```              | ```/Users```                           |
@@ -513,11 +513,11 @@ $ minikube start
 
 <br>
 
-### ワーカーノード-コンテナ間マウント
+### ワーカーNode-コンテナ間マウント
 
-#### ・標準のワーカーノード-コンテナ間マウント
+#### ・標準のワーカーNode-コンテナ間マウント
 
-ゲスト仮想環境内のワーカーノードでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーノードのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
+ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -532,11 +532,11 @@ $ minikube start
 
 <br>
 
-### ホスト-ワーカーノード-コンテナ間
+### ホスト-ワーカーNode-コンテナ間
 
 #### ・ホストをコンテナにマウントする方法
 
-minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，仮想化ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーノードのディレクトリにマウントできる．またワーカーノードでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーノード，ワーカーノードからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
+minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，仮想化ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -544,13 +544,13 @@ minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/file
 
 **＊例＊**
 
-（１）HyperKitドライバーを用いる場合，ホストとワーカーノード間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーノードのボリュームにマウントする．
+（１）HyperKitドライバーを用いる場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
 
 ```bash
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/h.hasegawa/projects/foo:/data"
 ```
 
-（２）ワーカーノードのボリュームをPod内のコンテナにマウントする．
+（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする．
 
 ```yaml
 apiVersion: apps/v1

@@ -22,13 +22,13 @@ kubernetesクライアントは，kubectlコマンドを用いて，kubernetes�
 
 <br>
 
-## 02. kubernetesマスター（マスターノード）
+## 02. kubernetesマスター（マスターNode）
 
 ### kubernetesマスターとは
 
 ![kubernetes_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_overview.png)
 
-ワーカーノードの操作を担う．『マスターノード』ともいう．クライアントがkubectlコマンドの実行すると，kube-apiserverがコールされ，コマンドに沿ってワーカーノードが操作される．
+ワーカーNodeの操作を担う．『マスターNode』ともいう．クライアントがkubectlコマンドの実行すると，kube-apiserverがコールされ，コマンドに沿ってワーカーNodeが操作される．
 
 参考：
 
@@ -52,7 +52,7 @@ kub-apiserverとクラウドインフラを仲介し，Kubernetesがクラウド
 
 #### ・etcdとは
 
-クラスターの様々な設定値を保持し，冗長化されたオブジェクト間にこれを共有する．
+Clusterの様々な設定値を保持し，冗長化されたオブジェクト間にこれを共有する．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -86,7 +86,7 @@ kubernetesクライアントにkueneretes-APIを公開する．クライアン�
 
 #### ・kube-schedulerとは
 
-ワーカーノードとPodのスペックを基に，ワーカーノードに配置される適切なPod数を決定する．
+ワーカーNodeとPodのスペックを基に，ワーカーNodeに配置される適切なPod数を決定する．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -94,19 +94,19 @@ kubernetesクライアントにkueneretes-APIを公開する．クライアン�
 
 <br>
 
-## 03. クラスター，ワーカーノード
+## 03. Cluster，ワーカーNode
 
-### クラスター
+### Cluster
 
-#### ・クラスターとは
+#### ・Clusterとは
 
-ワーカーノードの管理単位のこと．
+ワーカーNodeの管理単位のこと．
 
 <br>
 
-### ワーカーノード
+### ワーカーNode
 
-#### ・ワーカーノードとは
+#### ・ワーカーNodeとは
 
 Podが稼働するサーバー単位こと．
 
@@ -128,7 +128,7 @@ Podが稼働するサーバー単位こと．
 
 #### ・kubeletとは
 
-kube-apiserverからコールされる．ワーカーノードのコンテナランタイムを操作し，Podを作成する．
+kube-apiserverからコールされる．ワーカーNodeのコンテナランタイムを操作し，Podを作成する．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -140,7 +140,7 @@ kube-apiserverからコールされる．ワーカーノードのコンテナラ
 
 #### ・kube-proxyとは
 
-ワーカーノード外部からのインバウンド通信をPodにルーティングする．モードごとに，Podの名前解決の方法が異なる．
+ワーカーNode外部からのインバウンド通信をPodにルーティングする．モードごとに，Podの名前解決の方法が異なる．
 
 参考：https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613
 
@@ -188,7 +188,7 @@ Serviceタイプごとに，特定のネットワーク範囲にPodを公開す�
 
 #### ・ClusterIP Service
 
-クラスターのIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．クラスター内部からのみアクセスできる．クラスターのIPアドレスは，Podの```/etc/resolv.conf ```ファイルに記載されている．Pod内に複数のコンテナがある場合，各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される．デフォルトのタイプである．
+ClusterのIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．Cluster内部からのみアクセスできる．ClusterのIPアドレスは，Podの```/etc/resolv.conf ```ファイルに記載されている．Pod内に複数のコンテナがある場合，各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される．デフォルトのタイプである．
 
 参考：
 
@@ -200,14 +200,14 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>] $ cat /etc/resolv.conf 
 
-nameserver nn.nn.n.nn # クラスターのIPアドレス
+nameserver nn.nn.n.nn # ClusterのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
 ```
 
 #### ・LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．クラスター外部/内部の両方からアクセスできる．本番環境をクラウドインフラ上で稼働させ，AWS ALBからインバウンド通信を受信する場合に用いる．ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため，通信数が増え，金銭的負担が大きい．
+ロードバランサーのみからアクセスできるIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．Cluster外部/内部の両方からアクセスできる．本番環境をクラウドインフラ上で稼働させ，AWS ALBからインバウンド通信を受信する場合に用いる．ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため，通信数が増え，金銭的負担が大きい．
 
 参考：
 
@@ -216,7 +216,7 @@ options ndots:5
 
 #### ・NodePort Service
 
-ノードのIPアドレスを返却し，Serviceの指定したポートに対するインバウンド通信をPodにルーティングする．クラスター外部/内部の両方からアクセスできる．1つのポートから1つのServiceにしかルーティングできない．ServiceノードのIPアドレスは別に確認する必要があり，ノードのIPアドレスが変わるたびに，これに合わせて他の設定を変更しなければならず，本番環境には向いていない．AWSのAurora RDSのクラスターエンドポイントには，NodePortの概念が取り入れられている．
+NodeのIPアドレスを返却し，Serviceの指定したポートに対するインバウンド通信をPodにルーティングする．Cluster外部/内部の両方からアクセスできる．1つのポートから1つのServiceにしかルーティングできない．ServiceNodeのIPアドレスは別に確認する必要があり，NodeのIPアドレスが変わるたびに，これに合わせて他の設定を変更しなければならず，本番環境には向いていない．AWSのAurora RDSのClusterエンドポイントには，NodePortの概念が取り入れられている．
 
 参考：
 
@@ -243,7 +243,7 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-Ingressコントローラーによってクラスター外部から受信したインバウンド通信を，単一/複数のServiceにルーティングする．NodePort ServiceやLoadBalancer Serviceと同様に，外部からのインバウンド通信を受信する方法の1つである．
+IngressコントローラーによってCluster外部から受信したインバウンド通信を，単一/複数のServiceにルーティングする．NodePort ServiceやLoadBalancer Serviceと同様に，外部からのインバウンド通信を受信する方法の1つである．
 
 参考：
 
@@ -252,7 +252,7 @@ Ingressコントローラーによってクラスター外部から受信した�
 
 #### ・Ingressコントローラー
 
-クラスター外部のインバウンド通信をIngressにルーティングする．
+Cluster外部のインバウンド通信をIngressにルーティングする．
 
 参考：https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
@@ -289,7 +289,7 @@ Ingressコントローラーによってクラスター外部から受信した�
 
 #### ・ReplicaSetとは
 
-ワーカーノード上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーノードのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment用いてこれを行うことが推奨される．
+ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment用いてこれを行うことが推奨される．
 
 参考：
 
@@ -302,7 +302,7 @@ Ingressコントローラーによってクラスター外部から受信した�
 
 #### ・DaemonSetとは
 
-ワーカーノード上のPod数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーノードで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーノード内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
+ワーカーNode上のPod数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
 
 参考：https://thinkit.co.jp/article/13611
 
@@ -312,7 +312,7 @@ Ingressコントローラーによってクラスター外部から受信した�
 
 ・StatefulSetとは
 
-ReplicaSetを操作し，ワーカーノードのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -329,7 +329,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 #### ・Deploymentとは
 
-ReplicaSetを操作し，ワーカーノードのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
 
 参考：
 
@@ -350,14 +350,14 @@ ReplicaSetを操作し，ワーカーノードのCPUやメモリの使用率に�
 
 #### ・HostPath（本番環境で非推奨）
 
-ノード上の既存のストレージ領域をボリュームとし，コンテナにマウントする．ノードとPod内コンテナ間のバインドマウントによって作成され，同一ノード上のPod間でこのボリュームを共有できる．
+Node上の既存のストレージ領域をボリュームとし，コンテナにマウントする．NodeとPod内コンテナ間のバインドマウントによって作成され，同一Node上のPod間でこのボリュームを共有できる．
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 以下の通り，HostPathではバインドマウントが使用されていることを確認できる．
 
 ```bash
-# ノード内でdockerコマンドを実行
+# Node内でdockerコマンドを実行
 $ docker inspect <コンテナID>
   
     {
@@ -397,7 +397,7 @@ $ docker inspect <コンテナID>
 
 #### ・EmptyDir
 
-Podの既存のストレージ領域をボリュームとし，コンテナにマウントする．そのため，Podが削除されると，このボリュームも同時に削除される．ボリュームマウントによって作成され，ノード上のPod間でボリュームを共有できない．
+Podの既存のストレージ領域をボリュームとし，コンテナにマウントする．そのため，Podが削除されると，このボリュームも同時に削除される．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できない．
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -413,19 +413,19 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 #### ・PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，ノード上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み込みでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み込みでパスを解決できない場合がある．
 
 参考：https://thinkit.co.jp/article/14195
 
 #### ・HostPath（本番環境で非推奨）
 
-ノード上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．機能としては，VolumeでのHostPathと同じである．マルチノードには対応していないため，本番環境では非推奨である．
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．機能としては，VolumeでのHostPathと同じである．マルチNodeには対応していないため，本番環境では非推奨である．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
 
 #### ・Local（本番環境で推奨）
 
-ノード上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．マルチノードに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．マルチNodeに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
 
 参考：
 
@@ -463,13 +463,13 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ・レコードタイプとドメイン名の関係
 
-クラスター内の全てのServiceにDNS名が割り当てられている．レコードタイプごとに，DNS名が異なる．
+Cluster内の全てのServiceにDNS名が割り当てられている．レコードタイプごとに，DNS名が異なる．
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#services
 
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| A/AAAAレコード | ```<Service名>.<名前空間>.svc.<クラスターのドメイン名>```   | 通常のServiceの名前解決ではClusterIPが返却される．一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される． |
+| A/AAAAレコード | ```<Service名>.<名前空間>.svc.<Clusterのドメイン名>```   | 通常のServiceの名前解決ではClusterIPが返却される．一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される． |
 | SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<名前空間>.svc.cluster.local``` | 要勉強                                                       |
 
 #### ・名前解決
@@ -502,7 +502,7 @@ Address:  10.105.157.184
 
 #### ・ドメイン名
 
-クラスター内の全てのPodにDNS名が割り当てられている．レコードタイプはA/AAAAレコードのみである．
+Cluster内の全てのPodにDNS名が割り当てられている．レコードタイプはA/AAAAレコードのみである．
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod
 

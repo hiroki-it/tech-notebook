@@ -49,7 +49,7 @@ Istioによって，プロキシ機能を持つistio-proxyコンテナが自動�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway，Service，DestinationRuleの設定を基に，クラスター外部から送信されるインバウンド通信をPodにルーティングする．
+Gateway，Service，DestinationRuleの設定を基に，Cluster外部から送信されるインバウンド通信をPodにルーティングする．
 
 参考：
 
@@ -64,7 +64,7 @@ Gateway，Service，DestinationRuleの設定を基に，クラスター外部か
 
 #### ・Gatewayとは
 
-IngressGatewayの機能のうち，クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う．
+IngressGatewayの機能のうち，Cluster外部から送信されるインバウンド通信をフィルタリングする機能を担う．
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
@@ -99,7 +99,7 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 
 #### ・EgressGatewayとは
 
-クラスター内部から送信されるアウトバウンド通信をフィルタリングし，パブリックネットワークにルーティングする．
+Cluster内部から送信されるアウトバウンド通信をフィルタリングし，パブリックネットワークにルーティングする．
 
 参考：https://knowledge.sakura.ad.jp/20489/
 

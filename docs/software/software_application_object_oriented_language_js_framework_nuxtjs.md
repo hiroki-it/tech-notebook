@@ -25,9 +25,9 @@ description: Nuxt.jsの知見をまとめました．
 
 #### ・```dev```
 
-開発環境のため，アプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+開発環境のため，SSRアプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt devとなっているが，yarn devで問題ない．
@@ -40,9 +40,9 @@ $ yarn dev
 
 #### ・```build```
 
-本番環境のため，Nodeサーバーの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込み用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
+本番環境のため，Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込み用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt buildとなっているが，yarn buildで問題ない．
@@ -53,7 +53,7 @@ $ yarn build
 
 本番環境のため，```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
 
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 ```bash
 # リファレンスでは nuxt startとなっているが，yarn startで問題ない．
@@ -76,9 +76,9 @@ $ yarn start
 
 #### ・```dev```
 
-開発環境でSSGを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+開発環境でSSGアプリケーションを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGモードで生成されるアプリケーションは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 ```bash
 # リファレンスでは nuxt devとなっているが，yarn devで問題ない．
@@ -91,9 +91,9 @@ $ yarn dev
 
 #### ・```generate```
 
-本番環境でSSGを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
+本番環境でSSGアプリケーションを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
 
-参考：https://nuxtjs.org/ja/docs/get-started/commands/#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E8%A6%A7
+参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
 ```bash
 # リファレンスでは nuxt generateとなっているが，yarn generateで問題ない．
@@ -336,9 +336,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-#### ・buildModules
-
-SSG/SSRモードの```yarn dev```（開発用コマンド）とSSGモードの```yarn build```の時のみ，```node_module```ディレクトリ内に生成するパッケージを設定する．
+SSG/SSRモードの```yarn dev```（開発用コマンド），またSSRモードの```yarn build```の時のみ，```node_module```ディレクトリ内に生成するパッケージを設定する．
 
 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 
@@ -359,7 +357,7 @@ const nuxtConfig: Configuration = {
 
 ## 03. ディレクトリ
 
-### ```dist：distribution```
+### ```dist```ディレクトリ：```distribution```
 
 SSGモードの```generate```コマンドの実行時に，アーティファクトが配置される．
 
@@ -367,13 +365,13 @@ SSGモードの```generate```コマンドの実行時に，アーティファク
 
 <br>
 
-### ```module```
+### ```module```ディレクトリ
 
 参考：https://nuxtjs.org/docs/directory-structure/modules
 
 <br>
 
-### ```plugin```
+### ```plugin```ディレクトリ
 
 参考：
 

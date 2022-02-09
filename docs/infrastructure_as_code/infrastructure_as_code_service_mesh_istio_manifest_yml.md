@@ -430,7 +430,7 @@ spec:
 
 #### ・ClusterMatch
 
-変更を適用するクラスターを設定する．
+変更を適用するClusterを設定する．
 
 ```yaml
 kind: EnvoyFilter
@@ -794,7 +794,7 @@ spec:
 
 #### ・proxyHttpPort
 
-全てのEnvoyコンテナに関して，クラスター外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する．
+全てのEnvoyコンテナに関して，Cluster外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する．
 
 ```yaml
 kind: IstioOperator

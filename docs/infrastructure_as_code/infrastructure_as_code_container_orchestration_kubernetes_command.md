@@ -263,13 +263,13 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 **＊例＊**
 
-指定したノードの情報を表示する．
+指定したNodeの情報を表示する．
 
 ```bash
 $ kubectl get nodes 
 
 NAME             STATUS   ROLES                  AGE   VERSION
-docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノード
+docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターNode
 ```
 
 指定したPodの情報を表示する．
