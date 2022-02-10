@@ -136,6 +136,7 @@ nav:
                 - RESTful-API: software/software_application_collaboration_api_restful.md
                 - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
         - ■ 言語:
+            - 言語: software/software_application_language.md
             - ■ オブジェクト指向型言語:
                 - ■ PHP:
                     - PHP: software/software_application_object_oriented_language_php.md
