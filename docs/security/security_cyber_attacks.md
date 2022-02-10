@@ -284,7 +284,7 @@ max_input_vars = 1000
 
 プリペアードステートメントのSQL中にパラメーターを設定し，値をパラメーターに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメーターに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる．プレースホルダーについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_mysql.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_mysql.html
 
 <br>
 

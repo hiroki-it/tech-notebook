@@ -733,5 +733,5 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 
 PHPUnitで接続するデータベースを指定する方法については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing_based_on_code.html
 

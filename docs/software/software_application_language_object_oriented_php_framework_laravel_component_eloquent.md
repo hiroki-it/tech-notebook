@@ -31,7 +31,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 

@@ -703,7 +703,7 @@ $D = objB()->objC()->objC();
 
 以下のリンクも参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_algorithm.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_algorithm.html
 
 1. 適当な値を基準値（Pivot）とする （※できれば中央値が望ましい）
 2. Pivotより小さい数を前方，大きい数を後方に分割する．
@@ -916,7 +916,7 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの```EventDispatcher```クラスが簡単である．以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony.html
 
 ```php
 <?php

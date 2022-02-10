@@ -160,7 +160,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 
 Composerの```composer.lock```ファイルに相当する．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_management.html
 
 <br>
 
@@ -295,7 +295,7 @@ Npmと同じ．
 
 Composerの```composer.lock```ファイルに相当する．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_management.html
 
 <br>
 

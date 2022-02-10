@@ -35,7 +35,7 @@ description: 検証ロジック＠PHPの知見をまとめました．
 
 フロントエンドの検証については以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_validation.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_validation.html
 
 | 検証パターン           | ```isset($var)```，```!is_null($var)``` |           ```if($var)```，```!empty($var)```            |
 | :--------------------- | :-------------------------------------: | :-----------------------------------------------------: |

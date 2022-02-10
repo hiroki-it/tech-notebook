@@ -504,8 +504,8 @@ class Mammal implements Animal
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based_method_data.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_prototype_based.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_prototype_based_method_data.html
 
 **＊実装例＊**
 

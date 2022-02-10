@@ -52,7 +52,7 @@ $ go build ./cmd
 
 もし，ビルドのエラー時に終了ステータスのみが返却され，原因が不明の場合，```panic```メソッドが原因を握りつぶしている可能性を考える．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_logic_method_data.html
 
 ```bash
 exit status 2. Docker build ran into internal error. Please retry. If this keeps happening, please open an issue..
@@ -186,7 +186,7 @@ $ go test -v ./...
 
 テスト時に，```foo_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する．反対に，```foo_test.go```ファイルがなければ，そのパッケージの網羅率は解析しない．網羅条件については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing_based_on_code.html
 
 ```bash
 $ go test -cover ./...

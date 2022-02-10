@@ -98,7 +98,7 @@ description: メモリ管理＠OSの知見をまとめました．
 
 ガベージコレクションには様々なアルゴリズムがあり，採用されているアルゴリズムは言語ごとに異なる．Goのガベージコレクションについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_logic_method_data.html
 
 <br>
 
