@@ -195,11 +195,11 @@ nav:
                           - パッケージ: software/software_application_language_procedural_go_package.md
               - ■ 命令型:
                   - ■ Python:
-                      - Python: software/software_application_language_object_oriented_python.md
+                      - Python: software/software_application_language_imperative_python.md
                       - ■ フレームワーク:
-                          - Flask: software/software_application_language_object_oriented_python_framework_flask.md
+                          - Flask: software/software_application_language_imperative_python_framework_flask.md
                       - ■ パッケージ:
-                          - パッケージ管理: software/software_application_language_object_oriented_python_package_management.md
+                          - パッケージ管理: software/software_application_language_imperative_python_package_management.md
 
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
