@@ -13,87 +13,23 @@ description: 言語プロセッサ（言語処理プログラム）＠OSの知�
 
 <br>
 
-## 01. プログラミング言語
+## 01. アセンブラ方式
 
-### 言語の種類
-
-プログラム言語のソースコードは，言語プロセッサによって機械語に変換された後，CPUによって実行される．そして，ソースコードに書かれた様々な処理が実行される．
-
-![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
-
-<br>
-
-### コンパイラ型言語
-
-#### ・コンパイラ型言語とは
-
-コンパイラという言語プロセッサによって，コンパイラ方式で翻訳される言語．
-
-#### ・例
-
-Go，C，C#，など．
-
-<br>
-
-### インタプリタ型言語
-
-#### ・インタプリタ型言語とは
-
-インタプリタという言語プロセッサによって，インタプリタ方式で翻訳される言語をインタプリタ型言語という．
-
-#### ・例
-
-PHP，Ruby，JavaScript，Python，など．
-
-<br>
-
-### 中間型言語
-
-#### ・中間型言語とは
-
-Java仮想マシンによって，中間言語方式で翻訳される．
-
-参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
-
-#### ・例
-
-Java，Scala，Groovy，Kotlin，など．
-
-<br>
-
-## 02. 言語プロセッサによる翻訳方式
-
-### アセンブラ方式
-
-#### ・アセンブラ方式とは
+### アセンブラ方式とは
 
 アセンブリ型言語を機械語に翻訳する方法のこと．
 
 <br>
 
-### コンパイラ方式
+## 02. コンパイラ方式
 
-#### ・コンパイラ方式とは
+### コンパイラ方式とは
 
 コンパイラ型言語を機械語に翻訳する方法のこと．
 
 <br>
 
-### インタプリタ方式
-
-#### ・インタプリタ方式とは
-
-インタプリタ型言語を機械語に翻訳する方法のこと．
-
-<br>
-
-## 02-02. アセンブリ型言語の機械語翻訳
-
-<br>
-
-## 02-03. コンパイラ型言語の機械語翻訳
-
-### コンパイラ方式の流れ
+### 仕組み
 
 #### ・機械語翻訳と実行
 
@@ -114,13 +50,13 @@ Java，Scala，Groovy，Kotlin，など．
 
 <br>
 
-### 仕組み
+### 機械語翻訳とは
 
 ![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
 
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解する． 以下に，トークンの分類方法の例を以下に示す．字句解析のアルゴリズムは，LexやFlexで実装されている．
+ソースコードの文字列を言語の最小単位（トークン）の列に分解する． 以下に，トークンの分類方法の例を以下に示す．字句解析のアルゴリズムは，LexやFlexで実装されている．解析器をルーツを辿れない問題をブートストラップ問題という．
 
 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
@@ -128,7 +64,7 @@ Java，Scala，Groovy，Kotlin，など．
 
 #### （２）Syntax analysis（構文解析）
 
-トークンの列をツリー構造に変換する．構文解析のアルゴリズムは，BisonやYaccで実装されている．コンパイラ型言語の構文解析に失敗した時，これらの構文解析言語はシンタックスエラーを出力する．
+トークンの列をツリー構造に変換する．構文解析のアルゴリズムは，BisonやYaccで実装されている．解析器をルーツを辿れない問題をブートストラップ問題という．コンパイラ型言語の構文解析に失敗した時，これらの構文解析言語はシンタックスエラーを出力する．
 
 参考：https://ja.wikipedia.org/wiki/Bison
 
@@ -154,9 +90,15 @@ Java，Scala，Groovy，Kotlin，など．
 
 <br>
 
-## 02-04. インタプリタ型言語の機械語翻訳
+## 03. インタプリタ方式
 
-### インタプリタ方式の流れ
+### インタプリタ方式とは
+
+インタプリタ型言語を機械語に翻訳する方法のこと．
+
+<br>
+
+### 仕組み
 
 #### ・機械語翻訳と実行
 
@@ -171,7 +113,7 @@ Java，Scala，Groovy，Kotlin，など．
 
 <br>
 
-### 機械語翻訳の仕組み
+### 機械語翻訳とは
 
 #### （１）Lexical analysis（字句解析）
 
@@ -193,15 +135,19 @@ Java，Scala，Groovy，Kotlin，など．
 
 <br>
 
-## 02-05. 中間型言語の機械語翻訳
+## 04. 中間型言語の機械語翻訳
 
-### 中間言語方式
+### 中間言語方式とは
 
-#### ・中間言語方式の機械語翻訳の流れ
 
-1. JavaまたはJVM型言語のソースコードを，Javaバイトコードを含むクラスファイルに変換する．
-2. JVM：Java Virtual Machine内で，インタプリタによって，クラスデータを機械語に翻訳する．
-3. 結果的に，OS（制御プログラム？）に依存せずに，命令を実行できる．（C言語）
+
+### 仕組み
+
+（１）JavaまたはJVM型言語のソースコードを，Javaバイトコードを含むクラスファイルに変換する．
+
+（２）JVM：Java Virtual Machine内で，インタプリタによって，クラスデータを機械語に翻訳する．
+
+（３）結果的に，OS（制御プログラム？）に依存せずに，命令を実行できる（C言語）．
 
 ![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_1.png)
 
@@ -213,12 +159,8 @@ Java，Scala，Groovy，Kotlin，など．
 
 ![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_3.png)
 
-#### ・C言語とJavaのOSへの依存度比較
+<br>
+
+### C言語とJavaのOSへの依存度比較
 
 ![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
-
-- JVM言語
-
-ソースコード
-
-<br>

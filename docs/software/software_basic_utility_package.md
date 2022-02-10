@@ -242,11 +242,11 @@ supervisor自体のプロセスのこと．
 
 #### ・supervisordセクションとは
 
-supervisordについて設定する．
+supervisordを設定する．
 
 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
-```bash
+```ini
 [supervisord]
 
 # 〜 中略 〜
@@ -256,7 +256,8 @@ supervisordについて設定する．
 
 常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する．
 
-```bash
+```ini
+[supervisord]
 directory=/var/www/foo
 ```
 
@@ -264,7 +265,8 @@ directory=/var/www/foo
 
 supervisordのログファイルの場所を設定する．
 
-```bash
+```ini
+[supervisord]
 logfile=/var/log/supervisor/supervisord.log
 ```
 
@@ -272,7 +274,8 @@ logfile=/var/log/supervisor/supervisord.log
 
 supervisordのログレベルを設定する．
 
-```bash
+```ini
+[supervisord]
 loglevel=info
 ```
 
@@ -280,7 +283,8 @@ loglevel=info
 
 supervisordをフォアグラウンドで起動するかどうかを設定する．
 
-```bash
+```ini
+[supervisord]
 nodaemon=true
 ```
 
@@ -288,7 +292,8 @@ nodaemon=true
 
 supervisordのpidが記載されるファイルを設定する．
 
-```bash
+```ini
+[supervisord]
 pidfile=/var/tmp/supervisor/supervisord.pid
 ```
 
@@ -296,7 +301,8 @@ pidfile=/var/tmp/supervisor/supervisord.pid
 
 標準出力への出力を標準エラー出力に転送する可動化を設定する．
 
-```bash
+```ini
+[supervisord]
 redirect_stderr=true
 ```
 
@@ -304,7 +310,8 @@ redirect_stderr=true
 
 supervisordの実行ユーザーを設定する．
 
-```bash
+```ini
+[supervisord]
 user=root
 ```
 
@@ -314,7 +321,7 @@ user=root
 
 #### ・programセクションとは
 
-管理対象の常駐プロセスについて設定する．
+管理対象の常駐プロセスを設定する．
 
 参考：
 
@@ -322,11 +329,11 @@ user=root
 - https://christina04.hatenablog.com/entry/2015/07/21/215525
 
 ```ini
-[program:php-fpm]
+[program:<プログラム名>]
 
 # 〜 中略 〜
 
-[program:crond]
+[program:foo]
 
 # 〜 中略 〜
 ```
@@ -336,6 +343,7 @@ user=root
 常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する．
 
 ```ini
+[program:foo]
 autorestart=true
 ```
 
@@ -344,6 +352,7 @@ autorestart=true
 supervisordの起動時に常駐プロセスを自動的に起動させるかどうか，を設定する．
 
 ```ini
+[program:foo]
 autostart=true
 ```
 
@@ -352,6 +361,7 @@ autostart=true
 常駐プロセスの起動コマンドを設定する．
 
 ```ini
+[program:foo]
 command=/usr/sbin/crond -n
 ```
 
@@ -360,6 +370,7 @@ command=/usr/sbin/crond -n
 常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する．
 
 ```ini
+[program:foo]
 redirect_stderr=true
 ```
 
@@ -368,6 +379,7 @@ redirect_stderr=true
 常駐プロセスの起動に失敗した場合に，何回再試行するかを設定する．
 
 ```ini
+[program:foo]
 startretries=10
 ```
 
@@ -378,6 +390,8 @@ startretries=10
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
 ```ini
+[program:foo]
+
 # 標準出力の場所
 stdout_logfile=/dev/stdout
 stdout_logfile_maxbytes=0
@@ -392,6 +406,7 @@ stderr_logfile_maxbytes=0
 ログローテートによって作成されるバックアップの世代数．
 
 ```ini
+[program:foo]
 stdout_logfile_backups=10
 ```
 
@@ -400,6 +415,7 @@ stdout_logfile_backups=10
 ログファイルの最大サイズ．設定値を超えると，ログローテートが実行される．これにより，ログファイルがバックアップとして保存され，新しいログファイルが作成される．
 
 ```ini
+[program:foo]
 stdout_logfile_maxbytes=50MB
 ```
 
@@ -408,6 +424,7 @@ stdout_logfile_maxbytes=50MB
 常駐プロセスの実行ユーザーを設定する．
 
 ```ini
+[program:foo]
 user=root
 ```
 
@@ -418,6 +435,7 @@ user=root
 #### ・priority
 
 ```ini
+[group]
 priority=999
 ```
 
@@ -426,6 +444,7 @@ priority=999
 グループ化する常駐プロセス名を設定する．
 
 ```ini
+[group]
 programs=bar,baz
 ```
 

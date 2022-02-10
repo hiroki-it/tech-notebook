@@ -20,122 +20,141 @@ title: 【知見を記録するサイト】目次
 
 ### 基本ソフトウェア（OS）
 
-* カーネル
-    * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
-    * [📖 ︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
-* ユーティリティ
-    * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
-    * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
-    * [📖 ︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
-    * [📖 ︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
-* 言語プロセッサ
-    * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)
-    * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_process_mode.html)
-    * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_machine_language_and_radix.html)
+#### ・カーネル
+
+* [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
+* [📖 ︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
+
+
+#### ・ユーティリティ
+
+* [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
+* [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
+* [📖 ︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
+* [📖 ︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
+
+
+#### ・言語プロセッサ
+
+* [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)
+* [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_process_mode.html)
+* [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_machine_language_and_radix.html)
 
 <br>
 
 ### ミドルウェア
 
-* [📖 ︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
-* Web系
-    * Nginx
-        * [📖 ︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
-        * [📖 ︎nginxコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html)
-    * Apache
-        * [📖 ︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
-        * [📖 ︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
-* アプリケーション系
-    * GI:
-        * [📖 ︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html) 
-        * FastCGI
-            * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
-        * WSGI 
-            * [📖 ︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
-* データベース系
-    * RDBMS
-        * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
-        * MySQL
-            * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
-            * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html)
+#### ・[📖 ︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
+
+#### ・Web系
+
+* Nginx
+    * [📖 ︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
+    * [📖 ︎nginxコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html)
+* Apache
+    * [📖 ︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
+    * [📖 ︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
+
+#### ・アプリケーション系
+
+* GI
+    * [📖 ︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html) 
+    * FastCGI
+        * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
+    * WSGI 
+        * [📖 ︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
+
+#### ・データベース系
+
+* RDBMS
+    * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
+    * MySQL
+        * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
+        * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html)
 
 <br>
 
 ### アプリケーションソフトウェア
 
-* アーキテクチャ
-    * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html)
-    * バックエンド
-        * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html)
-        * [📖 ︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html)
-        * [📖 ︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
-        * [📖 ︎CQRS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_cqrs.html)
-    * フロントエンド
-        * [📖 ︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html)
-* アプリケーション間連携
-    * [📖 ︎JSON](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_json.html)
-    * [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_communication.html)
-    * RESTful-API
-        * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
-        * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
-* 言語
-    * オブジェクト指向型言語
-        * PHP
-            * [📖 PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php.html)
-            * [📖 phpコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command.html)
-            * クラスベース
-                * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html)
-                * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_method_data.html)
-                * [📖 ︎データ構造](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_data_structure.html)
-            * ロジック
-                * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_validation.html)
-                * [📖 ︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html)
-                * [📖 ︎反復ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_iteration.html)
-                * [📖 ︎アルゴリズム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_algorithm.html)
-            * フレームワーク
-                * Laravel
-                    * [📖 ︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component.html)
-                    * [📖 ︎Eloquentコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component_eloquent.html)
-                    * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package.html)
-                    * [📖 ︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package_auth.html)
-                * [📖 ︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html)
-            * パッケージ
-                * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html)
-                * [📖 ︎MySQLパッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_mysql.html)
-                * [📖 ︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_others.html)
-            * テスト
-                * [📖 ︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing.html)
-                * [📖 ︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html)
-                * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_test_specification.html)
-            * デバッグ
-                * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_debug.html)
-        * Python
-            * フレームワーク
-                * [📖 ︎Flask](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_framework_flask.html)
-            * パッケージ
-                * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_package_management.html)
-        * JavaScript
-            * プロトタイプベース
-                * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based.html)
-                * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based_method_data.html)
-            * ロジック
-                * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_validation.html)
-                * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_asynchronous_process.html)
-            * フレームワーク
-                * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_vuejs.html)
-                * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_nuxtjs.html)
-            * パッケージ
-                * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_package_management.html)
-            * デバッグ
-                * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_debug.html)
-            * ブラウザ
-                * [📖 ︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_browser_rendering.html)
-    * 手続き型言語
-        * Go
-            * [📖 Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go.html)
-            * [📖 goコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command.html)
-            * ロジック
-                * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html)
+#### ・アーキテクチャ
+
+* [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html)
+* バックエンド
+    * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html)
+    * [📖 ︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html)
+    * [📖 ︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
+    * [📖 ︎CQRS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_cqrs.html)
+* フロントエンド
+    * [📖 ︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html)
+
+#### ・アプリケーション間連携
+
+* [📖 ︎JSON](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_json.html)
+* [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_communication.html)
+* RESTful-API
+    * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
+    * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
+
+#### ・言語
+
+* [📖 言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language.html)
+* オブジェクト指向型言語
+    * PHP
+        * [📖 PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php.html)
+        * [📖 phpコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_command.html)
+        * クラスベース
+            * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based.html)
+            * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_method_data.html)
+            * [📖 ︎データ構造](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_class_based_data_structure.html)
+        * ロジック
+            * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_validation.html)
+            * [📖 ︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html)
+            * [📖 ︎反復ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_iteration.html)
+            * [📖 ︎アルゴリズム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_logic_algorithm.html)
+        * フレームワーク
+            * Laravel
+                * [📖 ︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component.html)
+                * [📖 ︎Eloquentコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_component_eloquent.html)
+                * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package.html)
+                * [📖 ︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_laravel_package_auth.html)
+            * [📖 ︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_framework_symfony.html)
+        * パッケージ
+            * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_management.html)
+            * [📖 ︎MySQLパッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_mysql.html)
+            * [📖 ︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_package_others.html)
+        * テスト
+            * [📖 ︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing.html)
+            * [📖 ︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_code.html)
+            * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_testing_based_on_test_specification.html)
+        * デバッグ
+            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_php_debug.html)
+    * Python
+        * フレームワーク
+            * [📖 ︎Flask](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_framework_flask.html)
+        * パッケージ
+            * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_python_package_management.html)
+    * JavaScript
+        * プロトタイプベース
+            * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based.html)
+            * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_prototype_based_method_data.html)
+        * ロジック
+            * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_validation.html)
+            * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_logic_asynchronous_process.html)
+        * フレームワーク
+            * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_vuejs.html)
+            * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_framework_nuxtjs.html)
+        * パッケージ
+            * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_package_management.html)
+        * デバッグ
+            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_debug.html)
+        * ブラウザ
+            * [📖 ︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_object_oriented_language_js_browser_rendering.html)
+* 手続き型言語
+    * Go
+        * [📖 Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go.html)
+        * [📖 goコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_command.html)
+        * ロジック
+            * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_logic_method_data.html)
             * フレームワーク
                 * [📖 Gin](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_procedural_language_go_framework_gin.html)
             * パッケージ

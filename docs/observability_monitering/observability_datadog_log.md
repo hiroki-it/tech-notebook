@@ -1080,7 +1080,7 @@ log-pipeline
 ├── foo-pipeline # service:foo でログ流入
 |   ├── 共通処理
 │   ├── laravel-pipeline # source:laravel のログを処理
-│   ├── php-fpm-pipeline # source:laravel のログのうち，php-fpmのものだけを処理
+│   ├── php-fpm-pipeline # source:laravel のログのうち，PHP-FPMのものだけを処理
 |   └── 共通処理
 │ 
 ├── bar-pipeline

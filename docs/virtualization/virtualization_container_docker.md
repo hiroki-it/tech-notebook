@@ -329,6 +329,7 @@ Linuxでは，標準出力は『```/proc/<プロセスID>/fd/1```』，標準エ
 
 ```bash
 [root@<コンテナID>:/dev] $ ls -la
+
 total 4
 drwxr-xr-x 5 root root  340 Oct 14 11:36 .
 drwxr-xr-x 1 root root 4096 Oct 14 11:28 ..

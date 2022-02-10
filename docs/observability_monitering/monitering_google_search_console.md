@@ -12,7 +12,7 @@ title: 【知見を記録するサイト】Googleサーチコンソール＠監�
 
 <br>
 
-## Googleサーチコンソール用語
+## 01. Googleサーチコンソール用語
 
 ### クローラー
 
@@ -97,6 +97,29 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
     </url>
 </urlset>
 ```
+
+<br>
+
+### インデックスカバレッジ
+
+#### ・インデックスカバレッジとは
+
+Webサイトの全ページのうち，どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと．
+
+参考：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
+
+#### ・ステータスの種類
+
+各ステータスの詳しい情報は以下のリンクを参考にせよ．
+
+参考：https://support.google.com/webmasters/answer/7440203#status_type
+
+| ステータス名 | DBインデックスへの登録の有無 |
+| ------------ | ---------------------------- |
+| 有効         | 登録された                   |
+| 警告         | 登録された                   |
+| エラー       | 登録されなかった             |
+| 除外         | 登録されなかった．           |
 
 <br>
 

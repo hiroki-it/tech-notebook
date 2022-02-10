@@ -80,17 +80,19 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 <br>
 
-### Webサーバー，アプリケーションにおける対応
+### アプリケーションが常時SSLの場合
 
 #### ・問題
 
-ALBインスタンスからEC2インスタンスへのルーティングをHTTPプロトコルとした場合，アプリケーション側で，HTTPSプロトコルを用いた処理ができなくなる．そこで，ALBからEC2インスタンスにHTTPプロトコルで転送したとしても，Webサーバーまたはアプリケーション側ではプロトコルをHTTPSと見なすように対処する．
+アプリケーションが常時SSLになっているアプリケーション（例：WordPress）の場合，ALBからアプリケーションにHTTPプロトコルでルーティングすると，HTTPSプロトコルへのリダイレクトループが発生してしまう．常時SSLがデフォルトになっていないアプリケーションであれば，これは起こらない．
 
-![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
+参考：https://cloudpack.media/525
 
 #### ・Webサーバーにおける対処方法
 
-ALBを経由したリクエストの場合，リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される．これには，ALBに対するリクエストのプロトコルの種類が文字列で代入されている．これが『HTTPS』だった場合，WebサーバーへのリクエストをHTTPSであるとみなすように対処する．これにより，アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は，以降のアプリケーション側の対応不要）．
+ALBを経由したリクエストには，リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される．これには，ALBに対するリクエストのプロトコルの種類が文字列で代入されている．これが『HTTPS』だった場合，WebサーバーへのリクエストをHTTPSであるとみなすように対処する．これにより，アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は，アプリケーション側の対応不要）．
+
+参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
@@ -100,7 +102,11 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 #### ・アプリケーションにおける対処方法
 
-ALBを経由したリクエストの場合，リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される．これには，ALBに対するリクエストのプロトコルの種類が文字列で代入されている．これが『HTTPS』だった場合，アプリケーションへのリクエストをHTTPSであるとみなすように，```index.php```に追加実装を行う．
+![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
+
+ALBを経由したリクエストには，リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される．これには，ALBに対するリクエストのプロトコルの種類が文字列で代入されている．そのため，もしALBに対するリクエストがHTTPSプロトコルだった場合は，ALBからアプリケーションへのリクエストもHTTPSであるとみなすように，```index.php```に追加実装を行う（こちらを行った場合は，Webサーバー側の対応不要）．
+
+参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
@@ -1533,7 +1539,7 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを用いて，特定のディメンション（ロググループ）に対して集計を実行することもできる．（ただ，やってみたけどうまくいかず）
+全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを用いて，特定のディメンション（ロググループ）に対して集計を実行することもできる（ただ，やってみたけどうまくいかず）．
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
@@ -2850,7 +2856,7 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 <br>
 
-## 14-05, EKS
+## 14-05. EKS
 
 ### EKSクラスター
 
@@ -2898,7 +2904,7 @@ Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに�
 
 <br>
 
-## 14-06. EKS on EC2
+## 14-07. EKS on EC2
 
 ### EC2ノード
 
@@ -6025,7 +6031,7 @@ VPCのプライベートサブネット内のリソースが，VPC外のリソ�
 
 **＊例＊**
 
-ECS Fargateをプライベートサブネットに置いた場合，ECS FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要．（例：CloudWatchログ，ECR，S3，SSM）
+ECS Fargateをプライベートサブネットに置いた場合，ECS FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ，ECR，S3，SSM）．
 
 #### ・メリット
 
@@ -6294,7 +6300,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Block                              | ON          | ON               | Countし，その後Blockが実行する．そのため，その後のルールは検証せずに終了する． |
 | Block                              | ON          | OFF              | Countのみが実行される．そのため，その後のルールも検証する．  |
 | Block                              | OFF         | ON               | そもそもCountモードが無効なため，上書きオプションは機能せずに，Blockが実行される． |
-| Block                              | OFF         | OFF              | そもそもCountモードが無効なため，マネージドルールのBlockが実行される．（と思っていたが，結果としてCountとして機能する模様...） |
+| Block                              | OFF         | OFF              | そもそもCountモードが無効なため，マネージドルールのBlockが実行される（と思っていたが，結果としてCountとして機能する模様）． |
 
 <br>
 
@@ -6465,13 +6471,13 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 36. 負荷テスト
+## 36. ロードテスト
 
-### Distributed Load Testing（分散負荷テスト）
+### Distributed Load Testing（分散ロードテスト）
 
-#### ・分散負荷テストとは
+#### ・分散ロードテストとは
 
-AWSから提供されている負荷を発生させるインフラ環境のこと．CloudFormationで構築でき，Fargateを用いて，ユーザーからのリクエストを擬似的に再現できる．
+ロードテストを実行できる．CloudFormationで構築でき，Fargateを用いて，ユーザーからのリクエストを擬似的に再現できる．
 
 参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 

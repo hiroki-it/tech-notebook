@@ -15,14 +15,6 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 ## 01 オブジェクト指向
 
-### オブジェクト指向を取り巻く歴史
-
-参考：https://umtp-japan.org/event-seminar/4233
-
-![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プログラミング言語と設計手法の歴史.png)
-
-<br>
-
 ### オブジェクト指向とは
 
 互いに密接に関連するデータと手続き（処理手順）を，オブジェクトと呼ばれる1つのまとまりとして捉えること．

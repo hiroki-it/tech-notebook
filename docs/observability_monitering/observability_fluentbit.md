@@ -87,7 +87,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 参考：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
-```bash
+```ini
 [SERVICE]
     # バッファに蓄えられた全てのログを宛先にアウトプットする間隔
     Flush 1
@@ -207,7 +207,7 @@ Inputs
 - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
 - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
-```json
+```bash
 {
   "message": "dummy"
 }
@@ -217,7 +217,7 @@ Inputs
 
 **＊実装例＊**
 
-```bash
+```ini
 [INPUT]
     Name   dummy
     # ダミーJSONデータ
@@ -246,7 +246,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 **＊実装例＊**
 
-```bash
+```ini
 [INPUT]
     # プラグイン名
     Name        forward
@@ -278,8 +278,8 @@ Fluent Bit v1.8.6
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \
-  -i forward \
-  -o stdout
+    -i forward \
+    -o stdout
 ```
 
 <br>
@@ -296,7 +296,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 **＊実装例＊**
 
-```bash
+```ini
 [INPUT]
     # プラグイン名
     Name              tail
@@ -325,9 +325,9 @@ log_router:
 
 ```bash
 $ fluent-bit \
-  -i tail \
-  -p path=/var/www/foo/storage/logs/*.log \
-  -o stdout
+    -i tail \
+    -p path=/var/www/foo/storage/logs/*.log \
+    -o stdout
 ```
 
 **＊実行ログ例＊**
@@ -389,7 +389,7 @@ $ fluent-bit \
 
 #### ・セットアップ
 
-```bash
+```ini
 [FILTER]
     name   grep
     match  *
@@ -411,7 +411,7 @@ $ fluent-bit \
 - https://docs.fluentbit.io/manual/pipeline/filters/modify
 - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
 
-```bash
+```ini
 [FILTER]
     Name            modify
     Match           *
@@ -442,7 +442,7 @@ $ fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
-```bash
+```ini
 [SERVICE]
     # 読み込むファイル
     Parsers_File parsers_multiline.conf
@@ -489,7 +489,7 @@ Filters
 
 Laravelのスタックトレースを結合する．
 
-```bash
+```ini
 [MULTILINE_PARSER]
     # パーサー名
     name          laravel
@@ -542,7 +542,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
 
-```bash
+```ini
 [SERVICE]
     Parsers_File    parser.conf
     
@@ -560,14 +560,14 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 例えば，ECSのプラットフォームバージョンが```v1.3```の時，メタデータのDockerNameは『```ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．コンテナ名だけに加工すると，FireLensコンテナのFluentBitのログクエリで抽出しやすくなる．
 
-```bash
+```ini
 [PARSER]
     Name      docker-name-parser
     Format    regex
     Regex     ^\/ecs-.*-(?<container_name>.*)-.*$
 ```
 
-```bash
+```ini
 # WHERE句でコンテナ名を指定
 [STREAM_TASK]
     Name bar-stream-task
@@ -586,7 +586,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 #### ・セットアップ
 
-```bash
+```ini
 [FILTER]
     # プラグイン名
     Name  stdout
@@ -599,10 +599,10 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \
-  -i <インプット名> \
-  -F stdout \
-  -m '*' \
-  -o null
+    -i <インプット名> \
+    -F stdout \
+    -m '*' \
+    -o null
 ```
 
 **＊実行ログ例＊**
@@ -637,7 +637,7 @@ Fluent Bit v1.8.6
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
-```bash
+```ini
 [SERVICE]
     Streams_File stream_processor.conf
 ```
@@ -663,7 +663,7 @@ SELECTステートメントの結果を用いて，データストリームを�
 
 **＊実装例＊**
 
-```bash
+```ini
 [STREAM_TASK]
     Name foo-stream-task
     # SELECT句の結果からfooデータストリームを作成する．
@@ -815,7 +815,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
-```bash
+```ini
 #########################
 # CloudWatchログへのルーティング
 #########################
@@ -872,7 +872,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 参考：https://github.com/DataDog/fluent-plugin-datadog
 
-```bash
+```ini
 #########################
 # Datadogへのルーティング
 #########################
@@ -970,7 +970,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 標準出力にアウトプットする，FluentBitの実行ログに混じって，対象のログがアウトプットされることになる．
 
-```bash
+```ini
  [OUTPUT]
     Name   stdout
     match  *
@@ -988,7 +988,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 **＊実装例＊**
 
-```bash
+```ini
 [OUTPUT]
     Name   null
     match  *
@@ -1000,10 +1000,10 @@ newRelicプラグインがあらかじめインストールされているベー
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \
-  -i <インプット名> \
-  -F stdout \
-  -m '*' \
-  -o null
+    -i <インプット名> \
+    -F stdout \
+    -m '*' \
+    -o null
 ```
 
 <br>
@@ -1024,7 +1024,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
-```bash
+```ini
 [SERVICE]
     flush         1
     log_Level     info
@@ -1041,7 +1041,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
-```bash
+```ini
 [SERVICE]
     flush         1
     log_Level     info
@@ -1191,7 +1191,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以�
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
-```bash
+```ini
 [INPUT]
     Name tcp
     Listen 127.0.0.1
@@ -1225,7 +1225,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
-```bash
+```ini
 [INPUT]
     Name tcp
     Listen 127.0.0.1
@@ -1264,7 +1264,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
 
 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
-```bash
+```ini
 [INPUT]
     Name        forward
     Listen      0.0.0.0
@@ -1299,7 +1299,7 @@ STREAM_TASKにて，ログのタグ付けを設定する．FireLensコンテナ�
 ]
 ```
 
-```bash
+```ini
 # laravelコンテナのログへのタグ付け
 [STREAM_TASK]
     Name laravel
@@ -1316,7 +1316,7 @@ STREAM_TASKにて，ログのタグ付けを設定する．FireLensコンテナ�
     Exec CREATE STREAM container WITH (tag='containers') AS SELECT * FROM TAG:'*-firelens-*';
 ```
 
-```bash
+```ini
 [SERVICE]
     Flush 1
     Grace 30
@@ -1332,7 +1332,7 @@ MULTILINE_PARSERにて，スタックトレースログの各行の結合を設�
 
 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
 
-```bash
+```ini
 [MULTILINE_PARSER]
     name          laravel
     type          regex
@@ -1341,7 +1341,7 @@ MULTILINE_PARSERにて，スタックトレースログの各行の結合を設�
     rule          "cont"          "/^\s+at.*/"                     "cont"
 ```
 
-```bash
+```ini
 [SERVICE]
     flush                 1
     log_level             info

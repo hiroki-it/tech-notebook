@@ -48,13 +48,61 @@ $ apt-get install php-fpm
 
 ## 03. 設定ファイル（※ Dockerの場合）
 
+### ```/usr/local/etc/php-fpm.conf```ファイル
+
+####  ・```php-fpm.conf```ファイルとは
+
+PHP-FPMの全てのプロセスを設定する．各プロセスの設定は，```/etc/php-fpm.d```ディレクトリ下に```.conf```ファイルの名前で配置する．
+
+```ini
+;;;;;;;;;;;;;;;;;;;;;
+; FPM Configuration ;
+;;;;;;;;;;;;;;;;;;;;;
+
+include=/etc/php-fpm.d/*.conf
+
+;;;;;;;;;;;;;;;;;;
+; Global Options ;
+;;;;;;;;;;;;;;;;;;
+
+[global]
+
+pid = /run/php-fpm/php-fpm.pid
+
+error_log = /var/log/php-fpm/error.log
+
+;syslog.facility = daemon
+;syslog.ident = php-fpm
+;log_level = notice
+;emergency_restart_threshold = 0
+;emergency_restart_interval = 0
+;process_control_timeout = 0
+;process.max = 128
+;process.priority = -19
+
+daemonize = yes
+
+;rlimit_files = 1024
+;rlimit_core = 0
+;events.mechanism = epoll
+;systemd_interval = 10
+
+;;;;;;;;;;;;;;;;;;;;
+; Pool Definitions ; 
+;;;;;;;;;;;;;;;;;;;;
+
+; See /etc/php-fpm.d/*.conf
+```
+
+<br>
+
 ### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
 #### ・```www.conf```ファイルとは
 
-PHP-FPMのログ以外の項目を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+PHP-FPMのwwwプロセスのログ以外を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
-参考：https://www.php.net/manual/ja/install.unix.nginx.php
+参考：https://www.php.net/manual/ja/install.fpm.configuration.php
 
 #### ・```zz-docker.conf ```ファイルについて
 
@@ -72,18 +120,20 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 #### ・```docker.conf```ファイルとは
 
-PHP-FPMの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```以下に配置されている．
+PHP-FPMのwwwプロセスの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
 
 ```ini
 [global]
-error_log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
+; /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
+error_log = /proc/self/fd/2
 
 ; https://github.com/docker-library/php/pull/725#issuecomment-443540114
 log_limit = 8192
 
 [www]
 ; if we send this to /proc/self/fd/1, it never appears
-access.log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
+; /dev/stderr（標準エラー出力）へのシンボリックリンクになっている．
+access.log = /proc/self/fd/2
 
 clear_env = no
 
@@ -95,6 +145,25 @@ decorate_workers_output = no
 <br>
 
 ## 04. wwwセクション
+
+### wwwセクションとは
+
+PHP-FPMを設定する．
+
+参考：https://www.php.net/manual/ja/install.fpm.configuration.php
+
+<br>
+
+### env
+
+PHP-FPMに出力する環境変数を設定する．
+
+```ini
+[www]
+env[FOO] = foo
+```
+
+<br>
 
 ### group
 
@@ -173,7 +242,18 @@ listen.owner = www-data
 
 <br>
 
-### php_admin_flag[log_errors]
+### php_admin_flag
+
+#### ・php_admin_flagとは
+
+Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごの変更モードによる．
+と
+参考：
+
+- https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
+- https://www.php.net/manual/en/ini.list.php
+
+#### ・php_admin_flag[log_errors]
 
 ```ini
 [www]
@@ -182,7 +262,18 @@ php_admin_flag[log_errors] = on
 
 <br>
 
-### php_admin_value[error_log]
+### php_admin_value
+
+#### ・php_admin_valueとは
+
+Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値以外のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
+
+参考：
+
+- https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
+- https://www.php.net/manual/en/ini.list.php
+
+#### ・php_admin_value[error_log]
 
 エラーログの出力先を設定する．開発環境ではエラーログファイル（```/var/log/php-fpm/www-error.log```）に出力し，本番環境では標準エラー出力に出力するとよい．
 
@@ -193,9 +284,44 @@ php_admin_value[error_log] = /dev/stderr
 
 <br>
 
-### php_value[session.save_handler]
+### php_flag
+
+#### ・php_flagとは
+
+PHPの```ini```ファイルで設定された真偽値のオプションを上書きする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
+
+参考：
+
+- https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
+- https://www.php.net/manual/en/ini.list.php
+
+#### ・php_value[display_errors]
+
+Webページ上にエラーを表示するかどうかを設定する．
+
+```ini
+[www]
+php_flag[display_errors] = off
+```
+
+<br>
+
+### php_value
+
+#### ・php_valueとは
+
+PHPの```ini```ファイルで設定された真偽値以外のオプションを上書きする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
+
+参考：
+
+- https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
+- https://www.php.net/manual/en/ini.list.php
+
+#### ・php_value[session.save_handler]
 
 セッションの保存方法を設定する．ファイル形式やRedisマップ形式を設定できる．デフォルト値は```files```である．
+
+参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -204,9 +330,11 @@ php_value[session.save_handler] = redis
 
 <br>
 
-### php_value[session.save_path]
+#### ・php_value[session.save_path]
 
 セッションの保存先のディレクトリを設定する．保存方法にRedisを設定した場合には，Redisストレージを設定できる．デフォルト値は```/var/lib/php/session```ディレクトリである．
+
+参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -215,7 +343,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 
 <br>
 
-### php_value[soap.wsdl_cache_dir]
+#### ・php_value[soap.wsdl_cache_dir]
 
 ```ini
 [www]

@@ -74,7 +74,7 @@ AuthorとCommitterのメールアドレスを設定する．```local```が一番
 $ git config --local user.email "example@gmail.com"
 ```
 
-Authorの情報は，コミット時に反映される．（Committerは表示されない）
+Authorの情報は，コミット時に反映される（Committerは表示されない）．
 
 ```bash
 $ git log
