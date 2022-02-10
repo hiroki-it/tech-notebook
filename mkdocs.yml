@@ -137,68 +137,70 @@ nav:
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
           - ■ 言語:
               - 言語: software/software_application_language.md
-              - ■ オブジェクト指向型言語:
+              - ■ オブジェクト指向型:
                   - ■ PHP:
-                      - PHP: software/software_application_object_oriented_language_php.md
-                      - phpコマンド: software/software_application_object_oriented_language_php_command.md
+                      - PHP: software/software_application_language_object_oriented_php.md
+                      - phpコマンド: software/software_application_language_object_oriented_php_command.md
                       - ■ クラスベース:
-                          - クラス: software/software_application_object_oriented_language_php_class_based.md
-                          - メソッド/データ: software/software_application_object_oriented_language_php_class_based_method_data.md
-                          - データ構造: software/software_application_object_oriented_language_php_class_based_data_structure.md
+                          - クラス: software/software_application_language_object_oriented_php_class_based.md
+                          - メソッド/データ: software/software_application_language_object_oriented_php_class_based_method_data.md
+                          - データ構造: software/software_application_language_object_oriented_php_class_based_data_structure.md
                       - ■ ロジック:
-                          - 検証ロジック: software/software_application_object_oriented_language_php_logic_validation.md
-                          - エラーとエラーハンドリング: software/software_application_object_oriented_language_php_logic_error_and_error_handling.md
-                          - 反復ロジック: software/software_application_object_oriented_language_php_logic_iteration.md
-                          - アルゴリズム: software/software_application_object_oriented_language_php_logic_algorithm.md
+                          - 検証ロジック: software/software_application_language_object_oriented_php_logic_validation.md
+                          - エラーとエラーハンドリング: software/software_application_language_object_oriented_php_logic_error_and_error_handling.md
+                          - 反復ロジック: software/software_application_language_object_oriented_php_logic_iteration.md
+                          - アルゴリズム: software/software_application_language_object_oriented_php_logic_algorithm.md
                       - ■ フレームワーク:
                           - ■ Laravel:
-                              - コンポーネント: software/software_application_object_oriented_language_php_framework_laravel_component.md
-                              - ︎Eloquentコンポーネント: software/software_application_object_oriented_language_php_framework_laravel_component_eloquent.md
-                              - パッケージ: software/software_application_object_oriented_language_php_framework_laravel_package.md
-                              - 認証/認可系パッケージ: software/software_application_object_oriented_language_php_framework_laravel_package_auth.md
-                          - Symfony: software/software_application_object_oriented_language_php_framework_symfony.md
+                              - コンポーネント: software/software_application_language_object_oriented_php_framework_laravel_component.md
+                              - ︎Eloquentコンポーネント: software/software_application_language_object_oriented_php_framework_laravel_component_eloquent.md
+                              - パッケージ: software/software_application_language_object_oriented_php_framework_laravel_package.md
+                              - 認証/認可系パッケージ: software/software_application_language_object_oriented_php_framework_laravel_package_auth.md
+                          - Symfony: software/software_application_language_object_oriented_php_framework_symfony.md
                       - ■ パッケージ:
-                          - パッケージ管理: software/software_application_object_oriented_language_php_package_management.md
-                          - MySQLパッケージ: software/software_application_object_oriented_language_php_package_mysql.md
-                          - その他パッケージ: software/software_application_object_oriented_language_php_package_others.md
+                          - パッケージ管理: software/software_application_language_object_oriented_php_package_management.md
+                          - MySQLパッケージ: software/software_application_language_object_oriented_php_package_mysql.md
+                          - その他パッケージ: software/software_application_language_object_oriented_php_package_others.md
                       - ■ テスト:
-                          - テスト: software/software_application_object_oriented_language_php_testing.md
-                          - コードベースのテスト: software/software_application_object_oriented_language_php_testing_based_on_code.md
-                          - テスト仕様書ベースのテスト: software/software_application_object_oriented_language_php_testing_based_on_test_specification.md
+                          - テスト: software/software_application_language_object_oriented_php_testing.md
+                          - コードベースのテスト: software/software_application_language_object_oriented_php_testing_based_on_code.md
+                          - テスト仕様書ベースのテスト: software/software_application_language_object_oriented_php_testing_based_on_test_specification.md
                       - ■ デバッグ:
-                          - デバッグ: software/software_application_object_oriented_language_php_debug.md
-                  - ■ Python:
-                      - Python: software/software_application_object_oriented_language_python.md
-                      - ■ フレームワーク:
-                          - Flask: software/software_application_object_oriented_language_python_framework_flask.md
-                      - ■ パッケージ:
-                          - パッケージ管理: software/software_application_object_oriented_language_python_package_management.md
+                          - デバッグ: software/software_application_language_object_oriented_php_debug.md
                   - ■ JavaScript:
                       - ■ プロトタイプベース:
-                          - プロトタイプ: software/software_application_object_oriented_language_js_prototype_based.md
-                          - メソッド/データ: software/software_application_object_oriented_language_js_prototype_based_method_data.md
+                          - プロトタイプ: software/software_application_language_object_oriented_js_prototype_based.md
+                          - メソッド/データ: software/software_application_language_object_oriented_js_prototype_based_method_data.md
                       - ■ ロジック:
-                          - 検証ロジック: software/software_application_object_oriented_language_js_logic_validation.md
-                          - 非同期処理ロジック: software/software_application_object_oriented_language_js_logic_asynchronous_process.md
+                          - 検証ロジック: software/software_application_language_object_oriented_js_logic_validation.md
+                          - 非同期処理ロジック: software/software_application_language_object_oriented_js_logic_asynchronous_process.md
                       - ■ フレームワーク:
-                          - Vue.js: software/software_application_object_oriented_language_js_framework_vuejs.md
-                          - Nuxt.js: software/software_application_object_oriented_language_js_framework_nuxtjs.md
+                          - Vue.js: software/software_application_language_object_oriented_js_framework_vuejs.md
+                          - Nuxt.js: software/software_application_language_object_oriented_js_framework_nuxtjs.md
                       - ■ パッケージ:
-                          - パッケージ管理: software/software_application_object_oriented_language_js_package_management.md
+                          - パッケージ管理: software/software_application_language_object_oriented_js_package_management.md
                       - ■ デバッグ:
-                          - デバッグ: software/software_application_object_oriented_language_js_debug.md
+                          - デバッグ: software/software_application_language_object_oriented_js_debug.md
                       - ■ ブラウザ:
-                          - ブラウザレンダリング: software/software_application_object_oriented_language_js_browser_rendering.md
-              - ■ 手続き型言語:
+                          - ブラウザレンダリング: software/software_application_language_object_oriented_js_browser_rendering.md
+              - ■ 手続き型:
                   - ■ Go:
-                      - Go: software/software_application_procedural_language_go.md
-                      - goコマンド: software/software_application_procedural_language_go_command.md
+                      - Go: software/software_application_language_procedural_go.md
+                      - goコマンド: software/software_application_language_procedural_go_command.md
                       - ■ ロジック:
-                          - メソッド/データ: software/software_application_procedural_language_go_logic_method_data.md
+                          - メソッド/データ: software/software_application_language_procedural_go_logic_method_data.md
                       - ■ フレームワーク:
-                          - Gin: software/software_application_procedural_language_go_framework_gin.md
+                          - Gin: software/software_application_language_procedural_go_framework_gin.md
                       - ■ パッケージ:
-                          - パッケージ: software/software_application_procedural_language_go_package.md
+                          - パッケージ: software/software_application_language_procedural_go_package.md
+              - ■ 命令型:
+                  - ■ Python:
+                      - Python: software/software_application_language_object_oriented_python.md
+                      - ■ フレームワーク:
+                          - Flask: software/software_application_language_object_oriented_python_framework_flask.md
+                      - ■ パッケージ:
+                          - パッケージ管理: software/software_application_language_object_oriented_python_package_management.md
+
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
       - 組み込み機器: hardware/hardware_embedded_system.md
