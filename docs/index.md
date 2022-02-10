@@ -20,13 +20,13 @@ title: 【知見を記録するサイト】目次
 
 ### 基本ソフトウェア（OS）
 
-#### ・カーネル
+#### ■ カーネル
 
 * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
 * [📖 ︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
 
 
-#### ・ユーティリティ
+#### ■ ユーティリティ
 
 * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
 * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
@@ -34,7 +34,7 @@ title: 【知見を記録するサイト】目次
 * [📖 ︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
 
 
-#### ・言語プロセッサ
+#### ■ 言語プロセッサ
 
 * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)
 * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_process_mode.html)
@@ -44,9 +44,9 @@ title: 【知見を記録するサイト】目次
 
 ### ミドルウェア
 
-#### ・[📖 ︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
+#### ■ [📖 ︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
 
-#### ・Web系
+#### ■ Web系
 
 * Nginx
     * [📖 ︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
@@ -55,7 +55,7 @@ title: 【知見を記録するサイト】目次
     * [📖 ︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
     * [📖 ︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
 
-#### ・アプリケーション系
+#### ■ アプリケーション系
 
 * GI
     * [📖 ︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html) 
@@ -64,7 +64,7 @@ title: 【知見を記録するサイト】目次
     * WSGI 
         * [📖 ︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
 
-#### ・データベース系
+#### ■ データベース系
 
 * RDBMS
     * [📖 ︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
@@ -76,7 +76,7 @@ title: 【知見を記録するサイト】目次
 
 ### アプリケーションソフトウェア
 
-#### ・アーキテクチャ
+#### ■ アーキテクチャ
 
 * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html)
 * バックエンド
@@ -87,7 +87,7 @@ title: 【知見を記録するサイト】目次
 * フロントエンド
     * [📖 ︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html)
 
-#### ・アプリケーション間連携
+#### ■ アプリケーション間連携
 
 * [📖 ︎JSON](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_json.html)
 * [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_communication.html)
@@ -95,7 +95,7 @@ title: 【知見を記録するサイト】目次
     * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
     * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
 
-#### ・言語
+#### ■ 言語
 
 * [📖 言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language.html)
 * オブジェクト指向型言語
