@@ -15,6 +15,12 @@ description: playbook.yml＠Ansibleの知見をまとめました．
 
 ## 01. Ansibleの仕組み
 
+コントロールノードと管理対象ノードから構成される．コントロールノードにはAnsibleがインストールされている．このAnsibleは，管理対象ノードにSSH接続を実行し，設定ファイルに基づいたプロビジョニングを実行する．
+
+参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
+
+![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
+
 <br>
 
 ## 02. セットアップ
@@ -129,11 +135,11 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ファクト変数を収集するかどうかを設定する．
 
-```
+```yaml
 - gather_facts: no
 ```
 
-
+<br>
 
 ## 06. tasksセクション
 
@@ -168,7 +174,7 @@ Linuxのユーティリティである```service```コマンドの実行を設�
 ```yaml
 - tasks:
   - service:
-      name:    nginx
+      name:    Start nginx
       state:   started
       enabled: yes
 ```

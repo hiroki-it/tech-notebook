@@ -233,23 +233,22 @@ title: 【知見を記録するサイト】目次
 
 * サーバープロビジョニング
     * Vagrant
-        * [📖 Vagrant](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant.html)
         * [📖 vagrantコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
         * [📖 Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
 * コンテナプロビジョニング
     * Docker Compose
-        * [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.html)
-        * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.html)
+        * [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.html)
+        * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.html)
     * Kubernetes
-        * [📖 ︎kubectlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.html)
-        * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.html)
-        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.html)
-        * skaffold
-            * [📖 ︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.html)
-            * [📖 ︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.html)
+        * [📖 ︎kubectlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html)
+        * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube_command.html)
+        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.html)
     * Istio
-        * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.html)
-        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html)
+        * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_command.html)
+        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.html)
+    * skaffold
+        * [📖 ︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_command.html)
+        * [📖 ︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.html)
 * クラウドインフラプロビジョニング
     * Terraform
         * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)

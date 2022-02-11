@@ -93,7 +93,7 @@ RUN chmod go+r /etc/envoy/envoy.yml
 
 ### Istio
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.html
 
 <br>
 
