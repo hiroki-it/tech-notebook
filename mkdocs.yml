@@ -249,7 +249,6 @@ nav:
       - ■ 宣言型:
           - ■ サーバープロビジョニング:
               - ■ Vagrant:
-                  - Vagrant: infrastructure_as_code/infrastructure_as_code_server_vagrant.md
                   - vagrantコマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
                   - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
           - ■ コンテナプロビジョニング:
