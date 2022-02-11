@@ -253,18 +253,18 @@ nav:
                   - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
           - ■ コンテナプロビジョニング:
               - ■ Docker Compose:
-                  - docker-composeコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.md
-                  - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.md
+                  - docker-composeコマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
+                  - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
               - ■ Kubernetes:
-                  - kubectlコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md
-                  - minikubeコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md
-                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md
-                  - ■ skaffold:
-                      - skaffoldコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md
-                      - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md
+                  - kubectlコマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
+                  - minikubeコマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube_command.md
+                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md
               - ■ Istio:
-                  - istioctlコマンド: infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md
-                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md
+                  - istioctlコマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
+                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.md
+              - ■ skaffold:
+                  - skaffoldコマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_skaffold_command.md
+                  - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_skaffold_yml.md
           - ■ クラウドインフラプロビジョニング:
               - ■ Terraform:
                   - terraformコマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
