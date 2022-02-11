@@ -153,6 +153,7 @@ nav:
                           - エラーとエラーハンドリング: software/software_application_language_object_oriented_php_logic_error_and_error_handling.md
                           - 反復ロジック: software/software_application_language_object_oriented_php_logic_iteration.md
                           - アルゴリズム: software/software_application_language_object_oriented_php_logic_algorithm.md
+                          - デバッグ: software/software_application_language_object_oriented_php_logic_debug.md
                       - ■ フレームワーク:
                           - ■ Laravel:
                               - コンポーネント: software/software_application_language_object_oriented_php_framework_laravel_component.md
@@ -168,8 +169,6 @@ nav:
                           - テスト: software/software_application_language_object_oriented_php_testing.md
                           - コードベースのテスト: software/software_application_language_object_oriented_php_testing_based_on_code.md
                           - テスト仕様書ベースのテスト: software/software_application_language_object_oriented_php_testing_based_on_test_specification.md
-                      - ■ デバッグ:
-                          - デバッグ: software/software_application_language_object_oriented_php_debug.md
                   - ■ JavaScript:
                       - ■ プロトタイプベース:
                           - プロトタイプ: software/software_application_language_object_oriented_js_prototype_based.md
@@ -177,13 +176,12 @@ nav:
                       - ■ ロジック:
                           - 検証ロジック: software/software_application_language_object_oriented_js_logic_validation.md
                           - 非同期処理ロジック: software/software_application_language_object_oriented_js_logic_asynchronous_process.md
+                          - デバッグ: software/software_application_language_object_oriented_js_logic_debug.md
                       - ■ フレームワーク:
                           - Vue.js: software/software_application_language_object_oriented_js_framework_vuejs.md
                           - Nuxt.js: software/software_application_language_object_oriented_js_framework_nuxtjs.md
                       - ■ パッケージ:
                           - パッケージ管理: software/software_application_language_object_oriented_js_package_management.md
-                      - ■ デバッグ:
-                          - デバッグ: software/software_application_language_object_oriented_js_debug.md
                       - ■ ブラウザ:
                           - ブラウザレンダリング: software/software_application_language_object_oriented_js_browser_rendering.md
               - ■ 手続き型:
