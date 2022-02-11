@@ -96,7 +96,6 @@ nav:
               - シェル: software/software_basic_utility_shell.md
           - ■ 言語プロセッサ:
               - 言語プロセッサ: software/software_basic_language_processor.md
-              - 言語別の処理方式: software/software_basic_language_processor_process_mode.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
       - ■ ミドルウェア:
           - Linux系: software/software_middleware_linux.md
@@ -137,6 +136,7 @@ nav:
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
           - ■ 言語:
               - 言語: software/software_application_language.md
+              - 言語別の処理方式: software/software_application_language_process_mode.md
               - ■ オブジェクト指向型:
                   - ■ PHP:
                       - PHP: software/software_application_language_object_oriented_php.md
