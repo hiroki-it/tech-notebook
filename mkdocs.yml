@@ -118,6 +118,9 @@ nav:
                   - ■ My︎SQL:
                       - MySQL: software/software_middleware_database_rdbms_mysql.md
                       - SQL: software/software_middleware_database_rdbms_mysql_sql.md
+          - ■ サービスメッシュ系:
+              - ■ Envoy:
+                  - envoy.yml: software/software_middleware_service_mesh_envoy_envoy_yml.md
       - ■ アプリケーションソフトウェア:
           - ■ アーキテクチャ:
               - オブジェクト指向分析設計: software/software_application_architecture_object_oriented_analysis_and_design.md
@@ -232,21 +235,24 @@ nav:
           - Docker Swarm: virtualization/virtualization_container_orchestration_docker_swarm.md
       - ■ サービスメッシュ:
           - Istio: virtualization/virtualization_service_mesh_istio.md
-          - Envoy: virtualization/virtualization_service_mesh_envoy.md
 
   - ⚙️ Infrastructure as Code:
       - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
-      - ■ サーバープロビジョニング:
-          - ■ Vagrant:
-              - Vagrant: infrastructure_as_code/infrastructure_as_code_server_vagrant.md
-              - vagrantコマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
-              - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
-      - ■ コンテナプロビジョニング:
-          - ■ コンテナ:
+      - ■ 命令型:
+          - ■ サーバープロビジョニング: 
+              - ■ Ansible:
+                  - playbook.yml: infrastructure_as_code/infrastructure_as_code_server_ansible_playbook_yml.md
+          - ■ コンテナプロビジョニング:
               - ■ Docker:
                   - dockerコマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
                   - Dockerfile: infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
-          - ■ コンテナオーケストレーション:
+      - ■ 宣言型:
+          - ■ サーバープロビジョニング:
+              - ■ Vagrant:
+                  - Vagrant: infrastructure_as_code/infrastructure_as_code_server_vagrant.md
+                  - vagrantコマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
+                  - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
+          - ■ コンテナプロビジョニング:
               - ■ Docker Compose:
                   - docker-composeコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.md
                   - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.md
@@ -257,22 +263,19 @@ nav:
                   - ■ skaffold:
                       - skaffoldコマンド: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md
                       - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md
-          - ■ サービスメッシュ:
               - ■ Istio:
                   - istioctlコマンド: infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md
                   - manifest.yml: infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md
-              - ■ Envoy:
-                  - envoy.yml: infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md
-      - ■ クラウドインフラプロビジョニング:
-          - ■ Terraform:
-              - terraformコマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
-              - ロジック: infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md
-              - ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
-              - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md
-              - CI/CD: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
-          - ■ Serverless Framework:
-              - serverlessコマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
-              - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
+          - ■ クラウドインフラプロビジョニング:
+              - ■ Terraform:
+                  - terraformコマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
+                  - ロジック: infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md
+                  - ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
+                  - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md
+                  - CI/CD: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
+              - ■ Serverless Framework:
+                  - serverlessコマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
+                  - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
 
   - ♾️ CI/CD:
       - CI/CD: ci_cd/ci_cd.md
