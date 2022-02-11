@@ -262,7 +262,7 @@ nav:
               - ■ Istio:
                   - istioctlコマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
                   - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.md
-              - ■ skaffold:
+              - ■ Skaffold:
                   - skaffoldコマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
                   - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.md
           - ■ クラウドインフラプロビジョニング:
