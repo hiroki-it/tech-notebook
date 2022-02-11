@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Playbook＠Ansible
-description: Playbook＠Ansibleの知見をまとめました．
+title: 【知見を記録するサイト】playbook.yml＠Ansible
+description: playbook.yml＠Ansibleの知見をまとめました．
 ---
 
 # playbook.yml＠Ansible

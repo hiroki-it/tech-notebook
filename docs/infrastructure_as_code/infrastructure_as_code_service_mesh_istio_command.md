@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】istioctlコマンド＠Istio
+description: istioctlコマンド＠Istioの知見をまとめました．
 ---
 
 # istioctlコマンド＠Istio

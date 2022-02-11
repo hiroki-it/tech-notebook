@@ -816,7 +816,7 @@ spec:
 
 インバウンド通信の転送先とするPodのラベルのキー名と値を設定する．
 
-参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
+参考：https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
 **＊実装例＊**
 

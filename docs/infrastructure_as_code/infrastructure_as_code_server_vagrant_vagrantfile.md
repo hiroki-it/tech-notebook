@@ -13,13 +13,65 @@ description: Vagrantfile＠Vagrantの知見をまとめました．
 
 <br>
 
-## 01. Vagrantfileとは
+## 01. Vagrantの仕組み
+
+### プロバイダーとプロビジョナーの操作
+
+Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして用いることもできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために用いることが多い．
+
+参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
+
+![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
+
+<br>
+
+### プロバイダー
+
+#### ・プロバイダーとは
+
+仮想サーバー/コンテナを提供する．
+
+参考：https://www.vagrantup.com/docs/providers
+
+#### ・種類
+
+| プロバイダー名 | 補足                                                      |
+| -------------- | --------------------------------------------------------- |
+| VirtualBox     | 参考：https://www.vagrantup.com/docs/providers/virtualbox |
+| VMWare         | 参考：https://www.vagrantup.com/docs/providers/vmware     |
+| Docker         | 参考：https://www.vagrantup.com/docs/providers/docker     |
+| Hyper-V        | 参考：https://www.vagrantup.com/docs/providers/hyperv     |
+
+<br>
+
+### プロビジョナー
+
+#### ・プロビジョナーとは
+
+プロバイダーによって構築された仮想環境に，ソフトウェアをインストールできる（構成管理できる）．具体的には，プログラミング言語やファイアウォールをインストールする．
+
+参考：https://www.vagrantup.com/docs/provisioning
+
+<br>
+
+| プロビジョナー名 | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして用いる．        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
+| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに，Ansibleを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
+| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに，CFEngineを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
+| Chef             | Vagrantfileでプロビジョニングを実行する代わりに，Chefを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |
+| Docker           | Vagrantfileでプロビジョニングを実行する代わりに，Dockerfile（に似た記述）を用いる． | 参考：https://www.vagrantup.com/docs/provisioning/docker     |
+| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに，Puppetを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
+
+<br>
+
+### Vagrantfile
 
 プロバイダーとプロビジョナーの一連の操作内容を設定する．チームメンバーが別々に仮想環境を構築する場合，プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に，違いが生じてしまう．Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば，チームメンバーが同じソフトウェアの下で，仮想サーバーを構築し，ソフトウェアをインストールできる．
 
 <br>
 
-## 01. Vagrant.configure
+## 02. Vagrant.configure
 
 ### Vagrant.configureとは
 
@@ -37,7 +89,7 @@ end
 
 <br>
 
-## 02. config.vm
+## 03. config.vm
 
 ### config.vmとは
 
