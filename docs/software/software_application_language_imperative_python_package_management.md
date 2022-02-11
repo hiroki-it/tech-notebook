@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】パッケージ管理＠Python
+description: パッケージ管理＠Pythonの知見をまとめました．
 ---
 
 # パッケージ管理＠Python

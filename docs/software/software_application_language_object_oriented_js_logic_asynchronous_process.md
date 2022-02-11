@@ -10,7 +10,7 @@ title: 【知見を記録するサイト】非同期処理ロジック＠JavaScr
 
 #### ・非同期処理とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_process_mode.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html
 
 #### ・非同期処理化
 

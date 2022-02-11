@@ -37,7 +37,6 @@ title: 【知見を記録するサイト】目次
 #### ■ 言語プロセッサ
 
 * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)
-* [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_process_mode.html)
 * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_machine_language_and_radix.html)
 
 <br>
@@ -72,6 +71,11 @@ title: 【知見を記録するサイト】目次
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
         * [📖 SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html)
 
+#### ■ サービスメッシュ系
+
+* Envoy
+    * [📖 ︎envoy.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yml.html)
+
 <br>
 
 ### アプリケーションソフトウェア
@@ -98,6 +102,7 @@ title: 【知見を記録するサイト】目次
 #### ■ 言語
 
 * [📖 言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language.html)
+* [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
 * オブジェクト指向型
     * PHP
         * [📖 PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php.html)
@@ -154,7 +159,6 @@ title: 【知見を記録するサイト】目次
                 * [📖 Gin](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_framework_gin.html)
             * パッケージ
                 * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_package.html)
-
 * 命令型
     * Python
         * [📖 ︎Python](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python.html)
@@ -209,22 +213,30 @@ title: 【知見を記録するサイト】目次
     * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * サービスメッシュ
     * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html)
-    * [📖 ︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_envoy.html)
 
 <br>
 
 ## ⚙️ Infrastructure as Code
 
-* [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
+#### ■ [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
+
+#### ■ 命令型
+
+* サーバープロビジョニング
+    * Ansible
+        * [📖 ︎playbook.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_ansible_playbook_yml.html)
+* コンテナプロビジョニング
+    * Docker 
+        * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html)
+
+#### ■ 宣言型
+
 * サーバープロビジョニング
     * Vagrant
         * [📖 Vagrant](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant.html)
         * [📖 vagrantコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
         * [📖 Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
 * コンテナプロビジョニング
-    * Docker 
-        * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html)
-* コンテナオーケストレーション
     * Docker Compose
         * [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.html)
         * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.html)
@@ -235,12 +247,9 @@ title: 【知見を記録するサイト】目次
         * skaffold
             * [📖 ︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.html)
             * [📖 ︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.html)
-* サービスメッシュ
     * Istio
         * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.html)
         * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html)
-    * Envoy
-        * [📖 ︎envoy.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.html)
 * クラウドインフラプロビジョニング
     * Terraform
         * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)

@@ -13,7 +13,61 @@ description: envoy.yml＠Envoyの知見をまとめました．
 
 <br>
 
-## 01. セットアップ
+## 01. Envoyの仕組み
+
+### リバースプロキシサーバーとして
+
+#### ・Pod内の場合
+
+Istioは，マイクロサービスのリバースプロキシコンテナとして，Pod内にistio-proxyコンテナを構築する．Istioによって自動的に構築されるが，Istioを用いなくとも構築できる．マイクロサービスからネットワークに関する責務を分離することを目標としており，各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも，これをEnvoyが解決してくれる．
+
+参考：
+
+- https://blog.linkode.co.jp/entry/2020/07/06/162915
+- https://openstandia.jp/oss_info/envoy/
+- https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
+
+<br>
+
+#### ・Pod外の場合（フロントプロキシ）
+
+フロントプロキシ機能と呼ばれている．
+
+参考：https://tech.uzabase.com/entry/2020/09/28/140046
+
+<br>
+
+### フォワードプロキシサーバーとして
+
+<br>
+
+### その他の機能
+
+#### ・サービスディスカバリ
+
+サービスレジストリに登録された情報を基に，マイクロサービスを識別する．
+
+参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
+
+#### ・ 負荷分散
+
+#### ・ TLS終端
+
+#### ・ HTTP/2，gRPCのプロキシ
+
+#### ・ サーキットブレイカー
+
+#### ・ ヘルスチェック
+
+#### ・ A/Bテスト
+
+#### ・ フォールとインジェクション
+
+#### ・ メトリクスの収集
+
+<br>
+
+## 02. セットアップ
 
 ### インストール
 
@@ -43,17 +97,7 @@ RUN chmod go+r /etc/envoy/envoy.yml
 
 <br>
 
-## 01-02. カスタマイズ
-
-
-
-### envoy.ymlファイルから
-
-Dockerfileに組み込む```envoy.yml```ファイルの設定値を変更する．
-
-<br>
-
-## 02. admin
+## 03. admin
 
 ### adminとは
 
@@ -61,7 +105,7 @@ Dockerfileに組み込む```envoy.yml```ファイルの設定値を変更する�
 
 <br>
 
-## 02-02. admin.address
+## 03-02. admin.address
 
 ### addressとは
 
@@ -104,7 +148,7 @@ admin:
 
 <br>
 
-## 03. static_resources
+## 04. static_resources
 
 ### static_resourcesとは
 
@@ -114,7 +158,7 @@ admin:
 
 <br>
 
-## 03-02. static_resources.listeners
+## 04-02. static_resources.listeners
 
 ### listenersとは
 
@@ -291,7 +335,7 @@ static_resources:
 
 <br>
 
-## 04. static_resources.clusters
+## 05. static_resources.clusters
 
 ### clustersとは
 

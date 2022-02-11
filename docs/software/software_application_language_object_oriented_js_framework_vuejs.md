@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Vue.js
+description: Vue.jsの知見をまとめました．
 ---
 
 # Vue.js

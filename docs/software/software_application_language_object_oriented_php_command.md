@@ -22,6 +22,7 @@ PHPの設定を表示する．
 
 ```bash
 $ php -i
+
 phpinfo()
 PHP Version => 7.4
 
@@ -34,6 +35,7 @@ PHP Version => 7.4
 ```bash
 # PHPのプロセスが使用可能なめもりの
 $ php -i | grep memory_limit
+
 memory_limit => 2048M => 2048M
 ```
 
