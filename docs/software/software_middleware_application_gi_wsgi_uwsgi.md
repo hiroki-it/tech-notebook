@@ -114,7 +114,10 @@ uWSGIを設定する．
 
  アプリケーションのインスタンスの変数名を設定する．デフォルト値は，```application```である．
 
-参考：https://laplace-daemon.com/nginx-uwsgi-flask/
+参考：
+
+- https://laplace-daemon.com/nginx-uwsgi-flask/
+- https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
 
 ```ini
 [uwsgi]
@@ -125,7 +128,9 @@ callable = app
 
 ### chdir
 
-作業ディレクトリから移動する
+作業ディレクトリから移動する．
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
 
 ```ini
 [uwsgi]
@@ -138,6 +143,8 @@ chdir=/var/www/foo
 
 UNIXドメインソケットファイルの権限を設定する．
 
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
+
 ```ini
 [uwsgi]
 chmod-socket = 666
@@ -146,6 +153,8 @@ chmod-socket = 666
 <br>
 
 ### die-on-term
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
 
 ```ini
 [uwsgi]
@@ -158,6 +167,8 @@ die-on-term = true
 
 HTTPプロトコルを用いる場合に，受信するIPアドレスとポート番号を設定する．
 
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
+
 ```ini
 [uwsgi]
 http = 0.0.0.0:8080
@@ -169,6 +180,8 @@ http = 0.0.0.0:8080
 
 ログの出力先を設定する．
 
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
+
 ```ini
 [uwsgi]
 logto = /dev/stdout
@@ -178,7 +191,9 @@ logto = /dev/stdout
 
 ### master
 
-マスターモードで起動するかどうかを設定する
+マスターモードで起動するかどうかを設定する．
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
 ```ini
 [uwsgi]
@@ -187,7 +202,22 @@ master = true
 
 <br>
 
+### module，wsgi
+
+Pythonでアプリケーションファクトリーパターンを採用している場合に，モジュール名とメソッド名を設定する．
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
+
+```ini
+[uwsgi]
+module = src:create_app()
+```
+
+<br>
+
 ### processes
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
 
 ```ini
 [uwsgi]
@@ -197,6 +227,8 @@ processes = 1
 <br>
 
 ### py-autoreload
+
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
 
 ```ini
 [uwsgi]
@@ -209,6 +241,8 @@ py-autoreload = 1
 
 アプリケーションのあるディレクトリを設定する．
 
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
+
 ```ini
 [uwsgi]
 python-path = /var/www/foo
@@ -220,7 +254,10 @@ python-path = /var/www/foo
 
 UNIXドメインソケットを用いる場合に，ソケットファイルの生成場所と受信するポート番号を設定する．
 
-参考： https://qiita.com/koyoru1214/items/57461b920dfc11f67683
+参考： 
+
+- https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
+- https://qiita.com/koyoru1214/items/57461b920dfc11f67683
 
 ```ini
 [uwsgi]
@@ -233,6 +270,8 @@ socket = /etc/uwsgi/uwsgi.sock:8080
 
 uwsgiプロセス終了時にソケットファイルを削除するかどうかを設定する．
 
+参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
+
 ```ini
 [uwsgi]
 vacuum = true
@@ -244,7 +283,10 @@ vacuum = true
 
 エントリーポイントとするファイルを設定する．
 
-参考：https://django.kurodigi.com/uwsgi-basic/
+参考：
+
+- https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
+- https://django.kurodigi.com/uwsgi-basic/
 
 ```ini
 [uwsgi]

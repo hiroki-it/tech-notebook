@@ -91,6 +91,15 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
 - https://sreake.com/blog/istio/
 
+#### ・VirtualService数
+
+参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
+
+| 場合                                 | VirtualService数                                             |
+| ------------------------------------ | ------------------------------------------------------------ |
+| API GatewayをIstio内で管理する場合   | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい． |
+| API GatewayをIstio内で管理しない場合 | API Gatewayから全てのマイクロサービスにルーティングできるように，各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある． |
+
 <br>
 
 ## 01-03. アウトバウンド通信に関するオブジェクト

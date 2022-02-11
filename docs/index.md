@@ -116,6 +116,7 @@ title: 【知見を記録するサイト】目次
             * [📖 ︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_error_and_error_handling.html)
             * [📖 ︎反復ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_iteration.html)
             * [📖 ︎アルゴリズム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_algorithm.html)
+            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_debug.html)
         * フレームワーク
             * Laravel
                 * [📖 ︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_component.html)
@@ -131,8 +132,6 @@ title: 【知見を記録するサイト】目次
             * [📖 ︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing.html)
             * [📖 ︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing_based_on_code.html)
             * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing_based_on_test_specification.html)
-        * デバッグ
-            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_debug.html)
     * JavaScript
         * プロトタイプベース
             * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_prototype_based.html)
@@ -140,13 +139,12 @@ title: 【知見を記録するサイト】目次
         * ロジック
             * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_validation.html)
             * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_asynchronous_process.html)
+            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_debug.html)
         * フレームワーク
             * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_framework_vuejs.html)
             * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_framework_nuxtjs.html)
         * パッケージ
             * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_package_management.html)
-        * デバッグ
-            * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_debug.html)
         * ブラウザ
             * [📖 ︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_browser_rendering.html)
 * 手続き型
@@ -246,7 +244,7 @@ title: 【知見を記録するサイト】目次
     * Istio
         * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_command.html)
         * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.html)
-    * skaffold
+    * Skaffold
         * [📖 ︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_command.html)
         * [📖 ︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.html)
 * クラウドインフラプロビジョニング

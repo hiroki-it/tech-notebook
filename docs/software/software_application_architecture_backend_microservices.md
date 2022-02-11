@@ -239,7 +239,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
 
-#### ・マイクロサービスメッシュ
+#### ・サービスメッシュ
 
 ![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
 
@@ -292,10 +292,10 @@ HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相�
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
-| 方法                                                  | ツール                                                       |
-| ----------------------------------------------------- | ------------------------------------------------------------ |
-| API Gatewayをマイクロサービスメッシュで管理する場合   | 自前で実装<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
-| API Gatewayをマイクロサービスメッシュで管理しない場合 | AWS API Gateway，Kong，Tyk，Apigee<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
+| 場合                                            | ツール                                                       |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| API Gatewayをサービスメッシュ内で管理する場合   | 自前で実装する必要がある．<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
+| API Gatewayをサービスメッシュ内で管理しない場合 | クラウドベンダー（AWS API Gateway）やOSS（Kong，Tyk，Apigee）を用いる．<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 
 <br>
 

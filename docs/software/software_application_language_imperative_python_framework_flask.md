@@ -106,12 +106,13 @@ $ flask run
 
 ### ベストプラクティス
 
-#### ・```src/__init__.py```ファイル
+#### ・アプリケーションファクトリーパターン
 
-Pythonのソースコードを配置するディレクトリに```__init__.py```ファイルを配置し，ここでFlaskクラスのインスタンスを作成するメソッドを定義する．また，ルーティングもここで定義する．
+Pythonのソースコードを配置するディレクトリに```__init__.py```ファイルを配置し，ここでFlaskクラスのインスタンスを作成するメソッドを定義する．
 
 参考：
 
+- https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
 - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
 
@@ -129,9 +130,9 @@ def create_app():
     return app
 ```
 
-#### ・```main.py```
+#### ・エントリーポイント
 
-プロジェクトのルートディレクトリに，```create_app```メソッドを実行するエントリーポイントを配置する．名前空間を判定する条件分の外で```create_app```メソッドを実行しないと，uwsgiがapp変数を見つけられない．
+プロジェクトのルートディレクトリに，```create_app```メソッドを実行するエントリーポイント（例：```main.py```ファイル）を配置する．名前空間を判定する条件分の外で```create_app```メソッドを実行しないと，uwsgiがapp変数を見つけられない．
 
 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 

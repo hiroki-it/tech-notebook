@@ -13,11 +13,11 @@ description: minikubeコマンド＠Kubernetesの知見をまとめました．
 
 <br>
 
-## 01. minikubeコマンド
+## 01. コマンド
 
 ### minikubeコマンドとは
 
-ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーNodeを持つClusterを作成するコマンド．
+ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーNodeを持つClusterを作成する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/
 

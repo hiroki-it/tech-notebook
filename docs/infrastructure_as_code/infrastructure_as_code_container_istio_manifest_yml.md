@@ -308,7 +308,7 @@ spec:
 
 ### host
 
-紐づけるServiceの名前を設定する．
+インバウンド通信のルーティング元とするServiceの名前を設定する．これにより，Envoyは特定のServiceからのルーティングのみ受信するようになる．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 

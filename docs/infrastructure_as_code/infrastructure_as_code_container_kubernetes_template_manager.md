@@ -5,6 +5,14 @@ description: テンプレート管理＠Kubernetesの知見をまとめました
 
 # テンプレート管理＠Kubernetes
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
 ## 01. テンプレート管理とは
 
 ### 種類

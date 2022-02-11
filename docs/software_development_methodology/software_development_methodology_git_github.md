@@ -212,7 +212,7 @@ Issueテンプレートと同じ階層に配置する．
 
 『```release/v<セマンティックバージョニング>```』とする．タグの付与先対象とするブランチは，『```Taget: main```』を選択する．
 
-参考：https://semver.org/
+参考：https://semver.org/lang/ja/
 
 #### ・リリース名
 

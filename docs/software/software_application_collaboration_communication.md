@@ -5,6 +5,14 @@ title: 【知見を記録するサイト】アプリケーション間通信
 
 # アプリケーション間通信
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
 ## 01. 同期通信
 
 <br>
