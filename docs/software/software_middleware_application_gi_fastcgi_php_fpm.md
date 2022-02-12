@@ -52,7 +52,7 @@ $ apt-get install php-fpm
 
 ####  ・```php-fpm.conf```ファイルとは
 
-PHP-FPMの全てのプロセスを設定する．各プロセスの設定は，```/etc/php-fpm.d```ディレクトリ下に```.conf```ファイルの名前で配置する．
+全ての実行ユーザーによるプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．
 
 ```ini
 ;;;;;;;;;;;;;;;;;;;;;
@@ -100,13 +100,13 @@ daemonize = yes
 
 #### ・```www.conf```ファイルとは
 
-PHP-FPMのwwwプロセスのログ以外を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+実行ユーザー（```www-data```）によるプロセスのログ以外を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.fpm.configuration.php
 
 #### ・```zz-docker.conf ```ファイルについて
 
-PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
+PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
 
@@ -120,7 +120,7 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 #### ・```docker.conf```ファイルとは
 
-PHP-FPMのwwwプロセスの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
+実行ユーザー（```www-data```）によるプロセスの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
 
 ```ini
 [global]
@@ -148,7 +148,7 @@ decorate_workers_output = no
 
 ### wwwセクションとは
 
-PHP-FPMを設定する．
+www-dataユーザーを設定する．
 
 参考：https://www.php.net/manual/ja/install.fpm.configuration.php
 

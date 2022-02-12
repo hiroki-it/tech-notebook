@@ -38,7 +38,7 @@ description: インテグレーション＠Datadogの知見をまとめました
 
 言語/フレームワーク/ツール，などに関して，専用の分散トレースを収集できるようになる．アプリケーションとして用いられる言語/フレームワークの場合，トレースエージェントがインテグレーション処理を持つため，仮想環境へのインストールは不要である．については，以下のリンクを参考にせよ．
 
-参考：https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
+参考：https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 
 <br>
 

@@ -204,7 +204,7 @@ master = true
 
 ### module，wsgi
 
-Pythonでアプリケーションファクトリーパターンを採用している場合に，モジュール名とメソッド名を設定する．
+Pythonでアプリケーションファクトリーパターンを採用している場合に，エントリーポイントのディレクトリ名とファクトリーメソッド名を設定する．
 
 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
 

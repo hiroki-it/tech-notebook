@@ -287,6 +287,8 @@ spec:
 
 #### ・capacityとは
 
+ストレージの最大容量を設定する．
+
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
 
 **＊実装例＊**
@@ -509,9 +511,13 @@ spec:
 
 #### ・resources
 
-コンテナのCPUとメモリの最小/最大使用量を設定する．Podのリソースが，コンテナの最小使用量を超えて余っている場合，Kubernetesはコンテナを自動的にスケーリングする．
+コンテナのCPUとメモリの最小/最大使用量を設定する．Pod内にコンテナが複数ある場合，最小/最大使用量を満たしているかどうかの判定は，これらのコンテナのリソース使用量の合計値に基づくことになる．
 
-参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
+参考：
+
+- https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
+- 
+- https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 ```yaml
 kind: Pod
@@ -520,13 +526,27 @@ spec:
   - resources:
       # 最小使用量
       requests:
-        memory: 64Mi
         cpu: 250m
+        memory: 64Mi
       # 最大使用量
       limits:
-        memory: 128Mi
         cpu: 500m
+        memory: 128Mi
 ```
+
+リソースの使用状況によるPodの挙動は以下の通りである．
+
+| リソース名 | 単位                                                         | request値以上にPodのリソースが余っている場合       | limit値に達した場合        |
+| ---------- | ------------------------------------------------------------ | -------------------------------------------------- | -------------------------- |
+| CPU        | ```m```：millicores（```1```コア = ```1000```ユニット = ```1000```m） | コンテナの負荷が高まれば，自動でスケーリングする． | 処理がスロットリングする． |
+| Memory     | ```Mi```：mebibyte（```1```Mi = ```1.04858```MB）            | コンテナの負荷が高まれば，自動でスケーリングする． | Podが削除される．          |
+
+もし最大使用量を設定しない場合，Podが実行されているNodeのリソースに余力がある限り，Podのリソース使用量は上昇し続けるようになる．
+
+参考：
+
+- https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit
+- https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit
 
 <br>
 

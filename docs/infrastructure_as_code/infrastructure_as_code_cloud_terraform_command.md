@@ -17,7 +17,7 @@ description: terraformコマンド＠Terraformの知見をまとめました．
 
 ### global option
 
-参考：https://www.terraform.io/docs/cli/commands/index.html#switching-working-directory-with-chdir
+参考：https://www.terraform.io/cli/commands/index.html#switching-working-directory-with-chdir
 
 <br>
 
@@ -27,7 +27,7 @@ description: terraformコマンド＠Terraformの知見をまとめました．
 
 ローカルPCにstateファイルを作成する．
 
-参考：https://www.terraform.io/docs/language/settings/backends/index.html
+参考：https://www.terraform.io/language/settings/backends
 
 ```bash
 $ terraform init -backend=false
@@ -59,7 +59,7 @@ $ terraform init \
 
 Terraformを初期化する．
 
-参考：https://www.terraform.io/docs/cli/commands/init.html#backend-initialization
+参考：https://www.terraform.io/cli/commands/init.html#backend-initialization
 
 ```bash
 $ terraform init -reconfigure
@@ -69,7 +69,7 @@ $ terraform init -reconfigure
 
 現在のバージョンを基に，```lock```ファイル，モジュール，プラグインのアップグレード/ダウングレードを行う．
 
-参考：https://www.terraform.io/docs/cli/commands/init.html#upgrade
+参考：https://www.terraform.io/cli/commands/init#upgrade
 
 ```bash
 $ terraform init -upgrade

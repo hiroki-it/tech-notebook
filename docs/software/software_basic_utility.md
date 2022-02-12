@@ -411,7 +411,7 @@ map auto_home            0         0         0   100%       0          0  100%  
 
 ```bash
 # h：--human-readable
-# t: -total
+# t：--total
 $ df -h -m -t
 ```
 
@@ -593,14 +593,14 @@ $ find ./* -name "*.conf" -type f | xargs grep "<検索文字>"
 
 ### free
 
-#### ・-m，-total
+#### ・-m，--t
 
 物理メモリ，スワップ領域，の使用状況をメガバイトで表示する．
 
 ```bash
-# m：Mega Bytes
-# t: -total
-$ free -m -total
+# m：--mega
+# t：--total
+$ free -m --t
 ```
 
 <br>

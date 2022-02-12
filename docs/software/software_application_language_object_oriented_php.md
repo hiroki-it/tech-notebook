@@ -88,7 +88,7 @@ COPY ./ /var/www/foo/
 
 #### ・```php.ini```ファイルとは
 
-PHPの起動時の値を設定する．```php.ini```ファイルは，```/usr/local/etc/php```ディレクトリ下に配置されている．配置された任意の```ini```ファイルに実装された設定値が，ユーザー定義のカスタム値として読み込まれる．また，それ以外の設定値はデフォルト値となる．
+PHPの起動時の値を設定する．```php.ini```ファイルは，```/usr/local/etc/php```ディレクトリ下に配置されている．配置された任意の```ini```ファイルに実装された設定値が，ユーザー定義のカスタム値として読み込まれる．また，それ以外の設定値はデフォルト値となる．設定ファイルを切り分ける場合，```/usr/local/etc/php/conf.d```ディレクトリ下に```custom.php.ini```ファイルの名前で配置する．
 
 参考：https://www.php.net/manual/ja/configuration.file.php
 
@@ -97,11 +97,13 @@ $ php --ini
 
 Configuration File (php.ini) Path: /usr/local/etc/php
 Loaded Configuration File:         (none) # iniファイルがまだ配置されていない
-Scan for additional .ini files in: /usr/local/etc/php/conf.d
+Scan for additional .ini files in: /usr/local/etc/php/conf.d # 切り分けられた設定ファイルの場所
 Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcmath.ini,
 /usr/local/etc/php/conf.d/docker-php-ext-pdo_mysql.ini,
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
+
+#### ・本番/開発環境用```php.ini```ファイル
 
 PHPでは，```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている．これをコピーして設定値を変更し，読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）．あるいは，最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し，同じく配置しても良い．
 
@@ -116,7 +118,7 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 # php.iniファイルをここに配置する
 ```
 
-#### ・開発環境用```php.ini```ファイル
+#### ・開発環境用```php.ini```ファイル例
 
 あらかじめ用意されている```php.ini-development```ファイルを参考に設定する．元の値をコメントアウトで示す．
 
@@ -167,7 +169,7 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
-#### ・本番環境用```php.ini```ファイル
+#### ・本番環境用```php.ini```ファイル例
 
 あらかじめ用意されている```php.ini-production```ファイルを参考に設定する．元の値をコメントアウトで示す．
 

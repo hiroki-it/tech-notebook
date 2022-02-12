@@ -71,7 +71,7 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
-composerに登録された対応関係は，```php```コマンドで確認するとよい．
+Composerに登録された対応関係は，```php```コマンドで確認するとよい．
 
 ```bash
 $ php -r '
@@ -82,7 +82,7 @@ $ php -r '
 
 #### ・config
 
-composerコマンドのオプションのデフォルト値を設定する．
+Composerのコマンドのオプションのデフォルト値を設定する．
 
 参考：https://getcomposer.org/doc/04-schema.md#config
 
@@ -211,7 +211,7 @@ composerコマンドのオプションのデフォルト値を設定する．
 
 #### ・version
 
-composerのバージョンを設定する．インストールされているcomposerと齟齬がないようにする．
+Composerのバージョンを設定する．インストールされているcomposerと齟齬がないようにする．
 
 参考：https://getcomposer.org/doc/04-schema.md#version
 
@@ -247,7 +247,7 @@ $ composer clear-cache
 
 ### create-project
 
-パッケージが既に組み込まれたプロジェクトを作成する．プロジェクトを```git clone```コマンドを実行し，プロジェクト内で```composer install```コマンドを実行することと同じである．新しいディレクトリを作成しつつ，プロジェクトのファイルを展開することもできるが，カレントディレクトリ下にそのまま展開した方が便利である．なお，ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため，一時的に削除しておく．
+パッケージが既に組み込まれたプロジェクトを作成する．プロジェクトを```git clone```コマンドを実行し，プロジェクト内で```composer install```コマンドを実行することと同じである．新しいディレクトリを作成しつつ，プロジェクトのファイルを展開することもできるが，カレントディレクトリ下にそのまま展開した方が便利である．なお，ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため，一時的に削除しておく．
 
 参考：https://getcomposer.org/doc/03-cli.md#create-project
 
@@ -260,7 +260,7 @@ $ composer create-project --prefer-dist laravel/lumen .
 
 ### diagnose
 
-composerを用いるための準備が揃っているかを検証する．
+Composerを用いるための準備が揃っているかを検証する．
 
 ```bash
 $ composer diagnose
@@ -382,12 +382,26 @@ $ composer install --prefer-source
 $ composer reinstall <パッケージ名>
 ```
 
-再インストールで問題を解決できなければ，全てのパッケージを再インストールすると良い．composerキャッシュと```vendor```ディレクトリを削除し，```install```コマンドを実行する．
+再インストールで問題を解決できなければ，全てのパッケージを再インストールすると良い．composerキャッシュと```vendor```ディレクトリを削除し，```composer install```コマンドを実行する．
 
 ```bash
 $ composer clearcache
 $ rm -rf vendor
-$ composer install
+$ composer install -vvv
+```
+
+<br>
+
+### remove
+
+#### ・オプション無し
+
+パッケージを```composer.json```ファイルと```composer.lock```ファイルの両方から削除する．
+
+参考：https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
+
+```bash
+$ composer remove <パッケージ名>
 ```
 
 <br>
@@ -418,32 +432,35 @@ $ composer <スクリプト名>
 
 #### ・オプション無し
 
-アプリケーションにて，```composer.json```ファイルに実装されたパッケージのうちで，インストールされていないものをインストールする．また，バージョンの指定を基に更新可能なパッケージを更新する．```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．
+アプリケーションにて，```composer.json```ファイルに実装されたパッケージのうちで，インストールされていないものをインストールする．また，バージョンの指定を基に更新可能なパッケージを更新する．```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．パッケージ内でエラーが発生したら，```composer update```コマンドによるパッケージの更新が原因だと考えた方が良い．いずれかのパッケージで新しいバージョンがリリースされたが，これに不具合があった可能性が高い．
 
 ```bash
+# 必要なパッケージをcomposer.jsonファイルに追加した上で実行する．
 $ composer update
 ```
-
-パッケージ内でエラーが発生したら，```update```コマンドによるパッケージの更新が原因だと考えた方が良い．いずれかのパッケージで新しいバージョンがリリースされたが，これに不具合があった可能性が高い．
 
 ####  ・-vvv
 
 コマンド処理中のログを表示する
 
 ```bash
-$ composer install -vvv
+$ composer update -vvv
 ```
 
-####  ・COMPOSER_MEMORY_LIMIT（環境変数）
+<br>
 
-phpのメモリ上限を無しにして，任意のcomposerコマンドを実行する．phpバイナリファイルを用いる．dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．
+### 環境変数
 
-```bash
-$ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
-```
+#### ・COMPOSER_MEMORY_LIMIT
+
+Composerのコマンドの実行時のメモリ上限を設定する．メモリ上限を無しにして，コマンドを実行できる．phpバイナリファイルを用いる．dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．
 
 ```bash
 $ COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -vvv
+```
+
+```bash
+$ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 ```
 
 <br>

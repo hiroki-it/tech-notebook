@@ -78,20 +78,20 @@ $ pip3 install ansible
 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
 
 ```yaml
-all:
-  hosts:
-    app:
-      ansible_host: 192.168.111.101
-      ansible_user: vagrant
-      ansible_password: vagrant
-    db:
-      ansible_host: 192.168.111.102
-      ansible_user: vagrant
-      ansible_password: vagrant
-    web:
-      ansible_host: 192.168.111.103
-      ansible_user: vagrant
-      ansible_password: vagrant
+- all:
+    hosts:
+      app:
+        ansible_host: 192.168.111.101
+        ansible_user: vagrant
+        ansible_password: vagrant
+      db:
+        ansible_host: 192.168.111.102
+        ansible_user: vagrant
+        ansible_password: vagrant
+      web:
+        ansible_host: 192.168.111.103
+        ansible_user: vagrant
+        ansible_password: vagrant
 ```
 
 <br>
@@ -204,7 +204,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 - tasks:
   - ansible.builtin.service:
       name: Start nginx
-      state:  started
+      state: started
       enabled: yes
 ```
 
@@ -216,7 +216,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - ansible.builtin.template:
-    src:  nginx.conf.j2
+    src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
 ```
 
@@ -229,8 +229,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 プレイで用いる設定値を変数として設定する．
 
 ```yaml
-vars:
-  foo: foo
-  bar: bar
+- vars:
+    foo: foo
+    bar: bar
 ```
 

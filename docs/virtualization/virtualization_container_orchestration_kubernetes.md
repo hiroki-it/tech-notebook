@@ -26,7 +26,7 @@ kubernetesクライアントは，kubectlコマンドを用いて，kubernetes�
 
 ### kubernetesマスターとは
 
-![kubernetes_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_overview.png)
+![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
 
 ワーカーNodeの操作を担う．『マスターNode』ともいう．クライアントがkubectlコマンドの実行すると，kube-apiserverがコールされ，コマンドに沿ってワーカーNodeが操作される．
 
@@ -166,15 +166,23 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合，これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-#### ・同じPod内/異なるPod間の通信方法
 
-Podごとにネットワークインターフェースが付与され，またIPアドレスが割り当てられる．そのため，同じPod内のコンテナ間は，『```localhost:<ポート番号>```』で通信できる．
 
-参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+#### ・同じPod内通信方法
 
-異なるPodのコンテナ間は，Serviceを経由して通信できる．
+| 通信の状況  | 説明                                                         | 補足                                                         |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 同じPod内   | Podごとにネットワークインターフェースが付与され，またIPアドレスが割り当てられる．そのため，同じPod内のコンテナ間は，『```localhost:<ポート番号>```』で通信できる． | 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate |
+| 異なるPod間 | 異なるPodのコンテナ間は，Serviceを経由して通信できる．       | 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/ |
 
-参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+#### ・リソースの単位
+
+参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+
+| 単位                | 例                                             |
+| ------------------- | ---------------------------------------------- |
+| ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
+| ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
 
 <br>
 

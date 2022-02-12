@@ -460,7 +460,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ・tunnelとは
 
-LoadBalancerServiceを用いている場合に，ServiceのClusterIPを外部エンドポイントにし，Serviceを公開する．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
+LoadBalancerServiceを用いている場合に，ServiceのClusterIPを外部エンドポイントにし，Serviceを公開する．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
 
 参考：
 

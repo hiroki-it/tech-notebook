@@ -13,7 +13,129 @@ description: メモリ管理＠OSの知見をまとめました．
 
 <br>
 
-## 01. アドレス空間管理の種類
+## 01. プロセス
+
+### プロセスとは
+
+プログラムは，メモリ上の仮想アドレスの領域に割り当てられている．プログラム自体を『プロセス』という．プロセスの代わりに『タスク』ということもある．プロセスとして割り当てられたプログラムはCPUに参照され，CPUのコア上で処理が実行される．
+
+参考：
+
+- https://jpazamu.com/thread_process/#index_id5
+- http://staff.miyakyo-u.ac.jp/~m-yasu/curri-ex/os/txt/os5.html
+
+<br>
+
+### 親/子プロセス
+
+#### ・親/子プロセスとは
+
+プロセスが新しいプロセスを生成する場合，プロセス間には親子関係がある．例えば，ターミナルの親プロセスは```shell```や```bash```であり，任意のユーティリティを実行すると，これの子プロセスが生成されることになる．プロセスIDが```1```のプロセスが，全てのプロセスの親である．
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
+
+```bash
+# MacOSの場合
+$ ps -p 1
+
+PID  TTY  TIME     CMD
+  1  ??   9:23.33  /sbin/launchd
+```
+
+#### ・同時処理可能なリクエスト数
+
+メモリ上には親の通信プロセスが割り当てられており，また1つのリクエストを処理するために，1つの子プロセスが割り当てられる．そのため，子プロセスの最大数は，同時に処理可能なリクエストの最大数に相当する．
+
+<br>
+
+### プロセシングの種類
+
+#### ・シングルプロセシング
+
+単一のメモリ上で，単一のプロセスがアドレスに割り当てられる仕組みのこと．
+
+#### ・マルチプロセシング
+
+単一のメモリ上で，複数のプロセスがアドレスに割り当てられる仕組みのこと．優先度の低いプロセスからCPUを切り離し，優先度の高いプロセスにCPUを割り当てる，といった仕組みを持つ．現代のハードウェアのほとんどがマルチプロセシングの機能を持つ．
+
+参考：https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
+
+![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
+
+<br>
+
+### OOMキラー
+
+#### ・OOMキラーとは
+
+プログラムが，実メモリやスワップの全ての領域に割り当てられ，これ以上使用可能なアドレス領域がなくなってしまった場合に実行される．最も使用領域の大きいプログラムを強制的に終了する．
+
+参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
+
+#### ・確認方法
+
+もしOOMキラーが実行された場合は，```/var/log/messages```ファイルにログが出力される．
+
+参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+
+```bash
+$ cat /var/log/messages | grep Kill
+
+Jan  1 00:00:00 localhost kernel: Out of memory: Kill process 17143 (java) score 468 or sacrifice child
+Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-vm:7790724kB, anon-rss:4108910kB, file-rss:6822kB, shmem-rss:0kB
+```
+
+<br>
+
+## 01-02. スレッド
+
+### スレッドとは
+
+メモリ上ではプログラムがプロセスとして割り当てられており，プログラムはCPUのコア上で実行される．CPUのコアと紐付くプロセスの実行単位を『スレッド』という．
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
+
+![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
+
+<br>
+
+### スレッディングの種類
+
+#### ・シングルスレッディング
+
+メモリ上の特定のプロセスで，単一のスレッドを実行できる仕組みのこと．
+
+#### ・マルチスレッディング
+
+メモリ上の特定のプロセスで，複数のスレッドを実行できる仕組みのこと．各スレッドがプロセスに割り当てられているアドレスを共有して用いる．
+
+![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
+
+<br>
+
+### マルチスレッディングについて
+
+#### ・通常のマルチスレッド
+
+CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと．
+
+参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+
+![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
+
+#### ・同時マルチスレッド
+
+CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと．
+
+参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+
+![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
+
+<br>
+
+
+
+## 03. アドレス空間管理
 
 ### 前置き
 
@@ -29,23 +151,19 @@ description: メモリ管理＠OSの知見をまとめました．
 
 <br>
 
-### 実メモリ管理
+### 種類
 
-#### ・実メモリ管理とは
+#### ・実メモリ管理
 
 物理メモリの領域をプロセスに適切に割り当てること．
 
-<br>
-
-### 仮想メモリ管理
-
-#### ・仮想メモリ管理とは
+#### ・仮想メモリ管理
 
 仮想メモリの領域をプロセスに適切に割り当てること．
 
 <br>
 
-## 01-02. 実メモリ管理
+## 03-02. 実メモリ管理
 
 ### 固定区画方式（同じ大きさの区画に分割する方式）
 
@@ -102,7 +220,7 @@ description: メモリ管理＠OSの知見をまとめました．
 
 <br>
 
-## 01-03. 仮想メモリ管理
+## 03-03. 仮想メモリ管理
 
 ### ページング方式
 
@@ -163,7 +281,7 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 02. アドレス空間のページフォールト
+## 04. アドレス空間のページフォールト
 
 ### ページフォールトとは
 
@@ -191,7 +309,7 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 03. アドレス空間管理におけるプログラムの種類
+## 05. アドレス空間管理におけるプログラムの種類
 
 ### Reusable（再使用可能プログラム）
 
@@ -217,99 +335,3 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 04. プロセス
-
-### プロセスとは
-
-プログラムは，メモリ上の特定のアドレス範囲に割り当てられている．プログラム自体を『プロセス』という．プロセスの代わりに『タスク』ということもある．プロセスとして割り当てられたプログラムはCPUに参照され，CPUのコア上で処理が実行される．
-
-参考：
-
-- https://jpazamu.com/thread_process/#index_id5
-- http://staff.miyakyo-u.ac.jp/~m-yasu/curri-ex/os/txt/os5.html
-
-<br>
-
-### 親/子プロセス
-
-#### ・親/子プロセスとは
-
-プロセスが新しいプロセスを生成する場合，プロセス間には親子関係がある．例えば，ターミナルの親プロセスは```shell```や```bash```であり，任意のユーティリティを実行すると，これの子プロセスが生成されることになる．プロセスIDが```1```のプロセスが，全てのプロセスの親である．
-
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
-
-```bash
-# MacOSの場合
-$ ps -p 1
-
-PID  TTY  TIME     CMD
-  1  ??   9:23.33  /sbin/launchd
-```
-
-#### ・同時処理可能なリクエスト数
-
-メモリ上には親の通信プロセスが割り当てられており，また1つのリクエストを処理するために，1つの子プロセスが割り当てられる．そのため，子プロセスの最大数は，同時に処理可能なリクエストの最大数に相当する．
-
-<br>
-
-### プロセシングの種類
-
-#### ・シングルプロセシング
-
-単一のメモリ上で，単一のプロセスがアドレスに割り当てられる仕組みのこと．
-
-#### ・マルチプロセシング
-
-単一のメモリ上で，複数のプロセスがアドレスに割り当てられる仕組みのこと．優先度の低いプロセスからCPUを切り離し，優先度の高いプロセスにCPUを割り当てる，といった仕組みを持つ．現代のハードウェアのほとんどがマルチプロセシングの機能を持つ．
-
-参考：https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
-
-![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
-
-<br>
-
-## 04-02. スレッド
-
-### スレッドとは
-
-メモリ上ではプログラムがプロセスとして割り当てられており，プログラムはCPUのコア上で実行される．CPUのコアと紐付くプロセスの実行単位を『スレッド』という．
-
-参考：https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
-
-![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
-
-<br>
-
-### スレッディングの種類
-
-#### ・シングルスレッディング
-
-メモリ上の特定のプロセスで，単一のスレッドを実行できる仕組みのこと．
-
-#### ・マルチスレッディング
-
-メモリ上の特定のプロセスで，複数のスレッドを実行できる仕組みのこと．各スレッドがプロセスに割り当てられているアドレスを共有して用いる．
-
-![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
-
-<br>
-
-### マルチスレッディングについて
-
-#### ・通常のマルチスレッド
-
-CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと．
-
-参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
-
-![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
-
-#### ・同時マルチスレッド
-
-CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと．
-
-参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
-
-![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
-
-<br>

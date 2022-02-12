@@ -69,10 +69,6 @@ Istioの機能のセットを提供する．
 | istio-egressgateway  | -        | ○        | -                             | -        | -                    | ？        | -       | ？     |
 | istio-ingressgateway | ○        | ○        | -                             | -        | -                    | ？        | ○       | ？     |
 | istiod               | ○        | ○        | -                             | -        | ○                    | ？        | ○       | ？     |
-| grafana              | -        | -        | -                             | -        | -                    | -         | -       | -      |
-| istio-tracing        | -        | -        | -                             | -        | -                    | -         | -       | -      |
-| kiali                | -        | -        | -                             | -        | -                    | -         | -       | -      |
-| prometheus           | -        | -        | -                             | -        | -                    | -         | -       | -      |
 
 <br>
 

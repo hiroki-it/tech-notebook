@@ -116,17 +116,26 @@ description: 可観測性の知見をまとめました．
 
 ### ツール
 
+#### ・種類
+
 参考：
 
 - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 - https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
+- https://kiali.io/docs/architecture/architecture/
 
-| アクション | ツール名                   |
-| ---------- | -------------------------- |
-| 収集       | Datadog，cAdvisor          |
-| 保管       | -                          |
-| 可視化     | Datadog，Prometheus，Kiali |
-| 分析       | Datadog，Prometheus，Kiali |
+| アクション | ツール名                                                     |
+| ---------- | ------------------------------------------------------------ |
+| 収集       | Datadog，Prometheus，cAdvisor，Kiali（Prometheusデータの再収集） |
+| 保管       | -                                                            |
+| 分析       | Datadog，Prometheus，Kiali（Prometheusデータの再分析）       |
+| 可視化     | Datadog，Prometheus，Kiali（Prometheusデータの再可視化）     |
+
+#### ・セットアップ
+
+Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html
 
 <br>
 
@@ -184,6 +193,8 @@ description: 可観測性の知見をまとめました．
 
 ### ツール
 
+#### ・種類
+
 参考：
 
 - https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
@@ -191,10 +202,16 @@ description: 可観測性の知見をまとめました．
 
 | アクション | ツール名                 |
 | ---------- | ------------------------ |
-| 収集       | FluetBit，Fluentd        |
+| 収集       | FluentBit，Fluentd        |
 | 保管       | Datadog，ElasticSearch   |
-| 可視化     | Datadog，Kibana，Grafana |
 | 分析       | Datadog，ElasticSearch   |
+| 可視化     | Datadog，Kibana，Grafana |
+
+#### ・セットアップ
+
+Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html
 
 <br>
 
@@ -277,12 +294,19 @@ description: 可観測性の知見をまとめました．
 
 ### ツール
 
+#### ・種類
+
 参考：https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 
 | アクション | ツール名        |
 | ---------- | --------------- |
 | 収集       | Datadog，Jaeger |
 | 保管       | -               |
-| 可視化     | Datadog，Jaeger |
 | 分析       | Datadog，Jaeger |
+| 可視化     | Datadog，Jaeger |
 
+#### ・セットアップ
+
+Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html

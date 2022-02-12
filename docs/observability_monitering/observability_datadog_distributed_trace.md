@@ -494,5 +494,5 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 参考：
 
-- https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
+- https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php

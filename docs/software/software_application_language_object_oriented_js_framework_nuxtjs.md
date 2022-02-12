@@ -336,7 +336,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-SSG/SSRモードの```yarn dev```（開発用コマンド），またSSRモードの```yarn build```の時のみ，```node_module```ディレクトリ内に生成するパッケージを設定する．
+SSG/SSRモードの```yarn dev```（開発用コマンド），またSSRモードの```yarn build```の時のみ，```node_module```ディレクトリ内に生成するパッケージを設定する．
 
 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 

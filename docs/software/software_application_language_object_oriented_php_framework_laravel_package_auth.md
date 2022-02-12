@@ -566,7 +566,7 @@ Ouath認証を実装できる．OAuth認証については，以下のリンク�
 
 #### ・インストール
 
-composerでインストールする必要がある．
+Composerでインストールする必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/passport.html
 
@@ -1018,7 +1018,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 パッケージをインストールする．
 
-``` sh
+```bash
 $ composer require laravel/breeze:^1.0 --dev
 ```
 

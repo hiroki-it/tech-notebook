@@ -31,7 +31,7 @@ Istioオブジェクトを組み合わせて，サービスメッシュを実装
 - https://istio.io/latest/docs/ops/deployment/architecture/
 - https://techblog.zozo.com/entry/zozotown-istio-production-ready
 
-![istio_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png)
+![istio_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_architecture.png)
 
 #### ・istio-proxyコンテナ
 

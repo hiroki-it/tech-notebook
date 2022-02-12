@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】ポリシー＠Terraform
+description: ポリシー＠Terraformの知見をまとめました．
 ---
 
 # ポリシー＠Terraform

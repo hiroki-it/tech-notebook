@@ -55,7 +55,7 @@ terraform {
 
 stateファイルを管理する場所を設定する．S3などの実インフラで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．デフォルト値は```local```である．変数を使用できず，ハードコーディングする必要があるため，もし値を動的に変更したい場合は，initコマンドのオプションを用いて値を渡すようにする．
 
-参考：https://www.terraform.io/docs/language/settings/backends/s3.html#credentials-and-shared-configuration
+参考：https://www.terraform.io/language/settings/backends/s3
 
 **＊実装例＊**
 
@@ -390,7 +390,7 @@ module "alb" {
 
 上の項目ほど優先される．
 
-参考：https://www.terraform.io/docs/language/values/variables.html#variable-definition-precedence
+参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
 #### ・```-var```，```-var-file```
 
