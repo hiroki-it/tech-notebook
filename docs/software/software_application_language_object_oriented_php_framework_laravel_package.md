@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】パッケージ＠Laravel
-description: パッケージ@Laravelの知見をまとめました．
+description: パッケージ＠Laravelの知見をまとめました．
 ---
 
 # パッケージ＠Laravel

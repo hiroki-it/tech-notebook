@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】ポリシー＠Terraform
-description: ポリシー＠Terraformの知見をまとめました．
+title: 【知見を記録するサイト】設計ポリシー＠Terraform
+description: 設計ポリシー＠Terraformの知見をまとめました．
 ---
 
-# ポリシー＠Terraform
+# 設計ポリシー＠Terraform
 
 ## はじめに
 
@@ -27,7 +27,7 @@ $ terraform init -upgrade
 
 <br>
 
-### Terraform/プロバイダーのアップグレード
+### Terraformとプロバイダーのアップグレード
 
 #### 1. 現在のTerraformのバージョンで```terraform apply```コマンドを実行
 
@@ -59,6 +59,32 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 ##  02. ディレクトリ構成
 
+### リポジトリ
+
+#### ・アプリケーションとは別（推奨）
+
+アプリケーションとは異なるリポジトリにて，tfファイルを配置する．推奨である．
+
+```bash
+project
+├── foo.tf
+...
+```
+
+#### ・アプリケーションと同じ（非推奨）
+
+アプリケーションと同じリポジトリにて，```terraform```ディレクトリを作成し，ここにtfファイルを配置する．非推奨である．
+
+```bash
+project
+├── src # アプリケーション
+├── terraform
+│   ├── foo.tf
+...
+```
+
+<br>
+
 ### ルートモジュールの構成
 
 #### ・稼働環境別
@@ -66,7 +92,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 稼働環境別に，```foo.tfvars```ファイルで値を定義する．
 
 ```bash
-terraform_project/
+project
 ├── modules
 │   ├── route53 # Route53
 │   │   ├── dev # 開発
@@ -98,23 +124,23 @@ terraform_project/
 │   └── variables.tf
 │
 └── stg # ステージング環境ルートモジュール
-      ├── stg.tfvars
-      ├── main.tf
-      ├── providers.tf
-      ├── tfnotify.yml
-      └── variables.tf
+    ├── stg.tfvars
+    ├── main.tf
+    ├── providers.tf
+    ├── tfnotify.yml
+    └── variables.tf
 ```
 
 <br>
 
-### リソースのモジュールの構成
+### リソースモジュールの構成
 
 ####　・対象リソース別
 
 1つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．
 
 ```bash
-terraform_project/
+project
 └── modules
     ├── cloudwatch # CloudWatch
     │   ├── alb        # ALB
@@ -134,7 +160,7 @@ terraform_project/
 1つのリソースの設定が稼働環境ごとに異なる場合，冗長性よりも保守性を重視して，稼働環境に応じたディレクトリに分割する．
 
 ```bash
-terraform_project/
+project
 └── modules
     ├── route53 # Route53
     │   ├── dev # 開発
@@ -158,7 +184,7 @@ terraform_project/
 1つのリソースの設定がリージョンごとに異なる場合，冗長性よりも保守性を重視して，リージョンに応じたディレクトリに分割する．
 
 ```bash
-terraform_project/
+project
 └── modules
     └── acm # ACM
         ├── ap-northeast-1 # 東京リージョン
@@ -170,7 +196,7 @@ terraform_project/
 WAFで用いるIPパターンセットと正規表現パターンセットには，CloudFrontタイプとRegionalタイプがある．Regionalタイプは，同じリージョンの異なるAWSリソース間で共通して使用できるため，共通セットとしてディレクトリ分割を行う．
 
 ```bash
-terraform_project/
+project
 └── modules
     └── waf # WAF
         ├── alb
@@ -191,7 +217,7 @@ terraform_project/
 ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```bash```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
 
 ```bash
-terraform_project/
+project
 └── modules 
     ├── ecr #ECR
     │   └── ecr_lifecycle_policy.tpl # ECRライフサイクル
@@ -230,7 +256,7 @@ terraform_project/
 TerraformのCI/CDで必要なシェルスクリプトは，```ops```ディレクトリで管理する．
 
 ```bash
-terraform_project/
+project
 ├── .circleci # CI/CDツールの設定ファイル
 └── ops # TerraformのCI/CDの自動化シェルスクリプト
 ```
@@ -602,7 +628,7 @@ AWSを構築する場合，TerraformのAWSプロバイダーを用いている�
 
 注意点として，AWSプロバイダーのバージョンを確認し，リファレンスの閲覧バージョンを切り替える必要がある．以下の点でレビューする．
 
-- 実装方法がプロジェクトの実装ポリシーに即しているか
+- プロジェクトの設計ポリシーに即しているか
 - リファレンスに非推奨と注意書きされた方法で実装していないか
 - リリースの粒度は適切か
 

@@ -50,8 +50,6 @@ $ kubectl apply -f ./kubernetes -R
 pod/foo-pod configured
 ```
 
-
-
 <br>
 
 ### config

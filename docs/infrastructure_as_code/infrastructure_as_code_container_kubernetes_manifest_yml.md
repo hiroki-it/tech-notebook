@@ -64,31 +64,11 @@ Kubernetesオブジェクトの一意に識別するための情報を設定す�
 
 Kubernetesオブジェクトを区別するための情報を設定する．
 
-参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
-
-| キー名           | 説明                                                       | キー値の例                      |
-| ---------------- | ---------------------------------------------------------- | ------------------------------- |
-| ```app```        | マイクロサービス名                                         | ```foo```，```foo-service```    |
-| ```component```  | コンテナの役割名                                           | ```database```                  |
-| ```created-by``` | このKubernetesオブジェクトを作成したオブジェクトやユーザー | ```controller-manager```        |
-| ```env```        | アプリケーションの実行環境名                               | ```prd```，```stg```，```dev``` |
-| ```instance```   | コンテナのインスタンス名                                   | ```mysql-abcxzy```              |
-| ```managed-by``` | アプリケーションの管理ツール名                             | ```helm```                      |
-| ```name```       | マイクロサービスを構成するコンテナのベンダー名             | ```mysql```                     |
-| ```part-of```    | マイクロサービス全体のアプリケーション名                   | ```bar```                       |
-| ```version```    | マイクロサービスのリリースバージョン名                     | ```5.7.21```                    |
-
 <br>
 
 ### name
 
-Kubernetesオブジェクトを一意に識別するための名前を設定する．マイクロサービスの技術スタックがリプレイスされる場合にも対応できるように，```<マイクロサービス名>-<コンポーネント名>-<Kubernetesオブジェクト名>```とするとよい．
-
-| Kubernetesオブジェクト | キー値の例（```<マイクロサービス名>-<コンポーネント名>-<Kubernetesオブジェクト名>```） |
-| ---------------------- | ------------------------------------------------------------ |
-| Service                | ```foo-app-service```，```foo-db-service```                  |
-| Pod                    | ```foo-app-pod```，```foo-db-pod```                          |
-| PersistentVolume       | ```foo-app-perisitent-volume```，```foo-db-pod-perisitent-volume``` |
+Kubernetesオブジェクトを一意に識別するための名前を設定する．
 
 <br>
 
@@ -312,17 +292,29 @@ spec:
 
 #### ・hostPathとは
 
-Node上にストレージ領域を新しく作成し，これをボリュームとする．
+PersistentVolumeの一種であるHostPathボリュームを作成する．Volumeの一種であるHostPathボリュームとは区別すること．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
-**＊実装例＊**
+#### ・path
+
+Node側のマウント元のディレクトリを設定する．Podのマウント先のディレクトリは，Podの```spec.containers.volumeMount```オプションで設定する．
 
 ```yaml
 kind: PersistentVolume
 spec:
   hostPath:
-    path: /data
+    path: /data/src/foo
+```
+
+#### ・type
+
+マウント方法を設定する．
+
+```yaml
+kind: PersistentVolume
+spec:
+  hostPath:
     type: DirectoryOrCreate
 ```
 
@@ -437,33 +429,27 @@ spec:
 
 ### storageClassName
 
-#### ・fast
+#### ・storageClassName
 
-SSDをPersistentVolumeとして用いる．
+ストレージクラス名を設定する．これは，PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる．
 
-参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
-
-**＊実装例＊**
-
-```yaml
-kind: PersistentVolume
-spec:
-  storageClassName: fast
-```
-
-#### ・slow
-
-HDをPersistentVolumeとして用いる．
-
-参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
+参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/#class
 
 **＊実装例＊**
 
 ```yaml
 kind: PersistentVolume
 spec:
-  storageClassName: slow
+  storageClassName: standard
 ```
+
+名前の例として以下がある．
+
+| クラス名 | 説明                                | 補足                                                         |
+| -------- | ----------------------------------- | ------------------------------------------------------------ |
+| standard | デフォルト値である．                |                                                              |
+| fast     | SSDをPersistentVolumeとして用いる． | 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+| slow     | HDをPersistentVolumeとして用いる．  | 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
 <br>
 
@@ -491,6 +477,22 @@ kind: PersistentVolumeClaim
 spec:
   resources:
     - ReadWriteMany
+```
+
+<br>
+
+### storageClassName
+
+要求対象のPersistentVolumeのストレージクラス名を設定する．これを設定しない場合は，ストレージクラス名が```standard```のPerisitentVolumeを要求する．
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+
+**＊実装例＊**
+
+```yaml
+kind: PersistentVolumeClaim
+spec:
+  storageClassName: standard
 ```
 
 <br>
@@ -557,7 +559,7 @@ spec:
 
 #### ・volumeMount
 
-ボリュームマウントを実行する．```spec.volume```で設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．
+Podのマウント先のディレクトリを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．
 
 **＊実装例＊**
 
@@ -565,20 +567,17 @@ spec:
 kind: Pod
 spec:
   containers:
-    - name: foo-lumen
-      image: foo-lumen:latest
-      ports:
-        - containerPort: 9000
-      volumeMounts:
-         - name: foo-volume
-           mountPath: /var/www/foo
-    - name: foo-nginx
-      image: foo-nginx:latest
+    - name: foo-gin
+      image: foo-gin:latest
       ports:
         - containerPort: 8080
       volumeMounts:
          - name: foo-volume
-           mountPath: /var/www/foo    
+           mountPath: /var/www/foo
+  volumes:
+    - name: foo-volume
+      persistentVolumeClaim:
+        claimName: foo-persistent-volume-claim
 ```
 
 #### ・workingDir
@@ -600,7 +599,7 @@ spec:
 
 ### hostname
 
-Podのホスト名を設定する．また，```spec.hostname```が設定されていない時は，```metadata.name```がホスト名として使用される．
+Podのホスト名を設定する．また，```spec.hostname```オプションが設定されていない時は，```metadata.name```がホスト名として使用される．
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
@@ -622,7 +621,7 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する．そのため，『Pod』が削除されるとこのボリュームも同時に削除される．
+Volumeの一種であるEmptyDirボリュームを作成する．EmptyDirボリュームのため，『Pod』が削除されるとこのボリュームも同時に削除される．
 
 参考：
 
@@ -643,7 +642,7 @@ spec:
 
 #### ・hostPath
 
-HostPathボリュームを作成する．そのため，『Node』が削除されるとこのボリュームも同時に削除される．HostPathボリューム自体は本番環境で非推奨である．
+Volumeの一種であるHostPathボリュームを作成する．PersistentVolumeの一種であるHostPathボリュームとは区別すること．HostPathボリュームのため，『Node』が削除されるとこのボリュームも同時に削除される．HostPathボリューム自体は本番環境で非推奨である．
 
 参考：
 
@@ -664,7 +663,7 @@ spec:
 
 #### ・persistentVolumeClaim
 
-用いるPersistentVolumeClaimオブジェクトを設定する．
+PersistentVolumeを用いる場合に，PersistentVolumeClaimオブジェクトを設定する．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -679,7 +678,7 @@ spec:
         claimName: foo-slow-volume-claim
 ```
 
-persistentVolumeは別途作成しておく必要がある．
+PersistentVolumeは別途作成しておく必要がある．
 
 **＊実装例＊**
 

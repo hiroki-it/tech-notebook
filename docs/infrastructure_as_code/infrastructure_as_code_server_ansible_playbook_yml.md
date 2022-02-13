@@ -39,7 +39,7 @@ $ pip3 install ansible
 
 <br>
 
-## 03. 実装ポリシー
+## 03. 設計ポリシー
 
 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 

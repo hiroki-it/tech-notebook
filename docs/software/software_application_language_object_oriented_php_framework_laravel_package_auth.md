@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】認証/認可系パッケージ@Laravel
-description: 認証/認可系パッケージ@Laravelの知見をまとめました．
+title: 【知見を記録するサイト】認証/認可系パッケージ＠Laravel
+description: 認証/認可系パッケージ＠Laravelの知見をまとめました．
 ---
 
-# 認証/認可系パッケージ@Laravel
+# 認証/認可系パッケージ＠Laravel
 
 ## はじめに
 
@@ -810,7 +810,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
         "grant_type"    => "password",
         "client_id"     => "client-id",
         "client_secret" => "client-secret",
-        "username"      => "taylor@laravel.com",
+        "username"      => "foo@example.com",
         "password"      => "my-password",
         "scope"         => "",
     ],

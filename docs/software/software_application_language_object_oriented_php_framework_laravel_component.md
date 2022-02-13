@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】コンポーネント@Laravel
-description: 認証/認可@Laravelの知見をまとめました．
+title: 【知見を記録するサイト】コンポーネント＠Laravel
+description: 認証/認可＠Laravelの知見をまとめました．
 ---
 
-# コンポーネント@Laravel
+# コンポーネント＠Laravel
 
 ## はじめに
 
