@@ -56,7 +56,13 @@ Kubernetesオブジェクトの一意に識別するための情報を設定す�
 
 <br>
 
+### annotation
+
+<br>
+
 ### labels
+
+Kubernetesオブジェクトを区別するための情報を設定する．
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
@@ -516,7 +522,6 @@ spec:
 参考：
 
 - https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
-- 
 - https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 ```yaml
@@ -615,9 +620,51 @@ spec:
 
 要求によって作成するボリューム名を設定する．
 
-#### ・persistentVolumeClaim.claimName
+#### ・emptyDir
 
-用いるPersistentVolumeClaimオブジェクトの名前を設定する．
+EmptyDirボリュームを作成する．そのため，『Pod』が削除されるとこのボリュームも同時に削除される．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+
+**＊実装例＊**
+
+```yaml
+kind: Pod
+spec:
+  volumes
+    - name: foo-lumen
+      emptyDir: {}
+    - name: foo-nginx
+      emptyDir: {}
+```
+
+#### ・hostPath
+
+HostPathボリュームを作成する．そのため，『Node』が削除されるとこのボリュームも同時に削除される．HostPathボリューム自体は本番環境で非推奨である．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+
+**＊実装例＊**
+
+```yaml
+kind: Pod
+spec:
+  volumes
+  - name: foo-lumen
+    hostPath:
+      path: /data
+      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+```
+
+#### ・persistentVolumeClaim
+
+用いるPersistentVolumeClaimオブジェクトを設定する．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -650,48 +697,6 @@ spec:
   resources:
     requests:
       storage: 5Gi
-```
-
-#### ・emptyDir
-
-EmptyDirボリュームを作成する．そのため，『Pod』が削除されるとこのボリュームも同時に削除される．
-
-参考：
-
-- https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
-- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
-
-**＊実装例＊**
-
-```yaml
-kind: Pod
-spec:
-  volumes
-    - name: foo-lumen
-      emptyDir: {}
-    - name: foo-nginx
-      emptyDir: {}
-```
-
-#### ・hostPath
-
-HostPathボリュームを作成する．そのため，『Node』が削除されるとこのボリュームも同時に削除される．
-
-参考：
-
-- https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
-- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
-
-**＊実装例＊**
-
-```yaml
-kind: Pod
-spec:
-  volumes
-  - name: foo-lumen
-    hostPath:
-      path: /data
-      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
 <br>

@@ -823,9 +823,9 @@ $response = $http->post("http://your-app.com/oauth/token", [
 
 ```json
 {
-  "token_type":"Bearer",
-  "expires_in":31536000,
-  "access_token":"*****"
+  "token_type": "Bearer",
+  "expires_in": 31536000,
+  "access_token": "*****"
 }
 ```
 

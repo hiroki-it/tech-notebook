@@ -246,8 +246,8 @@ listen.owner = www-data
 
 #### ・php_admin_flagとは
 
-Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごの変更モードによる．
-と
+Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
+
 参考：
 
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag

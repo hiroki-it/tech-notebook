@@ -135,7 +135,7 @@ description: 可観測性の知見をまとめました．
 
 Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.html
 
 <br>
 
@@ -211,7 +211,7 @@ Kubernetes上での実際のセットアップ方法については，以下の�
 
 Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.html
 
 <br>
 
@@ -309,4 +309,4 @@ Kubernetes上での実際のセットアップ方法については，以下の�
 
 Kubernetes上での実際のセットアップ方法については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_observability_tool.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.html

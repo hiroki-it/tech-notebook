@@ -17,7 +17,7 @@ description: terraformコマンド＠Terraformの知見をまとめました．
 
 ### global option
 
-参考：https://www.terraform.io/cli/commands/index.html#switching-working-directory-with-chdir
+参考：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
 
 <br>
 
@@ -59,7 +59,7 @@ $ terraform init \
 
 Terraformを初期化する．
 
-参考：https://www.terraform.io/cli/commands/init.html#backend-initialization
+参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init -reconfigure

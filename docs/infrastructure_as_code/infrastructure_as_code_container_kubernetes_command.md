@@ -23,23 +23,34 @@ description: kubectlコマンド＠Kubernetesの知見をまとめました．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
-**＊例＊**
+#### ・-f -R
 
-マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．
+マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．```-R```オプションでディレクトリ内のファイルを再帰的に指定することもできる．
+
+**＊例＊**
 
 ```bash
 # オブジェクトを作成する．
-$ kubectl apply -f ./kubernetes-manifests/<マニフェストファイル名>.yml
+$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yml
 
 pod/foo-pod created
 ```
 
 ```bash
 # 設定値を変更する．
-$ kubectl apply -f ./kubernetes-manifests/<マニフェストファイル名>.yml
+$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yml
 
 pod/foo-pod configured
 ```
+
+```bash
+# ディレクトリ内のファイルを再起的に指定する．
+$ kubectl apply -f ./kubernetes -R
+
+pod/foo-pod configured
+```
+
+
 
 <br>
 
@@ -116,13 +127,13 @@ $ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コ�
 マニフェストファイルを指定し，```kubectl create```コマンドを実行する．
 
 ```bash
-$ kubectl create -f ./kubernetes-manifests/foo-pod.yml
+$ kubectl create -f ./kubernetes/foo-pod.yml
 
 pod/foo-pod created
 ```
 
 ```bash
-$ kubectl create -f ./kubernetes-manifests/foo-service.yml
+$ kubectl create -f ./kubernetes/foo-service.yml
 
 service/foo-service created
 ```
@@ -134,7 +145,7 @@ Pod数を維持管理するReplicaSetを作成する．Podを削除するため�
 **＊例＊**
 
 ```bash
-$ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
+$ kubectl create deployment -f ./kubernetes/foo-deployment.yml
 ```
 
 #### ・secret generic

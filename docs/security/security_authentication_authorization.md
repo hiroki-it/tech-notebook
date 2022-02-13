@@ -239,7 +239,7 @@ OAuthの項目を参考にせよ．
 
 参考：
 
-- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html
+- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
 #### ・セッションIDを用いたForm認証の場合（セッションベース）
