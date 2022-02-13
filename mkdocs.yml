@@ -267,10 +267,11 @@ nav:
           - ■ クラウドインフラプロビジョニング:
               - ■ Terraform:
                   - terraformコマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
-                  - ロジック: infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md
-                  - ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
-                  - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md
                   - CI/CD: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
+                  - ■ tfファイル:
+                      - tfファイル: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.md
+                      - ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_policy.md
+                      - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.md
               - ■ Serverless Framework:
                   - serverlessコマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
                   - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
