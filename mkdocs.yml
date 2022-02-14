@@ -291,6 +291,7 @@ nav:
       - ■ FluentBit/Fluentd:
           - FluentBit vs. Fluentd: observability_monitering/observability_fluentbit_vs_fluentd.md
           - FluentBit: observability_monitering/observability_fluentbit.md
+          - FireLensコンテナ: observability_monitering/observability_fluentbit_firelens.md
       - ■ Datadog:
           - メトリクス収集: observability_monitering/observability_datadog_metrics.md
           - ログ収集: observability_monitering/observability_datadog_log.md
@@ -301,7 +302,7 @@ nav:
 
   - 👥 ソフトウェア開発手法論/SRE:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
-      - SRE：Site Reliability Engineering: software_development_methodology/software_development_methodology_site_reliability_engineering.md
+      - SRE: software_development_methodology/software_development_methodology_site_reliability_engineering.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
       - ■ Git:
           - GitHub: software_development_methodology/software_development_methodology_git_github.md
