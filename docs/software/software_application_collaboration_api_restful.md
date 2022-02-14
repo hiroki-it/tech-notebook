@@ -864,9 +864,9 @@ Set-Cookie: sessionId=<セッションID>
 
 参考：https://support.google.com/analytics/answer/6086069?hl=ja
 
-#### ・セッションIDの発行，セッションファイルの生成
+#### ・セッションIDの発行，セッションデータの生成
 
-セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションファイルを作成する．セッションIDに紐付くその他のデータはこのセッションファイルに書き込まれていく．セッションファイルの名前は，```sess_*****```ファイルとなっており，セッションファイル名を元にしてセッションIDに紐付くデータを参照する．もしクライアントに既にセッションIDが発行されている場合，セッションファイルを参照するようになる．
+セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションデータ（ファイル形式，Redisレコード形式）を作成する．サーバー内に保存する場合は，セッションはファイル形式である一方で，サーバー外のセッションDB（PHP Redis，ElastiCache Redisなど）に保存する場合は，レコード形式になる．セッションIDに紐付くその他のデータはこのセッションデータに書き込まれていく．セッションデータの名前は，```sess_*****```ファイルとなっており，セッションデータ名を元にしてセッションIDに紐付くデータを参照する．もしクライアントに既にセッションIDが発行されている場合，セッションデータを参照するようになる．
 
 **＊実装例＊**
 
@@ -876,13 +876,13 @@ Set-Cookie: sessionId=<セッションID>
 // セッションの開始．セッションIDを発行する．
 session_start();
 
-// セッションファイルを作成
+// セッションデータを作成
 $_SESSION["セッション名"] = "値"; 
 ```
 
-#### ・セッションファイルの保存場所
+#### ・セッションデータの保存場所
 
-セッションファイルの保存場所は```/etc/php.ini```ファイルで定義できる．
+セッションデータの保存場所は```/etc/php.ini```ファイルで定義できる．
 
 ```ini
 # /etc/php.ini
@@ -893,7 +893,7 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-セッションファイルは，サーバー外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンクを参考にせよ．
+保存場所は，```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルで設定する必要がある．ElastiCache Redisについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
@@ -906,7 +906,7 @@ session.save_handler = redis
 session.save_path = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-なお，PHP-FPMを用いている場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションファイルの保存先を指定する必要がある．
+なお，PHP-FPMを用いている場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションデータの保存先を指定する必要がある．
 
 ```bash
 # /etc/php-fpm.d/www.conf
@@ -926,7 +926,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 session.gc_maxlifetime = 86400
 ```
 
-ただし，有効期限が切れた後にセッションファイルを初期化するかどうかは確率によって定められている．確率は， 『```gc_probability```÷```gc_divisor```』 で計算される．
+ただし，有効期限が切れた後にセッションデータを初期化するかどうかは確率によって定められている．確率は， 『```gc_probability```÷```gc_divisor```』 で計算される．
 
 参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
 

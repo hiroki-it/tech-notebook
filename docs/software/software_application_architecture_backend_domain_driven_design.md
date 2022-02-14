@@ -70,7 +70,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見をまと�
 
 参考：https://labs.septeni.co.jp/entry/2021/04/15/130000
 
-![internet_advertising_agency_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internet_advertising_agency_domain.png)
+![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internet_advertising_agency_domain.png)
 
 **＊例＊**
 

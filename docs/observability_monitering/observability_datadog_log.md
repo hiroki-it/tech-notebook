@@ -88,7 +88,10 @@ logs_enabled: true
 
 FluentBitを稼働させたコンテナのこと．Datadogの代わりにログを収集する．
 
-参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
+参考：
+
+- https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_firelens.html
 
 <br>
 
@@ -96,7 +99,7 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 
 #### ・ベースイメージ
 
-datadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
+datadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
 
 #### ・DockerHubを用いる場合
 

@@ -1837,10 +1837,10 @@ Resources:
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "<ロググループ名>",
+          "awslogs-group": "<ログストリーム名>",
           # スタックトレースのログを紐付けられるように，日付で区切るようにする．
           "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
-          "awslogs-region": "<リージョン>",
+          "awslogs-region": "ap-northeast-1",
           "awslogs-stream-prefix": "<ログストリーム名のプレフィクス>"
         }
       }
@@ -2217,7 +2217,7 @@ dockerイメージやHelmチャートを管理できる．
 （１）ECRにログインする．
 
 ```bash
-$ aws ecr get-login-password --region <リージョン> | docker login --username AWS --password-stdin <リポジトリURL>
+$ aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin <リポジトリURL>
 ```
 
 （２）イメージにタグを付与する．
@@ -3019,7 +3019,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 | マルチAZ                         | プライマリノードとリードレプリカを異なるAZに配置するかどうかを設定する．合わせて，自動フェイルオーバーを実行できるようになる． |                                                              |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する．                  |                                                              |
 | セキュリティ                     | セキュリティグループを設定する．                             |                                                              |
-| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし，これを元にRedisを構築する． | セッションやクエリキャッシュを引き継げる．そのため，新しいRedisへのセッションファイルの移行に役立つ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし，これを元にRedisを構築する． | セッションやクエリキャッシュを引き継げる．そのため，新しいRedisへのセッションデータの移行に役立つ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
 | バックアップ                     | バックアップの有効化，保持期間，時間を設定する．             | バックアップを取るほどでもないため，無効化しておいて問題ない． |
 | メンテナンス                     | メンテナンスの時間を設定する．                               |                                                              |
 
@@ -3069,7 +3069,7 @@ Redisノードのグループ．同じRedisシャード内にあるRedisノー�
 
 #### ・セッション管理機能とは
 
-サーバー内のセッションファイルの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．セッションIDについては，以下のリンクを参考にせよ．
+サーバー内のセッションデータの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．そのため，リリース後に既存のセッションが破棄されることがなくなり，ログイン状態を保持できるようになる．セッションIDについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -3323,7 +3323,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
         "source": "aws.amplify",
         "account": "<AWSアカウントID>",
         "time": "<イベントの発生時間>",
-        "region": "<リージョン>",
+        "region": "ap-northeast-1",
         "resources": [
             "<AmplifyのアプリケーションのARN>"
         ],
@@ -3589,7 +3589,7 @@ AWSリソースの識別子のこと．
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Resource": "arn:<パーティション>:<AWSリソース>:<リージョン>:<アカウントID>:<AWSリソースID>"
+      "Resource": "arn:<パーティション>:<AWSリソース>:ap-northeast-1:<アカウントID>:<AWSリソースID>"
     }
   ]
 }
@@ -3819,7 +3819,7 @@ AWS CLIでクラウドインフラを操作するためには，環境変数で�
 ```bash
 $ export AWS_ACCESS_KEY_ID=<アクセスキー>
 $ export AWS_SECRET_ACCESS_KEY=<シークレットキー>
-$ export AWS_DEFAULT_REGION=<リージョン>
+$ export AWS_DEFAULT_REGION=ap-northeast-1
 ```
 
 <br>
@@ -3919,10 +3919,10 @@ $ aws iam update-user \
 
 | 項目             | 説明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| レコードの変換   | バッファーに蓄えられたログテキストを，指定された形式で転送する前に，テキストの内容を変換する．Lambdaを用いる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
+| レコードの変換   | バッファーに蓄えられたログを，指定された形式で転送する前に，テキストの内容を変換する．Lambdaを用いる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
 | 転送先           | 転送先とするS3バケットを設定する．                           |
 | ディレクトリ名   | S3への転送時に，S3に作成するディレクトリの名前を設定できる．デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され，2021/11/09現在はUTCのみ設定できる．もしJSTにしたい場合はLambdaに変換処理を実装し，Kinesis Data Firehoseと連携する必要がある．<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
-| バッファー       | Kinesis Data Firehoseでは，受信したログテキストを一旦バッファーに蓄え，一定期間あるいは一定容量が蓄えられた時点で，ログファイルとして転送する．この時，バッファーに蓄える期間や上限量を設定できる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |
+| バッファー       | Kinesis Data Firehoseでは，受信したログを一旦バッファーに蓄え，一定期間あるいは一定容量が蓄えられた時点で，ログファイルとして転送する．この時，バッファーに蓄える期間や上限量を設定できる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |
 | ファイル形式     | 転送時のファイル形式を設定できる．ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが，S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い． |
 | バックアップ     | 収集したデータを加工する場合，加工前データを保管しておく．   |
 | 暗号化           |                                                              |
@@ -4150,7 +4150,7 @@ Lambdaを実行するためには，デプロイされた関数を用いる権�
     {
       "Effect": "Allow",
       "Action": "lambda:InvokeFunction",
-      "Resource": "arn:aws:lambda:<リージョン>:<アカウントID>:function:<関数名>*"
+      "Resource": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:<関数名>*"
     }
   ]
 }
@@ -5042,12 +5042,12 @@ DBインスタンスがマルチAZ構成の場合，以下の手順を用いて�
 
 | 種別             | AWSリソース     | 例                                                           |
 | ---------------- | --------------- | ------------------------------------------------------------ |
-| DNS名            | ALB             | ```<ALB名>-<ランダムな文字列>.<リージョン>.elb.amazonaws.com``` |
-|                  | EC2             | ```ec2-<パブリックIPをハイフン区切りにしたもの>.<リージョン>.compute.amazonaws.com``` |
+| DNS名            | ALB             | ```<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com``` |
+|                  | EC2             | ```ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com``` |
 | ドメイン名       | CloudFront      | ```<ランダムな文字列>.cloudfront.net```                      |
-| エンドポイント名 | RDS（Aurora）   | ```<DBクラスター名><ランダムな文字列>.<リージョン>.rds.amazonaws.com.``` |
-|                  | RDS（非Aurora） | ```<DBインスタンス名><ランダムな文字列>.<リージョン>.rds.amazonaws.com.``` |
-|                  | S3              | ```<バケット名>.<リージョン>.amazonaws.com```                |
+| エンドポイント名 | RDS（Aurora）   | ```<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.``` |
+|                  | RDS（非Aurora） | ```<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.``` |
+|                  | S3              | ```<バケット名>.ap-northeast-1.amazonaws.com```                |
 
 #### ・AWS以外でドメインを購入した場合
 

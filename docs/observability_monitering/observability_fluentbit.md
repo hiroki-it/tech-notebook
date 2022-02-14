@@ -13,23 +13,41 @@ description: FluentBit＠可観測性の知見をまとめました．
 
 <br>
 
-## 01. ログパイプライン
+## 01. FluentBitの仕組み
 
-### ログパイプラインとは
+### ログパイプラインの構造
 
-FluentBitにて，ログを処理する一連のセクションのこと．
+![fluent-bit_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture.png)
+
+Fluentdから概念図を拝借した．収集されたログはまずインプットされる．メモリ/ファイルがバッファーとして用いられ，ログはチャンクとしてステージに蓄えられる．ステージに一定量のチャンクが蓄えられるか，または一定時間が経過すると，チャンクはキューに格納される．キューは，指定された宛先にログを順番にルーティングする．プロセスが再起動されると，メモリ/ファイルに蓄えられたログは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
 
 <br>
 
-### セクションの設定
+### バッファーの構造
 
-#### ・confファイル
+バッファーは，ステージとキューから構成される．ログは，『```*-*****.****.flb```』という名前のチャンクとして扱われている．
+
+参考：https://www.alpha.co.jp/blog/202103_01
+
+![fluent-bit_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture_buffer.png)
+
+<br>
+
+## 02. セットアップ
+
+### confファイル
 
 セクションを設定できる．
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
 
-#### ・コマンド
+<br>
+
+### コマンド
+
+#### ・一覧
 
 コマンドでセクションを実行できる．
 
@@ -63,7 +81,7 @@ Available Options
   -h, --help              print this help
 ```
 
-#### ・バリデーション
+#### ・-c
 
 設定ファイルのバリデーションは，開発環境にて，以下サイトや再起動を伴う```--config```オプションから行う．これら以外に再起動を伴わない```--dry-run```オプションがあるが，このオプションは経験則で精度が低いため，参考程度にする．
 
@@ -75,7 +93,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 <br>
 
-## 02. SERVICEセクション
+## 03. SERVICEセクション
 
 ### SERVICEとは
 
@@ -87,7 +105,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 参考：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
-```ini
+```bash
 [SERVICE]
     # バッファに蓄えられた全てのログを宛先にアウトプットする間隔
     Flush 1
@@ -147,7 +165,7 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 02-02. INPUT
+## 03-02. INPUT
 
 ### INPUTとは
 
@@ -217,7 +235,7 @@ Inputs
 
 **＊実装例＊**
 
-```ini
+```bash
 [INPUT]
     Name   dummy
     # ダミーJSONデータ
@@ -246,7 +264,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 **＊実装例＊**
 
-```ini
+```bash
 [INPUT]
     # プラグイン名
     Name        forward
@@ -296,7 +314,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 **＊実装例＊**
 
-```ini
+```bash
 [INPUT]
     # プラグイン名
     Name              tail
@@ -352,7 +370,7 @@ $ fluent-bit \
 
 <br>
 
-## 02-03. PARSER
+## 03-03. PARSER
 
 ### PARSERとは
 
@@ -364,7 +382,7 @@ $ fluent-bit \
 
 <br>
 
-## 02-04. FILTER
+## 03-04. FILTER
 
 ### FILTERとは
 
@@ -389,7 +407,7 @@ $ fluent-bit \
 
 #### ・セットアップ
 
-```ini
+```bash
 [FILTER]
     name   grep
     match  *
@@ -411,7 +429,7 @@ $ fluent-bit \
 - https://docs.fluentbit.io/manual/pipeline/filters/modify
 - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
 
-```ini
+```bash
 [FILTER]
     Name            modify
     Match           *
@@ -442,7 +460,7 @@ $ fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
-```ini
+```bash
 [SERVICE]
     # 読み込むファイル
     Parsers_File parsers_multiline.conf
@@ -489,7 +507,7 @@ Filters
 
 Laravelのスタックトレースを結合する．
 
-```ini
+```bash
 [MULTILINE_PARSER]
     # パーサー名
     name          laravel
@@ -542,38 +560,6 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
 
-```ini
-[SERVICE]
-    Parsers_File    parser.conf
-    
-[FILTER]
-    Name            parser
-    Match           *
-    Key_Name        container_name
-    # 用いるパーサールール
-    Parser          docker-name-parser
-    # 解析されたキーの元の値を保持するかどうか
-    Preserve_Key    false
-    # 解析されたキー以外を保持するかどうか
-    Reserve_Data    true
-```
-
-例えば，ECSのプラットフォームバージョンが```v1.3```の時，メタデータのDockerNameは『```ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．コンテナ名だけに加工すると，FireLensコンテナのFluentBitのログクエリで抽出しやすくなる．
-
-```ini
-[PARSER]
-    Name      docker-name-parser
-    Format    regex
-    Regex     ^\/ecs-.*-(?<container_name>.*)-.*$
-```
-
-```ini
-# WHERE句でコンテナ名を指定
-[STREAM_TASK]
-    Name bar-stream-task
-    Exec CREATE STREAM bar WITH (tag='bar') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'bar';
-```
-
 <br>
 
 ### stdoutプラグイン
@@ -586,7 +572,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 #### ・セットアップ
 
-```ini
+```bash
 [FILTER]
     # プラグイン名
     Name  stdout
@@ -627,7 +613,7 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 02-05. STREAM_TASK
+## 03-05. STREAM_TASK
 
 ### STREAM_TASKとは
 
@@ -637,7 +623,7 @@ Fluent Bit v1.8.6
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
-```ini
+```bash
 [SERVICE]
     Streams_File stream_processor.conf
 ```
@@ -663,7 +649,7 @@ SELECTステートメントの結果を用いて，データストリームを�
 
 **＊実装例＊**
 
-```ini
+```bash
 [STREAM_TASK]
     Name foo-stream-task
     # SELECT句の結果からfooデータストリームを作成する．
@@ -683,29 +669,28 @@ SELECTステートメントの結果を用いて，データストリームを�
 
 **＊実装例＊**
 
-タグが```*-firelens-*```であるログのうち，```container_name```キー値が```foo```であるものだけをフィルタリングし，これの```log```キーを抽出する．
+タグが```*-bar-*```（ワイルドカード指定）であるログのうち，```container_name```キー値が```qux```であるものだけをフィルタリングし，これの```log```キーを抽出する．
 
 ```bash
-SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
+SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ```
 
 ```bash
 # 本来，改行はないが，わかりやすいように改行している．
-# <コンテナ名>-firelens-<タスクID>
-[0] foo-firelens-*****: [
-    *****,
+# <コンテナ名>-foo-<タスクID>
+[0] foo-bar-baz: [
     {
         "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
-        "container_id"=>"*****",
-        "container_name"=>"foo",
-        "source"=>"stderr"
+        "container_name"=>"qux",
     }
 ]
 ```
 
+
+
 <br>
 
-## 02-06. BUFFER
+## 03-06. BUFFER
 
 ### BUFFERとは
 
@@ -718,18 +703,9 @@ SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'foo';
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
 - https://docs.fluentbit.io/manual/administration/buffering-and-storage
 
-![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
-
-Fluentdから概念図を拝借した．バッファーとして機能するメモリ/ファイルにて，チャンク化されたログテキスト（```*-*****.****.flb```）は一旦ステージに蓄えられる．ステージに一定量のチャンクが蓄えられると，チャンクはキューに格納される．キューは，ログテキストを指定された形式でROUTINGに渡す．プロセスが再起動されると，メモリ/ファイルに蓄えられたログテキストは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
-
-参考：
-
-- https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
-- https://www.alpha.co.jp/blog/202103_01
-
 <br>
 
-## 02-07. ROUTING，OUTPUT
+## 03-07. ROUTING，OUTPUT
 
 ### ROUTING，OUTPUTとは
 
@@ -815,7 +791,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
-```ini
+```bash
 #########################
 # CloudWatchログへのルーティング
 #########################
@@ -872,7 +848,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 参考：https://github.com/DataDog/fluent-plugin-datadog
 
-```ini
+```bash
 #########################
 # Datadogへのルーティング
 #########################
@@ -906,26 +882,6 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
     dd_source         prd-foo
     dd_message_key    log
     dd_tags           env:prd-foo
-```
-
-代わりに，OUTPUTの設定をFireLensの```logConfiguration```キーとしても適用することもできる．
-
-参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/datadog/README.md
-
-```bash
-"logConfiguration": {
-	"logDriver":"awsfirelens",
-	"options": {
-	   "Name": "datadog",
-	   "Host": "http-intake.logs.datadoghq.com",
-	   "TLS": "on",
-	   "apikey": "<DATADOG_API_KEY>",
-	   "dd_service": "prd-foo",
-	   "dd_source": "prd-foo",
-	   "dd_tags": "env:prd-foo",
-	   "provider": "ecs"
-   }
-},
 ```
 
 <br>
@@ -970,7 +926,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 標準出力にアウトプットする，FluentBitの実行ログに混じって，対象のログがアウトプットされることになる．
 
-```ini
+```bash
  [OUTPUT]
     Name   stdout
     match  *
@@ -988,7 +944,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 **＊実装例＊**
 
-```ini
+```bash
 [OUTPUT]
     Name   null
     match  *
@@ -1024,7 +980,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
-```ini
+```bash
 [SERVICE]
     flush         1
     log_Level     info
@@ -1041,7 +997,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
-```ini
+```bash
 [SERVICE]
     flush         1
     log_Level     info
@@ -1067,374 +1023,4 @@ $ ls -ls /var/log/fluentbit/cpu.0
 ### OUTPUT経由
 
 <br>
-
-## 03. Fargateコンテナからのログ収集
-
-### FireLensコンテナ
-
-#### ・FireLensコンテナとは
-
-AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり，Fargateコンテナのサイドカーコンテナとして配置される．Fargateコンテナからログが送信されると，コンテナ内で稼働するFluentBit/Fluentdがこれを収集し，これを外部にルーティングする．構築のための実装例については，以下のリンクを参考にせよ．
-
-参考：
-
-- https://github.com/aws-samples/amazon-ecs-firelens-examples
-- https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
-
-#### ・ログのルーティング先
-
-FluentBit/Fluentdが対応する他のマイクロサービスにログをルーティングできる．
-
-参考：https://docs.fluentbit.io/manual/pipeline/outputs
-
-<br>
-
-### サイドカーコンテナパターン
-
-#### ・サイドカーコンテナパターンとは
-
-サイドカーコンテナパターンを含むコンテナデザインパターンについては，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
-
-#### ・ログの収集/ルーティングの仕組み
-
-以下の順番でログの収集/ルーティングを実行する．
-
-参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-
-1. awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり，ログをFireLensコンテナに送信する．Fluentdログドライバーについては，以下のリンクを参考にせよ．
-
-   参考：https://docs.docker.com/config/containers/logging/fluentd/
-
-2. FireLensコンテナは，これを受信する．
-
-3. コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され，FluentBitはログを処理する．
-
-4. OUTPUTに渡され，FluentBitは指定した外部にログをルーティングする．
-
-![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
-
-#### ・ログルーティングプロセス
-
-FireLensコンテナでは，FluentBitまたはFlunetdがログルーティングプロセスとして稼働する．FireLensコンテナを用いずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを用いれば，主要なセットアップがされているため，より簡単な設定でFluentBitまたはFlunetdを使用できる．FluentBitの方がより低負荷で稼働するため，FluentBitが推奨されている．
-
-参考：
-
-- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/using_firelens.html
-
-<br>
-
-### ベースイメージ
-
-#### ・FluentBitイメージ
-
-FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている．AWSリソースにログをルーティングするためのプラグインがすでに含まれている．なお，DatadogプラグインはFluentBit自体にインストール済みである．パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
-
-```bash
-[root@<コンテナID>:/fluent-bit]$ ls -la
-
--rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧cloudwatch_logsプラグイン
--rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.so   # kinesis_firehoseプラグイン 
--rw-r--r-- 1 root root 30016544 Sep  1 18:03 kinesis.so    # kinesis_streamsプラグイン 
-...
-```
-
-#### ・パブリックECRリポジトリを用いる場合
-
-ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定をそのまま用いる場合は，こちらを採用する．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
-
-#### ・プライベートECRリポジトリを用いる場合
-
-あらかじめ，DockerHubからFluentBitイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は，こちらを採用する．
-
-```dockerfile
-FROM amazon/aws-for-fluent-bit:latest
-```
-
-参考：
-
-- https://hub.docker.com/r/amazon/aws-for-fluent-bit
-- https://github.com/aws/aws-for-fluent-bit
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub
-
-<br>
-
-### 標準設定の上書き
-
-#### ・標準設定ファイルの種類
-
-aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリにはデフォルトで設定ファイルが用意されている．追加設定を実行するファイルはここに配置する．
-
-```bash
-[root@<コンテナID>:/fluent-bit/etc]$ ls -la
-
--rw-r--r-- 1 root root  251 Sep  1 17:57 fluent-bit.conf
--rw-r--r-- 1 root root 1564 Sep 27 02:15 fluent-bit_custom.conf # 追加設定用
--rw-r--r-- 1 root root 4664 Sep  1 18:07 parsers.conf
--rw-r--r-- 1 root root  584 Sep  1 18:07 parsers_ambassador.conf
--rw-r--r-- 1 root root  226 Sep  1 18:07 parsers_cinder.conf
--rw-r--r-- 1 root root 2798 Sep  1 18:07 parsers_extra.conf
--rw-r--r-- 1 root root  240 Sep  1 18:07 parsers_java.conf
--rw-r--r-- 1 root root  845 Sep  1 18:07 parsers_mult.conf
--rw-r--r-- 1 root root  291 Sep 27 02:15 parsers_multiline.conf
--rw-r--r-- 1 root root 2954 Sep  1 18:07 parsers_openstack.conf
--rw-r--r-- 1 root root  579 Sep 27 02:15 stream_processor.conf # 追加設定用
-```
-
-FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以下の通りとなり，ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
-
-参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
-
-```ini
-[INPUT]
-    Name tcp
-    Listen 127.0.0.1
-    Port 8877
-    Tag firelens-healthcheck
-
-[INPUT]
-    Name forward
-    unix_path /var/run/fluent.sock
-
-[INPUT]
-    Name forward
-    Listen 127.0.0.1
-    Port 24224
-
-[FILTER]
-    Name record_modifier
-    Match *
-    Record ecs_cluster sample-test-cluster
-    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:123456789012:task/sample-test-cluster/d4efc1a0fdf7441e821a3683836ad69a
-    Record ecs_task_definition sample-test-webapp-taskdefinition:15
-
-[OUTPUT]
-    Name null
-    Match firelens-healthcheck
-```
-
-#### ・```fluent-bit_custom.conf```ファイル
-
-FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，コンテナ定義の```config-file-value```キーで指定し，追加設定を実行する．これにより，FireLensコンテナにINCLUDE文が挿入される．
-
-参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
-
-```ini
-[INPUT]
-    Name tcp
-    Listen 127.0.0.1
-    Port 8877
-    Tag firelens-healthcheck
-    
-[INPUT]
-    Name forward
-    unix_path /var/run/fluent.sock
-    
-[INPUT]
-    Name forward
-    Listen 127.0.0.1
-    Port 24224
-    
-[FILTER]
-    Name record_modifier
-    Match *
-    Record ecs_cluster prd-foo-ecs-cluster
-    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<アカウントID>:task/prd-foo-ecs-cluster/*****
-    Record ecs_task_definition prd-foo-ecs-task-definition:1
-    
-# INCLUDE文が挿入される．ユーザー定義の設定ファイルが読み込まれる．
-@INCLUDE /fluent-bit/etc/fluent-bit_custom.conf
-
-[OUTPUT]
-    Name laravel
-    Match laravel-firelens*
-    
-[OUTPUT]
-    Name nginx
-    Match nginx-firelens*    
-```
-
-ちなみに，デフォルトの設定ファイルには，INPUTがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない．
-
-参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
-
-```ini
-[INPUT]
-    Name        forward
-    Listen      0.0.0.0
-    Port        24224
-
-[OUTPUT]
-    Name cloudwatch
-    Match   **
-    region us-east-1
-    log_group_name fluent-bit-cloudwatch
-    log_stream_prefix from-fluent-bit-
-    auto_create_group true
-```
-
-#### ・```stream_processor.conf```ファイル
-
-STREAM_TASKにて，ログのタグ付けを設定する．FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．ちなみに，STREAM_TASKでタグ付けされたログは，INPUTから再び処理し直される．
-
-参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-
-```bash
-# 本来，改行はないが，わかりやすいように改行している．
-# <コンテナ名>-firelens-<タスクID>
-[0] foo-firelens-*****: [
-    *****,
-    {
-        "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
-        "container_id"=>"*****",
-        "container_name"=>"foo",
-        "source"=>"stderr"
-    }
-]
-```
-
-```ini
-# laravelコンテナのログへのタグ付け
-[STREAM_TASK]
-    Name laravel
-    Exec CREATE STREAM laravel WITH (tag='laravel') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'laravel';
-
-# nginxコンテナのログへのタグ付け
-[STREAM_TASK]
-    Name nginx
-    Exec CREATE STREAM nginx WITH (tag='nginx') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'nginx';
-
-# 全てのコンテナのログへのタグ付け
-[STREAM_TASK]
-    Name containers
-    Exec CREATE STREAM container WITH (tag='containers') AS SELECT * FROM TAG:'*-firelens-*';
-```
-
-```ini
-[SERVICE]
-    Flush 1
-    Grace 30
-    Log_Level info
-    # ファイルを読み込む
-    Parsers_File parsers_multiline.conf
-    Streams_File stream_processor.conf
-```
-
-#### ・```parsers_multiline.conf```ファイル
-
-MULTILINE_PARSERにて，スタックトレースログの各行の結合を設定する．
-
-参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
-
-```ini
-[MULTILINE_PARSER]
-    name          laravel
-    type          regex
-    flush_timeout 1000
-    rule          "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
-    rule          "cont"          "/^\s+at.*/"                     "cont"
-```
-
-```ini
-[SERVICE]
-    flush                 1
-    log_level             info
-    parsers_file          /parsers_multiline.conf
-    
-[FILTER]
-    name                  multiline
-    match                 *
-    multiline.key_content log
-    # ファイルを読み込む．組み込みパーサ（goなど）を用いることも可能．
-    multiline.parser      go, laravel
-```
-
-<br>
-
-### FireLensコンテナのコンテナ定義
-
-#### ・全体
-
-```bash
-[
-  {
-    "name": "<メインコンテナ名>",
-    "image": "<ECRリポジトリのURL>",
-    "essential": true,
-    "portMappings": [
-      {
-        "containerPort": 80,
-        "hostPort": 80,
-        "protocol": "tcp"
-      }
-    ],
-    "logConfiguration": {
-      "logDriver": "awsfirelens",
-      "options": {
-        "Name": "forward"
-      }
-    }
-  },
-  {
-    # FireLensコンテナ名がlog_routerとなることは固定
-    "name": "log_router",
-    "image": "<ECRリポジトリのURL>",
-    "essential": false,
-    "logConfiguration": {
-      "logDriver": "awslogs",
-      "options": {
-        # FireLensコンテナ自体がCloudWatchログにログアウトプット
-        "awslogs-group": "<ロググループ名>",
-        "awslogs-region": "<リージョン>",
-        "awslogs-stream-prefix": "<プレフィクス>"
-      }
-    },
-    "firelensConfiguration": {
-      # FireLensコンテナでFluentBitを稼働させる
-      "type": "fluentbit",
-      "options": {
-        "config-file-type": "file",
-        # 設定上書きのため読み込み
-        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
-        # ECSの情報をFireLensに送信するかどうか
-        "enable-ecs-log-metadata": "true"
-      }
-    },
-    "portMappings": [],
-    "memoryReservation": 50,
-    "secrets": [
-      {
-        "name": "DD_API_KEY",
-        "valueFrom": "<SSMパラメーターで管理する環境変数名>"
-      },
-      {
-        "name": "DD_ENV",
-        "valueFrom": "<SSMパラメーターで管理する環境変数名>"
-      }
-    ]
-  }
-]
-```
-
-#### ・name
-
-FireLensコンテナをサイドカーとして構築するために，コンテナ定義を実装する．FireLensコンテナは『log_router』とする．
-
-#### ・logConfiguration
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
-
-| 項目                                                | 説明                                                         |
-| --------------------------------------------------- | ------------------------------------------------------------ |
-| ```type```                                          | メインコンテナからFireLensコンテナにログを送信できるように，ログドライバーのタイプとして『```fluentbit```』を設定する． |
-| ```config-file-type```                              | FluentBitの設定ファイルを読み込むために，```file```とする．  |
-| ```config-file-value```                             | ```options```キーにて，ログルーティングを設定できるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする． |
-| ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
-| ```environment```，```secrets```                    | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように，コンテナの環境変数に値を設定する． |
 

@@ -2553,7 +2553,7 @@ class FooAfterMiddleware
 
 #### ・VerifyCsrfToken
 
-セッションファイルに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションファイルは```storage/framework/sessions```ディレクトリ下に配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを用いる必要がある．
+セッションデータに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションデータは```storage/framework/sessions```ディレクトリ下に配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを用いる必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
@@ -5111,9 +5111,9 @@ class FooController extends Controller
 }
 ```
 
-#### ・セッションファイルがStoreクラスに至るまで
+#### ・セッションデータがStoreクラスに至るまで
 
-全てを追うことは難しいので，StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする．ここで，```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される．これにより，Storeクラスの```start```メソッド，```loadSession```メソッド，```readFromHandler```メソッドが実行され，```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される．```read```メソッドは，```storage/framework/sessions```にあるセッションファイルに書き込まれたセッションを読み出し，```attribute```プロパティに格納する．Sessionクラスのメソッドは，```attribute```プロパティを用いて，セッションを操作する．最終的に,```handleStatefulRequest```では，```saveSession```メソッドの中の```save```メソッドが実行され，セッションファイルに新しい値が書き込まれる．
+全てを追うことは難しいので，StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする．ここで，```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される．これにより，Storeクラスの```start```メソッド，```loadSession```メソッド，```readFromHandler```メソッドが実行され，```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される．```read```メソッドは，```storage/framework/sessions```にあるセッションデータに書き込まれたセッションを読み出し，```attribute```プロパティに格納する．Sessionクラスのメソッドは，```attribute```プロパティを用いて，セッションを操作する．最終的に,```handleStatefulRequest```では，```saveSession```メソッドの中の```save```メソッドが実行され，セッションデータに新しい値が書き込まれる．
 
 参考：
 
