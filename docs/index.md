@@ -281,7 +281,7 @@ title: 【知見を記録するサイト】目次
 * FluentBit/Fluentd
     * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html)
     * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html)
-    * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_firelens.html)
+    * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_firelens.html)
 * Datadog
     * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html)
     * [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_log.html)

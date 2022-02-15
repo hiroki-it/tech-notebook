@@ -90,7 +90,7 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 
 参考：
 
-- https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
+- https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
 - https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_firelens.html
 
 <br>
@@ -173,15 +173,15 @@ FROM data/agent:latest
 
 ブラウザ上のJavaScriptで実行され，```console.error```メソッドの実行結果，キャッチされていない例外，ネットワークエラー，を含む構造化ログをDatadogに送信する．
 
-参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript
+参考：https://docs.datadoghq.com/logs/log_collection/javascript
 
 #### ・パラメーター
 
-参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript/#%E5%88%9D%E6%9C%9F%E5%8C%96%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC
+参考：https://docs.datadoghq.com/logs/log_collection/javascript/#%E5%88%9D%E6%9C%9F%E5%8C%96%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC
 
 #### ・送信される構造化ログ
 
-参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript/#%E7%B5%90%E6%9E%9C
+参考：https://docs.datadoghq.com/logs/log_collection/javascript/#%E7%B5%90%E6%9E%9C
 
 ```bash
 {
@@ -321,7 +321,7 @@ export default browserLogsForSsgPlugin
 
 #### ・予約済み属性
 
-参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/
+参考：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
 
 | 属性名                  | 説明                                           | 補足                                                         | 例                                                           |
 | ----------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -336,13 +336,13 @@ export default browserLogsForSsgPlugin
 
 デフォルトで用意された属性．
 
-参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
+参考：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
 
 #### ・スタックトレース属性
 
 スタックトレースログを構成する要素に付与される属性のこと．
 
-参考：https://docs.datadoghq.com/ja/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
+参考：https://docs.datadoghq.com/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
 
 | 属性名                        | 説明                                             |
 | ----------------------------- | ------------------------------------------------ |
@@ -366,7 +366,7 @@ export default browserLogsForSsgPlugin
 
 LogライブラリにMonologを用いている場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
 
-参考：https://docs.datadoghq.com/ja/logs/log_collection/php/?tab=phpmonolog#agent-%E3%81%AE%E6%A7%8B%E6%88%90
+参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-%E3%81%AE%E6%A7%8B%E6%88%90
 
 **＊実装例＊**
 
@@ -604,18 +604,6 @@ error   @http.status_code:[500 TO 599]
 
 <br>
 
-### パースルールの構成
-
-#### ・マッチャー
-
-参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
-
-#### ・フィルター
-
-参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=filter#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
-
-<br>
-
 ## 07-02. パーサー系
 
 ### Grokパーサー
@@ -626,7 +614,7 @@ error   @http.status_code:[500 TO 599]
 
 参考：
 
-- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
+- https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher
 - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
 - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
 
@@ -668,7 +656,9 @@ Laravelから，以下のような非構造化ログを受信する例を考え�
 }
 ```
 
-以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．
+以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．タイムスタンプ形式の指定は以下を参考にせよ．
+
+参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
 ```bash
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
@@ -754,7 +744,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し，詳細な属性として新しく付与する．
 
-参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+参考：https://docs.datadoghq.com/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
 
 #### ・例１
 
@@ -1127,7 +1117,7 @@ log-pipeline
 
 ベストプラクティス通り，Grokパーサーではコメントでログサンプルを示すようにする．ログの種類が一つしかない場合は任意であるが，ログの種類が複数あり，それぞれを解析するルールも複数ある場合は必ずコメントする．
 
-参考：https://docs.datadoghq.com/ja/logs/guide/log-parsing-best-practice/
+参考：https://docs.datadoghq.com/logs/guide/log-parsing-best-practice/
 
 ```bash
 # [2022-01-20 19:02:48] production.INFO: ...
@@ -1174,7 +1164,7 @@ autoFilledRule3 ...
 
 参考：
 
-- https://docs.datadoghq.com/ja/logs/indexes/
+- https://docs.datadoghq.com/logs/indexes/
 - https://tech-blog.abeja.asia/entry/why-datadog
 
 <br>
@@ -1191,11 +1181,11 @@ autoFilledRule3 ...
 
 ### Live Tail
 
-### ・Live Tailとは
+#### ・Live Tailとは
 
 ログパイプライン処理後のログをリアルタイムで確認できる．
 
-参考：https://docs.datadoghq.com/ja/logs/explorer/live_tail/
+参考：https://docs.datadoghq.com/logs/explorer/live_tail/
 
 <br>
 
@@ -1205,7 +1195,7 @@ autoFilledRule3 ...
 
 構造化ログの属性名と値を基に，ログを絞り込める．
 
-参考：https://docs.datadoghq.com/ja/logs/explorer/search_syntax/
+参考：https://docs.datadoghq.com/logs/explorer/search_syntax/
 
 #### ・オートコンプリート
 
@@ -1243,7 +1233,7 @@ autoFilledRule3 ...
 
 属性/タグの値を基に，ログをグルーピングしたもの．
 
-参考：https://docs.datadoghq.com/ja/logs/explorer/facets/#%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%89%E3%83%91%E3%83%8D%E3%83%AB
+参考：https://docs.datadoghq.com/logs/explorer/facets/#%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%89%E3%83%91%E3%83%8D%E3%83%AB
 
 #### ・属性のファセット化
 

@@ -45,7 +45,7 @@ project
 
 #### ・マイクロサービス別
 
-マイクロサービス別にディレクトリを作成する．また同時に，Kubernetesオブジェクトごとに別々のマニフェストファイルを作成する．マニフェストの```apply```の順番を制御しにくいデメリットがある．
+マイクロサービス別にディレクトリを作成し，Kubernetesオブジェクトごとに別々のマニフェストファイルを作成する．さらに，コンポーネント（app，db）別に分割してもよい．マニフェストの```apply```の順番を制御しにくいデメリットがある．
 
 参考：https://www.amazon.co.jp/dp/B08FZX8PYWゆーむ
 
@@ -54,18 +54,25 @@ project
 ├── foo # fooサービス
 │   ├── deployment.yml
 │   ├── service.yml
-│   └── persistentVolume.yml
+│   ├── persistentVolume.yml
+│   └── persistentVolumeClaim.yml
 │
 ├── bar # fooサービス
 │   ├── deployment.yml
 │   ├── service.yml
-│   └── persistentVolume.yml
+│   ├── persistentVolume.yml
+│   └── persistentVolumeClaim.yml
 │
 └── baz # bazサービス
-    ├── deployment.yml
-    ├── service.yml
-
-    └── persistentVolume.yml
+    ├── app # appコンポーネント
+    │   ├── deployment.yml
+    │   ├── service.yml
+    │   └── persistentVolume.yml
+    │
+    └── db # dbコンポーネント
+        ├── statefulSet.yml
+        ├── service.yml
+        └── persistentVolume.yml
 ```
 
 #### ・ディレクトリ無し

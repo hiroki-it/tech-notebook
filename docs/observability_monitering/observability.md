@@ -240,7 +240,7 @@ Kubernetes上での実際のセットアップ方法については，以下の�
 参考：
 
 - https://opentracing.io/docs/overview/spans/
-- https://docs.datadoghq.com/ja/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
+- https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
 - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
 
 

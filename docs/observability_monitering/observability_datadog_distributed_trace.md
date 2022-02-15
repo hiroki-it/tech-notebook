@@ -43,7 +43,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 参考：
 
-- https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+- https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-tracer.png)
@@ -54,7 +54,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### パッケージ一覧
 
-参考：https://docs.datadoghq.com/ja/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
 <br>
 
@@ -93,7 +93,7 @@ datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポー�
 
 参考：
 
-- https://docs.datadoghq.com/ja/tracing/setup/php/
+- https://docs.datadoghq.com/tracing/setup/php/
 - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
 #### ・インストール（コンテナの場合）
@@ -211,7 +211,7 @@ datadogコンテナにトレースが送信されている場合は，受信で�
 
 環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
 
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 | 変数名                                        | 説明                                                         | 画面                                   |
 | --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
@@ -230,7 +230,7 @@ datadogコンテナにトレースが送信されている場合は，受信で�
 
 TypeScriptやモジュールバンドルを使っている場合，パッケージの読み込み処理が巻き上げられ，意図しない読み込みの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする．また，フレームワークよりも先に読み込むことになるため，```.env```ファイル参照機能を使えない．そこで，環境変数はインフラ側で設定するようにする．
 
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
 
 ```javascript
@@ -309,7 +309,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 初期化時に環境変数を設定できる．APMのマイクロサービスのタグ名に反映される．
 
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -428,13 +428,13 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 スパンの持つデータをデータポイントとして集計すると，メトリクスを収集できる．
 
-参考：https://docs.datadoghq.com/ja/tracing/generate_metrics/
+参考：https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ・メトリクス名の構成要素
 
 メトリクス名は『```trace.<スパン名>.<メトリクスサフィックス名>```』の名前で構成される．
 
-参考：https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
+参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
 #### ・メトリクスのスパン名
 
@@ -450,7 +450,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 メトリクスの種類に応じたサフィックス名が割り当てられる．
 
-参考：https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
+参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
 **＊例＊**
 
@@ -482,7 +482,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 参考：
 
 - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
-- https://docs.datadoghq.com/ja/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
+- https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
 
 <br>
 

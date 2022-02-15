@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Symfony
+description: Symfonyの知見をまとめました．
 ---
 
 # Symfony

@@ -52,7 +52,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 参考：https://docs.datadoghq.com/integrations/amazon_web_services/?tab=roledelegation#setup
 
-（１）DatadogのAWSアカウントの登録画面で，CloudFormationによる自動セットアップを選択する．これにより，AWSコンソール画面に自動的に遷移する．
+（１）DatadogのAWSアカウントの登録画面で，CloudFormationによる自動セットアップを選択する．これにより，AWSコンソール画面に自動的に遷移する．ほとんど自動入力されており，空欄部分（APIキーなど）に値を入力する．
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
@@ -80,7 +80,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 EC2，ECS，Lambdaで料金が発生し，それ以外のAWSリソースは無料である．
 
-参考：https://docs.datadoghq.com/ja/account_management/billing/aws/
+参考：https://docs.datadoghq.com/account_management/billing/aws/
 
 <br>
 
@@ -88,7 +88,7 @@ EC2，ECS，Lambdaで料金が発生し，それ以外のAWSリソースは無�
 
 PHP-FPMインテグレーションをインストールした場合，収集したメトリクスを可視化できるようになる．ログには対応していない．
 
-参考：https://docs.datadoghq.com/ja/integrations/php_fpm/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
+参考：https://docs.datadoghq.com/integrations/php_fpm/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
 
 <br>
 
@@ -96,4 +96,4 @@ PHP-FPMインテグレーションをインストールした場合，収集し�
 
 Nginxインテグレーションをインストールした場合，収集したログとメトリクスを可視化できるようになる．
 
-参考：https://docs.datadoghq.com/ja/integrations/nginx/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
+参考：https://docs.datadoghq.com/integrations/nginx/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9

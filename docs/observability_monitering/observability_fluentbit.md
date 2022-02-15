@@ -705,6 +705,66 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 <br>
 
+### SERVICEから
+
+<br>
+
+### INPUTから
+
+#### ・storage.type
+
+バッファーとして用いる媒体を設定する．
+
+**＊実装例＊**
+
+メモリ上でバッファリングを実行する．デフォルト値である．
+
+参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+
+```bash
+[SERVICE]
+    flush         1
+    log_Level     info
+
+[INPUT]
+    name          cpu
+    # メモリ上でバッファリングが実行される（デフォルト値）．
+    storage.type  memory
+```
+
+**＊実装例＊**
+
+ファイル上でバッファリングを実行する．
+
+参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+
+```bash
+[SERVICE]
+    flush         1
+    log_Level     info
+    # ファイルの場所
+    storage.path  /var/log/fluentbit/
+
+[INPUT]
+    name          cpu
+    # ファイル上でバッファリングが実行される．
+    storage.type  filesystem
+```
+
+指定した場所に```cpu.0```ディレクトリが生成され，そこにあるflbファイル上でバッファリングが実行される．
+
+```bash
+$ ls -ls /var/log/fluentbit/cpu.0
+
+-rw------- 1 root root 4096 Oct 20 15:51 1-1634745095.575805200.flb
+```
+
+<br>
+
+### OUTPUTから
+
+<br>
+
 ## 03-07. ROUTING，OUTPUT
 
 ### ROUTING，OUTPUTとは
@@ -961,66 +1021,4 @@ $ /fluent-bit/bin/fluent-bit \
     -m '*' \
     -o null
 ```
-
-<br>
-
-### SERVICE経由
-
-<br>
-
-### INPUT経由
-
-#### ・storage.type
-
-バッファーとして用いる媒体を設定する．
-
-**＊実装例＊**
-
-メモリ上でバッファリングを実行する．デフォルト値である．
-
-参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
-
-```bash
-[SERVICE]
-    flush         1
-    log_Level     info
-
-[INPUT]
-    name          cpu
-    # メモリ上でバッファリングが実行される（デフォルト値）．
-    storage.type  memory
-```
-
-**＊実装例＊**
-
-ファイル上でバッファリングを実行する．
-
-参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
-
-```bash
-[SERVICE]
-    flush         1
-    log_Level     info
-    # ファイルの場所
-    storage.path  /var/log/fluentbit/
-
-[INPUT]
-    name          cpu
-    # ファイル上でバッファリングが実行される．
-    storage.type  filesystem
-```
-
-指定した場所に```cpu.0```ディレクトリが生成され，そこにあるflbファイル上でバッファリングが実行される．
-
-```bash
-$ ls -ls /var/log/fluentbit/cpu.0
-
--rw------- 1 root root 4096 Oct 20 15:51 1-1634745095.575805200.flb
-```
-
-<br>
-
-### OUTPUT経由
-
-<br>
 

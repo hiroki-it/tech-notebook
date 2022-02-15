@@ -27,7 +27,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 ログモニターのクエリは，ログコンソールと同じ仕組みで機能する．そのため，最初はログコンソールで必要なログを絞り込めるかを確認し，問題なければログモニターのクエリを設定する．
 
-参考：https://docs.datadoghq.com/ja/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
+参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
 
 #### ・シングルアラート
 
@@ -41,7 +41,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 ### テンプレート変数
 
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#template-variables
+参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
 <br>
 
@@ -59,7 +59,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.< キー名 >}}``` または```{{log.tags.< キー名 >}}```として実装する．
 
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
+参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
 <br>
 
@@ -67,13 +67,13 @@ description:  監視＠Datadogの知見をまとめました．
 
 #### ・コンポジットモニター変数とは
 
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
+参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
 
 <br>
 
 ### 条件変数
 
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#conditional-variables
+参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
 
 <br>
 
@@ -190,5 +190,5 @@ Datadog社の物理サーバーからリクエストが送信される．物理�
 
 ## 06. コスト
 
-https://docs.datadoghq.com/ja/account_management/billing/usage_details/
+https://docs.datadoghq.com/account_management/billing/usage_details/
 

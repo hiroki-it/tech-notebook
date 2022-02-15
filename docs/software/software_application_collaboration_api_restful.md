@@ -824,13 +824,13 @@ $_COOKIE = ["Cookie名" => "値"]
 <?php
 
 setcookie(
-    Cookie名,
-    Cookie値,
-    有効日時,
-    パス,
-    ドメイン,
-    HTTPS接続のみ,
-    Javascript無効
+    <Cookie名>,
+    <Cookie値>,
+    <有効日時>,
+    <パス>,
+    <ドメイン>,
+    <HTTPS接続のみ>,
+    <Javascript無効>
     ）
 ```
 
@@ -866,7 +866,7 @@ Set-Cookie: sessionId=<セッションID>
 
 #### ・セッションIDの発行，セッションデータの生成
 
-セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションデータ（ファイル形式，Redisレコード形式）を作成する．サーバー内に保存する場合は，セッションはファイル形式である一方で，サーバー外のセッションDB（PHP Redis，ElastiCache Redisなど）に保存する場合は，レコード形式になる．セッションIDに紐付くその他のデータはこのセッションデータに書き込まれていく．セッションデータの名前は，```sess_*****```ファイルとなっており，セッションデータ名を元にしてセッションIDに紐付くデータを参照する．もしクライアントに既にセッションIDが発行されている場合，セッションデータを参照するようになる．
+セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションデータを作成する．セッションIDに紐付くその他のデータはこのセッションデータに書き込まれていく．セッションデータの名前は，```sess_*****```ファイルとなっており，セッションデータ名を元にしてセッションIDに紐付くデータを参照する．もしクライアントに既にセッションIDが発行されている場合，セッションデータを参照するようになる．
 
 **＊実装例＊**
 
@@ -882,7 +882,7 @@ $_SESSION["セッション名"] = "値";
 
 #### ・セッションデータの保存場所
 
-セッションデータの保存場所は```/etc/php.ini```ファイルで定義できる．
+サーバー内に保存する場合は，セッションはファイル形式である一方で，サーバー外のセッションDB（PHP Redis，ElastiCache Redisなど）に保存する場合は，レコード形式になる．セッションデータの保存場所は```/etc/php.ini```ファイルで定義できる．
 
 ```ini
 # /etc/php.ini
@@ -893,20 +893,12 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-保存場所は，```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルで設定する必要がある．ElastiCache Redisについては，以下のリンクを参考にせよ．
+なお，PHP-FPMを用いている場合は，```/etc/php.ini```ファイルではなく，```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+参考：
 
-```bash
-# /etc/php.ini
-
-## Redis形式
-session.save_handler = redis
-## Amazon RedisのOrigin
-session.save_path = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
-```
-
-なお，PHP-FPMを用いている場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションデータの保存先を指定する必要がある．
+- https://github.com/phpredis/phpredis/issues/1097
+- https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
 
 ```bash
 # /etc/php-fpm.d/www.conf
