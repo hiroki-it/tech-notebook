@@ -283,22 +283,22 @@ nav:
       - Capistrano: ci_cd/ci_cd_capistrano.md
 
   - 🔎 可観測性/監視:
-      - 可観測性: observability_monitering/observability.md
-      - 監視: observability_monitering/monitering.md
+      - 可観測性: observability_monitoring/observability.md
+      - 監視: observability_monitoring/monitoring.md
       - ■ Googleアプリ:
-          - Googleアナリティクス: observability_monitering/monitering_google_analytics.md
-          - Googleサーチコンソール: observability_monitering/monitering_google_search_console.md
+          - Googleアナリティクス: observability_monitoring/monitoring_google_analytics.md
+          - Googleサーチコンソール: observability_monitoring/monitoring_google_search_console.md
       - ■ FluentBit/Fluentd:
-          - FluentBit vs. Fluentd: observability_monitering/observability_fluentbit_vs_fluentd.md
-          - FluentBit: observability_monitering/observability_fluentbit.md
-          - FireLensコンテナ: observability_monitering/observability_fluentbit_firelens.md
+          - FluentBit vs. Fluentd: observability_monitoring/observability_fluentbit_vs_fluentd.md
+          - FluentBit: observability_monitoring/observability_fluentbit.md
+          - FireLensコンテナ: observability_monitoring/observability_fluentbit_firelens.md
       - ■ Datadog:
-          - メトリクス収集: observability_monitering/observability_datadog_metrics.md
-          - ログ収集: observability_monitering/observability_datadog_log.md
-          - 分散トレース収集: observability_monitering/observability_datadog_distributed_trace.md
-          - テレメトリー間の紐づけ: observability_monitering/observability_datadog_telemetry_association.md
-          - 監視: observability_monitering/observability_datadog_monitering.md
-          - インテグレーション: observability_monitering/observability_datadog_integration.md
+          - メトリクス収集: observability_monitoring/observability_datadog_metrics.md
+          - ログ収集: observability_monitoring/observability_datadog_log.md
+          - 分散トレース収集: observability_monitoring/observability_datadog_distributed_trace.md
+          - テレメトリー間の紐づけ: observability_monitoring/observability_datadog_telemetry_association.md
+          - 監視: observability_monitoring/observability_datadog_monitoring.md
+          - インテグレーション: observability_monitoring/observability_datadog_integration.md
 
   - 👥 ソフトウェア開発手法論/SRE:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
