@@ -40,7 +40,7 @@ $ yarn dev
 
 #### ・```build```
 
-本番環境のため，Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込み用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
+本番環境のため，Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み出し用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -153,7 +153,7 @@ const nuxtConfig: Configuration = {
 
 ### 環境変数
 
-#### ・```.env```ファイルの読み込み
+#### ・```.env```ファイルの読み出し
 
 あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入すると良い．
 

@@ -91,7 +91,7 @@ SREには，継続的な改善によって，システムの信頼性を向上�
 
 MTTxメトリクスとそのダッシュボードを作成するとよい．MTTxメトリクスについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_monitering.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_monitoring.html
 
 #### ・参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
@@ -140,9 +140,9 @@ SLOを達成したかどうかを判断する場合に，ヒストグラムが�
 | -------------- | ------------------------------------------------------------ |
 | サービス概要   | アーキテクチャ，コンポーネント間の依存関係，ステークホルダー，プロダクト責任者 |
 | 手順書         |                                                              |
-| ポストモーテム | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html |
+| ポストモーテム | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
 | ポリシー       | リリースノート，命名規則，など                               |
-| SLA            | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html |
+| SLA            | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
 
 <br>
 
@@ -153,7 +153,7 @@ SLOを達成したかどうかを判断する場合に，ヒストグラムが�
 | 品質名     | 説明                                                         |
 | -------- | ------------------------------------------------------------ |
 | 構造品質 | 表記と文法の正しさのこと．機能品質よりは重要度が低い．       |
-| 機能品質 | ドキュメントの有用さのこと．ドキュメントをソースコードと同じディレクトリなどでバージョン管理し，コードの変更に合わせてドキュメントも変更するようにする．有用性の品質を保つとともに，ドキュメントの場所を明確にする． |
+| 機能品質 | ドキュメントの有用さのこと．ドキュメントをコードと同じディレクトリなどでバージョン管理し，コードの変更に合わせてドキュメントも変更するようにする．有用性の品質を保つとともに，ドキュメントの場所を明確にする． |
 
 #### ・品質を保つツールの導入
 

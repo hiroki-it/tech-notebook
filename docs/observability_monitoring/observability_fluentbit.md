@@ -97,7 +97,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 ### SERVICEとは
 
-パイプライン全体の設定やファイルの読み込みを設定する．各設定の頭文字は大文字とする．
+パイプライン全体の設定やファイルの読み出しを設定する．各設定の頭文字は大文字とする．
 
 **＊実装例＊**
 

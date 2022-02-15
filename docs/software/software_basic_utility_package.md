@@ -464,7 +464,7 @@ $ supervisorctl restart <常駐プロセス名>
 
 #### ・update
 
-もし```supervisord.conf```ファイルの設定を変更した場合に，これを読み込み直す．
+もし```supervisord.conf```ファイルの設定を変更した場合に，これを読み出し直す．
 
 参考：http://supervisord.org/running.html#supervisorctl-actions
 

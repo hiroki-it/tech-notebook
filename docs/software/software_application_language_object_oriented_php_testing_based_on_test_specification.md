@@ -149,7 +149,7 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 
 ### Regressionテスト（回帰テスト）
 
-ソフトウェアのソースコードを変更した後，他のプログラムに悪影響を与えていないかを検証．
+ソフトウェアのコードを変更した後，他のプログラムに悪影響を与えていないかを検証．
 
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 

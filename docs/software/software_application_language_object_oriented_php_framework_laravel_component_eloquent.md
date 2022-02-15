@@ -1066,7 +1066,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class FooDTO extends Model
 {
     /**
-    * Traitの読み込み
+    * Traitの読み出し
     */
     use SoftDeletes;
 

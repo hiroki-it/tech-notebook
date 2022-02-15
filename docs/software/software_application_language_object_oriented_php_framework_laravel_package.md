@@ -27,7 +27,7 @@ $ npm run dev
 
 #### ・アセットの自動再コンパイル
 
-アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
+アセットのコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
 
 ```bash
 $ npm run watch
@@ -45,7 +45,7 @@ $ npm run watch
 
 ### laravel-enum
 
-#### ・ソースコード
+#### ・コード
 
 参考：https://github.com/BenSampo/laravel-enum
 

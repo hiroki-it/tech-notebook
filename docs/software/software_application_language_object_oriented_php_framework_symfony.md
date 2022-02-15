@@ -34,7 +34,7 @@ Symfony
 |   └── index_dev.php # 開発環境で，カーネルとして動く
 │
 ├── src　# 主要なPHPファイル
-│   ├── AppBundle # アプリケーションのソースコード
+│   ├── AppBundle # アプリケーションのコード
 │   │  ├── Controller　# UserCase層
 │   │  ├── Entity # エンティティ　⇒　Domain層
 │   │  ├── Repository # リポジトリ ⇒ Infrastructure層
@@ -42,7 +42,7 @@ Symfony
 │   │  └── Resources
 │   │       └── views # 画面テンプレート（※本書では扱わない） 
 │   │           
-│   └── その他のBundle # 汎用的なライブラリのソースコード（※本書では扱わない）
+│   └── その他のBundle # 汎用的なライブラリのコード（※本書では扱わない）
 |
 ├── templates　# UserInterface層
 │   
@@ -432,7 +432,7 @@ Symfonyから提供されるDIコンテナのこと．
 ```php
 <?php
     
-use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み込み
+use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み出し
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return function (RoutingConfigurator $routes) {

@@ -673,7 +673,7 @@ func main() {
 ![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/reference-types_slice.png)
 
 ```go
-// Goのソースコードより
+// Goのコードより
 type slice struct {
 	array unsafe.Pointer
 	len   int
@@ -2417,7 +2417,7 @@ func TestMain(t *testing.T) {
 
 ## 08. ビルトインパッケージ
 
-### パッケージのソースコード
+### パッケージのコード
 
 参考：https://golang.org/pkg/
 

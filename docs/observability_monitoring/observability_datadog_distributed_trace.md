@@ -228,7 +228,7 @@ datadogコンテナにトレースが送信されている場合は，受信で�
 
 #### ・インストール
 
-TypeScriptやモジュールバンドルを使っている場合，パッケージの読み込み処理が巻き上げられ，意図しない読み込みの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする．また，フレームワークよりも先に読み込むことになるため，```.env```ファイル参照機能を使えない．そこで，環境変数はインフラ側で設定するようにする．
+TypeScriptやモジュールバンドルを使っている場合，パッケージの読み出し処理が巻き上げられ，意図しない読み出しの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする．また，フレームワークよりも先に読み込むことになるため，```.env```ファイル参照機能を使えない．そこで，環境変数はインフラ側で設定するようにする．
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
@@ -319,7 +319,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 #### ・分散トレースとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
 
 #### ・構造
 
@@ -351,7 +351,7 @@ Datadogで，分散トレースはスパンを持つ配列データとして定�
 
 #### ・スパンとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
 
 #### ・構造
 
@@ -490,7 +490,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ・マイクロサービスのタグとは
 
-トレーサによって，マイクロサービスにタグを追加できる．PHPトレーサの各インテグレーションのソースコードについては以下のリンクを参考にせよ．ソースコードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
+トレーサによって，マイクロサービスにタグを追加できる．PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ．コードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
 
 参考：
 

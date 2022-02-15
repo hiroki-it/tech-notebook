@@ -391,7 +391,9 @@ PersistentVolumeのライフサイクルを設定する．
 
 #### ・Delete
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に，PersistentVolumeも自動的に削除する．
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolumeも自動的に削除する．クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために用いることが多い．
+
+参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -401,9 +403,11 @@ spec:
   persistentVolumeReclaimPolicy: Delete
 ```
 
-#### ・Recycle
+#### ・Recycle（非推奨）
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に，PersistentVolume内のデータのみを削除し，PersistentVolume自体は削除しない．
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolume内のデータのみを削除し，PersistentVolume自体は削除しない．将来的に廃止予定のため，非推奨．
+
+参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -415,7 +419,9 @@ spec:
 
 #### ・Retain
 
-PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除されたとしても，PersistentVolumeは削除しない．
+PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても，PersistentVolumeは削除しない．割り当てから解除されたPersistentVolumeはReleasedステータスになる．一度，Releasedステータスになると，他のPerisistentVolumeClaimからは指定できなくなる．
+
+参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -457,6 +463,8 @@ spec:
 
 ### accessModes
 
+要求対象のPerisitentVolumeのaccessModeを設定する．
+
 **＊実装例＊**
 
 ```yaml
@@ -470,13 +478,18 @@ spec:
 
 ### resources
 
+#### ・requests
+
+要求対象のPerisitentVolumeのrequestsを設定する．
+
 **＊実装例＊**
 
 ```yaml
 kind: PersistentVolumeClaim
 spec:
   resources:
-    - ReadWriteMany
+    requests:
+      storage: 2Gi
 ```
 
 <br>
@@ -675,27 +688,44 @@ spec:
   volumes
     - name: foo-volume
       persistentVolumeClaim:
-        claimName: foo-slow-volume-claim
+        claimName: foo-standard-volume-claim
 ```
 
-PersistentVolumeは別途作成しておく必要がある．
-
-**＊実装例＊**
+PersistentVolumeClaimとPersistentVolumeはあらかじめ作成しておく必要がある．
 
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: foo-slow-volume-claim
+  name: foo-standard-volume-claim
   labels:
     app: foo
 spec:
-  storageClassName: slow
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 2Gi
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/src/foo
+    type: DirectoryOrCreate
 ```
 
 <br>
@@ -928,11 +958,11 @@ kind: StatefulSet
 spec:
   volumeClaimTemplates:
     - metadata:
-        name: foo-slow-volume-claim
+        name: foo-standard-volume-claim
         labels:
           app: foo
       spec:
-        storageClassName: slow
+        storageClassName: standard
         accessModes:
           - ReadWriteOnce
         resources:

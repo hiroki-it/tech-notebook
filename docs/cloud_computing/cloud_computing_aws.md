@@ -1351,7 +1351,7 @@ Lambdaのパフォーマンスに関するメトリクスを収集する．
 
 クラウドログサーバーとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
 
 <br>
 
@@ -1612,13 +1612,13 @@ $ aws cloudwatch set-alarm-state \
 
 #### ・CodePipeline
 
-CodeCommit，CodeBuild，CodeDeployを連携させて，AWSに対するCI/CD環境を構築する．CodeCommitは，他のソースコード管理サービスで代用できる．
+CodeCommit，CodeBuild，CodeDeployを連携させて，AWSに対するCI/CD環境を構築する．CodeCommitは，他のコード管理サービスで代用できる．
 
 ![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/code-pipeline.png)
 
 #### ・CodeCommit
 
-ソースコードをバージョン管理する．
+コードをバージョン管理する．
 
 #### ・CodeBuild
 
@@ -2363,7 +2363,7 @@ ECSタスクは，デプロイ/自動スケーリング/手動操作の時にラ
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html
 
 <br>
 
@@ -2924,7 +2924,7 @@ EC2で稼働するKubernetesのホストのこと．on Fargateと比べてカス
 
 ### EFSとは
 
-マウントターゲットと接続された片方のEC2インスタンスから，ファイルを読み込み，これをもう一方に出力する．ファイルの実体はいずれかのEC2に存在しているため，接続を切断している間，片方のEC2インスタンス内のファイルは無くなる．再接続すると，切断直前のファイルが再び表示されようになる．
+マウントターゲットと接続された片方のEC2インスタンスから，ファイルを読み出し，これをもう一方に出力する．ファイルの実体はいずれかのEC2に存在しているため，接続を切断している間，片方のEC2インスタンス内のファイルは無くなる．再接続すると，切断直前のファイルが再び表示されようになる．
 
 <br>
 
@@ -4162,17 +4162,17 @@ Lambdaを実行するためには，デプロイされた関数を用いる権�
 
 #### ・直接修正
 
-デプロイを行わずに，関数のソースコードを直接修正し，『Deploy』ボタンでデプロイする．
+デプロイを行わずに，関数のコードを直接修正し，『Deploy』ボタンでデプロイする．
 
 #### ・S3におけるzipファイル
 
-ビルド後のソースコードをzipファイルにしてアップロードする．ローカルPCまたはS3からアップロードできる．
+ビルド後のコードをzipファイルにしてアップロードする．ローカルPCまたはS3からアップロードできる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
 
 #### ・ECRにおけるイメージ
 
-コンテナイメージの関数でのみ有効である．ビルド後のソースコードをdockerイメージしてアップロードする．ECRからアップロードできる．
+コンテナイメージの関数でのみ有効である．ビルド後のコードをdockerイメージしてアップロードする．ECRからアップロードできる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
 

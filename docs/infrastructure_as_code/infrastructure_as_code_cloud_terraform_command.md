@@ -212,7 +212,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ・出力内容の読み方
 
-前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．ただの検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのソースコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
+前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．ただの検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
 
 ```bash
 Note: Objects have changed outside of Terraform
@@ -234,7 +234,7 @@ plan. Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
   
-  # Terraformのソースコードの変更によって，実インフラがどのように変更されるか．
+  # Terraformのコードの変更によって，実インフラがどのように変更されるか．
   
 Plan: 0 to add, 1 to change, 0 to destroy.  
 ```

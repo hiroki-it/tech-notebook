@@ -179,7 +179,7 @@ DBGプロトコルを用いて，エディタ仮想環境とデバッガーエ�
 
 #### 6. 相互通信の実行
 
-エディタは，デバッガーエンジンに対してソースコードを送信する．デバッガーエンジンは，Breakpointまでの各変数の中身を解析し，エディタ仮想環境に返信する．
+エディタは，デバッガーエンジンに対してコードを送信する．デバッガーエンジンは，Breakpointまでの各変数の中身を解析し，エディタ仮想環境に返信する．
 
 ![Xdebug仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Xdebug仕組み.png)
 

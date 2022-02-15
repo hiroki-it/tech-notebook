@@ -79,8 +79,8 @@ logs_enabled: true
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_distributed_trace.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html
 
 <br>
 
@@ -91,7 +91,7 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 参考：
 
 - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_firelens.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
 
 <br>
 
@@ -252,7 +252,7 @@ DATADOG_VERSION=1.0.0
 import { Configuration } from '@nuxt/types'
 import baseConfig from './nuxt.config'
 
-// .env.datadogファイルの読み込み
+// .env.datadogファイルの読み出し
 dotenv.config({ path: resolve(process.cwd(), '.env.datadog') })
 const {
   DATADOG_CLIENT_TOKEN,
@@ -356,7 +356,7 @@ export default browserLogsForSsgPlugin
 
 ### タグ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_telemetry_association.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_telemetry_association.html
 
 ## 06. 収集されたログの送信
 
@@ -391,7 +391,7 @@ logs:
 
 FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_vs_fluentd.html
 
 <br>
 

@@ -166,7 +166,7 @@ $dbh = null;
 
 ### Doctrineとは
 
-RDBの読み込み系/書き込み系の操作を行うパッケージ．他の同様パッケージとして，PDOがある．PDOについては，以下のリンクを参考にせよ．
+RDBの読み出し系/書き込み系の操作を行うパッケージ．他の同様パッケージとして，PDOがある．PDOについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
 

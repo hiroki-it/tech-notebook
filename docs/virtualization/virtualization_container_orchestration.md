@@ -51,13 +51,13 @@ title: 【知見を記録するサイト】コンテナオーケストレーシ�
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナから送信されたログを他にルーティングする．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html
 
 #### ・メトリクス収集コンテナの配置
 
 datadogコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナからメトリクスを収集する．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
 
 <br>
 

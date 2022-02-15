@@ -337,7 +337,7 @@ export class Foo {
 ```
 
 ```javascript
-// ファイルの読み込み
+// ファイルの読み出し
 import {Foo} from "./foo.js";
 
 // 生成，初期化
@@ -367,7 +367,7 @@ export const Foo = class {
 ```
 
 ```javascript
-// ファイルの読み込み
+// ファイルの読み出し
 import { Foo } from "./foo.js";
 
 // 生成，初期化

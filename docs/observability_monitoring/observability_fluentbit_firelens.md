@@ -138,7 +138,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
       "type": "fluentbit",
       "options": {
         "config-file-type": "file",
-        # 設定上書きのため読み込み
+        # 設定上書きのため読み出し
         "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
         # ECSの情報をFireLensコンテナに送信するかどうか
         "enable-ecs-log-metadata": "true"

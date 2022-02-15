@@ -200,7 +200,7 @@ include /etc/nginx/conf.d/*.conf;
 
 #### ・```.../modules/*.conf```ファイルとは
 
-モジュールの読み込み処理が定義されているファイル．
+モジュールの読み出し処理が定義されているファイル．
 
 ```nginx
 include  /usr/share/nginx/modules/*.conf;

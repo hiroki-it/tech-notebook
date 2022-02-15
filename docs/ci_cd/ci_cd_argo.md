@@ -17,7 +17,7 @@ description: Argo＠CI/CDの知見をまとめました．
 
 ### 基本構造
 
-指定したブランチのソースコードの状態を監視する．プッシュによってソースコードが変更された場合に，Kubernetesの状態をこれに同期する．
+指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．
 
 ![argo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argo.png)
 

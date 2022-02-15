@@ -678,9 +678,9 @@ trait UnsupportedMagicMethodTrait
 
 <br>
 
-## 02-04. 外部ファイルの読み込み
+## 02-04. 外部ファイルの読み出し
 
-### ```require_once```メソッドによる，クラス，非クラスのメソッドの読み込み
+### ```require_once```メソッドによる，クラス，非クラスのメソッドの読み出し
 
 #### ・```require_once```メソッドとは
 
@@ -758,7 +758,7 @@ printTest();
 
 <br>
 
-### ```use```によるクラスの読み込み
+### ```use```によるクラスの読み出し
 
 #### ・```use```とは
 
@@ -1243,7 +1243,7 @@ $container = new Container();
 ```php
 <?php
     
-// DIコンテナの読み込み
+// DIコンテナの読み出し
 require_once __DIR__ . "/autoload.php";
 
 // クラス名を宣言してインスタンスを生成．

@@ -352,7 +352,7 @@ ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わ
 
 #### ・Volumeとは
 
-既存のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
+既存（ホスト，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
 
 参考：https://thinkit.co.jp/article/14195
 
@@ -421,7 +421,7 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 #### ・PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み込みでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
 
 参考：https://thinkit.co.jp/article/14195
 
@@ -465,7 +465,15 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 <br>
 
-## 05. ネットワーキング
+## 05. PersistentVolumeClaim
+
+### PersistentVolumeClaim
+
+設定された条件に基づいて，作成済みのPersistentVolumeを要求し，指定したKubernetesオブジェクトに割り当てる．
+
+<br>
+
+## 06. ネットワーキング
 
 ### Serviceの名前解決
 

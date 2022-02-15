@@ -124,7 +124,7 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 
 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
-```bash
+```ini
 # 開発環境では，スタックトレースを表示
 zend.exception_ignore_args = off # on
 
@@ -175,7 +175,7 @@ mbstring.language = Japanese
 
 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
-```bash
+```ini
 zend.exception_ignore_args = on
 
 # 本番環境では，X-Powered-ByヘッダーのPHPバージョンを非表示
@@ -239,6 +239,6 @@ opcache.preload_user = www-data
 
 #### ・OPcacheとは
 
-通常，PHPのソースコードは実行の度にバイナリ形式のコードに変換される．バイナリ形式のコードのキャッシュを作成しておき，ソースコードが変更された時だけ変換するようにする．これにより，PHPのソースコードの実行が高速化される．
+通常，PHPのコードは実行の度にバイナリ形式のコードに変換される．バイナリ形式のコードのキャッシュを作成しておき，コードが変更された時だけ変換するようにする．これにより，PHPのコードの実行が高速化される．
 
 参考：https://weblabo.oscasierra.net/php-opcache/

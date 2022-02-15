@@ -273,22 +273,22 @@ title: 【知見を記録するサイト】目次
 
 ## 🔎 可観測性/監視
 
-* [📖：︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability.html)
-* [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html)
+* [📖：︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html)
+* [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html)
 * Googleアプリ
-    * [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_analytics.html)
-    * [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering_google_search_console.html)
+    * [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_analytics.html)
+    * [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_search_console.html)
 * FluentBit/Fluentd
-    * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_vs_fluentd.html)
-    * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit.html)
-    * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_fluentbit_firelens.html)
+    * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_vs_fluentd.html)
+    * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html)
+    * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html)
 * Datadog
-    * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_metrics.html)
-    * [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_log.html)
-    * [📖：分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_distributed_trace.html)
-    * [📖：テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_telemetry_association.html)
-    * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_monitering.html)
-    * [📖：︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/observability_datadog_integration.html)
+    * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html)
+    * [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_log.html)
+    * [📖：分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html)
+    * [📖：テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_telemetry_association.html)
+    * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_monitoring.html)
+    * [📖：︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_integration.html)
 
 <br>
 
