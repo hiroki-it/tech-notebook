@@ -1343,7 +1343,7 @@ resource "aws_ecs_service" "this" {
 
 **＊実装例＊**
 
-例として，Redisを示す．Redisでは，AutoScalingによってプライマリ数とレプリカ数が増減する．そのため，これらを無視する必要がある．
+例として，Redisを示す．Redisでは，AutoScalingによってプライマリー数とレプリカ数が増減する．そのため，これらを無視する必要がある．
 
 
 ```elixir
@@ -1356,7 +1356,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
   lifecycle {
     ignore_changes = [
-      # プライマリ数とレプリカ数の増減を無視します．
+      # プライマリー数とレプリカ数の増減を無視します．
       number_cache_clusters
     ]
   }

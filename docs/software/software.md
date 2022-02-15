@@ -165,50 +165,52 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 ### Linux系統
 
-#### ・OSとバージョンの確認コマンド
+#### ・Linux系統とは
 
-OSとバージョンが```/etc/issue```ファイルに記載されている．
+Unixから分岐したLinuxは，さらに3系統（Debian，RedHat，Slackware）に分岐する．
 
-```bash
-$ cat /etc/issue
-Debian GNU/Linux 10 \n \l
-```
+参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
-現在，Linux系統のOSは，さらに3つの系統に分けられる．
-
-#### ・RedHat系統
-
-RedHat，CentOS，Fedora
+![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
 #### ・Debian系統
 
-Debian，Ubuntu，
+Debian，Ubuntu，など
+
+参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+
+``` bash
+# 確認方法
+$ cat /etc/issue
+
+Debian GNU/Linux 10 \n \l
+```
+
+#### ・RedHat系統
+
+RedHat，CentOS，Fedora，など
+
+参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+
+```bash
+# 確認方法
+$ cat /etc/issue
+
+CentOS release 5.5 (Final)
+Kernel \r on an \m
+```
 
 #### ・Slackware系統
 
-Slackware
-
-![Linux distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LinuxDistribution.png)
+Slackwareなど
 
 <br>
 
-### BSD系統｜MacOS
+### BSD系統（MacOSのみ
 
-#### ・環境変数の確認
+#### ・BSD系統とは
 
-環境変数を確認する．全ての項目は，実際に実行して確認すること．
-
-```bash
-$ export -p
-
-export EDITOR=vim
-export HOME=/Users/h.hasegawa
-export LANG=en_US.UTF-8
-export SHELL=/bin/zsh
-export USER=h.hasegawa
-export VISUAL=vim
-...
-```
+Unixから分岐したBSDは，さらに複数の系統（MacOSなど）に分岐する．
 
 <br>
 

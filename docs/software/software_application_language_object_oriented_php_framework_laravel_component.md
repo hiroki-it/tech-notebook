@@ -185,7 +185,7 @@ $ php artisan command:do-foo
 
 ## 05. Database
 
-### データベース接続
+### DB
 
 #### ・設定方法
 
@@ -242,6 +242,110 @@ return [
     ],
 ];
 ```
+
+<br>
+
+### エンドポイントに応じた設定
+
+#### ・単一のエンドポイント
+
+単一のエンドポイントしかない場合，```DB_HOST```を1つだけ設定する．
+
+```php
+<?php
+
+return [
+
+    // ～ 中略 ～    
+
+    "default" => env("DB_CONNECTION", "mysql"),
+
+    "connections" => [
+
+        // ～ 中略 ～
+
+        "mysql" => [
+            "driver"         => "mysql",
+            "url"            => env("DATABASE_URL"),
+            "host"           => env("DB_HOST", "127.0.0.1"),
+            "port"           => env("DB_PORT", 3306),
+            "database"       => env("DB_DATABASE", "forge"),
+            "username"       => env("DB_USERNAME", "forge"),
+            "password"       => env("DB_PASSWORD", ""),
+            "unix_socket"    => env("DB_SOCKET", ""),
+            "charset"        => "utf8mb4",
+            "collation"      => "utf8mb4_unicode_ci",
+            "prefix"         => "",
+            "prefix_indexes" => true,
+            "strict"         => true,
+            "engine"         => null,
+            "options"        => extension_loaded("pdo_mysql") ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env("MYSQL_ATTR_SSL_CA"),
+            ]) : [],
+        ],
+    ],
+
+    // ～ 中略 ～        
+
+];
+```
+
+#### ・複数のエンドポイント
+
+複数のエンドポイントがある場合，書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする．例えばRDSを用いている場合，プライマリーインスタンスに向け，また読み出し処理をリードレプリカに向けることにより，負荷を分散できる．この場合，環境変数に二つのインスタンスのホストを実装する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+
+```
+DB_HOST_PRIMARY=<プライマリーインスタンスのホスト>
+DB_HOST_READ=<リードレプリカのホスト>
+```
+
+なお，```sticky```キーを有効化しておくと良い．プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に，リードレプリカに対して読み出し処理が起こるような場合，これを防げる．
+
+参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
+
+```php
+<?php
+
+return [
+
+    "default"     => env("DB_CONNECTION", "mysql"),
+
+    "connections" => [
+
+        // 〜 中略 〜
+
+        'mysql' => [
+
+            // 〜 中略 〜
+
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'read' => [
+                'host' => [
+                    # リーダーエンドポイントを設定
+                    env('DB_HOST_READER', '127.0.0.1'),
+                ],
+            ],
+            'write' => [
+                'host' => [
+                    # クラスターエンドポイントを設定
+                    env('DB_HOST_PRIMARY', '127.0.0.1'),
+                ],
+            ],
+            'sticky' => true,
+
+            // 〜 中略 〜
+
+        ],
+
+        // 〜 中略 〜
+    ],
+];
+```
+
+
 
 <br>
 
@@ -2142,7 +2246,7 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 return [
 
-    # 〜 中略 〜
+    // 〜 中略 〜
 
     'required' => ':attributeは必須です',
 
@@ -2163,7 +2267,7 @@ return [
         'date'  => '作成日',
     ],
 
-    # 〜 中略 〜
+    // 〜 中略 〜
 
 ];
 ```
@@ -2175,11 +2279,11 @@ return [
 
 return [
 
-    # 〜 中略 〜
+    // 〜 中略 〜
 
     'locale' => 'ja'
     
-    # 〜 中略 〜
+    // 〜 中略 〜
     
 ];
 ```
@@ -3369,7 +3473,7 @@ $ php artisan migrate
 
 #### ・```bigIncrements```メソッド
 
-自動増分ありのINT型カラムを作成する．プライマリキーとするIDカラムのために用いる．自動増分のカラムは1つのテーブルに1つしか定義できず，他のIDカラムは```unsignedBigInteger```メソッドを用いて定義する．
+自動増分ありのINT型カラムを作成する．プライマリーキーとするIDカラムのために用いる．自動増分のカラムは1つのテーブルに1つしか定義できず，他のIDカラムは```unsignedBigInteger```メソッドを用いて定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
@@ -3389,7 +3493,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ・```unsignedBigInteger```メソッド
 
-自動増分なしのINT型カラムを作成する．プライマリキーではないIDカラムのために用いる．
+自動増分なしのINT型カラムを作成する．プライマリーキーではないIDカラムのために用いる．
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
@@ -4060,7 +4164,70 @@ class UserController extends Controller
 
 <br>
 
-## 16. Seeder
+## 16. Security
+
+### CSRF対策
+
+#### ・アプリケーション側の対応
+
+セッション開始時にCSRFトークンが生成される．Bladeを用いてサーバ側のCSRFトークンを取り出し，inputタグのhidden属性にCSRFトークンを割り当て送信する．
+
+参考：https://readouble.com/laravel/8.x/ja/csrf.html
+
+```html
+<form method="POST" action="/profile">
+    @csrf
+    ...
+</form>
+```
+
+Bladeを用いない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．リクエストのたびに異なるCSRFトークンがレスポンスされ，これを次のリクエストで用いる必要がある．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
+- https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
+
+#### ・HTTPクライアントツール側の対応
+
+PostmanなどのHTTPクライアントツールをフロントエンドの代わりに用いる場合は，レスポンスで返信されるCSRFトークを扱えない，そこで，各リクエストで事前にルートパスのエンドポイントをコールし，CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い．
+
+```javascript
+if (pm.request.method == 'GET') {
+    return true;
+}
+
+return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
+    
+    if (error) {
+        console.error(error);
+        return false;
+    }
+
+    const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
+
+    if (!xsrfTokenHeader) {
+        console.log("トークンがありません");
+        return false;
+    }
+
+    // laravelによってエンコードされたトークンをデコードする．
+    const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
+    // 環境変数を挿入するために，該当する環境名をCollection全体に適用しておく必要がある．
+    pm.environment.set('XSRF_TOKEN', xsrfToken);
+    console.log(xsrfToken);
+    return true;
+});
+```
+
+#### ・XSS対策
+
+#### ・常時HTTPS化
+
+<br>
+
+## 17. Seeder
 
 ### artisanコマンド
 
@@ -4230,7 +4397,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 17. ServiceProvider
+## 18. ServiceProvider
 
 ### artisanコマンド
 
@@ -4832,176 +4999,7 @@ class EventServiceProvider extends ServiceProvider
 
 <br>
 
-### セキュリティ
-
-#### ・CSRF対策
-
-セッション開始時にCSRFトークンが生成される．Bladeを用いてサーバ側のCSRFトークンを取り出し，inputタグのhidden属性にCSRFトークンを割り当て送信する．
-
-参考：https://readouble.com/laravel/8.x/ja/csrf.html
-
-```html
-<form method="POST" action="/profile">
-    @csrf
-    ...
-</form>
-```
-
-Bladeを用いない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．リクエストのたびに異なるCSRFトークンがレスポンスされ，これを次のリクエストで用いる必要がある．
-
-参考：
-
-- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
-- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
-- https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
-
-ちなみに，PostmanなどのHTTPクライアントツールをフロントエンドの代わりに用いる場合は，レスポンスで返信されるCSRFトークを扱えない，そこで，各リクエストで事前にルートパスのエンドポイントをコールし，CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い．
-
-```javascript
-if (pm.request.method == 'GET') {
-    return true;
-}
-
-return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
-    
-    if (error) {
-        console.error(error);
-        return false;
-    }
-
-    const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
-
-    if (!xsrfTokenHeader) {
-        console.log("トークンがありません");
-        return false;
-    }
-
-    // laravelによってエンコードされたトークンをデコードする．
-    const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
-    // 環境変数を挿入するために，該当する環境名をCollection全体に適用しておく必要がある．
-    pm.environment.set('XSRF_TOKEN', xsrfToken);
-    console.log(xsrfToken);
-    return true;
-});
-```
-
-#### ・XSS対策
-
-#### ・常時HTTPS化
-
-<br>
-
-### MySQL
-
-#### ・単一のデータベースの場合
-
-単一のデータベースに接続する場合，```DB_HOST```を1つだけ設定する．
-
-```php
-<?php
-
-return [
-
-    // ～ 中略 ～    
-
-    "default" => env("DB_CONNECTION", "mysql"),
-
-    "connections" => [
-
-        // ～ 中略 ～
-
-        "mysql" => [
-            "driver"         => "mysql",
-            "url"            => env("DATABASE_URL"),
-            "host"           => env("DB_HOST", "127.0.0.1"),
-            "port"           => env("DB_PORT", 3306),
-            "database"       => env("DB_DATABASE", "forge"),
-            "username"       => env("DB_USERNAME", "forge"),
-            "password"       => env("DB_PASSWORD", ""),
-            "unix_socket"    => env("DB_SOCKET", ""),
-            "charset"        => "utf8mb4",
-            "collation"      => "utf8mb4_unicode_ci",
-            "prefix"         => "",
-            "prefix_indexes" => true,
-            "strict"         => true,
-            "engine"         => null,
-            "options"        => extension_loaded("pdo_mysql") ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env("MYSQL_ATTR_SSL_CA"),
-            ]) : [],
-        ],
-    ],
-
-    // ～ 中略 ～        
-
-];
-```
-
-#### ・DBクラスターの場合
-
-DBクラスターに接続する場合，書き込み処理をプライマリインスタンスに向け，また読み出し処理をリードレプリカに向けることにより，負荷を分散できる．この場合，環境変数に二つのインスタンスのホストを実装する必要がある．
-
-参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
-
-```
-DB_HOST_PRIMARY=<プライマリインスタンスのホスト>
-DB_HOST_READ=<リードレプリカのホスト>
-```
-
-なお，```sticky```キーを有効化しておくと良い．プライマリインスタンスにおけるデータ更新がリードレプリカに同期される前に，リードレプリカに対して読み出し処理が起こるような場合，これを防げる．
-
-```php
-<?php
-    
-return [
-
-    // ～ 中略 ～
-
-    "default" => env("DB_CONNECTION", "mysql"),
-
-    "connections" => [
-
-        // ～ 中略 ～
-
-        "mysql" => [
-            "driver"         => "mysql",
-            "url"            => env("DATABASE_URL"),
-            "read"           => [
-                "host" => [
-                    env("DB_HOST_PRIMARY", "127.0.0.1"),
-                ],
-            ],
-            "write"          => [
-                "host" => [
-                    env("DB_HOST_READ", "127.0.0.1"),
-                ],
-            ],
-            # stickyキーは有効化しておいたほうが良い．
-            "sticky"         => true,
-            "port"           => env("DB_PORT", 3306),
-            "database"       => env("DB_DATABASE", "forge"),
-            "username"       => env("DB_USERNAME", "forge"),
-            "password"       => env("DB_PASSWORD", ""),
-            "unix_socket"    => env("DB_SOCKET", ""),
-            "charset"        => "utf8mb4",
-            "collation"      => "utf8mb4_unicode_ci",
-            "prefix"         => "",
-            "prefix_indexes" => true,
-            "strict"         => true,
-            "engine"         => null,
-            "options"        => extension_loaded("pdo_mysql") ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env("MYSQL_ATTR_SSL_CA"),
-            ]) : [],
-        ],
-    ],
-
-    // ～ 中略 ～
-
-];
-```
-
-<br>
-
-## 18. Session
+## 19. Session
 
 ### セッションの操作
 
@@ -5130,7 +5128,7 @@ class FooController extends Controller
 
 <br>
 
-## 19. Views
+## 20. Views
 
 ### arisanによる操作
 

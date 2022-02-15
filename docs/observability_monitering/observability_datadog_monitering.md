@@ -39,45 +39,41 @@ description:  監視＠Datadogの知見をまとめました．
 
 ## 01-02. 通知内容の定義
 
-### テンプレート変数
+### 変数
+
+#### ・変数を用いたアラートレベルの共通化
+
+アラートレベルは，アプリケーション間で共通である方が良い．通知内容に変数を用いることで，異なるアプリケーションに共通のアラート条件を適用できるようになる．そのため，アプリケーション間でアラートレベルを共通化できる．ステータスに応じてアラートするかどうかの決め方については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitering/monitering.html
+
+#### ・テンプレート変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
-<br>
-
-### マルチアラート変数
-
-#### ・マルチアラート変数とは
+#### ・マルチアラート変数
 
 クエリの```group by```句に割り当てたタグやファセットを変数として出力する．マルチアラートモニターを用いる場合のみ，使用できる．
 
-<br>
-
-### タグ変数
-
-#### ・タグ変数とは
+#### ・タグ変数
 
 構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.< キー名 >}}``` または```{{log.tags.< キー名 >}}```として実装する．
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
-<br>
-
-### コンポジットモニター変数
-
-#### ・コンポジットモニター変数とは
+#### ・コンポジットモニター変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
 
-<br>
-
-### 条件変数
+#### ・条件変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
 
 <br>
 
 ### メッセージの構成
+
+
 
 #### ・タイトル
 

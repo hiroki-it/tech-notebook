@@ -251,22 +251,22 @@ type User struct {
 }
 ```
 
-#### ・プライマリキー
+#### ・プライマリーキー
 
-『ID』という名前のフィールドを認識して，これをプライマリキーとしてデータをマッピングする．もし，他の名前のフィールドをIDとして用いたい場合は，```gorm:"primaryKey"```タグをつける．
+『ID』という名前のフィールドを認識して，これをプライマリーキーとしてデータをマッピングする．もし，他の名前のフィールドをIDとして用いたい場合は，```gorm:"primaryKey"```タグをつける．
 
 参考：https://gorm.io/ja_JP/docs/conventions.html#ID-as-Primary-Key
 
 ```go
 type User struct {
-	ID   string // プライマリキーとして用いられる．
+	ID   string // プライマリーキーとして用いられる．
 	Name string
 }
 ```
 
 ```go
 type User struct {
-	UserID string `gorm:"primaryKey"` // プライマリキーとして用いられる．
+	UserID string `gorm:"primaryKey"` // プライマリーキーとして用いられる．
 	Name   string
 }
 ```
@@ -328,7 +328,7 @@ func (User) TableName() string {
 
 ### Create
 
-Gormモデルのフィールドに設定された値を元に，カラムを作成する．作成したカラムのプライマリキーを，構造体から取得できる．
+Gormモデルのフィールドに設定された値を元に，カラムを作成する．作成したカラムのプライマリーキーを，構造体から取得できる．
 
 参考：https://gorm.io/docs/create.html#Create-Record
 
@@ -363,7 +363,7 @@ result.Error        // returns error
 
 #### ・単一/複数カラム取得
 
-Gormモデルとプライマリキーを指定して，プライマリキーのモデルに紐付けられたカラムを取得する．
+Gormモデルとプライマリーキーを指定して，プライマリーキーのモデルに紐付けられたカラムを取得する．
 
 参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-objects-with-primary-key
 

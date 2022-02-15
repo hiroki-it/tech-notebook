@@ -47,7 +47,7 @@ project
 
 マイクロサービス別にディレクトリを作成し，Kubernetesオブジェクトごとに別々のマニフェストファイルを作成する．さらに，コンポーネント（app，db）別に分割してもよい．マニフェストの```apply```の順番を制御しにくいデメリットがある．
 
-参考：https://www.amazon.co.jp/dp/B08FZX8PYWゆーむ
+参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
 ```bash
 project

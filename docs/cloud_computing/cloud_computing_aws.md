@@ -3015,8 +3015,8 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 | エンジンバージョンの互換性       | 全てのRedisノードのキャッシュエンジンのバージョンを設定する． | マイナーバージョンが自動的に更新されないように，例えば『```6.x```』は設定しない方が良い． |
 | パラメーターグループ               | 全てのRedisノードのグローバルパラメーターを設定する．          | デフォルトを用いずに独自定義する場合，事前に構築しておく必要がある． |
 | ノードのタイプ                   |                                                              |                                                              |
-| レプリケーション数               | プライマリノードとは別に，リードレプリカノードをいくつ構築するかを設定する． | マルチAZにプライマリノードとリードレプリカノードを1つずつ配置させる場合，ここでは『1個』を設定する． |
-| マルチAZ                         | プライマリノードとリードレプリカを異なるAZに配置するかどうかを設定する．合わせて，自動フェイルオーバーを実行できるようになる． |                                                              |
+| レプリケーション数               | プライマリーノードとは別に，リードレプリカノードをいくつ構築するかを設定する． | マルチAZにプライマリーノードとリードレプリカノードを1つずつ配置させる場合，ここでは『1個』を設定する． |
+| マルチAZ                         | プライマリーノードとリードレプリカを異なるAZに配置するかどうかを設定する．合わせて，自動フェイルオーバーを実行できるようになる． |                                                              |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する．                  |                                                              |
 | セキュリティ                     | セキュリティグループを設定する．                             |                                                              |
 | クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし，これを元にRedisを構築する． | セッションやクエリキャッシュを引き継げる．そのため，新しいRedisへのセッションデータの移行に役立つ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
@@ -3179,7 +3179,7 @@ redis *****:6379> monitor
 
 | 障害の発生したノード | 挙動                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| プライマリノード     | リードレプリカの1つがプライマリノードに昇格し，障害が起きたプライマリノードと置き換えられる． |
+| プライマリーノード     | リードレプリカの1つがプライマリーノードに昇格し，障害が起きたプライマリーノードと置き換えられる． |
 | リードレプリカノード | 障害が起きたリードレプリカノードが，別の新しいものに置き換えられる． |
 
 <br>
@@ -4621,7 +4621,7 @@ $ aws rds modify-db-instance \
 
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| レプリケーション        | 単一のプライマリインスタンス（シングルマスター）または複数のプライマリインスタンス（マルチマスター）とするかを設定する． | フェイルオーバーを利用したダウンタイムの最小化時に，マルチマスターであれば変更の順番を気にしなくてよくなる．ただ，DBクラスターをクローンできないなどのデメリットもある．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
+| レプリケーション        | 単一のプライマリーインスタンス（シングルマスター）または複数のプライマリーインスタンス（マルチマスター）とするかを設定する． | フェイルオーバーを利用したダウンタイムの最小化時に，マルチマスターであれば変更の順番を気にしなくてよくなる．ただ，DBクラスターをクローンできないなどのデメリットもある．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
 | DBクラスター識別子      | DBクラスター名を設定する．                                   | インスタンス名は，最初に設定できず，RDSの構築後に設定できる． |
 | VPCとサブネットグループ | DBクラスターを配置するVPCとサブネットを設定する．            | DBが配置されるサブネットはプライベートサブネットにする，これには，data storeサブネットと名付ける．アプリケーション以外は，踏み台サーバー経由でしかDBにアクセスできないようにする．<br>![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png) |
 | パラメーターグループ      | グローバルパラメーターを設定する．                             | デフォルトを用いずに独自定義する場合，事前に構築しておく必要がある．クラスターパラメーターグループとインスタンスパラメーターグループがあるが，全てのインスタンスに同じパラメーターループを設定するべきなため，クラスターパラメーターを用いれば良い．各パラメーターに適用タイプ（dynamic/static）があり，dynamicタイプは設定の適用に再起動が必要である．新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い．<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br>・```character_set_connection=utf8mb4```<br>・```character_set_database=utf8mb4```<br>・```character_set_results=utf8mb4```<br>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br>・```server_audit_logs_upload=1```<br>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br>・```long_query_time=3```（スロークエリと見なす最短秒数） |
@@ -4640,7 +4640,7 @@ $ aws rds modify-db-instance \
 | インスタンスクラス                     | DBインスタンスのスペックを設定する．     | バースト可能クラスを選択すること．ちなみに，AuroraのDB容量は自動でスケーリングするため，設定する必要がない． |
 | パブリックアクセス | DBインスタンスにIPアドレスを割り当てるか否かを設定する． |  |
 | キャパシティタイプ                     |                                                              |                                                              |
-| マルチAZ配置                           | プライマリインスタンスとは別に，リードレプリカをマルチAZ配置で追加するかどうかを設定する． | 後からでもリードレプリカを追加できる．また，フェイルオーバー時にリードレプリカが存在していなければ，昇格後のプライマリインスタンスが自動で構築される． |
+| マルチAZ配置                           | プライマリーインスタンスとは別に，リードレプリカをマルチAZ配置で追加するかどうかを設定する． | 後からでもリードレプリカを追加できる．また，フェイルオーバー時にリードレプリカが存在していなければ，昇格後のプライマリーインスタンスが自動で構築される． |
 | 最初のDB名                   | DBインスタンスに自動的に構築されるDB名を設定   |                                                              |
 | マイナーバージョンの自動アップグレード | DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する． | 開発環境では有効化，本番環境とステージング環境では無効化しておく．開発環境で新しいバージョンに問題がなければ，ステージング環境と本番環境にも適用する． |
 
@@ -4672,7 +4672,7 @@ DBエンジンにAuroraを選択した場合にのみ使用できる．DBイン�
 
 #### ・DBインスタンスの種類
 
-|                | プライマリインスタンス                                       | リードレプリカ                                               |
+|                | プライマリーインスタンス                                       | リードレプリカ                                               |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ロール         | 読み出し/書き込みインスタンス                               | 読み出しオンリーインスタンス                                 |
 | CRUD制限       | 制限なし．ユーザー権限に依存する．                             | ユーザー権限の権限に関係なく，READしか実行できない．           |
@@ -4700,13 +4700,13 @@ Auroraをエンジンバージョンに選択した場合に使用できる．�
 
 ### エンドポイント
 
-![RDSエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RDSエンドポイント.png)
+![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_endpoint.png)
 
 | エンドポイント名                       | 役割               | エンドポイント：ポート番号                                   | 説明                                                         |
 | -------------------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| クラスターエンドポイント   | 書き込み/読み出し | ```<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | プライマリインスタンスに接続できる．フェイルオーバーによってプライマリインスタンスとリードレプリカが入れ替わると，エンドポイントの転送先は新しいプライマリインスタンスに変更される． |
-|                            | 読み出し           | ```<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | リードレプリカに接続できる．DBインスタンスが複数ある場合，クエリが自動的に割り振られる．フェイルオーバーによってプライマリインスタンスとリードレプリカが入れ替わると，エンドポイントの転送先は新しいプライマリインスタンスに変更される． |
-| インスタンスエンドポイント |                    | ```<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | 選択したDBインスタンスに接続できる．フェイルオーバーによってプライマリインスタンスとリードレプリカが入れ替わっても，エンドポイントそのままなため，アプリケーションが影響を付ける．非推奨である． |
+| クラスターエンドポイント   | 書き込み/読み出し | ```<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | プライマリーインスタンスに接続できる．プライマリーインスタンスがダウンし，フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合，エンドポイントの転送先は新しいプライマリーインスタンスに変更される．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster |
+| リーダーエンドポイント | 読み出し           | ```<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | リードレプリカに接続できる．DBインスタンスが複数ある場合，クエリが自動的に割り振られる．フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合，エンドポイントの転送先は新しいプライマリーインスタンスに変更される．もしリードレプリカが全てダウンし，プライマリーインスタンスしか稼働していない状況の場合，プライマリーインスタンスに転送するようになる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
+| インスタンスエンドポイント |                    | ```<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | 選択したDBインスタンスに接続できる．フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても，エンドポイントそのままなため，アプリケーションが影響を付ける．非推奨である． |
 
 <br>
 
@@ -4820,7 +4820,7 @@ NOW()
 2021-04-21 06:23:17
 ```
 
-アップグレード時のプライマリインスタンスのRDSイベントログは以下の通りで，ログによるダウンタイムは，再起動からシャットダウンまでの期間と一致することを確認する．
+アップグレード時のプライマリーインスタンスのRDSイベントログは以下の通りで，ログによるダウンタイムは，再起動からシャットダウンまでの期間と一致することを確認する．
 
 ![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_primary-instance.png)
 
@@ -4834,7 +4834,7 @@ NOW()
 
 #### ・Auroraのフェイルオーバーとは
 
-異なるAZにあるDBインスタンス間で，ロール（プライマリインスタンス/リードレプリカ）の割り当てを入れ替える仕組み．DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合，あらかじめ異なるAZにリードレプリカを新しく作成する必要がある．また，フェイルオーバー時に，もしDBクラスター内にリードレプリカが存在していない場合，異なるAZに昇格後のプライマリインスタンスが自動的に構築される．リードレプリカが存在している場合，これがプライマリーインスタンスに昇格する．
+異なるAZにあるDBインスタンス間で，ロール（プライマリーインスタンス/リードレプリカ）の割り当てを入れ替える仕組み．DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合，あらかじめ異なるAZにリードレプリカを新しく作成する必要がある．また，フェイルオーバー時に，もしDBクラスター内にリードレプリカが存在していない場合，異なるAZに昇格後のプライマリーインスタンスが自動的に構築される．リードレプリカが存在している場合，これがプライマリーインスタンスに昇格する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
 
@@ -4926,7 +4926,7 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 | 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
 | ------------------------------------ | ------------------ | ------------------------------------------------------------ |
-| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると，次のようなイベントを確認できる．インスタンスが複数回再起動することからわかる通り，長いダウンタイム（約```6```～```8```分）が発生する．そのため，フェイルオーバーを利用したダウンタイムの最小化を行う．<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
+| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると，次のようなイベントを確認できる．インスタンスが複数回再起動することからわかる通り，長いダウンタイム（約```6```～```8```分）が発生する．そのため，フェイルオーバーを利用したダウンタイムの最小化を行う．<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
 | サブネットグループ                   | あり               |                                                              |
 | エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する．この時間は，ワークロード，クラスターサイズ，バイナリログデータの量，ゼロダウンタイムパッチ適用の発動可否，によって変動する．<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU<br>また，メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
 | メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で，メンテナンス時間を現在が含まれるように変更すると，保留中の操作がすぐに適用される．そのため，ダウンタイムが発生する． |
@@ -4942,7 +4942,7 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 #### ・RDSのフェイルオーバーとは
 
-スタンバイレプリカがプライマリインスタンスに昇格する．
+スタンバイレプリカがプライマリーインスタンスに昇格する．
 
   参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 

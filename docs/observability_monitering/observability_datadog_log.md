@@ -177,11 +177,11 @@ FROM data/agent:latest
 
 #### ・パラメーター
 
-参考：https://docs.datadoghq.com/logs/log_collection/javascript/#%E5%88%9D%E6%9C%9F%E5%8C%96%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC
+参考：https://docs.datadoghq.com/logs/log_collection/javascript/#initialization-parameters
 
 #### ・送信される構造化ログ
 
-参考：https://docs.datadoghq.com/logs/log_collection/javascript/#%E7%B5%90%E6%9E%9C
+参考：https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
 ```bash
 {
@@ -336,13 +336,13 @@ export default browserLogsForSsgPlugin
 
 デフォルトで用意された属性．
 
-参考：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
+参考：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#standard-attributes
 
 #### ・スタックトレース属性
 
 スタックトレースログを構成する要素に付与される属性のこと．
 
-参考：https://docs.datadoghq.com/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
+参考：https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
 | 属性名                        | 説明                                             |
 | ----------------------------- | ------------------------------------------------ |
@@ -366,7 +366,7 @@ export default browserLogsForSsgPlugin
 
 LogライブラリにMonologを用いている場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
 
-参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-%E3%81%AE%E6%A7%8B%E6%88%90
+参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 
 **＊実装例＊**
 
@@ -656,7 +656,7 @@ Laravelから，以下のような非構造化ログを受信する例を考え�
 }
 ```
 
-以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．タイムスタンプ形式の指定は以下を参考にせよ．
+以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．```date```マッチャーのタイムスタンプ形式の指定は以下を参考にせよ．
 
 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
@@ -668,7 +668,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 ```bash
 {
-  "date": 1630454400000,
+  "date": 1630454400000, # エポック形式（Unix時間）
   "log_status": "INFO"
 }
 ```
@@ -722,7 +722,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える．
 }
 ```
 
-以下のようなGrokパーサールールを定義する．```data```マッチャーを用い，また```wafacl_name```カスタム属性をエクストラクト先とする．
+以下のようなGrokパーサールールを定義する．```data```マッチャーを用い，また```wafacl_name```カスタム属性をエクストラクト先とする．抽出する必要のない文字列は，ワイルドカード（```.*```）を指定する．
 
 ```bash
 Rule .*\/webacl\/%{data:wafacl_name}\/.*
@@ -744,7 +744,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し，詳細な属性として新しく付与する．
 
-参考：https://docs.datadoghq.com/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#url-parser
 
 #### ・例１
 
@@ -1233,7 +1233,7 @@ autoFilledRule3 ...
 
 属性/タグの値を基に，ログをグルーピングしたもの．
 
-参考：https://docs.datadoghq.com/logs/explorer/facets/#%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%89%E3%83%91%E3%83%8D%E3%83%AB
+参考：https://docs.datadoghq.com/logs/explorer/facets/#facet-panel
 
 #### ・属性のファセット化
 
