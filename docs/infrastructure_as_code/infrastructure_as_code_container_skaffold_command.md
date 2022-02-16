@@ -85,7 +85,7 @@ $ skaffold run
 
 #### ・force
 
-オブジェクトを強制的にデプロイしつつ，```run```コマンドを実行する．
+リソースを強制的にデプロイしつつ，```run```コマンドを実行する．
 
 ```bash
 $ skaffold run --force

@@ -29,12 +29,12 @@ apiVersion: v1
 
 ### kindとは
 
-作成されるオブジェクトの種類を設定する．
+作成されるリソースの種類を設定する．
 
-| オブジェクト名                  | 補足                                                         |
+| リソース名                  | 補足                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | Deployment            |                                                              |
-| Ingress               | 他のオブジェクトとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある． |
+| Ingress               | 他のリソースとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある． |
 | Namespace |  |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
@@ -50,7 +50,7 @@ apiVersion: v1
 
 ### metadataとは
 
-Kubernetesオブジェクトの一意に識別するための情報を設定する．
+Kubernetesリソースの一意に識別するための情報を設定する．
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
@@ -62,13 +62,13 @@ Kubernetesオブジェクトの一意に識別するための情報を設定す�
 
 ### labels
 
-Kubernetesオブジェクトを区別するための情報を設定する．
+Kubernetesリソースを区別するための情報を設定する．
 
 <br>
 
 ### name
 
-Kubernetesオブジェクトを一意に識別するための名前を設定する．
+Kubernetesリソースを一意に識別するための名前を設定する．
 
 <br>
 
@@ -676,7 +676,7 @@ spec:
 
 #### ・persistentVolumeClaim
 
-PersistentVolumeを用いる場合に，PersistentVolumeClaimオブジェクトを設定する．
+PersistentVolumeを用いる場合に，PersistentVolumeClaimリソースを設定する．
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 

@@ -19,7 +19,7 @@ description: manifest.yml＠Istioの知見をまとめました．
 
 #### ・istioctl経由
 
-プロファイルを指定し，Istioオブジェクトをインストールする．
+プロファイルを指定し，Istioリソースをインストールする．
 
 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
@@ -27,9 +27,9 @@ description: manifest.yml＠Istioの知見をまとめました．
 $ istioctl install --set profile=demo
 ```
 
-#### ・IstioOperatorオブジェクト経由
+#### ・IstioOperatorリソース経由
 
-（１）まずは，IstioOperatorオブジェクトをインストールする．IstioOperatorオブジェクトは，デフォルトで```istio-system```にIstioオブジェクトをインストールするようになっている．
+（１）まずは，IstioOperatorリソースをインストールする．IstioOperatorリソースは，デフォルトで```istio-system```にIstioリソースをインストールするようになっている．
 
 参考：https://istio.io/latest/docs/setup/install/operator/
 
@@ -42,7 +42,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorオブジェクトが定義されたマニフェストファイルを，```istioctl```コマンドまたは```kubectl```コマンドで操作し，Istioオブジェクトをインストールする．```kubectl```コマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
+（２）IstioOperatorリソースが定義されたマニフェストファイルを，```istioctl```コマンドまたは```kubectl```コマンドで操作し，Istioリソースをインストールする．```kubectl```コマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
 
 ```bash
 # istioctlコマンド
@@ -72,7 +72,7 @@ istiooperator.install.istio.io/istio-operator created
 
 #### ・istioctl経由
 
-Istioオブジェクトを全てアンインストールする．
+Istioリソースを全てアンインストールする．
 
 ```bash
 $ istioctl x uninstall --purge
@@ -140,7 +140,7 @@ apiVersion: networking.istio.io/v1beta1
 
 ### kindとは
 
-構築するIstioオブジェクトを設定する．
+構築するIstioリソースを設定する．
 
 - DestinationRule
 - Gateway
@@ -152,13 +152,13 @@ apiVersion: networking.istio.io/v1beta1
 
 ### metadataとは
 
-Istioオブジェクトの一意に識別するための情報を設定する．
+Istioリソースの一意に識別するための情報を設定する．
 
 <br>
 
 ### namespace
 
-Istioオブジェクトを作成する名前空間を設定する．デフォルトで```istio-system```になる．
+Istioリソースを作成する名前空間を設定する．デフォルトで```istio-system```になる．
 
 ```yaml
 metadata:
@@ -613,13 +613,13 @@ spec:
 
 #### ・componentとは
 
-IstioOperator経由でIstioオブジェクトをインストールする．
+IstioOperator経由でIstioリソースをインストールする．
 
 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
 #### ・ingressGateways
 
-IstioOperator経由でインストールされるIngressGatewayのオプションを設定する．Gatewayとは異なるオブジェクトであることに注意する．ingressGatewaysの設定値を変更する場合は，```runAsRoot```キーでルート権限を有効化する必要がある．
+IstioOperator経由でインストールされるIngressGatewayのオプションを設定する．Gatewayとは異なるリソースであることに注意する．ingressGatewaysの設定値を変更する場合は，```runAsRoot```キーでルート権限を有効化する必要がある．
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -818,7 +818,7 @@ spec:
 
 ### namespace
 
-IstioOperator経由でインストールされるIstioオブジェクトの名前空間を設定する．
+IstioOperator経由でインストールされるIstioリソースの名前空間を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 

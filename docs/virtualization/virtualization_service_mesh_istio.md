@@ -12,19 +12,13 @@ title: 【知見を記録するサイト】Istio
 
 <br>
 
-## 01. Istioオブジェクト
+## 01. Istioの仕組み
 
-### Istioオブジェクトとは
+### 構造
 
-Istioを構成するオブジェクトことで，実体はKubernetesのカスタムリソースである．
+#### ・Istioメッシュ
 
-<br>
-
-### Istioメッシュ
-
-#### ・Istioメッシュとは
-
-Istioオブジェクトを組み合わせて，サービスメッシュを実装する．マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている．Istioを必ずしも用いる必要はなく，KubernetesやOpenShiftの機能でこれを実現しても良い．
+Istioリソースを組み合わせて，サービスメッシュを実装する．マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている．Istioを必ずしも用いる必要はなく，KubernetesやOpenShiftの機能でこれを実現しても良い．
 
 参考：
 
@@ -41,7 +35,25 @@ Istioによって，プロキシ機能を持つistio-proxyコンテナが自動�
 
 <br>
 
-## 01-02. インバウンド通信に関するオブジェクト
+## 02. リソースとオブジェクト
+
+### Istioリソース
+
+Istioの各コンポーネントのことで，Kubernetesのカスタムリソースとして定義されている．Istioリソースは，IaCによってマニフェストファイルで定義される．Istioのマニフェストファイルについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.html
+
+<br>
+
+### Istioオブジェクト
+
+マニフェストファイルによって量産されたIstioリソースのインスタンスのこと．
+
+<br>
+
+
+
+## 02-02. インバウンド通信に関するリソース
 
 ### IngressGateway
 
@@ -83,7 +95,7 @@ IngressGatewayの機能のうち，IngressGatewayで受信したインバウン�
 
 #### ・Envoyの設定値として
 
-VirtualServiceの設定値は，Envoyのフロントプロキシの設定値としてIstioオブジェクトに適用される．
+VirtualServiceの設定値は，Envoyのフロントプロキシの設定値としてIstioリソースに適用される．
 
 参考：
 
@@ -102,7 +114,7 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 
 <br>
 
-## 01-03. アウトバウンド通信に関するオブジェクト
+## 02-03. アウトバウンド通信に関するリソース
 
 ### EgressGateway
 
@@ -128,7 +140,7 @@ Cluster内部から送信されるアウトバウンド通信をフィルタリ�
 
 <br>
 
-## 01-04. 両方向通信に関するオブジェクト
+## 02-04. 両方向通信に関するリソース
 
 ### DestinationRule
 
@@ -151,7 +163,7 @@ DestinationRuleの設定値は，Envoyのリバースプロキシコンテナの
 
 <br>
 
-## 02. Istiod
+## 03. Istiod
 
 ### Istiodとは
 
@@ -204,11 +216,11 @@ Serviceディスカバリやトラフィックの管理を行う．
 
 <br>
 
-## 03. IstioOperator
+## 05. IstioOperator
 
 ### IstioOperatorとは
 
-Istioのインストールや，Istioオブジェクトの操作が可能なオブジェクトのこと．
+Istioのインストールや，Istioリソースの操作が可能なリソースのこと．
 
 参考：
 

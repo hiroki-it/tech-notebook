@@ -2367,7 +2367,7 @@ ECSタスクは，デプロイ/自動スケーリング/手動操作の時にラ
 
 <br>
 
-## 14-03. ECS on EC2
+## 14-02-02. ECS on EC2
 
 ### EC2起動タイプのコンテナ
 
@@ -2383,7 +2383,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 14-04. ECS on Fargate
+## 14-02-03. ECS on Fargate
 
 ### Fargate
 
@@ -2856,7 +2856,7 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 <br>
 
-## 14-05. EKS
+## 14-03. EKS
 
 ### EKSクラスター
 
@@ -2880,19 +2880,22 @@ EKSコントロールプレーンのこと．
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
 
-| Kubernetesオブジェクト名 | EKS上でのコンポーネント名 | 補足                                                         |
-| ------------------------ | ------------------------- | ------------------------------------------------------------ |
-| Cluster                  | EKSクラスター             | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                  | ALBコントローラー         | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
-| マスターNode             | EKSコントロールプレーン   | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| ワーカーNode             | Fargate，EC2              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
-| PersistentVolume         | EBS，EFS                  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
-| Secret                   | System Manager            | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
-| これら以外のオブジェクト | なし                      |                                                              |
+| Kubernetes上でのリソース名 | EKS上でのリソース名 | 補足                                                         |
+| ------------------------ | ----------------------- | ------------------------------------------------------------ |
+| Cluster                  | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
+| Ingress                  | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| マスターNode             | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| ワーカーNode             | Fargate，EC2            | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
+| PersistentVolume         | EBS，EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
+| Secret                   | System Manager          | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
+| kube-dns                 | coredns                 |                                                              |
+| kube-proxy               | kube-proxy              |                                                              |
+| 種々のCNIプラグイン      | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
+| これら以外のリソース | なし                    |                                                              |
 
 <br>
 
-## 14-06. EKS on Fargate
+## 14-03-02. EKS on Fargate
 
 ### Fargate Node
 
@@ -2904,7 +2907,7 @@ Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに�
 
 <br>
 
-## 14-07. EKS on EC2
+## 14-03-03. EKS on EC2
 
 ### EC2ノード
 
@@ -4877,6 +4880,16 @@ DBインスタンスに応じたエンドポイントが用意されている．
 /* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */
 ```
 
+#### ・リードレプリカのオートスケーリング
+
+リードレプリカのオートスケーリングを用いて，Auroraに関するメトリクス（平均CPU使用率，平均DB接続数）がターゲット値を維持できるように，リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する．注意点として，RDS（非Aurora）スケーリングは，ストレージ容量を増加させる垂直スケーリングであり，Auroraのスケーリングとは仕様が異なっている．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
+- https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
+- https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
+
 #### ・クエリキャッシュの利用
 
 MySQLやRedisのクエリキャッシュ機能を利用する．ただし，MySQLのクエリキャッシュ機能は，バージョン```8```で廃止されることになっている．
@@ -4896,7 +4909,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する．ただし，MySQ
 インスタンスタイプをスケールアップさせることで，接続過多のエラー（```ERROR 1040 (HY000): Too many connections```）に対処する．ちなみに現在の最大接続数はパラメーターグループの値から確認できる．コンソール画面からはおおよその値しかわからないため，SQLで確認した方が良い．
 
 ```sql
-MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
+SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 +-----------------+-------+
 | Variable_name  | Value |
@@ -4930,11 +4943,12 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 | サブネットグループ                   | あり               |                                                              |
 | エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する．この時間は，ワークロード，クラスターサイズ，バイナリログデータの量，ゼロダウンタイムパッチ適用の発動可否，によって変動する．<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU<br>また，メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
 | メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で，メンテナンス時間を現在が含まれるように変更すると，保留中の操作がすぐに適用される．そのため，ダウンタイムが発生する． |
+| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない．ただし，有効化のためにパラメーターグループの```performance_schema```を有効化する必要がある．パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため，ここでダウンタイムが発生する． |
 | バックアップウインドウ               | 条件付きでなし     | ```0```から```0```以外の値，```0```以外の値から```0```に変更した場合，ダウンタイムが発生する． |
 | パラメーターグループ                   | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない．また，静的パラメーターはパラメーターグループの変更に合わせて適用される．ただし，動的パラメーターを変更した場合は，これをDBインスタンスに反映させるために再起動が必要であり，ここでダウンタイムが発生する．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html |
 | セキュリティグループ                 | なし               |                                                              |
 | マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが，自動アップグレードの設定にはダウンタイムが発生しない． |
-| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない．ただし，有効化のためにパラメーターグループの```performance_schema```を有効化する必要がある．パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため，ここでダウンタイムが発生する． |
+| ストレージのオートスケーリング | なし |  |
 
 <br>
 

@@ -573,16 +573,18 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```http.status_code```属性のステータスコード値に応じて，```http.status_category```属性にステータスレベル値（```info```，```notice```，```warning```，```error```）を付与するようにする．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```http.status_code```属性のステータスコード値に応じて，```http.status_category```属性にレベル値（```info```，```notice```，```warning```，```critical```）に変換するようにする．ステータスコードとレベルの対応関係については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html#_16
 
 ```bash
-info    @http.status_code:[200 TO 299]
-notice  @http.status_code:[300 TO 399]
-warning @http.status_code:[400 TO 499]
-error   @http.status_code:[500 TO 599]
+INFO @http.status_code:[200 TO 299]
+NOTICE @http.status_code:[300 TO 399]
+WARNING @http.status_code:[400 TO 499]
+CRITICAL @http.status_code:[500 TO 599]
 ```
 
-これにより，構造化ログの```http.status_category```属性にステータスレベル値が割り当てられる．なお，```http.status_category```属性以外は元の構造化ログと同じため，省略している．
+これにより，構造化ログの```http.status_category```属性にログステータス値が割り当てられる．なお，```http.status_category```属性以外は元の構造化ログと同じため，省略している．
 
 ```bash
 {
@@ -600,7 +602,7 @@ error   @http.status_code:[500 TO 599]
 }
 ```
 
-これに対して，ステータスリマッパーのルールを定義する．```http.status_category```属性のステータスレベル値が，ステータスファセット（```INFO```，```WARNING```，```ERROR```，など）として登録されるようにする．
+これに対して，ステータスリマッパーのルールを定義する．```http.status_category```属性のログステータス値が，ステータスファセット（```INFO```，```WARNING```，```ERROR```，など）として登録されるようにする．
 
 <br>
 

@@ -177,7 +177,7 @@ portForward:
 
 ### testステージとは
 
-kubernetesオブジェクトのテスト方法を定義する．
+kubernetesリソースのテスト方法を定義する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
@@ -212,7 +212,7 @@ fileExistenceTests:
 
 ### deployステージとは
 
-kubernetesオブジェクトのデプロイ方法を定義する．
+kubernetesリソースのデプロイ方法を定義する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
@@ -222,7 +222,7 @@ kubernetesオブジェクトのデプロイ方法を定義する．
 
 #### ・kubectlとは
 
-kubectlを用いて，kubernetesオブジェクトをデプロイする．
+kubectlを用いて，kubernetesリソースをデプロイする．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
@@ -239,7 +239,7 @@ deploy:
 
 #### ・helm
 
-helmを用いて，kubernetesオブジェクトをデプロイする．
+helmを用いて，kubernetesリソースをデプロイする．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 

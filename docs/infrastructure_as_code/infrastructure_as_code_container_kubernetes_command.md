@@ -19,7 +19,7 @@ description: kubectlコマンド＠Kubernetesの知見をまとめました．
 
 #### ・applyとは
 
-同じ識別子（オブジェクト名）のオブジェクトが存在しない場合はオブジェクトを作成し，存在する場合はマニフェストファイルの差分を更新する．全ての項目を更新できるわけでない．
+同じ識別子（名前）のリソースが存在しない場合は，リソースを作成し，存在する場合はマニフェストファイルの差分を更新する．全ての項目を更新できるわけでない．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
@@ -30,7 +30,7 @@ description: kubectlコマンド＠Kubernetesの知見をまとめました．
 **＊例＊**
 
 ```bash
-# オブジェクトを作成する．
+# リソースを作成する．
 $ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yml
 
 pod/foo-pod created
@@ -116,7 +116,7 @@ $ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コ�
 
 #### ・createとは
 
-様々なオブジェクトを作成する．```kubectl expose```コマンドと```kubectl run```コマンドで作成できるオブジェクトを含む様々なものを作成できるが，オプションが少ない．そのため，```f```オプションでマニフェストファイルを指定し，おぶえジェクトを作成した方が良い．同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる．
+様々なリソースを作成する．```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが，オプションが少ない．そのため，```f```オプションでマニフェストファイルを指定し，おぶえジェクトを作成した方が良い．同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
@@ -187,7 +187,7 @@ secret/foo-secret created
 
 #### ・describeとは
 
-オブジェクトの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを用いる．
+リソースの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを用いる．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
@@ -262,11 +262,11 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 <br>
 
-### get <オブジェクト>
+### get <リソース>
 
 #### ・getとは
 
-オブジェクトの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを用いる．
+リソースの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを用いる．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
@@ -354,32 +354,32 @@ $ kubectl get service/istio-ingressgateway \
 
 #### ・labelとは
 
-指定したオブジェクトのラベルを操作する．
+指定したリソースのラベルを操作する．
 
 #### ・オプション無し
 
 **＊例＊**
 
-指定したオブジェクトにラベルを作成する．
+指定したリソースにラベルを作成する．
 
 ```bash
-$ kubectl label <オブジェクト名> foo=bar
+$ kubectl label <リソース名> foo=bar
 ```
 
-指定したオブジェクトのラベルを削除する．
+指定したリソースのラベルを削除する．
 
 ```bash
-$ kubectl label <オブジェクト名> foo-
+$ kubectl label <リソース名> foo-
 ```
 
 #### ・--overwrite
 
 **＊例＊**
 
-指定したオブジェクトにラベルの値を変更する．
+指定したリソースにラベルの値を変更する．
 
 ```bash
-$ kubectl label --overwrite <オブジェクト名> foo=bar
+$ kubectl label --overwrite <リソース名> foo=bar
 ```
 
 <br>
@@ -388,7 +388,7 @@ $ kubectl label --overwrite <オブジェクト名> foo=bar
 
 #### ・logsとは
 
-指定したオブジェクトのログを表示する．
+指定したリソースのログを表示する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
@@ -431,7 +431,7 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 
 #### ・rolloutとは
 
-Kubernetesオブジェクトをダウンタイム無しで更新する．
+Kubernetesリソースをダウンタイム無しで更新する．
 
 参考：
 
@@ -454,7 +454,7 @@ $ kubectl rollout restart deployment
 
 #### ・patchとは
 
-JSON/YAML形式を入力値として，オブジェクトの設定を変更する．
+JSON/YAML形式を入力値として，リソースの設定を変更する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 
@@ -477,7 +477,7 @@ $ kubectl get pv \
 
 #### ・port-forwardとは
 
-ホストのポートから指定したオブジェクトのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを用いてPod内のDBコンテナにTCP/IP接続したい場合に用いる．
+ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを用いてPod内のDBコンテナにTCP/IP接続したい場合に用いる．
 
 参考：
 
@@ -496,7 +496,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 #### ・proxyとは
 
-ローカルホストとkube-apiserverの間にフォワード/リバースプロキシサーバーとして機能するオブジェクトを作成する．kube-proxyとは異なるオブジェクトであることに注意する．
+ローカルホストとkube-apiserverの間にフォワード/リバースプロキシサーバーとして機能するリソースを作成する．kube-proxyとは異なるリソースであることに注意する．
 
 #### ・--address，--accept-hosts
 

@@ -12,29 +12,15 @@ title: 【知見を記録するサイト】Kubernetes
 
 <br>
 
-## 01. Kubernetesの操作
+## 01. Kubernetesの仕組み
 
-### kubernetesクライアント
+### 構造
 
-#### ・kubernetesクライアントとは
+Kubernetesコンポーネントは，Kubernetesリソースから作成されたオブジェクトを操作し，アプリケーションを稼働させる．
 
-kubernetesクライアントは，kubectlコマンドを用いて，kubernetesマスターAPIをコールできる．
-
-<br>
-
-## 02. kubernetesマスター（マスターNode）
-
-### kubernetesマスターとは
+参考：https://kubernetes.io/docs/concepts/overview/components/
 
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
-
-ワーカーNodeの操作を担う．『マスターNode』ともいう．クライアントがkubectlコマンドの実行すると，kube-apiserverがコールされ，コマンドに沿ってワーカーNodeが操作される．
-
-参考：
-
-- https://kubernetes.io/ja/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
-- https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
-- https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
 <br>
 
@@ -52,7 +38,7 @@ kub-apiserverとクラウドインフラを仲介し，Kubernetesがクラウド
 
 #### ・etcdとは
 
-Clusterの様々な設定値を保持し，冗長化されたオブジェクト間にこれを共有する．
+Clusterの様々な設定値を保持し，冗長化されたリソース間にこれを共有する．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -64,7 +50,7 @@ Clusterの様々な設定値を保持し，冗長化されたオブジェクト�
 
 #### ・kube-apiserverとは
 
-kubernetesクライアントにkueneretes-APIを公開する．クライアントがkubernetesコマンドを実行すると，kubernetes-APIがコールされ，コマンドに沿ってオブジェクトが操作される．
+kubernetesクライアントにkueneretes-APIを公開する．クライアントがkubernetesコマンドを実行すると，kubernetes-APIがコールされ，コマンドに沿ってリソースが操作される．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -91,26 +77,6 @@ kubernetesクライアントにkueneretes-APIを公開する．クライアン�
 参考：https://thinkit.co.jp/article/17453
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
-
-<br>
-
-## 03. Cluster，ワーカーNode
-
-### Cluster
-
-#### ・Clusterとは
-
-ワーカーNodeの管理単位のこと．
-
-<br>
-
-### ワーカーNode
-
-#### ・ワーカーNodeとは
-
-Podが稼働するサーバー単位こと．
-
-参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
 
 <br>
 
@@ -152,6 +118,42 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 <br>
 
+## 02. Kubernetesの操作
+
+### kubernetesクライアント
+
+#### ・kubernetesクライアントとは
+
+kubernetesクライアントは，kubectlコマンドを用いて，kubernetesマスターAPIをコールできる．
+
+<br>
+
+## 03. Kubernetesリソースとオブジェクト
+
+### Kubernetesリソース
+
+Kubernetes上でアプリケーションを稼働させる概念のこと．Kubernetesリソースは，IaCによってマニフェストファイルで定義される．マニフェストファイルについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.html
+
+<br>
+
+### Kubernetesオブジェクト
+
+マニフェストファイルによって量産されたKubernetesリソースのインスタンスのこと．
+
+参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
+
+<br>
+
+## 03-02. Workloadリソース
+
+### Workloadリソースとは
+
+コンテナの実行に関する機能を提供する．
+
+<br>
+
 ### Pod
 
 #### ・Podとは
@@ -183,6 +185,101 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合，これら同�
 | ------------------- | ---------------------------------------------- |
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
+
+<br>
+
+### ReplicaSet
+
+#### ・ReplicaSetとは
+
+ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment用いてこれを行うことが推奨される．
+
+参考：
+
+- https://kubernetes.io/ja/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
+- https://thinkit.co.jp/article/13611
+
+<br>
+
+### DaemonSet
+
+#### ・DaemonSetとは
+
+ワーカーNode上のPod数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
+
+参考：https://thinkit.co.jp/article/13611
+
+<br>
+
+### StatefulSet
+
+・StatefulSetとは
+
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
+
+```bash
+The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
+```
+
+参考：
+
+- https://kubernetes.io/ja/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
+- https://sorarinu.dev/2021/08/kubernetes_01/
+
+<br>
+
+### Deployment
+
+#### ・Deploymentとは
+
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
+
+参考：
+
+- https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/
+- https://sorarinu.dev/2021/08/kubernetes_01/
+
+<br>
+
+## 03-03. Discovery&LB
+
+### Discovery&LBとは
+
+ワーカーNode上のコンテナをNode外に公開する機能を提供する．
+
+<br>
+
+### Ingress
+
+#### ・Ingressとは
+
+![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
+
+IngressコントローラーによってCluster外部から受信したインバウンド通信を，単一/複数のServiceにルーティングする．NodePort ServiceやLoadBalancer Serviceと同様に，外部からのインバウンド通信を受信する方法の1つである．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
+- https://thinkit.co.jp/article/18263
+
+#### ・Ingressコントローラー
+
+Cluster外部のインバウンド通信をIngressにルーティングする．
+
+参考：https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
+
+#### ・Ingressコントローラーとして使用可能なもの
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+
+| コントローラー名                                      | 開発環境 | 本番環境 |
+| ----------------------------------------------------- | -------- | -------- |
+| minikubeアドオン（実体はNginx Ingressコントローラー） | ◯        | ×        |
+| AWS ALBコントローラー                                 | ×        | ◯        |
+| GCP CLBコントローラー                                 | ×        | ◯        |
+| Nginx Ingressコントローラー                           | ◯        | ◯        |
+| Istio Ingress                                         | ◯        | ◯        |
+| Istio Gateway（Ingressとしても使用できる）            | ◯        | ◯        |
 
 <br>
 
@@ -245,37 +342,19 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 <br>
 
-### Ingress
+## 03-04. Config&Storageリソース
 
-#### ・Ingressとは
+### Config&Storageリソースとは
 
-![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
+リソースの設定データ，機密データ，ボリュームに関する機能を提供する．
 
-IngressコントローラーによってCluster外部から受信したインバウンド通信を，単一/複数のServiceにルーティングする．NodePort ServiceやLoadBalancer Serviceと同様に，外部からのインバウンド通信を受信する方法の1つである．
+<br>
 
-参考：
+### PersistentVolumeClaim
 
-- https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
-- https://thinkit.co.jp/article/18263
+#### ・PersistentVolumeClaimとは
 
-#### ・Ingressコントローラー
-
-Cluster外部のインバウンド通信をIngressにルーティングする．
-
-参考：https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
-
-#### ・Ingressコントローラーとして使用可能なもの
-
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
-
-| コントローラー名                                      | 開発環境 | 本番環境 |
-| ----------------------------------------------------- | -------- | -------- |
-| minikubeアドオン（実体はNginx Ingressコントローラー） | ◯        | ×        |
-| AWS ALBコントローラー                                 | ×        | ◯        |
-| GCP CLBコントローラー                                 | ×        | ◯        |
-| Nginx Ingressコントローラー                           | ◯        | ◯        |
-| Istio Ingress                                         | ◯        | ◯        |
-| Istio Gateway（Ingressとしても使用できる）            | ◯        | ◯        |
+設定された条件に基づいて，作成済みのPersistentVolumeを要求し，指定したKubernetesリソースに割り当てる．
 
 <br>
 
@@ -293,60 +372,37 @@ Cluster外部のインバウンド通信をIngressにルーティングする．
 
 <br>
 
-### ReplicaSet
+## 03-05. Clusterリソース
 
-#### ・ReplicaSetとは
+### Clusterリソースとは
 
-ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment用いてこれを行うことが推奨される．
+セキュリティやクォーターに関する機能を提供する．
+
+<br>
+
+### マスターNode（kubernetesマスター）
+
+#### ・マスターNodeとは
+
+kubernetesマスターともいう．ワーカーNodeの操作を担う．クライアントがkubectlコマンドの実行すると，kube-apiserverがコールされ，コマンドに沿ってワーカーNodeが操作される．
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
-- https://thinkit.co.jp/article/13611
+- https://kubernetes.io/ja/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
+- https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
+- https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
 <br>
 
-### DaemonSet
+### ワーカーNode
 
-#### ・DaemonSetとは
+#### ・ワーカーNodeとは
 
-ワーカーNode上のPod数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
+Podが稼働するサーバー単位こと．
 
-参考：https://thinkit.co.jp/article/13611
-
-<br>
-
-### StatefulSet
-
-・StatefulSetとは
-
-ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
-
-```bash
-The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
-```
-
-参考：
-
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
-- https://sorarinu.dev/2021/08/kubernetes_01/
+参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
 
 <br>
-
-### Deployment
-
-#### ・Deploymentとは
-
-ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
-
-参考：
-
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/
-- https://sorarinu.dev/2021/08/kubernetes_01/
-
-<br>
-
-## 04. ボリューム
 
 ### Volume
 
@@ -355,6 +411,25 @@ ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わ
 既存（ホスト，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
 
 参考：https://thinkit.co.jp/article/14195
+
+```bash
+# Podに接続する
+kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+# ストレージを表示する
+[root@<Pod名>:/var/www/html] $ df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          59G   36G   20G  65% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/vda1        59G   36G   20G  65% /etc/hosts
+shm              64M     0   64M   0% /dev/shm
+overlay          59G   36G   20G  65% /var/www/foo # 作成したボリューム
+tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs           3.9G     0  3.9G   0% /proc/acpi
+tmpfs           3.9G     0  3.9G   0% /sys/firmware
+```
 
 #### ・HostPath（本番環境で非推奨）
 
@@ -421,7 +496,7 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 #### ・PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimリソースにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimリソースを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
 
 参考：https://thinkit.co.jp/article/14195
 
@@ -442,38 +517,7 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 <br>
 
-### 確認方法
-
-```bash
-# Podに接続する
-kubectl exec -it <Pod名> -c <コンテナ名> -- bash
-
-# ストレージを表示する
-[root@<Pod名>:/var/www/html] $ df -h
-
-Filesystem      Size  Used Avail Use% Mounted on
-overlay          59G   36G   20G  65% /
-tmpfs            64M     0   64M   0% /dev
-tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
-/dev/vda1        59G   36G   20G  65% /etc/hosts
-shm              64M     0   64M   0% /dev/shm
-overlay          59G   36G   20G  65% /var/www/foo # 作成したボリューム
-tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
-tmpfs           3.9G     0  3.9G   0% /proc/acpi
-tmpfs           3.9G     0  3.9G   0% /sys/firmware
-```
-
-<br>
-
-## 05. PersistentVolumeClaim
-
-### PersistentVolumeClaim
-
-設定された条件に基づいて，作成済みのPersistentVolumeを要求し，指定したKubernetesオブジェクトに割り当てる．
-
-<br>
-
-## 06. ネットワーキング
+## 04. ネットワーキング
 
 ### Serviceの名前解決
 
