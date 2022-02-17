@@ -107,7 +107,7 @@ AWS以外でドメインを購入した場合はAWS以外で作業になる．SS
 
 SSL証明書のEメール検証時に，ドメインの所有者にメールが送信されないことがある．送信されなかった場合は，メールの再送を実行する．
 
-#### ※ SSL証明書の検証方法を変更する
+#### （＊）SSL証明書の検証方法を変更する
 
 もしコンソール画面からSSL証明書の検証方法を変更する場合，検証方法の異なるSSL証明書を構築してこれに切り替えたうえで，古いSSL証明書を削除する必要がある．これに合わせて，Terraformでもリリースを二回に分ける．
 
@@ -248,7 +248,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 ```elixir
 resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
-  name = "/${var.environment}-${var.service}-ecs-service/container/datadog/log"
+  name = "/prd-foo-ecs-service/container/datadog/log"
 }
 ```
 
@@ -1093,6 +1093,7 @@ resource "aws_rds_cluster" "this" {
 # RDS Cluster Instance
 ###############################################
 resource "aws_rds_cluster_instance" "this" {
+  # 後述の説明を参考にせよ．（６）
   for_each = var.vpc_availability_zones
 
   engine                       = "aurora-mysql"
@@ -1107,11 +1108,47 @@ resource "aws_rds_cluster_instance" "this" {
   preferred_maintenance_window = "sun:01:00-sun:01:30"
   apply_immediately            = true
   
-  # 後述の説明を参考にせよ．（６）
+  # 後述の説明を参考にせよ．（７）
   instance_class = var.rds_instance_class[each.key]
 
-  # 後述の説明を参考にせよ．（７）
+  # 後述の説明を参考にせよ．（８）
   # preferred_backup_window
+}
+
+# 後述の説明を参考にせよ．（９）
+locals {
+  rds_cluster_vpc_availability_zones_a = aws_rds_cluster_instance.this[var.vpc_availability_zones.a]
+}
+
+resource "aws_rds_cluster_instance" "read_replica" {
+  count = 1
+
+  engine                       = local.rds_cluster_vpc_availability_zones_a.engine
+  engine_version               = local.rds_cluster_vpc_availability_zones_a.engine_version
+  identifier                   = "prd-foo-rds-instance-read-replica-${count.index + 1}"
+  instance_class               = local.rds_cluster_vpc_availability_zones_a.instance_class
+  cluster_identifier           = local.rds_cluster_vpc_availability_zones_a.cluster_identifier
+  db_subnet_group_name         = local.rds_cluster_vpc_availability_zones_a.db_subnet_group_name
+  db_parameter_group_name      = local.rds_cluster_vpc_availability_zones_a.db_parameter_group_name
+  monitoring_interval          = local.rds_cluster_vpc_availability_zones_a.monitoring_interval
+  monitoring_role_arn          = local.rds_cluster_vpc_availability_zones_a.monitoring_role_arn
+  auto_minor_version_upgrade   = local.rds_cluster_vpc_availability_zones_a.auto_minor_version_upgrade
+  preferred_maintenance_window = local.rds_cluster_vpc_availability_zones_a.preferred_maintenance_window
+  apply_immediately            = local.rds_cluster_vpc_availability_zones_a.apply_immediately
+}
+
+###############################################
+# RDS Subnet Group
+###############################################
+resource "aws_db_subnet_group" "this" {
+  name        = "prd-foo-rds-subnet-gp"
+  description = "The subnet group for prd-foo-rds"
+  # 後述の説明を参考にせよ．（１０）
+  subnet_ids  = [var.private_a_datastore_subnet_id, var.private_c_datastore_subnet_id]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 
@@ -1131,10 +1168,11 @@ Terraformに値をハードコーディングしたくない場合は，SSMパ�
 
 ### （３）DBクラスターにはAZが3つ必要
 
-DBクラスターでは，レプリケーションのために，3つのAZが必要である．そのため，指定したAZが2つであっても，コンソール画面上で3つのAZが自動的に設定される．Terraformがこれを認識しないように，```ignore_changes```でAZを指定しておく必要がある．
+DBクラスターでは，レプリケーションのために，3つのAZが必要である．そのため，指定したAZが2つであっても，コンソール画面上で3つのAZが自動的に設定される．Terraformがこれを認識しないように，```ignore_changes```オプションでAZを指定しておく必要がある．
 
 参考：
 
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
 - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 - https://github.com/hashicorp/terraform-provider-aws/issues/1111
 
@@ -1152,15 +1190,40 @@ DBクラスターでは，レプリケーションのために，3つのAZが必
 
 <br>
 
-### （６）インスタンスタイプは別々に設定する
+### （６）```for_each```関数を用いて
 
-インスタンスタイプに```each```で値を渡さない場合，各DBインスタンスのインスタンスタイプを同時に変更することになる．この場合，インスタンスのフェイルオーバーを使用できず，ダウンタイムを最小化できない．そのため，```each```を用いて，DBインスタンスごとにインスタンスタイプを設定するようにする．インスタンスごとに異なるインスタンスタイプを設定する場合は，```each```で割り当てる値の順番を考慮する必要があるため，配置されているAZを事前に確認する必要がある．
+Auroraでは，クラスターにインスタンスを1つだけ紐づけると，プライマリーインスタンスとして構築される．また以降インスタンスを紐づけると，リードレプリカとして自動的に構築されていく．AZのマップデータに対して```for_each```関数を用いることで，各AZに最低1つのインスタンスを配置するように設定できる．
+
+参考：
+
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
+- https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
-### （７）インスタンスにバックアップウインドウは設定しない
+### （７）インスタンスタイプは別々に設定する
 
-DBクラスターとDBインスタンスの両方に，```preferred_backup_window```を設定できるが，RDSインスタンスに設定してはいけない．
+インスタンスタイプに```for_each```関数で値を渡さない場合，各DBインスタンスのインスタンスタイプを同時に変更することになる．この場合，インスタンスのフェイルオーバーを使用できず，ダウンタイムを最小化できない．そのため，```for_each```関数を用いて，DBインスタンスごとにインスタンスタイプを設定するようにする．インスタンスごとに異なるインスタンスタイプを設定する場合は，```for_each```関数で割り当てる値の順番を考慮する必要があるため，配置されているAZを事前に確認する必要がある．
+
+<br>
+
+### （８）インスタンスにバックアップウインドウは設定しない
+
+DBクラスターとDBインスタンスの両方に，```preferred_backup_window```オプションを設定できるが，RDSインスタンスに設定してはいけない．
+
+<br>
+
+### （９）リードレプリカの量産
+
+クラスターに ```count```関数で作成したインスタンスを紐づける．```count```本来非推奨であるが，同じ設定のインスタンスを単に量産するだけなため，許容する．
+
+<br>
+
+### （１０）マルチAZを有効化する
+
+Auroraでは，紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合に，各インスタンスを自動的にAZに配置するようになっている．そのため，サブネットグループに複数のサブネットを紐づけるようにする．
+
+参考：https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
@@ -1205,7 +1268,7 @@ Terraformを用いてVPCを構築した時，メインルートテーブルが�
 
 ### バケットポリシー
 
-S3アタッチされる，自身へのアクセスを制御するためにインラインポリシーのこと．定義したバケットポリシーは，```aws_s3_bucket_policy```でロールにアタッチできる．
+S3アタッチされる，自身へのアクセスを制御するためにインラインポリシーのこと．定義したバケットポリシーは，```aws_s3_bucket_policy```リソースでロールにアタッチできる．
 
 <br>
 
@@ -1273,7 +1336,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 }
 ```
 
-NLBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い．
+NLBのアクセスログを送信するバケット内には，自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い．
 
 ```bash
 {
@@ -1627,6 +1690,31 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 <br>
 
 ## 18. 複数のAWSリソースに共通のTips
+
+### 環境変数
+
+#### ・AZに関するマップ型データ
+
+AZのデータ自体をマップ型データで用意しておく．また，AZごとに異なる値を設定できるように，その他のデータではAZ名をキー名としたマップデータを定義しておく．
+
+```elixir
+availability_zones = { a = "a", c = "c" }
+
+###############################################
+# RDS
+###############################################
+rds_instance_class             = { a = "db.r6g.xlarge", c = "db.r6g.xlarge" }
+
+###############################################
+# VPC
+###############################################
+vpc_cidr                           = "n.n.n.n/23"
+vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
+vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+```
+
+<br>
 
 ### 削除保護機能のあるAWSリソース
 

@@ -152,6 +152,8 @@ Kubernetes上でアプリケーションを稼働させる概念のこと．Kube
 
 コンテナの実行に関する機能を提供する．
 
+参考：https://thinkit.co.jp/article/13542
+
 <br>
 
 ### Pod
@@ -241,11 +243,13 @@ ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わ
 
 <br>
 
-## 03-03. Discovery&LB
+## 03-03. Discovery&LBリソース
 
-### Discovery&LBとは
+### Discovery&LBリソースとは
 
 ワーカーNode上のコンテナをNode外に公開する機能を提供する．
+
+参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -348,6 +352,8 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 リソースの設定データ，機密データ，ボリュームに関する機能を提供する．
 
+参考：https://thinkit.co.jp/article/13542
+
 <br>
 
 ### PersistentVolumeClaim
@@ -377,6 +383,8 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 ### Clusterリソースとは
 
 セキュリティやクォーターに関する機能を提供する．
+
+参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -514,6 +522,14 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 - https://kubernetes.io/docs/concepts/storage/volumes/#local
 - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
+
+<br>
+
+## 03-06. Metadataリソース
+
+### Metadataリソースとは
+
+参考：https://thinkit.co.jp/article/13542
 
 <br>
 

@@ -163,7 +163,7 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 
 （１）Slackの通知を確認する．
 
-（２）アラーム名（例：stg-foo-ecs-container-laravel-log-alarm）から，CloudWatchアラームを探す．
+（２）アラーム名（例：prd-foo-ecs-container-laravel-log-alarm）から，CloudWatchアラームを探す．
 
 （３）アラームがどのロググループに紐づいているかを探す．2021/12/09現在，AWSの仕様ではこれがわかりにくくなっている．メトリクスフィルターが設定されているロググループは，アラームに紐づいている可能性があり，メトリクスフィルターで作成されているメトリクス名（例：ErrorCount）がアラームに記載されたものであれば，紐づいているとわかる．
 

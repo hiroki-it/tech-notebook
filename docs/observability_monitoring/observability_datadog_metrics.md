@@ -12,13 +12,11 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 <br>
 
-## 01. サーバーのメトリクス収集
+## 01. Processエージェント（サーバーの場合）
 
-### サーバーdatadogエージェント
+### Processエージェントとは
 
-#### ・サーバーdatadogエージェントとは
-
-常駐プログラムであり，アプリケーションからメトリクスを収集し，Datadogに転送する．
+常駐プログラムであるdatadogエージェントに含まれている．アプリケーションからメトリクスを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -28,23 +26,21 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### セットアップ
 
-#### ・インストール
+#### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-用いているOSやIaCツールごとに，インストール方法が異なる．
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_conf.html
 
-参考：https://app.datadoghq.com/account/settings#agent
+<br>
 
-## 02. コンテナのメトリクス収集（AWSの場合）
+## 02. Processエージェント（AWSコンテナの場合）
 
-### コンテナdatadogエージェント
+### Processエージェントとは
 
-#### ・コンテナdatadogエージェントとは
-
-常駐プログラムであり，アプリケーションから送信されたメトリクスをDatadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．
+サーバーの場合と同様にして，アプリケーションから送信されたメトリクスをDatadogに転送する．
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
-#### ・環境変数
+### 環境変数
 
 グローバルオプションとして役立つ環境変数を以下に示す．datadogコンテナの環境変数として設定する．
 

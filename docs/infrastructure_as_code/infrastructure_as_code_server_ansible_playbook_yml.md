@@ -116,7 +116,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### targetsセクションとは
 
-プレイの実行対象を設定する．必須である．
+プレイの実行対象のノードを設定する．必須である．
 
 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
@@ -138,7 +138,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 #### ・hostsとは
 
-プレイの実行対象を設定する．
+プレイの実行対象のノードを設定する．
 
 ```yaml
 - hosts: all

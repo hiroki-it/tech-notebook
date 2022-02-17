@@ -13,11 +13,11 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 01. サーバーの分散トレース収集
+## 01. Traceエージェント（サーバーの場合）
 
-### サーバーdatadogエージェント
+### Traceエージェントとは
 
-常駐プログラムであり，アプリケーションから分散トレースを収集し，Datadogに転送する．
+常駐プログラムであるdatadogエージェントに含まれている．アプリケーションから分散トレースを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -27,19 +27,17 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### セットアップ
 
-#### ・インストール
+#### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-用いているOSやIaCツールごとに，インストール方法が異なる．
-
-参考：https://app.datadoghq.com/account/settings#agent
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_conf.html
 
 <br>
 
-## 02. コンテナの分散トレース収集（AWSの場合）
+## 02. Traceエージェント（AWSコンテナの場合）
 
-### コンテナdatadogエージェント
+### Traceエージェントとは
 
-常駐プログラムであり，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースライブラリは分散トレースを生成し，datadogコンテナの『```http://localhost:8126```』にこれを送信する．datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
+サーバーの場合と同様にして，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースライブラリは分散トレースを生成し，datadogコンテナの『```http://localhost:8126```』にこれを送信する．datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
 
 参考：
 
@@ -89,7 +87,7 @@ datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポー�
 
 #### ・インストール（サーバーの場合）
 
-用いているミドルウェアごとに，インストール方法が異なる．
+用いているミドルウェアごとに，インストール方法が異なる．サーバーを冗長化している場合，全てのサーバーに共通した設定のエージェントを組み込めるという点で，IaCツールを用いた方が良い．
 
 参考：
 

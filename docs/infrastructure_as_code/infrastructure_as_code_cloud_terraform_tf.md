@@ -312,7 +312,7 @@ provider "aws" {
 
 #### ・環境変数による設定
 
-Credentialsファイルではなく，```export```を用いて，必要な情報を設定しておくことも可能である．参照できる環境変数名は決まっている．
+Credentialsファイルではなく，```export```コマンドを用いて，必要な情報を設定しておくことも可能である．参照できる環境変数名は決まっている．
 
 ```bash
 # regionの代わり
@@ -696,11 +696,11 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
-#### ・count関数の```output```
+#### ・```count```関数の```output```
 
 後述の説明を参考にせよ．
 
-#### ・for_each関数の```output```
+#### ・```for_each```関数の```output```
 
 後述の説明を参考にせよ．
 
@@ -1366,7 +1366,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
 **＊実装例＊**
 
-使用例はすくないが，ちなみにリソース全体を無視する場合は```all```を設定する．
+使用例はすくないが，ちなみにリソース全体を無視する場合は```all```値を設定する．
 
 ```elixir
 resource "aws_foo" "foo" {
@@ -1383,9 +1383,9 @@ resource "aws_foo" "foo" {
 
 ## 05. tpl形式の切り出しと読み出し
 
-### templatefile関数
+### ```templatefile```関数
 
-#### ・templatefile関数とは
+#### ・```templatefile```関数とは
 
 第一引数でポリシーが定義されたファイルを読み出し，第二引数でファイルに変数を渡す．ファイルの拡張子はtplとするのが良い．
 

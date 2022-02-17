@@ -13,7 +13,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 01. ログ収集の仕組み
+## 01. 仕組み
 
 ### バックエンド
 
@@ -41,11 +41,11 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 02. サーバーのログ収集
+## 02. エージェント（サーバーの場合）
 
-### サーバーdatadogエージェント
+### エージェントとは
 
-常駐プログラムであり，アプリケーションログを収集し，Datadogに転送する．
+常駐プログラムであるエージェントに含まれている．アプリケーションからログを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -55,27 +55,17 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 ### セットアップ
 
-#### ・インストール
+#### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-用いているOSやIaCツールごとに，インストール方法が異なる．
-
-参考：https://app.datadoghq.com/account/settings#agent
-
-#### ・ログ収集の有効化
-
-ログの収集はデフォルトで無効化されている．```/etc/datadog-agent/datadog.yml```ファイルにて，これを有効化する．
-
-```yaml
-logs_enabled: true
-```
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_conf.html
 
 <br>
 
-## 03. コンテナのログ収集（AWSの場合）
+## 03. エージェント（AWSコンテナの場合）
 
-### コンテナdatadogエージェント
+### エージェントとは
 
-サーバーの場合とは異なり，自身が収集しにいくことはできない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
+サーバーの場合とは異なり，エージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
 
 参考：
 

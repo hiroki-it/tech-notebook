@@ -135,7 +135,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 #### ・-var-file
 
-terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```import```する方法は無い．リソースIDは，リソースによって異なるため，リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例えば，ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
+terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```terraform import```コマンドする方法は無い．リソースIDは，リソースによって異なるため，リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例えば，ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
 
 ```bash
 $ terraform import \
@@ -159,7 +159,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www *****
 ```
 
-そして，ローカルPCのstateファイルと実インフラの差分が無くなるまで，```import```を繰り返す．
+そして，ローカルPCのstateファイルと実インフラの差分が無くなるまで，```terraform import```コマンドを繰り返す．
 
 ````bash
 $ terraform plan -var-file=foo.tfvars
@@ -169,7 +169,7 @@ No changes. Infrastructure is up-to-date.
 
 #### ・importを行わなかった場合のエラー
 
-もし```import```を行わないと，すでにクラウド上にリソースが存在しているためにリソースを構築できない，というエラーになる．
+もし```terraform import```コマンドを行わないと，すでにクラウド上にリソースが存在しているためにリソースを構築できない，というエラーになる．
 
 （エラー例1）
 

@@ -217,7 +217,7 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 
 最初に考案された実現方法．
 
-参考：https://www.amazon.co.jp/dp/4798121967/ref=cm_sw_r_tw_dp_ZD0VGXSNQMNZF7K1ME8J?_encoding=UTF8&psc=1
+参考：https://www.amazon.co.jp/dp/4798121967
 
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/layered-architecture.png)
 

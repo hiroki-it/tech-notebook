@@ -2499,9 +2499,9 @@ LaravelのSeederコマンドやロールバックコマンドを，ローカルP
 set -x
 
 echo "Set Variables"
-SERVICE_NAME="stg-foo-ecs-service"
-CLUSTER_NAME="stg-foo-ecs-cluster"
-TASK_NAME="stg-foo-ecs-task-definition"
+SERVICE_NAME="prd-foo-ecs-service"
+CLUSTER_NAME="prd-foo-ecs-cluster"
+TASK_NAME="prd-foo-ecs-task-definition"
 SUBNETS_CONFIG=$(aws ecs describe-services \
   --cluster ${CLUSTER_NAME} \
   --services ${SERVICE_NAME} \
@@ -4622,6 +4622,10 @@ $ aws rds modify-db-instance \
 
 #### ・DBクラスター
 
+ベストプラクティスについては，以下のリンクを参考にせよ．
+
+参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | レプリケーション        | 単一のプライマリーインスタンス（シングルマスター）または複数のプライマリーインスタンス（マルチマスター）とするかを設定する． | フェイルオーバーを利用したダウンタイムの最小化時に，マルチマスターであれば変更の順番を気にしなくてよくなる．ただ，DBクラスターをクローンできないなどのデメリットもある．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
@@ -4637,6 +4641,10 @@ $ aws rds modify-db-instance \
 | 削除保護                | DBクラスターの削除を防ぐ．                                   | DBクラスターを削除するとクラスターボリュームも削除されるため，これを防ぐ．ちなみに，DBクラスターの削除保護になっていてもDBインスタンスは削除できる．DBインスタンスを削除しても，再作成すればクラスターボリュームに接続されて元のデータにアクセスできる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection |
 
 #### ・DBインスタンス
+
+ベストプラクティスについては，以下のリンクを参考にせよ．
+
+参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 | 設定項目                               | 説明                                                         | 補足                                                         |
 | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

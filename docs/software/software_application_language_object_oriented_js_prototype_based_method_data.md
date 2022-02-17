@@ -124,7 +124,7 @@ asyncFunc(test, (err, data) => {
 
 **＊実装例＊**
 
-関数の定義と```export```宣言を同時に行う．
+関数の定義と```export```の宣言を同時に行う．
 
 ```javascript
 export function foo(){
