@@ -293,7 +293,7 @@ nav:
           - FluentBit: observability_monitoring/observability_fluentbit.md
           - FireLensコンテナ: observability_monitoring/observability_fluentbit_firelens.md
       - ■ Datadog:
-          - 設定ファイル: observability_monitoring/observability_datadog_conf.md 
+          - datadogエージェントの設定: observability_monitoring/observability_datadog_agent_conf.md 
           - メトリクス収集: observability_monitoring/observability_datadog_metrics.md
           - ログ収集: observability_monitoring/observability_datadog_log.md
           - 分散トレース収集: observability_monitoring/observability_datadog_distributed_trace.md
