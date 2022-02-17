@@ -57,7 +57,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 #### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_agent_conf.html
 
 <br>
 
@@ -147,7 +147,7 @@ FROM data/agent:latest
 
 <br>
 
-### ユーザー設定
+### 設定ファイル
 
 デフォルトで組み込まれている設定ファイルを置換する．
 

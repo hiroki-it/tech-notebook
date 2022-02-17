@@ -283,6 +283,7 @@ title: 【知見を記録するサイト】目次
     * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html)
     * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html)
 * Datadog
+    * [📖：︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html)
     * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html)
     * [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_log.html)
     * [📖：分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html)

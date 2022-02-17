@@ -29,7 +29,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 #### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_agent_conf.html
 
 <br>
 
@@ -48,40 +48,23 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 03. トレーサー
+### セットアップ
 
-### パッケージ一覧
+#### ・パッケージ一覧
 
 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
-<br>
+#### ・デバッグ
 
-### デバッグ
-
-#### ・起動ログの有効化
-
-環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することで，起動ログを標準出力に出力できるようにする．起動ログから，トレーサーの設定値を確認できる．
-
-参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support
-
-#### ・デバッグログの有効化
-
-各トレーサーが持つデバッグパラメーターを有効化することで，デバッグログを標準出力に出力できるようにする．デバッグログから，実際にDatadogに送信されるスパンデータを確認できる．
-
-参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad
-
-#### ・Agent Flareコマンドの実行
-
-datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポートにdatadogコンテナの構成情報をメール送信する．
-
-参考：
-
-- https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad
-- https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7
+| 方法                      | 説明                                                         | 補足                                                         |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 起動ログの有効化          | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することで，起動ログを標準出力に出力できるようにする．起動ログから，トレーサーの設定値を確認できる． | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support |
+| デバッグログの有効化      | 各トレーサーが持つデバッグパラメーターを有効化することで，デバッグログを標準出力に出力できるようにする．デバッグログから，実際にDatadogに送信されるスパンデータを確認できる． | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad |
+| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポートにdatadogコンテナの構成情報をメール送信する． | 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad<br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
 
-## 03-02. PHPトレーサー
+## 02-02. PHPトレーサー
 
 ### セットアップ
 
@@ -203,24 +186,7 @@ datadogコンテナにトレースが送信されている場合は，受信で�
 
 <br>
 
-### 環境変数
-
-#### ・種類
-
-環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
-
-参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-
-| 変数名                                        | 説明                                                         | 画面                                   |
-| --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
-| ```DD_SERVICE_MAPPING```                      | 分散トレースにマイクロサービス名を設定する．マイクロサービス名はデフォルトのインテグレーション名になるが，これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
-| ```DD_SERVICE_NAME```                         | 分散トレースにマイクロサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）． |                                        |
-| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．デフォルトで全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
-| ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
-
-<br>
-
-## 03-03. Node.jsトレーサー
+## 02-03. Node.jsトレーサー
 
 ### セットアップ
 
@@ -311,7 +277,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 <br>
 
-## 04. 分散トレースの生成
+## 03. 分散トレースの生成
 
 ### 分散トレース
 
@@ -469,7 +435,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 <br>
 
-## 05. マイクロサービスの識別
+## 04. マイクロサービスの識別
 
 ### マイクロサービスタイプ
 
