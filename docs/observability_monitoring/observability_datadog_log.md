@@ -57,7 +57,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 #### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_agent_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
 
 <br>
 

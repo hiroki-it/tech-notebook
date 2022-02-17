@@ -28,7 +28,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ・```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_datadog_agent_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
 
 <br>
 

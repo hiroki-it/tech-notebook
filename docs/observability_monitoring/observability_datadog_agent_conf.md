@@ -13,11 +13,37 @@ description: datadogエージェントの設定＠可観測性の知見をまと
 
 <br>
 
-## 01. サーバーの場合
+## 01. datadogエージェント
+
+### datadogエージェントとは
+
+Datadogにデータを送信するためには，アプリケーションにdatadogエージェントをインストールする必要がある．用いているOSやIaCツールごとに，インストール方法が異なる．
+
+<br>
+
+### メトリクス収集について
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
+
+<br>
+
+### ログ収集について
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_log.html
+
+<br>
+
+### 分散トレース収集について
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html
+
+<br>
+
+## 02. サーバーの場合
 
 ###  ```/etc/datadog-agent/datadog.yaml```ファイル
 
-datadogエージェントを設定する．Datadogにデータを送信するためには，アプリケーションにdatadogエージェントをインストールする必要がある．用いているOSやIaCツールごとに，インストール方法が異なる．datadogエージェントをインストールすると，```datadog.yaml.example```ファイルが生成されるため，これをコピーして作成する．発行されたAPIキーを追記する必要がある．
+datadogエージェントを設定する．datadogエージェントをインストールすると，```datadog.yaml.example```ファイルが生成されるため，これをコピーして作成する．
 
 参考：
 
@@ -83,7 +109,7 @@ logs_enabled: true
 
 <br>
 
-## 02. コンテナの場合
+## 03. コンテナの場合
 
 ###  ```/etc/datadog-agent/datadog.yaml```ファイル
 
