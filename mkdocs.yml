@@ -230,7 +230,6 @@ nav:
       - ■ コンテナオーケストレーション:
           - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
           - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
-          - Docker Swarm: virtualization/virtualization_container_orchestration_docker_swarm.md
       - ■ サービスメッシュ:
           - Istio: virtualization/virtualization_service_mesh_istio.md
 
