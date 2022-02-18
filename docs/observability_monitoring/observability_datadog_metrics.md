@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### Processエージェントとは
 
-常駐プログラムであるdatadogエージェントに含まれている．アプリケーションからメトリクスを収集し，Datadogに転送する．
+デーモンであるdatadogエージェントに含まれている．アプリケーションからメトリクスを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 

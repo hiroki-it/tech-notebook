@@ -17,7 +17,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### Traceエージェントとは
 
-常駐プログラムであるdatadogエージェントに含まれている．アプリケーションから分散トレースを収集し，Datadogに転送する．
+デーモンであるdatadogエージェントに含まれている．アプリケーションから分散トレースを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 

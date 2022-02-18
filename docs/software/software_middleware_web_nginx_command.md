@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】nginxコマンド＠Nginx
-description: nginxコマンド＠Nginxの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Nginx
+description: コマンド＠Nginxの知見をまとめました．
 ---
 
-# nginxコマンド＠Nginx
+# コマンド＠Nginx
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: nginxコマンド＠Nginxの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. nginxコマンド
 
 ### -c
 
@@ -53,3 +53,17 @@ $ sudo nginx -t
 
 - https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html
+
+<br>
+
+## 02. serviceコマンドによる操作
+
+### configtest
+
+Nginxの設定ファイルのバリデーションを実行する．
+
+参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+
+```bash
+$ sudo service nginx configtest
+```

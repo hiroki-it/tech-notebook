@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】dockerコマンド＠Docker
-description: dockerコマンド＠Dockerの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Docker
+description: コマンド＠Dockerの知見をまとめました．
 ---
 
-# dockerコマンド＠Docker
+# コマンド＠Docker
 
 ## はじめに
 
@@ -25,7 +25,7 @@ description: dockerコマンド＠Dockerの知見をまとめました．
 
 <br>
 
-## 02. コマンド
+## 02. dockerコマンド
 
 ### attach
 

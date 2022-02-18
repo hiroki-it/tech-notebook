@@ -164,7 +164,7 @@ Composerの```composer.lock```ファイルに相当する．
 
 <br>
 
-## 01-02. コマンド
+## 01-02. npmコマンド
 
 ### init
 
@@ -299,7 +299,7 @@ Composerの```composer.lock```ファイルに相当する．
 
 <br>
 
-## 02-02. コマンド
+## 02-02. yarnコマンド
 
 ### add
 

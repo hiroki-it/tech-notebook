@@ -152,7 +152,7 @@ $ cp -p <ファイル名> <ファイル名>.`date +"%Y%m%d"`
 
 #### ・cronとは
 
-指定したスケジュールに従って，指定されたプログラムを定期実行する常駐プログラム．
+指定したスケジュールに従って，指定されたプログラムを定期実行するデーモン．
 
 #### ・```cron```ファイル
 
@@ -889,6 +889,17 @@ find ./* \
   -name "*.md" \
   -type f | xargs sed -i '' '1s/^/一行目にFooを挿入して改行\n\n/'
 ```
+
+<br>
+
+### service
+
+アプリケーション系ミドルウェア（PHP-FPM，uWSGI），Web系ミドルウェア（Apache，Nginx），データ収集系エージェント（datadogエージェント，cloudwatchエージェント）などで様々なデーモンの操作に使用される．ただ，デーモン自体もコマンドを提供しているため，可能な限りデーモンの機能を使用するようにする．
+
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html
 
 <br>
 

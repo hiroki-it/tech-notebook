@@ -28,6 +28,14 @@ PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイ�
 
 <br>
 
+### プロセスプール
+
+PHP-FPMでは，リクエストのたびにプロセスを起動するわけでなく，あらかじめ複数のプロセスを起動している．そして，リクエストを受信するたびに，プロセスを割り当てている．あらかじめ準備されたプロセス群を『プール』という．
+
+参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール
@@ -46,13 +54,53 @@ $ apt-get install php-fpm
 
 <br>
 
+## 03. コマンド
+
+### php-fpmコマンド
+
+#### ・-t
+
+設定ファイルを検証する．
+
+```bash
+$ php-fpm -t
+
+[01-Jan-2022 00:00:00] NOTICE: configuration file /etc/php-fpm.conf test is successful
+```
+
+<br>
+
+### systemctlコマンドによる操作
+
+### ・status
+
+PHP-FPMのプロセスが正常に実行中であることを確認する．
+
+```bash
+$ systemctl status php-fpm.service
+
+● php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php-fpm.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2021-03-12 13:16:54 JST; 11 months 8 days ago
+  Process: 7507 ExecReload=/bin/kill -USR2 $MAINPID (code=exited, status=0/SUCCESS)
+ Main PID: 6903 (php-fpm)
+   Status: "Processes active: 0, idle: 35, Requests: 315161, slow: 0, Traffic: 0req/sec"
+   Memory: 1.3G
+   CGroup: /system.slice/php-fpm.service
+           ├─ 6903 php-fpm: master process (/etc/php-fpm.conf)
+           ├─29288 php-fpm: pool www
+           ...
+```
+
+<br>
+
 ## 03. 設定ファイル（※ Dockerの場合）
 
 ### ```/usr/local/etc/php-fpm.conf```ファイル
 
 ####  ・```php-fpm.conf```ファイルとは
 
-全ての実行ユーザーによるプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．
+PHP-FPMの全てのプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．
 
 ```ini
 ;;;;;;;;;;;;;;;;;;;;;
@@ -100,7 +148,7 @@ daemonize = yes
 
 #### ・```www.conf```ファイルとは
 
-実行ユーザー（```www-data```）によるプロセスのログ以外を設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+PHP-FPMの```www```プロセスを設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
 参考：https://www.php.net/manual/ja/install.fpm.configuration.php
 
@@ -120,7 +168,7 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 #### ・```docker.conf```ファイルとは
 
-実行ユーザー（```www-data```）によるプロセスの特にログ項目を設定する．```docker.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
+PHP-FPMをDockerで稼働させるために必要な項目を設定する．ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
 
 ```ini
 [global]
@@ -148,9 +196,22 @@ decorate_workers_output = no
 
 ### wwwセクションとは
 
-www-dataユーザーを設定する．
+PHP-FPMの```www```プロセスを設定する．
 
 参考：https://www.php.net/manual/ja/install.fpm.configuration.php
+
+<br>
+
+### clear_env
+
+デフォルトでは，環境変数の衝突や悪意ある注入を防ぐために，最初にプール内の環境変数を全て削除している．これにより，設定ファイルに環境変数を出力できないようになっている．この最初の削除処理を無効化する．
+
+参考：https://takapi86.hatenablog.com/entry/2019/07/29/225558
+
+```ini
+[www]
+clear_env = no
+```
 
 <br>
 

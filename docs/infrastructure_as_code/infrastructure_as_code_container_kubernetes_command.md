@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】kubectlコマンド＠Kubernetes
-description: kubectlコマンド＠Kubernetesの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Kubernetes
+description: コマンド＠Kubernetesの知見をまとめました．
 ---
 
-# kubectlコマンド＠Kubernetes
+# コマンド＠Kubernetes
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: kubectlコマンド＠Kubernetesの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. kubectlコマンド
 
 ### apply
 

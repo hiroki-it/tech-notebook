@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】apacheコマンド＠Apache
-description: apacheコマンド＠Apacheの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Apache
+description: コマンド＠Apacheの知見をまとめました．
 ---
 
-# apacheコマンド＠Apache
+# コマンド＠Apache
 
 ## はじめに
 
@@ -109,4 +109,18 @@ $ sudo httpd -M
 
 ```bash
 $ sudo httpd -S
+```
+
+<br>
+
+## 03. serviceコマンドによる操作
+
+### httpd configtest
+
+Apacheの設定ファイルのバリデーションを実行する．
+
+参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+
+```bash
+$ sudo service httpd configtest
 ```

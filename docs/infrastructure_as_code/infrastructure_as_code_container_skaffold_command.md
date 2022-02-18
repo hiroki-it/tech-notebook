@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】skaffoldコマンド＠Skaffold
-description: skaffoldコマンド＠Skaffoldの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Skaffold
+description: コマンド＠Skaffoldの知見をまとめました．
 ---
 
-# skaffoldコマンド＠Skaffold
+# コマンド＠Skaffold
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: skaffoldコマンド＠Skaffoldの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. skaffoldコマンド
 
 ### build
 

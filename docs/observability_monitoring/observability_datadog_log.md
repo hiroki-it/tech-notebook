@@ -45,7 +45,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 ### エージェントとは
 
-常駐プログラムであるエージェントに含まれている．アプリケーションからログを収集し，Datadogに転送する．
+デーモンであるエージェントに含まれている．アプリケーションからログを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 

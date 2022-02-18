@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】istioctlコマンド＠Istio
-description: istioctlコマンド＠Istioの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Istio
+description: コマンド＠Istioの知見をまとめました．
 ---
 
-# istioctlコマンド＠Istio
+# コマンド＠Istio
 
 ## はじめに
 
@@ -84,7 +84,7 @@ $ kubectl label namespace default istio-injection=enabled
 
 <br>
 
-## 02. コマンド
+## 02. istioctlコマンド
 
 ### analyze
 

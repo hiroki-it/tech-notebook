@@ -336,7 +336,7 @@ RUN yum update -y \
 # コンテナ側のファイルパスは絶対パスの方がわかりやすい．
 COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
 
-# nginxをデーモン起動
+# nginxを起動
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 # コンテナのポートを開放を明示する．これはドキュメンテーションとしての機能しかない．

@@ -1199,7 +1199,7 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 ### 設定ファイルの構文チェックのログファイル
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
-### OS起動時にデーモンが稼働するように設定されているかを確認
+### OSの起動と同時に，エージェントが稼働するように設定されているかを確認
 $ systemctl list-unit-files --type=service
 ```
 
@@ -1416,19 +1416,15 @@ OR条件で大文字小文字を考慮し，『```<ログレベル> message```�
 
 インスタンス内で稼働する常駐システムのこと．インスタンス内のデータを収集し，CloudWatchログに対して送信する．2020/10/05現在は非推奨で，CloudWatchエージェントへの設定の移行が推奨されている．
 
-#### ・```awslogs.conf```ファイル
+#### ・```/var/awslogs/etc/awslogs.conf```ファイル
 
-インスタンス内の```etc```ディレクトリ下に```awslogs.conf```ファイルを，設置する．OS，ミドルウェア，アプリケーション，の各層でログを収集するのが良い．
+CloudWatchログエージェントを設定する．OS，ミドルウェア，アプリケーションに分類して設定すると良い．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
 **＊実装例＊**
 
 ```bash
-#############################
-# /var/awslogs/awslogs.conf
-#############################
-
 # ------------------------------------------
 # CentOS CloudWatch Logs
 # ------------------------------------------
@@ -1446,8 +1442,10 @@ file = /var/log/messages
 # 文字コードutf_8として送信する．文字コードが合わないと，CloudWatchログの画面上で文字化けする．
 encoding = utf_8
 
-# 要勉強
+# バッファーに蓄える期間
 buffer_duration = 5000
+
+# 要勉強
 initial_position = start_of_file
 
 # インスタンスID
@@ -1475,17 +1473,6 @@ buffer_duration  = 5000
 log_stream_name  = {instance_id}
 initial_position = start_of_file
 log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
-```
-
-```bash
-#############################
-# /var/awslogs/awscli.conf
-#############################
-
-[plugins]
-cwlogs = cwlogs
-[default]
-region = ap-northeast-1
 ```
 
 #### ・コマンド
@@ -4888,9 +4875,9 @@ DBインスタンスに応じたエンドポイントが用意されている．
 /* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */
 ```
 
-#### ・リードレプリカのオートスケーリング
+#### ・リードレプリカの手動追加，オートスケーリング
 
-リードレプリカのオートスケーリングを用いて，Auroraに関するメトリクス（平均CPU使用率，平均DB接続数）がターゲット値を維持できるように，リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する．注意点として，RDS（非Aurora）スケーリングは，ストレージ容量を増加させる垂直スケーリングであり，Auroraのスケーリングとは仕様が異なっている．
+リードレプリカの手動追加もしくはオートスケーリングによって，Auroraに関するメトリクス（平均CPU使用率，平均DB接続数）がターゲット値を維持できるように，リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する．注意点として，RDS（非Aurora）スケーリングは，ストレージ容量を増加させる垂直スケーリングであり，Auroraのスケーリングとは仕様が異なっている．
 
 参考：
 

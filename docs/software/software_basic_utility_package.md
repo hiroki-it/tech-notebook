@@ -242,7 +242,7 @@ supervisor自体のプロセスのこと．
 
 #### ・supervisordセクションとは
 
-supervisordを設定する．
+supervisorの```supervisord```プロセスを設定する．
 
 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
@@ -321,7 +321,7 @@ user=root
 
 #### ・programセクションとは
 
-管理対象の常駐プロセスを設定する．
+常駐プログラムのプロセスを設定する．
 
 参考：
 
@@ -538,18 +538,6 @@ $ systemctl enable httpd.service
 
 <br>
 
-### httpd configtest
-
-Apacheの設定ファイルのバリデーションを実行する．
-
-参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
-
-```bash
-$ sudo service httpd configtest
-```
-
-<br>
-
 ### list-unit-files
 
 デーモンのUnitの一覧を表示する．
@@ -560,18 +548,6 @@ $ systemctl list-unit-files --type=service
 crond.service           enabled  # enable：自動起動する
 supervisord.service     disabled # disable：自動起動しない
 systemd-reboot.service  static   # enable：他サービス依存
-```
-
-<br>
-
-### nginx configtest
-
-Nginxの設定ファイルのバリデーションを実行する．
-
-参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
-
-```bash
-$ sudo service nginx configtest
 ```
 
 <br>

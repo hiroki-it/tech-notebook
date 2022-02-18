@@ -273,7 +273,7 @@ $ php -r '
 
 <br>
 
-## 01-02. コマンド
+## 01-02. composerコマンド
 
 ### clear-cache
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】terraformコマンド＠Terraform
-description: terraformコマンド＠Terraformの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Terraform
+description: コマンド＠Terraformの知見をまとめました．
 ---
 
-# terraformコマンド＠Terraform
+# コマンド＠Terraform
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: terraformコマンド＠Terraformの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. terraformコマンド
 
 ### global option
 

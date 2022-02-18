@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】minikubeコマンド＠Kubernetes
-description: minikubeコマンド＠Kubernetesの知見をまとめました．
+title: 【知見を記録するサイト】Minikube＠Kubernetes
+description: Minikube＠Kubernetesの知見をまとめました．
 ---
 
-# minikubeコマンド＠Kubernetes
+# Minikube＠Kubernetes
 
 ## はじめに
 
@@ -13,9 +13,7 @@ description: minikubeコマンド＠Kubernetesの知見をまとめました．
 
 <br>
 
-## 01. コマンド
-
-### minikubeコマンドとは
+## 01. Minikubeの仕組み
 
 ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーNodeを持つClusterを作成する．
 
@@ -23,11 +21,127 @@ description: minikubeコマンド＠Kubernetesの知見をまとめました．
 
 <br>
 
+## 01-02. マウント
+
+### ホスト-ワーカーNode間マウント
+
+#### ・標準のホスト-ワーカーNode間マウント
+
+ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+
+```bash
+$ mkdir -p ~/.minikube/files/etc
+
+$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
+
+#  /etc/foo.conf に配置される
+$ minikube start
+```
+
+#### ・仮想化ドライバー別のホスト-ワーカーNode間マウント
+
+ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+
+| ドライバー名  | OS      | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
+| ------------- | ------- | ------------------------- | -------------------------------------------- |
+| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                              |
+| VirtualBox    | macOS   | ```/Users```              | ```/Users```                                 |
+| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                               |
+| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```                        |
+| KVM           | Linux   | なし                      |                                              |
+| HyperKit      | Linux   | なし（NFSマウントを参照） |                                              |
+
+<br>
+
+### ワーカーNode-コンテナ間マウント
+
+#### ・標準のワーカーNode-コンテナ間マウント
+
+ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+
+- ```/data```
+- ```/var/lib/minikube```
+- ```/var/lib/docker```
+- ```/var/lib/containerd```
+- ```/var/lib/buildkit```
+- ```/var/lib/containers```
+- ```/tmp/hostpath_pv```
+- ```/tmp/hostpath-provisioner```
+
+<br>
+
+### ホスト-ワーカーNode-コンテナ間
+
+#### ・ホストをコンテナにマウントする方法
+
+Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，仮想化ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
+
+参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
+
+#### ・HyperKitドライバーを用いる場合
+
+**＊例＊**
+
+（１）HyperKitドライバーを用いる場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
+
+```bash
+$ minikube start --driver=hyperkit --mount=true --mount-string="/Users/h.hasegawa/projects/foo:/data"
+```
+
+（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする．
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: foo-pod
+  template:
+    metadata:
+      labels:
+        app: foo-pod
+    spec:
+      containers:
+        - name: foo-lumen
+          image: foo-lumen:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: foo-lumen
+              mountPath: /var/www/foo
+          workingDir: /var/www/foo
+        - name: foo-nginx
+          image: foo-nginx:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+      volumes:
+        - name: foo-lumen
+          hostPath:
+            path: /data
+            type: DirectoryOrCreate
+```
+
+<br>
+
+## 02. minikubeコマンド
+
 ### addons
 
 #### ・addonsとは
 
-minikubeのプラグインを操作する．
+Minikubeのプラグインを操作する．
 
 #### ・enable
 
@@ -476,120 +590,4 @@ $ minikube tunnel
 ```
 
 <br>
-
-## 02. マウント
-
-### ホスト-ワーカーNode間マウント
-
-#### ・標準のホスト-ワーカーNode間マウント
-
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
-
-参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
-
-```bash
-$ mkdir -p ~/.minikube/files/etc
-
-$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
-
-#  /etc/foo.conf に配置される
-$ minikube start
-```
-
-#### ・仮想化ドライバー別のホスト-ワーカーNode間マウント
-
-ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
-
-参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
-
-| ドライバー名  | OS      | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
-| ------------- | ------- | ------------------------- | -------------------------------------- |
-| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                        |
-| VirtualBox    | macOS   | ```/Users```              | ```/Users```                           |
-| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                         |
-| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```                  |
-| KVM           | Linux   | なし                      |                                        |
-| HyperKit      | Linux   | なし（NFSマウントを参照） |                                        |
-
-<br>
-
-### ワーカーNode-コンテナ間マウント
-
-#### ・標準のワーカーNode-コンテナ間マウント
-
-ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
-
-参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
-
-- ```/data```
-- ```/var/lib/minikube```
-- ```/var/lib/docker```
-- ```/var/lib/containerd```
-- ```/var/lib/buildkit```
-- ```/var/lib/containers```
-- ```/tmp/hostpath_pv```
-- ```/tmp/hostpath-provisioner```
-
-<br>
-
-### ホスト-ワーカーNode-コンテナ間
-
-#### ・ホストをコンテナにマウントする方法
-
-minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，仮想化ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
-
-参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
-
-#### ・HyperKitドライバーを用いる場合
-
-**＊例＊**
-
-（１）HyperKitドライバーを用いる場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
-
-```bash
-$ minikube start --driver=hyperkit --mount=true --mount-string="/Users/h.hasegawa/projects/foo:/data"
-```
-
-（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする．
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: foo-deployment
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: foo-pod
-  template:
-    metadata:
-      labels:
-        app: foo-pod
-    spec:
-      containers:
-        - name: foo-lumen
-          image: foo-lumen:dev
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 9000
-          volumeMounts:
-            - name: foo-lumen
-              mountPath: /var/www/foo
-          workingDir: /var/www/foo
-        - name: foo-nginx
-          image: foo-nginx:dev
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8000
-      volumes:
-        - name: foo-lumen
-          hostPath:
-            path: /data
-            type: DirectoryOrCreate
-```
-
-
-
-
 

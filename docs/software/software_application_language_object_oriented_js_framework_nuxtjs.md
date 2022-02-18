@@ -13,7 +13,7 @@ description: Nuxt.jsの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. Nuxt.js用yarnコマンド
 
 ### serverモード（SSRモード）
 

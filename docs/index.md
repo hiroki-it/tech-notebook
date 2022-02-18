@@ -49,10 +49,10 @@ title: 【知見を記録するサイト】目次
 
 * Nginx
     * [📖：︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
-    * [📖：︎nginxコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html)
+    * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html)
 * Apache
     * [📖：︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
-    * [📖：︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
+    * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
 
 #### ■ アプリケーション系
 
@@ -106,7 +106,7 @@ title: 【知見を記録するサイト】目次
 * オブジェクト指向型
     * PHP
         * [📖：PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php.html)
-        * [📖：phpコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_command.html)
         * クラスベース
             * [📖：︎クラス](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html)
             * [📖：︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based_method_data.html)
@@ -150,7 +150,7 @@ title: 【知見を記録するサイト】目次
 * 手続き型
     * Go
         * [📖：Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go.html)
-        * [📖：goコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_command.html)
         * ロジック
             * [📖：メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_logic_method_data.html)
             * フレームワーク
@@ -208,7 +208,6 @@ title: 【知見を記録するサイト】目次
 * コンテナオーケストレーション
     * [📖：︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html)
     * [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
-    * [📖：︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * サービスメッシュ
     * [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html)
 
@@ -231,34 +230,34 @@ title: 【知見を記録するサイト】目次
 
 * サーバープロビジョニング
     * Vagrant
-        * [📖：vagrantコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
         * [📖：Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
 * コンテナプロビジョニング
     * Docker Compose
-        * [📖：︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.html)
         * [📖：︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.html)
     * Kubernetes
-        * [📖：︎kubectlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html)
-        * [📖：︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html)
+        * [📖：Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.html)
         * [📖：︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.html)
         * [📖：︎可観測性ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.html)
         * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.html)
     * Istio
-        * [📖：︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_command.html)
         * [📖：︎manifest.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.html)
     * Skaffold
-        * [📖：︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_command.html)
         * [📖：︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.html)
 * クラウドインフラプロビジョニング
     * Terraform
-        * [📖：︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)
         * [📖：設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html)
         * [📖：︎CI/CD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.html)
         * tfファイル
             * [📖：︎tfファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.html)
             * [📖：︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.html)
     * Serverless Framework
-        * [📖：︎serverlessコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.html)
+        * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.html)
         * [📖：︎serverless.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.html)
 
 <br>
@@ -300,7 +299,7 @@ title: 【知見を記録するサイト】目次
 * [📖：︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_project_management.html)
 * Git
     * [📖：︎GitHub](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_github.html)
-    * [📖：︎gitコマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_command.html)
+    * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_command.html)
 
 <br>
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】vagrantコマンド＠Vagrant
-description: vagrantコマンド＠Vagrantの知見をまとめました．
+title: 【知見を記録するサイト】コマンド＠Vagrant
+description: コマンド＠Vagrantの知見をまとめました．
 ---
 
-# vagrantコマンド＠Vagrant
+# コマンド＠Vagrant
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: vagrantコマンド＠Vagrantの知見をまとめました．
 
 <br>
 
-## 01. コマンド
+## 01. vagrantコマンド
 
-### add
+### box add
 
 ボックスをインストールする．
 
@@ -27,7 +27,7 @@ $ vagrant box add <ボックス名> <URL>
 
 <br>
 
-### box
+### box list
 
 インストール可能なボックス名の一覧を表示する．
 

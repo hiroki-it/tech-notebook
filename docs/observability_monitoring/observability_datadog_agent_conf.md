@@ -130,7 +130,7 @@ logs_enabled: true
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． | マイクロサービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
+| ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |  | https://app.datadoghq.com/apm/services       |
 | ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateを用いる場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
 | ```ECS_FARGATE``` | Fargateを用いる場合，これを宣言する．                        |                                                              |                                              |
 
