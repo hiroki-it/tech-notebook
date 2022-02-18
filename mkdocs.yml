@@ -102,10 +102,10 @@ nav:
           - ■ Web系:
               - ■ Nginx:
                   - nginx.conf: software/software_middleware_web_nginx_conf.md
-                  - nginxコマンド: software/software_middleware_web_nginx_command.md
+                  - コマンド: software/software_middleware_web_nginx_command.md
               - ■ Apache:
                   - apache.conf: software/software_middleware_web_apache_conf.md
-                  - apacheコマンド: software/software_middleware_web_apache_command.md
+                  - コマンド: software/software_middleware_web_apache_command.md
           - ■ アプリケーション系:
               - GI: software/software_middleware_application_gi.md
               - ■ FastCGI:
@@ -143,7 +143,7 @@ nav:
               - ■ オブジェクト指向型:
                   - ■ PHP:
                       - PHP: software/software_application_language_object_oriented_php.md
-                      - phpコマンド: software/software_application_language_object_oriented_php_command.md
+                      - コマンド: software/software_application_language_object_oriented_php_command.md
                       - ■ クラスベース:
                           - クラス: software/software_application_language_object_oriented_php_class_based.md
                           - メソッド/データ: software/software_application_language_object_oriented_php_class_based_method_data.md
@@ -187,7 +187,7 @@ nav:
               - ■ 手続き型:
                   - ■ Go:
                       - Go: software/software_application_language_procedural_go.md
-                      - goコマンド: software/software_application_language_procedural_go_command.md
+                      - コマンド: software/software_application_language_procedural_go_command.md
                       - ■ ロジック:
                           - メソッド/データ: software/software_application_language_procedural_go_logic_method_data.md
                       - ■ フレームワーク:
@@ -242,39 +242,39 @@ nav:
                   - playbook.yml: infrastructure_as_code/infrastructure_as_code_server_ansible_playbook_yml.md
           - ■ コンテナプロビジョニング:
               - ■ Docker:
-                  - dockerコマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
                   - Dockerfile: infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
       - ■ 宣言型:
           - ■ サーバープロビジョニング:
               - ■ Vagrant:
-                  - vagrantコマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
                   - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
           - ■ コンテナプロビジョニング:
               - ■ Docker Compose:
-                  - docker-composeコマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
                   - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
               - ■ Kubernetes:
-                  - kubectlコマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
-                  - minikubeコマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
+                  - Minikube: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.md
                   - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md
                   - 可観測性ツール: infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
               - ■ Istio:
-                  - istioctlコマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
                   - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.md
               - ■ Skaffold:
-                  - skaffoldコマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
                   - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.md
           - ■ クラウドインフラプロビジョニング:
               - ■ Terraform:
-                  - terraformコマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
                   - CI/CD: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
                   - ■ tfファイル:
                       - tfファイル: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.md
                       - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.md
               - ■ Serverless Framework:
-                  - serverlessコマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
                   - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
 
   - ♾️ CI/CD:
@@ -307,7 +307,7 @@ nav:
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
       - ■ Git:
           - GitHub: software_development_methodology/software_development_methodology_git_github.md
-          - gitコマンド: software_development_methodology/software_development_methodology_git_command.md
+          - コマンド: software_development_methodology/software_development_methodology_git_command.md
 
   - 📊 統計分析:
       - R言語: statistic_analysis/statistic_analysis_r.md
