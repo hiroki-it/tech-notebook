@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】envoyコマンド@Envoy
-description: envoyコマンド@Envoyの知見をまとめました．
+title: 【知見を記録するサイト】コマンド@Envoy
+description: コマンド@Envoyの知見をまとめました．
 ---
 
-# envoyコマンド@Envoy
+# コマンド@Envoy
 
 ## はじめに
 

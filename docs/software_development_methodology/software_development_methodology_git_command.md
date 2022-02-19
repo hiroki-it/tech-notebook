@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】gitコマンド
-description: gitコマンドの知見をまとめました．
+title: 【知見を記録するサイト】コマンド@Git
+description: コマンド@Gitの知見をまとめました．
 ---
 
-# gitコマンド
+# コマンド@Git
 
 ## はじめに
 

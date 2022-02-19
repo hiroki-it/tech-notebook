@@ -62,11 +62,21 @@ Kubernetesリソースの一意に識別するための情報を設定する．
 
 ### labels
 
+#### ・labelsとは
+
 Kubernetesリソースを区別するための情報を設定する．
+
+#### ・予約ラベル
+
+以下のリンクを参考にせよ．
+
+参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
 
 <br>
 
 ### name
+
+#### ・nameとは
 
 Kubernetesリソースを一意に識別するための名前を設定する．
 
@@ -75,6 +85,8 @@ Kubernetesリソースを一意に識別するための名前を設定する．
 ## 04. spec（Deploymentの場合）
 
 ### replicas
+
+#### ・replicasとは
 
 Podの複製数を設定する．
 
@@ -90,6 +102,8 @@ spec:
 
 ### revisionHistoryLimit
 
+#### ・revisionHistoryLimitとは
+
 保存されるリビジョン番号の履歴数を設定する．もし依存のリビジョン番号にロールバックすることがあるのであれば，必要数を設定しておく．
 
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
@@ -104,9 +118,13 @@ spec:
 
 ### selector
 
+#### ・selectorとは
+
+Deploymentで管理するPodを明示的に設定する．
+
 #### ・matchLabels
 
-Deploymentで管理するPodのラベルを指定する．Podに複数のラベルが付与されている時は，これらを全て指定する必要がある．
+Podのラベルを指定する．Podに複数のラベルが付与されている時は，これらを全て指定する必要がある．
 
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -131,6 +149,10 @@ spec:
 <br>
 
 ### strategy
+
+#### ・strategyとは
+
+デプロイメントの方法を設定する．
 
 #### ・RollingUpdate
 
@@ -335,15 +357,15 @@ Node上にストレージ領域を新しく作成し，これをボリューム�
 kind: PersistentVolume
 spec:
   local:
-    path: /data
+    path: /data/src/foo
   nodeAffinity:
     required:
       nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - foo-node
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+              - foo-node
 ```
 
 <br>
@@ -371,12 +393,49 @@ spec:
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 
+**＊実装例＊**
+
 ```yaml
 kind: PersistentVolume
 spec:
   nfs:
     server: nnn.nnn.nnn.nnn
-    path: /nfs/foo
+    path: /data/src/foo
+```
+
+<br>
+
+### nodeAffinity
+
+#### ・nodeAffinityとは
+
+PersistentVolumeの作成対象とするワーカーNodeを設定する．
+
+参考：https://qiita.com/ysakashita/items/67a452e76260b1211920
+
+#### ・required.nodeSelectorTerms.matchExpressions
+
+作成対象のワーカーNodeのラベルを指定するための条件（```In```，```NotIn```，```Exists```）を設定する．
+
+参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+
+**＊実装例＊**
+
+```yaml
+kind: PersistentVolume
+spec:
+  local:
+    path: /data/src/foo
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+              - foo-node 
+            # 開発環境であれば minikubeを指定する．
+            # - minikube 
 ```
 
 <br>
@@ -463,6 +522,8 @@ spec:
 
 ### accessModes
 
+#### ・accessModesとは
+
 要求対象のPerisitentVolumeのaccessModeを設定する．
 
 **＊実装例＊**
@@ -477,6 +538,10 @@ spec:
 <br>
 
 ### resources
+
+#### ・resourcesとは
+
+要求する仮想ハードウェアのリソースを設定する．
 
 #### ・requests
 
@@ -496,6 +561,8 @@ spec:
 
 ### storageClassName
 
+#### ・storageClassNameとは
+
 要求対象のPersistentVolumeのストレージクラス名を設定する．これを設定しない場合は，ストレージクラス名が```standard```のPerisitentVolumeを要求する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
@@ -513,6 +580,10 @@ spec:
 ## 04-06. spec（Podの場合）
 
 ### containers
+
+#### ・containersとは
+
+Pod内で起動するコンテナを設定する．
 
 #### ・name，image，port
 
@@ -670,7 +741,7 @@ spec:
   volumes
   - name: foo-lumen
     hostPath:
-      path: /data
+      path: /data/src/foo
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
@@ -749,7 +820,7 @@ spec:
  kind: Service
  spec:
    ports:
-   - appProtocol: tcp
+     - appProtocol: tcp
 ```
 
 もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが用いなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
@@ -761,7 +832,7 @@ spec:
 kind: Service
 spec:
   ports:
-  - name: http-foo # Istio Gatewayからインバウンド通信を受信
+    - name: http-foo # Istio Gatewayからインバウンド通信を受信
 ```
 
 ```yaml
@@ -769,7 +840,7 @@ spec:
 kind: Service
 spec:
   ports:
-  - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
+    - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
 ```
 
 #### ・name
@@ -800,21 +871,21 @@ spec:
 kind: Service
 spec:
   ports:
-  - protocol: TCP
+    - protocol: TCP
 ```
 
 ```yaml
 kind: Service
 spec:
   ports:
-  - protocol: UDP
+    - protocol: UDP
 ```
 
 ```yaml
 kind: Service
 spec:
   ports:
-  - protocol: SCTP
+    - protocol: SCTP
 ```
 
 ちなみに，FastCGIプロトコルには変換できず，別にNginxを用いてプロトコルを変換する必要がある．
@@ -834,7 +905,7 @@ spec:
 kind: Service
 spec:
   ports:
-  - port: 80
+    - port: 80
 ```
 
 ```yaml
@@ -910,7 +981,7 @@ Serviceのタイプを設定する．
 kind: ServiceEntry
 spec:
   hosts:
-  - '*'
+    - '*'
 ```
 
 <br>
@@ -923,12 +994,12 @@ spec:
 kind: ServiceEntry
 spec:
   ports:
-  - name: http
-    number: 80
-    protocol: HTTP
-  - name: https
-    number: 443
-    protocol: HTTPS
+    - name: http
+      number: 80
+      protocol: HTTP
+    - name: https
+      number: 443
+      protocol: HTTPS
 ```
 
 <br>
