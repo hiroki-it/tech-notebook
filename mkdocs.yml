@@ -89,6 +89,7 @@ nav:
           - ■ カーネル:
               - カーネル: software/software_basic_kernel.md
               - メモリ管理: software/software_basic_kernel_memory_management.md
+              - ファイル共有システム: software/software_basic_kernel_file_share_system.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
               - パッケージ: software/software_basic_utility_package.md
