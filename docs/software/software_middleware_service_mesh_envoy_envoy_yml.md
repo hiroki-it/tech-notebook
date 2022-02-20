@@ -265,7 +265,7 @@ static_resources:
 | 項目                | 説明                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | ```name```          | ルーティング名を設定する．                                   |
-| ```virtual_hosts``` | ルーティング対象を設定する．特に```domains```キーには，受信するインバウンド通信のHostヘッダーの値を設定する．ちなみにHostヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている． |
+| ```virtual_hosts``` | ルーティング先を設定する．特に```domains```キーには，受信するインバウンド通信のHostヘッダーの値を設定する．ちなみにHostヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている． |
 
 参考：
 
@@ -339,7 +339,7 @@ static_resources:
 
 ### clustersとは
 
-インバウンド通信のルーティング対象のマイクロサービスをグループ化する．対象が一つであっても，```clusters```キーは必須である．
+インバウンド通信のルーティング先のマイクロサービスをグループ化する．対象が一つであっても，```clusters```キーは必須である．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -383,7 +383,7 @@ static_resources:
 
 #### ・endpoints
 
-ルーティング対象のIPアドレスとポート番号のリストを設定する．
+ルーティング先のIPアドレスとポート番号のリストを設定する．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 
@@ -406,7 +406,7 @@ static_resources:
 
 #### ・cluster_name
 
-ルーティング対象のグループの名前を設定する．
+ルーティング先のグループの名前を設定する．
 
 ```yaml
 static_resources:  
@@ -419,7 +419,7 @@ static_resources:
 
 ### name
 
-ルーティング対象のグループの名前を設定する．
+ルーティング先のグループの名前を設定する．
 
 ```yaml
 static_resources:  

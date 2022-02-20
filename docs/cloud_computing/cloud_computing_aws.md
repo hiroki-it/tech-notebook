@@ -1,5 +1,7 @@
+---
 title: 【知見を記録するサイト】AWS：Amazon Web Service
 description: AWS：Amazon Web Serviceの知見をまとめました．
+---
 
 # AWS：Amazon Web Service
 
@@ -286,7 +288,7 @@ frontend:
         - nuxt generate --fail-on-error
         - ls -la ./dist
   artifacts:
-    # デプロイ対象のディレクトリ  
+    # デプロイ先のディレクトリ  
     files:
         # 全てのディレクトリ
         - "**/*"
@@ -313,7 +315,7 @@ test:
       commands:
         - # コマンド
   artifacts:
-    # デプロイ対象のディレクトリ
+    # デプロイ先のディレクトリ
     files:
         # 全てのディレクトリ
         - "**/*"
@@ -863,7 +865,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | 設定項目               | 説明                                                         | 補足                                                         |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Origin Domain Name     | CloudFrontをリバースプロキシサーバーとして，AWSリソースのエンドポイントやDNSにルーティングする． | ・例えば，S3のエンドポイント，ALBのDNS名を設定する．<br>・別アカウントのAWSリソースのDNS名であっても良い． |
-| Origin Path            | オリジンのルートディレクトリを設定する．                     | ・何も設定しないと，デフォルトは『```/```』のなる．Behaviorでは，『```/```』の後にパスが追加される．<br>・『```/var/www/app```』を設定すると，Behaviorで設定したパスが『```/var/www/app/foo```』のように追加される． |
+| Origin Path            | オリジンのルートディレクトリを設定する．                     | ・何も設定しないと，デフォルトは『```/```』のなる．Behaviorでは，『```/```』の後にパスが追加される．<br>・『```/var/www/foo```』を設定すると，Behaviorで設定したパスが『```/var/www/foo/foo```』のように追加される． |
 | Origin Access Identity | リクエストのルーティング先となるAWSリソースでアクセス権限のアタッチが必要な場合に設定する．ルーティング先のAWSリソースでは，アクセスポリシーをアタッチする． | CloudFrontがS3に対して読み出しを行うために必要．             |
 | Origin Protocol Policy | リクエストのルーティング先となるAWSリソースに対して，HTTPとHTTPSのいずれのプロトコルでルーティングするかを設定する． | ・ALBで必要．ALBのリスナーのプロトコルに合わせて設定する．<br>・```HTTP Only```：HTTPでルーティング<br>・```HTTPS Only```：HTTPSでルーティング<br>・```Match Viewer```：両方でルーティング |
 | HTTPポート             | ルーティング時に指定するオリジンのHTTPのポート番号                   |                                                              |
@@ -1546,7 +1548,7 @@ fields @timestamp, @message, @logStream
 
 ### 設定項目
 
-#### ・ログが対象の場合
+#### ・ログが先の場合
 
 | 設定項目     | 説明                                                         | 補足                                                 |
 | ------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
@@ -1654,7 +1656,7 @@ phases:
     commands:
       # ECRにイメージをプッシュ
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      # ECRにあるデプロイ対象のイメージの情報（imageDetail.json）
+      # ECRにあるデプロイ先のイメージの情報（imageDetail.json）
       - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
     
 # デプロイ対象とするビルドのアーティファクト    
@@ -2967,16 +2969,15 @@ EC2で稼働するKubernetesのホストのこと．on Fargateと比べてカス
 
 DNS経由で，EFSマウントヘルパーを用いた場合を示す．
 
-```bash
-$ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムID>:/ <マウントポイント>
-```
+参考：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
 
 ```bash
 # EFSで，マウントポイントを登録
-$ mount -t efs -o tls fs-*****:/ /var/www/app
+# mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
+$ mount -t efs -o tls fs-*****:/ /var/www/foo
 
 # マウントポイントを解除
-$ umount /var/www/app
+$ umount /var/www/foo
 
 # dfコマンドでマウントしているディレクトリを確認できる
 $ df

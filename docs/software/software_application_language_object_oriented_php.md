@@ -45,7 +45,7 @@ $ apt -y install php<バージョン>
 # Global ARG
 #===================
 ARG PHP_FPM_VERSION="8.0.13"
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+ARG LABEL="Hiroki <example@gmail.com>"
 
 #===================
 # Base Stage

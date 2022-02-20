@@ -59,7 +59,7 @@ $ yum install -y golang
 # Global ARG
 #===================
 ARG GO_VERSION=1.16.5
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+ARG LABEL="Hiroki <example@gmail.com>"
 
 #===================
 # Build Stage

@@ -34,7 +34,7 @@ $ yum install -y python3
 # Global ARG
 #===================
 ARG PYTHON_VERSION=3.10
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+ARG LABEL="Hiroki <example@gmail.com>"
 
 #===================
 # Base Stage

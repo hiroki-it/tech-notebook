@@ -132,7 +132,7 @@ description: Infrastructure as Codeの知見をまとめました．
 
 ### ツールの種類
 
-#### ・サーバー(物理/仮想)
+#### ・サーバー（物理/仮想）
 
 - CFEngine
 - Puppet

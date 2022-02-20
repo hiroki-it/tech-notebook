@@ -111,9 +111,9 @@ Author-email: georg@python.org
 License: BSD
 # インストール場所
 Location: /usr/local/lib/python3.8/site-packages
-# このパッケージの依存対象
+# このパッケージの依存先
 Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializinghtml, snowballstemmer, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-jsmath, setuptools, packaging, Pygments, babel, alabaster, sphinxcontrib-qthelp, requests, Jinja2
-# このパッケージを依存対象としているパッケージ
+# このパッケージを依存先としているパッケージ
 Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 ```
 

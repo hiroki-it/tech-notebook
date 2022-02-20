@@ -1433,7 +1433,7 @@ class FileSystemPublicController extends Controller
         // 保存先をpublicに設定する．
         $disk = Storage::disk("public");
 
-        // 保存対象のファイルを読み込む
+        // 保存先のファイルを読み込む
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
@@ -3868,7 +3868,7 @@ class User extends Authenticatable
 }
 ```
 
-通知対象のクラスから```notify```メソッドをコールし，任意のNotificationクラスを渡す．これにより，通知処理が実行される．
+通知先のクラスから```notify```メソッドをコールし，任意のNotificationクラスを渡す．これにより，通知処理が実行される．
 
 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
@@ -3896,7 +3896,7 @@ class User extends Authenticatable
 }
 ```
 
-Notificationファサードに通知対象のモデルと通知クラスを渡す．
+Notificationファサードに通知先のモデルと通知クラスを渡す．
 
 ```php
 <?php

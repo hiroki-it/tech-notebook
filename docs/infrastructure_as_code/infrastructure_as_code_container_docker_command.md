@@ -566,14 +566,14 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 **＊実装例＊**
 
-Dockerfileでボリュームマウントを行う場合，マウント先のコンテナ側ディレクトリ名を設定する．dockerエリアのマウントポイントは，自動的に作成される．Docker Composeで行うことが推奨されている．
+Dockerfileでボリュームマウントを行う場合，コンテナ側のマウントポイントを設定する．dockerエリアのマウントポイントは，自動的に作成される．Docker Composeで行うことが推奨されている．
 
 ```dockerfile
 FROM ubuntu
 RUN mkdir /myvol
 RUN echo "hello world" > /myvol/greeting
 
-# マウント先のコンテナ側ディレクトリ名
+# マウントポイント
 VOLUME /myvol
 ```
 

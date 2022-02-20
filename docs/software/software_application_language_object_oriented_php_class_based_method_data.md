@@ -1378,12 +1378,12 @@ URLを文字列を定数として扱う．
 
 **＊実装例＊**
 
-以下の実装を持つファイルを，『```/var/www/app```』下に置いておき，『```/vendor/autoload.php```』と結合してパスを通す．
+以下の実装を持つファイルを，『```/var/www/foo```』下に置いておき，『```/vendor/autoload.php```』と結合してパスを通す．
 
 ```php
 <?php
     
-# /var/www/app/vendor/autoload.php
+# /var/www/foo/vendor/autoload.php
 require_once realpath(__DIR__ . "/vendor/autoload.php");
 ```
 

@@ -569,7 +569,7 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 #### ・```create```メソッド
 
-INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入対象のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行しても良い．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリーキーが取得され，EloquentモデルのID値のプロパティに保持される．
+INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入先のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し，```save```メソッドを実行しても良い．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリーキーが取得され，EloquentモデルのID値のプロパティに保持される．
 
 参考：
 
@@ -987,7 +987,7 @@ class Employee extends Model
 
 #### ・```save```メソッド
 
-UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．```save```メソッドはCREATE処理も実行できるが，```fill```メソッドでID値を割り当てた場合は，UPDATE処理が実行される．
+UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し，```save```メソッドを実行する．```save```メソッドはCREATE処理も実行できるが，```fill```メソッドでID値を割り当てた場合は，UPDATE処理が実行される．
 
 参考：
 
@@ -1047,7 +1047,7 @@ class FooDTO extends Model
 
 #### ・```destroy```/```delete```メソッド（物理削除）
 
-DELETE文を実行する．Eloquentモデルの```destroy```/```delete```メソッドを用いる．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```destroy```/```delete```メソッドをコールし，自身を削除する．
+DELETE文を実行する．Eloquentモデルの```destroy```/```delete```メソッドを用いる．手順として，Eloquentビルダーの```find```メソッドで削除先のModelを検索する．返却されたEloquentビルダーの```destroy```/```delete```メソッドをコールし，自身を削除する．
 
 #### ・SoftDeletesの有効化（論理削除）
 

@@ -510,7 +510,7 @@ CMD ["./app"]
 # Global ARG
 #===================
 ARG NGINX_VERSION="1.19"
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+ARG LABEL="Hiroki <example@gmail.com>"
 
 #===================
 # Build Stage

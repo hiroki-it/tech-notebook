@@ -91,7 +91,7 @@ Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/file
 （１）HyperKitドライバーを用いる場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
 
 ```bash
-$ minikube start --driver=hyperkit --mount=true --mount-string="/Users/h.hasegawa/projects/foo:/data"
+$ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
 （２）ワーカーNodeのボリュームをPod内のコンテナにマウントする．
@@ -285,7 +285,7 @@ $ env | grep DOCKER
 
 DOCKER_TLS_VERIFY=1
 DOCKER_HOST=tcp://nnn.nnn.nn.n:2376
-DOCKER_CERT_PATH=/Users/h.hasegawa/.minikube/certs
+DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
 

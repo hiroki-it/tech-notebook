@@ -320,7 +320,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する．Volum
 
 #### ・path
 
-Node側のマウント元のディレクトリを設定する．Podのマウント先のディレクトリは，Podの```spec.containers.volumeMount```オプションで設定する．
+Node側のマウント元のディレクトリを設定する．Podのマウントポイントは，Podの```spec.containers.volumeMount```オプションで設定する．
 
 ```yaml
 kind: PersistentVolume
@@ -391,7 +391,13 @@ spec:
 
 #### ・nfsとは
 
-参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+ホスト上であらかじめNFSサーバーを起動しておく．NFSサーバーにストレージ領域を作成し，これをボリュームとする．ワーカーNode内のPodを，ホスト上のNFSサーバーにマウントする．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+- https://ytsuboi.jp/archives/505
+- https://qiita.com/reoring/items/4d80a04dd31e991dd233
 
 **＊実装例＊**
 
@@ -399,7 +405,7 @@ spec:
 kind: PersistentVolume
 spec:
   nfs:
-    server: nnn.nnn.nnn.nnn
+    server: <NFSサーバーのIPアドレス>
     path: /data/src/foo
 ```
 
@@ -409,13 +415,13 @@ spec:
 
 #### ・nodeAffinityとは
 
-PersistentVolumeの作成対象とするワーカーNodeを設定する．
+PersistentVolumeの作成先とするワーカーNodeを設定する．
 
 参考：https://qiita.com/ysakashita/items/67a452e76260b1211920
 
 #### ・required.nodeSelectorTerms.matchExpressions
 
-作成対象のワーカーNodeのラベルを指定するための条件（```In```，```NotIn```，```Exists```）を設定する．
+作成先のワーカーNodeのラベルを指定するための条件（```In```，```NotIn```，```Exists```）を設定する．
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 
@@ -643,7 +649,7 @@ spec:
 
 #### ・volumeMount
 
-Podのマウント先のディレクトリを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．
+Podのマウントポイントを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．
 
 **＊実装例＊**
 

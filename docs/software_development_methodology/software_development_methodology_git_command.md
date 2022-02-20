@@ -62,7 +62,7 @@ Macでは，1つのPCで二つのGutHubアカウントを用いる場合，キ�
 AuthorとCommitterの名前を設定する．```local```が一番最後に上書きされ，適用される．
 
 ```bash
-$ git config --local user.name "hiroki-it"
+$ git config --local user.name "hiroki.hasegawa"
 ```
 
 
@@ -80,7 +80,7 @@ Authorの情報は，コミット時に反映される（Committerは表示さ�
 $ git log
 
 commit ee299250a4741555eb5027ad3e56ce782fe90ccb
-Author: hiroki-it <example@gmail.com>
+Author: hiroki.hasegawa <example@gmail.com>
 Date:   Sat Sep 12 00:00:00 2020 +0900
 
     add ◯◯を実装した．
@@ -144,7 +144,7 @@ Host <任意の接続名>
 
 ```bash
 $ git push
-ERROR: Permission to hiroki-it/*****.git denied to Foo.
+ERROR: Permission to hiroki.hasegawa/*****.git denied to Foo.
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
@@ -184,7 +184,7 @@ $ clip < ~/.ssh/github/<鍵名>.pub
 ```bash
 $ ssh -T <接続名>
 
-Hi hiroki-it! You've successfully authenticated, but GitHub does not provide shell access.
+Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 <br>
@@ -271,7 +271,7 @@ fatal: cherry-pick failed
 $ git cherry-pick -m 1 d7e49b04
 
 [master a9ebcb4] Merge pull request #276 from feature/123
- Author: hiroki-it <*****@users.noreply.github.com>
+ Author: hiroki.hasegawa <*****@users.noreply.github.com>
  Date: Wed Sep 15 00:00:00 2021 +0900
  1 file changed, 7 insertions(+)
  
@@ -460,8 +460,8 @@ $ git reset --mixed <コミットID>
 ```
 
 #### ・```reset --hard <コミットID>```
-作業中のローカルブランチで，最新のワークツリー（=フォルダ），インデックス（=```add```後），HEAD（=コミット後）を指定の履歴まで戻し，それ以降を削除．
-<font color="red">**ワークツリー（=フォルダ）内のファイルの状態も戻ってしまうので，取り扱い注意！！**</font>
+作業中のローカルブランチで，最新のワークツリー（=フォルダー），インデックス（=```add```後），HEAD（=コミット後）を指定の履歴まで戻し，それ以降を削除．
+<font color="red">**ワークツリー（=フォルダー）内のファイルの状態も戻ってしまうので，取り扱い注意！！**</font>
 
 ```bash
 $ git reset --hard <コミットID>
@@ -475,19 +475,19 @@ $ git reset --hard <コミットID>
 $ git log
 commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/Symfony2_Nyumon/master)
 Merge: 41cc21b f81c813
-Author: hiroki-it <example@gmail.com>
+Author: hiroki.hasegawa <example@gmail.com>
 Date:   Wed Mar 20 22:56:32 2019 +0900
 
     Merge remote-tracking branch "refs/remotes/origin/master"
 
 commit 41cc21bb53a8597270b5deae3259751df18bce81
-Author: hiroki-it <example@gmail.com>
+Author: hiroki.hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
     add #0 fooさんのREADME_2を追加
 
 commit f81c813a1ead9a968c109671e6d83934debcab2e
-Author: hiroki-it <example@gmail.com>
+Author: hiroki.hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
     add #0 fooさんのREADME_1を追加
@@ -516,7 +516,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 ```bash
 $ git push --force
 Total 0 (delta 0), reused 0 (delta 0)
-To github.com:hiroki-it/Symfony2_Nyumon.git
+To github.com:hiroki.hasegawa/Symfony2_Nyumon.git
  + f0d8b1a...f81c813 master -> master (forced update)
 ```
 
@@ -629,10 +629,10 @@ Successfully rebased and updated refs/heads/develop.
 
 git filter-branch -f --env-filter "
     # Author名かCommitter名のいずれかが誤っていれば適用します．
-    if [ ${GIT_AUTHOR_NAME}="Hiroki-Hasegawa" -o ${GIT_COMMITTER_NAME}="Hiroki-Hasegawa" ] ; then
-    export GIT_AUTHOR_NAME="hiroki-it"
+    if [ ${GIT_AUTHOR_NAME}="hiroki.hasegawa" -o ${GIT_COMMITTER_NAME}="hiroki.hasegawa" ] ; then
+    export GIT_AUTHOR_NAME="hiroki.hasegawa"
     export GIT_AUTHOR_EMAIL="example@gmail.com"
-    export GIT_COMMITTER_NAME="hiroki-it"
+    export GIT_COMMITTER_NAME="hiroki.hasegawa"
     export GIT_COMMITTER_EMAIL="example@gmail.com"
 fi"
 ```
@@ -686,13 +686,13 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 作業中のローカルブランチにおける```(master|REBASE-i)```が，``` (master)```に変更されていることからも確認可能．
 
 ```bash
-hiroki-it@PC /var/www/foo (master)
+hiroki.hasegawa@PC /var/www/foo (master)
 $ git rebase --interactive
 
-hiroki-it@PC /var/www/foo (master|REBASE-i)
+hiroki.hasegawa@PC /var/www/foo (master|REBASE-i)
 $ git rebase --abort
 
-hiroki-it@PC /var/www/foo (master)
+hiroki.hasegawa@PC /var/www/foo (master)
 $
 ```
 
@@ -769,9 +769,9 @@ $ git show-branch \
 
 ```bash
 $ git filter-branch -f --env-filter \
-    "GIT_AUTHOR_NAME="hiroki-it"; \
+    "GIT_AUTHOR_NAME="hiroki.hasegawa"; \
      GIT_AUTHOR_EMAIL="example@gmail.com"; \
-     GIT_COMMITTER_NAME="hiroki-it"; \
+     GIT_COMMITTER_NAME="hiroki.hasegawa"; \
      GIT_COMMITTER_EMAIL="example@gmail.com";" \
     HEAD
 ```

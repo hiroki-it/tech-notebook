@@ -1831,11 +1831,11 @@ jobs:
     application-name: $SERVICE}
     # appspecファイルを保存するバケット名
     bundle-bucket: "${SERVICE}-bucket"
-    # appspecファイルのあるフォルダ
+    # appspecファイルのあるフォルダー
     bundle-source: ./infra/aws_codedeploy
-    # appspecファイルをzipフォルダで保存
+    # appspecファイルをzipフォルダーで保存
     bundle-type: zip
-    # zipフォルダ名
+    # zipフォルダー名
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"

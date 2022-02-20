@@ -210,7 +210,31 @@ SHELL
 
 ホスト上のディレクトリを仮想環境にマウントする．
 
+参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
+
 ```bash
 config.vm.synced_folder ".", "/var/www/foo"
 ```
 
+#### ・type
+
+マウント方法を設定する．デフォルト値は，VirtualBox共有フォルダーである．その他，NFS，RSync，SMBを設定できる．
+
+参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
+
+```bash
+config.vm.synced_folder ".", "/var/www/foo", type: "nfs"
+```
+
+ホストと仮想環境間のファイルの入出力の速度差によって，仮想環境のパフォーマンスに差がある．以下のリンクで，ロードテストを行ったところ，『```RSync > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良かった．
+
+参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
+
+また，『```RSync > NFS```』『```NFS > SMB```』である．
+
+参考：
+
+- https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
+- https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
+
+これらから，おおよそ『```RSync > NFS > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良くなると考えておけばよい．

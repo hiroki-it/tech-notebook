@@ -324,7 +324,7 @@ spec:
 
 ### subsets
 
-VirtualServiceのサブセット名に関して，ルーティング対象とするPodのラベルを設定する
+VirtualServiceのサブセット名に関して，ルーティング先とするPodのラベルを設定する
 
 参考：
 
