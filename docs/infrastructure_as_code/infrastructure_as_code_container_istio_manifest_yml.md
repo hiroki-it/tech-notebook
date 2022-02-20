@@ -533,7 +533,7 @@ spec:
 
 #### ・port.number
 
-インバウンド通信を受信するポート番号を設定する．
+インバウンド通信を待ち受けるポート番号を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -794,7 +794,7 @@ spec:
 
 #### ・proxyHttpPort
 
-全てのEnvoyコンテナに関して，Cluster外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する．
+全てのEnvoyコンテナに関して，Cluster外部からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する．
 
 ```yaml
 kind: IstioOperator
@@ -805,7 +805,7 @@ spec:
 
 #### ・proxyListenPort
 
-全てのEnvoyコンテナに関して，他マイクロサービスからのインバウンド通信を受信するポート番号を設定する．
+全てのEnvoyコンテナに関して，他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する．
 
 ```yaml
 kind: IstioOperator

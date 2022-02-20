@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Flask
-description: Flaskの知見をまとめました．
+title: 【知見を記録するサイト】コンポーネント＠Flask
+description: コンポーネント＠Flaskの知見をまとめました．
 ---
 
-# Flask
+# コンポーネント＠Flask
 
 ## はじめに
 
@@ -60,30 +60,9 @@ app.run()
 | 引数              | 説明                                                         |
 | ----------------- | ------------------------------------------------------------ |
 | ```host```        | 受信するインバウンド通信のIPアドレスを設定する．全てのIPアドレスの場合は，```0.0.0.0```とする． |
-| ```port```        | インバウンド通信を受信するポート番号を設定する．             |
+| ```port```        | インバウンド通信を待ち受けるポート番号を設定する．             |
 | ```debug```       | より詳細なエラーログを表示するかどうかを設定する．           |
 | ```load_dotenv``` | ```dotenv```ライブラリを読み込むかどうかを設定する．これを有効化すれば，他の引数は環境変数から設定できる． |
-
-<br>
-
-### ```flask run```コマンド
-
-#### ・```flask run```コマンドとは
-
-既存の```run```コマンドに代わる新しいリッスン方法．開発環境のみで推奨される方法である．```run```メソッドとは異なり，実行前に```FLASK_APP```を環境変数に設定する必要がある．実行時に```flask run```コマンドを実行する場合には，```run```メソッドの実行は不要である．
-
-```bash
-# 事前に環境変数を出力しておく
-$ export FLASK_APP=main.py
-$ export FLASK_ENV=development
-
-$ flask run
-```
-
-参考：
-
-- https://www.twilio.com/blog/how-to-run-a-flask-application-jp
-- https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/cli.html
 
 <br>
 

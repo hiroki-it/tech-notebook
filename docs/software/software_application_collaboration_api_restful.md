@@ -120,7 +120,7 @@ GET https://example.com/users/12345
 ```
 
 ```http
-GET https://example.com/users/hiroki_hasegawa
+GET https://example.com/users/foo
 ```
 
 **＊認証の場合＊**

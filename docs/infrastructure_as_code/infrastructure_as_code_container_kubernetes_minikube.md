@@ -120,12 +120,6 @@ spec:
           volumeMounts:
             - name: foo-lumen
               mountPath: /var/www/foo
-          workingDir: /var/www/foo
-        - name: foo-nginx
-          image: foo-nginx:dev
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8000
       volumes:
         - name: foo-lumen
           hostPath:
@@ -333,9 +327,9 @@ $ minikube ip
 #### ・オプション無し
 
 ```bash
-$ minikube mount /Users/hiroki-it/projects/foo:/data
+$ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
-📁  Mounting host path /Users/hiroki-it/projects/foo into VM as /data ...
+📁  Mounting host path /Users/hiroki.hasegawa/projects/foo into VM as /data ...
     ▪ Mount type:   
     ▪ User ID:      docker
     ▪ Group ID:     docker
@@ -345,7 +339,7 @@ $ minikube mount /Users/hiroki-it/projects/foo:/data
     ▪ Options:      map[]
     ▪ Bind Address: 127.0.0.1:61268
 🚀  Userspace file server: ufs starting
-✅  Successfully mounted /Users/hiroki-it/projects/foo to /data
+✅  Successfully mounted /Users/hiroki.hasegawa/projects/foo to /data
 
 📌  NOTE: This process must stay alive for the mount to be accessible ...
 ```
@@ -443,6 +437,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 # Dockerドライバーによる仮想環境の場合
 $ minikube ssh  
 
+# ワーキングディレクトリ
 docker@minikube:~$ pwd
 /home/docker
 ```
@@ -457,6 +452,7 @@ $ minikube ssh
 | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
 (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
 
+# ワーキングディレクトリ
 $ pwd
 /home/docker
 ```
@@ -471,8 +467,22 @@ $ minikube ssh
 | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
 (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
 
+# ワーキングディレクトリ
 $ pwd
 /home/docker
+
+# Minikube内で使えるユーティリティ
+$ busybox --list
+
+addgroup
+adduser
+ar
+
+# 〜 中略 〜
+
+xzcat
+yes
+zcat
 ```
 
 <br>
@@ -549,7 +559,7 @@ $ minikube start --driver=virtualbox
 **＊例＊**
 
 ```bash
-$ minikube start --mount=true --mount-string="/Users/hiroki-it/projects/foo:/data"
+$ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
 #### ・--nodes

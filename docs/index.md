@@ -24,6 +24,7 @@ title: 【知見を記録するサイト】目次
 
 * [📖：︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
 * [📖：︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
+* [📖：︎ファイル共有システム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_file_share_system.html)
 
 
 #### ■ ユーティリティ
@@ -123,6 +124,7 @@ title: 【知見を記録するサイト】目次
                 * [📖：︎Eloquentコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_component_eloquent.html)
                 * [📖：︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_package.html)
                 * [📖：︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_package_auth.html)
+                * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_commmand.html)
             * [📖：︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony.html)
         * パッケージ
             * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_management.html)
@@ -161,7 +163,9 @@ title: 【知見を記録するサイト】目次
     * Python
         * [📖：︎Python](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python.html)
         * フレームワーク
-            * [📖：︎Flask](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python_framework_flask.html)
+            * Flask 
+                * [📖：︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python_framework_flask_component.html)
+                * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python_framework_flask_command.html)
         * パッケージ
             * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_imperative_python_package_management.html)
 

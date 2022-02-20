@@ -165,7 +165,7 @@ die-on-term = true
 
 ### http
 
-HTTPプロトコルを用いる場合に，受信するIPアドレスとポート番号を設定する．
+HTTPプロトコルを用いる場合に，受信するインバウンド通信のIPアドレスと，インバウンド通信を待ち受けるポート番号を設定する．
 
 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
 
@@ -252,7 +252,7 @@ python-path = /var/www/foo
 
 ### socket
 
-UNIXドメインソケットを用いる場合に，ソケットファイルの生成場所と受信するポート番号を設定する．
+UNIXドメインソケットを用いる場合に，ソケットファイルの生成場所と，インバウンド通信を待ち受けるポート番号を設定する．
 
 参考： 
 

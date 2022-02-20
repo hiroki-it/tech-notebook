@@ -261,7 +261,7 @@ listen = /var/run/php-fpm/php-fpm.sock
 
 ### listen.allowed_clients
 
-受信するIPアドレスを設定する．
+受信するインバウンド通信のIPアドレスを設定する．
 
 ```ini
 [www]

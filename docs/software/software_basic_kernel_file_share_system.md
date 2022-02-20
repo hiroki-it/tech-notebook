@@ -25,19 +25,22 @@ NFSサーバーに置かれたファイルを，他のサーバー（NFSクラ�
 
 #### ・MacOS（Catalina）の場合
 
-（１）ホスト側のMacOSにて，```/etc/exports```ファイルにマウントオプションを設定する．
+（１）ホスト側のMacOSにて，```/etc/exports```ファイルにマウントオプションを設定する．また，```/etc/exports```ファイルを検証する．
 
 参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 
 ```bash
 # マウントオプションを設定する．
 $ echo '
-  /System/Volumes/Data/Users/hiroki.hasegawa/<マウント元のディレクトリ>
+  "/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ>"
   -network <マウント先のサーバーのIPアドレス>
   -mask 255.255.255.0
   -alldirs
-  -maproot=root
+  -maproot=root:wheel
   ' >> /etc/exports"
+
+# 検証
+$ nfsd checkexports
 ```
 
 （２）MacOSにNFSサーバーを起動する．
@@ -66,7 +69,7 @@ $ sudo apt-get install -y nfs-common
 
 ```bash
 $ sudo mount -t nfs \
-  <>:/System/Volumes/Data/Users/hiroki.hasegawa/<マウント元のディレクトリ> \
+  <MacOSのIPアドレス>:/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ> \
   <マウントポイント>
 ```
 

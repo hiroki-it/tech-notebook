@@ -485,7 +485,7 @@ default_type application/octet-stream
 
 #### ・listen
 
-インバウンド通信を受信するポート番号を設定する．
+インバウンド通信を待ち受けるポート番号を設定する．
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 

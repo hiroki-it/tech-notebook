@@ -30,7 +30,7 @@ $ brew install istioctl
 （１）インストール先のディレクトリに移動する．
 
 ```bash
-$ cd /Users/hiroki.hasegawa/projects/hiroki-it
+$ cd /Users/hiroki.hasegawa/projects
 ```
 
 （２）インストールする．

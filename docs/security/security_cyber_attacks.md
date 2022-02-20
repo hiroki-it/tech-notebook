@@ -102,7 +102,7 @@ Wordなどのワープロアプリや，Excelなどの表計算アプリに感�
 
 共有フォルダー経由での感染拡大
 
-![Worm（共有フォルダ）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Worm（共有フォルダ）.jpg)
+![worm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/worm.jpg)
 
 <br>
 
