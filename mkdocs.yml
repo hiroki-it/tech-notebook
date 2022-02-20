@@ -199,7 +199,9 @@ nav:
                   - ■ Python:
                       - Python: software/software_application_language_imperative_python.md
                       - ■ フレームワーク:
-                          - Flask: software/software_application_language_imperative_python_framework_flask.md
+                          - ■ Flask: 
+                              - コンポーネント: software/software_application_language_imperative_python_framework_flask_component.md
+                              - コマンド: software/software_application_language_imperative_python_framework_flask_command.md
                       - ■ パッケージ:
                           - パッケージ管理: software/software_application_language_imperative_python_package_management.md
 
