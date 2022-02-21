@@ -106,7 +106,7 @@ spawned uWSGI http 1 (pid: 10)
 
 ### uwsgiセクションとは
 
-uWSGIの```uwsgi```プロセスを設定する．
+uWSGIの```uwsgi```プロセスのプールを設定する．
 
 <br>
 

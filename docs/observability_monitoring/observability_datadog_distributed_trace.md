@@ -77,6 +77,17 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 - https://docs.datadoghq.com/tracing/setup/php/
 - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
+PHP-FPMに環境変数を渡す．
+
+```ini
+# www.confファイル
+[www]
+env[DD_SERVICE] = 'foo'
+env[DD_SERVICE_MAPPING] = 'guzzle:foo-guzzle,pdo:foo-pdo'
+env[DD_ENV] = 'prd'
+env[DD_VERSION] = '1.0.0'
+```
+
 #### ・インストール（コンテナの場合）
 
 アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．
@@ -94,7 +105,11 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
   && rm datadog-php-tracer.deb
 ```
 
-アプリケーションが，インストールされたパッケージを読み込んだか否かをコマンドで確認できる．
+また，コンテナの環境変数として，```DD_SERVICE```，```DD_ENV```，```DD_VERSION```を渡す．
+
+#### ・インストールの動作確認
+
+パッケージが正しく読み込まれているかどうかは，```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる．
 
 ```bash
 # 成功の場合
@@ -117,9 +132,9 @@ $  php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 
-#### ・起動ログの確認
+#### ・パラメータの動作確認
 
-トレーサーの起動ログは，```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる．
+パラメーターがトレーサーに渡されたかどうかは，```DATADOG TRACER CONFIGURATION```の項目で確認できる．
 
 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 

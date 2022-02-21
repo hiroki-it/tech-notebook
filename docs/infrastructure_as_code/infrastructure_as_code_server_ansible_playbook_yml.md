@@ -186,8 +186,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - name: Install nginx
-    ansible.builtin.apt:
+  - ansible.builtin.apt:
       name: nginx
       state: latest
 ```
@@ -215,9 +214,37 @@ taskセクションの後に実行するセットアップ処理を設定する�
 管理対象ノード上に事前に用意したファイルを配置する．
 
 ```yaml
-- ansible.builtin.template:
-    src: nginx.conf.j2
-    dest: /etc/nginx/nginx.conf
+- tasks:
+  - ansible.builtin.template:
+      src: nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+```
+
+<br>
+
+### ansible_env
+
+管理対象ノードに設定された環境変数を出力する．```gather_facts```オプションを有効化する必要がある．
+
+参考：
+
+- https://docs.ansible.com/ansible/2.9_ja/reference_appendices/faq.html#shell
+- https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
+
+**＊実装例＊**
+
+管理対象ノードの環境変数の```FOO```を出力する．```gather_facts```オプションを有効化しておく．
+
+```yaml
+- gather_facts: yes
+```
+```yaml
+- vars:
+      foo: ansible_env.FOO
+  tasks:
+      ansible.builtin.template:
+        src: foo.conf.j2
+        dest: /etc/foo/foo.conf
 ```
 
 <br>
@@ -226,11 +253,55 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### varsセクションとは
 
-プレイで用いる設定値を変数として設定する．
+プレイで用いる設定値を変数として設定する．設定した変数は，```ansible.builtin.template```オプションでプロビジョニングする```j2```ファイル内で出力できる．
+
+参考：
+
+- https://blog.katsubemakito.net/ansible/ansible-1st-4
+- https://ksaito11.hatenablog.com/entry/2018/10/24/232929
+
+**＊実装例＊**
 
 ```yaml
 - vars:
     foo: foo
     bar: bar
+  tasks:
+      ansible.builtin.template:
+        src: foo.conf.j2
+        dest: /etc/foo/foo.conf
+```
+
+```bash
+# foo.conf.j2ファイル
+{{ foo }}
+```
+
+<br>
+
+## 06. プラグイン
+
+### lookup
+
+#### ・env
+
+コントロールノードに設定された環境変数を出力する．
+
+参考：
+
+- https://docs.ansible.com/ansible/2.9_ja/reference_appendices/faq.html#shell
+- https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
+
+**＊実装例＊**
+
+コントロールノードの環境変数の```FOO```を出力する．
+
+```yaml
+- vars:
+      foo: lookup("env", "FOO")
+  tasks:
+      ansible.builtin.template:
+        src: foo.conf.j2
+        dest: /etc/foo/foo.conf
 ```
 

@@ -148,13 +148,16 @@ daemonize = yes
 
 #### ・```www.conf```ファイルとは
 
-PHP-FPMの```www```プロセスを設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
+PHP-FPMの```www```プロセスのプールを設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
-参考：https://www.php.net/manual/ja/install.fpm.configuration.php
+参考：
+
+- https://www.php.net/manual/ja/install.fpm.configuration.php
+- https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 #### ・```zz-docker.conf ```ファイルについて
 
-PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
+PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．PHP-FPMの仕様として，同一のプール名でセクション（例：www）を設定した場合に，後ろにくる名前のファイルの設定が優勢されてしまうようになっている．そのため，デフォルトでは```zz-docker.conf ```ファイルの設定が最優先になっている．後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
 
@@ -196,9 +199,12 @@ decorate_workers_output = no
 
 ### wwwセクションとは
 
-PHP-FPMの```www```プロセスを設定する．
+PHP-FPMの```www```プロセスのプールを設定する．
 
-参考：https://www.php.net/manual/ja/install.fpm.configuration.php
+参考：
+
+- https://www.php.net/manual/ja/install.fpm.configuration.php
+- https://hackers-high.com/linux/php-fpm-config/
 
 <br>
 
@@ -217,7 +223,7 @@ clear_env = no
 
 ### env
 
-PHP-FPMに出力する環境変数を設定する．
+プロセスのプール内に出力する環境変数を設定する．
 
 ```ini
 [www]

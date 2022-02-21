@@ -242,7 +242,7 @@ supervisor自体のプロセスのこと．
 
 #### ・supervisordセクションとは
 
-supervisorの```supervisord```プロセスを設定する．
+supervisorの```supervisord```プロセスのプールを設定する．
 
 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 

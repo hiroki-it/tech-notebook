@@ -426,9 +426,9 @@ TF_VAR_ecr_image_tag=foo
 
 <br>
 
-### tfvarsファイル
+### ```.tfvars```ファイル
 
-#### ・tfvarsファイルの用途
+#### ・```.tfvars```ファイルの用途
 
 実行ファイルに入力したい環境変数を定義する．『```terraform.tfvars```』という名前にすると，terraformコマンドの実行時に自動的に読み込まれる．各サービスの間で実装方法が同じため，VPCのみ例を示す．
 

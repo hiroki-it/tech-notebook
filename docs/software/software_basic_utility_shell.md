@@ -17,7 +17,7 @@ description: シェルの知見をまとめました．
 
 ### 仕組み
 
-標準入力からの入力を解釈し，カーネルを操作する．また，カーネルの処理結果を解釈し，標準出力/標準エラー出力に出力する．
+標準入力からの入力を解釈し，カーネルを操作する．また，カーネルの処理結果を解釈し，標準出力/標準エラー出力に出力する．基本的には，いずれのシェルも同じ仕組みである．
 
 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
@@ -25,11 +25,23 @@ description: シェルの知見をまとめました．
 
 <br>
 
-### 種類
+### シェルの系譜
 
 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
+
+<br>
+
+### セットアップ
+
+#### ・apk経由
+
+ほとんどのOSではデフォルトでインストールされているが，Alpine Linuxではシェル以外を別途インストールが必要である．
+
+```bash
+$ apk add bash
+```
 
 <br>
 
@@ -155,6 +167,18 @@ $ ./hello.sh
 ### Makefileとは
 
 ユーティリティの特にビルド（コンパイル＋リンク）に関する処理を，シェルスクリプトではなくターゲットとして実装したファイル．ただし，コンパイル以外を実装しても良い．
+
+<br>
+
+### セットアップ
+
+#### ・apk経由
+
+ほとんどのOSではデフォルトでインストールされているが，Alpine Linuxでは別途インストールが必要である．
+
+```bash
+$ apk add make
+```
 
 <br>
 

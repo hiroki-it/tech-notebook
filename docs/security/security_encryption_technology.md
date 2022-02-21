@@ -260,7 +260,7 @@ SSHを介して，ファイル転送を行う．SSHとFTPを組み合わせた�
 
 **＊例＊**
 
-Chromeでは，HTTPSプロトコルの使用時にSSL証明書に不備がある（例えば，オレオレ証明書を用いている）と，以下のような警告が表示される．SSL証明書については，公開鍵基盤の説明を参照せよ．
+Chromeでは，HTTPSプロトコルの使用時にSSL証明書に不備がある（例：オレオレ証明書を用いている）と，以下のような警告が表示される．SSL証明書については，公開鍵基盤の説明を参照せよ．
 
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSL接続に不備がある場合の警告.jpg)
 

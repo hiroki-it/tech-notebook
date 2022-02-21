@@ -140,7 +140,7 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 ### mysqldセクション
 
-mysqlサーバーの```mysqld```プロセスを設定する．
+mysqlサーバーの```mysqld```プロセスのプールを設定する．
 
 <br>
 
@@ -320,7 +320,7 @@ user = mysql
 
 ### clientセクションとは
 
-mysqlクライアントツールの```client```プロセスを設定する．
+mysqlクライアントツールの```client```プロセスのプールを設定する．
 
 <br>
 
