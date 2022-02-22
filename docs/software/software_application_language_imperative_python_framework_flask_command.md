@@ -85,3 +85,17 @@ $ flask run --reload
 ```bash
 $ flask run --port=8080
 ```
+
+Flaskが以前のプロセスを削除できなかった場合は，ポートが使用されてしまっているため，プロセスを削除する必要がある．
+
+```bash
+OSError: [Errno 98] Address already in use
+```
+
+```bash
+$ ps -fA | grep python
+root          29       9  0 Feb21 pts/0    00:00:00 /usr/local/bin/python /usr/local/bin/flask run --reload
+root          69      29 82 09:47 pts/0    00:03:34 /usr/local/bin/python /usr/local/bin/flask run --reload
+root         397      60  0 09:51 pts/1    00:00:00 grep python
+```
+

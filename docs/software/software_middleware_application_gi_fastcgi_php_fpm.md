@@ -19,7 +19,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 ![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
 
-PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイルの間でデータ通信を行う．PHP-FPMとPHPのプロセスは独立している．そのため，設定値を別々に設定する必要がある．例えば，ログの出力先はそれぞれ個別に設定する必要がある．
+PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイルの間でデータ通信を行う．PHP-FPMとPHPは，それぞれ独立した子プロセスとして実行されている．そのため，設定値を別々に設定する必要がある．例えば，ログの出力先はそれぞれ個別に設定する必要がある．
 
 参考：
 
@@ -72,7 +72,7 @@ $ php-fpm -t
 
 ### systemctlコマンドによる操作
 
-### ・status
+#### ・status
 
 PHP-FPMのプロセスが正常に実行中であることを確認する．
 
@@ -100,7 +100,9 @@ $ systemctl status php-fpm.service
 
 ####  ・```php-fpm.conf```ファイルとは
 
-PHP-FPMの全てのプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．
+PHP-FPMの全てのプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．PHP-FPMの仕様として，異なる```.conf```ファイルで同じプールで同じオプションを設定した場合は，後ろにくる名前のファイルの設定が優先されるようになっている．そのため，同じプールの設定を異なる```.conf```ファイルに分割する場合に，同じオプションを設定しないように注意する．
+
+参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 ```ini
 ;;;;;;;;;;;;;;;;;;;;;
@@ -139,6 +141,7 @@ daemonize = yes
 ; Pool Definitions ; 
 ;;;;;;;;;;;;;;;;;;;;
 
+; 同じプールの設定を異なるファイルに分割する場合は注意が必要である．
 ; See /etc/php-fpm.d/*.conf
 ```
 
@@ -157,9 +160,12 @@ PHP-FPMの```www```プロセスのプールを設定する．```www.conf```フ�
 
 #### ・```zz-docker.conf ```ファイルについて
 
-PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．PHP-FPMの仕様として，同一のプール名でセクション（例：www）を設定した場合に，後ろにくる名前のファイルの設定が優勢されてしまうようになっている．そのため，デフォルトでは```zz-docker.conf ```ファイルの設定が最優先になっている．後勝ちするために，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
+PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．PHP-FPMの仕様では，同じプールに同じオプションを設定した場合は，名前が後ろに来るファイルの設定が優先されるため，デフォルトのベースイメージでは```zz-docker.conf```ファイルの設定が最優先になっている．このファイルに後勝ちできるように，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
-参考：https://kengotakimoto.com/docker-laravel/#toc8
+参考：
+
+- https://kengotakimoto.com/docker-laravel/#toc8
+- https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
 
 ```dockerfile
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
@@ -223,12 +229,18 @@ clear_env = no
 
 ### env
 
-プロセスのプール内に出力する環境変数を設定する．
+プロセスのプール内に出力する環境変数を設定する．この環境変数はPHPのプロセスで定義された環境変数ではないため，```php```コマンドを直接実行しても確認できないことに注意する．
 
 ```ini
 [www]
 env[FOO] = foo
 ```
+
+```bash
+$ php -r 'echo $FOO;' # プロセスが異なるため，何も出力されない．
+```
+
+
 
 <br>
 
