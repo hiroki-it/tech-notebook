@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】パッケージ＠Laravel
-description: パッケージ＠Laravelの知見をまとめました．
+title: 【知見を記録するサイト】専用パッケージ＠Laravel
+description: 専用パッケージ＠Laravelの知見をまとめました．
 ---
 
-# パッケージ＠Laravel
+# 専用パッケージ＠Laravel
 
 ## 01. Laravel Mixパッケージ
 

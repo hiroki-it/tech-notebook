@@ -91,7 +91,7 @@ SREには，継続的な改善によって，システムの信頼性を向上�
 
 MTTxメトリクスとそのダッシュボードを作成するとよい．MTTxメトリクスについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_monitoring.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html
 
 #### ・参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 

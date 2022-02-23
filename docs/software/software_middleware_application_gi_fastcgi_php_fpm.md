@@ -74,7 +74,7 @@ $ php-fpm -t
 
 #### ・status
 
-PHP-FPMのプロセスが正常に実行中であることを確認する．
+PHP-FPMのプロセスが正常に実行中であることを確認する．プロセスがプールとして準備されていることも確認できる．
 
 ```bash
 $ systemctl status php-fpm.service
@@ -88,7 +88,9 @@ $ systemctl status php-fpm.service
    Memory: 1.3G
    CGroup: /system.slice/php-fpm.service
            ├─ 6903 php-fpm: master process (/etc/php-fpm.conf)
-           ├─29288 php-fpm: pool www
+           ├─29280 php-fpm: pool www
+           ├─29281 php-fpm: pool www
+           ├─29282 php-fpm: pool www
            ...
 ```
 
@@ -201,7 +203,31 @@ decorate_workers_output = no
 
 <br>
 
-## 04. wwwセクション
+## 04. globalセクション
+
+### error_log
+
+標準エラー出力の出力先のファイルを設定する．
+
+```ini
+[global]
+error_log = /var/log/php-fpm/error.log
+```
+
+<br>
+
+### pid
+
+PIDの出力先のファイルを設定する．
+
+```ini
+[global]
+pid = /run/php-fpm/php-fpm.pid
+```
+
+<br>
+
+## 05. wwwセクション
 
 ### wwwセクションとは
 

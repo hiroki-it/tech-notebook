@@ -121,14 +121,16 @@ title: 【知見を記録するサイト】目次
         * フレームワーク
             * Laravel
                 * [📖：︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_component.html)
-                * [📖：︎Eloquentコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_component_eloquent.html)
-                * [📖：︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_package.html)
+                * [📖：︎Eloquent ORM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_eloquent_orm.html)
+                * [📖：︎専用パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_package.html)
                 * [📖：︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_package_auth.html)
                 * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_commmand.html)
-            * [📖：︎Symfony](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony.html)
+            * Symfony
+                * [📖：︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony_component.html)
+                * [📖：︎Doctrine ORM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_doctrine_orm.html)
         * パッケージ
             * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_management.html)
-            * [📖：︎MySQLパッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_mysql.html)
+            * [📖：︎SQLパッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_sql.html)
             * [📖：︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_package_others.html)
         * テスト
             * [📖：︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_testing.html)

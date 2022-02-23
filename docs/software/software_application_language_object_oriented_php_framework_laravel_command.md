@@ -76,6 +76,14 @@ $ php artisan make:middleware <Middleware名>
 $ php artisan make:migration create_<テーブル名>_table
 ```
 
+#### ・model
+
+Eloquentモデルを自動生成する．
+
+```bash
+$ php artisan make:model <Eloquentモデル名>
+```
+
 #### ・resource
 
 Resourceクラスを自動生成する．

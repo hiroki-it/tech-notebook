@@ -916,7 +916,7 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの```EventDispatcher```クラスが簡単である．以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony_component.html
 
 ```php
 <?php

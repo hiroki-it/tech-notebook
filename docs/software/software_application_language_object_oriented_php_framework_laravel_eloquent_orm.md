@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Eloquentコンポーネント＠Laravel
-description: Eloquentコンポーネント＠Laravelの知見をまとめました．
+title: 【知見を記録するサイト】Eloquent ORM＠Laravel
+description: Eloquent ORM＠Laravelの知見をまとめました．
 ---
 
-# Eloquentコンポーネント＠Laravel
+# Eloquent ORM＠Laravel
 
 ## はじめに
 
@@ -13,21 +13,15 @@ description: Eloquentコンポーネント＠Laravelの知見をまとめまし�
 
 <br>
 
-## 01. Eloquentモデル
+## 01. Eloquent ORMとは
 
-### artisanコマンド
+Laravelに組み込まれているORM．Active Recordパターンで実装されている．．
 
-#### ・クラスの自動生成
+参考：https://readouble.com/laravel/8.x/ja/eloquent.html
 
-```bash
-$ php artisan make:model <Eloquentモデル名>
-```
+## 01-02. Active Recordパターン
 
-<br>
-
-### Active Recordパターン
-
-#### ・Active Recordパターンとは
+### Active Recordパターンとは
 
 テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
@@ -35,7 +29,9 @@ $ php artisan make:model <Eloquentモデル名>
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
-#### ・メリット/デメリット
+<br>
+
+### メリット/デメリット
 
 | 項目   | メリット                                                     | デメリット                                                   |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -44,6 +40,8 @@ $ php artisan make:model <Eloquentモデル名>
 | 可読性 | ・モデルとこれのプロパティがそのままテーブルになるため，モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい（Userモデル ⇄ usersテーブル）．<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． |                                                              |
 
 <br>
+
+## 03. Eloquentモデル
 
 ### テーブル設計を元にしたEloquentモデル
 
@@ -518,7 +516,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-## 02. Eloquentモデル/ビルダーによるCRUD
+## 03-02. EloquentモデルとビルダーによるCRUD
 
 ### CRUDメソッドの返却値型と返却値
 
@@ -1180,7 +1178,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 <br>
 
-## 03. Laravelへのリポジトリパターン導入
+## 04. Laravelへのリポジトリパターン導入
 
 ### 背景
 

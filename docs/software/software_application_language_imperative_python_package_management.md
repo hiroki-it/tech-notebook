@@ -13,7 +13,7 @@ description: パッケージ管理＠Pythonの知見をまとめました．
 
 <br>
 
-## 01. Pipによる管理：Package Installer for Python
+## 01. PIPによる管理：Package Installer for Python
 
 ### セットアップ
 

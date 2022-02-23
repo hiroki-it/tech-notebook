@@ -32,7 +32,10 @@ description: メモリ管理＠基本ソフトウェアの知見をまとめま�
 
 プロセスが新しいプロセスを生成する場合，プロセス間には親子関係がある．例えば，ターミナルの親プロセスは```shell```や```bash```であり，任意のユーティリティを実行すると，これの子プロセスが生成されることになる．プロセスIDが```1```のプロセスが，全てのプロセスの親である．
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
+参考：
+
+- https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
 
 ```bash
 # MacOSの場合

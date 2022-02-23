@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Symfony
-description: Symfonyの知見をまとめました．
+title: 【知見を記録するサイト】コンポーネント＠Symfony
+description: コンポーネント＠Symfonyの知見をまとめました．
 ---
 
-# Symfony
+# コンポーネント＠Symfony
 
 ## はじめに
 
@@ -19,7 +19,7 @@ description: Symfonyの知見をまとめました．
 
 <br>
 
-## 01-02. Symfonyのディレクトリ構成
+## 01-02. ディレクトリ構成
 
 ```bash
 Symfony
@@ -58,7 +58,7 @@ Symfony
 │   ├── league # ライブラリ
 │   ├── sensio
 │   ├── swiftmailer # ライブラリ
-│   ├── symfonyコンポーネント # コンポーネント 
+│   ├── symfonyコンポーネント
 │   └── twig # ライブラリ
 │
 └── asset #ブラウザコンソールに公開されるファイル（css, javascript, image等）
@@ -73,7 +73,7 @@ Symfony
 
 <br>
 
-## 02. 特に汎用的なSymfonyコンポーネント
+## 02. 特に汎用的なコンポーネント
 
 ### Console
 

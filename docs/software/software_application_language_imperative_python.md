@@ -49,7 +49,8 @@ COPY ./requirements.txt /var/www/foo/requirements.txt
 
 RUN apt-get update -y \
   # uwsgiの要件をインストール．
-  && apt-get install -y gcc \
+  && apt-get install -y \
+    gcc \
   # uESGIの起動時にFlaskが必要なため，パッケージを先にインストール．
   && pip install \
     --upgrade pip \
@@ -74,6 +75,49 @@ LABEL mantainer=${LABEL}
 COPY ./ /var/www/foo/
 
 CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
+```
+
+#### ・FastAPI，uvicornを用いる場合
+
+```dockerfile
+#===================
+# Global ARG
+#===================
+ARG PYTHON_VERSION=3.10
+ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+
+#===================
+# Base Stage
+#===================
+FROM python:${PYTHON_VERSION}-slim as base
+
+WORKDIR /var/www/customer
+
+ENV TZ Asia/Tokyo
+
+COPY ./requirements.txt /var/www/customer/requirements.txt
+
+RUN pip install \
+    --upgrade pip \
+    -r requirements.txt
+
+#===================
+# development Stage
+#===================
+FROM base as development
+LABEL mantainer=${LABEL}
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
+
+#===================
+# Production Stage
+#===================
+FROM base as production
+LABEL mantainer=${LABEL}
+
+COPY ./ /var/www/customer/
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 ```
 
 <br>
