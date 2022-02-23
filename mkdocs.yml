@@ -158,7 +158,7 @@ nav:
                       - ■ フレームワーク:
                           - ■ Laravel:
                               - コンポーネント: software/software_application_language_object_oriented_php_framework_laravel_component.md
-                              - ︎Eloquentコンポーネント: software/software_application_language_object_oriented_php_framework_laravel_component_eloquent.md
+                              - ︎Eloquent ORM: software/software_application_language_object_oriented_php_framework_laravel_eloquent_orm.md
                               - パッケージ: software/software_application_language_object_oriented_php_framework_laravel_package.md
                               - 認証/認可系パッケージ: software/software_application_language_object_oriented_php_framework_laravel_package_auth.md
                               - コマンド: software/software_application_language_object_oriented_php_framework_laravel_command.md
