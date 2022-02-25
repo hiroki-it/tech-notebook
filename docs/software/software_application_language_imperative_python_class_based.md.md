@@ -22,9 +22,12 @@ description: クラス＠Pythonの知見をまとめました．
 class Parent:
     def foo():
         return "foo"
+```
+```python
+from src.models.model import Parent
 
 # 継承 
-class Child(parent):
+class Child(Parent):
     def bar():
         return "bar"
 ```

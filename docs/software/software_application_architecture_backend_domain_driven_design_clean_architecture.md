@@ -27,6 +27,29 @@ DDDが適する機能要件の多いアプリケーションだけでなく，�
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
+#### ・クラス or 関数
+
+オブジェクト指向型と手続き型のマルチパラダイム言語の場合，アプリケーションをクラスまたは関数で実装できる．クリーンアーキテクチャはオブジェクト指向設計が前提にあるため，各レイヤーのパターンをクラスとして実装することが多い．ただ，関数として実装しても支障がないパターンもある．アーキテクチャのレイヤー別にこれを整理した．
+
+| レイヤー             | パターン   | クラス or 関数 |
+| -------------------- | ---------- | -------------- |
+| インフラストラクチャ | DB         | 関数           |
+|                      | DTO        | クラス         |
+|                      | Logger     | クラス         |
+|                      | Middlware  | 関数           |
+|                      | Repository | クラス         |
+|                      | Routers    | 関数           |
+|                      | Seeder     | クラス         |
+| インターフェース     | Controller | クラス         |
+| ユースケース         | Boundary   | クラス         |
+|                      | Interactor | クラス         |
+|                      | Request    | クラス         |
+|                      | Response   | クラス         |
+| ドメイン             | Entity     | クラス         |
+|                      | Id         | クラス         |
+|                      | Repository | クラス         |
+|                      | Value      | クラス         |
+
 <br>
 
 ## 02. インターフェース層（<span style="color: lightgreen; ">黄緑</span>）

@@ -15,9 +15,14 @@ description: Eloquent ORM＠Laravelの知見をまとめました．
 
 ## 01. Eloquent ORMとは
 
-Laravelに組み込まれているORM．Active Recordパターンで実装されている．．
+Laravelに組み込まれているORM．Active Recordパターンで実装されている．内部にはPDOが用いられており，Laravelクエリビルダよりも隠蔽度が高い．
 
-参考：https://readouble.com/laravel/8.x/ja/eloquent.html
+参考：
+
+- https://readouble.com/laravel/8.x/ja/eloquent.html
+- https://codezine.jp/article/detail/12805
+
+<br>
 
 ## 01-02. Active Recordパターン
 

@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Googleサーチコンソール＠監視
+description: Googleサーチコンソール＠監視の知見をまとめました．
 ---
 
 # Googleサーチコンソール＠監視

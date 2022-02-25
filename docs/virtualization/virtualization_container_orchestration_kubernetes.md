@@ -279,12 +279,12 @@ Cluster外部のインバウンド通信をIngressにルーティングする．
 
 | コントローラー名                                      | 開発環境 | 本番環境 |
 | ----------------------------------------------------- | -------- | -------- |
-| minikubeアドオン（実体はNginx Ingressコントローラー） | ◯        | ×        |
-| AWS ALBコントローラー                                 | ×        | ◯        |
-| GCP CLBコントローラー                                 | ×        | ◯        |
-| Nginx Ingressコントローラー                           | ◯        | ◯        |
-| Istio Ingress                                         | ◯        | ◯        |
-| Istio Gateway（Ingressとしても使用できる）            | ◯        | ◯        |
+| minikubeアドオン（実体はNginx Ingressコントローラー） | ✅        |         |
+| AWS ALBコントローラー                                 |         | ✅        |
+| GCP CLBコントローラー                                 |         | ✅        |
+| Nginx Ingressコントローラー                           | ✅        | ✅        |
+| Istio Ingress                                         | ✅        | ✅        |
+| Istio Gateway（Ingressとしても使用できる）            | ✅        | ✅        |
 
 <br>
 

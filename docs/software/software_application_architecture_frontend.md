@@ -137,12 +137,4 @@ Nuxt.jsとAtomic Designのレイヤーは以下のように対応する．
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
 
-<br>
 
-### BFFパターン：Backends  For Frontends
-
-#### ・BFFパターンとは
-
-クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各マイクロサービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
-
-![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)

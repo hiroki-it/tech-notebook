@@ -297,7 +297,13 @@ HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相�
 | API Gatewayをサービスメッシュ内で管理する場合   | 自前で実装する必要がある．<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
 | API Gatewayをサービスメッシュ内で管理しない場合 | クラウドベンダー（AWS API Gateway）やOSS（Kong，Tyk，Apigee）を用いる．<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 
-<br>
+#### ・BFFパターン：Backends  For Frontends
+
+クライアントの種類（モバイル，Web，デスクトップ）に応じたAPI Gatewayを構築し，このAPI Gatewayから各マイクロサービスにルーティングする設計方法．
+
+参考：https://codezine.jp/article/detail/11305?p=4
+
+![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
 
 ## 05. データ永続化方式
 

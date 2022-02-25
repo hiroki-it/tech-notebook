@@ -28,21 +28,21 @@ title: 【知見を記録するサイト】検証ロジック＠JavaScript
 
 ### 検証パターンと検証メソッドの対応
 
-〇：```TRUE```
+✅：```TRUE```
 
-✕：```FALSE```
+空欄：```FALSE```
 
 以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_validation.html
 
-|                        | ```typeof $var``` | ```if($var)``` |
-| :--------------------- | :---------------: | :------------: |
-| **```null```**         |   ```object```    |       ✕        |
-| **```0```**            |   ```number```    |       ✕        |
-| **```1```**            |   ```number```    |     **〇**     |
-| **```""```**（空文字） |   ```string```    |       ✕        |
-| **```"あ"```**         |   ```string```    |     **〇**     |
-| **```NaN```**          |   ```number```    |       ✕        |
-| **```undefined```**    |  ```undefined```  |       ✕        |
+|                     | ```typeof $var``` | ```if($var)``` |
+|:--------------------|:-----------------:|:--------------:|
+| **```null```**      |   ```object```    |                |
+| **```0```**         |   ```number```    |                |
+| **```1```**         |   ```number```    |       ✅        |
+| **```""```**（空文字）   |   ```string```    |                |
+| **```"あ"```**       |   ```string```    |       ✅        |
+| **```NaN```**       |   ```number```    |                |
+| **```undefined```** |  ```undefined```  |                |
 
