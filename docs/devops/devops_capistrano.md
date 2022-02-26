@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Capistrano＠CI/CD
-description: Capistrano＠CI/CDの知見をまとめました．
+title: 【知見を記録するサイト】Capistrano＠DevOps
+description: Capistrano＠DevOpsの知見をまとめました．
 ---
 
-# Capistrano＠CI/CD
+# Capistrano＠DevOps
 
 ## はじめに
 

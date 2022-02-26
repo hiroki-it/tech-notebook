@@ -265,11 +265,11 @@ title: 【知見を記録するサイト】目次
 
 <br>
 
-## ♾️ CI/CD
+## ♾️ DevOps
 
-* [📖：︎CI/CD](https://hiroki-it.github.io/tech-notebook-mkdocs/ci_cd/ci_cd.html)
-* [📖：︎CircleCI](https://hiroki-it.github.io/tech-notebook-mkdocs/ci_cd/ci_cd_circleci.html)
-* [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/ci_cd/ci_cd_capistrano.html)
+* [📖：︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
+* [📖：︎CircleCI](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci.html)
+* [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 
 <br>
 

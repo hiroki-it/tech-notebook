@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】CircleCI＠CI/CD
-description: CircleCI＠CI/CDの知見をまとめました．
+title: 【知見を記録するサイト】CircleCI＠DevOps
+description: CircleCI＠DevOpsの知見をまとめました．
 ---
 
-# CircleCI＠CI/CD
+# CircleCI＠DevOps
 
 ## はじめに
 
