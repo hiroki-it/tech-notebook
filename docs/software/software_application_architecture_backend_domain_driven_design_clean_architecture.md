@@ -29,11 +29,11 @@ DDDが適する機能要件の多いアプリケーションだけでなく，�
 
 #### ・クラス or 関数
 
-オブジェクト指向型と手続き型のマルチパラダイム言語の場合，アプリケーションをクラスまたは関数で実装できる．クリーンアーキテクチャはオブジェクト指向設計が前提にあるため，各レイヤーのパターンをクラスとして実装することが多い．ただ，関数として実装しても支障がないパターンもある．アーキテクチャのレイヤー別にこれを整理した．
+オブジェクト指向型と手続き型のマルチパラダイム言語の場合，アプリケーションをクラスまたは関数で実装できる．クリーンアーキテクチャはオブジェクト指向設計が前提にあるため，各レイヤーのパターンをクラスとして実装することが多い．ただ，クラスとして実装するとインスタンス化の手間があり，関数として実装しても，アーキテクチャの思想に反することがない場合がある（特に外側のレイヤー）．アーキテクチャのレイヤー別にこれを整理した．
 
 | レイヤー             | パターン   | クラス or 関数 |
 | -------------------- | ---------- | -------------- |
-| インフラストラクチャ | DB         | 関数           |
+| インフラストラクチャ | DB         | クラス，関数   |
 |                      | DTO        | クラス         |
 |                      | Logger     | クラス         |
 |                      | Middlware  | 関数           |
@@ -166,7 +166,7 @@ class FormatValidator
 
 ユースケース図については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -2051,7 +2051,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 <br>
 
@@ -2069,7 +2069,7 @@ class DogOrder
 
 #### ・DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 #### ・発表スライド
 
@@ -2501,7 +2501,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり，スローされた例外を対処する責務は，より上位レイヤーに持たせる．より上位レイヤーでは，そのレイヤーに合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_logic_error_and_error_handling.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
 
 <br>
 

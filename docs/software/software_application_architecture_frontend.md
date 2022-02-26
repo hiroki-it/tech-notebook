@@ -38,7 +38,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 View層とModel層の間にViewModel層を置き，View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって，View層とModel層の間を疎結合にするための設計手法の一種．Vue.jsでは，意識せずにMVVMアーキテクチャで実装できるようになっている．詳しくは，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_framework_vuejs.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_vuejs.html
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
 

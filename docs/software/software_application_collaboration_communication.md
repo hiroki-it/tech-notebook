@@ -23,7 +23,7 @@ title: 【知見を記録するサイト】アプリケーション間通信
 
 非同期処理の一種である．そのため，通信の完了を待たずに後続の処理が始まる．後続の全処理が非同期通信と無関係であれば，そのままで問題は起こらない．しかし，後続の処理に非同期通信の結果を用いるものが含まれている場合，この処理だけは非同期通信の後に実行されるように定義する必要がある．特定の処理が非同期通信の後に実行されるように定義する方法については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_asynchronous_process.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
 
 <br>
 

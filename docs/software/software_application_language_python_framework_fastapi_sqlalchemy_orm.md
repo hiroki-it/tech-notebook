@@ -1,9 +1,10 @@
 ---
-title: 【知見を記録するサイト】SQLAlchemy＠Python
-description: SQLAlchemy＠Pythonの知見をまとめました．
+title: 【知見を記録するサイト】SQLAlchemy ORM＠FastAPI
+description: SQLAlchemy ORM＠FastAPIの知見をまとめました．
+
 ---
 
-# SQLAlchemy＠Python
+# SQLAlchemy ORM＠FastAPI
 
 ## はじめに
 
@@ -84,5 +85,44 @@ class User(Base):
     
     id = Column(Integer, primary_key=True)
     ...
+```
+
+<br>
+
+## 02. CRUD
+
+### Create
+
+参考：https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
+
+```python
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from src.models.foo import Foo
+
+class FooController():
+
+     # コンストラクタ
+     # @see https://fastapi.tiangolo.com/tutorial/dependencies/
+     def __init__(self, db: Session = Depends(get_db)):
+         self.db = db
+
+     # 作成トランザクションを実行します．
+     # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
+     def createFoo():
+         foo = Foo({
+             "first_name" : "hiroki" ,
+             "last_name" : "hasegawa"
+         })
+         
+         # セッションにクラスを追加する．
+         self.db.add(foo)
+             
+         # DBレコードを作成する．
+         self.db.commit()
+         
+         # 作成したレコードをインスタンスのデータに設定する．
+         self.db.refresh(foo)
+
 ```
 

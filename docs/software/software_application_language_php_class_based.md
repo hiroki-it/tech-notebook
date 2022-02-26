@@ -17,7 +17,7 @@ description: クラス＠PHPの知見をまとめました．
 
 ###  has-one，has-manyな関係性とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
@@ -233,7 +233,7 @@ $car = new Car();
 
 ### is-a-kind-ofな関係性とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
@@ -504,8 +504,8 @@ class Mammal implements Animal
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_prototype_based.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_prototype_based_method_data.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based_method_data.html
 
 **＊実装例＊**
 
@@ -836,7 +836,7 @@ class Bar
 
 ### useな関係とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 <br>
 

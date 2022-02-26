@@ -67,7 +67,7 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_object_oriented_analysis_and_design.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 <br>
 
@@ -224,7 +224,7 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 #### ・RDBの操作と実際のメソッドの対応関係
 
-| RDBの書き込み系の操作                     | PDOでのメソッド名                                        | ラッピング          | 障害からの回復           |
+| RDBの書き込み系の操作                     | よくあるメソッド名（例：PDO）                            | ラッピング          | 障害からの回復           |
 | :---------------------------------------- | :------------------------------------------------------- | ------------------- | -------------------------------- |
 | 更新前ログの記録                          | ↓                                                        | ↓                   |                                  |
 | ↓                                         | ↓                                                        | ↓                   |                                  |
@@ -273,7 +273,7 @@ try{
 
 詳しくは，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_symfony_component.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
 
 <br>
 

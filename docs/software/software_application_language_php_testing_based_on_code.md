@@ -1044,7 +1044,7 @@ AとBは，『1』または『0』になり得るとする．
 
 採用した網羅で考えられる全ての条件のうち，テストで検証できている割合のこと． 網羅率はテストスイートやパッケージを単位として解析され，これは言語別に異なる．Goで命令網羅の網羅率を検出するユニットテストについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_procedural_go_command.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_command.html
 
 PHPUnitで網羅率を解析する方法については，以下のリンクを参考にせよ．
 

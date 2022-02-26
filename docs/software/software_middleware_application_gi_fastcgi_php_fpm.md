@@ -24,7 +24,7 @@ PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイ�
 参考：
 
 - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_framework_laravel_component.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
 
 <br>
 

@@ -166,4 +166,4 @@ Goroutinesを用いる．ただし，実行環境によっては並列処理に�
 
 #### ・JavaScriptの場合
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_logic_asynchronous_process.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html

@@ -296,7 +296,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 『has-one』『has-many』な関係と表現され，より具体的に説明すると，とデータとして保持する関係性である．Association（関連），Aggregation（集約），Composition（合成）が用いられる．『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．実装例は以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 #### ・is-a-kind-of（グループとメンバーの関係性）
 
@@ -304,7 +304,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 『is-a-kind-of』な関係と表現され，より具体的に説明すると，とグループとメンバーの関係性である．Generalization（汎化），Realization（実現）が用いられる．実装例は以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 #### ・use（引数型/返却値型として用いる関係性）
 
@@ -312,7 +312,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 『use』な関係と表現され，より具体的に説明すると，と引数型/返却値型として用いる関係性である．Dependency（依存）が用いられる．実装例は以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_php_class_based.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 <br>
 

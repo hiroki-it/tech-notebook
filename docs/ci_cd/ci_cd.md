@@ -52,6 +52,20 @@ description: CI/CDの知見をまとめました．
 
 <br>
 
+### Opsの種類
+
+#### ・CIOps
+
+CIツールを用いて，CIパイプラインとCDパイプラインの両方を実行する手法のこと．例えばCircleCIでアプリケーションのビルドからデプロイまでを実行する．
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+
+#### ・GitOps
+
+
+
+<br>
+
 ### 自動化可能なリリースステップ
 
 リリースのステップのうちで，自動化可能なものを示す．

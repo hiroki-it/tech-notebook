@@ -1042,7 +1042,7 @@ steps:
 
 アプリケーションの```.env```ファイルをCirlcCI内で用いたい時は，あらかじめエンコードされた環境変数をProject変数として管理しておき，CirlcleCI内でデコードするようにすれば，envファイルを安全に複製できる．ここで出力している環境変数は，以下のリンクを参考にせよ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_object_oriented_js_framework_nuxtjs.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_nuxtjs.html
 
 ```bash
 $ cat .env | base64
