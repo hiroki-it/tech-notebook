@@ -279,10 +279,10 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
                   - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
 
-  - ♾️ CI/CD:
-      - CI/CD: ci_cd/ci_cd.md
-      - CircleCI: ci_cd/ci_cd_circleci.md
-      - Capistrano: ci_cd/ci_cd_capistrano.md
+  - ♾️ DevOps:
+      - DevOps: devops/devops.md
+      - CircleCI: devops/devops_circleci.md
+      - Capistrano: devops/devops_capistrano.md
 
   - 🔎 可観測性/監視:
       - 可観測性: observability_monitoring/observability.md
