@@ -167,46 +167,19 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ## 03. マイクロサービス間の連携
 
-### Orchestration（オーケストレーション）
-
-#### ・オーケストレーションとは
-
-![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
-
-中央集権型システムとも言う．全てのマイクロサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．1つのリクエストが送信された時に，オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，マイクロサービス指向アーキテクチャでも用いられる．
-
-参考：
-
-- https://news.mynavi.jp/itsearch/article/devsoft/1598
-- https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
-- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
+### マイクロサービス間の通信方向
 
 #### ・リクエストリプライ方式
 
-オーケストレーションでは，個々のマイクロサービス間の連携方式にリクエストリプライ方式を採用する．この方式では，マイクロサービス間でHTTPプロトコルやgRPCプロトコルによる同期通信を実行することになる．
+マイクロサービス間で相互の同期通信を行う．この方式では，マイクロサービス間でHTTPプロトコルやgRPCプロトコルを用いることになる．
 
 参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
-<br>
-
-### Choreography（コレオグラフィ）
-
-#### ・コレオグラフィとは
-
-![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
-
-分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各マイクロサービスで下流マイクロサービスに連携する責務を持たせる設計方法である．個々のマイクロサービス間の連携方式では，イベント駆動方式を採用する．1つのリクエストが送信された時に，マイクロサービスからマイクロサービスに処理が繋がっていく．マイクロサービスアーキテクチャでは，コレオグラフィによる連携が推奨されている．
-
-参考：
-
-- https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
-- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
-
 #### ・イベント駆動方式
 
-コレオグラフィでは，上流/下流のマイクロサービス間の連携方式にイベントドリブン方式を採用する．この方式では，マイクロサービス間で非同期通信を行うことになる．
+マイクロサービスからマイクロサービスに一方通行の非同期通信を行う．この方式では，メッセージキューを用いることになる．
 
 参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
@@ -348,6 +321,41 @@ HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相�
 分散トランザクションとも言う．1つのトランザクション処理によって，複数のマイクロサービスのDBを操作する方法．非推奨である．
 
 参考：https://thinkit.co.jp/article/14639?page=0%2C1
+
+<br>
+
+## 05-02. Sagaパターンの実装
+
+### Orchestration（オーケストレーション）
+
+#### ・オーケストレーションとは
+
+![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
+
+中央集権型システムとも言う．Sagaパターンにて，一連のローカルトランザクションの実行をまとめて制御する責務を持ったコンポーネントを設置する．1つのリクエストが送信された時に，オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも用いられる．オーケストレーションが推奨である．
+
+参考：
+
+- https://news.mynavi.jp/itsearch/article/devsoft/1598
+- https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+- https://zenn.dev/yoshii0110/articles/74dfcf4132a805
+- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
+
+<br>
+
+### Choreography（コレオグラフィ）
+
+#### ・コレオグラフィとは
+
+![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
+
+分散型システムとも言う．Sagaパターンにて，各マイクロサービスで下流マイクロサービスに連携する責務を持たせ，ローカルトランザクションを連続的に実行する．1つのリクエストが送信された時に，マイクロサービスからマイクロサービスに処理が繋がっていく．
+
+参考：
+
+- https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+- https://zenn.dev/yoshii0110/articles/74dfcf4132a805
+- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
 <br>
 
