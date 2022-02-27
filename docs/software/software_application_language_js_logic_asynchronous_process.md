@@ -263,7 +263,7 @@ rejectFunc.catch((err) => {
 
 #### ・async宣言とは
 
-Promiseオブジェクトを明示的に用いる場合，コンストラクタに非同期処理を持つ関数を渡す必要がある．一方で，async宣言された関数内の非同期処理は，Promiseオブジェクトに渡すための関数内に暗黙的に定義される．Promiseや，これのコントラクタに渡す関数を実装する必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
+Promiseオブジェクトを明示的に用いる場合，Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある．一方で，async宣言された関数内の非同期処理は，Promiseオブジェクトに渡すための関数内に暗黙的に定義される．Promiseや，これのコントラクタに渡す関数を実装する必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 

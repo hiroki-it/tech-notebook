@@ -34,9 +34,30 @@ app = Flask(__name__)
 
 <br>
 
+### ```route```メソッド
+
+#### ・```route```メソッド
+
+Flaskクラスにエンドポイントを追加する．
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+PREFIX_FOO = "foo"
+@app.route("/{PREFIX}/show", methods=["GET"])
+    def show():
+        # DBへのアクセス処理
+
+# 中略から 
+```
+
+<br>
+
 ### ```run```メソッド
 
-#### ・```run```メソッド
+#### ・```run```メソッドとは
 
 設定されたルーティングを元に，WerkzeugによるWebサーバーを起動する．開発環境のみで推奨される方法である．
 
@@ -45,12 +66,12 @@ app = Flask(__name__)
 ```python
 from flask import Flask
 
-PREFIX_FOO = "foo"
-
 app = Flask(__name__)
 
+PREFIX_FOO = "foo"
 @app.route("/{PREFIX}/show", methods=["GET"])
     def show():
+        # DBへのアクセス処理
         
 app.run()
 ```

@@ -232,9 +232,9 @@ Istioのインストールや，Istioリソースの操作が可能なリソー�
 
 ## 04. Injectionテスト
 
-### Fault Injection
+### Faultインジェクション
 
-#### ・Fault Injectionとは
+#### ・Faultインジェクションとは
 
 障害を意図的に注入し，サービスメッシュの動作を検証する．
 
@@ -244,6 +244,6 @@ Istioのインストールや，Istioリソースの操作が可能なリソー�
 
 | テスト名         | 内容                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Deplay Injection | マイクロサービスに対するインバウンド通信にて，意図的に通信の遅延を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abort Injection  | マイクロサービスに対するインバウンド通信にて，意図的に通信の中止を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて，意図的に通信の遅延を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて，意図的に通信の中止を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 

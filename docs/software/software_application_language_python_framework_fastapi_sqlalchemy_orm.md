@@ -23,37 +23,36 @@ description: SQLAlchemy ORM＠FastAPIの知見をまとめました．
 **＊実装例＊**
 
 ```python
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
 # SessionLocalクラスを作成します．
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
-def create_session_local(self):
-        db_url = "{db_driver}://{db_user}:{db_password}@{db_host}/{db_database}?charset=utf8".format(
-                db_driver = os.getenv("DB_DRIVER"),
-                db_user = os.getenv("DB_USER"),
-                db_password = os.getenv("DB_PASSWORD"),
-                db_host = os.getenv("DB_HOST"),
-                db_database = os.getenv("DB_DATABASE")
-            )
+def create_session_local():
+    import os
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
 
-        engine = create_engine(
-            db_url,
-            connect_args = {"check_same_thread": False}
-        )
-        
-        return sessionmaker(autocommit=False, autoflush=False, bind=engine)
- 
+    db_url = "{db_driver}://{db_user}:{db_password}@{db_host}/{db_database}?charset=utf8".format(
+        db_driver=os.getenv("DB_DRIVER"),
+        db_user=os.getenv("DB_USER"),
+        db_password=os.getenv("DB_PASSWORD"),
+        db_host=os.getenv("DB_HOST"),
+        db_database=os.getenv("DB_DATABASE"),
+    )
+
+    engine = create_engine(db_url)
+
+    session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    
+    return session_local()
+
+
 # DBに接続します．
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-dependency
-def get_db(self):
+def get_db():
     try:
         session_local = create_session_local()
         yield session_local
     finally:
         session_local.close()
-
 
 ```
 
@@ -109,11 +108,8 @@ class FooController():
 
      # 作成トランザクションを実行します．
      # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
-     def createFoo():
-         foo = Foo({
-             "first_name" : "hiroki" ,
-             "last_name" : "hasegawa"
-         })
+     def createFoo(self):
+         foo = Foo(first_name="hiroki", last_name="hasegawa")
          
          # セッションにクラスを追加する．
          self.db.add(foo)
@@ -123,6 +119,14 @@ class FooController():
          
          # 作成したレコードをインスタンスのデータに設定する．
          self.db.refresh(foo)
+        
+         return JSONResponse(jsonable_encoder(foo))
 
 ```
+
+Dependsメソッドについて
+
+参考：https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di
+
+> DB接続部分にDIを利用することにより、ビジネスロジックとDBが密結合になることを防ぎます。また、DIによってこの `db` インスタンスの中身を外部からoverrideすることが可能になるため、例えばテストのときに `get_db` と異なるテスト用の接続先に置換するといったことが、プロダクションコードに触れることなく可能になります。
 

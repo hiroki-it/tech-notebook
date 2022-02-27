@@ -167,3 +167,27 @@ Goroutinesを用いる．ただし，実行環境によっては並列処理に�
 #### ・JavaScriptの場合
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
+
+#### ・Node.jsの場合
+
+JavaScriptと同じような記法で実装できるNode.jsについて，Node.jsの組み込み関数（特にI/O系）は，非同期処理化するための実装がなされている．そのため，後続の処理に非同期処理の結果を用いるものが含まれている場合，この処理だけは非同期処理の後に実行されるように定義する必要がある．
+
+参考：
+
+- https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
+- https://blog.honjala.net/entry/2018/08/08/022027
+
+```javascript
+const input;
+
+fs.readFile("/foo.txt", "utf8", function(err, data) {
+  input = data;
+});
+
+
+// readFileメソッドの結果を用いる
+// readFileメソッドの完了を待たずに実行されてしまう．
+console.log(input);
+```
+
+<br>

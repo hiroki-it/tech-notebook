@@ -13,11 +13,38 @@ description: DevOpsの知見をまとめました．
 
 <br>
 
-## 01. DevOpsとは
+## 01. DevOpsと優れたリリース
 
-開発者と運用者が協調して開発と運用を行い，システムを継続的に改善する手法論のこと．
+### DevOpsとは
+
+開発者と運用者が協調して開発と運用を行い，システムを継続的に改善する手法論のこと．DevOpsは優れたリリースつながる．
 
 参考：https://e-words.jp/w/DevOps.html
+
+<br>
+
+### 優れたリリースとは
+
+#### ・リリースが自動化されていること
+
+アプリケーションのリリースまでの各ステップ（ビルド，テスト，デプロイ）を自動化する．これにより，リリースがより簡単になり，ヒューマンエラーを防げる．DevOpsのCI/CDパイプラインを導入することでこれを実現する．
+
+参考：https://www.atlassian.com/ja/agile/software-development/release
+
+#### ・ビッグバンリリースではないこと
+
+アプリケーションのリリースの粒度を小さくし，小さなリリースを頻繁に行う．これにより，人間の確認範囲を小さくし，リリース時に予期せぬ問題が起こることを防げる．アジャイル開発やマイクロサービスアーキテクチャを導入することでこれを実現する．
+
+参考：https://www.atlassian.com/ja/agile/software-development/release
+
+#### ・リリース内容がわかるようにしておく
+
+リリース内容がわかるように，タスクやプルリクへのリンクを明記しておく．これにより，リリース時の予期せぬ問題を即解決できる．リリースノートやPRRモデルを導入することでこれを実現する．
+
+参考：
+
+- https://www.atlassian.com/ja/agile/software-development/release
+- https://tech-blog.optim.co.jp/entry/2020/07/01/080000
 
 <br>
 
@@ -65,34 +92,7 @@ description: DevOpsの知見をまとめました．
 
 <br>
 
-## 02. リリース
-
-### 優れたリリースの特徴
-
-#### ・リリースが自動化されていること
-
-アプリケーションのリリースまでの各ステップ（ビルド，テスト，デプロイ）を自動化する．これにより，リリースがより簡単になり，ヒューマンエラーを防げる．CI/CDを導入することでこれを実現する．
-
-参考：https://www.atlassian.com/ja/agile/software-development/release
-
-#### ・ビッグバンリリースではないこと
-
-アプリケーションのリリースの粒度を小さくし，小さなリリースを頻繁に行う．これにより，人間の確認範囲を小さくし，リリース時に予期せぬ問題が起こることを防げる．アジャイル開発やマイクロサービスアーキテクチャを導入することでこれを実現する．
-
-参考：https://www.atlassian.com/ja/agile/software-development/release
-
-#### ・リリース内容がわかるようにしておく
-
-リリース内容がわかるように，タスクやプルリクへのリンクを明記しておく．これにより，リリース時の予期せぬ問題を即解決できる．リリースノートやPRRモデルを導入することでこれを実現する．
-
-参考：
-
-- https://www.atlassian.com/ja/agile/software-development/release
-- https://tech-blog.optim.co.jp/entry/2020/07/01/080000
-
-<br>
-
-## 02-02. デプロイ手法の種類
+## 02. デプロイ手法の種類
 
 ### インプレースデプロイメント
 
@@ -114,7 +114,7 @@ description: DevOpsの知見をまとめました．
 - https://garafu.blogspot.com/2018/11/release-strategy.html
 - https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
-#### ・利用例
+#### ・技術例
 
 Capistorano，CodeDeploy，Fablic，Git（手動で```git pull```コマンド）
 
@@ -139,7 +139,7 @@ Capistorano，CodeDeploy，Fablic，Git（手動で```git pull```コマンド）
 
 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
-#### ・利用例
+#### ・技術例
 
 CodeDeploy
 
@@ -151,7 +151,7 @@ CodeDeploy
 
 古い環境の残したまま，新しい環境をデプロイする．一部のクライアントのリクエストのみを新しい環境にルーティングし，その後，新しい環境にルーティングされるクライアントを段階的に増やしていく．
 
-#### ・利用例
+#### ・技術例
 
 API Gateway，Route53やALBによる重み付けルーティング
 
@@ -169,7 +169,7 @@ API Gateway，Route53やALBによる重み付けルーティング
 
 参考：https://garafu.blogspot.com/2018/11/release-strategy.html
 
-#### ・利用例
+#### ・技術例
 
 ECS，EKS，Kubernetes
 

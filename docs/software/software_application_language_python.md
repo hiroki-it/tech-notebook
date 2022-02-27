@@ -165,6 +165,37 @@ from <パッケージ名>.<サブパッケージ名>.<モジュール名> import
 
 パッケージ名は絶対パスを指定するようにする．
 
+1つのファイルで1つのクラスや関数のみを宣言する場合は，```import```を実行する場所はクラスや関数の外でも中でもよい．
+
+```python
+from foo import foo
+
+def foo():    
+    foo = foo()
+    
+    return foo
+```
+
+ただし，複数を宣言する場合は，可読性の観点からクラスや関数の中で```import```を実行する．
+
+```python
+def foo():
+    from foo import foo
+    
+    foo = foo()
+    
+    return foo
+    
+def bar():
+    from bar import bar
+    
+    bar = bar()
+    
+    return bar
+```
+
+
+
 <br>
 
 ### 命名規則
