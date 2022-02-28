@@ -220,7 +220,7 @@ title: 【知見を記録するサイト】目次
 
 #### ■ [📖：︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
 
-#### ■ 命令型
+#### ■ 手続き型
 
 * サーバープロビジョニング
     * Ansible

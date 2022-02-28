@@ -315,7 +315,7 @@ $ terraform plan \
 
 #### ・-out
 
-実行プランファイルを生成する．```terraform apply```コマンドのために使用できる．
+実行プランファイルを生成する．```terraform apply```コマンドのために用いることができる．
 
 ```bash
 $ terraform plan \

@@ -284,7 +284,7 @@ DestinationRule上のインバウンド通信をルーティングできる名�
 
 #### ・```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする．
+全ての名前空間で用いることができるようにする．
 
 ```yaml
 kind: DestinationRule
@@ -295,7 +295,7 @@ spec:
 
 #### ・```.```（ドット）
 
-現在の名前空間で使用できるようにする．
+現在の名前空間で用いることができるようにする．
 
 ```yaml
 kind: DestinationRule
@@ -563,7 +563,7 @@ spec:
 
 #### ・hosts
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワイルドカードを使用できる．
+Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワイルドカードを用いることができる．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -936,7 +936,7 @@ VirtualService上のインバウンド通信をルーティングできる名前
 
 #### ・```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする．
+全ての名前空間で用いることができるようにする．
 
 ```yaml
 kind: VirtualService
@@ -947,7 +947,7 @@ spec:
 
 #### ・```.```（ドット）
 
-現在の名前空間で使用できるようにする．
+現在の名前空間で用いることができるようにする．
 
 ```yaml
 kind: VirtualService

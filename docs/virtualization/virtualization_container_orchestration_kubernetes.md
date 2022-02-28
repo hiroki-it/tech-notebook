@@ -284,7 +284,7 @@ Cluster外部のインバウンド通信をIngressにルーティングする．
 | GCP CLBコントローラー                                 |         | ✅        |
 | Nginx Ingressコントローラー                           | ✅        | ✅        |
 | Istio Ingress                                         | ✅        | ✅        |
-| Istio Gateway（Ingressとしても使用できる）            | ✅        | ✅        |
+| Istio Gateway（Ingressとしても用いることができる）            | ✅        | ✅        |
 
 <br>
 

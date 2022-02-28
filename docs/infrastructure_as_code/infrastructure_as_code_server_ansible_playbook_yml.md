@@ -39,15 +39,57 @@ $ pip3 install ansible
 
 <br>
 
-## 03. 設計ポリシー
+## 04. 設計ポリシー
+
+### ディレクトリ構成
+
+参考：
+
+- https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+- https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+
+```bash
+project
+├── group_vars
+│   └── foo_group.yml
+│
+├── host_vars
+│   ├── bar_host.yml
+│   └── baz_host.yml
+│   
+├── inventories
+│   ├── prd # 本番環境
+│   │   ├── hosts.yml
+│   │   └── host_vars.yml
+│   │
+│   └── dev
+│      
+└── roles
+    ├── app # appサーバー
+    ├── common # 共通
+    │   ├── handlers
+    │   │   └── main.yml
+    │   │   
+    │   ├── tasks
+    │   └── templates
+    │    
+    ├── db # DBサーバー
+    └── web # Webサーバー
+```
+
+<br>
+
+### 命名規則
 
 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 
 <br>
 
-## 04. 設定ファイル，ディレクトリの種類
+## 05. 設定ファイルの種類
 
 ### ```playbook.yml```ファイル
+
+#### ・```playbook.yml```ファイルとは
 
 サーバーのセットアップ処理を設定する．
 
@@ -57,11 +99,20 @@ $ pip3 install ansible
 
 ### ```group_vars```ディレクトリ
 
+#### ・```group_vars```ディレクトリとは
+
 管理対象ノードが複数ある場合に，この設定ファイルを配置する．
+
+```yaml
+env: prd
+domain: example.com
+```
 
 <br>
 
 ### ```host_vars```ディレクトリ
+
+#### ・```host_vars```ディレクトリとは
 
 管理対象ノードが1つだけの場合に，この設定ファイルを配置する．
 
@@ -75,23 +126,50 @@ $ pip3 install ansible
 
 #### ・```inventory```ファイル
 
-参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
+管理対象ノードを設定する．```ini```形式または```yml```形式で定義する．実行環境（本番/ステージング）別にファイルを切り分けると良い．
+
+参考：
+
+- https://docs.ansible.com/ansible/2.9_ja/user_guide/intro_inventory.html#inventoryformat
+- https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
 
 ```yaml
+# 開発環境
 - all:
     hosts:
       app:
-        ansible_host: 192.168.111.101
+        # 開発環境のIPアドレス
+        ansible_host: 127.0.0.1
+        # ログインするためのユーザー名
+        ansible_user: vagrant
+        # ログインするためのパスワード
+        ansible_password: vagrant
+      web:
+        ansible_host: 127.0.0.1
         ansible_user: vagrant
         ansible_password: vagrant
       db:
-        ansible_host: 192.168.111.102
+        ansible_host: 127.0.0.1
         ansible_user: vagrant
-        ansible_password: vagrant
+        ansible_password: vagrant 
+```
+
+```yaml
+# 本番環境
+- all:
+    hosts:
+      app:
+        # 本番環境のサーバーのIPアドレス
+        ansible_host: 192.168.111.101
+        ansible_user: ubuntu
+        ansible_password: ubuntu
+        # SSH接続に用いる秘密鍵
+        ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
       web:
-        ansible_host: 192.168.111.103
-        ansible_user: vagrant
-        ansible_password: vagrant
+        ansible_host: 192.168.111.10
+        ansible_user: ubuntu
+        ansible_password: ubuntu
+        ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
 ```
 
 <br>

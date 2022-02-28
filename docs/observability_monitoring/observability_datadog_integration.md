@@ -60,7 +60,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 参考：https://docs.datadoghq.com/integrations/amazon_web_services/?tab=roledelegation#setup
 
-（１）DatadogのAWSアカウントの登録画面で，CloudFormationによる自動セットアップを選択する．これにより，AWSコンソール画面に自動的に遷移する．ほとんど自動入力されており，空欄部分（APIキーなど）に値を入力する．
+（１）DatadogのAWSアカウントの登録画面で，CloudFormationによる自動セットアップを選択する．これにより，AWSコンソール画面に自動的に遷移する．CloudFormationのテンプレートを用いて，スタックを作成できる．ほとんどのパラメーターはデフォルト値が設定されており，空欄部分（APIキーなど）に値を入力する．
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 

@@ -67,8 +67,8 @@ JavaScriptで，非同期処理の成否を管理し，後続する処理を定�
 | リリース日 | 提供                                 | 種類                | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------ | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 2012       | JQueryパッケージのDeferredモジュール | Promiseオブジェクト | バージョン1.5でPromiseオブジェクトが導入された．<br>参考：https://api.jquery.com/category/version/1.5/ | 参考：https://api.jquery.com/category/deferred-object/       |
-| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく使用できるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
-| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく使用できるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく用いることができるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
+| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく用いることができるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
 <br>
 

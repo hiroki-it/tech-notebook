@@ -588,7 +588,7 @@ class SubFoo extends Foo
 
 ![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Trait.png)
 
-再利用したいメソッドやデータを部品化し，利用したい時にクラスに取り込む．Traitを用いるときは，クラス内でTraitをuse宣言する．Trait自体は不完全なクラスであり，インスタンス化できない．また，親クラスでトレイトを読み込むと，子クラスでもトレイトの機能を使用できる．
+再利用したいメソッドやデータを部品化し，利用したい時にクラスに取り込む．Traitを用いるときは，クラス内でTraitをuse宣言する．Trait自体は不完全なクラスであり，インスタンス化できない．また，親クラスでトレイトを読み込むと，子クラスでもトレイトの機能を用いることができる．
 
 **＊実装例＊**
 

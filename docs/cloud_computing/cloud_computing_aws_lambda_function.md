@@ -157,7 +157,7 @@ Goを用いて，Lambda-APIに対してリクエストを送信し，AWSリソ�
 
 #### ・```Start```関数
 
-Lamda関数を実行するための関数．```Start```関数に渡すパラメータには，必ず1つでもerrorインターフェースの実装が含まれている必要がある．もし含まれていない場合は，Lambdaで内部エラーが起こる．
+Lamda関数を実行するための関数．```Start```関数に渡すパラメーターには，必ず1つでもerrorインターフェースの実装が含まれている必要がある．もし含まれていない場合は，Lambdaで内部エラーが起こる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html
 
@@ -187,7 +187,7 @@ func main() {
 
 #### ・パラメータ
 
-contextオブジェクトとeventオブジェクトをパラメータとして使用できる．
+contextオブジェクトとeventオブジェクトをパラメーターとして用いることができる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
 
@@ -369,7 +369,7 @@ func main() {
 
 | パッケージ名            | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる              | 参考：https://nodejs.org/api/index.html                      |
+| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を用いることができる              | 参考：https://nodejs.org/api/index.html                      |
 | aws-sdk.js              | JavaScriptを用いて，AWS-APIに対してリクエストを送信し，AWSリソースを操作できる． | 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 <br>

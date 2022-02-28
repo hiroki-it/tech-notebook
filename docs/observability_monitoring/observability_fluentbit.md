@@ -318,7 +318,7 @@ $ /fluent-bit/bin/fluent-bit \
 [INPUT]
     # プラグイン名
     Name              tail
-    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
+    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを用いることができる．
     Path              /var/www/foo/storage/logs/*.log
     # 用いるパーサー名
     multiline.parser  laravel-multiline-parser

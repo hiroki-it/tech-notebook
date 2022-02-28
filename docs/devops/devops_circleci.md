@@ -488,7 +488,7 @@ jobを実行する仮想環境を選択できる．
 
 #### ・dockerタイプとは
 
-dockerコンテナを実行環境として設定する．これを選択したうえで，dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を用いて，実行環境dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合，```setup_remote_docker```を有効化すると，これを使用できるようになる．```machine```タイプを選択した場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
+dockerコンテナを実行環境として設定する．これを選択したうえで，dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を用いて，実行環境dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合，```setup_remote_docker```を有効化すると，これを用いることができるようになる．```machine```タイプを選択した場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -1445,9 +1445,9 @@ workflows:
 
 | 構造      | 説明                                                         |
 | --------- | ------------------------------------------------------------ |
-| jobs      | workflowsにて，Orbsから```job```として使用できる．           |
-| commands  | ```job```にて，```step```として使用できる．                  |
-| executors | ```exexutor```にて，事前定義されたexecutorsとして使用できる． |
+| jobs      | workflowsにて，Orbsから```job```として用いることができる．           |
+| commands  | ```job```にて，```step```として用いることができる．                  |
+| executors | ```exexutor```にて，事前定義されたexecutorsとして用いることができる． |
 
 #### ・Orbsのデメリット
 
@@ -1700,7 +1700,7 @@ workflows:
 
 #### ・deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
-ECSタスク定義を更新する．さらに，ブルー/グリーンデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを使用できる．
+ECSタスク定義を更新する．さらに，ブルー/グリーンデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを用いることができる．
 
 **＊実装例＊**
 
@@ -1881,7 +1881,7 @@ orbs:
   slack: circleci/slack@4.1
 
 commands:
-  # 他のジョブ内で使用できるようにcommandとして定義
+  # 他のジョブ内で用いることができるようにcommandとして定義
   notify_of_failure:
     steps:
       - slack/notify:
