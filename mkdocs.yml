@@ -238,7 +238,7 @@ nav:
 
   - ⚙️ Infrastructure as Code:
       - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
-      - ■ 命令型:
+      - ■ 手続き型:
           - ■ サーバープロビジョニング:
               - ■ Ansible:
                   - playbook.yml: infrastructure_as_code/infrastructure_as_code_server_ansible_playbook_yml.md
