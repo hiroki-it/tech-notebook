@@ -241,7 +241,7 @@ nav:
       - ■ 手続き型:
           - ■ サーバープロビジョニング:
               - ■ Ansible:
-                  - playbook.yml: infrastructure_as_code/infrastructure_as_code_server_ansible_playbook_yml.md
+                  - Playbook: infrastructure_as_code/infrastructure_as_code_server_ansible_playbook.md
           - ■ コンテナプロビジョニング:
               - ■ Docker:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
