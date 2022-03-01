@@ -1130,17 +1130,31 @@ autoFilledRule3 ...
 
 <br>
 
-## 07-04. ログパイプラインの後処理
+## 07-04. パイプラインの前後処理
 
-### 標準属性の付与
+### 前処理
+
+#### ・プリプロセッサー
+
+予約済み属性（```message```，```timestamp```，```status```，```host```，```service```）に基づいて，ログを構造化する．例えば，受信したログが非構造化ログの場合，これはDatadogの基底構造化ログの```message```属性に割り当てられる．一方で，構造化ログであった場合は```message```属性は使用されない．
+
+参考：https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
 
 <br>
 
-## 07-05. オプション処理
+### 後処理
 
-### ログのメトリクス
+#### ・標準属性
 
-#### ・ログのメトリクスとは
+標準属性を新しく付与する．
+
+#### ・Live Tail
+
+ログパイプライン処理後のログをリアルタイムで確認できる．
+
+参考：https://docs.datadoghq.com/logs/explorer/live_tail/
+
+#### ・ログのメトリクス
 
 パイプラインで処理を終えたログに関して，属性/タグに基づくメトリクスを作成する．メトリクスを作成しておくと，ログのレポートとして用いることができる．
 
@@ -1148,9 +1162,7 @@ autoFilledRule3 ...
 
 <br>
 
-### インデックス
-
-#### ・インデックスとは
+#### ・インデックス
 
 パイプラインで処理を終えたログをグループ化し，ログの破棄ルールや保管期間をグループごとに定義できる．インデックスを用いれば，Datadogのログ保管のネックになる保管料金を抑えられる．
 
@@ -1159,27 +1171,13 @@ autoFilledRule3 ...
 - https://docs.datadoghq.com/logs/indexes/
 - https://tech-blog.abeja.asia/entry/why-datadog
 
-<br>
+#### ・アーカイブ
 
-### アーカイブ
-
-<br>
-
-### セキュリティルール
+#### ・セキュリティルール
 
 <br>
 
 ## 08. ログエクスプローラ
-
-### Live Tail
-
-#### ・Live Tailとは
-
-ログパイプライン処理後のログをリアルタイムで確認できる．
-
-参考：https://docs.datadoghq.com/logs/explorer/live_tail/
-
-<br>
 
 ### ログクエリ
 

@@ -106,7 +106,11 @@ end
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 ```bash
-config.vm.box = "foo"
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "foo"
+
+end
 ```
 
 <br>
@@ -118,7 +122,11 @@ config.vm.box = "foo"
 Vagrantの更新通知を設定する．
 
 ```bash
-config.vm.box_check_update = false
+Vagrant.configure("2") do |config|
+  
+  config.vm.box_check_update = false
+
+end
 ```
 
 <br>
@@ -138,7 +146,11 @@ config.vm.box_check_update = false
 参考；https://www.vagrantup.com/docs/networking/forwarded_ports
 
 ```bash
-config.vm.network "forwarded_port", guest: 80, host: 8080
+Vagrant.configure("2") do |config|
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+end
 ```
 
 #### ・private_network
@@ -148,7 +160,11 @@ config.vm.network "forwarded_port", guest: 80, host: 8080
 参考：https://www.vagrantup.com/docs/networking/private_network
 
 ```bash
-config.vm.network "private_network", ip: "10.0.0.2"
+Vagrant.configure("2") do |config|
+
+  config.vm.network "private_network", ip: "10.0.0.2"
+
+end
 ```
 
 <br>
@@ -166,10 +182,14 @@ config.vm.network "private_network", ip: "10.0.0.2"
 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
 ```bash
-config.vm.provider "virtualbox" do |vb|
-  vb.cpus = "2"
-  vb.gui = true
-  vb.memory = "1024"
+Vagrant.configure("2") do |config|
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = "2"
+    vb.gui = true
+    vb.memory = "1024"
+  end
+
 end
 ```
 
@@ -178,10 +198,13 @@ end
 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
 ```bash
-config.vm.provider "docker" do |docker|
-  docker.build_dir = "./docker/Dockerfile"
+Vagrant.configure("2") do |config|
 
-  docker.has_ssh = true
+  config.vm.provider "docker" do |docker|
+    docker.build_dir = "./docker/Dockerfile"
+    docker.has_ssh = true
+  end
+  
 end
 ```
 
@@ -193,14 +216,78 @@ end
 
 仮想環境のプロビジョニングを設定する．
 
+#### ・shell
+
+shellを用いて，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを用いる場合は，これ自体をインストールしておく必要がある．
+
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 ```bash
-config.vm.provision "shell", inline: <<-SHELL
-  apt-get update
-  apt-get install -y ansible
-SHELL
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    # fooというプロビジョニングツールをインストールする．
+    apt-get install -y foo
+  SHELL
+  
+end
 ```
+
+#### ・ansible
+
+ホスト側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．開発環境ではこのオプションを用いることは非推奨で，```ansible_local```オプションを用いることが推奨されている．
+
+参考：https://www.vagrantup.com/docs/provisioning/ansible
+
+```bash
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.inventory_path = "inventory.yml"
+  SHELL
+  
+end
+```
+
+#### ・ansible_local
+
+仮想環境側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．注意点としては，開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため，コントロールノードは自分自身を指定してプロビジョニングを実行することになる．開発環境ではこのオプションを用いることが推奨されており，```ansible```オプションを用いることが非推奨とされている．
+
+参考：
+
+- https://www.vagrantup.com/docs/provisioning/ansible_local
+- https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
+
+```bash
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.inventory_path = "inventory.yml"
+  SHELL
+  
+end
+```
+
+ただし，Vagrant経由ではなく，直接Ansibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
+
+```bash
+Vagrant.configure("2") do |config|
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    # Ansibleをインストールする．
+    apt-get install -y ansible
+    # Ansibleを直接操作する．
+    ansible-playbook /etc/ansible/playbook.yml -i inventory.yml
+  SHELL
+  
+end
+```
+
+
 
 <br>
 
@@ -213,7 +300,11 @@ SHELL
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 ```bash
-config.vm.synced_folder ".", "/var/www/foo"
+Vagrant.configure("2") do |config|
+
+  config.vm.synced_folder ".", "/var/www/foo"
+  
+end
 ```
 
 #### ・type
@@ -223,7 +314,11 @@ config.vm.synced_folder ".", "/var/www/foo"
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ```bash
-config.vm.synced_folder ".", "/var/www/foo", type: "nfs"
+Vagrant.configure("2") do |config|
+
+  config.vm.synced_folder ".", "/var/www/foo", type: "nfs"
+  
+end
 ```
 
 ホストと仮想環境間のファイルの入出力の速度差によって，仮想環境のパフォーマンスに差がある．以下のリンクで，ロードテストを行ったところ，『```RSync > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良かった．

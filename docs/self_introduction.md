@@ -1,7 +1,3 @@
----
-title: 【知見を記録するサイト】自己紹介
----
-
 # 自己紹介
 
 ## 👋🏻 はじめまして
@@ -24,7 +20,7 @@ title: 【知見を記録するサイト】自己紹介
 
 <br>
 
-## 📚 学習記録
+## 📚 知見の記録
 
 技術的な知識を体系的に整理するため，ノートにまとめております．
 
@@ -32,15 +28,19 @@ title: 【知見を記録するサイト】自己紹介
 
 <br>
 
-## 🏭 学習用リポジトリ
+## 🏭 練習用リポジトリ
+
+アーキテクチャ関連の技術を人知れず練習しております．
 
 知見の共有になれば幸いです．
 
-▶ https://github.com/hiroki-it/ddd-api-with-laravel （Clean-Arch，Laravel，GitHub Actions）
+▶ https://github.com/hiroki-it/ddd-api-with-laravel （Clean-Arch，Laravel，GitHub Actions，...）
 
-▶ https://github.com/hiroki-it/ddd-api-with-go-gin （Clean-Arch，Gin）
+▶ https://github.com/hiroki-it/ddd-api-with-go-gin （Clean-Arch，Gin，...）
 
-▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （Clean-Arch，Go，Serverless Framework，CircleCI）
+▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （Clean-Arch，Go，Serverless Framework，CircleCI，...）
+
+▶ https://github.com/hiroki-it/microservices-with-kubernetes （Microservices-Arch，K8s，Istio，...）
 
 <br>
 

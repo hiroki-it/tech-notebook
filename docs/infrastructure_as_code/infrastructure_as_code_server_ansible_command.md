@@ -21,8 +21,9 @@ description: コマンド＠Ansibleの知見をまとめました．
 
 ### -i
 
+inventoryファイルを指定する．これにより，プロビジョニングの実行先の管理対象ノードが決まる．
+
 ```bash
-$ ansible-playbook <playbookファイル> \
--i <inventoryファイル>
+$ ansible-playbook <playbookファイル> -i <inventoryファイル>
 ```
 

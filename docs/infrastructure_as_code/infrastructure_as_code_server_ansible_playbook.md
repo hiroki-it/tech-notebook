@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】playbook.yml＠Ansible
-description: playbook.yml＠Ansibleの知見をまとめました．
+title: 【知見を記録するサイト】 Playbook＠Ansible
+description: Playbook＠Ansibleの知見をまとめました．
 ---
 
-# playbook.yml＠Ansible
+# Playbook＠Ansible
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: playbook.yml＠Ansibleの知見をまとめました．
 
 ## 01. Ansibleの仕組み
 
-コントロールノードと管理対象ノードから構成される．コントロールノードにはAnsibleがインストールされている．このAnsibleは，管理対象ノードにSSH接続を実行し，設定ファイルに基づいたプロビジョニングを実行する．
+コントロールノードと管理対象ノードから構成される．コントロールノードとしてのデプロイサーバーにはAnsibleがインストールされている．また，管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる．デプロイサーバー上のAnsibleは，管理対象ノードのサーバーにSSH接続を実行し，設定ファイルに基づいたプロビジョニングを実行する．
 
 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
@@ -101,7 +101,11 @@ project
 
 #### ・```group_vars```ディレクトリとは
 
-管理対象ノードが複数ある場合に，この設定ファイルを配置する．
+複数の管理対象ノードで用いる変数に関するファイルを配置する．
+
+#### ・```group_var```ファイル
+
+複数の管理対象ノードで用いる変数を設定する．
 
 ```yaml
 env: prd
@@ -114,7 +118,11 @@ domain: example.com
 
 #### ・```host_vars```ディレクトリとは
 
-管理対象ノードが1つだけの場合に，この設定ファイルを配置する．
+特定の管理対象ノードで用いる変数に関するファイルを配置する．
+
+#### ・```host_var```ファイル
+
+特定の管理対象ノードで用いる変数を設定する．
 
 <br>
 
@@ -331,7 +339,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### varsセクションとは
 
-プレイで用いる設定値を変数として設定する．設定した変数は，```ansible.builtin.template```オプションでプロビジョニングする```j2```ファイル内で出力できる．
+プレイで用いる設定値を変数として設定する．設定した変数は，```ansible.builtin.template```オプションを用いて```j2```ファイルに出力できる．
 
 参考：
 

@@ -179,7 +179,7 @@ Debian，Ubuntu，など
 
 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
-``` bash
+```bash
 # 確認方法
 $ cat /etc/issue
 
