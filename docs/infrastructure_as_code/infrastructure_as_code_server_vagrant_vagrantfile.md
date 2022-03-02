@@ -79,7 +79,7 @@ Vagrantfileのバージョンを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   # その他の全てのオプションを設定する．
@@ -105,7 +105,7 @@ end
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.box = "foo"
@@ -121,7 +121,7 @@ end
 
 Vagrantの更新通知を設定する．
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
   
   config.vm.box_check_update = false
@@ -145,7 +145,7 @@ end
 
 参考；https://www.vagrantup.com/docs/networking/forwarded_ports
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
@@ -159,7 +159,7 @@ end
 
 参考：https://www.vagrantup.com/docs/networking/private_network
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "10.0.0.2"
@@ -181,7 +181,7 @@ end
 
 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
@@ -197,7 +197,7 @@ end
 
 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provider "docker" do |docker|
@@ -216,13 +216,18 @@ end
 
 仮想環境のプロビジョニングを設定する．
 
-#### ・shell
-
-shellを用いて，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを用いる場合は，これ自体をインストールしておく必要がある．
-
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
-```bash
+#### ・shell
+
+shellを用いて，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを用いる場合は，これ自体をインストールしておく必要がある．シェルが複数行に渡る場合は，Rubyのヒアドキュメント形式（```<<-```）を用いると良い．
+
+参考：
+
+- https://www.vagrantup.com/docs/provisioning/shell
+- https://monologu.com/vagrant-shell-provisioning/
+
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
@@ -230,7 +235,7 @@ Vagrant.configure("2") do |config|
     # fooというプロビジョニングツールをインストールする．
     apt-get install -y foo
   SHELL
-  
+
 end
 ```
 
@@ -240,14 +245,14 @@ end
 
 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.inventory_path = "inventory.yml"
   SHELL
-  
+
 end
 ```
 
@@ -260,20 +265,20 @@ end
 - https://www.vagrantup.com/docs/provisioning/ansible_local
 - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.inventory_path = "inventory.yml"
   SHELL
-  
+
 end
 ```
 
 ただし，Vagrant経由ではなく，直接Ansibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
@@ -287,8 +292,6 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-
-
 <br>
 
 ### config.vm.synced_folder
@@ -299,11 +302,11 @@ end
 
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/var/www/foo"
-  
+
 end
 ```
 
@@ -313,11 +316,11 @@ end
 
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
-```bash
+```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/var/www/foo", type: "nfs"
-  
+
 end
 ```
 

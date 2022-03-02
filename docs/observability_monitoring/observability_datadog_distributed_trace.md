@@ -68,19 +68,25 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### セットアップ
 
-#### ・インストール（サーバーの場合）
+#### ・インストール（直接の場合）
 
 用いているミドルウェアごとに，インストール方法が異なる．サーバーを冗長化している場合，全てのサーバーに共通した設定のエージェントを組み込めるという点で，IaCツールを用いた方が良い．
 
-参考：
+```bash
+# GitHubからパッケージをダウンロードする．
+$ curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
-- https://docs.datadoghq.com/tracing/setup/php/
-- https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
+# パッケージをインストールをする．
+$ dpkg -i datadog-php-tracer_0.69_amd64.deb
 
-PHP-FPMに環境変数を渡す．
+# 残骸ファイルを削除する．
+$ rm datadog-php-tracer.deb
+```
+
+また，PHP-FPMに環境変数を渡せるように，```www```プールに関する設定ファイルを置き，PHP-FPMを再起動する．
 
 ```ini
-# www.confファイル
+# /etc/php-fpm.d/dd-trace.confファイル
 [www]
 env[DD_SERVICE] = 'foo'
 env[DD_SERVICE_MAPPING] = 'guzzle:foo-guzzle,pdo:foo-pdo'
@@ -88,24 +94,43 @@ env[DD_ENV] = 'prd'
 env[DD_VERSION] = '1.0.0'
 ```
 
+参考：
+
+- https://docs.datadoghq.com/tracing/setup/php/
+- https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
+
+#### ・インストール（Ansibleの場合）
+
+```yaml
+- tasks:
+    - name: Install dd-trace-php
+      ansible.builtin.shell: |
+        curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb
+        dpkg -i datadog-php-tracer_0.69_amd64.deb
+        rm datadog-php-tracer.deb
+      environment:
+        DD_TRACE_VERSION: 0.63.0
+    - name: Upload dd-trace.conf
+      ansible.builtin.template: src=dd-trace.conf dest=/etc/php-fpm.d/dd-trace.conf
+      notify: restart php-fpm
+```
+
 #### ・インストール（コンテナの場合）
 
-アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．
+アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．また，コンテナの環境変数として，```DD_SERVICE```，```DD_ENV```，```DD_VERSION```を渡す．
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
 
-# GitHubからパッケージをダウンロード
+# GitHubからパッケージをダウンロードする．
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
-  # 解凍
+  # パッケージをインストールする．
   && dpkg -i datadog-php-tracer.deb \
-  # 残骸ファイルを削除
+  # 残骸ファイルを削除する．
   && rm datadog-php-tracer.deb
 ```
-
-また，コンテナの環境変数として，```DD_SERVICE```，```DD_ENV```，```DD_VERSION```を渡す．
 
 #### ・インストールの動作確認
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】 Playbook＠Ansible
-description: Playbook＠Ansibleの知見をまとめました．
+title: 【知見を記録するサイト】 設定ファイル＠Ansible
+description: 設定ファイル＠Ansibleの知見をまとめました．
 ---
 
-# Playbook＠Ansible
+# 設定ファイル＠Ansible
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Playbook＠Ansibleの知見をまとめました．
 
 ## 01. Ansibleの仕組み
 
-コントロールノードと管理対象ノードから構成される．コントロールノードとしてのデプロイサーバーにはAnsibleがインストールされている．また，管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる．デプロイサーバー上のAnsibleは，管理対象ノードのサーバーにSSH接続を実行し，設定ファイルに基づいたプロビジョニングを実行する．
+コントロールノードと管理対象ノードから構成される．コントロールノードとしてのデプロイサーバーにはAnsibleがインストールされている．また，管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる．デプロイサーバー上のAnsibleは，管理対象ノードのサーバーにSSH接続を実行し，設定ファイルに基づいたプロビジョニングを実行する．設定ファイルの実装の変更によって，プロセスの再起動を伴うプロビジョニングが実行される場合，ダウンタイムを考慮する必要がある．
 
 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
@@ -50,6 +50,7 @@ $ pip3 install ansible
 
 ```bash
 project
+├── playbook.yml
 ├── group_vars
 │   └── foo_group.yml
 │
@@ -59,7 +60,8 @@ project
 │   
 ├── inventories
 │   ├── prd # 本番環境
-│   │   ├── hosts.yml
+│   │   ├── hosts_a.yml # 冗長化されたサーバーa
+│   │   ├── hosts_c.yml # 冗長化されたサーバーc
 │   │   └── host_vars.yml
 │   │
 │   └── dev
@@ -87,13 +89,143 @@ project
 
 ## 05. 設定ファイルの種類
 
-### ```playbook.yml```ファイル
+### playbookファイル
 
-#### ・```playbook.yml```ファイルとは
+#### ・playbookファイルとは
 
-サーバーのセットアップ処理を設定する．
+サーバーのセットアップ処理を設定する．実装の種類別に，```roles```ディレクトリに切り分けても良い．
 
 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+
+**＊実装例＊**
+
+appサーバー，dbサーバー，webサーバーをセットアップする．各コンポーネントは```roles```ディレクトリに切り分けている．
+
+```yaml
+# roleファイル
+# appサーバー
+- hosts:          app
+  become:         yes
+  force_handlers: true
+  roles:
+    - common/vim
+    - app/php
+
+# dbサーバー
+- hosts:          db
+  become:         yes
+  force_handlers: true
+  roles:
+    - common/vim
+    - db/mysql
+
+# webサーバー
+- hosts:          web
+  become:         yes
+  force_handlers: true
+  roles:
+    - common/vim
+    - web/nginx
+```
+
+<br>
+
+### ```roles```ディレクトリ
+
+#### ・```roles```ディレクトリとは
+
+特定の機能に関するタスクが設定されたファイルを配置する．```playbook.yml```ファイルを切り分けるために用いる．
+
+参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
+
+#### ・```task```ディレクトリ
+
+playbookファイルから切り分けたセットアップ処理が設定されたtaskファイルを配置する．
+
+**＊実装例＊**
+
+PHP製のアプリケーションが稼働するappサーバーをセットアップする．
+
+```yaml
+# taskファイル
+- name: Install software-properties-common
+  ansible.builtin.apt:
+    name:  software-properties-common
+    state: present
+ 
+- name: Install packages
+  ansible.builtin.apt:
+  pkg:
+    - php
+    - php-fpm
+    - php-pdo
+  state: present
+  notify:
+    - restart_php-fpm
+    
+- name: Upload php.ini
+  ansible.builtin.template:
+    src:  php.ini.j2
+    dest: /etc/php.ini
+  notify:
+    - restart_php-fpm
+    
+- name: Upload www.conf
+  ansible.builtin.template:
+    src:  php-fpm/www.conf.j2
+    dest: /etc/php-fpm.d/www.conf
+  notify:
+    - restart_php-fpm
+    
+- name: Setup composer
+  ansible.builtin.shell: |
+  
+    # Composerのセットアップ処理
+  
+    # 〜 中略 〜
+```
+
+#### ・```templates```ディレクトリ
+
+アップロードファイルの鋳型となる```j2```ファイルを配置する．鋳型に変数を出力できる．
+
+**＊実装例＊**
+
+```php.ini```ファイルの鋳型として，```php.ini.j2```ファイルを配置する．
+
+```ini
+; Start a new pool named 'www'.
+; the variable $pool can we used in any directive and will be replaced by the
+; pool name ('www' here)
+[www]
+
+# 〜 中略 〜
+```
+
+#### ・```handlers```ディレクトリ
+
+taskファイルの後続処理が設定されたhandlerファイルを配置する．taskファイルの```notify```オプションで指定できる．
+
+```yaml
+# handlerファイル
+- name: restart_php-fpm
+  service:
+    name:  php-fpm
+    state: restarted
+```
+
+```yaml
+# taskファイル
+- name: Upload www.conf
+  ansible.builtin.template:
+    src:  php-fpm/www.conf.j2
+    dest: /etc/php-fpm.d/www.conf
+  notify:
+    # handlerの名前を指定する．
+    - restart_php-fpm
+```
+
+
 
 <br>
 
@@ -103,11 +235,12 @@ project
 
 複数の管理対象ノードで用いる変数に関するファイルを配置する．
 
-#### ・```group_var```ファイル
+#### ・group_varファイル
 
 複数の管理対象ノードで用いる変数を設定する．
 
 ```yaml
+# group_varファイル
 env: prd
 domain: example.com
 ```
@@ -120,7 +253,7 @@ domain: example.com
 
 特定の管理対象ノードで用いる変数に関するファイルを配置する．
 
-#### ・```host_var```ファイル
+#### ・host_varファイル
 
 特定の管理対象ノードで用いる変数を設定する．
 
@@ -132,9 +265,9 @@ domain: example.com
 
 管理対象ノードが設定された```inventory```ファイルを配置する．
 
-#### ・```inventory```ファイル
+#### ・inventoryファイル
 
-管理対象ノードを設定する．```ini```形式または```yml```形式で定義する．実行環境（本番/ステージング）別にファイルを切り分けると良い．
+管理対象ノードを設定する．```ini```形式または```yml```形式で定義する．実行環境（本番/ステージング）別にファイルを切り分けると良い．また，サーバーを冗長化している場合は，これも別々に定義しておく．プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることで，プロビジョニングに伴ってインシデントが起こっても，ユーザーへの影響を防ぐことができる．
 
 参考：
 
@@ -142,6 +275,7 @@ domain: example.com
 - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
 
 ```yaml
+# inventoryファイル
 # 開発環境
 - all:
     hosts:
@@ -163,30 +297,25 @@ domain: example.com
 ```
 
 ```yaml
+# inventoryファイル
 # 本番環境
+# 冗長化されたサーバーのうちの一方
 - all:
     hosts:
+      # appサーバーa
       app:
-        # 本番環境のサーバーのIPアドレス
         ansible_host: 192.168.111.101
         ansible_user: ubuntu
         ansible_password: ubuntu
         # SSH接続に用いる秘密鍵
         ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+      # webサーバーa
       web:
         ansible_host: 192.168.111.10
         ansible_user: ubuntu
         ansible_password: ubuntu
         ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
 ```
-
-<br>
-
-### ```roles```ディレクトリ
-
-特定の機能に関するタスクが設定された```role```ファイルを配置する．```playbook.yml```ファイルを切り分けるために用いる．
-
-参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
 <br>
 
@@ -272,7 +401,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - ansible.builtin.apt:
+  - name: Install Nginx
+    ansible.builtin.apt:
       name: nginx
       state: latest
 ```
@@ -287,10 +417,32 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - ansible.builtin.service:
+  - name: Start nginx service
+    ansible.builtin.service:
       name: Start nginx
       state: started
       enabled: yes
+```
+
+<br>
+
+### ansible.builtin.shell
+
+管理対象ノードでシェルを実行する．複数行に渡る場合は，『```|```』を用いる．このシェルでのみ使用できる環境変数を定義できる．
+
+参考：
+
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+- https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
+
+```yaml
+- task:
+  - name: Echo foo
+    ansible.builtin.shell: |
+      echo foo
+      echo ${FOO}
+    environment: 
+      FOO: FOO
 ```
 
 <br>
@@ -301,7 +453,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - ansible.builtin.template:
+  - name: Upload nginx.conf
+    ansible.builtin.template:
       src: nginx.conf.j2
       dest: /etc/nginx/nginx.conf
 ```
@@ -328,6 +481,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 - vars:
       foo: ansible_env.FOO
   tasks:
+    - name: Upload foo.conf
       ansible.builtin.template:
         src: foo.conf.j2
         dest: /etc/foo/foo.conf
@@ -353,6 +507,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
     foo: foo
     bar: bar
   tasks:
+    - name: Upload foo.conf
       ansible.builtin.template:
         src: foo.conf.j2
         dest: /etc/foo/foo.conf
@@ -386,6 +541,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 - vars:
       foo: lookup("env", "FOO")
   tasks:
+    - name: Upload foo.conf
       ansible.builtin.template:
         src: foo.conf.j2
         dest: /etc/foo/foo.conf

@@ -122,81 +122,11 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 <br>
 
-## 02. 設計ポリシー
-
-### ディレクトリ構成
+## 02. ディレクトリ構成
 
 <br>
 
-### ファイルの要素
-
-#### ・package，subpackage
-
-ディレクトリに相当する．通常パッケージとして扱うディレクトリには．```__init__.py```ファイルを配置する必要がある．一方で，名前空間パッケージではこれが不要である．
-
-参考：
-
-- https://docs.python.org/ja/3/reference/import.html#packages
-- https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
-- https://rinatz.github.io/python-book/ch04-02-packages/
-
-#### ・module
-
-パッケージ内の各ファイルに相当する．
-
-参考：
-
-- https://rinatz.github.io/python-book/ch04-01-modules/
-- https://qiita.com/msi/items/d91ea3900373ff8b09d7
-
-#### ・import
-
-パッケージとして定義したディレクトリを読み込む．存在しないパッケージをインポートしようとすると，インポートエラーになる．
-
-```python
-from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名，関数名>
-```
-
-参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
-
-アスタリスクによるインポートは非推奨である．
-
-参考：https://python.civic-apps.com/wildcard-import/
-
-パッケージ名は絶対パスを指定するようにする．
-
-1つのファイルで1つのクラスや関数のみを宣言する場合は，```import```を実行する場所はクラスや関数の外でも中でもよい．
-
-```python
-from foo import foo
-
-def foo():    
-    foo = foo()
-    
-    return foo
-```
-
-ただし，複数を宣言する場合は，可読性の観点からクラスや関数の中で```import```を実行する．
-
-```python
-def foo():
-    from foo import foo
-    
-    foo = foo()
-    
-    return foo
-    
-def bar():
-    from bar import bar
-    
-    bar = bar()
-    
-    return bar
-```
-
-
-
-<br>
+## 03. ファイルの要素
 
 ### 命名規則
 
@@ -245,3 +175,109 @@ Pythonの命名規則は，PEPに記載されている．
 #### ・定数
 
 全て大文字のスネークケースとする．
+
+<br>
+
+### package，subpackage
+
+#### ・package，subpackageとは
+
+ディレクトリに相当する．
+
+参考：
+
+- https://docs.python.org/ja/3/reference/import.html#packages
+
+#### ・基本的には```__init__.py```ファイルを置くこと
+
+通常パッケージとして扱うディレクトリには．```__init__.py```ファイルを配置する必要がある．一方で，名前空間パッケージではこれが不要である．
+
+- https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
+- https://rinatz.github.io/python-book/ch04-02-packages/
+
+<br>
+
+### module
+
+#### ・moduleとは
+
+パッケージ内の各ファイルに相当する．
+
+参考：
+
+- https://rinatz.github.io/python-book/ch04-01-modules/
+- https://qiita.com/msi/items/d91ea3900373ff8b09d7
+
+<br>
+
+### import
+
+#### ・importとは
+
+パッケージとして定義したディレクトリを読み込む．存在しないパッケージをインポートしようとすると，インポートエラーになる．
+
+```python
+from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名，関数名>
+```
+
+参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+
+#### ・アスタリスクを用いないこと
+
+アスタリスクによるインポートは非推奨である．
+
+参考：https://python.civic-apps.com/wildcard-import/
+
+#### ・絶対パスを用いること
+
+パッケージ名は絶対パスを指定するようにする．
+
+#### ・宣言場所について
+
+1つのファイルで1つのクラスや関数のみを宣言する場合は，```import```を実行する場所はクラスや関数の外でも中でもよい．
+
+```python
+from foo import foo
+
+def foo():    
+    foo = foo()
+    
+    return foo
+```
+
+ただし，複数を宣言する場合は，可読性の観点からクラスや関数の中で```import```を実行する．
+
+```python
+def foo():
+    from foo import foo
+    
+    foo = foo()
+    
+    return foo
+    
+def bar():
+    from bar import bar
+    
+    bar = bar()
+    
+    return bar
+```
+
+#### ・1つずつインポート
+
+複数のパッケージをインポートする場合，カンマで繋ぐこともできるが，1つずつインポートした方が良い．
+
+参考：https://www.tech-teacher.jp/blog/python-import/
+
+```python
+# import foo, bar
+import foo
+import bar
+
+def foo():    
+    foo = foo()
+    
+    return foo
+```
+
+<br>

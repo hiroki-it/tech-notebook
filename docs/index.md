@@ -224,7 +224,7 @@ title: 【知見を記録するサイト】目次
 
 * サーバープロビジョニング
     * Ansible
-        * [📖：Playbook](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_ansible_playbook.html)
+        * [📖：設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_ansible_conf.html)
 * コンテナプロビジョニング
     * Docker 
         * [📖：︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html)
