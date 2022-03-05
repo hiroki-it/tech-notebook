@@ -116,7 +116,7 @@ Webページのローディング時に，Navigation-timing-APIに対してリ�
 
 #### ・StatsDを用いたメトリクスの作成
 
-サーバー内にStatsDを常駐させ，アプリケーションでStatsDライブラリを用いると，メトリクスを収集できる．
+サーバー内にStatsDを常駐させ，アプリケーションでStatsDパッケージを用いると，メトリクスを収集できる．
 
 参考：https://github.com/statsd/statsd/wiki
 

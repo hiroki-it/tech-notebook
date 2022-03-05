@@ -857,7 +857,7 @@ class FooTest extends TestCase
 
 #### ・Phakeとは
 
-モックとスタブを提供するライブラリ．
+モックとスタブを提供するパッケージ．
 
 参考：https://github.com/mlively/Phake#phake
 

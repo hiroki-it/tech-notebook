@@ -421,7 +421,7 @@ class EnginnerShainManagement extends ShainManagement
 
 **＊例＊**
 
-オープンソースのライブラリは，ユーザーが実装クラスを自身で追加実装することも考慮して，Realizationが用いられている．
+オープンソースのパッケージは，ユーザーが実装クラスを自身で追加実装することも考慮して，Realizationが用いられている．
 
 **＊例＊**
 
@@ -1207,7 +1207,7 @@ $user->method($name); // インジェクション
 
 **＊実装例＊**
 
-Pimpleライブラリを用いた場合
+Pimpleパッケージを用いた場合
 
 ```php
 <?php

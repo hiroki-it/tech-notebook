@@ -336,7 +336,7 @@ export default browserLogsForSsgPlugin
 
 | 属性名                        | 説明                                             |
 | ----------------------------- | ------------------------------------------------ |
-| ```logger.name```             | ログライブラリの名前を示す．                     |
+| ```logger.name```             | ログパッケージの名前を示す．                     |
 | ```logger.thread_name```      | スレッド名を示す．                               |
 | ```error.stack```             | スタックトレースログ全体を示す．                 |
 | ```error.```message```属性``` | スタックトレースログのメッセージ部分を示す．     |
@@ -354,7 +354,7 @@ export default browserLogsForSsgPlugin
 
 #### ・PHP Monologの場合
 
-LogライブラリにMonologを用いている場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
+LogパッケージにMonologを用いている場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
 
 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 

@@ -198,7 +198,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 ```
 
-補足として，NodeのHTTPライブラリの関数は，Promiseインスタンスのコールバック関数として用いないと，正しく挙動しない．
+補足として，NodeのHTTPパッケージの関数は，Promiseインスタンスのコールバック関数として用いないと，正しく挙動しない．
 
 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 

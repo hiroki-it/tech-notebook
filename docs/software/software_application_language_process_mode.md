@@ -112,7 +112,7 @@ func main() {
 
 #### ・PHPの場合
 
-parallelライブラリを用いる．
+parallelパッケージを用いる．
 
 参考：
 

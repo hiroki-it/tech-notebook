@@ -126,7 +126,7 @@ GCCGO="gccgo"
 AR="ar"
 CC="gcc"
 CXX="g++"
-# c言語製のライブラリの有効化．無効化しないと，vetコマンドが失敗する．
+# c言語製のパッケージの有効化．無効化しないと，vetコマンドが失敗する．
 CGO_ENABLED="0"
 GOMOD="/go/src/go.mod"
 CGO_CFLAGS="-g -O2"

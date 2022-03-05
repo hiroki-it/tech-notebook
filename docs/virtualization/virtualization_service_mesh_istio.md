@@ -40,14 +40,18 @@ description: Istio＠仮想化の知見をまとめました．
 
 参考：https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
 
-| コンポーネント | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| Citadel        | マイクロサービス間の認証やトレースIDを管理する．             |
-| Galley         | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったIstiodコンポーネントを構築する． |
-| Pilot          | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する． |
-| Mixer          | v1.5からデータプレーン側に統合された．<br>参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability |
+| コンポーネント | 説明                                                         | コンテナ名      |
+| -------------- | ------------------------------------------------------------ | --------------- |
+| Citadel        | マイクロサービス間の認証やトレースIDを管理する．             |                 |
+| Galley         | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったIstiodコンポーネントを構築する． |                 |
+| Pilot          | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．また，サービスレジストリに登録された情報を基に，マイクロサービスを識別する．（サービスディスカバリ）<br>参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2 | ```discovery``` |
+| Mixer          | v1.5からデータプレーン側に統合された．<br>参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability |                 |
 
 <br>
+
+
+
+
 
 ## 02. リソースとオブジェクト
 

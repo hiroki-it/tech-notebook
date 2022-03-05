@@ -199,7 +199,7 @@ var foo = true;
 
 #### ・Polyfillとは
 
-JavaScriptやHTMLの更新にブラウザが追いついていない場合，それを補完するように実装されたライブラリのこと．『Polyfilla』に由来している．
+JavaScriptやHTMLの更新にブラウザが追いついていない場合，それを補完するように実装されたパッケージのこと．『Polyfilla』に由来している．
 
 <br>
 

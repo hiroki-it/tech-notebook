@@ -348,7 +348,7 @@ authorization: <Personal Acccess Token>
 
 | サービス例 | トークン名            | 説明                                                         |
 | ---------- | --------------------- | ------------------------------------------------------------ |
-| GitHub     | Personal access Token | HTTPSを用いて，プライベートリポジトリにリクエストを送信するために必要．HTTPSを用いる場面として，アプリの拡張機能のGitHub連携，リポジトリのライブラリ化，などがある．<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+| GitHub     | Personal access Token | HTTPSを用いて，プライベートリポジトリにリクエストを送信するために必要．HTTPSを用いる場面として，アプリの拡張機能のGitHub連携，リポジトリのパッケージ化，などがある．<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 <br>
 

@@ -306,7 +306,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 **＊実装例＊**
 
-まず，リクエストメッセージの```Origin```ヘッダーに送信元オリジンを設定する．加えて，```Cookie```ヘッダーを持つリクエストメッセージを送信したい場合は，JavaScriptの実装で```withCredentials```に```true```を割り当てる．JavaScriptのライブラリによってオプション名が異なるため注意する．
+まず，リクエストメッセージの```Origin```ヘッダーに送信元オリジンを設定する．加えて，```Cookie```ヘッダーを持つリクエストメッセージを送信したい場合は，JavaScriptの実装で```withCredentials```に```true```を割り当てる．JavaScriptのパッケージによってオプション名が異なるため注意する．
 
 参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 

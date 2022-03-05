@@ -27,7 +27,7 @@ description: 認証/認可＠Laravelの知見をまとめました．
 | ---- | ------------------------------------------------------- | ------------------------------------------------------------ |
 | 1    | リクエストを受信する．                                  |                                                              |
 | 2    | ```index.php```ファイル                                 | エントリーポイントから処理が始まる．                           |
-| 3    | Autoload                                                | ```autoload.php```ファイルにて，ライブラリを自動でロードする． |
+| 3    | Autoload                                                | ```autoload.php```ファイルにて，パッケージを自動でロードする． |
 | 4    | Load App                                                | ```bootstrap/app.php```ファイルにて，ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する． |
 | 5    | Http Kernel                                             | Kernelを実行する．                                           |
 | 6    | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する．これにより，ServiceContainerにクラスがバインドされる． |

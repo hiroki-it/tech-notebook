@@ -42,7 +42,7 @@ Symfony
 │   │  └── Resources
 │   │       └── views # 画面テンプレート（※本書では扱わない） 
 │   │           
-│   └── その他のBundle # 汎用的なライブラリのコード（※本書では扱わない）
+│   └── その他のBundle # 汎用的なパッケージのコード（※本書では扱わない）
 |
 ├── templates　# UserInterface層
 │   
@@ -53,13 +53,13 @@ Symfony
 │   ├── logs # ログファイル
 │   └── sessions
 │
-├── vendor # 外部ライブラリ
-│   ├── doctrine # ライブラリ
-│   ├── league # ライブラリ
+├── vendor # 外部パッケージ
+│   ├── doctrine # パッケージ
+│   ├── league # パッケージ
 │   ├── sensio
-│   ├── swiftmailer # ライブラリ
+│   ├── swiftmailer # パッケージ
 │   ├── symfonyコンポーネント
-│   └── twig # ライブラリ
+│   └── twig # パッケージ
 │
 └── asset #ブラウザコンソールに公開されるファイル（css, javascript, image等）
     ├── admin

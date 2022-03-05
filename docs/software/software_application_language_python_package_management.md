@@ -33,23 +33,57 @@ flask==2.0.2
 
 ## 01-02. pipコマンド
 
+### check
+
+インストールされているパッケージ間の依存関係を正しく解決できるかを確認する．
+
+```bash
+$ pip3 check
+
+No broken requirements found.
+```
+
+解決できなかった場合は，以下のようなエラーが出力される．
+
+```bash
+$ pip3 check
+
+wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django-modelcluster 5.0.
+```
+
+<br>
+
 ### install
 
-指定したライブラリをインストールする．
+#### ・オプション無し
+
+指定したパッケージをインストールする．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
+```bash
+$ pip3 install <パッケージ名>
+```
+
 #### ・--upgrade
 
-指定したパッケージをアップグレードする．
+pip自身を含む，指定したパッケージをアップグレードする．アップグレード後は，```-r```オプションで要件ファイルも更新する必要がある．
 
+```bash
+$ pip3 install --upgrade <パッケージ名>
+```
 
 **＊実行例＊**
+
+pip自身をアップグレードする．
 
 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
 ```bash
-$ pip install --upgrade pip
+$ pip3 install --upgrade pip
+
+# 要件ファイルを更新する．
+$ pip3 freeze > requirements.txt
 ```
 
 #### ・--user
@@ -57,22 +91,22 @@ $ pip install --upgrade pip
 **＊実行例＊**
 
 ```bash
-$ pip install --user <ライブラリ名>
+$ pip3 install --user <パッケージ名>
 ```
 
 #### ・-r
 
-requirements.txt を元にライブラリをインストールする．
+requirements.txt を元にパッケージをインストールする．
 
 **＊実行例＊**
 
 ```bash
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
-指定したディレクトリにライブラリをインストールすることもできる．
+指定したディレクトリにパッケージをインストールすることもできる．
 
 ```bash
-$ pip install -r requirements.txt　--prefix=/usr/local
+$ pip3 install -r requirements.txt --prefix=/usr/local
 ```
 
 <br>
@@ -85,10 +119,50 @@ pipでインストールされたパッケージを元に，要件ファイル�
 
 ```bash
 # インストールのため
-$ pip freeze > requirements.txt
+$ pip3 freeze > requirements.txt
 
 # アンインストールのため
-$ pip freeze > uninstall.txt
+$ pip3 freeze > uninstall.txt
+```
+
+<br>
+
+### list
+
+#### ・オプション無し
+
+現在インストールされているパッケージの一覧を表示する．
+
+```bash
+$ pip3 list
+
+Package                    Version
+-------------------------- -------
+click                      8.0.3
+ghp-import                 2.0.2
+
+# 〜 中略 〜
+
+wheel                      0.37.1
+zipp                       3.7.0
+```
+
+・-o
+
+アップグレード可能なパッケージの一覧を表示する．
+
+```bash
+$ pip3 list -o
+
+Package            Version Latest Type
+------------------ ------- ------ -----
+click              8.0.3   8.0.4  wheel
+importlib-metadata 4.10.0  4.11.2 wheel
+
+# 〜 中略 〜
+
+pyparsing          3.0.6   3.0.7  wheel
+setuptools         60.5.0  60.9.3 wheel
 ```
 
 <br>
@@ -100,7 +174,7 @@ pipでインストールしたパッケージ情報を表示する．
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
 ```bash
-$ pip show sphinx
+$ pip3 show sphinx
 
 Name: Sphinx
 Version: 3.2.1
@@ -121,18 +195,18 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 ### uninstall
 
-指定したライブラリをインストールする．
+指定したパッケージをインストールする．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 ```bash
-$ pip uninstall -y <ライブラリ名>
+$ pip3 uninstall -y <パッケージ名>
 ```
 
-uninstall.txt を元にライブラリをアンインストールすることもできる．
+uninstall.txt を元にパッケージをアンインストールすることもできる．
 
 ```bash
-$ pip uninstall -y -r uninstall.txt
+$ pip3 uninstall -y -r uninstall.txt
 ```
 
 <br>
