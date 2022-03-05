@@ -165,79 +165,96 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 03. マイクロサービス間の連携
+## 03. マイクロサービス間通信の方式
 
-### マイクロサービス間の通信方向
+### リクエストリプライ方式
 
 #### ・リクエストリプライ方式
 
-マイクロサービス間で相互の同期通信を行う．この方式では，マイクロサービス間でHTTPプロトコルやgRPCプロトコルを用いることになる．
-
-参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
-
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
-#### ・イベント駆動方式
-
-マイクロサービスからマイクロサービスに一方通行の非同期通信を行う．この方式では，メッセージキューを用いることになる．
+マイクロサービス間で相互通信を行う．送信側と受信側で通信処理が同時に実行されるため，HTTPやgRPCによる同期通信を行うことになる．また，マイクロサービス間で直接リクエストを送受信することになる．
 
 参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
-![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
+#### ・直接的な通信
+
+リクエストリプライ方式では，直接的にマイクロサービス間の通信を行う．用いることのできる通信プロトコルは以下の通りである．
+
+| プロコトル     | 説明                                                                                                                                                                                                                                                |
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 従来のTCP/IP | 従来のTCP/IPプロトコルを用いる．                                                                                                                                                                                                                               |
+| gRPC      | HTTP/1.1に代わるHTTP/2が組み込まれたgRPCプロトコルを用いる．HTTPであると，通信相手のマイクロサービスのエンドポイントをコールした後，エンドポイントに紐づくコントローラーのメソッドが実行される．一方でgRPCであると，通信相手のマイクロサービスのメソッドを直接実行できる．そのため，HTTPよりもマイクロサービスの連携に適している．<br>参考：https://techdozo.dev/grpc-for-microservices-communication/ |
 
 <br>
 
-### マイクロサービス間の通信方式
+### イベント駆動方式
 
-#### ・直接送受信
+#### ・イベント駆動方式とは
 
-マイクロサービス間で同期通信/非同期通信を直接行う．しかし，以下のような問題が起こるため，非推奨である．
+![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
+
+マイクロサービスからマイクロサービスに一方通行の通信を行う．送信側と受信側で通信処理が独立して実行されるため，メッセージキューを介した非同期通信を行うことになる．
+
+参考：
+
+- https://en.wikipedia.org/wiki/Message_queue
+- https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
+
+#### ・メッセージキューを介した通信
+
+イベント駆動方式では，メッセージキューを介してマイクロサービス間の通信を行う．メッセージキューでは受信したメッセージを一方向にしか配信できないため，もしマイクロサービス間双方向に送信したい場合は，上流マイクロサービスからメッセージを受信するメッセージキューと．下流マイクロサービスから受信するメッセージキューを別々に設置する．メッセージキューはPub/Subデザインパターンで実装するか，またはAWS-SQSなどのツールを用いる．
+
+参考：
+
+- https://en.wikipedia.org/wiki/Message_queue
+- https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
+
+<br>
+
+## 04. マイクロサービス間通信の管理
+
+### 非メッシュ
+
+#### ・非メッシュとは
+
+マイクロサービス間の通信を管理しない．しかし，以下のような問題が起こるため，非推奨である．
 
 - ソフトウェアのコンポーネント間通信を制御しきれない．
 - 障害時に何が起こるか分からない．
 - 鍵とSSL証明書を管理しきれない．
 - ソフトウェアの全体像が把握できない
 
-#### ・メッセージキュー
+<br>
 
-マイクロサービス間の非同期通信のために用いる．マイクロサービス間で直接リクエストを送受信するのではなく，メッセージキュー経由で行う．メッセージキューでは受信したメッセージを一方向にしか配信できないため，もしマイクロサービス間双方向に送信したい場合は，上流マイクロサービスからメッセージを受信するメッセージキューと．下流マイクロサービスから受信するメッセージキューを別々に設置する．メッセージキューはPub/Subデザインパターンで実装するか，またはAWS-SQSなどのツールを用いる．
+### メッシュ
 
-参考：https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
+#### ・メッシュ
 
-**＊実装例＊**
-
-以下のリポジトリを参考にせよ．
-
-参考：https://github.com/fedeoliv/microservices-transactions
-
-![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
+マイクロサービス間で直接リクエストを送受信するのではなく，これをサイドカーパターンで設置したリバースプロキシコンテナ経由で行う．また，各サイドカーコンテナをコントロールプレーンで統括的に管理する．これにより，マイクロサービス間の通信をより簡単に管理できる．
 
 #### ・サービスメッシュ
 
 ![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
 
-マイクロサービス間の同期通信のために用いる．マイクロサービス間で直接リクエストを送受信するのではなく，これをサイドカーパターンで設置したリバースプロキシコンテナ経由で行う．また，各サイドカーコンテナをコントロールプレーンで統括的に管理する．これにより，マイクロサービス間の通信をより簡単に管理できる．
+マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に用いるメッシュ．
 
 参考：
 
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 - https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
+- https://qiita.com/yasuabe2613/items/3bff44e662c922083264#service-mesh
+
+#### ・イベントメッシュ
+
+マイクロサービス間の通信方式でイベント駆動方式を採用した場合に用いるメッシュ．
+
+参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
 
 <br>
 
-### 通信プロトコル
-
-#### ・同期通信の場合
-
-| プロコトル | 説明                                                         |
-| ---------- | ------------------------------------------------------------ |
-| HTTP       | 従来のHTTPプロトコルを用いる．                               |
-| gRPC       | HTTPに代わるgRPCプロトコルを用いる．HTTPであると，通信相手のマイクロサービスのエンドポイントをコールした後，エンドポイントに紐づくコントローラーのメソッドが実行される．一方でgRPCであると，通信相手のマイクロサービスのメソッドを直接実行できる．そのため，HTTPよりもマイクロサービスの連携に適している．<br>参考：https://techdozo.dev/grpc-for-microservices-communication/ |
-
-<br>
-
-## 04. マイクロサービスの公開
+## 05. マイクロサービスの公開
 
 ### API Gatewayパターン
 
@@ -258,7 +275,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
 
-#### ・実装方法
+#### ・設置場所
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
@@ -275,39 +292,21 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
 
-## 05. データ永続化方式
+<br>
+
+## 06. データ永続化方式
 
 ### ローカルトランザクション
 
 #### ・ローカルトランザクションとは
 
-各マイクロサービスに独立したトランザクション処理が存在しており，各マイクロサービスの独立したトランザクション処理を連続的に実行する方法．推奨である．モノリスではDBが持つトランザクション処理を用いることになるが，ローカルトランザクションではこれを使用できず，アプリケーション側でトランザクションに相当する処理を実装することになる．本ノートでは，ローカルトランザクションを用いたインフラストラクチャ層の連携を説明する．
+1つのトランザクション処理によって，1つのマイクロサービスのDBを操作する方法．推奨される．マイクロサービスアーキテクチャでローカルトランザクションを用いる場合，これを連続的に行う仕組みが必要になる．デザインパターンとして，Sagaパターン，TCCパターン，などがある．
 
-#### ・Sagaパターン
+参考：https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
 
-![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
+#### ・種類
 
-複数のローカルトランザクションを非同期通信で連続的に実行する方法．上流マイクロサービスのローカルトランザクションの完了をイベントとして，下流マイクロサービスのDB処理を連続的にコールしていく．ロールバックの代わりに，補償トランザクションという仕組みを実装する必要がある．補償トランザクションでは，いずれかのローカルトランザクションが失敗した時に，それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される．
-
-参考：
-
-- https://thinkit.co.jp/article/14639?page=0%2C1
-- https://qiita.com/nk2/items/d9e9a220190549107282
-- https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
-
-**＊例＊**
-
-受注に関するトランザクションが異なるマイクロサービスにまたがる例．
-
-参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
-
-![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_example.png)
-
-補償トランザクションでは，各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される．
-
-![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_compensating-transaction_example.png)
-
-#### ・TCCパターン
+参考：https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
 
 <br>
 
@@ -321,7 +320,39 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 05-02. Sagaパターンの実装
+## 06-02. Sagaパターン
+
+### Sagaパターンとは
+
+#### ・仕組み
+
+![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
+
+複数のローカルトランザクションを非同期通信で連続的に実行する方法．上流マイクロサービスのローカルトランザクションの完了をイベントとして，下流マイクロサービスのDB処理を連続的にコールしていく．ロールバックの代わりに，補償トランザクションという仕組みを実装する必要がある．補償トランザクションでは，いずれかのローカルトランザクションが失敗した時に，それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される．
+
+参考：
+
+- https://thinkit.co.jp/article/14639?page=0%2C1
+- https://qiita.com/nk2/items/d9e9a220190549107282
+- https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
+
+#### ・補償トランザクション
+
+ローカルトランザクションを逆順に実行し，Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと．
+
+**＊例＊**
+
+受注に関するトランザクションが異なるマイクロサービスにまたがる例．
+
+参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+
+![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_example.png)
+
+補償トランザクションによって，各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される．
+
+![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_compensating-transaction_example.png)
+
+<br>
 
 ### Orchestration（オーケストレーション）
 
@@ -329,14 +360,26 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
 
-中央集権型システムとも言う．Sagaパターンにて，一連のローカルトランザクションの実行をまとめて制御する責務を持ったコンポーネント（オペレーションサービス）を設置する．1つのリクエストが送信された時に，オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも用いられる．オーケストレーションが推奨である．
+Sagaパターンにて，一連のローカルトランザクションの実行をまとめて制御する責務を持ったコンポーネント（オペレーションサービス）を設置する．1つのリクエストが送信された時に，オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも用いられる．オーケストレーションが推奨である．
 
 参考：
 
-- https://news.mynavi.jp/itsearch/article/devsoft/1598
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+- https://news.mynavi.jp/itsearch/article/devsoft/1598
 - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
+
+#### ・ローカルトランザクションの連携方式
+
+マイクロサービス間のローカルトランザクションの連携方式として，メッセージキューを用いる．各マイクロサービスがイベントのパブリッシュとサブスクライブを行う．各マイクロサービスは，自身の次に実行されるマイクロサービスを知らない．各マイクロサービスは，処理結果をオーケストレーターに返却する．
+
+参考：
+
+- https://www.12-technology.com/2021/08/dbsaga.html
+- https://qiita.com/somen440/items/a6c323695627235128e9
+- https://www.12-technology.com/2021/08/dbsaga.html
+
+![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration_message-queue.png)
 
 <br>
 
@@ -346,7 +389,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
-分散型システムとも言う．Sagaパターンにて，各マイクロサービスで下流マイクロサービスに連携する責務を持たせ，ローカルトランザクションを連続的に実行する．1つのリクエストが送信された時に，マイクロサービスからマイクロサービスに処理が繋がっていく．
+Sagaパターンにて，各マイクロサービスで下流マイクロサービスに連携する責務を持たせ，ローカルトランザクションを連続的に実行する．1つのリクエストが送信された時に，マイクロサービスからマイクロサービスに処理が繋がっていく．
 
 参考：
 
@@ -354,9 +397,25 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
+**＊実装例＊**
+
+以下のリポジトリを参考にせよ。
+
+参考：https://github.com/fedeoliv/microservices-transactions
+
+![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
+
+#### ・ローカルトランザクションの連携方式
+
+マイクロサービス間のローカルトランザクションの連携方式として，メッセージキューを用いる．各マイクロサービスがイベントのパブリッシュとサブスクライブを行う．各マイクロサービスは，自身の次に実行されるマイクロサービスを知っている．各マイクロサービスは，次のマイクロサービスにイベントを渡せる別のキューに処理結果を返却する．
+
+参考：https://www.12-technology.com/2021/08/dbsaga.html
+
+![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_message-queue.png)
+
 <br>
 
-## 06. オブジェクトモデリング方式
+## 07. オブジェクトモデリング方式
 
 ### イベントソーシング
 
@@ -381,7 +440,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 07. マイクロサービスにおけるテスト
+## 08. マイクロサービスにおけるテスト
 
 ### CDCテスト：Consumer Drive Contract
 
@@ -413,7 +472,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 08. 運用
+## 09. 運用
 
 ### 障害対策
 

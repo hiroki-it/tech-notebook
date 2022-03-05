@@ -672,9 +672,9 @@ data "aws_ami" "bastion" {
 
 <br>
 
-### ```output```
+### output
 
-#### ・```output```とは
+#### ・outputとは
 
 モジュールで構築されたリソースがもつ特定の値を出力する．可読性の観点から，リソース一括ではなく，具体的なattributeを出力するようにした方が良い．
 
@@ -1062,8 +1062,6 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-
-
 #### ・単一値で```output```
 
 リソースの構築に```for_each```関数を用いた場合，そのリソースはmap型として扱われる．そのため，キー名を指定して```output```できる．
@@ -1426,6 +1424,17 @@ resource "aws_s3_bucket_policy" "alb" {
   ]
 }
 ```
+
+#### ・path式
+
+参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
+
+| 変数                      | 値                                                           | 例                         |
+| ------------------------- | ------------------------------------------------------------ | -------------------------- |
+| ```path.module```         | ```path```式が実行された```.tf```ファイルがあるディレクトリのパス． | ```/project/module/foo/``` |
+| ```path.root```           | ```terraform```コマンドの作業ディレクトリのパス              | ```/var/www/```            |
+| ```path.root```           | ```module```ディレクトリのルートパス                         | ```/project/module/```     |
+| ```terraform.workplace``` | 現在用いられているワークスペース名                           | ```prd```                  |
 
 <br>
 

@@ -39,44 +39,63 @@ description: Argo＠DevOpsの知見をまとめました．
 
 ## 02. セットアップ
 
-ドキュメント：https://argo-cd.readthedocs.io/en/stable/getting_started/
+### インストール
 
-実運用する場合は，ArgoCDの操作をCircleCI上から行う必要がある（たぶん）
+#### ・コマンド経由
 
-1. ArgoCDを動かすためリソースをKubernetes上にデプロイする．<--- CircleCI上でやる（たぶん）
+ローカルPCにアプリケーションをデプロイする．
+
+参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+（１）ArgoCDを動かすためリソースをKubernetes上にデプロイする．クラウドインフラ上にデプロイする場合も，コマンドが異なるだけで，同じ仕組みである．
 
 ```bash
 $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-2. ArgoCDのコマンドをインストールする．
+（２）ArgoCDのコマンドをインストールする．
+
+参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
 ```bash
-$ brew install argocd
+$ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+$ chmod +x /usr/local/bin/argocd
 ```
 
-3. ダッシュボードを公開する．
+（３）ダッシュボードを公開する．
 
 ```bash
 $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
-4. ダッシュボードのパスワードを取得する．
+（４）ダッシュボードのパスワードを取得する．
 
 ```bash
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-5. ArgoCD上に，監視対象のアプリケーションのGitリポジトリを登録する．
+（５）ArgoCDにログインする．
+
+```bash
+$ argocd login 127.0.0.1:8080
+```
+
+（６）ArgoCD上に，監視対象のアプリケーションのGitリポジトリを登録する．
 
 ```bash
 $ argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
 ```
 
-
-6. 今回は，サンプルアプリをローカルPC上にデプロイする．ArgoCD上でアプリケーションの監視を実行する．監視対象のGitリポジトリの最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（７）今回は，サンプルアプリをローカルPC上にデプロイする．ArgoCD上でアプリケーションの監視を実行する．監視対象のGitリポジトリの最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
 $ argocd app sync guestbook
 ```
+
+（８）自動同期を有効化する．
+
+```bash
+$ argocd app set guestbook --sync-policy automated
+```
+
