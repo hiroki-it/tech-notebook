@@ -41,9 +41,42 @@ Datadogにデータを送信するためには，アプリケーションにdata
 
 ## 02. サーバーの場合
 
-###  ```/etc/datadog-agent/datadog.yaml```ファイル
+### セットアップ
 
-datadogエージェントを設定する．datadogエージェントをインストールすると，```datadog.yaml.example```ファイルが生成されるため，これをコピーして作成する．
+#### ・インストール（手動の場合）
+
+```bash
+# 環境変数を設定する．
+$ export DD_AGENT_MAJOR_VERSION=7
+$ export DD_API_KEY=<APIキー>
+$ export DD_SITE=datadoghq.com
+
+# インストールする．
+$ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+```
+
+#### ・インストール（Ansibleの場合）
+
+参考：https://app.datadoghq.com/account/settings#agent/ubuntu
+
+```yaml
+- task:
+    - name: Install datadog agent
+      ansible.builtin.shell: |
+          bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+      environment:
+          DD_AGENT_MAJOR_VERSION: 7
+          DD_API_KEY: <APIキー>
+          DD_SITE: datadoghq.com
+```
+
+<br>
+
+## 02-02. ```/etc/datadog-agent/datadog.yaml```ファイル
+
+###  ```datadog.yaml```ファイルとは
+
+datadogエージェントを設定する． ```/etc/datadog-agent```ディレクトリに配置される．datadogエージェントをインストールすると，```datadog.yaml.example```ファイルが生成されるため，これをコピーして作成する．
 
 参考：
 
@@ -111,7 +144,180 @@ logs_enabled: true
 
 ## 03. コンテナの場合
 
-###  ```/etc/datadog-agent/datadog.yaml```ファイル
+### ベースイメージ
+
+#### ・datadogイメージ
+
+datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
+
+#### ・DockerHubを用いる場合
+
+ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+
+参考：https://hub.docker.com/r/datadog/agent
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "datadog/agent:latest"
+  }
+]
+```
+
+#### ・ECRパブリックギャラリーを用いる場合
+
+ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "public.ecr.aws/datadog/agent:latest"
+  }
+]
+```
+
+参考：
+
+- https://gallery.ecr.aws/datadog/agent
+- https://github.com/DataDog/datadog-agent
+
+#### ・プライベートECRリポジトリを用いる場合
+
+あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は，こちらを採用する．
+
+参考：https://hub.docker.com/r/datadog/agent
+
+```dockerfile
+FROM data/agent:latest
+
+# 何らかのインストール
+```
+
+```bash
+[
+  {
+    "name": "datadog",
+    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****"
+  }
+]
+```
+
+<br>
+
+### AWS ECSへの導入
+
+#### ・datadogコンテナ
+
+Datadogが提供するdatadogイメージによって構築されるコンテナであり，コンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadog dockerエージェントが，コンテナからメトリクスを収集し，Datadogにこれを転送する．
+
+参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E6%A6%82%E8%A6%81
+
+#### ・コンテナ定義
+
+```bash
+[
+    {
+        # laravelコンテナ
+    },
+    {
+        # nginxコンテナ
+    },
+    {
+        # datadogコンテナ
+        "name": "datadog",
+        "image": "datadog/agent:latest",
+        "essential": false,
+        "portMappings": [
+            {
+                "containerPort": 8126,
+                "hostPort": 8126,
+                "protocol": "tcp"
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "/prd-foo/laravel/log",
+                "awslogs-region": "ap-northeast-1"
+                "awslogs-stream-prefix": "/container"
+            }
+        },
+        "cpu": 10,
+        "memory": 256,
+        "environment": [
+            {
+                "name": "ECS_FARGATE",
+                "value": "true"
+            },
+            {
+                "name": "DD_PROCESS_AGENT_ENABLED",
+                "value": "true"
+            },
+            {
+                "name": "DD_DOGSTATSD_NON_LOCAL_TRAFFIC",
+                "value": "true"
+            },
+            {
+                "name": "DD_APM_ENABLED",
+                "value": "true"
+            },
+            {
+                "name": "DD_LOGS_ENABLED",
+                "value": "true"
+            },
+            {
+                "name": "DD_ENV",
+                "value": "foo"
+            }
+        ],
+        "secrets": [
+            {
+                "name": "DD_API_KEY",
+                "valueFrom": "/prd-foo/DD_API_KEY"
+            }
+        ],
+        "dockerLabels": {
+            # ECSコンテナに対するenvタグ
+            "com.datadoghq.tags.env": "prd",
+            # ECSコンテナに対するserviceタグ            
+            "com.datadoghq.tags.service": "foo",
+            # ECSコンテナに対するversionタグ            
+            "com.datadoghq.tags.version": "1.0.0"
+        }
+    }
+]
+```
+
+#### ・ECSのIAMロール
+
+datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
+
+参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ecs:ListClusters",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+<br>
+
+## 03-02. ```/etc/datadog-agent/datadog.yaml```ファイル
+
+###  ```datadog.yaml```ファイルとは
 
 コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である．ただサーバーの場合とは異なり，環境変数から値を設定できる．
 

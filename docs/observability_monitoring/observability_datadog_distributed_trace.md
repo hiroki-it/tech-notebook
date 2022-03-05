@@ -68,7 +68,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### セットアップ
 
-#### ・インストール（直接の場合）
+#### ・インストール（手動の場合）
 
 用いているミドルウェアごとに，インストール方法が異なる．サーバーを冗長化している場合，全てのサーバーに共通した設定のエージェントを組み込めるという点で，IaCツールを用いた方が良い．
 
@@ -100,6 +100,8 @@ env[DD_VERSION] = '1.0.0'
 - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
 #### ・インストール（Ansibleの場合）
+
+用いているミドルウェアごとに，インストール方法が異なる．
 
 ```yaml
 - tasks:

@@ -41,11 +41,11 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 02. エージェント（サーバーの場合）
+## 02. ログエージェント（サーバーの場合）
 
-### エージェントとは
+### ログエージェントとは
 
-デーモンであるエージェントに含まれている．アプリケーションからログを収集し，Datadogに転送する．
+デーモンであるdatadogエージェントに含まれている．アプリケーションからログを収集し，Datadogに転送する．
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -61,11 +61,11 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 03. エージェント（AWSコンテナの場合）
+## 03. ログエージェント（AWSコンテナの場合）
 
-### エージェントとは
+### ログエージェントとは
 
-サーバーの場合とは異なり，エージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
+サーバーの場合とは異なり，AWSコンテナのdatadogエージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
 
 参考：
 
@@ -82,76 +82,6 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 
 - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
 - https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
-
-<br>
-
-### セットアップ
-
-#### ・ベースイメージ
-
-datadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
-
-#### ・DockerHubを用いる場合
-
-ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
-
-参考：https://hub.docker.com/r/datadog/agent
-
-```bash
-[
-  {
-    "name": "datadog",
-    "image": "datadog/agent:latest"
-  }
-]
-```
-
-#### ・ECRパブリックギャラリーを用いる場合
-
-ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
-
-```bash
-[
-  {
-    "name": "datadog",
-    "image": "public.ecr.aws/datadog/agent:latest"
-  }
-]
-```
-
-参考：
-
-- https://gallery.ecr.aws/datadog/agent
-- https://github.com/DataDog/datadog-agent
-
-#### ・プライベートECRリポジトリを用いる場合
-
-あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は，こちらを採用する．
-
-参考：https://hub.docker.com/r/datadog/agent
-
-```dockerfile
-FROM data/agent:latest
-
-# 何らかのインストール
-```
-
-```bash
-[
-  {
-    "name": "datadog",
-    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****"
-  }
-]
-```
-
-<br>
-
-### 設定ファイル
-
-デフォルトで組み込まれている設定ファイルを置換する．
-
-参考：https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
 
 <br>
 

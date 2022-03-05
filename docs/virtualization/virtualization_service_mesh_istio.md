@@ -17,9 +17,7 @@ description: Istio＠仮想化の知見をまとめました．
 
 ### 構造
 
-#### ・メッシュ
-
-データプレーンとコントロールプレーンによって，サービスメッシュを実現する．マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている．Istioを必ずしも用いる必要はなく，KubernetesやOpenShiftの機能でこれを実現しても良い．
+データプレーンとコントロールプレーンによって，サービスメッシュを実現する．マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている．ただ必ずしも，Istioを用いる必要はなく，KubernetesやOpenShiftに内蔵されたIstioに相当する機能を用いても良い．
 
 参考：
 
@@ -28,30 +26,55 @@ description: Istio＠仮想化の知見をまとめました．
 
 ![istio_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_architecture.png)
 
-#### ・データプレーン
+<br>
 
-インバウンド通信をマイクロサービスにルーティングする機能を持つ．Istioは，プロキシ機能を持つistio-proxyコンテナを自動的に構築し，これがマイクロサービスに通信をルーティングする．istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される．
+### データプレーン
+
+#### ・データプレーンとは
+
+インバウンド通信をマイクロサービスにルーティングする機能を持つ．Istioは，プロキシ機能を持つistio-proxyコンテナを自動的に構築し，これがマイクロサービスに通信をルーティングする．
+
+#### ・istio-proxyコンテナ
+
+istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される．
 
 参考：https://sreake.com/blog/istio/
 
-#### ・コントロールプレーン
+<br>
+
+### コントロールプレーン
+
+#### ・コントロールプレーンとは
 
 データプレーンを包括的に管理する機能を持つ．Istioは，istio-proxyコンテナの管理機能を持つistidというPodを構築する．このPod内には，Pilot，Citadel，Galley，に相当するコンテナが稼働している．
 
 参考：https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
 
-| コンポーネント | 説明                                                         | コンテナ名      |
-| -------------- | ------------------------------------------------------------ | --------------- |
-| Citadel        | マイクロサービス間の認証やトレースIDを管理する．             |                 |
-| Galley         | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったIstiodコンポーネントを構築する． |                 |
-| Pilot          | コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．また，サービスレジストリに登録された情報を基に，マイクロサービスを識別する．（サービスディスカバリ）<br>参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2 | ```discovery``` |
-| Mixer          | v1.5からデータプレーン側に統合された．<br>参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability |                 |
+#### ・Citadel
+
+マイクロサービス間の認証やトレースIDを管理する．
+
+#### ・Galley
+
+コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったIstiodコンポーネントを構築する．
+
+#### ・Pilot
+
+コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．
+
+参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
+
+| コンテナ名      | 機能                                                         |
+| --------------- | ------------------------------------------------------------ |
+| ```discovery``` | サービスレジストリに登録された情報を基に，マイクロサービスを識別する．（サービスディスカバリー） |
+
+#### ・Mixer
+
+v1.5からデータプレーン側に統合された．
+
+参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability
 
 <br>
-
-
-
-
 
 ## 02. リソースとオブジェクト
 

@@ -39,9 +39,12 @@ kub-apiserverとクラウドインフラを仲介し，Kubernetesがクラウド
 
 #### ・etcdとは
 
-Clusterの様々な設定値を保持し，冗長化されたリソース間にこれを共有する．
+Clusterの様々な設定値を保持し，冗長化されたリソース間にこれを共有する．Kubernetesに標準で組み込まれているが，別のOSSである．
 
-参考：https://thinkit.co.jp/article/17453
+参考：
+
+- https://thinkit.co.jp/article/17453
+- https://landscape.cncf.io/?selected=etcd
 
 ![kubernetes_etcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_etcd.png)
 
@@ -188,6 +191,16 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合，これら同�
 | ------------------- | ---------------------------------------------- |
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
+
+#### ・名前解決
+
+Cluster内の全てのPodにDNS名が割り当てられている．レコードタイプはA/AAAAレコードのみである．
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod
+
+| レコードタイプ | ドメイン名                                           | 名前解決の仕組み              |
+| -------------- | ---------------------------------------------------- | ----------------------------- |
+| A/AAAAレコード | ```<PodのIPアドレス>.<名前空間>.pod.cluster.local``` | PodのIPアドレスが返却される． |
 
 <br>
 
@@ -534,9 +547,34 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 <br>
 
-## 04. ネットワーキング
+## 04. サービスディスカバリー
 
-### Serviceの名前解決
+### 環境変数の場合
+
+Serviceにリクエストを送信するために必要な情報を，環境変数として出力する．
+
+参考：https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
+
+**＊実装例＊**
+
+foo-app-serviceというServiceを構築した場合の環境変数を示す．
+
+```bash
+$ printenv | sort -n
+
+FOO_APP_SERVICE_PORT=tcp://10.110.235.51:80
+FOO_APP_SERVICE_PORT_80_TCP=tcp://10.110.235.51:80
+FOO_APP_SERVICE_PORT_80_TCP_ADDR=10.110.235.51
+FOO_APP_SERVICE_PORT_80_TCP_PORT=80
+FOO_APP_SERVICE_PORT_80_TCP_PROTO=tcp
+FOO_APP_SERVICE_SERVICE_HOST=10.110.235.51
+FOO_APP_SERVICE_SERVICE_PORT=80
+FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
+```
+
+<br>
+
+### クラスター内DNSの場合
 
 #### ・レコードタイプとドメイン名の関係
 
@@ -574,16 +612,4 @@ Address:  10.105.157.184
 ```
 
 <br>
-
-### Podの名前解決
-
-#### ・ドメイン名
-
-Cluster内の全てのPodにDNS名が割り当てられている．レコードタイプはA/AAAAレコードのみである．
-
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod
-
-| レコードタイプ | ドメイン名                                              | 名前解決の仕組み                 |
-| -------------- | ------------------------------------------------------- | -------------------------------- |
-| A/AAAAレコード | ```<PodのIPアドレス>.<名前空間>.pod.cluster.local``` | PodのIPアドレスが返却される． |
 

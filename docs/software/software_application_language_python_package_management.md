@@ -35,6 +35,8 @@ flask==2.0.2
 
 ### check
 
+#### ・オプション無し
+
 インストールされているパッケージ間の依存関係を正しく解決できるかを確認する．
 
 ```bash
@@ -67,10 +69,27 @@ $ pip3 install <パッケージ名>
 
 #### ・--upgrade
 
-pip自身を含む，指定したパッケージをアップグレードする．アップグレード後は，```-r```オプションで要件ファイルも更新する必要がある．
+pip自身を含む，指定したパッケージをアップグレードする．アップグレード後は，```pip3 check```コマンドで依存関係が正しいかを確認し，```pip3 freeze```コマンドで要件ファイルも更新する必要がある．
 
 ```bash
 $ pip3 install --upgrade <パッケージ名>
+
+# 依存関係を確認する．
+$ pip3 check
+
+# 要件ファイルを更新する．
+$ pip3 freeze > requirements.txt
+```
+
+アップグレード可能なパッケージを一括でアップグレードする場合は，パイプラインと組み合わせる必要がある．
+
+参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
+
+```bash
+$ pip3 freeze --local \
+    | grep -v '^\-e' \
+    | cut -d = -f 1  \
+    | xargs -n1 pip3 install -U
 ```
 
 **＊実行例＊**
@@ -81,9 +100,6 @@ pip自身をアップグレードする．
 
 ```bash
 $ pip3 install --upgrade pip
-
-# 要件ファイルを更新する．
-$ pip3 freeze > requirements.txt
 ```
 
 #### ・--user
@@ -112,6 +128,8 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 <br>
 
 ### freeze
+
+#### ・オプション無し
 
 pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
@@ -169,6 +187,8 @@ setuptools         60.5.0  60.9.3 wheel
 
 ### show
 
+#### ・オプション無し
+
 pipでインストールしたパッケージ情報を表示する．
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
@@ -194,6 +214,8 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 <br>
 
 ### uninstall
+
+#### ・オプション無し
 
 指定したパッケージをインストールする．
 
