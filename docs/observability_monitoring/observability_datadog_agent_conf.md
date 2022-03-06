@@ -212,20 +212,17 @@ FROM data/agent:latest
 
 Datadogが提供するdatadogイメージによって構築されるコンテナであり，コンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadog dockerエージェントが，コンテナからメトリクスを収集し，Datadogにこれを転送する．
 
-参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E6%A6%82%E8%A6%81
+参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
 #### ・コンテナ定義
 
 ```bash
 [
     {
-        # laravelコンテナ
+        # barコンテナ
     },
     {
-        # nginxコンテナ
-    },
-    {
-        # datadogコンテナ
+        # datadogコンテナ（サイドカー）
         "name": "datadog",
         "image": "datadog/agent:latest",
         "essential": false,
@@ -239,7 +236,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "/prd-foo/laravel/log",
+                "awslogs-group": "/prd-foo/bar/log",
                 "awslogs-region": "ap-northeast-1"
                 "awslogs-stream-prefix": "/container"
             }
@@ -294,7 +291,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
 
-参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
+参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 
 ```bash
 {
@@ -331,13 +328,13 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 全てのテレメトリーに関する環境変数として用いることができる．datadogコンテナの環境変数として設定する．
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3
+参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |  | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateを用いる場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
+| ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |                                                              | https://app.datadoghq.com/apm/services       |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateの場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
 | ```ECS_FARGATE``` | Fargateを用いる場合，これを宣言する．                        |                                                              |                                              |
 
 <br>
@@ -348,23 +345,22 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 通常メトリクスに関する環境変数として用いることができる．一部のメトリクスは，デフォルトでは収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8F%8E%E9%9B%86-agent
+参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
-| ```DD_LOGS_ENABLED```          | -                                                            |                                                              |                                      |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ・カスタムメトリクス
 
 カスタムメトリクスに関する環境変数として用いることができる．
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=%E6%A8%99%E6%BA%96#dogstatsd-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
+参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
-| 変数名                               | 説明                                                    | DatadogコンソールURL |
-| ------------------------------------ | ------------------------------------------------------- | -------------------- |
-| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
+| 変数名                               | 説明                                                    |
+| ------------------------------------ | ------------------------------------------------------- |
+| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | datadogコンテナのカスタムメトリクスの受信を有効化する． |
 
 <br>
 
@@ -374,11 +370,10 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ログに関する環境変数として用いることができる．
 
-参考：https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0
-
-| 変数名             | 説明                                | 補足 |
-| ------------------ | ----------------------------------- | ---- |
-| ```DD_LOG_LEVEL``` | APMに送信するログレベルを設定する． |      |
+| 変数名                | 説明                                | 補足                                                         |
+| --------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| ```DD_LOGS_ENABLED``` | ログの収集を有効化する．            | 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents |
+| ```DD_LOG_LEVEL```    | APMに送信するログレベルを設定する． | 参考：https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables |
 
 <br>
 
@@ -386,9 +381,11 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 #### ・分散トレース変数とは
 
-分散トレースに関する環境変数として用いることができる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
+分散トレースに関する環境変数として用いることができる．分散トレースのタグ名に反映される．
 
-参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+#### ・PHPトレーサーの場合
+
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 
 | 変数名                                        | 説明                                                         | 画面                                   |
 | --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |

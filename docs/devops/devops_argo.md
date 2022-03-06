@@ -99,3 +99,8 @@ $ argocd app sync guestbook
 $ argocd app set guestbook --sync-policy automated
 ```
 
+<br>
+
+## 03. CircleCIとの組み合わせ
+
+参考：https://circleci.com/ja/blog/gitops-argocd/

@@ -271,7 +271,7 @@ domain: example.com
 
 参考：
 
-- https://docs.ansible.com/ansible/2.9_ja/user_guide/intro_inventory.html#inventoryformat
+- https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
 - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
 
 ```yaml
@@ -280,7 +280,7 @@ domain: example.com
 - all:
     hosts:
       app:
-        # 開発環境のIPアドレス
+        # サーバーのIPアドレス
         ansible_host: 127.0.0.1
         # ログインするためのユーザー名
         ansible_user: vagrant
@@ -413,7 +413,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上で```service```コマンドの実行を設定する．
 
-参考：https://docs.ansible.com/ansible/2.9_ja/modules/service_module.html
+参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
 ```yaml
 - tasks:
@@ -428,7 +428,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### ansible.builtin.shell
 
-管理対象ノードでシェルを実行する．複数行に渡る場合は，『```|```』を用いる．このシェルでのみ使用できる環境変数を定義できる．
+管理対象ノードでシェルを実行する．複数行に渡る場合は，『```|```』を用いる．
 
 参考：
 
@@ -440,9 +440,6 @@ taskセクションの後に実行するセットアップ処理を設定する�
   - name: Echo foo
     ansible.builtin.shell: |
       echo foo
-      echo ${FOO}
-    environment: 
-      FOO: FOO
 ```
 
 <br>
@@ -467,7 +464,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 参考：
 
-- https://docs.ansible.com/ansible/2.9_ja/reference_appendices/faq.html#shell
+- https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
 
 **＊実装例＊**
@@ -485,6 +482,24 @@ taskセクションの後に実行するセットアップ処理を設定する�
       ansible.builtin.template:
         src: foo.conf.j2
         dest: /etc/foo/foo.conf
+```
+
+<br>
+
+### environment
+
+task内で出力できる環境変数を設定する．
+
+参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
+
+```yaml
+- task:
+  - name: Echo foo
+    ansible.builtin.shell: |
+      echo foo
+      echo ${FOO}
+    environment: 
+      FOO: FOO
 ```
 
 <br>
@@ -530,7 +545,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 参考：
 
-- https://docs.ansible.com/ansible/2.9_ja/reference_appendices/faq.html#shell
+- https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
 
 **＊実装例＊**

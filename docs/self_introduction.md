@@ -34,13 +34,19 @@
 
 知見の共有になれば幸いです．
 
+### ■ クリーンアーキテクチャ
+
 ▶ https://github.com/hiroki-it/ddd-api-with-laravel （Clean-Arch，Laravel，GitHub Actions，...）
 
 ▶ https://github.com/hiroki-it/ddd-api-with-go-gin （Clean-Arch，Gin，...）
 
 ▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （Clean-Arch，Go，Serverless Framework，CircleCI，...）
 
-▶ https://github.com/hiroki-it/microservices-with-kubernetes （Microservices-Arch，K8s，Istio，...）
+### ■ マイクロサービスアーキテクチャ
+
+▶ https://github.com/hiroki-it/microservices-backend （Microservices-Arch）
+
+▶ https://github.com/hiroki-it/microservices-infrastructure （K8s，Istio，ArgoCD，CircleCI...）
 
 <br>
 
