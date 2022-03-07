@@ -79,7 +79,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
 
-#### ・ポリレポジトリ
+#### ・ポリリポジトリ
 
 各マイクロサービスを異なるリポジトリで管理する．
 

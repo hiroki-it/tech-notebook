@@ -2310,7 +2310,7 @@ ECSタスクをどのような設定値を基に構築するかを設定でき�
 
 ![ecs-task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-task_life-cycle.png)
 
-ECSタスクは，デプロイ/自動スケーリング/手動操作の時にライフサイクルを持つ．AWS側の操作が終了した時点でRunningステータスになるが，コンテナの起動に時間がかかるようなアプリケーション（例：SSR）の場合は，Runningステータスであっても使用可能な状態ではないことに注意する．
+ECSタスクは，必須コンテナ異常停止時，デプロイ，自動スケーリング，手動操作，の時にライフサイクルを持つ．AWS側の操作が終了した時点でRunningステータスになるが，コンテナの起動に時間がかかるようなアプリケーション（例：SSR）の場合は，Runningステータスであっても使用可能な状態ではないことに注意する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
@@ -5556,6 +5556,44 @@ TLS，Sigv4，KMSを用いて暗号化された接続のこと．
 # ECS Execの場合
 An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
 ```
+
+<br>
+
+### チェンジマネージャー
+
+#### ・チェンジマネージャーとは
+
+AWSリソースの設定変更に承認フローを設ける．
+
+1. ランブックを作成する．AWSがあらかじめ用意してくれているものを用いることもできる．
+2. テンプレートを作成し，リクエストを作成する．
+3. 承認フローを通過する．これは，スキップするように設定することもできる．
+4. テンプレートを用いて，変更リクエストを作成する．
+5. 承認フローを通過する．これは，スキップできない．
+6. 変更リクエストに基づいて，AWSリソースを変更する処理が自動的に実行される．これは，即時実行するこもスケジューリングすることもできる．
+
+#### ・ランブック（ドキュメント）
+
+AWSリソースを変更するためには『ランブック（ドキュメント）』を事前に作成する必要がある．ランブックでは，AWSリソースの変更箇所を定義する．ランブックには，AWSがあらかじめ用意してくれるものとユーザー定義のものがある．
+
+| タイプ           | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する．内部的には，Python製のLambdaが使用されている（たぶん）．<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し，状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/automation-walk-document-builder.html |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する．内部的には，AWS Run Commandが使用されている．<br/>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br/>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Sessionタイプ    |                                                              |                                                              |
+
+#### ・テンプレート
+
+作業内容の鋳型こと．ランブックを指定し，変更箇所に基づいた作業内容を定義する．
+デフォルトではテンプレートの作成自体にも承認が必要になる．ただ，指定した権限を持つユーザーはテンプレートの承認をスキップするように設定できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-templates.html
+
+#### ・変更リクエスト
+
+鋳型に基づいた実際の作業のこと．作業のたびにテンプレートを指定し，リクエストを提出する．承認が必要になる．
+
+参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-requests.html
 
 <br>
 

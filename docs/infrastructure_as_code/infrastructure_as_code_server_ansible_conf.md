@@ -225,8 +225,6 @@ taskファイルの後続処理が設定されたhandlerファイルを配置す
     - restart_php-fpm
 ```
 
-
-
 <br>
 
 ### ```group_vars```ディレクトリ
@@ -299,22 +297,39 @@ domain: example.com
 ```yaml
 # inventoryファイル
 # 本番環境
-# 冗長化されたサーバーのうちの一方
 - all:
-    hosts:
-      # appサーバーa
-      app:
-        ansible_host: 192.168.111.101
-        ansible_user: ubuntu
-        ansible_password: ubuntu
-        # SSH接続に用いる秘密鍵
-        ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
-      # webサーバーa
-      web:
-        ansible_host: 192.168.111.10
-        ansible_user: ubuntu
-        ansible_password: ubuntu
-        ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+    children:
+      # 冗長化サーバーa
+      server_a:
+        hosts:
+          # appサーバー
+          app:
+            ansible_host: 192.168.111.101
+            ansible_user: ubuntu
+            ansible_password: ubuntu
+            # SSH接続に用いる秘密鍵
+            ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+          # webサーバー
+          web:
+            ansible_host: 192.168.111.10
+            ansible_user: ubuntu
+            ansible_password: ubuntu
+            ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+      # 冗長化サーバーc
+      server_c:
+        hosts:
+          # appサーバー
+          app:
+            ansible_host: 192.168.111.102
+            ansible_user: ubuntu
+            ansible_password: ubuntu
+            ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+          # webサーバー
+          web:
+            ansible_host: 192.168.111.11
+            ansible_user: ubuntu
+            ansible_password: ubuntu
+            ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
 ```
 
 <br>
