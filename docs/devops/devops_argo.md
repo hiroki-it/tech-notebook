@@ -101,6 +101,120 @@ $ argocd app set guestbook --sync-policy automated
 
 <br>
 
-## 03. CircleCIとの組み合わせ
+## リポジトリの種類
 
-参考：https://circleci.com/ja/blog/gitops-argocd/
+GitOpsのベストプラクティスに則って，アプリケーションとマニフェストファイルのソースコードを別々のリポジトリで管理する．
+
+参考：https://blog.argoproj.io/5-gitops-best-practices-d95cb0cbe9ff
+
+例えば，以下の３つのリポジトリを用意する．
+
+- バックエンド
+- フロントエンド
+- マニフェスト
+
+## バックエンドリポジトリ
+
+### 構成
+
+マイクロサービスを管理する．
+
+環境構築の方法は，アプリケーションチームに任せる（docker-composeでもよい）．
+
+ただ，Kubernetes上でやることが少なくなるように，できるだけDockerfile内に全ての設定を実装してもらうことが望ましい．
+
+バックエンドのリポジトリは，複数のマイクロサービスを管理するモノリポジトリとするか，またはマイクロサービスごとにリポジトリを分けるポリリポジトリを選ぶ．
+
+ちなみに，Google，Facebook，Twitterはモノリポジトリで運用しているらしい
+
+参考：https://www.fourtheorem.com/blog/monorepo
+
+### CI
+
+CircleCIやGitHubActionsでイメージのビルドからプッシュまでをマイクロサービスごとに行う．
+
+また，EKS上のArgoCDコンテナのデプロイを発火させるために，マニフェストリポジトリでリリースブランチの作成とプルリクを作成する処理をCI上で行う．
+
+具体的には，イメージのビルド&プッシュ以外に，以下を行う．
+
+1. マニフェストリポジトリをクローンする．
+2. CircleCIコンテナからリポジトリに接続できるように，CircleCIコンテナの公開鍵をマニフェストリポジトリに登録する．
+3. Gitコマンドをセットアップする．
+4. マニフェストリポジトリ上でリリースブランチを作成する．
+5. yqコマンドを用いて，Kubernetesマニフェストファイル（ymlファイル）上のイメージタグを変更するようにコミットし，これをリリースのプルリクとする．
+
+参考：
+
+- https://circleci.com/ja/blog/gitops-argocd/
+- https://github.com/tadashi0713/circleci-demo-gitops-app/blob/master/.circleci/config.yml
+
+## マニフェストリポジトリ
+
+### 構成
+
+Kubernetes，Istio，ArgoCDのマニフェストファイルを管理する．
+
+それぞれのマニフェストファイルは，実行環境タグの値が異なる（```dev```，```stg```，```prd```）以外にほとんど同じで問題ない．
+
+実行環境ごとマニフェストファイルを量産すると，ymlファイルの管理が非常に大変になるため，共通化できるところは共通化した方が良い．
+
+マニフェストファイルの共通化ツールとしては，以下がある．
+
+- Helm：
+  - https://github.com/helm/helm
+  - https://uqichi.hatenablog.com/entry/helm-pros-cons/ 
+- Kustomize
+  - https://github.com/kubernetes-sigs/kustomize
+  - https://atmarkit.itmedia.co.jp/ait/articles/2101/21/news004.html
+
+
+
+### CI
+
+必須ではないが，マニフェストファイルのテストを実行しても良い．
+
+テストツール例
+
+- kubeval：https://github.com/instrumenta/kubeval
+
+### CD
+
+バックエンドリポジトリのCIによって，リリースブランチとプルリク（イメージタグの変更）の作成が行われる．
+
+マニフェストリポジトリ側では以下を行う．
+
+1. リリースブランチ上のプルリクをmainブランチにマージする．
+2. EKS上で稼働するArgoCDコンテナは，マニフェストリポジトリのmainブランチの状態変化を監視している．ArgoCDコンテナは，mainブランチへのリリースブランチのマージを検知する．これはKubernetesを操作し，ECRから新しいイメージをプルし，コンテナを構築させる．デプロイの方法は，Kubernetesのマニフェストファイル上でローリングアップデートやB/Gデプロイメントなどを定義できる．
+
+参考：
+
+- https://circleci.com/ja/blog/gitops-argocd/
+- https://github.com/tadashi0713/circleci-demo-gitops-manifest
+
+## AWS環境
+
+EKS上にArgoCDコンテナを稼働させ，マニフェストリポジトリの状態を監視する．
+
+ただ，初期構築時はEKS上にArgoCDコンテナがなく，GitOpsができないため，EKS上にArgoCDを手動でセットアップする必要がある．
+
+参考：
+
+- https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+- https://www.eksworkshop.com/intermediate/290_argocd/install/
+
+EKS上にArgoCDをセットアップする時には，```kubectl```コマンドを使用する必要があり，```awscli```コマンドを用いて，```kubectl```コマンドの向き先を変更する．
+
+```bash
+# kubectlコマンドがEKSに向くように，.kube/configファイルを新しく作成する．
+$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
+
+# kubectlがEKSに向いていることを確認する．
+$ kubectl config get-contexts
+
+CURRENT   NAME                    CLUSTER                 AUTHINFO                  NAMESPACE
+*         xxxxxxxxx/foo-cluster   xxxxxxxxx/foo-cluster   xxxxxxxxx/foo-cluster
+```
+
+一度インストールしてしまえば，ArgoCDの設定自体もマニフェストファイルの一つとしてマニフェストリポジトリで管理できる．
+
+参考：https://tech.recruit-mp.co.jp/infrastructure/gitops-cd-by-using-argo-cd-at-eks/
