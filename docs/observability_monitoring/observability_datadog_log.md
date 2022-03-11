@@ -493,7 +493,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```http.status_code```属性のステータスコード値に応じて，```http.status_category```属性にレベル値（```info```，```notice```，```warning```，```critical```）に変換するようにする．ステータスコードとレベルの対応関係については，以下のリンクを参考にせよ．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```http.status_code```属性のステータスコード値に応じて，```http.status_category```属性にレベル値（```info```，```notice```，```warning```，```critical```）に変換する．ステータスコードとレベルの対応関係については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html#_16
 
@@ -790,7 +790,7 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 }
 ```
 
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与するようにする．この属性を用いる理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与する．この属性を用いる理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
 
 ```bash
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"

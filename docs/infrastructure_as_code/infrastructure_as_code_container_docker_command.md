@@ -434,7 +434,7 @@ $ docker run -a -it --rm --name <コンテナ名> <使用イメージ名>:<タ�
 $ docker run -d -it --rm --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 
-コンテナの起動時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行するようにする．
+コンテナの起動時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行する．
 
 ```bash
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.

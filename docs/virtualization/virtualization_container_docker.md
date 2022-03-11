@@ -116,7 +116,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ・Data Volumeコンテナによる永続化データの提供
 
-ボリュームを用いる場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを用いる時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照するようにする．
+ボリュームを用いる場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを用いる時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照する．
 
 ![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
 

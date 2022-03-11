@@ -46,7 +46,7 @@
 
 ▶ https://github.com/hiroki-it/microservices-backend （Microservices-Arch）
 
-▶ https://github.com/hiroki-it/microservices-infrastructure （K8s，Istio，ArgoCD，CircleCI...）
+▶ https://github.com/hiroki-it/microservices-manifests （K8s，Istio，ArgoCD，CircleCI...）
 
 <br>
 

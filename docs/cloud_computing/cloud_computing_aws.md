@@ -78,7 +78,7 @@ ALBに割り当てられるIPアドレス範囲には，VPCのものが適用さ
 
 #### ・ALBのセキュリティグループ
 
-Route53からルーティングされるパブリックIPアドレスを受信できるようにしておく必要がある．パブリックネットワークに公開するサイトであれば，IPアドレスは全ての範囲（```0.0.0.0/0```と``` ::/0```）にする．社内向けのサイトであれば，社内のプライベートIPアドレスのみ（```n.n.n.n/32```）を許可するようにする．
+Route53からルーティングされるパブリックIPアドレスを受信できるようにしておく必要がある．パブリックネットワークに公開するサイトであれば，IPアドレスは全ての範囲（```0.0.0.0/0```と``` ::/0```）にする．社内向けのサイトであれば，社内のプライベートIPアドレスのみ（```n.n.n.n/32```）を許可する．
 
 <br>
 
@@ -656,11 +656,13 @@ X-Rayを用いて，API Gatewayを開始点とした分散トレースを収集�
 
 スケーリングの方法を定義する．
 
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/service-configure-auto-scaling.html
+
 | 機能名                       | 説明                                                         | 補足                                                         |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | シンプルスケーリング       | 特定のメトリクスに単一の閾値を設定し，それに応じてスケーリングを行う． |                                                              |
-| ステップスケーリング       | 特定のメトリクスに段階的な閾値を設定し，それに応じて段階的にスケーリングを実行する． | （例）CPU平均使用率に段階的な閾値を設定する．<br>・40%の時にEC2インスタンスが1つスケールアウト<br>・```70```%の時にEC2インスタンスを2つスケールアウト<br>・```90```%の時にEC2インスタンスを3つスケールアウト |
-| ターゲット追跡スケーリング | 特定のメトリクス（CPU平均使用率やMemory平均使用率）にターゲット値を設定し，それに収束するように自動的にスケールインとスケールアウトを実行する． | ターゲット値を設定できるリソースの例<br>・ECSサービスのタスク数<br>・DBクラスターのAuroraのリードレプリカ数<br>・Lambdaのスクリプト同時実行数 |
+| ステップスケーリング       | 特定のメトリクスに段階的な閾値を設定し，それに応じて段階的にスケールアウトを実行する．スケーリングの実行条件となる閾値期間は，CloudWatchメトリクスの連続期間として設定できる． | （例）CPU平均使用率に段階的な閾値を設定する．<br>・40%の時にEC2インスタンスが1つスケールアウト<br>・```70```%の時にEC2インスタンスを2つスケールアウト<br>・```90```%の時にEC2インスタンスを3つスケールアウト |
+| ターゲット追跡スケーリング | 特定のメトリクス（CPU平均使用率やMemory平均使用率）にターゲット値を設定し，それに収束するように自動的にスケールインとスケールアウトを実行する．ステップスケーリングとは異なり，スケーリングの実行条件となる閾値期間を設定できない． | ターゲット値を設定できるリソースの例<br>・ECSサービスのタスク数<br>・DBクラスターのAuroraのリードレプリカ数<br>・Lambdaのスクリプト同時実行数 |
 
 <br>
 
@@ -2331,8 +2333,8 @@ ECSタスクは，必須コンテナ異常停止時，デプロイ，自動ス�
 | ターゲット追跡スケーリングポリシー | 監視対象のメトリクスがターゲット値を超過しているか否かを基に，タスク数のスケーリングが実行される． |                                                              |
 | ECSサービスメトリクス              | 監視対象のメトリクスを設定する．                             | 『平均CPU』，『平均メモリ』，『タスク当たりのALBからのリクエスト数』を監視できる．SLIに対応するCloudWatchメトリクスも参考にせよ． |
 | ターゲット値                       | タスク数のスケーリングが実行される収束値を設定する．         | ターゲット値を超過している場合，タスク数がスケールアウトされる．反対に，ターゲット値未満（正確にはターゲット値の９割未満）の場合，タスク数がスケールインされる． |
-| スケールアウトクールダウン期間     | スケールアウトを発動してから，次回のスケールアウトを発動できるまでの時間を設定する． | ・期間を短くし過ぎると，ターゲット値を超過する状態が断続的に続いた場合，余分なスケールアウトが連続して実行されてしまうため注意する．<br>・期間を長く過ぎると，スケールアウトが不十分になり，ECSの負荷が緩和されないため注意する． |
-| スケールインクールダウン期間       | スケールインを発動してから，次回のスケールインを発動できるまでの時間を設定する． |                                                              |
+| スケールアウトクールダウン期間     | スケールアウトを完了してから，次回のスケールアウトを発動できるまでの時間を設定する． | ・期間を短くし過ぎると，ターゲット値を超過する状態が断続的に続いた場合，余分なスケールアウトが連続して実行されてしまうため注意する．<br>・期間を長く過ぎると，スケールアウトが不十分になり，ECSの負荷が緩和されないため注意する． |
+| スケールインクールダウン期間       | スケールインを完了してから，次回のスケールインを発動できるまでの時間を設定する． |                                                              |
 | スケールインの無効化               |                                                              |                                                              |
 
 #### ・スケーリングのシナリオ例
@@ -2352,7 +2354,7 @@ ECSタスクは，必須コンテナ異常停止時，デプロイ，自動ス�
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
 
 <br>
 
@@ -2408,7 +2410,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)        |                                         | パラメーターストアから出力する環境変数を設定する．           |                                                              |
-| memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し，これを超えた場合にコンテナを停止するようにする『ハード制限』ともいう． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
+| memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し，これを超えた場合にコンテナを停止する『ハード制限』ともいう． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち，該当のコンテナに最低限割り当てるメモリ分を設定する．『ソフト制限』ともいう． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         |                                                              |                                                              |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                              |                                                              |
@@ -2613,7 +2615,7 @@ ECS Execを実行するユーザーに，実行権限のポリシーを付与す
 }
 ```
 
-laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
+laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定する．
 
 ```bash
 #!/bin/bash
@@ -2796,7 +2798,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる．
+そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる．
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -2847,11 +2849,32 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 ## 14-03. EKS
 
+### EKSとKubernetesの対応
+
+参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+
+![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
+
+| Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
+| -------------------------- | ----------------------- | ------------------------------------------------------------ |
+| Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
+| Ingress                    | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| ワーカーNode               | Fargate Node，EC2 Node  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
+| PersistentVolume           | EBS，EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
+| Secret                     | System Manager          | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
+| kube-dns                   | coredns                 |                                                              |
+| kube-proxy                 | kube-proxy              |                                                              |
+| 種々のCNIプラグイン        | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
+| これら以外のリソース       | なし                    |                                                              |
+
+<br>
+
 ### EKSクラスター
 
 #### ・EKSクラスターとは
 
-Fargate/EC2 Nodeの管理グループ単位のこと．KubernetesのClusterに相当する．
+Fargate NodeやEC2 Nodeの管理グループ単位のこと．KubernetesのClusterに相当する．
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 
@@ -2863,24 +2886,13 @@ EKSコントロールプレーンのこと．
 
 <br>
 
-### EKSとKubernetesの対応
+### マルチNode
 
-参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+マルチNodeを構築する場合，AZごとにNodeを構築する．
 
-![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-networking.html
 
-| Kubernetes上でのリソース名 | EKS上でのリソース名 | 補足                                                         |
-| ------------------------ | ----------------------- | ------------------------------------------------------------ |
-| Cluster                  | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                  | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
-| マスターNode             | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| ワーカーNode             | Fargate，EC2            | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
-| PersistentVolume         | EBS，EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
-| Secret                   | System Manager          | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
-| kube-dns                 | coredns                 |                                                              |
-| kube-proxy               | kube-proxy              |                                                              |
-| 種々のCNIプラグイン      | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
-| これら以外のリソース | なし                    |                                                              |
+![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_multi-node.png)
 
 <br>
 
@@ -4476,7 +4488,7 @@ DBクラスター/DBインスタンスの設定の変更をスケジューリン
 
 #### ・メンテナンスの適切な曜日/時間帯
 
-CloudWatchメトリクスの```DatabaseConnections```メトリクスから，DBの接続数が低くなる時間帯を調査し，その時間帯にメンテナンスウィンドウを設定するようにする．また，メンテナンスウィンドウの実施曜日が週末であると，サイトが停止したまま休日を迎える可能性があるため，週末以外になるように設定する（メンテナンスウィンドウがUTCであることに注意）．
+CloudWatchメトリクスの```DatabaseConnections```メトリクスから，DBの接続数が低くなる時間帯を調査し，その時間帯にメンテナンスウィンドウを設定する．また，メンテナンスウィンドウの実施曜日が週末であると，サイトが停止したまま休日を迎える可能性があるため，週末以外になるように設定する（メンテナンスウィンドウがUTCであることに注意）．
 
 #### ・『保留中の変更』『保留中のメンテナンス』
 
@@ -4733,7 +4745,7 @@ Auroraでは，OS，エンジンバージョン，MySQLなどのアップグレ�
 
 **＊実装例＊**
 
-Aurora MySQLのアップグレードに伴うダウンタイムを計測する．踏み台サーバーを経由してRDSに接続し，現在時刻を取得するSQLを送信する．この時，```for```文や```watch```コマンドを用いる．ただ，```watch```コマンドはデフォルトでインストールされていない可能性がある．平常アクセス時のも同時に実行することで，より正確なダウンタイムを取得するようにする．また，ヘルスチェックの時刻を正しくロギングできるように，ローカルPCから時刻を取得する．
+Aurora MySQLのアップグレードに伴うダウンタイムを計測する．踏み台サーバーを経由してRDSに接続し，現在時刻を取得するSQLを送信する．この時，```for```文や```watch```コマンドを用いる．ただ，```watch```コマンドはデフォルトでインストールされていない可能性がある．平常アクセス時のも同時に実行することで，より正確なダウンタイムを取得する．また，ヘルスチェックの時刻を正しくロギングできるように，ローカルPCから時刻を取得する．
 
 ```bash
 #!/bin/bash
@@ -5429,7 +5441,7 @@ EC2に割り振られる可能性のあるIPアドレスを許可するために
 
 #### ・ALBの例
 
-CloudFrontと連携する場合，CloudFrontに割り振られる可能性のあるIPアドレスを許可するために，全てのIPアドレスを許可する．その代わりに，CloudFrontにWAFを紐付け，ALBの前でIPアドレスを制限するようにする．CloudFrontとは連携しない場合，ALBのSecurity GroupでIPアドレスを制限するようにする．
+CloudFrontと連携する場合，CloudFrontに割り振られる可能性のあるIPアドレスを許可するために，全てのIPアドレスを許可する．その代わりに，CloudFrontにWAFを紐付け，ALBの前でIPアドレスを制限する．CloudFrontとは連携しない場合，ALBのSecurity GroupでIPアドレスを制限する．
 
 | タイプ | プロトコル | ポート    | ソース          | 説明                         |      |
 | ------ | ---------- | --------- | --------------- | ---------------------------- | ---- |

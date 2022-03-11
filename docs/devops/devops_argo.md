@@ -75,10 +75,14 @@ $ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-（５）ArgoCDにログインする．
+（５）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
 
 ```bash
 $ argocd login 127.0.0.1:8080
+
+Username: admin
+Password: *****
+'admin:login' logged in successfully
 ```
 
 （６）ArgoCD上に，監視対象のアプリケーションのGitリポジトリを登録する．

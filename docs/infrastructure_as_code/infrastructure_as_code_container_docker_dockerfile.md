@@ -152,7 +152,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 #### ・注意点
 
-Dockerfileで```CMD```を指定しない場合，イメージのデフォルトのバイナリファイルが割り当てられる．一旦，デフォルトのバイナリファイルを確認した後に，これをDockerfileに明示的に実装するようにする．
+Dockerfileで```CMD```を指定しない場合，イメージのデフォルトのバイナリファイルが割り当てられる．一旦，デフォルトのバイナリファイルを確認した後に，これをDockerfileに明示的に実装する．
 
 ```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
@@ -394,7 +394,7 @@ Dockerは全てのPCで稼働できるわけではなく，イメージごとに
 
 ### プロセス単位でDockerfileを分割する
 
-これは，Dockerの原則である．アプリケーションを稼働させるには，最低限，Webサーバーミドルウェア，アプリケーション，DBMSが必要である．これらを，個別のコンテナで稼働させ，ネットワークで接続するようにする．
+これは，Dockerの原則である．アプリケーションを稼働させるには，最低限，Webサーバーミドルウェア，アプリケーション，DBMSが必要である．これらを，個別のコンテナで稼働させ，ネットワークで接続する．
 
 ![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロセス単位のコンテナ.png)
 

@@ -597,7 +597,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトのキャッシュを作成する．この機能を用いない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じパッケージがインストールされる．しかし，Workflowのたびに，パッケージをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリ下に配置されたアーティファクトを再利用するようにする．この機能は，複数のWorkflowの間だけでなく，1つのWorkflowの中でも利用できる．
+ビルドのアーティファクトのキャッシュを作成する．この機能を用いない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じパッケージがインストールされる．しかし，Workflowのたびに，パッケージをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリ下に配置されたアーティファクトを再利用する．この機能は，複数のWorkflowの間だけでなく，1つのWorkflowの中でも利用できる．
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
@@ -1009,19 +1009,48 @@ workflows:
 
 <br>
 
-## 08. 環境変数
+## 08. working_directory
+
+処理を実行するディレクトリーを指定する．
+
+参考：
+
+- https://www.engilaboo.com/circleci-working-directory/
+- https://nju33.com/notes/circleci/articles
+
+| レベル        | 説明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| job，executor | プロジェクトをチェックアウトするディレクトリを指定する．executorまたはjobでworking_directoryを宣言できる．両方で宣言していた場合は，executorの値が優先される． |
+| steps         | 指定したディレクトリーに移動する．                           |
+
+<br>
+
+## 09. 環境変数
 
 ### CircleCIにおける環境変数とは
 
+#### ・環境変数の出力可能
+
+環境変数は基本的にシェルの実行時のみ使用でき，CircleCIのオプション値としては出力できない．ただし，```docker```オプションだけは例外的に出力できる．
+
+参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
+
+```yaml
+# 出力できない
+working_directory: /go/src/github.com/$ORGNAME/$REPONAME
+```
+
 #### ・環境変数の種類と参照範囲
+
+レベルに応じて，出力できるシェルの範囲が異なる．
 
 | 参照レベル | 方法                                        | 説明                                                         |
 | ---------- | ------------------------------------------- | ------------------------------------------------------------ |
-| Bash       | ```export```，```source```，```$BASH_ENV``` | ```run```における```command```内のみで参照できる．ただし，```$BASH_ENV```を用いれば，異なる```commands```間で値を共有可能． |
-| Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる．                |
-| Job        | ```environment```                           | ```job```内のみで参照できる．                                |
-| Project    | Environment Variables機能                   | リポジトリ内のみ参照できる．                                 |
-| Global     | Contexts機能                                | 異なるリポジトリ間で参照できる．                             |
+| Bash       | ```export```，```source```，```$BASH_ENV``` | ```run```における```command```内のシェルのみで参照できる．ただし，```$BASH_ENV```を用いれば，異なる```commands```間で値を共有可能． |
+| Container  | ```environment```                           | ```job```内の特定のコンテナのシェルのみで参照できる．        |
+| Job        | ```environment```                           | ```job```内のシェルのみで参照できる．                        |
+| Project    | Environment Variables機能                   | リポジトリ内のシェルのみ参照できる．                         |
+| Global     | Contexts機能                                | 異なるリポジトリ間のシェルで参照できる．                     |
 
 #### ・環境変数の出力方法
 
@@ -1218,7 +1247,7 @@ Projectレベルより参照範囲が大きく，異なるプロジェクト間�
 
 <br>
 
-## 02-08. Docker Compose in CircleCI
+## 10. Docker Compose in CircleCI
 
 ### docker-composeのインストール
 
@@ -1419,7 +1448,7 @@ jobs:
 <br>
 
 
-## 09. CircleCIパッケージ
+## 11. CircleCIパッケージ
 
 ### orbs
 
@@ -1487,7 +1516,7 @@ jobs:
 
 <br>
 
-## 09-02. aws-cli
+## 11-02. aws-cli
 
 ### commands
 
@@ -1589,7 +1618,7 @@ aws configure list
 
 <br>
 
-## 09-03. aws-ecr
+## 11-03. aws-ecr
 
 ### jobs
 
@@ -1629,7 +1658,7 @@ jobs:
 
 <br>
 
-## 09-04. aws-ecs
+## 11-04. aws-ecs
 
 ### jobs
 
@@ -1809,7 +1838,7 @@ workflows:
 
 <br>
 
-## 09-05. aws-code-deploy
+## 11-05. aws-code-deploy
 
 ### jobs
 
@@ -1866,7 +1895,7 @@ workflows:
 
 <br>
 
-## 09-06. slack
+## 11-06. slack
 
 ### commands
 

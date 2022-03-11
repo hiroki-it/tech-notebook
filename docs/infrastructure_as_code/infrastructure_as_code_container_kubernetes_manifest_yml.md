@@ -93,7 +93,10 @@ Podの複製数を設定する．
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: foo-deployment
 spec:
   replicas: 1
 ```
@@ -109,7 +112,10 @@ spec:
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: foo-deployment
 spec:
   revisionHistoryLimit: 5
 ```
@@ -129,7 +135,10 @@ Podのラベルを指定する．Podに複数のラベルが付与されてい�
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: foo-deployment
 metadata:
   name: foo-pod
   labels:
@@ -161,7 +170,10 @@ spec:
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: foo-deployment
 spec:
   strategy:
     type: RollingUpdate
@@ -183,7 +195,10 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: apps/v1
 kind: Deployment
+metadata:
+  name: foo-deployment
 spec:
   template:
     metadata:
@@ -212,7 +227,10 @@ spec:
 Serviceへのルーティングルールを設定する．複数のServiceにインバウンド通信を振り分けられる．
 
 ```yaml
+apiVersion: networking.k8s.io/v1
 kind: Ingress
+metadata:
+  name: foo-ingress
 spec:
   rules:
     - http:
@@ -259,6 +277,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   accessModes:
@@ -272,6 +291,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   accessModes:
@@ -285,6 +305,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   accessModes:
@@ -304,6 +325,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   capacity:
@@ -325,6 +347,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する．Volum
 Node側のマウント元のディレクトリを設定する．Podのマウントポイントは，Podの```spec.containers.volumeMount```オプションで設定する．
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   hostPath:
@@ -336,6 +359,7 @@ spec:
 マウント方法を設定する．
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   hostPath:
@@ -356,6 +380,7 @@ Node上にストレージ領域を新しく作成し，これをボリューム�
 - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   local:
@@ -381,6 +406,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   mountOptions:
@@ -404,6 +430,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   nfs:
@@ -430,6 +457,7 @@ PersistentVolumeの作成先とするワーカーNodeを設定する．
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   local:
@@ -465,6 +493,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Delete
@@ -479,6 +508,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Recycle
@@ -493,6 +523,7 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除されたとして�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Retain
@@ -511,6 +542,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolume
 spec:
   storageClassName: standard
@@ -537,6 +569,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolumeClaim
 spec:
   accessModes:
@@ -558,6 +591,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolumeClaim
 spec:
   resources:
@@ -578,6 +612,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: PersistentVolumeClaim
 spec:
   storageClassName: standard
@@ -600,6 +635,7 @@ Podを構成するコンテナの名前，ベースイメージ，受信ポー�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   containers:
@@ -619,6 +655,7 @@ spec:
 - https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   containers:
@@ -656,6 +693,7 @@ Podのマウントポイントを設定する．```spec.volume```オプション
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   containers:
@@ -677,6 +715,7 @@ spec:
 コンテナの作業ディレクトリを設定する．ただし，作業ディレクトリの設定はアプリケーション側の責務のため，Kubernetesで設定するよりもDockerfileで定義した方が良い．
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   containers:
@@ -698,6 +737,7 @@ Podのホスト名を設定する．また，```spec.hostname```オプション�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   hostname: foo-pod
@@ -723,6 +763,7 @@ Volumeの一種であるEmptyDirボリュームを作成する．EmptyDirボリ�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   volumes
@@ -744,6 +785,7 @@ Volumeの一種であるHostPathボリュームを作成する．PersistentVolum
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   volumes
@@ -762,6 +804,7 @@ PersistentVolumeを用いる場合に，PersistentVolumeClaimリソースを設�
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Pod
 spec:
   volumes
@@ -818,17 +861,19 @@ spec:
 受信するインバウンド通信のプロトコルを設定する．```protocol```キーとは異なり，アプリケーション層のプロトコルを明示的に指定できる．
 
 ```yaml
- kind: Service
- spec:
-   ports:
-   - appProtocol: http
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+    - appProtocol: http
 ```
 
 ```yaml
- kind: Service
- spec:
-   ports:
-     - appProtocol: tcp
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+    - appProtocol: tcp
 ```
 
 もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが用いなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
@@ -837,6 +882,7 @@ spec:
 
 ```yaml
 # appProtocolを用いない場合
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -845,6 +891,7 @@ spec:
 
 ```yaml
 # appProtocolを用いない場合
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -856,17 +903,19 @@ spec:
 プロトコルのポート名を設定する．
 
 ```yaml
- kind: Service
- spec:
-   ports:
-   - name: http
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+    - name: http
 ```
 
 ```yaml
- kind: Service
- spec:
-   ports:
-   - name: tcp
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+    - name: tcp
 ```
 
 #### ・protocol
@@ -876,6 +925,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -883,6 +933,7 @@ spec:
 ```
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -890,6 +941,7 @@ spec:
 ```
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -910,6 +962,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -917,6 +970,7 @@ spec:
 ```
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -930,6 +984,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -937,6 +992,7 @@ spec:
 ```
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   ports:
@@ -954,6 +1010,7 @@ spec:
 **＊実装例＊**
 
 ```yaml
+apiVersion: v1
 kind: Service
 spec:
   selector:
@@ -986,6 +1043,7 @@ Serviceのタイプを設定する．
 送信可能なアウトバウンド通信のドメイン名を設定する．
 
 ```yaml
+apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 spec:
   hosts:
@@ -999,6 +1057,7 @@ spec:
 送信可能なアウトバウンド通信のポート番号を設定する．
 
 ```yaml
+apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 spec:
   ports:
@@ -1017,6 +1076,7 @@ spec:
 送信可能なアウトバウンド通信のIPアドレスの設定する．
 
 ```yaml
+apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 spec:
   resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する．
@@ -1033,6 +1093,7 @@ PersistentVolumeClaimを作成する．設定の項目は```kind: PersistentVolu
 **＊実装例＊**
 
 ```yaml
+apiVersion: apps/v1
 kind: StatefulSet
 spec:
   volumeClaimTemplates:

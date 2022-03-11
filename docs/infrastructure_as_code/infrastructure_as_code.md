@@ -86,6 +86,14 @@ description: Infrastructure as Codeの知見をまとめました．
 
 <br>
 
+### クラウドインフラプロビジョニング
+
+#### ・クラウドインフラプロビジョニングとは
+
+クラウドインフラを最終的な状態に至らせるまでの一連の作業のこと．
+
+<br>
+
 ## 03. 手続き型
 
 ### 手続き型とは
@@ -141,9 +149,6 @@ description: Infrastructure as Codeの知見をまとめました．
 #### ・コンテナ
 
 - Vagrantfile（機能としてはあるが，あまり用いない）
-
-#### ・コンテナオーケストレーション
-
 - Docker compose
 - Kubernetes
 

@@ -819,7 +819,7 @@ class Handler extends ExceptionHandler
 
 #### ・```render```メソッド
 
-Laravel内部でキャッチされた例外を基に，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理をこれに追加することも可能であるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装するようにする．
+Laravel内部でキャッチされた例外を基に，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理をこれに追加することも可能であるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する．
 
 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -1126,7 +1126,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ・ヘルスチェックへの対応
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信する．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
 
 **＊実装例＊**
 
