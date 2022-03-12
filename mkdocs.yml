@@ -7,12 +7,21 @@ site_author: Hiroki Hasegawa
 # サイトのURL
 site_url: https://hiroki-it.github.io/tech-notebook-mkdocs/
 
+# 説明
+site_description: 俺（長谷川広樹）が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
+
+# リポジトリ
+repo_name: GitHubアカウントはこちら
+repo_url: https://github.com/hiroki-it/
+
 # テーマ
 theme:
   name: material
   language: 'ja'
   logo: assets/images/logo.png
   favicon: assets/images/logo.png
+  icon:
+      repo: fontawesome/brands/github
   font:
     # Google-APIからフォントをインストール
     # @see https://fonts.google.com/
