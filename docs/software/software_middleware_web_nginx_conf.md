@@ -15,6 +15,21 @@ description: nginx.conf＠Nginxの知見をまとめました．
 
 ## 01. Nginxの仕組み
 
+### 構造
+
+![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nginx_architecture.png)
+
+Nginxは，マスタープロセス，ワーカープロセス，プロキシキャッシュストレージ，キャッシュローダー，キャッシュマネージャー，から構成される．Nginxの起動時に最初にマスタープロセスが実行され，Nginxに設定を適用する．また，マスタープロセスは子プロセスとしてのワーカープロセスを実行し，各ワーカープロセスがリクエストを並列的に処理する．ワーカープロセスは，キャッシュローダーを用いて，静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し，また一方で保存されたキャッシュを取得する．キャッシュマネージャは，保存されたキャッシュの有効期限を管理する．
+
+参考：
+
+- https://www.codetd.com/en/article/12312272
+- https://rainbow-engine.com/nginx-apache-difference/
+
+<br>
+
+## 01-02. ユースケース
+
 ### リバースプロキシサーバーのミドルウェアとして
 
 #### ・HTTP/HTTPSプロトコルでルーティング

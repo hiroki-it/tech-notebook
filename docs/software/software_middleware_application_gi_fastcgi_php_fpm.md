@@ -15,7 +15,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 ## 01. PHP-FPMの仕組み
 
-### FastCGIとして
+### 構造
 
 ![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
 

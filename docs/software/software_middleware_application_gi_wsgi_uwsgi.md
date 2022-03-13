@@ -15,7 +15,7 @@ description: uWSGI＠ミドルウェアの知見をまとめました．
 
 ## 01. uWSGIの仕組み
 
-### WSGIとして
+### 構造
 
 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 

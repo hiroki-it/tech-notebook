@@ -15,6 +15,18 @@ description: apache.conf@Apacheの知見をまとめました．
 
 ## 01. Apacheの仕組み
 
+### 構造
+
+Apacheは，Apacheコアとモジュールから構成される．モジュールには，静的/動的モジュールがある．静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている．一方で，動的モジュールは```mod_so```を用いて拡張機能的に組み込むことができ，また取り外しできる．
+
+参考：https://thinkit.co.jp/article/120/1
+
+![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apache_architecture.png)
+
+<br>
+
+## 01-02. ユースケース
+
 ### リバースプロキシサーバーのミドルウェアとして
 
 #### ・HTTP/HTTPSプロトコルでルーティング

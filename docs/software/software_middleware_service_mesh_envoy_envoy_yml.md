@@ -17,9 +17,7 @@ description: envoy.yml＠Envoyの知見をまとめました．
 
 ### 構造
 
-#### ・全体像
-
-Envoyは，xDSサーバーとプロキシーコンテナから構成される．Envoyには静的/動的な設定がある．動的な設定は，Envoyの実行時にxDSサーバーによって初めて適用される．インバウンド通信を受信したプロキシーコンテナは，ルーティングに必要な情報をxDSサーバーに問い合わせ，返却された情報に基づいてルーティングを実行する．
+Envoyは，コントロールプレーンとしてのxDSサーバーと，データプレーンとしてのプロキシーコンテナから構成される．Envoyには静的/動的な設定がある．静的な設定は，Envoyの起動時に適用される．一方で動的な設定は，xDSサーバーによってEnvoyの実行時に初めて適用される．インバウンド通信を受信したプロキシーコンテナは，ルーティングに必要な情報をxDSサーバーに問い合わせ，返却された情報に基づいてルーティングを実行する．
 
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
 
@@ -29,9 +27,11 @@ Envoyは，xDSサーバーとプロキシーコンテナから構成される．
 - https://i-beam.org/2019/03/13/envoy-xds-server/
 - https://github.com/salrashid123/envoy_discovery#prerequsites
 
-#### ・xDSサーバーの種類
+<br>
 
-動的な設定をEnvoyに適用する．主要なサーバーの一覧を示す．
+### xDSサーバー
+
+動的な設定に関する情報を返却するAPIを持つサーバー．主要なサーバーの一覧を示す．
 
 参考：
 
@@ -48,6 +48,8 @@ Envoyは，xDSサーバーとプロキシーコンテナから構成される．
 | VHDS：Virtual Host Discovery Service | Envoyの実行時に，クラスター内メンバーのルーティングの設定を動的に検出できるようにする． |
 
 <br>
+
+## 01-02. ユースケース
 
 ### リバースプロキシサーバーとして
 
