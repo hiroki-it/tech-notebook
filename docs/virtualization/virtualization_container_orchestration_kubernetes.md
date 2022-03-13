@@ -280,6 +280,11 @@ IngressコントローラーによってCluster外部から受信したインバ
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 - https://thinkit.co.jp/article/18263
 
+| 使用例       |                                                              |
+| ------------ | ------------------------------------------------------------ |
+| パス         | パスの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br/>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
+| Hostヘッダー | Hostヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
+
 #### ・Ingressコントローラー
 
 Cluster外部のインバウンド通信をIngressにルーティングする．

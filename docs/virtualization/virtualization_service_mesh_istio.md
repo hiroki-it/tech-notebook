@@ -34,11 +34,14 @@ description: Istio＠仮想化の知見をまとめました．
 
 インバウンド通信をマイクロサービスにルーティングする機能を持つ．Istioは，プロキシ機能を持つistio-proxyコンテナを自動的に構築し，これがマイクロサービスに通信をルーティングする．
 
-#### ・istio-proxyコンテナ
+参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される．
+#### ・Proxy
 
-参考：https://sreake.com/blog/istio/
+| コンテナ名        | 機能                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| ```istio-proxy``` | Envoyが稼働しており，VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される．<br>参考：https://sreake.com/blog/istio/ |
+| ```istio-init```  | iptablesルールをPodに適用する．これにより，Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか，を決定する． |
 
 <br>
 
@@ -48,7 +51,10 @@ istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDesti
 
 データプレーンを包括的に管理する機能を持つ．Istioは，istio-proxyコンテナの管理機能を持つistidというPodを構築する．このPod内には，Pilot，Citadel，Galley，に相当するコンテナが稼働している．
 
-参考：https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
+参考：
+
+- https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
+- https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
 #### ・Citadel
 
@@ -60,19 +66,42 @@ istio-proxyコンテナではEnvoyが稼働しており，VirtualServiceとDesti
 
 #### ・Pilot
 
-コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．
+コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．他に，Istioの設定を，Istioによって注入されるEnvoyの設定に変換する．
 
 参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
 
 | コンテナ名      | 機能                                                         |
 | --------------- | ------------------------------------------------------------ |
 | ```discovery``` | サービスレジストリに登録された情報を基に，マイクロサービスを識別する．（サービスディスカバリー） |
+| ```agent```     | istio-proxyコンテナを起動する．                              |
 
 #### ・Mixer
 
 v1.5からデータプレーン側に統合された．
 
 参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability
+
+<br>
+
+### Istio，Envoy（Istio無し），Kubernetesの対応関係
+
+K8s，Envoy，Kubernetesの比較は以下の通り
+
+参考：
+
+- https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
+- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
+- https://github.com/envoyproxy/go-control-plane
+
+| Kubernetes＋Istio＋Envoy | Kubernetes＋Envoy | Kubernetesのみ |
+| ------------------------ | ----------------- | -------------- |
+| Istiod                   | go-control-plane  | -              |
+| WorkloadEntry            | Endpoint          | Endpoint       |
+| VirtualService           | Route             | Service        |
+| DestinationRule          | Route             | kube-proxy     |
+| EnvoyFilter              | Listener          | kube-proxy     |
+| Gateway                  | Listener          | Ingress        |
+| ServiceEntry             | Cluster           | Service        |
 
 <br>
 
@@ -107,7 +136,6 @@ Gateway，Service，DestinationRuleの設定を基に，Cluster外部から送�
 参考：
 
 - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
-- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 - https://qiita.com/kenyashiro/items/b94197890de434ed9ceb
 - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 

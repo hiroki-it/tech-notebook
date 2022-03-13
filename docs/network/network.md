@@ -62,6 +62,32 @@ title: 【知見を記録するサイト】ネットワーク
 
 <br>
 
+### 通信の方向/位置
+
+#### ・インバウンド/アウトバウンド
+
+![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/inbound_outbound.png)
+
+サーバーを中心とした方向で通信を見た時，サーバーに流入する方向をインバウンドという．反対に，サーバーから流出する方向をアウトバウンドという．
+
+参考：
+
+- https://www.amazon.co.jp/dp/B0043D2EKO/
+- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
+
+#### ・アップストリーム/ダウンストリーム
+
+通信の送受信全体の中の位置で通信を見た時，通信が送信された前半の位置を相対的にアップストリームという．反対に，通信が受信される後半の位置を相対的にダウンストリームという．
+
+![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/upstream_downstream.png)
+
+参考：
+
+- https://www.amazon.co.jp/dp/B0043D2EKO/
+- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
+
+<br>
+
 ### URLとメールアドレス
 
 #### ・構造

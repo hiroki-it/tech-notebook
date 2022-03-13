@@ -167,3 +167,20 @@ $ docker-compose logs -f <サービス名>
 
 <br>
 
+## 02. compose-cli
+
+### down
+
+クラウドインフラストラクチャの削除をプロビジョニングする．コンテキストがAWSの場合は，ECSクラスターとその中身を削除する．
+
+参考：https://github.com/docker/compose-cli
+
+<br>
+
+### up
+
+クラウドインフラストラクチャの構築をプロビジョニングする．コンテキストがAWSの場合は，ECSクラスターとその中身を構築する．
+
+参考：https://github.com/docker/compose-cli
+
+<br>

@@ -142,7 +142,7 @@ project
 
 ####　・対象リソース別
 
-1つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．
+1つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．Lambdaでは，Lambda関数のソースコードをモジュール下で管理する．
 
 ```bash
 project
@@ -152,6 +152,9 @@ project
     |   ├── cloudfront # CloudFront
     |   ├── ecs        # ECS
     |   ├── lambda     # Lambda
+    |   |   └── functions
+    |   |       └── foo_function
+    |   |
     |   └── rds        # RDS    
     |
     └── waf # WAF

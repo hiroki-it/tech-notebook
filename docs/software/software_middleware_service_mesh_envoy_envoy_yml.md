@@ -15,6 +15,40 @@ description: envoy.yml＠Envoyの知見をまとめました．
 
 ## 01. Envoyの仕組み
 
+### 構造
+
+#### ・全体像
+
+Envoyは，xDSサーバーとプロキシーコンテナから構成される．Envoyには静的/動的な設定がある．動的な設定は，Envoyの実行時にxDSサーバーによって初めて適用される．インバウンド通信を受信したプロキシーコンテナは，ルーティングに必要な情報をxDSサーバーに問い合わせ，返却された情報に基づいてルーティングを実行する．
+
+![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
+
+参考：
+
+- https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
+- https://i-beam.org/2019/03/13/envoy-xds-server/
+- https://github.com/salrashid123/envoy_discovery#prerequsites
+
+#### ・xDSサーバーの種類
+
+動的な設定をEnvoyに適用する．主要なサーバーの一覧を示す．
+
+参考：
+
+- https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
+- https://www.netstars.co.jp/kubestarblog/k8s-10/
+
+| サーバー名                           | 説明                                                         |
+| ------------------------------------ | ------------------------------------------------------------ |
+| CDS：Cluster Discovery Service       | Envoyの実行時に，ルーティング先のクラスターの設定を動的に検出できるようにする． |
+| EDS：Endpoint Discovery Service      | Envoyの実行時に，ルーティング先のクラスターに含まれるメンバーを動的に検出できるようにする． |
+| LDS：Listener Discovery Service      | Envoyの実行時に，リスナーの設定を動的に検出できるようにする． |
+| RDS：Route Discovery Service         | Envoyの実行時に，ルーティングの設定を動的に検出できるようにする． |
+| SDS：Secret Discovery Service        | Envoyの実行時に，リスナーの暗号化の設定を動的に検出できるようにする． |
+| VHDS：Virtual Host Discovery Service | Envoyの実行時に，クラスター内メンバーのルーティングの設定を動的に検出できるようにする． |
+
+<br>
+
 ### リバースプロキシサーバーとして
 
 #### ・Pod内の場合
@@ -38,20 +72,6 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 <br>
 
 ### フォワードプロキシサーバーとして
-
-<br>
-
-### その他の機能
-
-- サービスディスカバリー
-- 負荷分散
-- TLS終端
-- HTTP/2，gRPCのプロキシ
-- サーキットブレイカー
-- ヘルスチェック
-- A/Bテスト
-- フォールとインジェクション
-- メトリクスの収集
 
 <br>
 
