@@ -17,6 +17,14 @@ description: uWSGI＠ミドルウェアの知見をまとめました．
 
 ### 構造
 
+要学習...
+
+<br>
+
+## 01-02. ユースケース
+
+### リバースプロキシサーバーのミドルウェアとして
+
 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uwsgi.png)

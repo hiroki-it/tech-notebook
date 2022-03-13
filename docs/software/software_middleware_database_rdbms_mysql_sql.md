@@ -154,7 +154,7 @@ DBで，アプリケーションのCRUD処理に対するバリデーション�
 
 #### ・stored procedureとは
 
-あらかじめ一連のSQL文をデータベースに格納しておき，Call文で呼び出す方式．
+あらかじめ一連のSQL文をDBに格納しておき，Call文で呼び出す方式．
 
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p325.gif)
 
@@ -165,7 +165,7 @@ DBで，アプリケーションのCRUD処理に対するバリデーション�
 ```SELECT```文のstored procedureを作成する例を考える．
 
 ```sql
--- PROCEDUREを作成し，データベースへ格納しておく．
+-- PROCEDUREを作成し，DBへ格納しておく．
 CREATE PROCEDURE SelectContact AS
 SELECT
     { カラム名 }
@@ -287,11 +287,11 @@ DROP USER { ユーザー名 }@`%`;
 #### ・全ての操作権限を付与
 
 
-データベース名は，シングルクオーテーションで囲う必要が無い．全権限を付与する場合，```PRIVILEGES```は省略できるが，厳密には省略しないようほうが良い．
+DB名は，シングルクオーテーションで囲う必要が無い．全権限を付与する場合，```PRIVILEGES```は省略できるが，厳密には省略しないようほうが良い．
 
 
 ```sql
--- 全てのデータベースに関する権限を付与
+-- 全てのDBに関する権限を付与
 GRANT ALL PRIVILEGES ON *.* TO "{ ユーザー名 }";
 
 -- Amazon AuroraまたはRDSの場合はこちら
@@ -300,13 +300,13 @@ GRANT ALL PRIVILEGES ON `%`.* TO "{ ユーザー名 }";
 
 ```sql
 -- Amazon Auroraも同じく
--- 特定のデータベースに関する全権限を付与
+-- 特定のDBに関する全権限を付与
 GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
 ```
 
 #### ・一部の操作権限を付与
 
-特定のデータベースに関する読み出し権限のみ付与する．
+特定のDBに関する読み出し権限のみ付与する．
 
 ```sql
 GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
@@ -322,13 +322,13 @@ GRANT SELECT ON {DB名}.* TO "{ ユーザー名 }";
 SHOW GRANTS FOR "{ ユーザー名 }";
 ```
 
-作成しただけで権限を何も付与してないユーザーの場合，『データベースサーバー内の全データベースに関して，全権限なし』を表す```USAGE```として表示される．
+作成しただけで権限を何も付与してないユーザーの場合，『DBサーバー内の全DBに関して，全権限なし』を表す```USAGE```として表示される．
 
 ```sql
 GRANT USAGE ON *.* TO "{ ユーザー名 }";
 ```
 
-特定のデータベースの操作権限を与えると，上記に加えて，付与したGRANT権限も表示されるようになる．
+特定のDBの操作権限を与えると，上記に加えて，付与したGRANT権限も表示されるようになる．
 
 <br>
 
@@ -1045,7 +1045,7 @@ SQLの種類が表示される．サブクエリを含まないSQLは```SIMPLE``
 
 ### Tips
 
-#### ・各データベース容量の確認
+#### ・各DB容量の確認
 
 ```sql
 SELECT
@@ -1069,7 +1069,7 @@ FROM
     information_schema.columns
 WHERE
     column_name = { 検索したいカラム名 }
-    AND table_schema = { 検索対象のデータベース名 }
+    AND table_schema = { 検索対象のDB名 }
 ```
 
 #### ・最適なインデックスの検出

@@ -34,8 +34,8 @@ description: 認証/認可＠Laravelの知見をまとめました．
 | 7    | Middleware                                              | BeforeMiddlewareを実行する．                                 |
 | 8    | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル，```app.php```ファイルなどのルーティング定義を元に，Routerが実行する． |
 | 9    | FormRequest                                             | バリデーションを実行する．                                   |
-| 10   | Controller                                              | Controllerを基点として，データベースにまで処理が走る．       |
-| 11   | Resource                                                | データベースから取得したコレクション型データを配列型データに変換する． |
+| 10   | Controller                                              | Controllerを基点として，DBにまで処理が走る．       |
+| 11   | Resource                                                | DBから取得したコレクション型データを配列型データに変換する． |
 | 12   | Response                                                | Responseを実行する．配列型データをJSONデータに変換する．     |
 | 13   | Terminate Middleware                                    | AfterMiddlewareが実行される．                                |
 | 14   | View                                                    | bladeファイルを基に静的ファイルが構築される．            |
@@ -185,7 +185,7 @@ $ php artisan command:do-foo
 DB_CONNECTION=<RDB名>
 DB_HOST=<ホスト名>
 DB_PORT=<ポート番号>
-DB_DATABASE=<データベース名>
+DB_DATABASE=<DB名>
 DB_USERNAME=<アプリケーションユーザー名>
 DB_PASSWORD=<アプリケーションユーザーのパスワード>
 ```
@@ -202,22 +202,22 @@ return [
 
     "connections" => [
 
-        // データベース接続情報（SQLite）
+        // DB接続情報（SQLite）
         "sqlite" => [
 
         ],
 
-        // データベース接続情報（MySQL）
+        // DB接続情報（MySQL）
         "mysql"  => [
 
         ],
 
-        // データベース接続情報（pgSQL）
+        // DB接続情報（pgSQL）
         "pgsql"  => [
 
         ],
 
-        // データベース接続情報（SQLSRV）
+        // DB接続情報（SQLSRV）
         "sqlsrv" => [
 
         ],
@@ -996,11 +996,11 @@ NotifiableトレイトをUserクラスで用いずに，Notificationファサー
 
 #### ・DBファサードとは
 
-データベースの操作処理を提供する．Eloquentの代わりに，DBファサードを用いても良い．Active Recordのロジックを持たないため，Repositoryパターンのロジックとして用いることができる．
+DBの操作処理を提供する．Eloquentの代わりに，DBファサードを用いても良い．Active Recordのロジックを持たないため，Repositoryパターンのロジックとして用いることができる．
 
 #### ・```transaction```メソッド
 
-一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま用いることができる．ちなみに，トランザクション処理は必須ではなく，用いるとアプリケーションがデータベースを操作するために要する時間が増えるため，用いなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う/行わない場合を比較して，処理時間が17%弱長くなったとのこと．
+一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま用いることができる．ちなみに，トランザクション処理は必須ではなく，用いるとアプリケーションがDBを操作するために要する時間が増えるため，用いなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う/行わない場合を比較して，処理時間が17%弱長くなったとのこと．
 
 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -3832,7 +3832,7 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        // ここに，Eloquentモデルをデータベースから取得する処理
+        // ここに，EloquentモデルをDBから取得する処理
         
         // Eloquentモデルを渡す．
         return new FooResource($foo);

@@ -13,13 +13,13 @@ description: RDBMS＠ミドルウェアの知見をまとめました．
 
 <br>
 
-## 01. RDBMS（関係データベース管理システム）とは
+## 01. RDBMS（関係DB管理システム）の仕組み
 
-### 仕組み
+### 構造
 
-RDBは，データ同士がテーブル状に関係を持つデータ格納形式である．データはストレージに保存する．
+RDBMSは，DBエンジン，ストレージエンジン，から構成される．
 
-![データベース管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データベース管理システムの仕組み.png)
+![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DB管理システムの仕組み.png)
 
 <br>
 
@@ -29,31 +29,43 @@ RDBは，データ同士がテーブル状に関係を持つデータ格納形�
 
 #### ・MariaDB
 
-  MariaDBデータベースを管理できるRDBMS
+  MariaDBDBを管理できるRDBMS
 
 #### ・MySQL
 
-  MySQLデータベースを管理できるRDBMS
+  MySQLDBを管理できるRDBMS
 
 #### ・PostgreSQL
 
-  PostgreSQLデータベースを管理できるRDBMS
+  PostgreSQLDBを管理できるRDBMS
 
 <br>
 
-### データベースエンジン
+### DBエンジン
 
-#### ・データベースエンジンとは
+#### ・DBエンジンとは
 
-RDBMSがデータベースに対してデータのCRUDの処理を行うために必要なソフトウェアのこと．
-
-#### ・InnoDB
+RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフトウェアのこと．
 
 <br>
 
-## 01-02. NoSQL（非関係データベース）とは
+### ストレージエンジン
 
-NoSQLは，データ同士が関係を持たないデータ格納形式である．データをメインメモリに保存する．
+<br>
+
+### RDB
+
+#### ・RDBとは
+
+データ同士がテーブル状に関係を持つデータ格納形式で構成されるのこと．NoSQLとは異なり，データはストレージに保存する．
+
+<br>
+
+## 01-02. NoSQL（非関係DB）とは
+
+### NoSQLとは
+
+NoSQLは，データ同士が関係を持たないデータ格納形式である．RDBとは異なり，データをメインメモリに保存する．
 
 ### NoSQLの種類
 
@@ -247,7 +259,7 @@ PDOでは書き込み処理に```exec```メソッド，読み出し処理に```q
 ```php
 <?php
 try{
-    // データベースと接続．
+    // DBと接続．
     $db = getDb();
 
     // 例外処理を有効化．
@@ -308,7 +320,7 @@ try{
 
 ### 障害からの回復
 
-データベースサーバーの障害のこと．例えば，DBMSやOSのトラブル等によりシステム全体が停止する．
+DBサーバーの障害のこと．例えば，DBMSやOSのトラブル等によりシステム全体が停止する．
 
 ![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/システム障害の障害回復機能.jpg)
 
@@ -330,7 +342,7 @@ try{
 
 ### 媒体障害からの回復
 
-データベースサーバーのハードウェア障害のこと．例えば，ハードディスクの障害がある．ディスクを初期化/交換した後，バックアップファイルからデータベースを修復し，ログファイルの更新後ログ『a = 5』『b = 1』を用いて，修復できる限りロールフォワードを行う．
+DBサーバーのハードウェア障害のこと．例えば，ハードディスクの障害がある．ディスクを初期化/交換した後，バックアップファイルからDBを修復し，ログファイルの更新後ログ『a = 5』『b = 1』を用いて，修復できる限りロールフォワードを行う．
 
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
 
@@ -352,7 +364,7 @@ try{
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */;
 
-# データベース作成
+# DB作成
 -- Dumping database structure for kizukeba_pronami_php
 CREATE DATABASE IF NOT EXISTS `kizukeba_pronami_php` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `kizukeba_pronami_php`;

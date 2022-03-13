@@ -146,7 +146,7 @@ services:
 
 **＊実装例＊**
 
-mysqlイメージを用いた場合，データベースの環境変数の設定が必要である．データベースの環境変数は，バックエンドコンテナでも必要なため，```environment```キーに直接環境変数を設定せずに，```env```ファイルに定義した環境変数を```environment```キーで参照すると良い．
+mysqlイメージを用いた場合，DBの環境変数の設定が必要である．DBの環境変数は，バックエンドコンテナでも必要なため，```environment```キーに直接環境変数を設定せずに，```env```ファイルに定義した環境変数を```environment```キーで参照すると良い．
 
 ```yaml
 services:
@@ -155,7 +155,7 @@ services:
       - .env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # rootユーザーのパス
-      MYSQL_DATABASE: ${DB_DATABASE} # データベース名
+      MYSQL_DATABASE: ${DB_DATABASE} # DB名
       MYSQL_USER: ${DB_USER} # 一般ユーザー名
       MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザーのパス
 ```
@@ -164,12 +164,12 @@ services:
 # .envファイル
 
 MYSQL_ROOT_PASSWORD=foo # rootユーザーのパス
-MYSQL_DATABASE=bar # データベース名
+MYSQL_DATABASE=bar # DB名
 MYSQL_USER=baz # 一般ユーザー名
 MYSQL_PASSWORD=qux # 一般ユーザーのパス
 ```
 
-mysqlイメージでは，環境変数の設定に応じて，コンテナ起動時にSQLが実行されるようになっている．データベース名の環境変数が設定されている場合は『```CREATE DATABASE```』，またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される．
+mysqlイメージでは，環境変数の設定に応じて，コンテナ起動時にSQLが実行されるようになっている．DB名の環境変数が設定されている場合は『```CREATE DATABASE```』，またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される．
 
 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
 
@@ -689,13 +689,13 @@ volumes:
 
 #### ・ビルド時にSQL実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリ下に配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，バインドマウントを用いてこのディレクトリ下にファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下のリンクを参考にせよ．
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリ下に配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，バインドマウントを用いてこのディレクトリ下にファイルを置くことで，初期データの投入や複数DBの作成を実現できる．具体的な実行タイミングについては，以下のリンクを参考にせよ．
 
 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
 **＊実装例＊**
 
-mysqlコンテナに，PHPUnitの実行時のみ用いるデータベースを追加する．以下のような，```docker-compose.yml```ファイルを作成する．
+mysqlコンテナに，PHPUnitの実行時のみ用いるDBを追加する．以下のような，```docker-compose.yml```ファイルを作成する．
 
 ```yaml
 version: "3.7"
@@ -725,7 +725,7 @@ volumes:
   mysql_volume:
 ```
 
-また，```docker-entrypoint-initdb.d```ディレクトリ下に配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．
+また，```docker-entrypoint-initdb.d```ディレクトリ下に配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というDBを作成するためのSQLを実装する．
 
 ```sql
 -- /infra/docker/mysql/initにSQLファイルを置く．
@@ -733,7 +733,7 @@ CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 
 GRANT ALL ON *.* TO 'foo'@'%' ;
 ```
 
-PHPUnitで接続するデータベースを指定する方法については，以下のリンクを参考にせよ．
+PHPUnitで接続するDBを指定する方法については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_code.html
 

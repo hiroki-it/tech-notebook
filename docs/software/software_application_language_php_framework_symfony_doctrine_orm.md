@@ -108,14 +108,14 @@ $queryBuilder
 
 #### ・ ```getConnection```メソッド，```executeQuery```メソッド，```fetchAll```メソッド
 
-データベースへの接続し，SQLの実行する．データベース接続に関わる```getConnection```メソッドを開始点として，返り値から繰り返しメソッドを取得し，```fetchAll```メソッドで，テーブルのクエリ名をキーとした連想配列が返される．
+DBへの接続し，SQLの実行する．DB接続に関わる```getConnection```メソッドを開始点として，返り値から繰り返しメソッドを取得し，```fetchAll```メソッドで，テーブルのクエリ名をキーとした連想配列が返される．
 
 **＊実装例＊**
 
 ```php
 <?php
     
-// データベースに接続．
+// DBに接続．
 $queryBuilder->getConnection()
     // SQLを実行し，レコードを読み出す．
     ->executeQuery($queryBuilder->getSQL(),
@@ -166,7 +166,7 @@ class DogToyQuery
           // プレースホルダーに値を設定する．ここでは，引数で渡す『$toyType』とする．
           ->setParameter("type", $toyType);
         
-        // データベースに接続．
+        // DBに接続．
         return $queryBuilder->getConnection()
           
           // SQLを実行し，レコードを読み出す．

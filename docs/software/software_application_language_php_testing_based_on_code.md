@@ -114,7 +114,7 @@ PHPUnitの実行前に設定する```ini_set```関数，```define```関数，グ
 
 **＊実装例＊**
 
-Composerの実行時にメモリ不足にならないようにメモリを拡張する．また，テスト用のデータベースに接続できるよう，データベースに関する環境変数を設定する．
+Composerの実行時にメモリ不足にならないようにメモリを拡張する．また，テスト用のDBに接続できるよう，DBに関する環境変数を設定する．
 
 ```xml
 <phpunit>
@@ -127,7 +127,7 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
         <!-- Composerの実行時にメモリ不足にならないようにする -->
         <ini name="memory_limit" value="512M"/>
         
-        <!-- データベースの接続情報 -->
+        <!-- DBの接続情報 -->
         <server name="DB_CONNECTION" value="mysql"/>
         <server name="DB_DATABASE" value="test"/>
         <server name="DB_USERNAME" value="test"/>

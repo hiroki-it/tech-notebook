@@ -116,7 +116,7 @@ class RoleType extends Enum
 
 **＊実装例＊**
 
-データベースから区分値をSELECTした後，これを元にEnumクラスを作成する．
+DBから区分値をSELECTした後，これを元にEnumクラスを作成する．
 
 ```php
 <?php
@@ -124,7 +124,7 @@ class RoleType extends Enum
 // Staff
 $staff = new Staff();
  
-// データベースから取得した区分値（開発職：2）からEnumクラスを作成
+// DBから取得した区分値（開発職：2）からEnumクラスを作成
 $staff->roleType = new RoleType($fetched["role_type"]);
 // 以下の方法でも良い．
 // $staff->roleType = RoleType::fromValue($fetched["role_type"]);

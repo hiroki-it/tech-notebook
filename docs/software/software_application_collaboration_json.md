@@ -190,7 +190,7 @@ class Foo
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
-#### ・バックエンドとデータベース間
+#### ・バックエンドとDB間
 
 データ送信のためにオブジェクト（PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである．
 
