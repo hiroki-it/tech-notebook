@@ -165,8 +165,13 @@ GitHubとSSH接続を行うために，秘密鍵と公開鍵は次の方法で�
 # 鍵を保管するディレクトリに移動
 $ cd ~/.ssh/github
 
-# 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
 $ ssh-keygen -t rsa
+
+# 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
+Enter file in which to save the key: hiroki-it
+# 鍵の使用時にパスワードの入力を要求するかどうかは任意である．
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
 ```
 
 （２）このうち，公開鍵をクリップボードにコピーする．

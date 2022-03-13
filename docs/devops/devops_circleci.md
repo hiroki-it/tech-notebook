@@ -84,10 +84,18 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ・CircleCIコンテナにSSH接続
 
-CircleCIコンテナにSSH接続を行い，コンテナ内で生成されたファイルを確認できる．
+参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+
+（１）CircleCI用に鍵を作成してもよいが，ここではGitHubの鍵をそのまま用いることとする．GitHubの秘密鍵の中身をコピーし，CircleCIのプロジェクト設定に登録する．この時，他の連携サービスと区別しやすいように，ホスト名を```github```とする．
 
 ```bash
-$ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵名>
+$ pbcopy < ~/.ssh/github/<秘密鍵名>
+```
+
+（３）CircleCIの```Enable SSH```ステップに表示された```ssh```コマンドをコピーし，CircleCIコンテナにSSH接続を行う．
+
+```bash
+$ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
 ```
 
 #### ・Test Insights
