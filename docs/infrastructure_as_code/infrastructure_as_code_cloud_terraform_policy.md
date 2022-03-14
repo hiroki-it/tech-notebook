@@ -610,7 +610,83 @@ output "nginx_ecr_repository_url" {
 
 <br>
 
-## 04. レビュー手順
+## 04. 開発環境
+
+### 開発方法
+
+前提として，バックエンドにS3を用いているものとする．Makefileのコマンドを実行する前に，```provider.tf```ファイルのbackendオプションを，『s3』から『local』に変更する．
+
+```elixir
+terraform {
+
+  backend "local" {
+  }
+}
+```
+
+GitHubにこの変更をプッシュしないように気を付ける必要がある．ただ，バックエンドに```s3```を指定する```terraform init```コマンドをCIのステップを設けておけば，```provider.tf```ファイルで```local```の指定していことがエラーになるような仕組みを作れる．もし間違えてコミットしてしまった場合は，元に戻すように再コミットすればよい．
+
+```bash
+#!/bin/bash
+
+terraform -chdir=./prd init \
+  -upgrade \
+  -reconfigure \
+  -backend=true \
+  -backend-config="bucket=prd-foo-tfstate-bucket" \
+  -backend-config="key=terraform.tfstate" \
+  -backend-config="encrypt=true"
+```
+
+```bash
+Error: Invalid backend configuration argument
+
+The backend configuration argument "bucket" given on the command line is not expected for the selected backend type.
+```
+
+<br>
+
+### ファイル
+
+#### ・docker-compose.ymlファイル
+
+```yaml
+version: "3.8"
+
+services:
+  terraform:
+    container_name: foo-terraform
+    image: hashicorp/terraform:1.0.11
+    volumes:
+      - .:/var/infra
+    working_dir: /var/infra
+```
+
+#### ・Makefile
+
+goのバイナリファイルを実行するためには，```docker-compose run```コマンドの実行する必要がある．ただ，実行のたびにコンテナが増えてしまうため，```--rm```を用いるようにする．また，毎度コマンドを実行することが面倒なので，Makefileでまとめてしまう．
+
+```makefile
+# NOTE:
+# ローカル環境にて，以下の形式でコマンドを実行できます．
+# make <ターゲット名> env=<環境ディレクトリ名>
+
+env=
+
+init:
+	docker-compose run --rm terraform -chdir=./${ENV} init -reconfigure
+
+fmt:
+	docker-compose run --rm terraform fmt -recursive
+
+validate: init fmt
+	docker-compose run --rm terraform -chdir=./${ENV} validate
+	
+```
+
+
+
+## 05. レビュー手順
 
 ### （１）コンソール画面にログイン
 

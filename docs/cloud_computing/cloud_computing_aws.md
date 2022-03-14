@@ -1884,7 +1884,7 @@ Resources:
           # スタックトレースのログを紐付けられるように，日付で区切るようにする．
           "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
           "awslogs-region": "ap-northeast-1",
-          "awslogs-stream-prefix": "<ログストリーム名のプレフィクス>"
+          "awslogs-stream-prefix": "<ログストリーム名の接頭辞>"
         }
       }
     }
@@ -6417,11 +6417,11 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 悪意のあるユーザーエージェントを拒否する．
 
-ルール：block-user-agents
+ルール：```block-user-agents```
 
-| Statementの順番 | If a request | Inspect  | Match type                             | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------ | -------- | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| 0               | matches      | URI path | Matches pattern from regex pattern set | 文字列セット      | Block | 指定した文字列を含むユーザーエージェントの場合，アクセスすることを拒否する． |
+| Statementの順番 | If a request  | Inspect        | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------- | -------------- | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches``` | ```URI path``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定した文字列を含むユーザーエージェントの場合，アクセスすることを拒否する． |
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -6433,11 +6433,11 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 社内の送信元IPアドレスのみ許可した状態で，CircleCIなどのサービスが社内サービスにアクセスできるようにする．
 
-ルール：allow-request-including-access-token
+ルール：```allow-request-including-access-token```
 
-| Statementの順番 | If a request | Inspect | Header field name | Match type              | String to match                                     | Then  | 挙動                                                         |
-| --------------- | ------------ | ------- | ----------------- | ----------------------- | --------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| 0               | matches      | Header  | authorization     | Exactly matched  string | 『```Bearer <トークン文字列>```』で文字列を設定する | Allow | authorizationヘッダーに指定した文字列を含むリクエストの場合，アクセスすることを拒否する． |
+| Statementの順番 | If a request  | Inspect      | Header field name   | Match type                    | String to match                                     | Then  | 挙動                                                         |
+| --------------- | ------------- | ------------ | ------------------- | ----------------------------- | --------------------------------------------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches``` | ```Header``` | ```authorization``` | ```Exactly matched  string``` | 『```Bearer <トークン文字列>```』で文字列を設定する | Allow | authorizationヘッダーに指定した文字列を含むリクエストの場合，アクセスすることを拒否する． |
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -6449,18 +6449,18 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 アプリケーションでは，特定のURLパスにアクセスできる送信元IPアドレスを社内だけに制限する．二つのルールを構築する必要がある．
 
-ルール：allow-access--to-url-path
+ルール：```allow-access--to-url-path```
 
-| Statementの順番 | If a request  | Inspect                          | IP set       | Match type                             | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------- | -------------------------------- | ------------ | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| 0               | matches (AND) | Originates from an IP address in | 社内IPセット | -                                      | -                 | -     | 社内の送信元IPアドレスの場合，指定したファイルパスにアクセスすることを許可する． |
-| 1               | matches       | URI path                         | -            | Matches pattern from regex pattern set | 文字列セット      | Allow | 0番目かつ，指定した文字列を含むURLパスアクセスの場合，アクセスすることを許可する． |
+| Statementの順番 | If a request        | Inspect                                | IP set       | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------------- | -------------------------------------- | ------------ | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches (AND)``` | ```Originates from an IP address in``` | 社内IPセット | -                                            | -                 | -     | 社内の送信元IPアドレスの場合，指定したファイルパスにアクセスすることを許可する． |
+| ```1```         | ```matches```       | ```URI path```                         | -            | ```Matches pattern from regex pattern set``` | 文字列セット      | Allow | 0番目かつ，指定した文字列を含むURLパスアクセスの場合，アクセスすることを許可する． |
 
-ルール：block-access-to-url-path
+ルール：```block-access-to-url-path```
 
-| Statementの順番 | If a request | Inspect  | Match type                             | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------ | -------- | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| 0               | matches      | URI path | Matches pattern from regex pattern set | 文字列セット      | Block | 指定した文字列を含むURLパスアクセスの場合，アクセスすることを拒否する． |
+| Statementの順番 | If a request  | Inspect        | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------- | -------------- | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches``` | ```URI path``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定した文字列を含むURLパスアクセスの場合，アクセスすることを拒否する． |
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -6472,16 +6472,35 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 アプリケーション全体にアクセスできる送信元IPアドレスを，特定のIPアドレスだけに制限する．
 
-ルール：allow-global-ip-addresses
+ルール：```allow-global-ip-addresses```
 
-| Statementの順番 | If a request  | Inspect                          | IP set           | Originating address | Then  | 挙動                                                         |
-| --------------- | ------------- | -------------------------------- | ---------------- | ------------------- | ----- | ------------------------------------------------------------ |
-| 0               | matches  (OR) | Originates from an IP address in | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
-| 1               | matches       | Originates from an IP address in | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは，協力会社の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
+| Statementの順番 | If a request        | Inspect                                | IP set           | Originating address | Then  | 挙動                                                         |
+| --------------- | ------------------- | -------------------------------------- | ---------------- | ------------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches  (OR)``` | ```Originates from an IP address in``` | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
+| ```1```         | ```matches```       | ```Originates from an IP address in``` | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは，協力会社の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | Block          | 指定した送信元IPアドレス以外の場合，全てのファイルパスにアクセスすることを拒否する． |
+
+#### ・ALBを直接指定することを防ぐ
+
+**＊例＊**
+
+Route53のドメイン経由ではなく，ALBの直接指定して，リクエストとを送信することを防ぐ．ALBのIPアドレスは定期的に変化するため，任意のIPアドレスを指定できる正規表現を定義する必要がある．
+
+```
+^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$
+```
+ルール：```block-direct-access-to-lb```
+
+| Statementの順番 | If a request  | Inspect      | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------- | ------------ | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| ```0```         | ```matches``` | ```Header``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定したHostヘッダーに対するアクセスの場合，アクセスすることを拒否する． |
+
+| Default Action | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Allow          | 指定したHostヘッダー以外に対するアクセスの場合，アクセスすることを許可する． |
 
 <br>
 

@@ -438,7 +438,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ・メトリクス名の構成要素
 
-メトリクス名は『```trace.<スパン名>.<メトリクスサフィックス名>```』の名前で構成される．
+メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される．
 
 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
@@ -448,13 +448,13 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 **＊例＊**
 
-- ```trace.web.request.<メトリクスサフィックス名>```
-- ```trace.db.query.<メトリクスサフィックス名>```
-- ```trace.db.commit.<メトリクスサフィックス名>```
+- ```trace.web.request.<メトリクス接尾辞名>```
+- ```trace.db.query.<メトリクス接尾辞名>```
+- ```trace.db.commit.<メトリクス接尾辞名>```
 
-#### ・メトリクスのメトリクスサフィックス名
+#### ・メトリクスのメトリクス接尾辞名
 
-メトリクスの種類に応じたサフィックス名が割り当てられる．
+メトリクスの種類に応じた接尾辞名が割り当てられる．
 
 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 

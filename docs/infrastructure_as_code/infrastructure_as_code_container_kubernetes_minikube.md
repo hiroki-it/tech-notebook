@@ -15,9 +15,16 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 ## 01. Minikubeの仕組み
 
-ゲスト仮想環境を構築し，また仮想環境下で単一のワーカーNodeを持つClusterを作成する．
+### 構造
 
-参考：https://minikube.sigs.k8s.io/docs/commands/
+![minikube_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture.png)
+
+仮想環境下で単一のワーカーNodeを持つClusterを作成する．
+
+参考：
+
+- https://minikube.sigs.k8s.io/docs/commands/
+- https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
 <br>
 

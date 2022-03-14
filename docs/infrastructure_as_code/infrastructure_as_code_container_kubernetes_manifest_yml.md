@@ -637,6 +637,8 @@ Podを構成するコンテナの名前，ベースイメージ，受信ポー�
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
   containers:
     - name: foo-gin
@@ -657,17 +659,20 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
   containers:
-  - resources:
-      # 最小使用量
-      requests:
-        cpu: 250m
-        memory: 64Mi
-      # 最大使用量
-      limits:
-        cpu: 500m
-        memory: 128Mi
+    - name: foo-gin
+      resources:
+        # 最小使用量
+        requests:
+          cpu: 250m
+          memory: 64Mi
+        # 最大使用量
+        limits:
+          cpu: 500m
+          memory: 128Mi
 ```
 
 リソースの使用状況によるPodの挙動は以下の通りである．
@@ -688,13 +693,15 @@ spec:
 
 #### ・volumeMount
 
-Podのマウントポイントを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．
+Pod内のコンテナのマウントポイントを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．
 
 **＊実装例＊**
 
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
   containers:
     - name: foo-gin
@@ -702,10 +709,10 @@ spec:
       ports:
         - containerPort: 8080
       volumeMounts:
-         - name: foo-volume
+         - name: foo-gin-volume
            mountPath: /var/www/foo
   volumes:
-    - name: foo-volume
+    - name: foo-gin-volume
       persistentVolumeClaim:
         claimName: foo-persistent-volume-claim
 ```
@@ -717,6 +724,8 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
   containers:
     - name: foo-flask
@@ -730,6 +739,8 @@ spec:
 
 ### hostname
 
+#### ・hostnameとは
+
 Podのホスト名を設定する．また，```spec.hostname```オプションが設定されていない時は，```metadata.name```がホスト名として使用される．
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
@@ -739,13 +750,74 @@ Podのホスト名を設定する．また，```spec.hostname```オプション�
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
+  containers:
+    - name: foo-gin
   hostname: foo-pod
 ```
 
 <br>
 
+### restartPolicy
+
+#### ・restartPolicyとは
+
+Pod内のコンテナのライフサイクルの再起動ポリシーを設定する．
+
+#### ・Always
+
+コンテナが終了した場合に，これが正常（終了ステータス```0```）か異常（終了ステータス```1```）かどうかに関わらず，常にコンテナを再起動する．
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+  restartPolicy: Always
+```
+
+#### ・Never
+
+コンテナが終了した場合に，コンテナを再起動しない．
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+  restartPolicy: Never
+```
+
+#### ・OnFailure
+
+コンテナが終了した場合に，これが異常（終了ステータス```1```）の場合にのみ，常にコンテナを再起動する．
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+  restartPolicy: OnFailure
+```
+
+<br>
+
 ### volume
+
+#### ・volumeとは
+
+Pod内で用いるボリュームを設定する．
 
 #### ・name
 
@@ -765,11 +837,16 @@ Volumeの一種であるEmptyDirボリュームを作成する．EmptyDirボリ�
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
-  volumes
+  containers:
     - name: foo-lumen
-      emptyDir: {}
-    - name: foo-nginx
+      volumeMounts:
+        - name: foo-lumen-volume
+          mountPath: /var/www/foo
+  volumes:
+    - name: foo-lumen-volume
       emptyDir: {}
 ```
 
@@ -787,9 +864,16 @@ Volumeの一種であるHostPathボリュームを作成する．PersistentVolum
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
-  volumes
-  - name: foo-lumen
+  containers:
+    - name: foo-lumen
+      volumeMounts:
+        - name: foo-lumen-volume
+          mountPath: /var/www/foo
+  volumes:
+  - name: foo-lumen-volume
     hostPath:
       path: /data/src/foo
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
@@ -806,9 +890,16 @@ PersistentVolumeを用いる場合に，PersistentVolumeClaimリソースを設�
 ```yaml
 apiVersion: v1
 kind: Pod
+metadata:
+  name: foo-pod
 spec:
-  volumes
-    - name: foo-volume
+  containers:
+    - name: foo-lumen
+      volumeMounts:
+        - name: foo-lumen-volume
+          mountPath: /var/www/foo
+  volumes:
+    - name: foo-lumen-volume
       persistentVolumeClaim:
         claimName: foo-standard-volume-claim
 ```

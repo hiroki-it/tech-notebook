@@ -17,7 +17,7 @@ description: docker-compose.yml＠Docker composeの知見をまとめました�
 
 ### ```services```とは
 
-コンテナオーケストレーションにおける1つのコンテナを定義する．コンテナ名と異なり，サービス名は他のプロジェクトと重複しても良い．```docker-compose```コマンドの引数として指定するため，できるだけ簡潔にする．オプション一覧は以下のリンクを参考にせよ．
+コンテナオーケストレーションにおける1つのコンテナを定義する．サービス名には役割名（```app```，```web```，```db```）を名付けると良い．コンテナ名と異なり，サービス名は他のプロジェクトと重複しても良い．```docker-compose```コマンドの引数として指定するため，できるだけ簡潔にする．オプション一覧は以下のリンクを参考にせよ．
 
 参考：https://docs.docker.jp/compose/compose-file.html
 
@@ -111,25 +111,25 @@ services:
 
 ### ```container_name```
 
-コンテナ名を命名する．サービス名とは異なり，コンテナ名は他のプロジェクトと重複しないようにする必要があるため，プレフィクスにプロジェクト名をつけると良い．
+コンテナ名を命名する．サービス名とは異なり，コンテナ名は他のプロジェクトと重複しないようにする必要があるため，接頭辞にプロジェクト名をつけると良い．また，接尾辞をベンダー名とするとよい．
 
 **＊実装例＊**
 
 ```yaml
 services:
   web:
-    container_name: foo-nginx
+    container_name: foo-laravel
 ```
 
 <br>
 
 ### ```depends_on```
 
-コンテナが起動する順番を設定する．
+サービスを実行する順番を設定する．
 
 **＊実装例＊**
 
-DBコンテナの起動後に，該当するコンテナを起動する．
+DBサービスの起動後に，該当するコンテナを起動する．
 
 ```yaml
 services:
@@ -259,7 +259,7 @@ ff02::2 ip6-allrouters
 ```yaml
 services:
   app:
-    image: foo-app:<タグ名>
+    image: foo-laravel:<タグ名>
 ```
 
 <br>
@@ -516,7 +516,7 @@ services:
     build:
       # 出力元の値は，.envファイルに定義しなければならない．
       target: ${APP_ENV}
-    image: ${APP_ENV}-foo-app
+    image: ${APP_ENV}-foo-laravel
 ```
 
 <br>

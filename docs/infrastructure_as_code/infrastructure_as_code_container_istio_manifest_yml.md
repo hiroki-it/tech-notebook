@@ -1095,7 +1095,7 @@ spec:
           exact: bar
 ```
 
-インバウンド通信のうち，URLのプレフィクスが```/foo```のものだけにルールを適用する．
+インバウンド通信のうち，URLの接頭辞が```/foo```のものだけにルールを適用する．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

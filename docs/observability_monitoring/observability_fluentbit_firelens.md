@@ -130,7 +130,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
         # FireLensコンテナ自体がCloudWatchログにログアウトプット
         "awslogs-group": "<ログストリーム名>",
         "awslogs-region": "ap-northeast-1",
-        "awslogs-stream-prefix": "<ログストリームのプレフィクス>"
+        "awslogs-stream-prefix": "<ログストリームの接頭辞>"
       }
     },
     "firelensConfiguration": {
