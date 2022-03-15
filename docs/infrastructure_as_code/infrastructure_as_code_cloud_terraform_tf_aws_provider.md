@@ -646,8 +646,8 @@ resource "aws_instance" "bastion" {
 # IP addresses
 ###############################################
 global_ip_addresses = [
-  "nn.nnn.nnn.nnn/32",
-  "nn.nnn.nnn.nnn/32"
+  "n.n.n.n/32",
+  "n.n.n.n/32"
 ]
 ```
 

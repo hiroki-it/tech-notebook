@@ -223,7 +223,7 @@ class FooNotification
         }
         
         if (empty($fooMessage->channel_id)) {
-            throw new CouldNotSendMessageException("Channnel ID is required.");
+            throw new CouldNotSendMessageException("Channel ID is required.");
         }
         
         $json = json_encode($fooMessage->message);

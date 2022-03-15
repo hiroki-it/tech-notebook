@@ -310,7 +310,7 @@ IngressコントローラーによってCluster外部から受信したインバ
 | 使用例       |                                                              |
 | ------------ | ------------------------------------------------------------ |
 | パス         | パスの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br/>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
-| Hostヘッダー | Hostヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
+| Hostヘッダー | Hostヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
 
 #### ・Ingressコントローラー
 
@@ -355,7 +355,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>] $ cat /etc/resolv.conf 
 
-nameserver nn.nn.n.nn # ClusterのIPアドレス
+nameserver n.n.n.n # ClusterのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
 ```

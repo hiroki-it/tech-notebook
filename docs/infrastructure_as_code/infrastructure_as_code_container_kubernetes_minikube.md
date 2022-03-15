@@ -285,7 +285,7 @@ $ eval $(minikube -p minikube docker-env)
 $ env | grep DOCKER    
 
 DOCKER_TLS_VERIFY=1
-DOCKER_HOST=tcp://nnn.nnn.nn.n:2376
+DOCKER_HOST=tcp://n.n.n.n:2376
 DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
@@ -357,7 +357,53 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 #### ・serviceとは
 
-Serviceを操作する．
+Serviceを用いて，Podに接続する．
+
+#### ・オプション無し
+
+NodePort ServiceやLoadBalancer Serviceを指定し，ホストからServiceにポートフォワーディングを実行する．また，ServiceのIPアドレスを返却する．
+
+参考：https://minikube.sigs.k8s.io/docs/commands/service/
+
+```bash
+$ minikube service <NodePort Servie名/LoadBalancer Servie名>
+
+🏃  Starting tunnel for service <Service名>.
+|-----------|--------------|-------------|------------------------|
+| NAMESPACE |     NAME     | TARGET PORT |          URL           |
+|-----------|--------------|-------------|------------------------|
+| default   | <Service名>  |             | http://127.0.0.1:57761 |
+|-----------|--------------|-------------|------------------------|
+
+Opening service <サービス名> in default browser...
+```
+
+ただ，ポートフォワーディングのポート番号がランダムなため，もしポート番号を固定したい場合は，直接Serviceを経由せずに直接Podに接続できる```kubectl port-forward```コマンドを使用するとよい．
+
+参考：https://mome-n.com/posts/minikube-service-fixed-port/
+
+```bash
+$ kubectl port-forward <Service名> 8080:80
+```
+
+ServiceのIPアドレスがワーカーNodeのIPアドレスすることは，```minikube ip```コマンドから確認できる．
+
+```bash
+$ minikube ip
+
+n.n.n.n
+```
+
+ちなみに，```minikube service```コマンドを用いずに，```ssh```コマンドで仮想環境に接続しても，同様にServiceにリクエストを送信できる．
+
+参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+
+```bash
+$ minikube ssh
+
+# 仮想環境の中
+$ curl http://n.n.n.n:57761
+```
 
 #### ・list
 
@@ -369,8 +415,8 @@ $ minikube service list
 |----------------------|---------------------------|--------------|---------------------------|
 |      NAMESPACE       |           NAME            | TARGET PORT  |            URL            |
 |----------------------|---------------------------|--------------|---------------------------|
-| default              | foo-service               | http/80      | http://nnn.nnn.nn.n:30001 |
-| default              | bar-service               | http/80      | http://nnn.nnn.nn.n:30000 |
+| default              | foo-service               | http/80      | http://n.n.n.n:30001 |
+| default              | bar-service               | http/80      | http://n.n.n.n:30000 |
 | default              | kubernetes                | No node port |                           |
 | kube-system          | kube-dns                  | No node port |                           |
 | kubernetes-dashboard | dashboard-metrics-scraper | No node port |                           |
@@ -380,37 +426,12 @@ $ minikube service list
 
 #### ・--url
 
-指定したServiceにアクセスするためのURLを表示する．ブラウザ上からServiceにリクエストを送信できるようになる．
+指定したServiceのIPアドレスを含むURLを表示する．
 
 ```bash
  $ minikube service <Service名> --url
-🏃  Starting tunnel for service <Service名>.
-|-----------|--------------|-------------|------------------------|
-| NAMESPACE |     NAME     | TARGET PORT |          URL           |
-|-----------|--------------|-------------|------------------------|
-| default   | <Service名>   |             | http://127.0.0.1:57761 |
-|-----------|--------------|-------------|------------------------|
-http://nnn.nnn.nn.n:57761
-❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
-```
-
-表示されるIPアドレスは，ワーカーNodeのIPアドレスである．
-
-```bash
-$ minikube ip
-
-nnn.nnn.nn.n
-```
-
-ちなみに，```ssh```コマンドで仮想環境に接続しても，同様にServiceにリクエストを送信できるようになる．
-
-参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
-
-```bash
-$ minikube ssh
-
-# 仮想環境の中
-$ curl http://nnn.nnn.nn.n:57761
+ 
+http://n.n.n.n:57761
 ```
 
 <br>

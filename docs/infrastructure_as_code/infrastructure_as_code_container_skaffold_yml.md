@@ -113,6 +113,16 @@ build:
 
 ### local
 
+#### ・push
+
+ビルドしたイメージをリポジトリにプッシュするかどうかを設定する．
+
+```yaml
+build:
+  local:
+    push: false
+```
+
 #### ・useBuildkit
 
 BuildKit機能の有効化を設定する．BuildKitではイメージレイヤーが並列的に構築されるため，ビルド時間を従来よりも短縮できる．

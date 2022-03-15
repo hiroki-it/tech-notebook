@@ -56,9 +56,33 @@ pod/foo-pod configured
 
 #### ・configとは
 
-kubernetesコマンドに関するパラメーターを操作する．
+kubectlコマンドに関するパラメーターを操作する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
+
+#### ・use-context
+
+kubectlコマンドの宛先を変更する．
+
+**＊例＊**
+
+宛先をMinikubeに変更する．
+
+```bash
+$ kubectl config use-context minikube
+```
+
+宛先をDocker for Desktopに変更する．
+
+```bash
+$ kubectl config use-context docker-desktop
+```
+
+宛先をAWS EKSに変更する．
+
+```bash
+$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
+```
 
 #### ・view
 
@@ -298,8 +322,8 @@ foo-pod    0/2     ImagePullBackOff   0          7m52s
 $ kubectl get services
 
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-foo-service    ClusterIP   nn.nnn.nnn.n   <none>        80/TCP    10s
-kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
+foo-service    ClusterIP   n.n.n.n        <none>        80/TCP    10s
+kubernetes     ClusterIP   n.n.n.n        <none>        443/TCP   12h
 ```
 
 #### ・-o
@@ -409,8 +433,8 @@ $ kubectl logs -n <名前空間名> <Pod名> -c <コンテナ名>
 ```bash
 $ kubectl logs -n kube-system <Pod名> -c kube-proxy
 
-I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: nnn.nnn.nn.n
-I1211 05:34:22.263084       1 server_others.go:140] Detected node IP nnn.nnn.nn.n
+I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: n.n.n.n
+I1211 05:34:22.263084       1 server_others.go:140] Detected node IP n.n.n.n
 W1211 05:34:22.263104       1 server_others.go:565] Unknown proxy mode "", assuming iptables proxy
 I1211 05:34:22.285367       1 server_others.go:206] kube-proxy running in dual-stack mode, IPv4-primary
 I1211 05:34:22.285462       1 server_others.go:212] Using iptables Proxier.

@@ -150,7 +150,7 @@ URLとメールアドレスは完全修飾ドメイン名を持つ．
 127.0.0.1 localhost
 255.255.255.255	broadcasthost
 ::1             localhost
-nnn.nnn.n.n example.com
+n.n.n.n example.com
 <IPアドレス> <ドメイン名>
 ```
 
@@ -165,7 +165,7 @@ nnn.nnn.n.n example.com
 もし，```example```というドメイン名で問い合わせを行った場合，実際には```example.foo```が使用される．また，この問い合わせに失敗した場合は，```search```値が左から順に使用される．
 
 ```bash
-nameserver  nnn.nnn.n.n
+nameserver  n.n.n.n
 domain      foo # ドメイン名の後に付与する文字列
 search      bar   baz # domain値で問い合わせに失敗した場合に用いる文字列
 ```

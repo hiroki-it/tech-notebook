@@ -217,6 +217,9 @@ $ kubectl config get-contexts
 
 CURRENT   NAME                    CLUSTER                 AUTHINFO                  NAMESPACE
 *         xxxxxxxxx/foo-cluster   xxxxxxxxx/foo-cluster   xxxxxxxxx/foo-cluster
+
+# コンテキストを元に戻す
+$ kubectl config use-context minikube
 ```
 
 一度インストールしてしまえば，ArgoCDの設定自体もマニフェストファイルの一つとしてマニフェストリポジトリで管理できる．

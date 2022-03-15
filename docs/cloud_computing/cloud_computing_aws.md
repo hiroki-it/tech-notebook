@@ -3893,7 +3893,7 @@ IAMグループに対して，IAMロールを紐付ける．そのIAMグルー�
     "Condition": {
       "NotIpAddress": {
         "aws:SourceIp": [
-          "nn.nnn.nnn.nnn/32"
+          "n.n.n.n/32"
         ]
       }
     }
@@ -4349,7 +4349,7 @@ const getBacketBasedOnDeviceType = (headers) => {
             "encoding": "base64",
             "inputTruncated": false
           },
-          "clientIp": "nnn.n.nnn.nnn",
+          "clientIp": "n.n.n.n",
           "headers": {
             "host": [
               {
