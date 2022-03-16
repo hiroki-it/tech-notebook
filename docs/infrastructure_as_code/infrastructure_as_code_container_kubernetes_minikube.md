@@ -28,6 +28,26 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 <br>
 
+### ドライバー
+
+#### ・ドライバーとは
+
+ゲスト（ワーカーノード）側のOSを設定する．ホスト側のOS（Linux，MacOS，Windows）や，これらOSのバージョンによって，用いることができるドライバーが異なる．
+
+参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
+
+#### ・種類
+
+参考：https://minikube.sigs.k8s.io/docs/drivers/
+
+| ホスト側のOS | ゲスト（ワーカーノード）側のOS    |
+| ------------ | --------------------------------- |
+| Linux        | VirtualBox，Docker，KVM2，...     |
+| MacOS        | VirtualBox，Docker，HyperKit，... |
+| Windows      | VirtualBox，Docker，Hyper-V，...  |
+
+<br>
+
 ## 01-02. マウント
 
 ### ホスト-ワーカーNode間マウント
@@ -47,20 +67,20 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-#### ・仮想化ドライバー別のホスト-ワーカーNode間マウント
+#### ・各ドライバーのホスト-ワーカーNode間マウント
 
 ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
-| ドライバー名  | OS      | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
-| ------------- | ------- | ------------------------- | -------------------------------------------- |
-| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                              |
-| VirtualBox    | macOS   | ```/Users```              | ```/Users```                                 |
-| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                               |
-| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```                        |
-| KVM           | Linux   | なし                      |                                              |
-| HyperKit      | Linux   | なし（NFSマウントを参照） |                                              |
+| ドライバー名  | ホスト側のOS | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
+| ------------- | ------------ | ------------------------- | -------------------------------------------- |
+| VirtualBox    | Linux        | ```/home```               | ```/hosthome```                              |
+| VirtualBox    | macOS        | ```/Users```              | ```/Users```                                 |
+| VirtualBox    | Windows      | ```C://Users```           | ```/c/Users```                               |
+| VMware Fusion | macOS        | ```/Users```              | ```/mnt/hgfs/Users```                        |
+| KVM           | Linux        | なし                      |                                              |
+| HyperKit      | Linux        | なし（NFSマウントを参照） |                                              |
 
 <br>
 
@@ -87,7 +107,7 @@ $ minikube start
 
 #### ・ホストをコンテナにマウントする方法
 
-Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，仮想化ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
+Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -119,16 +139,16 @@ spec:
         app: foo-pod
     spec:
       containers:
-        - name: foo-lumen
-          image: foo-lumen:dev
+        - name: foo-gin
+          image: foo-gin:dev
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9000
+            - containerPort: 8080
           volumeMounts:
-            - name: foo-lumen
-              mountPath: /var/www/foo
+            - name: foo-gin
+              mountPath: /go/src
       volumes:
-        - name: foo-lumen
+        - name: foo-gin
           hostPath:
             path: /data
             type: DirectoryOrCreate
@@ -378,7 +398,7 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 Opening service <サービス名> in default browser...
 ```
 
-ただ，ポートフォワーディングのポート番号がランダムなため，もしポート番号を固定したい場合は，直接Serviceを経由せずに直接Podに接続できる```kubectl port-forward```コマンドを使用するとよい．
+ただ，ポートフォワーディングのポート番号がランダムなため，もしポート番号を固定したい場合は，Serviceを経由せずに直接Podに接続できる```kubectl port-forward```コマンドを使用するとよい．
 
 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
@@ -415,8 +435,8 @@ $ minikube service list
 |----------------------|---------------------------|--------------|---------------------------|
 |      NAMESPACE       |           NAME            | TARGET PORT  |            URL            |
 |----------------------|---------------------------|--------------|---------------------------|
-| default              | foo-service               | http/80      | http://n.n.n.n:30001 |
-| default              | bar-service               | http/80      | http://n.n.n.n:30000 |
+| default              | foo-service               | http/80      | http://n.n.n.n:30001      |
+| default              | bar-service               | http/80      | http://n.n.n.n:30000      |
 | default              | kubernetes                | No node port |                           |
 | kube-system          | kube-dns                  | No node port |                           |
 | kubernetes-dashboard | dashboard-metrics-scraper | No node port |                           |

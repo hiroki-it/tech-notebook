@@ -1371,7 +1371,7 @@ NLBのアクセスログを送信するバケット内には，自動的に『``
 
 <br>
 
-## 15. SM
+## 15. System Manager
 
 ### まとめ
 
@@ -1408,7 +1408,291 @@ CIの```terraform plan```コマンド時に値が公開されないように```o
 
 <br>
 
-## 16. WAF
+## 11. VPC
+
+### まとめ
+
+```elixir
+# 後述の説明を参考にせよ．（１）
+vpc_availability_zones             = { a = "a", c = "c" }
+vpc_cidr                           = "n.n.n.n/23"
+vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
+```
+
+```elixir
+###############################################
+# VPC
+###############################################
+resource "aws_vpc" "this" {
+  cidr_block           = var.vpc_cidr
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "${var.environment}-${var.service}-vpc"
+  }
+}
+
+###############################################
+# Internet Gateway
+###############################################
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
+
+  tags = {
+    Name = "${var.environment}-${var.service}-igw"
+  }
+}
+
+###############################################
+# Public subnet
+###############################################
+resource "aws_subnet" "public" {
+  for_each = var.vpc_availability_zones
+
+  vpc_id                  = aws_vpc.this.id
+  cidr_block              = var.vpc_subnet_public_cidrs[each.key]
+  availability_zone       = "${var.region}${each.value}"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-pub-%s-subnet",
+      each.value
+    )
+  }
+}
+
+###############################################
+# Private subnet
+###############################################
+
+# App subnet
+resource "aws_subnet" "private_app" {
+  for_each = var.vpc_availability_zones
+
+  vpc_id            = aws_vpc.this.id
+  cidr_block        = var.vpc_subnet_private_app_cidrs[each.key]
+  availability_zone = "${var.region}${each.value}"
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-pvt-%s-app-subnet",
+      each.value
+    )
+  }
+}
+
+# Datastore subnet
+resource "aws_subnet" "private_datastore" {
+  for_each = var.vpc_availability_zones
+
+  vpc_id            = aws_vpc.this.id
+  cidr_block        = var.vpc_subnet_private_datastore_cidrs[each.key]
+  availability_zone = "${var.region}${each.value}"
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-pvt-%s-datastore-subnet",
+      each.value
+    )
+  }
+}
+
+###############################################
+# Route table (public)
+###############################################
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.this.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.this.id
+  }
+
+  tags = {
+    Name = "${var.environment}-${var.service}-pub-rtb"
+  }
+}
+
+###############################################
+# Route table (private)
+###############################################
+resource "aws_route_table" "private_app" {
+  for_each = var.vpc_availability_zones
+
+  vpc_id = aws_vpc.this.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.this[each.key].id
+  }
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-pvt-%s-app-rtb",
+      each.value
+    )
+  }
+}
+
+###############################################
+# Route table association (public)
+###############################################
+resource "aws_route_table_association" "public" {
+  for_each = var.vpc_availability_zones
+
+  subnet_id      = aws_subnet.public[each.key].id
+  route_table_id = aws_route_table.public.id
+}
+
+###############################################
+# Route table association (private)
+###############################################
+resource "aws_route_table_association" "private_app" {
+  for_each = var.vpc_availability_zones
+
+  subnet_id      = aws_subnet.private_app[each.key].id
+  route_table_id = aws_route_table.private_app[each.key].id
+}
+
+###############################################
+# NAT Gateway
+###############################################
+resource "aws_nat_gateway" "this" {
+  for_each = var.vpc_availability_zones
+
+  subnet_id     = aws_subnet.public[each.key].id
+  allocation_id = aws_eip.nat_gateway[each.key].id
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-%s-ngw",
+      each.value
+    )
+  }
+
+  depends_on = [aws_internet_gateway.this]
+}
+
+###############################################
+# Elastic IP
+###############################################
+resource "aws_eip" "nat_gateway" {
+  for_each = var.vpc_availability_zones
+
+  vpc = true
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-ngw-%s-eip",
+      each.value
+    )
+  }
+
+  depends_on = [aws_internet_gateway.this]
+}
+```
+
+<br>
+
+### （１）冗長化されたAWSリソースをfor_each関数で作成
+
+AZを上長化している場合，VPC内のサブネットと関連のAWSリソース（Route Table，NAT Gateway，Elastic IPなど）も冗長化することになる．各AZをキーとするマップ型で定義しておいた変数を```for_each```関数に渡し，AWSリソースをAZごとに作成する．
+
+<br>
+
+## 18. VPC endpoint
+
+### まとめ
+
+```elixir
+###############################################
+# VPC endpoint
+###############################################
+resource "aws_vpc_endpoint" "cloudwatch_logs" {
+  vpc_id              = aws_vpc.this.id
+  subnet_ids          = [aws_subnet.private_app[var.vpc_availability_zones.a].id, aws_subnet.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type   = "Interface"
+  service_name        = "com.amazonaws.${var.region}.logs"
+  private_dns_enabled = true
+  security_group_ids  = [var.cloudwatch_logs_endpoint_security_group_id]
+
+  tags = {
+    Name = "${var.environment}-${var.service}-cw-logs-ep"
+  }
+}
+
+resource "aws_vpc_endpoint" "ecr_api" {
+  vpc_id              = aws_vpc.this.id
+  subnet_ids          = [aws_subnet.private_app[var.vpc_availability_zones.a].id, aws_subnet.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type   = "Interface"
+  service_name        = "com.amazonaws.${var.region}.ecr.api"
+  private_dns_enabled = true
+  security_group_ids  = [var.ecr_endpoint_security_group_id]
+
+  tags = {
+    Name = "${var.environment}-${var.service}-ecr-api-ep"
+  }
+}
+
+resource "aws_vpc_endpoint" "ecr_dkr" {
+  vpc_id              = aws_vpc.this.id
+  subnet_ids          = [aws_subnet.private_app[var.vpc_availability_zones.a].id, aws_subnet.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type   = "Interface"
+  service_name        = "com.amazonaws.${var.region}.ecr.dkr"
+  private_dns_enabled = true
+  security_group_ids  = [var.ecr_endpoint_security_group_id]
+
+  tags = {
+    Name = "${var.environment}-${var.service}-ecr-dkr-ep"
+  }
+}
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id            = aws_vpc.this.id
+  route_table_ids   = [aws_route_table.private_app[var.vpc_availability_zones.a].id, aws_route_table.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type = "Gateway"
+  service_name      = "com.amazonaws.${var.region}.s3"
+
+  tags = {
+    Name = "${var.environment}-${var.service}-s3-ep"
+  }
+}
+
+resource "aws_vpc_endpoint" "ssm" {
+  vpc_id              = aws_vpc.this.id
+  subnet_ids          = [aws_subnet.private_app[var.vpc_availability_zones.a].id, aws_subnet.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type   = "Interface"
+  service_name        = "com.amazonaws.${var.region}.ssm"
+  private_dns_enabled = true
+  security_group_ids  = [var.ssm_endpoint_security_group_id]
+
+  tags = {
+    Name = "${var.environment}-${var.service}-ssm-ep"
+  }
+}
+
+resource "aws_vpc_endpoint" "ssmmessages" {
+  vpc_id              = aws_vpc.this.id
+  subnet_ids          = [aws_subnet.private_app[var.vpc_availability_zones.a].id, aws_subnet.private_app[var.vpc_availability_zones.c].id]
+  vpc_endpoint_type   = "Interface"
+  service_name        = "com.amazonaws.${var.region}.ssmmessages"
+  private_dns_enabled = true
+  security_group_ids  = [var.ssmmessages_endpoint_security_group_id]
+
+  tags = {
+    Name = "${var.environment}-${var.service}-ssmmessages-ep"
+  }
+}
+
+```
+
+<br>
+
+## 19. WAF
 
 ### ruleブロック
 
@@ -1650,7 +1934,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 
 <br>
 
-## 17. Terraform管理外のAWSリソース
+## 20. Terraform管理外のAWSリソース
 
 ### 判断基準
 
@@ -1674,6 +1958,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | API Gateway，紐付くVPCリンク | 全て                                 | ビジネスロジックを持ち，変更の要望頻度が高い．バックエンドチームがスムーズにAPIを構築できるようになる． |
 | Chatbot                      | 全て                                 | AWSがAPIを公開していないため，Terraformで構築できない．      |
 | EC2                          | 秘密鍵                               | Terraformで構築する時にGitHubで秘密鍵を管理する必要があるため，セキュリティ上の理由で却下する． |
+| ENI                          | 全て                                 | 特定のAWSリソース（ALB，セキュリティグループなど）の構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『タスクが完了するまで待機』オプションを選択すると自動で構築されるため，Terraformで管理できない．このルールは，ECSのタスクの状態がSTOPPEDになったことを検知し，StepFunctionsに通知してくれる．STOPPED は，ECSタスクが正常に停止（完了？）した状態を表す． |
 | Global Accelerator           | セキュリティグループ                 | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
 | IAMユーザー                    | 全て                                 | ビジネスロジックを持ち，変更の要望頻度が高い．               |
@@ -1681,7 +1966,6 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | IAMロール                    | ユーザーに紐付くロール                 | ビジネスロジックを持ち，変更の要望頻度が高い．               |
 |                              | サービスリンクロール                 | サービスリンクロールは自動的に構築されるが，これが行われる前に事前にTerraformで構築することが可能であり，以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる．しかし，数が多く，また初回構築時のみしかエラーは起こらないため，サービスリンクロールはTerraformで作成しないようにする．<br>参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
 | IAMポリシー                  |                                      | ビジネスロジックを持ち，変更の要望頻度が高い．ただし，IPアドレス制限ポリシーなど，自動化した方が便利になる場合はこの限りではない． |
-| ENI                          | 全て                                 | 特定のAWSリソース（ALB，セキュリティグループなど）の構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | RDS                          | admin以外のユーザー                    | 個別のユーザー作成のために，mysql providerという機能を用いる必要がある．ただ，moduleディレクトリ下に```provider.tf```ファイルを配置する必要があるため，ディレクトリ構成に難がある． |
 | Route53                      | NSレコード                           | ホストゾーンを作成すると，レコードとして，NSレコード値が自動的に設定される．これは，Terraformの管理外である． |
 | S3                           | tfstateの管理バケット                | tfstateファイルを格納するため，Terraformのデプロイより先に存在している必要がある．また，Terraformで誤って削除してしまわないようにする． |
@@ -1689,7 +1973,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 
 <br>
 
-## 18. 複数のAWSリソースに共通のTips
+## 21. 複数のAWSリソースに共通のTips
 
 ### 環境変数
 

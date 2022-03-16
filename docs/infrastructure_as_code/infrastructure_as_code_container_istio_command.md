@@ -232,7 +232,7 @@ Istio上で管理されるEnvoyの構成情報を表示する．
 - https://sreake.com/blog/istio/
 
 ```bash
-$ istioctl proxy-config <項目> <ポッド名> -n <名前空間名>
+$ istioctl proxy-config <項目> <Pod名> -n <名前空間名>
 ```
 
 **＊実行例＊**

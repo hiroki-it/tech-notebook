@@ -99,6 +99,15 @@ metadata:
   name: foo-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: foo
+      component: app
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: app
 ```
 
 <br>
@@ -118,6 +127,15 @@ metadata:
   name: foo-deployment
 spec:
   revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: foo
+      component: app
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: app
 ```
 
 <br>
@@ -139,20 +157,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
-metadata:
-  name: foo-pod
   labels:
     app: foo
 spec:
   selector:
-    matchLabels:
+    matchLabels: # Deploymentに紐づけるPodのラベル
       app: foo
-      type: web
+      component: app
   template:
     metadata:
       labels: # Podのラベル
         app: foo
-        type: web
+        component: app
 ```
 
 <br>
@@ -180,6 +196,15 @@ spec:
     rollingUpdate:
       maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをデプロイする．
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする．
+  selector:
+    matchLabels:
+      app: foo
+      component: app
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: app
 ```
 
 もし```maxSurge```オプションを```100```%，また```maxUnavailable```オプションを```0```%とすると，ローリングアップデート時に，Podのレプリカ数と同じ数だけ新しいPodをデプロイするようになる．また，Podの停止数がレプリカ数を下回らないようになる．
@@ -188,9 +213,9 @@ spec:
 
 <br>
 
-### template
+### template（設定項目はPodと同じ）
 
-スケーリング時に複製の鋳型とするPodを設定する．
+Deploymentで維持管理するPodを設定する．設定項目はPodと同じである．
 
 **＊実装例＊**
 
@@ -200,20 +225,20 @@ kind: Deployment
 metadata:
   name: foo-deployment
 spec:
+  selector:
+    matchLabels:
+      app: foo
+      component: app
   template:
     metadata:
       labels:
         app: foo
     spec:
       containers:
-        - name: foo-lumen
-          image: foo-lumen:latest
+        - name: foo-gin
+          image: foo-gin:latest
           ports:
-            - containerPort: 9000
-        - name: foo-nginx
-          image: foo-nginx:latest
-          ports:
-            - containerPort: 8000
+            - containerPort: 8080
 ```
 
 <br>
@@ -364,6 +389,7 @@ kind: PersistentVolume
 spec:
   hostPath:
     type: DirectoryOrCreate
+    path: /data/src/foo
 ```
 
 <br>
@@ -533,7 +559,7 @@ spec:
 
 ### storageClassName
 
-#### ・storageClassName
+#### ・storageClassNameとは
 
 ストレージクラス名を設定する．これは，PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる．
 
@@ -710,7 +736,7 @@ spec:
         - containerPort: 8080
       volumeMounts:
          - name: foo-gin-volume
-           mountPath: /var/www/foo
+           mountPath: /go/src
   volumes:
     - name: foo-gin-volume
       persistentVolumeClaim:
@@ -728,11 +754,11 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-flask
-      image: foo-flask:latest
+    - name: foo-gin
+      image: foo-gin:latest
       ports:
         - containerPort: 8080
-      workingDir: /var/www/foo
+      workingDir: /go/src
 ```
 
 <br>
@@ -841,12 +867,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-lumen
+    - name: foo-gin
       volumeMounts:
-        - name: foo-lumen-volume
-          mountPath: /var/www/foo
+        - name: foo-gin-volume
+          mountPath: /go/src
   volumes:
-    - name: foo-lumen-volume
+    - name: foo-gin-volume
       emptyDir: {}
 ```
 
@@ -868,12 +894,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-lumen
+    - name: foo-gin
       volumeMounts:
-        - name: foo-lumen-volume
-          mountPath: /var/www/foo
+        - name: foo-gin-volume
+          mountPath: /go/src
   volumes:
-  - name: foo-lumen-volume
+  - name: foo-gin-volume
     hostPath:
       path: /data/src/foo
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
@@ -894,12 +920,12 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-lumen
+    - name: foo-gin
       volumeMounts:
-        - name: foo-lumen-volume
-          mountPath: /var/www/foo
+        - name: foo-gin-volume
+          mountPath: /go/src
   volumes:
-    - name: foo-lumen-volume
+    - name: foo-gin-volume
       persistentVolumeClaim:
         claimName: foo-standard-volume-claim
 ```
@@ -957,14 +983,20 @@ kind: Service
 spec:
   ports:
     - appProtocol: http
+      port: 80
 ```
 
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - appProtocol: tcp
+      port: 9000
 ```
 
 もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが用いなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
@@ -975,18 +1007,28 @@ spec:
 # appProtocolを用いない場合
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - name: http-foo # Istio Gatewayからインバウンド通信を受信
+      port: 80
 ```
 
 ```yaml
 # appProtocolを用いない場合
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
+      port: 9000
 ```
 
 #### ・name
@@ -996,17 +1038,27 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - name: http
+      port: 80 
 ```
 
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - name: tcp
+      port: 9000
 ```
 
 #### ・protocol
@@ -1018,25 +1070,40 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - protocol: TCP
+      port: 80
 ```
 
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - protocol: UDP
+      port: 53
 ```
 
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - protocol: SCTP
+      port: 22
 ```
 
 ちなみに，FastCGIプロトコルには変換できず，別にNginxを用いてプロトコルを変換する必要がある．
@@ -1055,6 +1122,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - port: 80
@@ -1063,6 +1134,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - port: 9000
@@ -1077,17 +1152,27 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
-  - targetPort: 80
+  - targetPort: 8080
+    port: 80
 ```
 
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   ports:
     - targetPort: 9000
+      port: 9000
 ```
 
 <br>
@@ -1103,6 +1188,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
+  labels:
+    app: foo
 spec:
   selector:
     app: foo
@@ -1136,6 +1225,10 @@ Serviceのタイプを設定する．
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+  labels:
+    app: foo
 spec:
   hosts:
     - '*'
@@ -1150,6 +1243,10 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+  labels:
+    app: foo
 spec:
   ports:
     - name: http
@@ -1169,6 +1266,10 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+  labels:
+    app: foo
 spec:
   resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する．
 ```
@@ -1177,7 +1278,115 @@ spec:
 
 ## 04-09. spec（StatefulSetの場合）
 
+### serviceName
+
+#### ・serviceNameとは
+
+StatefulSetによって管理されるPodにルーティングするServiceを設定する．
+
+**＊実装例＊**
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+spec:
+  selector:
+    matchLabels:
+      app: foo
+      component: db
+  serviceName: foo-db-service
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: foo-db-host-path-persistent-volume-claim
+              mountPath: /var/volume
+  volumeClaimTemplates:
+    - metadata:
+        name: foo-standard-volume-claim
+        labels:
+          app: foo
+          component: db
+      spec:
+        storageClassName: standard
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+```
+
+<br>
+
+### template（設定項目はPodと同じ）
+
+#### ・templateとは
+
+StatefulSetで維持管理するPodを設定する．設定項目はPodと同じである．
+
+**＊実装例＊**
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+spec:
+  selector:
+    matchLabels:
+      app: foo
+      component: db
+  serviceName: foo-db-service
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: db
+    spec:
+      containers:
+        # MySQLコンテナ
+        - name: mysql
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: dev_db
+            - name: MYSQL_USER
+              value: dev_user
+            - name: MYSQL_PASSWORD
+              value: dev_password
+          volumeMounts:
+            - name: foo-db-host-path-persistent-volume-claim
+              mountPath: /var/volume
+  volumeClaimTemplates:
+    - metadata:
+        name: foo-standard-volume-claim
+        labels:
+          app: foo
+          component: db
+      spec:
+        storageClassName: standard
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+```
+
 ### volumeClaimTemplates
+
+#### ・volumeClaimTemplatesとは
 
 PersistentVolumeClaimを作成する．設定の項目は```kind: PersistentVolumeClaim```の場合と同じである．StatefulSetが削除されても，これは削除されない．
 
@@ -1187,11 +1396,31 @@ PersistentVolumeClaimを作成する．設定の項目は```kind: PersistentVolu
 apiVersion: apps/v1
 kind: StatefulSet
 spec:
+  selector:
+    matchLabels:
+      app: foo
+      component: db
+  serviceName: foo-db-service
+  template:
+    metadata:
+      labels:
+        app: foo
+        component: db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: foo-db-host-path-persistent-volume-claim
+              mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
         name: foo-standard-volume-claim
         labels:
           app: foo
+          component: db
       spec:
         storageClassName: standard
         accessModes:

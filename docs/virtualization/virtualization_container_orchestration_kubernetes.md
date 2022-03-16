@@ -130,13 +130,15 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
 - https://thinkit.co.jp/article/13338ht-kubernetes/
+- https://blog.cybozu.io/entry/2019/07/03/170000
 
-|                        | Minikube                                                     | Docker for Desktop                                           | Kind |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
-| 概要                   | カスタマイズ性が高いため，カスタマイズ次第で本番環境と開発環境の差異を小さくできる．2022年3月の現在では，Kubernetesの開発環境として，ベタープラクティスである． | セットアップが簡単（有効化するだけ）なので，開発に取り掛かるまでが早い |      |
-| セットアップの難易度   | 普通                                                         | 簡単                                                         | 普通 |
-| ノードのカスタマイズ性 | 高い                                                         | 低い                                                         | 普通 |
-| マルチノード           | 不可                                                         | 不可                                                         | 可能 |
+|                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                 |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
+| 概要                   | カスタマイズ性が高いため，カスタマイズ次第で本番環境と開発環境の差異を小さくできる．2022年3月の現在では，Kubernetesの開発環境として，ベタープラクティスである． | セットアップが非常に簡単（有効化するだけ）なので，開発に取り掛かるまでが早い． | セットアップが簡単なので，開発に取り掛かるまでが早い |
+| セットアップの難易度   | 簡単                                                         | 非常に簡単                                                   | 簡単                                                 |
+| Kubernetesのバージョン | 任意のバージョンを指定できる．                               | Docker for Desktopのバージョンごとに，Kubernetesのバージョンが固定される． | 任意のバージョンを指定できる．                       |
+| マルチノード           | 不可                                                         | 可能                                                         | 可能                                                 |
+| ノードのカスタマイズ性 | 高い                                                         | 低い                                                         | 高い                                                 |
 
 <br>
 
@@ -201,8 +203,6 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合，これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-
-
 #### ・同じPod内通信方法
 
 | 通信の状況  | 説明                                                         | 補足                                                         |
@@ -256,7 +256,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 ### StatefulSet
 
-・StatefulSetとは
+#### ・StatefulSetとは
 
 ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
 
@@ -275,7 +275,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 #### ・Deploymentとは
 
-ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
+ReplicaSetを操作し，新しいPodをデプロイする．また，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
 
 参考：
 
@@ -314,13 +314,21 @@ IngressコントローラーによってCluster外部から受信したインバ
 
 #### ・Ingressコントローラー
 
-Cluster外部のインバウンド通信をIngressにルーティングする．
+![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-参考：https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
+Ingressの設定に基づいてCluster外部からのインバウンド通信を受信し，単一/複数のIngressにルーティングする．
+
+参考：
+
+- https://developers.freee.co.jp/entry/kubernetes-ingress-controller
+- https://www.containiq.com/post/kubernetes-ingress
 
 #### ・Ingressコントローラーとして使用可能なもの
 
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+参考：
+
+- https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+- https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
 | コントローラー名                                      | 開発環境 | 本番環境 |
 | ----------------------------------------------------- | -------- | -------- |

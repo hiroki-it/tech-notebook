@@ -122,8 +122,8 @@ spec:
   template:
     spec:
       containers:
-        - name: foo-container
-          image: foo-mage
+        - name: foo-gin
+          image: foo-gin
         - name: istio-proxy
 ```
 
@@ -226,7 +226,7 @@ spec:
 
 #### ・sidecar.istio.io/inject
 
-特定のポッドでのみ，Envoyコンテナを自動的に構築しないようにする．
+特定のPodでのみ，Envoyコンテナを自動的に構築しないようにする．
 
 ```yaml
 apiVersion: apps/v1

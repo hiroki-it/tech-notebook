@@ -85,7 +85,7 @@ v1.5からデータプレーン側に統合された．
 
 ### Istio，Envoy（Istio無し），Kubernetesの対応関係
 
-K8s，Envoy，Kubernetesの比較は以下の通り
+Kubernetes，Envoy，Kubernetesの比較は以下の通り
 
 参考：
 
