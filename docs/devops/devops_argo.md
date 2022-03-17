@@ -209,6 +209,8 @@ EKS上にArgoCDコンテナを稼働させ，マニフェストリポジトリ�
 EKS上にArgoCDをセットアップする時には，```kubectl```コマンドを使用する必要があり，```awscli```コマンドを用いて，```kubectl```コマンドの向き先を変更する．
 
 ```bash
+# クレデンシャル情報を設定する．
+
 # kubectlコマンドがEKSに向くように，.kube/configファイルを新しく作成する．
 $ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
 
@@ -225,3 +227,4 @@ $ kubectl config use-context minikube
 一度インストールしてしまえば，ArgoCDの設定自体もマニフェストファイルの一つとしてマニフェストリポジトリで管理できる．
 
 参考：https://tech.recruit-mp.co.jp/infrastructure/gitops-cd-by-using-argo-cd-at-eks/
+

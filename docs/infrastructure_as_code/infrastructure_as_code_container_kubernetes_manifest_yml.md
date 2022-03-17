@@ -304,6 +304,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   accessModes:
     - ReadWriteMany
@@ -318,6 +322,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   accessModes:
     - ReadOnlyMany
@@ -332,6 +340,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   accessModes:
     - ReadWriteOnce
@@ -352,6 +364,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   capacity:
     storage: 10G
@@ -374,6 +390,10 @@ Node側のマウント元のディレクトリを設定する．Podのマウン�
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   hostPath:
     path: /data/src/foo
@@ -386,6 +406,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   hostPath:
     type: DirectoryOrCreate
@@ -408,6 +432,10 @@ Node上にストレージ領域を新しく作成し，これをボリューム�
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   local:
     path: /data/src/foo
@@ -434,6 +462,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   mountOptions:
     - hard
@@ -458,6 +490,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   nfs:
     server: <NFSサーバーのIPアドレス>
@@ -485,6 +521,10 @@ PersistentVolumeの作成先とするワーカーNodeを設定する．
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   local:
     path: /data/src/foo
@@ -521,6 +561,10 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に�
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   persistentVolumeReclaimPolicy: Delete
 ```
@@ -536,6 +580,10 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に�
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   persistentVolumeReclaimPolicy: Recycle
 ```
@@ -551,6 +599,10 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除されたとして�
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   persistentVolumeReclaimPolicy: Retain
 ```
@@ -570,6 +622,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
+metadata:
+  name: foo-persistent-volume
+  labels:
+    app: foo
 spec:
   storageClassName: standard
 ```
@@ -597,6 +653,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
+metadata:
+  name: foo-persistent-volume-claim
+  labels:
+    app: foo
 spec:
   accessModes:
     - ReadWriteMany
@@ -619,6 +679,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
+metadata:
+  name: foo-persistent-volume-claim
+  labels:
+    app: foo
 spec:
   resources:
     requests:
@@ -640,6 +704,10 @@ spec:
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
+metadata:
+  name: foo-persistent-volume-claim
+  labels:
+    app: foo
 spec:
   storageClassName: standard
 ```

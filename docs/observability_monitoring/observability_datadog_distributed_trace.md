@@ -33,7 +33,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 02. Traceエージェント（AWSコンテナの場合）
+## 02. Traceエージェント（AWS ECS Fargateの場合）
 
 ### Traceエージェントとは
 

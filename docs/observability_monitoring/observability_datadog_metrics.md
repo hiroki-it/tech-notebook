@@ -32,7 +32,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 <br>
 
-## 02. Processエージェント（AWSコンテナの場合）
+## 02. Processエージェント（AWS ECS Fargateの場合）
 
 ### Processエージェントとは
 
@@ -49,7 +49,33 @@ dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 参考：
 
 - https://docs.datadoghq.com/agent/docker/apm/?tab=linux
-- https://docs.datadoghq.com/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D
+- https://docs.datadoghq.com/tracing/#explore-datadog-apm
+
+<br>
+
+## 02-02. Cluster/Nodeエージェント（Kubernetesの場合）
+
+### Cluster/Nodeエージェントとは
+
+#### ・Kubernetesの場合
+
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
+
+KubernetesのClusterやワーカーNodeから送信されたメトリクスを，マスターNodeのkube-apiserverに転送する．
+
+参考：
+
+- https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
+- https://blog.serverworks.co.jp/k8s-datadog
+
+#### ・Kubernetes＋Istioの場合
+
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
+
+参考：
+
+- https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
+- https://docs.datadoghq.com/integrations/istio/
 
 <br>
 
@@ -59,7 +85,7 @@ dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 いくつかの方法で，収集されたメトリクスを送信できる．
 
-参考：https://docs.datadoghq.com/metrics/#datadog-%E3%81%B8%E3%81%AE%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E9%80%81%E4%BF%A1
+参考：https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
 
 <br>
 

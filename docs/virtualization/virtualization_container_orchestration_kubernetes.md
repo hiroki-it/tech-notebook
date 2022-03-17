@@ -307,7 +307,9 @@ IngressコントローラーによってCluster外部から受信したインバ
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 - https://thinkit.co.jp/article/18263
 
-| 使用例       |                                                              |
+#### ・使用例
+
+| パラメーター |                                                              |
 | ------------ | ------------------------------------------------------------ |
 | パス         | パスの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br/>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
 | Hostヘッダー | Hostヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
@@ -322,6 +324,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 
 - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
 - https://www.containiq.com/post/kubernetes-ingress
+- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 
 #### ・Ingressコントローラーとして使用可能なもの
 
@@ -584,6 +587,47 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 ### Metadataリソースとは
 
 参考：https://thinkit.co.jp/article/13542
+
+<br>
+
+## 03-07. セキュリティ
+
+### Account
+
+#### ・Accountとは
+
+Kubernetesに関する実行ユーザーを設定する．
+
+参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+- https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+
+| アカウント名   | 説明                                                         | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ServiceAccount | Kubernetes内の各リソースのプロセスに実行ユーザーの仕組みを設定する．正しい実行ユーザーのプロセスは，Kubernetes自体と通信する権限を持つ． | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される．正しいユーザーに実行されたオブジェクトのみがKubernetesと通信できる． |
+| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーの仕組みを設定する．正しい実行ユーザーのクライアントは，Kubernetes自体を操作する権限を持つ． | アカウント情報は，``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある． |
+
+<br>
+
+### NetworkPolicy
+
+#### ・NetworkPolicyとは
+
+Pod間で通信する場合のインバウンド/アウトバウンド通信の送受信ルールを設定する．
+
+参考：
+
+- https://www.amazon.co.jp/dp/B08FZX8PYW
+- https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
+
+#### ・Ingress
+
+他のPodからの受信するインバウンド通信のルールを設定する．Ingressリソースとは関係がないことに注意する．
+
+#### ・Egress
+
+他のPodに送信するアウトバウンド通信のルールを設定する．
 
 <br>
 

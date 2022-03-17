@@ -61,11 +61,11 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 <br>
 
-## 03. ログエージェント（AWSコンテナの場合）
+## 03. ログエージェント（AWS ECS Fargateの場合）
 
 ### ログエージェントとは
 
-サーバーの場合とは異なり，AWSコンテナのdatadogエージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
+サーバーの場合とは異なり，AWS ECS Fargateのdatadogエージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
 
 参考：
 
@@ -82,6 +82,32 @@ FluentBitを稼働させたコンテナのこと．Datadogの代わりにログ�
 
 - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
 - https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
+
+<br>
+
+## 02-02. Cluster/Nodeエージェント（Kubernetesの場合）
+
+### Cluster/Nodeエージェントとは
+
+#### ・Kubernetesの場合
+
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
+
+KubernetesのClusterやワーカーNodeから送信されたメトリクスを，マスターNodeのkube-apiserverに転送する．
+
+参考：
+
+- https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
+- https://blog.serverworks.co.jp/k8s-datadog
+
+#### ・Kubernetes＋Istioの場合
+
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
+
+参考：
+
+- https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
+- https://docs.datadoghq.com/integrations/istio/
 
 <br>
 
@@ -307,7 +333,7 @@ logs:
 
 <br>
 
-### Fargateにおけるログの送信
+### AWS ECS Fargateにおけるログの送信
 
 FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンクを参考にせよ．
 

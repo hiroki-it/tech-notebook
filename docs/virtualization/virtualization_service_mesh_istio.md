@@ -97,10 +97,9 @@ Kubernetes，Envoy，Kubernetesの比較は以下の通り
 | ------------------------ | ----------------- | -------------- |
 | Istiod                   | go-control-plane  | -              |
 | WorkloadEntry            | Endpoint          | Endpoint       |
-| VirtualService           | Route             | Service        |
 | DestinationRule          | Route             | kube-proxy     |
 | EnvoyFilter              | Listener          | kube-proxy     |
-| Gateway                  | Listener          | Ingress        |
+| VirtualService＋Gateway  | Route＋Listener   | Ingress        |
 | ServiceEntry             | Cluster           | Service        |
 
 <br>
@@ -121,8 +120,6 @@ Istioの各コンポーネントのことで，Kubernetesのカスタムリソ�
 
 <br>
 
-
-
 ## 02-02. インバウンド通信に関するリソース
 
 ### IngressGateway
@@ -131,7 +128,7 @@ Istioの各コンポーネントのことで，Kubernetesのカスタムリソ�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway，Service，DestinationRuleの設定を基に，Cluster外部から送信されるインバウンド通信をPodにルーティングする．
+Gateway，Service，DestinationRuleの設定を基に，Cluster外部から送信されるインバウンド通信をPodにルーティングする．```istio-ingressgateway```というLoadBalancer Serviceと，```istio-ingressgateway-*****```というPodから構成される
 
 参考：
 

@@ -2873,7 +2873,9 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 ## 14-03. EKS
 
-### EKSとKubernetesの対応
+### 仕組み
+
+#### ・EKSとKubernetesの対応
 
 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
@@ -2882,7 +2884,7 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
 | Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                    | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| Ingressコントローラー      | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
 | マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
 | ワーカーNode               | Fargate Node，EC2 Node  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS，EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
@@ -2891,6 +2893,14 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 | kube-proxy                 | kube-proxy              |                                                              |
 | 種々のCNIプラグイン        | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
 | これら以外のリソース       | なし                    |                                                              |
+
+#### ・ネットワーク
+
+EKSでは，EKS外からのインバウンド通信をALBコントローラーで受信し，これをIngressにルーティングする．また，アウトバウンド通信をNAT Gatewayで受信し，EKS外にルーティングする．
+
+参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
+
+![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
 
 <br>
 
@@ -2920,6 +2930,52 @@ EKSコントロールプレーンのこと．
 
 <br>
 
+### デバッグ
+
+#### ・ダッシュボード
+
+（１）```kubectl```コマンドの宛先をEKSに変更する．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+
+```bash
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:*****:cluster/foo-eks-cluster
+```
+
+（２）マニフェストファイルを用いて，ダッシュボードのKubernetesリソースをEKSにデプロイする．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
+```
+
+（３）ダッシュボードに安全に接続するために，ServiceAccountをEKSにデプロイする
+
+```bash
+$ kubectl apply -f service-account.yml
+```
+
+（４）トークンの文字列を取得する．
+
+```bash
+$ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+```
+
+（５）ローカルPCからEKSにポートフォワーディングを実行する．
+
+```bash
+$ kubectl proxy
+```
+
+（６）ダッシュボードに接続する．
+
+```http
+GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login
+```
+
+<br>
+
 ## 14-03-02. EKS on Fargate
 
 ### Fargate Node
@@ -2929,6 +2985,19 @@ EKSコントロールプレーンのこと．
 Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに相当する．on EC2と比べてカスタマイズ性が低く，Node当たりで稼働するPod数はAWSが管理する．一方で，各EC2のサチュレーションをユーザーが管理しなくてもよいため，Kubernetesのホストの管理が楽である．
 
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+
+#### ・設定項目
+
+Fargateの設定はプロファイルと呼ばれる．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-profile.html#fargate-profile-components
+
+| コンポーネント名           | 説明                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| Pod実行ロール              | kubeletがFargate上でPodを作成するために必要なロールを設定する． |
+| サブネット                 | EKS Fargateが起動するサブネットIDを設定する．インターネットゲートウェイとは切り離され，ネットワークからは隔絶されたプライベートサブネットである必要がある．<br>参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
+| ポッドセレクタ（名前空間） | EKS Fargate上で稼働させるPodを固定できるように，Podの名前空間を設定する． |
+| ポッドセレクタ（ラベル）   | EKS ECS Fargate上で稼働させるPodを固定できるように，Podのラベルを設定する． |
 
 <br>
 
@@ -6115,7 +6184,7 @@ VPCのプライベートサブネット内のリソースが，VPC外のリソ�
 
 **＊例＊**
 
-ECS Fargateをプライベートサブネットに置いた場合，ECS FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ，ECR，S3，SSM）．
+Fargateをプライベートサブネットに置いた場合，FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ，ECR，S3，SSM）．
 
 #### ・メリット
 
@@ -6386,6 +6455,12 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Block                              | OFF         | ON               | そもそもCountモードが無効なため，上書きオプションは機能せずに，Blockが実行される． |
 | Block                              | OFF         | OFF              | そもそもCountモードが無効なため，マネージドルールのBlockが実行される（と思っていたが，結果としてCountとして機能する模様）． |
 
+#### ・セキュリティグループとの関係
+
+WAFを紐づけられるリソースにセキュリティグループも紐づけている場合，セキュリティグループのルールが先に検証される．例えば，WAFをALBに紐づけ，かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合，後者が先に検証される．両方にルールが定義されてると混乱を生むため，HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し，それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく．
+
+参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
+
 <br>
 
 ### マネージドルールを用いるかどうかの判断基準
@@ -6580,7 +6655,7 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 #### ・分散ロードテストとは
 
-ロードテストを実行できる．CloudFormationで構築でき，Fargateを用いて，ユーザーからのリクエストを擬似的に再現できる．
+ロードテストを実行できる．CloudFormationで構築でき，ECS Fargateを用いて，ユーザーからのリクエストを擬似的に再現できる．
 
 参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 

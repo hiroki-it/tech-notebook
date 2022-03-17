@@ -334,8 +334,8 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
 | ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |                                                              | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateの場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
-| ```ECS_FARGATE``` | Fargateを用いる場合，これを宣言する．                        |                                                              |                                              |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | AWS ECS Fargateの場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
+| ```ECS_FARGATE``` | AWS ECS Fargateを用いる場合，これを宣言する．                        |                                                              |                                              |
 
 <br>
 
@@ -349,7 +349,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | AWS ECS Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ・カスタムメトリクス
