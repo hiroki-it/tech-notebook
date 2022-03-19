@@ -17,14 +17,14 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 ### 構造
 
-![minikube_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture.png)
-
-仮想環境下で単一のワーカーNodeを持つClusterを作成する．
+仮想環境上に，単一のワーカーNodeを持つClusterを作成する．
 
 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/
 - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
+
+![minikube_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture.png)
 
 <br>
 
@@ -232,7 +232,9 @@ minikubeコマンドに関するパラメーターを操作する．
 
 #### ・set
 
-パラメータのデフォルト値を設定する．
+kubectlコマンド実行時のデフォルト値を設定する．
+
+参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
 **＊例＊**
 
@@ -242,16 +244,24 @@ minikubeコマンドに関するパラメーターを操作する．
 $ minikube config set driver virtualbox
 ```
 
-デフォルトのメモリ容量を設定する．
+CPU容量の上限値を設定する．
 
 ```bash
-$ minikube config set cpus 12
+$ minikube config set cpus 4
 ```
 
-デフォルトのCPU容量を設定する．
+メモリ容量の上限値を設定する．
 
 ```bash
-$ minikube config set memory 4096
+minikube config set memory 16384
+```
+
+Kubernetesのバージョンのデフォルト値を設定する．
+
+参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
+
+```bash
+$ minikube config set kubernetes-version=v1.23.0
 ```
 
 <br>
@@ -343,6 +353,50 @@ $ minikube ip
 
 <br>
 
+### kubectl
+
+#### ・kubectlとは
+
+Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルPCにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+
+```bash
+$ minikube kubectl -- version
+
+# kubectlのバージョン
+Client Version: version.Info{
+  Major:"1",
+  Minor:"22",
+  GitVersion:"v1.22.3",
+  GitCommit:"*****",
+  GitTreeState:"clean",
+  BuildDate:"2021-11-17T15:41:42Z",
+  GoVersion:"go1.16.10",
+  Compiler:"gc",
+  Platform:"darwin/amd64"
+}
+
+# Kubernetesのバージョン
+Server Version: version.Info{
+  Major:"1",
+  Minor:"22",
+  GitVersion:"v1.22.3",
+  GitCommit:"*****",
+  GitTreeState:"clean",
+  BuildDate:"2021-11-17T15:41:42Z",
+  GoVersion:"go1.16.9",
+  Compiler:"gc",
+  Platform:"linux/amd64"
+}
+```
+
+#### ・オプション
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html
+
+<br>
+
 ### mount
 
 #### ・mountとは
@@ -369,6 +423,21 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 ✅  Successfully mounted /Users/hiroki.hasegawa/projects/foo to /data
 
 📌  NOTE: This process must stay alive for the mount to be accessible ...
+```
+
+<br>
+
+### update-context
+
+Minikubeのコンテキスト情報が誤っている場合に，正しく修正する．
+
+参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
+
+```bash
+$ minikube update-context
+
+🎉  "minikube" context has been updated to point to 192.168.64.16:8443
+💗  Current context is "minikube"
 ```
 
 <br>
@@ -460,7 +529,7 @@ http://n.n.n.n:57761
 
 #### ・sshとは
 
-仮想環境内のワーカーNodeにSSH接続を行う．
+仮想環境にSSH接続を行う．
 
 参考：
 
@@ -533,6 +602,22 @@ yes
 zcat
 ```
 
+#### ・``--``
+
+仮想環境にSSH接続を実行し，任意のコマンドを実行する．
+
+**＊例＊**
+
+```bash
+$ minikube ssh -- ls -la  
+
+total 4
+drwxr-xr-x 3 docker docker  80 Mar 15 09:30 .
+drwxr-xr-x 3 root   root    60 Oct 27 23:07 ..
+-rw------- 1 docker docker 126 Mar 15 10:10 .bash_history
+drwx------ 2 docker docker  80 Jan  1  1970 .ssh
+```
+
 <br>
 
 ### start
@@ -598,6 +683,16 @@ $ minikube start --docker-env
 ```bash
 # 事前にVirtualBoxのダウンロードが必要．
 $ minikube start --driver=virtualbox
+```
+
+#### ・--kubernetes-vsersion
+
+Minikubeで稼働させるKubernetesのバージョンを指定しつつ，```start```コマンドを実行する．
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+
+```bash
+$ minikube start --kubernetes-version=v1.23.0
 ```
 
 #### ・--mount，--mount--string

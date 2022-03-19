@@ -60,25 +60,35 @@ kubectlコマンドに関するパラメーターを操作する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
+#### ・current-context
+
+kubectlコマンドの宛先になっているkube-apiserverを表示する．
+
+```bash
+$ kubectl config current-context
+
+minikube
+```
+
 #### ・use-context
 
-kubectlコマンドの宛先を変更する．
+kubectlコマンドの宛先を，指定したKubernetes環境のkube-apiserverに変更する．
 
 **＊例＊**
 
-宛先をMinikubeに変更する．
+宛先をMinikubeのkube-apiserverに変更する．
 
 ```bash
 $ kubectl config use-context minikube
 ```
 
-宛先をDocker for Desktopに変更する．
+宛先をDocker for Desktopのkube-apiserverに変更する．
 
 ```bash
 $ kubectl config use-context docker-desktop
 ```
 
-宛先をAWS EKSに変更する．
+宛先をAWS EKSのkube-apiserverに変更する．
 
 ```bash
 $ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
@@ -578,5 +588,46 @@ $ kubectl top node
 
 NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 minikube   523m         13%    4393Mi          27%       
+```
+
+<br>
+
+### version
+
+kubectlとKubernetesのバージョンをそれぞれ表示する．両方のバージョンに差があっても，1つ以内のメジャーバージョンであれば許容範囲である．
+
+参考：
+
+- https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
+- https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
+
+```bash
+$ kubectl version                                                             
+
+# kubectlのバージョン
+Client Version: version.Info{
+  Major:"1",
+  Minor:"22",
+  GitVersion:"v1.22.4",
+  GitCommit:"*****",
+  GitTreeState:"clean",
+  BuildDate:"2021-11-17T15:41:42Z",
+  GoVersion:"go1.16.10",
+  Compiler:"gc",
+  Platform:"darwin/amd64"
+}
+
+# Kubernetesのバージョン
+Server Version: version.Info{
+  Major:"1",
+  Minor:"22",
+  GitVersion:"v1.22.3",
+  GitCommit:"*****",
+  GitTreeState:"clean",
+  BuildDate:"2021-10-27T18:35:25Z",
+  GoVersion:"go1.16.9",
+  Compiler:"gc",
+  Platform:"linux/amd64"
+}
 ```
 

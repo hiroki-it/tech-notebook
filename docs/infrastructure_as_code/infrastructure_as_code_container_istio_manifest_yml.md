@@ -42,7 +42,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorリソースが定義されたマニフェストファイルを，```istioctl```コマンドまたは```kubectl```コマンドで操作し，Istioリソースをインストールする．```kubectl```コマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
+（２）IstioOperatorリソースが定義されたマニフェストファイルを，istioctlコマンドまたはkubectlコマンドで操作し，Istioリソースをインストールする．kubectlコマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
 
 ```bash
 # istioctlコマンド

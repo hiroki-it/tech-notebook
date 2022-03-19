@@ -2934,7 +2934,7 @@ EKSコントロールプレーンのこと．
 
 #### ・ダッシュボード
 
-（１）```kubectl```コマンドの宛先をEKSに変更する．
+（１）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 

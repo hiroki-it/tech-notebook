@@ -30,6 +30,18 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | 2017    | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニマイクロサービスアーキテクチャを考案した．このアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のマイクロサービスに分割する．この粒度を，マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ．<br>参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2018    | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの，複数のマイクロサービスが必要になることは変わらず，その分だけ開発チームが必要になる問題は解決されなかった．そこで，Root Insurance社はモジュラモノリスを考案した．モジュラモノリスでは，マイクロサービスの概念を取り入れずに，アプリケーションを細かいモジュールに分割する．<br>参考：https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4<br>反対に，最初モジュラーモノリスとして設計し，マイクロサービスアーキテクチャに移行していくという選択肢もある．<br>参考：https://creators-note.chatwork.com/entry/2020/12/02/090000#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3 |
 
+#### ・プレゼンテーションドメイン分離
+
+![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/presentation_domain_separation.png)
+
+モノリシックなアプリケーションがドメイン層だけでなくプレゼンテーション層のロジックも持っている場合，ドメイン層をマイクロサービスに分離する前に，プレゼンテーション層をフロントエンドアプリケーションとして分離しておく必要がある．
+
+参考：
+
+- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
+- https://bliki-ja.github.io/PresentationDomainSeparation/
+- https://tech.mti.co.jp/entry/2021/04/12/112833
+
 #### ・モジュール/マイクロサービスの粒度の比較
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
@@ -132,10 +144,10 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・マイクロサービスの分割例
 
-| アプリケーション | リンク                                                    | 分割方法           | マイクロサービスの種類                                       |
-| ---------------- | --------------------------------------------------------- | ------------------ | ------------------------------------------------------------ |
-| Eコマース        | https://github.com/GoogleCloudPlatform/microservices-demo | ルートエンティティ | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 |
-| Eコマース        | https://github.com/DataDog/ecommerce-workshop             | ルートエンティティ | 広告，割引                                                   |
+| アプリケーション | リンク                                                    | 分割方法           | マイクロサービスの種類                                       | ディレクトリ構成                                             |
+| ---------------- | --------------------------------------------------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Eコマース        | https://github.com/GoogleCloudPlatform/microservices-demo | ルートエンティティ | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを置く． |
+| Eコマース        | https://github.com/DataDog/ecommerce-workshop             | ルートエンティティ | 広告，割引                                                   | ルートに各マイクロサービスのディレクトリを置く．             |
 
 #### ・サブドメイン，境界付けられたコンテキストを単位とした分割
 
@@ -291,6 +303,16 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 参考：https://codezine.jp/article/detail/11305?p=4
 
 ![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
+
+<br>
+
+### GraphQL-API
+
+従来のRESTful-APIを用いた場合，バックエンドのエンドポイントが増えるたびに，フロントエンドが指定すべきエンドポイントも増えていく．一方で，GraphQL-APIを用いた場合，単一のエンドポイントをGraphQLで指定すれば，GraphQL-APIが適切な宛先にルーティングしてくれる．
+
+参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
+
+![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/graphql-api.png)
 
 <br>
 

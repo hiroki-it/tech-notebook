@@ -270,6 +270,7 @@ title: 【知見を記録するサイト】目次
 
 * [📖：︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
 * [📖：︎CircleCI](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci.html)
+* [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
 * [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 
 <br>

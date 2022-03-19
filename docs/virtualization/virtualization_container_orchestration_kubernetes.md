@@ -17,7 +17,7 @@ description: Kubernetes＠仮想化の知見をまとめました．
 
 ### 構造
 
-Kubernetesコンポーネントは，Kubernetesリソースから作成されたオブジェクトを操作し，アプリケーションを稼働させる．
+Kubernetesコンポーネントは，リソースから作成されたオブジェクトを操作し，アプリケーションを稼働させる．kubernetesクライアントは，kubectlコマンドをkube-apiserverに送信することで，Kubernetesを操作できる．
 
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
@@ -54,7 +54,7 @@ Clusterの様々な設定値を保持し，冗長化されたリソース間に�
 
 #### ・kube-apiserverとは
 
-kubernetesクライアントにkueneretes-APIを公開する．クライアントがkubernetesコマンドを実行すると，kubernetes-APIがコールされ，コマンドに沿ってリソースが操作される．
+kubernetesクライアントにkueneretes-APIを公開する．クライアントがkubectlコマンドを実行すると，kubernetes-APIがコールされ，コマンドに沿ってリソースが操作される．
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -248,7 +248,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ・DaemonSetとは
 
-ワーカーNode上のPod数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
+ワーカーNode上のPodの個数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
 
 参考：https://thinkit.co.jp/article/13611
 
@@ -258,7 +258,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ・StatefulSetとは
 
-ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．ただしDeploymentとは異なり，ストレートフルなコンテナを含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしDeploymentとは異なり，ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -275,7 +275,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 #### ・Deploymentとは
 
-ReplicaSetを操作し，新しいPodをデプロイする．また，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしStatefulSetとは異なり，ストレートレスなコンテナを含むPodを扱う．
+ReplicaSetを操作し，新しいPodをデプロイする．また，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしStatefulSetとは異なり，ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う．
 
 参考：
 
