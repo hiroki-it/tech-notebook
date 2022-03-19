@@ -21,7 +21,7 @@ theme:
   logo: assets/images/logo.png
   favicon: assets/images/logo.png
   icon:
-      repo: fontawesome/brands/github
+    repo: fontawesome/brands/github
   font:
     # Google-APIからフォントをインストール
     # @see https://fonts.google.com/
@@ -291,6 +291,7 @@ nav:
   - ♾️ DevOps:
       - DevOps: devops/devops.md
       - CircleCI: devops/devops_circleci.md
+      - ArgoCD: devops/devops_argocd.md
       - Capistrano: devops/devops_capistrano.md
 
   - 🔎 可観測性/監視:
