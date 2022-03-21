@@ -43,7 +43,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ### インストール
 
-#### ・マニフェストファイル経由
+#### ・共通の手順
 
 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -67,25 +67,32 @@ $ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-<br>
-
-### ArgoCDとGitHubリポジトリ間の同期
-
-参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
-
-（１）ArgoCDダッシュボードを公開する．
+（３）ArgoCDダッシュボードを公開する．
 
 ```bash
-$ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+$ kubectl patch svc argocd-server \
+    -n argocd \
+    -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-
-（２）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
+代わりに，```minikube tunnel```コマンドや```kubectl port-forward```コマンドを実行しても良い．
 
 ```bash
-$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+$ minikube tunnel
+
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-（３）ArgoCDのコマンドをインストールする．
+（４）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
+
+```bash
+$ kubectl get secret argocd-initial-admin-secret \
+    -n argocd \
+    -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
+#### ・argocdコマンド経由
+
+（５）ArgoCDのコマンドをインストールする．
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -94,7 +101,7 @@ $ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/release
 $ chmod +x /usr/local/bin/argocd
 ```
 
-（４）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
+（６）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
 
 ```bash
 $ argocd login 127.0.0.1:8080
@@ -104,22 +111,87 @@ Password: *****
 'admin:login' logged in successfully
 ```
 
-（５）ArgoCD上に，監視対象のアプリケーションのGitHubリポジトリを登録する．
+（７）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
+
+参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
 ```bash
-$ argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
+$ argocd app create guestbook \
+    --project default \
+    --repo https://github.com/hiroki-hasegawa/foo-manifests.git \
+    --revision main \
+    --dest-server https://kubernetes.default.svc \
+    --dest-namespace foo \
+    --auto-prune \
+    --self-heal \
+    --sync-option CreateNamespace=true
 ```
 
-（６）ArgoCD上でアプリケーションの監視を実行する．監視対象のGitHubリポジトリの最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（８）ArgoCD上でアプリケーションの監視を実行する．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
 $ argocd app sync guestbook
 ```
 
-（７）自動同期を有効化する．
+（９）自動同期を有効化する．
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
+```
+
+#### ・マニフェストファイル経由
+
+（５）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
+
+```bash
+$ kubectl apply -f application.yml
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: foo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+```
+
+<br>
+
+### アンインストール
+
+#### ・argocdコマンド経由
+
+ArgoCDを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationリソースの両方を削除できる．
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-argocd
+- https://argo-cd.readthedocs.io/en/stable/faq/
+
+```bash
+$ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
+```
+
+#### ・kubectlコマンド経由
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+
+```
+$ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
 <br>
@@ -130,7 +202,7 @@ $ argocd app set guestbook --sync-policy automated
 
 #### ・projectとは
 
-アプリケーションのプロジェクト名を設定する．
+アプリケーションのプロジェクト名を設定する．プロジェクト名は『```default```』とする必要がある．（理由は要調査）
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -139,7 +211,7 @@ metadata:
   namespace: argocd
   name: argocd-application
 spec:
-  project: foo-manifests
+  project: default
 ```
 
 <br>
@@ -148,7 +220,45 @@ spec:
 
 #### ・sourceとは
 
-監視するGitHubリポジトリと，これのターゲットを設定する．ターゲットには，ブランチ，バージョンタグを指定できる．
+監視対象のリポジトリ（GitHub，Helm）と，これのターゲットを設定する．
+
+#### ・directory
+
+pathオプションで指定したディレクトリにサブディレクトリが存在している場合に，マニフェストファイルの再帰的検出を有効化する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    path: kubernetes
+    directory:
+      recurse: true
+```
+
+#### ・path
+
+リポジトリで，マニフェストファイルが管理されているディレクトリを設定する．
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    path: kubernetes
+```
+
+#### ・repoURL
+
+リポジトリのURLを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -161,6 +271,22 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/hiroki-it/foo-manifests.git
+```
+
+#### ・targetRevision
+
+リポジトリで，監視対象とするブランチやバージョンタグを設定する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
     targetRevision: main
 ```
 
@@ -170,7 +296,11 @@ spec:
 
 #### ・destinationとは
 
-Kubernetesの名前空間のURLと名前を設定する．この名前空間にマニフェストファイルがプルされる．
+デプロイ先のKubernetesを設定する．
+
+#### ・namespace
+
+デプロイ先の名前空間を設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -180,8 +310,22 @@ metadata:
   name: argocd-application
 spec:
   destination:
-    server: https://kubernetes.foo.svc
     namespace: foo
+```
+
+#### ・server
+
+デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  destination:
+    server: https://kubernetes.default.svc
 ```
 
 <br>
@@ -190,13 +334,13 @@ spec:
 
 #### ・syncPolicyとは
 
-GitOpsでのGitHubリポジトリとKubernetes間の自動同期を設定する．
+GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 #### ・automated
 
-GitOpsでのGitHubリポジトリとKubernetes間の自動同期を有効化する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない．また，Kubernetes側のリソースを変更しても，GitHubリポジトリの状態に戻すための自動同期は実行されない．これらは自動同期されるように設定しておいた方が良い．
+GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を有効化する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない．また，Kubernetes側のリソースを変更しても，リポジトリ（GitHub，Helm）の状態に戻すための自動同期は実行されない．これらは自動同期されるように設定しておいた方が良い．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
@@ -211,7 +355,7 @@ spec:
     automated:
       # リソースの削除を自動同期する．
       prune: true
-      # Kubernetes側に変更があった場合，GitHubリポジトリの状態に戻すようにする．
+      # Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．
       selfHeal: true
 ```
 

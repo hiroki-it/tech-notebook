@@ -25,6 +25,8 @@ CICDパイプラインと同様の，build/test/deployステージに加えて�
 
 ### 各ステップのツールの選択
 
+Skaffoldの各ステージでは，それ専用のツールをコールできる．
+
 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)

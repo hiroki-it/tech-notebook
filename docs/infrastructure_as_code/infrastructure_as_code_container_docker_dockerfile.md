@@ -159,10 +159,10 @@ CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS        
 2b2d3dfafee8   *****   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   foo-image
 ```
 
-静的型付け言語ではプロセスの起動時に，代わりにアーティファクトのバイナリファイルを実行しても良い．その場合，```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる．しかし，```bin```ディレクトリへのアクセス権限がないことがあるため，その場合は，1つ下にディレクトリを作成し，そこにバイナリファイルを置くようにする．
+静的型付け言語ではプロセスの起動時に，代わりにアーティファクトのバイナリファイルを実行しても良い．その場合，```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる．しかし，```bin```ディレクトリへのアクセス権限がないことがあるため，その場合は，1つ下にディレクトリを作成し，そこにバイナリファイルを配置するようにする．
 
 ```bash
-# /go/bin にアクセスできない時は，/go/bin/cmdにアーティファクトを置く．
+# /go/bin にアクセスできない時は，/go/bin/cmdにアーティファクトを配置する．
 ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
 
 ```

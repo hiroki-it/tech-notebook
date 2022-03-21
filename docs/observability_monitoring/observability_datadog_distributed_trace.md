@@ -83,7 +83,7 @@ $ dpkg -i datadog-php-tracer_0.69_amd64.deb
 $ rm datadog-php-tracer.deb
 ```
 
-また，PHP-FPMに環境変数を渡せるように，```www```プールに関する設定ファイルを置き，PHP-FPMを再起動する．
+また，PHP-FPMに環境変数を渡せるように，```www```プールに関する設定ファイルを配置し，PHP-FPMを再起動する．
 
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル

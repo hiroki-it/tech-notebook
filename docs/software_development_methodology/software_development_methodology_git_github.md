@@ -30,7 +30,7 @@ title: 【知見を記録するサイト】GitHub
 
 #### ・配置場所
 
-リポジトリの直下に```.github```ディレクトリを配置し，```ISSUE_TEMPLATE.md```や```PULL_REQUEST_TEMPLATE.md```の名前でファイルを置く．Issueのテンプレートに関して，代わりに```ISSUE_TEMPLATE```ディレクトリを置き，任意の名前のmdファイルを置くと，複数のテンプレートを作成できる．
+リポジトリの直下に```.github```ディレクトリを配置し，```ISSUE_TEMPLATE.md```や```PULL_REQUEST_TEMPLATE.md```の名前でファイルを配置する．Issueのテンプレートに関して，代わりに```ISSUE_TEMPLATE```ディレクトリを配置し，任意の名前のmdファイルを配置すると，複数のテンプレートを作成できる．
 
 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
