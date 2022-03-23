@@ -282,7 +282,7 @@ Serviceディスカバリやトラフィックの管理を行う．
 
 <br>
 
-## 05. IstioOperator
+## 04. IstioOperator
 
 ### IstioOperatorとは
 
@@ -295,7 +295,7 @@ Istioのインストールや，Istioリソースの操作が可能なリソー�
 
 <br>
 
-## 04. Injectionテスト
+## 05. Injectionテスト
 
 ### Faultインジェクション
 
@@ -311,4 +311,21 @@ Istioのインストールや，Istioリソースの操作が可能なリソー�
 | ---------------- | ------------------------------------------------------------ |
 | Deplayインジェクション | マイクロサービスに対するインバウンド通信にて，意図的に通信の遅延を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
 | Abortインジェクション  | マイクロサービスに対するインバウンド通信にて，意図的に通信の中止を引き起こす．<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+
+<br>
+
+## 06. 認証
+
+マイクロサービスアーキテクチャにおける認証にはいくつか種類がある．そのうち，Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける．
+
+参考：
+
+- https://istio.io/latest/docs/concepts/security/#authentication-architecture
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+
+<br>
+
+## 06-02. 認可
+
+参考：https://istio.io/latest/docs/concepts/security/#authorization
 

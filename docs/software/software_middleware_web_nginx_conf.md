@@ -486,7 +486,7 @@ server {
 
 #### ・default_type
 
-Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであった場合に適用するMIME typeを設定する．
+```Content-Type```ヘッダーの値が```mime.types```ファイルにないMIME typeであった場合に適用するMIME typeを設定する．
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
@@ -532,7 +532,7 @@ sendfile on;
 
 #### ・server_name
 
-受信するインバウンド通信のHostヘッダーの値を設定する．ちなみにHostヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている．
+受信するインバウンド通信の```Host```ヘッダーの値を設定する．ちなみに```Host```ヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている．
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
@@ -546,7 +546,7 @@ server_name example.com;
 server_name 192.168.0.0;
 ```
 
-なお，同一のIPアドレスからのインバウンド通信のみを受信する場合は，インバウンド通信のHostヘッダーの値は常に```localhost```（```127.0.0.1```）であるため，```localhost```を設定できる．```127.0.0.1```としてもよいが，```localhost```のIPアドレスが```127.0.0.1```でない場合も考慮して，```localhost```とした方が良い．
+なお，同一のIPアドレスからのインバウンド通信のみを受信する場合は，インバウンド通信の```Host```ヘッダーの値は常に```localhost```（```127.0.0.1```）であるため，```localhost```を設定できる．```127.0.0.1```としてもよいが，```localhost```のIPアドレスが```127.0.0.1```でない場合も考慮して，```localhost```とした方が良い．
 
 ```nginx
 server_name localhost;

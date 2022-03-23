@@ -29,7 +29,7 @@ description: Ginの知見をまとめました．
 
 #### ・処理
 
-Content-TypeヘッダーのMIMEタイプが```application/json```であることが前提である．リクエストメッセージからJSONデータを取得し，構造体に紐付ける．
+```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である．リクエストメッセージからJSONデータを取得し，構造体に紐付ける．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 

@@ -278,7 +278,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う．
 
 - 受信したインバウンド通信を適切なマイクロサービスにルーティング
-- 認証/認可
+- 認証
 - トレースIDの付与
 - キャッシュの作成
 - リクエスト制限
@@ -295,7 +295,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 | 場合                                            | ツール                                                       |
 | ----------------------------------------------- | ------------------------------------------------------------ |
 | API Gatewayをサービスメッシュ内で管理する場合   | 自前で実装する必要がある．<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
-| API Gatewayをサービスメッシュ内で管理しない場合 | クラウドベンダー（AWS API Gateway）やOSS（Kong，Tyk，Apigee）を用いる．<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
+| API Gatewayをサービスメッシュ内で管理しない場合 | クラウドプロバイダー（AWS API Gateway）やOSS（Kong，Tyk，Apigee）を用いる．<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 
 #### ・BFFパターン：Backends  For Frontends
 
@@ -463,7 +463,75 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 <br>
 
-## 08. マイクロサービスにおけるテスト
+## 08. 認証
+
+### Form認証
+
+#### ・独立型
+
+セッションデータを生成する認証マイクロサービスを一つだけ配置し，セッションベースのForm認証を実現する．各マイクロサービスはセッションデータに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，セッションデータを保存できるセッションストレージを各マイクロサービスに配置する．認証マイクロサービスが単一障害点になるというデメリットがある．
+
+参考：
+
+- https://please-sleep.cou929.nu/microservices-auth-design.html
+- https://engineer.retty.me/entry/2019/12/21/171549
+
+![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_sso.png)
+
+#### ・中央集権型
+
+セッションデータを生成する認証マイクロサービスを一つだけ配置し，セッションベースのForm認証を実現する．各マイクロサービスはセッションデータに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，セッションデータを保存できるセッションストレージを１つだけ配置する．耐障害性のあるセッションストレージが必要になるというデメリットがある．
+
+参考：
+
+- https://please-sleep.cou929.nu/microservices-auth-design.html
+- https://engineer.retty.me/entry/2019/12/21/171549
+
+![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_centralization.png)
+
+#### ・分散型
+
+JWTを生成する認証マイクロサービスを一つだけ配置し，CookieベースのForm認証を実現する．各マイクロサービスはJWTに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，リクエスト/レスポンスのヘッダーにJWTを埋め込み，クライアント側にJWTを保存させる．クライアント側に保存されたJWTの失効が難しいというデメリットがある．
+
+参考：
+
+- https://please-sleep.cou929.nu/microservices-auth-design.html
+- https://engineer.retty.me/entry/2019/12/21/171549
+
+![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_distribution.png)
+
+#### ・ゲートウェイ分散型
+
+JWTを生成する認証マイクロサービスを一つだけ配置し，CookieベースのForm認証を実現する．各マイクロサービスはJWTに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，リクエスト/レスポンスのヘッダーにJWTを埋め込む．ただ分散型の認証とは異なり，クライアント側にはJWTの代わりとなるOpaqueトークンを保存させるようにする．また，API Gatewayやロードバランサーで，OpaqueトークンとJWTの間の相互変換を通信のたびに実行する．
+
+参考：
+
+- https://please-sleep.cou929.nu/microservices-auth-design.html
+- https://engineer.retty.me/entry/2019/12/21/171549
+
+![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_gateway-distribution.png)
+
+<br>
+
+## 08-02. 認可
+
+### 分散型
+
+マイクロサービスが個別に認可を担う．各マイクロサービスで認可処理が重複する可能性がある．
+
+参考：https://please-sleep.cou929.nu/microservices-auth-design.html
+
+<br>
+
+### 中央集権型
+
+全てのマイクロサービスの認可処理を担うマイクロサービスを１つだけ配置する．各マイクロサービスの認可処理が密結合になる可能性がある．
+
+参考：https://please-sleep.cou929.nu/microservices-auth-design.html
+
+<br>
+
+## 09. マイクロサービスにおけるテスト
 
 ### CDCテスト：Consumer Drive Contract
 
@@ -495,7 +563,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 <br>
 
-## 09. 運用
+## 10. 運用
 
 ### 障害対策
 

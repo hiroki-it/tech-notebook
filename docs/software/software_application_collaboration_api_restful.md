@@ -691,7 +691,7 @@ JSONの場合，階層構造にすると，データ容量が増えてしまう�
 }
 ```
 
-あるいは，Content-Typeヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用する．
+あるいは，```Content-Type```ヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用する．
 
 #### ・日付データの形式に気をつけること
 
@@ -751,7 +751,7 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 #### ・MIME typeとは
 
-POST/PUT送信で，ボディパラメーターのデータ形式を表現する識別子のこと．リクエストヘッダー/レスポンスヘッダーのContent-Typeヘッダーに割り当てると，オブジェクトデータのデータ型を定義できる．GET送信には不要である．
+POST/PUT送信で，ボディパラメーターのデータ形式を表現する識別子のこと．リクエストヘッダー/レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると，オブジェクトデータのデータ型を定義できる．GET送信には不要である．
 
 参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
@@ -771,7 +771,7 @@ POST/PUT送信で，ボディパラメーターのデータ形式を表現する
 
 #### ・データ型の指定方法
 
-最も良い方法は，リクエストのContent-Typeヘッダーに，『```application/json```』を設定することである．
+最も良い方法は，リクエストの```Content-Type```ヘッダーに，『```application/json```』を設定することである．
 
 ```http
 POST https://example.com/users/12345
@@ -797,7 +797,7 @@ POST https://example.com/users/12345?format=json
 
 #### ・Cookie情報に関わるヘッダー
 
-最初，サーバーからのレスポンス時，Set-Cookieヘッダーを用いて送信される．反対に，クライアントからのリクエスト時，Cookie情報は，Cookieヘッダーを用いて送信される．
+最初，サーバーからのレスポンス時，```Set-Cookie```ヘッダーを用いて送信される．反対に，クライアントからのリクエスト時，Cookie情報は，```Cookie```ヘッダーを用いて送信される．
 
 
 | HTTPメッセージの種類 | ヘッダー名 | 属性     | 内容                                                         |
@@ -811,7 +811,7 @@ POST https://example.com/users/12345?format=json
 |                      |            | HttpOnly | クライアント側で，JavaScriptがCookieを使用できないようにする．XSS攻撃の対策になる． |
 | リクエストメッセージ | Cookie     |          | セッションIDなどのCookie情報                                 |
 
-クライアントから送信されてきたリクエストメッセージのCookieヘッダーの内容は，グローバル変数に格納されている．
+クライアントから送信されてきたリクエストメッセージの```Cookie```ヘッダーの内容は，グローバル変数に格納されている．
 
 ```php
 <?php
@@ -822,7 +822,7 @@ $_COOKIE = ["Cookie名" => "値"]
 #### ・仕組み
 
 1. 最初，ブラウザはリクエストでデータを送信する．
-2. サーバーは，レスポンスヘッダーのSet-CookieヘッダーにCookie情報を埋め込んで送信する．
+2. サーバーは，レスポンスヘッダーの```Set-Cookie```ヘッダーにCookie情報を埋め込んで送信する．
 
 ```php
 <?php
@@ -839,7 +839,7 @@ setcookie(
 ```
 
 3. ブラウザは，そのCookie情報を保存する．
-4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダーのCookieヘッダーにCookie情報を埋め込んでサーバーに送信する．サーバーは，Cookie情報に紐付くクライアントのデータをReadする．
+4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダーの```Cookie```ヘッダーにCookie情報を埋め込んでサーバーに送信する．サーバーは，Cookie情報に紐付くクライアントのデータをReadする．
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cookie.png)
 
@@ -851,7 +851,7 @@ setcookie(
 
 ![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
 
-特定のサイトを訪問してから，離脱するまでの一連のユーザー操作を『セッション』という．この時，セッションIDを用いると，セッションの各リクエストの送信元を同一クライアントとして識別できる．HTTPはステートレスなプロトコルであるが，セッションIDにより擬似的にステートフルな通信を行える．例えばセッションIDにより，ログイン後にページ遷移を行っても，ログイン情報を保持でき，同一ユーザーからのリクエストとして認識できる．セッションIDは，Cookie情報の1つとして，CookieヘッダーとSet-Cookieヘッダーを用いて送受信される．
+特定のサイトを訪問してから，離脱するまでの一連のユーザー操作を『セッション』という．この時，セッションIDを用いると，セッションの各リクエストの送信元を同一クライアントとして識別できる．HTTPはステートレスなプロトコルであるが，セッションIDにより擬似的にステートフルな通信を行える．例えばセッションIDにより，ログイン後にページ遷移を行っても，ログイン情報を保持でき，同一ユーザーからのリクエストとして認識できる．セッションIDは，Cookie情報の1つとして，```Cookie```ヘッダーと```Set-Cookie```ヘッダーを用いて送受信される．
 
 ```http
 # リクエストヘッダーの場合
@@ -889,11 +889,11 @@ $_SESSION["セッション名"] = "値";
 サーバー内に保存する場合は，セッションはファイル形式である一方で，サーバー外のセッションDB（PHP Redis，ElastiCache Redisなど）に保存する場合は，レコード形式になる．セッションデータの保存場所は```/etc/php.ini```ファイルで定義できる．
 
 ```ini
-# /etc/php.ini
+# /etc/php.iniファイル
 
-### ファイル形式
+## ファイル形式
 session.save_handler = files
-### 保存場所
+## 保存場所
 session.save_path = "/tmp"
 ```
 
@@ -905,7 +905,7 @@ session.save_path = "/tmp"
 - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
 
 ```bash
-# /etc/php-fpm.d/www.conf
+# /etc/php-fpm.d/www.confファイル
 
 ## Redis形式
 php_value[session.save_handler] = redis
@@ -935,8 +935,8 @@ session.gc_divisor = 1
 #### ・仕組み
 
 1. 最初，ブラウザはリクエストでデータを送信する．セッションIDを発行し，セッションIDごとに```sess_*****```ファイルを生成．
-2. サーバーは，レスポンスヘッダ情報のCookieヘッダーを用いて，セッションIDを送信する．
+2. サーバーは，レスポンスヘッダ情報の```Cookie```ヘッダーを用いて，セッションIDを送信する．
 3. ブラウザは，そのセッションIDを保存する．
-4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダ情報のCookieヘッダーを用いて，セッションIDをサーバーに送信する．サーバーは，セッションIDに紐付くクライアントのデータをReadする．
+4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダ情報の```Cookie```ヘッダーを用いて，セッションIDをサーバーに送信する．サーバーは，セッションIDに紐付くクライアントのデータをReadする．
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)

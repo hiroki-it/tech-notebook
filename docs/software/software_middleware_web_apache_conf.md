@@ -542,7 +542,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 **＊実装例＊**
 
-Referrer-Policyヘッダーを追加し，値を```no-referrer-when-downgrade```とする．ちなみに，Chrome85以降のReferrer-Policyヘッダー初期値の仕様変更については，以下のリンクを参考にせよ．
+```Referrer-Policy```ヘッダーを追加し，値を```no-referrer-when-downgrade```とする．ちなみに，Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については，以下のリンクを参考にせよ．
 
 参考：https://www.chromestatus.com/feature/6251880185331712
 
@@ -560,10 +560,10 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 
 **＊実装例＊**
 
-Referrer-Policyヘッダーを削除する
+```Referrer-Policy```ヘッダーを削除する
 
 ```apacheconf
-Header unset Referrer-Policy "no-referrer-when-downgrade
+Header unset Referrer-Policy "no-referrer-when-downgrade"
 ```
 
 ```apacheconf

@@ -66,7 +66,10 @@ description: 可観測性の知見をまとめました．
 
 とある分析にて，一定期間に発生した複数のデータポイントの集計値のこと．『平均』『合計』『最小/最大』『平方根』などを用いて，データポイントを集計する．
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
+参考：
+
+- https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
+- https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 

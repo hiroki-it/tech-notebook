@@ -112,13 +112,25 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングする．モードごとに，Podの名前解決の方法が異なる．
 
-参考：https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+
+#### ・種類
 
 | モード    | 説明                                                         | 補足                                                         |
 | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-iptables |
-| userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-userspace |
-| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-ipvs |
+| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables |
+| userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace |
+| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs |
+
+#### ・その他のプロキシー
+
+ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが，他にもいくつかある．
+
+参考：https://kubernetes.io/ja/docs/concepts/cluster-administration/proxies/
+
+- ```kubectl proxy```コマンド
+- ```minikube tunnel```コマンド
+- 
 
 <br>
 
@@ -195,7 +207,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと．Kube
 
 コンテナの最小グループ単位のこと．Podを単位として，コンテナ起動/停止や水平スケールイン/スケールアウトを実行する．
 
-参考：https://kubernetes.io/ja/docs/concepts/workloads/pods/
+参考：https://kubernetes.io/docs/concepts/workloads/pods/
 
 **＊例＊**
 
@@ -223,7 +235,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合，これら同�
 
 Cluster内の全てのPodにDNS名が割り当てられている．レコードタイプはA/AAAAレコードのみである．
 
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod
+参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod
 
 | レコードタイプ | ドメイン名                                           | 名前解決の仕組み              |
 | -------------- | ---------------------------------------------------- | ----------------------------- |
@@ -239,7 +251,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
+- https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
 - https://thinkit.co.jp/article/13611
 
 <br>
@@ -266,7 +278,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
+- https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
 - https://sorarinu.dev/2021/08/kubernetes_01/
 
 <br>
@@ -279,7 +291,7 @@ ReplicaSetを操作し，新しいPodをデプロイする．また，ワーカ�
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 - https://sorarinu.dev/2021/08/kubernetes_01/
 
 <br>
@@ -312,7 +324,7 @@ IngressコントローラーによってCluster外部から受信したインバ
 | パラメーター |                                                              |
 | ------------ | ------------------------------------------------------------ |
 | パス         | パスの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br/>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
-| Hostヘッダー | Hostヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
+| ```Host```ヘッダー | ```Host```ヘッダーの値に基づいて，Serviceにルーティングする．<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
 
 #### ・Ingressコントローラー
 
@@ -330,7 +342,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+- https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
 | コントローラー名                                      | 開発環境 | 本番環境 |
@@ -350,7 +362,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 
 Serviceタイプごとに，特定のネットワーク範囲にPodを公開する．マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する．
 
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
+参考：https://kubernetes.io/docs/concepts/services-networking/service/
 
 #### ・ClusterIP Service
 
@@ -431,7 +443,7 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 機密性の高い値を暗号化した状態で管理し，復号化した上で，環境変数としてPodに出力する．
 
-参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
 <br>
 
@@ -453,7 +465,7 @@ kubernetesマスターともいう．ワーカーNodeの操作を担う．クラ
 
 参考：
 
-- https://kubernetes.io/ja/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
+- https://kubernetes.io/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
 - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
 - https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
@@ -465,7 +477,7 @@ kubernetesマスターともいう．ワーカーNodeの操作を担う．クラ
 
 Podが稼働するサーバー単位こと．
 
-参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
+参考：https://kubernetes.io/docs/concepts/architecture/nodes/
 
 <br>
 
@@ -551,7 +563,7 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 #### ・外部ボリューム
 
-クラウドベンダーやNFSから提供されるストレージ領域を用いたボリュームとし，コンテナにマウントする．
+クラウドプロバイダーやNFSから提供されるストレージ領域を用いたボリュームとし，コンテナにマウントする．
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
@@ -664,7 +676,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 Cluster内の全てのServiceにDNS名が割り当てられている．レコードタイプごとに，DNS名が異なる．
 
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#services
+参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

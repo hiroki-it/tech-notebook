@@ -172,9 +172,9 @@ Minikubeのプラグインを操作する．
 
 **＊例＊**
 
-開発環境専用のIngressコントローラーとして，NginxIngressコントローラーを有効化する．本番環境では，同じくNginxIngressコントローラーや，クラウドベンダーのロードバランサーなどを用いる．
+開発環境専用のIngressコントローラーとして，NginxIngressコントローラーを有効化する．本番環境では，同じくNginxIngressコントローラーや，クラウドプロバイダーのロードバランサーなどを用いる．
 
-参考：https://kubernetes.io/ja/docs/tasks/access-application-cluster/ingress-minikube/
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
 ```bash
 $ minikube addons enable ingress
@@ -727,7 +727,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ・tunnelとは
 
-LoadBalancerServiceを用いている場合に，ServiceのClusterIPを外部エンドポイントにし，Serviceを公開する．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
+LoadBalancerを一時的に構築し，LoadBalancer Serviceに自動的に紐づける．クラスター外部からPodに接続できるようになる．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
 
 参考：
 

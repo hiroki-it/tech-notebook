@@ -74,7 +74,7 @@ $ kubectl patch svc argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-代わりに，```minikube tunnel```コマンドや```kubectl port-forward```コマンドを実行しても良い．
+（４）ロードバランサーを構築する．IngressとIngressコントローラーを構築するか，または```minikube tunnel```コマンドや```kubectl port-forward```コマンドなど実行する．
 
 ```bash
 $ minikube tunnel
@@ -82,7 +82,7 @@ $ minikube tunnel
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-（４）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
+（５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
@@ -92,7 +92,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 #### ・argocdコマンド経由
 
-（５）ArgoCDのコマンドをインストールする．
+（６）ArgoCDのコマンドをインストールする．
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -101,7 +101,7 @@ $ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/release
 $ chmod +x /usr/local/bin/argocd
 ```
 
-（６）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
+（７）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
 
 ```bash
 $ argocd login 127.0.0.1:8080
@@ -111,7 +111,7 @@ Password: *****
 'admin:login' logged in successfully
 ```
 
-（７）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
+（８）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
 
 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
@@ -127,13 +127,13 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（８）ArgoCD上でアプリケーションの監視を実行する．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（９）ArgoCD上でアプリケーションの監視を実行する．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
 $ argocd app sync guestbook
 ```
 
-（９）自動同期を有効化する．
+（１０）自動同期を有効化する．
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
@@ -141,7 +141,7 @@ $ argocd app set guestbook --sync-policy automated
 
 #### ・マニフェストファイル経由
 
-（５）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
+（６）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
 
 ```bash
 $ kubectl apply -f application.yml
