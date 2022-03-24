@@ -128,9 +128,9 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 参考：https://kubernetes.io/ja/docs/concepts/cluster-administration/proxies/
 
-- ```kubectl proxy```コマンド
-- ```minikube tunnel```コマンド
-- 
+- ```kubectl proxy```コマンド
+- ```minikube tunnel```コマンド
+- LoadBalancer
 
 <br>
 
@@ -425,6 +425,14 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 <br>
 
+### ConfigMap
+
+#### ・ConfigMapとは
+
+データをマップ型で保持できる．改行することで，設定ファイルも値に格納できる．
+
+<br>
+
 ### PersistentVolumeClaim
 
 #### ・PersistentVolumeClaimとは
@@ -457,6 +465,45 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 <br>
 
+### Account
+
+#### ・Accountとは
+
+Kubernetesに関する実行ユーザーに認証認可を設定する．
+
+参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+- https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+
+| アカウント名   | 説明                                                         | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのプロセスは，Kubernetes自体と通信する権限を持つ．また，RoleBindingを用いて認可スコープも設定できる． | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される．認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる． |
+| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのクライアントは，Kubernetes自体を操作する権限を持つ．また，RoleBindingを用いて認可スコープも設定できる． | アカウント情報は，``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある． |
+
+<br>
+
+### NetworkPolicy
+
+#### ・NetworkPolicyとは
+
+Pod間で通信する場合のインバウンド/アウトバウンド通信の送受信ルールを設定する．
+
+参考：
+
+- https://www.amazon.co.jp/dp/B08FZX8PYW
+- https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
+
+#### ・Ingress
+
+他のPodからの受信するインバウンド通信のルールを設定する．Ingressリソースとは関係がないことに注意する．
+
+#### ・Egress
+
+他のPodに送信するアウトバウンド通信のルールを設定する．
+
+<br>
+
 ### マスターNode（kubernetesマスター）
 
 #### ・マスターNodeとは
@@ -475,9 +522,67 @@ kubernetesマスターともいう．ワーカーNodeの操作を担う．クラ
 
 #### ・ワーカーNodeとは
 
-Podが稼働するサーバー単位こと．
+Podが稼働するサーバー単位こと．Kubernetesの実行時に自動的に作成される．もし手動で作成する場合は，kubectlコマンドで```--register-node=false```とする必要がある．
 
-参考：https://kubernetes.io/docs/concepts/architecture/nodes/
+参考：
+
+- https://kubernetes.io/docs/concepts/architecture/nodes/
+- https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
+
+<br>
+
+### PersistentVolume
+
+#### ・PersistentVolumeとは
+
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimリソースにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimリソースを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
+
+参考：https://thinkit.co.jp/article/14195
+
+#### ・HostPath（本番環境で非推奨）
+
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．機能としては，VolumeでのHostPathと同じである．マルチNodeには対応していないため，本番環境では非推奨である．
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+
+#### ・Local（本番環境で推奨）
+
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．マルチNodeに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/volumes/#local
+- https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
+
+<br>
+
+### Role，ClusterRole
+
+#### ・Role，ClusterRoleとは
+
+認可スコープを設定する．
+
+参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+
+| ロール名    | 説明                                   | 補足                                                         |
+| ----------- | -------------------------------------- | ------------------------------------------------------------ |
+| Role        | 名前空間内の認可スコープを設定する．   | RoleとRoleBindingは同じ名前空間にある必要がある．            |
+| ClusterRole | クラスター内の認可スコープを設定する． | ClusterRoleとClusterRoleBindingは同じ名前空間にある必要がある． |
+
+<br>
+
+### RoleBinding，ClusterRoleBinding
+
+#### ・RoleBinding，ClusterRoleBindingとは
+
+定義された認可スコープをAccountに紐づける．
+
+参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+
+| バインディング名   | 説明                             | 補足                                                         |
+| ------------------ | -------------------------------- | ------------------------------------------------------------ |
+| RoleBinding        | RoleをAccountに紐づける．        | RoleとRoleBindingは同じ名前空間にある必要がある．            |
+| ClusterRoleBinding | ClusterRoleをAccountに紐づける． | ClusterRoleとClusterRoleBindingは同じ名前空間にある必要がある． |
 
 <br>
 
@@ -569,77 +674,11 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 <br>
 
-### PersistentVolume
-
-#### ・PersistentVolumeとは
-
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimリソースにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimリソースを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
-
-参考：https://thinkit.co.jp/article/14195
-
-#### ・HostPath（本番環境で非推奨）
-
-Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．機能としては，VolumeでのHostPathと同じである．マルチNodeには対応していないため，本番環境では非推奨である．
-
-参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
-
-#### ・Local（本番環境で推奨）
-
-Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．マルチNodeに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
-
-参考：
-
-- https://kubernetes.io/docs/concepts/storage/volumes/#local
-- https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
-
-<br>
-
 ## 03-06. Metadataリソース
 
 ### Metadataリソースとは
 
 参考：https://thinkit.co.jp/article/13542
-
-<br>
-
-## 03-07. セキュリティ
-
-### Account
-
-#### ・Accountとは
-
-Kubernetesに関する実行ユーザーを設定する．
-
-参考：
-
-- https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-- https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
-
-| アカウント名   | 説明                                                         | 補足                                                         |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ServiceAccount | Kubernetes内の各リソースのプロセスに実行ユーザーの仕組みを設定する．正しい実行ユーザーのプロセスは，Kubernetes自体と通信する権限を持つ． | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される．正しいユーザーに実行されたオブジェクトのみがKubernetesと通信できる． |
-| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーの仕組みを設定する．正しい実行ユーザーのクライアントは，Kubernetes自体を操作する権限を持つ． | アカウント情報は，``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある． |
-
-<br>
-
-### NetworkPolicy
-
-#### ・NetworkPolicyとは
-
-Pod間で通信する場合のインバウンド/アウトバウンド通信の送受信ルールを設定する．
-
-参考：
-
-- https://www.amazon.co.jp/dp/B08FZX8PYW
-- https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
-
-#### ・Ingress
-
-他のPodからの受信するインバウンド通信のルールを設定する．Ingressリソースとは関係がないことに注意する．
-
-#### ・Egress
-
-他のPodに送信するアウトバウンド通信のルールを設定する．
 
 <br>
 

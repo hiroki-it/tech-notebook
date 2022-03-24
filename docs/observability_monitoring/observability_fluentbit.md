@@ -326,9 +326,9 @@ $ /fluent-bit/bin/fluent-bit \
 
 ```yaml
 log_router:
-  container_name: fluentbit
+  container_name: fluent-bit
   build:
-    dockerfile: ./docker/fluentbit/Dockerfile
+    dockerfile: ./docker/fluent-bit/Dockerfile
     context: .
   volumes:
     # アプリケーションのログファイルのボリュームマウント
@@ -743,7 +743,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
     flush         1
     log_Level     info
     # ファイルの場所
-    storage.path  /var/log/fluentbit/
+    storage.path  /var/log/fluent-bit/
 
 [INPUT]
     name          cpu
@@ -754,7 +754,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 指定した場所に```cpu.0```ディレクトリが生成され，そこにあるflbファイル上でバッファリングが実行される．
 
 ```bash
-$ ls -ls /var/log/fluentbit/cpu.0
+$ ls -ls /var/log/fluent-bit/cpu.0
 
 -rw------- 1 root root 4096 Oct 20 15:51 1-1634745095.575805200.flb
 ```

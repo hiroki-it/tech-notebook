@@ -91,7 +91,7 @@ $ kubectl config use-context docker-desktop
 宛先をAWS EKSのkube-apiserverに変更する．
 
 ```bash
-$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
+$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-eks-cluster
 ```
 
 #### ・view

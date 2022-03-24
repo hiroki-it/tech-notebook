@@ -45,22 +45,25 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 #### ・共通の手順
 
-参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
+参考：
 
-（１）ローカルPCから本番環境にArgoCDをインストールする場合，```kubetcl```コマンドのコンテキストを間違える可能性がある．そのため，kubectlコマンド専用の踏み台サーバーを用意してもよい．kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+（１）ローカルPCから本番環境にArgoCDをインストールする場合，```kubetcl```コマンドのコンテキストを間違える可能性がある．そのため，kubectlコマンド専用の踏み台サーバーを用意してもよい．EKSのコンテキストを作成し，kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
 
 ```bash
-# EKSにデプロイする場合
-$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-cluster
+$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+$ kubectl config use-context <クラスターARN>
 ```
 
 参考：
 
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
 - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/cluster-endpoint.html
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 - http://linuxcommand2007.seesaa.net/article/476794217.html
 
 （２）ArgoCDのマニフェストファイルを指定し，Kubernetes上にArgoCDをデプロイする．
+
+https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
 $ kubectl create namespace argocd
@@ -74,7 +77,7 @@ $ kubectl patch svc argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-（４）ロードバランサーを構築する．IngressとIngressコントローラーを構築するか，または```minikube tunnel```コマンドや```kubectl port-forward```コマンドなど実行する．
+（４）ロードバランサーを構築する．IngressとIngressコントローラーを構築するか，または```minikube tunnel```コマンドや```kubectl port-forward```コマンドなど実行する．
 
 ```bash
 $ minikube tunnel

@@ -256,7 +256,7 @@ long_query_time = 3
 
 ### pid-file
 
-プロセスIDファイルの生成先を設定する．
+プロセスIDが記載されたファイルの生成先を設定する．
 
 ```ini
 [mysqld]

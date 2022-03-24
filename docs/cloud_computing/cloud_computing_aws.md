@@ -2873,6 +2873,58 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 ## 14-03. EKS
 
+### セットアップ
+
+（１）EKSのコンテキストを作成する．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
+
+```bash
+$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+```
+
+（２）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+
+```bash
+$ kubectl config use-context <クラスターARN>
+```
+
+ （３）EKSクラスターからCloudWatchログにログを送信できるようにする．また，EKSのサービスリンクロールにCloudWatchへのアクセス権限を付与する．
+
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+```bash
+$ kubectl apply -f aws-observability.yaml
+```
+
+```yaml
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: aws-observability
+  labels:
+    aws-observability: enabled
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: aws-eks-logging-config-map
+  namespace: aws-observability
+data:
+  output.conf: |
+    [OUTPUT]
+        Name cloudwatch_logs
+        Match   *
+        region ap-northeast-1
+        log_group_name fluent-bit-cloudwatch
+        log_stream_prefix from-fluent-bit-
+        auto_create_group true
+```
+
+<br>
+
 ### 仕組み
 
 #### ・EKSとKubernetesの対応
@@ -2884,7 +2936,9 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
 | Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingressコントローラー      | ALBコントローラー       | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| Ingress                    | ALB                     | ALBコントローラーによって，自動的に構築される．<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| Ingressコントローラー      | ALBコントローラー       | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
+|                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 | マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
 | ワーカーNode               | Fargate Node，EC2 Node  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS，EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
@@ -2893,14 +2947,6 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 | kube-proxy                 | kube-proxy              |                                                              |
 | 種々のCNIプラグイン        | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
 | これら以外のリソース       | なし                    |                                                              |
-
-#### ・ネットワーク
-
-EKSでは，EKS外からのインバウンド通信をALBコントローラーで受信し，これをIngressにルーティングする．また，アウトバウンド通信をNAT Gatewayで受信し，EKS外にルーティングする．
-
-参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
-
-![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
 
 <br>
 
@@ -2912,11 +2958,29 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと．KubernetesのClust
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 
-#### ・プラットフォーム
+#### ・設定項目
 
-EKSコントロールプレーンのこと．
+| 設定項目                         | 説明                                                         |
+| -------------------------------- | ------------------------------------------------------------ |
+| 名前                             | クラスターの名前を設定する．                                 |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| クラスターサービスロール         |                                                              |
+| シークレット                     |                                                              |
+| VPC，サブネット                  | ENIを配置するサブネットを設定する．複数のAZに跨っている必要がある． |
+| クラスターセキュリティグループ   | インバウンドとアウトバウンドの両方のルールで，全てのIPアドレスを許可する必要がある．<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   |                                                              |
+| IPアドレス範囲                   |                                                              |
+| クラスターエンドポイントアクセス |                                                              |
+| ネットワークアドオン             |                                                              |
+| コントロールプレーンのログ       |                                                              |
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html
+#### ・ネットワーク
+
+EKSでは，EKS外からのインバウンド通信をALBコントローラーで受信し，これをIngressにルーティングする．また，アウトバウンド通信をNAT Gatewayで受信し，EKS外にルーティングする．
+
+参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
+
+![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
 
 <br>
 
@@ -2934,15 +2998,23 @@ EKSコントロールプレーンのこと．
 
 #### ・ダッシュボード
 
-（１）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+（１）EKSのコンテキストを作成する．
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
+
+```bash
+$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+```
+
+（２）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context arn:aws:eks:ap-northeast-1:*****:cluster/foo-eks-cluster
+$ kubectl config use-context <クラスターARN>
 ```
 
-（２）マニフェストファイルを用いて，ダッシュボードのKubernetesリソースをEKSにデプロイする．
+（３）マニフェストファイルを用いて，ダッシュボードのKubernetesリソースをEKSにデプロイする．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
@@ -2950,28 +3022,28 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:*****:cluster/foo-eks-cl
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
 ```
 
-（３）ダッシュボードに安全に接続するために，ServiceAccountをEKSにデプロイする
+（４）ダッシュボードに安全に接続するために，ServiceAccountをEKSにデプロイする
 
 ```bash
 $ kubectl apply -f service-account.yml
 ```
 
-（４）トークンの文字列を取得する．
+（５）トークンの文字列を取得する．
 
 ```bash
 $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 ```
 
-（５）ローカルPCからEKSにポートフォワーディングを実行する．
+（６）ローカルPCからEKSにポートフォワーディングを実行する．
 
 ```bash
 $ kubectl proxy
 ```
 
-（６）ダッシュボードに接続する．
+（７）ダッシュボードに接続する．
 
 ```http
-GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login
+GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
 ```
 
 <br>
@@ -5458,7 +5530,50 @@ $ aws s3 ls s3://<バケット名>
 指定したバケット内のファイル容量を合計する．
 
 ```bash
-$ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
+$ aws s3 ls s3://<バケット名> \
+  --summarize \
+  --recursive \
+  --human-readable
+```
+
+#### ・バケットの中身をコピーする
+
+指定したバケット内のファイルを他のバケットにコピーする．
+
+```bash
+$ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピー先S3バケット名>/<フォルダ> \
+   --acl bucket-owner-full-control
+```
+
+コピーされる側のバケットのバケットポリシーでアクセスを許可すれば，異なるアカウント間でもコピーできる．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "<IAMユーザーのARN>"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::foo-bucket/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "<IAMユーザーのARN>"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::bar-bucket"
+        }
+    ]
+}
 ```
 
 <br>

@@ -287,7 +287,7 @@ FireLensコンテナにカスタム値を設定する．コンテナ定義の```
     
 [OUTPUT]
     Name nginx
-    Match nginx-firelens*    
+    Match nginx-firelens*
 ```
 
 #### ・INPUTセクション
@@ -304,7 +304,7 @@ FireLensコンテナにカスタム値を設定する．コンテナ定義の```
 
 [OUTPUT]
     Name cloudwatch
-    Match   **
+    Match **
     region us-east-1
     log_group_name fluent-bit-cloudwatch
     log_stream_prefix from-fluent-bit-

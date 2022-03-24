@@ -681,7 +681,6 @@ fmt:
 
 validate: init fmt
 	docker-compose run --rm terraform -chdir=./${ENV} validate
-	
 ```
 
 

@@ -36,6 +36,7 @@ apiVersion: v1
 | Deployment            |                                                              |
 | Ingress               | 他のリソースとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある． |
 | Namespace |  |
+| Node | Kubernetesの実行時に自動的に作成される．もし手動で作成する場合は，kubectlコマンドで```--register-node=false```とする必要がある． |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
 | Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である．<br>参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
@@ -82,7 +83,111 @@ Kubernetesリソースを一意に識別するための名前を設定する．
 
 <br>
 
-## 04. spec（Deploymentの場合）
+## 04. rule
+
+### apiGroups
+
+resourceで指定するリソースのKubernetes-APIグループを設定する．空文字はコアグループを表す．
+
+参考：https://kubernetes.io/docs/reference/using-api/#api-groups
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
+rules:
+  - apiGroups: [""]
+```
+
+<br>
+
+### resources
+
+操作対象のリソースの認可スコープを設定する．
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
+rules:
+  - apiGroups:
+      - ""
+      - apps
+    resources:
+      - namespaces
+      - deployments
+```
+
+<br>
+
+### verbs
+
+リソースに対する操作の認可スコープを設定する．
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-read-only-cluster-role
+rules:
+  - apiGroups:
+      - ""
+      - apps
+    resources:
+      - namespaces
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
+```
+
+<br>
+
+## 05. spec（Configmapの場合）
+
+### data
+
+#### ・dataとは
+
+キー名と値を格納する．
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+data:
+  foo: bar 
+```
+
+改行すれば，設定ファイルも格納できる．
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-fluent-bit-conf-config-map
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush         1
+        Log_Level     info
+    
+    [OUTPUT]
+        Name cloudwatch_logs
+        Match *
+        region ap-northeast-1
+        log_group_name /prd-foo-k8s/log
+        log_stream_prefix container/fluent-bit/
+        auto_create_group true
+```
+
+<br>
+
+## 05-02. spec（Deploymentの場合）
 
 ### replicas
 
@@ -243,7 +348,7 @@ spec:
 
 <br>
 
-## 04-02. spec（Ingressの場合）
+## 05-03. spec（Ingressの場合）
 
 ### rules
 
@@ -280,11 +385,11 @@ spec:
 
 <br>
 
-## 04-03. spec（Namespaceの場合）
+## 05-04. spec（Namespaceの場合）
 
 <br>
 
-## 04-04. spec（PersistentVolumeの場合）
+## 05-05. spec（PersistentVolumeの場合）
 
 ### accessModes
 
@@ -640,7 +745,7 @@ spec:
 
 <br>
 
-## 04-05. spec（PersistentVolumeClaimの場合）
+## 05-06. spec（PersistentVolumeClaimの場合）
 
 ### accessModes
 
@@ -714,7 +819,7 @@ spec:
 
 <br>
 
-## 04-06. spec（Podの場合）
+## 05-07. spec（Podの場合）
 
 ### containers
 
@@ -758,6 +863,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
       resources:
         # 最小使用量
         requests:
@@ -849,6 +955,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
   hostname: foo-pod
 ```
 
@@ -872,6 +979,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
   restartPolicy: Always
 ```
 
@@ -887,6 +995,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
   restartPolicy: Never
 ```
 
@@ -902,7 +1011,30 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
   restartPolicy: OnFailure
+```
+
+<br>
+
+### serviceAccountName
+
+#### ・serviceAccountNameとは
+
+PodにServiceAccountを紐づける．Podのプロセスに認証済みのIDが付与され，Kubernetesと通信できるようになる．
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-fluent-bit
+      image: fluent/fluent-bit:latest
+  serviceAccountName: foo-fluent-bit-service-account
 ```
 
 <br>
@@ -913,9 +1045,49 @@ spec:
 
 Pod内で用いるボリュームを設定する．
 
-#### ・name
+#### ・configMap
 
-要求によって作成するボリューム名を設定する．
+ConfigMapのデータをコンテナのディレクトリにマウントする．
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-fluent-bit
+      image: fluent/fluent-bit:latest
+      volumeMounts:
+        - name: foo-fluent-bit-conf-volume
+          mountPath: /fluent-bit/etc/
+  volumes:
+    - name: foo-fluent-bit-conf-volume
+      configMap:
+        name: foo-fluent-bit-conf-config-map
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-fluent-bit-conf-config-map
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush         1
+        Log_Level     info
+    
+    [OUTPUT]
+        Name cloudwatch_logs
+        Match *
+        region ap-northeast-1
+        log_group_name /prd-foo-k8s/log
+        log_stream_prefix container/fluent-bit/
+        auto_create_group true
+```
 
 #### ・emptyDir
 
@@ -936,6 +1108,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -963,6 +1136,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
+      image: foo-gin:latest
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -971,6 +1145,25 @@ spec:
     hostPath:
       path: /data/src/foo
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+```
+
+#### ・name
+
+要求によって作成するボリューム名を設定する．
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      volumeMounts:
+        - name: foo-gin-volume
+          mountPath: /go/src
+  volumes:
+    - name: foo-gin-volume
 ```
 
 #### ・persistentVolumeClaim
@@ -1037,7 +1230,7 @@ spec:
 
 <br>
 
-## 04-07. spec（Serviceの場合）
+## 05-08. spec（Serviceの場合）
 
 ### ports
 
@@ -1284,7 +1477,27 @@ Serviceのタイプを設定する．
 
 <br>
 
-## 04-08. spec（ServiceEntryの場合）
+## 05-09. spec（ServiceAccountの場合）
+
+### automountServiceAccountToken
+
+#### ・automountServiceAccountTokenとは
+
+ServiceAccountのPodへの自動紐付けの有効化する．デフォルトで有効化されている．
+
+参考：https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-service-account
+automountServiceAccountToken: false
+```
+
+<br>
+
+## 05-10. spec（ServiceEntryの場合）
 
 ### hosts
 
@@ -1344,7 +1557,7 @@ spec:
 
 <br>
 
-## 04-09. spec（StatefulSetの場合）
+## 05-11. spec（StatefulSetの場合）
 
 ### serviceName
 

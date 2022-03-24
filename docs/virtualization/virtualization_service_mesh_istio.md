@@ -92,15 +92,16 @@ Kubernetes，Envoy，Kubernetesの比較は以下の通り
 - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
 - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 - https://github.com/envoyproxy/go-control-plane
+- https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| Kubernetes＋Istio＋Envoy | Kubernetes＋Envoy | Kubernetesのみ |
-| ------------------------ | ----------------- | -------------- |
-| Istiod                   | go-control-plane  | -              |
-| WorkloadEntry            | Endpoint          | Endpoint       |
-| DestinationRule          | Route             | kube-proxy     |
-| EnvoyFilter              | Listener          | kube-proxy     |
-| VirtualService＋Gateway  | Route＋Listener   | Ingress        |
-| ServiceEntry             | Cluster           | Service        |
+| Istio＋Kubernetes＋Envoy | Kubernetes＋Envoy | Kubernetesのみ                 |
+| ------------------------ | ----------------- | ------------------------------ |
+| DestinationRule          | Route             | kube-proxy                     |
+| EnvoyFilter              | Listener          | kube-proxy                     |
+| Istiod                   | go-control-plane  | -                              |
+| ServiceEntry             | Cluster           | Service                        |
+| VirtualService＋Gateway  | Route＋Listener   | Ingress＋Ingressコントローラー |
+| WorkloadEntry            | Endpoint          | Endpoint                       |
 
 <br>
 
