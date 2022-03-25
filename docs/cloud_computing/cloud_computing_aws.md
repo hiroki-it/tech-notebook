@@ -2834,7 +2834,7 @@ FargateからECRに対するdockerイメージのプルは，VPCの外側に対�
 
 #### ・VPCエンドポイントを経由
 
-VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにすると良い．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．そのため，NATGatewayがある状態でVPCエンドポイントを構築すると，接続先が自動的に変わってしまうことに注意する．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方が良い．
+VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにすると良い．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．そのため，NAT Gatewayがある状態でVPCエンドポイントを構築すると，接続先が自動的に変わってしまうことに注意する．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方が良い．
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
@@ -6177,129 +6177,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-### Internet Gateway，NAT Gateway
-
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
-
-#### ・Internet Gatewayとは
-
-VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．1つのパブリックIPに対して，1つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
-
-#### ・NAT Gatewayとは
-
-NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに配置し，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
-
-#### ・比較表
-
-
-|              | Internet Gateway                                             | NAT Gateway            |
-| :----------- | :----------------------------------------------------------- | :--------------------- |
-| **機能**     | グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
-| **設置場所** | VPC上                                                        | パブリックサブネット内 |
-
-<br>
-
-### Network ACL：Network Access  Control List
-
-![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
-
-#### ・Network ACLとは
-
-サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く．ルートテーブルとサブネットの間に設置され，双方向のインバウンドルールとアウトバウンドルールを決定する．
-
-#### ・ACLルール
-
-ルールは上から順に適用される．例えば，インバウンドルールが以下だった場合，ルール100が最初に適用され，サブネットに対する，全IPアドレス（```0.0.0.0/0```）からのインバウンド通信を許可していることになる．
-
-| ルール # | タイプ                | プロトコル | ポート範囲 / ICMP タイプ | ソース    | 許可 / 拒否 |
-| -------- | --------------------- | ---------- | ------------------------ | --------- | ----------- |
-| 100      | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | ALLOW       |
-| *        | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | DENY        |
-
-<br>
-
-### VPCサブネット
-
-クラウドプライベートネットワークにおけるセグメントとして働く．
-
-#### ・パブリックサブネットとは
-
-非武装地帯に相当する．攻撃の影響が内部ネットワークに広がる可能性を防ぐために，外部から直接リクエストを受ける，
-
-#### ・プライベートサブネットとは
-
-内部ネットワークに相当する．外部から直接リクエストを受けずにレスポンスを返せるように，内のNATを経由させる必要がある．
-
-![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
-
-#### ・サブネットの種類
-
-サブネットには，役割ごとにいくつか種類がある．
-
-| 名前                            | 役割                                    |
-| ------------------------------- | --------------------------------------- |
-| Public subnet (Frontend Subnet) | NATGatewayを配置する．                  |
-| Private app subnet              | アプリケーション，Nginxなどを配置する． |
-| Private datastore subnet        | RDS，Redisなどを配置する                |
-
-![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
-
-<br>
-
-### VPCエンドポイント
-
-![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
-
-#### ・概要
-
-VPCのプライベートサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを用いない場合，プライベートサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを用いる必要がある．
-
-**＊例＊**
-
-Fargateをプライベートサブネットに置いた場合，FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ，ECR，S3，SSM）．
-
-#### ・メリット
-
-インターネットゲートウェイとNAT Gatewayの代わりに，VPCエンドポイントを用いると，料金が少しだけ安くなり，また，VPC外のリソースとの通信がより安全になる．
-
-#### ・タイプ
-
-| タイプ      | 説明                                                         | リソース例                       |
-| ----------- | ------------------------------------------------------------ | -------------------------------- |
-| Interface型 | プライベートリンクともいう．プライベートIPアドレスを持つENIとして機能し，AWSリソースからアウトバウンド通信を受信する． | S3，DynamoDB以外の全てのリソース |
-| Gateway型   | ルートテーブルにおける定義に従う．VPCエンドポイントとして機能し，AWSリソースからアウトバウンド通信を受信する． | S3，DynamoDBのみ                 |
-
-<br>
-
-### ENI：Elastic Network Interface
-
-#### ・ENIとは
-
-クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
-
-#### ・紐付けられるリソース
-
-| リソースの種類    | 役割                                                         | 補足                                                         |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ALB               | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる． |                                                              |
-| EC2               | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| Fargate環境のEC2  | 明言されていないため推測ではあるが，ENIに紐付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる． | Fargate環境のホストがEC2とは明言されていない．<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP        | ENIにElastic IPアドレスが紐付けられる．このENIを他のAWSリソースに紐付けることにより，ENIを介して，Elastic IPを紐付けられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
-| GlobalAccelerator |                                                              |                                                              |
-| NAT Gateway       | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる． |                                                              |
-| RDS               |                                                              |                                                              |
-| Security Group    | ENIにセキュリティグループが紐付けれる．このENIを他のAWSリソースに紐付けることにより，ENIを介して，セキュリティグループを紐付けられる． |                                                              |
-| VPCエンドポイント | Interface型のVPCエンドポイントとして機能する．               |                                                              |
-
-<br>
-
-### IPアドレス
+### VPC内のIPアドレス
 
 #### ・種類
 
@@ -6355,15 +6233,98 @@ Fargateをプライベートサブネットに置いた場合，FargateからVPC
 
 <br>
 
-## 33-02. ルートテーブル
+## 33-02. ENI：Elastic Network Interface
+
+### ENIとは
+
+クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+
+<br>
+
+### 紐付けられるリソース
+
+| リソースの種類    | 役割                                                         | 補足                                                         |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ALB               | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる． |                                                              |
+| EC2               | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2  | 明言されていないため推測ではあるが，ENIに紐付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる． | Fargate環境のホストがEC2とは明言されていない．<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP        | ENIにElastic IPアドレスが紐付けられる．このENIを他のAWSリソースに紐付けることにより，ENIを介して，Elastic IPを紐付けられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| GlobalAccelerator |                                                              |                                                              |
+| NAT Gateway       | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる． |                                                              |
+| RDS               |                                                              |                                                              |
+| Security Group    | ENIにセキュリティグループが紐付けれる．このENIを他のAWSリソースに紐付けることにより，ENIを介して，セキュリティグループを紐付けられる． |                                                              |
+| VPCエンドポイント | Interface型のVPCエンドポイントとして機能する．               |                                                              |
+
+<br>
+
+## 33-03. VPCサブネット
+
+### VPCサブネットとは
+
+クラウドプライベートネットワークにおけるセグメントとして働く．
+
+<br>
+
+### 種類
+
+#### ・パブリックサブネットとは
+
+非武装地帯に相当する．サブネット外からのインバンド通信を受け付けるために，ALBのルーティング先にサブネットを設定すれば，そのサブネットはパブリックサブネットとして機能する．
+
+#### ・プライベートサブネットとは
+
+内部ネットワークに相当する．サブネット外からのインバンド通信を受け付けないようするために，ALBのルーティング先にサブネットを設定しないようにすれば，そのサブネットはプライベートサブネットとして機能する．ただし，サブネット内からサブネット外へのアウトバウンド通信は許可しても問題なく，その場合はルートテーブルにNAT Gatewayを設定する必要がある．
+
+![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
+
+#### ・構築例
+
+サブネットの役割ごとに構築する方法がある．
+
+| 名前                            | 役割                                    |
+| ------------------------------- | --------------------------------------- |
+| Public subnet (Frontend Subnet) | NAT Gatewayを配置する．                 |
+| Private app subnet              | アプリケーション，Nginxなどを配置する． |
+| Private datastore subnet        | RDS，Redisなどを配置する                |
+
+![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
+
+<br>
+
+## 33-04. Network ACL：Network Access  Control List
+
+### Network ACLとは
+
+サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く．ルートテーブルとサブネットの間に設置され，ルートテーブルよりも先に評価される．双方向のインバウンドルールとアウトバウンドルールを決定する．
+
+![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
+
+<br>
+
+### ACLルール
+
+ルールは上から順に適用される．例えば，インバウンドルールが以下だった場合，ルール100が最初に適用され，サブネットに対する，全IPアドレス（```0.0.0.0/0```）からのインバウンド通信を許可していることになる．
+
+| ルール # | タイプ                | プロトコル | ポート範囲 / ICMP タイプ | ソース    | 許可 / 拒否 |
+| -------- | --------------------- | ---------- | ------------------------ | --------- | ----------- |
+| 100      | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | ALLOW       |
+| *        | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | DENY        |
+
+<br>
+
+## 33-05. ルートテーブル
 
 ### ルートテーブルとは
 
-クラウドルータのマッピングテーブルとして働く．
+クラウドルータのマッピングテーブルとして働く．サブネットに紐付けることで，サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する．注意点として，Network ACLよりも後に評価される．
 
-| Destination（プライベートIPの範囲） |                Target                 |
-| :---------------------------------: | :-----------------------------------: |
-|          ```xx.x.x.x/xx```          | Destinationの範囲内だった場合の送信先 |
+参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
+
+| Destination（送信先のIPの範囲） |                Target                 |
+| :-----------------------------: | :-----------------------------------: |
+|        ```xx.x.x.x/xx```        | Destinationの範囲内だった場合の送信先 |
 
 <br>
 
@@ -6379,35 +6340,108 @@ VPCの構築時に自動で構築される．どのルートテーブルにも�
 
 <br>
 
-### ルーティング例
+### テーブルルール例
 
 ![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/route-table.png)
 
-#### ・VPC外へのアウトバウンド通信を拒否する場合
-
-上の図中で，サブネット2にはルートテーブル1が紐付けられている．サブネット2内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選択する．一方で，範囲外にあれば通信を破棄する．
-
-| Destination（プライベートIPアドレス範囲） |  Target  |
-| :---------------------------------------: | :------: |
-|             ```10.0.0.0/16```             |  local   |
-|            指定範囲以外の場合             | 通信破棄 |
-
-#### ・VPC外へのアウトバウンド通信を許可する場合
+#### ・プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
 
 上の図中で，サブネット3にはルートテーブル2が紐付けられている．サブネット3内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選択する．一方で，```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば，アウトバウンド通信と見なし，インターネットゲートウェイを送信先に選択する．
 
 | Destination（プライベートIPアドレス範囲） |      Target      |
 | :---------------------------------------: | :--------------: |
-|             ```10.0.0.0/16```             |      local       |
+|      ```10.0.0.0/16```（VPCのCIDR）       |      local       |
 |              ```0.0.0.0/0```              | Internet Gateway |
 
-#### ・同一サブネット内へのアウトバウンド通信を許可する場合
+#### ・プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+
+上の図中で，サブネット2にはルートテーブル1が紐付けられている．サブネット2内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選択する．一方で，範囲外にあれば通信を破棄する．
+
+| Destination（プライベートIPアドレス範囲） | Target |
+| :---------------------------------------: | :----: |
+|      ```10.0.0.0/16```（VPCのCIDR）       | local  |
+
+#### ・プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
+
+プライベートサブネットでネットワークを完全に閉じる場合，ルートテーブルにサブネットのCIDRを設定する．
 
 参考：https://koejima.com/archives/1950/
 
+| Destination（プライベートIPアドレス範囲） | Target |
+| :---------------------------------------: | :----: |
+|  ```10.0.0.0/24```（サブネット1のCIDR）   | local  |
+
 <br>
 
-## 33-03. VPC間，VPC-オンプレ間の通信
+## 33-06. VPCエンドポイント
+
+### VPCエンドポイントとは
+
+VPCのプライベートサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを用いない場合，プライベートサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを用いる必要がある．
+
+**＊例＊**
+
+Fargateをプライベートサブネットに置いた場合，FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ，ECR，S3，SSM）．
+
+![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
+
+### NAT Gatewayとインターネットゲートウェイとの比較
+
+インターネットゲートウェイとNAT Gatewayの代わりに，VPCエンドポイントを用いると，料金が少しだけ安くなり，また，VPC外のリソースとの通信がより安全になる．
+
+<br>
+
+### エンドポイントタイプ
+
+#### ・Interface型
+
+イベートリンクともいう．プライベートIPアドレスを持つENIとして機能し，AWSリソースからアウトバウンド通信を受信する．
+
+**＊リソース例＊**
+
+S3，DynamoDB以外の全てのリソース
+
+#### ・Gateway型
+
+ルートテーブルにおける定義に従う．VPCエンドポイントとして機能し，AWSリソースからアウトバウンド通信を受信する．
+
+**＊リソース例＊**
+
+S3，DynamoDBのみ
+
+<br>
+
+## 33-07. Internet Gateway，NAT Gateway
+
+### Internet Gateway，NAT Gatewayとは
+
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
+
+#### ・Internet Gateway
+
+VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．1つのパブリックIPに対して，1つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+
+#### ・NAT Gateway
+
+NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに配置し，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+
+<br>
+
+### 比較表
+
+
+|              | Internet Gateway                                             | NAT Gateway            |
+| :----------- | :----------------------------------------------------------- | :--------------------- |
+| **機能**     | グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
+| **設置場所** | VPC上                                                        | パブリックサブネット内 |
+
+<br>
+
+## 33-08. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
