@@ -479,7 +479,7 @@ Kubernetesリソースをダウンタイム無しで更新する．
 参考：https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
 
 ```bash
-$ kubectl rollout restart deployment
+$ kubectl rollout restart deployment -n kube-system
 ```
 
 <br>

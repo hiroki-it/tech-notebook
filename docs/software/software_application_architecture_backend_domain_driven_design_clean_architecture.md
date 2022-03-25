@@ -2071,12 +2071,6 @@ class DogOrder
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
-#### ・発表スライド
-
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/509d25f8592f4177a4486c1be893f70c" title="ドメイン駆動設計と依存性逆転の原則" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
-
-<br>
-
 ### リポジトリ
 
 ![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)

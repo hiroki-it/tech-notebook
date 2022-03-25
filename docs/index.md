@@ -311,3 +311,9 @@ title: 【知見を記録するサイト】目次
 ## 📊 統計分析
 
 * [📖：︎R言語](https://hiroki-it.github.io/tech-notebook-mkdocs/statistic_analysis/statistic_analysis_r.html)
+
+<br>
+
+## 📢 過去の技術系プレゼン
+
+- [📖：︎一覧](https://hiroki-it.github.io/tech-notebook-mkdocs/presentation.html)

@@ -200,11 +200,3 @@ SREチームのValueから，SREに必要な技術がわかる．
 提供しているサービス（SRE as a Service）から，SREに必要な技術がわかる．
 
 参考：https://topotal.com/services/sre-as-a-service
-
-<br>
-
-## 04. その他
-
-### SREに入門しよう
-
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/9ef17a127836454eba769084baddf60f" title="SREに入門しよう" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>

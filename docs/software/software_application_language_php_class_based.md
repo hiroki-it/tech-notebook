@@ -840,12 +840,6 @@ class Bar
 
 <br>
 
-### 発表スライド
-
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/873bc58920b448a0b4f06446b5da15b0" title="依存関係と依存オブジェクト注入" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
-
-<br>
-
 ###  Dependency（依存）
 
 #### ・Dependencyとは

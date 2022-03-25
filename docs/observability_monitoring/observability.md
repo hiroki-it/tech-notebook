@@ -41,12 +41,6 @@ description: 可観測性の知見をまとめました．
 
 <br>
 
-### 発表スライド
-
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/bedd6f12302d434886650000ceeba517" title="可観測性に入門しよう" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
-
-<br>
-
 ## 01-02. テレメトリー
 
 ### テレメトリーとは
