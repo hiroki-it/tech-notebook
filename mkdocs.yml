@@ -323,3 +323,6 @@ nav:
 
   - 📊 統計分析:
       - R言語: statistic_analysis/statistic_analysis_r.md
+
+  - 📢 過去の技術系プレゼン: 
+      - 一覧: presentation.md
