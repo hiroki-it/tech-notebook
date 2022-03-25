@@ -253,29 +253,29 @@ nav:
                   - 設定ファイル: infrastructure_as_code/infrastructure_as_code_server_ansible_conf.md
           - ■ コンテナプロビジョニング:
               - ■ Docker:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
                   - Dockerfile: infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
       - ■ 宣言型:
           - ■ サーバープロビジョニング:
               - ■ Vagrant:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
                   - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
           - ■ コンテナプロビジョニング:
               - ■ Docker Compose:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
                   - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
               - ■ Kubernetes:
+                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
                   - Minikube: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.md
-                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md
                   - 可観測性ツール: infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
               - ■ Istio:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
                   - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
               - ■ Skaffold:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
                   - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
           - ■ クラウドインフラプロビジョニング:
               - ■ Terraform:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
@@ -285,8 +285,8 @@ nav:
                       - tfファイル: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.md
                       - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.md
               - ■ Serverless Framework:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
                   - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
 
   - ♾️ DevOps:
       - DevOps: devops/devops.md
