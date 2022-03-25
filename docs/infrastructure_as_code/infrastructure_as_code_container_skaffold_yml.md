@@ -224,7 +224,7 @@ fileExistenceTests:
 
 ### deployステージとは
 
-kubernetesリソースのデプロイ方法を定義する．
+kubernetesリソースのデプロイ手法を定義する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 

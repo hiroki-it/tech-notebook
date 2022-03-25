@@ -310,8 +310,8 @@ Aborting
 
 ```bash
 $ git status
-On branch 2019/Symfony2_Nyumon/feature/6
-Your branch is up to date with "origin/2019/Symfony2_Nyumon/feature/6".
+On branch 2019/foo-repository/feature/6
+Your branch is up to date with "origin/2019/foo-repository/feature/6".
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -333,7 +333,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```bash
 $ git stash -u
-Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 *****
+Saved working directory and index state WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
 これらのファイルの変更点を一時的に退避できる．
@@ -351,7 +351,7 @@ git stash -- src/...
 
 ```bash
 $ git stash list
-stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 *****
+stash@{0}: WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
 #### ・```stash pop stash@{<番号>}```
@@ -359,7 +359,7 @@ stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 *****
 
 ```bash
 $ git stash pop stash@{0}
-On branch 2019/Symfony2_Nyumon/feature/8
+On branch 2019/foo-repository/feature/8
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -478,7 +478,7 @@ $ git reset --hard <コミットID>
 
 ```bash
 $ git log
-commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/Symfony2_Nyumon/master)
+commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
 Merge: 41cc21b f81c813
 Author: hiroki.hasegawa <example@gmail.com>
 Date:   Wed Mar 20 22:56:32 2019 +0900
@@ -521,7 +521,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 ```bash
 $ git push --force
 Total 0 (delta 0), reused 0 (delta 0)
-To github.com:hiroki.hasegawa/Symfony2_Nyumon.git
+To github.com:hiroki.hasegawa/foo-repository.git
  + f0d8b1a...f81c813 master -> master (forced update)
 ```
 
@@ -541,7 +541,7 @@ To github.com:hiroki.hasegawa/Symfony2_Nyumon.git
 
 ```bash
 $ git log
-commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/Symfony2_Nyumon/master)
+commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
 Merge: 41cc21b f81c813
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 22:56:32 2019 +0900

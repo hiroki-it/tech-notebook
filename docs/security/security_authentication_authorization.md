@@ -1,5 +1,6 @@
 ---
 title: 【知見を記録するサイト】Authenticate（認証）/Authorization（認可）＠セキュリティ
+description: Authenticate（認証）/Authorization（認可）＠セキュリティの知見をまとめました．
 ---
 
 # Authenticate（認証）/Authorization（認可）＠セキュリティ
@@ -637,9 +638,9 @@ const signature = HMACSHA256(
 
 | クライアント保持方法 | 組み合わせ             | おすすめ度 | コメント                                                     |
 | :------------------- | ---------------------- | :--------- | :----------------------------------------------------------- |
-| localStorage         |                        | △〜×       | XSSでJWTが盗まれる可能性がある．                             |
-| ```Cookie```ヘッダー | プリフライトリクエスト | △          | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある． |
-| ```Cookie```ヘッダー | CSRFトークン           | ◯          |                                                              |
-| SameSiteCookie       |                        | ◯          | SPAとAPIが同一オリジンの必要がある．                         |
+| localStorage         |                        | 🔺〜❌       | XSSでJWTが盗まれる可能性がある．                             |
+| ```Cookie```ヘッダー | プリフライトリクエスト | 🔺          | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある． |
+| ```Cookie```ヘッダー | CSRFトークン           | ⭕          |                                                              |
+| SameSiteCookie       |                        | ⭕          | SPAとAPIが同一オリジンの必要がある．                         |
 
 <br>
