@@ -129,6 +129,22 @@ spec:
 
 <br>
 
+### テンプレート管理
+
+#### ・テンプレート管理とは
+
+Kubernetesのテンプレートファイルを部分的に共通化できる．
+
+参考：https://qiita.com/Hiroyuki_OSAKI/items/8965ceb6c90bae3bea76
+
+#### ・種類
+
+Helm，Kustomize，などがある．HelmよりもKustomizeの方がカスタマイズ性が高い．
+
+参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1#%E3%81%93%E3%81%93%E3%81%A7%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E6%8A%80%E8%A1%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-1
+
+<br>
+
 ## 02. apiVersion
 
 ### apiVersionとは

@@ -80,11 +80,9 @@ $ kubectl patch svc argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-（４）ロードバランサーを構築する．IngressとIngressコントローラーを構築するか，または```minikube tunnel```コマンドや```kubectl port-forward```コマンドなど実行する．
+（４）```443```番ポートにルーティングできるロードバランサーを構築する．この時，IngressとIngressコントローラーを構築するか，```kubectl port-forward```コマンドなど実行する．```minikube tunnel```ではポート番号を指定できないことに注意する．
 
 ```bash
-$ minikube tunnel
-
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 

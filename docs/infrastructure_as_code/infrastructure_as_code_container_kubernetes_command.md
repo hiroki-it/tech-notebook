@@ -70,6 +70,17 @@ $ kubectl config current-context
 minikube
 ```
 
+#### ・get-contexts
+
+適用可能なコンテキストの一覧と現在のコンテキストを表示する．
+
+```bash
+$ kubectl config get-contexts                                                                 
+CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
+*         minikube         minikube         minikube         default
+          docker-desktop   docker-desktop   docker-desktop
+```
+
 #### ・use-context
 
 kubectlコマンドの宛先を，指定したKubernetes環境のkube-apiserverに変更する．
@@ -105,15 +116,45 @@ $ kubectl config view
 
 apiVersion: v1
 clusters:
+####################################
+# Docker for Desktopのコンテキスト情報
+####################################
 - cluster:
     certificate-authority-data: DATA+OMITTED
-    server: https://kubernetes.docker.internal:6443
+    server: https://kubernetes.docker.internal:6443 # kube-apiserverのIPアドレス
   name: docker-desktop
 contexts:
 - context:
     cluster: docker-desktop
     user: docker-desktop
   name: docker-desktop
+####################################
+# Minikubeのコンテキスト情報
+####################################
+- cluster:
+    certificate-authority: /Users/h.hasegawa/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Mon, 21 Mar 2022 20:47:56 JST
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: cluster_info
+    server: https://n.n.n.n:8443 # kube-apiserverのIPアドレス
+  name: minikube
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Mon, 21 Mar 2022 20:47:56 JST
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+####################################
+# 現在のコンテキスト
+####################################
 current-context: docker-desktop
 kind: Config
 preferences: {}
@@ -122,6 +163,10 @@ users:
   user:
     client-certificate-data: REDACTED
     client-key-data: REDACTED
+- name: minikube
+  user:
+    client-certificate: /Users/h.hasegawa/.minikube/profiles/minikube/client.crt
+    client-key: /Users/h.hasegawa/.minikube/profiles/minikube/client.key
 ```
 
 <br>

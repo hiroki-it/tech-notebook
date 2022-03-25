@@ -3056,6 +3056,11 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに相当する．on EC2と比べてカスタマイズ性が低く，Node当たりで稼働するPod数はAWSが管理する．一方で，各EC2のサチュレーションをユーザーが管理しなくてもよいため，Kubernetesのホストの管理が楽である．
 
+参考：
+
+- https://www.sunnycloud.jp/column/20210315-01/
+- https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/
+
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
 #### ・設定項目
@@ -3067,7 +3072,7 @@ Fargateの設定はプロファイルと呼ばれる．
 | コンポーネント名           | 説明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
 | Pod実行ロール              | kubeletがFargate上でPodを作成するために必要なロールを設定する． |
-| サブネット                 | EKS Fargateが起動するサブネットIDを設定する．インターネットゲートウェイとは切り離され，ネットワークからは隔絶されたプライベートサブネットである必要がある．<br>参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
+| サブネット                 | EKS Fargateが起動するサブネットIDを設定する．プライベートサブネットを設定する必要がある． |
 | ポッドセレクタ（名前空間） | EKS Fargate上で稼働させるPodを固定できるように，Podの名前空間を設定する． |
 | ポッドセレクタ（ラベル）   | EKS ECS Fargate上で稼働させるPodを固定できるように，Podのラベルを設定する． |
 
@@ -6495,11 +6500,11 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 | 通信可能なVPC数                               | 一対一            | 一対一，一対多                      | 一対一，一対多，多対多 |
 | 通信可能なIPアドレスの種類                    | IPv4，IPv6        | IPv4                                | IPv4，IPv6             |
 | 接続可能なリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
-| CIDRブロックがVPC間で被ることによる通信の可否 | ❌                 | ⭕                                   | ❌                      |
-| クロスアカウント                              | ⭕                 | ⭕                                   | ⭕                      |
-| クロスリージョン                              | ⭕                 | ❌                                   | ⭕                      |
-| VPC間                                         | ⭕                 | ⭕                                   | ⭕                      |
-| VPC-オンプレ間                                | ❌                 | ❌                                   | ⭕                      |
+| CIDRブロックがVPC間で被ることによる通信の可否 | ×                 | ◯                                   | ×                      |
+| クロスアカウント                              | ◯                 | ◯                                   | ◯                      |
+| クロスリージョン                              | ◯                 | ×                                   | ◯                      |
+| VPC間                                         | ◯                 | ◯                                   | ◯                      |
+| VPC-オンプレ間                                | ×                 | ×                                   | ◯                      |
 
 <br>
 

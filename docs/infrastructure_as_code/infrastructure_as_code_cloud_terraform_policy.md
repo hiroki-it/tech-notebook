@@ -283,7 +283,7 @@ project
 
 環境変数を並べる```# Variables```コメントと，モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける．```# Variables```コメントの部分では，```terraform.tfvars```ファイルと同じ並び順になるようにする．また，```# Output values```コメントの部分では，```output```をモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる．
 
- ```terraform
+```terraform
 ###############################################
 # ALB root module
 ###############################################
@@ -321,7 +321,7 @@ module "alb" {
 
 例として，VPCを示す．
 
- ```terraform
+```terraform
 ###############################################
 # VPC variables
 ###############################################
@@ -344,7 +344,7 @@ Generalの変数を先頭に配置し，その他のクラウドプロバイダ�
 
 環境変数は，```.tfvars```ファイルでは定義できる．複数のリソースで用いる場合（将来的にそうなる可能性も含めて）は，Generalに配置し，グローバルな名前を付ける．クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる．
 
- ```terraform
+```terraform
 ###############################################
 # General
 ###############################################
@@ -356,7 +356,7 @@ service           = "bar"
 
 環境変数の名前は以下のようにする．
 
- ```terraform
+```terraform
 # 種類が無い時（thisの時）
 # 例：ecs_service_desired_count = 2
 <用いるクラウドプロバイダーのリソースの名前>_<オプション名> = ****
@@ -369,7 +369,7 @@ service           = "bar"
 
 list型またはmap型であれば複数形，それ以外であれば単数形とする．
 
- ```terraform
+```terraform
 ###############################################
 # Route53
 ###############################################
@@ -406,7 +406,7 @@ waf_blocked_user_agents = [
 
 例として，VPCを示す．
 
- ```terraform
+```terraform
 ###############################################
 # VPC route table
 ###############################################
@@ -421,7 +421,7 @@ resource "aws_route_table" "private" {
 }
 ```
 
- ```terraform
+```terraform
 ###############################################
 # VPC route table
 ###############################################
@@ -442,7 +442,7 @@ resource "aws_route_table" "route_table_private" {
 
 **＊実装例＊**
 
- ```terraform
+```terraform
 resource "aws_internet_gateway" "this" {
 
 }
@@ -465,7 +465,7 @@ Lambda以外では，構築されるクラウドプロバイダーのリソー�
 - 種類は，alb-httpcode-4xx-count
 - クラウドプロバイダーのリソース名は，CloudWatchAlarmを省略してAlarm
 
- ```terraform
+```terraform
 resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 
   alarm_name = "prd-foo-alb-httpcode-target-4xx-count-alarm"
@@ -483,7 +483,7 @@ LambdaではLambda関数が稼働する．接尾辞にfunctionとつけること
 - 種類は，echo-helloworld
 - クラウドプロバイダーのリソース名のlambdaは省略する．
 
- ```terraform
+```terraform
 resource "aws_lambda_function" "echo_helloworld" {
 
   function_name    = "prd-foo-echo-helloworld"
@@ -497,7 +497,7 @@ resource "aws_lambda_function" "echo_helloworld" {
 
 **＊実装例＊**
 
- ```terraform
+```terraform
 ###############################################
 # EXAMPLE
 ###############################################
@@ -533,7 +533,7 @@ resource "aws_baz" "this" {
 
 例として，CloudWatchを示す．リソース名は`ecs_container_nginx`，リソースタイプは`aws_cloudwatch_log_group`，attributeは`name`オプションである．
 
- ```terraform
+```terraform
 output "ecs_container_nginx_cloudwatch_log_group_name" {
   value = aws_cloudwatch_log_group.ecs_container_nginx.name
 }
@@ -543,7 +543,7 @@ output "ecs_container_nginx_cloudwatch_log_group_name" {
 
 例として，IAM Roleを示す．
 
- ```terraform
+```terraform
 ###############################################
 # Output IAM Role
 ###############################################
@@ -568,7 +568,7 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 例として，ALBを示す．
 
- ```terraform
+```terraform
 ###############################################
 # Output ALB
 ###############################################
@@ -616,7 +616,7 @@ output "nginx_ecr_repository_url" {
 
 前提として，バックエンドにS3を用いているものとする．Makefileのコマンドを実行する前に，```provider.tf```ファイルのbackendオプションを，『s3』から『local』に変更する．
 
- ```terraform
+```terraform
 terraform {
 
   backend "local" {
