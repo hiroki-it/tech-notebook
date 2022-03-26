@@ -278,6 +278,7 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
               - ■ Helm:
                   - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_helm_command.md
           - ■ クラウドインフラプロビジョニング:
               - ■ Terraform:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
