@@ -159,6 +159,10 @@ sysbenchというベンチマークツールを用いて，CPU・メモリ・フ
 
 **＊例＊**
 
-１－(1－0.81) × (1－0.64) = 0.9316
+```
+1-(1-0.81) × (1-0.64) = 0.9316
+```
 
 ![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/稼働率の計算.jpg)
+
+<br>

@@ -290,3 +290,5 @@ plot(cluster1)
 3. ```theme```メソッド：グラフを追加加工
 
 ![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ggplotの概念.png)
+
+<br>

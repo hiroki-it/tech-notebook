@@ -269,3 +269,4 @@ GPUとVRAMの容量によって，扱うことのできる解像度と色数が�
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
 
+<br>

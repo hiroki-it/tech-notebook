@@ -22,53 +22,53 @@ description: コンポーネント＠Symfonyの知見をまとめました．
 ## 01-02. ディレクトリ構成
 
 ```bash
-Symfony
-├── config　# 設定ファイル（カーネルのためのルート定義ファイル等）
+symfony/
+├── config/ # 設定ファイル（カーネルのためのルート定義ファイル等）
 │
-├── bin　# コマンドラインツール
-│   ├── console #bin/consoleコマンドの実行ファイル
-│   └── symfony_requirements
+├── bin/ # コマンドラインツール
+│   ├── console/ #bin/consoleコマンドの実行ファイル
+│   └── symfony_requirements/
 │
-├── public    
+├── public/
 |   ├── index.php # 本番環境で，カーネルとして動く
 |   └── index_dev.php # 開発環境で，カーネルとして動く
 │
-├── src　# 主要なPHPファイル
-│   ├── AppBundle # アプリケーションのコード
-│   │  ├── Controller　# UserCase層
-│   │  ├── Entity # エンティティ　⇒　Domain層
-│   │  ├── Repository # リポジトリ ⇒ Infrastructure層
-│   │  ├── Form # フォーム
-│   │  └── Resources
-│   │       └── views # 画面テンプレート（※本書では扱わない） 
+├── src/ # 主要なPHPファイル
+│   ├── AppBundle/ # アプリケーションのコード
+│   │  ├── Controller/ # UserCase層
+│   │  ├── Entity/ # エンティティ　⇒　Domain層
+│   │  ├── Repository/ # リポジトリ ⇒ Infrastructure層
+│   │  ├── Form/ # フォーム
+│   │  └── Resources/
+│   │       └── views/ # 画面テンプレート（※本書では扱わない） 
 │   │           
-│   └── その他のBundle # 汎用的なパッケージのコード（※本書では扱わない）
+│   └── その他のBundle/ # 汎用的なパッケージのコード（※本書では扱わない）
 |
-├── templates　# UserInterface層
+├── templates/ # UserInterface層
 │   
-├── test # 自動テスト（Unit tests等）
+├── test/ # 自動テスト（Unit tests等）
 │  
-├── var # 自動生成されるファイル
-│   ├── cache # キャッシュファイル
-│   ├── logs # ログファイル
-│   └── sessions
+├── var/ # 自動生成されるファイル
+│   ├── cache/ # キャッシュファイル
+│   ├── logs/ # ログファイル
+│   └── sessions/
 │
-├── vendor # 外部パッケージ
-│   ├── doctrine # パッケージ
-│   ├── league # パッケージ
-│   ├── sensio
-│   ├── swiftmailer # パッケージ
-│   ├── symfonyコンポーネント
-│   └── twig # パッケージ
+├── vendor/ # 外部パッケージ
+│   ├── doctrine/ # パッケージ
+│   ├── league/ # パッケージ
+│   ├── sensio/
+│   ├── swiftmailer/ # パッケージ
+│   ├── symfonyコンポーネント/
+│   └── twig/ # パッケージ
 │
-└── asset #ブラウザコンソールに公開されるファイル（css, javascript, image等）
-    ├── admin
-    ├── bootstrap
-    ├── css
-    ├── fontawesome
-    ├── img # 画像ファイル
-    ├── jquery # jquery（javascriptフレームワーク）
-    └── js # javascriptファイル
+└── asset/ #ブラウザコンソールに公開されるファイル（css, javascript, image等）
+    ├── admin/
+    ├── bootstrap/
+    ├── css/
+    ├── fontawesome/
+    ├── img/ # 画像ファイル
+    ├── jquery/ # jquery（javascriptフレームワーク）
+    └── js/ # javascriptファイル
 ```
 
 <br>

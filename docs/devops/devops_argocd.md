@@ -94,9 +94,9 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-#### ・argocdコマンド経由
+#### ・Argocd経由
 
-（６）ArgoCDのコマンドをインストールする．
+（６）argocdコマンドをインストールする．
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -177,7 +177,7 @@ spec:
 
 ### アンインストール
 
-#### ・argocdコマンド経由
+#### ・Argocd経由
 
 ArgoCDを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationリソースの両方を削除できる．
 
@@ -190,7 +190,7 @@ ArgoCDを削除する．```--cascade```オプションを有効化すると，Ar
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-#### ・kubectlコマンド経由
+#### ・Kubectl経由
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 

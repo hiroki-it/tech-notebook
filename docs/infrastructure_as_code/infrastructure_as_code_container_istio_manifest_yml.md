@@ -17,7 +17,7 @@ description: manifest.yml＠Istioの知見をまとめました．
 
 ### インストール
 
-#### ・istioctl経由
+#### ・Istioctl経由
 
 プロファイルを指定し，Istioリソースをインストールする．
 
@@ -70,7 +70,7 @@ istiooperator.install.istio.io/istio-operator created
 
 ### アンインストール
 
-#### ・istioctl経由
+#### ・Istioctl経由
 
 Istioリソースを全てアンインストールする．
 

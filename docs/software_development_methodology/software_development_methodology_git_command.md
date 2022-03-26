@@ -797,3 +797,5 @@ $ git filter-branch -f --tree-filter \
 # ガベージコレクションを実行
 $ git gc --aggressive --prune=now
 ```
+
+<br>

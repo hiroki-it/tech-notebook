@@ -33,7 +33,7 @@ description: Goの知見をまとめました．
 
 ### インストール
 
-#### ・yum経由
+#### ・Yum経由
 
 参考：https://www.cyberithub.com/install-go-on-centos/
 
@@ -113,38 +113,38 @@ CMD ["/go/bin/cmd"]
 参考：https://github.com/golang-standards/project-layout
 
 ```bash
-$GOPATH # 例えば，『$HOME/go』とする．
-├── bin
-├── pkg
-└── src
-    ├── build # Dockerfileを配置するディレクトリ
-    ├── cmd # main.goファイルや，サブmainパッケージを配置するディレクトリ
+$GOPATH/ # 例えば，『$HOME/go』とする．
+├── bin/
+├── pkg/
+└── src/
+    ├── build/ # Dockerfileを配置するディレクトリ
+    ├── cmd/ # main.goファイルや，サブmainパッケージを配置するディレクトリ
     │   ├── main.go
-    │   └── foo
+    │   └── foo/
     │       └── foo.go
     │         
-    ├── configs
+    ├── configs/
     │   └── envrc.template
     │     
-    ├── docs（ドキュメントを配置する）
+    ├── docs/ # ドキュメントを配置する
     │   ├── BUG.md
     │   ├── ROUTING.md
     │   └── TODO.md
     │     
-    ├── internal # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
-    │   └── pkg
+    ├── internal/ # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
+    │   └── pkg/
     │ 
-    ├── pkg # cmdディレクトリ内でインポートする独自goパッケージを配置するディレクトリ
-    │   └── public
+    ├── pkg/ # cmdディレクトリ内でインポートする独自goパッケージを配置するディレクトリ
+    │   └── public/
     │       └── add.go
     │     
-    ├── scripts
+    ├── scripts/
     │   └── Makefile
     │     
-    ├── test
+    ├── test/
     │   └── test.go
     │     
-    └── web（画像，CSS，など）
+    └── web/ # 画像，CSS，を配置する．
         ├── static
         └── template
 ```

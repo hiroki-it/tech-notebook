@@ -276,7 +276,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ただし，Vagrant経由ではなく，直接Ansibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
+ただし，Vagrantからではなく，直接Ansibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
 
 ```ruby
 Vagrant.configure("2") do |config|

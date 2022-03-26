@@ -22,7 +22,7 @@ description: 設計ポリシー＠Kubernetesの知見をまとめました．
 アプリケーションとは異なるリポジトリにて，マニフェストファイルを配置する．
 
 ```bash
-project
+project/
 ├── foo.yml
 ...
 ```
@@ -32,9 +32,9 @@ project
 アプリケーションと同じリポジトリにて，```kubernetes```ディレクトリを作成し，ここにマニフェストファイルを配置する．
 
 ```bash
-project
-├── src # アプリケーション
-├── kubernetes
+project/
+├── src/ # アプリケーション
+├── kubernetes/
 │   ├── foo.yml
 ...
 ```
@@ -50,26 +50,26 @@ project
 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
 ```bash
-project
-├── foo # fooサービス
+project/
+├── foo/ # fooサービス
 │   ├── deployment.yml
 │   ├── service.yml
 │   ├── persistentVolume.yml
 │   └── persistentVolumeClaim.yml
 │
-├── bar # fooサービス
+├── bar/ # fooサービス
 │   ├── deployment.yml
 │   ├── service.yml
 │   ├── persistentVolume.yml
 │   └── persistentVolumeClaim.yml
 │
-└── baz # bazサービス
-    ├── app # appコンポーネント
+└── baz/ # bazサービス
+    ├── app/ # appコンポーネント
     │   ├── deployment.yml
     │   ├── service.yml
     │   └── persistentVolume.yml
     │
-    └── db # dbコンポーネント
+    └── db/ # dbコンポーネント
         ├── statefulSet.yml
         ├── service.yml
         └── persistentVolume.yml
@@ -80,7 +80,7 @@ project
 ディレクトリを作成しない．その代わりに，マイクロサービス別にマニフェストファイルを作成し，関連する全てのKubernetesリソースをこの中で定義する．
 
 ```bash
-project
+project/
 ├── foo.yml # fooサービス（Deployment，Service，PersistentVolume，...）
 ├── bar.yml # fooサービス
 └── baz.yml # bazサービス

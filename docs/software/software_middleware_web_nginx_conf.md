@@ -179,7 +179,7 @@ server {
 
 ### インストール
 
-#### ・apt経由
+#### ・Apt経由
 
 nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを用いる．
 
@@ -189,7 +189,7 @@ nginxを```apt-get```コマンドでインストールすると，古いバー�
 $ apt install nginx
 ```
 
-#### ・yum経由
+#### ・Yum経由
 
 ```bash
 $ yum install -y nginx

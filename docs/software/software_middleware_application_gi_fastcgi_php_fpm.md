@@ -17,14 +17,11 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 ### 構造
 
-![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
+PHP-FPMは，Server API，Zend Engine，から構成される．
 
-PHPのために実装されたFastCGIのこと．WebサーバーとPHPファイルの間でデータ通信を行う．PHP-FPMとPHPは，それぞれ独立した子プロセスとして実行されている．そのため，設定値を別々に設定する必要がある．例えば，ログの出力先はそれぞれ個別に設定する必要がある．
+参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
-参考：
-
-- https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
+![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_architecture.png)
 
 <br>
 
@@ -36,17 +33,32 @@ PHP-FPMでは，リクエストのたびにプロセスを起動するわけで�
 
 <br>
 
+## 01-02. ユースケース
+
+### FastCGIとして
+
+![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_fastcgi.png)
+
+PHP-FPMは，FastCGIとしてWebサーバーとPHPファイルの間でデータ通信を行う．PHP-FPMとPHPは，それぞれ独立した子プロセスとして実行されている．そのため，設定値を別々に設定する必要がある．例えば，ログの出力先はそれぞれ個別に設定する必要がある．
+
+参考：
+
+- https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
+- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール
 
-#### ・apt経由
+#### ・Apt経由
 
 ```bash
 $ apt install php-fpm
 ```
 
-#### ・apt-get経由
+#### ・Apt-get経由
 
 ```bash
 $ apt-get install php-fpm

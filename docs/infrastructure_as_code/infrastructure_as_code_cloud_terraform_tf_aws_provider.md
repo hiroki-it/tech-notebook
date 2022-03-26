@@ -2014,3 +2014,5 @@ vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
 | ALB           | ```enable_deletion_protection``` |
 | EC2           | ```disable_api_termination```    |
 | RDS           | ```deletion_protection```        |
+
+<br>

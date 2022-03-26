@@ -48,7 +48,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 PHPにおける```composer.json```ファイルに相当する．インターネット上における自身のパッケージ名とGoバージョンを定義するために，全てのGoアプリケーションで必ず必要である．インストールしたい外部パッケージも定義できる．
 
 ```
-module github.com/hiroki-it/foo_repository
+module github.com/hiroki-it/foo-repository
 
 go 1.16
 ```
@@ -91,25 +91,25 @@ module foo.com/hiroki-it/repository
 
 go 1.16
 
-replace github.com/hiroki-it/foo_repository => /
+replace github.com/hiroki-it/foo-repository => /
 ```
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．
 
 ```bash
-foo_repository
-├── cmd
+foo-repository/
+├── cmd/
 │   └── hello.go
 │ 
 ├── go.mod
 ├── go.sum
-└── local-pkg
+└── local-pkg/
     ├── go.mod # 各パッケージにgo.modを配置する．
     └── module.go
 ```
 
 ```
-module foo.com/hiroki-it/foo_repository/local-pkg
+module foo.com/hiroki-it/foo-repository/local-pkg
 
 go 1.16
 ```

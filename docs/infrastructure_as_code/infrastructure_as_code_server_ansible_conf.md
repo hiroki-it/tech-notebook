@@ -27,7 +27,7 @@ description: 設定ファイル＠Ansibleの知見をまとめました．
 
 ### インストール
 
-#### ・apt経由
+#### ・Apt経由
 
 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
@@ -49,34 +49,34 @@ $ pip3 install ansible
 - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 
 ```bash
-project
+project/
 ├── playbook.yml
-├── group_vars
+├── group_vars/
 │   └── foo_group.yml
 │
-├── host_vars
+├── host_vars/
 │   ├── bar_host.yml
 │   └── baz_host.yml
 │   
-├── inventories
-│   ├── prd # 本番環境
+├── inventories/
+│   ├── prd/ # 本番環境
 │   │   ├── hosts_a.yml # 冗長化されたサーバーa
 │   │   ├── hosts_c.yml # 冗長化されたサーバーc
 │   │   └── host_vars.yml
 │   │
-│   └── dev
+│   └── dev/
 │      
 └── roles
-    ├── app # appサーバー
-    ├── common # 共通
-    │   ├── handlers
+    ├── app/ # appサーバー
+    ├── common/ # 共通
+    │   ├── handlers/
     │   │   └── main.yml
     │   │   
-    │   ├── tasks
-    │   └── templates
+    │   ├── tasks/
+    │   └── templates/
     │    
-    ├── db # DBサーバー
-    └── web # Webサーバー
+    ├── db/ # DBサーバー
+    └── web/ # Webサーバー
 ```
 
 <br>
@@ -577,3 +577,4 @@ task内で出力できる環境変数を設定する．
         dest: /etc/foo/foo.conf
 ```
 
+<br>

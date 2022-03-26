@@ -34,17 +34,17 @@ title: 【知見を記録するサイト】GitHub
 
 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
-```
+```bash
 project/
-└── .github
+└── .github/
     ├── ISSUE_TEMPLATE.md
     └── PULL_REQUEST_TEMPLATE.md
 ```
 
-```
+```bash
 project/
-└── .github
-    ├── ISSUE_TEMPLATE
+└── .github/
+    ├── ISSUE_TEMPLATE/
     |   ├── FIX.md
     |   └── UPDATE.md
     |
@@ -333,3 +333,4 @@ developブランチからmainブランチへのマージ時にコンフリクト
 
 （２）一段目のブランチから二段目のブランチにマージし．これをプッシュする．
 
+<br>

@@ -71,7 +71,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 アプリケーションとは異なるリポジトリにて，tfファイルを配置する．推奨である．
 
 ```bash
-project
+project/
 ├── foo.tf
 ...
 ```
@@ -81,9 +81,9 @@ project
 アプリケーションと同じリポジトリにて，```terraform```ディレクトリを作成し，ここにtfファイルを配置する．非推奨である．
 
 ```bash
-project
-├── src # アプリケーション
-├── terraform
+project/
+├── src/ # アプリケーション
+├── terraform/
 │   ├── foo.tf
 ...
 ```
@@ -98,37 +98,37 @@ project
 
 ```bash
 project
-├── modules
-│   ├── route53 # Route53
-│   │   ├── dev # 開発
-│   |   ├── prd # 本番
-│   |   └── stg # ステージング
+├── modules/
+│   ├── route53/ # Route53
+│   │   ├── dev/ # 開発
+│   |   ├── prd/ # 本番
+│   |   └── stg/ # ステージング
 │   | 
-│   ├── ssm # SSM
-|   |   ├── dev
-│   |   ├── prd
-│   |   └── stg
+│   ├── ssm/ # SSM
+|   |   ├── dev/
+│   |   ├── prd/
+│   |   └── stg/
 │   | 
-│   └── waf # WAF
-|       ├── dev
-│       ├── prd
-│       └── stg
+│   └── waf/ # WAF
+|       ├── dev/
+│       ├── prd/
+│       └── stg/
 |
-├── dev # 開発環境ルートモジュール
+├── dev/ # 開発環境ルートモジュール
 │   ├── dev.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-├── prd # 本番環境ルートモジュール
+├── prd/ # 本番環境ルートモジュール
 │   ├── prd.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-└── stg # ステージング環境ルートモジュール
+└── stg/ # ステージング環境ルートモジュール
     ├── stg.tfvars
     ├── main.tf
     ├── providers.tf
@@ -145,22 +145,22 @@ project
 1つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．Lambdaでは，Lambda関数のソースコードをモジュール下で管理する．
 
 ```bash
-project
-└── modules
-    ├── cloudwatch # CloudWatch
-    │   ├── alb        # ALB
-    |   ├── cloudfront # CloudFront
-    |   ├── ecs        # ECS
-    |   ├── lambda     # Lambda
-    |   |   └── functions
-    |   |       └── foo_function
+project/
+└── modules/
+    ├── cloudwatch/ # CloudWatch
+    │   ├── alb/        # ALB
+    |   ├── cloudfront/ # CloudFront
+    |   ├── ecs/        # ECS
+    |   ├── lambda/     # Lambda
+    |   |   └── functions/
+    |   |       └── foo_function/
     |   |
-    |   └── rds        # RDS    
+    |   └── rds/        # RDS    
     |
-    └── waf # WAF
-        ├── alb         # ALB
-        ├── api_gateway # API Gateway
-        └── cloudfront  # CloudFront
+    └── waf/ # WAF
+        ├── alb/         # ALB
+        ├── api_gateway/ # API Gateway
+        └── cloudfront/  # CloudFront
 ```
 
 #### ・稼働環境別
@@ -168,23 +168,23 @@ project
 1つのリソースの設定が稼働環境ごとに異なる場合，冗長性よりも保守性を重視して，稼働環境に応じたディレクトリに分割する．
 
 ```bash
-project
-└── modules
-    ├── route53 # Route53
-    │   ├── dev # 開発
-    |   ├── prd # 本番
-    |   └── stg # ステージング
+project/
+└── modules/
+    ├── route53/ # Route53
+    │   ├── dev/ # 開発
+    |   ├── prd/ # 本番
+    |   └── stg/ # ステージング
     | 
-    ├── ssm # SSM
-    |   ├── dev
-    |   ├── prd
-    |   └── stg
+    ├── ssm/ # SSM
+    |   ├── dev/
+    |   ├── prd/
+    |   └── stg/
     | 
-    └── waf # WAF
-        └── alb 
-            ├── dev
-            ├── prd
-            └── stg
+    └── waf/ # WAF
+        └── alb/ 
+            ├── dev/
+            ├── prd/
+            └── stg/
 ```
 
 #### ・リージョン別
@@ -192,11 +192,11 @@ project
 1つのリソースの設定がリージョンごとに異なる場合，冗長性よりも保守性を重視して，リージョンに応じたディレクトリに分割する．
 
 ```bash
-project
-└── modules
-    └── acm # ACM
-        ├── ap-northeast-1 # 東京リージョン
-        └── us-east-1      # バージニアリージョン  
+project/
+└── modules/
+    └── acm/ # ACM
+        ├── ap-northeast-1/ # 東京リージョン
+        └── us-east-1/      # バージニアリージョン  
 ```
 
 #### ・共通セット別
@@ -204,20 +204,20 @@ project
 WAFで用いるIPパターンセットと正規表現パターンセットには，CloudFrontタイプとRegionalタイプがある．Regionalタイプは，同じリージョンの異なるクラウドプロバイダーのリソース間で共通して用いることができるため，共通セットとしてディレクトリ分割を行う．
 
 ```bash
-project
-└── modules
-    └── waf # WAF
-        ├── alb
-        ├── api_gateway
-        ├── cloudfront       
-        └── regional_sets # Regionalタイプのセット
-            ├── ip_sets   # IPセット
-            |   ├── prd
-            |   └── stg
+project/
+└── modules/
+    └── waf/ # WAF
+        ├── alb/
+        ├── api_gateway/
+        ├── cloudfront/
+        └── regional_sets/ # Regionalタイプのセット
+            ├── ip_sets/   # IPセット
+            |   ├── prd/
+            |   └── stg/
             |    
-            └── regex_pattern_sets # 正規表現パターンセット
-                ├── prd
-                └── stg
+            └── regex_pattern_sets/ # 正規表現パターンセット
+                ├── prd/
+                └── stg/
 ```
 
 #### ・ファイルの切り分け
@@ -225,33 +225,33 @@ project
 ポリシーのためにJSONを定義する場合，Terraformのコードにハードコーディングせずに，切り分けるようにする．また，『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```bash```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
 
 ```bash
-project
-└── modules 
-    ├── ecr #ECR
+project/
+└── modules/
+    ├── ecr/ #ECR
     │   └── ecr_lifecycle_policy.tpl # ECRライフサイクル
     │
-    ├── ecs # ECS
+    ├── ecs/ # ECS
     │   └── container_definitions.tpl # コンテナ定義
     │
-    ├── iam # IAM
-    │   └── policies  
-    |       ├── customer_managed_policies # カスタム管理ポリシー
+    ├── iam/ # IAM
+    │   └── policies/
+    |       ├── customer_managed_policies/ # カスタム管理ポリシー
     |       |   ├── aws_cli_executor_access_policy.tpl
     |       |   ├── aws_cli_executor_access_address_restriction_policy.tpl
     |       |   ├── cloudwatch_logs_access_policy.tpl
     |       |   └── lambda_edge_execution_policy.tpl
     |       |     
-    |       ├── inline_policies # インラインポリシー
+    |       ├── inline_policies/ # インラインポリシー
     |       |   └── ecs_task_policy.tpl
     |       |     
-    |       └── trust_policies # 信頼ポリシー
+    |       └── trust_policies/ # 信頼ポリシー
     |           ├── cloudwatch_events_policy.tpl
     |           ├── ecs_task_policy.tpl
     |           ├── lambda_policy.tpl
     |           └── rds_policy.tpl
     |
-    └── s3 # S3
-        └── policies # バケットポリシー
+    └── s3/ # S3
+        └── policies/ # バケットポリシー
             └── alb_bucket_policy.tpl
 ```
 
@@ -264,9 +264,9 @@ project
 TerraformのCI/CDで必要なシェルスクリプトは，```ops```ディレクトリで管理する．
 
 ```bash
-project
-├── .circleci # CI/CDツールの設定ファイル
-└── ops # TerraformのCI/CDの自動化シェルスクリプト
+project/
+├── .circleci/ # CI/CDツールの設定ファイル
+└── ops/ # TerraformのCI/CDの自動化シェルスクリプト
 ```
 
 <br>
@@ -721,3 +721,4 @@ AWSを構築する場合，TerraformのAWSプロバイダーを用いている�
 
 developブランチにマージするコミット = 次にリリースするコミット である．他にリリースの優先度が高い対応がある場合，またリリースの粒度が大きすぎる場合，同時にリリースしないように，developブランチへのマージに『待った！』をかけること．
 
+<br>
