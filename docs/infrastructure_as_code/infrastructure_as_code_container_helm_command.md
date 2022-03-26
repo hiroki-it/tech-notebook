@@ -31,7 +31,7 @@ $ helm create <チャートへのパス>
 
 #### ・オプション無し
 
-指定したチャートアーカイブをKubernetesリソースとしてデプロイする．
+チャートアーカイブを指定し，Kubernetesリソースとしてデプロイする．
 
 参考：https://helm.sh/docs/helm/helm_install/
 

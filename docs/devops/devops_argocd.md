@@ -31,11 +31,33 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ## 01-02. ユースケース
 
-### AWS EKSへのデプロイ
+### アプリケーションリポジトリ起点
+
+![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
-![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
+（１）アプリケーションリポジトリで，開発者が機能の変更をmainブランチにマージする．
+
+（２）CIツールが，イメージをECRにプッシュする．
+
+（３）CIツールが，マニフェストリポジトリにプルリクを作成する．このプルリクでは，マニフェストファイルでイメージのハッシュ値を指定している箇所が変更される．
+
+（４）マニフェストリポジトリで，開発者がプルリクをmainブランチにマージする．
+
+（５）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+
+<br>
+
+### マニフェストリポジトリ起点
+
+![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_gcp.png)
+
+参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+
+（１）マニフェストリポジトリで，開発者がマニフェストファイルやチャートの変更をmainブランチにマージする．
+
+（２）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
 
 <br>
 
@@ -208,6 +230,8 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 アプリケーションのプロジェクト名を設定する．プロジェクト名は『```default```』とする必要がある．（理由は要調査）
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -224,13 +248,15 @@ spec:
 
 #### ・sourceとは
 
-監視対象のリポジトリ（GitHub，Helm）と，これのターゲットを設定する．
+マニフェストリポジトリ（GitHub）やチャートリポジトリ（Helm公式，ECR，ArtifactHub）を設定する．
 
 #### ・directory
 
 pathオプションで指定したディレクトリにサブディレクトリが存在している場合に，マニフェストファイルの再帰的検出を有効化する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -247,7 +273,9 @@ spec:
 
 #### ・path
 
-リポジトリで，マニフェストファイルが管理されているディレクトリを設定する．
+GitHubを指定した場合に，監視対象のディレクトリを設定する．
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -262,9 +290,16 @@ spec:
 
 #### ・repoURL
 
-リポジトリのURLを設定する．
+マニフェストリポジトリやチャートリポジトリのURLを設定する．
 
-参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+
+**＊実装例＊**
+
+マニフェストリポジトリとしてGitHubを指定する場合は，以下の通り．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -277,11 +312,29 @@ spec:
     repoURL: https://github.com/hiroki-it/foo-manifests.git
 ```
 
+チャートリポジトリとしてAWS ECRを指定する場合は，以下の通り．別途，ECRへのログインが必要なことに注意する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    repoURL: oci://*****.dkr.ecr.ap-northeast-1.amazonaws.com/foo-helm-repository
+    chart: foo
+```
+
 #### ・targetRevision
 
 リポジトリで，監視対象とするブランチやバージョンタグを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -306,6 +359,8 @@ spec:
 
 デプロイ先の名前空間を設定する．
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -320,6 +375,8 @@ spec:
 #### ・server
 
 デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -348,6 +405,8 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -372,6 +431,8 @@ ArgoCDのリソースの作成対象とする名前空間を自動的に作成�
 - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
 - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -384,3 +445,4 @@ spec:
       - CreateNamespace=true
 ```
 
+<br>

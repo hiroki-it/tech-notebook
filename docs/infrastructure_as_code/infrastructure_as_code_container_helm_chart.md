@@ -51,12 +51,15 @@ $ sudo apt-get install helm
 
 ### ディレクトリ構造
 
-参考：https://helm.sh/docs/topics/charts/#the-chart-file-structure
+参考：
+
+- https://helm.sh/docs/topics/charts/#the-chart-file-structure
+- https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
 
 ```bash
 chart_directory/
 ├── charts/ # 依存する他のチャートを配置する．
-├── temlaptes/ # ユーザー定義のチャートを配置する．
+├── temlaptes/ # ユーザー定義のチャートを配置する．ディレクトリ構造は自由である．
 │   ├── tests/
 │   ├── _helpers.tpl
 │   └── template.yml # チャートの共通ロジックを設定する．
@@ -68,9 +71,11 @@ chart_directory/
 
 <br>
 
-## 04. apiVersion
+## 04. Chart.yamlファイル
 
-### apiVersionとは
+### apiVersion
+
+#### ・apiVersionとは
 
 Helm-APIのバージョンを設定する．
 
@@ -82,25 +87,53 @@ apiVersion: v2
 
 <br>
 
-## 05. name
+### appVersion
 
-### nameとは
+#### ・appVersionとは
 
-Helmで作成されるKubernetesリソースの接頭辞を設定する．
+Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する．
 
-参考：https://helm.sh/docs/topics/charts/#the-apiversion-field
+参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
 ```yaml
-name: prd
+appVersion: 1.0.0
 ```
 
 <br>
 
-## 06. version
+### name
 
-### versionとは
+#### ・nameとは
 
-チャートアーカイブのリリースのバージョンを設定する．
+Helmで作成されるKubernetesリソースの接頭辞を設定する．
+
+参考：https://helm.sh/docs/topics/charts/#the-chartyaml-file
+
+```yaml
+name: foo
+```
+
+<br>
+
+### type
+
+#### ・typeとは
+
+チャートのタイプを設定する．
+
+参考：https://helm.sh/docs/topics/charts/#chart-types
+
+```yaml
+type: application
+```
+
+<br>
+
+### version
+
+#### ・versionとは
+
+チャートアーカイブのリリースバージョンを設定する．
 
 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
