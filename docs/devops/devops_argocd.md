@@ -401,9 +401,14 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 #### ・automated
 
-GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を有効化する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない．また，Kubernetes側のリソースを変更しても，リポジトリ（GitHub，Helm）の状態に戻すための自動同期は実行されない．これらは自動同期されるように設定しておいた方が良い．
+GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を有効化する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+
+| オプション     | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| ```prune```    | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
+| ```selfHeal``` | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
 
 **＊実装例＊**
 
@@ -416,20 +421,22 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      # リソースの削除を自動同期する．
       prune: true
-      # Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．
       selfHeal: true
 ```
 
 #### ・syncOptions
 
-ArgoCDのリソースの作成対象とする名前空間を自動的に作成する．ArgoCDのためだけの名前空間を用意する場合は，これを有効化しておいた方が良い．
+GtiOpsでのマニフェストファイルの同期処理の詳細を設定する．
 
 参考：
 
 - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
 - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
+
+| オプション            | 説明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| ```CreateNamespace``` | ArgoCDのリソースの作成対象とする名前空間を自動的に作成する．ArgoCDのためだけの名前空間を用意する場合は，これを有効化しておいた方が良い． |
 
 **＊実装例＊**
 
@@ -443,6 +450,116 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+```
+
+<br>
+
+## 04. spec（Rolloutの場合）
+
+### analysis
+
+#### ・analysisとは
+
+Progressive Deliveryを用いる場合に，詳細を設定する．
+
+#### ・successfulRunHistoryLimit
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: foo-argocd-deployment
+spec:
+  analysis:
+    successfulRunHistoryLimit: 10
+```
+
+#### ・unsuccessfulRunHistoryLimit
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: foo-argocd-deployment
+spec:
+  analysis:
+    unsuccessfulRunHistoryLimit: 10
+```
+
+<br>
+
+### strategy
+
+#### ・strategy
+
+デプロイ手法を設定する．
+
+#### ・blueGreen
+
+![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
+
+ブルーグリーンデプロイメントを用いて，新しいPodをリリースする．
+
+参考：
+
+- https://argoproj.github.io/argo-rollouts/features/bluegreen/
+- https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
+
+| オプション                  | 説明                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| ```activeService```         | ブルー環境へのルーティングに用いるServiceを設定する．        |
+| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する．もし無効化した場合，```autoPromotionSeconds```の秒数だけ切り替えを待機する． |
+| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する． |
+| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                              |
+| ```previewService```        | グリーン環境へのルーティングに用いるServiceを設定する．      |
+| ```scaleDownDelaySeconds``` |                                                              |
+
+**＊実装例＊**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: foo-argocd-blue-green-deployment
+spec:
+  strategy:
+    blueGreen:
+      activeService: foo-argocd-active-service
+      previewService: foo-argocd-preview-service
+      previewReplicaCount: 1
+      autoPromotionEnabled: true
+      scaleDownDelaySeconds: 30
+```
+
+#### ・canary
+
+![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
+
+カナリアリリースを用いて，新しいPodをリリースする．
+
+参考：
+
+- https://argoproj.github.io/argo-rollouts/features/canary/
+- https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
+
+| オプション | 説明                                                         |
+| ---------- | ------------------------------------------------------------ |
+| ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
+
+**＊実装例＊**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: foo-argocd-canary-release
+spec:
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause:
+            duration: 10
 ```
 
 <br>
