@@ -496,7 +496,7 @@ Pod間で通信する場合のインバウンド/アウトバウンド通信の�
 
 #### ・Ingress
 
-他のPodからの受信するインバウンド通信のルールを設定する．Ingressリソースとは関係がないことに注意する．
+他のPodからの受信するインバウンド通信のルールを設定する．Ingressとは関係がないことに注意する．
 
 #### ・Egress
 
@@ -535,19 +535,29 @@ Podが稼働するサーバー単位こと．Kubernetesの実行時に自動的�
 
 #### ・PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにマウントする方法のこと．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimリソースにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimリソースを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにボリュームマウントする方法のこと．Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistentVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
 
-参考：https://thinkit.co.jp/article/14195
+参考：
+
+- https://thinkit.co.jp/article/14195
+
+Dockerのボリュームとは独立した機能であることに注意する．
+
+- https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+- https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
 #### ・HostPath（本番環境で非推奨）
 
-Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．機能としては，VolumeでのHostPathと同じである．マルチNodeには対応していないため，本番環境では非推奨である．
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにバインドマウントする．機能としては，Volumeの一種であるHostPathと同じである．マルチNodeには対応していないため，本番環境では非推奨である．
 
-参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+- https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 #### ・Local（本番環境で推奨）
 
-Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにマウントする．マルチNodeに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
+Node上に新しく作成したストレージ領域をボリュームとし，これをコンテナにバインドマウントする．マルチNodeに対応している（明言されているわけではく，HostPathとの明確な違いがよくわからない）．
 
 参考：
 
@@ -590,9 +600,14 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 #### ・Volumeとは
 
-既存（ホスト，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
+既存（ワーカーノード，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
 
 参考：https://thinkit.co.jp/article/14195
+
+Dockerのボリュームとは独立した機能であることに注意する．
+
+- https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+- https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
 ```bash
 # Podに接続する
@@ -615,11 +630,13 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ・HostPath（本番環境で非推奨）
 
-Node上の既存のストレージ領域をボリュームとし，コンテナにマウントする．NodeとPod内コンテナ間のバインドマウントによって作成され，同一Node上のPod間でこのボリュームを共有できる．
+Node上の既存のストレージ領域をボリュームとし，コンテナにバインドマウントする．バインドマウントは，NodeとPod内コンテナ間で実行され，同一Node上のPod間でこのボリュームを共有できる．
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
-以下の通り，HostPathではバインドマウントが使用されていることを確認できる．
+HostPathは非推奨である．
+
+参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 ```bash
 # Node内でdockerコマンドを実行
@@ -662,7 +679,7 @@ $ docker inspect <コンテナID>
 
 #### ・EmptyDir
 
-Podの既存のストレージ領域をボリュームとし，コンテナにマウントする．そのため，Podが削除されると，このボリュームも同時に削除される．ボリュームマウントによって作成され，Node上のPod間でボリュームを共有できない．
+Podの既存のストレージ領域をボリュームとし，コンテナにボリュームマウントする．そのため，Podが削除されると，このボリュームも同時に削除される．Node上のPod間でボリュームを共有できない．
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 

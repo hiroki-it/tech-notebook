@@ -57,7 +57,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 #### ・タグ変数
 
-構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.< キー名 >}}``` または```{{log.tags.< キー名 >}}```として実装する．
+構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.<キー名>}}``` または```{{log.tags.<キー名>}}```として実装する．
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 

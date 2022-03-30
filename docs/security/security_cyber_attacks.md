@@ -87,7 +87,7 @@ Win10における設定画面
 
 #### ・Macroウイルスとは
 
-Wordなどのワープロアプリや，Excelなどの表計算アプリに感染
+Wordなどのワープロアプリや，Excelなどの表計算アプリケーションに感染
 
 ![Macroウイルス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Macroウイルス.jpg)
 

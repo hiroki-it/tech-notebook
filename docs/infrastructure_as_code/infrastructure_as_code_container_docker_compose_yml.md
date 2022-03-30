@@ -347,7 +347,7 @@ $ docker network inspect foo-network
 ]
 ```
 
-なお，接続するネットワークは明示的に指定しなくても良い．その場合，『<プロジェクト名>_default』というネットワークが，『default』というエイリアス名で作成される．
+なお，接続するネットワークは明示的に指定しなくても良い．その場合，『```<プロジェクト名>_default```』というネットワークが，『default』というエイリアス名で作成される．
 
 ```yaml
 services:
@@ -494,7 +494,7 @@ volumes:
     driver: local   
 ```
 
-権限，バインドボリュームで```datadir```ディレクトリにマウントしようとすると，権限エラーになる．
+権限，バインドマウントで```datadir```ディレクトリにマウントしようとすると，権限エラーになる．
 
 ```bash
 mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
@@ -637,7 +637,7 @@ networks:
       name: backend
 ```
 
-作成した内部/外部ネットワークは，コマンドで確認できる．『<エイリアス名>_default』というネットワーク名になる．
+作成した内部/外部ネットワークは，コマンドで確認できる．『```<エイリアス名>_default```』というネットワーク名になる．
 
 **＊例＊**
 

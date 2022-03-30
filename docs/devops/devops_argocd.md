@@ -201,7 +201,7 @@ spec:
 
 #### ・Argocd経由
 
-ArgoCDのApplicationを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationリソースの両方を削除できる．
+ArgoCDのApplicationを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる．
 
 参考：
 

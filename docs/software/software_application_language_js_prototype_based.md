@@ -324,7 +324,7 @@ ES6から，糖衣構文の```class```によって，オブジェクトを宣言
 export class Foo {
     
     // classでしか使えない．
-    // Setterの代わりにコンストラクタでImmutableを実現．
+    // Setterの代わりにコンストラクタでイミュータブルを実現．
     // データの宣言と格納が同時に行われる．
     constructor(value) {
         this.property = value;
@@ -354,7 +354,7 @@ foo.getValue();
 export const Foo = class {
     
     // classでしか使えない．
-    // Setterの代わりにコンストラクタでImmutableを実現．
+    // Setterの代わりにコンストラクタでイミュータブルを実現．
     // データの宣言と格納が同時に行われる．
     constructor(value) {
         this._property = value;

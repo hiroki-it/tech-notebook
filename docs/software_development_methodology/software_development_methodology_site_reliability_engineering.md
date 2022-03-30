@@ -119,7 +119,12 @@ MTTxメトリクスとそのダッシュボードを作成するとよい．MTTx
 
 #### ・参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
-可用性やQoS：Quality of Serviceに関するメトリクスをSLIに選択すると良い．具体的には，可用性は稼働時間を基に定量化できる．SLOは，サイト提供者会社内部で決める目標値である．
+可用性やQoS：Quality of Serviceに関するメトリクスをSLIに選択すると良い．具体的には，可用性は稼働時間を基に定量化できる．SLOは，サイト提供者会社内部で決める目標値である．ちなみに，耐障害性は障害が起きた時にユーザーへの影響をどれだけ小さくできるかの程度，可用性は障害後にどれだけ素早く回復できるかの程度を表す．
+
+参考：
+
+- https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
+- https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
 
 <br>
 
@@ -160,13 +165,13 @@ SLOを達成したかどうかを判断する場合に，ヒストグラムが�
 
 ### ドキュメントの種類
 
-| 種類           | 例                                                           |
-| -------------- | ------------------------------------------------------------ |
-| サービス概要   | アーキテクチャ，コンポーネント間の依存関係，ステークホルダー，プロダクト責任者 |
-| 手順書         |                                                              |
+| 種類      | 例                                                                                            |
+|---------|----------------------------------------------------------------------------------------------|
+| サービス概要  | アーキテクチャ，コンポーネント間の依存関係，ステークホルダー，プロダクト責任者                                                      |
+| 手順書     |                                                                                              |
 | ポストモーテム | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
-| ポリシー       | リリースノート，命名規則，など                               |
-| SLA            | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
+| ポリシー    | リリースノート，命名規則，など                                                                              |
+| SLA     | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
 
 <br>
 

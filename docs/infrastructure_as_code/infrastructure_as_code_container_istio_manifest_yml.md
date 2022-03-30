@@ -27,9 +27,9 @@ description: manifest.yml＠Istioの知見をまとめました．
 $ istioctl install --set profile=demo
 ```
 
-#### ・IstioOperatorリソース経由
+#### ・IstioOperator経由
 
-（１）まずは，IstioOperatorリソースをインストールする．IstioOperatorリソースは，デフォルトで```istio-system```にIstioリソースをインストールするようになっている．
+（１）まずは，IstioOperatorをインストールする．IstioOperatorは，デフォルトで```istio-system```にIstioリソースをインストールするようになっている．
 
 参考：https://istio.io/latest/docs/setup/install/operator/
 
@@ -42,7 +42,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorリソースが定義されたマニフェストファイルを，istioctlコマンドまたはkubectlコマンドで操作し，Istioリソースをインストールする．kubectlコマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
+（２）IstioOperatorが定義されたマニフェストファイルを，istioctlコマンドまたはkubectlコマンドで操作し，Istioリソースをインストールする．kubectlコマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
 
 ```bash
 # istioctlコマンド

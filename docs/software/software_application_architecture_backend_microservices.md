@@ -345,13 +345,24 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### 設置パターン
 
+#### ・Public API
+
+マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく，API Gatewayを一つだけ構築する．
+
+参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+
+![apigateway_public-api-pattern](/Users/h.hasegawa/Downloads/apigateway_public-api-pattern.png)
+
 #### ・BFF：Backends  For Frontends
 
-クライアント（モバイル，Web，デスクトップ）の種類に応じたAPI Gatewayを構築し，このAPI Gatewayから各マイクロサービスにルーティングする設計方法．
+マイクロサービスにリクエストを送信するアプリケーションの種類（Webアプリケーション，Mobileアプリケーション，他社アプリケーション）に応じたAPI Gatewayを構築する．ただ，複数のクライアントをWebアプリとして開発することも可能なため，同じWebからのアクセスであっても，別々のAPI Gatewayを構築する場合がある．
 
-参考：https://codezine.jp/article/detail/11305?p=4
+参考：
 
-![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
+- https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+- https://codezine.jp/article/detail/11305?p=4
+
+![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_bff-pattern.png)
 
 <br>
 

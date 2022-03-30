@@ -834,7 +834,7 @@ ALBではSSL証明書の変更でダウンタイムは発生しない．既存�
 
 ### Chatbotとは
 
-SNSを経由して，CloudWatchからの通知をチャットアプリに転送するAWSリソース．
+SNSを経由して，CloudWatchからの通知をチャットアプリケーションに転送するAWSリソース．
 
 ![ChatbotとSNSの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ChatbotとSNSの連携.png)
 
@@ -2448,12 +2448,12 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 - https://docs.docker.com/config/containers/logging/awslogs/
 - https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
 
-| 設定項目                      | 説明                                                         | 補足                                                         |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
+| 設定項目                          | 説明                                         | 補足                                                                                                                                                                                          |
+|-------------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する．            |                                                                                                                                                                                             |
 | ```awslogs-datetime-format``` | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる．<br>参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
-| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，『<プレフィックス名>/<コンテナ名>/<タスクID>』の形式で送信される． |
+| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する．             |                                                                                                                                                                                             |
+| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する．  | ログストリームには，『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される．                                                                                                                                      |
 
 #### ・割り当てられるプライベートIPアドレス
 
@@ -4600,10 +4600,6 @@ const getBacketBasedOnDeviceType = (headers) => {
 RDBがAuroraか非Auroraかで機能に差があり，Auroraの方が耐障害性や可用性が高い．ただ，その分費用が高いことに注意する．
 
 参考：https://www.ragate.co.jp/blog/articles/10234
-
-ちなみに，耐障害性は障害が起きにくい程度，可用性は障害後の回復能力の程度を表す．
-
-参考：https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
 
 <br>
 
