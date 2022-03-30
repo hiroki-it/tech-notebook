@@ -177,10 +177,6 @@ nav:
                       - パッケージ管理: software/software_application_language_php_package_management.md
                       - SQLパッケージ: software/software_application_language_php_package_sql.md
                       - その他パッケージ: software/software_application_language_php_package_others.md
-                  - ■ テスト:
-                      - テスト: software/software_application_language_php_testing.md
-                      - コードベースのテスト: software/software_application_language_php_testing_based_on_code.md
-                      - テスト仕様書ベースのテスト: software/software_application_language_php_testing_based_on_test_specification.md
               - ■ JavaScript:
                   - ■ プロトタイプベース:
                       - プロトタイプ: software/software_application_language_js_prototype_based.md
@@ -213,6 +209,11 @@ nav:
                           - コマンド: software/software_application_language_python_framework_flask_command.md
                   - ■ パッケージ:
                       - パッケージ管理: software/software_application_language_python_package_management.md
+          - ■ テスト:
+              - テスト: software/software_application_testing.md
+              - テスト仕様書ベースのテスト: software/software_application_testing_based_on_test_specification.md
+              - ■ コードベースのテスト:
+                  - PHP: software/software_application_testing_based_on_code_php.md
 
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
@@ -327,5 +328,5 @@ nav:
   - 📊 統計分析:
       - R言語: statistic_analysis/statistic_analysis_r.md
 
-  - 📢 過去の技術系プレゼン: 
+  - 📢 過去の技術系プレゼン:
       - 一覧: presentation.md
