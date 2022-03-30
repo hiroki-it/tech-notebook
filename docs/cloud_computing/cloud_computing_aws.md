@@ -4601,6 +4601,10 @@ RDBがAuroraか非Auroraかで機能に差があり，Auroraの方が耐障害�
 
 参考：https://www.ragate.co.jp/blog/articles/10234
 
+ちなみに，耐障害性は障害が起きにくい程度，可用性は障害後の回復能力の程度を表す．
+
+参考：https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
+
 <br>
 
 ### OSの隠蔽

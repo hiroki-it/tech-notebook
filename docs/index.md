@@ -131,10 +131,6 @@ title: 【知見を記録するサイト】目次
         * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html)
         * [📖：︎SQLパッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_sql.html)
         * [📖：︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_others.html)
-    * テスト
-        * [📖：︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing.html)
-        * [📖：︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_code.html)
-        * [📖：︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_test_specification.html)
 * JavaScript
     * プロトタイプベース
         * [📖：︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based.html)
@@ -167,6 +163,12 @@ title: 【知見を記録するサイト】目次
             * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_python_framework_flask_command.html)
     * パッケージ
         * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_python_package_management.html)
+
+#### ■ テスト
+
+* [📖：︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing.html)
+* [📖：︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_test_specification.html)
+    * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html)
 
 <br>
 

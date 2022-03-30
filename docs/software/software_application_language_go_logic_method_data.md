@@ -2347,7 +2347,7 @@ if err != nil {
 
 ブラックボックステストとホワイトボックステストから構成される．以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_code.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
 
 <br>
 
@@ -2369,7 +2369,7 @@ if err != nil {
 
 網羅率はパッケージを単位として解析される．網羅については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_code.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
 
 <br>
 
@@ -2387,7 +2387,7 @@ if err != nil {
 
 回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_testing_based_on_code.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
 
 #### ・POSTデータの切り分け
 

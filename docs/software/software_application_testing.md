@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】テスト＠PHP
-description: テスト＠PHPの知見をまとめました．
+title: 【知見を記録するサイト】テスト
+description: テストの知見をまとめました．
 ---
 
-# テスト＠PHP
+# テスト
 
 ## はじめに
 
@@ -25,19 +25,37 @@ description: テスト＠PHPの知見をまとめました．
 
 ### 整形ツール
 
+#### ・PHP
+
 PhpStorm，PHP-CS-Fixer
+
+#### ・Go
+
+標準の```go fmt```コマンド
 
 <br>
 
 ### 静的解析ツール
 
+#### ・PHP
+
 PhpStorm，PHPStan，Larastan
+
+#### ・Go
+
+標準の```go vet```コマンド
 
 <br>
 
 ### ユニットテストツール，機能テストツール
 
+#### ・PHP
+
 PHPUnit
+
+#### ・Go
+
+標準の```go fmt```コマンド
 
 <br>
 
