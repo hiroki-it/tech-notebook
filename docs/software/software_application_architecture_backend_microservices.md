@@ -351,7 +351,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 
-![apigateway_public-api-pattern](/Users/h.hasegawa/Downloads/apigateway_public-api-pattern.png)
+![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
 #### ・BFF：Backends  For Frontends
 
