@@ -201,7 +201,7 @@ spec:
 
 #### ・Argocd経由
 
-ArgoCDを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationリソースの両方を削除できる．
+ArgoCDのApplicationを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationリソースの両方を削除できる．
 
 参考：
 
@@ -212,7 +212,27 @@ ArgoCDを削除する．```--cascade```オプションを有効化すると，Ar
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
+もし，Applicationが削除中のまま進行しない時は，Applicationのマニフェストファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する．
+
+参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+
+```bash
+$ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers: [] # <--- 空配列に変更する．
+spec:
+
+# 〜 中略 〜
+```
+
 #### ・Kubectl経由
+
+ArgoCDのApplicationを削除する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
@@ -405,10 +425,11 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| オプション     | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| ```prune```    | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
-| ```selfHeal``` | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
+| オプション       | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
+| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
+| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
 **＊実装例＊**
 
@@ -436,7 +457,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 
 | オプション            | 説明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| ```CreateNamespace``` | ArgoCDのリソースの作成対象とする名前空間を自動的に作成する．ArgoCDのためだけの名前空間を用意する場合は，これを有効化しておいた方が良い． |
+| ```CreateNamespace``` | Applicationの作成対象とする名前空間を自動的に作成する．ArgoCDがインストールされる名前空間と，Applicationを作成する名前空間が異なる場合に，これを有効化しておいた方が良い． |
 
 **＊実装例＊**
 

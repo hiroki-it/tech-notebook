@@ -2875,7 +2875,13 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 ### セットアップ
 
-（１）EKSのコンテキストを作成する．
+（１）AWSCLIにクレデンシャル情報を設定する．
+
+```bash
+$ aws configure
+```
+
+（２）EKSのコンテキストを作成する．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
 
@@ -2883,7 +2889,7 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-（２）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+（３）kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
@@ -2891,7 +2897,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <クラスターARN>
 ```
 
- （３）EKSクラスターからCloudWatchログにログを送信できるようにする．また，EKSのサービスリンクロールにCloudWatchへのアクセス権限を付与する．
+ （４）EKSクラスターからCloudWatchログにログを送信できるようにする．また，EKSのサービスリンクロールにCloudWatchへのアクセス権限を付与する．
 
 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 

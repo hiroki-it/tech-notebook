@@ -30,18 +30,6 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | 2017    | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニマイクロサービスアーキテクチャを考案した．このアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のマイクロサービスに分割する．この粒度を，マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ．<br>参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2018    | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの，複数のマイクロサービスが必要になることは変わらず，その分だけ開発チームが必要になる問題は解決されなかった．そこで，Root Insurance社はモジュラモノリスを考案した．モジュラモノリスでは，マイクロサービスの概念を取り入れずに，アプリケーションを細かいモジュールに分割する．<br>参考：https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4<br>反対に，最初モジュラーモノリスとして設計し，マイクロサービスアーキテクチャに移行していくという選択肢もある．<br>参考：https://creators-note.chatwork.com/entry/2020/12/02/090000#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3 |
 
-#### ・プレゼンテーションドメイン分離
-
-![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/presentation_domain_separation.png)
-
-モノリシックなアプリケーションがドメイン層だけでなくプレゼンテーション層のロジックも持っている場合，ドメイン層をマイクロサービスに分離する前に，プレゼンテーション層をフロントエンドアプリケーションとして分離しておく必要がある．
-
-参考：
-
-- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
-- https://bliki-ja.github.io/PresentationDomainSeparation/
-- https://tech.mti.co.jp/entry/2021/04/12/112833
-
 #### ・モジュール/マイクロサービスの粒度の比較
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
@@ -78,24 +66,6 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 #### ・複数の開発言語を使用可能
 
 マイクロサービス間で，共通のデータ記述言語を用いてデータ通信を行えば，各マイクロサービスの開発言語が異なっていても問題ない．
-
-<br>
-
-### リポジトリの粒度
-
-#### ・モノリポジトリ
-
-全てのマイクロサービスを1つのリポジトリで管理する．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
-
-参考：https://www.fourtheorem.com/blog/monorepo
-
-![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
-
-#### ・ポリリポジトリ
-
-各マイクロサービスを異なるリポジトリで管理する．
-
-![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
 
 <br>
 
@@ -161,8 +131,6 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
 - https://www.amazon.co.jp/dp/4873119316/ref=cm_sw_em_r_mt_dp_PVDKB4F74K7S07E4CTFF
 
-
-
 #### ・ルートエンティティを単位とした分割
 
 ![service_route-entity](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_route-entity.png)
@@ -175,6 +143,37 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://www.koslib.com/posts/entity-services-anti-pattern/
 - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
 - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
+
+<br>
+
+### 粒度のアンチパターン
+
+#### ・分散モノリス
+
+複数のマイクロサービスをセットでデプロイしなければならず，マイクロサービス間のデプロイが独立していないような粒度のパターン．例えば，マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果，複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある．分散モノリスにならないように，マイクロサービス間で用いるライブラリが重複することを許容する必要がある．
+
+参考：
+
+- https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/
+- https://r-kaga.com/blog/what-is-distributed-monolith
+
+<br>
+
+### マイクロサービスとリポジトリの対応関係
+
+#### ・モノリポジトリ
+
+全てのマイクロサービスを1つのリポジトリで管理する．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
+
+参考：https://www.fourtheorem.com/blog/monorepo
+
+![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
+
+#### ・ポリリポジトリ
+
+各マイクロサービスを異なるリポジトリで管理する．
+
+![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
 
 <br>
 
@@ -267,11 +266,25 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 05. マイクロサービスの公開
+## 05. プレゼンテーションドメイン分離
 
-### API Gatewayパターン
+### プレゼンテーションドメイン分離とは
 
-#### ・API Gatewayパターンとは
+![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/presentation_domain_separation.png)
+
+モノリシックなアプリケーションがドメイン層だけでなくプレゼンテーション層のロジックも持っている場合，ドメイン層をマイクロサービスに分離する前に，プレゼンテーション層をフロントエンドアプリケーションとして分離しておく必要がある．
+
+参考：
+
+- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
+- https://bliki-ja.github.io/PresentationDomainSeparation/
+- https://tech.mti.co.jp/entry/2021/04/12/112833
+
+<br>
+
+### API Gateway
+
+#### ・API Gatewayとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_api-gateway-pattern.png)
 
@@ -288,32 +301,55 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
 
-#### ・設置場所
-
-参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
-
-| 場合                                            | ツール                                                       |
-| ----------------------------------------------- | ------------------------------------------------------------ |
-| API Gatewayをサービスメッシュ内で管理する場合   | 自前で実装する必要がある．<br>参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy |
-| API Gatewayをサービスメッシュ内で管理しない場合 | クラウドプロバイダー（AWS API Gateway）やOSS（Kong，Tyk，Apigee）を用いる．<br>参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
-
-#### ・BFFパターン：Backends  For Frontends
-
-クライアントの種類（モバイル，Web，デスクトップ）に応じたAPI Gatewayを構築し，このAPI Gatewayから各マイクロサービスにルーティングする設計方法．
-
-参考：https://codezine.jp/article/detail/11305?p=4
-
-![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
-
 <br>
 
-### GraphQL-API
+### 設計パターン
+
+#### ・RESTful-API
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+
+#### ・GraphQL-API
 
 従来のRESTful-APIを用いた場合，バックエンドのエンドポイントが増えるたびに，フロントエンドが指定すべきエンドポイントも増えていく．一方で，GraphQL-APIを用いた場合，単一のエンドポイントをGraphQLで指定すれば，GraphQL-APIが適切な宛先にルーティングしてくれる．
 
 参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
 
 ![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/graphql-api.png)
+
+<br>
+
+### 実装パターン
+
+#### ・自前で実装
+
+API Gatewayを自前で実装する．Kubernetes内で管理できるメリットがある．
+
+参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
+
+#### ・OSSを使用
+
+API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理できるメリットがある．
+
+参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
+
+#### ・クラウドプロバイダーのマネージドサービスを使用
+
+クラウドプロバイダー（AWS API Gateway）を用いる．クラウドプロバイダーの対応状況によっては，Kubernetes内で管理できない可能性がある．
+
+参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
+
+<br>
+
+### 設置パターン
+
+#### ・BFF：Backends  For Frontends
+
+クライアント（モバイル，Web，デスクトップ）の種類に応じたAPI Gatewayを構築し，このAPI Gatewayから各マイクロサービスにルーティングする設計方法．
+
+参考：https://codezine.jp/article/detail/11305?p=4
+
+![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
 
 <br>
 

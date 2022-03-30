@@ -17,7 +17,7 @@ description: skaffold.yml＠Skaffoldの知見をまとめました．
 
 ### パイプライン構成
 
-CICDパイプラインと同様の，build/test/deployステージに加えて，反復的な開発に役立つステージを持つ．
+CICDパイプラインと同様の，build/test/deployステージに加えて，継続的な開発に役立つステージを持つ．ただし，Skaffoldは，基本的には開発環境でしか使わないため，ユースケースが限定的なステージもある．
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
@@ -117,7 +117,7 @@ build:
 
 #### ・push
 
-ビルドしたイメージをリポジトリにプッシュするかどうかを設定する．
+ビルドしたイメージをリポジトリにプッシュするかどうかを設定する．Skaffoldは基本的には開発環境でしか使わないため，これは無効化しておいた方が良い．
 
 ```yaml
 build:
