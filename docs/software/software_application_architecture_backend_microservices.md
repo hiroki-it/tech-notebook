@@ -80,6 +80,136 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
+## 02. プロジェクトやリポジトリの粒度
+
+### リポジトリの分割
+
+#### ・モノリポジトリ
+
+バックエンドのマイクロサービス，バックエンドから分離されたフロントエンドアプリケーション，IaCツール（KubernetesやTerraformなど），を1つのリポジトリでディレクトリで分割して管理する．ただし，バックエンド/フロントエンド/IaCツールは異なるモノリポジトリとしても良い．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
+
+参考：https://www.fourtheorem.com/blog/monorepo
+
+![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
+
+#### ・ポリリポジトリ
+
+バックエンドのマイクロサービス，バックエンドから分離されたフロントエンドアプリケーション，IaCツール（KubernetesやTerraformなど），をそれぞれ異なるリポジトリで管理する．
+
+参考：https://www.fourtheorem.com/blog/monorepo
+
+![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
+
+<br>
+
+### アプリケーションリポジトリ
+
+#### ・開発環境
+
+アプリエンジニアとインフラエンジニアの責務を完全に分離する場合，アプリエンジニアはIaCツールの存在を知る必要がない．ただし便宜上，アプリエンジニアはDocker compose用いて開発すると良い．各マイクロサービスに```docker-compose.yml```ファイルを置き，基本的には他のマイクロサービスには依存せずに開発できるようにする必要があり，これはモノリポジトリでもポリリポジトリでも同じである．ただ，マイクロサービス間のネットワークを繋げないと，マイクロサービス間で通信ができない．そのため，Docker composeの```external```オプションを用いて，マイクロサービス間のネットワークを接続する．
+
+```bash
+# モノリポジトリの場合
+backend_mono_repository
+├── src/
+│   ├── foo/
+│   │   ├── docker-compose.yml
+│   │   ...
+│   │
+│   ├── bar/
+│   └── baz/
+...
+```
+
+```bash
+# モノリポジトリの場合
+frontend_mono_repository
+├── src/
+│   ├── qux/
+│   │   ├── docker-compose.yml
+│   │   ├── Dockerfile
+│   │   ...
+│   │
+│   ├── quux/
+│   └── corge/
+...
+```
+
+#### ・エディタ
+
+多くのエディタでは，専用の設定ファイルがプロジェクトのルートディレクトリに置かれる．基本的には，他のマイクロサービスには依存せずに開発できるようにする必要があり，これはモノリポジトリでもポリリポジトリでも同じである．そこで，各マイクロサービスにエディタの設定ファイルを置くようにする．
+
+```bash
+# モノリポジトリの場合
+# JetBrains製品をエディタとする場合
+backend_mono_repository
+├── src/
+│   ├── foo/
+│   │   ├── .idea/
+│   │   ...
+│   │
+│   ├── bar/
+│   └── baz/
+...
+```
+
+```bash
+# モノリポジトリの場合
+# JetBrains製品をエディタとする場合
+frontend_mono_repository
+├── src/
+│   ├── qux/
+│   │   ├── .idea/
+│   │   ...
+│   │
+│   ├── quux/
+│   └── corge/
+...
+```
+
+<br>
+
+### コンテナIaCツールリポジトリ
+
+#### ・開発環境
+
+IaCツールにKubernetesを用いた場合を示す．開発環境でKubernetesを稼働させる場合，Skaffoldなどのイメージビルドツールを使うとよい．この時，イメージのビルドのために，アプリケーションリポジトリにあるDockerfileを指定する必要がある．開発環境では同じ階層にリポジトリを置いておき，ビルドツールで相対パスを指定することで，同階層のアプリケーションリポジトリを参照できるようにする．
+
+```bash
+local_project
+├── mono_repository
+│   ├── qux/
+│   ... ├── Dockerfile
+│       ...
+│
+│   # コンテナのIaCツールを管理するリポジトリ
+└── manifests_repository
+    ├── skaffold.yaml # 相対パスを設定し，mono_repositoryを参照できるようにする．
+    ├── argocd/
+    ├── kubernetes/
+    ├── istio/
+    ...
+```
+
+<br>
+
+### クラウドインフラIaCツールリポジトリ
+
+IaCツールにTerraformを用いた場合を示す．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html
+
+```bash
+# クラウドインフラのIaCツールを管理するリポジトリ
+infrastructure_repository
+├── modules/
+├── prd/
+├── stg/
+...
+```
+
+<br>
+
 ## 02. 各マイクロサービスの粒度
 
 ### マイクロサービス
@@ -114,11 +244,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・分割例
 
-| ユースケース | 分割方法          | マイクロサービスの種類                                                      | ディレクトリ構成                                    | リンク                                                              |
-|--------|---------------|------------------------------------------------------------------|---------------------------------------------|------------------------------------------------------------------|
-| Eコマース  | 境界付けられたコンテキスト | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する．      | Google：https://github.com/GoogleCloudPlatform/microservices-demo |
-| Eコマース  | 境界付けられたコンテキスト | 広告，割引                                                            | ルートに各マイクロサービスのディレクトリを配置する．                  | Datadog：https://github.com/DataDog/ecommerce-workshop            |
-| Eコマース  | 境界付けられたコンテキスト | 認証，カタログ，顧客，商品                                                    | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example |
+| ユースケース | 分割方法                   | マイクロサービスの種類                                       | ディレクトリ構成                                             | リンク                                                       |
+| ------------ | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Eコマース    | 境界付けられたコンテキスト | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視<br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png) | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する． | Google：https://github.com/GoogleCloudPlatform/microservices-demo |
+| Eコマース    | 境界付けられたコンテキスト | 認証，カタログ，顧客，商品<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example |
+| Eコマース    | 境界付けられたコンテキスト | 広告，割引                                                   | ルートに各マイクロサービスのディレクトリを配置する．         | Datadog：https://github.com/DataDog/ecommerce-workshop       |
 
 #### ・サブドメイン，境界付けられたコンテキストを単位とした分割
 
@@ -135,13 +265,10 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・ルートエンティティを単位とした分割
 
-![service_route-entity](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_route-entity.png)
-
 ルートエンティティをマイクロサービスの単位とする．ただし，データに着目した従来のステートソーシングのルートエンティティを用いることはアンチパターンである．最良な解決策として，振舞に着目したイベントソーシングを用いる必要がある．また，各マイクロサービスを名詞ではなく動詞で命名すると良い．その他，各マイクロサービスでDBを完全に独立させることや，SAGAパターンを用いること，がある．
 
 参考：
 
-- https://github.com/GoogleCloudPlatform/microservices-demo
 - https://www.koslib.com/posts/entity-services-anti-pattern/
 - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
 - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
@@ -161,29 +288,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-### マイクロサービスとリポジトリの対応関係
-
-#### ・モノリポジトリ
-
-全てのマイクロサービスを1つのリポジトリで管理する．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
-
-参考：https://www.fourtheorem.com/blog/monorepo
-
-![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
-
-#### ・ポリリポジトリ
-
-各マイクロサービスを異なるリポジトリで管理する．
-
-![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
-
-<br>
-
 ## 03. マイクロサービス間通信の方式
 
 ### リクエストリプライ方式
 
-#### ・リクエストリプライ方式
+#### ・リクエストリプライ方式とは
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
