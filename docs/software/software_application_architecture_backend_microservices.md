@@ -80,7 +80,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-## 02. プロジェクトやリポジトリの粒度
+## 02. リポジトリや開発プロジェクトの粒度
 
 ### リポジトリの分割
 
@@ -246,8 +246,8 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 | ユースケース | 分割方法                   | マイクロサービスの種類                                       | ディレクトリ構成                                             | リンク                                                       |
 | ------------ | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Eコマース    | 境界付けられたコンテキスト | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視<br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png) | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する． | Google：https://github.com/GoogleCloudPlatform/microservices-demo |
-| Eコマース    | 境界付けられたコンテキスト | 認証，カタログ，顧客，商品<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example |
+| Eコマース    | 境界付けられたコンテキスト | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する． | Google：https://github.com/GoogleCloudPlatform/microservices-demo<br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png) |
+| Eコマース    | 境界付けられたコンテキスト | 認証，カタログ，顧客，商品                                   | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) |
 | Eコマース    | 境界付けられたコンテキスト | 広告，割引                                                   | ルートに各マイクロサービスのディレクトリを配置する．         | Datadog：https://github.com/DataDog/ecommerce-workshop       |
 
 #### ・サブドメイン，境界付けられたコンテキストを単位とした分割
