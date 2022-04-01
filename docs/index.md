@@ -257,6 +257,7 @@ title: 【知見を記録するサイト】目次
     * Helm
         * [📖：︎チャート](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_chart.html)
         * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_command.html)
+        * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_policy.html)
 * クラウドインフラプロビジョニング
     * Terraform
         * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)
@@ -315,7 +316,7 @@ title: 【知見を記録するサイト】目次
 
 ## 📊 統計分析
 
-* [📖：︎R言語](https://hiroki-it.github.io/tech-notebook-mkdocs/statistic_analysis/statistic_analysis_r.html)
+* [📖：︎R](https://hiroki-it.github.io/tech-notebook-mkdocs/statistic_analysis/statistic_analysis_r.html)
 
 <br>
 

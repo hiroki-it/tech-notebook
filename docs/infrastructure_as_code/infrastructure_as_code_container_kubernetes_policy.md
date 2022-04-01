@@ -54,25 +54,25 @@ repository/
 ├── foo/ # fooサービス
 │   ├── deployment.yaml
 │   ├── service.yaml
-│   ├── persistentVolume.yaml
-│   └── persistentVolumeClaim.yaml
+│   ├── persistent-volume.yaml
+│   └── persistent-volume-claim.yaml
 │
 ├── bar/ # fooサービス
 │   ├── deployment.yaml
 │   ├── service.yaml
-│   ├── persistentVolume.yaml
-│   └── persistentVolumeClaim.yaml
+│   ├── persistent-volume.yaml
+│   └── persistent-volume-claim.yaml
 │
 └── baz/ # bazサービス
     ├── app/ # appコンポーネント
     │   ├── deployment.yaml
     │   ├── service.yaml
-    │   └── persistentVolume.yaml
+    │   └── persistent-volume.yaml
     │
     └── db/ # dbコンポーネント
-        ├── statefulSet.yaml
+        ├── stateful-set.yaml
         ├── service.yaml
-        └── persistentVolume.yaml
+        └── persistent-volume.yaml
 ```
 
 #### ・ディレクトリ無し
@@ -94,18 +94,18 @@ repository/
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
-| キー名           | 説明                                                       | キー値の例                      |
-| ---------------- | ---------------------------------------------------------- | ------------------------------- |
-| ```app```        | マイクロサービス名                                         | ```foo```，```foo-service```    |
-| ```component```  | コンテナの役割名                                           | ```database```                  |
-| ```created-by``` | このKubernetesリソースを作成したリソースやユーザー | ```controller-manager```        |
-| ```env```        | アプリケーションの実行環境名                               | ```prd```，```stg```，```dev``` |
-| ```instance```   | コンテナのインスタンス名                                   | ```mysql-abcxzy```              |
-| ```managed-by``` | アプリケーションの管理ツール名                             | ```helm```                      |
-| ```name```       | マイクロサービスを構成するコンテナのベンダー名             | ```mysql```                     |
-| ```part-of```    | マイクロサービス全体のアプリケーション名                   | ```bar```                       |
-| ```type```       | リソースの設定方法の種類名                               | ```host```（PVのマウント対象）     |
-| ```version```    | マイクロサービスのリリースバージョン名                     | ```5.7.21```                    |
+| キー名              | 説明                             | キー値の例                         |
+|------------------|--------------------------------|-------------------------------|
+| ```app```        | マイクロサービス名                      | ```foo```，```foo-service```   |
+| ```component```  | コンテナの役割名                       | ```database```                |
+| ```created-by``` | このKubernetesリソースを作成したリソースやユーザー | ```controller-manager```      |
+| ```env```        | アプリケーションの実行環境名                 | ```prd```，```stg```，```dev``` |
+| ```instance```   | コンテナのインスタンス名                   | ```mysql-abcxzy```            |
+| ```managed-by``` | アプリケーションの管理ツール名                | ```helm```                    |
+| ```name```       | マイクロサービスを構成するコンテナのベンダー名        | ```mysql```                   |
+| ```part-of```    | マイクロサービス全体のアプリケーション名           | ```bar```                     |
+| ```type```       | リソースの設定方法の種類名                  | ```host```（PVのマウント対象）         |
+| ```version```    | マイクロサービスのリリースバージョン名            | ```5.7.21```                  |
 
 <br>
 
@@ -113,11 +113,11 @@ repository/
 
 マイクロサービスの技術スタックがリプレイスされる場合にも対応できるように，```<マイクロサービス名>-<コンポーネント名>-<Kubernetesリソース名>```とするとよい．
 
-| Kubernetesリソース | キー値の例 |
-| ---------------------- | ------------------------------------------------------------ |
-| Service                | ```foo-app-service```，```foo-db-service```                  |
-| Pod                    | ```foo-app-pod```，```foo-db-pod```                          |
-| PersistentVolume       | ```foo-app-perisitent-volume```，```foo-db-pod-perisitent-volume``` |
+| Kubernetesリソース   | キー値の例                                                              |
+|------------------|--------------------------------------------------------------------|
+| Service          | ```foo-app-service```，```foo-db-service```                         |
+| Pod              | ```foo-app-pod```，```foo-db-pod```                                 |
+| PersistentVolume | ```foo-app-perisitent-volume```，```foo-db-pod-perisitent-volume``` |
 
 <br>
 

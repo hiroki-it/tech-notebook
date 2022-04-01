@@ -40,11 +40,11 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-| ホスト側のOS | ゲスト（ワーカーノード）側のOS    |
-| ------------ | --------------------------------- |
-| Linux        | VirtualBox，Docker，KVM2，...     |
-| MacOS        | VirtualBox，Docker，HyperKit，... |
-| Windows      | VirtualBox，Docker，Hyper-V，...  |
+| ホスト側のOS | ゲスト（ワーカーノード）側のOS               |
+|---------|--------------------------------|
+| Linux   | VirtualBox，Docker，KVM2，...     |
+| MacOS   | VirtualBox，Docker，HyperKit，... |
+| Windows | VirtualBox，Docker，Hyper-V，...  |
 
 <br>
 
@@ -73,14 +73,14 @@ $ minikube start
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
-| ドライバー名  | ホスト側のOS | ホスト側のディレクトリ    | ゲスト仮想環境内のワーカーNodeのディレクトリ |
-| ------------- | ------------ | ------------------------- | -------------------------------------------- |
-| VirtualBox    | Linux        | ```/home```               | ```/hosthome```                              |
-| VirtualBox    | macOS        | ```/Users```              | ```/Users```                                 |
-| VirtualBox    | Windows      | ```C://Users```           | ```/c/Users```                               |
-| VMware Fusion | macOS        | ```/Users```              | ```/mnt/hgfs/Users```                        |
-| KVM           | Linux        | なし                      |                                              |
-| HyperKit      | Linux        | なし（NFSマウントを参照） |                                              |
+| ドライバー名        | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のワーカーNodeのディレクトリ |
+|---------------|---------|-----------------|--------------------------|
+| VirtualBox    | Linux   | ```/home```     | ```/hosthome```          |
+| VirtualBox    | macOS   | ```/Users```    | ```/Users```             |
+| VirtualBox    | Windows | ```C://Users``` | ```/c/Users```           |
+| VMware Fusion | macOS   | ```/Users```    | ```/mnt/hgfs/Users```    |
+| KVM           | Linux   | なし              |                          |
+| HyperKit      | Linux   | なし（NFSマウントを参照）  |                          |
 
 <br>
 

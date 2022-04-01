@@ -242,7 +242,7 @@ kubectlを用いて，kubernetesリソースをデプロイする．
 deploy:
   kubectl:
     manifests:
-      - ./kubernetes-manifests/**/**.yaml
+      - ./kubernetes/**/**.yaml
 ```
 
 <br>
@@ -274,3 +274,4 @@ build:
     - image: <イメージ名> # artifactOverridesのイメージ名と合わせる．
 ```
 
+<br>

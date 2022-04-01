@@ -27,3 +27,4 @@ inventoryファイルを指定する．これにより，プロビジョニン�
 $ ansible-playbook <playbookファイル> -i <inventoryファイル>
 ```
 
+<br>

@@ -46,7 +46,7 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f ./istio-manifests/operator.yaml
+$ istioctl install -y -f ./istio/operator.yaml
 ✔ Istio core installed
 ✔ Istiod installed
 ✔ Ingress gateways installed
@@ -56,7 +56,7 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f ./istio-manifests/operator.yaml
+$ kubectl apply -f ./istio/operator.yaml
 
 istiooperator.install.istio.io/istio-operator created
 ```

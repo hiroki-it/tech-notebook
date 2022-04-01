@@ -92,3 +92,5 @@ $ ISTIO_VERSION=1.12
 
 $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_VERSION}/samples/addons/jaeger.yaml
 ```
+
+<br>
