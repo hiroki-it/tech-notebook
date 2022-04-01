@@ -22,8 +22,8 @@ description: 設計ポリシー＠Kubernetesの知見をまとめました．
 アプリケーションとは異なるリポジトリにて，マニフェストファイルを配置する．
 
 ```bash
-project/
-├── foo.yml
+repository/
+├── foo.yaml
 ...
 ```
 
@@ -32,16 +32,16 @@ project/
 アプリケーションと同じリポジトリにて，```kubernetes```ディレクトリを作成し，ここにマニフェストファイルを配置する．
 
 ```bash
-project/
+repository/
 ├── src/ # アプリケーション
 ├── kubernetes/
-│   ├── foo.yml
+│   ├── foo.yaml
 ...
 ```
 
 <br>
 
-### マニフェストファイルのディレクトリ構成
+### ディレクトリ/ファイルの構成
 
 #### ・マイクロサービス別
 
@@ -50,29 +50,29 @@ project/
 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
 ```bash
-project/
+repository/
 ├── foo/ # fooサービス
-│   ├── deployment.yml
-│   ├── service.yml
-│   ├── persistentVolume.yml
-│   └── persistentVolumeClaim.yml
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── persistentVolume.yaml
+│   └── persistentVolumeClaim.yaml
 │
 ├── bar/ # fooサービス
-│   ├── deployment.yml
-│   ├── service.yml
-│   ├── persistentVolume.yml
-│   └── persistentVolumeClaim.yml
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── persistentVolume.yaml
+│   └── persistentVolumeClaim.yaml
 │
 └── baz/ # bazサービス
     ├── app/ # appコンポーネント
-    │   ├── deployment.yml
-    │   ├── service.yml
-    │   └── persistentVolume.yml
+    │   ├── deployment.yaml
+    │   ├── service.yaml
+    │   └── persistentVolume.yaml
     │
     └── db/ # dbコンポーネント
-        ├── statefulSet.yml
-        ├── service.yml
-        └── persistentVolume.yml
+        ├── statefulSet.yaml
+        ├── service.yaml
+        └── persistentVolume.yaml
 ```
 
 #### ・ディレクトリ無し
@@ -80,10 +80,10 @@ project/
 ディレクトリを作成しない．その代わりに，マイクロサービス別にマニフェストファイルを作成し，関連する全てのKubernetesリソースをこの中で定義する．
 
 ```bash
-project/
-├── foo.yml # fooサービス（Deployment，Service，PersistentVolume，...）
-├── bar.yml # fooサービス
-└── baz.yml # bazサービス
+repository/
+├── foo.yaml # fooサービス（Deployment，Service，PersistentVolume，...）
+├── bar.yaml # fooサービス
+└── baz.yaml # bazサービス
 ```
 
 <br>
@@ -120,3 +120,13 @@ project/
 | PersistentVolume       | ```foo-app-perisitent-volume```，```foo-db-pod-perisitent-volume``` |
 
 <br>
+
+### マニフェストファイル
+
+#### ・ファイル名
+
+ディレクトリ構成による．
+
+#### ・拡張子
+
+Kubernetesに関する開発プロジェクトを確認すると，そのほとんとで，YAMLファイルの拡張子を```yml```ではなく```.yaml```でしている．そこで，Kubernetesや関連技術（Istio，Helm，Skaffold，Envoy，など）のYAMLファイルの拡張子を```.yaml```で統一する．

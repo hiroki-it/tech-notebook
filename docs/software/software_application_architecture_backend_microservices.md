@@ -114,6 +114,7 @@ backend_mono_repository
 ├── src/
 │   ├── foo/
 │   │   ├── docker-compose.yml
+│   │   ├── Dockerfile
 │   │   ...
 │   │
 │   ├── bar/
@@ -176,7 +177,7 @@ frontend_mono_repository
 IaCツールにKubernetesを用いた場合を示す．開発環境でKubernetesを稼働させる場合，Skaffoldなどのイメージビルドツールを使うとよい．この時，イメージのビルドのために，アプリケーションリポジトリにあるDockerfileを指定する必要がある．開発環境では同じ階層にリポジトリを置いておき，ビルドツールで相対パスを指定することで，同階層のアプリケーションリポジトリを参照できるようにする．
 
 ```bash
-local_project
+local_directory/
 ├── mono_repository
 │   ├── qux/
 │   ... ├── Dockerfile
@@ -446,7 +447,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 #### ・クラウドプロバイダーのマネージドサービスを使用
 
-クラウドプロバイダー（AWS API Gateway）を用いる．クラウドプロバイダーの対応状況によっては，Kubernetes内で管理できない可能性がある．
+クラウドプロバイダー（例：AWS）が提供するAPI Gatewayを用いる．クラウドプロバイダーの対応状況によっては，Kubernetes内で管理できない可能性がある．その場合，フロントエンドアプリケーションがAPI Gatewayに通信を送信できるように，フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある．
 
 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
 

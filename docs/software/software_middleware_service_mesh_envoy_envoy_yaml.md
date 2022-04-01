@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】envoy.yml＠Envoy
-description: envoy.yml＠Envoyの知見をまとめました．
+title: 【知見を記録するサイト】envoy.yaml＠Envoy
+description: envoy.yaml＠Envoyの知見をまとめました．
 ---
 
-# envoy.yml＠Envoy
+# envoy.yaml＠Envoy
 
 ## はじめに
 
@@ -93,14 +93,14 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 ### Dockerfile
 
-Dockerfileにて，独自の```envoy.yml```ファイルを組み込む．
+Dockerfileにて，独自の```envoy.yaml```ファイルを組み込む．拡張子は，```.yml```ではなく，```.yaml```とする．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
 ```dockerfile
 FROM envoyproxy/envoy:v1.20.1
-COPY envoy.yml /etc/envoy/envoy.yml
-RUN chmod go+r /etc/envoy/envoy.yml
+COPY envoy.yaml /etc/envoy/envoy.yaml
+RUN chmod go+r /etc/envoy/envoy.yaml
 ```
 
 <br>

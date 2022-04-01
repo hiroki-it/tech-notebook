@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】skaffold.yml＠Skaffold
-description: skaffold.yml＠Skaffoldの知見をまとめました．
+title: 【知見を記録するサイト】skaffold.yaml＠Skaffold
+description: skaffold.yaml＠Skaffoldの知見をまとめました．
 ---
 
-# skaffold.yml＠Skaffold
+# skaffold.yaml＠Skaffold
 
 ## はじめに
 
@@ -15,15 +15,15 @@ description: skaffold.yml＠Skaffoldの知見をまとめました．
 
 ## 01 Skaffoldの仕組み
 
-### パイプライン構成
+### 構成
 
-CICDパイプラインと同様の，build/test/deployステージに加えて，継続的な開発に役立つステージを持つ．ただし，Skaffoldは，基本的には開発環境でしか使わないため，ユースケースが限定的なステージもある．
+CI/CDのステージを持つ．build/test/deployステージに加えて，継続的な開発に役立つステージを持つ．ただし，Skaffoldは，基本的には開発環境でしか使わないため，ユースケースが限定的なステージもある．
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
 <br>
 
-### 各ステップのツールの選択
+### 各ステージのツールの選択
 
 Skaffoldの各ステージでは，それ専用のツールをコールできる．
 
@@ -205,7 +205,7 @@ kubernetesリソースのテスト方法を定義する．
 test:
   - image: <リポジトリURL>
     structureTests:
-      - ./structure-tests/foo.yml
+      - ./structure-tests/foo.yaml
 ```
 
 ```yaml
@@ -242,7 +242,7 @@ kubectlを用いて，kubernetesリソースをデプロイする．
 deploy:
   kubectl:
     manifests:
-      - ./kubernetes-manifests/**/**.yml
+      - ./kubernetes-manifests/**/**.yaml
 ```
 
 <br>

@@ -49,7 +49,7 @@ $ pip3 install ansible
 - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 
 ```bash
-project/
+repository/
 ├── playbook.yml
 ├── group_vars/
 │   └── foo_group.yml
@@ -66,7 +66,7 @@ project/
 │   │
 │   └── dev/
 │      
-└── roles
+└── roles/
     ├── app/ # appサーバー
     ├── common/ # 共通
     │   ├── handlers/

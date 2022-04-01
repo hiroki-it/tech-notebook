@@ -2902,7 +2902,7 @@ $ kubectl config use-context <クラスターARN>
 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
 ```bash
-$ kubectl apply -f aws-observability.yaml
+$ kubectl apply -f aws-observability.yml
 ```
 
 ```yaml

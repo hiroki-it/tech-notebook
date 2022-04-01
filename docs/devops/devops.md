@@ -106,9 +106,12 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 #### ・CIOps
 
-CIツールを用いて，CIパイプラインとCDパイプラインの両方を行う手法のこと．例えばCircleCIでアプリケーションのビルドからデプロイまでを実行する．
+CIツールを用いて，CIパイプラインとCDパイプラインの両方を行う手法のこと．例えばCircleCIでアプリケーションのビルドからデプロイまでを実行する．KubernetesをCIOpsでデプロイすることはアンチパターンとされている．
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+参考：
+
+- https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+- https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
 
 #### ・GitOps
 

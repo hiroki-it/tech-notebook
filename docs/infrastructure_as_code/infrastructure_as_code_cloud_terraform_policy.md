@@ -62,7 +62,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 <br>
 
-##  02. ディレクトリ構成
+## 02. ディレクトリ構成
 
 ### リポジトリ
 
@@ -71,7 +71,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 アプリケーションとは異なるリポジトリにて，tfファイルを配置する．推奨である．
 
 ```bash
-project/
+project_directory/
 ├── foo.tf
 ...
 ```
@@ -81,7 +81,7 @@ project/
 アプリケーションと同じリポジトリにて，```terraform```ディレクトリを作成し，ここにtfファイルを配置する．非推奨である．
 
 ```bash
-project/
+repository/
 ├── src/ # アプリケーション
 ├── terraform/
 │   ├── foo.tf
@@ -97,7 +97,7 @@ project/
 稼働環境別に，```foo.tfvars```ファイルで値を定義する．
 
 ```bash
-project
+repository/
 ├── modules/
 │   ├── route53/ # Route53
 │   │   ├── dev/ # 開発
@@ -145,7 +145,7 @@ project
 1つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．Lambdaでは，Lambda関数のソースコードをモジュール下で管理する．
 
 ```bash
-project/
+repository/
 └── modules/
     ├── cloudwatch/ # CloudWatch
     │   ├── alb/        # ALB
@@ -168,7 +168,7 @@ project/
 1つのリソースの設定が稼働環境ごとに異なる場合，冗長性よりも保守性を重視して，稼働環境に応じたディレクトリに分割する．
 
 ```bash
-project/
+repository/
 └── modules/
     ├── route53/ # Route53
     │   ├── dev/ # 開発
@@ -192,7 +192,7 @@ project/
 1つのリソースの設定がリージョンごとに異なる場合，冗長性よりも保守性を重視して，リージョンに応じたディレクトリに分割する．
 
 ```bash
-project/
+repository/
 └── modules/
     └── acm/ # ACM
         ├── ap-northeast-1/ # 東京リージョン
@@ -204,7 +204,7 @@ project/
 WAFで用いるIPパターンセットと正規表現パターンセットには，CloudFrontタイプとRegionalタイプがある．Regionalタイプは，同じリージョンの異なるクラウドプロバイダーのリソース間で共通して用いることができるため，共通セットとしてディレクトリ分割を行う．
 
 ```bash
-project/
+repository/
 └── modules/
     └── waf/ # WAF
         ├── alb/
@@ -225,7 +225,7 @@ project/
 ポリシーのためにJSONを定義する場合，Terraformのコードにハードコーディングせずに，切り分けるようにする．また，『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```bash```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
 
 ```bash
-project/
+repository/
 └── modules/
     ├── ecr/ #ECR
     │   └── ecr_lifecycle_policy.tpl # ECRライフサイクル
@@ -264,14 +264,14 @@ project/
 TerraformのCI/CDで必要なシェルスクリプトは，```ops```ディレクトリで管理する．
 
 ```bash
-project/
+repository/
 ├── .circleci/ # CI/CDツールの設定ファイル
 └── ops/ # TerraformのCI/CDの自動化シェルスクリプト
 ```
 
 <br>
 
-## 03. 命名規則と並び順ntedly
+## 03. 命名規則と並び順
 
 ### module
 

@@ -31,14 +31,14 @@ description: コマンド＠Kubernetesの知見をまとめました．
 
 ```bash
 # リソースを作成する．
-$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yml
+$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yaml
 
 pod/foo-pod created
 ```
 
 ```bash
 # 設定値を変更する．
-$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yml
+$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yaml
 
 pod/foo-pod configured
 ```
@@ -204,13 +204,13 @@ $ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コ�
 マニフェストファイルを指定し，```kubectl create```コマンドを実行する．
 
 ```bash
-$ kubectl create -f ./kubernetes/foo-pod.yml
+$ kubectl create -f ./kubernetes/foo-pod.yaml
 
 pod/foo-pod created
 ```
 
 ```bash
-$ kubectl create -f ./kubernetes/foo-service.yml
+$ kubectl create -f ./kubernetes/foo-service.yaml
 
 service/foo-service created
 ```
@@ -222,7 +222,7 @@ Pod数を維持管理するReplicaSetを作成する．Podを削除するため�
 **＊例＊**
 
 ```bash
-$ kubectl create deployment -f ./kubernetes/foo-deployment.yml
+$ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 ```
 
 #### ・secret generic

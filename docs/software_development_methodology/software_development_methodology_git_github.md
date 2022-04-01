@@ -35,14 +35,14 @@ title: 【知見を記録するサイト】GitHub
 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 ```bash
-project/
+repository/
 └── .github/
     ├── ISSUE_TEMPLATE.md
     └── PULL_REQUEST_TEMPLATE.md
 ```
 
 ```bash
-project/
+repository/
 └── .github/
     ├── ISSUE_TEMPLATE/
     |   ├── FIX.md

@@ -168,7 +168,7 @@ resource "aws_api_gateway_rest_api" "foo" {
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
   # 後述の説明を参考にせよ．（１）
   body = templatefile(
-    "${path.module}/open_api.yaml",
+    "${path.module}/open_api.yml",
     {
       api_gateway_vpc_link_foo_id = aws_api_gateway_vpc_link.foo.id
       nlb_dns_name                          = var.nlb_dns_name

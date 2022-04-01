@@ -133,7 +133,7 @@ ymlファイルの差分を表示する．
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
-$ istioctl manifest diff <変更前マニフェストファイル名>.yml <変更後>.yml
+$ istioctl manifest diff <変更前マニフェストファイル名>.yaml <変更後>.yaml
 ```
 
 <br>
@@ -151,7 +151,7 @@ $ istioctl manifest diff <変更前マニフェストファイル名>.yml <変�
 マニフェストファイルを用いて，プロファイルをインストールする．
 
 ```bash
-$ istioctl install -f ./istio-manifests/<ファイル名>.yml -y
+$ istioctl install -f ./istio-manifests/<ファイル名>.yaml -y
 ```
 
 #### ・--set

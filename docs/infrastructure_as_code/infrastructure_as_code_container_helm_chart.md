@@ -63,31 +63,7 @@ $ sudo apt-get install helm
 
 <br>
 
-## 03. 設計ポリシー
-
-### ディレクトリ構造
-
-参考：
-
-- https://helm.sh/docs/topics/charts/#the-chart-file-structure
-- https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
-
-```bash
-chart_directory/
-├── charts/ # 依存する他のチャートを配置する．
-├── temlaptes/ # ユーザー定義のチャートを配置する．ディレクトリ構造は自由である．
-│   ├── tests/
-│   ├── _helpers.tpl
-│   └── template.yml # チャートの共通ロジックを設定する．
-│
-├── .helmignore # チャートアーカイブの作成時に無視するファイルを設定する．
-├── Chart.yaml # チャートの概要を設定する．
-└── values.yaml # チャートの展開する変数のデフォルト値を設定する．
-```
-
-<br>
-
-## 04. Chart.yamlファイル
+## 03. Chart.yamlファイル
 
 ### apiVersion
 

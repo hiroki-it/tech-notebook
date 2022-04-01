@@ -170,7 +170,7 @@ $ argocd app set guestbook --sync-policy automated
 （６）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
 
 ```bash
-$ kubectl apply -f application.yml
+$ kubectl apply -f application.yaml
 ```
 
 ```yaml

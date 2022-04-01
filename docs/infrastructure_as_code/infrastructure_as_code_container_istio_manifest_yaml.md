@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】manifest.yml＠Istio
-description: manifest.yml＠Istioの知見をまとめました．
+title: 【知見を記録するサイト】manifest.yaml＠Istio
+description: manifest.yaml＠Istioの知見をまとめました．
 ---
 
-# manifest.yml＠Istio
+# manifest.yaml＠Istio
 
 ## はじめに
 
@@ -46,7 +46,7 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f ./istio-manifests/operator.yml
+$ istioctl install -y -f ./istio-manifests/operator.yaml
 ✔ Istio core installed
 ✔ Istiod installed
 ✔ Ingress gateways installed
@@ -56,7 +56,7 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f ./istio-manifests/operator.yml
+$ kubectl apply -f ./istio-manifests/operator.yaml
 
 istiooperator.install.istio.io/istio-operator created
 ```
