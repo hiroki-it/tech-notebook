@@ -266,16 +266,16 @@ nav:
                   - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
               - ■ Kubernetes:
-                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md
+                  - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
                   - Minikube: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.md
                   - 可観測性ツール: infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
               - ■ Istio:
-                  - manifest.yml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yml.md
+                  - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
               - ■ Skaffold:
-                  - skaffold.yml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yml.md
+                  - skaffold.yaml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yaml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
               - ■ Helm:
                   - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
