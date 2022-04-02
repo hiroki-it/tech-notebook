@@ -79,6 +79,8 @@ plugins:
   - exclude:
       glob:
         - private
+  - git-revision-date-localized:
+      type: iso_date
   - search:
       lang: ja
       separator: '[\s\-\.]'

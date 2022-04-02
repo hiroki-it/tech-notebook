@@ -170,6 +170,13 @@ h3:before {
     font-size: 1.0em;
 }
 
+/* 最終更新日 */
+.md-content__inner>:last-child {
+    text-align: center;
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
 /***************
  ロゴ
 ***************/
