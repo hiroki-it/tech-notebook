@@ -31,19 +31,19 @@ apiVersion: v1
 
 作成されるリソースの種類を設定する．
 
-| リソース名                  | 補足                                                         |
-| --------------------- | ------------------------------------------------------------ |
-| Deployment            |                                                              |
-| Ingress               | 他のリソースとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある． |
-| Namespace |  |
-| Node | Kubernetesの実行時に自動的に作成される．もし手動で作成する場合は，kubectlコマンドで```--register-node=false```とする必要がある． |
-| PersistentVolume      |                                                              |
-| PersistentVolumeClaim |                                                              |
+| リソース名                 | 補足                                                                                                                                                            |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Deployment            |                                                                                                                                                               |
+| Ingress               | 他のリソースとはapiVersionが異なり，```networking.k8s.io/v1```を指定する必要がある．                                                                                                  |
+| Namespace             |                                                                                                                                                               |
+| Node                  | Kubernetesの実行時に自動的に作成される．もし手動で作成する場合は，kubectlコマンドで```--register-node=false```とする必要がある．                                                                        |
+| PersistentVolume      |                                                                                                                                                               |
+| PersistentVolumeClaim |                                                                                                                                                               |
 | Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である．<br>参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
-| ReplicaController     | 旧Deployment．非推奨である．<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
-| ReplicaSet            |                                                              |
-| Service               |                                                              |
-| StatefulSet           |                                                              |
+| ReplicaController     | 旧Deployment．非推奨である．<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes                                     |
+| ReplicaSet            |                                                                                                                                                               |
+| Service               |                                                                                                                                                               |
+| StatefulSet           |                                                                                                                                                               |
 
 <br>
 

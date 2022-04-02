@@ -37,11 +37,15 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
+
+参考：https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
+
 （１）アプリケーションリポジトリで，開発者が機能の変更をmainブランチにマージする．
 
 （２）CIツールが，イメージをECRにプッシュする．
 
-（３）CIツールが，マニフェストリポジトリにプルリクを作成する．このプルリクでは，マニフェストファイルでイメージのハッシュ値を指定している箇所が変更される．
+（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行するか，あるいはテンプレート管理ツールを介して実行する．変更したマニフェストをマニフェストリポジトリにプッシュし，プルリクを自動作成する．
 
 （４）マニフェストリポジトリで，開発者がプルリクをmainブランチにマージする．
 
@@ -425,10 +429,10 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| オプション       | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
-| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
+| オプション            | 説明                                                                                                                                                     |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない．                                                                           |
+| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない．                                           |
 | ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
 **＊実装例＊**

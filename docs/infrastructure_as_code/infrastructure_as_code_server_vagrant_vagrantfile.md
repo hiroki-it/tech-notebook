@@ -143,7 +143,7 @@ end
 
 ホストから仮想環境へポートフォワーディングを設定する．
 
-参考；https://www.vagrantup.com/docs/networking/forwarded_ports
+参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
 ```ruby
 Vagrant.configure("2") do |config|

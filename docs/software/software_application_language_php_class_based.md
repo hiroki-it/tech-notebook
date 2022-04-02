@@ -400,7 +400,7 @@ class EnginnerShainManagement extends ShainManagement
     // 鋳型となった抽象クラスの抽象メソッドはOverrideしなければならない．
     public function toWork()
     {
-        // 処理内容；
+        // 処理内容
     }
 }
 ```

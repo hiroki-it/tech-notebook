@@ -135,3 +135,27 @@ version: 1.0.0
 
 <br>
 
+## 04. 関数
+
+### include
+
+define関数で定義した文字列を加工して出力する．加工内容はパラメータで設定できる．
+
+参考：
+
+- https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+- https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
+
+<br>
+
+### required
+
+参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+
+<br>
+
+### template
+
+define関数で定義した文字列をそのまま出力する．template関数よりもinclude関数が推奨されている．
+
+参考：https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function

@@ -17,6 +17,10 @@ description: 設計ポリシー＠Helmの知見をまとめました．
 
 ### chartディレクトリ
 
+#### ・必須の要素
+
+ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある．
+
 参考：
 
 - https://helm.sh/docs/topics/charts/#the-chart-file-structure
@@ -24,7 +28,7 @@ description: 設計ポリシー＠Helmの知見をまとめました．
 
 ```bash
 repository/
-├── chart_directory/
+├── chart/
 │   ├── charts/ # 依存する他のチャートを配置する．
 │   ├── temlaptes/ # ユーザー定義のチャートを配置する．ディレクトリ構造は自由である．
 │   │   ├── tests/
@@ -33,24 +37,32 @@ repository/
 │   │
 │   ├── .helmignore # チャートアーカイブの作成時に無視するファイルを設定する．
 │   ├── Chart.yaml # チャートの概要を設定する．
-│   └── values.yaml # チャートの展開する変数のデフォルト値を設定する．
+│   └── values.yaml # テンプレートの変数に出力する値を設定する．
 ...
 ```
 
-<br>
-
-### templateディレクトリの構成
-
 #### ・稼働環境別
 
-```
+稼働環境別に```values.yaml```ファイルと```.tpl```ファイルを作成する．```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある．テンプレートからマニフェストファイルを作成する時に，各環境の```values.yaml```を参照する．
+
+参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
+
+```bash
 repository/
-├── chart_directory/
+├── chart/
 │   ├── temlaptes/
-│   ...
-│
-│
-│
+│   │   ├── tpl/ # .tplファイル
+│   │   │   ├── prd/
+│   │   │   ├── stg/
+│   │   │   └── dev/         
+│   │   ...
+│   │
+│   ├── prd/
+│   │   └── values.yaml # 本番環境へのデプロイ時に出力する値
+│   │
+│   ├── stg/ # ステージング環境 〃
+│   ├── dev/ # 開発環境 〃
+...
 ```
 
 <br>

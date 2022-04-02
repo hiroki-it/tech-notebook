@@ -245,11 +245,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・分割例
 
-| ユースケース | 分割方法                   | マイクロサービスの種類                                       | ディレクトリ構成                                             | リンク                                                       |
-| ------------ | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Eコマース    | 境界付けられたコンテキスト | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する． | Google：https://github.com/GoogleCloudPlatform/microservices-demo<br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png) |
-| Eコマース    | 境界付けられたコンテキスト | 認証，カタログ，顧客，商品                                   | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) |
-| Eコマース    | 境界付けられたコンテキスト | 広告，割引                                                   | ルートに各マイクロサービスのディレクトリを配置する．         | Datadog：https://github.com/DataDog/ecommerce-workshop       |
+| ユースケース | 分割方法          | マイクロサービスの種類                                                                                           | ディレクトリ構成                                    | リンク                                                                                                                                                                                 |
+|--------|---------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Eコマース  | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | ```src```ディレクトリに各マイクロサービスのディレクトリを配置する．      | Google：https://github.com/GoogleCloudPlatform/microservices-demo<br>![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_google.png)   |
+| Eコマース  | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                            | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) |
+| Eコマース  | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                            | ルートに各マイクロサービスのディレクトリを配置する．                  | Datadog：https://github.com/DataDog/ecommerce-workshop                                                                                                                               |
 
 #### ・サブドメイン，境界付けられたコンテキストを単位とした分割
 

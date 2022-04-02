@@ -455,7 +455,7 @@ $ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 
 
 ```bash
-# -d；detached mode
+# -d: detached mode
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 

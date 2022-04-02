@@ -2838,13 +2838,13 @@ VPCエンドポイントを設け，これに対してアウトバウンド通�
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                              |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため． |
-| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．           |
-| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
-| パラメーターストア          | ```ssm.ap-northeast-1.amazonaws.com```<br>                   | パラメーターストアにGETリクエストを送信するため．   |
-| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を用いるため．        |
+| VPCエンドポイントの接続先 | プライベートDNS名                                                                                 | 説明                           |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------|
+| CloudWatchログ   | ```logs.ap-northeast-1.amazonaws.com```                                                    | ECSコンテナのログをPOSTリクエストを送信するため． |
+| ECR            | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．        |
+| S3             | なし                                                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
+| パラメーターストア      | ```ssm.ap-northeast-1.amazonaws.com```                                                     | パラメーターストアにGETリクエストを送信するため．   |
+| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                                              | シークレットマネージャの機能を用いるため．        |
 
 <br>
 
@@ -4369,7 +4369,7 @@ CloudFrontに統合されたLambdaを，特別にLambda@Edgeという．
 
 #### ・トリガーの種類
 
-![Lambda@Edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Lambda@Edge.png)
+![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge.png)
 
 CloudFrontのビューワーリクエスト，オリジンリクエスト，オリジンレスポンス，ビューワーレスポンス，をトリガーとする．エッジロケーションのCloudFrontに，Lambdaのレプリカが構築される．
 
@@ -4430,7 +4430,7 @@ Lambda@Edgeを実行するためには，最低限，以下の権限が必要で
 
 #### ・オリジンの動的な切り替え
 
-![Lambda@Edge_動的オリジン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Lambda@Edge_動的オリジン.png)
+![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge_dynamic-origin.png)
 
 **＊実装例＊**
 
