@@ -80,7 +80,6 @@ plugins:
       glob:
         - private
   - git-revision-date-localized:
-      fallback_to_build_date: true
       type: iso_date
   - search:
       lang: ja
