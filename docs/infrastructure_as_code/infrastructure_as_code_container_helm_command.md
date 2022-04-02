@@ -65,14 +65,29 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 <br>
 
+### ls
+
+Helmを用いてデプロイしたリソースの一覧を表示する．
+
+``` bash
+$ helm ls
+
+NAME          VERSION   UPDATED                   STATUS    CHART
+foo-release   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-0.1.0
+```
+
+<br>
+
 ### package
 
-チャートからチャートアーカイブを作成する．
+チャートからチャートアーカイブを作成する．アーカイブ名にはバージョンが設定される．
 
 参考：https://helm.sh/docs/helm/helm_package/
 
-```
-$ helm package <チャートへのパス> 
+```bash
+$ helm package <チャートへのパス>
+
+Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 ```
 
 <br>
@@ -87,3 +102,4 @@ $ helm package <チャートへのパス>
 $ helm uninstall <リリース名>
 ```
 
+<br>

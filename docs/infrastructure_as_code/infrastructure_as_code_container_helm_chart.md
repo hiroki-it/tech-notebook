@@ -135,9 +135,19 @@ version: 1.0.0
 
 <br>
 
-## 04. 関数
+## 04. アクション
+
+### アクションとは
+
+テンプレートからマニフェストファイルを作成するために必要な機能を提供する．
+
+参考：https://helm.sh/docs/chart_template_guide/control_structures/
+
+<br>
 
 ### include
+
+#### ・includeとは
 
 define関数で定義した文字列を加工して出力する．加工内容はパラメータで設定できる．
 
@@ -159,3 +169,30 @@ define関数で定義した文字列を加工して出力する．加工内容�
 define関数で定義した文字列をそのまま出力する．template関数よりもinclude関数が推奨されている．
 
 参考：https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+
+<br>
+
+## 05. 関数
+
+### ドット
+
+#### ・ドットとは
+
+何も加工せずに出力する．
+
+```tpl
+{* tplファイル *}
+
+{{- define "foo-template" }}
+
+{* 出力内容 *}
+
+{{- end }}
+```
+
+```yaml
+# YAMLファイル
+{{- include "foo-template" . }}
+```
+
+<br>
