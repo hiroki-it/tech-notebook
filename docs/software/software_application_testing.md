@@ -25,11 +25,11 @@ description: テストの知見をまとめました．
 
 ### 整形ツール
 
-#### ・PHP
+#### ▼ PHP
 
 PhpStorm，PHP-CS-Fixer
 
-#### ・Go
+#### ▼ Go
 
 標準の```go fmt```コマンド
 
@@ -37,11 +37,11 @@ PhpStorm，PHP-CS-Fixer
 
 ### 静的解析ツール
 
-#### ・PHP
+#### ▼ PHP
 
 PhpStorm，PHPStan，Larastan
 
-#### ・Go
+#### ▼ Go
 
 標準の```go vet```コマンド
 
@@ -49,11 +49,11 @@ PhpStorm，PHPStan，Larastan
 
 ### ユニットテストツール，機能テストツール
 
-#### ・PHP
+#### ▼ PHP
 
 PHPUnit
 
-#### ・Go
+#### ▼ Go
 
 標準の```go fmt```コマンド
 

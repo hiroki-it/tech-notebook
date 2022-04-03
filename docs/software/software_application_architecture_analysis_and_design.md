@@ -87,15 +87,15 @@ UML，概念データモデリング，構造化分析，リアルタイム分�
 
 ### 視点による分類
 
-#### ・機能の視点
+#### ▼ 機能の視点
 
 ユーザーの要求に対するソフトウェアの機能に注目するダイアグラムが属する．
 
-#### ・振舞の視点
+#### ▼ 振舞の視点
 
 ソフトウェアの時系列的な振舞に注目するダイアグラムが属する．シーケンス図には，分析に用いるシステムシーケンス図と，設計に用いるシーケンス図があることに注意する．
 
-#### ・構造の視点
+#### ▼ 構造の視点
 
 ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する．クラス図は設計のために用いることに注意する．
 
@@ -290,7 +290,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### 記法の種類
 
-#### ・has-one，has-many（データとして保持する関係性）
+#### ▼ has-one，has-many（データとして保持する関係性）
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
@@ -298,7 +298,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
-#### ・is-a-kind-of（グループとメンバーの関係性）
+#### ▼ is-a-kind-of（グループとメンバーの関係性）
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
@@ -306,7 +306,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
-#### ・use（引数型/返却値型として用いる関係性）
+#### ▼ use（引数型/返却値型として用いる関係性）
 
 ![引数型または返却値型として用いる関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として用いる関係性.png)
 
@@ -318,13 +318,13 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### データとして保持する関係性の多重度
 
-#### ・multiplicity（多重度）とは
+#### ▼ multiplicity（多重度）とは
 
 クラス間がデータとして保持する関係性にある時に，保持される側クラスが何個のクラスに保持されるか，また反対に保持する側クラスが保持される側クラスを何個保持するか，を表現する．このように2つの見方があることが混乱するので注意する．オブジェクト図のインスタンス間のリンク記号数を参考にして定義する．
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html
 
-#### ・記法
+#### ▼ 記法
 
 | 保持する/保持されるクラスの個数 |    記法    |
 | :------------------------------- | :--------: |
@@ -355,13 +355,13 @@ DBテーブルのカラム間の関係性を基に，DBの構造を表現する�
 
 ![ER図（IE記法）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ER図（IE記法）.png)
 
-#### ・エンティティ，属性
+#### ▼ エンティティ，属性
 
 テーブルに相当するエンティティと，カラムに相当する属性がある．
 
 ![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/エンティティとアトリビュート.png)
 
-#### ・リレーション，カーディナリティ
+#### ▼ リレーション，カーディナリティ
 
  リレーションとカーディナリティを組み合わせて，エンティティ間の関係性の強さを表現する．```(カラム数/レコード数)```で導かれ，カーディナリティが高いほど，より効率的なDBインデックスを作成できる．
 
@@ -373,17 +373,17 @@ DBテーブルのカラム間の関係性を基に，DBの構造を表現する�
 
 ### 関係性の種類
 
-#### ・1：1
+#### ▼ 1：1
 
 ![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1.png)
 
-#### ・1：多（リレーションが曖昧な状態）
+#### ▼ 1：多（リレーションが曖昧な状態）
 
 オブジェクト指向分析が進むにつれ，『1：0 以上の関係』『1：1 以上の関係』のように具体化しく．
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1以上.png)
 
-#### ・1：1 以上
+#### ▼ 1：1 以上
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1以上.png)
 

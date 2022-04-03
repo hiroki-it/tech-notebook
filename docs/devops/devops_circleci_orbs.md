@@ -51,11 +51,11 @@ workflows:
 
 <br>
 
-#### ・Orbsのデメリット
+#### ▼ Orbsのデメリット
 
 Orbsのパッケージの処理の最小単位は```step```である．そのため，```step```よりも小さい```run```はOrbsに組み込むことができず，```run```固有のオプションや```run```に設定できるlinuxコマンドをOrbsでは使用できないことになる．
 
-#### ・オプションへの引数の渡し方と注意点
+#### ▼ オプションへの引数の渡し方と注意点
 
 AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．オプションが```env_var_name```型は，基本的に全てのスコープレベルの環境変数を受け付ける．ただしAlpine Linuxでは，『```$BASH_ENV```』を用いて，複数の```run```間で環境変数を共有できず，orbsのステップに環境変数を渡せないため注意する．
 
@@ -93,11 +93,11 @@ jobs:
 
 ### commands
 
-#### ・install
+#### ▼ install
 
 aws-cliコマンドのインストールを行う．
 
-#### ・setup
+#### ▼ setup
 
 aws-cliコマンドのインストールと，Credentials情報の設定を行う．AWSリソースを操作するために用いる．
 
@@ -195,7 +195,7 @@ aws configure list
 
 ### jobs
 
-#### ・build-and-push-image
+#### ▼ build-and-push-image
 
 CircleCIコンテナでdockerイメージをビルドし，ECRにデプロイする．```remote-docker-layer-caching```を用いて，Docker Layer Cacheを有効化できる．
 
@@ -235,7 +235,7 @@ jobs:
 
 ### jobs
 
-#### ・deploy-update-service（ローリングアップデート使用時）
+#### ▼ deploy-update-service（ローリングアップデート使用時）
 
 ECRイメージを用いて，新しいリビジョン番号のタスク定義を作成し，またこれを用いてコンテナをデプロイする．
 
@@ -300,7 +300,7 @@ workflows:
           
 ```
 
-#### ・deploy-update-service（ブルー/グリーンデプロイメント使用時）
+#### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
 ECSタスク定義を更新する．さらに，ブルー/グリーンデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを用いることができる．
 
@@ -355,7 +355,7 @@ workflows:
                 - main       
 ```
 
-#### ・run-task
+#### ▼ run-task
 
 現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．起動時に，```overrides```オプションを用いて，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
 
@@ -415,7 +415,7 @@ workflows:
 
 ### jobs
 
-#### ・deploy
+#### ▼ deploy
 
 S3にコードとappspecファイルをデプロイできる．また，CodeDeployを用いて，これをEC2インスタンスにデプロイできる．
 
@@ -472,7 +472,7 @@ workflows:
 
 ### commands
 
-#### ・notify
+#### ▼ notify
 
 ジョブの終了時に，成功または失敗を基に，ステータスを通知する．ジョブの最後のステップとして設定しなければならない．
 

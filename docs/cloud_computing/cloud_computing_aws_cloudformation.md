@@ -21,7 +21,7 @@ description: CloudFormation＠AWSの知見をまとめました．
 
 ### 単一リージョン
 
-#### ・Stack
+#### ▼ Stack
 
 CloudFormationでは，通常のStackを作成したリージョンでプロビジョニングが実行される．そのため，単一リージョンの場合は，Stackのリージョンさえ注意すれば問題ない．
 
@@ -29,7 +29,7 @@ CloudFormationでは，通常のStackを作成したリージョンでプロビ�
 
 ### 複数リージョン
 
-####  ・StackSets
+#### ▼ StackSets
 
 ![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudformation_stacksets.png)
 

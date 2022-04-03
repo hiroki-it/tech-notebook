@@ -17,7 +17,7 @@ description: ロジック＠Terraformの知見をまとめました．
 
 ### tfstateファイル
 
-#### ・tfstateファイルとは
+#### ▼ tfstateファイルとは
 
 実インフラのインフラの状態が定義されたjsonファイルのこと．初回時，```terraform apply```コマンドを実行し，成功もしくは失敗したタイミングで生成される．
 
@@ -25,11 +25,11 @@ description: ロジック＠Terraformの知見をまとめました．
 
 ### terraform  settings
 
-#### ・terraform settingsとは
+#### ▼ terraform settingsとは
 
 terraformの実行時に，エントリーポイントとして機能するファイル．
 
-#### ・required_providers
+#### ▼ required_providers
 
 AWSやGCPなど，用いるプロバイダを定義する．プロバイダによって，異なるリソースタイプが提供される．一番最初に読みこまれるファイルのため，変数やモジュール化などが行えない．
 
@@ -51,7 +51,7 @@ terraform {
 }
 ```
 
-#### ・backend
+#### ▼ backend
 
 stateファイルを管理する場所を設定する．S3などの実インフラで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．デフォルト値は```local```である．変数を使用できず，ハードコーディングする必要があるため，もし値を動的に変更したい場合は，initコマンドのオプションを用いて値を渡すようにする．
 
@@ -109,7 +109,7 @@ terraform {
 
 ### provider
 
-#### ・providerとは
+#### ▼ providerとは
 
 Terraformで操作するクラウドインフラベンダーを設定する．ベンダーでのアカウント認証のため，クレデンシャル情報を渡す必要がある．
 
@@ -141,7 +141,7 @@ provider "aws" {
 
 ### multiple providers
 
-#### ・multiple providersとは
+#### ▼ multiple providersとは
 
 複数の```provider```を実装し，エイリアスを用いて，これらを動的に切り替える方法．
 
@@ -171,7 +171,7 @@ provider "aws" {
 }
 ```
 
-#### ・子モジュールでproviderを切り替える
+#### ▼ 子モジュールでproviderを切り替える
 
 子モジュールで```provider```を切り替えるには，ルートモジュールで```provider```の値を明示的に渡す必要がある．
 
@@ -219,7 +219,7 @@ resource "aws_acm_certificate" "example" {
 
 ### アカウント情報の設定方法
 
-#### ・ハードコーディングによる設定
+#### ▼ ハードコーディングによる設定
 
 リージョンの他，アクセスキーとシークレットキーをハードコーディングで設定する．誤ってコミットしてしまう可能性があるため，ハードコーディングしないようにする．
 
@@ -256,7 +256,7 @@ provider "aws" {
 }
 ```
 
-#### ・credentialsファイルによる設定
+#### ▼ credentialsファイルによる設定
 
 AWSアカウント情報は，```~/.aws/credentials```ファイルに記載されている．
 
@@ -310,7 +310,7 @@ provider "aws" {
 }
 ```
 
-#### ・環境変数による設定
+#### ▼ 環境変数による設定
 
 Credentialsファイルではなく，```export```コマンドを用いて，必要な情報を設定しておくことも可能である．参照できる環境変数名は決まっている．
 
@@ -359,11 +359,11 @@ provider "aws" {}
 
 ### module
 
-#### ・moduleとは
+#### ▼ moduleとは
 
 ルートモジュールで子モジュール読み出し，子モジュールに対して変数を渡す．
 
-#### ・実装方法
+#### ▼ 実装方法
 
 **＊実装例＊**
 
@@ -386,13 +386,13 @@ module "alb" {
 
 ### 環境変数
 
-#### ・優先順位
+#### ▼ 優先順位
 
 上の項目ほど優先される．
 
 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
-#### ・```-var```，```-var-file```
+#### ▼ ```-var```，```-var-file```
 
 ```bash
 $ terraform plan -var="foo=foo"
@@ -403,18 +403,18 @@ $ terraform plan -var="foo=foo" -var="bar=bar"
 $ terraform plan -var-file=foo.tfvars
 ```
 
-#### ・```*.auto.tfvars```ファイル，```*.auto.tfvars.json```ファイル  
+#### ▼ ```*.auto.tfvars```ファイル，```*.auto.tfvars.json```ファイル  
 
-#### ・```terraform.tfvars.json```ファイル  
+#### ▼ ```terraform.tfvars.json```ファイル  
 
-#### ・```terraform.tfvars```ファイル
+#### ▼ ```terraform.tfvars```ファイル
 
 ```bash
 #　ファイルを指定しなくとも読み込まれる
 $ terraform plan
 ```
 
-#### ・```TF_VAR_*****``` 
+#### ▼ ```TF_VAR_*****``` 
 
 環境変数としてエクスポートしておくと自動的に読み込まれる．```*****```の部分が変数名としてTerraformに渡される．
 
@@ -428,7 +428,7 @@ TF_VAR_ecr_image_tag=foo
 
 ### ```.tfvars```ファイル
 
-#### ・```.tfvars```ファイルの用途
+#### ▼ ```.tfvars```ファイルの用途
 
 実行ファイルに入力したい環境変数を定義する．『```terraform.tfvars```』という名前にすると，terraformコマンドの実行時に自動的に読み込まれる．各サービスの間で実装方法が同じため，VPCのみ例を示す．
 
@@ -441,7 +441,7 @@ TF_VAR_ecr_image_tag=foo
 vpc_cidr_block = "n.n.n.n/n" # IPアドレス範囲
 ```
 
-#### ・値のデータ型
+#### ▼ 値のデータ型
 
 単一値，list型，map型で定義できる．AZ，サブネットのCIDR，RDSのパラメーターグループ値，などはmap型として保持しておくと良い．また，IPアドレスのセット，ユーザーエージェント，などはlist型として保持しておくと良い．なお，RDSのパラメーターグループの適正値については，以下のリンクを参考にせよ．
 
@@ -542,7 +542,7 @@ waf_blocked_user_agents = [
 
 ### variable 
 
-#### ・variableとは
+#### ▼ variableとは
 
 リソースで用いる変数のデータ型を定義する．
 
@@ -582,17 +582,17 @@ variable "rds_parameter_group_values" {
 
 ### resource
 
-#### ・resourceとは
+#### ▼ resourceとは
 
 AWSのAPIに対してリクエストを送信し，クラウドインフラの構築を行う．
 
-#### ・リソースタイプ
+#### ▼ リソースタイプ
 
 操作されるAWSリソースの種類のこと．AWSリソースタイプとTerraformのリソースタイプはおおよそ一致している．
 
 参考：https://docs.aws.amazon.com/ja_jp/config/latest/developerguide/resource-config-reference.html
 
-#### ・実装方法
+#### ▼ 実装方法
 
 **＊実装例＊**
 
@@ -612,11 +612,11 @@ resource "aws_lb" "this" {
 
 ### data
 
-#### ・dataとは
+#### ▼ dataとは
 
 AWSのAPIに対してリクエストを送信し，クラウドインフラに関するデータを取得する．ルートモジュールに実装することも可能であるが，各モジュールに実装した方が分かりやすい．
 
-#### ・実装方法
+#### ▼ 実装方法
 
 **＊実装例＊**
 
@@ -674,11 +674,11 @@ data "aws_ami" "bastion" {
 
 ### output
 
-#### ・outputとは
+#### ▼ outputとは
 
 モジュールで構築されたリソースがもつ特定の値を出力する．可読性の観点から，リソース一括ではなく，具体的なattributeを出力するようにした方が良い．
 
-#### ・実装方法
+#### ▼ 実装方法
 
 **＊実装例＊**
 
@@ -696,11 +696,11 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
-#### ・```count```関数の```output```
+#### ▼ ```count```関数の```output```
 
 後述の説明を参考にせよ．
 
-#### ・```for_each```関数の```output```
+#### ▼ ```for_each```関数の```output```
 
 後述の説明を参考にせよ．
 
@@ -716,11 +716,11 @@ output "elb_service_account_arn" {
 
 ### depends_on
 
-#### ・depends_onとは
+#### ▼ depends_onとは
 
 リソース間の依存関係を明示的に定義する．Terraformでは，基本的にリソース間の依存関係が暗黙的に定義されている．しかし，複数のリソースが関わると，リソースを適切な順番で構築できない場合があるため，そういったときに用いる．
 
-#### ・ALB target group vs. ALB，ECS
+#### ▼ ALB target group vs. ALB，ECS
 
 例として，ALB target groupを示す．ALB Target groupとALBのリソースを適切な順番で構築できないため，ECSの構築時にエラーが起こる．ALBの後にALB target groupを構築する必要がある．
 
@@ -752,7 +752,7 @@ resource "aws_lb_target_group" "this" {
 }
 ```
 
-#### ・Internet Gateway vs. EC2，Elastic IP，NAT Gateway
+#### ▼ Internet Gateway vs. EC2，Elastic IP，NAT Gateway
 
 例として，NAT Gatewayを示す．NAT Gateway，Internet Gateway，のリソースを適切な順番で構築できないため，Internet Gatewayの構築後に，NAT Gatewayを構築するように定義する必要がある．
 
@@ -818,7 +818,7 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ・S3バケットポリシー vs. パブリックアクセスブロックポリシー
+#### ▼ S3バケットポリシー vs. パブリックアクセスブロックポリシー
 
 例として，S3を示す．バケットポリシーとパブリックアクセスブロックポリシーを同時に構築できないため，構築のタイミングが重ならないようにする必要がある．
 
@@ -861,7 +861,7 @@ resource "aws_s3_bucket_policy" "foo" {
 
 ### count
 
-#### ・countとは
+#### ▼ countとは
 
 指定した数だけ，リソースの構築を繰り返す．```count.index```でインデックス数を展開する．
 
@@ -883,7 +883,7 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ・list型で```output```
+#### ▼ list型で```output```
 
 リソースの構築に```count```関数を用いた場合，そのリソースはlist型として扱われる．そのため，キー名を指定して```output```できる．この時，```output```はlist型になる．ちなみに，```for_each```関数で構築したリソースはアスタリスクでインデックス名を指定できないので，注意．
 
@@ -938,7 +938,7 @@ output "private_datastore_subnet_ids" {
 
 ### for_each
 
-#### ・for_eachとは
+#### ▼ for_eachとは
 
 事前に```for_each```に格納したmap型の```key```の数だけ，リソースを繰り返し実行する．繰り返し処理を行う時に，```count```とは違い，要素名を指定して出力できる．
 
@@ -978,7 +978,7 @@ resource "aws_subnet" "public" {
 }
 ```
 
-#### ・冗長化されたAZにおける設定
+#### ▼ 冗長化されたAZにおける設定
 
 冗長化されたAZで共通のルートテーブルを構築する場合，そこで，```for_each```関数を用いると，少ない実装で構築できる．```for_each```関数で構築されたリソースは```apply```中にmap構造として扱われ，リソース名の下層にキー名でリソースが並ぶ構造になっている．これを参照するために，『```<リソースタイプ>.<リソース名>[each.key].<attribute>```』とする
 
@@ -1062,7 +1062,7 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ・単一値で```output```
+#### ▼ 単一値で```output```
 
 リソースの構築に```for_each```関数を用いた場合，そのリソースはmap型として扱われる．そのため，キー名を指定して```output```できる．
 
@@ -1086,7 +1086,7 @@ output "public_c_subnet_id" {
 }
 ```
 
-#### ・map型で```output```
+#### ▼ map型で```output```
 
 **＊実装例＊**
 
@@ -1146,7 +1146,7 @@ resource "aws_lb" "this" {
 
 ### dynamic
 
-#### ・dynamicとは
+#### ▼ dynamicとは
 
 指定したブロックを繰り返し構築する．
 
@@ -1228,11 +1228,11 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 ### lifecycle
 
-#### ・lifecycleとは
+#### ▼ lifecycleとは
 
 リソースの構築，更新，そして削除のプロセスをカスタマイズする．
 
-#### ・create_before_destroy
+#### ▼ create_before_destroy
 
 リソースを新しく構築した後に削除するように，変更できる．通常時，Terraformの処理順序として，リソースの削除後に構築が行われる．しかし，他のリソースと依存関係が存在する場合，先に削除が行われることによって，他のリソースに影響が出てしまう．これに対処するために，先に新しいリソースを構築し，紐付けし直してから，削除する必要がある．
 
@@ -1314,7 +1314,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 }
 ```
 
-#### ・ignore_changes
+#### ▼ ignore_changes
 
 実インフラのみで起こったリソースの構築・更新・削除を無視し，```tfstate```ファイルに反映しないようにする．これにより，オプションを```ignore_changes```したタイミング以降，実インフラと```tfstate```ファイルに差分があっても，```tfstate```ファイルの値が更新されなくなる．1つのテクニックとして，機密情報を```ignore_changes```に指定し，```tfstate```ファイルへの書き込みを防ぐ方法がある．
 
@@ -1383,7 +1383,7 @@ resource "aws_foo" "foo" {
 
 ### ```templatefile```関数
 
-#### ・```templatefile```関数とは
+#### ▼ ```templatefile```関数とは
 
 第一引数でポリシーが定義されたファイルを読み出し，第二引数でファイルに変数を渡す．ファイルの拡張子はtplとするのが良い．
 
@@ -1425,7 +1425,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-#### ・path式
+#### ▼ path式
 
 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
@@ -1444,7 +1444,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 ### containerDefinitionsの設定
 
-#### ・containerDefinitionsとは
+#### ▼ containerDefinitionsとは
 
 タスク定義のうち，コンテナを定義する部分のこと．
 
@@ -1463,7 +1463,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-#### ・設定方法
+#### ▼ 設定方法
 
 int型を変数として渡せるように，拡張子をjsonではなくtplとするのが良い．```image```キーでは，ECRイメージのURLを設定する．イメージタグは任意で指定でき，もし指定しない場合は，『```latest```』という名前のタグが自動的に割り当てられる．イメージタグにハッシュ値が割り当てられている場合，Terraformでは時系列で最新のタグ名を取得する方法がないため，```secrets```キーでは，SSMのパラメータストアの値を参照できる．ログ分割の目印を設定する```awslogs-datetime-format```キーでは，タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い．これにより，同じ時間に発生したログを1つのログとしてまとめられるため，スタックトレースが見やすくなる．
 

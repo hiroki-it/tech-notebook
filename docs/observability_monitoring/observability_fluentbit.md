@@ -47,7 +47,7 @@ Fluentdから概念図を拝借した．収集されたログはまずインプ�
 
 ### コマンド
 
-#### ・一覧
+#### ▼ 一覧
 
 コマンドでセクションを実行できる．
 
@@ -81,7 +81,7 @@ Available Options
   -h, --help              print this help
 ```
 
-#### ・-c
+#### ▼ -c
 
 設定ファイルのバリデーションは，開発環境にて，以下サイトや再起動を伴う```--config```オプションから行う．これら以外に再起動を伴わない```--dry-run```オプションがあるが，このオプションは経験則で精度が低いため，参考程度にする．
 
@@ -216,7 +216,7 @@ Inputs
 
 ### dummyプラグイン
 
-#### ・dummyプラグインとは
+#### ▼ dummyプラグインとは
 
 ダミーの構造化ログをパイプラインにインプットする．非構造化ログはインプットデータとして使用できない．開発環境でパイプラインの動作を確認するために役立つ．
 
@@ -231,7 +231,7 @@ Inputs
 }
 ```
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 **＊実装例＊**
 
@@ -242,7 +242,7 @@ Inputs
     Dummy  {"message":"dummy"}
 ```
 
-#### ・コマンド
+#### ▼ コマンド
 
 **＊例＊**
 
@@ -254,11 +254,11 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 ### forwardプラグイン
 
-#### ・forwardプラグインとは
+#### ▼ forwardプラグインとは
 
 受信したログを指定されたポートで受信し，パイプラインにインプットする．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
@@ -290,7 +290,7 @@ Fluent Bit v1.8.6
 [2021/01/01 12:00:00] [ info] [sp] stream processor started
 ```
 
-#### ・コマンド
+#### ▼ コマンド
 
 **＊例＊**
 
@@ -304,11 +304,11 @@ $ /fluent-bit/bin/fluent-bit \
 
 ### tailプラグイン
 
-#### ・tailプラグインとは
+#### ▼ tailプラグインとは
 
 指定したパスに継続的にアウトプットされるログファイルを順次結合し，パイプラインにインプットする．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
@@ -335,7 +335,7 @@ log_router:
     - ./storage/logs:/var/www/foo/storage/logs
 ```
 
-#### ・コマンド
+#### ▼ コマンド
 
 **＊例＊**
 
@@ -399,13 +399,13 @@ $ fluent-bit \
 
 ### grepプラグイン
 
-#### ・grepプラグインとは
+#### ▼ grepプラグインとは
 
 ログが構造化ログの場合に，マッチしたキーにマッチするログ以外を破棄する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/grep
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 [FILTER]
@@ -418,11 +418,11 @@ $ fluent-bit \
 
 ### modifyプラグイン
 
-#### ・modifyプラグインとは
+#### ▼ modifyプラグインとは
 
 ログが構造化ログの場合に，キーや値の追加/コピー/変更/削除を実行する．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 参考：
 
@@ -450,13 +450,13 @@ $ fluent-bit \
 
 ### multilineプラグイン
 
-#### ・multilineプラグインとは
+#### ▼ multilineプラグインとは
 
 マッチした複数行のログを結合する．結合ルールは，MULTILINE_PARSERの設定ファイルに定義し，これをSERVICEで読み込む必要がある．ただ，本番環境ではログが複数行にならないようにアプリケーション側で実装を行い，ログを収集して可視化する段階でフィルタリングできれば問題ない，という考え方もある．
 
 参考：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
@@ -497,7 +497,7 @@ Filters
   geoip2                  add geoip information to records
 ```
 
-#### ・MULTILINE_PARSER
+#### ▼ MULTILINE_PARSER
 
 複数行のログを結合するためのルールを設定する．ここで定義したパーサー名を，multilineプラグインで指定する必要がある．
 
@@ -533,7 +533,7 @@ Laravelのスタックトレースを結合する．
 
 ### parserプラグイン
 
-#### ・parserプラグインとは
+#### ▼ parserプラグインとは
 
 マッチしたログを解析し，正規表現の名前付きキャプチャ機能（```?<foo>```）を用いて新しいキーに文字列を抽出する．
 
@@ -546,7 +546,7 @@ FluentBitでの名前付きキャプチャについては，Fluentdのドキュ�
 
 参考：https://docs.fluentd.org/parser/regexp
 
-#### ・バリデーション
+#### ▼ バリデーション
 
 FluentBitは，内部的にはruby製関数を用いて正規表現を検証している．そのため，これを確認できるバリデーションツールを用いる．
 
@@ -556,7 +556,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 参考：http://fluentular.herokuapp.com/
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/parser
 
@@ -564,13 +564,13 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
 
 ### stdoutプラグイン
 
-#### ・stdoutプラグインとは
+#### ▼ stdoutプラグインとは
 
 マッチしたログを，OUTPUTを経ずにそのまま標準出力に出力する．FILTERまでのパイプラインが正しく機能しているかのデバッグとして役立つ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 [FILTER]
@@ -579,7 +579,7 @@ FluentBitは，内部的にはruby製関数を用いて正規表現を検証し�
     Match *
 ```
 
-#### ・コマンド
+#### ▼ コマンド
 
 **＊例＊**
 
@@ -632,13 +632,13 @@ Fluent Bit v1.8.6
 
 ### SQLステートメント
 
-#### ・SQLステートメントとは
+#### ▼ SQLステートメントとは
 
 STREAM_TASKセッションは，独自のSQLステートメントで定義される．
 
 参考：https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
 
-#### ・CREATE STREAM
+#### ▼ CREATE STREAM
 
 SELECTステートメントの結果を用いて，データストリームを作成する．
 
@@ -661,7 +661,7 @@ SELECTステートメントの結果を用いて，データストリームを�
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
-#### ・SELECT
+#### ▼ SELECT
 
 マッチしたログから，指定したキーを抽出する．
 
@@ -711,7 +711,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ### INPUTから
 
-#### ・storage.type
+#### ▼ storage.type
 
 バッファーとして用いる媒体を設定する．
 
@@ -823,11 +823,11 @@ Outputs
 
 ### AWS全部入り
 
-#### ・AWS全部入り
+#### ▼ AWS全部入り
 
 全てのAWS系プラグインを含んでいる
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを用いる．
 
@@ -837,11 +837,11 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 ### cloudwatch_logプラグイン
 
-#### ・cloudwatch_logプラグインとは
+#### ▼ cloudwatch_logプラグインとは
 
 ログをCloudWatchログにルーティングする．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを用いる．
 
@@ -898,11 +898,11 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 ### datadogプラグイン
 
-#### ・datadogプラグインとは
+#### ▼ datadogプラグインとは
 
 ログをdatadogプラグインにルーティングする．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 全てのベースイメージにデフォルトでdatadogプラグインがインストールされているため，datadogプラグインのインストールは不要である．
 
@@ -948,7 +948,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 ### kinesis_firehoseプラグイン
 
-#### ・kinesis_firehoseプラグインとは
+#### ▼ kinesis_firehoseプラグインとは
 
 ログをKinesisFirehoseにルーティングする．kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを用いる．
 
@@ -958,7 +958,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 ### kinesis_streamsプラグイン
 
-#### ・kinesis_streamsプラグインとは
+#### ▼ kinesis_streamsプラグインとは
 
 ログをKinesisStreamsにルーティングする．kinesis_streamsプラグインがあらかじめインストールされているベースイメージを用いる．
 
@@ -968,11 +968,11 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 ### newRelicプラグイン
 
-#### ・newRelicプラグインとは
+#### ▼ newRelicプラグインとは
 
 ログをNewRelicにルーティングする．
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 newRelicプラグインがあらかじめインストールされているベースイメージを用いる．
 
@@ -982,7 +982,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 ### stdoutプラグイン
 
-#### ・stdoutプラグインとは
+#### ▼ stdoutプラグインとは
 
 標準出力にアウトプットする，FluentBitの実行ログに混じって，対象のログがアウトプットされることになる．
 
@@ -996,7 +996,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 ### nullプラグイン
 
-#### ・nullプラグインとは
+#### ▼ nullプラグインとは
 
 アウトプットを破棄する．
 
@@ -1010,7 +1010,7 @@ newRelicプラグインがあらかじめインストールされているベー
     match  *
 ```
 
-#### ・コマンド
+#### ▼ コマンド
 
 **＊例＊**
 

@@ -15,7 +15,7 @@ description: API Gatewayへのymlインポート＠AWSの知見をまとめま�
 
 ## 01. API Gateway拡張機能
 
-#### ・必要なキー
+#### ▼ 必要なキー
 
 API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキーを新たに実装する必要がある．
 
@@ -25,7 +25,7 @@ API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキー�
 
 ### ```x-amazon-apigateway-integration```キー
 
-#### ・```x-amazon-apigateway-integration```キーとは
+#### ▼ ```x-amazon-apigateway-integration```キーとは
 
 該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である．各項目の説明は以下のリンクを参考にせよ．
 
@@ -39,7 +39,7 @@ API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキー�
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
-#### ・設定項目（VPCリンク&プロキシ統合）
+#### ▼ 設定項目（VPCリンク&プロキシ統合）
 
 ```yaml
 paths:
@@ -68,7 +68,7 @@ paths:
             statusCode: 200     
 ```
 
-#### ・設定項目（VPCリンク&非プロキシ統合の場合）
+#### ▼ 設定項目（VPCリンク&非プロキシ統合の場合）
 
 パススルー条件やresponseキー以下の統合レスポンスを設定できる． 
 
@@ -98,7 +98,7 @@ paths:
             statusCode: 401
 ```
 
-#### ・設定項目（モック統合）
+#### ▼ 設定項目（モック統合）
 
 パススルー条件を設定できる．モックに処理を定義する必要がある
 
@@ -126,11 +126,11 @@ paths:
 
 ### ```x-amazon-apigateway-request-validators```キー
 
-#### ・```x-amazon-apigateway-request-validators```キーとは
+#### ▼ ```x-amazon-apigateway-request-validators```キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを定義するために，```x-amazon-apigateway-request-validators```キーが必要である．実際に定義したものを用いる時は，後述の```x-amazon-apigateway-request-validator```キーが必要である．
 
-#### ・設定項目
+#### ▼ 設定項目
 
 各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで，エイリアス名を定義する．ルートで定義する．
 
@@ -156,11 +156,11 @@ x-amazon-apigateway-request-validators:
 
 ### ```x-amazon-apigateway-request-validator```キー
 
-#### ・```x-amazon-apigateway-request-validator```キーとは
+#### ▼ ```x-amazon-apigateway-request-validator```キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを実行するために，```x-amazon-apigateway-request-validator```キーが必要である．
 
-#### ・設定項目
+#### ▼ 設定項目
 
 事前に定義した```x-amazon-apigateway-request-validators```キーの中から，用いるバリデーションのエイリアス名を宣言する．
 
@@ -195,7 +195,7 @@ x-amazon-apigateway-request-validators:
 
 ### サンプルについて
 
-#### ・注意点
+#### ▼ 注意点
 
 インポートにあたり，以下に注意する．Swagger EditorでAPIの仕様書のHTMLファイルを確認できる．
 
@@ -211,7 +211,7 @@ x-amazon-apigateway-request-validators:
 - ```servers```キーの実装はインポートしても反映できない．
 - マッピングテンプレートはVTLを用いて定義できる．
 
-#### ・その他非対応な記法
+#### ▼ その他非対応な記法
 
 その他の非対応の記述については，以下のリンクを参考にせよ．
 

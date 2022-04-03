@@ -17,13 +17,13 @@ description: 反復ロジック＠PHPの知見をまとめました．
 
 ### 配列
 
-#### ・走査（スキャン）
+#### ▼ 走査（スキャン）
 
 配列内の要素を順に調べていくことを『走査（スキャン）』という．例えば，```foreach```は，配列内の全ての要素を走査する処理である．下図では，連想配列が表現されている．
 
 ![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/配列の走査.png)
 
-#### ・内部ポインタと配列の関係
+#### ▼ 内部ポインタと配列の関係
 
 『内部ポインタ』とは，PHPの配列で，参照したい要素を位置で指定するためのカーソルのこと．Goにおけるポインタは，以下のリンクを参考にせよ．
 
@@ -58,7 +58,7 @@ echo reset($array); // あ
 
 ### 文法
 
-#### ・基本
+#### ▼ 基本
 
 配列を走査する．
 
@@ -72,7 +72,7 @@ foreach ($array as &$value) {
 }
 ```
 
-#### ・制御文
+#### ▼ 制御文
 
 ![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_foreach文.png)
 
@@ -93,13 +93,13 @@ foreach ($a as $foo) {
 
 ### 一次元配列の走査
 
-#### ・配列関数
+#### ▼ 配列関数
 
 複雑な走査を行うために，組み込み関数が用意されている．
 
 https://www.php.net/manual/ja/ref.array.php
 
-#### ・配列の値へのアクセス
+#### ▼ 配列の値へのアクセス
 
 単に配列を作るだけでなく，要素にアクセスするためにも使われる．
 
@@ -138,7 +138,7 @@ class Foo
 }
 ```
 
-#### ・配列の各値を加算代入
+#### ▼ 配列の各値を加算代入
 
 ```php
 <?php
@@ -169,7 +169,7 @@ function iteration($K, $A)
 
 ```
 
-#### ・配列の値を固定
+#### ▼ 配列の値を固定
 
 ```php
 <?php
@@ -202,7 +202,7 @@ function iteration($M, $A) {
 
 ### 多次元配列の走査
 
-#### ・二次元配列を一次元配列に変換
+#### ▼ 二次元配列を一次元配列に変換
 
 コールバック関数の使用が必要になる．```call_user_func_array```メソッドの第一引数に，コールバック関数の```array_merge```メソッドの文字列を渡し，第二引数に二次元配列を渡す．その結果，平坦になって一次元配列になる．例えば，不要なインデックス（0）で入れ子になっている場合に役に立つ．
 
@@ -229,7 +229,7 @@ $oneDimension = call_user_func_array(
 );
 ```
 
-#### ・多次元配列でキー名から値を取得
+#### ▼ 多次元配列でキー名から値を取得
 
 **＊実装例＊**
 
@@ -267,7 +267,7 @@ $oneDimension = array_column($twoDimension, 'score');
 
 ### 文法
 
-#### ・基本
+#### ▼ 基本
 
 配列の走査を含む反復処理を行う．ただし，配列の走査は，```while```ではなく```foreach```を用いるようにする．また，```for```とは異なり，反復回数が決まっていない場合に用いる．
 
@@ -288,7 +288,7 @@ while(true) {
 echo $count
 ```
 
-#### ・制御文
+#### ▼ 制御文
 
 ![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_while文.png)
 
@@ -321,7 +321,7 @@ while (true) {
 
 ### 無限ループ
 
-#### ・無限ループとは
+#### ▼ 無限ループとは
 
 反復処理では，何らかの状態になった時に反復処理を終えなければならない．しかし，終えられないと，無限ループが発生してしまう．
 
@@ -331,7 +331,7 @@ while (true) {
 
 ### 文法
 
-#### ・基本
+#### ▼ 基本
 
 配列の走査を含む反復処理を行う．ただし，配列の走査は，```for```ではなく```foreach```を用いるようにする．また，```while```とは異なり，反復回数が決まっている場合に用いる．
 
@@ -348,7 +348,7 @@ echo $count
 
 
 
-#### ・制御文
+#### ▼ 制御文
 
 ![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_for文.png)
 
@@ -376,7 +376,7 @@ echo $sum;
 
 ### continue
 
-#### ・continueとは
+#### ▼ continueとは
 
 反復処理の現在のループをスキップし，次のループを開始する．
 
@@ -400,7 +400,7 @@ foreach ($array as $key => $value) {
 // 5は奇数です
 ```
 
-#### ・array_walkを用いた代替法
+#### ▼ array_walkを用いた代替法
 
 反復処理のループを```continue```でスキップと同じ動作を，配列を扱う関数のコールバック関数で早期リターンで実現できる．```continue```を用いるより，こちらの方が良い．
 
@@ -428,7 +428,7 @@ array_walk($array, function ($value, $key) {
 
 ### break
 
-#### ・breakとは
+#### ▼ breakとは
 
 反復処理の現在のループを停止し，以降のループも実行しない．
 

@@ -30,7 +30,7 @@ description: プロジェクト管理の知見をまとめました．
 
 ### LOC法（プログラムステップ法）：Lines Of Code
 
-#### ・LOC法とは
+#### ▼ LOC法とは
 
 プログラムステップ法ともいう．プログラム本数やコードの行数（論理LOC，ステップ数）に基づいて，見積もりに関する指標を定量化する方法のこと．この時，『開発規模（か）』『工数（こ）』『生産性（せ）』の単位間の関係は，『みはじ』と同じになる．
 
@@ -39,7 +39,7 @@ description: プロジェクト管理の知見をまとめました．
 - https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html
 - https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html
 
-#### ・開発規模の定量化
+#### ▼ 開発規模の定量化
 
 プログラム本数やコードの行数の量のこと．
 
@@ -53,7 +53,7 @@ description: プロジェクト管理の知見をまとめました．
 
 ![kステップ行数による開発規模](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kステップ行数による開発規模.png)
 
-#### ・工数の定量化
+#### ▼ 工数の定量化
 
   （人時による工数）＝（人数・時）＝（人数 × 時間）
 
@@ -68,7 +68,7 @@ description: プロジェクト管理の知見をまとめました．
 
 ![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/project_management.png)
 
-#### ・生産性の定量化
+#### ▼ 生産性の定量化
 
   （プログラム本数の生産性）
 
@@ -86,7 +86,7 @@ description: プロジェクト管理の知見をまとめました．
 
 ![kステップ行数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kステップ行数による生産性.png)
 
-#### ・進捗率の定量化
+#### ▼ 進捗率の定量化
 
 ![進捗率](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/進捗率.png)
 
@@ -94,19 +94,19 @@ description: プロジェクト管理の知見をまとめました．
 
 ### アローダイアグラム
 
-#### ・プロジェクトに必要な日数
+#### ▼ プロジェクトに必要な日数
 
   全体的な工程に必要な日数は，所要日数が最も多い経路に影響される．この経路を，クリティカルパスという．
 
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p509.jpg)
 
-#### ・最早結合点時刻
+#### ▼ 最早結合点時刻
 
   全体的な工程の中で，任意の結合点に取り掛かるために必要な最少日数のこと．クリティカルパスに影響されるので注意．
 
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-1.jpg)
 
-#### ・最遅結合点時刻
+#### ▼ 最遅結合点時刻
 
   全体的な工程の中で，任意の結合点に取り掛かるために必要な最多日数のこと．
 
@@ -136,11 +136,11 @@ description: プロジェクト管理の知見をまとめました．
 
 ### タスク
 
-#### ・タスク
+#### ▼ タスク
 
 作業全体を細分化し，工数を定量化しやくする．issueやEpic issueを1つのタスクとみなす．
 
-#### ・タスクの分割
+#### ▼ タスクの分割
 
 見積コストが大きい場合（目安は13以上）はEpicとしてタスクを分割するとよい．実装以外のタスク（調査，設計，ドキュメンテーションなど）もタスクとする．単体テストは，タスクの見積りに含めるようにする．
 
@@ -148,11 +148,11 @@ description: プロジェクト管理の知見をまとめました．
 
 ### 優先度
 
-#### ・優先度とは
+#### ▼ 優先度とは
 
 機能として欲しい期待度のこと．
 
-#### ・優先度の決め方
+#### ▼ 優先度の決め方
 
 高，中，低の3段階で決定する．ビジネス側と議論しながら決めると良い．
 

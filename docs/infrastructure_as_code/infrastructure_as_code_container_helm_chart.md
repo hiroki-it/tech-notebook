@@ -31,13 +31,13 @@ Helmは，パッケージマネージャーとしてのHelmクライアント，
 
 ### テンプレート管理
 
-#### ・テンプレート管理とは
+#### ▼ テンプレート管理とは
 
 Kubernetesのテンプレートファイルを部分的に共通化できる．
 
 参考：https://qiita.com/Hiroyuki_OSAKI/items/8965ceb6c90bae3bea76
 
-#### ・種類
+#### ▼ 種類
 
 Helmの他に，Kustomize，などがある．HelmよりもKustomizeの方がカスタマイズ性が高い．
 
@@ -49,7 +49,7 @@ Helmの他に，Kustomize，などがある．HelmよりもKustomizeの方がカ
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
@@ -67,7 +67,7 @@ $ sudo apt-get install helm
 
 ### apiVersion
 
-#### ・apiVersionとは
+#### ▼ apiVersionとは
 
 Helm-APIのバージョンを設定する．
 
@@ -81,7 +81,7 @@ apiVersion: v2
 
 ### appVersion
 
-#### ・appVersionとは
+#### ▼ appVersionとは
 
 Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する．
 
@@ -95,7 +95,7 @@ appVersion: 1.0.0
 
 ### name
 
-#### ・nameとは
+#### ▼ nameとは
 
 Helmで作成されるKubernetesリソースの接頭辞を設定する．
 
@@ -109,7 +109,7 @@ name: foo
 
 ### type
 
-#### ・typeとは
+#### ▼ typeとは
 
 チャートのタイプを設定する．
 
@@ -123,7 +123,7 @@ type: application
 
 ### version
 
-#### ・versionとは
+#### ▼ versionとは
 
 チャートアーカイブのリリースバージョンを設定する．
 
@@ -147,7 +147,7 @@ version: 1.0.0
 
 ### include
 
-#### ・includeとは
+#### ▼ includeとは
 
 define関数で定義した文字列を加工して出力する．加工内容はパラメータで設定できる．
 
@@ -176,7 +176,7 @@ define関数で定義した文字列をそのまま出力する．template関数
 
 ### ドット
 
-#### ・ドットとは
+#### ▼ ドットとは
 
 何も加工せずに出力する．
 

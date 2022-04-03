@@ -23,7 +23,7 @@ NFSサーバーに配置されたファイルを，他のサーバー（NFSク�
 
 ### セットアップ
 
-#### ・MacOS（Catalina）の場合
+#### ▼ MacOS（Catalina）の場合
 
 （１）ホスト側のMacOSにて，```/etc/exports```ファイルにマウントオプションを設定する．また，```/etc/exports```ファイルを検証する．
 

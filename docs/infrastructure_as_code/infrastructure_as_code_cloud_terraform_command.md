@@ -23,7 +23,7 @@ description: コマンド＠Terraformの知見をまとめました．
 
 ### init
 
-#### ・-backend=false
+#### ▼ -backend=false
 
 ローカルPCにstateファイルを作成する．
 
@@ -38,7 +38,7 @@ $ terraform init -backend=false
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> init -backend=false
 ```
 
-#### ・-backend=true, -backend-config
+#### ▼ -backend=true, -backend-config
 
 実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を使用できないため，こちらのオプションが推奨である．
 
@@ -55,7 +55,7 @@ $ terraform init \
     -backend-config="encrypt=true"
 ```
 
-#### ・-reconfigure
+#### ▼ -reconfigure
 
 Terraformを初期化する．
 
@@ -65,7 +65,7 @@ Terraformを初期化する．
 $ terraform init -reconfigure
 ```
 
-#### ・-upgrade
+#### ▼ -upgrade
 
 現在のバージョンを基に，```lock```ファイル，モジュール，プラグインのアップグレード/ダウングレードを行う．
 
@@ -79,7 +79,7 @@ $ terraform init -upgrade
 
 ### validate
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 設定ファイルの検証を行う．
 
@@ -98,7 +98,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ### fmt
 
-#### ・-check
+#### ▼ -check
 
 インデントを揃えるべき箇所が存在するかどうかを判定する．もし存在する場合『```1```』，存在しない場合は『```0```』を返却する．
 
@@ -106,7 +106,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 $ terraform fmt -check
 ```
 
-#### ・-recursive
+#### ▼ -recursive
 
 設定ファイルのインデントを揃える．処理を行ったファイルが表示される．
 
@@ -133,7 +133,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 ### import
 
-#### ・-var-file
+#### ▼ -var-file
 
 terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```terraform import```コマンドする方法は無い．リソースIDは，リソースによって異なるため，リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
 
@@ -167,7 +167,7 @@ $ terraform plan -var-file=foo.tfvars
 No changes. Infrastructure is up-to-date.
 ````
 
-#### ・importを行わなかった場合のエラー
+#### ▼ importを行わなかった場合のエラー
 
 もし```terraform import```コマンドを行わないと，すでにクラウド上にリソースが存在しているためにリソースを構築できない，というエラーになる．
 
@@ -187,7 +187,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 ### refresh
 
-#### ・-var-file
+#### ▼ -var-file
 
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルに反映する．
 
@@ -199,7 +199,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 ### plan
 
-#### ・シンボルの見方
+#### ▼ シンボルの見方
 
 構築（```+```），更新（```~```），削除（```-```），再構築（```-/+```）で表現される．
 
@@ -210,7 +210,7 @@ $ terraform refresh -var-file=foo.tfvars
 -/+ destroy and then create replacement
 ```
 
-#### ・出力内容の読み方
+#### ▼ 出力内容の読み方
 
 前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．また，クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される．検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
 
@@ -239,7 +239,7 @@ Terraform will perform the following actions:
 Plan: 0 to add, 1 to change, 0 to destroy.  
 ```
 
-#### ・差分認識される/されない変更
+#### ▼ 差分認識される/されない変更
 
 | 変更内容                                       | される/されない |
 |--------------------------------------------| ---------------- |
@@ -248,7 +248,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 | ファイルやディレクトリを指定するパスの変更                      | されない         |
 | リソースにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない         |
 
-#### ・-var-file
+#### ▼ -var-file
 
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルには反映せずに，設定ファイルの記述との差分を検証する．スクリプト実行時に，変数が定義されたファイルを実行すると，```variable```で宣言した変数に，値が格納される．
 
@@ -273,7 +273,7 @@ configuration and real physical resources that exist. As a result, no
 actions need to be performed.
 ```
 
-#### ・-target
+#### ▼ -target
 
 特定のリソースに対して，```terraform plan```コマンドを実行する．
 
@@ -291,7 +291,7 @@ $ terraform plan \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
-#### ・-refresh
+#### ▼ -refresh
 
 このオプションをつければ，```terraform refresh```コマンドを同時に実行してくれる．ただ，デフォルトで```true```なので，不要である．
 
@@ -303,7 +303,7 @@ $ terraform plan \
 
 https://github.com/hashicorp/terraform/issues/17311
 
-#### ・-parallelism
+#### ▼ -parallelism
 
 並列処理数を設定できる．デフォルト値は```10```である．
 
@@ -313,7 +313,7 @@ $ terraform plan \
     -parallelism=30
 ```
 
-#### ・-out
+#### ▼ -out
 
 実行プランファイルを生成する．```terraform apply```コマンドのために用いることができる．
 
@@ -328,7 +328,7 @@ $ terraform plan \
 
 ### apply
 
-#### ・-var-file
+#### ▼ -var-file
 
 クラウドプロバイダー上にクラウドインフラストラクチャを構築する．
 
@@ -348,7 +348,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-#### ・-target
+#### ▼ -target
 
 特定のリソースに対して，```terraform apply```コマンドを実行する．
 
@@ -366,7 +366,7 @@ $ terraform apply \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
-#### ・-parallelism
+#### ▼ -parallelism
 
 並列処理数を設定できる．デフォルト値は```10```である．
 
@@ -376,7 +376,7 @@ $ terraform apply \
     -parallelism=30
 ```
 
-#### ・実行プランファイル
+#### ▼ 実行プランファイル
 
 事前に，```terraform plan```コマンドによって生成された実行プランファイルを元に，```terraform apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
 
@@ -388,7 +388,7 @@ $ terraform apply foo.tfplan
 
 ### taint
 
-#### ・-var-file <リソース>
+#### ▼ -var-file <リソース>
 
 stateファイルにおける指定されたリソースの```tainted```フラグを立てる．例えば，```apply```したが，途中でエラーが発生してしまい，実インフラに中途半端はリソースが構築されてしまうことがある．ここで，```tainted```を立てておくと，実インフラのリソースを削除したと想定した```plan```を実行できる．
 
@@ -420,7 +420,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 ### state list
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ファイル内で定義しているリソースの一覧を表示する．
 

@@ -30,13 +30,13 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 ### ドライバー
 
-#### ・ドライバーとは
+#### ▼ ドライバーとは
 
 ゲスト（ワーカーノード）側のOSを設定する．ホスト側のOS（Linux，MacOS，Windows）や，これらOSのバージョンによって，用いることができるドライバーが異なる．
 
 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
-#### ・種類
+#### ▼ 種類
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
@@ -52,7 +52,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 ### ホスト-ワーカーNode間マウント
 
-#### ・標準のホスト-ワーカーNode間マウント
+#### ▼ 標準のホスト-ワーカーNode間マウント
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
 
@@ -67,7 +67,7 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-#### ・各ドライバーのホスト-ワーカーNode間マウント
+#### ▼ 各ドライバーのホスト-ワーカーNode間マウント
 
 ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
 
@@ -86,7 +86,7 @@ $ minikube start
 
 ### ワーカーNode-コンテナ間マウント
 
-#### ・標準のワーカーNode-コンテナ間マウント
+#### ▼ 標準のワーカーNode-コンテナ間マウント
 
 ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
 
@@ -105,13 +105,13 @@ $ minikube start
 
 ### ホスト-ワーカーNode-コンテナ間
 
-#### ・ホストをコンテナにマウントする方法
+#### ▼ ホストをコンテナにマウントする方法
 
 Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
-#### ・HyperKitドライバーを用いる場合
+#### ▼ HyperKitドライバーを用いる場合
 
 **＊例＊**
 
@@ -160,11 +160,11 @@ spec:
 
 ### addons
 
-#### ・addonsとは
+#### ▼ addonsとは
 
 Minikubeのプラグインを操作する．
 
-#### ・enable
+#### ▼ enable
 
 プラグインを有効化する．
 
@@ -180,7 +180,7 @@ Minikubeのプラグインを操作する．
 $ minikube addons enable ingress
 ```
 
-#### ・list
+#### ▼ list
 
 有効可能なプラグインの一覧を表示する．
 
@@ -226,11 +226,11 @@ $ minikube addons list
 
 ### config
 
-#### ・configとは
+#### ▼ configとは
 
 minikubeコマンドに関するパラメーターを操作する．
 
-#### ・set
+#### ▼ set
 
 kubectlコマンド実行時のデフォルト値を設定する．
 
@@ -268,7 +268,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 ### dashboard
 
-#### ・dashboardとは
+#### ▼ dashboardとは
 
 Kubernetesのダッシュボードを開発環境に構築する．
 
@@ -287,7 +287,7 @@ $ minikube dashboard
 
 ### docker-env
 
-#### ・docker-envとは
+#### ▼ docker-envとは
 
 ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する．イメージタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
 
@@ -327,7 +327,7 @@ docker-env:
 	eval $(shell minikube -p minikube docker-env)
 ```
 
-#### ・-u
+#### ▼ -u
 
 ホスト側のdockerデーモンを指定できるように，元に戻す．
 
@@ -339,11 +339,11 @@ $ eval $(minikube docker-env -u)
 
 ### ip
 
-#### ・ipとは
+#### ▼ ipとは
 
 ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する．
 
-#### ・オプションなし
+#### ▼ オプションなし
 
 ```bash
 $ minikube ip
@@ -355,7 +355,7 @@ $ minikube ip
 
 ### kubectl
 
-#### ・kubectlとは
+#### ▼ kubectlとは
 
 Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルPCにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
 
@@ -391,7 +391,7 @@ Server Version: version.Info{
 }
 ```
 
-#### ・オプション
+#### ▼ オプション
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html
 
@@ -399,13 +399,13 @@ Server Version: version.Info{
 
 ### mount
 
-#### ・mountとは
+#### ▼ mountとは
 
 ホスト側のファイルまたはディレクトリを，ゲスト仮想環境の指定したディレクトリにマウントする．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ```bash
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
@@ -444,11 +444,11 @@ $ minikube update-context
 
 ### service
 
-#### ・serviceとは
+#### ▼ serviceとは
 
 Serviceを用いて，Podに接続する．
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 NodePort ServiceやLoadBalancer Serviceを指定し，ホストからServiceにポートフォワーディングを実行する．また，ServiceのIPアドレスを返却する．
 
@@ -494,7 +494,7 @@ $ minikube ssh
 $ curl http://n.n.n.n:57761
 ```
 
-#### ・list
+#### ▼ list
 
 全てのServiceの情報を表示する．
 
@@ -513,7 +513,7 @@ $ minikube service list
 |----------------------|---------------------------|--------------|---------------------------|
 ```
 
-#### ・--url
+#### ▼ --url
 
 指定したServiceのIPアドレスを含むURLを表示する．
 
@@ -527,7 +527,7 @@ http://n.n.n.n:57761
 
 ### ssh
 
-#### ・sshとは
+#### ▼ sshとは
 
 仮想環境にSSH接続を行う．
 
@@ -548,7 +548,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 [root@<コンテナID>:~] $ ls -la 
 ```
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ```bash
 # Dockerドライバーによる仮想環境の場合
@@ -602,7 +602,7 @@ yes
 zcat
 ```
 
-#### ・``--``
+#### ▼ ``--``
 
 仮想環境にSSH接続を実行し，任意のコマンドを実行する．
 
@@ -622,13 +622,13 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 ### start
 
-#### ・startとは
+#### ▼ startとは
 
 ゲスト仮想環境を構築し，仮想環境内にワーカーNodeを作成する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
-#### ・オプションなし
+#### ▼ オプションなし
 
 **＊例＊**
 
@@ -662,7 +662,7 @@ NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
-#### ・--docker-env
+#### ▼ --docker-env
 
 別に```docker-env```コマンドを実行しつつ，```start```コマンドを実行する．
 
@@ -672,7 +672,7 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 $ minikube start --docker-env
 ```
 
-#### ・--driver
+#### ▼ --driver
 
 ゲスト仮想環境のドライバーを指定し，```start```コマンドを実行する．ホストごとに標準の仮想環境が異なり，MacOSはDockerドライバーがデフォルトである．ドライバーの使用前に，これをインストールしておく必要があることに注意する．
 
@@ -685,7 +685,7 @@ $ minikube start --docker-env
 $ minikube start --driver=virtualbox
 ```
 
-#### ・--kubernetes-vsersion
+#### ▼ --kubernetes-vsersion
 
 Minikubeで稼働させるKubernetesのバージョンを指定しつつ，```start```コマンドを実行する．
 
@@ -695,7 +695,7 @@ Minikubeで稼働させるKubernetesのバージョンを指定しつつ，```st
 $ minikube start --kubernetes-version=v1.23.0
 ```
 
-#### ・--mount，--mount--string
+#### ▼ --mount，--mount--string
 
 ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ，```start```コマンドを実行する．
 
@@ -705,7 +705,7 @@ $ minikube start --kubernetes-version=v1.23.0
 $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
-#### ・--nodes
+#### ▼ --nodes
 
 作成するワーカーNode数を指定し，```start```コマンドを実行する．
 
@@ -725,7 +725,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 ### tunnel
 
-#### ・tunnelとは
+#### ▼ tunnelとは
 
 LoadBalancerを一時的に構築し，LoadBalancer Serviceに自動的に紐づける．クラスター外部からPodに接続できるようになる．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
 
@@ -734,7 +734,7 @@ LoadBalancerを一時的に構築し，LoadBalancer Serviceに自動的に紐づ
 - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
-#### ・オプションなし
+#### ▼ オプションなし
 
 **＊例＊**
 

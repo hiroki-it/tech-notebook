@@ -17,7 +17,7 @@ WebpackをLaravelを介して操作できるパッケージのこと．Breezeパ
 
 ### Webpackを操作するコマンド
 
-#### ・アセットの初期コンパイル
+#### ▼ アセットの初期コンパイル
 
 アセットのコンパイルを実行する．
 
@@ -25,7 +25,7 @@ WebpackをLaravelを介して操作できるパッケージのこと．Breezeパ
 $ npm run dev
 ```
 
-#### ・アセットの自動再コンパイル
+#### ▼ アセットの自動再コンパイル
 
 アセットのコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
 
@@ -45,11 +45,11 @@ $ npm run watch
 
 ### laravel-enum
 
-#### ・コード
+#### ▼ コード
 
 参考：https://github.com/BenSampo/laravel-enum
 
-#### ・Enumクラスの定義
+#### ▼ Enumクラスの定義
 
 BenSampoのEnumクラスを継承し，区分値と判定メソッドを実装する．
 
@@ -112,7 +112,7 @@ class RoleType extends Enum
 }
 ```
 
-#### ・Enumクラスの使い方
+#### ▼ Enumクラスの使い方
 
 **＊実装例＊**
 
@@ -138,7 +138,7 @@ $staff->roleType->isSalesRole(); // false
 
 ### laravel-ide-helper
 
-#### ・laravel-ide-helperとは
+#### ▼ laravel-ide-helperとは
 
 PHPStromでLaravelを開発する場合，拡張機能を提供する．
 
@@ -169,7 +169,7 @@ return [
 ];
 ```
 
-#### ・Facade
+#### ▼ Facade
 
 PHPStromで，メソッドが定義された場所にジャンプできるように，```_ide_helper.php```ファイルを生成する．
 
@@ -179,7 +179,7 @@ PHPStromで，メソッドが定義された場所にジャンプできるよう
 $ php artisan ide-helper:generate
 ```
 
-#### ・アノテーション生成
+#### ▼ アノテーション生成
 
 PHPStromで，LaravelのEloquentモデルでのアノテーションを自動生成する．
 
@@ -189,7 +189,7 @@ PHPStromで，LaravelのEloquentモデルでのアノテーションを自動生
 $ php artisan ide-helper:models
 ```
 
-#### ・予測表示
+#### ▼ 予測表示
 
 PHPStromで，Laravelのメソッドを予測表示できるように，```phpstorm.meta.php```ファイルを生成する．
 

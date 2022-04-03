@@ -18,7 +18,7 @@ description: コンポーネント＠FastAPIの知見をまとめました．
 
 ### FastAPIクラス
 
-#### ・FastAPIクラスとは
+#### ▼ FastAPIクラスとは
 
 ```python
 from fastapi import FastAPI
@@ -33,7 +33,7 @@ app = FastAPI()
 
 ### APIRouterクラス
 
-#### ・APIRouterクラスとは
+#### ▼ APIRouterクラスとは
 
 FastAPIクラスに非同期処理を実行するエンドポイントを追加する．FastAPIインスタンスに登録するためには，```include_router```メソッドにAPIRouterインスタンスを渡す必要がある．また，DBのセッションを開始するために，DBオブジェクトを注入する必要がある．
 

@@ -25,7 +25,7 @@ description: Lambda関数の実装＠AWSの知見をまとめました．
 
 ### Lambdaハンドラ関数
 
-#### ・非同期ハンドラ関数（Async handlers）
+#### ▼ 非同期ハンドラ関数（Async handlers）
 
 Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を用いて，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
 
@@ -72,7 +72,7 @@ exports.handler = async (event) => {
 }
 ```
 
-#### ・同期ハンドラ関数（Non-async handlers）
+#### ▼ 同期ハンドラ関数（Non-async handlers）
 
 Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でも良い．```callback```メソッドを用いて，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
 
@@ -123,7 +123,7 @@ exports.handler = (event, context, callback) => {
 }
 ```
 
-#### ・予約された引数の説明
+#### ▼ 予約された引数の説明
 
 | 引数                | 説明                                                         | 補足                                                         |
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -131,11 +131,11 @@ exports.handler = (event, context, callback) => {
 | contextオブジェクト | Lambdaに関するデータ（名前，バージョンなど）を取得できるメソッドとプロパティが代入されている． | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
 | callback関数        | 代入されている関数の実体は不明である．全ての処理が終わるまで実行が待機され，Lambdaのコール元にレスポンスを送信する． | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
 
-#### ・テストとデバッグ
+#### ▼ テストとデバッグ
 
 Lambdaで関数を作成すると，CloudWatchログのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
 
-#### ・ベストプラクティス
+#### ▼ ベストプラクティス
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-code
 
@@ -145,11 +145,11 @@ Lambdaで関数を作成すると，CloudWatchログのロググループに，�
 
 ### aws-lambda-go
 
-#### ・aws-lambda-goとは
+#### ▼ aws-lambda-goとは
 
 Goを用いて，Lambda-APIに対してリクエストを送信し，AWSリソースを操作できる．
 
-#### ・```Start```関数
+#### ▼ ```Start```関数
 
 Lamda関数を実行するための関数．```Start```関数に渡すパラメーターには，必ず1つでもerrorインターフェースの実装が含まれている必要がある．もし含まれていない場合は，Lambdaで内部エラーが起こる．
 
@@ -179,7 +179,7 @@ func main() {
 }
 ```
 
-#### ・パラメータ
+#### ▼ パラメータ
 
 contextオブジェクトとeventオブジェクトをパラメーターとして用いることができる．
 
@@ -189,11 +189,11 @@ contextオブジェクトとeventオブジェクトをパラメーターとし�
 
 ### eventオブジェクトの種類
 
-#### ・全種類
+#### ▼ 全種類
 
 参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
 
-#### ・SNSイベントの場合
+#### ▼ SNSイベントの場合
 
 ```go
 package main
@@ -218,7 +218,7 @@ func main() {
 }
 ```
 
-#### ・CloudWatchイベントの場合
+#### ▼ CloudWatchイベントの場合
 
 ```go
 package main
@@ -243,7 +243,7 @@ func main() {
 }
 ```
 
-#### ・API Gatewayイベントの場合
+#### ▼ API Gatewayイベントの場合
 
 ```go
 package main
@@ -272,7 +272,7 @@ func main() {
 
 ### レスポンス
 
-#### ・正常系
+#### ▼ 正常系
 
 正常系レスポンスの構成要素については以下のリンクを参考にせよ．
 
@@ -282,7 +282,7 @@ func main() {
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
-#### ・異常系
+#### ▼ 異常系
 
 Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ．
 
@@ -329,7 +329,7 @@ func main() {
 
 ### ログ
 
-#### ・レポートログ
+#### ▼ レポートログ
 
 | 機能名            |                                      |
 | --------------- | ------------------------------------ |
@@ -339,7 +339,7 @@ func main() {
 | Memory Size     | Lambdaのメモリサイズ                 |
 | Max Memory Used | Lambdaが実際に用いるメモリの最大量 |
 
-#### ・ログの出力方法
+#### ▼ ログの出力方法
 
 標準パッケージの```fmt```，または任意のロギングパッケージを用いて，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
 
@@ -370,9 +370,9 @@ func main() {
 
 ### 非同期処理の状態管理
 
-#### ・Node.jsの標準パッケージの場合
+#### ▼ Node.jsの標準パッケージの場合
 
-#### ・aws-sdk.jsの場合
+#### ▼ aws-sdk.jsの場合
 
 各AWSオブジェクトのメソッドの後に，```promise```メソッドをチェーンできる．これにより，各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる．
 

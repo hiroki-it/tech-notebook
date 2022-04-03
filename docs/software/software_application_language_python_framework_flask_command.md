@@ -29,7 +29,7 @@ $ export FLASK_APP=main.py
 
 ### route
 
-#### ・routeとは
+#### ▼ routeとは
 
 登録済みのルーティングの一覧を表示する．
 
@@ -47,7 +47,7 @@ static          GET      /static/<path:filename>
 
 ### run
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 Flaskクラスの```run```メソッドと同じ機能を持ち，インバウンド通信のリッスンを開始する．開発環境のみで推奨される方法である．
 
@@ -60,7 +60,7 @@ $ flask run
 - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/cli.html
 
-#### ・--host
+#### ▼ --host
 
 受信するインバウンド通信のIPアドレスを設定する．
 
@@ -68,7 +68,7 @@ $ flask run
 $ flask run --host=0.0.0.0
 ```
 
-#### ・--reload
+#### ▼ --reload
 
 アプリケーションのホットリロードを有効化する．
 
@@ -78,7 +78,7 @@ $ flask run --host=0.0.0.0
 $ flask run --reload
 ```
 
-#### ・--port
+#### ▼ --port
 
 インバウンド通信を待ち受けるポート番号を設定する．
 

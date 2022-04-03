@@ -17,13 +17,13 @@ description: Googleサーチコンソール＠監視の知見をまとめまし�
 
 ### クローラー
 
-#### ・クローラーとは
+#### ▼ クローラーとは
 
 インターネット上を巡回し，サイトの情報を収集する．検索エンジンシステムは，収集されたデータのインデックスをDBに作成する．ユーザーが検索エンジンを用いる時は，このDBインデックスを基に検索結果が表示される．
 
 参考：https://smakoma.com/understand-search-engine.html
 
-#### ・種類
+#### ▼ 種類
 
 クローラーには以下の種類がいる．
 
@@ -57,7 +57,7 @@ GET https://example.com
 Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.92 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 ```
 
-#### ・巡回方法
+#### ▼ 巡回方法
 
 - サイト外部のリンクから，サイトに訪問してくる．
 - 検索エンジンにリクエストを送信し，サイトに訪問してくる．
@@ -69,7 +69,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 ### サイトマップ
 
-#### ・サイトマップとは
+#### ▼ サイトマップとは
 
 サイトを構成するURLの一覧を示したファイルのこと．Googleサーチコンソールに登録でき，検索クローラーがサイトの情報を収集するのを助ける．
 
@@ -103,13 +103,13 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 ### インデックスカバレッジ
 
-#### ・インデックスカバレッジとは
+#### ▼ インデックスカバレッジとは
 
 Webサイトの全ページのうち，どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと．
 
 参考：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
 
-#### ・ステータスの種類
+#### ▼ ステータスの種類
 
 各ステータスの詳しい情報は以下のリンクを参考にせよ．
 
@@ -126,6 +126,6 @@ Webサイトの全ページのうち，どのくらいが検索エンジンのDB
 
 ### 構造化データ
 
-#### ・構造化データとは
+#### ▼ 構造化データとは
 
 <br>

@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 
 ### セットアップ
 
-#### ・Yum経由
+#### ▼ Yum経由
 
 ```bash
 # リポジトリの作成
@@ -30,7 +30,7 @@ $ yum install -y nodejs
 
 ### ```package.json```ファイル
 
-#### ・author
+#### ▼ author
 
 パッケージの作成者名を設定する．
 
@@ -44,7 +44,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・bug
+#### ▼ bug
 
 不具合の報告先のURLを設定する．
 
@@ -56,7 +56,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・dependencies
+#### ▼ dependencies
 
 本番環境と開発環境で依存するパッケージ名を設定する．NPMに登録されていないパッケージは，『```git+<リポジトリURL>```』を指定する．
 
@@ -70,7 +70,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・description
+#### ▼ description
 
 ```bash
 {
@@ -78,7 +78,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・devDependencies
+#### ▼ devDependencies
 
 開発環境のみ依存するパッケージ名を設定する．
 
@@ -88,7 +88,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・directories
+#### ▼ directories
 
 ```bash
 {
@@ -96,14 +96,14 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・homepage
+#### ▼ homepage
 
 ```bash
 {
   "homepage": "https://example.com"
 }
 ```
-#### ・main
+#### ▼ main
 
 ```bash
 {
@@ -111,7 +111,7 @@ $ yum install -y nodejs
 }
 ```
 
-#### ・name
+#### ▼ name
 
 npmパッケージ名を設定する．全てのnpmパッケージの中で，一意の名前でなければならない．
 
@@ -121,7 +121,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 }
 ```
 
-#### ・repository
+#### ▼ repository
 
 ```bash
 {
@@ -132,7 +132,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 }
 ```
 
-#### ・scripts
+#### ▼ scripts
 
 汎用コマンドとエイリアスを設定する．
 
@@ -144,7 +144,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 }
 ```
 
-#### ・version
+#### ▼ version
 
 パッケージのバージョンを設定する．
 
@@ -168,7 +168,7 @@ Composerの```composer.lock```ファイルに相当する．
 
 ### init
 
-#### ・```package.json```ファイルの作成
+#### ▼ ```package.json```ファイルの作成
 
 プロジェクトの```package.json```ファイルを作成する．
 
@@ -180,7 +180,7 @@ $ npm init
 
 ### install
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 アプリケーションにて，```package.lock```ファイルに実装されたパッケージのうちで，インスールされていないものをインストールする．```package.lock```ファイルのおかげで，リポジトリの利用者が，```npm install```の実行時に，共通のバージョンのパッケージをインストールできる．
 
@@ -194,7 +194,7 @@ $ npm install
 $ npm install <パッケージ名>
 ```
 
-#### ・--force
+#### ▼ --force
 
 パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
 
@@ -202,7 +202,7 @@ $ npm install <パッケージ名>
 $ npm install --force
 ```
 
-#### ・--save
+#### ▼ --save
 
 デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
 
@@ -214,7 +214,7 @@ $ npm install --save
 
 ### update
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 全てのパッケージのバージョンを，```package.json```ファイルの範囲内でアップグレードする．
 
@@ -226,7 +226,7 @@ $ npm update
 
 ### run
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ユーザーが定義したエイリアス名のコマンドを実行する．
 
@@ -267,7 +267,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 ### セットアップ
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
@@ -275,7 +275,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 $ apt-get install yarn
 ```
 
-#### ・Npm経由
+#### ▼ Npm経由
 
 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 
@@ -319,7 +319,7 @@ $ yarn remove foo && yarn add foo@1.0.0
 
 ### install
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 指定したバージョンのパッケージを，```package.json```ファイルの範囲内でインストールする．
 
@@ -327,7 +327,7 @@ $ yarn remove foo && yarn add foo@1.0.0
 $ yarn add <パッケージ名>@<バージョン>
 ```
 
-#### ・--check-files
+#### ▼ --check-files
 
 必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ，不足があれば```install```コマンドを実行する．
 
@@ -361,7 +361,7 @@ $ yarn remove <パッケージ名>
 
 ### upgrade
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 指定したパッケージを```package.json```ファイルの範囲内でアップグレードする．
 
@@ -371,7 +371,7 @@ $ yarn remove <パッケージ名>
 $ yarn upgrade <パッケージ名>@<バージョン>
 ```
 
-#### ・latest
+#### ▼ latest
 
 全てのパッケージを，```package.json```ファイルを無視して最新までアップグレードする．
 
@@ -387,7 +387,7 @@ yarn upgrade --latest
 
 ### モジュールバンドルとは
 
-#### ・読み込むパッケージをまとめる
+#### ▼ 読み込むパッケージをまとめる
 
 JavaScriptファイルを読み込むscriptタグを1つにまとめる．HTMLがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，Webページの読み出しが早くなる．
 

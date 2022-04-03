@@ -66,7 +66,7 @@ cor(ts, method = "pearson")
 
 <img src = "https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png" width = 60%>
 
-#### ・回帰方程式
+#### ▼ 回帰方程式
 
 ![単回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰式.png)
 
@@ -105,7 +105,7 @@ summary(Reg)
 
 ![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰分析.png)
 
-#### ・回帰方程式
+#### ▼ 回帰方程式
 
 ![重回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰式.png)
 
@@ -171,7 +171,7 @@ summary(Reg)
 
 
 
-#### ・回帰方程式
+#### ▼ 回帰方程式
 
 ![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰式.png)
 
@@ -206,7 +206,7 @@ exp(result_lg2$coefficients)
 
 決定木モデルを分類モデルとして用いる場合の決定木分析．
 
-#### ・図解例
+#### ▼ 図解例
 
 赤い点：被験者が暑いと感じた日
 

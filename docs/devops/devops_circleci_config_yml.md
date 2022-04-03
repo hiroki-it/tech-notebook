@@ -27,13 +27,13 @@ description: config.yml@CircleCIの知見をまとめました．
 
 ### インストール
 
-#### ・Webhook
+#### ▼ Webhook
 
 CircleCIの鍵をGitHubに登録すると，リポジトリへのプッシュによって，CircleCIをフック（プッシュフック）できるようになる．鍵のうちでデプロイキーを用いることが推奨されている．なお，デプロイキーを追加するには，GitHubアカウントにAdmin権限が必要である．
 
 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
-#### ・デバッグの事前準備
+#### ▼ デバッグの事前準備
 
 デバッグでは行数がわからない仕様になっている．そこで，workflowのjobのどこで失敗しているのかを特定するために，検証しないjobをコメントアウトしておく．
 
@@ -55,7 +55,7 @@ workflows:
 ```
 
 
-#### ・バリデーション
+#### ▼ バリデーション
 
 ホストで，以下のコマンドを実行する．
 
@@ -66,7 +66,7 @@ $ circleci config validate
 # Config file at .circleci/config.yml is valid.
 ```
 
-#### ・処理の展開
+#### ▼ 処理の展開
 
 設定ファイルを実行した時の処理を展開し，ファイルに出力できる
 
@@ -74,7 +74,7 @@ $ circleci config validate
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 ```
 
-#### ・ローカルテスト
+#### ▼ ローカルテスト
 
 コマンドにより，テストに必要なdockerイメージをpullし，コンテナを構築する．続いて，コンテナ内でCircleCIを実行する．バージョン2.1以降では，事前に，設定ファイルの処理を展開しておく必要がある．
 
@@ -86,7 +86,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
-#### ・CircleCIコンテナにSSH接続
+#### ▼ CircleCIコンテナにSSH接続
 
 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
@@ -102,13 +102,13 @@ $ pbcopy < ~/.ssh/github/<秘密鍵名>
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
 ```
 
-#### ・Test Insights
+#### ▼ Test Insights
 
 各テストのパフォーマンスや成功失敗率を確認できる．
 
 https://circleci.com/docs/2.0/insights-tests/
 
-#### ・SSHキー
+#### ▼ SSHキー
 
 SSHキーを作成する必要がある．
 
@@ -123,7 +123,7 @@ SSHキーを作成する必要がある．
 
 ### PHPUnitの自動実行
 
-#### ・仕組み
+#### ▼ 仕組み
 
 1. テストクラスを実装したうえで，新機能を設計実装する．
 
@@ -137,7 +137,7 @@ SSHキーを作成する必要がある．
 
 ### PHPStanの自動実行
 
-#### ・仕組み
+#### ▼ 仕組み
 
 <br>
 
@@ -159,7 +159,7 @@ version: 2.1
 
 ### parameters
 
-#### ・parametersとは
+#### ▼ parametersとは
 
 | パラメーター名      | 参照範囲                                                     | 値を設定する場所 |
 | ------------------- | ------------------------------------------------------------ | ---------------- |
@@ -172,7 +172,7 @@ version: 2.1
 
 ### command parameters
 
-#### ・値の出力方法
+#### ▼ 値の出力方法
 
 引数名を用いて，```parameters```から値を出力する．
 
@@ -180,7 +180,7 @@ version: 2.1
 << parameters.foo >>
 ```
 
-#### ・job parameterを参照
+#### ▼ job parameterを参照
 
 定義できるデータ型は，job parameterと同じ．定義された```command```内のみで定義できる．
 
@@ -204,7 +204,7 @@ commands:
 
 ### job parameters
 
-#### ・値の出力方法
+#### ▼ 値の出力方法
 
 引数名を用いて，```parameters```から値を出力する．
 
@@ -212,7 +212,7 @@ commands:
 << parameters.foo >>
 ```
 
-#### ・デフォルト値について
+#### ▼ デフォルト値について
 
 引数が与えられなかった場合に適用される```default```を設定できる．```default```を設定しない場合，引数が必須と見なされる．
 
@@ -230,7 +230,7 @@ commands:
       - run: echo << parameters.to >>
 ```
 
-#### ・string型
+#### ▼ string型
 
 引数として，任意の文字列を渡したいときに用いる．```workflows```にて，値を設定する．
 
@@ -268,7 +268,7 @@ workflows:
           file: test.txt
 ```
 
-#### ・boolean型
+#### ▼ boolean型
 
 多くの場合，引数がTrueの場合のみ，特定の```step```を実行したい時に用いる．```job```で定義した後，```workflows```にて値を設定する．```workflows```にて，値を設定する．
 
@@ -306,7 +306,7 @@ workflows:
           custom_checkout: true
 ```
 
-#### ・enum型
+#### ▼ enum型
 
 引数として，特定の文字列や整数のみを渡したいときに用いる．```workflows```にて，値を設定する．
 
@@ -343,7 +343,7 @@ workflows:
 
 ### executors parameter
 
-#### ・値の出力方法
+#### ▼ 値の出力方法
 
 引数名を用いて，```parameters```から値を出力する．
 
@@ -351,7 +351,7 @@ workflows:
 << parameters.foo >>
 ```
 
-#### ・job parametersを参照
+#### ▼ job parametersを参照
 
 引数として，任意の文字列を```executors```に渡したいときに用いる．他のparametersとは異なり，```job```にて，値を設定する．
 
@@ -382,7 +382,7 @@ jobs:
       myspecialvar: "myspecialvalue"
 ```
 
-#### ・workflowで値を設定する
+#### ▼ workflowで値を設定する
 
 公式リファレンスには載っていないため，方法としては非推奨．```parameter```を渡したい```executor```を使いまわしたい時に用いる．
 
@@ -435,7 +435,7 @@ workflows:
 
 ### pipeline parameters
 
-#### ・値の出力方法
+#### ▼ 値の出力方法
 
 引数名を用いて，```pipeline.parameters```から値を出力する．
 
@@ -443,7 +443,7 @@ workflows:
 << pipeline.parameters.foo >>
 ```
 
-#### ・job parametersを参照
+#### ▼ job parametersを参照
 
 定義できるデータ型は，job parameterと同じ．リポジトリ内でのみ参照できる．
 
@@ -487,11 +487,11 @@ workflows:
 
 ### jobs
 
-#### ・jobsとは
+#### ▼ jobsとは
 
 複数の```job```を定義する．workflowsを用いない場合は，少なくとも1つの```job```には```build```という名前を用いなければならない．
 
-#### ・jobの粒度
+#### ▼ jobの粒度
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
 
@@ -505,11 +505,11 @@ workflows:
 
 ### docker，machine
 
-#### ・仮想環境の選択
+#### ▼ 仮想環境の選択
 
 jobを実行する仮想環境を選択できる．
 
-#### ・dockerタイプとは
+#### ▼ dockerタイプとは
 
 dockerコンテナを実行環境として設定する．これを選択したうえで，dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を用いて，実行環境dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合，```setup_remote_docker```を有効化すると，これを用いることができるようになる．```machine```タイプを選択した場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
 
@@ -542,7 +542,7 @@ jobs:
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
-#### ・machineタイプとは
+#### ▼ machineタイプとは
 
 Linuxサーバーを実行環境として設定する．
 
@@ -573,11 +573,11 @@ jobs:
 
 ### steps
 
-#### ・stepsとは
+#### ▼ stepsとは
 
 処理をMap型で定義する．
 
-#### ・when，unless
+#### ▼ when，unless
 
 if文を定義する．```when```では条件がtrueの場合，また```unless```ではfalseの場合に実行する```step```を定義する．
 
@@ -616,7 +616,7 @@ workflows:
 ```
 
 
-#### ・restore_cache，save_cache
+#### ▼ restore_cache，save_cache
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
@@ -722,7 +722,7 @@ jobs:
       - save_vendor
 ```
 
-#### ・persist_to_workspace，attach_workspace
+#### ▼ persist_to_workspace，attach_workspace
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
@@ -818,7 +818,7 @@ jobs:
 
 ### executors
 
-#### ・executorsとは
+#### ▼ executorsとは
 
 実行環境に関する設定を部品化し，異なる```job```で繰り返し利用できる．
 
@@ -855,7 +855,7 @@ jobs:
 
 ### workflowの粒度
 
-#### ・ブランチ別
+#### ▼ ブランチ別
 
 **＊実装例＊**
 
@@ -916,7 +916,7 @@ workflows:
 
 ### 特殊なsteps
 
-#### ・pre-steps，post-steps
+#### ▼ pre-steps，post-steps
 
 事前に```job```に定義する必要はない．```workspace```で，コールされる```job```の引数として設定することで，その```job```内の最初と最後に，```steps```を追加できる．
 
@@ -976,11 +976,11 @@ workflows:
 
 ### filters
 
-#### ・filtersとは
+#### ▼ filtersとは
 
 コミットされた時に```job```が発火するブランチ名，あるいは発火しないブランチ名，を設定する．正規表現で実装する必要がある．
 
-#### ・only，ignore
+#### ▼ only，ignore
 
 | よくあるパターン    | 説明                                     |
 | ------------------- | ---------------------------------------- |
@@ -1013,7 +1013,7 @@ workflows:
                 - /feature\/.*/
 ```
 
-#### ・tags
+#### ▼ tags
 
 タグをつけたコミットに対して発火する．```ignore```キーで全てのブランチを指定することにより，マージによる発火を防げる．
 
@@ -1052,7 +1052,7 @@ workflows:
 
 ### CircleCIにおける環境変数とは
 
-#### ・環境変数の出力可能
+#### ▼ 環境変数の出力可能
 
 環境変数は基本的にシェルの実行時のみ使用でき，CircleCIのオプション値としては出力できない．ただし，```docker```オプションだけは例外的に出力できる．
 
@@ -1063,7 +1063,7 @@ workflows:
 working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 ```
 
-#### ・環境変数の種類と参照範囲
+#### ▼ 環境変数の種類と参照範囲
 
 レベルに応じて，出力できるシェルの範囲が異なる．
 
@@ -1075,7 +1075,7 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 | Project    | Environment Variables機能                   | リポジトリ内のシェルのみ参照できる．                         |
 | Global     | Contexts機能                                | 異なるリポジトリ間のシェルで参照できる．                     |
 
-#### ・環境変数の出力方法
+#### ▼ 環境変数の出力方法
 
 Linuxにおける環境変数の出力方法と同様である．また，文字列の中に値を出力する変数展開の場合，```${}```を用いる．
 
@@ -1090,7 +1090,7 @@ steps:
        echo "This is ${FOO}"
 ```
 
-#### ・```.env```ファイルの安全な複製方法
+#### ▼ ```.env```ファイルの安全な複製方法
 
 アプリケーションの```.env```ファイルをCirlcCI内で用いたい時は，あらかじめエンコードされた環境変数をProject変数として管理しておき，CirlcleCI内でデコードするようにすれば，envファイルを安全に複製できる．ここで出力している環境変数は，以下のリンクを参考にせよ
 
@@ -1129,7 +1129,7 @@ jobs:
 
 ### Bashレベル
 
-#### ・commandキーによる設定
+#### ▼ commandキーによる設定
 
 一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．```command```内で用いる環境変数を定義するためには，『```$BASH_ENV```』に```export```コマンドを格納する必要がある．定義したものを用いるためには，『```$BASH_ENV```』を```source```で読み込む必要があるために注意する．
 
@@ -1185,7 +1185,7 @@ jobs:
             echo "$VERY_IMPORTANT"     
 ```
 
-#### ・シェルスクリプトによる設定
+#### ▼ シェルスクリプトによる設定
 
 環境変数に値を設定する処理をシェルスクリプトに切り分け，環境変数を用いる前にこれを読み込む．
 
@@ -1222,7 +1222,7 @@ echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
 source $BASH_ENV
 ```
 
-#### ・ヒアドキュメントで作成したシェルスクリプトによる設定
+#### ▼ ヒアドキュメントで作成したシェルスクリプトによる設定
 
 ヒアドキュメントを用いて，環境変数を設定できるシェルスクリプトを作成し，これを読み込む．ヒアドキュメントでは，各行でechoが実行される．そのため，echoの実装が不要であることに注意する．
 
@@ -1274,7 +1274,7 @@ Projectレベルより参照範囲が大きく，異なるプロジェクト間�
 
 ### docker-composeのインストール
 
-#### ・dockerタイプの場合
+#### ▼ dockerタイプの場合
 
 自分でdocker-composeをインストールする必要がある．実行環境としてのdockerコンテナと，ビルドしたdockerコンテナが入れ子にならないように，```setup_remote_docker```を実行する必要がある．ただし，ボリュームマウントを使用できなくなるので注意する．
 
@@ -1301,7 +1301,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-#### ・machineタイプの場合（推奨）
+#### ▼ machineタイプの場合（推奨）
 
 実行環境にmachineタイプを選択した場合，すでにdocker-composeがインストールされている．
 
@@ -1311,7 +1311,7 @@ jobs:
 
 ### docker-compose & dockerize
 
-#### ・docker/install-dockerize
+#### ▼ docker/install-dockerize
 
 CircleCIでDocker Composeを用いる場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにも関わらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．dockerizeの代わりの方法として，sleepコマンドを用いても良い．
 
@@ -1403,13 +1403,13 @@ jobs:
 
 ### DLC：Docker Layer Cache
 
-#### ・DLCとは
+#### ▼ DLCとは
 
 CircleCIでdockerイメージをビルドした後，各イメージレイヤーのキャッシュをDLCボリュームに作成する．そして，次回以降のビルド時に，差分がないイメージレイヤーをDLCボリュームからプルして再利用する．これにより，dockerイメージのビルド時間を短縮できる．
 
 ![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 
-#### ・使用例
+#### ▼ 使用例
 
 machineタイプで用いる場合，machineキーの下で```docker_layer_caching```を用いる．
 

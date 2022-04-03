@@ -35,7 +35,7 @@ description: uWSGI＠ミドルウェアの知見をまとめました．
 
 ### インストール
 
-#### ・Pip経由
+#### ▼ Pip経由
 
 ```bash
 $ pip3 install uwsgi
@@ -47,7 +47,7 @@ $ pip3 install uwsgi
 
 ### ```uwsgi.ini```ファイル
 
-#### ・```uwsgi.ini```ファイルとは
+#### ▼ ```uwsgi.ini```ファイルとは
 
 uWSGIの起動時の値を設定する．JSON形式やXML形式でも問題ない．
 
@@ -56,7 +56,7 @@ uWSGIの起動時の値を設定する．JSON形式やXML形式でも問題な�
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 - https://qiita.com/11ohina017/items/da2ae5b039257752e558
 
-#### ・起動ログ
+#### ▼ 起動ログ
 
 起動時に，以下のようなログが出力される．
 

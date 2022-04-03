@@ -64,7 +64,7 @@ class Bar(Foo):
 
 ### DI：Dependency Injection（依存オブジェクト注入）
 
-#### ・コンストラクタインジェクション
+#### ▼ コンストラクタインジェクション
 
 依存先のUserNameクラスを，`__init__`メソッドの引数として，Userクラスに注入する．
 

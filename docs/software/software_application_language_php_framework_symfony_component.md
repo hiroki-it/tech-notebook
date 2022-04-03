@@ -179,7 +179,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 ### CLI：Command Line Interface
 
-#### ・CLIとは
+#### ▼ CLIとは
 
 シェルスクリプト（```.sh```），またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる．
 
@@ -230,14 +230,14 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
 ### CLIをコールするバッチファイル
 
-#### ・```for```
+#### ▼ ```for```
 
 ```bash
 # txtファイルを変数fに繰り返し格納し，処理を行う．
 for f in *txt do echo $f; done;
 ```
 
-#### ・Cronによるコマンドの自動実行
+#### ▼ Cronによるコマンドの自動実行
 
 **＊例＊**
 
@@ -261,7 +261,7 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 
 ![図2-9-ver2](https://user-images.githubusercontent.com/42175286/57711074-08c21b00-76a9-11e9-959e-b3777f70d2c6.png)
 
-#### ・カーネルに必要なオブジェクト
+#### ▼ カーネルに必要なオブジェクト
 
 1. Requestオブジェクト
 
@@ -275,7 +275,7 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 
    HTTPレスポンスのヘッダ情報やコンテンツ情報などの情報を保持
 
-#### ・オブジェクトから取り出されたメソッドの役割
+#### ▼ オブジェクトから取り出されたメソッドの役割
 
 1. カーネルが，クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る．
 1. カーネルが，送られてきたURLとルート定義を基に，リクエストに対応するコントローラーアクションを探し，実行させる．その後，テンプレートがURLを生成．
@@ -337,7 +337,7 @@ public function handle
 
 ### Request，Response
 
-#### ・リクエストメッセージからのデータ取得，JSON型データのレスポンス
+#### ▼ リクエストメッセージからのデータ取得，JSON型データのレスポンス
 
 1. Ajaxによるリクエストの場合，JSON型データをレスポンスし，かつページレンダリング．
 2. Ajaxによるリクエストでない場合，ページレンダリングのみ
@@ -373,7 +373,7 @@ class ExampleController extends AbstractController
 }
 ```
 
-#### ・リクエストヘッダーの取得
+#### ▼ リクエストヘッダーの取得
 
 ```php
 <?php
@@ -425,7 +425,7 @@ Symfonyから提供されるDIコンテナのこと．
 
 ### RoutingConfigurator
 
-#### ・RoutingConfiguratorとは
+#### ▼ RoutingConfiguratorとは
 
 コントローラーへのルーティングを設定する．
 
@@ -453,7 +453,7 @@ return function (RoutingConfigurator $routes) {
 
 ### FilesystemAdapter
 
-#### ・FilesystemAdapterとは
+#### ▼ FilesystemAdapterとは
 
 データをキャッシングできる．オプションで，名前空間，キャッシュ存続時間，キャッシュルートパスを指定できる．
 

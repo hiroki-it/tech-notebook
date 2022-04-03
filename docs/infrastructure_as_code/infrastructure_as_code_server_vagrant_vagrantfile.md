@@ -27,13 +27,13 @@ Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し
 
 ### プロバイダー
 
-#### ・プロバイダーとは
+#### ▼ プロバイダーとは
 
 仮想サーバー/コンテナを提供する．
 
 参考：https://www.vagrantup.com/docs/providers
 
-#### ・種類
+#### ▼ 種類
 
 | プロバイダー名 | 補足                                                      |
 | -------------- | --------------------------------------------------------- |
@@ -46,13 +46,13 @@ Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し
 
 ### プロビジョナー
 
-#### ・プロビジョナーとは
+#### ▼ プロビジョナーとは
 
 プロバイダーによって構築された仮想環境に，ソフトウェアをインストールできる（構成管理できる）．具体的には，プログラミング言語やファイアウォールをインストールする．
 
 参考：https://www.vagrantup.com/docs/provisioning
 
-#### ・種類
+#### ▼ 種類
 
 | プロビジョナー名 | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -99,7 +99,7 @@ end
 
 ### config.vm.box
 
-#### ・boxとは
+#### ▼ boxとは
 
 仮想環境のベースとするボックス名を設定する．
 
@@ -117,7 +117,7 @@ end
 
 ### config.vm.box_check_update
 
-#### ・box_check_updateとは
+#### ▼ box_check_updateとは
 
 Vagrantの更新通知を設定する．
 
@@ -133,13 +133,13 @@ end
 
 ### config.vm.network
 
-#### ・networkとは
+#### ▼ networkとは
 
 仮想環境のネットワークを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
-#### ・forwarded_port
+#### ▼ forwarded_port
 
 ホストから仮想環境へポートフォワーディングを設定する．
 
@@ -153,7 +153,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ・private_network
+#### ▼ private_network
 
 仮想環境のプライベートIPアドレスを設定する．他の仮想環境とIPアドレスが重複しないようにする必要がある．
 
@@ -171,13 +171,13 @@ end
 
 ### config.vm.provider
 
-#### ・providerとは
+#### ▼ providerとは
 
 プロバイダー固有のオプションを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
-#### ・virtualbox
+#### ▼ virtualbox
 
 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
@@ -193,7 +193,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ・docker
+#### ▼ docker
 
 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
@@ -212,13 +212,13 @@ end
 
 ### config.vm.provision
 
-#### ・provisionとは
+#### ▼ provisionとは
 
 仮想環境のプロビジョニングを設定する．
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
-#### ・shell
+#### ▼ shell
 
 shellを用いて，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを用いる場合は，これ自体をインストールしておく必要がある．シェルが複数行に渡る場合は，Rubyのヒアドキュメント形式（```<<-```）を用いると良い．
 
@@ -239,7 +239,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ・ansible
+#### ▼ ansible
 
 ホスト側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．開発環境ではこのオプションを用いることは非推奨で，```ansible_local```オプションを用いることが推奨されている．
 
@@ -256,7 +256,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ・ansible_local
+#### ▼ ansible_local
 
 仮想環境側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．注意点としては，開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため，コントロールノードは自分自身を指定してプロビジョニングを実行することになる．開発環境ではこのオプションを用いることが推奨されており，```ansible```オプションを用いることが非推奨とされている．
 
@@ -296,7 +296,7 @@ end
 
 ### config.vm.synced_folder
 
-#### ・synced_folderとは
+#### ▼ synced_folderとは
 
 ホスト上のディレクトリを仮想環境にマウントする．
 
@@ -310,7 +310,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-#### ・type
+#### ▼ type
 
 マウント方法を設定する．デフォルト値は，VirtualBox共有フォルダーである．その他，NFS，RSync，SMBを設定できる．
 

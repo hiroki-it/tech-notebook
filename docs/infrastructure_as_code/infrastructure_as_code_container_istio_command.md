@@ -17,13 +17,13 @@ description: コマンド＠Istioの知見をまとめました．
 
 ### インストール
 
-#### ・brew経由
+#### ▼ brew経由
 
 ```bash
 $ brew install istioctl
 ```
 
-#### ・curl経由
+#### ▼ curl経由
 
 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
@@ -50,13 +50,13 @@ $ export PATH=$PWD/bin:$PATH
 
 ### プロファイル
 
-#### ・プロファイルとは
+#### ▼ プロファイルとは
 
 Istioの機能のセットを提供する．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
-#### ・プロファイルの種類
+#### ▼ プロファイルの種類
 
 参考：
 
@@ -88,7 +88,7 @@ $ kubectl label namespace default istio-injection=enabled
 
 ### analyze
 
-#### ・analyzeとは
+#### ▼ analyzeとは
 
 Istioが正しく機能しているかどうかを検証する．
 
@@ -112,7 +112,7 @@ $ istioctl analyze
 Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
 ```
 
-#### ・-n
+#### ▼ -n
 
 名前空間を指定しつつ，```analyze```コマンドを実行する．
 
@@ -126,7 +126,7 @@ $ istioctl analyze -n <名前空間名>
 
 ### manifest diff
 
-#### ・diffとは
+#### ▼ diffとは
 
 ymlファイルの差分を表示する．
 
@@ -140,13 +140,13 @@ $ istioctl manifest diff <変更前マニフェストファイル名>.yaml <変�
 
 ### install
 
-#### ・installとは
+#### ▼ installとは
 
 プロファイルをインストールし，また設定値を変更する．
 
 参考：https://istio.io/latest/docs/setup/install/istioctl/
 
-#### ・-f
+#### ▼ -f
 
 マニフェストファイルを用いて，プロファイルをインストールする．
 
@@ -154,7 +154,7 @@ $ istioctl manifest diff <変更前マニフェストファイル名>.yaml <変�
 $ istioctl install -f ./istio/<ファイル名>.yaml -y
 ```
 
-#### ・--set
+#### ▼ --set
 
 インストールするもの，または変更する項目を指定する．
 
@@ -178,7 +178,7 @@ $ istioctl install --set meshConfig.accessLogFile=/dev/stdout
 
 ### kube-inject
 
-#### ・kube-injectとは
+#### ▼ kube-injectとは
 
 Envoyコンテナをサイドカーコンテナとして構築する．代わりに，```enabled```値が割り当てられた```istio-injection```タグを名前空間に付与しても良い．
 
@@ -192,13 +192,13 @@ $ istioctl kube-inject
 
 ### profile
 
-#### ・profileとは
+#### ▼ profileとは
 
 Istioのプロファイルを操作する．
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
-#### ・list
+#### ▼ list
 
 利用可能なプロファイルを表示する．
 
@@ -222,7 +222,7 @@ Istio configuration profiles:
 
 ### proxy-config
 
-#### ・proxy-config
+#### ▼ proxy-config
 
 Istio上で管理されるEnvoyの構成情報を表示する．
 
@@ -284,7 +284,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 ### proxy-status
 
-#### ・proxy-statusとは
+#### ▼ proxy-statusとは
 
 IngressGateway，EgressGateway，Envoyコンテナのステータスを表示する．
 
@@ -307,7 +307,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 ### verify-install
 
-#### ・verify-installとは
+#### ▼ verify-installとは
 
 Istioのインストールが正しく実行されたかを検証する．
 
@@ -335,7 +335,7 @@ Checked 3 Istio Deployments
 
 ### version
 
-#### ・versionとは
+#### ▼ versionとは
 
 Istiodのバージョンを表示する．
 

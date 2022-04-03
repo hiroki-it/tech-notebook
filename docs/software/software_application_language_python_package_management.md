@@ -35,7 +35,7 @@ flask==2.0.2
 
 ### check
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 インストールされているパッケージ間の依存関係を正しく解決できるかを確認する．
 
@@ -57,7 +57,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 ### install
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 指定したパッケージをインストールする．
 
@@ -67,7 +67,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 $ pip3 install <パッケージ名>
 ```
 
-#### ・--upgrade
+#### ▼ --upgrade
 
 pip自身を含む，指定したパッケージをアップグレードする．アップグレード後は，```pip3 check```コマンドで依存関係が正しいかを確認し，```pip3 freeze```コマンドで要件ファイルも更新する必要がある．
 
@@ -102,7 +102,7 @@ pip自身をアップグレードする．
 $ pip3 install --upgrade pip
 ```
 
-#### ・--user
+#### ▼ --user
 
 **＊実行例＊**
 
@@ -110,7 +110,7 @@ $ pip3 install --upgrade pip
 $ pip3 install --user <パッケージ名>
 ```
 
-#### ・-r
+#### ▼ -r
 
 requirements.txt を元にパッケージをインストールする．
 
@@ -129,7 +129,7 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 ### freeze
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
@@ -147,7 +147,7 @@ $ pip3 freeze > uninstall.txt
 
 ### list
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 現在インストールされているパッケージの一覧を表示する．
 
@@ -187,7 +187,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 ### show
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 pipでインストールしたパッケージ情報を表示する．
 
@@ -215,7 +215,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 ### uninstall
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 指定したパッケージをインストールする．
 

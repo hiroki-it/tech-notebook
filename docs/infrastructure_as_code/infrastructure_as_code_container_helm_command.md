@@ -27,9 +27,26 @@ $ helm create <チャートへのパス>
 
 <br>
 
+### history
+
+指定したリリースの履歴を表示する．
+
+参考：https://helm.sh/docs/helm/helm_history/
+
+```bash
+$ helm history <リリース名>
+
+REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRIPTION
+<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-1.0.0  1.0.0         Initial install
+<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-1.1.0  1.1.0         Rolled back to 1
+<リリース名>  Wed Jan 01 12:00:00 2020  DEPLOYED   foo-1.0.1  1.1.1         Upgraded successfully
+```
+
+<br>
+
 ### install
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 チャートアーカイブを指定し，Kubernetesリソースとしてデプロイする．
 
@@ -39,7 +56,7 @@ $ helm create <チャートへのパス>
 $ helm install <リリース名> <チャートアーカイブへのパス>
 ```
 
-#### ・--dry-run
+#### ▼ --dry-run
 
 Kubernetesにデプロイされるリソースのマニフェストファイルを表示する．デプロイする前に，チャートの設定が正しいかどうかを確認できる．
 
@@ -53,7 +70,7 @@ kind: Deployment
 # 〜 中略 〜
 ```
 
-#### ・-f
+#### ▼ -f
 
 指定した```values```ファイル用いて，```helm install```コマンドを実行する．
 
@@ -67,7 +84,7 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 ### lint
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 チャートのバリデーションを実行する．
 
@@ -83,7 +100,7 @@ $ helm lint <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-#### ・-f
+#### ▼ -f
 
 指定した```values```ファイル用いて，```helm lint```コマンドを実行する．
 
@@ -108,8 +125,8 @@ Helmを用いてデプロイしたリソースの一覧を表示する．
 ```bash
 $ helm list
 
-NAME          VERSION   UPDATED                   STATUS    CHART
-foo-release   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-0.1.0
+NAME         VERSION   UPDATED                   STATUS    CHART
+<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-0.1.0
 ```
 
 <br>
@@ -142,7 +159,7 @@ $ helm uninstall <リリース名>
 
 ### upgrade
 
-#### ・--install
+#### ▼ --install
 
 新しいリビジョン番号を作成し，デプロイ済のリリースを更新する．
 

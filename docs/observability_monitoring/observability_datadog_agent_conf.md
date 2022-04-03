@@ -43,7 +43,7 @@ Datadogにデータを送信するためには，アプリケーションにdata
 
 ### セットアップ
 
-#### ・インストール（手動の場合）
+#### ▼ インストール（手動の場合）
 
 ```bash
 # 環境変数を設定する．
@@ -55,7 +55,7 @@ $ export DD_SITE=datadoghq.com
 $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 ```
 
-#### ・インストール（Ansibleの場合）
+#### ▼ インストール（Ansibleの場合）
 
 参考：https://app.datadoghq.com/account/settings#agent/ubuntu
 
@@ -89,11 +89,11 @@ datadogエージェントを設定する． ```/etc/datadog-agent```ディレク
 
 ### グローバルオプション
 
-#### ・グローバルオプションとは
+#### ▼ グローバルオプションとは
 
 全てのテレメトリーに関するオプションとして用いることができる．
 
-#### ・api_key
+#### ▼ api_key
 
 DatadogのAPIキーを設定する．
 
@@ -116,11 +116,11 @@ api_key: <APIキー>
 
 ### ログオプション
 
-#### ・ログオプション
+#### ▼ ログオプション
 
 ログに関するオプションとして用いることができる．
 
-#### ・logs_enabled
+#### ▼ logs_enabled
 
 ログの収集はデフォルトで無効化されているため，有効化する必要がある．
 
@@ -146,11 +146,11 @@ logs_enabled: true
 
 ### ベースイメージ
 
-#### ・datadogイメージ
+#### ▼ datadogイメージ
 
 datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
 
-#### ・DockerHubを用いる場合
+#### ▼ DockerHubを用いる場合
 
 ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
 
@@ -165,7 +165,7 @@ ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadog�
 ]
 ```
 
-#### ・ECRパブリックギャラリーを用いる場合
+#### ▼ ECRパブリックギャラリーを用いる場合
 
 ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
 
@@ -183,7 +183,7 @@ ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指�
 - https://gallery.ecr.aws/datadog/agent
 - https://github.com/DataDog/datadog-agent
 
-#### ・プライベートECRリポジトリを用いる場合
+#### ▼ プライベートECRリポジトリを用いる場合
 
 あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は，こちらを採用する．
 
@@ -208,13 +208,13 @@ FROM data/agent:latest
 
 ### AWS ECSへの導入
 
-#### ・datadogコンテナ
+#### ▼ datadogコンテナ
 
 Datadogが提供するdatadogイメージによって構築されるコンテナであり，コンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadog dockerエージェントが，コンテナからメトリクスを収集し，Datadogにこれを転送する．
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
-#### ・コンテナ定義
+#### ▼ コンテナ定義
 
 ```bash
 [
@@ -287,7 +287,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 ]
 ```
 
-#### ・ECSのIAMロール
+#### ▼ ECSのIAMロール
 
 datadogコンテナがコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
 
@@ -324,7 +324,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### グローバル変数
 
-#### ・グローバル変数とは
+#### ▼ グローバル変数とは
 
 全てのテレメトリーに関する環境変数として用いることができる．datadogコンテナの環境変数として設定する．
 
@@ -341,7 +341,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### メトリクス変数
 
-#### ・通常メトリクス
+#### ▼ 通常メトリクス
 
 通常メトリクスに関する環境変数として用いることができる．一部のメトリクスは，デフォルトでは収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
@@ -352,7 +352,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 | ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | AWS ECS Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
-#### ・カスタムメトリクス
+#### ▼ カスタムメトリクス
 
 カスタムメトリクスに関する環境変数として用いることができる．
 
@@ -366,7 +366,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### ログ変数
 
-#### ・ログ変数とは
+#### ▼ ログ変数とは
 
 ログに関する環境変数として用いることができる．
 
@@ -379,11 +379,11 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### 分散トレース変数
 
-#### ・分散トレース変数とは
+#### ▼ 分散トレース変数とは
 
 分散トレースに関する環境変数として用いることができる．分散トレースのタグ名に反映される．
 
-#### ・PHPトレーサーの場合
+#### ▼ PHPトレーサーの場合
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 

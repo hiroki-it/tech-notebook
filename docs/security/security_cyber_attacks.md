@@ -25,13 +25,13 @@ description: サイバー攻撃＠セキュリティの知見をまとめまし�
 
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
-#### ・プロキシサーバーによるアプリケーションゲートウェイ型ファイアウォール
+#### ▼ プロキシサーバーによるアプリケーションゲートウェイ型ファイアウォール
 
 プロキシサーバー上で，SSL証明書の検証，セキュリティ系のソフトウェアの稼働，を行い，ファイアウォールとして用いる．プロキシサーバーセキュリティ精度を重視する場合はこちら．
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
-#### ・パケットフィルタリング型ファイアウォール
+#### ▼ パケットフィルタリング型ファイアウォール
 
   パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバーの間には，NATルータやNAPTルータが設置されている．これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ．
 
@@ -47,7 +47,7 @@ Win10における設定画面
 
 ### Detection Systemとは
 
-#### ・Detection Systemとは
+#### ▼ Detection Systemとは
 
 ネットワーク上を流れるトラフィックを監視し，不正アクセスと思われるパケットを検出した時に，管理者に通知するシステム．あくまで通知するだけで，攻撃を防御することはしない．
 
@@ -57,7 +57,7 @@ Win10における設定画面
 
 ### IPS：Intrusion Prevention Systemとは
 
-#### ・IPSとは
+#### ▼ IPSとは
 
 ネットワーク上を流れるトラフィックを監視し，不正アクセスと思われるパケットを検出した時に，管理者に通知し，さらにパケットの侵入を防ぐシステム．
 
@@ -67,7 +67,7 @@ Win10における設定画面
 
 ### WAF：Web Application Firewallとは
 
-#### ・WAFとは
+#### ▼ WAFとは
 
 システムを保護する機能を持ったシステムのこと．
 
@@ -85,7 +85,7 @@ Win10における設定画面
 
 ### Macroウイルス
 
-#### ・Macroウイルスとは
+#### ▼ Macroウイルスとは
 
 Wordなどのワープロアプリや，Excelなどの表計算アプリケーションに感染
 
@@ -95,7 +95,7 @@ Wordなどのワープロアプリや，Excelなどの表計算アプリケー�
 
 ### Worm
 
-#### ・Wormとは
+#### ▼ Wormとは
 
 自己複製し，1つのコンピュータから，4つの経路（ネットワーク，メール，共有フォルダー，USB）を辿って，他のコンピュータに感染を広げていく．パソコンがグローバルIPで直接インターネットに接続していると感染しやすい．ワームを防ぐためには，パソコンにプライベートIPアドレスを設定し，NATやNAPTなどを介して，インターネットに接続させる必要がある．
 
@@ -109,7 +109,7 @@ Wordなどのワープロアプリや，Excelなどの表計算アプリケー�
 
 ### トロイの木馬
 
-#### ・トロイの木馬とは
+#### ▼ トロイの木馬とは
 
 **＊例＊**
 
@@ -125,7 +125,7 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ### Spyware
 
-#### ・Spywareとは
+#### ▼ Spywareとは
 
 パソコン利用者の個人情報を収集し，外部に送信する．
 
@@ -135,19 +135,19 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ### Bot
 
-#### ・Botとは
+#### ▼ Botとは
 
 あらかじめBot化させておいたパソコンを踏み台として，攻撃者の命令通りに動かす．
 
-#### ・パソコンがボット化するまでのプロセス
+#### ▼ パソコンがボット化するまでのプロセス
 
 ![ボット化のプロセス（パソコン）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（パソコン）.jpg)
 
-#### ・スマホがボット化するまでのプロセス
+#### ▼ スマホがボット化するまでのプロセス
 
 ![ボット化のプロセス（スマホ）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（スマホ）.jpg)
 
-#### ・Bot の使われ方
+#### ▼ Bot の使われ方
 
   まず，攻撃先のネットワーク内にあるパソコンをBot化させる．攻撃者は，Bot化したパソコンを踏み台としてサーバーを攻撃させるように，C&Cサーバーに命令を出す．
 
@@ -159,7 +159,7 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ### CSRF：Cross-Site Request Forgeries
 
-#### ・CSRFとは
+#### ▼ CSRFとは
 
 ユーザーがとあるフォームからログイン後，セッションIDを保持したまま悪意のあるサイトにアクセスしたとする．悪意のあるサイトのサーバーは，ユーザーのセッションIDを用いて，ログインしていた元のサイトのサーバーを攻撃する．サーバーは，正しいフォームからのリクエストと誤認してしまい，攻撃を許容してしまう．
 
@@ -167,7 +167,7 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf.png)
 
-#### ・【対策】ワンタイムトークン
+#### ▼ 【対策】ワンタイムトークン
 
 ![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf-token.png)
 
@@ -217,7 +217,7 @@ x-csrf-token: <トークン>
 - https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
 - https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95
 
-#### ・【対策】CORS
+#### ▼ 【対策】CORS
 
 XSSの説明を参考にせよ
 
@@ -225,7 +225,7 @@ XSSの説明を参考にせよ
 
 ### セッションID固定化
 
-#### ・セッションID固定化とは
+#### ▼ セッションID固定化とは
 
 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
@@ -235,7 +235,7 @@ XSSの説明を参考にせよ
 
 ### Directory traversal
 
-#### ・Directory traversalとは
+#### ▼ Directory traversalとは
 
 traversalは，横断する（ディレクトリを乗り越える）の意味．パス名を使ってファイルを指定し，管理者の意図していないファイルを不正に閲覧またはダウンロードする．
 
@@ -245,13 +245,13 @@ traversalは，横断する（ディレクトリを乗り越える）の意味�
 
 ### DoS攻撃：Denial of Service
 
-#### ・DoS攻撃，DDos攻撃とは
+#### ▼ DoS攻撃，DDos攻撃とは
 
 アクセスが集中することでWebサーバーがパンクすることを利用し，悪意を持ってWebサーバーに大量のデータを送りつける手法．リクエストの送信元が1つの場合はDos攻撃，複数の場合はDDos攻撃という．
 
 ![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DoS攻撃.png)
 
-#### ・【対策】POSTリクエストのリクエスト数制限
+#### ▼ 【対策】POSTリクエストのリクエスト数制限
 
 php.iniファイルにて，一度に受信できるPOSTリクエストの上限値を設定できる．
 
@@ -259,7 +259,7 @@ php.iniファイルにて，一度に受信できるPOSTリクエストの上限
 max_input_vars = 1000
 ```
 
-#### ・【対策】同一送信元のリクエスト制限
+#### ▼ 【対策】同一送信元のリクエスト制限
 
 同じ送信元からの一分間あたりのリクエスト数を制限する．例えば，WAF，API Gatewayの機能を用いる．
 
@@ -269,19 +269,19 @@ max_input_vars = 1000
 
 ### SQLインジェクション
 
-#### ・SQLインジェクションとは
+#### ▼ SQLインジェクションとは
 
 DBのSQLクエリのパラメーターとなる入力に，不正な文字列を入力して不正なSQLクエリを実行させ，DBの情報を抜き取る手法．ただし，近年は減少傾向にある．
 
 ![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQLインジェクション.jpg)
 
-#### ・【対策】特殊な文字の無効化
+#### ▼ 【対策】特殊な文字の無効化
 
 DBのSQLクエリのパラメーターとなる入力では，『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ．そのため，これらのパラメーターが割り当てられているリクエストメッセージを拒否する．例えば，WAFの機能を用いる．
 
 参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
-#### ・【対策】プレースホルダー
+#### ▼ 【対策】プレースホルダー
 
 プリペアードステートメントのSQL中にパラメーターを設定し，値をパラメーターに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメーターに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる．プレースホルダーについては，以下のリンクを参考にせよ．
 
@@ -291,13 +291,13 @@ DBのSQLクエリのパラメーターとなる入力では，『シングルク
 
 ### XSS：Cross Site Scripting
 
-#### ・XSSとは
+#### ▼ XSSとは
 
 WebアプリケーションによるHTML出力のエスケープ処理の欠陥を悪用し，利用者のWebブラウザで悪意のあるスクリプトを実行させる ．
 
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cross-cite-scripting.png)
 
-#### ・【対策】CORS：Cross-Origin Resource Sharing（オリジン間リソース共有）
+#### ▼ 【対策】CORS：Cross-Origin Resource Sharing（オリジン間リソース共有）
 
 ![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cors.png)
 
@@ -364,7 +364,7 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: *
 ```
 
-#### ・【対策】```Set-Cookie```ヘッダーのDomain属性
+#### ▼ 【対策】```Set-Cookie```ヘッダーのDomain属性
 
 リクエストメッセージが```Cookie```ヘッダーを持つことを許可した場合，サブドメインのオリジンにも```Cookie```ヘッダーの送信を許可するかどうかを制御できる．サブドメインレスポンスメッセージの```Set-Cookie```ヘッダーにて，Domain属性にドメインが割り当てなかった場合は，ページを表示するサーバーのドメインにのみ```Cookie```ヘッダーを持つリクエストを許可でき，サブドメインへの送信を拒否できる．一方で，ドメインが割り当てた場合は，そのページからサブドメインに対しても，```Cookie```ヘッダーを持つリクエストを許可できる．ドメインではなく，オリジンであることに注意する．
 
@@ -389,7 +389,7 @@ Origin: https://example.com
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 ```
 
-#### ・【対策】```Set-Cookie```ヘッダーのHttpOnly属性
+#### ▼ 【対策】```Set-Cookie```ヘッダーのHttpOnly属性
 
 これを有効化した場合，```Set-Cookie```ヘッダーに```HttpOnly```属性が割り当てられるようになる．JavaScriptから```Cookie```ヘッダーにアクセスできなくできる．
 
@@ -398,7 +398,7 @@ Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 Set-Cookie: HttpOnly
 ```
 
-#### ・【対策】```Set-Cookie```ヘッダーのsameSite属性
+#### ▼ 【対策】```Set-Cookie```ヘッダーのsameSite属性
 
 | 属性値   | 説明                                                         |
 | ------ | ------------------------------------------------------------ |
@@ -415,7 +415,7 @@ Set-Cookie: HttpOnly
 Set-Cookie: SameSite=None
 ```
 
-#### ・【対策】```Set-Cookie```ヘッダーのSecure属性
+#### ▼ 【対策】```Set-Cookie```ヘッダーのSecure属性
 
 これを有効化した場合，```Set-Cookie```ヘッダーに```Secure```属性が割り当てられるようになる．HTTPSプロトコルを用いた場合のみ，リクエストメッセージに```Cookie```ヘッダーを割り当てられるようになる．
 
@@ -428,7 +428,7 @@ Set-Cookie: Secure
 
 ### パスワードリスト攻撃
 
-#### ・パスワードリスト攻撃とは
+#### ▼ パスワードリスト攻撃とは
 
 漏洩したパスワードを用いて，正面から正々堂々とアクセスする手法．
 
@@ -438,13 +438,13 @@ Set-Cookie: Secure
 
 ### Brute-force攻撃とReverse Brute-force攻撃
 
-#### ・Brute-force攻撃とReverse Brute-force攻撃とは
+#### ▼ Brute-force攻撃とReverse Brute-force攻撃とは
 
 Brute-forceは力ずくの意味．IDを固定して，パスワードを総当たりで試す手法．例えば，5桁数字のパスワードなら，9の5乗通りの組み合わせを試す．一方で，Reverse Brute-forceは，パスワードを固定して，IDを総当たりで試す手法．
 
 ![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
-#### ・パスワードのパターン数
+#### ▼ パスワードのパターン数
 
 ![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パスワードのパターン数.png)
 
@@ -452,13 +452,13 @@ Brute-forceは力ずくの意味．IDを固定して，パスワードを総当�
 
 ### レインボー攻撃
 
-#### ・レインボー攻撃とは
+#### ▼ レインボー攻撃とは
 
 レインボーテーブルの文字列とハッシュ値の対応関係を元にして，ハッシュ化された暗号からパスワードを推測する手法．
 
 ![レインボー攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Rainbow攻撃.png)
 
-#### ・【対策】BCryptによるハッシュ化
+#### ▼ 【対策】BCryptによるハッシュ化
 
 BCryptを用いて，Blowfish方式に基づく暗号化を実行する．Blowfish方式では，同じパスワードの文字列であっても異なるハッシュ値が生成されるため，レインボー攻撃を防げる．Blowfish方式で生成されたハッシュ値は，異なるルールで生成された複数のハッシュ値の組み合わせである．
 
@@ -485,7 +485,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ### ソーシャルエンジニアリング
 
-#### ・ソーシャルエンジニアリングとは
+#### ▼ ソーシャルエンジニアリングとは
 
 技術的な手法ではなく，物理的な手法（盗み見，盗み聞き，成りすまし，詐欺など）によってパスワードを取得し，アクセスする手法．
 
@@ -495,19 +495,19 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ### 踏み台攻撃
 
-#### ・踏み台攻撃とは
+#### ▼ 踏み台攻撃とは
 
 対象のインターネット内のパソコンに攻撃プログラムを仕込んで配置し，攻撃者からの命令でサーバーを攻撃させる手法（※ボットを用いた攻撃など）
 
-#### ・パソコンがボット化するまでのプロセス（再掲）
+#### ▼ パソコンがボット化するまでのプロセス（再掲）
 
 ![ボット化のプロセス（パソコン）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（パソコン）.jpg)
 
-#### ・スマホがボット化するまでのプロセス（再掲）
+#### ▼ スマホがボット化するまでのプロセス（再掲）
 
 ![ボット化のプロセス（スマホ）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（スマホ）.jpg)
 
-#### ・Bot の使われ方（再掲）
+#### ▼ Bot の使われ方（再掲）
 
 ![C&Cサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/C&Cサーバー.png)
 
@@ -515,7 +515,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ### DNS Cache Poisoning
 
-#### ・DNS Cache Poisoningとは
+#### ▼ DNS Cache Poisoningとは
 
 キャッシュDNSサーバーがもつIPアドレスを偽のIPアドレスに変え，偽のサイトに強制的にアクセスさせる手法．
 
@@ -525,7 +525,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ### Back Door
 
-#### ・Back Doorとは
+#### ▼ Back Doorとは
 
 例えば，サイトのカード決済画面やサーバーに潜ませることによって，カード情報を第三者に送信する手法．
 

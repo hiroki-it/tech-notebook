@@ -105,7 +105,7 @@ functions:
 
 ### events
 
-#### ・eventBridge
+#### ▼ eventBridge
 
 Lambda関数に紐づけて構築するEventBridgeを設定する．
 
@@ -123,7 +123,7 @@ functions:
           pattern: ${file(./event_bridge/patterns/pattern.json)}  
 ```
 
-#### ・sqs
+#### ▼ sqs
 
 Lambda関数に紐づけるSQSを設定する．新しくSQSを構築できず，既存のSQSと紐づける機能しかないことに注意する．
 
@@ -144,7 +144,7 @@ functions:
 
 ### image
 
-#### ・name
+#### ▼ name
 
 Lambda関数で用いるイメージのエイリアスを設定する．
 
@@ -265,7 +265,7 @@ Serverless Frameworkで操作するクラウドインフラベンダーを設定
 
 ### ecr
 
-#### ・scanOnPush
+#### ▼ scanOnPush
 
 **＊実装例＊**
 
@@ -275,7 +275,7 @@ provider:
     scanOnPush: true
 ```
 
-#### ・images
+#### ▼ images
 
 Lambda関数のベースイメージを指定し，エイリアス名を付ける．名前は全て小文字である必要がある．
 
@@ -293,7 +293,7 @@ provider:
 
 ### eventBridge
 
-#### ・useCloudFormation
+#### ▼ useCloudFormation
 
 EventBridgeをCloudFormationで構築するか否かを設定する．
 

@@ -65,7 +65,7 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ### 組み込みシステムの制御方式の種類
 
-#### ・シーケンス制御
+#### ▼ シーケンス制御
 
   決められた順序や条件に従って，制御の各段階を進めていく制御方式．
 
@@ -75,7 +75,7 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
 
-#### ・フィードバック制御
+#### ▼ フィードバック制御
 
   その時の状況を定期的に計測し，目標値との差分を基に，出力を調節する制御方式．
 
@@ -92,37 +92,37 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ### キーボードからポインティングデバイス
 
-#### ・ジョイスティック
+#### ▼ ジョイスティック
 
   <br>
 
 
 ### 読み取り機器
 
-#### ・イメージスキャナ
+#### ▼ イメージスキャナ
 
-#### ・Optical Character Reader
+#### ▼ Optical Character Reader
 
   紙上の文字を文字データとして読み取る機器．
 
-#### ・Optical Mark Reader
+#### ▼ Optical Mark Reader
 
   マークシートの塗り潰し位置を読み取る機器．
 
 ![ORM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ORM.png)
 
-#### ・キャプチャカード
+#### ▼ キャプチャカード
 
-#### ・デジタルカメラ
+#### ▼ デジタルカメラ
 
 <br>
 
 
 ### ディスプレイ 
 
-#### ・CRTディスプレイ
+#### ▼ CRTディスプレイ
 
-#### ・液晶ディスプレイ
+#### ▼ 液晶ディスプレイ
 
   電圧の有無によって液晶分子を制御．外部からの光によって画面を表示させる．
 
@@ -130,13 +130,13 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ![液晶ディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/液晶ディスプレイ.jpg)
 
-#### ・有機ELディスプレイ
+#### ▼ 有機ELディスプレイ
 
   有機化合物に電圧を加えることによって発光させ，画面を表示させる．
 
 ![有機ELディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/有機ELディスプレイ.jpg)
 
-#### ・プラズマディスプレイ
+#### ▼ プラズマディスプレイ
 
 ![プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プラズマディスプレイ.gif)
 
@@ -144,7 +144,7 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ![パナソニック製プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パナソニック製プラズマディスプレイ.jpg)
 
-#### ・LEDディスプレイ
+#### ▼ LEDディスプレイ
 
 ![LEDディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LEDディスプレイ.jpg)
 
@@ -155,25 +155,25 @@ CPUとして，『マイクロプロセッサ』を用いたコンピュータ�
 
 ### プリンタ
 
-#### ・ドットインパクトプリンタ
+#### ▼ ドットインパクトプリンタ
 
 ![ドットインパクトプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドットインパクトプリンタ.jpg)
 
 ![ドットインパクトプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドットインパクトプリンタの仕組み.jpg)
 
-#### ・インクジェットプリンタ
+#### ▼ インクジェットプリンタ
 
 ![インクジェットプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インクジェットプリンタ.jpg)
 
 ![インクジェットプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インクジェットプリンタの仕組み.jpg)
 
-#### ・レーザプリンタ
+#### ▼ レーザプリンタ
 
 ![レーザプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/レーザプリンタ.jpg)
 
 ![レーザプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/レーザプリンタの仕組み.jpg)
 
-#### ・プリンタの解像度
+#### ▼ プリンタの解像度
 
   １インチ当たりのドット数（dpi）によって，解像度が異なる．復習ではあるが，PC上では，ドット数がどのくらいのビット数を持つかで，解像度が変わる．
 
@@ -183,7 +183,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ![DPIの比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPIの比較.jpg)
 
-#### ・プリンタの印字速度
+#### ▼ プリンタの印字速度
 
 ![cps_ppm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cps_ppm.jpg)
 
@@ -204,11 +204,11 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ### Serial interface が用いられている例
 
-#### ・USB（Universal Serial Bus）
+#### ▼ USB（Universal Serial Bus）
 
 ![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usbインターフェイス.png)
 
-#### ・IEEE1394
+#### ▼ IEEE1394
 
 ビデオカメラとの接続に用いられるインターフェイス
 
@@ -218,13 +218,13 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ### Parallel interface が用いられている例
 
-#### ・IDE（Integrated Drive Electronics）
+#### ▼ IDE（Integrated Drive Electronics）
 
 ハードディスクとの接続に用いられるインターフェイス．
 
 ![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ideインターフェイス.jpg)
 
-#### ・SCSI（Small Computer System Interface）
+#### ▼ SCSI（Small Computer System Interface）
 
 ハードディスク，CD-ROM，イメージスキャナなど，様々な周辺機器をデイジーチェーンするために用いるインターフェイス．
 
@@ -234,12 +234,12 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 ### 無線インターフェイス
 
-#### ・IrDA（infrared Data Assoiciation）
+#### ▼ IrDA（infrared Data Assoiciation）
   赤外線を使って，無線通信を行うためのインターフェイス．
 
 ![irDAインターフェイス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/irDAインターフェイス.jpg)
 
-#### ・Bluetooth
+#### ▼ Bluetooth
   2.4GHzの電波を使って無線通信を行うためのインターフェイス．
 
 <br>

@@ -51,7 +51,7 @@ IntelとAMDにおけるCPUの歴史を以下に示す．
 
 ### クロック周波数
 
-#### ・クロック周波数とは
+#### ▼ クロック周波数とは
 
 CPUの回路が処理と歩調を合わせるために用いる信号を，『クロック』と言う．一定時間ごとにクロックが起こる時，１秒間にクロックが何回起こるかを『クロック周波数』という．これは，Hzで表される．ちなみに，ワイのパソコンのクロック周波数は2.60GHzでした．
 
@@ -73,7 +73,7 @@ CPUの回路が処理と歩調を合わせるために用いる信号を，『�
 
 ### MIPS：Million Instructions Per Second（×10^6 命令数/秒）
 
-#### ・MIPSとは
+#### ▼ MIPSとは
 
 CPUが1秒間に何回命令を実行するかを表す．
 
@@ -102,7 +102,7 @@ CPUが1秒間に何回命令を実行するかを表す．
 
 ### DRAM：Dynamic RAM
 
-#### ・DRAMとは
+#### ▼ DRAMとは
 
   メインメモリとして用いられる．よく見るやつ．
 
@@ -112,7 +112,7 @@ CPUが1秒間に何回命令を実行するかを表す．
 
 ### Mask ROM
 
-#### ・Mask ROMとは
+#### ▼ Mask ROMとは
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
 
@@ -120,7 +120,7 @@ CPUが1秒間に何回命令を実行するかを表す．
 
 ### Programmable ROM
 
-#### ・Programmable ROM
+#### ▼ Programmable ROM
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
 
@@ -128,11 +128,11 @@ CPUが1秒間に何回命令を実行するかを表す．
 
 ### ガベージコレクション
 
-#### ・ガベージコレクションとは
+#### ▼ ガベージコレクションとは
 
 プログラムが確保したメモリ領域のうち，不要になった領域を自動的に解放する機能．
 
-#### ・Javaの場合
+#### ▼ Javaの場合
 
 Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ領域をオブジェクトに自動的に割り当て，また一方で，不要になったメモリ領域の解放を行う．一方で自動的に行う．
 
@@ -142,7 +142,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ### キャッシュメモリとは
 
-#### ・一次キャッシュメモリと二次キャッシュメモリ
+#### ▼ 一次キャッシュメモリと二次キャッシュメモリ
 
   CPUとメインメモリの間に，キャッシュメモリを何段階か設置し，CPUとメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる．
 
@@ -156,7 +156,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ### 仕組み
 
-#### ・一度目
+#### ▼ 一度目
 
 ユーザー ➔ メインメモリ ➔ 二次キャッシュメモリ ➔ 一次キャッシュメモリの順で，データがやり取りされる．
 
@@ -169,7 +169,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリとキャッシュメモリ_1.jpg)
 
-#### ・二度目
+#### ▼ 二度目
 
 ![メモリとキャッシュメモリ_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリとキャッシュメモリ_2.jpg)
 
@@ -177,13 +177,13 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ### キャッシュメモリへの書き込み方式の種類
 
-#### ・Write-throught方式
+#### ▼ Write-throught方式
 
   CPUは，命令をメインメモリとキャッシュメモリの両方に書き込む．常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが，メモリへの書き込みが頻繁に行われるので遅い．
 
 ![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-through方式.jpg)
 
-#### ・Write-back方式
+#### ▼ Write-back方式
 
   CPUは，キャッシュメモリのみに書き込む．次に，キャッシュメモリがメインメモリに書き込む．メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが，メインメモリへの書き込み回数が少ないため速い
 
@@ -199,7 +199,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ### SRAM：Static RAM
 
-#### ・SRAMとは
+#### ▼ SRAMとは
 
  キャッシュメモリとして用いられる．
 
@@ -239,15 +239,15 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 複数のHDDを仮想的に1つのHDDであるかのようにして，データを管理する技術．
 
-#### ・RAID0（Striping）
+#### ▼ RAID0（Striping）
 
   データを，複数のHDDに分割して書き込む．
 
-#### ・RAID1（Mirroring）
+#### ▼ RAID1（Mirroring）
 
   データを，複数のHDDに同じように書き込む．
 
-#### ・RAID5（Striping with parity）
+#### ▼ RAID5（Striping with parity）
 
   データとパリティ（誤り訂正符号）を，3つ以上のHDDに書き込む．
 

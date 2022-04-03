@@ -17,13 +17,13 @@ description: Nuxt.jsの知見をまとめました．
 
 ### serverモード（SSRモード）
 
-#### ・serverモードとは
+#### ▼ serverモードとは
 
 アプリケーションをSSRとして稼働させる．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
-#### ・```dev```
+#### ▼ ```dev```
 
 開発環境のため，SSRアプリケーションをビルドし，Nodeサーバーを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
@@ -38,7 +38,7 @@ $ yarn dev
 
 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
-#### ・```build```
+#### ▼ ```build```
 
 本番環境のため，Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み出し用のURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
@@ -49,7 +49,7 @@ $ yarn dev
 $ yarn build
 ```
 
-#### ・```start```
+#### ▼ ```start```
 
 本番環境のため，```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
 
@@ -68,13 +68,13 @@ $ yarn start
 
 ### staticモード（SSGモード）
 
-#### ・staticモードとは
+#### ▼ staticモードとは
 
 アプリケーションをSSGとして稼働させる．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
-#### ・```dev```
+#### ▼ ```dev```
 
 開発環境でSSGアプリケーションを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGモードで生成されるアプリケーションは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
@@ -89,7 +89,7 @@ $ yarn dev
 
 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
-#### ・```generate```
+#### ▼ ```generate```
 
 本番環境でSSGアプリケーションを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，DBに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
 
@@ -100,7 +100,7 @@ $ yarn dev
 $ yarn generate
 ```
 
-#### ・```start```
+#### ▼ ```start```
 
 静的ホスティングサイトを起動する．
 
@@ -153,7 +153,7 @@ const nuxtConfig: Configuration = {
 
 ### 環境変数
 
-#### ・```.env```ファイルの読み出し
+#### ▼ ```.env```ファイルの読み出し
 
 あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入すると良い．
 
@@ -199,7 +199,7 @@ const nuxtConfig: Configuration = {
 
 ### build
 
-#### ・hardSource
+#### ▼ hardSource
 
 ビルド時のキャッシュを有効化する．ビルドの完了が早くなる．
 
@@ -216,7 +216,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-####  ・privateRuntimeConfig
+#### ▼ privateRuntimeConfig
 
 クライアントサイドのみで参照できる環境変数を設定する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで用いることができる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
@@ -256,7 +256,7 @@ export function foo() {
 
 ```
 
-#### ・publicRuntimeConfig
+#### ▼ publicRuntimeConfig
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで用いることができる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
@@ -295,7 +295,7 @@ export function foo() {
 
 ```
 
-#### ・quiet
+#### ▼ quiet
 
 ビルド時にログを最小限にする．CI/CDツールでログが確認できなくなるため，無効化しておいた方が良い．
 
@@ -312,7 +312,7 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-#### ・serverMiddleware
+#### ▼ serverMiddleware
 
 リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を設定する．
 

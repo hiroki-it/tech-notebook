@@ -17,17 +17,17 @@ description: コマンド＠Serverless Frameworkの知見をまとめました�
 
 ### print
 
-#### ・printとは
+#### ▼ printとは
 
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ```bash
 $ serverless print
 ```
 
-#### ・パラメーター有
+#### ▼ パラメーター有
 
 ```bash
 $ serverless print --FOO foo
@@ -37,11 +37,11 @@ $ serverless print --FOO foo
 
 ### deploy
 
-#### ・deployとは
+#### ▼ deployとは
 
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 クラウドインフラを構築する．
 
@@ -49,7 +49,7 @@ $ serverless print --FOO foo
 $ serverless deploy
 ```
 
-#### ・パラメーター
+#### ▼ パラメーター
 
 パラメーターを```serverless.yml```ファイルに渡し，```serverless deploy```コマンドを実行する．
 
@@ -57,7 +57,7 @@ $ serverless deploy
 $ serverless deploy --FOO foo
 ```
 
-#### ・-v
+#### ▼ -v
 
 実行ログを表示しつつ，```serverless deploy```コマンドを実行する．
 

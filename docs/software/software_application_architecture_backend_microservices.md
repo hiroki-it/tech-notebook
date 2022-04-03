@@ -17,7 +17,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### バックエンドのアーキテクチャの歴史
 
-#### ・マイクロサービスアーキテクチャを取り巻く環境
+#### ▼ マイクロサービスアーキテクチャを取り巻く環境
 
 ![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_history.png)
 
@@ -30,7 +30,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | 2017    | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニマイクロサービスアーキテクチャを考案した．このアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のマイクロサービスに分割する．この粒度を，マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ．<br>参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2018    | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの，複数のマイクロサービスが必要になることは変わらず，その分だけ開発チームが必要になる問題は解決されなかった．そこで，Root Insurance社はモジュラモノリスを考案した．モジュラモノリスでは，マイクロサービスの概念を取り入れずに，アプリケーションを細かいモジュールに分割する．<br>参考：https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4<br>反対に，最初モジュラーモノリスとして設計し，マイクロサービスアーキテクチャに移行していくという選択肢もある．<br>参考：https://creators-note.chatwork.com/entry/2020/12/02/090000#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3 |
 
-#### ・モジュール/マイクロサービスの粒度の比較
+#### ▼ モジュール/マイクロサービスの粒度の比較
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
 
@@ -47,23 +47,23 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### マイクロサービスアーキテクチャの特徴
 
-#### ・ビジネスのスケーリングに強い
+#### ▼ ビジネスのスケーリングに強い
 
 ビジネスがスケーリングする時，マイクロサービスの新規実装または削除を行えば良いため，ドメイン層の激しい変化に強い．
 
-#### ・コンウェイの法則が働く
+#### ▼ コンウェイの法則が働く
 
 マイクロサービスアーキテクチャにより，組織構造が小さなチームの集まりに変化することを期待できる．
 
-#### ・高頻度でリリース可能
+#### ▼ 高頻度でリリース可能
 
 各マイクロサービスを独立してデプロイできるため，高頻度でリリースできる．
 
-#### ・障害の影響が部分的
+#### ▼ 障害の影響が部分的
 
 いずれかのマイクロサービスに障害が起こったとして，サーキットブレイカーを用いることにより，上流マイクロサービスへの障害の波及を食い止められる．そのため，障害の影響が部分的となり，アプリケーション全体が落ちてしまうことがない．
 
-#### ・複数の開発言語を使用可能
+#### ▼ 複数の開発言語を使用可能
 
 マイクロサービス間で，共通のデータ記述言語を用いてデータ通信を行えば，各マイクロサービスの開発言語が異なっていても問題ない．
 
@@ -71,7 +71,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### マイクロサービスアーキテクチャのフレームワーク
 
-#### ・dapr
+#### ▼ dapr
 
 参考：
 
@@ -84,7 +84,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### リポジトリの分割
 
-#### ・モノリポジトリ
+#### ▼ モノリポジトリ
 
 バックエンドのマイクロサービス，バックエンドから分離されたフロントエンドアプリケーション，IaCツール（KubernetesやTerraformなど），を1つのリポジトリでディレクトリで分割して管理する．ただし，バックエンド/フロントエンド/IaCツールは異なるモノリポジトリとしても良い．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
 
@@ -92,7 +92,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
 
-#### ・ポリリポジトリ
+#### ▼ ポリリポジトリ
 
 バックエンドのマイクロサービス，バックエンドから分離されたフロントエンドアプリケーション，IaCツール（KubernetesやTerraformなど），をそれぞれ異なるリポジトリで管理する．
 
@@ -104,7 +104,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### アプリケーションリポジトリ
 
-#### ・開発環境
+#### ▼ 開発環境
 
 アプリエンジニアとインフラエンジニアの責務を完全に分離する場合，アプリエンジニアはIaCツールの存在を知る必要がない．ただし便宜上，アプリエンジニアはDocker compose用いて開発すると良い．各マイクロサービスに```docker-compose.yml```ファイルを置き，基本的には他のマイクロサービスには依存せずに開発できるようにする必要があり，これはモノリポジトリでもポリリポジトリでも同じである．ただ，マイクロサービス間のネットワークを繋げないと，マイクロサービス間で通信ができない．そのため，Docker composeの```external```オプションを用いて，マイクロサービス間のネットワークを接続する．
 
@@ -136,7 +136,7 @@ frontend_mono_repository
 ...
 ```
 
-#### ・エディタ
+#### ▼ エディタ
 
 多くのエディタでは，専用の設定ファイルがプロジェクトのルートディレクトリに置かれる．基本的には，他のマイクロサービスには依存せずに開発できるようにする必要があり，これはモノリポジトリでもポリリポジトリでも同じである．そこで，各マイクロサービスにエディタの設定ファイルを置くようにする．
 
@@ -172,7 +172,7 @@ frontend_mono_repository
 
 ### コンテナIaCツールリポジトリ
 
-#### ・開発環境
+#### ▼ 開発環境
 
 IaCツールにKubernetesを用いた場合を示す．開発環境でKubernetesを稼働させる場合，Skaffoldなどのイメージビルドツールを使うとよい．この時，イメージのビルドのために，アプリケーションリポジトリにあるDockerfileを指定する必要がある．開発環境では同じ階層にリポジトリを置いておき，ビルドツールで相対パスを指定することで，同階層のアプリケーションリポジトリを参照できるようにする．
 
@@ -215,7 +215,7 @@ infrastructure_repository
 
 ### マイクロサービス
 
-#### ・マイクロサービスとは
+#### ▼ マイクロサービスとは
 
 ![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
 
@@ -227,7 +227,7 @@ infrastructure_repository
 - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
 - https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
 
-#### ・各マイクロサービスのアーキテクチャ
+#### ▼ 各マイクロサービスのアーキテクチャ
 
 各マイクロサービスのアーキテクチャは自由である．この時，ドメイン駆動設計のアーキテクチャを基に実装できる．
 
@@ -243,7 +243,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### マイクロサービスの分割手法
 
-#### ・分割例
+#### ▼ 分割例
 
 | ユースケース | 分割方法          | マイクロサービスの種類                                                                                           | ディレクトリ構成                                    | リンク                                                                                                                                                                                 |
 |--------|---------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -251,7 +251,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 | Eコマース  | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                            | ```services```ディレクトリに各マイクロサービスのディレクトリを配置する． | Mercari：https://github.com/mercari/mercari-microservices-example<br>![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_mercari.png) |
 | Eコマース  | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                            | ルートに各マイクロサービスのディレクトリを配置する．                  | Datadog：https://github.com/DataDog/ecommerce-workshop                                                                                                                               |
 
-#### ・サブドメイン，境界付けられたコンテキストを単位とした分割
+#### ▼ サブドメイン，境界付けられたコンテキストを単位とした分割
 
 ![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_bounded-context.png)
 
@@ -264,7 +264,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://www.amazon.co.jp/dp/4873119316/
 - https://booth.pm/ja/items/1835632
 
-#### ・ルートエンティティを単位とした分割
+#### ▼ ルートエンティティを単位とした分割
 
 ルートエンティティをマイクロサービスの単位とする．ただし，データに着目した従来のステートソーシングのルートエンティティを用いることはアンチパターンである．最良な解決策として，振舞に着目したイベントソーシングを用いる必要がある．また，各マイクロサービスを名詞ではなく動詞で命名すると良い．その他，各マイクロサービスでDBを完全に独立させることや，SAGAパターンを用いること，がある．
 
@@ -278,7 +278,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### 粒度のアンチパターン
 
-#### ・分散モノリス
+#### ▼ 分散モノリス
 
 複数のマイクロサービスをセットでデプロイしなければならず，マイクロサービス間のデプロイが独立していないような粒度のパターン．例えば，マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果，複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある．分散モノリスにならないように，マイクロサービス間で用いるライブラリが重複することを許容する必要がある．
 
@@ -293,7 +293,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### リクエストリプライ方式
 
-#### ・リクエストリプライ方式とは
+#### ▼ リクエストリプライ方式とは
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
@@ -301,7 +301,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
-#### ・直接的な通信
+#### ▼ 直接的な通信
 
 リクエストリプライ方式では，直接的にマイクロサービス間の通信を行う．用いることのできる通信プロトコルは以下の通りである．
 
@@ -314,7 +314,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### イベント駆動方式
 
-#### ・イベント駆動方式とは
+#### ▼ イベント駆動方式とは
 
 ![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
 
@@ -325,7 +325,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://en.wikipedia.org/wiki/Message_queue
 - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
-#### ・メッセージキューを介した通信
+#### ▼ メッセージキューを介した通信
 
 イベント駆動方式では，メッセージキューを介してマイクロサービス間の通信を行う．メッセージキューでは受信したメッセージを一方向にしか配信できないため，もしマイクロサービス間双方向に送信したい場合は，上流マイクロサービスからメッセージを受信するメッセージキューと．下流マイクロサービスから受信するメッセージキューを別々に設置する．メッセージキューはPub/Subデザインパターンで実装するか，またはAWS-SQSなどのツールを用いる．
 
@@ -340,7 +340,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### 非メッシュ
 
-#### ・非メッシュとは
+#### ▼ 非メッシュとは
 
 マイクロサービス間の通信を管理しない．しかし，以下のような問題が起こるため，非推奨である．
 
@@ -353,11 +353,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### メッシュ
 
-#### ・メッシュ
+#### ▼ メッシュ
 
 マイクロサービス間で直接リクエストを送受信するのではなく，これをサイドカーパターンで設置したリバースプロキシコンテナ経由で行う．また，各サイドカーコンテナをコントロールプレーンで統括的に管理する．これにより，マイクロサービス間の通信をより簡単に管理できる．
 
-#### ・サービスメッシュ
+#### ▼ サービスメッシュ
 
 ![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
 
@@ -370,7 +370,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
 - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#service-mesh
 
-#### ・イベントメッシュ
+#### ▼ イベントメッシュ
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に用いるメッシュ．
 
@@ -396,7 +396,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### API Gateway
 
-#### ・API Gatewayとは
+#### ▼ API Gatewayとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_api-gateway-pattern.png)
 
@@ -417,11 +417,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### 設計パターン
 
-#### ・RESTful-API
+#### ▼ RESTful-API
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
-#### ・GraphQL-API
+#### ▼ GraphQL-API
 
 従来のRESTful-APIを用いた場合，バックエンドのエンドポイントが増えるたびに，フロントエンドが指定すべきエンドポイントも増えていく．一方で，GraphQL-APIを用いた場合，単一のエンドポイントをGraphQLで指定すれば，GraphQL-APIが適切な宛先にルーティングしてくれる．
 
@@ -433,19 +433,19 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### 実装パターン
 
-#### ・自前で実装
+#### ▼ 自前で実装
 
 API Gatewayを自前で実装する．Kubernetes内で管理できるメリットがある．
 
 参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 
-#### ・OSSを使用
+#### ▼ OSSを使用
 
 API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理できるメリットがある．
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
-#### ・クラウドプロバイダーのマネージドサービスを使用
+#### ▼ クラウドプロバイダーのマネージドサービスを使用
 
 クラウドプロバイダー（例：AWS）が提供するAPI Gatewayを用いる．クラウドプロバイダーの対応状況によっては，Kubernetes内で管理できない可能性がある．その場合，フロントエンドアプリケーションがAPI Gatewayに通信を送信できるように，フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある．
 
@@ -455,7 +455,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### 設置パターン
 
-#### ・Public API
+#### ▼ Public API
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく，API Gatewayを一つだけ構築する．
 
@@ -463,7 +463,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
-#### ・BFF：Backends  For Frontends
+#### ▼ BFF：Backends  For Frontends
 
 マイクロサービスにリクエストを送信するアプリケーションの種類（Webアプリケーション，Mobileアプリケーション，他社アプリケーション）に応じたAPI Gatewayを構築する．ただ，複数のクライアントをWebアプリとして開発することも可能なため，同じWebからのアクセスであっても，別々のAPI Gatewayを構築する場合がある．
 
@@ -480,13 +480,13 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### ローカルトランザクション
 
-#### ・ローカルトランザクションとは
+#### ▼ ローカルトランザクションとは
 
 1つのトランザクション処理によって，1つのマイクロサービスのDBを操作する方法．推奨される．マイクロサービスアーキテクチャでローカルトランザクションを用いる場合，これを連続的に行う仕組みが必要になる．デザインパターンとして，Sagaパターン，TCCパターン，などがある．
 
 参考：https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
 
-#### ・種類
+#### ▼ 種類
 
 参考：https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
 
@@ -494,7 +494,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### グローバルトランザクション（分散トランザクション）
 
-#### ・グローバルトランザクションとは
+#### ▼ グローバルトランザクションとは
 
 分散トランザクションとも言う．1つのトランザクション処理によって，複数のマイクロサービスのDBを操作する方法．非推奨である．
 
@@ -506,7 +506,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### Sagaパターンとは
 
-#### ・仕組み
+#### ▼ 仕組み
 
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
 
@@ -518,7 +518,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 - https://qiita.com/nk2/items/d9e9a220190549107282
 - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
 
-#### ・補償トランザクション
+#### ▼ 補償トランザクション
 
 ローカルトランザクションを逆順に実行し，Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと．
 
@@ -538,7 +538,7 @@ API GatewayのOSS（Kong，Tyk，Apigee）を用いる．Kubernetes内で管理�
 
 ### Orchestration（オーケストレーション）
 
-#### ・オーケストレーションとは
+#### ▼ オーケストレーションとは
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
 
@@ -551,7 +551,7 @@ Sagaパターンにて，一連のローカルトランザクションの実行�
 - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
-#### ・ローカルトランザクションの連携方式
+#### ▼ ローカルトランザクションの連携方式
 
 マイクロサービス間のローカルトランザクションの連携方式として，メッセージキューを用いる．各マイクロサービスがイベントのパブリッシュとサブスクライブを行う．各マイクロサービスは，自身の次に実行されるマイクロサービスを知らない．各マイクロサービスは，処理結果をオーケストレーターに返却する．
 
@@ -567,7 +567,7 @@ Sagaパターンにて，一連のローカルトランザクションの実行�
 
 ### Choreography（コレオグラフィ）
 
-#### ・コレオグラフィとは
+#### ▼ コレオグラフィとは
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
@@ -587,7 +587,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
 
-#### ・ローカルトランザクションの連携方式
+#### ▼ ローカルトランザクションの連携方式
 
 マイクロサービス間のローカルトランザクションの連携方式として，メッセージキューを用いる．各マイクロサービスがイベントのパブリッシュとサブスクライブを行う．各マイクロサービスは，自身の次に実行されるマイクロサービスを知っている．各マイクロサービスは，次のマイクロサービスにイベントを渡せる別のキューに処理結果を返却する．
 
@@ -601,7 +601,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ### イベントソーシング
 
-#### ・イベントソーシングとは
+#### ▼ イベントソーシングとは
 
 ビジネスの出来事をモデリングし，データとして永続化する．現在の状態を取得する場合は，初期のデータに全ての出来事を適用する．CQRSと相性が良い．
 
@@ -614,7 +614,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ### ステートソーシング
 
-#### ・ステートソーシングとは
+#### ▼ ステートソーシングとは
 
 ビジネスの現在の状態をモデリングし，データとして永続化する．過去の状態は上書きされる．
 
@@ -626,7 +626,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ### Form認証
 
-#### ・独立型
+#### ▼ 独立型
 
 セッションデータを生成する認証マイクロサービスを一つだけ配置し，セッションベースのForm認証を実現する．各マイクロサービスはセッションデータに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，セッションデータを保存できるセッションストレージを各マイクロサービスに配置する．認証マイクロサービスが単一障害点になるというデメリットがある．
 
@@ -637,7 +637,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_sso.png)
 
-#### ・中央集権型
+#### ▼ 中央集権型
 
 セッションデータを生成する認証マイクロサービスを一つだけ配置し，セッションベースのForm認証を実現する．各マイクロサービスはセッションデータに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，セッションデータを保存できるセッションストレージを１つだけ配置する．耐障害性のあるセッションストレージが必要になるというデメリットがある．
 
@@ -648,7 +648,7 @@ Sagaパターンにて，各マイクロサービスで下流マイクロサー�
 
 ![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_centralization.png)
 
-#### ・分散型
+#### ▼ 分散型
 
 JWTを生成する認証マイクロサービスを一つだけ配置し，CookieベースのForm認証を実現する．各マイクロサービスはJWTに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，リクエスト/レスポンスのヘッダーにJWTを埋め込み，クライアント側にJWTを保存させる．クライアント側に保存されたJWTの失効が難しいというデメリットがある．
 
@@ -659,7 +659,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 
 ![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/micro-auth_type_distribution.png)
 
-#### ・ゲートウェイ分散型
+#### ▼ ゲートウェイ分散型
 
 JWTを生成する認証マイクロサービスを一つだけ配置し，CookieベースのForm認証を実現する．各マイクロサービスはJWTに基づいてユーザーを認証する．１つのセッション中の認証情報をマイクロサービス間で共有するために，リクエスト/レスポンスのヘッダーにJWTを埋め込む．ただ分散型の認証とは異なり，クライアント側にはJWTの代わりとなるOpaqueトークンを保存させるようにする．また，API Gatewayやロードバランサーで，OpaqueトークンとJWTの間の相互変換を通信のたびに実行する．
 
@@ -694,7 +694,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 
 ### CDCテスト：Consumer Drive Contract
 
-#### ・CDCテストとは
+#### ▼ CDCテストとは
 
 マイクロサービスのコントローラーがコールされてから，DBの操作が完了するまでを，テストする．下流マイクロサービスのコールはモック化またはスタブ化する．
 
@@ -702,7 +702,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 
 ### カオスエンジニアリング
 
-#### ・カオスエンジニアリング
+#### ▼ カオスエンジニアリング
 
 実験的に，本番環境のマイクロサービスに『カオス』を挿入し，高負荷な状態に至らせる．その結果から，マイクロサービスに潜む想定外の問題を表面化させる．カオスエンジニアリングは，今まさに実際のユーザーが用いているソフトウェアに対して実施することになるため，ビジネスサイドの理解が必要になる．本格的なマイクロサービスを採用している日系企業は少なく，国内事例はまだ少ない．
 
@@ -711,7 +711,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 - https://principlesofchaos.org/
 - https://codezine.jp/article/detail/14526
 
-#### ・手順
+#### ▼ 手順
 
 参考：https://zenn.dev/hodagi/articles/3ce6ccdb00538c
 
@@ -726,7 +726,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 
 ### 障害対策
 
-#### ・サーキットブレイカー
+#### ▼ サーキットブレイカー
 
 マイクロサービス間に設置され，他のマイクロサービスに連鎖する障害を吸収するプログラムのこと．下流マイクロサービスに障害が起こった時に，上流マイクロサービスにエラーを返してしまわないよう，直近の成功時の処理結果を返信する．
 
@@ -736,7 +736,7 @@ JWTを生成する認証マイクロサービスを一つだけ配置し，Cooki
 
 ### 横断的な監視
 
-#### ・分散トレーシング
+#### ▼ 分散トレーシング
 
 マイクロサービス間で分散してしまう各ログを，一意なIDで紐付ける方法．
 

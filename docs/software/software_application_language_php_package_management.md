@@ -17,7 +17,7 @@ description: パッケージ管理＠PHPの知見をまとめました．
 
 ### セットアップ
 
-#### ・インストール
+#### ▼ インストール
 
 参考：https://getcomposer.org/download/
 
@@ -39,7 +39,7 @@ $ php -r "unlink('composer-setup.php');"
 
 ### ```composer.json```ファイル
 
-#### ・autoload
+#### ▼ autoload
 
 名前空間とファイルパスの対応関係を設定する．```require```関数を用いずに，クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる．
 
@@ -71,7 +71,7 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
-#### ・config
+#### ▼ config
 
 Composerのコマンドのオプションのデフォルト値を設定する．
 
@@ -93,7 +93,7 @@ Composerのコマンドのオプションのデフォルト値を設定する．
 }
 ```
 
-#### ・require
+#### ▼ require
 
 インストールされるパッケージとバージョンを設定する．
 
@@ -167,7 +167,7 @@ Composerのコマンドのオプションのデフォルト値を設定する．
 }
 ```
 
-#### ・scripts
+#### ▼ scripts
 
 コマンドのエイリアスを設定する．
 
@@ -200,7 +200,7 @@ Composerのコマンドのオプションのデフォルト値を設定する．
 
 <br>
 
-#### ・version
+#### ▼ version
 
 Composerのバージョンを設定する．インストールされているcomposerと齟齬がないようにする．
 
@@ -226,7 +226,7 @@ Composerのバージョンを設定する．インストールされているcom
 
 ### ```autoload.php```ファイル
 
-#### ・```autoload.php```ファイルとは
+#### ▼ ```autoload.php```ファイルとは
 
 プロジェクト内の全てのphpファイルを名前空間に対応づけ，```require```関数を用いずに名前空間だけでパッケージを読み込めるようにする．エントリーポイント（```index.php```ファイル）あるいは```bootstrap.php```ファイルで，```autoload.php```ファイルを読み込むようにすると良い．
 
@@ -260,7 +260,7 @@ return array(
 );
 ```
 
-#### ・確認方法
+#### ▼ 確認方法
 
 登録済みのphpファイルと名前空間の対応関係は，```php```コマンドで確認するとよい．
 
@@ -366,7 +366,7 @@ $ composer init
 
 ### install
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 事前に```composer.json```ファイルに書き込まれたパッケージを，```composer.lock```ファイルに書き込まれたバージョンでインストールする．
 
@@ -379,7 +379,7 @@ $ composer init
 $ composer install 
 ```
 
-#### ・-vvv
+#### ▼ -vvv
 
 コマンド処理中のログを表示する
 
@@ -387,7 +387,7 @@ $ composer install
 $ composer install -vvv
 ```
 
-####  ・--no-dev
+#### ▼ --no-dev
 
 require-devタグ内のパッケージは除いてインストール
 
@@ -395,7 +395,7 @@ require-devタグ内のパッケージは除いてインストール
 $ composer install --no-dev
 ```
 
-#### ・--prefer-dist
+#### ▼ --prefer-dist
 
 Composerの配布サイトからインストールする．```prefer-source```オプションを用いるよりも高速でインストールできる．デフォルトでdistを用いるため，実際は宣言しなくても問題ない．
 
@@ -403,7 +403,7 @@ Composerの配布サイトからインストールする．```prefer-source```�
 $ composer install --prefer-dist
 ```
 
-#### ・--prefer-source
+#### ▼ --prefer-source
 
 GitHubのComposerリポジトリからインストールする．Composerの開発者用である．
 
@@ -415,7 +415,7 @@ $ composer install --prefer-source
 
 ### reinstall
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 指定したパッケージをアンインストールした後，再インストールする．
 
@@ -437,7 +437,7 @@ $ composer install -vvv
 
 ### remove
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 パッケージを```composer.json```ファイルと```composer.lock```ファイルの両方から削除する．
 
@@ -454,7 +454,7 @@ $ composer remove <パッケージ名>
 
 ### require
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 パッケージ名を```composer.json```ファイルと```composer.lock```ファイルの両方に書き込み，インストールする．または，パッケージのアップグレード/ダウングレードする場合に，パッケージのバージョンを書き換える．コマンドを用いずに自分で実装しても良い．
 
@@ -481,7 +481,7 @@ $ composer <スクリプト名>
 
 ### update
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 事前に```composer.json```ファイルに書き込まれたパッケージを最新のバージョンでインストールし，```composer.lock```ファイルを書き換える．```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．パッケージ内でエラーが発生したら，```composer update```コマンドによるパッケージの更新が原因だと考えた方が良い．いずれかのパッケージで新しいバージョンがリリースされたが，これに不具合があった可能性が高い．
 
@@ -495,7 +495,7 @@ $ composer <スクリプト名>
 $ composer update
 ```
 
-####  ・-vvv
+#### ▼ -vvv
 
 コマンド処理中のログを表示する
 
@@ -507,7 +507,7 @@ $ composer update -vvv
 
 ### 環境変数
 
-#### ・```COMPOSER_MEMORY_LIMIT```
+#### ▼ ```COMPOSER_MEMORY_LIMIT```
 
 Composerのコマンドの実行時のメモリ上限を設定する．メモリ上限を無しにして，コマンドを実行できる．phpバイナリファイルを用いる．dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．
 

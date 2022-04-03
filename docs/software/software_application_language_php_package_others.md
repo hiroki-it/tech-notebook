@@ -23,7 +23,7 @@ description: その他パッケージ＠PHPの知見をまとめました．
 
 ### データ型
 
-#### ・Date型
+#### ▼ Date型
 
 厳密にはデータ型ではないが，便宜上，データ型とする．タイムスタンプとは，協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの．
 
@@ -38,7 +38,7 @@ description: その他パッケージ＠PHPの知見をまとめました．
 
 ### メソッド
 
-#### ・```instance```メソッド 
+#### ▼ ```instance```メソッド 
 
 DateTimeインスタンスを引数として，Carbonインスタンスを作成する．
 
@@ -53,7 +53,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 <br>
 
-#### ・```create```メソッド
+#### ▼ ```create```メソッド
 
 日時の文字列からCarbonインスタンスを作成する．
 
@@ -69,7 +69,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 <br>
 
-#### ・```createFromXXX```メソッド
+#### ▼ ```createFromXXX```メソッド
 
 指定の文字列から，Carbonインスタンスを作成する．
 
@@ -122,7 +122,7 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 <br>
 
-#### ・```parse```メソッド
+#### ▼ ```parse```メソッド
 
 日付，時間，日時フォーマットから，Carbonインスタンスを作成する．```createFromFormat```メソッドとは異なり，フォーマットを指定する必要がない．
 
@@ -191,7 +191,7 @@ class Foo
 
 ### リクエスト
 
-#### ・GET送信
+#### ▼ GET送信
 
 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
@@ -216,7 +216,7 @@ $response = $client->request(
 );
 ```
 
-#### ・POST送信
+#### ▼ POST送信
 
 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
 
@@ -252,7 +252,7 @@ $response = $client->request(
 
 ###  レスポンス
 
-#### ・レスポンスメッセージからボディを取得
+#### ▼ レスポンスメッセージからボディを取得
 
 **＊実装例＊**
 
@@ -300,7 +300,7 @@ $body = json_decode($response->getBody(), true);
 
 ### メソッド
 
-#### ・```generateFromHtml```メソッド
+#### ▼ ```generateFromHtml```メソッド
 
 htmlファイルを元にして，ローカルディレクトリ下にPDFファイルを作成する．
 

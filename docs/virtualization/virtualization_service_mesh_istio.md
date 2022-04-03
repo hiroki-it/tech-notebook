@@ -30,13 +30,13 @@ description: Istio＠仮想化の知見をまとめました．
 
 ### データプレーン
 
-#### ・データプレーンとは
+#### ▼ データプレーンとは
 
 インバウンド通信をマイクロサービスにルーティングする機能を持つ．Istioは，プロキシ機能を持つistio-proxyコンテナを自動的に構築し，これがマイクロサービスに通信をルーティングする．
 
 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-#### ・Proxy
+#### ▼ Proxy
 
 | コンテナ名        | 機能                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -47,7 +47,7 @@ description: Istio＠仮想化の知見をまとめました．
 
 ### コントロールプレーン
 
-#### ・コントロールプレーンとは
+#### ▼ コントロールプレーンとは
 
 データプレーンを包括的に管理する機能を持つ．Istioは，istio-proxyコンテナの管理機能を持つistidというPodを構築する．このPod内には，Pilot，Citadel，Galley，に相当するコンテナが稼働している．
 
@@ -56,15 +56,15 @@ description: Istio＠仮想化の知見をまとめました．
 - https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
 - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-#### ・Citadel
+#### ▼ Citadel
 
 マイクロサービス間の認証やトレースIDを管理する．
 
-#### ・Galley
+#### ▼ Galley
 
 コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったIstiodコンポーネントを構築する．
 
-#### ・Pilot
+#### ▼ Pilot
 
 コンテナオーケストレーションツール（Kubernetes，OpenShift，など）の種類を認識し，ツールに合ったプロキシコンテナを構築する．他に，Istioの設定を，Istioによって注入されるEnvoyの設定に変換する．
 
@@ -75,7 +75,7 @@ description: Istio＠仮想化の知見をまとめました．
 | ```discovery``` | サービスレジストリに登録された情報を基に，マイクロサービスを識別する．（サービスディスカバリー） |
 | ```agent```     | istio-proxyコンテナを起動する．                              |
 
-#### ・Mixer
+#### ▼ Mixer
 
 v1.5からデータプレーン側に統合された．
 
@@ -125,7 +125,7 @@ Istioの各コンポーネントのことで，Kubernetesのカスタムリソ�
 
 ### IngressGateway
 
-#### ・IngressGatewayとは
+#### ▼ IngressGatewayとは
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
@@ -141,7 +141,7 @@ Gateway，Service，DestinationRuleの設定を基に，Cluster外部から送�
 
 ### Gateway
 
-#### ・Gatewayとは
+#### ▼ Gatewayとは
 
 IngressGatewayの機能のうち，Cluster外部から送信されるインバウンド通信をフィルタリングする機能を担う．
 
@@ -151,7 +151,7 @@ IngressGatewayの機能のうち，Cluster外部から送信されるインバ�
 
 ### VirtualService
 
-#### ・VirtualServiceとは
+#### ▼ VirtualServiceとは
 
 IngressGatewayの機能のうち，IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか，を決定する機能を担う．Service自体の設定は，IstioではなくKubernetesで行うことに注意する．ルーティング先のServiceが見つからないと，```404```ステータスを返信する．
 
@@ -160,7 +160,7 @@ IngressGatewayの機能のうち，IngressGatewayで受信したインバウン�
 - https://tech.uzabase.com/entry/2018/11/26/110407
 - https://knowledge.sakura.ad.jp/20489/
 
-#### ・Envoyの設定値として
+#### ▼ Envoyの設定値として
 
 VirtualServiceの設定値は，Envoyのフロントプロキシの設定値としてIstioリソースに適用される．
 
@@ -170,7 +170,7 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
 - https://sreake.com/blog/istio/
 
-#### ・VirtualService数
+#### ▼ VirtualService数
 
 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
@@ -185,7 +185,7 @@ VirtualServiceの設定値は，Envoyのフロントプロキシの設定値と�
 
 ### EgressGateway
 
-#### ・EgressGatewayとは
+#### ▼ EgressGatewayとは
 
 Cluster内部から送信されるアウトバウンド通信をフィルタリングし，パブリックネットワークにルーティングする．
 
@@ -197,7 +197,7 @@ Cluster内部から送信されるアウトバウンド通信をフィルタリ�
 
 ### ServiceEntry
 
-#### ・ServiceEntryとは
+#### ▼ ServiceEntryとは
 
 アウトバウンド通信のうち，送信可能なもののみを指定したドメインやEgressGatewayにルーティングする．ServiceEntryを用いない場合は，全てのアウトバウンド通信がルーティングされる．
 
@@ -211,14 +211,14 @@ Cluster内部から送信されるアウトバウンド通信をフィルタリ�
 
 ### DestinationRule
 
-#### ・DestinationRuleとは
+#### ▼ DestinationRuleとは
 
 | 通信方向       | 機能                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | インバウンド   | IngressGatewayの機能のうち，Serviceで受信したインバウンド通信をいずれのPodにルーティングするか，を決定する機能を担う．Service自体の設定は，IstioではなくKubernetesで行うことに注意する． |                                                              |
 | アウトバウンド | istio-proxyコンテナの送信するアウトバウンド通信をTLSで暗号化するかどうか，を決定する機能を担う． | 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
-#### ・Envoyの設定値として
+#### ▼ Envoyの設定値として
 
 DestinationRuleの設定値は，Envoyのリバースプロキシコンテナの設定値としてistio-proxyコンテナに適用される．
 
@@ -245,7 +245,7 @@ Envoyコンテナを統括的に管理する．
 
 ### Citadal
 
-#### ・Citadalとは
+#### ▼ Citadalとは
 
 暗号鍵やSSL証明書を管理する．
 
@@ -255,13 +255,13 @@ Envoyコンテナを統括的に管理する．
 
 ### Galley
 
-#### ・Galleyとは
+#### ▼ Galleyとは
 
 <br>
 
 ### sidecar-injector
 
-#### ・sidecar-injectorとは
+#### ▼ sidecar-injectorとは
 
 Envoyコンテナをサイドカーとして稼働させる．
 
@@ -269,7 +269,7 @@ Envoyコンテナをサイドカーとして稼働させる．
 
 ### Mixer
 
-#### ・Mixerとは
+#### ▼ Mixerとは
 
 認証やデータ収集を行う．
 
@@ -277,7 +277,7 @@ Envoyコンテナをサイドカーとして稼働させる．
 
 ### Pilot
 
-#### ・Pilotとは
+#### ▼ Pilotとは
 
 Serviceディスカバリやトラフィックの管理を行う．
 
@@ -300,13 +300,13 @@ Istioのインストールや，Istioリソースの操作が可能なリソー�
 
 ### Faultインジェクション
 
-#### ・Faultインジェクションとは
+#### ▼ Faultインジェクションとは
 
 障害を意図的に注入し，サービスメッシュの動作を検証する．
 
 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
-#### ・テストの種類
+#### ▼ テストの種類
 
 | テスト名         | 内容                                                         |
 | ---------------- | ------------------------------------------------------------ |

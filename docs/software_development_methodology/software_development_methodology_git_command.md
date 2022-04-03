@@ -17,7 +17,7 @@ description: コマンド@Gitの知見をまとめました．
 
 ### clone
 
-#### ・```clone <HTTPS接続>```
+#### ▼ ```clone <HTTPS接続>```
 
 一番，クローンの速度が速く，コマンドの引数も簡単．
 
@@ -25,7 +25,7 @@ description: コマンド@Gitの知見をまとめました．
 $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 ```
 
-#### ・```clone <SSH接続>```
+#### ▼ ```clone <SSH接続>```
 
 サーバー接続名は，SSH接続の設定ファイル（```~/.ssh/config```）に記載されている．デフォルトでは，GitHubの接続名は，『```github.com```』になっている．
 
@@ -37,7 +37,7 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 
 ### config
 
-#### ・ 設定の影響範囲の種類
+#### ▼ 設定の影響範囲の種類
 
 | 影響範囲 | 意味                           | 上書き順 | 設定ファイルの場所               |
 | :------- | :----------------------------- | -------- | :------------------------------- |
@@ -45,7 +45,7 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 | global   | 現在のPCユーザーの全リポジトリ | 2        | ```~/.gitconfig```               |
 | local    | 現在のリポジトリ               | 3        | ```<リポジトリ名>/.git/config``` |
 
-#### ・```config --<影響範囲> --list```
+#### ▼ ```config --<影響範囲> --list```
 
 指定した影響範囲で適用されている設定値を表示する．```--local```で設定されていない項目は，```--global```の設定値が適用される．
 
@@ -57,7 +57,7 @@ Macでは，1つのPCで二つのGutHubアカウントを用いる場合，キ�
 
 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
-#### ・```config --<影響範囲> user.name```
+#### ▼ ```config --<影響範囲> user.name```
 
 AuthorとCommitterの名前を設定する．```local```が一番最後に上書きされ，適用される．
 
@@ -66,7 +66,7 @@ $ git config --local user.name "hiroki.hasegawa"
 ```
 
 
-#### ・```config --<影響範囲> user.email```
+#### ▼ ```config --<影響範囲> user.email```
 
 AuthorとCommitterのメールアドレスを設定する．```local```が一番最後に上書きされ，適用される．
 
@@ -86,7 +86,7 @@ Date:   Sat Sep 12 00:00:00 2020 +0900
     add ◯◯を実装した．
 ```
 
-#### ・```config --global core.autocrlf```
+#### ▼ ```config --global core.autocrlf```
 
 改行コードを，特定のタイミングで自動変換するように設定する．```input```としておくのが良い．
 
@@ -100,7 +100,7 @@ $ git config --global core.autocrlf <値>
 |  true  |    LF -> CRLF    | CRLF -> LF |
 | false  |    変換しない    | 変換しない |
 
-#### ・```config --global core.editor```
+#### ▼ ```config --global core.editor```
 
 gitのデフォルトエディタを設定する．ここでは，Vimをデフォルトとする．
 
@@ -112,7 +112,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 ### remote
 
-#### ・```remote set-url origin <SSH URL>```
+#### ▼ ```remote set-url origin <SSH URL>```
 
 プライベートリポジトリに接続する．```config```ファイルに記述されたユーザー名と接続名を設定する．1つのPCで複数のGitHubアカウントを用いている場合，設定が必須である．プロジェクトをクローンした時，SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている．使用頻度の高いアカウントで所有するリポジトリでは，SSH URLを変更することが手間なので接続名を『```github.com```』としておく．一方で，使用頻度の低いアカウントで所有するリポジトリでは，標準のSSH URLを異なる接続名で設定し直す．
 
@@ -198,7 +198,7 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 ### add
 
-#### ・```add --all```
+#### ▼ ```add --all```
 
 変更した全てのファイルをaddする．
 
@@ -206,16 +206,16 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 ### branch
 
-#### ・```branch --all```
+#### ▼ ```branch --all```
 作業中のローカルブランチとリモート追跡ブランチを表示．
 
-#### ・```branch --delete --force ローカルブランチ名}```
+#### ▼ ```branch --delete --force ローカルブランチ名}```
 プッシュとマージの状態に関係なく，ローカルブランチを削除．
 
-#### ・```branch --move <新しいローカルブランチ名>```
+#### ▼ ```branch --move <新しいローカルブランチ名>```
 作業中のローカルブランチの名前を変更．
 
-#### ・```branch --delete --remote origin/<ローカルブランチ名>```
+#### ▼ ```branch --delete --remote origin/<ローカルブランチ名>```
 リモート追跡ブランチを削除．
 （１）まず，```branch --all```で作業中のローカルブランチとリモート追跡ブランチを表示．
 
@@ -241,7 +241,7 @@ $ git branch --all
   remotes/origin/master
 ```
 
-#### ・```branch checkout -b <新しいローカルブランチ名> <コミット番号>```
+#### ▼ ```branch checkout -b <新しいローカルブランチ名> <コミット番号>```
 
 ```bash
 $ git checkout -b feature/3 d7e49b04
@@ -253,7 +253,7 @@ $ git checkout -b feature/3 d7e49b04
 
 ### cherry-pick
 
-#### ・```cherry-pick <コミットID>```
+#### ▼ ```cherry-pick <コミットID>```
 
 現在のブランチに対して，指定したコミットそれ単体をマージする．
 
@@ -288,7 +288,7 @@ $ git log
 
 ### stash
 
-#### ・```stash```とは
+#### ▼ ```stash```とは
 
 ファイルが，『インデックス』（=```add```）あるいは『HEAD』（=コミット）に存在している状態で，異なるローカルブランチを```checkout```しようとすると，以下のエラーが出る．
 
@@ -304,7 +304,7 @@ Aborting
 
 この場合，一度```stash```を行い，『インデックス』（=```add```）あるいは『HEAD』（=コミット）を横に置いておく必要がある．
 
-#### ・```stash -u --include-untracked```
+#### ▼ ```stash -u --include-untracked```
 トラッキングされていないファイルも含めて，全てのファイルを退避．
 ```git status```をしたところ，修正ファイルが3つ，トラックされていないファイルが1つある．
 
@@ -338,7 +338,7 @@ Saved working directory and index state WIP on 2019/foo-repository/feature/6: 64
 
 これらのファイルの変更点を一時的に退避できる．
 
-#### ・```stash -- <パス> ```
+#### ▼ ```stash -- <パス> ```
 
 特定のディレクトリやファイルのみ```stash```できる．
 
@@ -346,7 +346,7 @@ Saved working directory and index state WIP on 2019/foo-repository/feature/6: 64
 git stash -- src/...
 ```
 
-#### ・```stash list```
+#### ▼ ```stash list```
 退避している『ファイル番号ブランチ親コミットとコミットメッセージ』の一覧を表示する．
 
 ```bash
@@ -354,7 +354,7 @@ $ git stash list
 stash@{0}: WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
-#### ・```stash pop stash@{<番号>}```
+#### ▼ ```stash pop stash@{<番号>}```
 退避している指定のファイルを復元．
 
 ```bash
@@ -376,7 +376,7 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-#### ・```stash drop stash@{<番号>}```
+#### ▼ ```stash drop stash@{<番号>}```
 退避している指定のファイルを復元せずに削除．
 
 ```bash
@@ -384,7 +384,7 @@ $ git stash drop stash@{0}
 Dropped refs/stash@{0} (1d0ddeb9e52a737dcdbff7296272080e9ff71815)
 ```
 
-#### ・```stash clear```
+#### ▼ ```stash clear```
 退避している全てのファイルを復元せずに削除．
 
 ```bash
@@ -395,13 +395,13 @@ $ git stash clear
 
 ### revert
 
-#### ・```revert```とは
+#### ▼ ```revert```とは
 
 作業中のローカルブランチで，指定の履歴を削除．
 
 ![revert.png](https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png)
 
-#### ・```revert <コミットID> --no-edit```
+#### ▼ ```revert <コミットID> --no-edit```
 
 指定したコミットのみを打ち消す新しいコミットを作成する．コミットメッセージは，打ち消すコミットと同じものになる．リリース後に元に戻したい時に役立つ．
 
@@ -409,7 +409,7 @@ $ git stash clear
 $ git revert <コミットID> --no-edit
 ```
 
-#### ・```revert <コミットID> --edit```
+#### ▼ ```revert <コミットID> --edit```
 
 指定したコミットのみを打ち消す新しいコミットを作成する．vimが起動するので，コミットメッセージを新しいものに変更する．
 
@@ -417,7 +417,7 @@ $ git revert <コミットID> --no-edit
 $ git revert <コミットID> --edit
 ```
 
-#### ・```revert -m <マージナンバー> <マージコミットID>```
+#### ▼ ```revert -m <マージナンバー> <マージコミットID>```
 
 指定したマージコミットのみを打ち消す新しいコミットを作成する．コミットメッセージは，打ち消すコミットと同じものになる．マージナンバーを事前に確認しておく必要がある．
 
@@ -437,34 +437,34 @@ $ git revert -m 1 xyz
 
 ### reset
 
-#### ・```reset```とは
+#### ▼ ```reset```とは
 
 作業中のローカルブランチで，指定の履歴まで戻し，それ以降を削除．
 
 ![reset.png](https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png)
 
-#### ・```reset HEAD <ファイル名/ファイルパス>```
+#### ▼ ```reset HEAD <ファイル名/ファイルパス>```
 インデックスから，指定したファイルを削除．
 
 ```bash
 $ git reset HEAD <ファイル名/ファイルパス>
 ```
 
-#### ・```reset --soft <コミットID>```
+#### ▼ ```reset --soft <コミットID>```
 作業中のローカルブランチで，最新のHEAD（=コミット後）を指定の履歴まで戻し，それ以降を削除する．コミットのみを取り消したい場合はこれ．
 
 ```bash
 $ git reset --soft <コミットID>
 ```
 
-#### ・```reset --mixed <コミットID>```
+#### ▼ ```reset --mixed <コミットID>```
 作業中のローカルブランチで，インデックス（=```add```後），HEAD（=コミット後）を指定の履歴まで戻し，それ以降を削除．```add```とコミットを取り消したい場合はこれ．
 
 ```bash
 $ git reset --mixed <コミットID>
 ```
 
-#### ・```reset --hard <コミットID>```
+#### ▼ ```reset --hard <コミットID>```
 作業中のローカルブランチで，最新のワークツリー（=フォルダー），インデックス（=```add```後），HEAD（=コミット後）を指定の履歴まで戻し，それ以降を削除．
 <font color="red">**ワークツリー（=フォルダー）内のファイルの状態も戻ってしまうので，取り扱い注意！！**</font>
 
@@ -472,7 +472,7 @@ $ git reset --mixed <コミットID>
 $ git reset --hard <コミットID>
 ```
 
-#### ・```reset```の使用例
+#### ▼ ```reset```の使用例
 
 1. まず，```log ```コマンドで，作業中のローカルブランチにおけるコミットIDを確認．
 
@@ -527,11 +527,11 @@ To github.com:hiroki.hasegawa/foo-repository.git
 
 ### rebase
 
-#### ・```rebase```とは（注意点あり）
+#### ▼ ```rebase```とは（注意点あり）
 
 作業中のローカルブランチで，ブランチの派生元を変更．リモートブランチにプッシュした後は使ってはならず，他のコマンドを用いる．
 
-#### ・```rebase --interactive <コミットID>```
+#### ▼ ```rebase --interactive <コミットID>```
 
 派生元を変更する機能を応用して，過去のコミットのメッセージ変更，削除，統合などを行う．
 
@@ -642,7 +642,7 @@ git filter-branch -f --env-filter "
 fi"
 ```
 
-#### ・```rebase --onto <派生元にしたいローカルブランチ名> <誤って派生元にしたローカルブランチ名> <派生元を変更したいローカルブランチ名>```
+#### ▼ ```rebase --onto <派生元にしたいローカルブランチ名> <誤って派生元にしたローカルブランチ名> <派生元を変更したいローカルブランチ名>```
 
 作業中のローカルブランチの派生元を変更．
 
@@ -650,7 +650,7 @@ fi"
 $ git rebase --onto <派生元にしたいローカルブランチ名> <誤って派生元にしたローカルブランチ名> <派生元を変更したいローカルブランチ名>
 ```
 
-#### ・```rebase --interactive --root```
+#### ▼ ```rebase --interactive --root```
 一番古い，最初の履歴を削除．
 
 （１）変更タブの表示
@@ -685,7 +685,7 @@ To abort and get back to the state before "git rebase", run "git rebase --abort"
 Could not apply 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した
 ```
 
-#### ・```rebase --abort```
+#### ▼ ```rebase --abort```
 
 やりかけの```rebase```を取り消し．
 作業中のローカルブランチにおける```(master|REBASE-i)```が，``` (master)```に変更されていることからも確認可能．
@@ -705,7 +705,7 @@ $
 
 ### pull
 
-#### ・コマンド組み合わせ
+#### ▼ コマンド組み合わせ
 
 全てのリモートブランチをpullする．
 
@@ -724,15 +724,15 @@ $ git pull --all
 
 ### push 
 
-#### ・```push -u origin <作成したブランチ名>```
+#### ▼ ```push -u origin <作成したブランチ名>```
 
 ローカルで作成したブランチを，リモートにプッシュする．コミットは無くても良い．
 
-#### ・```push origin <コミットID>:master```
+#### ▼ ```push origin <コミットID>:master```
 
 トラウマコマンド
 
-#### ・```push --delete origin <タグ名>```
+#### ▼ ```push --delete origin <タグ名>```
 
 リモートブランチのタグを削除する．
 
@@ -746,7 +746,7 @@ $ git push --delete origin v1.0.0
 $ git tag -d v1.0.0
 ```
 
-#### ・```push --tags```
+#### ▼ ```push --tags```
 
 ローカルPCのコミットに付与したタグをリモートにプッシュする．
 
@@ -768,7 +768,7 @@ $ git show-branch \
 
 ### filter-branch
 
-#### ・```filter-branch -f --env-filter```
+#### ▼ ```filter-branch -f --env-filter```
 
 全てのコミットの名前とメールアドレスを上書きする．
 
@@ -781,7 +781,7 @@ $ git filter-branch -f --env-filter \
     HEAD
 ```
 
-#### ・```filter-branch -f --tree-filter```
+#### ▼ ```filter-branch -f --tree-filter```
 
 全てのコミットに対して，指定した処理を実行する．
 

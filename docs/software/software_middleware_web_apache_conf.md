@@ -29,9 +29,9 @@ Apacheは，Apacheコアとモジュールから構成される．モジュー�
 
 ### リバースプロキシサーバーのミドルウェアとして
 
-#### ・HTTP/HTTPSプロトコルでルーティング
+#### ▼ HTTP/HTTPSプロトコルでルーティング
 
-#### ・FastCGIプロトコルでルーティング
+#### ▼ FastCGIプロトコルでルーティング
 
 mod_fcgidモジュールを読み込むことによって，FastCGIプロトコルでルーティングできるようになる．
 
@@ -49,7 +49,7 @@ mod_phpモジュールを読み込むことによって，Appサーバーのミ�
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install apache2
@@ -69,7 +69,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 ### ```.htaccess```ファイル
 
-#### ・```.htaccess```ファイルとは
+#### ▼ ```.htaccess```ファイルとは
 
 基本的に，```httpd.conf```ファイルで全ての設定が可能である．ただし，このファイルはインフラエンジニアの責務であり，アプリエンジニアでApacheの設定を定義したい場合に，```.htaccess```ファイルを用いる．
 
@@ -78,7 +78,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 - https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
 - https://ja.wikipedia.org/wiki/.htaccess
 
-#### ・ルートディレクトリに置いた場合
+#### ▼ ルートディレクトリに置いた場合
 
 全てのファイルに対して，ディレクティブが適用される．
 
@@ -86,7 +86,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
 
-#### ・それ以外のディレクトリに置いた場合
+#### ▼ それ以外のディレクトリに置いた場合
 
 設置したディレクトリ下の階層のファイルに対して適用される．
 
@@ -100,7 +100,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 ### ServerRoot
 
-#### ・ServerRootとは
+#### ▼ ServerRootとは
 
 他の設定ディレクティブで，相対パスが設定されている場合に適用される．そのルートディレクトリを設定する．
 
@@ -122,7 +122,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 ### VirtualHost
 
-#### ・VirtualHostとは
+#### ▼ VirtualHostとは
 
 ディレクティブを囲うディレクティブの一種．特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する．VirtualHostという名前の通り，1 つのサーバー上で，仮想的に複数のドメインを扱うような処理も定義できる．複数のVirtualHostを設定した場合，1つ目がデフォルト設定として認識される．
 
@@ -143,18 +143,18 @@ NameVirtualHost *:80
     ServerName example.org
 </VirtualHost>
 ```
-#### ・IPベースVirtualHost
+#### ▼ IPベースVirtualHost
 
 各ドメインに異なるIPアドレスを割り振るバーチャルホスト．
 
-#### ・名前ベースVirtualHost
+#### ▼ 名前ベースVirtualHost
 全てのドメインに同じIPアドレスを割り振るバーチャルホスト．
 
 <br>
 
 ### DocumentRoot
 
-#### ・DocumentRootとは
+#### ▼ DocumentRootとは
 
 ドキュメントのルートディレクトリを設定する．ドキュメントルートに『```index.html```』というファイルを配置すると，ファイル名を指定しなくとも，ルートディレクトリ内の```index.html```ファイルが，エントリーポイントとして自動的に認識されて表示される．
 
@@ -182,7 +182,7 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 
 ### Directory
 
-#### ・Directoryとは
+#### ▼ Directoryとは
 
 ディレクティブを囲うディレクティブの一種．指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する．
 
@@ -199,7 +199,7 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 
 ### User，Group
 
-#### ・Userとは
+#### ▼ Userとは
 
 httpdプロセスのユーザー名を設定する．httpdプロセスによって作成されたファイルの所有者名は，このディレクティブで定義したものになる．
 
@@ -209,7 +209,7 @@ httpdプロセスのユーザー名を設定する．httpdプロセスによっ�
 User apache
 ```
 
-#### ・Groupとは
+#### ▼ Groupとは
 
 httpdプロセスのグループ名を設定する．httpdプロセスによって作成されたファイルのグループ名は，このディレクティブで定義したものになる．
 
@@ -223,7 +223,7 @@ Group apache
 
 ### KeepAlive，MaxKeepAliveRequests，KeepAliveTimeout
 
-#### ・KeepAliveとは
+#### ▼ KeepAliveとは
 
 HTTPプロトコルのリクエストのクライアントに対して，セッションIDを付与するかどうか，を設定する．
 
@@ -233,7 +233,7 @@ HTTPプロトコルのリクエストのクライアントに対して，セッ�
 KeepAlive On
 ```
 
-#### ・KeepAliveTimeout
+#### ▼ KeepAliveTimeout
 
 セッションIDを付与中のクライアントで，再びリクエストを送信するまでに何秒間空いたら，セッションIDを破棄するか，を設定する．
 
@@ -244,7 +244,7 @@ KeepAlive On
 KeepAliveTimeout 5
 ```
 
-#### ・MaxKeepAliveRequests
+#### ▼ MaxKeepAliveRequests
 
 セッションIDを付与中のクライアントで，リクエストのファイルの最大数を設定する．
 
@@ -261,7 +261,7 @@ MaxKeepAliveRequests 1000
 
 ### LoadModule
 
-#### ・LoadModule
+#### ▼ LoadModule
 
 モジュールを読み出し，設定ディレクティブを宣言できるようにする．
 
@@ -281,7 +281,7 @@ LoadModule dir_module modules/mod_dir.so
 
 ### DirectoryIndex
 
-#### ・DirectoryIndexとは
+#### ▼ DirectoryIndexとは
 
 Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする．
 
@@ -305,7 +305,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 ### AllowOverride
 
-#### ・AllowOverrideとは
+#### ▼ AllowOverrideとは
 
 別に用意した```.htaccess```ファイルにて，有効化するディレクティブを設定する．
 
@@ -318,7 +318,7 @@ Directoryディレクティブによってリクエストされたディレク�
 </Directory>
 ```
 
-#### ・All
+#### ▼ All
 
 別に用意した```.htaccess```ファイルにて，実装可能なディレクティブを全て有効化する．
 
@@ -328,7 +328,7 @@ Directoryディレクティブによってリクエストされたディレク�
 AllowOverride All
 ```
 
-#### ・None
+#### ▼ None
 
 別に用意した```.htaccess```ファイルにて，実装可能なディレクティブを全て無効化する．
 
@@ -338,7 +338,7 @@ AllowOverride All
 AllowOverride None
 ```
 
-#### ・Indexes
+#### ▼ Indexes
 
 別に用意した```.htaccess```ファイルにて，DirectoryIndexディレクティブを有効化する．
 
@@ -354,7 +354,7 @@ AllowOverride Indexes
 
 ### RewriteCond
 
-#### ・RewriteCondとは
+#### ▼ RewriteCondとは
 
 条件分岐と，それによる処理を設定する．
 
@@ -374,13 +374,13 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 ### RewriteRule
 
-#### ・リダイレクトとリライトの違い
+#### ▼ リダイレクトとリライトの違い
 
 以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
-#### ・RewriteRuleとは
+#### ▼ RewriteRuleとは
 
 条件分岐による処理を設定する．
 
@@ -402,7 +402,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 ### SetEnvIf
 
-#### ・SetEnvIfとは
+#### ▼ SetEnvIfとは
 
 条件分岐と環境変数の設定を設定する．
 
@@ -411,7 +411,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 ```
 
-#### ・nolog
+#### ▼ nolog
 
 ログを出力しない場合を設定できる．
 
@@ -421,11 +421,11 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 ### LogFormat
 
-#### ・LogFormatとは
+#### ▼ LogFormatとは
 
 アクセスログファイルの書式を設定する．
 
-#### ・アクセスログ形式と出力内容
+#### ▼ アクセスログ形式と出力内容
 
 アクセスログの出力先ログファイルとフォーマットを合わせて設定する．
 
@@ -452,7 +452,7 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] "GET /home/name/category/web HTTP/1.1" 200 11815 "http://naoberry.com/home/name/" "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1"
 ```
 
-#### ・ログの変数一覧
+#### ▼ ログの変数一覧
 
 | 変数           | 値                                  | 例                                                           |
 | -------------- | ----------------------------------- | ------------------------------------------------------------ |
@@ -470,11 +470,11 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 ### ErrorLog
 
-#### ・ErrorLogとは
+#### ▼ ErrorLogとは
 
 エラーログファイルの書式を設定する．
 
-#### ・エラーログ形式と出力内容
+#### ▼ エラーログ形式と出力内容
 
 エラーログの出力先を設定する．
 
@@ -488,7 +488,7 @@ ErrorLog /var/log/httpd/error_log
 
 ### LogLevel
 
-#### ・LogLevelとは
+#### ▼ LogLevelとは
 
 ログに出力する最低のレグレベルを設定する．
 
@@ -502,7 +502,7 @@ LogLevel warn
 
 ### SSLCertificateFile
 
-#### ・SSLCertificateFileとは
+#### ▼ SSLCertificateFileとは
 
 PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する．本番環境ではAWSのACMの証明書を用いることが多いため，基本的な用途としては，ローカル開発でのオレオレ証明書読み出しのために用いる．
 
@@ -516,7 +516,7 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 
 ### SSLCertificateKeyFile
 
-#### ・SSLCertificateKeyFileとは
+#### ▼ SSLCertificateKeyFileとは
 
 PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する．
 
@@ -532,11 +532,11 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 ### Header
 
-#### ・Headerとは
+#### ▼ Headerとは
 
 レスポンスヘッダーを設定する．```set```，```append```，```add```，```unset```，```echo```オプションを設定できる．デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される．オプションとして，```always```を設定することで，全てのステータスコードでヘッダーを設定する．
 
-#### ・set
+#### ▼ set
 
 レスポンスヘッダーを追加する．
 
@@ -554,7 +554,7 @@ Header set Referrer-Policy "no-referrer-when-downgrade"
 Header set Referrer-Policy "no-referrer-when-downgrade" always
 ```
 
-#### ・unset
+#### ▼ unset
 
 レスポンスヘッダーを削除する．
 

@@ -17,7 +17,7 @@ description: Docker＠仮想化の知見をまとめました．
 
 ### dockerクライアント
 
-#### ・dockerクライアントとは
+#### ▼ dockerクライアントとは
 
 dockerクライアントは，dockerコマンドを用いてdockerデーモンAPIをコールできる．
 
@@ -29,7 +29,7 @@ dockerクライアントは，dockerコマンドを用いてdockerデーモンAP
 
 ### dockerデーモン
 
-#### ・dockerデーモンとは
+#### ▼ dockerデーモンとは
 
 ホスト側で稼働し，コンテナの操作を担う常駐プログラム．dockerクライアントにdockerデーモンAPIを公開する．クライアントがdockerコマンドを実行すると，dockerデーモンAPIがコールされ，コマンドに沿ってコンテナが操作される．
 
@@ -54,7 +54,7 @@ dockerクライアントは，dockerコマンドを用いてdockerデーモンAP
 
 ### バインドマウント
 
-#### ・バインドマウントとは
+#### ▼ バインドマウントとは
 
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png)
 
@@ -65,7 +65,7 @@ dockerクライアントは，dockerコマンドを用いてdockerデーモンAP
 - https://docs.docker.com/storage/bind-mounts/
 - https://www.takapy.work/entry/2019/02/24/110932
 
-#### ・使用方法
+#### ▼ 使用方法
 
 Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で用いることができるが，```docker-compose.yml```ファイルでの定義が推奨である．
 
@@ -77,7 +77,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
   --mount type=bind, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
 ```
 
-#### ・マウント元として指定できるディレクトリ
+#### ▼ マウント元として指定できるディレクトリ
 
 以下の通り，ホスト側のマウント元のディレクトリにはいくつか選択肢がある．
 
@@ -87,7 +87,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ### ボリュームマウント
 
-#### ・ボリュームマウントとは
+#### ▼ ボリュームマウントとは
 
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png)
 
@@ -98,11 +98,11 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 - https://docs.docker.com/storage/volumes/
 - https://www.takapy.work/entry/2019/02/24/110932
 
-#### ・ボリューム，マウントポイントとは
+#### ▼ ボリューム，マウントポイントとは
 
 ホスト側のdockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという．また，マウント先のディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントという．
 
-#### ・使用方法
+#### ▼ 使用方法
 
 Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で用いることができるが，```docker-compose.yml```ファイルでの定義が推奨である．
 
@@ -114,7 +114,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
   --mount type=volume, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
 ```
 
-#### ・Data Volumeコンテナによる永続化データの提供
+#### ▼ Data Volumeコンテナによる永続化データの提供
 
 ボリュームを用いる場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを用いる時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照する．
 
@@ -124,7 +124,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ### バインドマウント，ボリュームマウント，```COPY```，NFS
 
-#### ・脆弱性の比較
+#### ▼ 脆弱性の比較
 
 本番環境で，ホストからコンテナにバインドマウントを実行することは技術的に可能である．しかしバインドマウントでは，ホスト側のコードが隔離されておらず，コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう（例：```cd```コマンドによって，ホスト側のマウントに関係ないディレクトリにアクセスできてしまう）．一方でボリュームマウントでは，ホスト側のコードはdockerエリア内に隔離されており，ホストの他のファイルからは切り離されている．これにより，マウントに関係のないファイルへはアクセスできないようになっている．そのため，バインドマウントより安全である．
 
@@ -135,7 +135,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 - https://devops4solutions.com/storage-options-in-docker/
 - https://www.takapy.work/entry/2019/02/24/110932
 
-#### ・本番環境での使いやすさの比較
+#### ▼ 本番環境での使いやすさの比較
 
 脆弱性の観点から，本番環境ではボリュームマウント（```VOLUME```）や```COPY```を用いて，アプリケーションをdockerイメージに組み込むようにする．
 
@@ -148,7 +148,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 - https://www.nyamucoro.com/entry/2018/03/15/200412
 - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
 
-#### ・パフォーマンスの比較
+#### ▼ パフォーマンスの比較
 
 アプリケーションが処理を実行する時，大量のパッケージが読み出される．この時，ホスト上で稼働するコンテナのパフォーマンスは，『```COPY，NFS > ボリュームマウント > バインドマウント```』の順で高い．
 
@@ -165,7 +165,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ### bridgeネットワーク
 
-#### ・bridgeネットワークとは
+#### ▼ bridgeネットワークとは
 
 複数のコンテナ間に対して，仮想ネットワークで接続させる．また，仮想ネットワークを物理ネットワークの間を，仮想ブリッジを用いてbridge接続する．ほとんどの場合，この方法を用いる．
 
@@ -191,7 +191,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ### noneネットワーク
 
-#### ・noneネットワークとは
+#### ▼ noneネットワークとは
 
 特定のコンテナを，ホストや他のコンテナとは，ネットワーク接続させない．
 
@@ -208,7 +208,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 ### hostネットワーク
 
-#### ・hostネットワークとは
+#### ▼ hostネットワークとは
 
 特定のコンテナに対して，ホストと同じネットワーク情報をもたせる．
 
@@ -223,7 +223,7 @@ ac017dda93d6        host                    host                local
 
 ### コンテナ間の接続方法
 
-#### ・『ホスト』から『ホスト（```localhost```）』にリクエスト
+#### ▼ 『ホスト』から『ホスト（```localhost```）』にリクエスト
 
 『ホスト』から『ホスト』に対して，アウトバウンド通信を送信する．ここでのホスト側のホスト名は，『```localhost```』となる．リクエストは，ポートフォワーディングされたコンテナに転送される．ホストとコンテナの間のネットワーク接続の成否を確認できる．
 
@@ -236,7 +236,7 @@ ac017dda93d6        host                    host                local
 $ curl --fail http://127.0.0.1:8080
 ```
 
-#### ・『コンテナ』から『コンテナ』にリクエスト
+#### ▼ 『コンテナ』から『コンテナ』にリクエスト
 
 『コンテナ』から『コンテナ』に対して，アウトバウンド通信を送信する．ここでのコンテナのホスト名は，コンテナ内の『```/etc/hosts```』に定義されたものとなる．リクエストはホストを経由せず，そのままコンテナに送信される．コンテナ間のネットワーク接続の成否を確認できる．コンテナのホスト名の定義方法については，以下のリンクを参考にせよ．
 
@@ -251,7 +251,7 @@ $ curl --fail http://127.0.0.1:8080
 $ curl --fail http://<webコンテナに割り当てたホスト名>:80/
 ```
 
-#### ・『コンテナ』から『ホスト（```host.docker.internal```）』にリクエスト
+#### ▼ 『コンテナ』から『ホスト（```host.docker.internal```）』にリクエスト
 
 『コンテナ』から『ホスト』に対して，アウトバウンド通信を送信する．ここでのホスト側のホスト名は，『```host.docker.internal```』になる．リクエストは，ホストを経由して，ポートフォワーディングされたコンテナに転送される．ホストとコンテナの間のネットワーク接続の成否を確認できる．
 
@@ -272,7 +272,7 @@ $ curl --fail http://host.docker.internal:8080
 
 ### ロギングドライバー
 
-#### ・ロギングドライバーとは
+#### ▼ ロギングドライバーとは
 
 コンテナ内の標準出力（```/dev/stdout```）と標準エラー出力（```/dev/stderr```）に出力されたログを，ファイルやAPIに対して転送する．
 
@@ -280,7 +280,7 @@ $ curl --fail http://host.docker.internal:8080
 $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 
-#### ・json-file
+#### ▼ json-file
 
 標準出力/標準エラー出力に出力されたログを，```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する．デフォルトの設定値である．
 
@@ -294,7 +294,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 }
 ```
 
-#### ・fluentd
+#### ▼ fluentd
 
 構造化ログに変換し，サイドカーとして稼働するFluentdコンテナに送信する．ECSコンテナのawsfirelensドライバーは，fluentdドライバーをラッピングしたものである．
 
@@ -312,11 +312,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
  }
 ```
 
-#### ・none
+#### ▼ none
 
 標準出力/標準エラー出力に出力されたログを，ファイルやAPIに転送しない． ファイルに出力しないことで，開発環境のアプリケーションサイズの肥大化を防ぐ．
 
-#### ・awslogs
+#### ▼ awslogs
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する．
 
@@ -331,7 +331,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 }
 ```
 
-#### ・gcplogs
+#### ▼ gcplogs
 
 標準出力/標準エラー出力に出力されたログを，Google Cloud LoggingのAPIに転送する．
 
@@ -350,7 +350,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 ### 各ベンダーのイメージのログ出力先
 
-#### ・dockerコンテナの標準出力/標準エラー出力
+#### ▼ dockerコンテナの標準出力/標準エラー出力
 
 Linuxでは，標準出力は『```/proc/<プロセスID>/fd/1```』，標準エラー出力は『```/proc/<プロセスID>/fd/2```』である．dockerコンテナでは，『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク，また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている．
 
@@ -377,13 +377,13 @@ crw-rw-rw- 1 root root 1, 9 Oct 14 11:36 urandom
 crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 ```
 
-#### ・nginxイメージ
+#### ▼ nginxイメージ
 
 公式のnginxイメージは，```/dev/stdout```というシンボリックリンクを，```/var/log/nginx/access.log```ファイルに作成している．また，```/dev/stderr```というシンボリックリンクを，```/var/log/nginx/error.log```ファイルに作成している．これにより，これらのファイルに対するログの出力は，```/dev/stdout```と```/dev/stderr```に転送される．
 
 参考：https://docs.docker.com/config/containers/logging/
 
-#### ・php-fpmイメージ
+#### ▼ php-fpmイメージ
 
 要勉強．
 

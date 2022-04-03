@@ -23,11 +23,11 @@ description: 仮想化の知見をまとめました．
 
 ### ホスト型仮想化
 
-#### ・ホスト型仮想化とは
+#### ▼ ホスト型仮想化とは
 
 物理サーバーのホスト上で，仮想サーバー（仮想マシン）を構築する．
 
-#### ・Provider例
+#### ▼ Provider例
 
 VMware Workstation，Oracle VM VirtualBox，など
 
@@ -37,11 +37,11 @@ VMware Workstation，Oracle VM VirtualBox，など
 
 ### ハイパーバイザー型仮想化
 
-#### ・ハイパーバイザー型仮想化とは
+#### ▼ ハイパーバイザー型仮想化とは
 
 物理サーバーのBIOSから起動したハイパーバイザー上で，仮想サーバー（仮想マシン）を構築する．この時，ホストは用いない．
 
-#### ・Provider例
+#### ▼ Provider例
 
 VMware vSphere Hypervisor，Xen，KVM，など
 
@@ -51,13 +51,13 @@ VMware vSphere Hypervisor，Xen，KVM，など
 
 ### コンテナ型仮想化
 
-#### ・コンテナ型仮想化とは
+#### ▼ コンテナ型仮想化とは
 
 物理サーバーのホスト上で，仮想サーバーと同様の機能を持つコンテナを構築する．カーネルのリソースを分割できるNamespace（PID namespace，Network namespace，UID namespace）とControl Groupsを用いて，単一のOS上に独立したコンテナを構築する．
 
 → DockerToolboxがちょい違う
 
-#### ・Provider例
+#### ▼ Provider例
 
 Docker，LXC，OpenVZ，など
 
@@ -77,13 +77,13 @@ Docker，LXC，OpenVZ，など
 
 ### 処理速度の違い
 
-#### ・Overheadの小ささ
+#### ▼ Overheadの小ささ
 
 ゲストOS上のアプリケーションを操作する場合，ホスト型とハイパーバイザ型では，ハードウェアやハイパーバイザーを経由する必要がある．この分だけ，時間（Overhead）を要する．一方で，コンテナ型では，各コンテナがホストとカーネルを共有するため，Overheadが小さい．
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
-#### ・Overheadの比較
+#### ▼ Overheadの比較
 
 sysbenchというベンチマークツールを用いて，CPU・メモリ・ファイルI/Oに着目し，物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると，コンテナ型であるDockerは最もOverheadが小さい．
 
@@ -101,7 +101,7 @@ sysbenchというベンチマークツールを用いて，CPU・メモリ・フ
 
 ### 垂直スケーリング（スケールアップ ⇔ スケールダウン）
 
-#### ・垂直スケーリングとは
+#### ▼ 垂直スケーリングとは
 
 仮想環境自体のスペックをより高くすることで，仮想環境当たりの処理能力を向上させる．その逆は，スケールダウン．設定でスペックを上げることも，これに該当する．
 
@@ -111,7 +111,7 @@ sysbenchというベンチマークツールを用いて，CPU・メモリ・フ
 
 ### 水平スケーリング（スケールアウト ⇔ スケールイン）
 
-#### ・水平スケーリングとは
+#### ▼ 水平スケーリングとは
 
 仮想環境の台数を増やすことで，仮想環境全体の処理能力を向上させる．その逆は，スケールイン．
 
@@ -143,11 +143,11 @@ sysbenchというベンチマークツールを用いて，CPU・メモリ・フ
 
 従系システムの待機方法には2つの種類がある．
 
-#### ・ホットスタンバイ
+#### ▼ ホットスタンバイ
 
 ![p613-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-1.png)
 
-#### ・コールドスタンバイ
+#### ▼ コールドスタンバイ
 
 ![p613-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-2.png)
 

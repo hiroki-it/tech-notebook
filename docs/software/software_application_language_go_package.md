@@ -24,7 +24,7 @@ title: 【知見を記録するサイト】パッケージ@Go
 
 ### コマンド
 
-#### ・```go mod tidy```
+#### ▼ ```go mod tidy```
 
 インポートされているパッケージに合わせて，```go.mod```ファイルと```go.sum```ファイルを更新する．
 
@@ -43,7 +43,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 ### go.modファイル
 
-#### ・```go.mod```ファイルとは
+#### ▼ ```go.mod```ファイルとは
 
 PHPにおける```composer.json```ファイルに相当する．インターネット上における自身のパッケージ名とGoバージョンを定義するために，全てのGoアプリケーションで必ず必要である．インストールしたい外部パッケージも定義できる．
 
@@ -53,7 +53,7 @@ module github.com/hiroki-it/foo-repository
 go 1.16
 ```
 
-#### ・インターネットからインポート
+#### ▼ インターネットからインポート
 
 パッケージ名とバージョンタグを用いて，インターネットからパッケージをインポートする．```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される．これは，用いているパッケージではなく，インポートしているパッケージが依存しているパッケージである．なお，パッケージ名は，用いたいパッケージの```go.mod```ファイルを参照すること．
 
@@ -80,7 +80,7 @@ func main() {
 }
 ```
 
-#### ・ローカルPCからインポート
+#### ▼ ローカルPCからインポート
 
 ローカルPCでのみ用いる独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を用いてインポートする必要がある．独自共有の全パッケージでパッケージ名を置換する必要はなく，プロジェクトのルートパスについてのみ定義すれば良い．パス実際，```unknown revision```のエラーで，バージョンを見つけられない．
 
@@ -128,7 +128,7 @@ func main() {
 
 ### go.sumファイル
 
-#### ・```go.sum```ファイルとは
+#### ▼ ```go.sum```ファイルとは
 
 PHPにおける```composer.lock```ファイルに相当する．```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される．パッケージごとのチェックサムが記録されるため，前回のインストール時と比較して，パッケージに変更があるかどうかを検知できる．
 
@@ -155,7 +155,7 @@ PHPにおける```composer.lock```ファイルに相当する．```go.mod```フ�
 - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
-#### ・serviceパッケージ
+#### ▼ serviceパッケージ
 
 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
 
@@ -179,7 +179,7 @@ Go製のORMである．
 
 ### DBとの接続
 
-#### ・MySQLの場合
+#### ▼ MySQLの場合
 
 参考：https://gorm.io/ja_JP/docs/connecting_to_the_database.html#MySQL
 
@@ -229,7 +229,7 @@ func Close(db *gorm.DB) error {
 
 ### Gormモデル
 
-#### ・Gormモデル埋め込み
+#### ▼ Gormモデル埋め込み
 
 構造体にGormモデルを埋め込むと，IDやタイムスタンプレコードがフィールドとして追加される．構造体をマッピングしたテーブルに，```id```カラム，```created_at```カラム，```updated_at```カラム，```deleted_at```カラムが追加される．
 
@@ -251,7 +251,7 @@ type User struct {
 }
 ```
 
-#### ・プライマリーキー
+#### ▼ プライマリーキー
 
 『ID』という名前のフィールドを認識して，これをプライマリーキーとしてデータをマッピングする．もし，他の名前のフィールドをIDとして用いたい場合は，```gorm:"primaryKey"```タグをつける．
 
@@ -271,7 +271,7 @@ type User struct {
 }
 ```
 
-#### ・SoftDelete
+#### ▼ SoftDelete
 
 構造体が，```gorm.DeleteAt```をデータ型とするフィールドを持っていると，その構造体を用いたDELETE処理では論理削除が実行される．Gormモデルを埋め込むことによりこのフィールドを持たせるか，または独自定義することにより，SoftDeleteを有効化できる．
 
@@ -302,7 +302,7 @@ db.Where("age = 20").Find(&user)
 
 ### マイグレーション
 
-#### ・```TableName```メソッド
+#### ▼ ```TableName```メソッド
 
 デフォルトではGormモデルの名前をスネークケースに変更し，また複数形とした名前のテーブルが生成される．```TableName```メソッドにより，独自のテーブル名をつけられる．
 
@@ -346,7 +346,7 @@ result.RowsAffected // returns inserted records count
 
 ### Read
 
-#### ・全カラム取得
+#### ▼ 全カラム取得
 
 参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-all-objects
 
@@ -361,7 +361,7 @@ result.RowsAffected // returns found records count, equals `len(users)`
 result.Error        // returns error
 ```
 
-#### ・単一/複数カラム取得
+#### ▼ 単一/複数カラム取得
 
 Gormモデルとプライマリーキーを指定して，プライマリーキーのモデルに紐付けられたカラムを取得する．
 
@@ -384,7 +384,7 @@ db.Find(&users, []int{1,2,3})
 
 ### Update
 
-#### ・単一カラム更新（暗黙的）
+#### ▼ 単一カラム更新（暗黙的）
 
 フィールドとは無関係に，渡された値を元にUPDATE分を実行する．
 
@@ -406,7 +406,7 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
 ```
 
-#### ・複数カラム更新（暗黙的）
+#### ▼ 複数カラム更新（暗黙的）
 
 Gormモデルのフィールドを暗黙的に指定して，複数のカラム値を更新する．または，フィールドとは無関係に，マップデータを元にUPDATE文を実行する．Gormモデルを用いた場合，フィールド値がゼロ値であると，これに紐付けられたカラム値の更新はスキップされてしまう．
 
@@ -424,7 +424,7 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 // UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
 ```
 
-#### ・複数カラム更新（明示的）
+#### ▼ 複数カラム更新（明示的）
 
 Gormモデルのフィールドを明示的に指定して，複数のカラム値を更新する．フィールド値がゼロ値であっても，スキップされない．
 
@@ -442,7 +442,7 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 // UPDATE users SET name='new_name', age=0 WHERE id=111;
 ```
 
-#### ・全カラム更新
+#### ▼ 全カラム更新
 
 Gormモデルのフィールドを暗黙的に全て指定して，全てのカラム値を強制的に更新する．
 
@@ -473,7 +473,7 @@ db.Save(&user)
 
 ### mock，assert
 
-#### ・モック化
+#### ▼ モック化
 
 | よく用いるメソッド | 説明                                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -498,7 +498,7 @@ type MockedAwsClient struct {
 }
 ```
 
-#### ・スタブ化
+#### ▼ スタブ化
 
 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
@@ -533,7 +533,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 }
 ```
 
-#### ・アサーションメソッドによる検証
+#### ▼ アサーションメソッドによる検証
 
 参考：
 
@@ -547,7 +547,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 | ```Mock.AssertExpectations```メソッド | 関数の検証時に用いる．関数内部のスタブが正しく実行されたかどうかを検証する． |
 | ```assert.Exactly```メソッド          | 関数の検証時に用いる．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
 
-#### ・前処理と後処理
+#### ▼ 前処理と後処理
 
 テスト関数を実行する直前に，前処理を実行する．モックの生成のために用いると良い．PHPUnitにおける前処理と後処理については，以下のリンクを参考にせよ．
 

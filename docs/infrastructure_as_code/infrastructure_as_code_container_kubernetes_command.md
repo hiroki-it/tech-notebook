@@ -17,13 +17,13 @@ description: コマンド＠Kubernetesの知見をまとめました．
 
 ### apply
 
-#### ・applyとは
+#### ▼ applyとは
 
 同じ識別子（名前）のリソースが存在しない場合は，リソースを作成し，存在する場合はマニフェストファイルの差分を更新する．全ての項目を更新できるわけでない．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
-#### ・-f -R
+#### ▼ -f -R
 
 マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．```-R```オプションでディレクトリ内のファイルを再帰的に指定することもできる．
 
@@ -54,13 +54,13 @@ pod/foo-pod configured
 
 ### config
 
-#### ・configとは
+#### ▼ configとは
 
 kubectlコマンドに関するパラメーターを操作する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
-#### ・current-context
+#### ▼ current-context
 
 kubectlコマンドの宛先になっているkube-apiserverを表示する．
 
@@ -70,7 +70,7 @@ $ kubectl config current-context
 minikube
 ```
 
-#### ・get-contexts
+#### ▼ get-contexts
 
 適用可能なコンテキストの一覧と現在のコンテキストを表示する．
 
@@ -81,7 +81,7 @@ CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
           docker-desktop   docker-desktop   docker-desktop
 ```
 
-#### ・use-context
+#### ▼ use-context
 
 kubectlコマンドの宛先を，指定したKubernetes環境のkube-apiserverに変更する．
 
@@ -105,7 +105,7 @@ $ kubectl config use-context docker-desktop
 $ aws eks --region ap-northeast-1 update-kubeconfig --name foo-eks-cluster
 ```
 
-#### ・view
+#### ▼ view
 
 パラメーターのデフォルト値が設定された```~/.kude/config```ファイルを表示する．
 
@@ -173,13 +173,13 @@ users:
 
 ### cp
 
-#### ・cpとは
+#### ▼ cpとは
 
 ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 ```bash
 $ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コンテナのファイルパス>
@@ -193,7 +193,7 @@ $ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コ�
 
 ### create
 
-#### ・createとは
+#### ▼ createとは
 
 様々なリソースを作成する．```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが，オプションが少ない．そのため，```f```オプションでマニフェストファイルを指定し，おぶえジェクトを作成した方が良い．同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる．
 
@@ -215,7 +215,7 @@ $ kubectl create -f ./kubernetes/foo-service.yaml
 service/foo-service created
 ```
 
-#### ・deployment
+#### ▼ deployment
 
 Pod数を維持管理するReplicaSetを作成する．Podを削除するためには，Deployment自体を削除しなければならない．
 
@@ -225,7 +225,7 @@ Pod数を維持管理するReplicaSetを作成する．Podを削除するため�
 $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 ```
 
-#### ・secret generic
+#### ▼ secret generic
 
 Secretを作成する．
 
@@ -264,7 +264,7 @@ secret/foo-secret created
 
 ### describe
 
-#### ・describeとは
+#### ▼ describeとは
 
 リソースの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを用いる．
 
@@ -278,13 +278,13 @@ $ kubectl describe nodes
 
 ### exec
 
-#### ・execとは
+#### ▼ execとは
 
 指定したPod内のコンテナでコマンドを実行する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
-#### ・-it
+#### ▼ -it
 
 **＊例＊**
 
@@ -308,7 +308,7 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 ### expose
 
-#### ・exposeとは
+#### ▼ exposeとは
 
 Serviceを作成する．
 
@@ -317,7 +317,7 @@ Serviceを作成する．
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
-#### ・--type，--port，--target-port
+#### ▼ --type，--port，--target-port
 
 **＊例＊**
 
@@ -343,7 +343,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 ### get <リソース>
 
-#### ・getとは
+#### ▼ getとは
 
 リソースの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを用いる．
 
@@ -381,7 +381,7 @@ foo-service    ClusterIP   n.n.n.n        <none>        80/TCP    10s
 kubernetes     ClusterIP   n.n.n.n        <none>        443/TCP   12h
 ```
 
-#### ・-o
+#### ▼ -o
 
 **＊例＊**
 
@@ -431,11 +431,11 @@ $ kubectl get service/istio-ingressgateway \
 
 ### label
 
-#### ・labelとは
+#### ▼ labelとは
 
 指定したリソースのラベルを操作する．
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -451,7 +451,7 @@ $ kubectl label <リソース名> foo=bar
 $ kubectl label <リソース名> foo-
 ```
 
-#### ・--overwrite
+#### ▼ --overwrite
 
 **＊例＊**
 
@@ -465,13 +465,13 @@ $ kubectl label --overwrite <リソース名> foo=bar
 
 ### logs
 
-#### ・logsとは
+#### ▼ logsとは
 
 指定したリソースのログを表示する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -508,7 +508,7 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 
 ### rollout
 
-#### ・rolloutとは
+#### ▼ rolloutとは
 
 Kubernetesリソースをダウンタイム無しで更新する．
 
@@ -517,7 +517,7 @@ Kubernetesリソースをダウンタイム無しで更新する．
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
 
-####  ・restart
+#### ▼ restart
 
 指定したKubernetesをローリングリスタートする．
 
@@ -531,7 +531,7 @@ $ kubectl rollout restart deployment -n kube-system
 
 ### patch
 
-#### ・patchとは
+#### ▼ patchとは
 
 JSON/YAML形式を入力値として，リソースの設定を変更する．
 
@@ -554,7 +554,7 @@ $ kubectl get pv \
 
 ### port-forward
 
-#### ・port-forwardとは
+#### ▼ port-forwardとは
 
 ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを用いてPod内のDBコンテナにTCP/IP接続したい場合に用いる．
 
@@ -573,11 +573,11 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 ### proxy
 
-#### ・proxyとは
+#### ▼ proxyとは
 
 ローカルホストとkube-apiserverの間にフォワード/リバースプロキシサーバーとして機能するリソースを作成する．kube-proxyとは異なるリソースであることに注意する．
 
-#### ・--address，--accept-hosts
+#### ▼ --address，--accept-hosts
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
@@ -593,13 +593,13 @@ Starting to serve on [::]:8001
 
 ### run
 
-#### ・runとは
+#### ▼ runとは
 
 Deployment，Pod，ジョブを作成する．
 
 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
-#### ・--restart，--image，--port
+#### ▼ --restart，--image，--port
 
 **＊例＊**
 

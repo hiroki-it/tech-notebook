@@ -52,13 +52,13 @@ PHP-FPMは，FastCGIとしてWebサーバーとPHPファイルの間でデータ
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install php-fpm
 ```
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install php-fpm
@@ -70,7 +70,7 @@ $ apt-get install php-fpm
 
 ### php-fpmコマンド
 
-#### ・-t
+#### ▼ -t
 
 設定ファイルを検証する．
 
@@ -84,7 +84,7 @@ $ php-fpm -t
 
 ### systemctlコマンドによる操作
 
-#### ・status
+#### ▼ status
 
 PHP-FPMのプロセスが正常に実行中であることを確認する．プロセスがプールとして準備されていることも確認できる．
 
@@ -112,7 +112,7 @@ $ systemctl status php-fpm.service
 
 ### ```/usr/local/etc/php-fpm.conf```ファイル
 
-####  ・```php-fpm.conf```ファイルとは
+#### ▼ ```php-fpm.conf```ファイルとは
 
 PHP-FPMの全てのプロセスを設定する．設定ファイルを切り分ける場合，```/etc/php-fpm.d```ディレクトリ下に```<実行ユーザー名>.conf```ファイルの名前で配置する．PHP-FPMの仕様として，異なる```.conf```ファイルで同じプールで同じオプションを設定した場合は，後ろにくる名前のファイルの設定が優先されるようになっている．そのため，同じプールの設定を異なる```.conf```ファイルに分割する場合に，同じオプションを設定しないように注意する．
 
@@ -163,7 +163,7 @@ daemonize = yes
 
 ### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-#### ・```www.conf```ファイルとは
+#### ▼ ```www.conf```ファイルとは
 
 PHP-FPMの```www```プロセスのプールを設定する．```www.conf```ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．```php.ini```ファイルによって読み込まれ，```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．NginxからPHP-FPMにインバウンド通信をルーティングする場合，Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で，プロセスのユーザー名を『```www-data```』とする必要がある．ちなみに，『```www-data```』はApacheプロセスのユーザー名のデフォルト値である．
 
@@ -172,7 +172,7 @@ PHP-FPMの```www```プロセスのプールを設定する．```www.conf```フ�
 - https://www.php.net/manual/ja/install.fpm.configuration.php
 - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
-#### ・```zz-docker.conf ```ファイルについて
+#### ▼ ```zz-docker.conf ```ファイルについて
 
 PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．PHP-FPMの仕様では，同じプールに同じオプションを設定した場合は，名前が後ろに来るファイルの設定が優先されるため，デフォルトのベースイメージでは```zz-docker.conf```ファイルの設定が最優先になっている．このファイルに後勝ちできるように，ホストでは```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
@@ -189,7 +189,7 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 ### ```/usr/local/etc/php-fpm.d/docker.conf```ファイル
 
-#### ・```docker.conf```ファイルとは
+#### ▼ ```docker.conf```ファイルとは
 
 PHP-FPMをDockerで稼働させるために必要な項目を設定する．ファイルは，```/usr/local/etc/php-fpm.d```ディレクトリ下に配置されている．
 
@@ -361,7 +361,7 @@ listen.owner = www-data
 
 ### php_admin_flag
 
-#### ・php_admin_flagとは
+#### ▼ php_admin_flagとは
 
 Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
 
@@ -370,7 +370,7 @@ Apacheでのみ用いることができる．PHPの```ini```ファイルで設�
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
 - https://www.php.net/manual/en/ini.list.php
 
-#### ・php_admin_flag[log_errors]
+#### ▼ php_admin_flag[log_errors]
 
 ```ini
 [www]
@@ -381,7 +381,7 @@ php_admin_flag[log_errors] = on
 
 ### php_admin_value
 
-#### ・php_admin_valueとは
+#### ▼ php_admin_valueとは
 
 Apacheでのみ用いることができる．PHPの```ini```ファイルで設定された真偽値以外のオプションを上書きし，他から上書きされないようにする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
 
@@ -390,7 +390,7 @@ Apacheでのみ用いることができる．PHPの```ini```ファイルで設�
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
 - https://www.php.net/manual/en/ini.list.php
 
-#### ・php_admin_value[error_log]
+#### ▼ php_admin_value[error_log]
 
 エラーログの出力先を設定する．開発環境ではエラーログファイル（```/var/log/php-fpm/www-error.log```）に出力し，本番環境では標準エラー出力に出力するとよい．
 
@@ -403,7 +403,7 @@ php_admin_value[error_log] = /dev/stderr
 
 ### php_flag
 
-#### ・php_flagとは
+#### ▼ php_flagとは
 
 PHPの```ini```ファイルで設定された真偽値のオプションを上書きする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
 
@@ -412,7 +412,7 @@ PHPの```ini```ファイルで設定された真偽値のオプションを上�
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
 - https://www.php.net/manual/en/ini.list.php
 
-#### ・php_value[display_errors]
+#### ▼ php_value[display_errors]
 
 Webページ上にエラーを表示するかどうかを設定する．
 
@@ -425,7 +425,7 @@ php_flag[display_errors] = off
 
 ### php_value
 
-#### ・php_valueとは
+#### ▼ php_valueとは
 
 PHPの```ini```ファイルで設定された真偽値以外のオプションを上書きする．全てのオプションを上書きできるわけでなく，オプションごとの変更モードによる．
 
@@ -434,7 +434,7 @@ PHPの```ini```ファイルで設定された真偽値以外のオプション�
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
 - https://www.php.net/manual/en/ini.list.php
 
-#### ・php_value[session.save_handler]
+#### ▼ php_value[session.save_handler]
 
 セッションの保存形式を設定する．デフォルト値は```files```形式でサーバー内に保存する．```redis```レコード形式でセッションDB（PHP Redis，ElastiCache Redisなど）に保存するように設定することもできる．
 
@@ -447,7 +447,7 @@ php_value[session.save_handler] = redis
 
 <br>
 
-#### ・php_value[session.save_path]
+#### ▼ php_value[session.save_path]
 
 セッションの保存場所のディレクトリを設定する．保存形式に```redis```を設定した場合には，Redisのエンドポイントを設定できる．デフォルト値は```/var/lib/php/session```ディレクトリである．
 
@@ -460,7 +460,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 
 <br>
 
-#### ・php_value[soap.wsdl_cache_dir]
+#### ▼ php_value[soap.wsdl_cache_dir]
 
 ```ini
 [www]
@@ -563,19 +563,19 @@ user = www-data
 
 ### ログの種類
 
-#### ・NOTICE
+#### ▼ NOTICE
 
 ```log
 [01-Sep-2021 00:00:00] NOTICE: fpm is running, pid 1
 ```
 
-#### ・WARNING
+#### ▼ WARNING
 
 ```log
 [01-Sep-2021 00:00:00] WARNING: [pool www] server reached pm.max_children setting (5), consider raising it
 ```
 
-#### ・Fatal Error
+#### ▼ Fatal Error
 
 ```log
 Fatal error: Allowed memory size of ***** bytes exhausted (tried to allocate 16 bytes)

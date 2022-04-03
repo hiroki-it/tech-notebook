@@ -25,7 +25,7 @@ description: コマンド＠Laravelの知見をまとめました．
 
 ### config
 
-#### ・キャッシュの削除
+#### ▼ キャッシュの削除
 
 キャッシュ（```bootstrap/cache/config.php```ファイル）を削除する．
 
@@ -37,7 +37,7 @@ $ php artisan config:clear
 
 ### make
 
-#### ・factory
+#### ▼ factory
 
 Factoryを自動的に生成する．
 
@@ -45,14 +45,14 @@ Factoryを自動的に生成する．
 $ php artisan make:factory <Factory名> --model=<対象とするModel名>
 ```
 
-#### ・HTTP｜controller
+#### ▼ HTTP｜controller
 
 ```bash
 # コントローラークラスを自動作成
 $ php artisan make:controller <Controller名>
 ```
 
-#### ・HTTP｜formRequest
+#### ▼ HTTP｜formRequest
 
 FormRequestクラスを自動作成する．
 
@@ -60,7 +60,7 @@ FormRequestクラスを自動作成する．
 $ php artisan make:request <Request名>
 ```
 
-#### ・HTTP｜middleware
+#### ▼ HTTP｜middleware
 
 Middlewareクラスを自動生成する．
 
@@ -68,7 +68,7 @@ Middlewareクラスを自動生成する．
 $ php artisan make:middleware <Middleware名>
 ```
 
-#### ・migration
+#### ▼ migration
 
 マイグレーションファイルを作成する．
 
@@ -76,7 +76,7 @@ $ php artisan make:middleware <Middleware名>
 $ php artisan make:migration create_<テーブル名>_table
 ```
 
-#### ・model
+#### ▼ model
 
 Eloquentモデルを自動生成する．
 
@@ -84,7 +84,7 @@ Eloquentモデルを自動生成する．
 $ php artisan make:model <Eloquentモデル名>
 ```
 
-#### ・resource
+#### ▼ resource
 
 Resourceクラスを自動生成する．
 
@@ -92,7 +92,7 @@ Resourceクラスを自動生成する．
 $ php artisan make:resource <Resource名>
 ```
 
-#### ・provider
+#### ▼ provider
 
 Providerクラスを自動生成する．
 
@@ -100,7 +100,7 @@ Providerクラスを自動生成する．
 $ php artisan make:provider <クラス名>
 ```
 
-#### ・seeder
+#### ▼ seeder
 
 Seederクラスを自動生成する．
 
@@ -112,7 +112,7 @@ $ php artisan make:seeder <Seeder名>
 
 ### migrate
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 マイグレーションファイルを元にテーブルを作成する．
 
@@ -126,7 +126,7 @@ $ php artisan migrate
 Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" not found
 ```
 
-#### ・status
+#### ▼ status
 
 マイグレーションの結果を確認する．
 
@@ -134,7 +134,7 @@ Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" n
 $ php artisan migrate:status
 ```
 
-#### ・rollback
+#### ▼ rollback
 
 指定した履歴数だけ，ロールバックを行う．
 
@@ -154,7 +154,7 @@ $ php artisan migrate:rollback --step=1
 $ php artisan migrate
 ```
 
-#### ・reset
+#### ▼ reset
 
 初期の状態まで，全てのロールバックを実行する．
 
@@ -164,7 +164,7 @@ $ php artisan migrate
 $ php artisan migrate:reset
 ```
 
-#### ・refresh
+#### ▼ refresh
 
 全てのロールバック（```migrate:reset```）を実行し，次いで```migrate```を実行する．
 
@@ -174,7 +174,7 @@ $ php artisan migrate:reset
 $ php artisan migrate:refresh
 ```
 
-#### ・fresh
+#### ▼ fresh
 
 全てのテーブルを削除と```migrate```を実行する．マイグレーションファイルの構文チェックを行わずに，強制的に実行される．
 
@@ -190,7 +190,7 @@ $ php artisan migrate:fresh
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
-#### ・--force
+#### ▼ --force
 
 マイグレーション時，本当に実行して良いか確認画面（Yes/No）が表示される．CI/CD時に，この確認画面でYes/Noを入力できないため，確認画面をスキップできるようにする必要がある．
 
@@ -204,7 +204,7 @@ $ php artisan migrate --force
 
 ### route
 
-#### ・list
+#### ▼ list
 
 登録済みのルーティングの一覧を表示する．
 
@@ -213,7 +213,7 @@ $ php artisan migrate --force
 $ php artisan route:list
 ```
 
-#### ・clear
+#### ▼ clear
 
 ルーティングのキャッシュを削除する．
 
@@ -229,7 +229,7 @@ $ php artisan optimize:clear
 
 ### db
 
-#### ・seed
+#### ▼ seed
 
 Seederを実行する．Seederを新しく作成した時やSeeder名を変更した時，Composerの```dump-autoload```を実行する必要がある．
 
@@ -249,7 +249,7 @@ $ php artisan db:seed --class=<Seeder名>
 
 ### storage
 
-#### ・link
+#### ▼ link
 
 シンボリックリンクを作成する
 
@@ -261,7 +261,7 @@ $ php artisan storage:link
 
 ### view
 
-#### ・clear
+#### ▼ clear
 
 キャッシュを削除する．
 

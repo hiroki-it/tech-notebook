@@ -53,7 +53,7 @@ Envoyは，コントロールプレーンとしてのxDSサーバーと，デー
 
 ### リバースプロキシサーバーとして
 
-#### ・Pod内の場合
+#### ▼ Pod内の場合
 
 Istioは，マイクロサービスのリバースプロキシコンテナとして，Pod内にistio-proxyコンテナを構築する．Istioによって自動的に構築されるが，Istioを用いなくとも構築できる．マイクロサービスからネットワークに関する責務を分離することを目標としており，各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも，これをEnvoyが解決してくれる．
 
@@ -65,7 +65,7 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 <br>
 
-#### ・Pod外の場合（フロントプロキシ）
+#### ▼ Pod外の場合（フロントプロキシ）
 
 フロントプロキシ機能と呼ばれている．
 
@@ -127,7 +127,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 ### socket_address
 
-#### ・protocol
+#### ▼ protocol
 
 管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する．
 
@@ -138,7 +138,7 @@ admin:
       protocol: TCP
 ```
 
-#### ・address
+#### ▼ address
 
 管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する．『```0.0.0.0```』とすると，全てのIPアドレスを指定できる．
 
@@ -149,7 +149,7 @@ admin:
       address: 0.0.0.0
 ```
 
-#### ・port_value
+#### ▼ port_value
 
 管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する．
 
@@ -184,7 +184,7 @@ admin:
 
 ### address
 
-#### ・protocol
+#### ▼ protocol
 
 受信するインバウンド通信のプロトコルを設定する．
 
@@ -196,7 +196,7 @@ static_resources:
         protocol: TCP
 ```
 
-#### ・address
+#### ▼ address
 
 受信するインバウンド通信の送信元IPアドレスを設定する．
 
@@ -208,7 +208,7 @@ static_resources:
         address: 0.0.0.0
 ```
 
-#### ・port_value
+#### ▼ port_value
 
 インバウンド通信を待ち受けるポート番号を設定する．
 
@@ -225,7 +225,7 @@ static_resources:
 
 ### filter_chains.filters
 
-#### ・name
+#### ▼ name
 
 特定のインバウンド通信を処理するフィルターを設定する．
 
@@ -239,7 +239,7 @@ static_resources:
       - name: envoy.filters.network.http_connection_manager
 ```
 
-#### ・typed_config.access_log
+#### ▼ typed_config.access_log
 
 Envoyのアクセスログの出力先を設定する．
 
@@ -255,7 +255,7 @@ static_resources:
                 "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
-#### ・typed_config.http_filters
+#### ▼ typed_config.http_filters
 
 参考：
 
@@ -272,7 +272,7 @@ static_resources:
           - name: envoy.filters.http.router
 ```
 
-#### ・typed_config.route_config
+#### ▼ typed_config.route_config
 
 特定のルーティング先に関する処理を設定する．
 
@@ -304,7 +304,7 @@ static_resources:
                   cluster: foo_cluster
 ```
 
-#### ・typed_config.stat_prefix
+#### ▼ typed_config.stat_prefix
 
 統計ダッシュボードのメトリクスの接頭辞を設定する．
 
@@ -322,7 +322,7 @@ static_resources:
           stat_prefix: ingress_http
 ```
 
-#### ・typed_config."@type"
+#### ▼ typed_config."@type"
 
 ```yaml
 static_resources:
@@ -395,7 +395,7 @@ static_resources:
 
 ### load_assignment
 
-#### ・endpoints
+#### ▼ endpoints
 
 ルーティング先のIPアドレスとポート番号のリストを設定する．
 
@@ -418,7 +418,7 @@ static_resources:
               port_value: 82
 ```
 
-#### ・cluster_name
+#### ▼ cluster_name
 
 ルーティング先のグループの名前を設定する．
 
@@ -445,7 +445,7 @@ static_resources:
 
 ### transport_socket
 
-#### ・name
+#### ▼ name
 
 ルーティング時に用いるソケット名を設定する．
 
@@ -456,7 +456,7 @@ static_resources:
       name: envoy.transport_sockets.tls
 ```
 
-#### ・typed_config
+#### ▼ typed_config
 
 ```yaml
 static_resources:  

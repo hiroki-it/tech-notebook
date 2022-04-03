@@ -28,7 +28,7 @@ AWSが提供するFluentBitイメージによって構築されるコンテナ�
 
 ### ログルーティング
 
-#### ・サイドカーコンテナとして
+#### ▼ サイドカーコンテナとして
 
 AWS ECS Fargateのサイドカーコンテナとして配置する必要がある．Fargateからログが送信されると，コンテナ内で稼働するFluentBitがこれを収集し，これを外部にルーティングする．構築のための実装例については，以下のリンクを参考にせよ．
 
@@ -37,7 +37,7 @@ AWS ECS Fargateのサイドカーコンテナとして配置する必要があ�
 - https://github.com/aws-samples/amazon-ecs-firelens-examples
 - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
-#### ・仕組み
+#### ▼ 仕組み
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
@@ -68,7 +68,7 @@ AWS ECS Fargateのサイドカーコンテナとして配置する必要があ�
 
 （４） OUTPUTに渡され，FluentBitは指定した外部にログをルーティングする．
 
-#### ・ログのルーティング先
+#### ▼ ログのルーティング先
 
 FluentBitが対応する宛先にログをルーティングできる．
 
@@ -80,13 +80,13 @@ FluentBitが対応する宛先にログをルーティングできる．
 
 ### Dockerfile
 
-#### ・ECRパブリックギャラリーを用いる場合
+#### ▼ ECRパブリックギャラリーを用いる場合
 
 ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定をそのまま用いる場合は，こちらを採用する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
-#### ・プライベートECRリポジトリを用いる場合
+#### ▼ プライベートECRリポジトリを用いる場合
 
 あらかじめ，DockerHubからFluentBitイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は，こちらを採用する．
 
@@ -104,7 +104,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 ### コンテナ定義
 
-#### ・```container_definition.json```ファイル
+#### ▼ ```container_definition.json```ファイル
 
 ECSのコンテナ定義にて，アプリケーションコンテナとlog_routerコンテナを設定する．log_routerという名前以外を設定できないことに注意する．
 
@@ -170,7 +170,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
 ]
 ```
 
-#### ・```logConfiguration```キーの詳細
+#### ▼ ```logConfiguration```キーの詳細
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
@@ -211,7 +211,7 @@ aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには�
 
 ### ```/fluent-bit/etc/fluent-bit.conf```
 
-#### ・```fluent-bit.conf```とは
+#### ▼ ```fluent-bit.conf```とは
 
 FireLensコンテナのデフォルトの設定ファイル．ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
 
@@ -249,7 +249,7 @@ FireLensコンテナのデフォルトの設定ファイル．ローカルPCでF
 
 ### ```/fluent-bit/etc/fluent-bit_custom.conf```ファイル
 
-#### ・```fluent-bit_custom.conf```ファイルとは
+#### ▼ ```fluent-bit_custom.conf```ファイルとは
 
 FireLensコンテナにカスタム値を設定する．コンテナ定義の```config-file-value```キーで指定し，追加設定を実行する．これにより，FireLensコンテナの```fluent-bit.conf```ファイルに，カスタムファイルを読み込むためのINCLUDE文が挿入される．
 
@@ -290,7 +290,7 @@ FireLensコンテナにカスタム値を設定する．コンテナ定義の```
     Match nginx-firelens*
 ```
 
-#### ・INPUTセクション
+#### ▼ INPUTセクション
 
 標準出力/標準エラー出力に出力されたログをそのままインプットするために，FireLensコンテナではforwardプラグインを設定する必要がある．ただ，デフォルトの設定ファイルには，INPUTがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない．
 
@@ -311,7 +311,7 @@ FireLensコンテナにカスタム値を設定する．コンテナ定義の```
     auto_create_group true
 ```
 
-#### ・OUTPUTセクションとプラグイン
+#### ▼ OUTPUTセクションとプラグイン
 
 AWSやDatadogにルーティングするための設定が必要である．もし```fluent-bit_custom.conf```ファイルでOUTPUTセクションを設定した場合は，awsfirelensログドライバーの```options```キーは何も設定する必要がない．
 
@@ -357,12 +357,12 @@ AWSから提供されているベースイメージには，AWSリソースに�
 
 ### ```/fluent-bit/etc/parser.conf```ファイル
 
-#### ・```parser.conf```ファイルとは
+#### ▼ ```parser.conf```ファイルとは
 
 FireLensコンテナで処理中のログのキー値を修正したい場合，```parser.conf```ファイルでPARSERセクションを設定する必要がある．
 
 
-#### ・PARSERセクション
+#### ▼ PARSERセクション
 
 例えば，ECSのプラットフォームバージョンが```v1.3.0```の時，メタデータのDockerNameは『```/ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．これを```v1.4.0```にアップグレードすればコンテナ名になるが，すぐにアップグレードに対応できないこともある．その場合はPARSERセクションにて，正規表現の名前付きキャプチャを用いてコンテナ名を抽出すると，以降のセクションで処理しやすくなる．
 
@@ -406,13 +406,13 @@ PARSERセクションでコンテナ名を抽出したおかげで，STREAM_TASK
 
 ### ```/fluent-bit/etc/parsers_multiline.conf```ファイル
 
-#### ・```parsers_multiline.conf```ファイル
+#### ▼ ```parsers_multiline.conf```ファイル
 
 FireLensコンテナで複数行のログを処理したい場合，```parsers_multiline.conf```ファイルでMULTILINE_PARSERを設定する必要がある．．
 
 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
 
-#### ・MULTILINE_PARSERセクション
+#### ▼ MULTILINE_PARSERセクション
 
 ```bash
 [MULTILINE_PARSER]
@@ -440,11 +440,11 @@ FireLensコンテナで複数行のログを処理したい場合，```parsers_m
 
 ### ```/fluent-bit/etc/stream_processor.conf```ファイル
 
-#### ・```stream_processor.conf```ファイルとは
+#### ▼ ```stream_processor.conf```ファイルとは
 
 ログの生成元のコンテナごとに異なる処理を設定したい場合，```stream_processor.conf```ファイルでSTREAM_TASKセクションを定義する必要がある．
 
-#### ・STREAM_TASKセクション
+#### ▼ STREAM_TASKセクション
 
 FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-firelens-<タスクID>```』になっている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．ちなみに，STREAM_TASKでタグ付けされたログは，INPUTから再び処理し直される．
 

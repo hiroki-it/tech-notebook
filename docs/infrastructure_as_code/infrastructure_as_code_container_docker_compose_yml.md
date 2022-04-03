@@ -52,7 +52,7 @@ ENV PARAM=${PARAM}
 
 ### ```build```
 
-#### ・```context```
+#### ▼ ```context```
 
 指定したDockerfileのあるディレクトリをカレントディレクトリとして，dockerデーモンに送信するディレクトリを設定する． 
 
@@ -65,7 +65,7 @@ services:
       context: .
 ```
 
-#### ・```dockerfile```
+#### ▼ ```dockerfile```
 
 Dockerfileまでのファイルパスを設定する．
 
@@ -78,7 +78,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
 ```
 
-#### ・```target```
+#### ▼ ```target```
 
 ビルドするステージ名．主に，マルチステージビルドの時に用いる．
 
@@ -266,7 +266,7 @@ services:
 
 ### ```logging```
 
-#### ・```fluentd```
+#### ▼ ```fluentd```
 
 コンテナで生成されたログをFluentdコンテナに転送する．ログの転送元よりも先に起動するようにしておく必要がある．
 
@@ -529,7 +529,7 @@ services:
 
 <br>
 
-#### ・```name```
+#### ▼ ```name```
 
 ネットワーク名をユーザー定義名にする．
 
@@ -595,7 +595,7 @@ $ docker network inspect foo-network
 
 <br>
 
-#### ・```external```
+#### ▼ ```external```
 
 異なる```docker-compose.yml```ファイルから接続できるネットワークを作成する．作成されるネットワーク名とエイリアス名は，```external```キーの上部で設定したものになる．
 
@@ -654,7 +654,7 @@ NETWORK ID       NAME        DRIVER     SCOPE
 
 ### Volumeプラグイン
 
-#### ・NFSストレージ
+#### ▼ NFSストレージ
 
 NFSプラグインを用いることで，永続化データを```/var/lib/docker/volumes```ではなく，NFSストレージに保存する．
 
@@ -687,7 +687,7 @@ volumes:
 
 ### mysqlイメージ
 
-#### ・ビルド時にSQL実行
+#### ▼ ビルド時にSQL実行
 
 mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリ下に配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，バインドマウントを用いてこのディレクトリ下にファイルを配置することで，初期データの投入や複数DBの作成を実現できる．具体的な実行タイミングについては，以下のリンクを参考にせよ．
 

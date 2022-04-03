@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】JSON＠アプリケーション連携
 
 ### データ記述言語の種類
 
-#### ・JSON：JavaScript Object Notation
+#### ▼ JSON：JavaScript Object Notation
 
 一番外側を波括弧で囲う．
 
@@ -30,7 +30,7 @@ title: 【知見を記録するサイト】JSON＠アプリケーション連携
 }
 ```
 
-#### ・YAML：YAML Ain"t a Markup Language
+#### ▼ YAML：YAML Ain"t a Markup Language
 
 ```yaml
 account: 200  
@@ -39,13 +39,13 @@ fruit:
   - "apple"
 ```
 
-#### ・マークアップ言語
+#### ▼ マークアップ言語
 
 詳しくは以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_browser_rendering.html
 
-#### ・CSV：Comma Separated Vector
+#### ▼ CSV：Comma Separated Vector
 
 データ解析の入力ファイルとしてよく用いるやつ．
 
@@ -55,7 +55,7 @@ fruit:
 
 ### JS型オブジェクト
 
-#### ・定義方法
+#### ▼ 定義方法
 
 キーはクオーテーションで囲う必要が無い．
 
@@ -84,7 +84,7 @@ class Foo {
 
 ### JSON
 
-#### ・定義方法
+#### ▼ 定義方法
 
 キーを，シングルクオーテーションではなく，クオーテーションで囲う必要がある．
 
@@ -100,7 +100,7 @@ const json = {
 };
 ```
 
-#### ・キーと値の変更方法
+#### ▼ キーと値の変更方法
 
 **＊実装例＊**
 
@@ -148,7 +148,7 @@ json.prefecture = "Tokyo";
 json["prefecture"] = "Tokyo";
 ```
 
-#### ・キーの並び順
+#### ▼ キーの並び順
 
 キーはアルファベット順に並べると良い．以下のサイトで並び替えられる．
 
@@ -158,7 +158,7 @@ json["prefecture"] = "Tokyo";
 
 ### PHP型オブジェクト
 
-#### ・定義方法
+#### ▼ 定義方法
 
 **＊実装例＊**
 
@@ -184,13 +184,13 @@ class Foo
 
 ### シリアライズ，デシリアライズとは
 
-#### ・バックエンドとフロントエンド間
+#### ▼ バックエンドとフロントエンド間
 
 データ送信のためにオブジェクト（JS型，PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（JS型，PHP型）に変換する処理はデシリアライズである．
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
-#### ・バックエンドとDB間
+#### ▼ バックエンドとDB間
 
 データ送信のためにオブジェクト（PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである．
 
@@ -198,7 +198,7 @@ class Foo
 
 ### フロントエンド
 
-#### ・シリアライズ：JS型からJSON
+#### ▼ シリアライズ：JS型からJSON
 
 JS型オブジェクトからJSONへの変換には，```JSON.stringfy```メソッドを用いる．
 
@@ -217,7 +217,7 @@ console.log(json);
 // {"fruit":["banana","apple"],"account":200}
 ```
 
-#### ・デシリアライズ：JSONからJS型
+#### ▼ デシリアライズ：JSONからJS型
 
 JSONからJS型オブジェクトへの変換には，```JSON.parse```メソッドを用いる．レスポンスされたJSONはエスケープされていることに注意する．
 
@@ -235,7 +235,7 @@ console.log(object);
 // { fruit: [ 'banana', 'apple' ], account: 200 }
 ```
 
-#### ・相互パースメソッドを持つクラス
+#### ▼ 相互パースメソッドを持つクラス
 
 **＊実装例＊**
 
@@ -289,7 +289,7 @@ class StaffParser {
 
 ### バックエンド
 
-#### ・デシリアライズ：JSONからPHP型
+#### ▼ デシリアライズ：JSONからPHP型
 
 JSONからPHP型オブジェクトの変換には．```json_decode```メソッドを用いる．第二引数が```false```の場合，object形式オブジェクトに変換する．リクエストで送信するJSONはエスケープする必要があることに注意する．
 
@@ -341,7 +341,7 @@ var_dump($array);
 //  }
 ```
 
-#### ・シリアライズ：PHP型からJSON
+#### ▼ シリアライズ：PHP型からJSON
 
 ```php
 <?php
@@ -361,7 +361,7 @@ var_dump($json);
 
 ### クエリ言語の種類
 
-#### ・JMESPath
+#### ▼ JMESPath
 
 **＊実装例＊**
 

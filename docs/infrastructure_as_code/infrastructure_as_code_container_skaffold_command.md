@@ -17,7 +17,7 @@ description: コマンド＠Skaffoldの知見をまとめました．
 
 ### build
 
-#### ・buildとは
+#### ▼ buildとは
 
 全てのイメージをビルドする．
 
@@ -27,7 +27,7 @@ description: コマンド＠Skaffoldの知見をまとめました．
 $ skaffold build
 ```
 
-#### ・--cache-artifacts
+#### ▼ --cache-artifacts
 
 キャッシュを無効化し，```build```コマンドを実行する．
 
@@ -39,7 +39,7 @@ $ skaffold build --cache-artifacts=false
 
 ### dev
 
-#### ・dev
+#### ▼ dev
 
 アプリケーションのコードを監視し，変更が検出された時に，イメージの再ビルド/プッシュ/デプロイを実行する．また，ポートフォワーディングを実行する．
 
@@ -47,7 +47,7 @@ $ skaffold build --cache-artifacts=false
 $ skaffold dev
 ```
 
-#### ・--trigger
+#### ▼ --trigger
 
 一定間隔でコードの変更を監視しつつ，```dev```コマンドを実行する．
 
@@ -55,7 +55,7 @@ $ skaffold dev
 $ skaffold dev --trigger=polling
 ```
 
-#### ・--no-prune，--cache-artifacts
+#### ▼ --no-prune，--cache-artifacts
 
 イメージをキャッシュせず，また後処理で全てのイメージを削除しつつ，```dev```コマンドを実行する．
 
@@ -63,7 +63,7 @@ $ skaffold dev --trigger=polling
 $ skaffold dev --no-prune=false --cache-artifacts=false
 ```
 
-#### ・--port-forward
+#### ▼ --port-forward
 
 ポートフォワードを実行しつつ，```dev```コマンドを実行する．
 
@@ -75,7 +75,7 @@ $ skaffold dev --port-forward
 
 ### run
 
-#### ・run
+#### ▼ run
 
 バックグラウンドで，イメージのビルド/デプロイを実行する．
 
@@ -83,7 +83,7 @@ $ skaffold dev --port-forward
 $ skaffold run
 ```
 
-#### ・force
+#### ▼ force
 
 リソースを強制的にデプロイしつつ，```run```コマンドを実行する．
 
@@ -91,7 +91,7 @@ $ skaffold run
 $ skaffold run --force
 ```
 
-#### ・--no-prune，--cache-artifacts
+#### ▼ --no-prune，--cache-artifacts
 
 イメージをキャッシュせず，また後処理で全てのイメージを削除しつつ，```run```コマンドを実行する．
 
@@ -99,7 +99,7 @@ $ skaffold run --force
 $ skaffold run --no-prune=false --cache-artifacts=false
 ```
 
-#### ・--tail
+#### ▼ --tail
 
 フォアグラウンドで```run```コマンドを実行する．
 
@@ -107,7 +107,7 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 $ skaffold run --tail
 ```
 
-#### ・--port-forward
+#### ▼ --port-forward
 
 ポートフォワードを実行しつつ，```run```コマンドを実行する．
 

@@ -17,7 +17,7 @@ description: Googleアナリティクス＠監視の知見をまとめました�
 
 ### グローバルサイトタグ
 
-#### ・グローバルサイトタグとは
+#### ▼ グローバルサイトタグとは
 
 Webページのローディング時に，非同期通信を用いてGoogleのCollection-APIにメトリクスを送信する．送信されたデータは，Googleアナリティクスコンソールから確認できる．
 
@@ -26,7 +26,7 @@ Webページのローディング時に，非同期通信を用いてGoogleのCo
 - https://developers.google.com/analytics/devguides/collection/gtagjs
 - https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
 
-#### ・グローバルサイトタグの組み込み
+#### ▼ グローバルサイトタグの組み込み
 
 Googleアナリティクスでメトリクスを収集するためには，アプリケーションの```head```タグに，トラッキングコードが設定されたグローバルサイトタグを組み込む必要がある．
 
@@ -55,7 +55,7 @@ Googleアナリティクスでメトリクスを収集するためには，ア�
 
 ### 動作確認方法
 
-#### ・ブラウザのdeveloperツール
+#### ▼ ブラウザのdeveloperツール
 
 ブラウザのdeveloperツールで，グローバルサイトタグが非同期通信を実行しているかを確認する．Chromeであれば，networkタブにて，『```www.google-analytics.com/collect```』に対するリクエストを探す．これが```200```系ステータスになっていれば，正しく動作していると見なせる．
 
@@ -126,7 +126,7 @@ Googleアナリティクスでは，一つのドメイン当たりのセッシ�
 
 ### 値が非表示になる原因
 
-#### ・not set
+#### ▼ not set
 
 - 検索エンジン以外からの訪問
 - バナー広告からの訪問

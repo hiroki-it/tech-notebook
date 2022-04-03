@@ -23,15 +23,15 @@ description:  監視＠Datadogの知見をまとめました．
 
 ### ログモニター
 
-#### ・ログクエリの動作確認
+#### ▼ ログクエリの動作確認
 
 ログモニターのクエリは，ログコンソールと同じ仕組みで機能する．そのため，最初はログコンソールで必要なログを絞り込めるかを確認し，問題なければログモニターのクエリを設定する．
 
 参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
 
-#### ・シングルアラート
+#### ▼ シングルアラート
 
-#### ・マルチアラート
+#### ▼ マルチアラート
 
 ログクエリで```group by```句を定義すると，選択できるようになる．
 
@@ -41,31 +41,31 @@ description:  監視＠Datadogの知見をまとめました．
 
 ### 変数
 
-#### ・変数を用いたアラートレベルの共通化
+#### ▼ 変数を用いたアラートレベルの共通化
 
 アラートレベルは，アプリケーション間で共通である方が良い．通知内容に変数を用いることで，異なるアプリケーションに共通のアラート条件を適用できるようになる．そのため，アプリケーション間でアラートレベルを共通化できる．ステータスに応じてアラートするかどうかの決め方については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html
 
-#### ・テンプレート変数
+#### ▼ テンプレート変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
-#### ・マルチアラート変数
+#### ▼ マルチアラート変数
 
 クエリの```group by```句に割り当てたタグやファセットを変数として出力する．マルチアラートモニターを用いる場合のみ，用いることができる．
 
-#### ・タグ変数
+#### ▼ タグ変数
 
 構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.<キー名>}}``` または```{{log.tags.<キー名>}}```として実装する．
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
-#### ・コンポジットモニター変数
+#### ▼ コンポジットモニター変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
 
-#### ・条件変数
+#### ▼ 条件変数
 
 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
 
@@ -75,7 +75,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 
 
-#### ・タイトル
+#### ▼ タイトル
 
 通知先にタイトルとして表示するテキストを定義する．タイトルに変数を出力できる．
 
@@ -84,7 +84,7 @@ description:  監視＠Datadogの知見をまとめました．
 【{{log.attributes.service}}】環境でエラーを検知しました
 ```
 
-#### ・本文
+#### ▼ 本文
 
 通知先とテキストを定義する．マークダウン記法を用いることができる．
 
@@ -114,7 +114,7 @@ description:  監視＠Datadogの知見をまとめました．
 
 ### ブラウザエラー
 
-#### ・ブラウザエラーとは
+#### ▼ ブラウザエラーとは
 
 Datadogで，ブラウザのエラーは以下に分類される．
 
@@ -132,13 +132,13 @@ Datadogで，ブラウザのエラーは以下に分類される．
 
 ### ブラウザテスト
 
-#### ・送信元IPアドレス
+#### ▼ 送信元IPアドレス
 
 Datadog社の物理サーバーからリクエストが送信される．物理サーバー自体はAWSやAzureによって管理されており，用いる物理サーバーのリージョンを選択できる．リージョンごとに数個ずつ物理サーバーが存在しているため，もし合成監視対象のアプリケーションでIP制限が行われている場合は，これらの物理サーバーのIPからのリクエストを許可する必要がある．
 
 参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
 
-#### ・ヘッダー
+#### ▼ ヘッダー
 
 参考：
 
@@ -174,13 +174,13 @@ Datadog社の物理サーバーからリクエストが送信される．物理�
 
 ### スケールの種類
 
-#### ・log（対数）スケール
+#### ▼ log（対数）スケール
 
-#### ・linear（線形）スケール
+#### ▼ linear（線形）スケール
 
-#### ・２の累乗スケール
+#### ▼ ２の累乗スケール
 
-#### ・sqrt（平方根）スケール
+#### ▼ sqrt（平方根）スケール
 
 <br>
 

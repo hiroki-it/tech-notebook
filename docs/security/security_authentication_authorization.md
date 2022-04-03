@@ -29,7 +29,7 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 
 ### Basic認証
 
-#### ・Basic認証の仕組み
+#### ▼ Basic認証の仕組み
 
 ![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
 
@@ -88,7 +88,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ### Digest認証
 
-#### ・Digest認証の仕組み
+#### ▼ Digest認証の仕組み
 
 ```http
 200 OK
@@ -104,17 +104,17 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成し
 
 ### Bearer認証
 
-#### ・Bearer認証とは
+#### ▼ Bearer認証とは
 
 認証時にBearerトークンを用いる認証スキームのこと．
 
-#### ・Bearerトークン（署名なしトークン）とは
+#### ▼ Bearerトークン（署名なしトークン）とは
 
 単なる文字列で定義されたアクセストークン．Bearer認証にて，トークンとして用いる．署名なしトークンとも呼ばれ，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていればそれを本人として認可する．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを用いるBearer認証については，別項目の説明を参考にせよ．
 
 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
-#### ・Bearer認証の仕組み
+#### ▼ Bearer認証の仕組み
 
 指定されたエンドポイントに対して，```POST```リクエストを送信する．この時，```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする．必要なボディパラメーターはAPIの提供元によって異なる．クライアントID，付与タイプ，などが必要なことが多い．
 
@@ -182,7 +182,7 @@ WWW-Authenticate: Bearer realm=""
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-#### ・正常系/異常系レスポンス
+#### ▼ 正常系/異常系レスポンス
 
 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
@@ -210,7 +210,7 @@ WWW-Authenticate: Bearer realm="token_required"
 WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
-#### ・```Authorization```ヘッダーのトークンのクライアント保持
+#### ▼ ```Authorization```ヘッダーのトークンのクライアント保持
 
 不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage/SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンクを参考にせよ
 
@@ -224,7 +224,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 ### OAuth認証
 
-#### ・OAuth認証とは
+#### ▼ OAuth認証とは
 
 OAuthの項目を参考にせよ．
 
@@ -234,7 +234,7 @@ OAuthの項目を参考にせよ．
 
 ### Form認証（Cookieベースの認証）
 
-#### ・Form認証とは
+#### ▼ Form認証とは
 
 認証時に```Cookie```ヘッダーの値を用いる方法のこと．『Cookieベースの認証』ともいう．ステートフル化を行うため，HTTP認証には属していない．認証情報の一時的な保存は，サーバーのセッションデータで行うため，認証解除（ログアウト）をサーバー側で制御できる．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
@@ -243,7 +243,7 @@ OAuthの項目を参考にせよ．
 - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
-#### ・セッションIDを用いたForm認証の場合（セッションベース）
+#### ▼ セッションIDを用いたForm認証の場合（セッションベース）
 
 セッションIDを```Cookie```ヘッダーに割り当て，リクエストを送信する．
 
@@ -294,7 +294,7 @@ cookie: sessionid=<セッションID>
 
 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
-#### ・トークンを用いたForm認証の場合（トークンベース）
+#### ▼ トークンを用いたForm認証の場合（トークンベース）
 
 トークンを```Cookie```ヘッダーに割り当て，リクエストを送信する．この時のトークンの選択肢として，単なるランダムな文字列やJWTがある．
 
@@ -302,7 +302,7 @@ cookie: sessionid=<セッションID>
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
-#### ・```Cookie```ヘッダーの値のクライアント保持
+#### ▼ ```Cookie```ヘッダーの値のクライアント保持
 
 再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルPCに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
 
@@ -315,13 +315,13 @@ cookie: sessionid=<セッションID>
 
 ### APIキー認証
 
-#### ・APIキー認証とは
+#### ▼ APIキー認証とは
 
 事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
-#### ・照合情報の送信方法
+#### ▼ 照合情報の送信方法
 
 独自ヘッダーとして，```x-api-key```ヘッダーを定義する．これにAPIキーを割り当て，リクエストを送信する．リクエストヘッダへのパラメータの割り当てについては，以下のリンクを参考にせよ．
 
@@ -336,7 +336,7 @@ x-api-key: <APIキー>
 
 ### Personal Access Tokenによる認証：PAT
 
-#### ・PATによる認証
+#### ▼ PATによる認証
 
 クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし，認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと．```Authorization```ヘッダーにPATを割りあてて，リクエストを送信する．作成時以降，アクセストークンを確認できなくなるため，クライアントがアクセストークンを管理する必要がある．
 
@@ -357,7 +357,7 @@ authorization: <Personal Acccess Token>
 
 ### Two Step Verification（二段階認証）
 
-#### ・Two Step Verificationとは
+#### ▼ Two Step Verificationとは
 
 認証時に段階的に二つの方法を設定し，クライアントを照合する方法のこと．
 
@@ -372,7 +372,7 @@ authorization: <Personal Acccess Token>
 
 ### Two Factor Authorization（二要素認証）
 
-#### ・Two Factor Authorizationとは
+#### ▼ Two Factor Authorizationとは
 
 二段階認証のうちで特に，認証時に異なる要素の方法を用いて，段階的にクライアントを照合すること方法のこと．後述するOAuth認証を組み込んでも良い．
 
@@ -390,7 +390,7 @@ authorization: <Personal Acccess Token>
 
 ### 認証フェーズと認可フェーズ
 
-#### ・処理の違い
+#### ▼ 処理の違い
 
 ![アクセストークンを用いたセキュリティ仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクセストークンを用いたセキュリティの仕組み.jpg)
 
@@ -407,7 +407,7 @@ authorization: <Personal Acccess Token>
 | Identity Provider | トークンを生成するサーバーのこと．                             | Ouath認証の仕組みにおける認可サーバー．     |
 | APIサーバー         | クライアントに対して，リソースのレスポンスを送信するサーバーのこと． | Ouath認証の仕組みにおけるリソースサーバー． |
 
-#### ・ステータスコードの違い
+#### ▼ ステータスコードの違い
 
 認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，```401```ステータスを用いる．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，```403```ステータスを用いる．ステータスコードについては，以下のリンクを参考にせよ．
 
@@ -417,7 +417,7 @@ authorization: <Personal Acccess Token>
 
 ### OAuthプロトコル，OAuth認証
 
-#### ・OAuthプロトコル，OAuth認証とは
+#### ▼ OAuthプロトコル，OAuth認証とは
 
 ![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
 
@@ -430,7 +430,7 @@ authorization: <Personal Acccess Token>
 | Identity Provider | 認可サーバー         | リソースサーバーがリソースオーナーにアクセスできるトークンを生成するサーバーのこと． | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように，クライアントアプリケーションの開発者がURLを事前登録しておく必要がある．認可サーバーを利用する開発者用に，コンソール画面が用意されていることが多い．<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | APIサーバー         | リソースサーバー     | クライアントのアカウント情報を持っているサーバーのこと．       |                                                              |
 
-#### ・認可コードフローの場合
+#### ▼ 認可コードフローの場合
 
 OAuth認証には，仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などのいくつかの種類がある．ここでは，最も基本的な認可コードフローを説明する．
 
@@ -515,11 +515,11 @@ Pragma: no-cache
 }
 ```
 
-#### ・用いられる認証スキーム
+#### ▼ 用いられる認証スキーム
 
 OAuth認証では，認証スキーマとしてBearer認証が選択されることが多く，AWSやGitHubは，独自の認証スキームを用いている．なお，認可サーバーによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
 
-#### ・付与タイプ
+#### ▼ 付与タイプ
 
 認可サーバーによるOAuth認証のトークンの付与方法には種類がある．
 
@@ -537,11 +537,11 @@ OAuth認証では，認証スキーマとしてBearer認証が選択されるこ
 
 ### OpenID Connect
 
-#### ・OpenID Connectとは
+#### ▼ OpenID Connectとは
 
 要勉強．
 
-#### ・用いられる認証スキーム
+#### ▼ 用いられる認証スキーム
 
 要勉強
 
@@ -569,7 +569,7 @@ JWTをBearerトークンとして用いるBearer認証については，別項�
 
 ### JWTの生成
 
-#### ・JWT生成の全体像
+#### ▼ JWT生成の全体像
 
 JWTは以下のサイトから取得できる．
 
@@ -584,7 +584,7 @@ const token = base64urlEncoding(header) + "." +
       base64urlEncoding(signature)
 ```
 
-#### ・ヘッダーのJSONデータの生成
+#### ▼ ヘッダーのJSONデータの生成
 
 ヘッダーは以下のJSONデータで定義される．署名のための暗号化アルゴリズムは，『```HS256```』『```RS256```』『```ES256```』『```none```』から選択できる．
 
@@ -595,7 +595,7 @@ const header = {
 }
 ```
 
-#### ・ペイロードのJSONデータの生成
+#### ▼ ペイロードのJSONデータの生成
 
 ペイロードは以下のJSONデータで定義される．ペイロードには，実際に送信したいJSONを設定する．必ず設定しなければならない『予約済みクレーム』と，ユーザー側が自由に定義できる『プライベートクレーム』がある．
 
@@ -617,7 +617,7 @@ const payload = {
 }
 ```
 
-#### ・署名のJSONデータの生成
+#### ▼ 署名のJSONデータの生成
 
 例えばJavaScriptであれば，以下のような処理が実行されている．
 
@@ -632,7 +632,7 @@ const signature = HMACSHA256(
 
 ### JWTのクライアント保持
 
-#### ・ 保持方法と安全度の比較
+#### ▼ 保持方法と安全度の比較
 
 参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 

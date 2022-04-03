@@ -40,7 +40,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ### Command（更新系）
 
-#### ・Commandとは
+#### ▼ Commandとは
 
 CREATE，UPDATE，DELETE処理を実行する処理フローのこと．今回，クリーンアーキテクチャを前提としてCQRSを説明する．概念や実装方法は以下のリンクを参考にせよ．
 
@@ -49,7 +49,7 @@ CREATE，UPDATE，DELETE処理を実行する処理フローのこと．今回�
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 - https://github.com/hiroki-it/ddd-api-with-laravel#ddd-api-with-laravel
 
-#### ・処理順序
+#### ▼ 処理順序
 
 1. インターフェース層のコントローラーにて，リクエストパラメーターからリクエストモデルを作成する．
 2. ユースケース層のインターラクターにて，リクエストモデルからデータを取り出し，ドメインモデルを作成する．これをインフラ層のリポジトリに渡す．
@@ -61,7 +61,7 @@ CREATE，UPDATE，DELETE処理を実行する処理フローのこと．今回�
 
 ### Query（参照系）
 
-#### ・Queryとは
+#### ▼ Queryとは
 
 READ処理を実行するオブジェクトのこと．今回，クリーンアーキテクチャを前提としてCQRSを説明する．Queryでは概念や実装方法は以下のリンクを参考にせよ．
 
@@ -70,7 +70,7 @@ READ処理を実行するオブジェクトのこと．今回，クリーンア�
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 - https://github.com/hiroki-it/ddd-api-with-laravel#ddd-api-with-laravel
 
-#### ・処理順序
+#### ▼ 処理順序
 
 1. インターフェース層のコントローラーにて，リクエストパラメーターからリクエストモデルを作成する．
 

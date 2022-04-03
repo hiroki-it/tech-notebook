@@ -17,11 +17,11 @@ description: Linux系＠ミドルウェアの知見をまとめました．
 
 ### SELinux：Security Enhanced Linux
 
-#### ・SELinuxとは
+#### ▼ SELinuxとは
 
 Linuxにデフォルトで導入されているミドルウェアで，セキュリティを制御する．
 
-#### ・SELinuxの無効化
+#### ▼ SELinuxの無効化
 
 アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため，基本的には無効にしておく．
 

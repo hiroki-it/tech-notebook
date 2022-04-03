@@ -27,7 +27,7 @@ description: ソフトウェアの知見をまとめました．
 
 ### Twelve-Factor
 
-#### ・Twelve-Factorとは
+#### ▼ Twelve-Factorとは
 
 Webシステムのソフトウェアを開発する上でのベストプラクティスのこと．
 
@@ -63,7 +63,7 @@ Office，BookLiveのアプリ版
 
 ![Webアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Webアプリ.png)
 
-#### ・Webアプリケーション
+#### ▼ Webアプリケーション
 
 Webサーバー上で稼働するソフトウェアのこと．URLをWebサーバーにリクエストすることで利用でき，随時，Webサーバーとデータ通信を行う．全ての人が無料で利用できるものと，お金を払った人だけが利用できるものがある．
 
@@ -73,7 +73,7 @@ Webサーバー上で稼働するソフトウェアのこと．URLをWebサー�
 
 Googleアプリケーション，Amazon，BookLiveのブラウザ版，サイボウズ
 
-#### ・クラウドアプリケーション
+#### ▼ クラウドアプリケーション
 
 Webサーバー上のソフトウェアによって稼働するアプリケーションのうち，クラウドサービスを提供するもののこと．
 
@@ -137,7 +137,7 @@ Google Drive，Dropbox
 
 ### 基本ソフトウェアの種類
 
-#### ・UNIX系OS
+#### ▼ UNIX系OS
 
 UNIXを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の三つに分けられる．
 
@@ -145,7 +145,7 @@ UNIXを源流として派生したOS．現在では主に，Linux系統（緑色
 
 ![UNIX系OSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Unix系OSの歴史.png)
 
-#### ・WindowsOS
+#### ▼ WindowsOS
 
 MS-DOSを源流として派生したOS．今では，全ての派生がWindows 10に集約された．
 
@@ -165,7 +165,7 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 ### Linux系統
 
-#### ・Linux系統とは
+#### ▼ Linux系統とは
 
 Unixから分岐したLinuxは，さらに3系統（Debian，RedHat，Slackware）に分岐する．
 
@@ -173,7 +173,7 @@ Unixから分岐したLinuxは，さらに3系統（Debian，RedHat，Slackware�
 
 ![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
-#### ・Debian系統
+#### ▼ Debian系統
 
 Debian，Ubuntu，など
 
@@ -186,7 +186,7 @@ $ cat /etc/issue
 Debian GNU/Linux 10 \n \l
 ```
 
-#### ・RedHat系統
+#### ▼ RedHat系統
 
 RedHat，CentOS，Fedora，など
 
@@ -200,7 +200,7 @@ CentOS release 5.5 (Final)
 Kernel \r on an \m
 ```
 
-#### ・Slackware系統
+#### ▼ Slackware系統
 
 Slackwareなど
 
@@ -208,7 +208,7 @@ Slackwareなど
 
 ### BSD系統（MacOSのみ
 
-#### ・BSD系統とは
+#### ▼ BSD系統とは
 
 Unixから分岐したBSDは，さらに複数の系統（MacOSなど）に分岐する．
 

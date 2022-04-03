@@ -17,19 +17,19 @@ description: パッケージ＠基本ソフトウェアの知見をまとめま�
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install dnsutils
 ```
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install dnsutils
 ```
 
-#### ・Yum経由
+#### ▼ Yum経由
 
 ```bash
 $ yum install -y bind-utils
@@ -39,7 +39,7 @@ $ yum install -y bind-utils
 
 ### nslookup
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 正引き/逆引きによる名前解決を行う．もしドメイン名に複数のIPアドレスが割り当てられている場合，正引きを行うと，全てのIPアドレスが返却される．
 
@@ -69,7 +69,7 @@ Name:  nrt20s18-in-f3.1e100.net # IPv4アドレスにマッピングされたド
 Address:  172.217.175.3 # IPv4アドレス
 ```
 
-#### ・-type
+#### ▼ -type
 
 正引き/逆引きによる名前解決を行い，この時に指定したレコードタイプのレコード値を返却させる．
 
@@ -108,19 +108,19 @@ ns4.google.com  internet address = 216.239.38.10
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install net-tools 
 ```
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install net-tools
 ```
 
-#### ・Yum経由
+#### ▼ Yum経由
 
 ```bash
 $ yum install -y net-tools 
@@ -136,7 +136,7 @@ $ yum install -y net-tools
 
 ### netstat
 
-#### ・-plunt
+#### ▼ -plunt
 
 オプション（```-p```，```-l```，```-u```，```-n```，```-t```）の組み合わせ．各プロセスが開放しているポート番号，ポート番号で受信するプロトコル，接続状態，などの一覧を表示する．
 
@@ -167,13 +167,13 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install pstree
 ```
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install pstree
@@ -183,7 +183,7 @@ $ apt-get install pstree
 
 ### pstree
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 プロセスの親子関係をツリー状に表示する．
 
@@ -207,7 +207,7 @@ $ pstree
 
 ### インストール
 
-#### ・Pip経由
+#### ▼ Pip経由
 
 参考：http://supervisord.org/installing.html#installing-a-distribution-package
 
@@ -219,19 +219,19 @@ $ pip3 install supervisor
 
 ### supervisorの構成要素
 
-#### ・supervisor
+#### ▼ supervisor
 
 Python製のユーティリティであり，常駐プロセスを一括で管理する．
 
 参考：http://supervisord.org/index.html
 
-#### ・supervisorctl
+#### ▼ supervisorctl
 
 supervisordを操作する．
 
 参考：http://supervisord.org/introduction.html#supervisor-components
 
-#### ・supervisord
+#### ▼ supervisord
 
 supervisor自体のプロセスのこと．
 
@@ -241,7 +241,7 @@ supervisor自体のプロセスのこと．
 
 ### supervisordセクション
 
-#### ・supervisordセクションとは
+#### ▼ supervisordセクションとは
 
 supervisorの```supervisord```プロセスのプールを設定する．
 
@@ -253,7 +253,7 @@ supervisorの```supervisord```プロセスのプールを設定する．
 # 〜 中略 〜
 ```
 
-#### ・directory
+#### ▼ directory
 
 常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する．
 
@@ -262,7 +262,7 @@ supervisorの```supervisord```プロセスのプールを設定する．
 directory=/var/www/foo
 ```
 
-#### ・logfile
+#### ▼ logfile
 
 supervisordのログファイルの場所を設定する．
 
@@ -271,7 +271,7 @@ supervisordのログファイルの場所を設定する．
 logfile=/var/log/supervisor/supervisord.log
 ```
 
-#### ・loglevel
+#### ▼ loglevel
 
 supervisordのログレベルを設定する．
 
@@ -280,7 +280,7 @@ supervisordのログレベルを設定する．
 loglevel=info
 ```
 
-#### ・nodaemon
+#### ▼ nodaemon
 
 supervisordをフォアグラウンドで起動するかどうかを設定する．
 
@@ -289,7 +289,7 @@ supervisordをフォアグラウンドで起動するかどうかを設定する
 nodaemon=true
 ```
 
-#### ・pidfile
+#### ▼ pidfile
 
 supervisordのpidが記載されるファイルを設定する．
 
@@ -298,7 +298,7 @@ supervisordのpidが記載されるファイルを設定する．
 pidfile=/var/tmp/supervisor/supervisord.pid
 ```
 
-#### ・redirect_stderr
+#### ▼ redirect_stderr
 
 標準出力への出力を標準エラー出力に転送する可動化を設定する．
 
@@ -307,7 +307,7 @@ pidfile=/var/tmp/supervisor/supervisord.pid
 redirect_stderr=true
 ```
 
-#### ・user
+#### ▼ user
 
 supervisordの実行ユーザーを設定する．
 
@@ -320,7 +320,7 @@ user=root
 
 ### programセクション
 
-#### ・programセクションとは
+#### ▼ programセクションとは
 
 常駐プログラムのプロセスを設定する．
 
@@ -339,7 +339,7 @@ user=root
 # 〜 中略 〜
 ```
 
-#### ・autorestart
+#### ▼ autorestart
 
 常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する．
 
@@ -348,7 +348,7 @@ user=root
 autorestart=true
 ```
 
-#### ・autostart
+#### ▼ autostart
 
 supervisordの起動時に常駐プロセスを自動的に起動させるかどうか，を設定する．
 
@@ -357,7 +357,7 @@ supervisordの起動時に常駐プロセスを自動的に起動させるかど
 autostart=true
 ```
 
-#### ・command
+#### ▼ command
 
 常駐プロセスの起動コマンドを設定する．
 
@@ -366,7 +366,7 @@ autostart=true
 command=/usr/sbin/crond -n
 ```
 
-#### ・redirect_stderr
+#### ▼ redirect_stderr
 
 常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する．
 
@@ -375,7 +375,7 @@ command=/usr/sbin/crond -n
 redirect_stderr=true
 ```
 
-#### ・startretries
+#### ▼ startretries
 
 常駐プロセスの起動に失敗した場合に，何回再試行するかを設定する．
 
@@ -384,7 +384,7 @@ redirect_stderr=true
 startretries=10
 ```
 
-#### ・stdout_logfile，stderr_logfile
+#### ▼ stdout_logfile，stderr_logfile
 
 常駐プロセスの標準出力/標準エラー出力の出力先を設定する．デフォルト値は```/var/log/supervisor```ディレクトリである．もし，```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを用いる場合は，```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある．
 
@@ -402,7 +402,7 @@ stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 ```
 
-#### ・stdout_logfile_backups
+#### ▼ stdout_logfile_backups
 
 ログローテートによって作成されるバックアップの世代数．
 
@@ -411,7 +411,7 @@ stderr_logfile_maxbytes=0
 stdout_logfile_backups=10
 ```
 
-#### ・stdout_logfile_maxbytes
+#### ▼ stdout_logfile_maxbytes
 
 ログファイルの最大サイズ．設定値を超えると，ログローテートが実行される．これにより，ログファイルがバックアップとして保存され，新しいログファイルが作成される．
 
@@ -420,7 +420,7 @@ stdout_logfile_backups=10
 stdout_logfile_maxbytes=50MB
 ```
 
-#### ・user
+#### ▼ user
 
 常駐プロセスの実行ユーザーを設定する．
 
@@ -433,14 +433,14 @@ user=root
 
 ### groupセクション
 
-#### ・priority
+#### ▼ priority
 
 ```ini
 [group]
 priority=999
 ```
 
-#### ・programs
+#### ▼ programs
 
 グループ化する常駐プロセス名を設定する．
 
@@ -453,7 +453,7 @@ programs=bar,baz
 
 ### supervisorctl
 
-#### ・restart
+#### ▼ restart
 
 指定した常駐プロセスを再起動する．```all```とした場合は，全てを再起動する．
 
@@ -463,7 +463,7 @@ programs=bar,baz
 $ supervisorctl restart <常駐プロセス名>
 ```
 
-#### ・update
+#### ▼ update
 
 もし```supervisord.conf```ファイルの設定を変更した場合に，これを読み出し直す．
 
@@ -479,11 +479,11 @@ $ supervisorctl update
 
 ### systemctlの構成要素
 
-#### ・systemctl
+#### ▼ systemctl
 
 デーモンを起動するsystemdを制御するためのユーティリティ．
 
-#### ・systemd：system daemon
+#### ▼ systemd：system daemon
 
 各デーモンを，```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し，ユニットごとに起動する．ユニットは拡張子の違いで判別する．
 
@@ -497,7 +497,7 @@ $ supervisorctl update
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install systemd
@@ -505,7 +505,7 @@ $ apt install systemd
 
 
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install systemd
@@ -609,19 +609,19 @@ $ sudo systemctl stop nginx
 
 ### インストール
 
-#### ・Apt経由
+#### ▼ Apt経由
 
 ```bash
 $ apt install tcpdump
 ```
 
-#### ・Apt-get経由
+#### ▼ Apt-get経由
 
 ```bash
 $ apt-get install tcpdump
 ```
 
-#### ・Yum経由
+#### ▼ Yum経由
 
 ```bash
 $ yum install -y tcpdump

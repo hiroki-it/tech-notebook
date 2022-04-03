@@ -31,11 +31,11 @@ title: 【知見を記録するサイト】アプリケーション間通信
 
 ### Ajax：Asynchronous JavaScript + XML
 
-#### ・Ajaxとは
+#### ▼ Ajaxとは
 
 JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML，XHTML，CSS，DOM，XML，XSLT，を組み合わせる．
 
-#### ・Ajaxの仕組み
+#### ▼ Ajaxの仕組み
 
 ![AJAXの処理フロー](https://user-images.githubusercontent.com/42175286/58467340-6741cb80-8176-11e9-9692-26e6401f1de9.png)
 
@@ -51,7 +51,7 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 10. オブジェクトがマークアップ言語に出力される．
 11. DOMを用いて，Webページを再び構成する．
 
-####  ・実装方法の種類
+#### ▼ 実装方法の種類
 
 歴史的に，Ajaxを実装するための方法がいくつかある．
 
@@ -68,7 +68,7 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 
 ### xhrオブジェクトの場合
 
-#### ・GET送信
+#### ▼ GET送信
 
 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
@@ -95,7 +95,7 @@ xhr.onload = () => {
 xhr.send();
 ```
 
-#### ・POST送信
+#### ▼ POST送信
 
 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
@@ -145,7 +145,7 @@ xhr.send(queryString);
 
 ### JQueryオブジェクトの場合
 
-#### ・GET送信
+#### ▼ GET送信
 
 **＊実装例＊**
 
@@ -155,7 +155,7 @@ const url = 'https://example.com/';
 $.get(url);
 ```
 
-#### ・POST送信
+#### ▼ POST送信
 
 **＊実装例＊**
 
@@ -171,7 +171,7 @@ const body = {
 $.post(url, params);
 ```
 
-#### ・任意のHTTPメソッド
+#### ▼ 任意のHTTPメソッド
 
 任意のHTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
 
@@ -217,7 +217,7 @@ $.ajax({
 
 ### Axiosオブジェクトの場合
 
-#### ・GET送信
+#### ▼ GET送信
 
 **＊実装例＊**
 
@@ -227,7 +227,7 @@ const url = 'https://example.com/';
 axios.get(url);
 ```
 
-#### ・POST送信
+#### ▼ POST送信
 
 **＊実装例＊**
 

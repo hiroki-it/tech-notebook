@@ -26,7 +26,7 @@ Symfonyに組み込まれているORM．Data Mapperパターンで実装され�
 
 ### SQLの定義
 
-#### ・```createQueryBuilder```メソッド
+#### ▼ ```createQueryBuilder```メソッド
 
 CRUD処理に必要なSQLを保持し，トランザクションによってSQLを実行する．
 
@@ -45,7 +45,7 @@ $queryBuilder = $this->createQueryBuilder();
 
 ### 読み出し
 
-#### ・```select```メソッド
+#### ▼ ```select```メソッド
 
 QueryBuilderクラスにおける```select```メソッドに，値を設定する．
 
@@ -63,7 +63,7 @@ $queryBuilder
 
 ### 書き込み
 
-#### ・```insert```メソッド
+#### ▼ ```insert```メソッド
 
 QueryBuilderクラスにおける```insert```メソッドに，値を設定する．
 
@@ -76,7 +76,7 @@ $queryBuilder
     ->insert("mst_users")
 ```
 
-#### ・```update```メソッド
+#### ▼ ```update```メソッド
 
 QueryBuilderクラスにおける```update```メソッドに，値を設定する．
 
@@ -89,7 +89,7 @@ $queryBuilder
     ->update("mst_users");
 ```
 
-#### ・```delete```メソッド
+#### ▼ ```delete```メソッド
 
 QueryBuilderクラスにおける```delete```メソッドに，値を設定する．
 
@@ -106,7 +106,7 @@ $queryBuilder
 
 ### 実行
 
-#### ・ ```getConnection```メソッド，```executeQuery```メソッド，```fetchAll```メソッド
+#### ▼ ```getConnection```メソッド，```executeQuery```メソッド，```fetchAll```メソッド
 
 DBへの接続し，SQLの実行する．DB接続に関わる```getConnection```メソッドを開始点として，返り値から繰り返しメソッドを取得し，```fetchAll```メソッドで，テーブルのクエリ名をキーとした連想配列が返される．
 
@@ -127,7 +127,7 @@ $queryBuilder->getConnection()
 
 ### 読み出し系の操作
 
-#### ・プレースホルダー
+#### ▼ プレースホルダー
 
 プリペアードステートメントのSQL中にパラメーターを設定し，値をパラメーターに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメーターに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策にもなる．SQLインジェクションについては，以下のリンクを参考にせよ．
 
@@ -177,7 +177,7 @@ class DogToyQuery
 }
 ```
 
-#### ・データのキャッシュ
+#### ▼ データのキャッシュ
 
 読み出し系で取得したデータをキャッシュできる．
 
@@ -219,7 +219,7 @@ class Foo
 
 ### 書き込み系の操作
 
-#### ・トランザクション，コミット，ロールバック
+#### ▼ トランザクション，コミット，ロールバック
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 

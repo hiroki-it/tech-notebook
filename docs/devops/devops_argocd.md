@@ -33,23 +33,45 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ### アプリケーションリポジトリ起点
 
+#### ▼ テンプレート構成管理ツールを用いない場合
+
 ![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
 
-参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
-
-![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
-
-参考：https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
-
-（１）アプリケーションリポジトリで，開発者が機能の変更をmainブランチにマージする．
+（１）アプリケーションリポジトリで，開発者がアプリケーションの変更をmainブランチにマージする．
 
 （２）CIツールが，イメージをECRにプッシュする．
 
-（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行するか，あるいはテンプレート管理ツールを介して実行する．変更したマニフェストをマニフェストリポジトリにプッシュし，プルリクを自動作成する．
+（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．変更したマニフェストをマニフェストリポジトリにプッシュする．
 
-（４）マニフェストリポジトリで，開発者がプルリクをmainブランチにマージする．
+（４）プルリクを自動作成する．
 
-（５）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+（５）マニフェストリポジトリで，リリース責任者がプルリクをmainブランチにマージする．
+
+（６）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+
+参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+
+#### ▼ テンプレート構成管理ツールを用いた場合
+
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
+
+（１）同じ
+
+（２）同じ
+
+（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．チャートからチャートアーカイブを作成し，マニフェストリポジトリにプッシュする．
+
+（４）同じ
+
+（５）同じ
+
+（６）ArgoCDがチャートアーカイブの変更を検知し，Kubernetesにプルする．
+
+参考：
+
+- https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
+- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
+:::
 
 <br>
 
@@ -59,9 +81,11 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
-（１）マニフェストリポジトリで，開発者がマニフェストファイルやチャートの変更をmainブランチにマージする．
+（１）マニフェストリポジトリで，開発者がマニフェストファイルの変更をmainブランチにマージする．
 
-（２）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+（２）マニフェストリポジトリで，リリース責任者がマニフェストファイルやチャートの変更をmainブランチにマージする．
+
+（３）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
 
 <br>
 
@@ -69,7 +93,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ### インストール
 
-#### ・共通の手順
+#### ▼ 共通の手順
 
 参考：
 
@@ -120,7 +144,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-#### ・Argocd経由
+#### ▼ Argocd経由
 
 （６）argocdコマンドをインストールする．
 
@@ -169,7 +193,7 @@ $ argocd app sync guestbook
 $ argocd app set guestbook --sync-policy automated
 ```
 
-#### ・マニフェストファイル経由
+#### ▼ マニフェストファイル経由
 
 （６）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
 
@@ -203,7 +227,7 @@ spec:
 
 ### アンインストール
 
-#### ・Argocd経由
+#### ▼ Argocd経由
 
 ArgoCDのApplicationを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる．
 
@@ -234,7 +258,7 @@ spec:
 # 〜 中略 〜
 ```
 
-#### ・Kubectl経由
+#### ▼ Kubectl経由
 
 ArgoCDのApplicationを削除する．
 
@@ -250,7 +274,7 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 ### project
 
-#### ・projectとは
+#### ▼ projectとは
 
 アプリケーションのプロジェクト名を設定する．プロジェクト名は『```default```』とする必要がある．（理由は要調査）
 
@@ -270,11 +294,11 @@ spec:
 
 ### source
 
-#### ・sourceとは
+#### ▼ sourceとは
 
 マニフェストリポジトリ（GitHub）やチャートリポジトリ（Helm公式，ECR，ArtifactHub）を設定する．
 
-#### ・directory
+#### ▼ directory
 
 pathオプションで指定したディレクトリにサブディレクトリが存在している場合に，マニフェストファイルの再帰的検出を有効化する．
 
@@ -295,7 +319,7 @@ spec:
       recurse: true
 ```
 
-#### ・path
+#### ▼ path
 
 GitHubを指定した場合に，監視対象のディレクトリを設定する．
 
@@ -312,7 +336,7 @@ spec:
     path: kubernetes
 ```
 
-#### ・repoURL
+#### ▼ repoURL
 
 マニフェストリポジトリやチャートリポジトリのURLを設定する．
 
@@ -352,7 +376,7 @@ spec:
     chart: foo
 ```
 
-#### ・targetRevision
+#### ▼ targetRevision
 
 リポジトリで，監視対象とするブランチやバージョンタグを設定する．
 
@@ -375,11 +399,11 @@ spec:
 
 ### destination
 
-#### ・destinationとは
+#### ▼ destinationとは
 
 デプロイ先のKubernetesを設定する．
 
-#### ・namespace
+#### ▼ namespace
 
 デプロイ先の名前空間を設定する．
 
@@ -396,7 +420,7 @@ spec:
     namespace: foo
 ```
 
-#### ・server
+#### ▼ server
 
 デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
 
@@ -417,13 +441,13 @@ spec:
 
 ### syncPolicy
 
-#### ・syncPolicyとは
+#### ▼ syncPolicyとは
 
 GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-#### ・automated
+#### ▼ automated
 
 GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を有効化する．
 
@@ -450,7 +474,7 @@ spec:
       selfHeal: true
 ```
 
-#### ・syncOptions
+#### ▼ syncOptions
 
 GtiOpsでのマニフェストファイルの同期処理の詳細を設定する．
 
@@ -483,11 +507,11 @@ spec:
 
 ### analysis
 
-#### ・analysisとは
+#### ▼ analysisとは
 
 Progressive Deliveryを用いる場合に，詳細を設定する．
 
-#### ・successfulRunHistoryLimit
+#### ▼ successfulRunHistoryLimit
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -499,7 +523,7 @@ spec:
     successfulRunHistoryLimit: 10
 ```
 
-#### ・unsuccessfulRunHistoryLimit
+#### ▼ unsuccessfulRunHistoryLimit
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -515,11 +539,11 @@ spec:
 
 ### strategy
 
-#### ・strategy
+#### ▼ strategy
 
 デプロイ手法を設定する．
 
-#### ・blueGreen
+#### ▼ blueGreen
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
@@ -556,7 +580,7 @@ spec:
       scaleDownDelaySeconds: 30
 ```
 
-#### ・canary
+#### ▼ canary
 
 ![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
 

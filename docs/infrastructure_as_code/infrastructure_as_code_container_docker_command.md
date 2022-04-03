@@ -29,7 +29,7 @@ description: コマンド＠Dockerの知見をまとめました．
 
 ### attach
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -43,7 +43,7 @@ $ docker attach <起動中コンテナ名>
 
 ### build
 
-#### ・-force-rm，--no-cache
+#### ▼ -force-rm，--no-cache
 
 **＊例＊**
 
@@ -57,7 +57,7 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 ### commit
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 停止中コンテナからイメージを作成する．
 
@@ -73,7 +73,7 @@ $ docker commit <停止中コンテナ名> <Docker Hubユーザー名>/<イメ�
 
 ### container
 
-#### ・prune
+#### ▼ prune
 
 停止中コンテナのみを全て削除する．
 
@@ -87,7 +87,7 @@ $ docker container prune
 
 ### cp
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 Dockerfileの```COPY```コマンドを用いてコンテナ内に配置しているファイルに関して，変更のたびにイメージをビルドを行うことは面倒のため，ホストからコンテナにコピーし，再読み出しを行う．ただし，コンテナを再構築すると元に戻ってしまうことに注意．
 
@@ -110,7 +110,7 @@ $ docker logs <コンテナ名>
 
 ### create
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -124,7 +124,7 @@ $ docker create <コンテナ名> <使用イメージ名>:<タグ>
 
 ### exec
 
-#### ・-it
+#### ▼ -it
 
 **＊例＊**
 
@@ -138,7 +138,7 @@ $ docker exec -it <起動中コンテナ名> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/sh
 ```
 
-#### ・attach，execの違い
+#### ▼ attach，execの違い
 
 まず```docker attach```コマンドでは，起動中コンテナに接続する．```exit```コマンドを用いて，コンテナとの接続を切断した後，コンテナが停止してしまう．
 
@@ -189,7 +189,7 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになって
 
 ### search
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -203,7 +203,7 @@ $ docker search <イメージ名>
 
 ### images
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -213,7 +213,7 @@ $ docker search <イメージ名>
 $ docker images
 ```
 
-#### ・prune
+#### ▼ prune
 
 **＊例＊**
 
@@ -223,7 +223,7 @@ $ docker images
 $ docker image prune
 ```
 
-#### ・rmi
+#### ▼ rmi
 
 **＊例＊**
 
@@ -237,7 +237,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 ### inspect
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -263,7 +263,7 @@ json-fileドライバーを用いている時に，ログファイルの出力�
 
 ### log
 
-#### ・--follow
+#### ▼ --follow
 
 標準出力（```/dev/stdout```）/標準エラー出力（```/dev/stderr```）に出力されたログを表示し続ける．ロギングドライバーが```json-file```の場合のみ有効．
 
@@ -271,7 +271,7 @@ json-fileドライバーを用いている時に，ログファイルの出力�
 $ docker logs -f <コンテナ名>
 ```
 
-#### ・--tail
+#### ▼ --tail
 
 **＊例＊**
 
@@ -285,7 +285,7 @@ $ docker logs --follow=true --tail=500 <コンテナ名>
 
 ### network
 
-#### ・ls
+#### ▼ ls
 
 **＊例＊**
 
@@ -297,13 +297,13 @@ ae25b9b7740b        bridge                  bridge              local
 aeef782b227d        tech-notebook_default   bridge              local
 ```
 
-#### ・prune
+#### ▼ prune
 
 ```bash
 $ docker network prune
 ```
 
-#### ・inspect
+#### ▼ inspect
 
 複数のコンテナが起動している時に，コンテナがいずれのネットワークを用いているかを確認する．
 
@@ -315,7 +315,7 @@ $ docker network inspect <ネットワーク名>
 
 ### ps
 
-#### ・-a
+#### ▼ -a
 
 **＊例＊**
 
@@ -341,7 +341,7 @@ $ docker pull <イメージ名>:<バージョン>
 
 ### push
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -365,7 +365,7 @@ $ docker push <リポジトリURL>/<ECR上でのイメージ名>:<ECR上での�
 
 ### rm
 
-#### ・--force
+#### ▼ --force
 
 **＊例＊**
 
@@ -379,7 +379,7 @@ $ docker rm --force $(docker ps --all --quiet)
 
 ### run
 
-#### ・--hostname
+#### ▼ --hostname
 
 コンテナ内の```/etc/hosts```ファイルで，コンテナのプライベートIPアドレスを確認できる．```hostname```オプションで命名していればその名前，指定していなければランダムな文字列が割り当てられる．
 
@@ -400,7 +400,7 @@ ff02::2	ip6-allrouters
 172.18.0.2	<ホスト名>
 ```
 
-#### ・--publish
+#### ▼ --publish
 
 指定したホストポートとコンテナポートのマッピングを実行する．```--publish-all```オプションではホストポートをランダムに選択してポートマッピングを実行する．
 
@@ -410,7 +410,7 @@ ff02::2	ip6-allrouters
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <用いるイメージ名>:<タグ> /bin/bash
 ```
 
-#### ・--expose
+#### ▼ --expose
 
 他のコンテナに公開するコンテナポートを```expose```オプションで設定できる．これはDockerfileでEXPOSE命令として設定しても良い．なお，プロセスの受信するポートと合わせる必要がある．
 
@@ -420,7 +420,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <用いるイメ�
 $ docker run -d -it --name <コンテナ名> --expose=80 <用いるイメージ名>:<タグ> /bin/bash
 ```
 
-#### ・-a，-d
+#### ▼ -a，-d
 
 すでに停止中または起動中コンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```bash```プロセスや```shell```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```bash```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選択することができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．
 
@@ -477,7 +477,7 @@ $ docker start -i <停止中コンテナ名>
 
 ### stop
 
-#### ・オプション無し
+#### ▼ オプション無し
 
 **＊例＊**
 
@@ -499,7 +499,7 @@ $ docker stop $(docker ps --all --quiet)
 
 ### volume
 
-#### ・create
+#### ▼ create
 
 ボリュームマウントを作成する．dockerコマンドではなく，docker-composeコマンドで作成することが推奨されている．
 
@@ -511,7 +511,7 @@ $ docker stop $(docker ps --all --quiet)
 $ docker volume create <ボリューム名>
 ```
 
-#### ・ls
+#### ▼ ls
 
 **＊例＊**
 
@@ -521,7 +521,7 @@ dockerエリアのVolumeの一覧を表示
 $ docker volume ls
 ```
 
-#### ・rm
+#### ▼ rm
 
 **＊例＊**
 
@@ -531,7 +531,7 @@ dockerエリアのボリュームを削除
 $ docker volume rm <ボリューム名>
 ```
 
-#### ・inspect
+#### ▼ inspect
 
 **＊例＊**
 

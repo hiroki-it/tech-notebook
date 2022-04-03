@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】MySQL
 
 ### インストール
 
-#### ・Dnf経由
+#### ▼ Dnf経由
 
 mysqlコマンドのみをインストールしたい場合
 
@@ -44,7 +44,7 @@ $ mysql -u <ユーザー名> -p<パスワード> -h <DBホスト名> <DB名>
 
 ### パラメーター
 
-#### ・パラメーターの表示
+#### ▼ パラメーターの表示
 
 DBに登録されているグローバルパラメーターとセッションパラメーターを表示する．
 
@@ -58,7 +58,7 @@ SHOW SESSION VARIABLES LIKE "%time_zone";
 SHOW GLOBAL VARIABLES LIKE "%time_zone";
 ```
 
-#### ・パラメーターの設定
+#### ▼ パラメーターの設定
 
 ```sql
 -- グローバルパラメーターの場合
@@ -74,7 +74,7 @@ SET time_zone = "Asia/Tokyo";
 
 ### ```/etc/mysql/my.cnf```ファイル
 
-#### ・```/etc/mysql/my.cnf```ファイルとは
+#### ▼ ```/etc/mysql/my.cnf```ファイルとは
 
 MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ下にある```*.cnf```ファイルを読み込むようになっている．
 
@@ -105,7 +105,7 @@ MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/m
 !includedir /etc/mysql/mysql.conf.d/
 ```
 
-#### ・```datadir```ディレクトリ
+#### ▼ ```datadir```ディレクトリ
 
 MySQLのDBやテーブルの情報を管理する．基本的には```/var/lib/mysql```ディレクトリを用いるように設定されている．DB固有の情報は，DB名のディレクトリで管理されている．dockerエリアのマウントポイントとして指定される．
 

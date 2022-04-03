@@ -26,7 +26,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### セットアップ
 
-#### ・```/etc/datadog-agent/datadog.yaml```ファイル
+#### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
 
@@ -42,7 +42,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### トレースエージェント
 
-#### ・トレースエージェントとは
+#### ▼ トレースエージェントとは
 
 dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true```を割り当てると，トレースエージェントが有効になる．APMエージェントを有効化し，分散トレースを収集できる．APMでは，分散トレースを元にして，マイクロサービス間の依存関係をマイクロサービスマップとして確認できる．
 
@@ -57,7 +57,7 @@ dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 ### Cluster/Nodeエージェントとは
 
-#### ・Kubernetesの場合
+#### ▼ Kubernetesの場合
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
@@ -68,7 +68,7 @@ KubernetesのClusterやワーカーNodeから送信されたメトリクスを�
 - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 - https://blog.serverworks.co.jp/k8s-datadog
 
-#### ・Kubernetes＋Istioの場合
+#### ▼ Kubernetes＋Istioの場合
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
 

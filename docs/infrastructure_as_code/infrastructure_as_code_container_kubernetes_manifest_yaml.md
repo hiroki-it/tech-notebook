@@ -63,11 +63,11 @@ Kubernetesリソースの一意に識別するための情報を設定する．
 
 ### labels
 
-#### ・labelsとは
+#### ▼ labelsとは
 
 Kubernetesリソースを区別するための情報を設定する．
 
-#### ・予約ラベル
+#### ▼ 予約ラベル
 
 以下のリンクを参考にせよ．
 
@@ -77,7 +77,7 @@ Kubernetesリソースを区別するための情報を設定する．
 
 ### name
 
-#### ・nameとは
+#### ▼ nameとは
 
 Kubernetesリソースを一意に識別するための名前を設定する．
 
@@ -150,7 +150,7 @@ rules:
 
 ### data
 
-#### ・dataとは
+#### ▼ dataとは
 
 キー名と値を格納する．
 
@@ -191,7 +191,7 @@ data:
 
 ### replicas
 
-#### ・replicasとは
+#### ▼ replicasとは
 
 Podの複製数を設定する．
 
@@ -219,7 +219,7 @@ spec:
 
 ### revisionHistoryLimit
 
-#### ・revisionHistoryLimitとは
+#### ▼ revisionHistoryLimitとは
 
 保存されるリビジョン番号の履歴数を設定する．もし依存のリビジョン番号にロールバックすることがあるのであれば，必要数を設定しておく．
 
@@ -247,11 +247,11 @@ spec:
 
 ### selector
 
-#### ・selectorとは
+#### ▼ selectorとは
 
 Deploymentで管理するPodを明示的に設定する．
 
-#### ・matchLabels
+#### ▼ matchLabels
 
 Podのラベルを指定する．Podに複数のラベルが付与されている時は，これらを全て指定する必要がある．
 
@@ -280,11 +280,11 @@ spec:
 
 ### strategy
 
-#### ・strategyとは
+#### ▼ strategyとは
 
 デプロイメントの方法を設定する．
 
-#### ・RollingUpdate
+#### ▼ RollingUpdate
 
 ローリングアップデートを用いて，新しいPodをデプロイする．
 
@@ -352,7 +352,7 @@ spec:
 
 ### rules
 
-#### ・rulesとは
+#### ▼ rulesとは
 
 Serviceへのルーティングルールを設定する．複数のServiceにインバウンド通信を振り分けられる．
 
@@ -393,14 +393,14 @@ spec:
 
 ### accessModes
 
-#### ・accessModesとは
+#### ▼ accessModesとは
 
 ボリュームへのアクセス権限を設定する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
 
-#### ・ReadWriteMany
+#### ▼ ReadWriteMany
 
 ボリュームに対して，複数Nodeから読み出し/書き込みできるようにする．Node間でDBを共有したい場合に用いる．
 
@@ -418,7 +418,7 @@ spec:
     - ReadWriteMany
 ```
 
-#### ・ReadOnlyMany
+#### ▼ ReadOnlyMany
 
 ボリュームに対して，複数Nodeから読み出しでき，また単一Nodeのみから書き込みできるようにする．Node間で読み出し処理のみDBを共有したい場合に用いる．
 
@@ -436,7 +436,7 @@ spec:
     - ReadOnlyMany
 ```
 
-#### ・ReadWriteOnce
+#### ▼ ReadWriteOnce
 
 ボリュームに対して，単一Nodeからのみ読み出し/書き込みできるようにする．NodeごとにDBを分割したい場合に用いる．
 
@@ -458,7 +458,7 @@ spec:
 
 ### capacity
 
-#### ・capacityとは
+#### ▼ capacityとは
 
 ストレージの最大容量を設定する．
 
@@ -482,13 +482,13 @@ spec:
 
 ### hostPath
 
-#### ・hostPathとは
+#### ▼ hostPathとは
 
 PersistentVolumeの一種であるHostPathボリュームを作成する．Volumeの一種であるHostPathボリュームとは区別すること．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
-#### ・path
+#### ▼ path
 
 Node側のマウント元のディレクトリを設定する．Podのマウントポイントは，Podの```spec.containers.volumeMount```オプションで設定する．
 
@@ -504,7 +504,7 @@ spec:
     path: /data/src/foo
 ```
 
-#### ・type
+#### ▼ type
 
 マウント方法を設定する．
 
@@ -525,7 +525,7 @@ spec:
 
 ### local
 
-#### ・localとは
+#### ▼ localとは
 
 Node上にストレージ領域を新しく作成し，これをボリュームとする．```nodeAffinity```キーの設定が必須であり，Nodeを明示的に指定できる．
 
@@ -558,7 +558,7 @@ spec:
 
 ### mountOptions
 
-#### ・mountOptionsとは
+#### ▼ mountOptionsとは
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 
@@ -580,7 +580,7 @@ spec:
 
 ### nfs
 
-#### ・nfsとは
+#### ▼ nfsとは
 
 ホスト上であらかじめNFSサーバーを起動しておく．NFSサーバーにストレージ領域を作成し，これをボリュームとする．ワーカーNode内のPodを，ホスト上のNFSサーバーにマウントする．
 
@@ -609,13 +609,13 @@ spec:
 
 ### nodeAffinity
 
-#### ・nodeAffinityとは
+#### ▼ nodeAffinityとは
 
 PersistentVolumeの作成先とするワーカーNodeを設定する．
 
 参考：https://qiita.com/ysakashita/items/67a452e76260b1211920
 
-#### ・required.nodeSelectorTerms.matchExpressions
+#### ▼ required.nodeSelectorTerms.matchExpressions
 
 作成先のワーカーNodeのラベルを指定するための条件（```In```，```NotIn```，```Exists```）を設定する．
 
@@ -649,13 +649,13 @@ spec:
 
 ### persistentVolumeReclaimPolicy
 
-#### ・persistentVolumeReclaimPolicyとは
+#### ▼ persistentVolumeReclaimPolicyとは
 
 PersistentVolumeのライフサイクルを設定する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
 
-#### ・Delete
+#### ▼ Delete
 
 PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolumeも自動的に削除する．クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために用いることが多い．
 
@@ -674,7 +674,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
 ```
 
-#### ・Recycle（非推奨）
+#### ▼ Recycle（非推奨）
 
 PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolume内のデータのみを削除し，PersistentVolume自体は削除しない．将来的に廃止予定のため，非推奨．
 
@@ -693,7 +693,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
 ```
 
-#### ・Retain
+#### ▼ Retain
 
 PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても，PersistentVolumeは削除しない．割り当てから解除されたPersistentVolumeはReleasedステータスになる．一度，Releasedステータスになると，他のPerisistentVolumeClaimからは指定できなくなる．
 
@@ -716,7 +716,7 @@ spec:
 
 ### storageClassName
 
-#### ・storageClassNameとは
+#### ▼ storageClassNameとは
 
 ストレージクラス名を設定する．これは，PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる．
 
@@ -749,7 +749,7 @@ spec:
 
 ### accessModes
 
-#### ・accessModesとは
+#### ▼ accessModesとは
 
 要求対象のPerisitentVolumeのaccessModeを設定する．
 
@@ -771,11 +771,11 @@ spec:
 
 ### resources
 
-#### ・resourcesとは
+#### ▼ resourcesとは
 
 要求する仮想ハードウェアのリソースを設定する．
 
-#### ・requests
+#### ▼ requests
 
 要求対象のPerisitentVolumeのrequestsを設定する．
 
@@ -798,7 +798,7 @@ spec:
 
 ### storageClassName
 
-#### ・storageClassNameとは
+#### ▼ storageClassNameとは
 
 要求対象のPersistentVolumeのストレージクラス名を設定する．これを設定しない場合は，ストレージクラス名が```standard```のPerisitentVolumeを要求する．
 
@@ -823,11 +823,11 @@ spec:
 
 ### containers
 
-#### ・containersとは
+#### ▼ containersとは
 
 Pod内で起動するコンテナを設定する．
 
-#### ・name，image，port
+#### ▼ name，image，port
 
 Podを構成するコンテナの名前，ベースイメージ，受信ポートを設定する．
 
@@ -846,7 +846,7 @@ spec:
         - containerPort: 8080
 ```
 
-#### ・imagePullPolicy
+#### ▼ imagePullPolicy
 
 イメージのプルのルールを設定する．
 
@@ -872,7 +872,7 @@ spec:
         - containerPort: 8080
 ```
 
-#### ・resources
+#### ▼ resources
 
 コンテナのCPUとメモリの最小/最大使用量を設定する．Pod内にコンテナが複数ある場合，最小/最大使用量を満たしているかどうかの判定は，これらのコンテナのリソース使用量の合計値に基づくことになる．
 
@@ -917,7 +917,7 @@ spec:
 
 <br>
 
-#### ・volumeMount
+#### ▼ volumeMount
 
 Pod内のコンテナのマウントポイントを設定する．```spec.volume```オプションで設定されたボリュームのうちから，コンテナにマウントするボリュームを設定する．Node側のマウント元のディレクトリは，PersistentVolumeの```spec.hostPath```オプションで設定する．volumeMountという名前であるが，『ボリュームマウント』を実行するわけではなく，VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する．
 
@@ -945,7 +945,7 @@ spec:
         claimName: foo-persistent-volume-claim
 ```
 
-#### ・workingDir
+#### ▼ workingDir
 
 コンテナの作業ディレクトリを設定する．ただし，作業ディレクトリの設定はアプリケーション側の責務のため，Kubernetesで設定するよりもDockerfileで定義した方が良い．
 
@@ -967,7 +967,7 @@ spec:
 
 ### hostname
 
-#### ・hostnameとは
+#### ▼ hostnameとは
 
 Podのホスト名を設定する．また，```spec.hostname```オプションが設定されていない時は，```metadata.name```がホスト名として使用される．
 
@@ -991,11 +991,11 @@ spec:
 
 ### restartPolicy
 
-#### ・restartPolicyとは
+#### ▼ restartPolicyとは
 
 Pod内のコンテナのライフサイクルの再起動ポリシーを設定する．
 
-#### ・Always
+#### ▼ Always
 
 コンテナが終了した場合に，これが正常（終了ステータス```0```）か異常（終了ステータス```1```）かどうかに関わらず，常にコンテナを再起動する．
 
@@ -1011,7 +1011,7 @@ spec:
   restartPolicy: Always
 ```
 
-#### ・Never
+#### ▼ Never
 
 コンテナが終了した場合に，コンテナを再起動しない．
 
@@ -1027,7 +1027,7 @@ spec:
   restartPolicy: Never
 ```
 
-#### ・OnFailure
+#### ▼ OnFailure
 
 コンテナが終了した場合に，これが異常（終了ステータス```1```）の場合にのみ，常にコンテナを再起動する．
 
@@ -1047,7 +1047,7 @@ spec:
 
 ### serviceAccountName
 
-#### ・serviceAccountNameとは
+#### ▼ serviceAccountNameとは
 
 PodにServiceAccountを紐づける．Podのプロセスに認証済みのIDが付与され，Kubernetesと通信できるようになる．
 
@@ -1069,11 +1069,11 @@ spec:
 
 ### volume
 
-#### ・volumeとは
+#### ▼ volumeとは
 
 Pod内で用いるボリュームを設定する．
 
-#### ・configMap
+#### ▼ configMap
 
 ConfigMapのデータをコンテナのディレクトリにマウントする．
 
@@ -1117,7 +1117,7 @@ data:
         auto_create_group true
 ```
 
-#### ・emptyDir
+#### ▼ emptyDir
 
 Volumeの一種であるEmptyDirボリュームを作成する．EmptyDirボリュームのため，『Pod』が削除されるとこのボリュームも同時に削除される．
 
@@ -1145,7 +1145,7 @@ spec:
       emptyDir: {}
 ```
 
-#### ・hostPath
+#### ▼ hostPath
 
 Volumeの一種であるHostPathボリュームを作成する．PersistentVolumeの一種であるHostPathボリュームとは区別すること．HostPathボリュームのため，『Node』が削除されるとこのボリュームも同時に削除される．HostPathボリューム自体は本番環境で非推奨である．
 
@@ -1175,7 +1175,7 @@ spec:
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
-#### ・name
+#### ▼ name
 
 要求によって作成するボリューム名を設定する．
 
@@ -1194,7 +1194,7 @@ spec:
     - name: foo-gin-volume
 ```
 
-#### ・persistentVolumeClaim
+#### ▼ persistentVolumeClaim
 
 PersistentVolumeを用いる場合に，PersistentVolumeClaimを設定する．
 
@@ -1262,7 +1262,7 @@ spec:
 
 ### ports
 
-#### ・appProtocol
+#### ▼ appProtocol
 
 受信するインバウンド通信のプロトコルを設定する．```protocol```キーとは異なり，アプリケーション層のプロトコルを明示的に指定できる．
 
@@ -1320,7 +1320,7 @@ spec:
       port: 9000
 ```
 
-#### ・name
+#### ▼ name
 
 プロトコルのポート名を設定する．
 
@@ -1350,7 +1350,7 @@ spec:
       port: 9000
 ```
 
-#### ・protocol
+#### ▼ protocol
 
 受信するインバウンド通信のプロトコルを設定する．
 
@@ -1402,7 +1402,7 @@ spec:
 - https://github.com/search?q=php-fpm+kubernetes
 - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
 
-#### ・port
+#### ▼ port
 
 インバウンド通信を待ち受けるポート番号を設定する．
 
@@ -1432,7 +1432,7 @@ spec:
     - port: 9000
 ```
 
-####  ・targetPort
+#### ▼ targetPort
 
 受信したインバウンド通信をPodに転送する時に，いずれのポート番号を指定するかどうかを設定する．Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする．
 
@@ -1509,7 +1509,7 @@ Serviceのタイプを設定する．
 
 ### automountServiceAccountToken
 
-#### ・automountServiceAccountTokenとは
+#### ▼ automountServiceAccountTokenとは
 
 ServiceAccountのPodへの自動紐付けの有効化する．デフォルトで有効化されている．
 
@@ -1589,7 +1589,7 @@ spec:
 
 ### serviceName
 
-#### ・serviceNameとは
+#### ▼ serviceNameとは
 
 StatefulSetによって管理されるPodにルーティングするServiceを設定する．
 
@@ -1638,7 +1638,7 @@ spec:
 
 ### template（設定項目はPodと同じ）
 
-#### ・templateとは
+#### ▼ templateとは
 
 StatefulSetで維持管理するPodを設定する．設定項目はPodと同じである．
 
@@ -1695,7 +1695,7 @@ spec:
 
 ### volumeClaimTemplates
 
-#### ・volumeClaimTemplatesとは
+#### ▼ volumeClaimTemplatesとは
 
 PersistentVolumeClaimを作成する．設定の項目は```kind: PersistentVolumeClaim```の場合と同じである．StatefulSetが削除されても，これは削除されない．
 

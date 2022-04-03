@@ -17,7 +17,7 @@ description: 可観測性ツール＠Kubernetesの知見をまとめました．
 
 ### Prometheus
 
-#### ・仕組み
+#### ▼ 仕組み
 
 KubernetesやIstioに関するメトリクスの収集/分析/可視化を行う．
 
@@ -25,7 +25,7 @@ KubernetesやIstioに関するメトリクスの収集/分析/可視化を行う
 
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 $ ISTIO_VERSION=1.12
@@ -37,7 +37,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 ### Kiali
 
-#### ・仕組み
+#### ▼ 仕組み
 
 Prometheusで収集されたメトリクスを再収集し，Istioの可視化を拡張する．
 
@@ -45,7 +45,7 @@ Prometheusで収集されたメトリクスを再収集し，Istioの可視化�
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 $ ISTIO_VERSION=1.12
@@ -61,9 +61,9 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 ### Grafana
 
-#### ・仕組み
+#### ▼ 仕組み
 
-#### ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 $ ISTIO_VERSION=1.12
@@ -77,7 +77,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 ### Jaeger
 
-#### ・仕組み
+#### ▼ 仕組み
 
 KubernetesやIstioに関する分散トレースの収集/分析/可視化を行う．
 
@@ -85,7 +85,7 @@ KubernetesやIstioに関する分散トレースの収集/分析/可視化を行
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
-####  ・セットアップ
+#### ▼ セットアップ
 
 ```bash
 $ ISTIO_VERSION=1.12

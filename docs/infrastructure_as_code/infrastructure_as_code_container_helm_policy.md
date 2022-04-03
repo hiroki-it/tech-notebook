@@ -17,7 +17,7 @@ description: 設計ポリシー＠Helmの知見をまとめました．
 
 ### chartディレクトリ
 
-#### ・必須の要素
+#### ▼ 必須の要素
 
 ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある．また，チャートのコントリビュート要件も参考にすること．
 
@@ -26,6 +26,8 @@ description: 設計ポリシー＠Helmの知見をまとめました．
 - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
 - https://helm.sh/docs/topics/charts/#the-chart-file-structure
 - https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
+- https://helm.sh/docs/helm/helm_package/
+- https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
 
 ```bash
 repository/
@@ -37,14 +39,16 @@ repository/
 │   │   └── template.yaml # チャートの共通ロジックを設定する．
 │   │
 │   ├── .helmignore # チャートアーカイブの作成時に無視するファイルを設定する．
-│   ├── Chart.yaml # チャートの概要を設定する．
+│   ├── Chart.yaml # チャートの概要を設定する．頭文字は大文字である必要がある．
 │   └── values.yaml # テンプレートの変数に出力する値を設定する．
+│
+├── chart-1.0.0.tgz # チャートアーカイブ．Helmリポジトリの管理単位．
 ...
 ```
 
-#### ・稼働環境別
+#### ▼ 稼働環境別
 
-稼働環境別に```values.yaml```ファイルと```.tpl```ファイルを作成する．```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある．テンプレートからマニフェストファイルを作成する時に，各環境の```values.yaml```を参照する．
+稼働環境別に```values```ファイルと```.tpl```ファイルを作成する．```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある．テンプレートからマニフェストファイルを作成する時に，各環境の```values.yaml```を参照する．
 
 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
@@ -59,12 +63,57 @@ repository/
 │   │   │   └── dev/         
 │   │   ...
 │   │
-│   ├── values
+│   ├── values/
 │   │   ├── prd.yaml # 本番環境へのデプロイ時に出力する値
 │   │   ├── stg.yaml # ステージング環境 〃
 │   │   └── dev.yaml # 開発環境 〃
 ...
 ```
+
+#### ▼ リソース別
+
+リソース別にチャートを作成する．また，```values```ファイルを配置するディレクトリをルートに配置する．
+
+```bash
+repository/
+├── kubernetes/
+│   ├── temlaptes/
+│   ...
+│
+├── istio/
+│   ├── temlaptes/
+│   ...
+│
+├── argocd/
+│   ├── temlaptes/
+│   ...
+│
+├── values/
+...
+```
+
+ルートに配置した```values```ディレクトリには```values```ファイルを置く．```values```ファイルは，リソース間で共通に管理するか，あるいはリソース別に管理する．
+
+```yaml
+# 共通のvaluesファイル
+#============
+# General
+#============
+labels:
+  env: prd
+#============
+# Kubernetes
+#============
+
+#============
+# Istio
+#============
+
+#============
+# ArgoCD
+#============
+```
+
 
 <br>
 
@@ -72,13 +121,13 @@ repository/
 
 ### templateディレクトリ
 
-#### ・命名規則
+#### ▼ 命名規則
 
 ファイル名はスネークケースとし，Kubernetesリソースを識別できる名前とする．
 
 参考：https://helm.sh/docs/chart_best_practices/templates/
 
-#### ・拡張子
+#### ▼ 拡張子
 
 拡張子は```.yaml```とする．
 
