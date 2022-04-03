@@ -65,12 +65,48 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 <br>
 
-### ls
+### lint
+
+#### ・オプション無し
+
+チャートのバリデーションを実行する．
+
+参考：https://helm.sh/docs/helm/helm_lint/
+
+```bash
+$ helm lint <チャートへのパス>
+
+==> Linting kubernetes
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+1 chart(s) linted, 0 chart(s) failed
+```
+
+#### ・-f
+
+指定した```values```ファイル用いて，```helm lint```コマンドを実行する．
+
+```bash
+$ helm lint -f <valuesファイルへのパス> <チャートへのパス>
+
+==> Linting kubernetes
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+1 chart(s) linted, 0 chart(s) failed
+```
+
+<br>
+
+### list
 
 Helmを用いてデプロイしたリソースの一覧を表示する．
 
-``` bash
-$ helm ls
+参考：https://helm.sh/docs/helm/helm_list/
+
+```bash
+$ helm list
 
 NAME          VERSION   UPDATED                   STATUS    CHART
 foo-release   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-0.1.0
@@ -80,7 +116,7 @@ foo-release   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-0.1.0
 
 ### package
 
-チャートからチャートアーカイブを作成する．アーカイブ名にはバージョンが設定される．
+チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．
 
 参考：https://helm.sh/docs/helm/helm_package/
 
@@ -103,3 +139,22 @@ $ helm uninstall <リリース名>
 ```
 
 <br>
+
+### upgrade
+
+#### ・--install
+
+新しいリビジョン番号を作成し，デプロイ済のリリースを更新する．
+
+```bash
+$ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートアーカイブへのパス>
+
+Release "<リリース名>" has been upgraded. Happy Helming!
+NAME: <リリース名>
+LAST DEPLOYED: Sat Jan 1 12:00:00 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 3 # <---- リビジョン番号が増えていく
+TEST SUITE: None
+```
+

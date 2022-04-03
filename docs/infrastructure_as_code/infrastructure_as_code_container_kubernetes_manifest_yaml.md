@@ -846,6 +846,32 @@ spec:
         - containerPort: 8080
 ```
 
+#### ・imagePullPolicy
+
+イメージのプルのルールを設定する．
+
+参考：https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
+
+| オプション   | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| IfNotPresent | 仮想環境上にビルドされたイメージがあればこれを使用し，なければリポジトリからぷるする． |
+| Always       | リポジトリからイメージをプルする．                           |
+| Never        | イメージをプルせず，仮想環境上にビルドされたイメージを使用する． |
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+```
+
 #### ・resources
 
 コンテナのCPUとメモリの最小/最大使用量を設定する．Pod内にコンテナが複数ある場合，最小/最大使用量を満たしているかどうかの判定は，これらのコンテナのリソース使用量の合計値に基づくことになる．

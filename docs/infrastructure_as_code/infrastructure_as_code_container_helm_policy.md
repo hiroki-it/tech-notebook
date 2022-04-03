@@ -19,10 +19,11 @@ description: 設計ポリシー＠Helmの知見をまとめました．
 
 #### ・必須の要素
 
-ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある．
+ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある．また，チャートのコントリビュート要件も参考にすること．
 
 参考：
 
+- https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
 - https://helm.sh/docs/topics/charts/#the-chart-file-structure
 - https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
 
@@ -51,17 +52,17 @@ repository/
 repository/
 ├── chart/
 │   ├── temlaptes/
-│   │   ├── tpl/ # .tplファイル
+│   │   ├── manifests/ # 共通のマニフェストファイル
+│   │   ├── tpls/ # .tplファイル
 │   │   │   ├── prd/
 │   │   │   ├── stg/
 │   │   │   └── dev/         
 │   │   ...
 │   │
-│   ├── prd/
-│   │   └── values.yaml # 本番環境へのデプロイ時に出力する値
-│   │
-│   ├── stg/ # ステージング環境 〃
-│   ├── dev/ # 開発環境 〃
+│   ├── values
+│   │   ├── prd.yaml # 本番環境へのデプロイ時に出力する値
+│   │   ├── stg.yaml # ステージング環境 〃
+│   │   └── dev.yaml # 開発環境 〃
 ...
 ```
 
