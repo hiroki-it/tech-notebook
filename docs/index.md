@@ -76,7 +76,7 @@ title: 【知見を記録するサイト】目次
 #### ■ サービスメッシュ系
 
 * Envoy
-    * [📖：︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yml.html)
+    * [📖：︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
 
 <br>
 
@@ -124,7 +124,7 @@ title: 【知見を記録するサイト】目次
             * [📖：︎Eloquent ORM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_eloquent_orm.html)
             * [📖：︎専用パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package.html)
             * [📖：︎認証/認可系パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package_auth.html)
-            * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_commmand.html)
+            * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_command.html)
         * Symfony
             * [📖：︎コンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html)
             * [📖：︎Doctrine ORM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_doctrine_orm.html)

@@ -41,7 +41,7 @@ Fluentdから概念図を拝借した．収集されたログはまずインプ�
 
 セクションを設定できる．
 
-参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
+参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file
 
 <br>
 

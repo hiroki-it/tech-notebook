@@ -141,7 +141,6 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 参考：
 
 - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
-- https://thinkit.co.jp/article/13338ht-kubernetes/
 - https://blog.cybozu.io/entry/2019/07/03/170000
 
 |                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                 |
@@ -179,7 +178,7 @@ kubernetesクライアントは，kubectlコマンドを用いて，kubernetes�
 
 Kubernetes上でアプリケーションを稼働させる概念のこと．Kubernetesリソースは，IaCによってマニフェストファイルで定義される．マニフェストファイルについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
 
 <br>
 

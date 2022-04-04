@@ -81,7 +81,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 以下の通り，ホスト側のマウント元のディレクトリにはいくつか選択肢がある．
 
-![マウントされるホスト側のディレクトリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マウントされるホスト側のディレクトリ.png)
+![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mount_host-directory.png)
 
 <br>
 

@@ -47,7 +47,7 @@ description: シェル＠ユーティリティの知見をまとめました．
 
 現在実行中のプロセスでのみ有効な変数のこと．そのため，```source```コマンド以外の方法で実行されたシェルスクリプトでは，親プロセスで定義されたシェル変数を使用できない．
 
-参考：https://qiita.com/kure/items/f76d8242b97280a247
+参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -237,12 +237,12 @@ Hello World
 $ echo 'Hello World' > stdout.txt
 ```
 
-リダイレクト前に```stderr.txt```ファイルを新しく作成し，lsプロセスの標準出力をこれにリダイレクトする．
+リダイレクト前に```stderr.txt```ファイルを新しく作成し，lsプロセスの標準エラー出力をこれにリダイレクトする．
 
 ```bash
 $ ls foo 2> stderr.txt
 
-$ cat error.txt
+$ cat stderr.txt
 ls: cannot access foo: No such file or directory
 ```
 
