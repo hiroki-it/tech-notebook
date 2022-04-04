@@ -110,6 +110,7 @@ nav:
               - パッケージ: software/software_basic_utility_package.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
               - シェル: software/software_basic_utility_shell.md
+              - スクリプト: software/software_basic_utility_script.md
           - ■ 言語プロセッサ:
               - 言語プロセッサ: software/software_basic_language_processor.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
