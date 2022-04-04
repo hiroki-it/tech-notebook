@@ -82,7 +82,9 @@ plugins:
   - git-revision-date-localized:
       type: iso_date
   - search:
-      lang: ja
+      lang:
+        - ja
+        - en
       separator: '[\s\-\.]'
 
 # ナビゲーション
