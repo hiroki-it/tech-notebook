@@ -26,7 +26,6 @@ jobs:
       - name: Sed
         run: |
           find docs/* -name "*.md" -type f | xargs sed -i -e 's/，/、/g' -e 's/．/。/g'
-          find docs/* -name "self_introduction.md" -type f | xargs sed -i -e 's/(in Japanese)//g' -e 's/\<span/\<!--\<span/g' -e 's/span>/span>-->/g'
       - name: Deploy MkDocs
         run: |
           mkdocs gh-deploy --force
