@@ -29,7 +29,7 @@ description: コマンド＠Dockerの知見をまとめました．
 
 ### attach
 
-#### ▼ オプション無し
+#### ▼ attachとは
 
 **＊例＊**
 
@@ -57,7 +57,7 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 ### commit
 
-#### ▼ オプション無し
+#### ▼ commitとは
 
 停止中コンテナからイメージを作成する．
 
@@ -87,7 +87,7 @@ $ docker container prune
 
 ### cp
 
-#### ▼ オプション無し
+#### ▼ cpとは
 
 Dockerfileの```COPY```コマンドを用いてコンテナ内に配置しているファイルに関して，変更のたびにイメージをビルドを行うことは面倒のため，ホストからコンテナにコピーし，再読み出しを行う．ただし，コンテナを再構築すると元に戻ってしまうことに注意．
 
@@ -110,7 +110,7 @@ $ docker logs <コンテナ名>
 
 ### create
 
-#### ▼ オプション無し
+#### ▼ createとは
 
 **＊例＊**
 
@@ -189,7 +189,7 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになって
 
 ### search
 
-#### ▼ オプション無し
+#### ▼ searchとは
 
 **＊例＊**
 
@@ -203,7 +203,7 @@ $ docker search <イメージ名>
 
 ### images
 
-#### ▼ オプション無し
+#### ▼ imagesとは
 
 **＊例＊**
 
@@ -237,7 +237,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 ### inspect
 
-#### ▼ オプション無し
+#### ▼ inspectとは
 
 **＊例＊**
 
@@ -341,7 +341,7 @@ $ docker pull <イメージ名>:<バージョン>
 
 ### push
 
-#### ▼ オプション無し
+#### ▼ pushとは
 
 **＊例＊**
 
@@ -477,7 +477,7 @@ $ docker start -i <停止中コンテナ名>
 
 ### stop
 
-#### ▼ オプション無し
+#### ▼ stopとは
 
 **＊例＊**
 

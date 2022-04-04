@@ -156,19 +156,13 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 インストールするもの，または変更する項目を指定する．
 
-指定したプロファイルをインストールする．
-
 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
-```bash
-$ istioctl install -y --set profile=<プロファイル名>
-```
-
-アクセスログの出力先を標準出力に変更する．
-
-```bash
-$ istioctl install --set meshConfig.accessLogFile=/dev/stdout
-```
+| オプション例                               | 説明                                                         | 補足                                                         |
+| ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```meshConfig.accessLogFile=/dev/stdout``` | アクセスログの出力先を標準出力に変更する．                   |                                                              |
+| ```profile=default```                      | 指定したプロファイルをインストールする．                     |                                                              |
+| ```revision=n-n-n```                       | 既存のIstioのコントロールプレーンを稼働させつつ，指定したバージョンのコントロールプレーンをカナリアリリースする．バージョンは，ケバブケースで設定する必要がある． | 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
 
 <br>
 
@@ -308,6 +302,27 @@ istio-ingressgateway-*****.istio-system   SYNCED     SYNCED     SYNCED     NOT S
 foo-pod.default                           SYNCED     SYNCED     SYNCED     SYNCED       istiod-*****     1.12.1
 bar-pod.default                           SYNCED     SYNCED     SYNCED     SYNCED       istiod-*****     1.12.1
 baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCED       istiod-*****     1.12.1
+```
+
+<br>
+
+### upgrade
+
+#### ▼ upgradeとは
+
+Istioのインプレースデプロイメントを実行する．
+
+参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+
+```bash
+$ istioctl upgrade
+
+This will install the Istio n.n.n default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
+
+✔ Istio core installed                                                                                                                                                                                       
+✔ Istiod installed                                                                                                                                                                                           
+✔ Ingress gateways installed                                                                                                                                                                                 
+✔ Installation complete                                                                                                                                                                                      Making this installation the default for injection and validation.
 ```
 
 <br>

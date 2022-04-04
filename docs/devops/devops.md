@@ -127,7 +127,7 @@ CIツールを用いてCIパイプラインを，またCDツールを用いてCD
 
 #### ▼ インプレースデプロイメントとは
 
-サーバーにアプリケーションをデプロイする場合に用いる．最初に古いアプリケーションを停止し，サーバーのOSとミドルウェアの構成はそのままで，アプリケーションのみを上書きする．その後，アプリケーションを再起動する．
+最初に古いアプリケーションを停止し，サーバーのOSとミドルウェアの構成はそのままで，アプリケーションのみを上書きする．その後，アプリケーションを再起動する．
 
 参考：
 
@@ -145,9 +145,12 @@ CIツールを用いてCIパイプラインを，またCDツールを用いてCD
 
 #### ▼ 技術ツール例
 
-Capistorano，AWS（CodeDeploy），Fablic，Git（手動で```git pull```コマンド）
+Capistorano，AWS（CodeDeploy），Fablic，Git（手動で```git pull```コマンド），Istio
 
-参考：https://qiita.com/zaburo/items/8886be1a733aaf581045
+参考：
+
+- https://qiita.com/zaburo/items/8886be1a733aaf581045
+- https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
 
 <br>
 

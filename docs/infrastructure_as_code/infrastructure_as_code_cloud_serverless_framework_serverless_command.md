@@ -21,8 +21,6 @@ description: コマンド＠Serverless Frameworkの知見をまとめました�
 
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
 
-#### ▼ オプション無し
-
 ```bash
 $ serverless print
 ```
@@ -39,11 +37,10 @@ $ serverless print --FOO foo
 
 #### ▼ deployとは
 
+クラウドインフラを構築する．
+
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
-#### ▼ オプション無し
-
-クラウドインフラを構築する．
 
 ```bash
 $ serverless deploy

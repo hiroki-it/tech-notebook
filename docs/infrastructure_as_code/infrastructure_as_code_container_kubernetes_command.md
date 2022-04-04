@@ -471,10 +471,6 @@ $ kubectl label --overwrite <リソース名> foo=bar
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
-#### ▼ オプション無し
-
-**＊例＊**
-
 Pod名とコンテナ名を指定し，コンテナのログを表示する．
 
 ```bash

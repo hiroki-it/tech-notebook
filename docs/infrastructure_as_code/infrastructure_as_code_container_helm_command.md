@@ -17,7 +17,7 @@ description: コマンド＠Helmの知見をまとめました．
 
 ### create
 
-#### ▼ オプション無し
+#### ▼ createとは
 
 指定したパスにチャートのサンプルファイルを作成する．
 
@@ -31,7 +31,7 @@ $ helm create <チャートへのパス>
 
 ### history
 
-#### ▼ オプション無し
+#### ▼ historyとは
 
 指定したリリースの履歴を表示する．
 
@@ -50,7 +50,7 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 ### install
 
-#### ▼ オプション無し
+#### ▼ installとは
 
 チャートアーカイブを指定し，Kubernetesリソースとしてデプロイする．
 
@@ -88,7 +88,7 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 ### lint
 
-#### ▼ オプション無し
+#### ▼ lintとは
 
 チャートのバリデーションを実行する．
 
@@ -122,7 +122,7 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 
 ### list
 
-#### ▼ オプション無し
+#### ▼ listとは
 
 Helmを用いてデプロイしたリソースの一覧を表示する．
 
@@ -139,7 +139,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 ### package
 
-#### ▼ オプション無し
+#### ▼ packageとは
 
 チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．
 
@@ -155,7 +155,7 @@ Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 
 ### template
 
-#### ▼ オプション無し
+#### ▼ templateとは
 
 Kubernetesにデプロイされるリソースのマニフェストファイルを出力する．YAMLファイルにリダイレクトするようにするとよい．
 
@@ -175,7 +175,7 @@ $ helm template <リリース名> <チャートアーカイブへのパス> -f <
 
 ### uninstall
 
-#### ▼ オプション無し
+#### ▼ uninstallとは
 
 指定したリリースによってデプロイされたKubernetesリソースを削除する．
 

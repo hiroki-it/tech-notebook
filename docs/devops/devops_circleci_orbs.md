@@ -23,33 +23,13 @@ CircleCIから提供される汎用的なパッケージの使用を読み込む
 
 ### 構成
 
+#### ▼ オプション
+
 | オプション名 | 説明                                  |
 | ------------ | ------------------------------------- |
 | jobs         | ```job```キーに割り当てられる．       |
 | commands     | ```step```キーに割り当てられる．      |
 | executors    | ```executors```キーに割り当てられる． |
-
-<br>
-
-## 01-02. セットアップ
-
-### インストール
-
-**＊実装例＊**
-
-```yaml
-version: 2.1
-
-orbs:
-    hello: circleci/hello-build@0.0.5
-    
-workflows:
-    "Hello Workflow":
-        jobs:
-          - hello/hello-build
-```
-
-<br>
 
 #### ▼ Orbsのデメリット
 
@@ -85,6 +65,26 @@ jobs:
           aws-access-key-id: $ACCESS_KEY_ID_ENV_VAR_NAME
           aws-secret-access-key: $SECRET_ACCESS_KEY_ENV_VAR_NAME
           region: $AWS_REGION_ENV_VAR_NAME
+```
+
+<br>
+
+## 01-02. セットアップ
+
+### インストール
+
+**＊実装例＊**
+
+```yaml
+version: 2.1
+
+orbs:
+    hello: circleci/hello-build@0.0.5
+    
+workflows:
+    "Hello Workflow":
+        jobs:
+          - hello/hello-build
 ```
 
 <br>

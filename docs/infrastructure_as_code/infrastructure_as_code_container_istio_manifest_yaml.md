@@ -326,6 +326,9 @@ DestinationRule上のインバウンド通信をルーティングできる名�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   exportTo:
     - "*"
@@ -338,6 +341,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   exportTo:
     - "."
@@ -356,6 +362,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い．
 ```
@@ -378,6 +387,9 @@ VirtualServiceのサブセット名が```v1```のインバウンド通信では�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   subsets:
   - name: v1
@@ -401,6 +413,9 @@ Podへのルーティング時に用いるロードバランシングアルゴ�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   trafficPolicy:
     loadBalancer:
@@ -416,6 +431,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   trafficPolicy:
     portLevelSettings:
@@ -432,6 +450,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   trafficPolicy:
     portLevelSettings:
@@ -448,6 +469,9 @@ Podへのルーティング時に用いるHTTPSプロトコルのタイプを設
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
 spec:
   trafficPolicy:
     tls:
@@ -469,6 +493,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
 spec:
   configPatches:
     - applyTo: NETWORK_FILTER
@@ -481,6 +508,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
 spec:
   configPatches:
     - match:
@@ -497,6 +527,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
 spec:
   configPatches:
     - match:
@@ -515,6 +548,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
 spec:
   configPatches:
     - match:
@@ -528,6 +564,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
 spec:
   configPatches:
     - patch:
@@ -559,6 +598,9 @@ Gatewayの適用対象のIngressGatewayに付与されたラベルを設定す�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   selector:
     istio: istio-ingressgateway
@@ -577,6 +619,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - port:
@@ -592,6 +637,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - port:
@@ -609,6 +657,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - port:
@@ -626,6 +677,9 @@ Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワ�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - hosts:
@@ -639,6 +693,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - tls:
@@ -656,6 +713,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
 spec:
   servers:
   - tls:
@@ -674,6 +734,23 @@ IstioOperator経由でIstioリソースをインストールする．
 
 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
+#### ▼ egressGateways
+
+IstioOperator経由でインストールされるEgressGatewayのオプションを設定する．
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: true
+```
+
 #### ▼ ingressGateways
 
 IstioOperator経由でインストールされるIngressGatewayのオプションを設定する．Gatewayとは異なるリソースであることに注意する．ingressGatewaysの設定値を変更する場合は，```runAsRoot```キーでルート権限を有効化する必要がある．
@@ -683,6 +760,9 @@ IstioOperator経由でインストールされるIngressGatewayのオプショ�
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   components:
     ingressGateways:
@@ -771,20 +851,6 @@ status:
     - ip: 10.108.30.158
 ```
 
-#### ▼ egressGateways
-
-IstioOperator経由でインストールされるEgressGatewayのオプションを設定する．
-
-```yaml
-apiVersion: install.istio.io/v1alpha1
-kind: IstioOperator
-spec:
-  components:
-    egressGateways:
-    - name: istio-egressgateway
-      enabled: true
-```
-
 <br>
 
 ### meshConfig
@@ -802,6 +868,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     accessLogFile: /dev/stdout
@@ -814,6 +883,9 @@ Envoyコンテナ別に設定値を上書きしたい時に，そのデフォル
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     defaultConfig:
@@ -827,6 +899,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     enableTracing: true
@@ -839,6 +914,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     ingressSelector: ingressgateway
@@ -851,6 +929,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     ingressService: ingressgateway
@@ -863,6 +944,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     proxyHttpPort: 80
@@ -875,6 +959,9 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   meshConfig:
     proxyListenPort: 80
@@ -884,6 +971,8 @@ spec:
 
 ### namespace
 
+#### ▼ namespaceとは
+
 IstioOperator経由でインストールされるIstioリソースの名前空間を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
@@ -891,6 +980,9 @@ IstioOperator経由でインストールされるIstioリソースの名前空�
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   namespace: foo
 ```
@@ -899,6 +991,8 @@ spec:
 
 ### profile
 
+#### ▼ profileとは
+
 インストールに用いるプロファイルを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
@@ -906,13 +1000,41 @@ spec:
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   profile: default
 ```
 
 <br>
 
+### revision
+
+#### ▼ revisionとは
+
+Istioのバージョン変更時に，カナリアリリースで新しくインストールするバージョンを設定する．
+
+参考：
+
+- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+- https://istio.io/latest/docs/setup/upgrade/canary/
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  revision: 1-12-1
+```
+
+<br>
+
 ### tag
+
+#### ▼ tagとは
 
 PilotのDockerイメージのバージョンを設定する．
 
@@ -924,6 +1046,9 @@ PilotのDockerイメージのバージョンを設定する．
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   tag: 1.12.1
 ```
@@ -932,11 +1057,16 @@ spec:
 
 ### values
 
+#### ▼ valuesとは
+
 #### ▼ gateways.istio-ingressgateway.runAsRoot
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   values:
     gateways:
@@ -953,6 +1083,9 @@ Envoyコンテナごとのオプション値を設定する．
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   values:
     sidecarInjectorWebhook:
@@ -983,6 +1116,9 @@ istio-proxyコンテナ間の通信で相互TLSを有効化するかどうかを
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
 spec:
   mtls:
     mode: DISABLE # 相互TLSを用いない．
@@ -1013,6 +1149,9 @@ VirtualService上のインバウンド通信をルーティングできる名前
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   exportTo:
     - "*"
@@ -1025,6 +1164,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   exportTo:
     - "."
@@ -1047,6 +1189,9 @@ Gateway名とこれの名前空間を設定する．VirtualServiceとGatewayが�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   gateways:
   - foo-namespace/foo-gateway
@@ -1059,6 +1204,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   gateways:
   - mesh
@@ -1088,6 +1236,9 @@ HTTP/1.1，HTTP/2，gRPC，のプロトコルによるインバウンド通信�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   http:
   - match:
@@ -1101,6 +1252,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   http:
   - match:
@@ -1134,6 +1288,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   http:
     - route:
@@ -1152,6 +1309,9 @@ Serviceのサブセット名を設定する．DestinationRuleにて，ルーテ�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   http:
     - route:
@@ -1176,6 +1336,9 @@ spec:
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   http:
     - route:
@@ -1208,6 +1371,9 @@ TCP/IPのプロトコルによるインバウンド通信をServiceにルーテ�
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   tcp:
     - match:
@@ -1221,6 +1387,9 @@ httpの場合と同じである．
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   tcp:
     - route:
@@ -1235,6 +1404,9 @@ httpの場合と同じである．
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   tcp:
     - route:
@@ -1251,6 +1423,9 @@ httpの場合と同じである．
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
 spec:
   tcp:
     - route:

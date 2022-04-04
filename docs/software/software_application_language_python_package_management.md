@@ -35,7 +35,7 @@ flask==2.0.2
 
 ### check
 
-#### ▼ オプション無し
+#### ▼ checkとは
 
 インストールされているパッケージ間の依存関係を正しく解決できるかを確認する．
 
@@ -57,7 +57,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 ### install
 
-#### ▼ オプション無し
+#### ▼ installとは
 
 指定したパッケージをインストールする．
 
@@ -152,7 +152,7 @@ $ pip3 freeze > uninstall.txt
 
 ### list
 
-#### ▼ オプション無し
+#### ▼ listとは
 
 現在インストールされているパッケージの一覧を表示する．
 
@@ -220,7 +220,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 ### uninstall
 
-#### ▼ オプション無し
+#### ▼ uninstallとは
 
 指定したパッケージをインストールする．
 

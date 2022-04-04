@@ -21,8 +21,6 @@ description: コマンド＠Docker composeの知見をまとめました．
 
 バリデーションとして，```docker-compose.yml```ファイルを展開する．ファイル内で，相対パスや変数を用いている場合，これらが正しく設定されているかを確認できる．
 
-#### ▼ オプション無し
-
 ```bash
 $ docker-compose config
 ```
@@ -119,8 +117,6 @@ $ docker-compose run --rm -d --service-ports <サービス名>
 
 指定したサービスの起動中コンテナを全て停止する．
 
-#### ▼ オプション無し
-
 ```bash
 $ docker-compose stop <サービス名>
 ```
@@ -147,7 +143,7 @@ $ docker-compose down --rmi all --volumes --remove-orphans
 
 #### ▼ logsとは
 
-コンテナ内に入ることなく，起動プロセスから出力されるログを確認することできる．
+コンテナ内に入ることなく，起動プロセスから出力されるログを確認することできる．オプションごとに，ログの表示タイプが異なる．
 
 #### ▼ オプション無し
 

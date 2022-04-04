@@ -79,7 +79,7 @@ $ terraform init -upgrade
 
 ### validate
 
-#### ▼ オプション無し
+#### ▼ validateとは
 
 設定ファイルの検証を行う．
 
@@ -420,7 +420,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 ### state list
 
-#### ▼ オプション無し
+#### ▼ state listとは
 
 ファイル内で定義しているリソースの一覧を表示する．
 
