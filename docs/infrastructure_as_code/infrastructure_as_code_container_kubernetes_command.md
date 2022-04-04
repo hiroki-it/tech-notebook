@@ -31,21 +31,21 @@ description: コマンド＠Kubernetesの知見をまとめました．
 
 ```bash
 # リソースを作成する．
-$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yaml
+$ kubectl apply -f <マニフェストファイルへのパス>
 
 pod/foo-pod created
 ```
 
 ```bash
 # 設定値を変更する．
-$ kubectl apply -f ./kubernetes/<マニフェストファイル名>.yaml
+$ kubectl apply -f <マニフェストファイルへのパス>
 
 pod/foo-pod configured
 ```
 
 ```bash
 # ディレクトリ内のファイルを再起的に指定する．
-$ kubectl apply -f ./kubernetes -R
+$ kubectl apply -f <マニフェストファイルのあるディレクトリ> -R
 
 pod/foo-pod configured
 ```

@@ -103,12 +103,12 @@ server {
     # OSによって，fastcgi_paramsファイルの必要な設定が異なる
     #--------------------------------------------------
     location ~ \.php$ {
-        # リダイレクト先のTCPソケット
+        # ルーティング先のTCPソケット
         fastcgi_pass   localhost:9000;
         # もしくは，UNIXドメインソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
         
-        # リダイレクト先のURL（rootディレクティブ値+パスパラメータ）
+        # ルーティング先のURL（rootディレクティブ値+パスパラメータ）
         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
         # 設定ファイルからデフォルト値を読み込む

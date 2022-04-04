@@ -129,7 +129,7 @@ ymlファイルの差分を表示する．
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
-$ istioctl manifest diff <変更前マニフェストファイル名>.yaml <変更後>.yaml
+$ istioctl manifest diff <変更前マニフェストファイルへのパス> <変更後マニフェストへのパス>
 ```
 
 <br>
@@ -144,24 +144,24 @@ $ istioctl manifest diff <変更前マニフェストファイル名>.yaml <変�
 
 #### ▼ -f
 
-マニフェストファイルを用いて，プロファイルをインストールする．
+IstioOperatorのマニフェストファイルを用いて，プロファイルをインストールする．
+
+参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
-$ istioctl install -f ./istio/<ファイル名>.yaml -y
+$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
 ```
 
 #### ▼ --set
 
 インストールするもの，または変更する項目を指定する．
 
-
-
 指定したプロファイルをインストールする．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
 ```bash
-$ istioctl install --set profile=<プロファイル名> -y
+$ istioctl install -y --set profile=<プロファイル名>
 ```
 
 アクセスログの出力先を標準出力に変更する．
@@ -182,6 +182,23 @@ Envoyコンテナをサイドカーコンテナとして構築する．代わり
 
 ```bash
 $ istioctl kube-inject
+```
+
+<br>
+
+### operator
+
+#### ▼ init
+
+IstioOperatorを```istio-system```にデプロイする．
+
+```bash
+$ istioctl operator init
+
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Operator controller will watch namespaces: istio-system
+✔ Istio operator installed
+✔ Installation complete
 ```
 
 <br>
@@ -226,10 +243,8 @@ Istio上で管理されるEnvoyの構成情報を表示する．
 - https://sreake.com/blog/istio/
 
 ```bash
-$ istioctl proxy-config <項目> <Pod名> -n <名前空間名>
+$ istioctl proxy-config <設定項目> <Pod名> -n <名前空間名>
 ```
-
-
 
 Envoyのエンドポイント情報を表示する．
 

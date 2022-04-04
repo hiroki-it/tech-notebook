@@ -189,7 +189,7 @@ portForward:
 
 ### testステージとは
 
-kubernetesリソースのテスト方法を定義する．
+Kubernetesリソースのテスト方法を定義する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
@@ -224,7 +224,7 @@ fileExistenceTests:
 
 ### deployステージとは
 
-kubernetesリソースのデプロイ手法を定義する．
+Kubernetesリソースのデプロイ手法を定義する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
@@ -234,7 +234,7 @@ kubernetesリソースのデプロイ手法を定義する．
 
 #### ▼ kubectlとは
 
-kubectlを用いて，kubernetesリソースをデプロイする．
+kubectlを用いて，Kubernetesリソースをデプロイする．ワイルドカードを使用できる．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
@@ -242,7 +242,8 @@ kubectlを用いて，kubernetesリソースをデプロイする．
 deploy:
   kubectl:
     manifests:
-      - ./kubernetes/**/**.yaml
+      - ./release/dev/kubernetes.yaml
+      - ./**/**/**.yaml # ワイルドカードを使用できる．
 ```
 
 <br>
@@ -251,7 +252,7 @@ deploy:
 
 #### ▼ helm
 
-helmを用いて，kubernetesリソースをデプロイする．
+Helmを用いて，Kubernetesリソースをデプロイする．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 
@@ -261,17 +262,9 @@ deploy:
     releases:
     - name: <リリース名>
       artifactOverrides:
-        image: <イメージ名> # buildステージのイメージ名と合わせる．
+        image: <イメージ名> # buildステージのartifactsのイメージ名と合わせる．
       imageStrategy:
         helm: {}
-```
-
-ちなみに，```artifactOverrides```キーのイメージ名とbuildステージのイメージ名は合わせる必要がある．
-
-```yaml
-build:
-  artifacts:
-    - image: <イメージ名> # artifactOverridesのイメージ名と合わせる．
 ```
 
 <br>

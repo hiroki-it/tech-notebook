@@ -42,11 +42,17 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストファイルを，istioctlコマンドまたはkubectlコマンドで操作し，Istioリソースをインストールする．kubectlコマンドの実行結果は，インストールされたことがわかりにくいことに注意する．
+（２）IstioOperatorが定義されたマニフェストファイルを，istioctlコマンドまたはkubectlコマンドで操作し，Istioリソースをデプロイする．kubectlコマンドでもデプロイできるが，デプロイの成否の実行ログがわかりにくいことに注意する．
+
+参考：
+
+- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+- https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f ./istio/operator.yaml
+$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
+
 ✔ Istio core installed
 ✔ Istiod installed
 ✔ Ingress gateways installed
@@ -56,15 +62,10 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f ./istio/operator.yaml
+$ kubectl apply -f <IstioOperatorのマニフェストファイルへのパス>
 
 istiooperator.install.istio.io/istio-operator created
 ```
-
-参考：
-
-- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
-- https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 <br>
 

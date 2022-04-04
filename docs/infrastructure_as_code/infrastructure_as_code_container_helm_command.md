@@ -17,6 +17,8 @@ description: コマンド＠Helmの知見をまとめました．
 
 ### create
 
+#### ▼ オプション無し
+
 指定したパスにチャートのサンプルファイルを作成する．
 
 参考：https://helm.sh/docs/helm/helm_create/
@@ -28,6 +30,8 @@ $ helm create <チャートへのパス>
 <br>
 
 ### history
+
+#### ▼ オプション無し
 
 指定したリリースの履歴を表示する．
 
@@ -118,6 +122,8 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 
 ### list
 
+#### ▼ オプション無し
+
 Helmを用いてデプロイしたリソースの一覧を表示する．
 
 参考：https://helm.sh/docs/helm/helm_list/
@@ -133,6 +139,8 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 ### package
 
+#### ▼ オプション無し
+
 チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．
 
 参考：https://helm.sh/docs/helm/helm_package/
@@ -145,7 +153,29 @@ Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 
 <br>
 
+### template
+
+#### ▼ オプション無し
+
+Kubernetesにデプロイされるリソースのマニフェストファイルを出力する．YAMLファイルにリダイレクトするようにするとよい．
+
+```bash
+$ helm template <リリース名> <チャートアーカイブへのパス> >| <出力先ファイル>
+```
+
+#### ▼ -f
+
+指定した```values```ファイル用いて，```helm template```コマンドを実行する．
+
+```bash
+$ helm template <リリース名> <チャートアーカイブへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
+```
+
+<br>
+
 ### uninstall
+
+#### ▼ オプション無し
 
 指定したリリースによってデプロイされたKubernetesリソースを削除する．
 
