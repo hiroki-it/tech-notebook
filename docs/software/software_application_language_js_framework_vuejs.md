@@ -17,7 +17,7 @@ description: Vue.jsの知見をまとめました．
 
 ### MVVMアーキテクチャ，双方向データバインディング
 
-### ・MVVMアーキテクチャとは
+#### ▼ MVVMアーキテクチャとは
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html
 

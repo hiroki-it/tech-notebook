@@ -76,8 +76,6 @@ Istioの機能のセットを提供する．
 
 KubernetesでIstioを用いることができるように，```istio-injection```ラベルの値に```enabled```を設定する．Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる．```default```以外の名前空間名をつける場合は，コマンドではなく，マニフェストファイル上でこれを設定できる．
 
-**＊実行例＊**
-
 ```bash
 $ kubectl label namespace default istio-injection=enabled
 ```
@@ -94,7 +92,7 @@ Istioが正しく機能しているかどうかを検証する．
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 
-**＊実行例＊**
+
 
 成功した場合を以下に示す．
 
@@ -115,8 +113,6 @@ Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 8
 #### ▼ -n
 
 名前空間を指定しつつ，```analyze```コマンドを実行する．
-
-**＊実行例＊**
 
 ```bash
 $ istioctl analyze -n <名前空間名>
@@ -158,7 +154,7 @@ $ istioctl install -f ./istio/<ファイル名>.yaml -y
 
 インストールするもの，または変更する項目を指定する．
 
-**＊実行例＊**
+
 
 指定したプロファイルをインストールする．
 
@@ -202,8 +198,6 @@ Istioのプロファイルを操作する．
 
 利用可能なプロファイルを表示する．
 
-**＊実行例＊**
-
 ```bash
 $ istioctl profile list
 
@@ -235,7 +229,7 @@ Istio上で管理されるEnvoyの構成情報を表示する．
 $ istioctl proxy-config <項目> <Pod名> -n <名前空間名>
 ```
 
-**＊実行例＊**
+
 
 Envoyのエンドポイント情報を表示する．
 
@@ -290,8 +284,6 @@ IngressGateway，EgressGateway，Envoyコンテナのステータスを表示す
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
-**＊実行例＊**
-
 ```bash
 $ istioctl proxy-status  
 
@@ -312,8 +304,6 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 Istioのインストールが正しく実行されたかを検証する．
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
-
-**＊実行例＊**
 
 ```bash
 $ istioctl verify-install

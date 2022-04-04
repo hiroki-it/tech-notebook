@@ -92,7 +92,7 @@ $ pip3 freeze --local \
     | xargs -n1 pip3 install -U
 ```
 
-**＊実行例＊**
+
 
 pip自身をアップグレードする．
 
@@ -104,7 +104,7 @@ $ pip3 install --upgrade pip
 
 #### ▼ --user
 
-**＊実行例＊**
+
 
 ```bash
 $ pip3 install --user <パッケージ名>
@@ -114,7 +114,7 @@ $ pip3 install --user <パッケージ名>
 
 requirements.txt を元にパッケージをインストールする．
 
-**＊実行例＊**
+
 
 ```bash
 $ pip3 install -r requirements.txt
@@ -139,6 +139,11 @@ pipでインストールされたパッケージを元に，要件ファイル�
 # インストールのため
 $ pip3 freeze > requirements.txt
 
+# 上書きする場合
+$ pip3 freeze >| requirements.txt
+```
+
+```bash
 # アンインストールのため
 $ pip3 freeze > uninstall.txt
 ```

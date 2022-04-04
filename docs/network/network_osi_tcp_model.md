@@ -161,9 +161,9 @@ SMTPに認証を組み込んだ仕組みのこと．クライアント（メー�
 
 メールサーバーに届いたメールを，受信機器にダウンロードせず，メールサーバーに置いたまま閲覧するプロトコル．メールの既読未読状況は，他の受信機器と共有されない．
 
-  **＊例＊**
+**＊例＊**
 
-  GmailでPOPかIMAPを設定可能
+GmailでPOPかIMAPを設定可能
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GmailでPOPかIMAPを設定.jpg)
 

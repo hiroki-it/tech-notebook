@@ -33,6 +33,7 @@ title: 【知見を記録するサイト】目次
 * [📖：︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
 * [📖：︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
 * [📖：︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
+* [📖：︎スクリプト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_script.html)
 
 
 #### ■ 言語プロセッサー

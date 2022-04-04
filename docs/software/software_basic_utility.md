@@ -386,8 +386,6 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/f
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
 
-**＊実行例＊**
-
 ```bash
 $ df
 
@@ -409,8 +407,6 @@ map auto_home            0         0         0   100%       0          0  100%  
 
 ストレージの使用状況をメガバイトで表示する．
 
-**＊実行例＊**
-
 ```bash
 # h：--human-readable
 # t：--total
@@ -431,8 +427,6 @@ $ df -h -m -t
 
 全てのディレクトリの合計容量を表示する．
 
-**＊実行例＊**
-
 ```bash
 $ du -s ./
 12345678 ./
@@ -441,8 +435,6 @@ $ du -s ./
 #### ▼ -x
 
 ディレクトリごとに合計容量を表示する．
-
-**＊実行例＊**
 
 ```bash
 # 表示結果を容量の降順に並び替える．
@@ -466,8 +458,6 @@ $ du -x ./ | sort -n
 
 定義されたシェル変数を出力する．変数名には```$```マークを付ける．ダブルクオートはあってもなくても良い．
 
-**＊実行例＊**
-
 ```bash
 $ <変数名>=<値>
 
@@ -485,8 +475,6 @@ $ echo "$<変数名>"
 基本的な手順としては，シェル変数を設定し，これを環境変数に追加する．シェル変数と環境変数については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
-
-**＊実行例＊**
 
 ```bash
 # シェル変数を設定
@@ -509,11 +497,9 @@ $ export PATH=$PATH:<バイナリファイルへのあるディレクトリへ�
 $ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 ```
 
-#### ▼ ```/home/centos/.bashrc```ファイルへの追記
+#### ▼ ```/home/centos/.bashrc```ファイル
 
 OSを再起動すると，```export```コマンドの結果は消去されてしまう．そのため，再起動時に自動的に実行されるよう，```.bashrc```ファイルに追記しておく．
-
-**＊実行例＊**
 
 ```bash
 # Source global definitions
@@ -551,8 +537,6 @@ export PATH
 
 ファイルの改行コードを表示する．
 
-**＊実行例＊**
-
 ```bash
 # LFの場合（何も表示されない）
 $ file foo.txt
@@ -575,8 +559,6 @@ foo.txt: ASCII text, with CR line terminators<br>
 
 ファイルを検索するためのユーティリティ．アスタリスクを付けなくとも，自動的にワイルドカードが働く．
 
-**＊実行例＊**
-
 ```bash
 $ find ./* -type f | xargs grep "<検索文字>"
 ```
@@ -589,8 +571,6 @@ $ find ./* -type f | xargs grep "<検索文字>" 2> /dev/null
 #### ▼ -name
 
 ファイル名が```.conf``` で終わるものを全て検索する．
-
-**＊実行例＊**
 
 ```bash
 $ find ./* -name "*.conf" -type f
@@ -615,8 +595,6 @@ $ find ./* -name "*.conf" -type f | xargs grep "<検索文字>"
 #### ▼ -m，--t
 
 物理メモリ，スワップ領域，の使用状況をメガバイトで表示する．
-
-**＊実行例＊**
 
 ```bash
 # m：--mega
@@ -648,8 +626,6 @@ $ cat foo.txt | grep bar
 
 履歴1000件の中からコマンドを検索する．
 
-**＊実行例＊**
-
 ```bash
 $ history | grep <過去のコマンド>
 ```
@@ -678,10 +654,8 @@ $ ln -s <リンク元までのパス> <シンボリックリンク名>
 
 指定したPIDのプロセスを削除する．
 
-**＊実行例＊**
-
 ```bash
-$ kill -9 <プロセスID（PID）>
+$ kill -9 <プロセスID(PID)>
 ```
 
 指定したコマンドによるプロセスを全て削除する．
@@ -711,8 +685,6 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 隠しファイルや隠しディレクトリも含めて，全ての詳細を表示する．
 
-**＊実行例＊**
-
 ```bash
 $ ls -l -a
 ```
@@ -724,8 +696,6 @@ $ ls -l -a
 #### ▼ -i，-P
 
 使用中のポートをプロセス別に表示する．
-
-**＊実行例＊**
 
 ```bash
 $ lsof -i -P | grep "LISTEN"
@@ -749,8 +719,6 @@ minikube  97246 hasegawa   19u  IPv4 *****      0t0  TCP 192.168.64.1:50252 (LIS
 
 複数階層のディレクトリを作成する．
 
-**＊実行例＊**
-
 ```bash
 $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 ```
@@ -766,8 +734,6 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
 
 #### ▼ スワップ領域の作成方法
-
-**＊実行例＊**
 
 ```bash
 # 指定したディレクトリをスワップ領域として使用
@@ -800,8 +766,6 @@ $ swapoff /swap_volume
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 
-**＊実行例＊**
-
 ```bash
 $ mount -t /dev/sdb1 <マウントポイント>
 ```
@@ -816,7 +780,7 @@ $ mount -t /dev/sdb1 <マウントポイント>
 
 - https://webkaru.net/linux/mount-command/
 
-**＊実行例＊**
+
 
 NFSによるマウントを実行する．
 
@@ -834,8 +798,6 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 
 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
-**＊実行例＊**
-
 ```bash
 $ nc <IPアドレス/ドメイン> <ポート番号>
 ```
@@ -844,17 +806,13 @@ $ nc <IPアドレス/ドメイン> <ポート番号>
 
 ログを出力しつつ，```nc```コマンドを実行する．
 
-**＊実行例＊**
-
 ```bash
 $ nc -v <IPアドレス/ドメイン> <ポート番号>
 ```
 
-**＊実行例＊**
+
 
 パケットに```9000```番ポートに送信する．
-
-**＊実行例＊**
 
 ```bash
 $ nc -v 127.0.0.1 9000
@@ -874,8 +832,6 @@ Connection to 127.0.0.1 9000 port [tcp/*] succeeded!
 
 ファイルを8進数の機械語で出力する．
 
-**＊実行例＊**
-
 ```bash
 $ od <ファイル名>
 ```
@@ -883,8 +839,6 @@ $ od <ファイル名>
 #### ▼ -Ad，-tx
 
 ファイルを16進数の機械語で出力する．
-
-**＊実行例＊**
 
 ```bash
 $ od -Ad -tx <ファイル名>
@@ -898,15 +852,11 @@ $ od -Ad -tx <ファイル名>
 
 全ての環境変数を表示する．
 
-**＊実行例＊**
-
 ```bash
 $ printenv
 ```
 
 また，特定の環境変数を表示する．
-
-**＊実行例＊**
 
 ```bash
 $ printenv VAR
@@ -919,8 +869,6 @@ $ printenv VAR
 #### ▼ -aux
 
 稼働しているプロセスの詳細情報を表示するためのユーティリティ．
-
-**＊実行例＊**
 
 ```bash
 # 稼働しているプロセスのうち，詳細情報に『xxx』を含むものを表示する．
@@ -935,8 +883,6 @@ $ ps -aux | grep "<検索文字>"
 
 ディレクトリ自体と中のファイルを再帰的に削除する．
 
-**＊実行例＊**
-
 ```bash
 $ rm -R <ディレクトリ名> 
 ```
@@ -945,11 +891,9 @@ $ rm -R <ディレクトリ名>
 
 ### sed
 
-#### ▼ -i -e s/<置換前>/<後>/g
+#### ▼ -i -e ```s/<置換前>/<置換後>/g```
 
 文字列を置換する．また，```-i```オプションで元のファイルを上書きする．```find```コマンドと組み合わせて，特定のファイルのみで実行できるようにすると良い．複数の置換を実行する場合は，```-e```オプションを並べる．
-
-**＊実行例＊**
 
 ```bash
 $ find ./* \
@@ -974,13 +918,11 @@ $ find ./* \
   -type f | xargs sed -i '' -e 's/foo\/bar/FooBar/g'
 ```
 
-#### ▼ 1s/^
+#### ▼ ```1s/^```
 
 ファイルの一行目にテキストを追加する．
 
 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
-
-**＊実行例＊**
 
 ```bash
 find ./* \
@@ -1014,8 +956,6 @@ find ./* \
 
 現在設定されているシェル変数の一覧を表示する．
 
-**＊実行例＊**
-
 ```bash
 $ set
 ```
@@ -1023,8 +963,6 @@ $ set
 #### ▼ -n
 
 シェルスクリプトの構文解析を行う．
-
-**＊実行例＊**
 
 ```bash
 $ set -n
@@ -1034,8 +972,6 @@ $ set -n
 
 一連の処理の途中で```0```以外の終了ステータスが出力された場合，全ての処理を終了する．
 
-**＊実行例＊**
-
 ```bash
 $ set -e
 ```
@@ -1043,8 +979,6 @@ $ set -e
 #### ▼ -x
 
 一連の処理をデバッグ情報として出力する．
-
-**＊実行例＊**
 
 ```bash
 $ set -x
@@ -1054,8 +988,6 @@ $ set -x
 
 一連の処理の中で，未定義の変数が存在した場合，全ての処理を終了する．
 
-**＊実行例＊**
-
 ```bash
 $ set -u
 ```
@@ -1063,8 +995,6 @@ $ set -u
 #### ▼ -o pipefail
 
 パイプライン（```|```）内の一連の処理の途中で，エラーが発生した場合，その終了ステータスを出力し，全ての処理を終了する．
-
-**＊実行例＊**
 
 ```bash
 $ set -o pipefail
@@ -1074,30 +1004,24 @@ $ set -o pipefail
 
 ### ssh：secure shell
 
-#### ▼ -l，-p，<ポート>，-i，-T
+#### ▼ -l，-p，```<ポート番号>```，-i，-T
 
 事前に，秘密鍵の権限は『```600```』にしておく．tty（擬似ターミナル）を用いる場合は，```-T```オプションをつける．
-
-**＊実行例＊**
 
 ```bash
 $ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵のパス> -T
 ```
 
-#### ▼ -l，-p，<ポート>，-i，-T，-vvv
-
-**＊実行例＊**
+#### ▼ -l，-p，```<ポート番号>```，-i，-T，-vvv
 
 ```bash
 # -vvv：ログを出力する
 $ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
 ```
 
-#### ▼ 設定ファイル（```~/.ssh/config```）
+#### ▼ ```~/.ssh/config```ファイル
 
 設定が面倒な```ssh```コマンドのオプションの引数を，```~/.ssh/config```ファイルに記述しておく．
-
-**＊実行例＊**
 
 ```bash
 # サーバー１
@@ -1130,8 +1054,6 @@ $ ssh <接続名> -T
 
 圧縮ファイルを解凍する．
 
-**＊実行例＊**
-
 ```bash
 $ tar -xf foo.tar.gz
 ```
@@ -1140,8 +1062,6 @@ $ tar -xf foo.tar.gz
 
 圧縮ファイル名を指定する．これを付けない場合，テープドライブが指定される．
 
-**＊実行例＊**
-
 ```bash
 $ tar -xf foo.tar.gz
 ```
@@ -1149,8 +1069,6 @@ $ tar -xf foo.tar.gz
 #### ▼ -v
 
 解凍中のディレクトリ/ファイルの生成ログを表示する．
-
-**＊実行例＊**
 
 ```bash
 $ tar -xvf foo.tar.gz
@@ -1245,81 +1163,4 @@ vim上でファイルを開く．
 $ vim <ファイル名>
 ```
 
-## 04. pipeline
-
-### pipelineとは
-
-『```|```』の縦棒記号のこと．複数のプログラムの入出力を繋げる．
-
-![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
-
-シェルは，プロセスの処理結果をパイプラインに出力する．その後，パイプラインから出力内容をそのまま受け取り，別のプロセスに再び入力する．
-
-参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
-
-![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
-
 <br>
-
-### 組み合わせ技
-
-#### ▼ awkとの組み合わせ
-
-コマンドの出力結果に対して，```awk```コマンドを行う．
-
-**＊例＊**
-
-検索されたファイルの容量を合計する．
-
-```bash
-$ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-```
-
-#### ▼ echoとの組み合わせ
-
-終了ステータスを```echo```コマンドに渡し，値を出力する．
-
-```bash
-$ <任意のコマンド> | echo $?
-```
-
-#### ▼ grepとの組み合わせ
-
-コマンドの出力結果を```grep```コマンドに渡し，フィルタリングを行う．
-
-**＊例＊**
-
-検索されたファイル内で，さらに文字列を検索する．
-
-```bash
-$ find ./* \
-  -type f | xargs grep "<検索文字>"
-```
-
-#### ▼ killとの組み合わせ
-
-コマンドの出力結果に対して，```kill```コマンドを行う．
-
-**＊例＊**
-
-フィルタリングされたプロセスを削除する．
-
-```bash
-$ sudo pgrep \
-  -f <コマンド名> | sudo xargs kill -9
-```
-
-#### ▼ sortとの組み合わせ
-
-コマンドの出力結果に対して，並び順を変更する．
-
-**＊例＊**
-
-表示された環境変数をAZ昇順に並び替える．
-
-```bash
-$ printenv | sort -f
-```
-

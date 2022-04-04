@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】シェル
-description: シェルの知見をまとめました．
+title: 【知見を記録するサイト】シェル＠ユーティリティ
+description: シェル＠ユーティリティの知見をまとめました．
 ---
 
-# シェル
+# シェル＠ユーティリティ
 
 ## はじめに
 
@@ -97,342 +97,9 @@ $ apk add bash
 
 <br>
 
-## 03. シェルスクリプト
 
-### シェルスクリプトとは
 
-ユーティリティの処理を手続き的に実装したファイル．
-
-<br>
-
-### ロジック
-
-#### ▼ シェバン
-
-最初の『```#!```』をシェバンという．
-
-```bash
-#!/bin/bash
-
-echo "foo"
-echo "bar"
-echo "baz"
-```
-
-#### ▼ ヒアドキュメント
-
-ヒアドキュメントで作成したシェルスクリプトには，各行にechoが追加される．
-
-```bash
-#!/bin/bash
-
-cat << EOF > "echo.sh"
-#!/bin/bash
-foo
-bar
-EOF
-```
-
-```bash
-#!/bin/bash
-echo foo
-echo bar
-```
-
-#### ▼ for
-
-**＊実装例＊**
-
-```bash
-#!/bin/bash
- 
-for i in 1 2 3 4 5
-do
-   echo "$i"
-done
-```
-
-#### ▼ switch-case
-
-シェル変数に代入された値によって，処理を分ける．全ての場合以外をアスタリスクで定義する．
-
-**＊実装例＊**
-
-```bash
-#!/bin/bash
-
-case "$ENV" in
-    "dev")
-        VAR="foo"
-    ;;
-    "stg")
-        VAR="bar"
-    ;;
-    "prd")
-        VAR="baz"
-    ;;
-    *)
-        echo "The parameter ${ENV} is invalid."
-        exit 1
-    ;;
-esac
-```
-
-<br>
-
-### 実行方法
-
-#### ▼ source
-
-現在の親プロセスのまま，シェルスクリプトを実行する．そのため，シェルスクリプトの実行前に定義されたシェル変数を用いることができる．また，シェルスクリプト内で定義したシェル変数は，シェルスクリプトの実行後も維持される．
-
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
-
-```bash
-$ source hello.sh
-```
-
-#### ▼ bash
-
-現在の親プロセスから子プロセスを作成し，シェルスクリプトを実行する．そのため，シェルスクリプトの実行前（親プロセス）に定義されたシェル変数を使用できない．また，シェルスクリプト内（子プロセス）で定義したシェル変数は，シェルスクリプトの実行後に破棄される．
-
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
-
-```bash
-$ bash hello.sh
-```
-
-#### ▼ ドット
-
-```bash
-$ . hello.sh
-```
-
-#### ▼ パス指定
-
-新しくインタラクティブを開き，処理を実行する．そのため，シェル変数のライフサイクルは```bash```コマンドと同じである．相対パスもしくは絶対パスでシェルスクリプトを指定する．実行するファイルをカレントディレクトリ下に配置することはできない．
-
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
-
-```bash
-$ ./hello.sh
-```
-
-<br>
-
-## 04. Makefile
-
-### Makefileとは
-
-ユーティリティの特にビルド（コンパイル＋リンク）に関する処理を，シェルスクリプトではなくターゲットとして実装したファイル．ただし，コンパイル以外を実装しても良い．
-
-<br>
-
-### セットアップ
-
-#### ▼ Apk経由
-
-ほとんどのOSではデフォルトでインストールされているが，Alpine Linuxでは別途インストールが必要である．
-
-```bash
-$ apk add make
-```
-
-<br>
-
-### ロジック
-
-#### ▼ シェルの選択
-
-シェルの種類を選択する．種類ごとに用いることができるオプションがやや異なる．また同時に，```set```コマンドのオプションを有効化でき，これは全てのターゲットに適用される．
-
-参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
-
-```makefile
-SHELL=/bin/bash -xeu
-```
-
-シェルによって用いることができるオプションが少しだけ異なることに注意する．
-
-```makefile
-# bashのpipefailオプションを用いる．
-SHELL=/bin/bash -o pipefail
-```
-
-参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
-
-#### ▼ ターゲット
-
-ターゲットとして，単一/複数の名前を定義できる．コマンドはタブで改行する必要がある．
-
-```makefile
-foo:
-	echo "foo"
-  
-bar:
-	echo "bar"
-  
-baz qux: # 複数のターゲット名
-	echo "baz"
-```
-
-#### ▼ ターゲット間依存関係
-
-特定のターゲットの実行前に，他のターゲットを実行しておきたい場合，依存関係を定義できる．これは複数定義できる．
-
-```makefile
-foo:
-	echo "foo"
-  
-bar: foo # fooを事前に実行する．
-	echo "bar"
-  
-baz: foo baz # foo，bazを事前に実行する．
-	echo "baz"
-```
-
-#### ▼ ```.PHONY```
-
-ターゲットと同じ名前のファイルがある場合，```make```コマンドでターゲットを指定できなくなる．```.PHONY```を用いると，ファイル名ではなくターゲットを明示できる．
-
-参考：https://advancedinsight.jp/using_phony_target_for_makefile/
-
-```makefile
-# ターゲットであることを明示する．
-.PHONY: foo bar baz qux
-
-foo: # fooという名前のファイルがあると，実行できない．
-	echo "foo"
-  
-bar:
-	echo "bar"
-  
-baz qux:
-	echo "baz"
-```
-
-<br>
-
-### 変数
-
-#### ▼ 即時評価代入
-
-変数の代入を定義したタイミングで変数の代入が行われる．
-
-参考：https://make-muda.net/2014/10/1824/
-
-```makefile
-FOO:=foo
-
-echo:
-	echo ${FOO} # echo
-```
-
-#### ▼ 遅延評価代入
-
-変数をコールしたタイミングで変数の代入が行われる．
-
-参考：https://make-muda.net/2014/10/1824/
-
-```makefile
-FOO=foo
-
-echo:
-	echo ${FOO} # echo foo
-```
-
-処理結果を変数に代入する時，ターゲット内では処理結果をシェル変数に代入できない．そのため，シェル変数はターゲット外で定義する必要がある．また，遅延評価で代入し，```$(shell ...)```とする必要がある．
-
-参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
-
-```makefile
-FOO=$(shell echo "foo")
-
-echo:
-	echo ${FOO}
-```
-
-<br>
-
-### 実行方法とオプション
-
-#### ▼ make
-
-Makefileが配置された階層で，makeコマンドの引数としてターゲット名やシェル変数を渡せる．Makefile内でシェル変数のデフォルト値を定義できる．
-
-```bash
-$ make <ターゲット名> <シェル変数名>=<値>
-```
-
-**＊実装例＊**
-
-```bash
-$ make foo FOO=foo
-```
-
-```makefile
-FOO=default
-
-foo:
-	echo ${FOO}
-```
-
-<br>
-
-### Makefileのよくある使い方
-
-一般的に，Makefileはパッケージのビルドとインストールのために実装される．この時に慣例として，ターゲット名は```make```（ターゲット無し）と```install```になっていることが多い．
-
-参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
-
-（１）パッケージをインストールする．
-
-```bash
-# パッケージを公式からインストールと解答
-$ wget <パッケージのリンク>
-$ tar <パッケージのフォルダー名>
-
-# ビルド用ディレクトリの作成．
-$ mkdir build
-$ cd build
-```
-
-（２）ルールが定義されたMakefileを```configure```ファイルを元に作成する．
-
-```bash
-# configureへのパスに注意．
-$ ../configure --prefix="<コードのインストール先のパス>"
-```
-
-（３）パッケージのコードから```exe```ファイルをビルドする．
-
-```bash
-# -j で用いるコア数を宣言し，処理の速度を上げられる．
-$ make -j4
-```
-
-（４）任意で，```exe```ファイルのテストを行える．
-
-```bash
-$ make check
-```
-
-（５）生成されたコードのファイルを，指定したディレクトリ下にコピーする．
-
-```bash
-# installと命令するが，実際はコピー．sudoを付ける．
-$ sudo make install
-```
-
-（６）元となったコードやバイナリ形式のコードを削除．
-
-```bash
-$ make clean
-```
-
-<br>
-
-## 05. 入力と出力
+## 03. 入力と出力
 
 ### 標準入出力
 
@@ -464,7 +131,7 @@ $ make clean
 
 参考：https://teratail.com/questions/1285
 
-**＊例＊**
+
 
 ```bash
 $ echo "text" 2>&1
@@ -472,7 +139,7 @@ $ echo "text" 2>&1
 
 また，プロセスの標準出力は```/proc/<プロセスID>/fd```ディレクトリのファイルディスクリプタ番号（１番）で確認できる．プロセスIDは```ps```コマンドで事前に確認する．
 
-**＊例＊**
+
 
 PHP-FPMの稼働するアプリケーションの例
 
@@ -497,15 +164,13 @@ $ cat /proc/1/fd/1
 
 参考：https://teratail.com/questions/1285
 
-**＊例＊**
-
 ```bash
 $ echo "text" 1>&2
 ```
 
 また，プロセスの標準出力は```/proc/<プロセスID>/fd```ディレクトリのファイルディスクリプタ番号（２番）で確認できる．プロセスIDは```ps```コマンドで事前に確認する．
 
-**＊例＊**
+
 
 PHP-FPMの稼働するアプリケーションの例
 
@@ -530,10 +195,143 @@ $ cat /proc/1/fd/2
 
 参考：https://glorificatio.org/archives/2903
 
-**＊例＊**
-
 ```bash
 $ echo "text" | tee stdout.log
+```
+
+<br>
+
+## 04. リダイレクト
+
+### リダイレクトとは
+
+『```<```，```>```』『```<<```，```>>```』の記号のこと．ファイルの内容を特定のプロセスの標準入力に転送する．特定のプロセスの標準出力/標準エラー出力をファイルに転送する．プロセスの標準入力への転送は，多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである．
+
+参考：
+
+- https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
+- https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
+
+<br>
+
+### 標準入力へのリダイレクト例
+
+#### ▼ catプロセスへのリダイレクト
+
+catプロセスの標準入力に```stdin.txt```ファイルの内容をリダイレクトする．```cat```コマンドにファイルを渡すことと同じである．
+
+```bash
+$ cat < stdin.txt
+Hello World
+```
+
+<br>
+
+### ファイルへのリダイレクト例
+
+▼ リダイレクトによるファイル作成
+
+リダイレクト前に```stdout.txt```ファイルを新しく作成し，echoプロセスの標準出力をこれにリダイレクトする．
+
+```bash
+$ echo 'Hello World' > stdout.txt
+```
+
+リダイレクト前に```stderr.txt```ファイルを新しく作成し，lsプロセスの標準出力をこれにリダイレクトする．
+
+```bash
+$ ls foo 2> stderr.txt
+
+$ cat error.txt
+ls: cannot access foo: No such file or directory
+```
+
+#### ▼ リダイレクトによるファイル追記
+
+echoプロセスの標準出力を既存の```stdout.txt```ファイルにリダイレクトし，また追記する．
+
+```bash
+$ echo 'Hello World' >> stdout.txt
+```
+
+#### ▼ リダイレクトによるファイル上書き（再作成）
+
+リダイレクト前に```stdout.txt```ファイルを新しく作成し，echoプロセスの標準出力をこれにリダイレクトする．また，すでにファイルが存在している場合は，ファイルを上書き（再作成）する．
+
+```bash
+$ echo 'Hello World' >| stdout.txt
+```
+
+<br>
+
+## 05. パイプライン
+
+### パイプラインとは
+
+『```|```』の縦棒記号のこと．特定のプロセスの標準出力/標準エラー出力を他のプロセスの標準入力に繋げる．
+
+![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
+
+シェルは，プロセスの処理結果をパイプラインに出力する．その後，パイプラインから出力内容をそのまま受け取り，別のプロセスに再び入力する．
+
+参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+
+![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
+
+<br>
+
+### 標準入力への入力例
+
+#### ▼ awkプロセスへの入力
+
+コマンドの出力結果に対して，```awk```コマンドを行う．
+
+検索されたファイルの容量を合計する．
+
+```bash
+$ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+$ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+$ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+```
+
+#### ▼ echoプロセスへの入力
+
+終了ステータスを```echo```コマンドに渡し，値を出力する．
+
+```bash
+$ <任意のコマンド> | echo $?
+```
+
+#### ▼ grepプロセスへの入力
+
+コマンドの出力結果を```grep```コマンドに渡し，フィルタリングを行う．
+
+検索されたファイル内で，さらに文字列を検索する．
+
+```bash
+$ find ./* \
+  -type f | xargs grep "<検索文字>"
+```
+
+#### ▼ killプロセスへの入力
+
+コマンドの出力結果に対して，```kill```コマンドを行う．
+
+フィルタリングされたプロセスを削除する．
+
+```bash
+$ sudo pgrep \
+  -f <コマンド名> | sudo xargs kill -9
+```
+
+#### ▼ sortプロセスへの入力
+
+コマンドの出力結果に対して，並び順を変更する．
+
+表示された環境変数をAZ昇順に並び替える．
+
+```bash
+$ printenv | sort -f
 ```
 
 <br>
