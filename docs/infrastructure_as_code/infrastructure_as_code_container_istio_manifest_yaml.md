@@ -81,7 +81,17 @@ $ istioctl x uninstall --purge
 
 <br>
 
-### Envoyのカスタマイズ方法まとめ
+### Minikubeのセットアップ
+
+Istioによる種々のコンテナが稼働するために，MinikubeノードのCPUとメモリを最低容量を以下の通りにする必要がある．
+
+```bash
+$ minikube start --cpus=4 --memory=16384
+```
+
+<br>
+
+### Envoyのカスタマイズ
 
 #### ▼ VirtualService，DestinationRuleの定義
 

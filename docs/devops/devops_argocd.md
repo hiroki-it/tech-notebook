@@ -181,10 +181,10 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（９）ArgoCD上でアプリケーションの監視を実行する．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（９）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```オプションで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
-$ argocd app sync guestbook
+$ argocd app sync guestbook --dry-run
 ```
 
 （１０）自動同期を有効化する．
@@ -266,6 +266,16 @@ ArgoCDのApplicationを削除する．
 
 ```
 $ kubectl delete app <ArgoCDのアプリケーション名>
+```
+
+<br>
+
+### 開発環境をターゲットとする
+
+参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+
+```bash
+ $ argocd app sync <ArgoCDのアプリケーション名> --local=<ディレクトリへのパス>
 ```
 
 <br>

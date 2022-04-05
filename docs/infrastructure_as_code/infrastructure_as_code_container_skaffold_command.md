@@ -15,6 +15,20 @@ description: コマンド＠Skaffoldの知見をまとめました．
 
 ## 01. skaffoldコマンド
 
+### グローバル
+
+#### ▼ --verbosity
+
+ログレベルを指定し，skaffoldコマンドを実行する．デフォルトは```warn```である．
+
+参考：https://skaffold.dev/docs/references/cli/#skaffold
+
+```bash
+$ skaffold <任意のパラメーター> --verbosity=debug
+```
+
+<br>
+
 ### build
 
 #### ▼ buildとは

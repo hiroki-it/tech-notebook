@@ -73,7 +73,7 @@ jobs:
 
 ### commands
 
-#### ▼ install
+#### ▼ insta
 
 aws-cliコマンドのインストールを行う．
 

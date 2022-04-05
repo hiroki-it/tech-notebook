@@ -343,8 +343,6 @@ $ eval $(minikube docker-env -u)
 
 ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する．
 
-#### ▼ オプションなし
-
 ```bash
 $ minikube ip
 
@@ -359,7 +357,10 @@ $ minikube ip
 
 Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルPCにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+参考：
+
+- https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html
 
 ```bash
 $ minikube kubectl -- version
@@ -391,10 +392,6 @@ Server Version: version.Info{
 }
 ```
 
-#### ▼ オプション
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html
-
 <br>
 
 ### mount
@@ -404,8 +401,6 @@ Server Version: version.Info{
 ホスト側のファイルまたはディレクトリを，ゲスト仮想環境の指定したディレクトリにマウントする．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
-
-#### ▼ オプション無し
 
 ```bash
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
@@ -445,10 +440,6 @@ $ minikube update-context
 ### service
 
 #### ▼ serviceとは
-
-Serviceを用いて，Podに接続する．
-
-#### ▼ オプション無し
 
 NodePort ServiceやLoadBalancer Serviceを指定し，ホストからServiceにポートフォワーディングを実行する．また，ServiceのIPアドレスを返却する．
 
@@ -536,20 +527,6 @@ http://n.n.n.n:57761
 - https://minikube.sigs.k8s.io/docs/commands/ssh/
 - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
-ワーカーNodeの中では```docker```コマンドを実行でき，イメージのデバッグも可能である．
-
-```bash
-$ minikube ssh  
-
-# ワーカーNodeの中
-$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
-
-# コンテナの中
-[root@<コンテナID>:~] $ ls -la 
-```
-
-#### ▼ オプション無し
-
 ```bash
 # Dockerドライバーによる仮想環境の場合
 $ minikube ssh  
@@ -602,7 +579,19 @@ yes
 zcat
 ```
 
-#### ▼ ``--``
+ワーカーNodeの中では```docker```コマンドを実行でき，イメージのデバッグも可能である．
+
+```bash
+$ minikube ssh  
+
+# ワーカーNodeの中
+$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+
+# コンテナの中
+[root@<コンテナID>:~] $ ls -la 
+```
+
+#### ▼ ``--``（ハイフン２つ）
 
 仮想環境にSSH接続を実行し，任意のコマンドを実行する．
 
@@ -627,8 +616,6 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 ゲスト仮想環境を構築し，仮想環境内にワーカーNodeを作成する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
-
-#### ▼ オプションなし
 
 **＊例＊**
 
@@ -660,6 +647,14 @@ $ kubectl get nodes
 
 NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
+```
+
+#### ▼ --cpus，--memory
+
+Minikubeノードのスペックを設定する．
+
+```bash
+$ minikube start --cpus=4 --memory=16384
 ```
 
 #### ▼ --docker-env
@@ -733,8 +728,6 @@ LoadBalancerを一時的に構築し，LoadBalancer Serviceに自動的に紐づ
 
 - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
-
-#### ▼ オプションなし
 
 **＊例＊**
 
