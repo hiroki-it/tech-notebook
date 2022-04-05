@@ -141,12 +141,12 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．
+チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．複数のチャートを指定できる．
 
 参考：https://helm.sh/docs/helm/helm_package/
 
 ```bash
-$ helm package <チャートへのパス>
+$ helm package <fooチャートへのパス> <barチャートへのパス> <bazチャートへのパス>
 
 Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 ```

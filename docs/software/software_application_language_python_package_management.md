@@ -129,7 +129,7 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 ### freeze
 
-#### ▼ オプション無し
+#### ▼ freezeとは
 
 pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
@@ -192,7 +192,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 ### show
 
-#### ▼ オプション無し
+#### ▼ showとは
 
 pipでインストールしたパッケージ情報を表示する．
 

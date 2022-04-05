@@ -69,26 +69,6 @@ jobs:
 
 <br>
 
-## 01-02. セットアップ
-
-### インストール
-
-**＊実装例＊**
-
-```yaml
-version: 2.1
-
-orbs:
-    hello: circleci/hello-build@0.0.5
-    
-workflows:
-    "Hello Workflow":
-        jobs:
-          - hello/hello-build
-```
-
-<br>
-
 ## 02. aws-cli
 
 ### commands

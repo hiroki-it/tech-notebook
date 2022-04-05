@@ -55,6 +55,18 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 <br>
 
+#### ▼ --target
+
+ビルドするステージ名を設定する．マルチステージビルドの時に用いる．ステージを指定しない場合，一番最後に定義したステージを用いてビルドが実行される．
+
+参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
+
+```bash
+ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --target dev .
+```
+
+<br>
+
 ### commit
 
 #### ▼ commitとは
@@ -220,7 +232,7 @@ $ docker images
 コンテナに使用されていないイメージを一括で削除
 
 ```bash
-$ docker image prune
+$ docker image prune -a
 ```
 
 #### ▼ rmi

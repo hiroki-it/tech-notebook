@@ -853,6 +853,24 @@ status:
 
 <br>
 
+### hub
+
+#### ▼ hubとは
+
+Istioを構成するコンテナのベースイメージのレジストリを設定する．
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  hub: docker.io/istio
+```
+
+<br>
+
 ### meshConfig
 
 #### ▼ meshConfigとは
@@ -1036,7 +1054,7 @@ spec:
 
 #### ▼ tagとは
 
-PilotのDockerイメージのバージョンを設定する．
+Istioを構成するコンテナのベースイメージのバージョンを設定する．
 
 参考：
 

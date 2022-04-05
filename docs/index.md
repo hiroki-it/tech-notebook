@@ -232,6 +232,7 @@ title: 【知見を記録するサイト】目次
     * Docker 
         * [📖：︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html)
         * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_command.html)
+        * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_policy.html)
 
 #### ■ 宣言型
 

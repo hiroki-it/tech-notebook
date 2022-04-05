@@ -112,7 +112,7 @@ $ php artisan make:seeder <Seeder名>
 
 ### migrate
 
-#### ▼ オプション無し
+#### ▼ migrateとは
 
 マイグレーションファイルを元にテーブルを作成する．
 

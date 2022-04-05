@@ -214,7 +214,7 @@ $ npm install --save
 
 ### update
 
-#### ▼ オプション無し
+#### ▼ updateとは
 
 全てのパッケージのバージョンを，```package.json```ファイルの範囲内でアップグレードする．
 
@@ -319,7 +319,7 @@ $ yarn remove foo && yarn add foo@1.0.0
 
 ### install
 
-#### ▼ オプション無し
+#### ▼ installとは
 
 指定したバージョンのパッケージを，```package.json```ファイルの範囲内でインストールする．
 
@@ -361,7 +361,7 @@ $ yarn remove <パッケージ名>
 
 ### upgrade
 
-#### ▼ オプション無し
+#### ▼ upgradeとは
 
 指定したパッケージを```package.json```ファイルの範囲内でアップグレードする．
 
