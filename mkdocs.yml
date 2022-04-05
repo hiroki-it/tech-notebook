@@ -263,6 +263,7 @@ nav:
               - ■ Docker:
                   - Dockerfile: infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
+                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_docker_policy.md
       - ■ 宣言型:
           - ■ サーバープロビジョニング:
               - ■ Vagrant:
