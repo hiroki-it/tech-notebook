@@ -527,7 +527,7 @@ Progressive Deliveryを用いる場合に，詳細を設定する．
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: foo-argocd-deployment
+  name: foo-rollout
 spec:
   analysis:
     successfulRunHistoryLimit: 10
@@ -539,7 +539,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: foo-argocd-deployment
+  name: foo-rollout
 spec:
   analysis:
     unsuccessfulRunHistoryLimit: 10
@@ -564,14 +564,14 @@ spec:
 - https://argoproj.github.io/argo-rollouts/features/bluegreen/
 - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
 
-| オプション                  | 説明                                                         |
-| --------------------------- | ------------------------------------------------------------ |
-| ```activeService```         | ブルー環境へのルーティングに用いるServiceを設定する．        |
+| オプション                       | 説明                                                                                       |
+|-----------------------------|------------------------------------------------------------------------------------------|
+| ```activeService```         | ブルー環境へのルーティングに用いるServiceを設定する．                                                           |
 | ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する．もし無効化した場合，```autoPromotionSeconds```の秒数だけ切り替えを待機する． |
-| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する． |
-| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                              |
-| ```previewService```        | グリーン環境へのルーティングに用いるServiceを設定する．      |
-| ```scaleDownDelaySeconds``` |                                                              |
+| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する．          |
+| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                                                                        |
+| ```previewService```        | グリーン環境へのルーティングに用いるServiceを設定する．                                                          |
+| ```scaleDownDelaySeconds``` |                                                                                          |
 
 **＊実装例＊**
 
@@ -579,12 +579,12 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: foo-argocd-blue-green-deployment
+  name: foo-blue-green-rollout
 spec:
   strategy:
     blueGreen:
-      activeService: foo-argocd-active-service
-      previewService: foo-argocd-preview-service
+      activeService: foo-active-service
+      previewService: foo-preview-service
       previewReplicaCount: 1
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 30
@@ -601,8 +601,8 @@ spec:
 - https://argoproj.github.io/argo-rollouts/features/canary/
 - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
-| オプション | 説明                                                         |
-| ---------- | ------------------------------------------------------------ |
+| オプション      | 説明                                                                                                  |
+|------------|-----------------------------------------------------------------------------------------------------|
 | ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
 
 **＊実装例＊**
@@ -611,7 +611,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: foo-argocd-canary-release
+  name: foo-canary-rollout
 spec:
   strategy:
     canary:
