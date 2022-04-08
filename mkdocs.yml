@@ -238,15 +238,15 @@ nav:
   - ⛅️ クラウドコンピューティング:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
-          - AWS:
-              - 目次: cloud_computing/cloud_computing_aws.md
-              - A〜E: cloud_computing/cloud_computing_aws_1.md
-              - F〜K: cloud_computing/cloud_computing_aws_2.md
-              - L〜T: cloud_computing/cloud_computing_aws_3.md
-              - U〜Z: cloud_computing/cloud_computing_aws_4.md
-          - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
-          - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
-          - コスト管理: cloud_computing/cloud_computing_aws_cost_management.md
+          - 目次: cloud_computing/cloud_computing_aws.md
+          - A〜E: cloud_computing/cloud_computing_aws_1.md
+          - F〜K: cloud_computing/cloud_computing_aws_2.md
+          - L〜R: cloud_computing/cloud_computing_aws_3.md
+          - S〜Z: cloud_computing/cloud_computing_aws_4.md
+          - その他:
+              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
+              - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
+              - コスト管理: cloud_computing/cloud_computing_aws_cost_management.md
 
   - 📦 仮想化:
       - 仮想化: virtualization/virtualization.md
