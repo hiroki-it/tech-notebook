@@ -243,7 +243,7 @@ nav:
           - F〜K: cloud_computing/cloud_computing_aws_2.md
           - L〜R: cloud_computing/cloud_computing_aws_3.md
           - S〜Z: cloud_computing/cloud_computing_aws_4.md
-          - その他:
+          - ■ その他:
               - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
               - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
               - コスト管理: cloud_computing/cloud_computing_aws_cost_management.md
