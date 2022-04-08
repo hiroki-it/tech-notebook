@@ -27,7 +27,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ## 03. L〜R
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_3.html
 
 <br>
 

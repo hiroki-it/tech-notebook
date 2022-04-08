@@ -13,7 +13,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 21. Lambda
+## 01. Lambda
 
 ### Lambdaとは
 
@@ -250,7 +250,7 @@ Lambdaを実行するためには，デプロイされた関数を用いる権�
 
 <br>
 
-## 21-02. Lambda@Edge
+## 01-02. Lambda@Edge
 
 ### Lambda@Edgeとは
 
@@ -463,7 +463,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 22. RDS：Relational Database Service
+## 02. RDS：Relational Database Service
 
 ### 設定項目
 
@@ -684,7 +684,7 @@ $ aws rds modify-db-instance \
 
 <br>
 
-## 22-02. RDS（Aurora）
+## 02-02. RDS（Aurora）
 
 ### 設定項目
 
@@ -1003,7 +1003,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 22-02. RDS（非Aurora）
+## 02-03. RDS（非Aurora）
 
 ### ダウンタイム
 
@@ -1062,7 +1062,7 @@ DBインスタンスがマルチAZ構成の場合，以下の手順を用いて�
 
 <br>
 
-## 23. リージョン，ゾーン
+## 03. リージョン，AZ
 
 ### リージョン
 
@@ -1078,15 +1078,23 @@ DBインスタンスがマルチAZ構成の場合，以下の手順を用いて�
 
 <br>
 
-### ゾーン
+### AZ：Availability Zones
 
-#### ▼ アベイラビリティゾーンとは
+#### ▼ AZとは
 
-リージョンは，さらに，各データセンターは物理的に独立したアベイラビリティゾーンというロケーションから構成されている．例えば，東京リージョンには，3つのアベイラビリティゾーンがある．AZの中に，VPCサブネットを作ることができ，そこにEC2を構築できる．
+リージョンは，さらに，各データセンターは物理的に独立したAZというロケーションから構成されている．例えば，東京リージョンには，3つのAZがある．AZの中に，VPCサブネットを作ることができ，そこにEC2を構築できる．
 
 <br>
 
-## 24. Route53
+## 04. Redshit
+
+### Redshitとは
+
+データウェアハウスとして働く．データベースよりも柔軟性の高い保存形式で処理済みのデータを管理できる．
+
+<br>
+
+## 05. Route53
 
 ### Route53とは
 

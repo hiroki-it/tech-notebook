@@ -13,7 +13,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 18. Global Accelerator
+## 01. Global Accelerator
 
 ### 設定項目
 
@@ -68,7 +68,18 @@ Global Acceleratorを用いない場合，クライアントPCのリージョン
 
 <br>
 
-## 19. IAM：Identify and Access Management
+## 02. Glue
+
+#### ▼ 概要
+
+| 設定項目   | 説明                                                         | 補足                                                         |
+| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ソース     | 元データを管理するデータウェアハウスやデータベースを設定する． | データウェアハウスの方が，データベースよりも保存形式の柔軟性が高い．<br/>参考：https://www.topgate.co.jp/dwh-db-difference |
+| ターゲット | 処理済データを管理するデータウェアハウスやデータベースを設定する． |                                                              |
+
+<br>
+
+## 03. IAM：Identify and Access Management
 
 ### IAM
 
@@ -488,7 +499,7 @@ $ aws iam update-user \
 
 <br>
 
-## 20. Kinesis Data Streams
+## 04. Kinesis Data Streams
 
 ### Kinesis Data Streamsとは
 
@@ -498,7 +509,7 @@ $ aws iam update-user \
 
 <br>
 
-## 20-02. Kinesis Data Firehose（Kinesis Delivery Stream）
+## 04-02. Kinesis Data Firehose（Kinesis Delivery Stream）
 
 ### Kinesis Data Firehoseとは
 
@@ -524,7 +535,7 @@ $ aws iam update-user \
 
 <br>
 
-## 20-03. Kinesis Data Analytics
+## 04-03. Kinesis Data Analytics
 
 ### Kinesis Data Analyticsとは
 

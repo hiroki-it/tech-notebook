@@ -13,7 +13,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 25. S3：Simple Storage Service
+## 01. S3：Simple Storage Service
 
 ### S3とは
 
@@ -289,7 +289,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピ�
 
 <br>
 
-## 26. Security Group
+## 02. Security Group
 
 ### Security Groupとは
 
@@ -379,7 +379,7 @@ CloudFrontと連携する場合，CloudFrontに割り振られる可能性のあ
 
 <br>
 
-## 27. SES：Simple Email Service
+## 03. SES：Simple Email Service
 
 ### SESとは
 
@@ -438,7 +438,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 28. SM：Systems Manager
+## 04. SM：Systems Manager
 
 ### パラメーターストア
 
@@ -528,7 +528,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-## 29. SNS：Simple Notification Service
+## 05. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -571,7 +571,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-## 30. SQS：Simple Queue Service
+## 06. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -635,7 +635,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-## 31. STS：Security Token Service
+## 07. STS：Security Token Service
 
 ### STSとは
 
@@ -793,7 +793,7 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 32. Step Functions
+## 08. Step Functions
 
 ### Step Functionsとは
 
@@ -876,11 +876,11 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 33. VPC：Virtual Private Cloud
+## 09. VPC：Virtual Private Cloud
 
 ### VPCとは
 
-クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるアベイラビリティゾーンに渡ってEC2を立ち上げることによって，クラウドサーバーをデュアル化することできる．VPCのパケット通信の仕組みについては，以下のリンクを参考にせよ．
+クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるAZに渡ってEC2を立ち上げることによって，クラウドサーバーをデュアル化することできる．VPCのパケット通信の仕組みについては，以下のリンクを参考にせよ．
 
 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
@@ -944,7 +944,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 33-02. ENI：Elastic Network Interface
+## 10-02. ENI：Elastic Network Interface
 
 ### ENIとは
 
@@ -970,7 +970,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 33-03. VPCサブネット
+## 10-03. VPCサブネット
 
 ### VPCサブネットとは
 
@@ -1004,7 +1004,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 33-04. Network ACL：Network Access  Control List
+## 10-04. Network ACL：Network Access  Control List
 
 ### Network ACLとは
 
@@ -1025,7 +1025,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 33-05. ルートテーブル
+## 10-05. ルートテーブル
 
 ### ルートテーブルとは
 
@@ -1084,7 +1084,7 @@ VPCの構築時に自動で構築される．どのルートテーブルにも�
 
 <br>
 
-## 33-06. VPCエンドポイント
+## 10-06. VPCエンドポイント
 
 ### VPCエンドポイントとは
 
@@ -1122,7 +1122,7 @@ S3，DynamoDBのみ
 
 <br>
 
-## 33-07. Internet Gateway，NAT Gateway
+## 10-07. Internet Gateway，NAT Gateway
 
 ### Internet Gateway，NAT Gatewayとは
 
@@ -1152,7 +1152,7 @@ NAPT（動的NAT）の機能を持つ．1つのパブリックIPに対して，�
 
 <br>
 
-## 33-08. VPC間，VPC-オンプレ間の通信
+## 10-08. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
