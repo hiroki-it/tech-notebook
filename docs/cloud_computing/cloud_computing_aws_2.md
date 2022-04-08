@@ -1,0 +1,536 @@
+---
+title: 【知見を記録するサイト】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見をまとめました．
+---
+
+# AWS：Amazon Web Service（F〜K）
+
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
+## 18. Global Accelerator
+
+### 設定項目
+
+#### ▼ 基本的設定
+
+| 設定項目           | 説明                                                         | 補足                                                         |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Accelerator タイプ | エンドポイントグループへのルーティング時のアルゴリズムを設定する． | Standard：ユーザーに最も近いリージョンにあるエンドポイントグループに，リクエストがルーティングされる． |
+| IPアドレスプール   | Global Acceleratorに割り当てる静的IPアドレスを設定する．     |                                                              |
+
+#### ▼ リスナー
+
+| 設定項目        | 説明                                                 | 補足                                                         |
+| --------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| ポート          | 宛先とするポート番号を設定する．                     |                                                              |
+| プロトコル      | ルーティング先のプロトコルを設定する．               |                                                              |
+| Client affinity | ユーザーごとにルーティング先を固定するかを設定する． | ・None：複数のルーティング先があった場合，各ユーザーの毎リクエスト時のルーティング先は固定されなくなる．<br>・Source IP：複数のルーティング先があったとしても，各ユーザーの毎リクエスト時のルーティング先を固定できるようになる． |
+
+#### ▼ エンドポイントグループ
+
+| 設定項目               | 説明                                                         | 補足                                                         |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| エンドポイントグループ | 特定のリージョンに紐付くエンドポイントのグループを設定する． | トラフィックダイヤルにて，各エンドポイントグループの重みを設定できる． |
+| トラフィックダイヤル   | 複数のエンドポイントグループがある場合，それぞれの重み（%）を設定する． | ・例えば，カナリアリリースのために，新アプリと旧アプリへのルーティングに重みを付ける場合に役立つ． |
+| ヘルスチェック         | ルーティング先に対するヘルスチェックを設定する．             |                                                              |
+
+#### ▼ エンドポイント
+
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| エンドポイントタイプ         | ルーティング先のAWSリソースを設定する．                      | ALB，NLB，EC2，Elastic IPを選択できる．                      |
+| 重み                         | 複数のエンドポイントがある場合，それぞれの重みを設定する．   | 各エンドポイントの重みの合計値を256とし，1～255で相対値を設定する． |
+| クライアントIPアドレスの保持 | ```X-Forwarded-For```ヘッダーにクライアントIPアドレスを含めてルーティングするかどうかを設定する． |                                                              |
+
+<br>
+
+### 素早いレスポンスの理由
+
+![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
+
+最初，クライアントPCからのリクエストはエッジロケーションで受信される．プライベートネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを用いないため，小さなレイテシーでトラフィックをルーティングできる．
+
+![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
+
+Global Acceleratorを用いない場合，クライアントPCのリージョンから指定したリージョンに至るまで，いくつもパブリックネットワークを経由する必要があり，時間がかかってしまう．
+
+![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入前.png)
+
+以下のサイトで，Global Acceleratorを用いた場合としなかった場合のレスポンス速度を比較できる．
+
+参考：https://speedtest.globalaccelerator.aws/#/
+
+<br>
+
+## 19. IAM：Identify and Access Management
+
+### IAM
+
+#### ▼ IAMとは
+
+AWSリソースへのアクセスに関する認証と認可を制御する．認証はアクセスキーとシークレットアクセスキーによって，また認可はIAMロール/IAMポリシー/IAMステートメントによって制御される．
+
+#### ▼ IAMロールとは
+
+IAMポリシーのセットを定義する．
+
+#### ▼ IAMポリシーとは
+
+IAMステートメントのセットを定義する．
+
+| IAMポリシーの種類                  | 説明                                                         |
+| ---------------------------------- | ------------------------------------------------------------ |
+| アイデンティティベースのポリシー   | IAMユーザー，IAMグループ，IAMロール，にアタッチするためのポリシーのこと． |
+| リソースベースのインラインポリシー | 単一のAWSリソースにインポリシーのこと．                      |
+| アクセスコントロールポリシー       | json形式で定義する必要が無いポリシーのこと．                 |
+
+**＊例＊**
+
+以下に，EC2の読み出しのみ権限（```AmazonEC2ReadOnlyAccess```）をアタッチできるポリシーを示す．このIAMポリシーには，他のAWSリソースに対する権限も含まれている．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "elasticloadbalancing:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:ListMetrics",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:Describe*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "autoscaling:Describe*",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+#### ▼ IAMステートメントとは
+
+AWSリソースに関する認可のスコープを定義する．各アクションについては以下のリンクを参考にせよ．
+
+| AWSリソースの種類 | リンク                                                       |
+| ----------------- | ------------------------------------------------------------ |
+| CloudWatchログ    | https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/permissions-reference-cwl.html |
+
+**＊例＊**
+
+以下のインラインポリシーがアタッチされたロールを持つAWSリソースは，任意のSSMパラメーターを取得できるようになる．
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+| Statementの項目 | 説明                                                 |
+| --------------- | ---------------------------------------------------- |
+| Sid             | 任意の一意な文字列を設定する．空文字でも良い．       |
+| Effect          | 許可/拒否を設定する．                                |
+| Action          | リソースに対して実行できるアクションを設定する．     |
+| Resource        | アクションの実行対象に選択できるリソースを設定する． |
+
+
+以下に主要なアクションを示す．
+
+| アクション名 | 説明                   |
+| ------------ | ---------------------- |
+| Create       | リソースを構築する．   |
+| Describe     | リソースを表示する．   |
+| Delete       | リソースを削除する．   |
+| Get          | リソースを取得する．   |
+| Put          | リソースを上書きする． |
+
+#### ▼ ARNとは：Amazon Resource Namespace
+
+AWSリソースの識別子のこと．
+
+参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Resource": "arn:<パーティション>:<AWSリソース>:ap-northeast-1:<アカウントID>:<AWSリソースID>"
+    }
+  ]
+}
+```
+
+<br>
+
+### IAMロール
+
+#### ▼ サービスリンクロール
+
+AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている．『```AWSServiceRoleFor*****```』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．関連するリソースを削除するまで，ロール自体できない．サービスリンクロールの一覧については，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+
+#### ▼ クロスアカウントのアクセスロール  
+
+#### ▼ プロバイダのアクセスロール  
+
+<br>
+
+### アイデンティティベースのポリシー
+
+#### ▼ アイデンティティベースのポリシーとは
+
+IAMユーザー，IAMグループ，IAMロール，にアタッチするためのポリシーのこと．
+
+#### ▼ AWS管理ポリシー
+
+AWSが提供しているポリシーのこと．アタッチ式のポリシーのため，すでにアタッチされていても，他のものにもアタッチできる．
+
+#### ▼ カスタマー管理ポリシー
+
+ユーザーが独自に構築したポリシーのこと．すでにアタッチされていても，他のものにもアタッチできる．
+
+#### ▼ インラインポリシー
+
+単一のアイデンティティにアタッチするためのポリシーのこと．組み込み式のポリシーのため，アイデンティティ間で共有してアタッチすることはできない．
+
+**＊実装例＊**
+
+IAMロールにインラインポリシーをアタッチする．このロールを持つユーザーは，ユーザーアカウントのすべての ACMのSSL証明書を一覧表示できるようになる．
+
+```bash
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":"acm:ListCertificates",
+      "Resource":"*"
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+IAMロールにインラインポリシーをアタッチする．このロールを持つユーザーは，全てのAWSリソースに，任意のアクションを実行できる．
+
+```bash
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":"*",
+      "Resource":"*"
+    }
+  ]
+}
+```
+
+<br>
+
+### リソースベースのインラインポリシー
+
+#### ▼ リソースベースのインラインポリシーとは
+
+単一のAWSリソースにインポリシーのこと．すでにアタッチされていると，他のものにはアタッチできない．
+
+#### ▼ バケットポリシー
+
+S3にアタッチされる，自身へのアクセスを制御するためのインラインポリシーのこと．
+
+#### ▼ ライフサイクルポリシー
+
+ECRにアタッチされる，イメージの有効期間を定義するポリシー．コンソール画面から入力できるため，基本的にポリシーの実装は不要であるが，TerraformなどのIaCツールでは必要になる．
+
+**＊実装例＊**
+
+```bash
+{
+  "rules": [
+    {
+      "rulePriority": 1,
+      "description": "Keep last 10 images untagged",
+      "selection": {
+        "tagStatus": "untagged",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
+      },
+      "action": {
+        "type": "expire"
+      }
+    },
+    {
+      "rulePriority": 2,
+      "description": "Keep last 10 images any",
+      "selection": {
+        "tagStatus": "any",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
+      },
+      "action": {
+        "type": "expire"
+      }
+    }
+  ]
+}
+```
+
+#### ▼ 信頼ポリシー
+
+ロールにアタッチされる，Assume Roleを行うためのインラインポリシーのこと．
+
+**＊実装例＊**
+
+例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```の```ecs-tasks```が信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+信頼ポリシーでは，IAMユーザーを信頼されたエンティティとして設定することもできる．
+
+**＊実装例＊**
+
+例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```のIAMユーザーが信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<適当な文字列>"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
+### IAMポリシーをアタッチできる対象
+
+#### ▼ IAMユーザーに対するアタッチ
+
+![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMユーザーにポリシーを付与.jpeg)
+
+#### ▼ IAMグループに対するアタッチ
+
+![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMグループにポリシーを付与.jpeg)
+
+#### ▼ IAMロールに対するアタッチ
+
+![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMロールにポリシーを付与.jpeg)
+
+<br>
+
+### ルートユーザー，IAMユーザー
+
+#### ▼ ルートユーザーとは
+
+全ての権限をもったアカウントのこと．
+
+#### ▼ IAMユーザーとは
+
+特定の権限をもったアカウントのこと．
+
+#### ▼ ```credentials```ファイルを用いたCLI
+
+AWS CLIでクラウドインフラを操作するためには，```credentials```ファイルに定義されたクレデンシャル情報が必要である．『```aws_region```』ではなく『```aws_default_region```』であることに注意する．
+
+```bash
+$ aws configure set aws_access_key_id "<アクセスキー>"
+$ aws configure set aws_secret_access_key "<シークレットキー>"
+$ aws configure set aws_default_region "リージョン>"
+```
+
+```bash
+# Linux，UNIXの場合：$HOME/.aws/<credentialsファイル名>
+# Windowsの場合：%USERPROFILE%\.aws\<credentialsファイル名>
+
+[default]
+aws_access_key_id=<アクセスキー>
+aws_secret_access_key=<シークレットキー>
+
+[user1]
+aws_access_key_id=<アクセスキー>
+aws_secret_access_key=<シークレットキー>
+```
+
+#### ▼ 環境変数を用いたCLI
+
+AWS CLIでクラウドインフラを操作するためには，環境変数で定義されたクレデンシャル情報が必要である．『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する．
+
+```bash
+$ export AWS_ACCESS_KEY_ID=<アクセスキー>
+$ export AWS_SECRET_ACCESS_KEY=<シークレットキー>
+$ export AWS_DEFAULT_REGION=ap-northeast-1
+```
+
+<br>
+
+### IAMグループ
+
+#### ▼ IAMグループとは
+
+IAMユーザーをグループ化したもの．IAMグループごとにIAMロールをアタッチすれば，IAMユーザーのIAMロールを管理しやすくなる．
+
+![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループ.png)
+
+#### ▼ IAMグループへのIAMロールの紐付け
+
+IAMグループに対して，IAMロールを紐付ける．そのIAMグループに対して，IAMロールをアタッチしたいIAMユーザーを追加していく．
+
+![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループに所属するユーザーにロールを付与.png)
+
+#### ▼ グループ一覧
+
+| 権限名          | 説明                       | 補足 |
+| --------------- | -------------------------- | ---- |
+| Administrator   | 全ての操作に権限がある．   |      |
+| PowerUserAccess | IAM以外の操作権限がある．  |      |
+| ViewOnlyAccess  | 閲覧のみの操作権限がある． |      |
+
+<br>
+
+### CLI
+
+#### ▼ CLIの社内アクセス制限
+
+特定の送信元IPアドレスを制限するポリシーをIAMユーザーにアタッチすることで，そのIAMユーザーがAWS CLIの実行する時に，社外から実行できないように制限をかけられる．
+
+**＊実装例＊**
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Deny",
+    "Action": "*",
+    "Resource": "*",
+    "Condition": {
+      "NotIpAddress": {
+        "aws:SourceIp": [
+          "n.n.n.n/32"
+        ]
+      }
+    }
+  }
+}
+```
+
+ポリシーのDenyステートメントによってアクセスが拒否された場合，エラーメッセージの最後に『```with an explicit deny```』という文言がつく．
+
+**＊例＊**
+
+```
+Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
+
+```
+
+#### ▼ ユーザー名を変更
+
+ユーザー名は，コンソール画面から変更できず，コマンドで変更する必要がある．
+
+```bash
+$ aws iam update-user \
+    --user-name <現行のユーザー名> \
+    --new-user-name <新しいユーザー名>
+```
+
+<br>
+
+## 20. Kinesis Data Streams
+
+### Kinesis Data Streamsとは
+
+リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管する．
+
+参考：https://docs.aws.amazon.com/ja_jp/streams/latest/dev/amazon-kinesis-streams.html
+
+<br>
+
+## 20-02. Kinesis Data Firehose（Kinesis Delivery Stream）
+
+### Kinesis Data Firehoseとは
+
+リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管/可視化/分析/レポート作成/アラートが可能な外部サービスやAWSリソースに転送する．転送時にLambda関数を用いることで，収集したデータを加工できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html
+
+<br>
+
+### 設定項目
+
+| 項目             | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| レコードの変換   | バッファーに蓄えられたログを，指定された形式で転送する前に，テキストの内容を変換する． | Lambdaを用いる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
+| 転送先           | 転送先とするS3バケットを設定する．                           |                                                              |
+| ディレクトリ名   | S3への転送時に，S3に作成するディレクトリの名前を設定できる．デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され，2021/11/09現在はUTCのみ設定できる． | もしJSTにしたい場合はLambdaに変換処理を実装し，Kinesis Data Firehoseと連携する必要がある．<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
+| バッファー       | Kinesis Data Firehoseでは，受信したログを一旦バッファーに蓄え，一定期間あるいは一定容量が蓄えられた時点で，ログファイルとして転送する．この時，バッファーに蓄える期間や上限量を設定できる． | 参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |
+| ファイル形式     | 転送時のファイル形式を設定できる．                           | ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが，S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い． |
+| バックアップ     | 収集したデータを加工する場合，加工前データを保管しておく．   |                                                              |
+| 暗号化           |                                                              |                                                              |
+| エラーログの収集 | データの転送時にエラーが発生した場合，エラーログをCloudWatchログに送信する． |                                                              |
+| IAMロール        | Kinesis Data FirehoseがAWSリソースにデータを転送できるように，権限を設定する． | KinesisではIAMロールの細やかな設定が正しく機能しないことがあり，最小権限を諦め，FullAccess権限のロールを付与してしまう方がよい．最低限，CloudWatchログとS3のアクセス権限が必要である． |
+
+<br>
+
+## 20-03. Kinesis Data Analytics
+
+### Kinesis Data Analyticsとは
+
+リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，分析する．
+
+参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
+
+<br>
+
