@@ -15,6 +15,14 @@ description: Dockerfile＠Dockerの知見をまとめました．
 
 ## 01. Dockerfileとは
 
+### IaCとして
+
+#### ▼ Docker
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
+
+<br>
+
 ### レイヤー
 
 #### ▼ イメージレイヤー

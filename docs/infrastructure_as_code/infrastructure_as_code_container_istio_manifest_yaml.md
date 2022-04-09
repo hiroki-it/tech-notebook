@@ -13,7 +13,17 @@ description: manifest.yaml＠Istioの知見をまとめました．
 
 <br>
 
-## 01. セットアップ
+## 01. Istioのmanifest.yamlとは
+
+### IaCとして
+
+#### ▼ Istio
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html
+
+<br>
+
+## 01-02. セットアップ
 
 ### インストール
 

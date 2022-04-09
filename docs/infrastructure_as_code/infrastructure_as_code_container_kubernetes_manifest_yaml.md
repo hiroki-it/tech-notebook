@@ -13,7 +13,17 @@ description: manifest.yaml＠Kubernetesの知見をまとめました．
 
 <br>
 
-## 01. apiVersion
+## 01. Kubernetesのmanifest.yamlとは
+
+### IaCとして
+
+#### ▼ Kubernetes
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html
+
+<br>
+
+## 02. apiVersion
 
 ### apiVersionとは
 
@@ -25,7 +35,7 @@ apiVersion: v1
 
 <br>
 
-## 02. kind
+## 03. kind
 
 ### kindとは
 
@@ -47,7 +57,7 @@ apiVersion: v1
 
 <br>
 
-## 03. metadata
+## 04. metadata
 
 ### metadataとは
 
@@ -83,7 +93,7 @@ Kubernetesリソースを一意に識別するための名前を設定する．
 
 <br>
 
-## 04. rule
+## 05. rule
 
 ### apiGroups
 
@@ -146,7 +156,7 @@ rules:
 
 <br>
 
-## 05. spec（Configmapの場合）
+## 06. spec（Configmapの場合）
 
 ### data
 
@@ -187,7 +197,7 @@ data:
 
 <br>
 
-## 05-02. spec（Deploymentの場合）
+## 06-02. spec（Deploymentの場合）
 
 ### replicas
 
@@ -348,7 +358,7 @@ spec:
 
 <br>
 
-## 05-03. spec（Ingressの場合）
+## 06-03. spec（Ingressの場合）
 
 ### rules
 
@@ -385,11 +395,11 @@ spec:
 
 <br>
 
-## 05-04. spec（Namespaceの場合）
+## 06-04. spec（Namespaceの場合）
 
 <br>
 
-## 05-05. spec（PersistentVolumeの場合）
+## 06-05. spec（PersistentVolumeの場合）
 
 ### accessModes
 
@@ -745,7 +755,7 @@ spec:
 
 <br>
 
-## 05-06. spec（PersistentVolumeClaimの場合）
+## 06-06. spec（PersistentVolumeClaimの場合）
 
 ### accessModes
 
@@ -819,7 +829,7 @@ spec:
 
 <br>
 
-## 05-07. spec（Podの場合）
+## 06-07. spec（Podの場合）
 
 ### containers
 
@@ -1258,7 +1268,7 @@ spec:
 
 <br>
 
-## 05-08. spec（Serviceの場合）
+## 06-08. spec（Serviceの場合）
 
 ### ports
 
@@ -1505,7 +1515,7 @@ Serviceのタイプを設定する．
 
 <br>
 
-## 05-09. spec（ServiceAccountの場合）
+## 06-09. spec（ServiceAccountの場合）
 
 ### automountServiceAccountToken
 
@@ -1525,7 +1535,7 @@ automountServiceAccountToken: false
 
 <br>
 
-## 05-10. spec（ServiceEntryの場合）
+## 06-10. spec（ServiceEntryの場合）
 
 ### hosts
 
@@ -1585,7 +1595,7 @@ spec:
 
 <br>
 
-## 05-11. spec（StatefulSetの場合）
+## 06-11. spec（StatefulSetの場合）
 
 ### serviceName
 

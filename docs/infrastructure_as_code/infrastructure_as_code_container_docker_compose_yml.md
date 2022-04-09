@@ -13,7 +13,17 @@ description: docker-compose.yml＠Docker composeの知見をまとめました�
 
 <br>
 
-## 01. services
+## 01. docker-compose.ymlとは
+
+### IaCとして
+
+#### ▼ Docker
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
+
+<br>
+
+## 02. services
 
 ### ```services```とは
 
@@ -185,7 +195,7 @@ mysqlイメージでは，環境変数の設定に応じて，コンテナ起動
 
 参考：https://docs.docker.com/compose/compose-file/compose-file-v3/#expose
 
-```
+```yaml
 services:
   web:
     expose:
@@ -521,7 +531,7 @@ services:
 
 <br>
 
-## 02. networks
+## 03. networks
 
 ### ```networks```とは
 
@@ -648,7 +658,7 @@ networks:
 
 <br>
 
-## 03. プラグイン
+## 04. プラグイン
 
 ### Volumeプラグイン
 
@@ -681,7 +691,7 @@ volumes:
 
 <br>
 
-## 04. イメージ別Tips
+## 05. イメージ別Tips
 
 ### mysqlイメージ
 

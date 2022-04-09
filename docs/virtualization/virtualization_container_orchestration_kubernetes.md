@@ -25,6 +25,16 @@ Kubernetesコンポーネントは，リソースから作成されたオブジ�
 
 <br>
 
+### IaC
+
+#### ▼ manifest.yaml
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
+
+<br>
+
+## 01-02. 構成要素
+
 ### cloud-controller-manager
 
 #### ▼ cloud-controller-managerとは
@@ -134,7 +144,7 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 <br>
 
-## 01-02. Kubernetesの実行環境
+## 01-03. Kubernetesの実行環境
 
 ### 開発環境
 
