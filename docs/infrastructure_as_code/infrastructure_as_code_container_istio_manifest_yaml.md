@@ -225,7 +225,7 @@ Deploymentの```template```キーやPodの```metadata```キーにて，Envoyコ�
 
 #### ▼ proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために，これの生成先ディレクトリを設定する．デフォルトでは，```./etc/istio/proxy```ディレクトリ下にファイルが生成される．```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる．
+Envoyコンテナのプロセスの設定値をファイルとして生成するために，これの生成先ディレクトリを設定する．デフォルトでは，```./etc/istio/proxy```ディレクトリ配下にファイルが生成される．```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる．
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 

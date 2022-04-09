@@ -13,9 +13,49 @@ description: Docker＠仮想化の知見をまとめました．
 
 <br>
 
-## 01. Docker仕組み
+## 01. Dockerの仕組み
 
 ### 構造
+
+Dockerは，ホストOS，ベースイメージ，イメージレイヤー，コンテナレイヤー，から構成される．
+
+参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
+
+![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
+
+<br>
+
+### イメージレイヤー
+
+![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
+
+イメージレイヤーの実体は，```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている．Dockerは，オーバーレイファイルシステムを用いて，各ファイルを層状に管理する．一つの命令につき，１つのイメージレイヤーを積み重ねるようになっている．
+
+参考：
+
+- https://www.creationline.com/lab/35518
+- https://tech-lab.sios.jp/archives/21103#OverlayFS
+
+```bash
+$ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
+
+{
+  "LowerDir": "/var/lib/docker/overlay2/*****-init/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff",
+  "MergedDir": "/var/lib/docker/overlay2/*****/merged",
+  "UpperDir": "/var/lib/docker/overlay2/*****/diff",
+  "WorkDir": "/var/lib/docker/overlay2/*****/work"
+}
+```
+
+<br>
+
+### コンテナレイヤー
+
+イメージからコンテナを構築する時に，イメージレイヤーの上にコンテナレイヤーが積み重ねられる．
+
+参考：https://blog.codecamp.jp/programming-docker-image-container
+
+![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
 
 <br>
 

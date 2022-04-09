@@ -180,7 +180,7 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 
 #### ▼ リポジトリ自体のインストール
 
-（１）CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ下に配置される．
+（１）CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ配下に配置される．
 
 ```bash
 # CentOS7系の場合
@@ -193,7 +193,7 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-（２）CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ下に配置される．
+（２）CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ配下に配置される．
 
 ```bash
 # CentOS7系の場合

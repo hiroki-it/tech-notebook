@@ -88,7 +88,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 #### ▼ それ以外のディレクトリに置いた場合
 
-設置したディレクトリ下の階層のファイルに対して適用される．
+設置したディレクトリ配下の階層のファイルに対して適用される．
 
 参考：https://htaccess.cman.jp/attention/
 
@@ -106,13 +106,13 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 **＊実装例＊**
 
-通常であれば，etcディレクトリ下にconfファイルが配置される．
+通常であれば，etcディレクトリ配下にconfファイルが配置される．
 
 ```apacheconf
 ServerRoot /etc/httpd
 ```
 
-CentOSのEPELリポジトリ経由でインストールした場合，Apacheのインストール後に，optディレクトリ下にconfファイルが設置される．
+CentOSのEPELリポジトリ経由でインストールした場合，Apacheのインストール後に，optディレクトリ配下にconfファイルが設置される．
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd

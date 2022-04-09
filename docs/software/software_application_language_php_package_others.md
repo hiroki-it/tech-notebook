@@ -302,7 +302,7 @@ $body = json_decode($response->getBody(), true);
 
 #### ▼ ```generateFromHtml```メソッド
 
-htmlファイルを元にして，ローカルディレクトリ下にPDFファイルを作成する．
+htmlファイルを元にして，ローカルディレクトリ配下にPDFファイルを作成する．
 
 **＊実装例＊**
 

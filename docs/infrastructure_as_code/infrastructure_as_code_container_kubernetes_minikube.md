@@ -54,7 +54,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 #### ▼ 標準のホスト-ワーカーNode間マウント
 
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
+ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
@@ -69,7 +69,7 @@ $ minikube start
 
 #### ▼ 各ドライバーのホスト-ワーカーNode間マウント
 
-ホスト以下のディレクトリ下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
+ホスト以下のディレクトリ配下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 

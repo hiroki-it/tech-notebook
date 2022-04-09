@@ -125,7 +125,7 @@ https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E
 
 ### キャッシュ削除
 
-Nuxt.jsのキャッシュは```node_modules/.cache```ディレクトリ下に作成される．そのため，キャッシュを削除したい場合はこのディレクトリごと削除する．
+Nuxt.jsのキャッシュは```node_modules/.cache```ディレクトリ配下に作成される．そのため，キャッシュを削除したい場合はこのディレクトリごと削除する．
 
 ```bash
 $ rm -rf node_modules/.cache/hard-source/

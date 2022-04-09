@@ -76,7 +76,7 @@ SET time_zone = "Asia/Tokyo";
 
 #### ▼ ```/etc/mysql/my.cnf```ファイルとは
 
-MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ下にある```*.cnf```ファイルを読み込むようになっている．
+MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ配下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ配下にある```*.cnf```ファイルを読み込むようになっている．
 
 ```ini
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.
