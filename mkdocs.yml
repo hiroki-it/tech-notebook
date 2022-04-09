@@ -341,7 +341,7 @@ nav:
           - コマンド: software_development_methodology/software_development_methodology_git_command.md
 
   - 📊 統計分析:
-      - R言語: statistic_analysis/statistic_analysis_r.md
+      - R: statistic_analysis/statistic_analysis_r.md
 
   - 📢 過去の技術系プレゼン:
       - 一覧: presentation.md
