@@ -529,7 +529,7 @@ services:
 
 <br>
 
-#### ▼ ```name```
+###  ```name```
 
 ネットワーク名をユーザー定義名にする．
 
@@ -595,57 +595,55 @@ $ docker network inspect foo-network
 
 <br>
 
-#### ▼ ```external```
+### ```external```
 
-異なる```docker-compose.yml```ファイルから接続できるネットワークを作成する．作成されるネットワーク名とエイリアス名は，```external```キーの上部で設定したものになる．
+![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-compose_external.png)
+
+異なる```docker-compose.yml```ファイルから相互に通信できるネットワークを作成する．作成されるネットワーク名は，```<プロジェクト名>_<外部ネットワーク名>```になる．
+
+参考：
+
+- https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
+- https://nishinatoshiharu.com/external-docker-network/
 
 **＊実装例＊**
 
-バックエンドとフロントエンドが異なる```docker-compose.yml```ファイルで管理されている．フロントエンドコンテナからバックエンドコンテナに接続できるように，ネットワークを作成する．
+バックエンドとフロントエンドが異なる```docker-compose.yml```ファイルで管理されている．フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように，ネットワークを公開する．
 
 ```yaml
 # バックエンドのDocker-compose
 services:
   app:
     container_name: backend-container
-    
+    networks:
+      # 接続したい外部ネットワーク名
+      - shared-network
+
 # ～ 中略 ～
     
 networks:
-  # 作成したい外部ネットワーク名とエイリアス名
-  backend:
-    external: true  
+  # 公開したい外部ネットワーク名
+  foo:
+    external: true
 ```
 
-フロントエンドコンテナにて，エイリアス名にネットワーク名を指定して，
+フロントエンドコンテナにて，同じ名前の外部ネットワークを作成し，公開する．
 
 ```yaml
 # フロントエンドのDocker-compose
 services:
   app:
     container_name: frontend-container
-    # 内部/外部ネットワークのいずれかのエイリアス名を設定する．
     networks:
-      - backend
+      # 接続したい外部ネットワーク名
+      - shared-network
 
 # ～ 中略 ～
 
 networks:
-  default:
-    external:
-      # 接続したい外部ネットワーク名とエイリアス名
-      name: backend
-```
-
-作成した内部/外部ネットワークは，コマンドで確認できる．『```<エイリアス名>_default```』というネットワーク名になる．
-
-**＊例＊**
-
-```bash
-$ docker network ls
-
-NETWORK ID       NAME        DRIVER     SCOPE
-************     backend     bridge     local
+  # 公開したい外部ネットワーク名
+  foo:
+    external: true
 ```
 
 <br>
@@ -656,7 +654,7 @@ NETWORK ID       NAME        DRIVER     SCOPE
 
 #### ▼ NFSストレージ
 
-NFSプラグインを用いることで，永続化データを```/var/lib/docker/volumes```ではなく，NFSストレージに保存する．
+NFSプラグインを用いることで，永続化データを```/var/lib/docker/volumes```ディレクトリではなく，NFSストレージに保存する．
 
 **＊実装例＊**
 

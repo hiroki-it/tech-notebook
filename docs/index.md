@@ -199,10 +199,15 @@ title: 【知見を記録するサイト】目次
 
 * [📖：︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing.html)
 * AWS
-    * [📖：︎AWS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html)
-    * [📖：︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
-    * [📖：︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
-    * [📖：︎コスト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cost_management.html)
+    * [📖：︎目次](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html)
+    * [📖：︎A〜E](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_1.html)
+    * [📖：︎F〜K](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_2.html)
+    * [📖：︎L〜R](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_3.html)
+    * [📖：︎S〜Z](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html)
+    * その他
+        * [📖：︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
+        * [📖：︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
+        * [📖：︎コスト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cost_management.html)
 
 <br>
 

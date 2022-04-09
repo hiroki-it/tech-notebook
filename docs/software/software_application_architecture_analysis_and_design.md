@@ -80,7 +80,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 UML，概念データモデリング，構造化分析，リアルタイム分析，がある．
 
-参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pd
+参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
 
 ![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/diagrams.png)
 <br>

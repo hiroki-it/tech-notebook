@@ -2082,7 +2082,7 @@ class DogOrder
 参考：
 
 - https://codewithshadman.com/repository-pattern-csharp/
-- https://sf9v.github.io/posts/generating-the-repository-pattern-in-go/#introduction
+- https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
 - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
 
 | メソッド名        | 引数型                               | 返却値型                   | 処理内容                                                     |
