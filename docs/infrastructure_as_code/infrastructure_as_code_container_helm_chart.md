@@ -29,19 +29,30 @@ Helmは，パッケージマネージャーとしてのHelmクライアント，
 
 <br>
 
-### テンプレート管理
+### チャートリポジトリ
 
-#### ▼ テンプレート管理とは
+#### ▼ 構成
 
-Kubernetesのテンプレートファイルを部分的に共通化できる．
+ルートディレクトリ配下に，```index.yaml```ファイル，チャートアーカイブ，を配置する．
 
-参考：https://qiita.com/Hiroyuki_OSAKI/items/8965ceb6c90bae3bea76
+参考：https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
+
+```bash
+charts/
+├── index.yaml
+├── foo-0.1.2.tgz
+├── bar-0.1.2.tgz
+...
+```
 
 #### ▼ 種類
 
-Helmの他に，Kustomize，などがある．HelmよりもKustomizeの方がカスタマイズ性が高い．
-
-参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1#%E3%81%93%E3%81%93%E3%81%A7%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E6%8A%80%E8%A1%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-1
+| リポジトリ              | 補足                                                   |
+| ----------------------- | ------------------------------------------------------ |
+| ArtifactHub（Helm公式） | 参考：https://helm.sh/docs/topics/chart_repository/    |
+| GitHub，GitHub Pages    | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| AWSリソース（ECR，S3）  |                                                        |
+| GCPリソース             |                                                        |
 
 <br>
 
@@ -93,6 +104,33 @@ appVersion: 1.0.0
 
 <br>
 
+### description
+
+#### ▼ descriptionとは
+
+チャートの説明を設定する．
+
+```yaml
+description: The chart of *****
+```
+
+<br>
+
+### maintainers
+
+#### ▼ maintainersとは
+
+チャートの管理者を設定する．
+
+```yaml
+maintainers:
+  - name: hiroki hasegawa
+    email: example@gmail.com
+    url: A URL for the maintainer (optional for each maintainer)
+```
+
+<br>
+
 ### name
 
 #### ▼ nameとは
@@ -135,7 +173,45 @@ version: 1.0.0
 
 <br>
 
-## 04. アクション
+## 04. index.yamlファイル
+
+### index.yamlファイルとは
+
+チャートのメタデータを設定する．```helm repo index```コマンドによって，```Chart.yaml```ファイルに基づいて自動生成されるため，ユーザーが設定する項目は少ない．
+
+参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### apiVersion
+
+#### ▼ apiVersionとは
+
+参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### entries
+
+#### ▼ entriesとは
+
+参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### generated
+
+#### ▼ generatedとは
+
+コマンドによって```index.yaml```ファイルが生成された日付を設定する．
+
+```yaml
+generated: "2022-01-01T12:00:00.197173+09:00"
+```
+
+<br>
+
+## 05. アクション
 
 ### アクションとは
 
@@ -172,7 +248,7 @@ define関数で定義した文字列をそのまま出力する．template関数
 
 <br>
 
-## 05. 関数
+## 06. 関数
 
 ### ドット
 

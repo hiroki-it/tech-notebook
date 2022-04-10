@@ -284,6 +284,7 @@ title: 【知見を記録するサイト】目次
 * [📖：︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
 * [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
 * [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
+* [📖：︎GitHub Actions](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_github_actions.html)
 * CircleCI
     * [📖：︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
     * [📖：︎orbs](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_orbs.html)

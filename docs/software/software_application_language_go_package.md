@@ -36,7 +36,7 @@ $ go mod tidy
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
-        go get github.com/hiroki-it/bar/cmd
+        go get github.com/hiroki-hasegawa/bar/cmd
 ```
 
 <br>
@@ -48,7 +48,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 PHPにおける```composer.json```ファイルに相当する．インターネット上における自身のパッケージ名とGoバージョンを定義するために，全てのGoアプリケーションで必ず必要である．インストールしたい外部パッケージも定義できる．
 
 ```
-module github.com/hiroki-it/foo-repository
+module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
 ```
@@ -60,7 +60,7 @@ go 1.16
 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
 ```
-module github.com/hiroki-it/repository
+module github.com/hiroki-hasegawa/repository
 
 go 1.16
 
@@ -91,7 +91,7 @@ module foo.com/hiroki-it/repository
 
 go 1.16
 
-replace github.com/hiroki-it/foo-repository => /
+replace github.com/hiroki-hasegawa/foo-repository => /
 ```
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．

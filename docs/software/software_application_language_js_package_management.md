@@ -39,7 +39,7 @@ $ yum install -y nodejs
   "author": {
     "name": "Hiroki Hasegawa",
     "email": "example@gmail.com",
-    "url": "https://github.com/hiroki-it"
+    "url": "https://github.com/hiroki-hasegawa"
   },
 }
 ```
@@ -51,7 +51,7 @@ $ yum install -y nodejs
 ```bash
 {
   "bugs": {
-    "url": "https://github.com/hiroki-it/foo/issues"
+    "url": "https://github.com/hiroki-hasegawa/foo/issues"
   },
 }
 ```
@@ -127,7 +127,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/hiroki-it/foo.git"
+    "url": "https://github.com/hiroki-hasegawa/foo.git"
   }
 }
 ```

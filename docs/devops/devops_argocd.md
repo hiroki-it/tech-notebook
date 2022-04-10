@@ -19,13 +19,14 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
-指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．
+指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．ちなみに，ArgoCD自身のマニフェストファイルに変更も同期できる．
 
 参考：
 
 - https://blog.vpantry.net/2021/01/cicd-2/
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
+- https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
 
 <br>
 
@@ -318,9 +319,13 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ（GitHub）やチャートリポジトリ（Helm公式，ECR，ArtifactHub）を設定する．
+マニフェストリポジトリ（GitHub）やチャートリポジトリ（ArtifactHub，GitHub，ECR，ArtifactHub）を設定する．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+
+<br>
+
+### source（マニフェストリポジトリの場合）
 
 #### ▼ directory
 
@@ -344,14 +349,14 @@ metadata:
   name: argocd-application
 spec:
   source:
-    path: kubernetes
+    path: ./kubernetes
     directory:
       recurse: true
 ```
 
 #### ▼ path
 
-GitHubを指定した場合に，監視対象のディレクトリを設定する．
+GitHub上の監視対象のディレクトリを設定する．
 
 **＊実装例＊**
 
@@ -363,17 +368,14 @@ metadata:
   name: argocd-application
 spec:
   source:
-    path: kubernetes
+    path: ./kubernetes
 ```
 
 #### ▼ repoURL
 
-マニフェストリポジトリやチャートリポジトリのURLを設定する．
+マニフェストリポジトリのURLを設定する．
 
-参考：
-
-- https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 **＊実装例＊**
 
@@ -387,23 +389,7 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: https://github.com/hiroki-it/foo-manifests.git
-```
-
-チャートリポジトリとしてAWS ECRを指定する場合は，以下の通り．別途，ECRへのログインが必要なことに注意する．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: argocd-application
-spec:
-  source:
-    repoURL: oci://*****.dkr.ecr.ap-northeast-1.amazonaws.com/foo-helm-repository
-    chart: foo
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
 #### ▼ targetRevision
@@ -424,6 +410,121 @@ spec:
   source:
     targetRevision: main
 ```
+
+<br>
+
+### source（チャートリポジトリの場合）
+
+#### ▼ chart
+
+用いるチャートを設定する．
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    chart: foo
+```
+
+#### ▼ helm
+
+参考：https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
+
+| 設定項目    |                                                    |
+| ----------- | -------------------------------------------------- |
+| releaseName | デプロイするリリース名を設定する．                 |
+| valueFiles  | デプロイ時に用いる```values```ファイルを設定する． |
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    helm:
+      releaseName: prd
+      valueFiles:
+        - prd-values.yaml
+```
+
+#### ▼ path
+
+生成するチャートアーカイブを設定する．
+
+**＊実装例＊**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    path: ./kubernetes-chart
+```
+
+#### ▼ repoURL
+
+チャートリポジトリのURLを設定する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+
+チャートリポジトリとしてGitHubを指定する場合は，以下の通り．
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+```
+
+チャートリポジトリとしてAWS ECRを指定する場合は，以下の通り．別途，ECRへのログインが必要なことに注意する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    repoURL: oci://*****.dkr.ecr.*****.amazonaws.com/foo-helm-repository
+    chart: foo
+```
+
+#### ▼ targetRevision
+
+GitHubをチャートリポジトリとしている場合に，監視対象とするブランチやバージョンタグを設定する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+
+**＊実装例＊**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    targetRevision: main
+```
+
+<br>
 
 <br>
 

@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】CircleCI＠Orbs
-description: CircleCI＠Orbsの知見をまとめました．
+title: 【知見を記録するサイト】Orbs＠CircleCI
+description: Orbs＠CircleCIの知見をまとめました．
 ---
 
-# CircleCI＠Orbs
+# Orbs＠CircleCI
 
 ## はじめに
 

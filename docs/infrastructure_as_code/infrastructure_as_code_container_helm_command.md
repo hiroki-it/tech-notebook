@@ -48,6 +48,22 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 <br>
 
+### repo
+
+#### ▼ repoとは
+
+チャートリポジトリを操作する．
+
+#### ▼ index
+
+チャートリポジトリのメタデータが設定された```index.yaml```ファイルを生成する．
+
+```bash
+ $ helm repo index <パス>
+```
+
+<br>
+
 ### install
 
 #### ▼ installとは
@@ -58,6 +74,14 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 ```bash
 $ helm install <リリース名> <チャートアーカイブへのパス>
+```
+
+リポジトリ内のチャートアーカイブを指定することもできる．
+
+参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b
+
+```bash
+$ helm install <リリース名> <チャートリポジトリ名>/<チャートアーカイブへのパス>
 ```
 
 #### ▼ --dry-run
@@ -118,6 +142,34 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
+複数のチャートに対して，同じ```values```ファイルを渡すこともできる．
+
+```bash
+❯ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./eks ./operator/istio
+
+==> Linting ./kubernetes
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+==> Linting ./istio
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+==> Linting ./argocd
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+==> Linting ./eks
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+==> Linting ./operator/istio
+[INFO] Chart.yaml: icon is recommended
+[INFO] values.yaml: file does not exist
+
+5 chart(s) linted, 0 chart(s) failed
+```
+
 <br>
 
 ### list
@@ -168,8 +220,24 @@ $ helm template <リリース名> <チャートアーカイブへのパス> >| <
 指定した```values```ファイル用いて，```helm template```コマンドを実行する．
 
 ```bash
+$ helm template <リリース名> <チャートアーカイブへのパス> -f <valuesファイルへのパス> >| <出力先ファイル> --set foo.bar=baz
+```
+
+```yaml
+# valuesファイル
+foo:
+  bar: qux # 上書きされる
+```
+
+#### ▼ -set
+
+デフォルト値を上書きし，```helm template```コマンドを実行する．
+
+```
 $ helm template <リリース名> <チャートアーカイブへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
 ```
+
+
 
 <br>
 

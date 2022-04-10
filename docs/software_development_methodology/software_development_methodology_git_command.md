@@ -144,7 +144,7 @@ Host <任意の接続名>
 
 ```bash
 $ git push
-ERROR: Permission to hiroki.hasegawa/*****.git denied to Foo.
+ERROR: Permission to hiroki-hasegawa/*****.git denied to Foo.
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
@@ -393,7 +393,46 @@ $ git stash clear
 
 <br>
 
-### revert
+### status
+
+#### ▼ status
+
+addステージやcommitステージにファイルが存在しているかどうかを表示する．
+
+<br>
+
+#### ▼ status --porcelain
+
+コマンドに入力可能な形式で出力する．CIの自動化で使うことが多い．
+
+参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+
+```bash
+ $ git status --porcelain
+ 
+ M foo
+ M bar
+ M baz
+```
+
+```bash
+#!/bin/bash
+
+git add .
+
+if [ -z "$(git status --porcelain)" ]; then
+  echo "変更点がないため，終了しました．"
+  exit 0
+fi
+
+git commit -m "CIツールが自動でプッシュしました．"
+
+git pull
+
+git push origin HEAD
+```
+
+<br>
 
 #### ▼ ```revert```とは
 
@@ -521,7 +560,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 ```bash
 $ git push --force
 Total 0 (delta 0), reused 0 (delta 0)
-To github.com:hiroki.hasegawa/foo-repository.git
+To github.com:hiroki-hasegawa/foo-repository.git
  + f0d8b1a...f81c813 master -> master (forced update)
 ```
 
