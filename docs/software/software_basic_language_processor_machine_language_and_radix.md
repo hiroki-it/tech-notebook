@@ -302,11 +302,11 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 4. 括弧を外しても，塊はそのまま．   
 
-　　( AB + ) ( CDE ÷ －) ×  ⇒ AB+CDE÷－×
+  ( AB + ) ( CDE ÷ －) ×  ⇒ AB+CDE÷－×
 
 5. 左辺と右辺をそれぞれ塊と見なす．
 
-　　Y = AB+CDE÷－× ⇒ YAB+CDE÷－×=
+  Y = AB+CDE÷－× ⇒ YAB+CDE÷－×=
 
 <br>
 

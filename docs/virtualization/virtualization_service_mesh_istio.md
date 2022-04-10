@@ -28,14 +28,6 @@ description: Istio＠仮想化の知見をまとめました．
 
 <br>
 
-### IaC
-
-#### ▼ manifest.yaml
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.html
-
-<br>
-
 ### データプレーン
 
 #### ▼ データプレーンとは
@@ -110,6 +102,14 @@ Kubernetes，Envoy，Kubernetesの比較は以下の通り
 | ServiceEntry             | Cluster           | Service                        |
 | VirtualService＋Gateway  | Route＋Listener   | Ingress＋Ingressコントローラー |
 | WorkloadEntry            | Endpoint          | Endpoint                       |
+
+<br>
+
+### IaC
+
+#### ▼ manifest.yaml
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.html
 
 <br>
 

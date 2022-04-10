@@ -36,7 +36,7 @@ symfony/
 ├── src/ # 主要なPHPファイル
 │   ├── AppBundle/ # アプリケーションのコード
 │   │  ├── Controller/ # UserCase層
-│   │  ├── Entity/ # エンティティ　⇒　Domain層
+│   │  ├── Entity/ # エンティティ ⇒ Domain層
 │   │  ├── Repository/ # リポジトリ ⇒ Infrastructure層
 │   │  ├── Form/ # フォーム
 │   │  └── Resources/

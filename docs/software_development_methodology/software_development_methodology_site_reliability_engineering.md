@@ -200,10 +200,13 @@ SREチームのValueから，SREに必要な技術がわかる．
 
 <br>
 
-### Topotal
+### 3-shake，Topotal
 
-提供しているサービス（SRE as a Service）から，SREに必要な技術がわかる．
+提供しているサービスから，SREに必要な技術がわかる．
 
-参考：https://topotal.com/services/sre-as-a-service
+参考：
+
+- https://sreake.com/
+- https://topotal.com/services/sre-as-a-service
 
 <br>

@@ -364,7 +364,7 @@ jobs:
     security-group-ids: $AWS_SECURITY_GROUPS
     # タスク定義名．最新リビジョン番号が自動補完される．
     task-definition: "${SERVICE}-ecs-task-definition"
-    # タスク起動時にマイグレーションコマンドを実行するように，Laravelコンテナの　commandキーを上書き
+    # タスク起動時にマイグレーションコマンドを実行するように，Laravelコンテナのcommandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
           
 workflows:

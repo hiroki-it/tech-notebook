@@ -964,7 +964,7 @@ class FooTest extends TestCase
 
 ```php
 if (A = 1 && B = 1) {
-　return X;
+  return X;
 }
 ```
 

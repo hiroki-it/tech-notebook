@@ -598,7 +598,7 @@ API Gatewayの通常のデプロイメントの仕組みあ隠蔽されている
 
 #### ▼ 実行ログ
 
-CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定できる．リクエスト/レスポンスの構造もログに出力するようにした方が良い．　
+CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定できる．リクエスト/レスポンスの構造もログに出力するようにした方が良い．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html
 

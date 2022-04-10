@@ -143,11 +143,11 @@ FROM centos:8
 
 # nginxをインストール
 RUN dnf upgrade -y \
-　　&& dnf install -y \
-　　   nginx \
-　　   curl \
-　　&& dnf clean all \
-　　&& rm -Rf /var/cache/dnf
+  && dnf install -y \
+     nginx \
+     curl \
+  && dnf clean all \
+  && rm -Rf /var/cache/dnf
 
 COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
 

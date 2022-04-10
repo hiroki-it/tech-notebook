@@ -410,7 +410,7 @@ $ terraform plan -var-file=foo.tfvars
 #### ▼ ```terraform.tfvars```ファイル
 
 ```bash
-#　ファイルを指定しなくとも読み込まれる
+# ファイルを指定しなくとも読み込まれる
 $ terraform plan
 ```
 
