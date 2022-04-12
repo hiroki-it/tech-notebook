@@ -1,6 +1,5 @@
 ---
-title: 【知見を記録するサイト】GitHub Actions＠DevOps
-description: GitHub Actions＠DevOpsの知見をまとめました．
+idade 
 ---
 
 # GitHub Actions＠DevOps
@@ -45,14 +44,6 @@ name: foo
 
 <br>
 
-## 04. on
-
-### onとは
-
-GitHub Actionsを発火させる条件を設定する．
-
-<br>
-
 ### push
 
 #### ▼ branch
@@ -85,6 +76,12 @@ jobs:
   foo:
     runs-on: ubuntu-latest
 ```
+
+#### ▼ インストール済みソフトウェア
+
+用いるOSに応じて，いくつかの汎用的なソフトウェアがすでにインストールされている．
+
+参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
 <br>
 
@@ -134,6 +131,22 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
+          # これはエラーになる
+          # php-version: $PHP_VERSION
+```
+
+環境変数を渡すことはできないことに注意する．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          # これはエラーになる
+          php-version: $PHP_VERSION
 ```
 
 <br>
@@ -184,21 +197,39 @@ runs:
 
 ## 07. 環境変数
 
-### Projectレベル
+### Projectレベル（Repository）
 
-リポジトリの設定でSecretに名前と値を登録する．プロジェクト内，すなわちリポジトリ内でのみ参照できる．
+#### ▼ Projectレベルとは
 
-参考：https://btj0.com/blog/github/use-env/
+リポジトリの設定のSecret項目に変数名と値を登録する．プロジェクト内，すなわちリポジトリ内で参照できる．
+
+参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
+
+<br>
+
+### Actionレベル（Environment）
+
+#### ▼ Actionレベルとは
+
+リポジトリの設定のEnvironment項目に変数名と値を登録する．GitHub Actionsでのみ参照できる．出力された変数はログでマスキングされる．Projectレベルとは異なり，```env```オプションに明示的に環境変数を渡す必要がある．
+
+参考：
+
+- https://btj0.com/blog/github/use-env/
+- https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
 
 ```yaml
 jobs:
   foo:
     runs-on: ubuntu-latest
+    env: FOO
     steps:
       - name: Echo
         run: |
           echo ${{ secrets.FOO }}
 ```
+
+#### ▼ composite上での扱い
 
 compositeでは使用できず，```input```オプションで環境変数を渡す必要がある．
 
@@ -217,6 +248,14 @@ jobs:
           foo: ${{ secrets.FOO }}
 ```
 
+なお，```inputs```オプションで渡した値はログに表示されてしまうため，```echo```コマンドを用いる場合は，```::add-mask::```オプションを変数の前で宣言する．これにより，以降の処理で変数の値はマスキングされる．```inputs```オプションを直接マスキングすることは2022/04現在は非対応である．
+
+参考：
+
+- https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
+- https://github.com/actions/runner/issues/643#issuecomment-708228940
+- https://github.com/actions/runner/issues/475#issuecomment-1092734499
+
 ```yaml
 inputs:
   foo:
@@ -228,6 +267,96 @@ runs:
     - name: Echo
       shell: bash
       run: |
-        echo ${{ inputs.foo }}
+        FOO=$(jq -r '.inputs.foo' $GITHUB_EVENT_PATH)
+        echo "::add-mask::$FOO"
+```
+
+<br>
+
+### Workflowレベル
+
+定義されたYAMLファイル内でのみ参照できる．
+
+```yaml
+env:
+  FOO: foo
+  BAR: bar
+
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ env.FOO }}
+```
+
+<br>
+
+### Jobsレベル
+
+定義された```jobs```キー内でのみ参照できる．
+
+参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Export envs
+        run: |
+          echo "FOO=foo" >> $GITHUB_ENV
+      - name: Echo
+        run: |
+          echo "${{ env.FOO }}"
+```
+
+<br>
+
+## 08. Actions
+
+### actionsパッケージ
+
+#### ▼ checkout
+
+プロジェクトをクローンする．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+```
+
+#### ▼ upload-artifact，download-artifact
+
+異なる```jobs```の間でファイルを共有する．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: ./foo
+  bar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: artifact
 ```
 
