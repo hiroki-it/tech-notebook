@@ -203,6 +203,14 @@ $ helm package <fooチャートへのパス> <barチャートへのパス> <baz�
 Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 ```
 
+#### ▼ -d
+
+チャートアーカイブの作成先のディレクトリを指定しつつ，```helm package```コマンドを実行する．
+
+```bash
+$ helm package <チャートへのパス> -d ./archives
+```
+
 <br>
 
 ### template

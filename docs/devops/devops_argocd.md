@@ -60,19 +60,18 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 （２）同じ
 
-（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．チャートからチャートアーカイブを作成し，マニフェストリポジトリにプッシュする．
+（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．
 
 （４）同じ
 
 （５）同じ
 
-（６）ArgoCDがチャートアーカイブの変更を検知し，Kubernetesにプルする．
+（６）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
 
 参考：
 
 - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
-:::
 
 <br>
 
@@ -331,7 +330,10 @@ spec:
 
 監視対象として```path```オプションで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
 
-参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+参考：
+
+- https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
+- https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
 | オプション    | 説明                                                         |
 | ------------- | ------------------------------------------------------------ |
@@ -432,12 +434,16 @@ spec:
 
 #### ▼ helm
 
-参考：https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
+参考：
 
-| 設定項目    |                                                    |
-| ----------- | -------------------------------------------------- |
-| releaseName | デプロイするリリース名を設定する．                 |
-| valueFiles  | デプロイ時に用いる```values```ファイルを設定する． |
+- https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
+- https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
+
+| 設定項目          | 説明                                                         | 補足                                                         |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```releaseName``` | デプロイするリリース名を設定する．                           |                                                              |
+| ```values```      | デフォルト値を，```values```ファイルとしてではなく，ArgoCDのマニフェストファイルにハードコーディングして定義する． |                                                              |
+| ```valueFiles```  | デプロイ時に用いる```values```ファイルを設定する．           | ```values```ファイルは，チャートと同じリポジトリにある必要がある． |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -501,8 +507,7 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: oci://*****.dkr.ecr.*****.amazonaws.com/foo-helm-repository
-    chart: foo
+    repoURL: oci://*****.dkr.ecr.*****.amazonaws.com/foo-charts
 ```
 
 #### ▼ targetRevision
@@ -523,8 +528,6 @@ spec:
   source:
     targetRevision: main
 ```
-
-<br>
 
 <br>
 
@@ -581,7 +584,7 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 参考：
 
 - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
-- https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+- https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L113
 
 #### ▼ automated
 

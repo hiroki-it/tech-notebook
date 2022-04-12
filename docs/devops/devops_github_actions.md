@@ -136,3 +136,98 @@ jobs:
           php-version: 7.4
 ```
 
+<br>
+
+## 06. runs
+
+### composite
+
+#### ▼ compositeとは
+
+stepsを別のファイルに切り分けられる．ファイル名は，```action.yml```ファイルとする必要がある．
+
+```bash
+Error: Can't find 'action.yml', 'action.yaml' ...
+```
+
+#### ▼ 注意点
+
+チェックアウト処理は定義できない．
+
+```yaml
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout # これはエラーになる．
+      uses: actions/checkout@v2
+    - name: Echo
+      shell: bash # シェルの種類を設定する．
+      run: |
+        echo foo
+```
+
+また，```shell```オプションでシェルの種類を指定する必要がある．
+
+参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
+
+```yaml
+runs:
+  using: "composite"
+  steps:
+    - name: Echo
+      shell: bash # シェルの種類を設定する．
+      run: |
+        echo foo
+```
+
+<br>
+
+## 07. 環境変数
+
+### Projectレベル
+
+リポジトリの設定でSecretに名前と値を登録する．プロジェクト内，すなわちリポジトリ内でのみ参照できる．
+
+参考：https://btj0.com/blog/github/use-env/
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ secrets.FOO }}
+```
+
+compositeでは使用できず，```input```オプションで環境変数を渡す必要がある．
+
+参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo
+        uses: ./.github/workflows/composite/echo
+        with:
+          foo: ${{ secrets.FOO }}
+```
+
+```yaml
+inputs:
+  foo:
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Echo
+      shell: bash
+      run: |
+        echo ${{ inputs.foo }}
+```
+

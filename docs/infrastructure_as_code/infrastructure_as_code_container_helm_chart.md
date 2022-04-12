@@ -35,7 +35,10 @@ Helmは，パッケージマネージャーとしてのHelmクライアント，
 
 ルートディレクトリ配下に，```index.yaml```ファイル，チャートアーカイブ，を配置する．
 
-参考：https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
+参考：
+
+- https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
+- https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
 ```bash
 charts/
@@ -116,6 +119,26 @@ description: The chart of *****
 
 <br>
 
+### dependencies
+
+#### ▼ dependenciesとは
+
+依存対象のチャートを設定する．設定されたチャートは，```charts```ディレクトリにダウンロードされる．
+
+参考：https://helm.sh/docs/topics/charts/#chart-dependencies
+
+```yaml
+dependencies:
+  - name: foo
+    version: 1.2.3
+    repository: https://foo.example.com/charts
+  - name: bar
+    version: 3.2.1
+    repository: https://bar.example.com/charts
+```
+
+<br>
+
 ### maintainers
 
 #### ▼ maintainersとは
@@ -126,7 +149,7 @@ description: The chart of *****
 maintainers:
   - name: hiroki hasegawa
     email: example@gmail.com
-    url: A URL for the maintainer (optional for each maintainer)
+    url: https://example.com
 ```
 
 <br>
