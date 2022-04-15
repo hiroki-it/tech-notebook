@@ -6,23 +6,26 @@
 <span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
 
 大学院にて **生物情報学** の分野で研究を行い，理学修士を習得しました．<br>
-<span style="font-size: 90%;">( I studied **Bioinformatics** at the graduate school, and obtained a Master of Science.)</span>
+<span style="font-size: 90%;">( I studied **Bioinformatics** at the graduate school, and obtained a Master of Science. )</span>
 
 その後，Webアプリケーションの **SWE** としてキャリアをスタートしました．<br>
 <span style="font-size: 90%;">( After that, I started my career as a **SWE** in web applications. )</span>
 
 現在は，**SRE** として働かさせていただいております．<br>
-<span style="font-size: 90%;">( Currently, I'm working as a **SRE**.) </span>
+<span style="font-size: 90%;">( Currently, I'm working as a **SRE**. ) </span>
 
 <br>
 
 ## 🎯 関心のある技術領域
 
-Webアプリケーションのバックエンドとインフラの領域で **拡張性** / **保守性** / **可読性** を高める技術に関心があります．<br>
-<span style="font-size: 90%;">( I'm interested in technologies that enhance **extensibility**, **maintainability** and **readability**, in backend and infrastructure. )</span>
+Webアプリケーションのインフラ領域に軸足を置きつつ，バックエンド領域も好きです．<br>
+<span style="font-size: 90%;">( I put my foot in infrastructure, and also like backend. )</span>
 
-▶ ドメイン駆動設計，マイクロサービスアーキ，クラウドコンピューティング，コンテナ，IaC，DevOps，...<br>
-<span style="font-size: 90%;">( DDD, Microservices architecture, Cloud computing, Containers, IaC, DevOps, ... )</span>
+特に，**拡張性**，**保守性**，**可読性** を高める技術に関心が強く，継続的に学習しています．<br>
+<span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**, so I keep learning these. )</span>
+
+▶ クラウドインフラ，コンテナオーケストレーション，IaC，DDD，マイクロサービスアーキテクチャ，DevOps，など<br>
+<span style="font-size: 90%;">( Cloud infrastructure, Container orchestration, IaC, DDD, Microservices architecture, DevOps, etc. )</span>
 
 <br>
 
@@ -45,17 +48,17 @@ Webアプリケーションのバックエンドとインフラの領域で **�
 
 ### ■ クリーンアーキテクチャ
 
-▶ https://github.com/hiroki-it/ddd-api-with-laravel （Clean-Arch，Laravel，GitHub Actions，...）
+▶ https://github.com/hiroki-it/ddd-api-with-laravel （ Clean-Arch，Laravel，GitHub Actions，など）
 
-▶ https://github.com/hiroki-it/ddd-api-with-go-gin （Clean-Arch，Gin，...）
+▶ https://github.com/hiroki-it/ddd-api-with-go-gin （ Clean-Arch，Gin，など）
 
-▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （Clean-Arch，Go，Serverless Framework，CircleCI，...）
+▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （ Clean-Arch，Go，Serverless Framework，CircleCI，など）
 
 ### ■ マイクロサービスアーキテクチャ
 
-▶ https://github.com/hiroki-it/microservices-backend （Microservices-Arch，...）
+▶ https://github.com/hiroki-it/microservices-backend （ Microservices-Arch，など）
 
-▶ https://github.com/hiroki-it/microservices-manifests （K8s，Istio，...）
+▶ https://github.com/hiroki-it/microservices-manifests （ K8s，Istio，など）
 
 <br>
 

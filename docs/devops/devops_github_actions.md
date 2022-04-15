@@ -1,5 +1,6 @@
 ---
-idade 
+title: 【知見を記録するサイト】GitHub Actions＠DevOps
+description: GitHub Actions＠DevOpsの知見をまとめました．
 ---
 
 # GitHub Actions＠DevOps
@@ -205,6 +206,16 @@ runs:
 
 参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ secrets.FOO }}
+```
+
 <br>
 
 ### Actionレベル（Environment）
@@ -222,7 +233,7 @@ runs:
 jobs:
   foo:
     runs-on: ubuntu-latest
-    env: FOO
+    environment: FOO
     steps:
       - name: Echo
         run: |
@@ -350,13 +361,15 @@ jobs:
           name: artifact
           path: ./foo
   bar:
+    needs: bar
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact # 展開するアーティファクトを設定する．
 ```
 
+<br>
