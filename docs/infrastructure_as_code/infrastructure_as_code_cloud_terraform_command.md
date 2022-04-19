@@ -40,7 +40,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を使用できないため，こちらのオプションが推奨である．
+実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を用いることができないため，こちらのオプションが推奨である．
 
 ```bash
 $ terraform init \

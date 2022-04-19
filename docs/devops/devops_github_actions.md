@@ -15,7 +15,7 @@ description: GitHub Actions＠DevOpsの知見をまとめました．
 
 ## 01. GitHub Actionsの仕組み
 
-要勉強...
+構造に関する記載が見つからず，要勉強...
 
 <br>
 
@@ -60,7 +60,7 @@ on:
 
 <br>
 
-## 05. jobs
+## 04. jobs
 
 ### jobsとは
 
@@ -152,19 +152,84 @@ jobs:
 
 <br>
 
-## 06. runs
+## 05. runs
 
 ### composite
 
 #### ▼ compositeとは
 
-stepsを別のファイルに切り分けられる．ファイル名は，```action.yml```ファイルとする必要がある．
+親ファイルの```steps```を別のファイルに切り分け，親ファイルでコールできる．```workflows```ディレクトリ以下に任意のサブディレクトリを用意し，そこに```action```ファイルを配置する．親ファイルでディレクトリを指定すると，```action```ファイルが自動的に読み込まれる．
+
+```bash
+project
+├── .github/
+│   └── workflows/
+│       ├── foo.yml
+│       └── composite/
+│           ├── bar/
+│           │   └── action.yml
+│           │
+│           ├── baz/
+│           │   └── action.yml
+...        ...
+```
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo
+        # compositeのディレクトリを指定する．
+        uses: ./.github/workflows/composite/bar
+```
+
+ファイル名は，『```action```』とする必要がある．
 
 ```bash
 Error: Can't find 'action.yml', 'action.yaml' ...
 ```
 
-#### ▼ 注意点
+#### ▼ Secretsは使用不可
+
+compositeでは，Secretsを使用できない．そのため，```input```キーのパラメーターとして渡す必要がある．
+
+参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo
+        uses: ./.github/workflows/composite/echo
+        # パラメーターで渡す．
+        with:
+          foo: ${{ secrets.FOO }}
+```
+
+```yaml
+inputs:
+  foo:
+    description: foo
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Echo
+      shell: bash
+      run: |
+        echo ${{ inputs.foo }}
+```
+
+<br>
+
+#### ▼ Checkoutは使用不可
 
 チェックアウト処理は定義できない．
 
@@ -180,7 +245,9 @@ runs:
         echo foo
 ```
 
-また，```shell```オプションでシェルの種類を指定する必要がある．
+#### ▼ シェルの種類を要指定
+
+もし```steps```を定義する場合は，```shell```キーでシェルの種類を指定する必要がある．
 
 参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
 
@@ -196,97 +263,19 @@ runs:
 
 <br>
 
-## 07. 環境変数
-
-### Projectレベル（Repository）
-
-#### ▼ Projectレベルとは
-
-リポジトリの設定のSecret項目に変数名と値を登録する．プロジェクト内，すなわちリポジトリ内で参照できる．
-
-参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
-
-```yaml
-jobs:
-  foo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo
-        run: |
-          echo ${{ secrets.FOO }}
-```
-
-<br>
-
-### Actionレベル（Environment）
-
-#### ▼ Actionレベルとは
-
-リポジトリの設定のEnvironment項目に変数名と値を登録する．GitHub Actionsでのみ参照できる．出力された変数はログでマスキングされる．Projectレベルとは異なり，```env```オプションに明示的に環境変数を渡す必要がある．
-
-参考：
-
-- https://btj0.com/blog/github/use-env/
-- https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
-
-```yaml
-jobs:
-  foo:
-    runs-on: ubuntu-latest
-    environment: FOO
-    steps:
-      - name: Echo
-        run: |
-          echo ${{ secrets.FOO }}
-```
-
-#### ▼ composite上での扱い
-
-compositeでは使用できず，```input```オプションで環境変数を渡す必要がある．
-
-参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
-
-```yaml
-jobs:
-  foo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Echo
-        uses: ./.github/workflows/composite/echo
-        with:
-          foo: ${{ secrets.FOO }}
-```
-
-なお，```inputs```オプションで渡した値はログに表示されてしまうため，```echo```コマンドを用いる場合は，```::add-mask::```オプションを変数の前で宣言する．これにより，以降の処理で変数の値はマスキングされる．```inputs```オプションを直接マスキングすることは2022/04現在は非対応である．
-
-参考：
-
-- https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
-- https://github.com/actions/runner/issues/643#issuecomment-708228940
-- https://github.com/actions/runner/issues/475#issuecomment-1092734499
-
-```yaml
-inputs:
-  foo:
-    required: true
-    
-runs:
-  using: "composite"
-  steps:
-    - name: Echo
-      shell: bash
-      run: |
-        FOO=$(jq -r '.inputs.foo' $GITHUB_EVENT_PATH)
-        echo "::add-mask::$FOO"
-```
-
-<br>
+## 06. 環境変数
 
 ### Workflowレベル
 
-定義されたYAMLファイル内でのみ参照できる．
+#### ▼ Workflowレベルとは
+
+定義された```workflow```（YAMLファイル）内でのみ参照できる．
+
+#### ▼ env
+
+環境変数を定義する．Secretの値を設定することはできない．
+
+参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 env:
@@ -306,7 +295,29 @@ jobs:
 
 ### Jobsレベル
 
+#### ▼ Jobsレベルとは
+
 定義された```jobs```キー内でのみ参照できる．
+
+#### ▼ env
+
+参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    env:
+      FOO: foo
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ env.FOO }}
+```
+
+#### ▼ 環境ファイル
+
+環境ファイル（```GITHUB_ENV```）に値を入力することで，```job```内の環境変数として用いることができるようになる．
 
 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
@@ -322,12 +333,161 @@ jobs:
           echo "FOO=foo" >> $GITHUB_ENV
       - name: Echo
         run: |
-          echo "${{ env.FOO }}"
+          echo $FOO
 ```
 
 <br>
 
-## 08. Actions
+### Stepレベル
+
+#### ▼ Stepレベルとは
+
+定義された```step```キー内でのみ参照できる．
+
+#### ▼ env
+
+参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        env:
+          FOO: foo
+        run: |
+          echo ${{ env.FOO }}
+```
+
+<br>
+
+## 06-02. Secret変数
+
+### Secret変数とは
+
+環境変数と同様にしてGitHub Actions内で用いることができる．また，```add-mask```コマンドと同様のマスキングが最初から実行されている．
+
+<br>
+
+### マスキング
+
+#### ▼ スコープ
+
+以降の全ての処理でマスキングが実行される．もちろん，```inputs```キーで渡した値にもマスキングが維持される．
+
+参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        uses: ./.github/workflows/composite/foo
+        with:
+          bar: ${{ secrets.FOO }}
+```
+
+```yaml
+inputs:
+  bar:
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Echo
+      shell: bash
+      run: |
+        FOO=${{ inputs.bar }}
+```
+
+これに関しては以前は非対応であったため，```add-mask```コマンドを用いた方法がネット上で見つかることに注意する．
+
+参考：
+
+- https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
+- https://github.com/actions/runner/issues/643#issuecomment-708228940
+- https://github.com/actions/runner/issues/475#issuecomment-1092734499
+
+#### ▼ 注意点
+
+注意点として，マスキングされる値と同じ文字列が用いられると，これもマスキングされる．そのため，例えば```input```キーでマスキングされた値と同じ文字列を用いてしまうと，YAMLファイルの構文解析でエラーになってしまう．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        uses: ./.github/workflows/composite/foo
+        with:
+          foo: ${{ secrets.FOO }}
+```
+
+```yaml
+inputs:
+  foo: # <--- マスキングされ，YAMLファイルの構文解析でエラーになる
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Echo
+      shell: bash
+      run: |
+        FOO=${{ inputs.foo }}
+```
+
+<br>
+
+### Projectレベル（Repository Secrets）
+
+#### ▼ Projectレベルとは
+
+リポジトリの設定のSecrets項目に変数名と値を登録する．プロジェクト内，すなわちリポジトリ内で参照できる．出力された変数の値は，以降の処理でマスキングされる．
+
+参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ secrets.FOO }}
+```
+
+<br>
+
+### Actionレベル（Environment Secrets）
+
+#### ▼ Actionレベルとは
+
+リポジトリの設定のEnvironment項目に変数名と値を登録する．GitHub Actionsでのみ参照できる．出力された変数の値は，以降の処理でマスキングされる．Projectレベルとは異なり，```env```キーに明示的に環境変数を渡す必要がある．
+
+参考：
+
+- https://btj0.com/blog/github/use-env/
+- https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    env: 
+      FOO: foo
+    steps:
+      - name: Echo
+        run: |
+          echo ${{ secrets.FOO }}
+```
+
+<br>
+
+## 07. Actions
 
 ### actionsパッケージ
 
@@ -370,6 +530,179 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: artifact # 展開するアーティファクトを設定する．
+```
+
+<br>
+
+## 08. ワークフローコマンド
+
+### add-mask
+
+#### ▼ add-maskとは
+
+変数の値をマスキングする．以降，ログに出力される場合は，『```***```』のようにアスタリスクで表示される．
+
+参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo
+        run: |
+          FOO=foo
+          echo "::add-mask::$FOO"
+          echo $FOO
+```
+
+<br>
+
+### set-output
+
+#### ▼ set-outputとは
+
+GitHub Actionsの独自パラメーターを入力する．
+
+参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          echo "::set-output name=FOO::foo"
+```
+
+#### ▼ 同じstep内では使用不可
+
+同じ```step```内で，パラメーターの入力と出力を行っても，値は空になる．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          echo "::set-output name=FOO::foo"
+          echo ${{ steps.foo_id.outputs.FOO }}
+```
+
+#### ▼ 異なるstep間での共有
+
+入力したパラメーターは，異なる```step```の間で出力することができる．
+
+参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          echo "::set-output name=FOO::foo"
+      - name: Echo
+        run: |
+          echo "${{ steps.foo_id.outputs.FOO }}"         
+```
+
+Secretsや```add-mask```コマンドでマスキングされた値も共有でき，またマスキングを維持できる．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          FOO=foo
+          echo "::add-mask::$FOO"
+          echo "::set-output name=FOO::$FOO"
+      - name: Echo
+        # 共有可能．マスキング維持可能．
+        run: |
+          echo "${{ steps.foo_id.outputs.FOO }}"         
+```
+
+#### ▼ 異なるjob間での共有
+
+入力したパラメーターは，異なる```job```の間で出力することができる．先に実行される```job```キーの```output```キーに入力する必要がある．
+
+参考：
+
+- https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+- https://swfz.hatenablog.com/entry/2020/04/18/160235
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          echo "::set-output name=FOO::foo"
+    # 後続のjobに渡すパラメーター
+    output:
+        FOO: ${{ steps.foo_id.outputs.FOO }}
+  bar:
+    runs-on: ubuntu-latest
+    needs: foo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Echo
+        run: |
+          echo "${{ needs.foo.outputs.FOO }}"         
+```
+
+ただし異なる```job```では，Secretsや```add-mask```コマンドでマスキングされた値は共有できず，空になってしまう．
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: foo_id
+        run: |
+          FOO=foo
+          echo "::add-mask::$FOO"
+          echo "::set-output name=FOO::$FOO"
+    output:
+        FOO: ${{ steps.foo_id.outputs.FOO }}
+  bar:
+    runs-on: ubuntu-latest
+    needs: foo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # 空になってしまう．
+      - name: Echo
+        run: |
+          echo "${{ needs.foo.outputs.FOO }}"         
 ```
 
 <br>

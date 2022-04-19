@@ -234,7 +234,7 @@ Kubernetesリソースのデプロイ手法を定義する．
 
 #### ▼ kubectlとは
 
-kubectlを用いて，Kubernetesリソースをデプロイする．ワイルドカードを使用できる．
+kubectlを用いて，Kubernetesリソースをデプロイする．ワイルドカードを用いることができる．
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
@@ -243,7 +243,7 @@ deploy:
   kubectl:
     manifests:
       - ./release/dev/kubernetes.yaml
-      - ./**/**/**.yaml # ワイルドカードを使用できる．
+      - ./**/**/**.yaml # ワイルドカードを用いることができる．
 ```
 
 <br>
