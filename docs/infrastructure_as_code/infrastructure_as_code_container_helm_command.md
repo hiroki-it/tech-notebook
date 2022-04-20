@@ -245,8 +245,6 @@ foo:
 $ helm template <リリース名> <チャートアーカイブへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
 ```
 
-
-
 <br>
 
 ### uninstall

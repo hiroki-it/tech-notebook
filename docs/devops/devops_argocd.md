@@ -300,8 +300,6 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -341,8 +339,6 @@ spec:
 | ```exclude``` | ```path```オプションで指定したディレクトリ内で，特定のマニフェストファイルを除外する． |
 | ```recurse``` | ```path```オプションで指定したディレクトリにサブディレクトリが存在している場合に，全てのマニフェストファイルを指定できるように，ディレクトリ内の再帰的検出を有効化する． |
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -360,7 +356,7 @@ spec:
 
 GitHub上の監視対象のディレクトリを設定する．
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -378,8 +374,6 @@ spec:
 マニフェストリポジトリのURLを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-
-**＊実装例＊**
 
 マニフェストリポジトリとしてGitHubを指定する場合は，以下の通り．
 
@@ -399,8 +393,6 @@ spec:
 リポジトリで，監視対象とするブランチやバージョンタグを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -429,7 +421,7 @@ metadata:
   name: argocd-application
 spec:
   source:
-    chart: foo
+    chart: foo-chart
 ```
 
 #### ▼ helm
@@ -459,30 +451,13 @@ spec:
         - prd-values.yaml
 ```
 
-#### ▼ path
-
-生成するチャートアーカイブを設定する．
-
-**＊実装例＊**
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: argocd-application
-spec:
-  source:
-    path: ./kubernetes-chart
-```
-
 #### ▼ repoURL
 
 チャートリポジトリのURLを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 
-チャートリポジトリとしてGitHubを指定する場合は，以下の通り．
+チャートリポジトリとして，GitHubを指定する場合に，リポジトリのURLを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -492,10 +467,10 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+    repoURL: https://github.com/hiroki-hasegawa/foo-chart.git
 ```
 
-チャートリポジトリとしてAWS ECRを指定する場合は，以下の通り．別途，ECRへのログインが必要なことに注意する．
+チャートリポジトリとして，AWS ECRを指定する場合に，ECRのURLを設定する．別途，ECRへのログインが必要なことに注意する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
 
@@ -507,16 +482,14 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: oci://*****.dkr.ecr.*****.amazonaws.com/foo-charts
+    repoURL: oci://<アカウントID>.dkr.ecr.<リージョン>.amazonaws.com/foo-chart
 ```
 
 #### ▼ targetRevision
 
-GitHubをチャートリポジトリとしている場合に，監視対象とするブランチやバージョンタグを設定する．
+チャートリポジトリとして，GitHubを指定する場合に，監視対象とするブランチやバージョンタグを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -527,6 +500,21 @@ metadata:
 spec:
   source:
     targetRevision: main
+```
+
+チャートリポジトリとして，AWS ECRを指定する場合に，チャートのバージョンを設定する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#declarative
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    targetRevision: 1.0.0
 ```
 
 <br>
@@ -543,7 +531,7 @@ spec:
 
 デプロイ先の名前空間を設定する．
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -560,7 +548,7 @@ spec:
 
 デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -598,7 +586,7 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 | ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない．                                           |
 | ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -630,7 +618,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ```PrunePropagationPolicy``` |                                                              |
 | ```PruneLast```              |                                                              |
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -708,7 +696,7 @@ spec:
 | ```previewService```        | グリーン環境へのルーティングに用いるServiceを設定する．                                                          |
 | ```scaleDownDelaySeconds``` |                                                                                          |
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -740,7 +728,7 @@ spec:
 |------------|-----------------------------------------------------------------------------------------------------|
 | ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
 
-**＊実装例＊**
+
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
