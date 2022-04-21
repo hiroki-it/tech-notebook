@@ -21,7 +21,7 @@ title: 【知見を記録するサイト】アプリケーション間通信
 
 ### 非同期通信とは
 
-非同期処理の一種である．そのため，通信の完了を待たずに後続の処理が始まる．後続の全処理が非同期通信と無関係であれば，そのままで問題は起こらない．しかし，後続の処理に非同期通信の結果を用いるものが含まれている場合，この処理だけは非同期通信の後に実行されるように定義する必要がある．特定の処理が非同期通信の後に実行されるように定義する方法については，以下のリンクを参考にせよ．
+非同期処理の一種である．そのため，通信の完了を待たずに後続の処理が始まる．後続の全処理が非同期通信と無関係であれば，そのままで問題は起こらない．しかし，後続の処理に非同期通信の結果を使用するものが含まれている場合，この処理だけは非同期通信の後に実行されるように定義する必要がある．特定の処理が非同期通信の後に実行されるように定義する方法については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
 
@@ -49,7 +49,7 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 8. 非同期通信メソッドがバックエンドからレスポンスを受信する．
 9. JSONがJavaScript型オブジェクトに変換される．
 10. オブジェクトがマークアップ言語に出力される．
-11. DOMを用いて，Webページを再び構成する．
+11. DOMを使用して，Webページを再び構成する．
 
 #### ▼ 実装方法の種類
 
@@ -57,7 +57,7 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 
 | オブジェクト/メソッド                | 提供                   | 説明                                                         | 補足                                                         |
 | ------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| xhrオブジェクト     | ビルトインオブジェクト | 今では用いることは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
+| xhrオブジェクト     | ビルトインオブジェクト | 今では使用することは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
 | ```fetch```メソッド | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
 | JQueryオブジェクト  | JQueryパッケージ       |                                                              | 参考：<br>・https://api.jquery.com/category/ajax/shorthand-methods/<br>・https://api.jquery.com/jquery.ajax |
 | axiosオブジェクト   | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |

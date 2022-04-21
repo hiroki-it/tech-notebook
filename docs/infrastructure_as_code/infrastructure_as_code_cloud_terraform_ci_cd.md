@@ -48,7 +48,7 @@ Terraformには，インフラのバージョンのロールバック機能が�
 
 
 
-## 02. CircleCIを用いたCI/CD
+## 02. CircleCIを使用したCI/CD
 
 ### 要素
 
@@ -287,7 +287,7 @@ workflows:
 
 #### ▼ ```assume_role.sh```ファイル
 
-Assume Roleを実行し，CircleCIで用いるIAMユーザーにロールを一時的に委譲する．
+Assume Roleを実行し，CircleCIで使用するIAMユーザーにロールを一時的に委譲する．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
@@ -467,7 +467,7 @@ terraformの```terraform plan```コマンドまたは```terraform apply```コマ
 
 #### ▼ --config
 
-設定ファイルを用いて，tfnotifyを実行する．
+設定ファイルを使用して，tfnotifyを実行する．
 
 **＊実装例＊**
 

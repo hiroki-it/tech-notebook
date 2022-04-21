@@ -39,7 +39,7 @@ VMware Workstation，Oracle VM VirtualBox，など
 
 #### ▼ ハイパーバイザー型仮想化とは
 
-物理サーバーのBIOSから起動したハイパーバイザー上で，仮想サーバー（仮想マシン）を構築する．この時，ホストは用いない．
+物理サーバーのBIOSから起動したハイパーバイザー上で，仮想サーバー（仮想マシン）を構築する．この時，ホストは使用しない．
 
 #### ▼ Provider例
 
@@ -53,7 +53,7 @@ VMware vSphere Hypervisor，Xen，KVM，など
 
 #### ▼ コンテナ型仮想化とは
 
-物理サーバーのホスト上で，仮想サーバーと同様の機能を持つコンテナを構築する．カーネルのリソースを分割できるNamespace（PID namespace，Network namespace，UID namespace）とControl Groupsを用いて，単一のOS上に独立したコンテナを構築する．
+物理サーバーのホスト上で，仮想サーバーと同様の機能を持つコンテナを構築する．カーネルのリソースを分割できるNamespace（PID namespace，Network namespace，UID namespace）とControl Groupsを使用して，単一のOS上に独立したコンテナを構築する．
 
 → DockerToolboxがちょい違う
 
@@ -69,7 +69,7 @@ Docker，LXC，OpenVZ，など
 
 ### 起動速度の違い
 
-ホスト型とハイパーバイザ型では，ハードウェア（CPU，メモリ，ハードディスク）とゲストOSを仮想化することが必要である．一方で，コンテナ型では，ハードウェアとゲストOSの仮想化は行わず，namespaceを用いてコンテナを構成するため，その分起動が速い．
+ホスト型とハイパーバイザ型では，ハードウェア（CPU，メモリ，ハードディスク）とゲストOSを仮想化することが必要である．一方で，コンテナ型では，ハードウェアとゲストOSの仮想化は行わず，namespaceを使用してコンテナを構成するため，その分起動が速い．
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
@@ -85,7 +85,7 @@ Docker，LXC，OpenVZ，など
 
 #### ▼ Overheadの比較
 
-sysbenchというベンチマークツールを用いて，CPU・メモリ・ファイルI/Oに着目し，物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると，コンテナ型であるDockerは最もOverheadが小さい．
+sysbenchというベンチマークツールを使用して，CPU・メモリ・ファイルI/Oに着目し，物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると，コンテナ型であるDockerは最もOverheadが小さい．
 
 ![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 

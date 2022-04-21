@@ -27,7 +27,7 @@ description: 組み込み機器の知見をまとめました．
 
 ### マイクロコンピュータとは
 
-CPUとして，『マイクロプロセッサ』を用いたコンピュータのこと．
+CPUとして，『マイクロプロセッサ』を使用したコンピュータのこと．
 
 ![マイコン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マイコン.png)
 
@@ -202,7 +202,7 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 <br>
 
-### Serial interface が用いられている例
+### Serial interface を使用している例
 
 #### ▼ USB（Universal Serial Bus）
 
@@ -210,23 +210,23 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 #### ▼ IEEE1394
 
-ビデオカメラとの接続に用いられるインターフェイス
+ビデオカメラとの接続に使用されるインターフェイス
 
 ![ieeeケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ieeeインターフェイス.jpg)
 
 <br>
 
-### Parallel interface が用いられている例
+### Parallel interface を使用している例
 
 #### ▼ IDE（Integrated Drive Electronics）
 
-ハードディスクとの接続に用いられるインターフェイス．
+ハードディスクとの接続に使用されるインターフェイス．
 
 ![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ideインターフェイス.jpg)
 
 #### ▼ SCSI（Small Computer System Interface）
 
-ハードディスク，CD-ROM，イメージスキャナなど，様々な周辺機器をデイジーチェーンするために用いるインターフェイス．
+ハードディスク，CD-ROM，イメージスキャナなど，様々な周辺機器をデイジーチェーンするために使用するインターフェイス．
 
 ![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsiインターフェイス.jpg)
 

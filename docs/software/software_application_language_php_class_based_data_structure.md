@@ -82,7 +82,7 @@ Array
 
 ### LinkedList型
 
-PHPで用いることはあまりないデータ格納様式．詳しくは，JavaにおけるLinkedList型を参考にせよ．
+PHPで使用することはあまりないデータ格納様式．詳しくは，JavaにおけるLinkedList型を参考にせよ．
 
 #### ▼ PHPの```list```メソッドとは何なのか
 
@@ -101,7 +101,7 @@ $u = $array[2];
 echo $a.$i.$u; // あいう
 ```
 
-しかし，以下の様に，```list```メソッドを用いることによって，複数の変数への格納を一行で実装できる．
+しかし，以下の様に，```list```メソッドを使用することによって，複数の変数への格納を一行で実装できる．
 
 **＊実装例＊**
 
@@ -170,7 +170,7 @@ echo $theFirst; // Blue
 
 #### ▼ メッセージQueue
 
-送信側の好きなタイミングでファイル（メッセージ）をメッセージQueueに追加できる．また，受信側の好きなタイミングでメッセージを取り出すことができる．
+送信側の好きなタイミングでファイル（メッセージ）をメッセージQueueに追加できる．また，受信側の好きなタイミングでメッセージを取り出せる．
 
 ![メッセージキュー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メッセージキュー.jpg)
 
@@ -206,7 +206,7 @@ PHPでは，```array_push```メソッドと```array_pop```メソッドで実装�
 
 #### ▼ ヒープ
 
-  Priority Queueを実現するときに用いられる．各ノードにデータが格納されている．
+  Priority Queueを実現するときに使用される．各ノードにデータが格納されている．
 
 ![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ1.gif)
 

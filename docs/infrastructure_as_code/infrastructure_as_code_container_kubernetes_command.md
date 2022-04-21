@@ -266,7 +266,7 @@ secret/foo-secret created
 
 #### ▼ describeとは
 
-リソースの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを用いる．
+リソースの詳細な情報を参照する．簡易的な情報を参照する時は，```kubectl get```コマンドを使用する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
@@ -345,7 +345,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 #### ▼ getとは
 
-リソースの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを用いる．
+リソースの簡易的な情報を参照する．詳細な情報を参照する時は，```kubectl describe```コマンドを使用する．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
@@ -552,7 +552,7 @@ $ kubectl get pv \
 
 #### ▼ port-forwardとは
 
-ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを用いてPod内のDBコンテナにTCP/IP接続したい場合に用いる．
+ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する．
 
 参考：
 

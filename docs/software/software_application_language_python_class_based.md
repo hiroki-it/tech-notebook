@@ -60,7 +60,7 @@ class Bar(Foo):
 
 <br>
 
-## 02. use（引数型/返却値型として用いる関係性）
+## 02. use（引数型/返却値型として使用する関係性）
 
 ### DI：Dependency Injection（依存オブジェクト注入）
 

@@ -107,7 +107,7 @@ MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/m
 
 #### ▼ ```datadir```ディレクトリ
 
-MySQLのDBやテーブルの情報を管理する．基本的には```/var/lib/mysql```ディレクトリを用いるように設定されている．DB固有の情報は，DB名のディレクトリで管理されている．dockerエリアのマウントポイントとして指定される．
+MySQLのDBやテーブルの情報を管理する．基本的には```/var/lib/mysql```ディレクトリを使用するように設定されている．DB固有の情報は，DB名のディレクトリで管理されている．dockerエリアのマウントポイントとして指定される．
 
 ```bash
 [root@<コンテナID>:/var/lib/mysql] $ ls -la
@@ -234,7 +234,7 @@ general_log_file = mysql-general.log
 
 ### log_queries_not_using_indexes
 
-DBインデックスを用いるかどうかを設定する．
+DBインデックスを使用するかどうかを設定する．
 
 ```ini
 [mysqld]

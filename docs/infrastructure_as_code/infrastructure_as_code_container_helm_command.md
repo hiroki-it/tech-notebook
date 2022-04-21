@@ -100,7 +100,7 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した```values```ファイル用いて，```helm install```コマンドを実行する．
+指定した```values```ファイル使用して，```helm install```コマンドを実行する．
 
 参考：https://helm.sh/docs/helm/helm_install/#options
 
@@ -130,7 +130,7 @@ $ helm lint <チャートへのパス>
 
 #### ▼ -f
 
-指定した```values```ファイル用いて，```helm lint```コマンドを実行する．
+指定した```values```ファイル使用して，```helm lint```コマンドを実行する．
 
 ```bash
 $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
@@ -176,7 +176,7 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 
 #### ▼ listとは
 
-Helmを用いてデプロイしたリソースの一覧を表示する．
+Helmを使用してデプロイしたリソースの一覧を表示する．
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -225,7 +225,7 @@ $ helm template <リリース名> <チャートアーカイブへのパス> >| <
 
 #### ▼ -f
 
-指定した```values```ファイル用いて，```helm template```コマンドを実行する．
+指定した```values```ファイル使用して，```helm template```コマンドを実行する．
 
 ```bash
 $ helm template <リリース名> <チャートアーカイブへのパス> -f <valuesファイルへのパス> >| <出力先ファイル> --set foo.bar=baz

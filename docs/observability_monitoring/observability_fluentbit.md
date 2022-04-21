@@ -19,7 +19,7 @@ description: FluentBit＠可観測性の知見をまとめました．
 
 ![fluent-bit_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture.png)
 
-Fluentdから概念図を拝借した．収集されたログはまずインプットされる．メモリ/ファイルがバッファーとして用いられ，ログはチャンクとしてステージに蓄えられる．ステージに一定量のチャンクが蓄えられるか，または一定時間が経過すると，チャンクはキューに格納される．キューは，指定された宛先にログを順番にルーティングする．プロセスが再起動されると，メモリ/ファイルに蓄えられたログは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
+Fluentdから概念図を拝借した．収集されたログはまずインプットされる．メモリ/ファイルがバッファーとして使用され，ログはチャンクとしてステージに蓄えられる．ステージに一定量のチャンクが蓄えられるか，または一定時間が経過すると，チャンクはキューに格納される．キューは，指定された宛先にログを順番にルーティングする．プロセスが再起動されると，メモリ/ファイルに蓄えられたログは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
 
@@ -175,7 +175,7 @@ Fluent Bit v1.8.6
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-プラグインを用いて，ログのインプット方法を設定する．
+プラグインを使用して，ログのインプット方法を設定する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
@@ -318,9 +318,9 @@ $ /fluent-bit/bin/fluent-bit \
 [INPUT]
     # プラグイン名
     Name              tail
-    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを用いることができる．
+    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
     Path              /var/www/foo/storage/logs/*.log
-    # 用いるパーサー名
+    # 使用するパーサー名
     multiline.parser  laravel-multiline-parser
 ```
 
@@ -471,7 +471,7 @@ $ fluent-bit \
     # マッチさせるログ
     match                 *
     multiline.key_content log
-    # 用いるパーサー名
+    # 使用するパーサー名
     multiline.parser      laravel
 ```
 
@@ -535,7 +535,7 @@ Laravelのスタックトレースを結合する．
 
 #### ▼ parserプラグインとは
 
-マッチしたログを解析し，正規表現の名前付きキャプチャ機能（```?<foo>```）を用いて新しいキーに文字列を抽出する．
+マッチしたログを解析し，正規表現の名前付きキャプチャ機能（```?<foo>```）を使用して新しいキーに文字列を抽出する．
 
 参考：
 
@@ -548,7 +548,7 @@ FluentBitでの名前付きキャプチャについては，Fluentdのドキュ�
 
 #### ▼ バリデーション
 
-FluentBitは，内部的にはruby製関数を用いて正規表現を検証している．そのため，これを確認できるバリデーションツールを用いる．
+FluentBitは，内部的にはruby製関数を使用して正規表現を検証している．そのため，これを確認できるバリデーションツールを使用する．
 
 参考：http://rubular.com/
 
@@ -640,7 +640,7 @@ STREAM_TASKセッションは，独自のSQLステートメントで定義され
 
 #### ▼ CREATE STREAM
 
-SELECTステートメントの結果を用いて，データストリームを作成する．
+SELECTステートメントの結果を使用して，データストリームを作成する．
 
 参考：
 
@@ -713,7 +713,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 #### ▼ storage.type
 
-バッファーとして用いる媒体を設定する．
+バッファーとして使用する媒体を設定する．
 
 **＊実装例＊**
 
@@ -829,7 +829,7 @@ Outputs
 
 #### ▼ セットアップ
 
-AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを用いる．
+AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する．
 
 参考：https://github.com/aws/aws-for-fluent-bit
 
@@ -843,7 +843,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 #### ▼ セットアップ
 
-cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを用いる．
+cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを使用する．
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
@@ -950,7 +950,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ kinesis_firehoseプラグインとは
 
-ログをKinesisFirehoseにルーティングする．kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを用いる．
+ログをKinesisFirehoseにルーティングする．kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを使用する．
 
 参考：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 
@@ -960,7 +960,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ kinesis_streamsプラグインとは
 
-ログをKinesisStreamsにルーティングする．kinesis_streamsプラグインがあらかじめインストールされているベースイメージを用いる．
+ログをKinesisStreamsにルーティングする．kinesis_streamsプラグインがあらかじめインストールされているベースイメージを使用する．
 
 参考：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
 
@@ -974,7 +974,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ セットアップ
 
-newRelicプラグインがあらかじめインストールされているベースイメージを用いる．
+newRelicプラグインがあらかじめインストールされているベースイメージを使用する．
 
 参考：https://github.com/newrelic/newrelic-fluent-bit-output
 

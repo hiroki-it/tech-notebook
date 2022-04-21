@@ -40,7 +40,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を用いることができないため，こちらのオプションが推奨である．
+実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を使用できないため，こちらのオプションが推奨である．
 
 ```bash
 $ terraform init \
@@ -121,7 +121,7 @@ main.tf
 
 ### graph
 
-rosource間の依存関係をグラフ化する．これにより，どのresourceが他のどのresourceを用いているかがわかる．Graphvizのダウンロードが必要である．
+rosource間の依存関係をグラフ化する．これにより，どのresourceが他のどのresourceを使用しているかがわかる．Graphvizのダウンロードが必要である．
 
 参考：https://graphviz.org/download/
 
@@ -143,7 +143,7 @@ $ terraform import \
     <リソースタイプ>.<リソース名> <クラウドプロバイダー上リソースID>
 ```
 
-モジュールを用いている場合，指定の方法が異なる．
+モジュールを使用している場合，指定の方法が異なる．
 
 ```bash
 $ terraform import \
@@ -283,7 +283,7 @@ $ terraform plan \
     -target=<リソースタイプ>.<リソース名>
 ```
 
-モジュールを用いている場合，指定の方法が異なる．
+モジュールを使用している場合，指定の方法が異なる．
 
 ```bash
 $ terraform plan \
@@ -315,7 +315,7 @@ $ terraform plan \
 
 #### ▼ -out
 
-実行プランファイルを生成する．```terraform apply```コマンドのために用いることができる．
+実行プランファイルを生成する．```terraform apply```コマンドのために使用できる．
 
 ```bash
 $ terraform plan \
@@ -358,7 +358,7 @@ $ terraform apply \
     -target=<リソースタイプ>.<リソース名>
 ```
 
-モジュールを用いている場合，指定の方法が異なる．
+モジュールを使用している場合，指定の方法が異なる．
 
 ```bash
 $ terraform apply \

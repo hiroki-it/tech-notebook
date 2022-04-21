@@ -170,7 +170,7 @@ DBからフロント出力までに至る実装をコミットする場合，以
 
 #### ▼ mainブランチ（production）
 
-本番環境に機能をデプロイするためのブランチ．productionブランチとしても良い．CI/CDツールを用いて，バージョンタグの付与によってデプロイが発火する．
+本番環境に機能をデプロイするためのブランチ．productionブランチとしても良い．CI/CDツールを使用して，バージョンタグの付与によってデプロイが発火する．
 
 #### ▼ hotfixブランチ
 
@@ -194,7 +194,7 @@ DBからフロント出力までに至る実装をコミットする場合，以
 
 #### ▼ developブランチ（staging）
 
-ステージング環境に機能をデプロイするためのブランチ．stagingブランチとしても良い．CI/CDツールを用いて，コミット（マージコミットを含む）によってデプロイが発火する．
+ステージング環境に機能をデプロイするためのブランチ．stagingブランチとしても良い．CI/CDツールを使用して，コミット（マージコミットを含む）によってデプロイが発火する．
 
 #### ▼ featureブランチ
 
@@ -245,7 +245,7 @@ DBからフロント出力までに至る実装をコミットする場合，以
 
 ### 解決方法
 
-#### ▼ Gitを用いて
+#### ▼ Gitを使用して
 
 （１）```git status```を行い，特定のファイルでのコンフリクトが表示される．
 
@@ -298,7 +298,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 参考：http://www-creators.com/archives/1938
 
-#### ▼ GitHubを用いて
+#### ▼ GitHubを使用して
 
 PullReq上に『Resolve conflicts』ボタンが出現し，ここからコンフリクトを修正できる．
 
@@ -307,9 +307,9 @@ PullReq上に『Resolve conflicts』ボタンが出現し，ここからコン�
 - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
 - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315
 
-#### ▼ エディタを用いて
+#### ▼ エディタを使用して
 
-エディタの例として，PHPStormを用いる．一番簡単かもしれない．
+エディタの例として，PHPStormを使用する．一番簡単かもしれない．
 
 <br>
 

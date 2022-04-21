@@ -34,7 +34,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ### アプリケーションリポジトリ起点
 
-#### ▼ テンプレート構成管理ツールを用いない場合
+#### ▼ テンプレート構成管理ツールを使用しない場合
 
 ![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
 
@@ -52,7 +52,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
-#### ▼ テンプレート構成管理ツールを用いた場合
+#### ▼ テンプレート構成管理ツールを使用した場合
 
 ![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
 
@@ -272,9 +272,9 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 ### 開発環境での動作確認
 
-#### ▼ 別のデプロイツールを用いる
+#### ▼ 別のデプロイツールを使用する
 
-実装が複雑になることを避けるため，開発環境に対するデプロイには，ArgoCD以外のツールを用いる．
+実装が複雑になることを避けるため，開発環境に対するデプロイには，ArgoCD以外のツールを使用する．
 
 （例）Skaffold
 
@@ -411,7 +411,7 @@ spec:
 
 #### ▼ chart
 
-用いるチャートを設定する．
+使用するチャートを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -435,7 +435,7 @@ spec:
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```releaseName``` | デプロイするリリース名を設定する．                           |                                                              |
 | ```values```      | デフォルト値を，```values```ファイルとしてではなく，ArgoCDのマニフェストファイルにハードコーディングして定義する． |                                                              |
-| ```valueFiles```  | デプロイ時に用いる```values```ファイルを設定する．           | ```values```ファイルは，チャートと同じリポジトリにある必要がある． |
+| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する．           | ```values```ファイルは，チャートと同じリポジトリにある必要がある． |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -640,7 +640,7 @@ spec:
 
 #### ▼ analysisとは
 
-Progressive Deliveryを用いる場合に，詳細を設定する．
+Progressive Deliveryを使用する場合に，詳細を設定する．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -680,7 +680,7 @@ spec:
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
-ブルーグリーンデプロイメントを用いて，新しいPodをリリースする．
+ブルーグリーンデプロイメントを使用して，新しいPodをリリースする．
 
 参考：
 
@@ -689,11 +689,11 @@ spec:
 
 | オプション                       | 説明                                                                                       |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| ```activeService```         | ブルー環境へのルーティングに用いるServiceを設定する．                                                           |
+| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する．                                                           |
 | ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する．もし無効化した場合，```autoPromotionSeconds```の秒数だけ切り替えを待機する． |
 | ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する．          |
 | ```previewReplicaCount```   | グリーン環境のPod数を設定する．                                                                        |
-| ```previewService```        | グリーン環境へのルーティングに用いるServiceを設定する．                                                          |
+| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する．                                                          |
 | ```scaleDownDelaySeconds``` |                                                                                          |
 
 
@@ -717,7 +717,7 @@ spec:
 
 ![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
 
-カナリアリリースを用いて，新しいPodをリリースする．
+カナリアリリースを使用して，新しいPodをリリースする．
 
 参考：
 

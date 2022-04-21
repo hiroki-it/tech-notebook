@@ -52,7 +52,7 @@ title: 【知見を記録するサイト】ソフトウェア開発手法論
 
 ### RADとは
 
-Visual Basicなどの開発支援ツールを用いて，短期間で設計～テストまでを繰り返す開発方法．
+Visual Basicなどの開発支援ツールを使用して，短期間で設計～テストまでを繰り返す開発方法．
 
 ![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-1.png)
 

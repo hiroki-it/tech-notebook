@@ -67,8 +67,8 @@ JavaScriptで，非同期処理の成否を管理し，後続する処理を定�
 | リリース日 | 提供                                 | 種類                | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------ | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 2012       | JQueryパッケージのDeferredモジュール | Promiseオブジェクト | バージョン1.5でPromiseオブジェクトが導入された．<br>参考：https://api.jquery.com/category/version/1.5/ | 参考：https://api.jquery.com/category/deferred-object/       |
-| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく用いることができるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
-| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく用いることができるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく使用できるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
+| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく使用できるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
 <br>
 
@@ -95,9 +95,9 @@ const asyncFunc = () => {
 
 ### ```resolve```メソッド，```reject```メソッド
 
-#### ▼ コンストラクタを用いる場合
+#### ▼ コンストラクタを使用する場合
 
-Promiseオブジェクトのコンストラクタ内では，暗黙的に```try-catch```が実行されている．そのため，結果のステータスが成功であれば```resolve```メソッドの結果を返却し，反対に失敗であれば```reject```メソッドを返却する．両方を実装すると良しなに実行してくれる．```resolve```メソッドと```resolve```メソッドのコール時に```return```を用いないと，後続する処理も実行される．1つ目の書き方として，Promiseインスタンスのコールバック関数に渡す方法がある．
+Promiseオブジェクトのコンストラクタ内では，暗黙的に```try-catch```が実行されている．そのため，結果のステータスが成功であれば```resolve```メソッドの結果を返却し，反対に失敗であれば```reject```メソッドを返却する．両方を実装すると良しなに実行してくれる．```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと，後続する処理も実行される．1つ目の書き方として，Promiseインスタンスのコールバック関数に渡す方法がある．
 
 ```javascript
 const asyncFunc = () => {
@@ -120,7 +120,7 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-一方で，```resolve```メソッドと```resolve```メソッドのコール時に```return```を用いると，後続する処理は実行されない．
+一方で，```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用すると，後続する処理は実行されない．
 
 ```javascript
 const asyncFunc = () => {
@@ -140,9 +140,9 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-#### ▼ コンストラクタを用いない場合
+#### ▼ コンストラクタを使用しない場合
 
-別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしても良い．この場合，必ず```return```で返却する必要がある．```return```を用いないと，何も返却されない．
+別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしても良い．この場合，必ず```return```で返却する必要がある．```return```を使用しないと，何も返却されない．
 
 ```javascript
 const asyncFunc = () => {
@@ -198,7 +198,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 ```
 
-補足として，NodeのHTTPパッケージの関数は，Promiseインスタンスのコールバック関数として用いないと，正しく挙動しない．
+補足として，NodeのHTTPパッケージの関数は，Promiseインスタンスのコールバック関数として使用しないと，正しく挙動しない．
 
 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 
@@ -206,7 +206,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 ### ```then```メソッド，```catch```メソッド，```finally```メソッド
 
-#### ▼ コンストラクタを用いる場合
+#### ▼ コンストラクタを使用する場合
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -263,7 +263,7 @@ rejectFunc.catch((err) => {
 
 #### ▼ async宣言とは
 
-Promiseオブジェクトを明示的に用いる場合，Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある．一方で，async宣言された関数内の非同期処理は，Promiseオブジェクトに渡すための関数内に暗黙的に定義される．Promiseや，これのコントラクタに渡す関数を実装する必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
+Promiseオブジェクトを明示的に使用する場合，Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある．一方で，async宣言された関数内の非同期処理は，Promiseオブジェクトに渡すための関数内に暗黙的に定義される．Promiseや，これのコントラクタに渡す関数を実装する必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
@@ -303,7 +303,7 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-また，axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを用いても良い．
+また，axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを使用しても良い．
 
 **＊実装例＊**
 
@@ -330,7 +330,7 @@ const asyncFunc = async () => {
 **＊実装例＊**
 
 ```javascript
-// Promiseオブジェクトのthenメソッドを用いた場合
+// Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
 
     axios.get("/some/path").then((res) => {
@@ -338,7 +338,7 @@ const asyncFunc = async () => {
     });
 }
 
-// awaitを用いた場合
+// awaitを使用した場合
 const asyncFunc = async () => {
 
     // 以降の全処理がthenメソッドに渡される．
@@ -352,7 +352,7 @@ const asyncFunc = async () => {
 await宣言により，コールバック地獄のコードが分かりやすくなる．
 
 ```js
-// Promiseオブジェクトのthenメソッドを用いた場合
+// Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
 
     // コールバック関数地獄になっている．
@@ -365,7 +365,7 @@ const asyncFunc = async () => {
     })
 }
 
-// awaitを用いた場合
+// awaitを使用した場合
 const asyncFunc = async () => {
 
     const res1 = await axios.get("/some/path1");
@@ -382,7 +382,7 @@ const asyncFunc = async () => {
 
 #### ▼ try-catch
 
-Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを用いてエラーハンドリングを実装できるが，try-catch文とawait宣言を組み合わせて，より可読性高く実装できる．
+Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，try-catch文とawait宣言を組み合わせて，より可読性高く実装できる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -449,7 +449,7 @@ Promiseオブジェクトがもつメソッド．```ajax```メソッドによっ
 
 **＊実装例＊**
 
-JQueryパッケージの```get```メソッドや```post```メソッドを用いた場合．
+JQueryパッケージの```get```メソッドや```post```メソッドを使用した場合．
 
 ```javascript
 const url = "https://www.google.co.jp/";
@@ -479,7 +479,7 @@ $.post(url, params)
     });
 ```
 
-JQueryパッケージの```ajax```メソッドを用いた場合．
+JQueryパッケージの```ajax```メソッドを使用した場合．
 
 ```javascript
 const id = 1;
@@ -512,11 +512,11 @@ $.ajax({
 
 #### ▼ ```then```メソッド
 
-Promiseオブジェクトがもつメソッド．```ajax```メソッドによってレスポンスを受信した後，その結果を```then```メソッドの引数の順番で分類し，これに応じたコールバック処理を実行する方法．非同期処理の後に同期処理を行いたい場合に用いる．
+Promiseオブジェクトがもつメソッド．```ajax```メソッドによってレスポンスを受信した後，その結果を```then```メソッドの引数の順番で分類し，これに応じたコールバック処理を実行する方法．非同期処理の後に同期処理を行いたい場合に使用する．
 
 **＊実装例＊**
 
-JQueryパッケージの```ajax```メソッドを用いた場合．
+JQueryパッケージの```ajax```メソッドを使用した場合．
 
 ```javascript
 const id = 1;

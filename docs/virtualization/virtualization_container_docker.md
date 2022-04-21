@@ -29,7 +29,7 @@ Dockerは，ホストOS，ベースイメージ，イメージレイヤー，コ
 
 ![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
 
-イメージレイヤーの実体は，```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている．Dockerは，オーバーレイファイルシステムを用いて，各ファイルを層状に管理する．一つの命令につき，１つのイメージレイヤーを積み重ねるようになっている．
+イメージレイヤーの実体は，```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている．Dockerは，オーバーレイファイルシステムを使用して，各ファイルを層状に管理する．一つの命令につき，１つのイメージレイヤーを積み重ねるようになっている．
 
 参考：
 
@@ -73,7 +73,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 #### ▼ dockerクライアントとは
 
-dockerクライアントは，dockerコマンドを用いてdockerデーモンAPIをコールできる．
+dockerクライアントは，dockerコマンドを使用してdockerデーモンAPIをコールできる．
 
 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
 
@@ -121,7 +121,7 @@ dockerクライアントは，dockerコマンドを用いてdockerデーモンAP
 
 #### ▼ 使用方法
 
-Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で用いることができるが，```docker-compose.yml```ファイルでの定義が推奨である．
+Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で使用できるが，```docker-compose.yml```ファイルでの定義が推奨である．
 
 **＊例＊**
 
@@ -158,7 +158,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ▼ 使用方法
 
-Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で用いることができるが，```docker-compose.yml```ファイルでの定義が推奨である．
+Dockerfileや```docker-compose.yml```ファイルへの定義，```docker```コマンドの実行，で使用できるが，```docker-compose.yml```ファイルでの定義が推奨である．
 
 **＊例＊**
 
@@ -170,7 +170,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ▼ Data Volumeコンテナによる永続化データの提供
 
-ボリュームを用いる場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを用いる時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照する．
+ボリュームを使用する場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを使用する時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照する．
 
 ![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
 
@@ -191,11 +191,11 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ▼ 本番環境での使いやすさの比較
 
-脆弱性の観点から，本番環境ではボリュームマウント（```VOLUME```）や```COPY```を用いて，アプリケーションをdockerイメージに組み込むようにする．
+脆弱性の観点から，本番環境ではボリュームマウント（```VOLUME```）や```COPY```を使用して，アプリケーションをdockerイメージに組み込むようにする．
 
 参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
 
-その上で，ボリュームマウントでは，組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため，コードの組み込みとコンテナ起動の間にアプリケーションを加工する（例：ディレクトリの実行権限を変更するなど）場合は```COPY```の方が便利である．方法として，プライベートリポジトリにデプロイするイメージのビルド時に，ホスト側のアプリケーションをイメージ側に```COPY```しておく．これにより，本番環境ではこのイメージをプルしさえすれば，アプリケーションを用いることができるようになる．
+その上で，ボリュームマウントでは，組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため，コードの組み込みとコンテナ起動の間にアプリケーションを加工する（例：ディレクトリの実行権限を変更するなど）場合は```COPY```の方が便利である．方法として，プライベートリポジトリにデプロイするイメージのビルド時に，ホスト側のアプリケーションをイメージ側に```COPY```しておく．これにより，本番環境ではこのイメージをプルしさえすれば，アプリケーションを使用できるようになる．
 
 参考：
 
@@ -211,7 +211,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 | バインドマウント               | バインドマウントでは，ホストとコンテナ間のライフサイクルは同じであり，ファイルの状態が同期されている．この時，コンテナからホストにアウトプット処理，またホストからコンテナにインプット処理が発生する．そのため，コンテナではアプリケーションの処理を実行しながら，合わせてホスト間とI/O処理も実行することになり，コンテナのパフォーマンスは悪い． | 参考：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison<br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
 | ボリュームマウント             | ボリュームマウントでは，ホストとコンテナ間のライフサイクルは分離されており，ファイルの状態は同期されていない．そのため，ボリュームマウントよりはコンテナのパフォーマンスが良い． | 参考：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163  |
 | ```COPY```                     | ```COPY```では，イメージのビルド時にコードを組み込むだけで，以降，ホストとコンテナ間でコードのI/O処理は発生しない．そのため，バインドマウントやボリュームマウントと比べて，コンテナのパフォーマンスが良い．このことは，DockerだけでなくKubernetesでも同様である． |                                                              |
-| NFS                            | NFSを用いたマウントでは，高速でI/O処理が実行される．そのため，コンテナのパフォーマンスが良い． | 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010     |
+| NFS                            | NFSを使用したマウントでは，高速でI/O処理が実行される．そのため，コンテナのパフォーマンスが良い． | 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010     |
 
 <br>
 
@@ -221,7 +221,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ▼ bridgeネットワークとは
 
-複数のコンテナ間に対して，仮想ネットワークで接続させる．また，仮想ネットワークを物理ネットワークの間を，仮想ブリッジを用いてbridge接続する．ほとんどの場合，この方法を用いる．
+複数のコンテナ間に対して，仮想ネットワークで接続させる．また，仮想ネットワークを物理ネットワークの間を，仮想ブリッジを使用してbridge接続する．ほとんどの場合，この方法を使用する．
 
 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html
 

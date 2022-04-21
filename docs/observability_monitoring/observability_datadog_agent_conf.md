@@ -17,7 +17,7 @@ description: datadogエージェントの設定＠可観測性の知見をまと
 
 ### datadogエージェントとは
 
-Datadogにデータを送信するためには，アプリケーションにdatadogエージェントをインストールする必要がある．用いているOSやIaCツールごとに，インストール方法が異なる．
+Datadogにデータを送信するためには，アプリケーションにdatadogエージェントをインストールする必要がある．使用しているOSやIaCツールごとに，インストール方法が異なる．
 
 <br>
 
@@ -91,7 +91,7 @@ datadogエージェントを設定する． ```/etc/datadog-agent```ディレク
 
 #### ▼ グローバルオプションとは
 
-全てのテレメトリーに関するオプションとして用いることができる．
+全てのテレメトリーに関するオプションとして使用できる．
 
 #### ▼ api_key
 
@@ -118,7 +118,7 @@ api_key: <APIキー>
 
 #### ▼ ログオプション
 
-ログに関するオプションとして用いることができる．
+ログに関するオプションとして使用できる．
 
 #### ▼ logs_enabled
 
@@ -148,11 +148,11 @@ logs_enabled: true
 
 #### ▼ datadogイメージ
 
-datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
+datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている．ECRパブリックギャラリーからプルしたイメージをそのまま使用する場合と，プライベートECRリポジトリで再管理してから使用する場合がある．
 
-#### ▼ DockerHubを用いる場合
+#### ▼ DockerHubを使用する場合
 
-ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は，こちらを採用する．
 
 参考：https://hub.docker.com/r/datadog/agent
 
@@ -165,9 +165,9 @@ ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadog�
 ]
 ```
 
-#### ▼ ECRパブリックギャラリーを用いる場合
+#### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま用いる場合は，こちらを採用する．
+ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は，こちらを採用する．
 
 ```bash
 [
@@ -183,7 +183,7 @@ ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指�
 - https://gallery.ecr.aws/datadog/agent
 - https://github.com/DataDog/datadog-agent
 
-#### ▼ プライベートECRリポジトリを用いる場合
+#### ▼ プライベートECRリポジトリを使用する場合
 
 あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は，こちらを採用する．
 
@@ -326,16 +326,16 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 #### ▼ グローバル変数とは
 
-全てのテレメトリーに関する環境変数として用いることができる．datadogコンテナの環境変数として設定する．
+全てのテレメトリーに関する環境変数として使用できる．datadogコンテナの環境変数として設定する．
 
 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| ```DD_ENV```      | APMを用いる場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |                                                              | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | AWS ECS Fargateの場合は，これを用いないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
-| ```ECS_FARGATE``` | AWS ECS Fargateを用いる場合，これを宣言する．                        |                                                              |                                              |
+| ```DD_ENV```      | APMを使用する場合，マイクロサービスやトレースにて，```env```タグに値を設定する． |                                                              | https://app.datadoghq.com/apm/services       |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | AWS ECS Fargateの場合は，これを使用しないようにする．<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
+| ```ECS_FARGATE``` | AWS ECS Fargateを使用する場合，これを宣言する．                        |                                                              |                                              |
 
 <br>
 
@@ -343,18 +343,18 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 #### ▼ 通常メトリクス
 
-通常メトリクスに関する環境変数として用いることができる．一部のメトリクスは，デフォルトでは収集しないようになっており，収集するためにエージェントを有効化する必要がある．
+通常メトリクスに関する環境変数として使用できる．一部のメトリクスは，デフォルトでは収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | AWS ECS Fargateを用いている場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | AWS ECS Fargateを使用している場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，マイクロサービスにパッケージのインストールが必要である．<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ▼ カスタムメトリクス
 
-カスタムメトリクスに関する環境変数として用いることができる．
+カスタムメトリクスに関する環境変数として使用できる．
 
 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
@@ -368,7 +368,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 #### ▼ ログ変数とは
 
-ログに関する環境変数として用いることができる．
+ログに関する環境変数として使用できる．
 
 | 変数名                | 説明                                | 補足                                                         |
 | --------------------- | ----------------------------------- | ------------------------------------------------------------ |
@@ -381,7 +381,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 #### ▼ 分散トレース変数とは
 
-分散トレースに関する環境変数として用いることができる．分散トレースのタグ名に反映される．
+分散トレースに関する環境変数として使用できる．分散トレースのタグ名に反映される．
 
 #### ▼ PHPトレーサーの場合
 

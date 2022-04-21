@@ -17,7 +17,7 @@ description: FireLensコンテナ＠可観測性の知見をまとめました�
 
 ### FireLensコンテナとは
 
-AWSが提供するFluentBitイメージによって構築されるコンテナである．FireLensコンテナでは，FluentBitがログルーティングプロセスとして稼働する．FireLensコンテナを用いずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを用いれば，主要なセットアップがされているため，より簡単な設定でFluentBitを用いることができる．
+AWSが提供するFluentBitイメージによって構築されるコンテナである．FireLensコンテナでは，FluentBitがログルーティングプロセスとして稼働する．FireLensコンテナを使用せずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを使用すれば，主要なセットアップがされているため，より簡単な設定でFluentBitを使用できる．
 
 参考：
 
@@ -80,13 +80,13 @@ FluentBitが対応する宛先にログをルーティングできる．
 
 ### Dockerfile
 
-#### ▼ ECRパブリックギャラリーを用いる場合
+#### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定をそのまま用いる場合は，こちらを採用する．
+ECSのコンテナ定義にて，ECRパブリックギャラリーのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定をそのまま使用する場合は，こちらを採用する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
-#### ▼ プライベートECRリポジトリを用いる場合
+#### ▼ プライベートECRリポジトリを使用する場合
 
 あらかじめ，DockerHubからFluentBitイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は，こちらを採用する．
 
@@ -340,7 +340,7 @@ AWSやDatadogにルーティングするための設定が必要である．も�
 },
 ```
 
-AWSから提供されているベースイメージには，AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている．なお，DatadogプラグインはFluentBit自体にインストール済みである．ECRパブリックギャラリーからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
+AWSから提供されているベースイメージには，AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている．なお，DatadogプラグインはFluentBit自体にインストール済みである．ECRパブリックギャラリーからプルしたイメージをそのまま使用する場合と，プライベートECRリポジトリで再管理してから使用する場合がある．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
@@ -364,7 +364,7 @@ FireLensコンテナで処理中のログのキー値を修正したい場合，
 
 #### ▼ PARSERセクション
 
-例えば，ECSのプラットフォームバージョンが```v1.3.0```の時，メタデータのDockerNameは『```/ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．これを```v1.4.0```にアップグレードすればコンテナ名になるが，すぐにアップグレードに対応できないこともある．その場合はPARSERセクションにて，正規表現の名前付きキャプチャを用いてコンテナ名を抽出すると，以降のセクションで処理しやすくなる．
+例えば，ECSのプラットフォームバージョンが```v1.3.0```の時，メタデータのDockerNameは『```/ecs-<タスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）．これを```v1.4.0```にアップグレードすればコンテナ名になるが，すぐにアップグレードに対応できないこともある．その場合はPARSERセクションにて，正規表現の名前付きキャプチャを使用してコンテナ名を抽出すると，以降のセクションで処理しやすくなる．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-metadata-endpoint-v3.html
 
@@ -373,7 +373,7 @@ FireLensコンテナで処理中のログのキー値を修正したい場合，
     Name      docker-name-parser
     Format    regex
     # 例：/ecs-foo-task-definition-1-bar-123456789
-    # 正規表現の名前付きキャプチャを用いる
+    # 正規表現の名前付きキャプチャを使用する
     Regex     ^\/ecs-.*-(?<container_name>.*)-(.*)$
 ```
 
@@ -385,7 +385,7 @@ FireLensコンテナで処理中のログのキー値を修正したい場合，
     Name            parser
     Match           *
     Key_Name        container_name
-    # 用いるパーサールール
+    # 使用するパーサールール
     Parser          docker-name-parser
     # 解析されたキーの元の値を保持するかどうか
     Preserve_Key    false
@@ -432,7 +432,7 @@ FireLensコンテナで複数行のログを処理したい場合，```parsers_m
     name                  multiline
     match                 *
     multiline.key_content log
-    # ファイルを読み込む．組み込みパーサ（goなど）を用いることも可能．
+    # ファイルを読み込む．組み込みパーサ（goなど）を使用することも可能．
     multiline.parser      go, laravel
 ```
 

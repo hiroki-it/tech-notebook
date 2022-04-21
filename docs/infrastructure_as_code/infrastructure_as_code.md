@@ -148,7 +148,7 @@ description: Infrastructure as Codeの知見をまとめました．
 
 #### ▼ コンテナ
 
-- Vagrantfile（機能としてはあるが，あまり用いない）
+- Vagrantfile（機能としてはあるが，あまり使用しない）
 - Docker compose
 - Kubernetes
 

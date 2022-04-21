@@ -53,7 +53,7 @@ IntelとAMDにおけるCPUの歴史を以下に示す．
 
 #### ▼ クロック周波数とは
 
-CPUの回路が処理と歩調を合わせるために用いる信号を，『クロック』と言う．一定時間ごとにクロックが起こる時，１秒間にクロックが何回起こるかを『クロック周波数』という．これは，Hzで表される．ちなみに，ワイのパソコンのクロック周波数は2.60GHzでした．
+CPUの回路が処理と歩調を合わせるために使用する信号を，『クロック』と言う．一定時間ごとにクロックが起こる時，１秒間にクロックが何回起こるかを『クロック周波数』という．これは，Hzで表される．ちなみに，ワイのパソコンのクロック周波数は2.60GHzでした．
 
 **＊例＊**
 
@@ -104,7 +104,7 @@ CPUが1秒間に何回命令を実行するかを表す．
 
 #### ▼ DRAMとは
 
-  メインメモリとして用いられる．よく見るやつ．
+  メインメモリとして使用される．よく見るやつ．
 
 ![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic_RAM.jpg)
 
@@ -201,7 +201,7 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 #### ▼ SRAMとは
 
- キャッシュメモリとして用いられる．
+ キャッシュメモリとして使用される．
 
 ![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Static_RAM.jpg)
 

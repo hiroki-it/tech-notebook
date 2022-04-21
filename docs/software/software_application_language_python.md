@@ -27,7 +27,7 @@ $ yum install -y python3
 
 ### Dockerfile
 
-#### ▼ Flask，uWSGIを用いる場合
+#### ▼ Flask，uWSGIを使用する場合
 
 ```dockerfile
 #===================
@@ -77,7 +77,7 @@ COPY ./ /var/www/foo/
 CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
 ```
 
-#### ▼ FastAPI，uvicornを用いる場合
+#### ▼ FastAPI，uvicornを使用する場合
 
 ```dockerfile
 #===================
@@ -222,13 +222,13 @@ from <パッケージ名>.<サブパッケージ名>.<モジュール名> import
 
 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
 
-#### ▼ アスタリスクを用いないこと
+#### ▼ アスタリスクを使用しないこと
 
 アスタリスクによるインポートは非推奨である．
 
 参考：https://python.civic-apps.com/wildcard-import/
 
-#### ▼ 絶対パスを用いること
+#### ▼ 絶対パスを使用すること
 
 パッケージ名は絶対パスを指定する．
 

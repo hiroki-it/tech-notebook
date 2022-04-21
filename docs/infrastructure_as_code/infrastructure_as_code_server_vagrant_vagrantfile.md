@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見をまとめました．
 
 ### プロバイダーとプロビジョナーの操作
 
-Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして用いることもできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために用いることが多い．
+Vagrantfileを使用して，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして使用することもできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために使用することが多い．
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -56,12 +56,12 @@ Vagrantfileを用いて，プロバイダーとプロビジョナーを操作し
 
 | プロビジョナー名 | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして用いる．        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
-| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに，Ansibleを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
-| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに，CFEngineを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
-| Chef             | Vagrantfileでプロビジョニングを実行する代わりに，Chefを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |
-| Docker           | Vagrantfileでプロビジョニングを実行する代わりに，Dockerfile（に似た記述）を用いる． | 参考：https://www.vagrantup.com/docs/provisioning/docker     |
-| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに，Puppetを用いる． | 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する．        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
+| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに，Ansibleを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
+| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに，CFEngineを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
+| Chef             | Vagrantfileでプロビジョニングを実行する代わりに，Chefを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |
+| Docker           | Vagrantfileでプロビジョニングを実行する代わりに，Dockerfile（に似た記述）を使用する． | 参考：https://www.vagrantup.com/docs/provisioning/docker     |
+| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに，Puppetを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 
@@ -220,7 +220,7 @@ end
 
 #### ▼ shell
 
-shellを用いて，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを用いる場合は，これ自体をインストールしておく必要がある．シェルが複数行に渡る場合は，Rubyのヒアドキュメント形式（```<<-```）を用いると良い．
+shellを使用して，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを使用する場合は，これ自体をインストールしておく必要がある．シェルが複数行に渡る場合は，Rubyのヒアドキュメント形式（```<<-```）を使用すると良い．
 
 参考：
 
@@ -241,7 +241,7 @@ end
 
 #### ▼ ansible
 
-ホスト側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．開発環境ではこのオプションを用いることは非推奨で，```ansible_local```オプションを用いることが推奨されている．
+ホスト側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．開発環境ではこのオプションを使用することは非推奨で，```ansible_local```オプションを使用することが推奨されている．
 
 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
@@ -258,7 +258,7 @@ end
 
 #### ▼ ansible_local
 
-仮想環境側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．注意点としては，開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため，コントロールノードは自分自身を指定してプロビジョニングを実行することになる．開発環境ではこのオプションを用いることが推奨されており，```ansible```オプションを用いることが非推奨とされている．
+仮想環境側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．注意点としては，開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため，コントロールノードは自分自身を指定してプロビジョニングを実行することになる．開発環境ではこのオプションを使用することが推奨されており，```ansible```オプションを使用することが非推奨とされている．
 
 参考：
 

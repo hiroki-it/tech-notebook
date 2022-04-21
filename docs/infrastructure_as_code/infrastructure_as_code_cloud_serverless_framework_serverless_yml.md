@@ -146,7 +146,7 @@ functions:
 
 #### ▼ name
 
-Lambda関数で用いるイメージのエイリアスを設定する．
+Lambda関数で使用するイメージのエイリアスを設定する．
 
 **＊実装例＊**
 
@@ -209,7 +209,7 @@ Lambda関数に紐づけるIAMロールを設定する．
 
 **＊実装例＊**
 
-別に```resources.Resources```を用いて構築したIAMロールを設定する．
+別に```resources.Resources```を使用して構築したIAMロールを設定する．
 
 ```yaml
 functions:
@@ -221,14 +221,14 @@ functions:
 
 ### runtime
 
-Lambda関数で用いる言語とバージョンを設定する．
+Lambda関数で使用する言語とバージョンを設定する．
 
 **＊実装例＊**
 
 ```yaml
 functions:
   main:
-    runtime: <用いる言語バージョン>
+    runtime: <使用する言語バージョン>
 ```
 
 <br>

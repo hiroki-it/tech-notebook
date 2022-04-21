@@ -33,7 +33,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 ![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
 
-マスタスケジュラは，ジョブスケジュラにジョブの実行を命令する．データをコンピュータに入力し，複数の処理が実行され，結果が出力されるまでの一連の処理のこと．『Task』と『Job』の定義は曖昧なので，『process』と『set of processes』を用いるべきとのこと．
+マスタスケジュラは，ジョブスケジュラにジョブの実行を命令する．データをコンピュータに入力し，複数の処理が実行され，結果が出力されるまでの一連の処理のこと．『Task』と『Job』の定義は曖昧なので，『process』と『set of processes』を使用するべきとのこと．
 
 参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
@@ -194,7 +194,7 @@ crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-物理ストレージの仮想的な仕切りを『パーティション』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけることができる．```/dev```ディレクトリ配下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．Windowsでは，CドライブとDドライブがパーティションに相当する．
+物理ストレージの仮想的な仕切りを『パーティション』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけられる．```/dev```ディレクトリ配下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．Windowsでは，CドライブとDドライブがパーティションに相当する．
 
 参考：
 

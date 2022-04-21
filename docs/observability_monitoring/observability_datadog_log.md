@@ -65,7 +65,7 @@ description: ログ収集＠Datadogの知見をまとめました．
 
 ### ログエージェントとは
 
-サーバーの場合とは異なり，AWS ECS Fargateのdatadogエージェントはログを収集できない．そのため，代わりにFireLensコンテナを用いる必要がある．メトリクスと分散トレースであれば収集できる．
+サーバーの場合とは異なり，AWS ECS Fargateのdatadogエージェントはログを収集できない．そのため，代わりにFireLensコンテナを使用する必要がある．メトリクスと分散トレースであれば収集できる．
 
 参考：
 
@@ -223,7 +223,7 @@ const nuxtConfig: Configuration = {
 
   plugins: [
     ...(baseConfig.plugins || []),
-    // SSGのみで用いるため，clinetモードとする．
+    // SSGのみで使用するため，clinetモードとする．
     {
       src: '@/plugins/datadog/browserLogsForSsg',
       mode: 'client'
@@ -271,8 +271,8 @@ export default browserLogsForSsgPlugin
 
 | 属性名                  | 説明                                           | 補足                                                         | 例                                                           |
 | ----------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```              | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いて```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
-| ```source```            | ログの生成元の名前を示す．                     | ベンダー名を用いるとわかりやすい．                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
+| ```host```              | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．datadogコンテナの環境変数にて，```DD_HOSTNAME```を使用して```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```source```            | ログの生成元の名前を示す．                     | ベンダー名を使用するとわかりやすい．                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
 | ```status```            | ログのレベルを示す．                           |                                                              |                                                              |
 | ```service```           | ログの生成元のアプリケーション名を示す．       | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある． | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
 | ```trace_id```          | ログを分散トレースやスパンと紐付けるIDを示す． |                                                              |                                                              |
@@ -310,7 +310,7 @@ export default browserLogsForSsgPlugin
 
 #### ▼ PHP Monologの場合
 
-LogパッケージにMonologを用いている場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
+LogパッケージにMonologを使用している場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
 
 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 
@@ -558,7 +558,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 #### ▼ Grokパーサーとは
 
-パースルール（```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```）を用いて，```message```属性に割り当てられた非構造化ログを構造化し，構造化ログに付与する．また，Extract機能を用いると，```message```属性以外に対してGrokパーサーを用いることができるようになるため，構造化ログも扱えるようになる．
+パースルール（```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```）を使用して，```message```属性に割り当てられた非構造化ログを構造化し，構造化ログに付与する．また，Extract機能を使用すると，```message```属性以外に対してGrokパーサーを使用できるようになるため，構造化ログも扱えるようになる．
 
 参考：
 
@@ -604,7 +604,7 @@ Laravelから，以下のような非構造化ログを受信する例を考え�
 }
 ```
 
-以下のようなGrokパーサールールを定義する．```date```マッチャーを用い，また```date```属性をエクストラクト先とする．```word```マッチャーを用い，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．```date```マッチャーのタイムスタンプ形式の指定は以下を参考にせよ．
+以下のようなGrokパーサールールを定義する．```date```マッチャーを使用して，また```date```属性をエクストラクト先とする．```word```マッチャーを使用して，また```log_status```カスタム属性をエクストラクト先とする．任意のルール名を設定できる．```date```マッチャーのタイムスタンプ形式の指定は以下を参考にせよ．
 
 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
@@ -670,7 +670,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える．
 }
 ```
 
-以下のようなGrokパーサールールを定義する．```data```マッチャーを用い，また```wafacl_name```カスタム属性をエクストラクト先とする．抽出する必要のない文字列は，ワイルドカード（```.*```）を指定する．
+以下のようなGrokパーサールールを定義する．```data```マッチャーを使用して，また```wafacl_name```カスタム属性をエクストラクト先とする．抽出する必要のない文字列は，ワイルドカード（```.*```）を指定する．
 
 ```bash
 Rule .*\/webacl\/%{data:wafacl_name}\/.*
@@ -816,7 +816,7 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 }
 ```
 
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与する．この属性を用いる理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与する．この属性を使用する理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
 
 ```bash
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
@@ -1053,7 +1053,7 @@ log-pipeline
 
 #### ▼ リマッパーによる定義
 
-リマッパーでは，```Force attribute type```の項目で，再配置する属性のデータ型を指定できる．ログコンソールでフィルタリングする時に，ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない．そのため，リマッパーを用いる時は明示的にデータ型を設定する．
+リマッパーでは，```Force attribute type```の項目で，再配置する属性のデータ型を指定できる．ログコンソールでフィルタリングする時に，ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない．そのため，リマッパーを使用する時は明示的にデータ型を設定する．
 
 ![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-pipeline_data-type.png)
 
@@ -1078,9 +1078,9 @@ autoFilledRule2 ...
 autoFilledRule3 ...
 ```
 
-#### ▼ ヘルパールールを用いる
+#### ▼ ヘルパールールを使用する
 
-ヘルパールールを用いると，正規表現ルールを共通化し，複数のルールで使いまわせる．
+ヘルパールールを使用すると，正規表現ルールを共通化し，複数のルールで使いまわせる．
 
 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#using-helper-rules-to-factorize-multiple-parsing-rules
 
@@ -1112,7 +1112,7 @@ autoFilledRule3 ...
 
 #### ▼ ログのメトリクス
 
-パイプラインで処理を終えたログに関して，属性/タグに基づくメトリクスを作成する．メトリクスを作成しておくと，ログのレポートとして用いることができる．
+パイプラインで処理を終えたログに関して，属性/タグに基づくメトリクスを作成する．メトリクスを作成しておくと，ログのレポートとして使用できる．
 
 参考：https://www.amazon.co.jp/dp/1800568738
 
@@ -1120,7 +1120,7 @@ autoFilledRule3 ...
 
 #### ▼ インデックス
 
-パイプラインで処理を終えたログをグループ化し，ログの破棄ルールや保管期間をグループごとに定義できる．インデックスを用いれば，Datadogのログ保管のネックになる保管料金を抑えられる．
+パイプラインで処理を終えたログをグループ化し，ログの破棄ルールや保管期間をグループごとに定義できる．インデックスを使用すれば，Datadogのログ保管のネックになる保管料金を抑えられる．
 
 参考：
 

@@ -27,7 +27,7 @@ description: Lambda関数の実装＠AWSの知見をまとめました．
 
 #### ▼ 非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を用いて，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
@@ -46,7 +46,7 @@ exports.handler = async (event) => {
     response.statusCode = 200;
     response.body = "Hello World!"
 
-    // もしくはthrowを用いて，レスポンスを送信する．
+    // もしくはthrowを使用して，レスポンスを送信する．
     return response;
 }
 ```
@@ -74,7 +74,7 @@ exports.handler = async (event) => {
 
 #### ▼ 同期ハンドラ関数（Non-async handlers）
 
-Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でも良い．```callback```メソッドを用いて，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
+Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でも良い．```callback```メソッドを使用して，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -147,7 +147,7 @@ Lambdaで関数を作成すると，CloudWatchログのロググループに，�
 
 #### ▼ aws-lambda-goとは
 
-Goを用いて，Lambda-APIに対してリクエストを送信し，AWSリソースを操作できる．
+Goを使用して，Lambda-APIに対してリクエストを送信し，AWSリソースを操作できる．
 
 #### ▼ ```Start```関数
 
@@ -181,7 +181,7 @@ func main() {
 
 #### ▼ パラメータ
 
-contextオブジェクトとeventオブジェクトをパラメーターとして用いることができる．
+contextオブジェクトとeventオブジェクトをパラメーターとして使用できる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
 
@@ -299,7 +299,7 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 }
 ```
 
-errorsパッケージの```New```関数を用いると，内部で発生したエラーメッセージをオーバーライドできる．
+errorsパッケージの```New```関数を使用すると，内部で発生したエラーメッセージをオーバーライドできる．
 
 ```go
 package main
@@ -337,11 +337,11 @@ func main() {
 | Duration        | イベントの処理時間                   |
 | Billed Duration | Lambdaの課金対象の時間               |
 | Memory Size     | Lambdaのメモリサイズ                 |
-| Max Memory Used | Lambdaが実際に用いるメモリの最大量 |
+| Max Memory Used | Lambdaが実際に使用するメモリの最大量 |
 
 #### ▼ ログの出力方法
 
-標準パッケージの```fmt```，または任意のロギングパッケージを用いて，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
+標準パッケージの```fmt```，または任意のロギングパッケージを使用して，標準出力/標準エラー出力に出力する．CloudWatchログにてこれを確認する．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-logging.html
 
@@ -359,12 +359,12 @@ func main() {
 
 ### デフォルトで使用可能なパッケージ
 
-以下のパッケージでは，npmを用いる必要はない．パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている．もし後続の処理で非同期処理の結果を用いたい場合，非同期処理の状態をPromiseオブジェクトで管理する必要がある．
+以下のパッケージでは，npmを使用する必要はない．パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている．もし後続の処理で非同期処理の結果を使用したい場合，非同期処理の状態をPromiseオブジェクトで管理する必要がある．
 
 | パッケージ名            | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を用いることができる              | 参考：https://nodejs.org/api/index.html                      |
-| aws-sdk.js              | JavaScriptを用いて，AWS-APIに対してリクエストを送信し，AWSリソースを操作できる． | 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる              | 参考：https://nodejs.org/api/index.html                      |
+| aws-sdk.js              | JavaScriptを使用して，AWS-APIに対してリクエストを送信し，AWSリソースを操作できる． | 参考：https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 <br>
 
@@ -596,7 +596,7 @@ const postMessageToSlack = (message) => {
       });
 
       //  data，error，end，の間でawaitの効力は横断できない．
-      // そのため，できるだけendで事後処理を実装し，awaitを用いるようにする．
+      // そのため，できるだけendで事後処理を実装し，awaitを使用するようにする．
       response.on("end", async () => {
         tmp = param.toString(tmp);
         const body = JSON.parse(tmp);

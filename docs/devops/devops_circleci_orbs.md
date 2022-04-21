@@ -33,11 +33,11 @@ CircleCIから提供される汎用的なパッケージの使用を読み込む
 
 #### ▼ Orbsのデメリット
 
-Orbsのパッケージの処理の最小単位は```step```である．そのため，```step```よりも小さい```run```はOrbsに組み込むことができず，```run```固有のオプションや```run```に設定できるlinuxコマンドをOrbsでは使用できないことになる．
+Orbsのパッケージの処理の最小単位は```step```である．そのため，```step```よりも小さい```run```はOrbsに組み込めず，```run```固有のオプションや```run```に設定できるlinuxコマンドをOrbsでは使用できないことになる．
 
 #### ▼ オプションへの引数の渡し方と注意点
 
-AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．オプションが```env_var_name```型は，基本的に全てのスコープレベルの環境変数を受け付ける．ただしAlpine Linuxでは，『```$BASH_ENV```』を用いて，複数の```run```間で環境変数を共有できず，orbsのステップに環境変数を渡せないため注意する．
+AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．オプションが```env_var_name```型は，基本的に全てのスコープレベルの環境変数を受け付ける．ただしAlpine Linuxでは，『```$BASH_ENV```』を使用して，複数の```run```間で環境変数を共有できず，orbsのステップに環境変数を渡せないため注意する．
 
 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -79,7 +79,7 @@ aws-cliコマンドのインストールを行う．
 
 #### ▼ setup
 
-aws-cliコマンドのインストールと，Credentials情報の設定を行う．AWSリソースを操作するために用いる．
+aws-cliコマンドのインストールと，Credentials情報の設定を行う．AWSリソースを操作するために使用する．
 
 **＊実装例＊**
 
@@ -135,7 +135,7 @@ workflows:
                 - main   
 ```
 
-ただし，```credentials```ファイルの作成では，orbsを用いない方がより簡潔に条件分岐を実装できるかもしれない．
+ただし，```credentials```ファイルの作成では，orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない．
 
 ```bash
 #!/bin/bash
@@ -177,7 +177,7 @@ aws configure list
 
 #### ▼ build-and-push-image
 
-CircleCIコンテナでdockerイメージをビルドし，ECRにデプロイする．```remote-docker-layer-caching```を用いて，Docker Layer Cacheを有効化できる．
+CircleCIコンテナでdockerイメージをビルドし，ECRにデプロイする．```remote-docker-layer-caching```を使用して，Docker Layer Cacheを有効化できる．
 
 **＊実装例＊**
 
@@ -191,7 +191,7 @@ orbs:
 jobs:
   aws-ecr/build-and-push-image:
     name: ecr_build_and_push_image
-    # Docker Layer Cacheを用いるかどうか（有料）
+    # Docker Layer Cacheを使用するかどうか（有料）
     remote-docker-layer-caching: true
     # リポジトリがない時に作成するかどうか．
     create-repo: true
@@ -217,7 +217,7 @@ jobs:
 
 #### ▼ deploy-update-service（ローリングアップデート使用時）
 
-ECRイメージを用いて，新しいリビジョン番号のタスク定義を作成し，またこれを用いてコンテナをデプロイする．
+ECRイメージを使用して，新しいリビジョン番号のタスク定義を作成し，またこれを使用してコンテナをデプロイする．
 
 | 設定値                             | 説明                                                         |                                                              |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -226,7 +226,7 @@ ECRイメージを用いて，新しいリビジョン番号のタスク定義�
 | ```max-poll-attempts```           | ポーリングの最大試行回数を設定する．```poll-interval```と掛け合わせて，そう実行時間を定義できる． | 総実行時間を延長する時，間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため，最大回数を増やす． |
 | ```poll-interval```               | 試行の間隔秒数を設定する．```max-poll-attempts```と掛け合わせて，そう実行時間を定義できる． |                                                              |
 
-オプションを用いて，```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で，ポーリングの総実行時間を定義できる．
+オプションを使用して，```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で，ポーリングの総実行時間を定義できる．
 
 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -282,7 +282,7 @@ workflows:
 
 #### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
-ECSタスク定義を更新する．さらに，ブルー/グリーンデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを用いることができる．
+ECSタスク定義を更新する．さらに，ブルー/グリーンデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを使用できる．
 
 **＊実装例＊**
 
@@ -337,7 +337,7 @@ workflows:
 
 #### ▼ run-task
 
-現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．起動時に，```overrides```オプションを用いて，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
+現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．起動時に，```overrides```オプションを使用して，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
@@ -397,7 +397,7 @@ workflows:
 
 #### ▼ deploy
 
-S3にコードとappspecファイルをデプロイできる．また，CodeDeployを用いて，これをEC2インスタンスにデプロイできる．
+S3にコードとappspecファイルをデプロイできる．また，CodeDeployを使用して，これをEC2インスタンスにデプロイできる．
 
 **＊実装例＊**
 
@@ -463,7 +463,7 @@ orbs:
   slack: circleci/slack@4.1
 
 commands:
-  # 他のジョブ内で用いることができるようにcommandとして定義
+  # 他のジョブ内で使用できるようにcommandとして定義
   notify_of_failure:
     steps:
       - slack/notify:

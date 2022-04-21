@@ -80,7 +80,7 @@ jobs:
 
 #### ▼ インストール済みソフトウェア
 
-用いるOSに応じて，いくつかの汎用的なソフトウェアがすでにインストールされている．
+使用するOSに応じて，いくつかの汎用的なソフトウェアがすでにインストールされている．
 
 参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
@@ -90,7 +90,7 @@ jobs:
 
 #### ▼ uses
 
-用いるActionsを設定する．
+使用するActionsを設定する．
 
 参考：https://github.com/marketplace?category=&query=&type=actions&verification=
 
@@ -136,7 +136,7 @@ jobs:
           # php-version: $PHP_VERSION
 ```
 
-環境変数を渡すことはできないことに注意する．
+環境変数を渡せないことに注意する．
 
 ```yaml
 jobs:
@@ -317,7 +317,7 @@ jobs:
 
 #### ▼ 環境ファイル
 
-環境ファイル（```GITHUB_ENV```）に値を入力することで，```job```内の環境変数として用いることができるようになる．
+環境ファイル（```GITHUB_ENV```）に値を入力することで，```job```内の環境変数として使用できるようになる．
 
 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
@@ -368,7 +368,7 @@ jobs:
 
 ### Secret変数とは
 
-環境変数と同様にしてGitHub Actions内で用いることができる．また，```add-mask```コマンドと同様のマスキングが最初から実行されている．
+環境変数と同様にしてGitHub Actions内で使用できる．また，```add-mask```コマンドと同様のマスキングが最初から実行されている．
 
 <br>
 
@@ -405,7 +405,7 @@ runs:
         FOO=${{ inputs.bar }}
 ```
 
-これに関しては以前は非対応であったため，```add-mask```コマンドを用いた方法がネット上で見つかることに注意する．
+これに関しては以前は非対応であったため，```add-mask```コマンドを使用した方法がネット上で見つかることに注意する．
 
 参考：
 
@@ -415,7 +415,7 @@ runs:
 
 #### ▼ 注意点
 
-注意点として，マスキングされる値と同じ文字列が用いられると，これもマスキングされる．そのため，例えば```input```キーでマスキングされた値と同じ文字列を用いてしまうと，YAMLファイルの構文解析でエラーになってしまう．
+注意点として，マスキングされる値と同じ文字列が使用されると，これもマスキングされる．そのため，例えば```input```キーでマスキングされた値と同じ文字列を使用してしまうと，YAMLファイルの構文解析でエラーになってしまう．
 
 ```yaml
 jobs:
@@ -603,7 +603,7 @@ jobs:
 
 #### ▼ 異なるstep間での共有
 
-入力したパラメーターは，異なる```step```の間で出力することができる．
+入力したパラメーターは，異なる```step```の間で出力できる．
 
 参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
 
@@ -646,7 +646,7 @@ jobs:
 
 #### ▼ 異なるjob間での共有
 
-入力したパラメーターは，異なる```job```の間で出力することができる．先に実行される```job```キーの```output```キーに入力する必要がある．
+入力したパラメーターは，異なる```job```の間で出力できる．先に実行される```job```キーの```output```キーに入力する必要がある．
 
 参考：
 

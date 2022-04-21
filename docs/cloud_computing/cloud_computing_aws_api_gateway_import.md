@@ -128,7 +128,7 @@ paths:
 
 #### ▼ ```x-amazon-apigateway-request-validators```キーとは
 
-メソッドリクエストで各種パラメーターのバリデーションを定義するために，```x-amazon-apigateway-request-validators```キーが必要である．実際に定義したものを用いる時は，後述の```x-amazon-apigateway-request-validator```キーが必要である．
+メソッドリクエストで各種パラメーターのバリデーションを定義するために，```x-amazon-apigateway-request-validators```キーが必要である．実際に定義したものを使用する時は，後述の```x-amazon-apigateway-request-validator```キーが必要である．
 
 #### ▼ 設定項目
 
@@ -162,7 +162,7 @@ x-amazon-apigateway-request-validators:
 
 #### ▼ 設定項目
 
-事前に定義した```x-amazon-apigateway-request-validators```キーの中から，用いるバリデーションのエイリアス名を宣言する．
+事前に定義した```x-amazon-apigateway-request-validators```キーの中から，使用するバリデーションのエイリアス名を宣言する．
 
 ```yaml
 paths:
@@ -209,7 +209,7 @@ x-amazon-apigateway-request-validators:
  - APIキーの作成は手動で行う必要がある．
 - ステージの作成は手動で行う必要がある．
 - ```servers```キーの実装はインポートしても反映できない．
-- マッピングテンプレートはVTLを用いて定義できる．
+- マッピングテンプレートはVTLを使用して定義できる．
 
 #### ▼ その他非対応な記法
 

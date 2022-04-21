@@ -93,11 +93,11 @@ UML，概念データモデリング，構造化分析，リアルタイム分�
 
 #### ▼ 振舞の視点
 
-ソフトウェアの時系列的な振舞に注目するダイアグラムが属する．シーケンス図には，分析に用いるシステムシーケンス図と，設計に用いるシーケンス図があることに注意する．
+ソフトウェアの時系列的な振舞に注目するダイアグラムが属する．シーケンス図には，分析に使用するシステムシーケンス図と，設計に使用するシーケンス図があることに注意する．
 
 #### ▼ 構造の視点
 
-ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する．クラス図は設計のために用いることに注意する．
+ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する．クラス図は設計のために使用することに注意する．
 
 <br>
 
@@ -149,8 +149,8 @@ DFD，ユースケース図，アクティビティ図，などがある．
 | 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターと機能を結ぶことで，機能がアクターに提供されることを表現する． |                                  |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に，is-a-kind-ofな関係（グループとメンバーの関係性）があることを表現する． |                                  |
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | 矢印元の機能を細分化すると，矢印先の機能も含まれることを表現する． | ```<< invoke >>```も同じである． |
-| 先行：<br>```<< precedes >>```                               | 矢印元の機能が必ず先に使用されてから，矢印先の機能が用いられることを表現する． |                                  |
-| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png) | 矢印元の機能は矢印先の機能の追加機能であり，場合によってはこれが用いられることを表現する． |                                  |
+| 先行：<br>```<< precedes >>```                               | 矢印元の機能が必ず先に使用されてから，矢印先の機能が使用されることを表現する． |                                  |
+| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png) | 矢印元の機能は矢印先の機能の追加機能であり，場合によってはこれが使用されることを表現する． |                                  |
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_note.png) | 機能の前提事項や考慮事項を記載する．認証/認可は全てのユースケースに関係するため，ノートに記載する．<br>参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                                  |
 
 **＊例＊**
@@ -216,7 +216,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### 状態遷移表とは
 
-状態遷移図から作成した表．状態遷移表を作成してみると，状態遷移図では，9つあるセルのうち4つのセルしか表現できておらず，残り5つのセルは表現されていないことに気づくことができる．
+状態遷移図から作成した表．状態遷移表を作成してみると，状態遷移図では，9つあるセルのうち4つのセルしか表現できておらず，残り5つのセルは表現されていないことに気づける．
 
 ![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ストップウォッチ状態遷移表.jpg)
 
@@ -294,7 +294,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
-『has-one』『has-many』な関係と表現され，より具体的に説明すると，とデータとして保持する関係性である．Association（関連），Aggregation（集約），Composition（合成）が用いられる．『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．実装例は以下のリンクを参考にせよ．
+『has-one』『has-many』な関係と表現され，より具体的に説明すると，とデータとして保持する関係性である．Association（関連），Aggregation（集約），Composition（合成）が使用される．『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
@@ -302,15 +302,15 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
-『is-a-kind-of』な関係と表現され，より具体的に説明すると，とグループとメンバーの関係性である．Generalization（汎化），Realization（実現）が用いられる．実装例は以下のリンクを参考にせよ．
+『is-a-kind-of』な関係と表現され，より具体的に説明すると，とグループとメンバーの関係性である．Generalization（汎化），Realization（実現）が使用される．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
-#### ▼ use（引数型/返却値型として用いる関係性）
+#### ▼ use（引数型/返却値型として使用する関係性）
 
-![引数型または返却値型として用いる関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として用いる関係性.png)
+![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
 
-『use』な関係と表現され，より具体的に説明すると，と引数型/返却値型として用いる関係性である．Dependency（依存）が用いられる．実装例は以下のリンクを参考にせよ．
+『use』な関係と表現され，より具体的に説明すると，と引数型/返却値型として使用する関係性である．Dependency（依存）が使用される．実装例は以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
@@ -347,7 +347,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### ER図とは
 
-DBテーブルのカラム間の関係性を基に，DBの構造を表現する．『IE 記法』と『IDEF1X 記法』が一般的に用いられる．
+DBテーブルのカラム間の関係性を基に，DBの構造を表現する．『IE 記法』と『IDEF1X 記法』が一般的に使用される．
 
 <br>
 

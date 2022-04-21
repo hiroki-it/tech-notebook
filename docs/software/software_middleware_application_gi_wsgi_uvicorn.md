@@ -25,7 +25,7 @@ description: Uvicorn＠ミドルウェアの知見をまとめました．
 
 ### uvicornコマンドとは
 
-開発環境でUvicornを起動するために用いる．
+開発環境でUvicornを起動するために使用する．
 
 <br>
 
@@ -49,11 +49,11 @@ $ uvicorn src.main:app
 
 ### gunicornコマンドとは
 
-本番環境でUvicornを起動するために用いる．
+本番環境でUvicornを起動するために使用する．
 
 参考：https://www.uvicorn.org/#running-with-gunicorn
 
-なお，gunicornコマンドを用いる場合には，standardタイプのUvicornをインストールする必要がある．
+なお，gunicornコマンドを使用する場合には，standardタイプのUvicornをインストールする必要がある．
 
 参考：https://www.uvicorn.org/#quickstart
 

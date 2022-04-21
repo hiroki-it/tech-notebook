@@ -223,7 +223,7 @@ class Foo
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
-RDBの処理用語に相当する```beginTransaction```メソッド，```commit```メソッド，```rollBack```メソッドを用いて，RDBを操作する．
+RDBの処理用語に相当する```beginTransaction```メソッド，```commit```メソッド，```rollBack```メソッドを使用して，RDBを操作する．
 
 参照：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
 

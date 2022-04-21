@@ -51,7 +51,7 @@ $ yarn build
 
 #### ▼ ```start```
 
-本番環境のため，```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する．SSRモードのために用いる．
+本番環境のため，```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する．SSRモードのために使用する．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -76,7 +76,7 @@ $ yarn start
 
 #### ▼ ```dev```
 
-開発環境でSSGアプリケーションを稼働させるために用いる．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGモードで生成されるアプリケーションは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+開発環境でSSGアプリケーションを稼働させるために使用する．Nodeサーバーを起動し，サーバー内でJavaScriptから静的ファイルを生成する．そのため，SSGモードで生成されるアプリケーションは完全な静的ファイルでない．また，```build```コマンドとは異なり，Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -91,7 +91,7 @@ $ yarn dev
 
 #### ▼ ```generate```
 
-本番環境でSSGアプリケーションを稼働させるために用いる．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，DBに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために用いる．
+本番環境でSSGアプリケーションを稼働させるために使用する．```dev```コマンドとは異なり，Nodeサーバーは起動せず，そのままJavaScriptから静的ファイルを生成する．そのため，SSGは完全な静的ファイルからなる．ビルド時にバックエンドに接続し，DBに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために使用する．
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -117,7 +117,7 @@ $ yarn start
 
 ### ビルド時のWebpackオプション
 
-SSRモードとSSGモードで，```build```コマンド時に用いられるWebpackの最適化方法を指定できる．`
+SSRモードとSSGモードで，```build```コマンド時に使用されるWebpackの最適化方法を指定できる．`
 
 https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
@@ -164,9 +164,9 @@ $ npm install @nuxtjs/dotenv
 ```
 
 ```bash
-# APIのURL．サーバー上のJavaScriptからAPIへのリクエストで用いる．
+# APIのURL．サーバー上のJavaScriptからAPIへのリクエストで使用する．
 API_URL=https://example.com/api
-# APIのURL．ブラウザ上のJavaScriptからAPIへのリクエストで用いる．
+# APIのURL．ブラウザ上のJavaScriptからAPIへのリクエストで使用する．
 API_URL_BROWSER=https://example.com/api
 # APIのOauth認証の情報
 OAUTH_CLIENT_ID=
@@ -218,7 +218,7 @@ const nuxtConfig: Configuration = {
 
 #### ▼ privateRuntimeConfig
 
-クライアントサイドのみで参照できる環境変数を設定する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで用いることができる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
+クライアントサイドのみで参照できる環境変数を設定する．すなわち，SSRモードのクライアント側のみが対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -258,7 +258,7 @@ export function foo() {
 
 #### ▼ publicRuntimeConfig
 
-サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで用いることができる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
+サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する．すなわち，全モード（SSG/SPA/SSRモード）が対応している．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 

@@ -38,7 +38,7 @@ $ apt -y install php<バージョン>
 
 ### Dockerfile
 
-#### ▼ Laravel，PHP-FPMを用いる場合
+#### ▼ Laravel，PHP-FPMを使用する場合
 
 ```dockerfile
 #===================

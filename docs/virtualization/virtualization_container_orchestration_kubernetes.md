@@ -178,7 +178,7 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 #### ▼ kubernetesクライアントとは
 
-kubernetesクライアントは，kubectlコマンドを用いて，kubernetesマスターAPIをコールできる．
+kubernetesクライアントは，kubectlコマンドを使用して，kubernetesマスターAPIをコールできる．
 
 <br>
 
@@ -256,7 +256,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment用いてこれを行うことが推奨される．
+ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment使用してこれを行うことが推奨される．
 
 参考：
 
@@ -269,7 +269,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために用いられる．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
+ワーカーNode上のPodの個数を維持管理する．ただしReplicaSetとは異なり，Podを1つだけ維持管理する．ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit，datadogエージェント，cAdvisorエージェントなどのデータ収集プロセス）のために使用される．こういったプロセスが稼働するコンテナは，ワーカーNode内の全てのコンテナからデータを収集し，可観測性のためのデータセットを整備する．
 
 参考：https://thinkit.co.jp/article/13611
 
@@ -279,7 +279,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ▼ StatefulSetとは
 
-ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしDeploymentとは異なり，ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱うことができる．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
+ReplicaSetを操作し，ワーカーNodeのCPUやメモリの使用率に合わせて，Podの個数を維持管理する．ただしDeploymentとは異なり，ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える．Podが削除されてもPersistentVolumeClaimsは削除されないため，新しいPodにも同じPersistentVolumeを継続的にマウントできる．その代わり，StatefulSetの作成後に一部の設定変更が禁止されている．
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -361,7 +361,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 | GCP CLBコントローラー                                 |         | ✅        |
 | Nginx Ingressコントローラー                           | ✅        | ✅        |
 | Istio Ingress                                         | ✅        | ✅        |
-| Istio Gateway（Ingressとしても用いることができる）            | ✅        | ✅        |
+| Istio Gateway（Ingressとしても使用できる）            | ✅        | ✅        |
 
 <br>
 
@@ -394,7 +394,7 @@ options ndots:5
 
 #### ▼ LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．Cluster外部/内部の両方からアクセスできる．本番環境をクラウドインフラ上で稼働させ，AWS ALBからインバウンド通信を受信する場合に用いる．ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため，通信数が増え，金銭的負担が大きい．
+ロードバランサーのみからアクセスできるIPアドレスを返却し，Serviceに対するインバウンド通信をPodにルーティングする．Cluster外部/内部の両方からアクセスできる．本番環境をクラウドインフラ上で稼働させ，AWS ALBからインバウンド通信を受信する場合に使用する．ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため，通信数が増え，金銭的負担が大きい．
 
 参考：
 
@@ -487,8 +487,8 @@ Kubernetesに関する実行ユーザーに認証認可を設定する．
 
 | アカウント名         | 説明                                                                                                                   | 補足                                                                                         |
 |----------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのプロセスは，Kubernetes自体と通信する権限を持つ．また，RoleBindingを用いて認可スコープも設定できる．       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される．認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる． |
-| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのクライアントは，Kubernetes自体を操作する権限を持つ．また，RoleBindingを用いて認可スコープも設定できる． | アカウント情報は，``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある．                       |
+| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのプロセスは，Kubernetes自体と通信する権限を持つ．また，RoleBindingを使用して認可スコープも設定できる．       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される．認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる． |
+| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに，認証認可を設定する．認証済みの実行ユーザーのクライアントは，Kubernetes自体を操作する権限を持つ．また，RoleBindingを使用して認可スコープも設定できる． | アカウント情報は，``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある．                       |
 
 <br>
 
@@ -544,7 +544,7 @@ Podが稼働するサーバー単位こと．Kubernetesの実行時に自動的�
 
 #### ▼ PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにボリュームマウントする方法のこと．Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを用いるためには，PersistentVolumeClaimにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistentVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにボリュームマウントする方法のこと．Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを使用するためには，PersistentVolumeClaimにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistentVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
 
 参考：
 
@@ -609,7 +609,7 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 #### ▼ Volumeとは
 
-既存（ワーカーノード，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして用いる方法のこと．
+既存（ワーカーノード，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する方法のこと．
 
 参考：https://thinkit.co.jp/article/14195
 
@@ -694,7 +694,7 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 
 #### ▼ 外部ボリューム
 
-クラウドプロバイダーやNFSから提供されるストレージ領域を用いたボリュームとし，コンテナにマウントする．
+クラウドプロバイダーやNFSから提供されるストレージ領域を使用したボリュームとし，コンテナにマウントする．
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
@@ -750,7 +750,7 @@ Cluster内の全てのServiceにDNS名が割り当てられている．レコー
 
 #### ▼ 名前解決
 
-Serviceのドメイン名を用いて，Pod内から```nslookup```コマンドの正引きを実行する．Serviceに```meta.name```タグが設定されている場合，Serviceのドメイン名は，```meta.name```タグの値になる．ドメイン名の設定を要求された時は，設定ミスを防げるため，```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である．
+Serviceのドメイン名を使用して，Pod内から```nslookup```コマンドの正引きを実行する．Serviceに```meta.name```タグが設定されている場合，Serviceのドメイン名は，```meta.name```タグの値になる．ドメイン名の設定を要求された時は，設定ミスを防げるため，```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である．
 
 参考：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 

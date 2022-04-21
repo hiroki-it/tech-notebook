@@ -74,7 +74,7 @@ Istioの機能のセットを提供する．
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesでIstioを用いることができるように，```istio-injection```ラベルの値に```enabled```を設定する．Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる．```default```以外の名前空間名をつける場合は，コマンドではなく，マニフェストファイル上でこれを設定できる．
+KubernetesでIstioを使用できるように，```istio-injection```ラベルの値に```enabled```を設定する．Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる．```default```以外の名前空間名をつける場合は，コマンドではなく，マニフェストファイル上でこれを設定できる．
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
@@ -144,7 +144,7 @@ $ istioctl manifest diff <変更前マニフェストファイルへのパス> <
 
 #### ▼ -f
 
-IstioOperatorのマニフェストファイルを用いて，プロファイルをインストールする．
+IstioOperatorのマニフェストファイルを使用して，プロファイルをインストールする．
 
 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 

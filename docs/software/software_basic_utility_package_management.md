@@ -122,7 +122,7 @@ $ rpm -qi <パッケージ名>
 
 #### ▼ install，reinstall
 
-rpmと同様の使い方ができる．また，インストール時にパッケージ間の依存関係を解決できる．
+rpmと同様に使用できる．また，インストール時にパッケージ間の依存関係を解決できる．
 
 ```bash
 # パッケージをインストール
@@ -176,7 +176,7 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを用いると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（RPM，EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
+CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを使用すると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（RPM，EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
 
 #### ▼ リポジトリ自体のインストール
 
@@ -236,7 +236,7 @@ gpgcheck=1
 
 #### ▼ PHPのインストール
 
-（４）Remiリポジトリの有効化オプションを永続的に用いることができるようにする．
+（４）Remiリポジトリの有効化オプションを永続的に使用できるようにする．
 
 ```bash
 # CentOS7の場合
@@ -253,7 +253,7 @@ $ dnf module enable php:remi-7.4
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを用いて，明示的にremiを指定
+# 一時的に有効化できるオプションを使用して，明示的にremiを指定
 $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
@@ -266,7 +266,7 @@ $ dnf install -y php php-mbstring php-mcrypt
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを用いて，明示的にremiを指定
+# 一時的に有効化できるオプションを使用して，明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 

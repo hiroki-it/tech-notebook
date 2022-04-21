@@ -32,7 +32,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 #### ▼ ドライバーとは
 
-ゲスト（ワーカーノード）側のOSを設定する．ホスト側のOS（Linux，MacOS，Windows）や，これらOSのバージョンによって，用いることができるドライバーが異なる．
+ゲスト（ワーカーノード）側のOSを設定する．ホスト側のOS（Linux，MacOS，Windows）や，これらOSのバージョンによって，使用できるドライバーが異なる．
 
 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
@@ -88,7 +88,7 @@ $ minikube start
 
 #### ▼ 標準のワーカーNode-コンテナ間マウント
 
-ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを用いる場合は，この機能がないことに注意する．
+ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを使用する場合は，この機能がないことに注意する．
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -107,15 +107,15 @@ $ minikube start
 
 #### ▼ ホストをコンテナにマウントする方法
 
-Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，ドライバーごとのを用いて，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
+Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，ドライバーごとのを使用して，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
-#### ▼ HyperKitドライバーを用いる場合
+#### ▼ HyperKitドライバーを使用する場合
 
 **＊例＊**
 
-（１）HyperKitドライバーを用いる場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを用いて，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
+（１）HyperKitドライバーを使用する場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを使用して，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
 
 ```bash
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
@@ -172,7 +172,7 @@ Minikubeのプラグインを操作する．
 
 **＊例＊**
 
-開発環境専用のIngressコントローラーとして，NginxIngressコントローラーを有効化する．本番環境では，同じくNginxIngressコントローラーや，クラウドプロバイダーのロードバランサーなどを用いる．
+開発環境専用のIngressコントローラーとして，NginxIngressコントローラーを有効化する．本番環境では，同じくNginxIngressコントローラーや，クラウドプロバイダーのロードバランサーなどを使用する．
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -474,7 +474,7 @@ $ minikube ip
 n.n.n.n
 ```
 
-ちなみに，```minikube service```コマンドを用いずに，```ssh```コマンドで仮想環境に接続しても，同様にServiceにリクエストを送信できる．
+ちなみに，```minikube service```コマンドを使用せずに，```ssh```コマンドで仮想環境に接続しても，同様にServiceにリクエストを送信できる．
 
 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 

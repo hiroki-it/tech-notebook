@@ -34,7 +34,7 @@ CloudFormationでは，通常のStackを作成したリージョンでプロビ�
 ![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudformation_stacksets.png)
 
 
-StackSetsを用いると，複数のリージョンだけでなく，複数のアカウント間でもプロビジョニングを実行できる．
+StackSetsを使用すると，複数のリージョンだけでなく，複数のアカウント間でもプロビジョニングを実行できる．
 
 参考：
 
@@ -84,7 +84,7 @@ Resources:
 
 ## 04. 出力
 
-特定のスタックで生成されたリソース値を他のスタックで用いることができるようにする．
+特定のスタックで生成されたリソース値を他のスタックで使用できるようにする．
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
 

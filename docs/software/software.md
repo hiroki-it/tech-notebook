@@ -49,7 +49,7 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 ![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ネイティブアプリ.png)
 
-端末のシステムによって稼働するアプリケーションのこと．一度ダウンロードしてしまえば，インターネットに繋がっていなくとも，用いることができる．
+端末のシステムによって稼働するアプリケーションのこと．一度ダウンロードしてしまえば，インターネットに繋がっていなくとも，使用できる．
 
 参考：https://www.sbbit.jp/article/cont1/28197
 
@@ -115,7 +115,7 @@ Google Drive，Dropbox
 
 - Apacheの拡張モジュール
 - PHP-FPM
-- NGINX Unit（WebサーバーのNginxと組み合わせて用いることができるミドルウェア）
+- NGINX Unit（WebサーバーのNginxと組み合わせて使用できるミドルウェア）
 - Tomcat
 
 参考：https://thinkit.co.jp/article/11837

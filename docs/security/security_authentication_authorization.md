@@ -37,7 +37,7 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 | 役割         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | クライアント | リクエスト送信元のアプリケーションのこと．文脈によっては，ブラウザがクライアントである場合とそうでない場合（例：OAuth認証）がある． |
-| ユーザー       | クライアントを用いている人物のこと．                       |
+| ユーザー       | クライアントを使用している人物のこと．                       |
 | サーバー       | クライアントからリクエストを受信し，レスポンスを送信するアプリケーションのこと． |
 
 最初，クライアントは，認証後にアクセスできるWebページのリクエストをサーバーに送信する．
@@ -46,7 +46,7 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 GET https://example.com/foo-form
 ```
 
-サーバーは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザーに示して，ユーザー名とパスワードの入力を求められる．ユーザーに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
+サーバーは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザーに示して，ユーザー名とパスワードの入力を求められる．ユーザーに表示するための認証領域には，任意の値を持たせられ，サイト名が設定されることが多い．
 
 ```http
 401 Unauthorized
@@ -106,11 +106,11 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成し
 
 #### ▼ Bearer認証とは
 
-認証時にBearerトークンを用いる認証スキームのこと．
+認証時にBearerトークンを使用する認証スキームのこと．
 
 #### ▼ Bearerトークン（署名なしトークン）とは
 
-単なる文字列で定義されたアクセストークン．Bearer認証にて，トークンとして用いる．署名なしトークンとも呼ばれ，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていればそれを本人として認可する．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを用いるBearer認証については，別項目の説明を参考にせよ．
+単なる文字列で定義されたアクセストークン．Bearer認証にて，トークンとして使用する．署名なしトークンとも呼ばれ，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていればそれを本人として認可する．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを使用するBearer認証については，別項目の説明を参考にせよ．
 
 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
@@ -236,14 +236,14 @@ OAuthの項目を参考にせよ．
 
 #### ▼ Form認証とは
 
-認証時に```Cookie```ヘッダーの値を用いる方法のこと．『Cookieベースの認証』ともいう．ステートフル化を行うため，HTTP認証には属していない．認証情報の一時的な保存は，サーバーのセッションデータで行うため，認証解除（ログアウト）をサーバー側で制御できる．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
+認証時に```Cookie```ヘッダーの値を使用する方法のこと．『Cookieベースの認証』ともいう．ステートフル化を行うため，HTTP認証には属していない．認証情報の一時的な保存は，サーバーのセッションデータで行うため，認証解除（ログアウト）をサーバー側で制御できる．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
 参考：
 
 - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
-#### ▼ セッションIDを用いたForm認証の場合（セッションベース）
+#### ▼ セッションIDを使用したForm認証の場合（セッションベース）
 
 セッションIDを```Cookie```ヘッダーに割り当て，リクエストを送信する．
 
@@ -276,14 +276,14 @@ POST https://example.com/foo-form
 { sessionid: ***** }
 ```
 
-レスポンスの```Set-Cookie```ヘッダーを用いて，セッションIDをクライアントに送信する．
+レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
 
 ```http
 200 OK
 Set-Cookie: sessionid=<セッションID>
 ```
 
-サーバーは，セッションIDとユーザーIDを紐付けてサーバー内に保存する．さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを用いて，セッションIDをクライアントに送信する．サーバーは，保存されたセッションIDに紐付くユーザーIDから，ユーザーを特定し，ログインを許可する．これにより，改めて認証情報を送信せずに，素早くログインできるようになる．
+サーバーは，セッションIDとユーザーIDを紐付けてサーバー内に保存する．さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバーは，保存されたセッションIDに紐付くユーザーIDから，ユーザーを特定し，ログインを許可する．これにより，改めて認証情報を送信せずに，素早くログインできるようになる．
 
 ```http
 POST https://example.com/foo-form
@@ -294,7 +294,7 @@ cookie: sessionid=<セッションID>
 
 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
-#### ▼ トークンを用いたForm認証の場合（トークンベース）
+#### ▼ トークンを使用したForm認証の場合（トークンベース）
 
 トークンを```Cookie```ヘッダーに割り当て，リクエストを送信する．この時のトークンの選択肢として，単なるランダムな文字列やJWTがある．
 
@@ -349,7 +349,7 @@ authorization: <Personal Acccess Token>
 
 | サービス例 | トークン名            | 説明                                                         |
 | ---------- | --------------------- | ------------------------------------------------------------ |
-| GitHub     | Personal access Token | HTTPSを用いて，プライベートリポジトリにリクエストを送信するために必要．HTTPSを用いる場面として，アプリケーションの拡張機能のGitHub連携，リポジトリのパッケージ化，などがある．<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+| GitHub     | Personal access Token | HTTPSを使用して，プライベートリポジトリにリクエストを送信するために必要．HTTPSを使用する場面として，アプリケーションの拡張機能のGitHub連携，リポジトリのパッケージ化，などがある．<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 <br>
 
@@ -374,7 +374,7 @@ authorization: <Personal Acccess Token>
 
 #### ▼ Two Factor Authorizationとは
 
-二段階認証のうちで特に，認証時に異なる要素の方法を用いて，段階的にクライアントを照合すること方法のこと．後述するOAuth認証を組み込んでも良い．
+二段階認証のうちで特に，認証時に異なる要素の方法を使用して，段階的にクライアントを照合すること方法のこと．後述するOAuth認証を組み込んでも良い．
 
 | 一要素目の認証例       | 二要素目の認証例                                             |
 | ---------------------- | ------------------------------------------------------------ |
@@ -392,7 +392,7 @@ authorization: <Personal Acccess Token>
 
 #### ▼ 処理の違い
 
-![アクセストークンを用いたセキュリティ仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクセストークンを用いたセキュリティの仕組み.jpg)
+![アクセストークンを使用したセキュリティ仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクセストークンを使用したセキュリティの仕組み.jpg)
 
 認証フェーズと認可フェーズでは，仕組みの中に，3つの役割が定義されている．
 
@@ -409,7 +409,7 @@ authorization: <Personal Acccess Token>
 
 #### ▼ ステータスコードの違い
 
-認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，```401```ステータスを用いる．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，```403```ステータスを用いる．ステータスコードについては，以下のリンクを参考にせよ．
+認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，```401```ステータスを使用する．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，```403```ステータスを使用する．ステータスコードについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -421,12 +421,12 @@ authorization: <Personal Acccess Token>
 
 ![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
 
-認証/認可フェーズ全体の中で，認可フェーズにOAuthプロトコルを用いたクライアントの照合方法を『OAuth認証』と呼ぶ．認証フェーズと認可フェーズでは，3つの役割が定義されていることを説明したが，OAuthプロトコル```2.0```では，より具体的に4つの役割が定義されている．
+認証/認可フェーズ全体の中で，認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth認証』と呼ぶ．認証フェーズと認可フェーズでは，3つの役割が定義されていることを説明したが，OAuthプロトコル```2.0```では，より具体的に4つの役割が定義されている．
 
 | 役割              | 名称               | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | APIクライアント   | クライアントアプリ | リソースオーナに対するアクション機能を持つサーバーのこと．     | OAuthの文脈では，ブラウザがクライアントと呼ばれないことに注意する．また，クライアントアプリとリソース間のデータ通信は，ブラウザを介したリダイレクトによって実現することに注意する． |
-|                   | リソースオーナー   | クライアントを用いているユーザーのこと．                     |                                                              |
+|                   | リソースオーナー   | クライアントを使用しているユーザーのこと．                     |                                                              |
 | Identity Provider | 認可サーバー         | リソースサーバーがリソースオーナーにアクセスできるトークンを生成するサーバーのこと． | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように，クライアントアプリケーションの開発者がURLを事前登録しておく必要がある．認可サーバーを利用する開発者用に，コンソール画面が用意されていることが多い．<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | APIサーバー         | リソースサーバー     | クライアントのアカウント情報を持っているサーバーのこと．       |                                                              |
 
@@ -439,7 +439,7 @@ OAuth認証には，仕組み別に『認可コードフロー』『インプリ
 - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
 
-（１）ユーザーが，Facebookアカウントを用いてInstagramにログインしようとする．この時，ブラウザはFacebookにリクエストを送信する．
+（１）ユーザーが，Facebookアカウントを使用してInstagramにログインしようとする．この時，ブラウザはFacebookにリクエストを送信する．
 
 （２）Facebookはブラウザににアカウント連携の承認ボタンをレスポンスとして返信する．ユーザーは，表示された承認ボタンを押し，ブラウザはFacebookにリクエストを送信する．
 
@@ -515,9 +515,9 @@ Pragma: no-cache
 }
 ```
 
-#### ▼ 用いられる認証スキーム
+#### ▼ 使用される認証スキーム
 
-OAuth認証では，認証スキーマとしてBearer認証が選択されることが多く，AWSやGitHubは，独自の認証スキームを用いている．なお，認可サーバーによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
+OAuth認証では，認証スキーマとしてBearer認証が選択されることが多く，AWSやGitHubは，独自の認証スキームを使用している．なお，認可サーバーによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
 
 #### ▼ 付与タイプ
 
@@ -527,11 +527,11 @@ OAuth認証では，認証スキーマとしてBearer認証が選択されるこ
 
 | 付与タイプ名             | 説明                                                         | 使用例                                                       |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に用いる．推奨されている．<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携                              |
+| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する．推奨されている．<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携                              |
 | Client Credentials Grant | 推奨されている．<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                                              |
 | Device Code              | 推奨されている．<br>参考：https://oauth.net/2/grant-types/device-code/ |                                                              |
 | Implicit Grant           | 非推奨されている．<br>参考：https://oauth.net/2/grant-types/implicit/ |                                                              |
-| Password Grant           | ユーザー名とパスワードを照合し，トークンを付与する．非推奨されている．<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は，Password Grantタイプを用いている．<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+| Password Grant           | ユーザー名とパスワードを照合し，トークンを付与する．非推奨されている．<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は，Password Grantタイプを使用している．<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
 <br>
 
@@ -541,7 +541,7 @@ OAuth認証では，認証スキーマとしてBearer認証が選択されるこ
 
 要勉強．
 
-#### ▼ 用いられる認証スキーム
+#### ▼ 使用される認証スキーム
 
 要勉強
 
@@ -551,14 +551,14 @@ OAuth認証では，認証スキーマとしてBearer認証が選択されるこ
 
 ### JWTとは
 
-『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして用いることができる．ランダムな文字列をこれら認証のトークンとするより，JWTを用いた方がより安全である．
+『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして使用できる．ランダムな文字列をこれら認証のトークンとするより，JWTを使用した方がより安全である．
 
 ```http
 GET https://example.com/bar.php
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
-JWTをBearerトークンとして用いるBearer認証については，別項目の説明を参考にせよ．
+JWTをBearerトークンとして使用するBearer認証については，別項目の説明を参考にせよ．
 
 参考：
 

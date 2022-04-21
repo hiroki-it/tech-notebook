@@ -121,7 +121,7 @@ istio-proxyコンテナの設定を上書きできる．
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの場合は，```template```キーよりも下層の```metadata```キーを用いることに注意する．
+DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナごとのオプション値を設定する．Deploymentの場合は，```template```キーよりも下層の```metadata```キーを使用することに注意する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -199,7 +199,7 @@ metadata:
 
 #### ▼ istio-injection
 
-アドミッションコントローラーを用いて，Envoyコンテナを自動的に構築するかどうかを設定する．
+アドミッションコントローラーを使用して，Envoyコンテナを自動的に構築するかどうかを設定する．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -266,7 +266,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyCPU
 
-Envoyコンテナで用いるCPU容量を設定する．
+Envoyコンテナで使用するCPU容量を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -287,7 +287,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyImage
 
-Envoyコンテナの構築に用いるDockerイメージを設定する．
+Envoyコンテナの構築に使用するDockerイメージを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -308,7 +308,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyMemory
 
-Envoyコンテナで用いるメモリ容量を設定する．
+Envoyコンテナで使用するメモリ容量を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -341,7 +341,7 @@ DestinationRule上のインバウンド通信をルーティングできる名�
 
 #### ▼ ```*```（アスタリスク）
 
-全ての名前空間で用いることができるようにする．
+全ての名前空間で使用できるようにする．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -356,7 +356,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在の名前空間で用いることができるようにする．
+現在の名前空間で使用できるようにする．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -426,7 +426,7 @@ spec:
 
 #### ▼ loadBalancer
 
-Podへのルーティング時に用いるロードバランシングアルゴリズムを設定する．
+Podへのルーティング時に使用するロードバランシングアルゴリズムを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
@@ -463,7 +463,7 @@ spec:
 
 #### ▼ portLevelSettings.port
 
-ポート番号別のルーティングで用いるポート番号を設定する．
+ポート番号別のルーティングで使用するポート番号を設定する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
@@ -482,7 +482,7 @@ spec:
 
 #### ▼ tls.mode
 
-Podへのルーティング時に用いるHTTPSプロトコルのタイプを設定する．HTTPSプロトコルを用いない場合は，```DISABLE```とする．
+Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する．HTTPSプロトコルを使用しない場合は，```DISABLE```とする．
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
@@ -688,7 +688,7 @@ spec:
 
 #### ▼ hosts
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワイルドカードを用いることができる．
+Gatewayに紐づけれたVirtualServiceのドメイン名を設定する．ワイルドカードを使用できる．
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -895,7 +895,7 @@ spec:
 
 #### ▼ meshConfigとは
 
-全てのEnvoyコンテナに共通する値を設定する．ここではEnvoyを用いた場合を説明する．
+全てのEnvoyコンテナに共通する値を設定する．ここではEnvoyを使用した場合を説明する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
@@ -947,7 +947,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全てのEnvoyコンテナに関して，用いるGatewayの```istio```ラベル値を設定する．IngressGatewayをIngressコントローラーとして使用でき，デフォルトでは```ingressgateway```が設定される．
+全てのEnvoyコンテナに関して，使用するGatewayの```istio```ラベル値を設定する．IngressGatewayをIngressコントローラーとして使用でき，デフォルトでは```ingressgateway```が設定される．
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -962,7 +962,7 @@ spec:
 
 #### ▼ ingressService
 
-全てのEnvoyコンテナに関して，用いるIngressコントローラーの```istio```ラベル値を設定する．IngressGatewayをIngressとして使用でき，デフォルトでは```ingressgateway```が設定される．
+全てのEnvoyコンテナに関して，使用するIngressコントローラーの```istio```ラベル値を設定する．IngressGatewayをIngressとして使用でき，デフォルトでは```ingressgateway```が設定される．
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -1031,7 +1031,7 @@ spec:
 
 #### ▼ profileとは
 
-インストールに用いるプロファイルを設定する．
+インストールに使用するプロファイルを設定する．
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -1159,7 +1159,7 @@ metadata:
   name: istio-operator
 spec:
   mtls:
-    mode: DISABLE # 相互TLSを用いない．
+    mode: DISABLE # 相互TLSを使用しない．
 ```
 
 相互TLSを有効化する場合はSSL証明書が必要になり，これがないと以下のようなエラーになる．
@@ -1182,7 +1182,7 @@ VirtualService上のインバウンド通信をルーティングできる名前
 
 #### ▼ ```*```（アスタリスク）
 
-全ての名前空間で用いることができるようにする．
+全ての名前空間で使用できるようにする．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1197,7 +1197,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在の名前空間で用いることができるようにする．
+現在の名前空間で使用できるようにする．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1340,7 +1340,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-Serviceのサブセット名を設定する．DestinationRuleにて，ルーティング先の設定に用いる．
+Serviceのサブセット名を設定する．DestinationRuleにて，ルーティング先の設定に使用する．
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 

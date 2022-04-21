@@ -49,7 +49,7 @@ apiVersion: v1
 | Node                  | Kubernetesの実行時に自動的に作成される．もし手動で作成する場合は，kubectlコマンドで```--register-node=false```とする必要がある．                                                                        |
 | PersistentVolume      |                                                                                                                                                               |
 | PersistentVolumeClaim |                                                                                                                                                               |
-| Pod                   | PodをDeploymentやReplicaSetに紐づけずに用いることは非推奨である．<br>参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
+| Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である．<br>参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
 | ReplicaController     | 旧Deployment．非推奨である．<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes                                     |
 | ReplicaSet            |                                                                                                                                                               |
 | Service               |                                                                                                                                                               |
@@ -296,7 +296,7 @@ spec:
 
 #### ▼ RollingUpdate
 
-ローリングアップデートを用いて，新しいPodをデプロイする．
+ローリングアップデートを使用して，新しいPodをデプロイする．
 
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -412,7 +412,7 @@ spec:
 
 #### ▼ ReadWriteMany
 
-ボリュームに対して，複数Nodeから読み出し/書き込みできるようにする．Node間でDBを共有したい場合に用いる．
+ボリュームに対して，複数Nodeから読み出し/書き込みできるようにする．Node間でDBを共有したい場合に使用する．
 
 **＊実装例＊**
 
@@ -430,7 +430,7 @@ spec:
 
 #### ▼ ReadOnlyMany
 
-ボリュームに対して，複数Nodeから読み出しでき，また単一Nodeのみから書き込みできるようにする．Node間で読み出し処理のみDBを共有したい場合に用いる．
+ボリュームに対して，複数Nodeから読み出しでき，また単一Nodeのみから書き込みできるようにする．Node間で読み出し処理のみDBを共有したい場合に使用する．
 
 **＊実装例＊**
 
@@ -448,7 +448,7 @@ spec:
 
 #### ▼ ReadWriteOnce
 
-ボリュームに対して，単一Nodeからのみ読み出し/書き込みできるようにする．NodeごとにDBを分割したい場合に用いる．
+ボリュームに対して，単一Nodeからのみ読み出し/書き込みできるようにする．NodeごとにDBを分割したい場合に使用する．
 
 **＊実装例＊**
 
@@ -667,7 +667,7 @@ PersistentVolumeのライフサイクルを設定する．
 
 #### ▼ Delete
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolumeも自動的に削除する．クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために用いることが多い．
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に，PersistentVolumeも自動的に削除する．クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い．
 
 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -750,8 +750,8 @@ spec:
 | クラス名 | 説明                                | 補足                                                         |
 | -------- | ----------------------------------- | ------------------------------------------------------------ |
 | standard | デフォルト値である．                |                                                              |
-| fast     | SSDをPersistentVolumeとして用いる． | 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
-| slow     | HDをPersistentVolumeとして用いる．  | 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+| fast     | SSDをPersistentVolumeとして使用する． | 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
+| slow     | HDをPersistentVolumeとして使用する．  | 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
 <br>
 
@@ -1081,7 +1081,7 @@ spec:
 
 #### ▼ volumeとは
 
-Pod内で用いるボリュームを設定する．
+Pod内で使用するボリュームを設定する．
 
 #### ▼ configMap
 
@@ -1206,7 +1206,7 @@ spec:
 
 #### ▼ persistentVolumeClaim
 
-PersistentVolumeを用いる場合に，PersistentVolumeClaimを設定する．
+PersistentVolumeを使用する場合に，PersistentVolumeClaimを設定する．
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -1298,12 +1298,12 @@ spec:
       port: 9000
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが用いなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
+もしIstio VirtualServiceからインバウンド通信を受信する場合に，```appProtocol```キーが使用しなければ，```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない．
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 
 ```yaml
-# appProtocolを用いない場合
+# appProtocolを使用しない場合
 apiVersion: v1
 kind: Service
 metadata:
@@ -1317,7 +1317,7 @@ spec:
 ```
 
 ```yaml
-# appProtocolを用いない場合
+# appProtocolを使用しない場合
 apiVersion: v1
 kind: Service
 metadata:
@@ -1405,7 +1405,7 @@ spec:
       port: 22
 ```
 
-ちなみに，FastCGIプロトコルには変換できず，別にNginxを用いてプロトコルを変換する必要がある．
+ちなみに，FastCGIプロトコルには変換できず，別にNginxを使用してプロトコルを変換する必要がある．
 
 参考：
 

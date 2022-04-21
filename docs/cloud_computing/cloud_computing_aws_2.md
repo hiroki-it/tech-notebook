@@ -54,15 +54,15 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
 
-最初，クライアントPCからのリクエストはエッジロケーションで受信される．プライベートネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを用いないため，小さなレイテシーでトラフィックをルーティングできる．
+最初，クライアントPCからのリクエストはエッジロケーションで受信される．プライベートネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを使用しないため，小さなレイテシーでトラフィックをルーティングできる．
 
 ![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
 
-Global Acceleratorを用いない場合，クライアントPCのリージョンから指定したリージョンに至るまで，いくつもパブリックネットワークを経由する必要があり，時間がかかってしまう．
+Global Acceleratorを使用しない場合，クライアントPCのリージョンから指定したリージョンに至るまで，いくつもパブリックネットワークを経由する必要があり，時間がかかってしまう．
 
 ![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入前.png)
 
-以下のサイトで，Global Acceleratorを用いた場合としなかった場合のレスポンス速度を比較できる．
+以下のサイトで，Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる．
 
 参考：https://speedtest.globalaccelerator.aws/#/
 
@@ -393,7 +393,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 特定の権限をもったアカウントのこと．
 
-#### ▼ ```credentials```ファイルを用いたCLI
+#### ▼ ```credentials```ファイルを使用したCLI
 
 AWS CLIでクラウドインフラを操作するためには，```credentials```ファイルに定義されたクレデンシャル情報が必要である．『```aws_region```』ではなく『```aws_default_region```』であることに注意する．
 
@@ -416,7 +416,7 @@ aws_access_key_id=<アクセスキー>
 aws_secret_access_key=<シークレットキー>
 ```
 
-#### ▼ 環境変数を用いたCLI
+#### ▼ 環境変数を使用したCLI
 
 AWS CLIでクラウドインフラを操作するためには，環境変数で定義されたクレデンシャル情報が必要である．『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する．
 
@@ -513,7 +513,7 @@ $ aws iam update-user \
 
 ### Kinesis Data Firehoseとは
 
-リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管/可視化/分析/レポート作成/アラートが可能な外部サービスやAWSリソースに転送する．転送時にLambda関数を用いることで，収集したデータを加工できる．
+リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管/可視化/分析/レポート作成/アラートが可能な外部サービスやAWSリソースに転送する．転送時にLambda関数を使用することで，収集したデータを加工できる．
 
 参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html
 
@@ -523,7 +523,7 @@ $ aws iam update-user \
 
 | 項目             | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| レコードの変換   | バッファーに蓄えられたログを，指定された形式で転送する前に，テキストの内容を変換する． | Lambdaを用いる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
+| レコードの変換   | バッファーに蓄えられたログを，指定された形式で転送する前に，テキストの内容を変換する． | Lambdaを使用する．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
 | 転送先           | 転送先とするS3バケットを設定する．                           |                                                              |
 | ディレクトリ名   | S3への転送時に，S3に作成するディレクトリの名前を設定できる．デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され，2021/11/09現在はUTCのみ設定できる． | もしJSTにしたい場合はLambdaに変換処理を実装し，Kinesis Data Firehoseと連携する必要がある．<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
 | バッファー       | Kinesis Data Firehoseでは，受信したログを一旦バッファーに蓄え，一定期間あるいは一定容量が蓄えられた時点で，ログファイルとして転送する．この時，バッファーに蓄える期間や上限量を設定できる． | 参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |

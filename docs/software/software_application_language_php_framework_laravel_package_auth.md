@@ -25,8 +25,8 @@ description: 認証/認可系パッケージ＠Laravelの知見をまとめま�
 
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| Webガード    | セッションIDを用いたForm認証のために用いる．                 |
-| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために用いる．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| Webガード    | セッションIDを使用したForm認証のために使用する．                 |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 
 #### ▼ カスタムガード
 
@@ -34,7 +34,7 @@ Laravelがデフォルトで持たないドライバーとプロバイダーを�
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
-APIガードの認証で用いるトークンをJWTに変更したい時には，以下のパッケージがおすすめ．
+APIガードの認証で使用するトークンをJWTに変更したい時には，以下のパッケージがおすすめ．
 
 参考：https://github.com/tymondesigns/jwt-auth
 
@@ -47,7 +47,7 @@ APIガードの認証で用いるトークンをJWTに変更したい時には�
 
 | ドライバーの種類  | 認証の種類                         | 実装クラス         | 備考                                                         |
 | ----------------- | ---------------------------------- | ------------------ | ------------------------------------------------------------ |
-| sessionドライバー | セッションIDを用いたForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
+| sessionドライバー | セッションIDを使用したForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
 | tokenドライバー   | Bearer認証，APIキー認証，OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
 
 ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選択した場合は，TokenGuardクラスが返却される．
@@ -100,7 +100,7 @@ BeforeMiddlwareで認証済みのユーザーかどうかを検証し，もし�
 
 <br>
 
-### セッションIDを用いたForm認証
+### セッションIDを使用したForm認証
 
 #### ▼ sessionドライバー
 
@@ -217,7 +217,7 @@ return [
 
 ```
 
-Authファサードの```guard```メソッドを用いて，ガードに応じた認証を実行する．これにより，同一の認証後ページにリダイレクトした後に，ユーザーのEloquentモデルに応じた処理を実行できるようになる．
+Authファサードの```guard```メソッドを使用して，ガードに応じた認証を実行する．これにより，同一の認証後ページにリダイレクトした後に，ユーザーのEloquentモデルに応じた処理を実行できるようになる．
 
 ```php
 <?php
@@ -277,7 +277,7 @@ $user = auth()->user();
 
 **＊実装例＊**
 
-認証済みのユーザーがブラウザを閉じたとしても，セッションが続いている（例：ログアウトしない）限り，認証処理を改めて実行する必要はない．そのために，BeforeMiddlewareを用いて，認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる．
+認証済みのユーザーがブラウザを閉じたとしても，セッションが続いている（例：ログアウトしない）限り，認証処理を改めて実行する必要はない．そのために，BeforeMiddlewareを使用して，認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる．
 
 ````php
 <?php
@@ -423,7 +423,7 @@ class AuthServiceProvider extends ServiceProvider
 
 #### ▼ AuthorizeMiddlewareによる認可
 
-ルーティング時にDBレコードレベルの認可スコープを定義する．AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり，Kernelクラスに定義されている．第一引数にPolicyクラスのメソッド名，第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す．名前空間を渡す場合は，これをハードコーディングせず，関数で名前空間を取得して文字列と結合する．インスタンスを渡す場合は，暗黙のモデル結合を用いる必要がある．認可に失敗した場合，```403```ステータスのレスポンスを返信する．
+ルーティング時にDBレコードレベルの認可スコープを定義する．AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり，Kernelクラスに定義されている．第一引数にPolicyクラスのメソッド名，第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す．名前空間を渡す場合は，これをハードコーディングせず，関数で名前空間を取得して文字列と結合する．インスタンスを渡す場合は，暗黙のモデル結合を使用する必要がある．認可に失敗した場合，```403```ステータスのレスポンスを返信する．
 
 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
@@ -603,9 +603,9 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 | ----------------------------- | ------------------------------------------------------------ |
 | oauth_access_tokens           | 全てのアクセストークンを管理する．                           |
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する．             |
-| oauth_clients                 | Passportで用いている付与タイプを管理する．                   |
+| oauth_clients                 | Passportで使用している付与タイプを管理する．                   |
 | oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する．                |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する．アクセストークンの有効期限が切れた時に，再生成をリクエストするために用いる．<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する．アクセストークンの有効期限が切れた時に，再生成をリクエストするために使用する．<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを生成
 
@@ -711,7 +711,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquentモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを用いたい場合は，```database```ドライバを設定する．
+3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquentモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを設定する．
 
 ```php
 return [
@@ -796,7 +796,7 @@ $ php artisan passport:client --password
 
 #### ▼ クライアントアプリ側の実装
 
-1. 『認証』のために，アクセストークンのリクエストを送信する．ユーザー側のアプリケーションは，```/oauth/authorize```へリクエストを送信する必要がある．ここでは，リクエストGuzzleパッケージを用いて，リクエストを送信するものとする．
+1. 『認証』のために，アクセストークンのリクエストを送信する．ユーザー側のアプリケーションは，```/oauth/authorize```へリクエストを送信する必要がある．ここでは，リクエストGuzzleパッケージを使用して，リクエストを送信するものとする．
 
 **＊実装例＊**
 
@@ -870,7 +870,7 @@ class CreateUsersTable extends Migration
             $table->string("name")->comment("ユーザー名");
             $table->string("api_token")->unique()->comment("APIトークン");
 
-            // MigrationMacroServiceProviderのメソッドを用いる．
+            // MigrationMacroServiceProviderのメソッドを使用する．
             $table->systemColumns();
 
             // deleted_atカラムを追加する．
@@ -940,11 +940,11 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 ### Sanctumパッケージとは
 
-APIキー認証とセッションIDを用いたForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
+APIキー認証とセッションIDを使用したForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
-APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
+APIキー認証とセッションIDを使用したForm認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
 
@@ -974,7 +974,7 @@ $ composer require laravel/sanctum
 
 ### SPA認証
 
-フロントエンドにファーストパーティのSPA（自社のSPA）を用いて，バックエンドのAPIを実装する場合，使用が適している．
+フロントエンドにファーストパーティのSPA（自社のSPA）を使用して，バックエンドのAPIを実装する場合，使用が適している．
 
 参考：
 
@@ -1057,13 +1057,13 @@ $ composer require laravel/ui:^1.0 --dev
 認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選択できる．
 
 ```bash
-# Vuejsを用いる場合．
+# Vuejsを使用する場合．
 $ php artisan ui vue --auth
 
-# Reactを用いる場合
+# Reactを使用する場合
 $ php artisan ui react --auth
 
-# Bootstrapを用いる場合．
+# Bootstrapを使用する場合．
 $ php artisan ui bootstrap --auth 
 ```
 

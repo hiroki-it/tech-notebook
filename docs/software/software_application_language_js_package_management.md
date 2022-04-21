@@ -309,7 +309,7 @@ Composerの```composer.lock```ファイルに相当する．
 $ yarn add <パッケージ名>@<バージョン>
 ```
 
-特定のパッケージのバージョンを検証する場合は，```yarn remove```コマンドと```yarn add```コマンドを用いる．
+特定のパッケージのバージョンを検証する場合は，```yarn remove```コマンドと```yarn add```コマンドを使用する．
 
 ```bash
 $ yarn remove foo && yarn add foo@1.0.0

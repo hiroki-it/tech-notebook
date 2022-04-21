@@ -386,7 +386,7 @@ startretries=10
 
 #### ▼ stdout_logfile，stderr_logfile
 
-常駐プロセスの標準出力/標準エラー出力の出力先を設定する．デフォルト値は```/var/log/supervisor```ディレクトリである．もし，```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを用いる場合は，```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある．
+常駐プロセスの標準出力/標準エラー出力の出力先を設定する．デフォルト値は```/var/log/supervisor```ディレクトリである．もし，```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は，```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある．
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -643,7 +643,7 @@ sudo tcpdump -i eth0
 
 ### -nn <プロトコル名>
 
-全てのネットワークインターフェースにて，指定したプロトコルを用いたパケットの内容を表示する．
+全てのネットワークインターフェースにて，指定したプロトコルを使用したパケットの内容を表示する．
 
 参考：https://go-journey.club/archives/1472
 
