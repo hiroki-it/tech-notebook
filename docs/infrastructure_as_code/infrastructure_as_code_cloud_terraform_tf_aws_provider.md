@@ -1960,7 +1960,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | EC2                          | 秘密鍵                               | Terraformで構築する時にGitHubで秘密鍵を管理する必要があるため，セキュリティ上の理由で却下する． |
 | ENI                          | 全て                                 | 特定のAWSリソース（ALB，セキュリティグループなど）の構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『タスクが完了するまで待機』オプションを選択すると自動で構築されるため，Terraformで管理できない．このルールは，ECSのタスクの状態がSTOPPEDになったことを検知し，StepFunctionsに通知してくれる．STOPPED は，ECSタスクが正常に停止（完了？）した状態を表す． |
-| Global Accelerator           | セキュリティグループ                 | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
+| Global Accelerator           | セキュリティグループ               | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
 | IAMユーザー                    | 全て                                 | ビジネスロジックを持ち，変更の要望頻度が高い．               |
 | IAMユーザーグループ            | 全て                                 | ビジネスロジックを持ち，変更の要望頻度が高い．               |
 | IAMロール                    | ユーザーに紐付くロール                 | ビジネスロジックを持ち，変更の要望頻度が高い．               |

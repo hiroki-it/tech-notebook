@@ -1,72 +1,81 @@
----
-title: 【知見を記録するサイト】当サイトについて
----
+# 自己紹介
 
-# 当サイトについて
+## 👋🏻 はじめまして
 
-## 俺のドキュメントサイトとは
+長谷川広樹と申します．<br>
+<span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
 
-**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/self_introduction.html) ）が，業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです．
+大学院にて **生物情報学** の分野で研究を行い，理学修士を習得しました．<br>
+<span style="font-size: 90%;">( I studied **Bioinformatics** at the graduate school, and obtained a Master of Science. )</span>
 
-<br>
+その後，Webアプリケーションの **SWE** としてキャリアをスタートしました．<br>
+<span style="font-size: 90%;">( After that, I started my career as a **SWE** in web applications. )</span>
 
-## 使い方
-
-### 検索から
-
-1. 画面右上の検索フォームからキーワードを検索します．
-2. 検索結果が複数のノートにまたがる場合，参照するべきノートを判断します．
-3. ノートをクリックします．
-
-### 目次から
-
-1. [目次ページ](https://hiroki-it.github.io/tech-notebook-mkdocs/index.html) を確認します．
-2. ノートをクリックします．
+現在は，**SRE** として働かさせていただいております．<br>
+<span style="font-size: 90%;">( Currently, I'm working as a **SRE**. ) </span>
 
 <br>
 
-## サイトの目的
+## 🎯 関心のある技術領域
 
-以下の目的のために記録しております．
+Webアプリケーションのインフラ領域に軸足を置きつつ，バックエンド領域も好きです．<br>
+<span style="font-size: 90%;">( I put my foot in infrastructure, and also like backend. )</span>
 
-- 寝るとすぐに忘れてしまうので，その都度，インプットしたことを自分の言葉で書き，同時にアウトプットを行う．
-- 寝るとすぐに忘れてしまうので，その都度，知見を体系的に整理する．
-- 寝るとすぐに忘れてしまうので，その都度，誤った知見を修正する．
+特に，**拡張性**，**保守性**，**可読性** を高める技術に関心が強く，継続的に学習しています．<br>
+<span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**, so I keep learning these. )</span>
 
-そのため，**誤った情報**，**誤った体系化**，**わかりにくい日本語**，が多く散見されると思います．
-
-これらにつきましては，ご容赦いただけると幸いです．
-
-<br>
-
-## 学習方法
-
-本サイトでは，以下を記載し，その概念を学習するようにしております．
-
-- 定義づけ（演繹的な学習）
-- 例（帰納的な学習）
-- 概念図（視覚優位な学習）
-
-そのため，冗長な記載となることをご容赦いただけると幸いです．
-
-文章の書き方：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
+▶ クラウドインフラ，コンテナオーケストレーション，サービスメッシュ，IaC，DDD，マイクロサービスアーキテクチャ，DevOps，など<br>
+<span style="font-size: 90%;">( Cloud infrastructure, Container orchestration, Service mesh, IaC, DDD, Microservices architecture, DevOps, etc. )</span>
 
 <br>
 
-## サイトの作成方法
+## 📚 知見の記録
 
-MkDocsを使用して，mdファイルからHTMLを生成しております．こちらのリポジトリでバージョン管理しております．
+技術的な知識を体系的に整理するため，ノートにまとめております．<br>
+<span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook every day. )</span>
 
-参考：https://github.com/hiroki-it/tech-notebook-mkdocs
+▶ **技術ノート**：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html  (in Japanese)
 
 <br>
 
-## おわび
+## 🏭 練習用リポジトリ
 
-このサイトで使われている説明や画像につきまして，様々な書籍やサイトから引用させていただいております．
+アーキテクチャ関連の技術を人知れず練習しております．<br>
+<span style="font-size: 90%;">( I'm practicing architecture in the following repository. )</span>
 
-あくまで，上記の目的のためだけに使用させていただくという名目で，引用元を十分に記載しておりません．
+知見の共有になれば幸いです．<br>
+<span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
 
-深くお詫び申し上げます．
+### ■ クリーンアーキテクチャ
+
+▶ https://github.com/hiroki-it/ddd-api-with-laravel （ Clean-Arch，Laravel，GitHub Actions，など）
+
+▶ https://github.com/hiroki-it/ddd-api-with-go-gin （ Clean-Arch，Gin，など）
+
+▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （ Clean-Arch，Go，Serverless Framework，CircleCI，など）
+
+### ■ マイクロサービスアーキテクチャ
+
+▶ https://github.com/hiroki-it/microservices-backend （ Microservices-Arch，など）
+
+▶ https://github.com/hiroki-it/microservices-manifests （ K8s，Istio，など）
+
+<br>
+
+## 💼 経歴，職歴
+
+詳しくは，以下のサイトまでご訪問いただけると幸いです．<br>
+<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
+
+▶ **Wantedly**：[https://www.wantedly.com/id/h_hasegawa](https://www.wantedly.com/id/h_hasegawa) (in Japanese)
+
+<br>
+
+## 📢 過去の技術系プレゼン
+
+詳しくは，以下のサイトまでご訪問いただけると幸いです．<br>
+<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
+
+▶ **Speaker Deck**：[https://speakerdeck.com/hiroki_hasegawa](https://speakerdeck.com/hiroki_hasegawa) (in Japanese)
 
 <br>

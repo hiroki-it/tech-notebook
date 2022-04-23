@@ -23,7 +23,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -66,7 +66,7 @@ ALBの実体で，各ALBインスタンスが異なるグローバルIPアドレ
 
 #### ▼ 割り当てられるプライベートIPアドレス範囲
 
-ALBに割り当てられるIPアドレス範囲には，VPCのものが適用される．そのため，EC2インスタンスのSecurity Groupでは，VPCのIPアドレス範囲を許可するように設定する必要がある．
+ALBに割り当てられるIPアドレス範囲には，VPCのものが適用される．そのため，EC2インスタンスのセキュリティグループでは，VPCのIPアドレス範囲を許可するように設定する必要がある．
 
 #### ▼ 自動スケーリング
 
@@ -188,7 +188,7 @@ SSGの場合，静的ファイルをデプロイしさえすれば，アプリ�
 
 <br>
 
-### 設定項目
+### セットアップ
 
 | 項目                   | 説明                                             | 補足                                                         |
 | ---------------------- | ------------------------------------------------ | ------------------------------------------------------------ |
@@ -336,7 +336,7 @@ test:
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -642,7 +642,7 @@ X-Rayを使用して，API Gatewayを開始点とした分散トレースを収�
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 起動設定
 
@@ -720,7 +720,7 @@ CPU平均使用率に段階的な閾値を設定する．
 
 ## 05. Certificate Manager
 
-### 設定項目
+### セットアップ
 
 | 設定項目   | 説明                                       |
 | ---------- | ------------------------------------------ |
@@ -840,7 +840,7 @@ SNSを経由して，CloudWatchからの通知をチャットアプリケーシ�
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ slack通知の場合
 
@@ -876,7 +876,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 ![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -1411,7 +1411,7 @@ Lambdaのパフォーマンスに関するメトリクスを収集する．
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -1480,7 +1480,7 @@ CloudWatchログエージェントを設定する．OS，ミドルウェア，�
 
 **＊実装例＊**
 
-```bash
+```ini
 # ------------------------------------------
 # CentOS CloudWatch Logs
 # ------------------------------------------
@@ -1600,7 +1600,7 @@ $ aws cloudwatch get-metric-statistics \
 
 ## 09-04. CloudWatchアラーム
 
-### 設定項目
+### セットアップ
 
 #### ▼ ログが先の場合
 
@@ -1916,7 +1916,7 @@ Resources:
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -2081,7 +2081,7 @@ EC2のクラウド内蔵ストレージとして働く．
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ EBSボリュームタイプとストレージの関係
 
@@ -2240,7 +2240,7 @@ dockerイメージやHelmチャートを管理できる．
 
 <br>
 
-### 設定項目
+### セットアップ
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2828,13 +2828,17 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 #### ▼ NAT Gatewayを経由
 
-FargateからECRに対するdockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，NAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
+FargateからECRに対するdockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，パブリックサブネットにNAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
+
+参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
 #### ▼ VPCエンドポイントを経由
 
 VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにすると良い．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．そのため，NAT Gatewayがある状態でVPCエンドポイントを構築すると，接続先が自動的に変わってしまうことに注意する．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方が良い．
+
+参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
@@ -2875,6 +2879,8 @@ Istioと同様にして，マイクロサービスが他のマイクロサービ
 
 ### セットアップ
 
+#### ▼ EKS
+
 （１）AWSCLIにクレデンシャル情報を設定する．
 
 ```bash
@@ -2897,13 +2903,9 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <クラスターARN>
 ```
 
- （４）EKSクラスターからCloudWatchログにログを送信できるようにする．また，EKSのサービスリンクロールにCloudWatchへのアクセス権限を付与する．
+（４）可観測性ツールをEKSで稼働させるために，名前空間を作成する．名前は，```aws-observability```とする必要がある．
 
-参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
-
-```bash
-$ kubectl apply -f aws-observability.yml
-```
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/ 
 
 ```yaml
 kind: Namespace
@@ -2912,22 +2914,40 @@ metadata:
   name: aws-observability
   labels:
     aws-observability: enabled
----
+```
+
+（５）EKSクラスターからCloudWatchログにログを送信できるように，ConfigMapを作成する．名前は，```aws-logging```とする必要がある．
+
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+```bash
+$ kubectl apply -f config-map.yaml
+```
+
+```yaml
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: aws-eks-logging-config-map
+  name: aws-logging
   namespace: aws-observability
 data:
   output.conf: |
     [OUTPUT]
-        Name cloudwatch_logs
-        Match   *
+        Name cloudwatch
+        Match *
         region ap-northeast-1
         log_group_name fluent-bit-cloudwatch
         log_stream_prefix from-fluent-bit-
         auto_create_group true
 ```
+
+（６）EKSのPod実行ロールにCloudWatchへのアクセス権限を付与する．
+
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+#### ▼ VPC
+
+EKS Fargate Nodeはプライベートサブネットで稼働する．この時，パブリックネットワークにあるレジストリから，IstioやArgoCDのイメージをプルできるように，EKS Fargate Nodeとインターネットゲートウェイ間のネットワークを繋げる必要がある．
 
 <br>
 
@@ -2964,21 +2984,21 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと．KubernetesのClust
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 
-#### ▼ 設定項目
+#### ▼ セットアップ
 
-| 設定項目                         | 説明                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| 名前                             | クラスターの名前を設定する．                                 |
-| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| クラスターサービスロール         |                                                              |
-| シークレット                     |                                                              |
-| VPC，サブネット                  | ENIを配置するサブネットを設定する．複数のAZに跨っている必要がある． |
-| クラスターセキュリティグループ   | インバウンドとアウトバウンドの両方のルールで，全てのIPアドレスを許可する必要がある．<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー   |                                                              |
-| IPアドレス範囲                   |                                                              |
-| クラスターエンドポイントアクセス |                                                              |
-| ネットワークアドオン             |                                                              |
-| コントロールプレーンのログ       |                                                              |
+| 設定項目                         | 説明                                              | 補足                                                         |
+| -------------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| 名前                             | クラスターの名前を設定する．                      |                                                              |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する． | EKSが対応可能なKubernetesのバージョンは以下を参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| クラスターサービスロール         | EKSクラスターのサービスリンクロールを設定する．   | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
+| シークレット                     |                                                   |                                                              |
+| VPC，サブネット                  | ENIを配置するサブネットを設定する．               | 複数のAZにまたがっている必要がある．                         |
+| クラスターセキュリティグループ   | EKSクラスターのセキュリティグループを設定する．   | インバウンドとアウトバウンドの両方のルールで，全てのIPアドレスを許可する必要がある．このセキュリティグループは，追加のセキュリティグループとして設定され，別途，AWSによって```eks-cluster-sg-<EKSクラスター名>```というセキュリティグループも自動設定される．<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   |                                                   |                                                              |
+| IPアドレス範囲                   |                                                   |                                                              |
+| クラスターエンドポイントアクセス |                                                   |                                                              |
+| ネットワークアドオン             |                                                   |                                                              |
+| コントロールプレーンのログ       |                                                   |                                                              |
 
 #### ▼ ネットワーク
 
@@ -3069,18 +3089,18 @@ Fargate上で稼働するKubernetesのホストのこと．KubernetesのNodeに�
 
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
-#### ▼ 設定項目
+#### ▼ Fargateプロファイル
 
-Fargateの設定はプロファイルと呼ばれる．
+Fargateを設定する．
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
-| コンポーネント名           | 説明                                                         |
-| -------------------------- | ------------------------------------------------------------ |
-| Pod実行ロール              | kubeletがFargate上でPodを作成するために必要なロールを設定する． |
-| サブネット                 | EKS Fargateが起動するサブネットIDを設定する．プライベートサブネットを設定する必要がある． |
-| ポッドセレクタ（名前空間） | EKS Fargate上で稼働させるPodを固定できるように，Podの名前空間を設定する． |
-| ポッドセレクタ（ラベル）   | EKS ECS Fargate上で稼働させるPodを固定できるように，Podのラベルを設定する． |
+| コンポーネント名           | 説明                                                         | 補足                                                         |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように，Podにロールを設定する． | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には，ECRへのアクセス権限のみが付与されている．<br>・信頼されたエンティティでは，```eks-fargate-pods.amazonaws.com```を設定する必要がある．参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
+| サブネット                 | EKS Fargate Nodeが起動するサブネットIDを設定する．           | プライベートサブネットを設定する必要がある．                 |
+| ポッドセレクタ（名前空間） | EKS Fargate Node上で稼働させるPodを固定できるように，Podの名前空間ラベルの値を設定する． | IstioやArgoCDを，それ専用の名前空間で稼働させる場合は，その名前空間のためのプロファイルを作成しておく必要がある． |
+| ポッドセレクタ（ラベル）   | EKS Fargate Node上で稼働させるPodを固定できるように，Podの任意のラベルの値を設定する． |                                                              |
 
 <br>
 
@@ -3108,7 +3128,7 @@ EC2で稼働するKubernetesのホストのこと．on Fargateと比べてカス
 
 <br>
 
-### 設定項目
+### セットアップ
 
 #### ▼ 概要
 
@@ -3185,7 +3205,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 ## 16-02. ElastiCache for Redis
 
-### 設定項目
+### セットアップ
 
 | 設定項目                         | 説明                                                         | 補足                                                         |
 | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

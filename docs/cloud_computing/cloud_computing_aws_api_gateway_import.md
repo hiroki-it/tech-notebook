@@ -39,7 +39,7 @@ API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキー�
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
-#### ▼ 設定項目（VPCリンク&プロキシ統合）
+#### ▼ セットアップ（VPCリンク&プロキシ統合）
 
 ```yaml
 paths:
@@ -68,7 +68,7 @@ paths:
             statusCode: 200     
 ```
 
-#### ▼ 設定項目（VPCリンク&非プロキシ統合の場合）
+#### ▼ セットアップ（VPCリンク&非プロキシ統合の場合）
 
 パススルー条件やresponseキー以下の統合レスポンスを設定できる． 
 
@@ -98,7 +98,7 @@ paths:
             statusCode: 401
 ```
 
-#### ▼ 設定項目（モック統合）
+#### ▼ セットアップ（モック統合）
 
 パススルー条件を設定できる．モックに処理を定義する必要がある
 
@@ -130,7 +130,7 @@ paths:
 
 メソッドリクエストで各種パラメーターのバリデーションを定義するために，```x-amazon-apigateway-request-validators```キーが必要である．実際に定義したものを使用する時は，後述の```x-amazon-apigateway-request-validator```キーが必要である．
 
-#### ▼ 設定項目
+#### ▼ セットアップ
 
 各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで，エイリアス名を定義する．ルートで定義する．
 
@@ -160,7 +160,7 @@ x-amazon-apigateway-request-validators:
 
 メソッドリクエストで各種パラメーターのバリデーションを実行するために，```x-amazon-apigateway-request-validator```キーが必要である．
 
-#### ▼ 設定項目
+#### ▼ セットアップ
 
 事前に定義した```x-amazon-apigateway-request-validators```キーの中から，使用するバリデーションのエイリアス名を宣言する．
 

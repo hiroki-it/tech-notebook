@@ -111,31 +111,30 @@ $ kubectl config use-context <クラスターARN>
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 - http://linuxcommand2007.seesaa.net/article/476794217.html
 
-（２）ArgoCDのマニフェストファイルを指定し，Kubernetes上にArgoCDをデプロイする．
+（２）ArgoCDが稼働する名前空間を作成する．
+
+```bash
+$ kubectl create namespace argocd
+```
+
+（３）ArgoCDのマニフェストファイルを指定し，Kubernetes上にArgoCDをデプロイする．
 
 https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
-$ kubectl create namespace argocd
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 # デプロイされたことを確認する．
 $ kubectl get all -n argocd
 ```
 
-（３）ArgoCDダッシュボードを公開する．
+（４）ArgoCDダッシュボードを公開する．
 
 ```bash
 $ kubectl patch svc argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-（４）```443```番ポートにルーティングできるロードバランサーを構築する．この時，IngressとIngressコントローラーを構築するか，```kubectl port-forward```コマンドなど実行する．```minikube tunnel```ではポート番号を指定できないことに注意する．
-
-```bash
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
-```
-
 （５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
 
 ```bash
@@ -144,9 +143,15 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
+（６）```443```番ポートにルーティングできるロードバランサーを構築する．この時，IngressとIngressコントローラーを構築するか，```kubectl port-forward```コマンドなど実行する．```minikube tunnel```ではポート番号を指定できないことに注意する．
+
+```bash
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
 #### ▼ Argocd経由
 
-（６）argocdコマンドをインストールする．
+（７）argocdコマンドをインストールする．
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -155,7 +160,7 @@ $ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/release
 $ chmod +x /usr/local/bin/argocd
 ```
 
-（７）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
+（８）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
 
 ```bash
 $ argocd login 127.0.0.1:8080
@@ -165,7 +170,7 @@ Password: *****
 'admin:login' logged in successfully
 ```
 
-（８）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
+（９）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
 
 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
@@ -181,13 +186,13 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（９）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```オプションで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（１０）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```オプションで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
 $ argocd app sync guestbook --dry-run
 ```
 
-（１０）自動同期を有効化する．
+（１１）自動同期を有効化する．
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
@@ -195,7 +200,7 @@ $ argocd app set guestbook --sync-policy automated
 
 #### ▼ マニフェストファイル経由
 
-（６）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
+（７）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
 
 ```bash
 $ kubectl apply -f application.yaml

@@ -106,6 +106,14 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 $ terraform fmt -check
 ```
 
+#### ▼ -diff
+
+インデントを揃えるべき箇所が存在する場合に，これを表示する．
+
+```bash
+$ terraform fmt -diff
+```
+
 #### ▼ -recursive
 
 設定ファイルのインデントを揃える．処理を行ったファイルが表示される．
