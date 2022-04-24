@@ -68,7 +68,7 @@ exit status 2. Docker build ran into internal error. Please retry. If this keeps
 $ go build -o $HOME/go/bin
 ```
 
-また，指定したパス内のgoファイルをビルド対象として，指定したパスにビルドのアーティファクトを生成することもできる．
+また，指定したパス内のgoファイルをビルド対象として，指定したパスにビルドのアーティファクトを生成もできる．
 
 ```bash
 # cmdディレクトリ内のgoファイルをビルド対象として

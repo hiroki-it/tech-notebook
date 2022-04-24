@@ -87,11 +87,11 @@ Webページをテキストによって構成するための言語をマーク�
 
 #### ▼ インラインスクリプト
 
-JavaScriptファイルを直接組み込む方法．
+JavaScriptファイルを直接的に組み込む方法．
 
 ```html
 <script>
-document.write("JavaScriptを直接組み込んでいます。")
+document.write("JavaScriptを直接的に組み込んでいます。")
 </script>
 ```
 
@@ -104,7 +104,7 @@ document.write("JavaScriptを直接組み込んでいます。")
     ript>
 ```
 
-CDNの仕組みを使用して，Web上からリソースを取得することもできる．
+CDNの仕組みを使用して，Web上からリソースを取得もできる．
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js" integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=" crossorigin="anonymous"></script>
@@ -419,7 +419,7 @@ document.getElementById("btn").onclick = () => {
 
 #### ▼ ```document.addEventListener```関数
 
-1つのイベントに対して，1つ以上のイベントハンドラ関数を紐付ける．第一引数で，```click```などのイベントを設定し，第二引数でメソッド（無名関数でも可）を渡す．```false```を設定することで，イベントバブリングを行わせない．
+1つのイベントに対して，1つ以上のイベントハンドラ関数を紐付ける．第一引数で，```click```などのイベントを設定し，第二引数でメソッド（無名関数でも可）を渡す．```false```を設定することにより，イベントバブリングを行わせない．
 
 **＊実装例＊**
 

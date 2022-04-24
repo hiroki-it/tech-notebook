@@ -42,7 +42,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 （２）CIツールが，イメージをECRにプッシュする．
 
-（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．変更したマニフェストをマニフェストリポジトリにプッシュする．
+（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接的に実行する．変更したマニフェストをマニフェストリポジトリにプッシュする．
 
 （４）プルリクを自動作成する．
 
@@ -60,7 +60,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 （２）同じ
 
-（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接実行する．
+（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接的に実行する．
 
 （４）同じ
 
@@ -149,7 +149,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-#### ▼ Argocd経由
+#### ▼ argocdコマンド経由
 
 （７）argocdコマンドをインストールする．
 
@@ -170,7 +170,7 @@ Password: *****
 'admin:login' logged in successfully
 ```
 
-（９）ArgoCD上に，監視対象のアプリケーションのリポジトリ（GitHub，Helm）を登録する．
+（９）ArgoCDのアプリケーションを作成する．
 
 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
@@ -186,7 +186,7 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（１０）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```オプションで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（１０）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```キーで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
 
 ```bash
 $ argocd app sync guestbook --dry-run
@@ -232,9 +232,9 @@ spec:
 
 ### アンインストール
 
-#### ▼ Argocd経由
+#### ▼ argocdコマンド経由
 
-ArgoCDのApplicationを削除する．```--cascade```オプションを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる．
+ArgoCDのApplicationを削除する．```--cascade```キーを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる．
 
 参考：
 
@@ -263,7 +263,7 @@ spec:
 # 〜 中略 〜
 ```
 
-#### ▼ Kubectl経由
+#### ▼ kubectlコマンド経由
 
 ArgoCDのApplicationを削除する．
 
@@ -321,7 +321,7 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ（GitHub）やチャートリポジトリ（ArtifactHub，GitHub，ECR，ArtifactHub）を設定する．
+マニフェストリポジトリ（GitHub）を監視してArgoCDで直接的にデプロイするか，あるいはチャートリポジトリ（ArtifactHub，GitHub，ECR，ArtifactHub）を監視してHelmで間接的にデプロイする（```helm pull```コマンドに相当する処理を実行する）かを設定する．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -331,18 +331,18 @@ spec:
 
 #### ▼ directory
 
-監視対象として```path```オプションで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
+監視対象として```path```キーで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
 
 参考：
 
 - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
 - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
-| オプション    | 説明                                                         |
+| 設定項目      | 説明                                                         |
 | ------------- | ------------------------------------------------------------ |
-| ```include``` | ```path```オプションで指定したディレクトリ内で，特定のマニフェストファイルのみを指定する． |
-| ```exclude``` | ```path```オプションで指定したディレクトリ内で，特定のマニフェストファイルを除外する． |
-| ```recurse``` | ```path```オプションで指定したディレクトリにサブディレクトリが存在している場合に，全てのマニフェストファイルを指定できるように，ディレクトリ内の再帰的検出を有効化する． |
+| ```include``` | ```path```キーで指定したディレクトリ内で，特定のマニフェストファイルのみを指定する． |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で，特定のマニフェストファイルを除外する． |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に，全てのマニフェストファイルを指定できるように，ディレクトリ内の再帰的検出を有効化する． |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -360,8 +360,6 @@ spec:
 #### ▼ path
 
 GitHub上の監視対象のディレクトリを設定する．
-
-
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -431,6 +429,8 @@ spec:
 
 #### ▼ helm
 
+helmコマンドに相当するパラメーターを設定する．
+
 参考：
 
 - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
@@ -440,7 +440,7 @@ spec:
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```releaseName``` | デプロイするリリース名を設定する．                           |                                                              |
 | ```values```      | デフォルト値を，```values```ファイルとしてではなく，ArgoCDのマニフェストファイルにハードコーディングして定義する． |                                                              |
-| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する．           | ```values```ファイルは，チャートと同じリポジトリにある必要がある． |
+| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する．         | ```values```ファイルは，チャートリポジトリ内にある必要がある． |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -453,7 +453,7 @@ spec:
     helm:
       releaseName: prd
       valueFiles:
-        - prd-values.yaml
+        - ./prd-values.yaml
 ```
 
 #### ▼ repoURL
@@ -475,7 +475,7 @@ spec:
     repoURL: https://github.com/hiroki-hasegawa/foo-chart.git
 ```
 
-チャートリポジトリとして，AWS ECRを指定する場合に，ECRのURLを設定する．別途，ECRへのログインが必要なことに注意する．
+チャートリポジトリとしてAWS ECRを指定する場合に，ECRのURLを設定する．別途，ECRへのログインが必要なことに注意する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
 
@@ -585,10 +585,10 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| オプション            | 説明                                                                                                                                                     |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない．                                                                           |
-| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない．                                           |
+| 設定項目         | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
+| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
 | ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
 
@@ -616,7 +616,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
 - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 
-| オプション                   | 説明                                                         |
+| 設定項目                     | 説明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | ```CreateNamespace```        | Applicationの作成対象とする名前空間を自動的に作成する．ArgoCDがインストールされる名前空間と，Applicationを作成する名前空間が異なる場合に，これを有効化しておいた方が良い． |
 | ```Validate```               |                                                              |
@@ -692,14 +692,14 @@ spec:
 - https://argoproj.github.io/argo-rollouts/features/bluegreen/
 - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
 
-| オプション                       | 説明                                                                                       |
-|-----------------------------|------------------------------------------------------------------------------------------|
-| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する．                                                           |
+| 設定項目                    | 説明                                                         |
+| --------------------------- | ------------------------------------------------------------ |
+| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する．      |
 | ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する．もし無効化した場合，```autoPromotionSeconds```の秒数だけ切り替えを待機する． |
-| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する．          |
-| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                                                                        |
-| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する．                                                          |
-| ```scaleDownDelaySeconds``` |                                                                                          |
+| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する． |
+| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                              |
+| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する．    |
+| ```scaleDownDelaySeconds``` |                                                              |
 
 
 
@@ -729,8 +729,8 @@ spec:
 - https://argoproj.github.io/argo-rollouts/features/canary/
 - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
-| オプション      | 説明                                                                                                  |
-|------------|-----------------------------------------------------------------------------------------------------|
+| キー       | 説明                                                         |
+| ---------- | ------------------------------------------------------------ |
 | ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
 
 

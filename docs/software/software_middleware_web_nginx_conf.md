@@ -179,7 +179,7 @@ server {
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 nginxを```apt-get```コマンドでインストールすると，古いバージョンが指定されるため，```apt```コマンドを使用する．
 
@@ -189,7 +189,7 @@ nginxを```apt-get```コマンドでインストールすると，古いバー�
 $ apt install nginx
 ```
 
-#### ▼ Yum経由
+#### ▼ yumコマンド経由
 
 ```bash
 $ yum install -y nginx
@@ -540,7 +540,7 @@ sendfile on;
 server_name example.com;
 ```
 
-パブリックIPアドレスを直接記述しても良い．
+パブリックIPアドレスを直接的に記述しても良い．
 
 ```nginx
 server_name 192.168.0.0;

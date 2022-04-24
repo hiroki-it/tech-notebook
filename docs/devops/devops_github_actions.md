@@ -273,7 +273,7 @@ runs:
 
 #### ▼ env
 
-環境変数を定義する．Secretの値を設定することはできない．
+環境変数を定義する．Secretの値を設定できない．
 
 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
@@ -317,7 +317,7 @@ jobs:
 
 #### ▼ 環境ファイル
 
-環境ファイル（```GITHUB_ENV```）に値を入力することで，```job```内の環境変数として使用できるようになる．
+環境ファイル（```GITHUB_ENV```）に値を入力することにより，```job```内の環境変数として使用できるようになる．
 
 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 

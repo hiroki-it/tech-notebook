@@ -39,7 +39,7 @@ CircleCIの鍵をGitHubに登録すると，リポジトリへのプッシュに
 
 ```yaml
 workflows:
-  # build以外を実行しないようにすることで，buildのみを検証できる．
+  # build以外を実行しないことで，buildのみを検証できる．
   build-test-and-deploy:
     jobs:
       - build
@@ -918,7 +918,7 @@ workflows:
 
 #### ▼ pre-steps，post-steps
 
-事前に```job```に定義する必要はない．```workspace```で，コールされる```job```の引数として設定することで，その```job```内の最初と最後に，```steps```を追加できる．
+事前に```job```に定義する必要はない．```workspace```で，コールされる```job```の引数として設定することにより，その```job```内の最初と最後に，```steps```を追加できる．
 
 **＊実装例＊**
 
@@ -1463,9 +1463,9 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: <ユーザー名>/<リポジトリ名>
+          image: <ユーザー名>/<イメージリポジトリ名>
       - docker/push:
-          image: <ユーザー名>/<リポジトリ名>
+          image: <ユーザー名>/<イメージリポジトリ名>
 ```
 
 <br>

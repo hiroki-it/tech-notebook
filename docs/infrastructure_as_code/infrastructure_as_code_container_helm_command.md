@@ -54,12 +54,31 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 チャートリポジトリを操作する．
 
+#### ▼ add
+
+ローカルPCにリポジトリ
+
+```bash
+$ helm repo add <チャート名> <チャートリポジトリのURL>
+
+"リポジトリ名" has been added to your repositories
+```
+
 #### ▼ index
 
 チャートリポジトリのメタデータが設定された```index.yaml```ファイルを生成する．
 
 ```bash
- $ helm repo index <パス>
+ $ helm repo index <チャートへのパス>
+```
+
+#### ▼ list
+
+```bash
+$ helm repo list
+
+NAME　        URL                          
+<チャート名>  <チャートリポジトリのURL>
 ```
 
 <br>
@@ -72,17 +91,13 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 参考：https://helm.sh/docs/helm/helm_install/
 
-```bash
-$ helm install <リリース名> <チャートアーカイブへのパス>
-```
-
-リポジトリ内のチャートアーカイブを指定することもできる．
-
-参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b
-
-```bash
-$ helm install <リリース名> <チャートリポジトリ名>/<チャートアーカイブへのパス>
-```
+| パラメーター                                                 | 例                                                   | 補足                                                   |
+| ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------ |
+| ```<チャートリポジトリ名>/<チャート名>```                    | ```foo-repository/foo-chart```                       | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| チャートアーカイブへのパス                                   | ```./foo-chart-1.0.0.tgz```                          | 参考：https://helm.sh/docs/helm/helm_install/          |
+| チャートへのパス                                             | ```./foo-chart```                                    |                                                        |
+| チャートリポジトリURL                                        | ```https://example.com/charts/foo-chart-1.0.0.tgz``` |                                                        |
+| ```<チャートリポジトリURL> <チャートリポジトリ名>/<チャート名>``` | ```https://example.com/charts/foo-chart-1.0.0.tgz``` |                                                        |
 
 #### ▼ --dry-run
 
@@ -106,6 +121,14 @@ kind: Deployment
 
 ```bash
 $ helm install -f <valuesファイルへのパス> <リリース名> <チャートアーカイブへのパス>
+```
+
+#### ▼ kube-context
+
+helmコマンドの向き先を指定して，```helm install```コマンドを実行する．
+
+```bash
+$ helm install <リリース名> <チャートリポジトリn> --kube-context <アカウントID>.dkr.ecr.<リージョン>.amazonaws.com/prd-foo-eks-cluster
 ```
 
 <br>
@@ -213,6 +236,65 @@ $ helm package <チャートへのパス> -d ./archives
 
 <br>
 
+### pull
+
+#### ▼ pullとは
+
+指定したチャートリポジトリからチャートを圧縮ファイル形式（```.tgz```形式）でプルする．
+
+#### ▼ --version
+
+チャートのバージョンを指定して，```helm pull```コマンドを実行する．
+
+```bash
+$ helm pull oci://<アカウントID>.dkr.ecr.<リージョン>.amazonaws.com/<チャート名> --version <バージョン>
+```
+
+<br>
+
+### search
+
+#### ▼ searchとは
+
+チャートリポジトリを検索する．
+
+#### ▼ hub
+
+チャートリポジトリをキーワードで検索する．
+
+```bash
+$ helm search hub <キーワード>
+
+URL                                  CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   1.0.0             1.0.0                            This is foo chart
+<チャートリポジトリURL>                 <チャートバージョン>  <アプリケーションのリリースバージョン>  <説明文>
+```
+
+<br>
+
+### show
+
+#### ▼ show
+
+
+
+#### ▼ chart
+
+チャートの```index.yaml```ファイルを表示する．
+
+```bash
+$ helm show chart <チャート名>
+
+apiVersion: v1
+appVersion: 5.7.30
+deprecated: true
+
+# 〜 中略 〜
+
+version: 1.6.9
+```
+
+<br>
+
 ### template
 
 #### ▼ templateとは
@@ -263,9 +345,13 @@ $ helm uninstall <リリース名>
 
 ### upgrade
 
+#### ▼ upgradeとは
+
+Helmのリリースをアップグレードする．
+
 #### ▼ --install
 
-新しいリビジョン番号を作成し，デプロイ済のリリースを更新する．
+新しいリビジョン番号を作成し，デプロイ済のリリースをアップグレードする．
 
 ```bash
 $ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートアーカイブへのパス>

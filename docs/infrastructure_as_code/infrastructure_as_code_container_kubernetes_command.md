@@ -25,7 +25,7 @@ description: コマンド＠Kubernetesの知見をまとめました．
 
 #### ▼ -f -R
 
-マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．```-R```オプションでディレクトリ内のファイルを再帰的に指定することもできる．
+マニフェストファイルを指定し，```kubectl apply```コマンドを実行する．```-R```オプションでディレクトリ内のファイルを再帰的に指定もできる．
 
 **＊例＊**
 
@@ -552,7 +552,7 @@ $ kubectl get pv \
 
 #### ▼ port-forwardとは
 
-ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接Podにリクエストを送信したい場合や，SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する．
+ホストのポートから指定したリソースのポートに対して，ポートフォワーディングを実行する．開発環境にて，Serviceを経由せずに直接的にPodにリクエストを送信したい場合や，SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する．
 
 参考：
 
@@ -603,19 +603,19 @@ Deployment，Pod，ジョブを作成する．
 
 
 ```bash
-$ kubectl run <Deployment名> --restart=Always --image=<イメージ名>:<タグ名> --port=<ポート番号>
+$ kubectl run <Deployment名> --restart=Always --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```Never```なら，Podが作成される．
 
 ```bash
-$ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<タグ名> --port=<ポート番号>
+$ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```OnFailure```なら，ジョブが作成される．
 
 ```bash
-$ kubectl run <ジョブ名> --restart=OnFailure --image=<イメージ名>:<タグ名> --port=<ポート番号>
+$ kubectl run <ジョブ名> --restart=OnFailure --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 <br>

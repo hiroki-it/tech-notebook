@@ -27,7 +27,7 @@ description: manifest.yaml＠Istioの知見をまとめました．
 
 ### インストール
 
-#### ▼ Istioctl経由
+#### ▼ istioctlコマンド経由
 
 プロファイルを指定し，Istioリソースをインストールする．
 
@@ -81,7 +81,7 @@ istiooperator.install.istio.io/istio-operator created
 
 ### アンインストール
 
-#### ▼ Istioctl経由
+#### ▼ istioctlコマンド経由
 
 Istioリソースを全てアンインストールする．
 
@@ -127,7 +127,7 @@ DeploymentやPodの```metadata.anontations```キーにて，Envoyコンテナご
 
 #### ▼ istio-proxyコンテナの定義
 
-DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きできる．
+DeploymentやPodでistio-proxyコンテナを定義することにより設定を上書きできる．
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 

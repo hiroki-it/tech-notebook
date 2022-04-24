@@ -1126,7 +1126,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ▼ ヘルスチェックへの対応
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信する．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信する．Nginxでヘルスチェックを実装もできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
 
 **＊実装例＊**
 
@@ -1351,7 +1351,7 @@ Storageファサードの```disk```メソッドを使用してlocalディスク�
 Storage::disk("local")->put("file.txt", "file.txt");
 ```
 
-ただし，```filesytems.php```ファイルでデフォルトディスクは```local```になっているため，```put```メソッドを直接使用できる．
+ただし，```filesytems.php```ファイルでデフォルトディスクは```local```になっているため，```put```メソッドを直接的に使用できる．
 
 ```php
 Storage::put("file.txt", "file.txt");
@@ -1393,7 +1393,7 @@ Storageファサードの```disk```メソッドを使用してpublicディスク
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-ただし，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+ただし，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接的に使用できる．
 
 ```php
 FILESYSTEM_DRIVER=s3
@@ -1483,7 +1483,7 @@ Storageファサードの```disk```メソッドを使用してs3ディスクを�
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接的に使用できる．
 
 ```bash
 FILESYSTEM_DRIVER=s3
@@ -2310,7 +2310,7 @@ class FooRequest extends FormRequest
 }
 ```
 
-テーブルにカラム数が多い場合は，Where句をつけることで，特定のカラムのみ検証することもできる．
+テーブルにカラム数が多い場合は，Where句をつけることで，特定のカラムのみ検証もできる．
 
 ```php
 <?php
@@ -2464,7 +2464,7 @@ class FooController extends Controller
 }
 ```
 
-全てのセッション変数を取得することもできる．
+全てのセッション変数を取得もできる．
 
 ```php
 $session = $request->session()->all();
@@ -2800,7 +2800,7 @@ class FooController extends Controller
 }
 ```
 
-あるいは，コントローラーの第二引数にパスパラメーター名を記述することで，パスパラメータの値を取得できる．
+あるいは，コントローラーの第二引数にパスパラメーター名を記述することにより，パスパラメータの値を取得できる．
 
 **＊実装例＊**
 
@@ -2961,7 +2961,7 @@ return [
 
 #### ▼ ```stderr```キー
 
-全てのログを標準エラー出力に対して出力する．Docker上でLaravelを稼働させる場合は，生成されるログファイルでコンテナの容量が肥大化することを防ぐために，これを選択する．なお，独自カスタマイズとして，```stream```キーをstdout変更すれば，標準出力にログを出力することもできる．
+全てのログを標準エラー出力に対して出力する．Docker上でLaravelを稼働させる場合は，生成されるログファイルでコンテナの容量が肥大化することを防ぐために，これを選択する．なお，独自カスタマイズとして，```stream```キーをstdout変更すれば，標準出力にログを出力もできる．
 
 ```php
 return [
@@ -3468,7 +3468,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Eメール通知内容の定義
 
-MailMessageクラスのメソッドを使用して，Eメール通知の内容を生成する．```markdown```メソッドを使用することで，マークダウン形式で定義できる．
+MailMessageクラスのメソッドを使用して，Eメール通知の内容を生成する．```markdown```メソッドを使用することにより，マークダウン形式で定義できる．
 
 参考：
 
@@ -3784,7 +3784,7 @@ EloquentモデルをJSONデータとしてレスポンスする時に，一旦�
 
 #### ▼ 単一のEloquentモデルの配列化
 
-単一のEloquentモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquentモデル名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．Controllerにて，ResouceクラスにEloquentモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
+単一のEloquentモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquentモデル名になる．また，```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる．Controllerにて，ResouceクラスにEloquentモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
 
 **＊実装例＊**
 

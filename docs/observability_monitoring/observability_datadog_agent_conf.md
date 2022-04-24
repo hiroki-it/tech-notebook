@@ -152,7 +152,7 @@ datadogコンテナのベースイメージとなるdatadogイメージがDatado
 
 #### ▼ DockerHubを使用する場合
 
-ECSのコンテナ定義にて，DockerHubのURLを直接指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は，こちらを採用する．
+ECSのコンテナ定義にて，DockerHubのURLを直接的に指定する．datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は，こちらを採用する．
 
 参考：https://hub.docker.com/r/datadog/agent
 

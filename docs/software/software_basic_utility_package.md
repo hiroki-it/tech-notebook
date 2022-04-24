@@ -17,19 +17,19 @@ description: パッケージ＠ユーティリティの知見をまとめまし�
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install dnsutils
 ```
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install dnsutils
 ```
 
-#### ▼ Yum経由
+#### ▼ yumコマンド経由
 
 ```bash
 $ yum install -y bind-utils
@@ -108,19 +108,19 @@ ns4.google.com  internet address = 216.239.38.10
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install net-tools 
 ```
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install net-tools
 ```
 
-#### ▼ Yum経由
+#### ▼ yumコマンド経由
 
 ```bash
 $ yum install -y net-tools 
@@ -167,13 +167,13 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install pstree
 ```
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install pstree
@@ -207,7 +207,7 @@ $ pstree
 
 ### インストール
 
-#### ▼ Pip経由
+#### ▼ pipコマンド経由
 
 参考：http://supervisord.org/installing.html#installing-a-distribution-package
 
@@ -497,7 +497,7 @@ $ supervisorctl update
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install systemd
@@ -505,7 +505,7 @@ $ apt install systemd
 
 
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install systemd
@@ -609,19 +609,19 @@ $ sudo systemctl stop nginx
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install tcpdump
 ```
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install tcpdump
 ```
 
-#### ▼ Yum経由
+#### ▼ yumコマンド経由
 
 ```bash
 $ yum install -y tcpdump

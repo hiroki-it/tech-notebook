@@ -17,7 +17,7 @@ description: PHPの知見をまとめました．
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 参考：https://loop-never-ends.com/ubuntu-php-install/
 

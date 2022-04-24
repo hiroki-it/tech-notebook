@@ -52,13 +52,13 @@ PHP-FPMは，FastCGIとしてWebサーバーとPHPファイルの間でデータ
 
 ### インストール
 
-#### ▼ Apt経由
+#### ▼ aptコマンド経由
 
 ```bash
 $ apt install php-fpm
 ```
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install php-fpm
@@ -267,7 +267,7 @@ clear_env = no
 
 ### env
 
-プロセスのプール内に出力する環境変数を設定する．この環境変数はPHPのプロセスで定義された環境変数ではないため，```php```コマンドを直接実行しても確認できないことに注意する．
+プロセスのプール内に出力する環境変数を設定する．この環境変数はPHPのプロセスで定義された環境変数ではないため，```php```コマンドを直接的に実行しても確認できないことに注意する．
 
 ```ini
 [www]
@@ -436,7 +436,7 @@ PHPの```ini```ファイルで設定された真偽値以外のオプション�
 
 #### ▼ php_value[session.save_handler]
 
-セッションの保存形式を設定する．デフォルト値は```files```形式でサーバー内に保存する．```redis```レコード形式でセッションDB（PHP Redis，ElastiCache Redisなど）に保存するように設定することもできる．
+セッションの保存形式を設定する．デフォルト値は```files```形式でサーバー内に保存する．```redis```レコード形式でセッションDB（PHP Redis，ElastiCache Redisなど）に保存するように設定もできる．
 
 参考：https://zapanet.info/blog/item/3364
 

@@ -25,7 +25,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ### セットアップ
 
-#### ▼ 概要
+#### ▼ セットアップ
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -761,7 +761,7 @@ CMによってRoute53に自動生成されるCNAMEレコード値を使用して
 
 #### ▼ Eメール検証
 
-ドメインの所有者にメールを送信し，これを承認することで所有者であることを証明する．ドメインをAWS以外（例：お名前ドットコム）で購入している場合は，そちらで設定したメールアドレス宛に確認メールが送信される．
+ドメインの所有者にメールを送信し，これを承認することにより所有者であることを証明する．ドメインをAWS以外（例：お名前ドットコム）で購入している場合は，そちらで設定したメールアドレス宛に確認メールが送信される．
 
 参考：https://docs.aws.amazon.com/ja_jp/acm/latest/userguide/email-validation.html
 
@@ -1046,7 +1046,7 @@ Cookie情報のキー名のうち，オリジンへのルーティングを許�
 
 #### ▼ Cookieやクエリストリングをオリジンにルーティングしつつ，キャッシュを生成しない場合
 
-上記の設定では，Cookieやクエリストリングをオリジンにルーティングしつつ，キャッシュを生成しないようにできない．そこで，キャッシュの最大最小デフォルトの有効期間を```0```秒とすることで，結果的にキャッシュを機能しないようにさせ，キャッシュが生成されていないかのように見せかけられる．
+上記の設定では，Cookieやクエリストリングをオリジンにルーティングしつつ，キャッシュを生成しないようにできない．そこで，キャッシュの最大最小デフォルトの有効期間を```0```秒とすることにより，結果的にキャッシュを機能しないようにさせ，キャッシュが生成されていないかのように見せかけられる．
 
 <br>
 
@@ -1130,7 +1130,7 @@ $ curl https://ip-ranges.amazonaws.com/ip-ranges.json \
   | jq  ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
-もしくは，以下のリンクを直接参考し，『```"service": "CLOUDFRONT"```』となっている部分を探す．
+もしくは，以下のリンクを直接的に参考し，『```"service": "CLOUDFRONT"```』となっている部分を探す．
 
 参考：https://ip-ranges.amazonaws.com/ip-ranges.json
 
@@ -1172,7 +1172,7 @@ This XML file does not appear to have any style information associated with it. 
 
 ### CloudTrailとは
 
-IAMユーザーによる操作や，ロールのアタッチの履歴を記録し，ログファイルとしてS3に転送する．CloudWatchと連携することもできる．
+IAMユーザーによる操作や，ロールのアタッチの履歴を記録し，ログファイルとしてS3に転送する．CloudWatchと連携もできる．
 
 ![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudTrailとは.jpeg)
 
@@ -1582,7 +1582,7 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行することもできる（ただ，やってみたけどうまくいかず）．
+全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行もできる（ただ，やってみたけどうまくいかず）．
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
@@ -1758,7 +1758,7 @@ artifacts:
 ```bash
 [
   {
-    "imageUri": "<リポジトリURL>",
+    "imageUri": "<イメージドメイン名>/<イメージリポジトリ名>",
     "name": "<コンテナ名>"
   }
 ]
@@ -2026,7 +2026,7 @@ $ openssl pkcs8 \
 
 #### ▼ EC2へのSSH接続
 
-クライアントのSSHプロトコルのパケットは，まずインターネットを経由して，インターネットゲートウェイを通過する．その後，Route53，ALBを経由せず，そのままEC2へ向かう．
+クライアントのSSHプロトコルのパケットは，まずインターネットを経由して，Internet Gatewayを通過する．その後，Route53，ALBを経由せず，そのままEC2へ向かう．
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 
@@ -2260,19 +2260,19 @@ dockerイメージやHelmチャートを管理できる．
 （１）ECRにログインする．
 
 ```bash
-$ aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin <リポジトリURL>
+$ aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin <イメージドメイン名>/<イメージリポジトリ名>
 ```
 
 （２）イメージにタグを付与する．
 
 ```bash
-$ docker tag <イメージID> <リポジトリURL>/<リポジトリ名>:<タグ名>
+$ docker tag <イメージID> <イメージドメイン名>/<イメージリポジトリ名>:<バージョンタグ>
 ```
 
 （３）ECRにイメージをプッシュする．
 
 ```bash
-$ docker push <リポジトリURL>/<リポジトリ名>:<タグ名>
+$ docker push <イメージドメイン名>/<イメージリポジトリ名>:<バージョンタグ>
 ```
 
 #### ▼ Helmチャートの場合
@@ -2639,7 +2639,7 @@ ECS Execを実行するユーザーに，実行権限のポリシーを付与す
 }
 ```
 
-laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定する．
+laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接的に指定する．
 
 ```bash
 #!/bin/bash
@@ -2822,11 +2822,11 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる．
+そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる．
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
-#### ▼ NAT Gatewayを経由
+#### ▼ NAT Gateway経由
 
 FargateからECRに対するdockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，パブリックサブネットにNAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
 
@@ -2834,7 +2834,7 @@ FargateからECRに対するdockerイメージのプルは，VPCの外側に対�
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
-#### ▼ VPCエンドポイントを経由
+#### ▼ VPCエンドポイント経由
 
 VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにすると良い．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．そのため，NAT Gatewayがある状態でVPCエンドポイントを構築すると，接続先が自動的に変わってしまうことに注意する．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方が良い．
 
@@ -2947,7 +2947,7 @@ data:
 
 #### ▼ VPC
 
-EKS Fargate Nodeはプライベートサブネットで稼働する．この時，パブリックネットワークにあるレジストリから，IstioやArgoCDのイメージをプルできるように，EKS Fargate Nodeとインターネットゲートウェイ間のネットワークを繋げる必要がある．
+EKS Fargate Nodeはプライベートサブネットで稼働する．この時，パブリックネットワークにあるレジストリから，IstioやArgoCDのイメージをプルできるように，EKS Fargate NodeとInternet Gateway間のネットワークを繋げる必要がある．そのために，パブリックサブネットにNAT Gatewayを置く．
 
 <br>
 
@@ -3097,7 +3097,7 @@ Fargateを設定する．
 
 | コンポーネント名           | 説明                                                         | 補足                                                         |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように，Podにロールを設定する． | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には，ECRへのアクセス権限のみが付与されている．<br>・信頼されたエンティティでは，```eks-fargate-pods.amazonaws.com```を設定する必要がある．参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
+| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように，Podにロールを設定する． | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には，ECRへのアクセス権限のみが付与されている．<br>・信頼されたエンティティでは，```eks-fargate-pods.amazonaws.com```を設定する必要がある．<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
 | サブネット                 | EKS Fargate Nodeが起動するサブネットIDを設定する．           | プライベートサブネットを設定する必要がある．                 |
 | ポッドセレクタ（名前空間） | EKS Fargate Node上で稼働させるPodを固定できるように，Podの名前空間ラベルの値を設定する． | IstioやArgoCDを，それ専用の名前空間で稼働させる場合は，その名前空間のためのプロファイルを作成しておく必要がある． |
 | ポッドセレクタ（ラベル）   | EKS Fargate Node上で稼働させるPodを固定できるように，Podの任意のラベルの値を設定する． |                                                              |

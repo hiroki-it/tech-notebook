@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 
 ### セットアップ
 
-#### ▼ Yum経由
+#### ▼ yumコマンド経由
 
 ```bash
 # リポジトリの作成
@@ -58,7 +58,7 @@ $ yum install -y nodejs
 
 #### ▼ dependencies
 
-本番環境と開発環境で依存するパッケージ名を設定する．NPMに登録されていないパッケージは，『```git+<リポジトリURL>```』を指定する．
+本番環境と開発環境で依存するパッケージ名を設定する．NPMに登録されていないパッケージは，『```git+<GitHubリポジトリURL>```』を指定する．
 
 ```bash
 {
@@ -188,7 +188,7 @@ $ npm init
 $ npm install
 ```
 
-指定したパッケージをインストールすることもできる．
+指定したパッケージをインストールもできる．
 
 ```bash
 $ npm install <パッケージ名>
@@ -196,7 +196,7 @@ $ npm install <パッケージ名>
 
 #### ▼ --force
 
-パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
+パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止する場合がある．これを無視してインストールを行う．
 
 ```bash
 $ npm install --force
@@ -267,7 +267,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 ### セットアップ
 
-#### ▼ Apt-get経由
+#### ▼ apt-getコマンド経由
 
 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
@@ -275,7 +275,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 $ apt-get install yarn
 ```
 
-#### ▼ Npm経由
+#### ▼ npmコマンド経由
 
 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 

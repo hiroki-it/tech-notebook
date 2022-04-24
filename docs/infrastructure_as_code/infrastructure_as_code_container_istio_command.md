@@ -17,13 +17,13 @@ description: コマンド＠Istioの知見をまとめました．
 
 ### インストール
 
-#### ▼ brew経由
+#### ▼ brewコマンド経由
 
 ```bash
 $ brew install istioctl
 ```
 
-#### ▼ curl経由
+#### ▼ curlコマンド経由
 
 参考：https://istio.io/latest/docs/setup/getting-started/#download
 

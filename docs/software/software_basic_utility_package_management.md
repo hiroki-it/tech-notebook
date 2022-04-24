@@ -258,7 +258,7 @@ $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
 # CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプション無し
+# リポジトリの認識に失敗する場合があるのでオプション無し
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
@@ -271,7 +271,7 @@ $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 
 # CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプション無し
+# リポジトリの認識に失敗する場合があるのでオプション無し
 $ dnf reinstall -y php php-mbstring php-mcrypt
 ```
 

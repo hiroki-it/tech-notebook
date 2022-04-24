@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見をまとめました．
 
 ### プロバイダーとプロビジョナーの操作
 
-Vagrantfileを使用して，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして使用することもできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために使用することが多い．
+Vagrantfileを使用して，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして使用もできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために使用することが多い．
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -276,7 +276,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ただし，Vagrantからではなく，直接Ansibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
+ただし，Vagrantからではなく，直接的にAnsibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -285,7 +285,7 @@ Vagrant.configure("2") do |config|
     apt-get update
     # Ansibleをインストールする．
     apt-get install -y ansible
-    # Ansibleを直接操作する．
+    # Ansibleを直接的に操作する．
     ansible-playbook /etc/ansible/playbook.yml -i inventory.yml
   SHELL
   

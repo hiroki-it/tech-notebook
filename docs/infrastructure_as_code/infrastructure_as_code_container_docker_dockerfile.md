@@ -25,7 +25,7 @@ description: Dockerfile＠Dockerの知見をまとめました．
 
 ### メリット
 
-Dockerfileを使用することで，イメージの作成からコンテナの構築までを自動化できる．Dockerfileを使用しない場合，各イメージレイヤーのインストールを手動で行わなければならない．
+Dockerfileを使用することにより，イメージの作成からコンテナの構築までを自動化できる．Dockerfileを使用しない場合，各イメージレイヤーのインストールを手動で行わなければならない．
 
 ![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)<br>
 
@@ -47,7 +47,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 #### ▼ ADDとは
 
-ホスト側のファイルを，コンテナの指定ディレクトリ配下にコピーし，このファイルが```tar```ファイルの場合は解凍する．また，URLを直接指定して，ダウンロードから解凍までを実行することもできる．
+ホスト側のファイルを，コンテナの指定ディレクトリ配下にコピーし，このファイルが```tar```ファイルの場合は解凍する．また，URLを直接的に指定して，ダウンロードから解凍までを実行もできる．
 
 参考：https://docs.docker.com/engine/reference/builder/#add
 
@@ -62,7 +62,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 **＊実装例＊**
 
-以下では```ADD```を使用している．URLを直接指定し，ダウンロードから解答までを実行している．
+以下では```ADD```を使用している．URLを直接的に指定し，ダウンロードから解答までを実行している．
 
 ```dockerfile
 ADD http://example.com/big.tar.xz /usr/src/things/

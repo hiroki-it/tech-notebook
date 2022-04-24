@@ -22,7 +22,7 @@ description: コマンド@Gitの知見をまとめました．
 一番，クローンの速度が速く，コマンドの引数も簡単．
 
 ```bash
-$ git clone https://github.com/<組織名>/<リポジトリ名>.git
+$ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
 #### ▼ ```clone <SSH接続>```
@@ -30,7 +30,7 @@ $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 サーバー接続名は，SSH接続の設定ファイル（```~/.ssh/config```）に記載されている．デフォルトでは，GitHubの接続名は，『```github.com```』になっている．
 
 ```bash
-$ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<リポジトリ名>.git
+$ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git
 ```
 
 <br>
@@ -43,7 +43,7 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 | :------- | :----------------------------- | -------- | :------------------------------- |
 | system   | 全PCユーザーの全リポジトリ       | 1        | ```/etc/gitconfig```             |
 | global   | 現在のPCユーザーの全リポジトリ | 2        | ```~/.gitconfig```               |
-| local    | 現在のリポジトリ               | 3        | ```<リポジトリ名>/.git/config``` |
+| local    | 現在のリポジトリ               | 3        | ```<GitHubリポジトリ名>/.git/config``` |
 
 #### ▼ ```config --<影響範囲> --list```
 
@@ -118,10 +118,10 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 ```bash
 # 使用頻度の高いアカウントで所有するリポジトリ
-$ git remote set-url origin git@github.com:<組織名またはgitユーザー名>/<リポジトリ名>.git
+$ git remote set-url origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
 # 使用頻度の低いアカウントで所有するリポジトリ
-$ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザー名>/<リポジトリ名>.git
+$ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 ```
 
 ```bash
@@ -771,7 +771,7 @@ $ git pull --all
 
 トラウマコマンド
 
-#### ▼ ```push --delete origin <タグ名>```
+#### ▼ ```push --delete origin <バージョンタグ>```
 
 リモートブランチのタグを削除する．
 

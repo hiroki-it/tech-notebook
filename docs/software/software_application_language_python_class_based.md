@@ -1,7 +1,6 @@
 ---
 title: 【知見を記録するサイト】クラス＠Python
 description: クラス＠Pythonの知見をまとめました．
-
 ---
 
 # クラス＠Python
@@ -53,7 +52,7 @@ from src.models.model import Foo
 class Bar(Foo):
     
     def bar(self):
-        #  継承元のメソッドを参照する。
+        #  継承元のメソッドを参照する．
         foo = super().foo()
         return foo 
 ```

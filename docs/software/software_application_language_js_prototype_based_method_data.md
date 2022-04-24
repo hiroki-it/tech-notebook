@@ -427,7 +427,7 @@ for (const value of array) {
 // baz
 ```
 
-配列の```entires```メソッドを使用すれば，インデックス番号を取得することもできる．
+配列の```entires```メソッドを使用すれば，インデックス番号を取得もできる．
 
 ```javascript
 const  array = ["foo", "bar", "baz"];

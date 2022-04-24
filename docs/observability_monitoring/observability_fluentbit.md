@@ -179,7 +179,7 @@ Fluent Bit v1.8.6
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
-コマンドの```-i```オプションでINPUT名を指定し，実行することもできる．
+コマンドの```-i```オプションでINPUT名を指定し，実行もできる．
 
 ```bash
 Inputs
@@ -475,7 +475,7 @@ $ fluent-bit \
     multiline.parser      laravel
 ```
 
-コマンドの```-f```オプションでINPUT名を指定し，実行することもできる．
+コマンドの```-f```オプションでINPUT名を指定し，実行もできる．
 
 ```bash
 Filters
@@ -778,7 +778,7 @@ $ ls -ls /var/log/fluent-bit/cpu.0
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
-コマンドの```-o```オプションでINPUT名を指定し，実行することもできる．
+コマンドの```-o```オプションでINPUT名を指定し，実行もできる．
 
 ```bash
 Outputs

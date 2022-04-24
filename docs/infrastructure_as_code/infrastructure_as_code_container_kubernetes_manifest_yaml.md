@@ -231,7 +231,7 @@ spec:
 
 #### ▼ revisionHistoryLimitとは
 
-保存されるリビジョン番号の履歴数を設定する．もし依存のリビジョン番号にロールバックすることがあるのであれば，必要数を設定しておく．
+保存されるリビジョン番号の履歴数を設定する．もし依存のリビジョン番号にロールバックする場合があるのであれば，必要数を設定しておく．
 
 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 

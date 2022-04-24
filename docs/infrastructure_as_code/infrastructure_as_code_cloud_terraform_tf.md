@@ -893,7 +893,7 @@ resource "aws_instance" "server" {
 
 ```terraform
 ###############################################
-# Public subnet
+# パブリックサブネット
 ###############################################
 resource "aws_subnet" "public" {
   count = 2
@@ -902,7 +902,7 @@ resource "aws_subnet" "public" {
 }
 
 ###############################################
-# Private subnet
+# プライベートサブネット
 ###############################################
 resource "aws_subnet" "private_app" {
   count = 2
@@ -959,7 +959,7 @@ vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
 
 ```terraform
 ###############################################
-# Public subnet
+# パブリックサブネット
 ###############################################
 resource "aws_subnet" "public" {
   for_each = var.vpc_availability_zones
@@ -1006,7 +1006,7 @@ resource "aws_internet_gateway" "this" {
 }
 
 ###############################################
-# Route table (public)
+# ルートテーブル (パブリック)
 ###############################################
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
@@ -1022,7 +1022,7 @@ resource "aws_route_table" "public" {
 }
 
 ###############################################
-# Route table (private)
+# ルートテーブル (プライベート)
 ###############################################
 resource "aws_route_table" "private_app" {
   for_each = var.vpc_availability_zones

@@ -203,7 +203,7 @@ Kubernetesリソースのテスト方法を定義する．
 
 ```yaml
 test:
-  - image: <リポジトリURL>
+  - image: <イメージドメイン名>/<イメージリポジトリ名>
     structureTests:
       - ./structure-tests/foo.yaml
 ```

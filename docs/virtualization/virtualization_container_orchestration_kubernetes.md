@@ -17,7 +17,7 @@ description: Kubernetes＠仮想化の知見をまとめました．
 
 ### 構造
 
-Kubernetesコンポーネントは，リソースから作成されたオブジェクトを操作し，アプリケーションを稼働させる．kubernetesクライアントは，kubectlコマンドをkube-apiserverに送信することで，Kubernetesを操作できる．
+Kubernetesコンポーネントは，リソースから作成されたオブジェクトを操作し，アプリケーションを稼働させる．kubernetesクライアントは，kubectlコマンドをkube-apiserverに送信することにより，Kubernetesを操作できる．
 
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
@@ -256,7 +256,7 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接ReplicaSetを操作するのではなく，Deployment使用してこれを行うことが推奨される．
+ワーカーNode上のPod数を維持管理する．ただしDaemonSetとは異なり，Podを指定した個数に維持管理できる．ワーカーNodeのCPUやメモリの使用率に合わせて，Podを動的に増減させる．直接的にReplicaSetを操作するのではなく，Deployment使用してこれを行うことが推奨される．
 
 参考：
 
@@ -438,7 +438,7 @@ PodのIPアドレスを返却し，Serviceに対するインバウンド通信�
 
 #### ▼ ConfigMapとは
 
-データをマップ型で保持できる．改行することで，設定ファイルも値に格納できる．
+データをマップ型で保持できる．改行することにより，設定ファイルも値に格納できる．
 
 <br>
 

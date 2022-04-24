@@ -27,7 +27,7 @@ description: Lambda関数の実装＠AWSの知見をまとめました．
 
 #### ▼ 非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信もできる．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
@@ -278,7 +278,7 @@ func main() {
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
-文字列を返却すると，Lambdaはその文字列をそのまま返信する．また，JSONをレスポンスすることもできる．
+文字列を返却すると，Lambdaはその文字列をそのまま返信する．また，JSONをレスポンスもできる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html#golang-handler-structs
 

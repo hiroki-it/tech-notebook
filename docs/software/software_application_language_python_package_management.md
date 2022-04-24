@@ -119,7 +119,7 @@ requirements.txt を元にパッケージをインストールする．
 ```bash
 $ pip3 install -r requirements.txt
 ```
-指定したディレクトリにパッケージをインストールすることもできる．
+指定したディレクトリにパッケージをインストールもできる．
 
 ```bash
 $ pip3 install -r requirements.txt --prefix=/usr/local
@@ -230,7 +230,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 $ pip3 uninstall -y <パッケージ名>
 ```
 
-uninstall.txt を元にパッケージをアンインストールすることもできる．
+uninstall.txt を元にパッケージをアンインストールもできる．
 
 ```bash
 $ pip3 uninstall -y -r uninstall.txt

@@ -232,7 +232,7 @@ WAFにAPI Gatewayを紐付けるために，ステージのARNが必要である
 
 ```terraform
 ###############################################
-# Web ACL Association
+# Web ACLアソシエーション
 ###############################################
 resource "aws_wafv2_web_acl_association" "api_gateway" {
   resource_arn = "${var.api_gateway_rest_arn}/stages/prd"
@@ -256,7 +256,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 ### （１）ECSサービス名をルートとした命名
 
-同じAWSアカウントの異なるECSサービスを構築することがある．この場合，コンテナ名が重複することになるため，CloudWatchログのロググループはECSサービスをルートとして命名する必要がある．
+同じAWSアカウントの異なるECSサービスを構築する場合がある．この場合，コンテナ名が重複することになるため，CloudWatchログのロググループはECSサービスをルートとして命名する必要がある．
 
 <br>
 
@@ -623,9 +623,9 @@ resource "aws_instance" "bastion" {
 
 <br>
 
-### （２）インターネットゲートウェイの後に構築
+### （２）Internet Gatewayの後に構築
 
-インターネットゲートウェイの後にEC2を構築できるようにする．
+Internet Gatewayの後にEC2を構築できるようにする．
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
@@ -1192,7 +1192,7 @@ DBクラスターでは，レプリケーションのために，3つのAZが必
 
 ### （６）```for_each```関数を使用して
 
-Auroraでは，クラスターにインスタンスを1つだけ紐づけると，プライマリーインスタンスとして構築される．また以降インスタンスを紐づけると，リードレプリカとして自動的に構築されていく．AZのマップデータに対して```for_each```関数を使用することで，各AZに最低1つのインスタンスを配置するように設定できる．
+Auroraでは，クラスターにインスタンスを1つだけ紐づけると，プライマリーインスタンスとして構築される．また以降インスタンスを紐づけると，リードレプリカとして自動的に構築されていく．AZのマップデータに対して```for_each```関数を使用することにより，各AZに最低1つのインスタンスを配置するように設定できる．
 
 参考：
 
@@ -1447,7 +1447,7 @@ resource "aws_internet_gateway" "this" {
 }
 
 ###############################################
-# Public subnet
+# パブリックサブネット
 ###############################################
 resource "aws_subnet" "public" {
   for_each = var.vpc_availability_zones
@@ -1466,7 +1466,7 @@ resource "aws_subnet" "public" {
 }
 
 ###############################################
-# Private subnet
+# プライベートサブネット
 ###############################################
 
 # App subnet
@@ -1502,7 +1502,7 @@ resource "aws_subnet" "private_datastore" {
 }
 
 ###############################################
-# Route table (public)
+# ルートテーブル (パブリック)
 ###############################################
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
@@ -1518,7 +1518,7 @@ resource "aws_route_table" "public" {
 }
 
 ###############################################
-# Route table (private)
+# ルートテーブル (プライベート)
 ###############################################
 resource "aws_route_table" "private_app" {
   for_each = var.vpc_availability_zones
@@ -1539,7 +1539,7 @@ resource "aws_route_table" "private_app" {
 }
 
 ###############################################
-# Route table association (public)
+# ルートテーブルアソシエーション (パブリック)
 ###############################################
 resource "aws_route_table_association" "public" {
   for_each = var.vpc_availability_zones
@@ -1549,7 +1549,7 @@ resource "aws_route_table_association" "public" {
 }
 
 ###############################################
-# Route table association (private)
+# ルートテーブルアソシエーション (プライベート)
 ###############################################
 resource "aws_route_table_association" "private_app" {
   for_each = var.vpc_availability_zones
