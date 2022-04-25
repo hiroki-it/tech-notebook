@@ -24,8 +24,8 @@ Webアプリケーションのインフラ領域に軸足を置きつつ，バ�
 特に，**拡張性**，**保守性**，**可読性** を高める技術に関心が強く，継続的に学習しています．<br>
 <span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**, so I keep learning these. )</span>
 
-▶ クラウドインフラ，コンテナオーケストレーション，IaC，DDD，マイクロサービスアーキテクチャ，DevOps，など<br>
-<span style="font-size: 90%;">( Cloud infrastructure, Container orchestration, IaC, DDD, Microservices architecture, DevOps, etc. )</span>
+▶ クラウドインフラ，コンテナオーケストレーション，サービスメッシュ，IaC，DDD，マイクロサービスアーキテクチャ，DevOps，など<br>
+<span style="font-size: 90%;">( Cloud infrastructure, Container orchestration, Service mesh, IaC, DDD, Microservices architecture, DevOps, etc. )</span>
 
 <br>
 
