@@ -217,6 +217,14 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ## 06. 補助記憶装置
 
+### 物理ドライブ
+
+<br>
+
+### 仮想ドライブ
+
+物理ドライブ上にドライブを仮想的に構築する．Google Driveのストリーミング機能では，仮想ドライブをローカルPC上に作成する．仮想ドライブ上のファイルを変更すると，Google Driveにその状態が同期される．
+
 <br>
 
 ## 06-02. SSD
@@ -236,6 +244,8 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 <br>
 
 ### RAID：Redundant Arrays of Inexpensive Disks
+
+#### ▼ RAIDとは
 
 複数のHDDを仮想的に1つのHDDであるかのようにして，データを管理する技術．
 
