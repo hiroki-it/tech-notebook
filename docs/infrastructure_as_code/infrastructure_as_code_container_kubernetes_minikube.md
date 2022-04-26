@@ -289,7 +289,7 @@ $ minikube dashboard
 
 #### ▼ docker-envとは
 
-ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する．イメージタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
+ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する．バージョンタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
 
 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
@@ -355,7 +355,7 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルPCにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
+Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルマシンにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
 
 参考：
 

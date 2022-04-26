@@ -143,7 +143,7 @@ build:
 
 #### ▼ gitCommit
 
-コミットIDをイメージタグとして設定する．
+コミットIDをバージョンタグとして設定する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
@@ -155,7 +155,7 @@ build:
 
 #### ▼ sha256
 
-sha256ハッシュ値と```latest```タグをイメージタグとして設定する．
+sha256ハッシュ値と```latest```タグをバージョンタグとして設定する．
 
 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
@@ -203,7 +203,7 @@ Kubernetesリソースのテスト方法を定義する．
 
 ```yaml
 test:
-  - image: <イメージドメイン名>/<イメージリポジトリ名>
+  - image: <イメージリポジトリURL>
     structureTests:
       - ./structure-tests/foo.yaml
 ```

@@ -97,7 +97,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：
 
-（１）ローカルPCから本番環境にArgoCDをインストールする場合，```kubetcl```コマンドのコンテキストを間違える可能性がある．そのため，kubectlコマンド専用の踏み台サーバーを用意してもよい．EKSのコンテキストを作成し，kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+（１）ローカルマシンから本番環境にArgoCDをインストールする場合，```kubetcl```コマンドのコンテキストを間違える可能性がある．そのため，kubectlコマンド専用の踏み台サーバーを用意してもよい．EKSのコンテキストを作成し，kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -283,9 +283,9 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 （例）Skaffold
 
-#### ▼ ローカルPCを監視
+#### ▼ ローカルマシンを監視
 
-ローカルPCのディレクトリをリポジトリとして監視する．あらかじめ，リポジトリの自動プルの設定を無効化しておく必要がある．
+ローカルマシンのディレクトリをリポジトリとして監視する．あらかじめ，リポジトリの自動プルの設定を無効化しておく必要がある．
 
 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
 
@@ -424,7 +424,7 @@ metadata:
   name: argocd-application
 spec:
   source:
-    chart: foo-chart
+    chart: <チャート名>
 ```
 
 #### ▼ helm
@@ -487,7 +487,7 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: oci://<アカウントID>.dkr.ecr.<リージョン>.amazonaws.com/foo-chart
+    repoURL: <チャートリポジトリURL>
 ```
 
 #### ▼ targetRevision
@@ -747,6 +747,3 @@ spec:
         - setWeight: 25
         - pause:
             duration: 10
-```
-
-<br>

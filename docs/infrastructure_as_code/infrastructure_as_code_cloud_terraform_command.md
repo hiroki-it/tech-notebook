@@ -25,7 +25,7 @@ description: コマンド＠Terraformの知見をまとめました．
 
 #### ▼ -backend=false
 
-ローカルPCにstateファイルを作成する．
+ローカルマシンにstateファイルを作成する．
 
 参考：https://www.terraform.io/language/settings/backends
 
@@ -167,7 +167,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www *****
 ```
 
-そして，ローカルPCのstateファイルと実インフラの差分が無くなるまで，```terraform import```コマンドを繰り返す．
+そして，ローカルマシンのstateファイルと実インフラの差分が無くなるまで，```terraform import```コマンドを繰り返す．
 
 ````bash
 $ terraform plan -var-file=foo.tfvars

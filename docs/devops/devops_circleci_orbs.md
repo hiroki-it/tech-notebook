@@ -221,7 +221,7 @@ ECRイメージを使用して，新しいリビジョン番号のタスク定�
 
 | 設定値                             | 説明                                                         |                                                              |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```container-image-name-updates``` | コンテナ定義のコンテナ名とイメージタグを上書きする．         | イメージはCircleCIのハッシュ値でタグ付けしているので必須．   |
+| ```container-image-name-updates``` | コンテナ定義のコンテナ名とバージョンタグを上書きする．         | イメージはCircleCIのハッシュ値でタグ付けしているので必須．   |
 | ```verify-revision-is-deployed``` | ローリングアップデートのタスクがタスク定義のタスク必要数に合致したかを継続的に監視する． | 例えば，タスクが『Runnning』にならずに『Stopped』になってしまう場合や，既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合，この状態はタスクの必要数に合致しないので，検知できる． |
 | ```max-poll-attempts```           | ポーリングの最大試行回数を設定する．```poll-interval```と掛け合わせて，そう実行時間を定義できる． | 総実行時間を延長する時，間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため，最大回数を増やす． |
 | ```poll-interval```               | 試行の間隔秒数を設定する．```max-poll-attempts```と掛け合わせて，そう実行時間を定義できる． |                                                              |
@@ -248,7 +248,7 @@ jobs:
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
-    # コンテナ定義のコンテナ名とイメージタグを上書き．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    # コンテナ定義のコンテナ名とバージョンタグを上書き．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # タスク定義に基づくタスク数の監視
     verify-revision-is-deployed: true
@@ -308,7 +308,7 @@ jobs:
     codedeploy-deployment-group-name: "${SERVICE}-deployment-group"
     codedeploy-load-balanced-container-name: www-container
     codedeploy-load-balanced-container-port: 80
-    # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    # コンテナ名とバージョンタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # サービス更新後のタスク監視
     verify-revision-is-deployed: true

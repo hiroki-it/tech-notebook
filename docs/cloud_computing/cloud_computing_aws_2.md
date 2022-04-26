@@ -400,7 +400,7 @@ AWS CLIでクラウドインフラを操作するためには，```credentials``
 ```bash
 $ aws configure set aws_access_key_id "<アクセスキー>"
 $ aws configure set aws_secret_access_key "<シークレットキー>"
-$ aws configure set aws_default_region "リージョン>"
+$ aws configure set aws_default_region "ap-northeast-1"
 ```
 
 ```bash

@@ -19,7 +19,7 @@ description: チャート＠Helmの知見をまとめました．
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは，パッケージマネージャーとしてのHelmクライアント，パッケージとしてのチャートアーカイブ（```.tgz```形式），チャートアーカイブの元になるチャート，チャートアーカイブのリポジトリとしてのチャートリポジトリから構成される．Helmクライアントは，リポジトリからインストールしたチャートアーカイブに基づいてkube-apiserverをコールし，Kubernetes上にKubernetesリソースをデプロイする．
+Helmは，パッケージマネージャーとしてのHelmクライアント，パッケージとしてのチャートアーカイブ（```.tgz```形式），チャートアーカイブの元になるチャート，チャートアーカイブのレジストリとしてのチャートレジストリ，チャートレジストリ内にある複数のチャートリポジトリ，から構成される．Helmクライアントは，リポジトリからインストールしたチャートアーカイブに基づいてkube-apiserverをコールし，Kubernetes上にKubernetesリソースをデプロイする．
 
 参考：
 
@@ -48,13 +48,22 @@ charts/
 ...
 ```
 
-#### ▼ 種類
+#### ▼ チャートリポジトリURL
 
-| リポジトリ              | 補足                                                   |
-| ----------------------- | ------------------------------------------------------ |
+| レジストリの種類   | 説明                                                         | 形式                                                         | 例                                      |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+| チャートレジストリ | チャートのプッシュやプル時に，チャートレジストリ内のチャートリポジトリを指定する場合は，HTTPSプロトコルを使用する． | ```https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart```     |
+| イメージレジストリ | チャートのプッシュやプル時に，イメージレジストリ内をチャートリポジトリを指定する場合は，OCIプロトコルを使用する． | ```oci://<チャートレジストリ名>/<チャートリポジトリ名>```    | ```oci://foo-registry/foo-repository``` |
+
+#### ▼ チャートレジストリ
+
+チャートレジストリとして使用できるものの一覧を示す．
+
+| レジストリ               | 補足                                                   |
+|---------------------| ------------------------------------------------------ |
 | ArtifactHub（Helm公式） | 参考：https://helm.sh/docs/topics/chart_repository/    |
-| GitHub，GitHub Pages    | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
-| AWSリソース（ECR，S3）  |                                                        |
+| GitHub，GitHub Pages | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| AWSリソース（ECR，S3）     |                                                        |
 | GCPリソース             |                                                        |
 
 <br>
@@ -131,10 +140,10 @@ description: The chart of *****
 dependencies:
   - name: foo
     version: 1.2.3
-    repository: https://foo.example.com/charts
+    repository: https://foo.example.com/foo-chart
   - name: bar
     version: 3.2.1
-    repository: https://bar.example.com/charts
+    repository: https://bar.example.com/bar-chart
 ```
 
 <br>

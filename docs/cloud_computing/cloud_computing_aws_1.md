@@ -1698,20 +1698,20 @@ phases:
     commands:
       # ECRにログイン
       - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
-      # イメージタグはGitHubコミットのハッシュ値を使用
-      - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      # バージョンタグはGitHubコミットのハッシュ値を使用
+      - VERSION_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
       # ECRのURLをCodeBuildの環境変数から作成
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
   build:
     commands:
       # タグ付けしてイメージをビルド
-      - docker build -t REPOSITORY_URI:$IMAGE_TAG -f Dockerfile .
+      - docker build -t REPOSITORY_URI:$VERSION_TAG -f Dockerfile .
   postBuild:
     commands:
       # ECRにイメージをプッシュ
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$VERSION_TAG
       # ECRにあるデプロイ先のイメージの情報（imageDetail.json）
-      - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$VERSION_TAG > imageDetail.json
     
 # デプロイ対象とするビルドのアーティファクト    
 artifacts:
@@ -1758,7 +1758,7 @@ artifacts:
 ```bash
 [
   {
-    "imageUri": "<イメージドメイン名>/<イメージリポジトリ名>",
+    "imageUri": "<イメージリポジトリURL>",
     "name": "<コンテナ名>"
   }
 ]
@@ -1808,7 +1808,7 @@ Resources:
 
 #### ▼ ```imageDetail.json```ファイル
 
-新しいイメージタグを含むリポジトリURLを，```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である．これはリポジトリに事前に配置するのではなく，CI/CDの中で動的に作成するようにした方が良い．
+新しいバージョンタグを含むリポジトリURLを，```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である．これはリポジトリに事前に配置するのではなく，CI/CDの中で動的に作成するようにした方が良い．
 
 参考：
 
@@ -1817,7 +1817,7 @@ Resources:
 
 #### ▼ ```taskdef.json```ファイル
 
-デプロイされるタスク定義を実装し，ルートディレクトリの直下に配置する．CodeDeployは，CodeBuildから渡された```imageDetail.json```ファイルを検知し，ECRからイメージを取得する．この時，```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと，```imageDetail.json```ファイルの値を元にして，新しいイメージタグを含むリポジトリURLが自動的に代入される．
+デプロイされるタスク定義を実装し，ルートディレクトリの直下に配置する．CodeDeployは，CodeBuildから渡された```imageDetail.json```ファイルを検知し，ECRからイメージを取得する．この時，```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと，```imageDetail.json```ファイルの値を元にして，新しいバージョンタグを含むリポジトリURLが自動的に代入される．
 
 参考：
 
@@ -2013,7 +2013,7 @@ EBSで管理されているルートデバイスボリュームで，推奨の�
 
 #### ▼ キーペアのフィンガープリント値
 
-ローカルPCに配置されている秘密鍵が，該当するEC2に配置されている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
+ローカルマシンに配置されている秘密鍵が，該当するEC2に配置されている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
 
 ```bash
 $ openssl pkcs8 \
@@ -2245,7 +2245,7 @@ dockerイメージやHelmチャートを管理できる．
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 可視性                   | リポジトリをパブリックアクセス/プライベートアクセスにするかを設定する． | 様々なベンダーがパブリックリポジトリでECRイメージを提供している．<br>参考：https://gallery.ecr.aws/ |
-| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合，イメージタグを上書き可能/不可能かを設定できる． | -                                                            |
+| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合，バージョンタグを上書き可能/不可能かを設定できる． | -                                                            |
 | プッシュ時にスキャン     | イメージがプッシュされた時に，イメージにインストールされているパッケージの脆弱性を検証し，一覧表示する． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/image-scanning.html |
 | 暗号化設定               | -                                                            | -                                                            |
 
@@ -2260,19 +2260,23 @@ dockerイメージやHelmチャートを管理できる．
 （１）ECRにログインする．
 
 ```bash
-$ aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin <イメージドメイン名>/<イメージリポジトリ名>
+$ aws ecr get-login-password --region ap-northeast-1 | docker login \
+    --username AWS \
+    --password-stdin <イメージリポジトリURL>
+
+Login Succeeded
 ```
 
 （２）イメージにタグを付与する．
 
 ```bash
-$ docker tag <イメージID> <イメージドメイン名>/<イメージリポジトリ名>:<バージョンタグ>
+$ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
 （３）ECRにイメージをプッシュする．
 
 ```bash
-$ docker push <イメージドメイン名>/<イメージリポジトリ名>:<バージョンタグ>
+$ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
 #### ▼ Helmチャートの場合
@@ -2295,7 +2299,7 @@ ECRのイメージの有効期間を定義できる．
 
 <br>
 
-### イメージタグ
+### バージョンタグ
 
 #### ▼ タグ名のベストプラクティス
 
@@ -2502,11 +2506,11 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 #### ▼ 新しいECSタスクを一時的に実行
 
-現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．CI/CDツールで実行する以外に，ローカルPCから手動で実行する場合もある．起動時に，```overrides```オプションを使用して，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
+現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．CI/CDツールで実行する以外に，ローカルマシンから手動で実行する場合もある．起動時に，```overrides```オプションを使用して，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
 
 **＊実装例＊**
 
-LaravelのSeederコマンドやロールバックコマンドを，ローカルPCから実行する．
+LaravelのSeederコマンドやロールバックコマンドを，ローカルマシンから実行する．
 
 ```bash
 #!/bin/bash
@@ -3060,7 +3064,7 @@ $ kubectl apply -f service-account.yml
 $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 ```
 
-（６）ローカルPCからEKSにポートフォワーディングを実行する．
+（６）ローカルマシンからEKSにポートフォワーディングを実行する．
 
 ```bash
 $ kubectl proxy
@@ -3520,7 +3524,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
         "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
         "detail-type": "Amplify Deployment Status Change",
         "source": "aws.amplify",
-        "account": "<AWSアカウントID>",
+        "account": "<アカウントID>",
         "time": "<イベントの発生時間>",
         "region": "ap-northeast-1",
         "resources": [
@@ -3611,10 +3615,4 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
       ]
     },
     {
-      "type": "divider"
-    }
-  ]
-}
-```
-
-<br>
+      "type": "divider

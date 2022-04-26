@@ -212,7 +212,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ▼ ```Authorization```ヘッダーのトークンのクライアント保持
 
-不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage/SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンクを参考にせよ
+不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルマシンに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage/SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンクを参考にせよ
 
 参考：
 
@@ -304,7 +304,7 @@ cookie: sessionid=<セッションID>
 
 #### ▼ ```Cookie```ヘッダーの値のクライアント保持
 
-再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルPCに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
+再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルマシンに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
 
 参考：
 

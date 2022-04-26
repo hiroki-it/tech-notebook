@@ -286,7 +286,7 @@ provider:
   ecr:
     images:
       base:
-        uri: <AWSアカウントURL>/<ECRリポジトリ名>@<ECRイメージタグ>
+        uri: <イメージリポジトリURL>@<バージョンタグ>
 ```
 
 <br>

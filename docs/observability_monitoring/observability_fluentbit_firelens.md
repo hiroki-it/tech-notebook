@@ -112,7 +112,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
 [
   {
     "name": "foo",
-    "image": "<ECRリポジトリのURL>",
+    "image": "<イメージリポジトリURL>:<バージョンタグ>",
     "essential": false,
     "logConfiguration": {
       # FluentBitの設定はconfファイルで行うため，optionsキーは何も設定しない．
@@ -122,7 +122,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
   {
     # log_router以外の名前を設定できない
     "name": "log_router",
-    "image": "<ECRリポジトリのURL>",
+    "image": "<イメージリポジトリURL>:<バージョンタグ>",
     "essential": false,
     "logConfiguration": {
       "logDriver": "awslogs",
@@ -213,7 +213,7 @@ aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには�
 
 #### ▼ ```fluent-bit.conf```とは
 
-FireLensコンテナのデフォルトの設定ファイル．ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
+FireLensコンテナのデフォルトの設定ファイル．ローカルマシンでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
@@ -472,6 +472,4 @@ FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-
 ```bash
 [SERVICE]
     # 〜 中略 〜
-    Streams_File stream_processor.conf
-```
-
+    Streams_File stream_processor.c

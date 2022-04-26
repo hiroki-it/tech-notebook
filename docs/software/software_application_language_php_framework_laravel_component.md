@@ -1445,7 +1445,7 @@ class FileSystemPublicController extends Controller
 # S3アクセスポリシーをEC2やECSタスクに付与してもよい
 AWS_ACCESS_KEY_ID=<アクセスキー>
 AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
-AWS_DEFAULT_REGION=<リージョン>
+AWS_DEFAULT_REGION=ap-northeast-1
 
 # 必須
 AWS_BUCKET=<バケット名>

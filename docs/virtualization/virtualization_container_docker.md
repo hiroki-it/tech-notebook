@@ -331,7 +331,7 @@ $ curl --fail http://host.docker.internal:8080
 コンテナ内の標準出力（```/dev/stdout```）と標準エラー出力（```/dev/stderr```）に出力されたログを，ファイルやAPIに対して転送する．
 
 ```bash
-$ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
+$ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ json-file
