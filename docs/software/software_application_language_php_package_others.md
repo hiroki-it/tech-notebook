@@ -250,7 +250,7 @@ $response = $client->request(
 
 <br>
 
-###  レスポンス
+### レスポンス
 
 #### ▼ レスポンスメッセージからボディを取得
 
@@ -290,7 +290,7 @@ $body = json_decode($response->getBody(), true);
 
 ## 04. KnpLabs/Snappyパッケージ
 
-###  KnpLabs/Snappyとは
+### KnpLabs/Snappyとは
 
 ローカルまたは指定したURLのhtmlファイルから，PDFや画像のファイルを生成するパッケージ．
 

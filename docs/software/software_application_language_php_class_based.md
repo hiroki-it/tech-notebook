@@ -15,7 +15,7 @@ description: クラス＠PHPの知見をまとめました．
 
 ## 01. has-one，has-many（データとして保持する関係性）
 
-###  has-one，has-manyな関係性とは
+### has-one，has-manyな関係性とは
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
@@ -840,7 +840,7 @@ class Bar
 
 <br>
 
-###  Dependency（依存）
+### Dependency（依存）
 
 #### ▼ Dependencyとは
 

@@ -53,7 +53,7 @@ GET https://example.com/foo-form
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-『```<ユーザー名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
+『```<ユーザー名>:<パスワード>```』をbase64方式でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
 
 ```http
 POST https://example.com/foo-form
@@ -551,7 +551,7 @@ OAuth認証では，認証スキーマとしてBearer認証が選択されるこ
 
 ### JWTとは
 
-『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして使用できる．ランダムな文字列をこれら認証のトークンとするより，JWTを使用した方がより安全である．
+『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをbase64方式によってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして使用できる．ランダムな文字列をこれら認証のトークンとするより，JWTを使用した方がより安全である．
 
 ```http
 GET https://example.com/bar.php

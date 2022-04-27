@@ -122,21 +122,21 @@ kube-apiserverからコールされる．ワーカーNodeのコンテナラン�
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングする．モードごとに，Podの名前解決の方法が異なる．
 
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+参考：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
 #### ▼ 種類
 
-| モード    | 説明                                                         | 補足                                                         |
-| --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables |
+| モード       | 説明                                                                                                                                              | 補足                                                                                       |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)   | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables  |
 | userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace |
-| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs |
+| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)           | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs      |
 
 #### ▼ その他のプロキシー
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが，他にもいくつかある．
 
-参考：https://kubernetes.io/ja/docs/concepts/cluster-administration/proxies/
+参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
 - ```kubectl proxy```コマンド
 - ```minikube tunnel```コマンド

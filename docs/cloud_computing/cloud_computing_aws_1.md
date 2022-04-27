@@ -2309,6 +2309,20 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
+### CLI
+
+#### ▼ 一時パスワードを取得
+
+一時的に有効なパスワードを取得する．
+
+```bash
+$ aws ecr get-login-password --region ap-northeast-1
+
+********
+```
+
+<br>
+
 ## 14. ECS/EKS：Elastic Container/Kubernetes Service
 
 ### ECS/EKSとは

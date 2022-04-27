@@ -19,13 +19,26 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
-指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．ちなみに，ArgoCD自身のマニフェストファイルに変更も同期できる．
+指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．
 
 参考：
 
 - https://blog.vpantry.net/2021/01/cicd-2/
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
+- 
+
+<br>
+
+
+
+### 自己管理
+
+ArgoCDは，ArgoCD自身のマニフェストファイルに変更も同期できる．
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
 - https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
 
 <br>
@@ -119,7 +132,7 @@ $ kubectl create namespace argocd
 
 （３）ArgoCDのマニフェストファイルを指定し，Kubernetes上にArgoCDをデプロイする．
 
-https://argo-cd.readthedocs.io/en/stable/getting_started/
+参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -196,6 +209,23 @@ $ argocd app sync guestbook --dry-run
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
+```
+
+（１２）クラウドプロバイダーのイメージレジストリやチャートレジストリを使用している場合は，ログインが必要になる．
+
+参考：
+
+- https://medium.com/@Technorite
+- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+
+```bash
+# ECRのチャートをプルする場合
+$ argocd repo add oci://<チャートレジストリ名> \
+  --type helm \
+  --name <チャートリポジトリ名> \
+  --enable-oci \
+  --username AWS 
+  --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
 #### ▼ マニフェストファイル経由
@@ -472,10 +502,10 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-chart.git
+    repoURL: https://<イメージリポジトリURL>
 ```
 
-チャートリポジトリとしてAWS ECRを指定する場合に，ECRのURLを設定する．別途，ECRへのログインが必要なことに注意する．
+チャートリポジトリとしてAWS ECRを指定する場合に，ECRのURLを設定する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
 
@@ -487,7 +517,31 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: <チャートリポジトリURL>
+    repoURL: oci://<イメージリポジトリURL>
+```
+
+別途，Secretを用いたECRへのログインが必要なことに注意する．
+
+参考：
+
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-foo-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-repository
+  url: <イメージリポジトリURL>
+  type: helm
+  username: AWS
+  password: <イメージレジストリ名>
+  enableOCI: true
 ```
 
 #### ▼ targetRevision
@@ -535,8 +589,6 @@ spec:
 #### ▼ namespace
 
 デプロイ先の名前空間を設定する．
-
-
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

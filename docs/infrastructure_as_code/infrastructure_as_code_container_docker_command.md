@@ -295,6 +295,22 @@ $ docker logs --follow=true --tail=500 <コンテナ名>
 
 <br>
 
+### login
+
+#### ▼ login
+
+イメージレジストリにログインする．
+
+#### ▼ --password-stdin
+
+コマンドへの標準入力をパスワードとしつつ，```docker login```コマンドを実行する．
+
+```bash
+$ echo "pass" | docker login --username foo --password-stdin
+```
+
+<br>
+
 ### network
 
 #### ▼ ls

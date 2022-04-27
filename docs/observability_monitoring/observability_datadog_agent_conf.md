@@ -74,7 +74,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 ## 02-02. ```/etc/datadog-agent/datadog.yaml```ファイル
 
-###  ```datadog.yaml```ファイルとは
+### ```datadog.yaml```ファイルとは
 
 datadogエージェントを設定する． ```/etc/datadog-agent```ディレクトリに配置される．datadogエージェントをインストールすると，```datadog.yaml.example```ファイルが生成されるため，これをコピーして作成する．
 
@@ -314,7 +314,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ## 03-02. ```/etc/datadog-agent/datadog.yaml```ファイル
 
-###  ```datadog.yaml```ファイルとは
+### ```datadog.yaml```ファイルとは
 
 コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である．ただサーバーの場合とは異なり，環境変数から値を設定できる．
 

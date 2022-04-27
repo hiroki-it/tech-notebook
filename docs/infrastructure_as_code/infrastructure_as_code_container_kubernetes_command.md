@@ -392,7 +392,7 @@ $ kubectl get secret <Secret名> -o yaml
 
 apiVersion: v1
 data:
-  FOO: ***** # base64エンコード値
+  FOO: ***** # base64方式エンコード値
   BAR: *****
   BAZ: *****
 kind: Secret

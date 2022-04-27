@@ -351,7 +351,7 @@ spec:
     spec:
       containers:
         - name: foo-gin
-          image: foo-gin:latest
+          image: foo-gin:1.0.0
           ports:
             - containerPort: 8080
 ```
@@ -851,7 +851,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
 ```
@@ -876,7 +876,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
@@ -899,7 +899,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       resources:
         # 最小使用量
         requests:
@@ -943,7 +943,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
@@ -967,7 +967,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
       workingDir: /go/src
@@ -993,8 +993,35 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
   hostname: foo-pod
+```
+
+<br>
+
+### imagePullSecrets
+
+#### ▼ imagePullSecretsとは
+
+Podに適用するSecretを設定する．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+- https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
+- https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  imagePullSecrets:
+    - name: foo-secret
 ```
 
 <br>
@@ -1017,7 +1044,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
   restartPolicy: Always
 ```
 
@@ -1033,7 +1060,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
   restartPolicy: Never
 ```
 
@@ -1049,7 +1076,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
   restartPolicy: OnFailure
 ```
 
@@ -1071,7 +1098,7 @@ metadata:
 spec:
   containers:
     - name: foo-fluent-bit
-      image: fluent/fluent-bit:latest
+      image: fluent/fluent-bit:1.0.0
   serviceAccountName: foo-fluent-bit-service-account
 ```
 
@@ -1097,7 +1124,7 @@ metadata:
 spec:
   containers:
     - name: foo-fluent-bit
-      image: fluent/fluent-bit:latest
+      image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
           mountPath: /fluent-bit/etc/
@@ -1146,7 +1173,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -1174,7 +1201,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:latest
+      image: foo-gin:1.0.0
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -1268,7 +1295,153 @@ spec:
 
 <br>
 
-## 06-08. spec（Serviceの場合）
+## 06-08. spec（Secretの場合）
+
+### data
+
+Secretで保持するデータを設定する．使用前にbase64方式で自動的にデコードされるため，あらかじめエンコード値を設定しておく必要がある．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  username: *****
+  password: *****
+```
+
+<br>
+
+### stringData
+
+Secretで保持するデータを設定する．平文で設定しておく必要がある．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  username: bar
+  password: baz
+```
+
+<br>
+
+### type
+
+#### ▼ typeとは
+
+Secretの種類を設定する．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
+
+#### ▼ kubernetes.io/basic-auth
+
+Basic認証のためのデータを設定する．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-basic-auth-secret
+type: kubernetes.io/basic-auth
+stringData:
+  username: bar
+  password: baz
+```
+
+#### ▼ kubernetes.io/dockerconfigjson
+
+イメージレジストリの認証情報を設定する．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
+- https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+- https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-dockerconfigjson-secret
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockercfg: |
+    UmVhbGx5IHJlYWxs ...
+```
+
+ただしAWS EKSでは，このSecretは不要であり，ワーカーノード（Fargate，EC2）にECRへのアクセス権限を付与しておけばよい．
+
+参考：https://nishipy.com/archives/1122
+
+#### ▼ kubernetes.io/service-account-token
+
+ServiceAccountのためのデータを設定する．ただし，自動的に構築されるため，ユーザーが設定する必要はない．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-account-token-secret
+  annotations:
+    kubernetes.io/service-account.name: foo-account
+type: kubernetes.io/service-account-token
+stringData:
+  foo-token: bar
+```
+
+#### ▼ kubernetes.io/tls
+
+SSL/TLSを使用するためのデータを設定する．SSL証明書と秘密鍵の文字列が必要である．ユースケースとしては，データをIngressに割り当て，IngressとServiceの間をHTTPSで通信する例がある．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-basic-auth-secret
+type: kubernetes.io/tls
+data:
+  # SSL証明書
+  tls.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+  # 秘密鍵
+  tls.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
+#### ▼ Opaque
+
+任意のデータを設定する．ほとんどのユースケースに適する．
+
+参考：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-opaque-secret
+type: Opaque
+stringData:
+  username: bar
+  password: baz
+```
+
+<br>
+
+## 06-09. spec（Serviceの場合）
 
 ### ports
 
@@ -1515,7 +1688,7 @@ Serviceのタイプを設定する．
 
 <br>
 
-## 06-09. spec（ServiceAccountの場合）
+## 06-10. spec（ServiceAccountの場合）
 
 ### automountServiceAccountToken
 
@@ -1535,7 +1708,7 @@ automountServiceAccountToken: false
 
 <br>
 
-## 06-10. spec（ServiceEntryの場合）
+## 06-11. spec（ServiceEntryの場合）
 
 ### hosts
 
@@ -1595,7 +1768,7 @@ spec:
 
 <br>
 
-## 06-11. spec（StatefulSetの場合）
+## 06-12. spec（StatefulSetの場合）
 
 ### serviceName
 
