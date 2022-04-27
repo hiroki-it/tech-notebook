@@ -49,10 +49,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hiroki-it
-      name: Github Account
+      name: GitHubアカウント
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/Hiroki__IT
-      name: Twitter Account
+      name: Twitterアカウント
 
 # CSS
 extra_css:
