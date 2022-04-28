@@ -18,8 +18,8 @@ repo_url: https://github.com/hiroki-it/
 theme:
   name: material
   language: 'ja'
-  logo: assets/images/logo.png
-  favicon: assets/images/logo.png
+  logo: assets/images/logo_v2.png
+  favicon: assets/images/logo_v2.png
   icon:
     repo: fontawesome/brands/github
   font:
