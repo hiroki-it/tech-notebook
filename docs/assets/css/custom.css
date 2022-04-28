@@ -162,6 +162,11 @@ h3:before {
     opacity: 1;
 }
 
+/* ロゴとタイトル間のスペース */
+[dir=ltr] .md-header__title {
+    margin-left: 0.25rem;
+}
+
 /***************
  フッター
 ***************/
