@@ -197,6 +197,14 @@ h3:before {
     width: 2.1rem;
 }
 
+/* マウスオーバー時の動き */
+.md-header__button.md-logo:hover :-webkit-any(img,svg) {
+  animation: rotate-anime 1.5s linear infinite;
+}
+@keyframes rotate-anime {
+  0%  {transform: rotate(0);}
+  100%  {transform: rotate(360deg);}
+}
 
 /***************
  テーブル
