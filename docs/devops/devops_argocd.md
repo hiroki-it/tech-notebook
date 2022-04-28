@@ -351,9 +351,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ（GitHub）を監視してArgoCDで直接的にデプロイするか，あるいはチャートリポジトリ（ArtifactHub，GitHub，ECR，ArtifactHub）を監視してHelmで間接的にデプロイする（```helm pull```コマンドに相当する処理を実行する）かを設定する．
+マニフェストリポジトリ，チャートリポジトリ，イメージリポジトリ，からマニフェストファイルをデプロイする．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
+
+| リポジトリの種類                          | 管理方法                     | マニフェストファイルのデプロイ方法                           |
+| ----------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| マニフェストリポジトリ（GitHub）          | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする．                               |
+| チャートリポジトリ（ArtifactHub，GitHub） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．（```helm install```コマンドに相当する処理を実行する） |
+| イメージリポジトリ（ECR）                 | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．（```helm install```コマンドに相当する処理を実行する） |
 
 <br>
 
@@ -389,7 +395,7 @@ spec:
 
 #### ▼ path
 
-GitHub上の監視対象のディレクトリを設定する．
+監視対象のマニフェストリポジトリのディレクトリを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -404,11 +410,9 @@ spec:
 
 #### ▼ repoURL
 
-マニフェストリポジトリのURLを設定する．
+監視対象のマニフェストリポジトリのURLを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
-
-マニフェストリポジトリとしてGitHubを指定する場合は，以下の通り．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -423,7 +427,7 @@ spec:
 
 #### ▼ targetRevision
 
-リポジトリで，監視対象とするブランチやバージョンタグを設定する．
+監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -444,7 +448,7 @@ spec:
 
 #### ▼ chart
 
-使用するチャートを設定する．
+監視対象のチャートリポジトリのチャート名を設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -488,11 +492,9 @@ spec:
 
 #### ▼ repoURL
 
-チャートリポジトリのURLを設定する．
+監視対象のチャートリポジトリのURLを設定する．
 
-参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-
-チャートリポジトリとして，GitHubを指定する場合に，リポジトリのURLを設定する．
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -502,30 +504,15 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: https://<イメージリポジトリURL>
+    repoURL: https://<チャートリポジトリURL>
 ```
 
-チャートリポジトリとしてAWS ECRを指定する場合に，ECRのURLを設定する．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/ECR_on_EKS.html#using-helm-charts-eks
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: argocd-application
-spec:
-  source:
-    repoURL: oci://<イメージリポジトリURL>
-```
-
-別途，Secretを用いたECRへのログインが必要なことに注意する．
+また，Secretでイメージリポジトリの認証情報の設定（```username```キー，```password```キー）が必要である．
 
 参考：
 
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
 
 ```yaml
 apiVersion: v1
@@ -536,17 +523,16 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-repository
-  url: <イメージリポジトリURL>
+  name: foo-repository # チャートリポジトリ
+  url: <チャートリポジトリURL>
   type: helm
-  username: AWS
-  password: <イメージレジストリ名>
-  enableOCI: true
+  username: *****
+  password: *****
 ```
 
 #### ▼ targetRevision
 
-チャートリポジトリとして，GitHubを指定する場合に，監視対象とするブランチやバージョンタグを設定する．
+監視対象のチャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -561,7 +547,69 @@ spec:
     targetRevision: main
 ```
 
-チャートリポジトリとして，AWS ECRを指定する場合に，チャートのバージョンを設定する．
+<br>
+
+### source（イメージリポジトリの場合）
+
+#### ▼ chart
+
+チャートリポジトリの場合と同じ．
+
+#### ▼ helm
+
+チャートリポジトリの場合と同じ．
+
+#### ▼ repoURL
+
+監視対象のイメージリポジトリのURLを設定する．イメージリポジトリに管理されるチャートアーカイブをデプロイする場合は，OCIプロトコルを使用する必要がある．この時，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，ユーザー側でプロトコルの設定である．
+
+参考：https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: argocd-application
+spec:
+  source:
+    repoURL: <イメージリポジトリURL> # ociプロトコルは不要である．
+```
+
+また，Secretでイメージリポジトリの認証情報の設定（```username```キー，```password```キー）や，OCIプロトコルの有効化（```enableOCI```キー）が必要である．
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-foo-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-repository # イメージリポジトリ
+  url: <イメージリポジトリURL>
+  type: helm
+  username: *****
+  password: *****
+  enableOCI: true
+```
+
+Secretを使用する時，AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．
+
+参考：
+
+- https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+
+#### ▼ targetRevision
+
+イメージリポジトリのチャートのバージョンを設定する．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#declarative
 
@@ -670,7 +718,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 
 | 設定項目                     | 説明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
-| ```CreateNamespace```        | Applicationの作成対象とする名前空間を自動的に作成する．ArgoCDがインストールされる名前空間と，Applicationを作成する名前空間が異なる場合に，これを有効化しておいた方が良い． |
+| ```CreateNamespace```        | Applicationの作成対象の名前空間を自動的に作成する．ArgoCDがインストールされる名前空間と，Applicationを作成する名前空間が異なる場合に，これを有効化しておいた方が良い． |
 | ```Validate```               |                                                              |
 | ```PrunePropagationPolicy``` |                                                              |
 | ```PruneLast```              |                                                              |
