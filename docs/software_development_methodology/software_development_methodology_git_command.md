@@ -343,7 +343,7 @@ Saved working directory and index state WIP on 2019/foo-repository/feature/6: 64
 特定のディレクトリやファイルのみ```stash```できる．
 
 ```bash
-git stash -- src/...
+git stash -- ./
 ```
 
 #### ▼ ```stash list```
@@ -351,6 +351,7 @@ git stash -- src/...
 
 ```bash
 $ git stash list
+
 stash@{0}: WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
@@ -359,6 +360,7 @@ stash@{0}: WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 
 ```bash
 $ git stash pop stash@{0}
+
 On branch 2019/foo-repository/feature/8
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -381,6 +383,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```bash
 $ git stash drop stash@{0}
+
 Dropped refs/stash@{0} (1d0ddeb9e52a737dcdbff7296272080e9ff71815)
 ```
 
@@ -462,6 +465,7 @@ $ git revert <コミットID> --edit
 
 ```bash
 $ git show
+
 commit xyz
 Merge: 1a1a1a 2b2b2b    #ここに注目
 Author: xxxx xxxx
@@ -517,6 +521,7 @@ $ git reset --hard <コミットID>
 
 ```bash
 $ git log
+
 commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
 Merge: 41cc21b f81c813
 Author: hiroki.hasegawa <example@gmail.com>
@@ -547,6 +552,7 @@ $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 
 ```bash
 $ git log
+
 commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> master)
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
@@ -580,6 +586,7 @@ To github.com:hiroki-hasegawa/foo-repository.git
 
 ```bash
 $ git log
+
 commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/foo-repository/master)
 Merge: 41cc21b f81c813
 Author: Hiroki Hasegawa <example@gmail.com>
@@ -635,6 +642,7 @@ $ git commit --amend -m="<変更後のメッセージ>"
 
 ```bash
 $ git rebase --continue
+
 Successfully rebased and updated refs/heads/develop.
 ```
 

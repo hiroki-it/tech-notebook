@@ -224,7 +224,7 @@ $ argocd repo add oci://<チャートレジストリ名> \
   --type helm \
   --name <チャートリポジトリ名> \
   --enable-oci \
-  --username AWS 
+  --username AWS \
   --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
@@ -600,12 +600,13 @@ stringData:
   enableOCI: true
 ```
 
-Secretを使用する時，AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．
+Secretを使用する時，AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．例えば，aws-ecr-credentialチャートを使用する．
 
 参考：
 
 - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
 - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+- https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
 
 #### ▼ targetRevision
 
