@@ -48,9 +48,9 @@ Webアプリケーションのインフラ領域に軸足を置きつつ，バ�
 
 ### ■ クリーンアーキテクチャ
 
-▶ https://github.com/hiroki-it/ddd-api-with-laravel （ Clean-Arch，Laravel，GitHub Actions，など）
+▶ https://github.com/hiroki-it/ddd-backend-with-laravel （ Clean-Arch，Laravel，GitHub Actions，など）
 
-▶ https://github.com/hiroki-it/ddd-api-with-go-gin （ Clean-Arch，Gin，など）
+▶ https://github.com/hiroki-it/ddd-backend-with-gin （ Clean-Arch，Gin，など）
 
 ▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （ Clean-Arch，Go，Serverless Framework，CircleCI，など）
 
