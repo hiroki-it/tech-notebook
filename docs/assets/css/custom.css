@@ -137,6 +137,11 @@ h3:before {
     font-size: 0.63rem;
 }
 
+/* マウスオーバー時の動き */
+.md-nav__item a:hover {
+    text-decoration: underline;
+}
+
 /***************
  ヘッダー
 ***************/
