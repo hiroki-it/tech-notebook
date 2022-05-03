@@ -199,7 +199,7 @@ h3:before {
 
 /* マウスオーバー時の動き */
 .md-header__button.md-logo:hover :-webkit-any(img,svg) {
-  animation: rotate-anime 1.5s linear infinite;
+  animation: rotate-anime 1.0s linear infinite;
 }
 @keyframes rotate-anime {
   0%  {transform: rotate(0);}
