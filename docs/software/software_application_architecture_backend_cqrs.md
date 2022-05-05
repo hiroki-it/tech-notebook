@@ -47,7 +47,7 @@ CREATE，UPDATE，DELETE処理を実行する処理フローのこと．今回�
 参考：
 
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
-- https://github.com/hiroki-it/ddd-backend-with-laravel#ddd-backend-with-laravel
+- https://github.com/hiroki-it/ddd-backend-with-laravel
 
 #### ▼ 処理順序
 
@@ -68,7 +68,7 @@ READ処理を実行するオブジェクトのこと．今回，クリーンア�
 参考：
 
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
-- https://github.com/hiroki-it/ddd-backend-with-laravel#ddd-backend-with-laravel
+- https://github.com/hiroki-it/ddd-backend-with-laravel
 
 #### ▼ 処理順序
 

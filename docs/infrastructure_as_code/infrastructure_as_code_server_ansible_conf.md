@@ -534,8 +534,8 @@ task内で出力できる環境変数を設定する．
 
 ```yaml
 - vars:
-    foo: foo
-    bar: bar
+    foo: FOO
+    bar: BAR
   tasks:
     - name: Upload foo.conf
       ansible.builtin.template:

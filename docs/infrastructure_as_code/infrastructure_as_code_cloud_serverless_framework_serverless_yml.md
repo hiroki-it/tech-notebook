@@ -41,7 +41,7 @@ configValidationMode: warn
 
 ```yaml
 custom:
-  foo: foo
+  foo: FOO
 ```
 
 <br>

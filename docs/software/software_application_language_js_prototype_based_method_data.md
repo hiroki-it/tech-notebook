@@ -25,7 +25,7 @@ title: 【知見を記録するサイト】メソッド/データ＠JavaScript
 ```javascript
 // 定義
 const object = {
-  foo: "bar",
+  foo: "FOO",
   age: 42,
   baz: {myProp: 12},
 }

@@ -399,7 +399,7 @@ stringData:
   url:  <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-argocd-repository
   type: helm
   username: foo
-  password: foo
+  password: bar
   enableOCI: "true"
 ```
 

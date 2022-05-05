@@ -417,7 +417,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 ```yaml
 # valuesファイル
 foo:
-  bar: qux # 上書きされる
+  bar: QUX # 上書きされる
 ```
 
 #### ▼ -set

@@ -186,8 +186,8 @@ kind: ConfigMap
 metadata:
   name: foo-config-map
 data:
-  enableFoo: "true"
-  number: 1
+  enableFoo: "true" # ダブルクオーテーションで囲う．
+  number: "1"
 ```
 
 改行すれば，設定ファイルのstring型データも設定できる．
@@ -1384,7 +1384,7 @@ kind: Secret
 metadata:
   name: foo-secret
 stringData:
-  enableFoo: "true"
+  enableFoo: "true" # ダブルクオーテーションで囲う．
   number: "1"
 ```
 
