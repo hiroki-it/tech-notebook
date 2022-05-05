@@ -1,10 +1,11 @@
 ---
-ta
+title: 【知見を記録するサイト】manifest.yaml＠Kubernetes
+description: manifest.yaml＠Kubernetesの知見をまとめました．
 ---
 
 # manifest.yaml＠Kubernetes
 
-## 
+## はじめに
 
 本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
@@ -171,9 +172,9 @@ ConfigMapに設定するstring型データを設定する．
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-map
+  name: foo-config-map
 data:
-  foo: bar 
+  bar: BAR 
 ```
 
 string型しか設定できないため，デコード後にinteger型やboolean型になってしまう値は，ダブルクオーテーションで囲う必要がある．
@@ -202,7 +203,7 @@ data:
     [SERVICE]
         Flush         1
         Log_Level     info
-    
+
     [OUTPUT]
         Name cloudwatch
         Match *
@@ -575,10 +576,10 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-              - foo-node
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - foo-node
 ```
 
 <br>
@@ -664,12 +665,12 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-              - foo-node 
-            # 開発環境であれば minikubeを指定する．
-            # - minikube 
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - foo-node
+              # 開発環境であれば minikubeを指定する．
+              # - minikube 
 ```
 
 <br>
@@ -964,8 +965,8 @@ spec:
       ports:
         - containerPort: 8080
       volumeMounts:
-         - name: foo-gin-volume
-           mountPath: /go/src
+        - name: foo-gin-volume
+          mountPath: /go/src
   volumes:
     - name: foo-gin-volume
       persistentVolumeClaim:
@@ -1161,7 +1162,7 @@ data:
     [SERVICE]
         Flush         1
         Log_Level     info
-    
+
     [OUTPUT]
         Name cloudwatch
         Match *
@@ -1223,10 +1224,10 @@ spec:
         - name: foo-gin-volume
           mountPath: /go/src
   volumes:
-  - name: foo-gin-volume
-    hostPath:
-      path: /data/src/foo
-      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+    - name: foo-gin-volume
+      hostPath:
+        path: /data/src/foo
+        type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
 #### ▼ name
@@ -1687,8 +1688,8 @@ metadata:
     app: foo
 spec:
   ports:
-  - targetPort: 8080
-    port: 80
+    - targetPort: 8080
+      port: 80
 ```
 
 ```yaml
@@ -1973,10 +1974,6 @@ spec:
       spec:
         storageClassName: standard
         accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 2Gi
 ```
 
 <br>
