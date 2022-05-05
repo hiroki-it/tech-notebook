@@ -182,7 +182,7 @@ $ minikube addons enable ingress
 
 #### ▼ list
 
-有効可能なプラグインの一覧を表示する．
+有効できるプラグインの一覧を表示する．
 
 ```bash
 $ minikube addons list
@@ -579,7 +579,7 @@ yes
 zcat
 ```
 
-ワーカーNodeの中では```docker```コマンドを実行でき，イメージのデバッグも可能である．
+ワーカーNodeの中では```docker```コマンドを実行でき，イメージもデバッグできる．
 
 ```bash
 $ minikube ssh  

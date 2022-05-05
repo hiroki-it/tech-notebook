@@ -289,7 +289,7 @@ if (true) {
   foo = "foo";
 }
 
-// ブロック内のvarにアクセス可能
+// ブロック内のvarにアクセスできる．
 console.log(foo); // foo
 ```
 

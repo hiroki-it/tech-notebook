@@ -442,7 +442,7 @@ $ fluent-bit \
     # 削除するキー
     Remove          deleted_key
     # 削除対象キーの最初の文字（前方一致）．
-    # もしこれ以外の文字で始まる場合は，削除の非対象とする．
+    # もしこれ以外の文字列で始まる場合は，削除の非対象とする．
     Remove_wildcard ignored_key
 ```
 
@@ -522,7 +522,7 @@ Laravelのスタックトレースを結合する．
     rule          "start_state" "/\[[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\s+([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\].*/" "cont"
     
     # スタックトレース
-    # [stacktrace]，[previous exception]，#，行間，"} ，で始まる文字の場合に結合する．
+    # [stacktrace]，[previous exception]，#，行間，"} ，で始まる文字列の場合に結合する．
     rule          "cont" "/(\[(stacktrace|previous exception)\]|#|\n\n|"\}).*/" "cont"
     
     # アプリケーション独自仕様のログ
@@ -771,7 +771,7 @@ $ ls -ls /var/log/fluent-bit/cpu.0
 
 ![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_output.png)
 
-ログのアウトプット先を設定する．設定可能なアウトプット先の種類については，以下のリンクを参考にせよ．
+ログのアウトプット先を設定する．設定できるアウトプット先の種類については，以下のリンクを参考にせよ．
 
 参考：
 

@@ -62,7 +62,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 レスポンスヘッダーに埋め込むHTTPヘッダーを，メタデータとして設定する．
 
-| 設定可能なヘッダー              | 説明                                                         | 補足                                           |
+| 設定できるヘッダー              | 説明                                                         | 補足                                           |
 | ------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
 | ETag                            | コンテンツの一意な識別子．ブラウザキャッシュの検証に使用される． | 全てのコンテンツにデフォルトで設定されている． |
 | Cache-Control                   | Expiresと同様に，ブラウザにおけるキャッシュの有効期限を設定する． | 全てのコンテンツにデフォルトで設定されている． |
@@ -222,7 +222,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-### CLI
+### AWS CLI
 
 #### ▼ バケット内ファイルを表示
 
@@ -510,7 +510,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | タイプ           | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Automationタイプ | サーバー/コンテナ外でコマンドを実行する．内部的には，Python製のLambdaが使用されている（たぶん）．<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し，状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/automation-walk-document-builder.html |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する．内部的には，AWS Run Commandが使用されている．<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する．内部的には，Run Commandが使用されている．<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
 | Sessionタイプ    |                                                              |                                                              |
 
 #### ▼ テンプレート
@@ -592,7 +592,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-### CLI
+### AWS CLI
 
 #### ▼ キューURLを取得
 
@@ -1203,9 +1203,9 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 | 機能                                          | VPCピアリング接続 | VPCエンドポイントサービス           | Transit gateway        |
 | --------------------------------------------- | ----------------- | ----------------------------------- | ---------------------- |
-| 通信可能なVPC数                               | 一対一            | 一対一，一対多                      | 一対一，一対多，多対多 |
-| 通信可能なIPアドレスの種類                    | IPv4，IPv6        | IPv4                                | IPv4，IPv6             |
-| 接続可能なリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
+| 通信できるVPC数                               | 一対一            | 一対一，一対多                      | 一対一，一対多，多対多 |
+| 通信できるIPアドレスの種類                    | IPv4，IPv6        | IPv4                                | IPv4，IPv6             |
+| 接続できるリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
 | CIDRブロックがVPC間で被ることによる通信の可否 | ✖︎                 | ⭕                                   | ✖︎                      |
 | クロスアカウント                              | ⭕                 | ⭕                                   | ⭕                      |
 | クロスリージョン                              | ⭕                 | ✖︎                                   | ⭕                      |
@@ -1307,7 +1307,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ▼ ルールの粒度のコツ
 
-わかりやすさの観点から，可能な限り設定するステートメントを少なくし，1つのルールに1つの意味合いだけを持たせるように命名する．
+わかりやすさの観点から，できる限り設定するステートメントを少なくし，1つのルールに1つの意味合いだけを持たせるように命名する．
 
 #### ▼ Count（検知）モード
 

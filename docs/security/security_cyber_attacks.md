@@ -157,6 +157,20 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ## 03. サイバー攻撃/その対策
 
+### Man In The Middle攻撃（中間者攻撃）
+
+#### ▼ 中間者攻撃とは
+
+二者間の通信に割り込み，盗聴/改竄/成りすましによって通信を攻撃する．
+
+参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
+
+#### ▼ 【対策】通信の暗号化
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_encryption_technology.html
+
+<br>
+
 ### CSRF：Cross-Site Request Forgeries
 
 #### ▼ CSRFとは
@@ -275,7 +289,7 @@ DBのSQLクエリのパラメーターとなる入力に，不正な文字列を
 
 ![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQLインジェクション.jpg)
 
-#### ▼ 【対策】特殊な文字の無効化
+#### ▼ 【対策】特殊な文字列の無効化
 
 DBのSQLクエリのパラメーターとなる入力では，『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ．そのため，これらのパラメーターが割り当てられているリクエストメッセージを拒否する．例えば，WAFの機能を使用する．
 

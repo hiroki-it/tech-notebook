@@ -389,10 +389,10 @@ print_r($a);
 ```php
 <?php
     
-$var = 10; // $varは整数型．
+$var = 10; // $varはinteger型．
 
 // キャスト演算子でデータ型を変換
-$var = (string) $var; // $varは文字列型
+$var = (string) $var; // $varはstring型
 ```
 
 #### ▼ ```(int)```
@@ -402,7 +402,7 @@ $var = (string) $var; // $varは文字列型
     
 $var = 1;
 
-// int型
+// integer型
 $var = (int) $var;
 
 // 1
@@ -415,7 +415,7 @@ $var = (int) $var;
     
 $var = 1;
 
-// 真偽型
+// boolean型
 $var = (bool) $var;
 
 // true

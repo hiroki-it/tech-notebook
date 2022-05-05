@@ -148,7 +148,7 @@ PHPにおける```composer.lock```ファイルに相当する．```go.mod```フ�
 
 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
-ポインタ型から文字列型に変換する```ToString```関数や，反対に文字列型からポインタ型に変換する```String```関数をよく使用する．
+ポインタ型からstring型に変換する```ToString```関数や，反対にstring型からポインタ型に変換する```String```関数をよく使用する．
 
 参考：
 
@@ -680,7 +680,7 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 	return errorMessages
 }
 
-// stringValidation 文字列型指定のメッセージを返却します．
+// stringValidation string型指定のメッセージを返却します．
 func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }

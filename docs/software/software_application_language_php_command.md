@@ -34,7 +34,7 @@ PHP Version => 7.4
 出力量が多いため，```grep```を使用して，特定の項目のみを表示すると良い．
 
 ```bash
-# PHPのプロセスが使用可能なめもりの
+# PHPのプロセスが使用できるメモリを確認する．
 $ php -i | grep memory_limit
 
 memory_limit => 2048M => 2048M

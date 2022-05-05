@@ -347,7 +347,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 - https://www.containiq.com/post/kubernetes-ingress
 - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 
-#### ▼ Ingressコントローラーとして使用可能なもの
+#### ▼ Ingressコントローラーとして使用できるもの
 
 参考：
 

@@ -1342,7 +1342,7 @@ final class FlagConstant
 
 #### ▼ 区分値
 
-区分値を整数型の定数として扱う．区分値をデータとして持つオブジェクトについては，ドメイン駆動設計の値オブジェクトを参考にせよ．
+区分値をinteger型の定数として扱う．区分値をデータとして持つオブジェクトについては，ドメイン駆動設計の値オブジェクトを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
@@ -1378,7 +1378,7 @@ URLを文字列を定数として扱う．
 
 **＊実装例＊**
 
-以下の実装を持つファイルを，『```/var/www/foo```』下に置いておき，『```/vendor/autoload.php```』と結合してパスを通す．
+以下の実装を持つファイルを，```/var/www/foo```ディレクトリ下に置いておき，```/vendor/autoload.php```ファイルと結合してパスを通す．
 
 ```php
 <?php
@@ -1737,7 +1737,7 @@ var_dump($result); // 1
 
 #### ▼ クエスチョン
 
-クエスチョンの前に記載された文字に関して，あってもなくても問題ないことを意味する．
+クエスチョンの前に記載された文字列に関して，あってもなくても問題ないことを意味する．
 
 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 

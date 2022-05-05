@@ -29,7 +29,7 @@ $ vagrant box add <ボックス名> <URL>
 
 ### box list
 
-インストール可能なボックス名の一覧を表示する．
+インストールできるボックス名の一覧を表示する．
 
 参考：https://www.vagrantup.com/docs/cli/box#box-list
 

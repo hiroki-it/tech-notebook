@@ -261,7 +261,7 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/inject: "false"
+        sidecar.istio.io/inject: false
 ```
 
 #### ▼ sidecar.istio.io/proxyCPU

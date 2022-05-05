@@ -131,7 +131,7 @@ Content-Type: application/x-www-form-urlencoded
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
 
-レスポンスボディにBearerトークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定可能な認証スキーマ，などが提供されることが多い．
+レスポンスボディにBearerトークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定できる認証スキーマ，などが提供されることが多い．
 
 参考：
 

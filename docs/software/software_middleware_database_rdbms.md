@@ -299,7 +299,7 @@ try{
 
 コミットを以下の二つの段階に分けて行うこと．ACIDのうち，原子性と一貫性を実装している．
 
-1. 他のサイトに更新可能かどうかを確認．
+1. 他のサイトに更新できるかどうかを確認．
 2. 全サイトからの合意が得られた場合に更新を確定．
 
 <br>
@@ -435,13 +435,13 @@ UPDATE処理競合問題を許容し，排他制御を使用しない選択肢�
 
 #### ▼ 共有ロック
 
-DBで，CRUDのREAD処理以外の処理を実行不可能にする．レコードのREAD処理を実行する時に，他者によってUPDATE処理されたくない場合に使用する．『共有』の名の通り，共有ロックされているレコードに対して，他の人も共有ロックを行える．MySQLでは，『```SELECT ... LOCK IN SHARE MODE```』を使用する．
+DBで，CRUDのREAD処理以外の処理を実行できなくする．レコードのREAD処理を実行する時に，他者によってUPDATE処理されたくない場合に使用する．『共有』の名の通り，共有ロックされているレコードに対して，他の人も共有ロックを行える．MySQLでは，『```SELECT ... LOCK IN SHARE MODE```』を使用する．
 
 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ 占有ロック
 
-DBで，CRUDの全ての処理を実行不可能にする．レコードのUPDATE処理を実行する時に，他者によってUPDATE/READ処理の両方を実行させない場合に使用する．MySQLでは，『```SELECT ... FOR UPDATE```』を使用する．
+DBで，CRUDの全ての処理を実行できなくする．レコードのUPDATE処理を実行する時に，他者によってUPDATE/READ処理の両方を実行させない場合に使用する．MySQLでは，『```SELECT ... FOR UPDATE```』を使用する．
 
 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 

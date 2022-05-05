@@ -30,8 +30,6 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 <br>
 
-
-
 ### 自己管理
 
 ArgoCDは，ArgoCD自身のマニフェストファイルに変更も同期できる．
@@ -325,7 +323,105 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
-## 03. spec（Applicationの場合）
+## 03. labels（```argocd.argoproj.io/secret-type```の場合）
+
+### repository
+
+#### ▼ repositoryとは
+
+監視対象のマニフェストリポジトリやチャートリポジトリの認証情報を設定する．
+
+参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+
+#### ▼ チャートリポジトリの場合
+
+チャートリポジトリの認証情報を設定する．
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-foo-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-argocd-repository # チャートリポジトリ
+  url: <チャートリポジトリURL>
+  type: helm
+  username: foo
+  password: bar
+```
+
+#### ▼ OCIリポジトリの場合
+
+OCIリポジトリの認証情報を設定する．OCIプロトコルの有効化（```enableOCI```キー）が必要であるが，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，プロトコルの設定は不要である．
+
+参考：
+
+- https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-foo-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-repository
+  url: <OCIリポジトリ名> # OCIプロトコルは不要である．
+  type: helm
+  username: foo
+  password: bar
+  enableOCI: "true"
+```
+
+```yaml
+# AWSの場合
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-foo-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-argocd-repository
+  url:  <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-argocd-repository
+  type: helm
+  username: foo
+  password: foo
+  enableOCI: "true"
+```
+
+AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．例えば，aws-ecr-credentialチャートを使用する．
+
+参考：
+
+- https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+- https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
+
+<br>
+
+## 04. spec（Applicationの場合）
+
+### Application
+
+Kubernetesのカスタムリソースから定義される．
+
+参考：https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
+
+<br>
 
 ### project
 
@@ -351,15 +447,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ，チャートリポジトリ，イメージリポジトリ，からマニフェストファイルをデプロイする．
+マニフェストリポジトリ，チャートリポジトリ，の変更を監視し，これらからプルしたマニフェストファイルをデプロイする．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 | リポジトリの種類                          | 管理方法                     | マニフェストファイルのデプロイ方法                           |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
 | マニフェストリポジトリ（GitHub）          | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする．                               |
-| チャートリポジトリ（ArtifactHub，GitHub） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．（```helm install```コマンドに相当する処理を実行する） |
-| イメージリポジトリ（ECR）                 | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．（```helm install```コマンドに相当する処理を実行する） |
+| チャートリポジトリ（ArtifactHub，GitHub） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
+| OCIリポジトリ（ECR）                      | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
 
 <br>
 
@@ -367,7 +463,7 @@ spec:
 
 #### ▼ directory
 
-監視対象として```path```キーで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
+監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する．```path```キーで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
 
 参考：
 
@@ -444,11 +540,11 @@ spec:
 
 <br>
 
-### source（チャートリポジトリの場合）
+### source（チャートリポジトリ）
 
 #### ▼ chart
 
-監視対象のチャートリポジトリのチャート名を設定する．
+ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャート名を設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -487,14 +583,17 @@ spec:
     helm:
       releaseName: prd
       valueFiles:
-        - ./prd-values.yaml
+        - ./prd.yaml
 ```
 
 #### ▼ repoURL
 
-監視対象のチャートリポジトリのURLを設定する．
+ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャートリポジトリのURLを設定する．
 
-参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+- https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -504,35 +603,12 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: https://<チャートリポジトリURL>
-```
-
-また，Secretでイメージリポジトリの認証情報の設定（```username```キー，```password```キー）が必要である．
-
-参考：
-
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: argocd-foo-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-repository # チャートリポジトリ
-  url: <チャートリポジトリURL>
-  type: helm
-  username: *****
-  password: *****
+    repoURL: <チャートリポジトリURL>
 ```
 
 #### ▼ targetRevision
 
-監視対象のチャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
+ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -549,21 +625,21 @@ spec:
 
 <br>
 
-### source（イメージリポジトリの場合）
+### source（OCIリポジトリの場合）
 
 #### ▼ chart
 
-チャートリポジトリの場合と同じ．
+チャートリポジトリと同じ．
 
 #### ▼ helm
 
-チャートリポジトリの場合と同じ．
+チャートリポジトリと同じ．
 
 #### ▼ repoURL
 
-監視対象のイメージリポジトリのURLを設定する．イメージリポジトリに管理されるチャートアーカイブをデプロイする場合は，OCIプロトコルを使用する必要がある．この時，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，ユーザー側でプロトコルの設定である．
+ArgoCDのApplicationのチャートがOCIリポジトリで管理されている場合に，OCIリポジトリのURLを設定する．
 
-参考：https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -573,46 +649,12 @@ metadata:
   name: argocd-application
 spec:
   source:
-    repoURL: <イメージリポジトリURL> # ociプロトコルは不要である．
+    repoURL: <OCIリポジトリURL>
 ```
-
-また，Secretでイメージリポジトリの認証情報の設定（```username```キー，```password```キー）や，OCIプロトコルの有効化（```enableOCI```キー）が必要である．
-
-参考：
-
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: argocd-foo-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-repository # イメージリポジトリ
-  url: <イメージリポジトリURL>
-  type: helm
-  username: *****
-  password: *****
-  enableOCI: true
-```
-
-Secretを使用する時，AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．例えば，aws-ecr-credentialチャートを使用する．
-
-参考：
-
-- https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
-- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-- https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
 
 #### ▼ targetRevision
 
-イメージリポジトリのチャートのバージョンを設定する．
-
-参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#declarative
+ArgoCDのApplicationのチャートがOCIリポジトリで管理されている場合に，チャートのバージョンタグを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -654,8 +696,6 @@ spec:
 
 デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
 
-
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -692,8 +732,6 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 | ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
 | ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
-
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -724,8 +762,6 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ```PrunePropagationPolicy``` |                                                              |
 | ```PruneLast```              |                                                              |
 
-
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -740,7 +776,7 @@ spec:
 
 <br>
 
-## 04. spec（Rolloutの場合）
+## 05. spec（Rolloutの場合）
 
 ### analysis
 
@@ -834,8 +870,6 @@ spec:
 | ---------- | ------------------------------------------------------------ |
 | ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
 
-
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
@@ -848,3 +882,8 @@ spec:
         - setWeight: 25
         - pause:
             duration: 10
+```
+
+<br>
+
+#### 

@@ -149,7 +149,7 @@ KubernetesのClusterやワーカーNodeから送信されたメトリクスを�
       "session_id": "*****",
       # ブラウザログのステータス
       "status": "error",
-      # ブラウザで表示されたWebページのURL．非同期リクエストのエラーは，こちらではなく```message```属性に記載される．
+      # ブラウザで表示されたWebページのURL．非同期リクエストのエラーは，こちらではなくmessage属性に記載される．
       "view": {
         "referrer": "",
         "url": "https://example.com/"
@@ -269,14 +269,14 @@ export default browserLogsForSsgPlugin
 
 参考：https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
 
-| 属性名                  | 説明                                           | 補足                                                         | 例                                                           |
-| ----------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```              | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．datadogコンテナの環境変数にて，```DD_HOSTNAME```を使用して```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
-| ```source```            | ログの生成元の名前を示す．                     | ベンダー名を使用するとわかりやすい．                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
-| ```status```            | ログのレベルを示す．                           |                                                              |                                                              |
-| ```service```           | ログの生成元のアプリケーション名を示す．       | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある． | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
-| ```trace_id```          | ログを分散トレースやスパンと紐付けるIDを示す． |                                                              |                                                              |
-| ```message```属性 | ログメッセージを示す．                         | 受信したログが非構造化ログの場合，これはDatadogの基底構造化ログの```message```属性に割り当てられる．一方で，構造化ログであった場合は```message```属性は使用されない． |                                                              |
+| 属性名                | 説明                                           | 補足                                                         | 例                                                           |
+| --------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```host```            | ログの生成元のホスト名を示す．                 | ログが生成元とは別の場所から送信されている場合に役立つ．datadogコンテナの環境変数にて，```DD_HOSTNAME```を使用して```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```source```          | ログの生成元の名前を示す．                     | ベンダー名を使用するとわかりやすい．                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
+| ```status```          | ログのレベルを示す．                           |                                                              |                                                              |
+| ```service```         | ログの生成元のアプリケーション名を示す．       | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある． | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
+| ```trace_id```        | ログを分散トレースやスパンと紐付けるIDを示す． |                                                              |                                                              |
+| ```message``` | ログメッセージを示す．                         | 受信したログが非構造化ログの場合，これはDatadogの基底構造化ログの```message```属性に割り当てられる．一方で，構造化ログであった場合は```message```属性は使用されない． |                                                              |
 
 #### ▼ 標準属性
 
@@ -290,13 +290,13 @@ export default browserLogsForSsgPlugin
 
 参考：https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
-| 属性名                        | 説明                                             |
-| ----------------------------- | ------------------------------------------------ |
-| ```logger.name```             | ログパッケージの名前を示す．                     |
-| ```logger.thread_name```      | スレッド名を示す．                               |
-| ```error.stack```             | スタックトレースログ全体を示す．                 |
-| ```error.```message```属性``` | スタックトレースログのメッセージ部分を示す．     |
-| ```error.kind```              | エラーの種類（Exception，OSError，など）を示す． |
+| 属性名                 | 説明                                             |
+| --------------------- | ------------------------------------------------ |
+| ```logger.name```     | ログパッケージの名前を示す．                     |
+| ```logger.thread_name``` | スレッド名を示す．                               |
+| ```error.stack```     | スタックトレースログ全体を示す．                 |
+| ```error.message``` | スタックトレースログのメッセージ部分を示す．     |
+| ```error.kind```      | エラーの種類（Exception，OSError，など）を示す． |
 
 <br>
 
@@ -491,10 +491,10 @@ n.n.n.n - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" 
 
 以下のようなGrokパーサールールを定義する．```http.status_code```属性にステータスコード値を割り当てる．
 
-```bash
+```
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
 ```
 
 これにより，構造化ログの各属性に値が割り当てられる．
@@ -608,7 +608,7 @@ Laravelから，以下のような非構造化ログを受信する例を考え�
 
 参考：https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
-```bash
+```
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
 ```
 
@@ -722,7 +722,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 以下のようなGrokパーサのルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
 
-```bash
+```
 FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.url}\s+%{integer:http.status_code}
 ```
 
@@ -818,7 +818,7 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 
 これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与する．この属性を使用する理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でも良い．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
 
-```bash
+```
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
 bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:987654321:function:datadog-ForwarderStack-*****-Forwarder-*****"
 baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:192837465:function:datadog-ForwarderStack-*****-Forwarder-*****"
@@ -863,10 +863,10 @@ n.n.n.n - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" 
 
 これに対して，以下のようなGrokパーサーのルールを定義する．```http.useragent```属性にユーザーエージェント値を割り当てる．
 
-```bash
+```
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
 ```
 
 これにより，構造化ログの各属性に値が割り当てられる．

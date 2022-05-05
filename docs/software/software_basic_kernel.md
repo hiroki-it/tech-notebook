@@ -188,13 +188,13 @@ crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
 
 <br>
 
-### パーティションとボリューム
+### パーティション，ボリューム
 
-#### ▼ パーティションとボリュームとは
+#### ▼ パーティション，ボリュームとは
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-物理ストレージの仮想的な仕切りを『パーティション』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけられる．```/dev```ディレクトリ配下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．
+物理ディスク上の仮想的な仕切りを『パーティション』，また仕切られたストレージ領域を『ボリューム』という．1つのストレージを複数に見せかけられる．```/dev```ディレクトリ配下に物理ストレージに紐づくデバイスファイルがあり，デバイスファイル内でパーティションが設定されている．
 
 参考：
 
@@ -211,19 +211,19 @@ Windowsでは，CドライブとDドライブがパーティションに相当�
 
 **＊例＊**
 
-MacOSでは，```diskutil```コマンドを実行するとパーティションを確認できる．物理ストレージに紐づく2つのデバイスファイルが表示され，```disk0```ファイル は2つ，また```disk1```ファイルは6つのパーティションで区切られていることが確認できる．
+MacOSでは，```diskutil```コマンドを実行するとパーティションを確認できる．物理ディスクに紐づく2つのデバイスファイルが表示され，```disk0```ファイル は2つ，また```disk1```ファイルは6つのパーティションで区切られていることが確認できる．
 
 ```bash
 $ diskutil list
 
-# 物理ストレージdisk0
+# 物理ディスク：disk0
 /dev/disk0 (internal, physical):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      GUID_partition_scheme                               *500.3 GB  disk0
    1:                        EFI    EFI                        314.6 MB   disk0s1
    2:                 Apple_APFS    Container disk1            500.0 GB   disk0s2
 
-# 物理ストレージdisk1
+# 物理ディスク：disk1
 /dev/disk1 (synthesized):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      APFS Container Scheme    -                          +500.0 GB  disk1

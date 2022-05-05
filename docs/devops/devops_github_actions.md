@@ -121,7 +121,7 @@ jobs:
 
 #### ▼ with
 
-Actionsに設定可能なパラメーターをわたす．
+Actionsに設定できるパラメーターをわたす．
 
 ```yaml
 jobs:

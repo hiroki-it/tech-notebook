@@ -72,7 +72,7 @@ minikube
 
 #### ▼ get-contexts
 
-適用可能なコンテキストの一覧と現在のコンテキストを表示する．
+適用できるコンテキストの一覧と現在のコンテキストを表示する．
 
 ```bash
 $ kubectl config get-contexts                                                                 
@@ -391,10 +391,6 @@ kubernetes     ClusterIP   n.n.n.n        <none>        443/TCP   12h
 $ kubectl get secret <Secret名> -o yaml
 
 apiVersion: v1
-data:
-  FOO: ***** # base64方式エンコード値
-  BAR: *****
-  BAZ: *****
 kind: Secret
 metadata:
   creationTimestamp: "2021-12-00T00:00:00Z"
@@ -403,6 +399,10 @@ metadata:
   resourceVersion: "18329"
   uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
+data:
+  FOO: ***** # base64方式エンコード値
+  BAR: *****
+  BAZ: *****
 ```
 
 **＊例＊**

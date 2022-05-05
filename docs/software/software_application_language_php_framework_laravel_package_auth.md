@@ -644,7 +644,7 @@ $ php artisan passport:client --password
 
 <br>
 
-### 実装可能なOAuth認証の種類
+### 実装できるOAuth認証の種類
 
 #### ▼ OAuth認証
 

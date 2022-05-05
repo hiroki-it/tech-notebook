@@ -1,11 +1,10 @@
 ---
-title: 【知見を記録するサイト】manifest.yaml＠Kubernetes
-description: manifest.yaml＠Kubernetesの知見をまとめました．
+ta
 ---
 
 # manifest.yaml＠Kubernetes
 
-## はじめに
+## 
 
 本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
@@ -162,7 +161,11 @@ rules:
 
 #### ▼ dataとは
 
-キー名と値を格納する．
+Kubernetesリソースに渡す非機密データを設定する．
+
+#### ▼ string型データ
+
+ConfigMapに設定するstring型データを設定する．
 
 ```yaml
 apiVersion: v1
@@ -173,7 +176,21 @@ data:
   foo: bar 
 ```
 
-改行すれば，設定ファイルも格納できる．
+string型しか設定できないため，デコード後にinteger型やboolean型になってしまう値は，ダブルクオーテーションで囲う必要がある．
+
+参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-config-map
+data:
+  enableFoo: "true"
+  number: 1
+```
+
+改行すれば，設定ファイルのstring型データも設定できる．
 
 ```yaml
 apiVersion: v1
@@ -187,7 +204,7 @@ data:
         Log_Level     info
     
     [OUTPUT]
-        Name cloudwatch_logs
+        Name cloudwatch
         Match *
         region ap-northeast-1
         log_group_name /prd-foo-k8s/log
@@ -1146,7 +1163,7 @@ data:
         Log_Level     info
     
     [OUTPUT]
-        Name cloudwatch_logs
+        Name cloudwatch
         Match *
         region ap-northeast-1
         log_group_name /prd-foo-k8s/log
@@ -1299,7 +1316,13 @@ spec:
 
 ### data
 
-Secretで保持するデータを設定する．使用前にbase64方式で自動的にデコードされるため，あらかじめエンコード値を設定しておく必要がある．
+#### ▼ dataとは
+
+Kubernetesリソースに渡す機密データを設定する．
+
+#### ▼ string型データ
+
+Secretで保持するstring型データを設定する．使用前にbase64方式で自動的にデコードされるため，あらかじめエンコード値を設定しておく必要がある．
 
 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -1313,11 +1336,31 @@ data:
   password: *****
 ```
 
+string型しか設定できないため，デコード後にinteger型やboolean型になってしまう値は，ダブルクオーテーションで囲う必要がある．
+
+参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  enableFoo: "*****"
+  number: "*****"
+```
+
 <br>
 
 ### stringData
 
-Secretで保持するデータを設定する．平文で設定しておく必要がある．
+#### ▼ stringDataとは
+
+Kubernetesリソースに渡す機密データを設定する．
+
+#### ▼ string型データ
+
+Secretで保持するstring型データを設定する．平文で設定しておく必要がある．
 
 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -1329,6 +1372,20 @@ metadata:
 data:
   username: bar
   password: baz
+```
+
+string型しか設定できないため，そのままだとinteger型やboolean型になってしまう値は，ダブルクオーテーションで囲う必要がある．
+
+参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+stringData:
+  enableFoo: "true"
+  number: "1"
 ```
 
 <br>
@@ -1712,7 +1769,7 @@ automountServiceAccountToken: false
 
 ### hosts
 
-送信可能なアウトバウンド通信のドメイン名を設定する．
+送信できるアウトバウンド通信のドメイン名を設定する．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1730,7 +1787,7 @@ spec:
 
 ### ports
 
-送信可能なアウトバウンド通信のポート番号を設定する．
+送信できるアウトバウンド通信のポート番号を設定する．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1753,7 +1810,7 @@ spec:
 
 ### resolution
 
-送信可能なアウトバウンド通信のIPアドレスの設定する．
+送信できるアウトバウンド通信のIPアドレスの設定する．
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

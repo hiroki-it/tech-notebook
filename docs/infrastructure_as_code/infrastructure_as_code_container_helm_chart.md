@@ -304,3 +304,22 @@ define関数で定義した文字列をそのまま出力する．template関数
 ```
 
 <br>
+
+### b64enc
+
+#### ▼ b64encとは
+
+base64方式でエンコードし，出力する．Secretの```data```キーでは，他のKubernetesリソースへの出力時に自動的にデコードするようになっており，相性が良い．
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  username: {{ .Values.username | b64enc }}
+  password: {{ .Values.password | b64enc }}
+```
+
+
+

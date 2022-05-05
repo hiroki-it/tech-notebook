@@ -337,7 +337,7 @@ pid  logs/nginx.pid;
 
 #### ▼ worker_connections
 
-workerプロセスが同時に処理可能なコネクションの最大数を設定する．
+workerプロセスが同時に処理できるコネクションの最大数を設定する．
 
 参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
@@ -419,7 +419,7 @@ location ^~ /images/ {
 }
 
 # 3と4. 末尾が，『gif，jpg，jpegの形式』 のインバウンド通信の場合
-# バックスラッシュでドットをエスケープし，任意の文字ではなく『ドット文字』として認識できるようにする．
+# バックスラッシュでドットをエスケープし，任意の文字列ではなく『ドット文字』として認識できるようにする．
 location ~* \.(gif|jpg|jpeg)$ {
 
 }

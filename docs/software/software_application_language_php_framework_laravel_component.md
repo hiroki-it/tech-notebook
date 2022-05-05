@@ -122,7 +122,7 @@ return [
 
 ### Command
 
-artisanコマンドで実行可能なコマンド処理を定義する．
+artisanコマンドで実行できるコマンド処理を定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
@@ -819,7 +819,7 @@ class Handler extends ExceptionHandler
 
 #### ▼ ```render```メソッド
 
-Laravel内部でキャッチされた例外を基に，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理をこれに追加することも可能であるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する．
+Laravel内部でキャッチされた例外を基に，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理もこれに追加できるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する．
 
 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -2896,7 +2896,7 @@ return [
     "channels" => [
         "stack" => [
             "driver"            => "stack",
-            // 複数チャンネルを設定可能．（例）["single", "stack"]
+            // 複数チャンネルを設定できる．（例）["single", "stack"]
             "channels"          => ["single"],
             "ignore_exceptions" => false,
         ],
@@ -3323,7 +3323,7 @@ $ php artisan migrate
 
 #### ▼ ```bigIncrements```メソッド
 
-自動増分ありのINT型カラムを作成する．プライマリーキーとするIDカラムのために使用する．自動増分のカラムは1つのテーブルに1つしか定義できず，他のIDカラムは```unsignedBigInteger```メソッドを使用して定義する．
+自動増分ありのinteger型カラムを作成する．プライマリーキーとするIDカラムのために使用する．自動増分のカラムは1つのテーブルに1つしか定義できず，他のIDカラムは```unsignedBigInteger```メソッドを使用して定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
@@ -3343,7 +3343,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ▼ ```unsignedBigInteger```メソッド
 
-自動増分なしのINT型カラムを作成する．プライマリーキーではないIDカラムのために使用する．
+自動増分なしのinteger型カラムを作成する．プライマリーキーではないIDカラムのために使用する．
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
@@ -4046,9 +4046,11 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 ## 17. Seeder
 
-### 初期リアルデータの定義
+### 初期データの定義
 
 #### ▼ DBファサードによる定義
+
+DBファサードを使用して，初期データを定義する．
 
 ```php
 <?php
@@ -4134,8 +4136,58 @@ class ExecutorConstant
 
 #### ▼ CSVファイルによる定義
 
+CSVファイルを使用して，初期データを定義する．DBファサードを使用するよりも．大量のデータを定義しやすい．この時，```LOAD DATA LOCAL INFILE```文を使用すると，高速で処理できる．
+
+参考：https://i-407.com/blog/tech/n3/
+
 ```php
-// ここに実装例
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Constants\ExecutorConstant;
+
+class ProductsSeeder extends Seeder
+{
+    /**
+     * Seederを実行します．
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // 〜 中略 〜 
+    
+        $this->importCsv();
+        
+        // 〜 中略 〜 
+    }
+
+    /**
+     * CSVを読み込んでDBにデータを保存します．
+     */
+    private function importCsv(): void
+    {
+        foreach ($this->tables as $table) {
+        
+            // S3に保存してあるCSVファイルを読み込む．
+            $csv = \Storage::get(migrations/csv/ . $table . '.csv');
+            
+            // 一時CSVファイルに書き込む．
+            file_put_contents('/tmp/csv', $csv);
+
+            // 一時ファイルを用いて，DBにCSVファイルの中身を書き込む．
+            \DB::statement(
+                "LOAD DATA LOCAL INFILE '/tmp/csv'
+                INTO TABLE {$table}
+                FIELDS terminated by ','
+                ENCLOSED BY '\"'
+                ESCAPED BY '\\\'
+                LINES TERMINATED BY '\n'
+                IGNORE 1 LINES"
+            );
+        }
+    }
+}
 ```
 
 <br>
@@ -4483,7 +4535,7 @@ class Interactor
 
 #### ▼ ```make```メソッド
 
-引数の型でリゾルブを実行する以外に，```make```メソッドを使用することも可能である．```make```メソッドの引数にクラスの名前空間を渡すことで，インスタンスがリゾルブされる．
+引数の型でリゾルブを実行する以外に，```make```メソッドも使用できる．```make```メソッドの引数にクラスの名前空間を渡すことで，インスタンスがリゾルブされる．
 
 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 

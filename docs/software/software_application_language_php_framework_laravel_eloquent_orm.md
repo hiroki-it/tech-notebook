@@ -290,9 +290,9 @@ class Foo extends Model
 }
 ```
 
-#### ▼ 変更可能/不可能なカラムの定義
+#### ▼ 変更できる/できないカラムの定義
 
-変更可能なカラム名を```fillable```プロパティを使用して定義する．カラムが増えるたびに，実装する必要がある．
+変更できるカラム名を```fillable```プロパティを使用して定義する．カラムが増えるたびに，実装する必要がある．
 
 **＊実装例＊**
 
@@ -316,7 +316,7 @@ class Foo extends Model
 }
 ```
 
-もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquentモデルで必須である．
+もしくは，変更できないカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquentモデルで必須である．
 
 ```php
 <?php
@@ -562,9 +562,9 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 | CRUDメソッドの種類 | 返却値型 |         返却値          | 返却値の説明 |
 | :----------------: | :------: | :---------------------: | :----------- |
-|       update       |   bool   | ```true```，```false``` | 結果の真偽値 |
-|        save        |   bool   | ```true```，```false``` | 結果の真偽値 |
-|       delete       |   bool   | ```true```，```false``` | 結果の真偽値 |
+|       update       |   bool   | ```true```，```false``` | 結果のbool値 |
+|        save        |   bool   | ```true```，```false``` | 結果のbool値 |
+|       delete       |   bool   | ```true```，```false``` | 結果のbool値 |
 
 <br>
 
@@ -625,7 +625,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
-    // 更新可能なカラム
+    // 更新できるカラム
     protected $fillable = [
         "name",
         "age",
@@ -1036,7 +1036,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
-    // 更新可能なカラム
+    // 更新できるカラム
     protected $fillable = [
         "name",
         "age",
@@ -1326,7 +1326,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
-    // 更新可能なカラム
+    // 更新できるカラム
     protected $fillable = [
         "name",
         "age",
@@ -1490,7 +1490,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
-    // 更新可能なカラム
+    // 更新できるカラム
     protected $fillable = [
         "name",
         "age",

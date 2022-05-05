@@ -264,7 +264,7 @@ workflows:
   my-workflow:
     jobs:
       - cat-file:
-          # workflowにて文字列型の値を設定
+          # workflowにてstring型の値を設定
           file: test.txt
 ```
 
@@ -302,7 +302,7 @@ workflows:
   build-test-deploy:
     jobs:
       - job_with_optional_custom_checkout:
-          # workflowにてbool型の値を設定
+          # workflowにてboolean型の値を設定
           custom_checkout: true
 ```
 
@@ -378,7 +378,7 @@ jobs:
     executor:
       name: python
       tag: "2.7"
-      # jobにて文字列型の値を設定
+      # jobにてstring型の値を設定
       myspecialvar: "myspecialvalue"
 ```
 
@@ -575,7 +575,7 @@ jobs:
 
 #### ▼ stepsとは
 
-処理をMap型で定義する．
+処理をmap型で定義する．
 
 #### ▼ when，unless
 

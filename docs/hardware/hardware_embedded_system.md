@@ -103,11 +103,11 @@ CPUとして，『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ Optical Character Reader
 
-  紙上の文字を文字データとして読み取る機器．
+紙上の文字を文字列として読み取る機器．
 
 #### ▼ Optical Mark Reader
 
-  マークシートの塗り潰し位置を読み取る機器．
+マークシートの塗り潰し位置を読み取る機器．
 
 ![ORM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ORM.png)
 

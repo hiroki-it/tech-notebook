@@ -76,7 +76,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 #### ▼ ログの収集
 
-（３）ログを収集できるように，LambdaのトリガーとしてCloudWatchログやS3を設定する．トリガーとして設定せずに，自動で収集することも可能であるが，自動認識されるログの種類が少ないので，手動で設定した方が良い．
+（３）ログを収集できるように，LambdaのトリガーとしてCloudWatchログやS3を設定する．トリガーとして設定せずに，自動でも収集できるが，自動認識されるログの種類が少ないので，手動で設定した方が良い．
 
 参考：https://docs.datadoghq.com/logs/guide/send-aws-services-logs-with-the-datadog-lambda-function/?tab=awsconsole#automatically-set-up-triggers
 

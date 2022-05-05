@@ -217,13 +217,25 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ## 06. 補助記憶装置
 
-### 物理ドライブ
+### 物理ディスク
+
+物理的な補助記憶装置のこと．単に『ディスク』ともいう．
+
+参考：
+
+- https://jisaku-pc.net/hddnavi/disk_drive.html
+- https://pctrouble.net/storage/disk_drive.html
 
 <br>
 
 ### 仮想ドライブ
 
-物理ドライブ上にドライブを仮想的に構築する．Google Driveのストリーミング機能では，仮想ドライブをローカルマシン上に作成する．仮想ドライブ上のファイルを変更すると，Google Driveにその状態が同期される．
+物理ディスク上に構築される仮想的な補助記憶装置のこと．単に『ドライブ』ともいう．Google Driveのストリーミング機能では，仮想ドライブをローカルマシン上に作成する．仮想ドライブ上のファイルを変更すると，Google Driveにその状態が同期される．
+
+参考：
+
+- https://jisaku-pc.net/hddnavi/disk_drive.html
+- https://pctrouble.net/storage/disk_drive.html
 
 <br>
 
@@ -247,21 +259,23 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 #### ▼ RAIDとは
 
-複数のHDDを仮想的に1つのHDDであるかのようにして，データを管理する技術．
+複数の物理的なHDDを仮想的に統合し，1つのHDDであるかのように見せかける．
 
-#### ▼ RAID0（Striping）
-
-  データを，複数のHDDに分割して書き込む．
-
-#### ▼ RAID1（Mirroring）
-
-  データを，複数のHDDに同じように書き込む．
-
-#### ▼ RAID5（Striping with parity）
-
-  データとパリティ（誤り訂正符号）を，3つ以上のHDDに書き込む．
+参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RAIDの種類.png)
+
+#### ▼ RAID0
+
+  データを複数のHDDに振り分けて書き込む．
+
+#### ▼ RAID1
+
+  データを複数のHDDに複製して書き込む．
+
+#### ▼ RAID5
+
+  データとパリティ（誤り訂正符号）を3つ以上のHDDに書き込む．
 
 <br>
 

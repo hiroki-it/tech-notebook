@@ -31,7 +31,7 @@ API Gatewayのインポートに当たり，OpenAPIのYAMLファイルにキー�
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
-各種パラメーターのマッピングも可能である．メソッドリクエストから統合リクエストへのマッピングについては，以下のリンクを参考にせよ．
+各種パラメーターもマッピングできる．メソッドリクエストから統合リクエストへのマッピングについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
 
