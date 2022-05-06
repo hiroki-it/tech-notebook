@@ -112,7 +112,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
 [
   {
     "name": "foo",
-    "image": "<イメージリポジトリURL>:<バージョンタグ>",
+    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
     "logConfiguration": {
       # FluentBitの設定はconfファイルで行うため，optionsキーは何も設定しない．
@@ -122,7 +122,7 @@ ECSのコンテナ定義にて，アプリケーションコンテナとlog_rout
   {
     # log_router以外の名前を設定できない
     "name": "log_router",
-    "image": "<イメージリポジトリURL>:<バージョンタグ>",
+    "image": "<イメージリポジトリURL>:<バージョンタグ>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
     "logConfiguration": {
       "logDriver": "awslogs",

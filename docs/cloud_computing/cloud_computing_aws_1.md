@@ -1758,7 +1758,7 @@ artifacts:
 ```bash
 [
   {
-    "imageUri": "<イメージリポジトリURL>",
+    "imageUri": "<イメージリポジトリURL>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "name": "<コンテナ名>"
   }
 ]
@@ -3624,9 +3624,4 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
       "elements": [
         {
           "type": "mrkdwn",
-          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソール画面はこちら*>"
-        }
-      ]
-    },
-    {
-      "type": "divider
+          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソー

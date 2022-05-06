@@ -286,7 +286,7 @@ provider:
   ecr:
     images:
       base:
-        uri: <イメージリポジトリURL>@<バージョンタグ>
+        uri: <イメージリポジトリURL>@<バージョンタグ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
 ```
 
 <br>
