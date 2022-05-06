@@ -39,11 +39,12 @@ description: クラウドコンピューティングの知見をまとめまし�
 - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
 - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
 
-|      | 説明                                                         | AWS                   | GCP                                                          | Azure                     |
+|      | ユーザーの管理領域                                           | AWS                   | GCP                                                          | Azure                     |
 | ---- | ------------------------------------------------------------ | --------------------- | ------------------------------------------------------------ | ------------------------- |
-| IaaS | データ，リクエストリプライ方式のアプリケーション，実行環境（ランタイム），コンテナ，OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
-| CaaS | データ，リクエストリプライ方式のアプリケーション，実行環境（ランタイム），コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
-| PaaS | データ，リクエストリプライ方式のアプリケーション             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
-| FaaS | データ，イベントドリブン方式の関数プログラム                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
-| SaaS | データ                                                       |                       | Google Apps（Google Map，Google Cloud，Google Calender など） |                           |
+| IaaS | リクエストリプライ方式のアプリケーション，データ，ランタイム，ミドルウェア，コンテナ，OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
+| CaaS | リクエストリプライ方式のアプリケーション，データ，ランタイム，ミドルウェア，コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
+| PaaS | リクエストリプライ方式のアプリケーション，データ             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
+| FaaS | イベントドリブン方式の関数プログラム，データ                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
+| SaaS | なし                                                         |                       | Google Apps（Google Map，Google Cloud，Google Calender など） |                           |
 
+<br>
