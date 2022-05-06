@@ -155,7 +155,7 @@ nav:
                   - RESTful-API: software/software_application_collaboration_api_restful.md
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
           - ■ 言語:
-              - 言語: software/software_application_language.md
+              - 言語の種類: software/software_application_language_type.md
               - 言語別の処理方式: software/software_application_language_process_mode.md
               - ■ PHP:
                   - PHP: software/software_application_language_php.md
