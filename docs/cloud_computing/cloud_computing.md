@@ -25,55 +25,25 @@ description: クラウドコンピューティングの知見をまとめまし�
 
 インターネットを経由して，ベンダーのサーバーに自身のデータを保存し，利用すること．ベンダーが，システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって，サービスの名称が異なる．
 
-![on-premises_hosting_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_hosting_iaas_caas_paas_faas_saas.png)
+参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
+
+![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_iaas_caas_paas_faas_saas.png)
 
 <br>
 
-## 02. オンプレミス
+## 02. クラウドコンピューティングの種類
 
-<br>
+参考：
 
-## 03. クラウドコンピューティング
+- https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
+- https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
+- https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
 
-### IaaS：Infrastructure as a Service
+|      | 説明                                                         | AWS                   | GCP                                                          | Azure                     |
+| ---- | ------------------------------------------------------------ | --------------------- | ------------------------------------------------------------ | ------------------------- |
+| IaaS | データ，リクエストリプライ方式のアプリケーション，実行環境（ランタイム），コンテナ，OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
+| CaaS | データ，リクエストリプライ方式のアプリケーション，実行環境（ランタイム），コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
+| PaaS | データ，リクエストリプライ方式のアプリケーション             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
+| FaaS | データ，イベントドリブン方式の関数プログラム                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
+| SaaS | データ                                                       |                       | Google Apps（Google Map，Google Cloud，Google Calender など） |                           |
 
-**＊例＊**
-
-| アプリケーション名    | 提供      |
-| --------------------- | --------- |
-| Amazon Web Service    | Amazon    |
-| Google Cloud Platform | Google    |
-| Microsoft Azure       | Microsoft |
-| IBM Cloud             | IBM       |
-
-<br>
-
-### PaaS：Platform as a Service
-
-**＊例＊**
-
-| アプリケーション名 | 提供      |
-| ------------------ | --------- |
-| Google App Engine  | Google    |
-| Windows Azure      | Microsoft |
-| GitHub Pages       | GitHub    |
-
-<br>
-
-### FaaS：Platform as a Service
-
-ユーザー側は関数プログラムの実装のみを行い，それ以外はベンダー側に管理してもらうサービスのこと．
-
-**＊例＊**
-
-Lambda
-
-<br>
-
-### SaaS：Software as a Service
-
-従来はパッケージとして提供していたアプリケーションを，Webアプリケーションとして提供するサービスのこと．
-
-**＊例＊**
-
-Google Apps（Google Map，Google Cloud，Google Calender など）
