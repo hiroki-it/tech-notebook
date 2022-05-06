@@ -226,15 +226,15 @@ OS上のコマンド処理で展開できる変数を定義できる．
 
 参考：https://docs.docker.com/engine/reference/builder/#from
 
-#### ▼ リポジトリの指定
+#### ▼ イメージレジストリの指定
 
-指定できるイメージリポジトリの例と記法は以下の通りである．
+指定できるイメージレジストリの例と記法は以下の通りである．
 
-| リポジトリ                       | 例                                                           | 補足                                                         |
-| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| DockerHub                        | ```php:8.0-fpm```                                            | https://hub.docker.com/_/php                                 |
-| クラウドプロバイダー（パブリック）   | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest``` | https://gallery.ecr.aws/bitnami/php-fpm                      |
-| クラウドプロバイダー（プライベート） | ECRプライベートリポジトリの場合：<br>```*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:*****``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
+| レジストリの種類           | 例                                                           | 補足                                                         |
+|--------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| DockerHub          | ```php:8.0-fpm```                                            | https://hub.docker.com/_/php                                 |
+| クラウドプロバイダー（パブリック）  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest``` | https://gallery.ecr.aws/bitnami/php-fpm                      |
+| クラウドプロバイダー（プライベート） | ECRプライベートレジストリの場合：<br>```*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:*****``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
 
 <br>
 

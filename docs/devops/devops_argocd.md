@@ -100,6 +100,10 @@ ArgoCDは，ArgoCD自身のマニフェストファイルに変更も同期で�
 
 <br>
 
+### チャートリポジトリ起点
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール
@@ -329,13 +333,52 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ repositoryとは
 
-監視対象のマニフェストリポジトリやチャートリポジトリの認証情報を設定する．
+監視対象のマニフェストリポジトリ，チャートレジストリ，OCIレジストリの認証情報を設定する．
 
 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
 
-#### ▼ チャートリポジトリの場合
+#### ▼ マニフェストリポジトリの場合
 
-チャートリポジトリの認証情報を設定する．
+マニフェストリポジトリの認証情報を設定する．マニフェストレジストリごとに，別々のSecretで認証情報を設定する必要がある．ただし，1つのチャートレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
+
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-argocd-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-argocd-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する．
+  sshPrivateKey: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する．
+  sshPrivateKey: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
+
+#### ▼ チャートレジストリの場合
+
+チャートレジストリの認証情報を設定する．チャートレジストリごとに，別々のSecretで認証情報を設定する必要がある．ただし，1つのチャートレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
 
 参考：
 
@@ -347,20 +390,34 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: argocd-foo-secret
+  name: foo-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-argocd-repository # チャートリポジトリ
-  url: <チャートリポジトリURL>
+  name: foo-argocd-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-argocd
   type: helm
   username: foo
   password: bar
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-istio
+  type: helm
+  username: baz
+  password: qux
 ```
 
-#### ▼ OCIリポジトリの場合
+#### ▼ OCIレジストリの場合
 
-OCIリポジトリの認証情報を設定する．OCIプロトコルの有効化（```enableOCI```キー）が必要であるが，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，プロトコルの設定は不要である．
+OCIレジストリの認証情報を設定する．OCIプロトコルの有効化（```enableOCI```キー）が必要であるが，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，プロトコルの設定は不要である．チャートレジストリと同様にして，OCIレジストリごとに別々のSecretで認証情報を設定する必要がある．ただし，1つのOCIレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
 
 参考：
 
@@ -373,33 +430,30 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: argocd-foo-secret
+  name: foo-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-repository
-  url: <OCIリポジトリ名> # OCIプロトコルは不要である．
+  name: foo-argocd-oci-registry
+  url: <OCIレジストリ名> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: foo
   password: bar
   enableOCI: "true"
-```
-
-```yaml
-# AWSの場合
+---
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: argocd-foo-secret
+  name: foo-istio-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-argocd-repository
-  url:  <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-argocd-repository
+  name: foo-istio-oci-registry # 任意のOCIレジストリ名
+  url: <OCIレジストリ名> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
-  username: foo
-  password: bar
+  username: baz
+  password: qux
   enableOCI: "true"
 ```
 
@@ -447,15 +501,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ，チャートリポジトリ，の変更を監視し，これらからプルしたマニフェストファイルをデプロイする．
+マニフェストリポジトリ，チャートレジストリ，の変更を監視し，これらからプルしたマニフェストファイルをデプロイする．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-| リポジトリの種類                          | 管理方法                     | マニフェストファイルのデプロイ方法                           |
-| ----------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
-| マニフェストリポジトリ（GitHub）          | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする．                               |
-| チャートリポジトリ（ArtifactHub，GitHub） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
-| OCIリポジトリ（ECR）                      | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
+| リポジトリの種類                                   | 管理方法                     | マニフェストファイルのデプロイ方法                           |
+|--------------------------------------------| ---------------------------- | ------------------------------------------------------------ |
+| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする．                               |
+| チャートレジストリ（ArtifactHub，GitHub，GitHub Pages） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
+| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
 
 <br>
 
@@ -540,11 +594,11 @@ spec:
 
 <br>
 
-### source（チャートリポジトリ）
+### source（チャートレジストリの場合）
 
 #### ▼ chart
 
-ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャート名を設定する．
+ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャート名を設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -588,7 +642,7 @@ spec:
 
 #### ▼ repoURL
 
-ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャートリポジトリのURLを設定する．
+ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャートリポジトリのURLを設定する．
 
 参考：
 
@@ -608,7 +662,7 @@ spec:
 
 #### ▼ targetRevision
 
-ArgoCDのApplicationのチャートがチャートリポジトリで管理されている場合に，チャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
+ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -625,19 +679,19 @@ spec:
 
 <br>
 
-### source（OCIリポジトリの場合）
+### source（OCIレジストリの場合）
 
 #### ▼ chart
 
-チャートリポジトリと同じ．
+チャートレジストリと同じ．
 
 #### ▼ helm
 
-チャートリポジトリと同じ．
+チャートレジストリと同じ．
 
 #### ▼ repoURL
 
-ArgoCDのApplicationのチャートがOCIリポジトリで管理されている場合に，OCIリポジトリのURLを設定する．
+ArgoCDのApplicationのチャートが，OCIレジストリ内のリポジトリで管理されている場合に，OCIリポジトリのURLを設定する．
 
 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
@@ -654,7 +708,7 @@ spec:
 
 #### ▼ targetRevision
 
-ArgoCDのApplicationのチャートがOCIリポジトリで管理されている場合に，チャートのバージョンタグを設定する．
+ArgoCDのApplicationのチャートが，OCIレジストリ内のチャートリポジトリで管理されている場合に，チャートのバージョンタグを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

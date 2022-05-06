@@ -282,7 +282,7 @@ return [
 
 #### ▼ 複数のエンドポイント
 
-複数のエンドポイントがある場合，書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする．例えばRDSを使用している場合，プライマリーインスタンスに向け，また読み出し処理をリードレプリカに向けることにより，負荷を分散できる．この場合，環境変数に二つのインスタンスのホストを実装する必要がある．
+複数のエンドポイントがある場合，書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする．例えばRDSを使用している場合，プライマリーインスタンスに向け，また読み出し処理をリードレプリカに向けることにより，負荷を分散できる．この場合，環境変数に2つのインスタンスのホストを実装する必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
@@ -4460,7 +4460,7 @@ class FoosServiceProvider extends ServiceProvider
     }
     
     /**
-    * 二つ目のクラスをバインド
+    * 2つ目のクラスをバインド
     */    
     private function registerBar()
     {
@@ -4470,7 +4470,7 @@ class FoosServiceProvider extends ServiceProvider
     }
     
     /**
-    * 三つ目のクラスをバインド
+    * 3つ目のクラスをバインド
     */
     private function registerBaz()
     {

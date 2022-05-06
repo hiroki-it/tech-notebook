@@ -53,7 +53,7 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 $ git config --local --list
 ```
 
-Macでは，1つのマシンで二つのGutHubアカウントを使用する場合，キーチェーンという機能で設定が必要になる．
+Macでは，1つのマシンで2つのGutHubアカウントを使用する場合，キーチェーンという機能で設定が必要になる．
 
 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 

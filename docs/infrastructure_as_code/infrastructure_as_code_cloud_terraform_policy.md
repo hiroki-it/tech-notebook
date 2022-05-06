@@ -71,7 +71,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 アプリケーションとは異なるリポジトリにて，tfファイルを配置する．推奨である．
 
 ```bash
-project_directory/
+repository/
 ├── foo.tf
 ...
 ```
@@ -587,7 +587,7 @@ output "alb_dns_name" {
 
 **＊実装例＊**
 
-ルール通りに名付けると，『```laravel_ecr_repository_repository_url```』というoutput名になってしまう．repositoryが二回繰り返されることになるため，一つ省略している．
+ルール通りに名付けると，『```laravel_ecr_repository_repository_url```』というoutput名になってしまう．repositoryが二回繰り返されることになるため，1つ省略している．
 
 ```terraform
 ###############################################

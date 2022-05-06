@@ -353,7 +353,7 @@ static_resources:
 
 ### clustersとは
 
-インバウンド通信のルーティング先のマイクロサービスをグループ化する．対象が一つであっても，```clusters```キーは必須である．
+インバウンド通信のルーティング先のマイクロサービスをグループ化する．対象が1つであっても，```clusters```キーは必須である．
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 

@@ -447,7 +447,7 @@ document.getElementById("btn").addEventListener("click", () => {
 	console.log("イベントが発火しました（１）");
 }, false);
 
-// 二つ目
+// 2つ目
 document.getElementById("btn").addEventListener("click", () => {
 	console.log("イベントが発火しました（２）");
 }, false);

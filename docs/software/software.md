@@ -139,7 +139,7 @@ Google Drive，Dropbox
 
 #### ▼ UNIX系OS
 
-UNIXを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の三つに分けられる．
+UNIXを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の3つに分けられる．
 
 ※ちなみに，MacOSはBSD系統
 

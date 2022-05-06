@@ -215,7 +215,7 @@ $ helm package <チャートへのパス> -d <作成するチャートアーカ�
 
 #### ▼ pullとは
 
-指定したチャートリポジトリからチャートをチャートアーカイブ（```.tgz```形式）でプルする．チャートアーカイブは，チャートに解凍した上で使用した方がよい．
+指定したチャートレジストリ内のリポジトリからチャートをチャートアーカイブ（```.tgz```形式）でプルする．チャートアーカイブは，チャートに解凍した上で使用した方がよい．
 
 #### ▼ -d
 
@@ -265,11 +265,11 @@ $ helm push <チャートアーカイブへのパス> oci://<アカウントID>.
 
 #### ▼ registryとは
 
-チャートレジストリ内のチャートリポジトリを操作する．
+チャートレジストリ内のリポジトリを操作する．
 
 #### ▼ login
 
-チャートレジストリ内のチャートリポジトリにログインする．
+チャートレジストリ内のリポジトリにログインする．
 
 ```bash
 $ <チャートリポジトリのプロバイダーによる> | helm registry login \
@@ -358,8 +358,8 @@ $ helm repo remove <チャート名>
 ```bash
 $ helm search hub <キーワード>
 
-URL                   CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   1.0.0             1.0.0                            This is foo chart
-<イメージリポジトリURL>  <チャートバージョン>  <アプリケーションのリリースバージョン>  <説明文>
+URL               CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   1.0.0             1.0.0                            This is foo chart
+<OCIリポジトリURL>  <チャートバージョン>  <アプリケーションのリリースバージョン>  <説明文>
 ```
 
 <br>
