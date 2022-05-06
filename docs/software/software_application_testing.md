@@ -59,6 +59,16 @@ PHPUnit
 
 <br>
 
+## 01-02. ユニットテスト/機能テストの要素
+
+### 構成図
+
+各テストケース（テスト関数）はテストスイート（テストの組）から構成され，全てはテストプランでまとめられる．
+
+![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/test-plan_test-suite_test-case.jpg)
+
+<br>
+
 ## 02. テスト仕様書ベースのテスト
 
 ### テスト手順
