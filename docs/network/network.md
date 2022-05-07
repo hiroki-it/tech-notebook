@@ -255,3 +255,5 @@ $ nslookup example # 実際には，example.fooとなる
 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィックのグラフ.png)
+
+<br>

@@ -243,7 +243,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   project: default
   source:
@@ -348,12 +348,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-secret
+  name: foo-kubernetes-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-argocd-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-argocd-manifest.git
+  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
   type: git
   # SSHによる認証の場合は秘密鍵を設定する．
   sshPrivateKey: |
@@ -390,12 +390,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-secret
+  name: foo-kubernetes-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-argocd-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-argocd
+  name: foo-kubernetes-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-kubernetes
   type: helm
   username: foo
   password: bar
@@ -430,11 +430,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-secret
+  name: foo-kubernetes-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-argocd-oci-registry
+  name: foo-kubernetes-oci-registry
   url: <OCIレジストリ名> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: foo
@@ -490,7 +490,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   project: default
 ```
@@ -535,7 +535,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     path: ./kubernetes
@@ -552,7 +552,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     path: ./kubernetes
@@ -569,7 +569,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
@@ -586,7 +586,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     targetRevision: main
@@ -598,14 +598,16 @@ spec:
 
 #### ▼ chart
 
-ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャート名を設定する．
+監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する．
+
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     chart: <チャート名>
@@ -631,7 +633,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     helm:
@@ -642,7 +644,7 @@ spec:
 
 #### ▼ repoURL
 
-ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャートリポジトリのURLを設定する．
+監視対象のチャートレジストリ内のリポジトリのURLを設定する．
 
 参考：
 
@@ -654,7 +656,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     repoURL: <チャートリポジトリURL>
@@ -662,7 +664,7 @@ spec:
 
 #### ▼ targetRevision
 
-ArgoCDのApplicationのチャートが，チャートレジストリ内のリポジトリで管理されている場合に，チャートリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
+監視対象のチャートレジストリ内のリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -671,7 +673,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     targetRevision: main
@@ -691,7 +693,7 @@ spec:
 
 #### ▼ repoURL
 
-ArgoCDのApplicationのチャートが，OCIレジストリ内のリポジトリで管理されている場合に，OCIリポジトリのURLを設定する．
+監視対象のOCIレジストリ内のリポジトリのURLを設定する．
 
 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
@@ -700,7 +702,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     repoURL: <OCIリポジトリURL>
@@ -708,14 +710,14 @@ spec:
 
 #### ▼ targetRevision
 
-ArgoCDのApplicationのチャートが，OCIレジストリ内のチャートリポジトリで管理されている場合に，チャートのバージョンタグを設定する．
+監視対象のOCIレジストリ内のリポジトリのバージョンタグを設定する．
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   source:
     targetRevision: 1.0.0
@@ -740,7 +742,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   destination:
     namespace: foo
@@ -755,7 +757,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -791,7 +793,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   syncPolicy:
     automated:
@@ -821,7 +823,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: argocd-application
+  name: foo-application
 spec:
   syncPolicy:
     syncOptions:

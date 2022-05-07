@@ -101,8 +101,6 @@ title: 【知見を記録するサイト】目次
 
 ### 言語
 
-#### ▼ 言語プロセッサー
-
 * [📖：言語の種類](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_type.html)
 * [📖：︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
 
