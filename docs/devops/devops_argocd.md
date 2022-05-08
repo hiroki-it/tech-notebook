@@ -26,18 +26,6 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 - https://blog.vpantry.net/2021/01/cicd-2/
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
-- 
-
-<br>
-
-### 自己管理
-
-ArgoCDは，ArgoCD自身のマニフェストファイルに変更も同期できる．
-
-参考：
-
-- https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
-- https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
 
 <br>
 
@@ -469,11 +457,23 @@ AWS ECRのように認証情報に有効期限がある場合は，認証情報�
 
 ## 04. spec（Applicationの場合）
 
-### Application
+### Applicationとは
 
-Kubernetesのカスタムリソースから定義される．
+#### ▼ Kuberneresリソースの監視
+
+Kubernetesのカスタムリソースから定義される．監視対象のKubernetesリソースやカスタムリソースを設定する．
 
 参考：https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
+
+#### ▼ 自己監視
+
+Application自体もカスタムリソースなため，ApplicationがApplication自身のソースの変更を監視し，同期できる．
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
+- https://github.com/argoproj/argo-cd/discussions/7908
+- https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
 
 <br>
 
