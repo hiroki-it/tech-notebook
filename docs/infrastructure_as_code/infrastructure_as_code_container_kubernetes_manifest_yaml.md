@@ -215,7 +215,90 @@ data:
 
 <br>
 
-## 06-02. spec（Deploymentの場合）
+## 06-02. spec（CronJobの場合）
+
+### jobTemplate
+
+#### ▼ jobTemplateとは
+
+CronJobで定期実行するJobを設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "00 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: foo
+              image: alpine:latest
+              # 定期実行するコマンドを設定する．
+              command:
+                - /bin/sh
+                - -c
+                - echo Hello World
+          restartPolicy: OnFailure
+```
+
+<br>
+
+### failedJobsHistoryLimit
+
+#### ▼ failedJobsHistoryLimitとは
+
+実行に失敗したJobに関して，上限の履歴数を設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  failedJobsHistoryLimit: 2
+```
+
+<br>
+
+### schedule
+
+#### ▼ scheduleとは
+
+Cronのルールを設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "00 * * * *" # 一時間ごとに実行する．
+```
+
+<br>
+
+### successfulJobsHistoryLimit
+
+#### ▼ successfulJobsHistoryLimitとは
+
+実行に成功したJobに関して，上限の履歴数を設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  successfulJobsHistoryLimit: 2
+```
+
+<br>
+
+## 06-03. spec（Deploymentの場合）
 
 ### replicas
 
@@ -376,7 +459,7 @@ spec:
 
 <br>
 
-## 06-03. spec（Ingressの場合）
+## 06-04. spec（Ingressの場合）
 
 ### rules
 
@@ -413,11 +496,11 @@ spec:
 
 <br>
 
-## 06-04. spec（Namespaceの場合）
+## 06-05. spec（Namespaceの場合）
 
 <br>
 
-## 06-05. spec（PersistentVolumeの場合）
+## 06-06. spec（PersistentVolumeの場合）
 
 ### accessModes
 
@@ -773,7 +856,7 @@ spec:
 
 <br>
 
-## 06-06. spec（PersistentVolumeClaimの場合）
+## 06-07. spec（PersistentVolumeClaimの場合）
 
 ### accessModes
 
@@ -847,7 +930,7 @@ spec:
 
 <br>
 
-## 06-07. spec（Podの場合）
+## 06-08. spec（Podの場合）
 
 ### containers
 
@@ -1313,7 +1396,96 @@ spec:
 
 <br>
 
-## 06-08. spec（Secretの場合）
+## 06-09. spec（Role，ClusterRoleの場合）
+
+### rules
+
+#### ▼ rulesとは
+
+Kubernetesリソースの認可スコープを設定する．
+
+参考：https://cstoku.dev/posts/2018/k8sdojo-20/
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: foo-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+```
+
+<br>
+
+## 06-10. spec（RoleBinding，ClusterRoleBindingの場合）
+
+### roleRef
+
+#### ▼ roleRefとは
+
+RoleBindingを使用して紐づけるRoleの名前を設定する．
+
+参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: foo-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: foo-role
+```
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: foo-cluster-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: foo-cluster-role
+```
+
+<br>
+
+### subjects
+
+#### ▼ subjectsとは
+
+Roleの紐付け先のAccountを設定する．
+
+参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: foo-role-binding
+subjects:
+  - apiGroup: ""
+    kind: ServiceAccount
+    name: foo-service-account
+```
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: foo-cluster-role-binding
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: foo-group
+```
+
+<br>
+
+## 06-11. spec（Secretの場合）
 
 ### data
 
@@ -1499,7 +1671,7 @@ stringData:
 
 <br>
 
-## 06-09. spec（Serviceの場合）
+## 06-12. spec（Serviceの場合）
 
 ### ports
 
@@ -1746,7 +1918,7 @@ Serviceのタイプを設定する．
 
 <br>
 
-## 06-10. spec（ServiceAccountの場合）
+## 06-13. spec（ServiceAccountの場合）
 
 ### automountServiceAccountToken
 
@@ -1766,7 +1938,7 @@ automountServiceAccountToken: false
 
 <br>
 
-## 06-11. spec（ServiceEntryの場合）
+## 06-14. spec（ServiceEntryの場合）
 
 ### hosts
 
@@ -1826,7 +1998,7 @@ spec:
 
 <br>
 
-## 06-12. spec（StatefulSetの場合）
+## 06-15. spec（StatefulSetの場合）
 
 ### serviceName
 

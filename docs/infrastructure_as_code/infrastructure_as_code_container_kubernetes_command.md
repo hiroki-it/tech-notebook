@@ -255,9 +255,23 @@ secret/foo-secret created
 キー名と値からSecretを作成する．
 
 ```bash
-$ kubectl create secret generic foo-secret --from-literal=username="test" --from-literal=password="test"
+$ kubectl create secret generic foo-secret --from-literal=username="bar" --from-literal=password="baz"
 
 secret/foo-secret created
+```
+
+#### ▼ secret docker-registry
+
+イメージレジストリの認証情報をもつSecretを作成する．
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+
+```bash
+$ kubectl create secret docker-registry foo-secret \
+    --docker-server=http://bar.example.com \
+    --docker-username=bar \
+    --docker-password=baz \
+    --docker-email=http://baz.example.com
 ```
 
 <br>
@@ -529,9 +543,13 @@ $ kubectl rollout restart deployment -n kube-system
 
 #### ▼ patchとは
 
-JSON/YAML形式を入力値として，リソースの設定を変更する．
+JSON/YAML形式を入力値として，リソースの設定値を変更する．ただし，マニフェストファイルは変更されない．
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+
+#### ▼ pv
+
+PersistentVolumeの設定値を変更する．
 
 **＊例＊**
 

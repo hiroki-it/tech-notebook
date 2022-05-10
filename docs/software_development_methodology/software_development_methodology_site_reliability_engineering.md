@@ -190,17 +190,17 @@ esaなどのドキュメント作成ツールを使用すると，フィード�
 
 <br>
 
-## 03. SREに必要な技術
+## 03. その他情報収集
 
-### Wantedly
+### 企業
+
+#### ▼ Wantedly
 
 SREチームのValueから，SREに必要な技術がわかる．
 
 参考：[https://gist.github.com/south37/85d97e02d7816a31053971d63c164880](https://gist.github.com/south37/85d97e02d7816a31053971d63c164880)
 
-<br>
-
-### 3-shake，Topotal
+#### ▼ 3-shake，Topotal
 
 提供しているサービスから，SREに必要な技術がわかる．
 
@@ -210,3 +210,10 @@ SREチームのValueから，SREに必要な技術がわかる．
 - https://topotal.com/services/sre-as-a-service
 
 <br>
+
+### ニュース
+
+#### ▼ SREウィークリー
+
+参考：https://sreweekly.com/about-sre-weekly-2/
+
