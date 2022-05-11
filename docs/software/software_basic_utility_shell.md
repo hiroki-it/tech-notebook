@@ -25,11 +25,77 @@ description: シェル＠ユーティリティの知見をまとめました．
 
 <br>
 
-### シェルの系譜
+### 起動方法の種類
+
+#### ▼ ログインシェル
+
+認証情報を必要とする．
+
+参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+
+```bash
+$ su - <ユーザー名>
+```
+
+```bash
+$ bash --login
+```
+
+```bash
+$ ssh
+```
+
+#### ▼ インタラクティブシェル
+
+認証情報を必要としない．
+
+参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+
+```bash
+$ su <ユーザー名>
+```
+
+```bash
+$ bash
+```
+
+<br>
+
+### シェルの種類
+
+#### ▼ 系譜
 
 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
+
+#### ▼ 設定ファイル
+
+シェルを起動するとき、各種設定ファイルが読み込まれる．
+
+参考：
+
+- https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+- https://leico.github.io/TechnicalNote/Mac/catalina-zsh
+- https://suwaru.tokyo/zshenv/
+
+| bashの場合                    | zshの場合                 | 読み込まれるタイミング                                       |
+| ----------------------------- | ------------------------- | ------------------------------------------------------------ |
+| なし                          | ```~/.zshenv```ファイル   | ・ログインシェル，インタラクティブシェルの起動時             |
+| ```~/.bash_profile```ファイル | ```~/.zprofile```ファイル | ログインシェルの起動時                                       |
+| ```~/.bashrc```ファイル       | ```~/.zshrc```ファイル    | ログインシェルの起動時．ただし，zshではインタラクティブシェルの起動時も含む． |
+| ```~/.bash_login```ファイル   | ```~/.zlogin```ファイル   | ログインシェルの起動時．profileファイルと機能が重複するため，あまり使用しない． |
+| ```~/.bash_logout```ファイル  | ```~/.zlogout```ファイル  | ```exit```コマンド時                                         |
+
+#### ▼ 確認方法
+
+現在使用しているシェルを確認する．
+
+```bash
+$ echo $SHELL
+
+/bin/zsh
+```
 
 <br>
 
@@ -78,6 +144,7 @@ echo ${FOO}
 $ export FOO=foo # 環境変数を定義する．
 
 $ bash foo.sh
+
 foo # 出力される
 ```
 
@@ -96,8 +163,6 @@ $ apk add bash
 ```
 
 <br>
-
-
 
 ## 03. 入力と出力
 

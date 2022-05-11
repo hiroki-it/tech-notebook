@@ -531,7 +531,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 #### ▼ DNS Cache Poisoningとは
 
-キャッシュDNSサーバーがもつIPアドレスを偽のIPアドレスに変え，偽のサイトに強制的にアクセスさせる手法．
+キャッシュDNSサーバーが持つIPアドレスを偽のIPアドレスに変え，偽のサイトに強制的にアクセスさせる手法．
 
 ![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DNSキャッシュポイズニング.gif)
 

@@ -225,6 +225,20 @@ Pod数を維持管理するReplicaSetを作成する．Podを削除するため�
 $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 ```
 
+#### ▼ secret docker-registry
+
+イメージレジストリの認証情報を持つSecretを作成する．
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+
+```bash
+$ kubectl create secret docker-registry foo-secret \
+    --docker-server=http://bar.example.com \
+    --docker-username=bar \
+    --docker-password=baz \
+    --docker-email=http://baz.example.com
+```
+
 #### ▼ secret generic
 
 Secretを作成する．
@@ -260,18 +274,14 @@ $ kubectl create secret generic foo-secret --from-literal=username="bar" --from-
 secret/foo-secret created
 ```
 
-#### ▼ secret docker-registry
+#### ▼ secret tls
 
-イメージレジストリの認証情報をもつSecretを作成する．
+SSL証明書を持つSecretを作成する．
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 ```bash
-$ kubectl create secret docker-registry foo-secret \
-    --docker-server=http://bar.example.com \
-    --docker-username=bar \
-    --docker-password=baz \
-    --docker-email=http://baz.example.com
+$ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 ```
 
 <br>
