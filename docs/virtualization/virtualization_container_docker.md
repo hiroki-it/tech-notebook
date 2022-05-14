@@ -133,9 +133,34 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ▼ マウント元として指定できるディレクトリ
 
-以下の通り，ホスト側のマウント元のディレクトリにはいくつか選択肢がある．
+以下の通り，ホスト側のマウント元のディレクトリにはいくつか選択肢がある．Docker for Desktopの設定画面で変更する．
 
 ![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mount_host-directory.png)
+
+マウント元の詳細なディレクトリ名は，```/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json```ファイルから確認できる．
+
+```bash
+$ cat settings.json
+
+{
+
+  # 〜 中略 〜
+
+  "dataFolder": "/Users/<ユーザー名>/Library/Containers/com.docker.docker/Data/vms/0/data",
+  
+  # 〜 中略 〜
+  
+  "filesharingDirectories": [
+      "/tmp",
+      "/Users",
+      "/Volumes",
+      "/private"
+  ],
+
+  # 〜 中略 〜
+
+}
+```
 
 <br>
 

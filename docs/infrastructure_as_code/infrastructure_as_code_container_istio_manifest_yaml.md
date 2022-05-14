@@ -15,7 +15,7 @@ description: manifest.yaml＠Istioの知見をまとめました．
 
 ## 01. Istioのmanifest.yamlとは
 
-### IaCとして
+### 仮想化のIaCとして
 
 #### ▼ Istio
 

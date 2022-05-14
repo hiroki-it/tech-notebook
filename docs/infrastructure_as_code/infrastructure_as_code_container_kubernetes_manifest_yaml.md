@@ -15,7 +15,7 @@ description: manifest.yaml＠Kubernetesの知見をまとめました．
 
 ## 01. Kubernetesのmanifest.yamlとは
 
-### IaCとして
+### 仮想化のIaCとして
 
 #### ▼ Kubernetes
 
@@ -156,7 +156,234 @@ rules:
 
 <br>
 
-## 06. spec（Configmapの場合）
+## 06. spec（Configの場合）
+
+### clusters
+
+#### ▼ clustersとは
+
+kubectlコマンドの向き先となるクラスターを設定する．
+
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
+#### ▼ name
+
+クラスター名を設定する．
+
+```yaml
+apiVersion: v1
+kind: Config
+clusters:
+  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+    
+    # 〜 中略 〜
+  
+  - name: docker-desktop
+  
+    # 〜 中略 〜  
+  
+  - name: minikube
+  
+    # 〜 中略 〜  
+```
+
+#### ▼ cluster
+
+kub-apiserverの接続先情報を設定する．
+
+```yaml
+apiVersion: v1
+kind: Config
+clusters:
+  - cluster:
+      certificate-authority-data: LS0tLS1 ...
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+      
+    # 〜 中略 〜  
+    
+  - cluster:
+      certificate-authority-data: LS0tLS1 ...
+      server: https://kubernetes.docker.internal:6443
+      
+    # 〜 中略 〜  
+    
+  - cluster:
+      certificate-authority: /Users/hiroki-hasegawa/.minikube/ca.crt
+      extensions:
+        - extension:
+            last-update: Fri, 13 May 2022 16:58:59 JST
+            provider: minikube.sigs.k8s.io
+            version: v1.25.2
+          name: cluster_info
+      server: https://127.0.0.1:52192
+      
+    # 〜 中略 〜  
+```
+
+<br>
+
+### contexts
+
+#### ▼ contextsとは
+
+kubectlコマンドの向き先の候補を設定する．
+
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
+#### ▼ name
+
+向き先の名前を設定する．
+
+```yaml
+apiVersion: v1
+kind: Config
+contexts:
+  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+  
+    # 〜 中略 〜
+  
+  - name: docker-desktop
+  
+    # 〜 中略 〜
+  
+  - name: minikube
+  
+    # 〜 中略 〜 
+```
+
+#### ▼ context
+
+実際に使用するクラスター名とユーザー名を，```clusters```キーと```users```キーから選んで設定する．
+
+```yaml
+apiVersion: v1
+kind: Config
+contexts:
+  - context:
+      cluster: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+      user: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+      
+    # 〜 中略 〜  
+    
+  - context:
+      cluster: docker-desktop
+      user: docker-desktop
+      
+    # 〜 中略 〜  
+    
+  - context:
+      cluster: minikube
+      extensions:
+        - extension:
+            last-update: Fri, 13 May 2022 16:58:59 JST
+            provider: minikube.sigs.k8s.io
+            version: v1.25.2
+          name: context_info
+      namespace: default
+      user: minikube
+      
+    # 〜 中略 〜  
+```
+
+<br>
+
+### current-context
+
+#### ▼ current-contextとは
+
+kubectlコマンドの現在の向き先の名前を設定する．
+
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
+```yaml
+apiVersion: v1
+kind: Config
+current-context: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+```
+
+<br>
+
+### preferences
+
+#### ▼ preferencesとは
+
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
+```yaml
+apiVersion: v1
+kind: Config
+preferences: {}
+```
+
+<br>
+
+### users
+
+#### ▼ usersとは
+
+kubctlコマンドのクライアントの認証情報を設定する．
+
+参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
+
+#### ▼ name
+
+ユーザー名を設定する．
+
+```yaml
+
+apiVersion: v1
+kind: Config
+users:
+  - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
+  
+    # 〜 中略 〜
+    
+  - name: docker-desktop
+  
+    # 〜 中略 〜
+  
+  - name: minikube
+```
+
+#### ▼ user
+
+ユーザーの認証情報を設定する．AWS EKSのように，認証情報を動的に取得するようにしても良い．
+
+```yaml
+
+apiVersion: v1
+kind: Config
+users:
+  - user:
+      exec:
+        apiVersion: client.authentication.k8s.io/v1alpha1
+        args:
+          - --region
+          - ap-northeast-1
+          - eks
+          - get-token
+          - --cluster-name
+          - prd-foo-eks-cluster
+        command: aws
+        
+    # 〜 中略 〜  
+    
+  - user:
+      client-certificate-data: LS0tLS1 ...
+      client-key-data: LS0tLS1 ...
+      
+    # 〜 中略 〜  
+      
+  - user:
+      client-certificate: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.crt
+      client-key: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.key
+      
+    # 〜 中略 〜  
+```
+
+<br>
+
+## 06. spec（ConfigMapの場合）
 
 ### data
 
@@ -2146,6 +2373,10 @@ spec:
       spec:
         storageClassName: standard
         accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
 ```
 
 <br>

@@ -573,6 +573,26 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 - https://kubernetes.io/docs/concepts/storage/volumes/#local
 - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
 
+#### ▼ CSI Volume
+
+CSIの仕様によって標準化された外部ボリューム．プロバイダー上に新しく作成したストレージ領域をボリュームとし，これをコンテナにバインドマウントする．
+
+参考：https://thinkit.co.jp/article/17635
+
+CSI Volumeを使用するためには，プロバイダーが提供するCSIドライバーを，Kubernetes上にインストールする必要がある．
+
+参考：
+
+- https://github.com/aws/secrets-store-csi-driver-provider-aws#installation
+- https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/install-csi-driver?hl=ja
+
+```bash
+# AWSのCSIドライバーの場合
+$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+
+$ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
+```
+
 <br>
 
 ### Role，ClusterRole

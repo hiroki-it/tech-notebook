@@ -388,7 +388,7 @@ $ helm show chart <チャート名>
 apiVersion: v2
 appVersion: 1.0.0
 maintainers:
-- name: hiroki hasegawa
+  - name: hiroki hasegawa
 name: foo-chart
 type: application
 version: 1.0.0
@@ -462,8 +462,8 @@ NAME: <リリース名>
 LAST DEPLOYED: Sat Jan 1 12:00:00 2022
 NAMESPACE: default
 STATUS: deployed
-
-# 〜中略 〜
+REVISION: 3 # <---- リビジョン番号が増えていく
+TEST SUITE: None
 ```
 
 <br>

@@ -149,7 +149,7 @@ AWSリソースに関する認可のスコープを定義する．各アクシ�
 
 以下のインラインポリシーがアタッチされたロールを持つAWSリソースは，任意のSSMパラメーターを取得できるようになる．
 
-```yaml
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -400,7 +400,7 @@ AWS CLIでクラウドインフラを操作するためには，```credentials``
 ```bash
 $ aws configure set aws_access_key_id "<アクセスキー>"
 $ aws configure set aws_secret_access_key "<シークレットキー>"
-$ aws configure set aws_default_region "ap-northeast-1"
+$ aws configure set aws_default_region "リージョン>"
 ```
 
 ```bash
@@ -452,7 +452,7 @@ IAMグループに対して，IAMロールを紐付ける．そのIAMグルー�
 
 <br>
 
-### AWS CLI
+### CLI
 
 #### ▼ CLIの社内アクセス制限
 
@@ -513,7 +513,7 @@ $ aws iam update-user \
 
 ### Kinesis Data Firehoseとは
 
-リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する．転送時にLambda関数を使用することにより，収集したデータを加工できる．
+リアルタイムなストリーミングデータ（動画データ，音声データ，など）を継続的に収集し，保管/可視化/分析/レポート作成/アラートが可能な外部サービスやAWSリソースに転送する．転送時にLambda関数を使用することにより，収集したデータを加工できる．
 
 参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html
 
