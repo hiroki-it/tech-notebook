@@ -176,13 +176,13 @@ Kubernetes上での実際のセットアップ方法については，以下の�
 
 #### ▼ Distributed logging（分散ロギング）
 
-マイクロサービスアーキテクチャの各サービスから収集されたログを，バラバラに分析/管理する方法のこと．
+マイクロサービスアーキテクチャの各サービスから収集されたログを，バラバラに分析/管理する．
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging（集中ロギング）
 
-マイクロサービスアーキテクチャの各サービスから収集されたログを，一元的に分析/管理する方法のこと．
+マイクロサービスアーキテクチャの各サービスから収集されたログを，一元的に分析/管理する．
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
 

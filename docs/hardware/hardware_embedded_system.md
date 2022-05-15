@@ -220,13 +220,13 @@ dpiが大きくなるにつれて，解像度は大きくなる．
 
 #### ▼ IDE（Integrated Drive Electronics）
 
-ハードディスクとの接続に使用されるインターフェイス．
+ストレージとの接続に使用されるインターフェイス．
 
 ![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ideインターフェイス.jpg)
 
 #### ▼ SCSI（Small Computer System Interface）
 
-ハードディスク，CD-ROM，イメージスキャナなど，様々な周辺機器をデイジーチェーンするために使用するインターフェイス．
+ストレージ，CD-ROM，イメージスキャナなど，様々な周辺機器をデイジーチェーンするために使用するインターフェイス．
 
 ![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsiインターフェイス.jpg)
 

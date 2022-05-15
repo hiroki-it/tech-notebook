@@ -215,22 +215,31 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ![ディスクキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ディスクキャッシュ.gif)
 
-## 06. 補助記憶装置
+## 06. ストレージ
+
+### ストレージとは
+
+データを永続化できる不揮発的な記憶装置のこと．
+
+参考：https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
+
+<br>
 
 ### 物理ディスク
 
-物理的な補助記憶装置のこと．単に『ディスク』ともいう．
+物理的なストレージのこと．HDDとSSDがある．単に『ディスク』ともいう．
 
 参考：
 
 - https://jisaku-pc.net/hddnavi/disk_drive.html
 - https://pctrouble.net/storage/disk_drive.html
+- https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
 
 <br>
 
 ### 仮想ドライブ
 
-物理ディスク上に構築される仮想的な補助記憶装置のこと．単に『ドライブ』ともいう．Google Driveのストリーミング機能では，仮想ドライブをローカルマシン上に作成する．仮想ドライブ上のファイルを変更すると，Google Driveにその状態が同期される．
+物理ディスク上に構築される仮想的なストレージのこと．単に『ドライブ』ともいう．Google Driveのストリーミング機能では，仮想ドライブをローカルマシン上に作成する．仮想ドライブ上のファイルを変更すると，Google Driveにその状態が同期される．
 
 参考：
 
@@ -239,13 +248,11 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 <br>
 
-## 06-02. SSD
+## 06-02. 物理ディスク
 
-<br>
+### HDD：Hard Disk Drive
 
-## 06-03. HDD：Hard Disk Drive
-
-### デフラグメンテーション
+#### ▼ デフラグメンテーション
 
 断片化されたデータ領域を整理整頓する．
 
@@ -253,29 +260,23 @@ Javaでは，JVM：Java Virtual Machine（Java仮想マシン）が，メモリ�
 
 ![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-2.png)
 
-<br>
-
-### RAID：Redundant Arrays of Inexpensive Disks
-
-#### ▼ RAIDとは
+#### ▼ RAID：Redundant Arrays of Inexpensive Disks
 
 複数の物理的なHDDを仮想的に統合し，1つのHDDであるかのように見せかける．
 
 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
+| 種類  | 説明                                                       |
+| ----- | :--------------------------------------------------------- |
+| RAID0 | データを複数のHDDに振り分けて書き込む．                    |
+| RAID1 | データを複数のHDDに複製して書き込む．                      |
+| RAID5 | データとパリティ（誤り訂正符号）を3つ以上のHDDに書き込む． |
+
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RAIDの種類.png)
 
-#### ▼ RAID0
+<br>
 
-  データを複数のHDDに振り分けて書き込む．
-
-#### ▼ RAID1
-
-  データを複数のHDDに複製して書き込む．
-
-#### ▼ RAID5
-
-  データとパリティ（誤り訂正符号）を3つ以上のHDDに書き込む．
+### SSD：Solid State Drive
 
 <br>
 

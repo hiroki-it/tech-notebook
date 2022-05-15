@@ -23,9 +23,9 @@ description: manifest.yaml＠Kubernetesの知見をまとめました．
 
 <br>
 
-## 02. apiVersion
+## 02. 共通項目
 
-### apiVersionとは
+### apiVersion
 
 Kubernetes-APIのバージョンを設定する．
 
@@ -35,9 +35,7 @@ apiVersion: v1
 
 <br>
 
-## 03. kind
-
-### kindとは
+### kind
 
 作成されるリソースの種類を設定する．
 
@@ -57,8 +55,6 @@ apiVersion: v1
 
 <br>
 
-## 04. metadata
-
 ### metadataとは
 
 Kubernetesリソースの一意に識別するための情報を設定する．
@@ -73,13 +69,7 @@ Kubernetesリソースの一意に識別するための情報を設定する．
 
 ### labels
 
-#### ▼ labelsとは
-
-Kubernetesリソースを区別するための情報を設定する．
-
-#### ▼ 予約ラベル
-
-以下のリンクを参考にせよ．
+Kubernetesリソースを区別するための情報を設定する．予約ラベルについては，以下のリンクを参考にせよ．
 
 参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
 
@@ -87,76 +77,11 @@ Kubernetesリソースを区別するための情報を設定する．
 
 ### name
 
-#### ▼ nameとは
-
 Kubernetesリソースを一意に識別するための名前を設定する．
 
 <br>
 
-## 05. rule
-
-### apiGroups
-
-resourceで指定するリソースのKubernetes-APIグループを設定する．空文字はコアグループを表す．
-
-参考：https://kubernetes.io/docs/reference/using-api/#api-groups
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: foo-cluster-role
-rules:
-  - apiGroups: [""]
-```
-
-<br>
-
-### resources
-
-操作対象のリソースの認可スコープを設定する．
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: foo-cluster-role
-rules:
-  - apiGroups:
-      - ""
-      - apps
-    resources:
-      - namespaces
-      - deployments
-```
-
-<br>
-
-### verbs
-
-リソースに対する操作の認可スコープを設定する．
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: foo-read-only-cluster-role
-rules:
-  - apiGroups:
-      - ""
-      - apps
-    resources:
-      - namespaces
-      - deployments
-    verbs:
-      - get
-      - list
-      - watch
-```
-
-<br>
-
-## 06. spec（Configの場合）
+## 03. Config
 
 ### clusters
 
@@ -383,7 +308,7 @@ users:
 
 <br>
 
-## 06. spec（ConfigMapの場合）
+## 04. ConfigMap
 
 ### data
 
@@ -442,9 +367,9 @@ data:
 
 <br>
 
-## 06-02. spec（CronJobの場合）
+## 05. CronJob
 
-### jobTemplate
+### spec.jobTemplate
 
 #### ▼ jobTemplateとは
 
@@ -462,7 +387,7 @@ spec:
       template:
         spec:
           containers:
-            - name: foo
+            - name: foo-alpine
               image: alpine:latest
               # 定期実行するコマンドを設定する．
               command:
@@ -474,7 +399,7 @@ spec:
 
 <br>
 
-### failedJobsHistoryLimit
+### spec.failedJobsHistoryLimit
 
 #### ▼ failedJobsHistoryLimitとは
 
@@ -491,7 +416,7 @@ spec:
 
 <br>
 
-### schedule
+### spec.schedule
 
 #### ▼ scheduleとは
 
@@ -508,7 +433,7 @@ spec:
 
 <br>
 
-### successfulJobsHistoryLimit
+### spec.successfulJobsHistoryLimit
 
 #### ▼ successfulJobsHistoryLimitとは
 
@@ -525,9 +450,9 @@ spec:
 
 <br>
 
-## 06-03. spec（Deploymentの場合）
+## 06 Deployment
 
-### replicas
+### spec.replicas
 
 #### ▼ replicasとは
 
@@ -555,7 +480,7 @@ spec:
 
 <br>
 
-### revisionHistoryLimit
+### spec.revisionHistoryLimit
 
 #### ▼ revisionHistoryLimitとは
 
@@ -583,7 +508,7 @@ spec:
 
 <br>
 
-### selector
+### spec.selector
 
 #### ▼ selectorとは
 
@@ -600,8 +525,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
-  labels:
-    app: foo
 spec:
   selector:
     matchLabels: # Deploymentに紐づけるPodのラベル
@@ -616,7 +539,7 @@ spec:
 
 <br>
 
-### strategy
+### spec.strategy
 
 #### ▼ strategyとは
 
@@ -656,7 +579,7 @@ spec:
 
 <br>
 
-### template（設定項目はPodと同じ）
+### spec.template（設定項目はPodと同じ）
 
 Deploymentで維持管理するPodを設定する．設定項目はPodと同じである．
 
@@ -686,9 +609,9 @@ spec:
 
 <br>
 
-## 06-04. spec（Ingressの場合）
+## 07. Ingress
 
-### rules
+### spec.rules
 
 #### ▼ rulesとは
 
@@ -723,13 +646,88 @@ spec:
 
 <br>
 
-## 06-05. spec（Namespaceの場合）
+## 08. Job
+
+### spec.activeDeadlineSeconds
+
+#### ▼ activeDeadlineSecondsとは
+
+Jobの試行の上限実行時間を設定する．設定された時間を超過すると，エラーが返却される．```backoffLimit```キーよりも優先される．
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  activeDeadlineSeconds: 20
+```
 
 <br>
 
-## 06-06. spec（PersistentVolumeの場合）
+### spec.backoffLimit
 
-### accessModes
+#### ▼ backoffLimitとは
+
+Jobの試行の上限数を設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  backoffLimit: 4
+```
+
+<br>
+
+### spec.parallelism
+
+#### ▼ parallelismとは
+
+並列的に起動できるPod数を設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  parallelism: 3
+```
+
+<br>
+
+### spec.template
+
+#### ▼ templateとは
+
+起動するPodを設定する．
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: foo-alpine
+          image: alpine:latest
+          command:
+            - /bin/sh
+            - -c
+            - echo Hello World
+      restartPolicy: OnFailure
+```
+
+<br>
+
+## 09. PersistentVolume
+
+### spec.accessModes
 
 #### ▼ accessModesとは
 
@@ -749,8 +747,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   accessModes:
     - ReadWriteMany
@@ -767,8 +763,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   accessModes:
     - ReadOnlyMany
@@ -785,8 +779,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   accessModes:
     - ReadWriteOnce
@@ -794,7 +786,7 @@ spec:
 
 <br>
 
-### capacity
+### spec.capacity
 
 #### ▼ capacityとは
 
@@ -809,8 +801,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   capacity:
     storage: 10G
@@ -818,7 +808,7 @@ spec:
 
 <br>
 
-### hostPath
+### spec.hostPath
 
 #### ▼ hostPathとは
 
@@ -835,8 +825,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   hostPath:
     path: /data/src/foo
@@ -851,8 +839,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   hostPath:
     type: DirectoryOrCreate
@@ -861,7 +847,7 @@ spec:
 
 <br>
 
-### local
+### spec.local
 
 #### ▼ localとは
 
@@ -877,8 +863,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   local:
     path: /data/src/foo
@@ -894,7 +878,7 @@ spec:
 
 <br>
 
-### mountOptions
+### spec.mountOptions
 
 #### ▼ mountOptionsとは
 
@@ -907,8 +891,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   mountOptions:
     - hard
@@ -916,7 +898,7 @@ spec:
 
 <br>
 
-### nfs
+### spec.nfs
 
 #### ▼ nfsとは
 
@@ -935,8 +917,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   nfs:
     server: <NFSサーバーのIPアドレス>
@@ -945,7 +925,7 @@ spec:
 
 <br>
 
-### nodeAffinity
+### spec.nodeAffinity
 
 #### ▼ nodeAffinityとは
 
@@ -966,8 +946,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   local:
     path: /data/src/foo
@@ -985,7 +963,7 @@ spec:
 
 <br>
 
-### persistentVolumeReclaimPolicy
+### spec.persistentVolumeReclaimPolicy
 
 #### ▼ persistentVolumeReclaimPolicyとは
 
@@ -1006,8 +984,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   persistentVolumeReclaimPolicy: Delete
 ```
@@ -1025,8 +1001,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   persistentVolumeReclaimPolicy: Recycle
 ```
@@ -1044,15 +1018,13 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   persistentVolumeReclaimPolicy: Retain
 ```
 
 <br>
 
-### storageClassName
+### spec.storageClassName
 
 #### ▼ storageClassNameとは
 
@@ -1067,8 +1039,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   storageClassName: standard
 ```
@@ -1083,9 +1053,9 @@ spec:
 
 <br>
 
-## 06-07. spec（PersistentVolumeClaimの場合）
+## 10. PersistentVolumeClaim
 
-### accessModes
+### spec.accessModes
 
 #### ▼ accessModesとは
 
@@ -1098,8 +1068,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: foo-persistent-volume-claim
-  labels:
-    app: foo
 spec:
   accessModes:
     - ReadWriteMany
@@ -1107,7 +1075,7 @@ spec:
 
 <br>
 
-### resources
+### spec.resources
 
 #### ▼ resourcesとは
 
@@ -1124,8 +1092,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: foo-persistent-volume-claim
-  labels:
-    app: foo
 spec:
   resources:
     requests:
@@ -1134,7 +1100,7 @@ spec:
 
 <br>
 
-### storageClassName
+### spec.storageClassName
 
 #### ▼ storageClassNameとは
 
@@ -1149,17 +1115,15 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: foo-persistent-volume-claim
-  labels:
-    app: foo
 spec:
   storageClassName: standard
 ```
 
 <br>
 
-## 06-08. spec（Podの場合）
+## 11. Pod
 
-### containers
+### spec.containers
 
 #### ▼ containersとは
 
@@ -1303,7 +1267,7 @@ spec:
 
 <br>
 
-### hostname
+### spec.hostname
 
 #### ▼ hostnameとは
 
@@ -1327,7 +1291,7 @@ spec:
 
 <br>
 
-### imagePullSecrets
+### spec.imagePullSecrets
 
 #### ▼ imagePullSecretsとは
 
@@ -1354,7 +1318,7 @@ spec:
 
 <br>
 
-### restartPolicy
+### spec.restartPolicy
 
 #### ▼ restartPolicyとは
 
@@ -1410,7 +1374,7 @@ spec:
 
 <br>
 
-### serviceAccountName
+### spec.serviceAccountName
 
 #### ▼ serviceAccountNameとは
 
@@ -1425,14 +1389,41 @@ metadata:
   name: foo-pod
 spec:
   containers:
-    - name: foo-fluent-bit
-      image: fluent/fluent-bit:1.0.0
-  serviceAccountName: foo-fluent-bit-service-account
+    - name: foo-gin
+      image: foo-gin::1.0.0
+  serviceAccountName: foo-service-account
 ```
 
 <br>
 
-### volume
+### spec.terminationGracePeriodSeconds
+
+#### ▼ terminationGracePeriodSecondsとは
+
+Podが終了する時の待機時間を設定する．
+
+![pod_lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_lifecycle.png)
+
+参考：
+
+- https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+- https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin::1.0.0
+  terminationGracePeriodSeconds: 300
+```
+
+<br>
+
+### spec.volume
 
 #### ▼ volumeとは
 
@@ -1591,8 +1582,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: foo-standard-volume-claim
-  labels:
-    app: foo
 spec:
   storageClassName: standard
   accessModes:
@@ -1607,8 +1596,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: foo-persistent-volume
-  labels:
-    app: foo
 spec:
   storageClassName: standard
   capacity:
@@ -1623,21 +1610,56 @@ spec:
 
 <br>
 
-## 06-09. spec（Role，ClusterRoleの場合）
+## 12. Role，ClusterRole
 
-### rules
+### rules.apiGroups
 
-#### ▼ rulesとは
+#### ▼ apiGroupsとは
 
-Kubernetesリソースの認可スコープを設定する．
+resourceで指定するリソースのKubernetes-APIグループを設定する．空文字はコアグループを表す．
 
-参考：https://cstoku.dev/posts/2018/k8sdojo-20/
+参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: foo-role
+  name: foo-cluster-role
+rules:
+  - apiGroups: [""]
+```
+
+<br>
+
+### rules.resources
+
+#### ▼ resourcesとは
+
+操作対象のリソースの認可スコープを設定する．
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
+rules:
+  - apiGroups: ["", "apps"]
+    resources: ["namespaces", "deployments"]
+```
+
+<br>
+
+### rules.verbs
+
+#### ▼ verbsとは
+
+リソースの操作内容の認可スコープを設定する．
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
 rules:
   - apiGroups: [""]
     resources: ["pods"]
@@ -1646,11 +1668,11 @@ rules:
 
 <br>
 
-## 06-10. spec（RoleBinding，ClusterRoleBindingの場合）
+## 13. RoleBinding，ClusterRoleBinding
 
-### roleRef
+### roleRef.name
 
-#### ▼ roleRefとは
+#### ▼ roleRef.nameとは
 
 RoleBindingを使用して紐づけるRoleの名前を設定する．
 
@@ -1680,11 +1702,11 @@ roleRef:
 
 <br>
 
-### subjects
+### subjects.name
 
-#### ▼ subjectsとは
+#### ▼ subjects.nameとは
 
-Roleの紐付け先のAccountを設定する．
+Roleの紐付け先のAccountの名前を設定する．
 
 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
@@ -1712,7 +1734,7 @@ subjects:
 
 <br>
 
-## 06-11. spec（Secretの場合）
+## 14. Secret
 
 ### data
 
@@ -1898,9 +1920,78 @@ stringData:
 
 <br>
 
-## 06-12. spec（Serviceの場合）
+## 15. SecretProviderClass
 
-### ports
+### spec.provider
+
+#### ▼ spec.providerとは
+
+参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+
+```yaml
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: foo-aws-secret-provider-class
+spec:
+  provider: aws
+```
+
+<br>
+
+### spec.parameters
+
+#### ▼ spec.parametersとは
+
+プロバイダーに応じて，Secretにマウントする外部Secretのデータを設定する．
+
+参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+
+#### ▼ objects
+
+外部Sercretを識別する情報を設定する．
+
+参考：https://docs.aws.amazon.com/ja_jp/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
+
+```yaml
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: foo-aws-secret-provider-class
+spec:
+  provider: aws
+  parameters:
+    # AWSのシークレットマネージャーから取得する．
+    objects: |
+      - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secret名>"
+        objectType: "secretsmanager"
+```
+
+参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
+
+```yaml
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: foo-aws-secret-provider-class
+spec:
+  provider: aws
+  parameters:
+    # AWSのシステムマネージャーから取得する．
+    objects: |
+      - objectName: "FOO"
+        objectType: "ssmparameter"
+```
+
+<br>
+
+## 16. Service
+
+### spec.ports
+
+#### ▼ ports
+
+受信するインバウンド通信を設定する．
 
 #### ▼ appProtocol
 
@@ -1909,6 +2000,8 @@ stringData:
 ```yaml
 apiVersion: v1
 kind: Service
+metadata:
+  name: foo-app-service
 spec:
   ports:
     - appProtocol: http
@@ -1920,8 +2013,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - appProtocol: tcp
@@ -1938,8 +2029,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - name: http-foo # Istio Gatewayからインバウンド通信を受信
@@ -1952,8 +2041,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - name: tcp-foo # Istio Gatewayからインバウンド通信を受信
@@ -1969,8 +2056,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - name: http
@@ -1982,8 +2067,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - name: tcp
@@ -2001,8 +2084,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - protocol: TCP
@@ -2014,8 +2095,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - protocol: UDP
@@ -2027,8 +2106,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - protocol: SCTP
@@ -2053,8 +2130,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - port: 80
@@ -2065,8 +2140,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - port: 9000
@@ -2083,8 +2156,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
   - targetPort: 8080
@@ -2096,8 +2167,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   ports:
     - targetPort: 9000
@@ -2106,7 +2175,7 @@ spec:
 
 <br>
 
-### selector
+### spec.selector
 
 インバウンド通信の転送先とするPodのラベルのキー名と値を設定する．
 
@@ -2119,8 +2188,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: foo-app-service
-  labels:
-    app: foo
 spec:
   selector:
     app: foo
@@ -2128,7 +2195,7 @@ spec:
 
 <br>
 
-### type
+### spec.type
 
 Serviceのタイプを設定する．
 
@@ -2145,7 +2212,7 @@ Serviceのタイプを設定する．
 
 <br>
 
-## 06-13. spec（ServiceAccountの場合）
+## 17. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -2165,9 +2232,28 @@ automountServiceAccountToken: false
 
 <br>
 
-## 06-14. spec（ServiceEntryの場合）
+### imagePullSecrets
 
-### hosts
+#### ▼ imagePullSecretsとは
+
+新しく作成されたPod内のコンテナに自動挿入する```imagePullSecrets```キーを設定する．
+
+参考：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-service-account
+imagePullSecrets:
+  - name: foo-secret
+```
+
+<br>
+
+## 18. ServiceEntry
+
+### spec.hosts
 
 送信できるアウトバウンド通信のドメイン名を設定する．
 
@@ -2176,8 +2262,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
   name: foo-app-service-entry
-  labels:
-    app: foo
 spec:
   hosts:
     - '*'
@@ -2185,7 +2269,7 @@ spec:
 
 <br>
 
-### ports
+### spec.ports
 
 送信できるアウトバウンド通信のポート番号を設定する．
 
@@ -2194,8 +2278,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
   name: foo-app-service-entry
-  labels:
-    app: foo
 spec:
   ports:
     - name: http
@@ -2208,7 +2290,7 @@ spec:
 
 <br>
 
-### resolution
+### spec.resolution
 
 送信できるアウトバウンド通信のIPアドレスの設定する．
 
@@ -2217,17 +2299,15 @@ apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
   name: foo-app-service-entry
-  labels:
-    app: foo
 spec:
   resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する．
 ```
 
 <br>
 
-## 06-15. spec（StatefulSetの場合）
+## 19. StatefulSet
 
-### serviceName
+### spec.serviceName
 
 #### ▼ serviceNameとは
 
@@ -2276,7 +2356,7 @@ spec:
 
 <br>
 
-### template（設定項目はPodと同じ）
+### spec.template（設定項目はPodと同じ）
 
 #### ▼ templateとは
 
@@ -2333,7 +2413,7 @@ spec:
             storage: 2Gi
 ```
 
-### volumeClaimTemplates
+### spec.volumeClaimTemplates
 
 #### ▼ volumeClaimTemplatesとは
 

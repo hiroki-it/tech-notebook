@@ -112,7 +112,7 @@ dockerクライアントは，dockerコマンドを使用してdockerデーモ�
 
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png)
 
-ホスト側のディレクトリをコンテナ側にマウントすることにより，データを永続化する方法．ホストで作成されるデータが継続的に変化する場合に適しており，例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である．しかし，ホスト側のデータを永続化する方法としては不適である．
+ホスト側のストレージ上のディレクトリを，コンテナ側にマウントすることにより，データを永続化する．ホストで作成されるデータが継続的に変化する場合に適しており，例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である．しかし，ホスト側のデータを永続化する方法としては不適である．
 
 参考：
 
@@ -170,7 +170,7 @@ $ cat settings.json
 
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png)
 
-ホストにあるdockerエリア（```/var/lib/docker/volumes```ディレクトリ）のマウントポイント（```/var/lib/docker/volumes/<ボリューム名>/_data```）をコンテナ側にマウントすることより，データを永続化する方法．ホストで作成されるデータをめったに変更しない場合に適しており，例えばDBのデータをホストコンテナ間と共有する方法として推奨である．しかし，例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である．
+ホスト側のストレージ上にあるdockerエリア（```/var/lib/docker/volumes```ディレクトリ）のマウントポイント（```/var/lib/docker/volumes/<ボリューム名>/_data```）を，コンテナ側にマウントすることより，データを永続化する．ホストで作成されるデータをめったに変更しない場合に適しており，例えばDBのデータをホストコンテナ間と共有する方法として推奨である．しかし，例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である．
 
 参考：
 
@@ -179,7 +179,7 @@ $ cat settings.json
 
 #### ▼ ボリューム，マウントポイントとは
 
-ホスト側のdockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという．また，マウント先のディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントという．
+dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという．また，マウント先のディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントという．
 
 #### ▼ 使用方法
 
@@ -198,6 +198,16 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 ボリュームを使用する場合のコンテナ配置手法の一種．dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく．ボリュームを使用する時は，dockerエリアを参照するのではなく，Data Volumeコンテナを参照する．
 
 ![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
+
+<br>
+
+### tmpfsマウント
+
+#### ▼ tmpfsマウントとは
+
+Docker on Linuxでのみ使用できる．ホスト側のメモリ上にあるディレクトリを，コンテナ側にマウントすることにより，データを非永続化する．コンテナが停止すると，tmpfsマウントは終了し，ディレクトリは削除される．
+
+参考：https://docs.docker.com/storage/tmpfs/
 
 <br>
 

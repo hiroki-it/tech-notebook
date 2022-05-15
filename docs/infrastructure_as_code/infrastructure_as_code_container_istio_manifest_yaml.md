@@ -150,9 +150,9 @@ spec:
 
 <br>
 
-## 02. apiVersion
+## 02. 共通設定
 
-### apiVersionとは
+### apiVersion
 
 Istio-APIのバージョンを設定する．Kubernetesとは異なることに注意する．
 
@@ -162,9 +162,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 03. kind
-
-### kindとは
+### kind
 
 構築するIstioリソースを設定する．
 
@@ -174,9 +172,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 04. metadata
-
-### metadataとは
+### metadata
 
 Istioリソースの一意に識別するための情報を設定する．
 
@@ -193,7 +189,7 @@ metadata:
 
 <br>
 
-## 04-02. metadata（KubernetesのNamespaceにて）
+## 03. KubernetesのNamespaceに関して
 
 ### labels
 
@@ -213,7 +209,7 @@ metadata:
 
 <br>
 
-## 04-03. metadata（KubernetesnのPodにて）
+## 03-02. KubernetesnのPodに関して
 
 ### annotations
 
@@ -329,9 +325,9 @@ spec:
 
 <br>
 
-## 05. spec（DestinationRuleの場合）
+## 05. DestinationRule
 
-### exportTo
+### spec.exportTo
 
 #### ▼ exportToとは
 
@@ -371,7 +367,7 @@ spec:
 
 <br>
 
-### host
+### spec.host
 
 インバウンド通信のルーティング元とするServiceの名前を設定する．これにより，Envoyは特定のServiceからのルーティングのみ受信するようになる．
 
@@ -391,7 +387,7 @@ spec:
 
 <br>
 
-### subsets
+### spec.subsets
 
 VirtualServiceのサブセット名に関して，ルーティング先とするPodのラベルを設定する
 
@@ -422,7 +418,7 @@ spec:
 
 <br>
 
-### trafficPolicy
+### spec.trafficPolicy
 
 #### ▼ loadBalancer
 
@@ -500,9 +496,9 @@ spec:
 
 <br>
 
-## 06. spec（EnvoyFilterの場合）
+## 06. EnvoyFilter
 
-### configPatches
+### spec.configPatches
 
 #### ▼ ApplyTo
 
@@ -605,9 +601,9 @@ spec:
 
 <br>
 
-## 07. spec（Gatewayの場合）
+## 07. Gateway
 
-### selector
+### spec.selector
 
 #### ▼ selectorとは
 
@@ -628,7 +624,7 @@ spec:
 
 <br>
 
-### servers
+### spec.servers
 
 #### ▼ port.number
 
@@ -744,9 +740,9 @@ spec:
 
 <br>
 
-## 08. spec（IstioOperatorの場合）
+## 08. IstioOperator
 
-### component
+### spec.component
 
 #### ▼ componentとは
 
@@ -873,7 +869,7 @@ status:
 
 <br>
 
-### hub
+### spec.hub
 
 #### ▼ hubとは
 
@@ -891,7 +887,7 @@ spec:
 
 <br>
 
-### meshConfig
+### spec.meshConfig
 
 #### ▼ meshConfigとは
 
@@ -1007,7 +1003,7 @@ spec:
 
 <br>
 
-### namespace
+### spec.namespace
 
 #### ▼ namespaceとは
 
@@ -1027,7 +1023,7 @@ spec:
 
 <br>
 
-### profile
+### spec.profile
 
 #### ▼ profileとは
 
@@ -1047,7 +1043,7 @@ spec:
 
 <br>
 
-### revision
+### spec.revision
 
 #### ▼ revisionとは
 
@@ -1070,7 +1066,7 @@ spec:
 
 <br>
 
-### tag
+### spec.tag
 
 #### ▼ tagとは
 
@@ -1093,7 +1089,7 @@ spec:
 
 <br>
 
-### values
+### spec.values
 
 #### ▼ valuesとは
 
@@ -1137,9 +1133,9 @@ spec:
 
 <br>
 
-## 09. spec:（PeerAuthenticationの場合）
+## 09. PeerAuthentication
 
-### mtls
+### spec.mtls
 
 #### ▼ mtls
 
@@ -1170,9 +1166,9 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 <br>
 
-## 10. spec（VirtualServiceの場合）
+## 10. VirtualService
 
-### exportTo
+### spec.exportTo
 
 #### ▼ exportToとは
 
@@ -1212,7 +1208,7 @@ spec:
 
 <br>
 
-### gateways
+### spec.gateways
 
 #### ▼ gatewaysとは
 
@@ -1252,7 +1248,7 @@ spec:
 
 <br>
 
-### http
+### spec.http
 
 #### ▼ httpとは
 
@@ -1396,7 +1392,7 @@ spec:
 
 <br>
 
-### tcp
+### spec.tcp
 
 #### ▼ tcpとは
 

@@ -250,6 +250,23 @@ Cluster内の全てのPodにDNS名が割り当てられている．レコード�
 | -------------- | ---------------------------------------------------- | ----------------------------- |
 | A/AAAAレコード | ```<PodのIPアドレス>.<名前空間>.pod.cluster.local``` | PodのIPアドレスが返却される． |
 
+#### ▼ ライフサイクル
+
+![pod_lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_lifecycle.png)
+
+参考：
+
+- https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+- https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
+（１）Kubernetesクライアントは，```kubectl```コマンドがを用いて，Podを削除するリクエストをkube-apiserverに送信する．
+
+（２）Podが，Terminating状態になる．
+
+（３）Podは，削除プロセスを開始する．```preStop```キーの設定が実行される．SIGTERMシグナルが送信され，削除プロセスは完了する．この時，```terminationGracePeriodSeconds```キーの設定値を過ぎても削除プロセスが完了していない場合は，SIGKILLシグナルが送信され，削除プロセスは強制完了する．
+
+（４）他のKubernetesリソース（Deployment，Service，など）の管理対象から，該当のPodが削除される．
+
 <br>
 
 ### ReplicaSet
@@ -544,7 +561,7 @@ Podが稼働するサーバー単位こと．Kubernetesの実行時に自動的�
 
 #### ▼ PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにボリュームマウントする方法のこと．Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを使用するためには，PersistentVolumeClaimにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistentVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
+新しく作成したストレージ領域をPluggableなボリュームとし，これをコンテナにボリュームマウントする．Node上のPod間でボリュームを共有できる．PodがPersistentVolumeを使用するためには，PersistentVolumeClaimにPersistentVolumeを要求させておき，PodでこのPersistentVolumeClaimを指定する必要がある．アプリケーションのディレクトリ名を変更した場合は，PersistentVolumeを再作成しないと，アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある．
 
 参考：
 
@@ -572,26 +589,6 @@ Node上に新しく作成したストレージ領域をボリュームとし，�
 
 - https://kubernetes.io/docs/concepts/storage/volumes/#local
 - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
-
-#### ▼ CSI Volume
-
-CSIの仕様によって標準化された外部ボリューム．プロバイダー上に新しく作成したストレージ領域をボリュームとし，これをコンテナにバインドマウントする．
-
-参考：https://thinkit.co.jp/article/17635
-
-CSI Volumeを使用するためには，プロバイダーが提供するCSIドライバーを，Kubernetes上にインストールする必要がある．
-
-参考：
-
-- https://github.com/aws/secrets-store-csi-driver-provider-aws#installation
-- https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/install-csi-driver?hl=ja
-
-```bash
-# AWSのCSIドライバーの場合
-$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-
-$ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
-```
 
 <br>
 
@@ -629,7 +626,7 @@ $ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets
 
 #### ▼ Volumeとは
 
-既存（ワーカーノード，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する方法のこと．
+既存（ワーカーノード，NFS，iSCSI，Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する．
 
 参考：https://thinkit.co.jp/article/14195
 
@@ -725,6 +722,53 @@ Podの既存のストレージ領域をボリュームとし，コンテナに�
 ### Metadataリソースとは
 
 参考：https://thinkit.co.jp/article/13542
+
+<br>
+
+## 03-07. カスタムリソース
+
+### カスタムリソースとは
+
+Kubernetesに標準で備わっていないリソースを提供する．
+
+参考：
+
+- https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+- https://www.amazon.co.jp/dp/B08FZX8PYW
+
+<br>
+
+### SecretProviderClass
+
+#### ▼ SecretProviderClassとは
+
+使用する外部Secretを指定するための機能を提供する．
+
+#### ▼ セットアップ
+
+プロバイダーが提供するCSIドライバーを，Kubernetes上にインストールする必要がある．
+
+参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+
+```bash
+$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+
+$ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
+```
+
+#### ▼ CSIドライバー
+
+SecretProviderClassで定義されたプロバイダーのAPIと通信し，外部Secretのデータを取得する．その後，tmpfとしてVolumeに書き込む．
+
+参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+
+![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
+
+#### ▼ CSI Volume
+
+CSIの仕様によって標準化された外部ボリューム．プロバイダー上に新しく作成したストレージ領域をボリュームとし，これをコンテナにバインドマウントする．
+
+参考：https://thinkit.co.jp/article/17635
 
 <br>
 
