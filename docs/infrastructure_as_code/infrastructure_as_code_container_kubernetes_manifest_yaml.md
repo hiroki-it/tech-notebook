@@ -55,7 +55,7 @@ apiVersion: v1
 
 <br>
 
-### metadataとは
+### metadata
 
 Kubernetesリソースの一意に識別するための情報を設定する．
 
@@ -1989,7 +1989,7 @@ spec:
 
 ### spec.ports
 
-#### ▼ ports
+#### ▼ portsとは
 
 受信するインバウンド通信を設定する．
 
@@ -2255,6 +2255,8 @@ imagePullSecrets:
 
 ### spec.hosts
 
+#### ▼ hostsとは
+
 送信できるアウトバウンド通信のドメイン名を設定する．
 
 ```yaml
@@ -2270,6 +2272,8 @@ spec:
 <br>
 
 ### spec.ports
+
+#### ▼ portsとは
 
 送信できるアウトバウンド通信のポート番号を設定する．
 
@@ -2291,6 +2295,8 @@ spec:
 <br>
 
 ### spec.resolution
+
+#### ▼ resolutionとは
 
 送信できるアウトバウンド通信のIPアドレスの設定する．
 
