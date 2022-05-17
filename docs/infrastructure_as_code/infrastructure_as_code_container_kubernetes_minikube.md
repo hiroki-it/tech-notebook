@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】Minikube＠Kubernetes
-description: Minikube＠Kubernetesの知見をまとめました．
+description: Minikube＠Kubernetesの知見をまとめました。
 ---
 
 # Minikube＠Kubernetes
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 ### 構造
 
-仮想環境上に，単一のワーカーNodeを持つClusterを作成する．
+仮想環境上に、単一のワーカーNodeを持つClusterを作成する。
 
 参考：
 
@@ -32,7 +32,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 #### ▼ ドライバーとは
 
-ゲスト（ワーカーノード）側のOSを設定する．ホスト側のOS（Linux，MacOS，Windows）や，これらOSのバージョンによって，使用できるドライバーが異なる．
+ゲスト（ワーカーノード）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
@@ -42,9 +42,9 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 | ホスト側のOS | ゲスト（ワーカーノード）側のOS               |
 |---------|--------------------------------|
-| Linux   | VirtualBox，Docker，KVM2，...     |
-| MacOS   | VirtualBox，Docker，HyperKit，... |
-| Windows | VirtualBox，Docker，Hyper-V，...  |
+| Linux   | VirtualBox、Docker、KVM2、...     |
+| MacOS   | VirtualBox、Docker、HyperKit、... |
+| Windows | VirtualBox、Docker、Hyper-V、...  |
 
 <br>
 
@@ -54,7 +54,7 @@ description: Minikube＠Kubernetesの知見をまとめました．
 
 #### ▼ 標準のホスト-ワーカーNode間マウント
 
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる．
+ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
@@ -69,7 +69,7 @@ $ minikube start
 
 #### ▼ 各ドライバーのホスト-ワーカーNode間マウント
 
-ホスト以下のディレクトリ配下に保存されたファイルは，ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる．
+ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
@@ -88,7 +88,7 @@ $ minikube start
 
 #### ▼ 標準のワーカーNode-コンテナ間マウント
 
-ゲスト仮想環境内のワーカーNodeでは，以下のディレクトリからPersistentVolumeが自動的に作成される．そのため，Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく，わざわざワーカーNodeのPersistentVolumeを作成する必要がない．ただし，DockerドライバーとPodmanドライバーを使用する場合は，この機能がないことに注意する．
+ゲスト仮想環境内のワーカーNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -107,7 +107,7 @@ $ minikube start
 
 #### ▼ ホストをコンテナにマウントする方法
 
-Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/files```ディレクトリ，ドライバーごとのを使用して，ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる．またワーカーNodeでは，決められたディレクトリからPersistentVolumeを自動的に作成する．ここで作成されたPersistentVolumeを，PodのPersistentVolumeClaimで指定する．このように，ホストからワーカーNode，ワーカーNodeからPodへマウントを実行することにより，ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる．
+Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーごとのを使用して、ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる。またワーカーNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからワーカーNode、ワーカーNodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -115,13 +115,13 @@ Minikubeでは，```mount```コマンド，ホスト側の```$MINIKUBE_HOME/file
 
 **＊例＊**
 
-（１）HyperKitドライバーを使用する場合，ホストとワーカーNode間のマウント機能がない．そこで```mount```コマンドを使用して，ホスト側のディレクトリをワーカーNodeのボリュームにマウントする．
+（１）HyperKitドライバーを使用する場合、ホストとワーカーNode間のマウント機能がない。そこで```mount```コマンドを使用して、ホスト側のディレクトリをワーカーNodeのボリュームにマウントする。
 
 ```bash
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
-（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする．
+（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする。
 
 ```yaml
 apiVersion: apps/v1
@@ -162,17 +162,17 @@ spec:
 
 #### ▼ addonsとは
 
-Minikubeのプラグインを操作する．
+Minikubeのプラグインを操作する。
 
 #### ▼ enable
 
-プラグインを有効化する．
+プラグインを有効化する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
-開発環境専用のIngressコントローラーとして，NginxIngressコントローラーを有効化する．本番環境では，同じくNginxIngressコントローラーや，クラウドプロバイダーのロードバランサーなどを使用する．
+開発環境専用のIngressコントローラーとして、NginxIngressコントローラーを有効化する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -182,7 +182,7 @@ $ minikube addons enable ingress
 
 #### ▼ list
 
-有効できるプラグインの一覧を表示する．
+有効できるプラグインの一覧を表示する。
 
 ```bash
 $ minikube addons list
@@ -228,35 +228,35 @@ $ minikube addons list
 
 #### ▼ configとは
 
-minikubeコマンドに関するパラメーターを操作する．
+minikubeコマンドに関するパラメーターを操作する。
 
 #### ▼ set
 
-kubectlコマンド実行時のデフォルト値を設定する．
+kubectlコマンド実行時のデフォルト値を設定する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
 **＊例＊**
 
-デフォルトのドライバーを設定する．
+デフォルトのドライバーを設定する。
 
 ```bash
 $ minikube config set driver virtualbox
 ```
 
-CPU容量の上限値を設定する．
+CPU容量の上限値を設定する。
 
 ```bash
 $ minikube config set cpus 4
 ```
 
-メモリ容量の上限値を設定する．
+メモリ容量の上限値を設定する。
 
 ```bash
 minikube config set memory 16384
 ```
 
-Kubernetesのバージョンのデフォルト値を設定する．
+Kubernetesのバージョンのデフォルト値を設定する。
 
 参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
 
@@ -270,7 +270,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 #### ▼ dashboardとは
 
-Kubernetesのダッシュボードを開発環境に構築する．
+Kubernetesのダッシュボードを開発環境に構築する。
 
 **＊例＊**
 
@@ -289,7 +289,7 @@ $ minikube dashboard
 
 #### ▼ docker-envとは
 
-ホストでdockerコマンドを実行した時に，ホスト側のdockerデーモンでなく，ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する．バージョンタグが```latest```であると，仮想環境外に対してイメージをプルしてしまうことに注意する．
+ホストでdockerコマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
@@ -309,7 +309,7 @@ export MINIKUBE_ACTIVE_DOCKERD="minikube"
 $ eval $(minikube -p minikube docker-env)
 ```
 
-これにより，以下の環境変数が追加される．
+これにより、以下の環境変数が追加される。
 
 ```bash
 $ env | grep DOCKER    
@@ -320,7 +320,7 @@ DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
 
-もし， Makefileのターゲット内でこれを実行する場合は，```$(shell ...)```とする．
+もし、 Makefileのターゲット内でこれを実行する場合は、```$(shell ...)```とする。
 
 ```makefile
 docker-env:
@@ -329,7 +329,7 @@ docker-env:
 
 #### ▼ -u
 
-ホスト側のdockerデーモンを指定できるように，元に戻す．
+ホスト側のdockerデーモンを指定できるように、元に戻す。
 
 ```bash
 $ eval $(minikube docker-env -u)
@@ -341,7 +341,7 @@ $ eval $(minikube docker-env -u)
 
 #### ▼ ipとは
 
-ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する．
+ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する。
 
 ```bash
 $ minikube ip
@@ -355,7 +355,7 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する．ローカルマシンにkubectlコマンドがインストールされていなくとも，Minikubeに対してこれを実行できる．ClientとServerのバージョンが自動的に揃えられる．
+Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する。ローカルマシンにkubectlコマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 参考：
 
@@ -398,7 +398,7 @@ Server Version: version.Info{
 
 #### ▼ mountとは
 
-ホスト側のファイルまたはディレクトリを，ゲスト仮想環境の指定したディレクトリにマウントする．
+ホスト側のファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
@@ -424,7 +424,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 ### update-context
 
-Minikubeのコンテキスト情報が誤っている場合に，正しく修正する．
+Minikubeのコンテキスト情報が誤っている場合に、正しく修正する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
@@ -441,7 +441,7 @@ $ minikube update-context
 
 #### ▼ serviceとは
 
-NodePort ServiceやLoadBalancer Serviceを指定し，ホストからServiceにポートフォワーディングを実行する．また，ServiceのIPアドレスを返却する．
+NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceにポートフォワーディングを実行する。また、ServiceのIPアドレスを返却する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/service/
 
@@ -458,7 +458,7 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 Opening service <サービス名> in default browser...
 ```
 
-ただ，ポートフォワーディングのポート番号がランダムなため，もしポート番号を固定したい場合は，Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用するとよい．
+ただ、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用するとよい。
 
 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
@@ -466,7 +466,7 @@ Opening service <サービス名> in default browser...
 $ kubectl port-forward <Service名> 8080:80
 ```
 
-ServiceのIPアドレスがワーカーNodeのIPアドレスすることは，```minikube ip```コマンドから確認できる．
+ServiceのIPアドレスがワーカーNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
 
 ```bash
 $ minikube ip
@@ -474,7 +474,7 @@ $ minikube ip
 n.n.n.n
 ```
 
-ちなみに，```minikube service```コマンドを使用せずに，```ssh```コマンドで仮想環境に接続しても，同様にServiceにリクエストを送信できる．
+ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できる。
 
 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
@@ -487,7 +487,7 @@ $ curl http://n.n.n.n:57761
 
 #### ▼ list
 
-全てのServiceの情報を表示する．
+全てのServiceの情報を表示する。
 
 ```bash
 $ minikube service list
@@ -506,7 +506,7 @@ $ minikube service list
 
 #### ▼ --url
 
-指定したServiceのIPアドレスを含むURLを表示する．
+指定したServiceのIPアドレスを含むURLを表示する。
 
 ```bash
  $ minikube service <Service名> --url
@@ -520,7 +520,7 @@ http://n.n.n.n:57761
 
 #### ▼ sshとは
 
-仮想環境にSSH接続を行う．
+仮想環境にSSH接続を行う。
 
 参考：
 
@@ -579,7 +579,7 @@ yes
 zcat
 ```
 
-ワーカーNodeの中では```docker```コマンドを実行でき，イメージもデバッグできる．
+ワーカーNodeの中では```docker```コマンドを実行でき、イメージもデバッグできる。
 
 ```bash
 $ minikube ssh  
@@ -593,7 +593,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 #### ▼ ``--``（ハイフン2つ）
 
-仮想環境にSSH接続を実行し，任意のコマンドを実行する．
+仮想環境にSSH接続を実行し、任意のコマンドを実行する。
 
 **＊例＊**
 
@@ -613,7 +613,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 #### ▼ startとは
 
-ゲスト仮想環境を構築し，仮想環境内にワーカーNodeを作成する．
+ゲスト仮想環境を構築し、仮想環境内にワーカーNodeを作成する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
@@ -640,7 +640,7 @@ $ minikube start
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-ワーカーNodeが構築されていることを確認できる．
+ワーカーNodeが構築されていることを確認できる。
 
 ```bash
 $ kubectl get nodes
@@ -649,9 +649,9 @@ NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
-#### ▼ --cpus，--memory
+#### ▼ --cpus、--memory
 
-Minikubeノードのスペックを設定する．
+Minikubeノードのスペックを設定する。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -659,7 +659,7 @@ $ minikube start --cpus=4 --memory=16384
 
 #### ▼ --docker-env
 
-別に```docker-env```コマンドを実行しつつ，```start```コマンドを実行する．
+別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
 
 **＊例＊**
 
@@ -669,20 +669,20 @@ $ minikube start --docker-env
 
 #### ▼ --driver
 
-ゲスト仮想環境のドライバーを指定し，```start```コマンドを実行する．ホストごとに標準の仮想環境が異なり，MacOSはDockerドライバーがデフォルトである．ドライバーの使用前に，これをインストールしておく必要があることに注意する．
+ゲスト仮想環境のドライバーを指定し、```start```コマンドを実行する。ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。ドライバーの使用前に、これをインストールしておく必要があることに注意する。
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 **＊例＊**
 
 ```bash
-# 事前にVirtualBoxのダウンロードが必要．
+# 事前にVirtualBoxのダウンロードが必要。
 $ minikube start --driver=virtualbox
 ```
 
 #### ▼ --kubernetes-vsersion
 
-Minikubeで稼働させるKubernetesのバージョンを指定しつつ，```start```コマンドを実行する．
+Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```start```コマンドを実行する。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
@@ -690,9 +690,9 @@ Minikubeで稼働させるKubernetesのバージョンを指定しつつ，```st
 $ minikube start --kubernetes-version=v1.23.0
 ```
 
-#### ▼ --mount，--mount--string
+#### ▼ --mount、--mount--string
 
-ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ，```start```コマンドを実行する．
+ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、```start```コマンドを実行する。
 
 **＊例＊**
 
@@ -702,7 +702,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するワーカーNode数を指定し，```start```コマンドを実行する．
+作成するワーカーNode数を指定し、```start```コマンドを実行する。
 
 **＊例＊**
 
@@ -722,7 +722,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に構築し，LoadBalancer Serviceに自動的に紐づける．クラスター外部からPodに接続できるようになる．```minikube ssh```コマンドでワーカーNodeに接続しつつ，公開されたServiceにリクエストを送信できる．
+LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。クラスター外部からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 参考：
 
@@ -736,4 +736,18 @@ $ minikube tunnel
 ```
 
 <br>
+
+## 03. デバッグ
+
+### --alsologtostderr
+
+コマンドの詳細な実行ログを標準エラー出力に出力する。
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
+
+```bash
+$ minikube start --alsologtostderr
+```
+
+
 

@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】Uvicorn＠ミドルウェア
-description: Uvicorn＠ミドルウェアの知見をまとめました．
+description: Uvicorn＠ミドルウェアの知見をまとめました。
 ---
 
 # Uvicorn＠ミドルウェア
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -25,19 +25,19 @@ description: Uvicorn＠ミドルウェアの知見をまとめました．
 
 ### uvicornコマンドとは
 
-開発環境でUvicornを起動するために使用する．
+開発環境でUvicornを起動するために使用する。
 
 <br>
 
 ### オプション無し
 
-ルートディレクトリにエントリーポイントのファイルを配置している場合は，```<モジュール名>.<インスタンス名>```となる．
+ルートディレクトリにエントリーポイントのファイルを配置している場合は、```<モジュール名>.<インスタンス名>```となる。
 
 ```bash
 $ uvicorn main:app
 ```
 
-もし，サブディレクトリ配下にこのファイルを配置している場合は，```<ディレクトリ名>.<モジュール名>.<インスタンス名>```となる．
+もし、サブディレクトリ配下にこのファイルを配置している場合は、```<ディレクトリ名>.<モジュール名>.<インスタンス名>```となる。
 
 ```bash
 $ uvicorn src.main:app
@@ -49,11 +49,11 @@ $ uvicorn src.main:app
 
 ### gunicornコマンドとは
 
-本番環境でUvicornを起動するために使用する．
+本番環境でUvicornを起動するために使用する。
 
 参考：https://www.uvicorn.org/#running-with-gunicorn
 
-なお，gunicornコマンドを使用する場合には，standardタイプのUvicornをインストールする必要がある．
+なお、gunicornコマンドを使用する場合には、standardタイプのUvicornをインストールする必要がある。
 
 参考：https://www.uvicorn.org/#quickstart
 

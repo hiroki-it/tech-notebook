@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】FluentBit＠可観測性
-description: FluentBit＠可観測性の知見をまとめました．
+description: FluentBit＠可観測性の知見をまとめました。
 ---
 
 # FluentBit＠可観測性
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,7 +19,7 @@ description: FluentBit＠可観測性の知見をまとめました．
 
 ![fluent-bit_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture.png)
 
-Fluentdから概念図を拝借した．収集されたログはまずインプットされる．メモリ/ファイルがバッファーとして使用され，ログはチャンクとしてステージに蓄えられる．ステージに一定量のチャンクが蓄えられるか，または一定時間が経過すると，チャンクはキューに格納される．キューは，指定された宛先にログを順番にルーティングする．プロセスが再起動されると，メモリ/ファイルに蓄えられたログは破棄されてしまう．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている．
+Fluentdから概念図を拝借した。収集されたログはまずインプットされる。メモリ/ファイルがバッファーとして使用され、ログはチャンクとしてステージに蓄えられる。ステージに一定量のチャンクが蓄えられるか、または一定時間が経過すると、チャンクはキューに格納される。キューは、指定された宛先にログを順番にルーティングする。プロセスが再起動されると、メモリ/ファイルに蓄えられたログは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
 
@@ -27,7 +27,7 @@ Fluentdから概念図を拝借した．収集されたログはまずインプ�
 
 ### バッファーの構造
 
-バッファーは，ステージとキューから構成される．ログは，『```*-*****.****.flb```』という名前のチャンクとして扱われている．
+バッファーは、ステージとキューから構成される。ログは、『```*-*****.****.flb```』という名前のチャンクとして扱われている。
 
 参考：https://www.alpha.co.jp/blog/202103_01
 
@@ -39,7 +39,7 @@ Fluentdから概念図を拝借した．収集されたログはまずインプ�
 
 ### confファイル
 
-セクションを設定できる．
+セクションを設定できる。
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file
 
@@ -49,7 +49,7 @@ Fluentdから概念図を拝借した．収集されたログはまずインプ�
 
 #### ▼ 一覧
 
-コマンドでセクションを実行できる．
+コマンドでセクションを実行できる。
 
 ```bash
 $ /fluent-bit/bin/fluent-bit --help
@@ -83,7 +83,7 @@ Available Options
 
 #### ▼ -c
 
-設定ファイルのバリデーションは，開発環境にて，以下サイトや再起動を伴う```--config```オプションから行う．これら以外に再起動を伴わない```--dry-run```オプションがあるが，このオプションは経験則で精度が低いため，参考程度にする．
+設定ファイルのバリデーションは、開発環境にて、以下サイトや再起動を伴う```--config```オプションから行う。これら以外に再起動を伴わない```--dry-run```オプションがあるが、このオプションは経験則で精度が低いため、参考程度にする。
 
 参考：https://cloud.calyptia.com/visualizer
 
@@ -97,11 +97,11 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 ### SERVICEとは
 
-パイプライン全体の設定やファイルの読み出しを設定する．各設定の頭文字は大文字とする．
+パイプライン全体の設定やファイルの読み出しを設定する。各設定の頭文字は大文字とする。
 
 **＊実装例＊**
 
-フラッシュについては，以下のリンクを参考にせよ．
+フラッシュについては、以下のリンクを参考にせよ。
 
 参考：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
@@ -123,7 +123,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 ### 実行ログの確認
 
-Log_Level値でFluentBitのログレベルを制御できる．```debug```を割り当てると，FluentBitのログがより詳細になり，各セクションの設定値を確認できるようになる．
+Log_Level値でFluentBitのログレベルを制御できる。```debug```を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。
 
 **＊実行ログ例＊**
 
@@ -171,15 +171,15 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_input.png)
 
-ログのパイプラインへのインプット方法を設定する．
+ログのパイプラインへのインプット方法を設定する。
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-プラグインを使用して，ログのインプット方法を設定する．
+プラグインを使用して、ログのインプット方法を設定する。
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
-コマンドの```-i```オプションでINPUT名を指定し，実行もできる．
+コマンドの```-i```オプションでINPUT名を指定し、実行もできる。
 
 ```bash
 Inputs
@@ -218,7 +218,7 @@ Inputs
 
 #### ▼ dummyプラグインとは
 
-ダミーの構造化ログをパイプラインにインプットする．非構造化ログはインプットデータとして使用できない．開発環境でパイプラインの動作を確認するために役立つ．
+ダミーの構造化ログをパイプラインにインプットする。非構造化ログはインプットデータとして使用できない。開発環境でパイプラインの動作を確認するために役立つ。
 
 参考：
 
@@ -256,7 +256,7 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ▼ forwardプラグインとは
 
-受信したログを指定されたポートで受信し，パイプラインにインプットする．
+受信したログを指定されたポートで受信し、パイプラインにインプットする。
 
 #### ▼ セットアップ
 
@@ -306,7 +306,7 @@ $ /fluent-bit/bin/fluent-bit \
 
 #### ▼ tailプラグインとは
 
-指定したパスに継続的にアウトプットされるログファイルを順次結合し，パイプラインにインプットする．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
+指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、```Path```でこれを指定する。```v1.8```を境にオプションが変わっていることに注意する。
 
 #### ▼ セットアップ
 
@@ -318,7 +318,7 @@ $ /fluent-bit/bin/fluent-bit \
 [INPUT]
     # プラグイン名
     Name              tail
-    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
+    # FluentBitコンテナ内のログファイルの場所。ワイルドカードを使用できる。
     Path              /var/www/foo/storage/logs/*.log
     # 使用するパーサー名
     multiline.parser  laravel-multiline-parser
@@ -376,7 +376,7 @@ $ fluent-bit \
 
 ![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_parser.png)
 
-非構造化ログを構造化ログに変換する．
+非構造化ログを構造化ログに変換する。
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
 
@@ -388,7 +388,7 @@ $ fluent-bit \
 
 ![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_filter.png)
 
-ログのキーや値を加工する．
+ログのキーや値を加工する。
 
 参考：
 
@@ -401,7 +401,7 @@ $ fluent-bit \
 
 #### ▼ grepプラグインとは
 
-ログが構造化ログの場合に，マッチしたキーにマッチするログ以外を破棄する．
+ログが構造化ログの場合に、マッチしたキーにマッチするログ以外を破棄する。
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/grep
 
@@ -420,7 +420,7 @@ $ fluent-bit \
 
 #### ▼ modifyプラグインとは
 
-ログが構造化ログの場合に，キーや値の追加/コピー/変更/削除を実行する．
+ログが構造化ログの場合に、キーや値の追加/コピー/変更/削除を実行する。
 
 #### ▼ セットアップ
 
@@ -441,8 +441,8 @@ $ fluent-bit \
     Set             updated_key updated_value
     # 削除するキー
     Remove          deleted_key
-    # 削除対象キーの最初の文字（前方一致）．
-    # もしこれ以外の文字列で始まる場合は，削除の非対象とする．
+    # 削除対象キーの最初の文字（前方一致）。
+    # もしこれ以外の文字列で始まる場合は、削除の非対象とする。
     Remove_wildcard ignored_key
 ```
 
@@ -452,7 +452,7 @@ $ fluent-bit \
 
 #### ▼ multilineプラグインとは
 
-マッチした複数行のログを結合する．結合ルールは，MULTILINE_PARSERの設定ファイルに定義し，これをSERVICEで読み込む必要がある．ただ，本番環境ではログが複数行にならないようにアプリケーション側で実装を行い，ログを収集して可視化する段階でフィルタリングできれば問題ない，という考え方もある．
+マッチした複数行のログを結合する。結合ルールは、MULTILINE_PARSERの設定ファイルに定義し、これをSERVICEで読み込む必要がある。ただ、本番環境ではログが複数行にならないようにアプリケーション側で実装を行い、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。
 
 参考：https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
 
@@ -475,7 +475,7 @@ $ fluent-bit \
     multiline.parser      laravel
 ```
 
-コマンドの```-f```オプションでINPUT名を指定し，実行もできる．
+コマンドの```-f```オプションでINPUT名を指定し、実行もできる。
 
 ```bash
 Filters
@@ -499,13 +499,13 @@ Filters
 
 #### ▼ MULTILINE_PARSER
 
-複数行のログを結合するためのルールを設定する．ここで定義したパーサー名を，multilineプラグインで指定する必要がある．
+複数行のログを結合するためのルールを設定する。ここで定義したパーサー名を、multilineプラグインで指定する必要がある。
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
 **＊実装例＊**
 
-Laravelのスタックトレースを結合する．
+Laravelのスタックトレースを結合する。
 
 ```bash
 [MULTILINE_PARSER]
@@ -516,13 +516,13 @@ Laravelのスタックトレースを結合する．
     # フラッシュ時間
     flush_timeout 1000
     
-    # パーサールール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
+    # パーサールール。スタックトレースの文頭をstart_state、また以降に結合する文字列をcontで指定する。
     # 開始地点
-    # [%Y-%m-%d %H:%M:%S] をスタックトレースの開始地点とする．
+    # [%Y-%m-%d %H:%M:%S] をスタックトレースの開始地点とする。
     rule          "start_state" "/\[[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\s+([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\].*/" "cont"
     
     # スタックトレース
-    # [stacktrace]，[previous exception]，#，行間，"} ，で始まる文字列の場合に結合する．
+    # [stacktrace]、[previous exception]、#、行間、"} 、で始まる文字列の場合に結合する。
     rule          "cont" "/(\[(stacktrace|previous exception)\]|#|\n\n|"\}).*/" "cont"
     
     # アプリケーション独自仕様のログ
@@ -535,24 +535,24 @@ Laravelのスタックトレースを結合する．
 
 #### ▼ parserプラグインとは
 
-マッチしたログを解析し，正規表現の名前付きキャプチャ機能（```?<foo>```）を使用して新しいキーに文字列を抽出する．
+マッチしたログを解析し、正規表現の名前付きキャプチャ機能（```?<foo>```）を使用して新しいキーに文字列を抽出する。
 
 参考：
 
 - https://docs.fluentbit.io/manual/pipeline/filters/parser
 - https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression
 
-FluentBitでの名前付きキャプチャについては，Fluentdのドキュメントを参考にせよ．
+FluentBitでの名前付きキャプチャについては、Fluentdのドキュメントを参考にせよ。
 
 参考：https://docs.fluentd.org/parser/regexp
 
 #### ▼ バリデーション
 
-FluentBitは，内部的にはruby製関数を使用して正規表現を検証している．そのため，これを確認できるバリデーションツールを使用する．
+FluentBitは、内部的にはruby製関数を使用して正規表現を検証している。そのため、これを確認できるバリデーションツールを使用する。
 
 参考：http://rubular.com/
 
-あるいは，Fluentdの正規表現チェッカーでも良い．
+あるいは、Fluentdの正規表現チェッカーでも良い。
 
 参考：http://fluentular.herokuapp.com/
 
@@ -566,7 +566,7 @@ FluentBitは，内部的にはruby製関数を使用して正規表現を検証�
 
 #### ▼ stdoutプラグインとは
 
-マッチしたログを，OUTPUTを経ずにそのまま標準出力に出力する．FILTERまでのパイプラインが正しく機能しているかのデバッグとして役立つ．
+マッチしたログを、OUTPUTを経ずにそのまま標準出力に出力する。FILTERまでのパイプラインが正しく機能しているかのデバッグとして役立つ。
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
 
@@ -619,7 +619,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
 
-現在のデータストリームからログを抽出し，新しいストリームを作成する．このストリームは，パイプラインのINPUTに再び取り込まれ，処理し直される．同時に，SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある．
+現在のデータストリームからログを抽出し、新しいストリームを作成する。このストリームは、パイプラインのINPUTに再び取り込まれ、処理し直される。同時に、SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある。
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
@@ -634,13 +634,13 @@ Fluent Bit v1.8.6
 
 #### ▼ SQLステートメントとは
 
-STREAM_TASKセッションは，独自のSQLステートメントで定義される．
+STREAM_TASKセッションは、独自のSQLステートメントで定義される。
 
 参考：https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
 
 #### ▼ CREATE STREAM
 
-SELECTステートメントの結果を使用して，データストリームを作成する．
+SELECTステートメントの結果を使用して、データストリームを作成する。
 
 参考：
 
@@ -652,31 +652,31 @@ SELECTステートメントの結果を使用して，データストリーム�
 ```bash
 [STREAM_TASK]
     Name foo-stream-task
-    # SELECT句の結果からfooデータストリームを作成する．
+    # SELECT句の結果からfooデータストリームを作成する。
     Exec CREATE STREAM foo AS SELECT * FROM TAG:'foo';
     
 [STREAM_TASK]
     Name bar-stream-task
-    # SELECT句の結果に，WITH句でbarタグを付与し，barデータストリームを作成する．
+    # SELECT句の結果に、WITH句でbarタグを付与し、barデータストリームを作成する。
     Exec CREATE STREAM bar WITH (tag='bar') AS SELECT * FROM TAG:'bar';
 ```
 
 #### ▼ SELECT
 
-マッチしたログから，指定したキーを抽出する．
+マッチしたログから、指定したキーを抽出する。
 
 参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement
 
 **＊実装例＊**
 
-タグが```*-bar-*```（ワイルドカード指定）であるログのうち，```container_name```キー値が```qux```であるものだけをフィルタリングし，これの```log```キーを抽出する．
+タグが```*-bar-*```（ワイルドカード指定）であるログのうち、```container_name```キー値が```qux```であるものだけをフィルタリングし、これの```log```キーを抽出する。
 
 ```bash
 SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ```
 
 ```bash
-# 本来，改行はないが，わかりやすいように改行している．
+# 本来、改行はないが、わかりやすいように改行している。
 # <コンテナ名>-foo-<タスクID>
 [0] foo-bar-baz: [
     {
@@ -696,7 +696,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_buffer.png)
 
-ログを蓄え，またこれを順番にROUTINGに渡す．
+ログを蓄え、またこれを順番にROUTINGに渡す。
 
 参考：
 
@@ -713,11 +713,11 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 #### ▼ storage.type
 
-バッファーとして使用する媒体を設定する．
+バッファーとして使用する媒体を設定する。
 
 **＊実装例＊**
 
-メモリ上でバッファリングを実行する．デフォルト値である．
+メモリ上でバッファリングを実行する。デフォルト値である。
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
@@ -728,13 +728,13 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 [INPUT]
     name          cpu
-    # メモリ上でバッファリングが実行される（デフォルト値）．
+    # メモリ上でバッファリングが実行される（デフォルト値）。
     storage.type  memory
 ```
 
 **＊実装例＊**
 
-ファイル上でバッファリングを実行する．
+ファイル上でバッファリングを実行する。
 
 参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
@@ -747,11 +747,11 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 [INPUT]
     name          cpu
-    # ファイル上でバッファリングが実行される．
+    # ファイル上でバッファリングが実行される。
     storage.type  filesystem
 ```
 
-指定した場所に```cpu.0```ディレクトリが生成され，そこにあるflbファイル上でバッファリングが実行される．
+指定した場所に```cpu.0```ディレクトリが生成され、そこにあるflbファイル上でバッファリングが実行される。
 
 ```bash
 $ ls -ls /var/log/fluent-bit/cpu.0
@@ -765,20 +765,20 @@ $ ls -ls /var/log/fluent-bit/cpu.0
 
 <br>
 
-## 03-07. ROUTING，OUTPUT
+## 03-07. ROUTING、OUTPUT
 
-### ROUTING，OUTPUTとは
+### ROUTING、OUTPUTとは
 
 ![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_output.png)
 
-ログのアウトプット先を設定する．設定できるアウトプット先の種類については，以下のリンクを参考にせよ．
+ログのアウトプット先を設定する。設定できるアウトプット先の種類については、以下のリンクを参考にせよ。
 
 参考：
 
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
-コマンドの```-o```オプションでINPUT名を指定し，実行もできる．
+コマンドの```-o```オプションでINPUT名を指定し、実行もできる。
 
 ```bash
 Outputs
@@ -829,7 +829,7 @@ Outputs
 
 #### ▼ セットアップ
 
-AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する．
+AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する。
 
 参考：https://github.com/aws/aws-for-fluent-bit
 
@@ -839,15 +839,15 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 #### ▼ cloudwatch_logプラグインとは
 
-ログをCloudWatchログにルーティングする．
+ログをCloudWatchログにルーティングする。
 
 #### ▼ セットアップ
 
-cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを使用する．
+cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
-設定ファイルに予約されたAWS変数については，以下のリンクを参考にせよ．
+設定ファイルに予約されたAWS変数については、以下のリンクを参考にせよ。
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
@@ -860,12 +860,12 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     Name              cloudwatch_logs
     # ルーティング先とするログのタグ
     Match             laravel
-    # アウトプットJSONのうち，宛先にルーティングするキー名
+    # アウトプットJSONのうち、宛先にルーティングするキー名
     log_key           log
     region            ap-northeast-1
-    # 予約変数あり．
+    # 予約変数あり。
     log_group_name    /prd-foo-ecs-container/laravel/log
-    # ログストリーム名．予約変数あり．タスクIDなどアウトプットできる．
+    # ログストリーム名。予約変数あり。タスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
     
 [OUTPUT]
@@ -877,7 +877,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     log_stream_name   container/nginx/$(ecs_task_id)
 ```
 
-CloudWatchログに送信されるデータはJSON型である．```log```キーにログが割り当てられている．特定のキーの値のみをCloudWatchログに送信する場合，log_keyオプションでキー名を設定する．例えば，```log```キーのみを送信する場合，『```log```』と設定する．
+CloudWatchログに送信されるデータはJSON型である。```log```キーにログが割り当てられている。特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。例えば、```log```キーのみを送信する場合、『```log```』と設定する。
 
 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
 
@@ -900,11 +900,11 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ datadogプラグインとは
 
-ログをdatadogプラグインにルーティングする．
+ログをdatadogプラグインにルーティングする。
 
 #### ▼ セットアップ
 
-全てのベースイメージにデフォルトでdatadogプラグインがインストールされているため，datadogプラグインのインストールは不要である．
+全てのベースイメージにデフォルトでdatadogプラグインがインストールされているため、datadogプラグインのインストールは不要である。
 
 参考：https://github.com/DataDog/fluent-plugin-datadog
 
@@ -921,7 +921,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
     Host              http-intake.logs.datadoghq.com
     TLS               on
     compress          gzip
-    # DatadogのAPIキー．
+    # DatadogのAPIキー。
     apikey            *****
     # DatadogログエクスプローラーにおけるService名
     dd_service        prd-foo
@@ -950,7 +950,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ kinesis_firehoseプラグインとは
 
-ログをKinesisFirehoseにルーティングする．kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを使用する．
+ログをKinesisFirehoseにルーティングする。kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 
@@ -960,7 +960,7 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ kinesis_streamsプラグインとは
 
-ログをKinesisStreamsにルーティングする．kinesis_streamsプラグインがあらかじめインストールされているベースイメージを使用する．
+ログをKinesisStreamsにルーティングする。kinesis_streamsプラグインがあらかじめインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
 
@@ -970,11 +970,11 @@ CloudWatchログに送信されるデータはJSON型である．```log```キー
 
 #### ▼ newRelicプラグインとは
 
-ログをNewRelicにルーティングする．
+ログをNewRelicにルーティングする。
 
 #### ▼ セットアップ
 
-newRelicプラグインがあらかじめインストールされているベースイメージを使用する．
+newRelicプラグインがあらかじめインストールされているベースイメージを使用する。
 
 参考：https://github.com/newrelic/newrelic-fluent-bit-output
 
@@ -984,7 +984,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 #### ▼ stdoutプラグインとは
 
-標準出力にアウトプットする，FluentBitの実行ログに混じって，対象のログがアウトプットされることになる．
+標準出力にアウトプットする、FluentBitの実行ログに混じって、対象のログがアウトプットされることになる。
 
 ```bash
  [OUTPUT]
@@ -998,7 +998,7 @@ newRelicプラグインがあらかじめインストールされているベー
 
 #### ▼ nullプラグインとは
 
-アウトプットを破棄する．
+アウトプットを破棄する。
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs/null
 

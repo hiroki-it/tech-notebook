@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Serverless Framework
-description: コマンド＠Serverless Frameworkの知見をまとめました．
+description: コマンド＠Serverless Frameworkの知見をまとめました。
 ---
 
 # コマンド＠Serverless Framework
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -37,7 +37,7 @@ $ serverless print --FOO foo
 
 #### ▼ deployとは
 
-クラウドインフラを構築する．
+クラウドインフラを構築する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
@@ -48,7 +48,7 @@ $ serverless deploy
 
 #### ▼ パラメーター
 
-パラメーターを```serverless.yml```ファイルに渡し，```serverless deploy```コマンドを実行する．
+パラメーターを```serverless.yml```ファイルに渡し、```serverless deploy```コマンドを実行する。
 
 ```bash
 $ serverless deploy --FOO foo
@@ -56,7 +56,7 @@ $ serverless deploy --FOO foo
 
 #### ▼ -v
 
-実行ログを表示しつつ，```serverless deploy```コマンドを実行する．
+実行ログを表示しつつ、```serverless deploy```コマンドを実行する。
 
 ```bash
 $ serverless deploy -v

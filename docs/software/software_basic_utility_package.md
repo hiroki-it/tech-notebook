@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】パッケージ＠ユーティリティ
-description: パッケージ＠ユーティリティの知見をまとめました．
+description: パッケージ＠ユーティリティの知見をまとめました。
 ---
 
 # パッケージ＠ユーティリティ
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -41,7 +41,7 @@ $ yum install -y bind-utils
 
 #### ▼ nslookupとは
 
-正引き/逆引きによる名前解決を行う．もしドメイン名に複数のIPアドレスが割り当てられている場合，正引きを行うと，全てのIPアドレスが返却される．
+正引き/逆引きによる名前解決を行う。もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。
 
 **＊例＊**
 
@@ -71,13 +71,13 @@ Address:  172.217.175.3 # IPv4アドレス
 
 #### ▼ -type
 
-正引き/逆引きによる名前解決を行い，この時に指定したレコードタイプのレコード値を返却させる．
+正引き/逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 **＊例＊**
 
-名前解決を行い，NSレコード値を返却させる．
+名前解決を行い、NSレコード値を返却させる。
 
 ```bash
 $ nslookup -type=NS google.co.jp
@@ -138,7 +138,7 @@ $ yum install -y net-tools
 
 #### ▼ -plunt
 
-オプション（```-p```，```-l```，```-u```，```-n```，```-t```）の組み合わせ．各プロセスが開放しているポート番号，ポート番号で受信するプロトコル，接続状態，などの一覧を表示する．
+オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を表示する。
 
 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
@@ -185,7 +185,7 @@ $ apt-get install pstree
 
 #### ▼ pstreeとは
 
-プロセスの親子関係をツリー状に表示する．
+プロセスの親子関係をツリー状に表示する。
 
 ```bash
 # MacOSの場合
@@ -221,19 +221,19 @@ $ pip3 install supervisor
 
 #### ▼ supervisor
 
-Python製のユーティリティであり，常駐プロセスを一括で管理する．
+Python製のユーティリティであり、常駐プロセスを一括で管理する。
 
 参考：http://supervisord.org/index.html
 
 #### ▼ supervisorctl
 
-supervisordを操作する．
+supervisordを操作する。
 
 参考：http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
-supervisor自体のプロセスのこと．
+supervisor自体のプロセスのこと。
 
 参考：http://supervisord.org/introduction.html#supervisor-components
 
@@ -243,7 +243,7 @@ supervisor自体のプロセスのこと．
 
 #### ▼ supervisordセクションとは
 
-supervisorの```supervisord```プロセスのプールを設定する．
+supervisorの```supervisord```プロセスのプールを設定する。
 
 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
@@ -255,7 +255,7 @@ supervisorの```supervisord```プロセスのプールを設定する．
 
 #### ▼ directory
 
-常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する．
+常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する。
 
 ```ini
 [supervisord]
@@ -264,7 +264,7 @@ directory=/var/www/foo
 
 #### ▼ logfile
 
-supervisordのログファイルの場所を設定する．
+supervisordのログファイルの場所を設定する。
 
 ```ini
 [supervisord]
@@ -273,7 +273,7 @@ logfile=/var/log/supervisor/supervisord.log
 
 #### ▼ loglevel
 
-supervisordのログレベルを設定する．
+supervisordのログレベルを設定する。
 
 ```ini
 [supervisord]
@@ -282,7 +282,7 @@ loglevel=info
 
 #### ▼ nodaemon
 
-supervisordをフォアグラウンドで起動するかどうかを設定する．
+supervisordをフォアグラウンドで起動するかどうかを設定する。
 
 ```ini
 [supervisord]
@@ -291,7 +291,7 @@ nodaemon=true
 
 #### ▼ pidfile
 
-supervisordのpidが記載されるファイルを設定する．
+supervisordのpidが記載されるファイルを設定する。
 
 ```ini
 [supervisord]
@@ -300,7 +300,7 @@ pidfile=/var/tmp/supervisor/supervisord.pid
 
 #### ▼ redirect_stderr
 
-標準出力への出力を標準エラー出力に転送する可動化を設定する．
+標準出力への出力を標準エラー出力に転送する可動化を設定する。
 
 ```ini
 [supervisord]
@@ -309,7 +309,7 @@ redirect_stderr=true
 
 #### ▼ user
 
-supervisordの実行ユーザーを設定する．
+supervisordの実行ユーザーを設定する。
 
 ```ini
 [supervisord]
@@ -322,7 +322,7 @@ user=root
 
 #### ▼ programセクションとは
 
-常駐プログラムのプロセスを設定する．
+常駐プログラムのプロセスを設定する。
 
 参考：
 
@@ -341,7 +341,7 @@ user=root
 
 #### ▼ autorestart
 
-常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する．
+常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する。
 
 ```ini
 [program:foo]
@@ -350,7 +350,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時に常駐プロセスを自動的に起動させるかどうか，を設定する．
+supervisordの起動時に常駐プロセスを自動的に起動させるかどうか、を設定する。
 
 ```ini
 [program:foo]
@@ -359,7 +359,7 @@ autostart=true
 
 #### ▼ command
 
-常駐プロセスの起動コマンドを設定する．
+常駐プロセスの起動コマンドを設定する。
 
 ```ini
 [program:foo]
@@ -368,7 +368,7 @@ command=/usr/sbin/crond -n
 
 #### ▼ redirect_stderr
 
-常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する．
+常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する。
 
 ```ini
 [program:foo]
@@ -377,16 +377,16 @@ redirect_stderr=true
 
 #### ▼ startretries
 
-常駐プロセスの起動に失敗した場合に，何回再試行するかを設定する．
+常駐プロセスの起動に失敗した場合に、何回再試行するかを設定する。
 
 ```ini
 [program:foo]
 startretries=10
 ```
 
-#### ▼ stdout_logfile，stderr_logfile
+#### ▼ stdout_logfile、stderr_logfile
 
-常駐プロセスの標準出力/標準エラー出力の出力先を設定する．デフォルト値は```/var/log/supervisor```ディレクトリである．もし，```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は，```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある．
+常駐プロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -404,7 +404,7 @@ stderr_logfile_maxbytes=0
 
 #### ▼ stdout_logfile_backups
 
-ログローテートによって作成されるバックアップの世代数．
+ログローテートによって作成されるバックアップの世代数。
 
 ```ini
 [program:foo]
@@ -413,7 +413,7 @@ stdout_logfile_backups=10
 
 #### ▼ stdout_logfile_maxbytes
 
-ログファイルの最大サイズ．設定値を超えると，ログローテートが実行される．これにより，ログファイルがバックアップとして保存され，新しいログファイルが作成される．
+ログファイルの最大サイズ。設定値を超えると、ログローテートが実行される。これにより、ログファイルがバックアップとして保存され、新しいログファイルが作成される。
 
 ```ini
 [program:foo]
@@ -422,7 +422,7 @@ stdout_logfile_maxbytes=50MB
 
 #### ▼ user
 
-常駐プロセスの実行ユーザーを設定する．
+常駐プロセスの実行ユーザーを設定する。
 
 ```ini
 [program:foo]
@@ -442,7 +442,7 @@ priority=999
 
 #### ▼ programs
 
-グループ化する常駐プロセス名を設定する．
+グループ化する常駐プロセス名を設定する。
 
 ```ini
 [group]
@@ -455,7 +455,7 @@ programs=bar,baz
 
 #### ▼ restart
 
-指定した常駐プロセスを再起動する．```all```とした場合は，全てを再起動する．
+指定した常駐プロセスを再起動する。```all```とした場合は、全てを再起動する。
 
 参考：http://supervisord.org/running.html#supervisorctl-actions
 
@@ -465,7 +465,7 @@ $ supervisorctl restart <常駐プロセス名>
 
 #### ▼ update
 
-もし```supervisord.conf```ファイルの設定を変更した場合に，これを読み出し直す．
+もし```supervisord.conf```ファイルの設定を変更した場合に、これを読み出し直す。
 
 参考：http://supervisord.org/running.html#supervisorctl-actions
 
@@ -481,16 +481,16 @@ $ supervisorctl update
 
 #### ▼ systemctl
 
-デーモンを起動するsystemdを制御するためのユーティリティ．
+デーモンを起動するsystemdを制御するためのユーティリティ。
 
 #### ▼ systemd：system daemon
 
-各デーモンを，```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し，ユニットごとに起動する．ユニットは拡張子の違いで判別する．
+各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
 
 | ユニットの拡張子 | 説明                                       | デーモン例         |
 | ---------------- | ------------------------------------------ | ------------------ |
-| mount            | ファイルのマウントに関するデーモン．       |                    |
-| service          | プロセス起動停止に関するデーモン．         | httpd：http daemon |
+| mount            | ファイルのマウントに関するデーモン。       |                    |
+| service          | プロセス起動停止に関するデーモン。         | httpd：http daemon |
 | socket           | ソケットとプロセスの紐付けに関するデーモン |                    |
 
 <br>
@@ -515,24 +515,24 @@ $ apt-get install systemd
 
 ### disable
 
-OSの起動時にデーモンが自動起動しないように設定する．
+OSの起動時にデーモンが自動起動しないように設定する。
 
 ```bash
 $ systemctl disable <プロセス名>
 
-# 例：Cron，Apache
+# 例：Cron、Apache
 $ systemctl disable crond.service
 $ systemctl disable httpd.service
 ```
 
 ### enable
 
-OSの起動時にデーモンが自動起動するように設定する．
+OSの起動時にデーモンが自動起動するように設定する。
 
 ```bash
 $ systemctl enable <プロセス名>
 
-# 例：Cron，Apache
+# 例：Cron、Apache
 $ systemctl enable crond.service
 $ systemctl enable httpd.service
 ```
@@ -541,7 +541,7 @@ $ systemctl enable httpd.service
 
 ### list-unit-files
 
-デーモンのUnitの一覧を表示する．
+デーモンのUnitの一覧を表示する。
 
 ```bash
 $ systemctl list-unit-files --type=service
@@ -555,7 +555,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 
 ### reload
 
-プロセスを安全に再起動する．
+プロセスを安全に再起動する。
 
 ```bash
 $ sudo systemctl reload nginx
@@ -565,7 +565,7 @@ $ sudo systemctl reload nginx
 
 ### restart
 
-プロセスを強制的に再起動する．
+プロセスを強制的に再起動する。
 
 ```bash
 $ sudo systemctl restart httpd
@@ -579,7 +579,7 @@ $ sudo systemctl restart nginx
 
 ### start
 
-プロセスを起動する．
+プロセスを起動する。
 
 ```bash
 $ sudo systemctl start httpd
@@ -593,7 +593,7 @@ $ sudo systemctl start nginx
 
 ### stop
 
-プロセスを停止する．
+プロセスを停止する。
 
 ```bash
 $ sudo systemctl stop httpd
@@ -631,7 +631,7 @@ $ yum install -y tcpdump
 
 ### -i <ネットワークインターフェース名>
 
-指定したネットワークインターフェースにて，パケットの内容を表示する．
+指定したネットワークインターフェースにて、パケットの内容を表示する。
 
 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
@@ -643,7 +643,7 @@ sudo tcpdump -i eth0
 
 ### -nn <プロトコル名>
 
-全てのネットワークインターフェースにて，指定したプロトコルを使用したパケットの内容を表示する．
+全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を表示する。
 
 参考：https://go-journey.club/archives/1472
 
@@ -655,7 +655,7 @@ $ sudo tcpdump -nn ip
 
 ### -nn port <ポート番号>
 
-全てのネットワークインターフェースにて，指定したポート番号に対するパケットの内容を表示する．
+全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を表示する。
 
 参考：https://go-journey.club/archives/1472
 

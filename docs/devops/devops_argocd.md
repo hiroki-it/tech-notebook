@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】ArgoCD＠DevOps
-description: ArgoCD＠DevOpsの知見をまとめました．
+description: ArgoCD＠DevOpsの知見をまとめました。
 ---
 
 # ArgoCD＠DevOps
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,7 +19,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
-指定したブランチのコードの状態を監視する．プッシュによってコードが変更された場合に，Kubernetesの状態をこれに同期する．
+指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合に、Kubernetesの状態をこれに同期する。
 
 参考：
 
@@ -37,17 +37,17 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 ![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
 
-（１）アプリケーションリポジトリで，開発者がアプリケーションの変更をmainブランチにマージする．
+（１）アプリケーションリポジトリで、開発者がアプリケーションの変更をmainブランチにマージする。
 
-（２）CIツールが，イメージをECRにプッシュする．
+（２）CIツールが、イメージをECRにプッシュする。
 
-（３）CIツールは，マニフェストリポジトリをクローンし，マニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接的に実行する．変更したマニフェストをマニフェストリポジトリにプッシュする．
+（３）CIツールは、マニフェストリポジトリをクローンし、マニフェストファイルのイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。変更したマニフェストをマニフェストリポジトリにプッシュする。
 
-（４）プルリクを自動作成する．
+（４）プルリクを自動作成する。
 
-（５）マニフェストリポジトリで，リリース責任者がプルリクをmainブランチにマージする．
+（５）マニフェストリポジトリで、リリース責任者がプルリクをmainブランチにマージする。
 
-（６）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
@@ -59,13 +59,13 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 （２）同じ
 
-（３）CIツールは，マニフェストリポジトリをクローンし，チャート内のマニフェストファイルのイメージのハッシュ値を変更する．このマニフェストファイルの変更は，```yq```コマンドなどで直接的に実行する．
+（３）CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストファイルのイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。
 
 （４）同じ
 
 （５）同じ
 
-（６）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 参考：
 
@@ -80,11 +80,11 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
-（１）マニフェストリポジトリで，開発者がマニフェストファイルの変更をmainブランチにマージする．
+（１）マニフェストリポジトリで、開発者がマニフェストファイルの変更をmainブランチにマージする。
 
-（２）マニフェストリポジトリで，リリース責任者がマニフェストファイルやチャートの変更をmainブランチにマージする．
+（２）マニフェストリポジトリで、リリース責任者がマニフェストファイルやチャートの変更をmainブランチにマージする。
 
-（３）ArgoCDがマニフェストファイルの変更を検知し，Kubernetesにプルする．
+（３）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 <br>
 
@@ -100,7 +100,7 @@ description: ArgoCD＠DevOpsの知見をまとめました．
 
 参考：
 
-（１）ローカルマシンから本番環境にArgoCDをインストールする場合，```kubetcl```コマンドのコンテキストを間違える可能性がある．そのため，kubectlコマンド専用の踏み台サーバーを用意してもよい．EKSのコンテキストを作成し，kubectlコマンドの宛先を，EKSのkube-apiserverに変更する．
+（１）ローカルマシンから本番環境にArgoCDをインストールする場合、```kubetcl```コマンドのコンテキストを間違える可能性がある。そのため、kubectlコマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -114,31 +114,31 @@ $ kubectl config use-context <クラスターARN>
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 - http://linuxcommand2007.seesaa.net/article/476794217.html
 
-（２）ArgoCDが稼働する名前空間を作成する．
+（２）ArgoCDが稼働する名前空間を作成する。
 
 ```bash
 $ kubectl create namespace argocd
 ```
 
-（３）ArgoCDのマニフェストファイルを指定し，Kubernetes上にArgoCDをデプロイする．
+（３）ArgoCDのマニフェストファイルを指定し、Kubernetes上にArgoCDをデプロイする。
 
 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# デプロイされたことを確認する．
+# デプロイされたことを確認する。
 $ kubectl get all -n argocd
 ```
 
-（４）ArgoCDダッシュボードを公開する．
+（４）ArgoCDダッシュボードを公開する。
 
 ```bash
 $ kubectl patch svc argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-（５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する．
+（５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
@@ -146,7 +146,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-（６）```443```番ポートにルーティングできるロードバランサーを構築する．この時，IngressとIngressコントローラーを構築するか，```kubectl port-forward```コマンドなど実行する．```minikube tunnel```ではポート番号を指定できないことに注意する．
+（６）```443```番ポートにルーティングできるロードバランサーを構築する。この時、IngressとIngressコントローラーを構築するか、```kubectl port-forward```コマンドなど実行する。```minikube tunnel```ではポート番号を指定できないことに注意する。
 
 ```bash
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -154,7 +154,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 #### ▼ argocdコマンド経由
 
-（７）argocdコマンドをインストールする．
+（７）argocdコマンドをインストールする。
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -163,7 +163,7 @@ $ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/release
 $ chmod +x /usr/local/bin/argocd
 ```
 
-（８）ArgoCDにログインする．ユーザー名とパスワードを要求されるため，これらを入力する．
+（８）ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
 
 ```bash
 $ argocd login 127.0.0.1:8080
@@ -173,7 +173,7 @@ Password: *****
 'admin:login' logged in successfully
 ```
 
-（９）ArgoCDのアプリケーションを作成する．
+（９）ArgoCDのアプリケーションを作成する。
 
 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
 
@@ -189,19 +189,19 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（１０）ArgoCD上でアプリケーションの監視を実行する．事前に```--dry-run```キーで監視対象のリソースを確認すると良い．監視対象のリポジトリ（GitHub，Helm）の最新コミットが更新されると，これを自動的にプルしてくれる．アプリケーションのデプロイにはCircleCIが関与しておらず，Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する．
+（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象のリポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのデプロイにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する。
 
 ```bash
 $ argocd app sync guestbook --dry-run
 ```
 
-（１１）自動同期を有効化する．
+（１１）自動同期を有効化する。
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
 ```
 
-（１２）クラウドプロバイダーのイメージレジストリやチャートレジストリを使用している場合は，ログインが必要になる．
+（１２）クラウドプロバイダーのイメージレジストリやチャートレジストリを使用している場合は、ログインが必要になる。
 
 参考：
 
@@ -220,7 +220,7 @@ $ argocd repo add oci://<チャートレジストリ名> \
 
 #### ▼ マニフェストファイル経由
 
-（７）argocdコマンドの代わりに，マニフェストファイルでArgoCDを操作しても良い．
+（７）argocdコマンドの代わりに、マニフェストファイルでArgoCDを操作しても良い。
 
 ```bash
 $ kubectl apply -f application.yaml
@@ -254,7 +254,7 @@ spec:
 
 #### ▼ argocdコマンド経由
 
-ArgoCDのApplicationを削除する．```--cascade```キーを有効化すると，ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる．
+ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる。
 
 参考：
 
@@ -265,7 +265,7 @@ ArgoCDのApplicationを削除する．```--cascade```キーを有効化すると
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-もし，Applicationが削除中のまま進行しない時は，Applicationのマニフェストファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する．
+もし、Applicationが削除中のまま進行しない時は、Applicationのマニフェストファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する。
 
 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
@@ -277,7 +277,7 @@ $ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  finalizers: [] # <--- 空配列に変更する．
+  finalizers: [] # <--- 空配列に変更する。
 spec:
 
 # 〜 中略 〜
@@ -285,7 +285,7 @@ spec:
 
 #### ▼ kubectlコマンド経由
 
-ArgoCDのApplicationを削除する．
+ArgoCDのApplicationを削除する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
@@ -299,13 +299,13 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ 別のデプロイツールを使用する
 
-実装が複雑になることを避けるため，開発環境に対するデプロイには，ArgoCD以外のツールを使用する．
+実装が複雑になることを避けるため、開発環境に対するデプロイには、ArgoCD以外のツールを使用する。
 
 （例）Skaffold
 
 #### ▼ ローカルマシンを監視
 
-ローカルマシンのディレクトリをリポジトリとして監視する．あらかじめ，リポジトリの自動プルの設定を無効化しておく必要がある．
+ローカルマシンのディレクトリをリポジトリとして監視する。あらかじめ、リポジトリの自動プルの設定を無効化しておく必要がある。
 
 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
 
@@ -321,13 +321,13 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ repositoryとは
 
-監視対象のマニフェストリポジトリ，チャートレジストリ，OCIレジストリの認証情報を設定する．
+監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
 
 #### ▼ マニフェストリポジトリの場合
 
-マニフェストリポジトリの認証情報を設定する．マニフェストレジストリごとに，別々のSecretで認証情報を設定する必要がある．ただし，1つのチャートレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
@@ -343,7 +343,7 @@ stringData:
   name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
   url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
   type: git
-  # SSHによる認証の場合は秘密鍵を設定する．
+  # SSHによる認証の場合は秘密鍵を設定する。
   sshPrivateKey: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
 ---
@@ -358,7 +358,7 @@ stringData:
   name: foo-istio-registry # 任意のマニフェストリポジトリ名
   url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
   type: git
-  # SSHによる認証の場合は秘密鍵を設定する．
+  # SSHによる認証の場合は秘密鍵を設定する。
   sshPrivateKey: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```
@@ -366,7 +366,7 @@ stringData:
 
 #### ▼ チャートレジストリの場合
 
-チャートレジストリの認証情報を設定する．チャートレジストリごとに，別々のSecretで認証情報を設定する必要がある．ただし，1つのチャートレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
+チャートレジストリの認証情報を設定する。チャートレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 参考：
 
@@ -405,7 +405,7 @@ stringData:
 
 #### ▼ OCIレジストリの場合
 
-OCIレジストリの認証情報を設定する．OCIプロトコルの有効化（```enableOCI```キー）が必要であるが，内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため，プロトコルの設定は不要である．チャートレジストリと同様にして，OCIレジストリごとに別々のSecretで認証情報を設定する必要がある．ただし，1つのOCIレジストリ内のリポジトリしか監視しない場合は，Secretは1つでよい．
+OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに別々のSecretで認証情報を設定する必要がある。ただし、1つのOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 参考：
 
@@ -445,7 +445,7 @@ stringData:
   enableOCI: "true"
 ```
 
-AWS ECRのように認証情報に有効期限がある場合は，認証情報を定期的に書き換えられるようにする．例えば，aws-ecr-credentialチャートを使用する．
+AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
 参考：
 
@@ -461,13 +461,13 @@ AWS ECRのように認証情報に有効期限がある場合は，認証情報�
 
 #### ▼ Kuberneresリソースの監視
 
-Kubernetesのカスタムリソースから定義される．監視対象のKubernetesリソースやカスタムリソースを設定する．
+Kubernetesのカスタムリソースから定義される。監視対象のKubernetesリソースやカスタムリソースを設定する。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
 
 #### ▼ 自己監視
 
-Application自体もカスタムリソースなため，ApplicationがApplication自身のソースの変更を監視し，同期できる．
+Application自体もカスタムリソースなため、ApplicationがApplication自身のソースの変更を監視し、同期できる。
 
 参考：
 
@@ -481,7 +481,7 @@ Application自体もカスタムリソースなため，ApplicationがApplicatio
 
 #### ▼ projectとは
 
-アプリケーションのプロジェクト名を設定する．プロジェクト名は『```default```』とする必要がある．（理由は要調査）
+アプリケーションのプロジェクト名を設定する。プロジェクト名は『```default```』とする必要がある。（理由は要調査）
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -501,15 +501,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ，チャートレジストリ，の変更を監視し，これらからプルしたマニフェストファイルをデプロイする．
+マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストファイルをデプロイする。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 | リポジトリの種類                                   | 管理方法                     | マニフェストファイルのデプロイ方法                           |
 |--------------------------------------------| ---------------------------- | ------------------------------------------------------------ |
-| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする．                               |
-| チャートレジストリ（ArtifactHub，GitHub，GitHub Pages） | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
-| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して，ArgoCDで間接的にデプロイする．パラメーターに応じて，内部的にhelmコマンドが実行される． |
+| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的にデプロイする。                               |
+| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にデプロイする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にデプロイする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
 
 <br>
 
@@ -517,7 +517,7 @@ spec:
 
 #### ▼ directory
 
-監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する．```path```キーで指定したディレクトリの構造に合わせて，特定のマニフェストファイルを指定できるようにする．2022/04現在，Kubernetes以外のリソース（Istioなど）のAPIはコールできず，リソースをデプロイできないことに注意する．
+監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のマニフェストファイルを指定できるようにする。
 
 参考：
 
@@ -526,9 +526,9 @@ spec:
 
 | 設定項目      | 説明                                                         |
 | ------------- | ------------------------------------------------------------ |
-| ```include``` | ```path```キーで指定したディレクトリ内で，特定のマニフェストファイルのみを指定する． |
-| ```exclude``` | ```path```キーで指定したディレクトリ内で，特定のマニフェストファイルを除外する． |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に，全てのマニフェストファイルを指定できるように，ディレクトリ内の再帰的検出を有効化する． |
+| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定する。 |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外する。 |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -545,7 +545,7 @@ spec:
 
 #### ▼ path
 
-監視対象のマニフェストリポジトリのディレクトリを設定する．
+監視対象のマニフェストリポジトリのディレクトリを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -560,7 +560,7 @@ spec:
 
 #### ▼ repoURL
 
-監視対象のマニフェストリポジトリのURLを設定する．
+監視対象のマニフェストリポジトリのURLを設定する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -577,7 +577,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する．
+監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -598,7 +598,7 @@ spec:
 
 #### ▼ chart
 
-監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する．
+監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
@@ -615,7 +615,7 @@ spec:
 
 #### ▼ helm
 
-helmコマンドに相当するパラメーターを設定する．
+helmコマンドに相当するパラメーターを設定する。
 
 参考：
 
@@ -624,9 +624,9 @@ helmコマンドに相当するパラメーターを設定する．
 
 | 設定項目          | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```releaseName``` | デプロイするリリース名を設定する．                           |                                                              |
-| ```values```      | デフォルト値を，```values```ファイルとしてではなく，ArgoCDのマニフェストファイルにハードコーディングして定義する． |                                                              |
-| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する．         | ```values```ファイルは，チャートリポジトリ内にある必要がある． |
+| ```releaseName``` | デプロイするリリース名を設定する。                           |                                                              |
+| ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのマニフェストファイルにハードコーディングして定義する。 |                                                              |
+| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -644,7 +644,7 @@ spec:
 
 #### ▼ repoURL
 
-監視対象のチャートレジストリ内のリポジトリのURLを設定する．
+監視対象のチャートレジストリ内のリポジトリのURLを設定する。
 
 参考：
 
@@ -664,7 +664,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のチャートレジストリ内のリポジトリのブランチやバージョンタグを設定する．チャートリポジトリとして，GitHubやArtifactHubを指定できる．
+監視対象のチャートレジストリ内のリポジトリのブランチやバージョンタグを設定する。チャートリポジトリとして、GitHubやArtifactHubを指定できる。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -685,15 +685,15 @@ spec:
 
 #### ▼ chart
 
-チャートレジストリと同じ．
+チャートレジストリと同じ。
 
 #### ▼ helm
 
-チャートレジストリと同じ．
+チャートレジストリと同じ。
 
 #### ▼ repoURL
 
-監視対象のOCIレジストリ内のリポジトリのURLを設定する．
+監視対象のOCIレジストリ内のリポジトリのURLを設定する。
 
 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
@@ -710,7 +710,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のOCIレジストリ内のリポジトリのバージョンタグを設定する．
+監視対象のOCIレジストリ内のリポジトリのバージョンタグを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -729,13 +729,13 @@ spec:
 
 #### ▼ destinationとは
 
-デプロイ先のKubernetesを設定する．
+デプロイ先のKubernetesを設定する。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ namespace
 
-デプロイ先の名前空間を設定する．
+デプロイ先の名前空間を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -750,7 +750,7 @@ spec:
 
 #### ▼ server
 
-デプロイ先のKubernetesのクラスターのURLを設定する．URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある．（理由は要調査）
+デプロイ先のKubernetesのクラスターのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -769,7 +769,7 @@ spec:
 
 #### ▼ syncPolicyとは
 
-GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を設定する．
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を設定する。
 
 参考：
 
@@ -778,15 +778,15 @@ GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期
 
 #### ▼ automated
 
-GitOpsでのリポジトリ（GitHub，Helm）とKubernetesの間の自動同期を有効化する．
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 | 設定項目         | 説明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| ```prune```      | リソースの削除を自動同期する．デフォルトでは，GtiHubリポジトリでマニフェストファイルが削除されても，ArgoCDはリソースの削除を自動同期しない． |
-| ```selfHeal```   | Kubernetes側に変更があった場合，リポジトリ（GitHub，Helm）の状態に戻すようにする．デフォルトでは，Kubernetes側のリソースを変更しても，リポジトリの状態に戻すための自動同期は実行されない． |
-| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する．<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
+| ```prune```      | リソースの削除を自動同期する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。 |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 |
+| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する。<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -804,7 +804,7 @@ spec:
 
 #### ▼ syncOptions
 
-GtiOpsでのマニフェストファイルの同期処理の詳細を設定する．
+GtiOpsでのマニフェストファイルの同期処理の詳細を設定する。
 
 参考：
 
@@ -813,7 +813,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 
 | 設定項目                     | 説明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
-| ```CreateNamespace```        | Applicationの作成対象の名前空間を自動的に作成する．ArgoCDがインストールされる名前空間と，Applicationを作成する名前空間が異なる場合に，これを有効化しておいた方が良い． |
+| ```CreateNamespace```        | Applicationの作成対象の名前空間を自動的に作成する。ArgoCDがインストールされる名前空間と、Applicationを作成する名前空間が異なる場合に、これを有効化しておいた方が良い。 |
 | ```Validate```               |                                                              |
 | ```PrunePropagationPolicy``` |                                                              |
 | ```PruneLast```              |                                                              |
@@ -838,7 +838,7 @@ spec:
 
 #### ▼ analysisとは
 
-Progressive Deliveryを使用する場合に，詳細を設定する．
+Progressive Deliveryを使用する場合に、詳細を設定する。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -872,13 +872,13 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイ手法を設定する．
+デプロイ手法を設定する。
 
 #### ▼ blueGreen
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
-ブルーグリーンデプロイメントを使用して，新しいPodをリリースする．
+ブルーグリーンデプロイメントを使用して、新しいPodをリリースする。
 
 参考：
 
@@ -887,11 +887,11 @@ spec:
 
 | 設定項目                    | 説明                                                         |
 | --------------------------- | ------------------------------------------------------------ |
-| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する．      |
-| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する．もし無効化した場合，```autoPromotionSeconds```の秒数だけ切り替えを待機する． |
-| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に，切り替えを待機する最大秒数を設定する．最大秒数が経過すると，自動で切り替わってしまうことに注意する． |
-| ```previewReplicaCount```   | グリーン環境のPod数を設定する．                              |
-| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する．    |
+| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する。      |
+| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
+| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
+| ```previewReplicaCount```   | グリーン環境のPod数を設定する。                              |
+| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する。    |
 | ```scaleDownDelaySeconds``` |                                                              |
 
 
@@ -915,7 +915,7 @@ spec:
 
 ![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
 
-カナリアリリースを使用して，新しいPodをリリースする．
+カナリアリリースを使用して、新しいPodをリリースする。
 
 参考：
 
@@ -924,7 +924,7 @@ spec:
 
 | キー       | 説明                                                         |
 | ---------- | ------------------------------------------------------------ |
-| ```step``` | カナリアリリースの手順を設定する．<br>・```setWeight```：新しいPodへの重み付けを設定する．<br>・```pause```：次の手順に移行せずに待機する．待機秒数を設定できる． |
+| ```step``` | カナリアリリースの手順を設定する。<br>・```setWeight```：新しいPodへの重み付けを設定する。<br>・```pause```：次の手順に移行せずに待機する。待機秒数を設定できる。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

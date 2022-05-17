@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】可観測性ツール＠Kubernetes
-description: 可観測性ツール＠Kubernetesの知見をまとめました．
+description: 可観測性ツール＠Kubernetesの知見をまとめました。
 ---
 
 # 可観測性ツール＠Kubernetes
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,7 +19,7 @@ description: 可観測性ツール＠Kubernetesの知見をまとめました．
 
 #### ▼ 仕組み
 
-KubernetesやIstioに関するメトリクスの収集/分析/可視化を行う．
+KubernetesやIstioに関するメトリクスの収集/分析/可視化を行う。
 
 参考：https://prometheus.io/docs/introduction/overview/
 
@@ -39,7 +39,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 #### ▼ 仕組み
 
-Prometheusで収集されたメトリクスを再収集し，Istioの可視化を拡張する．
+Prometheusで収集されたメトリクスを再収集し、Istioの可視化を拡張する。
 
 参考：https://kiali.io/docs/architecture/architecture/
 
@@ -79,7 +79,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 #### ▼ 仕組み
 
-KubernetesやIstioに関する分散トレースの収集/分析/可視化を行う．
+KubernetesやIstioに関する分散トレースの収集/分析/可視化を行う。
 
 参考：https://www.jaegertracing.io/docs/1.31/architecture/
 

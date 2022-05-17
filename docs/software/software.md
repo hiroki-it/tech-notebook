@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】ソフトウェア
-description: ソフトウェアの知見をまとめました．
+description: ソフトウェアの知見をまとめました。
 ---
 
 # ソフトウェア
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: ソフトウェアの知見をまとめました．
 
 ### ソフトウェアとは
 
-システムのうちで，『OS』『ミドルウェア』『アプリケーション（アプリケーションソフトウェア）』の要素を合わせたグループのこと．『OS』『ミドルウェア』『ハードウェア』をインフラとも呼ぶ．
+システムのうちで、『OS』『ミドルウェア』『アプリケーション（アプリケーションソフトウェア）』の要素を合わせたグループのこと。『OS』『ミドルウェア』『ハードウェア』をインフラとも呼ぶ。
 
 参考：https://thinkit.co.jp/article/11526
 
@@ -29,7 +29,7 @@ description: ソフトウェアの知見をまとめました．
 
 #### ▼ Twelve-Factorとは
 
-Webシステムのソフトウェアを開発する上でのベストプラクティスのこと．
+Webシステムのソフトウェアを開発する上でのベストプラクティスのこと。
 
 参考：https://12factor.net/ja/
 
@@ -49,13 +49,13 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 ![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ネイティブアプリ.png)
 
-端末のシステムによって稼働するアプリケーションのこと．一度ダウンロードしてしまえば，インターネットに繋がっていなくとも，使用できる．
+端末のシステムによって稼働するアプリケーションのこと。一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
 
 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
-Office，BookLiveのアプリ版
+Office、BookLiveのアプリ版
 
 <br>
 
@@ -65,21 +65,21 @@ Office，BookLiveのアプリ版
 
 #### ▼ Webアプリケーション
 
-Webサーバー上で稼働するソフトウェアのこと．URLをWebサーバーにリクエストすることにより利用でき，随時，Webサーバーとデータ通信を行う．全ての人が無料で利用できるものと，お金を払った人だけが利用できるものがある．
+Webサーバー上で稼働するソフトウェアのこと。URLをWebサーバーにリクエストすることにより利用でき、随時、Webサーバーとデータ通信を行う。全ての人が無料で利用できるものと、お金を払った人だけが利用できるものがある。
 
 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
-Googleアプリケーション，Amazon，BookLiveのブラウザ版，サイボウズ
+Googleアプリケーション、Amazon、BookLiveのブラウザ版、サイボウズ
 
 #### ▼ クラウドアプリケーション
 
-Webサーバー上のソフトウェアによって稼働するアプリケーションのうち，クラウドサービスを提供するもののこと．
+Webサーバー上のソフトウェアによって稼働するアプリケーションのうち、クラウドサービスを提供するもののこと。
 
 **＊例＊**
 
-Google Drive，Dropbox
+Google Drive、Dropbox
 
 <br>
 
@@ -89,7 +89,7 @@ Google Drive，Dropbox
 
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッドアプリ.png)
 
-端末でWebviewを稼働させ，ソフトウェアのHTLMファイルのレンダリングをWebview上で行うアプリケーションのこと．
+端末でWebviewを稼働させ、ソフトウェアのHTLMファイルのレンダリングをWebview上で行うアプリケーションのこと。
 
 参考：https://www.sbbit.jp/article/cont1/28197
 
@@ -139,15 +139,15 @@ Google Drive，Dropbox
 
 #### ▼ UNIX系OS
 
-UNIXを源流として派生したOS．現在では主に，Linux系統（緑色），BSD系統（黄色），SystemV系統（青色）の3つに分けられる．
+UNIXを源流として派生したOS。現在では主に、Linux系統（緑色）、BSD系統（黄色）、SystemV系統（青色）の3つに分けられる。
 
-※ちなみに，MacOSはBSD系統
+※ちなみに、MacOSはBSD系統
 
 ![UNIX系OSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Unix系OSの歴史.png)
 
 #### ▼ WindowsOS
 
-MS-DOSを源流として派生したOS．今では，全ての派生がWindows 10に集約された．
+MS-DOSを源流として派生したOS。今では、全ての派生がWindows 10に集約された。
 
 ![WindowsOSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WindowsOSの歴史.png)
 
@@ -167,7 +167,7 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 #### ▼ Linux系統とは
 
-Unixから分岐したLinuxは，さらに3系統（Debian，RedHat，Slackware）に分岐する．
+Unixから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware）に分岐する。
 
 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
@@ -175,7 +175,7 @@ Unixから分岐したLinuxは，さらに3系統（Debian，RedHat，Slackware�
 
 #### ▼ Debian系統
 
-Debian，Ubuntu，など
+Debian、Ubuntu、など
 
 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
@@ -188,7 +188,7 @@ Debian GNU/Linux 10 \n \l
 
 #### ▼ RedHat系統
 
-RedHat，CentOS，Fedora，など
+RedHat、CentOS、Fedora、など
 
 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
@@ -210,7 +210,7 @@ Slackwareなど
 
 #### ▼ BSD系統とは
 
-Unixから分岐したBSDは，さらに複数の系統（MacOSなど）に分岐する．
+Unixから分岐したBSDは、さらに複数の系統（MacOSなど）に分岐する。
 
 <br>
 
@@ -226,7 +226,7 @@ Unixから分岐したBSDは，さらに複数の系統（MacOSなど）に分�
 
 ### Firmwareとは
 
-ソフトウェア（ミドルウェア＋基本ソフトウェア）とハードウェアの間の段階にあるソフトウェア．ROMに組み込まれている．
+ソフトウェア（ミドルウェア＋基本ソフトウェア）とハードウェアの間の段階にあるソフトウェア。ROMに組み込まれている。
 
 ### BIOS：Basic Input/Output System
 
@@ -246,27 +246,27 @@ Windows 8以降で採用されている新しいFirmware
 
 ### OSSとは
 
-以下の条件を満たすソフトウェアをOSSと呼ぶ．アプリケーションソフトウェアから基本ソフトウェアまで，様々なものがある．
+以下の条件を満たすソフトウェアをOSSと呼ぶ。アプリケーションソフトウェアから基本ソフトウェアまで、様々なものがある。
 
-1. 利用者は，無償あるいは有償で自由に再配布できる．
+1. 利用者は、無償あるいは有償で自由に再配布できる。
 
-2. 利用者は，コードを入手できる．
+2. 利用者は、コードを入手できる。
 
-3. 利用者は，コードを自由に変更できる．また，変更後に提供する場合，異なるライセンスを追加できる．
+3. 利用者は、コードを自由に変更できる。また、変更後に提供する場合、異なるライセンスを追加できる。
 
-4. 差分情報の配布を認める場合には，同一性の保持を要求してもかまわない． ⇒ よくわからない
+4. 差分情報の配布を認める場合には、同一性の保持を要求してもかまわない。 ⇒ よくわからない
 
-5. 提供者は，特定の個人やグループを差別できない．
+5. 提供者は、特定の個人やグループを差別できない。
 
-6. 提供者は，特定の分野を差別できない．
+6. 提供者は、特定の分野を差別できない。
 
-7. 提供者は，全く同じOSSの再配布でライセンスを追加できない．
+7. 提供者は、全く同じOSSの再配布でライセンスを追加できない。
 
-8. 提供者は，特定の製品でのみ有効なライセンスを追加できない．
+8. 提供者は、特定の製品でのみ有効なライセンスを追加できない。
 
-9. 提供者は，他のソフトウェアを制限するライセンスを追加できない．
+9. 提供者は、他のソフトウェアを制限するライセンスを追加できない。
 
-10. 提供者は，技術的に偏りのあるライセンスを追加できない．
+10. 提供者は、技術的に偏りのあるライセンスを追加できない。
 
     
 

@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Laravel
-description: コマンド＠Laravelの知見をまとめました．
+description: コマンド＠Laravelの知見をまとめました。
 ---
 
 # コマンド＠Laravel
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: コマンド＠Laravelの知見をまとめました．
 
 ### artisanコマンドとは
 
-アプリケーションの開発に役立つコマンドを提供する．
+アプリケーションの開発に役立つコマンドを提供する。
 
 参考：https://readouble.com/laravel/8.x/ja/artisan.html
 
@@ -27,7 +27,7 @@ description: コマンド＠Laravelの知見をまとめました．
 
 #### ▼ キャッシュの削除
 
-キャッシュ（```bootstrap/cache/config.php```ファイル）を削除する．
+キャッシュ（```bootstrap/cache/config.php```ファイル）を削除する。
 
 ```bash
 $ php artisan config:clear
@@ -39,7 +39,7 @@ $ php artisan config:clear
 
 #### ▼ factory
 
-Factoryを自動的に生成する．
+Factoryを自動的に生成する。
 
 ```bash
 $ php artisan make:factory <Factory名> --model=<対象とするModel名>
@@ -54,7 +54,7 @@ $ php artisan make:controller <Controller名>
 
 #### ▼ HTTP｜formRequest
 
-FormRequestクラスを自動作成する．
+FormRequestクラスを自動作成する。
 
 ```bash
 $ php artisan make:request <Request名>
@@ -62,7 +62,7 @@ $ php artisan make:request <Request名>
 
 #### ▼ HTTP｜middleware
 
-Middlewareクラスを自動生成する．
+Middlewareクラスを自動生成する。
 
 ```bash
 $ php artisan make:middleware <Middleware名>
@@ -70,7 +70,7 @@ $ php artisan make:middleware <Middleware名>
 
 #### ▼ migration
 
-マイグレーションファイルを作成する．
+マイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration create_<テーブル名>_table
@@ -78,7 +78,7 @@ $ php artisan make:migration create_<テーブル名>_table
 
 #### ▼ model
 
-Eloquentモデルを自動生成する．
+Eloquentモデルを自動生成する。
 
 ```bash
 $ php artisan make:model <Eloquentモデル名>
@@ -86,7 +86,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ▼ resource
 
-Resourceクラスを自動生成する．
+Resourceクラスを自動生成する。
 
 ```bash
 $ php artisan make:resource <Resource名>
@@ -94,7 +94,7 @@ $ php artisan make:resource <Resource名>
 
 #### ▼ provider
 
-Providerクラスを自動生成する．
+Providerクラスを自動生成する。
 
 ```bash
 $ php artisan make:provider <クラス名>
@@ -102,7 +102,7 @@ $ php artisan make:provider <クラス名>
 
 #### ▼ seeder
 
-Seederクラスを自動生成する．
+Seederクラスを自動生成する。
 
 ```bash
 $ php artisan make:seeder <Seeder名>
@@ -114,13 +114,13 @@ $ php artisan make:seeder <Seeder名>
 
 #### ▼ migrateとは
 
-マイグレーションファイルを元にテーブルを作成する．
+マイグレーションファイルを元にテーブルを作成する。
 
 ```bash
 $ php artisan migrate
 ```
 
-コマンド実行時，以下のエラーが出ることがある．マイグレーションファイル名のスネークケースで，これがクラス名のキャメルケースと対応づけられており，ファイル名とクラス名の関係が正しくないために起こるエラーである．
+コマンド実行時、以下のエラーが出ることがある。マイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
 
 ```bash
 Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" not found
@@ -128,7 +128,7 @@ Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" n
 
 #### ▼ status
 
-マイグレーションの結果を確認する．
+マイグレーションの結果を確認する。
 
 ```bash
 $ php artisan migrate:status
@@ -136,7 +136,7 @@ $ php artisan migrate:status
 
 #### ▼ rollback
 
-指定した履歴数だけ，ロールバックを行う．
+指定した履歴数だけ、ロールバックを行う。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
@@ -144,10 +144,10 @@ $ php artisan migrate:status
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
-実際の使用場面として，マイグレーションに失敗した場合，1つ前の状態にロールバックしてマイグレーションファイルを修正した後，再びマイグレーションを行う．
+実際の使用場面として、マイグレーションに失敗した場合、1つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
 
 ```bash
-# マイグレーションに失敗したので，1つ前の状態にロールバック．
+# マイグレーションに失敗したので、1つ前の状態にロールバック。
 $ php artisan migrate:rollback --step=1
 
 # ファイル修正後にマイグレーションを実行
@@ -156,7 +156,7 @@ $ php artisan migrate
 
 #### ▼ reset
 
-初期の状態まで，全てのロールバックを実行する．
+初期の状態まで、全てのロールバックを実行する。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
@@ -166,7 +166,7 @@ $ php artisan migrate:reset
 
 #### ▼ refresh
 
-全てのロールバック（```migrate:reset```）を実行し，次いで```migrate```を実行する．
+全てのロールバック（```migrate:reset```）を実行し、次いで```migrate```を実行する。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
@@ -176,7 +176,7 @@ $ php artisan migrate:refresh
 
 #### ▼ fresh
 
-全てのテーブルを削除と```migrate```を実行する．マイグレーションファイルの構文チェックを行わずに，強制的に実行される．
+全てのテーブルを削除と```migrate```を実行する。マイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
@@ -184,7 +184,7 @@ $ php artisan migrate:refresh
 $ php artisan migrate:fresh
 ```
 
-マイグレーション時，テーブルがすでに存在するエラーが起こることがある．この場合，テーブルがマイグレーションされる前までロールバックし，マイグレーションを再実行することが最適である．しかしそれが難しければ，このコマンドを実行する必要がある．
+マイグレーション時、テーブルがすでに存在するエラーが起こることがある。この場合、テーブルがマイグレーションされる前までロールバックし、マイグレーションを再実行することが最適である。しかしそれが難しければ、このコマンドを実行する必要がある。
 
 ```bash
 SQLSTATE[42S01]: <テーブル名> table or view already exists
@@ -192,7 +192,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-マイグレーション時，本当に実行して良いか確認画面（Yes/No）が表示される．CI/CD時に，この確認画面でYes/Noを入力できないため，確認画面をスキップできるようにする必要がある．
+マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CD時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
@@ -206,7 +206,7 @@ $ php artisan migrate --force
 
 #### ▼ list
 
-登録済みのルーティングの一覧を表示する．
+登録済みのルーティングの一覧を表示する。
 
 ```bash
 # ルーティングの一覧を表示する
@@ -215,7 +215,7 @@ $ php artisan route:list
 
 #### ▼ clear
 
-ルーティングのキャッシュを削除する．
+ルーティングのキャッシュを削除する。
 
 ```bash
 # ルーティングのキャッシュを削除
@@ -231,7 +231,7 @@ $ php artisan optimize:clear
 
 #### ▼ seed
 
-Seederを実行する．Seederを新しく作成した時やSeeder名を変更した時，Composerの```dump-autoload```を実行する必要がある．
+Seederを実行する。Seederを新しく作成した時やSeeder名を変更した時、Composerの```dump-autoload```を実行する必要がある。
 
 ```bash
 $ composer dump-autoload
@@ -241,7 +241,7 @@ $ composer dump-autoload
 # 特定のSeederを実行
 $ php artisan db:seed --class=<Seeder名>
 
-# DatabaseSeederを指定して，全てのSeederを実行
+# DatabaseSeederを指定して、全てのSeederを実行
 $ php artisan db:seed --class=<Seeder名>
 ```
 
@@ -263,7 +263,7 @@ $ php artisan storage:link
 
 #### ▼ clear
 
-キャッシュを削除する．
+キャッシュを削除する。
 
 ```bash
 # ビューのキャッシュを削除

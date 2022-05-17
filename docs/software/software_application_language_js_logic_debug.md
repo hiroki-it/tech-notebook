@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】デバッグの豆知識＠JavaScript
-description: デバッグの豆知識＠JavaScriptをまとめました．
+description: デバッグの豆知識＠JavaScriptをまとめました。
 ---
 
 # デバッグの豆知識＠JavaScript
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -24,9 +24,9 @@ description: デバッグの豆知識＠JavaScriptをまとめました．
 | ```console.clear```メソッド | コンソール画面をクリアにする                                 |
 | ```console.count```メソッド | 実行する度にカウントアップして回数を出力する                 |
 | ```console.dir```メソッド   | オブジェクトが持つプロパティの一覧をリストで出力する         |
-| ```console.error```メソッド | エラー情報として出力する（他に，```info```メソッド / ```warn```メソッドもあり）      |
+| ```console.error```メソッド | エラー情報として出力する（他に、```info```メソッド / ```warn```メソッドもあり）      |
 | ```console.group```メソッド | インデントを付けて出力することにより階層構造を持たせる（```groupEnd```メソッドで終了する） |
 | ```console.log```メソッド   | 任意の値を出力する                                           |
 | ```console.table```メソッド | 配列やオブジェクトなどの構造をテーブル表にして出力する       |
 | ```console.time```メソッド  | ```time```メソッドから```timeEnd```メソッドまでの間にある処理を計測する                |
-| ```console.trace```メソッド | 呼び出し元を出力する．                                       |
+| ```console.trace```メソッド | 呼び出し元を出力する。                                       |

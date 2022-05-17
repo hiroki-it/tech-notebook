@@ -6,7 +6,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### Processエージェントとは
 
-デーモンであるdatadogエージェントに含まれている．アプリケーションからメトリクスを収集し，Datadogに転送する．
+デーモンであるdatadogエージェントに含まれている。アプリケーションからメトリクスを収集し、Datadogに転送する。
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -36,7 +36,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### Processエージェントとは
 
-サーバーの場合と同様にして，アプリケーションから送信されたメトリクスをDatadogに転送する．
+サーバーの場合と同様にして、アプリケーションから送信されたメトリクスをDatadogに転送する。
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
@@ -44,7 +44,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ▼ トレースエージェントとは
 
-dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true```を割り当てると，トレースエージェントが有効になる．APMエージェントを有効化し，分散トレースを収集できる．APMでは，分散トレースを元にして，マイクロサービス間の依存関係をマイクロサービスマップとして確認できる．
+dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true```を割り当てると、トレースエージェントが有効になる。APMエージェントを有効化し、分散トレースを収集できる。APMでは、分散トレースを元にして、マイクロサービス間の依存関係をマイクロサービスマップとして確認できる。
 
 参考：
 
@@ -61,7 +61,7 @@ dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-KubernetesのClusterやワーカーNodeから送信されたメトリクスを，マスターNodeのkube-apiserverに転送する．
+KubernetesのClusterやワーカーNodeから送信されたメトリクスを、マスターNodeのkube-apiserverに転送する。
 
 参考：
 
@@ -83,7 +83,7 @@ KubernetesのClusterやワーカーNodeから送信されたメトリクスを�
 
 ### セットアップ
 
-いくつかの方法で，収集されたメトリクスを送信できる．
+いくつかの方法で、収集されたメトリクスを送信できる。
 
 参考：https://docs.datadoghq.com/metrics/#submitting-metrics-to-datadog
 
@@ -91,13 +91,13 @@ KubernetesのClusterやワーカーNodeから送信されたメトリクスを�
 
 ### インテグレーションのセットアップ
 
-Datadogでインテグレーションを有効化すると同時に，アプリケーションにエージェントをインストールする．
+Datadogでインテグレーションを有効化すると同時に、アプリケーションにエージェントをインストールする。
 
 <br>
 
 ### メトリクスの削除
 
-Datadogに送信されなくなったメトリクスは，時間経過とともにDatadogから削除される．
+Datadogに送信されなくなったメトリクスは、時間経過とともにDatadogから削除される。
 
 参考：https://docs.datadoghq.com/dashboards/faq/historical-data/
 

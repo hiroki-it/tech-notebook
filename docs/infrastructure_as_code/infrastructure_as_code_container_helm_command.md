@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Helm
-description: コマンド＠Helmの知見をまとめました．
+description: コマンド＠Helmの知見をまとめました。
 ---
 
 # コマンド＠Helm
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,7 +19,7 @@ description: コマンド＠Helmの知見をまとめました．
 
 #### ▼ createとは
 
-指定したパスにチャートのサンプルファイルを作成する．
+指定したパスにチャートのサンプルファイルを作成する。
 
 参考：https://helm.sh/docs/helm/helm_create/
 
@@ -33,7 +33,7 @@ $ helm create <チャートへのパス>
 
 #### ▼ historyとは
 
-指定したリリースの履歴を表示する．
+指定したリリースの履歴を表示する。
 
 参考：https://helm.sh/docs/helm/helm_history/
 
@@ -52,7 +52,7 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 #### ▼ installとは
 
-チャートなどを指定し，Kubernetesリソースとしてデプロイする．チャートを指定する以外にも，指定方法には種類がある．
+チャートなどを指定し、Kubernetesリソースとしてデプロイする。チャートを指定する以外にも、指定方法には種類がある。
 
 参考：https://helm.sh/docs/helm/helm_install/
 
@@ -66,11 +66,11 @@ $ helm install <リリース名> <チャート>
 | ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                     |
 | チャートリポジトリURL                                   | ```https://example.com/foo-chart```                             |                                                                                                         |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                         |
-| チャートアーカイブへのパス                                  | ```./foo-chart-1.0.0.tgz```                                     | ```values```ファイルを用いる場合，```values```ファイルはチャートアーカイブの外にある必要がある．．参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                  | ```./foo-chart-1.0.0.tgz```                                     | ```values```ファイルを用いる場合、```values```ファイルはチャートアーカイブの外にある必要がある。。参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --dry-run
 
-Kubernetesにデプロイされるリソースのマニフェストファイルを表示する．デプロイする前に，チャートの設定が正しいかどうかを確認できる．
+Kubernetesにデプロイされるリソースのマニフェストファイルを表示する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -84,7 +84,7 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した```values```ファイル使用して，```helm install```コマンドを実行する．
+指定した```values```ファイル使用して、```helm install```コマンドを実行する。
 
 参考：https://helm.sh/docs/helm/helm_install/#options
 
@@ -94,7 +94,7 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 #### ▼ kube-context
 
-helmコマンドの向き先を指定して，```helm install```コマンドを実行する．
+helmコマンドの向き先を指定して、```helm install```コマンドを実行する。
 
 ```bash
 # Minikubeの場合
@@ -112,7 +112,7 @@ $ helm install <リリース名> <チャートリポジトリ> --kube-context <�
 
 #### ▼ lintとは
 
-チャートのバリデーションを実行する．
+チャートのバリデーションを実行する。
 
 参考：https://helm.sh/docs/helm/helm_lint/
 
@@ -128,7 +128,7 @@ $ helm lint <チャートへのパス>
 
 #### ▼ -f
 
-指定した```values```ファイル使用して，```helm lint```コマンドを実行する．
+指定した```values```ファイル使用して、```helm lint```コマンドを実行する。
 
 ```bash
 $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
@@ -140,7 +140,7 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 1 chart(s) linted, 0 chart(s) failed
 ```
 
-複数のチャートに対して，同じ```values```ファイルを渡すこともできる．
+複数のチャートに対して、同じ```values```ファイルを渡すこともできる。
 
 ```bash
 $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./eks ./operator/istio
@@ -174,7 +174,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してデプロイしたリソースの一覧を表示する．
+Helmを使用してデプロイしたリソースの一覧を表示する。
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -191,7 +191,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブを作成する．または，すでにアーカイブが存在する場合は更新する．アーカイブ名にはバージョンが設定される．複数のチャートを指定できる．
+チャートからチャートアーカイブを作成する。または、すでにアーカイブが存在する場合は更新する。アーカイブ名にはバージョンが設定される。複数のチャートを指定できる。
 
 参考：https://helm.sh/docs/helm/helm_package/
 
@@ -203,7 +203,7 @@ Successfully packaged chart and saved it to: /foo-1.0.0.tgz
 
 #### ▼ -d
 
-チャートアーカイブの作成先のディレクトリを指定しつつ，```helm package```コマンドを実行する．
+チャートアーカイブの作成先のディレクトリを指定しつつ、```helm package```コマンドを実行する。
 
 ```bash
 $ helm package <チャートへのパス> -d <作成するチャートアーカイブのパス>
@@ -215,17 +215,17 @@ $ helm package <チャートへのパス> -d <作成するチャートアーカ�
 
 #### ▼ pullとは
 
-指定したチャートレジストリ内のリポジトリからチャートをチャートアーカイブ（```.tgz```形式）でプルする．チャートアーカイブは，チャートに解凍した上で使用した方がよい．
+指定したチャートレジストリ内のリポジトリからチャートをチャートアーカイブ（```.tgz```形式）でプルする。チャートアーカイブは、チャートに解凍した上で使用した方がよい。
 
 #### ▼ -d
 
-チャートのプル先のディレクトリを指定して，```helm pull```コマンドを実行する．
+チャートのプル先のディレクトリを指定して、```helm pull```コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> -d <プル先のディレクトリ>
 ```
 
-OCIリポジトリからもプルできる．
+OCIリポジトリからもプルできる。
 
 参考：https://helm.sh/blog/storing-charts-in-oci/
 
@@ -236,7 +236,7 @@ $ helm pull oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チ�
 
 #### ▼ --version
 
-チャートのバージョンを指定して，```helm pull```コマンドを実行する．
+チャートのバージョンを指定して、```helm pull```コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> --version <バージョン>
@@ -248,7 +248,7 @@ $ helm pull <チャートリポジトリURL> --version <バージョン>
 
 #### ▼ pushとは
 
-チャートリポジトリにチャートをプッシュする．プッシュする前にチャートをチャートアーカイブに圧縮しておく必要がある．
+チャートリポジトリにチャートをプッシュする。プッシュする前にチャートをチャートアーカイブに圧縮しておく必要がある。
 
 ```bash
 $ helm push <チャートアーカイブへのパス> <チャートリポジトリURL>
@@ -265,11 +265,11 @@ $ helm push <チャートアーカイブへのパス> oci://<アカウントID>.
 
 #### ▼ registryとは
 
-チャートレジストリ内のリポジトリを操作する．
+チャートレジストリ内のリポジトリを操作する。
 
 #### ▼ login
 
-チャートレジストリ内のリポジトリにログインする．
+チャートレジストリ内のリポジトリにログインする。
 
 ```bash
 $ <チャートリポジトリのプロバイダーによる> | helm registry login \
@@ -292,11 +292,11 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 #### ▼ repoとは
 
-チャートリポジトリを操作する．
+チャートリポジトリを操作する。
 
 #### ▼ add
 
-チャートリポジトリをローカルマシンに登録する．
+チャートリポジトリをローカルマシンに登録する。
 
 参考：https://knowledge.sakura.ad.jp/23603/
 
@@ -306,7 +306,7 @@ $ helm repo add <チャート名> <チャートリポジトリURL>
 "<チャート名>" has been added to your repositories
 ```
 
-登録していないチャートをhelmコマンドで操作しようとするとエラーになる．
+登録していないチャートをhelmコマンドで操作しようとするとエラーになる。
 
 ```bash
 $ helm show all <チャート名>
@@ -316,7 +316,7 @@ Error: failed to download "<チャート名>"
 
 #### ▼ index
 
-チャートリポジトリのメタデータが設定された```index.yaml```ファイルを生成する．
+チャートリポジトリのメタデータが設定された```index.yaml```ファイルを生成する。
 
 ```bash
  $ helm repo index <チャートへのパス>
@@ -324,7 +324,7 @@ Error: failed to download "<チャート名>"
 
 #### ▼ list
 
-ローカルマシンに登録されたチャートリポジトリの一覧を表示する．
+ローカルマシンに登録されたチャートリポジトリの一覧を表示する。
 
 ```bash
 $ helm repo list
@@ -335,7 +335,7 @@ NAME　       URL
 
 #### ▼ remove
 
-ローカルマシンに登録されたチャートリポジトリを削除する．
+ローカルマシンに登録されたチャートリポジトリを削除する。
 
 ```bash
 $ helm repo remove <チャート名>
@@ -349,11 +349,11 @@ $ helm repo remove <チャート名>
 
 #### ▼ searchとは
 
-チャートリポジトリを検索する．
+チャートリポジトリを検索する。
 
 #### ▼ hub
 
-チャートリポジトリをキーワードで検索する．
+チャートリポジトリをキーワードで検索する。
 
 ```bash
 $ helm search hub <キーワード>
@@ -368,11 +368,11 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 
 #### ▼ show
 
-チャートの情報を表示する．
+チャートの情報を表示する。
 
 #### ▼ all
 
-チャート内の全てのマニフェストファイルを表示する．
+チャート内の全てのマニフェストファイルを表示する。
 
 ```bash
 $ helm show all <チャート名>
@@ -380,7 +380,7 @@ $ helm show all <チャート名>
 
 #### ▼ chart
 
-チャートの```Chart.yaml```ファイルを表示する．
+チャートの```Chart.yaml```ファイルを表示する。
 
 ```bash
 $ helm show chart <チャート名>
@@ -400,7 +400,7 @@ version: 1.0.0
 
 #### ▼ templateとは
 
-Kubernetesにデプロイされるリソースのマニフェストファイルを出力する．YAMLファイルにリダイレクトするようにするとよい．
+Kubernetesにデプロイされるリソースのマニフェストファイルを出力する。YAMLファイルにリダイレクトするようにするとよい。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>
@@ -408,7 +408,7 @@ $ helm template <リリース名> <チャートへのパス> >| <出力先ファ
 
 #### ▼ -f
 
-指定した```values```ファイル使用して，```helm template```コマンドを実行する．
+指定した```values```ファイル使用して、```helm template```コマンドを実行する。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル> --set foo.bar=baz
@@ -422,7 +422,7 @@ foo:
 
 #### ▼ -set
 
-デフォルト値を上書きし，```helm template```コマンドを実行する．
+デフォルト値を上書きし、```helm template```コマンドを実行する。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
@@ -434,7 +434,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 
 #### ▼ uninstallとは
 
-指定したリリースによってデプロイされたKubernetesリソースを削除する．
+指定したリリースによってデプロイされたKubernetesリソースを削除する。
 
 参考：https://helm.sh/docs/helm/helm_uninstall/
 
@@ -448,11 +448,11 @@ $ helm uninstall <リリース名>
 
 #### ▼ upgradeとは
 
-Helmのリリースをアップグレードする．
+Helmのリリースをアップグレードする。
 
 #### ▼ --install
 
-新しいリビジョン番号を作成し，デプロイ済のリリースをアップグレードする．
+新しいリビジョン番号を作成し、デプロイ済のリリースをアップグレードする。
 
 ```bash
 $ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>

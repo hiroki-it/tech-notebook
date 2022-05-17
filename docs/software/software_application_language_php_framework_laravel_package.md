@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】専用パッケージ＠Laravel
-description: 専用パッケージ＠Laravelの知見をまとめました．
+description: 専用パッケージ＠Laravelの知見をまとめました。
 ---
 
 # 専用パッケージ＠Laravel
@@ -9,7 +9,7 @@ description: 専用パッケージ＠Laravelの知見をまとめました．
 
 ### Laravel Mixパッケージとは
 
-WebpackをLaravelを介して操作できるパッケージのこと．Breezeパッケージにも同梱されている．
+WebpackをLaravelを介して操作できるパッケージのこと。Breezeパッケージにも同梱されている。
 
 参考：https://readouble.com/laravel/8.x/ja/mix.html
 
@@ -19,7 +19,7 @@ WebpackをLaravelを介して操作できるパッケージのこと．Breezeパ
 
 #### ▼ アセットの初期コンパイル
 
-アセットのコンパイルを実行する．
+アセットのコンパイルを実行する。
 
 ```bash
 $ npm run dev
@@ -27,7 +27,7 @@ $ npm run dev
 
 #### ▼ アセットの自動再コンパイル
 
-アセットのコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
+アセットのコードが変更された時に、これと検知し、自動的に再コンパイルを実行する。
 
 ```bash
 $ npm run watch
@@ -51,7 +51,7 @@ $ npm run watch
 
 #### ▼ Enumクラスの定義
 
-BenSampoのEnumクラスを継承し，区分値と判定メソッドを実装する．
+BenSampoのEnumクラスを継承し、区分値と判定メソッドを実装する。
 
 **＊実装例＊**
 
@@ -71,7 +71,7 @@ class RoleType extends Enum
     public const SALES_ROLE = 5;       // 営業職
     
     /**
-     * コールセンター職の区分値を持つかどうかを判定します．
+     * コールセンター職の区分値を持つかどうかを判定します。
      */    
     public function isCallRole()
     {
@@ -79,7 +79,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 開発職の区分値を持つかを判定します．
+     * 開発職の区分値を持つかを判定します。
      */       
     public function isDevelopmentRole()
     {
@@ -87,7 +87,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 経理職の区分値を持つかどうかを判定します．
+     * 経理職の区分値を持つかどうかを判定します。
      */       
     public function isFinanceRole()
     {
@@ -95,7 +95,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 企画職の区分値を持つかどうかを判定します．
+     * 企画職の区分値を持つかどうかを判定します。
      */       
     public function isPlanRole()
     {
@@ -103,7 +103,7 @@ class RoleType extends Enum
     }  
     
     /**
-     * 営業職の区分値を持つかどうかを判定します．
+     * 営業職の区分値を持つかどうかを判定します。
      */       
     public function isSalesRole()
     {
@@ -116,7 +116,7 @@ class RoleType extends Enum
 
 **＊実装例＊**
 
-DBから区分値をSELECTした後，これを元にEnumクラスを作成する．
+DBから区分値をSELECTした後、これを元にEnumクラスを作成する。
 
 ```php
 <?php
@@ -126,7 +126,7 @@ $staff = new Staff();
  
 // DBから取得した区分値（開発職：2）からEnumクラスを作成
 $staff->roleType = new RoleType($fetched["role_type"]);
-// 以下の方法でも良い．
+// 以下の方法でも良い。
 // $staff->roleType = RoleType::fromValue($fetched["role_type"]);
 
 // StaffがいずれのRoleTypeを持つか
@@ -140,14 +140,14 @@ $staff->roleType->isSalesRole(); // false
 
 #### ▼ laravel-ide-helperとは
 
-PHPStromでLaravelを開発する場合，拡張機能を提供する．
+PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
 参考：
 
 - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 - https://pleiades.io/help/phpstorm/laravel.html
 
-プロバイダーを```app.php```ファイルに登録する必要がある．
+プロバイダーを```app.php```ファイルに登録する必要がある。
 
 ```php
 <?php
@@ -171,7 +171,7 @@ return [
 
 #### ▼ Facade
 
-PHPStromで，メソッドが定義された場所にジャンプできるように，```_ide_helper.php```ファイルを生成する．
+PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを生成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
@@ -181,7 +181,7 @@ $ php artisan ide-helper:generate
 
 #### ▼ アノテーション生成
 
-PHPStromで，LaravelのEloquentモデルでのアノテーションを自動生成する．
+PHPStromで、LaravelのEloquentモデルでのアノテーションを自動生成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
@@ -191,7 +191,7 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで，Laravelのメソッドを予測表示できるように，```phpstorm.meta.php```ファイルを生成する．
+PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを生成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

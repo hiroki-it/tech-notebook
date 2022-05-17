@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】CI/CD＠Terraform
-description: CI/CD＠Terraformの知見をまとめました．
+description: CI/CD＠Terraformの知見をまとめました。
 ---
 
 # CI/CD＠Terraform
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,24 +19,24 @@ description: CI/CD＠Terraformの知見をまとめました．
 
 #### ▼ 大原則：PullReqを1つずつリリース
 
-基本的には，PullReqを1つずつリリースする．ただ，軽微なupdate処理が実行されるPullReqであれば，まとめてリリースしても良い．もしリリース時に問題が起こった場合，インフラのバージョンのロールバックを行う必要がある．経験則で，create処理やdestroy処理よりもupdate処理の方がエラーが少ないため，ロールバックにもたつきにくい．PullReqを複数まとめてリリースすると，create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる．
+基本的には、PullReqを1つずつリリースする。ただ、軽微なupdate処理が実行されるPullReqであれば、まとめてリリースしても良い。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要がある。経験則で、create処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。PullReqを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。
 
-#### ▼ 既存のリソースに対して，新しいリソースを紐づける場合
+#### ▼ 既存のリソースに対して、新しいリソースを紐づける場合
 
-既存のリソースに対して，新しいリソースを紐づける場合，新しいリソースの構築と紐づけを別々にリリースする．ロールバックでもたつきにくく，またTerraformで問題が起こったとしても変更点が紐づけだけなので，原因を追究しやすい．
+既存のリソースに対して、新しいリソースを紐づける場合、新しいリソースの構築と紐づけを別々にリリースする。ロールバックでもたつきにくく、またTerraformで問題が起こったとしても変更点が紐づけだけなので、原因を追究しやすい。
 
 #### ▼ Terraformとプロバイダーの両方をアップグレードする場合
 
-Terraformとプロバイダーを別々にリリースする．
+Terraformとプロバイダーを別々にリリースする。
 
 #### ▼ DBインスタンスの設定変更でダウンタイムが発生する場合
 
-DBインスタンスの設定変更でダウンタイムが発生する場合，それぞれのDBインスタンスに対する変更を別々にリリースする．また，リリース順序は以下の通りとする．プライマリーインスタンスのリリース時にフェールオーバーが発生するため，ダウンタイムを短縮できる．
+DBインスタンスの設定変更でダウンタイムが発生する場合、それぞれのDBインスタンスに対する変更を別々にリリースする。また、リリース順序は以下の通りとする。プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。
 
-1. リードレプリカの変更をリリースする．
-2. プライマリーインスタンスの変更をリリースする．リリース時にフェールオーバーを発生し，現プライマリーインスタンスはリードレプリカに降格する．また，前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する．新しいリードレプリカがアップグレードされる間，代わりに新しいプライマリーインスタンスが機能する．
+1. リードレプリカの変更をリリースする。
+2. プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが機能する。
 
-ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ．RDSの項目として書かれており，Auroraではないが，おおよそ同じなため参考にしている．
+ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
@@ -44,7 +44,7 @@ DBインスタンスの設定変更でダウンタイムが発生する場合，
 
 ### ロールバックの方法
 
-Terraformには，インフラのバージョンのロールバック機能がない．そこで，1つ前のリリースタグをRerunすることにより，バージョンのロールバックを実行する．今回のリリースのcreate処理が少ないほどRerunでdestroy処理が少なく，反対にdestroy処理が少ないほどcreate処理が少なくなる．もしリリース時に問題が起こった場合，インフラのバージョンのロールバックを行う必要があるが，経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため，ロールバックにもたつきにくい．そのため，Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し，1つ前のリリースタグをRerunするか否かを判断する．
+Terraformには、インフラのバージョンのロールバック機能がない。そこで、1つ前のリリースタグをRerunすることにより、バージョンのロールバックを実行する。今回のリリースのcreate処理が少ないほどRerunでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、1つ前のリリースタグをRerunするか否かを判断する。
 
 
 
@@ -56,7 +56,7 @@ Terraformには，インフラのバージョンのロールバック機能が�
 
 | env  | 説明                                                         |
 | ---- | ------------------------------------------------------------ |
-| dev  | PullReqのレビュー時に，コードの変更を検証するためのインフラ環境 |
+| dev  | PullReqのレビュー時に、コードの変更を検証するためのインフラ環境 |
 | stg  | ステージング環境                                             |
 | prd  | 本番環境                                                     |
 
@@ -64,7 +64,7 @@ Terraformには，インフラのバージョンのロールバック機能が�
 
 | jobs       | 説明                                                         |
 | ---------- | ------------------------------------------------------------ |
-| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する． |
+| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。 |
 | 承認ジョブ |                                                              |
 | apply      | stg環境またはprd環境にデプロイ                               |
 
@@ -98,7 +98,7 @@ executors:
       ENV: << parameters.env >>
 
 commands:
-  # AWSにデプロイするための環境を構築します．
+  # AWSにデプロイするための環境を構築します。
   aws_setup:
     steps:
       - run:
@@ -120,7 +120,7 @@ commands:
             set -x
             source ./ops/assume.sh
 
-  # terraform initを行います．
+  # terraform initを行います。
   terraform_init:
     steps:
       - run:
@@ -129,7 +129,7 @@ commands:
             set -x
             source ./ops/terraform_init.sh
 
-  # terraform fmtを行います．
+  # terraform fmtを行います。
   terraform_fmt:
     steps:
       - run:
@@ -138,7 +138,7 @@ commands:
             set -x
             source ./ops/terraform_fmt.sh
             
-  # terraform validateを行います．
+  # terraform validateを行います。
   terraform_validate:
     steps:
       - run:
@@ -148,7 +148,7 @@ commands:
             source ./export_aws_envs.sh
             source ./ops/terraform_validate.sh
 
-  # terraform planを行います．
+  # terraform planを行います。
   terraform_plan:
     steps:
       - run:
@@ -159,7 +159,7 @@ commands:
             source ./ops/terraform_plan.sh
             ls -la
 
-  # terraform applyを行います．
+  # terraform applyを行います。
   terraform_apply:
     steps:
       - run:
@@ -287,7 +287,7 @@ workflows:
 
 #### ▼ ```assume_role.sh```ファイル
 
-Assume Roleを実行し，CircleCIで使用するIAMユーザーにロールを一時的に委譲する．
+Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
@@ -299,7 +299,7 @@ Assume Roleを実行し，CircleCIで使用するIAMユーザーにロールを�
 set -xeuo pipefail
 set -u
 
-# 事前に環境変数にインフラ環境名を代入する．
+# 事前に環境変数にインフラ環境名を代入する。
 case $ENV in
     "dev")
         aws_account_id="<作業環境アカウントID>"
@@ -325,12 +325,12 @@ case $ENV in
     ;;
 esac
 
-# 信頼されたエンティティのアカウント情報を設定する．
+# 信頼されたエンティティのアカウント情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
 
-# https://sts.amazonaws.com に，ロールのアタッチをリクエストする．
+# https://sts.amazonaws.com に、ロールのアタッチをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
   --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<アタッチしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
@@ -339,7 +339,7 @@ aws_sts_credentials="$(aws sts assume-role \
   --query "Credentials" \
   --output "json")"
 
-# アカウント情報を環境変数に出力するためのスクリプトを作成する．
+# アカウント情報を環境変数に出力するためのスクリプトを作成する。
 cat << EOT > "export_aws_envs.sh"
 export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r '.AccessKeyId')"
 export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r '.SecretAccessKey')"
@@ -353,7 +353,7 @@ EOT
 
 #### ▼ ```terraform_apply.sh```ファイル
 
-特定のAWS環境に対して```terraform apply```コマンドを実行する．
+特定のAWS環境に対して```terraform apply```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -362,7 +362,7 @@ EOT
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} apply \
@@ -374,7 +374,7 @@ terraform -chdir=./${ENV} apply \
 
 #### ▼ ```terraform_fmt.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform fmt```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform fmt```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -392,7 +392,7 @@ terraform fmt \
 
 #### ▼ ```terraform_init.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform init```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform init```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -401,7 +401,7 @@ GitHubにプッシュされたコードに対して```terraform init```コマン
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} init \
@@ -417,7 +417,7 @@ terraform -chdir=./${ENV} init \
 
 #### ▼ ```terraform_plan.sh```ファイル
 
-特定のAWS環境に対して```terraform plan```コマンドを実行する．
+特定のAWS環境に対して```terraform plan```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -426,7 +426,7 @@ terraform -chdir=./${ENV} init \
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} plan \
@@ -439,7 +439,7 @@ terraform -chdir=./${ENV} plan \
 
 #### ▼ ```terraform_validate.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform validate```コマンドを実行する．
+GitHubにプッシュされたコードに対して```terraform validate```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -457,7 +457,7 @@ terraform -chdir=./${ENV} validate
 
 ### tfnotifyとは
 
-terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．CircleCIで利用する場合は，ダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくと良い．
+terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
 
 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
@@ -467,7 +467,7 @@ terraformの```terraform plan```コマンドまたは```terraform apply```コマ
 
 #### ▼ --config
 
-設定ファイルを使用して，tfnotifyを実行する．
+設定ファイルを使用して、tfnotifyを実行する。
 
 **＊実装例＊**
 
@@ -486,7 +486,7 @@ terraform -chdir=./${ENV} plan \
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} apply \
@@ -498,11 +498,11 @@ terraform -chdir=./${ENV} apply \
 
 ### ```tfnotify.yml```ファイル
 
-あらかじめ，GitHubのアクセストークンを発行し，CIツールの環境変数に登録しておく．
+あらかじめ、GitHubのアクセストークンを発行し、CIツールの環境変数に登録しておく。
 
 **＊実装例＊**
 
-例として，GitHubの特定のリポジトリのPullReqエストにPOSTで送信する．
+例として、GitHubの特定のリポジトリのPullReqエストにPOSTで送信する。
 
 ```yaml
 # https://github.com/mercari/tfnotify

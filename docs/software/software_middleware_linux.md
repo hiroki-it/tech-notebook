@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】Linux系＠ミドルウェア
-description: Linux系＠ミドルウェアの知見をまとめました．
+description: Linux系＠ミドルウェアの知見をまとめました。
 ---
 
 # Linux系＠ミドルウェア
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,11 +19,11 @@ description: Linux系＠ミドルウェアの知見をまとめました．
 
 #### ▼ SELinuxとは
 
-Linuxにデフォルトで導入されているミドルウェアで，セキュリティを制御する．
+Linuxにデフォルトで導入されているミドルウェアで、セキュリティを制御する。
 
 #### ▼ SELinuxの無効化
 
-アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため，基本的には無効にしておく．
+アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
 
 （１）SELinuxの状態を確認
 
@@ -34,7 +34,7 @@ $ getenforce
 Enforcing
 ```
 
-（２）```/etc/sellnux/config```を修正する．
+（２）```/etc/sellnux/config```を修正する。
 
 ```bash
 # This file controls the state of SELinux on the system.
@@ -54,6 +54,6 @@ SELINUXTYPE=targeted
 
 （３）OSを再起動
 
-OSを再起動しないと設定が反映されない．
+OSを再起動しないと設定が反映されない。
 
 <br>

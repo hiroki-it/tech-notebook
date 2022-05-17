@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Terraform
-description: コマンド＠Terraformの知見をまとめました．
+description: コマンド＠Terraformの知見をまとめました。
 ---
 
 # コマンド＠Terraform
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -25,7 +25,7 @@ description: コマンド＠Terraformの知見をまとめました．
 
 #### ▼ -backend=false
 
-ローカルマシンにstateファイルを作成する．
+ローカルマシンにstateファイルを作成する。
 
 参考：https://www.terraform.io/language/settings/backends
 
@@ -40,7 +40,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を使用できないため，こちらのオプションが推奨である．
+実インフラにstateファイルを作成する。代わりに、```terraform settings```ブロック内の```backend```で指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -57,7 +57,7 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-Terraformを初期化する．
+Terraformを初期化する。
 
 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
@@ -67,7 +67,7 @@ $ terraform init -reconfigure
 
 #### ▼ -upgrade
 
-現在のバージョンを基に，```lock```ファイル，モジュール，プラグインのアップグレード/ダウングレードを行う．
+現在のバージョンを基に、```lock```ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。
 
 参考：https://www.terraform.io/cli/commands/init#upgrade
 
@@ -81,7 +81,7 @@ $ terraform init -upgrade
 
 #### ▼ validateとは
 
-設定ファイルの検証を行う．
+設定ファイルの検証を行う。
 
 ```bash
 $ terraform validate
@@ -100,7 +100,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -check
 
-インデントを揃えるべき箇所が存在するかどうかを判定する．もし存在する場合『```1```』，存在しない場合は『```0```』を返却する．
+インデントを揃えるべき箇所が存在するかどうかを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
 
 ```bash
 $ terraform fmt -check
@@ -108,7 +108,7 @@ $ terraform fmt -check
 
 #### ▼ -diff
 
-インデントを揃えるべき箇所が存在する場合に，これを表示する．
+インデントを揃えるべき箇所が存在する場合に、これを表示する。
 
 ```bash
 $ terraform fmt -diff
@@ -116,7 +116,7 @@ $ terraform fmt -diff
 
 #### ▼ -recursive
 
-設定ファイルのインデントを揃える．処理を行ったファイルが表示される．
+設定ファイルのインデントを揃える。処理を行ったファイルが表示される。
 
 ```bash
 # -recursive: サブディレクトリを含む全ファイルをフォーマット
@@ -129,7 +129,7 @@ main.tf
 
 ### graph
 
-rosource間の依存関係をグラフ化する．これにより，どのresourceが他のどのresourceを使用しているかがわかる．Graphvizのダウンロードが必要である．
+rosource間の依存関係をグラフ化する。これにより、どのresourceが他のどのresourceを使用しているかがわかる。Graphvizのダウンロードが必要である。
 
 参考：https://graphviz.org/download/
 
@@ -143,7 +143,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 #### ▼ -var-file
 
-terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```terraform import```コマンドする方法は無い．リソースIDは，リソースによって異なるため，リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
+terraformによる構築ではない方法で、すでにクラウド上にリソースが構築されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、stateファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
 
 ```bash
 $ terraform import \
@@ -151,7 +151,7 @@ $ terraform import \
     <リソースタイプ>.<リソース名> <クラウドプロバイダー上リソースID>
 ```
 
-モジュールを使用している場合，指定の方法が異なる．
+モジュールを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform import \
@@ -159,7 +159,7 @@ $ terraform import \
     module.<モジュール名>.<リソースタイプ>.<リソース名> <クラウドプロバイダー上リソースID>
 ```
 
-例えば，AWS上にすでにECRが存在しているとして，これをterraformの管理下におく．
+例えば、AWS上にすでにECRが存在しているとして、これをterraformの管理下におく。
 
 ```bash
 $ terraform import \
@@ -167,7 +167,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www *****
 ```
 
-そして，ローカルマシンのstateファイルと実インフラの差分が無くなるまで，```terraform import```コマンドを繰り返す．
+そして、ローカルマシンのstateファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
 
 ````bash
 $ terraform plan -var-file=foo.tfvars
@@ -177,7 +177,7 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ importを行わなかった場合のエラー
 
-もし```terraform import```コマンドを行わないと，すでにクラウド上にリソースが存在しているためにリソースを構築できない，というエラーになる．
+もし```terraform import```コマンドを行わないと、すでにクラウド上にリソースが存在しているためにリソースを構築できない、というエラーになる。
 
 （エラー例1）
 
@@ -197,7 +197,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルに反映する．
+クラウドに対してリクエストを行い、現在のリソースの状態をtfstateファイルに反映する。
 
 ```bash
 $ terraform refresh -var-file=foo.tfvars
@@ -209,7 +209,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ シンボルの見方
 
-構築（```+```），更新（```~```），削除（```-```），再構築（```-/+```）で表現される．
+構築（```+```）、更新（```~```）、削除（```-```）、再構築（```-/+```）で表現される。
 
 ```
 + create
@@ -220,7 +220,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ 出力内容の読み方
 
-前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．また，クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される．検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
+前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象リソースの数を確認しても、前半部分のリソースは含まれていないことがわかる。
 
 ```bash
 Note: Objects have changed outside of Terraform
@@ -228,7 +228,7 @@ Note: Objects have changed outside of Terraform
 Terraform detected the following changes made outside of Terraform since the
 last "terraform apply":
 
-  # Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出．
+  # Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出。
 
 Unless you have made equivalent changes to your configuration, or ignored the
 relevant attributes using ignore_changes, the following plan may include
@@ -242,7 +242,7 @@ plan. Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
   
-  # Terraformのコードの変更によって，実インフラがどのように変更されるか．
+  # Terraformのコードの変更によって、実インフラがどのように変更されるか。
   
 Plan: 0 to add, 1 to change, 0 to destroy.  
 ```
@@ -258,7 +258,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルには反映せずに，設定ファイルの記述との差分を検証する．スクリプト実行時に，変数が定義されたファイルを実行すると，```variable```で宣言した変数に，値が格納される．
+クラウドに対してリクエストを行い、現在のリソースの状態をtfstateファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -266,12 +266,12 @@ $ terraform plan -var-file=foo.tfvars
 
 ```bash
 # ディレクトリを指定することも可能
-# 第一引数で変数ファイルの相対パス，第二引数でをルートモジュールの相対パス
+# 第一引数で変数ファイルの相対パス、第二引数でをルートモジュールの相対パス
 $ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
     -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
 
-差分がなければ，以下の通りになる．
+差分がなければ、以下の通りになる。
 
 ```bash
 No changes. Infrastructure is up-to-date.
@@ -283,7 +283,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定のリソースに対して，```terraform plan```コマンドを実行する．
+特定のリソースに対して、```terraform plan```コマンドを実行する。
 
 ```bash
 $ terraform plan \
@@ -291,7 +291,7 @@ $ terraform plan \
     -target=<リソースタイプ>.<リソース名>
 ```
 
-モジュールを使用している場合，指定の方法が異なる．
+モジュールを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform plan \
@@ -301,7 +301,7 @@ $ terraform plan \
 
 #### ▼ -refresh
 
-このオプションをつければ，```terraform refresh```コマンドを同時に実行してくれる．ただ，デフォルトで```true```なので，不要である．
+このオプションをつければ、```terraform refresh```コマンドを同時に実行してくれる。ただ、デフォルトで```true```なので、不要である。
 
 ```bash
 $ terraform plan \
@@ -313,7 +313,7 @@ https://github.com/hashicorp/terraform/issues/17311
 
 #### ▼ -parallelism
 
-並列処理数を設定できる．デフォルト値は```10```である．
+並列処理数を設定できる。デフォルト値は```10```である。
 
 ```bash
 $ terraform plan \
@@ -323,7 +323,7 @@ $ terraform plan \
 
 #### ▼ -out
 
-実行プランファイルを生成する．```terraform apply```コマンドのために使用できる．
+実行プランファイルを生成する。```terraform apply```コマンドのために使用できる。
 
 ```bash
 $ terraform plan \
@@ -338,7 +338,7 @@ $ terraform plan \
 
 #### ▼ -var-file
 
-クラウドプロバイダー上にクラウドインフラストラクチャを構築する．
+クラウドプロバイダー上にクラウドインフラストラクチャを構築する。
 
 ```bash
 $ terraform apply -var-file foo.tfvars
@@ -350,7 +350,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
     -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
 
-成功すると，以下のメッセージが表示される．
+成功すると、以下のメッセージが表示される。
 
 ```bash
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
@@ -358,7 +358,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 #### ▼ -target
 
-特定のリソースに対して，```terraform apply```コマンドを実行する．
+特定のリソースに対して、```terraform apply```コマンドを実行する。
 
 ```bash
 $ terraform apply \
@@ -366,7 +366,7 @@ $ terraform apply \
     -target=<リソースタイプ>.<リソース名>
 ```
 
-モジュールを使用している場合，指定の方法が異なる．
+モジュールを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform apply \
@@ -376,7 +376,7 @@ $ terraform apply \
 
 #### ▼ -parallelism
 
-並列処理数を設定できる．デフォルト値は```10```である．
+並列処理数を設定できる。デフォルト値は```10```である。
 
 ```bash
 $ terraform apply \
@@ -386,7 +386,7 @@ $ terraform apply \
 
 #### ▼ 実行プランファイル
 
-事前に，```terraform plan```コマンドによって生成された実行プランファイルを元に，```terraform apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
+事前に、```terraform plan```コマンドによって生成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
 
 ```bash
 $ terraform apply foo.tfplan
@@ -398,7 +398,7 @@ $ terraform apply foo.tfplan
 
 #### ▼ -var-file <リソース>
 
-stateファイルにおける指定されたリソースの```tainted```フラグを立てる．例えば，```apply```したが，途中でエラーが発生してしまい，実インフラに中途半端はリソースが構築されてしまうことがある．ここで，```tainted```を立てておくと，実インフラのリソースを削除したと想定した```plan```を実行できる．
+stateファイルにおける指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが構築されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
 
 ```bash
 $ terraform taint \
@@ -406,7 +406,7 @@ $ terraform taint \
     module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
-この後の```terraform plan```コマンドのログからも，```-/+```で削除が行われる想定で，差分を比較していることがわかる．
+この後の```terraform plan```コマンドのログからも、```-/+```で削除が行われる想定で、差分を比較していることがわかる。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -430,13 +430,13 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 #### ▼ state listとは
 
-ファイル内で定義しているリソースの一覧を表示する．
+ファイル内で定義しているリソースの一覧を表示する。
 
 ```bash
 $ terraform state list
 ```
 
-以下の通り，モジュールも含めて，リソースが表示される．
+以下の通り、モジュールも含めて、リソースが表示される。
 
 ```bash
 aws_instance.www-1a

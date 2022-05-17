@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】Vagrantfile＠Vagrant
-description: Vagrantfile＠Vagrantの知見をまとめました．
+description: Vagrantfile＠Vagrantの知見をまとめました。
 ---
 
 # Vagrantfile＠Vagrant
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見をまとめました．
 
 ### プロバイダーとプロビジョナーの操作
 
-Vagrantfileを使用して，プロバイダーとプロビジョナーを操作し，仮想環境を構築する．Vagrantfile自体をプロビジョナーとして使用もできる．仮想環境として仮想サーバーとコンテナを選択できるが，Vagrantは仮想サーバーの構築のために使用することが多い．
+Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を構築する。Vagrantfile自体をプロビジョナーとして使用もできる。仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの構築のために使用することが多い。
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -29,7 +29,7 @@ Vagrantfileを使用して，プロバイダーとプロビジョナーを操作
 
 #### ▼ プロバイダーとは
 
-仮想サーバー/コンテナを提供する．
+仮想サーバー/コンテナを提供する。
 
 参考：https://www.vagrantup.com/docs/providers
 
@@ -48,7 +48,7 @@ Vagrantfileを使用して，プロバイダーとプロビジョナーを操作
 
 #### ▼ プロビジョナーとは
 
-プロバイダーによって構築された仮想環境に，ソフトウェアをインストールできる（構成管理できる）．具体的には，プログラミング言語やファイアウォールをインストールする．
+プロバイダーによって構築された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
 
 参考：https://www.vagrantup.com/docs/provisioning
 
@@ -56,18 +56,18 @@ Vagrantfileを使用して，プロバイダーとプロビジョナーを操作
 
 | プロビジョナー名 | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する．        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
-| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに，Ansibleを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
-| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに，CFEngineを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
-| Chef             | Vagrantfileでプロビジョニングを実行する代わりに，Chefを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |
-| Docker           | Vagrantfileでプロビジョニングを実行する代わりに，Dockerfile（に似た記述）を使用する． | 参考：https://www.vagrantup.com/docs/provisioning/docker     |
-| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに，Puppetを使用する． | 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
+| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに、Ansibleを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
+| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに、CFEngineを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
+| Chef             | Vagrantfileでプロビジョニングを実行する代わりに、Chefを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |
+| Docker           | Vagrantfileでプロビジョニングを実行する代わりに、Dockerfile（に似た記述）を使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/docker     |
+| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに、Puppetを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 
 ### Vagrantfile
 
-プロバイダーとプロビジョナーの一連の操作内容を設定する．チームメンバーが別々に仮想環境を構築する場合，プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に，違いが生じてしまう．Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば，チームメンバーが同じソフトウェアの下で，仮想サーバーを構築し，ソフトウェアをインストールできる．
+プロバイダーとプロビジョナーの一連の操作内容を設定する。チームメンバーが別々に仮想環境を構築する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
 
 <br>
 
@@ -75,14 +75,14 @@ Vagrantfileを使用して，プロバイダーとプロビジョナーを操作
 
 ### Vagrant.configureとは
 
-Vagrantfileのバージョンを設定する．
+Vagrantfileのバージョンを設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
 ```ruby
 Vagrant.configure("2") do |config|
 
-  # その他の全てのオプションを設定する．
+  # その他の全てのオプションを設定する。
 
 end
 ```
@@ -93,7 +93,7 @@ end
 
 ### config.vmとは
 
-仮想環境の構成を設定する．
+仮想環境の構成を設定する。
 
 <br>
 
@@ -101,7 +101,7 @@ end
 
 #### ▼ boxとは
 
-仮想環境のベースとするボックス名を設定する．
+仮想環境のベースとするボックス名を設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
@@ -119,7 +119,7 @@ end
 
 #### ▼ box_check_updateとは
 
-Vagrantの更新通知を設定する．
+Vagrantの更新通知を設定する。
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -135,13 +135,13 @@ end
 
 #### ▼ networkとは
 
-仮想環境のネットワークを設定する．
+仮想環境のネットワークを設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ▼ forwarded_port
 
-ホストから仮想環境へポートフォワーディングを設定する．
+ホストから仮想環境へポートフォワーディングを設定する。
 
 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
@@ -155,7 +155,7 @@ end
 
 #### ▼ private_network
 
-仮想環境のプライベートIPアドレスを設定する．他の仮想環境とIPアドレスが重複しないようにする必要がある．
+仮想環境のプライベートIPアドレスを設定する。他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
 参考：https://www.vagrantup.com/docs/networking/private_network
 
@@ -173,7 +173,7 @@ end
 
 #### ▼ providerとは
 
-プロバイダー固有のオプションを設定する．
+プロバイダー固有のオプションを設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
@@ -214,13 +214,13 @@ end
 
 #### ▼ provisionとは
 
-仮想環境のプロビジョニングを設定する．
+仮想環境のプロビジョニングを設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 #### ▼ shell
 
-shellを使用して，仮想環境のプロビジョニングを実行する．もしVagrantがサポートしていないプロビジョニングツールを使用する場合は，これ自体をインストールしておく必要がある．シェルが複数行に渡る場合は，Rubyのヒアドキュメント形式（```<<-```）を使用すると良い．
+shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式（```<<-```）を使用すると良い。
 
 参考：
 
@@ -232,7 +232,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    # fooというプロビジョニングツールをインストールする．
+    # fooというプロビジョニングツールをインストールする。
     apt-get install -y foo
   SHELL
 
@@ -241,7 +241,7 @@ end
 
 #### ▼ ansible
 
-ホスト側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．開発環境ではこのオプションを使用することは非推奨で，```ansible_local```オプションを使用することが推奨されている．
+ホスト側にAnsibleをインストールし、また仮想環境のプロビジョニングを実行する。開発環境ではこのオプションを使用することは非推奨で、```ansible_local```オプションを使用することが推奨されている。
 
 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
@@ -258,7 +258,7 @@ end
 
 #### ▼ ansible_local
 
-仮想環境側にAnsibleをインストールし，また仮想環境のプロビジョニングを実行する．注意点としては，開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため，コントロールノードは自分自身を指定してプロビジョニングを実行することになる．開発環境ではこのオプションを使用することが推奨されており，```ansible```オプションを使用することが非推奨とされている．
+仮想環境側にAnsibleをインストールし、また仮想環境のプロビジョニングを実行する。注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分自身を指定してプロビジョニングを実行することになる。開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
 
 参考：
 
@@ -276,16 +276,16 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ただし，Vagrantからではなく，直接的にAnsibleを操作したい場合は，shellオプションでAnsibleをインストールする必要がある．こちらが推奨である．
+ただし、Vagrantからではなく、直接的にAnsibleを操作したい場合は、shellオプションでAnsibleをインストールする必要がある。こちらが推奨である。
 
 ```ruby
 Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    # Ansibleをインストールする．
+    # Ansibleをインストールする。
     apt-get install -y ansible
-    # Ansibleを直接的に操作する．
+    # Ansibleを直接的に操作する。
     ansible-playbook /etc/ansible/playbook.yml -i inventory.yml
   SHELL
   
@@ -298,7 +298,7 @@ end
 
 #### ▼ synced_folderとは
 
-ホスト上のディレクトリを仮想環境にマウントする．
+ホスト上のディレクトリを仮想環境にマウントする。
 
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
@@ -312,7 +312,7 @@ end
 
 #### ▼ type
 
-マウント方法を設定する．デフォルト値は，VirtualBox共有フォルダーである．その他，NFS，RSync，SMBを設定できる．
+マウント方法を設定する。デフォルト値は、VirtualBox共有フォルダーである。その他、NFS、RSync、SMBを設定できる。
 
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
@@ -324,15 +324,15 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ホストと仮想環境間のファイルの入出力の速度差によって，仮想環境のパフォーマンスに差がある．以下のリンクで，ロードテストを行ったところ，『```RSync > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良かった．
+ホストと仮想環境間のファイルの入出力の速度差によって、仮想環境のパフォーマンスに差がある。以下のリンクで、ロードテストを行ったところ、『```RSync > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良かった。
 
 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
-また，『```RSync > NFS```』『```NFS > SMB```』である．
+また、『```RSync > NFS```』『```NFS > SMB```』である。
 
 参考：
 
 - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 
-これらから，おおよそ『```RSync > NFS > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良くなると考えておけばよい．
+これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良くなると考えておけばよい。

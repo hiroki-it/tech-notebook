@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド@PHP
-description: コマンド@PHPの知見をまとめました．
+description: コマンド@PHPの知見をまとめました。
 ---
 
 # コマンド@PHP
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: コマンド@PHPの知見をまとめました．
 
 ### -i
 
-PHPの設定を表示する．
+PHPの設定を表示する。
 
 **＊例＊**
 
@@ -31,10 +31,10 @@ PHP Version => 7.4
 
 ```
 
-出力量が多いため，```grep```を使用して，特定の項目のみを表示すると良い．
+出力量が多いため、```grep```を使用して、特定の項目のみを表示すると良い。
 
 ```bash
-# PHPのプロセスが使用できるメモリを確認する．
+# PHPのプロセスが使用できるメモリを確認する。
 $ php -i | grep memory_limit
 
 memory_limit => 2048M => 2048M
@@ -44,7 +44,7 @@ memory_limit => 2048M => 2048M
 
 ### --ini
 
-Configuration Fileの項目で，```php.ini```ファイルのあるディレクトリを表示する．
+Configuration Fileの項目で、```php.ini```ファイルのあるディレクトリを表示する。
 
 **＊例＊**
 
@@ -71,7 +71,7 @@ drwxr-xr-x 1 root root  4096 Sep 25 12:22 conf.d
 
 ### -m
 
-インストールされているモジュールを表示する．
+インストールされているモジュールを表示する。
 
 **＊例＊**
 
@@ -92,7 +92,7 @@ zlib
 [Zend Modules]
 ```
 
-なお，実際に読み込まれているかどうかは，```get_loaded_extensions```メソッドで確認できる．`
+なお、実際に読み込まれているかどうかは、```get_loaded_extensions```メソッドで確認できる。`
 
 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 
@@ -117,14 +117,14 @@ Array
 
 ### -r
 
-コマンドラインからコードを実行できる．
+コマンドラインからコードを実行できる。
 
 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 **＊例＊**
 
 ```bash
-# PHPなので，処理終わりにセミコロンが必要
+# PHPなので、処理終わりにセミコロンが必要
 $ php -r '<何らかの処理>'
 
 # Hello Worldを出力
@@ -133,7 +133,7 @@ $ php -r 'echo "Hello World";'
 # phpinfoメソッドを実行
 $ php -r 'phpinfo();'
 
-# phpinfoメソッドの実行結果から，特定の設定のみを取り出す．
+# phpinfoメソッドの実行結果から、特定の設定のみを取り出す。
 $ php -r 'phpinfo();' | grep php.ini
 
 # phpinfoメソッドの実行結果をテキストファイルに保存
@@ -150,7 +150,7 @@ $ php -r '
 
 ### --ri
 
-拡張モジュールの設定値を表示する．
+拡張モジュールの設定値を表示する。
 
 **＊例＊**
 

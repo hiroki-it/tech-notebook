@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】検証ロジック＠PHP
-description: 検証ロジック＠PHPの知見をまとめました．
+description: 検証ロジック＠PHPの知見をまとめました。
 ---
 
 # 検証ロジック＠PHP
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,11 +19,11 @@ description: 検証ロジック＠PHPの知見をまとめました．
 
 #### ▼ 不要な場合
 
-DBから取得した後に直接的に表示する値の場合，DBでNullにならないように制約をかけられる．そのため，値が想定通りの状態になっているかを改めて検証する必要はない．
+DBから取得した後に直接的に表示する値の場合、DBでNullにならないように制約をかけられる。そのため、値が想定通りの状態になっているかを改めて検証する必要はない。
 
 #### ▼ 必要な場合
 
-DBからの値を直接的に表示する場合と異なり，新しく作られる値を使用する場合，その値が想定外の状態になっている可能性がある．そのため，値が想定通りの状態になっているかを検証する必要がある．検証パターンについては，後述の説明を参考にせよ．
+DBからの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。そのため、値が想定通りの状態になっているかを検証する必要がある。検証パターンについては、後述の説明を参考にせよ。
 
 <br>
 
@@ -33,11 +33,11 @@ DBからの値を直接的に表示する場合と異なり，新しく作られ
 
 空欄：```FALSE```
 
-フロントエンドの検証については以下のリンクを参考にせよ．
+フロントエンドの検証については以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_validation.html
 
-| 検証パターン             | ```isset($var)```，```!is_null($var)``` |      ```if($var)```，```!empty($var)```       |
+| 検証パターン             | ```isset($var)```、```!is_null($var)``` |      ```if($var)```、```!empty($var)```       |
 |:-------------------|:--------------------------------------:|:--------------------------------------------:|
 | **```null```**     |                                        |                                              |
 | **```0```**        |                   ✅                    |                                              |
@@ -46,17 +46,17 @@ DBからの値を直接的に表示する場合と異なり，新しく作られ
 | **```"あ"```**      |                   ✅                    |                      ✅                       |
 | **```array(0)```** |                   ✅                    |                                              |
 | **```array(1)```** |                   ✅                    |                      ✅                       |
-| **使いどころ**          |          ```null```だけを検証したい場合          | ```null```，```0```，```""```，```[]```を検証したい場合 |
+| **使いどころ**          |          ```null```だけを検証したい場合          | ```null```、```0```、```""```、```[]```を検証したい場合 |
 
 <br>
 
 ## 02. 条件式
 
-### if-elseif-else ，switch-case-break
+### if-elseif-else 、switch-case-break
 
 **＊実装例＊**
 
-曜日を検証し，文字列を出力する．
+曜日を検証し、文字列を出力する。
 
 #### ▼ if-elseif-else
 
@@ -67,7 +67,7 @@ DBからの値を直接的に表示する場合と異なり，新しく作られ
 // 変数に Tue を格納
 $weeks = "Tue";
 
-// if文でTueに該当したら"火曜日"と表示する．
+// if文でTueに該当したら"火曜日"と表示する。
 if ($weeks == "Mon") {
     echo "月曜日";
 } elseif ($weeks == "Tue") {
@@ -90,7 +90,7 @@ if ($weeks == "Mon") {
 
 #### ▼ switch-case-break
 
-定数ごとに処理が変わる時，こちらの方が可読性が高い．
+定数ごとに処理が変わる時、こちらの方が可読性が高い。
 
 **＊実装例＊**
 
@@ -100,7 +100,7 @@ if ($weeks == "Mon") {
 // 変数に Tue を格納
 $weeks = "Tue";
 
-// 条件分岐でTueに該当したら"火曜日"と表示する．breakでif文を抜けなければ，全て実行されてしまう．
+// 条件分岐でTueに該当したら"火曜日"と表示する。breakでif文を抜けなければ、全て実行されてしまう。
 switch ($weeks) {
     case "Mon":
         echo "月曜日";
@@ -137,7 +137,7 @@ switch ($weeks) {
 
 #### ▼ if-elseを使用した場合
 
-可読性が悪いため，避けるべき．
+可読性が悪いため、避けるべき。
 
 **＊実装例＊**
 
@@ -159,12 +159,12 @@ class Example
     public function example($result)
     {
 
-        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す．
+        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
-                // if文を通過した場合，メソッドの返却値が格納される．
-                // 通過しない場合，定数が格納される．
+                // if文を通過した場合、メソッドの返却値が格納される。
+                // 通過しない場合、定数が格納される。
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
                 } else {
@@ -192,7 +192,7 @@ class Example
 
 #### ▼ 三項演算子を使用した場合
 
-よりすっきりした書き方になる．
+よりすっきりした書き方になる。
 
 **＊実装例＊**
 
@@ -213,12 +213,12 @@ class Example
 
     public function example($result)
     {
-        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す．
+        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
-                // if文を通過した場合，メソッドの返却値が格納される．
-                // 通過しない場合，定数が格納される．
+                // if文を通過した場合、メソッドの返却値が格納される。
+                // 通過しない場合、定数が格納される。
                 $result["optionItemA"] = ($option->isOptionItemA())
                   ? $option->optionItemA()
                   : self::noOptionItem;
@@ -240,7 +240,7 @@ class Example
 
 #### ▼ 初期値と上書きのロジックを使用した場合
 
-よりすっきりした書き方になる．
+よりすっきりした書き方になる。
 
 **＊実装例＊**
 
@@ -266,12 +266,12 @@ class Example
         $result["optionItemB"] = self::noOptionItem;
         $result["optionItemC"] = self::noOptionItem;
     
-        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す．
+        // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
         if(!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
             
-                // if文を通過した場合，メソッドの返却値によって初期値0が上書きされる．
-                // 通過しない場合，初期値0が使用される．
+                // if文を通過した場合、メソッドの返却値によって初期値0が上書きされる。
+                // 通過しない場合、初期値0が使用される。
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
                 }
@@ -300,23 +300,23 @@ class Example
 
 **＊実装例＊**
 
-うるう年であるかを検証し，文字列を出力する．以下の手順で設計と実装を行う．
+うるう年であるかを検証し、文字列を出力する。以下の手順で設計と実装を行う。
 
-1. 条件分岐の処理順序の概要を日本で記述する．
-2. 記述内容を，条件部と動作部に分解し，決定表で表す．
-3. 決定表を，流れ図で表す．
+1. 条件分岐の処理順序の概要を日本で記述する。
+2. 記述内容を、条件部と動作部に分解し、決定表で表す。
+3. 決定表を、流れ図で表す。
 
 ![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/決定表.png)
 
 #### ▼ if-elseif-elseは使用しない
 
-可読性が悪いため，避けるべき．
+可読性が悪いため、避けるべき。
 
 **＊実装例＊**
 
 ```php
 <?php
-// 西暦を格納する．
+// 西暦を格納する。
 $year = N;
 ```
 
@@ -327,7 +327,7 @@ function leapYear(int $year): string
 {
     // (5)
     if ($year <= 0) {
-        throw new Exception("負の数は検証できません．");
+        throw new Exception("負の数は検証できません。");
 
     // (4)
     } elseif ($year % 4 != 0) {
@@ -350,21 +350,21 @@ function leapYear(int $year): string
 
 #### ▼ ifとreturnを使用した早期リターン
 
-各if文で```return```を使用することにより，```if```が入れ子状になることを防げる．これを，早期リターンともいう．
+各if文で```return```を使用することにより、```if```が入れ子状になることを防げる。これを、早期リターンともいう。
 
 **＊実装例＊**
 
 ```php
 <?php
     
-// 西暦を格納する．
+// 西暦を格納する。
 $year = N;
     
 function leapYear(int $year): string
 {
     // (5)
     if($year <= 0){
-        throw new Exception("負の数は検証できません．");
+        throw new Exception("負の数は検証できません。");
     }
 
     // (4)
@@ -390,7 +390,7 @@ function leapYear(int $year): string
 
 #### ▼ switch-case-breakを使用した早期リターン
 
-if文の代わりに，```switch-case-break```によって，実装に，『◯◯の場合に切り換える』という意味合いを持たせられる．ここでは，メソッドに実装することを想定して，```break```ではなく```return```を使用している．
+if文の代わりに、```switch-case-break```によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。ここでは、メソッドに実装することを想定して、```break```ではなく```return```を使用している。
 
 **＊実装例＊**
 
@@ -403,7 +403,7 @@ function leapYear(int $year): string
     
     // (5)
     case($year <= 0):
-        throw new Exception("負の数は検証できません．");
+        throw new Exception("負の数は検証できません。");
 
     // (4)
         case($year % 4 != 0 ):
@@ -427,7 +427,7 @@ function leapYear(int $year): string
 
 #### ▼ ガード節を使用した早期リターン
 
-早期リターンのif文の波括弧を省略した記法を，ガード節という．
+早期リターンのif文の波括弧を省略した記法を、ガード節という。
 
 **＊実装例＊**
 
@@ -437,7 +437,7 @@ function leapYear(int $year): string
 function leapYear(int $year): string
 {
     // (5)
-    if($year <= 0) throw new Exception("負の数は検証できません．");
+    if($year <= 0) throw new Exception("負の数は検証できません。");
 
     // (4)
     if($year % 4 != 0 ) return "平年";
@@ -462,7 +462,7 @@ function leapYear(int $year): string
 
 #### ▼ イコールが2つの場合
 
-同じオブジェクトから別々に作られたインスタンスであっても，『同じもの』として認識される．
+同じオブジェクトから別々に作られたインスタンスであっても、『同じもの』として認識される。
 
 **＊実装例＊**
 
@@ -481,7 +481,7 @@ if(new Example == new Example){
 
 #### ▼ イコールが3つの場合
 
-同じオブジェクトから別々に作られたインスタンスであっても，『異なるもの』として認識される．
+同じオブジェクトから別々に作られたインスタンスであっても、『異なるもの』として認識される。
 
 **＊実装例＊**
 
@@ -500,7 +500,7 @@ if (new Example === new Example) {
 // 異なります
 ```
 
-同一のインスタンスの場合のみ，『同じもの』として認識される．
+同一のインスタンスの場合のみ、『同じもの』として認識される。
 
 **＊実装例＊**
 

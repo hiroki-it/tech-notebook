@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】SQLAlchemy ORM＠FastAPI
-description: SQLAlchemy ORM＠FastAPIの知見をまとめました．
+description: SQLAlchemy ORM＠FastAPIの知見をまとめました。
 ---
 
 # SQLAlchemy ORM＠FastAPI
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -22,7 +22,7 @@ description: SQLAlchemy ORM＠FastAPIの知見をまとめました．
 **＊実装例＊**
 
 ```python
-# SessionLocalクラスを作成します．
+# SessionLocalクラスを作成します。
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
 def create_session_local():
     import os
@@ -44,7 +44,7 @@ def create_session_local():
     return session_local()
 
 
-# DBに接続します．
+# DBに接続します。
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-dependency
 def get_db():
     try:
@@ -59,7 +59,7 @@ def get_db():
 
 ### モデルの定義
 
-基底モデルのインスタンスを```declarative_base```メソッドで作成し，この変数を各モデルで継承する．
+基底モデルのインスタンスを```declarative_base```メソッドで作成し、この変数を各モデルで継承する。
 
 参考：https://crieit.net/posts/SQLAlchemy-Declarative-API
 
@@ -77,7 +77,7 @@ Base = declarative_base()
 from src.models.model import Base
 from sqlalchemy import Column
 
- # 基底モデルクラスを継承する．
+ # 基底モデルクラスを継承する。
 class User(Base):
     __tablename__ = "users"
     
@@ -105,18 +105,18 @@ class FooController():
      def __init__(self, db: Session = Depends(get_db)):
          self.db = db
 
-     # 作成トランザクションを実行します．
+     # 作成トランザクションを実行します。
      # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
      def createFoo(self):
          foo = Foo(first_name="hiroki", last_name="hasegawa")
          
-         # セッションにクラスを追加する．
+         # セッションにクラスを追加する。
          self.db.add(foo)
              
-         # DBレコードを作成する．
+         # DBレコードを作成する。
          self.db.commit()
          
-         # 作成したレコードをインスタンスのデータに設定する．
+         # 作成したレコードをインスタンスのデータに設定する。
          self.db.refresh(foo)
         
          return JSONResponse(jsonable_encoder(foo))

@@ -6,7 +6,7 @@ title: 【知見を記録するサイト】メソッド/データ＠JavaScript
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -18,7 +18,7 @@ title: 【知見を記録するサイト】メソッド/データ＠JavaScript
 
 #### ▼ 関数オブジェクトとは
 
-オブジェクトでもあり，関数である．
+オブジェクトでもあり、関数である。
 
 #### ▼ リテラル表記による関数オブジェクト
 
@@ -33,7 +33,7 @@ const object = {
 
 #### ▼ コンストラクタ関数
 
-関数宣言方式の```Function```コンストラクタを使用して，オブジェクトを定義する．
+関数宣言方式の```Function```コンストラクタを使用して、オブジェクトを定義する。
 
 ```javascript
 // 関数宣言による定義
@@ -53,7 +53,7 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 
 #### ▼ function命令とは
 
-オブジェクトではない関数である．
+オブジェクトではない関数である。
 
 **＊実装例＊**
 
@@ -71,7 +71,7 @@ methodA();
 
 #### ▼ 名前がドルマークのもの
 
-JavaScriptでよく見かけるドルマーク．これは，関数の名前としてドルマークを使用しているだけである．
+JavaScriptでよく見かけるドルマーク。これは、関数の名前としてドルマークを使用しているだけである。
 
 **＊実装例＊**
 
@@ -82,7 +82,7 @@ function $(){
 }
 ```
 
-jQueryでは，パッケージの読み出し宣言時に，『Jquery』という名前の代わりにドルマークを使用する仕様になってる．これと混乱しないように注意する．
+jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。これと混乱しないように注意する。
 
 **＊実装例＊**
 
@@ -97,19 +97,19 @@ $.get()
 const asyncFunc = (param, callback) => {
   setTimeout(() => {
     
-    // getDataメソッドは，数値を渡すとdataを取得してくれると仮定します．
+    // getDataメソッドは、数値を渡すとdataを取得してくれると仮定します。
     const  data = getData(param);
     const  err = data.getError();
       
-    // 第二引数のコールバック関数は，getDataメソッドとgetErrorメソッドの後に実行される．
+    // 第二引数のコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行される。
     callback(err, data);
   }, 0);
 }
 
 const test = 1
 
-// asyFuncメソッドの第一引数が，第二引数で設定したコールバック関数に渡される．
-// 渡されたコールバック関数は，getDataメソッドとgetErrorメソッドの後に実行されるため，errやdataを受け取れる
+// asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。
+// 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる
 asyncFunc(test, (err, data) => {
   if (err) {
       throw err;
@@ -120,11 +120,11 @@ asyncFunc(test, (err, data) => {
 
 #### ▼ ファイル外で読み込む
 
-関数の前で```export```を宣言する．
+関数の前で```export```を宣言する。
 
 **＊実装例＊**
 
-関数の定義と```export```の宣言を同時に行う．
+関数の定義と```export```の宣言を同時に行う。
 
 ```javascript
 export function foo(){
@@ -132,7 +132,7 @@ export function foo(){
 }
 ```
 
-あるいは，別々に行う．
+あるいは、別々に行う。
 
 ```javascript
 const foo = () => {
@@ -148,11 +148,11 @@ export default foo
 
 ## 02. データ型
 
-### undefined，null
+### undefined、null
 
 #### ▼ undefined
 
-データを代入しない時に適用されるデータ型である．
+データを代入しない時に適用されるデータ型である。
 
 **＊実装例＊**
 
@@ -168,7 +168,7 @@ console.log(b);  // undefied
 
 #### ▼ null
 
-nullは，undefinedとは異なり，意図して代入しなければ適用されないデータ型である．
+nullは、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
 
 **＊実装例＊**
 
@@ -181,18 +181,18 @@ console.log(a); // null
 
 #### ▼ undefinedの返却
 
-undefinedを返却する場合，```return```のみを記述する．
+undefinedを返却する場合、```return```のみを記述する。
 
 **＊実装例＊**
 
 ```javascript
 function foo(){
-    return; // 空の『return文』．空なので『undefined』を返す．
+    return; // 空の『return文』。空なので『undefined』を返す。
 }
 
-const foo = foo(); // 変数『foo』には関数『foo』から返ってきた『undefined』が代入される．
+const foo = foo(); // 変数『foo』には関数『foo』から返ってきた『undefined』が代入される。
  
-console.log(foo); // 『undefined』が出力される．
+console.log(foo); // 『undefined』が出力される。
 ```
 
 <br>
@@ -212,7 +212,7 @@ console.log(foo); // 『undefined』が出力される．
 
 #### ▼ ```const```
 
-基本的には，宣言に```const```を使用する
+基本的には、宣言に```const```を使用する
 
 ```javascript
 if (true) {
@@ -232,7 +232,7 @@ console.log(foo); // ERROR
 
 #### ▼ ```let```
 
-繰り返し処理で再代入が必要であれば，```const```ではなく```let```を使用する．
+繰り返し処理で再代入が必要であれば、```const```ではなく```let```を使用する。
 
 
 ```javascript
@@ -251,12 +251,12 @@ if (true) {
 console.log(foo); // ERROR
 ```
 
-また，```try-catch```構文では変数への代入が保証されていないため，```let```を使用して，あらかじめ初期化しておく必要がある．
+また、```try-catch```構文では変数への代入が保証されていないため、```let```を使用して、あらかじめ初期化しておく必要がある。
 
 ```js
 const asyncFunc = async () => {
     
-    // 初期化するとundefinedになる．
+    // 初期化するとundefinedになる。
     let response;
     
     try {
@@ -289,7 +289,7 @@ if (true) {
   foo = "foo";
 }
 
-// ブロック内のvarにアクセスできる．
+// ブロック内のvarにアクセスできる。
 console.log(foo); // foo
 ```
 
@@ -299,7 +299,7 @@ console.log(foo); // foo
 
 #### ▼ 巻き上げとは
 
-巻き上げは，```var```を使用して変数を宣言した時や，関数をに起こり得る．確認のため```console.log```メソッドを実行した場合，```foo```を宣言していないため，『x is not defined 』エラーになりそうである．しかし実際は，宣言が既に済んでおり，```foo```に値が代入されていないことを示す『undefined』となる．
+巻き上げは、```var```を使用して変数を宣言した時や、関数をに起こり得る。確認のため```console.log```メソッドを実行した場合、```foo```を宣言していないため、『x is not defined 』エラーになりそうである。しかし実際は、宣言が既に済んでおり、```foo```に値が代入されていないことを示す『undefined』となる。
 
 ```javascript
 console.log(foo); // undefined
@@ -307,23 +307,23 @@ console.log(foo); // undefined
 var foo = "foo"; // 宣言と代入
 ```
 
-これは，スコープの範囲内で宣言と代入を実行した変数で，宣言処理がスコープの最初に行ったことになるという仕様のためである．
+これは、スコープの範囲内で宣言と代入を実行した変数で、宣言処理がスコープの最初に行ったことになるという仕様のためである。
 
 ```javascript
-// 内部的には，最初に宣言処理したことになる
+// 内部的には、最初に宣言処理したことになる
 // var foo
 
 console.log(foo); // undefined
 
-var foo = "foo"; // 宣言と代入により，実際は宣言処理を実装していなくとも，行なったことになる．
+var foo = "foo"; // 宣言と代入により、実際は宣言処理を実装していなくとも、行なったことになる。
 ```
 
-これは関数の代入時にも起こる．
+これは関数の代入時にも起こる。
 
 参考：https://jsprimer.net/basic/function-scope/#function-declaration-hoisting
 
 ```javascript
-// 内部的には，最初に宣言処理したことになる
+// 内部的には、最初に宣言処理したことになる
 // var foo
 
 foo(); // foo is not a function
@@ -335,14 +335,14 @@ var foo = function(){
 
 #### ▼ ```var```使用時の対策
 
-意図しない挙動を防ぐため，変数の宣言と代入はスコープの最初に行うようにする．
+意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に行うようにする。
 
 ```javascript
-var foo = "foo"; // スコープの最初に宣言する．
+var foo = "foo"; // スコープの最初に宣言する。
 
 console.log(foo); // foo
 ```
-これは関数の代入時も同じである．
+これは関数の代入時も同じである。
 
 ```javascript
 var foo = function(){
@@ -354,7 +354,7 @@ foo(); // foo
 
 #### ▼ ```let```,```const```使用時の対策
 
-宣言に```let```，```const```を使用した場合，巻き上げは起こらないため，宣言と代入の場所を気にしなくともよくなる．
+宣言に```let```、```const```を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。
 
 ```javascript
 console.log(foo); // foo is not defined
@@ -368,14 +368,14 @@ let foo = "foo";
 
 #### ▼ 配列
 
-配列の値を，任意の名前の変数に代入する．
+配列の値を、任意の名前の変数に代入する。
 
 **＊実装例＊**
 
 ```javascript
 const array = [1, 2, 3];
 
-// fooに1，barに2，bazに3，を代入
+// fooに1、barに2、bazに3、を代入
 const [foo, bar, baz] = array;
 
 console.log(foo); // 1
@@ -385,7 +385,7 @@ console.log(baz); // 3
 
 #### ▼ オブジェクト
 
-オブジェクトの値を，プロパティ名と同じ名前の変数に代入する．
+オブジェクトの値を、プロパティ名と同じ名前の変数に代入する。
 
 **＊実装例＊**
 
@@ -411,7 +411,7 @@ console.log(baz); // 3
 
 #### ▼ ```for  of```とは
 
-順序を保ったまま配列を走査し，値を取得する．オブジェクトに対して```entires```メソッドを使用して，一度配列に変換すれば，オブジェクトでも```for  of```を使用できる．```for  in```を使用するより，こちらを使用した方が良い．
+順序を保ったまま配列を走査し、値を取得する。オブジェクトに対して```entires```メソッドを使用して、一度配列に変換すれば、オブジェクトでも```for  of```を使用できる。```for  in```を使用するより、こちらを使用した方が良い。
 
 #### ▼ 配列の場合
 
@@ -427,7 +427,7 @@ for (const value of array) {
 // baz
 ```
 
-配列の```entires```メソッドを使用すれば，インデックス番号を取得もできる．
+配列の```entires```メソッドを使用すれば、インデックス番号を取得もできる。
 
 ```javascript
 const  array = ["foo", "bar", "baz"];
@@ -443,7 +443,7 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ オブジェクトの場合
 
-オブジェクトに対して```entires```メソッドを実行し，一度連想配列に変換すれば，オブジェクトでも```for ... of```を使用できる．
+オブジェクトに対して```entires```メソッドを実行し、一度連想配列に変換すれば、オブジェクトでも```for ... of```を使用できる。
 
 ```javascript
 const object = {
@@ -467,7 +467,7 @@ for (const [property, value] of Object.entries(object)) {
 
 #### ▼ スプレッド構文とは
 
-ドット3つで記載する．順序を保ったまま配列を走査し，値を取得する．オブジェクトは捜査できない．
+ドット3つで記載する。順序を保ったまま配列を走査し、値を取得する。オブジェクトは捜査できない。
 
 ```javascript
 const array = ["foo", "bar", "baz"];
@@ -487,7 +487,7 @@ console.log(...array);
 
 #### ▼ ```for  in```とは
 
-配列/オブジェクト（連想配列）を順序を保たずに走査し，オブジェクトのプロパティ名や配列のキー名を取得する．
+配列/オブジェクト（連想配列）を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。
 
 #### ▼ 配列の場合
 
@@ -529,14 +529,14 @@ for (const property in object) {
 
 #### ▼ continueとは
 
-反復処理の現在のループをスキップし，次のループを開始する．
+反復処理の現在のループをスキップし、次のループを開始する。
 
 ```php
 const array = ["foo", "bar", "baz"];
 
 for (const [key, value] of array.entries()) {
 
-    // キー名が偶数の組をスキップする．
+    // キー名が偶数の組をスキップする。
     if(!(key % 2 == 0)){
         continue;
     }
@@ -550,15 +550,15 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ ```forEach```関数を使用した代替法
 
-反復処理のループを```continue```でスキップと同じ動作を，配列を扱う関数のコールバック関数で早期リターンで実現できる．```continue```を使用するより，こちらの方が良い．
+反復処理のループを```continue```でスキップと同じ動作を、配列を扱う関数のコールバック関数で早期リターンで実現できる。```continue```を使用するより、こちらの方が良い。
 
 参考：https://www.deep-rain.com/programming/javascript/778#continue
 
-PHPにも，```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```，```fliter```，```map```，```reduce```，```some```）があり，用途に合わせて使い分ける．
+PHPにも、```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```、```fliter```、```map```、```reduce```、```some```）があり、用途に合わせて使い分ける。
 
 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
-ちなみにPHPにも，```forEach```関数と同じような使い方をする```array_walk```関数がある．
+ちなみにPHPにも、```forEach```関数と同じような使い方をする```array_walk```関数がある。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_iteration.html
 
@@ -567,7 +567,7 @@ const array = ["foo", "bar", "baz"];
 
 array.forEach((value, key) => {
     
-    // キーが偶数の組をスキップする．
+    // キーが偶数の組をスキップする。
     if(!(key % 2 == 0)){
         return;
     }

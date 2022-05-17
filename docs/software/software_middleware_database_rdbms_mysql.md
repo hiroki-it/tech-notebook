@@ -6,7 +6,7 @@ title: 【知見を記録するサイト】MySQL
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -24,7 +24,7 @@ mysqlコマンドのみをインストールしたい場合
 $ dnf install -y mysql
 ```
 
-mysqlコマンド，DBサーバー機能，をインストールしたい場合はこちら
+mysqlコマンド、DBサーバー機能、をインストールしたい場合はこちら
 
 ```bash
 $ dnf install -y mysql-server
@@ -34,7 +34,7 @@ $ dnf install -y mysql-server
 
 ### 接続確認
 
-DBに接続する．pオプションの値にはスペースが不要であることに注意する．
+DBに接続する。pオプションの値にはスペースが不要であることに注意する。
 
 ```bash
 $ mysql -u <ユーザー名> -p<パスワード> -h <DBホスト名> <DB名>
@@ -46,7 +46,7 @@ $ mysql -u <ユーザー名> -p<パスワード> -h <DBホスト名> <DB名>
 
 #### ▼ パラメーターの表示
 
-DBに登録されているグローバルパラメーターとセッションパラメーターを表示する．
+DBに登録されているグローバルパラメーターとセッションパラメーターを表示する。
 
 ```sql
 -- セッション/グローバルパラメーターを表示
@@ -76,7 +76,7 @@ SET time_zone = "Asia/Tokyo";
 
 #### ▼ ```/etc/mysql/my.cnf```ファイルとは
 
-MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/mysql```ディレクトリ配下に配置されている．ただ実際には，```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ配下にある```*.cnf```ファイルを読み込むようになっている．
+MySQLの起動時の値を設定する。```my.cnf```ファイルは、```/etc/mysql```ディレクトリ配下に配置されている。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ配下にある```*.cnf```ファイルを読み込むようになっている。
 
 ```ini
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.
@@ -107,7 +107,7 @@ MySQLの起動時の値を設定する．```my.cnf```ファイルは，```/etc/m
 
 #### ▼ ```datadir```ディレクトリ
 
-MySQLのDBやテーブルの情報を管理する．基本的には```/var/lib/mysql```ディレクトリを使用するように設定されている．DB固有の情報は，DB名のディレクトリで管理されている．dockerエリアのマウントポイントとして指定される．
+MySQLのDBやテーブルの情報を管理する。基本的には```/var/lib/mysql```ディレクトリを使用するように設定されている。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのマウントポイントとして指定される。
 
 ```bash
 [root@<コンテナID>:/var/lib/mysql] $ ls -la
@@ -140,13 +140,13 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 ### mysqldセクション
 
-mysqlサーバーの```mysqld```プロセスのプールを設定する．
+mysqlサーバーの```mysqld```プロセスのプールを設定する。
 
 <br>
 
 ### character-set-server
 
-DBの作成時に適用する文字コードを設定する．
+DBの作成時に適用する文字コードを設定する。
 
 ```ini
 [mysql]
@@ -157,7 +157,7 @@ character-set-server = utf8mb4
 
 ### collation_server
 
-照合順序を設定する．
+照合順序を設定する。
 
 ```ini
 [mysqld]
@@ -168,7 +168,7 @@ collation_server = utf8mb4_general_ci
 
 ### default-time-zone
 
-デフォルトのタイムゾーンを設定する．
+デフォルトのタイムゾーンを設定する。
 
 ```ini
 [mysqld]
@@ -179,7 +179,7 @@ default-time-zone = SYSTEM
 
 ### datadir
 
-テーブル情報のファイルを生成するディレクトリを設定する．
+テーブル情報のファイルを生成するディレクトリを設定する。
 
 ```ini
 [mysqld]
@@ -190,7 +190,7 @@ datadir = /var/lib/mysql
 
 ### log-error
 
-エラーログの出力先を設定する．
+エラーログの出力先を設定する。
 
 ```ini
 [mysqld]
@@ -201,7 +201,7 @@ log-error = mysql-error.log
 
 ### log_timestamps
 
-ログのタイムゾーンを設定する．
+ログのタイムゾーンを設定する。
 
 ```ini
 [mysqld]
@@ -212,7 +212,7 @@ log_timestamps = SYSTEM
 
 ### general_log
 
-一般ログを出力するかどうかを設定する．
+一般ログを出力するかどうかを設定する。
 
 ```ini
 [mysqld]
@@ -223,7 +223,7 @@ general_log = 1
 
 ### general_log_file
 
-一般ログの出力先のファイルを設定する．
+一般ログの出力先のファイルを設定する。
 
 ```ini
 [mysqld]
@@ -234,7 +234,7 @@ general_log_file = mysql-general.log
 
 ### log_queries_not_using_indexes
 
-DBインデックスを使用するかどうかを設定する．
+DBインデックスを使用するかどうかを設定する。
 
 ```ini
 [mysqld]
@@ -245,7 +245,7 @@ log_queries_not_using_indexes = 0
 
 ### long_query_time
 
-スロークエリログと見なす実行秒数を設定する．
+スロークエリログと見なす実行秒数を設定する。
 
 ```ini
 [mysqld]
@@ -256,7 +256,7 @@ long_query_time = 3
 
 ### pid-file
 
-プロセスIDが記載されたファイルの生成先を設定する．
+プロセスIDが記載されたファイルの生成先を設定する。
 
 ```ini
 [mysqld]
@@ -276,7 +276,7 @@ secure-file-priv = /var/lib/mysql-files
 
 ### slow_query_log
 
-スロークエリログを出力するかどうかを設定する．
+スロークエリログを出力するかどうかを設定する。
 
 ```ini
 [mysqld]
@@ -287,7 +287,7 @@ slow_query_log = 1
 
 ### slow_query_log_file
 
-スロークエリログの出力先のファイルを設定する．
+スロークエリログの出力先のファイルを設定する。
 
 ```ini
 [mysqld]
@@ -307,7 +307,7 @@ socket = /var/lib/mysql/mysql.sock
 
 ### user
 
-プロセスの実行ユーザ名を設定する．
+プロセスの実行ユーザ名を設定する。
 
 ```ini
 [mysqld]
@@ -320,13 +320,13 @@ user = mysql
 
 ### clientセクションとは
 
-mysqlクライアントツールの```client```プロセスのプールを設定する．
+mysqlクライアントツールの```client```プロセスのプールを設定する。
 
 <br>
 
 ### default-character-set
 
-デフォルトの文字コードを設定する．
+デフォルトの文字コードを設定する。
 
 ```ini
 [client]

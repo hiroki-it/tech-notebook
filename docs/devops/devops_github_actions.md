@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】GitHub Actions＠DevOps
-description: GitHub Actions＠DevOpsの知見をまとめました．
+description: GitHub Actions＠DevOpsの知見をまとめました。
 ---
 
 # GitHub Actions＠DevOps
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -15,7 +15,7 @@ description: GitHub Actions＠DevOpsの知見をまとめました．
 
 ## 01. GitHub Actionsの仕組み
 
-構造に関する記載が見つからず，要勉強...
+構造に関する記載が見つからず、要勉強...
 
 <br>
 
@@ -37,7 +37,7 @@ project
 
 ### nameとは
 
-ワークフロー名を設定する．
+ワークフロー名を設定する。
 
 ```yaml
 name: foo
@@ -49,7 +49,7 @@ name: foo
 
 #### ▼ branch
 
-プッシュを検知するブランチを設定する．ワイルドカードを使用できる．
+プッシュを検知するブランチを設定する。ワイルドカードを使用できる。
 
 ```yaml
 on:
@@ -64,13 +64,13 @@ on:
 
 ### jobsとは
 
-ワークフローの具体的な処理を設定する．
+ワークフローの具体的な処理を設定する。
 
 <br>
 
 ### runs-on
 
-GitHub Actionsの実行環境を設定する．
+GitHub Actionsの実行環境を設定する。
 
 ```yaml
 jobs:
@@ -80,7 +80,7 @@ jobs:
 
 #### ▼ インストール済みソフトウェア
 
-使用するOSに応じて，いくつかの汎用的なソフトウェアがすでにインストールされている．
+使用するOSに応じて、いくつかの汎用的なソフトウェアがすでにインストールされている。
 
 参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
@@ -90,7 +90,7 @@ jobs:
 
 #### ▼ uses
 
-使用するActionsを設定する．
+使用するActionsを設定する。
 
 参考：https://github.com/marketplace?category=&query=&type=actions&verification=
 
@@ -105,7 +105,7 @@ jobs:
 
 #### ▼ run
 
-任意のコマンドを実行する．
+任意のコマンドを実行する。
 
 ```yaml
 jobs:
@@ -121,7 +121,7 @@ jobs:
 
 #### ▼ with
 
-Actionsに設定できるパラメーターをわたす．
+Actionsに設定できるパラメーターをわたす。
 
 ```yaml
 jobs:
@@ -136,7 +136,7 @@ jobs:
           # php-version: $PHP_VERSION
 ```
 
-環境変数を渡せないことに注意する．
+環境変数を渡せないことに注意する。
 
 ```yaml
 jobs:
@@ -158,7 +158,7 @@ jobs:
 
 #### ▼ compositeとは
 
-親ファイルの```steps```を別のファイルに切り分け，親ファイルでコールできる．```workflows```ディレクトリ以下に任意のサブディレクトリを用意し，そこに```action```ファイルを配置する．親ファイルでディレクトリを指定すると，```action```ファイルが自動的に読み込まれる．
+親ファイルの```steps```を別のファイルに切り分け、親ファイルでコールできる。```workflows```ディレクトリ以下に任意のサブディレクトリを用意し、そこに```action```ファイルを配置する。親ファイルでディレクトリを指定すると、```action```ファイルが自動的に読み込まれる。
 
 ```bash
 project
@@ -182,11 +182,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo
-        # compositeのディレクトリを指定する．
+        # compositeのディレクトリを指定する。
         uses: ./.github/workflows/composite/bar
 ```
 
-ファイル名は，『```action```』とする必要がある．
+ファイル名は、『```action```』とする必要がある。
 
 ```bash
 Error: Can't find 'action.yml', 'action.yaml' ...
@@ -194,7 +194,7 @@ Error: Can't find 'action.yml', 'action.yaml' ...
 
 #### ▼ Secretsは使用不可
 
-compositeでは，Secretsを使用できない．そのため，```input```キーのパラメーターとして渡す必要がある．
+compositeでは、Secretsを使用できない。そのため、```input```キーのパラメーターとして渡す必要がある。
 
 参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
 
@@ -207,7 +207,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Echo
         uses: ./.github/workflows/composite/echo
-        # パラメーターで渡す．
+        # パラメーターで渡す。
         with:
           foo: ${{ secrets.FOO }}
 ```
@@ -231,23 +231,23 @@ runs:
 
 #### ▼ Checkoutは使用不可
 
-チェックアウト処理は定義できない．
+チェックアウト処理は定義できない。
 
 ```yaml
 runs:
   using: "composite"
   steps:
-    - name: Checkout # これはエラーになる．
+    - name: Checkout # これはエラーになる。
       uses: actions/checkout@v2
     - name: Echo
-      shell: bash # シェルの種類を設定する．
+      shell: bash # シェルの種類を設定する。
       run: |
         echo foo
 ```
 
 #### ▼ シェルの種類を要指定
 
-もし```steps```を定義する場合は，```shell```キーでシェルの種類を指定する必要がある．
+もし```steps```を定義する場合は、```shell```キーでシェルの種類を指定する必要がある。
 
 参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
 
@@ -256,7 +256,7 @@ runs:
   using: "composite"
   steps:
     - name: Echo
-      shell: bash # シェルの種類を設定する．
+      shell: bash # シェルの種類を設定する。
       run: |
         echo foo
 ```
@@ -269,11 +269,11 @@ runs:
 
 #### ▼ Workflowレベルとは
 
-定義された```workflow```（YAMLファイル）内でのみ参照できる．
+定義された```workflow```（YAMLファイル）内でのみ参照できる。
 
 #### ▼ env
 
-環境変数を定義する．Secretの値を設定できない．
+環境変数を定義する。Secretの値を設定できない。
 
 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
@@ -297,7 +297,7 @@ jobs:
 
 #### ▼ Jobsレベルとは
 
-定義された```jobs```キー内でのみ参照できる．
+定義された```jobs```キー内でのみ参照できる。
 
 #### ▼ env
 
@@ -317,7 +317,7 @@ jobs:
 
 #### ▼ 環境ファイル
 
-環境ファイル（```GITHUB_ENV```）に値を入力することにより，```job```内の環境変数として使用できるようになる．
+環境ファイル（```GITHUB_ENV```）に値を入力することにより、```job```内の環境変数として使用できるようになる。
 
 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
@@ -336,7 +336,7 @@ jobs:
           echo $FOO
 ```
 
-なお，マスキングされた値は入力できないことに注意する．
+なお、マスキングされた値は入力できないことに注意する。
 
 <br>
 
@@ -344,7 +344,7 @@ jobs:
 
 #### ▼ Stepレベルとは
 
-定義された```step```キー内でのみ参照できる．
+定義された```step```キー内でのみ参照できる。
 
 #### ▼ env
 
@@ -368,7 +368,7 @@ jobs:
 
 ### Secret変数とは
 
-環境変数と同様にしてGitHub Actions内で使用できる．また，```add-mask```コマンドと同様のマスキングが最初から実行されている．
+環境変数と同様にしてGitHub Actions内で使用できる。また、```add-mask```コマンドと同様のマスキングが最初から実行されている。
 
 <br>
 
@@ -376,7 +376,7 @@ jobs:
 
 #### ▼ スコープ
 
-以降の全ての処理でマスキングが実行される．もちろん，```inputs```キーで渡した値にもマスキングが維持される．
+以降の全ての処理でマスキングが実行される。もちろん、```inputs```キーで渡した値にもマスキングが維持される。
 
 参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
@@ -405,7 +405,7 @@ runs:
         FOO=${{ inputs.bar }}
 ```
 
-これに関しては以前は非対応であったため，```add-mask```コマンドを使用した方法がネット上で見つかることに注意する．
+これに関しては以前は非対応であったため、```add-mask```コマンドを使用した方法がネット上で見つかることに注意する。
 
 参考：
 
@@ -415,7 +415,7 @@ runs:
 
 #### ▼ 注意点
 
-注意点として，マスキングされる値と同じ文字列が使用されると，これもマスキングされる．そのため，例えば```input```キーでマスキングされた値と同じ文字列を使用してしまうと，YAMLファイルの構文解析でエラーになってしまう．
+注意点として、マスキングされる値と同じ文字列が使用されると、これもマスキングされる。そのため、例えば```input```キーでマスキングされた値と同じ文字列を使用してしまうと、YAMLファイルの構文解析でエラーになってしまう。
 
 ```yaml
 jobs:
@@ -430,7 +430,7 @@ jobs:
 
 ```yaml
 inputs:
-  foo: # <--- マスキングされ，YAMLファイルの構文解析でエラーになる
+  foo: # <--- マスキングされ、YAMLファイルの構文解析でエラーになる
     required: true
     
 runs:
@@ -448,7 +448,7 @@ runs:
 
 #### ▼ Projectレベルとは
 
-リポジトリの設定のSecrets項目に変数名と値を登録する．プロジェクト内，すなわちリポジトリ内で参照できる．出力された変数の値は，以降の処理でマスキングされる．
+リポジトリの設定のSecrets項目に変数名と値を登録する。プロジェクト内、すなわちリポジトリ内で参照できる。出力された変数の値は、以降の処理でマスキングされる。
 
 参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
@@ -468,7 +468,7 @@ jobs:
 
 #### ▼ Actionレベルとは
 
-リポジトリの設定のEnvironment項目に変数名と値を登録する．GitHub Actionsでのみ参照できる．出力された変数の値は，以降の処理でマスキングされる．Projectレベルとは異なり，```env```キーに明示的に環境変数を渡す必要がある．
+リポジトリの設定のEnvironment項目に変数名と値を登録する。GitHub Actionsでのみ参照できる。出力された変数の値は、以降の処理でマスキングされる。Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
 
 参考：
 
@@ -495,7 +495,7 @@ jobs:
 
 #### ▼ checkout
 
-プロジェクトをクローンする．
+プロジェクトをクローンする。
 
 ```yaml
 jobs:
@@ -506,9 +506,9 @@ jobs:
         uses: actions/checkout@v2
 ```
 
-#### ▼ upload-artifact，download-artifact
+#### ▼ upload-artifact、download-artifact
 
-異なる```jobs```の間でファイルを共有する．
+異なる```jobs```の間でファイルを共有する。
 
 ```yaml
 jobs:
@@ -531,7 +531,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: artifact # 展開するアーティファクトを設定する．
+          name: artifact # 展開するアーティファクトを設定する。
 ```
 
 <br>
@@ -542,7 +542,7 @@ jobs:
 
 #### ▼ add-maskとは
 
-変数の値をマスキングする．以降，ログに出力される場合は，『```***```』のようにアスタリスクで表示される．
+変数の値をマスキングする。以降、ログに出力される場合は、『```***```』のようにアスタリスクで表示される。
 
 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
 
@@ -566,7 +566,7 @@ jobs:
 
 #### ▼ set-outputとは
 
-GitHub Actionsの独自パラメーターを入力する．
+GitHub Actionsの独自パラメーターを入力する。
 
 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
@@ -585,7 +585,7 @@ jobs:
 
 #### ▼ 同じstep内では使用不可
 
-同じ```step```内で，パラメーターの入力と出力を行っても，値は空になる．
+同じ```step```内で、パラメーターの入力と出力を行っても、値は空になる。
 
 ```yaml
 jobs:
@@ -603,7 +603,7 @@ jobs:
 
 #### ▼ 異なるstep間での共有
 
-入力したパラメーターは，異なる```step```の間で出力できる．
+入力したパラメーターは、異なる```step```の間で出力できる。
 
 参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
 
@@ -623,7 +623,7 @@ jobs:
           echo "${{ steps.foo_id.outputs.FOO }}"         
 ```
 
-Secretsや```add-mask```コマンドでマスキングされた値も共有でき，またマスキングを維持できる．
+Secretsや```add-mask```コマンドでマスキングされた値も共有でき、またマスキングを維持できる。
 
 ```yaml
 jobs:
@@ -639,14 +639,14 @@ jobs:
           echo "::add-mask::$FOO"
           echo "::set-output name=FOO::$FOO"
       - name: Echo
-        # 共有可能．マスキング維持可能．
+        # 共有可能。マスキング維持可能。
         run: |
           echo "${{ steps.foo_id.outputs.FOO }}"         
 ```
 
 #### ▼ 異なるjob間での共有
 
-入力したパラメーターは，異なる```job```の間で出力できる．先に実行される```job```キーの```output```キーに入力する必要がある．
+入力したパラメーターは、異なる```job```の間で出力できる。先に実行される```job```キーの```output```キーに入力する必要がある。
 
 参考：
 
@@ -678,7 +678,7 @@ jobs:
           echo "${{ needs.foo.outputs.FOO }}"         
 ```
 
-ただし異なる```job```では，Secretsや```add-mask```コマンドでマスキングされた値は共有できず，空になってしまう．
+ただし異なる```job```では、Secretsや```add-mask```コマンドでマスキングされた値は共有できず、空になってしまう。
 
 ```yaml
 jobs:
@@ -701,7 +701,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # 空になってしまう．
+      # 空になってしまう。
       - name: Echo
         run: |
           echo "${{ needs.foo.outputs.FOO }}"         

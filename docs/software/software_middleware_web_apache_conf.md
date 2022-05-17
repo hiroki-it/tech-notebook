@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】apache.conf@Apache
-description: apache.conf@Apacheの知見をまとめました．
+description: apache.conf@Apacheの知見をまとめました。
 ---
 
 # apache.conf@Apache
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: apache.conf@Apacheの知見をまとめました．
 
 ### 構造
 
-Apacheは，Apacheコアとモジュールから構成される．モジュールには，静的/動的モジュールがある．静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている．一方で，動的モジュールは```mod_so```を使用して拡張機能的に組み込め，また取り外しできる．
+Apacheは、Apacheコアとモジュールから構成される。モジュールには、静的/動的モジュールがある。静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている。一方で、動的モジュールは```mod_so```を使用して拡張機能的に組み込め、また取り外しできる。
 
 参考：https://thinkit.co.jp/article/120/1
 
@@ -33,7 +33,7 @@ Apacheは，Apacheコアとモジュールから構成される．モジュー�
 
 #### ▼ FastCGIプロトコルでルーティング
 
-mod_fcgidモジュールを読み込むことによって，FastCGIプロトコルでルーティングできるようになる．
+mod_fcgidモジュールを読み込むことによって、FastCGIプロトコルでルーティングできるようになる。
 
 参考：https://httpd.apache.org/mod_fcgid/
 
@@ -41,7 +41,7 @@ mod_fcgidモジュールを読み込むことによって，FastCGIプロトコ�
 
 ### Appサーバーのミドルウェアとして
 
-mod_phpモジュールを読み込むことによって，Appサーバーのミドルウェアとしても機能させられる．
+mod_phpモジュールを読み込むことによって、Appサーバーのミドルウェアとしても機能させられる。
 
 <br>
 
@@ -61,7 +61,7 @@ $ apt install apache2
 
 ### ```httpd.conf```ファイル
 
-Apacheの主要な設定ファイル．Includeディレクティブを使用すれば，任意の名前で設定ファイルを追加できる．
+Apacheの主要な設定ファイル。Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
 
 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
@@ -71,7 +71,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 #### ▼ ```.htaccess```ファイルとは
 
-基本的に，```httpd.conf```ファイルで全ての機能を設定できる．ただし，このファイルはインフラエンジニアの責務であり，アプリエンジニアでApacheの設定を定義したい場合に，```.htaccess```ファイルを使用する．
+基本的に、```httpd.conf```ファイルで全ての機能を設定できる。ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合に、```.htaccess```ファイルを使用する。
 
 参考：
 
@@ -80,7 +80,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 #### ▼ ルートディレクトリに置いた場合
 
-全てのファイルに対して，ディレクティブが適用される．
+全てのファイルに対して、ディレクティブが適用される。
 
 参考：https://htaccess.cman.jp/attention/
 
@@ -88,7 +88,7 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 #### ▼ それ以外のディレクトリに置いた場合
 
-設置したディレクトリ配下の階層のファイルに対して適用される．
+設置したディレクトリ配下の階層のファイルに対して適用される。
 
 参考：https://htaccess.cman.jp/attention/
 
@@ -102,17 +102,17 @@ Apacheの主要な設定ファイル．Includeディレクティブを使用す�
 
 #### ▼ ServerRootとは
 
-他の設定ディレクティブで，相対パスが設定されている場合に適用される．そのルートディレクトリを設定する．
+他の設定ディレクティブで、相対パスが設定されている場合に適用される。そのルートディレクトリを設定する。
 
 **＊実装例＊**
 
-通常であれば，etcディレクトリ配下にconfファイルが配置される．
+通常であれば、etcディレクトリ配下にconfファイルが配置される。
 
 ```apacheconf
 ServerRoot /etc/httpd
 ```
 
-CentOSのEPELリポジトリ経由でインストールした場合，Apacheのインストール後に，optディレクトリ配下にconfファイルが設置される．
+CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが設置される。
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd
@@ -124,7 +124,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 #### ▼ VirtualHostとは
 
-ディレクティブを囲うディレクティブの一種．特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する．VirtualHostという名前の通り，1 つのサーバー上で，仮想的に複数のドメインを扱うような処理も定義できる．複数のVirtualHostを設定した場合，1つ目がデフォルト設定として認識される．
+ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。VirtualHostという名前の通り、1 つのサーバー上で、仮想的に複数のドメインを扱うような処理も定義できる。複数のVirtualHostを設定した場合、1つ目がデフォルト設定として認識される。
 
 **＊実装例＊**
 
@@ -132,7 +132,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 Listen 80
 NameVirtualHost *:80
 
-# Defaultサーバーとして扱う．
+# Defaultサーバーとして扱う。
 <VirtualHost *:80>
     DocumentRoot /var/www/foo
     ServerName example.com
@@ -145,10 +145,10 @@ NameVirtualHost *:80
 ```
 #### ▼ IPベースVirtualHost
 
-各ドメインに異なるIPアドレスを割り振るバーチャルホスト．
+各ドメインに異なるIPアドレスを割り振るバーチャルホスト。
 
 #### ▼ 名前ベースVirtualHost
-全てのドメインに同じIPアドレスを割り振るバーチャルホスト．
+全てのドメインに同じIPアドレスを割り振るバーチャルホスト。
 
 <br>
 
@@ -156,7 +156,7 @@ NameVirtualHost *:80
 
 #### ▼ DocumentRootとは
 
-ドキュメントのルートディレクトリを設定する．ドキュメントルートに『```index.html```』というファイルを配置すると，ファイル名を指定しなくとも，ルートディレクトリ内の```index.html```ファイルが，エントリーポイントとして自動的に認識されて表示される．
+ドキュメントのルートディレクトリを設定する。ドキュメントルートに『```index.html```』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の```index.html```ファイルが、エントリーポイントとして自動的に認識されて表示される。
 
 **＊実装例＊**
 
@@ -167,7 +167,7 @@ NameVirtualHost *:80
 </VirtualHost>
 ```
 
-index.html以外の名前をエントリーポイントにする場合，ファイル名を指定する必要がある．
+index.html以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。
 
 **＊実装例＊**
 
@@ -184,7 +184,7 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 
 #### ▼ Directoryとは
 
-ディレクティブを囲うディレクティブの一種．指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する．
+ディレクティブを囲うディレクティブの一種。指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する。
 
 **＊実装例＊**
 
@@ -197,11 +197,11 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 
 <br>
 
-### User，Group
+### User、Group
 
 #### ▼ Userとは
 
-httpdプロセスのユーザー名を設定する．httpdプロセスによって作成されたファイルの所有者名は，このディレクティブで定義したものになる．
+httpdプロセスのユーザー名を設定する。httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
 
 **＊実装例＊**
 
@@ -211,7 +211,7 @@ User apache
 
 #### ▼ Groupとは
 
-httpdプロセスのグループ名を設定する．httpdプロセスによって作成されたファイルのグループ名は，このディレクティブで定義したものになる．
+httpdプロセスのグループ名を設定する。httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
 
 **＊実装例＊**
 
@@ -221,11 +221,11 @@ Group apache
 
 <br>
 
-### KeepAlive，MaxKeepAliveRequests，KeepAliveTimeout
+### KeepAlive、MaxKeepAliveRequests、KeepAliveTimeout
 
 #### ▼ KeepAliveとは
 
-HTTPプロトコルのリクエストのクライアントに対して，セッションIDを付与するかどうか，を設定する．
+HTTPプロトコルのリクエストのクライアントに対して、セッションIDを付与するかどうか、を設定する。
 
 **＊実装例＊**
 
@@ -235,7 +235,7 @@ KeepAlive On
 
 #### ▼ KeepAliveTimeout
 
-セッションIDを付与中のクライアントで，再びリクエストを送信するまでに何秒間空いたら，セッションIDを破棄するか，を設定する．
+セッションIDを付与中のクライアントで、再びリクエストを送信するまでに何秒間空いたら、セッションIDを破棄するか、を設定する。
 
 **＊実装例＊**
 
@@ -246,7 +246,7 @@ KeepAliveTimeout 5
 
 #### ▼ MaxKeepAliveRequests
 
-セッションIDを付与中のクライアントで，リクエストのファイルの最大数を設定する．
+セッションIDを付与中のクライアントで、リクエストのファイルの最大数を設定する。
 
 **＊実装例＊**
 
@@ -263,14 +263,14 @@ MaxKeepAliveRequests 1000
 
 #### ▼ LoadModule
 
-モジュールを読み出し，設定ディレクティブを宣言できるようにする．
+モジュールを読み出し、設定ディレクティブを宣言できるようにする。
 
 **＊実装例＊**
 
-相対パスを指定し，ServerRootを適用させる．これにより，httpdディレクトリのmodulesディレクトリが参照される．
+相対パスを指定し、ServerRootを適用させる。これにより、httpdディレクトリのmodulesディレクトリが参照される。
 
 ```apacheconf
-# ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする．
+# ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする。
 
 LoadModule dir_module modules/mod_dir.so
 ```
@@ -283,7 +283,7 @@ LoadModule dir_module modules/mod_dir.so
 
 #### ▼ DirectoryIndexとは
 
-Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする．
+Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。
 
 **＊実装例＊**
 
@@ -307,7 +307,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 #### ▼ AllowOverrideとは
 
-別に用意した```.htaccess```ファイルにて，有効化するディレクティブを設定する．
+別に用意した```.htaccess```ファイルにて、有効化するディレクティブを設定する。
 
 **＊実装例＊**
 
@@ -320,7 +320,7 @@ Directoryディレクティブによってリクエストされたディレク�
 
 #### ▼ All
 
-別に用意した```.htaccess```ファイルにて，実装できるディレクティブを全て有効化する．
+別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て有効化する。
 
 **＊実装例＊**
 
@@ -330,7 +330,7 @@ AllowOverride All
 
 #### ▼ None
 
-別に用意した```.htaccess```ファイルにて，実装できるディレクティブを全て無効化する．
+別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て無効化する。
 
 **＊実装例＊**
 
@@ -340,7 +340,7 @@ AllowOverride None
 
 #### ▼ Indexes
 
-別に用意した```.htaccess```ファイルにて，DirectoryIndexディレクティブを有効化する．
+別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化する。
 
 **＊実装例＊**
 
@@ -356,7 +356,7 @@ AllowOverride Indexes
 
 #### ▼ RewriteCondとは
 
-条件分岐と，それによる処理を設定する．
+条件分岐と、それによる処理を設定する。
 
 **＊実装例＊**
 
@@ -376,13 +376,13 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 #### ▼ リダイレクトとリライトの違い
 
-以下のリンクを参考にせよ．
+以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 
-条件分岐による処理を設定する．
+条件分岐による処理を設定する。
 
 ```apacheconf
 RewriteRule URL書換＆ルーティングの記述
@@ -390,7 +390,7 @@ RewriteRule URL書換＆ルーティングの記述
 
 **＊実装例＊**
 
-リクエストをHTTPSプロトコルに変換して，リダイレクトする．
+リクエストをHTTPSプロトコルに変換して、リダイレクトする。
 
 ```apacheconf
 RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
@@ -404,7 +404,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 #### ▼ SetEnvIfとは
 
-条件分岐と環境変数の設定を設定する．
+条件分岐と環境変数の設定を設定する。
 
 ```apacheconf
 # クエリパラメーターが以下の拡張子の場合
@@ -413,7 +413,7 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 #### ▼ nolog
 
-ログを出力しない場合を設定できる．
+ログを出力しない場合を設定できる。
 
 <br>
 
@@ -423,11 +423,11 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 #### ▼ LogFormatとは
 
-アクセスログファイルの書式を設定する．
+アクセスログファイルの書式を設定する。
 
 #### ▼ アクセスログ形式と出力内容
 
-アクセスログの出力先ログファイルとフォーマットを合わせて設定する．
+アクセスログの出力先ログファイルとフォーマットを合わせて設定する。
 
 **＊実装例＊**
 
@@ -441,7 +441,7 @@ CustomLog logs/access_log combined
 LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 ```
 
-以下のようなログになる．
+以下のようなログになる。
 
 ```log
 # common形式
@@ -472,11 +472,11 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 #### ▼ ErrorLogとは
 
-エラーログファイルの書式を設定する．
+エラーログファイルの書式を設定する。
 
 #### ▼ エラーログ形式と出力内容
 
-エラーログの出力先を設定する．
+エラーログの出力先を設定する。
 
 **＊実装例＊**
 
@@ -490,7 +490,7 @@ ErrorLog /var/log/httpd/error_log
 
 #### ▼ LogLevelとは
 
-ログに出力する最低のレグレベルを設定する．
+ログに出力する最低のレグレベルを設定する。
 
 ```apacheconf
 LogLevel warn
@@ -504,7 +504,7 @@ LogLevel warn
 
 #### ▼ SSLCertificateFileとは
 
-PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する．本番環境ではAWSのACMの証明書を使用することが多いため，基本的な用途としては，ローカル開発でのオレオレ証明書読み出しのために使用する．
+PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する。本番環境ではAWSのACMの証明書を使用することが多いため、基本的な用途としては、ローカル開発でのオレオレ証明書読み出しのために使用する。
 
 **＊実装例＊**
 
@@ -518,7 +518,7 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 
 #### ▼ SSLCertificateKeyFileとは
 
-PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する．
+PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する。
 
 **＊実装例＊**
 
@@ -534,15 +534,15 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 #### ▼ Headerとは
 
-レスポンスヘッダーを設定する．```set```，```append```，```add```，```unset```，```echo```オプションを設定できる．デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される．オプションとして，```always```を設定することにより，全てのステータスコードでヘッダーを設定する．
+レスポンスヘッダーを設定する。```set```、```append```、```add```、```unset```、```echo```オプションを設定できる。デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される。オプションとして、```always```を設定することにより、全てのステータスコードでヘッダーを設定する。
 
 #### ▼ set
 
-レスポンスヘッダーを追加する．
+レスポンスヘッダーを追加する。
 
 **＊実装例＊**
 
-```Referrer-Policy```ヘッダーを追加し，値を```no-referrer-when-downgrade```とする．ちなみに，Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については，以下のリンクを参考にせよ．
+```Referrer-Policy```ヘッダーを追加し、値を```no-referrer-when-downgrade```とする。ちなみに、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
 参考：https://www.chromestatus.com/feature/6251880185331712
 
@@ -556,7 +556,7 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 
 #### ▼ unset
 
-レスポンスヘッダーを削除する．
+レスポンスヘッダーを削除する。
 
 **＊実装例＊**
 

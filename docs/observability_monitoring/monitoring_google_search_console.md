@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】Googleサーチコンソール＠監視
-description: Googleサーチコンソール＠監視の知見をまとめました．
+description: Googleサーチコンソール＠監視の知見をまとめました。
 ---
 
 # Googleサーチコンソール＠監視
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,13 +19,13 @@ description: Googleサーチコンソール＠監視の知見をまとめまし�
 
 #### ▼ クローラーとは
 
-インターネット上を巡回し，サイトの情報を収集する．検索エンジンシステムは，収集されたデータのインデックスをDBに作成する．ユーザーが検索エンジンを使用する時は，このDBインデックスを基に検索結果が表示される．
+インターネット上を巡回し、サイトの情報を収集する。検索エンジンシステムは、収集されたデータのインデックスをDBに作成する。ユーザーが検索エンジンを使用する時は、このDBインデックスを基に検索結果が表示される。
 
 参考：https://smakoma.com/understand-search-engine.html
 
 #### ▼ 種類
 
-クローラーには以下の種類がいる．
+クローラーには以下の種類がいる。
 
 参考：https://technical-seo.jp/crawler/
 
@@ -37,7 +37,7 @@ description: Googleサーチコンソール＠監視の知見をまとめまし�
 | Baiduspider  | Baidu        |
 | Mail.RU_Bot  | Mail.ru      |
 
-例えば，Googlebotであれば，ユーザーエージェントは以下のようになっている．
+例えば、Googlebotであれば、ユーザーエージェントは以下のようになっている。
 
 **例**
 
@@ -59,9 +59,9 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 #### ▼ 巡回方法
 
-- サイト外部のリンクから，サイトに訪問してくる．
-- 検索エンジンにリクエストを送信し，サイトに訪問してくる．
-- Googleサーチコンソールに登録された```sitemap.xml```ファイルを基に，サイトに訪問してくる．
+- サイト外部のリンクから、サイトに訪問してくる。
+- 検索エンジンにリクエストを送信し、サイトに訪問してくる。
+- Googleサーチコンソールに登録された```sitemap.xml```ファイルを基に、サイトに訪問してくる。
 
 参考：https://www.allegro-inc.com/seo/xml-sitemap/
 
@@ -71,7 +71,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 #### ▼ サイトマップとは
 
-サイトを構成するURLの一覧を示したファイルのこと．Googleサーチコンソールに登録でき，検索クローラーがサイトの情報を収集するのを助ける．
+サイトを構成するURLの一覧を示したファイルのこと。Googleサーチコンソールに登録でき、検索クローラーがサイトの情報を収集するのを助ける。
 
 参考：https://www.allegro-inc.com/seo/xml-sitemap/
 
@@ -105,13 +105,13 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 #### ▼ インデックスカバレッジとは
 
-Webサイトの全ページのうち，どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと．
+Webサイトの全ページのうち、どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと。
 
 参考：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
 
 #### ▼ ステータスの種類
 
-各ステータスの詳しい情報は以下のリンクを参考にせよ．
+各ステータスの詳しい情報は以下のリンクを参考にせよ。
 
 参考：https://support.google.com/webmasters/answer/7440203#status_type
 

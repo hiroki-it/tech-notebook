@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】クラス＠Python
-description: クラス＠Pythonの知見をまとめました．
+description: クラス＠Pythonの知見をまとめました。
 ---
 
 # クラス＠Python
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -52,7 +52,7 @@ from src.models.model import Foo
 class Bar(Foo):
     
     def bar(self):
-        #  継承元のメソッドを参照する．
+        #  継承元のメソッドを参照する。
         foo = super().foo()
         return foo 
 ```
@@ -65,7 +65,7 @@ class Bar(Foo):
 
 #### ▼ コンストラクタインジェクション
 
-依存先のUserNameクラスを，`__init__`メソッドの引数として，Userクラスに注入する．
+依存先のUserNameクラスを、`__init__`メソッドの引数として、Userクラスに注入する。
 
 ```python
 class User:

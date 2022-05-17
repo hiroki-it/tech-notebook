@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Apache
-description: コマンド＠Apacheの知見をまとめました．
+description: コマンド＠Apacheの知見をまとめました。
 ---
 
 # コマンド＠Apache
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: コマンド＠Apacheの知見をまとめました．
 
 ### configtest
 
-設定ファイルのバリデーションを実行する．
+設定ファイルのバリデーションを実行する。
 
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
@@ -29,7 +29,7 @@ $ sudo apachectl configtest
 
 ### graceful
 
-Apacheを段階的に再起動する．安全に再起動できる．
+Apacheを段階的に再起動する。安全に再起動できる。
 
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
@@ -41,7 +41,7 @@ $ sudo apachectl graceful
 
 ### -t
 
-設定ファイルのバリデーションを実行する．
+設定ファイルのバリデーションを実行する。
 
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
@@ -55,7 +55,7 @@ $ sudo apachectl -t
 
 ### -D
 
-読み込まれた```conf```ファイルの一覧を表示する．この結果から，使われていない```conf```ファイルもを検出できる．
+読み込まれた```conf```ファイルの一覧を表示する。この結果から、使われていない```conf```ファイルもを検出できる。
 
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -67,7 +67,7 @@ $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 
 ### -l
 
-コンパイル済みのモジュールの一覧を表示する．表示されているからといって，読み込まれているとは限らない．
+コンパイル済みのモジュールの一覧を表示する。表示されているからといって、読み込まれているとは限らない。
 
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -79,7 +79,7 @@ $ sudo httpd -l
 
 ### -L
 
-特定のディレクティブを実装するべき設定ファイルの一覧を表示する．
+特定のディレクティブを実装するべき設定ファイルの一覧を表示する。
 
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -91,7 +91,7 @@ $ sudo httpd -L
 
 ### -M
 
-コンパイル済みのモジュールのうちで，実際に読み込まれているモジュールを表示する．
+コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを表示する。
 
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -103,7 +103,7 @@ $ sudo httpd -M
 
 ### -S
 
-実際に読み込まれたVirtualHostの設定を表示する．
+実際に読み込まれたVirtualHostの設定を表示する。
 
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -117,7 +117,7 @@ $ sudo httpd -S
 
 ### httpd configtest
 
-Apacheの設定ファイルのバリデーションを実行する．
+Apacheの設定ファイルのバリデーションを実行する。
 
 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 

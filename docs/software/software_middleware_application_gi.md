@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】GI：Gateway Interface＠ミドルウェア
-description: GI：Gateway Interfaceの知見をまとめました．
+description: GI：Gateway Interfaceの知見をまとめました。
 
 ---
 
@@ -8,7 +8,7 @@ description: GI：Gateway Interfaceの知見をまとめました．
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -22,7 +22,7 @@ description: GI：Gateway Interfaceの知見をまとめました．
 
 ## 02. FastCGI
 
-CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと．
+CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと。
 
 <br>
 

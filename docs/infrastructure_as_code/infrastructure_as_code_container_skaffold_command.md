@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】コマンド＠Skaffold
-description: コマンド＠Skaffoldの知見をまとめました．
+description: コマンド＠Skaffoldの知見をまとめました。
 ---
 
 # コマンド＠Skaffold
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -19,7 +19,7 @@ description: コマンド＠Skaffoldの知見をまとめました．
 
 #### ▼ --verbosity
 
-ログレベルを指定し，skaffoldコマンドを実行する．デフォルトは```warn```である．
+ログレベルを指定し、skaffoldコマンドを実行する。デフォルトは```warn```である。
 
 参考：https://skaffold.dev/docs/references/cli/#skaffold
 
@@ -33,7 +33,7 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 #### ▼ buildとは
 
-全てのイメージをビルドする．
+全てのイメージをビルドする。
 
 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
@@ -43,7 +43,7 @@ $ skaffold build
 
 #### ▼ --cache-artifacts
 
-キャッシュを無効化し，```build```コマンドを実行する．
+キャッシュを無効化し、```build```コマンドを実行する。
 
 ```bash
 $ skaffold build --cache-artifacts=false
@@ -55,7 +55,7 @@ $ skaffold build --cache-artifacts=false
 
 #### ▼ dev
 
-アプリケーションのコードを監視し，変更が検出された時に，イメージの再ビルド/プッシュ/デプロイを実行する．また，ポートフォワーディングを実行する．
+アプリケーションのコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。また、ポートフォワーディングを実行する。
 
 ```bash
 $ skaffold dev
@@ -63,15 +63,15 @@ $ skaffold dev
 
 #### ▼ --trigger
 
-一定間隔でコードの変更を監視しつつ，```dev```コマンドを実行する．
+一定間隔でコードの変更を監視しつつ、```dev```コマンドを実行する。
 
 ```bash
 $ skaffold dev --trigger=polling
 ```
 
-#### ▼ --no-prune，--cache-artifacts
+#### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず，また後処理で全てのイメージを削除しつつ，```dev```コマンドを実行する．
+イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```dev```コマンドを実行する。
 
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
@@ -79,7 +79,7 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ，```dev```コマンドを実行する．
+ポートフォワードを実行しつつ、```dev```コマンドを実行する。
 
 ```bash
 $ skaffold dev --port-forward
@@ -91,7 +91,7 @@ $ skaffold dev --port-forward
 
 #### ▼ run
 
-バックグラウンドで，イメージのビルド/デプロイを実行する．
+バックグラウンドで、イメージのビルド/デプロイを実行する。
 
 ```bash
 $ skaffold run
@@ -99,15 +99,15 @@ $ skaffold run
 
 #### ▼ force
 
-リソースを強制的にデプロイしつつ，```run```コマンドを実行する．
+リソースを強制的にデプロイしつつ、```run```コマンドを実行する。
 
 ```bash
 $ skaffold run --force
 ```
 
-#### ▼ --no-prune，--cache-artifacts
+#### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず，また後処理で全てのイメージを削除しつつ，```run```コマンドを実行する．
+イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```run```コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
@@ -115,7 +115,7 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 #### ▼ --tail
 
-フォアグラウンドで```run```コマンドを実行する．
+フォアグラウンドで```run```コマンドを実行する。
 
 ```bash
 $ skaffold run --tail
@@ -123,7 +123,7 @@ $ skaffold run --tail
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ，```run```コマンドを実行する．
+ポートフォワードを実行しつつ、```run```コマンドを実行する。
 
 ```bash
 $ skaffold run --port-forward

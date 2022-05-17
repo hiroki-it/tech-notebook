@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】envoy.yaml＠Envoy
-description: envoy.yaml＠Envoyの知見をまとめました．
+description: envoy.yaml＠Envoyの知見をまとめました。
 ---
 
 # envoy.yaml＠Envoy
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: envoy.yaml＠Envoyの知見をまとめました．
 
 ### 構造
 
-Envoyは，コントロールプレーンとしてのxDSサーバーと，データプレーンとしてのプロキシコンテナから構成される．Envoyには静的/動的な設定がある．静的な設定は，Envoyの起動時に適用される．一方で動的な設定は，xDSサーバーによってEnvoyの実行時に初めて適用される．インバウンド通信を受信したプロキシコンテナは，ルーティングに必要な情報をxDSサーバーに問い合わせ，返却された情報に基づいてルーティングを実行する．
+Envoyは、コントロールプレーンとしてのxDSサーバーと、データプレーンとしてのプロキシコンテナから構成される。Envoyには静的/動的な設定がある。静的な設定は、Envoyの起動時に適用される。一方で動的な設定は、xDSサーバーによってEnvoyの実行時に初めて適用される。インバウンド通信を受信したプロキシコンテナは、ルーティングに必要な情報をxDSサーバーに問い合わせ、返却された情報に基づいてルーティングを実行する。
 
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
 
@@ -31,7 +31,7 @@ Envoyは，コントロールプレーンとしてのxDSサーバーと，デー
 
 ### xDSサーバー
 
-動的な設定に関する情報を返却するAPIを持つサーバー．主要なサーバーの一覧を示す．
+動的な設定に関する情報を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
 参考：
 
@@ -40,12 +40,12 @@ Envoyは，コントロールプレーンとしてのxDSサーバーと，デー
 
 | サーバー名                           | 説明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| CDS：Cluster Discovery Service       | Envoyの実行時に，ルーティング先のクラスターの設定を動的に検出できるようにする． |
-| EDS：Endpoint Discovery Service      | Envoyの実行時に，ルーティング先のクラスターに含まれるメンバーを動的に検出できるようにする． |
-| LDS：Listener Discovery Service      | Envoyの実行時に，リスナーの設定を動的に検出できるようにする． |
-| RDS：Route Discovery Service         | Envoyの実行時に，ルーティングの設定を動的に検出できるようにする． |
-| SDS：Secret Discovery Service        | Envoyの実行時に，リスナーの暗号化の設定を動的に検出できるようにする． |
-| VHDS：Virtual Host Discovery Service | Envoyの実行時に，クラスター内メンバーのルーティングの設定を動的に検出できるようにする． |
+| CDS：Cluster Discovery Service       | Envoyの実行時に、ルーティング先のクラスターの設定を動的に検出できるようにする。 |
+| EDS：Endpoint Discovery Service      | Envoyの実行時に、ルーティング先のクラスターに含まれるメンバーを動的に検出できるようにする。 |
+| LDS：Listener Discovery Service      | Envoyの実行時に、リスナーの設定を動的に検出できるようにする。 |
+| RDS：Route Discovery Service         | Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。 |
+| SDS：Secret Discovery Service        | Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。 |
+| VHDS：Virtual Host Discovery Service | Envoyの実行時に、クラスター内メンバーのルーティングの設定を動的に検出できるようにする。 |
 
 <br>
 
@@ -55,7 +55,7 @@ Envoyは，コントロールプレーンとしてのxDSサーバーと，デー
 
 #### ▼ Pod内の場合
 
-Istioは，マイクロサービスのリバースプロキシコンテナとして，Pod内にistio-proxyコンテナを構築する．Istioによって自動的に構築されるが，Istioを使用しなくとも構築できる．マイクロサービスからネットワークに関する責務を分離することを目標としており，各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも，これをEnvoyが解決してくれる．
+Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内にistio-proxyコンテナを構築する。Istioによって自動的に構築されるが、Istioを使用しなくとも構築できる。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
 参考：
 
@@ -67,7 +67,7 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 #### ▼ Pod外の場合（フロントプロキシ）
 
-フロントプロキシ機能と呼ばれている．
+フロントプロキシ機能と呼ばれている。
 
 参考：https://tech.uzabase.com/entry/2020/09/28/140046
 
@@ -85,7 +85,7 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 ### インストール
 
-かなり大変なので，DockerfileやIstio経由でインストールすることが推奨．
+かなり大変なので、DockerfileやIstio経由でインストールすることが推奨。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/install
 
@@ -93,7 +93,7 @@ Istioは，マイクロサービスのリバースプロキシコンテナとし
 
 ### Dockerfile
 
-Dockerfileにて，独自の```envoy.yaml```ファイルを組み込む．拡張子は，```.yml```ではなく，```.yaml```とする．
+Dockerfileにて、独自の```envoy.yaml```ファイルを組み込む。拡張子は、```.yml```ではなく、```.yaml```とする。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -129,7 +129,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 #### ▼ protocol
 
-管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する．
+管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する。
 
 ```yaml
 admin:
@@ -140,7 +140,7 @@ admin:
 
 #### ▼ address
 
-管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する．『```0.0.0.0```』とすると，全てのIPアドレスを指定できる．
+管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する。『```0.0.0.0```』とすると、全てのIPアドレスを指定できる。
 
 ```yaml
 admin:
@@ -151,7 +151,7 @@ admin:
 
 #### ▼ port_value
 
-管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する．
+管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 admin:
@@ -166,7 +166,7 @@ admin:
 
 ### static_resourcesとは
 
-固定値を設定する．
+固定値を設定する。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
 
@@ -176,7 +176,7 @@ admin:
 
 ### listenersとは
 
-受信するインバウンド通信のリスナーを設定する．
+受信するインバウンド通信のリスナーを設定する。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
@@ -186,7 +186,7 @@ admin:
 
 #### ▼ protocol
 
-受信するインバウンド通信のプロトコルを設定する．
+受信するインバウンド通信のプロトコルを設定する。
 
 ```yaml
 static_resources:
@@ -198,7 +198,7 @@ static_resources:
 
 #### ▼ address
 
-受信するインバウンド通信の送信元IPアドレスを設定する．
+受信するインバウンド通信の送信元IPアドレスを設定する。
 
 ```yaml
 static_resources:
@@ -210,7 +210,7 @@ static_resources:
 
 #### ▼ port_value
 
-インバウンド通信を待ち受けるポート番号を設定する．
+インバウンド通信を待ち受けるポート番号を設定する。
 
 
 ```yaml
@@ -227,7 +227,7 @@ static_resources:
 
 #### ▼ name
 
-特定のインバウンド通信を処理するフィルターを設定する．
+特定のインバウンド通信を処理するフィルターを設定する。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
@@ -241,7 +241,7 @@ static_resources:
 
 #### ▼ typed_config.access_log
 
-Envoyのアクセスログの出力先を設定する．
+Envoyのアクセスログの出力先を設定する。
 
 ```yaml
 static_resources:
@@ -274,12 +274,12 @@ static_resources:
 
 #### ▼ typed_config.route_config
 
-特定のルーティング先に関する処理を設定する．
+特定のルーティング先に関する処理を設定する。
 
 | 項目                | 説明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| ```name```          | ルーティング名を設定する．                                   |
-| ```virtual_hosts``` | ルーティング先を設定する．特に```domains```キーには，受信するインバウンド通信の```Host```ヘッダーの値を設定する．ちなみに```Host```ヘッダーには，インバウンド通信のルーティング先のドメイン名が割り当てられている． |
+| ```name```          | ルーティング名を設定する。                                   |
+| ```virtual_hosts``` | ルーティング先を設定する。特に```domains```キーには、受信するインバウンド通信の```Host```ヘッダーの値を設定する。ちなみに```Host```ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
 
 参考：
 
@@ -306,7 +306,7 @@ static_resources:
 
 #### ▼ typed_config.stat_prefix
 
-統計ダッシュボードのメトリクスの接頭辞を設定する．
+統計ダッシュボードのメトリクスの接頭辞を設定する。
 
 参考：
 
@@ -337,7 +337,7 @@ static_resources:
 
 ### name
 
-インバウンド通信を受信するリスナーの名前を設定する．
+インバウンド通信を受信するリスナーの名前を設定する。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
 
@@ -353,7 +353,7 @@ static_resources:
 
 ### clustersとは
 
-インバウンド通信のルーティング先のマイクロサービスをグループ化する．対象が1つであっても，```clusters```キーは必須である．
+インバウンド通信のルーティング先のマイクロサービスをグループ化する。対象が1つであっても、```clusters```キーは必須である。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -361,7 +361,7 @@ static_resources:
 
 ### connect_timeout
 
-タイムアウトまでの時間を設定する．
+タイムアウトまでの時間を設定する。
 
 ```yaml
 static_resources:  
@@ -383,7 +383,7 @@ static_resources:
 
 ### lb_policy
 
-ルーティングのアルゴリズムを設定する．
+ルーティングのアルゴリズムを設定する。
 
 ```yaml
 static_resources:  
@@ -397,7 +397,7 @@ static_resources:
 
 #### ▼ endpoints
 
-ルーティング先のIPアドレスとポート番号のリストを設定する．
+ルーティング先のIPアドレスとポート番号のリストを設定する。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 
@@ -420,7 +420,7 @@ static_resources:
 
 #### ▼ cluster_name
 
-ルーティング先のグループの名前を設定する．
+ルーティング先のグループの名前を設定する。
 
 ```yaml
 static_resources:  
@@ -433,7 +433,7 @@ static_resources:
 
 ### name
 
-ルーティング先のグループの名前を設定する．
+ルーティング先のグループの名前を設定する。
 
 ```yaml
 static_resources:  
@@ -447,7 +447,7 @@ static_resources:
 
 #### ▼ name
 
-ルーティング時に使用するソケット名を設定する．
+ルーティング時に使用するソケット名を設定する。
 
 ```yaml
 static_resources:  
@@ -471,7 +471,7 @@ static_resources:
 
 ### type
 
-サービスディスカバリーの種類を設定する．ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合，必須である．
+サービスディスカバリーの種類を設定する。ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
 

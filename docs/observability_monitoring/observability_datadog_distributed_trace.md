@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】分散トレース収集＠Datadog
-description: 分散トレース収集＠Datadogの知見をまとめました．
+description: 分散トレース収集＠Datadogの知見をまとめました。
 ---
 
 # 分散トレース収集＠Datadog
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### Traceエージェントとは
 
-デーモンであるdatadogエージェントに含まれている．アプリケーションから分散トレースを収集し，Datadogに転送する．
+デーモンであるdatadogエージェントに含まれている。アプリケーションから分散トレースを収集し、Datadogに転送する。
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -37,7 +37,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 ### Traceエージェントとは
 
-サーバーの場合と同様にして，アプリケーションから送信された分散トレースを，Datadogに転送する．サーバーの場合とは異なり，自身が収集しにいくことはできない．仕組みとして，アプリケーションコンテナのトレースパッケージは分散トレースを生成し，datadogコンテナの『```http://localhost:8126```』にこれを送信する．datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する．
+サーバーの場合と同様にして、アプリケーションから送信された分散トレースを、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを生成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
 参考：
 
@@ -58,9 +58,9 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 | 方法                      | 説明                                                         | 補足                                                         |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 起動ログの有効化          | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することにより，起動ログを標準出力に出力できるようにする．起動ログから，トレーサーの設定値を確認できる． | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support |
-| デバッグログの有効化      | 各トレーサーが持つデバッグパラメーターを有効化することにより，デバッグログを標準出力に出力できるようにする．デバッグログから，実際にDatadogに送信されるスパンデータを確認できる． | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad |
-| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し，Datadogサポートにdatadogコンテナの構成情報をメール送信する． | 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad<br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
+| 起動ログの有効化          | 環境変数の```DD_TRACE_STARTUP_LOGS```を有効化することにより、起動ログを標準出力に出力できるようにする。起動ログから、トレーサーの設定値を確認できる。 | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support |
+| デバッグログの有効化      | 各トレーサーが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力できるようにする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | 参考：https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad |
+| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。 | 参考：<br>・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad<br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
 
@@ -70,20 +70,20 @@ description: 分散トレース収集＠Datadogの知見をまとめました．
 
 #### ▼ インストール（手動の場合）
 
-使用しているミドルウェアごとに，インストール方法が異なる．サーバーを冗長化している場合，全てのサーバーに共通した設定のエージェントを組み込めるという点で，IaCツールを使用した方が良い．
+使用しているミドルウェアごとに、インストール方法が異なる。サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
 
 ```bash
-# GitHubからパッケージをダウンロードする．
+# GitHubからパッケージをダウンロードする。
 $ curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
-# パッケージをインストールをする．
+# パッケージをインストールをする。
 $ dpkg -i datadog-php-tracer_0.69_amd64.deb
 
-# 残骸ファイルを削除する．
+# 残骸ファイルを削除する。
 $ rm datadog-php-tracer.deb
 ```
 
-また，PHP-FPMに環境変数を渡せるように，```www```プールに関する設定ファイルを配置し，PHP-FPMを再起動する．
+また、PHP-FPMに環境変数を渡せるように、```www```プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
 
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル
@@ -101,7 +101,7 @@ env[DD_VERSION] = '1.0.0'
 
 #### ▼ インストール（Ansibleの場合）
 
-使用しているミドルウェアごとに，インストール方法が異なる．
+使用しているミドルウェアごとに、インストール方法が異なる。
 
 ```yaml
 - tasks:
@@ -119,24 +119,24 @@ env[DD_VERSION] = '1.0.0'
 
 #### ▼ インストール（コンテナの場合）
 
-アプリケーションコンテナのDockerfileにて，PHPトレーサーをインストールする．また，コンテナの環境変数として，```DD_SERVICE```，```DD_ENV```，```DD_VERSION```を渡す．
+アプリケーションコンテナのDockerfileにて、PHPトレーサーをインストールする。また、コンテナの環境変数として、```DD_SERVICE```、```DD_ENV```、```DD_VERSION```を渡す。
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
 
-# GitHubからパッケージをダウンロードする．
+# GitHubからパッケージをダウンロードする。
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
-  # パッケージをインストールする．
+  # パッケージをインストールする。
   && dpkg -i datadog-php-tracer.deb \
-  # 残骸ファイルを削除する．
+  # 残骸ファイルを削除する。
   && rm datadog-php-tracer.deb
 ```
 
 #### ▼ インストールの動作確認
 
-パッケージが正しく読み込まれているかどうかは，```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる．
+パッケージが正しく読み込まれているかどうかは、```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる。
 
 ```bash
 # 成功の場合
@@ -161,7 +161,7 @@ Extension 'ddtrace' not present.
 
 #### ▼ パラメータの動作確認
 
-パラメーターがトレーサーに渡されたかどうかは，```DATADOG TRACER CONFIGURATION```の項目で確認できる．
+パラメーターがトレーサーに渡されたかどうかは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
 
 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
@@ -218,7 +218,7 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 #### ▼ 受信ログの確認
 
-datadogコンテナにトレースが送信されている場合は，受信できていることを表すログを確認できる．
+datadogコンテナにトレースが送信されている場合は、受信できていることを表すログを確認できる。
 
 ```log
 2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0
@@ -234,7 +234,7 @@ datadogコンテナにトレースが送信されている場合は，受信で�
 
 #### ▼ インストール
 
-TypeScriptやモジュールバンドルを使っている場合，パッケージの読み出し処理が巻き上げられ，意図しない読み出しの順番になってしまうことがある．対策として，```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し，これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする．また，フレームワークよりも先に読み込むことになるため，```.env```ファイル参照機能を使えない．そこで，環境変数はインフラ側で設定する．
+TypeScriptやモジュールバンドルを使っている場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。対策として、```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し、これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする。また、フレームワークよりも先に読み込むことになるため、```.env```ファイル参照機能を使えない。そこで、環境変数はインフラ側で設定する。
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
@@ -268,7 +268,7 @@ import { Configuration } from '@nuxt/types'
 
 #### ▼ 起動ログの確認
 
-トレーサーの起動ログは，```init```メソッドの```startupLogs```オプションを有効化すると確認できる．
+トレーサーの起動ログは、```init```メソッドの```startupLogs```オプションを有効化すると確認できる。
 
 ```bash
 DATADOG TRACER CONFIGURATION -
@@ -313,7 +313,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 ### 環境変数
 
-初期化時に環境変数を設定できる．APMのマイクロサービスのタグ名に反映される．
+初期化時に環境変数を設定できる。APMのマイクロサービスのタグ名に反映される。
 
 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
@@ -329,7 +329,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 #### ▼ 構造
 
-Datadogで，分散トレースはスパンを持つ配列データとして定義される．
+Datadogで、分散トレースはスパンを持つ配列データとして定義される。
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
@@ -341,7 +341,7 @@ Datadogで，分散トレースはスパンを持つ配列データとして定�
 ]
 ```
 
-また，複数の分散トレースを配列データとして定義できる．
+また、複数の分散トレースを配列データとして定義できる。
 
 ```bash
 [
@@ -361,7 +361,7 @@ Datadogで，分散トレースはスパンを持つ配列データとして定�
 
 #### ▼ 構造
 
-Datadogで，スパンはJSON型データとして定義される．アプリケーション内のトレーサーで，指定されたJSON型のスパンが作成され，スパンはdatadog-APIに送信される．
+Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
@@ -395,7 +395,7 @@ Datadogで，スパンはJSON型データとして定義される．アプリケ
 
 #### ▼ メタデータ
 
-スパンの```meta```キーにメタデータのセットを割り当てられる．メタデータはタグとして機能する．
+スパンの```meta```キーにメタデータのセットを割り当てられる。メタデータはタグとして機能する。
 
 **＊実装例＊**
 
@@ -432,19 +432,19 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ スパンのデータポイント化
 
-スパンの持つデータをデータポイントとして集計すると，メトリクスを収集できる．
+スパンの持つデータをデータポイントとして集計すると、メトリクスを収集できる。
 
 参考：https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ▼ メトリクス名の構成要素
 
-メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される．
+メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される。
 
 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
 #### ▼ メトリクスのスパン名
 
-データポイントとなったスパン名が割り当てられる．
+データポイントとなったスパン名が割り当てられる。
 
 **＊例＊**
 
@@ -454,7 +454,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ メトリクスのメトリクス接尾辞名
 
-メトリクスの種類に応じた接尾辞名が割り当てられる．
+メトリクスの種類に応じた接尾辞名が割り当てられる。
 
 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
@@ -483,7 +483,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ マイクロサービスタイプとは
 
-トレーサによって，マイクロサービスは『Web』『DB』『Cache』『Cache』の4つに分類される．各マイクロサービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる．タイプ名の種類については，以下のリンクを参考にせよ．
+トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の4つに分類される。各マイクロサービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる。タイプ名の種類については、以下のリンクを参考にせよ。
 
 参考：
 
@@ -496,7 +496,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ マイクロサービスのタグとは
 
-トレーサによって，マイクロサービスにタグを追加できる．PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ．コードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
+トレーサによって、マイクロサービスにタグを追加できる。PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ。コードから、PHPトレーサーがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
 参考：
 

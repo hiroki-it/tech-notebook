@@ -1,13 +1,13 @@
 ---
 title: 【知見を記録するサイト】管理ユーティリティ＠ユーティリティ
-description: 管理ユーティリティ＠ユーティリティの知見をまとめました．
+description: 管理ユーティリティ＠ユーティリティの知見をまとめました。
 ---
 
 # 管理ユーティリティ＠ユーティリティ
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -17,7 +17,7 @@ description: 管理ユーティリティ＠ユーティリティの知見をま�
 
 ### 様々な管理ユーティリティ
 
-様々な粒度のプログラムを対象にした管理ユーティリティがある．
+様々な粒度のプログラムを対象にした管理ユーティリティがある。
 
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
 
@@ -27,8 +27,8 @@ description: 管理ユーティリティ＠ユーティリティの知見をま�
 
 | OS系統   | ユーティリティ         |
 | -------- | ---------------------- |
-| Debian系 | apt，apt-get，apt-file |
-| RedHat系 | rpm，yum，dnf          |
+| Debian系 | apt、apt-get、apt-file |
+| RedHat系 | rpm、yum、dnf          |
 
 <br>
 
@@ -38,7 +38,7 @@ description: 管理ユーティリティ＠ユーティリティの知見をま�
 
 #### ▼ search
 
-指定したファイルを持つパッケージを検索する．拡張子も指定しても，ファイル名までしか絞れない．
+指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
 
 参考：
 
@@ -46,12 +46,12 @@ description: 管理ユーティリティ＠ユーティリティの知見をま�
 - https://embedded.hatenadiary.org/entry/20081101/p3
 
 ```bash
-# apt-fileパッケージをインストールする．
+# apt-fileパッケージをインストールする。
 $ apt-get install apt-file
 
 $ apt-file update
 
-# zlib.hファイルを持つパッケージを検索する．
+# zlib.hファイルを持つパッケージを検索する。
 $ apt-file search zlib.h
 
 autoconf-archive: /usr/share/doc/autoconf-archive/html/ax_005fcheck_005fzlib.html
@@ -75,7 +75,7 @@ zlib1g-dev: /usr/include/zlib.h
 
 #### ▼ -ivh
 
-パッケージをインストールまたは更新する．一度に複数のオプションを組み合わせて記述する．インストール時にパッケージ間の依存関係を解決できないので注意．
+パッケージをインストールまたは更新する。一度に複数のオプションを組み合わせて記述する。インストール時にパッケージ間の依存関係を解決できないので注意。
 
 ```bash
 # パッケージをインストール
@@ -91,7 +91,7 @@ $ rpm -Uvh <パッケージ名>
 
 #### ▼ -qa
 
-インストールされた全てのパッケージの中で，指定した文字を名前に含むものを表示する．
+インストールされた全てのパッケージの中で、指定した文字を名前に含むものを表示する。
 
 ```bash
 # -qa：
@@ -100,7 +100,7 @@ $ rpm -qa | grep <検索文字>
 
 #### ▼ -ql
 
-指定したパッケージ名で，関連する全てのファイルの場所を表示する．
+指定したパッケージ名で、関連する全てのファイルの場所を表示する。
 
 ```bash
 # -ql：
@@ -109,7 +109,7 @@ $ rpm -ql <パッケージ名>
 
 #### ▼ -qi
 
-指定したパッケージ名で，インストール日などの情報を表示する．
+指定したパッケージ名で、インストール日などの情報を表示する。
 
 ```bash
 # -qi：
@@ -118,32 +118,32 @@ $ rpm -qi <パッケージ名>
 
 <br>
 
-### yum，dnf
+### yum、dnf
 
-#### ▼ install，reinstall
+#### ▼ install、reinstall
 
-rpmと同様に使用できる．また，インストール時にパッケージ間の依存関係を解決できる．
+rpmと同様に使用できる。また、インストール時にパッケージ間の依存関係を解決できる。
 
 ```bash
 # パッケージをインストール
 $ yum install -y <パッケージ名>
 
-# 再インストールする時は，reinstallとすること
+# 再インストールする時は、reinstallとすること
 $ yum reinstall -y <パッケージ名>
 ```
 
 #### ▼ list
 
-インストールされたパッケージの一覧を表示する．
+インストールされたパッケージの一覧を表示する。
 
 ```bash
-# 指定した文字を名前に含むものを表示．
+# 指定した文字を名前に含むものを表示。
 $ yum list | grep <検索文字>
 ```
 
 #### ▼ repolist
 
-リポジトリか有効かどうかの一覧を表示する．
+リポジトリか有効かどうかの一覧を表示する。
 
 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
@@ -176,11 +176,11 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある．そこで，```--enablerepo```オプションを使用すると，CentOS公式リポジトリではなく，最新バージョンを扱う外部リポジトリ（RPM，EPEL，Remi）から，パッケージをインストールできる．外部リポジトリ間で依存関係にあるため，両方のリポジトリをインストールする必要がある．
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（RPM、EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 #### ▼ リポジトリ自体のインストール
 
-（１）CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ配下に配置される．
+（１）CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -193,7 +193,7 @@ $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 $ yum install -y epel-release でもよい
 ```
 
-（２）CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d```ディレクトリ配下に配置される．
+（２）CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d```ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -203,7 +203,7 @@ $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-（３）設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
+（３）設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
 
 ```bash
 [epel]
@@ -236,7 +236,7 @@ gpgcheck=1
 
 #### ▼ PHPのインストール
 
-（４）Remiリポジトリの有効化オプションを永続的に使用できるようにする．
+（４）Remiリポジトリの有効化オプションを永続的に使用できるようにする。
 
 ```bash
 # CentOS7の場合
@@ -249,11 +249,11 @@ $ yum-config-manager --enable remi-php74
 $ dnf module enable php:remi-7.4
 ```
 
-（５）remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
+（５）remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを使用して，明示的にremiを指定
+# 一時的に有効化できるオプションを使用して、明示的にremiを指定
 $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
@@ -262,11 +262,11 @@ $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
-（６）再インストールする時は，reinstallとすること．
+（６）再インストールする時は、reinstallとすること。
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを使用して，明示的にremiを指定
+# 一時的に有効化できるオプションを使用して、明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 

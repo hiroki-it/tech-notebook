@@ -6,7 +6,7 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
@@ -32,7 +32,7 @@ $ yum install -y nodejs
 
 #### ▼ author
 
-パッケージの作成者名を設定する．
+パッケージの作成者名を設定する。
 
 ```bash
 {
@@ -46,7 +46,7 @@ $ yum install -y nodejs
 
 #### ▼ bug
 
-不具合の報告先のURLを設定する．
+不具合の報告先のURLを設定する。
 
 ```bash
 {
@@ -58,7 +58,7 @@ $ yum install -y nodejs
 
 #### ▼ dependencies
 
-本番環境と開発環境で依存するパッケージ名を設定する．NPMに登録されていないパッケージは，『```git+<GitHubリポジトリURL>```』を指定する．
+本番環境と開発環境で依存するパッケージ名を設定する。NPMに登録されていないパッケージは、『```git+<GitHubリポジトリURL>```』を指定する。
 
 ```bash
 {
@@ -80,7 +80,7 @@ $ yum install -y nodejs
 
 #### ▼ devDependencies
 
-開発環境のみ依存するパッケージ名を設定する．
+開発環境のみ依存するパッケージ名を設定する。
 
 ```bash
 {
@@ -113,7 +113,7 @@ $ yum install -y nodejs
 
 #### ▼ name
 
-npmパッケージ名を設定する．全てのnpmパッケージの中で，一意の名前でなければならない．
+npmパッケージ名を設定する。全てのnpmパッケージの中で、一意の名前でなければならない。
 
 ```bash
 {
@@ -134,7 +134,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 
 #### ▼ scripts
 
-汎用コマンドとエイリアスを設定する．
+汎用コマンドとエイリアスを設定する。
 
 ```bash
 {
@@ -146,7 +146,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 
 #### ▼ version
 
-パッケージのバージョンを設定する．
+パッケージのバージョンを設定する。
 
 ```bash
 {
@@ -158,7 +158,7 @@ npmパッケージ名を設定する．全てのnpmパッケージの中で，�
 
 ### ```package.lock```ファイル
 
-Composerの```composer.lock```ファイルに相当する．
+Composerの```composer.lock```ファイルに相当する。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
 
@@ -170,7 +170,7 @@ Composerの```composer.lock```ファイルに相当する．
 
 #### ▼ ```package.json```ファイルの作成
 
-プロジェクトの```package.json```ファイルを作成する．
+プロジェクトの```package.json```ファイルを作成する。
 
 ```bash
 $ npm init
@@ -182,13 +182,13 @@ $ npm init
 
 #### ▼ installとは
 
-アプリケーションにて，```package.lock```ファイルに実装されたパッケージのうちで，インスールされていないものをインストールする．```package.lock```ファイルのおかげで，リポジトリの利用者が，```npm install```の実行時に，共通のバージョンのパッケージをインストールできる．
+アプリケーションにて、```package.lock```ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。```package.lock```ファイルのおかげで、リポジトリの利用者が、```npm install```の実行時に、共通のバージョンのパッケージをインストールできる。
 
 ```bash
 $ npm install
 ```
 
-指定したパッケージをインストールもできる．
+指定したパッケージをインストールもできる。
 
 ```bash
 $ npm install <パッケージ名>
@@ -196,7 +196,7 @@ $ npm install <パッケージ名>
 
 #### ▼ --force
 
-パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止する場合がある．これを無視してインストールを行う．
+パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止する場合がある。これを無視してインストールを行う。
 
 ```bash
 $ npm install --force
@@ -204,7 +204,7 @@ $ npm install --force
 
 #### ▼ --save
 
-デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
+デフォルトで有効化されている。パッケージのインストール時に、依存するパッケージとして、```dependencies```キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ npm install --save
@@ -216,7 +216,7 @@ $ npm install --save
 
 #### ▼ updateとは
 
-全てのパッケージのバージョンを，```package.json```ファイルの範囲内でアップグレードする．
+全てのパッケージのバージョンを、```package.json```ファイルの範囲内でアップグレードする。
 
 ```bash
 $ npm update
@@ -228,13 +228,13 @@ $ npm update
 
 #### ▼ runとは
 
-ユーザーが定義したエイリアス名のコマンドを実行する．
+ユーザーが定義したエイリアス名のコマンドを実行する。
 
 ```bash
 $ npm run <エイリアス名>
 ```
 
-あらかじめ，任意のエイリアス名を```scripts```キー下に定義する．エイリアスの中で，実行するコマンドのセットを定義する．ちなみに，実行するコマンドの中で，再び```run```コマンドも定義できる．
+あらかじめ、任意のエイリアス名を```scripts```キー下に定義する。エイリアスの中で、実行するコマンドのセットを定義する。ちなみに、実行するコマンドの中で、再び```run```コマンドも定義できる。
 
 ```bash
 {
@@ -255,7 +255,7 @@ $ npm run <エイリアス名>
 
 ### NODE_OPTIONS
 
-メモリ上限を設定する．
+メモリ上限を設定する。
 
 ```bash
 $ export NODE_OPTIONS="--max-old-space-size=2048"
@@ -287,13 +287,13 @@ $ npm install --global yarn
 
 ### ```package.json```ファイル
 
-Npmと同じ．
+Npmと同じ。
 
 <br>
 
 ### ```yarn.lock```ファイル
 
-Composerの```composer.lock```ファイルに相当する．
+Composerの```composer.lock```ファイルに相当する。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
 
@@ -303,13 +303,13 @@ Composerの```composer.lock```ファイルに相当する．
 
 ### add
 
-指定したパッケージのバージョンを，```package.json```ファイルを無視してインストールする．
+指定したパッケージのバージョンを、```package.json```ファイルを無視してインストールする。
 
 ```bash
 $ yarn add <パッケージ名>@<バージョン>
 ```
 
-特定のパッケージのバージョンを検証する場合は，```yarn remove```コマンドと```yarn add```コマンドを使用する．
+特定のパッケージのバージョンを検証する場合は、```yarn remove```コマンドと```yarn add```コマンドを使用する。
 
 ```bash
 $ yarn remove foo && yarn add foo@1.0.0
@@ -321,7 +321,7 @@ $ yarn remove foo && yarn add foo@1.0.0
 
 #### ▼ installとは
 
-指定したバージョンのパッケージを，```package.json```ファイルの範囲内でインストールする．
+指定したバージョンのパッケージを、```package.json```ファイルの範囲内でインストールする。
 
 ```bash
 $ yarn add <パッケージ名>@<バージョン>
@@ -329,7 +329,7 @@ $ yarn add <パッケージ名>@<バージョン>
 
 #### ▼ --check-files
 
-必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ，不足があれば```install```コマンドを実行する．
+必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ、不足があれば```install```コマンドを実行する。
 
 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
@@ -341,7 +341,7 @@ $ yarn install --check-files
 
 ### list
 
-指定したパッケージのバージョンを表示する．
+指定したパッケージのバージョンを表示する。
 
 ```bash
 $ yarn list --depth=0 | grep <パッケージ名>
@@ -351,7 +351,7 @@ $ yarn list --depth=0 | grep <パッケージ名>
 
 ### remove
 
-指定したパッケージをアンインストールする．
+指定したパッケージをアンインストールする。
 
 ```bash
 $ yarn remove <パッケージ名>
@@ -363,7 +363,7 @@ $ yarn remove <パッケージ名>
 
 #### ▼ upgradeとは
 
-指定したパッケージを```package.json```ファイルの範囲内でアップグレードする．
+指定したパッケージを```package.json```ファイルの範囲内でアップグレードする。
 
 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
@@ -373,7 +373,7 @@ $ yarn upgrade <パッケージ名>@<バージョン>
 
 #### ▼ latest
 
-全てのパッケージを，```package.json```ファイルを無視して最新までアップグレードする．
+全てのパッケージを、```package.json```ファイルを無視して最新までアップグレードする。
 
 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
@@ -389,13 +389,13 @@ yarn upgrade --latest
 
 #### ▼ 読み込むパッケージをまとめる
 
-JavaScriptファイルを読み込むscriptタグを1つにまとめる．HTMLがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，Webページの読み出しが早くなる．
+JavaScriptファイルを読み込むscriptタグを1つにまとめる。HTMLがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、Webページの読み出しが早くなる。
 
 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 
-以下のようなHTMLファイルがあるとする．
+以下のようなHTMLファイルがあるとする。
 
 ```html
 <!DOCTYPE html>
@@ -411,7 +411,7 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる．HTML�
 </html>
 ```
 
-モジュールバンドルは，scriptタグでのパッケージの読み出しをまとめる．
+モジュールバンドルは、scriptタグでのパッケージの読み出しをまとめる。
 
 ```html
 <!DOCTYPE html>
