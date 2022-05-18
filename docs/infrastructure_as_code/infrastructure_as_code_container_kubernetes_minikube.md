@@ -722,7 +722,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。クラスター外部からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。クラスター外部からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 参考：
 
@@ -733,6 +733,14 @@ LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づ
 
 ```bash
 $ minikube tunnel
+
+✅  Tunnel successfully started
+
+📌  NOTE: Please do not close this terminal as this process must stay alive for the tunnel to be accessible ...
+
+❗  The service/ingress <サービス名> requires privileged ports to be exposed: [80]
+🔑  sudo permission will be asked for it.
+🏃  Starting tunnel for service <サービス名>.
 ```
 
 <br>
