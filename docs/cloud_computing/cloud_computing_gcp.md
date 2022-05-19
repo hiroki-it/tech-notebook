@@ -27,13 +27,13 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 
 クラウドデプロイサーバーとして働く。AWSのElastic Beanstalkに相当する。
 
-
+<br>
 
 ### GCE：Google Compute Engine
 
 クラウドWebサーバーとして働く。AWSのEC2に相当する。
 
-
+<br>
 
 ### SSL証明書の設置場所
 
@@ -44,3 +44,31 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 | GCP          | Google Trust Services |                |
 
 <br>
+
+## 02. コマンド
+
+### auth
+
+#### ▼ login
+
+GoogleアカウントGCPアカウントを連携する。
+
+```bash
+$ gcloud auth login
+```
+
+### config
+
+#### ▼ set
+
+gcloudコマンドのデフォルト値を設定する。
+
+```bash
+$ gcloud config set project <プロジェクト名>
+Updated property [core/project].
+
+$ gcloud config set compute/region <リージョン>
+WARNING: Property validation for compute/region was skipped.
+Updated property [compute/region].
+```
+
