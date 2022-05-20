@@ -23,11 +23,33 @@ description: コマンド＠Terraformの知見をまとめました。
 
 ### init
 
+#### ▼ initとは
+
+初期化（```terraform.lock.hcl```ファイルの作成、子モジュールやプロバイダーのインストールなど）を実行し、```.terraform```ディレクトリ内に格納する。```state```ファイルを書き換えることはしないため、基本的には安全である。
+
+```bash
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Reusing previous version of pagerduty/pagerduty from the dependency lock file
+- Installing hashicorp/aws v4.3.0...
+- Installed hashicorp/aws v4.3.0 (signed by HashiCorp)
+- Installing foo/bar v2.3.0...
+- Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
+```
+
+
+
+参考：
+
+- https://spacelift.io/blog/terraform-init
+- https://reboooot.net/post/what-is-terraform/
+- https://www.terraform.io/cli/commands/init#usage
+
 #### ▼ -backend=false
 
-ローカルマシンにstateファイルを作成する。
+指定したバックエンドの初期化をスキップする。一度でもバックエンドを初期化している場合は、改めて初期化することは不要なので、このオプションを使用する。
 
-参考：https://www.terraform.io/language/settings/backends
+参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init -backend=false
@@ -40,7 +62,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-実インフラにstateファイルを作成する。代わりに、```terraform settings```ブロック内の```backend```で指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
+指定したバックエンドの初期化を実行する。代わりに、```terraform settings```ブロック内の```backend```で指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -57,12 +79,26 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-Terraformを初期化する。
+元々使用していたバックエンドを無視し、指定したバックエンドの初期化（子モジュールのインストール、プロバイダーのインストールなど）を実行する。
 
 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
-$ terraform init -reconfigure
+$ terraform init -reconfigure -backend-config=./foo/backend.tfvars
+```
+
+また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。
+
+参考：https://repl.info/archives/1435/
+
+#### ▼ --migrate-state
+
+元々使用していたバックエンドにある```.terraform```ディレクトリをコピーし、指定したバックエンドに移行する。
+
+参考：https://www.terraform.io/cli/commands/init#backend-initialization
+
+```bash
+$ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 ```
 
 #### ▼ -upgrade

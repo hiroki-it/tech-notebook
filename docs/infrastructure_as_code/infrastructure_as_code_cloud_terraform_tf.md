@@ -23,6 +23,24 @@ description: ロジック＠Terraformの知見をまとめました。
 
 <br>
 
+### ```.terraform.lock.hcl```ファイル
+
+#### ▼ ```.terraform.lock.hcl```ファイルとは
+
+現在使用中のプロバイダーのバージョンが定義される。これにより、他の人がリポジトリを使用する時に、異なるバージョンのプロバイダーを宣言できないようにする。
+
+参考：https://qiita.com/mziyut/items/0f4109c425165f5011df
+
+
+
+もし、異なるバージョンを使用したい場合は、以下のコマンドを実行する。これにより、```lock```ファイルのアップグレード/ダウングレードが実行される。
+
+```bash
+$ terraform init -upgrade
+```
+
+<br>
+
 ### terraform  settings
 
 #### ▼ terraform settingsとは
@@ -363,7 +381,11 @@ provider "aws" {}
 
 ルートモジュールで子モジュール読み出し、子モジュールに対して変数を渡す。
 
-#### ▼ 実装方法
+参考：https://www.terraform.io/language/modules/sources
+
+#### ▼ 同一リポジトリ内から読み込む
+
+同じリポジトリ内にmoduleがある場合に、それを指定して読み込む。
 
 **＊実装例＊**
 
@@ -372,13 +394,51 @@ provider "aws" {}
 # ALB
 ###############################
 module "alb" {
-  # モジュールのResourceを参照
+  # モジュールのResourceを参照する。
   source = "../modules/alb"
   
   # モジュールに他のモジュールのoutputを渡す。
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
+
+#### ▼ 外部リポジトリから読み込む
+
+外部リポジトリにmoduleがある場合に、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # モジュールのResourceを参照する。
+  # SSHの場合
+  source = "github.com/hiroki-hasegawa/terraform-modules.git"
+  
+  # モジュールに他のモジュールのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
+
+参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # モジュールのResourceを参照する。
+  # SSHの場合
+  source = "github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
+  
+  # モジュールに他のモジュールのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+
 
 <br>
 

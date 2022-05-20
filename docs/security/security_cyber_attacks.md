@@ -169,6 +169,12 @@ Google play で、過去にアプリとして忍び込んでいたトロイの�
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_encryption_technology.html
 
+#### ▼ 【対策】チェックサム
+
+sha256によって生成された文字列をファイル情報として添付し、これを送受信の両側で照合することにより、通知途中でファイルが改竄されていないことを保証する。
+
+参考：https://academy.gmocloud.com/know/20200116/8627
+
 <br>
 
 ### CSRF：Cross-Site Request Forgeries

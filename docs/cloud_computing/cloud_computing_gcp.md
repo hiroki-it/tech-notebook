@@ -51,7 +51,7 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 
 #### ▼ login
 
-GoogleアカウントGCPアカウントを連携する。
+GoogleアカウントGCPアカウントを連携する。コマンドを実行すると、認証のためにGoogleへのリダイレクトが発生する。
 
 ```bash
 $ gcloud auth login
