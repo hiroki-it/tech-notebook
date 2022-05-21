@@ -422,7 +422,7 @@ Webサイトごとに認証/認可を行うのではなく、特定のWebサイ�
 
 #### ▼ 認証フェーズと認可フェーズ
 
-![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.png)
+![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.jpg)
 
 SSOには、認証フェーズと認可フェーズがあり、3つの役割が定義されている。
 
