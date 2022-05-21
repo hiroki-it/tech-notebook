@@ -928,7 +928,7 @@ Facadeがトレイトの代わりになる場合、Facadeを使用すること�
 
 **＊例＊**
 
-NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。詳しくは、オンデマンド通知の説明を参考にせよ。
+NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。
 
 #### ▼ 標準登録されたFacadeクラスの種類
 
@@ -2186,7 +2186,7 @@ class FooRequest extends FormRequest
 
 #### ▼ ルールの定義 ＆ バリデーション自動実行
 
-Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する。Routeファサードの説明を参考にせよ。
+Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する。
 
 <br>
 
@@ -2505,7 +2505,7 @@ public function authorize()
 
 #### ▼ Authファサード
 
-Authファサードの説明を参考にせよ。
+ノート内の[こちら](#Authファサード)を参考にせよ。
 
 <br>
 

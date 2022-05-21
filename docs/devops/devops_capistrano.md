@@ -24,3 +24,5 @@ description: Capistrano＠DevOpsの知見をまとめました。
 3. 自動デプロイツールが、WebサーバーのGitを操作し、```pull```あるいは```clone```を実行する。その結果、GitHubからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
 ![capistorano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/capistorano_ec2.png)
+
+<br>

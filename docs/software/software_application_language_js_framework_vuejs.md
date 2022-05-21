@@ -301,7 +301,7 @@ var vm = new Vue({
 
 #### (3) 【Model層】オブジェクトとしてのVuex（```store.js```）
 
-Vuexについては、以降の説明を参照せよ。
+ノート内の[こちら](#Vuex)を参考にせよ。
 
 #### (3-2) 【Model層】オブジェクトとしてのJavaScript（```foo.js```）
 

@@ -13,11 +13,19 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 
 <br>
 
-## 01. HTTP認証
+## 01. 認証
 
-### HTTP認証とは
+### 認証とは
 
-認証時にHTTP通信の中で認証を行うこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
+通信しているユーザーが誰であるかを特定する方法。
+
+<br>
+
+### HTTP認証
+
+#### ▼ HTTP認証とは
+
+HTTP通信の中で認証を行う認証スキームのこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
 
 参考：
 
@@ -27,9 +35,136 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 
 <br>
 
+### Form認証（Cookieベースの認証）
+
+#### ▼ Form認証とは
+
+認証時に、```Cookie```ヘッダーの値を使用する認証スキームのこと。『Cookieベースの認証』ともいう。ステートフル化を行うため、HTTP認証には属していない。認証情報の一時的な保存は、サーバーのセッションデータで行うため、認証解除（ログアウト）をサーバー側で制御できる。```Cookie```ヘッダーによる送受信では、CSRFの危険性がある。
+
+参考：
+
+- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
+- https://auth0.com/docs/sessions/cookies#cookie-based-authentication
+
+#### ▼ セッションIDを使用したForm認証の場合（セッションベース）
+
+セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
+
+最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
+
+```http
+POST https://example.com/users
+
+{
+    "email_address": "foo@gmail.com",
+    "password": "foo"
+}
+```
+
+次回の認証時に、再びユーザーが認証情報を送信する。
+
+```http
+POST https://example.com/foo-form
+
+{
+    "email_address": "foo@gmail.com",
+    "password": "foo"
+}
+```
+
+サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを生成し、セッションデータに書き込む。
+
+```bash
+# セッションデータ
+{ sessionid: ***** }
+```
+
+レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
+
+```http
+200 OK
+Set-Cookie: sessionid=<セッションID>
+```
+
+サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
+
+```http
+POST https://example.com/foo-form
+cookie: sessionid=<セッションID>
+```
+
+認証解除時、サーバーでセッションデータを削除する。
+
+参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
+
+#### ▼ トークンを使用したForm認証の場合（トークンベース）
+
+トークンを```Cookie```ヘッダーに割り当て、リクエストを送信する。この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
+
+参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
+
+#### ▼ ```Cookie```ヘッダーの値のクライアント保持
+
+再利用のため、```Cookie```ヘッダーに割り当てるための値（セッションID、トークン）は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。Chromeの場合は、Cookieストレージに保持される。確認方法については、以下のリンクを参考にせよ。
+
+参考：
+
+- https://developer.chrome.com/docs/devtools/storage/cookies/
+- https://qiita.com/cobachan/items/05fa537a4ffcb189d001
+
+<br>
+
+### APIキー認証
+
+#### ▼ APIキー認証とは
+
+事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。API GatewayにおけるAPIキー認証については、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+
+#### ▼ 照合情報の送信方法
+
+独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメータの割り当てについては、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+
+```http
+GET https://example.com/bar.php
+x-api-key: <APIキー>
+```
+
+<br>
+
+### Personal Access Tokenによる認証：PAT
+
+#### ▼ PATによる認証
+
+クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
+
+参考：https://www.contentful.com/help/personal-access-tokens/
+
+```http
+GET https://example.com/bar.php
+authorization: <Personal Acccess Token>
+```
+
+| サービス例 | トークン名            | 説明                                                         |
+| ---------- | --------------------- | ------------------------------------------------------------ |
+| GitHub     | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+
+<br>
+
+## 01-02. HTTP認証の種類
+
 ### Basic認証
 
-#### ▼ Basic認証の仕組み
+#### ▼ Basic認証とは
+
+認証時に、平文のIDとパスワードを使用する認証スキームのこと。
+
+#### ▼ 仕組み
 
 ![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
 
@@ -88,7 +223,11 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ### Digest認証
 
-#### ▼ Digest認証の仕組み
+#### ▼ Digest認証とは
+
+認証時に、ハッシュ化されたIDとパスワードを使用する認証スキームのこと。
+
+#### ▼ 仕組み
 
 ```http
 200 OK
@@ -106,11 +245,11 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成し
 
 #### ▼ Bearer認証とは
 
-認証時にBearerトークンを使用する認証スキームのこと。
+認証時に、Bearerトークンを使用する認証スキームのこと。
 
 #### ▼ Bearerトークン（署名なしトークン）とは
 
-単なる文字列で定義されたアクセストークン。Bearer認証にて、トークンとして使用する。署名なしトークンとも呼ばれ、実際に認証された本人かどうかを判定する機能は無く、トークンを持っていればそれを本人として認可する。そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。Bearerトークンを使用するBearer認証については、別項目の説明を参考にせよ。
+単なる文字列で定義されたアクセストークン。Bearer認証にて、トークンとして使用する。署名なしトークンとも呼ばれ、実際に認証された本人かどうかを判定する機能は無く、トークンを持っていればそれを本人として認可する。そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。
 
 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
@@ -224,132 +363,13 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 ### OAuth認証
 
-#### ▼ OAuth認証とは
-
-OAuthの項目を参考にせよ。
+ノート内の[こちら](#02. 認可フェーズ)を参考にせよ。
 
 <br>
 
-## 01-02. HTTP認証以外の認証方法
+### SAML認証
 
-### Form認証（Cookieベースの認証）
-
-#### ▼ Form認証とは
-
-認証時に```Cookie```ヘッダーの値を使用する。『Cookieベースの認証』ともいう。ステートフル化を行うため、HTTP認証には属していない。認証情報の一時的な保存は、サーバーのセッションデータで行うため、認証解除（ログアウト）をサーバー側で制御できる。```Cookie```ヘッダーによる送受信では、CSRFの危険性がある。
-
-参考：
-
-- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
-- https://auth0.com/docs/sessions/cookies#cookie-based-authentication
-
-#### ▼ セッションIDを使用したForm認証の場合（セッションベース）
-
-セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
-
-最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
-
-```http
-POST https://example.com/users
-
-{
-    "email_address": "foo@gmail.com",
-    "password": "foo"
-}
-```
-
-次回の認証時に、再びユーザーが認証情報を送信する。
-
-```http
-POST https://example.com/foo-form
-
-{
-    "email_address": "foo@gmail.com",
-    "password": "foo"
-}
-```
-
-サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを生成し、セッションデータに書き込む。
-
-```bash
-# セッションデータ
-{ sessionid: ***** }
-```
-
-レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
-
-```http
-200 OK
-Set-Cookie: sessionid=<セッションID>
-```
-
-サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
-
-```http
-POST https://example.com/foo-form
-cookie: sessionid=<セッションID>
-```
-
-認証解除時、サーバーでセッションデータを削除する。
-
-参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
-
-#### ▼ トークンを使用したForm認証の場合（トークンベース）
-
-トークンを```Cookie```ヘッダーに割り当て、リクエストを送信する。この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
-
-参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
-
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
-
-#### ▼ ```Cookie```ヘッダーの値のクライアント保持
-
-再利用のため、```Cookie```ヘッダーに割り当てるための値（セッションID、トークン）は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。Chromeの場合は、Cookieストレージに保持される。確認方法については、以下のリンクを参考にせよ。
-
-参考：
-
-- https://developer.chrome.com/docs/devtools/storage/cookies/
-- https://qiita.com/cobachan/items/05fa537a4ffcb189d001
-
-<br>
-
-### APIキー認証
-
-#### ▼ APIキー認証とは
-
-事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する。API GatewayにおけるAPIキー認証については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
-
-#### ▼ 照合情報の送信方法
-
-独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメータの割り当てについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
-
-```http
-GET https://example.com/bar.php
-x-api-key: <APIキー>
-```
-
-<br>
-
-### Personal Access Tokenによる認証：PAT
-
-#### ▼ PATによる認証
-
-クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
-
-参考：https://www.contentful.com/help/personal-access-tokens/
-
-```http
-GET https://example.com/bar.php
-authorization: <Personal Acccess Token>
-```
-
-| サービス例 | トークン名            | 説明                                                         |
-| ---------- | --------------------- | ------------------------------------------------------------ |
-| GitHub     | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+ノート内の[こちら](#02. 認可フェーズ)を参考にせよ。
 
 <br>
 
@@ -359,7 +379,7 @@ authorization: <Personal Acccess Token>
 
 #### ▼ Two Step Verificationとは
 
-認証時に段階的に2つの方法を設定し、クライアントを照合する。
+認証時に、段階的に2つの方法を設定し、クライアントを照合する。
 
 | 一段階目の認証例 | 二段階目の認証例 | 説明                                                         | 備考                                         |
 | ---------------- | ---------------- | ------------------------------------------------------------ | -------------------------------------------- |
@@ -386,28 +406,40 @@ authorization: <Personal Acccess Token>
 
 <br>
 
-## 02. 認可フェーズ
+## 02. 認可
 
-### 認証フェーズと認可フェーズ
+### 認可とは
 
-#### ▼ 処理の違い
+認証済みのユーザーに対して、アクセス可能な権限範囲（認可スコープ）を付与する方法。
 
-![アクセストークンを使用したセキュリティ仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクセストークンを使用したセキュリティの仕組み.jpg)
+<br>
 
-認証フェーズと認可フェーズでは、仕組みの中に、3つの役割が定義されている。
+### SSO
+
+#### ▼ SSOとは
+
+Webサイトごとに認証/認可を行うのではなく、特定のWebサイトに認証フェーズを委譲し、認可フェースはWebサイト別に行う。
+
+#### ▼ 認証フェーズと認可フェーズ
+
+![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.png)
+
+SSOには、認証フェーズと認可フェーズがあり、3つの役割が定義されている。
+
+参考：https://japan.zdnet.com/article/35126144/
 
 1. クライアントが、HTTPリクエストにIDとパスワードを設定してリクエスト。
 2. IdP：Identity Providerが、IDを『認証』し、クライアント側にアクセストークンを発行。
 3. クライアントが、HTTPリクエストのヘッダーにアクセストークンを設定してリクエスト。
 4. アクセストークンが『認可』されれば、API側がデータをレスポンスする。
 
-| 役割              | 説明                                                         | 例                                    |
-| ----------------- | ------------------------------------------------------------ | ----------------------------------------- |
-| APIクライアント   | APIに対して、リクエストを送信したいサーバーのこと。            | Ouath認証の仕組みにおけるクライアント。   |
-| Identity Provider | トークンを生成するサーバーのこと。                             | Ouath認証の仕組みにおける認可サーバー。     |
-| APIサーバー         | クライアントに対して、リソースのレスポンスを送信するサーバーのこと。 | Ouath認証の仕組みにおけるリソースサーバー。 |
+| 役割              | 説明                                                         | 例                                          |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| APIクライアント   | APIに対して、リクエストを送信したいサーバーのこと。          | Ouath認証の仕組みにおけるクライアント。     |
+| Identity Provider | トークンを生成するサーバーのこと。                           | Ouath認証の仕組みにおける認可サーバー。     |
+| APIサーバー       | クライアントに対して、リソースのレスポンスを送信するサーバーのこと。 | Ouath認証の仕組みにおけるリソースサーバー。 |
 
-#### ▼ ステータスコードの違い
+#### ▼ ステータスコード
 
 認証フェーズにて、誤ったトークンが発行されたことを表現したい場合、```401```ステータスを使用する。認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に閲覧権限がないことを表現したい場合、```403```ステータスを使用する。ステータスコードについては、以下のリンクを参考にせよ。
 
@@ -415,29 +447,32 @@ authorization: <Personal Acccess Token>
 
 <br>
 
-### OAuthプロトコル、OAuth認証
+## 02-02. SSOの種類
 
-#### ▼ OAuthプロトコル、OAuth認証とは
+### OAuth認証
 
-![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
+#### ▼ OAuth認証とは
 
-認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth認証』と呼ぶ。認証フェーズと認可フェーズでは、3つの役割が定義されていることを説明したが、OAuthプロトコル```2.0```では、より具体的に4つの役割が定義されている。
+認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth認証』と呼ぶ。認証フェーズと認可フェーズでは、3つの役割が定義されていることを説明したが、OAuthプロトコル```2.0```では、より具体的に4つの役割が定義されている。OAuth認証には、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などのいくつかの種類がある。
 
-| 役割              | 名称               | 説明                                                         | 補足                                                         |
-| ----------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| APIクライアント   | クライアントアプリ | リソースオーナに対するアクション機能を持つサーバーのこと。     | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを介したリダイレクトによって実現することに注意する。 |
-|                   | リソースオーナー   | クライアントを使用しているユーザーのこと。                     |                                                              |
-| Identity Provider | 認可サーバー         | リソースサーバーがリソースオーナーにアクセスできるトークンを生成するサーバーのこと。 | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
-| APIサーバー         | リソースサーバー     | クライアントのアカウント情報を持っているサーバーのこと。       |                                                              |
+| 具体例             | 説明                                                         | 補足                                                         |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| クライアントアプリ | リソースオーナに対するアクション機能を持つ。                 | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを介したリダイレクトによって実現することに注意する。 |
+| リソースオーナー   | クライアントを使用しているユーザー。                         |                                                              |
+| 認可サーバー       | リソースサーバーがリソースオーナーにアクセスできるトークンを生成する。 | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
+| リソースサーバー   | クライアントのアカウント情報を持っている。                   |                                                              |
 
 #### ▼ 認可コードフローの場合
 
-OAuth認証には、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などのいくつかの種類がある。ここでは、最も基本的な認可コードフローを説明する。
+最も基本的な認可コードフローを説明する。
 
 参考：
 
 - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
+- https://boxil.jp/mag/a3207/
+
+![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
 
 （１）ユーザーが、Facebookアカウントを使用してInstagramにログインしようとする。この時、ブラウザはFacebookにリクエストを送信する。
 
@@ -535,6 +570,14 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 <br>
 
+### SAML
+
+#### ▼ SAMLとは
+
+要勉強。
+
+<br>
+
 ### OpenID Connect
 
 #### ▼ OpenID Connectとは
@@ -553,17 +596,21 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをbase64方式によってエンコードし、ドットでつないだトークン。Bear認証やOauth認証のトークンとして使用できる。ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。
 
-```http
-GET https://example.com/bar.php
-authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
-```
-
-JWTをBearerトークンとして使用するBearer認証については、別項目の説明を参考にせよ。
-
 参考：
 
 - https://meetup-jp.toast.com/3511
 - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
+
+<br>
+
+### 認証での利用
+
+#### ▼ Bear認証の場合
+
+```http
+GET https://example.com/bar.php
+authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
+```
 
 <br>
 

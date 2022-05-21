@@ -45,30 +45,3 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 
 <br>
 
-## 02. コマンド
-
-### auth
-
-#### ▼ login
-
-GoogleアカウントGCPアカウントを連携する。コマンドを実行すると、認証のためにGoogleへのリダイレクトが発生する。
-
-```bash
-$ gcloud auth login
-```
-
-### config
-
-#### ▼ set
-
-gcloudコマンドのデフォルト値を設定する。
-
-```bash
-$ gcloud config set project <プロジェクト名>
-Updated property [core/project].
-
-$ gcloud config set compute/region <リージョン>
-WARNING: Property validation for compute/region was skipped.
-Updated property [compute/region].
-```
-

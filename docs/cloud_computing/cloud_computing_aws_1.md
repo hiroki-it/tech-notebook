@@ -423,7 +423,7 @@ API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデ�
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-private-integration.html
 
-また、VPCリンクの設定によって、VPCエンドポイントサービスが構築される。VPCエンドポイントサービスについては、VPCエンドポイントサービスの説明を参考にせよ。
+また、VPCリンクの設定によって、VPCエンドポイントサービスが構築される。
 
 | 設定項目                     | 説明                                                  |
 | ---------------------------- | ----------------------------------------------------- |
@@ -1576,28 +1576,6 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-### AWS CLI
-
-#### ▼ ログ収集量を確認
-
-**＊例＊**
-
-全てのロググループに対して、一日当たりの収集量を```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただ、やってみたけどうまくいかず）。
-
-参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
-
- ```bash
-$ aws cloudwatch get-metric-statistics \
-    --namespace AWS/Logs \
-    --metric-name IncomingBytes \
-    --start-time "2021-08-01T00:00:00" \
-    --end-time "2021-08-31T23:59:59" \
-    --period 86400 
-    --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
- ```
-
-<br>
-
 ## 09-04. CloudWatchアラーム
 
 ### セットアップ
@@ -1621,23 +1599,6 @@ $ aws cloudwatch get-metric-statistics \
 | 閾値の種類                       |                                                            |                                                              |
 | アラームを実行するデータポイント | アラートを発生させるデータポイント数を設定する。           |                                                              |
 | 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが発生しないことを正常と見なす場合は『```notBreaching```』とし、発生しないことを異常とする場合は、『```breaching```』とする。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
-
-<br>
-
-### AWS CLI
-
-#### ▼ CloudWatchアラームの状態変更
-
-**＊例＊**
-
-CloudWatchアラームの状態を変更する。
-
-```bash
-$ aws cloudwatch set-alarm-state \
-    --alarm-name "prd-foo-alarm" \
-    --state-value ALARM \
-    --state-reason "アラーム!!"
-```
 
 <br>
 
@@ -2306,20 +2267,6 @@ ECRのイメージの有効期間を定義できる。
 Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。その代わりに、イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
 
 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
-
-<br>
-
-### AWS CLI
-
-#### ▼ 一時パスワードを取得
-
-一時的に有効なパスワードを取得する。
-
-```bash
-$ aws ecr get-login-password --region ap-northeast-1
-
-********
-```
 
 <br>
 

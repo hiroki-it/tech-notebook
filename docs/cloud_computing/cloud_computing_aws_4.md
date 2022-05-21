@@ -221,73 +221,6 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-### AWS CLI
-
-#### ▼ バケット内ファイルを表示
-
-**＊例＊**
-
-指定したバケット内のファイル名を表示する。
-
-```bash
-$ aws s3 ls s3://<バケット名>
-```
-
-#### ▼ バケット内容量を合計
-
-**＊例＊**
-
-指定したバケット内のファイル容量を合計する。
-
-```bash
-$ aws s3 ls s3://<バケット名> \
-  --summarize \
-  --recursive \
-  --human-readable
-```
-
-#### ▼ バケットの中身をコピーする
-
-指定したバケット内のファイルを他のバケットにコピーする。
-
-```bash
-$ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピー先S3バケット名>/<フォルダ> \
-   --acl bucket-owner-full-control
-```
-
-コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。
-
-```bash
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<IAMユーザーのARN>"
-            },
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::foo-bucket/*",
-            "Condition": {
-                "StringEquals": {
-                    "s3:x-amz-acl": "bucket-owner-full-control"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "<IAMユーザーのARN>"
-            },
-            "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::bar-bucket"
-        }
-    ]
-}
-```
-
-<br>
-
 ## 02. セキュリティグループ
 
 ### セキュリティグループとは
@@ -588,49 +521,6 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | ---------------- | ------------------------------------------------------------ |
 | スタンダード方式 | サブスクライバーの取得レスポンスを待たずに、次のキューを非同期的に転送する。 |
 | FIFO方式         | サブスクライバーの取得レスポンスを待ち、キューを同期的に転送する。 |
-
-<br>
-
-### AWS CLI
-
-#### ▼ キューURLを取得
-
-キューのURLを取得する。
-
-```bash
-$ aws sqs get-queue-url --queue-name <キュー名>
-```
-
-#### ▼ キューに受信リクエストを送信
-
-キューに受信リクエストを送信し、メッセージを受信する。
-
-```bash
-$ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
-
-$ aws sqs receive-message --queue-url ${SQS_QUEUE_URL}
-```
-
-キューに受信リクエストを送信し、メッセージを受信する。また、メッセージの内容をファイルに書き出す。
-
-```bash
-$ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
-
-$ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
-```
-
-```bash
-{
-    "Messages": [
-        {
-            "Body": "<メッセージの内容>", 
-            "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=", 
-            "MD5OfBody": "6699d5711c044a109a6aff9fc193aada", 
-            "MessageId": "*****"
-        }
-    ]
- }
-```
 
 <br>
 

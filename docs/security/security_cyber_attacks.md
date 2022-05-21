@@ -239,7 +239,7 @@ x-csrf-token: <トークン>
 
 #### ▼ 【対策】CORS
 
-XSSの説明を参考にせよ
+[こちら](#XSS：Cross Site Scripting)の説明を参考にせよ
 
 <br>
 

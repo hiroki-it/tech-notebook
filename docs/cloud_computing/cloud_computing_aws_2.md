@@ -450,52 +450,6 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 | PowerUserAccess | IAM以外の操作権限がある。  |      |
 | ViewOnlyAccess  | 閲覧のみの操作権限がある。 |      |
 
-<br>
-
-### AWS CLI
-
-#### ▼ CLIの社内アクセス制限
-
-特定の送信元IPアドレスを制限するポリシーをIAMユーザーにアタッチすることにより、そのIAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
-
-**＊実装例＊**
-
-```bash
-{
-  "Version": "2012-10-17",
-  "Statement": {
-    "Effect": "Deny",
-    "Action": "*",
-    "Resource": "*",
-    "Condition": {
-      "NotIpAddress": {
-        "aws:SourceIp": [
-          "n.n.n.n/32"
-        ]
-      }
-    }
-  }
-}
-```
-
-ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『```with an explicit deny```』という文言がつく。
-
-**＊例＊**
-
-```
-Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
-
-```
-
-#### ▼ ユーザー名を変更
-
-ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。
-
-```bash
-$ aws iam update-user \
-    --user-name <現行のユーザー名> \
-    --new-user-name <新しいユーザー名>
-```
 
 <br>
 

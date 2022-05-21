@@ -758,11 +758,11 @@ output "elb_service_account_arn" {
 ```
 #### ▼ ```count```関数の```output```
 
-後述の説明を参考にせよ。
+ノート内の[こちら](#count)を参考にせよ。
 
 #### ▼ ```for_each```関数の```output```
 
-後述の説明を参考にせよ。
+ノート内の[こちら](#for_each)を参考にせよ。
 
 <br>
 
