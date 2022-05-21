@@ -19,10 +19,7 @@ description: メモリ管理＠基本ソフトウェアの知見をまとめま�
 
 プログラムは、メモリ上の仮想アドレスの領域に割り当てられている。プログラム自体を『プロセス』という。プロセスの代わりに『タスク』ということもある。プロセスとして割り当てられたプログラムはCPUに参照され、CPUのコア上で処理が実行される。
 
-参考：
-
-- https://jpazamu.com/thread_process/#index_id5
-- http://staff.miyakyo-u.ac.jp/~m-yasu/curri-ex/os/txt/os5.html
+参考：https://jpazamu.com/thread_process/#index_id5
 
 <br>
 

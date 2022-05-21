@@ -35,10 +35,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードをバイナリ形式のコードに翻訳した後、CPU上で命令が実行される。命令の結果はメモリに保管される。
 
-参考：
-
-- http://samuiui.com/2019/02/24/google-colaboratory%E3%81%A7python%E5%85%A5%E9%96%80/
-- https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/compiler_language.png)
 
@@ -104,10 +101,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードをバイナリ形式のコードに一行ずつ変換し、その都度、CPU上で命令が実行される。命令の結果はメモリに保管される。
 
-参考：
-
-- http://samuiui.com/2019/02/24/google-colaboratory%E3%81%A7python%E5%85%A5%E9%96%80/
-- https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 

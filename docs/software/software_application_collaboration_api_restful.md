@@ -27,7 +27,7 @@ description: RESTful-API＠アプリケーション連携の知見をまとめ�
 
 RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWebAPIをRESTful-APIという。例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、1つの『/UserInfo』というURIを対応づけている。
 
-![RESTfulAPIを使用したリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPIを使用したリクエスト.png)
+![RESTfulAPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPI.png)
 
 <br>
 

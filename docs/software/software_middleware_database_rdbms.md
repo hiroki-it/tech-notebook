@@ -151,13 +151,13 @@ NoSQLは、データ同士が関係を持たないデータ格納形式である
 
 データを追加するあるいは削除する場合、カラムではなく、レコードの増減を行う。カラムの増減の処理には時間がかかる。一方で、レコードの増減の処理には時間がかからない。
 
-![カラムの増減は✖、レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖、レコードの増減は〇-1.png)
+![カラムの増減は✖_レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖_レコードの増減は〇-1.png)
 
 **＊例＊**
 
 賞与を年1回から、2回・3回と変える場合、主キーを繰り返し、新しく賞与区分と金額区分を作る。
 
-![カラムの増減は✖、レコードの増減は〇-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖、レコードの増減は〇-2.png)
+![カラムの増減は✖_レコードの増減は〇-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖_レコードの増減は〇-2.png)
 
 <br>
 

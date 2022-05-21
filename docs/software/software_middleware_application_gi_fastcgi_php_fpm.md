@@ -178,7 +178,7 @@ PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み�
 
 参考：
 
-- https://kengotakimoto.com/docker-laravel/#toc8
+- https://www.kengotakimoto.com/posts/laravel_with_docker-compose
 - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
 
 ```dockerfile

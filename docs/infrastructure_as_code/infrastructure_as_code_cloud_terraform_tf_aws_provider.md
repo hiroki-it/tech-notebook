@@ -159,7 +159,7 @@ data "aws_ami" "bastion" {
 
 ```terraform
 ###############################################
-# REST API
+# RESTful API
 ###############################################
 resource "aws_api_gateway_rest_api" "foo" {
   name        = "prd-foo-api-for-foo"

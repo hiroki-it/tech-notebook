@@ -177,7 +177,7 @@ title: 【知見を記録するサイト】目次
 * [📖：︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_test_specification.html)
 * コードベースのテスト 
     * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html)
-    * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_test.html)
+    * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_go.html)
 
 <br>
 
