@@ -177,7 +177,7 @@ title: 【知見を記録するサイト】目次
 
 * [📖：︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing.html)
 * [📖：︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_test_specification.html)
-* コードベースのテスト 
+* コードベースのテスト
     * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html)
     * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_go.html)
 
@@ -286,6 +286,8 @@ title: 【知見を記録するサイト】目次
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_yaml.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_skaffold_command.html)
+* その他のカスタムリソース定義
+    * [📖：manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_other_crd_manifest_yaml.html)
 * Helm
     * [📖：︎チャート](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_chart.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_command.html)

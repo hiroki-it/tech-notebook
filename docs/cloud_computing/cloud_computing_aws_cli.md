@@ -68,6 +68,104 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 <br>
 
+## 01-02. 設定ファイル
+
+### ```~/.aws/confidentials```ファイル
+
+#### ▼ aws_access_key_id
+
+AWS CLIを実行するアカウントのアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[default]
+aws_access_key_id = *****
+```
+
+#### ▼ aws_secret_access_key
+
+AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[default]
+aws_secret_access_key = *****
+```
+
+#### ▼ aws_session_token
+
+認証で補助的に使用するセッショントークン値を設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[default]
+aws_session_token = *****
+```
+
+<br>
+
+### ```~/.aws/config```ファイル
+
+#### ▼ output
+
+AWS CLIの返却値のデータ形式を設定する。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[default]
+output = json
+```
+
+#### ▼ region
+
+AWS CLIで操作するAWSリソースのリージョンを設定する。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[default]
+region = ap-northeast-1
+```
+
+#### ▼ role_arn
+
+AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[profile foo]
+role_arn = arn:aws:iam::*****:role/foo-role
+```
+
+#### ▼ role_session_name
+
+IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[profile foo]
+role_session_name = hiroki.hasegawa
+```
+
+#### ▼ source_profile
+
+IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+
+```ini
+[profile foo]
+source_profile = default
+```
+
+<br>
+
 ## 02. CloudWatch
 
 ### set-alarm-state

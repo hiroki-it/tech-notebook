@@ -23,9 +23,7 @@ description: manifest.yaml＠Kubernetesの知見をまとめました。
 
 <br>
 
-## 02. 共通項目
-
-### apiVersion
+## 02. apiVersion
 
 Kubernetes-APIのバージョンを設定する。
 
@@ -35,43 +33,51 @@ apiVersion: v1
 
 <br>
 
-### kind
+## 02-02. kind
 
 作成されるリソースの種類を設定する。
 
-| リソース名                 | 補足                                                                                                                                                            |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Deployment            |                                                                                                                                                               |
-| Ingress               | 他のリソースとはapiVersionが異なり、```networking.k8s.io/v1```を指定する必要がある。                                                                                                  |
-| Namespace             |                                                                                                                                                               |
-| Node                  | Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドで```--register-node=false```とする必要がある。                                                                        |
-| PersistentVolume      |                                                                                                                                                               |
-| PersistentVolumeClaim |                                                                                                                                                               |
-| Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。<br>参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
-| ReplicaController     | 旧Deployment。非推奨である。<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes                                     |
-| ReplicaSet            |                                                                                                                                                               |
-| Service               |                                                                                                                                                               |
-| StatefulSet           |                                                                                                                                                               |
-
 <br>
 
-### metadata
-
-Kubernetesリソースの一意に識別するための情報を設定する。
-
-参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
-
-<br>
+## 02-03. metadata
 
 ### annotation
+
+#### ▼ annotationとは
+
+任意のキーと値を設定する。```labels```キーとは異なり、設定できる情報に制約がない。
+
+参考：https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
+
+#### ▼ kubernetes.io/ingress.class
+
+現在、非推奨である。代わりに、```spec.ingressClassname```キーを指定する。
+
+参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+
+#### ▼ ingressclass.kubernetes.io/is-default-class
+
+Ingressがクラスター内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
+- https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
+
+#### ▼ istio固有のキー
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.html
 
 <br>
 
 ### labels
 
-Kubernetesリソースを区別するための情報を設定する。予約ラベルについては、以下のリンクを参考にせよ。
+Kubernetesが、リソースの一意に識別するための情報を設定する。予約ラベルについては、以下のリンクを参考にせよ。
 
-参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
+参考：
+
+- https://kubernetes.io/docs/reference/labels-annotations-taints/
+- https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
 <br>
 
@@ -611,6 +617,28 @@ spec:
 
 ## 07. Ingress
 
+### spec.ingressClassName
+
+#### ▼ ingressClassNameとは
+
+標準のIngressの代わりに外部Ingressを使用する場合に、IngressClassの```metadata.name```キー値を設定する。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+- https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  ingressClassName: "foo-ingress-class"
+```
+
+<br>
+
 ### spec.rules
 
 #### ▼ rulesとは
@@ -646,7 +674,60 @@ spec:
 
 <br>
 
-## 08. Job
+## 08. IngressClass
+
+### spec.controller
+
+#### ▼ controllerとは
+
+標準のIngressの代わりに、外部Ingressを使用する場合に、そのIngressのマニフェストのAPIを設定する。
+
+参考：
+
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
+- https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: ingress.k8s.aws/alb
+  # Nginxコントローラーの場合は、k8s.io/ingress-nginx
+```
+
+<br>
+
+### spec.parameters
+
+#### ▼ parametersとは
+
+外部Ingressに応じたパラメーターを設定する。代わりに、IngressClassParamsを使用しても良い。
+
+参考：
+
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclass
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclassparams
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+spec:
+  # AWS ALB Ingressの場合
+  parameters:
+    apiGroup: elbv2.k8s.aws
+    kind: IngressClassParams
+    name: foo-ingress-class-params
+```
+
+<br>
+
+## 09. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -725,7 +806,21 @@ spec:
 
 <br>
 
-## 09. PersistentVolume
+## 10. Node
+
+Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドで```--register-node=false```とする必要がある。
+
+<br>
+
+## 11. ReplicaController
+
+旧Deployment。非推奨である。
+
+参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
+
+<br>
+
+## 12. PersistentVolume
 
 ### spec.accessModes
 
@@ -1053,7 +1148,7 @@ spec:
 
 <br>
 
-## 10. PersistentVolumeClaim
+## 13. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1121,13 +1216,15 @@ spec:
 
 <br>
 
-## 11. Pod
+## 14. Pod
 
 ### spec.containers
 
 #### ▼ containersとは
 
-Pod内で起動するコンテナを設定する。
+Pod内で起動するコンテナを設定する。PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
+
+参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
 #### ▼ name、image、port
 
@@ -1610,7 +1707,7 @@ spec:
 
 <br>
 
-## 12. Role、ClusterRole
+## 15. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -1668,7 +1765,7 @@ rules:
 
 <br>
 
-## 13. RoleBinding、ClusterRoleBinding
+## 16. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -1734,7 +1831,7 @@ subjects:
 
 <br>
 
-## 14. Secret
+## 17. Secret
 
 ### data
 
@@ -1920,72 +2017,7 @@ stringData:
 
 <br>
 
-## 15. SecretProviderClass
-
-### spec.provider
-
-#### ▼ spec.providerとは
-
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-```
-
-<br>
-
-### spec.parameters
-
-#### ▼ spec.parametersとは
-
-プロバイダーに応じて、Secretにマウントする外部Secretのデータを設定する。
-
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-
-#### ▼ objects
-
-外部Sercretを識別する情報を設定する。
-
-参考：https://docs.aws.amazon.com/ja_jp/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-  parameters:
-    # AWSのシークレットマネージャーから取得する。
-    objects: |
-      - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secret名>"
-        objectType: "secretsmanager"
-```
-
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-  parameters:
-    # AWSのシステムマネージャーから取得する。
-    objects: |
-      - objectName: "FOO"
-        objectType: "ssmparameter"
-```
-
-<br>
-
-## 16. Service
+## 18. Service
 
 ### spec.ports
 
@@ -2212,7 +2244,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 17. ServiceAccount
+## 19. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -2251,7 +2283,7 @@ imagePullSecrets:
 
 <br>
 
-## 18. ServiceEntry
+## 20. ServiceEntry
 
 ### spec.hosts
 
@@ -2311,7 +2343,7 @@ spec:
 
 <br>
 
-## 19. StatefulSet
+## 21. StatefulSet
 
 ### spec.serviceName
 

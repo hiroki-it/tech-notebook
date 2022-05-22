@@ -2849,7 +2849,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 #### ▼ EKS
 
-（１）AWSCLIにクレデンシャル情報を設定する。
+（１）AWS CLIにクレデンシャル情報を設定する。
 
 ```bash
 $ aws configure
@@ -2930,7 +2930,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
 | Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                    | ALB                     | ALBコントローラーによって、自動的に構築される。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html |
+| Ingress                    | ALB Ingress             | ALBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
 | Ingressコントローラー      | ALBコントローラー       | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
 |                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 | マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |

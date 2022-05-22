@@ -1,6 +1,5 @@
 ---
-title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
+d
 ---
 
 # AWS：Amazon Web Service（S〜Z）
@@ -56,7 +55,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ レスポンスヘッダーの設定
 
-レスポンスヘッダーに埋め込むHTTPヘッダーを、メタデータとして設定する。
+
 
 | 設定できるヘッダー              | 説明                                                         | 補足                                           |
 | ------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
@@ -778,10 +777,20 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ 種類
 
-| IPアドレスの種類                                   | 説明                                          |
-| -------------------------------------------------- | --------------------------------------------- |
-| 自動割り当てパブリックIPアドレス（動的IPアドレス） | 動的なIPアドレスで、EC2の再構築後に変化する。 |
-| Elastic IP（静的IPアドレス）                       | 静的なIPアドレスで、再構築後も保持される。    |
+| IPアドレスの種類       | 手動/自動 | 特徴           | 説明                                                         |
+| ---------------------- | --------- | -------------- | ------------------------------------------------------------ |
+| パブリックIPアドレス   | 自動      | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
+| プライベートIPアドレス | 自動      | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
+| Elastic IP             | 手動      | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再構築しても保持される。 |
+
+#### ▼ DNS名の割り当て
+
+VPC内で構築されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
 
 #### ▼ 紐付け
 
@@ -970,7 +979,7 @@ VPCの構築時に自動で構築される。どのルートテーブルにも�
 
 ## 10-06. VPCエンドポイント
 
-### VPCエンドポイントとは
+### 
 
 VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、アウトバウンド通信を実行できるようにする。Gateway型とInterface型がある。VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。
 
@@ -984,13 +993,15 @@ Fargateをプライベートサブネットに置いた場合、FargateからVPC
 
 Internet GatewayとNAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外のリソースとの通信がより安全になる。
 
-<br>
+
 
 ### エンドポイントタイプ
 
 #### ▼ Interface型
 
-プライベートリンクともいう。プライベートIPアドレスを持つENIとして機能し、AWSリソースからアウトバウンド通信を受信する。
+プライベートリンクともいう。プライベートIPアドレスを持つENIとして機能し、AWSリソースからアウトバウンド通信を受信する。もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
+
+参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
 **＊リソース例＊**
 
@@ -1065,21 +1076,21 @@ VPC に複数の IPv4 CIDR ブロックがあり、1つでも 同じCIDR ブロ�
 
 ### VPCエンドポイントサービス
 
-![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
-
 #### ▼ VPCエンドポイントサービスとは
 
 VPCエンドポイントとは異なる機能なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。エンドポイントのサービス名は、『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****```』になる。API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
+
+![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
 
 <br>
 
 ### Transit Gateway
 
-![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
-
 #### ▼ Transit Gatewayとは
 
 『多対多』の関係で、『異なるVPC間』や『オンプレ-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
+
+![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
 
 <br>
 

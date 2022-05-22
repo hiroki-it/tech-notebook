@@ -211,7 +211,7 @@ metadata:
 
 ## 03-02. KubernetesnのPodに関して
 
-### annotations
+### annotationsとは
 
 #### ▼ annotations
 
