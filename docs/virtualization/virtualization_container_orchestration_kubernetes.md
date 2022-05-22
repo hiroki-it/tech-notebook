@@ -273,7 +273,7 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する。ただしDaemonSetとは異なり、Podを指定した個数に維持管理できる。ワーカーNodeのCPUやメモリの使用率に合わせて、Podを動的に増減させる。直接的にReplicaSetを操作するのではなく、Deployment使用してこれを行うことが推奨される。
+ワーカーNode上のPod数を維持管理する。ただしDaemonSetとは異なり、Podを指定した個数に維持管理できる。ワーカーNodeのCPUやメモリの使用率に合わせて、Podを動的に増減させる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
 参考：
 

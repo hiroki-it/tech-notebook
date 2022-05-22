@@ -137,7 +137,7 @@ x-api-key: <APIキー>
 
 <br>
 
-### Personal Access Tokenによる認証：PAT
+### PAT：Personal Access Tokenによる認証
 
 #### ▼ PATによる認証
 
@@ -414,7 +414,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 <br>
 
-### SSO
+### SSO：Single Sign On
 
 #### ▼ SSOとは
 
@@ -570,9 +570,9 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 <br>
 
-### SAML
+### SAML認証：Security Assertion Markup Language
 
-#### ▼ SAMLとは
+#### ▼ SAML認証とは
 
 要勉強。
 

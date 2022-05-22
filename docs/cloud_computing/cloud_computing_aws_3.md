@@ -62,7 +62,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ 関数の実行環境
 
-Lambdaの実行環境は、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
 
@@ -807,7 +807,7 @@ Auroraでは、OS、エンジンバージョン、MySQLなどのアップグレ�
 
 #### ▼ ダウンタイムの計測例
 
-アプリケーションにリクエストを送信する方法と、RDSに直接的にクエリを送信する方法がある。レスポンスとRDSイベントログから、ダウンタイムを計測する。
+アプリケーションにリクエストを送信する方法と、RDSにクエリを直接的に送信する方法がある。レスポンスとRDSイベントログから、ダウンタイムを計測する。
 
 **＊実装例＊**
 

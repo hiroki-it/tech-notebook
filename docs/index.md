@@ -62,6 +62,8 @@ title: 【知見を記録するサイト】目次
         * [📖：︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
     * WSGI
         * [📖：︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
+    * ASGI
+        * [📖：︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
 #### ▼ DB系
 

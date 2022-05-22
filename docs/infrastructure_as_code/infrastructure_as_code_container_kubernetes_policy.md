@@ -57,7 +57,7 @@ repository/
 │   ├── persistent-volume.yaml
 │   └── persistent-volume-claim.yaml
 │
-├── bar/ # fooサービス
+├── bar/ # barサービス
 │   ├── deployment.yaml
 │   ├── service.yaml
 │   ├── persistent-volume.yaml
@@ -82,7 +82,7 @@ repository/
 ```bash
 repository/
 ├── foo.yaml # fooサービス（Deployment、Service、PersistentVolume、...）
-├── bar.yaml # fooサービス
+├── bar.yaml # barサービス
 └── baz.yaml # bazサービス
 ```
 

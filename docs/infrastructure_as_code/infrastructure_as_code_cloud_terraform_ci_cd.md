@@ -457,7 +457,7 @@ terraform -chdir=./${ENV} validate
 
 ### tfnotifyとは
 
-terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
+Terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
 
 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 

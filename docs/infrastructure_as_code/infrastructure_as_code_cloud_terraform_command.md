@@ -25,7 +25,13 @@ description: コマンド＠Terraformの知見をまとめました。
 
 #### ▼ initとは
 
-初期化（```terraform.lock.hcl```ファイルの作成、子モジュールやプロバイダーのインストールなど）を実行し、```.terraform```ディレクトリ内に格納する。```state```ファイルを書き換えることはしないため、基本的には安全である。
+初期化（```terraform.lock.hcl```ファイルの作成、子モジュールやプロバイダーのインストールなど）を実行し、```.terraform```ディレクトリ内に格納する。```state```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新しいバージョンのインストールするために、本コマンドを実行すつ必要がある。
+
+参考：
+
+- https://spacelift.io/blog/terraform-init
+- https://reboooot.net/post/what-is-terraform/
+- https://www.terraform.io/cli/commands/init#usage
 
 ```bash
 Initializing provider plugins...
@@ -36,14 +42,6 @@ Initializing provider plugins...
 - Installing foo/bar v2.3.0...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
-
-
-
-参考：
-
-- https://spacelift.io/blog/terraform-init
-- https://reboooot.net/post/what-is-terraform/
-- https://www.terraform.io/cli/commands/init#usage
 
 #### ▼ -backend=false
 
@@ -103,7 +101,7 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 #### ▼ -upgrade
 
-現在のバージョンを基に、```lock```ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。
+現在のバージョンを基に、```.terraform.lock.hcl```ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。
 
 参考：https://www.terraform.io/cli/commands/init#upgrade
 
@@ -179,7 +177,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 #### ▼ -var-file
 
-terraformによる構築ではない方法で、すでにクラウド上にリソースが構築されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、stateファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
+Terraformによる構築ではない方法で、すでにクラウド上にリソースが構築されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、tfstateファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
 
 ```bash
 $ terraform import \
@@ -203,7 +201,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www *****
 ```
 
-そして、ローカルマシンのstateファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
+そして、ローカルマシンのtfstateファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
 
 ````bash
 $ terraform plan -var-file=foo.tfvars
@@ -434,7 +432,7 @@ $ terraform apply foo.tfplan
 
 #### ▼ -var-file <リソース>
 
-stateファイルにおける指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが構築されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
+tfstateファイルにおける指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが構築されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
 
 ```bash
 $ terraform taint \

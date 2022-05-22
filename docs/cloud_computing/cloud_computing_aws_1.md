@@ -240,7 +240,7 @@ $ amplify publish
 
 #### ▼ ```amplify.yml```ファイル
 
-バージョン管理リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが構築され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが構築され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの稼働環境が必要になるため、LambdaやCogniteが構築される。
+バージョン管理リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが構築され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが構築され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが構築される。
 
 参考：
 
@@ -319,9 +319,9 @@ test:
     files:
         # 全てのディレクトリ
         - "**/*"
-    configFilePath: *location*
+    configFilePath: <ファイルパス>
     # ビルドのアーティファクトのディレクトリ      
-    baseDirectory: *location*
+    baseDirectory: <ファイルパス>
 ```
 
 <br>

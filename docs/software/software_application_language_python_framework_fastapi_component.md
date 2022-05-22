@@ -63,3 +63,6 @@ app.include_router(router)
 I/Oバウンドが発生しない場合や```async/await```宣言をサポートしているパッケージを利用する場合は、これを使用するメソッド側で```async```宣言を使う必要がある。ただし、```async/await```宣言をサポートしているパッケージがほとんどないことが現状である。
 
 参考：https://qiita.com/ffggss/items/e4c06f86fb28a62948e0
+
+<br>
+

@@ -92,6 +92,28 @@ description: ArgoCD＠DevOpsの知見をまとめました。
 
 <br>
 
+## 01-03. 設計ポリシー
+
+### ディレクトリ構成
+
+デプロイ単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがデプロイ単位になるため、マイクロサービスごとにApplicationを作成するとよい。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+
+```bash
+repository/
+├── foo/ # fooサービス
+│   └── application.yaml
+│
+├── bar/ # barサービス
+│   └── application.yaml
+│
+└── baz/ # bazサービス
+    └── application.yaml
+```
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール
@@ -455,7 +477,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
-## 04. spec（Applicationの場合）
+## 04. Application
 
 ### Applicationとは
 
@@ -832,7 +854,7 @@ spec:
 
 <br>
 
-## 05. spec（Rolloutの場合）
+## 05. Rollout
 
 ### analysis
 

@@ -17,14 +17,24 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 ### 構造
 
-仮想環境上に、単一のワーカーNodeを持つClusterを作成する。
+#### ▼ 仮想サーバー系のドライバーの場合
+
+ホストマシン上に仮想サーバーを構築する。この仮想サーバー内に単一のワーカーNodeを持つClusterを作成する。
 
 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/
 - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
-![minikube_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture.png)
+![minikube_architecture_virtual_machine](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine.png)
+
+#### ▼ Dockerドライバーの場合
+
+ホストマシン上にコンテナを構築する。このコンテナ内に仮想サーバーを構築し、単一のワーカーNodeを持つClusterを作成する。
+
+参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
+
+![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_docker_driver.png)
 
 <br>
 

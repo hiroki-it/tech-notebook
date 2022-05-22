@@ -27,16 +27,76 @@ description: ロジック＠Terraformの知見をまとめました。
 
 #### ▼ ```.terraform.lock.hcl```ファイルとは
 
-現在使用中のプロバイダーのバージョンが定義される。これにより、他の人がリポジトリを使用する時に、異なるバージョンのプロバイダーを宣言できないようにする。
+開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
-参考：https://qiita.com/mziyut/items/0f4109c425165f5011df
+参考：
 
+- https://www.terraform.io/language/files/dependency-lock
+- https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
+- https://qiita.com/mziyut/items/0f4109c425165f5011df
 
-
-もし、異なるバージョンを使用したい場合は、以下のコマンドを実行する。これにより、```lock```ファイルのアップグレード/ダウングレードが実行される。
+もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
 
 ```bash
 $ terraform init -upgrade
+```
+
+#### ▼ version
+
+プロバイダーのバージョンを設定する。
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  version = "4.3.0"
+  
+  # 〜 中略 〜
+
+}
+```
+
+#### ▼ constraints
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  constraints = ">= 3.19.0"
+  
+  # 〜 中略 〜
+
+}
+```
+
+#### ▼ hashes
+
+ハッシュ値を設定する、タグごとに役割が異なる。
+
+参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+
+| タグ名   | 説明                                                         |
+| -------- | ------------------------------------------------------------ |
+| ```h1``` | 開発者が使用しているOSを表現するハッシュ値を設定する。```zh```タグの```zip```パッケージのOS名に存在しないOS値が、```h1```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
+| ```zh``` | プロバイダーの```zip```パッケージ（```terraform-provider-aws_<バージョン>_<OS名>```）のチェックサムハッシュ値を設定する。```h1```タグのOS値に存在しないOS名の```zip```パッケージが、```zh```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  hashes = [
+    "h1:*****",
+    "h1:*****",
+    "zh:*****",
+    ...
+  ]
+  
+  # 〜 中略 〜
+
+}
 ```
 
 <br>
@@ -71,7 +131,7 @@ terraform {
 
 #### ▼ backend
 
-stateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、initコマンドのオプションを使用して値を渡すようにする。
+tfstateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -94,7 +154,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # stateファイル名
+    # tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルの場所
@@ -310,7 +370,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # stateファイル名
+    # tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルの場所
@@ -474,9 +534,9 @@ $ terraform plan -var-file=foo.tfvars
 $ terraform plan
 ```
 
-#### ▼ ```TF_VAR_*****``` 
+#### ▼ ```TF_VAR_<変数名>```
 
-環境変数としてエクスポートしておくと自動的に読み込まれる。```*****```の部分が変数名としてTerraformに渡される。
+環境変数としてエクスポートしておくと自動的に読み込まれる。```<変数名>```の文字が、実際の変数名としてTerraformに渡される。
 
 ```bash
 $ printenv

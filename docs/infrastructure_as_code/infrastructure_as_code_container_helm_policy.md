@@ -46,9 +46,9 @@ repository/
 ...
 ```
 
-#### ▼ 稼働環境別
+#### ▼ 実行環境別
 
-稼働環境別に```values```ファイルと```.tpl```ファイルを作成する。```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある。テンプレートからマニフェストファイルを作成する時に、各環境の```values.yaml```を参照する。
+実行環境別に```values```ファイルと```.tpl```ファイルを作成する。```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある。テンプレートからマニフェストファイルを作成する時に、各環境の```values.yaml```を参照する。
 
 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
