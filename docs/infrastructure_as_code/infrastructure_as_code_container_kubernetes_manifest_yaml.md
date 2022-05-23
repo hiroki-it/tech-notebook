@@ -643,7 +643,9 @@ spec:
 
 #### ▼ rulesとは
 
-Serviceへのルーティングルールを設定する。複数のServiceにインバウンド通信を振り分けられる。
+Serviceへのルーティングルールを設定する。複数のServiceにインバウンド通信を振り分けられる。Ingressを使用する場合、ルーティング対象のServiceは、ClusterIP Serviceとする。
+
+参考：https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -658,7 +660,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: foo-service
+                name: foo-service # CluserIP Serviceとする。
                 port:
                   number: 80
     - http:
@@ -667,7 +669,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: bar-service
+                name: bar-service # CluserIP Serviceとする。
                 port:
                   number: 80
 ```
@@ -808,19 +810,11 @@ spec:
 
 ## 10. Node
 
-Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドで```--register-node=false```とする必要がある。
+Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
 
 <br>
 
-## 11. ReplicaController
-
-旧Deployment。非推奨である。
-
-参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
-
-<br>
-
-## 12. PersistentVolume
+## 11. PersistentVolume
 
 ### spec.accessModes
 
@@ -1148,7 +1142,7 @@ spec:
 
 <br>
 
-## 13. PersistentVolumeClaim
+## 12. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1216,7 +1210,7 @@ spec:
 
 <br>
 
-## 14. Pod
+## 13. Pod
 
 ### spec.containers
 
@@ -1704,6 +1698,14 @@ spec:
     path: /data/src/foo
     type: DirectoryOrCreate
 ```
+
+<br>
+
+## 14. ReplicaController
+
+旧Deployment。非推奨である。
+
+参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
 
 <br>
 

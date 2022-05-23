@@ -323,7 +323,9 @@ title: 【知見を記録するサイト】目次
 ## 🔎 可観測性/監視
 
 * [📖：︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html)
-* [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html)
+* 監視
+    * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html)
+    * [📖：︎インシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_incident_management.html)
 
 ### Googleアプリ
 

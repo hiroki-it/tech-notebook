@@ -58,6 +58,44 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 <br>
 
+### Podへの接続
+
+#### ▼ NodePort Service経由
+
+NodePort Serviceを構築しておく。```minikube ip```コマンドを実行することにより、ノードのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
+
+参考：https://future-architect.github.io/articles/20220112a/
+
+```bash
+$ minikube ip
+```
+
+#### ▼ LoadBalancer Service経由
+
+LoadBalancer Serviceを構築しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
+
+参考：https://future-architect.github.io/articles/20220112a/
+
+```bash
+$ minikube tunnel
+```
+
+#### ▼ Ingress経由
+
+ClusterIP ServiceとIngress（Minikubeアドオン製）を構築しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを知ることができる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
+
+参考：https://future-architect.github.io/articles/20220112a/
+
+```bash
+$ minikube ssh
+
+Last login: Wed May 18 10:14:50 2022 from 192.168.49.1
+
+docker@minikube:~$ curl http://<IPアドレス>
+```
+
+<br>
+
 ## 01-02. マウント
 
 ### ホスト-ワーカーNode間マウント
@@ -166,7 +204,7 @@ spec:
 
 <br>
 
-## 02. minikubeコマンド
+## 03. minikubeコマンド
 
 ### addons
 
@@ -188,6 +226,11 @@ Minikubeのプラグインを操作する。
 
 ```bash
 $ minikube addons enable ingress
+
+# IngressClassがNginxのIngressが構築されている。
+$ kubectl get ingress
+NAME          CLASS   HOSTS   ADDRESS        PORTS   AGE
+foo-ingress   nginx   *       <IPアドレス>    80      12m
 ```
 
 #### ▼ list
