@@ -322,7 +322,9 @@ nav:
           - orbs: devops/devops_circleci_orbs.md
   - 🔎 可観測性/監視:
       - 可観測性: observability_monitoring/observability.md
-      - 監視: observability_monitoring/monitoring.md
+      - 監視:
+        - 監視: observability_monitoring/monitoring.md
+        - インシデント管理: observability_monitoring/monitoring_incident.md
       - ■ Googleアプリ:
           - Googleアナリティクス: observability_monitoring/monitoring_google_analytics.md
           - Googleサーチコンソール: observability_monitoring/monitoring_google_search_console.md
