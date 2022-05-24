@@ -26,7 +26,7 @@ description: Minikube＠Kubernetesの知見をまとめました。
 - https://minikube.sigs.k8s.io/docs/commands/
 - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
-![minikube_architecture_virtual_machine](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine.png)
+![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine_driver.png)
 
 #### ▼ Dockerドライバーの場合
 

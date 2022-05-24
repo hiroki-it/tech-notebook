@@ -165,6 +165,13 @@ Capistorano、AWS（CodeDeploy）、Fablic、Git（手動で```git pull```コマ
 - https://webapp.io/blog/what-are-rolling-deployments/
 - https://www.designet.co.jp/ossinfo/kubernetes/update/
 
+ちなみに、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに属する。
+
+参考：
+
+- https://logmi.jp/tech/articles/323033
+- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+
 #### ▼ 類似するブルー/グリーンデプロイメントとの違い
 
 ブルー/グリーンデプロイメントとは異なり、冗長化された新環境に自動的に切り替えられるため、開発者のリリース作業の工数が少なくなる。一方で、フロントエンド領域とバックエンド領域が別々のアプリケーションとして稼働している場合に、これらのデプロイを同時に完了できない。また、新環境の起動のみしか自動で確認されないため、具体的な動作が正常かどうかをリリース作業後に確認する必要がある。
@@ -192,6 +199,13 @@ AWS（ECS、EKS）、Kubernetes
 - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
 - https://developer.hatenastaff.com/entry/2020/06/26/150300
 - https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html
+
+ちなみに、Kubernetesのアップグレード手法のクラスターマイグレーションも、ブルー/グリーンデプロイメントに属する。
+
+参考：
+
+- https://logmi.jp/tech/articles/323033
+- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 
 #### ▼ 類似するローリングアップデートとの違い
 

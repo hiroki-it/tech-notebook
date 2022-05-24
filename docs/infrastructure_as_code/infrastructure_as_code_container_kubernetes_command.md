@@ -227,17 +227,33 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 #### ▼ secret docker-registry
 
-イメージレジストリの認証情報を持つSecretを作成する。
+イメージレジストリの認証情報を持つSecretを作成する。Podと同じ名前空間に存在する必要があるため、作成時に名前空間の指定を忘れないようにする。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+参考：
+
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+- https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
 
 ```bash
+# DockerHubの場合
 $ kubectl create secret docker-registry foo-secret \
     --docker-server=http://bar.example.com \
     --docker-username=bar \
     --docker-password=baz \
-    --docker-email=http://baz.example.com
+    --docker-email=http://baz.example.com \
+    --namespace=foo-namespace
 ```
+
+```bash
+# ECRの場合
+$ kubectl create secret docker-registry foo-secret \
+    --docker-server=<アカウントID>.dkr.ecr.<リージョン>.amazonaws.com \
+    --docker-username=AWS \
+    --docker-password=$(aws ecr get-login-password) \
+    --namespace=foo-namespace
+```
+
+
 
 #### ▼ secret generic
 

@@ -137,7 +137,7 @@ Istioの各コンポーネントのことで、Kubernetesのカスタムリソ�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、Service、DestinationRuleの設定を基に、Cluster外部から送信されるインバウンド通信をPodにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
+Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部から送信されるインバウンド通信をPodにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
 
 参考：
 

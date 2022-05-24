@@ -27,10 +27,17 @@ $ aws configure
 
 #### ▼ --profile
 
-指定したプロファイルの認証情報を使用する。
+プロファイルを新しく作成する。
+
+参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
 ```bash
 $ aws configure --profile <プロファイル名>
+
+AWS Access Key ID [None]: <アクセスキーID>
+AWS Secret Access Key [None]: <シークレットアクセスキー>
+Default region name [None]: <リージョン名>
+Default output format [None]: <アウトプット形式>
 ```
 
 <br>
@@ -68,7 +75,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 <br>
 
-## 01-02. 設定ファイル
+## 01-02. 設定ファイル/環境変数
 
 ### ```~/.aws/confidentials```ファイル
 
@@ -163,6 +170,32 @@ IAMロールの委譲先のIAMユーザーのプロファイル名を設定す�
 [profile foo]
 source_profile = default
 ```
+
+<br>
+
+### 環境変数
+
+#### ▼ AWS_DEFAULT_PROFILE
+
+現在のターミナルで使用するプロファイルを設定する。```AWS_PROFILE```変数よりも優先される。
+
+参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+
+```bash
+export AWS_DEFAULT_PROFILE=default
+```
+
+#### ▼ AWS_PROFILE
+
+現在のターミナルで使用するプロファイルを設定する。
+
+参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+
+```bash
+export AWS_PROFILE=foo-profile
+```
+
+
 
 <br>
 
