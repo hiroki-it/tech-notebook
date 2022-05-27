@@ -1,5 +1,6 @@
 ---
-d
+title: 【知見を記録するサイト】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見をまとめました。
 ---
 
 # AWS：Amazon Web Service（S〜Z）
@@ -378,13 +379,15 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
 
-パラメーターストアで管理される環境変数はKMSによって暗号化されており、EC2/ECS/EKSで参照する時に復号化される。
+パラメーターストアで管理される環境変数はKMSによって暗号化されており、EC2/ECS/EKSで参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
 参考：
 
 - https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/services-parameter-store.html
 
 - https://note.com/hamaa_affix_tech/n/n02eb412d0327
+
+- https://tech.libry.jp/entry/2020/09/17/130042
 
 
 #### ▼ 命名規則
@@ -1268,7 +1271,7 @@ WAFを紐づけられるリソースにセキュリティグループも紐づ�
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Allow          | 指定したユーザーエージェントでない場合、全てのファイルパスにアクセスすることを許可する。 |
+| Allow          | 指定したユーザーエージェントでない場合、全てのパスにアクセスすることを許可する。 |
 
 #### ▼ CI/CDツールのアクセスを許可
 
@@ -1284,9 +1287,9 @@ WAFを紐づけられるリソースにセキュリティグループも紐づ�
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Block          | 正しいトークンを持たないアクセスの場合、全てのファイルパスにアクセスすることを拒否する。 |
+| Block          | 正しいトークンを持たないアクセスの場合、全てのパスにアクセスすることを拒否する。 |
 
-#### ▼ 特定のファイルパスを社内アクセスに限定
+#### ▼ 特定のパスを社内アクセスに限定
 
 **＊例＊**
 
@@ -1296,7 +1299,7 @@ WAFを紐づけられるリソースにセキュリティグループも紐づ�
 
 | Statementの順番 | If a request        | Inspect                                | IP set       | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
 | --------------- | ------------------- | -------------------------------------- | ------------ | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches (AND)``` | ```Originates from an IP address in``` | 社内IPセット | -                                            | -                 | -     | 社内の送信元IPアドレスの場合、指定したファイルパスにアクセスすることを許可する。 |
+| ```0```         | ```matches (AND)``` | ```Originates from an IP address in``` | 社内IPセット | -                                            | -                 | -     | 社内の送信元IPアドレスの場合、指定したパスにアクセスすることを許可する。 |
 | ```1```         | ```matches```       | ```URI path```                         | -            | ```Matches pattern from regex pattern set``` | 文字列セット      | Allow | 0番目かつ、指定した文字列を含むURLパスアクセスの場合、アクセスすることを許可する。 |
 
 ルール：```block-access-to-url-path```
@@ -1319,12 +1322,12 @@ WAFを紐づけられるリソースにセキュリティグループも紐づ�
 
 | Statementの順番 | If a request        | Inspect                                | IP set           | Originating address | Then  | 挙動                                                         |
 | --------------- | ------------------- | -------------------------------------- | ---------------- | ------------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches  (OR)``` | ```Originates from an IP address in``` | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合、全てのファイルパスにアクセスすることを許可する。 |
-| ```1```         | ```matches```       | ```Originates from an IP address in``` | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは、協力会社の送信元IPアドレスの場合、全てのファイルパスにアクセスすることを許可する。 |
+| ```0```         | ```matches  (OR)``` | ```Originates from an IP address in``` | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。 |
+| ```1```         | ```matches```       | ```Originates from an IP address in``` | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは、協力会社の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。 |
 
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Block          | 指定した送信元IPアドレス以外の場合、全てのファイルパスにアクセスすることを拒否する。 |
+| Block          | 指定した送信元IPアドレス以外の場合、全てのパスにアクセスすることを拒否する。 |
 
 #### ▼ ALBを直接的に指定することを防ぐ
 

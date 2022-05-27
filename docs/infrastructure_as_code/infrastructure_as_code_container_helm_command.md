@@ -70,7 +70,7 @@ $ helm install <リリース名> <チャート>
 
 #### ▼ --dry-run
 
-Kubernetesにデプロイされるリソースのマニフェストファイルを表示する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
+Kubernetesにデプロイされるリソースのmanifest.yamlファイルを表示する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -84,7 +84,7 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm install```コマンドを実行する。
+指定した```values```ファイル使用して、```helm install```コマンドを実行する。
 
 参考：https://helm.sh/docs/helm/helm_install/#options
 
@@ -128,7 +128,7 @@ $ helm lint <チャートへのパス>
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm lint```コマンドを実行する。
+指定した```values```ファイル使用して、```helm lint```コマンドを実行する。
 
 ```bash
 $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
@@ -372,7 +372,7 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 
 #### ▼ all
 
-チャート内の全てのマニフェストファイルを表示する。
+チャート内の全てのmanifest.yamlファイルを表示する。
 
 ```bash
 $ helm show all <チャート名>
@@ -400,7 +400,7 @@ version: 1.0.0
 
 #### ▼ templateとは
 
-Kubernetesにデプロイされるリソースのマニフェストファイルを出力する。YAMLファイルにリダイレクトするようにするとよい。
+Kubernetesにデプロイされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにするとよい。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>

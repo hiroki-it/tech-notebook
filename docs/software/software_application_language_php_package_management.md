@@ -41,7 +41,7 @@ $ php -r "unlink('composer-setup.php');"
 
 #### ▼ autoload
 
-名前空間とファイルパスの対応関係を設定する。```require```関数を使用せずに、クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる。
+名前空間とパスの対応関係を設定する。```require```関数を使用せずに、クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる。
 
 参考：
 
@@ -55,7 +55,7 @@ $ php -r "unlink('composer-setup.php');"
     
     "autoload": {
         "psr-4": {
-             # "<名前空間>": "<ファイルパス>",
+             # "<名前空間>": "<パス>",
             "App\\": "app/",
             "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
             "Database\\Seeders\\": "database/seeds/production"
@@ -318,7 +318,7 @@ Checking https connectivity to packagist: OK
 
 ### dump-autoload
 
-事前に設定された```autoload```プロパティを基に、クラスの名前空間とファイルパスの対応関係を登録する。
+事前に設定された```autoload```プロパティを基に、クラスの名前空間とパスの対応関係を登録する。
 
 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
 

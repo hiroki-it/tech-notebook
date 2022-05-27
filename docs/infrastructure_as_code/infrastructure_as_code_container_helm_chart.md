@@ -247,7 +247,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 ### アクションとは
 
-テンプレートからマニフェストファイルを作成するために必要な機能を提供する。
+テンプレートからmanifest.yamlファイルを作成するために必要な機能を提供する。
 
 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 

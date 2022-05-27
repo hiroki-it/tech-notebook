@@ -62,7 +62,7 @@ build:
 
 #### ▼ context
 
-マイクロサービスのルートまでのファイルパスを設定する。
+マイクロサービスのルートまでのパスを設定する。
 
 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
@@ -85,7 +85,7 @@ build:
 
 | 項目       | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| dockerfile | マイクロサービスのルートからDockerfileまでのファイルパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
+| dockerfile | マイクロサービスのルートからDockerfileまでのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
 | target     | ビルドするイメージのステージを設定する。                     | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target |
 
 ```yaml

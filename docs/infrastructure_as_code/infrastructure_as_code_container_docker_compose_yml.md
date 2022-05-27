@@ -77,7 +77,7 @@ services:
 
 #### ▼ ```dockerfile```
 
-Dockerfileまでのファイルパスを設定する。
+Dockerfileまでのパスを設定する。
 
 **＊実装例＊**
 

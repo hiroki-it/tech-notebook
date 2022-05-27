@@ -27,7 +27,7 @@ Kubernetesコンポーネントは、リソースから作成されたオブジ�
 
 ### IaC
 
-#### ▼ manifest.yaml
+#### ▼ manifest.yamlファイル
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
 
@@ -186,7 +186,7 @@ kubernetesクライアントは、kubectlコマンドを使用して、kubernete
 
 ### Kubernetesリソース
 
-Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
+Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってmanifest.yamlファイルで定義される。manifest.yamlファイルについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
 
@@ -194,7 +194,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 ### Kubernetesオブジェクト
 
-マニフェストファイルによって量産されたKubernetesリソースのインスタンスのこと。
+manifest.yamlファイルによって量産されたKubernetesリソースのインスタンスのこと。
 
 参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
 

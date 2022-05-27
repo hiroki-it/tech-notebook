@@ -13,7 +13,7 @@ description: manifest.yaml＠Kubernetesの知見をまとめました。
 
 <br>
 
-## 01. Kubernetesのmanifest.yamlとは
+## 01. Kubernetesのmanifest.yamlファイルとは
 
 ### 仮想化のIaCとして
 

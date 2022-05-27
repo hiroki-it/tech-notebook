@@ -345,3 +345,5 @@ EC2、EBS、ECS、EKS、の例を示す。
 #### ▼ PureCloudの場合
 
 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
+
+<br>

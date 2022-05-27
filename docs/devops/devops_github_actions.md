@@ -26,8 +26,8 @@ description: GitHub Actions＠DevOpsの知見をまとめました。
 ```bash
 project
 ├── .github/
-│   └── workflows/
-│       └── foo.yml
+│   └── workflows/
+│       └── foo.yml
 ...
 ```
 
@@ -163,8 +163,8 @@ jobs:
 ```bash
 project
 ├── .github/
-│   └── workflows/
-│       ├── foo.yml
+│   └── workflows/
+│       ├── foo.yml
 │       └── composite/
 │           ├── bar/
 │           │   └── action.yml

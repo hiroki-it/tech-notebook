@@ -566,7 +566,7 @@ ssl on;
 
 #### ▼ ssl_certificate
 
-HTTPSプロトコルを受信する場合に、PEM証明書のファイルパスを設定する。
+HTTPSプロトコルを受信する場合に、PEM証明書のパスを設定する。
 
 **＊実装例＊**
 
@@ -576,7 +576,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ▼ ssl_certificate_key
 
-HTTPSプロトコルを受信する場合に、PEM秘密鍵のファイルパスを設定する。
+HTTPSプロトコルを受信する場合に、PEM秘密鍵のパスを設定する。
 
 **＊実装例＊**
 

@@ -13,7 +13,7 @@ description: manifest.yaml＠Istioの知見をまとめました。
 
 <br>
 
-## 01. Istioのmanifest.yamlとは
+## 01. Istioのmanifest.yamlファイルとは
 
 ### 仮想化のIaCとして
 
@@ -52,7 +52,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioリソースをデプロイする。kubectlコマンドでもデプロイできるが、デプロイの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioリソースをデプロイする。kubectlコマンドでもデプロイできるが、デプロイの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 
@@ -61,7 +61,7 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
+$ istioctl install -y -f <IstioOperatorのmanifest.yamlファイルへのパス>
 
 ✔ Istio core installed
 ✔ Istiod installed
@@ -72,7 +72,7 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f <IstioOperatorのマニフェストファイルへのパス>
+$ kubectl apply -f <IstioOperatorのmanifest.yamlファイルへのパス>
 
 istiooperator.install.istio.io/istio-operator created
 ```

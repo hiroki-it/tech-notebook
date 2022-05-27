@@ -107,7 +107,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 ### IaC
 
-#### ▼ manifest.yaml
+#### ▼ manifest.yamlファイル
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.html
 
@@ -117,7 +117,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 ### Istioリソース
 
-Istioの各コンポーネントのことで、Kubernetesのカスタムリソースとして定義されている。Istioリソースは、IaCによってマニフェストファイルで定義される。Istioのマニフェストファイルについては、以下のリンクを参考にせよ。
+Istioの各コンポーネントのことで、Kubernetesのカスタムリソースとして定義されている。Istioリソースは、IaCによってmanifest.yamlファイルで定義される。Istioのmanifest.yamlファイルについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.html
 
@@ -125,7 +125,7 @@ Istioの各コンポーネントのことで、Kubernetesのカスタムリソ�
 
 ### Istioオブジェクト
 
-マニフェストファイルによって量産されたIstioリソースのインスタンスのこと。
+manifest.yamlファイルによって量産されたIstioリソースのインスタンスのこと。
 
 <br>
 

@@ -197,7 +197,7 @@ SSGの場合、静的ファイルをデプロイしさえすれば、アプリ�
 | ブランチの自動検出     | ブランチの自動検出を有効化する。                 | ワイルドカードを組み込む場合、アスタリスクを2つ割り当てないと、ブランチが検知されないことがある。例：『```**foo**,**bar**```』 |
 | プレビュー             | GitHubのプルリク上にAmplify環境のURLを通知する。 | 2021/02/07現在では、プルリクを新しく作成しても、これは自動で登録されない。そのため、その都度手動で登録する必要がある。 |
 | アクセスコントロール   | Amplify環境に認証機能を設定する。                | 2021/02/07現在では、Basic認証を使用できる。          |
-| リダイレクト           | リダイレクトするファイルパスを設定する。         | ```404```ステータスで404ページにリダイレクトする場合は、以下の通りに設定する。<br>・送信元：```/<*>```<br>・ターゲットアドレス：```<404ページへのパス>```<br>・404（リダイレクト） |
+| リダイレクト           | リダイレクトするパスを設定する。         | ```404```ステータスで404ページにリダイレクトする場合は、以下の通りに設定する。<br>・送信元：```/<*>```<br>・ターゲットアドレス：```<404ページへのパス>```<br>・404（リダイレクト） |
 
 <br>
 
@@ -319,9 +319,9 @@ test:
     files:
         # 全てのディレクトリ
         - "**/*"
-    configFilePath: <ファイルパス>
+    configFilePath: <パス>
     # ビルドのアーティファクトのディレクトリ      
-    baseDirectory: <ファイルパス>
+    baseDirectory: <パス>
 ```
 
 <br>
@@ -930,7 +930,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | 設定項目                       | 説明                                                         | 補足                                                                                                                                                                                                                                          |
 | ------------------------------ | ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Precedence                     | 処理の優先順位。                                             | 最初に構築したBehaviorが『```Default (*)```』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。                                                                                                                                                                |
-| Path pattern                   | Behaviorを行うファイルパスを設定する。                       |                                                                                                                                                                                                                                             |
+| Path pattern                   | Behaviorを行うパスを設定する。                       |                                                                                                                                                                                                                                             |
 | Origin and Origin Group        | Behaviorを行うオリジンを設定する。                           |                                                                                                                                                                                                                                             |
 | Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・```HTTP and HTTPS```：両方受信し、そのままルーティング<br>・```Redirect HTTP to HTTPS```：両方受信し、HTTPSでルーティング<br>・```HTTPS Only```：HTTPSのみ受信し、HTTPSでルーティング                                                                                                     |
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定 | ・パスパターンが静的ファイルへのリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルへのリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
@@ -2293,7 +2293,7 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 <br>
 
-## 14-02. ECS
+## 14-02. ECSデータプレーン
 
 ### ECSクラスター
 
@@ -2347,7 +2347,7 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 <br>
 
-## 14-02-02. ECS on EC2
+## 14-02-03. ECS on EC2
 
 ### EC2起動タイプのコンテナ
 
@@ -2363,7 +2363,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 14-02-03. ECS on Fargate
+## 14-02-04. ECS on Fargate
 
 ### Fargate
 
@@ -2775,11 +2775,15 @@ CodeDeployを使用してデプロイを行う。
 
 <br>
 
-### プライベートなECSタスクのアウトバウンド通信
+### プライベートサブネット内のFargateからのアウトバウンド通信
 
 #### ▼ プライベートサブネットからの通信
 
-プライベートサブネットにECSタスクを配置した場合、アウトバウンド通信を実行するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
+プライベートサブネットにFargateを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
+
+![ecs_private_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_private_data-plane.png)
 
 #### ▼ FargateのIPアドレスが動的である問題
 
@@ -2793,7 +2797,7 @@ FargateにパブリックIPアドレスを持たせたい場合、Elastic IPア�
 
 #### ▼ NAT Gateway経由
 
-FargateからECRに対するdockerイメージのプルは、VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
+FargateからECRに対するdockerイメージのプルや、Fargateからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
@@ -2801,7 +2805,7 @@ FargateからECRに対するdockerイメージのプルは、VPCの外側に対�
 
 #### ▼ VPCエンドポイント経由
 
-VPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
+VPC外のAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
 
 参考：
 
@@ -2954,23 +2958,27 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 #### ▼ セットアップ
 
-| 設定項目                         | 説明                                              | 補足                                                         |
-| -------------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| 名前                             | クラスターの名前を設定する。                      |                                                              |
-| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。 | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| クラスターサービスロール         | EKSクラスターのサービスリンクロールを設定する。   | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
-| シークレット                     |                                                   |                                                              |
-| VPC、サブネット                  | ENIを配置するサブネットを設定する。               | 複数のAZにまたがっている必要がある。                         |
-| クラスターセキュリティグループ   | EKSクラスターのセキュリティグループを設定する。   | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKSクラスター名>```というセキュリティグループも自動設定される。<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー   |                                                   |                                                              |
-| IPアドレス範囲                   |                                                   |                                                              |
-| クラスターエンドポイントアクセス |                                                   |                                                              |
-| ネットワークアドオン             |                                                   |                                                              |
-| コントロールプレーンのログ       |                                                   |                                                              |
+| 設定項目                         | 説明                                                         | 補足                                                         |
+| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 名前                             | クラスターの名前を設定する。                                 |                                                              |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| クラスターサービスロール         | EKSクラスターのサービスリンクロールを設定する。              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
+| シークレット                     | Secretに保持するデータをAWS KMSで暗号化するかどうかを設定する。 | AWS KMSについては、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html |
+| VPC、サブネット                  | ENIを配置するサブネットを設定する。                          | 複数のAZにまたがっている必要がある。                         |
+| クラスターセキュリティグループ   | EKSクラスターのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKSクラスター名>```というセキュリティグループも自動設定される。<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   |                                                              |                                                              |
+| IPアドレス範囲                   |                                                              |                                                              |
+| クラスターエンドポイントアクセス |                                                              |                                                              |
+| ネットワークアドオン             |                                                              |                                                              |
+| コントロールプレーンのログ       |                                                              |                                                              |
 
 #### ▼ ネットワーク
 
-EKSでは、EKS外からのインバウンド通信をALBコントローラーで受信し、これをIngressにルーティングする。また、アウトバウンド通信をNAT Gatewayで受信し、EKS外にルーティングする。
+EKSでは、EKS外からのインバウンド通信をALBコントローラーで受信し、これをIngressにルーティングする。また、アウトバウンド通信をNAT GatewayやVPCエンドポイントで受信し、EKS外にルーティングする。以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
+
+```
+Pod provisioning timed out (will retry) for pod
+```
 
 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
@@ -3008,7 +3016,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <クラスターARN>
 ```
 
-（３）マニフェストファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
+（３）manifest.yamlファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
