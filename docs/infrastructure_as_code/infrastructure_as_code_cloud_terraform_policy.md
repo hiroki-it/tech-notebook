@@ -89,19 +89,19 @@ repository/
 ├── modules/
 │   ├── route53/ # Route53
 │   │   ├── dev/ # 開発
-│   |   ├── prd/ # 本番
-│   |   └── stg/ # ステージング
-│   | 
+│   │   ├── prd/ # 本番
+│   │   └── stg/ # ステージング
+│   │ 
 │   ├── ssm/ # SSM
-|   |   ├── dev/
-│   |   ├── prd/
-│   |   └── stg/
-│   | 
+│   │   ├── dev/
+│   │   ├── prd/
+│   │   └── stg/
+│   │ 
 │   └── waf/ # WAF
-|       ├── dev/
+│       ├── dev/
 │       ├── prd/
 │       └── stg/
-|
+│
 ├── dev/ # 開発環境ルートモジュール
 │   ├── dev.tfvars
 │   ├── main.tf
@@ -137,14 +137,14 @@ repository/
 └── modules/
     ├── cloudwatch/ # CloudWatch
     │   ├── alb/        # ALB
-    |   ├── cloudfront/ # CloudFront
-    |   ├── ecs/        # ECS
-    |   ├── lambda/     # Lambda
-    |   |   └── functions/
-    |   |       └── foo_function/
-    |   |
-    |   └── rds/        # RDS    
-    |
+    │   ├── cloudfront/ # CloudFront
+    │   ├── ecs/        # ECS
+    │   ├── lambda/     # Lambda
+    │   │   └── functions/
+    │   │       └── foo_function/
+    │   │
+    │   └── rds/        # RDS    
+    │
     └── waf/ # WAF
         ├── alb/         # ALB
         ├── api_gateway/ # API Gateway
@@ -160,14 +160,14 @@ repository/
 └── modules/
     ├── route53/ # Route53
     │   ├── dev/ # 開発
-    |   ├── prd/ # 本番
-    |   └── stg/ # ステージング
-    | 
+    │   ├── prd/ # 本番
+    │   └── stg/ # ステージング
+    │ 
     ├── ssm/ # SSM
-    |   ├── dev/
-    |   ├── prd/
-    |   └── stg/
-    | 
+    │   ├── dev/
+    │   ├── prd/
+    │   └── stg/
+    │ 
     └── waf/ # WAF
         └── alb/ 
             ├── dev/
@@ -200,9 +200,9 @@ repository/
         ├── cloudfront/
         └── regional_sets/ # Regionalタイプのセット
             ├── ip_sets/   # IPセット
-            |   ├── prd/
-            |   └── stg/
-            |    
+            │   ├── prd/
+            │   └── stg/
+            │    
             └── regex_pattern_sets/ # 正規表現パターンセット
                 ├── prd/
                 └── stg/
@@ -223,21 +223,21 @@ repository/
     │
     ├── iam/ # IAM
     │   └── policies/
-    |       ├── customer_managed_policies/ # カスタム管理ポリシー
-    |       |   ├── aws_cli_executor_access_policy.tpl
-    |       |   ├── aws_cli_executor_access_address_restriction_policy.tpl
-    |       |   ├── cloudwatch_logs_access_policy.tpl
-    |       |   └── lambda_edge_execution_policy.tpl
-    |       |     
-    |       ├── inline_policies/ # インラインポリシー
-    |       |   └── ecs_task_policy.tpl
-    |       |     
-    |       └── trust_policies/ # 信頼ポリシー
-    |           ├── cloudwatch_events_policy.tpl
-    |           ├── ecs_task_policy.tpl
-    |           ├── lambda_policy.tpl
-    |           └── rds_policy.tpl
-    |
+    │       ├── customer_managed_policies/ # カスタム管理ポリシー
+    │       │   ├── aws_cli_executor_access_policy.tpl
+    │       │   ├── aws_cli_executor_access_address_restriction_policy.tpl
+    │       │   ├── cloudwatch_logs_access_policy.tpl
+    │       │   └── lambda_edge_execution_policy.tpl
+    │       │     
+    │       ├── inline_policies/ # インラインポリシー
+    │       │   └── ecs_task_policy.tpl
+    │       │     
+    │       └── trust_policies/ # 信頼ポリシー
+    │           ├── cloudwatch_events_policy.tpl
+    │           ├── ecs_task_policy.tpl
+    │           ├── lambda_policy.tpl
+    │           └── rds_policy.tpl
+    │
     └── s3/ # S3
         └── policies/ # バケットポリシー
             └── alb_bucket_policy.tpl

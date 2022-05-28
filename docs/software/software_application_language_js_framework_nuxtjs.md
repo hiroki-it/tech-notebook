@@ -201,7 +201,7 @@ const nuxtConfig: Configuration = {
 
 #### ▼ hardSource
 
-ビルド時のキャッシュを有効化する。ビルドの完了が早くなる。
+ビルド時のキャッシュを有効化するかどうかを設定する。ビルドの完了が早くなる。
 
 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 

@@ -93,7 +93,7 @@ $ istioctl x uninstall --purge
 
 ### Minikubeのセットアップ
 
-Istioによる種々のコンテナが稼働するために、MinikubeノードのCPUとメモリを最低容量を以下の通りにする必要がある。
+Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低容量を以下の通りにする必要がある。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -1233,7 +1233,7 @@ spec:
 
 #### ▼ mesh
 
-マイクロサービス間の通信を有効化する。
+マイクロサービス間の通信を有効化するかどうかを設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

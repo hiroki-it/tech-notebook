@@ -137,7 +137,7 @@ ArgoCDは、デプロイ対象のアプリケーションのSecretを保持す�
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
-$ kubectl config use-context <クラスターARN>
+$ kubectl config use-context <Cluster ARN>
 ```
 
 参考：
@@ -557,11 +557,11 @@ spec:
 - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
 - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
-| 設定項目      | 説明                                                         |
-| ------------- | ------------------------------------------------------------ |
-| ```include``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルのみを指定する。 |
-| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルを除外する。 |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのmanifest.yamlファイルを指定できるように、ディレクトリ内の再帰的検出を有効化する。 |
+| 設定項目      | 説明                                                                                                     |
+| ------------- |--------------------------------------------------------------------------------------------------------|
+| ```include``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルのみを指定する。                                                 |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルを除外する。                                                   |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのmanifest.yamlファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するかどうかを設定する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -783,7 +783,7 @@ spec:
 
 #### ▼ server
 
-デプロイ先のKubernetesのクラスターのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
+デプロイ先のKubernetesのClusterのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -811,15 +811,15 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 #### ▼ automated
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化する。
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化するかどうかを設定する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| 設定項目         | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| ```prune```      | リソースの削除を自動同期する。デフォルトでは、GtiHubリポジトリでmanifest.yamlファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。 |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 |
-| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化する。<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
+| 設定項目         | 説明                                                                                                                                                              |
+| ---------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでmanifest.yamlファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                                                                    |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。                                                    |
+| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化するかどうかを設定する。<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

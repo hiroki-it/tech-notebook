@@ -42,7 +42,7 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 #### ▼ ドライバーとは
 
-ゲスト（ワーカーノード）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
+ゲスト（ワーカーNode）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
@@ -50,7 +50,7 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-| ホスト側のOS | ゲスト（ワーカーノード）側のOS               |
+| ホスト側のOS | ゲスト（ワーカーNode）側のOS              |
 |---------|--------------------------------|
 | Linux   | VirtualBox、Docker、KVM2、...     |
 | MacOS   | VirtualBox、Docker、HyperKit、... |
@@ -62,7 +62,7 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 #### ▼ NodePort Service経由
 
-NodePort Serviceを構築しておく。```minikube ip```コマンドを実行することにより、ノードのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
+NodePort Serviceを構築しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
 
 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -214,13 +214,13 @@ Minikubeのプラグインを操作する。
 
 #### ▼ enable
 
-プラグインを有効化する。
+プラグインを有効化するかどうかを設定する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
-開発環境専用のIngressコントローラーとして、NginxIngressコントローラーを有効化する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
+開発環境専用のIngressコントローラーとして、NginxIngressコントローラーを有効化するかどうかを設定する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -704,7 +704,7 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 
 #### ▼ --cpus、--memory
 
-Minikubeノードのスペックを設定する。
+MinikubeのNodeのスペックを設定する。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -775,7 +775,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。クラスター外部からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Cluster外部からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 参考：
 

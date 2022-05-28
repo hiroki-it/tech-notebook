@@ -47,7 +47,7 @@ $ docker attach <起動中コンテナ名>
 
 **＊例＊**
 
-キャッシュ無しで、指定のDockerfileを基に、イメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化する。
+キャッシュ無しで、指定のDockerfileを基に、イメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するかどうかを設定する。
 
 ```bash
 $ docker build --file Dockerfile --tag <イメージ名>:<バージョンタグ> --force-rm=true --no-cache .

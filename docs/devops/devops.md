@@ -200,7 +200,7 @@ AWS（ECS、EKS）、Kubernetes
 - https://developer.hatenastaff.com/entry/2020/06/26/150300
 - https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html
 
-ちなみに、Kubernetesのアップグレード手法のクラスターマイグレーションも、ブルー/グリーンデプロイメントに属する。
+ちなみに、Kubernetesのアップグレード手法のClusterマイグレーションも、ブルー/グリーンデプロイメントに属する。
 
 参考：
 

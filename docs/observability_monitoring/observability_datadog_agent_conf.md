@@ -349,7 +349,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化する。                                | AWS ECS Fargateを使用している場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化するかどうかを設定する。                                | AWS ECS Fargateを使用している場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ▼ カスタムメトリクス
@@ -360,7 +360,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 | 変数名                               | 説明                                                    |
 | ------------------------------------ | ------------------------------------------------------- |
-| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | datadogコンテナのカスタムメトリクスの受信を有効化する。 |
+| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | datadogコンテナのカスタムメトリクスの受信を有効化するかどうかを設定する。 |
 
 <br>
 
@@ -372,7 +372,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 | 変数名                | 説明                                | 補足                                                         |
 | --------------------- | ----------------------------------- | ------------------------------------------------------------ |
-| ```DD_LOGS_ENABLED``` | ログの収集を有効化する。            | 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents |
+| ```DD_LOGS_ENABLED``` | ログの収集を有効化するかどうかを設定する。            | 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents |
 | ```DD_LOG_LEVEL```    | APMに送信するログレベルを設定する。 | 参考：https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables |
 
 <br>

@@ -340,7 +340,7 @@ AllowOverride None
 
 #### ▼ Indexes
 
-別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化する。
+別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化するかどうかを設定する。
 
 **＊実装例＊**
 

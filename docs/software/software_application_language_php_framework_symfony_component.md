@@ -30,8 +30,8 @@ symfony/
 │   └── symfony_requirements/
 │
 ├── public/
-|   ├── index.php # 本番環境で、カーネルとして動く
-|   └── index_dev.php # 開発環境で、カーネルとして動く
+│   ├── index.php # 本番環境で、カーネルとして動く
+│   └── index_dev.php # 開発環境で、カーネルとして動く
 │
 ├── src/ # 主要なPHPファイル
 │   ├── AppBundle/ # アプリケーションのコード
@@ -43,7 +43,7 @@ symfony/
 │   │       └── views/ # 画面テンプレート（※本書では扱わない） 
 │   │           
 │   └── その他のBundle/ # 汎用的なパッケージのコード（※本書では扱わない）
-|
+│
 ├── templates/ # UserInterface層
 │   
 ├── test/ # 自動テスト（Unit tests等）

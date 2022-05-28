@@ -57,7 +57,7 @@ apiVersion: v1
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-Ingressがクラスター内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがCluster内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 参考：
 
@@ -93,13 +93,13 @@ Kubernetesリソースを一意に識別するための名前を設定する。
 
 #### ▼ clustersとは
 
-kubectlコマンドの向き先となるクラスターを設定する。
+kubectlコマンドの向き先となるClusterを設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
-クラスター名を設定する。
+Cluster名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -184,7 +184,7 @@ contexts:
 
 #### ▼ context
 
-実際に使用するクラスター名とユーザー名を、```clusters```キーと```users```キーから選んで設定する。
+実際に使用するCluster名とユーザー名を、```clusters```キーと```users```キーから選んで設定する。
 
 ```yaml
 apiVersion: v1
@@ -1957,7 +1957,7 @@ data:
     UmVhbGx5IHJlYWxs ...
 ```
 
-ただしAWS EKSでは、このSecretは不要であり、ワーカーノード（Fargate、EC2）にECRへのアクセス権限を付与しておけばよい。
+ただしAWS EKSでは、このSecretは不要であり、ワーカーNode（Fargate、EC2）にECRへのアクセス権限を付与しておけばよい。
 
 参考：https://nishipy.com/archives/1122
 

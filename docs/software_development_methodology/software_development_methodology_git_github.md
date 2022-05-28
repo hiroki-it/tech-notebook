@@ -45,9 +45,9 @@ repository/
 repository/
 └── .github/
     ├── ISSUE_TEMPLATE/
-    |   ├── FIX.md
-    |   └── UPDATE.md
-    |
+    │   ├── FIX.md
+    │   └── UPDATE.md
+    │
     └── PULL_REQUEST_TEMPLATE.md
 ```
 
