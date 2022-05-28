@@ -244,11 +244,11 @@ $ argocd app set guestbook --sync-policy automated
 ```bash
 # ECRのチャートをプルする場合
 $ argocd repo add oci://<チャートレジストリ名> \
-  --type helm \
-  --name <チャートリポジトリ名> \
-  --enable-oci \
-  --username AWS \
-  --password $(aws ecr get-login-password --region ap-northeast-1)
+    --type helm \
+    --name <チャートリポジトリ名> \
+    --enable-oci \
+    --username AWS \
+    --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
 #### ▼ manifest.yamlファイル経由

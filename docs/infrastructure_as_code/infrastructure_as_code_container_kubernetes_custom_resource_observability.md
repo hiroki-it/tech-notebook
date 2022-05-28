@@ -74,6 +74,8 @@ $ kubectl apply -f grafana.yaml
 
 #### ▼ ConfigMap
 
+ダッシュボードを設定する。ただ、ゼロから実装するのは大変である。そこで、まずはGrafanaのGUI版でダッシュボードを作成し、これからエクスポートしたJSONファイルを組み込むようにする。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -82,7 +84,7 @@ metadata:
 data:
   foo.json: |-
   
-  # ここに、GrafanaのダッシュボードからExportしたJSONファイルを貼り付ける。
+  # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
   
 ```
 
@@ -138,28 +140,37 @@ KubernetesやIstioに関するメトリクスの収集/分析を行う。
 
 <br>
 
-#### ▼ Exporter
-
-Prometheusにメトリクスを提供する。収集したいメトリクスに合わせて、Exporter（blackbox-exporter、consul-exporter、process-exporter、graphite-exporter、など）を選ぶ必要がある。
-
-参考：
-
-- https://openstandia.jp/oss_info/prometheus
-- https://prometheus.io/docs/instrumenting/exporters/#exporters-and-integrationsa
-
 #### ▼ Alertmanager
 
 Prometheusから送信されたアラートをルーティングする。
 
-参考：https://www.designet.co.jp/ossinfo/alertmanager/
+参考：
 
-![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.jpg)
+- https://prometheus.io/docs/alerting/latest/alertmanager/
+- https://www.designet.co.jp/ossinfo/alertmanager/
+
+![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
+
+#### ▼ Exporter
+
+PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporter（blackbox-exporter、consul-exporter、process-exporter、graphite-exporter、など）を選ぶ必要がある。
+
+参考：
+
+- https://prometheus.io/docs/instrumenting/exporters/
+- https://openstandia.jp/oss_info/prometheus
+
+#### ▼ PushGateway
+
+PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして機能する。
+
+参考：https://prometheus.io/docs/practices/pushing/
 
 <br>
 
 ### セットアップ
 
-#### ▼ Helm経由
+#### ▼ helmコマンドを用いて
 
 Helmチャートのkube-prometheus-stackチャートをデプロイする。この中にPrometheusが含まれている。
 
@@ -169,16 +180,6 @@ Helmチャートのkube-prometheus-stackチャートをデプロイする。こ�
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
-```
-
-#### ▼ Istio経由
-
-Istioが提供するPrometheusをデプロイする。
-
-```bash
-$ ISTIO_VERSION=1.12
-
-$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_VERSION}/samples/addons/prometheus.yaml
 ```
 
 <br>
@@ -192,15 +193,5 @@ KubernetesやIstioに関する分散トレースの収集/分析/可視化を行
 参考：https://www.jaegertracing.io/docs/1.31/architecture/
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
-
-<br>
-
-### セットアップ
-
-```bash
-$ ISTIO_VERSION=1.12
-
-$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_VERSION}/samples/addons/jaeger.yaml
-```
 
 <br>
