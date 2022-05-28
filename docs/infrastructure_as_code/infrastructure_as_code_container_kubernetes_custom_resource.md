@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】manifest.yaml＠その他のカスタムリソース定義
-description: manifest.yaml＠その他のカスタムリソース定義の知見をまとめました。
+title: 【知見を記録するサイト】カスタムリソース@Kubernetes
+description: カスタムリソース@Kubernetesの知見をまとめました。
 ---
 
-# manifest.yaml＠その他のカスタムリソース定義
+# カスタムリソース@Kubernetes
 
 ## はじめに
 
@@ -13,11 +13,19 @@ description: manifest.yaml＠その他のカスタムリソース定義の知見
 
 <br>
 
-## 01. IngressClassParams
+## 01. カスタムリソース定義
 
 <br>
 
-## 02. SecretProviderClass
+## 02. IngressClassParams
+
+<br>
+
+## 03. Istio
+
+<br>
+
+## 04. SecretProviderClass
 
 ### spec.provider
 

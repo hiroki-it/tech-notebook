@@ -23,7 +23,7 @@ description: GitHub Actions＠DevOpsの知見をまとめました。
 
 ### インストール
 
-```bash
+```yaml
 project
 ├── .github/
 │   └── workflows/
@@ -160,7 +160,7 @@ jobs:
 
 親ファイルの```steps```を別のファイルに切り分け、親ファイルでコールできる。```workflows```ディレクトリ以下に任意のサブディレクトリを用意し、そこに```action```ファイルを配置する。親ファイルでディレクトリを指定すると、```action```ファイルが自動的に読み込まれる。
 
-```bash
+```yaml
 project
 ├── .github/
 │   └── workflows/

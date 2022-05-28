@@ -29,7 +29,7 @@ description: 設計ポリシー＠Helmの知見をまとめました。
 - https://helm.sh/docs/helm/helm_package/
 - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
 
-```bash
+```yaml
 repository/
 ├── chart/
 │   ├── charts/ # 依存する他のチャートを配置する。
@@ -52,7 +52,7 @@ repository/
 
 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
-```bash
+```yaml
 repository/
 ├── chart/
 │   ├── temlaptes/
@@ -74,7 +74,7 @@ repository/
 
 リソース別にチャートを作成する。また、```values```ファイルを配置するディレクトリをルートに配置する。
 
-```bash
+```yaml
 repository/
 ├── kubernetes/
 │   ├── temlaptes/

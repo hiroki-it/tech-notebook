@@ -112,7 +112,7 @@ CMD ["/go/bin/cmd"]
 
 参考：https://github.com/golang-standards/project-layout
 
-```bash
+```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
 ├── bin/
 ├── pkg/

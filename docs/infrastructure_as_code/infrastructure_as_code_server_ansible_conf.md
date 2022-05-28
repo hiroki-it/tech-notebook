@@ -48,7 +48,7 @@ $ pip3 install ansible
 - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
 - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 
-```bash
+```yaml
 repository/
 ├── playbook.yml
 ├── group_vars/

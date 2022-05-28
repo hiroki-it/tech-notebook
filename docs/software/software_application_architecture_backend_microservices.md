@@ -108,7 +108,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 アプリエンジニアとインフラエンジニアの責務を完全に分離する場合、アプリエンジニアはIaCツールの存在を知る必要がない。ただし便宜上、アプリエンジニアはDocker compose使用して開発すると良い。各マイクロサービスに```docker-compose.yml```ファイルを置き、基本的には他のマイクロサービスには依存せずに開発できるようにする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。ただ、マイクロサービス間のネットワークを繋げないと、マイクロサービス間で通信できない。そのため、Docker composeの```external```オプションを使用して、マイクロサービス間のネットワークを接続する。
 
-```bash
+```yaml
 # モノリポジトリの場合
 backend_mono_repository
 ├── src/
@@ -122,7 +122,7 @@ backend_mono_repository
 ...
 ```
 
-```bash
+```yaml
 # モノリポジトリの場合
 frontend_mono_repository
 ├── src/
@@ -140,7 +140,7 @@ frontend_mono_repository
 
 多くのエディタでは、専用の設定ファイルがプロジェクトのルートディレクトリに置かれる。基本的には、他のマイクロサービスには依存せずに開発できるようにする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。そこで、各マイクロサービスにエディタの設定ファイルを置くようにする。
 
-```bash
+```yaml
 # モノリポジトリの場合
 # JetBrains製品をエディタとする場合
 backend_mono_repository
@@ -154,7 +154,7 @@ backend_mono_repository
 ...
 ```
 
-```bash
+```yaml
 # モノリポジトリの場合
 # JetBrains製品をエディタとする場合
 frontend_mono_repository
@@ -176,7 +176,7 @@ frontend_mono_repository
 
 IaCツールにKubernetesを使用した場合を示す。開発環境でKubernetesを稼働させる場合、Skaffoldなどのイメージビルドツールを使うとよい。この時、イメージのビルドのために、アプリケーションリポジトリにあるDockerfileを指定する必要がある。開発環境では同じ階層にリポジトリを置いておき、ビルドツールで相対パスを指定することにより、同階層のアプリケーションリポジトリを参照できるようにする。
 
-```bash
+```yaml
 local_directory/
 ├── mono_repository
 │   ├── qux/
@@ -200,7 +200,7 @@ IaCツールにTerraformを使用した場合を示す。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html
 
-```bash
+```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ
 infrastructure_repository
 ├── modules/

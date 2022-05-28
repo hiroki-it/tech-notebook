@@ -222,7 +222,7 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 
   - データ収集/分析
 
-    - メトリクス収集：kube-state-metrics、process-exporter、Prometheus
+    - メトリクス収集：kube-state-metrics、Exporter、Prometheus
     
     - ログルーティング：Fluentd
     
@@ -232,7 +232,7 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
     
   - アラート
   
-    - アラートのルーティング：prometheus-alertmanager
+    - アラートのルーティング：Alertmanager
   
 
 #### ▼ テスト内容

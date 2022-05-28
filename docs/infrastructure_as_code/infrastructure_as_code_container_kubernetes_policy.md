@@ -21,7 +21,7 @@ description: 設計ポリシー＠Kubernetesの知見をまとめました。
 
 アプリケーションとは異なるリポジトリにて、manifest.yamlファイルを配置する。
 
-```bash
+```yaml
 repository/
 ├── foo.yaml
 ...
@@ -31,7 +31,7 @@ repository/
 
 アプリケーションと同じリポジトリにて、```kubernetes```ディレクトリを作成し、ここにmanifest.yamlファイルを配置する。
 
-```bash
+```yaml
 repository/
 ├── src/ # アプリケーション
 ├── kubernetes/
@@ -49,7 +49,7 @@ repository/
 
 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
-```bash
+```yaml
 repository/
 ├── foo/ # fooサービス
 │   ├── deployment.yaml
@@ -79,7 +79,7 @@ repository/
 
 ディレクトリを作成しない。その代わりに、マイクロサービス別にmanifest.yamlファイルを作成し、関連する全てのKubernetesリソースをこの中で定義する。
 
-```bash
+```yaml
 repository/
 ├── foo.yaml # fooサービス（Deployment、Service、PersistentVolume、...）
 ├── bar.yaml # barサービス

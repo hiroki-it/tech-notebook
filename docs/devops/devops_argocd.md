@@ -100,7 +100,7 @@ description: ArgoCD＠DevOpsの知見をまとめました。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
-```bash
+```yaml
 repository/
 ├── foo/ # fooサービス
 │   └── application.yaml

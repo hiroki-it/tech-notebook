@@ -58,7 +58,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 アプリケーションとは異なるリポジトリにて、tfファイルを配置する。推奨である。
 
-```bash
+```yaml
 repository/
 ├── foo.tf
 ...
@@ -68,7 +68,7 @@ repository/
 
 アプリケーションと同じリポジトリにて、```terraform```ディレクトリを作成し、ここにtfファイルを配置する。非推奨である。
 
-```bash
+```yaml
 repository/
 ├── src/ # アプリケーション
 ├── terraform/
@@ -84,7 +84,7 @@ repository/
 
 実行環境別に、```foo.tfvars```ファイルで値を定義する。
 
-```bash
+```yaml
 repository/
 ├── modules/
 │   ├── route53/ # Route53
@@ -132,7 +132,7 @@ repository/
 
 1つのリソースの設定が対象のリソースごとに異なる場合、冗長性よりも保守性を重視して、リソースに応じたディレクトリに分割する。Lambdaでは、Lambda関数のソースコードをモジュール下で管理する。
 
-```bash
+```yaml
 repository/
 └── modules/
     ├── cloudwatch/ # CloudWatch
@@ -155,7 +155,7 @@ repository/
 
 1つのリソースの設定が実行環境ごとに異なる場合、冗長性よりも保守性を重視して、実行環境に応じたディレクトリに分割する。
 
-```bash
+```yaml
 repository/
 └── modules/
     ├── route53/ # Route53
@@ -179,7 +179,7 @@ repository/
 
 1つのリソースの設定がリージョンごとに異なる場合、冗長性よりも保守性を重視して、リージョンに応じたディレクトリに分割する。
 
-```bash
+```yaml
 repository/
 └── modules/
     └── acm/ # ACM
@@ -191,7 +191,7 @@ repository/
 
 WAFで使用するIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共通して使用できるため、共通セットとしてディレクトリ分割を行う。
 
-```bash
+```yaml
 repository/
 └── modules/
     └── waf/ # WAF
@@ -212,7 +212,7 @@ repository/
 
 ポリシーのためにJSONを定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。なお、```templatefile```メソッドでこれを読みこむ時、```bash```ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
 
-```bash
+```yaml
 repository/
 └── modules/
     ├── ecr/ #ECR
@@ -251,7 +251,7 @@ repository/
 
 TerraformのCI/CDで必要なシェルスクリプトは、```ops```ディレクトリで管理する。
 
-```bash
+```yaml
 repository/
 ├── .circleci/ # CI/CDツールの設定ファイル
 └── ops/ # TerraformのCI/CDの自動化シェルスクリプト

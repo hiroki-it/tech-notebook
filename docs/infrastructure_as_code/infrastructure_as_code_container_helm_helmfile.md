@@ -25,6 +25,7 @@ helmコマンドを宣言的に実行できる。ただし、ArgoCDでも同様�
 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
 
 ```yaml
+repository/
 ├── foo/ # fooサービス
 │   ├── helmfile.d/
 │   │   └── helmfile.yaml
@@ -46,7 +47,8 @@ helmコマンドを宣言的に実行できる。ただし、ArgoCDでも同様�
 
 リリース単位は、Kubernetesリソースとするとよい。
 
-```bash
+```yaml
+repository/
 ├── foo/ # fooサービス
 │   ├── helmfile.d/
 │   │   ├── deployment.yaml

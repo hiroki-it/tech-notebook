@@ -2775,7 +2775,7 @@ CodeDeployを使用してデプロイを行う。
 
 <br>
 
-### プライベートサブネット内のFargateからのアウトバウンド通信
+### プライベートサブネットからのアウトバウンド通信
 
 #### ▼ プライベートサブネットからの通信
 
@@ -2783,7 +2783,7 @@ CodeDeployを使用してデプロイを行う。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
-![ecs_private_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_private_data-plane.png)
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
 
 #### ▼ FargateのIPアドレスが動的である問題
 
@@ -2972,17 +2972,31 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 | ネットワークアドオン             |                                                              |                                                              |
 | コントロールプレーンのログ       |                                                              |                                                              |
 
-#### ▼ ネットワーク
+<br>
 
-EKSでは、EKS外からのインバウンド通信をALBコントローラーで受信し、これをIngressにルーティングする。また、アウトバウンド通信をNAT GatewayやVPCエンドポイントで受信し、EKS外にルーティングする。以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
+### ネットワーク
 
-```
-Pod provisioning timed out (will retry) for pod
-```
+#### ▼ プライベートサブネットへのインバウンド通信
+
+EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をALBコントローラーで受信し、これをIngressを用いてPodにルーティングする。
 
 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
+
+#### ▼ プライベートサブネットからのアウトバウンド通信
+
+EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。このうち2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
+
+参考：
+
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
+
+```
+Pod provisioning timed out (will retry) for pod
+```
 
 <br>
 
