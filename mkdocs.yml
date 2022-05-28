@@ -286,10 +286,10 @@ nav:
                   - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
                   - Minikube: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.md
-                  - 可観測性ツール: infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
                   - カスタムリソース:
                       - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
+                      - 可観測性リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability.md
                       - ■ Istio:
                           - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.md
                           - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.md
