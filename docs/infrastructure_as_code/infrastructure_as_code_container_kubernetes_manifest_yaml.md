@@ -13,11 +13,9 @@ description: manifest.yaml＠Kubernetesの知見をまとめました。
 
 <br>
 
-## 01. Kubernetesのmanifest.yamlファイルとは
+## 01. manifest.yamlファイル＠Kubernetesとは
 
-### 仮想化のIaCとして
-
-#### ▼ Kubernetes
+Kubernetesを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html
 

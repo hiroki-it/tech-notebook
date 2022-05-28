@@ -13,11 +13,9 @@ description: manifest.yaml＠Istioの知見をまとめました。
 
 <br>
 
-## 01. Istioのmanifest.yamlファイルとは
+## 01. manifest.yamlファイル＠Istioとは
 
-### 仮想化のIaCとして
-
-#### ▼ Istio
+Istioを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html
 
@@ -27,7 +25,7 @@ description: manifest.yaml＠Istioの知見をまとめました。
 
 ### インストール
 
-#### ▼ istioctlコマンド経由
+#### ▼ istioctlコマンドを用いて
 
 プロファイルを指定し、Istioリソースをインストールする。
 
@@ -37,7 +35,7 @@ description: manifest.yaml＠Istioの知見をまとめました。
 $ istioctl install --set profile=demo
 ```
 
-#### ▼ IstioOperator経由
+#### ▼ IstioOperatorを用いて
 
 （１）まずは、IstioOperatorをインストールする。IstioOperatorは、デフォルトで```istio-system```にIstioリソースをインストールするようになっている。
 
@@ -81,7 +79,7 @@ istiooperator.install.istio.io/istio-operator created
 
 ### アンインストール
 
-#### ▼ istioctlコマンド経由
+#### ▼ istioctlコマンドを用いて
 
 Istioリソースを全てアンインストールする。
 

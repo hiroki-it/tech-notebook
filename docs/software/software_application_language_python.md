@@ -17,7 +17,7 @@ description: Pythonの知見をまとめました。
 
 ### インストール
 
-#### ▼ yumコマンド経由
+#### ▼ yumリポジトリから
 
 ```bash
 $ yum install -y python3

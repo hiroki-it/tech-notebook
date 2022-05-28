@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】パッケージ＠JavaScript
 
 ### セットアップ
 
-#### ▼ yumコマンド経由
+#### ▼ yumリポジトリから
 
 ```bash
 # リポジトリの作成
@@ -267,7 +267,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 ### セットアップ
 
-#### ▼ apt-getコマンド経由
+#### ▼ aptリポジトリから
 
 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
@@ -275,7 +275,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 $ apt-get install yarn
 ```
 
-#### ▼ npmコマンド経由
+#### ▼ npmレジストリから
 
 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 

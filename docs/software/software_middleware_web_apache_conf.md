@@ -49,7 +49,7 @@ mod_phpモジュールを読み込むことによって、Appサーバーのミ�
 
 ### インストール
 
-#### ▼ aptコマンド経由
+#### ▼ aptリポジトリから
 
 ```bash
 $ apt install apache2

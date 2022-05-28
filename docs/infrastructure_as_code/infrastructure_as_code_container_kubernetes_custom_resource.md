@@ -181,7 +181,10 @@ spec:
 
 カスタムリソースの```spec```キー以下に設定できるキーを設定する。例えば『```message```』というstring型のキーを設定すると、マニフェストファイルの```spec.message```キーに任意の文字列を設定できるようになる。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+参考：
+
+- https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
+- https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -205,7 +208,10 @@ spec:
 
 APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
 
-参考：https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
+参考：
+
+- https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
+- https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1

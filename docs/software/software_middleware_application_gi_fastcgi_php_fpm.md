@@ -52,13 +52,11 @@ PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ
 
 ### インストール
 
-#### ▼ aptコマンド経由
+#### ▼ aptリポジトリから
 
 ```bash
 $ apt install php-fpm
 ```
-
-#### ▼ apt-getコマンド経由
 
 ```bash
 $ apt-get install php-fpm

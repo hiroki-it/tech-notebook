@@ -17,13 +17,13 @@ description: コマンド＠Istioの知見をまとめました。
 
 ### インストール
 
-#### ▼ brewコマンド経由
+#### ▼ brewリポジトリから
 
 ```bash
 $ brew install istioctl
 ```
 
-#### ▼ curlコマンド経由
+#### ▼ GitHubリポジトリから
 
 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
@@ -33,7 +33,7 @@ $ brew install istioctl
 $ cd /Users/hiroki.hasegawa/projects
 ```
 
-（２）インストールする。
+（２）GitHubリポジトリからインストールする。
 
 ```bash
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh

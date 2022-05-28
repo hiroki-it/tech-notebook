@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】可観測性ツール＠Kubernetes
-description: 可観測性ツール＠Kubernetesの知見をまとめました。
+title: 【知見を記録するサイト】可観測性リソース＠カスタムリソース
+description: 可観測性＠カスタムリソースの知見をまとめました。
 ---
 
-# 可観測性ツール＠Kubernetes
+# 可観測性リソース＠カスタムリソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: 可観測性ツール＠Kubernetesの知見をまとめました。
 
 <br>
 
-## 01. よく使うツール一覧
+## 01. よく使う可観測性リソース一覧
 
-よく使う各ツールの責任領域を以下に示す。
+各リソースの責任領域を以下に示す。
 
 | アクション         | cAdvisor | Grafana | Jaeger | Kiali | kube-state-metrics | Prometheus |
 | ------------------ | -------- | ------- | ------ | ----- | ------------------ | ---------- |
@@ -46,7 +46,7 @@ Prometheusで収集されたメトリクスを可視化する。
 
 ### セットアップ
 
-#### ▼ Helm
+#### ▼ helmコマンドを用いて
 
 Helmチャートのkube-prometheus-stackをデプロイする。この中にGrafanaが含まれている。
 
@@ -58,12 +58,14 @@ $ helm repo add prometheus-community https://prometheus-community.github.io/helm
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 ```
 
-#### ▼ Istio経由
+#### ▼ kubectlコマンド
+
+GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをデプロイする。
+
+参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
 ```bash
-$ ISTIO_VERSION=1.12
-
-$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO_VERSION}/samples/addons/grafana.yaml
+$ kubectl apply -f grafana.yaml
 ```
 
 <br>

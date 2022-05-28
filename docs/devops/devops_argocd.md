@@ -185,7 +185,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-#### ▼ argocdコマンド経由
+#### ▼ argocdコマンドを用いて
 
 （７）argocdコマンドをインストールする。
 
@@ -285,7 +285,7 @@ spec:
 
 ### アンインストール
 
-#### ▼ argocdコマンド経由
+#### ▼ argocdコマンドを用いて
 
 ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる。
 
@@ -316,13 +316,13 @@ spec:
 # 〜 中略 〜
 ```
 
-#### ▼ kubectlコマンド経由
+#### ▼ kubectlコマンドを用いて
 
 ArgoCDのApplicationを削除する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
-```
+```bash
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 

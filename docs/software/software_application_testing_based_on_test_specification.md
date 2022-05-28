@@ -217,12 +217,13 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 - 仮想サーバー：AWS EC2（オートスケーリングあり）
 - アプリケーション：Go
 - リバースプロキシ：Nginx
-- オペレーター：prometheus-operator
+- オペレーター：各種Operator
+- サービスメッシュ：Istio
 - 監視
 
   - データ収集/分析
 
-    - メトリクス収集：kube-state-metrics、Exporter、Prometheus
+    - メトリクス収集：kube-state-metrics、各種Exporter、Prometheus
     
     - ログルーティング：Fluentd
     

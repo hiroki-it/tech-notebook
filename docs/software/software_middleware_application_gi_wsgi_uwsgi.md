@@ -35,7 +35,7 @@ description: uWSGI＠ミドルウェアの知見をまとめました。
 
 ### インストール
 
-#### ▼ pipコマンド経由
+#### ▼ pipリポジトリから
 
 ```bash
 $ pip3 install uwsgi

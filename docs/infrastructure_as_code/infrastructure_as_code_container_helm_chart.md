@@ -72,7 +72,7 @@ charts/
 
 ### インストール
 
-#### ▼ aptコマンド経由
+#### ▼ aptリポジトリから
 
 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 

@@ -33,7 +33,7 @@ description: Goの知見をまとめました。
 
 ### インストール
 
-#### ▼ yumコマンド経由
+#### ▼ yumリポジトリから
 
 参考：https://www.cyberithub.com/install-go-on-centos/
 
