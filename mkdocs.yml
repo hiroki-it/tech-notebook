@@ -288,14 +288,11 @@ nav:
                   - Minikube: infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube.md
                   - 可観測性ツール: infrastructure_as_code/infrastructure_as_code_container_kubernetes_observability_tool.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
-              - ■ Istio:
-                  - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_istio_manifest_yaml.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_istio_command.md
-              - ■ Skaffold:
-                  - skaffold.yaml: infrastructure_as_code/infrastructure_as_code_container_skaffold_yaml.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_skaffold_command.md
-              - ■ その他のカスタムリソース定義:
-                    - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_other_crd_manifest_yaml.md
+                  - カスタムリソース:
+                      - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
+                      - ■ Istio:
+                          - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.md
+                          - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.md
               - ■ Helm:
                   - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_helm_command.md
@@ -318,6 +315,9 @@ nav:
       - ArgoCD: devops/devops_argocd.md
       - Capistrano: devops/devops_capistrano.md
       - GitHub Actions: devops/devops_github_actions.md
+      - ■ Skaffold:
+          - skaffold.yaml: devops/devops_skaffold_yaml.md
+          - コマンド: devops/devops_skaffold_command.md
       - ■ CircleCI:
           - config.yml: devops/devops_circleci_config_yml.md
           - orbs: devops/devops_circleci_orbs.md
