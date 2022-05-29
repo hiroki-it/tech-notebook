@@ -102,6 +102,8 @@ Prometheusで収集されたメトリクスを再収集し、Istioの可視化�
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
 
+<br>
+
 ### セットアップ
 
 ```bash

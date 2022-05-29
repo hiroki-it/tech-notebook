@@ -133,7 +133,7 @@ ArgoCDは、デプロイ対象のアプリケーションのSecretを保持す�
 
 参考：
 
-（１）ローカルマシンから本番環境にArgoCDをインストールする場合、```kubetcl```コマンドのコンテキストを間違える可能性がある。そのため、kubectlコマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
+（１）ローカルマシンから本番環境にArgoCDをインストールする場合、kubectlコマンドのコンテキストを間違える可能性がある。そのため、kubectlコマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster

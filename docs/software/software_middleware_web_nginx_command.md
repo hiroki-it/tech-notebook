@@ -27,7 +27,7 @@ $ sudo nginx -c ./custom-nginx.conf
 
 ### reload
 
-nginxプロセスを安全に再起動する。```systemctl```コマンドでも再起動できる。
+nginxプロセスを安全に再起動する。systemctlコマンドでも再起動できる。
 
 ```bash
 $ sudo nginx -s reload

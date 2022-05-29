@@ -78,7 +78,7 @@ spec:
 
 #### ▼ kind
 
-カスタムリソースをAPIからコールするときの宣言名を設定する。例えば『```FooCrd```』という宣言名にすると、マニフェストファイルの```kind```キーで、```FooCrd```というリソース名で使用できるようになる。
+カスタムリソースをAPIからコールするときの宣言名を設定する。例えば『```FooCrd```』という宣言名にすると、マニフェストファイルの```kind```キーで、```FooCrd```というカスタムリソース名で使用できるようになる。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -110,7 +110,7 @@ spec:
 
 #### ▼ singular
 
-kubectlコマンドで使用するリソースの単数形名を設定する。
+kubectlコマンドで使用するカスタムリソースの単数形名を設定する。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -126,7 +126,7 @@ spec:
 
 #### ▼ shortNames
 
-kubectlコマンドで使用するリソースの省略名を設定する。
+kubectlコマンドで使用するカスタムリソースの省略名を設定する。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -225,17 +225,27 @@ spec:
 
 <br>
 
-## 02. IngressClassParams
+## 03. IngressClassParams
+
+### IngressClassParamsとは
+
+外部Ingressコントローラーを使用する場合に、Ingressに渡すパラメーターを設定する。
 
 <br>
 
-## 03. Istio
+## 04. Istio
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.html
 
 <br>
 
-## 04. SecretProviderClass
+## 05. SecretProviderClass
+
+### SecretProviderClassとは
+
+外部Secretストアのデータを参照する場合に、Secretストアのプロバイダーを設定する。
+
+<br>
 
 ### spec.provider
 
@@ -258,7 +268,7 @@ spec:
 
 #### ▼ spec.parametersとは
 
-プロバイダーに応じて、Secretにマウントする外部Secretのデータを設定する。
+プロバイダーに応じて、参照する外部Secretストアのデータを設定する。
 
 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
@@ -278,7 +288,7 @@ spec:
   parameters:
     # AWSのシークレットマネージャーから取得する。
     objects: |
-      - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secret名>"
+      - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secretストア名>"
         objectType: "secretsmanager"
 ```
 

@@ -38,10 +38,10 @@ description: Istio＠仮想化の知見をまとめました。
 
 #### ▼ Proxy
 
-| コンテナ名        | 機能                                                         |
-| ----------------- | ------------------------------------------------------------ |
+| コンテナ名        | 機能                                                                                                            |
+| ----------------- |---------------------------------------------------------------------------------------------------------------|
 | ```istio-proxy``` | Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。<br>参考：https://sreake.com/blog/istio/ |
-| ```istio-init```  | iptablesルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。 |
+| ```istio-init```  | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。                       |
 
 <br>
 
@@ -107,7 +107,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 ### IaC
 
-#### ▼ manifest.yamlファイル
+IstioのIaCについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.html
 

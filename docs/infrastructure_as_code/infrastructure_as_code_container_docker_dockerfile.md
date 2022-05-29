@@ -13,11 +13,9 @@ description: Dockerfile＠Dockerの知見をまとめました。
 
 <br>
 
-## 01. Dockerfileとは
+## 01. Dockerfile＠Dockerとは
 
-### IaCとして
-
-#### ▼ Docker
+Dockerを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
 

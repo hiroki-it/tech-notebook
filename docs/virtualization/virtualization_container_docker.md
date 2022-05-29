@@ -61,7 +61,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 ### IaC
 
-#### ▼ Dockerfile
+DockerのIaCについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html
 

@@ -33,13 +33,34 @@ description: サイバー攻撃＠セキュリティの知見をまとめまし�
 
 #### ▼ パケットフィルタリング型ファイアウォール
 
-  パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルータやNAPTルータが設置されている。これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ。
+  パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルータやNAPTルータが設置されている。
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
 
 **＊例＊**
 
-Win10における設定画面
+Linuxにおけるiptables。```/etc/sysconfig/iptables```ファイルにルールを設定する。```iptables-save```コマンドでこのファイルを作成できる。
+
+参考：https://linuc.org/study/knowledge/540/
+
+```bash
+$ cat /etc/sysconfig/iptables
+
+*filter
+:INPUT DROP [5:300]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [32:3205]
+# 22番ポートと80番ポート宛てのTCPプロトコルの通信を許可する。
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+COMMIT
+```
+
+**＊例＊**
+
+Win10におけるファイアウォール。
+
+参考：https://pc-karuma.net/windows-10-firewall-open-port/
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリングの設定.gif)
 

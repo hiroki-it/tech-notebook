@@ -33,7 +33,7 @@ apiVersion: v1
 
 ## 02-02. kind
 
-作成されるリソースの種類を設定する。
+作成されるKubernetesリソースの種類を設定する。
 
 <br>
 
@@ -70,7 +70,7 @@ IngressがCluster内に1つしか存在しない場合に、IngressClassに設�
 
 ### labels
 
-Kubernetesが、リソースの一意に識別するための情報を設定する。予約ラベルについては、以下のリンクを参考にせよ。
+Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。予約ラベルについては、以下のリンクを参考にせよ。
 
 参考：
 
@@ -613,7 +613,100 @@ spec:
 
 <br>
 
-## 07. Ingress
+## 07. HorizontalPodAutoscaler
+
+### spec.scaleTargetRef
+
+水平スケーリングを紐づけるKubernetesリソースを設定する。
+
+参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+```yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment # Deploymentに水平スケーリングを紐づける。
+    name: foo-deployment
+```
+
+<br>
+
+### spec.maxReplicas
+
+水平スケーリングのスケールアウト時の最大Pod数を設定する。
+
+参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+```yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  maxReplicas: 5
+```
+
+<br>
+
+### spec.minReplicas
+
+水平スケーリングのスケールイン時の最小Pod数を設定する。
+
+参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+```yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  minReplicas: 1
+```
+
+<br>
+
+### spec.metrics
+
+#### ▼ metricsとは
+
+水平スケーリングのトリガーとするメトリクスと、維持されるターゲット値を設定する。
+
+#### ▼ type
+
+| タイプ名       | 説明                                            | メトリクス例                                     |
+| -------------- | ----------------------------------------------- | ------------------------------------------------ |
+| ```Resource``` | リソースメトリクス                              | CPU使用率、メモリ使用率、など                    |
+| ```Pods```     | Podのカスタムメトリクス                         | Queries Per Second、message broker’s queue、など |
+| ```Object```   | Pod以外のKubernetesリソースのカスタムメトリクス | Ingressのメトリクスなど                          |
+| ```External``` | Kubernetes以外の任意のメトリクス                | AWS、GCP、Azureに固有のメトリクス                |
+
+メトリクスの種類を設定する。以下のタイプを設定できる。
+
+参考：
+
+- https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A
+- https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+```yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 60
+```
+
+<br>
+
+## 08. Ingress
 
 ### spec.ingressClassName
 
@@ -674,7 +767,7 @@ spec:
 
 <br>
 
-## 08. IngressClass
+## 09. IngressClass
 
 ### spec.controller
 
@@ -727,7 +820,7 @@ spec:
 
 <br>
 
-## 09. Job
+## 10. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -806,13 +899,13 @@ spec:
 
 <br>
 
-## 10. Node
+## 11. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
 
 <br>
 
-## 11. PersistentVolume
+## 12. PersistentVolume
 
 ### spec.accessModes
 
@@ -1140,7 +1233,7 @@ spec:
 
 <br>
 
-## 12. PersistentVolumeClaim
+## 13. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1166,7 +1259,7 @@ spec:
 
 #### ▼ resourcesとは
 
-要求する仮想ハードウェアのリソースを設定する。
+要求する仮想ハードウェアのKubernetesリソースを設定する。
 
 #### ▼ requests
 
@@ -1208,7 +1301,7 @@ spec:
 
 <br>
 
-## 13. Pod
+## 14. Pod
 
 ### spec.containers
 
@@ -1265,7 +1358,7 @@ spec:
 
 #### ▼ resources
 
-コンテナのCPUとメモリの最小/最大使用量を設定する。Pod内にコンテナが複数ある場合、最小/最大使用量を満たしているかどうかの判定は、これらのコンテナのリソース使用量の合計値に基づくことになる。
+コンテナのハードウェアリソースの最小/最大使用量を設定する。Pod内にコンテナが複数ある場合、最小/最大使用量を満たしているかどうかの判定は、これらのコンテナのハードウェアリソースの使用量の合計値に基づくことになる。
 
 参考：
 
@@ -1292,14 +1385,14 @@ spec:
           memory: 128Mi
 ```
 
-リソースの使用状況によるPodの挙動は以下の通りである。
+ハードウェアリソースの使用状況によるPodの挙動は以下の通りである。
 
-| リソース名  | 単位                                                           | request値以上にPodのリソースが余っている場合 | limit値に達した場合  |
-|--------|--------------------------------------------------------------|-----------------------------|---------------|
-| CPU    | ```m```：millicores（```1```コア = ```1000```ユニット = ```1000```m） | コンテナの負荷が高まれば、自動でスケーリングする。   | 処理がスロットリングする。 |
-| Memory | ```Mi```：mebibyte（```1```Mi = ```1.04858```MB）               | コンテナの負荷が高まれば、自動でスケーリングする。   | Podが削除される。    |
+| ハードウェアリソース名 | 単位                                                           | request値以上にPodのハードウェアリソースが余っている場合 | limit値に達した場合  |
+|-------------|--------------------------------------------------------------|-----------------------------------|---------------|
+| CPU         | ```m```：millicores（```1```コア = ```1000```ユニット = ```1000```m） | コンテナの負荷が高まれば、自動でスケーリングする。         | 処理がスロットリングする。 |
+| Memory      | ```Mi```：mebibyte（```1```Mi = ```1.04858```MB）               | コンテナの負荷が高まれば、自動でスケーリングする。         | Podが削除される。    |
 
-もし最大使用量を設定しない場合、Podが実行されているNodeのリソースに余力がある限り、Podのリソース使用量は上昇し続けるようになる。
+もし最大使用量を設定しない場合、Podが実行されているNodeのハードウェアリソースに余力がある限り、Podのハードウェアリソース使用量は上昇し続けるようになる。
 
 参考：
 
@@ -1699,7 +1792,7 @@ spec:
 
 <br>
 
-## 14. ReplicaController
+## 15. ReplicaController
 
 旧Deployment。非推奨である。
 
@@ -1707,13 +1800,13 @@ spec:
 
 <br>
 
-## 15. Role、ClusterRole
+## 16. Role、ClusterRole
 
 ### rules.apiGroups
 
 #### ▼ apiGroupsとは
 
-resourceで指定するリソースのKubernetes-APIグループを設定する。空文字はコアグループを表す。
+resourceキーで指定するKubernetesリソースのKubernetes-APIグループを設定する。空文字はコアグループを表す。
 
 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
@@ -1732,7 +1825,7 @@ rules:
 
 #### ▼ resourcesとは
 
-操作対象のリソースの認可スコープを設定する。
+操作対象のKubernetesリソースの認可スコープを設定する。
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1750,7 +1843,7 @@ rules:
 
 #### ▼ verbsとは
 
-リソースの操作内容の認可スコープを設定する。
+Kubernetesリソースの操作内容の認可スコープを設定する。
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1765,7 +1858,7 @@ rules:
 
 <br>
 
-## 16. RoleBinding、ClusterRoleBinding
+## 17. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -1831,7 +1924,7 @@ subjects:
 
 <br>
 
-## 17. Secret
+## 18. Secret
 
 ### data
 
@@ -2017,7 +2110,7 @@ stringData:
 
 <br>
 
-## 18. Service
+## 19. Service
 
 ### spec.ports
 
@@ -2244,7 +2337,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 19. ServiceAccount
+## 20. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -2283,7 +2376,7 @@ imagePullSecrets:
 
 <br>
 
-## 20. ServiceEntry
+## 21. ServiceEntry
 
 ### spec.hosts
 
@@ -2343,7 +2436,7 @@ spec:
 
 <br>
 
-## 21. StatefulSet
+## 22. StatefulSet
 
 ### spec.serviceName
 

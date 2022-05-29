@@ -17,7 +17,7 @@ description: Kubernetes＠仮想化の知見をまとめました。
 
 ### 構造
 
-Kubernetesコンポーネントは、リソースから作成されたオブジェクトを操作し、アプリケーションを稼働させる。kubernetesクライアントは、kubectlコマンドをkube-apiserverに送信することにより、Kubernetesを操作できる。
+Kubernetesコンポーネントは、Kubernetesリソースから作成されたオブジェクトを操作し、アプリケーションを稼働させる。kubernetesクライアントは、kubectlコマンドをkube-apiserverに送信することにより、Kubernetesを操作できる。
 
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
@@ -27,7 +27,7 @@ Kubernetesコンポーネントは、リソースから作成されたオブジ�
 
 ### IaC
 
-#### ▼ manifest.yamlファイル
+KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
 
@@ -49,7 +49,7 @@ kub-apiserverとクラウドインフラを仲介し、Kubernetesがクラウド
 
 #### ▼ etcdとは
 
-Clusterの様々な設定値を保持し、冗長化されたリソース間にこれを共有する。Kubernetesに標準で組み込まれているが、別のOSSである。
+Clusterの様々な設定値を保持し、冗長化されたKubernetesリソース間にこれを共有する。Kubernetesに標準で組み込まれているが、別のOSSである。
 
 参考：
 
@@ -64,7 +64,7 @@ Clusterの様々な設定値を保持し、冗長化されたリソース間に�
 
 #### ▼ kube-apiserverとは
 
-kubernetesクライアントにkueneretes-APIを公開する。クライアントがkubectlコマンドを実行すると、kubernetes-APIがコールされ、コマンドに沿ってリソースが操作される。
+kubernetesクライアントにkueneretes-APIを公開する。クライアントがkubectlコマンドを実行すると、Kubernetes-APIがコールされ、コマンドに沿ってKubernetesリソースが操作される。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -108,7 +108,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ▼ kubeletとは
 
-kube-apiserverからコールされる。ワーカーNodeのコンテナランタイムを操作し、Podを作成する。
+ワーカーNode上で稼働し、コンテナランタイムを操作することでPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスの元となるデータをkube-apiserverに提供する。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -120,17 +120,22 @@ kube-apiserverからコールされる。ワーカーNodeのコンテナラン�
 
 #### ▼ kube-proxyとは
 
-ワーカーNode外部からのインバウンド通信をPodにルーティングする。モードごとに、Podの名前解決の方法が異なる。
+![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-参考：https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+iptablesのルールで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+- https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 
 #### ▼ 種類
 
-| モード       | 説明                                                                                                                                              | 補足                                                                                       |
-|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)   | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables  |
+| モード    | 説明                                                         | 補足                                                         |
+| --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables |
 | userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace |
-| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)           | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs      |
+| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs |
 
 #### ▼ その他のプロキシー
 
@@ -210,6 +215,29 @@ manifest.yamlファイルによって量産されたKubernetesリソースのイ
 
 <br>
 
+### DaemonSet
+
+#### ▼ DaemonSetとは
+
+ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、Podを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+
+参考：https://thinkit.co.jp/article/13611
+
+<br>
+
+### Deployment
+
+#### ▼ Deploymentとは
+
+ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Podの個数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+- https://sorarinu.dev/2021/08/kubernetes_01/
+
+<br>
+
 ### Pod
 
 #### ▼ Podとは
@@ -259,7 +287,7 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
-（１）Kubernetesクライアントは、```kubectl```コマンドがを用いて、Podを削除するリクエストをkube-apiserverに送信する。
+（１）Kubernetesクライアントは、kubectlコマンドがを用いて、Podを削除するリクエストをkube-apiserverに送信する。
 
 （２）Podが、Terminating状態になる。
 
@@ -282,16 +310,6 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 
 <br>
 
-### DaemonSet
-
-#### ▼ DaemonSetとは
-
-ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、Podを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
-
-参考：https://thinkit.co.jp/article/13611
-
-<br>
-
 ### StatefulSet
 
 #### ▼ StatefulSetとは
@@ -305,19 +323,6 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
-- https://sorarinu.dev/2021/08/kubernetes_01/
-
-<br>
-
-### Deployment
-
-#### ▼ Deploymentとは
-
-ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Podの個数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
-
-参考：
-
-- https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 - https://sorarinu.dev/2021/08/kubernetes_01/
 
 <br>
@@ -446,7 +451,7 @@ PodのIPアドレスを返却し、Serviceに対するインバウンド通信�
 
 ### Config&Storageリソースとは
 
-リソースの設定データ、機密データ、ボリュームに関する機能を提供する。
+Kubernetesリソースの設定データ、機密データ、ボリュームに関する機能を提供する。
 
 参考：https://thinkit.co.jp/article/13542
 
@@ -726,11 +731,41 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 <br>
 
+### HorizontalPodAutoscaler
+
+#### ▼ HorizontalPodAutoscalerとは
+
+Kubernetesリソースの水平スケーリングを定義する。Metric serverから取得したKubernetesリソースのメトリクス値のうち、指定したメトリクス値とターゲット値の比較に基づいて、Podをスケールイン/スケールアウトさせる。
+
+参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
+
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
+
+#### ▼ 最大Pod数の求め方
+
+オートスケーリング時の現在のPod数は、次の計算式で算出される。算出結果に基づいて、スケールアウト/スケールインが実行される。
+
+参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
+
+```
+(必要な最大Pod数) = (現在のPod数) x (現在のPodのCPU平均使用率) ÷ (現在のPodのCPU使用率のターゲット値)
+```
+
+例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+
+<br>
+
+### VertialPodAutoscaler
+
+#### ▼ HorizontalPodAutoscalerとは
+
+<br>
+
 ## 03-07. カスタムリソース
 
 ### カスタムリソースとは
 
-Kubernetesに標準で備わっていないリソースを提供する。
+Kubernetesに標準で備わっていないKubernetesリソースを提供する。
 
 参考：
 
@@ -743,7 +778,7 @@ Kubernetesに標準で備わっていないリソースを提供する。
 
 #### ▼ SecretProviderClassとは
 
-使用する外部Secretを指定するための機能を提供する。
+外部Secretストアのデータを参照するための機能を提供する。
 
 #### ▼ セットアップ
 
@@ -759,7 +794,7 @@ $ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets
 
 #### ▼ CSIドライバー
 
-SecretProviderClassで定義されたプロバイダーのAPIと通信し、外部Secretのデータを取得する。その後、tmpfとしてVolumeに書き込む。
+SecretProviderClassで定義されたプロバイダーのAPIと通信し、外部Secretのデータを参照する。その後、tmpfとしてVolumeに書き込む。
 
 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
