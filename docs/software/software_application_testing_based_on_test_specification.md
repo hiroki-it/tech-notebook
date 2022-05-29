@@ -208,24 +208,46 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 
 #### ▼ RTO（目標復旧時間）
 
-障害が起こった時に、一定水準の状態に、データをどのくらいまでに復旧させるかの目標値のこと。もしRTOが```1```時間だとすると、```1```時間はデータを復旧できないままになることを許容することになる。
+障害が起こった時に、どの時間までに、データを復旧させるかの目標値のこと。もしRTOが```1```時間だとすると、```1```時間はデータを復旧できないままになることを許容することになる。
 
 参考：https://e-words.jp/w/RTO.html
+
+#### ▼ MTBF：Mean Time Between Failure
+
+特定の障害と次の障害の間の平均稼働時間のこと。
+
+参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
+
+#### ▼ MTTR：Mean Time To Repair
+
+障害が復旧するまでの平均障害時間のこと。目標値のRTOとは異なることに注意する。
+
+参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 #### ▼ 稼働率
 
 システムの実際の稼働時間割合を表す。以下の計算式で算出できる。システムが冗長化されている場合、両方の非稼働率をかけて、全体から引く。
 
+参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
+
+```mathematica
+(稼働率)
+= (動作した時間) ÷ (全体の時間)
 ```
-(稼働率) ＝ (動作した時間) ÷ (全体の時間)
+
+この数式は、以下ように書き換えることができる。
+
+```mathematica
+(稼働率)
+= (MTBF) ÷ (MTBF ＋ MTTR)
 ```
 
 **＊例＊**
 
 システムが冗長化されている例を示す。すでに稼働率は算出されているものとする。両方の非稼働率をかけて、全体から引く。
 
-```
-1-(1-0.81) × (1-0.64) = 0.9316
+```mathematica
+(1 - (1-0.81)) × (1-0.64) = 0.9316
 ```
 
 ![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/稼働率の計算.jpg)

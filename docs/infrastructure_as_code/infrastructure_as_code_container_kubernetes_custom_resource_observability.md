@@ -17,6 +17,8 @@ description: 可観測性＠カスタムリソースの知見をまとめまし�
 
 各リソースの責任領域を以下に示す。
 
+参考：https://landscape.cncf.io/card-mode?category=observability-and-analysis&grouping=category&sort=stars
+
 | アクション         | cAdvisor | Grafana | Jaeger | Kiali | kube-state-metrics | Prometheus |
 | ------------------ | -------- | ------- | ------ | ----- | ------------------ | ---------- |
 | メトリクスの収集   | ✅        |         |        | ✅     | ✅                  | ✅          |
@@ -155,7 +157,7 @@ Prometheusから送信されたアラートをルーティングする。
 
 #### ▼ Exporter
 
-PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporter（blackbox-exporter、consul-exporter、process-exporter、graphite-exporter、など）を選ぶ必要がある。
+PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporter（node-exporter、blackbox-exporter、consul-exporter、process-exporter、graphite-exporter、など）を選ぶ必要がある。
 
 参考：
 

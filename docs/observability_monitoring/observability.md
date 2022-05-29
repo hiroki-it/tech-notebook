@@ -289,21 +289,5 @@ Kubernetes上での実際のセットアップ方法については、以下の�
 
 <br>
 
-### ツール
 
-#### ▼ 種類
 
-参考：https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
-
-| アクション | ツール名        |
-| ---------- | --------------- |
-| 収集       | Datadog、Jaeger |
-| 保管       | -               |
-| 分析       | Datadog、Jaeger |
-| 可視化     | Datadog、Jaeger |
-
-#### ▼ セットアップ
-
-Kubernetes上での実際のセットアップ方法については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resrouce_observability.html

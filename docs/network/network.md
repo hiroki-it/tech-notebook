@@ -237,7 +237,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 #### ▼ 伝送秒数の求め方
 
-```
+```mathematica
 (伝送秒数)
 = データ容量(bit) ÷ スループット(bit/s) × 伝送効率
 ```
