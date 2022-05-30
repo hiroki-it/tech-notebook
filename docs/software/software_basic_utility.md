@@ -421,6 +421,92 @@ $ df -h -m -t
 
 <br>
 
+### dig
+
+#### ▼ オプション
+
+正引きの名前解決を実行する
+
+参考：
+
+- https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
+- https://dev.classmethod.jp/articles/dig-route53-begginer/
+
+```bash
+$ dig yahoo.co.jp 
+
+# Header
+# 各セクションのステータスやフラグが表示される。
+; <<>> DiG 9.10.6 <<>> yahoo.co.jp
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23877 # <--- 『NOERROR』は、正引きが成功したことを表す。
+;; flags: qr rd ra; QUERY: 1, ANSWER: 8, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+
+# Questionセクション
+;; QUESTION SECTION:
+;yahoo.co.jp.                   IN      A # <--- Aレコードを問い合わせたことを表す。
+
+# Answerセクション
+# DNSレコード
+;; ANSWER SECTION:
+yahoo.co.jp.            35      IN      A       182.22.28.252 # <--- 正引きで返却されたIPアドレスを表す。
+yahoo.co.jp.            35      IN      A       182.22.16.251
+yahoo.co.jp.            35      IN      A       183.79.217.124
+yahoo.co.jp.            35      IN      A       183.79.219.252
+yahoo.co.jp.            35      IN      A       183.79.250.123
+yahoo.co.jp.            35      IN      A       182.22.25.124
+yahoo.co.jp.            35      IN      A       183.79.250.251
+yahoo.co.jp.            35      IN      A       182.22.25.252
+
+# 正引きにかかった時間を表す。
+;; Query time: 7 msec
+# 正引きに利用したDNSサーバーを表す。
+# digコマンドのパラメーターでDNSサーバーを指定しない場合、digコマンドの実行元によって、異なるDNSサーバーが利用される。
+;; SERVER: 8.8.8.8#53(8.8.8.8) 
+;; WHEN: Mon May 30 22:33:44 JST 2022
+;; MSG SIZE  rcvd: 168
+
+```
+
+#### ▼ -x
+
+逆引きの名前解決を実行する。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
+
+```bash
+$ dig -x 182.22.28.252
+
+; <<>> DiG 9.10.6 <<>> -x 182.22.28.252
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 9847
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;252.28.22.182.in-addr.arpa.    IN      PTR
+
+# AUTHORITYセクション
+# 権威サーバーを表す。ドメイン名がわかる。
+;; AUTHORITY SECTION:
+28.22.182.in-addr.arpa. 663     IN      SOA     yahoo.co.jp. postmaster.yahoo.co.jp. 2202070000 1800 900 1209600 900
+
+;; Query time: 7 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Mon May 30 22:47:07 JST 2022
+;; MSG SIZE  rcvd: 113
+```
+
+
+
+<br>
+
 ### du
 
 #### ▼ -s

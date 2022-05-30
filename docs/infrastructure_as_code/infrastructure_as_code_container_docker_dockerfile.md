@@ -224,6 +224,10 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 参考：https://docs.docker.com/engine/reference/builder/#from
 
+```dockerfile
+FROM python:latest-slim
+```
+
 #### ▼ イメージレジストリの指定
 
 指定できるイメージレジストリの例と記法は以下の通りである。
@@ -233,6 +237,18 @@ OS上のコマンド処理で展開できる変数を定義できる。
 | DockerHub          | ```php:8.0-fpm```                                                                                            | https://hub.docker.com/_/php                                 |
 | クラウドプロバイダー（パブリック）  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                      |
 | クラウドプロバイダー（プライベート） | ECRプライベートレジストリの場合：<br>```<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
+
+#### ▼ CPUアーキテクチャの指定
+
+イメージの対応するCPUアーキテクチャを設定する。ただし、DockerがマシンのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
+
+参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
+
+```dockerfile
+FROM --platform=linux/amd64 python:latest-slim
+```
+
+
 
 <br>
 

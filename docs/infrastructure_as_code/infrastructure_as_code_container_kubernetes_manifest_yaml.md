@@ -708,6 +708,29 @@ spec:
 
 ## 08. Ingress
 
+### annotations
+
+#### ▼ annotationsとは
+
+外部Ingressを使用する場合に、オプションを設定する。
+
+#### ▼ ALB Ingressを使用する場合
+
+参考：
+
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
+- https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
+
+| 項目                                            | 説明                                                         |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPS通信を受け付ける場合に、SSL証明書のARNを設定する。 |
+| ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
+| ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
+| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
+| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。                 |
+
+<br>
+
 ### spec.ingressClassName
 
 #### ▼ ingressClassNameとは

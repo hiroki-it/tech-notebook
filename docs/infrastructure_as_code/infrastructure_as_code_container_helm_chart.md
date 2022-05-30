@@ -40,7 +40,7 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
 - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
-```bash
+```yaml
 charts/
 ├── index.yaml
 ├── foo-0.1.2.tgz

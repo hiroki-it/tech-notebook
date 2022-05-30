@@ -83,20 +83,26 @@ repository/
 
 ### environments
 
-もし、```releases.values```キーに```values.yaml.gotmpl```ファイルを設定している場合、これの変数として値を渡す。
+環境名のリストとして機能し、```helmfile```コマンド時に```helmfile.yaml```ファイル内に環境名を渡せる。
 
 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
 ```yaml
 environments:
-  - prd:
-    - values: prd-values.yaml
-  - dev:
-    - values: dev-values.yaml
+  dev:
+  prd:
 
 releases:
-  - values:
-    - values.yaml.gotmpl
+  - name: foo
+    chart: foo-chart
+    version: 1.0.0
+    values:
+      - {{ .Environment.Name }}-values.yaml
+```
+
+```bash
+# 環境名を渡す。
+$ helmfile -e dev apply
 ```
 
 <br>
@@ -114,7 +120,7 @@ releases:
 
 #### ▼ namespace
 
-チャートをリリースする名前空間を設定する。
+チャートをリリースする名前空間を設定する。各マニフェストファイルで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。ただし、マニフェストファイル側だけしか見ていないと、名前空間が指定されていないように見えるので、注意が必要である。
 
 ```yaml
 releases:
@@ -205,7 +211,7 @@ repositories:
 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
-$ helmfile <コマンド>
+$ helmfile <サブコマンド>
 ```
 
 #### ▼ -e
@@ -285,5 +291,17 @@ $ helmfile diff
 
 ```bash
 $ helmfile sync
+```
+
+<br>
+
+### template
+
+#### ▼ templateとは
+
+全てのリリースに関して、```helm template```コマンドを実行する。
+
+```bash
+$ helmfile template
 ```
 

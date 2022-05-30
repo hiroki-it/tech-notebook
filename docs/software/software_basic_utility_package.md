@@ -463,13 +463,64 @@ $ supervisorctl restart <常駐プロセス名>
 
 参考：http://supervisord.org/running.html#supervisorctl-actions
 
-```
+```bash
 $ supervisorctl update
 ```
 
 <br>
 
-## 05. systemctl：system control（旧service）
+## 05. sops
+
+### インストール
+
+#### ▼ brewリポジトリから
+
+```bash
+$ brew install sops
+```
+
+<br>
+
+### ```.sops.yaml```ファイル
+
+コマンドのパラメーターを定義する。
+
+参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
+
+```yaml
+creation_rules:
+  - path_regex: /foo/foo.yaml
+    kms: "arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+  - path_regex: /bar/.*\.yaml # 再帰的に指定できる。
+    kms: "arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+```
+
+<br>
+
+### サブコマンド無し
+
+#### ▼ -d
+
+YAMLファイル/JSONファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+
+```bash
+sops -e <復号前のYAMLファイル/JSONファイル> > <復号後のYAMLファイル/JSONファイル>
+```
+
+#### ▼ -e
+
+暗号化ルールに基づいて、YAMLファイル/JSONファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+
+```bash
+# AWS KMSをルールとして使用する。
+$ export SOPS_KMS_ARN="arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+
+$ sops -e <暗号化前のYAMLファイル/JSONファイル> > <暗号化後のYAMLファイル/JSONファイル>
+```
+
+<br>
+
+## 06. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
@@ -595,7 +646,7 @@ $ sudo systemctl stop nginx
 
 <br>
 
-## 06. tcpdump
+## 07. tcpdump
 
 ### インストール
 

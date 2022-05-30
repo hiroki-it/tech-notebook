@@ -19,7 +19,7 @@ description: コマンド@Gitの知見をまとめました。
 
 #### ▼ ```clone <HTTPS接続>```
 
-一番、クローンの速度が速く、コマンドの引数も簡単。
+Basic認証でGitHubにログインし、クローンする。GitHubのユーザー名とパスワードが必要になる。
 
 ```bash
 $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
@@ -27,7 +27,7 @@ $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 
 #### ▼ ```clone <SSH接続>```
 
-サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
+SSH接続でGitHubにログインし、クローンする。GitHubの自身の公開鍵を登録する必要がある。サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
 
 ```bash
 $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git

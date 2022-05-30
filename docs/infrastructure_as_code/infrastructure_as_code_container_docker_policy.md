@@ -48,9 +48,20 @@ description: 設計ポリシー＠Dockerの知見をまとめました。
 
 #### ▼ 対応できるCPUアーキテクチャの種類
 
-Dockerは全てのマシンで稼働できるわけではなく、イメージごとに対応できるCPUアーキテクチャ（AMD系、ARM系、など）がある。同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。例えば、MacBook 2020 にはIntel、またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため、ARMに対応したイメージを選択する必要がある。ただし、イメージがOSのCPUアーキテクチャに対応しているかどうかを開発者が気にする必要はなく、```docker pull```時に、OSのCPUアーキテクチャに対応したイメージが自動的に選択されるようになっている。
+Dockerは全てのマシンで稼働できるわけではなく、イメージごとに対応できるCPUアーキテクチャ（AMD系、ARM系、など）がある。同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。例えば、MacBook 2020 にはIntel、またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため、ARMに対応したイメージを選択する必要がある。ただし、イメージがOSのCPUアーキテクチャに対応しているかどうかを開発者が気にする必要はなく、```docker pull```時に、OSのCPUアーキテクチャに対応したイメージが自動的に選択されるようになっている。コンテナの現在のCPUアーキテクチャは、```docker inspect```コマンドで確認できる。
 
 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+
+```bash
+$ docker inspect <コンテナ名>
+{
+    # 〜 中略 〜
+ 
+        "Architecture": "arm64",
+        
+    # 〜 中略 〜
+}
+```
 
 #### ▼ バージョン
 

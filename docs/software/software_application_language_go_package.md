@@ -96,8 +96,8 @@ replace github.com/hiroki-hasegawa/foo-repository => /
 
 また、ルートディレクトリだけでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
 
-```bash
-foo-repository/
+```yaml
+repository/
 ├── cmd/
 │   └── hello.go
 │ 

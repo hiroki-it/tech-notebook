@@ -52,21 +52,21 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 #### ▼ installとは
 
-チャートなどを指定し、Kubernetesリソースとしてデプロイする。チャートを指定する以外にも、指定方法には種類がある。
+チャートなどを指定し、Kubernetesリソースとしてデプロイする。チャートへのパスを指定する以外にも、指定方法には種類がある。
 
 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
-$ helm install <リリース名> <チャート>
+$ helm install <リリース名> <チャートへのパス>
 ```
 
-| パラメーター                                         | 例                                                               | 補足                                                                                                      |
-|------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| チャートへのパス                                       | ```./foo-chart```                                               |                                                                                                         |
-| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                     |
-| チャートリポジトリURL                                   | ```https://example.com/foo-chart```                             |                                                                                                         |
-| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                         |
-| チャートアーカイブへのパス                                  | ```./foo-chart-1.0.0.tgz```                                     | ```values```ファイルを用いる場合、```values```ファイルはチャートアーカイブの外にある必要がある。。参考：https://helm.sh/docs/helm/helm_install/ |
+| パラメーター                                                 | 例                                                           | 補足                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| チャートへのパス                                             | ```./foo-chart```                                            |                                                              |
+| ```<チャートレジストリ名>/<チャートリポジトリ名>```          | ```foo-registry/foo-repository```                            | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b       |
+| チャートリポジトリURL                                        | ```https://example.com/foo-chart```                          |                                                              |
+| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                              |
+| チャートアーカイブへのパス                                   | ```./foo-chart-1.0.0.tgz```                                  | ```values```ファイルを用いる場合、```values```ファイルはチャートアーカイブの外にある必要がある。<br>参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --dry-run
 
@@ -84,7 +84,7 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した```values```ファイル使用して、```helm install```コマンドを実行する。
+指定した```values```ファイル使用して、```helm install```コマンドを実行する。チャートのルートパスに『```values.yaml```』の名前でファイルが存在している場合、自動的に読み込まれるため、このオプションは不要である。これ以外の名前の場合は、オプションによる```values```ファイルの指定が必要になる。
 
 参考：https://helm.sh/docs/helm/helm_install/#options
 
