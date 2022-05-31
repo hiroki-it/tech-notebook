@@ -460,9 +460,12 @@ spec:
 
 #### ▼ replicasとは
 
-Podの複製数を設定する。
+Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+参考：
+
+- https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+- https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 ```yaml
 apiVersion: apps/v1
@@ -470,7 +473,7 @@ kind: Deployment
 metadata:
   name: foo-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: foo

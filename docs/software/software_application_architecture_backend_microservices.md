@@ -741,6 +741,3 @@ JWTを生成する認証マイクロサービスを1つだけ配置し、Cookie�
 マイクロサービス間で分散してしまう各ログを、一意なIDで紐付ける方法。
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
-
-
-

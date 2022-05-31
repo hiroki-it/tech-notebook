@@ -177,7 +177,7 @@ kind: Deployment
 metadata:
   name: foo-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: foo-pod

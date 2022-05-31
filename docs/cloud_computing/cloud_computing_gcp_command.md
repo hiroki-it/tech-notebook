@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】GCP SDK＠GCP
-description: GCP SDK＠GCPの知見をまとめました。
+title: 【知見を記録するサイト】コマンド＠GCP
+description: コマンド＠GCPの知見をまとめました。
 ---
 
-# GCP SDK＠GCP
+# コマンド＠GCP
 
 ## はじめに
 
@@ -21,9 +21,32 @@ description: GCP SDK＠GCPの知見をまとめました。
 
 GCPアカウントの認証を行う。
 
+#### ▼ application-default login
+
+GCP CLIによるGCPリソースへのアクセスを認証するために使用する。```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、認証情報を定義する。また、これ使用してGCPにログインする。```~/.config/gcloud/application_default_credentials.json```ファイルは一つのアカウントの認証情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
+
+参考：https://christina04.hatenablog.com/entry/gcp-auth
+
+```bash
+$ gcloud auth application-default login
+```
+
+```bash
+# application_default_credentials.jsonファイル
+{
+  "client_id": "***.apps.googleusercontent.com",
+  "client_secret": "***",
+  "quota_project_id": "***",
+  "refresh_token": "***",
+  "type": "authorized_user"
+}
+```
+
 #### ▼ login
 
-GoogleアカウントGCPアカウントを連携する。コマンドを実行すると、Googleアカウントとの連携のため、Googleへのリダイレクトが発生する。
+GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
+
+参考：https://christina04.hatenablog.com/entry/gcp-auth
 
 ```bash
 $ gcloud auth login
@@ -35,11 +58,11 @@ $ gcloud auth login
 
 #### ▼ config
 
-GCP SDKの認証時のデフォルト値を設定する。
+認証時のデフォルト値を設定する。
 
 #### ▼ set
 
-GCP SDKの特定の項目のデフォルト値を設定する。
+認証の特定の項目のデフォルト値を設定する。
 
 ```bash
 $ gcloud config set project <プロジェクト名>
@@ -57,7 +80,7 @@ Updated property [compute/region].
 
 #### ▼ initとは
 
-GCP SDKの認証時のデフォルト値を対話方式で設定する。
+認証時のデフォルト値を対話方式で設定する。
 
 ```bash
 $ gcloud init

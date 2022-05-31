@@ -394,6 +394,18 @@ type: application
 version: 1.0.0
 ```
 
+#### ▼ values
+
+チャートに渡せるパラメーターをvaluesファイルとして表示する。valuesファイル本体は、チャートリポジトリで閲覧できる。
+
+参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
+
+```bash
+$ helm show values <チャート名>
+
+# valuesファイルが表示される。
+```
+
 <br>
 
 ### template

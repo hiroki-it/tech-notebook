@@ -3012,6 +3012,78 @@ Pod provisioning timed out (will retry) for pod
 
 <br>
 
+### ALB Ingress Controller
+
+#### ▼ セットアップ
+
+（１）ローカルマシンにIAMポリシーのJSONファイルをダウンロードする。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/aws-load-balancer-controller.html
+
+```bash
+$ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json
+```
+
+（２）JSONファイルを使用して、IAMポリシーを作成する。
+
+```bash
+$ aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json
+```
+
+（４）IAM Open ID Connect providerをEKSに紐づける。
+
+```bash
+$ eksctl utils associate-iam-oidc-provider \
+    --region=ap-northeast-1 \
+    --cluster=foo-eks-cluster \
+    --approve
+    
+2022-05-30 23:39:04 [ℹ]  eksctl version 0.96.0
+2022-05-30 23:39:04 [ℹ]  using region ap-northeast-1
+2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
+```
+
+（５）ServiceAccountを作成する。
+
+```bash
+$ eksctl create iamserviceaccount \
+    --cluster=foo-eks-cluster \
+    --namespace=kube-system \
+    --name=aws-load-balancer-controller \
+    --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+    --override-existing-serviceaccounts \
+    --approve
+```
+
+（６）指定したリージョンにALB Ingressコントローラーをデプロイする。
+
+```bash
+# 東京リージョンにALB Ingressコントローラーをデプロイする場合
+$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \           
+    -n kube-system \
+    --set clusterName=foo-eks-cluster \
+    --set serviceAccount.create=false \
+    --set serviceAccount.name=aws-load-balancer-controller \
+    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
+ 
+AWS Load Balancer controller installed!
+```
+
+（７）ALB Ingressコントローラーがデプロイされたことを確認する。ALB Ingressを構築すためには、以下の条件を満たす必要がある。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+
+```bash
+$ kubectl get deployment -n kube-system aws-load-balancer-controller
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+aws-load-balancer-controller   0/2     2            0           22m
+```
+
+<br>
+
 ### デバッグ
 
 #### ▼ ダッシュボード

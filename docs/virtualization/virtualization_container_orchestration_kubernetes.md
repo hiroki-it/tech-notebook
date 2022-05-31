@@ -219,9 +219,13 @@ manifest.yamlファイルによって量産されたKubernetesリソースのイ
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、Podを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 参考：https://thinkit.co.jp/article/13611
+
+#### ▼ Pod数の固定
+
+DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
 
 <br>
 
@@ -229,12 +233,18 @@ manifest.yamlファイルによって量産されたKubernetesリソースのイ
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Podの個数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Cluster内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 - https://sorarinu.dev/2021/08/kubernetes_01/
+
+#### ▼ Pod数の維持
+
+Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
+
+参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 <br>
 

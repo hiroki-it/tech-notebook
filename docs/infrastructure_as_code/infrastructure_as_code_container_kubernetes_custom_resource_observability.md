@@ -48,9 +48,20 @@ Prometheusで収集されたメトリクスを可視化する。
 
 ### セットアップ
 
-#### ▼ helmコマンドを用いて
+#### ▼ チャートリポジトリから
 
-Helmチャートのkube-prometheus-stackをデプロイする。この中にGrafanaが含まれている。
+最小構成をインストールする場合、grafanaチャートのみをインストールする。
+
+参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
+
+```bash
+$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm repo update
+
+$ helm install <リリース名> grafana/grafana
+```
+
+Prometheusと連携しやすくする場合は、Helmチャートのkube-prometheus-stackチャートをインストールする。このチャートはprometheusのチャートの他、grafanaチャートなどに依存しており、kube-prometheus-stackチャートの```values```ファイルがgrafana```values```ファイルを上書きするようになっている。
 
 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
@@ -60,7 +71,7 @@ $ helm repo add prometheus-community https://prometheus-community.github.io/helm
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 ```
 
-#### ▼ kubectlコマンド
+#### ▼ ドキュメントから
 
 GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをデプロイする。
 
@@ -174,7 +185,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 ### セットアップ
 
-#### ▼ helmコマンドを用いて
+#### ▼ チャートリポジトリから
 
 Helmチャートのkube-prometheus-stackチャートをデプロイする。この中にPrometheusが含まれている。
 
