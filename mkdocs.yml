@@ -251,7 +251,8 @@ nav:
               - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
               - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
               - コスト管理: cloud_computing/cloud_computing_aws_cost_management.md
-
+      - ■ GCP:
+          - コマンド: cloud_computing/cloud_computing_gcp_command.md
   - 📦 仮想化:
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ:
