@@ -151,14 +151,15 @@ nav:
               - ■ フロントエンド:
                   - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
           - ■ アプリケーション間連携:
-              - JSON: software/software_application_collaboration_json.md
               - アプリケーション間通信: software/software_application_collaboration_communication.md
               - ■ RESTful-API:
                   - RESTful-API: software/software_application_collaboration_api_restful.md
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
+              - gRPC: software/software_application_collaboration_grpc.md
           - ■ 言語:
               - 言語の種類: software/software_application_language_type.md
               - 言語別の処理方式: software/software_application_language_process_mode.md
+              - データ記述言語: software/software_application_language_data_description_language.md
               - ■ PHP:
                   - PHP: software/software_application_language_php.md
                   - コマンド: software/software_application_language_php_command.md
