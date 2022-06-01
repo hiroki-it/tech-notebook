@@ -225,7 +225,7 @@ title: 【知見を記録するサイト】目次
 
 ### GCP
 
-* [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_commandi.html)
+* [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_command.html)
 
 <br>
 
