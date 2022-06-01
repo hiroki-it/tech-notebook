@@ -44,7 +44,7 @@ RPCフレームワークの一つで、プロトコルバッファーを用い�
 // protoファイルの構文のバージョンを設定する。
 syntax = "proto3";
 
-// pbファイルで自動生成される時のパッケージ名
+// pb.goファイルで自動生成される時のパッケージ名
 package foo;
 
 // クライアント側からのリモートプロシージャーコール時に渡す引数を定義する。
@@ -59,7 +59,7 @@ service FooService {
 }
 ```
 
-#### ▼ pbファイル
+#### ▼ pb.goファイル
 
 事前に用意した```proto```ファイルを使用して、```pb.go```ファイルを自動生成する。```pb.go```ファイルには、gRPCを使用する上で必要な構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
@@ -69,7 +69,7 @@ service FooService {
 - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 ```bash
-$ protoc ./foo/foo.proto　--go_out=plugins=grpc:foo 
+$ protoc ./foo/foo.proto --go_out=plugins=grpc:foo 
 
 # foo.pb.goファイルが生成される。
 ```
@@ -130,7 +130,7 @@ func main() {
     // gRPCサーバーを作成する。
     grpcServer := grpc.NewServer()
 
-    // pbファイルで自動生成された関数を用いて、goサーバーをgRPCサーバーとして登録する。
+    // pb.goファイルで自動生成された関数を用いて、goサーバーをgRPCサーバーとして登録する。
     // goサーバーがリモートプロシージャーコールを受信できるようになる。
     pb.RegisterFooServiceServer(grpcServer, &Server{})
 
@@ -141,7 +141,7 @@ func main() {
 }
 ```
 
-#### ▼  クライアント
+### クライアント側
 
 gRPCサーバーのリモートプロシージャーコールを実行する。
 
@@ -184,3 +184,4 @@ func main() {
 }
 ```
 
+<br>
