@@ -297,7 +297,7 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
-（１）Kubernetesクライアントは、kubectlコマンドがを用いて、Podを削除するリクエストをkube-apiserverに送信する。
+（１）Kubernetesクライアントは、kubectlコマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
 （２）Podが、Terminating状態になる。
 

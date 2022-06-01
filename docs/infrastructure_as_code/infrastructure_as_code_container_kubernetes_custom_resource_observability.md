@@ -48,7 +48,7 @@ Prometheusで収集されたメトリクスを可視化する。
 
 ### セットアップ
 
-#### ▼ チャートリポジトリから
+#### ▼ grafanaチャートリポジトリから
 
 最小構成をインストールする場合、grafanaチャートのみをインストールする。
 
@@ -61,7 +61,9 @@ $ helm repo update
 $ helm install <リリース名> grafana/grafana
 ```
 
-Prometheusと連携しやすくする場合は、Helmチャートのkube-prometheus-stackチャートをインストールする。このチャートはprometheusのチャートの他、grafanaチャートなどに依存しており、kube-prometheus-stackチャートの```values```ファイルがgrafana```values```ファイルを上書きするようになっている。
+#### ▼ kube-prometheus-stackチャートリポジトリから
+
+Prometheusと連携しやすくする場合は、Helmチャートのkube-prometheus-stackチャートをインストールする。
 
 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
@@ -71,6 +73,64 @@ $ helm repo add prometheus-community https://prometheus-community.github.io/helm
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 ```
 
+Grafanaのダッシュボードは、ConfigMapでコード化できる。このチャートはprometheusのチャートの他、grafanaチャートなどに依存している。grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェストファイル化を制御する。デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
+
+参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+
+```yaml
+# grafanaチャートのvaluesファイル
+  dashboards:
+    enabled: false
+    SCProvider: true
+    label: grafana_dashboard
+    labelValue: null
+
+    # 中略
+
+    searchNamespace: null
+```
+
+また、これに依存するkube-prometheus-stackの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
+
+```yaml
+# kube-prometheus-stackチャート
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      
+      # 中略
+
+    datasources:
+
+      # 中略
+
+      label: grafana_datasource
+      labelValue: "1"
+```
+
+これにより、```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストファイルから作成したダッシュボードは、GUIからは削除できないようになっており。
+
+参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-grafana-dashboard
+  labels:
+    grafana_dashboard: "1"
+data:
+  foo.json: |-
+  
+  # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
+  
+```
+
+
+
 #### ▼ ドキュメントから
 
 GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをデプロイする。
@@ -79,26 +139,6 @@ GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.y
 
 ```bash
 $ kubectl apply -f grafana.yaml
-```
-
-<br>
-
-### manifest.yamlファイル
-
-#### ▼ ConfigMap
-
-ダッシュボードを設定する。ただ、ゼロから実装するのは大変である。そこで、まずはGrafanaのGUI版でダッシュボードを作成し、これからエクスポートしたJSONファイルを組み込むようにする。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: foo-grafana-dashboard
-data:
-  foo.json: |-
-  
-  # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
-  
 ```
 
 <br>

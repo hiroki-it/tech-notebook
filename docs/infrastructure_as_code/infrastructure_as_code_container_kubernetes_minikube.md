@@ -220,7 +220,7 @@ Minikubeのプラグインを操作する。
 
 **＊例＊**
 
-開発環境専用のIngressコントローラーとして、NginxIngressコントローラーを有効化するかどうかを設定する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
+開発環境専用のIngressコントローラーとして、Nginx Ingressコントローラーを有効化するかどうかを設定する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 

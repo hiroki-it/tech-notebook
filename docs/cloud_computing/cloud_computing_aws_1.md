@@ -2980,7 +2980,7 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 #### ▼ プライベートサブネットへのインバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をALBコントローラーで受信し、これをIngressを用いてPodにルーティングする。
+EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をALBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
 
 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
@@ -3012,7 +3012,7 @@ Pod provisioning timed out (will retry) for pod
 
 <br>
 
-### ALB Ingress Controller
+### AWS LB Controller
 
 #### ▼ セットアップ
 
@@ -3057,10 +3057,10 @@ $ eksctl create iamserviceaccount \
     --approve
 ```
 
-（６）指定したリージョンにALB Ingressコントローラーをデプロイする。
+（６）指定したリージョンにAWS LBコントローラーをデプロイする。
 
 ```bash
-# 東京リージョンにALB Ingressコントローラーをデプロイする場合
+# 東京リージョンにAWS LBコントローラーをデプロイする場合
 $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \           
     -n kube-system \
     --set clusterName=foo-eks-cluster \
@@ -3071,7 +3071,7 @@ $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 AWS Load Balancer controller installed!
 ```
 
-（７）ALB Ingressコントローラーがデプロイされたことを確認する。ALB Ingressを構築すためには、以下の条件を満たす必要がある。
+（７）AWS LBコントローラーがデプロイされたことを確認する。ALB Ingressを構築すためには、以下の条件を満たす必要がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
 

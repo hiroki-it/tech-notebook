@@ -25,7 +25,7 @@ Istioを宣言的に定義し、コンテナのプロビジョニングを行う
 
 ### インストール
 
-#### ▼ istioctlコマンドを用いて
+#### ▼ istioctlコマンドを使用して
 
 プロファイルを指定し、Istioリソースをインストールする。
 
@@ -35,7 +35,7 @@ Istioを宣言的に定義し、コンテナのプロビジョニングを行う
 $ istioctl install --set profile=demo
 ```
 
-#### ▼ IstioOperatorを用いて
+#### ▼ IstioOperatorを使用して
 
 （１）まずは、IstioOperatorをインストールする。IstioOperatorは、デフォルトで```istio-system```にIstioリソースをインストールするようになっている。
 
@@ -79,7 +79,7 @@ istiooperator.install.istio.io/istio-operator created
 
 ### アンインストール
 
-#### ▼ istioctlコマンドを用いて
+#### ▼ istioctlコマンドを使用して
 
 Istioリソースを全てアンインストールする。
 

@@ -66,7 +66,7 @@ $ helm install <リリース名> <チャートへのパス>
 | ```<チャートレジストリ名>/<チャートリポジトリ名>```          | ```foo-registry/foo-repository```                            | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b       |
 | チャートリポジトリURL                                        | ```https://example.com/foo-chart```                          |                                                              |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                              |
-| チャートアーカイブへのパス                                   | ```./foo-chart-1.0.0.tgz```                                  | ```values```ファイルを用いる場合、```values```ファイルはチャートアーカイブの外にある必要がある。<br>参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                   | ```./foo-chart-1.0.0.tgz```                                  | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブの外にある必要がある。<br>参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --dry-run
 
@@ -174,7 +174,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してデプロイしたリソースの一覧を表示する。
+Helmを使用してデプロイしたリリースの一覧を表示する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -182,7 +182,7 @@ Helmを使用してデプロイしたリソースの一覧を表示する。
 $ helm list
 
 NAME         VERSION   UPDATED                   STATUS    CHART
-<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-1.0.0
+<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-1.0.0 # <-- チャートのバージョンがわかる。
 ```
 
 <br>

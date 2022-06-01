@@ -280,7 +280,53 @@ define関数で定義した文字列をそのまま出力する。template関数
 
 <br>
 
-## 06. 関数
+## 06. 変数
+
+### Values
+
+#### ▼ Valuesとは
+
+チャートのルートパスにある```values.yaml```ファイル、またはhelmコマンドで指定した任意の```values```ファイルの値を出力する。
+
+```yaml
+# values.yamlファイル
+labels:
+  foo: FOO
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+  labels:
+    foo: {{ .Values.labels.foo }}
+```
+
+#### ▼ metadataキーで使用する場合の注意点
+
+マニフェストファイルの```metadata```キーの値には文字列しか設定できない。```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。そのため、metadataキーの値にint型を出力しようとしてエラーになる。int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うとよい。
+
+参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+
+```yaml
+# values.yamlファイル
+labels:
+  foo: "1" # int型で出力しようとする。
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+  labels:
+    foo: "{{ .Values.labels.foo }}" # int型にならないように、ダブルクオーテーションで囲う。
+```
+
+<br>
+
+## 07. 関数
 
 ### ドット
 

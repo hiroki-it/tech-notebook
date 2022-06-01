@@ -30,19 +30,19 @@ repository/
 │   ├── helmfile.d/
 │   │   └── helmfile.yaml
 │   │
-│   └── values.yaml
+│   └── chart/ # チャート
 │
 ├── bar/ # barサービス
 │   ├── helmfile.d/
 │   │   └── helmfile.yaml
 │   │
-│   └── values.yaml
+│   └── chart/ # チャート
 │
 └── baz/ # bazサービス
     ├── helmfile.d/
     │   └── helmfile.yaml
     │
-    └── values.yaml
+    └── chart/ # チャート
 ```
 
 リリース単位は、Kubernetesリソースとするとよい。
@@ -56,7 +56,7 @@ repository/
 │   │   ├── persistent-volume.yaml
 │   │   └── persistent-volume-claim.yaml
 │   │
-│   └── values.yaml
+│   └── chart/ # チャート
 │
 ├── bar/ # barサービス
 │   ├── helmfile.d/
@@ -65,7 +65,7 @@ repository/
 │   │   ├── persistent-volume.yaml
 │   │   └── persistent-volume-claim.yaml
 │   │
-│   └── values.yaml
+│   └── chart/ # チャート
 │
 └── baz/ # bazサービス
     ├── helmfile.d/
@@ -74,7 +74,7 @@ repository/
     │   ├── persistent-volume.yaml
     │   └── persistent-volume-claim.yaml
     │
-    └── values.yaml
+    └── chart/ # チャート
 ```
 
 <br>
@@ -246,6 +246,22 @@ $ helmfile -f helmfile.yaml <コマンド>
 
 ```bash
 $ helmfile apply
+
+Upgrading release=foo-release, chart=./charts/foo
+Release "foo-release" has been upgraded. Happy Helming!
+NAME: foo-release
+LAST DEPLOYED: Wed Jun  1 13:53:57 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^foo-release$
+foo-release 2022-06-01 13:53:57.271186378 +0900 JST deployed foo-release-0.0.1 0.0.1      
+
+UPDATED RELEASES:
+NAME                CHART                VERSION
+foo-release         ./charts/foo         0.0.1
 ```
 
 <br>
@@ -304,4 +320,6 @@ $ helmfile sync
 ```bash
 $ helmfile template
 ```
+
+<br>
 

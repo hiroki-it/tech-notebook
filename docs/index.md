@@ -95,16 +95,17 @@ title: 【知見を記録するサイト】目次
 
 #### ▼ アプリケーション間連携
 
-* [📖：︎JSON](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_json.html)
 * [📖：︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_communication.html)
 * RESTful-API
     * [📖：︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
     * [📖：︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
+* [📖：︎gRPC](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_grpc.html)
 
 ### 言語
 
 * [📖：言語の種類](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_type.html)
 * [📖：︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
+* [📖：︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
 
 #### ▼ PHP
 
@@ -221,6 +222,10 @@ title: 【知見を記録するサイト】目次
     * [📖：︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     * [📖：︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
     * [📖：︎コスト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cost_management.html)
+
+### GCP
+
+* [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_commandi.html)
 
 <br>
 

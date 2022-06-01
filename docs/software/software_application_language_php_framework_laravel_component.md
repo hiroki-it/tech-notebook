@@ -4175,7 +4175,7 @@ class ProductsSeeder extends Seeder
             // 一時CSVファイルに書き込む。
             file_put_contents('/tmp/csv', $csv);
 
-            // 一時ファイルを用いて、DBにCSVファイルの中身を書き込む。
+            // 一時ファイルを使用して、DBにCSVファイルの中身を書き込む。
             \DB::statement(
                 "LOAD DATA LOCAL INFILE '/tmp/csv'
                 INTO TABLE {$table}

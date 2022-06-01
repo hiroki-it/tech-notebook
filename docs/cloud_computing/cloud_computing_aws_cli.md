@@ -400,7 +400,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 #### ▼ saml2aws
 
-外部Webサイト（Google Apps、AzureAD、KeyCloak、など）の認証情報を用いて、AWSにログインする。MFAを用いている場合は、ワンタイムコードの入力が要求される。
+外部Webサイト（Google Apps、AzureAD、KeyCloak、など）の認証情報を使用して、AWSにログインする。MFAを使用している場合は、ワンタイムコードの入力が要求される。
 
 参考：https://github.com/Versent/saml2aws
 

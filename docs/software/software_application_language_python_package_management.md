@@ -92,8 +92,6 @@ $ pip3 freeze --local \
     | xargs -n1 pip3 install -U
 ```
 
-
-
 pip自身をアップグレードする。
 
 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
@@ -104,17 +102,13 @@ $ pip3 install --upgrade pip
 
 #### ▼ --user
 
-
-
 ```bash
 $ pip3 install --user <パッケージ名>
 ```
 
 #### ▼ -r
 
-requirements.txt を元にパッケージをインストールする。
-
-
+バージョン管理とrequirements.txtファイルを元にパッケージをインストールする。
 
 ```bash
 $ pip3 install -r requirements.txt
