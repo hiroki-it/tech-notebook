@@ -18,7 +18,7 @@ description: gRPC＠アプリケーション連携の知見をまとめました
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
-RPCフレームワークの一つで、プロトコルバッファーを用いてRPC（リモートプロシージャー）を実行する。RESTful-APIでは、リクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
+RPCフレームワークの一つで、プロトコルバッファーを用いてRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
 参考：
 
@@ -99,13 +99,14 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 package main
 
 import (
-    "fmt"
-    "log"
-    "net"
-  
-    pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	"context"
+	"fmt"
+	"log"
+	"net"
 
-    "google.golang.org/grpc"
+	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+
+	"google.golang.org/grpc"
 )
 
 // goサーバー
@@ -120,26 +121,28 @@ func (s *Server) SayHello(ctx context.Context, in *pb.Message) (*Message, error)
 
 func main() {
 
-    // goサーバーで待ち受けるポート番号を設定する。
-    listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
-  
-    if err != nil {
-        log.Fatalf("failed to listen: %v", err)
-    }
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
-    // gRPCサーバーを作成する。
-    grpcServer := grpc.NewServer()
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
 
-    // pb.goファイルで自動生成された関数を用いて、goサーバーをgRPCサーバーとして登録する。
-    // goサーバーがリモートプロシージャーコールを受信できるようになる。
-    pb.RegisterFooServiceServer(grpcServer, &Server{})
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer()
 
-    // gRPCサーバーとして、goサーバーで通信を受信する。
-    if err := grpcServer.Serve(listenPort); err != nil {
-        log.Fatalf("failed to serve: %s", err)
-    }
+	// pb.goファイルで自動生成された関数を用いて、goサーバーをgRPCサーバーとして登録する。
+	// goサーバーがリモートプロシージャーコールを受信できるようになる。
+	pb.RegisterFooServiceServer(grpcServer, &Server{})
+
+	// gRPCサーバーとして、goサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
 }
 ```
+
+<br>
 
 ### クライアント側
 
@@ -151,36 +154,36 @@ gRPCサーバーのリモートプロシージャーコールを実行する。
 package main
 
 import (
-    "log"
+	"log"
 
-    "golang.org/x/net/context"
-    "google.golang.org/grpc"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
 
-    pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
 )
 
 func main() {
 
-    // gRPCコネクションを作成する。
-    conn, err := grpc.Dial(":9000", grpc.WithInsecure())
-  
-    if err != nil {
-        log.Fatalf("did not connect: %s", err)
-    }
-  
-    defer conn.Close()
+	// gRPCコネクションを作成する。
+	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
 
-    // gRPCサーバーとして、goサーバーを作成する。
-    c := pb.NewFooServiceClient(conn)
+	if err != nil {
+		log.Fatalf("did not connect: %s", err)
+	}
 
-    // goサーバーのリモートプロシージャーコールを実行する。
-    response, err := c.SayHello(context.Background(), &pb.Message{Body: "Hello From Client!"})
-  
-    if err != nil {
-        log.Fatalf("Error when calling SayHello: %s", err)
-    }
-  
-    log.Printf("Response from server: %s", response.Body)
+	defer conn.Close()
+
+	// gRPCサーバーとして、goサーバーを作成する。
+	c := pb.NewFooServiceClient(conn)
+
+	// goサーバーのリモートプロシージャーコールを実行する。
+	response, err := c.SayHello(context.Background(), &pb.Message{Body: "Hello From Client!"})
+
+	if err != nil {
+		log.Fatalf("Error when calling SayHello: %s", err)
+	}
+
+	log.Printf("Response from server: %s", response.Body)
 }
 ```
 

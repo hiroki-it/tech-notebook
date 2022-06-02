@@ -463,7 +463,18 @@ $ kubectl get service/istio-ingressgateway \
   -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 ```
 
+#### ▼ -l
 
+特定のラベルを持つPodを表示する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
+
+```bash
+# 事前にServiceのルーティング先を確認しておく。
+$ kubectl describe services foo
+
+Selector: <キー>=<値> # <--- Selectorでルーティング先のPodのラベルがわかる
+
+$ kubectl get pods -l <キー>=<値>
+```
 
 <br>
 

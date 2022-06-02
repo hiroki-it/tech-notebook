@@ -70,12 +70,29 @@ IngressがCluster内に1つしか存在しない場合に、IngressClassに設�
 
 ### labels
 
-Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。予約ラベルについては、以下のリンクを参考にせよ。
+#### ▼ labelsとは
+
+Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。
 
 参考：
 
-- https://kubernetes.io/docs/reference/labels-annotations-taints/
+- https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
+
+#### ▼ 予約ラベル
+
+キー名のプレフィクスとして、```kubernetes.io/```と```k8s.io/```は予約されている。
+
+参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
+
+#### ▼ データ型
+
+string型である必要がある。int型を割り当てようとするとエラーになり、これはHelmの```values```ファイル経由で『数字』を出力しようとする場合に起こる。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
+- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_chart.html
 
 <br>
 

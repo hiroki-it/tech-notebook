@@ -79,7 +79,9 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 
 ## 02-03. ストレステスト（負荷テスト）
 
-### ストレステストとは
+### ストレステスト
+
+#### ▼ ストレステストとは
 
 実際の運用時に、想定したリクエスト数に耐えられるか、を検証する。また、テスト結果から、運用時の監視で参考にするための、安全範囲（青信号）、危険範囲（黄色信号）、限界値（赤信号）、を導く必要がある。ロードテストとは区別すること。ストレステストには、性能テスト、限界テスト、耐久テストがある。
 
@@ -88,9 +90,15 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
 
+#### ▼ パラメーター
+
+![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stress-test_parameter.png)
+
+参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+
 | テストのパラメーター | 説明                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| スレッド数           | ユーザー数に相当する。                                       |
+| スレッド数           | リクエストのユーザー数に相当する。                           |
 | ループ数             | ユーザー当たりのリクエスト送信数に相当する。                 |
 | RampUp秒             | リクエストを送信する期間に相当する。長くし過ぎすると、全てのリクエスト数を送信するまでに時間がかかるようになるため、負荷が小さくなる。 |
 

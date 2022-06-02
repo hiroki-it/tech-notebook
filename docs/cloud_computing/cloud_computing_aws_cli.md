@@ -195,8 +195,6 @@ export AWS_DEFAULT_PROFILE=default
 export AWS_PROFILE=foo-profile
 ```
 
-
-
 <br>
 
 ## 02. CloudWatch

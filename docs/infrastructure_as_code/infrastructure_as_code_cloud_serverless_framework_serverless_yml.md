@@ -138,8 +138,6 @@ functions:
       - sqs:arn:aws:sqs:region:****:prd-foo-queue
 ```
 
-
-
 <br>
 
 ### image

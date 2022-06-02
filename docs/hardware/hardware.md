@@ -154,7 +154,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 <br>
 
-### 仕組み
+### キャッシュメモリの仕組み
 
 #### ▼ 一度目
 

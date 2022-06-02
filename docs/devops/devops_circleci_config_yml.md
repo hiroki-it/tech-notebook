@@ -54,7 +54,6 @@ workflows:
 #            - test2
 ```
 
-
 #### ▼ バリデーション
 
 ホストで、以下のコマンドを実行する。
@@ -614,7 +613,6 @@ workflows:
           # 引数名: 渡す値
           custom_checkout_parameters: true
 ```
-
 
 #### ▼ restore_cache、save_cache
 

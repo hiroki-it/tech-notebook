@@ -36,11 +36,13 @@ description: 可観測性＠カスタムリソースの知見をまとめまし�
 
 ## 02. Grafana
 
-### 仕組み
+### Grafanaの仕組み
 
 #### ▼ 構造
 
-Prometheusで収集されたメトリクスを可視化する。
+Grafanaは、ダッシュボードを作るKuberneteリソースとPromQLから構成されている。Prometheusで収集されたメトリクスをPromQLを用いて取得し、可視化する。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html
 
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
@@ -129,8 +131,6 @@ data:
   
 ```
 
-
-
 #### ▼ ドキュメントから
 
 GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをデプロイする。
@@ -145,7 +145,7 @@ $ kubectl apply -f grafana.yaml
 
 ## 03. Kiali
 
-### 仕組み
+### Kialiの仕組み
 
 #### ▼ 構造
 
@@ -167,27 +167,17 @@ $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-${ISTIO
 
 <br>
 
-## 04. kube-state-metrics
-
-### 仕組み
-
-Kubernetesのリソース単位でメトリクスの収集/分析を行う。
-
-参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631
-
-<br>
-
 ### セットアップ
 
 <br>
 
-## Prometheus
+## 05. Prometheus
 
-### 仕組み
+### Prometheusの仕組み
 
 #### ▼ 構造
 
-KubernetesやIstioに関するメトリクスの収集/分析を行う。
+Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されている。EKubernetesリソースのメトリクスを収集し、分析する。
 
 参考：https://prometheus.io/docs/introduction/overview/
 
@@ -208,12 +198,26 @@ Prometheusから送信されたアラートをルーティングする。
 
 #### ▼ Exporter
 
-PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporter（node-exporter、blackbox-exporter、consul-exporter、process-exporter、graphite-exporter、など）を選ぶ必要がある。
+PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporterを選ぶ必要がある。
 
 参考：
 
 - https://prometheus.io/docs/instrumenting/exporters/
 - https://openstandia.jp/oss_info/prometheus
+- https://tech-blog.abeja.asia/entry/2016/12/20/202631
+
+| Exporter名                                                   | Exportタイプ | 説明                                                 |
+| :----------------------------------------------------------- | ------------ | ---------------------------------------------------- |
+| [node_exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ノードのメトリクスを収集する。                       |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | Kubernetesのリソース単位でメトリクスを収集する。     |
+| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | Nginxのメトリクスを収集する。                        |
+| [apache_exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | Apacheのメトリクスを収集する。                       |
+| [black box expoter](https://github.com/prometheus/blackbox_exporter) | Deplyoment型 | 各種通信プロトコルの状況をメトリクスとして収集する。 |
+| [mysqld_exporter](https://github.com/prometheus/mysqld_exporter) | Sidecar型    | MySQL/MariaDBのメトリクスを収集する。                |
+| [postgres_exporter](https://github.com/prometheus-community/postgres_exporter) | Sidecar型    | PostgreSQLのメトリクスを収集する。                   |
+| [oracledb_exporter](https://github.com/iamseth/oracledb_exporter) | Sidecar型    | Oracleのメトリクスを収集する。                       |
+| [elasticsearch_exporter](https://github.com/prometheus-community/elasticsearch_exporter) | Deployment型 | ElasticSearchのメトリクスを収集する。                |
+| [redis_exporter](https://github.com/oliver006/redis_exporter) | Sidecar型    | Redisのメトリクスを収集する。                        |
 
 #### ▼ PushGateway
 
@@ -227,9 +231,12 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 #### ▼ チャートリポジトリから
 
-Helmチャートのkube-prometheus-stackチャートをデプロイする。この中にPrometheusが含まれている。
+Helmチャートのkube-prometheus-stackチャート（PrometheusOperatorの後継）をデプロイする。
 
-参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+参考：
+
+- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+- https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -239,11 +246,11 @@ $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 
 <br>
 
-## 05. Jaeger
+## 06. Jaeger
 
 ### 仕組み
 
-KubernetesやIstioに関する分散トレースの収集/分析/可視化を行う。
+Kubernetesリソースの分散トレースを収集し、これの分析と可視化を行う。
 
 参考：https://www.jaegertracing.io/docs/1.31/architecture/
 
