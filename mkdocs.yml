@@ -78,7 +78,8 @@ markdown_extensions:
 plugins:
   - exclude:
       glob:
-        - private
+        - ./private
+        - ./**/draft
   - git-revision-date-localized:
       type: iso_date
   - search:
