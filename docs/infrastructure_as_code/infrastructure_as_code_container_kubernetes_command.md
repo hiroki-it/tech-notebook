@@ -398,6 +398,8 @@ NAME             STATUS   ROLES                  AGE   VERSION
 docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターNode
 ```
 
+**＊例＊**
+
 指定したPodの情報を表示する。
 
 ```bash
@@ -405,6 +407,7 @@ $ kubectl get pods
 
 NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    0/2     ImagePullBackOff   0          7m52s
+bar-pod    2/2     Running            0          5m01s
 ```
 
 **＊例＊**
@@ -419,7 +422,20 @@ foo-service    ClusterIP   n.n.n.n        <none>        80/TCP    10s
 kubernetes     ClusterIP   n.n.n.n        <none>        443/TCP   12h
 ```
 
-#### ▼ -o
+**＊例＊**
+
+Running状態のPodのみを表示する。
+
+```bash
+$ kubectl get pods | grep Running
+
+NAME       READY   STATUS             RESTARTS   AGE
+bar-pod    2/2     Running            0          5m01s
+```
+
+#### ▼ -o yaml
+
+指定したKubernetesリソースをYAML形式で出力する。
 
 **＊例＊**
 
@@ -449,8 +465,8 @@ Istioのバージョンを取得する。
 
 ```bash
 $ kubectl get customResourceDefinition/istiooperators.install.istio.io \
-  --namespace=istio-system \
-  -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
+    --namespace=istio-system \
+    -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
 ```
 
 **＊例＊**
@@ -459,8 +475,20 @@ $ kubectl get customResourceDefinition/istiooperators.install.istio.io \
 
 ```bash
 $ kubectl get service/istio-ingressgateway \
-  --namespace=istio-system \
-  -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
+    --namespace=istio-system \
+    -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
+```
+
+#### ▼ -o wide
+
+指定したリソースの詳細な情報を表示する。Nodeが複数がある場合に、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
+
+```bash
+$  kubectl get pod -o wide
+
+NAME        READY   STATUS        RESTARTS   AGE   IP                NODE       NOMINATED NODE   READINESS GATES
+foo-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     foo-node   <none>           <none>
+bar-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     bar-node   <none>           <none>
 ```
 
 #### ▼ -l
@@ -474,6 +502,9 @@ $ kubectl describe services foo
 Selector: <キー>=<値> # <--- Selectorでルーティング先のPodのラベルがわかる
 
 $ kubectl get pods -l <キー>=<値>
+
+# 複数のラベルを指定することもできる。
+$ kubectl get pods -l <キー>=<値>, <キー>=<値>
 ```
 
 <br>
@@ -520,33 +551,32 @@ $ kubectl label --overwrite <リソース名> foo=bar
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
+#### ▼ -c
+
 Pod名とコンテナ名を指定し、コンテナのログを表示する。
 
 ```bash
 $ kubectl logs -n <名前空間名> <Pod名> -c <コンテナ名>
 
-2021/11/27 08:34:01 [emerg] *****
+[ERROR] *****
 ```
+
+**＊例＊**
 
 名前空間、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
 $ kubectl logs -n kube-system <Pod名> -c kube-proxy
+```
 
-I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: n.n.n.n
-I1211 05:34:22.263084       1 server_others.go:140] Detected node IP n.n.n.n
-W1211 05:34:22.263104       1 server_others.go:565] Unknown proxy mode "", assuming iptables proxy
-I1211 05:34:22.285367       1 server_others.go:206] kube-proxy running in dual-stack mode, IPv4-primary
-I1211 05:34:22.285462       1 server_others.go:212] Using iptables Proxier.
-I1211 05:34:22.285484       1 server_others.go:219] creating dualStackProxier for iptables.
-W1211 05:34:22.285508       1 server_others.go:495] detect-local-mode set to ClusterCIDR, but no IPv6 cluster CIDR defined, , defaulting to no-op detect-local for IPv6
-I1211 05:34:22.286807       1 server.go:649] Version: v1.22.3
-I1211 05:34:22.289459       1 config.go:315] Starting service config controller
-I1211 05:34:22.289479       1 shared_informer.go:240] Waiting for caches to sync for service config
-I1211 05:34:22.289506       1 config.go:224] Starting endpoint slice config controller
-I1211 05:34:22.289525       1 shared_informer.go:240] Waiting for caches to sync for endpoint slice config
-I1211 05:34:22.389800       1 shared_informer.go:247] Caches are synced for endpoint slice config 
-I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for service config 
+#### ▼  --timestamps
+
+タイムスタンプを表示する。
+
+```bash
+$ kubectl logs -n <名前空間名>  --timestamps=true <Pod名> -c <コンテナ名> 
+
+2021/11/27 08:34:01 [ERROR] *****
 ```
 
 <br>

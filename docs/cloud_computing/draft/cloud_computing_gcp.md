@@ -13,27 +13,13 @@ description: GCP：Google Cloud Platformの知見をまとめました。
 
 <br>
 
-## 01. GCPによるアプリケーションのリリース
+## 01. App Engine
 
-GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供され、アプリケーションがリリースされる。
-
-### クラウドデザイン例
-
-以下のデザイン例では、Dualシステムが採用されている。
-
-![GCPのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GCPのクラウドデザイン一例.png)
-
-### GAE：Google App Engine：GAE
-
-クラウドデプロイサーバーとして働く。AWSのElastic Beanstalkに相当する。
+クラウドデプロイサーバーとして働く。
 
 <br>
 
-### GCE：Google Compute Engine
-
-クラウドWebサーバーとして働く。AWSのEC2に相当する。
-
-<br>
+## 02. Certificate Manager
 
 ### SSL証明書の設置場所
 
@@ -45,3 +31,16 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 
 <br>
 
+## 03. Cloud Logging
+
+ログの保存/検索/分析/モニタリング/アラート送信を実行できる。Cloud Loggingでログを扱うためのAPI（```logging.googleapis.com```）を公開している。
+
+参考：https://cloud.google.com/logging/docs?hl=ja
+
+<br>
+
+## 04. Compute Engine
+
+クラウドWebサーバーとして働く。
+
+<br>

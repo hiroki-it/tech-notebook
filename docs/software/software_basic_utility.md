@@ -493,7 +493,7 @@ $ dig -x 182.22.28.252
 ;252.28.22.182.in-addr.arpa.    IN      PTR
 
 # AUTHORITYセクション
-# 権威サーバーを表す。ドメイン名がわかる。
+# 権威DNSサーバーを表す。ドメイン名がわかる。
 ;; AUTHORITY SECTION:
 28.22.182.in-addr.arpa. 663     IN      SOA     yahoo.co.jp. postmaster.yahoo.co.jp. 2202070000 1800 900 1209600 900
 

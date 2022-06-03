@@ -45,6 +45,16 @@ kub-apiserverとクラウドインフラを仲介し、Kubernetesがクラウド
 
 <br>
 
+### core-dns（旧kube-dns）
+
+ワーカーNode内のDNSサーバーとして、Kubernetesリソースの名前解決を行う。CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNSサービスによって管理されている。
+
+参考：https://ssup2.github.io/theory_analysis/Kubernetes_CoreDNS/
+
+![core-dns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-dns.png)
+
+<br>
+
 ### etcd
 
 #### ▼ etcdとは

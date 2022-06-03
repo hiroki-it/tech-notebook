@@ -41,12 +41,17 @@ $ yum install -y bind-utils
 
 正引き/逆引きによる名前解決を行う。もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。
 
+#### ▼ オプション無し
+
+参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+
 **＊例＊**
 
 ```bash
 # 正引き
 $ nslookup google.co.jp
 
+# 非権威DNSサーバー（キャッシュDNSサーバー）からの返信
 Non-authoritative answer:
 Server:  UnKnown
 Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
@@ -65,6 +70,32 @@ Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
 
 Name:  nrt20s18-in-f3.1e100.net # IPv4アドレスにマッピングされたドメイン名
 Address:  172.217.175.3 # IPv4アドレス
+```
+
+権威DNSサーバーを使用して名前解決する場合、引数なしで```nslookup```コマンドを実行する。
+
+参考：
+
+- http://linux.kororo.jp/cont/server/nslookup_dns.php
+- https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+
+```bash
+$ nslookup
+
+# 入力を求められるため、権威DNSサーバーを指定する。
+>  server ns1.google.com
+Default server: ns1.google.com
+Address: 216.239.32.10#53
+Default server: ns1.google.com
+Address: 2001:4860:4802:32::a#53
+
+# 入力を求められるため、権威DNSサーバーにドメインを問い合わせる。
+> google.co.jp
+Server:         ns1.google.com
+Address:        216.239.32.10#53
+
+Name:   google.co.jp
+Address: 142.251.42.131
 ```
 
 #### ▼ -type

@@ -231,7 +231,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 #### ▼ チャートリポジトリから
 
-Helmチャートのkube-prometheus-stackチャート（PrometheusOperatorの後継）をデプロイする。
+Helmチャートのkube-prometheus-stackチャートをデプロイする。
 
 参考：
 
