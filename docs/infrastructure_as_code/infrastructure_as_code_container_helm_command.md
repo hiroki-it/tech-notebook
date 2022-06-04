@@ -33,7 +33,7 @@ $ helm create <チャートへのパス>
 
 #### ▼ historyとは
 
-指定したリリースの履歴を表示する。
+指定したリリースの履歴を取得する。
 
 参考：https://helm.sh/docs/helm/helm_history/
 
@@ -70,7 +70,7 @@ $ helm install <リリース名> <チャートへのパス>
 
 #### ▼ --dry-run
 
-Kubernetesにデプロイされるリソースのmanifest.yamlファイルを表示する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
+Kubernetesにデプロイされるリソースのmanifest.yamlファイルを取得する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -174,7 +174,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してデプロイしたリリースの一覧を表示する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
+Helmを使用してデプロイしたリリースの一覧を取得する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -324,7 +324,7 @@ Error: failed to download "<チャート名>"
 
 #### ▼ list
 
-ローカルマシンに登録されたチャートリポジトリの一覧を表示する。
+ローカルマシンに登録されたチャートリポジトリの一覧を取得する。
 
 ```bash
 $ helm repo list
@@ -368,11 +368,11 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 
 #### ▼ show
 
-チャートの情報を表示する。
+チャートの情報を取得する。
 
 #### ▼ all
 
-チャート内の全てのmanifest.yamlファイルを表示する。
+チャート内の全てのmanifest.yamlファイルを取得する。
 
 ```bash
 $ helm show all <チャート名>
@@ -380,7 +380,7 @@ $ helm show all <チャート名>
 
 #### ▼ chart
 
-チャートの```Chart.yaml```ファイルを表示する。
+チャートの```Chart.yaml```ファイルを取得する。
 
 ```bash
 $ helm show chart <チャート名>
@@ -396,7 +396,7 @@ version: 1.0.0
 
 #### ▼ values
 
-チャートに渡せるパラメーターをvaluesファイルとして表示する。valuesファイル本体は、チャートリポジトリで閲覧できる。
+チャートに渡せるパラメーターをvaluesファイルとして取得する。valuesファイル本体は、チャートリポジトリで閲覧できる。
 
 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 

@@ -93,7 +93,7 @@ FluentBitを稼働させたコンテナのこと。Datadogの代わりにログ�
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-KubernetesのClusterやワーカーNodeから送信されたメトリクスを、マスターNodeのkube-apiserverに転送する。
+KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
 
 参考：
 
@@ -271,7 +271,7 @@ export default browserLogsForSsgPlugin
 
 | 属性名                | 説明                                           | 補足                                                         | 例                                                           |
 | --------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```            | ログの生成元のホスト名を示す。                 | ログが生成元とは別の場所から送信されている場合に役立つ。datadogコンテナの環境変数にて、```DD_HOSTNAME```を使用して```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```host```            | ログの生成元のホスト名を示す。                 | ログが生成元とは別の場所から受信した場合に役立つ。datadogコンテナの環境変数にて、```DD_HOSTNAME```を使用して```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
 | ```source```          | ログの生成元の名前を示す。                     | ベンダー名を使用するとわかりやすい。                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
 | ```status```          | ログのレベルを示す。                           |                                                              |                                                              |
 | ```service```         | ログの生成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。 | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |

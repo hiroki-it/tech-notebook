@@ -374,7 +374,7 @@ terraform -chdir=./${ENV} apply \
 
 #### ▼ ```terraform_fmt.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform fmt```コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して```terraform fmt```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -392,7 +392,7 @@ terraform fmt \
 
 #### ▼ ```terraform_init.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform init```コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して```terraform init```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -439,7 +439,7 @@ terraform -chdir=./${ENV} plan \
 
 #### ▼ ```terraform_validate.sh```ファイル
 
-GitHubにプッシュされたコードに対して```terraform validate```コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して```terraform validate```コマンドを実行する。
 
 **＊実装例＊**
 

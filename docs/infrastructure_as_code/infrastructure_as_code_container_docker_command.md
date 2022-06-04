@@ -253,7 +253,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 **＊例＊**
 
-起動中コンテナの全ての設定内容を表示する。```grep```とも組み合わせられる。
+起動中コンテナの全ての設定内容を取得する。```grep```とも組み合わせられる。
 
 ```bash
 $ docker inspect <起動中コンテナ名>
@@ -287,7 +287,7 @@ $ docker logs -f <コンテナ名>
 
 **＊例＊**
 
-指定した行数だけ、ログを表示する。ロギングドライバーが```json-file```の場合のみ有効。
+指定した行数だけ、ログを取得する。ロギングドライバーが```json-file```の場合のみ有効。
 
 ```bash
 $ docker logs --follow=true --tail=500 <コンテナ名>
@@ -347,7 +347,7 @@ $ docker network inspect <ネットワーク名>
 
 **＊例＊**
 
-コンテナの起動と停止に関わらず、IDなどの一覧を表示する。
+コンテナの起動と停止に関わらず、IDなどの一覧を取得する。
 
 ```bash
 $ docker ps -a

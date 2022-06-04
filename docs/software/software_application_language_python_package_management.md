@@ -148,7 +148,7 @@ $ pip3 freeze > uninstall.txt
 
 #### ▼ listとは
 
-現在インストールされているパッケージの一覧を表示する。
+現在インストールされているパッケージの一覧を取得する。
 
 ```bash
 $ pip3 list
@@ -166,7 +166,7 @@ zipp                       3.7.0
 
 ・-o
 
-アップグレードできるパッケージの一覧を表示する。
+アップグレードできるパッケージの一覧を取得する。
 
 ```bash
 $ pip3 list -o
@@ -188,7 +188,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 #### ▼ showとは
 
-pipでインストールしたパッケージ情報を表示する。
+pipでインストールしたパッケージ情報を取得する。
 
 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 

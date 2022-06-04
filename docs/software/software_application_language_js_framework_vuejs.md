@@ -282,7 +282,7 @@ var vm = new Vue({
         );
       },
 
-      // ajaxメソッドから送信されてきたデータを使用して、propsを更新 
+      // ajaxメソッドから受信したデータを使用して、propsを更新 
       updateProps(key, value) {
 
       },

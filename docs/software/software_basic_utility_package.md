@@ -165,7 +165,7 @@ $ yum install -y net-tools
 
 #### ▼ -plunt
 
-オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を表示する。
+オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
 
 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
@@ -210,7 +210,7 @@ $ apt-get install pstree
 
 #### ▼ pstreeとは
 
-プロセスの親子関係をツリー状に表示する。
+プロセスの親子関係をツリー状に取得する。
 
 ```bash
 # MacOSの場合
@@ -613,7 +613,7 @@ $ systemctl enable httpd.service
 
 ### list-unit-files
 
-デーモンのUnitの一覧を表示する。
+デーモンのUnitの一覧を取得する。
 
 ```bash
 $ systemctl list-unit-files --type=service
@@ -701,7 +701,7 @@ $ yum install -y tcpdump
 
 ### -i <ネットワークインターフェース名>
 
-指定したネットワークインターフェースにて、パケットの内容を表示する。
+指定したネットワークインターフェースにて、パケットの内容を取得する。
 
 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
@@ -713,7 +713,7 @@ sudo tcpdump -i eth0
 
 ### -nn <プロトコル名>
 
-全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を表示する。
+全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。
 
 参考：https://go-journey.club/archives/1472
 
@@ -725,7 +725,7 @@ $ sudo tcpdump -nn ip
 
 ### -nn port <ポート番号>
 
-全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を表示する。
+全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
 
 参考：https://go-journey.club/archives/1472
 

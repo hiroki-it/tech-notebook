@@ -142,7 +142,7 @@ $ terraform fmt -check
 
 #### ▼ -diff
 
-インデントを揃えるべき箇所が存在する場合に、これを表示する。
+インデントを揃えるべき箇所が存在する場合に、これを取得する。
 
 ```bash
 $ terraform fmt -diff
@@ -464,7 +464,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 #### ▼ state listとは
 
-ファイル内で定義しているリソースの一覧を表示する。
+ファイル内で定義しているリソースの一覧を取得する。
 
 ```bash
 $ terraform state list

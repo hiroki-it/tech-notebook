@@ -15,9 +15,7 @@ description: データ記述言語＠言語の知見をまとめました。
 
 ## 01. データ記述言語
 
-### データ記述言語の種類
-
-#### ▼ JSON：JavaScript Object Notation
+### JSON：JavaScript Object Notation
 
 一番外側を波括弧で囲う。
 
@@ -31,7 +29,9 @@ description: データ記述言語＠言語の知見をまとめました。
 }
 ```
 
-#### ▼ YAML：YAML Ain"t a Markup Language
+<br>
+
+### YAML：YAML Ain"t a Markup Language
 
 ```yaml
 account: 200  
@@ -40,48 +40,35 @@ fruit:
   - "apple"
 ```
 
-#### ▼ マークアップ言語
+<br>
 
-詳しくは以下のリンクを参考にせよ。
+### マークアップ言語
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_browser_rendering.html
+<br>
 
-#### ▼ CSV：Comma Separated Vector
+### CSV：Comma Separated Vector
 
 データ解析の入力ファイルとしてよく使用するやつ。
 
 <br>
 
-## 02-01. JS型オブジェクト、JSON、PHP型オブジェクト
+## 02. 相互パース（シリアライズ＋デシリアライズ）
 
-### JS型オブジェクト
+### バックエンドとフロントエンド間
 
-#### ▼ 定義方法
+フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
 
-キーはクオーテーションで囲う必要が無い。
-
-**＊実装例＊**
-
-```javascript
-const object = {
-  "account": 200,
-  "fruit": [
-    "banana",
-    "apple"
-  ]
-};
-```
-
-```javascript
-class Foo {
-  constructor(fruit, account) {
-    this.fruit = fruit;
-    this.account = account;
-  }
-}
-```
+![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
 <br>
+
+### バックエンドとDB間
+
+バックエンドにPHPを使用しているとする。データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
+
+<br>
+
+## 02-02. オブジェクトデータ
 
 ### JSON
 
@@ -157,6 +144,35 @@ json["prefecture"] = "Tokyo";
 
 <br>
 
+### JS型オブジェクト
+
+#### ▼ 定義方法
+
+キーはクオーテーションで囲う必要が無い。
+
+**＊実装例＊**
+
+```javascript
+const object = {
+  "account": 200,
+  "fruit": [
+    "banana",
+    "apple"
+  ]
+};
+```
+
+```javascript
+class Foo {
+  constructor(fruit, account) {
+    this.fruit = fruit;
+    this.account = account;
+  }
+}
+```
+
+<br>
+
 ### PHP型オブジェクト
 
 #### ▼ 定義方法
@@ -181,21 +197,7 @@ class Foo
 
 <br>
 
-## 02-02. 相互パース（シリアライズ＋デシリアライズ）
-
-### シリアライズ、デシリアライズとは
-
-#### ▼ バックエンドとフロントエンド間
-
-データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
-
-![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
-
-#### ▼ バックエンドとDB間
-
-データ送信のためにオブジェクト（PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
-
-<br>
+## 02-03. オブジェクトデータの変換
 
 ### フロントエンド
 
@@ -358,15 +360,28 @@ var_dump($json);
 
 <br>
 
-## 03. JSONのクエリ言語
+## 03. jsonクエリ言語
 
-### クエリ言語の種類
+### jq
 
-#### ▼ JMESPath
+#### ▼ セットアップ
 
-**＊実装例＊**
+```bash
+# brewリポジトリから
+$ brew install jq
+```
 
-```javascript
-// ここに実装例
+<br>
+
+## 03-02. yamlクエリ言語
+
+### yq
+
+#### ▼ セットアップ
+
+```bash
+# GitHubリポジトリから
+$ wget https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64
+$ sudo chmod +x /usr/local/bin/yq
 ```
 

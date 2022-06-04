@@ -235,7 +235,7 @@ foo-ingress   nginx   *       <IPアドレス>    80      12m
 
 #### ▼ list
 
-有効できるプラグインの一覧を表示する。
+有効できるプラグインの一覧を取得する。
 
 ```bash
 $ minikube addons list
@@ -394,7 +394,7 @@ $ eval $(minikube docker-env -u)
 
 #### ▼ ipとは
 
-ゲスト仮想環境内のワーカーNodeのIPアドレスを表示する。
+ゲスト仮想環境内のワーカーNodeのIPアドレスを取得する。
 
 ```bash
 $ minikube ip
@@ -540,7 +540,7 @@ $ curl http://n.n.n.n:57761
 
 #### ▼ list
 
-全てのServiceの情報を表示する。
+全てのServiceの情報を取得する。
 
 ```bash
 $ minikube service list
@@ -559,7 +559,7 @@ $ minikube service list
 
 #### ▼ --url
 
-指定したServiceのIPアドレスを含むURLを表示する。
+指定したServiceのIPアドレスを含むURLを取得する。
 
 ```bash
  $ minikube service <Service名> --url

@@ -17,7 +17,7 @@ description: Istio＠仮想化の知見をまとめました。
 
 ### 構造
 
-データプレーンとコントロールプレーンによって、サービスメッシュを実現する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+データプレーンとコントロールプレーンによって、サービスメッシュを実現する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 参考：
 
@@ -137,12 +137,13 @@ manifest.yamlファイルによって量産されたIstioリソースのイン�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部から送信されるインバウンド通信をPodにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
+Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部からインバウンド通信を受信し、Podにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
 
 参考：
 
 - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 - https://qiita.com/kenyashiro/items/b94197890de434ed9ceb
+- https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 
 <br>
@@ -151,7 +152,7 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部か�
 
 #### ▼ Gatewayとは
 
-IngressGatewayの機能のうち、Cluster外部から送信されるインバウンド通信をフィルタリングする機能を担う。
+IngressGatewayの機能のうち、Cluster外部から受信したインバウンド通信をフィルタリングする機能を担う。
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
@@ -195,7 +196,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 #### ▼ EgressGatewayとは
 
-Cluster内部から送信されるアウトバウンド通信をフィルタリングし、パブリックネットワークにルーティングする。
+Cluster内部からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
 
 参考：https://knowledge.sakura.ad.jp/20489/
 

@@ -37,7 +37,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 
 ### Traceエージェントとは
 
-サーバーの場合と同様にして、アプリケーションから送信された分散トレースを、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを生成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
+サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを生成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
 参考：
 
@@ -73,7 +73,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 使用しているミドルウェアごとに、インストール方法が異なる。サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
 
 ```bash
-# GitHubからパッケージをダウンロードする。
+# GitHubリポジトリからパッケージをダウンロードする。
 $ curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
 # パッケージをインストールをする。
@@ -126,7 +126,7 @@ env[DD_VERSION] = '1.0.0'
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
 
-# GitHubからパッケージをダウンロードする。
+# GitHubリポジトリからパッケージをダウンロードする。
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
   # パッケージをインストールする。
   && dpkg -i datadog-php-tracer.deb \

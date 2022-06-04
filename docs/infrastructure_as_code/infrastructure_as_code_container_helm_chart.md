@@ -266,6 +266,62 @@ define関数で定義した文字列を加工して出力する。加工内容�
 
 <br>
 
+### range
+
+#### ▼ rangeとは
+
+YAMLファイルの同じ階層にあるキーとその値を格納し、foreachのように出力する。ただ、```values```ファイルからキーと値の両方を出力する場合は、```range```関数を使用するとロジックが増えて可読性が低くなるため、使用しない方が良い。
+
+参考：https://helm.sh/docs/chart_template_guide/control_structures/
+
+```yaml
+# values.yamlファイル
+general:
+  env: prd
+  appName: foo
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+# キーと値の両方を取得すると、ロジックが増えて可読性が低くなる。
+{{- range $general := .Values.general }}
+metadata:
+  name: {{ $general.env }}-{{ $general.appName }}-pod
+  labels:
+    app: {{ $general.appName }}
+    
+    # 〜 中略 〜
+    
+{{- end }}
+```
+
+一方で、値のみを出力する場合は、可読性が高くなる。
+
+参考：https://helm.sh/docs/chart_template_guide/control_structures/
+
+```yaml
+# values.yamlファイル
+ipAddresses:
+  - 192.168.1.1/32
+  - 192.168.1.2/32
+  - 192.168.1.3/32
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blocked-ip-iddresses-config-map
+data:
+  ip-addresses: |-
+    {{- range $.Values.ipAddresses }}
+      - {{ . }}
+    {{- end }} 
+```
+
+<br>
+
 ### required
 
 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
@@ -280,8 +336,6 @@ define関数で定義した文字列をそのまま出力する。template関数
 
 <br>
 
-## 06. 変数
-
 ### Values
 
 #### ▼ Valuesとは
@@ -290,17 +344,18 @@ define関数で定義した文字列をそのまま出力する。template関数
 
 ```yaml
 # values.yamlファイル
-labels:
-  foo: FOO
+general:
+  env: prd
+  appName: foo
 ```
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foo
+  name: {{ .Values.general.env }}-{{ .Values.general.appName }}-pod
   labels:
-    foo: {{ .Values.labels.foo }}
+    app: {{ .Values.general.appName }}
 ```
 
 #### ▼ metadataキーで使用する場合の注意点
@@ -311,8 +366,10 @@ metadata:
 
 ```yaml
 # values.yamlファイル
-labels:
-  foo: "1" # int型で出力しようとする。
+metadata:
+  labels:
+    # マニフェストファイルで、int型で出力しようとする。
+    id: "1"
 ```
 
 ```yaml
@@ -321,12 +378,11 @@ kind: Deployment
 metadata:
   name: foo
   labels:
-    foo: "{{ .Values.labels.foo }}" # int型にならないように、ダブルクオーテーションで囲う。
+    # int型にならないように、ダブルクオーテーションで囲う。
+    id: "{{ .Values.metadata.labels.id }}"
 ```
 
 <br>
-
-## 07. 関数
 
 ### ドット
 
@@ -351,11 +407,19 @@ metadata:
 
 <br>
 
+## 06. 変換
+
 ### b64enc
 
 #### ▼ b64encとは
 
 base64方式でエンコードし、出力する。Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的にデコードするようになっており、相性が良い。
+
+```yaml
+# values.yamlファイル
+username: root
+password: 12345
+```
 
 ```yaml
 apiVersion: v1
@@ -367,5 +431,4 @@ data:
   password: {{ .Values.password | b64enc }}
 ```
 
-
-
+<br>

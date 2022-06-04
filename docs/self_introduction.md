@@ -1,6 +1,6 @@
 # 自己紹介
 
-## 👋🏻 はじめまして
+## 👋🏻 はじめまして (About me)
 
 長谷川広樹と申します。<br>
 <span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
@@ -16,7 +16,7 @@
 
 <br>
 
-## 🎯 関心のある技術領域
+## 🎯 関心のある技術領域 (Area of interest)
 
 Webアプリケーションのインフラ領域に軸足を置きつつ、バックエンド領域も好きです。<br>
 <span style="font-size: 90%;">( I focus on web infrastructure, and also like backend. )</span>
@@ -29,7 +29,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 <br>
 
-## 📚 知見の記録
+## 📚 知見の記録 (Knowledge)
 
 技術的な知識を体系的に整理するため、ノートにまとめております。<br>
 <span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook every day. )</span>
@@ -38,7 +38,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 <br>
 
-## 🏭 練習用リポジトリ
+## 🏭 練習用リポジトリ (Repositories)
 
 アーキテクチャ関連の技術を人知れず練習しております。<br>
 <span style="font-size: 90%;">( I practice architecture in the following repository. )</span>
@@ -62,7 +62,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 <br>
 
-## 💼 経歴、職歴
+## 💼 経歴、職歴 (Career)
 
 詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
 <span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
@@ -71,7 +71,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 
 <br>
 
-## 📢 過去の技術系プレゼン
+## 📢 過去の技術系プレゼン (Presentation)
 
 詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
 <span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>

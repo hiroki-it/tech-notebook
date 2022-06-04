@@ -46,7 +46,7 @@ Default output format [None]: <アウトプット形式>
 
 #### ▼ listとは
 
-現在設定されている認証情報を表示する。
+現在設定されている認証情報を取得する。
 
 ```bash
 $ aws configure list
@@ -201,8 +201,6 @@ export AWS_PROFILE=foo-profile
 
 ### set-alarm-state
 
-#### ▼ CloudWatchアラームの状態変更
-
 **＊例＊**
 
 CloudWatchアラームの状態を変更する。
@@ -218,8 +216,6 @@ $ aws cloudwatch set-alarm-state \
 
 ### get-metric-statistics
 
-#### ▼ ログ収集量を確認
-
 **＊例＊**
 
 全てのロググループに対して、一日当たりの収集量を```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただ、やってみたけどうまくいかず）。
@@ -232,7 +228,7 @@ $ aws cloudwatch get-metric-statistics \
     --metric-name IncomingBytes \
     --start-time "2021-08-01T00:00:00" \
     --end-time "2021-08-31T23:59:59" \
-    --period 86400 
+    --period 86400 \
     --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
  ```
 
@@ -242,9 +238,7 @@ $ aws cloudwatch get-metric-statistics \
 
 ### get-login-password
 
-#### ▼ 一時パスワードを取得
-
-一時的に有効なパスワードを取得する。
+一時的に有効なパスワード取得する。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1
@@ -257,8 +251,6 @@ $ aws ecr get-login-password --region ap-northeast-1
 ## 04. IAM
 
 ### update-user
-
-#### ▼ ユーザー名を変更
 
 ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。
 
@@ -274,17 +266,13 @@ $ aws iam update-user \
 
 ### ls
 
-#### ▼ バケット内ファイルを表示
-
 **＊例＊**
 
-指定したバケット内のファイル名を表示する。
+指定したバケット内のファイル名を取得する。
 
 ```bash
 $ aws s3 ls s3://<バケット名>
 ```
-
-#### ▼ バケット内容量を合計
 
 **＊例＊**
 
@@ -300,8 +288,6 @@ $ aws s3 ls s3://<バケット名> \
 <br>
 
 ### sync
-
-#### ▼ バケットの中身をコピーする
 
 指定したバケット内のファイルを他のバケットにコピーする。
 
@@ -347,8 +333,6 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピ�
 
 ### get-queue-url
 
-#### ▼ キューURLを取得
-
 キューのURLを取得する。
 
 ```bash
@@ -358,8 +342,6 @@ $ aws sqs get-queue-url --queue-name <キュー名>
 <br>
 
 ### receive-message
-
-#### ▼ キューに受信リクエストを送信
 
 キューに受信リクエストを送信し、メッセージを受信する。
 

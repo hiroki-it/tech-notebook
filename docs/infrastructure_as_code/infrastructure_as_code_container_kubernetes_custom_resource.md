@@ -179,7 +179,7 @@ spec:
 
 #### ▼ schema
 
-カスタムリソースの```spec```キー以下に設定できるキーを設定する。例えば『```message```』というstring型のキーを設定すると、マニフェストファイルの```spec.message```キーに任意の文字列を設定できるようになる。
+カスタムリソースの```spec```キー以下に設定できるキーを設定する。例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```spec.message```キーに任意の文字列を設定できるようになる。
 
 参考：
 
@@ -200,7 +200,7 @@ spec:
             spec:
               type: object
               properties:
-                message:
+                message: # <--- カスタムリソースのspec.messageキーに文字列を設定できるようになる。
                   type: string
 ```
 

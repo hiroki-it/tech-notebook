@@ -284,7 +284,7 @@ $ helmfile destroy
 
 #### ▼ diffとは
 
-全てのリリースに対して、helm-diffプラグインを実行する。helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を表示する。
+全てのリリースに対して、helm-diffプラグインを実行する。helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を取得する。
 
 参考：
 

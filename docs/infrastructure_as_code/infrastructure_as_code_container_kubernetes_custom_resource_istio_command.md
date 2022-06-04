@@ -65,7 +65,7 @@ Istioの機能のセットを提供する。
 
 | ユースケース         | default  | demo     | empty                         | external | minimal              | openshift | preview | remote |
 | :------------------- | :------- | :------- | :---------------------------- | -------- | :------------------- | --------- | ------- | ------ |
-| 概要                 | 本番環境 | 開発環境 | Istioを全てカスタマイズしたい | -        | 最小限の機能が欲しい | ？        | -       | ？     |
+| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい | -        | 最小限の機能が欲しい | ？        | -       | ？     |
 | istio-egressgateway  | -        | ○        | -                             | -        | -                    | ？        | -       | ？     |
 | istio-ingressgateway | ○        | ○        | -                             | -        | -                    | ？        | ○       | ？     |
 | istiod               | ○        | ○        | -                             | -        | ○                    | ？        | ○       | ？     |
@@ -74,7 +74,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesでIstioを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
+KubernetesリソースでIstioリソースを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
@@ -124,7 +124,7 @@ $ istioctl analyze -n <名前空間名>
 
 #### ▼ diffとは
 
-ymlファイルの差分を表示する。
+ymlファイルの差分を取得する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
@@ -207,7 +207,7 @@ Istioのプロファイルを操作する。
 
 #### ▼ list
 
-利用できるプロファイルを表示する。
+利用できるプロファイルを取得する。
 
 ```bash
 $ istioctl profile list
@@ -229,7 +229,7 @@ Istio configuration profiles:
 
 #### ▼ proxy-config
 
-Istio上で管理されるEnvoyの構成情報を表示する。
+Istio上で管理されるEnvoyの構成情報を取得する。
 
 参考：
 
@@ -240,7 +240,7 @@ Istio上で管理されるEnvoyの構成情報を表示する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <名前空間名>
 ```
 
-Envoyのエンドポイント情報を表示する。
+Envoyのエンドポイント情報を取得する。
 
 ```bash
 $ istioctl proxy-config endpoints <IngressGateway名> -n istio-system
@@ -261,7 +261,7 @@ unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 ```
 
-Envoyのリスナー情報を表示する。
+Envoyのリスナー情報を取得する。
 
 ```bash
 $ istioctl proxy-config listeners <IngressGateway名> -n istio-system
@@ -272,7 +272,7 @@ ADDRESS PORT  MATCH DESTINATION
 0.0.0.0 15090 ALL   Inline Route: /stats/prometheus*
 ```
 
-のルーティング情報を表示する。
+のルーティング情報を取得する。
 
 ```bash
 $ istioctl proxy-config routes <IngressGateway名> -n istio-system
@@ -289,7 +289,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ proxy-statusとは
 
-IngressGateway、EgressGateway、Envoyコンテナのステータスを表示する。
+IngressGateway、EgressGateway、Envoyコンテナのステータスを取得する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
@@ -357,7 +357,7 @@ Checked 3 Istio Deployments
 
 #### ▼ versionとは
 
-Istiodのバージョンを表示する。
+Istiodのバージョンを取得する。
 
 ```bash
 $ istioctl version

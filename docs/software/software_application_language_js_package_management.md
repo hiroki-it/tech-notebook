@@ -341,7 +341,7 @@ $ yarn install --check-files
 
 ### list
 
-指定したパッケージのバージョンを表示する。
+指定したパッケージのバージョンを取得する。
 
 ```bash
 $ yarn list --depth=0 | grep <パッケージ名>

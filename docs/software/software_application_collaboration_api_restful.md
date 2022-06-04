@@ -811,7 +811,7 @@ POST https://example.com/users/12345?format=json
 |                      |            | HttpOnly | クライアント側で、JavaScriptがCookieを使用できないようにする。XSS攻撃の対策になる。 |
 | リクエストメッセージ | Cookie     |          | セッションIDなどのCookie情報                                 |
 
-クライアントから送信されてきたリクエストメッセージの```Cookie```ヘッダーの内容は、グローバル変数に格納されている。
+クライアントから受信したリクエストメッセージの```Cookie```ヘッダーの内容は、グローバル変数に格納されている。
 
 ```php
 <?php

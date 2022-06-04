@@ -869,7 +869,7 @@ spec:
 
 #### ▼ activeDeadlineSecondsとは
 
-Jobの試行の上限実行時間を設定する。設定された時間を超過すると、エラーが返却される。```backoffLimit```キーよりも優先される。
+Jobの試行の上限実行時間を設定する。設定された時間を超過すると、エラーが返却される。```spec.backoffLimit```キーよりも優先される。
 
 ```yaml
 apiVersion: batch/v1
@@ -1074,7 +1074,7 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ領域を新しく作成し、これをボリュームとする。```nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
+Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
 
 参考：
 
@@ -2163,7 +2163,7 @@ stringData:
 
 #### ▼ appProtocol
 
-受信するインバウンド通信のプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+受信するインバウンド通信のプロトコルを設定する。```spec.ports.protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
 
 ```yaml
 apiVersion: v1
@@ -2187,7 +2187,7 @@ spec:
       port: 9000
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合に、```appProtocol```キーが使用しなければ、```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
+もしIstio VirtualServiceからインバウンド通信を受信する場合に、```spec.ports.appProtocol```キーが使用しなければ、```spec.ports.name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 

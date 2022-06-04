@@ -29,7 +29,7 @@ $ vagrant box add <ボックス名> <URL>
 
 ### box list
 
-インストールできるボックス名の一覧を表示する。
+インストールできるボックス名の一覧を取得する。
 
 参考：https://www.vagrantup.com/docs/cli/box#box-list
 
@@ -41,7 +41,7 @@ $ vagrant box list
 
 ### global-status
 
-起動中の仮想環境の一覧を表示する。
+起動中の仮想環境の一覧を取得する。
 
 参考：https://www.vagrantup.com/docs/cli/global-status
 

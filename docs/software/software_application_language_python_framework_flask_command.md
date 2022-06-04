@@ -31,7 +31,7 @@ $ export FLASK_APP=main.py
 
 #### ▼ routeとは
 
-登録済みのルーティングの一覧を表示する。
+登録済みのルーティングの一覧を取得する。
 
 ```bash
 $ flask routes

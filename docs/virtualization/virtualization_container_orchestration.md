@@ -50,7 +50,7 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 #### ▼ ロギングコンテナの配置
 
-FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナから送信されたログを他にルーティングする。
+FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからログを受信し、他にルーティングする。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html
 

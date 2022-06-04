@@ -49,7 +49,7 @@ OK (1 tests, 1 assertions)
 
 #### ▼ --list-tests
 
-テストファイルの一覧を表示する。
+テストファイルの一覧を取得する。
 
 ```bash
 $ vendor/bin/phpunit --list-tests

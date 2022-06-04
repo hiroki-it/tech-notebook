@@ -36,7 +36,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### Processエージェントとは
 
-サーバーの場合と同様にして、アプリケーションから送信されたメトリクスをDatadogに転送する。
+サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadogに転送する。
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
@@ -61,7 +61,7 @@ dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-KubernetesのClusterやワーカーNodeから送信されたメトリクスを、マスターNodeのkube-apiserverに転送する。
+KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
 
 参考：
 

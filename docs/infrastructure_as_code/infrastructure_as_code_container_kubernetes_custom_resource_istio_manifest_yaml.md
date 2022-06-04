@@ -15,7 +15,7 @@ description: manifest.yaml＠Istioの知見をまとめました。
 
 ## 01. manifest.yamlファイル＠Istioとは
 
-Istioを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
+Istioリソースを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html
 
@@ -50,7 +50,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioリソースをデプロイする。kubectlコマンドでもデプロイできるが、デプロイの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもデプロイできるが、デプロイの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 
@@ -73,6 +73,19 @@ Making this installation the default for injection and validation.
 $ kubectl apply -f <IstioOperatorのmanifest.yamlファイルへのパス>
 
 istiooperator.install.istio.io/istio-operator created
+```
+
+#### ▼ googleapisチャートリポジトリから
+
+googleapisチャートリポジトリからインストールする。
+
+参考：https://github.com/istio/istio/tree/master/manifests/charts/gateway
+
+```bash
+$ helm repo add istio https://istio-release.storage.googleapis.com/charts
+$ helm repo update
+
+$ helm install istio-ingressgateway istio/gateway
 ```
 
 <br>
@@ -187,7 +200,7 @@ metadata:
 
 <br>
 
-## 03. KubernetesのNamespaceに関して
+## 03. Namespace＠Kubernetesでの設定
 
 ### labels
 
@@ -205,21 +218,33 @@ metadata:
     istio-injection: enabled
 ```
 
+#### ▼ istio.io/rev
+
+IstoOperatorの```spec.revision```キーと同じ。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    istio.io/rev: 1-12-1 # ハイフン繋ぎのバージョン表記
+```
+
 <br>
 
-## 03-02. KubernetesnのPodに関して
+## 03-02. Pod＠Kubernetesでの設定
 
 ### annotationsとは
 
 #### ▼ annotations
 
-Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```spec.template```キーや、Podの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ▼ proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが生成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -767,7 +792,7 @@ spec:
 
 #### ▼ ingressGateways
 
-IstioOperator経由でインストールされるIngressGatewayのオプションを設定する。Gatewayとは異なるリソースであることに注意する。ingressGatewaysの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+2022/06/04現在、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、Gatewayを使用するようにする。一応このオプションの説明は残しておく。IngressGatewayのオプションを設定する。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -871,7 +896,7 @@ status:
 
 #### ▼ hubとは
 
-Istioを構成するコンテナのベースイメージのレジストリを設定する。
+Istioリソースを構成するコンテナのベースイメージのレジストリを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -1045,7 +1070,7 @@ spec:
 
 #### ▼ revisionとは
 
-Istioのバージョン変更時に、カナリアリリースで新しくインストールするバージョンを設定する。
+コントロールプレーン（Istiod）をカナリアリリースを用いてアップグレードする場合に、新しくインストールするバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
 参考：
 
@@ -1059,7 +1084,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  revision: 1-12-1
+  revision: 1-12-1 # ハイフン繋ぎのバージョン表記
 ```
 
 <br>
@@ -1068,7 +1093,7 @@ spec:
 
 #### ▼ tagとは
 
-Istioを構成するコンテナのベースイメージのバージョンを設定する。
+Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
 参考：
 
@@ -1091,7 +1116,11 @@ spec:
 
 #### ▼ valuesとは
 
+IstioOperatorに、Helmを使用させてIstioリソースをインストールする場合に、Helmのvaluesファイルの代わりになる。
+
 #### ▼ gateways.istio-ingressgateway.runAsRoot
+
+IstioOperatorをrootユーザーで実行する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -1250,7 +1279,7 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 参考：
 

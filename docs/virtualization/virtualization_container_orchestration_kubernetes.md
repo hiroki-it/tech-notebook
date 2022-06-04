@@ -311,7 +311,7 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 
 （２）Podが、Terminating状態になる。
 
-（３）Podは、削除プロセスを開始する。```preStop```キーの設定が実行される。SIGTERMシグナルが送信され、削除プロセスは完了する。この時、```terminationGracePeriodSeconds```キーの設定値を過ぎても削除プロセスが完了していない場合は、SIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（３）Podは、削除プロセスを開始する。```spec.preStop```キーの設定が実行される。SIGTERMシグナルが送信され、削除プロセスは完了する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎても削除プロセスが完了していない場合は、SIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （４）他のKubernetesリソース（Deployment、Service、など）の管理対象から、該当のPodが削除される。
 
@@ -363,7 +363,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-IngressコントローラーによってCluster外部から受信したインバウンド通信を、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+IngressコントローラーによってCluster外部からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
 参考：
 

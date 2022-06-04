@@ -147,7 +147,7 @@ $ docker-compose down --rmi all --volumes --remove-orphans
 
 #### ▼ オプション無し
 
-バックグラウンドでログを表示する。
+バックグラウンドでログを取得する。
 
 ```bash
 $ docker-compose logs <サービス名>
@@ -155,7 +155,7 @@ $ docker-compose logs <サービス名>
 
 #### ▼ -f
 
-フォアグラウンドでログを表示する。
+フォアグラウンドでログを取得する。
 
 ```bash
 $ docker-compose logs -f <サービス名>
