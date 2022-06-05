@@ -246,20 +246,23 @@ PrometheusがPull型メトリクスを対象から収集するためのエンド
 
 **＊例＊**
 
-参考：https://prometheus.io/docs/instrumenting/exporters/
+参考：
 
-| Exporter名                                                   | Exportタイプ | 説明                                                         |
-| :----------------------------------------------------------- | ------------ | ------------------------------------------------------------ |
-| [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ノードのメトリクスを収集する。                               |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | Kubernetesのリソース単位でメトリクスを収集する。<br>参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
-| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | Nginxのメトリクスを収集する。                                |
-| [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | Apacheのメトリクスを収集する。                               |
-| [black box expoter](https://github.com/prometheus/blackbox_exporter) | Deplyoment型 | 各種通信プロトコルの状況をメトリクスとして収集する。         |
-| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter) | Sidecar型    | MySQL/MariaDBのメトリクスを収集する。                        |
-| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter) | Sidecar型    | PostgreSQLのメトリクスを収集する。                           |
-| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter) | Sidecar型    | Oracleのメトリクスを収集する。                               |
-| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | Deployment型 | ElasticSearchのメトリクスを収集する。                        |
-| [redis-exporter](https://github.com/oliver006/redis_exporter) | Sidecar型    | Redisのメトリクスを収集する。                                |
+- https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
+- https://prometheus.io/docs/instrumenting/exporters/
+
+| Exporter名                                                   | Exportタイプ | ポート番号 | エンドポイント | 説明                                                         |
+| :----------------------------------------------------------- | ------------ | ---------- | -------------- | ------------------------------------------------------------ |
+| [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ```9100``` | ```/metrics``` | ノードのメトリクスを収集する。                               |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上           | Kubernetesのリソース単位でメトリクスを収集する。<br>参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
+| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | ```9113``` | 同上           | Nginxのメトリクスを収集する。                                |
+| [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | ```9117``` | 同上           | Apacheのメトリクスを収集する。                               |
+| [black box expoter](https://github.com/prometheus/blackbox_exporter) | Deplyoment型 | ```9115``` | 同上           | 各種通信プロトコルの状況をメトリクスとして収集する。         |
+| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter) | Sidecar型    | ```9104``` | 同上           | MySQL/MariaDBのメトリクスを収集する。                        |
+| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter) | Sidecar型    | ```9187``` | 同上           | PostgreSQLのメトリクスを収集する。                           |
+| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter) | Sidecar型    | ```9121``` | 同上           | Oracleのメトリクスを収集する。                               |
+| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | Deployment型 | ```9114``` | 同上           | ElasticSearchのメトリクスを収集する。                        |
+| [redis-exporter](https://github.com/oliver006/redis_exporter) | Sidecar型    | ```9121``` | 同上           | Redisのメトリクスを収集する。                                |
 
 #### ▼ PushGateway
 

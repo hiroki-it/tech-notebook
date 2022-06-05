@@ -33,13 +33,13 @@ description: サイバー攻撃＠セキュリティの知見をまとめまし�
 
 #### ▼ パケットフィルタリング型ファイアウォール
 
-  パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルータやNAPTルータが設置されている。
+パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルータやNAPTルータが設置されている。
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
 
 **＊例＊**
 
-Linuxにおけるiptables。```/etc/sysconfig/iptables```ファイルにルールを設定する。```iptables-save```コマンドでこのファイルを作成できる。
+Ubuntuにおけるiptables。```/etc/sysconfig/iptables```ファイルにルールを設定する。```iptables-save```コマンドでこのファイルを作成できる。
 
 参考：https://linuc.org/study/knowledge/540/
 
@@ -54,6 +54,30 @@ $ cat /etc/sysconfig/iptables
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 COMMIT
+```
+
+**＊例＊**
+
+Centosにおけるfirewalld。
+
+参考：https://knowledge.sakura.ad.jp/22269/
+
+```bash
+$ firewall-cmd --list-all
+
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: ssh dhcpv6-client
+  ports: 22/tcp 80/tcp 443/tcp # アクセスを許可するポート番号
+  protocols: 
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules:
 ```
 
 **＊例＊**
