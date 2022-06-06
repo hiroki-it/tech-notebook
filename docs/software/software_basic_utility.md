@@ -328,13 +328,27 @@ foo.txt: ASCII text
 
 GETリクエストを送信する。```jq```コマンドを使用すると、レスポンスを整形できる。
 
+**＊実行例＊**
+
 ```bash
 $ curl https://example.com/foo/1 | jq . 
+```
+
+#### ▼ -d
+
+メッセージボディを設定する。
+
+**＊実行例＊**
+
+```bash
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
 ```
 
 #### ▼ -L
 
 指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
+
+**＊実行例＊**
 
 ```bash
 $ curl -L https://example.com/foo
@@ -343,6 +357,8 @@ $ curl -L https://example.com/foo
 #### ▼ -o（小文字）
 
 インストール後のファイル名を定義する。これを指定しない場合、```-O```オプションを有効化する必要がある。
+
+**＊実行例＊**
 
 ```bash
 $ curl -o <ファイルへのパス> https://example.com
@@ -360,7 +376,7 @@ $ curl -o <ファイルへのパス> https://example.com
 $ curl --resolve <ドメイン名>:<ポート番号>:<IPアドレス> https://example.com
 ```
 
-**＊実装例＊**
+**＊実行例＊**
 
 リクエストの名前解決時に、```example.com```を正引きすると```127.0.0.1```が返却されるようにする。
 
@@ -368,12 +384,14 @@ $ curl --resolve <ドメイン名>:<ポート番号>:<IPアドレス> https://ex
 $ curl --resolve example.com:80:127.0.0.1 https://example.com
 ```
 
-#### ▼ -X、-T、-d
+#### ▼ -X
 
-Content-Typeを指定して、POSTリクエストを送信する。
+HTTPメソッドを設定する。
+
+**＊実行例＊**
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
+curl -X GET https://example.com
 ```
 
 <br>
@@ -385,6 +403,8 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/f
 パーティションで区切られたストレージのうち、マウントされているもののみを取得する。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
+
+**＊実行例＊**
 
 ```bash
 $ df

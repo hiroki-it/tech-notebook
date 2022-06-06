@@ -115,6 +115,22 @@ end
 
 <br>
 
+### config.vm.hostname
+
+#### ▼ hostnameとは
+
+仮想環境にホスト名を設定する。
+
+```ruby
+Vagrant.configure("2") do |config|
+
+  config.vm.host = "foo-server"
+
+end
+```
+
+<br>
+
 ### config.vm.box_check_update
 
 #### ▼ box_check_updateとは
@@ -155,7 +171,7 @@ end
 
 #### ▼ private_network
 
-仮想環境のプライベートIPアドレスを設定する。他の仮想環境とIPアドレスが重複しないようにする必要がある。
+仮想環境にプライベートIPアドレスを設定する。同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
 参考：https://www.vagrantup.com/docs/networking/private_network
 

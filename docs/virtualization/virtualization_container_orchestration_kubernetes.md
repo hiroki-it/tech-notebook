@@ -33,7 +33,19 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 <br>
 
-## 01-02. 構成要素
+## 01-02. マスターコンポーネント
+
+### マスターコンポーネントとは
+
+マスターNode上で稼働するKubernetesコンポーネントのこと。マスターコンポーネントを複数のマスターNodeにバラバラに稼働させると、コンポーネント間の通信に失敗する可能性があるため、全てのマスターコンポーネントを1つのマスターNodeで稼働させることが推奨されている。
+
+参考：
+
+- https://cstoku.dev/posts/2018/k8sdojo-24/
+- https://kubernetes.io/ja/docs/concepts/overview/components/
+- https://thinkit.co.jp/article/17453
+
+<br>
 
 ### cloud-controller-manager
 
@@ -42,16 +54,6 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 kub-apiserverとクラウドインフラを仲介し、Kubernetesがクラウドインフラを操作できるようにする。
 
 ![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cloud-controller-manager.png)
-
-<br>
-
-### core-dns（旧kube-dns）
-
-ワーカーNode内のDNSサーバーとして、Kubernetesリソースの名前解決を行う。CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNSサービスによって管理されている。
-
-参考：https://ssup2.github.io/theory_analysis/Kubernetes_CoreDNS/
-
-![core-dns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-dns.png)
 
 <br>
 
@@ -104,13 +106,16 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 <br>
 
-### コンテナランタイム（コンテナエンジン）
+## 01-03. Nodeコンポーネント
 
-#### ▼ コンテナランタイムとは
+### Nodeコンポーネントとは
 
-イメージのプル、コンテナ構築削除、コンテナ起動停止、などを行う。
+ワーカーNode上で稼働するKubernetesコンポーネントのこと。
 
-参考：https://thinkit.co.jp/article/17453
+参考：
+
+- https://cstoku.dev/posts/2018/k8sdojo-24/
+- https://kubernetes.io/ja/docs/concepts/overview/components/
 
 <br>
 
@@ -159,31 +164,29 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 <br>
 
-## 01-03. Kubernetesの実行環境
+### コンテナランタイム（コンテナエンジン）
 
-### 開発環境
+#### ▼ コンテナランタイムとは
 
-参考：
+イメージのプル、コンテナ構築削除、コンテナ起動停止、などを行う。
 
-- https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
-- https://blog.cybozu.io/entry/2019/07/03/170000
-
-|                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                 |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
-| 概要                   | カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022年3月の現在では、Kubernetesの開発環境として、ベタープラクティスである。 | セットアップが非常に簡単（有効化するだけ）なので、開発に取り掛かるまでが早い。 | セットアップが簡単なので、開発に取り掛かるまでが早い |
-| セットアップの難易度   | 簡単                                                         | 非常に簡単                                                   | 簡単                                                 |
-| Kubernetesのバージョン | 任意のバージョンを指定できる。                               | Docker for Desktopのバージョンごとに、Kubernetesのバージョンが固定される。 | 任意のバージョンを指定できる。                       |
-| マルチNode           | 不可                                                         | 可能                                                         | 可能                                                 |
-| Nodeのカスタマイズ性 | 高い                                                         | 低い                                                         | 高い                                                 |
+参考：https://thinkit.co.jp/article/17453
 
 <br>
 
-### 本番環境
+## 01-04. アドオン
 
-|                        | クラウドインフラ（AWS EKS、GCP GKE、など）                   | Rancher                                                      | Kubeadm                                                      |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要                   | カスタマイズ性が低い一方で、よりマネージドである、そのため、ユーザーがKubernetesのNodeを管理するコストが低い。2022年3月の現在では、Kubernetesの本番環境として、ベタープラクティスである。 | カスタマイズ性が高い。そのため、ユーザーがKubernetesのNodeを管理するコストが高い。 | カスタマイズ性が高い。そのため、ユーザーがKubernetesのNodeを管理するコストが高い。 |
-| Nodeのカスタマイズ性 | 低い                                                         | 高い                                                         | 高い                                                         |
+<br>
+
+### core-dns（旧kube-dns）
+
+#### ▼ core-dnsとは
+
+ワーカーNode内のDNSサーバーとして、Kubernetesリソースの名前解決を行う。CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNSサービスによって管理されている。
+
+参考：https://ssup2.github.io/theory_analysis/Kubernetes_CoreDNS/
+
+![core-dns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-dns.png)
 
 <br>
 
@@ -556,11 +559,11 @@ Pod間で通信する場合のインバウンド/アウトバウンド通信の�
 
 <br>
 
-### マスターNode（kubernetesマスター）
+### Node
 
-#### ▼ マスターNodeとは
+#### ▼ マスターNode（kubernetesマスター）とは
 
-kubernetesマスターともいう。ワーカーNodeの操作を担う。クライアントがkubectlコマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
+kubernetesマスターともいう。マスターコンポーネントが稼働する。クライアントがkubectlコマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
 
 参考：
 
@@ -568,13 +571,9 @@ kubernetesマスターともいう。ワーカーNodeの操作を担う。クラ
 - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
 - https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
-<br>
+#### ▼ ワーカーNode
 
-### ワーカーNode
-
-#### ▼ ワーカーNodeとは
-
-Podが稼働するサーバー単位こと。Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドで```--register-node=false```とする必要がある。
+ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドで```--register-node=false```とする必要がある。
 
 参考：
 

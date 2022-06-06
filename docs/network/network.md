@@ -145,7 +145,7 @@ URLとメールアドレスは完全修飾ドメイン名を持つ。
 
 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 127.0.0.1 localhost

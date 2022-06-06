@@ -325,7 +325,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 Kubernetesのダッシュボードを開発環境に構築する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube dashboard
@@ -346,7 +346,7 @@ $ minikube dashboard
 
 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube docker-env
@@ -653,7 +653,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 仮想環境にSSH接続を実行し、任意のコマンドを実行する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube ssh -- ls -la  
@@ -675,7 +675,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube start
@@ -719,7 +719,7 @@ $ minikube start --cpus=4 --memory=16384
 
 別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube start --docker-env
@@ -731,7 +731,7 @@ $ minikube start --docker-env
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # 事前にVirtualBoxのダウンロードが必要。
@@ -752,7 +752,7 @@ $ minikube start --kubernetes-version=v1.23.0
 
 ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、```start```コマンドを実行する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
@@ -762,7 +762,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 作成するワーカーNode数を指定し、```start```コマンドを実行する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube start --nodes 3
@@ -787,7 +787,7 @@ LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づ
 - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ minikube tunnel

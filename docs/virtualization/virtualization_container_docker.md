@@ -123,7 +123,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # ホストをコンテナ側にバインドマウント
@@ -185,7 +185,7 @@ dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存さ
 
 Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # ホストをコンテナ側にバインドマウント

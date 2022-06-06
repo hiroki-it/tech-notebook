@@ -45,7 +45,7 @@ $ yum install -y bind-utils
 
 参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # 正引き

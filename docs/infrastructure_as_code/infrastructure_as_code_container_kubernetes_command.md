@@ -27,7 +27,7 @@ description: コマンド＠Kubernetesの知見をまとめました。
 
 manifest.yamlファイルを指定し、```kubectl apply```コマンドを実行する。```-R```オプションでディレクトリ内のファイルを再帰的に指定もできる。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # リソースを作成する。
@@ -109,7 +109,7 @@ $ aws eks --region ap-northeast-1 update-kubeconfig --name foo-eks-cluster
 
 パラメーターのデフォルト値が設定された```~/.kude/config```ファイルを取得する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ kubectl config view
@@ -219,7 +219,7 @@ service/foo-service created
 
 Pod数を維持管理するReplicaSetを作成する。Podを削除するためには、Deployment自体を削除しなければならない。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
@@ -653,7 +653,7 @@ $ kubectl get pv \
 - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
@@ -671,7 +671,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  

@@ -25,11 +25,12 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ### セットアップ
 
-#### ▼ セットアップ
+#### ▼ 設定
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | リスナー             | ALBに割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。 |                                                              |
+| スキマー             | パブリックネットワークからのインバウンド通信を待ち受けるか、あるいはプライベートネットワークからのインバウンド通信を待ち受けるかを設定する。 |                                                              |
 | セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、ALBが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース（CloudFrontなど）、などを含む。<br>・参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
 | ルール               | リクエストのルーティングのロジックを設定する。               |                                                              |
 | ターゲットグループ   | ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。 | ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる。 |
@@ -1230,7 +1231,7 @@ CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 #### ▼ 操作コマンド
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # EC2内にある設定ファイルを、CloudWatchエージェントに読み込ませる（再起動を含む）
@@ -1535,7 +1536,7 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 設定後、```awslogs```コマンドでプロセスを起動する。
 
-**＊例＊**
+**＊実行例＊**
 
 ```bash
 # CloudWatchエージェントの再起動
@@ -3061,7 +3062,7 @@ $ eksctl create iamserviceaccount \
 
 ```bash
 # 東京リージョンにAWS LBコントローラーをデプロイする場合
-$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \           
+$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
@@ -3071,16 +3072,38 @@ $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 AWS Load Balancer controller installed!
 ```
 
-（７）AWS LBコントローラーがデプロイされたことを確認する。ALB Ingressを構築すためには、以下の条件を満たす必要がある。
-
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+（７）AWS LBコントローラーがデプロイされたことを確認する。
 
 ```bash
 $ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   0/2     2            0           22m
+
+$ helm list -n kube-system
+
+NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
+aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2 
 ```
+
+（８）Ingressをデプロイする。IngressからALB Ingressを構築するためには、以下の条件を満たす必要がある。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+
+#### ▼ IngressとALBの紐付け
+
+参考：
+
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
+- https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
+
+| 項目                                            | 説明                                                         |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPS通信を受け付ける場合に、SSL証明書のARNを設定する。 |
+| ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
+| ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
+| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
+| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。                 |
 
 <br>
 
