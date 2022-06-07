@@ -66,10 +66,12 @@ $ gcloud auth login
 
 ```bash
 $ gcloud config set project <プロジェクト名>
+
 Updated property [core/project].
 ```
 ```bash
 $ gcloud config set compute/region <リージョン名>
+
 WARNING: Property validation for compute/region was skipped.
 Updated property [compute/region].
 ```
@@ -84,6 +86,7 @@ Updated property [compute/region].
 
 ```bash
 $ gcloud init
+
 Welcome! This command will take you through the configuration of gcloud.
 
 Settings from your current configuration [default] are:

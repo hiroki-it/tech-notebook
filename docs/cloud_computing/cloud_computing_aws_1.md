@@ -2878,7 +2878,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <クラスターARN>
 ```
 
-（４）可観測性ツールをEKSで稼働させるために、名前空間を作成する。名前は、```aws-observability```とする必要がある。
+（４）可観測性ツールをEKSで稼働させるために、Namespaceを作成する。名前は、```aws-observability```とする必要がある。
 
 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/ 
 
@@ -2934,19 +2934,19 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
 
-| Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
-| -------------------------- | ----------------------- | ------------------------------------------------------------ |
-| Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                    | ALB Ingress             | ALBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| Ingressコントローラー      | ALBコントローラー       | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
-|                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
-| マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| ワーカーNode               | Fargate Node、EC2 Node  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
-| PersistentVolume           | EBS、EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
-| Secret                     | System Manager          | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
-| kube-dns                   | coredns                 |                                                              |
-| kube-proxy                 | kube-proxy              |                                                              |
-| 種々のCNIプラグイン        | aws-node                | 参考：<br>・https://github.com/aws/amazon-vpc-cni-k8s<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
+| Kubernetes上でのリソース名 | EKS上でのリソース名           | 補足                                                         |
+| -------------------------- |-----------------------| ------------------------------------------------------------ |
+| Cluster                    | EKSクラスター              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
+| Ingress                    | ALB Ingress           | AWS LBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| Ingressコントローラー      | AWS LBコントローラー         | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
+|                            | API Gateway＋NLB       | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
+| マスターNode               | EKSコントロールプレーン         | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
+| ワーカーNode               | Fargate Node、EC2 Node | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
+| PersistentVolume           | EBS、EFS               | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
+| Secret                     | System Manager        | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
+| kube-dns                   | CoreDNS               |                                                              |
+| kube-proxy                 | kube-proxy            |                                                              |
+| 種々のCNIプラグイン        | aws-nodeコンテナ          | ClusterネットワークとしてのVPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
 | これら以外のリソース       | なし                    |                                                              |
 
 <br>
@@ -2981,7 +2981,7 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 #### ▼ プライベートサブネットへのインバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をALBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
+EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
 
 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
@@ -2992,8 +2992,6 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。このうち2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
-
-参考：
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
 
@@ -3046,47 +3044,101 @@ $ eksctl utils associate-iam-oidc-provider \
 2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
 ```
 
-（５）ServiceAccountを作成する。
+（５）ServiceAccountを作成し、IAMロールと紐づける。
 
 ```bash
 $ eksctl create iamserviceaccount \
     --cluster=foo-eks-cluster \
     --namespace=kube-system \
     --name=aws-load-balancer-controller \
-    --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+    --attach-policy-arn=arn:aws:iam::<アカウントID>:policy/AWSLoadBalancerControllerIAMPolicy \
     --override-existing-serviceaccounts \
     --approve
+
 ```
 
-（６）指定したリージョンにAWS LBコントローラーをデプロイする。
+（６）ServiceAccountがデプロイされたことを確認する。
+
+参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 
 ```bash
-# 東京リージョンにAWS LBコントローラーをデプロイする場合
+$ eksctl get iamserviceaccount \
+  --cluster foo-eks-cluster \
+  --name aws-load-balancer-controller \
+  --namespace kube-system
+
+2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
+2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
+NAMESPACE       NAME                            ROLE ARN
+kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+
+# 作成されたServiceAccount
+$ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+  creationTimestamp: "2022-05-29T12:59:15Z"
+  labels:
+    app.kubernetes.io/managed-by: eksctl
+  name: aws-load-balancer-controller
+  namespace: kube-system
+  resourceVersion: "2103515"
+  uid: *****
+secrets:
+- name: aws-load-balancer-controller-token-****
+```
+
+（７）指定したリージョンにAWS LBコントローラーをデプロイする。この時、事前に作成したServiceAcountをALBに紐づける。
+
+```bash
+# FargateにAWS LBコントローラーをデプロイする場合
+$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+    -n kube-system \
+    --set clusterName=foo-eks-cluster \
+    --set serviceAccount.create=false \
+    --set serviceAccount.name=aws-load-balancer-controller \
+    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
+    --set region=ap-northeast-1 \
+    --set vpcId=<VPCID>
+ 
+AWS Load Balancer controller installed!
+```
+
+```bash
+# EC2にAWS LBコントローラーをデプロイする場合
 $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
     -n kube-system \
     --set clusterName=foo-eks-cluster \
     --set serviceAccount.create=false \
     --set serviceAccount.name=aws-load-balancer-controller \
     --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
- 
+    
 AWS Load Balancer controller installed!
 ```
 
-（７）AWS LBコントローラーがデプロイされたことを確認する。
+（８）AWS LBコントローラーがデプロイされ、READY状態になっていることを確認する。
 
 ```bash
-$ kubectl get deployment -n kube-system aws-load-balancer-controller
-
-NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-aws-load-balancer-controller   0/2     2            0           22m
-
 $ helm list -n kube-system
 
 NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
-aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2 
+aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
+
+$ kubectl get deployment -n kube-system aws-load-balancer-controller
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+aws-load-balancer-controller   2/2     2            0           22m
 ```
 
-（８）Ingressをデプロイする。IngressからALB Ingressを構築するためには、以下の条件を満たす必要がある。
+もし、以下のように、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
+
+```bash
+{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nnn.n.n.nnn:43958->nnn.nn.n.nn:53: read: connection refused"}
+```
+
+（９）Ingressをデプロイし、IngressからALB Ingressを自動的に構築させる。以下の条件を満たす必要がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
 
@@ -3103,7 +3155,9 @@ aws-load-balancer-controller    kube-system     2               2022-01-01 00:00
 | ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
 | ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
-| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。                 |
+| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。EKS on Fargateの場合は、```ip```を設定する必要がある。 |
+| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を構築する必要がある。 |
+| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を構築する必要がある。 |
 
 <br>
 
@@ -3183,11 +3237,11 @@ Fargateを設定する。
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
 | コンポーネント名           | 説明                                                         | 補足                                                         |
-| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pod実行ロール              | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
-| サブネット                 | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
-| ポッドセレクタ（名前空間） | EKS Fargate Node上で稼働させるPodを固定できるように、Podの名前空間ラベルの値を設定する。 | IstioやArgoCDを、それ専用の名前空間で稼働させる場合は、その名前空間のためのプロファイルを作成しておく必要がある。 |
-| ポッドセレクタ（ラベル）   | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のラベルの値を設定する。 |                                                              |
+|--------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Pod実行ロール           | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
+| サブネット              | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
+| ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceラベルの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
+| ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のラベルの値を設定する。 |                                                              |
 
 <br>
 
@@ -3197,7 +3251,7 @@ Fargateを設定する。
 
 #### ▼ EC2 Nodeとは
 
-EC2で稼働するKubernetesのホストのこと。on Fargateと比べてカスタマイズ性が高く、Node当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+EC2で稼働するKubernetesのホストのこと。EKS on Fargateと比べてカスタマイズ性が高く、Node当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 

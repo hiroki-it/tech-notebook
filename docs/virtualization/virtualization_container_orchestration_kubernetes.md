@@ -17,7 +17,7 @@ description: Kubernetes＠仮想化の知見をまとめました。
 
 ### 構造
 
-Kubernetesコンポーネントは、Kubernetesリソースから作成されたオブジェクトを操作し、アプリケーションを稼働させる。kubernetesクライアントは、kubectlコマンドをkube-apiserverに送信することにより、Kubernetesを操作できる。
+
 
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
@@ -37,9 +37,9 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 ### マスターコンポーネントとは
 
-マスターNode上で稼働するKubernetesコンポーネントのこと。マスターコンポーネントを複数のマスターNodeにバラバラに稼働させると、コンポーネント間の通信に失敗する可能性があるため、全てのマスターコンポーネントを1つのマスターNodeで稼働させることが推奨されている。
 
-参考：
+
+
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
 - https://kubernetes.io/ja/docs/concepts/overview/components/
@@ -176,17 +176,49 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 ## 01-04. アドオン
 
+### cniプラグイン
+
+#### ▼ cniプラグインとは
+
+![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
+
+Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。kubeletによって実行される。Clusterネットワークの種類に応じたプラグインが用意されている。
+
+参考：
+
+- https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
+- https://kubernetes.io/ja/docs/concepts/cluster-administration/networking/
+
 <br>
 
 ### core-dns（旧kube-dns）
 
 #### ▼ core-dnsとは
 
-ワーカーNode内のDNSサーバーとして、Kubernetesリソースの名前解決を行う。CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNSサービスによって管理されている。
+ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
-参考：https://ssup2.github.io/theory_analysis/Kubernetes_CoreDNS/
+![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
-![core-dns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-dns.png)
+#### ▼ CoreDNS Service/Pod
+
+CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNS Serviceによって管理されている。
+
+参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+
+```bash
+# CoreDNS Service
+$ kubectl get service -n kube-system
+
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+
+# CoreDNS Pod
+$ kubectl get pods -n kube-system
+
+NAME                                     READY   STATUS    RESTARTS   AGE
+coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
+coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
+```
 
 <br>
 
@@ -275,11 +307,11 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-#### ▼ 同じPod内通信方法
+#### ▼ 通信方法
 
 | 通信の状況  | 説明                                                         | 補足                                                         |
 | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 同じPod内   | Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。 | 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate |
+| 同じPod内   | Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内コンテナ間は、『```localhost:<ポート番号>```』で通信できる。 | 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate |
 | 異なるPod間 | 異なるPodのコンテナ間は、Serviceを経由して通信できる。       | 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/ |
 
 #### ▼ リソースの単位
@@ -299,7 +331,7 @@ Cluster内の全てのPodにDNS名が割り当てられている。レコード�
 
 | レコードタイプ | ドメイン名                                           | 名前解決の仕組み              |
 | -------------- | ---------------------------------------------------- | ----------------------------- |
-| A/AAAAレコード | ```<PodのIPアドレス>.<名前空間>.pod.cluster.local``` | PodのIPアドレスが返却される。 |
+| A/AAAAレコード | ```<PodのIPアドレス>.<Namespace名>.pod.cluster.local``` | PodのIPアドレスが返却される。 |
 
 #### ▼ ライフサイクル
 
@@ -403,7 +435,7 @@ Ingressの設定に基づいてCluster外部からのインバウンド通信を
 | コントローラー名                                      | 開発環境 | 本番環境 |
 | ----------------------------------------------------- | -------- | -------- |
 | minikubeアドオン（実体はNginx Ingressコントローラー） | ✅        |         |
-| AWS ALBコントローラー                                 |         | ✅        |
+| AWS LBコントローラー                                 |         | ✅        |
 | GCP CLBコントローラー                                 |         | ✅        |
 | Nginx Ingressコントローラー                           | ✅        | ✅        |
 | Istio Ingress                                         | ✅        | ✅        |
@@ -464,9 +496,38 @@ PodのCNAMEを返却し、Serviceに対するインバウンド通信をPodに�
 
 #### ▼ Headless Service
 
-PodのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Podが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却される。
+PodのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Podが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
+
+参考：
+
+- https://thinkit.co.jp/article/13739
+- https://hyoublog.com/2020/05/22/kubernetes-headless-service/
+
+```bash
+$ dig <Service名>.<Namespace名>.svc.cluster.local
+
+;; QUESTION SECTION:
+;<Service名>.<Namespace名>.svc.cluster.local. IN   A
+
+;; ANSWER SECTION:
+<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.0.30
+<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.1.34
+<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.2.55
+```
+
+また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
 
 参考：https://thinkit.co.jp/article/13739
+
+```bash
+$ dig <Pod名>.<Service名>.<Namespace名>.svc.cluster.local
+
+;; QUESTION SECTION:
+;<Pod名>.<Service名>.<Namespace名>.svc.cluster.local. IN A
+
+;; ANSWER SECTION:
+<Pod名>.<Service名>.<Namespace名>.svc.cluster.local. 30 IN A 10.8.0.30
+```
 
 <br>
 
@@ -627,8 +688,8 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 | ロール名    | 説明                                   | 補足                                                         |
 | ----------- | -------------------------------------- | ------------------------------------------------------------ |
-| Role        | 名前空間内の認可スコープを設定する。   | RoleとRoleBindingは同じ名前空間にある必要がある。            |
-| ClusterRole | クラスター内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じ名前空間にある必要がある。 |
+| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceにある必要がある。            |
+| ClusterRole | クラスター内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceにある必要がある。 |
 
 <br>
 
@@ -642,8 +703,8 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 | バインディング名   | 説明                             | 補足                                                         |
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
-| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じ名前空間にある必要がある。            |
-| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じ名前空間にある必要がある。 |
+| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceにある必要がある。            |
+| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceにある必要がある。 |
 
 <br>
 
@@ -828,9 +889,49 @@ CSIの仕様によって標準化された外部ボリューム。プロバイ�
 
 <br>
 
-## 04. サービスディスカバリー
+## 04. Kubernetesネットワーク
 
-### 環境変数の場合
+### Nodeネットワーク
+
+#### ▼ Nodeネットワークとは
+
+同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
+
+参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
+
+![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
+
+<br>
+
+### Clusterネットワーク
+
+#### ▼ Clusterネットワークとは
+
+同じCluster内にあるPodの仮想NIC（veth）間を接続するネットワーク。
+
+参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+
+![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
+
+<br>
+
+### Serviceネットワーク
+
+#### ▼ Serviceネットワークとは
+
+Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。
+
+参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
+
+![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_service-network.png)
+
+<br>
+
+## 04-02. サービスディスカバリー
+
+### 環境変数を使用する場合
+
+#### ▼ 環境変数の設定
 
 Serviceにリクエストを送信するために必要な情報を、環境変数として出力する。
 
@@ -855,41 +956,71 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 <br>
 
-### クラスター内DNSの場合
+### 権威DNSサーバーを使用する場合
+
+#### ▼ 権威DNSサーバーの設定
+
+クラスター内に権威DNSサーバーとしてのKubernetesリソース（CoreDNS、kube-dns、HashiCorp Consul、など）を配置し、Serviceの名前解決を行う。Podを作成すると、kubeletによって、Pod内コンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスが自動的に設定される。Pod内コンテナが他のコンテナにアウトバウンド通信を送信する場合、自身の```/etc/resolv.conf```ファイルを確認し、権威DNSサーバーによって宛先のコンテナの名前解決を行う。
+
+参考：
+
+- https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+- https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+
+```bash
+# Pod内コンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+# コンテナのresolv.confファイルの中身を確認する
+[root@<Pod名>] $ cat /etc/resolv.conf 
+
+nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
+search default.svc.cluster.local svc.cluster.local cluster.local 
+options ndots:5
+
+# CoreDNSを権威DNSサーバーとして使用している場合
+$ kubectl get service -n kube-system
+
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+```
 
 #### ▼ レコードタイプとドメイン名の関係
 
 Cluster内の全てのServiceにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
 
-参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
+参考：
 
-| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| A/AAAAレコード | ```<Service名>.<名前空間>.svc.<Clusterのドメイン名>```   | 通常のServiceの名前解決ではClusterIPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<名前空間>.svc.cluster.local``` | 要勉強                                                       |
+- https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
+- https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
 
-#### ▼ 名前解決
+| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| A/AAAAレコード | ```<Service名>.<Namespace名>.svc.svc.cluster.local```        | ・通常のServiceの名前解決ではClusterIPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略可能。<br>・同じNamespace内から通信する場合は、```<Service名>```のみで良い。 |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 要勉強                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。 |
 
-Serviceのドメイン名を使用して、Pod内から```nslookup```コマンドの正引きを実行する。Serviceに```meta.name```タグが設定されている場合、Serviceのドメイン名は、```meta.name```タグの値になる。ドメイン名の設定を要求された時は、設定ミスを防げるため、```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である。
+#### ▼ Serviceに対する名前解決
+
+Pod内コンテナから宛先のServiceに対して、```nslookup```コマンドの正引きを検証する。Serviceに```meta.name```タグが設定されている場合、Serviceのドメイン名は、```meta.name```タグの値になる。ドメイン名の設定を要求された時は、設定ミスを防げるため、```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である。
 
 参考：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
 ```bash
-# Pod内から正引き
-[root@<Pod名>:〜] $ nslookup <Serviceのmeta.name値>
+# Pod内コンテナから宛先のServiceに対して、正引きの名前解決を行う
+[root@<Pod名>:~] $ nslookup <Serviceのmeta.name値>
 
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <Serviceのmeta.name値>.<名前空間>.svc.cluster.local
+Name:  <Serviceのmeta.name値>.<Namespace名>.svc.cluster.local
 Address:  10.105.157.184
 ```
 
-ちなみに、異なる名前空間にあるServiceの名前解決を行う場合は、Serviceのドメイン名の後に名前空間を指定する必要がある。
+ちなみに、異なるNamespaceにあるServiceの名前解決を行う場合は、Serviceのドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
-# Pod内から正引き
-[root@<Pod名>:〜] $ nslookup <Serviceのmeta.name値>.<名前空間>
+# Pod内コンテナから正引きの名前解決を行う。
+[root@<Pod名>:~] $ nslookup <Serviceのmeta.name値>.<Namespace名>
 ```
 
 <br>

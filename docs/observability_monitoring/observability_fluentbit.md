@@ -886,7 +886,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
     "container_id": "*****",
     "container_name": "foo",
     "ecs_cluster": "prd-foo-ecs-cluster",
-    "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:****:task/cluster-name/*****",
+    "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:<アカウントID>:task/cluster-name/*****",
     "ecs_task_definition": "prd-foo-ecs-task-definition:1",
     "log": "<ログ>",
     "source": "stdout",

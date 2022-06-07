@@ -62,6 +62,8 @@ Centosにおけるfirewalld。
 
 参考：https://knowledge.sakura.ad.jp/22269/
 
+アクセスが許可されているポート番号を確認する。
+
 ```bash
 $ firewall-cmd --list-all
 
@@ -78,6 +80,19 @@ public (active)
   source-ports: 
   icmp-blocks: 
   rich rules:
+```
+
+アクセスが許可されている送信元IPアドレスを確認する。
+
+参考：https://kaede.jp/2018/02/11022556/
+
+```bash
+$ firewall-cmd --get-active-zones
+
+foo-cidr
+  sources: 192.168.128.0/23
+public
+  interfaces: ens192
 ```
 
 **＊例＊**
@@ -124,7 +139,7 @@ Win10におけるファイアウォール。
 
 ### Malware の語源
 
-『malicious（悪意のある）＋software（ソフトウェア）』
+『malicious（悪意のある）＋ software（ソフトウェア）』
 
 <br>
 

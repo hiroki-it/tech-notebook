@@ -147,7 +147,7 @@ $ kubectl config use-context <Cluster ARN>
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 - http://linuxcommand2007.seesaa.net/article/476794217.html
 
-（２）ArgoCDが稼働する名前空間を作成する。
+（２）ArgoCDが稼働するNamespaceを作成する。
 
 ```bash
 $ kubectl create namespace argocd
@@ -767,7 +767,7 @@ spec:
 
 #### ▼ namespace
 
-デプロイ先の名前空間を設定する。
+デプロイ先のNamespaceを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -845,7 +845,7 @@ GtiOpsでのmanifest.yamlファイルの同期処理の詳細を設定する。
 
 | 設定項目                     | 説明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
-| ```CreateNamespace```        | Applicationの作成対象の名前空間を自動的に作成する。ArgoCDがインストールされる名前空間と、Applicationを作成する名前空間が異なる場合に、これを有効化しておいた方が良い。 |
+| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |
 | ```Validate```               |                                                              |
 | ```PrunePropagationPolicy``` |                                                              |
 | ```PruneLast```              |                                                              |

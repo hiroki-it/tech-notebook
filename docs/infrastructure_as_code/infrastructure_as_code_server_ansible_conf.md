@@ -47,12 +47,16 @@ $ pip3 install ansible
 
 - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
 - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+- https://thinkit.co.jp/article/9871
 
 ```yaml
 repository/
 ├── playbook.yml
 ├── group_vars/
-│   └── foo_group.yml
+│   ├── prd/ # 本番環境
+│   │   └── foo.yml
+│   │
+│   └── dev/
 │
 ├── host_vars/
 │   ├── bar_host.yml
@@ -130,15 +134,15 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 
 <br>
 
-### ```roles```ディレクトリ
+### rolesディレクトリ
 
-#### ▼ ```roles```ディレクトリとは
+#### ▼ rolesディレクトリとは
 
 特定の機能に関するタスクが設定されたファイルを配置する。```playbook.yml```ファイルを切り分けるために使用する。
 
 参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
-#### ▼ ```task```ディレクトリ
+#### ▼ taskディレクトリ
 
 playbookファイルから切り分けたセットアップ処理が設定されたtaskファイルを配置する。
 
@@ -185,7 +189,7 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
     # 〜 中略 〜
 ```
 
-#### ▼ ```templates```ディレクトリ
+#### ▼ templateディレクトリ
 
 アップロードファイルの鋳型となる```j2```ファイルを配置する。鋳型に変数を出力できる。
 
@@ -202,7 +206,7 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 # 〜 中略 〜
 ```
 
-#### ▼ ```handlers```ディレクトリ
+#### ▼ handlersディレクトリ
 
 taskファイルの後続処理が設定されたhandlerファイルを配置する。taskファイルの```notify```オプションで指定できる。
 
@@ -227,11 +231,13 @@ taskファイルの後続処理が設定されたhandlerファイルを配置す
 
 <br>
 
-### ```group_vars```ディレクトリ
+### group_varsディレクトリ
 
-#### ▼ ```group_vars```ディレクトリとは
+#### ▼ group_varsディレクトリとは
 
-複数の管理対象ノードで使用する変数に関するファイルを配置する。
+複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。```inventories```ディレクトリと同じ階層に配置し、また```inventory```ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。自動的に読み込まれ、```playbook```ファイルや```inventory```ファイルで出力できる。
+
+参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
 #### ▼ group_varファイル
 
@@ -241,13 +247,45 @@ taskファイルの後続処理が設定されたhandlerファイルを配置す
 # group_varファイル
 env: prd
 domain: example.com
+ip_addresses:
+  - 192.168.1.1
+  - 192.168.1.2
+  - 192.168.1.3
+ports:
+  - 22/tcp
+  - 80/tcp
+  - 443/tcp
+```
+
+ポート番号のリストを```playbook```ファイルで出力する
+
+参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
+
+```yaml
+# 〜 中略 〜
+
+- name: Add port
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+    zone: public
+  with_items:
+    - "{{ ports }}"
+    
+- name: Restart firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+# 〜 中略 〜
 ```
 
 <br>
 
-### ```host_vars```ディレクトリ
+### host_varsディレクトリ
 
-#### ▼ ```host_vars```ディレクトリとは
+#### ▼ host_varsディレクトリとは
 
 特定の管理対象ノードで使用する変数に関するファイルを配置する。
 
@@ -257,11 +295,17 @@ domain: example.com
 
 <br>
 
-### ```inventories```ディレクトリ
+### inventoriesディレクトリ
 
-#### ▼ ```inventories```ディレクトリとは
+#### ▼ inventoriesディレクトリとは
 
-管理対象ノードが設定された```inventory```ファイルを配置する。
+管理対象ノードが設定された```inventory```ファイルを配置する。Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
+
+参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
+
+```bash
+$ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
+```
 
 #### ▼ inventoryファイル
 

@@ -175,18 +175,18 @@ users:
 
 #### ▼ cpとは
 
-ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。
+ホストPCのファイルまたはディレクトリを指定したPod内コンテナにコピーする。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ▼ オプション無し
 
 ```bash
-$ kubectl cp <ホストPCのパス> <名前空間名>/<PodID>:<コンテナのパス>
+$ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのパス>
 ```
 
 ```bash
-$ kubectl cp <ホストPCのパス> <名前空間名>/<PodID>:<コンテナのディレクトリパス>/
+$ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのディレクトリパス>/
 ```
 
 <br>
@@ -227,7 +227,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 #### ▼ secret docker-registry
 
-イメージレジストリの認証情報を持つSecretを作成する。Podと同じ名前空間に存在する必要があるため、作成時に名前空間の指定を忘れないようにする。
+イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに存在する必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
 参考：
 
@@ -318,7 +318,7 @@ $ kubectl describe nodes
 
 #### ▼ execとは
 
-指定したPod内のコンテナでコマンドを実行する。
+指定したPod内コンテナでコマンドを実行する。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
@@ -567,14 +567,14 @@ $ kubectl label --overwrite <リソース名> foo=bar
 Pod名とコンテナ名を指定し、コンテナのログを取得する。
 
 ```bash
-$ kubectl logs -n <名前空間名> <Pod名> -c <コンテナ名>
+$ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名>
 
 [ERROR] *****
 ```
 
 **＊例＊**
 
-名前空間、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
+Namespace、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
 $ kubectl logs -n kube-system <Pod名> -c kube-proxy
@@ -585,7 +585,7 @@ $ kubectl logs -n kube-system <Pod名> -c kube-proxy
 タイムスタンプを取得する。
 
 ```bash
-$ kubectl logs -n <名前空間名>  --timestamps=true <Pod名> -c <コンテナ名> 
+$ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名> 
 
 2021/11/27 08:34:01 [ERROR] *****
 ```

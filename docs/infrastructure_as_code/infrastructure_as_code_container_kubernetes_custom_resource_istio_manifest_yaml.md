@@ -191,7 +191,7 @@ Istioリソースの一意に識別するための情報を設定する。
 
 ### namespace
 
-Istioリソースを作成する名前空間を設定する。デフォルトで```istio-system```になる。
+Istioリソースを作成するNamespaceを設定する。デフォルトで```istio-system```になる。
 
 ```yaml
 metadata:
@@ -354,13 +354,13 @@ spec:
 
 #### ▼ exportToとは
 
-DestinationRule上のインバウンド通信をルーティングできる名前空間を設定する。
+DestinationRule上のインバウンド通信をルーティングできるNamespaceを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする。
+全てのNamespaceで使用できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -375,7 +375,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在の名前空間で使用できるようにする。
+現在のNamespaceで使用できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1030,7 +1030,7 @@ spec:
 
 #### ▼ namespaceとは
 
-IstioOperator経由でインストールされるIstioリソースの名前空間を設定する。
+IstioOperator経由でインストールされるIstioリソースのNamespaceを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -1199,13 +1199,13 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 #### ▼ exportToとは
 
-VirtualService上のインバウンド通信をルーティングできる名前空間を設定する。
+VirtualService上のインバウンド通信をルーティングできるNamespaceを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
-全ての名前空間で使用できるようにする。
+全てのNamespaceで使用できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1220,7 +1220,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在の名前空間で使用できるようにする。
+現在のNamespaceで使用できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1243,9 +1243,9 @@ spec:
 
 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ <名前空間>/<Gateway名>
+#### ▼ <Namespace名>/<Gateway名>
 
-Gateway名とこれの名前空間を設定する。VirtualServiceとGatewayが同じ名前空間にある場合は、名前空間を省略できる。
+Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceにある場合は、Namespaceを省略できる。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

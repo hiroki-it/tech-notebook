@@ -1435,7 +1435,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内のコンテナのマウントポイントを設定する。```spec.volume```オプションで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```オプションで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内コンテナのマウントポイントを設定する。```spec.volume```オプションで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```オプションで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -1536,7 +1536,7 @@ spec:
 
 #### ▼ restartPolicyとは
 
-Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。
+Pod内コンテナのライフサイクルの再起動ポリシーを設定する。
 
 #### ▼ Always
 
@@ -2393,7 +2393,7 @@ automountServiceAccountToken: false
 
 #### ▼ imagePullSecretsとは
 
-新しく作成されたPod内のコンテナに自動挿入する```imagePullSecrets```キーを設定する。
+新しく作成されたPod内コンテナに自動挿入する```imagePullSecrets```キーを設定する。
 
 参考：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
 

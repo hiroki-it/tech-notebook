@@ -521,9 +521,9 @@ $ brew install sops
 ```yaml
 creation_rules:
   - path_regex: /foo/foo.yaml
-    kms: "arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+    kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
   - path_regex: /bar/.*\.yaml # 再帰的に指定できる。
-    kms: "arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+    kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 ```
 
 <br>
@@ -544,7 +544,7 @@ sops -e <復号前のYAMLファイル/JSONファイル> > <復号後のYAMLフ�
 
 ```bash
 # AWS KMSをルールとして使用する。
-$ export SOPS_KMS_ARN="arn:aws:kms:<リージョン>:<アカウントID>:key/*****"
+$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
 $ sops -e <暗号化前のYAMLファイル/JSONファイル> > <暗号化後のYAMLファイル/JSONファイル>
 ```

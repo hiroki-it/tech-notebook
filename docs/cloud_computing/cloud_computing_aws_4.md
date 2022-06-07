@@ -707,7 +707,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-northeast-1:*****:foo-function:1"
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:<アカウントID>:foo-function:1"
       },
       "Retry": [
         {
@@ -745,7 +745,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
         {
             "Effect": "Allow",
             "Action": "states:StartExecution",
-            "Resource": "arn:aws:states:*:*****:stateMachine:*"
+            "Resource": "arn:aws:states:*:<アカウントID>:stateMachine:*"
         }
     ]
 }
@@ -757,7 +757,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 ```bash
 {
-    "executionArn": "arn:aws:states:ap-northeast-1:*****:execution:prd-foo-doing-state-machine:*****",
+    "executionArn": "arn:aws:states:ap-northeast-1:<アカウントID>:execution:prd-foo-doing-state-machine:*****",
     "startDate": 1.638244285498E9
 }
 ```

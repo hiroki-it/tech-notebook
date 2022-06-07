@@ -74,7 +74,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
+KubernetesリソースでIstioリソースを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
@@ -112,10 +112,10 @@ Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 8
 
 #### ▼ -n
 
-名前空間を指定しつつ、```analyze```コマンドを実行する。
+Namespaceを指定しつつ、```analyze```コマンドを実行する。
 
 ```bash
-$ istioctl analyze -n <名前空間名>
+$ istioctl analyze -n <Namespace名>
 ```
 
 <br>
@@ -170,7 +170,7 @@ $ istioctl install -y -f <IstioOperatorのmanifest.yamlファイルへのパス>
 
 #### ▼ kube-injectとは
 
-Envoyコンテナをサイドカーコンテナとして構築する。代わりに、```enabled```値が割り当てられた```istio-injection```タグを名前空間に付与しても良い。
+Envoyコンテナをサイドカーコンテナとして構築する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 
@@ -237,7 +237,7 @@ Istio上で管理されるEnvoyの構成情報を取得する。
 - https://sreake.com/blog/istio/
 
 ```bash
-$ istioctl proxy-config <設定項目> <Pod名> -n <名前空間名>
+$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 ```
 
 Envoyのエンドポイント情報を取得する。

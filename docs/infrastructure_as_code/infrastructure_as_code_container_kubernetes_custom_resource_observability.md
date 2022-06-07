@@ -345,7 +345,7 @@ spec:
      - rules:
         - alert: foo-pod-cpu-alert-prometheus-rule
           annotations:
-            summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内のコンテナのCPU使用率の上昇しました。
+            summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内コンテナのCPU使用率の上昇しました。
             description: {{ {{"{{"}} $labels.source {{"}}"}} }}コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。
             # アラートのルーティングのクールダウン期間
             for: 1m

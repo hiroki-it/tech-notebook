@@ -135,7 +135,7 @@ Lambda関数に紐づけるSQSを設定する。新しくSQSを構築できず�
 functions:
   main:
     events:
-      - sqs:arn:aws:sqs:region:****:prd-foo-queue
+      - sqs:arn:aws:sqs:region:<アカウントID>:prd-foo-queue
 ```
 
 <br>
