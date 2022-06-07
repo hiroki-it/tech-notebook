@@ -85,7 +85,7 @@ class FooNotFoundException extends Exception
 {
     // 基本的に何も実装しない。
     
-    // エラーコードとステータスコードは異なるもののため、以下のようにしないこと。
+    // エラーコードとステータスコードは異なるもののため、以下の様にしないこと。
     // protected $code = 400
 }
 ```

@@ -412,7 +412,7 @@ spec:
 
 ### spec.subsets
 
-VirtualServiceのサブセット名に関して、ルーティング先とするPodのラベルを設定する
+VirtualServiceのサブセット名に関して、ルーティング先とするPodのlabelキーを設定する
 
 参考：
 
@@ -630,7 +630,7 @@ spec:
 
 #### ▼ selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与されたラベルを設定する。
+Gatewayの適用対象のIngressGatewayに付与されたlabelキーを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
@@ -966,7 +966,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全てのEnvoyコンテナに関して、使用するGatewayの```istio```ラベル値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、使用するGatewayの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -981,7 +981,7 @@ spec:
 
 #### ▼ ingressService
 
-全てのEnvoyコンテナに関して、使用するIngressコントローラーの```istio```ラベル値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -996,7 +996,7 @@ spec:
 
 #### ▼ proxyHttpPort
 
-全てのEnvoyコンテナに関して、Cluster外部からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する。
+全てのEnvoyコンテナに関して、Cluster外からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

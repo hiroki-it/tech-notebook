@@ -55,7 +55,7 @@ apiVersion: v1
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-IngressがCluster内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 参考：
 
@@ -79,7 +79,7 @@ Kubernetesが、Kubernetesリソースの一意に識別するための情報を
 - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
-#### ▼ 予約ラベル
+#### ▼ 予約Label
 
 キー名のプレフィクスとして、```kubernetes.io/```と```k8s.io/```は予約されている。
 
@@ -540,7 +540,7 @@ Deploymentで管理するPodを明示的に設定する。
 
 #### ▼ matchLabels
 
-Podのラベルを指定する。Podに複数のラベルが付与されている時は、これらを全て指定する必要がある。
+Podのlabelキーを指定する。Podに複数のlabelキーが付与されている時は、これらを全て指定する必要がある。
 
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -551,12 +551,12 @@ metadata:
   name: foo-deployment
 spec:
   selector:
-    matchLabels: # Deploymentに紐づけるPodのラベル
+    matchLabels: # Deploymentに紐づけるPodのLabel
       app: foo
       component: app
   template:
     metadata:
-      labels: # Podのラベル
+      labels: # PodのLabel
         app: foo
         component: app
 ```
@@ -1147,7 +1147,7 @@ PersistentVolumeの作成先とするワーカーNodeを設定する。
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のワーカーNodeのラベルを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のワーカーNodeのlabelキーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 
@@ -1435,7 +1435,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内コンテナのマウントポイントを設定する。```spec.volume```オプションで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```オプションで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内コンテナのマウントポイントを設定する。```spec.volumes```オプションで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```オプションで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -1637,9 +1637,9 @@ spec:
 
 <br>
 
-### spec.volume
+### spec.volumes
 
-#### ▼ volumeとは
+#### ▼ volumesとは
 
 Pod内で使用するボリュームを設定する。
 
@@ -2334,7 +2334,7 @@ spec:
 
 ### spec.selector
 
-インバウンド通信の転送先とするPodのラベルのキー名と値を設定する。
+インバウンド通信の転送先とするPodのlabelキー名と値を設定する。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 
@@ -2361,11 +2361,11 @@ Serviceのタイプを設定する。
 - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
 - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
-| 値                        | IPアドレスの公開範囲   |
-| ------------------------- | ---------------------- |
-| ClusterIP（デフォルト値） | Cluster内部からのみ |
-| NodePort                  | Cluster外部/内部   |
-| LoadBalancer              | Cluster外部/内部   |
+| 値                        | IPアドレスの公開範囲 |
+| ------------------------- | ----------------- |
+| ClusterIP（デフォルト値） | Clusterネットワーク内からのみ |
+| NodePort                  | Clusterネットワーク外/内 |
+| LoadBalancer              | Clusterネットワーク外/内 |
 
 <br>
 

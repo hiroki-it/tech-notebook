@@ -184,14 +184,14 @@ RUN yum -y install php-mbstring
 RUN yum -y install php-pear
 ```
 
-これは、以下のように一行でまとめられる。イメージレイヤーが少なくなり、イメージを軽量化できる。
+これは、以下の様に一行でまとめられる。イメージレイヤーが少なくなり、イメージを軽量化できる。
 
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール
 RUN yum -y install httpd php php-mbstring php-pear
 ```
 
-さらに、これは以下のようにも書ける。
+さらに、これは以下の様にも書ける。
 
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール

@@ -334,7 +334,7 @@ ECサイトを運営するアスクルの例。ドメインのうちで、個人
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
-実装フェーズに入ってからの話になるが、料金区分オブジェクトはEnumとして実装することになり、以下のようになる。
+実装フェーズに入ってからの話になるが、料金区分オブジェクトはEnumとして実装することになり、以下の様になる。
 
 ![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_enum_example.jpg)
 

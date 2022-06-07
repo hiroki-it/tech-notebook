@@ -342,7 +342,7 @@ environment       = "stg"
 service           = "bar"
 ```
 
-環境変数の名前は以下のようにする。
+環境変数の名前は以下の様にする。
 
 ```terraform
 # 種類が無い時（thisの時）

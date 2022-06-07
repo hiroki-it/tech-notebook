@@ -331,7 +331,7 @@ GETリクエストを送信する。```jq```コマンドを使用すると、レ
 **＊実行例＊**
 
 ```bash
-$ curl https://example.com/foo/1 | jq . 
+$ curl -X GET https://example.com/foo/1 | jq . 
 ```
 
 #### ▼ -d

@@ -318,7 +318,7 @@ POST https://example.com/users/12345/messages
 
 **＊良い実装例＊**
 
-以下のように、異なるHTTPメソッドの間でも統一する。
+以下の様に、異なるHTTPメソッドの間でも統一する。
 
 
 ```http

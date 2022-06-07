@@ -334,7 +334,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 [root@<Pod名>] $ ls -la 
 ```
 
-コンテナを指定しない場合は、デフォルトのコンテナが選択される。Podのラベル名ではなく、Pod名であることに注意する。
+コンテナを指定しない場合は、デフォルトのコンテナが選択される。Podのlabelキーではなく、Pod名であることに注意する。
 
 ```bash
 $ kubectl exec -it <Pod名> -- bash
@@ -493,18 +493,18 @@ bar-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     bar-node   
 
 #### ▼ -l
 
-特定のラベルを持つPodを取得する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
+特定のlabelキーを持つPodを取得する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
 
 ```bash
 # 事前にServiceのルーティング先を確認しておく。
 $ kubectl describe services foo
 
-Selector: <キー>=<値> # <--- Selectorでルーティング先のPodのラベルがわかる
+Selector: <キー>=<値> # <--- Selectorでルーティング先のPodのlabelキーがわかる
 
 $ kubectl get pods -l <キー>=<値>
 ```
 
-複数のラベルをAND条件で指定することもできる。
+複数のlabelキーをAND条件で指定することもできる。
 
 ```bash
 $ kubectl get pods -l <キー>=<値>, <キー>=<値>
@@ -524,19 +524,19 @@ $ kubectl get deployment --selector=<キー>=<値>
 
 #### ▼ labelとは
 
-指定したリソースのラベルを操作する。
+指定したリソースのlabelを操作する。
 
 #### ▼ オプション無し
 
 **＊例＊**
 
-指定したリソースにラベルを作成する。
+指定したリソースにlabelを作成する。
 
 ```bash
 $ kubectl label <リソース名> foo=bar
 ```
 
-指定したリソースのラベルを削除する。
+指定したリソースのlabelを削除する。
 
 ```bash
 $ kubectl label <リソース名> foo-
@@ -546,7 +546,7 @@ $ kubectl label <リソース名> foo-
 
 **＊例＊**
 
-指定したリソースにラベルの値を変更する。
+指定したリソースにlabelの値を変更する。
 
 ```bash
 $ kubectl label --overwrite <リソース名> foo=bar

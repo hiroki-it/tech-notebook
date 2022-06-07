@@ -137,7 +137,7 @@ manifest.yamlファイルによって量産されたIstioリソースのイン�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部からインバウンド通信を受信し、Podにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
+Gateway、VirtualService、DestinationRuleの設定を基に、Clusterネットワーク外からインバウンド通信を受信し、Podにルーティングする。```istio-ingressgateway```というLoadBalancer Serviceと、```istio-ingressgateway-*****```というPodから構成される
 
 参考：
 
@@ -152,7 +152,7 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Cluster外部か�
 
 #### ▼ Gatewayとは
 
-IngressGatewayの機能のうち、Cluster外部から受信したインバウンド通信をフィルタリングする機能を担う。
+IngressGatewayの機能のうち、Clusterネットワーク外から受信したインバウンド通信をフィルタリングする機能を担う。
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
@@ -196,7 +196,7 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 #### ▼ EgressGatewayとは
 
-Cluster内部からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
+Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
 
 参考：https://knowledge.sakura.ad.jp/20489/
 

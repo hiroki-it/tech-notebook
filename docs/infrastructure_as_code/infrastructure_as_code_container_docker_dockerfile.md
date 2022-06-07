@@ -111,7 +111,7 @@ ENV OS_VERSION "8"
 FROM centos:${OS_VERSION} # ===> 変数を展開できない
 ```
 
-そのため、以下のように使い分けることになる。
+そのため、以下の様に使い分けることになる。
 
 ```dockerfile
 # 最初に全て、ARGで定義

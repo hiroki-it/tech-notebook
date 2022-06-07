@@ -74,7 +74,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
+KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled

@@ -115,7 +115,7 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 ### Nuxt.jsを参考に考える
 
-Nuxt.jsとAtomic Designのレイヤーは以下のように対応する。
+Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
 

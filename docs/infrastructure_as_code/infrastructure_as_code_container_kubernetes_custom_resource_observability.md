@@ -351,7 +351,7 @@ spec:
             for: 1m
             # PromQL
             expr: ...
-            # アラートの通知内容に付与するラベル
+            # アラートの通知内容に付与するLabel
             labels:
               env: prd
               app: foo

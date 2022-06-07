@@ -1127,7 +1127,7 @@ CloudFrontは世界中に設置される『Point Of Presence（エッジロケ�
 CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。
 
 ```bash
-$ curl https://ip-ranges.amazonaws.com/ip-ranges.json \
+$ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
   | jq  ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
@@ -1289,7 +1289,7 @@ AWSリソースで発生したデータポイントのメトリクスを収集�
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 
-CloudWatchメトリクス上では、以下のように確認できる。
+CloudWatchメトリクス上では、以下の様に確認できる。
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
 
@@ -3132,7 +3132,7 @@ NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   2/2     2            0           22m
 ```
 
-もし、以下のように、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
+もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
 
 ```bash
 {"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nnn.n.n.nnn:43958->nnn.nn.n.nn:53: read: connection refused"}
@@ -3237,11 +3237,11 @@ Fargateを設定する。
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
 | コンポーネント名           | 説明                                                         | 補足                                                         |
-|--------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pod実行ロール           | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
-| サブネット              | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
-| ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceラベルの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
-| ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のラベルの値を設定する。 |                                                              |
+|--------------------|------------------------------------------------------------| ------------------------------------------------------------ |
+| Pod実行ロール           | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                   | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
+| サブネット              | EKS Fargate Nodeが起動するサブネットIDを設定する。                         | プライベートサブネットを設定する必要がある。                 |
+| ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。  | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
+| ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
 
 <br>
 

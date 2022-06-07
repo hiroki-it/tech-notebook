@@ -121,13 +121,13 @@ repository/
 
 ## 03. 命名規則
 
-### ラベル
+### labelキーキー
 
 #### ▼ app.kubernetes.io
 
-Kubernetesに関するラベルを以下に示す。
+Kubernetesに関するlabelキーを以下に示す。
 
-参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labelキーs/
 
 | キー              | 説明                                               | 値の例                          |
 | ----------------- | -------------------------------------------------- | ------------------------------- |

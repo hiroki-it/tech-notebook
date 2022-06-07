@@ -37,7 +37,7 @@ description: Googleサーチコンソール＠監視の知見をまとめまし�
 | Baiduspider  | Baidu        |
 | Mail.RU_Bot  | Mail.ru      |
 
-例えば、Googlebotであれば、ユーザーエージェントは以下のようになっている。
+例えば、Googlebotであれば、ユーザーエージェントは以下の様になっている。
 
 **例**
 

@@ -17,8 +17,6 @@ description: Kubernetes＠仮想化の知見をまとめました。
 
 ### 構造
 
-
-
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
@@ -270,7 +268,7 @@ manifest.yamlファイルによって量産されたKubernetesリソースのイ
 
 #### ▼ Pod数の固定
 
-DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
+DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
 
 <br>
 
@@ -278,7 +276,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Cluster内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
 参考：
 
@@ -381,7 +379,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-IngressコントローラーによってCluster外部からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+IngressコントローラーによってClusterネットワーク外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
 参考：
 
@@ -400,7 +398,7 @@ IngressコントローラーによってCluster外部からインバウンド通
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressの設定に基づいてCluster外部からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
+Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
 
 参考：
 
@@ -436,7 +434,7 @@ Serviceタイプごとに、特定のネットワーク範囲にPodを公開す�
 
 #### ▼ ClusterIP Service
 
-ClusterのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Cluster内部からのみアクセスできる。ClusterのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。
+ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク内からのみアクセスできる。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。
 
 参考：
 
@@ -448,14 +446,14 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>] $ cat /etc/resolv.conf 
 
-nameserver n.n.n.n # ClusterのIPアドレス
+nameserver n.n.n.n # ClusterネットワークのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
 ```
 
 #### ▼ LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Cluster外部/内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
+ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
 
 参考：
 
@@ -464,7 +462,7 @@ options ndots:5
 
 #### ▼ NodePort Service
 
-NodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。Cluster外部/内部の両方からアクセスできる。1つのポートから1つのServiceにしかルーティングできない。ServiceNodeのIPアドレスは別に確認する必要があり、NodeのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのClusterエンドポイントには、NodePortの概念が取り入れられている。
+NodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。1つのポートから1つのServiceにしかルーティングできない。ServiceNodeのIPアドレスは別に確認する必要があり、NodeのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのClusterエンドポイントには、NodePortの概念が取り入れられている。
 
 参考：
 
@@ -890,7 +888,7 @@ CSIの仕様によって標準化された外部ボリューム。プロバイ�
 
 #### ▼ Clusterネットワークとは
 
-同じCluster内にあるPodの仮想NIC（veth）間を接続するネットワーク。
+同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。
 
 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
@@ -912,17 +910,32 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 ## 04-02. 同じPod内のコンテナ間通信
 
-### 通信方法
+### 通信経路
 
-同じPod内のコンテナ間で通信するため、Pod内のネットワークのみを経由する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内コンテナ間は、『```localhost:<ポート番号>```』で通信できる。
+同じPod内のコンテナ間で通信するため、Pod内のネットワークのみを経由する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
 <br>
 
+### デバッグ
+
+#### ▼ 疎通確認
+
+同じPod内コンテナ間は『```localhost:<ポート番号>```』で通信でき、以下の様に通信経路をデバッグできる。
+
+```bash
+# Pod内コンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+[root@<Pod名>:~] $ curl -X GET http://localhost:<ポート番号>
+```
+
+<br>
+
 ## 04-03. 異なるPodのコンテナ間通信
 
-### 通信方法
+### 通信経路
 
 Podの稼働するNodeが同じ/異なるで経由するネットワークが異なる。
 
@@ -932,6 +945,69 @@ Podの稼働するNodeが同じ/異なるで経由するネットワークが異
 | ---------------- | ------------------------------------------------------------ |
 | Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
 | Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
+
+<br>
+
+### デバッグ
+
+#### ▼ 疎通確認
+
+異なるPod内コンテナ間は、Podが紐づくServiceのドメイン名やIPアドレスで通信でき、```kubectl exec```コマンドでコンテナに接続後、通信経路をデバッグできる。
+
+```bash
+# Pod内コンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+[root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
+```
+
+一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できないため、```kubectl debug```コマンドを使用する。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使えるのでおすすめ。
+
+参考：
+
+- https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
+- https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
+
+```bash
+# シングルNodeの場合
+$ kubectl run \
+    -n default \
+    -it curl \
+    --image=yauritux/busybox-curl \
+    --rm \
+    --restart=Never \
+    -- bash
+
+[root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
+```
+
+```bash
+# マルチNodeの場合
+$ kubectl debug node/<Node名> \
+    -n default \
+    -it \
+    --image=yauritux/busybox-curl
+[root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
+```
+
+#### ▼ ポート番号の確認
+
+Serviceがルーティング先とするポート番号を確認する。
+
+```bash
+$ kubectl get service <Service名> -o yaml | grep targetPort:
+```
+
+また、Serviceがルーティング対象とするPodにて、コンテナが待ち受けているポート番号を確認する。
+
+```bash
+# 先にlabelから、Serviceのルーティング対象のPodを確認する
+$ kubectl get pod -l <名前>=<値> -o wide
+
+$ kubectl get pod <Pod名> -o yaml | grep containerPort:
+```
+
+両方のポート番号が一致しているかを確認する。
 
 <br>
 
@@ -993,7 +1069,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ レコードタイプとドメイン名の関係
 
-Cluster内の全てのServiceにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
+Clusterネットワーク内の全てのServiceにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
 
 参考：
 
@@ -1009,16 +1085,17 @@ Cluster内の全てのServiceにDNS名が割り当てられている。レコー
 
 Pod内コンテナから宛先のServiceに対して、```nslookup```コマンドの正引きを検証する。Serviceに```meta.name```タグが設定されている場合、Serviceのドメイン名は、```meta.name```タグの値になる。ドメイン名の設定を要求された時は、設定ミスを防げるため、```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である。
 
-参考：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
-
 ```bash
+# Pod内コンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
 # Pod内コンテナから宛先のServiceに対して、正引きの名前解決を行う
-[root@<Pod名>:~] $ nslookup <Serviceのmeta.name値>
+[root@<Pod名>:~] $ nslookup <Serviceのmeta.nameキー値>
 
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <Serviceのmeta.name値>.<Namespace名>.svc.cluster.local
+Name:  <Serviceのmeta.nameキー値>.<Namespace名>.svc.cluster.local
 Address:  10.105.157.184
 ```
 
@@ -1026,8 +1103,13 @@ Address:  10.105.157.184
 
 ```bash
 # Pod内コンテナから正引きの名前解決を行う。
-[root@<Pod名>:~] $ nslookup <Serviceのmeta.name値>.<Namespace名>
+[root@<Pod名>:~] $ nslookup <Serviceのmeta.nameキー値>.<Namespace名>
 ```
+
+参考：
+
+- https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+- https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
 <br>
 

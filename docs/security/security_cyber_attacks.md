@@ -58,9 +58,12 @@ COMMIT
 
 **＊例＊**
 
-Centosにおけるfirewalld。
+Centosにおけるfirewalld。デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
 
-参考：https://knowledge.sakura.ad.jp/22269/
+参考：
+
+- https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html
+- https://knowledge.sakura.ad.jp/22269/
 
 アクセスが許可されているポート番号を確認する。
 
