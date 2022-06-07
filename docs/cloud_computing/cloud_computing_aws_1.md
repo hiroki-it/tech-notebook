@@ -2232,14 +2232,14 @@ Login Succeeded
 （２）イメージにタグを付与する。
 
 ```bash
-# docker tag foo:latest 123456789.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
 （３）ECRにイメージをプッシュする。
 
 ```bash
-# docker push 123456789.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+# docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 

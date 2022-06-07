@@ -1028,7 +1028,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 リスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため、以下のようなエラーが発生する。
 
 ```bash
-Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
+Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:<アカウントID>:targetgroup/*****-tg/*****' is currently in use by a listener or a rule
 status code: 400, request id: *****
 ```
 

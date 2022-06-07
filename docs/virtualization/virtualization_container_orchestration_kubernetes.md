@@ -307,13 +307,6 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-#### ▼ 通信方法
-
-| 通信の状況  | 説明                                                         | 補足                                                         |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 同じPod内   | Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内コンテナ間は、『```localhost:<ポート番号>```』で通信できる。 | 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate |
-| 異なるPod間 | 異なるPodのコンテナ間は、Serviceを経由して通信できる。       | 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/ |
-
 #### ▼ リソースの単位
 
 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
@@ -322,16 +315,6 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 | ------------------- | ---------------------------------------------- |
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
-
-#### ▼ 名前解決
-
-Cluster内の全てのPodにDNS名が割り当てられている。レコードタイプはA/AAAAレコードのみである。
-
-参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod
-
-| レコードタイプ | ドメイン名                                           | 名前解決の仕組み              |
-| -------------- | ---------------------------------------------------- | ----------------------------- |
-| A/AAAAレコード | ```<PodのIPアドレス>.<Namespace名>.pod.cluster.local``` | PodのIPアドレスが返却される。 |
 
 #### ▼ ライフサイクル
 
@@ -927,7 +910,30 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 <br>
 
-## 04-02. サービスディスカバリー
+## 04-02. 同じPod内のコンテナ間通信
+
+### 通信方法
+
+同じPod内のコンテナ間で通信するため、Pod内のネットワークのみを経由する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。そのため、同じPod内コンテナ間は、『```localhost:<ポート番号>```』で通信できる。
+
+参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+
+<br>
+
+## 04-03. 異なるPodのコンテナ間通信
+
+### 通信方法
+
+Podの稼働するNodeが同じ/異なるで経由するネットワークが異なる。
+
+参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
+| 条件             | 経由するネットワーク                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
+| Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
+
+<br>
 
 ### 環境変数を使用する場合
 
