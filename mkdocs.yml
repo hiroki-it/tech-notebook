@@ -263,9 +263,10 @@ nav:
           - Docker: virtualization/virtualization_container_docker.md
       - ■ コンテナオーケストレーション:
           - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
-          - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
-      - ■ サービスメッシュ:
-          - Istio: virtualization/virtualization_service_mesh_istio.md
+          - ■ Kubernetes:
+             - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
+             - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
+             - 可観測性リソース: virtualization/virtualization_container_orchestration_kubernetes_observability.md
 
   - ⚙️ Infrastructure as Code:
       - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
@@ -294,7 +295,7 @@ nav:
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
                   - ■ カスタムリソース:
                       - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
-                      - 可観測性リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability.md
+                      - 可観測性リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability_manifest_yaml.md
                       - ■ ArgoCD:
                           - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_yaml.md
                       - ■ Istio:
