@@ -17,7 +17,7 @@ description: manifest.yaml＠Istioの知見をまとめました。
 
 Istioリソースを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_istio.html
 
 <br>
 
@@ -1245,7 +1245,7 @@ spec:
 
 #### ▼ <Namespace名>/<Gateway名>
 
-Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceにある場合は、Namespaceを省略できる。
+Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

@@ -211,6 +211,7 @@ repositories:
 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
+# helmfile.dディレクトリ以下を再帰的に読み込む。
 $ helmfile <サブコマンド>
 ```
 
@@ -231,7 +232,7 @@ $ helmfile -e prd <コマンド>
 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
-$ helmfile -f helmfile.yaml <コマンド>
+$ helmfile -f ./helmfile.yaml <コマンド>
 ```
 
 <br>

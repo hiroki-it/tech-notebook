@@ -242,11 +242,10 @@ title: 【知見を記録するサイト】目次
 ### コンテナオーケストレーション
 
 * [📖：︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html)
-* [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
-
-### サービスメッシュ
-
-* [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_service_mesh_istio.html)
+* Kubernetes
+  * [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
+  * [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
+  * [📖：可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_observability.html)
 
 <br>
 
@@ -288,7 +287,7 @@ title: 【知見を記録するサイト】目次
     * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.html)
     * カスタムリソース
         * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.html)
-        * [📖：︎可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability.html)
+        * [📖：︎可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability_manifest_yaml.html)
         * ArgoCD
             * [📖：︎manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_yaml.html)
         * Istio

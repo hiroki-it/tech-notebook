@@ -123,7 +123,7 @@ appVersion: 1.0.0
 チャートの説明を設定する。
 
 ```yaml
-description: The chart of *****
+description: The chart of foo
 ```
 
 <br>
@@ -390,7 +390,7 @@ metadata:
 
 何も加工せずに出力する。
 
-```tpl
+```yaml
 {* tplファイル *}
 
 {{- define "foo-template" }}

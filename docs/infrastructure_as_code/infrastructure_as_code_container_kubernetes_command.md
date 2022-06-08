@@ -102,7 +102,7 @@ $ kubectl config use-context docker-desktop
 宛先をAWS EKSのkube-apiserverに変更する。
 
 ```bash
-$ aws eks --region ap-northeast-1 update-kubeconfig --name foo-eks-cluster
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
 #### ▼ view
@@ -227,7 +227,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 #### ▼ secret docker-registry
 
-イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに存在する必要があるため、作成時にNamespaceの指定を忘れないようにする。
+イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
 参考：
 
@@ -241,15 +241,6 @@ $ kubectl create secret docker-registry foo-secret \
     --docker-username=bar \
     --docker-password=baz \
     --docker-email=http://baz.example.com \
-    --namespace=foo-namespace
-```
-
-```bash
-# ECRの場合
-$ kubectl create secret docker-registry foo-secret \
-    --docker-server=<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com \
-    --docker-username=AWS \
-    --docker-password=$(aws ecr get-login-password --region ap-northeast-1) \
     --namespace=foo-namespace
 ```
 

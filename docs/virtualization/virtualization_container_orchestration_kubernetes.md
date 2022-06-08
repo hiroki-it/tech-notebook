@@ -195,6 +195,8 @@ Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネ�
 
 ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
+参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
 #### ▼ CoreDNS Service/Pod
@@ -669,8 +671,8 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 | ロール名    | 説明                                   | 補足                                                         |
 | ----------- | -------------------------------------- | ------------------------------------------------------------ |
-| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceにある必要がある。            |
-| ClusterRole | クラスター内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceにある必要がある。 |
+| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
+| ClusterRole | クラスター内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
 
 <br>
 
@@ -684,8 +686,8 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 | バインディング名   | 説明                             | 補足                                                         |
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
-| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceにある必要がある。            |
-| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceにある必要がある。 |
+| RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
+| ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
 
 <br>
 
@@ -961,7 +963,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 [root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
 ```
 
-一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できないため、```kubectl debug```コマンドを使用する。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使えるのでおすすめ。
+一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使えるのでおすすめである。
 
 参考：
 
@@ -987,7 +989,11 @@ $ kubectl debug node/<Node名> \
     -n default \
     -it \
     --image=yauritux/busybox-curl
-[root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
+
+[root@<Pod名>:~] $exit
+
+# 使用後は手動で削除する。
+$ kubectl delete -n default node-debugger-*****
 ```
 
 #### ▼ ポート番号の確認
@@ -1090,20 +1096,20 @@ Pod内コンテナから宛先のServiceに対して、```nslookup```コマン�
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # Pod内コンテナから宛先のServiceに対して、正引きの名前解決を行う
-[root@<Pod名>:~] $ nslookup <Serviceのmeta.nameキー値>
+[root@<Pod名>:~] $ nslookup <Service名>
 
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <Serviceのmeta.nameキー値>.<Namespace名>.svc.cluster.local
+Name:  <Service名>.<Namespace名>.svc.cluster.local
 Address:  10.105.157.184
 ```
 
-ちなみに、異なるNamespaceにあるServiceの名前解決を行う場合は、Serviceのドメイン名の後にNamespaceを指定する必要がある。
+ちなみに、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceのドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
 # Pod内コンテナから正引きの名前解決を行う。
-[root@<Pod名>:~] $ nslookup <Serviceのmeta.nameキー値>.<Namespace名>
+[root@<Pod名>:~] $ nslookup <Service名>.<Namespace名>
 ```
 
 参考：

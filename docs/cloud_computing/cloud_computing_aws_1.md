@@ -2843,10 +2843,11 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 参考：
 
+- https://practical-aws.dev/p/ecs-service-discovery/
 - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
 - https://dev.classmethod.jp/articles/ecs-service-discovery/
 
-![esc_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/esc_service-discovery.png)
+![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
 
 <br>
 
@@ -2916,9 +2917,15 @@ data:
         auto_create_group true
 ```
 
-（６）EKSのPod実行ロールにCloudWatchへのアクセス権限を付与する。
+（６）ワーカーNode（Fargate、EC2）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
-参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+参考：
+
+- https://nishipy.com/archives/1122
+- https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-getting-started.html
+- https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
+- https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
 #### ▼ VPC
 

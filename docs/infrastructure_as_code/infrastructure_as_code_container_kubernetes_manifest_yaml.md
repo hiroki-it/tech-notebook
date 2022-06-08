@@ -2080,10 +2080,6 @@ data:
     UmVhbGx5IHJlYWxs ...
 ```
 
-ただしAWS EKSでは、このSecretは不要であり、ワーカーNode（Fargate、EC2）にECRへのアクセス権限を付与しておけばよい。
-
-参考：https://nishipy.com/archives/1122
-
 #### ▼ kubernetes.io/service-account-token
 
 ServiceAccountのためのデータを設定する。ただし、自動的に構築されるため、ユーザーが設定する必要はない。
