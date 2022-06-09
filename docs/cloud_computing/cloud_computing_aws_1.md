@@ -2998,7 +2998,10 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。このうち2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
+参考：
+
+- https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
 
@@ -3228,7 +3231,7 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 #### ▼ Fargate Nodeとは
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。on EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
+Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。on EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。また、1つのNodeで1つのPodしか稼働できないため、Fargateの稼働数が増え、料金が高くなる可能性がある。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
 
 参考：
 

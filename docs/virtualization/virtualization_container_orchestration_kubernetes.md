@@ -605,7 +605,7 @@ Pod間で通信する場合のインバウンド/アウトバウンド通信の�
 
 ### Node
 
-#### ▼ マスターNode（kubernetesマスター）とは
+#### ▼ マスターNode（kubernetesマスター）
 
 kubernetesマスターともいう。マスターコンポーネントが稼働する。クライアントがkubectlコマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
 
