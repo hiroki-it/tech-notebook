@@ -1247,6 +1247,82 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 <br>
 
+### traceroute
+
+#### ▼ tracerouteとは
+
+通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。
+
+![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
+
+#### ▼ オプション無し
+
+ルーターのIPアドレスを取得する。プロトコルやポート番号は指定する必要はない。
+
+参考：
+
+- https://webkaru.net/linux/traceroute-command/
+- https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+
+```bash
+$ traceroute google.com
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
+ 2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
+ 3  g-o-4eb-a13-1-e-2-1.interq.or.jp (210.157.9.209)  0.784 ms  0.786 ms  0.778 ms
+ 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  2.201 ms
+ 5  b8-e-1-2-0.interq.or.jp (210.172.131.118)  0.658 ms  0.651 ms  0.634 ms
+ 6  as15169.ix.jpix.ad.jp (210.171.224.96)  2.105 ms  1.433 ms  1.618 ms
+ 7  209.85.243.58 (209.85.243.58)  1.623 ms  35.993 ms  1.596 ms
+ 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms
+ 9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms
+```
+
+もし、IPアドレスがアスタリスクになった場合は、それ以降のルーターに通信が届いていないことを表す。
+
+参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
+
+```bash
+$ traceroute google.com
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
+ 2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
+ 3  g-o-4eb-a13-1-e-2-1.interq.or.jp (210.157.9.209)  0.784 ms  0.786 ms  0.778 ms
+ 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # <--- ここまでは届く
+ 5  *  *  *                                                                 # <--- その後失敗
+ 6  *  *  *
+...
+```
+
+
+
+#### ▼ -n
+
+IPアドレスの名前解決を実行せずに、IPアドレスをそのまま取得する。
+
+参考：
+
+- https://webkaru.net/linux/traceroute-command/
+- https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+
+```bash
+$ traceroute -n google.com
+traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
+ 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms
+ 2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms
+ 3  210.157.9.209  0.718 ms  0.722 ms  0.761 ms
+ 4  210.172.131.149  1.520 ms  1.894 ms  1.892 ms
+ 5  210.172.131.118  0.652 ms  0.645 ms  0.619 ms
+ 6  210.171.224.96  1.499 ms  1.705 ms  1.587 ms
+ 7  209.85.243.58  1.575 ms  1.558 ms  1.557 ms
+ 8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
+ 9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms
+```
+
+
+
+<br>
+
 ### unlink
 
 #### ▼ unlinkとは

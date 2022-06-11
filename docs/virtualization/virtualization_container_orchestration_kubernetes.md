@@ -972,6 +972,8 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ```bash
 # シングルNodeの場合
+
+# curl送信用のコンテナを構築する。
 $ kubectl run \
     -n default \
     -it curl \
@@ -985,6 +987,11 @@ $ kubectl run \
 
 ```bash
 # マルチNodeの場合
+
+# Podが稼働するNodeを確認する。
+$ kubectl get pod <Pod名> -o wide
+
+# curl送信用のコンテナを指定したNode上で構築する。
 $ kubectl debug node/<Node名> \
     -n default \
     -it \

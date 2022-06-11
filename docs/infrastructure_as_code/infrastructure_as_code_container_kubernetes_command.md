@@ -15,6 +15,31 @@ description: コマンド＠Kubernetesの知見をまとめました。
 
 ## 01. kubectlコマンド
 
+### セットアップ
+
+#### ▼ ```~/.kube/config```ファイル
+
+kubectlコマンドは、```~/.kube```以下にある```config```ファイルに設定された認証情報を基に、kube-apiserverにアクセスする。
+
+#### ▼ configシンボリックリンク、--kubeconfig
+
+ユーザーが、```config```ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成するか、あるいはコマンドの実行時に```config```ファイルを明示的に指定する必要がある。
+
+参考：https://blog.inductor.me/entry/2021/03/13/205452
+
+```bash
+$ cd ~/.kube
+
+# 現在のディレクトリに、configシンボリックリンクを作成する。
+$ ln -s /etc/kubernetes/kubeconfig config
+```
+
+```bash
+$ kubectl get pods --kubeconfig=/etc/kubernetes/kubeconfig
+```
+
+<br>
+
 ### apply
 
 #### ▼ applyとは

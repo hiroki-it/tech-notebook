@@ -76,7 +76,7 @@ repository/
 
 #### ▼ マイクロサービス別
 
-マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のmanifest.yamlファイルを作成する。さらに、コンポーネント（app、db）別に分割してもよい。マニフェストの```apply```の順番を制御しにくいデメリットがある。
+マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のmanifest.yamlファイルを作成する。さらに、実行環境やコンポーネント（app、db）別に分割してもよい。マニフェストの```apply```の順番を制御しにくいデメリットがある。
 
 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
@@ -89,10 +89,11 @@ repository/
 │   └── persistent-volume-claim.yaml
 │
 ├── bar/ # barサービス
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── persistent-volume.yaml
-│   └── persistent-volume-claim.yaml
+│   ├── dev # dev環境
+│   ... ├── deployment.yaml
+│       ├── service.yaml
+│       ├── persistent-volume.yaml
+│       └── persistent-volume-claim.yaml
 │
 └── baz/ # bazサービス
     ├── app/ # appコンポーネント
@@ -127,7 +128,7 @@ repository/
 
 Kubernetesに関するlabelキーを以下に示す。
 
-参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labelキーs/
+参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
 | キー              | 説明                                               | 値の例                          |
 | ----------------- | -------------------------------------------------- | ------------------------------- |

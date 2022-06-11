@@ -2986,7 +2986,7 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 ### ネットワーク
 
-#### ▼ プライベートサブネットへのインバウンド通信
+#### ▼ VPC外からプライベートサブネットへのインバウンド通信
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
 
@@ -2994,7 +2994,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
 
-#### ▼ プライベートサブネットからのアウトバウンド通信
+#### ▼ プライベートサブネットからVPC外へのアウトバウンド通信
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。このうち2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
