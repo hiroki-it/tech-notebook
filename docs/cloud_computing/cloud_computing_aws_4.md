@@ -363,7 +363,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -846,7 +846,7 @@ VPC内で構築されたインスタンスにはパブリックIPアドレスが
 
 クラウドネットワークインターフェースとして働く。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -1032,15 +1032,15 @@ S3、DynamoDBのみ
 
 #### ▼ Internet Gateway
 
-VPCの出入り口に設置され、グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ。1つのパブリックIPに対して、1つのプライベートIPを紐付けられる。NAT（静的NAT）については、以下のリンクを参考にせよ。
+DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。1つのパブリックIPに対して、1つのプライベートIPを紐付けられる。DNATについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 #### ▼ NAT Gateway
 
-NAPT（動的NAT）の機能を持つ。1つのパブリックIPに対して、複数のプライベートIPを紐付けられる。パブリックサブネットに配置されることで、プライベートサブネットからのアウトバウンド通信のプライベートIPアドレスをパブリックIPアドレスに変換する。NAPT（動的NAT）については、以下のリンクを参考にせよ。
+SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。1つのパブリックIPに対して、複数のプライベートIPを紐付けられる。SNATについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 

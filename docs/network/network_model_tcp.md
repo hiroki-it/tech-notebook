@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】OSI参照モデル/TCP階層モデル＠ネットワーク
-description: OSI参照モデル/TCP階層モデル＠ネットワークの知見をまとめました。
+title: 【知見を記録するサイト】TCP階層モデル＠ネットワーク
+description: TCP階層モデル＠ネットワークの知見をまとめました。
 ---
 
-# OSI参照モデル/TCP階層モデル
+# TCP階層モデル
 
 ## はじめに
 
@@ -13,7 +13,23 @@ description: OSI参照モデル/TCP階層モデル＠ネットワークの知見
 
 <br>
 
-## 01. OSI参照モデルとTCP階層モデル
+## 01. TCP階層モデルとは
+
+コンピュータのソフトウェアとハードウェアによる通信機能を、5つのレイヤーに分割したもの。TCP/IPモデルで使用されるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。
+
+<br>
+
+## 02. 各レイヤーの責務
+
+各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
+
+参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+
+![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
+
+<br>
+
+## 03. パケットの通信経路
 
 ### データがパケットになるまで
 
@@ -24,62 +40,6 @@ description: OSI参照モデル/TCP階層モデル＠ネットワークの知見
 5. パケットとして送信される。
 
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットの構造.jpg)
-
-<br>
-
-### OSI参照モデル
-
-#### ▼ OSI参照モデルとは
-
-コンピュータのソフトウェアとハードウェアによる通信機能を、7つのレイヤーに分割したもの。
-
-参考：https://www.infraexpert.com/study/networking3.html
-
-#### ▼ 各レイヤーの責務
-
-![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
-
-<br>
-
-### TCP階層モデル
-
-#### ▼ TCP階層モデルとは
-
-コンピュータのソフトウェアとハードウェアによる通信機能を、5つのレイヤーに分割したもの。TCP/IPモデルで使用されるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。
-
-#### ▼ 各レイヤーの責務
-
-各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
-
-参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
-
-![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
-
-<br>
-
-## 02-02. 通信機器におけるヘッダ情報認識
-
-### 各概念層と通信機器の間の対応関係
-
-1. プライベートネットワークにクライアントPCがある。
-2. クライアントPCにて、WebブラウザのアプリケーションのプロセスがTCPアプリケーション層（OSIアプリケーション層＋プレゼンテーション層＋セッション層）で稼働している。ここで、パケットが作成される。
-3. パケットは、クライアントPCのTCPトランスポート層（OSIトランスポート層）、TCPインターネット層（OSIネットワーク層）、TCPネットワークインターフェース層（OSIデータリンク層＋OSI物理層）を経る。各層で、パケットにヘッダー情報が追加される。
-4. PCからルータにパケットが送信される。
-5. ルータはTCPインターネット層（OSIネットワーク層）に属するため、より上層に一度戻ることになる。
-6. グローバルネットワークを経て、送信先のプライベートネットワークのルータに到達する。
-7. ルータからサーバーにパケットが送信される。
-8. パケットは、サーバーのCPネットワークインターフェース層（OSIデータリンク層＋OSI物理層）、TCPインターネット層（OSIネットワーク層）、TCPトランスポート層（OSIトランスポート層）、を経る。
-9. サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
-
-![OSI参照モデルと通信機器.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデルと通信機器.jpg)
-
-#### ▼ ネットワーク層
-
-#### ▼ データリンク層
-
-#### ▼ 物理層
-
-NIC：Network Interface Card（例：LANアダプタ、LANボード、LANカード）、リピータ、LANケーブル
 
 <br>
 
@@ -343,9 +303,25 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 ### NAT（静的NAT）
 
-#### ▼ NATとは
+#### ▼ NATとは：Network Address Transalation
 
-グローバルIPアドレスを持ち、グローバルネットワークとプライベートネットワークの双方向への通信時に、IPアドレスを変換すること。1つのグローバルIPアドレスに対して、1つのプライベートIPアドレスを紐付けられる。特に、グローバルネットワークからプライベートネットワークへの通信時のIPアドレス（パケットの送信先IPアドレス）の変換をDNAT、反対のIPアドレス（パケットの送信元IPアドレス）の変換をSNATという。NATやNAPTの機能を持つコンポーネントをNAT Gatewayという。
+グローバルIPアドレスを持ち、グローバルネットワークとプライベートネットワークの双方向への通信時に、IPアドレスを変換すること。1つのグローバルIPアドレスに対して、1つのプライベートIPアドレスを紐付けられる。NATやNAPTの機能を持つコンポーネントをNAT Gatewayという。
+
+#### ▼ DNATとは：Destination NAT
+
+NATの双方向の変換で、特にインバウンド通信時で、送信先IPアドレスをグローバルIPアドレスからプライベートIPアドレスに変換すること。
+
+参考：https://rainbow-engine.com/dnat-snat-difference/
+
+![dnat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dnat.png)
+
+#### ▼ SNATとは：Source NAT
+
+NATの双方向の変換で、特にアウトバウンド通信時に、送信元IPアドレスをプライベートIPアドレスからグローバルIPアドレスに変換すること。
+
+参考：https://rainbow-engine.com/dnat-snat-difference/
+
+![snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/snat.png)
 
 #### ▼ リクエスト時のルータにおける変換
 
@@ -391,7 +367,7 @@ GET https://example.com:53
 
 ### NAPT（動的NAT）
 
-#### ▼ NAPTとは
+#### ▼ NAPTとは：Network Address Port Translation
 
 グローバルネットワークとプライベートネットワークの双方向への通信時に、IPアドレスだけでなく、ポート番号も変換すること。1つのグローバルIPアドレスに対して、複数のプライベートIPアドレスを紐付けられる。NATやNAPTの機能を持つコンポーネントをNAT Gatewayという。
 

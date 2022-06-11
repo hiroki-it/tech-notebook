@@ -196,7 +196,8 @@ title: 【知見を記録するサイト】目次
 ## 🌏 ネットワーク
 
 * [📖：︎ネットワーク](https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html)
-* [📖：︎OSI参照モデル/TCP階層モデル](https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_osi_tcp_model.html)
+* [📖：︎TCP階層モデル](https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html)
+* [📖：︎OSI参照モデル](https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_osi.html)
 
 <br>
 
