@@ -235,7 +235,8 @@ nav:
 
   - 🌏 ネットワーク:
       - ネットワーク: network/network.md
-      - OSI参照モデル/TCP階層モデル: network/network_osi_tcp_model.md
+      - TCP階層モデル: network/network_osi_model_tcp.md
+      - OSI参照モデル: network/network_osi_model_osi.md
 
   - 🔐 セキュリティ:
       - サイバー攻撃: security/security_cyber_attacks.md
