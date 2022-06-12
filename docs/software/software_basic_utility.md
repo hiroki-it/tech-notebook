@@ -1266,6 +1266,7 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 ```bash
 $ traceroute google.com
+
 traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
  2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
@@ -1284,6 +1285,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 
 ```bash
 $ traceroute google.com
+
 traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
  2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
@@ -1293,8 +1295,6 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  6  *  *  *
 ...
 ```
-
-
 
 #### ▼ -n
 
@@ -1307,6 +1307,7 @@ IPアドレスの名前解決を実行せずに、IPアドレスをそのまま�
 
 ```bash
 $ traceroute -n google.com
+
 traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
  1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms
  2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms
@@ -1318,8 +1319,6 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
  8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
  9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms
 ```
-
-
 
 <br>
 

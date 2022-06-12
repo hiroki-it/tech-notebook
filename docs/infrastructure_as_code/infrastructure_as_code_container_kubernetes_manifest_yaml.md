@@ -1,6 +1,6 @@
 ---
 title: 【知見を記録するサイト】manifest.yaml＠Kubernetes
-description: manifest.yaml＠Kubernetesの知見をまとめました。
+description: manifest.yml＠Kubernetesの知見をまとめました。
 ---
 
 # manifest.yaml＠Kubernetes

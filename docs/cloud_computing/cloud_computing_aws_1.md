@@ -2790,7 +2790,7 @@ CodeDeployを使用してデプロイを行う。
 
 #### ▼ FargateのIPアドレスが動的である問題
 
-FargateにパブリックIPアドレスを持たせたい場合、Elastic IPアドレスの設定項目がなく、動的パブリックIPアドレスしか設定できない（Fargateの再構築後に変化する）。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（グローバルネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
+FargateにパブリックIPアドレスを持たせたい場合、Elastic IPアドレスの設定項目がなく、動的パブリックIPアドレスしか設定できない（Fargateの再構築後に変化する）。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
@@ -2800,7 +2800,7 @@ FargateにパブリックIPアドレスを持たせたい場合、Elastic IPア�
 
 #### ▼ NAT Gateway経由
 
-FargateからECRに対するdockerイメージのプルや、Fargateからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
+FargateからECRに対するdockerイメージのプルや、Fargateからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（パブリックネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
