@@ -221,7 +221,7 @@ IPパケットのヘッダ情報を使用して、宛先認識する。
 
 ### IPアドレスの種類
 
-![プライベートIPアドレスとグローバルIPアドレス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プライベートIPアドレスとグローバルIPアドレス.png)
+![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address.png)
 
 #### ▼ プライベートIPアドレス
 
@@ -343,7 +343,7 @@ NATの双方向のインバウンド通信時で、送信先IPアドレスをグ
 
 参考：https://rainbow-engine.com/dnat-snat-difference/
 
-![nat-router_dnat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_dnat.png)
+![nat-router_dnat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_dnat.jpeg)
 
 **＊例＊**
 
@@ -357,7 +357,7 @@ NATの双方向のアウトバウンド通信時に、送信元IPアドレスを
 
 参考：https://rainbow-engine.com/dnat-snat-difference/
 
-![nat-router_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_snat.png)
+![nat-router_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_snat.jpeg)
 
   **＊例＊**
 
