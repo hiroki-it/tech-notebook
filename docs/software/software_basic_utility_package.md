@@ -206,9 +206,7 @@ $ apt-get install pstree
 
 <br>
 
-### pstree
-
-#### ▼ pstreeとは
+### pstreeとは
 
 プロセスの親子関係をツリー状に取得する。
 
@@ -228,7 +226,43 @@ $ pstree
 
 <br>
 
-## 04. supervisor
+## 04. speedtest-cli
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+```bash
+$ apt install speedtest-cli
+```
+
+#### ▼ brewリポジトリから
+
+```bash
+$ brew install speedtest-cli
+```
+
+<br>
+
+### speedtest-cli
+
+SPEEDTESTのAPIを用いて、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
+
+参考：https://www.speedtest.net/ja
+
+```bash
+$ speedtest-cli
+
+Testing download 
+Download: 168.61 Mbit/s # ダウンロード速度
+
+Testing upload 
+Upload: 182.00 Mbit/s # アップロード速度
+```
+
+<br>
+
+## 05. supervisor
 
 ### インストール
 
@@ -500,7 +534,7 @@ $ supervisorctl update
 
 <br>
 
-## 05. sops
+## 06. sops
 
 ### インストール
 
@@ -551,7 +585,7 @@ $ sops -e <暗号化前のYAMLファイル/JSONファイル> > <暗号化後のY
 
 <br>
 
-## 06. systemctl：system control（旧service）
+## 07. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
@@ -677,7 +711,7 @@ $ sudo systemctl stop nginx
 
 <br>
 
-## 07. tcpdump
+## 08. tcpdump
 
 ### インストール
 

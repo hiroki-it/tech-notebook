@@ -15,103 +15,33 @@ description: ネットワークの知見をまとめました。
 
 ## 01. ネットワークの全体像
 
-### インターネット、WAN、LAN
-
 ネットワークには、『インターネット』『WAN』『LAN』がある。自宅内LAN、学内LAN、企業内LAN、企業WANなど、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。
 
-![インターネットとWANとLAN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターネットとWANとLAN.png)
-
-<br>
-
-### WAN、LANの例
-
-例えば、LANとしてEthernet、WANとしてデジタル専用線を使用する。
-
-![WAN、wan_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/wan_lan.png)
-
-<br>
-
-### WANの種類と歴史
-
-![WANの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WANの種類と歴史.png)
-
-<br>
+![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network.png)
 
 ### パブリックネットワークとプライベートネットワーク
 
-ルーターを境に、プライベートネットワークとパブリックネットワークに分けられる。ややこしいが、ルーターにはグローバルIPアドレスが割り当てられている。
+ルーターを境に、プライベートネットワークとパブリックネットワークに分けられる。
 
 <br>
 
-## 02. プライベートネットワークへのデータ送信
+## 02. LAN：Local Area Network
 
-### データ通信方法の種類
+### LANとは
 
-#### ▼ 回線交換方式
+限定された領域だけで接続できるネットワークのこと。LAN内では、各機器はプライベートIPアドレスで識別されている。LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレスとLAN内のプライベートIPアドレスを相互変換する。
 
-  少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
+参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
-![回線交換方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/回線交換方式.png)
-
-#### ▼ パケット交換方式
-
-  通信するデータをパケット化する。多数対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
-
-![パケット交換方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケット交換方式.png)
+![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
 
 <br>
 
-### 通信の方向/位置
+### LANの構成
 
-#### ▼ インバウンド/アウトバウンド
+#### ▼ セグメント
 
-![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/inbound_outbound.png)
-
-サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。反対に、サーバーから流出する方向をアウトバウンドという。
-
-参考：
-
-- https://www.amazon.co.jp/dp/B0043D2EKO/
-- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
-
-#### ▼ アップストリーム/ダウンストリーム
-
-![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/upstream_downstream.png)
-
-通信の送受信全体の中の位置で通信を見た時、通信が送信された前半の位置を相対的にアップストリームという。反対に、通信が受信される後半の位置を相対的にダウンストリームという。
-
-参考：
-
-- https://www.amazon.co.jp/dp/B0043D2EKO/
-- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
-
-<br>
-
-### URLとメールアドレス
-
-#### ▼ 構造
-
-URLとメールアドレスは完全修飾ドメイン名を持つ。
-
-![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
-
-また、完全修飾ドメイン名は、ドメイン名の子関係にあるサブドメイン名を持てる。ホスト名（以下では省略されている）と、ドメイン名の間につける。
-
-![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サブドメイン.png)
-
-#### ▼ 完全修飾ドメイン名によるサーバー指定
-
-完全修飾ドメイン名は、所属ネットワークを指すドメイン名と、そのネットワークにおける具体的なサーバーを指すホスト名からなる。ただし、サーバーのホスト名が『www』である場合、クライアントはURLの指定時にホスト名を省略できる。例えば、『```www.example.com```』という完全修飾ドメイン名をURLで指定する場合、『```example.com```』としても良い。
-
-![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
-
-<br>
-
-### セグメント
-
-#### ▼ セグメントの種類
-
-プライベートネットワークは、外部公開用ネットワーク、非武装地帯、内部ネットワークに分類される。
+プライベートネットワークは、外部公開用ネットワーク、非武装地帯、内部ネットワーク、に分類される。
 
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
@@ -125,7 +55,249 @@ URLとメールアドレスは完全修飾ドメイン名を持つ。
 
 <br>
 
-## 03. 名前解決
+## 02-02. ルーター
+
+### ルーター
+
+#### ▼ ルーターとは
+
+異なるネットワーク間（LANとLAN、LANとWAN、など）で、パケットを橋渡しする。例えば、自宅内に設置するルーターの場合は、インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
+
+参考：https://michisugara.jp/modem_router
+
+![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
+
+#### ▼ ルーターの種類
+
+参考：
+
+- https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
+- https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
+
+| ルーター名                           | 設置場所                                           | 役割                                                         |
+| ------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------ |
+| コアルーター                         | インターネットサービスプロバイダー内のネットワーク | 同じプロバイダーや異なるプロバイダーのネットワーク間を繋ぐ。 |
+| センタールーター                     | 一般企業内の拠点間WANネットワーク                  | 本社と支社のネットワーク間を繋ぐ。                           |
+| エッジルーター                       | 一般企業内の拠点間WANネットワーク                  | 異なる支社や営業所のネットワーク間を繋ぐ。                   |
+| ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク                               | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
+
+#### ▼ ルーティング
+
+受信した通信を適切な宛先に転送すること。通信の宛先を制御することを表現する場合、単に『転送する』よりも『ルーティングする』と表現した方が良い。
+
+参考：https://www.infraexpert.com/study/routing.html
+
+<br>
+
+### NATルーター
+
+#### ▼ NATルーターとは
+
+NATの機能を持つルーターのこと。
+
+#### ▼ NAT（静的NAT）：Network Address Transalation
+
+グローバルIPアドレスを持ち、パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスを変換すること。1つのグローバルIPアドレスに対して、1つのプライベートIPアドレスを紐付けられる。
+
+参考：https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
+
+![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router.png)
+
+#### ▼ DNAT：Destination NAT
+
+NATの双方向のインバウンド通信時で、送信先IPアドレスをグローバルIPアドレスからプライベートIPアドレスに変換すること。
+
+参考：https://rainbow-engine.com/dnat-snat-difference/
+
+![nat-router_dnat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_dnat.jpeg)
+
+**＊例＊**
+
+NATルーターは、プライベートネットワークに入る時に、パケットのヘッダ情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。
+
+![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グローバルからプライベートへのnat変換.png)
+
+#### ▼ SNAT：Source NAT
+
+NATの双方向のアウトバウンド通信時に、送信元IPアドレスをプライベートIPアドレスからグローバルIPアドレスに変換すること。
+
+参考：https://rainbow-engine.com/dnat-snat-difference/
+
+![nat-router_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_snat.jpeg)
+
+  **＊例＊**
+
+NATルーターは、プライベートネットワークから出る時に、パケットのヘッダ情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。例えば、GoogleでWebページを見ながら、Gmailアプリケーションを起動している場合、リクエストにおけるパケット情報として…
+
+| 送信元プライベートIPアドレス |  ⇄   | 送信元グローバルIPアドレス |
+| :--------------------------: | :--: | :------------------------: |
+|      ```192.168.1.1```       |      |      ```200.1.1.1```       |
+
+1. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『メールサーバーでPOP3プロトコルを受信する```110```番ポート』を指定して、メールサーバーにリクエストを送信する。
+
+```http
+GET https://example.com:110
+```
+
+2. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『WebサーバーでHTTPプロトコルを受信する```80```番ポート』を指定して、Webサーバーにリクエストを送信する。ただし。```80```番ポートは、省略可能。
+
+```http
+GET https://example.com:80
+```
+
+3. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『DNSサーバーでTCPプロトコルを受信する```53```番ポート』を指定して、DNSサーバーにリクエストを送信する。
+
+```http
+GET https://example.com:53
+```
+
+4. これらの『送信元プライベートIPアドレス』が、NATルーターで、グローバルIPアドレスに変換される。
+
+![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プライベートからグローバルへのnat変換.png)
+
+<br>
+
+### NAPTルーター
+
+#### ▼ NAPTルーターとは
+
+NAPTの機能を持つルーターのこと。
+
+#### ▼ NAPT（動的NAT）：Network Address Port Translation
+
+パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスだけでなく、ポート番号も変換すること。1つのグローバルIPアドレスに対して、複数のプライベートIPアドレスを紐付けられる。
+
+#### ▼ DNAT時の変換
+
+プライベートネットワークから出る時に、パケットのヘッダ情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。ただし、異なるプライベートIPアドレスが同じグローバルIPに変換されてしまうため、これを識別するために、ポート番号を複数の異なるポート番号に変換し、グローバルIPアドレスに付け加える。
+
+**＊例＊**
+
+| 送信元プライベートIPアドレス | 変換前ポート番号 |  ⇄   | 送信元グローバルIPアドレス | 変換後ポート番号 |
+| :--------------------------: | :--------------: | :--: | :------------------------: | :--------------: |
+|      ```192.168.2.1```       |   ```50011```    |      |   ```130.X.X.X:50011```    |   ```50011```    |
+|      ```192.168.3.1```       |   ```50011```    |      |   ```130.X.X.X:50012```    |   ```50012```    |
+
+![napt変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt変換.png)
+
+#### ▼ SNAT時の変換
+
+プライベートネットワークに入る時に、付け加えられたポート番号を元に、パケットのヘッダ情報における『宛先』のグローバルIPアドレスを、異なるプライベートIPアドレスに変換し分ける。
+
+![napt変換_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt変換_2.png)
+
+<br>
+
+## 02-03. フォワード/リバースプロキシサーバー
+
+### 機能
+
+#### ▼ 代理ルーティング
+
+![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
+
+参考：https://qiita.com/att55/items/162950627dc593c72f23
+
+| サーバー名                 | 機能                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数のサーバーに代理でルーティングする。 |
+| リバースプロキシサーバー   | 不特定のクライアントからのインバウンド通信を、特定のサーバーに代理でルーティングする。 |
+
+#### ▼ キャッシュ
+
+![プロキシサーバーのキャッシュ機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーのキャッシュ機能.png)
+
+参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm
+
+| サーバー名                 | 機能                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| フォワードプロキシサーバー | クライアント側にて、代理ルーティングのレスポンスのキャッシュを作成する。 |
+| リバースプロキシサーバー   | サーバー側にて、代理ルーティングのレスポンスのキャッシュを作成する。 |
+
+<br>
+
+### 設置場所
+
+#### ▼ 物理サーバーの場合
+
+フォワードプロキシサーバーはプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに設置されている。
+
+![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/proxy-server.png)
+
+#### ▼ クラウド上の場合
+
+クラウドの場合も、仮想環境が構築されるだけで、設置場所は同じである。
+
+<br>
+
+## 03. WAN：Wide Area Network
+
+### WANとは
+
+![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_wan.png)
+
+異なるLAN間のハブになるネットワークのこと。インターネットサービスプロバイダーがサービスとして提供している。WAN内では、各LANはグローバルIPアドレスで識別されている。各LANがWANに接続するためには、DTE（例：ブロードバンドルーター、Wifiルーター）、DCE（例：モデム）、電柱にあるアクセス回線、が必要になる。
+
+参考：
+
+- https://qiita.com/hymnofpeace/items/7f09a7a10e843552a8cb
+- https://xtech.nikkei.com/it/article/COLUMN/20080715/310872/
+
+<br>
+
+### WANの歴史
+
+![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_wan_history.png)
+
+<br>
+
+### WANの種類
+
+#### ▼ 回線交換方式
+
+  少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
+
+![回線交換方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/回線交換方式.png)
+
+#### ▼ パケット交換方式
+
+通信するデータをパケット化する。多数対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
+
+![パケット交換方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケット交換方式.png)
+
+<br>
+
+## 04. URL、メールアドレス
+
+### URL、メールアドレスとは
+
+URLやメールアドレスを使用して、データの最終的な通信先を識別する。
+
+<br>
+
+### 構造
+
+#### ▼ 完全修飾ドメイン名
+
+URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から、メールアドレスは『```ユーザ名 + 完全修飾ドメイン名```』から構成される。
+
+![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
+
+#### ▼ 完全修飾ドメイン名の構成
+
+完全修飾ドメイン名は、所属ネットワークを指すドメイン名と、そのネットワークにおける具体的なサーバーを指すホスト名からなる。ただし、サーバーのホスト名が『www』である場合、クライアントはURLの指定時にホスト名を省略できる。例えば、『```www.example.com```』という完全修飾ドメイン名をURLで指定する場合、『```example.com```』としても良い。
+
+![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
+
+#### ▼ サブドメイン
+
+完全修飾ドメイン名は、ドメイン名の子関係にあるサブドメイン名を持てる。ホスト名（以下では省略されている）と、ドメイン名の間につける。
+
+![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サブドメイン.png)
+
+<br>
+
+## 04-02. 名前解決
 
 ### 名前解決とは
 
@@ -207,7 +379,35 @@ $ nslookup example # 実際には、example.fooとなる
 
 <br>
 
-## 04. ネットワーク速度の指標
+## 05. 通信の方向/位置
+
+### インバウンド/アウトバウンド
+
+![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/inbound_outbound.png)
+
+サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。反対に、サーバーから流出する方向をアウトバウンドという。
+
+参考：
+
+- https://www.amazon.co.jp/dp/B0043D2EKO/
+- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
+
+<br>
+
+### アップストリーム/ダウンストリーム
+
+![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/upstream_downstream.png)
+
+通信の送受信全体の中の位置で通信を見た時、通信が送信された前半の位置を相対的にアップストリームという。反対に、通信が受信される後半の位置を相対的にダウンストリームという。
+
+参考：
+
+- https://www.amazon.co.jp/dp/B0043D2EKO/
+- https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
+
+<br>
+
+## 06. ネットワーク速度の指標
 
 ### 指標の種類
 
