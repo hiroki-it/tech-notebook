@@ -558,12 +558,12 @@ TF_VAR_ecr_version_tag=foo
 ###############################
 # VPC
 ###############################
-vpc_cidr_block = "n.n.n.n/n" # IPアドレス範囲
+vpc_cidr_block = "n.n.n.n/n" # CIDRブロック
 ```
 
 #### ▼ 値のデータ型
 
-単一値、list型、map型で定義できる。AZ、サブネットのCIDR、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。なお、RDSのパラメーターグループの適正値については、以下のリンクを参考にせよ。
+単一値、list型、map型で定義できる。AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。なお、RDSのパラメーターグループの適正値については、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 

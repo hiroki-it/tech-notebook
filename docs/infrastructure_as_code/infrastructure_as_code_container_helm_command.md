@@ -412,7 +412,7 @@ $ helm show values <チャート名>
 
 #### ▼ templateとは
 
-Kubernetesにデプロイされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにするとよい。
+Kubernetesにデプロイされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにすると良い。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>

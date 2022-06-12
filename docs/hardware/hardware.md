@@ -25,7 +25,7 @@ description: ハードウェアの知見をまとめました。
 
 <br>
 
-### 種類
+### ハードウェアの種類
 
 参考：https://living-maou.com/computer-composition/
 

@@ -511,7 +511,7 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 Opening service <サービス名> in default browser...
 ```
 
-ただ、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用するとよい。
+ただ、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用すると良い。
 
 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 

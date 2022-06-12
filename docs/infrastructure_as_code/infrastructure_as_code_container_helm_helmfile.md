@@ -45,7 +45,7 @@ repository/
     └── chart/ # チャート
 ```
 
-リリース単位は、Kubernetesリソースとするとよい。
+リリース単位は、Kubernetesリソースとすると良い。
 
 ```yaml
 repository/

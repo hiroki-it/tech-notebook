@@ -121,7 +121,7 @@ SREとアプリケーションチームの間で、どのようにコミュニ�
 
 #### ▼ 参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
-MTTxメトリクスとそのダッシュボードを作成するとよい。MTTxメトリクスについては、以下のリンクを参考にせよ。
+MTTxメトリクスとそのダッシュボードを作成すると良い。MTTxメトリクスについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html
 

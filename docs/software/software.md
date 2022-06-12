@@ -270,7 +270,7 @@ Windows 8以降で採用されている新しいFirmware
 
     
 
-### 種類
+### OSSの種類
 
 参考：https://openstandia.jp/oss_info/
 

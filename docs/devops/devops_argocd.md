@@ -96,7 +96,7 @@ description: ArgoCD＠DevOpsの知見をまとめました。
 
 ### ディレクトリ構成
 
-デプロイ単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがデプロイ単位になるため、マイクロサービスごとにApplicationを作成するとよい。
+デプロイ単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがデプロイ単位になるため、マイクロサービスごとにApplicationを作成すると良い。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
