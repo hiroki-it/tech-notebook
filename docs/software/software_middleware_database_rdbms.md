@@ -414,7 +414,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 ### 排他制御
 
-#### ▼ 種類
+#### ▼ 排他制御の種類
 
 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 

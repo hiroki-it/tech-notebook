@@ -97,7 +97,7 @@ data:
 
 ### kube-prometheus-stackチャートの場合
 
-kube-prometheus-stackチャートは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
+kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 
 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
@@ -122,7 +122,7 @@ kube-prometheus-stackチャートは、prometheusのチャートの他、grafana
       labelValue: "1"
 ```
 
-そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストファイルから作成したダッシュボードは、GUIからは削除できないようになっており。
+そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストファイルから作成したダッシュボードは、GUIからは削除できないようになっている。
 
 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
@@ -137,6 +137,10 @@ data:
   foo.json: |-
     # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
 ```
+
+ちなみに、kube-prometheus-stackチャート内にダッシュボードのConfigMapはすでに用意されており、これをインストールすると、いくつかのダッシュボードが作成される。
+
+参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 
 <br>
 

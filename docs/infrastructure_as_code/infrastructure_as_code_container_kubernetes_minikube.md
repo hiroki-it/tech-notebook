@@ -46,7 +46,7 @@ description: Minikube＠Kubernetesの知見をまとめました。
 
 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
-#### ▼ 種類
+#### ▼ ドライバーの種類
 
 参考：https://minikube.sigs.k8s.io/docs/drivers/
 

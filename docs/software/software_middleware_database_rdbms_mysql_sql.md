@@ -232,7 +232,7 @@ string型のカラムに関して、WHERE句の比較における値の特定、
 
 参考：https://johobase.com/sqlserver-where-collate/
 
-#### ▼ 種類
+#### ▼ 照合順序の種類
 
 寿司とビールの絵文字が区別されないことを『寿司ビール問題』という。大文字Aと小文字aを区別しないことは、CI：Case Insensitiveと表現され、照合順序名にも特徴としてCIの文字が含まれている。
 

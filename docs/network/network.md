@@ -17,7 +17,7 @@ description: ネットワークの知見をまとめました。
 
 ### インターネット、WAN、LAN
 
-ネットワークには、『インターネット』『WAN』『LAN』がある。家庭内LAN、学内LAN、企業内LAN、企業WANなど、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。
+ネットワークには、『インターネット』『WAN』『LAN』がある。自宅内LAN、学内LAN、企業内LAN、企業WANなど、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。
 
 ![インターネットとWANとLAN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターネットとWANとLAN.png)
 

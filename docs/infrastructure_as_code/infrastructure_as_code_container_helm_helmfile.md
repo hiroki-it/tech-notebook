@@ -296,6 +296,28 @@ $ helmfile destroy
 $ helmfile diff
 ```
 
+#### ▼ grepとの組み合わせ
+
+マニフェストファイルの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。```grep```を使用して、差分のあるリソースやファイルを確認しておく。
+
+```bash
+$ helmfile diff | grep kind
+
+# 差分のあるマニフェストファイルのkindキーのみを取得する。
+kind: Service
+kind: Deployment
+kind: PersistentVolume
+```
+
+```bash
+$ helmfile diff | grep Source
+
+# 差分のあるマニフェストファイルのkindキーのみを取得する。
+Source: project/manifests/service.yaml
+Source: project/manifests/deployment.yaml
+Source: project/manifests/persistent-volume.yaml
+```
+
 <br>
 
 ### sync

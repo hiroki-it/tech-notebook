@@ -486,7 +486,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 参考：https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
 
-#### ▼ 種類
+#### ▼ ローカルトランザクションの種類
 
 参考：https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
 
