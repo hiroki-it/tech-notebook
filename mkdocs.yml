@@ -247,10 +247,12 @@ nav:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
           - 目次: cloud_computing/cloud_computing_aws.md
-          - A〜E: cloud_computing/cloud_computing_aws_1.md
-          - F〜K: cloud_computing/cloud_computing_aws_2.md
-          - L〜R: cloud_computing/cloud_computing_aws_3.md
-          - S〜Z: cloud_computing/cloud_computing_aws_4.md
+          - A〜D: cloud_computing/cloud_computing_aws_1.md
+          - E: cloud_computing/cloud_computing_aws_2.md
+          - F〜K: cloud_computing/cloud_computing_aws_3.md
+          - L〜R: cloud_computing/cloud_computing_aws_4.md
+          - S〜U: cloud_computing/cloud_computing_aws_5.md
+          - V〜Z: cloud_computing/cloud_computing_aws_6.md
           - ■ その他:
               - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
               - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
