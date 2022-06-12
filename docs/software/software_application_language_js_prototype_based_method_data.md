@@ -554,7 +554,7 @@ for (const [key, value] of array.entries()) {
 
 参考：https://www.deep-rain.com/programming/javascript/778#continue
 
-PHPにも、```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```、```fliter```、```map```、```reduce```、```some```）があり、用途に合わせて使い分ける。
+PHPにも、```forEach```関数と同様に配列に対してコールバック関数を適用する関数（```find```、```fliter```、```map```、```reduce```、```some```）があり、用途に合わせて使い分ける。
 
 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 

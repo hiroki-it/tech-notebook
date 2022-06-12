@@ -19,18 +19,30 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 02. F〜K
+## 02. E
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_2.html
 
 <br>
 
-## 03. L〜R
+## 03. F〜K
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_3.html
 
 <br>
 
-## 04. S〜Z
+## 04. L〜R
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html
+
+<br>
+
+## 05. S〜U
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_5.html
+
+<br>
+
+## 06. V〜Z
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_6.html

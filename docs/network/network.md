@@ -37,7 +37,7 @@ description: ネットワークの知見をまとめました。
 
 #### ▼ サブネット
 
-LANは、バリアセグメント、パブリックサブネット（非武装地帯）、プライベートサブネット（内部ネットワーク）、に分割できる。
+LANは、バリアセグメント、パブリックサブネット（非武装地帯）、プライベートサブネット（内部ネットワーク）、に分割できる。AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
 参考：
 
@@ -320,7 +320,7 @@ LAN内で使用される。異なるプライベートネットワーク間で�
 
 IPアドレスのオクテットは、ネットワーク部とホスト部に分類できる。
 
-参考：https://www.itbook.info/study/p54.html
+参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
 ![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
 

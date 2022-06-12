@@ -1578,7 +1578,7 @@ resource "aws_s3_bucket_policy" "alb" {
     
   ],
 
-   ~ ~ ~ その他の設定 ~ ~ ~
+   # 〜 中略 〜
 
 }
 ```

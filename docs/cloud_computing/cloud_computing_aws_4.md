@@ -3,7 +3,7 @@ title: 【知見を記録するサイト】AWS：Amazon Web Service
 description: AWS：Amazon Web Serviceの知見をまとめました。
 ---
 
-# AWS：Amazon Web Service（S〜Z）
+# AWS：Amazon Web Service（L〜R）
 
 ## はじめに
 
@@ -13,76 +13,207 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 01. S3：Simple Storage Service
+## 01. Lambda
 
-### S3とは
+### Lambdaとは
+
+他のAWSリソースのイベントによって駆動する関数を管理できる。ユースケースについては、以下のリンクを参考にせよ。
+
+参考：参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/applications-usecases.html
+
+![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
+
+<br>
 
 ### セットアップ
 
 #### ▼ 概要
 
-| 設定項目             | 説明                       |
-| -------------------- | -------------------------- |
-| バケット             | バケットに関して設定する。 |
-| バッチオペレーション |                            |
-| アクセスアナライザー |                            |
+| 設定項目                           | 説明                                                         | 補足                                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ランタイム                         | 関数の実装に使用する言語を設定する。                           | コンテナイメージの関数では使用できない。                     |
+| ハンドラ                           | 関数の実行時にコールしたい具体的メソッド名を設定する。       | ・コンテナイメージの関数では使用できない。<br>・Node.js：```index.js``` というファイル名で ```exports.handler``` メソッドを呼び出したい場合、ハンドラ名を```index.handler```とする |
+| レイヤー                           | 異なる関数の間で、特定の処理を共通化できる。                 | コンテナイメージの関数では使用できない。                     |
+| メモリ                             | Lambdaに割り当てるメモリ量を設定する。                       | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>参考：https://www.business-on-it.com/2003-aws-lambda-performance-check/ |
+| タイムアウト                       |                                                              |                                                              |
+| 実行ロール                         | Lambda内のメソッドが実行される時に必要なポリシーを持つロールを設定する。 |                                                              |
+| 既存ロール                         | Lambdaにロールを設定する。                                   |                                                              |
+| トリガー                           | LambdaにアクセスできるようにするAWSリソースを設定する。      | 設定されたAWSリソースに応じて、Lambdaのポリシーが自動的に修正される。 |
+| アクセス権限                       | Lambdaのポリシーを設定する。                                 | トリガーの設定に応じて、Lambdaのポリシーが自動的に修正される。 |
+| 送信先                             | LambdaからアクセスできるようにするAWSリソースを設定する。    | 送信先のAWSリソースのポリシーは自動的に修正されないため、別途、手動で修正する必要がある。 |
+| 環境変数                           | Lambdaの関数内に出力する環境変数を設定する。                 | デフォルトでは、環境変数はAWSマネージド型KMSキーによって暗号化される。 |
+| 同時実行数                         | 同時実行の予約を設定する。                                   |                                                              |
+| プロビジョニングされた同時実行設定 |                                                              |                                                              |
+| モニタリング                       | LambdaをCloudWatchまたはX-Rayを使用して、メトリクスを収集する。 | 次の方法がある<br>・CloudWatchによって、メトリクスを収集する。<br>・CloudWatchのLambda Insightsによって、パフォーマンスに関するメトリクスを収集する。<br>・X-Rayによって、APIへのリクエスト、Lambdaコール、Lambdaの下流とのデータ通信をトレースし、これらをスタックトレース化する。 |
 
-#### ▼ プロパティ
+#### ▼ 設定のベストプラクティス
 
-| 設定項目                     | 説明 | 補足 |
-| ---------------------------- | ---- | ---- |
-| バージョニング               |      |      |
-| サーバーアクセスのログ記録   |      |      |
-| 静的サイトホスティング       |      |      |
-| オブジェクトレベルのログ記録 |      |      |
-| デフォルト暗号化             |      |      |
-| オブジェクトのロック         |      |      |
-| Transfer acceleration        |      |      |
-| イベント                     |      |      |
-| リクエスタ支払い             |      |      |
-
-#### ▼ アクセス制限
-
-| 設定項目                   | 説明                                                         | 補足                                                         |
-| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ブロックパブリックアクセス | パブリックネットワークがS3にアクセスする時の許否を設定する。 | ・ブロックパブリックアクセスを無効にすると、項目ごとの方法（ACL、バケットポリシー、アクセスポイントポリシー）によるアクセスが許可される。もし他のAWSリソースからのアクセスを許可する場合は、ブロックパブリックアクセスを無効化した上でバケットポリシーに許可対象を定義するか、あるいはブロックパブリックアクセスでは拒否できないIAMポリシーをAWSリソースに設定する。<br>・ブロックパブリックアクセスを全て有効にすると、パブリックネットワークからの全アクセスを遮断できる。<br>・特定のオブジェクトで、アクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。 |
-| バケットポリシー           | IAMユーザー（クロスアカウントも可）またはAWSリソースがS3へにアクセスするためのポリシーで管理する。 | ・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー（クロスアカウントも可）やAWSリソースがS3にアクセスするために必要である。ただし代わりに、IAMポリシーをAWSリソースにアタッチすることによりも、アクセスを許可できる。<br>参考：https://awesome-linus.com/2020/02/04/s3-bucket-public-access/<br>・ポリシーをアタッチできないCloudFrontやALBなどでは、自身へのアクセスログを生成するために必須である。 |
-| アクセスコントロールリスト | IAMユーザー（クロスアカウントも可）がS3にアクセスする時の許否を設定する。 | ・バケットポリシーと機能が重複する。<br>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても、特定のオブジェクトでアクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。 |
-| CORSの設定                 |                                                              |                                                              |
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-configuration
 
 <br>
 
-### レスポンスヘッダー
+### Lambdaと関数の関係性
 
-#### ▼ レスポンスヘッダーの設定
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
 
+#### ▼ Lambdaサービス
 
+コンソール画面のLambdaに相当する。
 
-| 設定できるヘッダー              | 説明                                                         | 補足                                           |
-| ------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
-| ETag                            | コンテンツの一意な識別子。ブラウザキャッシュの検証に使用される。 | 全てのコンテンツにデフォルトで設定されている。 |
-| Cache-Control                   | Expiresと同様に、ブラウザにおけるキャッシュの有効期限を設定する。 | 全てのコンテンツにデフォルトで設定されている。 |
-| Content-Type                    | コンテンツのMIMEタイプを設定する。                           | 全てのコンテンツにデフォルトで設定されている。 |
-| Expires                         | Cache-Controlと同様に、ブラウザにおけるキャッシュの有効期限を設定する。ただし、Cache-Controlの方が優先度が高い。 |                                                |
-| Content-Disposition             |                                                              |                                                |
-| Content-Encoding                |                                                              |                                                |
-| x-amz-website-redirect-location | コンテンツのリダイレクト先を設定する。                       |                                                |
+#### ▼ 関数の実行環境
+
+Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
+
+実行環境には、3つのフェーズがある。
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
+
+![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-lifecycle.png)
+
+#### ▼ Initフェーズ
+
+Lambdaが発火する。実行環境が構築され、関数を実行するための準備が行われる。
+
+#### ▼ Invokeフェーズ
+
+Lambdaは関数を実行する。実行環境側のランタイムは、APIを介してLambdaから関数に引数を渡す。また関数の実行後に、APIを介して返却値をLambdaに渡す。
+
+#### ▼ Shutdownフェーズ
+
+一定期間、Invokeフェーズにおける関数実行が行われなかった場合、Lambdaはランタイムを終了し、実行環境を削除する。
 
 <br>
 
-### バケットポリシーの例
+### Lambda関数 on Docker
 
-#### ▼ S3のARNについて
+#### ▼ ベースイメージの準備
 
-ポリシーでは、S3のARでは、『```arn:aws:s3:::<バケット名>/*```』のように、最後にバックスラッシュアスタリスクが必要。
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
 
-#### ▼ ALBのアクセスログの保存を許可
+#### ▼ RIC：Runtime Interface Clients
 
-パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み権限を実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
+通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりにRICを使用してコンテナ内関数と通信を行う。言語別にRICパッケージが用意されている。
 
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-images.html#runtimes-api-client
 
-**＊実装例＊**
+#### ▼ RIE：Runtime Interface Emulator
+
+開発環境のコンテナで、擬似的にLambda関数を再現する。全ての言語で共通のRIEパッケージが用意されている。
+
+参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
+
+RIEであっても、稼働させるためにAWSのクレデンシャル情報（アクセスキー、シークレットアクセスキー、リージョン）が必要なため、環境変数や```credentials```ファイルを使用して、Lambdaにこれらの値を出力する。
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-test.html#images-test-env
+
+**＊参考＊**
+
+```bash
+$ docker run \
+    --rm \
+    # エミュレーターをエントリーポイントをバインドする。
+    -v ~/.aws-lambda-rie:/aws-lambda \
+    -p 9000:8080 \
+    # エミュレーターをエントリーポイントとして設定する。
+    --entrypoint /aws-lambda/aws-lambda-rie \
+    <イメージ名>:<バージョンタグ> /go/bin/cmd
+```
+
+```bash
+# ハンドラー関数の引数に合ったJSONデータを送信する。
+$ curl \
+    -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
+```
+
+**＊参考＊**
+
+```yaml
+version: "3.7"
+
+services:
+  lambda:
+    build:
+      context: .
+      dockerfile: ./build/Dockerfile
+    container_name: lambda
+    # エミュレーターをエントリーポイントとして設定する。
+    entrypoint: /aws-lambda/aws-lambda-rie
+    env_file:
+      - .docker.env
+    image: <イメージ名>:<バージョンタグ>
+    ports:
+      - 9000:8080
+    # エミュレーターをエントリーポイントをバインドする。
+    volumes:
+      - ~/.aws-lambda-rie:/aws-lambda
+```
+
+```bash
+$ docker-compose up lambda
+```
+
+```bash
+$ curl \
+  -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
+```
+
+<br>
+
+### Lambda関数
+
+#### ▼ Goの使用例
+
+以下のリンクを参考にせよ。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-golang.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+
+#### ▼ Node.jsの使用例
+
+以下のリンクを参考にせよ。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-nodejs.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+
+<br>
+
+### 同時実行
+
+#### ▼ 同時実行の予約
+
+Lambdaは、関数の実行中に再びリクエストが送信されると、関数のインスタンスを新しく作成する。そして、各関数インスタンスを使用して、同時並行的にリクエストに応じる。デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
+
+![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda_concurrency-model.png)
+
+<br>
+
+### VPC外/VPC内
+
+#### ▼ VPC外への配置
+
+LambdaはデフォルトではVPC外に配置される。この場合、LambdaにENIがアタッチされ、ENIに割り当てられたIPアドレスがLambdaに適用される。Lambdaの実行時にENIは再作成されるため、実行ごとにIPアドレスは変化するが、一定時間内の再実行であればENIは再利用されるため、前回の実行時と同じIPアドレスになることもある。
+
+#### ▼ VPC内への配置
+
+LambdaをVPC内に配置するように設定する。VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため、アウトバウンド通信を行うためには、NAT Gatewayを設置する必要がある。
+
+<br>
+
+### ポリシー
+
+#### ▼ 実行のための最低限のポリシー
+
+Lambdaを実行するためには、デプロイされた関数を使用する権限が必要である。そのため、関数を取得するためのステートメントを設定する。
 
 ```bash
 {
@@ -90,50 +221,71 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
   "Statement": [
     {
       "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::582318560864:root"
-      },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::<バケット名>/*"
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:<関数名>*"
     }
   ]
 }
 ```
 
-#### ▼ CloudFrontのファイル読み出しを許可
+<br>
 
-パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーを設定する必要がある。
+### デプロイ
 
-**＊実装例＊**
+#### ▼ 直接的に修正
 
-```bash
-{
-  "Version": "2008-10-17",
-  "Id": "PolicyForCloudFrontPrivateContent",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <OAIのID番号>"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::<バケット名>/*"
-    }
-  ]
-}
-```
+デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。
 
-#### ▼ CloudFrontのアクセスログの保存を許可
+#### ▼ S3におけるzipファイル
 
-2020-10-08時点の仕様では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保存できない。よって、危険ではあるが、パブリックアクセスを有効化する必要がある。
+ビルド後のコードをzipファイルにしてアップロードする。ローカルマシンまたはS3からアップロードできる。
 
-```bash
-// ポリシーは不要
-```
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
 
-#### ▼ Lambdaからのアクセスを許可
+#### ▼ ECRにおけるイメージ
 
-バケットポリシーは不要である。代わりに、AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある。このポリシーには、S3へのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。
+コンテナイメージの関数でのみ有効である。ビルド後のコードをdockerイメージしてアップロードする。ECRからアップロードできる。
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
+
+<br>
+
+## 01-02. Lambda@Edge
+
+### Lambda@Edgeとは
+
+CloudFrontに統合されたLambdaを、特別にLambda@Edgeという。
+
+<br>
+
+### セットアップ
+
+#### ▼ トリガーの種類
+
+![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge.png)
+
+CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンス、をトリガーとする。エッジロケーションのCloudFrontに、Lambdaのレプリカが構築される。
+
+| トリガーの種類       | 発火のタイミング                                             |
+| -------------------- | ------------------------------------------------------------ |
+| ビューワーリクエスト | CloudFrontが、ビューワーからリクエストを受信した後（キャッシュを確認する前）。 |
+| オリジンリクエスト   | CloudFrontが、リクエストをオリジンサーバーに転送する前（キャッシュを確認した後）。 |
+| オリジンレスポンス   | CloudFrontが、オリジンからレスポンスを受信した後（キャッシュを確認する前）。 |
+| ビューワーレスポンス | CloudFrontが、ビューワーにレスポンスを転送する前（キャッシュを確認した後）。 |
+
+#### ▼ 各トリガーのeventオブジェクトへのマッピング
+
+各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+
+<br>
+
+### ポリシー
+
+#### ▼ 実行のための最低限のポリシー
+
+Lambda@Edgeを実行するためには、最低限、以下の権限が必要である。
 
 ```bash
 {
@@ -142,39 +294,166 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
     {
       "Effect": "Allow",
       "Action": [
-        "logs:*"
+        "iam:CreateServiceLinkedRole"
       ],
-      "Resource": "arn:aws:logs:*:*:*"
+      "Resource": "*"
     },
     {
       "Effect": "Allow",
       "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
+        "lambda:GetFunction",
+        "lambda:EnableReplication*"
       ],
-      "Resource": "arn:aws:s3:::*"
+      "Resource": "arn:aws:lambda:ap-northeast-1:<アカウントID>:function:<関数名>:<バージョン>"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:UpdateDistribution"
+      ],
+      "Resource": "arn:aws:cloudfront::<アカウントID>:distribution/<DistributionID>"
     }
   ]
 }
 ```
 
-#### ▼ 特定のIPアドレスからのアクセスを許可
+<br>
 
-パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合、そのIPアドレスをポリシーに設定する必要がある。
+### Node.jsを使用した関数例
+
+#### ▼ オリジンの動的な切り替え
+
+![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge_dynamic-origin.png)
+
+**＊実装例＊**
+
+eventオブジェクトの```domainName```と```host.value```に代入されたバケットのドメイン名によって、転送先のバケットが決まる。そのため、この値を切り替えれば、動的オリジンを実現できる。なお、各バケットには同じOAIを設定する必要がある。
+
+```javascript
+"use strict";
+
+exports.handler = (event, context, callback) => {
+
+    const request = event.Records[0].cf.request;
+    // ログストリームに変数を出力する。
+    console.log(JSON.stringify({request}, null, 2));
+
+    const headers = request.headers;
+    const s3Backet = getBacketBasedOnDeviceType(headers);
+
+    request.origin.s3.domainName = s3Backet
+    request.headers.host[0].value = s3Backet
+    // ログストリームに変数を出力する。
+    console.log(JSON.stringify({request}, null, 2));
+
+    return callback(null, request);
+};
+
+/**
+ * デバイスタイプを基に、オリジンを切り替える。
+ *
+ * @param   {Object} headers
+ * @param   {string} env
+ * @returns {string} pcBucket|spBucket
+ */
+const getBacketBasedOnDeviceType = (headers) => {
+
+    const pcBucket = env + "-bucket.s3.amazonaws.com";
+    const spBucket = env + "-bucket.s3.amazonaws.com";
+
+    if (headers["cloudfront-is-desktop-viewer"]
+        && headers["cloudfront-is-desktop-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-tablet-viewer"]
+        && headers["cloudfront-is-tablet-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-mobile-viewer"]
+        && headers["cloudfront-is-mobile-viewer"][0].value === "true") {
+        return spBucket;
+    }
+
+    return spBucket;
+};
+```
+
+オリジンリクエストは、以下のeventオブジェクトのJSONデータにマッピングされている。なお、一部のキーは省略している。
 
 ```bash
 {
-  "Version": "2012-10-17",
-  "Id": "S3PolicyId1",
-  "Statement": [
+  "Records": [
     {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::<バケット名>/*",
-      "Condition": {
-        "IpAddress": {
-          "aws:SourceIp": "<IPアドレス>/32"
+      "cf": {
+        "request": {
+          "body": {
+            "action": "read-only",
+            "data": "",
+            "encoding": "base64",
+            "inputTruncated": false
+          },
+          "clientIp": "n.n.n.n",
+          "headers": {
+            "host": [
+              {
+                "key": "Host",
+                "value": "prd-sp-bucket.s3.ap-northeast-1.amazonaws.com"
+              }
+            ],
+            "cloudfront-is-mobile-viewer": [
+              {
+                "key": "CloudFront-Is-Mobile-Viewer",
+                "value": true
+              }
+            ],
+            "cloudfront-is-tablet-viewer": [
+              {
+                "key": "loudFront-Is-Tablet-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-smarttv-viewer": [
+              {
+                "key": "CloudFront-Is-SmartTV-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-desktop-viewer": [
+              {
+                "key": "CloudFront-Is-Desktop-Viewer",
+                "value": false
+              }
+            ],
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "Amazon CloudFront"
+              }
+            ]
+          },
+          "method": "GET",
+          "origin": {
+            "s3": {
+              "authMethod": "origin-access-identity",                
+              "customHeaders": {
+                  "env": [
+                      {
+                          "key": "env",
+                          "value": "prd"
+                      }
+                  ]
+              },
+              "domainName": "prd-sp-bucket.s3.amazonaws.com",
+              "path": "",
+              "port": 443,
+              "protocol": "https",
+              "region": "ap-northeast-1"
+            }
+          },
+          "querystring": "",
+          "uri": "/images/12345"
         }
       }
     }
@@ -184,974 +463,644 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-### CORS設定
-
-#### ▼ 指定したドメインからのGET送信を許可
-
-```bash
-[
-  {
-    "AllowedHeaders": [
-      "Content-*"
-    ],
-    "AllowedMethods": [
-      "GET"
-    ],
-    "AllowedOrigins": [
-      "https://example.jp"
-    ],
-    "ExposeHeaders": [],
-    "MaxAgeSeconds": 3600
-  }
-]
-```
-
-<br>
-
-### 署名付きURL
-
-#### ▼ 署名付きURLとは
-
-認証/認可情報をパラメーターに持つURLのこと。S3では、署名付きURLを発行し、S3へのアクセス権限を外部のユーザーに一時的に付与する。
-
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
-
-<br>
-
-## 02. セキュリティグループ
-
-### セキュリティグループとは
-
-アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く。インバウンド通信（プライベートネットワーク向き通信）では、プロトコルや受信元IPアドレスを設定でき、アウトバウンド通信（パブリックネットワーク向き通信）では、プロトコルや送信先プロトコルを設定できる。
-
-<br>
+## 02. RDS：Relational Database Service
 
 ### セットアップ
 
-#### ▼ 概要
-
-インバウンドルールとアウトバウンドルールを設定できる。
-
-<br>
-
-### インバウンドルール
-
-#### ▼ パケットフィルタリング型ファイアウォール
-
-パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが設置されている。
-
-![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
-
-#### ▼ セキュリティグループIDの紐付け
-
-ソースに対して、セキュリティグループIDを設定した場合、そのセキュリティグループがアタッチされているENIと、このENIに紐付けられたリソースからのトラフィックを許可できる。リソースのIPアドレスが動的に変化する場合、有効な方法である。
-
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
-
-#### ▼ アプリケーションEC2の例
-
-ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。
-
-| タイプ | プロトコル | ポート    | ソース                       | 説明                        |
-| ------ | ---------- | --------- | ---------------------------- | --------------------------- |
-| HTTP   | TCP        | ```80```  | ALBのセキュリティグループID       | HTTP access from ALB        |
-| HTTPS  | TCP        | ```443``` | 踏み台EC2のセキュリティグループID | SSH access from bastion EC2 |
-
-#### ▼ 踏み台EC2の例
-
-| タイプ | プロトコル | ポート   | ソース                     | 説明                              |
-| ------ | ---------- | -------- | -------------------------- | --------------------------------- |
-| SSH    | TCP        | ```22``` | 社内のグローバルIPアドレス | SSH access from global ip address |
-
-#### ▼ EFSの例
-
-EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。
-
-| タイプ | プロトコル | ポート     | ソース                                 | 説明                    |
-| ------ | ---------- | ---------- | -------------------------------------- | ----------------------- |
-| NFS    | TCP        | ```2049``` | アプリケーションEC2のセキュリティグループID | NFS access from app EC2 |
-
-#### ▼ RDSの例
-
-EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。
-
-| タイプ       | プロトコル | ポート     | ソース                                 | 説明                      |
-| ------------ | ---------- | ---------- | -------------------------------------- | ------------------------- |
-| MYSQL/Aurora | TCP        | ```3306``` | アプリケーションEC2のセキュリティグループID | MYSQL access from app EC2 |
-
-#### ▼ Redisの例
-
-EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。
-
-| タイプ      | プロトコル | ポート     | ソース                                 | 説明                    |
-| ----------- | ---------- | ---------- | -------------------------------------- | ----------------------- |
-| カスタムTCP | TCP        | ```6379``` | アプリケーションEC2のセキュリティグループID | TCP access from app EC2 |
-
-#### ▼ ALBの例
-
-CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。その代わりに、CloudFrontにWAFを紐付け、ALBの前でIPアドレスを制限する。CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。
-
-| タイプ | プロトコル | ポート    | ソース          | 説明                         |      |
-| ------ | ---------- | --------- | --------------- | ---------------------------- | ---- |
-| HTTP   | TCP        | ```80```  | ```0.0.0.0/0``` | HTTP access from CloudFront  |      |
-| HTTPS  | TCP        | ```443``` | ```0.0.0.0/0``` | HTTPS access from CloudFront |      |
-
-<br>
-
-### アウトバウンドルール
-
-#### ▼ 任意AWSリソースの例
-
-| タイプ               | プロトコル | ポート | 送信先          | 説明        |
-| -------------------- | ---------- | ------ | --------------- | ----------- |
-| すべてのトラフィック | すべて     | すべて | ```0.0.0.0/0``` | Full access |
-
-<br>
-
-## 03. SES：Simple Email Service
-
-### SESとは
-
-クラウドメールサーバーとして働く。メール受信をトリガーとして、アクションを実行する。
-
-<br>
-
-### セットアップ
-
-![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SESとは.png)
-
-#### ▼ 概要
+#### ▼ DBエンジン
 
 | 設定項目           | 説明                                                         | 補足                                                         |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Domain             | SESのドメイン名を設定する。                                  | 設定したドメイン名には、『```10 inbound-smtp.us-east-1.amazonaws.com```』というMXレコードタイプの値が紐付く。 |
-| Email Addresses    | 送信先として認証するメールアドレスを設定する。設定するとAWSからメールが届くので、指定されたリンクをクリックする。 | Sandboxモードの時だけ機能する。                              |
-| Sending Statistics | SESで収集されたデータをメトリクスで確認できる。              | ```Request Increased Sending Limits```のリンクにて、Sandboxモードの解除を申請できる。 |
-| SMTP Settings      | SMTP-AUTHの接続情報を確認できる。                            | アプリケーションの```25```番ポートは送信制限があるため、```465```番ポートを使用する。これに合わせて、SESも受信で```465```番ポートを使用するようにする。 |
-| Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる。 |                                                              |
-| IP Address Filters |                                                              |                                                              |
-
-#### ▼ Rule Sets
-
-| 設定項目 | 説明                                                         |
-| -------- | ------------------------------------------------------------ |
-| Recipiet | 受信したメールアドレスで、何の宛先の時にこれを許可するかを設定する。 |
-| Actions  | 受信を許可した後に、これをトリガーとして実行するアクションを設定する。 |
+| エンジンタイプ     | ミドルウェアのDBMSの種類を設定する。                         |                                                              |
+| エディション       | エンジンバージョンでAuroraを選択した場合の互換性を設定する。 |                                                              |
+| エンジンバージョン | DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。 | ・Auroraであれば、```SELECT AURORA_VERSION()```を使用して、エンジンバージョンを確認できる。 |
 
 <br>
 
-### 仕様上の制約
+### Auroraと非Aurora
 
-#### ▼ 構築リージョンの制約
+#### ▼ DBMSに対応するRDB
 
-SESは連携するAWSリソースと同じリージョンに構築しなければならない。
+| DBMS       | RDB  | 互換性           |
+| ---------- | ---- | ---------------- |
+| Aurora     | RDS  | MySQL/PostgreSQL |
+| MariaDB    | RDS  | MariaDB          |
+| MySQL      | RDS  | MySQL            |
+| PostgreSQL | RDS  | PostgreSQL       |
 
-#### ▼ Sandboxモードの解除
+#### ▼ 機能の違い
 
-SESはデフォルトではSandboxモードになっている。Sandboxモードでは以下の制限がかかっており。サポートセンターに解除申請が必要である。
+RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただ、その分費用が高いことに注意する。
 
-| 制限     | 説明                                          |
-| -------- | --------------------------------------------- |
-| 送信制限 | SESで認証したメールアドレスのみに送信できる。 |
-| 受信制限 | 1日に200メールのみ受信できる。                |
-
-<br>
-
-### SMTP-AUTH
-
-#### ▼ AWSにおけるSMTP-AUTHの仕組み
-
-一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+参考：https://www.ragate.co.jp/blog/articles/10234
 
 <br>
 
-## 04. システムマネージャー
+### OSの隠蔽
 
-### パラメーターストア
+#### ▼ OSの隠蔽とは
 
-#### ▼ パラメーターストアとは
+RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。そのためDBサーバーのようには操作できず、OSのバージョン確認やSSH接続を行えない。
 
-機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてEC2/ECS/EKSに出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
+参考：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
 
-#### ▼ KMSを使用した暗号化と復号化
+#### ▼ 確認方法
 
-![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+Linux x86_64が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。
 
-パラメーターストアで管理される環境変数はKMSによって暗号化されており、EC2/ECS/EKSで参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
+```sql
+# Auroraの場合
+SHOW variables LIKE '%version%';
+
++-------------------------+------------------------------+
+| Variable_name           | Value                        |
++-------------------------+------------------------------+
+| aurora_version          | 2.09.0                       |
+| innodb_version          | 5.7.0                        |
+| protocol_version        | 10                           |
+| slave_type_conversions  |                              |
+| tls_version             | TLSv1,TLSv1.1,TLSv1.2        |
+| version                 | 5.7.12-log                   |
+| version_comment         | MySQL Community Server (GPL) |
+| version_compile_machine | x86_64                       |
+| version_compile_os      | Linux                        |
++-------------------------+------------------------------+
+```
+
+```sql
+# 非Auroraの場合
+SHOW variables LIKE '%version%';
+
++-------------------------+------------------------------+
+| Variable_name           | Value                        |
++-------------------------+------------------------------+
+| innodb_version          | 5.7.0                        |
+| protocol_version        | 10                           |
+| slave_type_conversions  |                              |
+| tls_version             | TLSv1,TLSv1.1,TLSv1.2        |
+| version                 | 5.7.0-log                    |
+| version_comment         | Source distribution          |
+| version_compile_machine | x86_64                       |
+| version_compile_os      | Linux                        |
++-------------------------+------------------------------+
+```
+
+<br>
+
+### メンテナンスウインドウ
+
+#### ▼ メンテナンスウインドウ
+
+DBクラスター/DBインスタンスの設定の変更をスケジューリングする。
+
+参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+
+#### ▼ メンテナンスの適切な曜日/時間帯
+
+CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する（メンテナンスウィンドウがUTCであることに注意）。
+
+#### ▼ 『保留中の変更』『保留中のメンテナンス』
+
+![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
+
+ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア/OS/DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。『次のメンテナンスウィンドウ』を選択すれば実行タイミングをメンテナンスウィンドウの間設定できるが、これを行わない場合は『日付の適用』に表示された時間帯に強制実行される。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
+
+ちなみに保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
+
+参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
+
+![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
+
+#### ▼ 保留中のメンテナンスの状態
+
+| 状態           | 説明                                                                      |
+| -------------- |-------------------------------------------------------------------------|
+| 必須           | アクションは実行可能かつ必須である。実行タイミングは未定であるが、適用期限日には必ず実行され、これは延期できない。               |
+| 利用可能       | アクションは実行できるが、推奨である。実行タイミングは未定である。                                       |
+| 次のウィンドウ | アクションの実行タイミングは、次回のメンテナンスウィンドウである。後でアップグレードを選択することにより、『利用可能』の状態に戻すことも可能。 |
+| 進行中         | 現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。                                   |
+
+#### ▼ 『次のウィンドウ』状態の取り消し
+
+設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。しかし、CLIを使用すると戻せる。
+
+参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+
+```bash
+$ aws rds describe-pending-maintenance-actions --output=table
+
+-----------------------------------------------------------------------------------
+|                        DescribePendingMaintenanceActions                        |
++---------------------------------------------------------------------------------+
+||                           PendingMaintenanceActions                           ||
+|+---------------------+---------------------------------------------------------+|
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-foo-instance   ||
+|+---------------------+---------------------------------------------------------+|
+|||                       PendingMaintenanceActionDetails                       |||
+||+--------------------------+--------------------------------------------------+||
+|||  Action                  |  system-update # 予定されたアクション                |||
+|||  AutoAppliedAfterDate    |  2022-01-31T00:00:00+00:00                       |||
+|||  CurrentApplyDate        |  2022-01-31T00:00:00+00:00                       |||
+|||  Description             |  New Operating System update is available        |||
+|||  ForcedApplyDate         |  2022-03-30T00:00:00+00:00                       |||
+||+--------------------------+--------------------------------------------------+||
+||                           PendingMaintenanceActions                           ||
+|+---------------------+---------------------------------------------------------+|
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-bar-instance   ||
+|+---------------------+---------------------------------------------------------+|
+|||                       PendingMaintenanceActionDetails                       |||
+||+--------------------------+--------------------------------------------------+||
+|||  Action                  |  system-update                                   |||
+|||  AutoAppliedAfterDate    |  2022-01-31T00:00:00+00:00                       |||
+|||  CurrentApplyDate        |  2022-01-31T00:00:00+00:00                       |||
+|||  Description             |  New Operating System update is available        |||
+|||  ForcedApplyDate         |  2022-03-30T00:00:00+00:00                       |||
+||+--------------------------+--------------------------------------------------+||
+```
+
+```bash
+$ aws rds apply-pending-maintenance-action \
+  --resource-identifier arn:aws:rds:ap-northeast-1:<アカウントID>:db:prd-foo-instance \
+  --opt-in-type undo-opt-in \
+  --apply-action <取り消したいアクション名>
+```
+
+#### ▼ 『保留中の変更』の取り消し
+
+保留中の変更を画面上からは取り消せない。しかし、CLIを使用すると戻せる。
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/services-parameter-store.html
-
-- https://note.com/hamaa_affix_tech/n/n02eb412d0327
-
-- https://tech.libry.jp/entry/2020/09/17/130042
-
-
-#### ▼ 命名規則
-
-システムマネージャーパラメーター名は、```/<リソース名>/<環境変数名>```とするとわかりやすい。
-
-<br>
-
-### セッションマネージャー
-
-#### ▼ セッションマネージャーとは
-
-EC2/ECSへのセッションを管理する。
-
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#session-manager-features
-
-#### ▼ AWSセッション
-
-TLS、Sigv4、KMSを使用して暗号化された接続のこと。
-
-参考：：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#what-is-a-session
-
-#### ▼ 同時AWSセッションの上限数
-
-同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
+- https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
+- https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
 
 ```bash
-# ECS Execの場合
-An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
+$ aws rds modify-db-instance \
+    --db-instance-identifier prd-foo-instance \
+    <変更前の設定項目> <変更前の設定値> \
+    --apply-immediately
+```
+
+#### ▼ ミドルウェアのアップグレードの調査書
+
+以下のような報告書のもと、調査と対応を行う。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
+
+またマージされる内容の調査のため、リリースノートの確認が必要になる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
+
+```markdown
+# 調査
+
+## バージョンの違い
+
+『SELECT AURORA_VERSION()』を使用して、正確なバージョンを取得する。
+
+## マージされる内容
+
+ベンダーのリリースノートを確認し、どのような『機能追加』『バグ修正』『機能廃止』『非推奨機能』がマージされるかを調査する。
+機能廃止や非推奨機能がある場合、アプリケーション内のSQL文に影響が出る可能性がある。
+
+## 想定されるダウンタイム
+
+テスト環境でダウンタイムを計測し、ダウンタイムを想定する。
+```
+
+```markdown
+# 本番環境対応
+
+## 日時と周知
+
+対応日時と周知内容を決定する。
+
+## 想定外の結果
+
+本番環境での対応で起こった想定外の結果を記載する。
 ```
 
 <br>
 
-### チェンジマネージャー
-
-#### ▼ チェンジマネージャーとは
-
-AWSリソースの設定変更に承認フローを設ける。
-
-1. ランブックを作成する。AWSがあらかじめ用意してくれているものを使用もできる。
-2. テンプレートを作成し、リクエストを作成する。
-3. 承認フローを通過する。これは、スキップするように設定もできる。
-4. テンプレートを使用して、変更リクエストを作成する。
-5. 承認フローを通過する。これは、スキップできない。
-6. 変更リクエストに基づいて、AWSリソースを変更する処理が自動的に実行される。これは、即時実行するこもスケジューリングもできる。
-
-#### ▼ ランブック（ドキュメント）
-
-AWSリソースを変更するためには『ランブック（ドキュメント）』を事前に作成する必要がある。ランブックでは、AWSリソースの変更箇所を定義する。ランブックには、AWSがあらかじめ用意してくれるものとユーザー定義のものがある。
-
-| タイプ           | 説明                                                         | 補足                                                         |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/automation-walk-document-builder.html |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
-| Sessionタイプ    |                                                              |                                                              |
-
-#### ▼ テンプレート
-
-作業内容の鋳型こと。ランブックを指定し、変更箇所に基づいた作業内容を定義する。
-デフォルトではテンプレートの作成自体にも承認が必要になる。ただ、指定した権限を持つユーザーはテンプレートの承認をスキップするように設定できる。
-
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-templates.html
-
-#### ▼ 変更リクエスト
-
-鋳型に基づいた実際の作業のこと。作業のたびにテンプレートを指定し、リクエストを提出する。承認が必要になる。
-
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-requests.html
-
-<br>
-
-## 05. SNS：Simple Notification Service
-
-### SNSとは
-
-パブリッシャーから発信されたメッセージをエンドポイントで受信し、サブスクライバーに転送するAWSリソース。
-
-![SNSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SNSとは.png)
-
-<br>
+## 02-02. RDS（Aurora）
 
 ### セットアップ
 
-#### ▼ 概要
+#### ▼ DBクラスター
 
-| 設定項目           | 説明                                                 |
-| ------------------ | ---------------------------------------------------- |
-| トピック           | 複数のサブスクリプションをグループ化したもの。       |
-| サブスクリプション | エンドポイントで受信するメッセージの種類を設定する。 |
+ベストプラクティスについては、以下のリンクを参考にせよ。
 
-#### ▼ トピック
+参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
-| 設定項目                 | 説明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| サブスクリプション       | サブスクリプションを登録する。                               |
-| アクセスポリシー         | トピックへのアクセス権限を設定する。                         |
-| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>参考：https://docs.aws.amazon.com/ja_jp/sns/latest/dg/sns-message-delivery-retries.html |
-| 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。 |
-| 暗号化                   |                                                              |
+| 設定項目                | 説明                                                         | 補足                                                         |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| レプリケーション        | 単一のプライマリーインスタンス（シングルマスター）または複数のプライマリーインスタンス（マルチマスター）とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただ、DBクラスターをクローンできないなどのデメリットもある。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
+| DBクラスター識別子      | DBクラスター名を設定する。                                   | インスタンス名は、最初に設定できず、RDSの構築後に設定できる。 |
+| VPCとサブネットグループ | DBクラスターを配置するVPCとサブネットを設定する。            | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br>![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png) |
+| パラメーターグループ    | グローバルパラメーターを設定する。                           | デフォルトを使用せずに独自定義する場合、事前に構築しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定するべきなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ（dynamic/static）があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br>・```character_set_connection=utf8mb4```<br>・```character_set_database=utf8mb4```<br>・```character_set_results=utf8mb4```<br>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br>・```server_audit_logs_upload=1```<br>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br>・```long_query_time=3```（スロークエリと見なす最短秒数） |
+| DB認証                  | DBに接続するための認証方法を設定する。                       | 各DBインスタンスに異なるDB認証を設定できるが、全てのDBインスタンスに同じ認証方法を設定すべきなため、DBクラスターでこれを設定すれば良い。 |
+| マスタユーザー名        | DBのrootユーザーを設定                                       |                                                              |
+| マスターパスワード      | DBのrootユーザーのパスワードを設定                           |                                                              |
+| バックアップ保持期間    | DBクラスター がバックアップを保持する期間を設定する。        | ```7```日間にしておく。                                      |
+| ログのエクスポート      | CloudWatchログに送信するログを設定する。                     | 必ず、全てのログを選択すること。                             |
+| セキュリティグループ  | DBクラスターのセキュリティグループを設定する。               | コンピューティングからのインバウンド通信のみを許可するように、これらのプライベートIPアドレス（```n.n.n.n/32```）を設定する。 |
+| 削除保護                | DBクラスターの削除を防ぐ。                                   | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。ちなみに、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection |
 
-#### ▼ サブスクリプション
+#### ▼ DBインスタンス
 
-| メッセージの種類      | 転送先                | 補足                                                         |
-| --------------------- | --------------------- | ------------------------------------------------------------ |
-| Kinesis Data Firehose | Kinesis Data Firehose |                                                              |
-| SQS                   | SQS                   |                                                              |
-| Lambda                | Lambda                |                                                              |
-| Eメール               | 任意のメールアドレス  |                                                              |
-| HTTP/HTTPS            | 任意のドメイン名      | Chatbotのドメイン名は『```https://global.sns-api.chatbot.amazonaws.com```』 |
-| JSON形式のメール      | 任意のメールアドレス  |                                                              |
-| SMS                   | SMS                   | 受信者の電話番号を設定する。                                 |
+ベストプラクティスについては、以下のリンクを参考にせよ。
 
-<br>
+参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
-## 06. SQS：Simple Queue Service
-
-### SQSとは
-
-![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQS.jpeg)
-
-クラウドメッセージキューとして働く。パブリッシャーが送信したメッセージは、一旦SQSに追加される。その後、サブスクライバーは、SQSに対してリクエストを送信し、メッセージを取り出す。異なるVPC間でも、メッセージキューを同期できる。
+| 設定項目                               | 説明                                                         | 補足                                                         |
+| -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| インスタンスクラス                     | DBインスタンスのスペックを設定する。                         | バースト可能クラスを選択すること。ちなみに、AuroraのDB容量は自動でスケーリングするため、設定する必要がない。 |
+| パブリックアクセス                     | DBインスタンスにIPアドレスを割り当てるか否かを設定する。     |                                                              |
+| キャパシティタイプ                     |                                                              |                                                              |
+| マルチAZ配置                           | プライマリーインスタンスとは別に、リードレプリカをマルチAZ配置で追加するかどうかを設定する。 | 後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動で構築される。 |
+| 最初のDB名                             | DBインスタンスに自動的に構築されるDB名を設定                 |                                                              |
+| マイナーバージョンの自動アップグレード | DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する。 | 開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新しいバージョンに問題がなければ、ステージング環境と本番環境にも適用する。 |
 
 <br>
 
-### セットアップ
+### DBクラスター
 
-#### ▼ SQSの種類
+#### ▼ DBクラスターとは
 
-| 設定項目         | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| スタンダード方式 | サブスクライバーの取得レスポンスを待たずに、次のキューを非同期的に転送する。 |
-| FIFO方式         | サブスクライバーの取得レスポンスを待ち、キューを同期的に転送する。 |
+DBエンジンにAuroraを選択した場合にのみ使用できる。DBインスタンスとクラスターボリュームから構成されている。コンピューティングとして機能するDBインスタンスと、ストレージとして機能するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守める。また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-<br>
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
-## 07. STS：Security Token Service
+![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster.png)
 
-### STSとは
+#### ▼ 空のDBクラスター
 
-AWSリソースに一時的にアクセスできる認証情報（アクセスキー、シークレットアクセスキー、セッショントークン）を発行する。この認証情報は、一時的なアカウント情報として使用できる。
+コンソール画面にて、DBクラスター内の全てのDBインスタンスを削除すると、DBクラスターも自動で削除される。一方で、AWS-APIをコールして全てのDBインスタンスを削除する場合、DBクラスターは自動で削除されずに、空の状態になる。例えば、Terraformを使用してDBクラスターを構築する時に、インスタンスの構築に失敗するとDBクラスターが空になる、これは、TerraformがAWS-APIをコールした構築を行っているためである。
 
-![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
 
 <br>
 
-### セットアップ
+### DBインスタンス
 
-#### 1. IAMロールに信頼ポリシーをアタッチ
+#### ▼ DBインスタンスとは
 
-必要なポリシーが設定されたIAMロールを構築する。その時信頼ポリシーでは、ユーザーの```ARN```を信頼されたエンティティとして設定しておく。これにより、そのユーザーに対して、ロールをアタッチできるようになる。
+コンピューティング機能を持ち、クラスターボリュームを操作できる。
 
-```bash
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザー名>"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "<適当な文字列>"
-        }
-      }
-    }
-  ]
-}
-```
+#### ▼ DBインスタンスの種類
 
-#### 2. ロールを引き受けたアカウント情報をリクエスト
+|                | プライマリーインスタンス                                     | リードレプリカ                                               |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ロール         | 読み出し/書き込みインスタンス                                | 読み出しオンリーインスタンス                                 |
+| CRUD制限       | 制限なし。ユーザー権限に依存する。                           | ユーザー権限の権限に関係なく、READしか実行できない。         |
+| エンドポイント | 各DBインスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。 | 各DBインスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。 |
+| データ同期     | DBクラスターに対するデータ変更を受けつける。                 | 読み出し/書き込みインスタンスのデータの変更が同期される。    |
 
-信頼されたエンティティ（ユーザー）から、STS（```https://sts.amazonaws.com```）に対して、ロールのアタッチをリクエストする。
+#### ▼ ZDP（ゼロダウンタイムパッチ適用）
 
-```bash
-#!/bin/bash
+![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/zero-downtime-patching.png)
 
-set -xeuo pipefail
-set -u
+Auroraをエンジンバージョンに選択した場合に使用できる。特定の条件下でのみ、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。ゼロダウンタイムパッチ適用が発動した場合、RDSのイベントが記録される。ただし、この機能に頼り切らない方が良い。ゼロダウンタイムパッチ適用の発動はAWSから事前にお知らせされるわけでもなく、ユーザーが条件を見て発動の有無を判断しなければならない。また、実際に発動していても、ダウンタイムが発生した事例が報告されている。ゼロダウンタイムパッチ適用時、以下の手順でエンジンバージョンがアップグレードされる。
 
-# 事前に環境変数にインフラ環境名を代入する。
-case $ENV in
-    "dev")
-        aws_account_id="<作業環境アカウントID>"
-        aws_access_key_id="<作業環境アクセスキーID>"
-        aws_secret_access_key="<作業環境シークレットアクセスキー>"
-        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
-    ;;
-    "stg")
-        aws_account_id="<ステージング環境アカウントID>"
-        aws_access_key_id="<ステージング環境アクセスキーID>"
-        aws_secret_access_key="<ステージング環境シークレットアクセスキー>"
-        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
-    ;;
-    "prd")
-        aws_account_id="<本番環境アカウントID>"
-        aws_access_key_id="<本番環境アクセスキーID>"
-        aws_secret_access_key="<本番環境シークレットアクセスキー>"
-        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
-    ;;
-    *)
-        echo "The parameter ${ENV} is invalid."
-        exit 1
-    ;;
-esac
+（１）プライマリーインスタンスのエンジンがアップグレードされ、この時にダウンタイムが発生しない代わりに、```5```秒ほどプライマリーインスタンスのパフォーマンスが低下する。
 
-# 信頼されたエンティティのアカウント情報を設定する。
-aws configure set aws_access_key_id "$aws_account_id"
-aws configure set aws_secret_access_key "$aws_secret_access_key"
-aws configure set aws_default_region "ap-northeast-1"
+（２）リードレプリカが再起動され、この時に```20```～```30```秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。
 
-# https://sts.amazonaws.com に、ロールのアタッチをリクエストする。
-aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<アタッチしたいIAMロール名>" \
-  --role-session-name "<任意のセッション名>" \
-  --external-id "$aws_iam_role_external_id" \
-  --duration-seconds "<セッションの有効秒数>" \
-  --query "Credentials" \
-  --output "json")"
-```
+参考：
 
-STSへのリクエストの結果、ロールがアタッチされた新しいIAMユーザー情報を取得できる。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
-
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
-
-レスポンスされるデータは以下の通り。
-
-```bash
-{
-  "AssumeRoleUser": {
-    "AssumedRoleId": "<セッションID>:<セッション名>",
-    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>"
-  },
-  "Credentials": {
-    "SecretAccessKey": "<シークレットアクセスキー>",
-    "SessionToken": "<セッショントークン文字列>",
-    "Expiration": "<セッションの期限>",
-    "AccessKeyId": "<アクセスキーID>"
-  }
-}
-```
-
-#### 3-1. アカウント情報を取得（１）
-
-jqを使用して、レスポンスされたJSONデータからアカウント情報を抽出する。環境変数として出力し、使用できるようにする。あるいは、AWSの```credentials```ファイルを作成しても良い。
-
-参考：https://stedolan.github.io/jq/
-
-
-```bash
-#!/bin/bash
-
-cat << EOF > assumed_user.sh
-export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")"
-export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")"
-export AWS_SESSION_TOKEN="$(echo "$aws_sts_credentials" | jq -r ".SessionToken")"
-export AWS_ACCOUNT_ID="$aws_account_id"
-export AWS_DEFAULT_REGION="ap-northeast-1"
-EOF
-```
-
-#### 3-2. アカウント情報を取得（２）
-
-jqを使用して、レスポンスされたJSONデータからアカウント情報を抽出する。ロールを引き受けた新しいアカウントの情報を、```credentials```ファイルに書き込む。
-
-```bash
-#!/bin/bash
-
-aws configure --profile ${ENV}-repository << EOF
-$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")
-$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")
-ap-northeast-1
-json
-EOF
-
-echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") >> ~/.aws/credentials
-```
-
-#### 4. 接続確認
-
-ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるかを確認する。アカウント情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
-
-```bash
-#!/bin/bash
-
-# 3-2を選択した場合、credentialsファイルを参照するオプションが必要がある。
-aws s3 ls --profile <プロファイル名>
-2020-xx-xx xx:xx:xx <tfstateファイルが管理されるバケット名>
-```
+- https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
+- https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
+- https://noname.work/2407.html
+- https://www.yuulinux.tokyo/8070/
 
 <br>
 
-## 08. Step Functions
+### エンドポイント
 
-### Step Functionsとは
+![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_endpoint.png)
 
-AWSサービスを組み合わせて、イベント駆動型アプリケーションを構築できる。
+| エンドポイント名           | 役割              | エンドポイント：ポート番号                                   | 説明                                                         |
+| -------------------------- | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| クラスターエンドポイント   | 書き込み/読み出し | ```<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | プライマリーインスタンスに接続できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster |
+| リーダーエンドポイント     | 読み出し          | ```<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | リードレプリカに接続できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
+| インスタンスエンドポイント |                   | ```<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | 選択したDBインスタンスに接続できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントそのままなため、アプリケーションが影響を付ける。非推奨である。 |
 
 <br>
 
-### AWSリソースのAPIコール
+### ダウンタイム
 
-#### ▼ APIコールできるリソース
+#### ▼ ダウンタイムとは
 
-参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+Auroraでは、OS、エンジンバージョン、MySQLなどのアップグレード時に、DBインスタンスの再起動が必要である。再起動に伴ってダウンタイムが発生し、アプリケーションからDBに接続できなくなる。この間、アプリケーションの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。
 
-#### ▼ Lambda
+#### ▼ ダウンタイムの発生条件
+
+非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。ただ、経験上同じ項目でダウンタイムが発生しているため、参考にする。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+
+#### ▼ エンジンタイプによるダウンタイムの最小化
+
+コンピューティングとストレージが分離しているAuroraはエンジンタイプの中でもダウンタイムが短い。
+
+#### ▼ ダウンタイムの計測例
+
+アプリケーションにリクエストを送信する方法と、RDSにクエリを直接的に送信する方法がある。レスポンスとRDSイベントログから、ダウンタイムを計測する。
 
 **＊実装例＊**
 
+Aurora MySQLのアップグレードに伴うダウンタイムを計測する。踏み台サーバーを経由してRDSに接続し、現在時刻を取得するSQLを送信する。この時、```for```文や```watch```コマンドを使用する。ただ、```watch```コマンドはデフォルトでインストールされていない可能性がある。平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。また、ヘルスチェックの時刻を正しくロギングできるように、ローカルマシンから時刻を取得する。
+
 ```bash
-{
-  "StartAt": "Call Lambda",
-  "States": {
-    "Call Lambda": {
-      "Type": "Task",
-      "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
-      "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-northeast-1:<アカウントID>:foo-function:1"
-      },
-      "Retry": [
-        {
-          "ErrorEquals": [
-            "<リトライの対象とするエラー>"
-          ],
-          "MaxAttempts": 0
-        }
-      ],
-      "End": true,
-      "Comment": "The state that call Lambda"
-    }
-  }
-}
+#!/bin/bash
+
+set -x
+
+BASTION_HOST=""
+BASTION_USER=""
+DB_HOST=""
+DB_PASSWORD=""
+DB_USER=""
+SECRET_KEY="~/.ssh/foo.pem"
+SQL="SELECT NOW();"
+
+ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
+
+# 約15分間コマンドを繰り返す。
+for i in {1..900};
+do
+  echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ------------" >> health_check.txt
+  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1
+  # 1秒待機する。
+  sleep 1
+done
 ```
+
+```bash
+#!/bin/bash
+
+set -x
+
+BASTION_HOST=""
+BASTION_USER=""
+DB_HOST=""
+DB_PASSWORD=""
+DB_USER=""
+SECRET_KEY="~/.ssh/foo.pem"
+SQL="SELECT NOW();"
+
+ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
+
+# 1秒ごとにコマンドを繰り返す。
+watch -n 1 'echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ------------" >> health_check.txt && \
+  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1'
+```
+
+上記のシェルスクリプトにより、例えば次のようなログを取得できる。このログからは、```15:23:09``` 〜 ```15:23:14```の間で、接続に失敗していることを確認できる。
+
+```log
+---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:06
+---------- No. 243 Local PC: 2021-04-21 15:23:07 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:08
+---------- No. 244 Local PC: 2021-04-21 15:23:08 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2026 (HY000): SSL connection error: error:00000000:lib(0):func(0):reason(0)
+---------- No. 245 Local PC: 2021-04-21 15:23:09 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 246 Local PC: 2021-04-21 15:23:10 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 247 Local PC: 2021-04-21 15:23:11 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 248 Local PC: 2021-04-21 15:23:13 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 249 Local PC: 2021-04-21 15:23:14 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 250 Local PC: 2021-04-21 15:23:15 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:16
+---------- No. 251 Local PC: 2021-04-21 15:23:16 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:17
+```
+
+アップグレード時のプライマリーインスタンスのRDSイベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。
+
+![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_primary-instance.png)
+
+ちなみに、リードレプリカは再起動のみを実行していることがわかる。
+
+![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_read-replica.png)
 
 <br>
 
-### API Gatewayとの連携
+### フェイルオーバー
 
-#### ▼ 注意が必要な項目
+#### ▼ Auroraのフェイルオーバーとは
 
-参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+異なるAZにあるDBインスタンス間で、ロール（プライマリーインスタンス/リードレプリカ）の割り当てを入れ替える仕組み。DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合、あらかじめ異なるAZにリードレプリカを新しく作成する必要がある。また、フェイルオーバー時に、もしDBクラスター内にリードレプリカが存在していない場合、異なるAZに昇格後のプライマリーインスタンスが自動的に構築される。リードレプリカが存在している場合、これがプライマリーインスタンスに昇格する。
 
-|              | 設定値         | 補足                        |
-| ------------ | -------------- | --------------------------- |
-| HTTPメソッド | POST           | GETメソッドでは機能しない。 |
-| アクション   | StartExecution |                             |
-| 実行ロール   | IAMロールのARN | StartExecutionを許可する。  |
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
 
-```bash
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "states:StartExecution",
-            "Resource": "arn:aws:states:*:<アカウントID>:stateMachine:*"
-        }
-    ]
-}
-```
+#### ▼ フェイルオーバーによるダウンタイムの最小化
 
-#### ▼ レスポンス構造
+DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
-以下がレスポンスされれば、API GatewayがStepFunctionsをコールできたことになる。
+参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
-```bash
-{
-    "executionArn": "arn:aws:states:ap-northeast-1:<アカウントID>:execution:prd-foo-doing-state-machine:*****",
-    "startDate": 1.638244285498E9
-}
-```
+（１）アプリケーションの接続先をプライマリーインスタンスにする。
+
+（２）リードレプリカにダウンタイムの発生する変更を適用する。Auroraではフェールオーバーが自動で実行される。
+
+（３）フェイルオーバー時に約```1```～```2```分のダウンタイムが発生する。フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。
+
+#### ▼ DBインスタンスの昇格優先順位
+
+Auroraの場合、フェイルオーバーによって昇格するDBインスタンスは次の順番で決定される。DBインスタンスごとにフェイルオーバーの優先度（```0```～```15```）を設定でき、優先度の数値の小さいDBインスタンスが昇格対象になる。優先度が同じだと、インスタンスクラスが大きいDBインスタンスが昇格対象になる。インスタンスクラスが同じだと、同じサブネットにあるDBインスタンスが昇格対象になる。
+
+1. 優先度の順番
+2. インスタンスクラスの大きさ
+3. 同じサブネット
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+
+#### ▼ ダウンタイムを最小化できない場合
+
+エンジンバージョンのアップグレードは両方のDBインスタンスで同時に実行する必要があるため、フェイルオーバーを使用できず、ダウンタイムを最小化できない。
 
 <br>
 
-## 09. VPC：Virtual Private Cloud
+### 負荷対策
 
-### VPCとは
+#### ▼ エンドポイントの使い分け
 
-クラウドプライベートネットワークとして働く。プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に構築できる。異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
+DBインスタンスに応じたエンドポイントが用意されている。アプリケーションからのCRUDの種類に応じて、アクセス先を振り分けることにより、負荷を分散させられる。読み出しオンリーエンドポイントに対して、READ以外の処理を行うと、以下の通り、エラーとなる。
 
-参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
-![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
+```bash
+/* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */
+```
 
-<br>
+#### ▼ リードレプリカの手動追加、オートスケーリング
 
-### VPC内のIPアドレス
+リードレプリカの手動追加もしくはオートスケーリングによって、Auroraに関するメトリクス（平均CPU使用率、平均DB接続数）がターゲット値を維持できるように、リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する。注意点として、RDS（非Aurora）スケーリングは、ストレージ容量を増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
 
-#### ▼ IPアドレスの種類
-
-| IPアドレスの種類    | 手動/自動 | 特徴       | 説明                               |
-|--------------|-------|----------|----------------------------------|
-| パブリックIPアドレス  | 自動    | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。  |
-| プライベートIPアドレス | 自動    | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。  |
-| Elastic IP   | 手動    | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再構築しても保持される。 |
-
-#### ▼ DNS名の割り当て
-
-VPC内で構築されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。AF
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
+- https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
+- https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
+- https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
 
-#### ▼ 紐付け
+#### ▼ クエリキャッシュの利用
 
-| 紐付け名      | 補足                                                         |
-| ------------- | ------------------------------------------------------------ |
-| EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
-| ENIとの紐付け | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+MySQLやRedisのクエリキャッシュ機能を利用する。ただし、MySQLのクエリキャッシュ機能は、バージョン```8```で廃止されることになっている。
 
-<br>
+#### ▼ ユニークキーまたはインデックスの利用
 
-### VPCのCIDRブロック設計の手順
+スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。スロークエリを検出する方法として、RDSの```long_query_time```パラメーターに基づいた検出や、```EXPLAIN```句による予想実行時間の比較などがある。ユニークキー、インデックス、```EXPLAIN```句、については以下のリンクを参考にせよ。
 
-1つのVPC内には複数のサブネットが入る。そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならない。VPC内でIPアドレスが枯渇しないように、以下の手順で、割り当てを考える。RFC1918では、以下のCIDRブロックが推奨されている。
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html
 
-参考：https://note.com/takashi_sakurada/n/n502fb0299938
+#### ▼ テーブルを正規化し過ぎない
 
-| RFC1918推奨のCIDRブロック       | IPアドレス                                    | 個数       |
-|----------------------|-------------------------------------------|----------|
-| ```10.0.0.0/8```     |                                           | 16777216 |
-| ```172.16.0.0/12```  | ```172.16.0.0``` ~ ```172.31.255.255```   | 1048576  |
-| ```192.168.0.0/16``` | ```192.168.0.0``` ~ ```192.168.255.255``` | 65536    |
+テーブルを正規化すると保守性が高まるが、アプリケーションのSQLで```JOIN```句が必要になる。しかし、```JOIN```句を含むSQLは、含まないSQLと比較して、実行速度が遅くなる。そこで、戦略的に正規化し過ぎないようにする。
 
-（２）あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。
+#### ▼ インスタンスタイプのスケールアップ
 
-（３）各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。例えば、以前に開発したアプリケーションが```10.200.47.0```までを使用していた場合、```10.200.48.0```から使用を始める。また、VPCで許可されるIPアドレスの個数は最多65536個（```/16```）で最少16個（```/28```）であり、実際は512個（```/23```）ほどあれば問題ないため、```10.200.48.0/23```を設定する。
+インスタンスタイプをスケールアップさせることで、接続過多のエラー（```ERROR 1040 (HY000): Too many connections```）に対処する。ちなみに現在の最大接続数はパラメーターグループの値から確認できる。コンソール画面からはおおよその値しかわからないため、SQLで確認した方が良い。
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
+```sql
+SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
-（４）VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。例えば、VPCの最初のIPアドレスを```10.0.0.0```とした場合は、１つ目のパブリックサブネットのサブネットマスクは、```10.0.0.0```から始める。パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。例えば、VPCのサブネットマスクを```/16``` としている場合は、各サブネットのサブネットマスクは```/24```とする。一方で、VPCを```/23```としている場合は、各サブネットは```/27```とする。また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、その代わりに、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。
-
-参考：https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
-
-（５）VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。
-
-参考：https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
-
-|            | 最低限のIPアドレス数                      |
-|------------|----------------------------------|
-| ALB        | ALB1つ当たり、8個                      |
-| オートスケーリング  | 水平スケーリング時のEC2最大数と同じ個数            |
-| VPCエンドポイント | VPCエンドポイント1つ当たり、IPアドレス1つ         |
-| ECS、EKS    | Elastic Network Interface 数と同じ個数 |
-| Lambda     | Elastic Network Interface 数と同じ個数 |
++-----------------+-------+
+| Variable_name  | Value |
++-----------------+-------+
+| max_connections | 640  |
++-----------------+-------+
+1 row in set (0.00 sec)
+```
 
 <br>
 
-## 10-02. ENI：Elastic Network Interface
+### イベント
 
-### ENIとは
+コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-クラウドネットワークインターフェースとして働く。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
 
 <br>
 
-### 紐付けられるリソース
+## 02-03. RDS（非Aurora）
 
-| リソースの種類    | 役割                                                         | 補足                                                         |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ALB               | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。 |                                                              |
-| EC2               | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| Fargate環境のEC2  | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる。 | Fargate環境のホストがEC2とは明言されていない。<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP        | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
-| GlobalAccelerator |                                                              |                                                              |
-| NAT Gateway       | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。 |                                                              |
-| RDS               |                                                              |                                                              |
-| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。 |                                                              |
-| VPCエンドポイント | Interface型のVPCエンドポイントとして機能する。               |                                                              |
+### ダウンタイム
 
-<br>
+#### ▼ ダウンタイムの発生条件
 
-## 10-03. VPCサブネット
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
-### VPCサブネットとは
-
-クラウドプライベートネットワークにおけるセグメントとして働く。
-
-<br>
-
-### サブネットの種類
-
-#### ▼ 分割方法
-
-LAN内の分割方法を参考にし、パブリックサブネットとプライベートサブネットを作成する。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
-
-#### ▼ パブリックサブネットとは
-
-サブネット外からのインバンド通信を受け付けるために、ALBのルーティング先にサブネットを設定すれば、そのサブネットはパブリックサブネットとして機能する。
-
-#### ▼ プライベートサブネットとは
-
-内部サブネットに相当する。サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして機能する。ただし、サブネット内からサブネット外へのアウトバウンド通信は許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。
-
-![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
-
-#### ▼ 構築例
-
-サブネットの役割ごとに構築する方法がある。
-
-| 名前                              | 役割                                    |
-|---------------------------------| --------------------------------------- |
-| Public subnet (Frontend Subnet) | NAT Gatewayを配置する。                 |
-| Private app subnet              | アプリケーション、Nginxなどを配置する。 |
-| Private datastore subnet        | RDS、Redisなどを配置する                |
-
-![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
+| 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
+| ------------------------------------ | ------------------ | ------------------------------------------------------------ |
+| インスタンスクラス                   | あり               | ・2つのインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム（約```6```～```8```分）が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
+| サブネットグループ                   | あり               |                                                              |
+| エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータの量、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU<br>また、メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
+| メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。 |
+| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの```performance_schema```を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。 |
+| バックアップウインドウ               | 条件付きでなし     | ```0```から```0```以外の値、```0```以外の値から```0```に変更した場合、ダウンタイムが発生する。 |
+| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これをDBインスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html |
+| セキュリティグループ               | なし               |                                                              |
+| マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。 |
+| ストレージのオートスケーリング       | なし               |                                                              |
 
 <br>
 
-## 10-04. Network ACL：Network Access  Control List
+### フェイルオーバー
 
-### Network ACLとは
+#### ▼ RDSのフェイルオーバーとは
 
-サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く。ルートテーブルとサブネットの間に設置され、ルートテーブルよりも先に評価される。双方向のインバウンドルールとアウトバウンドルールを決定する。
+スタンバイレプリカがプライマリーインスタンスに昇格する。
 
-![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
+  参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 
-<br>
+#### ▼ フェイルオーバーによるダウンタイムの最小化
 
-### ACLルール
+DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
-ルールは上から順に適用される。例えば、インバウンドルールが以下だった場合、ルール100が最初に適用され、サブネットに対する、全IPアドレス（```0.0.0.0/0```）からのインバウンド通信を許可していることになる。
+参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
-| ルール # | タイプ                | プロトコル | ポート範囲 / ICMP タイプ | ソース    | 許可 / 拒否 |
-| -------- | --------------------- | ---------- | ------------------------ | --------- | ----------- |
-| 100      | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | ALLOW       |
-| *        | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | DENY        |
+（１）アプリケーションの接続先をプライマリーインスタンスにする。
 
-<br>
+（２）特定の条件下でのみ、フェイルオーバーが自動的に実行される。
 
-## 10-05. ルートテーブル
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
 
-### ルートテーブルとは
+（3）非AuroraのRDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
-クラウドルーターのマッピングテーブルとして働く。サブネットに紐付けることで、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。注意点として、Network ACLよりも後に評価される。
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
-
-| Destination（送信先のIPの範囲） |                Target                 |
-| :-----------------------------: | :-----------------------------------: |
-|        ```xx.x.x.x/xx```        | Destinationの範囲内だった場合の送信先 |
+（4）フェイルオーバー時に約```1```～```2```分のダウンタイムが発生する。フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。
 
 <br>
 
-### ルートテーブルの種類
+### イベント
 
-#### ▼ メインルートテーブル
+コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-VPCの構築時に自動で構築される。どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する。
-
-#### ▼ カスタムルートテーブル
-
-特定のサブネットのルーティングを設定する。
+参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
 
 <br>
 
-### テーブルルール例
+## 03. リージョン、AZ
 
-![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/route-table.png)
+### リージョン
 
-#### ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
+#### ▼ リージョンとは
 
-上の図中で、サブネット3にはルートテーブル2が紐付けられている。サブネット3内の送信先のプライベートIPアドレスが、```10.0.0.0/16```の範囲内にあれば、インバウンド通信と見なし、local（VPC内の他サブネット）を送信先に選択する。一方で、```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば、アウトバウンド通信と見なし、Internet Gatewayを送信先に選択する。
+物理サーバーのあるデータセンターの地域名のこと。
 
-| Destination（プライベートCIDRブロック） |      Target      |
-| :---------------------------------------: | :--------------: |
-|      ```10.0.0.0/16```（VPCのCIDRブロック）       |      local       |
-|              ```0.0.0.0/0```              | Internet Gateway |
+#### ▼ グローバルサービス
 
-#### ▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+グローバルサービスは、物理サーバーが世界中にあり、これらの間ではパブリックネットワークが構築されている。そのため、特定のリージョンに依存せずに、全てのリージョンと連携できる。
 
-上の図中で、サブネット2にはルートテーブル1が紐付けられている。サブネット2内の送信先のプライベートIPアドレスが、```10.0.0.0/16```の範囲内にあれば、インバウンド通信と見なし、local（VPC内の他サブネット）を送信先に選択する。一方で、範囲外にあれば通信を破棄する。
-
-| Destination（プライベートCIDRブロック） | Target |
-| :---------------------------------------: | :----: |
-|      ```10.0.0.0/16```（VPCのCIDRブロック）       | local  |
-
-#### ▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
-
-プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットのCIDRブロックを設定する。
-
-参考：https://koejima.com/archives/1950/
-
-| Destination（プライベートCIDRブロック） | Target |
-| :---------------------------------------: | :----: |
-|  ```10.0.0.0/24```（サブネット1のCIDRブロック）   | local  |
+![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/edge-location.png)
 
 <br>
 
-## 10-06. VPCエンドポイント
+### AZ：Availability Zones
 
-### VPCエンドポイントとは
+#### ▼ AZとは
 
-VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、アウトバウンド通信を実行できるようにする。Gateway型とInterface型がある。VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。
-
-**＊例＊**
-
-Fargateをプライベートサブネットに置いた場合、FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ、ECR、S3、SSM）。
-
-![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
+リージョンは、さらに、各データセンターは物理的に独立したAZというロケーションから構成されている。例えば、東京リージョンには、3つのAZがある。AZに跨いで冗長化すると、いずれかのデータセンターで障害が起こっても、残ったAZ上でシステムを稼働し続けられる（可用性を高められる）。もし、AZを跨いで構築できないようなAWSリソースの場合は、リージョンを跨ぐようにする。
 
 <br>
 
-### NAT GatewayとInternet Gatewayとの比較
+## 04. Redshit
 
-Internet GatewayとNAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外のリソースとの通信がより安全になる。
+### Redshitとは
 
-
-
-### エンドポイントタイプ
-
-#### ▼ Interface型
-
-プライベートリンクともいう。プライベートIPアドレスを持つENIとして機能し、AWSリソースからアウトバウンド通信を受信する。もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
-
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
-
-**＊リソース例＊**
-
-S3、DynamoDB以外の全てのリソース
-
-#### ▼ Gateway型
-
-ルートテーブルにおける定義に従う。VPCエンドポイントとして機能し、AWSリソースからアウトバウンド通信を受信する。
-
-**＊リソース例＊**
-
-S3、DynamoDBのみ
+データウェアハウスとして働く。データベースよりも柔軟性の高い保存形式で処理済みのデータを管理できる。
 
 <br>
 
-## 10-07. Internet Gateway、NAT Gateway
+## 05. Route53
 
-### Internet Gateway、NAT Gatewayとは
+### Route53とは
 
-参考：https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+クラウドDNSサーバーとして働く。リクエストされたドメイン名とEC2のグローバルIPアドレスをマッピングしている。名前の由来は、名前解決時に```53```番ポートを使用するためである。
 
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
-
-#### ▼ Internet Gateway
-
-DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。1つのパブリックIPに対して、1つのプライベートIPを紐付けられる。DNATについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
-#### ▼ NAT Gateway
-
-SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。1つのパブリックIPに対して、複数のプライベートIPを紐付けられる。SNATについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
-<br>
-
-### 比較表
-
-
-|              | Internet Gateway                                             | NAT Gateway            |
-| :----------- | :----------------------------------------------------------- | :--------------------- |
-| **機能**     | パブリックネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
-| **設置場所** | VPC上                                                        | パブリックサブネット内 |
-
-<br>
-
-## 10-08. VPC間、VPC-オンプレ間の通信
-
-### VPCピアリング接続
-
-![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続.png)
-
-#### ▼ VPCピアリング接続とは
-
-『一対一』の関係で、『異なるVPC間』の双方向通信を可能にする。
-
-#### ▼ VPCピアリング接続の可否
-
-| アカウント  | VPCのあるリージョン | VPC内のCIDRブロック   | 接続の可否 |
-| ----------- | ------------------- | --------------------- | ---------- |
-| 同じ/異なる | 同じ/異なる         | 全て異なる            | **〇**     |
-|             |                     | 同じものが1つでもある | ✕          |
-
-VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、VPC ピアリング接続はできない。
-
-![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
-
-たとえ、IPv6が異なっていても、同様である。
-
-![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
-
-<br>
-
-### VPCエンドポイントサービス
-
-#### ▼ VPCエンドポイントサービスとは
-
-VPCエンドポイントとは異なる機能なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。エンドポイントのサービス名は、『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****```』になる。API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
-
-![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
-
-<br>
-
-### Transit Gateway
-
-#### ▼ Transit Gatewayとは
-
-『多対多』の関係で、『異なるVPC間』や『オンプレ-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
-
-![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
-
-<br>
-
-### 各サービスとの比較
-
-| 機能                                          | VPCピアリング接続 | VPCエンドポイントサービス           | Transit gateway        |
-| --------------------------------------------- | ----------------- | ----------------------------------- | ---------------------- |
-| 通信できるVPC数                               | 一対一            | 一対一、一対多                      | 一対一、一対多、多対多 |
-| 通信できるIPアドレスの種類                    | IPv4、IPv6        | IPv4                                | IPv4、IPv6             |
-| 接続できるリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
-| CIDRブロックがVPC間で被ることによる通信の可否 | ✖︎                 | ⭕                                   | ✖︎                      |
-| クロスアカウント                              | ⭕                 | ⭕                                   | ⭕                      |
-| クロスリージョン                              | ⭕                 | ✖︎                                   | ⭕                      |
-| VPC間                                         | ⭕                 | ⭕                                   | ⭕                      |
-| VPC-オンプレ間                                | ✖︎                 | ✖︎                                   | ⭕                      |
-
-<br>
-
-## 34. WAF：Web Application Firewall
-
-### セットアップ
-
-定義できるルール数や文字数に制限がある。以下のリンクを参考にせよ。
-
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/limits.html
-
-| 設定項目                          | 説明                                                         | 補足                                                         |
-| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Web ACLs：Web Access Control List | 各トリガーと許可/拒否アクションの紐付けを『ルール』とし、これをセットで設定する。 | アタッチするAWSリソースに合わせて、リージョンが異なる。      |
-| IP sets                           | アクション実行のトリガーとなるIPアドレス                     | ・許可するIPアドレスは、意味合いに沿って異なるセットとして構築するべき。例えば、社内IPアドレスセット、協力会社IPアドレスセット、など<br>・拒否するIPアドレスはひとまとめにしても良い。 |
-| Regex pattern sets                | アクション実行のトリガーとなるURLパスの文字列                | ・許可/拒否する文字列は、意味合いに沿って異なる文字列セットとして構築するべき。例えば、ユーザーエージェントセット、リクエストパスセット、など |
-| Rule groups                       |                                                              |                                                              |
-| AWS Markets                       |                                                              |                                                              |
-
-<br>
-
-### AWSリソース vs. サイバー攻撃
-
-| サイバー攻撃の種類 | 対抗するAWSリソースの種類                                    |
-| ------------------ | ------------------------------------------------------------ |
-| マルウェア         | なし                                                         |
-| 傍受、盗聴         | VPC内の特にプライベートサブネット間のピアリング接続。VPC外を介さずにデータを送受信できる。 |
-| ポートスキャン     | セキュリティグループ                                       |
-| DDoS               | Shield                                                       |
-| ゼロディ           | WAF                                                          |
-| インジェクション   | WAF                                                          |
-| XSS                | WAF                                                          |
-| データ漏洩         | KMS、CloudHSM                                                |
-| 組織内部での裏切り | IAM                                                          |
+参考：https://go-journey.club/archives/2665
 
 <br>
 
@@ -1159,305 +1108,107 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 #### ▼ 概要
 
-| 設定項目           | 説明                                              | 補足                                                         |
-| ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
-| Web ACLs           | アクセス許可と拒否のルールを定義する。            |                                                              |
-| Bot Control        | Botに関するアクセス許可と拒否のルールを定義する。 |                                                              |
-| IP Sets            | IPアドレスの共通部品を管理する。                  | アクセスを許可したいIPアドレスセットを作成する時、全てのIPアドレスを1つのセットで管理してしまうと、何のIPアドレスかわらなあくなってしまう。そこで、許可するIPアドレスのセットを種類（自社、外部のA社/B社、など）で分割すると良い。 |
-| Regex pattern sets | 正規表現パターンの共通部品を管理する。            |                                                              |
-| Rule groups        | ルールの共通部品を管理する。                      | 各WAFに同じルールを設定する場合、ルールグループを使用するべきである。ただ、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。 |
-
-#### ▼ Web ACLs
-
-| 設定項目                 | 説明                                                         | 補足                                                         |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Overview                 | WAFによって許可/拒否されたリクエストのアクセスログを確認できる。 |                                                              |
-| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
-| Associated AWS resources | WAFをアタッチするAWSリソースを設定する。                     | CloudFront、ALBなどにアタッチできる。                        |
-| Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。 |                                                              |
-
-#### ▼ OverviewにおけるSampled requestsの見方
-
-『全てのルール』または『個別のルール』におけるアクセス許可/拒否の履歴を確認できる。ALBやCloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。ただし、３時間分しか残らない。一例として、CloudFrontにアタッチしたWAFで取得できるログを以下に示す。
-
-```http
-GET /foo/
-# ホスト
-Host: example.jp
-Upgrade-Insecure-Requests: 1
-# ユーザーエージェント
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-# CORSであるか否か
-Sec-Fetch-Site: same-origin
-Accept-Encoding: gzip, deflate, br
-Accept-Language: ja,en;q=0.9
-# Cookieヘッダー
-Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>
-```
-
-<br>
-
-### ルール
-
-#### ▼ ルールの種類
-
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/classic-web-acl-rules-creating.html
-
-| ルール名     | 説明                                                         |
-| ------------ | ------------------------------------------------------------ |
-| レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する。 |
-| レギュラー   | リクエスト数は制限しない。                                   |
-
-#### ▼ ルールの粒度のコツ
-
-わかりやすさの観点から、できる限り設定するステートメントを少なくし、1つのルールに1つの意味合いだけを持たせるように命名する。
-
-#### ▼ Count（検知）モード
-
-ルールに該当するリクエスト数を数え、許可/拒否せずに次のルールを検証する。計測結果に応じて、Countモードを無効化し、拒否できるようにする。
-
-参考：https://oji-cloud.net/2020/09/18/post-5501/
-
-#### ▼ ルールグループアクションの上書き
-
-ルールのCountモードが有効になっている場合、Countアクションに続けて、そのルールの元のアクションを実行する。そのため、Countアクションしつつ、Blockアクションを実行できる（仕様がややこしすぎるので、なんとかしてほしい）。
-
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/web-acl-rule-group-override-options.html
-
-| マネージドルールの元のアクション | Countモード | 上書きオプション | 結果                                                         |
-| -------------------------------- | ----------- | ---------------- | ------------------------------------------------------------ |
-| Block                            | ON          | ON               | Countし、その後Blockが実行する。そのため、その後のルールは検証せずに終了する。 |
-| Block                            | ON          | OFF              | Countのみが実行される。そのため、その後のルールも検証する。  |
-| Block                            | OFF         | ON               | そもそもCountモードが無効なため、上書きオプションは機能せずに、Blockが実行される。 |
-| Block                            | OFF         | OFF              | そもそもCountモードが無効なため、マネージドルールのBlockが実行される（と思っていたが、結果としてCountとして機能する模様）。 |
-
-#### ▼ セキュリティグループとの関係
-
-WAFを紐づけられるリソースにセキュリティグループも紐づけている場合、セキュリティグループのルールが先に検証される。例えば、WAFをALBに紐づけ、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
-
-参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
-
-<br>
-
-### マネージドルールを使用するかどうかの判断基準
-
-#### ▼ マネージドルールの動作確認の必要性
-
-マネージドルールを導入する時は、事前にルールのカウント機能を使用することが推奨されている。カウントで検知されたリクエストのほとんどが悪意のないものであれば、設定したマネージドルールの使用をやめる必要がある。
-
-#### ▼ ブラウザを送信元とした場合
-
-ブラウザを送信元とした場合、リクエストのヘッダーやボディはブラウザによって生成されるため、これに基づいた判断が必要である。
-
-- ブラウザからのリクエスト自体が悪意判定されているかどうか
-- サイトのURLの記法によって、悪意判定されているかどうか
-- 送信元の国名が『日本』であるのにも関わらず、悪意判定されているかどうか
-- サイトに送信された全リクエストのうち、カウントで検知されたリクエストの数が多すぎないかどうか
-
-#### ▼ 連携するアプリケーションを送信元とした場合
-
-アプリケーションを送信元とした場合、リクエストのヘッダーやボディは連携するアプリケーションによって生成されるため、これに基づいた判断が必要である。
-
-<br>
-
-### ルールの例
-
-#### ▼ ユーザーエージェント拒否
-
-**＊例＊**
-
-悪意のあるユーザーエージェントを拒否する。
-
-ルール：```block-user-agents```
-
-| Statementの順番 | If a request  | Inspect        | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------- | -------------- | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches``` | ```URI path``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定した文字列を含むユーザーエージェントの場合、アクセスすることを拒否する。 |
-
-| Default Action | 説明                                                         |
+| 設定項目       | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Allow          | 指定したユーザーエージェントでない場合、全てのパスにアクセスすることを許可する。 |
-
-#### ▼ CI/CDツールのアクセスを許可
-
-**＊例＊**
-
-社内の送信元IPアドレスのみ許可した状態で、CircleCIなどのサービスが社内サービスにアクセスできるようにする。
-
-ルール：```allow-request-including-access-token```
-
-| Statementの順番 | If a request  | Inspect      | Header field name   | Match type                    | String to match                                     | Then  | 挙動                                                         |
-| --------------- | ------------- | ------------ | ------------------- | ----------------------------- | --------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches``` | ```Header``` | ```authorization``` | ```Exactly matched  string``` | 『```Bearer <トークン文字列>```』で文字列を設定する | Allow | authorizationヘッダーに指定した文字列を含むリクエストの場合、アクセスすることを拒否する。 |
-
-| Default Action | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| Block          | 正しいトークンを持たないアクセスの場合、全てのパスにアクセスすることを拒否する。 |
-
-#### ▼ 特定のパスを社内アクセスに限定
-
-**＊例＊**
-
-アプリケーションでは、特定のURLパスにアクセスできる送信元IPアドレスを社内だけに制限する。2つのルールを構築する必要がある。
-
-ルール：```allow-access--to-url-path```
-
-| Statementの順番 | If a request        | Inspect                                | IP set       | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------------- | -------------------------------------- | ------------ | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches (AND)``` | ```Originates from an IP address in``` | 社内IPセット | -                                            | -                 | -     | 社内の送信元IPアドレスの場合、指定したパスにアクセスすることを許可する。 |
-| ```1```         | ```matches```       | ```URI path```                         | -            | ```Matches pattern from regex pattern set``` | 文字列セット      | Allow | 0番目かつ、指定した文字列を含むURLパスアクセスの場合、アクセスすることを許可する。 |
-
-ルール：```block-access-to-url-path```
-
-| Statementの順番 | If a request  | Inspect        | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------- | -------------- | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches``` | ```URI path``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定した文字列を含むURLパスアクセスの場合、アクセスすることを拒否する。 |
-
-| Default Action | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| Allow          | 指定したURLパス以外のアクセスの場合、そのパスにアクセスすることを許可する。 |
-
-#### ▼ 社内アクセスに限定
-
-**＊例＊**
-
-アプリケーション全体にアクセスできる送信元IPアドレスを、特定のIPアドレスだけに制限する。
-
-ルール：```allow-global-ip-addresses```
-
-| Statementの順番 | If a request        | Inspect                                | IP set           | Originating address | Then  | 挙動                                                         |
-| --------------- | ------------------- | -------------------------------------- | ---------------- | ------------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches  (OR)``` | ```Originates from an IP address in``` | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。 |
-| ```1```         | ```matches```       | ```Originates from an IP address in``` | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは、協力会社の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。 |
-
-| Default Action | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| Block          | 指定した送信元IPアドレス以外の場合、全てのパスにアクセスすることを拒否する。 |
-
-#### ▼ ALBを直接的に指定することを防ぐ
-
-**＊例＊**
-
-Route53のドメイン経由ではなく、ALBの直接的に指定して、リクエストとを送信することを防ぐ。ALBのIPアドレスは定期的に変化するため、任意のIPアドレスを指定できる正規表現を定義する必要がある。
-
-```
-^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$
-```
-
-ルール：```block-direct-access-to-lb```
-
-| Statementの順番 | If a request  | Inspect      | Match type                                   | Regex pattern set | Then  | 挙動                                                         |
-| --------------- | ------------- | ------------ | -------------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
-| ```0```         | ```matches``` | ```Header``` | ```Matches pattern from regex pattern set``` | 文字列セット      | Block | 指定した```Host```ヘッダーに対するアクセスの場合、アクセスすることを拒否する。 |
-
-| Default Action | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| Allow          | 指定した```Host```ヘッダー以外に対するアクセスの場合、アクセスすることを許可する。 |
+| ホストゾーン   | ドメイン名を設定する。                                       |
+| レコードセット | 名前解決時のルーティング方法を設定する。サブドメイン名を扱うことも可能。 |
 
 <br>
 
-### ログ
+### レコード
 
-#### ▼ マネージドルールのログ
+#### ▼ レコードとは
 
-WAFマネージドルールを使用している場合、マネージドルールが```ruleGroupList```キーに配列として格納されている。もし、Countアクションが実行されていれば、```excludedRules```キーにその旨とルールIDが格納される。
+各ホストゾーンにドメインの名前解決方法を定義したレコードを設定する。
 
-```bash
-{
+参考：https://docs.aws.amazon.com/ja_jp/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
 
-  # ～ 中略 ～
+#### ▼ レコードタイプの種類
 
-  "ruleGroupList": [
-    {
-      "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
-      "terminatingRule": null,
-      "nonTerminatingMatchingRules": [],
-      "excludedRules": [
-        {
-          "exclusionType": "EXCLUDED_AS_COUNT",
-          "ruleId": "NoUserAgent_HEADER"
-        }
-      ]
-    },
-    {
-      "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
-      "terminatingRule": null,
-      "nonTerminatingMatchingRules": [],
-      "excludedRules": null
-    },
-    {
-      "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
-      "terminatingRule": null,
-      "nonTerminatingMatchingRules": [],
-      "excludedRules": null
-    },
-    {
-      "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
-      "terminatingRule": null,
-      "nonTerminatingMatchingRules": [],
-      "excludedRules": null
-    }
-  ],
+| レコードタイプ | 説明                                                         | 名前解決の仕組み                             | 補足                                            |
+| -------------- | ------------------------------------------------------------ | -------------------------------------------- | ----------------------------------------------- |
+| A              | リクエストを転送したいAWSリソースの、IPv4アドレスまたはDNS名を設定する。 | IPv4アドレスが返却される。                   |                                                 |
+| AAAA           | リクエストを転送したいAWSリソースの、IPv6アドレスまたはDNS名を設定する。 | IPv6アドレスが返却される。                   |                                                 |
+| CNAME          | リクエストを転送したい任意のサーバーのドメイン名を設定する。 | ドメイン名にリダイレクトする。               | 設定するドメイン名はAWSリソースでなくとも良い。 |
+| NS             | IPアドレスの問い合わせに応えられるDNSサーバーの名前が定義されている。 | DNSサーバーの名前が返却される。              |                                                 |
+| MX             | リクエストを転送したいメールサーバーのドメイン名を設定する。 | メールサーバーのドメイン名が返却される。     |                                                 |
+| TXT            | リクエストを転送したいサーバーのドメイン名に紐付けられた文字列を設定する。 | ドメイン名に紐づけられた文字列が返却される。 |                                                 |
 
-  # ～ 中略 ～
+#### ▼ AWSリソースのDNS名、ドメイン名、エンドポイント名
 
-}
-```
+![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
+
+| 種別             | AWSリソース     | 例                                                           |
+| ---------------- | --------------- | ------------------------------------------------------------ |
+| DNS名            | ALB             | ```<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com``` |
+|                  | EC2             | ```ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com``` |
+| ドメイン名       | CloudFront      | ```<ランダムな文字列>.cloudfront.net```                      |
+| エンドポイント名 | RDS（Aurora）   | ```<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.``` |
+|                  | RDS（非Aurora） | ```<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.``` |
+|                  | S3              | ```<バケット名>.ap-northeast-1.amazonaws.com```              |
+
+#### ▼ AWS以外でドメインを購入した場合
+
+ドメイン名の名前解決は、ドメインを購入したドメインレジストラで行われる。そのため、AWS以外（例：お名前ドットコム）でドメインを購入した場合、Route53のNSレコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。これにより、ドメインレジストラに対してIPアドレスの問い合わせがあった場合は、Route53のNSレコード値がDNSサーバーにレスポンスされるようになる。DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーとして機能し、アプリケーションのIPアドレスをレスポンスする。
+
+#### ▼ DNSキャッシュ
+
+ルートサーバーは世界に13機しか存在しておらず、現実的には、世界中の名前解決の全てのリクエストを処理できない。そこで、IPアドレスとドメイン名の関係をキャッシュするプロキシサーバー（キャッシュDNSサーバー）が使用されている。基本的には、プロキシサーバーとDNSサーバーは区別されるが、Route53はプロキシサーバーとDNSサーバーの機能を両立している。
 
 <br>
 
-## 35. WorkMail
+### リゾルバー
 
-### WorkMailとは
+#### ▼ リゾルバーとは
 
-Gmail、サンダーバード、Yahooメールなどと同類のメール管理アプリケーション。
-
-<br>
-
-### セットアップ
-
-| 設定項目             | 説明                                                       | 補足                                                         |
-| -------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| Users                | WorkMailで管理するユーザーを設定する。                     |                                                              |
-| Domains              | ユーザーに割り当てるメールアドレスのドメイン名を設定する。 | ```@{組織名}.awsapps.com```をドメイン名としてもらえる。ドメイン名の検証が完了した独自ドメイン名を設定もできる。 |
-| Access Control rules | 受信するメール、受信を遮断するメール、の条件を設定する。   |                                                              |
+要勉強。
 
 <br>
 
-## 36. ロードテスト
+### ルーティングポリシー
 
-### Distributed Load Testing（分散ロードテスト）
+#### ▼ ルーティングポリシーとは
 
-#### ▼ 分散ロードテストとは
+ドメイン名の名前解決ルールを設定する。
 
-ロードテストを実行できる。CloudFormationで構築でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
+参考：
 
-参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
+- https://docs.aws.amazon.com/ja_jp/Route53/latest/DeveloperGuide/routing-policy.html
+- https://zenn.dev/seyama/articles/02118b0914183e
 
-#### ▼ インフラ構成
+#### ▼ シンプル
 
-![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed_load_testing.png)
+ドメイン名に単一のIPアドレスを紐づけられる。ドメインの名前解決では、単一のIPアドレスが返却される。
+
+#### ▼ 複数値回答
+
+ドメイン名に複数のIPアドレスを紐づけられる。ドメインの名前解決では、正常なIPアドレスを均等に返却する。ヘルスチェック機能を持つラウンドロビン方式と言い換えても良い。
+
+#### ▼ 加重
+
+ドメイン名に複数のIPアドレスを紐づけられる。ドメインの名前解決では、IPアドレスを指定した割合で返却する。
 
 <br>
 
-## 37. タグ
+### Route53 + DNSサーバーによる名前解決
 
-### タグ付け戦略
+![Route53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Route53を含む名前解決の仕組み.png)
 
-#### ▼ よくあるタグ
+（１）クライアントPCは、```www.example.com```にマッピングされるIPアドレスのキャッシュを検索する。キャッシュが無ければ、クライアントPCはドメイン名をキャッシュDNSサーバーに問い合わせる。
 
-| タグ名      | 用途                                                         |
-| ----------- | ------------------------------------------------------------ |
-| Name        | リソース自体に名前を付けられない場合、代わりにタグで名付けるため。 |
-| Environment | 同一のAWS環境内に異なる実行環境が存在している場合、それらを区別するため。 |
-| User        | 同一のAWS環境内にリソース別に所有者が存在している場合、それらを区別するため。 |
+（２）キャッシュDNSサーバーは、IPアドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュDNSサーバーはドメイン名をDNSサーバーに問い合わせる。
 
-#### ▼ タグ付けによる検索
+（３）Route53は、IPアドレスのキャッシュを検索する。キャッシュが無ければ、Route53はIPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。
 
-AWSの各リソースには、タグをつけられる。例えば、AWSコストエクスプローラーにて、このタグで検索することにより、任意のタグが付いたリソースの請求合計額を確認できる。
+
+|      ドメイン名      | Route53 |      IPアドレス       |
+| :--------------------------: | :-----: | :-------------------: |
+| ```http://www.example.com``` |    ⇄    | ```203.142.205.139``` |
+
+（４）キャッシュDNSサーバーは、IPアドレスをNATに返却する。この時、IPアドレスのネットワーク間変換が起こる。
+
+（５）NATは、IPアドレスをクライアントPCに返却する。
+
+（６）クライアントPCは、返却されたIPアドレスを基にWebページにリクエストを送信する。
 
 <br>
