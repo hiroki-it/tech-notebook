@@ -62,9 +62,16 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 #### ▼ ルーターとは
 
-異なるネットワーク間（LANとLAN、LANとWAN、など）で、パケットを橋渡しする。例えば、自宅内に設置するルーターの場合は、インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
+異なるネットワーク間（LANとLAN、LANとWAN、など）で通信できるようにし、また同時に複数の送信先に通信をルーティングする。
 
-参考：https://michisugara.jp/modem_router
+#### ▼ 設置場所
+
+ルーターは、パブリックネットワーク、各プライベートネットワークの入り口、各プライベートネットワーク間で共有、といった方法で設置する。プライベートネットワークの入り口に設置する場合、例えば、自宅内に設置するルーターがある。インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
+
+参考：
+
+- https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
+- https://michisugara.jp/modem_router
 
 ![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router.png)
 
@@ -79,7 +86,7 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 | ------------------------------------ | -------------------------------------------------- | ------------------------------------------------------------ |
 | コアルーター                         | インターネットサービスプロバイダー内のネットワーク | 同じプロバイダーや異なるプロバイダーのネットワーク間を繋ぐ。 |
 | センタールーター                     | 一般企業内の拠点間WANネットワーク                  | 本社と支社のネットワーク間を繋ぐ。                           |
-| エッジルーター                       | 一般企業内の拠点間WANネットワーク                  | 異なる支社や営業所のネットワーク間を繋ぐ。                   |
+| エッジルーター（エッジゲートウェイ） | 一般企業内の拠点間WANネットワーク                  | 異なる支社や営業所のネットワーク間を繋ぐ。                   |
 | ブロードバンドルーター、Wifiルーター | 自宅内のネットワーク                               | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifiルーターであれば無線で接続することになる。 |
 
 #### ▼ ルーティング
@@ -87,6 +94,14 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 受信した通信を適切な宛先に転送すること。通信の宛先を制御することを表現する場合、単に『転送する』よりも『ルーティングする』と表現した方が良い。
 
 参考：https://www.infraexpert.com/study/routing.html
+
+#### ▼ ホップバイホップルーティング
+
+ネットワーク内でルーターがルーターに通信をルーティングする時、各ルーターが最適なルーティング先を選択すること。
+
+参考：https://ascii.jp/elem/000/000/444/444681/3/
+
+![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router_hop-by-hop-routing.jpeg)
 
 <br>
 
@@ -98,33 +113,22 @@ NATの機能を持つルーターのこと。
 
 #### ▼ NAT（静的NAT）：Network Address Transalation
 
-グローバルIPアドレスを持ち、パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスを変換すること。1つのグローバルIPアドレスに対して、1つのプライベートIPアドレスを紐付けられる。
+グローバルIPアドレスを持ち、パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスを変換すること（```プライベートIPアドレス``` ⇄ ```グローバルIPアドレス```）。また、プライベートIPアドレス同時を相互変換することにも使用される（```プライベートIPアドレス``` ⇄ ```プライベートIPアドレス```）。1つのグローバルIPアドレスに対して、1つのプライベートIPアドレスを紐付けられる。
 
-参考：https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
+参考：
+
+- https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
+- https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
 
 ![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router.png)
 
-#### ▼ DNAT：Destination NAT
-
-NATの双方向のインバウンド通信時で、送信先IPアドレスをグローバルIPアドレスからプライベートIPアドレスに変換すること。
-
-参考：https://rainbow-engine.com/dnat-snat-difference/
-
-![nat-router_dnat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_dnat.jpeg)
-
-**＊例＊**
-
-NATルーターは、プライベートネットワークに入る時に、パケットのヘッダ情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。
-
-![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グローバルからプライベートへのnat変換.png)
-
 #### ▼ SNAT：Source NAT
 
-NATの双方向のアウトバウンド通信時に、送信元IPアドレスをプライベートIPアドレスからグローバルIPアドレスに変換すること。
+![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プライベートからグローバルへのnat変換.png)
+
+NATルーターの機能のうち、アウトバウンド通信の送信元IPアドレスを変換すること（```プライベートIPアドレス``` → ```グローバルIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```）。NATルーター自体を複数のプライベートネットワークで共有することがあり、その場合、１つのNATルーターに各プライベートネットワークのアウトバウンド通信のIPアドレス変換を設定することになる（誰にとってのアウトバウンド通信なのかやや混乱するが）。
 
 参考：https://rainbow-engine.com/dnat-snat-difference/
-
-![nat-router_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nat-router_snat.jpeg)
 
   **＊例＊**
 
@@ -154,7 +158,17 @@ GET https://example.com:53
 
 4. これらの『送信元プライベートIPアドレス』が、NATルーターで、グローバルIPアドレスに変換される。
 
-![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プライベートからグローバルへのnat変換.png)
+#### ▼ DNAT：Destination NAT
+
+![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グローバルからプライベートへのnat変換.png)
+
+NATルーターの機能のうち、インバウンド通信の送信先IPアドレスを変換すること（```グローバルIPアドレス``` → ```プライベートIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```）。NATルーター自体を複数のプライベートネットワークで共有することがあり、その場合、１つのNATルーターに各プライベートネットワークのインバウンド通信のIPアドレス変換を設定することになる（誰にとってのインバウンド通信なのかやや混乱するが）。
+
+参考：https://rainbow-engine.com/dnat-snat-difference/
+
+**＊例＊**
+
+NATルーターは、プライベートネットワークに入る時に、パケットのヘッダ情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。
 
 <br>
 
@@ -166,7 +180,14 @@ NAPTの機能を持つルーターのこと。
 
 #### ▼ NAPT（動的NAT）：Network Address Port Translation
 
-パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスだけでなく、ポート番号も変換すること。1つのグローバルIPアドレスに対して、複数のプライベートIPアドレスを紐付けられる。
+パブリックネットワークとプライベートネットワークの双方向への通信時に、IPアドレスだけでなく、ポート番号も変換すること（```プライベートIPアドレス``` ⇄ ```グローバルIPアドレス```）。また、プライベートIPアドレス同時を相互変換することにも使用される（```プライベートIPアドレス``` ⇄ ```プライベートIPアドレス```）。1つのグローバルIPアドレスに対して、複数のプライベートIPアドレスを紐付けられる。
+
+参考：
+
+- https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
+- https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
+
+![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/napt-router.png)
 
 #### ▼ DNAT時の変換
 
@@ -302,7 +323,13 @@ NAPTの機能を持つルーターのこと。
 
 #### ▼ プライベートIPアドレス
 
-LAN内で使用される。異なるプライベートネットワーク間では、同じIPアドレスが存在する。プライベートIPアドレスは、『```10.0.0.0``` ～ ```10.255.255.255```』、『```172.16.0.0``` ～ ```172.31.255.255```』、『```192.168.0.0``` ～ ```192.168.255.255```』で表される。
+LAN内で使用される。異なるプライベートネットワーク間では、同じIPアドレスが存在する。プライベートIPアドレスは、
+
+| 使用できるIPアドレスの範囲                 | IPアドレスのパターン数（最大パソコン数） |
+| ------------------------------------------ | ---------------------------------------- |
+| ```10.0.0.0``` ～ ```10.255.255.255```     |                                          |
+| ```172.16.0.0``` ～ ```172.31.255.255```   |                                          |
+| ```192.168.0.0``` ～ ```192.168.255.255``` |                                          |
 
   <br>
 

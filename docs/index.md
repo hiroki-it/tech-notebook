@@ -246,9 +246,9 @@ title: 【知見を記録するサイト】目次
 
 * [📖：︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html)
 * Kubernetes
-  * [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
-  * [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
-  * [📖：可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_observability.html)
+    * [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
+    * [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
+    * [📖：可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_observability.html)
 
 <br>
 

@@ -30,15 +30,20 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ IPアドレスの種類
 
-| IPアドレスの種類       | 手動/自動 | 特徴           | 説明                                                         |
-| ---------------------- | --------- | -------------- | ------------------------------------------------------------ |
-| パブリックIPアドレス   | 自動      | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
-| プライベートIPアドレス | 自動      | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
-| Elastic IP             | 手動      | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再構築しても保持される。 |
+参考：
+
+- https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
+- https://qiita.com/masato930/items/ba242f0171a76ce0994f
+
+| IPアドレスの種類       | 手動/自動 | グローバル/プライベート | 特徴           | 説明                                                         |
+| ---------------------- | --------- | ----------------------- | -------------- | ------------------------------------------------------------ |
+| パブリックIPアドレス   | 自動      | グローバル              | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
+| プライベートIPアドレス | 自動/手動 | プライベート            | 動的IPアドレス | 動的なIPアドレスのため、インスタンスを再構築すると変化する。 |
+| Elastic IP             | 手動      | グローバル              | 静的IPアドレス | 静的なIPアドレスのため、インスタンスを再構築しても保持される。 |
 
 #### ▼ DNS名の割り当て
 
-VPC内で構築されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。AF
+VPC内で構築されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
 参考：
 
 - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
@@ -252,11 +257,11 @@ Fargateをプライベートサブネットに置いた場合、FargateからVPC
 
 <br>
 
-### NAT GatewayとInternet Gatewayとの比較
+### VPCエンドポイントとNAT Gatewayの料金比較
 
-Internet GatewayとNAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外のリソースとの通信がより安全になる。
+NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外のリソースとの通信がより安全になる。
 
-
+<br>
 
 ### エンドポイントタイプ
 
@@ -282,33 +287,41 @@ S3、DynamoDBのみ
 
 ## 01-07. Internet Gateway、NAT Gateway
 
-### Internet Gateway、NAT Gatewayとは
+### Internet Gateway
 
-参考：https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+#### ▼ Internet Gatewayとは
+
+DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。1つのパブリックIPに対して、1つのプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Internet_Gateway.html
+- https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+
+DNATについては、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
-#### ▼ Internet Gateway
-
-DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。1つのパブリックIPに対して、1つのプライベートIPを紐付けられる。DNATについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
-#### ▼ NAT Gateway
-
-SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。1つのパブリックIPに対して、複数のプライベートIPを紐付けられる。SNATについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
-
 <br>
 
-### 比較表
+### NAT Gateway
 
+#### ▼ NAT Gatewayとは
 
-|              | Internet Gateway                                             | NAT Gateway            |
-| :----------- | :----------------------------------------------------------- | :--------------------- |
-| **機能**     | パブリックネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
-| **設置場所** | VPC上                                                        | パブリックサブネット内 |
+SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。1つのパブリックIPに対して、複数のプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、１つのパブリックIPアドレスで送信する。この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
+- https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+
+SNATについては、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
 <br>
 
