@@ -137,6 +137,16 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
+### VictoriaMetrics
+
+#### ▼ VictoriaMetricsとは
+
+Prometheusで収集したメトリクスを永続化する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み込みエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+
+![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
+
+<br>
+
 ## 05. Jaeger
 
 ### 仕組み

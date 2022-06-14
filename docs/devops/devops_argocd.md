@@ -96,7 +96,7 @@ description: ArgoCD＠DevOpsの知見をまとめました。
 
 ### ディレクトリ構成
 
-デプロイ単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがデプロイ単位になるため、マイクロサービスごとにApplicationを作成すると良い。
+apply単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがapply単位になるため、マイクロサービスごとにApplicationを作成すると良い。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
@@ -116,7 +116,7 @@ repository/
 
 ### Secretの値の保存場所
 
-ArgoCDは、デプロイ対象のアプリケーションのSecretを保持する必要がある。このSecretをどの場所に保存するかについて議論がなされている。
+ArgoCDは、apply対象のアプリケーションのSecretを保持する必要がある。このSecretをどの場所に保存するかについて議論がなされている。
 
 参考：
 
@@ -153,14 +153,14 @@ $ kubectl config use-context <Cluster ARN>
 $ kubectl create namespace argocd
 ```
 
-（３）ArgoCDのmanifest.yamlファイルを指定し、Kubernetes上にArgoCDをデプロイする。
+（３）ArgoCDのmanifest.yamlファイルを指定し、Kubernetes上にArgoCDをapplyする。
 
 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# デプロイされたことを確認する。
+# applyされたことを確認する。
 $ kubectl get all -n argocd
 ```
 
@@ -222,7 +222,7 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象のリポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのデプロイにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがデプロイを行なっていることに注意する。
+（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象のリポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのapplyにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがapplyを行なっていることに注意する。
 
 ```bash
 $ argocd app sync guestbook --dry-run
@@ -310,7 +310,7 @@ $ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  finalizers: [] # <--- 空配列に変更する。
+  finalizers: [] # 空配列に変更する。
 spec:
 
 # 〜 中略 〜
@@ -330,9 +330,9 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 ### 開発環境での動作確認
 
-#### ▼ 別のデプロイツールを使用する
+#### ▼ 別のapplyツールを使用する
 
-実装が複雑になることを避けるため、開発環境に対するデプロイには、ArgoCD以外のツールを使用する。
+実装が複雑になることを避けるため、開発環境に対するapplyには、ArgoCD以外のツールを使用する。
 
 （例）Skaffold
 
@@ -533,15 +533,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたmanifest.yamlファイルをデプロイする。
+マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたmanifest.yamlファイルをapplyする。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-| リポジトリの種類                                   | 管理方法                     | manifest.yamlファイルのデプロイ方法                           |
+| リポジトリの種類                                   | 管理方法                     | manifest.yamlファイルのapply方法                           |
 |--------------------------------------------| ---------------------------- | ------------------------------------------------------------ |
-| マニフェストリポジトリ（GitHub）                        | manifest.yamlファイルそのまま | ArgoCDで直接的にデプロイする。                               |
-| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にデプロイする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
-| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にデプロイする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| マニフェストリポジトリ（GitHub）                        | manifest.yamlファイルそのまま | ArgoCDで直接的にapplyする。                               |
+| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
 
 <br>
 
@@ -609,19 +609,36 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。
+監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。各実行環境に、実行環境に対応したブランチを指定するマニフェストファイルをapplyしておくとよい。これにより、各実行環境内のApplicationは特定のブランチのみを監視するようになる。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
 ```yaml
+# 本番環境のApplication
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
   name: foo-application
+  labels:
+    env: prd
 spec:
   source:
-    targetRevision: main
+    targetRevision: main # 本番環境に対応するブランチ
+```
+
+```yaml
+# ステージング環境のApplication
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+  labels:
+    env: stg
+spec:
+  source:
+    targetRevision: develop # ステージング環境に対応するブランチ
 ```
 
 <br>
@@ -656,9 +673,9 @@ helmコマンドに相当するパラメーターを設定する。Helmfileの�
 
 | 設定項目          | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```releaseName``` | デプロイするリリース名を設定する。                           |                                                              |
+| ```releaseName``` | applyするリリース名を設定する。                           |                                                              |
 | ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのmanifest.yamlファイルにハードコーディングして定義する。 |                                                              |
-| ```valueFiles```  | デプロイ時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
+| ```valueFiles```  | apply時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -761,13 +778,13 @@ spec:
 
 #### ▼ destinationとは
 
-デプロイ先のKubernetesを設定する。
+apply先のKubernetesを設定する。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 #### ▼ namespace
 
-デプロイ先のNamespaceを設定する。
+apply先のNamespaceを設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -782,7 +799,7 @@ spec:
 
 #### ▼ server
 
-デプロイ先のKubernetesのClusterのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
+apply先のKubernetesのClusterのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -904,13 +921,13 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイ手法を設定する。
+apply手法を設定する。
 
 #### ▼ blueGreen
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
-ブルーグリーンデプロイメントを使用して、新しいPodをリリースする。
+ブルーグリーンapplyメントを使用して、新しいPodをリリースする。
 
 参考：
 

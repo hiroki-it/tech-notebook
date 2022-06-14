@@ -170,7 +170,7 @@ $ php --ri=ddtrace
 
 Datadog tracing support => enabled
 Version => 0.57.0
-DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得られる
+DATADOG TRACER CONFIGURATION => { ..... } # ここに設定のJSONが得られる
 
 # 得られたJSONを整形している
 {

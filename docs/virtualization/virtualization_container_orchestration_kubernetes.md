@@ -278,7 +278,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、新しいPodをデプロイする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、新しいPodをapplyする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
 参考：
 
@@ -851,8 +851,6 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 ```bash
-$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
-
 $ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
 ```
 

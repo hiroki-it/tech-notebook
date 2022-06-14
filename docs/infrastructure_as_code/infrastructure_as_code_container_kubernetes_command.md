@@ -515,7 +515,7 @@ bar-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     bar-node   
 # 事前にServiceのルーティング先を確認しておく。
 $ kubectl describe services foo
 
-Selector: <キー>=<値> # <--- Selectorでルーティング先のPodのlabelキーがわかる
+Selector: <キー>=<値> # Selectorでルーティング先のPodのlabelキーがわかる
 
 $ kubectl get pods -l <キー>=<値>
 ```

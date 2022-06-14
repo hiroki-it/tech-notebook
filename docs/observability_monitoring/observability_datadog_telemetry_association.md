@@ -66,11 +66,11 @@ description: テレメトリー間の紐付け＠Datadog
         "value": "prd"
       },
       {
-        "name": "DD_SERVICE_NAME", # <--- フレームワーク
+        "name": "DD_SERVICE_NAME", # フレームワーク
         "value": "order"
       },
       {
-        "name": "DD_SERVICE_MAPPING", # <--- フレームワーク以外
+        "name": "DD_SERVICE_MAPPING", # フレームワーク以外
         "value": "pdo:order-eloquent"
       },
       {

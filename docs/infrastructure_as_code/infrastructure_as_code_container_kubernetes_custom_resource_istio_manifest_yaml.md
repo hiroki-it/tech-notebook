@@ -50,7 +50,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもデプロイできるが、デプロイの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 
@@ -82,9 +82,6 @@ googleapisチャートリポジトリからインストールする。
 参考：https://github.com/istio/istio/tree/master/manifests/charts/gateway
 
 ```bash
-$ helm repo add istio https://istio-release.storage.googleapis.com/charts
-$ helm repo update
-
 $ helm install istio-ingressgateway istio/gateway
 ```
 

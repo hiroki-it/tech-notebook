@@ -19,7 +19,7 @@ description: チャート＠Helmの知見をまとめました。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは、パッケージマネージャーとしてのHelmクライアント、パッケージとしてのチャートアーカイブ（```.tgz```形式）、チャートアーカイブの元になるチャート、チャートアーカイブのレジストリとしてのチャートレジストリ、チャートレジストリ内にある複数のチャートリポジトリ、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいてkube-apiserverをコールし、Kubernetes上にKubernetesリソースをデプロイする。
+Helmは、パッケージマネージャーとしてのHelmクライアント、パッケージとしてのチャートアーカイブ（```.tgz```形式）、チャートアーカイブの元になるチャート、チャートアーカイブのレジストリとしてのチャートレジストリ、チャートレジストリ内にある複数のチャートリポジトリ、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいてkube-apiserverをコールし、Kubernetes上にKubernetesリソースをapplyする。
 
 参考：
 

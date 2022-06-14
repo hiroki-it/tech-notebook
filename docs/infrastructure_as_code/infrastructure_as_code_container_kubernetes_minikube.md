@@ -204,6 +204,74 @@ spec:
 
 <br>
 
+## 01-03. ネットワーク
+
+### KubernetesリソースのCIDRブロック
+
+#### ▼ ワーカーNode
+
+ワーカーNode内で```ip addr```コマンドを実行すると、ワーカーNodeに割り当てられたCIDRブロックを確認できる。
+
+参考：https://nishipy.com/archives/1467
+
+**＊例＊**
+
+CNIとしてBridgeプラグインを使用している。CIDRブロックは、```192.168.49.2/24```である。
+
+```bash
+$ minikube ssh
+
+# ワーカーNodeの中
+docker@minikube:~$ ip addr | grep eth0
+
+10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    inet 192.168.49.2/24 brd 192.168.49.255 scope global eth0
+```
+
+#### ▼ Pod
+
+ワーカーNode内で```/etc/cni/net.d```ディレクトリ以下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
+
+参考：https://nishipy.com/archives/1467
+
+**＊例＊**
+
+CNIとしてBridgeプラグインを使用している。CIDRブロックは、```10.85.0.0/16```である。
+
+```bash
+$ minikube ssh
+
+# ワーカーNodeの中
+docker@minikube:~$ ls -la /etc/cni/net.d
+-rw-r--r-- 1 root root  438 Nov 11  2021 100-crio-bridge.conf
+-rw-r--r-- 1 root root   54 Nov 11  2021 200-loopback.conf
+
+docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf 
+
+{
+    "cniVersion": "0.3.1",
+    "name": "crio",
+    "type": "bridge",
+    "bridge": "cni0",
+    "isGateway": true,
+    "ipMasq": true,
+    "hairpinMode": true,
+    "ipam": {
+        "type": "host-local",
+        "routes": [
+            { "dst": "0.0.0.0/0" },
+            { "dst": "1100:200::1/24" }
+        ],
+        "ranges": [
+            [{ "subnet": "10.85.0.0/16" }],
+            [{ "subnet": "1100:200::/24" }]
+        ]
+    }
+}
+```
+
+<br>
+
 ## 03. minikubeコマンド
 
 ### addons
@@ -273,6 +341,18 @@ $ minikube addons list
 | storage-provisioner-gluster | minikube | disabled     | unknown (third-party) |
 | volumesnapshots             | minikube | disabled     | kubernetes            |
 |-----------------------------|----------|--------------|-----------------------|
+```
+
+<br>
+
+### cni
+
+使用するcniプラグインを設定する。
+
+参考：https://minikube.sigs.k8s.io/docs/commands/start/
+
+```bash
+$ minikube start --cni=bridge
 ```
 
 <br>

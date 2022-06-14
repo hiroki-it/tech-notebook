@@ -52,7 +52,7 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 #### ▼ installとは
 
-チャートなどを指定し、Kubernetesリソースとしてデプロイする。チャートへのパスを指定する以外にも、指定方法には種類がある。
+チャートなどを指定し、Kubernetesリソースとしてapplyする。チャートへのパスを指定する以外にも、指定方法には種類がある。
 
 参考：https://helm.sh/docs/helm/helm_install/
 
@@ -70,7 +70,7 @@ $ helm install <リリース名> <チャートへのパス>
 
 #### ▼ --dry-run
 
-Kubernetesにデプロイされるリソースのmanifest.yamlファイルを取得する。デプロイする前に、チャートの設定が正しいかどうかを確認できる。
+Kubernetesにapplyされるリソースのmanifest.yamlファイルを取得する。applyする前に、チャートの設定が正しいかどうかを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -174,7 +174,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してデプロイしたリリースの一覧を取得する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
+Helmを使用してapplyしたリリースの一覧を取得する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -412,7 +412,7 @@ $ helm show values <チャート名>
 
 #### ▼ templateとは
 
-Kubernetesにデプロイされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにすると良い。
+Kubernetesにapplyされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにすると良い。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>
@@ -446,7 +446,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 
 #### ▼ uninstallとは
 
-指定したリリースによってデプロイされたKubernetesリソースを削除する。
+指定したリリースによってapplyされたKubernetesリソースを削除する。
 
 参考：https://helm.sh/docs/helm/helm_uninstall/
 
@@ -464,7 +464,7 @@ Helmのリリースをアップグレードする。
 
 #### ▼ --install
 
-新しいリビジョン番号を作成し、デプロイ済のリリースをアップグレードする。
+新しいリビジョン番号を作成し、apply済のリリースをアップグレードする。
 
 ```bash
 $ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>

@@ -200,7 +200,7 @@ spec:
             spec:
               type: object
               properties:
-                message: # <--- カスタムリソースのspec.messageキーに文字列を設定できるようになる。
+                message: # カスタムリソースのspec.messageキーに文字列を設定できるようになる。
                   type: string
 ```
 

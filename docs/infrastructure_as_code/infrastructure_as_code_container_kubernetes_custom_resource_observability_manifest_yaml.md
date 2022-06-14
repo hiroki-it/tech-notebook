@@ -24,9 +24,6 @@ description: 可観測性＠カスタムリソースの知見をまとめまし�
 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 ```bash
-$ helm repo add grafana https://grafana.github.io/helm-charts
-$ helm repo update
-
 $ helm install <リリース名> grafana/grafana
 ```
 
@@ -37,14 +34,12 @@ Prometheusと連携しやすくする場合は、Helmチャートのkube-prometh
 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
 ```bash
-$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 ```
 
 #### ▼ ドキュメントから
 
-GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをデプロイする。
+GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをapplyする。
 
 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
@@ -150,7 +145,7 @@ data:
 
 #### ▼ kube-prometheus-stackチャートリポジトリから
 
-Helmチャートのkube-prometheus-stackチャートをデプロイする。
+Helmチャートのkube-prometheus-stackチャートをapplyする。
 
 参考：
 
@@ -159,8 +154,6 @@ Helmチャートのkube-prometheus-stackチャートをデプロイする。
 - https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
 
 ```bash
-$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
 $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 ```
 
@@ -373,3 +366,14 @@ spec:
 
 <br>
 
+## 03. VictoriaMetrics
+
+### セットアップ
+
+#### ▼ victoria-metricsチャートリポジトリから
+
+```bash
+$ helm install victoria-metrics vm/victoria-metrics-cluster -f values.yaml -n <名前空間>
+```
+
+<br>

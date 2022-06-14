@@ -55,7 +55,7 @@ apiVersion: v1
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくデプロイされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくapplyされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 参考：
 
@@ -567,11 +567,11 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイメントの方法を設定する。
+applyメントの方法を設定する。
 
 #### ▼ RollingUpdate
 
-ローリングアップデートを使用して、新しいPodをデプロイする。
+ローリングアップデートを使用して、新しいPodをapplyする。
 
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -584,7 +584,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをデプロイする。
+      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをapplyする。
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
@@ -597,7 +597,7 @@ spec:
         component: app
 ```
 
-もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをデプロイするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをapplyするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 

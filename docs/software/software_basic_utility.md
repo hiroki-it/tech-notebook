@@ -460,7 +460,7 @@ $ dig yahoo.co.jp
 ; <<>> DiG 9.10.6 <<>> yahoo.co.jp
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23877 # <--- 『NOERROR』は、正引きが成功したことを表す。
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23877 # 『NOERROR』は、正引きが成功したことを表す。
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 8, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
@@ -468,12 +468,12 @@ $ dig yahoo.co.jp
 
 # Questionセクション
 ;; QUESTION SECTION:
-;yahoo.co.jp.                   IN      A # <--- Aレコードを問い合わせたことを表す。
+;yahoo.co.jp.                   IN      A # Aレコードを問い合わせたことを表す。
 
 # Answerセクション
 # DNSレコード
 ;; ANSWER SECTION:
-yahoo.co.jp.            35      IN      A       182.22.28.252 # <--- 正引きで返却されたIPアドレスを表す。
+yahoo.co.jp.            35      IN      A       182.22.28.252 # 正引きで返却されたIPアドレスを表す。
 yahoo.co.jp.            35      IN      A       182.22.16.251
 yahoo.co.jp.            35      IN      A       183.79.217.124
 yahoo.co.jp.            35      IN      A       183.79.219.252
@@ -1290,8 +1290,8 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
  2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
  3  g-o-4eb-a13-1-e-2-1.interq.or.jp (210.157.9.209)  0.784 ms  0.786 ms  0.778 ms
- 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # <--- ここまでは届く
- 5  *  *  *                                                                 # <--- その後失敗
+ 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # ここまでは届く
+ 5  *  *  *                                                                 # その後失敗
  6  *  *  *
 ...
 ```

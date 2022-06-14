@@ -74,7 +74,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
+KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にapplyできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、manifest.yamlファイル上でこれを設定できる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
@@ -184,7 +184,7 @@ $ istioctl kube-inject
 
 #### ▼ init
 
-IstioOperatorを```istio-system```にデプロイする。
+IstioOperatorを```istio-system```にapplyする。
 
 ```bash
 $ istioctl operator init
@@ -310,7 +310,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 #### ▼ upgradeとは
 
-Istioのインプレースデプロイメントを実行する。
+Istioのインプレースapplyメントを実行する。
 
 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 

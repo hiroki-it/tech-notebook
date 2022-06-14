@@ -176,7 +176,7 @@ aws_sts_credentials="$(aws sts assume-role \
   --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<アタッチしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
-  --duration-seconds "<セッションの有効秒数>" \ # <--- セッションの有効秒数を少なくすればより安全
+  --duration-seconds "<セッションの有効秒数>" \ # セッションの有効秒数を少なくすればより安全
   --query "Credentials" \
   --output "json")"
 ```

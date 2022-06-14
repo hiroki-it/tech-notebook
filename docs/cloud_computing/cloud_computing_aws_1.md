@@ -1404,7 +1404,7 @@ Lambdaのパフォーマンスに関するメトリクスを収集する。
 
 ## 09-03. CloudWatchログ
 
-### CloudWatchログ
+### CloudWatchログとは
 
 クラウドログサーバーとして働く。AWSリソースで生成されたログを収集できる。ログについては、以下のリンクを参考にせよ。
 
@@ -1868,3 +1868,14 @@ Resources:
 
 <br>
 
+## 11. Direct Connect
+
+### Direct Connectとは
+
+専用線方式のWANとして機能し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。なお、DirectConnectは、それ専用の中継VPC内に構築する。WANの種類については、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
+
+![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/direct-connect.png)
+
+<br>

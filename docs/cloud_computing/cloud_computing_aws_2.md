@@ -1038,7 +1038,7 @@ metadata:
     aws-observability: enabled
 ```
 
-（５）EKSクラスターからCloudWatchログにログを送信できるように、ConfigMapを作成する。名前は、```aws-logging```とする必要がある。
+（５）EKS ClusterからCloudWatchログにログを送信できるように、ConfigMapを作成する。名前は、```aws-logging```とする必要がある。
 
 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
@@ -1089,7 +1089,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
-| Cluster                    | EKSクラスター           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
+| Cluster                    | EKS Cluster           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
 | Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
 | Ingressコントローラー      | AWS LBコントローラー    | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
 |                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
@@ -1104,9 +1104,9 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 <br>
 
-### EKSクラスター
+### EKS Cluster
 
-#### ▼ EKSクラスターとは
+#### ▼ EKS Clusterとは
 
 Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClusterに相当する。
 
@@ -1118,10 +1118,10 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 名前                             | クラスターの名前を設定する。                                 |                                                              |
 | Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| クラスターサービスロール         | EKSクラスターのサービスリンクロールを設定する。              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
+| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
 | シークレット                     | Secretに保持するデータをAWS KMSで暗号化するかどうかを設定する。 | AWS KMSについては、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html |
 | VPC、サブネット                  | ENIを配置するサブネットを設定する。                          | 複数のAZにまたがっている必要がある。                         |
-| クラスターセキュリティグループ   | EKSクラスターのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKSクラスター名>```というセキュリティグループも自動設定される。<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
 | クラスターIPアドレスファミリー   |                                                              |                                                              |
 | CIDRブロック                     |                                                              |                                                              |
 | クラスターエンドポイントアクセス |                                                              |                                                              |
@@ -1130,9 +1130,9 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 <br>
 
-### ネットワーク
+### プライベートサブネット内のデータプレーンの通信
 
-#### ▼ VPC外からプライベートサブネットへのインバウンド通信
+#### ▼ VPC外からのインバウンド通信
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
 
@@ -1140,20 +1140,26 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
 
-#### ▼ プライベートサブネットからVPC外へのアウトバウンド通信
+#### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。このうち2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
-参考：
-
-- https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
 
-```
+```log
 Pod provisioning timed out (will retry) for pod
 ```
+
+#### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
+
+EKS Clusterを作成すると、ENIが作成される。これにより、VPC内のデータプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+
+参考：
+
+- https://dev.classmethod.jp/articles/eks_basic/
+- https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
 <br>
 
@@ -1413,7 +1419,7 @@ EC2で稼働するKubernetesのホストのこと。EKS on Fargateと比べて�
 
 ![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
 
-
+<br>
 
 ## 04. EFS：Elastic File System
 

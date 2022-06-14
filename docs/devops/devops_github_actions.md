@@ -430,7 +430,7 @@ jobs:
 
 ```yaml
 inputs:
-  foo: # <--- マスキングされ、YAMLファイルの構文解析でエラーになる
+  foo: # マスキングされ、YAMLファイルの構文解析でエラーになる
     required: true
     
 runs:
