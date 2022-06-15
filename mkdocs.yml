@@ -269,7 +269,6 @@ nav:
           - ■ Kubernetes:
               - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
               - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
-              - 可観測性リソース: virtualization/virtualization_container_orchestration_kubernetes_observability.md
 
   - ⚙️ Infrastructure as Code:
       - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
