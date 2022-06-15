@@ -267,9 +267,9 @@ nav:
       - ■ コンテナオーケストレーション:
           - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
           - ■ Kubernetes:
-             - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
-             - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
-             - 可観測性リソース: virtualization/virtualization_container_orchestration_kubernetes_observability.md
+              - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
+              - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
+              - 可観測性リソース: virtualization/virtualization_container_orchestration_kubernetes_observability.md
 
   - ⚙️ Infrastructure as Code:
       - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
@@ -332,11 +332,12 @@ nav:
       - ■ CircleCI:
           - config.yml: devops/devops_circleci_config_yml.md
           - orbs: devops/devops_circleci_orbs.md
+
   - 🔎 可観測性/監視:
       - 可観測性: observability_monitoring/observability.md
       - ■ 監視:
-        - 監視: observability_monitoring/monitoring.md
-        - インシデント管理: observability_monitoring/monitoring_incident_management.md
+          - 監視: observability_monitoring/monitoring.md
+          - インシデント管理: observability_monitoring/monitoring_incident_management.md
       - ■ Googleアプリ:
           - Googleアナリティクス: observability_monitoring/monitoring_google_analytics.md
           - Googleサーチコンソール: observability_monitoring/monitoring_google_search_console.md
@@ -352,6 +353,7 @@ nav:
           - テレメトリー間の紐づけ: observability_monitoring/observability_datadog_telemetry_association.md
           - 監視: observability_monitoring/observability_datadog_monitoring.md
           - インテグレーション: observability_monitoring/observability_datadog_integration.md
+      - その他: observability_monitoring/observability_others.md
 
   - 👥 ソフトウェア開発手法論/SRE:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
