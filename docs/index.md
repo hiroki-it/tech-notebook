@@ -248,7 +248,6 @@ title: 【知見を記録するサイト】目次
 * Kubernetes
     * [📖：︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html)
     * [📖：︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
-    * [📖：可観測性リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes_observability.html)
 
 <br>
 
@@ -339,11 +338,6 @@ title: 【知見を記録するサイト】目次
     * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html)
     * [📖：︎インシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_incident_management.html)
 
-### Googleアプリ
-
-* [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_analytics.html)
-* [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_search_console.html)
-
 ### FluentBit/Fluentd
 
 * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_vs_fluentd.html)
@@ -359,6 +353,15 @@ title: 【知見を記録するサイト】目次
 * [📖：テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_telemetry_association.html)
 * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_monitoring.html)
 * [📖：︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_integration.html)
+
+### Googleアプリ
+
+* [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_analytics.html)
+* [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_search_console.html)
+
+### その他
+
+* [📖：その他](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html)
 
 <br>
 
@@ -389,7 +392,7 @@ title: 【知見を記録するサイト】目次
 
 ## 📢 過去の技術系プレゼン
 
-- [📖：︎一覧](https://hiroki-it.github.io/tech-notebook-mkdocs/presentation.html)
+* [📖：︎一覧](https://hiroki-it.github.io/tech-notebook-mkdocs/presentation.html)
 
 <br>
 

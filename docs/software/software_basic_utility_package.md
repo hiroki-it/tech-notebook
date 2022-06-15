@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】パッケージ＠ユーティリティ
+ title: 【知見を記録するサイト】パッケージ＠ユーティリティ
 description: パッケージ＠ユーティリティの知見をまとめました。
 ---
 
@@ -645,6 +645,24 @@ $ systemctl enable httpd.service
 
 <br>
 
+### list-units
+
+デーモンの稼働状況を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
+
+参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+
+```bash
+$ systemctl list-units --type=service | grep active
+
+UNIT                             LOAD    ACTIVE  SUB      DESCRIPTION
+abrt-ccpp.service                loaded  active  exited   Install ABRT coredump hook
+abrt-oops.service                loaded  active  running  ABRT kernel log watcher
+abrtd.service                    loaded  active  running  ABRT Automated Bug Reporting Tool
+...
+```
+
+<br>
+
 ### list-unit-files
 
 デーモンのUnitの一覧を取得する。
@@ -661,7 +679,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 
 ### reload
 
-プロセスを安全に再起動する。
+デーモンを安全に再起動する。
 
 ```bash
 $ sudo systemctl reload nginx
@@ -671,7 +689,7 @@ $ sudo systemctl reload nginx
 
 ### restart
 
-プロセスを強制的に再起動する。
+デーモンを強制的に再起動する。
 
 ```bash
 $ sudo systemctl restart httpd
@@ -685,7 +703,7 @@ $ sudo systemctl restart nginx
 
 ### start
 
-プロセスを起動する。
+デーモンを起動する。
 
 ```bash
 $ sudo systemctl start httpd
@@ -697,9 +715,28 @@ $ sudo systemctl start nginx
 
 <br>
 
+### status
+
+デーモンの状態を確認する。
+
+参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+
+```bash
+$ systemctl status rsyslog
+
+rsyslog.service - System Logging Service
+Loaded: loaded (/usr/lib/systemd/system/rsyslog.service; enabled; vendor preset: enabled)
+Active: active (running) since Thr 2017-12-07 07:03:21 JST; 8h left
+Main PID: 959 (rsyslogd)
+CGroup: /system.slice/rsyslog.service
+mq959 /usr/sbin/rsyslogd -n
+```
+
+<br>
+
 ### stop
 
-プロセスを停止する。
+デーモンを停止する。
 
 ```bash
 $ sudo systemctl stop httpd
