@@ -92,7 +92,8 @@ Dockerfikeの命令で扱える変数を定義する。
 ```dockerfile
 # ARGは、OS上のコマンド処理に展開するための変数として定義できない。
 ARG PYTHON_VERSION="3.8.0"
-RUN pyenv install ${PYTHON_VERSION} # 変数を展開できない
+# 変数を展開できない
+RUN pyenv install ${PYTHON_VERSION}
 
 # ENVは、OS上のコマンド処理に展開するための変数として定義できる。
 ARG PYTHON_VERSION="3.8.0"
@@ -108,7 +109,8 @@ FROM centos:${OS_VERSION}
 
 # ENVは、Dockerfikeの命令に展開するため変数として定義できない。
 ENV OS_VERSION "8"
-FROM centos:${OS_VERSION} # 変数を展開できない
+# 変数を展開できない
+FROM centos:${OS_VERSION}
 ```
 
 そのため、以下の様に使い分けることになる。
@@ -119,7 +121,7 @@ ARG CENTOS_VERSION="8"
 ARG PYTHON_VERSION="3.8.0"
 
 # 変数展開できる
-FROM centos:${OS_VERSION}
+FROM centos:${CENTOS_VERSION}
 
 # ARGを事前に宣言
 ARG PYTHON_VERSION

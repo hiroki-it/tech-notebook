@@ -82,7 +82,7 @@ $ minikube tunnel
 
 #### ▼ Ingress経由
 
-ClusterIP ServiceとIngress（Minikubeアドオン製）を構築しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを知ることができる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
+ClusterIP ServiceとIngress（Minikubeアドオン製）を構築しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
 
 参考：https://future-architect.github.io/articles/20220112a/
 

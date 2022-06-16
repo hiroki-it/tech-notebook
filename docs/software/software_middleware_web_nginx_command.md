@@ -20,7 +20,7 @@ description: コマンド＠Nginxの知見をまとめました。
 設定ファイルを指定して、nginxプロセスを実行する。
 
 ```bash
-$ sudo nginx -c ./custom-nginx.conf
+$ nginx -c ./custom-nginx.conf
 ```
 
 <br>
@@ -30,7 +30,7 @@ $ sudo nginx -c ./custom-nginx.conf
 nginxプロセスを安全に再起動する。systemctlコマンドでも再起動できる。
 
 ```bash
-$ sudo nginx -s reload
+$ nginx -s reload
 ```
 
 参考：
@@ -46,7 +46,7 @@ $ sudo nginx -s reload
 設定ファイルのバリデーションを実行する。また、読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容の一覧を取得する。```service```コマンドでもバリデーションを実行できる。
 
 ```bash
-$ sudo nginx -t
+$ nginx -t
 ```
 
 参考：
@@ -65,5 +65,5 @@ Nginxの設定ファイルのバリデーションを実行する。
 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
-$ sudo service nginx configtest
+$ service nginx configtest
 ```

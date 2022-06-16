@@ -682,7 +682,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 デーモンを安全に再起動する。
 
 ```bash
-$ sudo systemctl reload nginx
+$ systemctl reload nginx
 ```
 
 <br>
@@ -692,11 +692,11 @@ $ sudo systemctl reload nginx
 デーモンを強制的に再起動する。
 
 ```bash
-$ sudo systemctl restart httpd
+$ systemctl restart httpd
 ```
 
 ```bash
-$ sudo systemctl restart nginx
+$ systemctl restart nginx
 ```
 
 <br>
@@ -706,11 +706,11 @@ $ sudo systemctl restart nginx
 デーモンを起動する。
 
 ```bash
-$ sudo systemctl start httpd
+$ systemctl start httpd
 ```
 
 ```bash
-$ sudo systemctl start nginx
+$ systemctl start nginx
 ```
 
 <br>
@@ -739,11 +739,11 @@ mq959 /usr/sbin/rsyslogd -n
 デーモンを停止する。
 
 ```bash
-$ sudo systemctl stop httpd
+$ systemctl stop httpd
 ```
 
 ```bash
-$ sudo systemctl stop nginx
+$ systemctl stop nginx
 ```
 
 <br>
@@ -777,7 +777,7 @@ $ yum install -y tcpdump
 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
 ```bash
-sudo tcpdump -i eth0
+$ tcpdump -i eth0
 ```
 
 <br>
@@ -789,7 +789,7 @@ sudo tcpdump -i eth0
 参考：https://go-journey.club/archives/1472
 
 ```bash
-$ sudo tcpdump -nn ip
+$ tcpdump -nn ip
 ```
 
 <br>
@@ -801,6 +801,7 @@ $ sudo tcpdump -nn ip
 参考：https://go-journey.club/archives/1472
 
 ````bash
-$ sudo tcpdump -nn port 80
+$ tcpdump -nn port 80
 ````
 
+<br>

@@ -12,6 +12,8 @@ title: 【知見を記録するサイト】目次
 
 ## 🧬 ソフトウェア
 
+### ソフトウェア
+
 * [📖：︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html)
 
 <br>
@@ -211,6 +213,8 @@ title: 【知見を記録するサイト】目次
 
 ## ⛅ クラウドコンピューティング
 
+### クラウドコンピューティング
+
 * [📖：︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing.html)
 
 ### AWS
@@ -236,6 +240,8 @@ title: 【知見を記録するサイト】目次
 
 ## 📦 仮想化
 
+### 仮想化
+
 * [📖：︎仮想化](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization.html)
 
 ### コンテナ
@@ -252,6 +258,8 @@ title: 【知見を記録するサイト】目次
 <br>
 
 ## ⚙️ Infrastructure as Code
+
+### Infrastructure as Code
 
 * [📖：︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
 
@@ -333,18 +341,24 @@ title: 【知見を記録するサイト】目次
 
 ## 🔎 可観測性/監視
 
+### 可観測性/監視
+
 * [📖：︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html)
 * 監視
     * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html)
     * [📖：︎インシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_incident_management.html)
+    
+### 可観測性ツール
 
-### FluentBit/Fluentd
+[📖：可観測性ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html)
+
+#### ▼ FluentBit/Fluentd
 
 * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_vs_fluentd.html)
 * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html)
 * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html)
 
-### Datadog
+#### ▼ Datadog
 
 * [📖：︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html)
 * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html)
@@ -354,18 +368,16 @@ title: 【知見を記録するサイト】目次
 * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_monitoring.html)
 * [📖：︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_integration.html)
 
-### Googleアプリ
+#### ▼ Googleアプリ
 
 * [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_analytics.html)
 * [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring_google_search_console.html)
 
-### その他
-
-* [📖：その他](https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html)
-
 <br>
 
 ## 👥 ソフトウェア開発手法論/SRE
+
+### ソフトウェア開発手法論
 
 * [📖：︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology.html)
 

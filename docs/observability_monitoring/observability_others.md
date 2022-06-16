@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】可観測性リソース＠仮想化
-description: 可観測性リソース＠仮想化の知見をまとめました。
+title: 【知見を記録するサイト】可観測性ツール
+description: 可観測性ツールの知見をまとめました。
 ---
 
-# 可観測性リソース＠仮想化
+# 可観測性ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: 可観測性リソース＠仮想化の知見をまとめました�
 
 <br>
 
-## 01. 
+## 01. 可観測性ツールの比較
 
 ### メトリクス
 
@@ -132,7 +132,7 @@ Prometheusからアラートを受信し、特定の条件下でルーティン�
 
 #### ▼ Exporterとは
 
-PrometheusがPull型メトリクスを対象から収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporterを選ぶ必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
+PrometheusがPull型通信でメトリクスを収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporterを選ぶ必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
 参考：https://openstandia.jp/oss_info/prometheus
 
@@ -172,11 +172,39 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
+### ServiceMonitor
+
+#### ▼ ServiceMonitor
+
+Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスを収集する。
+
+![service-monitor](https://raw.githubusercontent.cm/hiroki-it/tech-notebook/master/images//service-monitor.png)
+
+参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+
+<br>
+
+### ダイナミックキュー
+
+#### ▼ ダイナミックキューとは
+
+リモートストレージにメトリクスを送信する場合に、送信されたメトリクスをキューイングする。
+
+#### ▼ シャード
+
+キューのインスタンス。メトリクスの送信量に応じて増減する。
+
+参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+
+![dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dynamic-queues_shard.png)
+
+<br>
+
 ### VictoriaMetrics
 
 #### ▼ VictoriaMetricsとは
 
-Prometheusで収集したメトリクスを永続化する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み込みエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み込みエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
 
 ![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
 

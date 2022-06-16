@@ -148,7 +148,7 @@ xdebug.idekey=PhpStorm
 #### 3. ローカル仮想環境を再起動
 
 ```bash
-$ sudo service httpd restart
+$ service httpd restart
 ```
 
 #### 4. PhpStormビルトインの設定

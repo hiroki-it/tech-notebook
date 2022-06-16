@@ -22,7 +22,7 @@ description: コマンド＠Apacheの知見をまとめました。
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
-$ sudo apachectl configtest
+$ apachectl configtest
 ```
 
 <br>
@@ -34,7 +34,7 @@ Apacheを段階的に再起動する。安全に再起動できる。
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
-$ sudo apachectl graceful
+$ apachectl graceful
 ```
 
 <br>
@@ -46,7 +46,7 @@ $ sudo apachectl graceful
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
-$ sudo apachectl -t
+$ apachectl -t
 ```
 
 <br>
@@ -60,7 +60,7 @@ $ sudo apachectl -t
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
+$ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 ```
 
 <br>
@@ -72,7 +72,7 @@ $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ sudo httpd -l
+$ httpd -l
 ```
 
 <br>
@@ -84,7 +84,7 @@ $ sudo httpd -l
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ sudo httpd -L
+$ httpd -L
 ```
 
 <br>
@@ -96,7 +96,7 @@ $ sudo httpd -L
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ sudo httpd -M
+$ httpd -M
 ```
 
 <br>
@@ -108,7 +108,7 @@ $ sudo httpd -M
 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
-$ sudo httpd -S
+$ httpd -S
 ```
 
 <br>
@@ -122,5 +122,5 @@ Apacheの設定ファイルのバリデーションを実行する。
 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
-$ sudo service httpd configtest
+$ service httpd configtest
 ```
