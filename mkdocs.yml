@@ -337,22 +337,23 @@ nav:
       - ■ 監視:
           - 監視: observability_monitoring/monitoring.md
           - インシデント管理: observability_monitoring/monitoring_incident_management.md
-      - ■ Googleアプリ:
-          - Googleアナリティクス: observability_monitoring/monitoring_google_analytics.md
-          - Googleサーチコンソール: observability_monitoring/monitoring_google_search_console.md
-      - ■ FluentBit/Fluentd:
-          - FluentBit vs. Fluentd: observability_monitoring/observability_fluentbit_vs_fluentd.md
-          - FluentBit: observability_monitoring/observability_fluentbit.md
-          - FireLensコンテナ: observability_monitoring/observability_fluentbit_firelens.md
-      - ■ Datadog:
-          - datadogエージェントの設定: observability_monitoring/observability_datadog_agent_conf.md
-          - メトリクス収集: observability_monitoring/observability_datadog_metrics.md
-          - ログ収集: observability_monitoring/observability_datadog_log.md
-          - 分散トレース収集: observability_monitoring/observability_datadog_distributed_trace.md
-          - テレメトリー間の紐づけ: observability_monitoring/observability_datadog_telemetry_association.md
-          - 監視: observability_monitoring/observability_datadog_monitoring.md
-          - インテグレーション: observability_monitoring/observability_datadog_integration.md
-      - その他: observability_monitoring/observability_others.md
+      - ■ 可観測性ツール:
+          - 可観測性ツール: observability_monitoring/observability_others.md
+          - ■ Googleアプリ:
+              - Googleアナリティクス: observability_monitoring/monitoring_google_analytics.md
+              - Googleサーチコンソール: observability_monitoring/monitoring_google_search_console.md
+          - ■ FluentBit/Fluentd:
+              - FluentBit vs. Fluentd: observability_monitoring/observability_fluentbit_vs_fluentd.md
+              - FluentBit: observability_monitoring/observability_fluentbit.md
+              - FireLensコンテナ: observability_monitoring/observability_fluentbit_firelens.md
+          - ■ Datadog:
+              - datadogエージェントの設定: observability_monitoring/observability_datadog_agent_conf.md
+              - メトリクス収集: observability_monitoring/observability_datadog_metrics.md
+              - ログ収集: observability_monitoring/observability_datadog_log.md
+              - 分散トレース収集: observability_monitoring/observability_datadog_distributed_trace.md
+              - テレメトリー間の紐づけ: observability_monitoring/observability_datadog_telemetry_association.md
+              - 監視: observability_monitoring/observability_datadog_monitoring.md
+              - インテグレーション: observability_monitoring/observability_datadog_integration.md
 
   - 👥 ソフトウェア開発手法論/SRE:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
