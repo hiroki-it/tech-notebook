@@ -529,24 +529,13 @@ $ dig -x 182.22.28.252
 
 ### du
 
-#### ▼ -s
+#### ▼ オプション無し
 
-全てのディレクトリの合計容量を取得する。
-
-```bash
-$ du -s ./
-12345678 ./
-```
-
-#### ▼ -x
-
-ディレクトリごとに合計容量を取得する。
+指定したディレクトリ内のサブディレクトリの容量と、ディレクトリ全体の合計容量を、取得する。
 
 ```bash
 # 表示結果を容量の降順に並び替える。
-$ du -x ./ | sort -n
-
-# 〜 中略 〜
+$ du ./ | sort -n
 
 21816   ./vendor/foo/bar/baz/qux
 27004   ./vendor/foo/bar/baz
@@ -554,6 +543,35 @@ $ du -x ./ | sort -n
 27604   ./vendor/foo
 115104  ./vendor
 123016  ./
+```
+
+#### ▼ -h
+
+読みやすい単位で、指定したディレクトリ内のサブディレクトリの容量と、ディレクトリ全体の合計容量を、取得する。
+
+参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+
+```bash
+$ du -h ./
+
+21K   ./vendor/foo/bar/baz/qux
+27K   ./vendor/foo/bar/baz
+27K   ./vendor/foo/bar
+27K   ./vendor/foo
+1.1M  ./vendor
+1.2M  ./
+```
+
+#### ▼ -s
+
+指定したディレクトリ内の合計容量を取得する。
+
+参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+
+```bash
+$ du -s ./
+
+12345678 ./
 ```
 
 <br>

@@ -114,6 +114,8 @@ CPUが1秒間に何回命令を実行するかを表す。
 
 #### ▼ Mask ROMとは
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
 
 <br>
@@ -121,6 +123,8 @@ CPUが1秒間に何回命令を実行するかを表す。
 ### Programmable ROM
 
 #### ▼ Programmable ROM
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
 
@@ -193,6 +197,8 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 ### 実効アクセス時間
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p171-1.png)
 
 <br>
@@ -256,6 +262,8 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 断片化されたデータ領域を整理整頓する。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-1.png)
 
 ![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-2.png)
@@ -291,6 +299,8 @@ GPUとVRAMの容量によって、扱うことのできる解像度と色数が�
 ![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/本パソコンのVRAMスペック.jpg)
 
 色数によって、１ドット当たり何ビットを要するが異なる。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
 

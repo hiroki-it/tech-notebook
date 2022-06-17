@@ -107,7 +107,7 @@ MySQLの起動時の値を設定する。```my.cnf```ファイルは、```/etc/m
 
 #### ▼ ```datadir```ディレクトリ
 
-MySQLのDBやテーブルの情報を管理する。基本的には```/var/lib/mysql```ディレクトリを使用するように設定されている。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのマウントポイントとして指定される。
+DBの定義ファイルを管理する。基本的には```/var/lib/mysql```ディレクトリを使用するように設定されている。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのマウントポイントとして指定される。
 
 ```bash
 [root@<コンテナID>:/var/lib/mysql] $ ls -la
@@ -119,7 +119,7 @@ drwxr-xr-x 1 root  root      4096 Dec  2 11:24 ..
 -rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 ca.pem
 -rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 client-cert.pem
 -rw------- 1 mysql mysql     1680 Dec 17 09:54 client-key.pem
-drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # foo DB
+drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # fooDBのデータファイル（.dbファイル）が管理されている
 -rw-r----- 1 mysql mysql     1352 Dec 17 09:54 ib_buffer_pool
 -rw-r----- 1 mysql mysql 50331648 Dec 17 10:23 ib_logfile0
 -rw-r----- 1 mysql mysql 50331648 Dec 17 09:54 ib_logfile1
@@ -179,7 +179,7 @@ default-time-zone = SYSTEM
 
 ### datadir
 
-テーブル情報のファイルを生成するディレクトリを設定する。
+DBの定義ファイルを配置するディレクトリを設定する。
 
 ```ini
 [mysqld]

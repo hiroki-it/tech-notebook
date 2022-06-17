@@ -145,9 +145,13 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 #### ▼ ホットスタンバイ
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p613-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-1.png)
 
 #### ▼ コールドスタンバイ
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p613-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-2.png)
 

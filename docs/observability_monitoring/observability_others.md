@@ -112,6 +112,50 @@ Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されてい�
 
 <br>
 
+### Prometheus server
+
+#### ▼ Prometheus serverとは
+
+メトリクスを収集し、管理する。またPromQLに基づいて、メトリクスを分析できるようにする。
+
+参考：https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
+
+#### ▼ ローカルストレージ
+
+Prometheus自体が持つストレージ。Prometeusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ以下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
+
+参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+
+```yaml
+data/
+├── 01BKGV7JC0RY8A6MACW02A2PJD/
+│   ├── chunks/
+│   │   └── 000001
+│   ├── tombstones
+│   ├── index
+│   └── meta.json
+├── chunks_head/
+│   └── 000001
+└── wal # WALによるバックアップ
+    ├── 000000002
+    └── checkpoint.00000001/
+        └── 00000000
+```
+
+#### ▼ リモートストレージ
+
+参考：https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
+
+#### ▼ ダイナミックキュー
+
+リモートストレージにメトリクスを送信する場合に、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
+
+参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+
+![dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dynamic-queues_shard.png)
+
+<br>
+
 ### Alertmanager
 
 #### ▼ Alertmanagerとは
@@ -172,41 +216,31 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
-### ServiceMonitor
-
-#### ▼ ServiceMonitor
-
-Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスを収集する。
-
-![service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-monitor.png)
-
-参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
-
-<br>
-
-### ダイナミックキュー
-
-#### ▼ ダイナミックキューとは
-
-リモートストレージにメトリクスを送信する場合に、送信されたメトリクスをキューイングする。
-
-#### ▼ シャード
-
-キューのインスタンス。メトリクスの送信量に応じて増減する。
-
-参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
-
-![dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dynamic-queues_shard.png)
-
-<br>
-
 ### VictoriaMetrics
 
 #### ▼ VictoriaMetricsとは
 
-Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み出しエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+リモートストレージとして、Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み出しエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+
+参考：https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 
 ![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
+
+#### ▼ ストレージ
+
+```yaml
+victoriametrics/
+├── data/
+│   ├── big/
+│   ├── flock.lock
+│   └── small/
+│
+├── flock.lock/
+├── indexdb/
+├── metadata/
+├── snapshots/
+└── tmp/
+```
 
 <br>
 

@@ -297,11 +297,15 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ 『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-2.png)
 
 ![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-3.png)
 
 #### ▼ 『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-1.png)
 

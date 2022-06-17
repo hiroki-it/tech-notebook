@@ -159,6 +159,18 @@ $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 
 <br>
 
+### カスタムリソースの種類
+
+#### ▼ ServiceMonitor
+
+Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスを収集する。
+
+参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+
+![service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-monitor.png)
+
+<br>
+
 ## 02-02. PrometheusRule
 
 ### spec.groups

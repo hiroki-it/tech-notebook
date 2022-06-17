@@ -1,7 +1,6 @@
 ---
 title: 【知見を記録するサイト】ACID＠RDBMS
 description: ACID＠RDBMSの知見をまとめました。
-
 ---
 
 # ACID＠RDBMS
@@ -62,6 +61,8 @@ description: ACID＠RDBMSの知見をまとめました。
 ## 02. DBの処理フロー
 
 ### 一連の流れ
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
@@ -136,7 +137,7 @@ try{
 
 #### ▼ メモリ書き込み
 
-コミットの結果をメモリ上で管理し、ある程度まとまってからデータファイルに書き込む。これにより、書き込み後にすぐ読み出しが必要な場合に、読み出しが速くなる。
+コミットの結果をメモリ上で管理し、ある程度まとまってからデータファイル（```.db```ファイル）に書き込む。これにより、書き込み後にすぐ読み出しが必要な場合に、読み出しが速くなる。
 
 参考：https://www.kimullaa.com/entry/2019/10/28/000000
 

@@ -34,6 +34,8 @@ title: 【知見を記録するサイト】ソフトウェア開発手法論
 
 ソフトウェア設計に入るまでに試作品を作り、要件定義をより正確にする開発方法。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p456.png)
 
 <br>
@@ -44,6 +46,8 @@ title: 【知見を記録するサイト】ソフトウェア開発手法論
 
 各工程が完了した段階で、レビューを行う開発方法。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p458](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p458.png)
 
 <br>
@@ -53,6 +57,8 @@ title: 【知見を記録するサイト】ソフトウェア開発手法論
 ### RADとは
 
 Visual Basicなどの開発支援ツールを使用して、短期間で設計～テストまでを繰り返す開発方法。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-1.png)
 
@@ -76,6 +82,8 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 スパイラルモデルの派生型。スパイラルモデルよりも短い期間で、設計～テストまでを繰り返す開発方法。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p463.png)
 
 <br>
@@ -90,19 +98,21 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 ### 上流CASEツール
 
-  データフロー図、ER図
+データフロー図、ER図
 
 <br>
 
 ### 下流CASEツール
 
-  テスト支援ツール
+テスト支援ツール
 
 <br>
 
 ### 保守CASEツール
 
-  リバースエンジニアリング
+リバースエンジニアリング
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p459.png)
 

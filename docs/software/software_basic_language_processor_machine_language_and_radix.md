@@ -45,6 +45,8 @@ description: 機械語と進数の知見をまとめました。
 
 1000 Byte = 1k Byte
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p106.png)
 
 <br>
@@ -338,6 +340,8 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 無限小数
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p067-1.png)
 
 <br>
@@ -350,11 +354,15 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 初代のドラゴンクエストの経験値の上限は『65535』だった。これは、経験値が16bit（2 Byte）で表されており、桁溢れが起きることを防ぐために65535以上は計算しないようになっていた。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p068.png)
 
 <br>
 
 ### 情報落ち
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p069.png)
 
@@ -364,17 +372,23 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 円周率は、途中で計算を打ち切る。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-1.png)
 
 <br>
 
 ### 桁落ち
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-2.png)
 
 <br>
 
 ### 丸め誤差
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p071.png)
 

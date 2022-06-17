@@ -246,13 +246,19 @@ HashMapクラスによって実装される配列型。PHPの連想配列に相�
 
 #### ▼ 単方向List
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-1.gif)
 
 #### ▼ 双方向List
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-2.gif)
 
 #### ▼ 循環List
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-3.gif)
 

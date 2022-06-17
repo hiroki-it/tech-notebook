@@ -330,6 +330,8 @@ description: テスト仕様書ベースのテストの知見をまとめまし�
 
 ソフトウェアのコードを変更した後、他のプログラムに悪影響を与えていないかを検証。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 
 <br>

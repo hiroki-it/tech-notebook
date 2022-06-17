@@ -103,19 +103,25 @@ description: プロジェクト管理の知見をまとめました。
 
 #### ▼ プロジェクトに必要な日数
 
-  全体的な工程に必要な日数は、所要日数が最も多い経路に影響される。この経路を、クリティカルパスという。
+全体的な工程に必要な日数は、所要日数が最も多い経路に影響される。この経路を、クリティカルパスという。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p509.jpg)
 
 #### ▼ 最早結合点時刻
 
-  全体的な工程の中で、任意の結合点に取り掛かるために必要な最少日数のこと。クリティカルパスに影響されるので注意。
+全体的な工程の中で、任意の結合点に取り掛かるために必要な最少日数のこと。クリティカルパスに影響されるので注意。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-1.jpg)
 
 #### ▼ 最遅結合点時刻
 
-  全体的な工程の中で、任意の結合点に取り掛かるために必要な最多日数のこと。
+全体的な工程の中で、任意の結合点に取り掛かるために必要な最多日数のこと。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-2.jpg)
 

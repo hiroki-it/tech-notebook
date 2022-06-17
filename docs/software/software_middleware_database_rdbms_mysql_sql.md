@@ -156,6 +156,8 @@ DBで、アプリケーションのCRUD処理に対するバリデーション�
 
 あらかじめ一連のSQL文をDBに格納しておき、Call文で呼び出す方式。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p325.gif)
 
 #### ▼ 使い方

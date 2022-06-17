@@ -934,7 +934,7 @@ class FooTest extends TestCase
 
 ホワイトボックステストと組み合わせてユニットテストを構成する。実装内容は気にせず、入力に対して、適切な出力が行われているかを検証する。ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-参考：https://www.amazon.co.jp/dp/477415377X/
+参考：https://www.amazon.co.jp/dp/477415377X
 
 ![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
 
@@ -948,7 +948,7 @@ class FooTest extends TestCase
 
 ブラックボックステストと組み合わせてユニットテストを構成する。実装内容が適切かを確認しながら、入力に対して、適切な出力が行われているかを検証する。網羅条件がいくつかあり、求められるソフトウェア品質に応じたものを採用する。ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-参考：https://www.amazon.co.jp/dp/477415377X/
+参考：https://www.amazon.co.jp/dp/477415377X
 
 **＊実装例＊**
 
@@ -964,6 +964,8 @@ if (A = 1 && B = 1) {
 
 全ての命令が実行されるかを検証する。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 **＊例＊**
 
 AとBは、『1』または『0』になり得るとする。
@@ -977,6 +979,8 @@ AとBは、『1』または『0』になり得るとする。
 ![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
 
 全ての判定が実行されるかを検証する。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -992,6 +996,8 @@ AとBは、『1』または『0』になり得るとする。
 ![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
 
 各条件が、取り得る全ての値で実行されるかを検証する。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -1014,6 +1020,8 @@ AとBは、『1』または『0』になり得るとする。
 ![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
 
 各条件が、取り得る全ての値で、かつ全ての組み合わせが実行されるかを検証する。一般的に、複数条件網羅を採用すれば、最低限のソフトウェア品質を担保できていると言える。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 

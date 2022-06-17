@@ -39,6 +39,8 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 **＊例＊：温度センサ、加速度センサ、照度センサ、…**
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png)
 
 <br>
@@ -59,6 +61,8 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 入力されたエネルギーもしくはコンピュータが出力した電気信号を物理的運動に変換する装置のこと。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png)
 
 <br>
@@ -67,21 +71,25 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ シーケンス制御
 
-  決められた順序や条件に従って、制御の各段階を進めていく制御方式。
+決められた順序や条件に従って、制御の各段階を進めていく制御方式。
 
-  **＊例＊**
+**＊例＊**
 
-  洗濯機
+洗濯機
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
 
 #### ▼ フィードバック制御
 
-  その時の状況を定期的に計測し、目標値との差分を基に、出力を調節する制御方式。
+その時の状況を定期的に計測し、目標値との差分を基に、出力を調節する制御方式。
 
-  **＊例＊**
+**＊例＊**
 
-  エアコン
+エアコン
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
 
