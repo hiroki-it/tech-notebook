@@ -135,6 +135,7 @@ nav:
           - ■ データベース系:
               - ■ RDBMS:
                   - RDBMS: software/software_middleware_database_rdbms.md
+                  - ACID: software/software_middleware_database_rdbms_acid.md
                   - ■ My︎SQL:
                       - MySQL: software/software_middleware_database_rdbms_mysql.md
                       - SQL: software/software_middleware_database_rdbms_mysql_sql.md
