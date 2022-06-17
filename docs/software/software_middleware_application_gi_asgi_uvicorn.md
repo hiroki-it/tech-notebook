@@ -118,7 +118,7 @@ $ uvicorn src.main:app
 
 #### ▼ --reloadとは
 
-ソースコードが変更された場合に、再読み込みする。
+ソースコードが変更された場合に、再読み出しする。
 
 ```bash
 $ uvicorn main:app --reload

@@ -178,7 +178,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスを収集する。
 
-![service-monitor](https://raw.githubusercontent.cm/hiroki-it/tech-notebook/master/images//service-monitor.png)
+![service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-monitor.png)
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
@@ -204,7 +204,7 @@ Serviceに対してPull型通信を送信し、Serviceに紐づくリソース�
 
 #### ▼ VictoriaMetricsとは
 
-Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み込みエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み出しエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
 
 ![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
 
