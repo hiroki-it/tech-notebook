@@ -523,8 +523,6 @@ $ dig -x 182.22.28.252
 ;; MSG SIZE  rcvd: 113
 ```
 
-
-
 <br>
 
 ### du
@@ -564,7 +562,7 @@ $ du -h ./
 
 #### ▼ -s
 
-指定したディレクトリ内の合計容量を取得する。
+指定したディレクトリ内の2	合計容量を取得する。
 
 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 

@@ -75,11 +75,11 @@ description: 可観測性ツールの知見をまとめました。
 
 #### ▼ 構造
 
-Grafanaは、ダッシュボードを作るKuberneteリソースとPromQLから構成されている。Prometheusで収集されたメトリクスをPromQLを用いて取得し、可視化する。
+Grafanaは、ダッシュボードとストレージから構成されている。PromQLに基づいて、収集されたメトリクスを可視化する。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html
+参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
-![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
+![grafana_architecture](/Users/hiroki-hasegawa/Downloads/grafana_architecture.png)
 
 <br>
 
