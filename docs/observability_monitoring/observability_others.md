@@ -24,10 +24,10 @@ description: 可観測性ツールの知見をまとめました。
 
 | アクション         | cAdvisor | Grafana | Kiali | kube-state-metrics | Prometheus | VictoriaMetrics |
 | ------------------ | -------- | ------- | ----- | ------------------ | ---------- | --------------- |
-| メトリクスの収集   | ✅        |         | ✅     | ✅                  | ✅          | ✅               |
+| メトリクスの収集   | ✅        |         | ✅     | ✅                  | ✅          |                 |
 | ↓                  |          |         |       |                    |            |                 |
 | メトリクスの保管   |          |         |       |                    |            | ✅               |
-| メトリクスの分析   | ✅        |         | ✅     | ✅                  | ✅          |                 |
+| メトリクスの分析   | ✅        |         | ✅     | ✅                  | ✅          | ✅               |
 | メトリクスの可視化 | ✅        | ✅       |       |                    |            |                 |
 | レポートの作成     |          |         |       |                    |            |                 |
 | ↓                  |          |         |       |                    |            |                 |
@@ -43,8 +43,8 @@ description: 可観測性ツールの知見をまとめました。
 | -------------- | ------------- | ------------ | -------- |
 | ログの収集     |               |              |          |
 | ↓              |               |              |          |
-| ログの保管     | ✅             |              |          |
-| ログの分析     | ✅             |              |          |
+| ログの保管     | ✅             | ✅            | ✅        |
+| ログの分析     | ✅             | ✅            | ✅        |
 | ログの可視化   |               |              |          |
 | レポートの作成 |               |              |          |
 | ↓              |               |              |          |
@@ -58,11 +58,11 @@ description: 可観測性ツールの知見をまとめました。
 
 | アクション           | Jaeger | Zipkin | Pinpoint |
 | -------------------- | ------ | ------ | -------- |
-| 分散トレースの収集   | ✅      |        |          |
+| 分散トレースの収集   | ✅      | ✅      | ✅        |
 | ↓                    |        |        |          |
 | 分散トレースの保管   |        |        |          |
-| 分散トレースの分析   | ✅      |        |          |
-| 分散トレースの可視化 |        |        |          |
+| 分散トレースの分析   | ✅      | ✅      | ✅        |
+| 分散トレースの可視化 | ✅      | ✅      | ✅        |
 | レポートの作成       |        |        |          |
 | ↓                    |        |        |          |
 | アラート             |        |        |          |
@@ -79,11 +79,27 @@ Grafanaは、ダッシュボードとストレージから構成されている�
 
 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
-![grafana_architecture](/Users/hiroki-hasegawa/Downloads/grafana_architecture.png)
+![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
 
 <br>
 
-## 03. Kiali
+## 03. Jaeger
+
+### 仕組み
+
+#### ▼ 構造
+
+Kubernetesリソースの分散トレースを収集し、これの分析と可視化を行う。
+
+参考：https://www.jaegertracing.io/docs/1.31/architecture/
+
+![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
+
+<br>
+
+
+
+## 04. Kiali
 
 ### Kialiの仕組み
 
@@ -97,7 +113,7 @@ Prometheusで収集されたメトリクスを再収集し、Istioの可視化�
 
 <br>
 
-## 04. Prometheus
+## 05. Prometheus
 
 ### Prometheusの仕組み
 
@@ -122,7 +138,7 @@ Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されてい�
 
 #### ▼ ローカルストレージ
 
-Prometheus自体が持つストレージ。Prometeusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ以下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
+Prometheusは、自身が持つストレージにメトリクスを保管する。Prometeusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ以下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
 
 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
@@ -131,11 +147,14 @@ data/
 ├── 01BKGV7JC0RY8A6MACW02A2PJD/
 │   ├── chunks/
 │   │   └── 000001
+│   │
 │   ├── tombstones
 │   ├── index
 │   └── meta.json
+│
 ├── chunks_head/
 │   └── 000001
+│
 └── wal # WALによるバックアップ
     ├── 000000002
     └── checkpoint.00000001/
@@ -144,7 +163,14 @@ data/
 
 #### ▼ リモートストレージ
 
-参考：https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データに対応できる外部ストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。
+
+参考：
+
+- https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
+- https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
+
+![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
 #### ▼ ダイナミックキュー
 
@@ -152,7 +178,7 @@ data/
 
 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
-![dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dynamic-queues_shard.png)
+![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
 
 <br>
 
@@ -216,9 +242,11 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 <br>
 
-### VictoriaMetrics
+## 06. VictoriaMetrics
 
-#### ▼ VictoriaMetricsとは
+### VictoriaMetricsの仕組み
+
+#### ▼ 構造
 
 リモートストレージとして、Prometheusで収集したメトリクスを保管する。Prometheusで書き込みエンドポイントを指定すれば、冗長化されたストレージにメトリクスを書き込める。また、Grafanaで読み出しエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
 
@@ -226,14 +254,14 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 ![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
 
-#### ▼ ストレージ
+#### ▼ ディレクトリ構造
 
 ```yaml
-victoriametrics/
+/var/lib/victoriametrics/
 ├── data/
-│   ├── big/
+│   ├── big/ # メトリクスが保管されている。
 │   ├── flock.lock
-│   └── small/
+│   └── small/ # キャッシュとして保存される。時々、bigディレクトリにマージされる。
 │
 ├── flock.lock/
 ├── indexdb/
@@ -244,14 +272,3 @@ victoriametrics/
 
 <br>
 
-## 05. Jaeger
-
-### 仕組み
-
-Kubernetesリソースの分散トレースを収集し、これの分析と可視化を行う。
-
-参考：https://www.jaegertracing.io/docs/1.31/architecture/
-
-![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
-
-<br>
