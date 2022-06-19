@@ -738,21 +738,29 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 <br>
 
-### プライベートサブネットからのアウトバウンド通信
+### プライベートサブネット内からのアウトバウンド通信
 
-#### ▼ NAT Gateway、VPCエンドポイントの使用
+#### ▼ プライベートサブネット内へのデータプレーンの配置
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。VPCエンドポイントに関しては、EC2とFargateで必要なVPCエンドポイントが異なる。
+プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
+
+#### ▼ パブリックネットワークに対する通信
+
+データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。
+
+#### ▼ VPC外のAWSリソースに対する通信
+
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。もしNAT Gatewayを設置したとする。この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+
+参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
+
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
+
+代わりに、VPCエンドポイントを設置する。より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
 
 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
 ![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
-
-#### ▼ EC2の場合
-
-#### ▼ Fargateの場合
-
-Fargateの項目を参照
 
 <br>
 
@@ -1000,17 +1008,7 @@ CodeDeployを使用してデプロイを行う。
 
 <br>
 
-### プライベートサブネットからのアウトバウンド通信
-
-#### ▼ NAT Gateway経由
-
-FargateからECRに対するdockerイメージのプルや、データプレーンからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（パブリックネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
-
-参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
-
-![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
-
-#### ▼ VPCエンドポイント経由
+### プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
@@ -1022,7 +1020,7 @@ FargateからECRに対するdockerイメージのプルや、データプレー�
 | Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。    |
 | Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。             |
 
-Fargateの場合、VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
 
 参考：
 
@@ -1211,15 +1209,25 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 <br>
 
-### プライベートサブネット内のデータプレーンの通信
+### プライベートサブネット内のデータプレーンへのVPC外からのインバウンド通信
 
-#### ▼ VPC外からのインバウンド通信
+#### ▼ Podへのインバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、これをIngressを使用してPodにルーティングする。
+EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、ALB Ingressを使用してPodにルーティングする。
 
 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
+
+#### ▼ コントロールプレーンへのインバウンド通信
+
+コントロールプレーンのエンドポイントとしてNLBが配置されている。VPC外からNLBへのアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしかコントロールプレーンにアクセスできなくなる。この場合、Session Manager、VPC内の踏み台EC2インスタンス、Cloud9、などを使用して、コントロールプレーンにアクセスする。
+
+参考：https://note.com/tyrwzl/n/nf28cd4372b18
+
+<br>
+
+### プライベートサブネット内のデータプレーンからのアウトバウンド通信
 
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
@@ -1235,7 +1243,7 @@ Pod provisioning timed out (will retry) for pod
 
 #### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
 
-EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、データプレーンがコントロールプレーンと通信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 参考：
 
