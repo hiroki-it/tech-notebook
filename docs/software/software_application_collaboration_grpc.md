@@ -1,7 +1,6 @@
 ---
 title: 【知見を記録するサイト】gRPC＠アプリケーション連携
 description: gRPC＠アプリケーション連携の知見をまとめました。
-
 ---
 
 # gRPC＠アプリケーション連携
@@ -16,6 +15,8 @@ description: gRPC＠アプリケーション連携の知見をまとめました
 
 ## 01. gRPCの仕組み
 
+### 構造
+
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
 RPCフレームワークの一つで、プロトコルバッファーを用いてRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
@@ -24,6 +25,32 @@ RPCフレームワークの一つで、プロトコルバッファーを用い�
 
 - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 - https://openstandia.jp/oss_info/grpc/
+
+<br>
+
+### サーバー側のセットアップ
+
+#### ▼ サービス定義ファイル
+
+プロトコルバッファーを用いて、サービス定義ファイル（```proto```ファイル）にインターフェースとメッセージ構造を実装する。これにより、サーバー側とクライアント側で必要な実装を自動生成できる。
+
+参考：https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
+
+#### ▼ gRPCサーバー
+
+リモートプロシージャーコールを受け付けるサーバーを定義する。サーバーをgRPCサーバーとして登録する必要がある。
+
+参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+
+<br>
+
+### クライアント側のセットアップ
+
+#### ▼ gRPCクライアント
+
+gRPCサーバーのリモートプロシージャーコールを実行する。
+
+参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
@@ -86,9 +113,9 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 // 〜 中略 〜
 ```
 
-#### ▼ goサーバー
+#### ▼ gRPCサーバー
 
-リモートプロシージャーコールを受け付けるサーバーを定義する。サーバーをgRPCサーバーとして登録する必要がある。
+gRPCサーバーを実装する。
 
 参考：
 
@@ -146,7 +173,9 @@ func main() {
 
 ### クライアント側
 
-gRPCサーバーのリモートプロシージャーコールを実行する。
+#### ▼ gRPCクライアント
+
+gRPCクライアントを実装する。
 
 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 

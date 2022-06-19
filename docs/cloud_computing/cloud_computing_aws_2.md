@@ -26,31 +26,29 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ### セットアップ
 
-#### ▼ 概要
-
-| 設定項目                  | 説明                                              | 補足                                                         |
-| ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| AMI：Amazonマシンイメージ | AMIを選択する。                                   |                                                              |
-| インスタンスタイプ        |                                                   |                                                              |
-| EC2インスタンス数         |                                                   |                                                              |
-| ネットワーク              |                                                   |                                                              |
-| サブネット                |                                                   |                                                              |
-| 自動割り当てIPアドレス    |                                                   | EC2インスタンス構築後に有効にできない。                      |
-| キャパシティの予約        |                                                   |                                                              |
-| ドメイン結合ディレクトリ  |                                                   |                                                              |
-| IAMロール                 | EC2に付与するIAMロールを設定する。                |                                                              |
-| シャットダウン動作        |                                                   |                                                              |
-| 終了保護                  | EC2インスタンスの削除を防ぐ。                     | 必ず有効にすること。                                         |
-| モニタリング              |                                                   |                                                              |
-| テナンシー                |                                                   |                                                              |
-| Elastic Inference         |                                                   |                                                              |
-| クレジット仕様            |                                                   |                                                              |
-| ストレージ                | EC2インスタンスのストレージを設定する。           |                                                              |
-| キーペア                  | EC2の秘密鍵に対応した公開鍵をインストールできる。 | キーペアに割り当てられるフィンガープリント値を調べることで、公開鍵と秘密鍵の対応関係を調べられる。 |
+| 設定項目                  | 説明                                                         | 補足                                                         |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| AMI：Amazonマシンイメージ | AMIを選択する。                                              |                                                              |
+| インスタンスタイプ        |                                                              |                                                              |
+| EC2インスタンス数         |                                                              |                                                              |
+| ネットワーク              |                                                              |                                                              |
+| サブネット                |                                                              |                                                              |
+| 自動割り当てIPアドレス    |                                                              | EC2インスタンス構築後に有効にできない。                      |
+| キャパシティの予約        |                                                              |                                                              |
+| ドメイン結合ディレクトリ  |                                                              |                                                              |
+| IAMロール                 | EC2に付与するIAMロールを設定する。                           |                                                              |
+| シャットダウン動作        |                                                              |                                                              |
+| 終了保護                  | EC2インスタンスの削除を防ぐ。                                | 必ず有効にすること。                                         |
+| モニタリング              |                                                              |                                                              |
+| テナンシー                |                                                              |                                                              |
+| Elastic Inference         |                                                              |                                                              |
+| クレジット仕様            |                                                              |                                                              |
+| ストレージ                | EC2インスタンスのストレージを設定する。                      |                                                              |
+| キーペア                  | SSH接続のため、EC2の秘密鍵に対応した公開鍵をインストールできる。 | ・Session Managerを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の構築時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることで、公開鍵と秘密鍵の対応関係を調べられる。 |
 
 <br>
 
-### EC2インスタンスのダウンタイム
+### ダウンタイム
 
 #### ▼ ダウンタイムの発生条件
 
@@ -119,7 +117,7 @@ EBSで管理されているルートデバイスボリュームで、推奨の�
 
 ### キーペア
 
-#### ▼ キーペアのフィンガープリント値
+#### ▼ フィンガープリント値
 
 ローカルマシンに配置されている秘密鍵が、該当するEC2に配置されている公開鍵とペアなのかどうか、フィンガープリント値を照合して確認する方法
 
@@ -132,11 +130,33 @@ $ openssl pkcs8 \
     -nocrypt | openssl sha1 -c
 ```
 
-#### ▼ EC2へのSSH接続
+<br>
 
-クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。その後、Route53、ALBを経由せず、そのままEC2へ向かう。
+### EC2インスタンスへの接続
+
+#### ▼ キーペアを使用したSSH接続
+
+キーペアのうちの秘密鍵を用いて、対応する公開鍵を持つEC2インスタンスにSSH接続でアクセスできる。クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。その後、Route53、ALBを経由せず、そのままEC2へ向かう。
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+
+#### ▼ Session Managerを使用したシェルログイン
+
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
+
+| VPCエンドポイントの接続先 | プライベートDNS名                              | 説明                                                        |
+| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
+| EC2                       | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。 |
+| Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```         | Parameter StoreにGETリクエストを送信するため。              |
+| Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                       |
+
+EC2インスタンスに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
+
+参考：
+
+- https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
+- https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
+- https://dev.classmethod.jp/articles/ssh-through-session-manager/
 
 <br>
 
@@ -498,6 +518,29 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 ## 03-02-03. ECS on EC2
 
+### on EC2
+
+#### ▼ on EC2とは
+
+コンテナの実行環境のこと。『ECS on EC2』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。
+
+#### ▼ AMI
+
+任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/ecs-optimized_AMI.html 
+
+| AMI名                         | 説明                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| ECS最適化Amazon Linux 2       | 標準的なEC2インスタンスを構築できる。最も推奨。              |
+| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを構築できる。<br>参考：https://docs.aws.amazon.com/ja_jp/linux/al2022/ug/compare-al2-to-AL2022.html |
+| ECS最適化Amazon Linux         | 標準的なEC2インスタンスを構築できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
+| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを構築できる。 |
+| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを構築できる。                 |
+| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを構築できる。                    |
+
+<br>
+
 ### EC2起動タイプのコンテナ
 
 #### ▼ タスク配置戦略
@@ -514,11 +557,11 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 ## 03-02-04. ECS on Fargate
 
-### Fargate
+### on Fargate
 
-#### ▼ Fargateとは
+#### ▼ on Fargateとは
 
-コンテナの実行環境のこと。『ECS on Fargate』という呼び方は、Fargateが環境の意味合いを持つからである。Fargate環境ではホストが隠蔽されており、実体としてEC2インスタンスをホストとしてコンテナが稼働している（ドキュメントに記載がないが、AWSサポートに確認済み）。
+コンテナの実行環境のこと。『ECS on Fargate』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。Fargate上ではコンテナのホストが隠蔽されており、実体としてEC2インスタンスをホストとしてコンテナが稼働している（ドキュメントに記載がないが、AWSサポートに確認済み）。
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -547,7 +590,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | logConfiguration<br>(logDriver) | ```--log-driver```                      | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                   |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
-| secrets<br>(volumesFrom)        |                                         | パラメーターストアから出力する環境変数を設定する。           |                                                              |
+| secrets<br>(volumesFrom)        |                                         | Parameter Storeから出力する環境変数を設定する。           |                                                              |
 | memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
@@ -692,90 +735,7 @@ exit ${EXIT_STATUS}
 }
 ```
 
-#### ▼ ECS Exec
-
-ECSタスクのコンテナに対して、シェルログインを実行する。ECSサービスにおけるECS-Execオプションの有効化、ssmmessagesエンドポイントの作成、SMセッションマネージャーにアクセスするためのIAMポリシーの作成、ECSタスク実行ロールへのIAMポリシーの付与、IAMユーザーへのポリシーの付与、が必要になる。
-
-参考：
-
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html
-- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
-
-```bash
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        # ssmmessages APIへのアクセス権限
-        "ssmmessages:CreateControlChannel",
-        "ssmmessages:CreateDataChannel",
-        "ssmmessages:OpenControlChannel",
-        "ssmmessages:OpenDataChannel"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-なお、事前の設定がなされているかどうかをecs-exec-checkerスクリプトを実行して確認できる。
-
-参考：https://github.com/aws-containers/amazon-ecs-exec-checker
-
-```bash
-#!/bin/bash
-
-ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-ECS_TASK_ID=bar
-
-bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
-```
-
-ECS Execを実行するユーザーに、実行権限のポリシーを付与する必要がある。
-
-```bash
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ecs:ExecuteCommand",
-            ],
-            "Resource": [
-                "arn:aws:ecs:*:<アカウントID>:cluster/*",
-                "arn:aws:ecs:*:<アカウントID>:task/*",
-            ]
-        }
-    ]
-}
-```
-
-laravelコンテナに対して、シェルログインを実行する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
-
-```bash
-#!/bin/bash
-
-set -xe
-
-ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-ECS_TASK_ID=bar
-ECS_CONTAINER_NAME=laravel
-
-aws ecs execute-command \
-    --cluster $ECS_CLUSTER_NAME \
-    --task $ECS_TASK_ID \
-    --container $ECS_CONTAINER_NAME \
-    --interactive \
-    --debug \
-    --command "bash"
-```
-
 <br>
-
-
 
 ### ロール
 
@@ -785,7 +745,7 @@ aws ecs execute-command \
 
 #### ▼ タスクロール
 
-タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールのこと。アプリケーションにS3やSSMへのアクセス権限を与えたい場合は、タスク実行ロールではなくタスクロールに権限をアタッチする。
+タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールのこと。アプリケーションにS3やSystems Managerへのアクセス権限を与えたい場合は、タスク実行ロールではなくタスクロールに権限をアタッチする。
 
 **＊実装例＊**
 
@@ -811,7 +771,7 @@ aws ecs execute-command \
 
 **＊実装例＊**
 
-パラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
+Parameter Storeから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
 
 ```bash
 {
@@ -895,7 +855,7 @@ Dockerのbridgeネットワークに相当する。
 
 #### ▼ awsvpcモード
 
-awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
+awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
 
@@ -928,7 +888,7 @@ CodeDeployを使用してデプロイを行う。
 
 #### ▼ プライベートサブネットからの通信
 
-プライベートサブネットにFargateを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
+プライベートサブネットにFargateを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
@@ -954,22 +914,117 @@ FargateからECRに対するdockerイメージのプルや、Fargateからコン
 
 #### ▼ VPCエンドポイント経由
 
-VPC外のAWSリソース（コントロールプレーン、ECR、S3、SSM、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
-
-参考：
-
-- https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
-- https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
-
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
 | VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                              |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
-| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
-| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
-| パラメーターストア        | ```ssm.ap-northeast-1.amazonaws.com```                       | パラメーターストアにGETリクエストを送信するため。 |
-| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を使用するため。      |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| CloudWatchログ         | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
+| ECR                    | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
+| S3                     | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
+| Parameter Store       | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。 |
+| Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。      |
+
+VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
+- https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
+- https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
+
+<br>
+
+### Fargate上のコンテナへの接続
+
+#### ▼ Session Managerを使用したECS Exec
+
+![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
+
+Fargate上のコンテナに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがすでにインストールされているため、これは不要である。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html
+- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+- https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e
+
+（１）ECSサービスで、ECS-Execオプションを有効化する。
+
+（２）VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。
+
+（３）ECSタスク実行ロールにIAMポリシーを付与する。これにより、ECSタスクがSession Managerにアクセスできるようになる。
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        # ssmmessages APIへのアクセス権限
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+（４）ECS Execを実行するユーザーに、実行権限のポリシーを付与する。
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ExecuteCommand",
+            ],
+            "Resource": [
+                "arn:aws:ecs:*:<アカウントID>:cluster/*",
+                "arn:aws:ecs:*:<アカウントID>:task/*",
+            ]
+        }
+    ]
+}
+```
+
+（５）事前の設定がなされているかどうかをecs-exec-checkerスクリプトを実行して確認する。
+
+参考：https://github.com/aws-containers/amazon-ecs-exec-checker
+
+```bash
+#!/bin/bash
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+
+bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+```
+
+（６）コンテナに対して、シェルログインを実行する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
+
+```bash
+#!/bin/bash
+
+set -xe
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+ECS_CONTAINER_NAME=laravel
+
+aws ecs execute-command \
+    --cluster $ECS_CLUSTER_NAME \
+    --task $ECS_TASK_ID \
+    --container $ECS_CONTAINER_NAME \
+    --interactive \
+    --debug \
+    --command "bash"
+```
 
 <br>
 
@@ -1001,7 +1056,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 ### セットアップ
 
-#### ▼ EKS
+#### ▼ EKS Cluster
 
 （１）AWS CLIにクレデンシャル情報を設定する。
 
@@ -1022,56 +1077,8 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context <クラスターARN>
+$ kubectl config use-context <ClusterのARN>
 ```
-
-（４）可観測性ツールをEKSで稼働させるために、Namespaceを作成する。名前は、```aws-observability```とする必要がある。
-
-参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/ 
-
-```yaml
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: aws-observability
-  labels:
-    aws-observability: enabled
-```
-
-（５）EKS ClusterからCloudWatchログにログを送信できるように、ConfigMapを作成する。名前は、```aws-logging```とする必要がある。
-
-参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
-
-```bash
-$ kubectl apply -f config-map.yaml
-```
-
-```yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: aws-logging
-  namespace: aws-observability
-data:
-  output.conf: |
-    [OUTPUT]
-        Name cloudwatch
-        Match *
-        region ap-northeast-1
-        log_group_name fluent-bit-cloudwatch
-        log_stream_prefix from-fluent-bit-
-        auto_create_group true
-```
-
-（６）ワーカーNode（Fargate、EC2）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
-
-参考：
-
-- https://nishipy.com/archives/1122
-- https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-getting-started.html
-- https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
-- https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
 #### ▼ VPC
 
@@ -1142,7 +1149,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、SSM、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
 
@@ -1340,7 +1347,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context <クラスターARN>
+$ kubectl config use-context <ClusterのARN>
 ```
 
 （３）manifest.yamlファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
@@ -1378,6 +1385,70 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 <br>
 
 ## 03-03-02. EKS on Fargate
+
+### セットアップ
+
+#### ▼ メトリクス収集
+
+ワーカーNode内のメトリクスを収集する上で、FargateはDaemonsetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
+
+参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
+
+#### ▼ ログルーティング
+
+ワーカーNode内のログを転送する上で、FargateはDaemonsetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-logging.html
+
+（１）ログ転送コンテナのためのNamespaceを作成する。名前は、必ず```aws-observability```とする。
+
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/ 
+
+```yaml
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: aws-observability
+  labels:
+    aws-observability: enabled
+```
+
+（２）```aws-observability```内で```aws-logging```という名前のConfigMapを作成することにより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。名前は、必ず```aws-logging```とする。
+
+参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+```bash
+$ kubectl apply -f config-map.yaml
+```
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: aws-logging
+  namespace: aws-observability
+data:
+  output.conf: |
+    [OUTPUT]
+        Name cloudwatch
+        Match *
+        region ap-northeast-1
+        log_group_name fluent-bit-cloudwatch
+        log_stream_prefix from-fluent-bit-
+        auto_create_group true
+```
+
+（３）ワーカーNode（Fargate、EC2）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+
+参考：
+
+- https://nishipy.com/archives/1122
+- https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-getting-started.html
+- https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
+- https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+<br>
 
 ### Fargate Node
 
@@ -1432,8 +1503,6 @@ EC2で稼働するKubernetesのホストのこと。EKS on Fargateと比べて�
 <br>
 
 ### セットアップ
-
-#### ▼ 概要
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |

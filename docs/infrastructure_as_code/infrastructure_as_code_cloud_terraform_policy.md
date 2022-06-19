@@ -92,7 +92,7 @@ repository/
 │   │   ├── prd/ # 本番
 │   │   └── stg/ # ステージング
 │   │ 
-│   ├── ssm/ # SSM
+│   ├── ssm/ # Systems Manager
 │   │   ├── dev/
 │   │   ├── prd/
 │   │   └── stg/
@@ -163,7 +163,7 @@ repository/
     │   ├── prd/ # 本番
     │   └── stg/ # ステージング
     │ 
-    ├── ssm/ # SSM
+    ├── ssm/ # Systems Manager
     │   ├── dev/
     │   ├── prd/
     │   └── stg/

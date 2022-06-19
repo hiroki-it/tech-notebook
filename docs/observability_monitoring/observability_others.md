@@ -22,16 +22,16 @@ description: 可観測性ツールの知見をまとめました。
 - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
 
-| アクション         | cAdvisor | Grafana | Kiali | kube-state-metrics | Prometheus | VictoriaMetrics |
-| ------------------ | -------- | ------- | ----- | ------------------ | ---------- | --------------- |
-| メトリクスの収集   | ✅        |         | ✅     | ✅                  | ✅          |                 |
-| ↓                  |          |         |       |                    |            |                 |
-| メトリクスの保管   |          |         |       |                    |            | ✅               |
-| メトリクスの分析   | ✅        |         | ✅     | ✅                  | ✅          | ✅               |
-| メトリクスの可視化 | ✅        | ✅       |       |                    |            |                 |
-| レポートの作成     |          |         |       |                    |            |                 |
-| ↓                  |          |         |       |                    |            |                 |
-| アラート           |          |         |       |                    |            |                 |
+| アクション                 | cAdvisor | Grafana | Kiali | kube-state-metrics | Prometheus |
+| -------------------------- | -------- | ------- | ----- | ------------------ | ---------- |
+| メトリクスの収集           | ✅        |         | ✅     | ✅                  | ✅          |
+| ↓                          |          |         |       |                    |            |
+| 組み込みローカルストレージへの保管 |          |         |       |                    |            |
+| 分析                       | ✅        |         | ✅     | ✅                  | ✅          |
+| 可視化                     | ✅        | ✅       |       |                    |            |
+| レポートの作成             |          |         |       |                    |            |
+| ↓                          |          |         |       |                    |            |
+| アラート                   |          |         |       |                    |            |
 
 <br>
 
@@ -39,16 +39,16 @@ description: 可観測性ツールの知見をまとめました。
 
 参考：https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 
-| アクション     | Elasticsearch | Grafana loki | Logstash |
-| -------------- | ------------- | ------------ | -------- |
-| ログの収集     |               |              |          |
-| ↓              |               |              |          |
-| ログの保管     | ✅             | ✅            | ✅        |
-| ログの分析     | ✅             | ✅            | ✅        |
-| ログの可視化   |               |              |          |
-| レポートの作成 |               |              |          |
-| ↓              |               |              |          |
-| アラート       |               |              |          |
+| アクション                 | Elasticsearch | Grafana loki | Logstash |
+| -------------------------- | ------------- | ------------ | -------- |
+| ログの収集                 |               |              |          |
+| ↓                          |               |              |          |
+| 組み込みローカルストレージへの保管 | ✅             | ✅（BoltDB）    |         |
+| 分析                       | ✅             | ✅            | ✅        |
+| 可視化                     |               |              |          |
+| レポートの作成             |               |              |          |
+| ↓                          |               |              |          |
+| アラート                   |               |              |          |
 
 <br>
 
@@ -56,16 +56,16 @@ description: 可観測性ツールの知見をまとめました。
 
 参考：https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 
-| アクション           | Jaeger | Zipkin | Pinpoint |
-| -------------------- | ------ | ------ | -------- |
-| 分散トレースの収集   | ✅      | ✅      | ✅        |
-| ↓                    |        |        |          |
-| 分散トレースの保管   |        |        |          |
-| 分散トレースの分析   | ✅      | ✅      | ✅        |
-| 分散トレースの可視化 | ✅      | ✅      | ✅        |
-| レポートの作成       |        |        |          |
-| ↓                    |        |        |          |
-| アラート             |        |        |          |
+| アクション                 | Jaeger | Zipkin | Pinpoint | OpenTelemetry |
+| -------------------------- | ------ | ------ | -------- | ------------- |
+| 分散トレースの収集         | ✅      | ✅      | ✅        | ✅             |
+| ↓                          |        |        |          |               |
+| 組み込みローカルストレージへの保管 | ✅（Badger） |        |          |               |
+| 分析                       | ✅      | ✅      | ✅        | ✅             |
+| 可視化                     | ✅      | ✅      | ✅        |               |
+| レポートの作成             |        |        |          |               |
+| ↓                          |        |        |          |               |
+| アラート                   |        |        |          |               |
 
 <br>
 
@@ -96,8 +96,6 @@ Kubernetesリソースの分散トレースを収集し、これの分析と可�
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
 <br>
-
-
 
 ## 04. Kiali
 
@@ -163,14 +161,14 @@ data/
 
 #### ▼ リモートストレージ
 
+![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
+
 Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データに対応できる外部ストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。
 
 参考：
 
 - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
-
-![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
 #### ▼ ダイナミックキュー
 

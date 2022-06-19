@@ -121,7 +121,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 参考：https://github.com/statsd/statsd/wiki
 
-CloudWatchではStatsDからのメトリクスの送信がサポートされている。
+CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
 参考：
 

@@ -137,7 +137,7 @@ ArgoCDは、apply対象のアプリケーションのSecretを保持する必要
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
-$ kubectl config use-context <Cluster ARN>
+$ kubectl config use-context <ClusterのARN>
 ```
 
 参考：

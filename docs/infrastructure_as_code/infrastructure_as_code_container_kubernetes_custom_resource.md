@@ -286,7 +286,7 @@ metadata:
 spec:
   provider: aws
   parameters:
-    # AWSのシークレットマネージャーから取得する。
+    # AWSのSecrets Managerから取得する。
     objects: |
       - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secretストア名>"
         objectType: "secretsmanager"
@@ -302,7 +302,7 @@ metadata:
 spec:
   provider: aws
   parameters:
-    # AWSのシステムマネージャーから取得する。
+    # AWSのSystems Managerから取得する。
     objects: |
       - objectName: "FOO"
         objectType: "ssmparameter"

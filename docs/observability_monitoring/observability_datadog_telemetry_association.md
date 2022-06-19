@@ -35,7 +35,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### 統合タグ付け
 
-統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、テレメトリー間を紐づけられる。
+統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、テレメトリー間を紐付けられる。
 
 参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
 

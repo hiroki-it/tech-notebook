@@ -112,17 +112,17 @@ VPC内で構築されたインスタンスにはパブリックIPアドレスが
 
 ### 紐付けられるリソース
 
-| リソースの種類       | 役割                                                         | 補足                                                         |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ALB                  | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。 |                                                              |
-| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる。 | Fargate環境のホストがEC2とは明言されていない。<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| リソースの種類       | 役割                                                                             | 補足                                                         |
+| -------------------- |--------------------------------------------------------------------------------| ------------------------------------------------------------ |
+| ALB                  | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。                                             |                                                              |
+| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
 | Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
-| GlobalAccelerator    |                                                              |                                                              |
-| NAT Gateway          | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。 |                                                              |
-| RDS                  |                                                              |                                                              |
-| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。 |                                                              |
-| VPCエンドポイント    | Interface型のVPCエンドポイントとして機能する。               |                                                              |
+| GlobalAccelerator    |                                                                                |                                                              |
+| NAT Gateway          | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。                                     |                                                              |
+| RDS                  |                                                                                |                                                              |
+| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。      |                                                              |
+| VPCエンドポイント    | Interface型のVPCエンドポイントとして機能する。                                                  |                                                              |
 
 <br>
 
@@ -254,7 +254,7 @@ VPCのプライベートサブネット内のリソースが、VPC外のリソ�
 
 **＊例＊**
 
-Fargateをプライベートサブネットに置いた場合、FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ、ECR、S3、SSM）。
+Fargateをプライベートサブネットに置いた場合、FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である（例：CloudWatchログ、ECR、S3、Systems Manager）。
 
 ![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
 
@@ -426,8 +426,6 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 ### セットアップ
 
-#### ▼ 概要
-
 | 設定項目           | 説明                                              | 補足                                                         |
 | ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
 | Web ACLs           | アクセス許可と拒否のルールを定義する。            |                                                              |
@@ -436,7 +434,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | Regex pattern sets | 正規表現パターンの共通部品を管理する。            |                                                              |
 | Rule groups        | ルールの共通部品を管理する。                      | 各WAFに同じルールを設定する場合、ルールグループを使用するべきである。ただ、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。 |
 
-#### ▼ Web ACLs
+### Web ACLs
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -445,7 +443,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | Associated AWS resources | WAFをアタッチするAWSリソースを設定する。                     | CloudFront、ALBなどにアタッチできる。                        |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。 |                                                              |
 
-#### ▼ OverviewにおけるSampled requestsの見方
+### OverviewにおけるSampled requestsの見方
 
 『全てのルール』または『個別のルール』におけるアクセス許可/拒否の履歴を確認できる。ALBやCloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。ただし、３時間分しか残らない。一例として、CloudFrontにアタッチしたWAFで取得できるログを以下に示す。
 
@@ -506,7 +504,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ▼ セキュリティグループとの関係
 
-WAFを紐づけられるリソースにセキュリティグループも紐づけている場合、セキュリティグループのルールが先に検証される。例えば、WAFをALBに紐づけ、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
+WAFを紐付けられるリソースにセキュリティグループも紐づけている場合、セキュリティグループのルールが先に検証される。例えば、WAFをALBに紐づけ、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
 
 参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
 
