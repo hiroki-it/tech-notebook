@@ -224,7 +224,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
@@ -441,7 +441,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ECRにアタッチされる、イメージの有効期間を定義するポリシー。コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、TerraformなどのIaCツールでは必要になる。
 
-```bash
+```yaml
 {
   "rules": [
     {
@@ -536,13 +536,13 @@ resource "aws_ecs_service" "this" {
 
 ### （１）ヘルスチェック猶予期間
 
-タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、タスクの起動完了を待機する。例えば、ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は、30秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。
+ECSタスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、ECSタスクの起動完了を待機する。例えば、ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は、30秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。
 
 <br>
 
 ### （２）実インフラのリビジョン番号の追跡
 
-アプリケーションのデプロイによって、実インフラのタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
+アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
@@ -556,15 +556,15 @@ Terraformは、特に依存関係を実装しない場合、『ターゲット�
 
 <br>
 
-### （４）AutoScalingによるタスク数の増減を無視
+### （４）AutoScalingによるECSタスク数の増減を無視
 
-AutoScalingによって、タスク数が増減するため、これを無視する。
+AutoScalingによって、ECSタスク数が増減するため、これを無視する。
 
 <br>
 
-### （＊）タスク定義の更新
+### （＊）ECSタスク定義の更新
 
-Terraformでタスク定義を更新すると、現在動いているECSで稼働しているタスクはそのままに、新しいリビジョン番号のタスク定義が作成される。コンソール画面の『新しいリビジョンの作成』と同じ挙動である。実際にタスクが増えていることは、サービスに紐付くタスク定義一覧から確認できる。次のデプロイ時に、このタスクが使用される。
+TerraformでECSタスク定義を更新すると、現在動いているECSで稼働しているECSタスクはそのままに、新しいリビジョン番号のECSタスク定義が作成される。コンソール画面の『新しいリビジョンの作成』と同じ挙動である。実際にECSタスクが増えていることは、サービスに紐付くECSタスク定義一覧から確認できる。次のデプロイ時に、このECSタスクが使用される。
 
 <br>
 
@@ -576,7 +576,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 ### （＊）ローリングアップデート
 
-applyで、新しいリビジョン番号のタスク定義を作成すると、これを使用してローリングアップデートが自動で実行されることに注意する。ただ、ローリングアップデートの仕組み上、新しいタスクのヘルスチェックが失敗すれば、既存のタスクは停止せずにそのまま稼働するため、安心ではあるが。
+applyで、新しいリビジョン番号のECSタスク定義を作成すると、これを使用してローリングアップデートが自動で実行されることに注意する。ただ、ローリングアップデートの仕組み上、新しいECSタスクのヘルスチェックが失敗すれば、既存のECSタスクは停止せずにそのまま稼働するため、安心ではあるが。
 
 <br>
 
@@ -653,7 +653,7 @@ global_ip_addresses = [
 
 また事前に、指定した送信元IPアドレス以外を拒否するカスタマー管理ポリシーを定義する。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -722,7 +722,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 事前に、ECSタスクのための信頼ポリシーを定義する。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -769,7 +769,7 @@ resource "aws_iam_role" "ecs_task" {
 
 事前に、Lambda@Edgeのための信頼ポリシーを定義する。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -815,7 +815,7 @@ resource "aws_iam_role" "lambda_execute" {
 
 事前に、ECSタスクに必要最低限の権限を与えるインラインポリシーを定義する。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -874,7 +874,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 事前に、ECSタスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1295,9 +1295,9 @@ resource "aws_s3_bucket_policy" "alb" {
 
 ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
 
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1338,7 +1338,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 
 NLBのアクセスログを送信するバケット内には、自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1959,7 +1959,7 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 | Chatbot                      | 全て                                 | AWSがAPIを公開していないため、Terraformで構築できない。                                                                                                                                                                                                                                  |
 | EC2                          | 秘密鍵                               | Terraformで構築する時にGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。                                                                                                                                                                                                              |
 | ENI                          | 全て                                 | 特定のAWSリソース（ALB、セキュリティグループなど）の構築に伴って、自動的に構築されるため、Terraformで管理できない。                                                                                                                                                                                                    |
-| EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『タスクが完了するまで待機』オプションを選択すると自動で構築されるため、Terraformで管理できない。このルールは、ECSのタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止（完了？）した状態を表す。                                                                                         |
+| EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『ECSタスクが完了するまで待機』オプションを選択すると自動で構築されるため、Terraformで管理できない。このルールは、ECSのECSタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止（完了？）した状態を表す。                                                                                         |
 | Global Accelerator           | セキュリティグループ               | リソースを構築するとセキュリティグループが自動生成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                         |
 | IAMユーザー                    | 全て                                 | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
 | IAMユーザーグループ            | 全て                                 | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |

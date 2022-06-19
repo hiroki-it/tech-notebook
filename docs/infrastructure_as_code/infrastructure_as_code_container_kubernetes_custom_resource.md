@@ -276,7 +276,7 @@ spec:
 
 外部Sercretを識別する情報を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
+参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -292,7 +292,7 @@ spec:
         objectType: "secretsmanager"
 ```
 
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
+参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

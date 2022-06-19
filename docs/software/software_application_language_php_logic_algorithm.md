@@ -274,7 +274,7 @@ var_dump($result);
 
 ### 線形探索法
 
-  今回は、配列内で『６』を探す。
+今回は、配列内で『６』を探す。
 
 ![線形探索法1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/線形探索法1.gif)
 
@@ -288,7 +288,7 @@ var_dump($result);
 
 ### 二分探索法
 
-  前提として、ソートによって、すでにデータが整列させられているとする。今回は、配列内で『６』を探す。
+前提として、ソートによって、すでにデータが整列させられているとする。今回は、配列内で『```6```』を探す。
 
 ![二分探索法1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/二分探索法1.gif)
 

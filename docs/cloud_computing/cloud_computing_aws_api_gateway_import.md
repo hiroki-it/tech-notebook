@@ -19,7 +19,7 @@ description: API Gatewayへのymlインポート＠AWSの知見をまとめま�
 
 API Gatewayのインポートに当たり、OpenAPIのYAMLファイルにキーを新たに実装する必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
 <br>
 
@@ -29,15 +29,15 @@ API Gatewayのインポートに当たり、OpenAPIのYAMLファイルにキー�
 
 該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
 各種パラメーターもマッピングできる。メソッドリクエストから統合リクエストへのマッピングについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
 
 統合レスポンスからメソッドレスポンスへのマッピングについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
 #### ▼ セットアップ（VPCリンク&プロキシ統合）
 
@@ -215,7 +215,7 @@ x-amazon-apigateway-request-validators:
 
 その他の非対応の記述については、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
+参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
 
 <br>
 

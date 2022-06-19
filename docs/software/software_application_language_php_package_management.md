@@ -48,7 +48,7 @@ $ php -r "unlink('composer-setup.php');"
 - https://getcomposer.org/doc/04-schema.md#autoload
 - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
 
-```bash
+```yaml
 {
 
     # 〜 中略 〜
@@ -77,7 +77,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 参考：https://getcomposer.org/doc/04-schema.md#config
 
-```bash
+```yaml
 {
 
     # 〜 中略 〜
@@ -173,7 +173,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 参考：https://getcomposer.org/doc/04-schema.md#scripts
 
-```bash
+```yaml
 {
 
     # 〜 中略 〜
@@ -206,7 +206,7 @@ Composerのバージョンを設定する。インストールされているcom
 
 参考：https://getcomposer.org/doc/04-schema.md#version
 
-```bash
+```yaml
 {
     # 〜 中略 〜
 
@@ -334,7 +334,7 @@ $ composer dump-autoload
 
 また、```autoload```プロパティに登録されているパスが誤っていないかも確認した方が良い。
 
-```bash
+```yaml
 {
     # 〜 中略 〜
 

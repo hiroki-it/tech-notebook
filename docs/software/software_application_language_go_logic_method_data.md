@@ -2361,7 +2361,7 @@ if err != nil {
 
 参考：https://stackoverflow.com/questions/17641887/how-do-i-escape-and-delimiters-in-go-templates
 
-```bash
+```yaml
 {{ {{"{{"}} foo {{"}}"}} }}
 ```
 

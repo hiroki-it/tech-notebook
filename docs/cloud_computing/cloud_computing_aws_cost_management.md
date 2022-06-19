@@ -25,19 +25,19 @@ description: コスト管理＠AWSの知見をまとめました。
 
 各種AWSリソースの設定の上限値を上げられる。
 
-参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/intro.html
+参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
 
 <br>
 
 ### 各種AWSリソースの上限値
 
-参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-service-information.html
+参考：https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
 
 <br>
 
 ### 方法
 
-参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/request-quota-increase.html
+参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
 
 <br>
 
@@ -65,7 +65,7 @@ description: コスト管理＠AWSの知見をまとめました。
 
 使い方に応じた料金体系を選択できる。レスポンスの返信時に料金が発生する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 
 | 使い方名                     | 説明                                                         | 補足                                                   |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
@@ -78,7 +78,7 @@ description: コスト管理＠AWSの知見をまとめました。
 
 インスタンスのライフサイクルの状態に応じて、料金が発生する。EC2インスタンスを実行している時間分だけ料金がかかる。インスタンスを使用せずに設置しているだけであれば、料金はかからない。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 | インスタンスの状態 | 料金発生の有無 | 補足                                                       |
 | ------------------ | -------------- | ---------------------------------------------------------- |
@@ -141,12 +141,12 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 
 | 使い方名                     | 説明                                                         |
 | :----------------------- | ------------------------------------------------------------ |
-| オンデマンドインスタンス | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html |
-| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
+| オンデマンドインスタンス | 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html |
+| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
 
 <br>
 

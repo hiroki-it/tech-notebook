@@ -375,7 +375,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 標準出力/標準エラー出力に出力されたログを、```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する。デフォルトの設定値である。
 
-```bash
+```yaml
 {
   "log-driver": "json-file",
   "log-opts": {
@@ -413,7 +413,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
-```bash
+```yaml
 {
   "log-driver": "awslogs",
   "log-opts": {
@@ -428,7 +428,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
-```bash
+```yaml
 {
   "log-driver": "gcplogs",
   "log-opts": {

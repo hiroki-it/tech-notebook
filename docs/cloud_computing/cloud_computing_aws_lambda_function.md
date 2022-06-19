@@ -127,9 +127,9 @@ exports.handler = (event, context, callback) => {
 
 | 引数                | 説明                                                         | 補足                                                         |
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。               | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。 | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
-| callback関数        | 代入されている関数の実体は不明である。全ての処理が終わるまで実行が待機され、Lambdaのコール元にレスポンスを送信する。 | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。               | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | Lambdaに関するデータ（名前、バージョンなど）を取得できるメソッドとプロパティが代入されている。 | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html |
+| callback関数        | 代入されている関数の実体は不明である。全ての処理が終わるまで実行が待機され、Lambdaのコール元にレスポンスを送信する。 | 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html |
 
 #### ▼ テストとデバッグ
 
@@ -137,7 +137,7 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 #### ▼ ベストプラクティス
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-code
+参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
 
 <br>
 
@@ -153,7 +153,7 @@ Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリ�
 
 Lamda関数を実行するための関数。```Start```関数に渡すパラメーターには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。もし含まれていない場合は、Lambdaで内部エラーが起こる。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html
+参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
 
 ```go
 package main
@@ -183,7 +183,7 @@ func main() {
 
 contextオブジェクトとeventオブジェクトをパラメーターとして使用できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
+参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
 
 <br>
 
@@ -276,21 +276,21 @@ func main() {
 
 正常系レスポンスの構成要素については以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
+参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
 文字列を返却すると、Lambdaはその文字列をそのまま返信する。また、JSONをレスポンスもできる。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html#golang-handler-structs
+参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
 #### ▼ 異常系
 
 Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
+参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
 エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
+参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
 ```json
 {
@@ -343,7 +343,7 @@ func main() {
 
 標準パッケージの```fmt```、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。CloudWatchログにてこれを確認する。
 
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-logging.html
+参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 
 <br>
 
@@ -376,7 +376,7 @@ func main() {
 
 各AWSオブジェクトのメソッドの後に、```promise```メソッドをチェーンできる。これにより、各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる。
 
-参考：https://docs.aws.amazon.com/ja_jp/sdk-for-javascript/v2/developer-guide/using-promises.html
+参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
 
 ```javascript
 "use strict";

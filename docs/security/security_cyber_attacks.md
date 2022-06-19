@@ -362,7 +362,7 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 DBのSQLクエリのパラメーターとなる入力では、『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ。そのため、これらのパラメーターが割り当てられているリクエストメッセージを拒否する。例えば、WAFの機能を使用する。
 
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html
+参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
 #### ▼ 【対策】プレースホルダー
 

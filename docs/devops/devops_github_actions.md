@@ -80,7 +80,7 @@ jobs:
 
 #### ▼ インストール済みソフトウェア
 
-使用するOSに応じて、いくつかの汎用的なソフトウェアがすでにインストールされている。
+使用するOSに応じて、いくつかの汎用的なソフトウェアがプリインストールされている。
 
 参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 

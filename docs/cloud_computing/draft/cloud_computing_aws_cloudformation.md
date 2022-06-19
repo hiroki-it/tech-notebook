@@ -86,6 +86,6 @@ Resources:
 
 特定のスタックで生成されたリソース値を他のスタックで使用できるようにする。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+参考：https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
 
 <br>

@@ -63,7 +63,7 @@ description: 可観測性の知見をまとめました。
 参考：
 
 - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
-- https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
+- https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 
@@ -115,24 +115,7 @@ description: 可観測性の知見をまとめました。
 
 #### ▼ ツールの種類
 
-参考：
-
-- https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
-- https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
-- https://kiali.io/docs/architecture/architecture/
-
-| アクション | ツール名                                                     |
-| ---------- | ------------------------------------------------------------ |
-| 収集       | Datadog、Prometheus、cAdvisor、Kiali（Prometheusデータの再収集） |
-| 保管       | -                                                            |
-| 分析       | Datadog、Prometheus、Kiali（Prometheusデータの再分析）       |
-| 可視化     | Datadog、Prometheus、Kiali（Prometheusデータの再可視化）     |
-
-#### ▼ セットアップ
-
-Kubernetes上での実際のセットアップ方法については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resrouce_observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
 
 <br>
 
@@ -160,7 +143,7 @@ Kubernetes上での実際のセットアップ方法については、以下の�
 
 イベントの項目名と値の対応関係を持つログのこと。JSON型で表現されるが、拡張子が```json```であるというわけでないことに注意する。
 
-```bash
+```yaml
 {
     "client_ip": "192.168.0.1",
     "timestamp": "2021-01-01 12:00:00",
@@ -192,23 +175,7 @@ Kubernetes上での実際のセットアップ方法については、以下の�
 
 #### ▼ ツールの種類
 
-参考：
-
-- https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
-- https://qiita.com/Hiroki1928/items/a92e3721427ff702b8af#grafana
-
-| アクション | ツール名                 |
-| ---------- | ------------------------ |
-| 収集       | FluentBit、Fluentd        |
-| 保管       | Datadog、ElasticSearch   |
-| 分析       | Datadog、ElasticSearch   |
-| 可視化     | Datadog、Kibana、Grafana |
-
-#### ▼ セットアップ
-
-Kubernetes上での実際のセットアップ方法については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resrouce_observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
 
 <br>
 
@@ -245,7 +212,7 @@ Kubernetes上での実際のセットアップ方法については、以下の�
 
 リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 #### ▼ データポイント化
 
@@ -286,6 +253,14 @@ Kubernetes上での実際のセットアップ方法については、以下の�
 （７）```a3```：アプリケーションがレスポンスをクライアントに返信する。
 
 ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
+
+<br>
+
+### ツール
+
+#### ▼ ツールの種類
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
 
 <br>
 

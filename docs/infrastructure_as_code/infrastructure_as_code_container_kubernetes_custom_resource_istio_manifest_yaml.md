@@ -50,7 +50,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドで操作し、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドを使用して、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 

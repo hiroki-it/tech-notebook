@@ -217,12 +217,12 @@ jobs:
 
 #### ▼ deploy-update-service（ローリングアップデート使用時）
 
-ECRイメージを使用して、新しいリビジョン番号のタスク定義を作成し、またこれを使用してコンテナをデプロイする。
+ECRイメージを使用して、新しいリビジョン番号のECSタスク定義を作成し、またこれを使用してコンテナをデプロイする。
 
-| 設定値                             | 説明                                                         |                                                              |
-| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 設定値                             | 説明                                                   |                                                              |
+| --------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
 | ```container-image-name-updates``` | コンテナ定義のコンテナ名とバージョンタグを上書きする。         | イメージはCircleCIのハッシュ値でタグ付けしているので必須。   |
-| ```verify-revision-is-deployed``` | ローリングアップデートのタスクがタスク定義のタスク必要数に合致したかを継続的に監視する。 | 例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスクの必要数に合致しないので、検知できる。 |
+| ```verify-revision-is-deployed``` | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、ECSタスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないので、検知できる。 |
 | ```max-poll-attempts```           | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。 |
 | ```poll-interval```               | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。 |                                                              |
 
@@ -242,7 +242,7 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # タスク定義名を指定
+    # ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
     # ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
@@ -250,7 +250,7 @@ jobs:
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # タスク定義に基づくタスク数の監視
+    # ECSタスク定義に基づくECSタスク数の監視
     verify-revision-is-deployed: true
     # 監視の試行回数
     max-poll-attempts: 30
@@ -282,7 +282,7 @@ workflows:
 
 #### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
-ECSタスク定義を更新する。さらに、ブルー/グリーンデプロイメントがそのタスク定義を指定し、ECSサービスを更新する。ローリングアップデートと同様にして、``` verify-revision-is-deployed```オプションを使用できる。
+ECSタスク定義を更新する。さらに、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。ローリングアップデートと同様にして、``` verify-revision-is-deployed```オプションを使用できる。
 
 **＊実装例＊**
 
@@ -296,7 +296,7 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
-    # タスク定義名を指定
+    # ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
     # ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
@@ -310,7 +310,7 @@ jobs:
     codedeploy-load-balanced-container-port: 80
     # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # サービス更新後のタスク監視
+    # ECSサービス更新後のECSタスク監視
     verify-revision-is-deployed: true
           
 workflows:
@@ -337,7 +337,7 @@ workflows:
 
 #### ▼ run-task
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいECSタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、ECSタスクは自動的にStopped状態になる。
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
@@ -362,9 +362,9 @@ jobs:
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
-    # タスク定義名。最新リビジョン番号が自動補完される。
+    # ECSタスク定義名。最新リビジョン番号が自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
-    # タスク起動時にマイグレーションコマンドを実行するように、Laravelコンテナのcommandキーを上書き
+    # ECSタスク起動時にマイグレーションコマンドを実行するように、Laravelコンテナのcommandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
           
 workflows:

@@ -401,7 +401,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 
 PHPトレーサーでlaravel内からタグを収集した例
 
-```bash
+```yaml
 {
     "env": "prd",
     "http": {

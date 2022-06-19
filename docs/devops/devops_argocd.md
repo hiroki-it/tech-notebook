@@ -142,8 +142,8 @@ $ kubectl config use-context <ClusterのARN>
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/cluster-endpoint.html
+- https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+- https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 - http://linuxcommand2007.seesaa.net/article/476794217.html
 

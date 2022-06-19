@@ -105,7 +105,7 @@ IAMステートメントのセットを定義する。
 
 以下に、EC2の読み出しのみ権限（```AmazonEC2ReadOnlyAccess```）をアタッチできるポリシーを示す。このIAMポリシーには、他のAWSリソースに対する権限も含まれている。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -143,7 +143,7 @@ AWSリソースに関する認可のスコープを定義する。各アクシ�
 
 | AWSリソースの種類 | リンク                                                       |
 | ----------------- | ------------------------------------------------------------ |
-| CloudWatchログ    | https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/permissions-reference-cwl.html |
+| CloudWatchログ    | https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/permissions-reference-cwl.html |
 
 **＊例＊**
 
@@ -186,9 +186,9 @@ AWSリソースに関する認可のスコープを定義する。各アクシ�
 
 AWSリソースの識別子のこと。
 
-参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
+参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -237,7 +237,7 @@ AWSが提供しているポリシーのこと。アタッチ式のポリシー�
 
 IAMロールにインラインポリシーをアタッチする。このロールを持つユーザーは、ユーザーアカウントのすべての ACMのSSL証明書を一覧表示できるようになる。
 
-```bash
+```yaml
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -254,7 +254,7 @@ IAMロールにインラインポリシーをアタッチする。このロー�
 
 IAMロールにインラインポリシーをアタッチする。このロールを持つユーザーは、全てのAWSリソースに、任意のアクションを実行できる。
 
-```bash
+```yaml
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -285,7 +285,7 @@ ECRにアタッチされる、イメージの有効期間を定義するポリ�
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "rules": [
     {
@@ -324,7 +324,7 @@ ECRにアタッチされる、イメージの有効期間を定義するポリ�
 
 例えば、以下の信頼ポリシーを任意のロールにアタッチしたとする。その場合、```Principal```の```ecs-tasks```が信頼されたエンティティと見なされ、ECSタスクにロールをアタッチできるようになる。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -345,7 +345,7 @@ ECRにアタッチされる、イメージの有効期間を定義するポリ�
 
 例えば、以下の信頼ポリシーを任意のロールにアタッチしたとする。その場合、```Principal```のIAMユーザーが信頼されたエンティティと見なされ、ロールをアタッチできるようになる。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -459,7 +459,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管する。
 
-参考：https://docs.aws.amazon.com/ja_jp/streams/latest/dev/amazon-kinesis-streams.html
+参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
 
 <br>
 
@@ -469,7 +469,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。転送時にLambda関数を使用することにより、収集したデータを加工できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html
+参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
 
 <br>
 
@@ -477,10 +477,10 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 | 項目       | 説明                                                                                                       | 補足                                                                                                                                                        |
 |----------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| レコードの変換  | バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。                                                              | Lambdaを使用する。<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html                                                         |
+| レコードの変換  | バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。                                                              | Lambdaを使用する。<br>参考：https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html                                                         |
 | 転送先      | 転送先とするS3バケットを設定する。                                                                                       |                                                                                                                                                           |
 | ディレクトリ名  | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、2021/11/09現在はUTCのみ設定できる。         | もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
-| バッファー    | Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定容量が蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限量を設定できる。 | 参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency                                                                     |
+| バッファー    | Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定容量が蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限量を設定できる。 | 参考：https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency                                                                     |
 | ファイル形式   | 転送時のファイル形式を設定できる。                                                                                        | ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い。                                                                            |
 | バックアップ   | 収集したデータを加工する場合、加工前データを保管しておく。                                                                            |                                                                                                                                                           |
 | 暗号化      |                                                                                                          |                                                                                                                                                           |

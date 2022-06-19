@@ -225,7 +225,7 @@ Inputs
 - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
 - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
-```bash
+```yaml
 {
   "message": "dummy"
 }
@@ -677,7 +677,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ```bash
 # 本来、改行はないが、わかりやすいように改行している。
-# <コンテナ名>-foo-<タスクID>
+# <コンテナ名>-foo-<ECSタスクID>
 [0] foo-bar-baz: [
     {
         "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
@@ -843,7 +843,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 #### ▼ セットアップ
 
-cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを使用する。
+cloudwatch_logsプラグインがプリインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
@@ -865,7 +865,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     region            ap-northeast-1
     # 予約変数あり。
     log_group_name    /prd-foo-ecs-container/laravel/log
-    # ログストリーム名。予約変数あり。タスクIDなどアウトプットできる。
+    # ログストリーム名。予約変数あり。ECSタスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
     
 [OUTPUT]
@@ -881,7 +881,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
 
-```bash
+```yaml
 {
     "container_id": "*****",
     "container_name": "foo",
@@ -904,7 +904,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ▼ セットアップ
 
-全てのベースイメージにデフォルトでdatadogプラグインがインストールされているため、datadogプラグインのインストールは不要である。
+全てのベースイメージにdatadogプラグインがプリインストールされているため、datadogプラグインのインストールは不要である。
 
 参考：https://github.com/DataDog/fluent-plugin-datadog
 
@@ -950,7 +950,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ▼ kinesis_firehoseプラグインとは
 
-ログをKinesisFirehoseにルーティングする。kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを使用する。
+ログをKinesisFirehoseにルーティングする。kinesis_firehoseプラグインがプリインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 
@@ -960,7 +960,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ▼ kinesis_streamsプラグインとは
 
-ログをKinesisStreamsにルーティングする。kinesis_streamsプラグインがあらかじめインストールされているベースイメージを使用する。
+ログをKinesisStreamsにルーティングする。kinesis_streamsプラグインがプリインストールされているベースイメージを使用する。
 
 参考：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
 
@@ -974,7 +974,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ▼ セットアップ
 
-newRelicプラグインがあらかじめインストールされているベースイメージを使用する。
+newRelicプラグインがプリインストールされているベースイメージを使用する。
 
 参考：https://github.com/newrelic/newrelic-fluent-bit-output
 

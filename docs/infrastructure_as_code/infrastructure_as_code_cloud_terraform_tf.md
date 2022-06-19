@@ -169,7 +169,7 @@ terraform {
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
     "Version": "2008-10-17",
     "Statement": [
@@ -710,7 +710,7 @@ AWSのAPIに対してリクエストを送信し、クラウドインフラの�
 
 操作されるAWSリソースの種類のこと。AWSリソースタイプとTerraformのリソースタイプはおおよそ一致している。
 
-参考：https://docs.aws.amazon.com/ja_jp/config/latest/developerguide/resource-config-reference.html
+参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 #### ▼ 実装方法
 
@@ -740,7 +740,7 @@ AWSのAPIに対してリクエストを送信し、クラウドインフラに�
 
 **＊実装例＊**
 
-例として、タスク定義名を指定して、AWSから
+例として、ECSタスク定義名を指定して、AWSから
 
 ```terraform
 ###############################################
@@ -1440,7 +1440,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 **＊実装例＊**
 
-例として、ECSを示す。ECSでは、AutoScalingによってタスク数が増加する。そのため、これらを無視する必要がある。
+例として、ECSを示す。ECSでは、AutoScalingによってECSタスク数が増加する。そのため、これらを無視する必要がある。
 
 ```terraform
 ###############################################
@@ -1452,7 +1452,7 @@ resource "aws_ecs_service" "this" {
 
   lifecycle {
     ignore_changes = [
-      # AutoScalingによるタスク数の増減を無視。
+      # AutoScalingによるECSタスク数の増減を無視。
       desired_count,
     ]
   }
@@ -1529,7 +1529,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 バケットポリシーを定義するtpl形式ファイルでは、string型の場合は```"${}"```で、integer型の場合は```${}```で変数を展開する。ここで拡張子をjsonにしてしまうと、integer型の出力をjsonの構文エラーとして扱われてしまう。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1566,11 +1566,11 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ containerDefinitionsとは
 
-タスク定義のうち、コンテナを定義する部分のこと。
+ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "ipcMode": null,
   "executionRoleArn": "<ecsTaskExecutionRoleのARN>",

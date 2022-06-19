@@ -141,7 +141,7 @@ CIツールを使用してCIパイプラインを、またはCDツールを使�
 参考：
 
 - https://garafu.blogspot.com/2018/11/release-strategy.html
-- https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+- https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 #### ▼ 技術ツール例
 

@@ -83,7 +83,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 AWS CLIを実行するアカウントのアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -94,7 +94,7 @@ aws_access_key_id = *****
 
 AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -105,7 +105,7 @@ aws_secret_access_key = *****
 
 認証で補助的に使用するセッショントークン値を設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -120,7 +120,7 @@ aws_session_token = *****
 
 AWS CLIの返却値のデータ形式を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -131,7 +131,7 @@ output = json
 
 AWS CLIで操作するAWSリソースのリージョンを設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -142,7 +142,7 @@ region = ap-northeast-1
 
 AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -153,7 +153,7 @@ role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 
 IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -164,7 +164,7 @@ role_session_name = hiroki.hasegawa
 
 IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -298,7 +298,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピ�
 
 コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -359,7 +359,7 @@ $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 ```
 
-```bash
+```yaml
 {
     "Messages": [
         {
@@ -414,7 +414,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": {

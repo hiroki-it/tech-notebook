@@ -152,7 +152,7 @@ datadogコンテナのベースイメージとなるdatadogイメージがDatado
 
 #### ▼ DockerHubを使用する場合
 
-ECSのコンテナ定義にて、DockerHubのURLを直接的に指定する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
 参考：https://hub.docker.com/r/datadog/agent
 
@@ -167,7 +167,7 @@ ECSのコンテナ定義にて、DockerHubのURLを直接的に指定する。da
 
 #### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルを実行する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルを実行する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
 ```bash
 [
@@ -185,7 +185,7 @@ ECSのコンテナ定義にて、ECRパブリックギャラリーのURLを指�
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
 
 参考：https://hub.docker.com/r/datadog/agent
 
@@ -293,7 +293,7 @@ datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [

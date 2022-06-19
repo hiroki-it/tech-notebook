@@ -464,7 +464,7 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 
 例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。
 
-```bash
+```yaml
 {
   "id": 1,
   "name": "Taro Yamada",
@@ -476,7 +476,7 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 
 ここで、スキーマを以下の様に定義しておき、APIからデータをレスポンスする時のバリデーションを行う。
 
-```bash
+```yaml
 {
   "$schema": "https://json-schema.org/draft-04/schema#",
   "type": "object",

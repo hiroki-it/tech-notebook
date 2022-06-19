@@ -46,15 +46,15 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 VPC内で構築されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
+- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
 
 #### ▼ 紐付け
 
 | 紐付け名      | 補足                                                         |
 | ------------- | ------------------------------------------------------------ |
-| EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
-| ENIとの紐付け | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| ENIとの紐付け | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>
 
@@ -79,7 +79,7 @@ VPC内で構築されたインスタンスにはパブリックIPアドレスが
 
 あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。例えば、以前に開発したアプリケーションが```10.200.47.0```までを使用していた場合、```10.200.48.0```から使用を始める。また、VPCで許可されるIPアドレスの個数は最多65536個（```/16```）で最少16個（```/28```）であり、実際は512個（```/23```）ほどあれば問題ないため、```10.200.48.0/23```を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
+参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
 
 #### ▼ 各サブネットのCIDRブロック
 
@@ -115,9 +115,9 @@ VPC内で構築されたインスタンスにはパブリックIPアドレスが
 | リソースの種類       | 役割                                                                             | 補足                                                         |
 | -------------------- |--------------------------------------------------------------------------------| ------------------------------------------------------------ |
 | ALB                  | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。                                             |                                                              |
-| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
 | Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
 | GlobalAccelerator    |                                                                                |                                                              |
 | NAT Gateway          | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。                                     |                                                              |
 | RDS                  |                                                                                |                                                              |
@@ -193,7 +193,7 @@ LAN内の分割方法を参考にし、パブリックサブネットとプラ�
 
 クラウドルーターのマッピングテーブルとして働く。サブネットに紐付けることで、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。注意点として、Network ACLよりも後に評価される。
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
+参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
 | Destination（送信先のIPの範囲） |                Target                 |
 | :-----------------------------: | :-----------------------------------: |
@@ -272,7 +272,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 プライベートリンクともいう。プライベートIPアドレスを持つENIとして機能し、AWSリソースからアウトバウンド通信を受信する。もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
 **＊リソース例＊**
 
@@ -298,7 +298,7 @@ DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Internet_Gateway.html
+- https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 DNATについては、以下のリンクを参考にせよ。
@@ -317,7 +317,7 @@ SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレ
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
+- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 SNATについては、以下のリンクを参考にせよ。
@@ -396,7 +396,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 定義できるルール数や文字数に制限がある。以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/limits.html
+参考：https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
 
 | 設定項目                          | 説明                                                         | 補足                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -439,7 +439,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Overview                 | WAFによって許可/拒否されたリクエストのアクセスログを確認できる。 |                                                              |
-| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
 | Associated AWS resources | WAFをアタッチするAWSリソースを設定する。                     | CloudFront、ALBなどにアタッチできる。                        |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。 |                                                              |
 
@@ -472,7 +472,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ▼ ルールの種類
 
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/classic-web-acl-rules-creating.html
+参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
 | ルール名     | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -493,7 +493,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 ルールのCountモードが有効になっている場合、Countアクションに続けて、そのルールの元のアクションを実行する。そのため、Countアクションしつつ、Blockアクションを実行できる（仕様がややこしすぎるので、なんとかしてほしい）。
 
-参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/web-acl-rule-group-override-options.html
+参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
 
 | マネージドルールの元のアクション | Countモード | 上書きオプション | 結果                                                         |
 | -------------------------------- | ----------- | ---------------- | ------------------------------------------------------------ |
@@ -633,7 +633,7 @@ Route53のドメイン経由ではなく、ALBの直接的に指定して、リ�
 
 WAFマネージドルールを使用している場合、マネージドルールが```ruleGroupList```キーに配列として格納されている。もし、Countアクションが実行されていれば、```excludedRules```キーにその旨とルールIDが格納される。
 
-```bash
+```yaml
 {
 
   # ～ 中略 ～

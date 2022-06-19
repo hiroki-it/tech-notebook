@@ -510,7 +510,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ▼ dockerタイプとは
 
-dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -1301,7 +1301,7 @@ jobs:
 
 #### ▼ machineタイプの場合（推奨）
 
-実行環境にmachineタイプを選択した場合、すでにdocker-composeがインストールされている。
+実行環境にmachineタイプを選択した場合、docker-composeがプリインストールされている。
 
 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 

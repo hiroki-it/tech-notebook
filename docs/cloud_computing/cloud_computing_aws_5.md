@@ -78,11 +78,11 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み権限を実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -104,7 +104,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "Version": "2008-10-17",
   "Id": "PolicyForCloudFrontPrivateContent",
@@ -133,7 +133,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 バケットポリシーは不要である。代わりに、AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある。このポリシーには、S3へのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -160,7 +160,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合、そのIPアドレスをポリシーに設定する必要がある。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Id": "S3PolicyId1",
@@ -242,7 +242,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ソースに対して、セキュリティグループIDを設定した場合、そのセキュリティグループがアタッチされているENIと、このENIに紐付けられたリソースからのトラフィックを許可できる。リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ アプリケーションEC2の例
 
@@ -377,7 +377,7 @@ Parameter Storeで管理される環境変数はKMSによって暗号化され�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/services-parameter-store.html
+- https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
 
 - https://note.com/hamaa_affix_tech/n/n02eb412d0327
 
@@ -398,14 +398,14 @@ EC2インスタンス（ECSやEKSのコンテナのホストを含む）に接�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#session-manager-features
+- https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
 - https://blog.denet.co.jp/aws-systems-manager-session-manager/
 
 #### ▼ AWSセッション
 
 TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 
-参考：：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
 
 #### ▼ 同時AWSセッションの上限数
 
@@ -437,8 +437,8 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 | タイプ           | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/automation-walk-document-builder.html |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
 | Sessionタイプ    |                                                              |                                                              |
 
 #### ▼ テンプレート
@@ -446,13 +446,13 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 作業内容の鋳型こと。ランブックを指定し、変更箇所に基づいた作業内容を定義する。
 デフォルトではテンプレートの作成自体にも承認が必要になる。ただ、指定した権限を持つユーザーはテンプレートの承認をスキップするように設定できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-templates.html
+参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
 
 #### ▼ 変更リクエスト
 
 鋳型に基づいた実際の作業のこと。作業のたびにテンプレートを指定し、リクエストを提出する。承認が必要になる。
 
-参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/change-requests.html
+参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
 
 <br>
 
@@ -479,7 +479,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | ------------------------ | ------------------------------------------------------------ |
 | サブスクリプション       | サブスクリプションを登録する。                               |
 | アクセスポリシー         | トピックへのアクセス権限を設定する。                         |
-| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>参考：https://docs.aws.amazon.com/ja_jp/sns/latest/dg/sns-message-delivery-retries.html |
+| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>参考：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。 |
 | 暗号化                   |                                                              |
 
@@ -534,7 +534,7 @@ AWSリソースに一時的にアクセスできる認証情報（アクセス�
 
 必要なポリシーが設定されたIAMロールを構築する。その時信頼ポリシーでは、ユーザーの```ARN```を信頼されたエンティティとして設定しておく。これにより、そのユーザーに対して、ロールをアタッチできるようになる。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -611,7 +611,7 @@ STSへのリクエストの結果、ロールがアタッチされた新しいIA
 
 レスポンスされるデータは以下の通り。
 
-```bash
+```yaml
 {
   "AssumeRoleUser": {
     "AssumedRoleId": "<セッションID>:<セッション名>",
@@ -694,7 +694,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 **＊実装例＊**
 
-```bash
+```yaml
 {
   "StartAt": "Call Lambda",
   "States": {
@@ -733,7 +733,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 | アクション   | StartExecution |                             |
 | 実行ロール   | IAMロールのARN | StartExecutionを許可する。  |
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -750,7 +750,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 以下がレスポンスされれば、API GatewayがStepFunctionsをコールできたことになる。
 
-```bash
+```yaml
 {
     "executionArn": "arn:aws:states:ap-northeast-1:<アカウントID>:execution:prd-foo-doing-state-machine:*****",
     "startDate": 1.638244285498E9

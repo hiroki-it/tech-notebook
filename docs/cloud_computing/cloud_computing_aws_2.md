@@ -20,7 +20,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 クラウドサーバーとして働く。注意点があるものだけまとめる。ベストプラクティスについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-best-practices.html
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html
 
 <br>
 
@@ -78,7 +78,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 バーストモードのインスタンスタイプの場合、一定水準のベースラインCPU使用率を提供しつつ、これを超過できる。CPU使用率がベースラインを超えたとき、超過した分だけEC2はCPUクレジットを消費する。CPUクレジットは一定の割合で回復する。蓄積できる最大CPUクレジット、クレジットの回復率、ベースラインCPU使用率は、インスタンスタイプによって異なる。詳しくは以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 
 <br>
 
@@ -88,7 +88,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 EC2インスタンスは、ルートデバイスボリュームがマウントされたパーティションを読み込んで起動する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
 
 #### ▼ EBSボリューム
 
@@ -98,9 +98,9 @@ EBSで管理されているルートデバイスボリュームで、推奨の�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
 #### ▼ インスタンスストアボリューム
 
@@ -110,8 +110,8 @@ EBSで管理されているルートデバイスボリュームで、推奨の�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 <br>
 
@@ -168,7 +168,7 @@ EC2インスタンス上でアプリケーションソフトウェアを稼働�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 <br>
@@ -179,13 +179,13 @@ EC2インスタンス上でアプリケーションソフトウェアを稼働�
 
 EBSボリュームを持つEC2インスタンスを構築するAMIのこと。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 #### ▼ instance store-backed AMI
 
 インスタンスストアボリュームを持つEC2インスタンスを構築するAMIのこと。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 <br>
 
@@ -241,7 +241,7 @@ EC2のクラウド内蔵ストレージとして働く。
 
 EC2の初期構築時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
 #### ▼ EC2インスタンスの構築後に永続化する
 
@@ -278,7 +278,7 @@ EC2インスタンスにオートスケーリングを適用している場合�
 
 EBSボリュームを変更するためには、実際のEBSボリューム、パーティション、EBSボリュームに紐づくファイルシステム、に関してサイズを変更する必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
+参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
 **＊例＊**
 
@@ -374,7 +374,7 @@ dockerイメージやHelmチャートを管理できる。
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 可視性                   | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。 | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>参考：https://gallery.ecr.aws/ |
 | タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、バージョンタグを上書きできる/できないかを設定できる。 | -                                                            |
-| プッシュ時にスキャン     | イメージがプッシュされた時に、イメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/image-scanning.html |
+| プッシュ時にスキャン     | イメージがプッシュされた時に、イメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html |
 | 暗号化設定               | -                                                            | -                                                            |
 
 <br>
@@ -383,7 +383,7 @@ dockerイメージやHelmチャートを管理できる。
 
 #### ▼ Dockerイメージの場合
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/docker-push-ecr-image.html
+参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 （１）ECRにログインする。
 
@@ -411,7 +411,7 @@ $ docker push <イメージリポジトリURL>:<バージョンタグ>
 
 #### ▼ Helmチャートの場合
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/push-oci-artifact.html
+参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
 
 <br>
 
@@ -445,20 +445,46 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 コンテナオーケストレーションを実行する環境を提供する。VPCの外に存在している。ECS、EKS、Fargate、EC2の対応関係は以下の通り。
 
-| Control Plane（コンテナオーケストレーション環境） | Data Plane（コンテナ実行環境） | 説明                                                         |
-| ------------------------------------------------- | ------------------------------ | ------------------------------------------------------------ |
-| ECS：Elastic Container Service                    | Fargate、EC2                   | 単一のOS上でコンテナオーケストレーションを実行する。         |
-| EKS：Elastic Kubernetes Service                   | Fargate、EC2                   | 複数のOS上それぞれでコンテナオーケストレーションを実行する。<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
+| コントロールプレーン（コンテナオーケストレーション環境） | データプレーン（コンテナ実行環境） | 説明                                                         |
+| ------------------------------------------------- |-------------------| ------------------------------------------------------------ |
+| ECS：Elastic Container Service                    | Fargate、EC2       | 単一のOS上でコンテナオーケストレーションを実行する。         |
+| EKS：Elastic Kubernetes Service                   | Fargate、EC2       | 複数のOS上それぞれでコンテナオーケストレーションを実行する。<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
 
 <br>
 
-### ECS vs EKS
+### コントロールプレーン
 
-どちらもイメージをビルドする機能は無く、コンテナオーケストレーションのみを実行する。ビルド済みのイメージをECRで管理しておき、コンテナオーケストレーション時にこれをプルする。
+#### ▼ ECSの場合
 
-参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
-![ecs_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_eks.png)
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
+
+![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
+
+#### ▼ EKSの場合
+
+開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
+
+参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
+
+![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_control-plane.png)
+
+<br>
+
+### データプレーン
+
+#### ▼ EC2の場合
+
+EC2インスタンスをホストとして、コンテナを構築する。
+
+#### ▼ Fargateの場合
+
+マネージドなサーバーをホストとして、コンテナを構築する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。『ECS on Fargate』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。
+
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
 <br>
 
@@ -468,9 +494,9 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 ECSサービスの管理グループ単位のこと。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/clusters.html
+参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
 
-![ECSクラスター](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ECSクラスター.png)
+![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
 
 <br>
 
@@ -478,7 +504,7 @@ ECSサービスの管理グループ単位のこと。
 
 ECSタスクの管理グループ単位のこと。ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/service_definition_parameters.html
+参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html
 
 <br>
 
@@ -486,25 +512,36 @@ ECSタスクの管理グループ単位のこと。ECSタスクへのロード�
 
 #### ▼ ECSタスク
 
-コンテナインスタンスの管理グループ単位のこと。タスク定義を基に作成される。
+コンテナインスタンスの管理グループ単位のこと。ECSタスク定義を基に作成される。
 
-![タスクとタスク定義](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/タスクとタスク定義.png)
+![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task.png)
 
-#### ▼ タスク定義
+#### ▼ ECSコンテナエージェント
 
-ECSタスクをどのような設定値を基に構築するかを設定できる。タスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。タスク定義を削除するには、全てのリビジョン番号のタスク定義を登録解除する必要がある。
+ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。Fargate上にはECSコンテナエージェントがプリインストールされている。
 
-#### ▼ タスクライフサイクル
+参考：
 
-![ecs-task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-task_life-cycle.png)
+- https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
+
+![ecs_container-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-agent.png)
+
+#### ▼ ECSタスク定義
+
+ECSタスクをどのような設定値を基に構築するかを設定できる。ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
+
+#### ▼ ECSタスクのライフサイクル
+
+![ecs_task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task_life-cycle.png)
 
 ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にライフサイクルを持つ。AWS側の操作が終了した時点でRunningステータスになるが、コンテナの起動に時間がかかるようなアプリケーション（例：SSR）の場合は、Runningステータスであっても使用できる状態ではないことに注意する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
+参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
 正常停止と異常停止に関わらず、停止理由を確認できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/stopped-task-errors.html
+参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html
 
 <br>
 
@@ -528,12 +565,12 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/ecs-optimized_AMI.html 
+参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html 
 
 | AMI名                         | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
 | ECS最適化Amazon Linux 2       | 標準的なEC2インスタンスを構築できる。最も推奨。              |
-| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを構築できる。<br>参考：https://docs.aws.amazon.com/ja_jp/linux/al2022/ug/compare-al2-to-AL2022.html |
+| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを構築できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
 | ECS最適化Amazon Linux         | 標準的なEC2インスタンスを構築できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
 | ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを構築できる。 |
 | ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを構築できる。                 |
@@ -559,27 +596,15 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 ### on Fargate
 
-#### ▼ on Fargateとは
-
-コンテナの実行環境のこと。『ECS on Fargate』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。Fargate上ではコンテナのホストが隠蔽されており、実体としてEC2インスタンスをホストとしてコンテナが稼働している（ドキュメントに記載がないが、AWSサポートに確認済み）。
-
-参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
-
-![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
-
-#### ▼ コンテナエージェント
-
-コンテナ内で稼働し、コンテナの操作を行うプログラムのこと。
-
 #### ▼ コンテナ定義
 
 タスク内のコンテナ1つに対して、環境を設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/task_definition_parameters.html
+参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
 | 設定項目                        | 対応するdockerコマンドオプション        | 説明                                                         | 補足                                                         |
 | ------------------------------- | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| cpu                             | ```--cpus```                            | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | 参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment<br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
+| cpu                             | ```--cpus```                            | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment<br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                      | ```--dns```                             | コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。 |                                                              |
 | essential                       |                                         | コンテナが必須か否かを設定する。                             | ・```true```の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>```false```の場合、コンテナが停止しても、その他のコンテナは停止しない。 |
 | healthCheck<br>(command)        | ```--health-cmd```                      | ホストからFargateに対して、```curl```コマンドによるリクエストを送信し、レスポンス内容を確認。 |                                                              |
@@ -589,10 +614,10 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | image                           |                                         | ECRのURLを設定する。                                         | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html |
 | logConfiguration<br>(logDriver) | ```--log-driver```                      | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                   |                                                              |
-| portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
+| portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)        |                                         | Parameter Storeから出力する環境変数を設定する。           |                                                              |
-| memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
-| memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
+| memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
+| memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                              |                                                              |
 
@@ -603,7 +628,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 参考：
 
 - https://docs.docker.com/config/containers/logging/awslogs/
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
 
 | 設定項目                      | 説明                                                         | 補足                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -620,46 +645,46 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 ### ECSサービス（Fargateの場合）
 
-| 設定項目                     | 説明                                                         | 補足                                                         |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| タスク定義                   | サービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。 |                                                              |
-| 起動タイプ                   | ECSタスク内のコンテナの起動タイプを設定する。                |                                                              |
-| プラットフォームのバージョン | ECSコントロールプレーンのバージョンを設定する。              | バージョンによって、連携できるAWSリソースが異なる。          |
-| サービスタイプ               |                                                              |                                                              |
-| タスクの必要数               | 非スケーリング時またはデプロイ時のタスク数を設定する。       | 最小ヘルス率と最大率の設定値に影響する。                     |
-| 最小ヘルス率                 | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| 最大率                       | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
-| タスクの最小数               | スケーリング時のタスク数の最小数を設定する。                 |                                                              |
-| タスクの最大数               | スケーリング時のタスク数の最大数を設定する。                 |                                                              |
-| ロードバランシング           | ALBでルーティングするコンテナを設定する。                    |                                                              |
-| タスクの数                   | ECSタスクの構築数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
-| デプロイメント               | ローリングアップデート、ブルー/グリーンデプロイがある。      |                                                              |
-| サービスロール               |                                                              |                                                              |
+| 設定項目           | 説明                                                                                                     | 補足                                                         |
+|----------------|--------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
+| ECSタスク定義       | ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。                                                               |                                                              |
+| 起動タイプ          | ECSタスク内のコンテナの起動タイプを設定する。                                                                               |                                                              |
+| プラットフォームのバージョン | ECSコントロールプレーンのバージョンを設定する。                                                                              | バージョンによって、連携できるAWSリソースが異なる。          |
+| サービスタイプ        |                                                                                                        |                                                              |
+| ECSタスクの必要数     | 非スケーリング時またはデプロイ時のタスク数を設定する。                                                                            | 最小ヘルス率と最大率の設定値に影響する。                     |
+| 最小ヘルス率         | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                         | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| 最大率            | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                     | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| ヘルスチェックの猶予期間   | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
+| タスクの最小数        | スケーリング時のタスク数の最小数を設定する。                                                                                 |                                                              |
+| タスクの最大数        | スケーリング時のタスク数の最大数を設定する。                                                                                 |                                                              |
+| ロードバランシング      | ALBでルーティングするコンテナを設定する。                                                                                 |                                                              |
+| タスクの数          | ECSタスクの構築数をいくつに維持するかを設定する。                                                                             | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
+| デプロイメント        | ローリングアップデート、ブルー/グリーンデプロイがある。                                                                           |                                                              |
+| サービスロール        |                                                                                                        |                                                              |
 
 <br>
 
 ### ECSタスク定義（Fargateの場合）
 
-| 設定項目                           | 説明                                                         | 補足                                                         |
-| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| タスク定義名                       | タスク定義の名前を設定する。                                 |                                                              |
-| ネットワークモード                 | ホストとコンテナ間を接続するネットワーク様式を設定する。     |                                                              |
-| 互換性                             |                                                              |                                                              |
-| オペレーティングシステムファミリー |                                                              |                                                              |
-| タスクロール                       | タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールを設定する。 |                                                              |
-| タスク実行ロール                   | タスク上に存在するコンテナエージェントが、他のリソースにアクセスするために必要なロールを設定する。 |                                                              |
-| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリ使用量を設定する。      | タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
-| タスクCPU                          | ECSタスク当たりのコンテナの合計CPU使用量を設定する。         | ・タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
-| コンテナ定義                       | タスク内のコンテナを設定する。                               | JSONをインポートしても設定できる。                           |
-| サービス統合                       |                                                              |                                                              |
-| プロキシ                           |                                                              |                                                              |
-| FireLens統合                       | FireLensコンテナを使用する場合に有効化する。                 |                                                              |
-| ボリューム                         |                                                              |                                                              |
+| 設定項目                           | 説明                                                  | 補足                                                         |
+| ---------------------------------- |-----------------------------------------------------| ------------------------------------------------------------ |
+| ECSタスク定義名                       | ECSタスク定義の名前を設定する。                                      |                                                              |
+| ネットワークモード                 | ホストとコンテナ間を接続するネットワーク様式を設定する。                        |                                                              |
+| 互換性                             |                                                     |                                                              |
+| オペレーティングシステムファミリー |                                                     |                                                              |
+| タスクロール                       | タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールを設定する。    |                                                              |
+| タスク実行ロール                   | ECSタスク内のECSコンテナエージェントが、他のリソースにアクセスするために必要なロールを設定する。 |                                                              |
+| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリ使用量を設定する。                       | タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
+| タスクCPU                          | ECSタスク当たりのコンテナの合計CPU使用量を設定する。                       | ・タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
+| コンテナ定義                       | タスク内のコンテナを設定する。                                     | JSONをインポートしても設定できる。                           |
+| サービス統合                       |                                                     |                                                              |
+| プロキシ                           |                                                     |                                                              |
+| FireLens統合                       | FireLensコンテナを使用する場合に有効化する。                          |                                                              |
+| ボリューム                         |                                                     |                                                              |
 
 #### ▼ 新しいECSタスクを一時的に実行
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 **＊実装例＊**
 
@@ -712,7 +737,7 @@ exit ${EXIT_STATUS}
 
 なお、実行IAMユーザーを作成し、ECSタスクを起動できる最低限の権限をアタッチする。
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -751,7 +776,7 @@ exit ${EXIT_STATUS}
 
 アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーをアタッチする。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -773,7 +798,7 @@ exit ${EXIT_STATUS}
 
 Parameter Storeから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -790,9 +815,9 @@ Parameter Storeから変数を取得するために、ECSタスクロールに�
 
 #### ▼ タスク実行ロール
 
-タスク上に存在するコンテナエージェントが、他のリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを、タスクにアタッチする必要がある。このポリシーには、ECRへのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
+タスク内のECSコンテナエージェントが、他のリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを、タスクにアタッチする必要がある。このポリシーには、ECRへのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -816,7 +841,7 @@ Parameter Storeから変数を取得するために、ECSタスクロールに�
 
 datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする。
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -857,7 +882,7 @@ Dockerのbridgeネットワークに相当する。
 
 awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
+参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
 
 ![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
 
@@ -890,7 +915,7 @@ CodeDeployを使用してデプロイを行う。
 
 プライベートサブネットにFargateを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
+参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
 ![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
 
@@ -928,7 +953,7 @@ VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems M
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
+- https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
 - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 - https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
 
@@ -940,12 +965,12 @@ VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems M
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-Fargate上のコンテナに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがすでにインストールされているため、これは不要である。
+Fargate上のコンテナに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html
-- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+- https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
+- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
 - https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e
 
 （１）ECSサービスで、ECS-Execオプションを有効化する。
@@ -954,7 +979,7 @@ Fargate上のコンテナに対して、Session Managerを使用したシェル�
 
 （３）ECSタスク実行ロールにIAMポリシーを付与する。これにより、ECSタスクがSession Managerにアクセスできるようになる。
 
-```bash
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -975,7 +1000,7 @@ Fargate上のコンテナに対して、Session Managerを使用したシェル�
 
 （４）ECS Execを実行するユーザーに、実行権限のポリシーを付与する。
 
-```bash
+```yaml
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -1052,7 +1077,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 <br>
 
-## 03-03. EKS
+## 03-03. EKSデータプレーン
 
 ### セットアップ
 
@@ -1066,7 +1091,7 @@ $ aws configure
 
 （２）EKSのコンテキストを作成する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -1074,7 +1099,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 （３）kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
@@ -1096,17 +1121,17 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
-| Cluster                    | EKS Cluster           | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/clusters.html |
-| Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| Cluster                    | EKS Cluster           | 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html |
+| Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
 | Ingressコントローラー      | AWS LBコントローラー    | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
 |                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
-| マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| ワーカーNode               | Fargate Node、EC2 Node  | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-compute.html |
-| PersistentVolume           | EBS、EFS                | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/storage.html |
-| Secret                     | System Manager          | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/manage-secrets.html |
+| マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| ワーカーNode               | Fargate Node、EC2 Node  | 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
+| PersistentVolume           | EBS、EFS                | 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
+| Secret                     | System Manager          | 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
 | kube-dns                   | CoreDNS                 |                                                              |
 | kube-proxy                 | kube-proxy              |                                                              |
-| 種々のCNIプラグイン        | aws-nodeコンテナ        | ClusterネットワークとしてのVPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
+| 種々のCNIプラグイン        | aws-nodeコンテナ        | ClusterネットワークとしてのVPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
 | これら以外のリソース       | なし                    |                                                              |
 
 <br>
@@ -1124,8 +1149,8 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 | 設定項目                         | 説明                                                         | 補足                                                         |
 | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 名前                             | クラスターの名前を設定する。                                 |                                                              |
-| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/platform-versions.html |
-| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。              | 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/service_IAM_role.html |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。              | 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html |
 | シークレット                     | Secretに保持するデータをAWS KMSで暗号化するかどうかを設定する。 | AWS KMSについては、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html |
 | VPC、サブネット                  | ENIを配置するサブネットを設定する。                          | 複数のAZにまたがっている必要がある。                         |
 | クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
@@ -1151,7 +1176,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/network_reqs.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
 
@@ -1174,7 +1199,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、VPC内
 
 マルチNodeを構築する場合、AZごとにNodeを構築する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-networking.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
 
 ![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_multi-node.png)
 
@@ -1186,7 +1211,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、VPC内
 
 （１）ローカルマシンにIAMポリシーのJSONファイルをダウンロードする。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/aws-load-balancer-controller.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 
 ```bash
 $ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json
@@ -1303,13 +1328,13 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
 
-```bash
+```yaml
 {"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nnn.n.n.nnn:43958->nnn.nn.n.nn:53: read: connection refused"}
 ```
 
 （９）Ingressをデプロイし、IngressからALB Ingressを自動的に構築させる。以下の条件を満たす必要がある。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 #### ▼ IngressとALBの紐付け
 
@@ -1336,7 +1361,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 （１）EKSのコンテキストを作成する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/getting-started-console.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -1344,7 +1369,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 
 （２）kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
@@ -1352,7 +1377,7 @@ $ kubectl config use-context <ClusterのARN>
 
 （３）manifest.yamlファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
+参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
@@ -1388,17 +1413,26 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 ### セットアップ
 
+#### ▼ 制約
+
+on EC2にはない制約については、以下のリンクを参考にせよ。
+
+参考：
+
+- https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
+- https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
+
 #### ▼ メトリクス収集
 
-ワーカーNode内のメトリクスを収集する上で、FargateはDaemonsetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
+ワーカーNode内のメトリクスを収集する上で、FargateはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
 
 参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
 
 #### ▼ ログルーティング
 
-ワーカーNode内のログを転送する上で、FargateはDaemonsetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
+ワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-logging.html
+参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
 
 （１）ログ転送コンテナのためのNamespaceを作成する。名前は、必ず```aws-observability```とする。
 
@@ -1444,7 +1478,7 @@ data:
 
 - https://nishipy.com/archives/1122
 - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-getting-started.html
+- https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html
 - https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
 - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
@@ -1467,11 +1501,11 @@ Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに�
 
 Fargateを設定する。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/fargate-profile.html#fargate-profile-components
+参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
 | コンポーネント名            | 説明                                                         | 補足                                                         |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/pod-execution-role.html |
+| Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット                  | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
 | ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
 | ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
@@ -1525,19 +1559,19 @@ EC2で稼働するKubernetesのホストのこと。EKS on Fargateと比べて�
 
 元の残高は、ファイルシステムのスタンダードストレージクラスの容量に応じて大きくなる。
 
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits
+参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
 
 残高は、```BurstCreditBalance```メトリクスから確認できる。このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
 
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode
+参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 
 #### ▼ プロビジョニングモードの仕組み
 
 スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
 
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#provisioned-throughput
+参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
 
@@ -1590,7 +1624,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 | マルチAZ                         | プライマリーノードとリードレプリカを異なるAZに配置するかどうかを設定する。合わせて、自動フェイルオーバーを実行できるようになる。 |                                                              |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する。                  |                                                              |
 | セキュリティ                     | セキュリティグループを設定する。                             |                                                              |
-| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを構築する。 | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを構築する。 | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
 | バックアップ                     | バックアップの有効化、保持期間、時間を設定する。             | バックアップを取るほどでもないため、無効化しておいて問題ない。 |
 | メンテナンス                     | メンテナンスの時間を設定する。                               |                                                              |
 
@@ -1606,15 +1640,15 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
+- https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
 
-- https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
+- https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
 
 #### ▼ クラスターモード
 
 クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが構築される。反対に無効化すると、シャードは1つだけ構築される。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
+参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
 <br>
 
@@ -1624,7 +1658,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 Redisノードのグループ。同じデータを保持するグループ単位であり、プライマリーノードとレプリカノードが含まれる。同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。一方で、AuroraのDBクラスターはこれに相当する概念である。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
+参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 
 <br>
 
@@ -1803,9 +1837,9 @@ AWSリソースで起こったイベントを、他のAWSリソースに転送�
 
 指定したAWSリソースでイベントが起こると、以下のようなJSONが送信される。イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに転送する。イベントパターンに定義しないキーは任意のデータと見なされる。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
-```bash
+```yaml
 {
   "version": "0",
   "id": "*****",
@@ -1827,7 +1861,7 @@ AWSリソースで起こったイベントを、他のAWSリソースに転送�
 
 Amplifyの指定したIDのアプリケーションが、```Amplify Deployment Status Change```のイベントを送信し、これの```jobStatus```が```SUCCEED```/```FAILED```だった場合、これを転送する。
 
-```bash
+```yaml
 {
   "detail": {
     "appId": [
@@ -1850,7 +1884,7 @@ Amplifyの指定したIDのアプリケーションが、```Amplify Deployment S
 
 cron式またはrate式を使用して、スケジュールを定義する。これとLambdaを組み合わせることにより、バッチ処理を構築できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/ScheduledEvents.html
+参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 
 <br>
 
@@ -1858,7 +1892,7 @@ cron式またはrate式を使用して、スケジュールを定義する。こ
 
 #### ▼ ターゲットの一覧
 
-参考：https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-targets.html
+参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
 
 #### ▼ デバッグ
 
@@ -1877,7 +1911,7 @@ exports.handler = async (event) => {
 
 対象のAWSリソースで任意のイベントが起こった時に、EventBridgeからLambdaに転送するように設定する。
 
-```bash
+```yaml
 {
   "source": "aws.amplify"
 }
@@ -1885,7 +1919,7 @@ exports.handler = async (event) => {
 
 AWSリソースで意図的にイベントを起こし、Lambdaのロググループから内容を確認する。```detail```キーにイベントが割り当てられている。
 
-```bash
+```yaml
 {
     "event": {
         "version": "0",
@@ -1920,7 +1954,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
 
 入力パスにて、使用する値を抽出する。Amplifyで起こったイベントのJSONを変数として取り出す。JSONのキー名が変数名として機能する。
 
-```bash
+```yaml
 {
   "appId": "$.detail.appId",
   "branchName": "$.detail.branchName",
@@ -1934,7 +1968,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
 
 参考：https://app.slack.com/block-kit-builder
 
-```bash
+```yaml
 {
   "channel": "foo",
   "text": "Amplifyデプロイ完了通知",

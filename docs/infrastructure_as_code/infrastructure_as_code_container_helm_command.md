@@ -306,7 +306,7 @@ $ helm repo add <チャート名> <チャートリポジトリURL>
 "<チャート名>" has been added to your repositories
 ```
 
-登録していないチャートをhelmコマンドで操作しようとするとエラーになる。
+登録していないチャートにhelmコマンドでアクセスしようとするとエラーになる。
 
 ```bash
 $ helm show all <チャート名>
