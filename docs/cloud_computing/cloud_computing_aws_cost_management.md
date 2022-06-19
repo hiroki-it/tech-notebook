@@ -99,11 +99,11 @@ ECRに保存されたイメージの合計量が```500MB```を超えると、請
 
 <br>
 
-### EKS on Fargate
+### Fargate
 
 #### ▼ リソースの使用量
 
-EKS on Fargateでは、Fargate Node内でPodが使用したリソース量によって、料金が決定する。そのため、冗長化するPod数を減らすことで、料金を抑えられる。
+Fargateでは、Fargate Node内でPodが使用したリソース量によって、料金が決定する。そのため、冗長化するPod数を減らすことで、料金を抑えられる。
 
 参考：https://aws.amazon.com/jp/fargate/pricing/
 

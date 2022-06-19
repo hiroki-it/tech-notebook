@@ -439,20 +439,22 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 <br>
 
-## 03. ECS/EKS：Elastic Container/Kubernetes Service
+## 03. ECS、EKS：Elastic Container/Kubernetes Service
 
-### ECS/EKSとは
-
-コンテナオーケストレーションを実行する環境を提供する。VPCの外に存在している。ECS、EKS、Fargate、EC2の対応関係は以下の通り。
+### コントロールプレーンとデータプレーンの対応関係
 
 | コントロールプレーン（コンテナオーケストレーション環境） | データプレーン（コンテナ実行環境） | 説明                                                         |
 | ------------------------------------------------- |-------------------| ------------------------------------------------------------ |
-| ECS：Elastic Container Service                    | Fargate、EC2       | 単一のOS上でコンテナオーケストレーションを実行する。         |
-| EKS：Elastic Kubernetes Service                   | Fargate、EC2       | 複数のOS上それぞれでコンテナオーケストレーションを実行する。<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
+| ECS                    | EC2、Fargate       | 単一のOS上でコンテナオーケストレーションを実行する。         |
+| EKS                   | EC2、Fargate       | 複数のOS上それぞれでコンテナオーケストレーションを実行する。<br>参考：https://www.sunnycloud.jp/column/20210315-01/ |
 
 <br>
 
 ### コントロールプレーン
+
+#### ▼ コントロールプレーンとは
+
+コンテナオーケストレーションを実行する環境を提供する。データプレーンのVPC外に存在している。
 
 #### ▼ ECSの場合
 
@@ -474,13 +476,17 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 ### データプレーン
 
+#### ▼ データプレーンとは
+
+コンテナの実行環境のこと。『```on EC2```』『```on Fargate```』という呼び方は、データプレーンがECSの実行環境（```execution environment```）の意味合いを持つからである。
+
 #### ▼ EC2の場合
 
 EC2インスタンスをホストとして、コンテナを構築する。
 
 #### ▼ Fargateの場合
 
-マネージドなサーバーをホストとして、コンテナを構築する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。『ECS on Fargate』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。
+マネージドなサーバーをホストとして、コンテナを構築する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -518,14 +524,14 @@ ECSタスクの管理グループ単位のこと。ECSタスクへのロード�
 
 #### ▼ ECSコンテナエージェント
 
-ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。Fargate上にはECSコンテナエージェントがプリインストールされている。
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
+
+ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。Fargateの場合、ECSコンテナエージェントがプリインストールされている。
 
 参考：
 
 - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
 - https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
-
-![ecs_container-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-agent.png)
 
 #### ▼ ECSタスク定義
 
@@ -545,7 +551,230 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 <br>
 
-### FireLensコンテナ
+### ロール
+
+#### ▼ サービスロール
+
+ECSサービスがECSタスクを操作するために必要なロールである。サービスリンクロールに含まれ、ECSの構築時に自動的にアタッチされる。
+
+参考：
+
+- https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
+- https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+
+#### ▼ コンテナインスタンスロール
+
+![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-instance-role.png)
+
+コンテナのホストが他のAWSリソースにアクセスするために必要なロールである。Fargateの場合、不要である。
+
+参考：
+
+- https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
+- https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+
+#### ▼ タスクロール
+
+![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-role.png)
+
+ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。アプリケーションにS3やSystems Managerへのアクセス権限を与えたい場合は、タスク実行ロールではなくタスクロールに権限をアタッチする。
+
+参考：
+
+- https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
+- https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+
+**＊実装例＊**
+
+アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーをアタッチする。
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:*:*:*"
+      ]
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+Parameter Storeから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameters"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+#### ▼ タスク実行ロール
+
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
+
+ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを、タスクにアタッチする必要がある。このポリシーには、ECRへのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
+
+参考：
+
+- https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
+- https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする。
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ecs:ListClusters",
+                "ecs:ListContainerInstances",
+                "ecs:DescribeContainerInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+<br>
+
+### ネットワークモードとコンテナ間通信
+
+#### ▼ noneモード
+
+外部ネットワークが無く、タスクと外と通信できない。
+
+#### ▼ hostモード
+
+EC2でのみ使用できる。Dockerのhostネットワークに相当する。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ▼ bridgeモード
+
+EC2でのみ使用できる。Dockerのbridgeネットワークに相当する。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ▼ awsvpcモード
+
+FargateとEC2の両方で使用できる。awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
+- https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
+
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
+
+<br>
+
+### マルチECSサービス
+
+#### ▼ マルチECSサービスとは
+
+ECSクラスターが複数のECSサービスから構成される。マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。ただし、ECSクラスター内に複数のECSサービスを作成することで、Kubernetesのような構成を実現できる。
+
+参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
+
+#### ▼ ECSサービスディスカバリー
+
+Istioと同様にして、マイクロサービスが他のマイクロサービスにリクエストを送信する時に、Route53を使用してIPアドレスの名前解決を行う。オートスケーリングなどでマイクロサービスのIPアドレスが変更されても、動的にレコードを変更する。
+
+参考：
+
+- https://practical-aws.dev/p/ecs-service-discovery/
+- https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
+- https://dev.classmethod.jp/articles/ecs-service-discovery/
+
+![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
+
+<br>
+
+### プライベートサブネットからのアウトバウンド通信
+
+#### ▼ NAT Gateway、VPCエンドポイントの使用
+
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。VPCエンドポイントに関しては、EC2とFargateで必要なVPCエンドポイントが異なる。
+
+参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
+
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
+
+#### ▼ EC2の場合
+
+#### ▼ Fargateの場合
+
+Fargateの項目を参照
+
+<br>
+
+### ログ転送
+
+#### ▼ awslogsドライバー
+
+標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
+
+参考：
+
+- https://docs.docker.com/config/containers/logging/awslogs/
+- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+
+| 設定項目                      | 説明                                                         | 補足                                                         |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する。         |                                                              |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し、またこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
+| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する。           |                                                              |
+| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
+
+#### ▼ FireLensコンテナ
 
 以下のリンクを参考にせよ。
 
@@ -553,15 +782,9 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 <br>
 
-## 03-02-03. ECS on EC2
+## 03-02-02. on EC2
 
-### on EC2
-
-#### ▼ on EC2とは
-
-コンテナの実行環境のこと。『ECS on EC2』という呼び方は、FargateがECSの実行環境の意味合いを持つからである。
-
-#### ▼ AMI
+### EC2インスタンスのAMI
 
 任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
 
@@ -578,9 +801,7 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 <br>
 
-### EC2起動タイプのコンテナ
-
-#### ▼ タスク配置戦略
+### タスク配置戦略
 
 ECSタスクをECSクラスターに配置する時のアルゴリズムを選択できる。
 
@@ -592,13 +813,50 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 03-02-04. ECS on Fargate
+## 03-02-03. on Fargate
 
-### on Fargate
+### セットアップ
+
+#### ▼ ECSサービス
+
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ECSタスク定義                | ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。 |                                                              |
+| 起動タイプ                   | ECSタスク内のコンテナの起動タイプを設定する。                |                                                              |
+| プラットフォームのバージョン | ECSコントロールプレーンのバージョンを設定する。              | バージョンによって、連携できるAWSリソースが異なる。          |
+| サービスタイプ               |                                                              |                                                              |
+| ECSタスクの必要数            | 非スケーリング時またはデプロイ時のタスク数を設定する。       | 最小ヘルス率と最大率の設定値に影響する。                     |
+| 最小ヘルス率                 | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| 最大率                       | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
+| タスクの最小数               | スケーリング時のタスク数の最小数を設定する。                 |                                                              |
+| タスクの最大数               | スケーリング時のタスク数の最大数を設定する。                 |                                                              |
+| ロードバランシング           | ALBでルーティングするコンテナを設定する。                    |                                                              |
+| タスクの数                   | ECSタスクの構築数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
+| デプロイメント               | ローリングアップデート、ブルー/グリーンデプロイがある。      |                                                              |
+| サービスロール               |                                                              |                                                              |
+
+#### ▼ ECSタスク定義
+
+| 設定項目                           | 説明                                                         | 補足                                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ECSタスク定義名                    | ECSタスク定義の名前を設定する。                              |                                                              |
+| ネットワークモード                 | ホストとコンテナ間を接続するネットワーク様式を設定する。     |                                                              |
+| 互換性                             |                                                              |                                                              |
+| オペレーティングシステムファミリー |                                                              |                                                              |
+| タスクロール                       | ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールを設定する。 |                                                              |
+| タスク実行ロール                   | ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールを設定する。 |                                                              |
+| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリ使用量を設定する。      | ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
+| タスクCPU                          | ECSタスク当たりのコンテナの合計CPU使用量を設定する。         | ・ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
+| コンテナ定義                       | ECSタスク内のコンテナを設定する。                            | JSONをインポートしても設定できる。                           |
+| サービス統合                       |                                                              |                                                              |
+| プロキシ                           |                                                              |                                                              |
+| FireLens統合                       | FireLensコンテナを使用する場合に有効化する。                 |                                                              |
+| ボリューム                         |                                                              |                                                              |
 
 #### ▼ コンテナ定義
 
-タスク内のコンテナ1つに対して、環境を設定する。
+ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
@@ -621,68 +879,27 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                              |                                                              |
 
-#### ▼ awslogsドライバー
+<br>
 
-標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
+### IPアドレス
 
-参考：
+#### ▼ ECSタスクのIPアドレス
 
-- https://docs.docker.com/config/containers/logging/awslogs/
-- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+ECSタスクごとに異なるプライベートIPが割り当てられる。このIPアドレスに対して、ALBはルーティングを行う。
 
-| 設定項目                      | 説明                                                         | 補足                                                         |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する。         |                                                              |
-| ```awslogs-datetime-format``` | 日時フォーマットを定義し、またこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する。           |                                                              |
-| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
+#### ▼ FargateのIPアドレス
 
-#### ▼ 割り当てられるプライベートIPアドレス
+![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-タスクごとに異なるプライベートIPが割り当てられる。このIPアドレスに対して、ALBはルーティングを行う。
+Fargateは動的パブリックIPアドレス（Fargateの再構築後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
+
+参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
 <br>
 
-### ECSサービス（Fargateの場合）
+### ECSタスクの一時起動
 
-| 設定項目           | 説明                                                                                                     | 補足                                                         |
-|----------------|--------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
-| ECSタスク定義       | ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。                                                               |                                                              |
-| 起動タイプ          | ECSタスク内のコンテナの起動タイプを設定する。                                                                               |                                                              |
-| プラットフォームのバージョン | ECSコントロールプレーンのバージョンを設定する。                                                                              | バージョンによって、連携できるAWSリソースが異なる。          |
-| サービスタイプ        |                                                                                                        |                                                              |
-| ECSタスクの必要数     | 非スケーリング時またはデプロイ時のタスク数を設定する。                                                                            | 最小ヘルス率と最大率の設定値に影響する。                     |
-| 最小ヘルス率         | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                         | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| 最大率            | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                     | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| ヘルスチェックの猶予期間   | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
-| タスクの最小数        | スケーリング時のタスク数の最小数を設定する。                                                                                 |                                                              |
-| タスクの最大数        | スケーリング時のタスク数の最大数を設定する。                                                                                 |                                                              |
-| ロードバランシング      | ALBでルーティングするコンテナを設定する。                                                                                 |                                                              |
-| タスクの数          | ECSタスクの構築数をいくつに維持するかを設定する。                                                                             | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
-| デプロイメント        | ローリングアップデート、ブルー/グリーンデプロイがある。                                                                           |                                                              |
-| サービスロール        |                                                                                                        |                                                              |
-
-<br>
-
-### ECSタスク定義（Fargateの場合）
-
-| 設定項目                           | 説明                                                  | 補足                                                         |
-| ---------------------------------- |-----------------------------------------------------| ------------------------------------------------------------ |
-| ECSタスク定義名                       | ECSタスク定義の名前を設定する。                                      |                                                              |
-| ネットワークモード                 | ホストとコンテナ間を接続するネットワーク様式を設定する。                        |                                                              |
-| 互換性                             |                                                     |                                                              |
-| オペレーティングシステムファミリー |                                                     |                                                              |
-| タスクロール                       | タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールを設定する。    |                                                              |
-| タスク実行ロール                   | ECSタスク内のECSコンテナエージェントが、他のリソースにアクセスするために必要なロールを設定する。 |                                                              |
-| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリ使用量を設定する。                       | タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
-| タスクCPU                          | ECSタスク当たりのコンテナの合計CPU使用量を設定する。                       | ・タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
-| コンテナ定義                       | タスク内のコンテナを設定する。                                     | JSONをインポートしても設定できる。                           |
-| サービス統合                       |                                                     |                                                              |
-| プロキシ                           |                                                     |                                                              |
-| FireLens統合                       | FireLensコンテナを使用する場合に有効化する。                          |                                                              |
-| ボリューム                         |                                                     |                                                              |
-
-#### ▼ 新しいECSタスクを一時的に実行
+#### ▼ マイグレーション
 
 現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
@@ -762,133 +979,7 @@ exit ${EXIT_STATUS}
 
 <br>
 
-### ロール
-
-#### ▼ サービスロール
-
-サービス機能がタスクを操作するために必要なロールのこと。サービスリンクロールに含まれ、ECSの構築時に自動的にアタッチされる。
-
-#### ▼ タスクロール
-
-タスク内のコンテナのアプリケーションが、他のリソースにアクセスするために必要なロールのこと。アプリケーションにS3やSystems Managerへのアクセス権限を与えたい場合は、タスク実行ロールではなくタスクロールに権限をアタッチする。
-
-**＊実装例＊**
-
-アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーをアタッチする。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": [
-        "arn:aws:logs:*:*:*"
-      ]
-    }
-  ]
-}
-```
-
-**＊実装例＊**
-
-Parameter Storeから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
-
-```yaml
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetParameters"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-#### ▼ タスク実行ロール
-
-タスク内のECSコンテナエージェントが、他のリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを、タスクにアタッチする必要がある。このポリシーには、ECRへのアクセス権限の他、CloudWatchログにログを生成するための権限が設定されている。タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
-
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ecr:GetAuthorizationToken",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-**＊実装例＊**
-
-datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする。
-
-```yaml
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "ecs:ListClusters",
-                "ecs:ListContainerInstances",
-                "ecs:DescribeContainerInstances"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-<br>
-
-### ネットワークモードとコンテナ間通信
-
-#### ▼ noneモード
-
-外部ネットワークが無く、タスクと外と通信できない。
-
-#### ▼ hostモード
-
-Dockerのhostネットワークに相当する。
-
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
-
-#### ▼ bridgeモード
-
-Dockerのbridgeネットワークに相当する。
-
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
-
-#### ▼ awsvpcモード
-
-awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
-
-参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
-
-![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
-
-<br>
-
-### タスクのデプロイ手法
+### ECSタスクのデプロイ手法
 
 #### ▼ ローリングアップデート
 
@@ -911,27 +1002,9 @@ CodeDeployを使用してデプロイを行う。
 
 ### プライベートサブネットからのアウトバウンド通信
 
-#### ▼ プライベートサブネットからの通信
-
-プライベートサブネットにFargateを配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい。
-
-参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
-
-![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
-
-#### ▼ FargateのIPアドレスが動的である問題
-
-FargateにパブリックIPアドレスを持たせたい場合、Elastic IPアドレスの設定項目がなく、動的パブリックIPアドレスしか設定できない（Fargateの再構築後に変化する）。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
-
-![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
-
-そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
-
-参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
-
 #### ▼ NAT Gateway経由
 
-FargateからECRに対するdockerイメージのプルや、Fargateからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（パブリックネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
+FargateからECRに対するdockerイメージのプルや、データプレーンからコントールプレーンに対する通信は、VPCの外側に対するアウトバウンド通信（パブリックネットワーク向き通信）である。以下の通り、パブリックサブネットにNAT Gatewayを設置したとする。この場合、ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
@@ -942,14 +1015,14 @@ FargateからECRに対するdockerイメージのプルや、Fargateからコン
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
 | VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                              |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| CloudWatchログ         | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
-| ECR                    | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
-| S3                     | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
-| Parameter Store       | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。 |
-| Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。      |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
+| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
+| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
+| Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。    |
+| Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。             |
 
-VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
+Fargateの場合、VPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）と紐づく専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。料金的な観点から、NAT GatewayよりもVPCエンドポイントを経由した方が良い。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
 
 参考：
 
@@ -1050,30 +1123,6 @@ aws ecs execute-command \
     --debug \
     --command "bash"
 ```
-
-<br>
-
-### マイクロサービスアーキテクチャ風
-
-#### ▼ 複数のECSサービス構成
-
-マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用して、またインフラとしてEKSを使用するのが基本である。ただし、モノリスなアプリケーションをECSサービスで分割し、Fargateで稼働させることにより、マイクロサービスアーキテクチャ風のインフラを構築できる。
-
-参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
-
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
-
-#### ▼ ECSサービスディスカバリー
-
-Istioと同様にして、マイクロサービスが他のマイクロサービスにリクエストを送信する時に、Route53を使用してIPアドレスの名前解決を行う。オートスケーリングなどでマイクロサービスのIPアドレスが変更されても、動的にレコードを変更する。
-
-参考：
-
-- https://practical-aws.dev/p/ecs-service-discovery/
-- https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
-- https://dev.classmethod.jp/articles/ecs-service-discovery/
-
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
 
 <br>
 
@@ -1186,7 +1235,7 @@ Pod provisioning timed out (will retry) for pod
 
 #### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
 
-EKS Clusterを作成すると、ENIが作成される。これにより、VPC内のデータプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、コントロールプレーンとの通信では、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 参考：
 
@@ -1349,7 +1398,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 | ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
 | ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
-| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。EKS on Fargateの場合は、```ip```を設定する必要がある。 |
+| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、```ip```を設定する必要がある。 |
 | ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を構築する必要がある。 |
 | ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を構築する必要がある。 |
 
@@ -1409,13 +1458,13 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 <br>
 
-## 03-03-02. EKS on Fargate
+## 03-03-02. on Fargate
 
 ### セットアップ
 
 #### ▼ 制約
 
-on EC2にはない制約については、以下のリンクを参考にせよ。
+EC2にはない制約については、以下のリンクを参考にせよ。
 
 参考：
 
@@ -1472,7 +1521,7 @@ data:
         auto_create_group true
 ```
 
-（３）ワーカーNode（Fargate、EC2）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 参考：
 
@@ -1488,7 +1537,7 @@ data:
 
 #### ▼ Fargate Nodeとは
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。on EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
+Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
 
 参考：
 
@@ -1512,13 +1561,13 @@ Fargateを設定する。
 
 <br>
 
-## 03-03-03. EKS on EC2
+## 03-03-03. on EC2
 
 ### EC2 Node
 
 #### ▼ EC2 Nodeとは
 
-EC2で稼働するKubernetesのホストのこと。EKS on Fargateと比べてカスタマイズ性が高く、Node当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタマイズ性が高く、Node当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 
