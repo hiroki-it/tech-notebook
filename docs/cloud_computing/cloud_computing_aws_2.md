@@ -94,7 +94,7 @@ EC2インスタンスは、ルートデバイスボリュームがマウント�
 
 ![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_ebs-backed-instance.png)
 
-EBSで管理されているルートデバイスボリュームで、推奨の方法である。インスタンスストアボリュームとは異なり、コンピューティングとして機能するEC2インスタンスと、ストレージとして機能するEBSが分離されている。そのため、EBSボリュームの永続化を設定した場合に。EC2インスタンスが誤って削除されてしまったとしても、データを守める。また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。ただし、
+EBSで管理されているルートデバイスボリュームで、推奨の方法である。インスタンスストアボリュームとは異なり、コンピューティングとして機能するEC2インスタンスと、ストレージとして機能するEBSが分離されている。そのため、EBSボリュームの永続化を設定した場合に。EC2インスタンスが誤って削除されてしまったとしても、データを守れる。また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
 参考：
 
@@ -140,7 +140,7 @@ $ openssl pkcs8 \
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 
-#### ▼ Session Managerを使用したシェルログイン
+#### ▼ Session Managerを使用したログインシェル起動
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
 
@@ -150,7 +150,7 @@ $ openssl pkcs8 \
 | Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```         | Parameter StoreにGETリクエストを送信するため。              |
 | Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                       |
 
-EC2インスタンスに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
+Session Managerを使用してEC2インスタンスに接続し、ログインシェルを起動する。System Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
 
 参考：
 
@@ -786,7 +786,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_firelens.html
 
 <br>
 
@@ -827,20 +827,20 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 #### ▼ ECSサービス
 
-| 設定項目                     | 説明                                                         | 補足                                                         |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ECSタスク定義                | ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。 |                                                              |
-| 起動タイプ                   | ECSタスク内のコンテナの起動タイプを設定する。                |                                                              |
+| 設定項目                    | 説明                                                         | 補足                                                         |
+| --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ECSタスク定義               | ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。 |                                                              |
+| 起動タイプ                  | ECSタスク内のコンテナの起動タイプを設定する。                |                                                              |
 | プラットフォームのバージョン | ECSコントロールプレーンのバージョンを設定する。              | バージョンによって、連携できるAWSリソースが異なる。          |
 | サービスタイプ               |                                                              |                                                              |
 | ECSタスクの必要数            | 非スケーリング時またはデプロイ時のタスク数を設定する。       | 最小ヘルス率と最大率の設定値に影響する。                     |
 | 最小ヘルス率                 | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| 最大率                       | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| 最大率                      | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
 | ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
 | タスクの最小数               | スケーリング時のタスク数の最小数を設定する。                 |                                                              |
 | タスクの最大数               | スケーリング時のタスク数の最大数を設定する。                 |                                                              |
 | ロードバランシング           | ALBでルーティングするコンテナを設定する。                    |                                                              |
-| タスクの数                   | ECSタスクの構築数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
+| タスク数                   | ECSタスクの構築数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
 | デプロイメント               | ローリングアップデート、ブルー/グリーンデプロイがある。      |                                                              |
 | サービスロール               |                                                              |                                                              |
 
@@ -1036,7 +1036,7 @@ CodeDeployを使用してデプロイを行う。
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-Fargate上のコンテナに対して、Session Managerを使用したシェルログインを行う。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 参考：
 
@@ -1102,7 +1102,7 @@ ECS_TASK_ID=bar
 bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
 ```
 
-（６）コンテナに対して、シェルログインを実行する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
+（６）ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
 ```bash
 #!/bin/bash
@@ -1221,9 +1221,12 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 #### ▼ コントロールプレーンへのインバウンド通信
 
-コントロールプレーンのエンドポイントとしてNLBが配置されている。VPC外からNLBへのアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしかコントロールプレーンにアクセスできなくなる。この場合、Session Manager、VPC内の踏み台EC2インスタンス、Cloud9、などを使用して、コントロールプレーンにアクセスする。
+コントロールプレーンでは、```kubectl``` コマンドのエンドポイントとしてNLBが配置されている。VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。この場合、Session Manager、VPC内の踏み台EC2インスタンス、Cloud9、などを使用して、コントロールプレーンにアクセスする。
 
-参考：https://note.com/tyrwzl/n/nf28cd4372b18
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/cluster-endpoint.html#private-access
+- https://note.com/tyrwzl/n/nf28cd4372b18
 
 <br>
 
@@ -1481,7 +1484,7 @@ EC2にはない制約については、以下のリンクを参考にせよ。
 
 #### ▼ メトリクス収集
 
-ワーカーNode内のメトリクスを収集する上で、FargateはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
+ワーカーNode内のメトリクスのデータポイントを収集する上で、FargateはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
 
 参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
 
@@ -1614,7 +1617,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 ![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
 
-元の残高は、ファイルシステムのスタンダードストレージクラスの容量に応じて大きくなる。
+元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
@@ -2069,7 +2072,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
       "elements": [
         {
           "type": "mrkdwn",
-          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソー
+          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソール*"
 
 ```
 

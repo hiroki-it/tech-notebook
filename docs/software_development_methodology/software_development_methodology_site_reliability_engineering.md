@@ -123,7 +123,7 @@ SREとアプリケーションチームの間で、どのようにコミュニ�
 
 MTTxメトリクスとそのダッシュボードを作成すると良い。MTTxメトリクスについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 #### ▼ 参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
@@ -177,9 +177,9 @@ SLOを達成したかどうかを判断する場合に、ヒストグラムが�
 |---------|----------------------------------------------------------------------------------------------|
 | サービス概要  | アーキテクチャ、コンポーネント間の依存関係、ステークホルダー、プロダクト責任者                                                      |
 | 手順書     |                                                                                              |
-| ポストモーテム | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
+| ポストモーテム | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html |
 | ポリシー    | リリースノート、命名規則、など                                                                              |
-| SLA     | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html |
+| SLA     | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html |
 
 <br>
 

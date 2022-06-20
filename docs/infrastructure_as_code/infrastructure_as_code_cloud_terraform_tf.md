@@ -1402,6 +1402,7 @@ resource "aws_db_subnet_group" "this" {
   lifecycle {
     create_before_destroy = true
   }
+}
 ```
 
 **＊実装例＊**
@@ -1478,7 +1479,6 @@ resource "aws_elasticache_replication_group" "redis" {
       number_cache_clusters
     ]
   }
-}
 }
 ```
 

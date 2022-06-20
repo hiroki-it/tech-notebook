@@ -29,7 +29,7 @@ description: 分散トレース収集＠Datadogの知見をまとめました。
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -325,7 +325,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 #### ▼ 分散トレースとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
 #### ▼ 構造
 
@@ -357,7 +357,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 
 #### ▼ スパンとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
 #### ▼ 構造
 
@@ -432,7 +432,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ▼ スパンのデータポイント化
 
-スパンの持つデータをデータポイントとして集計すると、メトリクスを収集できる。
+スパンの持つデータをデータポイントとして集計すると、メトリクスのデータポイントを収集できる。
 
 参考：https://docs.datadoghq.com/tracing/generate_metrics/
 

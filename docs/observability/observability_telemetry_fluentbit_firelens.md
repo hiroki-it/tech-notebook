@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】FireLensコンテナ＠可観測性
-description: FireLensコンテナ＠可観測性の知見をまとめました。
+title: 【知見を記録するサイト】FireLensコンテナ＠テレメトリー収集ツール
+description: FireLensコンテナ＠テレメトリー収集ツールの知見をまとめました。
 ---
 
-# FireLensコンテナ＠可観測性
+# FireLensコンテナ＠テレメトリー収集ツール
 
 ## はじめに
 

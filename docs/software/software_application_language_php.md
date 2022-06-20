@@ -159,7 +159,7 @@ default_charset = UTF-8
 date.timezone = Asia/Tokyo # GMT
 
 [mysqlnd]
-# 開発環境では、メモリのメトリクスを収集
+# 開発環境では、メモリのメトリクスのデータポイントを収集する。
 mysqlnd.collect_memory_statistics = on # off
 
 [Assertion]

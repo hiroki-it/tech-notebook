@@ -1002,7 +1002,7 @@ spec:
 
 #### ▼ capacityとは
 
-ストレージの最大容量を設定する。
+ストレージの最大サイズを設定する。
 
 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
 

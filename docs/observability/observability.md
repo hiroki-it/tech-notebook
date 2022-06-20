@@ -19,13 +19,14 @@ description: 可観測性の知見をまとめました。
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
 
-『収集されたデータから、システムにおける想定外の不具合をどれだけ正確に推測できるか』を表す程度のこと。システムの想定内の不具合は『監視』や『テスト』によって検知できるが、想定外のものを検知できない。しかし、可観測性を高めることにより、想定外の不具合を表面化できる。想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
+『収集されたデータから、システムにおける想定外を含むあらゆる不具合を、どれだけ正確に推測できるか』を表す程度のこと。システムの想定内の不具合は『監視』や『テスト』によって検知できるが、想定外のものを検知できない。可観測性は、監視やテストも含むスーパーセットであり、想定外の不具合も表面化する。する想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
 参考：
 
 - https://blog.thundra.io/observability-driven-development-for-serverless
 - https://sookocheff.com/post/architecture/testing-in-production/
 - https://www.sentinelone.com/blog/observability-production-systems-why-how/
+- https://kakakakakku.hatenablog.com/entry/2020/05/25/064548
 
 <br>
 
@@ -115,7 +116,7 @@ description: 可観測性の知見をまとめました。
 
 #### ▼ ツールの種類
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
 
 <br>
 
@@ -175,7 +176,7 @@ description: 可観測性の知見をまとめました。
 
 #### ▼ ツールの種類
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
 
 <br>
 
@@ -216,7 +217,7 @@ description: 可観測性の知見をまとめました。
 
 #### ▼ データポイント化
 
-スパンが持つデータをデータポイントとして集計することにより、メトリクスを収集できる。
+スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。
 
 <br>
 
@@ -260,7 +261,7 @@ description: 可観測性の知見をまとめました。
 
 #### ▼ ツールの種類
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_others.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
 
 <br>
 

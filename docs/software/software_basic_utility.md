@@ -529,10 +529,10 @@ $ dig -x 182.22.28.252
 
 #### ▼ オプション無し
 
-指定したディレクトリ内のサブディレクトリの容量と、ディレクトリ全体の合計容量を、取得する。
+指定したディレクトリ内のサブディレクトリのサイズと、ディレクトリ全体の合計サイズを、取得する。
 
 ```bash
-# 表示結果を容量の降順に並び替える。
+# 表示結果をサイズの降順に並び替える。
 $ du ./ | sort -n
 
 21816   ./vendor/foo/bar/baz/qux
@@ -545,7 +545,7 @@ $ du ./ | sort -n
 
 #### ▼ -h
 
-読みやすい単位で、指定したディレクトリ内のサブディレクトリの容量と、ディレクトリ全体の合計容量を、取得する。
+読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズと、ディレクトリ全体の合計サイズを、取得する。
 
 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
@@ -562,7 +562,7 @@ $ du -h ./
 
 #### ▼ -s
 
-指定したディレクトリ内の2	合計容量を取得する。
+指定したディレクトリ内の合計サイズを取得する。
 
 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
@@ -809,6 +809,24 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ```bash
 $ ls -l -a
+
+-rw-r--r--  1 root   8238708 Jun 19 20:18 foo
+-rw-r--r--  1 root     20734 Jun 19 20:18 bar
+-rw-r--r--  1 root 266446929 Jun 19 20:18 baz
+-rw-r--r--  1 root 174540990 Jun 19 20:18 qux
+```
+
+#### ▼ -h
+
+ファイルサイズをわかりやすい単位で取得する。ディレクトリのサイズは取得できない。
+
+```bash
+$ ls -l -h
+
+-rw-r--r-- 1 root root 7.9M Jun 19 20:18 foo
+-rw-r--r-- 1 root root 21K  Jun 19 20:18 bar
+-rw-r--r-- 1 root root 255M Jun 19 20:18 baz
+-rw-r--r-- 1 root root 167M Jun 19 20:18 qux
 ```
 
 <br>
@@ -884,12 +902,12 @@ $ swapoff /swap_volume
 
 #### ▼ mountとは
 
-指定したデバイスファイルをマウントポイント（ディレクトリ）にマウントする。
+指定したデバイスファイルを、マウント先ディレクトリ（マウントポイント）にマウントする。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 
 ```bash
-$ mount -t /dev/sdb1 <マウントポイント>
+$ mount -t /dev/sdb1 <マウント先ディレクトリ>
 ```
 
 #### ▼ -t
@@ -907,7 +925,7 @@ $ mount -t /dev/sdb1 <マウントポイント>
 NFSによるマウントを実行する。
 
 ```bash
-$ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクトリ> <マウントポイント>
+$ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクトリ> <マウント先ディレクトリ>
 ```
 
 <br>

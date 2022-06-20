@@ -121,7 +121,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ▼ kubeletとは
 
-ワーカーNode上で稼働し、コンテナランタイムを操作することでPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスの元となるデータをkube-apiserverに提供する。
+ワーカーNode上で稼働し、コンテナランタイムを操作することでPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
 参考：https://thinkit.co.jp/article/17453
 

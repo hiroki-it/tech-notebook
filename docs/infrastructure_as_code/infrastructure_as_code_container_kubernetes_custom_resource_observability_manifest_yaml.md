@@ -163,7 +163,7 @@ $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 
 #### ▼ ServiceMonitor
 
-Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスを収集する。
+Serviceに対してPull型通信を送信し、Serviceに紐づくリソースのメトリクスのデータポイントを収集する。
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 

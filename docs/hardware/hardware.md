@@ -290,11 +290,11 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 ## 07. GPUとVRAM
 
-GPUとVRAMの容量によって、扱うことのできる解像度と色数が決まる。
+GPUとVRAMのサイズによって、扱うことのできる解像度と色数が決まる。
 
 ![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VRAM.jpg)
 
-富士通PCのGPUとVRAMの容量は、以下の通り。
+富士通PCのGPUとVRAMのサイズは、以下の通り。
 
 ![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/本パソコンのVRAMスペック.jpg)
 

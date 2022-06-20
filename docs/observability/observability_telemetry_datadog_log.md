@@ -57,7 +57,7 @@ description: ログ収集＠Datadogの知見をまとめました。
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -69,8 +69,8 @@ description: ログ収集＠Datadogの知見をまとめました。
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 
@@ -81,7 +81,7 @@ FluentBitを稼働させたコンテナのこと。Datadogの代わりにログ�
 参考：
 
 - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
-- https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_firelens.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_firelens.html
 
 <br>
 
@@ -302,7 +302,7 @@ export default browserLogsForSsgPlugin
 
 ### タグ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_telemetry_association.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html
 
 ## 06. 収集されたログの送信
 
@@ -337,7 +337,7 @@ logs:
 
 FireLensコンテナで稼働するFluentBitが、Datadogにログを送信する。以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit_vs_fluentd.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_vs_fluentd.html
 
 <br>
 
@@ -521,7 +521,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、以下のようなカテゴリパーサーのルールを定義する。```http.status_code```属性のステータスコード値に応じて、```http.status_category```属性にレベル値（```info```、```notice```、```warning```、```critical```）に変換する。ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html#_16
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 ```bash
 INFO @http.status_code:[200 TO 299]

@@ -45,7 +45,7 @@ description:  監視＠Datadogの知見をまとめました。
 
 アラートレベルは、アプリケーション間で共通である方が良い。通知内容に変数を使用することにより、異なるアプリケーションに共通のアラート条件を適用できるようになる。そのため、アプリケーション間でアラートレベルを共通化できる。ステータスに応じてアラートするかどうかの決め方については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/monitoring.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 #### ▼ テンプレート変数
 

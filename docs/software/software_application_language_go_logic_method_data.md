@@ -41,7 +41,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 | データ型 | 表記     | 初期値                       |
 | -------- | -------- | ---------------------------- |
 | ポインタ | ```*```  | ```nil```                    |
-| スライス | ```[]``` | ```nil```（要素数、容量：0） |
+| スライス | ```[]``` | ```nil```（要素数、サイズ：0） |
 | マップ   |          | ```nil```                    |
 | チャネル |          | ```nil```                    |
 
@@ -668,7 +668,7 @@ func main() {
 
 #### ▼ スライスとは
 
-参照先の配列に対するポインタ、長さ、容量を持つデータ型である。
+参照先の配列に対するポインタ、長さ、サイズを持つデータ型である。
 
 ![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/reference-types_slice.png)
 

@@ -16,7 +16,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 ### Processエージェントとは
 
-デーモンであるdatadogエージェントに含まれている。アプリケーションからメトリクスを収集し、Datadogに転送する。
+デーモンであるdatadogエージェントに含まれている。アプリケーションからメトリクスのデータポイントを収集し、Datadogに転送する。
 
 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -28,7 +28,7 @@ title: 【知見を記録するサイト】メトリクス収集＠Datadog
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_agent_conf.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 

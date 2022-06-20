@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】datadogエージェントの設定＠可観測性
-description: datadogエージェントの設定＠可観測性の知見をまとめました。
+title: 【知見を記録するサイト】datadogエージェントの設定＠テレメトリー収集ツール
+description: datadogエージェントの設定＠テレメトリー収集ツールの知見をまとめました。
 ---
 
-# datadogエージェントの設定＠可観測性
+# datadogエージェントの設定＠テレメトリー収集ツール
 
 ## はじめに
 
@@ -23,19 +23,19 @@ Datadogにデータを送信するためには、アプリケーションにdata
 
 ### メトリクス収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
 ### ログ収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_log.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
 
 <br>
 
 ### 分散トレース収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_distributed_trace.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 
@@ -210,7 +210,7 @@ FROM data/agent:latest
 
 #### ▼ datadogコンテナ
 
-Datadogが提供するdatadogイメージによって構築されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスを収集し、Datadogにこれを転送する。
+Datadogが提供するdatadogイメージによって構築されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
@@ -289,7 +289,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 #### ▼ ECSのIAMロール
 
-datadogコンテナがコンテナからメトリクスを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
+datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
 
 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 

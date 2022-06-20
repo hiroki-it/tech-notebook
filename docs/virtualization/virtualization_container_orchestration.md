@@ -52,13 +52,13 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからログを受信し、他にルーティングする。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 
-datadogコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからメトリクスを収集する。
+datadogコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからメトリクスのデータポイントを収集する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability_datadog_metrics.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 

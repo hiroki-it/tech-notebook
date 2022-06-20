@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】FluentBit＠可観測性
-description: FluentBit＠可観測性の知見をまとめました。
+title: 【知見を記録するサイト】FluentBit＠テレメトリー収集ツール
+description: FluentBit＠テレメトリー収集ツールの知見をまとめました。
 ---
 
-# FluentBit＠可観測性
+# FluentBit＠テレメトリー収集ツール
 
 ## はじめに
 

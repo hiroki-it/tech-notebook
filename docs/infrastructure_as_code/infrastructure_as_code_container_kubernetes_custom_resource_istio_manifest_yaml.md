@@ -101,7 +101,7 @@ $ istioctl x uninstall --purge
 
 ### Minikubeのセットアップ
 
-Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低容量を以下の通りにする必要がある。
+Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -282,7 +282,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyCPU
 
-Envoyコンテナで使用するCPU容量を設定する。
+Envoyコンテナで使用するCPUサイズを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -324,7 +324,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyMemory
 
-Envoyコンテナで使用するメモリ容量を設定する。
+Envoyコンテナで使用するメモリサイズを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 

@@ -29,15 +29,20 @@ description: シェル＠ユーティリティの知見をまとめました。
 
 #### ▼ ログインシェル
 
-認証情報を必要とする。
+認証情報を必要とし、認証後に最初に起動するシェルのこと。パスワードは、```/etc/passwd```ファイルに設定されている。
 
-参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+参考：
+
+- https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
+- https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 ```bash
+# ハイフンオプション有り
 $ su - <ユーザー名>
 ```
 
 ```bash
+# --loginオプション有り
 $ bash --login
 ```
 
@@ -47,16 +52,57 @@ $ ssh
 
 #### ▼ インタラクティブシェル
 
-認証情報を必要としない。
+認証情報を必要とせず、最初に起動するシェルのこと。
 
 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 ```bash
+# ハイフンオプション無し
 $ su <ユーザー名>
 ```
 
 ```bash
+# --loginオプション無し
 $ bash
+```
+
+#### ▼ 非インタラクティブシェル
+
+シェルスクリプトを指定して実行するシェルのこと。
+
+```bash
+$ bash -c foo.sh
+```
+
+#### ▼ 確認方法
+
+現在の起動方法の種類は、変数の『```$0```』に格納されたシェルスクリプトのファイル名から確認できる。
+
+参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
+
+```bash
+$ echo $0
+
+sh # インタラクティブシェル
+
+# ログインシェルを起動する。ハイフンオプションがあることに注意する。
+$ sudo su -
+Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
+
+[root@<IPアドレス> bin] $ echo $0
+
+-bash # ログインシェルの場合、シェルの前にハイフンが付く。
+```
+
+ちなみに、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
+
+参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+
+```bash
+#!/bin/sh
+# foo.shファイル
+
+echo $0 # foo.sh
 ```
 
 <br>
@@ -355,7 +401,7 @@ $ echo 'Hello World' >| stdout.txt
 
 **＊実行例＊**
 
-検索されたファイルの容量を合計する。
+検索で取得されたファイルのサイズを合計する。
 
 ```bash
 $ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"

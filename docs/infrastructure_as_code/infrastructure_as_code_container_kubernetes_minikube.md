@@ -377,13 +377,13 @@ kubectlコマンド実行時のデフォルト値を設定する。
 $ minikube config set driver virtualbox
 ```
 
-CPU容量の上限値を設定する。
+CPUサイズの上限値を設定する。
 
 ```bash
 $ minikube config set cpus 4
 ```
 
-メモリ容量の上限値を設定する。
+メモリサイズの上限値を設定する。
 
 ```bash
 minikube config set memory 16384
