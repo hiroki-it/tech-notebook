@@ -33,13 +33,13 @@ Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されてい�
 
 #### ▼ Prometheus serverとは
 
-メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントを待ち受ける。
+メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、またGrafanaのPromQLによるアクセスを待ち受ける。
 
 参考：https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 
 #### ▼ ローカルストレージ
 
-Prometheusは、自身が持つストレージに、収集した全てのメトリクスを保管する。Prometheusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ以下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
+Prometheusは、自身が持つストレージに、収集した全てのメトリクスを保管するPrometheusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ以下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
 
 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
@@ -151,50 +151,31 @@ Prometheusで収集したメトリクスを抽出し、集計できる。
 
 <br>
 
-### メトリクス
+### データ型
 
-#### ▼ 単位について
+#### ▼ Instant vector
 
-サイズに関するメトリクスでは、単位はデフォルトで```KB```になる。
+特定の時点の時系列型データのこと。
 
-#### ▼ prometheus_tsdb_head_samples_appended_total
+参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
-データポイントの合計数を表す。
+#### ▼ Range vector
 
-参考：
+特定の期間の時系列型データのこと。
 
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
-```bash
-prometheus_tsdb_head_samples_appended_total
-```
+#### ▼ Scalar
 
-#### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
+浮動小数点の数値型データのこと。
 
-チャンクの合計サイズ（KB）を表す。
+参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
-参考：
+#### ▼ String
 
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+文字列型データのこと。
 
-```bash
-prometheus_tsdb_compaction_chunk_size_bytes_sum
-```
-
-#### ▼ prometheus_tsdb_compaction_chunk_samples_sum
-
-チャンクの合計数を表す。
-
-参考：
-
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
-
-```bash
-prometheus_tsdb_compaction_chunk_samples_sum
-```
+参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 <br>
 
@@ -202,18 +183,20 @@ prometheus_tsdb_compaction_chunk_samples_sum
 
 #### ▼ count
 
-時間範囲内の合計数を算出する。
+期間内の合計数を算出する。
 
 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
-```bash
-count()
-```
-
 #### ▼ increase
 
+rate関数のラッパーであり、rate関数の結果（1秒当たりの平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
+
+参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+
 ```bash
-increase()
+# rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
+increase(foo_metrics[5m])
+= rate(foo_metrics[1h]) * 5 * 60
 ```
 
 #### ▼ rate
@@ -222,34 +205,68 @@ increase()
 
 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
-```bash
-rate()
-```
+<br>
+
+## 02-02. メトリクス
+
+### ```prometheus_tsdb_*```
+
+#### ▼ prometheus_tsdb_head_samples_appended_total
+
+Prometheusが収集したデータポイントの合計数を表す。
+
+参考：
+
+- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+
+
+#### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
+
+Prometheusが作成したチャンクの合計サイズ（KB）を表す。
+
+参考：
+
+- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+
+
+
+#### ▼ prometheus_tsdb_compaction_chunk_samples_sum
+
+Prometheusが作成したチャンクの合計数を表す。
+
+参考：
+
+- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+- https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
 <br>
 
-### Tips
+## 02-03. クエリのTips
 
-#### ▼ 一秒当たりの平均サイズ（KB）の増加率
+### データポイントの各種数値の算出
 
-データポイントに関して、一秒当たりの平均サイズ（KB）の増加率を分析する。
+#### ▼ データポイントの平均サイズ（KB/秒）の増加率
+
+データポイントの平均サイズ（KB/秒）の増加率を分析する。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 ```
 
-#### ▼ 一秒当たりの合計数の増加率
+#### ▼ データポイントの合計数（個/秒）の増加率
 
-データポイントに関して、一秒当たりの合計数の増加率を分析する。
+データポイントの合計数（個/秒）の増加率を分析する。
 
 ```bash
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-#### ▼ 一秒当たりの合計サイズ（KB）の増加率
+#### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-データポイントに関して、一秒当たりの合計サイズ（KB）の増加率を分析する。
+データポイントの合計サイズ（KB/秒）の増加率を分析する。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -257,9 +274,9 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h]) *
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
-#### ▼ 一日当たりの合計サイズ（KB）の増加率
+#### ▼ データポイントの合計サイズ（KB/日）の推移
 
-データポイントに関して、一日当たりの合計サイズ（KB）の増加率を分析する。
+（個/秒）データポイントの合計サイズ（KB/日）の推移を分析する。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -268,9 +285,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 60 * 60 * 24
 ```
 
-#### ▼ 一日当たりに要するストレージの最低サイズ（KB）の増加率
+<br>
 
-データポイントに関して、一日当たりに要するストレージの最低サイズ（KB）の増加率を分析する。その他に必要な追加サイズも考慮すると、20%分のサイズが必要になる。
+### ストレージの各種数値の算出
+
+#### ▼ ローカルストレージの必要サイズ（KB/日）
+
+データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。ローカルストレージの部品ファイルとして、20%分のサイズが必要になる。この結果から、ローカルストレージの必要サイズを推測できる。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -287,4 +308,12 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
 - https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
 
-<br>
+#### ▼ リモートストレージの必要サイズ（KB/日）
+
+Prometheusで収集したメトリクスのうち、実際にリモートストレージに送信している合計サイズ（KB/日）を分析する。この結果から、リモートストレージの必要サイズを推測できる。
+
+```bash
+rate(prometheus_remote_storage_bytes_total[1h]) *
+60 * 60 * 24
+```
+

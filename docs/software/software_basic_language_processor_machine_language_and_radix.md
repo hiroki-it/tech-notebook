@@ -35,7 +35,7 @@ description: 機械語と進数の知見をまとめました。
 
 ### なぜ８bitを1Byteとするのか？（半角英数字とbitの関係）
 
-```8```bitを一区切りとして、```1```Byteと表現する。これは、半角英数字一文字が８bitのデータ量を持つからである。
+```8```bitを一区切りとして、```1```Byteと表現する。これは、半角英数字一文字が８bitのデータサイズを持つからである。
 
 ![半角英数字一文字で1バイト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/半角英数字一文字で1バイト.png)
 

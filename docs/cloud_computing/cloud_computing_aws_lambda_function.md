@@ -331,13 +331,13 @@ func main() {
 
 #### ▼ レポートログ
 
-| 機能名            |                                      |
-| --------------- | ------------------------------------ |
-| RequestId       | リクエストID                         |
-| Duration        | イベントの処理時間                   |
-| Billed Duration | Lambdaの課金対象の時間               |
-| Memory Size     | Lambdaのメモリサイズ                 |
-| Max Memory Used | Lambdaが実際に使用するメモリの最大量 |
+| 機能名            |                         |
+| --------------- |-------------------------|
+| RequestId       | リクエストID                 |
+| Duration        | イベントの処理時間               |
+| Billed Duration | Lambdaの課金対象の時間          |
+| Memory Size     | Lambdaのメモリサイズ           |
+| Max Memory Used | Lambdaが実際に使用するメモリの最大サイズ |
 
 #### ▼ ログの出力方法
 

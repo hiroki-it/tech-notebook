@@ -854,8 +854,8 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | オペレーティングシステムファミリー |                                                              |                                                              |
 | タスクロール                       | ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールを設定する。 |                                                              |
 | タスク実行ロール                   | ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールを設定する。 |                                                              |
-| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリ使用量を設定する。      | ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
-| タスクCPU                          | ECSタスク当たりのコンテナの合計CPU使用量を設定する。         | ・ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
+| タスクメモリ                       | ECSタスク当たりのコンテナの合計メモリサイズを設定する。      | ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。 |
+| タスクCPU                          | ECSタスク当たりのコンテナの合計CPUサイズを設定する。         | ・ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。 |
 | コンテナ定義                       | ECSタスク内のコンテナを設定する。                            | JSONをインポートしても設定できる。                           |
 | サービス統合                       |                                                              |                                                              |
 | プロキシ                           |                                                              |                                                              |
@@ -882,7 +882,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                   |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)        |                                         | Parameter Storeから出力する環境変数を設定する。           |                                                              |
-| memory                          | ```--memory```                          | コンテナのメモリ使用量の閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
+| memory                          | ```--memory```                          | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                              |                                                              |
@@ -1602,7 +1602,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | パフォーマンスモード     |                                                              |                                                              |
 | スループットモード       | EFSのスループット性能を設定する。                            |                                                              |
-| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス（IA：Infrequent Access）ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージの使用量を確認できる。<br>参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
+| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス（IA：Infrequent Access）ストレージクラスに移動保存するまでの期限を設定する。 | ・ライフサイクルポリシーを有効にしない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
 | ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する。       |                                                              |
 | 自動バックアップ         | AWS Backupに定期的に保存するかどうかを設定する。             |                                                              |
 | ネットワーク             | マウントターゲットを設置するサブネット、セキュリティグループを設定する。 | ・サブネットは、ファイル供給の速度の観点から、マウントターゲットにアクセスするAWSリソースと同じにする。<br>・セキュリティグループは、EC2からのNFSプロトコルアクセスを許可したものを設定する。EC2のセキュリティグループを通過したアクセスだけを許可するために、IPアドレスでは、EC2のセキュリティグループを設定する。 |

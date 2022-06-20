@@ -82,13 +82,13 @@ FluentBitが対応する宛先にログをルーティングできる。
 
 #### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているconfファイルの設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定をそのまま使用する場合は、こちらを採用する。
 
 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
 
 ```dockerfile
 FROM amazon/aws-for-fluent-bit:latest

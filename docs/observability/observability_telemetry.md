@@ -81,6 +81,20 @@ Grafanaは、ダッシュボードとストレージから構成されている�
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
 
+#### ▼ データソース
+
+参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
+
+| データソース名       | 例                                 |
+| -------------------- | ---------------------------------- |
+| 時系列データベース   | Prometheus、Graphite、InfluxDB     |
+| RDB                  | MySQL、PostgreSQL                  |
+| クラウドデータソース | AWS CloudWatch、Google Stackdriver |
+
+#### ▼ ダッシュボード
+
+PromQLによるデータポイントの抽出をメトリクスとし、複数のメトリクスのセットをダッシュボードとして定義できる。
+
 <br>
 
 ## 03. Jaeger
@@ -97,7 +111,7 @@ Kubernetesリソースの分散トレースを収集し、これの分析と可�
 
 <br>
 
-## 05. Kiali
+## 04. Kiali
 
 ### Kialiの仕組み
 
@@ -111,9 +125,7 @@ Prometheusで収集されたメトリクスを再収集し、Istioの可視化�
 
 <br>
 
-
-
-## 06. VictoriaMetrics
+## 05. VictoriaMetrics
 
 ### VictoriaMetricsの仕組み
 
@@ -125,7 +137,7 @@ Prometheusで収集されたメトリクスを再収集し、Istioの可視化�
 
 ![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
 
-#### ▼ ディレクトリ構造
+#### ▼ vmstorage
 
 ```yaml
 /var/lib/victoriametrics/
