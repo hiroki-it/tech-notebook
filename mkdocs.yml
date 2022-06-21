@@ -298,7 +298,7 @@ nav:
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
                   - ■ カスタムリソース:
                       - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
-                      - 可観測性リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_observability_manifest_yaml.md
+                      - テレメトリー収集リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_telemetry_manifest_yaml.md
                       - ■ ArgoCD:
                           - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_yaml.md
                       - ■ Istio:
