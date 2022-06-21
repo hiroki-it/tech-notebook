@@ -181,7 +181,7 @@ server {
 
 #### ▼ aptリポジトリから
 
-nginxを```apt-get```コマンドでインストールすると、古いバージョンが指定されるため、```apt```コマンドを使用する。
+nginxを```apt-get```コマンドでインストールすると、旧バージョンが指定されるため、```apt```コマンドを使用する。
 
 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
@@ -586,7 +586,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 
 #### ▼ tcp_nopush
 
-上述のLinuxの```sendfile```システムコールを使用する場合、適用できる。クライアントへのレスポンス時、ヘッダーとファイルを、1つのパケットにまとめて返信するかどうかを設定する。
+上述のLinuxの```sendfile```システムコールを使用する場合に適用できる。クライアントへのレスポンス時、ヘッダーとファイルを1つのパケットにまとめて返信するかどうかを設定する。
 
 **＊実装例＊**
 

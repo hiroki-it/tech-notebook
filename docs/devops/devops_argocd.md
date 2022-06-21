@@ -921,13 +921,15 @@ spec:
 
 #### ▼ strategyとは
 
-apply手法を設定する。
+デプロイ手法を設定する。デプロイ手法の種類については、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html
 
 #### ▼ blueGreen
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
-ブルーグリーンapplyメントを使用して、新しいPodをリリースする。
+ブルーグリーンデプロイメントを使用して、新しいPodをリリースする。
 
 参考：
 

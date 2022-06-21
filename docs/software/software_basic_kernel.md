@@ -19,106 +19,13 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 <br>
 
-## 02 ジョブ管理
+## 02. メモリ管理（記憶管理）
 
-### ジョブ管理とは
-
-カーネルはジョブ（プロセスのセット）を管理する。クライアントは、マスタスケジュールに対して、ジョブを実行するための命令を与える。
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
 
 <br>
 
-### マスタスケジュラ、ジョブスケジュラ
-
-#### ▼ マスタスケジュラ、ジョブスケジュラとは
-
-![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
-
-マスタスケジュラは、ジョブスケジュラにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使用するべきとのこと。
-
-参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
-
-複数のジョブ（プログラムやバッチ）の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。ややこしいことに、タスクスケジューラとも呼ぶ。
-
-#### ▼ Reader
-
-ジョブ待ち行列に登録
-
-#### ▼ Initiator
-
-ジョブステップに分解
-
-#### ▼ Terminator
-
-出力待ち行列に登録
-
-#### ▼ Writer
-
-優先度順に出力の処理フローを実行
-
-<br>
-
-### Initiatorによるジョブのジョブステップへの分解
-
-Initiatorによって、ジョブはジョブステップに分解される。
-
-![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
-
-<br>
-
-## 03. タスク管理
-
-### タスク管理とは
-
-![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
-
-タスクとは、スレッドに似たような、単一のプロセスのこと。Initiatorによるジョブステップから、タスク管理によって、タスクが生成される。タスクが生成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
-
-参考：https://www.amazon.co.jp/dp/4297124513
-
-<br>
-
-### 優先順方式
-
-各タスクに優先度を設定し、優先度の高いタスクから順に、ディスパッチしていく方式。
-
-<br>
-
-### 到着順方式
-
-待ち行列に登録されたタスクから順に、ディスパッチしていく方式。
-
-![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
-
-**＊例＊**
-
-以下の様に、タスクがCPUに割り当てられていく。
-
-![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_2.png)
-
-<br>
-
-### ラウンドロビン方式
-
-ラウンドロビンは、『総当たり』の意味。一定時間（タイムクウォンタム）ごとに、実行状態にあるタスクが強制的に待ち行列に登録される。交代するように、他のタスクがディスパッチされる。
-
-![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
-
-**＊例＊**
-
-生成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
-
-![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
-
-1. タスクAが0秒に待ち行列へ登録される。
-2. 20秒間、タスクAは実行状態へ割り当てられる。
-3. 20秒時点で、タスクAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるタスクBは、実行可能状態から実行状態にディスパッチされる。
-4. 40秒時点で、タスクCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるタスクAは、実行可能状態から実行状態にディスパッチされる。
-
-![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_2.png)
-
-<br>
-
-## 04. 入出力管理
+## 03. 入出力管理
 
 ### 入出力管理とは
 
@@ -240,9 +147,104 @@ $ diskutil list
 
 <br>
 
-## 05. メモリ管理（記憶管理）
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
+
+## 04. ジョブ管理
+
+### ジョブ管理とは
+
+カーネルはジョブ（プロセスのセット）を管理する。クライアントは、マスタスケジュールに対して、ジョブを実行するための命令を与える。
+
+<br>
+
+### マスタスケジュラ、ジョブスケジュラ
+
+#### ▼ マスタスケジュラ、ジョブスケジュラとは
+
+![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
+
+マスタスケジュラは、ジョブスケジュラにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使用するべきとのこと。
+
+参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
+
+複数のジョブ（プログラムやバッチ）の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。ややこしいことに、タスクスケジューラとも呼ぶ。
+
+#### ▼ Reader
+
+ジョブ待ち行列に登録
+
+#### ▼ Initiator
+
+ジョブステップに分解
+
+#### ▼ Terminator
+
+出力待ち行列に登録
+
+#### ▼ Writer
+
+優先度順に出力の処理フローを実行
+
+<br>
+
+### Initiatorによるジョブのジョブステップへの分解
+
+Initiatorによって、ジョブはジョブステップに分解される。
+
+![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
+
+<br>
+
+## 05. タスク管理
+
+### タスク管理とは
+
+![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
+
+タスクとは、スレッドに似たような、単一のプロセスのこと。Initiatorによるジョブステップから、タスク管理によって、タスクが生成される。タスクが生成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
+
+参考：https://www.amazon.co.jp/dp/4297124513
+
+<br>
+
+### 優先順方式
+
+各タスクに優先度を設定し、優先度の高いタスクから順に、ディスパッチしていく方式。
+
+<br>
+
+### 到着順方式
+
+待ち行列に登録されたタスクから順に、ディスパッチしていく方式。
+
+![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
+
+**＊例＊**
+
+以下の様に、タスクがCPUに割り当てられていく。
+
+![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_2.png)
+
+<br>
+
+### ラウンドロビン方式
+
+ラウンドロビンは、『総当たり』の意味。一定時間（タイムクウォンタム）ごとに、実行状態にあるタスクが強制的に待ち行列に登録される。交代するように、他のタスクがディスパッチされる。
+
+![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
+
+**＊例＊**
+
+生成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
+
+![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
+
+1. タスクAが0秒に待ち行列へ登録される。
+2. 20秒間、タスクAは実行状態へ割り当てられる。
+3. 20秒時点で、タスクAは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるタスクBは、実行可能状態から実行状態にディスパッチされる。
+4. 40秒時点で、タスクCは実行状態から待ち行列に追加される。同時に、待ち行列の先頭にいるタスクAは、実行可能状態から実行状態にディスパッチされる。
+
+![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_2.png)
 
 <br>
 

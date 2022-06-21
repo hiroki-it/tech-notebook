@@ -15,29 +15,7 @@ description: FireLensコンテナ＠テレメトリー収集ツールの知見�
 
 ## 01. FireLensコンテナの仕組み
 
-### FireLensコンテナとは
-
-AWSが提供するFluentBitイメージによって構築されるコンテナである。FireLensコンテナでは、FluentBitがログルーティングプロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働できるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitを使用できる。
-
-参考：
-
-- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-- https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
-
-<br>
-
-### ログルーティング
-
-#### ▼ サイドカーコンテナとして
-
-AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。Fargateからログが送信されると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。構築のための実装例については、以下のリンクを参考にせよ。
-
-参考：
-
-- https://github.com/aws-samples/amazon-ecs-firelens-examples
-- https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
-
-#### ▼ 仕組み
+### 構造
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
@@ -45,7 +23,7 @@ AWS ECS Fargateのサイドカーコンテナとして配置する必要があ�
 
 （１）awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり、ログをFireLensコンテナに送信する。Fluentdログドライバーについては、以下のリンクを参考にせよ。
 
-   参考：https://docs.docker.com/config/containers/logging/fluentd/
+参考：https://docs.docker.com/config/containers/logging/fluentd/
 
 （２）FireLensコンテナは、これを受信する。
 
@@ -67,6 +45,28 @@ AWS ECS Fargateのサイドカーコンテナとして配置する必要があ�
 ```
 
 （４） OUTPUTに渡され、FluentBitは指定した外部にログをルーティングする。
+
+### FireLensコンテナ
+
+AWSが提供するFluentBitイメージによって構築されるコンテナである。FireLensコンテナでは、FluentBitがログルーティングプロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働できるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitを使用できる。
+
+参考：
+
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+- https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
+
+<br>
+
+### ログルーティング
+
+#### ▼ サイドカーコンテナとして
+
+AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。Fargateからログが送信されると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。構築のための実装例については、以下のリンクを参考にせよ。
+
+参考：
+
+- https://github.com/aws-samples/amazon-ecs-firelens-examples
+- https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
 #### ▼ ログのルーティング先
 

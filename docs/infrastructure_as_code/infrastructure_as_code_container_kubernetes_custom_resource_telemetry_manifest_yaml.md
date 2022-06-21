@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】可観測性リソース＠カスタムリソース
+title: 【知見を記録するサイト】テレメトリー収集リソース＠カスタムリソース
 description: 可観測性＠カスタムリソースの知見をまとめました。
 ---
 
-# 可観測性リソース＠カスタムリソース
+# テレメトリー収集リソース＠カスタムリソース
 
 ## はじめに
 
@@ -49,9 +49,17 @@ $ kubectl apply -f grafana.yaml
 
 <br>
 
-## 01-02. ConfigMap
+## 01-02. Dashboard
 
-### grafanaチャートの場合
+### Dashboardとは
+
+Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。
+
+<br>
+
+### セットアップ
+
+#### ▼ grafanaチャートの場合
 
 grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェストファイル化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
 
@@ -88,9 +96,7 @@ data:
     # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
 ```
 
-<br>
-
-### kube-prometheus-stackチャートの場合
+#### ▼ kube-prometheus-stackチャートの場合
 
 kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 

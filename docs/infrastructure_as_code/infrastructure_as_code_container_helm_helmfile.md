@@ -211,7 +211,7 @@ repositories:
 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
-# helmfile.dディレクトリ以下を再帰的に読み込む。
+# helmfile.dディレクトリ配下を再帰的に読み込む。
 $ helmfile <サブコマンド>
 ```
 

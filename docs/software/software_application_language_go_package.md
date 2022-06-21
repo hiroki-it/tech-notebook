@@ -699,7 +699,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/foobarbaz_repository/validators"
+	"github.com/foobarbaz-repository/validators"
 )
 
 func main() {

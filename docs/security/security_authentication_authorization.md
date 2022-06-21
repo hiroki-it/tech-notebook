@@ -227,7 +227,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 認証時に、ハッシュ化されたIDとパスワードを使用する認証スキームのこと。
 
-#### ▼ 仕組み
+#### ▼ Digest認証の仕組み
 
 ```http
 200 OK

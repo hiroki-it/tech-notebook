@@ -163,7 +163,7 @@ spec:
 
 #### ▼ served
 
-APIのバージョンを有効化するかを設定する。もしカスタムリソースに複数のバージョンが存在する場合に、古いバージョンを無効化し、マニフェストファイルで使用できないようにできる。
+APIのバージョンを有効化するかを設定する。もしカスタムリソースに複数のバージョンが存在する場合に、旧バージョンを無効化し、マニフェストファイルで使用できないようにできる。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 

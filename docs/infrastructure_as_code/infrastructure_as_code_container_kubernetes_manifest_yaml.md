@@ -567,7 +567,7 @@ spec:
 
 #### ▼ strategyとは
 
-applyメントの方法を設定する。
+デプロイメントの方法を設定する。
 
 #### ▼ RollingUpdate
 

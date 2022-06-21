@@ -230,7 +230,7 @@ docker@minikube:~$ ip addr | grep eth0
 
 #### ▼ Pod
 
-ワーカーNode内で```/etc/cni/net.d```ディレクトリ以下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
+ワーカーNode内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
 参考：https://nishipy.com/archives/1467
 

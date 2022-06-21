@@ -443,7 +443,7 @@ $ df -h -m -t
 
 ### dig
 
-#### ▼ オプション
+#### ▼ digとは
 
 正引きの名前解決を実行する
 
@@ -527,7 +527,7 @@ $ dig -x 182.22.28.252
 
 ### du
 
-#### ▼ オプション無し
+#### ▼ duとは
 
 指定したディレクトリ内のサブディレクトリのサイズと、ディレクトリ全体の合計サイズを、取得する。
 
@@ -545,14 +545,14 @@ $ du ./ | sort -n
 
 #### ▼ -h
 
-読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズと、ディレクトリ全体の合計サイズを、取得する。
+読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズと、ディレクトリ全体の合計サイズを、取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、```-h```オプションを使用しないようにする。
 
 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -h ./
 
-21K   ./vendor/foo/bar/baz/qux
+21K   ./vendor/foo/bar/baz/qux # 読みやすいが、細かい数値は省略されてしまう。
 27K   ./vendor/foo/bar/baz
 27K   ./vendor/foo/bar
 27K   ./vendor/foo
@@ -777,7 +777,7 @@ $ ln -s <リンク先までのパス> <シンボリックリンク名>
 指定したPIDのプロセスを削除する。
 
 ```bash
-$ kill -9 <プロセスID(PID)>
+$ kill -9 <プロセスID>
 ```
 
 指定したコマンドによるプロセスを全て削除する。
@@ -1188,6 +1188,70 @@ $ ssh <接続名> -T
 
 <br>
 
+### strace
+
+####  ▼ straceとは
+
+ユーティリティによるシステムコールをトレースする。
+
+```bash
+$ strace <任意のユーティリティ>
+```
+
+#### ▼ -c
+
+システムコールごとに情報を取得する。
+
+```bash
+# curlコマンドのシステムコールをトレースする。
+$ strace -c curl -s -o /dev/null https://www.google.com/
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 17.15    0.010642          76       139           mmap
+ 16.64    0.010329         120        86         2 read
+ 16.64    0.010326         137        75           rt_sigaction
+
+# 〜 中略 〜
+
+  0.08    0.000048          24         2         2 access
+  0.00    0.000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.062070                   584        12 total
+```
+
+#### ▼ -e
+
+トレースの内容をフィルタリングし、取得する。
+
+```bash
+# ネットワークに関する情報のみを取得する。
+$ strace -e trace=network curl -s -o /dev/null https://www.google.com/    
+
+socket(AF_INET6, SOCK_DGRAM, IPPROTO_IP) = 3
+socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
+setsockopt(3, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+
+# 〜 中略 〜
+
+sin_addr=inet_addr("nnn.nnn.nnn.nn")}, [128->16]) = 0
+getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("nnn.nnn.nnn.nn")}, [128->16]) = 0
+
++++ exited with 0 +++
+```
+
+#### ▼ -p
+
+ユーティリティがすでに実行途中の場合、プロセスIDを指定してシステムコールをトレースする。
+
+参考：https://tech-lab.sios.jp/archives/17394
+
+```bash
+$ strace -p <プロセスID>
+```
+
+<br>
+
 ### tar
 
 #### ▼ -x
@@ -1285,13 +1349,9 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 #### ▼ tracerouteとは
 
-通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。
+通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。プロトコルやポート番号は指定する必要はない。
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
-
-#### ▼ オプション無し
-
-ルーターのIPアドレスを取得する。プロトコルやポート番号は指定する必要はない。
 
 参考：
 

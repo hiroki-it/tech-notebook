@@ -310,7 +310,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 #### ▼ upgradeとは
 
-Istioのインプレースapplyメントを実行する。
+Istioのインプレースデプロイメントを実行する。
 
 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 

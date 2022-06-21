@@ -506,7 +506,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 ### Sagaパターンとは
 
-#### ▼ 仕組み
+#### ▼ Sagaパターンの仕組み
 
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
 
