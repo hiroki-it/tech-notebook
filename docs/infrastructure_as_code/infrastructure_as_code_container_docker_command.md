@@ -266,7 +266,7 @@ $ docker inspect <起動中コンテナ名> | grep IPAddress
 json-fileドライバーを使用している時に、ログファイルの出力先を確認する。
 
 ```bash
- $ docker inspect <起動中コンテナ名> | grep 'LogPath'
+ $ docker inspect <起動中コンテナ名> | grep LogPath
  
  "LogPath": "/var/lib/docker/containers/*****-json.log",
 ```

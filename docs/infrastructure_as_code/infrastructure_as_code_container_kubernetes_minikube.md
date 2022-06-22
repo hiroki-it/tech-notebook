@@ -588,7 +588,7 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 | default   | <Service名>  |             | http://127.0.0.1:57761 |
 |-----------|--------------|-------------|------------------------|
 
-Opening service <サービス名> in default browser...
+Opening service <Service名> in default browser...
 ```
 
 ただ、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用すると良い。
@@ -795,6 +795,41 @@ MinikubeのNodeのスペックを設定する。
 $ minikube start --cpus=4 --memory=16384
 ```
 
+実際に設定されたハードウェアリソースは、Minikube内から確認できる。
+
+```bash
+$ minikube ssh
+
+# CPUを確認する。
+$ cat /proc/cpuinfo
+
+processor       : 0
+BogoMIPS        : 48.00
+Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint
+CPU implementer : 0x00
+CPU architecture: 8
+CPU variant     : 0x0
+CPU part        : 0x000
+CPU revision    : 0
+
+# 〜 中略 〜
+
+processor       : 3
+BogoMIPS        : 48.00
+Features        : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint
+CPU implementer : 0x00
+CPU architecture: 8
+CPU variant     : 0x0
+CPU part        : 0x000
+CPU revision    : 0
+
+# メモリの確認する。
+$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:           7951        1853        3080         333        3017        5594
+Swap:          1023           0        1023
+```
+
 #### ▼ --docker-env
 
 別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
@@ -876,7 +911,7 @@ $ minikube tunnel
 
 📌  NOTE: Please do not close this terminal as this process must stay alive for the tunnel to be accessible ...
 
-❗  The service/ingress <サービス名> requires privileged ports to be exposed: [80]
+❗  The service/ingress <Serivce名> requires privileged ports to be exposed: [80]
 🔑  sudo permission will be asked for it.
 🏃  Starting tunnel for service <Service名>.
 ```

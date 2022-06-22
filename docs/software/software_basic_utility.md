@@ -740,6 +740,14 @@ $ ls -la | grep bar
 $ cat foo.txt | grep bar
 ```
 
+#### ▼ -i
+
+標準出力に出力された文字列のうち、大文字と小文字を区別せずに、合致するものだけを取得する。
+
+```bash
+$ ls -la | grep bar
+```
+
 <br>
 
 ### history
@@ -838,7 +846,7 @@ $ ls -l -h
 使用中のポートをプロセス別に取得する。
 
 ```bash
-$ lsof -i -P | grep "LISTEN"
+$ lsof -i -P | grep LISTEN
 
 phpstorm   4145 hasegawa   25u  IPv6 *****      0t0  TCP localhost:6942 (LISTEN)
 phpstorm   4145 hasegawa   27u  IPv6 *****      0t0  TCP localhost:63342 (LISTEN)
@@ -1012,7 +1020,7 @@ $ printenv VAR
 
 ```bash
 # 稼働しているプロセスのうち、詳細情報に『xxx』を含むものを取得する。
-$ ps -aux | grep "<検索文字>"
+$ ps -aux | grep <検索文字>
 ```
 
 <br>

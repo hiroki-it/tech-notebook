@@ -1374,6 +1374,8 @@ spec:
 | Always       | イメージリポジトリからイメージをプルする。                           |
 | Never        | イメージをプルせず、仮想環境上にビルドされたイメージを使用する。                |
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -1390,12 +1392,53 @@ spec:
 
 #### ▼ resources
 
-コンテナのハードウェアリソースの最小/最大サイズを設定する。Pod内にコンテナが複数ある場合、最小/最大サイズを満たしているかどうかの判定は、これらのコンテナのハードウェアリソースのサイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っている、kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeのPodを優先的にスケーリングするかを決定している。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているかどうかの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+
+参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
+
+| キー名         | 説明                                             | 補足                                                         |
+| -------------- | ------------------------------------------------ | ------------------------------------------------------------ |
+| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br/>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
+| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPod自体が削除され、再生成される。<br>参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+
+ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
 参考：
 
-- https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
-- https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+- https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
+- https://smallit.co.jp/blog/667/
+
+```bash
+$ kubectl describe node <Node名>
+
+# 〜 中略 〜
+
+Capacity:
+  attachable-volumes-aws-ebs:  20
+  cpu:                         4           # NodeのCPU
+  ephemeral-storage:           123456789Ki
+  hugepages-1Gi:               0
+  hugepages-2Mi:               0
+  memory:                      1234567Ki   # Nodeのメモリー
+  pods:                        10          # スケジューリング可能なPodの最大数
+Allocatable:
+  attachable-volumes-aws-ebs:  20
+  cpu:                         3920m       # 実際に使用可能なCPU
+  ephemeral-storage:           123456789
+  hugepages-1Gi:               0
+  hugepages-2Mi:               0
+  memory:                      1234567Ki    # 実際に使用可能なメモリ
+  pods:                        10
+
+# 〜 中略 〜
+```
+
+| ハードウェアリソース名 | 単位                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| ```cpu```              | m：millicores（```1```m = ```1``` ユニット = ```0.001```コア） |
+| ```memory```           | Mi：mebibyte（```1```Mi = ```1.04858```MB）                  |
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1407,29 +1450,15 @@ spec:
     - name: foo-gin
       image: foo-gin:1.0.0
       resources:
-        # 最小サイズ
+        # 下限必要サイズ
         requests:
           cpu: 250m
           memory: 64Mi
-        # 最大サイズ
+        # 上限サイズ
         limits:
           cpu: 500m
           memory: 128Mi
 ```
-
-ハードウェアリソースの使用状況によるPodの挙動は以下の通りである。
-
-| ハードウェアリソース名 | 単位                                                           | request値以上にPodのハードウェアリソースが余っている場合 | limit値に達した場合  |
-|-------------|--------------------------------------------------------------|-----------------------------------|---------------|
-| CPU         | ```m```：millicores（```1```コア = ```1000```ユニット = ```1000```m） | コンテナの負荷が高まれば、自動でスケーリングする。         | 処理がスロットリングする。 |
-| Memory      | ```Mi```：mebibyte（```1```Mi = ```1.04858```MB）               | コンテナの負荷が高まれば、自動でスケーリングする。         | Podが削除される。    |
-
-もし最大サイズを設定しない場合、Podが実行されているNodeのハードウェアリソースに余力がある限り、Podのハードウェアリソースのサイズは上昇し続けるようになる。
-
-参考：
-
-- https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit
-- https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit
 
 <br>
 
@@ -1528,6 +1557,132 @@ spec:
       image: foo-gin:1.0.0
   imagePullSecrets:
     - name: foo-secret
+```
+
+<br>
+
+### livenessProbe
+
+#### ▼ livenessProbeとは
+
+コンテナが起動しているかどうかのヘルスチェックを設定する。
+
+参考：https://www.ianlewis.org/jp/kubernetes-health-check
+
+#### ▼ httpGet
+
+ヘルスチェックのエンドポイントを設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        httpGet:
+          port: 80
+          path: /healthcheck
+```
+
+#### ▼ failureThreshold
+
+ヘルスチェックが失敗したとみなす試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        failureThreshold: 5
+```
+
+#### ▼ periodSeconds
+
+ヘルスチェックの試行当たりの間隔を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        periodSeconds: 5
+```
+
+<br>
+
+### readinessProbe
+
+#### ▼ readinessProbeとは
+
+すで起動中のコンテナが仕様上正しく稼働しているかどうかの準備済みチェックを設定する。
+
+参考：https://www.ianlewis.org/jp/kubernetes-health-check
+
+#### ▼ httpGet
+
+準備済みチェックのエンドポイントを設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        httpGet:
+          port: 80
+          path: /ready
+```
+
+#### ▼ failureThreshold
+
+準備済みチェックが失敗したとみなす試行回数を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        failureThreshold: 5
+```
+
+#### ▼ periodSeconds
+
+準備済みチェックの試行当たりの間隔を設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      livenessProbe:
+        periodSeconds: 5
 ```
 
 <br>

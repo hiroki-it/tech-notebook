@@ -66,7 +66,7 @@ description: TCP階層モデル＠ネットワークの知見をまとめまし�
 ちなみに、ポート番号を使用しているプロセスの一覧は、以下のコマンドで表示できる。
 
 ```bash
-$ sudo lsof -i -P | grep "LISTEN"
+$ sudo lsof -i -P | grep LISTEN
 ```
 
 <br>

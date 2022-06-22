@@ -592,7 +592,7 @@ spec:
 
 #### ▼ repoURL
 
-監視対象のマニフェストリポジトリのURLを設定する。
+監視対象のマニフェストリポジトリのURLを設定する。パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -691,9 +691,25 @@ spec:
         - ./prd.yaml
 ```
 
+````yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  source:
+    helm:
+      releaseName: prd
+      values: |-
+        foo: FOO
+        bar: BAR
+        baz: BAZ
+````
+
 #### ▼ repoURL
 
-監視対象のチャートレジストリ内のリポジトリのURLを設定する。
+監視対象のチャートレジストリ内のリポジトリのURLを設定する。パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 
 参考：
 
@@ -742,7 +758,7 @@ spec:
 
 #### ▼ repoURL
 
-監視対象のOCIレジストリ内のリポジトリのURLを設定する。
+監視対象のOCIレジストリ内のリポジトリのURLを設定する。パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 
 参考：https://stackoverflow.com/questions/68219458/connecting-an-app-in-argocd-to-use-a-helm-oci-repository
 
@@ -799,7 +815,7 @@ spec:
 
 #### ▼ server
 
-apply先のKubernetesのClusterのURLを設定する。URLの完全修飾ドメイン名は『```kubernetes.default.svc```』とする必要がある。（理由は要調査）
+kube-apiserverのURLを設定する。Kubernetesの実行環境としてEKSやGKEを使用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -810,6 +826,19 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+```
+
+```yaml
+# EKSの場合
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  destination:
+    # EKSのkube-apiserverのエンドポイントを指定する。
+    server: https://*****.*****.ap-northeast-1.eks.amazonaws.com
 ```
 
 <br>

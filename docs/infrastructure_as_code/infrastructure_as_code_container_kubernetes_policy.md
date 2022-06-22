@@ -64,9 +64,10 @@ repository/
 
 ```yaml
 repository/
-├── src/ # アプリケーション
-├── kubernetes/
-│   ├── foo.yaml
+├── app/ # アプリケーション
+├── manifests/
+│   └── kubernetes/
+│       ├── foo.yaml
 ...
 ```
 

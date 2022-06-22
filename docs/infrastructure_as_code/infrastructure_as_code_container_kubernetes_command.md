@@ -325,7 +325,12 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 ```bash
-$ kubectl describe nodes 
+$ kubectl describe nodes
+```
+
+```bash
+# Podが稼働するNodeを取得する。
+$ kubectl describe pod <Pod名> | grep Node:
 ```
 
 <br>
@@ -583,17 +588,25 @@ $ kubectl label --overwrite <リソース名> foo=bar
 Pod名とコンテナ名を指定し、コンテナのログを取得する。
 
 ```bash
-$ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名>
+$ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名> | grep -i error
 
 [ERROR] *****
 ```
 
 **＊例＊**
 
-Namespace、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
+Namespace名、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
-$ kubectl logs -n kube-system <Pod名> -c kube-proxy
+$ kubectl logs -n kube-system <Pod名> -c kube-proxy | grep -i error
+```
+
+#### ▼ -f
+
+ログを継続的に取得する。
+
+```bash
+$ kubectl logs -f <Pod名> | grep -i error
 ```
 
 #### ▼  --timestamps
@@ -601,7 +614,7 @@ $ kubectl logs -n kube-system <Pod名> -c kube-proxy
 タイムスタンプを取得する。
 
 ```bash
-$ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名> 
+$ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名> | grep -i error
 
 2021/11/27 08:34:01 [ERROR] *****
 ```

@@ -553,12 +553,12 @@ API Gatewayは上記のJSONデータを受信した後、```body```のみ値を�
 
 #### ▼ 設定
 
-| 設定項目                           | 説明                                                         |
-| ---------------------------------- | ------------------------------------------------------------ |
-| キャッシュ設定                     | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html |
-| デフォルトのメソッドスロットリング | １秒当たりのリクエスト数制限を設定する。<br>参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
-| WAF                                | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html |
-| クライアント証明書                 | 紐付けるWAFを設定する。                                      |
+| 設定項目                           | 説明                                                                                                                         |
+| ---------------------------------- |----------------------------------------------------------------------------------------------------------------------------|
+| キャッシュ設定                     | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                   |
+| デフォルトのメソッドスロットリング | リクエスト数（個/秒）制限を設定する。<br>参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
+| WAF                                | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                     |
+| クライアント証明書                 | 紐付けるWAFを設定する。                                                                                                              |
 
 #### ▼ ステージ変数
 
@@ -685,7 +685,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 #### ▼ ターゲット追跡スケーリングとは
 
-特定のメトリクス（CPU平均使用率やMemory平均使用率）にターゲット値を設定し、それに収束するように自動的にスケールインとスケールアウトを実行する。ステップスケーリングとは異なり、スケーリングの実行条件となる閾値期間を設定できない。
+特定のメトリクス（CPU平均使用率やメモリ平均使用率）にターゲット値を設定し、それに収束するように自動的にスケールインとスケールアウトを実行する。ステップスケーリングとは異なり、スケーリングの実行条件となる閾値期間を設定できない。
 
 **＊例＊**
 

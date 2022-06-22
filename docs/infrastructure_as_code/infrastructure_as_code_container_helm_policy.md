@@ -13,7 +13,64 @@ description: 設計ポリシー＠Helmの知見をまとめました。
 
 <br>
 
-## 01. ディレクトリ構成 
+## 01. リポジトリ構成
+
+### モノリポジトリ
+
+```yaml
+repository/
+├── app/
+├── manifests/
+│   └── helm/
+│       ├── foo-chart/
+...
+```
+
+<br>
+
+### ポリリポジトリ（推奨）
+
+#### ▼ 各チャートを同じリポジトリにする（推奨）
+
+```yaml
+# KubernetesとHelmを同じディレクトリにする場合
+repository/
+├── kubernetes/
+├── helm/
+│   ├── foo-chart/
+│   ├── bar-chart/
+...
+```
+
+```yaml
+# KubernetesとHelmを異なるディレクトリにする場合
+repository/
+├── foo-chart/
+├── bar-chart/
+...
+```
+
+#### ▼ 各チャートを異なるリポジトリにする
+
+```yaml
+# KubernetesとHelmを同じディレクトリにする場合
+repository/
+├── kubernetes/
+├── helm/
+│   └── foo-chart/
+...
+```
+
+```yaml
+# KubernetesとHelmを異なるディレクトリにする場合
+repository/
+├── foo-chart/
+...
+```
+
+<br>
+
+## 02. ディレクトリ構成 
 
 ### chartディレクトリ
 
@@ -117,7 +174,7 @@ labels:
 
 <br>
 
-## 02. 命名規則
+## 03. 命名規則
 
 ### templateディレクトリ
 

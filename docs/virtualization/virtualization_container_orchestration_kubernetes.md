@@ -40,7 +40,7 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
-- https://kubernetes.io/ja/docs/concepts/overview/components/
+- https://kubernetes.io/docs/concepts/overview/components/
 - https://thinkit.co.jp/article/17453
 
 <br>
@@ -113,7 +113,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 参考：
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
-- https://kubernetes.io/ja/docs/concepts/overview/components/
+- https://kubernetes.io/docs/concepts/overview/components/
 
 <br>
 
@@ -185,7 +185,7 @@ Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネ�
 参考：
 
 - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
-- https://kubernetes.io/ja/docs/concepts/cluster-administration/networking/
+- https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 <br>
 
@@ -400,7 +400,7 @@ IngressコントローラーによってClusterネットワーク外からイン
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
+Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを構築することになる。
 
 参考：
 
@@ -408,7 +408,7 @@ Ingressの設定に基づいてClusterネットワーク外からのインバウ
 - https://www.containiq.com/post/kubernetes-ingress
 - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 
-#### ▼ Ingressコントローラーとして使用できるもの
+#### ▼ Ingressコントローラーの種類
 
 参考：
 

@@ -201,7 +201,7 @@ increase(foo_metrics[5m])
 
 #### ▼ rate
 
-1秒当たりの平均増加率を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
+平均増加率（%/秒）を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
 
 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
