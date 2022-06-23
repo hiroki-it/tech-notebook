@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】Minikube＠Kubernetes
-description: Minikube＠Kubernetesの知見をまとめました。
+title: 【知見を記録するサイト】Minikube＠仮想化
+description: Minikube＠仮想化の知見をまとめました。
 ---
 
-# Minikube＠Kubernetes
+# Minikube＠仮想化
 
 ## はじめに
 
@@ -98,9 +98,9 @@ docker@minikube:~$ curl -X GET http://<IPアドレス>
 
 ## 01-02. マウント
 
-### ホスト-ワーカーNode間マウント
+### ホストとワーカーNode間マウント
 
-#### ▼ 標準のホスト-ワーカーNode間マウント
+#### ▼ 標準のホストとワーカーNode間マウント
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる。
 
@@ -115,7 +115,7 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-#### ▼ 各ドライバーのホスト-ワーカーNode間マウント
+#### ▼ 各ドライバーのホストとワーカーNode間マウント
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる。
 
@@ -132,9 +132,9 @@ $ minikube start
 
 <br>
 
-### ワーカーNode-コンテナ間マウント
+### ワーカーNodeとコンテナ間マウント
 
-#### ▼ 標準のワーカーNode-コンテナ間マウント
+#### ▼ 標準のワーカーNodeとコンテナ間マウント
 
 ゲスト仮想環境内のワーカーNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
@@ -151,7 +151,7 @@ $ minikube start
 
 <br>
 
-### ホスト-ワーカーNode-コンテナ間
+### ホスト-ワーカーNodeとコンテナ間
 
 #### ▼ ホストをコンテナにマウントする方法
 

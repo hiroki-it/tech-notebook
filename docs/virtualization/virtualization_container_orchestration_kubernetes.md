@@ -35,9 +35,7 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 ### マスターコンポーネントとは
 
-
-
-
+参考：
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
 - https://kubernetes.io/docs/concepts/overview/components/
@@ -96,11 +94,24 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ▼ kube-schedulerとは
 
-ワーカーNodeとPodのスペックを基に、ワーカーNodeに配置される適切なPod数を決定する。
+ワーカーNodeが複数ある場合に、ワーカーNodeとPodのスペックを基に、Podを配置するべきNodeを判定する。
 
 参考：https://thinkit.co.jp/article/17453
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
+
+#### ▼ kube-schedulerの仕組み
+
+![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
+
+1. フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
+2. スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたワーカーNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいワーカーNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
+- https://techblog.ap-com.co.jp/entry/2019/06/20/191459
+- https://kubernetes.io/ja/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90
 
 <br>
 

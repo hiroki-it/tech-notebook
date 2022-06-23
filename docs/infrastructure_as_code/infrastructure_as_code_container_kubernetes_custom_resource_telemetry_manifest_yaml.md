@@ -391,7 +391,7 @@ spec:
 #### ▼ victoria-metricsチャートリポジトリから
 
 ```bash
-$ helm install victoria-metrics vm/victoria-metrics-cluster -f values.yaml -n <名前空間>
+$ helm install victoria-metrics vm/victoria-metrics-cluster -f values.yaml -n <Namespace名>
 ```
 
 <br>

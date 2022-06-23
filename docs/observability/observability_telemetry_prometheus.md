@@ -39,7 +39,7 @@ Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されてい�
 
 #### ▼ ローカルストレージ
 
-Prometheusは、自身が持つストレージに、収集した全てのメトリクスを保管するPrometheusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
+Prometheusは、ローカルの時系列データベースに、収集した全てのメトリクスを保管する。Prometheusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
 
 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
@@ -66,7 +66,7 @@ data/
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDB（時系列データベース）として機能する外部ストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまう
 
 参考：
 
@@ -155,13 +155,13 @@ Prometheusで収集したメトリクスを抽出し、集計できる。
 
 #### ▼ Instant vector
 
-特定の時点の時系列型データのこと。
+特定の時点の時系列データのこと。
 
 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
-特定の期間の時系列型データのこと。
+特定の期間の時系列データのこと。
 
 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 

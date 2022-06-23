@@ -33,7 +33,7 @@ repository/
 #### ▼ 各チャートを同じリポジトリにする（推奨）
 
 ```yaml
-# KubernetesとHelmを同じディレクトリにする場合
+# KubernetesとHelmを同じリポジトリにする場合
 repository/
 ├── kubernetes/
 ├── helm/
@@ -43,7 +43,7 @@ repository/
 ```
 
 ```yaml
-# KubernetesとHelmを異なるディレクトリにする場合
+# KubernetesとHelmを異なるリポジトリにする場合
 repository/
 ├── foo-chart/
 ├── bar-chart/
@@ -53,7 +53,7 @@ repository/
 #### ▼ 各チャートを異なるリポジトリにする
 
 ```yaml
-# KubernetesとHelmを同じディレクトリにする場合
+# KubernetesとHelmを同じリポジトリにする場合
 repository/
 ├── kubernetes/
 ├── helm/
@@ -62,7 +62,7 @@ repository/
 ```
 
 ```yaml
-# KubernetesとHelmを異なるディレクトリにする場合
+# KubernetesとHelmを異なるリポジトリにする場合
 repository/
 ├── foo-chart/
 ...

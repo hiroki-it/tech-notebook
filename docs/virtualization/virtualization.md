@@ -29,7 +29,7 @@ description: 仮想化の知見をまとめました。
 
 #### ▼ Provider例
 
-VMware Workstation、Oracle VM VirtualBox、など
+Oracle VM VirtualBox、VMware Workstation、など
 
 ![ホスト型仮想化](https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png)
 

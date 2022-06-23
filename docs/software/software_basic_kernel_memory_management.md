@@ -17,7 +17,7 @@ description: メモリ管理＠基本ソフトウェアの知見をまとめま�
 
 ### プロセスとは
 
-プログラムは、メモリ上の仮想アドレスの領域に割り当てられている。プログラム自体を『プロセス』という。プロセスの代わりに『タスク』ということもある。プロセスとして割り当てられたプログラムはCPUに参照され、CPUのコア上で処理が実行される。
+プログラムは、メモリ上の仮想アドレスの領域に割り当てられている。この時のプログラム自体を『プロセス』という。プロセスの代わりに『タスク』ということもある。プロセスとして割り当てられたプログラムはCPUに参照され、CPUのコア上で処理が実行される。
 
 参考：https://jpazamu.com/thread_process/#index_id5
 
@@ -58,17 +58,20 @@ PID  TTY  TIME     CMD
 
 単一のメモリ上で、複数のプロセスがアドレスに割り当てられる仕組みのこと。優先度の低いプロセスからCPUを切り離し、優先度の高いプロセスにCPUを割り当てる、といった仕組みを持つ。現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
-参考：https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
+参考：
+
+- https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
+- https://webpia.jp/thread_process/
 
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
 
 <br>
 
-### OOMキラー
+### OOMキラー：Out Of Memory Killer
 
 #### ▼ OOMキラーとは
 
-プログラムが、実メモリやスワップの全ての領域に割り当てられ、これ以上使用できるアドレス領域がなくなってしまった場合に実行される。最も使用領域の大きいプログラムを強制的に終了する。
+物理メモリ、仮想メモリのスワップ領域、などプロセスが使用可能な全ての領域使用され、プロセスを新しく割り当てられなくなってしまった場合に実行される。現在割り当てられているプロセスのうち、最も使用領域の大きいプロセスを強制的に終了する。
 
 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
 
@@ -93,7 +96,10 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 メモリ上ではプログラムがプロセスとして割り当てられており、プログラムはCPUのコア上で実行される。CPUのコアと紐付くプロセスの実行単位を『スレッド』という。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
+参考：
+
+- https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
+- https://webpia.jp/thread_process/
 
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
 
@@ -108,6 +114,8 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 #### ▼ マルチスレッディング
 
 メモリ上の特定のプロセスで、複数のスレッドを実行できる仕組みのこと。各スレッドがプロセスに割り当てられているアドレスを共有して使用する。
+
+参考：https://webpia.jp/thread_process/
 
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
 
@@ -147,13 +155,15 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想記憶 ⇒ 仮想メモリ
 
+参考：https://itmanabi.com/real-memory-mng/
+
 ![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アドレス空間管理の種類.png)
 
 <br>
 
 ### 管理方法の種類
 
-#### ▼ 実メモリ管理
+#### ▼ 物理メモリ管理
 
 物理メモリの領域をプロセスに適切に割り当てること。
 
@@ -163,19 +173,23 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 <br>
 
-## 03-02. 実メモリ管理
+## 03-02. 物理メモリ管理
 
 ### 固定区画方式（同じ大きさの区画に分割する方式）
 
 #### ▼ 単一区画方式とは
 
-物理メモリの領域を、1つの区画として扱い、プログラムに割り当てる方式。単一のプログラムしか読み込めず、余りのメモリ領域は利用できない。
+物理メモリの領域を、1つの区画として扱い、プロセスに割り当てる方式。単一のプロセスしか読み込めず、余りのメモリ領域は利用できない。
+
+参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単一区画方式.png)
 
 #### ▼ 多重区画方式とは
 
-物理メモリの領域を、複数の同じ大きさの区画に分割し、各区画にプログラムに割り当てる方式。複数のプログラムを読み込めるが、単一区画方式と同様に、余ったメモリ領域は利用できない。
+物理メモリの領域を、複数の同じ大きさの区画に分割し、各区画にプロセスに割り当てる方式。複数のプロセスを読み込めるが、単一区画方式と同様に、余ったメモリ領域は利用できない。
+
+参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重区画方式.png)
 
@@ -185,7 +199,9 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 #### ▼ 可変区画方式とは
 
-物理メモリの領域を、プログラムの大きさに応じて、区画を様々な大きさの区画に分割し、プログラムに割り当てる方式。固定区画方式とは異なり、メモリ領域を有効に利用できる。
+物理メモリの領域を、プロセスの大きさに応じて、区画を様々な大きさの区画に分割し、プロセスに割り当てる方式。固定区画方式とは異なり、メモリ領域を有効に利用できる。
+
+参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/可変区画方式.png)
 
@@ -195,9 +211,18 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 #### ▼ スワッピング方式とは
 
+物理メモリの領域を優先度の高いプロセスに割り当て、反対に優先度が低いプロセスはストレージ上のスワップファイルに退避させる方式。これにより、物理メモリの領域を確保できる。
+
+参考：
+
+- https://itmanabi.com/real-memory-mng/
+- https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
+
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
 
-物理メモリの領域を、優先度の高いプログラムに割り当て、反対に優先度が低いプログラムはストレージに退避させる方式。
+#### ▼ スワップファイル
+
+ストレージ上に作成された仮想的な領域であり、仮想メモリのように機能する。
 
 <br>
 
@@ -210,7 +235,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 ### GC：ガベージコレクション
 
 #### ▼ ガベージコレクションとは
-確保された物理メモリのうち、解放できるメモリをプログラムから解放する。物理メモリを使用しているオブジェクトが何かしらから参照されているかどうかを元に、解放するかどうかを判定する。
+確保された物理メモリのうち、解放できるメモリをプロセスから解放する。物理メモリを使用しているオブジェクトが何かしらから参照されているかどうかを元に、解放するかどうかを判定する。
 
 #### ▼ アルゴリズム
 
@@ -228,17 +253,23 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想メモリの実装方法の一種。仮想メモリのアドレス空間を『固定長』の領域（ページ）、また物理メモリのアドレス空間を『固定長』の領域（ページフレーム）に分割し、管理する方式。
 
+参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
+
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページの構造.png)
 
 #### ▼ ページイン/ページアウト
 
-仮想メモリは、CPUの処理によって稼働したプログラムの要求を、物理メモリの代理として受け付ける。ストレージから物理メモリのページフレームにページを読み込むことを『Page-in』という。また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。
+仮想メモリは、CPUの処理によって稼働したプロセスの要求を、物理メモリの代理として受け付ける。ストレージから物理メモリのページフレームにページを読み込むことを『Page-in』という。また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページインとページアウト.png)
 
 #### ▼ 仮想メモリとのマッピングによる大容量アドレス空間の実現
 
 仮想メモリのアドレス空間を、物理メモリのアドレス空間とストレージにマッピングすることによって、物理メモリのアドレス空間を疑似的に大きく見せかけられる。
+
+参考：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
 
@@ -262,6 +293,8 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 MMUによって、仮想メモリのアドレスは、物理メモリのアドレスに変換される。この仕組みを、『動的アドレス変換機構』と呼ぶ。
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリ管理ユニット.png)
 
 #### ▼ アドレス変換の仕組み（ページング方式型/セグメント方式型）
@@ -277,6 +310,8 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
+参考：https://www.amazon.co.jp/dp/4297124513
+
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
 
 <br>
@@ -285,7 +320,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 ### ページフォールトとは
 
-ストレージから物理メモリのアドレス空間への割り込み処理のこと。CPUによって稼働したプログラムが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
+ストレージから物理メモリのアドレス空間への割り込み処理のこと。CPUによって稼働したプロセスが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
 
 ![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページフォールト.png)
 

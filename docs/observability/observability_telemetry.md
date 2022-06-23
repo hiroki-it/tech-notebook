@@ -85,11 +85,11 @@ Grafanaは、ダッシュボードとストレージから構成されている�
 
 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
 
-| データソース名       | 例                                 |
-| -------------------- | ---------------------------------- |
-| 時系列データベース   | Prometheus、Graphite、InfluxDB     |
-| RDB                  | MySQL、PostgreSQL                  |
-| クラウドデータソース | AWS CloudWatch、Google Stackdriver |
+| データソース名       | 例                                             |
+| -------------------- | ---------------------------------------------- |
+| 時系列データベース   | Prometheus、VictriaMetrics、Graphite、InfluxDB |
+| RDB                  | MySQL、PostgreSQL                              |
+| クラウドデータソース | AWS CloudWatch、Google Stackdriver             |
 
 #### ▼ ダッシュボード
 

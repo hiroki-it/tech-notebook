@@ -454,6 +454,19 @@ NAME       READY   STATUS             RESTARTS   AGE
 bar-pod    2/2     Running            0          5m01s
 ```
 
+#### ▼ -A
+
+指定したKubernetesリソースをNamespaceに関係なく取得する。
+
+```bash
+$ kubectl get pods -A
+```
+
+````bash
+# 指定したNode上のPodを全てNamespaceに関係なく取得する。
+$ kubectl get pods -A -o wide | grep <Node名>
+````
+
 #### ▼ -o yaml
 
 指定したKubernetesリソースの設定を取得し、YAML形式で出力する。
