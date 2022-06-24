@@ -323,9 +323,11 @@ nav:
 
   - ♾️ DevOps:
       - DevOps: devops/devops.md
-      - ArgoCD: devops/devops_argocd.md
       - Capistrano: devops/devops_capistrano.md
       - GitHub Actions: devops/devops_github_actions.md
+      - ■ ArgoCD:
+          - manifest.yaml: devops/devops_argocd_manifest_yaml.md
+          - 設計ポリシー: devops/devops_argocd_policy.md
       - ■ Skaffold:
           - skaffold.yaml: devops/devops_skaffold_yaml.md
           - コマンド: devops/devops_skaffold_command.md
