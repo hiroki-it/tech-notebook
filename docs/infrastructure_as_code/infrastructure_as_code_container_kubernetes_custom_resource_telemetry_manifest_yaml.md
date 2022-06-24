@@ -198,7 +198,7 @@ metadata:
   name: pod-alert-prometheus-rule
   namespace: prometheus
   labels:
-    app: foo
+    app.kubernetes.io/app: foo
 spec:
   groups:
     - name: foo-pod-alert-prometheus-rule
@@ -216,7 +216,7 @@ spec:
 | 項目              | 説明                                                         |
 | ----------------- | ------------------------------------------------------------ |
 | ```alert```       | アラート名を設定する                                         |
-| ```annotations``` | アラートの通知内容を設定する。```labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
+| ```annotations``` | アラートの通知内容を設定する。```metadata.labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -225,7 +225,7 @@ metadata:
   name: pod-cpu-alert-prometheus-rule
   namespace: prometheus
   labels:
-    app: foo
+    app.kubernetes.io/app: foo
 spec:
   groups:
      - rules:
@@ -379,7 +379,7 @@ metadata:
 spec:
   - selector:
       matchLabels:
-        app: foo
+        app.kubernetes.io/app: foo
 ```
 
 <br>

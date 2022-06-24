@@ -328,9 +328,12 @@ title: 【知見を記録するサイト】目次
 ## ♾️ DevOps
 
 * [📖：︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
-* [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
 * [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 * [📖：︎GitHub Actions](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_github_actions.html)
+* ArgoCD
+    * [📖：︎manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_yaml.html)
+    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policyl.html)
+
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)

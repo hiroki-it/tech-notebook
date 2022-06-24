@@ -289,7 +289,7 @@ kind: Deployment
 metadata:
   name: {{ $general.env }}-{{ $general.appName }}-pod
   labels:
-    app: {{ $general.appName }}
+    app.kubernetes.io/app: {{ $general.appName }}
     
     # 〜 中略 〜
     
@@ -340,7 +340,9 @@ define関数で定義した文字列をそのまま出力する。template関数
 
 #### ▼ Valuesとは
 
-チャートのルートパスにある```values.yaml```ファイル、またはhelmコマンドで指定した任意の```values```ファイルの値を出力する。
+チャートのルートパスにある```values.yaml```ファイル、またはhelmコマンドで指定した任意の```values```ファイルの値を出力する。特定の条件下で、```values```ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
+
+参考：https://github.com/helm/helm/issues/8026
 
 ```yaml
 # values.yamlファイル
@@ -355,7 +357,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.general.env }}-{{ .Values.general.appName }}-pod
   labels:
-    app: {{ .Values.general.appName }}
+    app.kubernetes.io/app: {{ .Values.general.appName }}
 ```
 
 #### ▼ metadataキーで使用する場合の注意点

@@ -335,6 +335,20 @@ $ kubectl describe pod <Pod名> | grep Node:
 
 <br>
 
+### edit
+
+#### ▼ editとは
+
+Kubernetesリソースの設定値をapplyせずに変更する。Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
+
+参考：https://github.com/kubernetes/kubernetes/issues/24913
+
+```bash
+$ kubectl edit <Pod以外のリソース名>
+```
+
+<br>
+
 ### exec
 
 #### ▼ execとは
@@ -355,7 +369,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 [root@<Pod名>] $ ls -la 
 ```
 
-コンテナを指定しない場合は、デフォルトのコンテナが選択される。Podのlabelキーではなく、Pod名であることに注意する。
+コンテナを指定しない場合は、デフォルトのコンテナが選択される。Podの```metadata.labels```キーではなく、Pod名であることに注意する。
 
 ```bash
 $ kubectl exec -it <Pod名> -- bash
@@ -527,18 +541,18 @@ bar-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     bar-node   
 
 #### ▼ -l
 
-特定のlabelキーを持つPodを取得する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
+特定の```metadata.labels```キーを持つPodを取得する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
 
 ```bash
 # 事前にServiceのルーティング先を確認しておく。
 $ kubectl describe services foo
 
-Selector: <キー>=<値> # Selectorでルーティング先のPodのlabelキーがわかる
+Selector: <キー>=<値> # Selectorでルーティング先のPodのmetadata.labelsキーがわかる
 
 $ kubectl get pods -l <キー>=<値>
 ```
 
-複数のlabelキーをAND条件で指定することもできる。
+複数の```metadata.labels```キーをAND条件で指定することもできる。
 
 ```bash
 $ kubectl get pods -l <キー>=<値>, <キー>=<値>
@@ -558,19 +572,19 @@ $ kubectl get deployment --selector=<キー>=<値>
 
 #### ▼ labelとは
 
-指定したリソースのlabelを操作する。
+指定したリソースの```metadata.labels```キーを操作する。
 
 #### ▼ オプション無し
 
 **＊例＊**
 
-指定したリソースにlabelを作成する。
+指定したリソースに```metadata.labels```キーを作成する。
 
 ```bash
 $ kubectl label <リソース名> foo=bar
 ```
 
-指定したリソースのlabelを削除する。
+指定したリソースの```metadata.labels```キーを削除する。
 
 ```bash
 $ kubectl label <リソース名> foo-
@@ -580,7 +594,7 @@ $ kubectl label <リソース名> foo-
 
 **＊例＊**
 
-指定したリソースにlabelの値を変更する。
+指定したリソースに```metadata.labels```キーの値を変更する。
 
 ```bash
 $ kubectl label --overwrite <リソース名> foo=bar

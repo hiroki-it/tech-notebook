@@ -62,6 +62,25 @@ data/
         └── 00000000
 ```
 
+また、ブロックやWALはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする方法として、収集間隔を長くする、不要なデータポイントの収集をやめる、といった方法がある。
+
+参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+
+```bash
+# ワーカーNode内
+$ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
+
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:07 00004931
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:09 00004932
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:12 00004933
+
+# 〜 中略 〜
+
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
+```
+
 #### ▼ リモートストレージ
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
@@ -266,7 +285,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 #### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。
+Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることで、データポイント数が減るため、合計のサイズを小さくできる。
+
+参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /

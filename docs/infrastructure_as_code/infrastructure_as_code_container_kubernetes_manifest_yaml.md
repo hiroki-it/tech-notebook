@@ -43,7 +43,7 @@ apiVersion: v1
 
 #### ▼ annotationとは
 
-任意のキーと値を設定する。```labels```キーとは異なり、設定できる情報に制約がない。
+任意のキーと値を設定する。```metadata.labels```キーとは異なり、設定できる情報に制約がない。
 
 参考：https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
@@ -493,13 +493,13 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: foo
-      component: app
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app: foo
-        component: app
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: app
 ```
 
 <br>
@@ -521,13 +521,13 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: foo
-      component: app
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app: foo
-        component: app
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: app
 ```
 
 <br>
@@ -540,7 +540,7 @@ Deploymentで管理するPodを明示的に設定する。
 
 #### ▼ matchLabels
 
-Podのlabelキーを指定する。Podに複数のlabelキーが付与されている時は、これらを全て指定する必要がある。
+Podの```metadata.labels```キーを指定する。Podに複数の```metadata.labels```キーが付与されている時は、これらを全て指定する必要がある。
 
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -552,13 +552,13 @@ metadata:
 spec:
   selector:
     matchLabels: # Deploymentに紐づけるPodのLabel
-      app: foo
-      component: app
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
   template:
     metadata:
       labels: # PodのLabel
-        app: foo
-        component: app
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: app
 ```
 
 <br>
@@ -588,13 +588,13 @@ spec:
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
-      app: foo
-      component: app
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app: foo
-        component: app
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: app
 ```
 
 もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをapplyするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
@@ -617,12 +617,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo
-      component: app
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app: foo
+        app.kubernetes.io/app: foo
     spec:
       containers:
         - name: foo-gin
@@ -1147,7 +1147,7 @@ PersistentVolumeの作成先とするワーカーNodeを設定する。
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のワーカーNodeのlabelキーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のワーカーNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 
@@ -1165,10 +1165,10 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubernetes.io/hostname
+          - key: app.kubernetes.io/nodegroup
             operator: In
             values:
-              - foo-node 
+              - bar-group 
             # 開発環境であれば minikubeを指定する。
             # - minikube 
 ```
@@ -1339,9 +1339,18 @@ spec:
 
 #### ▼ affinityとは
 
-kube-schedulerがPodを作成するNodeを設定する。特定のNodeにPodを作成するだけでなく、複数のNodeに同じlabelを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+kube-schedulerがPodを作成するNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。
 
-参考：https://stackoverflow.com/questions/57494369/kubectl-apply-deployment-to-specified-node-group-aws-eks
+参考：
+
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
+- https://stackoverflow.com/questions/57494369/kubectl-apply-deployment-to-specified-node-group-aws-eks
+
+#### ▼ nodeAffinity
+
+ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内にPodを生成する。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+
+参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
 ```yaml
 apiVersion: v1
@@ -1349,19 +1358,46 @@ kind: Pod
 metadata:
   name: foo-pod
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: kubernetes.io/nodegroup
-                operator: In
-                values: foo-group
   containers:
     - name: foo-gin
       image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: app.kubernetes.io/nodegroup # ワーカーNodeのlabel
+                operator: In
+                values: foo-group
+```
+
+#### ▼ podAffinity
+
+Podの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内にPodを生成する。
+
+参考：https://zenn.dev/geek/articles/c74d204b00ba1a
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      ports:
+        - containerPort: 8080
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+          - matchExpressions:
+            - key: app.kubernetes.io/app # Podのlabel
+              operator: In
+              values: bar-pod
 ```
 
 <br>
@@ -1649,6 +1685,27 @@ spec:
       image: foo-gin:1.0.0
       livenessProbe:
         periodSeconds: 5
+```
+
+<br>
+
+### spec.nodeSelector
+
+kube-schedulerがPodを作成するNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+
+参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  nodeSelector:
+    app.kubernetes.io/nodegroup: bar-group
 ```
 
 <br>
@@ -2514,7 +2571,7 @@ spec:
 
 ### spec.selector
 
-インバウンド通信の転送先とするPodのlabelキー名と値を設定する。
+インバウンド通信の転送先とするPodの```metadata.labels```キー名と値を設定する。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 
@@ -2527,7 +2584,7 @@ metadata:
   name: foo-app-service
 spec:
   selector:
-    app: foo
+    app.kubernetes.io/app: foo
 ```
 
 <br>
@@ -2664,14 +2721,14 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app: foo
-      component: db
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app: foo
-        component: db
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: db
     spec:
       containers:
         - name: mysql
@@ -2686,8 +2743,8 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app: foo
-          component: db
+          app.kubernetes.io/app: foo
+          app.kubernetes.io/component: db
       spec:
         storageClassName: standard
         accessModes:
@@ -2713,14 +2770,14 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app: foo
-      component: db
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app: foo
-        component: db
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: db
     spec:
       containers:
         # MySQLコンテナ
@@ -2745,8 +2802,8 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app: foo
-          component: db
+          app.kubernetes.io/app: foo
+          app.kubernetes.io/component: db
       spec:
         storageClassName: standard
         accessModes:
@@ -2770,14 +2827,14 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app: foo
-      component: db
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app: foo
-        component: db
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: db
     spec:
       containers:
         - name: mysql
@@ -2791,8 +2848,8 @@ spec:
     - metadata:
         name: foo-standard-volume-claim
         labels:
-          app: foo
-          component: db
+          app.kubernetes.io/app: foo
+          app.kubernetes.io/component: db
       spec:
         storageClassName: standard
         accessModes:

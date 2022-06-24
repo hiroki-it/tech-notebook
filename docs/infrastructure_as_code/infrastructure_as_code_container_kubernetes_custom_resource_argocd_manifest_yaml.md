@@ -18,6 +18,6 @@ description: manifest.yaml＠ArgoCDの知見をまとめました。
 
 ArgoCDを宣言的に定義し、コンテナのプロビジョニングを行う。manifestファイルの定義方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_yaml.html
 
 <br>

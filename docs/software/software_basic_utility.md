@@ -733,11 +733,19 @@ $ free -m --t
 標準出力に出力された文字列のうち、合致するものだけを取得する。文字列の表示に関する様々なユーティリティ（```ls```、```cat```、```find```、など）と組み合わせられる。
 
 ```bash
-$ ls -la | grep bar
+$ cat foo.txt | grep bar
 ```
 
 ```bash
 $ cat foo.txt | grep bar
+```
+
+#### ▼ -A
+
+標準出力に出力された文字列のうち、以降の数行を取得する。
+
+```bash
+$ cat foo.txt | grep -A 5
 ```
 
 #### ▼ -i
@@ -745,7 +753,7 @@ $ cat foo.txt | grep bar
 標準出力に出力された文字列のうち、大文字と小文字を区別せずに、合致するものだけを取得する。
 
 ```bash
-$ ls -la | grep bar
+$ cat foo.txt | grep -i bar
 ```
 
 <br>

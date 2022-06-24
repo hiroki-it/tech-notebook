@@ -123,11 +123,11 @@ repository/
 
 ## 03. 命名規則
 
-### labelキー
+### labelsキー
 
 #### ▼ app.kubernetes.io
 
-Kubernetesに関するlabelキーを以下に示す。
+Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 

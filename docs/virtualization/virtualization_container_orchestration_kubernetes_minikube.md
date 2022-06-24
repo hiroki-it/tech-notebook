@@ -180,11 +180,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       labels:
-        app: foo-pod
+        app.kubernetes.io/app: foo-pod
     spec:
       containers:
         - name: foo-gin

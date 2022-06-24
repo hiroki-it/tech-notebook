@@ -147,7 +147,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     spec:
       containers:
@@ -253,7 +253,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       annotations:
@@ -273,7 +273,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       annotations:
@@ -294,7 +294,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       annotations:
@@ -315,7 +315,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       annotations:
@@ -336,7 +336,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-pod
+      app.kubernetes.io/app: foo-pod
   template:
     metadata:
       annotations:
@@ -409,7 +409,7 @@ spec:
 
 ### spec.subsets
 
-VirtualServiceのサブセット名に関して、ルーティング先とするPodのlabelキーを設定する
+VirtualServiceのサブセット名に関して、ルーティング先とするPodの```metadata.labels```キーを設定する
 
 参考：
 
@@ -627,7 +627,7 @@ spec:
 
 #### ▼ selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与されたlabelキーを設定する。
+Gatewayの適用対象のIngressGatewayに付与された```metadata.labels```キーを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
