@@ -44,21 +44,9 @@ description: 設計ポリシー＠Kubernetesの知見をまとめました。
 
 <br>
 
-## 02. ディレクトリ構成
+## 02. リポジトリ構成
 
-### リポジトリ
-
-#### ▼ アプリケーションとは別
-
-アプリケーションとは異なるリポジトリにて、manifest.yamlファイルを配置する。
-
-```yaml
-repository/
-├── foo.yaml
-...
-```
-
-#### ▼ アプリケーションと同じ
+### モノリポジトリ
 
 アプリケーションと同じリポジトリにて、```kubernetes```ディレクトリを作成し、ここにmanifest.yamlファイルを配置する。
 
@@ -73,11 +61,46 @@ repository/
 
 <br>
 
+### ポリリポジトリ（推奨）
+
+#### ▼ 各マイクロサービスを同じリポジトリにする
+
+```yaml
+repository/
+├── foo/ # fooサービス
+├── bar/ # barサービス
+└── baz/ # bazサービス
+```
+
+#### ▼ 各マイクロサービスを異なるリポジトリにする
+
+```yaml
+repository/ # fooサービス
+├── foo.yaml
+...
+```
+
+```yaml
+repository/ # barサービス
+├── bar.yaml
+...
+```
+
+```yaml
+repository/ # bazサービス
+├── baz.yaml
+...
+```
+
+<br>
+
+## 02-02. ディレクトリ構成
+
 ### ディレクトリ/ファイルの構成
 
 #### ▼ マイクロサービス別
 
-マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のmanifest.yamlファイルを作成する。さらに、実行環境やコンポーネント（app、db）別に分割してもよい。マニフェストの```apply```の順番を制御しにくいデメリットがある。
+マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のmanifest.yamlファイルを作成する。マニフェストの```apply```の順番を制御しにくいデメリットがある。
 
 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
@@ -90,13 +113,28 @@ repository/
 │   └── persistent-volume-claim.yaml
 │
 ├── bar/ # barサービス
-│   ├── dev # dev環境
-│   ... ├── deployment.yaml
-│       ├── service.yaml
-│       ├── persistent-volume.yaml
-│       └── persistent-volume-claim.yaml
-│
 └── baz/ # bazサービス
+```
+
+さらに、実行環境やコンポーネント（app、db）別に分割してもよい。
+
+```yaml
+repository/
+└── foo/ # fooサービス
+    ├── dev # 開発環境
+    │   ├── deployment.yaml
+    │   ├── service.yaml
+    │   ├── persistent-volume.yaml
+    │   └── persistent-volume-claim.yaml
+    │
+    ├── prd # 本番環境
+    └── stg # ステージング環境
+```
+
+
+```yaml
+repository/
+└── foo/ # fooサービス
     ├── app/ # appコンポーネント
     │   ├── deployment.yaml
     │   ├── service.yaml
@@ -107,6 +145,7 @@ repository/
         ├── service.yaml
         └── persistent-volume.yaml
 ```
+
 
 #### ▼ ディレクトリ無し
 

@@ -205,7 +205,7 @@ $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 （３）設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
 
-```bash
+```ini
 [epel]
 name=Extra Packages for Enterprise Linux 6 - $basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch

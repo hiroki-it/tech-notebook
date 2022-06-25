@@ -156,11 +156,16 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 <br>
 
-## 03. Gitflow
+## 03. Git-flow
 
-### フロー
+### Git-flowとは
 
-参考：https://github.com/Voronenko/gitflow-release
+Gitでソフトウェアを開発する場合に、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flowを簡略化したものに、GitHub-flowやGitlab-flowがある。
+
+参考：
+
+- https://github.com/Voronenko/gitflow-release
+- https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
 
 ![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/git-flow.png)
 

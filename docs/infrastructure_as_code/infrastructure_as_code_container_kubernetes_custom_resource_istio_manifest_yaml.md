@@ -1113,7 +1113,7 @@ spec:
 
 #### ▼ valuesとは
 
-IstioOperatorに、Helmを使用させてIstioリソースをインストールする場合に、Helmのvaluesファイルの代わりになる。
+IstioOperatorに、Helmを使用させてIstioリソースをインストールする場合に、Helmの```values```ファイルの代わりになる。
 
 #### ▼ gateways.istio-ingressgateway.runAsRoot
 

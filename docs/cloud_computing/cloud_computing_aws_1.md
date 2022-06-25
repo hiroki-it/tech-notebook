@@ -1711,7 +1711,7 @@ artifacts:
 - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 
-```bash
+```yaml
 [
   {
     "imageUri": "<イメージリポジトリURL>", # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
@@ -1850,13 +1850,13 @@ Resources:
 
 <br>
 
-### EC2のインプレースデプロイメント
+### EC2インスタンスのインプレースデプロイメント
 
 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
 
 <br>
 
-### EC2のブルー/グリーンデプロイメント
+### EC2インスタンスのブルー/グリーンデプロイメント
 
 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 

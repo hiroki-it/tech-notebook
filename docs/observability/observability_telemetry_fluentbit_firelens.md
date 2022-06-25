@@ -108,7 +108,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 ECSタスクのコンテナ定義にて、アプリケーションコンテナとlog_routerコンテナを設定する。log_routerという名前以外を設定できないことに注意する。
 
-```bash
+```yaml
 [
   {
     "name": "foo",
@@ -472,4 +472,5 @@ FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-
 ```bash
 [SERVICE]
     # 〜 中略 〜
-    Streams_File stream_processor.c
+    Streams_File stream_processor.conf
+```

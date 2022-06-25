@@ -1361,6 +1361,37 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 <br>
 
+### tree
+
+#### ▼ treeとは
+
+ディレクトリ構造を取得する。
+
+```bash
+$ tree
+
+.
+├── foo/
+│   └── foo.txt
+│
+├── bar/
+│   └── bar.txt
+│
+└── baz/
+    └── baz.txt
+```
+
+#### ▼ -P
+
+パターンにマッチしたファイルのみを取得し、それ以外のファイルの場合はディレクトリのみを取得する。ディレクトリ内のファイル名にある程度の規則性がある場合に、構造を把握するために役立つ。
+
+```bash
+# terraformのproviders.tfファイルのみを取得する。
+$ tree -P providers.tf
+```
+
+<br>
+
 ### traceroute
 
 #### ▼ tracerouteとは

@@ -54,9 +54,9 @@ Vagrantfileを使用して、プロバイダーとプロビジョナーを操作
 
 #### ▼ プロビジョナーの種類
 
-| プロビジョナー名 | 説明                                                         | 補足                                                         |
+| プロビジョナー名 | ユースケース                                                 | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。        | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。      | 参考：https://www.vagrantup.com/docs/provisioning/shell      |
 | Ansible          | Vagrantfileでプロビジョニングを実行する代わりに、Ansibleを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/ansible    |
 | CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに、CFEngineを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/cfengine   |
 | Chef             | Vagrantfileでプロビジョニングを実行する代わりに、Chefを使用する。 | 参考：https://www.vagrantup.com/docs/provisioning/chef_common |

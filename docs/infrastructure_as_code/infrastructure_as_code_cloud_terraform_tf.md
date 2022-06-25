@@ -131,7 +131,7 @@ terraform {
 
 #### ▼ backend
 
-tfstateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、```terraform init```コマンドのオプションを使用して値を渡すようにする。
+tfstateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -693,6 +693,29 @@ variable "rds_instance_class" {
 
 variable "rds_parameter_group_values" {
   type = map(string)
+}
+```
+
+<br>
+
+### local　
+
+#### ▼ localとは
+
+ネストモジュール内にスコープを持つ変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
+
+参考：
+
+- https://www.terraform.io/language/values/locals
+- https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+
+```terraform
+locals {
+  foo = "FOO"
+}
+
+resource "aws_instance" "example" {
+  foo = local.foo
 }
 ```
 
@@ -1437,7 +1460,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで起こったリソースの構築・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。1つのテクニックとして、機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ方法がある。
+実インフラのみで起こったリソースの構築・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 
@@ -1589,7 +1612,7 @@ integer型を変数として渡せるように、拡張子をjsonではなくtpl
 
 **＊実装例＊**
 
-```bash
+```yaml
 [
   {
     # コンテナ名

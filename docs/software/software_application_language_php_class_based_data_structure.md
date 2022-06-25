@@ -82,7 +82,7 @@ Array
 
 ### LinkedList型
 
-PHPで使用することはあまりないデータ格納様式。詳しくは、JavaにおけるLinkedList型を参考にせよ。
+PHPで使用することは個人的にはないデータ格納様式。詳しくは、JavaにおけるLinkedList型を参考にせよ。
 
 #### ▼ PHPの```list```メソッドとは何なのか
 

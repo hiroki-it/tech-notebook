@@ -156,7 +156,7 @@ ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定�
 
 参考：https://hub.docker.com/r/datadog/agent
 
-```bash
+```yaml
 [
   {
     "name": "datadog",
@@ -169,7 +169,7 @@ ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定�
 
 ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
-```bash
+```yaml
 [
   {
     "name": "datadog",
@@ -195,7 +195,7 @@ FROM data/agent:latest
 # 何らかのインストール
 ```
 
-```bash
+```yaml
 [
   {
     "name": "datadog",
@@ -216,7 +216,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 #### ▼ コンテナ定義
 
-```bash
+```yaml
 [
     {
         # barコンテナ

@@ -52,7 +52,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 ## 02. リポジトリ構成
 
-### モノリポジトリ構成
+### モノリポジトリ
 
 アプリケーションと同じリポジトリにて、```terraform```ディレクトリを作成し、ここにtfファイルを配置する。
 
@@ -67,11 +67,11 @@ repository/
 
 <br>
 
-### ポリリポジトリ構成（推奨）
+### ポリリポジトリ（推奨）
 
 #### ▼ ルートモジュールとネストモジュールを同じリポジトリにする（推奨）
 
-アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは同じリポジトリ内で管理する。
+アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは同じリポジトリ内で管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
 repository/
@@ -81,7 +81,7 @@ repository/
 
 #### ▼ ルートモジュールとネストモジュールを異なるリポジトリにする
 
-アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは異なるリポジトリ内で管理する。ルートモジュールで、ネストモジュールのリポジトリのURLを指定し、参照する。リポジトリを分割することで、ネストモジュールの運用権限を別チームに分けられる。
+アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは異なるリポジトリ内で管理する。ルートモジュールで、ネストモジュールのリポジトリのURLを指定し、参照する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
 repository/
@@ -91,13 +91,63 @@ repository/
 
 <br>
 
-## 02-02. ルートモジュールのディレクトリ構成
+## 02-02. tfstateファイルの構成
+
+#### ▼ 実行環境別（必須）
+
+実行環境別に```providers.tf```ファイルを作成する。これにより、実行環境別にtfstateファイルが作成される。必須の構成である。```terraform apply```コマンドの影響範囲を実行環境内に閉じることができる。
+
+```yaml
+repository/
+├── dev/ # 開発環境
+│   ├── providers.tf
+│   ...
+│
+├── prd/ # 本番環境
+│   ├── providers.tf
+│   ...
+│
+└── stg/ # ステージング環境
+    ├── providers.tf
+　  ...
+```
+
+#### ▼ クラウドプロバイダー別
+
+実行環境別に分けた上で、さらにクラウドプロバイダー別に```providers.tf```ファイルを作成する。これにより、クラウドプロバイダー別にtfstateファイルが作成される。```terraform apply```コマンドの影響範囲をクラウドプロバイダーの実行環境内に閉じることができる。
+
+```yaml
+repository/
+├── dev/ # 開発環境
+│   ├── aws/ # AWS
+│   │    ├── providers.tf
+│   │    ...
+│   │
+│   ├── datadog/ # Datadog
+│   │   ├── providers.tf
+│   │   ...
+│   │
+│   ├── healthchecks/ # Healthchecks
+│   │   ├── providers.tf
+│   │   ...
+│   │ 
+│   └── pagerduty/ # PagerDuty
+│       ├── providers.tf
+│       ...
+│
+├── prd/ # 本番環境
+└── stg/ # ステージング環境
+```
+
+<br>
+
+## 02-03. ルートモジュールのディレクトリ構成
 
 ### ルートモジュールとネストモジュールが同じリポジトリの場合
 
 #### ▼ 実行環境別
 
-実行環境別に、```foo.tfvars```ファイルで値を定義する。また、各ディレクトリにbackendを含めることにより、tfstateファイルを環境別に分割できる。
+実行環境別に、```foo.tfvars```ファイルで値を定義する。ルートモジュールと一緒に、```providers.tf```ファイルや```tfnotify.yml```ファイルも管理してしまうと良い。
 
 ```yaml
 repository/
@@ -110,18 +160,7 @@ repository/
 │   └── variables.tf
 │
 ├── prd/ # 本番環境ルートモジュール
-│   ├── prd.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
 └── stg/ # ステージング環境ルートモジュール
-    ├── stg.tfvars
-    ├── main.tf
-    ├── providers.tf
-    ├── tfnotify.yml
-    └── variables.tf
 ```
 
 <br>
@@ -130,7 +169,7 @@ repository/
 
 #### ▼ 実行環境別
 
-実行環境別に、```foo.tfvars```ファイルで値を定義する。また、各ディレクトリにbackendを含めることにより、tfstateファイルを環境別に分割できる。
+実行環境別に、```foo.tfvars```ファイルで値を定義する。ルートモジュールと一緒に、```providers.tf```ファイルや```tfnotify.yml```ファイルも管理してしまうと良い。
 
 ```yaml
 repository/
@@ -142,18 +181,7 @@ repository/
 │   └── variables.tf
 │
 ├── prd/ # 本番環境ルートモジュール
-│   ├── prd.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
 └── stg/ # ステージング環境ルートモジュール
-    ├── stg.tfvars
-    ├── main.tf
-    ├── providers.tf
-    ├── tfnotify.yml
-    └── variables.tf
 ```
 
 ```yaml
@@ -176,7 +204,7 @@ repository/ # WAFネストモジュール
 
 <br>
 
-## 02-03. ネストモジュールのディレクトリ構成
+## 02-04. ネストモジュールのディレクトリ構成
 
 ### ネストモジュールの構成
 
@@ -727,9 +755,41 @@ validate: init fmt
 	docker-compose run --rm terraform -chdir=./${ENV} validate
 ```
 
+<br>
 
+## 05. セキュリティ
 
-## 05. レビュー手順
+### 権限の一時的な付与
+
+特に```terraform plan```コマンドと```terraform apply```コマンドの実行時に関して、コマンドの実行者には通常にはクラウドプロバイダーへのアクセス権限を与えず、コマンドの実行時にのみ一時的な権限を付与する。これを行わないと、クラウドプロバイダーの認証情報が漏洩した場合に、認証情報の所有者が常時コマンドを実行できるようになってしまう。一時権限の付与方法としては、AWS STSがある。
+
+<br>
+
+### 機密情報の管理
+
+機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをdataリソースで参照する。
+
+```terraform
+# AWS RDSの場合
+resource "aws_rds_cluster" "this" {
+  
+  # 実際の値はSecrets Managerから参照する。
+  master_username                 = var.rds_db_master_username_ssm_parameter_value
+  master_password                 = var.rds_db_master_password_ssm_parameter_value  
+  
+  lifecycle {
+    ignore_changes = [
+      # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
+      master_username,
+      master_password
+    ]
+  }
+}
+```
+
+<br>
+
+## 06. レビュー手順
 
 ### （１）コンソール画面にログイン
 

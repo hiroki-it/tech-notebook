@@ -186,7 +186,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ 指定したドメインからのGET送信を許可
 
-```bash
+```yaml
 [
   {
     "AllowedHeaders": [
@@ -244,7 +244,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
-#### ▼ アプリケーションEC2の例
+#### ▼ アプリケーションの稼働するEC2の例
 
 ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。
 
@@ -265,7 +265,7 @@ EC2に割り振られる可能性のあるIPアドレスを許可するために
 
 | タイプ | プロトコル | ポート     | ソース                                 | 説明                    |
 | ------ | ---------- | ---------- | -------------------------------------- | ----------------------- |
-| NFS    | TCP        | ```2049``` | アプリケーションEC2のセキュリティグループID | NFS access from app EC2 |
+| NFS    | TCP        | ```2049``` | EC2のセキュリティグループID | NFS access from app EC2 |
 
 #### ▼ RDSの例
 
@@ -273,7 +273,7 @@ EC2に割り振られる可能性のあるIPアドレスを許可するために
 
 | タイプ       | プロトコル | ポート     | ソース                                 | 説明                      |
 | ------------ | ---------- | ---------- | -------------------------------------- | ------------------------- |
-| MYSQL/Aurora | TCP        | ```3306``` | アプリケーションEC2のセキュリティグループID | MYSQL access from app EC2 |
+| MYSQL/Aurora | TCP        | ```3306``` | EC2のセキュリティグループID | MYSQL access from app EC2 |
 
 #### ▼ Redisの例
 
@@ -281,7 +281,7 @@ EC2に割り振られる可能性のあるIPアドレスを許可するために
 
 | タイプ      | プロトコル | ポート     | ソース                                 | 説明                    |
 | ----------- | ---------- | ---------- | -------------------------------------- | ----------------------- |
-| カスタムTCP | TCP        | ```6379``` | アプリケーションEC2のセキュリティグループID | TCP access from app EC2 |
+| カスタムTCP | TCP        | ```6379``` | EC2のセキュリティグループID | TCP access from app EC2 |
 
 #### ▼ ALBの例
 

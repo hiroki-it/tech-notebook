@@ -333,7 +333,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
-```bash
+```yaml
 [
     span1,
     span2,
@@ -343,7 +343,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 
 また、複数の分散トレースを配列データとして定義できる。
 
-```bash
+```yaml
 [
     trace1,
     trace2,
@@ -367,7 +367,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 
 **＊実装例＊**
 
-```bash
+```yaml
 [
   [
     {

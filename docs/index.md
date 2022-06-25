@@ -332,7 +332,7 @@ title: 【知見を記録するサイト】目次
 * [📖：︎GitHub Actions](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_github_actions.html)
 * ArgoCD
     * [📖：︎manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_yaml.html)
-    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policyl.html)
+    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policy.html)
 
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)

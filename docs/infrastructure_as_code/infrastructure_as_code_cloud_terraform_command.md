@@ -60,7 +60,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-指定したバックエンドの初期化を実行する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```で指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
+指定したバックエンドの初期化を実行する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \

@@ -37,9 +37,9 @@ repository/
 
 <br>
 
-### ポリリポジトリ構成
+### ポリリポジトリ
 
-apply単位ごとに、別々のリポジトリを作成する。
+apply単位ごとに、別々のリポジトリを作成する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
 repository/ # fooサービス
@@ -60,9 +60,9 @@ repository/ # bazサービス
 
 ## 02. ワークフロー
 
-### Gitflow
+### Git-flow
 
-Gitflowのブランチに応じたApplicationを作成し、特定の実行環境ではそのブランチのみを監視する。
+Git-flowのブランチに応じたApplicationを作成し、特定の実行環境ではそのブランチのみを監視する。
 
 ```yaml
 # ステージング環境のApplication
@@ -72,7 +72,7 @@ metadata:
   namespace: argocd
   name: foo-application
   labels:
-    app.kubernetes.io/env: stg
+    app.kubernetes.io/env: prd
 spec:
   source:
     targetRevision: main # 本番環境に対応するブランチ
@@ -98,7 +98,9 @@ spec:
 
 ### ダッシュボード
 
-ログインのURLはIngressを入り口に構築することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
+ダッシュボード
+
+のURLはIngressを入り口に構築することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
 
 <br>
 

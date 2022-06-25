@@ -476,7 +476,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 <br>
 
-### project
+### spec.project
 
 #### ▼ projectとは
 
@@ -496,7 +496,7 @@ spec:
 
 <br>
 
-### source
+### spec.source
 
 #### ▼ sourceとは
 
@@ -512,7 +512,7 @@ spec:
 
 <br>
 
-### source（マニフェストリポジトリの場合）
+### spec.source（マニフェストリポジトリの場合）
 
 #### ▼ directory
 
@@ -610,7 +610,7 @@ spec:
 
 <br>
 
-### source（チャートレジストリの場合）
+### spec.source（チャートレジストリの場合）
 
 #### ▼ chart
 
@@ -713,7 +713,7 @@ spec:
 
 <br>
 
-### source（OCIレジストリの場合）
+### spec.source（OCIレジストリの場合）
 
 #### ▼ chart
 
@@ -757,7 +757,7 @@ spec:
 
 <br>
 
-### destination
+### spec.destination
 
 #### ▼ destinationとは
 
@@ -810,7 +810,7 @@ spec:
 
 <br>
 
-### syncPolicy
+### spec.syncPolicy
 
 #### ▼ syncPolicyとは
 
@@ -879,7 +879,7 @@ spec:
 
 ## 05. Rollout
 
-### analysis
+### spec.analysis
 
 #### ▼ analysisとは
 
@@ -913,7 +913,7 @@ spec:
 
 <br>
 
-### strategy
+### spec.strategy
 
 #### ▼ strategyとは
 
@@ -989,4 +989,121 @@ spec:
 
 <br>
 
-#### 
+## 06. Workflow
+
+### spec.entrypoint
+
+#### ▼ entrypointとは
+
+一番最初に使用するテンプレート名を設定する。
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: foo-workflow
+spec:
+  entrypoint: foo-template
+```
+
+<br>
+
+### spec.templates
+
+#### ▼ templatesとは
+
+ワークフローの処理を設定する。WorkflowTemplateとして切り分けても良い。
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: foo-workflow
+spec:
+  entrypoint: foo-template
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          command: [sh]
+          source: |
+            echo "Hello World"
+```
+
+<br>
+
+### spec.workflowTemplateRef
+
+#### ▼ workflowTemplateRefとは
+
+切り分けたWorkflowTemplateの名前を設定する。
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: foo-workflow
+spec:
+  workflowTemplateRef:
+    name: hello-world-workflow-template
+```
+
+<br>
+
+## 06-02. WorkflowTemplate
+
+### spec.templates
+
+#### ▼ templatesとは
+
+ワークフローの処理を設定する。
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: hello-world-workflow-template
+spec:
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          cource: |
+            echo "Hello World"
+```
+
+#### ▼ script
+
+コンテナをプルし、コンテナ内でスクリプトを実行する。
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: hello-world-workflow-template
+spec:
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          command: [sh]
+          source: |
+            echo "Hello World"
+```
+
+#### ▼ steps
+
+参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+<br>
+
