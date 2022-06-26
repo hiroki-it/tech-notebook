@@ -328,18 +328,18 @@ title: 【知見を記録するサイト】目次
 ## ♾️ DevOps
 
 * [📖：︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
-* [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 * [📖：︎GitHub Actions](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_github_actions.html)
-* ArgoCD
-    * [📖：︎manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_yaml.html)
-    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policy.html)
-
-* Skaffold
-    * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
-    * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)
+* [📖：︎GitLab CI](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_gitlab_ci.html)
+* [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 * CircleCI
     * [📖：︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
     * [📖：︎orbs](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_orbs.html)
+* ArgoCD
+    * [📖：︎manifest.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_yaml.html)
+    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policy.html)
+* Skaffold
+    * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
+    * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)
 
 <br>
 

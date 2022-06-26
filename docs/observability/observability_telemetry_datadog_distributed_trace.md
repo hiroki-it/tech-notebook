@@ -327,7 +327,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
-#### ▼ 構造
+#### ▼ Datadogにおける分散トレース
 
 Datadogで、分散トレースはスパンを持つ配列データとして定義される。
 
@@ -359,7 +359,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
-#### ▼ 構造
+#### ▼ Datadogにおけるスパン
 
 Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
 

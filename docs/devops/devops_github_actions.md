@@ -15,7 +15,15 @@ description: GitHub Actions＠DevOpsの知見をまとめました。
 
 ## 01. GitHub Actionsの仕組み
 
-構造に関する記載が見つからず、要勉強...
+### アーキテクチャ
+
+要調査...
+
+<br>
+
+### パイプライン構成
+
+要調査...
 
 <br>
 
@@ -24,7 +32,7 @@ description: GitHub Actions＠DevOpsの知見をまとめました。
 ### インストール
 
 ```yaml
-project
+repository/
 ├── .github/
 │   └── workflows/
 │       └── foo.yml
@@ -161,7 +169,7 @@ jobs:
 親ファイルの```steps```を別のファイルに切り分け、親ファイルでコールできる。```workflows```ディレクトリ配下に任意のサブディレクトリを用意し、そこに```action```ファイルを配置する。親ファイルでディレクトリを指定すると、```action```ファイルが自動的に読み込まれる。
 
 ```yaml
-project
+repository/
 ├── .github/
 │   └── workflows/
 │       ├── foo.yml

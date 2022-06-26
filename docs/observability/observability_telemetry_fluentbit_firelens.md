@@ -15,7 +15,7 @@ description: FireLensコンテナ＠テレメトリー収集ツールの知見�
 
 ## 01. FireLensコンテナの仕組み
 
-### 構造
+### アーキテクチャ
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 

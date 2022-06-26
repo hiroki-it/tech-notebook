@@ -99,7 +99,7 @@ $ skaffold run
 
 #### ▼ force
 
-リソースを強制的にデプロイしつつ、```run```コマンドを実行する。
+リソースを強制的にデプロイしつつ、```skaffold run```コマンドを実行する。
 
 ```bash
 $ skaffold run --force
@@ -107,7 +107,7 @@ $ skaffold run --force
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```run```コマンドを実行する。
+イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```skaffold run```コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
@@ -115,7 +115,7 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 #### ▼ --tail
 
-フォアグラウンドで```run```コマンドを実行する。
+フォアグラウンドで```skaffold run```コマンドを実行する。
 
 ```bash
 $ skaffold run --tail
@@ -123,7 +123,7 @@ $ skaffold run --tail
 
 #### ▼ --port-forward
 
-ポートフォワードを実行しつつ、```run```コマンドを実行する。
+ポートフォワードを実行しつつ、```skaffold run```コマンドを実行する。
 
 ```bash
 $ skaffold run --port-forward

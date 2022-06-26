@@ -197,7 +197,7 @@ x-amazon-apigateway-request-validators:
 
 #### ▼ 注意点
 
-インポートにあたり、以下に注意する。Swagger EditorでAPIの仕様書のHTMLファイルを確認できる。
+インポートにあたり、以下に注意する。Swagger EditorでAPIの仕様書の```.html```ファイルを確認できる。
 
 参考：https://editor.swagger.io/
 

@@ -479,3 +479,68 @@ TEST SUITE: None
 ```
 
 <br>
+
+## 02. プラグイン系コマンド
+
+### helm-secrets
+
+#### ▼ helm-secretsとは
+
+Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、helmコマンドを実行する。元々の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
+
+参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+
+```bash
+$ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョン>
+```
+
+#### ▼ dec
+
+指定した```values```ファイルを復号化し、```.yaml.dec```ファイルに出力する。
+
+```bash
+$ helm secrets dec ./values/secrets.yaml
+
+Decrypting ./values/secrets.yaml
+```
+
+```yaml
+# .yaml.decファイル
+db:
+  user: root
+  password: password
+```
+
+#### ▼ enc
+
+指定した```values```ファイルを暗号化し、元々の平文を上書きする。
+
+```bash
+$ helm secrets enc ./values/secrets.yaml
+
+Encrypted ./values/secrets.yaml
+```
+
+```yaml
+# secrets.yamlファイル
+db:
+  user: *****
+  password: *****
+# 〜 sopsキーが追記される。
+sops:
+  # 〜 中略 〜
+```
+
+#### ▼ view
+
+指定した```values```ファイルを復号化して取得する。
+
+```bash
+$ helm secrets view ./values/secrets.yaml
+
+db:
+  user: root
+  password: password
+```
+
+<br>

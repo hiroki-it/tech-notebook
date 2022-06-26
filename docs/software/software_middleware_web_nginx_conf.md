@@ -15,7 +15,7 @@ description: nginx.conf＠Nginxの知見をまとめました。
 
 ## 01. Nginxの仕組み
 
-### 構造
+### アーキテクチャ
 
 ![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nginx_architecture.png)
 

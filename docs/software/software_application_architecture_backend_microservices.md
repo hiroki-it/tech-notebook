@@ -111,7 +111,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ```yaml
 # モノリポジトリの場合
-backend_mono_repository
+backend_mono_repository/
 ├── src/
 │   ├── foo/
 │   │   ├── docker-compose.yml
@@ -125,7 +125,7 @@ backend_mono_repository
 
 ```yaml
 # モノリポジトリの場合
-frontend_mono_repository
+frontend_mono_repository/
 ├── src/
 │   ├── qux/
 │   │   ├── docker-compose.yml
@@ -144,7 +144,7 @@ frontend_mono_repository
 ```yaml
 # モノリポジトリの場合
 # JetBrains製品をエディタとする場合
-backend_mono_repository
+backend_mono_repository/
 ├── src/
 │   ├── foo/
 │   │   ├── .idea/
@@ -158,7 +158,7 @@ backend_mono_repository
 ```yaml
 # モノリポジトリの場合
 # JetBrains製品をエディタとする場合
-frontend_mono_repository
+frontend_mono_repository/
 ├── src/
 │   ├── qux/
 │   │   ├── .idea/
@@ -203,7 +203,7 @@ IaCツールにTerraformを使用した場合を示す。
 
 ```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ
-infrastructure_repository
+infrastructure_repository/
 ├── modules/
 ├── prd/
 ├── stg/

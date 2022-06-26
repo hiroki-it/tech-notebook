@@ -15,7 +15,7 @@ description: gRPC＠アプリケーション連携の知見をまとめました
 
 ## 01. gRPCの仕組み
 
-### 構造
+### アーキテクチャ
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
@@ -25,16 +25,47 @@ RPCフレームワークの一つで、プロトコルバッファーを用い�
 
 - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 - https://openstandia.jp/oss_info/grpc/
+- https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
 
 <br>
 
-### サーバー側のセットアップ
+## 02. サーバー側のセットアップ
 
-#### ▼ サービス定義ファイル
+### プロトコルバッファー自動生成ツールのインストール
 
-プロトコルバッファーを用いて、サービス定義ファイル（```proto```ファイル）にインターフェースとメッセージ構造を実装する。これにより、サーバー側とクライアント側で必要な実装を自動生成できる。
+#### ▼ pipリポジトリから
 
-参考：https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
+Pythonで使用する場合、pipリポジトリからインストールする。
+
+```bash
+$ pip3 install grpcio-tools
+```
+
+#### ▼ gemリポジトリから
+
+Rubyで使用する場合、gemリポジトリからインストールする。
+
+```bash
+$ gem install grpc-tools
+```
+
+#### ▼ npmリポジトリから
+
+Node.jsで使用する場合、npmリポジトリからインストールする。
+
+```bash
+$ npm install grpc-tools
+```
+
+<br>
+
+### 実装
+
+#### ▼ サービス定義ファイル（```proto```ファイル）
+
+gRPCの仕様を実装により説明するためのフォーマットのこと。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb```ファイルを自動生成する。このファイルには、サーバー側とクライアント側で必要な実装が定義されている。
+
+参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
 #### ▼ gRPCサーバー
 
@@ -44,7 +75,37 @@ RPCフレームワークの一つで、プロトコルバッファーを用い�
 
 <br>
 
-### クライアント側のセットアップ
+## 02-02. クライアント側のセットアップ
+
+### gRPCライブラリのインストール
+
+#### ▼ pipリポジトリから
+
+Pythonで使用する場合、pipリポジトリからインストールする。
+
+```bash
+$ pip3 install grpcio
+```
+
+#### ▼ gemリポジトリから
+
+Rubyで使用する場合、gemリポジトリからインストールする。
+
+```bash
+$ gem install grpc
+```
+
+#### ▼ npmリポジトリから
+
+Node.jsで使用する場合、npmリポジトリからインストールする。
+
+```bash
+$ npm install grpc
+```
+
+<br>
+
+### 実装
 
 #### ▼ gRPCクライアント
 
@@ -54,7 +115,7 @@ gRPCサーバーのリモートプロシージャーコールを実行する。
 
 <br>
 
-## 02. Goの場合
+## 03. Goの場合
 
 ### サーバー側
 
@@ -101,7 +162,7 @@ $ protoc ./foo/foo.proto --go_out=plugins=grpc:foo
 # foo.pb.goファイルが生成される。
 ```
 
-ちなみに、pbファイルには、gRPCサーバーとして登録するための```Register*****ServiceServer```関数が定義される。
+ちなみに、```pb```ファイルには、gRPCサーバーとして登録するための```Register*****ServiceServer```関数が定義される。
 
 ```go
 // 〜 中略 〜

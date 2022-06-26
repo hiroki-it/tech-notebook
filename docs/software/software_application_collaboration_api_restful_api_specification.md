@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】API仕様書＠アプリケーション連携
-description: API仕様書＠アプリケーション連携の知見をまとめました。
+title: 【知見を記録するサイト】API仕様書＠RESTful-API
+description: API仕様書＠RESTful-APIの知見をまとめました。
 ---
 
-# API仕様書＠アプリケーション連携
+# API仕様書＠RESTful-API
 
 ## はじめに
 
@@ -43,7 +43,25 @@ externalDocs: # externalDocsフィールド
 
 <br>
 
-### API Gatewayによるインポート
+### OpenAPI仕様の視覚化
+
+#### ▼ ReDocの場合
+
+ReDocを用いて、OpenAPI仕様から```.html```ファイルを生成する。
+
+参考：https://qiita.com/icck/items/97d00495ec324e1902d6
+
+```bash
+$ npm install -g redoc-cli
+
+$ redoc-cli bundle openapi.yaml redoc.html
+```
+
+<br>
+
+### クラウドプロバイダーとの統合
+
+#### ▼ API Gatewayの場合
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
@@ -51,9 +69,9 @@ API GatewayによるOpenAPI仕様のインポートについては、以下の�
 
 <br>
 
-### フィールド
+## 02. フィールド
 
-#### ▼ openapiフィールド（必須）
+### openapiフィールド（必須）
 
 OpenAPI仕様のバージョンを定義する。
 
@@ -63,7 +81,9 @@ OpenAPI仕様のバージョンを定義する。
 openapi: 3.0.0
 ```
 
-#### ▼ infoフィールド（必須）
+<br>
+
+### infoフィールド（必須）
 
 API名、作成者名、メールアドレス、ライセンス、などを定義する。
 
@@ -84,7 +104,9 @@ info:
   version: 1.0.0 # APIドキュメントのバージョン
 ```
 
-#### ▼ serversフィールド
+<br>
+
+### serversフィールド
 
 API自体のURL、などを定義する。
 
@@ -103,7 +125,9 @@ servers:
           - www
 ```
 
-#### ▼ pathsフィールド（必須）
+<br>
+
+### pathsフィールド（必須）
 
 APIのエンドポイント、HTTPメソッド、ステータスコード、などを定義する。
 
@@ -330,7 +354,9 @@ paths:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。                 
 ```
 
-#### ▼ componentsフィールド（必須）
+<br>
+
+### componentsフィールド（必須）
 
 スキーマなど、他の項目で共通して利用するものを定義する。
 
@@ -409,9 +435,9 @@ components:
       in: header
 ```
 
-**＊実装例＊**
+<br>
 
-#### ▼ securityフィールド
+### securityフィールド
 
 componentsフィールドで定義した認証方法を宣言する。ルートで宣言すると、全てのパスに適用できる。
 
@@ -422,7 +448,9 @@ security:
   - apiKeyAuth: []
 ```
 
-#### ▼ tagsフィールド
+<br>
+
+### tagsフィールド
 
 各項目に付けるタグを定義する。同名のタグをつけると、自動的にまとめられる。
 
@@ -434,7 +462,9 @@ tags:
     description: |
 ```
 
-#### ▼ externalDocsフィールド
+<br>
+
+### externalDocsフィールド
 
 APIを説明するドキュメントのリンクを定義する。
 
@@ -448,13 +478,15 @@ externalDocs:
 
 <br>
 
-### スキーマ
+## 03. スキーマ
 
-#### ▼ スキーマとは
+### スキーマとは
 
 APIに対して送信されるリクエストメッセージのデータ、またはAPIか受信したレスポンスメッセージのデータについて、データ型や必須データを、JSON型またはYAML型で実装しておいたもの。リクエスト/レスポンス時のデータのバリデーションに使用する。
 
-#### ▼ スキーマによるバリデーション
+<br>
+
+### スキーマによるバリデーション
 
 データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを行う。
 
@@ -506,11 +538,9 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 }
 ```
 
-#### ▼ API Gatewayにおけるスキーマ設定
+<br>
 
-API Gatewayにて、バリデーションのためにスキーマを設定できる。詳しくは、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 
 

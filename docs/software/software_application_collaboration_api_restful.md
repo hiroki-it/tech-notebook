@@ -761,9 +761,9 @@ POST/PUT送信で、ボディパラメーターのデータ形式を表現する
 |                    | javascript            | jsファイル                                    |
 |                    | json                  | jsonファイル                                    |
 |                    | x-www-form-urlencoded | POST送信のデータ                    |
-|                    | zip                   | zipファイル                                    |
-| text               | html                  | htmlファイル                        |
-|                    | css                   | cssファイル                         |
+|                    | zip                   | ```.zip```ファイル                                  |
+| text               | html                  | ```.html```ファイル                        |
+|                    | css                   | ```.css```ファイル                         |
 |                    | plane                 | プレーンテキスト                    |
 | image              | png                   | pngファイル                                    |
 |                    | jpeg                  | jpegファイル                                    |

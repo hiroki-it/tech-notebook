@@ -15,7 +15,7 @@ description: Kubernetes＠仮想化の知見をまとめました。
 
 ## 01. Kubernetesの仕組み
 
-### 構造
+### アーキテクチャ
 
 参考：https://kubernetes.io/docs/concepts/overview/components/
 
@@ -1101,7 +1101,7 @@ Clusterネットワーク内の全てのServiceにDNS名が割り当てられて
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | A/AAAAレコード | ```<Service名>.<Namespace名>.svc.svc.cluster.local```        | ・通常のServiceの名前解決ではClusterIPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略可能。<br>・同じNamespace内から通信する場合は、```<Service名>```のみで良い。 |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 要勉強                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。 |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 要調査...                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。 |
 
 #### ▼ Serviceに対する名前解決
 

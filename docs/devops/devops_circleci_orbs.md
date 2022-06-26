@@ -109,7 +109,7 @@ workflows:
   # ステージング環境にデプロイ
   develop:
     jobs:
-      # 直前に承認ジョブを挿入する
+      # 直前に承認Jobを挿入する
       - hold:
           name: hold_create_invalidation_stg
           type: approval
@@ -123,7 +123,7 @@ workflows:
   # 本番環境にデプロイ                
   main:
     jobs:
-      # 直前に承認ジョブを挿入する
+      # 直前に承認Jobを挿入する
       - hold:
           name: hold_create_invalidation_prd
           type: approval    
@@ -454,7 +454,7 @@ workflows:
 
 #### ▼ notify
 
-ジョブの終了時に、成功または失敗を基に、ステータスを通知する。ジョブの最後のステップとして設定しなければならない。
+Jobの終了時に、成功または失敗を基に、ステータスを通知する。Jobの最後のステップとして設定しなければならない。
 
 ```yaml
 version: 2.1
@@ -463,7 +463,7 @@ orbs:
   slack: circleci/slack@4.1
 
 commands:
-  # 他のジョブ内で使用できるようにcommandとして定義
+  # 他のJob内で使用できるようにcommandとして定義
   notify_of_failure:
     steps:
       - slack/notify:

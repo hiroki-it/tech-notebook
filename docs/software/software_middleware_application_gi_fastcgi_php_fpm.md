@@ -15,7 +15,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 ## 01. PHP-FPMの仕組み
 
-### 構造
+### アーキテクチャ
 
 PHP-FPMは、Server API、Zend Engine、から構成される。
 

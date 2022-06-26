@@ -21,7 +21,7 @@ Istioリソースを宣言的に定義し、コンテナのプロビジョニン
 
 <br>
 
-## 01-02. セットアップ
+## 02. セットアップ
 
 ### インストール
 
@@ -158,7 +158,7 @@ spec:
 
 <br>
 
-## 02. 共通設定
+## 03. 共通設定
 
 ### apiVersion
 
@@ -197,7 +197,7 @@ metadata:
 
 <br>
 
-## 03. Namespace＠Kubernetesでの設定
+## 04. Namespace＠Kubernetesでの設定
 
 ### labels
 
@@ -229,7 +229,7 @@ metadata:
 
 <br>
 
-## 03-02. Pod＠Kubernetesでの設定
+## 04-02. Pod＠Kubernetesでの設定
 
 ### annotationsとは
 

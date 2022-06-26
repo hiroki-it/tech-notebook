@@ -15,7 +15,13 @@ description: manifest.yaml＠ArgoCDの知見をまとめました。
 
 ## 01. ArgoCDの仕組み
 
-### 構造
+### アーキテクチャ
+
+要調査...
+
+<br>
+
+### パイプライン構成
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
@@ -89,8 +95,6 @@ description: manifest.yaml＠ArgoCDの知見をまとめました。
 <br>
 
 ### チャートリポジトリ起点
-
-### <br>
 
 ## 02. セットアップ
 
@@ -480,7 +484,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ projectとは
 
-アプリケーションのプロジェクト名を設定する。プロジェクト名は『```default```』とする必要がある。（理由は要調査）
+アプリケーションのプロジェクト名を設定する。プロジェクト名は『```default```』は必ず作成する必要がある。```default```以外のプロジェクトは、実行環境別に作成すると良い。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -491,7 +495,7 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  project: default
+  project: default # その他、dev、stg、prd、などを作成する。
 ```
 
 <br>
@@ -1014,7 +1018,7 @@ spec:
 
 #### ▼ templatesとは
 
-ワークフローの処理を設定する。WorkflowTemplateとして切り分けても良い。
+パイプラインの処理を設定する。WorkflowTemplateとして切り分けても良い。
 
 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
@@ -1029,7 +1033,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: [sh]
+          command: ["sh"]
           source: |
             echo "Hello World"
 ```
@@ -1062,7 +1066,7 @@ spec:
 
 #### ▼ templatesとは
 
-ワークフローの処理を設定する。
+パイプラインの処理を設定する。
 
 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
 
@@ -1096,7 +1100,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: [sh]
+          command: ["sh"]
           source: |
             echo "Hello World"
 ```

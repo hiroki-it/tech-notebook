@@ -68,7 +68,7 @@ symfony/
     ├── fontawesome/
     ├── img/ # 画像ファイル
     ├── jquery/ # jquery（javascriptフレームワーク）
-    └── js/ # javascriptファイル
+    └── js/
 ```
 
 <br>

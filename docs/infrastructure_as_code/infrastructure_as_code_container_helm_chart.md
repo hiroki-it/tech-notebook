@@ -15,7 +15,7 @@ description: チャート＠Helmの知見をまとめました。
 
 ## 01. Helmの仕組み
 
-### 構造
+### アーキテクチャ
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
@@ -106,7 +106,7 @@ apiVersion: v2
 
 #### ▼ appVersionとは
 
-Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。
+Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。リリースバージョンは、リリースタグで管理した方がよく、```appVersion```キーの値は特に変更しなくても良い。
 
 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
@@ -195,7 +195,7 @@ type: application
 
 #### ▼ versionとは
 
-チャートアーカイブのリリースバージョンを設定する。
+チャートアーカイブのリリースバージョンを設定する。```template```ディレクトリ配下のファイルを変更した場合に更新する。
 
 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 

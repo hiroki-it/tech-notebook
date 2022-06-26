@@ -1496,7 +1496,7 @@ encoding = utf_8
 # バッファーに蓄える期間
 buffer_duration = 5000
 
-# 要勉強
+# 要調査...
 initial_position = start_of_file
 
 # インスタンスID

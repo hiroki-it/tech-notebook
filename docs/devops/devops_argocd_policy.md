@@ -17,79 +17,67 @@ description: 設計ポリシー＠ArgoCDの知見をまとめました。
 
 ### モノリポジトリ構成（推奨）
 
-apply単位ごとにApplicationを作成する。マイクロサービスアーキテクチャでは、マイクロサービスがapply単位になるため、マイクロサービスごとにApplicationを作成すると良い。
+GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 ```yaml
 repository/
-├── foo/ # fooサービス
-│   └── application.yaml
+├── dev/
+│   ├── foo-repository.yaml # fooリポジトリを対象とするGitOps
+│   ├── bar-repository.yaml # barリポジトリを対象とするGitOps
+│   └── baz-repository.yaml # bazリポジトリを対象とするGitOps
 │
-├── bar/ # barサービス
-│   └── application.yaml
-│
-├── baz/ # bazサービス
-│   └── application.yaml
-│
-...
+├── prd/
+└── stg/
 ```
 
 <br>
 
 ### ポリリポジトリ
 
-apply単位ごとに、別々のリポジトリを作成する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+GitOps対象のリポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
-repository/ # fooサービス
-└── application.yaml
+foo-repository/ # fooリポジトリを対象とするGitOps
+├── dev/
+│   └── foo-service-repository.yaml
+│
+├── prd/
+└── stg/
 ```
 
 ```yaml
-repository/ # barサービス
-└── application.yaml
+bar-repository/ # barリポジトリを対象とするGitOps
+├── dev/
+│   └── bar-service-repository.yaml
+│
+├── prd/
+└── stg/
 ```
 
 ```yaml
-repository/ # bazサービス
-└── application.yaml
+baz-repository/ # bazリポジトリを対象とするGitOps
+├── dev/ # 開発環境
+│   └── baz-service-repository.yaml
+│
+├── prd/ # 本番環境
+└── stg/ # ステージング環境
 ```
 
 <br>
 
-## 02. ワークフロー
+## 02. ディレクトリ構成
 
-### Git-flow
+### 実行環境別（必須）
 
-Git-flowのブランチに応じたApplicationを作成し、特定の実行環境ではそのブランチのみを監視する。
-
-```yaml
-# ステージング環境のApplication
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: foo-application
-  labels:
-    app.kubernetes.io/env: prd
-spec:
-  source:
-    targetRevision: main # 本番環境に対応するブランチ
-```
+必須の構成である。各実行環境にapplyするためのApplicationを別々のディレクトリで管理する。Applicationでは、実行環境に対応するブランチのみを監視する。
 
 ```yaml
-# ステージング環境のApplication
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: foo-application
-  labels:
-    app.kubernetes.io/env: stg
-spec:
-  source:
-    targetRevision: develop # ステージング環境に対応するブランチ
+repository/
+├── dev/ # 開発環境
+├── prd/ # 本番環境
+└── stg/ # ステージング環境
 ```
 
 <br>

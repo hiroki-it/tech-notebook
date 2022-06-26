@@ -16,7 +16,7 @@ description: Prometheus＠テレメトリー収集ツールの知見をまとめ
 
 ## 01. Prometheusの仕組み
 
-### 構造
+### アーキテクチャ
 
 Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを生成し、Alertmanagerに送信する。
 

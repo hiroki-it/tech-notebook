@@ -741,7 +741,7 @@ Starting to serve on [::]:8001
 
 #### ▼ runとは
 
-Deployment、Pod、ジョブを作成する。
+Deployment、Pod、Jobを作成する。
 
 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
@@ -762,10 +762,10 @@ $ kubectl run <Deployment名> --restart=Always --image=<イメージ名>:<バー
 $ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
-もし```restart```オプションが```OnFailure```なら、ジョブが作成される。
+もし```restart```オプションが```OnFailure```なら、Jobが作成される。
 
 ```bash
-$ kubectl run <ジョブ名> --restart=OnFailure --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
+$ kubectl run <Job名> --restart=OnFailure --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 <br>

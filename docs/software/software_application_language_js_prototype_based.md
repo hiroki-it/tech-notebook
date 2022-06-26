@@ -605,4 +605,4 @@ object1.printParam; // global param
 object2.printParam; // global param
 ```
 
-また、アロー関数がコールバック関数の引数となっている場合…（要勉強）
+また、アロー関数がコールバック関数の引数となっている場合は、要調査...

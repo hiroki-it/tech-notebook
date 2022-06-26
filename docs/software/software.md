@@ -89,7 +89,7 @@ Google Drive、Dropbox
 
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッドアプリ.png)
 
-端末でWebviewを稼働させ、ソフトウェアのHTLMファイルのレンダリングをWebview上で行うアプリケーションのこと。
+端末でWebviewを稼働させ、ソフトウェアの```.html```ファイルのレンダリングをWebview上で行うアプリケーションのこと。
 
 参考：https://www.sbbit.jp/article/cont1/28197
 
@@ -218,7 +218,7 @@ Unixから分岐したBSDは、さらに複数の系統（MacOSなど）に分�
 
 ### デバイスドライバーとは
 
-要勉強
+要調査...
 
 <br>
 

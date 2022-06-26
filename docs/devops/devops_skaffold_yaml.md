@@ -15,15 +15,21 @@ description: skaffold.yaml＠Skaffoldの知見をまとめました。
 
 ## 01 Skaffoldの仕組み
 
-### 構成
+### アーキテクチャ
+
+要調査...
+
+<br>
+
+### パイプライン構成
+
+#### ▼ ステージの種類
 
 CI/CDのステージを持つ。build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。ただし、Skaffoldは、基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
-<br>
-
-### 各ステージのツールの選択
+#### ▼ 各ステージのツールの選択
 
 Skaffoldの各ステージでは、それ専用のツールをコールできる。
 

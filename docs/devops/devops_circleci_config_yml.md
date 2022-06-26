@@ -15,11 +15,15 @@ description: config.yml@CircleCIの知見をまとめました。
 
 ## 01. CircleCIの仕組み
 
-### 構造
+### アーキテクチャ
 
 参考：https://circleci.com/docs/2.0/server-3-overview/
 
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circleci_architecture.png)
+
+<br>
+
+### パイプライン構成
 
 <br>
 

@@ -15,9 +15,9 @@ description: Uvicorn＠ミドルウェアの知見をまとめました。
 
 ## 01. Uvicornの仕組み
 
-### 構造
+### アーキテクチャ
 
-要学習...
+要調査...
 
 <br>
 
@@ -39,9 +39,9 @@ FROM python:3.10-slim
 CMD ["uvicorn", "main:app", "--reload", "--port" "8000"]
 ```
 
-#### ▼ uvicornパッケージの```run```コマンドを使用する場合
+#### ▼ uvicornパッケージの```run```関数を使用する場合
 
-アプリケーションのエントリーポイントを```python```コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの```run```メソッドをエントリーポイントで実行する。ただし、他の```.py```ファイルからエントリーポイントを読み込んだ場合（```from main import app```）に、Uvicornを再実行する必要はないため、『```__name__ == "__main__"```』内にこれを実行する。
+アプリケーションのエントリーポイントを```python```コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの```run```関数をエントリーポイントで実行する。ただし、他の```.py```ファイルからエントリーポイントを読み込んだ場合（```from main import app```）に、Uvicornを再実行する必要はないため、『```__name__ == "__main__"```』内にこれを実行する。
 
 参考：https://www.uvicorn.org/deployment/#running-programmatically
 

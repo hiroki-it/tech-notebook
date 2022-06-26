@@ -13,9 +13,9 @@ description: Capistrano＠DevOpsの知見をまとめました。
 
 <br>
 
-## 01. Capistranoとは
+## 01. Capistranoの仕組み
 
-#### ▼ 仕組み
+### パイプライン構成
 
 インプレースデプロイメントを行う。
 
