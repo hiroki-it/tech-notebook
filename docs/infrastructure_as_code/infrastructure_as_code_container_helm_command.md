@@ -498,6 +498,8 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 指定した```values```ファイルを復号化し、```.yaml.dec```ファイルに出力する。
 
+参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+
 ```bash
 $ helm secrets dec ./values/secrets.yaml
 
@@ -515,6 +517,8 @@ db:
 
 指定した```values```ファイルを暗号化し、元々の平文を上書きする。
 
+参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+
 ```bash
 $ helm secrets enc ./values/secrets.yaml
 
@@ -526,7 +530,7 @@ Encrypted ./values/secrets.yaml
 db:
   user: *****
   password: *****
-# 〜 sopsキーが追記される。
+# 〜sopsキーが追記される。
 sops:
   # 〜 中略 〜
 ```
@@ -534,6 +538,8 @@ sops:
 #### ▼ view
 
 指定した```values```ファイルを復号化して取得する。
+
+参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 ```bash
 $ helm secrets view ./values/secrets.yaml

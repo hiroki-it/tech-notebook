@@ -41,7 +41,7 @@ GitOps対象のリポジトリごとにApplicationを作成し、これらを異
 ```yaml
 foo-repository/ # fooリポジトリを対象とするGitOps
 ├── dev/
-│   └── foo-service-repository.yaml
+│   └── foo-repository.yaml
 │
 ├── prd/
 └── stg/
@@ -50,7 +50,7 @@ foo-repository/ # fooリポジトリを対象とするGitOps
 ```yaml
 bar-repository/ # barリポジトリを対象とするGitOps
 ├── dev/
-│   └── bar-service-repository.yaml
+│   └── bar-repository.yaml
 │
 ├── prd/
 └── stg/
@@ -58,11 +58,11 @@ bar-repository/ # barリポジトリを対象とするGitOps
 
 ```yaml
 baz-repository/ # bazリポジトリを対象とするGitOps
-├── dev/ # 開発環境
-│   └── baz-service-repository.yaml
+├── dev/
+│   └── baz-repository.yaml
 │
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── prd/
+└── stg/
 ```
 
 <br>

@@ -1299,16 +1299,17 @@ ALBで注視するべきメトリクスを示す。
 
 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
-| メトリクス名                   | 単位     | 説明 |
-| ------------------------------ | -------- | ---- |
-| HealthyHostCount               | カウント |      |
-| HTTPCode_ELB_4XX_Count         | カウント |      |
-| HTTPCode_ELB_5XX_Count         | カウント |      |
-| HTTPCode_TARGET_4XX_Count      | カウント |      |
-| HTTPCode_TARGET_5XX_Count      | カウント |      |
-| RejectedConnectionCount        | カウント |      |
-| TargetConnectionErrorCount     | カウント |      |
-| TargetTLSNegotiationErrorCount | カウント |      |
+| メトリクス名                   | 単位     | 説明                                              |
+| ------------------------------ | -------- | ------------------------------------------------- |
+| HealthyHostCount               | カウント | 正常なターゲットの数                              |
+| UnHealthyHostCount             | カウント | 異常なターゲットの数                              |
+| HTTPCode_ELB_4XX_Count         | カウント | ALBが```400```ステータスコードを返信した数        |
+| HTTPCode_ELB_5XX_Count         | カウント | ALBが```500```ステータスコードを返信した数        |
+| HTTPCode_TARGET_4XX_Count      | カウント | ターゲットが```400```ステータスコードを返信した数 |
+| HTTPCode_TARGET_5XX_Count      | カウント | ターゲットが```500```ステータスコードを返信した数 |
+| RejectedConnectionCount        | カウント | ターゲットから接続拒否された数                    |
+| TargetConnectionErrorCount     | カウント | ターゲットへの通信でエラーが発生した数            |
+| TargetTLSNegotiationErrorCount | カウント | ターゲットへのHTTPS通信でエラーが発生した数       |
 
 #### ▼ API Gateway
 

@@ -178,14 +178,10 @@ frontend_mono_repository/
 IaCツールにKubernetesを使用した場合を示す。開発環境でKubernetesを稼働させる場合、Skaffoldなどのイメージビルドツールを使うとよい。この時、イメージのビルドのために、アプリケーションリポジトリにあるDockerfileを指定する必要がある。開発環境では同じ階層にリポジトリを置いておき、ビルドツールで相対パスを指定することにより、同階層のアプリケーションリポジトリを参照できるようにする。
 
 ```yaml
-local_directory/
-├── mono_repository
-│   ├── qux/
-│   ... ├── Dockerfile
-│       ...
-│
-│   # コンテナのIaCツールを管理するリポジトリ
-└── manifests_repository
+project/
+├── backend_mono_repository
+├── frontend_mono_repository 
+└── manifests_repository # コンテナのIaCツールを管理するリポジトリ
     ├── skaffold.yaml # 相対パスを設定し、mono_repositoryを参照できるようにする。
     ├── argocd/
     ├── kubernetes/

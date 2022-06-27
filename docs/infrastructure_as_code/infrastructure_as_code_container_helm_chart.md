@@ -106,7 +106,7 @@ apiVersion: v2
 
 #### ▼ appVersionとは
 
-Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。リリースバージョンは、リリースタグで管理した方がよく、```appVersion```キーの値は特に変更しなくても良い。
+Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。リリースバージョンは、GitHubのリリースタグで管理した方がよく、```appVersion```キーの値は特に変更しなくても良い。
 
 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
