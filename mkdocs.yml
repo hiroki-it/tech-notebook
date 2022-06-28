@@ -344,6 +344,7 @@ nav:
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
           - Prometheus: observability/observability_telemetry_prometheus.md
+          - VictoriaMetrics: observability/observability_telemetry_victoria_metrics.md
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
