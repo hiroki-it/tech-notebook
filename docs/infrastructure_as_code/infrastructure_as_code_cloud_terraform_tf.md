@@ -15,9 +15,9 @@ description: ロジック＠Terraformの知見をまとめました。
 
 ## 01. ルートモジュールにおける実装
 
-### tfstateファイル
+### ```.tfstate```ファイル
 
-#### ▼ tfstateファイルとは
+#### ▼ ```.tfstate```ファイルとは
 
 実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行し、成功もしくは失敗したタイミングで生成される。
 
@@ -131,7 +131,7 @@ terraform {
 
 #### ▼ backend
 
-tfstateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
+インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -154,7 +154,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # tfstateファイル名
+    # .tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルの場所
@@ -370,7 +370,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # tfstateファイル名
+    # .tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルの場所

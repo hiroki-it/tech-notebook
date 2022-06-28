@@ -15,7 +15,7 @@ description: デバッグの豆知識＠JavaScriptをまとめました。
 
 ## 01. JavaScript
 
-### デバッグに使えるメソッド
+### デバッグに有効なメソッド
 
 #### ▼ Console API
 

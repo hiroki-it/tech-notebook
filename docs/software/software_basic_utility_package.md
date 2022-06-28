@@ -1,5 +1,5 @@
 ---
- title: 【知見を記録するサイト】パッケージ＠ユーティリティ
+title: 【知見を記録するサイト】パッケージ＠ユーティリティ
 description: パッケージ＠ユーティリティの知見をまとめました。
 ---
 
@@ -280,9 +280,12 @@ $ pip3 install supervisor
 
 #### ▼ supervisor
 
-Python製のユーティリティであり、常駐プロセスを一括で管理する。
+Python製のユーティリティである。プロセスをデーモン化し、一括で管理する。
 
-参考：http://supervisord.org/index.html
+参考：
+
+- http://supervisord.org/index.html
+- https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
 #### ▼ supervisorctl
 
@@ -314,7 +317,7 @@ supervisorの```supervisord```プロセスのプールを設定する。
 
 #### ▼ directory
 
-常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する。
+デーモン化されたプロセスの起動コマンドを実行する作業ディレクトリを設定する。
 
 ```ini
 [supervisord]
@@ -400,7 +403,7 @@ user=root
 
 #### ▼ autorestart
 
-常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する。
+デーモン化されたプロセスの異常停止時に自動的に起動させるかどうかを設定する。
 
 ```ini
 [program:foo]
@@ -409,7 +412,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時に常駐プロセスを自動的に起動させるかどうか、を設定する。
+supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるかどうか、を設定する。
 
 ```ini
 [program:foo]
@@ -418,7 +421,7 @@ autostart=true
 
 #### ▼ command
 
-常駐プロセスの起動コマンドを設定する。
+デーモン化されたプロセスの起動コマンドを設定する。
 
 ```ini
 [program:foo]
@@ -427,7 +430,7 @@ command=/usr/sbin/crond -n
 
 #### ▼ redirect_stderr
 
-常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する。
+デーモン化されたプロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する。
 
 ```ini
 [program:foo]
@@ -436,7 +439,7 @@ redirect_stderr=true
 
 #### ▼ startretries
 
-常駐プロセスの起動に失敗した場合に、何回再試行するかを設定する。
+デーモン化されたプロセスの起動に失敗した場合に、何回再試行するかを設定する。
 
 ```ini
 [program:foo]
@@ -445,7 +448,7 @@ startretries=10
 
 #### ▼ stdout_logfile、stderr_logfile
 
-常駐プロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
+デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -481,7 +484,7 @@ stdout_logfile_maxbytes=50MB
 
 #### ▼ user
 
-常駐プロセスの実行ユーザーを設定する。
+デーモン化されたプロセスの実行ユーザーを設定する。
 
 ```ini
 [program:foo]
@@ -501,7 +504,7 @@ priority=999
 
 #### ▼ programs
 
-グループ化する常駐プロセス名を設定する。
+グループ化するデーモン名を設定する。
 
 ```ini
 [group]
@@ -514,12 +517,12 @@ programs=bar,baz
 
 #### ▼ restart
 
-指定した常駐プロセスを再起動する。```all```とした場合は、全てを再起動する。
+指定したデーモンを再起動する。```all```とした場合は、全てを再起動する。
 
 参考：http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
-$ supervisorctl restart <常駐プロセス名>
+$ supervisorctl restart <デーモン名>
 ```
 
 #### ▼ update
@@ -591,17 +594,22 @@ $ sops -e <暗号化前のYAMLファイル/JSONファイル> > <暗号化後のY
 
 #### ▼ systemctl
 
-デーモンを起動するsystemdを制御するためのユーティリティ。
+プロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
+
+参考：
+
+- https://cameong.hatenablog.com/entry/2016/10/18/121400
+- https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
 #### ▼ systemd：system daemon
 
-各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
+各プロセスを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
 
-| ユニットの拡張子 | 説明                                       | デーモン例         |
-| ---------------- | ------------------------------------------ | ------------------ |
-| mount            | ファイルのマウントに関するデーモン。       |                    |
-| service          | プロセス起動停止に関するデーモン。         | httpd：http daemon |
-| socket           | ソケットとプロセスの紐付けに関するデーモン |                    |
+| ユニットの拡張子 | 説明                     | デーモン例             |
+| ---------------- |------------------------|-------------------|
+| mount            | ファイルのマウントに関するデーモン。     |                   |
+| service          | プロセス起動停止に関するデーモン。      | httpd：http daemon |
+| socket           | ソケットとプロセスの紐付けに関するデーモン。 |                   |
 
 <br>
 
@@ -621,7 +629,7 @@ $ apt-get install systemd
 
 ### disable
 
-OSの起動時にデーモンが自動起動しないように設定する。
+OSの起動時に、デーモン化されたプロセスが自動起動しないように設定する。
 
 ```bash
 $ systemctl disable <プロセス名>
@@ -633,7 +641,7 @@ $ systemctl disable httpd.service
 
 ### enable
 
-OSの起動時にデーモンが自動起動するように設定する。
+OSの起動時に、デーモン化されたプロセスが自動起動するように設定する。
 
 ```bash
 $ systemctl enable <プロセス名>
@@ -647,7 +655,7 @@ $ systemctl enable httpd.service
 
 ### list-units
 
-デーモンの稼働状況を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
+デーモン化されたプロセスの稼働状態を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
 
 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
@@ -665,7 +673,7 @@ abrtd.service                    loaded  active  running  ABRT Automated Bug Rep
 
 ### list-unit-files
 
-デーモンのUnitの一覧を取得する。
+デーモン化されたプロセスのUnitの一覧を取得する。
 
 ```bash
 $ systemctl list-unit-files --type=service
@@ -679,7 +687,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 
 ### reload
 
-デーモンを安全に再起動する。
+デーモン化されたプロセスを安全に再起動する。
 
 ```bash
 $ systemctl reload nginx
@@ -689,7 +697,7 @@ $ systemctl reload nginx
 
 ### restart
 
-デーモンを強制的に再起動する。
+デーモン化されたプロセスを強制的に再起動する。
 
 ```bash
 $ systemctl restart httpd
@@ -703,7 +711,7 @@ $ systemctl restart nginx
 
 ### start
 
-デーモンを起動する。
+デーモン化されたプロセスを起動する。
 
 ```bash
 $ systemctl start httpd
@@ -717,7 +725,7 @@ $ systemctl start nginx
 
 ### status
 
-デーモンの状態を確認する。
+デーモン化されたプロセスの状態を確認する。
 
 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
@@ -736,7 +744,7 @@ mq959 /usr/sbin/rsyslogd -n
 
 ### stop
 
-デーモンを停止する。
+デーモン化されたプロセスを停止する。
 
 ```bash
 $ systemctl stop httpd

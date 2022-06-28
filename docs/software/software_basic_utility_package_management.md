@@ -277,7 +277,62 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 <br>
 
-## 03. 言語バージョン管理ユーティリティ
+## 03. Linux汎用系
+
+### brew
+
+#### ▼ brewとは
+
+Linuxで使用できるパッケージを管理する。異なるバージョンを同時に管理できない。M1 Macを使用している場合は、コマンドの前に```arch -arm64```をつける。
+
+```bash
+# M1 Macの場合
+$ arch -arm64 brew install <パッケージ名>
+```
+
+#### ▼ install
+
+```bash
+# Intel Macの場合
+$ brew install <パッケージ名>
+
+$ brew install <パッケージ名>@<バージョン>
+```
+
+<br>
+
+### asdf
+
+#### ▼ asdfとは
+
+Linuxで使用できるパッケージを管理する。また、異なるバージョンを同時に管理できる。ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。また、```.tool-version```ファイルをリポジトリのルートディレクトリに置いておけば、異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールできる。
+
+```bash
+# .tool-versionsファイル
+
+foo-plugin 1.0.0
+```
+
+#### ▼ plugin
+
+```bash
+ # プラグインのURLを調べる。
+ $ asdf plugin list all | grep <プラグイン名>
+ 
+ # プラグインをローカルマシンに登録する。（まだインストールされていない）
+ $ asdf plugin add <プラグイン名> <URL>
+```
+
+#### ▼ install
+
+```bash
+# 登録済みのプラグインをインストールする。
+$ asdf install
+```
+
+<br>
+
+## 04. 言語バージョン管理ユーティリティ
 
 ### phpenv（PHP）
 

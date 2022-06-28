@@ -703,7 +703,7 @@ $ minikube ssh
 $ pwd
 /home/docker
 
-# Minikube内で使えるユーティリティ
+# Minikube内で使用できるユーティリティ
 $ busybox --list
 
 addgroup

@@ -25,7 +25,7 @@ description: コマンド＠Terraformの知見をまとめました。
 
 #### ▼ initとは
 
-初期化（```terraform.lock.hcl```ファイルの作成、ネストモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行し、```.terraform```ディレクトリ内に格納する。```state```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新しいバージョンのインストールするために、本コマンドを実行すつ必要がある。
+terraformコマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ネストモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新しいバージョンのインストールするために、本コマンドを実行する必要がある。
 
 参考：
 
@@ -60,7 +60,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-指定したバックエンドの初期化を実行する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
+指定したバックエンドにある```.tfstate```ファイルを使用して、ローカルマシンの```.terraform```ディレクトリを初期化する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -68,7 +68,7 @@ $ terraform init \
     -reconfigure \
     # バケット名
     -backend-config="bucket=prd-foo-tfstate-bucket" \
-    # tfstateファイル名
+    # ```.tfstate```ファイル名
     -backend-config="key=terraform.tfstate" \
     # credentialsファイルのプロファイル名
     -backend-config="profile=bar" \
@@ -77,9 +77,12 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-元々使用していたバックエンドを無視し、指定したバックエンドの初期化（ネストモジュールのインストール、プロバイダーのインストールなど）を実行する。
+初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元々設定したバックエンドが異なる場合、元々のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
-参考：https://www.terraform.io/cli/commands/init#backend-initialization
+参考：
+
+- https://www.terraform.io/cli/commands/init#backend-initialization
+- https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
 ```bash
 $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
@@ -91,7 +94,7 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 #### ▼ --migrate-state
 
-元々使用していたバックエンドにある```.terraform```ディレクトリをコピーし、指定したバックエンドに移行する。
+初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するかどうかを選択できる。
 
 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
@@ -177,7 +180,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 #### ▼ -var-file
 
-Terraformによる構築ではない方法で、すでにクラウド上にリソースが構築されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、tfstateファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
+Terraformによる構築ではない方法で、すでにクラウド上にリソースが構築されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
 
 ```bash
 $ terraform import \
@@ -201,7 +204,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www *****
 ```
 
-そして、ローカルマシンのtfstateファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
+そして、ローカルマシンの```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
 
 ````bash
 $ terraform plan -var-file=foo.tfvars
@@ -231,7 +234,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のリソースの状態をtfstateファイルに反映する。
+クラウドに対してリクエストを行い、現在のリソースの状態を```.tfstate```ファイルに反映する。
 
 ```bash
 $ terraform refresh -var-file=foo.tfvars
@@ -292,7 +295,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のリソースの状態をtfstateファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
+クラウドに対してリクエストを行い、現在のリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -432,7 +435,7 @@ $ terraform apply foo.tfplan
 
 #### ▼ -var-file <リソース>
 
-tfstateファイルにおける指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが構築されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
+バックエンドにある```.tfstate```ファイルにて、指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが構築されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
 
 ```bash
 $ terraform taint \

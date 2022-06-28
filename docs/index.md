@@ -356,7 +356,9 @@ title: 【知見を記録するサイト】目次
 
 #### ▼ テレメトリー収集ツール
 
-[📖：テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
+- [📖：テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
+- [📖：Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_prometheus.html)
+- [📖：VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_victoria_metrics.html)
 
 #### ▼ FluentBit/Fluentd
 
