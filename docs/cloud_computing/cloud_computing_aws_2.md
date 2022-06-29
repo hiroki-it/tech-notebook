@@ -33,7 +33,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 | EC2インスタンス数         |                                                              |                                                              |
 | ネットワーク              |                                                              |                                                              |
 | サブネット                |                                                              |                                                              |
-| 自動割り当てIPアドレス    |                                                              | EC2インスタンス構築後に有効にできない。                      |
+| 自動割り当てIPアドレス    |                                                              | EC2インスタンス作成後に有効にできない。                      |
 | キャパシティの予約        |                                                              |                                                              |
 | ドメイン結合ディレクトリ  |                                                              |                                                              |
 | IAMロール                 | EC2に付与するIAMロールを設定する。                           |                                                              |
@@ -44,7 +44,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 | Elastic Inference         |                                                              |                                                              |
 | クレジット仕様            |                                                              |                                                              |
 | ストレージ                | EC2インスタンスのストレージを設定する。                      |                                                              |
-| キーペア                  | SSH接続のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。 | ・Session Managerを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の構築時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることで、公開鍵と秘密鍵の対応関係を調べられる。 |
+| キーペア                  | SSH接続のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。 | ・Session Managerを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることで、公開鍵と秘密鍵の対応関係を調べられる。 |
 
 <br>
 
@@ -86,9 +86,12 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ ルートデバイスボリュームとは
 
-EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームがマウントされている。複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームからマウントさせることもできる。EC2インスタンスは、このブロックデバイスを読み込むことで、ルートデバイスボリューム内のでデータを参照できる。
+EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームが紐づいている。複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐づけることもできる。さらに、このブロックデバイスが、マウントポイントtになるディレクトリ紐づいている。つまりEC2インスタンスが作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に生成される。また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保管される。複数のルートボリュームを紐づける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
 
-参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+参考：
+
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+- https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
 #### ▼ EBSボリューム
 
@@ -177,13 +180,13 @@ EC2インスタンス上でアプリケーションソフトウェアを稼働�
 
 #### ▼ EBS-backed AMI
 
-EBSボリュームを持つEC2インスタンスを構築するAMIのこと。
+EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 #### ▼ instance store-backed AMI
 
-インスタンスストアボリュームを持つEC2インスタンスを構築するAMIのこと。
+インスタンスストアボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
@@ -217,7 +220,7 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 | サイズ           | 選択したボリュームタイプでのサイズを設定する。               |                                                              |
 | IOPS             | EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数（個/秒）を設定する。 |                                                              |
 | AZ               | EBSボリュームを作成するAZ。                                 | EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。 |
-| 暗号化           | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するかどうかを設定する。 | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/EBSEncryption.html |
+| 暗号化           | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するかどうかを設定する。 | 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html |
 
 <br>
 
@@ -324,13 +327,13 @@ Filesystem  Type  Size  Used  Avail  Use%  Mounted on
 
 #### ▼ EBSボリュームの永続化とは
 
-EC2インスタンスの初期構築時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
+EC2インスタンスの初期作成時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
 
 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
-#### ▼ EC2インスタンスの構築後に永続化する
+#### ▼ EC2インスタンスの作成後に永続化する
 
-EC2インスタンスの構築後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。
+EC2インスタンスの作成後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。
 
 ```bash
 $ aws ec2 modify-instance-attribute \
@@ -498,11 +501,11 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 #### ▼ EC2の場合
 
-EC2インスタンスをホストとして、コンテナを構築する。
+EC2インスタンスをホストとして、コンテナを作成する。
 
 #### ▼ Fargateの場合
 
-マネージドなサーバーをホストとして、コンテナを構築する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。
+マネージドなサーバーをホストとして、コンテナを作成する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -551,7 +554,7 @@ ECSタスク実行ロールを使用して、ECSタスクのライフサイク�
 
 #### ▼ ECSタスク定義
 
-ECSタスクをどのような設定値を基に構築するかを設定できる。ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
+ECSタスクをどのような設定値を基に作成するかを設定できる。ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
 
 #### ▼ ECSタスクのライフサイクル
 
@@ -571,7 +574,7 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 #### ▼ サービスロール
 
-ECSサービスがECSタスクを操作するために必要なロールである。サービスリンクロールに含まれ、ECSの構築時に自動的にアタッチされる。
+ECSサービスがECSタスクを操作するために必要なロールである。サービスリンクロールに含まれ、ECSの作成時に自動的にアタッチされる。
 
 参考：
 
@@ -705,7 +708,7 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 
 EC2でのみ使用できる。Dockerのhostネットワークに相当する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
+参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
 
 ![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
@@ -713,7 +716,7 @@ EC2でのみ使用できる。Dockerのhostネットワークに相当する。
 
 EC2でのみ使用できる。Dockerのbridgeネットワークに相当する。
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
+参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
 
 ![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
 
@@ -723,7 +726,7 @@ FargateとEC2の両方で使用できる。awsの独自ネットワークモー�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
+- https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
 - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
 
 ![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
@@ -816,12 +819,12 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 | AMI名                         | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
-| ECS最適化Amazon Linux 2       | 標準的なEC2インスタンスを構築できる。最も推奨。              |
-| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを構築できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
-| ECS最適化Amazon Linux         | 標準的なEC2インスタンスを構築できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
-| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを構築できる。 |
-| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを構築できる。                 |
-| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを構築できる。                    |
+| ECS最適化Amazon Linux 2       | 標準的なEC2インスタンスを作成できる。最も推奨。              |
+| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
+| ECS最適化Amazon Linux         | 標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
+| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |
+| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 |
+| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |
 
 <br>
 
@@ -852,11 +855,11 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | ECSタスクの必要数            | 非スケーリング時またはデプロイ時のタスク数を設定する。       | 最小ヘルス率と最大率の設定値に影響する。                     |
 | 最小ヘルス率                 | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
 | 最大率                      | ECSタスクの必要数の設定を```100```%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。 | 例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
-| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの構築に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ構築にかかる時間は、開発環境での所要時間を参考にする。 |
+| ヘルスチェックの猶予期間     | デプロイ時のALB/NLBのヘルスチェックの状態を確認するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、```330```秒以上を目安とする。例えば、ALBとNuxt.js（SSRモード）を使用する場合は、```600```秒以上を目安とする。なお、アプリケーションのコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。 |
 | タスクの最小数               | スケーリング時のタスク数の最小数を設定する。                 |                                                              |
 | タスクの最大数               | スケーリング時のタスク数の最大数を設定する。                 |                                                              |
 | ロードバランシング           | ALBでルーティングするコンテナを設定する。                    |                                                              |
-| タスク数                   | ECSタスクの構築数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
+| タスク数                   | ECSタスクの作成数をいくつに維持するかを設定する。            | タスクが何らかの原因で停止した場合、空いているAWSサービスを使用して、タスクが自動的に補填される。 |
 | デプロイメント               | ローリングアップデート、ブルー/グリーンデプロイがある。      |                                                              |
 | サービスロール               |                                                              |                                                              |
 
@@ -915,7 +918,7 @@ ECSタスクごとに異なるプライベートIPが割り当てられる。こ
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-Fargateは動的パブリックIPアドレス（Fargateの再構築後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
+Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -1013,7 +1016,7 @@ exit ${EXIT_STATUS}
 
 1. 最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。
 2. 最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる
-3. ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで構築する。
+3. ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。
 4. ECSは、猶予期間後にALB/NLBによる新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。
 5. 『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。
 6. 全ての既存タスクが新タスクに置き換わる。
@@ -1036,7 +1039,7 @@ CodeDeployを使用してデプロイを行う。
 | Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。    |
 | Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。             |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を構築している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを構築すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも構築する必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。
 
 参考：
 
@@ -1185,7 +1188,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
 | -------------------------- | ----------------------- | ------------------------------------------------------------ |
 | Cluster                    | EKS Cluster           | 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html |
-| Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に構築される。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に作成される。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
 | Ingressコントローラー      | AWS LBコントローラー    | 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
 |                            | API Gateway＋NLB        | 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
 | マスターNode               | EKSコントロールプレーン | 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
@@ -1194,7 +1197,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | Secret                     | System Manager          | 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
 | kube-dns                   | CoreDNS                 |                                                              |
 | kube-proxy                 | kube-proxy              |                                                              |
-| 種々のCNIプラグイン        | aws-nodeコンテナ        | ClusterネットワークとしてのVPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
+| 種々のCNIプラグイン        | aws-nodeコンテナ        | VPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
 | これら以外のリソース       | なし                    |                                                              |
 
 <br>
@@ -1241,7 +1244,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 参考：
 
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/cluster-endpoint.html#private-access
+- https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 - https://note.com/tyrwzl/n/nf28cd4372b18
 - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
 
@@ -1261,7 +1264,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
 
-以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが構築されない限り、Nodeも構築されないことに注意する。
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが作成されない限り、Nodeも作成されないことに注意する。
 
 ```log
 Pod provisioning timed out (will retry) for pod
@@ -1280,7 +1283,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、デー
 
 ### マルチNode
 
-マルチNodeを構築する場合、AZごとにNodeを構築する。
+マルチNodeを作成する場合、AZごとにNodeを作成する。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
 
@@ -1415,7 +1418,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 {"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nnn.n.n.nnn:43958->nnn.nn.n.nn:53: read: connection refused"}
 ```
 
-（９）Ingressをデプロイし、IngressからALB Ingressを自動的に構築させる。以下の条件を満たす必要がある。
+（９）Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
@@ -1433,8 +1436,8 @@ aws-load-balancer-controller   2/2     2            0           22m
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
 | ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
 | ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、```ip```を設定する必要がある。 |
-| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を構築する必要がある。 |
-| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を構築する必要がある。 |
+| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。 |
+| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。 |
 
 <br>
 
@@ -1555,7 +1558,7 @@ data:
         auto_create_group true
 ```
 
-（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが構築された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが作成された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 参考：
 
@@ -1701,13 +1704,13 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 | クラスターエンジン               | 全てのRedisノードのキャッシュエンジンを設定する。Redis通常モード、Redisクラスターモードから選択する。 | Redisクラスターモードと同様に、Redis通常モードもクラスター構成になる。ただ、クラスターモードとはクラスターの構成方法が異なる。 |
 | ロケーション                     |                                                              |                                                              |
 | エンジンバージョンの互換性       | 全てのRedisノードのキャッシュエンジンのバージョンを設定する。 | マイナーバージョンが自動的に更新されないように、例えば『```6.x```』は設定しない方が良い。 |
-| パラメーターグループ             | 全てのRedisノードのグローバルパラメーターを設定する。        | デフォルトを使用せずに独自定義する場合、事前に構築しておく必要がある。 |
+| パラメーターグループ             | 全てのRedisノードのグローバルパラメーターを設定する。        | デフォルトを使用せずに独自定義する場合、事前に作成しておく必要がある。 |
 | ノードのタイプ                   |                                                              |                                                              |
-| レプリケーション数               | プライマリーノードとは別に、リードレプリカノードをいくつ構築するかを設定する。 | マルチAZにプライマリーノードとリードレプリカノードを1つずつ配置させる場合、ここでは『1個』を設定する。 |
+| レプリケーション数               | プライマリーノードとは別に、リードレプリカノードをいくつ作成するかを設定する。 | マルチAZにプライマリーノードとリードレプリカノードを1つずつ配置させる場合、ここでは『1個』を設定する。 |
 | マルチAZ                         | プライマリーノードとリードレプリカを異なるAZに配置するかどうかを設定する。合わせて、自動フェイルオーバーを実行できるようになる。 |                                                              |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する。                  |                                                              |
 | セキュリティ                     | セキュリティグループを設定する。                             |                                                              |
-| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを構築する。 | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし、これを元にRedisを作成する。 | セッションやクエリキャッシュを引き継げる。そのため、新しいRedisへのセッションデータの移行に役立つ。<br>参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html |
 | バックアップ                     | バックアップの有効化、保持期間、時間を設定する。             | バックアップを取るほどでもないため、無効化しておいて問題ない。 |
 | メンテナンス                     | メンテナンスの時間を設定する。                               |                                                              |
 
@@ -1729,7 +1732,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 #### ▼ クラスターモード
 
-クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが構築される。反対に無効化すると、シャードは1つだけ構築される。
+クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが作成される。反対に無効化すると、シャードは1つだけ作成される。
 
 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
@@ -1894,9 +1897,9 @@ Redisクラスターでは、エンジンバージョンなどのアップグレ
 
 （１）RedisのセッションやクエリキャッシュをS3にエクスポートする。
 
-（２）新しいRedisを構築する。この時、インポートを使用して、セッションやクエリキャッシュを引き継いだRedisクラスターを別途構築する。
+（２）新しいRedisを作成する。この時、インポートを使用して、セッションやクエリキャッシュを引き継いだRedisクラスターを別途作成する。
 
-（３）新しく構築したRedisクラスターをアップグレードする。
+（３）新しく作成したRedisクラスターをアップグレードする。
 
 （４）アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。
 
@@ -1965,7 +1968,7 @@ Amplifyの指定したIDのアプリケーションが、```Amplify Deployment S
 
 #### ▼ スケジュール
 
-cron式またはrate式を使用して、スケジュールを定義する。これとLambdaを組み合わせることにより、バッチ処理を構築できる。
+cron式またはrate式を使用して、スケジュールを定義する。これとLambdaを組み合わせることにより、バッチ処理を作成できる。
 
 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 

@@ -64,7 +64,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
-（２）CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを構築する。このIAMロール（```DatadogIntegrationRole```）には、DatadogのIAMユーザー（```464622532012```）に委譲できるように、Amazon STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
+（２）CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール（```DatadogIntegrationRole```）には、DatadogのIAMユーザー（```464622532012```）に委譲できるように、Amazon STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 

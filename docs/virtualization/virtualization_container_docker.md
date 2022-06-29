@@ -51,7 +51,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 ### コンテナレイヤー
 
-イメージからコンテナを構築する時に、イメージレイヤーの上にコンテナレイヤーが積み重ねられる。
+イメージからコンテナを作成する時に、イメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
 参考：https://blog.codecamp.jp/programming-docker-image-container
 
@@ -179,7 +179,9 @@ $ cat settings.json
 
 #### ▼ ボリューム、マウントポイントとは
 
-dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという。また、マウント先のディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントという。
+dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという。また、デバイスファイルに紐づくディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
 #### ▼ 使用方法
 
@@ -476,6 +478,6 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ▼ php-fpmイメージ
 
-要調査...
+調査中...
 
 <br>

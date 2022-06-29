@@ -106,6 +106,8 @@ title: 【知見を記録するサイト】目次
 
 ### 言語
 
+#### ▼ 言語
+
 * [📖：言語の種類](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_type.html)
 * [📖：︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
 * [📖：︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
@@ -286,6 +288,9 @@ title: 【知見を記録するサイト】目次
 * Vagrant
     * [📖：Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
+* Packer 
+    * [📖：template.json](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_packer_template_json.html)
+
 
 #### ▼ コンテナプロビジョニング
 

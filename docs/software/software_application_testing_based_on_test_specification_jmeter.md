@@ -15,7 +15,7 @@ description: JMeter＠テスト仕様書ベースのテストの知見をまと�
 
 ## 01. セットアップ
 
-JMeterをインストールし、環境を構築する。
+JMeterをインストールし、環境を作成する。
 
 参考：https://jmeter.apache.org/download_jmeter.cgi
 

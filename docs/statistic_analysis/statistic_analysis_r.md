@@ -225,7 +225,7 @@ exp(result_lg2$coefficients)
 sample <- read.csv("CV_data.csv", header = T)
 
 
-# 識別値のidを説明変数から除いたうえで、決定木を構築。
+# 識別値のidを説明変数から除いたうえで、決定木を作成。
 library(rpart)
 tree <- rpart(CV~AGE + SEX + AD, data = sample)
 

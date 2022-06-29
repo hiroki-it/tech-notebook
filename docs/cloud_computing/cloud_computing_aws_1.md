@@ -13,7 +13,42 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 01. ALB：Application Load Balancing
+## 01. AWSアカウント、リージョン、AZ
+
+### AWSアカウント
+
+AWSリソースの操作単位である。Webサイトのクラウドインフラの実行環境ごとに作成したほうが良い。アカウントIDは機密情報ではないため、仮にバージョン管理してしまうようなことがあっても問題ない。
+
+参考：
+
+- https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html
+- https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
+
+<br>
+
+### リージョン
+
+#### ▼ リージョンとは
+
+物理サーバーのあるデータセンターの地域名のこと。
+
+#### ▼ グローバルサービス
+
+グローバルサービスは、物理サーバーが世界中にあり、これらの間ではパブリックネットワークが作成されている。そのため、特定のリージョンに依存せずに、全てのリージョンと連携できる。
+
+![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/edge-location.png)
+
+<br>
+
+### AZ：Availability Zones
+
+#### ▼ AZとは
+
+リージョンは、さらに、各データセンターは物理的に独立したAZというロケーションから構成されている。例えば、東京リージョンには、3つのAZがある。AZに跨いで冗長化すると、いずれかのデータセンターで障害が起こっても、残ったAZ上でシステムを稼働し続けられる（可用性を高められる）。もし、AZを跨いで作成できないようなAWSリソースの場合は、リージョンを跨ぐようにする。
+
+<br>
+
+## 02. ALB：Application Load Balancing
 
 ### ALBとは
 
@@ -146,11 +181,11 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 <br>
 
-## 02. Amplify
+## 03. Amplify
 
 ### Amplifyとは
 
-サーバーレスアプリケーションを構築するためのクラウドインフラストラクチャのフレームワーク。
+サーバーレスアプリケーションを作成するためのクラウドインフラストラクチャのフレームワーク。
 
 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
@@ -160,7 +195,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 #### ▼ フロントエンド
 
-SSGの場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件が全て整う。SPAの場合、サーバーレスのバックエンドを自動構築してくれ、フロントエンドをデプロイしさえすれば、要件が全て整う。これのAWSリソースはCloudFormationによって構築されるが、Amplify経由でしか設定を変更できず、各AWSリリースのコンソール画面を見ても、非表示になっている。ただし、Route53の設定は表示されており、Amplifyが追加したレコードをユーザーが編集できるようになっている。
+SSGの場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件が全て整う。SPAの場合、サーバーレスのバックエンドを自動作成してくれ、フロントエンドをデプロイしさえすれば、要件が全て整う。これのAWSリソースはCloudFormationによって作成されるが、Amplify経由でしか設定を変更できず、各AWSリリースのコンソール画面を見ても、非表示になっている。ただし、Route53の設定は表示されており、Amplifyが追加したレコードをユーザーが編集できるようになっている。
 
 | 役割                    | 使用されているAWSリソース |
 | ----------------------- | ------------------------- |
@@ -169,7 +204,7 @@ SSGの場合、静的ファイルをデプロイしさえすれば、アプリ�
 
 #### ▼ バックエンド
 
-フロントエンドでGraphQLによるリクエストを実装している場合、AppSyncを使用して、これを受信できるAPIを構築する必要がある。
+フロントエンドでGraphQLによるリクエストを実装している場合、AppSyncを使用して、これを受信できるAPIを作成する必要がある。
 
 | 役割                     | 使用されているAWSリソース | クリーンアーキテクチャで相当するレイヤー |
 | ------------------------ | ------------------------- | ---------------------------------------- |
@@ -241,7 +276,7 @@ $ amplify publish
 
 #### ▼ ```amplify.yml```ファイル
 
-バージョン管理リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが構築され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが構築され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが構築される。
+バージョン管理リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが作成され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが作成される。
 
 参考：
 
@@ -327,7 +362,7 @@ test:
 
 <br>
 
-## 03. API Gateway
+## 04. API Gateway
 
 ### API Gatewayとは
 
@@ -343,7 +378,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 
 | 設定項目                 | 説明                                                                   | 補足                                                         |
 | ------------------------ |----------------------------------------------------------------------| ------------------------------------------------------------ |
-| リソース                 | エンドポイント、HTTPメソッド、ルーティング先、などを設定する。                                    | 構築したAWSリソースのパスが、API Gatewayのエンドポイントになる。 |
+| リソース                 | エンドポイント、HTTPメソッド、ルーティング先、などを設定する。                                    | 作成したAWSリソースのパスが、API Gatewayのエンドポイントになる。 |
 | ステージ                 | API Gatewayをデプロイする環境を定義する。                                           |                                                              |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。                         |                                                              |
 | ゲートウェイのレスポンス |                                                                      |                                                              |
@@ -422,7 +457,7 @@ API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデ�
 
 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
 
-また、VPCリンクの設定によって、VPCエンドポイントサービスが構築される。
+また、VPCリンクの設定によって、VPCエンドポイントサービスが作成される。
 
 | 設定項目                     | 説明                                                  |
 | ---------------------------- | ----------------------------------------------------- |
@@ -631,7 +666,7 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 
 <br>
 
-## 04. Auto Scaling
+## 05. Auto Scaling
 
 ### Auto Scalingとは
 
@@ -717,7 +752,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 <br>
 
-## 05. Certificate Manager
+## 06. Certificate Manager
 
 ### セットアップ
 
@@ -799,7 +834,7 @@ AWSの使用上、ACMのSSL証明書を設置できないAWSリソースに対�
 | パターン<br>（Route53には必ず設置）                          | SSLターミネーション<br>（HTTPSの最終地点） | 補足                                                         |
 | ------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------ |
 | Route53 → ALB(+ACMのSSL証明書) → EC2                         | ALB                                        |                                                              |
-| Route53 → CloudFront(+ACMのSSL証明書) → ALB(+ACMのSSL証明書) → EC2 | ALB                                        | CloudFrontはバージニア北部で、またALBは東京リージョンで、証明書を構築する必要がある。CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。 |
+| Route53 → CloudFront(+ACMのSSL証明書) → ALB(+ACMのSSL証明書) → EC2 | ALB                                        | CloudFrontはバージニア北部で、またALBは東京リージョンで、証明書を作成する必要がある。CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。 |
 | Route53 → CloudFront(+ACMのSSL証明書) → EC2                  | CloudFront                                 |                                                              |
 | Route53 → CloudFront(+ACMのSSL証明書) → S3                   | CloudFront                                 |                                                              |
 | Route53 → ALB(+ACMのSSL証明書) → EC2(+外部証明書)            | EC2                                        |                                                              |
@@ -829,7 +864,7 @@ ALBではSSL証明書の変更でダウンタイムは発生しない。既存�
 
 <br>
 
-## 06. Chatbot
+## 07. Chatbot
 
 ### Chatbotとは
 
@@ -867,7 +902,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 <br>
 
-## 07. CloudFront
+## 08. CloudFront
 
 ### CloudFrontとは
 
@@ -926,7 +961,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 | 設定項目                       | 説明                                                         | 補足                                                                                                                                                                                                                                          |
 | ------------------------------ | ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Precedence                     | 処理の優先順位。                                             | 最初に構築したBehaviorが『```Default (*)```』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。                                                                                                                                                                |
+| Precedence                     | 処理の優先順位。                                             | 最初に作成したBehaviorが『```Default (*)```』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。                                                                                                                                                                |
 | Path pattern                   | Behaviorを行うパスを設定する。                       |                                                                                                                                                                                                                                             |
 | Origin and Origin Group        | Behaviorを行うオリジンを設定する。                           |                                                                                                                                                                                                                                             |
 | Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・```HTTP and HTTPS```：両方受信し、そのままルーティング<br>・```Redirect HTTP to HTTPS```：両方受信し、HTTPSでルーティング<br>・```HTTPS Only```：HTTPSのみ受信し、HTTPSでルーティング                                                                                                     |
@@ -1165,7 +1200,7 @@ This XML file does not appear to have any style information associated with it. 
 
 <br>
 
-## 08. CloudTrail
+## 09. CloudTrail
 
 ### CloudTrailとは
 
@@ -1175,7 +1210,7 @@ IAMユーザーによる操作や、ロールのアタッチの履歴を記録�
 
 <br>
 
-## 09. CloudWatch
+## 10. CloudWatch
 
 ### CloudWatchエージェント
 
@@ -1258,7 +1293,7 @@ $ systemctl list-unit-files --type=service
 
 <br>
 
-## 09-02. CloudWatchメトリクス
+## 10-02. CloudWatchメトリクス
 
 ### CloudWatchメトリクスとは
 
@@ -1399,7 +1434,7 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 <br>
 
-## 09-03. CloudWatchログ
+## 11-03. CloudWatchログ
 
 ### CloudWatchログとは
 
@@ -1497,7 +1532,7 @@ encoding = utf_8
 # バッファーに蓄える期間
 buffer_duration = 5000
 
-# 要調査...
+# 調査中...
 initial_position = start_of_file
 
 # インスタンスID
@@ -1572,7 +1607,7 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 09-04. CloudWatchアラーム
+## 11-04. CloudWatchアラーム
 
 ### セットアップ
 
@@ -1598,7 +1633,7 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 09-05. CloudWatchシンセティック
+## 11-05. CloudWatchシンセティック
 
 ### CloudWatchシンセティックとは
 
@@ -1606,13 +1641,13 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 10. Code系サービス
+## 12. Code系サービス
 
 ### Code系サービス
 
 #### ▼ CodePipeline
 
-CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CD環境を構築する。CodeCommitは、他のコード管理サービスで代用できる。
+CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CD環境を作成する。CodeCommitは、他のコード管理サービスで代用できる。
 
 ![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/code-pipeline.png)
 
@@ -1630,7 +1665,7 @@ CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CD環�
 
 <br>
 
-## 10-02. Code系サービス：CodeBuild
+## 12-02. Code系サービス：CodeBuild
 
 ### 設定ファイル
 
@@ -1677,7 +1712,7 @@ artifacts:
 
 <br>
 
-## 10-03. Code系サービス：CodeDeploy
+## 12-03. Code系サービス：CodeDeploy
 
 ### 利用できるデプロイメント手法
 
@@ -1732,9 +1767,9 @@ artifacts:
 以下の手順でデプロイを行う。
 
 1. ECRのイメージを更新
-2. ECSタスク定義の新しいリビジョンを構築。
+2. ECSタスク定義の新しいリビジョンを作成。
 3. サービスを更新。
-4. CodeDeployによって、ECSタスク定義を基に、現行の本番環境（Prodブルー）のECSタスクとは別に、テスト環境（Testグリーン）が構築される。ロードバランサーの接続先を、本番環境（Prodブルー）のターゲットグループ（Primaryターゲットグループ）に加えて、テスト環境（Testグリーン）にも向ける。
+4. CodeDeployによって、ECSタスク定義を基に、現行の本番環境（Prodブルー）のECSタスクとは別に、テスト環境（Testグリーン）が作成される。ロードバランサーの接続先を、本番環境（Prodブルー）のターゲットグループ（Primaryターゲットグループ）に加えて、テスト環境（Testグリーン）にも向ける。
 5. 社内からテスト環境（Testグリーン）のALBに、特定のポート番号でアクセスし、動作を確認する。
 6. 動作確認で問題なければ、Console画面からの入力で、ロードバランサーの接続先をテスト環境（Testグリーン）のみに設定する。
 7. テスト環境（Testグリーン）が新しい本番環境としてユーザーに公開される。
@@ -1869,7 +1904,7 @@ Resources:
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/direct-connect.png)
 
-専用線方式のWANとして機能し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。なお、DirectConnectは、それ専用の中継VPC内に構築する。
+専用線方式のWANとして機能し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。なお、DirectConnectは、それ専用の中継VPC内に作成する。
 
 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 

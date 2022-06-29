@@ -107,7 +107,7 @@ functions:
 
 #### ▼ eventBridge
 
-Lambda関数に紐づけて構築するEventBridgeを設定する。
+Lambda関数に紐づけて作成するEventBridgeを設定する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
 
@@ -125,7 +125,7 @@ functions:
 
 #### ▼ sqs
 
-Lambda関数に紐づけるSQSを設定する。新しくSQSを構築できず、既存のSQSと紐づける機能しかないことに注意する。
+Lambda関数に紐づけるSQSを設定する。新しくSQSを作成できず、既存のSQSと紐づける機能しかないことに注意する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
@@ -207,7 +207,7 @@ Lambda関数に紐づけるIAMロールを設定する。
 
 **＊実装例＊**
 
-別に```resources.Resources```を使用して構築したIAMロールを設定する。
+別に```resources.Resources```を使用して作成したIAMロールを設定する。
 
 ```yaml
 functions:
@@ -293,7 +293,7 @@ provider:
 
 #### ▼ useCloudFormation
 
-EventBridgeをCloudFormationで構築するか否かを設定する。
+EventBridgeをCloudFormationで作成するか否かを設定する。
 
 ```yaml
 provider:
@@ -331,7 +331,7 @@ provider:
 
 ### region
 
-クラウドインフラを構築するリージョンを設定する。
+クラウドインフラを作成するリージョンを設定する。
 
 ```yaml
 provider:
@@ -376,7 +376,7 @@ provider:
 
 ### IAMロール
 
-IAMロールを構築する。
+IAMロールを作成する。
 
 **＊実装例＊**
 

@@ -19,7 +19,7 @@ description: RESTful-API＠アプリケーション連携の知見をまとめ�
 
 #### ▼ RESTとは
 
-分散型アプリケーションを構築する時に、それぞれアプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという。RESTは、以下の特徴を持つ。
+分散型アプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという。RESTは、以下の特徴を持つ。
 
 ![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/REST.jpg)
 

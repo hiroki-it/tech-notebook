@@ -19,7 +19,7 @@ description: Minikube＠仮想化の知見をまとめました。
 
 #### ▼ 仮想サーバー系のドライバーの場合
 
-ホストマシン上に仮想サーバーを構築する。この仮想サーバー内に単一のワーカーNodeを持つClusterを作成する。
+ホストマシン上に仮想サーバーを作成する。この仮想サーバー内に単一のワーカーNodeを持つClusterを作成する。
 
 参考：
 
@@ -30,7 +30,7 @@ description: Minikube＠仮想化の知見をまとめました。
 
 #### ▼ Dockerドライバーの場合
 
-ホストマシン上にコンテナを構築する。このコンテナ内に仮想サーバーを構築し、単一のワーカーNodeを持つClusterを作成する。
+ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、単一のワーカーNodeを持つClusterを作成する。
 
 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
@@ -62,7 +62,7 @@ description: Minikube＠仮想化の知見をまとめました。
 
 #### ▼ NodePort Service経由
 
-NodePort Serviceを構築しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
+NodePort Serviceを作成しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
 
 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -72,7 +72,7 @@ $ minikube ip
 
 #### ▼ LoadBalancer Service経由
 
-LoadBalancer Serviceを構築しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
+LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
 
 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -82,7 +82,7 @@ $ minikube tunnel
 
 #### ▼ Ingress経由
 
-ClusterIP ServiceとIngress（Minikubeアドオン製）を構築しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
+ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
 
 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -295,7 +295,7 @@ Minikubeのプラグインを操作する。
 ```bash
 $ minikube addons enable ingress
 
-# IngressClassがNginxのIngressが構築されている。
+# IngressClassがNginxのIngressが作成されている。
 $ kubectl get ingress
 NAME          CLASS   HOSTS   ADDRESS        PORTS   AGE
 foo-ingress   nginx   *       <IPアドレス>    80      12m
@@ -403,7 +403,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 #### ▼ dashboardとは
 
-Kubernetesのダッシュボードを開発環境に構築する。
+Kubernetesのダッシュボードを開発環境に作成する。
 
 **＊実行例＊**
 
@@ -751,7 +751,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 #### ▼ startとは
 
-ゲスト仮想環境を構築し、仮想環境内にワーカーNodeを作成する。
+ゲスト仮想環境を作成し、仮想環境内にワーカーNodeを作成する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
@@ -778,7 +778,7 @@ $ minikube start
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-ワーカーNodeが構築されていることを確認できる。
+ワーカーNodeが作成されていることを確認できる。
 
 ```bash
 $ kubectl get nodes
@@ -895,7 +895,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に構築し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Clusterネットワーク外からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Clusterネットワーク外からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 参考：
 

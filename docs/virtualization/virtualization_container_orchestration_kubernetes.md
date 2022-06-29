@@ -177,7 +177,7 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 #### ▼ コンテナランタイムとは
 
-イメージのプル、コンテナ構築削除、コンテナ起動停止、などを行う。
+イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -411,7 +411,7 @@ IngressコントローラーによってClusterネットワーク外からイン
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを構築することになる。
+Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 参考：
 
@@ -982,7 +982,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 ```bash
 # シングルNodeの場合
 
-# curl送信用のコンテナを構築する。
+# curl送信用のコンテナを作成する。
 $ kubectl run \
     -n default \
     -it curl \
@@ -1000,7 +1000,7 @@ $ kubectl run \
 # Podが稼働するNodeを確認する。
 $ kubectl get pod <Pod名> -o wide
 
-# 指定したNode上で、curl送信用のコンテナを構築する。
+# 指定したNode上で、curl送信用のコンテナを作成する。
 $ kubectl debug node/<Node名> \
     -n default \
     -it \
@@ -1043,7 +1043,7 @@ Serviceにリクエストを送信するために必要な情報を、環境変�
 
 **＊実装例＊**
 
-foo-app-serviceというServiceを構築した場合の環境変数を示す。
+foo-app-serviceというServiceを作成した場合の環境変数を示す。
 
 ```bash
 $ printenv | sort -n
@@ -1101,7 +1101,7 @@ Clusterネットワーク内の全てのServiceにDNS名が割り当てられて
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | A/AAAAレコード | ```<Service名>.<Namespace名>.svc.svc.cluster.local```        | ・通常のServiceの名前解決ではClusterIPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略可能。<br>・同じNamespace内から通信する場合は、```<Service名>```のみで良い。 |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 要調査...                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。 |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。 |
 
 #### ▼ Serviceに対する名前解決
 

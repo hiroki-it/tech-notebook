@@ -17,17 +17,84 @@ description: 設計ポリシー＠ArgoCDの知見をまとめました。
 
 ### モノリポジトリ構成（推奨）
 
-GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
+#### ▼ Kubernetesリソースのマニフェストファイルを監視する場合
+
+GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはKubernetesリソースのマニフェストファイルやHelmチャートが管理されている。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 ```yaml
-repository/
+argocd-repository/
 ├── dev/
-│   ├── foo-repository.yaml # fooリポジトリを対象とするGitOps
-│   ├── bar-repository.yaml # barリポジトリを対象とするGitOps
-│   └── baz-repository.yaml # bazリポジトリを対象とするGitOps
+│   ├── foo-application.yaml # foo-k8sリポジトリのdevディレクトリを監視
+│   ├── bar-application.yaml # bar-k8sリポジトリのdevディレクトリを監視
+│   └── baz-application.yaml # baz-k8sリポジトリのdevディレクトリを監視
 │
+├── prd/
+└── stg/
+```
+
+```yaml
+k8s-repository/
+├── dev/
+│   ├── deployment.yaml # あるいはHelmチャート
+│   ....
+│
+├── prd/
+└── stg/
+```
+
+
+
+#### ▼ Applicationのマニフェストファイルを監視する場合
+
+GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやHelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+
+```yaml
+# 親Application
+parent-argocd-repository/
+├── dev/ # Applicationを管理する
+│   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
+│   └── obs-application.yaml # child-argocd-manifestリポジトリの/dev/obsディレクトリを監視
+│
+├── prd/
+└── stg/
+```
+
+ ````yaml
+# 子Application
+child-argocd-repository/
+├── dev/
+│   ├── app
+│   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
+│   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視
+│   │   ├── orchestrator-application.yaml # k8sリポジトリの/dev/app/orchestratorディレクトリを監視
+│   │   └── order-application.yaml        # k8sリポジトリの/dev/app/orderディレクトリを監視
+│   │
+│   └── obs
+│       ├── fluentd-application.yaml           # k8sリポジトリの/dev/obs/fluentdディレクトリを監視
+│       ├── grafana-application.yaml           # k8sリポジトリの/dev/obs/grafanaディレクトリを監視
+│       ├── kiali-application.yaml             # k8sリポジトリの/dev/obs/kialiディレクトリを監視
+│       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obs/prometheusディレクトリを監視
+│       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obs/vicotoria-metricsディレクトリを監視
+│
+├── prd/
+└── stg/
+ ````
+
+```yaml
+k8s-repository/
+├── dev/
+│   ├── app
+│   │   ├── account
+│   │   │   ├── deployment.yaml  # あるいはHelmチャート
+│   │   ...
+│   │
+│   └── obs
+│       ├── fluentd
+│       │   ├── deployment.yaml # あるいはHelmチャート
+|       ...
+│ 
 ├── prd/
 └── stg/
 ```
@@ -39,27 +106,27 @@ repository/
 GitOps対象のリポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
-foo-repository/ # fooリポジトリを対象とするGitOps
+repository/
 ├── dev/
-│   └── foo-repository.yaml
+│   └── foo-application.yaml # fooリポジトリを監視する。
 │
 ├── prd/
 └── stg/
 ```
 
 ```yaml
-bar-repository/ # barリポジトリを対象とするGitOps
+repository/
 ├── dev/
-│   └── bar-repository.yaml
+│   └── bar-application.yaml # barリポジトリを監視する。
 │
 ├── prd/
 └── stg/
 ```
 
 ```yaml
-baz-repository/ # bazリポジトリを対象とするGitOps
+repository/
 ├── dev/
-│   └── baz-repository.yaml
+│   └── baz-application.yaml # bazリポジトリを監視する。
 │
 ├── prd/
 └── stg/
@@ -88,7 +155,7 @@ repository/
 
 ダッシュボード
 
-のURLはIngressを入り口に構築することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
+のURLはIngressを入り口に作成することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
 
 <br>
 

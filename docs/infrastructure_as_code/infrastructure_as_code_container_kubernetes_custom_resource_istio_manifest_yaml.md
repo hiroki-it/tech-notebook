@@ -172,7 +172,7 @@ apiVersion: networking.istio.io/v1beta1
 
 ### kind
 
-構築するIstioリソースを設定する。
+作成するIstioリソースを設定する。
 
 - DestinationRule
 - Gateway
@@ -203,7 +203,7 @@ metadata:
 
 #### ▼ istio-injection
 
-アドミッションコントローラーを使用して、Envoyコンテナを自動的に構築するかどうかを設定する。
+アドミッションコントローラーを使用して、Envoyコンテナを自動的に作成するかどうかを設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -263,7 +263,7 @@ spec:
 
 #### ▼ sidecar.istio.io/inject
 
-特定のPodでのみ、Envoyコンテナを自動的に構築しないようにする。
+特定のPodでのみ、Envoyコンテナを自動的に作成しないようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -303,7 +303,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyImage
 
-Envoyコンテナの構築に使用するDockerイメージを設定する。
+Envoyコンテナの作成に使用するDockerイメージを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 

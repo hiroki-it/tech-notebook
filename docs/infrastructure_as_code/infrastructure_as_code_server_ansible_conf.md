@@ -15,7 +15,7 @@ description: 設定ファイル＠Ansibleの知見をまとめました。
 
 ## 01. Ansibleの仕組み
 
-コントロールノードと管理対象ノードから構成される。コントロールノードとしてのデプロイサーバーにはAnsibleがインストールされている。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
+コントロールノードと管理対象ノードから構成される。コントロールノードに相当するデプロイサーバーにはAnsibleがインストールされている。もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
@@ -503,9 +503,24 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 <br>
 
+### ansible.builtin.systemd
+
+管理対象ノード上で```systemd```コマンドの実行を設定する。
+
+```yaml
+- tasks:
+  - name: Start nginx systemd
+    ansible.builtin.systemd:
+      name: Start nginx
+      state: started
+      enabled: yes
+```
+
+<br>
+
 ### ansible.builtin.template
 
-管理対象ノード上に事前に用意したファイルを配置する。
+管理対象ノード上に、テンプレート（```.j2```ファイル）から作成したファイルを配置する。
 
 ```yaml
 - tasks:
@@ -513,6 +528,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
     ansible.builtin.template:
       src: nginx.conf.j2
       dest: /etc/nginx/nginx.conf
+      owner: root
+      group: root
 ```
 
 <br>

@@ -32,7 +32,7 @@ description: Istio＠仮想化の知見をまとめました。
 
 #### ▼ データプレーンとは
 
-インバウンド通信をマイクロサービスにルーティングする機能を持つ。Istioは、プロキシ機能を持つistio-proxyコンテナを自動的に構築し、これがマイクロサービスに通信をルーティングする。
+インバウンド通信をマイクロサービスにルーティングする機能を持つ。Istioは、プロキシ機能を持つistio-proxyコンテナを自動的に作成し、これがマイクロサービスに通信をルーティングする。
 
 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
@@ -49,7 +49,7 @@ description: Istio＠仮想化の知見をまとめました。
 
 #### ▼ コントロールプレーンとは
 
-データプレーンを包括的に管理する機能を持つ。Istioは、istio-proxyコンテナの管理機能を持つistidというPodを構築する。このPod内には、Pilot、Citadel、Galley、に相当するコンテナが稼働している。
+データプレーンを包括的に管理する機能を持つ。Istioは、istio-proxyコンテナの管理機能を持つistidというPodを作成する。このPod内には、Pilot、Citadel、Galley、に相当するコンテナが稼働している。
 
 参考：
 
@@ -62,11 +62,11 @@ description: Istio＠仮想化の知見をまとめました。
 
 #### ▼ Galley
 
-コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを構築する。
+コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
 
 #### ▼ Pilot
 
-コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったプロキシコンテナを構築する。他に、Istioの設定を、Istioによって注入されるEnvoyの設定に変換する。
+コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったプロキシコンテナを作成する。他に、Istioの設定を、Istioによって注入されるEnvoyの設定に変換する。
 
 参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
 

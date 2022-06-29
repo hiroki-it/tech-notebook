@@ -17,11 +17,13 @@ description: manifest.yaml＠ArgoCDの知見をまとめました。
 
 ### アーキテクチャ
 
-要調査...
+調査中...
 
 <br>
 
-### パイプライン構成
+## 01-02. ユースケース
+
+### 基本構成
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
@@ -32,10 +34,6 @@ description: manifest.yaml＠ArgoCDの知見をまとめました。
 - https://blog.vpantry.net/2021/01/cicd-2/
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
-
-<br>
-
-## 01-02. ユースケース
 
 ### アプリケーションリポジトリ起点
 
@@ -150,7 +148,7 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-（６）```443```番ポートにルーティングできるロードバランサーを構築する。この時、IngressとIngressコントローラーを構築するか、```kubectl port-forward```コマンドなど実行する。```minikube tunnel```ではポート番号を指定できないことに注意する。
+（６）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行する。```minikube tunnel```ではポート番号を指定できないことに注意する。
 
 ```bash
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443

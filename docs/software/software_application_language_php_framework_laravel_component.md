@@ -38,7 +38,7 @@ description: 認証/認可＠Laravelの知見をまとめました。
 | 11   | Resource                                                | DBから取得したコレクション型データを配列型データに変換する。 |
 | 12   | Response                                                | Responseを実行する。配列型データをJSONデータに変換する。     |
 | 13   | Terminate Middleware                                    | AfterMiddlewareが実行される。                                |
-| 14   | View                                                    | bladeファイルを基に静的ファイルが構築される。            |
+| 14   | View                                                    | bladeファイルを基に静的ファイルが作成される。            |
 | 15   | レスポンスを返信する。                                  |                                                              |
 
 <br>
@@ -1443,7 +1443,7 @@ class FileSystemPublicController extends Controller
 
 ```bash
 # S3アクセスポリシーをEC2やECSタスクに付与してもよい
-AWS_ACCESS_KEY_ID=<アクセスキー>
+AWS_ACCESS_KEY_ID=<アクセスキーID>
 AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 AWS_DEFAULT_REGION=ap-northeast-1
 
@@ -4569,7 +4569,7 @@ Laravelのライフサイクルで、ServiceContainerへのクラスのバイン
 
 ### MigrationMacroServiceProvider
 
-複数のテーブルに共通のカラムを構築するマイグレーション処理を提供する。
+複数のテーブルに共通のカラムを作成するマイグレーション処理を提供する。
 
 ```php
 <?php

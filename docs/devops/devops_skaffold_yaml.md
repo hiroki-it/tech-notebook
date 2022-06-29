@@ -17,7 +17,7 @@ description: skaffold.yaml＠Skaffoldの知見をまとめました。
 
 ### アーキテクチャ
 
-要調査...
+調査中...
 
 <br>
 
@@ -133,7 +133,7 @@ build:
 
 #### ▼ useBuildkit
 
-BuildKit機能の有効化を設定する。BuildKitではイメージレイヤーが並列的に構築されるため、ビルド時間を従来よりも短縮できる。
+BuildKit機能の有効化を設定する。BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
 
 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 

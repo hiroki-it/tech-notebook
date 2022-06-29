@@ -37,7 +37,7 @@ $ serverless print --FOO foo
 
 #### ▼ deployとは
 
-クラウドインフラを構築する。
+クラウドインフラを作成する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 

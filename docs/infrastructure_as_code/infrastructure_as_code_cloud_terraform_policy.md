@@ -517,7 +517,7 @@ resource "aws_internet_gateway" "this" {
 
 #### ▼ 接頭辞、接尾辞
 
-Lambda以外では、構築されるクラウドプロバイダーのリソースの名前は以下の通りとする。
+Lambda以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。
 
 - ケバブケース
 - `<接頭辞>-<種類>-<接尾辞>`とする。
@@ -803,7 +803,7 @@ resource "aws_rds_cluster" "this" {
 
 ### （３）Terraformのドキュメントや技術記事を確認
 
-AWSを構築する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
+AWSを作成する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
 
 - TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 - 技術記事

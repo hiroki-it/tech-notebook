@@ -79,13 +79,13 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 #### ▼ ローカルテスト
 
-コマンドにより、テストに必要なdockerイメージをプルし、コンテナを構築する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
+コマンドにより、テストに必要なdockerイメージをプルし、コンテナを作成する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
 ```bash
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のdockerコンテナを構築し、展開ファイルを元にテストを実行
+# 専用のdockerコンテナを作成し、展開ファイルを元にテストを実行
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
@@ -500,7 +500,7 @@ workflows:
 
 | 粒度   | 説明                                                         | 備考                                                       |
 | ------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
-| build  | プログラムの実行環境を構築する。                             | buildとtestを分割しにくい場合は、同じjobで定義しても良い。 |
+| build  | プログラムの実行環境を作成する。                             | buildとtestを分割しにくい場合は、同じjobで定義しても良い。 |
 | test   | 種々のテスト（Unitテスト、Functionalテスト、など）を実行する。 |                                                            |
 | deploy | ステージング環境または本番環境へのデプロイを実行する。       |                                                            |
 
@@ -514,7 +514,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ▼ dockerタイプとは
 
-dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -728,7 +728,7 @@ jobs:
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
-CircleCIでは、jobごとに異なる仮想環境が構築されるため、他の```job```で使用された一時ファイルを再利用したい場合、これを使用する。
+CircleCIでは、jobごとに異なる仮想環境が作成されるため、他の```job```で使用された一時ファイルを再利用したい場合、これを使用する。
 
 **＊実装例＊**
 
@@ -1315,7 +1315,7 @@ jobs:
 
 #### ▼ docker/install-dockerize
 
-CircleCIでDocker Composeを使用する場合に必要である。Docker Composeは、コンテナの構築の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの構築後に、プロセスが完全に起動していないのにも関わらず、次のコンテナの構築を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に構築されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを使用しても良い。
+CircleCIでDocker Composeを使用する場合に必要である。Docker Composeは、コンテナの作成の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの作成後に、プロセスが完全に起動していないのにも関わらず、次のコンテナの作成を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に作成されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを使用しても良い。
 
 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 

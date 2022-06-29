@@ -2323,7 +2323,7 @@ data:
 
 #### ▼ kubernetes.io/service-account-token
 
-ServiceAccountのためのデータを設定する。ただし、自動的に構築されるため、ユーザーが設定する必要はない。
+ServiceAccountのためのデータを設定する。ただし、自動的に作成されるため、ユーザーが設定する必要はない。
 
 参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 

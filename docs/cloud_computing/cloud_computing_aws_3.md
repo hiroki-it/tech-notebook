@@ -85,7 +85,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 #### ▼ IAMとは
 
-AWSリソースへのアクセスに関する認証と認可を制御する。認証はアクセスキーとシークレットアクセスキーによって、また認可はIAMロール/IAMポリシー/IAMステートメントによって制御される。
+AWSリソースへのアクセスに関する認証と認可を制御する。認証はアクセスキーIDとシークレットアクセスキーによって、また認可はIAMロール/IAMポリシー/IAMステートメントによって制御される。
 
 #### ▼ IAMロール
 
@@ -176,7 +176,7 @@ AWSリソースに関する認可のスコープを定義する。各アクシ�
 
 | アクション名 | 説明                   |
 | ------------ | ---------------------- |
-| Create       | リソースを構築する。   |
+| Create       | リソースを作成する。   |
 | Describe     | リソースを表示する。   |
 | Delete       | リソースを削除する。   |
 | Get          | リソースを取得する。   |
@@ -205,7 +205,7 @@ AWSリソースの識別子のこと。
 
 #### ▼ サービスリンクロール
 
-AWSリソースを構築した時に自動的に作成されるロール。他にはアタッチできない専用のポリシーがアタッチされている。『```AWSServiceRoleFor*****```』という名前で自動的に構築される。特に設定せずとも、自動的にリソースにアタッチされる。関連するリソースを削除するまで、ロール自体できない。サービスリンクロールの一覧については、以下のリンクを参考にせよ。
+AWSリソースを作成した時に自動的に作成されるロール。他にはアタッチできない専用のポリシーがアタッチされている。『```AWSServiceRoleFor*****```』という名前で自動的に作成される。特に設定せずとも、自動的にリソースにアタッチされる。関連するリソースを削除するまで、ロール自体できない。サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
@@ -227,7 +227,7 @@ AWSが提供しているポリシーのこと。アタッチ式のポリシー�
 
 #### ▼ カスタマー管理ポリシー
 
-ユーザーが独自に構築したポリシーのこと。すでにアタッチされていても、他のものにもアタッチできる。
+ユーザーが独自に作成したポリシーのこと。すでにアタッチされていても、他のものにもアタッチできる。
 
 #### ▼ インラインポリシー
 
@@ -392,39 +392,6 @@ ECRにアタッチされる、イメージの有効期間を定義するポリ�
 #### ▼ IAMユーザーとは
 
 特定の権限をもったアカウントのこと。
-
-#### ▼ ```credentials```ファイルを使用したCLI
-
-AWS CLIでクラウドインフラを操作するためには、```credentials```ファイルに定義されたクレデンシャル情報が必要である。『```aws_region```』ではなく『```aws_default_region```』であることに注意する。
-
-```bash
-$ aws configure set aws_access_key_id "<アクセスキー>"
-$ aws configure set aws_secret_access_key "<シークレットキー>"
-$ aws configure set aws_default_region "ap-northeast-1"
-```
-
-```bash
-# Linux、UNIXの場合：$HOME/.aws/<credentialsファイル名>
-# Windowsの場合：%USERPROFILE%\.aws\<credentialsファイル名>
-
-[default]
-aws_access_key_id=<アクセスキー>
-aws_secret_access_key=<シークレットキー>
-
-[user1]
-aws_access_key_id=<アクセスキー>
-aws_secret_access_key=<シークレットキー>
-```
-
-#### ▼ 環境変数を使用したCLI
-
-AWS CLIでクラウドインフラを操作するためには、環境変数で定義されたクレデンシャル情報が必要である。『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する。
-
-```bash
-$ export AWS_ACCESS_KEY_ID=<アクセスキー>
-$ export AWS_SECRET_ACCESS_KEY=<シークレットキー>
-$ export AWS_DEFAULT_REGION=ap-northeast-1
-```
 
 <br>
 

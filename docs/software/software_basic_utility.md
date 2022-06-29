@@ -758,6 +758,16 @@ $ cat foo.txt | grep -i bar
 
 <br>
 
+### growpart
+
+#### ▼ growpartとは
+
+パーティションを拡張する。
+
+参考：https://blog.denet.co.jp/try-growpart/
+
+<br>
+
 ### history
 
 #### ▼ historyとは
@@ -806,7 +816,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ### logrotate
 
-#### ▼ logrotate
+#### ▼ logrotateとは
 
 ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
 
@@ -918,12 +928,15 @@ $ swapoff /swap_volume
 
 #### ▼ mountとは
 
-指定したデバイスファイルを、マウント先ディレクトリ（マウントポイント）にマウントする。
+指定したデバイスファイルを、これに紐づくディレクトリ（マウントポイント）にマウントする。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
+参考：
+
+- https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
+- https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
 ```bash
-$ mount -t /dev/sdb1 <マウント先ディレクトリ>
+$ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 ```
 
 #### ▼ -t
@@ -935,8 +948,6 @@ $ mount -t /dev/sdb1 <マウント先ディレクトリ>
 - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
 
 - https://webkaru.net/linux/mount-command/
-
-
 
 NFSによるマウントを実行する。
 
@@ -965,8 +976,6 @@ $ nc <IPアドレス/ドメイン> <ポート番号>
 ```bash
 $ nc -v <IPアドレス/ドメイン> <ポート番号>
 ```
-
-
 
 パケットに```9000```番ポートに送信する。
 

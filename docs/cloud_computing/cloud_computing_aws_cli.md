@@ -19,7 +19,7 @@ description: AWS CLI＠AWSの知見をまとめました。
 
 #### ▼ configure
 
-認証情報を設定する。
+認証情報を設定する。OSによって、```credentials```ファイルが配置される場所が異なる。
 
 ```bash
 $ aws configure
@@ -63,12 +63,21 @@ $ aws configure list
 ```bash
 $ aws configure set <認証情報の項目>
 ```
+
+アクセスキーIDを設定する。
+
 ```bash
-$ aws configure set aws_access_key_id "<アクセスキー>"
+$ aws configure set aws_access_key_id "<アクセスキーID>"
 ```
+
+シークレットアクセスキーを設定する。
+
 ```bash
-$ aws configure set aws_secret_access_key "<シークレットキー>"
+$ aws configure set aws_secret_access_key "<シークレットアクセスキー>"
 ```
+
+リージョンを設定する。『```aws_region```』ではなく『```aws_default_region```』であることに注意する。
+
 ```bash
 $ aws configure set aws_default_region "<リージョン名>"
 ```
@@ -78,6 +87,10 @@ $ aws configure set aws_default_region "<リージョン名>"
 ## 01-02. 設定ファイル/環境変数
 
 ### ```~/.aws/confidentials```ファイル
+
+#### ▼ ```~/.aws/confidentials```ファイルとは
+
+認証情報を設定する。LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
 
 #### ▼ aws_access_key_id
 
@@ -175,6 +188,22 @@ source_profile = default
 
 ### 環境変数
 
+#### ▼ AWS_ACCESS_KEY_ID
+
+現在のターミナルで使用するアクセスキーIDを設定する。
+
+```bash
+$ export AWS_ACCESS_KEY_ID=<アクセスキーID>
+```
+
+#### ▼ AWS_SECRET_ACCESS_KEY
+
+現在のターミナルで使用するシークレットアクセスキーを設定する。
+
+```bash
+$ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
+```
+
 #### ▼ AWS_DEFAULT_PROFILE
 
 現在のターミナルで使用するプロファイルを設定する。```AWS_PROFILE```変数よりも優先される。
@@ -182,7 +211,15 @@ source_profile = default
 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
-export AWS_DEFAULT_PROFILE=default
+$ export AWS_DEFAULT_PROFILE=default
+```
+
+#### ▼ AWS_DEFAULT_REGION
+
+現在のターミナルで使用するリージョンを設定する。『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する。
+
+```bash
+$ export AWS_DEFAULT_REGION=ap-northeast-1
 ```
 
 #### ▼ AWS_PROFILE
@@ -192,7 +229,7 @@ export AWS_DEFAULT_PROFILE=default
 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
-export AWS_PROFILE=foo-profile
+$ export AWS_PROFILE=foo-profile
 ```
 
 <br>

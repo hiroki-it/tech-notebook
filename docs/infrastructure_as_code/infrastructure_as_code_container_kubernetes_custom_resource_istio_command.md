@@ -170,7 +170,7 @@ $ istioctl install -y -f <IstioOperatorのmanifest.yamlファイルへのパス>
 
 #### ▼ kube-injectとは
 
-Envoyコンテナをサイドカーコンテナとして構築する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
+Envoyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 
