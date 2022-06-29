@@ -476,10 +476,10 @@ bar-pod    2/2     Running            0          5m01s
 $ kubectl get pods -A
 ```
 
-````bash
+```bash
 # 指定したNode上のPodを全てNamespaceに関係なく取得する。
 $ kubectl get pods -A -o wide | grep <Node名>
-````
+```
 
 #### ▼ -o yaml
 

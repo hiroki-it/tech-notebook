@@ -44,8 +44,6 @@ k8s-repository/
 └── stg/
 ```
 
-
-
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
 GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやHelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
@@ -61,7 +59,7 @@ parent-argocd-repository/
 └── stg/
 ```
 
- ````yaml
+```yaml
 # 子Application
 child-argocd-repository/
 ├── dev/
@@ -80,7 +78,7 @@ child-argocd-repository/
 │
 ├── prd/
 └── stg/
- ````
+```
 
 ```yaml
 k8s-repository/
@@ -93,7 +91,7 @@ k8s-repository/
 │   └── obs
 │       ├── fluentd
 │       │   ├── deployment.yaml # あるいはHelmチャート
-|       ...
+│       ...
 │ 
 ├── prd/
 └── stg/

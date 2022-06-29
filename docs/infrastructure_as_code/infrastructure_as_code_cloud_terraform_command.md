@@ -206,11 +206,11 @@ $ terraform import \
 
 そして、ローカルマシンの```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
 
-````bash
+```bash
 $ terraform plan -var-file=foo.tfvars
 
 No changes. Infrastructure is up-to-date.
-````
+```
 
 #### ▼ importを行わなかった場合のエラー
 

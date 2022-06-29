@@ -279,7 +279,7 @@ $user = auth()->user();
 
 認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
 
-````php
+```php
 <?php
 
 namespace App\Http\Middleware\Auth;
@@ -312,7 +312,7 @@ class RedirectIfAuthenticated
     }
 }
 
-````
+```
 
 <br>
 
@@ -764,7 +764,7 @@ class User extends Authenticatable
 }
 ```
 
-6. Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（``````/oauth/xxx``````）が有効になる。また、アクセストークンを発行できるよになる。
+6. Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（`````/oauth/xxx`````）が有効になる。また、アクセストークンを発行できるよになる。
 
 **＊実装例＊**
 

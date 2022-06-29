@@ -56,7 +56,7 @@ Eloquentモデルを継承したクラスは、```INSERT```文や```UPDATE```文
 
 **＊実装例＊**
 
-````php
+```php
 <?php
 
 namespace App\Domain\DTO;
@@ -67,7 +67,7 @@ class Foo extends Model
 {
     // クラスチェーンによって、データアクセスロジックをコール
 }
-````
+```
 
 
 #### ▼ テーブルの定義

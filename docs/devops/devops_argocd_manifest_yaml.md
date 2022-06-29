@@ -660,7 +660,7 @@ spec:
         - ./prd.yaml
 ```
 
-````yaml
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -674,7 +674,7 @@ spec:
         foo: FOO
         bar: BAR
         baz: BAZ
-````
+```
 
 #### ▼ repoURL
 
