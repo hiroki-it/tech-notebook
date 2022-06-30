@@ -234,7 +234,7 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 
 #### ▼ SCSI（Small Computer System Interface）
 
-ストレージ、CD-ROM、イメージスキャナなど、様々な周辺機器をデイジーチェーンするために使用するインターフェイス。
+ストレージ、CD-ROM、コンテナイメージスキャナなど、様々な周辺機器をデイジーチェーンするために使用するインターフェイス。
 
 ![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsiインターフェイス.jpg)
 

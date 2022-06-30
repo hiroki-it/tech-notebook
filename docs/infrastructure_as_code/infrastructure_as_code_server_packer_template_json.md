@@ -54,7 +54,7 @@ $ sudo apt-get update && sudo apt-get install packer
 
 ### buildersとは
 
-作成するイメージの内容を設定する。
+作成するマシンイメージやコンテナイメージの内容を設定する。
 
 <br>
 

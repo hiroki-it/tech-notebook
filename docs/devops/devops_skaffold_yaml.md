@@ -43,7 +43,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 ### buildステージとは
 
-dockerイメージのビルド方法を定義する。
+コンテナイメージのビルド方法を定義する。
 
 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
@@ -123,7 +123,7 @@ build:
 
 #### ▼ push
 
-ビルドしたイメージをリポジトリにプッシュするかどうかを設定する。Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
+ビルドしたコンテナイメージをリポジトリにプッシュするかどうかを設定する。Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
 
 ```yaml
 build:
@@ -268,7 +268,7 @@ deploy:
     releases:
     - name: <リリース名>
       artifactOverrides:
-        image: <イメージ名> # buildステージのartifactsのイメージ名と合わせる。
+        image: <コンテナイメージ名> # buildステージのartifactsのコンテナイメージ名と合わせる。
       imageStrategy:
         helm: {}
 ```

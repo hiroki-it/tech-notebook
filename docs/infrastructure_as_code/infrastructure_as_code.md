@@ -143,7 +143,7 @@ description: Infrastructure as Codeの知見をまとめました。
 #### ▼ サーバー（物理/仮想）
 
 - CFEngine
-- Packer（サーバーのイメージも作成できる）
+- Packer（反対に、仮想サーバーからマシンイメージを作成する）
 - Puppet
 - Vagrantfile
 
@@ -151,18 +151,18 @@ description: Infrastructure as Codeの知見をまとめました。
 
 - Docker compose
 - Kubernetes
-- Packer（機能としてはあるが、個人的には使用しない）
-- Vagrantfile（機能としてはあるが、個人的には使用しない）
+- Packer（反対に、コンテナからコンテナイメージを作成する）
+- Vagrantfile
 
 #### ▼ クラウドインフラストラクチャ
 
 - AWS CloudFormation
 - Azure Resource Manager
 - GCP Deployment Manager
-- Packer（機能としてはあるが、個人的には使用しない）
+- Packer（反対に、クラウドサーバーからマシンイメージを作成する）
 - SAM
 - Serverless Framework
 - Terraform
-- Vagrant（機能としてはあるが、個人的には使用しない）
+- Vagrant
 
 <br>

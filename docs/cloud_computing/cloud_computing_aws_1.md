@@ -1700,9 +1700,9 @@ phases:
       - docker build -t REPOSITORY_URI:$VERSION_TAG -f Dockerfile .
   postBuild:
     commands:
-      # ECRにイメージをプッシュ
+      # ECRにコンテナイメージをプッシュ
       - docker push $REPOSITORY_URI:$VERSION_TAG
-      # ECRにあるデプロイ先のイメージの情報（imageDetail.json）
+      # ECRにあるデプロイ先のコンテナイメージの情報（imageDetail.json）
       - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$VERSION_TAG > imageDetail.json
     
 # デプロイ対象とするビルドのアーティファクト    
@@ -1766,7 +1766,7 @@ artifacts:
 
 以下の手順でデプロイを行う。
 
-1. ECRのイメージを更新
+1. ECRのコンテナイメージを更新
 2. ECSタスク定義の新しいリビジョンを作成。
 3. サービスを更新。
 4. CodeDeployによって、ECSタスク定義を基に、現行の本番環境（Prodブルー）のECSタスクとは別に、テスト環境（Testグリーン）が作成される。ロードバランサーの接続先を、本番環境（Prodブルー）のターゲットグループ（Primaryターゲットグループ）に加えて、テスト環境（Testグリーン）にも向ける。
@@ -1809,7 +1809,7 @@ Resources:
 
 #### ▼ ```taskdef.json```ファイル
 
-デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからイメージを取得する。この時、```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新しいバージョンタグを含むイメージリポジトリURLが自動的に代入される。
+デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新しいバージョンタグを含むイメージリポジトリURLが自動的に代入される。
 
 参考：
 

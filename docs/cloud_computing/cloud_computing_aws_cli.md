@@ -255,7 +255,7 @@ $ aws cloudwatch set-alarm-state \
 
 **＊例＊**
 
-全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただ、やってみたけどうまくいかず）。
+全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただし、やってみたけどうまくいかず）。
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 

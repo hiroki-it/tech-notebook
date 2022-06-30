@@ -19,7 +19,7 @@ description: gRPC＠アプリケーション連携の知見をまとめました
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_architecture.png)
 
-RPCフレームワークの一つで、プロトコルバッファーを用いてRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
+RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
 参考：
 
@@ -219,7 +219,7 @@ func main() {
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer()
 
-	// pb.goファイルで自動生成された関数を用いて、goサーバーをgRPCサーバーとして登録する。
+	// pb.goファイルで自動生成された関数を使用して、goサーバーをgRPCサーバーとして登録する。
 	// goサーバーがリモートプロシージャーコールを受信できるようになる。
 	pb.RegisterFooServiceServer(grpcServer, &Server{})
 

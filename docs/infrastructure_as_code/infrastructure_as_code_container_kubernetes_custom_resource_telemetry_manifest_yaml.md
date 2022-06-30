@@ -29,7 +29,7 @@ $ helm install <リリース名> grafana/grafana
 
 #### ▼ kube-prometheus-stackチャートリポジトリから
 
-Prometheusと連携しやすくする場合は、Helmチャートのkube-prometheus-stackチャートをインストールする。
+Prometheusと連携しやすくする場合は、helmチャートのkube-prometheus-stackチャートをインストールする。
 
 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
@@ -151,7 +151,7 @@ data:
 
 #### ▼ kube-prometheus-stackチャートリポジトリから
 
-Helmチャートのkube-prometheus-stackチャートをapplyする。
+helmチャートのkube-prometheus-stackチャートをapplyする。
 
 参考：
 

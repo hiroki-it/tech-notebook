@@ -33,7 +33,7 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 #### ▼ buildとは
 
-全てのイメージをビルドする。
+全てのコンテナイメージをビルドする。
 
 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
@@ -55,7 +55,7 @@ $ skaffold build --cache-artifacts=false
 
 #### ▼ dev
 
-アプリケーションのコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。また、ポートフォワーディングを実行する。
+アプリケーションのコードを監視し、変更が検出された時に、コンテナイメージの再ビルド/プッシュ/デプロイを実行する。また、ポートフォワーディングを実行する。
 
 ```bash
 $ skaffold dev
@@ -71,7 +71,7 @@ $ skaffold dev --trigger=polling
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```dev```コマンドを実行する。
+イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```dev```コマンドを実行する。
 
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
@@ -91,7 +91,7 @@ $ skaffold dev --port-forward
 
 #### ▼ run
 
-バックグラウンドで、イメージのビルド/デプロイを実行する。
+バックグラウンドで、コンテナイメージのビルド/デプロイを実行する。
 
 ```bash
 $ skaffold run
@@ -107,7 +107,7 @@ $ skaffold run --force
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```skaffold run```コマンドを実行する。
+イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```skaffold run```コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false

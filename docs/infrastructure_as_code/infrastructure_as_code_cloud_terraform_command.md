@@ -338,7 +338,7 @@ $ terraform plan \
 
 #### ▼ -refresh
 
-このオプションをつければ、```terraform refresh```コマンドを同時に実行してくれる。ただ、デフォルトで```true```なので、不要である。
+このオプションをつければ、```terraform refresh```コマンドを同時に実行してくれる。ただし、デフォルトで```true```なので、不要である。
 
 ```bash
 $ terraform plan \

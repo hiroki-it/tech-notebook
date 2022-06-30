@@ -72,7 +72,7 @@ Clusterの様々な設定値を保持し、冗長化されたKubernetesリソー
 
 #### ▼ kube-apiserverとは
 
-kubernetesクライアントにkueneretes-APIを公開する。クライアントがkubectlコマンドを実行すると、Kubernetes-APIがコールされ、コマンドに沿ってKubernetesリソースが操作される。
+kubernetesクライアントにkueneretes-APIを公開する。クライアントがkubectlコマンドを実行すると、kube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -184,6 +184,21 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 <br>
 
 ## 01-04. アドオン
+
+### admission controllersプラグイン
+
+#### ▼ admission controllersプラグインとは
+
+![kubernetes_admission-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controller.png)
+
+認証認可を終えたkube-apiserverに対するリクエストのバリデーションを実行する。アプリケーションでいうところのコントローラーと同じような責務を持っている。
+
+参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+- https://knowledge.sakura.ad.jp/21129/
+
+<br>
 
 ### cniプラグイン
 

@@ -79,7 +79,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 #### ▼ ローカルテスト
 
-コマンドにより、テストに必要なdockerイメージをプルし、コンテナを作成する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
+コマンドにより、テストに必要なコンテナイメージをプルし、コンテナを作成する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
 ```bash
 # バージョン2.1の設定ファイルの処理を展開
@@ -514,7 +514,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ▼ dockerタイプとは
 
-dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+dockerコンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -538,10 +538,10 @@ jobs:
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
-     # dockerイメージのビルド
+     # コンテナイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # dockerイメージのDockerHubへのデプロイ
+     # コンテナイメージのDockerHubへのデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -565,10 +565,10 @@ jobs:
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
-     # dockerイメージのビルド
+     # コンテナイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # dockerイメージのDockerHubへのデプロイ
+     # コンテナイメージのDockerHubへのデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -688,7 +688,7 @@ jobs:
             yarn test
 ```
 
-ただ、この機能はcommandsで共通化した方が可読性が良い。
+ただし、この機能はcommandsで共通化した方が可読性が良い。
 
 **＊実装例＊**
 
@@ -1407,7 +1407,7 @@ jobs:
 
 #### ▼ DLCとは
 
-CircleCIでdockerイメージをビルドした後、各イメージレイヤーのキャッシュをDLCボリュームに作成する。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、dockerイメージのビルド時間を短縮できる。
+CircleCIでコンテナイメージをビルドした後、各イメージレイヤーのキャッシュをDLCボリュームに作成する。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、コンテナイメージのビルド時間を短縮できる。
 
 ![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 

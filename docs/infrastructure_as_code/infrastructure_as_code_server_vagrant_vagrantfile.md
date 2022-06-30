@@ -15,7 +15,11 @@ description: Vagrantfile＠Vagrantの知見をまとめました。
 
 ## 01. Vagrantの仕組み
 
-### プロバイダーとプロビジョナーの操作
+### アーキテクチャ
+
+参考：https://delftswa.github.io/chapters/vagrant/
+
+### ユースケース
 
 Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。Vagrantfile自体をプロビジョナーとして使用もできる。仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
 

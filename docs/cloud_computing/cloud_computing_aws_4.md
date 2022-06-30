@@ -116,7 +116,7 @@ $ docker run \
     -p 9000:8080 \
     # エミュレーターをエントリーポイントとして設定する。
     --entrypoint /aws-lambda/aws-lambda-rie \
-    <イメージ名>:<バージョンタグ> /go/bin/cmd
+    <コンテナイメージ名>:<バージョンタグ> /go/bin/cmd
 ```
 
 ```bash
@@ -141,7 +141,7 @@ services:
     entrypoint: /aws-lambda/aws-lambda-rie
     env_file:
       - .docker.env
-    image: <イメージ名>:<バージョンタグ>
+    image: <コンテナイメージ名>:<バージョンタグ>
     ports:
       - 9000:8080
     # エミュレーターをエントリーポイントをバインドする。
@@ -242,7 +242,7 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 #### ▼ ECRにおけるイメージ
 
-コンテナイメージの関数でのみ有効である。ビルド後のコードをdockerイメージしてアップロードする。ECRからアップロードできる。
+コンテナイメージの関数でのみ有効である。ビルド後のコードをコンテナイメージしてアップロードする。ECRからアップロードできる。
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
 
@@ -488,7 +488,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 #### ▼ 機能の違い
 
-RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただ、その分費用が高いことに注意する。
+RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただし、その分費用が高いことに注意する。
 
 参考：https://www.ragate.co.jp/blog/articles/10234
 
@@ -694,7 +694,7 @@ $ aws rds modify-db-instance \
 
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| レプリケーション        | 単一のプライマリーインスタンス（シングルマスター）または複数のプライマリーインスタンス（マルチマスター）とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただ、DBクラスターをクローンできないなどのデメリットもある。<br>参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
+| レプリケーション        | 単一のプライマリーインスタンス（シングルマスター）または複数のプライマリーインスタンス（マルチマスター）とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br>参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms |
 | DBクラスター識別子      | DBクラスター名を設定する。                                   | インスタンス名は、最初に設定できず、RDSの作成後に設定できる。 |
 | VPCとサブネットグループ | DBクラスターを配置するVPCとサブネットを設定する。            | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br>![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png) |
 | パラメーターグループ    | グローバルパラメーターを設定する。                           | デフォルトを使用せずに独自定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定するべきなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ（dynamic/static）があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br>・```character_set_connection=utf8mb4```<br>・```character_set_database=utf8mb4```<br>・```character_set_results=utf8mb4```<br>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br>・```server_audit_logs_upload=1```<br>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br>・```long_query_time=3```（スロークエリと見なす最短秒数） |
@@ -795,7 +795,7 @@ Auroraでは、OS、エンジンバージョン、MySQLなどのアップグレ�
 
 #### ▼ ダウンタイムの発生条件
 
-非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。ただ、経験上同じ項目でダウンタイムが発生しているため、参考にする。
+非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
@@ -809,7 +809,7 @@ Auroraでは、OS、エンジンバージョン、MySQLなどのアップグレ�
 
 **＊実装例＊**
 
-Aurora MySQLのアップグレードに伴うダウンタイムを計測する。踏み台サーバーを経由してRDSに接続し、現在時刻を取得するSQLを送信する。この時、```for```文や```watch```コマンドを使用する。ただ、```watch```コマンドはプリインストールされていない可能性がある。平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。また、ヘルスチェックの時刻を正しくロギングできるように、ローカルマシンから時刻を取得する。
+Aurora MySQLのアップグレードに伴うダウンタイムを計測する。踏み台サーバーを経由してRDSに接続し、現在時刻を取得するSQLを送信する。この時、```for```文や```watch```コマンドを使用する。ただし、```watch```コマンドはプリインストールされていない可能性がある。平常アクセス時のも同時に実行することにより、より正確なダウンタイムを取得する。また、ヘルスチェックの時刻を正しくロギングできるように、ローカルマシンから時刻を取得する。
 
 ```bash
 #!/bin/bash

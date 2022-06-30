@@ -753,19 +753,19 @@ Deployment、Pod、Jobを作成する。
 
 
 ```bash
-$ kubectl run <Deployment名> --restart=Always --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
+$ kubectl run <Deployment名> --restart=Always --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```Never```なら、Podが作成される。
 
 ```bash
-$ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
+$ kubectl run <Pod名> --restart=Never --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```OnFailure```なら、Jobが作成される。
 
 ```bash
-$ kubectl run <Job名> --restart=OnFailure --image=<イメージ名>:<バージョンタグ> --port=<ポート番号>
+$ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 <br>

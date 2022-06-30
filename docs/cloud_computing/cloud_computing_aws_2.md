@@ -139,7 +139,7 @@ $ openssl pkcs8 \
 
 #### ▼ キーペアを使用したSSH接続
 
-キーペアのうちの秘密鍵を用いて、対応する公開鍵を持つEC2インスタンスにSSH接続でアクセスできる。クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。その後、Route53、ALBを経由せず、そのままEC2へ向かう。
+キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つEC2インスタンスにSSH接続でアクセスできる。クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。その後、Route53、ALBを経由せず、そのままEC2へ向かう。
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 
@@ -167,7 +167,7 @@ Session Managerを使用してEC2インスタンスに接続し、ログイン�
 
 ### AMIとは
 
-EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームのコピーが内蔵されたテンプレートのこと。
+EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームのコピーが内蔵されたテンプレートである。
 
 参考：
 
@@ -270,10 +270,10 @@ xvda    202:0    0   8G  0 disk            # EBSボリューム
 ```
 
 ```bash
-$ df
+$ df -h
 
 Filesystem  Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1  ext4    8G  1.9G    14G   12%  /
+/dev/xvda1  ext4    8G  1.9G    14G   12%  /           # 各デバイスファイルに紐づくボリュームのサイズ
 
 # ～ 中略 ～
 ```
@@ -383,7 +383,7 @@ EC2インスタンスにオートスケーリングを適用している場合�
 
 ### ECRとは
 
-dockerイメージやHelmチャートを管理できる。
+コンテナイメージやhelmチャートを管理できる。
 
 <br>
 
@@ -393,14 +393,14 @@ dockerイメージやHelmチャートを管理できる。
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 可視性                   | イメージリポジトリをパブリックあるいはプライベートにするかを設定する。 | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>参考：https://gallery.ecr.aws/ |
 | タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、バージョンタグを上書きできる/できないかを設定できる。 | -                                                            |
-| プッシュ時にスキャン     | イメージがプッシュされた時に、イメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html |
+| プッシュ時にスキャン     | イメージがプッシュされた時に、コンテナイメージにインストールされているパッケージの脆弱性を検証し、一覧表示する。 | 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html |
 | 暗号化設定               | -                                                            | -                                                            |
 
 <br>
 
 ### イメージのプッシュ
 
-#### ▼ Dockerイメージの場合
+#### ▼ コンテナイメージの場合
 
 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
@@ -421,14 +421,14 @@ Login Succeeded
 $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-（３）ECRにイメージをプッシュする。
+（３）ECRにコンテナイメージをプッシュする。
 
 ```bash
 # docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-#### ▼ Helmチャートの場合
+#### ▼ helmチャートの場合
 
 参考：https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
 
@@ -438,7 +438,7 @@ $ docker push <イメージリポジトリURL>:<バージョンタグ>
 
 #### ▼ ライフサイクルポリシー
 
-ECRのイメージの有効期間を定義できる。
+ECRのコンテナイメージの有効期間を定義できる。
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -452,7 +452,7 @@ ECRのイメージの有効期間を定義できる。
 
 #### ▼ タグ名のベストプラクティス
 
-Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。その代わりに、イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
+Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。その代わりに、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
 
 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
 
@@ -1055,7 +1055,7 @@ CodeDeployを使用してデプロイを行う。
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただ、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 参考：
 
@@ -1173,7 +1173,7 @@ $ kubectl config use-context <ClusterのARN>
 
 #### ▼ VPC
 
-EKS Fargate Nodeはプライベートサブネットで稼働する。この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのイメージをプルできるように、EKS Fargate NodeとInternet Gateway間のネットワークを繋げる必要がある。そのために、パブリックサブネットにNAT Gatewayを置く。
+EKS Fargate Nodeはプライベートサブネットで稼働する。この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS Fargate NodeとInternet Gateway間のネットワークを繋げる必要がある。そのために、パブリックサブネットにNAT Gatewayを置く。
 
 <br>
 
@@ -1558,7 +1558,7 @@ data:
         auto_create_group true
 ```
 
-（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが作成された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが作成された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 参考：
 
@@ -1701,7 +1701,7 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 
 | 設定項目                         | 説明                                                         | 補足                                                         |
 | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| クラスターエンジン               | 全てのRedisノードのキャッシュエンジンを設定する。Redis通常モード、Redisクラスターモードから選択する。 | Redisクラスターモードと同様に、Redis通常モードもクラスター構成になる。ただ、クラスターモードとはクラスターの構成方法が異なる。 |
+| クラスターエンジン               | 全てのRedisノードのキャッシュエンジンを設定する。Redis通常モード、Redisクラスターモードから選択する。 | Redisクラスターモードと同様に、Redis通常モードもクラスター構成になる。ただし、クラスターモードとはクラスターの構成方法が異なる。 |
 | ロケーション                     |                                                              |                                                              |
 | エンジンバージョンの互換性       | 全てのRedisノードのキャッシュエンジンのバージョンを設定する。 | マイナーバージョンが自動的に更新されないように、例えば『```6.x```』は設定しない方が良い。 |
 | パラメーターグループ             | 全てのRedisノードのグローバルパラメーターを設定する。        | デフォルトを使用せずに独自定義する場合、事前に作成しておく必要がある。 |

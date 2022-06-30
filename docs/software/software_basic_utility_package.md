@@ -246,7 +246,7 @@ $ brew install speedtest-cli
 
 ### speedtest-cli
 
-SPEEDTESTのAPIを用いて、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
+SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
 
 参考：https://www.speedtest.net/ja
 
@@ -603,13 +603,13 @@ $ sops -e <暗号化前のYAMLファイル/JSONファイル> > <暗号化後のY
 
 #### ▼ systemd：system daemon
 
-各プロセスを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
+ユニットファイルに基づいて、プロセスをユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
 
-| ユニットの拡張子 | 説明                     | デーモン例             |
-| ---------------- |------------------------|-------------------|
-| mount            | ファイルのマウントに関するデーモン。     |                   |
-| service          | プロセス起動停止に関するデーモン。      | httpd：http daemon |
-| socket           | ソケットとプロセスの紐付けに関するデーモン。 |                   |
+| ユニットの拡張子 | 説明                                         | デーモン例         |
+| ---------------- | -------------------------------------------- | ------------------ |
+| ```.service```   | プロセス起動停止に関するデーモン。           | httpd：http daemon |
+| ```.mount```     | ファイルのマウントに関するデーモン。         |                    |
+| ```.socket```    | ソケットとプロセスの紐付けに関するデーモン。 |                    |
 
 <br>
 
@@ -627,37 +627,107 @@ $ apt-get install systemd
 
 <br>
 
-### disable
+### ユニットファイル
+
+#### ▼ ユニットファイルとは
+
+systemdによるプロセスの起動/停止方法を定義したファイル。デフォルト値が定義されたファイルは```/usr/lib/systemd/system```ディレクトリ配下に配置され、これは変更できない。カスタムユニットファイルは、```/etc/sytemd/system```ディレクトリ配下に配置する。
+
+
+参考：
+
+- https://tex2e.github.io/blog/linux/create-my-systemd-service
+- https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
+- https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+
+#### ▼ Unitセクション
+
+ユニットの種類に関係ない全般的なオプションを設定する。
+
+```ini
+[Unit]
+Description=The Apache HTTP Server
+このユニットの前に実行するユニット
+After=network.target remote-fs.target nss-lookup.target
+Documentation=man:httpd(8)
+Documentation=man:apachectl(8)
+```
+
+#### ▼ Serviceセクション
+
+プロセス固有のオプションを設定する。
+
+```ini
+[Service]
+Type=notify
+EnvironmentFile=/etc/sysconfig/httpd
+# systemctl startコマンド時に実行するコマンド
+ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND
+# systemctl reloadコマンド時に実行するコマンド
+ExecReload=/usr/sbin/httpd $OPTIONS -k graceful
+# systemctl stopコマンド時に実行するコマンド
+ExecStop=/bin/kill -WINCH ${MAINPID}
+KillSignal=SIGCONT
+PrivateTmp=true
+```
+
+#### ▼ Installセクション
+
+ユニットのインストール（```systemctl enable```コマンドの実行）時のオプションを設定する。
+
+```ini
+[Install]
+# シンボリックリンクを作成するディレクトリ（/etc/systemd/system/<設定値>）
+WantedBy=multi-user.target
+```
+
+<br>
+
+### systemctl
+
+#### ▼ daemon-reload
+
+サーバー内で```/etc/sytemd/system```ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。全てのデーモンのカスタムユニットファイルを再読み込みする。ただし、デーモンが既に稼働中の場合は、```systemctl restart```コマンドが別途必要になる。
+
+参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+
+```bash
+$ systemctl daemon-reload
+```
+
+#### ▼ disable
 
 OSの起動時に、デーモン化されたプロセスが自動起動しないように設定する。
 
 ```bash
-$ systemctl disable <プロセス名>
+$ systemctl disable <ユニット名>
 
 # 例：Cron、Apache
 $ systemctl disable crond.service
 $ systemctl disable httpd.service
 ```
 
-### enable
+#### ▼ enable
 
 OSの起動時に、デーモン化されたプロセスが自動起動するように設定する。
 
 ```bash
-$ systemctl enable <プロセス名>
+$ systemctl enable <ユニット名>
 
 # 例：Cron、Apache
 $ systemctl enable crond.service
 $ systemctl enable httpd.service
 ```
 
-<br>
-
-### list-units
+#### ▼ list-units
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
 
 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+
+```bash
+$ systemctl list-units --type=<ユニットの拡張子>
+```
 
 ```bash
 $ systemctl list-units --type=service | grep active
@@ -669,68 +739,99 @@ abrtd.service                    loaded  active  running  ABRT Automated Bug Rep
 ...
 ```
 
-<br>
+```bash
+$ systemctl list-units --type=mount | grep active
 
-### list-unit-files
+UNIT                              LOAD   ACTIVE SUB     DESCRIPTION
+-.mount                           loaded active mounted /
+dev-hugepages.mount               loaded active mounted Huge Pages File System
+dev-mqueue.mount                  loaded active mounted POSIX Message Queue File System
+...
+```
+
+#### ▼ list-unit-files
 
 デーモン化されたプロセスのUnitの一覧を取得する。
 
 ```bash
-$ systemctl list-unit-files --type=service
-
-crond.service           enabled  # enable：自動起動する
-supervisord.service     disabled # disable：自動起動しない
-systemd-reboot.service  static   # enable：他サービス依存
+$ systemctl list-unit-files --type=<ユニットの拡張子>
 ```
 
-<br>
+```bash
+$ systemctl list-unit-files --type=service
 
-### reload
+UNIT FILE                   STATE
+crond.service               enabled  # enable：自動起動する
+supervisord.service         disabled # disable：自動起動しない
+systemd-reboot.service      static   # enable：他サービス依存
+```
+
+```bash
+$ systemctl list-unit-files --type=mount
+
+UNIT FILE                     STATE
+dev-hugepages.mount           static
+dev-mqueue.mount              static
+proc-fs-nfsd.mount            static
+proc-sys-fs-binfmt_misc.mount static
+```
+
+#### ▼ reload
 
 デーモン化されたプロセスを安全に再起動する。
 
 ```bash
-$ systemctl reload nginx
+$ systemctl reload <ユニット名>
 ```
 
-<br>
+```bash
+$ systemctl reload nginx.service
+```
 
-### restart
+#### ▼ restart
 
 デーモン化されたプロセスを強制的に再起動する。
 
 ```bash
-$ systemctl restart httpd
+$ systemctl restart <ユニット名>
 ```
 
 ```bash
-$ systemctl restart nginx
+$ systemctl restart httpd.service
 ```
 
-<br>
+```bash
+$ systemctl restart nginx.service
+```
 
-### start
+#### ▼ start
 
 デーモン化されたプロセスを起動する。
 
 ```bash
-$ systemctl start httpd
+$ systemctl start <ユニット名>
 ```
 
 ```bash
-$ systemctl start nginx
+$ systemctl start httpd.service
 ```
 
-<br>
+```bash
+$ systemctl start nginx.service
+```
 
-### status
+#### ▼ status
 
 デーモン化されたプロセスの状態を確認する。
 
 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
-$ systemctl status rsyslog
+$ systemctl status <ユニット名>
+```
+
+```bash
+$ systemctl status rsyslog.service
 
 rsyslog.service - System Logging Service
 Loaded: loaded (/usr/lib/systemd/system/rsyslog.service; enabled; vendor preset: enabled)
@@ -740,18 +841,20 @@ CGroup: /system.slice/rsyslog.service
 mq959 /usr/sbin/rsyslogd -n
 ```
 
-<br>
-
-### stop
+#### ▼ stop
 
 デーモン化されたプロセスを停止する。
 
 ```bash
-$ systemctl stop httpd
+$ systemctl stop <ユニット名>
 ```
 
 ```bash
-$ systemctl stop nginx
+$ systemctl stop httpd.service
+```
+
+```bash
+$ systemctl stop nginx.service
 ```
 
 <br>

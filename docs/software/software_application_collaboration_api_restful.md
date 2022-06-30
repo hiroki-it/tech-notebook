@@ -201,7 +201,7 @@ GET https://example.com/users_id/12345
 GET https://example.com/users-id/12345
 ```
 
-ただ、そもそもケバブ方式も利用せずに、スラッシュで区切ってしまうのも手である
+ただし、そもそもケバブ方式も利用せずに、スラッシュで区切ってしまうのも手である
 
 ```http
 GET https://example.com/users/id/12345

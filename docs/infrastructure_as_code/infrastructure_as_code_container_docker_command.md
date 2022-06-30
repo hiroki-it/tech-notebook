@@ -15,9 +15,9 @@ description: コマンド＠Dockerの知見をまとめました。
 
 ## 01. 手順
 
-1. Docker Hubから、ベースとなるイメージをインストールする。
-2. Dockerfileがイメージレイヤーからなるイメージをビルド。
-3. コマンドによって、イメージ上にコンテナレイヤーを生成し、コンテナを作成。
+1. Docker Hubから、ベースとなるコンテナイメージをインストールする。
+2. Dockerfileがイメージレイヤーからなるコンテナイメージをビルド。
+3. コマンドによって、コンテナイメージ上にコンテナレイヤーを生成し、コンテナを作成。
 4. コマンドによって、停止中コンテナを起動。
 5. コマンドによって、起動中コンテナに接続。
 
@@ -47,10 +47,10 @@ $ docker attach <起動中コンテナ名>
 
 **＊例＊**
 
-キャッシュ無しで、指定のDockerfileを基に、イメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するかどうかを設定する。
+キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するかどうかを設定する。
 
 ```bash
-$ docker build --file Dockerfile --tag <イメージ名>:<バージョンタグ> --force-rm=true --no-cache .
+$ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
 ```
 
 <br>
@@ -62,7 +62,7 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョンタグ>
 参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
-$ docker build --file Dockerfile --tag <イメージ名>:<バージョンタグ> --target dev .
+$ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
 ```
 
 <br>
@@ -71,14 +71,14 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョンタグ>
 
 #### ▼ commitとは
 
-停止中コンテナからイメージを作成する。
+停止中コンテナからコンテナイメージを作成する。
 
 **＊実行例＊**
 
 ```bash
 $ docker commit <停止中コンテナ名> <コンテナID>
 
-$ docker commit <停止中コンテナ名> <Docker Hubユーザー名>/<イメージ名>:<バージョンタグ>
+$ docker commit <停止中コンテナ名> <Docker Hubユーザー名>/<コンテナイメージ名>:<バージョンタグ>
 ```
 
 <br>
@@ -101,7 +101,7 @@ $ docker container prune
 
 #### ▼ cpとは
 
-Dockerfileの```COPY```コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにイメージをビルドを行うことは面倒のため、ホストからコンテナにコピーし、再読み出しを行う。ただし、コンテナを再作成すると元に戻ってしまうことに注意。
+Dockerfileの```COPY```コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを行うことは面倒のため、ホストからコンテナにコピーし、再読み出しを行う。ただし、コンテナを再作成すると元に戻ってしまうことに注意。
 
 **＊実行例＊**
 
@@ -129,7 +129,7 @@ $ docker logs <コンテナ名>
 コンテナレイヤーを生成し、コンテナを作成。起動はしない。
 
 ```bash
-$ docker create <コンテナ名> <イメージ名>:<バージョンタグ>
+$ docker create <コンテナ名> <コンテナイメージ名>:<バージョンタグ>
 ```
 
 <br>
@@ -146,7 +146,7 @@ $ docker create <コンテナ名> <イメージ名>:<バージョンタグ>
 # i：interactive、t：tty（対話モード）
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
-# イメージ内に/bin/bash がない場合
+# コンテナ内に/bin/bash がない場合
 $ docker exec -it <起動中コンテナ名> /bin/sh
 ```
 
@@ -156,7 +156,7 @@ $ docker exec -it <起動中コンテナ名> /bin/sh
 
 ```bash
 # デタッチドモードによる起動
-$ docker run -d -it --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 
 # デタッチドモードによって起動中コンテナに接続
 $ docker attach <起動中コンテナ名>
@@ -178,7 +178,7 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedにな�
 
 ```bash
 # デタッチドモードによる起動
-$ docker run -d -it --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 
 # 対話モードを使用して、デタッチドモードによって起動中コンテナに接続
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
@@ -208,7 +208,7 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになって
 レジストリ側に保管されているイメージを検索する。
 
 ```bash
-$ docker search <イメージ名>
+$ docker search <コンテナイメージ名>
 ```
 
 <br>
@@ -359,10 +359,10 @@ $ docker ps -a
 
 **＊例＊**
 
-レジストリ側のイメージをクライアント側にインストールする。
+レジストリ側のコンテナイメージをクライアント側にインストールする。
 
 ```bash
-$ docker pull <イメージ名>:<バージョンタグ>
+$ docker pull <コンテナイメージ名>:<バージョンタグ>
 ```
 
 <br>
@@ -373,19 +373,19 @@ $ docker pull <イメージ名>:<バージョンタグ>
 
 **＊例＊**
 
-ホストで作成したイメージを、指定したDockerHubのユーザーにアップロードする。
+ホストで作成したコンテナイメージを、指定したDockerHubのユーザーにアップロードする。
 
 ```bash
-$ docker push <Docker Hubユーザー名>/<イメージ名>:<バージョンタグ>
+$ docker push <Docker Hubユーザー名>/<コンテナイメージ名>:<バージョンタグ>
 ```
 
 **＊例＊**
 
-ホストで作成したイメージを、指定したECRにアップロードする。ECRはタグ名がやや特殊のため、事前にタグを付け替える必要がある。
+ホストで作成したコンテナイメージを、指定したECRにアップロードする。ECRはタグ名がやや特殊のため、事前にタグを付け替える必要がある。
 
 ```bash
 # docker tag foo:latest <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
-$ docker tag <ローカルマシンでのイメージ名>:<ローカルマシンでのバージョンタグ> <イメージレジストリ名>/<イメージリポジトリ名>:<バージョンタグ>
+$ docker tag <ローカルマシンでのコンテナイメージ名>:<ローカルマシンでのバージョンタグ> <イメージレジストリ名>/<イメージリポジトリ名>:<バージョンタグ>
 
 # docker push <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 $ docker push <イメージレジストリ名>/<イメージリポジトリ名>:<バージョンタグ>
@@ -416,7 +416,7 @@ $ docker rm --force $(docker ps --all --quiet)
 **＊実行例＊**
 
 ```bash
-$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 [root@<コンテナID>:/] $ cat /etc/hosts
@@ -437,7 +437,7 @@ ff02::2	ip6-allrouters
 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ --expose
@@ -447,7 +447,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイ�
 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --expose=80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ -a、-d
@@ -458,10 +458,10 @@ $ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメー�
 
 ```bash
 # アタッチモードによる起動。フォアグラウンドで起動する。
-$ docker run -a -it --rm --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -a -it --rm --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 
 # デタッチドモードによる起動。バックグラウンドで起動する。
-$ docker run -d -it --rm --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --rm --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 コンテナの起動時に、```bash```プロセスを実行すると以下のようなエラーが出ることがある。その場合は、```shell```プロセスを実行する。
@@ -476,7 +476,7 @@ docker: Error response from daemon: OCI runtime create failed: container_linux.g
 
 ```bash
 # -a：atattch mode
-$ docker run -a -it --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -a -it --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 デタッチドモードは、バックグラウンド起動である。ターミナルにプロセスのログが表示され続けるため、同一ターミナルで他のコマンドを入力できない。プロセスのログを監視できるが、他のプロセスを入力するためには、そのターミナル上でコンテナを停止させる必要がある。
@@ -486,7 +486,7 @@ $ docker run -a -it --name <コンテナ名> <イメージ名>:<バージョン�
 
 ```bash
 # -d: detached mode
-$ docker run -d -it --name <コンテナ名> <イメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 <br>

@@ -88,7 +88,7 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
 
 ```dockerfile
 FROM amazon/aws-for-fluent-bit:latest
@@ -292,7 +292,7 @@ FireLensコンテナにカスタム値を設定する。コンテナ定義の```
 
 #### ▼ INPUTセクション
 
-標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLensコンテナではforwardプラグインを設定する必要がある。ただ、デフォルトの設定ファイルには、INPUTがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない。
+標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLensコンテナではforwardプラグインを設定する必要がある。ただし、デフォルトの設定ファイルには、INPUTがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない。
 
 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
@@ -340,7 +340,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 },
 ```
 
-AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
 
 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 

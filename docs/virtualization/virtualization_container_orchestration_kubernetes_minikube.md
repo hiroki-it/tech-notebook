@@ -591,7 +591,7 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 Opening service <Service名> in default browser...
 ```
 
-ただ、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用すると良い。
+ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用すると良い。
 
 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
@@ -717,13 +717,13 @@ yes
 zcat
 ```
 
-ワーカーNodeの中では```docker```コマンドを実行でき、イメージもデバッグできる。
+ワーカーNodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
 
 ```bash
 $ minikube ssh  
 
 # ワーカーNodeの中
-$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+$ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 
 # コンテナの中
 [root@<コンテナID>:~] $ ls -la 

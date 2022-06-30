@@ -1187,7 +1187,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただ、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。リポジトリパターンについては、以下のリンクを参考にせよ。
+LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。リポジトリパターンについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 

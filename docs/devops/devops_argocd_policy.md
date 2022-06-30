@@ -19,7 +19,7 @@ description: 設計ポリシー＠ArgoCDの知見をまとめました。
 
 #### ▼ Kubernetesリソースのマニフェストファイルを監視する場合
 
-GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはKubernetesリソースのマニフェストファイルやHelmチャートが管理されている。
+監視対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
@@ -37,7 +37,7 @@ argocd-repository/
 ```yaml
 k8s-repository/
 ├── dev/
-│   ├── deployment.yaml # あるいはHelmチャート
+│   ├── deployment.yaml # あるいはhelmチャート
 │   ....
 │
 ├── prd/
@@ -46,14 +46,14 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-GitOps対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやHelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+監視対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
 
 ```yaml
 # 親Application
 parent-argocd-repository/
 ├── dev/ # Applicationを管理する
 │   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
-│   └── obs-application.yaml # child-argocd-manifestリポジトリの/dev/obsディレクトリを監視
+│   └── obsv-application.yaml # child-argocd-manifestリポジトリの/dev/obsvディレクトリを監視
 │
 ├── prd/
 └── stg/
@@ -69,12 +69,12 @@ child-argocd-repository/
 │   │   ├── orchestrator-application.yaml # k8sリポジトリの/dev/app/orchestratorディレクトリを監視
 │   │   └── order-application.yaml        # k8sリポジトリの/dev/app/orderディレクトリを監視
 │   │
-│   └── obs
-│       ├── fluentd-application.yaml           # k8sリポジトリの/dev/obs/fluentdディレクトリを監視
-│       ├── grafana-application.yaml           # k8sリポジトリの/dev/obs/grafanaディレクトリを監視
-│       ├── kiali-application.yaml             # k8sリポジトリの/dev/obs/kialiディレクトリを監視
-│       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obs/prometheusディレクトリを監視
-│       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obs/vicotoria-metricsディレクトリを監視
+│   └── obsv
+│       ├── fluentd-application.yaml           # k8sリポジトリの/dev/obsv/fluentdディレクトリを監視
+│       ├── grafana-application.yaml           # k8sリポジトリの/dev/obsv/grafanaディレクトリを監視
+│       ├── kiali-application.yaml             # k8sリポジトリの/dev/obsv/kialiディレクトリを監視
+│       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
+│       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
 │
 ├── prd/
 └── stg/
@@ -85,12 +85,12 @@ k8s-repository/
 ├── dev/
 │   ├── app
 │   │   ├── account
-│   │   │   ├── deployment.yaml  # あるいはHelmチャート
+│   │   │   ├── deployment.yaml  # あるいはhelmチャート
 │   │   ...
 │   │
-│   └── obs
+│   └── obsv
 │       ├── fluentd
-│       │   ├── deployment.yaml # あるいはHelmチャート
+│       │   ├── deployment.yaml # あるいはhelmチャート
 │       ...
 │ 
 ├── prd/
@@ -101,7 +101,7 @@ k8s-repository/
 
 ### ポリリポジトリ
 
-GitOps対象のリポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+監視対象のリポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
 repository/

@@ -177,7 +177,7 @@ aws configure list
 
 #### ▼ build-and-push-image
 
-CircleCIコンテナでdockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
+CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
