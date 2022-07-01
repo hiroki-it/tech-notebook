@@ -698,7 +698,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のチャートレジストリ内のリポジトリのブランチやバージョンタグを設定する。チャートリポジトリとして、GitHubやArtifactHubを指定できる。
+監視対象のチャートレジストリ内のリポジトリのブランチ（GitHubをチャートリポジトリとしている場合のみ）やバージョンタグを設定する。チャートリポジトリとして、GitHubやArtifactHubを指定できる。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -710,7 +710,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    targetRevision: main
+    targetRevision: 1.0.0
 ```
 
 <br>

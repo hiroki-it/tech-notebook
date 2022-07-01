@@ -505,7 +505,9 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### ansible.builtin.systemd
 
-管理対象ノード上で```systemd```コマンドの実行を設定する。
+管理対象ノード上で```systemctl```コマンドの実行を設定する。
+
+参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
 ```yaml
 - tasks:

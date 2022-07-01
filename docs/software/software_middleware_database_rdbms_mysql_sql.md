@@ -66,9 +66,9 @@ FROM
 
 #### ▼ プライマリーキーとは
 
-![主キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/主キー.jpg)
-
 テーブルの中で、レコードを一意に識別できる値を『プライマリーキー』の値と呼ぶ。
+
+![主キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/主キー.jpg)
 
 #### ▼ プライマリーキーとして使用できるもの
 
@@ -415,7 +415,7 @@ GRANT SELECT ON {DB名}.* TO '{ ユーザー名 }';
 
 <br>
 
-## 04. レコードの読み出し：READ
+## 04. 読み出し：READ
 
 
 ### はじめに
@@ -1045,9 +1045,22 @@ SQLの種類が表示される。サブクエリを含まないSQLは```SIMPLE``
 
 <br>
 
-### Tips
+## 04-02. 作成：CREATE
 
-#### ▼ 各DBサイズの確認
+### バルクインサート
+
+一度のINSERT文で複数の値を挿入する。
+
+```sql
+INSERT INTO { テーブル名 }
+VALUES ('<カラム名>','<レコード値>'), ('<カラム名>','<レコード値>'), ('<カラム名>','<レコード値>');
+```
+
+<br>
+
+## 05. Tips
+
+### 各DBサイズの確認
 
 ```sql
 SELECT
@@ -1061,7 +1074,9 @@ ORDER BY
     sum(data_length + index_length) DESC;
 ```
 
-#### ▼ カラムの検索
+<br>
+
+### カラムの検索
 
 ```sql
 SELECT
@@ -1078,7 +1093,7 @@ WHERE
 
 <br>
 
-### レコードの突き合わせ処理アルゴリズム
+## 06. レコードの突き合わせ処理アルゴリズム
 
 #### ▼ 突き合わせ処理とは
 

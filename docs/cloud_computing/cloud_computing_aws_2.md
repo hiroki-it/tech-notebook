@@ -247,24 +247,25 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 | Amazon Linux | ```t2.micro```   | ```8```                       |
 | CentOS       | ```t2.micro```   | ```10```                      |
 
-#### ▼ サイズの変更
+#### ▼ サイズの拡張
 
-サイズを変更するためには、実際のEBSボリューム、パーティション、EBSボリュームに紐づくファイルシステム、に関してサイズを変更する必要がある。
+サイズを拡張するためには、実際のEBSボリューム、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して対応する必要がある。
 
 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
 **＊例＊**
 
-（１）バックアップのため、変更対象のEC2インスタンスのAMIを作成しておく。
+（１）任意で、バックアップのために拡張対象のEC2インスタンスのAMIを作成しておく。
 
-（２）EC2インスタンスのEBSボリュームを```8```GiBから```16```GiBに変更する例を考える。```lsblk```コマンドで現在のブロックデバイスのサイズを確認すると、EBSボリュームとパーティションがともに```8```GiBである。また、```df```コマンドで現在のファイルシステムのサイズを確認すると、同じく```8```GiBである。
+（２）EC2インスタンスのEBSボリュームを```8```GiBから```16```GiBに拡張する例を考える。```lsblk```コマンドで現在のブロックデバイスのサイズを確認すると、EBSボリュームが```8```GiBである。また、EBSボリューム内にパーティションがある。```df```コマンドで現在のファイルシステムのサイズを確認すると、同じく```8```GiBである。
 
 ```bash
 $ lsblk
 
-NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0   8G  0 disk            # EBSボリューム
-└─xvda1 202:1    0   8G  0 part /          # パーティション
+NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
+xvda      202:0    0     8G    0   disk              # EBSボリュームに紐づくデバイスファイル
+└─xvda1   202:1    0     8G    0   part   /          # パーティションに紐づくデバイスファイル
+nvme1n1   259:1    0   200G    0   disk   /var/lib
 
 # ～ 中略 ～
 ```
@@ -272,51 +273,108 @@ xvda    202:0    0   8G  0 disk            # EBSボリューム
 ```bash
 $ df -h
 
-Filesystem  Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1  ext4    8G  1.9G    14G   12%  /           # 各デバイスファイルに紐づくボリュームのサイズ
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # EBSボリュームに紐づくデバイスファイル
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
 
 # ～ 中略 ～
 ```
 
-（３）コンソール画面から、EBSボリュームを```16```GiBに変更する。ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが変更されたことを確認できる。
+（３）コンソール画面から、EBSボリュームを```16```GiBに拡張する。この時、ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが拡張されたことを確認できる。ただ```df```コマンドでは、拡張されたことをまだ確認できない。
+
+```bash
+$ lsblk
+
+NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
+xvda          202:0    0    16G   0  disk             # EBSボリュームに紐づくデバイスファイル
+└─xvda1       202:1    0     8G   0  part  /          # パーティションに紐づくデバイスファイル
+nvme1n1       259:1    0   200G   0  disk  /var/lib
+
+# ～ 中略 ～
+```
+
+```bash
+$ df -h
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # EBSボリュームに紐づくデバイスファイル
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
+# ～ 中略 ～
+```
+
+（４）EBSボリュームのデバイスファイルのタイプを確認する。今回は```ext4```タイプである。
+
+```bash
+$ df -hT
+
+Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+/dev/xvda1     ext4    8G  1.9G    14G   12%  /           # ext4タイプ
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib
+
+# ～ 中略 ～
+```
+
+（５）今回、EBSボリューム内にパーティションがあるため、```growpart```コマンドを実行し、パーティションを拡張する。パーティションがなければ、この手順は不要である。改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されている。
+
+```bash
+$ growpart /dev/xvda 1
+```
 
 ```bash
 $ lsblk
 
 NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0  16G  0 disk            # EBSボリューム
-└─xvda1 202:1    0   8G  0 part /          # パーティション
+xvda    202:0    0  16G  0 disk            # EBSボリュームに紐づくデバイスファイル
+└─xvda1 202:1    0  16G  0 part /          # パーティションに紐づくデバイスファイル
 
 # ～ 中略 ～
 ```
 
-（４）```growpart```コマンドを実行し、パーティションを拡張する。改めて```lsblk```コマンドを実行すると、該当のパーティションが変更されたことを確認できる。
+#### ▼ ```ext4```タイプの場合
+
+（６）もし```ext4```タイプであった場合、```resize2fs ```コマンドでデバイスファイルを指定し、EC2内のデバイスファイルのサイズを拡張する。
 
 ```bash
-$ sudo growpart /dev/xvda 1
+$ sudo resize2fs <デバイスファイル名>
 ```
-
-```bash
-$ lsblk
-
-NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0  16G  0 disk            # EBSボリューム
-└─xvda1 202:1    0  16G  0 part /          # パーティション
-
-# ～ 中略 ～
-```
-
-（５）ファイルシステムのうち、```/dev/xvda1```ファイルがEBSボリュームに紐づいている。```resize2fs ```コマンドを実行し、これのサイズを変更する。改めて```df```コマンドを実行すると、該当のファイルシステムが変更されたことを確認できる。
 
 ```bash
 $ sudo resize2fs /dev/xvda1
 ```
 
+（７）改めて```df```コマンドを実行すると、該当のデバイスファイルのサイズが変更されたことを確認できる。
+
 ```bash
-$ df
+$ df -hT
 
 Filesystem  Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1  ext4   16G  1.9G    14G   12%  /           # EBSボリュームに紐づくファイルシステム
+/dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # EBSボリュームに紐づくファイルシステム
+
+# ～ 中略 ～
+```
+
+#### ▼ ```xsf```タイプの場合
+
+（６）もし```xsf```タイプであった場合、```xfs_growfs```コマンドでマウントポイントを指定し、EC2内のデバイスファイルのサイズを拡張する。もし、```xfs_growfs```コマンドがない場合は、インストールする。
+
+```bash
+$ xfs_growfs -d <マウントポイント名>
+
+# もし、xfs_growfsコマンドがない場合は、インストールする。
+# yum install xfsprogs
+```
+
+```bash
+$ xfs_growfs -d /var/lib
+```
+
+（７）改めて```df```コマンドを実行すると、該当のデバイスファイルのサイズが変更されたことを確認できる。
+
+```bash
+$ df -hT
+
+Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # EBSボリュームに紐づくファイルシステム
 
 # ～ 中略 ～
 ```

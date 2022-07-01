@@ -18,33 +18,97 @@ description: Prometheus＠テレメトリー収集ツールの知見をまとめ
 
 ### アーキテクチャ
 
-Prometheusは、Retrieval、TSDB、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを生成し、Alertmanagerに送信する。
+Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを生成し、Alertmanagerに送信する。
 
 参考：
 
+- https://danielfm.me/prometheus-for-developers/
 - https://prometheus.io/docs/introduction/overview/
 - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 
-![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
+![prometheus_architecture](/Users/hiroki-hasegawa/Downloads/prometheus_architecture.png)
 
 <br>
 
-### Prometheus server
+## 01-02. Prometheus server
 
-#### ▼ Prometheus serverとは
+### Prometheus serverとは
 
 メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、またGrafanaのPromQLによるアクセスを待ち受ける。
 
 参考：https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 
+<br>
+
+### Retrieval
+
+#### ▼ Retrievalとは
+
+定義されたPromQLのルールに基づいて、監視対象のデータポイントを定期的に収集する。
+
+#### ▼ Retrievalのルール
+
+ルールの種類によって、収集後の処理が異なる。
+
+参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+
+| ルール名             | 説明                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| アラートルール       | 収集されたデータポイントがアラート条件に合致する場合、アラートを生成し、Alertmanagerにこれを送信する。 |
+| レコーディングルール | 収集されたデータポイントをローカルストレージに保管する。     |
+
+#### ▼ 設定ファイル
+
+設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なり、例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
+
+参考：
+
+- https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+- https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+
+````bash
+$ ls -1 /etc/prometheus
+
+certs/
+console_libraries/
+consoles/
+prometheus.yml # グローバルの設定ファイル
+rules/         # ルールの設定ファイル
+
+
+$ ls -1 /etc/prometheus/rules/prometheus-prometheus-kube-prometheus-prometheus-rulefiles-0
+
+prometheus-eks-worker-rule.yaml
+prometheus-prometheus-kube-prometheus-alertmanager.rules.yaml
+prometheus-prometheus-kube-prometheus-general.rules.yaml
+
+# 〜 中略 〜
+
+prometheus-prometheus-kube-prometheus-node.rules.yaml
+prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
+prometheus-prometheus-kube-prometheus-prometheus.yaml
+````
+
+<br>
+
+### HTTP server
+
+#### ▼ HTTP serverとは
+
+メトリクスを参照するためのエンドポイントを公開する。PromQLをリクエストとして受信し、ローカルストレージからデータを返却する。
+
+<br>
+
+### ローカルストレージ
+
 #### ▼ ローカルストレージ
 
-Prometheusは、ローカルの時系列データベースに、収集した全てのメトリクスを保管する。Prometheusは、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
+Prometheusは、ローカルの時系列データベースに、収集した全てのメトリクスを保管する。また、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時に```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ブロックを復元できる。
 
 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
 ```yaml
-data/
+prometheus/
 ├── 01BKGV7JC0RY8A6MACW02A2PJD/
 │   ├── chunks/
 │   │   └── 000001
@@ -62,7 +126,7 @@ data/
         └── 00000000
 ```
 
-また、ブロックやWALはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする方法として、収集間隔を長くする、不要なデータポイントの収集をやめる、といった方法がある。
+また、時系列データベースはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする方法として、収集間隔を長くする、不要なデータポイントの収集をやめる、といった方法がある。
 
 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
@@ -81,7 +145,11 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 ```
 
-#### ▼ リモートストレージ
+<br>
+
+### リモートストレージ
+
+#### ▼ リモートストレージとは
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
@@ -102,11 +170,11 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 <br>
 
-### Alertmanager
+## 01-03. Alertmanager
 
-#### ▼ Alertmanagerとは
+### Alertmanagerとは
 
-Prometheusからアラートを受信し、特定の条件下でルーティングする。
+Prometheusのアラートを受信し、特定の条件下でルーティングする。
 
 参考：
 
@@ -118,21 +186,30 @@ Prometheusからアラートを受信し、特定の条件下でルーティン�
 
 <br>
 
-### Exporter
+## 01-04. Exporter
 
-#### ▼ Exporterとは
+### Exporterとは
 
-PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。収集したいメトリクスに合わせて、Exporterを選ぶ必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
+PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-参考：https://openstandia.jp/oss_info/prometheus
+参考：
 
-#### ▼ Exporterタイプ
+- https://openstandia.jp/oss_info/prometheus
+- https://danielfm.me/prometheus-for-developers/
+
+<br>
+
+### Exporterタイプ
+
+#### ▼ Exporterタイプの種類
 
 | タイプ       | 設置方法                                          |
 | ------------ | ------------------------------------------------- |
 | DaemonSet型  | 各ワーカーNode内に、1つずつ設置する。             |
 | Deployment型 | 各ワーカーNode内のDeploymentに、1つずつ設置する。 |
 | Sidecar型    | 各ワーカーNode内のPodに、1つずつ設置する。        |
+
+#### ▼ Exporterの具体例
 
 **＊例＊**
 
