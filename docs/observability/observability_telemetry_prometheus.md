@@ -26,7 +26,7 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 - https://prometheus.io/docs/introduction/overview/
 - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 
-![prometheus_architecture](/Users/hiroki-hasegawa/Downloads/prometheus_architecture.png)
+![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
 <br>
 
