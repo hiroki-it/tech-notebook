@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Authenticate（認証）/Authorization（認可）＠セキュリティ
-description: Authenticate（認証）/Authorization（認可）＠セキュリティの知見をまとめました。
+title: 【IT技術の知見】Authenticate（認証）/Authorization（認可）＠セキュリティ
+description: Authenticate（認証）/Authorization（認可）＠セキュリティの知見を記録しています。
 ---
 
 # Authenticate（認証）/Authorization（認可）＠セキュリティ

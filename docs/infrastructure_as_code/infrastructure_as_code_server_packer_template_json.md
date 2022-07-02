@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】template.json＠Packer
-description: template.json＠Packerの知見をまとめました。
+title: 【IT技術の知見】template.json＠Packer
+description: template.json＠Packerの知見を記録しています。
 
 ---
 

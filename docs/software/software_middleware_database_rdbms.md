@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】RDBMS＠ミドルウェア
-description: RDBMS＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】RDBMS＠ミドルウェア
+description: RDBMS＠ミドルウェアの知見を記録しています。
 ---
 
 # RDBMS＠ミドルウェア

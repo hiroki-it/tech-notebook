@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】FluentBit＠テレメトリー収集ツール
-description: FluentBit＠テレメトリー収集ツールの知見をまとめました。
+title: 【IT技術の知見】FluentBit＠テレメトリー収集ツール
+description: FluentBit＠テレメトリー収集ツールの知見を記録しています。
 ---
 
 # FluentBit＠テレメトリー収集ツール
@@ -552,7 +552,7 @@ FluentBitは、内部的にはruby製関数を使用して正規表現を検証�
 
 参考：http://rubular.com/
 
-あるいは、Fluentdの正規表現チェッカーでも良い。
+代わりに、Fluentdの正規表現チェッカーでも良い。
 
 参考：http://fluentular.herokuapp.com/
 

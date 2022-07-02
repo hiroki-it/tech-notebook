@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】SRE：Site Reliability Engineering
-description: SRE：Site Reliability Engineeringの知見をまとめました。
+title: 【IT技術の知見】SRE：Site Reliability Engineering
+description: SRE：Site Reliability Engineeringの知見を記録しています。
 ---
 
 # SRE：Site Reliability Engineering

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】config.yml@CircleCI
-description: config.yml@CircleCIの知見をまとめました。
+title: 【IT技術の知見】config.yml@CircleCI
+description: config.yml@CircleCIの知見を記録しています。
 ---
 
 # config.yml@CircleCI

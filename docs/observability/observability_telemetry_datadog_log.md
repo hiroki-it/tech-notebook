@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】ログ収集＠Datadog
-description: ログ収集＠Datadogの知見をまとめました。
+title: 【IT技術の知見】ログ収集＠Datadog
+description: ログ収集＠Datadogの知見を記録しています。
 ---
 
 # ログ収集＠Datadog

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】FluentBit vs. Fluentd＠テレメトリー収集ツール
-description: FluentBit vs. Fluentd＠テレメトリー収集ツールの知見をまとめました。
+title: 【IT技術の知見】FluentBit vs. Fluentd＠テレメトリー収集ツール
+description: FluentBit vs. Fluentd＠テレメトリー収集ツールの知見を記録しています。
 ---
 
 # FluentBit vs. Fluentd＠テレメトリー収集ツール

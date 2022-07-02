@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】skaffold.yaml＠Skaffold
-description: skaffold.yaml＠Skaffoldの知見をまとめました。
+title: 【IT技術の知見】skaffold.yaml＠Skaffold
+description: skaffold.yaml＠Skaffoldの知見を記録しています。
 ---
 
 # skaffold.yaml＠Skaffold

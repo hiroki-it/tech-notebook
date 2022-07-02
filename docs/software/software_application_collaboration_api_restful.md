@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】RESTful-API＠アプリケーション連携
-description: RESTful-API＠アプリケーション連携の知見をまとめました。
+title: 【IT技術の知見】RESTful-API＠アプリケーション連携
+description: RESTful-API＠アプリケーション連携の知見を記録しています。
 ---
 
 # RESTful-API＠アプリケーション連携
@@ -691,7 +691,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 }
 ```
 
-あるいは、```Content-Type```ヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用する。
+代わりに、```Content-Type```ヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用しても良い。
 
 #### ▼ 日付データの形式に気をつけること
 
@@ -909,7 +909,7 @@ session.save_path = "/tmp"
 
 ## Redis形式
 php_value[session.save_handler] = redis
-## Amazon RedisのOrigin
+## AWS RedisのOrigin
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 

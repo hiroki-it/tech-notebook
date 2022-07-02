@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コンポーネント＠FastAPI
-description: コンポーネント＠FastAPIの知見をまとめました。
+title: 【IT技術の知見】コンポーネント＠FastAPI
+description: コンポーネント＠FastAPIの知見を記録しています。
 
 ---
 

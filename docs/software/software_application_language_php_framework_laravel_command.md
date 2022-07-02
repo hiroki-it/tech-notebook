@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Laravel
-description: コマンド＠Laravelの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Laravel
+description: コマンド＠Laravelの知見を記録しています。
 ---
 
 # コマンド＠Laravel

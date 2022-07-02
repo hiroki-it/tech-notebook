@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】GitHub Actions＠DevOps
-description: GitHub Actions＠DevOpsの知見をまとめました。
+title: 【IT技術の知見】GitHub Actions＠DevOps
+description: GitHub Actions＠DevOpsの知見を記録しています。
 ---
 
 # GitHub Actions＠DevOps
@@ -277,7 +277,7 @@ runs:
 
 #### ▼ Workflowレベルとは
 
-定義された```workflow```（YAMLファイル）内でのみ参照できる。
+定義された```workflow```（```.yaml```ファイル）内でのみ参照できる。
 
 #### ▼ env
 
@@ -423,7 +423,7 @@ runs:
 
 #### ▼ 注意点
 
-注意点として、マスキングされる値と同じ文字列が使用されると、これもマスキングされる。そのため、例えば```input```キーでマスキングされた値と同じ文字列を使用してしまうと、YAMLファイルの構文解析でエラーになってしまう。
+注意点として、マスキングされる値と同じ文字列が使用されると、これもマスキングされる。そのため、例えば```input```キーでマスキングされた値と同じ文字列を使用してしまうと、```.yaml```ファイルの構文解析でエラーになってしまう。
 
 ```yaml
 jobs:
@@ -438,7 +438,7 @@ jobs:
 
 ```yaml
 inputs:
-  foo: # マスキングされ、YAMLファイルの構文解析でエラーになる
+  foo: # マスキングされ、.yamlファイルの構文解析でエラーになる
     required: true
     
 runs:

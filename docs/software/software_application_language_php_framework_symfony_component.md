@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コンポーネント＠Symfony
-description: コンポーネント＠Symfonyの知見をまとめました。
+title: 【IT技術の知見】コンポーネント＠Symfony
+description: コンポーネント＠Symfonyの知見を記録しています。
 ---
 
 # コンポーネント＠Symfony

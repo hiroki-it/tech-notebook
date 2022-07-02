@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Docker
-description: コマンド＠Dockerの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Docker
+description: コマンド＠Dockerの知見を記録しています。
 ---
 
 # コマンド＠Docker

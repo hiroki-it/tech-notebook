@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】SQLパッケージ＠PHP
-description: SQLパッケージ＠PHPの知見をまとめました。
+title: 【IT技術の知見】SQLパッケージ＠PHP
+description: SQLパッケージ＠PHPの知見を記録しています。
 ---
 
 # SQLパッケージ＠PHP

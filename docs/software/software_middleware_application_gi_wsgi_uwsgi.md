@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】uWSGI＠ミドルウェア
-description: uWSGI＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】uWSGI＠ミドルウェア
+description: uWSGI＠ミドルウェアの知見を記録しています。
 ---
 
 # uWSGI＠ミドルウェア

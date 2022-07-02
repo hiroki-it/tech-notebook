@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】メソッド/データ＠Python
-description: メソッド/データ＠Pythonの知見をまとめました。
+title: 【IT技術の知見】メソッド/データ＠Python
+description: メソッド/データ＠Pythonの知見を記録しています。
 ---
 
 # メソッド/データ＠Python

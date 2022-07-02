@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】API仕様書＠RESTful-API
-description: API仕様書＠RESTful-APIの知見をまとめました。
+title: 【IT技術の知見】API仕様書＠RESTful-API
+description: API仕様書＠RESTful-APIの知見を記録しています。
 ---
 
 # API仕様書＠RESTful-API

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】PHP
-description: PHPの知見をまとめました。
+title: 【IT技術の知見】PHP
+description: PHPの知見を記録しています。
 ---
 
 # PHP
@@ -105,7 +105,7 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 
 #### ▼ 本番/開発環境用```php.ini```ファイル
 
-PHPでは、```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）。あるいは、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
+PHPでは、```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）。代わりに、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
 
 ```bash
 $ ls -la /usr/local/etc/php

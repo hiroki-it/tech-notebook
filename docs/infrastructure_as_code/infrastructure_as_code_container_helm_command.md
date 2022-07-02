@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Helm
-description: コマンド＠Helmの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Helm
+description: コマンド＠Helmの知見を記録しています。
 ---
 
 # コマンド＠Helm
@@ -174,7 +174,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してapplyしたリリースの一覧を取得する。チャートは、バージョンによって中身のYAMLファイルに差があるため、ここでチャートのバージョンを確認すると良い。
+Helmを使用してapplyしたリリースの一覧を取得する。チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -412,7 +412,7 @@ $ helm show values <チャート名>
 
 #### ▼ templateとは
 
-Kubernetesにapplyされるリソースのmanifest.yamlファイルを出力する。YAMLファイルにリダイレクトするようにすると良い。
+Kubernetesにapplyされるリソースのmanifest.yamlファイルを出力する。```.yaml```ファイルにリダイレクトするようにすると良い。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>

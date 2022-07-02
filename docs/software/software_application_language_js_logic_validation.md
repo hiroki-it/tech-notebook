@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】検証ロジック＠JavaScript
-description: 検証ロジック＠JavaScriptをまとめました。
+title: 【IT技術の知見】検証ロジック＠JavaScript
+description: 検証ロジック＠JavaScriptを記録しています。
 ---
 
 # 検証ロジック＠JavaScript

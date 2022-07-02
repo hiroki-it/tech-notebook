@@ -29,7 +29,7 @@
 以下の方針を考えた。
 
 - （１）：aws-cli、IAMポリシー、シェルスクリプトによる自動化
-- （２）：aws-cli、Amazon STS、シェルスクリプトによる自動化
+- （２）：aws-cli、AWS STS、シェルスクリプトによる自動化
 - （３）：シェルスクリプト以外の案が思い浮かばず
 
 # 補足
@@ -48,7 +48,7 @@
 参考：
 - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupRetention
 
-## Amazon STS について
+## AWS STS について
 
 IAMユーザーに対して、一時的にロールをAssume（委譲）し、AWSリソースにアクセスできるようにするサービスのこと。
 
@@ -101,21 +101,21 @@ aws-cliコマンドのシェルスクリプトを作成する。クローンと�
 #### Consの解決方法
 
 - 専用のリポジトリを作成し、CirlcleCIコンテナ内で実行できるようにする。クレデンシャル情報を環境変数として登録できるため、シェルスクリプトが漏洩しても、社内リソースにはアクセスできない。この時、日付などの引数は環境変数としてその都度登録する。
-- AmazonSTSを使用して、動的にロールを切り替えるようにする。IAMユーザーは1つで済む。
+- AWS STSを使用して、動的にロールを切り替えるようにする。IAMユーザーは1つで済む。
 
 # 候補（２）※ 安全で実現性がある
 
-## Amazon STS、aws-cli、シェルスクリプトによる自動化
+## AWS STS、aws-cli、シェルスクリプトによる自動化
 
 ### ■ Action List
 
-Amazon STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。
+AWS STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。
 aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにアクセスできるようにする。
 シェルスクリプトで自動化する。
 
 #### アクセス
 
-Amazon STS の設定をAWSコンソール上で済ませておく。
+AWS STS の設定をAWSコンソール上で済ませておく。
 
 #### 作成/削除
 
@@ -138,7 +138,7 @@ IAMユーザーにIAMロールを委譲する処理を書いたシェルスク�
 - 専用のリポジトリを作成し、CirlcleCIコンテナ内で実行できるようにする。クレデンシャル情報を環境変数として登録できるため、シェルスクリプトが漏洩しても、社内リソースにはアクセスできない。この時、日付などの引数は環境変数としてその都度登録する。
 - もし興味がある人がいれば勉強会
 
-## AmazonSTSを使用するためのスクリプト例
+## AWS STSを使用するためのスクリプト例
 
 ```bash
 #!/bin/bash
@@ -166,7 +166,7 @@ case $ENV in
     ;;
 esac
 
-# 信頼されたエンティティのアカウント情報を設定する。
+# 信頼されたエンティティのクレデンシャル情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Vagrant
-description: コマンド＠Vagrantの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Vagrant
+description: コマンド＠Vagrantの知見を記録しています。
 ---
 
 # コマンド＠Vagrant

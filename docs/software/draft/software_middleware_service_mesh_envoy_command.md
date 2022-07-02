@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド@Envoy
-description: コマンド@Envoyの知見をまとめました。
+title: 【IT技術の知見】コマンド@Envoy
+description: コマンド@Envoyの知見を記録しています。
 ---
 
 # コマンド@Envoy

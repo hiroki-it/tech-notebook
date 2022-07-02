@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Apache
-description: コマンド＠Apacheの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Apache
+description: コマンド＠Apacheの知見を記録しています。
 ---
 
 # コマンド＠Apache

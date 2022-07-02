@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】カーネル（制御プログラム）＠基本ソフトウェア
-description: カーネル（制御プログラム）＠基本ソフトウェアの知見をまとめました。
+title: 【IT技術の知見】カーネル（制御プログラム）＠基本ソフトウェア
+description: カーネル（制御プログラム）＠基本ソフトウェアの知見を記録しています。
 ---
 
 # カーネル（制御プログラム）＠基本ソフトウェア
@@ -32,68 +32,6 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 アプリケーションから低速な周辺機器へデータを出力する時、まず、CPUはスプーラにデータを出力する。Spoolerは、全てのデータをまとめて出力するのではなく、一時的にストレージ（Spool）にためておきながら、少しずつ出力する（Spooling）。
 
 ![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スプーリング.jpg)
-
-<br>
-
-### デバイスファイル
-
-#### ▼ デバイスファイルとは
-
-カーネルが実際の入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。```/dev```ディレクトリ配下に配置されている。各ファイルには具体的な入出力装置を示す番号（メジャー番号、マイナー番号）が割り当てられている。デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
-
-参考：
-
-- https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
-- https://qiita.com/angel_p_57/items/1faafa275525469788b4
-
-**＊例＊**
-
-全てのファイルシステムを確認する。
-
-```bash
-$ ls -la /dev
-total 10
-dr-xr-xr-x   3 root        wheel              4616 Oct 19 09:34 .
-drwxr-xr-x  20 root        wheel               640 Jan  1  2020 ..
-
-# ～ 中略 ～
-
-dr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 fd
-
-# ～ 中略 ～
-
-crw-rw-rw-   1 root        wheel            3,   2 Nov 23 17:35 null
-
-# ～ 中略 ～
-
-lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stderr -> fd/2
-lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stdin -> fd/0
-lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stdout -> fd/1
-
-# ～ 中略 ～
-
-crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
-
-# ～ 中略 ～
-```
-
-#### ▼ ブロックデバイス（ブロックスペシャルファイル）
-
-ある程度のまとまりでデータを扱う入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
-
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
-
-#### ▼ キャラクターデバイス（キャラクタースペシャルファイル）
-
-一文字単位でデータを扱う入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
-
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
-
-#### ▼ 擬似デバイス
-
-デバイスファイルの中で、実際の装置に対応していないデバイスファイル。標準入出力（```/dev/stdin```、```/dev/stdout```）や破棄（```/dev/null```）などがある。
-
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
 
@@ -144,6 +82,144 @@ $ diskutil list
    5:                APFS Volume    Recovery                   622.1 MB   disk1s4
    6:                APFS Volume    VM                         3.2 GB     disk1s5
 ```
+
+<br>
+
+### デバイスファイル
+
+#### ▼ デバイスファイルとは
+
+カーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。```/dev```ディレクトリ配下に配置されている。各ファイルには具体的な入出力装置を示す番号（メジャー番号、マイナー番号）が割り当てられている。デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
+
+参考：
+
+- https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
+- https://qiita.com/angel_p_57/items/1faafa275525469788b4
+
+**＊例＊**
+
+Dockerのデバイスファイルを確認する。
+
+参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
+
+```bash
+$ ls -l /dev
+
+crw-------  acpi_thermal_rel      # cpu温度
+crw-r--r--  autofs                # 自動マウント、USBメモリ等
+drwxr-xr-x  block                 # ブロックデバイス
+drwxr-xr-x  bsg                   # SCSI ドライバー
+crw-------  btrfs-control         # BTRFSファイルシステム
+drwxr-xr-x  bus                   # USB デバイス フルアクセス
+lrwxrwxrwx  cdrom -> sr0          # CDROM
+drwxr-xr-x  char                  # Linux キャラクターデバイス
+crw-------  console               # システムコンソール
+lrwxrwxrwx  core -> /proc/kcore   # 仮想メモリファイル
+drwxr-xr-x  cpu                   # cpu
+crw-------  cpu_dma_latency       # cpu cステート制御
+crw-------  cuse                  # ユーザスペース内でのキャラクターデバイス
+drwxr-xr-x  disk                  # ディスクデバイス
+brw-rw----  dm-0                  # LVM
+drwxr-xr-x  dma_heap              # DMAアクセスバッファの共有
+drwxr-xr-x  dri                   # GPUドライバ
+crw-------  drm_dp_aux0           # ディスプレイ
+crw-------  drm_dp_aux1           # ディスプレイ
+crw-rw----  fb0                   # フレームバッファ
+lrwxrwxrwx  fd -> /proc/self/fd   # ファイルディスクリプタ
+crw-rw-rw-  full                  # full状態のデバイス(書き込みエラー)
+crw-rw-rw-  fuse                  # FUSE（Filesytem in userspace）
+crw-------  hidraw0               # USB、Bluetooth
+crw-------  hidraw1               # USB、Bluetooth
+crw-------  hpet                  # 割り込み
+drwxr-xr-x  hugepages             # メモリー・ページの拡大
+crw-------  hwrng                 # 乱数発生機
+drwxr-xr-x  input                 # インプットデバイス（マウス、キーボード）
+crw-r--r--  kmsg                  # カーネルログ
+crw-rw-rw-  kvm                   # 仮想化のkvm
+lrwxrwxrwx  log -> /run/systemd/journal/dev-log   # システムログ
+crw-rw----  loop-control          # ループデバイス
+drwxr-xr-x  mapper                # 物理ディスクのマッピング
+crw-------  mei0                  # インテルチップセット
+crw-r-----  mem                   # メモリ
+drwxrwxrwt  mqueue                # POSIX メッセージキュー
+crw-------  mtd0                  # フラッシュデバイス
+crw-------  mtd0ro                # フラッシュデバイス
+crw-------  mtd1                  # フラッシュデバイス
+crw-------  mtd1ro                # フラッシュデバイス
+drwxr-xr-x  net                   # トンネル ネットワーク
+crw-rw-rw-  null                  # nullデバイス（書き込むと消える）
+crw-------  nvram                 # BIOSフラッシュメモリ
+crw-r-----  port                  # システムメモリ
+crw-------  ppp                   # pointo-to-point protocol ネットワーク
+crw-------  psaux                 # PS2マウス、キーボード
+crw-rw-rw-  ptmx                  # 仮想端末
+crw-------  ptp0                  # 時刻同期
+drwxr-xr-x  pts                   # 仮想端末
+crw-rw-rw-  random                # 乱数生成
+crw-rw-r--+ rfkill                # ワイヤレスデバイスのON/OFF
+lrwxrwxrwx  rtc -> rtc0           # リアルタイムクロック
+crw-------  rtc0                  # リアルタイムクロック
+brw-rw----  sda                   # 物理ディスク
+brw-rw----  sda1                  # ディスクパーティション
+brw-rw----  sda2                  # ディスクパーティション
+crw-rw----  sg0                   # SCSIデバイス
+crw-rw----+ sg1                   # SCSIデバイス
+drwxrwxrwt  shm                   # 共有メモリ
+crw-------  snapshot              # hibernation用
+drwxr-xr-x  snd                   # サウンドデバイス
+brw-rw----+ sr0                   # CDROM
+lrwxrwxrwx  stderr -> /proc/self/fd/2   # エラー出力
+lrwxrwxrwx  stdin -> /proc/self/fd/0    # 標準入力
+lrwxrwxrwx  stdout -> /proc/self/fd/1   # 標準出力
+crw-------  tpm0                  # Trusted Platform Module セキュリティ
+crw-rw-rw-  tty                   # 制御端末
+...
+crw--w----  tty63                 # 制御端末
+crw-rw----  ttyS0                 # シリアルポート
+...
+crw-rw----  ttyS31                # シリアルポート
+crw-rw----  udmabuf               # DMAバッファ
+crw-------  uhid                  # USB、Bluetooth
+crw-------  uinput                # 仮想インプットデバイス
+crw-rw-rw-  urandom               # 乱数生成　ブロックなし
+drwxr-xr-x  usb                   # USB
+crw-------  userio                # User I/O
+crw-rw----  vcs                   # 仮想コンソールメモリ ttyのバッファ
+...
+crw-rw----  vcs6                  # 仮想コンソールメモリ ttyのバッファ
+crw-rw----  vcsa                  # 仮想コンソールメモリ ttyのバッファ
+...
+crw-rw----  vcsa6                 # 仮想コンソールメモリ ttyのバッファ
+crw-rw----  vcsu                  # 仮想コンソールメモリ ttyのバッファ ユニコード
+...
+crw-rw----  vcsu6                 # 仮想コンソールメモリ ttyのバッファ ユニコード
+drwxr-xr-x  vfio                  # ユーザースペースドライバーインターフェース
+crw-------  vga_arbiter           # VGAデバイス
+crw-------  vhci                  # USBリダイレクト USB over ethernet
+crw-rw----+ vhost-net             # 仮想ネットワーク
+crw-rw-rw-  vhost-vsock           # 仮想ソケット
+crw-------  watchdog              # システムリセット
+crw-------  watchdog0             # システムリセット
+crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
+```
+
+#### ▼ ブロックデバイス（ブロックスペシャルファイル）
+
+ある程度のまとまりでデータを扱う入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+
+#### ▼ キャラクターデバイス（キャラクタースペシャルファイル）
+
+一文字単位でデータを扱う入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+
+#### ▼ 擬似デバイス
+
+デバイスファイルの中で、実際の装置に対応していないデバイスファイル。標準入出力（```/dev/stdin```、```/dev/stdout```）や破棄（```/dev/null```）などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
 

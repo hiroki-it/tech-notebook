@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】PHP＠コードベースのテスト
-description: PHP＠コードベースのテストの知見をまとめました。
+title: 【IT技術の知見】PHP＠ホワイトボックステスト
+description: PHP＠ホワイトボックステストの知見を記録しています。
 ---
 
-# PHP＠コードベースのテスト
+# PHP＠ホワイトボックステスト
 
 ## はじめに
 
@@ -13,7 +13,33 @@ description: PHP＠コードベースのテストの知見をまとめました�
 
 <br>
 
-## 02-02. PHPUnitによるユニットテスト/機能テスト
+## 01. ホワイトボックステストのツール
+
+### 整形
+
+PhpStorm、PHP-CS-Fixer
+
+<br>
+
+### 静的解析
+
+PhpStorm、PHPStan、Larastan
+
+<br>
+
+### ユニットテスト/機能テスト
+
+PHPUnit
+
+<br>
+
+## 02. PHPUnit
+
+### PHPUnitとは
+
+ユニットテスト/機能テストや、ユニットテスト時のテストダブルを提供する。
+
+<br>
 
 ### コマンド
 
@@ -174,13 +200,220 @@ $this->assertSame(200, $response->getStatusCode());
 
 <br>
 
-### ユニットテスト
+### テストデータ
 
-#### ▼ ユニットテストとは
+#### ▼ Data Provider
 
-クラスのメソッドが、それ単体で仕様通りに処理が動作するかを検証する方法。検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを行う必要がある。この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下のリンクを参考にせよ。
+テスト対象のメソッドの引数を事前に用意する。メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
+参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
+
+**＊実装例＊**
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    /** 
+     * findメソッドをテストします。
+     *
+     * @test
+     * @dataProvider methodDataProvider
+     */
+    public function testFind_Bar_Baz($paramA, $paramB, $paramC)
+    {
+        // 何らかの処理 
+    }
+    
+    /** 
+     * findメソッドを引数を用意します。
+     *
+     * @return array
+     */    
+    public function methodDataProvider(): array
+    {
+        return [
+            // 配列データは複数あっても良い、
+            ["1", "2", "3"]
+        ];
+    }
+}
+```
+
+<br>
+
+### 前処理と後処理
+
+#### ▼ ```setUp```メソッド
+
+前処理として、全てのテスト関数の前にコールされるメソッドである。
+
+**＊実装例＊**
+
+DIコンテナを事前に生成する。
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    protected $container;
+    
+    // 全てのテスト関数の前に実行される。
+    protected function setUp()
+    {
+        // DIコンテナにデータを格納する。
+        $this->container["option"];
+    }
+}
+```
+
+**＊実装例＊**
+
+単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。そのため、これと同様に依存先のクラスのモックを事前に生成しておく。
+
+```php
+<?php
+    
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    protected $foo;
+    
+    protected function setUp()
+    {
+        // 基本的には、一番最初に記述する。
+        parent::setUp();
+        
+        // 事前にモックを生成しておく。
+        $this->bar = Phake::mock(Bar::class);
+    }
+    
+    public function testFoo_Xxx_Xxx()
+    {
+        // 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。
+        $foo = new Foo($this->bar)
+            
+        // 何らかのテストコード
+    }
+}
+```
+
+#### ▼ ```tearDown```メソッド
+
+後処理として、全てのテスト関数の後にコールされるメソッドである。グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。
+
+**＊実装例＊**
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{
+    protected $container;
+    
+    protected function setUp()
+    {
+        $this->container["option"];
+    }
+    
+    // 全てのテスト関数の後に実行される。
+    protected function tearDown()
+    {
+        // DIコンテナにnullを格納する。
+        $this->container = null;
+    }
+}
+```
+
+<br>
+
+### テストダブル
+
+#### ▼ ```createMock```メソッド
+
+クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを生成する。以降の処理での用途によって、呼び名が異なることに注意する。ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
+
+```php
+<?php
+    
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{   
+   /**
+    * @test
+    */    
+    public function testFoo()
+    {    
+        // モックとして使用する擬似オブジェクトを作成する。
+        $mock = $this->createMock(Foo::class);
+        
+        // null
+        $foo = $mock->find(1)
+    }
+}
+```
+
+```php
+<?php
+
+class Foo
+{
+    /**
+    * @param  int
+    * @return array
+    */   
+    public function find(int $id)
+    {
+        // 参照する処理
+    }
+}
+```
+
+#### ▼ ```method```メソッド
+
+ モックまたはスタブのメソッドに対して、処理の内容を定義する。特定の変数が渡された時に、特定の値を返却させられる。
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class FooTest extends TestCase
+{   
+   /**
+    * @test
+    */    
+    public function testFoo_Xxx_Xxx()
+    {    
+        // スタブとして使用する擬似オブジェクトを作成する。
+        $stub = $this->createMock(Foo::class);
+        
+        // スタブのメソッドに処理内容を定義する。
+        $stub->method("find")
+            ->with(1)
+            ->willReturn([]);
+        
+        // []（空配列）
+        $result = $stub->find(1)
+    }
+}
+```
+
+<br>
+
+## 02-02. テスト例
+
+### ユニットテスト例
 
 **＊実装例＊**
 
@@ -385,13 +618,11 @@ class FooNotificationTest extends TestCase
 
 <br>
 
-### 機能テスト
-
-#### ▼ 機能テストとは
-
-エンドポイントにリクエストを送信し、レスポンスが正しく返信されるかどうかを検証する方法。スタブを使用することは少ない。メソッドのアノテーションで、```@test```を宣言する必要がある。
+### 機能テスト例
 
 **＊実装例＊**
+
+メソッドのアノテーションで、```@test```を宣言する必要がある。
 
 ```php
 <?php
@@ -433,13 +664,13 @@ class FooControllerTest extends TestCase
 |              | 異常系 | リクエストのボディにて、必須パラメーターにデータが割り当てられていない場合。 | ・Controllerが```400```ステータスのレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。 |
 |              |        | リクエストのボディにて、空文字やnullが許可されたパラメーターに、空文字やnullが割り当てられている場合。 | ・Controllerが```400```ステータスのレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。 |
 |              |        | リクエストのボディにて、パラメーターのデータ型が誤っている場合。 | ・Controllerが```400```ステータスのレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。 |
-| GET          | 正常系 | リクエストにて、パラメーターにデータが割り当てられている場合。 | Controllerが```200```ステータスのレスポンスを返信すること。        |
-|              | 異常系 | リクエストのボディにて、パラメーターに参照禁止のデータが割り当てられている場合（認可の失敗）。 | Controllerが```403```ステータスのレスポンスを返信すること。        |
+| GET          | 正常系 | リクエストにて、パラメーターにデータが割り当てられている場合。 | Controllerが```200```ステータスのレスポンスを返信すること。  |
+|              | 異常系 | リクエストのボディにて、パラメーターに参照禁止のデータが割り当てられている場合（認可の失敗）。 | Controllerが```403```ステータスのレスポンスを返信すること。  |
 | DELETE       | 正常系 | リクエストのボディにて、パラメーターにデータが割り当てられている場合。 | ・Controllerが```200```ステータスのレスポンスを返信すること。<br>・削除されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。 |
 |              | 異常系 | リクエストのボディにて、パラメーターに削除禁止のデータが割り当てられている場合（認可の失敗）。 | ・Controllerが```400```ステータスのレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。 |
-| 認証/認可     | 正常系 | リクエストのヘッダーにて、認証されているトークンが割り当てられている場合（認証の成功）。 | Controllerが```200```ステータスのレスポンスを返信すること。        |
-|              | 異常系 | リクエストのヘッダーにて、認証されていないトークンが割り当てられている場合（認証の失敗）。 | Controllerが```401```ステータスのレスポンスを返信すること。        |
-|              |        | リクエストのボディにて、パラメーターにアクセス禁止のデータが割り当てられている場合（認可の失敗）。 | Controllerが```403```ステータスのレスポンスを返信すること。        |
+| 認証/認可    | 正常系 | リクエストのヘッダーにて、認証されているトークンが割り当てられている場合（認証の成功）。 | Controllerが```200```ステータスのレスポンスを返信すること。  |
+|              | 異常系 | リクエストのヘッダーにて、認証されていないトークンが割り当てられている場合（認証の失敗）。 | Controllerが```401```ステータスのレスポンスを返信すること。  |
+|              |        | リクエストのボディにて、パラメーターにアクセス禁止のデータが割り当てられている場合（認可の失敗）。 | Controllerが```403```ステータスのレスポンスを返信すること。  |
 
 #### ▼ 正常系GET
 
@@ -589,267 +820,17 @@ class FooControllerTest extends TestCase
 
 <br>
 
-### テストデータ
+## 03. Phake
 
-#### ▼ Data Provider
+### Phakeとは
 
-テスト対象のメソッドの引数を事前に用意する。メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
-
-参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
-
-**＊実装例＊**
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{
-    /** 
-     * findメソッドをテストします。
-     *
-     * @test
-     * @dataProvider methodDataProvider
-     */
-    public function testFind_Bar_Baz($paramA, $paramB, $paramC)
-    {
-        // 何らかの処理 
-    }
-    
-    /** 
-     * findメソッドを引数を用意します。
-     *
-     * @return array
-     */    
-    public function methodDataProvider(): array
-    {
-        return [
-            // 配列データは複数あっても良い、
-            ["1", "2", "3"]
-        ];
-    }
-}
-```
-
-<br>
-
-### 前処理と後処理
-
-#### ▼ ```setUp```メソッド
-
-前処理として、全てのテスト関数の前にコールされるメソッドである。
-
-**＊実装例＊**
-
-DIコンテナを事前に生成する。
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{
-    protected $container;
-    
-    // 全てのテスト関数の前に実行される。
-    protected function setUp()
-    {
-        // DIコンテナにデータを格納する。
-        $this->container["option"];
-    }
-}
-```
-
-**＊実装例＊**
-
-単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。そのため、これと同様に依存先のクラスのモックを事前に生成しておく。
-
-```php
-<?php
-    
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{
-    protected $foo;
-    
-    protected function setUp()
-    {
-        // 基本的には、一番最初に記述する。
-        parent::setUp();
-        
-        // 事前にモックを生成しておく。
-        $this->bar = Phake::mock(Bar::class);
-    }
-    
-    public function testFoo_Xxx_Xxx()
-    {
-        // 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。
-        $foo = new Foo($this->bar)
-            
-        // 何らかのテストコード
-    }
-}
-```
-
-#### ▼ ```tearDown```メソッド
-
-後処理として、全てのテスト関数の後にコールされるメソッドである。グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。
-
-**＊実装例＊**
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{
-    protected $container;
-    
-    protected function setUp()
-    {
-        $this->container["option"];
-    }
-    
-    // 全てのテスト関数の後に実行される。
-    protected function tearDown()
-    {
-        // DIコンテナにnullを格納する。
-        $this->container = null;
-    }
-}
-```
-
-<br>
-
-### 命名規則
-
-#### ▼ テストケース名
-
-Roy Osherove氏の命名規則に従って、『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する。期待される返却値の命名で『正常系テスト』か『異常系テスト』かと識別する。例えば、正常系であれば『```testFoo_Xxx_ReturnXxx```』、また異常系であれば『```testFoo_Xxx_ExceptionThrown```』や『```testFoo_Xxx_ErrorThrown```』とする。Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。
-
-参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
-
-#### ▼ アサーションの比較値
-
-アサーションで値を比較する場合、値を定数として管理した方が良い。
-
-参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
-
-<br>
-
-## 02-03. Test Double（テストダブル）
-
-### テストダブルの種類
-
-#### ▼ モックツール、スタブツール
-
-PHPUnit、Phake、Mockery、JUnit
-
-#### ▼ モック
-
-上層クラスが下層クラスを正しくコールできるかどうかを検証したい時に、上層クラス以外の部分の処理は不要であり、下層クラスの実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『モック』という。スタブとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックでは、クラスのメソッドとデータが全てダミー実装に置き換わる。もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡した時のコール回数と指定回数を比較する。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるモックについては、以下のリンクを参考にせよ。
-
-参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
-
-| ツール名 | モックのメソッドの返却値                                     | 補足                                                         |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| PHPUnit  | メソッドは、```null```を返却する。                           | 注意点として、```final```、```private```なメソッドはモック化されず、実体をそのまま引き継ぐ。また、```static```なメソッドは```BadMethodCallException```をスローするモックに置き換わる。 |
-| JUnit    | メソッドは、元のオブジェクトのメソッドの返却値の型を基に、初期値を返却する<br>（例：boolean型なら```false```） |                                                              |
-
-#### ▼ スタブ
-
-クラスのメソッドの処理を検証したい時に、検証対象外のクラスに依存している部分は、実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。モックとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックと同様にスタブでも、クラスのメソッドとデータが全てダミー実装に置き換わる。スタブには、正しい処理を実行するように引数と返却値を持つメソッドを定義し、その他の実体のある処理が正しく実行されるかを検証する。これらにより、検証対象の処理のみが実体であっても、一連の処理を実行できる。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。
-
-参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
-
-<br>
-
-### PHPUnit
-
-#### ▼ ```createMock```メソッド
-
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを生成する。以降の処理での用途によって、呼び名が異なることに注意する。ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
-
-```php
-<?php
-    
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{   
-   /**
-    * @test
-    */    
-    public function testFoo()
-    {    
-        // モックとして使用する擬似オブジェクトを作成する。
-        $mock = $this->createMock(Foo::class);
-        
-        // null
-        $foo = $mock->find(1)
-    }
-}
-```
-
-```php
-<?php
-
-class Foo
-{
-    /**
-    * @param  int
-    * @return array
-    */   
-    public function find(int $id)
-    {
-        // 参照する処理
-    }
-}
-```
-
-#### ▼ ```method```メソッド
-
- モックまたはスタブのメソッドに対して、処理の内容を定義する。特定の変数が渡された時に、特定の値を返却させられる。
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{   
-   /**
-    * @test
-    */    
-    public function testFoo_Xxx_Xxx()
-    {    
-        // スタブとして使用する擬似オブジェクトを作成する。
-        $stub = $this->createMock(Foo::class);
-        
-        // スタブのメソッドに処理内容を定義する。
-        $stub->method("find")
-            ->with(1)
-            ->willReturn([]);
-        
-        // []（空配列）
-        $result = $stub->find(1)
-    }
-}
-```
-
-<br>
-
-### Phake
-
-#### ▼ Phakeとは
-
-モックとスタブを提供するパッケージ。
+ユニットテスト時のテストダブルを提供する。
 
 参考：https://github.com/mlively/Phake#phake
+
+<br>
+
+### テストダブル
 
 #### ▼ ```mock```メソッド
 
@@ -926,153 +907,19 @@ class FooTest extends TestCase
 
 <br>
 
-## 03. ブラックテスト/ホワイトボックステスト
+## 04. PHPStan
 
-### ブラックボックステスト
+### PHPStanとは
 
-#### ▼ ブラックボックステストとは
-
-ホワイトボックステストと組み合わせてユニットテストを構成する。実装内容は気にせず、入力に対して、適切な出力が行われているかを検証する。ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
-
-参考：https://www.amazon.co.jp/dp/477415377X
-
-![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
+静的解析を実行する。
 
 <br>
-
-### ホワイトボックステスト
-
-#### ▼ ホワイトボックステストとは
-
-![p492-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-2.jpg)
-
-ブラックボックステストと組み合わせてユニットテストを構成する。実装内容が適切かを確認しながら、入力に対して、適切な出力が行われているかを検証する。網羅条件がいくつかあり、求められるソフトウェア品質に応じたものを採用する。ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
-
-参考：https://www.amazon.co.jp/dp/477415377X
-
-**＊実装例＊**
-
-```php
-if (A = 1 && B = 1) {
-  return X;
-}
-```
-
-#### ▼ C０：Statement Coverage（命令網羅）
-
-![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-1.png)
-
-全ての命令が実行されるかを検証する。
-
-参考：https://www.amazon.co.jp/dp/4297124513
-
-**＊例＊**
-
-AとBは、『1』または『0』になり得るとする。
-
-| 条件         | 処理実行の有無                    |
-| ------------ | --------------------------------- |
-| A = 1、B = 1 | ```return X``` が実行されること。 |
-
-#### ▼ C１：Decision Coverage（判定条件網羅/分岐網羅）
-
-![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
-
-全ての判定が実行されるかを検証する。
-
-参考：https://www.amazon.co.jp/dp/4297124513
-
-**＊例＊**
-
-AとBは、『1』または『0』になり得るとする。
-
-| 条件         | 処理実行の有無                      |
-| ------------ | ----------------------------------- |
-| A = 1、B = 1 | ```return X``` が実行されること。   |
-| A = 1、B = 0 | ```return X``` が実行されないこと。 |
-
-#### ▼ C２：Condition Coverage（条件網羅）
-
-![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
-
-各条件が、取り得る全ての値で実行されるかを検証する。
-
-参考：https://www.amazon.co.jp/dp/4297124513
-
-**＊例＊**
-
-AとBは、『1』または『0』になり得るとする。
-
-| 条件         | 処理実行の有無                      |
-| ------------ | ----------------------------------- |
-| A = 1、B = 0 | ```return X``` が実行されないこと。 |
-| A = 0、B = 1 | ```return X``` が実行されないこと。 |
-
-または、次の組み合わせでも良い。
-
-| 条件         | 処理実行の有無                      |
-| ------------ | ----------------------------------- |
-| A = 1、B = 1 | ```return X``` が実行されること。   |
-| A = 0、B = 0 | ```return X``` が実行されないこと。 |
-
-#### ▼ MCC：Multiple Condition Coverage（複数条件網羅）
-
-![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
-
-各条件が、取り得る全ての値で、かつ全ての組み合わせが実行されるかを検証する。一般的に、複数条件網羅を採用すれば、最低限のソフトウェア品質を担保できていると言える。
-
-参考：https://www.amazon.co.jp/dp/4297124513
-
-**＊例＊**
-
-AとBは、『1』または『0』になり得るとする。
-
-| 条件         | 処理実行の有無                      |
-| ------------ | ----------------------------------- |
-| A = 1、B = 1 | ```return X``` が実行されること。   |
-| A = 1、B = 0 | ```return X``` が実行されないこと。 |
-| A = 0、B = 1 | ```return X``` が実行されないこと。 |
-| A = 0、B = 0 | ```return X``` が実行されないこと。 |
-
-<br>
-
-### ホワイトボックステストの指標
-
-#### ▼ 網羅率
-
-採用した網羅で考えられる全ての条件のうち、テストで検証できている割合のこと。 網羅率はテストスイートやパッケージを単位として解析され、これは言語別に異なる。Goで命令網羅の網羅率を検出するユニットテストについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_command.html
-
-PHPUnitで網羅率を解析する方法については、以下のリンクを参考にせよ。
-
-参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
-
-#### ▼ 循環的複雑度
-
-コードの複雑さの程度のこと。おおよそ判定条件網羅の経路数の程度である。
-
-参考：
-
-- https://jp.mathworks.com/discovery/cyclomatic-complexity.html
-- https://szk-takanori.hatenablog.com/entry/20111219/p1
-
-| 循環的複雑度 | 複雑さの状態         | バグ混入率 |
-| ------------ |----------------| ---------- |
-| ```10```以下 | 非常に良い          | ```25```%  |
-| ```30```以上 | 構造的なリスクあり      | ```40```%  |
-| ```50```以上 | テストできない        | ```70```%  |
-| ```75```以上 | 変更によって誤修正が生じる。 | ```98```%  |
-
-<br>
-
-## 04. PHPStanによる静的解析
 
 ### コマンド
 
 #### ▼ オプション無し
 
-全てのファイルを対象として、静的解析を行う。
+全てのファイルを対象として、静的解析を行う
 
 ```bash
 $ vendor/bin/phpstan analyse

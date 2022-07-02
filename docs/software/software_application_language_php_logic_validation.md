@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】検証ロジック＠PHP
-description: 検証ロジック＠PHPの知見をまとめました。
+title: 【IT技術の知見】検証ロジック＠PHP
+description: 検証ロジック＠PHPの知見を記録しています。
 ---
 
 # 検証ロジック＠PHP

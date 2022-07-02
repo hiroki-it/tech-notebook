@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】 設定ファイル＠Ansible
-description: 設定ファイル＠Ansibleの知見をまとめました。
+title: 【IT技術の知見】 設定ファイル＠Ansible
+description: 設定ファイル＠Ansibleの知見を記録しています。
 ---
 
 # 設定ファイル＠Ansible

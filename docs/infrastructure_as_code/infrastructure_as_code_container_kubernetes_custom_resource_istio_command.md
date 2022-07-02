@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Istio
-description: コマンド＠Istioの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Istio
+description: コマンド＠Istioの知見を記録しています。
 ---
 
 # コマンド＠Istio

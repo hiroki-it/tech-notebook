@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Linux系＠ミドルウェア
-description: Linux系＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】Linux系＠ミドルウェア
+description: Linux系＠ミドルウェアの知見を記録しています。
 ---
 
 # Linux系＠ミドルウェア

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Skaffold
-description: コマンド＠Skaffoldの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Skaffold
+description: コマンド＠Skaffoldの知見を記録しています。
 ---
 
 # コマンド＠Skaffold

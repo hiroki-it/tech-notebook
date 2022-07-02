@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
+title: 【IT技術の知見】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見を記録しています。
 ---
 
 # AWS：Amazon Web Service（S〜U）
@@ -123,7 +123,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ CloudFrontのアクセスログの保存を許可
 
-2020-10-08時点の仕様では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保存できない。よって、危険ではあるが、パブリックアクセスを有効化する必要がある。
+執筆時点（2020/10/08）では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保存できない。よって、危険ではあるが、パブリックアクセスを有効化する必要がある。
 
 ```bash
 // ポリシーは不要
@@ -522,9 +522,15 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 ### STSとは
 
-AWSリソースに一時的にアクセスできる認証情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。この認証情報は、一時的なアカウント情報として使用できる。
+AWSリソースに一時的にアクセスできるクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。このクレデンシャル情報は、一時的なクレデンシャル情報として使用できる。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
+
+STSへのリクエストの結果、ロールがアタッチされた新しいクレデンシャル情報を取得できる。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+
+参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
+
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 <br>
 
@@ -554,9 +560,9 @@ AWSリソースに一時的にアクセスできる認証情報（アクセス�
 }
 ```
 
-#### 2. ロールを引き受けたアカウント情報をリクエスト
+#### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティ（ユーザー）から、STS（```https://sts.amazonaws.com```）に対して、ロールのアタッチをリクエストする。
+信頼されたエンティティ（ユーザー）から、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールのアタッチをリクエストする。
 
 ```bash
 #!/bin/bash
@@ -590,7 +596,7 @@ case $ENV in
     ;;
 esac
 
-# 信頼されたエンティティのアカウント情報を設定する。
+# 信頼されたエンティティのクレデンシャル情報を設定する。
 aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
@@ -605,30 +611,43 @@ aws_sts_credentials="$(aws sts assume-role \
   --output "json")"
 ```
 
-STSへのリクエストの結果、ロールがアタッチされた新しいIAMユーザー情報を取得できる。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+#### 3. 返信されたレスポンスからクレデンシャル情報を取得
 
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
+STSのエンドポイントから一時的なクレデンシャル情報が発行される。また同時に、このクレデンシャル情報は、```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。
 
-レスポンスされるデータは以下の通り。
+参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
+# レスポンスデータ
+# ~/.aws/cli/cacheディレクトリ配下にも保存される。
 {
+  "Credentials": {
+    "AccessKeyId": "<アクセスキーID>" # 必要になる値
+    "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
+    "SessionToken": "<セッショントークン文字列>", # 必要になる値
+    "Expiration": "<セッションの期限>",
+  },
   "AssumeRoleUser": {
     "AssumedRoleId": "<セッションID>:<セッション名>",
-    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>"
+    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>" # 一時的なIAMユーザー
   },
-  "Credentials": {
-    "SecretAccessKey": "<シークレットアクセスキー>",
-    "SessionToken": "<セッショントークン文字列>",
-    "Expiration": "<セッションの期限>",
-    "AccessKeyId": "<アクセスキーID>"
+  "ResponseMetadata": {
+    "RequestId": "*****",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "*****",
+      "content-type": "text/xml",
+      "content-length": "1472",
+      "date": "Fri, 01 Jul 2022 13:00:00 GMT"
+    },
+    "RetryAttempts": 0
   }
 }
 ```
 
-#### 3-1. アカウント情報を取得（１）
+#### 4. クレデンシャル情報を取得（１）
 
-jqを使用して、レスポンスされたJSONデータからアカウント情報を抽出する。環境変数として出力し、使用できるようにする。あるいは、AWSの```credentials```ファイルを作成しても良い。
+レスポンスされたデータからクレデンシャル情報を抽出する。この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。代わりに、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。クレデンシャル情報を環境変数として出力し、使用できるようにする。
 
 参考：https://stedolan.github.io/jq/
 
@@ -645,9 +664,7 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-#### 3-2. アカウント情報を取得（２）
-
-jqを使用して、レスポンスされたJSONデータからアカウント情報を抽出する。ロールを引き受けた新しいアカウントの情報を、```credentials```ファイルに書き込む。
+環境変数に登録する代わりに、AWSの```credentials```ファイルを作成しても良い。
 
 ```bash
 #!/bin/bash
@@ -662,9 +679,9 @@ EOF
 echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") >> ~/.aws/credentials
 ```
 
-#### 4. 接続確認
+#### 5. 接続確認
 
-ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるかを確認する。アカウント情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
+ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるかを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
 
 ```bash
 #!/bin/bash

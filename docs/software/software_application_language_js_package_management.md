@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】パッケージ＠JavaScript
+title: 【IT技術の知見】パッケージ＠JavaScript
 ---
 
 # パッケージ管理＠JavaScript

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Docker compose
-description: コマンド＠Docker composeの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Docker compose
+description: コマンド＠Docker composeの知見を記録しています。
 ---
 
 # コマンド＠Docker compose

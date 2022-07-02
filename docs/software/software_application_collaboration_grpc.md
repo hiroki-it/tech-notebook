@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】gRPC＠アプリケーション連携
-description: gRPC＠アプリケーション連携の知見をまとめました。
+title: 【IT技術の知見】gRPC＠アプリケーション連携
+description: gRPC＠アプリケーション連携の知見を記録しています。
 ---
 
 # gRPC＠アプリケーション連携

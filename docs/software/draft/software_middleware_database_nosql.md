@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】NoSQL＠ミドルウェア
-description: NoSQL＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】NoSQL＠ミドルウェア
+description: NoSQL＠ミドルウェアの知見を記録しています。
 
 ---
 

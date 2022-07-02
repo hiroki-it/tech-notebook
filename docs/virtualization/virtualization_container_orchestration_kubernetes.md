@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Kubernetes＠仮想化
-description: Kubernetes＠仮想化の知見をまとめました。
+title: 【IT技術の知見】Kubernetes＠仮想化
+description: Kubernetes＠仮想化の知見を記録しています。
 ---
 
 # Kubernetes＠仮想化

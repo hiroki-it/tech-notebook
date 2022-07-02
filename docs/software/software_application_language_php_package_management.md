@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】パッケージ管理＠PHP
-description: パッケージ管理＠PHPの知見をまとめました。
+title: 【IT技術の知見】パッケージ管理＠PHP
+description: パッケージ管理＠PHPの知見を記録しています。
 ---
 
 # パッケージ管理＠PHP

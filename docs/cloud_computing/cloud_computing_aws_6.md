@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
+title: 【IT技術の知見】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見を記録しています。
 
 ---
 

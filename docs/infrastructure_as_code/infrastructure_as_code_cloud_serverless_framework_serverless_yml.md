@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】serverless.yml＠Serverless Framework
-description: serverless.yml＠Serverless Frameworkの知見をまとめました。
+title: 【IT技術の知見】serverless.yml＠Serverless Framework
+description: serverless.yml＠Serverless Frameworkの知見を記録しています。
 ---
 
 # serverless.yml＠Serverless Framework
@@ -113,7 +113,7 @@ Lambda関数に紐づけて作成するEventBridgeを設定する。
 
 **＊実装例＊**
 
-イベントパターンとして、JSONファイルを読み込む
+イベントパターンとして、```.json```ファイルを読み込む
 
 ```yaml
 functions:
@@ -380,7 +380,7 @@ IAMロールを作成する。
 
 **＊実装例＊**
 
-IAMロールに紐づけるIAMポリシーは、JSONファイルで切り分けておいた方が良い。
+IAMロールに紐づけるIAMポリシーは、```.json```ファイルで切り分けておいた方が良い。
 
 ```yaml
 resources:

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】チャート＠Helm
-description: チャート＠Helmの知見をまとめました。
+title: 【IT技術の知見】チャート＠Helm
+description: チャート＠Helmの知見を記録しています。
 ---
 
 # チャート＠Helm
@@ -270,7 +270,7 @@ define関数で定義した文字列を加工して出力する。加工内容�
 
 #### ▼ rangeとは
 
-YAMLファイルの同じ階層にあるキーとその値を格納し、foreachのように出力する。ただし、```values```ファイルからキーと値の両方を出力する場合は、```range```関数を使用するとロジックが増えて可読性が低くなるため、使用しない方が良い。
+同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreachのように出力する。ただし、```values```ファイルからキーと値の両方を出力する場合は、```range```関数を使用するとロジックが増えて可読性が低くなるため、使用しない方が良い。
 
 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -403,7 +403,7 @@ metadata:
 ```
 
 ```yaml
-# YAMLファイル
+# .yamlファイル
 {{- include "foo-template" . }}
 ```
 

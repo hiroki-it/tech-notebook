@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Gin
-description: Ginの知見をまとめました。
+title: 【IT技術の知見】Gin
+description: Ginの知見を記録しています。
 ---
 
 # Gin

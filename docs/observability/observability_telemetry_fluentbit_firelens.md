@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】FireLensコンテナ＠テレメトリー収集ツール
-description: FireLensコンテナ＠テレメトリー収集ツールの知見をまとめました。
+title: 【IT技術の知見】FireLensコンテナ＠テレメトリー収集ツール
+description: FireLensコンテナ＠テレメトリー収集ツールの知見を記録しています。
 ---
 
 # FireLensコンテナ＠テレメトリー収集ツール

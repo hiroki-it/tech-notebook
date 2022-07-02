@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】GCP：Google Cloud Platform
-description: GCP：Google Cloud Platformの知見をまとめました。
+title: 【IT技術の知見】GCP：Google Cloud Platform
+description: GCP：Google Cloud Platformの知見を記録しています。
 ---
 
 # GCP：Google Cloud Platform

@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】SQL@MySQL
+title: 【IT技術の知見】SQL@MySQL
 ---
 
 # SQL@MySQL
@@ -296,12 +296,12 @@ DB名は、シングルクオーテーションで囲う必要が無い。全権
 -- 全てのDBに関する権限を付与
 GRANT ALL PRIVILEGES ON *.* TO "{ ユーザー名 }";
 
--- Amazon AuroraまたはRDSの場合はこちら
+-- AWS AuroraまたはRDSの場合はこちら
 GRANT ALL PRIVILEGES ON `%`.* TO "{ ユーザー名 }";
 ```
 
 ```sql
--- Amazon Auroraも同じく
+-- AWS Auroraも同じく
 -- 特定のDBに関する全権限を付与
 GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザー名 }";
 ```
@@ -341,7 +341,7 @@ GRANT USAGE ON *.* TO "{ ユーザー名 }";
 全権限を削除し、GRANT権限をUSAGEに戻す。
 
 ```sql
--- Amazon AuroraまたはRDSの場合
+-- AWS AuroraまたはRDSの場合
 REVOKE ALL PRIVILEGES ON `%`.*
 FROM
     "{ ユーザー名 }";

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWSプロバイダー＠Terraform
-description: AWSプロバイダー＠Terraformの知見をまとめました。
+title: 【IT技術の知見】AWSプロバイダー＠Terraform
+description: AWSプロバイダー＠Terraformの知見を記録しています。
 ---
 
 # AWSプロバイダー＠Terraform
@@ -216,7 +216,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 ### （１）OpenAPI仕様のインポートと差分認識
 
-あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメーターとし、これをインポートすることにより、APIを定義できる。YAMLファイルに変数を渡すこともできる。APIの再デプロイのトリガーとして、```redeployment```パラメーターに```body```パラメータのハッシュ値を渡すようにする。これにより、インポート元のYAMLファイルに差分があった場合、Terraformが```redeployment```パラメータの値の変化を認識できるようになり、再デプロイを実行できる。
+あらかじめ用意したOpenAPI仕様の```.yaml```ファイルを```body```オプションのパラメーターとし、これをインポートすることにより、APIを定義できる。```.yaml```ファイルに変数を渡すこともできる。APIの再デプロイのトリガーとして、```redeployment```パラメーターに```body```パラメータのハッシュ値を渡すようにする。これにより、インポート元の```.yaml```ファイルに差分があった場合、Terraformが```redeployment```パラメータの値の変化を認識できるようになり、再デプロイを実行できる。
 
 <br>
 

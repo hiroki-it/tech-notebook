@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Eloquent ORM＠Laravel
-description: Eloquent ORM＠Laravelの知見をまとめました。
+title: 【IT技術の知見】Eloquent ORM＠Laravel
+description: Eloquent ORM＠Laravelの知見を記録しています。
 ---
 
 # Eloquent ORM＠Laravel

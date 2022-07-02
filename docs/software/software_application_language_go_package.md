@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】パッケージ@Go
+title: 【IT技術の知見】パッケージ@Go
 ---
 
 # パッケージ@Go
@@ -467,7 +467,7 @@ db.Save(&user)
 
 モック、スタブ、アサーションメソッドを提供するパッケージ。Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。モックとスタブについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 <br>
 
@@ -551,7 +551,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 テスト関数を実行する直前に、前処理を実行する。モックの生成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
 

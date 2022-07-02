@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】デバッグの豆知識＠JavaScript
-description: デバッグの豆知識＠JavaScriptをまとめました。
+title: 【IT技術の知見】デバッグの豆知識＠JavaScript
+description: デバッグの豆知識＠JavaScriptを記録しています。
 ---
 
 # デバッグの豆知識＠JavaScript

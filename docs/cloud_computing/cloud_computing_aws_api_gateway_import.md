@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】API Gatewayへのymlインポート＠AWS
-description: API Gatewayへのymlインポート＠AWSの知見をまとめました。
+title: 【IT技術の知見】API Gatewayへのymlインポート＠AWS
+description: API Gatewayへのymlインポート＠AWSの知見を記録しています。
 ---
 
 # API Gatewayへのymlインポート＠AWS
@@ -17,7 +17,7 @@ description: API Gatewayへのymlインポート＠AWSの知見をまとめま�
 
 #### ▼ 必要なキー
 
-API Gatewayのインポートに当たり、OpenAPIのYAMLファイルにキーを新たに実装する必要がある。
+API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルにキーを新たに実装する必要がある。
 
 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 

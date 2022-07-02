@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Nuxt.js
-description: Nuxt.jsの知見をまとめました。
+title: 【IT技術の知見】Nuxt.js
+description: Nuxt.jsの知見を記録しています。
 ---
 
 # Nuxt.js

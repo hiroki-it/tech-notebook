@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】監視＠Datadog
-description:  監視＠Datadogの知見をまとめました。
+title: 【IT技術の知見】監視＠Datadog
+description:  監視＠Datadogの知見を記録しています。
 ---
 
 # 監視＠Datadog

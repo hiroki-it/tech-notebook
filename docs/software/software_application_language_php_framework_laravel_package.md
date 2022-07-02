@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】専用パッケージ＠Laravel
-description: 専用パッケージ＠Laravelの知見をまとめました。
+title: 【IT技術の知見】専用パッケージ＠Laravel
+description: 専用パッケージ＠Laravelの知見を記録しています。
 ---
 
 # 専用パッケージ＠Laravel

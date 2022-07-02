@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Istio＠仮想化
-description: Istio＠仮想化の知見をまとめました。
+title: 【IT技術の知見】Istio＠仮想化
+description: Istio＠仮想化の知見を記録しています。
 ---
 
 # Istio＠仮想化

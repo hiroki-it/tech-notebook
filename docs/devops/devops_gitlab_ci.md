@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】GitLab CI＠DevOps
-description: GitLab CI＠DevOpsの知見をまとめました。
+title: 【IT技術の知見】GitLab CI＠DevOps
+description: GitLab CI＠DevOpsの知見を記録しています。
 
 ---
 

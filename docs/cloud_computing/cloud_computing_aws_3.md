@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
+title: 【IT技術の知見】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見を記録しています。
 ---
 
 # AWS：Amazon Web Service（F〜K）
@@ -446,7 +446,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 |----------|-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | レコードの変換  | バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。                                                                 | Lambdaを使用する。<br>参考：https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html                                                         |
 | 転送先      | 転送先とするS3バケットを設定する。                                                                                          |                                                                                                                                                           |
-| ディレクトリ名  | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、2021/11/09現在はUTCのみ設定できる。            | もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
+| ディレクトリ名  | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、執筆時点（2021/11/09）では、UTCのみ設定できる。      | もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
 | バッファー    | Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限サイズを設定できる。 | 参考：https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency                                                                     |
 | ファイル形式   | 転送時のファイル形式を設定できる。                                                                                           | ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い。                                                                            |
 | バックアップ   | 収集したデータを加工する場合、加工前データを保管しておく。                                                                               |                                                                                                                                                           |

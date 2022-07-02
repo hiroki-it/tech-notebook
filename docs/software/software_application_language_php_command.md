@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド@PHP
-description: コマンド@PHPの知見をまとめました。
+title: 【IT技術の知見】コマンド@PHP
+description: コマンド@PHPの知見を記録しています。
 ---
 
 # コマンド@PHP

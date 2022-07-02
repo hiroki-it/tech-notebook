@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】設計ポリシー＠Kubernetes
-description: 設計ポリシー＠Kubernetesの知見をまとめました。
+title: 【IT技術の知見】設計ポリシー＠Kubernetes
+description: 設計ポリシー＠Kubernetesの知見を記録しています。
 ---
 
 # 設計ポリシー＠Kubernetes
@@ -211,7 +211,7 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 #### ▼ 拡張子
 
-Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、YAMLファイルの拡張子を```yml```ではなく```.yaml```でしている。そこで、Kubernetesや関連技術（Istio、Helm、Skaffold、Envoy、など）のYAMLファイルの拡張子を```.yaml```で統一する。
+Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、```.yaml```ファイルの拡張子を```yml```ではなく```.yaml```でしている。そこで、Kubernetesや関連技術（Istio、Helm、Skaffold、Envoy、など）の```.yaml```ファイルの拡張子を```.yaml```で統一する。
 
 <br>
 

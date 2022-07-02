@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】manifest.yaml＠ArgoCD
-description: manifest.yaml＠ArgoCDの知見をまとめました。
+title: 【IT技術の知見】manifest.yaml＠ArgoCD
+description: manifest.yaml＠ArgoCDの知見を記録しています。
 
 ---
 

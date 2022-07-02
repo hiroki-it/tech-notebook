@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】SQLAlchemy ORM＠FastAPI
-description: SQLAlchemy ORM＠FastAPIの知見をまとめました。
+title: 【IT技術の知見】SQLAlchemy ORM＠FastAPI
+description: SQLAlchemy ORM＠FastAPIの知見を記録しています。
 ---
 
 # SQLAlchemy ORM＠FastAPI

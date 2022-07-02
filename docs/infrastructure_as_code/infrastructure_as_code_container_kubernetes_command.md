@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Kubernetes
-description: コマンド＠Kubernetesの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Kubernetes
+description: コマンド＠Kubernetesの知見を記録しています。
 ---
 
 # コマンド＠Kubernetes

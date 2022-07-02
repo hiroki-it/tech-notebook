@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Docker＠仮想化
-description: Docker＠仮想化の知見をまとめました。
+title: 【IT技術の知見】Docker＠仮想化
+description: Docker＠仮想化の知見を記録しています。
 ---
 
 # Docker＠仮想化

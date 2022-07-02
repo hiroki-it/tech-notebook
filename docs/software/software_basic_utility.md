@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】ユーティリティ（サービスプログラム）＠基本ソフトウェア
-description: ユーティリティ（サービスプログラム）＠基本ソフトウェアの知見をまとめました。
+title: 【IT技術の知見】ユーティリティ（サービスプログラム）＠基本ソフトウェア
+description: ユーティリティ（サービスプログラム）＠基本ソフトウェアの知見を記録しています。
 ---
 
 # ユーティリティ（サービスプログラム）＠基本ソフトウェア
@@ -710,6 +710,12 @@ $ find ./* -name "*dir" -type d
 $ find ./* -name "*.conf" -type f | xargs grep "<検索文字>"
 ```
 
+指定した拡張子のファイルを全て削除する。
+
+```bash
+$ find ./* -name "*.txt" -type f | xargs rm -rf
+```
+
 <br>
 
 ### free
@@ -762,9 +768,38 @@ $ cat foo.txt | grep -i bar
 
 #### ▼ growpartとは
 
-パーティションを拡張する。
+指定したデバイスファイルに紐づくパーティションを拡張する。
 
 参考：https://blog.denet.co.jp/try-growpart/
+
+```bash
+$ growpart <デバイスファイル名> 1
+```
+
+**＊例＊**
+
+先に、```lsblk```コマンドでパーティションを確認する。また、```df```コマンドでパーティションに紐づくデバイスファイルを確認する。
+
+```bash
+$ lsblk
+
+NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
+xvda          202:0    0    16G   0  disk             # ボリューム
+└─xvda1       202:1    0     8G   0  part  /          # パーティション
+nvme1n1       259:1    0   200G   0  disk  /var/lib
+
+$ df -h
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
+```
+
+デバイスファイルを指定し、パーティションを拡張する。
+
+```bash
+$ growpart /dev/xvda 1
+```
 
 <br>
 
@@ -829,6 +864,19 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ### ls
 
+#### ▼ -1
+
+ファイル名のみを一列で取得する。
+
+```bash
+$ ls -1
+
+foo
+bar
+baz
+qux
+```
+
 #### ▼ -l、-a
 
 隠しファイルや隠しディレクトリも含めて、全ての詳細を取得する。
@@ -853,6 +901,23 @@ $ ls -l -h
 -rw-r--r-- 1 root root 21K  Jun 19 20:18 bar
 -rw-r--r-- 1 root root 255M Jun 19 20:18 baz
 -rw-r--r-- 1 root root 167M Jun 19 20:18 qux
+```
+
+<br>
+
+### lsblk
+
+#### ▼ lsblkとは
+
+ボリュームやパーティション、これに紐づくデバイスファイルのマウントポイント、を取得する。
+
+```bash
+$ lsblk
+
+NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
+xvda          202:0    0    16G   0  disk             # ボリューム
+└─xvda1       202:1    0     8G   0  part  /          # パーティション
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ボリューム
 ```
 
 <br>

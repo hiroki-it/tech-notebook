@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Uvicorn＠ミドルウェア
-description: Uvicorn＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】Uvicorn＠ミドルウェア
+description: Uvicorn＠ミドルウェアの知見を記録しています。
 ---
 
 # Uvicorn＠ミドルウェア

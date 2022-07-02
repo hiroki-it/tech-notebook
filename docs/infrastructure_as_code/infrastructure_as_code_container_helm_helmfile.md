@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Helmfile＠Helm
-description: Helmfile＠Helmの知見をまとめました。
+title: 【IT技術の知見】Helmfile＠Helm
+description: Helmfile＠Helmの知見を記録しています。
 ---
 
 # Helmfile＠Helm

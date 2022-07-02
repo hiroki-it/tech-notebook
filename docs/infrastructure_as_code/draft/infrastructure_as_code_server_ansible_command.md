@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Ansible
-description: コマンド＠Ansibleの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Ansible
+description: コマンド＠Ansibleの知見を記録しています。
 ---
 
 # コマンド＠Ansible

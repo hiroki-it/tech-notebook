@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】プロトタイプ＠JavaScript
+title: 【IT技術の知見】プロトタイプ＠JavaScript
 ---
 
 # プロトタイプ＠JavaScript

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】envoy.yaml＠Envoy
-description: envoy.yaml＠Envoyの知見をまとめました。
+title: 【IT技術の知見】envoy.yaml＠Envoy
+description: envoy.yaml＠Envoyの知見を記録しています。
 ---
 
 # envoy.yaml＠Envoy

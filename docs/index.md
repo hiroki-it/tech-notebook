@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】目次
+title: 【IT技術の知見】目次
 ---
 
 # 目次
@@ -179,15 +179,17 @@ title: 【知見を記録するサイト】目次
 * パッケージ
     * [📖：︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_python_package_management.html)
 
-### テスト
+<br>
 
-* [📖：︎テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing.html)
-* ︎テスト仕様書ベースのテスト
-    * [📖：︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_test_specification.html)
-    * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_test_specification_jmeter.html)
-* コードベースのテスト
-    * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html)
-    * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_go.html)
+## 🧪 テスト
+
+* ホワイトボックステスト
+    * [📖：︎ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox.html)
+    * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html)
+    * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_go.html)
+* ︎ブラックボックステスト
+    * [📖：︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox.html)
+    * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_jmeter.html)
 
 <br>
 

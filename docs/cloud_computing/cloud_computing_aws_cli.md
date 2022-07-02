@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWS CLI＠AWS
-description: AWS CLI＠AWSの知見をまとめました。
+title: 【IT技術の知見】AWS CLI＠AWS
+description: AWS CLI＠AWSの知見を記録しています。
 ---
 
 # AWS CLI＠AWS
@@ -19,7 +19,7 @@ description: AWS CLI＠AWSの知見をまとめました。
 
 #### ▼ configure
 
-認証情報を設定する。OSによって、```credentials```ファイルが配置される場所が異なる。
+クレデンシャル情報を設定する。OSによって、```credentials```ファイルが配置される場所が異なる。
 
 ```bash
 $ aws configure
@@ -46,7 +46,7 @@ Default output format [None]: <アウトプット形式>
 
 #### ▼ listとは
 
-現在設定されている認証情報を取得する。
+現在設定されているクレデンシャル情報を取得する。
 
 ```bash
 $ aws configure list
@@ -58,10 +58,10 @@ $ aws configure list
 
 #### ▼ setとは
 
-認証情報の特定の項目を設定する。
+クレデンシャル情報の特定の項目を設定する。
 
 ```bash
-$ aws configure set <認証情報の項目>
+$ aws configure set <クレデンシャル情報の項目>
 ```
 
 アクセスキーIDを設定する。
@@ -90,7 +90,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 #### ▼ ```~/.aws/confidentials```ファイルとは
 
-認証情報を設定する。LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
+クレデンシャル情報を設定する。LinuxやUNIXの場合は、```$HOME/.aws/<credentialsファイル名>```に配置される。また、Windowsの場合は、```%USERPROFILE%\.aws\<credentialsファイル名>```に配置される。
 
 #### ▼ aws_access_key_id
 
@@ -196,14 +196,6 @@ source_profile = default
 $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 ```
 
-#### ▼ AWS_SECRET_ACCESS_KEY
-
-現在のターミナルで使用するシークレットアクセスキーを設定する。
-
-```bash
-$ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
-```
-
 #### ▼ AWS_DEFAULT_PROFILE
 
 現在のターミナルで使用するプロファイルを設定する。```AWS_PROFILE```変数よりも優先される。
@@ -230,6 +222,23 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 
 ```bash
 $ export AWS_PROFILE=foo-profile
+```
+
+
+#### ▼ AWS_SECRET_ACCESS_KEY
+
+現在のターミナルで使用するシークレットアクセスキーを設定する。
+
+```bash
+$ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
+```
+
+#### ▼ AWS_SESSION_TOKEN
+
+現在のターミナルで使用するセッショントークンを設定する。AWS STSで発行された一時的なクレデンシャル情報に含まれ、このクレデンシャル情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
+
+```bash
+$ export AWS_SESSION_TOKEN=<セッショントークン>
 ```
 
 <br>
@@ -329,7 +338,7 @@ $ aws s3 ls s3://<バケット名> \
 指定したバケット内のファイルを他のバケットにコピーする。
 
 ```bash
-$ aws s3 sync s3://<コピー元S3バケット名>/<フォルダ> s3://<コピー先S3バケット名>/<フォルダ> \
+$ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://<コピー先S3バケット名>/<ディレクトリ名> \
    --acl bucket-owner-full-control
 ```
 
@@ -417,7 +426,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 #### ▼ saml2aws
 
-外部Webサイト（Google Apps、AzureAD、KeyCloak、など）の認証情報を使用して、AWSにログインする。MFAを使用している場合は、ワンタイムコードの入力が要求される。
+外部Webサイト（Google Apps、AzureAD、KeyCloak、など）のクレデンシャル情報を使用して、AWSにログインする。MFAを使用している場合は、ワンタイムコードの入力が要求される。
 
 参考：https://github.com/Versent/saml2aws
 

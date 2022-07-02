@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Python
-description: Pythonの知見をまとめました。
+title: 【IT技術の知見】Python
+description: Pythonの知見を記録しています。
 ---
 
 # Python

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】インテグレーション＠Datadog
-description: インテグレーション＠Datadogの知見をまとめました。
+title: 【IT技術の知見】インテグレーション＠Datadog
+description: インテグレーション＠Datadogの知見を記録しています。
 ---
 
 # インテグレーション＠Datadog
@@ -64,7 +64,7 @@ AWSリソースで生成されたメトリクス/ログ/分散トレースをDat
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
-（２）CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール（```DatadogIntegrationRole```）には、DatadogのIAMユーザー（```464622532012```）に委譲できるように、Amazon STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
+（２）CloudFormationを実行し、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを作成する。このIAMロール（```DatadogIntegrationRole```）には、DatadogのIAMユーザー（```464622532012```）に委譲できるように、AWS STSの設定がなされている。Datadogの設定画面にアカウントIDとロール名を入力することにより、設定画完了する。
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Prometheus＠テレメトリー収集ツール
-description: Prometheus＠テレメトリー収集ツールの知見をまとめました。
+title: 【IT技術の知見】Prometheus＠テレメトリー収集ツール
+description: Prometheus＠テレメトリー収集ツールの知見を記録しています。
 
 ---
 

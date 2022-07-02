@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】設計ポリシー＠Docker
-description: 設計ポリシー＠Dockerの知見をまとめました。
+title: 【IT技術の知見】設計ポリシー＠Docker
+description: 設計ポリシー＠Dockerの知見を記録しています。
 ---
 
 # 設計ポリシー＠Docker

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Orbs＠CircleCI
-description: Orbs＠CircleCIの知見をまとめました。
+title: 【IT技術の知見】Orbs＠CircleCI
+description: Orbs＠CircleCIの知見を記録しています。
 ---
 
 # Orbs＠CircleCI
@@ -413,11 +413,11 @@ jobs:
     application-name: $SERVICE}
     # appspecファイルを保存するバケット名
     bundle-bucket: "${SERVICE}-bucket"
-    # appspecファイルのあるフォルダー
+    # appspecファイルのあるディレクトリ
     bundle-source: ./infra/aws_codedeploy
-    # appspecファイルをzipフォルダーで保存
+    # appspecファイルをzipファイルで保存
     bundle-type: zip
-    # zipフォルダー名
+    # zipファイル名
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"

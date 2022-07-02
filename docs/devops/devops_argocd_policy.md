@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】設計ポリシー＠ArgoCD
-description: 設計ポリシー＠ArgoCDの知見をまとめました。
+title: 【IT技術の知見】設計ポリシー＠ArgoCD
+description: 設計ポリシー＠ArgoCDの知見を記録しています。
 ---
 
 # 設計ポリシー＠ArgoCD

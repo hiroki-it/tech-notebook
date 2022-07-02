@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】認証/認可系パッケージ＠Laravel
-description: 認証/認可系パッケージ＠Laravelの知見をまとめました。
+title: 【IT技術の知見】認証/認可系パッケージ＠Laravel
+description: 認証/認可系パッケージ＠Laravelの知見を記録しています。
 ---
 
 # 認証/認可系パッケージ＠Laravel
@@ -629,7 +629,7 @@ Client secret: *****
 | ```1``` | ```NULL``` | ```Laravel Personal Access Client``` | ```*****``` | ...  |
 | ```2``` | ```NULL``` | ```Laravel Password Grant Client```  | ```*****``` | ...  |
 
-あるいは、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。
+代わりに、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。
 
 ```bash
 # oauthキーを生成

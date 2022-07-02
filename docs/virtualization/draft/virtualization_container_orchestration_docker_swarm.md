@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Docker Swarm＠仮想化
-description: Docker Swarm＠仮想化の知見をまとめました。
+title: 【IT技術の知見】Docker Swarm＠仮想化
+description: Docker Swarm＠仮想化の知見を記録しています。
 ---
 
 # Docker Swarm＠仮想化

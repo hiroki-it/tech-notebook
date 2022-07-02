@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】ロジック＠Terraform
-description: ロジック＠Terraformの知見をまとめました。
+title: 【IT技術の知見】ロジック＠Terraform
+description: ロジック＠Terraformの知見を記録しています。
 ---
 
 # tfファイル＠Terraform
@@ -131,7 +131,7 @@ terraform {
 
 #### ▼ backend
 
-インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
+インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -295,7 +295,7 @@ resource "aws_acm_certificate" "example" {
 
 <br>
 
-### アカウント情報の設定方法
+### クレデンシャル情報の設定方法
 
 #### ▼ ハードコーディングによる設定
 
@@ -336,7 +336,7 @@ provider "aws" {
 
 #### ▼ credentialsファイルによる設定
 
-AWSアカウント情報は、```~/.aws/credentials```ファイルに記載されている。
+クレデンシャル情報は、```~/.aws/credentials```ファイルに記載されている。
 
 ```
 # 標準プロファイル
@@ -350,7 +350,7 @@ aws_access_key_id=*****
 aws_secret_access_key=*****
 ```
 
-credentialsファイルを読み出し、プロファイル名を設定することにより、アカウント情報を参照できる。
+credentialsファイルを読み出し、プロファイル名を設定することにより、クレデンシャル情報を参照できる。
 
 **＊実装例＊**
 
@@ -405,7 +405,7 @@ $ export AWS_SECRET_ACCESS_KEY="*****"
 # profileの代わり
 $ export AWS_PROFILE="bar-profile"
 
-#tokenの代わり（AmazonSTSを使用する場合）
+#tokenの代わり（AWS STSを使用する場合）
 $ export AWS_SESSION_TOKEN="*****"
 ```
 

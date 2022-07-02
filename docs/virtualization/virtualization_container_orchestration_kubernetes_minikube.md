@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Minikube＠仮想化
-description: Minikube＠仮想化の知見をまとめました。
+title: 【IT技術の知見】Minikube＠仮想化
+description: Minikube＠仮想化の知見を記録しています。
 ---
 
 # Minikube＠仮想化

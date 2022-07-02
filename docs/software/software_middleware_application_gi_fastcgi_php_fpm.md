@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
-description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見をまとめました。
+title: 【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
+description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見を記録しています。
 ---
 
 # PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア

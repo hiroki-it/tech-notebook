@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Vagrantfile＠Vagrant
-description: Vagrantfile＠Vagrantの知見をまとめました。
+title: 【IT技術の知見】Vagrantfile＠Vagrant
+description: Vagrantfile＠Vagrantの知見を記録しています。
 ---
 
 # Vagrantfile＠Vagrant
@@ -332,7 +332,7 @@ end
 
 #### ▼ type
 
-マウント方法を設定する。デフォルト値は、VirtualBox共有フォルダーである。その他、NFS、RSync、SMBを設定できる。
+マウント方法を設定する。デフォルト値は、VirtualBox共有ディレクトリである。その他、NFS、RSync、SMBを設定できる。
 
 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
@@ -344,7 +344,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ホストと仮想環境間のファイルの入出力の速度差によって、仮想環境のパフォーマンスに差がある。以下のリンクで、ロードテストを行ったところ、『```RSync > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良かった。
+ホストと仮想環境間のファイルの入出力の速度差によって、仮想環境のパフォーマンスに差がある。以下のリンクで、ロードテストを行ったところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
 
 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
@@ -355,4 +355,4 @@ end
 - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 
-これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有フォルダー```』の順でパフォーマンスが良くなると考えておけばよい。
+これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良くなると考えておけばよい。

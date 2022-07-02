@@ -1,7 +1,6 @@
 ---
-title: 【知見を記録するサイト】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見をまとめました。
-
+title: 【IT技術の知見】AWS：Amazon Web Service
+description: AWS：Amazon Web Serviceの知見を記録しています。
 ---
 
 # AWS：Amazon Web Service（E）
@@ -257,14 +256,14 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 
 （１）任意で、バックアップのために拡張対象のEC2インスタンスのAMIを作成しておく。
 
-（２）EC2インスタンスのEBSボリュームを```8```GiBから```16```GiBに拡張する例を考える。```lsblk```コマンドで現在のブロックデバイスのサイズを確認すると、EBSボリュームが```8```GiBである。また、EBSボリューム内にパーティションがある。```df```コマンドで現在のファイルシステムのサイズを確認すると、同じく```8```GiBである。
+（２）EC2インスタンスのEBSボリュームを```8```GiBから```16```GiBに拡張する例を考える。lsblkコマンドで現在のボリュームのサイズを確認すると、EBSボリュームが```8```GiBである。この時、EBSボリューム内にパーティションがある。また、```df```コマンドでボリュームに紐づくデバイスファイルのサイズを確認すると、同じく```8```GiBである。
 
 ```bash
 $ lsblk
 
 NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
-xvda      202:0    0     8G    0   disk              # EBSボリュームに紐づくデバイスファイル
-└─xvda1   202:1    0     8G    0   part   /          # パーティションに紐づくデバイスファイル
+xvda      202:0    0     8G    0   disk              # EBSボリューム
+└─xvda1   202:1    0     8G    0   part   /          # パーティション
 nvme1n1   259:1    0   200G    0   disk   /var/lib
 
 # ～ 中略 ～
@@ -274,13 +273,13 @@ nvme1n1   259:1    0   200G    0   disk   /var/lib
 $ df -h
 
 Filesystem     Size   Used  Avail  Use%   Mounted on
-/dev/xvda1       8G   1.9G    14G   12%   /           # EBSボリュームに紐づくデバイスファイル
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 
 # ～ 中略 ～
 ```
 
-（３）コンソール画面から、EBSボリュームを```16```GiBに拡張する。この時、ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが拡張されたことを確認できる。ただ```df```コマンドでは、拡張されたことをまだ確認できない。
+（３）コンソール画面から、EBSボリュームを```16```GiBに拡張する。この時、ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが拡張されたことを確認できる。ただ```df```コマンドでは、デバイスファイルが拡張されたことをまだ確認できない。
 
 ```bash
 $ lsblk
@@ -297,12 +296,12 @@ nvme1n1       259:1    0   200G   0  disk  /var/lib
 $ df -h
 
 Filesystem     Size   Used  Avail  Use%   Mounted on
-/dev/xvda1       8G   1.9G    14G   12%   /           # EBSボリュームに紐づくデバイスファイル
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 # ～ 中略 ～
 ```
 
-（４）EBSボリュームのデバイスファイルのタイプを確認する。今回は```ext4```タイプである。
+（４）EBSボリュームに紐づくデバイスファイルのタイプを確認する。今回は```ext4```タイプである。
 
 ```bash
 $ df -hT
@@ -314,7 +313,7 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 # ～ 中略 ～
 ```
 
-（５）今回、EBSボリューム内にパーティションがあるため、```growpart```コマンドを実行し、パーティションを拡張する。パーティションがなければ、この手順は不要である。改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されている。
+（５）今回、EBSボリューム内にパーティションがあるため、```growpart```コマンドを実行し、デバイスファイルに紐づくパーティションを拡張する。パーティションがなければ、この手順は不要である。改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されている。
 
 ```bash
 $ growpart /dev/xvda 1
@@ -324,15 +323,15 @@ $ growpart /dev/xvda 1
 $ lsblk
 
 NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0  16G  0 disk            # EBSボリュームに紐づくデバイスファイル
-└─xvda1 202:1    0  16G  0 part /          # パーティションに紐づくデバイスファイル
+xvda    202:0    0  16G  0 disk            # EBSボリューム
+└─xvda1 202:1    0  16G  0 part /          # パーティション
 
 # ～ 中略 ～
 ```
 
 #### ▼ ```ext4```タイプの場合
 
-（６）もし```ext4```タイプであった場合、```resize2fs ```コマンドでデバイスファイルを指定し、EC2内のデバイスファイルのサイズを拡張する。
+（６）もし```ext4```タイプであった場合、```resize2fs ```コマンドでデバイスファイルを指定し、EBSボリュームに紐づくデバイスファイルのサイズを拡張する。
 
 ```bash
 $ sudo resize2fs <デバイスファイル名>
@@ -342,20 +341,20 @@ $ sudo resize2fs <デバイスファイル名>
 $ sudo resize2fs /dev/xvda1
 ```
 
-（７）改めて```df```コマンドを実行すると、該当のデバイスファイルのサイズが変更されたことを確認できる。
+（７）改めて```df```コマンドを実行すると、EBSボリュームに紐づくデバイスファイルのサイズが拡張されたことを確認できる。
 
 ```bash
 $ df -hT
 
 Filesystem  Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # EBSボリュームに紐づくファイルシステム
+/dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # パーティションに紐づくデバイスファイル
 
 # ～ 中略 ～
 ```
 
 #### ▼ ```xsf```タイプの場合
 
-（６）もし```xsf```タイプであった場合、```xfs_growfs```コマンドでマウントポイントを指定し、EC2内のデバイスファイルのサイズを拡張する。もし、```xfs_growfs```コマンドがない場合は、インストールする。
+（６）もし```xsf```タイプであった場合、```xfs_growfs```コマンドでマウントポイントを指定し、EBSボリュームに紐づくデバイスファイルのサイズを拡張する。もし、```xfs_growfs```コマンドがない場合は、インストールする。
 
 ```bash
 $ xfs_growfs -d <マウントポイント名>
@@ -368,13 +367,13 @@ $ xfs_growfs -d <マウントポイント名>
 $ xfs_growfs -d /var/lib
 ```
 
-（７）改めて```df```コマンドを実行すると、該当のデバイスファイルのサイズが変更されたことを確認できる。
+（７）改めて```df```コマンドを実行すると、EBSボリュームに紐づくデバイスファイルのサイズが拡張されたことを確認できる。
 
 ```bash
 $ df -hT
 
 Filesystem     Type  Size  Used  Avail  Use%  Mounted on
-/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # EBSボリュームに紐づくファイルシステム
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # ボリュームに紐づくデバイスファイル
 
 # ～ 中略 ～
 ```
@@ -1330,7 +1329,7 @@ Pod provisioning timed out (will retry) for pod
 
 #### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
 
-EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。2022/05/27現在、データプレーンがコントロールプレーンと通信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。執筆時点（2022/05/27）では、データプレーンがコントロールプレーンと通信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 参考：
 
@@ -1353,7 +1352,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、デー
 
 #### ▼ セットアップ
 
-（１）ローカルマシンにIAMポリシーのJSONファイルをダウンロードする。
+（１）ローカルマシンにIAMポリシーの```.json```ファイルをダウンロードする。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 
@@ -1361,7 +1360,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、デー
 $ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json
 ```
 
-（２）JSONファイルを使用して、IAMポリシーを作成する。
+（２）```.json```ファイルを使用して、IAMポリシーを作成する。
 
 ```bash
 $ aws iam create-policy \

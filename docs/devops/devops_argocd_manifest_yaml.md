@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】manifest.yaml＠ArgoCD
-description: manifest.yaml＠ArgoCDの知見をまとめました。
+title: 【IT技術の知見】manifest.yaml＠ArgoCD
+description: manifest.yaml＠ArgoCDの知見を記録しています。
 ---
 
 # manifest.yaml＠ArgoCD
@@ -942,8 +942,6 @@ spec:
 | ```previewReplicaCount```   | グリーン環境のPod数を設定する。                              |
 | ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する。    |
 | ```scaleDownDelaySeconds``` |                                                              |
-
-
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】非同期処理ロジック＠JavaScript
+title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 ---
 
 # 非同期処理ロジック＠JavaScript

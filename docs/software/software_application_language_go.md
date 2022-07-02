@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Go
-description: Goの知見をまとめました。
+title: 【IT技術の知見】Go
+description: Goの知見を記録しています。
 ---
 
 # Go
@@ -256,7 +256,7 @@ httpClientであれば、修飾語は『```http```』被修飾語『```client```
 
 参考：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
 
-省略名については、略語検索サイトで探す。あるいは、Goリファレンスからその単語がどう省略されているかを探しても良い。
+省略名については、略語検索サイトで探す。代わりに、Goリファレンスからその単語がどう省略されているかを探しても良い。
 
 参考：https://www.allacronyms.com/
 

@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】Capistrano＠DevOps
-description: Capistrano＠DevOpsの知見をまとめました。
+title: 【IT技術の知見】Capistrano＠DevOps
+description: Capistrano＠DevOpsの知見を記録しています。
 ---
 
 # Capistrano＠DevOps

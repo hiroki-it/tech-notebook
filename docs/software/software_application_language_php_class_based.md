@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】クラス＠PHP
-description: クラス＠PHPの知見をまとめました。
+title: 【IT技術の知見】クラス＠PHP
+description: クラス＠PHPの知見を記録しています。
 ---
 
 # クラス＠PHP

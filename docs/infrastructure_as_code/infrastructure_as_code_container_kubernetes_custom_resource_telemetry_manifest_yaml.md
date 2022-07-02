@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】テレメトリー収集リソース＠カスタムリソース
-description: 可観測性＠カスタムリソースの知見をまとめました。
+title: 【IT技術の知見】テレメトリー収集リソース＠カスタムリソース
+description: 可観測性＠カスタムリソースの知見を記録しています。
 ---
 
 # テレメトリー収集リソース＠カスタムリソース
@@ -39,7 +39,7 @@ $ helm install <リリース名> prometheus-community/kube-prometheus-stack
 
 #### ▼ ドキュメントから
 
-GrafanaのドキュメントからYAMLファイルをコピーし、```grafana.yaml```ファイルを作成する。これをapplyする。
+Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これをapplyする。
 
 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
@@ -93,7 +93,7 @@ metadata:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
   foo.json: |-
-    # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
+    # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
 ```
 
 #### ▼ kube-prometheus-stackチャートの場合
@@ -136,7 +136,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   foo.json: |-
-    # GrafanaのダッシュボードからエクスポートしたJSONファイルを貼り付ける。
+    # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
 ```
 
 ちなみに、kube-prometheus-stackチャート内にダッシュボードのConfigMapはすでに用意されており、これをインストールすると、いくつかのダッシュボードが作成される。

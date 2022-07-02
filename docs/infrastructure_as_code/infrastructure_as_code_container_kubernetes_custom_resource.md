@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】カスタムリソース@Kubernetes
-description: カスタムリソース@Kubernetesの知見をまとめました。
+title: 【IT技術の知見】カスタムリソース@Kubernetes
+description: カスタムリソース@Kubernetesの知見を記録しています。
 ---
 
 # カスタムリソース@Kubernetes

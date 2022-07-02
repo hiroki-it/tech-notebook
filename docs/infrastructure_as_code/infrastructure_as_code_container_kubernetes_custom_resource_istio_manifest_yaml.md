@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】manifest.yaml＠Istio
-description: manifest.yaml＠Istioの知見をまとめました。
+title: 【IT技術の知見】manifest.yaml＠Istio
+description: manifest.yaml＠Istioの知見を記録しています。
 ---
 
 # manifest.yaml＠Istio
@@ -789,7 +789,7 @@ spec:
 
 #### ▼ ingressGateways
 
-2022/06/04現在、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、Gatewayを使用するようにする。一応このオプションの説明は残しておく。IngressGatewayのオプションを設定する。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+執筆時点（2022/06/04）では、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、Gatewayを使用するようにする。一応このオプションの説明は残しておく。IngressGatewayのオプションを設定する。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 

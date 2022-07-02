@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠Flask
-description: コマンド＠Flaskの知見をまとめました。
+title: 【IT技術の知見】コマンド＠Flask
+description: コマンド＠Flaskの知見を記録しています。
 ---
 
 # コマンド＠Flask

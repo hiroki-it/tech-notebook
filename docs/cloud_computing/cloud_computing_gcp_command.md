@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】コマンド＠GCP
-description: コマンド＠GCPの知見をまとめました。
+title: 【IT技術の知見】コマンド＠GCP
+description: コマンド＠GCPの知見を記録しています。
 ---
 
 # コマンド＠GCP
@@ -23,7 +23,7 @@ GCPアカウントの認証を行う。
 
 #### ▼ application-default login
 
-GCP CLIによるGCPリソースへのアクセスを認証するために使用する。```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、認証情報を定義する。また、これ使用してGCPにログインする。```~/.config/gcloud/application_default_credentials.json```ファイルは一つのアカウントの認証情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
+GCP CLIによるGCPリソースへのアクセスを認証するために使用する。```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、クレデンシャル情報を定義する。また、これ使用してGCPにログインする。```~/.config/gcloud/application_default_credentials.json```ファイルは一つのアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
 
 参考：https://christina04.hatenablog.com/entry/gcp-auth
 

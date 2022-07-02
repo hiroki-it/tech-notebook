@@ -1,9 +1,9 @@
 ---
-title: 【知見を記録するサイト】JMeter＠テスト仕様書ベースのテスト
-description: JMeter＠テスト仕様書ベースのテストの知見をまとめました。
+title: 【IT技術の知見】JMeter＠システムテスト
+description: JMeter＠システムテストの知見を記録しています。
 ---
 
-# JMeter＠テスト仕様書ベースのテスト
+# JMeter＠システムテスト
 
 ## はじめに
 

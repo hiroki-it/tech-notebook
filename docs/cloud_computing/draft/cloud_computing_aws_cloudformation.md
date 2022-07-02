@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】CloudFormation＠AWS
-description: CloudFormation＠AWSの知見をまとめました。
+title: 【IT技術の知見】CloudFormation＠AWS
+description: CloudFormation＠AWSの知見を記録しています。
 ---
 
 # CloudFormation＠AWS

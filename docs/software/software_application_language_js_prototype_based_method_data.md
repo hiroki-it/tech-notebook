@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】メソッド/データ＠JavaScript
+title: 【IT技術の知見】メソッド/データ＠JavaScript
 ---
 
 # メソッド/データ＠JavaScript

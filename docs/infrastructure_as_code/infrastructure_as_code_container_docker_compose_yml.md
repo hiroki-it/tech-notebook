@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】docker-compose.yml＠Docker compose
-description: docker-compose.yml＠Docker composeの知見をまとめました。
+title: 【IT技術の知見】docker-compose.yml＠Docker compose
+description: docker-compose.yml＠Docker composeの知見を記録しています。
 ---
 
 # docker-compose.yml＠Docker compose
@@ -741,5 +741,5 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 
 PHPUnitで接続するDBを指定する方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_testing_based_on_code_php.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 

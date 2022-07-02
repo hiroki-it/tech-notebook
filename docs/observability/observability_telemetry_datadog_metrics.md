@@ -1,5 +1,5 @@
 ---
-title: 【知見を記録するサイト】メトリクス収集＠Datadog
+title: 【IT技術の知見】メトリクス収集＠Datadog
 ---
 
 # メトリクス収集＠Datadog

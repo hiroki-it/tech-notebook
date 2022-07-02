@@ -1,6 +1,6 @@
 ---
-title: 【知見を記録するサイト】apache.conf@Apache
-description: apache.conf@Apacheの知見をまとめました。
+title: 【IT技術の知見】apache.conf@Apache
+description: apache.conf@Apacheの知見を記録しています。
 ---
 
 # apache.conf@Apache
