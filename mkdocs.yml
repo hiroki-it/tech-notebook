@@ -229,7 +229,7 @@ nav:
           - Go: testing/testing_whitebox_go.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
-          - システムテスト:
+          - ■ システムテスト:
               - システムテスト: testing/testing_blackbox_system_test.md
               - JMeter: testing/testing_blackbox_system_test_jmeter.md
 
