@@ -189,7 +189,9 @@ title: 【IT技術の知見】目次
     * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_go.html)
 * ︎ブラックボックステスト
     * [📖：︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox.html)
-    * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_jmeter.html)
+    * システムテスト
+        * [📖：︎システムテスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test.html)
+        * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test_jmeter.html)
 
 <br>
 
@@ -290,7 +292,7 @@ title: 【IT技術の知見】目次
 * Vagrant
     * [📖：Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
-* Packer 
+* Packer
     * [📖：template.json](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_server_packer_template_json.html)
 
 
@@ -358,7 +360,7 @@ title: 【IT技術の知見】目次
 * 監視
     * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html)
     * [📖：︎インシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_incident_management.html)
-    
+
 ### テレメトリー収集ツール
 
 #### ▼ テレメトリー収集ツール
