@@ -222,13 +222,13 @@ nav:
                   - ■ パッケージ:
                       - パッケージ管理: software/software_application_language_python_package_management.md
           - ■ テスト:
-              - テスト: software/software_application_testing.md
-              - ■ テスト仕様書ベースのテスト:
-                  - テスト仕様書ベースのテスト: software/software_application_testing_based_on_test_specification.md
-                  - JMeter: software/software_application_testing_based_on_test_specification_jmeter.md
-              - ■ コードベースのテスト:
-                  - PHP: software/software_application_testing_based_on_code_php.md
-                  - Go: software/software_application_testing_based_on_code_go.md
+              - ■ ホワイトボックステスト:
+                  - ホワイトボックステスト: testing/testing_whitebox.md
+                  - PHP: testing/testing_whitebox_php.md
+                  - Go: testing/testing_whitebox_go.md
+              - ■ ブラックボックステスト:
+                    - ブラックボックステスト: testing/testing_blackbox.md
+                    - JMeter: testing/testing_blackbox_jmeter.md
 
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
