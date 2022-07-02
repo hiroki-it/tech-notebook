@@ -221,14 +221,17 @@ nav:
                           - コマンド: software/software_application_language_python_framework_flask_command.md
                   - ■ パッケージ:
                       - パッケージ管理: software/software_application_language_python_package_management.md
-          - ■ テスト:
-              - ■ ホワイトボックステスト:
-                  - ホワイトボックステスト: testing/testing_whitebox.md
-                  - PHP: testing/testing_whitebox_php.md
-                  - Go: testing/testing_whitebox_go.md
-              - ■ ブラックボックステスト:
-                  - ブラックボックステスト: testing/testing_blackbox.md
-                  - JMeter: testing/testing_blackbox_jmeter.md
+
+  - 🧪 テスト:
+      - ■ ホワイトボックステスト:
+          - ホワイトボックステスト: testing/testing_whitebox.md
+          - PHP: testing/testing_whitebox_php.md
+          - Go: testing/testing_whitebox_go.md
+      - ■ ブラックボックステスト:
+          - ブラックボックステスト: testing/testing_blackbox.md
+          - システムテスト:
+              - システムテスト: testing/testing_blackbox_system_test.md
+              - JMeter: testing/testing_blackbox_system_test_jmeter.md
 
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
