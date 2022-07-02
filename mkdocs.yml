@@ -227,8 +227,8 @@ nav:
                   - PHP: testing/testing_whitebox_php.md
                   - Go: testing/testing_whitebox_go.md
               - ■ ブラックボックステスト:
-                    - ブラックボックステスト: testing/testing_blackbox.md
-                    - JMeter: testing/testing_blackbox_jmeter.md
+                  - ブラックボックステスト: testing/testing_blackbox.md
+                  - JMeter: testing/testing_blackbox_jmeter.md
 
   - 💻 ハードウェア:
       - ハードウェア: hardware/hardware.md
@@ -329,8 +329,8 @@ nav:
       - GitLab CI: devops/devops_gitlab_ci.md
       - Capistrano: devops/devops_capistrano.md
       - ■ CircleCI:
-            - config.yml: devops/devops_circleci_config_yml.md
-            - orbs: devops/devops_circleci_orbs.md
+          - config.yml: devops/devops_circleci_config_yml.md
+          - orbs: devops/devops_circleci_orbs.md
       - ■ ArgoCD:
           - manifest.yaml: devops/devops_argocd_manifest_yaml.md
           - 設計ポリシー: devops/devops_argocd_policy.md
