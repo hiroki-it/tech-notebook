@@ -298,16 +298,16 @@ nav:
                   - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
               - ■ Kubernetes:
-                  - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.md
+                  - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
                   - ■ カスタムリソース:
                       - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
-                      - テレメトリー収集リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_telemetry_manifest_yaml.md
+                      - テレメトリー収集リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_telemetry_manifest_file.md
                       - ■ ArgoCD:
-                          - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_yaml.md
+                          - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.md
                       - ■ Istio:
-                          - manifest.yaml: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.md
+                          - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.md
                           - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.md
               - ■ Helm:
                   - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
@@ -335,7 +335,7 @@ nav:
           - config.yml: devops/devops_circleci_config_yml.md
           - orbs: devops/devops_circleci_orbs.md
       - ■ ArgoCD:
-          - manifest.yaml: devops/devops_argocd_manifest_yaml.md
+          - マニフェストファイル: devops/devops_argocd_manifest_file.md
           - 設計ポリシー: devops/devops_argocd_policy.md
       - ■ Skaffold:
           - skaffold.yaml: devops/devops_skaffold_yaml.md
