@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】manifest.yaml＠Istio
-description: manifest.yaml＠Istioの知見を記録しています。
+title: 【IT技術の知見】マニフェストファイル＠Istio
+description: マニフェストファイル＠Istioの知見を記録しています。
 ---
 
-# manifest.yaml＠Istio
+# マニフェストファイル＠Istio
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: manifest.yaml＠Istioの知見を記録しています。
 
 <br>
 
-## 01. manifest.yamlファイル＠Istioとは
+## 01. マニフェストファイル＠Istioとは
 
 Istioリソースを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
@@ -50,7 +50,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたmanifest.yamlファイルを、istioctlコマンドまたはkubectlコマンドを使用して、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたマニフェストファイルを、istioctlコマンドまたはkubectlコマンドを使用して、Istioインストールする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをインストールすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 
@@ -59,7 +59,7 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f <IstioOperatorのmanifest.yamlファイルへのパス>
+$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
 
 ✔ Istio core installed
 ✔ Istiod installed
@@ -70,7 +70,7 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f <IstioOperatorのmanifest.yamlファイルへのパス>
+$ kubectl apply -f <IstioOperatorのマニフェストファイルへのパス>
 
 istiooperator.install.istio.io/istio-operator created
 ```

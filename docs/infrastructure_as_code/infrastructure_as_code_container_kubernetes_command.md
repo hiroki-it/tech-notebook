@@ -44,33 +44,33 @@ $ kubectl get pods --kubeconfig=/etc/kubernetes/kubeconfig
 
 #### ▼ applyとは
 
-同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はmanifest.yamlファイルの差分を更新する。全ての項目を更新できるわけでない。
+同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストファイルの差分を更新する。全ての項目を更新できるわけでない。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 #### ▼ -f -R
 
-manifest.yamlファイルを指定し、```kubectl apply```コマンドを実行する。```-R```オプションでディレクトリ内のファイルを再帰的に指定もできる。
+マニフェストファイルを指定し、```kubectl apply```コマンドを実行する。```-R```オプションでディレクトリ内のファイルを再帰的に指定もできる。
 
 **＊実行例＊**
 
 ```bash
 # リソースを作成する。
-$ kubectl apply -f <manifest.yamlファイルへのパス>
+$ kubectl apply -f <マニフェストファイルへのパス>
 
 pod/foo-pod created
 ```
 
 ```bash
 # 設定値を変更する。
-$ kubectl apply -f <manifest.yamlファイルへのパス>
+$ kubectl apply -f <マニフェストファイルへのパス>
 
 pod/foo-pod configured
 ```
 
 ```bash
 # ディレクトリ内のファイルを再起的に指定する。
-$ kubectl apply -f <manifest.yamlファイルのあるディレクトリ> -R
+$ kubectl apply -f <マニフェストファイルのあるディレクトリ> -R
 
 pod/foo-pod configured
 ```
@@ -220,13 +220,13 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 #### ▼ createとは
 
-様々なリソースを作成する。```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。そのため、```f```オプションでmanifest.yamlファイルを指定し、おぶえジェクトを作成した方が良い。同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
+様々なリソースを作成する。```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。そのため、```f```オプションでマニフェストファイルを指定し、おぶえジェクトを作成した方が良い。同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊例＊**
 
-manifest.yamlファイルを指定し、```kubectl create```コマンドを実行する。
+マニフェストファイルを指定し、```kubectl create```コマンドを実行する。
 
 ```bash
 $ kubectl create -f ./kubernetes/foo-pod.yaml
@@ -675,7 +675,7 @@ $ kubectl rollout restart deployment -n kube-system
 
 #### ▼ patchとは
 
-JSON/YAML形式を入力値として、リソースの設定値を変更する。ただし、manifest.yamlファイルは変更されない。
+JSON/YAML形式を入力値として、リソースの設定値を変更する。ただし、マニフェストファイルは変更されない。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 

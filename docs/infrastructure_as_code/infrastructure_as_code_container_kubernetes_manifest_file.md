@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】manifest.yaml＠Kubernetes
-description: manifest.yml＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】マニフェストファイル＠Kubernetes
+description: マニフェストファイル＠Kubernetesの知見を記録しています。
 ---
 
-# manifest.yaml＠Kubernetes
+# マニフェストファイル＠Kubernetes
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: manifest.yml＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. manifest.yamlファイル＠Kubernetesとは
+## 01. マニフェストファイル＠Kubernetesとは
 
 Kubernetesを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
@@ -64,7 +64,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合に、In
 
 #### ▼ istio固有のキー
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_yaml.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html
 
 <br>
 
@@ -267,7 +267,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-kubctlコマンドのクライアントの認証情報を設定する。
+kubectlコマンドのクライアントの認証情報を設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 

@@ -1518,7 +1518,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context <ClusterのARN>
 ```
 
-（３）manifest.yamlファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
+（３）マニフェストファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 

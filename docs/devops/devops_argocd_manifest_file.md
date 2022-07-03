@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】manifest.yaml＠ArgoCD
-description: manifest.yaml＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】マニフェストファイル＠ArgoCD
+description: マニフェストファイル＠ArgoCDの知見を記録しています。
 ---
 
-# manifest.yaml＠ArgoCD
+# マニフェストファイル＠ArgoCD
 
 ## はじめに
 
@@ -17,7 +17,58 @@ description: manifest.yaml＠ArgoCDの知見を記録しています。
 
 ### アーキテクチャ
 
-調査中...
+ArgoCDサーバー、リポジトリサーバー、アプリケーションコントローラー、RedisDexサーバー、ArgoCD Applicationから構成される。
+
+参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+
+<br>
+
+### APIサーバー
+
+argocdコマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetesクラスターへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+
+参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### リポジトリサーバー
+
+監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを生成する。
+
+参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### Applicationコントローラー
+
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetesクラスターにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないかどうかを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
+
+参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### Redisサーバー
+
+リポジトリサーバー内のマニフェストファイルのキャッシュを生成し、これを管理する。
+
+参考：
+
+- https://weseek.co.jp/tech/95/
+- https://blog.manabusakai.com/2021/04/argo-cd-cache/
+
+<br>
+
+### Dexサーバー
+
+ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
+
+参考：
+
+- https://weseek.co.jp/tech/95/
+- https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
+- https://zenn.dev/onsd/articles/a3ea24b01da413
 
 <br>
 
@@ -35,6 +86,8 @@ description: manifest.yaml＠ArgoCDの知見を記録しています。
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
 
+<br>
+
 ### アプリケーションリポジトリ起点
 
 #### ▼ テンプレート構成管理ツールを使用しない場合
@@ -45,13 +98,13 @@ description: manifest.yaml＠ArgoCDの知見を記録しています。
 
 （２）CIツールが、コンテナイメージをECRにプッシュする。
 
-（３）CIツールは、マニフェストリポジトリをクローンし、manifest.yamlファイルのコンテナイメージのハッシュ値を変更する。このmanifest.yamlファイルの変更は、```yq```コマンドなどで直接的に実行する。変更したマニフェストをマニフェストリポジトリにプッシュする。
+（３）CIツールは、マニフェストリポジトリをクローンし、マニフェストファイルのコンテナイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。変更したマニフェストをマニフェストリポジトリにプッシュする。
 
 （４）プルリクを自動作成する。
 
 （５）マニフェストリポジトリで、リリース責任者がプルリクをmainブランチにマージする。
 
-（６）ArgoCDがmanifest.yamlファイルの変更を検知し、Kubernetesにプルする。
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
@@ -63,13 +116,13 @@ description: manifest.yaml＠ArgoCDの知見を記録しています。
 
 （２）同じ
 
-（３）CIツールは、マニフェストリポジトリをクローンし、チャート内のmanifest.yamlファイルのコンテナイメージのハッシュ値を変更する。このmanifest.yamlファイルの変更は、```yq```コマンドなどで直接的に実行する。
+（３）CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストファイルのコンテナイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。
 
 （４）同じ
 
 （５）同じ
 
-（６）ArgoCDがmanifest.yamlファイルの変更を検知し、Kubernetesにプルする。
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 参考：
 
@@ -84,11 +137,11 @@ description: manifest.yaml＠ArgoCDの知見を記録しています。
 
 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
-（１）マニフェストリポジトリで、開発者がmanifest.yamlファイルの変更をmainブランチにマージする。
+（１）マニフェストリポジトリで、開発者がマニフェストファイルの変更をmainブランチにマージする。
 
-（２）マニフェストリポジトリで、リリース責任者がmanifest.yamlファイルやチャートの変更をmainブランチにマージする。
+（２）マニフェストリポジトリで、リリース責任者がマニフェストファイルやチャートの変更をmainブランチにマージする。
 
-（３）ArgoCDがmanifest.yamlファイルの変更を検知し、Kubernetesにプルする。
+（３）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 <br>
 
@@ -122,7 +175,7 @@ $ kubectl config use-context <ClusterのARN>
 $ kubectl create namespace argocd
 ```
 
-（３）ArgoCDのmanifest.yamlファイルを指定し、Kubernetes上にArgoCDをapplyする。
+（３）ArgoCDのマニフェストファイルを指定し、Kubernetes上にArgoCDをapplyする。
 
 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -191,7 +244,7 @@ $ argocd app create guestbook \
     --sync-option CreateNamespace=true
 ```
 
-（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象のリポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのapplyにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがapplyを行なっていることに注意する。
+（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象リポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのapplyにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがapplyを行なっていることに注意する。
 
 ```bash
 $ argocd app sync guestbook --dry-run
@@ -220,9 +273,9 @@ $ argocd repo add oci://<チャートレジストリ名> \
     --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
-#### ▼ manifest.yamlファイル経由
+#### ▼ マニフェストファイル経由
 
-（７）argocdコマンドの代わりに、manifest.yamlファイルでArgoCDを操作しても良い。
+（７）argocdコマンドの代わりに、マニフェストファイルでArgoCDを操作しても良い。
 
 ```bash
 $ kubectl apply -f application.yaml
@@ -267,7 +320,7 @@ ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-もし、Applicationが削除中のまま進行しない時は、Applicationのmanifest.yamlファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する。
+もし、Applicationが削除中のまま進行しない時は、Applicationのマニフェストファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する。
 
 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
@@ -384,7 +437,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-kubernetes
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
   type: helm
   username: foo
   password: bar
@@ -398,7 +451,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-istio-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ名> # https://storage.googleapis.com/foo-istio
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
   type: helm
   username: baz
   password: qux
@@ -424,7 +477,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-oci-registry
-  url: <OCIレジストリ名> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: foo
   password: bar
@@ -439,7 +492,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-istio-oci-registry # 任意のOCIレジストリ名
-  url: <OCIレジストリ名> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: baz
   password: qux
@@ -502,13 +555,13 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたmanifest.yamlファイルをapplyする。
+マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストファイルをapplyする。
 
 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-| リポジトリの種類                                   | 管理方法                     | manifest.yamlファイルのapply方法                           |
+| リポジトリの種類                                   | 管理方法                     | マニフェストファイルのapply方法                           |
 |--------------------------------------------| ---------------------------- | ------------------------------------------------------------ |
-| マニフェストリポジトリ（GitHub）                        | manifest.yamlファイルそのまま | ArgoCDで直接的にapplyする。                               |
+| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的にapplyする。                               |
 | チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
 | OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
 
@@ -518,7 +571,7 @@ spec:
 
 #### ▼ directory
 
-監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のmanifest.yamlファイルを指定できるようにする。
+監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のマニフェストファイルを指定できるようにする。
 
 参考：
 
@@ -527,9 +580,9 @@ spec:
 
 | 設定項目      | 説明                                                                                                     |
 | ------------- |--------------------------------------------------------------------------------------------------------|
-| ```include``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルのみを指定する。                                                 |
-| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のmanifest.yamlファイルを除外する。                                                   |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのmanifest.yamlファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するかどうかを設定する。 |
+| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定する。                                                 |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外する。                                                   |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するかどうかを設定する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -612,7 +665,7 @@ spec:
 
 <br>
 
-### spec.source（チャートレジストリの場合）
+### spec.source（チャートレジストリ内リポジトリの場合）
 
 #### ▼ chart
 
@@ -643,7 +696,7 @@ helmコマンドに相当するパラメーターを設定する。Helmfileの�
 | 設定項目          | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```releaseName``` | applyするリリース名を設定する。                           |                                                              |
-| ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのmanifest.yamlファイルにハードコーディングして定義する。 |                                                              |
+| ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのマニフェストファイルにハードコーディングして定義する。 |                                                              |
 | ```valueFiles```  | apply時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
 
 ```yaml
@@ -715,7 +768,7 @@ spec:
 
 <br>
 
-### spec.source（OCIレジストリの場合）
+### spec.source（OCIレジストリ内リポジトリの場合）
 
 #### ▼ chart
 
@@ -831,7 +884,7 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 | 設定項目         | 説明                                                                                                                                                              |
 | ---------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでmanifest.yamlファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                                                                    |
+| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                                                                    |
 | ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。                                                    |
 | ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化するかどうかを設定する。<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
 
@@ -851,7 +904,7 @@ spec:
 
 #### ▼ syncOptions
 
-GtiOpsでのmanifest.yamlファイルの同期処理の詳細を設定する。
+GtiOpsでのマニフェストファイルの同期処理の詳細を設定する。
 
 参考：
 

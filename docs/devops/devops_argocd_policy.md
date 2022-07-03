@@ -19,7 +19,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 #### ▼ Kubernetesリソースのマニフェストファイルを監視する場合
 
-監視対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
@@ -46,7 +46,7 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-監視対象のリポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象のリポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
 
 ```yaml
 # 親Application
@@ -101,7 +101,7 @@ k8s-repository/
 
 ### ポリリポジトリ
 
-監視対象のリポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 ```yaml
 repository/

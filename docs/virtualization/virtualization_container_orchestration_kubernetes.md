@@ -27,7 +27,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 KubernetesのIaCについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
 
 <br>
 
@@ -47,7 +47,7 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 #### ▼ cloud-controller-managerとは
 
-kub-apiserverとクラウドインフラを仲介し、Kubernetesがクラウドインフラを操作できるようにする。
+クラウドインフラを操作するcloud-controllerを一括で管理する。cloud-controllerを使用して、kube-apiserverがクラウドインフラを操作できるようにする。
 
 ![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cloud-controller-manager.png)
 
@@ -84,9 +84,18 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ▼ kube-controller-managerとは
 
-様々なコントローラーを統括的に実行する。
+kube-controlerを一括で管理する。kube-controlerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
 
 参考：https://thinkit.co.jp/article/17453
+
+#### ▼ kube-controller
+
+各Kuberneteリソースの状態が、マニフェストファイルの宣言的設定通りになるように制御する。Kubernetesリソースごとにkube-controllerが存在している。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/architecture/controller/
+- https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
 
 <br>
 
@@ -262,15 +271,15 @@ kubernetesクライアントは、kubectlコマンドを使用して、kubernete
 
 ### Kubernetesリソース
 
-Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってmanifest.yamlファイルで定義される。manifest.yamlファイルについては、以下のリンクを参考にせよ。
+Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yaml.html
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
 
 <br>
 
 ### Kubernetesオブジェクト
 
-manifest.yamlファイルによって量産されたKubernetesリソースのインスタンスのこと。
+マニフェストファイルによって量産されたKubernetesリソースのインスタンスのこと。
 
 参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
 
