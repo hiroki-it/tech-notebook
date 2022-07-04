@@ -27,7 +27,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ### イメージレイヤー
 
-![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
+![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージのビルド.png)
 
 イメージレイヤーの実体は、```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。
 

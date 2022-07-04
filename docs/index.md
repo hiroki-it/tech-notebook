@@ -392,8 +392,8 @@ title: 【IT技術の知見】目次
 
 #### ▼ Googleアプリ
 
-* [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_google_analytics.html)
-* [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_google_search_console.html)
+* [📖：︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_analytics.html)
+* [📖：︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_search_console.html)
 
 <br>
 

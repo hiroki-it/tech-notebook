@@ -1438,9 +1438,7 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 ### CloudWatchログとは
 
-クラウドログサーバーとして働く。AWSリソースで生成されたログを収集できる。ログについては、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability_monitoring/observability.html
+クラウドログサーバーとして働く。AWSリソースで生成されたログを収集できる。
 
 <br>
 

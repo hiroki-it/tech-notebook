@@ -112,14 +112,6 @@ description: 可観測性の知見を記録しています。
 
 <br>
 
-### ツール
-
-#### ▼ ツールの種類
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
-
-<br>
-
 ## 03. ログ
 
 ### ログとは 
@@ -169,14 +161,6 @@ description: 可観測性の知見を記録しています。
 マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
-
-<br>
-
-### ツール
-
-#### ▼ ツールの種類
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
 
 <br>
 
@@ -254,14 +238,6 @@ description: 可観測性の知見を記録しています。
 （７）```a3```：アプリケーションがレスポンスをクライアントに返信する。
 
 ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
-
-<br>
-
-### ツール
-
-#### ▼ ツールの種類
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_others.html
 
 <br>
 
