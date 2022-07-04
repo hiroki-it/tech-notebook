@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠IstioOperator
-description: マニフェストファイル＠IstioOperatorの知見を記録しています。
+title: 【IT技術の知見】IstioOperator＠Istio
+description: IstioOperator＠Istioの知見を記録しています。
 ---
 
-# マニフェストファイル＠IstioOperator
+# IstioOperator＠Istio
 
 ## はじめに
 

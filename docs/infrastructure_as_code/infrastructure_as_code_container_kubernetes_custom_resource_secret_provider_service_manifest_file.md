@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SecretProviderClass＠カスタムリソース
-description: SecretProviderClass＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】マニフェストファイル＠SecretProviderClass
+description: マニフェストファイル＠SecretProviderClassの知見を記録しています。
 ---
 
-# SecretProviderClass＠カスタムリソース
+# マニフェストファイル＠SecretProviderClass
 
 ## はじめに
 

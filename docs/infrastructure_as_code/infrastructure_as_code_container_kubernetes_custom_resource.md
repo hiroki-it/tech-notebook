@@ -233,7 +233,9 @@ spec:
 
 <br>
 
-## 02. Operatorとは
+## 02. Operator
+
+### Operatorとは
 
 kube-controllerにように、カスタムリソースを宣言通りに作成してくれる。自分自身でカスタムリソースを定義する必要がない。
 
@@ -241,13 +243,9 @@ kube-controllerにように、カスタムリソースを宣言通りに作成�
 
 <br>
 
-## 03. IngressClassParams
+### 一覧
 
-### IngressClassParamsとは
-
-外部Ingressコントローラーを使用する場合に、Ingressに渡すパラメーターを設定する。
+参考：https://operatorhub.io/
 
 <br>
-
-
 
