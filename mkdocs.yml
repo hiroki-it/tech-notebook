@@ -309,11 +309,11 @@ nav:
                           - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.md
                       - ■ Istio:
                           - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.md
-                          - Operator: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_operator_manifest_file.md
+                          - IstioOperator: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_operator_manifest_file.md
                           - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.md
                       - ■ Prometheus:
                           - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_manifest_file.md
-                          - Operator: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_operator_manifest_file.md
+                          - PrometheusOperator: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_operator_manifest_file.md
               - ■ Helm:
                   - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_container_helm_command.md
