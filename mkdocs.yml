@@ -303,7 +303,6 @@ nav:
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
                   - ■ カスタムリソース:
                       - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
-                      - テレメトリー収集リソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_telemetry_manifest_file.md
                       - ■ ArgoCD:
                           - マニフェストファイル: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.md
                       - ■ Istio:
