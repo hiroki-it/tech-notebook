@@ -120,16 +120,14 @@ $ istioctl analyze -n <Namespace名>
 
 <br>
 
-### manifest diff
+### destroy
 
-#### ▼ diffとは
+#### ▼ istioctlコマンドを使用して
 
-ymlファイルの差分を取得する。
-
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
+Istioリソースを全てdestroyする。
 
 ```bash
-$ istioctl manifest diff <変更前マニフェストファイルへのパス> <変更後マニフェストへのパス>
+$ istioctl x uninstall --purge
 ```
 
 <br>
@@ -176,6 +174,20 @@ Envoyコンテナをサイドカーコンテナとして作成する。代わり
 
 ```bash
 $ istioctl kube-inject
+```
+
+<br>
+
+### manifest diff
+
+#### ▼ diffとは
+
+ymlファイルの差分を取得する。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
+
+```bash
+$ istioctl manifest diff <変更前マニフェストファイルへのパス> <変更後マニフェストへのパス>
 ```
 
 <br>
@@ -331,7 +343,7 @@ This will install the Istio n.n.n default profile with ["Istio core" "Istiod" "I
 
 #### ▼ verify-installとは
 
-Istioのインストールが正しく実行されたかを検証する。
+Istioリソースのapplyが正しく実行されたかを検証する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 

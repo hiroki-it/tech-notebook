@@ -122,7 +122,7 @@ CPUが1秒間に何回命令を実行するかを表す。
 
 ### Programmable ROM
 
-#### ▼ Programmable ROM
+#### ▼ Programmable ROMとは
 
 参考：https://www.amazon.co.jp/dp/4297124513
 

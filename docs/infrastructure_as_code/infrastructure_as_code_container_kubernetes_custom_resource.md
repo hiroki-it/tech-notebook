@@ -124,6 +124,10 @@ spec:
     singular: foocrd
 ```
 
+```bash
+$ kubectl get foocrd
+```
+
 #### ▼ shortNames
 
 kubectlコマンドで使用するカスタムリソースの省略名を設定する。
@@ -139,6 +143,10 @@ spec:
   names:
     shortNames:
       - fcrd
+```
+
+```bash
+$ kubectl get fcrd
 ```
 
 <br>
@@ -225,6 +233,14 @@ spec:
 
 <br>
 
+## 02. Operatorとは
+
+kube-controllerにように、カスタムリソースを宣言通りに作成してくれる。自分自身でカスタムリソースを定義する必要がない。
+
+参考：https://kubernetes.io/ja/docs/concepts/extend-kubernetes/operator/
+
+<br>
+
 ## 03. IngressClassParams
 
 ### IngressClassParamsとは
@@ -233,80 +249,5 @@ spec:
 
 <br>
 
-## 04. Istio
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html
-
-<br>
-
-## 05. SecretProviderClass
-
-### SecretProviderClassとは
-
-外部Secretストアのデータを参照する場合に、Secretストアのプロバイダーを設定する。
-
-<br>
-
-### spec.provider
-
-#### ▼ spec.providerとは
-
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-```
-
-<br>
-
-### spec.parameters
-
-#### ▼ spec.parametersとは
-
-プロバイダーに応じて、参照する外部Secretストアのデータを設定する。
-
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-
-#### ▼ objects
-
-外部Sercretを識別する情報を設定する。
-
-参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-  parameters:
-    # AWSのSecrets Managerから取得する。
-    objects: |
-      - objectName: "arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<外部Secretストア名>"
-        objectType: "secretsmanager"
-```
-
-参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
-
-```yaml
-apiVersion: secrets-store.csi.x-k8s.io/v1
-kind: SecretProviderClass
-metadata:
-  name: foo-aws-secret-provider-class
-spec:
-  provider: aws
-  parameters:
-    # AWSのSystems Managerから取得する。
-    objects: |
-      - objectName: "FOO"
-        objectType: "ssmparameter"
-```
-
-<br>
 

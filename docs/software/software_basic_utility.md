@@ -126,7 +126,7 @@ $ chmod go+r <ファイルへのパス>
 
 #### ▼ -Rp
 
-ディレクトリの属性情報も含めて、ディレクトリとファイルを再帰的にコピー。
+ディレクトリの属性情報も含めて、ディレクトリとファイルを再帰的にコピーする。
 
 ```bash
 $ cp -Rp /<ディレクトリ名1>/<ディレクトリ名2> /<ディレクトリ名1>/<ディレクトリ名2>
@@ -140,7 +140,7 @@ $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名>
 
 #### ▼ -p
 
-『```<ファイルへのパス>.YYYYmmdd```』の形式でバックアップファイルを作成
+『```<ファイルへのパス>.YYYYmmdd```』の形式でバックアップファイルを作成する。
 
 ```bash
 $ cp -p <ファイルへのパス> <ファイルへのパス>.`date +"%Y%m%d"`
@@ -728,6 +728,20 @@ $ find ./* -name "*.txt" -type f | xargs rm -rf
 # m：--mega
 # t：--total
 $ free -m --t
+
+              total        used        free      shared  buff/cache   available
+Mem:          15387        2682        6672           1        6032       12459
+Swap:             0           0           0
+```
+
+メモリ使用率は、以下の計算式で算出できる。
+
+参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
+
+```mathematica
+メモリ使用率 =
+( ( Total - Free ) / Total * 100 ) =
+((15387 - 12459) / 15387) * 100 = 19 %
 ```
 
 <br>

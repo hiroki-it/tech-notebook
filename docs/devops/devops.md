@@ -200,13 +200,6 @@ AWS（ECS、EKS）、Kubernetes
 - https://developer.hatenastaff.com/entry/2020/06/26/150300
 - https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html
 
-ちなみに、Kubernetesのアップグレード手法のClusterマイグレーションも、ブルー/グリーンデプロイメントに属する。
-
-参考：
-
-- https://logmi.jp/tech/articles/323033
-- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-
 #### ▼ 類似するローリングアップデートとの違い
 
 ローリングアップデートとは異なり、開発者のタイミングでルーティング先を新環境に切り替えられるため、フロントエンド領域とバックエンド領域が別々のアプリケーションとして稼働している場合に、これらのデプロイを同時に完了できる。また、特定の動作が正常かどうかをリリース作業前に確認できる。一方で、開発者のリリース作業の工数が多くなる。

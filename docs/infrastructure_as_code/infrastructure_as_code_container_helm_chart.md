@@ -19,7 +19,7 @@ description: チャート＠Helmの知見を記録しています。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは、パッケージマネージャーとしてのHelmクライアント、パッケージとしてのチャートアーカイブ（```.tgz```形式）、チャートアーカイブの元になるチャート、チャートアーカイブのレジストリとしてのチャートレジストリ、チャートレジストリ内にある複数のチャートリポジトリ、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいてkube-apiserverをコールし、Kubernetes上にKubernetesリソースをapplyする。
+Helmは、パッケージマネージャーとしてのHelmクライアント、パッケージとしてのチャートアーカイブ（```.tgz```形式）、チャートアーカイブの元になるチャート、チャートアーカイブのレジストリとしてのチャートレジストリ、チャートレジストリ内にある複数のチャートリポジトリ、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースがapplyされる。
 
 参考：
 
@@ -243,7 +243,103 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 <br>
 
-## 05. アクション
+## 05. value.yaml
+
+### 共通オプション
+
+#### ▼ 共通オプションとは
+
+多くの外部チャートで共通して用意されている```values```ファイルのデフォルトオプションである。共通オプションは、外部チャート内の```_help.tpl```ファイルに出力される。
+
+参考：https://knowledge.sakura.ad.jp/23603/
+
+#### ▼ affinity
+
+チャート内のDeploymentの```spec.template.spec.affinity```オプションに値を設定する。
+
+#### ▼ fullnameOverride
+
+デフォルトでは、リリースによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+
+#### ▼ image.pullPolicy
+
+チャート内のDeploymentの```spec.template.spec.containers.imagePullPolicy```オプションに値を設定する。
+
+#### ▼ imagePullSecrets
+
+チャート内のDeploymentの```spec.template.spec.imagePullSecrets```オプションに値を設定する。
+
+#### ▼ image.repository
+
+チャート内のDeploymentの```spec.template.spec.containers.image```オプションに値を設定する。
+
+#### ▼ image.tag
+
+チャート内のオプションに値を設定する。
+
+#### ▼ ingress.annotations
+
+チャート内のIngressの```metadata.annotations```オプションに値を設定する。
+
+#### ▼ ingress.enabled
+
+Ingressの作成を有効化する。
+
+#### ▼ ingress.hosts
+
+チャート内のIngressの```spec.rules```オプションに値を設定する。
+
+#### ▼ ingress.tls
+
+チャート内のIngressの```spec.tls```オプションに値を設定する。
+
+#### ▼ nameOverride
+
+デフォルトでは、チャートによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```nameOverride```オプションを設定していた場合、Kubernetesリソース名は『```＜リリース名＞-＜nameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+
+#### ▼ nodeSelector
+
+チャート内のDeploymentの```spec.template.spec.nodeSelector```オプションに値を設定する。
+
+#### ▼ podSecurityContext
+
+チャート内のDeploymentの```spec.template.spec.securityContext```オプションに値を設定する。
+
+#### ▼ replicaCount
+
+チャート内のDeploymentの```spec.replicas```オプションに値を設定する。
+
+#### ▼ resources
+
+チャート内のDeploymentの```spec.template.spec.containers.resources```オプションに値を設定する。
+
+#### ▼ securityContext
+
+チャート内のDeploymentの```spec.template.spec.containers.securityContext```オプションに値を設定する。
+
+#### ▼ serviceAccount.create
+
+ServiceAccountの作成を有効化する。
+
+#### ▼ serviceAccount.annotations
+
+チャート内のServiceAccountの```metadata.annotations```オプションに値を設定する。
+
+#### ▼ service.type
+
+チャート内のServiceの```spec.type```オプションに値を設定する。
+
+#### ▼ service.port
+
+チャート内のServiceの```spec.ports.port```オプションに値を設定する。
+
+#### ▼ tolerations
+
+チャート内のDeploymentの```spec.template.spec.tolerations```オプションに値を設定する。
+
+<br>
+
+## 06. アクション
 
 ### アクションとは
 
@@ -409,7 +505,7 @@ metadata:
 
 <br>
 
-## 06. 変換
+## 07. 変換
 
 ### b64enc
 

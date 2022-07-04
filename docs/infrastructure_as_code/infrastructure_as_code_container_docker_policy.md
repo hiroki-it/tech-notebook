@@ -13,17 +13,15 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. コンテナの分割
+## 01. プロセス単位でコンテナを分割する
 
-### プロセス単位でコンテナを分割する
-
-これは、Dockerの原則である。アプリケーションを稼働させるには、最低限、Webサーバーミドルウェア、アプリケーション、DBMSが必要である。これらを、個別のコンテナで稼働させ、ネットワークで接続する。
+これは、Dockerの原則である。アプリケーションを稼働させるには、最低限、Webサーバーミドルウェア、アプリケーション、DBMSが必要である。これらのプロセスは、同じコンテナに共存させることなく、個別のコンテナで稼働させ、ネットワークで接続する。
 
 ![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロセス単位のコンテナ.png)
 
 <br>
 
-## 02. ベースイメージの選定
+## 02. ベースイメージを選ぶ
 
 ### イメージレジストリ
 
@@ -77,7 +75,7 @@ $ docker inspect <コンテナ名>
 
 <br>
 
-## 02-02 イメージの軽量化
+## 03. イメージを軽量化する
 
 ### 不要なファイルを除外する
 
@@ -281,5 +279,14 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 ```
+
+<br>
+
+## 04. イメージのサイバー攻撃を対策する
+
+参考：
+
+- https://blog.aquasec.com/docker-security-best-practices
+- https://www.creationline.com/lab/aquasecurity/43087
 
 <br>

@@ -90,7 +90,7 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 #### ▼ kube-controller
 
-各Kuberneteリソースの状態が、マニフェストファイルの宣言的設定通りになるように制御する。Kubernetesリソースごとにkube-controllerが存在している。
+各Kubernetesリソースの状態が、マニフェストファイルの宣言的設定通りになるように制御する。Kubernetesリソースごとにkube-controllerが存在している。
 
 参考：
 

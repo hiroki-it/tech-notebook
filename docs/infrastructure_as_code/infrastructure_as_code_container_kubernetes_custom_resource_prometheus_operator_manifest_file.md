@@ -1,0 +1,35 @@
+---
+title: 【IT技術の知見】PrometheusOperator＠カスタムリソース
+description: PrometheusOperator＠カスタムリソースの知見を記録しています。
+---
+
+# PrometheusOperator＠カスタムリソース
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
+## 01. セットアップ
+
+### チャートリポジトリから
+
+#### ▼ kube-prometheus-stackチャートリポジトリから
+
+helmチャートのkube-prometheus-stackチャートをapplyする。
+
+参考：
+
+- https://prometheus-operator.dev/docs/operator/api/
+- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+- https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
+
+```bash
+$ helm install <リリース名> prometheus-community/kube-prometheus-stack
+```
+
+<br>
+

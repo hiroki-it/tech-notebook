@@ -17,7 +17,7 @@ description: マニフェストファイル＠ArgoCDの知見を記録してい�
 
 ### アーキテクチャ
 
-ArgoCDサーバー、リポジトリサーバー、アプリケーションコントローラー、RedisDexサーバー、ArgoCD Applicationから構成される。
+ArgoCDサーバー、リポジトリサーバー、アプリケーションコントローラー、RedisDexサーバー、から構成される。
 
 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
@@ -27,7 +27,7 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### APIサーバー
 
-argocdコマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetesクラスターへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+argocdコマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
 
 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -43,7 +43,7 @@ argocdコマンドのクライアントやダッシュボードからリクエ�
 
 ### Applicationコントローラー
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetesクラスターにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないかどうかを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないかどうかを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
 
 参考：https://weseek.co.jp/tech/95/#i-7
 
