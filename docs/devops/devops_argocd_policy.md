@@ -46,7 +46,9 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+
+参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
 ```yaml
 # 親Application
@@ -166,3 +168,8 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 - https://blog.mmmcorp.co.jp/blog/2022/02/24/yassan-argocd-with-aws-secrets-manager/
 
+<br>
+
+## 04. アップグレード
+
+ArgoCDが自分自身をアップグレードできるように、親Applicationを子Applicationで管理する。

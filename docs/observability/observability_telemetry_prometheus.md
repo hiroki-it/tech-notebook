@@ -34,9 +34,38 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 
 ### Prometheus serverとは
 
-メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、またGrafanaのPromQLによるアクセスを待ち受ける。
+メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、またGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
-参考：https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
+参考：
+
+- https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
+- https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
+
+```yaml
+$ cat /etc/prometheus/prometheus.yml
+
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s 
+
+# アラートの送信先とするAlertmanagerを設定する。
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Alertmanagerのルーティングルールを設定する。
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# Retrievalのルールを設定する。
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['localhost:9090']
+```
 
 <br>
 
@@ -59,7 +88,7 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 
 #### ▼ 設定ファイル
 
-設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なり、例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
+設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
 参考：
 

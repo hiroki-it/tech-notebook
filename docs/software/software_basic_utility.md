@@ -156,13 +156,20 @@ $ cp -p <ファイルへのパス> <ファイルへのパス>.`date +"%Y%m%d"`
 
 #### ▼ ```cron```ファイル
 
-| ファイル名<br>ディレクトリ名 | 利用者 | 主な用途                                               |
-| ---------------------------- | ------ | ------------------------------------------------------ |
-| ```/etc/crontab```           | root   | 毎時、毎日、毎月、毎週の自動タスクのメイン設定ファイル |
-| ```/etc/cron.hourly```       | root   | 毎時実行される自動タスク設定ファイルを配置するディレクトリ |
-| ```/etc/cron.daily```        | root   | 毎日実行される自動タスク設定ファイルを配置するディレクトリ |
-| ```/etc/cron.monthly```      | root   | 毎月実行される自動タスク設定ファイルを配置するディレクトリ |
-| ```/etc/cron.weekly```       | root   | 毎週実行される自動タスク設定ファイルを配置するディレクトリ |
+```bash
+# /etc/cron.hourly/cron-hourly.txt
+# 毎時・1分
+1 * * * * root run-parts /etc/cron.hourly
+# <- 最後は改行する。
+```
+
+| ディレクトリ名          | 利用者 | 主な用途                                         |
+| ----------------------- | ------ | ------------------------------------------------ |
+| ```/etc/crontab```      | root   | 任意のcronファイルを配置するディレクトリ         |
+| ```/etc/cron.hourly```  | root   | 毎時実行されるcronファイルを配置するディレクトリ |
+| ```/etc/cron.daily```   | root   | 毎日実行されるcronファイルを配置するディレクトリ |
+| ```/etc/cron.monthly``` | root   | 毎月実行されるcronファイルを配置するディレクトリ |
+| ```/etc/cron.weekly```  | root   | 毎週実行されるcronファイルを配置するディレクトリ |
 
 **＊実装例＊**
 
@@ -229,26 +236,11 @@ $ crond -n
 
 #### ▼ crontabとは
 
-cronデーモンの動作が定義されたcrontabファイルを操作するためのユーティリティ。
-
-#### ▼ crontabとは
-
-作成した```cron```ファイルを登録する。```cron.d```ファイルは操作できない。
+cronデーモンの動作が定義されたcrontabファイルを操作するためのユーティリティ。作成した```cron```ファイルを登録する。```cron.d```ファイルは操作できない。
 
 ```bash
-$ crontab <パス>
+$ crontab <ファイルへのパス>
 ```
-
-#### ▼ 登録されたcronファイルの処理を確認
-
-```bash
-$ crontab -l
-
-# crontabコマンドで登録されたcronファイルの処理
-1 * * * * rm foo
-```
-
-#### ▼ ```cron```ファイルの登録手順
 
 **＊実装例＊**
 
@@ -257,28 +249,28 @@ $ crontab -l
 参考：
 
 ```bash
-# cron-hourly.txt
+# /etc/cron.hourly/cron-hourly.txt
 # 毎時・1分
 1 * * * * root run-parts /etc/cron.hourly
 # <- 最後は改行する。
 ```
 
 ```bash
-# cron-daily.txt
+# /etc/cron.daily/cron-daily.txt
 # 毎日・2時5分
 5 2 * * * root run-parts /etc/cron.daily
 # <- 最後は改行する。                         
 ```
 
 ```bash
-# cron-monthly.txt
+# /etc/cron.monthly/cron-monthly.txt
 # 毎週日曜日・2時20分
 20 2 * * 0 root run-parts /etc/cron.weekly
 # <- 最後は改行する。
 ```
 
 ```bash
-# cron-weekly.txt
+# /etc/cron.weekly/cron-weekly.txt
 # 毎月一日・2時40分
 40 2 1 * * root run-parts /etc/cron.monthly
 # <- 最後は改行する。
@@ -293,7 +285,7 @@ $ crontab -l
 （２）このファイルを```crontab```コマンドで登録する。cronファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。
 
 ```bash
-$ crontab /foo/cron-hourly.txt
+$ crontab /etc/cron.hourly/cron-hourly.txt
 ```
 
 （３）登録されている処理を取得する。
@@ -301,7 +293,7 @@ $ crontab /foo/cron-hourly.txt
 ```bash
 $ crontab -l
 
-1 * * * * root run-parts /etc/cron.hourly
+1 * * * * root run-parts /etc/cron.hourly/cron.hourly
 ```
 
 （４）ログに表示されているかを確認する。
@@ -315,9 +307,33 @@ $ tail -f cron
 （５）改行コードを確認。改行コードが表示されない場合はLFであり、問題ない。
 
 ```bash
-$ file /foo/cron-hourly.txt
+$ file /etc/cron.hourly/cron-hourly.txt
 
 foo.txt: ASCII text
+```
+
+#### ▼ -e
+
+エディタを開き、登録済みのcronファイルを変更/削除する。
+
+参考：https://nontitle.xyz/archives/1065
+
+```bash
+$ crontab -e
+
+# 登録されたcronファイルが表示されるため、変更/削除する。
+1 * * * * rm foo
+```
+
+#### ▼ -l
+
+登録済みのcronファイルの一覧を表示する。
+
+```bash
+$ crontab -l
+
+# crontabコマンドで登録されたcronファイルの処理
+1 * * * * rm foo
 ```
 
 <br>
@@ -821,10 +837,16 @@ $ growpart /dev/xvda 1
 
 #### ▼ historyとは
 
+指定した履歴数でコマンドを取得する。
+
+```bash
+$ history 100
+```
+
 履歴1000件の中からコマンドを検索する。
 
 ```bash
-$ history | grep <過去のコマンド>
+$ history 1000 | grep <過去のコマンド>
 ```
 
 <br>

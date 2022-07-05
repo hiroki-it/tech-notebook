@@ -19,7 +19,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 #### ▼ kube-prometheus-stackチャートリポジトリから
 
-helmチャートのkube-prometheus-stackチャートをapplyする。
+helmチャートのkube-prometheus-stackチャートをapplyする。このチャート内にPrometheusOperatorが含まれている。
 
 参考：
 

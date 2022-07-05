@@ -686,7 +686,7 @@ spec:
 
 #### ▼ helm
 
-helmコマンドに相当するパラメーターを設定する。Helmfileのように、helmコマンドを宣言的に実行できる。
+helmコマンドに相当するパラメーターを設定する。Helmfileのように、helmコマンドを宣言的に実行できる。注意点として、
 
 参考：
 
@@ -727,6 +727,18 @@ spec:
         foo: FOO
         bar: BAR
         baz: BAZ
+```
+
+内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。その代わりに、```argocd app history```コマンドで確認できる。
+
+参考：https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
+
+```bash
+$ argocd app history <Application名>
+
+ID  DATE                           REVISION
+0   2020-04-12 10:22:57 +0900 JST  1.0.1
+1   2020-04-12 10:49:14 +0900 JST  1.0.0
 ```
 
 #### ▼ repoURL

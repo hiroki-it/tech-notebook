@@ -423,7 +423,7 @@ $ helm template <リリース名> <チャートへのパス> >| <出力先ファ
 指定した```values```ファイル使用して、```helm template```コマンドを実行する。
 
 ```bash
-$ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル> --set foo.bar=baz
+$ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>|
 ```
 
 ```yaml

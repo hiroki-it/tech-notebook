@@ -45,11 +45,21 @@ Ingressや静的IPアドレスのメトリクスに対してPull型通信を送�
 
 <br>
 
-## 05. PrometheusRule
+## 05. Prometheus
+
+### Prometheusとは
+
+Prometheusのセットアップ方法を決定する。
+
+<br>
+
+## 06. PrometheusRule
 
 ### PrometheusRuleとは
 
-アラートルールとレコーディングルールを決定する。
+アラートルールとレコーディングルールを決定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
+
+参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 <br>
 
@@ -121,7 +131,7 @@ spec:
 
 <br>
 
-## 06. ServiceMonitor
+## 07. ServiceMonitor
 
 ### ServiceMonitorとは
 
@@ -307,7 +317,7 @@ metadata:
 
 <br>
 
-## 07. ThanosRuler
+## 08. ThanosRuler
 
 ### ThanosRuler
 
