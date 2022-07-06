@@ -46,7 +46,7 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、同期時の操作手順として、親Applicationの同期を実行し、その後子Applicationの同期を実行することになる。
 
 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
@@ -167,6 +167,30 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 - https://blog.mmmcorp.co.jp/blog/2022/02/24/yassan-argocd-with-aws-secrets-manager/
+
+<br>
+
+## 04. エラー解決
+
+### 既に存在しないリソースを検出し続けてしまう
+
+PruneによるKubernetesリソースの削除を有効化した場合、Prune後に存在しないリソースを監視し続けてしまう現象が起こることがある。また、Applicationの削除時に、削除中ステータスのまま処理が進まないなる場合がある。これらの場合には、```spec.syncPolicy.allowEmpty```キーを有効化しつつ、Applicationの```metadata.finalizers```キーの値を```kubectl edit```コマンドで空配列に変更する。
+
+参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+
+```bash
+$ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
+```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers: [] # 空配列に変更する。
+spec:
+
+# 〜 中略 〜
+```
 
 <br>
 

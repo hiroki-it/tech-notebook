@@ -309,33 +309,15 @@ spec:
 
 #### ▼ argocdコマンドを使用して
 
-ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDに登録されたアプリケーションの情報とApplicationの両方を削除できる。
+ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDのApplication自体と、Application配下のリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
 
 参考：
 
-- https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-argocd
 - https://argo-cd.readthedocs.io/en/stable/faq/
+- https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 ```bash
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
-```
-
-もし、Applicationが削除中のまま進行しない時は、Applicationのマニフェストファイルを```kubectl edit```コマンドで```metadata.finalizers```キーの値を空配列に変更する。
-
-参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
-
-```bash
-$ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
-```
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  finalizers: [] # 空配列に変更する。
-spec:
-
-# 〜 中略 〜
 ```
 
 #### ▼ kubectlコマンドを使用して
@@ -729,9 +711,17 @@ spec:
         baz: BAZ
 ```
 
+ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用し、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
+
+参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
+
 内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。その代わりに、```argocd app history```コマンドで確認できる。
 
-参考：https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data
+- https://qiita.com/kyohmizu/items/118bf654d0288da2294e
+- https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
 
 ```bash
 $ argocd app history <Application名>
@@ -894,11 +884,11 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| 設定項目         | 説明                                                                                                                                                              |
-| ---------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                                                                    |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。                                                    |
-| ```allowEmpty``` | 自動同期中のApplicationの削除（Applicationの空）を有効化するかどうかを設定する。<br>参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18 |
+| 設定項目         | 説明                                                                                                           | 補足                                                                                                                 |
+| ---------------- |--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                           |
+| ```allowEmpty``` | 自動同期中に、ApplicationやApplication配下のリソースを検出できなくなってしまい、マニフェストファイルから空の状態を許可するかどうかを設定する。                           | 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -923,12 +913,12 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
 - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 
-| 設定項目                     | 説明                                                         |
-| ---------------------------- | ------------------------------------------------------------ |
-| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |
-| ```Validate```               |                                                              |
-| ```PrunePropagationPolicy``` |                                                              |
-| ```PruneLast```              |                                                              |
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |                                                              |
+| ```Validate```               |                                                              |                                                              |
+| ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| ```PruneLast```              |                                                              |                                                              |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -984,9 +974,7 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイ手法を設定する。デプロイ手法の種類については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html
+デプロイ手法を設定する。大前提として、そもそもArgoCDはマニフェストをapplyしているだけなので、デプロイ手法は、Deploymentの```spec.strategy```や、DaemonSetとStatefulSetの```spec.updateStrategy```の設定値に依存する。ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
 
 #### ▼ blueGreen
 

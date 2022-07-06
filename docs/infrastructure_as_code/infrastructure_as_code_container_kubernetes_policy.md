@@ -221,18 +221,25 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 #### ▼ Clusterマイグレーション
 
-旧Cluster（Prodブルー）を残したまま、新しいマスターNodeとワーカーNodeを含むCluster（Testグリーン）をデプロイする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。バージョンを1つずつだけでなく飛び越えてアップグレードできる。
+![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
+
+旧Cluster（Prodブルー）を残したまま、新しいマスターNodeとワーカーNodeを含むCluster（Testグリーン）をapplyする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
 参考：
 
 - https://logmi.jp/tech/articles/323033
 - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 
-#### ▼ インプレースアップグレード
+#### ▼ ライブアップグレード
+
+![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
 Cluster内のマスターNodeとワーカーNodeを順番にアップグレードしていく。バージョンを1つずつしかアップグレードできない。
 
-参考：https://logmi.jp/tech/articles/323033
+参考：
+
+- https://logmi.jp/tech/articles/323032
+- https://logmi.jp/tech/articles/323033
 
 <br>
 

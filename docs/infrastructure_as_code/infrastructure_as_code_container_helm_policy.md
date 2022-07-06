@@ -193,3 +193,51 @@ labels:
 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 <br>
+
+## 04. リリースのアップグレード
+
+### リリースのアップグレードとは
+
+Helmのチャートのアップグレードは、リリースをアップグレードすることで対応する。
+
+<br>
+
+### 非カスタムリソースのみからなるチャート場合
+
+非カスタムリソースのみからなるリリースのアップグレードは以下の手順で行う。アップグレードが正常に完了したことがわかるように、```--wait```オプションを有効化すると良い。
+
+参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+
+（１）```helm upgrade```コマンドを実行し、既存のリリースをアップグレードする。
+
+```bash
+$ helm upgrade -f <valuesファイルへのパス> <リリース名> <チャートへのパス> --version <バージョン> --wait
+```
+
+（２）リリースのバージョンが新しくなっていることを確認する。
+
+```bash
+$ helm list
+```
+
+<br>
+
+### カスタムリソースを含むチャートの場合
+
+Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、アップグレードとアンインストールはkubectlコマンドで実行する必要がある。
+
+参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
+
+（１）```kubectl apply```コマンドを実行し、新しいバージョンのカスタムリソースをapplyする。
+
+```bash
+$ kubectl apply -f <新しいバージョンのカスタムリソースのマニフェストファイルのURL>
+```
+
+（２）```kubectl delete```コマンドを実行し、古いバージョンのカスタムリソースをdeleteする。
+
+```bash
+$ kubectl delete -f <古いバージョンのカスタムリソースのマニフェストファイルのURL>
+```
+
+<br>

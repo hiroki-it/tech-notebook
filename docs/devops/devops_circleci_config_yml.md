@@ -574,6 +574,24 @@ jobs:
 
 <br>
 
+### resource_class
+
+CircleCIの実行環境のスペックを設定する。Workflow間のキャッシュの使い回しと同様にして、ビルドの完了までの速さを改善できる。
+
+参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
+
+```yaml
+version: 2.1
+
+jobs:
+ build:
+   docker:
+     - image: circleci/foo
+   resource_class: xlarge # vCPU 8、RAM 16GB
+```
+
+<br>
+
 ### steps
 
 #### ▼ stepsとは
@@ -622,7 +640,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のworkflowで同じパッケージがインストールされる。しかし、workflowのたびに、パッケージをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のworkflowのビルド時に、vendorディレクトリ配下に配置されたアーティファクトを再利用する。この機能は、複数のworkflowの間だけでなく、1つのworkflowの中でも利用できる。
+Workflow間で使いまわせるキャッシュを作成する。```resource_class```オプションによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のworkflowで同じパッケージがインストールされる。しかし、workflowのたびに、パッケージをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のworkflowのビルド時に、vendorディレクトリ配下に配置されたアーティファクトを再利用する。この機能は、複数のworkflowの間だけでなく、1つのworkflowの中でも利用できる。
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 

@@ -45,7 +45,7 @@ repository/
 
 ### nameとは
 
-ワークフロー名を設定する。
+Workflow名を設定する。
 
 ```yaml
 name: foo
@@ -72,7 +72,7 @@ on:
 
 ### jobsとは
 
-ワークフローの具体的な処理を設定する。
+Workflowの具体的な処理を設定する。
 
 <br>
 
@@ -544,7 +544,7 @@ jobs:
 
 <br>
 
-## 08. ワークフローコマンド
+## 08. Workflowコマンド
 
 ### add-mask
 

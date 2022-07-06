@@ -98,12 +98,12 @@ helmコマンドの向き先を指定して、```helm install```コマンドを�
 
 ```bash
 # Minikubeの場合
-helm install <リリース名> <チャートリポジトリ> --kube-context minikube
+helm install <リリース名> <チャートリポジトリ名> --kube-context minikube
 ```
 
 ```bash
 # AWSの場合
-$ helm install <リリース名> <チャートリポジトリ> --kube-context <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
+$ helm install <リリース名> <チャートリポジトリ名> --kube-context <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 ```
 
 <br>
@@ -296,12 +296,12 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 #### ▼ add
 
-チャートリポジトリをローカルマシンに登録する。
+helmコマンドの実行環境にチャートリポジトリを登録する。
 
 参考：https://knowledge.sakura.ad.jp/23603/
 
 ```bash
-$ helm repo add <チャート名> <チャートリポジトリURL>
+$ helm repo add <チャートリポジトリ名> <チャートリポジトリURL>
 
 "<チャート名>" has been added to your repositories
 ```
@@ -309,9 +309,9 @@ $ helm repo add <チャート名> <チャートリポジトリURL>
 登録していないチャートにhelmコマンドでアクセスしようとするとエラーになる。
 
 ```bash
-$ helm show all <チャート名>
+$ helm show all <チャートリポジトリ名>
 
-Error: failed to download "<チャート名>"
+Error: failed to download "<チャートリポジトリ名>"
 ```
 
 #### ▼ index
@@ -324,23 +324,37 @@ Error: failed to download "<チャート名>"
 
 #### ▼ list
 
-ローカルマシンに登録されたチャートリポジトリの一覧を取得する。
+事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの一覧を取得する。
 
 ```bash
 $ helm repo list
 
-NAME　       URL                          
-<チャート名>   https://example.com/charts
+NAME　                URL                          
+<チャートリポジトリ名>   https://example.com/charts
 ```
 
 #### ▼ remove
 
-ローカルマシンに登録されたチャートリポジトリを削除する。
+事前に```helm repo add```コマンドで追加しておいたチャートリポジトリを削除する。
 
 ```bash
 $ helm repo remove <チャート名>
 
-"<チャート名>" has been removed from your repositories
+"<チャートリポジトリ名>" has been removed from your repositories
+```
+
+#### ▼ update
+
+事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの情報を更新する。チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
+
+参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+
+```bash
+$ helm repo update <チャートリポジトリ名>
+
+Hang tight while we grab the latest from your chart repositories...
+...
+Update Complete. ⎈Happy Helming!⎈
 ```
 
 <br>
@@ -349,7 +363,9 @@ $ helm repo remove <チャート名>
 
 #### ▼ searchとは
 
-チャートリポジトリを検索する。
+事前に```helm repo add```コマンドで追加しておいたチャートリポジトリを検索する。
+
+参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
 #### ▼ hub
 
@@ -460,7 +476,9 @@ $ helm uninstall <リリース名>
 
 #### ▼ upgradeとは
 
-Helmのリリースをアップグレードする。
+指定したバージョンのチャートを使用して、Helmのリリースをアップグレードする。
+
+参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --install
 
@@ -476,6 +494,18 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 3 # <---- リビジョン番号が増えていく
 TEST SUITE: None
+```
+
+#### ▼ --skip-crds
+
+Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソースのインストールを実行する仕様になっている。```--skip-crds```オプションを有効化すると、このインストールをスキップし、非カスタムリソースのみをインストールできる。
+
+参考：
+
+- https://helm.sh/docs/helm/helm_upgrade/
+
+```bash
+$ helm upgrade --skip-crds -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
 ```
 
 <br>

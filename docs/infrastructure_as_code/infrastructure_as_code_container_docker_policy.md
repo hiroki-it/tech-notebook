@@ -166,13 +166,18 @@ EXPOSE 80
 
 <br>
 
-<br>
-
-### イメージレイヤーを減らす
+### イメージレイヤーの数を減らす
 
 #### ▼ ```RUN```コマンドをまとめる
 
-Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、これを1つにまとめてしまう方が良い。例えば、以下のような時、
+イメージレイヤー数が多くなると、コンテナイメージが大きくなる。Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『```&&```』で1つにまとめてしまう方が良い。
+
+参考：
+
+- https://www.itbook.info/network/docker02.html
+- https://yuhabeem.com/2021/03/27/311/
+
+例えば、以下のような時、
 
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール
@@ -180,13 +185,15 @@ RUN yum -y isntall httpd
 RUN yum -y install php
 RUN yum -y install php-mbstring
 RUN yum -y install php-pear
+RUN rm -Rf /var/cache/yum
 ```
 
 これは、以下の様に一行でまとめられる。イメージレイヤーが少なくなり、コンテナイメージを軽量化できる。
 
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール
-RUN yum -y install httpd php php-mbstring php-pear
+RUN yum -y install httpd php php-mbstring php-pear \
+&& rm -Rf /var/cache/dnf
 ```
 
 さらに、これは以下の様にも書ける。
@@ -197,7 +204,8 @@ RUN yum -y install \
      httpd \
      php \
      php-mbstring \
-     php-pear
+     php-pear \
+  && rm -Rf /var/cache/dnf
 ```
 
 <br>

@@ -92,9 +92,12 @@ $ sudo apt-get install helm
 
 #### ▼ apiVersionとは
 
-Helm-APIのバージョンを設定する。
+Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
-参考：https://helm.sh/docs/topics/charts/#the-apiversion-field
+参考：
+
+- https://helm.sh/docs/topics/charts/#the-apiversion-field
+- https://helm.sh/docs/topics/v2_v3_migration/
 
 ```yaml
 apiVersion: v2
