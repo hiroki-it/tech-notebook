@@ -170,18 +170,18 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
-| キー              | 説明                                               | 値の例                          |
-| ----------------- | -------------------------------------------------- | ------------------------------- |
-| ```/app```        | マイクロサービス名                                 | ```foo```、```foo-service```    |
-| ```/component```  | コンテナの役割名                                   | ```database```                  |
-| ```/created-by``` | このKubernetesリソースを作成したリソースやユーザー | ```controller-manager```        |
+| キー              | 説明                                               | 値の例                           |
+| ----------------- | -------------------------------------------------- |-------------------------------|
+| ```/app```        | マイクロサービス名                                 | ```foo```、```foo-service```   |
+| ```/component```  | コンテナの役割名                                   | ```database```                |
+| ```/created-by``` | このKubernetesリソースを作成したリソースやユーザー | ```kube-controller-manager``` |
 | ```/env```        | アプリケーションの実行環境名                       | ```prd```、```stg```、```dev``` |
-| ```/instance```   | 冗長化されたコンテナのインスタンス名               | ```mysql-12345```               |
-| ```/managed-by``` | アプリケーションの管理ツール名                     | ```helm```                      |
-| ```/name```       | マイクロサービスを構成するコンテナのベンダー名     | ```mysql```                     |
-| ```/part-of```    | マイクロサービス全体のアプリケーション名           | ```bar```                       |
-| ```/type```       | リソースの設定方法の種類名                         | ```host```（PVのマウント対象）  |
-| ```/version```    | マイクロサービスのリリースバージョン名             | ```5.7.21```                    |
+| ```/instance```   | 冗長化されたコンテナのインスタンス名               | ```mysql-12345```             |
+| ```/managed-by``` | アプリケーションの管理ツール名                     | ```helm```                    |
+| ```/name```       | マイクロサービスを構成するコンテナのベンダー名     | ```mysql```                   |
+| ```/part-of```    | マイクロサービス全体のアプリケーション名           | ```bar```                     |
+| ```/type```       | リソースの設定方法の種類名                         | ```host```（PVのマウント対象）         |
+| ```/version```    | マイクロサービスのリリースバージョン名             | ```5.7.21```                  |
 
 #### ▼ helm.sh
 
@@ -217,29 +217,39 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ## 04. アップグレード
 
-### Kubernetes Cluster
+### アップグレード要件
 
-#### ▼ Clusterマイグレーション
+- アプリケーションでダウンタイムが発生しない。
+- 稼働中の全体リソースが減らない。
+- マスターNodeでは、kube-contoroller-manager、kube-schedulerの許容するが抑えられる。
+- ワーカーNodeのストレージの消去は許容する。
 
-![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
+<br>
 
-旧Cluster（Prodブルー）を残したまま、新しいマスターNodeとワーカーNodeを含むCluster（Testグリーン）をapplyする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。バージョンを1つずつだけでなく飛び越えてアップグレードできる。
-
-参考：
-
-- https://logmi.jp/tech/articles/323033
-- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+### Clusterのアップグレード
 
 #### ▼ ライブアップグレード
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-Cluster内のマスターNodeとワーカーNodeを順番にアップグレードしていく。バージョンを1つずつしかアップグレードできない。
+既存のClusterのバージョンをそのままアップグレードする方法。Cluster内で旧ワーカーNodeと旧マスターNodeを残したまま、新マスターNodeとワーカーNodeをapplyする。新Nodeが正常に稼働したことが確認できたら、ここで```kubectl drain --ignore-daemonsets```コマンドを実行すると、Drain処理が始まる。コマンドで```--ignore-daemonsets```オプションを有効化しないと、DaemonSetのPodを退避させられない。Drain処理では、旧NodeからPodが退避し、現在稼働中の新しいNodeでPodが再作成される。Drain処理が完了すれば、旧Nodeは停止してもよい。一度に作業するNode数（Surge数）を増やすことで、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
 
 参考：
 
 - https://logmi.jp/tech/articles/323032
 - https://logmi.jp/tech/articles/323033
+- https://qiita.com/tkusumi/items/946b0f31931d21a78058
+
+#### ▼ Clusterマイグレーション
+
+![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
+
+新しいバージョンのClusterを作成する方法。旧Cluster（Prodブルー）を残したまま、新マスターNodeとワーカーNodeを含むCluster（Testグリーン）をapplyする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
+
+参考：
+
+- https://logmi.jp/tech/articles/323033
+- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 
 <br>
 

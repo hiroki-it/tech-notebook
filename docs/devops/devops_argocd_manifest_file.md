@@ -930,6 +930,7 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - PrunePropagationPolicy=background
 ```
 
 <br>
@@ -980,7 +981,7 @@ spec:
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_blue-green-deployment.png)
 
-ブルーグリーンデプロイメントを使用して、新しいPodをリリースする。
+ブルー/グリーンデプロイメントを使用して、新しいPodをリリースする。
 
 参考：
 
