@@ -243,9 +243,107 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 <br>
 
-## 02. CloudWatch
+## 02. 返却データの出力方法の制御
 
-### set-alarm-state
+### 形式系
+
+#### ▼ 形式系とは
+
+返却されるデータの形式を設定できる。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-output-format.html
+
+#### ▼ json
+
+JSON形式で取得する。
+
+```bash
+$ aws iam list-users --output json > data.json
+```
+
+#### ▼ yaml
+
+YAML形式で取得する。
+
+```bash
+$ aws iam list-users --output yaml > data.yaml
+```
+
+#### ▼ text
+
+タブ切り形式で取得する。表計算ソフトで扱いやすい。
+
+```bash
+$ aws iam list-users --output text > data.tsv
+```
+
+<br>
+
+### ページ分割系
+
+#### ▼ ページ分割系とは
+
+返却されるデータのページングを設定できる。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-pagination.html
+
+#### ▼ --max-items
+
+取得する項目の最大数を設定する。
+
+```bash
+$ aws iam list-users --max-items 100
+```
+
+#### ▼ --no-paginate
+
+ページングを無効化する。
+
+```bash
+$ aws iam list-users --no-paginate
+```
+
+#### ▼ --page-size
+
+ページ当たりで取得する項目数を設定する。
+
+```bash
+$ aws iam list-users --page-size 10
+```
+
+<br>
+
+### フィルタリング系
+
+#### ▼ フィルタリング系とは
+
+返却されるデータのフィルタリング方法を設定できる。AWSリソースごとに、オプション名が異なる。
+
+参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-filter.html
+
+#### ▼ --filter
+
+SES、Cost Explorer、など
+
+#### ▼ --filters
+
+EC2、AutoScaling、RDS、など
+
+```bash
+$ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
+```
+
+#### ▼ filter-***（filterで始まる）
+
+DynamoDB、など
+
+<br>
+
+## 03. AWSリソース別のTips
+
+### CloudWatch
+
+#### ▼ set-alarm-state
 
 **＊例＊**
 
@@ -258,9 +356,7 @@ $ aws cloudwatch set-alarm-state \
     --state-reason "アラーム!!"
 ```
 
-<br>
-
-### get-metric-statistics
+#### ▼ get-metric-statistics
 
 **＊例＊**
 
@@ -268,35 +364,33 @@ $ aws cloudwatch set-alarm-state \
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
- ```bash
+```bash
 $ aws cloudwatch get-metric-statistics \
     --namespace AWS/Logs \
-    --metric-name IncomingBytes \
+    --metric-name IncomingBy***
     --start-time "2021-08-01T00:00:00" \
     --end-time "2021-08-31T23:59:59" \
     --period 86400 \
     --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
- ```
+```
 
 <br>
 
-## 03. ECR
+### ECR
 
-### get-login-password
+#### ▼ get-login-password
 
 一時的に有効なパスワード取得する。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1
-
-********
 ```
 
 <br>
 
-## 04. IAM
+### IAM
 
-### update-user
+#### ▼ update-user
 
 ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。
 
@@ -308,9 +402,9 @@ $ aws iam update-user \
 
 <br>
 
-## 05. S3
+### S3
 
-### ls
+#### ▼ ls
 
 **＊例＊**
 
@@ -333,7 +427,7 @@ $ aws s3 ls s3://<バケット名> \
 
 <br>
 
-### sync
+#### ▼ sync
 
 指定したバケット内のファイルを他のバケットにコピーする。
 
@@ -375,9 +469,9 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 <br>
 
-## 06. SQS
+### SQS
 
-### get-queue-url
+#### ▼ get-queue-url
 
 キューのURLを取得する。
 
@@ -387,7 +481,7 @@ $ aws sqs get-queue-url --queue-name <キュー名>
 
 <br>
 
-### receive-message
+#### ▼ receive-message
 
 キューに受信リクエストを送信し、メッセージを受信する。
 
@@ -415,12 +509,12 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
             "MessageId": "*****"
         }
     ]
- }
+}
 ```
 
 <br>
 
-## 07. その他
+## 07. 認証認可のTips
 
 ### SSO
 
@@ -452,9 +546,9 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 <br>
 
-### セキュリティ
+### アクセス制限
 
-#### ▼ AWS CLIの社内アクセス制限
+#### ▼ 送信元IPに基づく制限
 
 特定の送信元IPアドレスを制限するポリシーをIAMユーザーにアタッチすることにより、そのIAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
 
