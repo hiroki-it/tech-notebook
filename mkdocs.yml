@@ -138,7 +138,7 @@ nav:
                   - ACID: software/software_middleware_database_rdbms_acid.md
                   - ■ My︎SQL:
                       - MySQL: software/software_middleware_database_rdbms_mysql.md
-                      - SQL: software/software_middleware_database_rdbms_mysql_sql.md
+                      - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
           - ■ サービスメッシュ系:
               - ■ Envoy:
                   - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
@@ -162,8 +162,8 @@ nav:
               - 言語の種類: software/software_application_language_type.md
               - 言語別の処理方式: software/software_application_language_process_mode.md
               - ■ データ記述言語:
-                  - software/software_application_language_data_description_language.md
-                  - software/software_application_language_data_description_language_query.md
+                  - データ記述言語: software/software_application_language_data_description_language.md
+                  - クエリロジック: software/software_application_language_data_description_language_query.md
               - ■ PHP:
                   - PHP: software/software_application_language_php.md
                   - コマンド: software/software_application_language_php_command.md
