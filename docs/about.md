@@ -4,9 +4,9 @@ title: 【IT技術の知見】当サイトについて
 
 # 当サイトについて
 
-## 俺のドキュメントサイトとは
+## 俺のノートとは
 
-**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/self_introduction.html) ）が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。
+**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/self_introduction.html) ）が、業務や学習から得た技術的な知見をチートシート形式で記録した技術ノートです。
 
 <br>
 

@@ -74,7 +74,7 @@ title: 【IT技術の知見】目次
     * [📖：︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_acid.html)
     * MySQL
         * [📖：My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
-        * [📖：SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_sql.html)
+        * [📖：クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_query.html)
 
 #### ▼ サービスメッシュ系
 
@@ -110,7 +110,11 @@ title: 【IT技術の知見】目次
 
 * [📖：言語の種類](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_type.html)
 * [📖：︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
+
+#### ▼ データ記述言語
+
 * [📖：︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
+* [📖：︎クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_query.html)
 
 #### ▼ PHP
 

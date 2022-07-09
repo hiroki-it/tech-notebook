@@ -360,28 +360,3 @@ var_dump($json);
 
 <br>
 
-## 03. jsonクエリ言語
-
-### jq
-
-#### ▼ セットアップ
-
-```bash
-# brewリポジトリから
-$ brew install jq
-```
-
-<br>
-
-## 03-02. yamlクエリ言語
-
-### yq
-
-#### ▼ セットアップ
-
-```bash
-# GitHubリポジトリから
-$ wget https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64
-$ sudo chmod +x /usr/local/bin/yq
-```
-

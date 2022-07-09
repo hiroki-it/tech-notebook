@@ -1,8 +1,9 @@
 ---
-title: 【IT技術の知見】SQL@MySQL
+title: 【IT技術の知見】クエリロジック@MySQL
+description: クエリロジック@MySQLの知見を記録しています。
 ---
 
-# SQL@MySQL
+# クエリロジック@MySQL
 
 ## はじめに
 

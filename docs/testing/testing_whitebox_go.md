@@ -101,7 +101,7 @@ import (
  */
 func TestMain(t *testing.T) {
 	// jsonファイルの読み出し
-	data, err := ioutil.ReadFile("../testdata/foo.json")
+	data, err := ioutil.ReadFile("../testdata/data.json")
 
 	// 以下にテストコードを実装していく
 }

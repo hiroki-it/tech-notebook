@@ -96,7 +96,7 @@ metadata:
   labels:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
-  foo.json: |-
+  data.json: |-
     # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
 ```
 
@@ -139,7 +139,7 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  foo.json: |-
+  data.json: |-
     # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
 ```
 
