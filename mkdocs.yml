@@ -163,7 +163,8 @@ nav:
               - 言語別の処理方式: software/software_application_language_process_mode.md
               - ■ データ記述言語:
                   - データ記述言語: software/software_application_language_data_description_language.md
-                  - クエリロジック: software/software_application_language_data_description_language_query.md
+                  - ■ クエリロジック:
+                      - JSONクエリ: software/software_application_language_data_description_language_query_json.md
               - ■ PHP:
                   - PHP: software/software_application_language_php.md
                   - コマンド: software/software_application_language_php_command.md
