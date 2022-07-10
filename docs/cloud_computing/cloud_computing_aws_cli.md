@@ -251,7 +251,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 返却されるデータの形式を設定できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-output-format.html
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
 
 #### ▼ json
 
@@ -285,7 +285,7 @@ $ aws iam list-users --output text > data.tsv
 
 返却されるデータのページングを設定できる。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-pagination.html
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
 
 #### ▼ --max-items
 
@@ -313,13 +313,13 @@ $ aws iam list-users --page-size 10
 
 <br>
 
-### フィルタリング系
+### API側のフィルタリング系
 
-#### ▼ フィルタリング系とは
+#### ▼ API側のフィルタリング系とは
 
-返却されるデータのフィルタリング方法を設定できる。AWSリソースごとに、オプション名が異なる。
+AWSリソースのAPI側でフィルタリングし、実際に取得するデータを制御できる。AWSリソースごとに専用のオプションがある。代わりに、jqコマンドの```select```関数を使用しても良い。
 
-参考：https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-usage-filter.html
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
 #### ▼ --filter
 
@@ -330,12 +330,51 @@ SES、Cost Explorer、など
 EC2、AutoScaling、RDS、など
 
 ```bash
+# 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。
 $ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
 ```
 
-#### ▼ filter-***（filterで始まる）
+#### ▼ filterの文字を含む独自のオプション
 
 DynamoDB、など
+
+#### ▼ --include
+
+ACM、など
+
+<br>
+
+### コマンド実行側のフィルタリング系
+
+#### ▼ コマンド実行側のフィルタリング系とは
+
+コマンド実行側でフィルタリングし、取得するキーや値を制御できる。代わりに、jqコマンドのパスを使用しても良い。
+
+#### ▼ --query
+
+参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
+
+```bash
+# 全てのキーと値を取得する。
+$ aws ec2 describe-instances --query "Reservations[*]"
+```
+
+```bash
+# 最初のインデックスキーのみを取得する。
+$ aws ec2 describe-instances --query "Reservations[0]"
+```
+
+```bash
+# 特定のタグ値のデータのみを取得し、そのデータのインスタンスIDのみを取得する。
+$ aws ec2 describe-instances \
+    --filters "Name=tag:<タグ名>,Values=<タグ値>" \
+    --query "Reservations[*].Instances[*].InstanceId"
+    
+# 特定のタグ値のデータのみを取得し、そのデータのセキュリティグループのIDのみを取得する。
+$ aws ec2 describe-instances \
+    --filters "Name=tag:<タグ名>,Values=<タグ値>" \
+    --query "SecurityGroups[*].GroupId"
+```
 
 <br>
 
@@ -367,11 +406,12 @@ $ aws cloudwatch set-alarm-state \
 ```bash
 $ aws cloudwatch get-metric-statistics \
     --namespace AWS/Logs \
-    --metric-name IncomingBy***
+    --metric-name IncomingBy*** \
     --start-time "2021-08-01T00:00:00" \
     --end-time "2021-08-31T23:59:59" \
     --period 86400 \
-    --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
+    --statistics Sum | \
+      jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
 ```
 
 <br>
@@ -398,6 +438,29 @@ $ aws ecr get-login-password --region ap-northeast-1
 $ aws iam update-user \
     --user-name <現行のユーザー名> \
     --new-user-name <新しいユーザー名>
+```
+
+<br>
+
+### Resource Groups
+
+#### ▼ get-resources
+
+AWSリソースがリソースグループで管理されている場合に、特定のタグを持つAWSリソースを取得する。
+
+参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
+
+```bash
+$ aws resourcegroupstaggingapi get-resources \
+    --tag-filters Key=<タグ名>,Values=<タグ値>
+```
+
+AWSリソースの種類（ec2、alb、など）を指定して、特定のAWSリソースのみを取得することもできる。
+
+```bash
+$ aws resourcegroupstaggingapi get-resources \
+    --resource-type-filters <AWSリソースの種類> \
+    --tag-filters Key=<タグ名>,Values=<タグ値>
 ```
 
 <br>
@@ -520,7 +583,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 #### ▼ saml2aws
 
-外部Webサイト（Google Apps、AzureAD、KeyCloak、など）のクレデンシャル情報を使用して、AWSにログインする。MFAを使用している場合は、ワンタイムコードの入力が要求される。
+外部Webサイト（Google Apps、AzureAD、KeyCloak、など）のクレデンシャル情報を使用して、AWSにSSOでログインする。追加でMFAを使用している場合は、ワンタイムコードの入力が要求される。
 
 参考：https://github.com/Versent/saml2aws
 

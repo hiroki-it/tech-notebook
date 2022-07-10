@@ -114,7 +114,8 @@ title: 【IT技術の知見】目次
 #### ▼ データ記述言語
 
 * [📖：︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
-* [📖：︎クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_query.html)
+* クエリロジック
+    * [📖：︎JSONクエリ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_query_json.html)
 
 #### ▼ PHP
 

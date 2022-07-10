@@ -28,7 +28,7 @@ JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト�
 **＊実装例＊**
 
 ```javascript
-// new演算子を使ってインスタンスを生成
+// new演算子を使用してインスタンスを生成する。
 const obj = new Object();
 ```
 

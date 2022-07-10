@@ -72,7 +72,7 @@ function minSelectSort(array $array): array
 
 ```php
 <?php
-// 実際に使ってみる。
+// 実際に使用してみる。
 $array = array(10,2,12,7,16,8,13)
 $result = selectSort($array);
 var_dump($result); 
@@ -159,7 +159,7 @@ function quickSort(array $array): array
 
 ```php
 <?php
-// 実際に使ってみる。
+// 実際に使用してみる。
 $array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
 $result = quickSort($array);
 var_dump($result); 

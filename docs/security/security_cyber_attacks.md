@@ -320,7 +320,7 @@ x-csrf-token: <トークン>
 
 #### ▼ Directory traversalとは
 
-traversalは、横断する（ディレクトリを乗り越える）の意味。パス名を使ってファイルを指定し、管理者の意図していないファイルを不正に閲覧またはダウンロードする。
+traversalは、横断する（ディレクトリを乗り越える）の意味。パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に閲覧またはダウンロードする。
 
 ![ディレクトリトラバーサル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ディレクトリトラバーサル.jpg)
 

@@ -763,7 +763,7 @@ class Foo
     }
 }
 
-// 実際に使ってみる。
+// 実際に使用してみる。
 $array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
 $result = quickSort($array);
 var_dump($result);

@@ -788,7 +788,7 @@ HAVING
     COUNT(*) >= 2;
 ```
 
-※以下の場合、```GROUP BY + HAVING```を使っても、```WHERE```を使っても、同じ出力結果になる。
+以下の場合、```GROUP BY + HAVING```や```WHERE```を使用しても、同じ出力結果になる。
 
 ```sql
 SELECT

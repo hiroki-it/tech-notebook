@@ -827,10 +827,9 @@ SQL="SELECT NOW();"
 ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
 
 # 約15分間コマンドを繰り返す。
-for i in {1..900};
-do
+for i in {1..900}; do
   echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ------------" >> health_check.txt
-  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1
+  echo "$SQL" | mysql -u "$DB_USER" -P 3306 -p"$DB_PASSWORD" >> health_check.txt 2>&1
   # 1秒待機する。
   sleep 1
 done
