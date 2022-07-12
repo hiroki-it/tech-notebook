@@ -881,9 +881,44 @@ $ yum install -y tcpdump
 
 <br>
 
+### tcpdumpとは
+
+インバウンド通信とアウトバウンド通信のパケットの情報を取得する。パケットの送信元と送信先がわかる。最初の３行はスリーウェイハンドシェイクを表す。
+
+参考：http://blog.livedoor.jp/sonots/archives/18239717.html
+
+```bash
+$ tcpdump
+
+[時間] IP [送信元IPアドレス].[ポート番号] > [送信先サーバー].[ポート番号]: [パケットの説明]
+```
+
+インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
+
+参考：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
+
+**＊例＊**
+
+スリーウェイハンドシェイクのパケットの例。
+
+参考：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+
+```bash
+# クライアントからサーバーへのSYNCリクエスト
+09:36:20.760358 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [S], seq 2250708012, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 938288017 ecr 0,sackOK,eol], length 0
+
+# サーバーからクライアントへのACKリクエストとSYNリクエスト
+09:36:20.885412 IP 93.184.216.119.http > 10.0.1.23.65428: Flags [S.], seq 1676582138, ack 2250708013, win 14600, options [mss 1400,nop,nop,sackOK,nop,wscale 6], length 0
+
+# クライアントからサーバーへのACKリクエスト
+09:36:20.885482 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [.], ack 1, win 16384, length 0
+```
+
+<br>
+
 ### -i <ネットワークインターフェース名>
 
-指定したネットワークインターフェースにて、パケットの内容を取得する。
+指定したネットワークインターフェースにて、パケットの内容を取得する。```-i```オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
 
 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
@@ -905,7 +940,9 @@ $ tcpdump -nn ip
 
 <br>
 
-### -nn port <ポート番号>
+### -nn
+
+#### ▼ port
 
 全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
 
@@ -913,6 +950,42 @@ $ tcpdump -nn ip
 
 ```bash
 $ tcpdump -nn port 80
+```
+
+<br>
+
+### dst
+
+#### ▼ dst
+
+送信先の情報でフィルタリングし、パケットを取得する。
+
+参考：https://orebibou.com/ja/home/201505/20150525_001/
+
+#### ▼ port
+
+指定したポート番号を送信先とするパケットのみを取得する。
+
+```bash
+$ tcpdump dst port 80
+```
+
+<br>
+
+### src
+
+#### ▼ src
+
+送信元の情報でフィルタリングし、パケットを取得する。
+
+参考：https://orebibou.com/ja/home/201505/20150525_001/
+
+#### ▼ port
+
+指定したポート番号を送信元とするパケットのみを取得する。
+
+```bash
+$ tcpdump src port 80
 ```
 
 <br>

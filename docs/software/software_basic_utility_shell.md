@@ -410,9 +410,29 @@ $ echo 'Hello World' >| stdout.txt
 検索で取得されたファイルのサイズを合計する。
 
 ```bash
-$ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
+$ find ./* -name "*.js" -type f -printf "%s\n" \
+    | awk "{ sum += $1; } END { print sum; }"
+    
+$ find ./* -name "*.css" -type f -printf "%s\n" \
+    | awk "{ sum += $1; } END { print sum; }"
+    
+$ find ./* -name "*.png" -type f -printf "%s\n" \
+    | awk "{ sum += $1; } END { print sum; }"
+```
+
+**＊実行例＊**
+
+パケットのうちで、```443```番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。
+
+参考：https://it-ojisan.tokyo/awk-f/
+
+```bash
+$ tcpdump dst port 443 | \
+    awk -F ' ' '{print $3}'
+
+m.m.m.m.443
+n.n.n.n.443
+...
 ```
 
 #### ▼ echoプロセスへの入力
@@ -423,7 +443,7 @@ $ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { prin
 $ <任意のコマンド> | echo $?
 ```
 
-#### ▼ grepプロセスへの入力
+ ▼ grepプロセスへの入力
 
 コマンドの出力結果を```grep```コマンドに渡し、フィルタリングを行う。
 
@@ -481,6 +501,17 @@ $ cat foo.yaml | less
 
 ```bash
 $ printenv | sort -f
+```
+
+#### ▼ uniqプロセスへの入力
+
+コマンドの出力結果に関して、行が重複する場合は一つだけ残して削除する。
+
+```bash
+$ tcpdump dst port 443 | \
+    awk -F ' ' '{print $3}' >> source_ips.txt
+    
+$ cat source_ips.txt | uniq
 ```
 
 <br>
