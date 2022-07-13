@@ -353,7 +353,7 @@ EOT
 
 #### ▼ ```terraform_apply.sh```ファイル
 
-特定のAWS環境に対して```terraform apply```コマンドを実行する。
+特定のAWSアカウントに対して```terraform apply```コマンドを実行する。
 
 **＊実装例＊**
 
@@ -417,7 +417,7 @@ terraform -chdir=./${ENV} init \
 
 #### ▼ ```terraform_plan.sh```ファイル
 
-特定のAWS環境に対して```terraform plan```コマンドを実行する。
+特定のAWSアカウントに対して```terraform plan```コマンドを実行する。
 
 **＊実装例＊**
 

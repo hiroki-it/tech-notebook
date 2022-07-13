@@ -410,8 +410,8 @@ $ aws cloudwatch get-metric-statistics \
     --start-time "2021-08-01T00:00:00" \
     --end-time "2021-08-31T23:59:59" \
     --period 86400 \
-    --statistics Sum | \
-      jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
+    --statistics Sum \
+      | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
 ```
 
 <br>

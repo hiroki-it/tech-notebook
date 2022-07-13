@@ -427,8 +427,8 @@ $ find ./* -name "*.png" -type f -printf "%s\n" \
 参考：https://it-ojisan.tokyo/awk-f/
 
 ```bash
-$ tcpdump dst port 443 | \
-    awk -F ' ' '{print $3}'
+$ tcpdump dst port 443 \
+    | awk -F ' ' '{print $3}'
 
 m.m.m.m.443
 n.n.n.n.443
@@ -508,8 +508,8 @@ $ printenv | sort -f
 コマンドの出力結果に関して、行が重複する場合は一つだけ残して削除する。
 
 ```bash
-$ tcpdump dst port 443 | \
-    awk -F ' ' '{print $3}' >> source_ips.txt
+$ tcpdump dst port 443 \
+    | awk -F ' ' '{print $3}' >> source_ips.txt
     
 $ cat source_ips.txt | uniq
 ```

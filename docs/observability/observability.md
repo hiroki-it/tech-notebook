@@ -55,6 +55,17 @@ description: 可観測性の知見を記録しています。
 
 <br>
 
+### 計装（instrumentation）
+
+システムを、テレメトリーを収集できるような状態にすること。計装するためには、メトリクス収集用のツール、ロギングパッケージ、分散トレースのためのリクエストIDの付与、などを用意する必要がある。多くの場合、各テレメトリーの収集ツールは別々に要する必要があるが、OpenTelemetryではこれらの収集機能をフレームワークとして提供しようとしている。
+
+参考：
+
+- https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
+- https://www.splunk.com/ja_jp/data-insider/what-is-opentelemetry.html
+
+<br>
+
 ## 02. メトリクス 
 
 ### メトリクスとは

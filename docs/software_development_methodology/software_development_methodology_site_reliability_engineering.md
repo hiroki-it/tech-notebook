@@ -134,6 +134,8 @@ MTTxメトリクスとそのダッシュボードを作成すると良い。MTTx
 - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
 - https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
 
+#### ▼ 参考：[優れたSLOを策定するには](https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons)
+
 <br>
 
 ### SLAの決め方
@@ -141,6 +143,10 @@ MTTxメトリクスとそのダッシュボードを作成すると良い。MTTx
 #### ▼ 参考：[SREの探求](https://www.amazon.co.jp/dp/4873119618)
 
 SLAは、サイト提供会社と利用者の合意で決める目標値である。違反の規約が無ければ、SLAでなくSLOである。SLAの補償期間は一日単位で設定すると良い。SLA違反の場合には、返金を補償とする場合があるが、これ以外の補償方法でも良い。
+
+#### ▼ 参考：[ガイドライン](https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf)
+
+経産省がSLAのガイドラインを策定している。
 
 <br>
 
