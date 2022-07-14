@@ -532,7 +532,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 論理積回路（AND回路）、AND演算、ベン図
 
-2つのbitを比較して、どちらも『1』なら『1』を出力。
+```2```個のbitを比較して、どちらも『1』なら『1』を出力。
 
 ![AND回路とビット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AND回路とビット.png)
 
@@ -542,7 +542,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 否定論理積回路（NAND回路）、NAND演算、ベン図
 
-2つのbitを比較して、どちらも『1』なら『0』を出力。ベン図では両方が『1』以外の場合を指しているが、回路の出力をうまく説明できない…。
+```2```個のbitを比較して、どちらも『1』なら『0』を出力。ベン図では両方が『1』以外の場合を指しているが、回路の出力をうまく説明できない…。
 
 ![NAND回路とビット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NAND回路とビット.png)
 
@@ -552,7 +552,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 論理和回路（OR回路）、OR演算、ベン図
 
-2つのbitを比較して、どちらかが『1』なら『1』を出力。
+```2```個のbitを比較して、どちらかが『1』なら『1』を出力。
 
 ![OR回路とビット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OR回路とビット.png)
 
@@ -562,7 +562,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 排他的論理和回路（EOR回路/XOR回路）、EOR演算、ベン図
 
-2つのbitを比較して、どちらかだけが『1』なら『1』を出力。
+```2```個のbitを比較して、どちらかだけが『1』なら『1』を出力。
 
 ![EOR回路またはXOR回路とビット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EOR回路またはXOR回路とビット.png)
 
@@ -572,7 +572,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 否定論理和回路（NOR回路）、NOR演算、ベン図
 
-2つのbitを比較して、どちらも『0』なら『1』を出力。
+```2```個のbitを比較して、どちらも『0』なら『1』を出力。
 
 ![NOR回路とビット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NOR回路とビット.png)
 

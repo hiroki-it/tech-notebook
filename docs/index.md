@@ -313,7 +313,7 @@ title: 【IT技術の知見】目次
     * カスタムリソース
         * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.html)
         * [📖：︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_secret_provider_class_manifest_file.html)
-        * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_grafana_manifest_file.html)
+        * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_grafana_manifest_file.html)
         * ArgoCD
             * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.html)
         * Istio

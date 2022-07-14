@@ -164,6 +164,18 @@ main.tf
 
 <br>
 
+### get
+
+terraformコマンドを実行しているローカルマシンの```.terraform```ディレクトリに、ネストモジュールをインストールする。ただ、```terraform init```コマンドに同じ機能が含まれている。
+
+参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
+
+```bash
+$ terraform get
+```
+
+<br>
+
 ### graph
 
 rosource間の依存関係をグラフ化する。これにより、どのresourceが他のどのresourceを使用しているかがわかる。Graphvizのダウンロードが必要である。

@@ -2185,7 +2185,7 @@ DBに対する書き込み操作を行う。
 
 参考：
 
-- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.htm
+- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 **＊実装例＊**
@@ -2311,7 +2311,7 @@ DBに対する書き込み操作を行う。
 
 参考：
 
-- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.htm
+- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 **＊実装例＊**

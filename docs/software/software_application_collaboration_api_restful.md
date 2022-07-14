@@ -25,7 +25,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 #### ▼ RESTfulとRESTful-APIとは
 
-RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWebAPIをRESTful-APIという。例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、1つの『/UserInfo』というURIを対応づけている。
+RESTに基づいた設計をRESTfulという。RESTful設計が使用されたWebAPIをRESTful-APIという。例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、```1```個の『/UserInfo』というURIを対応づけている。
 
 ![RESTfulAPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPI.png)
 
@@ -84,7 +84,7 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 
 |                            | POST送信                                           | PUT送信                                                      |
 | -------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
-| データ作成の冪等性         | リクエスト1つにつき、1つのデータを作成（非冪等的） | リクエスト数に限らず、1つのデータを作成する（冪等的）。古いデータを新しいデータに置換する行為に近い。 |
+| データ作成の冪等性         | リクエスト1つにつき、```1```個のデータを作成（非冪等的） | リクエスト数に限らず、```1```個のデータを作成する（冪等的）。古いデータを新しいデータに置換する行為に近い。 |
 | リクエストパラメーターの場所 | メッセージボディにJSONデータなどを割り当てる。     | パスパラメーターにidなど、またメッセージボディにJSONデータなどを割り当てる。 |
 
 <br>

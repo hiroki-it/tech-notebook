@@ -96,6 +96,27 @@ jobs:
 
 ### steps
 
+#### ▼ continue-on-error
+
+ステップが失敗しても成功扱いにするかどうかを設定する。
+
+参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
+
+```yaml
+jobs:
+  build:
+    steps:
+      - continue-on-error: true
+        run: |
+          exit 1
+      - if: failure() # 成功扱いのため、このステップには入らない。
+        run: |
+          echo failure
+      - if: success() # 成功扱いのため、このステップに入る。
+        run: |
+          echo success
+```
+
 #### ▼ uses
 
 使用するActionsを設定する。
