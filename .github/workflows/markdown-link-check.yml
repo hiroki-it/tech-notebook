@@ -18,3 +18,7 @@ jobs:
           max-depth: -1
           use-quiet-mode: yes
           use-verbose-mode: yes
+      - name: Allow markdown-link-check failure
+        if: failure()
+        run: |
+          Echo 'The previous step failed, but allowed this.'
