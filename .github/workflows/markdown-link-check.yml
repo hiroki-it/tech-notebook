@@ -8,6 +8,7 @@ on:
 jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -18,7 +19,3 @@ jobs:
           max-depth: -1
           use-quiet-mode: yes
           use-verbose-mode: yes
-      - name: Allow markdown-link-check failure
-        if: failure()
-        run: |
-          echo 'The previous step failed, but this is allowed.'
