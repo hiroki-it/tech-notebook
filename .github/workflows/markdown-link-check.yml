@@ -21,4 +21,4 @@ jobs:
       - name: Allow markdown-link-check failure
         if: failure()
         run: |
-          Echo 'The previous step failed, but allowed this.'
+          Echo 'The previous step failed, but this is allowed.'
