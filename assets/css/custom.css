@@ -1,0 +1,300 @@
+/***************
+ ページ全体
+***************/
+.md-grid {
+    max-width: 95%;
+}
+
+/***************
+ テーマ
+***************/
+[data-md-color-scheme="dark"] {
+    --md-primary-fg-color: #313131
+}
+
+/***************
+ 画像
+***************/
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/***************
+ 見出し背景
+***************/
+
+/* 題 */
+h1 {
+
+    background: #313131;
+
+    border-radius: 0.45em;
+
+    padding: 0.6em;
+
+    position: relative;
+}
+
+h1.md-search-result__title {
+    background: white;
+}
+
+
+/* 章 */
+h2 {
+    /* 背景：色 */
+    background: #d7d7d7;
+    /* 左線：太さ，色 */
+    border-left: 0.95em solid #2980B9;
+
+    /* 上外部余白：大きさ */
+    margin-top: 1.5em;
+    /* 内部余白：文字周り */
+    padding: 0.6em;
+}
+
+/* 節 */
+h3 {
+    background: #ffffd5;
+
+    border-bottom: dotted 0.06em gray;
+
+    border-top: dotted 0.06em gray;
+    /*行高*/
+    line-height: 1.4;
+    /*アイコン分のスペース*/
+    padding: 0.5em 0.5em 0.5em 1.5em;
+
+    /* 画像より背面 */
+    position: relative;
+    z-index: 1;
+}
+
+h3:before {
+    /*アイコン色*/
+    color: #2980B9;
+    /*アイコンのユニコード*/
+    content: "\f138";
+    /*絶対位置*/
+    position: absolute;
+
+    font-family: "FontAwesome", serif;
+    /*サイズ*/
+    font-size: 1.1em;
+    /*アイコンの位置*/
+    left: 0.25em;
+    /*アイコンの位置*/
+    top: 0.45em;
+}
+
+/***************
+ 文字
+***************/
+
+.md-typeset {
+    font-size: 1.3em;
+}
+
+.md-typeset h1 {
+    color: white;
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+.md-typeset h2 {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.md-typeset h3 {
+    font-size: 1.2em;
+}
+
+.md-typeset h4 {
+    font-size: 1.0em;
+    font-weight: normal;
+}
+
+/***************
+ リスト
+***************/
+[dir=ltr] .md-typeset ol li, [dir=ltr] .md-typeset ul li {
+     margin-bottom: 0;
+ }
+
+/***************
+ サイドバー
+***************/
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+    /** タイトルのテキスト **/
+    font-size: 1.5em;
+}
+
+.md-nav {
+    /** 以外のテキスト **/
+    font-size: 0.63rem;
+}
+
+/* マウスオーバー時の動き */
+.md-nav__item a:hover {
+    text-decoration: underline;
+}
+
+/***************
+ ヘッダー
+***************/
+
+.md-tabs__list {
+    /** 均等に配置 **/
+    display: flex;
+    justify-content: space-between;
+}
+
+.md-tabs__item {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    /** 段数を増やす場合
+    float:left;
+    **/
+}
+
+.md-tabs__link {
+    color: white;
+    font-size: 0.52rem;
+    font-weight: bold;
+    opacity: 1;
+}
+
+/* マウスオーバー時の動き */
+.md-tabs__link:hover {
+  text-decoration: underline;
+}
+
+/* ロゴとタイトル間のスペース */
+[dir=ltr] .md-header__title {
+    margin-left: 0.25rem;
+}
+
+/***************
+ フッター
+***************/
+
+.md-footer__title {
+    font-size: 1.0em;
+}
+
+/* 最終更新日 */
+.md-content__inner>:last-child {
+    text-align: center;
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
+/***************
+ ロゴ
+***************/
+
+.md-header__button.md-logo {
+    margin: 0;
+    padding: 0;
+}
+
+/* サイズ */
+.md-header__button.md-logo :-webkit-any(img,svg) {
+    height: 2.1rem;
+    width: 2.1rem;
+}
+
+/* マウスオーバー時の動き */
+.md-header__button.md-logo:hover :-webkit-any(img,svg) {
+  animation: rotate-anime 1.0s linear infinite;
+}
+@keyframes rotate-anime {
+  0%  {transform: rotate(0);}
+  100%  {transform: rotate(360deg);}
+}
+
+/***************
+ テーブル
+***************/
+/**
+@see https://blog.ktz.me/making-mkdocs-tables-look-like-github-markdown-tables/
+ */
+
+/* テーブル全体．コードブロックにも影響あり．*/
+th, td {
+    border: 1px solid var(--md-typeset-table-color);
+}
+
+/* テーブル一行目 */
+.md-typeset table:not([class]) th {
+    background-color: #313131;
+    color: white;
+}
+
+/* テーブル偶数行 */
+.md-typeset__table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+
+.md-typeset__table table:not([class]) {
+    font-size: 0.60rem;
+}
+
+/***************
+ URL
+***************/
+.md-typeset a {
+    color: blue;
+}
+
+.md-typeset a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+/***************
+ コードブロック
+***************/
+.linenos {
+    background-color: #313131 !important;
+}
+
+.highlighttable .linenodiv pre {
+    color: white
+}
+
+/***************
+ レスポンシブ
+***************/
+
+/* 画像の配置が崩れないようにする */
+* {
+    float: none;
+    position: static;
+}
+
+/* PCのみ */
+@media screen and (min-width: 100em) {
+
+    /** サイト名 **/
+    .md-ellipsis {
+        font-size: 1.5em;
+    }
+
+    /* サイドバー */
+    .md-sidebar {
+        width: 15.5rem;
+    }
+}
+
+/* SPのみ */
+@media screen and (max-width: 100em) {
+
+    /** サイト名 **/
+    .md-ellipsis {
+        font-size: 0.90em;
+    }
+}
