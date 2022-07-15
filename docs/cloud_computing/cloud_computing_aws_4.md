@@ -392,7 +392,7 @@ const getBacketBasedOnDeviceType = (headers) => {
             "encoding": "base64",
             "inputTruncated": false
           },
-          "clientIp": "n.n.n.n",
+          "clientIp": "*.*.*.*",
           "headers": {
             "host": [
               {
@@ -703,7 +703,7 @@ $ aws rds modify-db-instance \
 | マスターパスワード      | DBのrootユーザーのパスワードを設定                           |                                                              |
 | バックアップ保持期間    | DBクラスター がバックアップを保持する期間を設定する。        | ```7```日間にしておく。                                      |
 | ログのエクスポート      | CloudWatchログに送信するログを設定する。                     | 必ず、全てのログを選択すること。                             |
-| セキュリティグループ  | DBクラスターのセキュリティグループを設定する。               | コンピューティングからのインバウンド通信のみを許可するように、これらのプライベートIPアドレス（```n.n.n.n/32```）を設定する。 |
+| セキュリティグループ  | DBクラスターのセキュリティグループを設定する。               | コンピューティングからのインバウンド通信のみを許可するように、これらのプライベートIPアドレス（```*.*.*.*/32```）を設定する。 |
 | 削除保護                | DBクラスターの削除を防ぐ。                                   | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。ちなみに、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにアクセスできる。<br>参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection |
 
 #### ▼ DBインスタンス

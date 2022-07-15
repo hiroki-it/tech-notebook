@@ -376,7 +376,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
       "host": "prd-foo-api-access-log",
       "httpMethod": "GET",
       "id": "36472822677180929652719686832176844832038235205288853504",
-      "ip": "n.n.n.n",
+      "ip": "*.*.*.*",
       "protocol": "HTTP/1.1",
       "requestId": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
       "requestTime": "01/Jan/2021:12:00:00 +0000",
@@ -436,7 +436,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
       "network": {
         "bytes_written": "26",
         "client": {
-          "ip": "n.n.n.n"
+          "ip": "*.*.*.*"
         }
       },
       "service": "apigateway",
@@ -486,7 +486,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 Nginxから、以下のような非構造化ログを受信する例を考える。
 
 ```log
-n.n.n.n - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+*.*.*.* - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
 ```
 
 以下のようなGrokパーサールールを定義する。```http.status_code```属性にステータスコード値を割り当てる。
@@ -513,7 +513,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
   "network": {
     "bytes_written": 17,
     "client": {
-      "ip": "n.n.n.n"
+      "ip": "*.*.*.*"
     }
   }
 }
@@ -790,7 +790,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
       "host": "prd-foo-api-access-log",
       "httpMethod": "GET",
       "id": "*****",
-      "ip": "n.n.n.n",
+      "ip": "*.*.*.*",
       "protocol": "HTTP/1.1",
       "requestId": "*****",
       "requestTime": "01/Jan/2021:12:00:00 +0000",
@@ -858,7 +858,7 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカ�
 Nginxから、以下のような非構造化ログを受信する例を考える。
 
 ```log
-n.n.n.n - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+*.*.*.* - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
 ```
 
 これに対して、以下のようなGrokパーサーのルールを定義する。```http.useragent```属性にユーザーエージェント値を割り当てる。
@@ -885,7 +885,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
   "network": {
     "bytes_written": 17,
     "client": {
-      "ip": "n.n.n.n"
+      "ip": "*.*.*.*"
     }
   }
 }

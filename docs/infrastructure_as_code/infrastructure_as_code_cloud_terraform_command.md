@@ -385,24 +385,24 @@ $ terraform plan \
 
 ### apply
 
-#### ▼ -var-file
+#### ▼ -parallelism
 
-クラウドプロバイダー上にクラウドインフラストラクチャを作成する。
+並列処理数を設定できる。デフォルト値は```10```である。
 
 ```bash
-$ terraform apply -var-file foo.tfvars
+$ terraform apply \
+    -var-file=foo.tfvars \
+    -parallelism=30
 ```
 
-```bash
-# ディレクトリを指定することも可能
-$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
-```
+#### ▼ -refresh-only
 
-成功すると、以下のメッセージが表示される。
+tfstateファイルのみを更新し、実インフラのリソースを更新しない。
+
+参考：https://learn.hashicorp.com/tutorials/terraform/refresh
 
 ```bash
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+$ terraform apply -refresh-only
 ```
 
 #### ▼ -target
@@ -423,14 +423,24 @@ $ terraform apply \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
-#### ▼ -parallelism
+#### ▼ -var-file
 
-並列処理数を設定できる。デフォルト値は```10```である。
+クラウドプロバイダー上にクラウドインフラストラクチャを作成する。
 
 ```bash
-$ terraform apply \
-    -var-file=foo.tfvars \
-    -parallelism=30
+$ terraform apply -var-file foo.tfvars
+```
+
+```bash
+# ディレクトリを指定することも可能
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
+```
+
+成功すると、以下のメッセージが表示される。
+
+```bash
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 #### ▼ 実行プランファイル

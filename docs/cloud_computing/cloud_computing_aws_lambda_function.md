@@ -518,7 +518,7 @@ const buildMessage = (event, app) => {
           elements: [{
             type: "mrkdwn",
             text: format(
-              "*PullReqURL*: https://github.com/foo-repository/compare/%s",
+              "*プルリクエストURL*: https://github.com/foo-repository/compare/%s",
               event.detail.branchName
             )
           }]

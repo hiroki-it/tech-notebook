@@ -356,10 +356,10 @@ module "alb" {
 # VPC variables
 ###############################################
 vpc_availability_zones             = { a = "a", c = "c" }
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_cidr                           = "*.*.*.*/23"
+vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
+vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 ```
 
 #### ▼ 並び順
@@ -749,7 +749,7 @@ $ asdf install
 
 ### 機密情報の管理
 
-機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをdataリソースで参照する。
+機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをデータリソースで参照する。
 
 ```terraform
 # AWS RDSの場合

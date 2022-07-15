@@ -464,7 +464,7 @@ $ composer remove <パッケージ名>
 - https://prograshi.com/framework/laravel/require-update-install/
 
 ```bash
-$ composer require <パッケージ名>:^x.x
+$ composer require <パッケージ名>:^1.0
 ```
 
 <br>

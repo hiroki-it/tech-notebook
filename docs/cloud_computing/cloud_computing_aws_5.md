@@ -522,15 +522,21 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 ### STSとは
 
-AWSリソースに一時的にアクセスできるクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。このクレデンシャル情報は、一時的なクレデンシャル情報として使用できる。
+IAMユーザーに対して、特定のAWSアカウントのAWSリソースに一時的にアクセスできるクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。このクレデンシャル情報は、一時的なクレデンシャル情報として使用できる。
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
-STSへのリクエストの結果、ロールがアタッチされた新しいクレデンシャル情報を取得できる。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+STSへのリクエストの結果、新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールがアタッチされている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
+
+IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の権限を委譲するようにする。
+
+参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+
+![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
 
 <br>
 
@@ -688,7 +694,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 # 3-2を選択した場合、credentialsファイルを参照するオプションが必要がある。
 aws s3 ls --profile <プロファイル名>
-2020-xx-xx xx:xx:xx <.tfstateファイルが管理されるバケット名>
+2020-**-** **:**:** <.tfstateファイルが管理されるバケット名>
 ```
 
 <br>

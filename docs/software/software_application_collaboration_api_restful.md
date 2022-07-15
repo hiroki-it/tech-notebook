@@ -471,7 +471,7 @@ GET https://example.com/bar-form.php?text1=a&text2=b
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
-RemoteAddr: n.n.n.n
+RemoteAddr: *.*.*.*
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
@@ -501,7 +501,7 @@ POST https://example.com/bar-form.php
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
-RemoteAddr: n.n.n.n
+RemoteAddr: *.*.*.*
 Connection: keep-alive
 Content-Length: 15
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）

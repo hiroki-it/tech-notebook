@@ -19,7 +19,71 @@ description: ロジック＠Terraformの知見を記録しています。
 
 #### ▼ ```.tfstate```ファイルとは
 
-実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行し、成功もしくは失敗したタイミングで生成される。
+実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで生成される。
+
+参考：https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+
+#### ▼ 読み方
+
+参考：https://chroju.dev/blog/terraform_state_introduction
+
+```yaml
+{
+  "version": 4,
+  "terraform_version": "1.0.6",
+  "serial": 3,
+  "lineage": "*****-*****-*****-*****-*****",
+  "outputs": { # アウトプットのapplyで追加される。
+    "foo_ids": {
+      "value": "*****",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data", # データリソースのapplyで追加される。
+      "type": "aws_caller_identity", # リソースタイプ
+      "name": "current", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "<アカウントID>",
+            "arn": "*****",
+            "id": "*****",
+            "user_id": "*****"
+            ...
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.ec2", # モジュールの場合に追加される。
+      "mode": "managed", # リソースのapplyで追加される。
+      "type": "aws_instance", # リソースタイプ
+      "name": "foo", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "*****",
+            "name": "prd-foo-instance"
+            "tags": {
+              "Env": "prd",
+              "ManagedBy": "terraform"
+            },
+            "description": "*****",
+            ...
+          }
+        }
+      ]
+    }
+  ]
+}
+```
 
 <br>
 
@@ -558,7 +622,7 @@ TF_VAR_ecr_version_tag=foo
 ###############################
 # VPC
 ###############################
-vpc_cidr_block = "n.n.n.n/n" # CIDRブロック
+vpc_cidr_block = "*.*.*.*/n" # CIDRブロック
 ```
 
 #### ▼ 値のデータ型
@@ -639,17 +703,17 @@ rds_parameter_group_values = {
 # VPC
 ###############################################
 vpc_availability_zones             = { a = "a", c = "c" }
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_cidr                           = "*.*.*.*/23"
+vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
+vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 ###############################################
 # WAF
 ###############################################
 waf_allowed_global_ip_addresses = [
-  "n.n.n.n/32",
-  "n.n.n.n/32",
+  "*.*.*.*/32",
+  "*.*.*.*/32",
 ]
 
 waf_blocked_user_agents = [
@@ -1094,10 +1158,10 @@ output "private_datastore_subnet_ids" {
 # Variables
 ###############################################
 vpc_availability_zones             = { a = "a", c = "c" }
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_cidr                           = "*.*.*.*/23"
+vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
+vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 ```
 
 ```terraform

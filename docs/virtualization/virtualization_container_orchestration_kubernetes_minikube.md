@@ -448,7 +448,7 @@ $ eval $(minikube -p minikube docker-env)
 $ env | grep DOCKER    
 
 DOCKER_TLS_VERIFY=1
-DOCKER_HOST=tcp://n.n.n.n:2376
+DOCKER_HOST=tcp://*.*.*.*:2376
 DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
@@ -604,7 +604,7 @@ ServiceのIPアドレスがワーカーNodeのIPアドレスすることは、``
 ```bash
 $ minikube ip
 
-n.n.n.n
+*.*.*.*
 ```
 
 ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できる。
@@ -615,7 +615,7 @@ n.n.n.n
 $ minikube ssh
 
 # 仮想環境の中
-$ curl -X GET http://n.n.n.n:57761
+$ curl -X GET http://*.*.*.*:57761
 ```
 
 #### ▼ list
@@ -628,8 +628,8 @@ $ minikube service list
 |----------------------|---------------------------|--------------|---------------------------|
 |      NAMESPACE       |           NAME            | TARGET PORT  |            URL            |
 |----------------------|---------------------------|--------------|---------------------------|
-| default              | foo-service               | http/80      | http://n.n.n.n:30001      |
-| default              | bar-service               | http/80      | http://n.n.n.n:30000      |
+| default              | foo-service               | http/80      | http://*.*.*.*:30001      |
+| default              | bar-service               | http/80      | http://*.*.*.*:30000      |
 | default              | kubernetes                | No node port |                           |
 | kube-system          | kube-dns                  | No node port |                           |
 | kubernetes-dashboard | dashboard-metrics-scraper | No node port |                           |
@@ -644,7 +644,7 @@ $ minikube service list
 ```bash
  $ minikube service <Service名> --url
  
-http://n.n.n.n:57761
+http://*.*.*.*:57761
 ```
 
 <br>

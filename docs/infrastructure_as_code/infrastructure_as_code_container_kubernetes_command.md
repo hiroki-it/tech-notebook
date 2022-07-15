@@ -164,7 +164,7 @@ contexts:
         provider: minikube.sigs.k8s.io
         version: v1.25.2
       name: cluster_info
-    server: https://n.n.n.n:8443 # kube-apiserverのIPアドレス
+    server: https://*.*.*.*:8443 # kube-apiserverのIPアドレス
   name: minikube
 - context:
     cluster: minikube
@@ -453,8 +453,8 @@ bar-pod    2/2     Running            0          5m01s
 $ kubectl get services
 
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-foo-service    ClusterIP   n.n.n.n        <none>        80/TCP    10s
-kubernetes     ClusterIP   n.n.n.n        <none>        443/TCP   12h
+foo-service    ClusterIP   *.*.*.*        <none>        80/TCP    10s
+kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 ```
 
 **＊例＊**

@@ -646,8 +646,8 @@ Internet Gatewayの後にEC2を作成できるようにする。
 # IP addresses
 ###############################################
 global_ip_addresses = [
-  "n.n.n.n/32",
-  "n.n.n.n/32"
+  "*.*.*.*/32",
+  "*.*.*.*/32"
 ]
 ```
 
@@ -1415,10 +1415,10 @@ CIの```terraform plan```コマンド時に値が公開されないように```o
 ```terraform
 # 後述の説明を参考にせよ。（１）
 vpc_availability_zones             = { a = "a", c = "c" }
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
+vpc_cidr                           = "*.*.*.*/23"
+vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
 ```
 
 ```terraform
@@ -1992,10 +1992,10 @@ rds_instance_class             = { a = "db.r6g.xlarge", c = "db.r6g.xlarge" }
 ###############################################
 # VPC
 ###############################################
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_cidr                           = "*.*.*.*/23"
+vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
+vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 ```
 
 <br>

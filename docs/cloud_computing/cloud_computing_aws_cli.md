@@ -627,7 +627,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
     "Condition": {
       "NotIpAddress": {
         "aws:SourceIp": [
-          "n.n.n.n/32"
+          "*.*.*.*/32"
         ]
       }
     }

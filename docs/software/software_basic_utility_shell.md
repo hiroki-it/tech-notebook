@@ -430,8 +430,8 @@ $ find ./* -name "*.png" -type f -printf "%s\n" \
 $ tcpdump dst port 443 \
     | awk -F ' ' '{print $3}'
 
-m.m.m.m.443
-n.n.n.n.443
+*.*.*.*
+*.*.*.*
 ...
 ```
 

@@ -17,9 +17,9 @@ description: CI/CD＠Terraformの知見を記録しています。
 
 ### リリースの粒度
 
-#### ▼ 大原則：PullReqを1つずつリリース
+#### ▼ 大原則：プルリクエストを1つずつリリース
 
-基本的には、PullReqを1つずつリリースする。ただし、軽微なupdate処理が実行されるPullReqであれば、まとめてリリースしても良い。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要がある。経験則で、create処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。PullReqを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。
+基本的には、プルリクエストを1つずつリリースする。ただし、軽微なupdate処理が実行されるプルリクエストであれば、まとめてリリースしても良い。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要がある。経験則で、create処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。プルリクエストを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。
 
 #### ▼ 既存のリソースに対して、新しいリソースを紐づける場合
 
@@ -56,7 +56,7 @@ Terraformには、インフラのバージョンのロールバック機能が�
 
 | env  | 説明                                                         |
 | ---- | ------------------------------------------------------------ |
-| dev  | PullReqのレビュー時に、コードの変更を検証するためのインフラ環境 |
+| dev  | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
 | stg  | ステージング環境                                             |
 | prd  | 本番環境                                                     |
 
@@ -92,7 +92,7 @@ executors:
         type: enum
         enum: [ "dev", "stg", "prd" ]
     docker:
-      - image: hashicorp/terraform:x.xx.x
+      - image: hashicorp/terraform:x.**.x
     working_directory: ~/foo_infrastructure
     environment:
       ENV: << parameters.env >>
@@ -502,7 +502,7 @@ terraform -chdir=./${ENV} apply \
 
 **＊実装例＊**
 
-例として、GitHubの特定のリポジトリのPullReqエストにPOSTで送信する。
+例として、GitHubの特定のリポジトリのプルリクエストエストにPOSTで送信する。
 
 ```yaml
 # https://github.com/mercari/tfnotify

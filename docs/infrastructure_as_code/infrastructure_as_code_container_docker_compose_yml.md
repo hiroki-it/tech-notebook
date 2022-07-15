@@ -333,13 +333,13 @@ $ docker network inspect foo-network
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""            
             }
         },
@@ -379,13 +379,13 @@ $ docker network inspect <プロジェクト名>_default
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""            
             }
         },
@@ -579,13 +579,13 @@ $ docker network inspect foo-network
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "n.n.n.n/n",
+                "IPv4Address": "*.*.*.*/n",
                 "IPv6Address": ""            
             }
         },

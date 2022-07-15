@@ -1473,7 +1473,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
 
 ```yaml
-{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nnn.n.n.nnn:43958->nnn.nn.n.nn:53: read: connection refused"}
+{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nn*.*.*.*nn:43958->nnn.nn.n.nn:53: read: connection refused"}
 ```
 
 （９）Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
@@ -2121,7 +2121,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": ":github: PullReq検証用環境"
+        "text": ":github: プルリクエスト検証用環境"
       }
     },
     {

@@ -166,7 +166,7 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 
 #### ▼ コンポーネントタイプ別
 
-![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
+![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_component-type.png)
 
 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
 
@@ -210,8 +210,8 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
 | Destination（送信先のIPの範囲） |                Target                 |
-| :-----------------------------: | :-----------------------------------: |
-|        ```xx.x.x.x/xx```        | Destinationの範囲内だった場合の送信先 |
+|:----------------------:| :-----------------------------------: |
+|    ```*.*.*.*/*```     | Destinationの範囲内だった場合の送信先 |
 
 <br>
 
@@ -447,6 +447,8 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | IP Sets            | IPアドレスの共通部品を管理する。                  | アクセスを許可したいIPアドレスセットを作成する時、全てのIPアドレスを```1```個のセットで管理してしまうと、何のIPアドレスかわらなあくなってしまう。そこで、許可するIPアドレスのセットを種類（自社、外部のA社/B社、など）で分割すると良い。 |
 | Regex pattern sets | 正規表現パターンの共通部品を管理する。            |                                                              |
 | Rule groups        | ルールの共通部品を管理する。                      | 各WAFに同じルールを設定する場合、ルールグループを使用するべきである。ただし、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。 |
+
+<br>
 
 ### Web ACLs
 
