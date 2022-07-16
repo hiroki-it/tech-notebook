@@ -19,7 +19,7 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/gitlab-ci_architecture.png)
 
-GitLab Runnnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
+GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
 
 参考：
 
@@ -106,7 +106,7 @@ Jobの実行環境を設定する。
 ```yaml
 foo_job:
   image:
-    name: alpine:1.0.0
+    name: alpine:<バージョンタグ>
     entrypoint: ["sh"]
 ```
 

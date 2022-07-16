@@ -101,7 +101,7 @@ info:
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
-  version: 1.0.0 # APIドキュメントのバージョン
+  version: <バージョンタグ> # APIドキュメントのバージョン
 ```
 
 <br>

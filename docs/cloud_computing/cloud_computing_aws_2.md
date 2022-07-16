@@ -1221,7 +1221,7 @@ $ aws configure
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-（３）kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
+（３）```kubectl```コマンドの宛先を、EKSのkube-apiserverに変更する。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
@@ -1473,7 +1473,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
 
 ```yaml
-{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on nnn.nn.n.nn:53: read udp nn*.*.*.*nn:43958->nnn.nn.n.nn:53: read: connection refused"}
+{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on *.*.*.*:53: read udp *.*.*.*:43958->*.*.*.*:53: read: connection refused"}
 ```
 
 （９）Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
@@ -1511,7 +1511,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-（２）kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
+（２）```kubectl```コマンドの宛先を、EKSのkube-apiserverに変更する。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 

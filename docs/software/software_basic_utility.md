@@ -1360,8 +1360,8 @@ setsockopt(3, SOL_TCP, TCP_NODELAY, [1], 4) = 0
 
 # 〜 中略 〜
 
-sin_addr=inet_addr("nnn.nnn.nnn.nn")}, [128->16]) = 0
-getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("nnn.nnn.nnn.nn")}, [128->16]) = 0
+sin_addr=inet_addr("*.*.*.*")}, [128->16]) = 0
+getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.*.*.*")}, [128->16]) = 0
 
 +++ exited with 0 +++
 ```

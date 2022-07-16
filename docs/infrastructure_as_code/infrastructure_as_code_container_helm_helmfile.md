@@ -100,7 +100,7 @@ environments:
 releases:
   - name: foo
     chart: foo-chart
-    version: 1.0.0
+    version: <バージョンタグ>
     values:
       - {{ .Environment.Name }}-values.yaml
 ```
@@ -156,7 +156,7 @@ releases:
 
 ```yaml
 releases:
-  - version: n.n.n
+  - version: <バージョンタグ>
 ```
 
 #### ▼ values

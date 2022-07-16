@@ -19,7 +19,7 @@ description: FluentBit＠テレメトリー収集ツールの知見を記録し�
 
 ![fluent-bit_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture.png)
 
-Fluentdから概念図を拝借した。収集されたログはまずインプットされる。メモリ/ファイルがバッファーとして使用され、ログはチャンクとしてステージに蓄えられる。ステージに一定サイズのチャンクが蓄えられるか、または一定時間が経過すると、チャンクはキューに格納される。キューは、指定された宛先にログを順番にルーティングする。プロセスが再起動されると、メモリ/ファイルに蓄えられたログは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
+Fluentdから概念図を拝借した。プッシュ型で収集されたログはまずインプットされる。メモリ/ファイルがバッファーとして使用され、ログはチャンクとしてステージに蓄えられる。ステージに一定サイズのチャンクが蓄えられるか、または一定時間が経過すると、チャンクはキューに格納される。キューは、指定された宛先にログを順番にルーティングする。プロセスが再起動されると、メモリ/ファイルに蓄えられたログは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
 
@@ -27,11 +27,21 @@ Fluentdから概念図を拝借した。収集されたログはまずインプ�
 
 ### バッファーの構造
 
-バッファーは、ステージとキューから構成される。ログは、『```*-*****.****.flb```』という名前のチャンクとして扱われている。
+バッファーは、ステージとキューから構成される。ログは、『```*-*.*.flb```』という名前のチャンクとして扱われている。
 
 参考：https://www.alpha.co.jp/blog/202103_01
 
 ![fluent-bit_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture_buffer.png)
+
+<br>
+
+### 複数のログパイプラインの集約
+
+複数のFluentBitを稼働させる場合、アウトプット先がそれぞれのログパイプラインを受信してもよいが、前段にメッセージキューを配置しても良い。メッセージキューを配置することで、ログパイプラインが乱雑せずに集約できるようになる。
+
+参考：https://www.forcia.com/blog/001316.html
+
+![fluent-bit_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_message-queue.png)
 
 <br>
 
@@ -475,7 +485,7 @@ $ fluent-bit \
     multiline.parser      laravel
 ```
 
-コマンドの```-f```オプションでINPUT名を指定し、実行もできる。
+コマンドの```-f```オプションでFILTER名を指定し、実行もできる。
 
 ```bash
 Filters
@@ -778,7 +788,7 @@ $ ls -ls /var/log/fluent-bit/cpu.0
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
-コマンドの```-o```オプションでINPUT名を指定し、実行もできる。
+コマンドの```-o```オプションでOUTPUT名を指定し、実行もできる。
 
 ```bash
 Outputs

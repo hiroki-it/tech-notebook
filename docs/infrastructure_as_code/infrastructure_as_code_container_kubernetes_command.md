@@ -19,7 +19,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 #### ▼ ```~/.kube/config```ファイル
 
-kubectlコマンドは、```~/.kube```以下にある```config```ファイルに設定された認証情報を基に、kube-apiserverにアクセスする。
+```kubectl```コマンドは、```~/.kube```以下にある```config```ファイルに設定された認証情報を基に、kube-apiserverにアクセスする。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
@@ -81,13 +81,13 @@ pod/foo-pod configured
 
 #### ▼ configとは
 
-kubectlコマンドに関するパラメーターを操作する。
+```kubectl```コマンドに関するパラメーターを操作する。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ▼ current-context
 
-kubectlコマンドの宛先になっているkube-apiserverを取得する。
+```kubectl```コマンドの宛先になっているkube-apiserverを取得する。
 
 ```bash
 $ kubectl config current-context
@@ -108,7 +108,7 @@ CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 
 #### ▼ use-context
 
-kubectlコマンドの宛先を、指定したKubernetes環境のkube-apiserverに変更する。
+```kubectl```コマンドの宛先を、指定したKubernetes環境のkube-apiserverに変更する。
 
 **＊例＊**
 
@@ -534,9 +534,9 @@ $ kubectl get service/istio-ingressgateway \
 ```bash
 $ kubectl get pod -o wide
 
-NAME        READY   STATUS        RESTARTS   AGE   IP                NODE       NOMINATED NODE   READINESS GATES
-foo-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     foo-node   <none>           <none>
-bar-pod     2/2     Running       0          16d   nnn.nnn.nnn.n     bar-node   <none>           <none>
+NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
+foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>
+bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
 ```
 
 #### ▼ -l

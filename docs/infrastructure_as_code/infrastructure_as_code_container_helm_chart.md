@@ -114,7 +114,7 @@ Kubernetes上で稼働するアプリケーションのリリースバージョ�
 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
 ```yaml
-appVersion: 1.0.0
+appVersion: <バージョンタグ>
 ```
 
 <br>
@@ -203,7 +203,7 @@ type: application
 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
 ```yaml
-version: 1.0.0
+version: <バージョンタグ>
 ```
 
 <br>

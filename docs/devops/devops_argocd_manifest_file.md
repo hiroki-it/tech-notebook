@@ -155,7 +155,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 参考：
 
-（１）ローカルマシンから本番環境にArgoCDをインストールする場合、kubectlコマンドのコンテキストを間違える可能性がある。そのため、kubectlコマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、kubectlコマンドの宛先を、EKSのkube-apiserverに変更する。
+（１）ローカルマシンから本番環境にArgoCDをインストールする場合、```kubectl```コマンドのコンテキストを間違える可能性がある。そのため、```kubectl```コマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、```kubectl```コマンドの宛先を、EKSのkube-apiserverに変更する。
 
 ```bash
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
@@ -728,7 +728,7 @@ $ argocd app history <Application名>
 
 ID  DATE                           REVISION
 0   2020-04-12 10:22:57 +0900 JST  1.0.1
-1   2020-04-12 10:49:14 +0900 JST  1.0.0
+1   2020-04-12 10:49:14 +0900 JST  <バージョンタグ>
 ```
 
 #### ▼ repoURL
@@ -765,7 +765,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    targetRevision: 1.0.0
+    targetRevision: <バージョンタグ>
 ```
 
 <br>
@@ -809,7 +809,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    targetRevision: 1.0.0
+    targetRevision: <バージョンタグ>
 ```
 
 <br>
@@ -1082,7 +1082,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:1.0.0
+        - image: alpline:<バージョンタグ>
           command: ["sh"]
           source: |
             echo "Hello World"
@@ -1129,7 +1129,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:1.0.0
+        - image: alpline:<バージョンタグ>
           cource: |
             echo "Hello World"
 ```
@@ -1149,7 +1149,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:1.0.0
+        - image: alpline:<バージョンタグ>
           command: ["sh"]
           source: |
             echo "Hello World"

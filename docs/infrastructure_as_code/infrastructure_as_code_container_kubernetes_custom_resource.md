@@ -110,7 +110,7 @@ spec:
 
 #### ▼ singular
 
-kubectlコマンドで使用するカスタムリソースの単数形名を設定する。
+```kubectl```コマンドで使用するカスタムリソースの単数形名を設定する。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -130,7 +130,7 @@ $ kubectl get foocrd
 
 #### ▼ shortNames
 
-kubectlコマンドで使用するカスタムリソースの省略名を設定する。
+```kubectl```コマンドで使用するカスタムリソースの省略名を設定する。
 
 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 

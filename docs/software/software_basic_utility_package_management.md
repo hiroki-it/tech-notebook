@@ -296,7 +296,7 @@ $ arch -arm64 brew install <パッケージ名>
 # Intel Macの場合
 $ brew install <パッケージ名>
 
-$ brew install <パッケージ名>@<バージョン>
+$ brew install <パッケージ名>@<バージョンタグ>
 ```
 
 <br>
@@ -310,7 +310,7 @@ Linuxで使用できるパッケージを管理する。また、異なるバー
 ```bash
 # .tool-versionsファイル
 
-foo-plugin 1.0.0
+foo-plugin <バージョンタグ>
 ```
 
 #### ▼ plugin

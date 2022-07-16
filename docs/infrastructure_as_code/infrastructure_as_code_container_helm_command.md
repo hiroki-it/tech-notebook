@@ -41,7 +41,7 @@ $ helm create <チャートへのパス>
 $ helm history <リリース名>
 
 REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRIPTION
-<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-1.0.0  1.0.0         Initial install
+<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-<バージョンタグ>  <バージョンタグ>         Initial install
 <リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-1.1.0  1.1.0         Rolled back to 1
 <リリース名>  Wed Jan 01 12:00:00 2020  DEPLOYED   foo-1.0.1  1.1.1         Upgraded successfully
 ```
@@ -66,7 +66,7 @@ $ helm install <リリース名> <チャートへのパス>
 | ```<チャートレジストリ名>/<チャートリポジトリ名>```          | ```foo-registry/foo-repository```                            | 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b       |
 | チャートリポジトリURL                                        | ```https://example.com/foo-chart```                          |                                                              |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                              |
-| チャートアーカイブへのパス                                   | ```./foo-chart-1.0.0.tgz```                                  | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブの外にある必要がある。<br>参考：https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                   | ```./foo-chart-<バージョンタグ>.tgz```                                  | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブの外にある必要がある。<br>参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --dry-run
 
@@ -182,7 +182,7 @@ Helmを使用してapplyしたリリースの一覧を取得する。チャー�
 $ helm list
 
 NAME         VERSION   UPDATED                   STATUS    CHART
-<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-1.0.0 # <-- チャートのバージョンがわかる。
+<リリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
 ```
 
 <br>
@@ -198,7 +198,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 ```bash
 $ helm package <fooチャートへのパス> <barチャートへのパス> <bazチャートへのパス>
 
-Successfully packaged chart and saved it to: /foo-1.0.0.tgz
+Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 ```
 
 #### ▼ -d
@@ -239,7 +239,7 @@ $ helm pull oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チ�
 チャートのバージョンを指定して、```helm pull```コマンドを実行する。
 
 ```bash
-$ helm pull <チャートリポジトリURL> --version <バージョン>
+$ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 ```
 
 <br>
@@ -374,7 +374,7 @@ Update Complete. ⎈Happy Helming!⎈
 ```bash
 $ helm search hub <キーワード>
 
-URL               CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   1.0.0             1.0.0                            This is foo chart
+URL               CHART VERSION      APP VERSION                       DESCRIPTION                                                   https://artifacthub.io/example.com   <バージョンタグ>             <バージョンタグ>                            This is foo chart
 <OCIリポジトリURL>  <チャートバージョン>  <アプリケーションのリリースバージョン>  <説明文>
 ```
 
@@ -402,12 +402,12 @@ $ helm show all <チャート名>
 $ helm show chart <チャート名>
 
 apiVersion: v2
-appVersion: 1.0.0
+appVersion: <バージョンタグ>
 maintainers:
   - name: hiroki hasegawa
 name: foo-chart
 type: application
-version: 1.0.0
+version: <バージョンタグ>
 ```
 
 #### ▼ values
@@ -521,7 +521,7 @@ Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、
 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
 ```bash
-$ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョン>
+$ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョンタグ>
 ```
 
 #### ▼ dec

@@ -329,7 +329,7 @@ Istioのインプレースデプロイメントを実行する。
 ```bash
 $ istioctl upgrade
 
-This will install the Istio n.n.n default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
+This will install the Istio <バージョンタグ> default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
 
 ✔ Istio core installed                                                                                                                                                                                       
 ✔ Istiod installed                                                                                                                                                                                           

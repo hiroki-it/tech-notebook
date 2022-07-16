@@ -108,7 +108,7 @@ Kubernetesリソースを一意に識別するための名前を設定する。
 
 #### ▼ clustersとは
 
-kubectlコマンドの向き先となるClusterを設定する。
+```kubectl```コマンドの向き先となるClusterを設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -172,7 +172,7 @@ clusters:
 
 #### ▼ contextsとは
 
-kubectlコマンドの向き先の候補を設定する。
+```kubectl```コマンドの向き先の候補を設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -237,7 +237,7 @@ contexts:
 
 #### ▼ current-contextとは
 
-kubectlコマンドの現在の向き先の名前を設定する。
+```kubectl```コマンドの現在の向き先の名前を設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -267,7 +267,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-kubectlコマンドのクライアントの認証情報を設定する。
+```kubectl```コマンドのクライアントの認証情報を設定する。
 
 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -626,7 +626,7 @@ spec:
     spec:
       containers:
         - name: foo-gin
-          image: foo-gin:1.0.0
+          image: foo-gin:<バージョンタグ>
           ports:
             - containerPort: 8080
 ```
@@ -933,7 +933,7 @@ spec:
 
 ## 11. Node
 
-Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、kubectlコマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
+Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
 
 <br>
 
@@ -1360,7 +1360,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       ports:
         - containerPort: 8080
   affinity:
@@ -1387,7 +1387,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       ports:
         - containerPort: 8080
   affinity:
@@ -1424,7 +1424,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       ports:
         - containerPort: 8080
 ```
@@ -1451,7 +1451,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
@@ -1515,7 +1515,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       resources:
         # 下限必要サイズ
         requests:
@@ -1543,7 +1543,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       ports:
         - containerPort: 8080
       volumeMounts:
@@ -1567,7 +1567,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       ports:
         - containerPort: 8080
       workingDir: /go/src
@@ -1593,7 +1593,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   hostname: foo-pod
 ```
 
@@ -1619,7 +1619,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   imagePullSecrets:
     - name: foo-secret
 ```
@@ -1646,7 +1646,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         httpGet:
           port: 80
@@ -1665,7 +1665,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         failureThreshold: 5
 ```
@@ -1682,7 +1682,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         periodSeconds: 5
 ```
@@ -1703,7 +1703,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   nodeSelector:
     app.kubernetes.io/nodegroup: bar-group
 ```
@@ -1730,7 +1730,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         httpGet:
           port: 80
@@ -1749,7 +1749,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         failureThreshold: 5
 ```
@@ -1766,7 +1766,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       livenessProbe:
         periodSeconds: 5
 ```
@@ -1791,7 +1791,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   restartPolicy: Always
 ```
 
@@ -1807,7 +1807,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   restartPolicy: Never
 ```
 
@@ -1823,7 +1823,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
   restartPolicy: OnFailure
 ```
 
@@ -1845,7 +1845,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin::1.0.0
+      image: foo-gin::<バージョンタグ>
   serviceAccountName: foo-service-account
 ```
 
@@ -1872,7 +1872,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin::1.0.0
+      image: foo-gin::<バージョンタグ>
   terminationGracePeriodSeconds: 300
 ```
 
@@ -1898,7 +1898,7 @@ metadata:
 spec:
   containers:
     - name: foo-fluent-bit
-      image: fluent/fluent-bit:1.0.0
+      image: fluent/fluent-bit:<バージョンタグ>
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
           mountPath: /fluent-bit/etc/
@@ -1947,7 +1947,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -1975,7 +1975,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: foo-gin:<バージョンタグ>
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src

@@ -31,7 +31,7 @@ $ add-apt-repository ppa:ondrej/php
 $ apt-get update
 
 # PHPをインストールする。
-$ apt -y install php<バージョン>
+$ apt -y install php=1.0.0
 ```
 
 <br>

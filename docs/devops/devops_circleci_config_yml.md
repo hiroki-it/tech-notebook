@@ -1345,7 +1345,7 @@ LaravelコンテナとMySQLコンテナの場合を示す。コンテナ内に�
 version: 2.1
 
 orbs:
-  docker: circleci/docker@x.y.z
+  docker: circleci/docker@<バージョンタグ>
 
 commands:
   restore_vendor:
@@ -1439,7 +1439,7 @@ machineタイプで使用する場合、machineキーの下で```docker_layer_ca
 version: 2.1
 
 orbs:
-  docker: circleci/docker@x.y.z
+  docker: circleci/docker@<バージョンタグ>
             
 jobs:
   build_and_test:

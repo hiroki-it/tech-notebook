@@ -91,7 +91,7 @@ $ rm datadog-php-tracer.deb
 env[DD_SERVICE] = 'foo'
 env[DD_SERVICE_MAPPING] = 'guzzle:foo-guzzle,pdo:foo-pdo'
 env[DD_ENV] = 'prd'
-env[DD_VERSION] = '1.0.0'
+env[DD_VERSION] = '<バージョンタグ>'
 ```
 
 参考：
@@ -290,10 +290,10 @@ DATADOG TRACER CONFIGURATION -
     "tags": {
         "service": "foo",
         "env": "prd",
-        "version": "1.0.0",
+        "version": "<バージョンタグ>",
         "runtime-id": "*****"
     },
-    "dd_version": "1.0.0",
+    "dd_version": "<バージョンタグ>",
     "log_injection_enabled": false,
     "runtime_metrics_enabled": false,
     "profiling_enabled": false,

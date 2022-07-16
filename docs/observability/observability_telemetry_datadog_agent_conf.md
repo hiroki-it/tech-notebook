@@ -281,7 +281,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
             # ECSコンテナに対するserviceタグ            
             "com.datadoghq.tags.service": "foo",
             # ECSコンテナに対するversionタグ            
-            "com.datadoghq.tags.version": "1.0.0"
+            "com.datadoghq.tags.version": "<バージョンタグ>"
         }
     }
 ]

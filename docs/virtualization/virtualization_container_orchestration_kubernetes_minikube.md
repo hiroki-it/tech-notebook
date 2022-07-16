@@ -365,7 +365,7 @@ minikubeコマンドに関するパラメーターを操作する。
 
 #### ▼ set
 
-kubectlコマンド実行時のデフォルト値を設定する。
+```kubectl```コマンド実行時のデフォルト値を設定する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
@@ -488,7 +488,7 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとするkubectlコマンドを実行する。ローカルマシンにkubectlコマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
+Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 参考：
 

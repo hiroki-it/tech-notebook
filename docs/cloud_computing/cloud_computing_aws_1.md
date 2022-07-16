@@ -752,7 +752,20 @@ CPU平均使用率に段階的な閾値を設定する。
 
 <br>
 
-## 06. Certificate Manager
+## 06. Backup
+
+![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/backup_multi-region.png)
+
+メインリージョンの何らかのAWSリソースで障害が起こり、データが失われる可能性がある。そこで、主要なリージョンとは別に、障害用リージョンを用意しておく。主要リージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
+
+参考：
+
+- https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779
+- https://techblog.finatext.com/aws-cross-region-cross-account-backup-5952a990c1c1
+
+<br>
+
+## 07. Certificate Manager
 
 ### セットアップ
 
@@ -864,7 +877,7 @@ ALBではSSL証明書の変更でダウンタイムは発生しない。既存�
 
 <br>
 
-## 07. Chatbot
+## 08. Chatbot
 
 ### Chatbotとは
 
@@ -902,7 +915,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 <br>
 
-## 08. CloudFront
+## 09. CloudFront
 
 ### CloudFrontとは
 
@@ -1200,7 +1213,7 @@ This XML file does not appear to have any style information associated with it. 
 
 <br>
 
-## 09. CloudTrail
+## 10. CloudTrail
 
 ### CloudTrailとは
 
@@ -1210,7 +1223,7 @@ IAMユーザーによる操作や、ロールのアタッチの履歴を記録�
 
 <br>
 
-## 10. CloudWatch
+## 11. CloudWatch
 
 ### CloudWatchエージェント
 
@@ -1293,7 +1306,7 @@ $ systemctl list-unit-files --type=service
 
 <br>
 
-## 10-02. CloudWatchメトリクス
+## 11-02. CloudWatchメトリクス
 
 ### CloudWatchメトリクスとは
 
@@ -1896,7 +1909,7 @@ Resources:
 
 <br>
 
-## 11. Direct Connect
+## 13. Direct Connect
 
 ### Direct Connectとは
 

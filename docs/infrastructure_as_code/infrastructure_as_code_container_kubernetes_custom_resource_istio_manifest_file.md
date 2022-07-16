@@ -35,9 +35,12 @@ $ istioctl install --set profile=demo
 
 googleapisチャートリポジトリからapplyする。
 
-参考：https://github.com/istio/istio/tree/master/manifests/charts/gateway
+参考：https://github.com/istio/istio/tree/master/manifests/charts
 
 ```bash
+$ kubectl apply -k github.com/istio/installer/base
+
+# コンポーネントを個別にセットアップすることもできる。
 $ helm install istio-ingressgateway istio/gateway
 ```
 

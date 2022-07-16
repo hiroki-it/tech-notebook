@@ -159,8 +159,8 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、マ�
     "message": "XHR error POST https://async.jp",
     "service": "prd-foo-ssg",
     "tags": [
-      "version:1.0.0",
-      "sdk_version:*.*.*",
+      "version:<バージョンタグ>",
+      "sdk_version:<バージョンタグ>",
       "service:prd-foo-ssg",
       "source:browser",
       "env:prd"
@@ -189,7 +189,7 @@ DATADOG_CLIENT_TOKEN=*****
 # Datadogにおけるログのタグ値
 DATADOG_ENV=prd
 DATADOG_SERVICE=foo
-DATADOG_VERSION=1.0.0
+DATADOG_VERSION=<バージョンタグ>
 ```
 
 

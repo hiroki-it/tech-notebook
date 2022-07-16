@@ -682,7 +682,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 #### ▼ docker-compose.ymlファイルを用いる場合
 
-作業者間でterraformコマンドのバージョンを統一するために、```docker-compose.yml```ファイルを作成する。
+作業者間で```terraform```コマンドのバージョンを統一するために、```docker-compose.yml```ファイルを作成する。
 
 ```yaml
 version: "3.8"
@@ -724,7 +724,7 @@ validate: init fmt
 terraform 1.0.0
 ```
 
-asdfパッケージを使用して、terraformコマンドをインストールする。```.tool-versions```ファイルに定義されたバージョンがインストールされる。
+asdfパッケージを使用して、```terraform```コマンドをインストールする。```.tool-versions```ファイルに定義されたバージョンがインストールされる。
 
 ```bash
 $ asdf plugin list all | grep terraform

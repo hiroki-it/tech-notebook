@@ -28,7 +28,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストファイルを、istioctlコマンドまたはkubectlコマンドを使用して、Istioリソースをapplyする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをapplyすることもできる。kubectlコマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースをapplyする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをapplyすることもできる。```kubectl```コマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
 
 参考：
 
@@ -36,7 +36,7 @@ Operator controller will watch namespaces: istio-system
 - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 ```bash
-# istioctlコマンド
+# ```istioctl```コマンド
 $ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
 
 ✔ Istio core installed

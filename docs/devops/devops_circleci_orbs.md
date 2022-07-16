@@ -47,12 +47,12 @@ AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登
 version: 2.1
 
 orbs:
-  aws-foo: circleci/aws-foo@x.y.z
+  aws-foo: circleci/aws-foo@<バージョンタグ>
 
 jobs:
   foo_bar_baz:
     docker:
-      - image: circleci/python:x.y.z
+      - image: circleci/python:<バージョンタグ>
     steps:
       - attach_workspace:
           at: .
@@ -222,7 +222,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 | 設定値                             | 説明                                                   |                                                              |
 | --------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
 | ```container-image-name-updates``` | コンテナ定義のコンテナ名とバージョンタグを上書きする。         | イメージはCircleCIのハッシュ値でタグ付けしているので必須。   |
-| ```verify-revision-is-deployed``` | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、ECSタスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないので、検知できる。 |
+| ```verify-revision-is-deployed``` | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、ECSタスクが『Running』にならずに『Stopped』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないので、検知できる。 |
 | ```max-poll-attempts```           | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。 |
 | ```poll-interval```               | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。 |                                                              |
 
