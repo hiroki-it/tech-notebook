@@ -82,6 +82,7 @@ plugins:
         - ./**/draft
   - git-revision-date-localized:
       type: iso_date
+      timezone: Asia/Tokyo
   - search:
       lang:
         - ja
