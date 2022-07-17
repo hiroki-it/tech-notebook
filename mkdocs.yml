@@ -261,11 +261,13 @@ nav:
           - L〜R: cloud_computing/cloud_computing_aws_4.md
           - S〜U: cloud_computing/cloud_computing_aws_5.md
           - V〜Z: cloud_computing/cloud_computing_aws_6.md
+          - ■ 設計ポリシー:
+              - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
+              - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
           - ■ その他:
               - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
               - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
               - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
-              - コスト管理: cloud_computing/cloud_computing_aws_cost_management.md
       - ■ GCP:
           - コマンド: cloud_computing/cloud_computing_gcp_command.md
   - 📦 仮想化:
