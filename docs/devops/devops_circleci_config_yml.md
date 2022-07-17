@@ -85,7 +85,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のdockerコンテナを作成し、展開ファイルを元にテストを実行
+# 専用のdockerコンテナを作成し、展開ファイルを元にテストを実施
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 

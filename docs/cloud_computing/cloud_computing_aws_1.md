@@ -1339,89 +1339,6 @@ CloudWatchメトリクス上では、以下の様に確認できる。
 
 <br>
 
-### 注視するべきメトリクス一覧
-
-#### ▼ ALB
-
-ALBで注視するべきメトリクスを示す。
-
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
-
-| メトリクス名                   | 単位     | 説明                                              |
-| ------------------------------ | -------- | ------------------------------------------------- |
-| HealthyHostCount               | カウント | 正常なターゲットの数                              |
-| UnHealthyHostCount             | カウント | 異常なターゲットの数                              |
-| HTTPCode_ELB_4XX_Count         | カウント | ALBが```400```ステータスコードを返信した数        |
-| HTTPCode_ELB_5XX_Count         | カウント | ALBが```500```ステータスコードを返信した数        |
-| HTTPCode_TARGET_4XX_Count      | カウント | ターゲットが```400```ステータスコードを返信した数 |
-| HTTPCode_TARGET_5XX_Count      | カウント | ターゲットが```500```ステータスコードを返信した数 |
-| RejectedConnectionCount        | カウント | ターゲットから接続拒否された数                    |
-| TargetConnectionErrorCount     | カウント | ターゲットへの通信でエラーが発生した数            |
-| TargetTLSNegotiationErrorCount | カウント | ターゲットへのHTTPS通信でエラーが発生した数       |
-
-#### ▼ API Gateway
-
-API Gatewayで注視するべきメトリクスを示す。
-
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
-
-| メトリクス名       | 単位       | 説明                                                         |
-| ------------------ | ---------- | ------------------------------------------------------------ |
-| IntegrationLatency | マイクロ秒 | API Gatewayがリクエストをバックエンドにルーティングしてから、バックエンドからレスポンスを受信するまでを表す。 |
-| Latency            | マイクロ秒 | API Gatewayがクライアントからリクエストを受信してから、クライアントにこれを返信するまでを表す。 |
-| 4XXError           | カウント   |                                                              |
-| 5XXError           | カウント   | アプリケーションが停止してしまうようなインシデントを検出することに適する。 |
-
-#### ▼ EC2
-
-EC2で注視するべきメトリクスを示す。
-
-参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
-
-| メトリクス名               | 単位     | 説明                                                         |
-| -------------------------- | -------- | ------------------------------------------------------------ |
-| StatusCheckFailed_Instance | カウント | インスタンスのインスタンスステータスの失敗数を表す。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |
-| StatusCheckFailed_System   | カウント | インスタンスのシステムステータスの失敗数を表す。AWSの障害によるインシデントの検出に適する。<br>参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |
-
-#### ▼ ECS
-
-ECSクラスターまたはサービスで注視するべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスのメトリクスを区別できる。
-
-参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
-
-| メトリクス名      | 単位     | 説明                                                         | 補足                                                         |
-| ----------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| CPUUtilization    | %        | ECSクラスターまたはサービスで使用されているCPU使用率を表す。 |                                                              |
-| MemoryUtilization | %        | ECSクラスターまたはサービスで使用されているメモリ使用率を表す。 |                                                              |
-| RunningTaskCount  | カウント | 稼働中のECSタスク数を表す。                                  | ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。 |
-
-#### ▼ RDS（Aurora）
-
-RDS（Aurora）で注視するべきメトリクスを示す。
-
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
-
-| メトリクス名        | 単位     | 説明                                                         | 補足                                                         |
-| ------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| CPUUtilization      | %        | Aurora DBインスタンスのCPU使用率を表す。                     |                                                              |
-| DatabaseConnections | カウント | Aurora DBインスタンスへの接続数を表す。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
-| FreeableMemory      | Bytes    | Aurora DBインスタンスの使用できるメモリサイズを表す。          |                                                              |
-| EngineUptime        | 秒       | インスタンスの起動時間を表す。                               | ダウンタイムの最低発生時間の参考になる。                     |
-
-#### ▼ RDS（非Aurora）
-
-RDS（非Aurora）で注視するべきメトリクスを示す。RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。
-
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
-
-| メトリクス名        | 単位     | 説明                                                         | 補足                                                         |
-| ------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| CPUUtilization      | %        | DBインスタンスのCPU使用率を表す。                            |                                                              |
-| DatabaseConnections | カウント | DBインスタンスへの接続数を表す。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
-| FreeableMemory      | Bytes    | DBインスタンスの使用できるメモリサイズを表す。                 |                                                              |
-
-<br>
-
 ### インサイトメトリクス
 
 #### ▼ インサイトメトリクスは
@@ -1607,9 +1524,20 @@ $ service awslogs start
 
 **＊例＊**
 
+小文字と大文字を区別せずに、Errorを含むログを検索する。
+
+```sql
+fields @timestamp, @message, @logStream
+| filter @message like /(?i)(Error)/
+| sort @timestamp desc
+| limit 100
+```
+
+**＊例＊**
+
 小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
 
-```bash
+```sql
 fields @timestamp, @message, @logStream
 | filter @message like /(?i)(Warning|Error)/
 | sort @timestamp desc
@@ -1622,7 +1550,7 @@ fields @timestamp, @message, @logStream
 
 ### セットアップ
 
-#### ▼ ログが先の場合
+#### ▼ ログが監視対象の場合
 
 | 設定項目     | 説明                                                         | 補足                         |
 | ------------ | ------------------------------------------------------------ |----------------------------|
@@ -1630,7 +1558,7 @@ fields @timestamp, @message, @logStream
 | メトリクス   | 紐付くロググループが属する名前空間内のメトリクスを設定する。CloudWatchログが、設定したメトリクスに対して、値を発行する。 |                            |
 | メトリクス値 | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。 | 例えば『検出数』を発行する場合は、『```1```』を設定する。 |
 
-#### ▼ メトリクスが対象の場合
+#### ▼ メトリクスが監視対象の場合
 
 
 

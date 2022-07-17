@@ -147,8 +147,6 @@ $ terraform fmt -check
 
 インデントを揃えるべき箇所が存在する場合に、これを取得する。
 
-```test```コマンド
-
 ```bash
 $ terraform fmt -diff
 ```

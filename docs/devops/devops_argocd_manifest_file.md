@@ -27,7 +27,7 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### APIサーバー
 
-argocdコマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+```argocd```コマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
 
 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -209,7 +209,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 #### ▼ argocdコマンドを使用して
 
-（７）argocdコマンドをインストールする。
+（７）```argocd```コマンドをインストールする。
 
 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -275,7 +275,7 @@ $ argocd repo add oci://<チャートレジストリ名> \
 
 #### ▼ マニフェストファイル経由
 
-（７）argocdコマンドの代わりに、マニフェストファイルでArgoCDを操作しても良い。
+（７）```argocd```コマンドの代わりに、マニフェストファイルでArgoCDを操作しても良い。
 
 ```bash
 $ kubectl apply -f application.yaml

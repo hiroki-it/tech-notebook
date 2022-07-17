@@ -2026,7 +2026,7 @@ Amplifyの指定したIDのアプリケーションが、```Amplify Deployment S
 
 #### ▼ スケジュール
 
-cron式またはrate式を使用して、スケジュールを定義する。これとLambdaを組み合わせることにより、バッチ処理を作成できる。
+cron式またはrate式を使用して、スケジュールを定義する。これとLambdaを組み合わせることにより、ジョブを実行できる。
 
 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 

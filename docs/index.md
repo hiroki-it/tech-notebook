@@ -238,11 +238,15 @@ title: 【IT技術の知見】目次
 * [📖：︎L〜R](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html)
 * [📖：︎S〜U](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_5.html)
 * [📖：︎V〜Z](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_6.html)
+* 設計ポリシー 
+  * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_reliability.html)
+  * [📖：︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
+  * [📖：︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
+  
 * その他
     * [📖：︎AWS CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cli.html)
     * [📖：︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     * [📖：︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
-    * [📖：︎コスト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cost_management.html)
 
 ### GCP
 
@@ -312,7 +316,7 @@ title: 【IT技術の知見】目次
     * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.html)
     * カスタムリソース
         * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.html)
-        * [📖：︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_secret_provider_class_manifest_file.html)
+        * [📖：︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_secret_provider_class_manifest_file.html)
         * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_grafana_manifest_file.html)
         * ArgoCD
             * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.html)

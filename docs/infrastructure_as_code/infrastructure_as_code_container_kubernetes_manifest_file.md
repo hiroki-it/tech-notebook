@@ -394,7 +394,7 @@ data:
 
 #### ▼ jobTemplateとは
 
-CronJobで定期実行するJobを設定する。
+CronJobで、定期的に実行するJobを設定する。
 
 ```yaml
 apiVersion: batch/v1
@@ -410,7 +410,7 @@ spec:
           containers:
             - name: foo-alpine
               image: alpine:latest
-              # 定期実行するコマンドを設定する。
+              # 定期的に実行するコマンドを設定する。
               command:
                 - /bin/sh
                 - -c
@@ -1465,7 +1465,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 | キー名         | 説明                                             | 補足                                                         |
 | -------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br/>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
+| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
 | ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再生成される。<br>参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
 ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。

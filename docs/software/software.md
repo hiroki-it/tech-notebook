@@ -143,13 +143,13 @@ UNIXを源流として派生したOS。現在では主に、Linux系統（緑色
 
 ※ちなみに、MacOSはBSD系統
 
-![UNIX系OSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Unix系OSの歴史.png)
+![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_unix-like_history.png)
 
 #### ▼ WindowsOS
 
 MS-DOSを源流として派生したOS。今では、全ての派生がWindows 10に集約された。
 
-![WindowsOSの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WindowsOSの歴史.png)
+![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_windows_history.png)
 
 <br>
 
@@ -167,7 +167,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 #### ▼ Linux系統とは
 
-Unixから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware）に分岐する。
+UNIXから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware）に分岐する。
 
 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
@@ -210,7 +210,7 @@ Slackwareなど
 
 #### ▼ BSD系統とは
 
-Unixから分岐したBSDは、さらに複数の系統（MacOSなど）に分岐する。
+UNIXから分岐したBSDは、さらに複数の系統（MacOSなど）に分岐する。
 
 <br>
 

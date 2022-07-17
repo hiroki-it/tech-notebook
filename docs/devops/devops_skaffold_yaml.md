@@ -175,7 +175,7 @@ build:
 
 ## 03. portForwardステージ
 
-Skaffoldのコマンド時に、同時にポートフォワーディングを実行する。すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
+```skaffold run```コマンド時に、同時にポートフォワーディングを実行する。すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
 
 ```yaml
 portForward:
@@ -203,7 +203,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 ### structureTests
 
-ファイルを指定し、コンテナ構造テストを実行する。
+ファイルを指定し、コンテナ構造テストを実施する。
 
 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
@@ -240,7 +240,7 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 #### ▼ kubectlとは
 
-kubectlを使用して、Kubernetesリソースをデプロイする。ワイルドカードを使用できる。
+```kubectl```コマンドを使用して、Kubernetesリソースをデプロイする。ワイルドカードを使用できる。
 
 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 

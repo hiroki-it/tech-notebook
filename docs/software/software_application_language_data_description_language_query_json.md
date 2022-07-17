@@ -243,7 +243,7 @@ $ cat list.json | jq '.[] | select (.foo == "FOO" or .foo == "BAZ")' | jq -s '.'
 
 ### join
 
-jqコマンドの実行結果を任意の文字で結合する。リストを扱う場合には、パスを『```[]```』で囲う必要がある。
+```jq```コマンドの実行結果を任意の文字で結合する。リストを扱う場合には、パスを『```[]```』で囲う必要がある。
 
 参考：https://stackoverflow.com/questions/63238759/replace-n-with-space-in-jq-query-command-output-without-tr-and-sed-commands
 

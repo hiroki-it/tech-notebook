@@ -19,7 +19,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 #### ▼ --verbosity
 
-ログレベルを指定し、skaffoldコマンドを実行する。デフォルトは```warn```である。
+ログレベルを指定し、```skaffold```コマンドを実行する。デフォルトは```warn```である。
 
 参考：https://skaffold.dev/docs/references/cli/#skaffold
 

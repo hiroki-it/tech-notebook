@@ -616,7 +616,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 ```yaml
 {
-  "date": 1630454400000, # エポック形式（Unix時間）
+  "date": 1630454400000, # エポック形式（UNIX時間）
   "log_status": "INFO"
 }
 ```

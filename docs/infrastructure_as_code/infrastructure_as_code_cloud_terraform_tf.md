@@ -74,6 +74,7 @@ description: ロジック＠Terraformの知見を記録しています。
             "tags": {
               "Env": "prd",
               "ManagedBy": "terraform"
+              "Repository": "https://github.com/*****"
             },
             "description": "*****",
             ...

@@ -13,29 +13,28 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 <br>
 
-## 01. サイバー攻撃からの防御方法
-
-### 防御方法の種類
-
-![ファイアウォール_ips_ids_waf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ファイアウォール_ips_ids_waf.png)
-
-<br>
+## 01. サイバー攻撃の防御方法
 
 ### ファイアウォール
 
-![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
+#### ▼ ファイアウォールとは
 
-#### ▼ プロキシサーバーによるアプリケーションゲートウェイ型ファイアウォール
+データリンク層からトランスポート層までに対するサイバー攻撃（そもそものネットワークへの侵入、ポートスキャン、など）を遮断する。
 
-プロキシサーバー上で、SSL証明書の検証、セキュリティ系のソフトウェアの稼働、を行い、ファイアウォールとして使用する。プロキシサーバーセキュリティ精度を重視する場合はこちら。
+参考：https://digital-jyoshisu.com/archives/468
 
-![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
 
 #### ▼ パケットフィルタリング型ファイアウォール
 
-パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって、パケットを許可するべきかどうかを決定する。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが設置されている。
-
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
+
+パケットのヘッダ情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可するべきかどうかを決定する。パケットのデータは検査しない。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが設置されている。
+
+参考：
+
+- https://www.rworks.jp/system/system-column/sys-entry/21277/
+- https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
 
 **＊例＊**
 
@@ -106,15 +105,17 @@ Win10におけるファイアウォール。
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリングの設定.gif)
 
-<br>
+#### ▼ ゲートウェイ型ファイアウォール（プロキシサーバー型）
 
-### Detection Systemとは
+パケットのデータに基づいて、パケットを許可するべきかどうかを決定する。
 
-#### ▼ Detection Systemとは
+参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
 
-ネットワーク上を流れるトラフィックを監視し、不正アクセスと思われるパケットを検出した時に、管理者に通知するシステム。あくまで通知するだけで、攻撃を防御することはしない。
+#### ▼ サーキットレベル型ファイアウォール
 
-![IDS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IDS.png)
+トランスポート層の段階でサイバー攻撃を遮断するファイアウォールのこと。
+
+参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
 
 <br>
 
@@ -122,19 +123,38 @@ Win10におけるファイアウォール。
 
 #### ▼ IPSとは
 
-ネットワーク上を流れるトラフィックを監視し、不正アクセスと思われるパケットを検出した時に、管理者に通知し、さらにパケットの侵入を防ぐシステム。
+ネットワーク層からプレゼンテーション層までに対するサイバー攻撃（Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など）を遮断するセキュリティシステムのこと。
 
-![IPS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IPS.png)
+参考：https://digital-jyoshisu.com/archives/468
+
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
 
 <br>
 
-### WAF：Web Application Firewallとは
+### WAF：Web Application Firewall
 
 #### ▼ WAFとは
 
-システムを保護する機能を持ったシステムのこと。
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
 
-![WAF](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WAF.png)
+アプリケーション層に対するサイバー攻撃（SQLインジェクション、XSS、OSコマンドインジェクション、など）を遮断するセキュリティシステムのこと。
+
+参考：
+
+- https://digital-jyoshisu.com/archives/468
+- https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
+
+<br>
+
+## 01-02. サイバー攻撃の検出
+
+### Detection Systemとは
+
+#### ▼ Detection Systemとは
+
+ネットワーク上を流れるトラフィックを監視し、不正アクセスと思われるパケットを検出する。また、検出内容を管理者に通知する。あくまで通知するだけで、攻撃を防御することはしない。
+
+![IDS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IDS.png)
 
 <br>
 

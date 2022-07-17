@@ -148,17 +148,17 @@ $ cp -p <ファイルへのパス> <ファイルへのパス>.`date +"%Y%m%d"`
 
 <br>
 
-### cron
+### Cron
 
-#### ▼ cronとは
+#### ▼ Cronとは
 
-指定したスケジュールに従って、指定されたプログラムを定期実行するデーモン。
+UNIXにて、Linuxの機能の一つであるジョブ管理を実現する。あらかじめ、ジョブ（定期的に実行するように設定されたバッチ処理）を登録しておき、指定したスケジュールに従って、ジョブを実行する。
 
 #### ▼ ```cron```ファイル
 
 ```bash
 # /etc/cron.hourly/cron-hourly.txt
-# 毎時・1分
+# バッチ処理を、毎時・1分ごとに実行するように設定する。
 1 * * * * root run-parts /etc/cron.hourly
 # <- 最後は改行する。
 ```
@@ -175,7 +175,7 @@ $ cp -p <ファイルへのパス> <ファイルへのパス>.`date +"%Y%m%d"`
 
 （１）あらかじめ、各ディレクトリにcronファイルを配置しておく。
 
-（２）cronとして登録するファイルを作成する。```run-parts```コマンドで、指定した時間に、各cronディレクトリ内の```cron```ファイルを一括で実行するように記述しておく。
+（２）ジョブを登録するファイルを作成する。```run-parts```コマンドで、指定した時間に、各cronディレクトリ内の```cron```ファイルを一括で実行するように記述しておく。
 
 ```bash
 # 設定
@@ -197,7 +197,7 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
 
-# run-parts
+# ジョブ
 1 * * * * root run-parts /etc/cron.hourly # 毎時・1分
 5 2 * * * root run-parts /etc/cron.daily # 毎日・2時5分
 20 2 * * 0 root run-parts /etc/cron.weekly # 毎週日曜日・2時20分
@@ -236,7 +236,7 @@ $ crond -n
 
 #### ▼ crontabとは
 
-cronデーモンの動作が定義されたcrontabファイルを操作するためのユーティリティ。作成した```cron```ファイルを登録する。```cron.d```ファイルは操作できない。
+crontabファイルを操作するためのユーティリティ。作成した```cron```ファイルを登録できる。```cron.d```ファイルは操作できない。
 
 ```bash
 $ crontab <ファイルへのパス>
