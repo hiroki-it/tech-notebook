@@ -632,7 +632,7 @@ const postMessageToSlack = (message) => {
 
 **＊実装例＊**
 
-API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチしておく必要がある。
+API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『```AWSLambdaExecute```』が紐付けられたロールをLambdaに紐付けしておく必要がある。
 
 ```javascript
 "use strict";

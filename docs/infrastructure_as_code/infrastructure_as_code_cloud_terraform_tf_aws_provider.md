@@ -439,7 +439,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### ライフサイクルポリシー
 
-ECRにアタッチされる、コンテナイメージの有効期間を定義するポリシー。コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、TerraformなどのIaCツールでは必要になる。
+ECRに紐付けられる、コンテナイメージの有効期間を定義するポリシー。コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、TerraformなどのIaCツールでは必要になる。
 
 ```yaml
 {
@@ -635,7 +635,7 @@ Internet Gatewayの後にEC2を作成できるようにする。
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に、tpl形式のカスタマー管理ポリシーを定義しておく。作成済みのIAMロールに、```aws_iam_policy```リソースを使用して、AWS管理ポリシーをIAMユーザーにアタッチする。
+事前に、tpl形式のカスタマー管理ポリシーを定義しておく。作成済みのIAMロールに、```aws_iam_policy```リソースを使用して、AWS管理ポリシーをIAMユーザーに紐付ける。
 
 **＊実装例＊**
 
@@ -696,7 +696,7 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
 
 ### AWS管理ポリシー
 
-IAMユーザーにAWS管理ポリシーをアタッチする。
+IAMユーザーにAWS管理ポリシーを紐付ける。
 
 **＊実装例＊**
 
@@ -716,7 +716,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 ### 信頼ポリシーを持つロール
 
-コンソール画面でロールを作成する場合は意識することはないが、特定のリソースにロールをアタッチするためには、ロールに信頼ポリシーを組み込む必要がある。事前に、tpl形式の信頼ポリシーを定義しておく。```aws_iam_role```リソースを使用して、IAMロールを作成すると同時に、これに信頼ポリシーをアタッチする。
+コンソール画面でロールを作成する場合は意識することはないが、特定のリソースにロールを紐付けるためには、ロールに信頼ポリシーを組み込む必要がある。事前に、tpl形式の信頼ポリシーを定義しておく。```aws_iam_role```リソースを使用して、IAMロールを作成すると同時に、これに信頼ポリシーを紐付ける。
 
 **＊実装例＊**
 
@@ -737,7 +737,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 }
 ```
 
-ECSタスクロールとECSタスク実行ロールに信頼ポリシーアタッチする。
+ECSタスクロールとECSタスク実行ロールに信頼ポリシー紐付ける。
 
 ```terraform
 ###############################################
@@ -788,14 +788,14 @@ resource "aws_iam_role" "ecs_task" {
 }
 ```
 
-Lambda実行ロールに信頼ポリシーアタッチする。
+Lambda実行ロールに信頼ポリシー紐付ける。
 
 ```terraform
 ###############################################
 # IAM Role For Lambda@Edge
 ###############################################
 
-# ロールに信頼ポリシーをアタッチします。
+# ロールに信頼ポリシーを紐付けします。
 resource "aws_iam_role" "lambda_execute" {
   name = "prd-foo-lambda-execute-role"
   assume_role_policy = templatefile(
@@ -809,7 +809,7 @@ resource "aws_iam_role" "lambda_execute" {
 
 ### インラインポリシーを持つロール
 
-事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、インラインポリシーを作成すると同時に、これにインラインポリシーをアタッチする。
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、インラインポリシーを作成すると同時に、これにインラインポリシーを紐付ける。
 
 **＊実装例＊**
 
@@ -830,7 +830,7 @@ resource "aws_iam_role" "lambda_execute" {
 }
 ```
 
-ECSタスクロールとECSタスク実行ロールにインラインポリシーアタッチする。
+ECSタスクロールとECSタスク実行ロールにインラインポリシー紐付ける。
 
 ```terraform
 ###############################################
@@ -850,7 +850,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 ### AWS管理ポリシーを持つロール
 
-事前に、tpl形式のAWS管理ポリシーを定義しておく。```aws_iam_role_policy_attachment```リソースを使用して、実インフラにあるAWS管理ポリシーを作成済みのIAMロールにアタッチする。ポリシーのARNは、AWSのコンソール画面を確認する。
+事前に、tpl形式のAWS管理ポリシーを定義しておく。```aws_iam_role_policy_attachment```リソースを使用して、実インフラにあるAWS管理ポリシーを作成済みのIAMロールに紐付ける。ポリシーのARNは、AWSのコンソール画面を確認する。
 
 **＊実装例＊**
 
@@ -868,7 +868,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、カスタマー管理ポリシーを作成する。```aws_iam_role_policy_attachment```リソースを使用して、カスタマー管理ポリシーを作成済みのIAMロールにアタッチする。
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、カスタマー管理ポリシーを作成する。```aws_iam_role_policy_attachment```リソースを使用して、カスタマー管理ポリシーを作成済みのIAMロールに紐付ける。
 
 **＊実装例＊**
 
@@ -892,7 +892,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 }
 ```
 
-ECSタスクロールにカスタマー管理ポリシーアタッチする。
+ECSタスクロールにカスタマー管理ポリシー紐付ける。
 
 ```terraform
 ###############################################
@@ -917,7 +917,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 ### サービスリンクロール
 
-サービスリンクロールは、AWSリソースの作成時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で作成できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
+サービスリンクロールは、AWSリソースの作成時に自動的に作成され、紐付けられる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で作成できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
 
 **＊実装例＊**
 
@@ -942,7 +942,7 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 }
 ```
 
-Application Auto Scalingにサービスリンクロールをアタッチする。手動でも設定できるが、Terraformの管理外で自動的にアタッチされるため、あえて妥協しても良い。
+Application Auto Scalingにサービスリンクロールを紐付ける。手動でも設定できるが、Terraformの管理外で自動的に紐付けられるため、あえて妥協しても良い。
 
 ```terraform
 #########################################
@@ -955,7 +955,7 @@ resource "aws_appautoscaling_target" "ecs" {
   max_capacity       = 4
   min_capacity       = 2
   
-  # この設定がなくとも、サービスリンクロールが自動的に作成され、AutoScalingにアタッチされる。
+  # この設定がなくとも、サービスリンクロールが自動的に作成され、AutoScalingに紐付けられる。
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
 }
 ```
@@ -1268,7 +1268,7 @@ Terraformを使用してVPCを作成した時、メインルートテーブル�
 
 ### バケットポリシー
 
-S3アタッチされる、自身へのアクセスを制御するためにインラインポリシーのこと。定義したバケットポリシーは、```aws_s3_bucket_policy```リソースでロールにアタッチできる。
+S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。定義したバケットポリシーは、```aws_s3_bucket_policy```リソースでロールに紐付けできる。
 
 <br>
 
@@ -1283,7 +1283,7 @@ ALBがバケットにログを書き込めるように、『ELBのサービス�
 # S3 bucket policy
 ###############################################
 
-# S3にバケットポリシーをアタッチします。
+# S3にバケットポリシーを紐付けします。
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id
   policy = templatefile(
@@ -1326,7 +1326,7 @@ ALBがバケットにログを書き込めるように、『```delivery.logs.ama
 # S3 bucket policy
 ###############################################
 
-# S3にバケットポリシーをアタッチします。
+# S3にバケットポリシーを紐付けします。
 resource "aws_s3_bucket_policy" "nlb" {
   bucket = aws_s3_bucket.nlb_logs.id
   policy = templatefile(

@@ -330,9 +330,9 @@ aws configure set aws_access_key_id "$aws_account_id"
 aws configure set aws_secret_access_key "$aws_secret_access_key"
 aws configure set aws_default_region "ap-northeast-1"
 
-# https://sts.amazonaws.com に、ロールのアタッチをリクエストする。
+# https://sts.amazonaws.com に、ロールの紐付けをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<アタッチしたいIAMロール名>" \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<紐付けしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
   --duration-seconds "<セッションの有効秒数>" \

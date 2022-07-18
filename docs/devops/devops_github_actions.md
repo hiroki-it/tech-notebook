@@ -98,7 +98,7 @@ jobs:
 
 #### ▼ continue-on-error
 
-ステップが失敗しても成功扱いにするかどうかを設定する。
+同じ```steps```キー内の```run```キーが失敗しても成功扱いにするかどうかを設定する。
 
 参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
 
@@ -117,19 +117,25 @@ jobs:
           echo success
 ```
 
-#### ▼ uses
+#### ▼ if
 
-使用するActionsを設定する。
+条件を満たした場合に、後続の```run```キーを実行する。
 
-参考：https://github.com/marketplace?category=&query=&type=actions&verification=
+参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 
 ```yaml
 jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - run: |
+          # 何らかの処理
+      - if: failure() # 失敗した場合、このステップに入る。GitHub Actionsの失敗表記は消えない。
+        run: |
+          echo failure
+      - if: success() # 成功扱いのため、このステップに入る。
+        run: |
+          echo success
 ```
 
 #### ▼ run
@@ -146,6 +152,21 @@ jobs:
           git config --local user.email "example@gmail.com"
           git config --local user.name "github-actions"
           git config pull.rebase false
+```
+
+#### ▼ uses
+
+使用するActionsを設定する。
+
+参考：https://github.com/marketplace?category=&query=&type=actions&verification=
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 ```
 
 #### ▼ with

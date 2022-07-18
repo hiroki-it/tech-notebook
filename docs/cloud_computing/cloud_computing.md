@@ -39,13 +39,13 @@ description: クラウドコンピューティングの知見を記録してい�
 - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
 - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
 
-|      | ユーザーの管理領域                                           | AWS                   | GCP                                                          | Azure                     |
-| ---- | ------------------------------------------------------------ | --------------------- | ------------------------------------------------------------ | ------------------------- |
-| 自社 | 全て。OpenStack、OpenCanvasを使用して、オンプレミス環境に仮想クラウドを作成する。 | -                     | -                                                            | -                         |
-| IaaS | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
-| CaaS | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
-| PaaS | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
-| FaaS | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
-| SaaS | なし                                                         |                       | Google Apps（Google Map、Google Cloud、Google Calender など） |                           |
+|              | ユーザーの管理領域                                           | AWS                   | GCP                                                          | Azure                     |
+|--------------| ------------------------------------------------------------ | --------------------- | ------------------------------------------------------------ | ------------------------- |
+| オンプレミス（自社所有） | 全て。OpenStack、OpenCanvasを使用して、オンプレミス環境に仮想クラウドを作成する。 | -                     | -                                                            | -                         |
+| IaaS         | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
+| CaaS         | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
+| PaaS         | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
+| FaaS         | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
+| SaaS         | なし                                                         |                       | Google Apps（Google Map、Google Cloud、Google Calender など） |                           |
 
 <br>

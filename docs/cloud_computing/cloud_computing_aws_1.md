@@ -486,7 +486,7 @@ API GatewayとLambdaの間で、リクエスト/レスポンスのJSONデータ�
 | Lambdaプロキシ統合の使用     | Lambdaとのプロキシ統合を有効化するかどうかを設定する。                         |
 | Lambdaリージョン             | 実行したLambda関数のリージョンを設定する。                   |
 | Lambda関数                   | 実行したLambda関数の名前を設定する。                         |
-| 実行ロール                   | 実行したいLambda関数へのアクセス権限がアタッチされたロールのARNを設定する。ただし、Lambda側にAPI Gatewayへのアクセス権限をアタッチしても良い。 |
+| 実行ロール                   | 実行したいLambda関数へのアクセス権限が紐付けられたロールのARNを設定する。ただし、Lambda側にAPI Gatewayへのアクセス権限を紐付けしても良い。 |
 | 認証情報のキャッシュ         |                                                              |
 | デフォルトタイムアウトの使用 |                                                              |
 
@@ -965,7 +965,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Origin Domain Name     | CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。 | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であっても良い。 |
 | Origin Path            | オリジンのルートディレクトリを設定する。                     | ・何も設定しないと、デフォルトは『```/```』のなる。Behaviorでは、『```/```』の後にパスが追加される。<br>・『```/var/www/foo```』を設定すると、Behaviorで設定したパスが『```/var/www/foo/foo```』のように追加される。 |
-| Origin Access Identity | リクエストのルーティング先となるAWSリソースでアクセス権限のアタッチが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーをアタッチする。 | CloudFrontがS3に対して読み出しを行うために必要。             |
+| Origin Access Identity | リクエストのルーティング先となるAWSリソースでアクセス権限の紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。 | CloudFrontがS3に対して読み出しを行うために必要。             |
 | Origin Protocol Policy | リクエストのルーティング先となるAWSリソースに対して、HTTPとHTTPSのいずれのプロトコルでルーティングするかを設定する。 | ・ALBで必要。ALBのリスナーのプロトコルに合わせて設定する。<br>・```HTTP Only```：HTTPでルーティング<br>・```HTTPS Only```：HTTPSでルーティング<br>・```Match Viewer```：両方でルーティング |
 | HTTPポート             | ルーティング時に指定するオリジンのHTTPのポート番号           |                                                              |
 | HTTPSポート            | ルーティング時に指定するオリジンのHTTPSのポート番号          |                                                              |
@@ -1217,7 +1217,7 @@ This XML file does not appear to have any style information associated with it. 
 
 ### CloudTrailとは
 
-IAMユーザーによる操作や、ロールのアタッチの履歴を記録し、ログファイルとしてS3に転送する。CloudWatchと連携もできる。
+IAMユーザーによる操作や、ロールの紐付けの履歴を記録し、ログファイルとしてS3に転送する。CloudWatchと連携もできる。
 
 ![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudTrailとは.jpeg)
 

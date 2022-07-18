@@ -15,9 +15,17 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 ## 01. リポジトリ構成
 
+### リポジトリ分割のメリット
+
+リポジトリを分割することで、以下のメリットがある。
+
+- 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+
+<br>
+
 ### モノリポジトリ
 
-アプリケーションと同じリポジトリにて、```terraform```ディレクトリを作成し、ここにtfファイルを配置する。
+アプリケーションと同じリポジトリにて、```terraform```ディレクトリを作成し、ここに```.tf```ファイルを配置する。
 
 ```yaml
 repository/
@@ -34,7 +42,7 @@ repository/
 
 #### ▼ ルートモジュールとネストモジュールを同じリポジトリにする（推奨）
 
-アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは同じリポジトリ内で管理する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+アプリケーションとは異なるリポジトリにて、```.tf```ファイルを配置しつつ、ルートモジュールとネストモジュールは同じリポジトリ内で管理する。
 
 ```yaml
 repository/
@@ -44,7 +52,7 @@ repository/
 
 #### ▼ ルートモジュールとネストモジュールを異なるリポジトリにする
 
-アプリケーションとは異なるリポジトリにて、tfファイルを配置しつつ、ルートモジュールとネストモジュールは異なるリポジトリ内で管理する。ルートモジュールで、ネストモジュールのリポジトリのURLを指定し、参照する。リポジトリを分割することで、認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
+アプリケーションとは異なるリポジトリにて、```.tf```ファイルを配置しつつ、ルートモジュールとネストモジュールは異なるリポジトリ内で管理する。ルートモジュールで、ネストモジュールのリポジトリのURLを指定し、参照する。
 
 ```yaml
 repository/
@@ -54,11 +62,50 @@ repository/
 
 <br>
 
-## 01-02 ```.tfstate```ファイルの構成
+## 01-02 ```.tfstate```ファイルの分割
 
-#### ▼ 実行環境別（必須）
+### ```.tfstate```ファイル分割とは
 
-必須の構成である。実行環境別に```providers.tf```ファイルを作成する。これにより、実行環境別に```.tfstate```ファイルが作成される。```terraform apply```コマンドの影響範囲を実行環境内に閉じられる。
+#### ▼ メリット
+
+```.tfstate```ファイルを分割することで、以下のメリットがある。
+
+参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+
+- ```terraform apply```コマンドの実行途中に問題が起こり、```.tfstate```ファイルが破損したとしても、影響範囲をクラウドプロバイダーの実行環境内に閉じられる。
+- ```terraform plan```コマンドや```terraform apply```コマンドの実行時間を短縮できる。
+- リソースタイプが同じであっても、同じ名前を付けられる。
+
+#### ▼ 方法
+
+```backend```ブロックの```key```オプションで、下層のディレクトリ名に分割名を設定する。
+
+```terraform
+terraform {
+
+  # 〜 中略 〜
+  
+  backend "s3" {
+    
+    # 〜 中略 〜
+    
+    bucket     = "prd-foo-tfstate-bucket"
+    key        = "<クラウドプロバイダー名>/<コンポーネント名>/terraform.tfstate"
+    
+    # 〜 中略 〜
+    
+  }
+  
+  # 〜 中略 〜
+  
+}
+```
+
+<br>
+
+### 実行環境別（必須）
+
+必須の構成である。実行環境別に```providers.tf```ファイルを作成する。これにより、実行環境別に```.tfstate```ファイルが作成される。```terraform apply```コマンドの影響範囲を実行環境内に閉じられる。また、各環境の```.tfstate```ファイルの管理リソース（AWSならS3バケット）も分割した方がよい。
 
 ```yaml
 repository/
@@ -70,28 +117,148 @@ repository/
 └── stg/ # ステージング環境
 ```
 
-#### ▼ クラウドプロバイダー別
+<br>
 
-実行環境別に分けた上で、さらにクラウドプロバイダー別に```providers.tf```ファイルを作成する。これにより、クラウドプロバイダー別に```.tfstate```ファイルが作成される。```terraform apply```コマンドの影響範囲をクラウドプロバイダーの実行環境内に閉じられる。
+### クラウドプロバイダー別（必須）
+
+実行環境別に分けた上で、さらにクラウドプロバイダー別に```providers.tf```ファイルを作成する。これにより、クラウドプロバイダー別に```.tfstate```ファイルが作成される。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
 ```yaml
 repository/
 ├── dev/ # 開発環境
 │   ├── aws/ # AWS
-│   │    ├── providers.tf
+│   │    ├── providers.tf # aws/terraform.tfstate
 │   │    ...
 │   │
 │   ├── datadog/ # Datadog
-│   │   ├── providers.tf
+│   │   ├── providers.tf # datadog/terraform.tfstate
 │   │   ...
 │   │
-│   ├── healthchecks/ # Healthchecks
-│   │   ├── providers.tf
+│   ├── healthchecks/ # Healthchecks 
+│   │   ├── providers.tf # healthchecks/terraform.tfstate
 │   │   ...
 │   │ 
-│   └── pagerduty/ # PagerDuty
+│   └── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
 │       ├── providers.tf
 │       ...
+│
+├── prd/ # 本番環境
+└── stg/ # ステージング環境
+```
+
+<br>
+
+###  任意のコンポーネント別
+
+#### ▼ コンポーネントの目安
+
+CloudFormationでは、クラウドインフラのリソースの変更頻度、運用チームの責務範囲、爆発半径、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと混乱するため、いずれかの観点に統一した方が良い。
+
+参考：
+
+- https://zoo200.net/terraform-tutorial-module-and-directory/
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
+- https://zenn.dev/hajimeni/articles/e17b9808e0e82e
+
+#### ▼ クラウドインフラのリソースの変更頻度
+
+クラウドインフラのリソースの変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+
+参考：https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
+
+```yaml
+repository/
+├── dev/ # 開発環境
+│   ├── aws/ # AWS
+│   │   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
+│   │   │   ├── providers.tf # aws/high-freq/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
+│   │   │   ├── providers.tf # aws/low-freq/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
+│   │       ├── providers.tf # aws/middle-freq/terraform.tfstate
+│   │       ...
+│   │
+│   ├── datadog/ # Datadog
+│   │   ├── high-freq
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   ├── low-freq
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   └── middle-freq
+│   │       ├── providers.tf
+│   │       ...
+│   │
+│   ├── healthchecks/ # Healthchecks
+│   │   ├── high-freq
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   ├── low-freq
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   └── middle-freq
+│   │       ├── providers.tf
+│   │       ...
+│   │ 
+│   └── pagerduty/ # PagerDuty
+│       ├── high-freq
+│       │   ├── providers.tf
+│       │   ...
+│       │
+│       ├── low-freq
+│       │   ├── providers.tf
+│       │   ...
+│       │
+│       └── middle-freq
+│           ├── providers.tf
+│           ...
+│
+├── prd/ # 本番環境
+└── stg/ # ステージング環境
+```
+
+#### ▼ 運用チームの責務範囲
+
+運用チームの責務範囲ごとにコンポーネントを分割する。ただ、チームの責務範囲や数は、組織の大きさに合わせて流動的に変化するものなので、個人的には保守性が高くない。
+
+```yaml
+repository/
+├── dev/ # 開発環境
+│   ├── aws/ # AWS
+│   │   ├── foo-team # fooチーム
+│   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   ├── bar-team # barチーム
+│   │   │   ├── providers.tf # aws/bar-team/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   └── baz-team # bazチーム
+│   │       ├── providers.tf # aws/baz-team/terraform.tfstate
+│   │       ...
+│   │
+│   ├── datadog/ # Datadog
+│   │   └── foo-team # fooチーム
+│   │       ├── providers.tf # datadog/foo-team/terraform.tfstate
+│   │       ...
+│   │
+│   ├── healthchecks/ # Healthchecks
+│   │   └── bar-team # barチーム
+│   │       ├── providers.tf # healthchecks/bar-team/terraform.tfstate
+│   │       ...
+│   │ 
+│   └── pagerduty/ # PagerDuty
+│       └── baz-team # bazチーム
+│           ├── providers.tf # pagerduty/baz-team/terraform.tfstate
+│           ...
 │
 ├── prd/ # 本番環境
 └── stg/ # ステージング環境

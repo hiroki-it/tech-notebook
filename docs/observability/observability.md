@@ -62,7 +62,7 @@ description: 可観測性の知見を記録しています。
 参考：
 
 - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
-- https://www.splunk.com/ja_jp/data-insider/what-is-opentelemetry.html
+- https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
 
 <br>
 
@@ -165,13 +165,13 @@ description: 可観測性の知見を記録しています。
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、バラバラに分析/管理する。
 
-参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
+参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging（集中ロギング）
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。
 
-参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
+参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 <br>
 

@@ -90,7 +90,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 ### ```.terraform.lock.hcl```ファイル
 
-#### ▼ ```.terraform.lock.hcl```ファイルとは
+#### ▼ ```.terraform.lock```.ファイルとは
 
 開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
@@ -435,7 +435,7 @@ terraform {
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
-    # .tfstateファイル名
+    # .tfstateファイル名とバケット内ディレクトリ構造
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
     # credentialsファイルの場所
@@ -490,7 +490,7 @@ terraform {
   # リージョン、アクセスキーID、シークレットアクセスキーは不要
   backend "s3" {
     bucket  = "<バケット名>"
-    key     = "<バケット内のディレクトリ>"
+    key     = "<.tfstateファイル名とバケット内ディレクトリ構造>"
   }
 }
 
@@ -628,9 +628,7 @@ vpc_cidr_block = "*.*.*.*/n" # CIDRブロック
 
 #### ▼ 値のデータ型
 
-単一値、list型、map型で定義できる。AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。なお、RDSのパラメーターグループの適正値については、以下のリンクを参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+単一値、list型、map型で定義できる。AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。
 
 **＊実装例＊**
 
@@ -884,7 +882,9 @@ data "aws_ami" "bastion" {
 
 #### ▼ outputとは
 
-モジュールで作成されたリソースが持つ特定の値を出力する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力するようにした方が良い。
+モジュール内のリソースが持つ値をモジュール外に出力する。または、他の```.tfstate```ファイルのリソースで使用できるようにする。可読性の観点から、リソース一括ではなく、具体的な```attribute```を出力するようにした方が良い。
+
+参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 #### ▼ 実装方法
 
@@ -904,6 +904,38 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
+モジュール内のリソースが持つ値をモジュール外に出力する場合、```module```から出力する。
+
+```terraform
+###############################
+# ALB
+###############################
+module "foo" {
+  # モジュールのResourceを参照する。
+  source = "../modules/foo"
+  
+  # モジュールに他のモジュールのoutputを渡す。
+  foo_id = module.alb.alb_zone_id
+}
+```
+
+一方で、他の```.tfstate```ファイルのリソースで使用する場合、```terraform_remote_state```から出力する。
+
+```terraform
+# outputのあるtfstateファイルを参照する。
+data "terraform_remote_state" "alb" {
+    backend = "s3"
+    config = {
+        bucket = "bucket"
+        key = "alb.tfstate"
+    }
+}
+
+resource "foo" "this" {
+    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
+}
+```
+
 #### ▼ ```count```関数の```output```
 
 ノート内の[こちら](#count)を参考にせよ。
@@ -1358,9 +1390,13 @@ resource "aws_lb" "this" {
 
 指定したブロックを繰り返し作成する。
 
+参考：https://www.terraform.io/language/expressions/dynamic-blocks
+
+#### ▼ map型の場合
+
 **＊実装例＊**
 
-例として、RDSパラメーターグループの```parameter```ブロックを、map型変数を使用して繰り返し作成する。
+map型のキー名と値の両方を設定値として使用する。例として、RDSパラメーターグループの```parameter```ブロックを、map型変数を使用して繰り返し作成する。
 
 ```terraform
 ###############################################
@@ -1380,6 +1416,9 @@ rds_parameter_group_values = {
   slow_query_log           = 1
   long_query_time          = 3
 }
+```
+
+```terraform
 
 ###############################################
 # RDS Cluster Parameter Group
@@ -1393,12 +1432,50 @@ resource "aws_rds_cluster_parameter_group" "this" {
     for_each = var.rds_parameter_group_values
 
     content {
+      # parameterブロックのnameオプションとvalueオプションに出力する。
       name  = parameter.key
       value = parameter.value
     }
   }
 }
 ```
+
+**＊実装例＊**
+
+map型の値を設定値として使用する。
+
+```terraform
+security_group_ingress_ec2_ssh = {
+  cidr_blocks = "*.*.*.*"
+  description = "SSH access from foo ip address"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "TCP"
+}
+```
+
+```terraform
+
+resource "aws_security_group" "ec2" {
+
+  # 〜 中略 〜
+
+  dynamic ingress {
+    for_each = var.security_group_ingress_ec2_ssh
+    content {
+      cidr_blocks = [ ingress.value["cidr_blocks"] ]
+      description = ingress.value["description"]
+      from_port   = ingress.value["from_port"]
+      to_port     = ingress.value["to_port"]
+      protocol    = ingress.value["protocol"]
+    }
+  }
+  
+  # 〜 中略 〜
+}
+```
+
+#### ▼ list型の場合
 
 **＊実装例＊**
 
@@ -1413,6 +1490,9 @@ waf_blocked_user_agents = [
   "BarSpider",
   "BazBot",
 ]
+```
+
+```terraform
 
 ###############################################
 # WAF Regex Pattern Sets
@@ -1426,6 +1506,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
     for_each = var.waf_blocked_user_agents
 
     content {
+      # regex_stringブロックのregex_stringオプションに出力する。
       regex_string = regular_expression.value
     }
   }
@@ -1587,6 +1668,55 @@ resource "aws_foo" "foo" {
 
 <br>
 
+### regexall
+
+#### ▼ regexallとは
+
+正規表現ルールに基づいて、文字列の中から文字を抽出する。これを応用して、特定の文字列を含む場合に条件を分岐させるようにできる。
+
+```terraform
+security_group_ingress_ec2_ssh = {
+  prd = {
+    cidr_blocks = "*.*.*.*"
+    description = "SSH access from foo ip address"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+  }
+  stg = {
+    cidr_blocks = "*.*.*.*"
+    description = "SSH access from foo ip address"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+  }
+}
+```
+
+```terraform
+resource "aws_security_group" "ec2" {
+
+  # 〜 中略 〜
+
+  dynamic ingress {
+    # 環境が複数あるとする。（prd-1、prd-2、stg-1、stg-2）
+    # 環境名がprdという文字を含むキーがあった場合に、全てprdキーの方を使用する。
+    for_each = length(regexall("prd", var.env)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
+    content {
+      cidr_blocks = [ ingress.value["cidr_blocks"] ]
+      description = ingress.value["description"]
+      from_port   = ingress.value["from_port"]
+      to_port     = ingress.value["to_port"]
+      protocol    = ingress.value["protocol"]
+    }
+  }
+
+  # 〜 中略 〜
+}
+```
+
+<br>
+
 ## 05. tpl形式の切り出しと読み出し
 
 ### ```templatefile```関数
@@ -1646,7 +1776,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 <br>
 
-### ポリシーのアタッチ
+### ポリシーの紐付け
 
 <br>
 

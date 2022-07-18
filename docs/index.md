@@ -239,9 +239,9 @@ title: 【IT技術の知見】目次
 * [📖：︎S〜U](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_5.html)
 * [📖：︎V〜Z](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_6.html)
 * 設計ポリシー 
-  * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_reliability.html)
-  * [📖：︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
-  * [📖：︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
+    * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_reliability.html)
+    * [📖：︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
+    * [📖：︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
   
 * その他
     * [📖：︎AWS CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cli.html)
@@ -373,7 +373,7 @@ title: 【IT技術の知見】目次
 * [📖：︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html)
 * 監視
     * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html)
-    * [📖：︎インシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_incident_management.html)
+    * [📖：︎オンコールとインシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_oncall_incident_management.html)
     
 ### テレメトリー収集ツール
 

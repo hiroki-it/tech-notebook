@@ -181,7 +181,7 @@ Go製のORMである。
 
 #### ▼ MySQLの場合
 
-参考：https://gorm.io/ja_JP/docs/connecting_to_the_database.html#MySQL
+参考：https://gorm.io/docs/connecting_to_the_database.html#MySQL
 
 ```go
 func NewDB() (*gorm.DB, error) {
@@ -233,7 +233,7 @@ func Close(db *gorm.DB) error {
 
 構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
 
-参考：https://gorm.io/ja_JP/docs/models.html#embedded_struct
+参考：https://gorm.io/docs/models.html#embedded_struct
 
 ```go
 type User struct {
@@ -255,7 +255,7 @@ type User struct {
 
 『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
 
-参考：https://gorm.io/ja_JP/docs/conventions.html#ID-as-Primary-Key
+参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
 ```go
 type User struct {
@@ -275,7 +275,7 @@ type User struct {
 
 構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
 
-参考：https://gorm.io/ja_JP/docs/delete.html#Soft-Delete
+参考：https://gorm.io/docs/delete.html#Soft-Delete
 
 ```go
 type User struct {
@@ -306,7 +306,7 @@ db.Where("age = 20").Find(&user)
 
 デフォルトではGormモデルの名前をスネークケースに変更し、また複数形とした名前のテーブルが生成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
 
-参考：https://gorm.io/ja_JP/docs/conventions.html#TableName
+参考：https://gorm.io/docs/conventions.html#TableName
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
@@ -348,7 +348,7 @@ result.RowsAffected // returns inserted records count
 
 #### ▼ 全カラム取得
 
-参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-all-objects
+参考：https://gorm.io/docs/query.html#Retrieving-all-objects
 
 ```go
 user := User{}
@@ -365,7 +365,7 @@ result.Error        // returns error
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
 
-参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-objects-with-primary-key
+参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 ```go
 user := User{}
@@ -388,7 +388,7 @@ db.Find(&users, []int{1,2,3})
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
-参考：https://gorm.io/ja_JP/docs/update.html#Update-single-column
+参考：https://gorm.io/docs/update.html#Update-single-column
 
 ```go
 // Update with conditions
@@ -410,7 +410,7 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 
 Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
 
-参考：https://gorm.io/ja_JP/docs/update.html#Updates-multiple-columns
+参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
 ```go
 user := User{Id:111}
@@ -428,7 +428,7 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 
 Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。フィールド値がゼロ値であっても、スキップされない。
 
-参考：https://gorm.io/ja_JP/docs/update.html#Update-Selected-Fields
+参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
 ```go
 user := User{Id:111}
@@ -446,7 +446,7 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
 
-参考：https://gorm.io/ja_JP/docs/update.html#Save-All-Fields
+参考：https://gorm.io/docs/update.html#Save-All-Fields
 
 ```go
 user := User{Id:111}

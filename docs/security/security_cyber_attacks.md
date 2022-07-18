@@ -19,11 +19,11 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 #### ▼ ファイアウォールとは
 
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+
 データリンク層からトランスポート層までに対するサイバー攻撃（そもそものネットワークへの侵入、ポートスキャン、など）を遮断する。
 
 参考：https://digital-jyoshisu.com/archives/468
-
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
 
 #### ▼ パケットフィルタリング型ファイアウォール
 
@@ -123,11 +123,11 @@ Win10におけるファイアウォール。
 
 #### ▼ IPSとは
 
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+
 ネットワーク層からプレゼンテーション層までに対するサイバー攻撃（Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など）を遮断するセキュリティシステムのこと。
 
 参考：https://digital-jyoshisu.com/archives/468
-
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
 
 <br>
 
@@ -143,6 +143,16 @@ Win10におけるファイアウォール。
 
 - https://digital-jyoshisu.com/archives/468
 - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
+
+#### ▼ WAFの種類
+
+参考：hhttps://liskul.com/waf-15products-35757
+
+| WAFの種類        | 説明                                                         | 例                                                   |
+| ---------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| ソフトウェア型   | WAFの機能を持つソフトウェアを自社サーバーにセットアップし、これを設置する。 | SuiteGuard、SmartCloud、など                         |
+| アプライアンス型 | WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを設置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など      |
+| クラウド型       | クラウドプロバイダーが提供するWAFを設置する。                | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、など |
 
 <br>
 
