@@ -357,7 +357,7 @@ nav:
       - 可観測性: observability/observability.md
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
-          - インシデント管理: observability/observability_monitoring_incident_management.md
+          - オンコールとインシデント管理: observability/observability_monitoring_oncall_incident_management.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
           - Prometheus: observability/observability_telemetry_prometheus.md
