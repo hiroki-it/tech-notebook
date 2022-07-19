@@ -146,7 +146,7 @@ repository/
 
 ### 実行環境別（必須）
 
-必須の構成である。各実行環境にapplyするためのApplicationを別々のディレクトリで管理する。Applicationでは、実行環境に対応するブランチのみを監視する。
+必須の構成である。各実行環境に```terraform apply```コマンドを実行するためのApplicationを別々のディレクトリで管理する。Applicationでは、実行環境に対応するブランチのみを監視する。
 
 ```yaml
 repository/

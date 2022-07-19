@@ -152,7 +152,7 @@ repository/
 
 #### ▼ コンポーネントの目安
 
-CloudFormationでは、クラウドインフラのリソースの変更頻度、運用チームの責務範囲、爆発半径、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと混乱するため、いずれかの観点に統一した方が良い。
+CloudFormationでは、クラウドインフラのリソースの設定変更頻度、運用チームの責務範囲、爆発半径、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと混乱するため、個人的には、いずれかの観点に統一した方が良い。
 
 参考：
 
@@ -162,9 +162,12 @@ CloudFormationでは、クラウドインフラのリソースの変更頻度、
 
 #### ▼ クラウドインフラのリソースの変更頻度
 
-クラウドインフラのリソースの変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+クラウドインフラのリソースの設定変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
-参考：https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
+参考：
+
+- https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
+- https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 ```yaml
 repository/
@@ -478,7 +481,7 @@ repository/
 
 #### ▼ 並び順
 
-環境変数を並べる```# Variables```コメントと、モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける。```# Variables```コメントの部分では、```terraform.tfvars```ファイルと同じ並び順になるようにする。また、```# Output values```コメントの部分では、```output```をモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
+環境変数を並べる```# Variables```コメントと、モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける。```# Variables```コメントの部分では、```terraform.tfvars```ファイルと同じ並び順になるようにする。また、```# Output values```コメントの部分では、```output```ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
 
 ```terraform
 ###############################################
@@ -759,7 +762,7 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 #### ▼ リソースに種類が無い場合
 
-リソース名が```this```である場合、```output```名ではこれを省略しても良い。
+リソース名が```this```である場合、```output```ブロック名ではこれを省略しても良い。
 
 **＊実装例＊**
 
@@ -916,7 +919,7 @@ $ asdf install
 
 ### 機密情報の管理
 
-機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをデータリソースで参照する。
+機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをdataブロックで参照する。
 
 ```terraform
 # AWS RDSの場合

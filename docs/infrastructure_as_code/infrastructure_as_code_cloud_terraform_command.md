@@ -178,7 +178,7 @@ $ terraform get
 
 ### graph
 
-rosource間の依存関係をグラフ化する。これにより、どのresourceが他のどのresourceを使用しているかがわかる。Graphvizのダウンロードが必要である。
+rosource間の依存関係をグラフ化する。これにより、どの```resource```ブロックが他のどの```resource```ブロックを使用しているかがわかる。Graphvizのダウンロードが必要である。
 
 参考：https://graphviz.org/download/
 
@@ -190,30 +190,67 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 ### import
 
-#### ▼ -var-file
+#### ▼ importの手順
 
-Terraformによる作成ではない方法で、すでにクラウド上にリソースが作成されている場合、これをterraformの管理下におく必要がある。リソースタイプとリソース名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。現状、全てのリソースを一括して```terraform import```コマンドする方法は無い。リソースIDは、リソースによって異なるため、リファレンスの『Import』または『Attributes Referenceの```id```』を確認すること（例：ACMにとってのIDはARNだが、S3バケットにとってのIDはバケット名である）。
+（１）Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。2022/07/19時点で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを一つずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
+
+参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
+
+（２）```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
+
+参考：
+
+- https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
+- https://dev.classmethod.jp/articles/terraform_import_for_each/
 
 ```bash
+# 関数を使用せずに定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    <リソースタイプ>.<リソース名> <クラウドプロバイダー上リソースID>
+    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
 ```
 
-モジュールを使用している場合、指定の方法が異なる。
-
 ```bash
+# moduleを使用して定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    module.<モジュール名>.<リソースタイプ>.<リソース名> <クラウドプロバイダー上リソースID>
+    module.<モジュール名>.<resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
 ```
 
-例えば、AWS上にすでにECRが存在しているとして、これをterraformの管理下におく。
-
 ```bash
+# for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    module.ecr.aws_ecr_repository.www *****
+    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+    
+# その他のキー名もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+```
+
+```bash
+# count関数で定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前、など>
+    
+# その他のインデックス番号もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前、など>
+```
+
+```bash
+# moduleを使用し、for_each関数で定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    'module.<モジュール名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+
+# その他のキー名もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    'module.<モジュール名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
 ```
 
 そして、ローカルマシンの```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
@@ -224,9 +261,17 @@ $ terraform plan -var-file=foo.tfvars
 No changes. Infrastructure is up-to-date.
 ```
 
+何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
+
+参考：https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+
+#### ▼ importできない```resource```タイプ
+
+```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。その場合、```.tfstate```ファイルと実インフラの差分を解消できない。ただ、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+
 #### ▼ importを行わなかった場合のエラー
 
-もし```terraform import```コマンドを行わないと、すでにクラウド上にリソースが存在しているためにリソースを作成できない、というエラーになる。
+もし```terraform import```コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになる。
 
 （エラー例1）
 
@@ -240,13 +285,29 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
 
+#### ▼ -var-file
+
+```.tfvars```ファイルを指定して、```terraform import```コマンドを実行する。
+
+```bash
+$ terraform import \
+    -var-file=foo.tfvars \
+    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+
+    
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+```
+
 <br>
 
 ### refresh
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のリソースの状態を```.tfstate```ファイルに反映する。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルに反映する。
 
 ```bash
 $ terraform refresh -var-file=foo.tfvars
@@ -269,7 +330,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ 出力内容の読み方
 
-前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象リソースの数を確認しても、前半部分のリソースは含まれていないことがわかる。
+前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象の```resource```ブロックの数を確認しても、前半部分の```resource```ブロックは含まれていないことがわかる。
 
 ```bash
 Note: Objects have changed outside of Terraform
@@ -300,14 +361,14 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 | 変更内容                                       | される/されない |
 |--------------------------------------------| ---------------- |
-| リソース名の変更                                   | される           |
+| ```resource```ブロック名の変更                                   | される           |
 | モジュール名の変更                                  | される           |
 | ファイルやディレクトリを指定するパスの変更                      | されない         |
-| リソースにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない         |
+| ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない         |
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -332,12 +393,12 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定のリソースに対して、```terraform plan```コマンドを実行する。
+特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。
 
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=<リソースタイプ>.<リソース名>
+    -target=<resourceタイプ>.<resourceブロック名>
 ```
 
 モジュールを使用している場合、指定の方法が異なる。
@@ -345,7 +406,7 @@ $ terraform plan \
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
+    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
 ```
 
 #### ▼ -refresh
@@ -397,22 +458,28 @@ $ terraform apply \
 
 #### ▼ -refresh-only
 
-tfstateファイルのみを更新し、実インフラのリソースを更新しない。
+すでに管理対象の```resource```ブロックにて、実インフラがTerraform外で変更されている場合に、これを```.tfstate```ファイルに反映する。```terraform import```とは異なり、create処理が計画されるような管理対象外の```resource```ブロックの情報は```.tfstate```ファイルに反映できない。
 
-参考：https://learn.hashicorp.com/tutorials/terraform/refresh
+参考：
+
+- https://learn.hashicorp.com/tutorials/terraform/refresh
+- https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
+- https://rurukblog.com/post/terraform-refresh-onlyt/
 
 ```bash
 $ terraform apply -refresh-only
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
 ```
 
 #### ▼ -target
 
-特定のリソースに対して、```terraform apply```コマンドを実行する。
+特定の```resource```ブロックを使用して、```terraform apply```コマンドを実行する。
 
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=<リソースタイプ>.<リソース名>
+    -target=<resourceタイプ>.<resourceブロック名>
 ```
 
 モジュールを使用している場合、指定の方法が異なる。
@@ -420,7 +487,7 @@ $ terraform apply \
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
+    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
 ```
 
 #### ▼ -var-file
@@ -453,16 +520,79 @@ $ terraform apply foo.tfplan
 
 <br>
 
+### state
+
+#### ▼ rm
+
+```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```関数や```for_each```関数を使用している場合は、シングルクオーテーションで囲う必要がある。
+
+参考：
+
+- https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+- https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
+- https://dev.classmethod.jp/articles/terraform_import_for_each/
+
+```bash
+# 関数を使用せずに定義されている場合
+$ terraform state rm aws_instance.bastion
+
+Removed aws_instance.bastion
+Successfully removed 1 resource instance(s).
+```
+
+```bash
+# moduleを使用して定義されている場合
+$ terraform state rm module.ec2.aws_instance.bastion
+
+Removed module.ec2.aws_instance.bastion
+Successfully removed 1 resource instance(s).
+```
+
+```bash
+# for_each関数で定義されている場合
+$ terraform state rm 'aws_instance.bastion["<キー名1>"]'
+
+Removed aws_instance.bastion["<キー名1>"]
+Successfully removed 1 resource instance(s).
+
+# その他のキー名も削除が必要になる。
+$ terraform state rm 'aws_instance.bastion["<キー名2>"]'
+```
+
+```bash
+# count関数で定義されている場合
+$ terraform state rm 'aws_instance.bastion[0]'
+
+Removed aws_instance.bastion[0]
+Successfully removed 1 resource instance(s).
+
+# その他のインデックス番号も削除が必要になる。
+$ terraform state rm 'aws_instance.bastion[1]'
+```
+
+```bash
+# moduleを使用し、for_each関数で定義されている場合
+$ terraform state rm 'module.ec2.aws_instance.bastion["<キー名1>"]'
+
+Removed module.ec2.aws_instance.bastion["<キー名1>"]
+Successfully removed 1 resource instance(s).
+
+# その他のキー名も削除が必要になる。
+$ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
+```
+
+<br>
+
 ### taint
 
-#### ▼ -var-file <リソース>
+#### ▼ -var-file <resourceブロック>
 
-バックエンドにある```.tfstate```ファイルにて、指定されたリソースの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端はリソースが作成されてしまうことがある。ここで、```tainted```を立てておくと、実インフラのリソースを削除したと想定した```plan```を実行できる。
+バックエンドにある```.tfstate```ファイルにて、指定された```resource```ブロックの```tainted```フラグを立てる。例えば、```apply```したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。ここで、```tainted```を立てておくと、実インフラの```resource```ブロックを削除したと想定した```plan```を実行できる。
 
 ```bash
 $ terraform taint \
     -var-file=foo.tfvars \
-    module.<モジュール名>.<リソースタイプ>.<リソース名>
+    module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
 ```
 
 この後の```terraform plan```コマンドのログからも、```-/+```で削除が行われる想定で、差分を比較していることがわかる。
@@ -476,7 +606,7 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
--/+ <リソースタイプ>.<リソース名> (tainted) (new resource required)
+-/+ <resourceタイプ>.<resourceブロック名> (tainted) (new resource required)
       id: '1492336661259070634' => <computed> (forces new resource)
 
 
@@ -489,13 +619,13 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 #### ▼ state listとは
 
-ファイル内で定義しているリソースの一覧を取得する。
+ファイル内で定義しているresourceの一覧を取得する。
 
 ```bash
 $ terraform state list
 ```
 
-以下の通り、モジュールも含めて、リソースが表示される。
+以下の通り、モジュールも含めて、resourceが表示される。
 
 ```bash
 aws_instance.www-1a

@@ -33,7 +33,7 @@ description: ロジック＠Terraformの知見を記録しています。
   "terraform_version": "1.0.6",
   "serial": 3,
   "lineage": "*****-*****-*****-*****-*****",
-  "outputs": { # アウトプットのapplyで追加される。
+  "outputs": { # outputブロックのapplyで追加される。
     "foo_ids": {
       "value": "*****",
       "type": "string"
@@ -41,8 +41,8 @@ description: ロジック＠Terraformの知見を記録しています。
   },
   "resources": [
     {
-      "mode": "data", # データリソースのapplyで追加される。
-      "type": "aws_caller_identity", # リソースタイプ
+      "mode": "data", # dataブロックのapplyで追加される。
+      "type": "aws_caller_identity", # resourceタイプ
       "name": "current", # リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [ # 設定値
@@ -61,8 +61,8 @@ description: ロジック＠Terraformの知見を記録しています。
     },
     {
       "module": "module.ec2", # モジュールの場合に追加される。
-      "mode": "managed", # リソースのapplyで追加される。
-      "type": "aws_instance", # リソースタイプ
+      "mode": "managed", # importや、resourceブロックのapplyで追加される。
+      "type": "aws_instance", # resourceタイプ
       "name": "foo", # リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [ # 設定値
@@ -174,7 +174,7 @@ terraformの実行時に、エントリーポイントとして機能するフ�
 
 #### ▼ required_providers
 
-AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なるリソースタイプが提供される。一番最初に読みこまれるファイルのため、変数やモジュール化などが行えない。
+AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なる```resource```タイプが提供される。一番最初に読みこまれるファイルのため、変数やモジュール化などが行えない。
 
 **＊実装例＊**
 
@@ -519,7 +519,7 @@ provider "aws" {}
 # ALB
 ###############################
 module "alb" {
-  # モジュールのResourceを参照する。
+  # モジュールのresourceブロックを参照する。
   source = "../modules/alb"
   
   # モジュールに他のモジュールのoutputを渡す。
@@ -536,7 +536,7 @@ module "alb" {
 # ALB
 ###############################
 module "alb" {
-  # モジュールのResourceを参照する。
+  # モジュールのresourceブロックを参照する。
   # SSHの場合
   source = "github.com/hiroki-hasegawa/terraform-modules.git"
   
@@ -554,7 +554,7 @@ module "alb" {
 # ALB
 ###############################
 module "alb" {
-  # モジュールのResourceを参照する。
+  # モジュールのresourceブロックを参照する。
   # SSHの場合
   source = "github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
   
@@ -727,7 +727,7 @@ waf_blocked_user_agents = [
 
 #### ▼ variableとは
 
-リソースで使用する変数のデータ型を定義する。
+```resource```ブロックで使用する変数のデータ型を定義する。
 
 **＊実装例＊**
 
@@ -784,17 +784,17 @@ resource "aws_instance" "example" {
 
 <br>
 
-## 03. リソースの実装
+## 03. ```resource```ブロックの実装
 
-### resource
+### ```resource```ブロック
 
-#### ▼ resourceとは
+#### ▼ ```resource```ブロックとは
 
 AWSのAPIに対してリクエストを送信し、クラウドインフラを作成する。
 
-#### ▼ リソースタイプ
+#### ▼ ```resource```タイプ
 
-操作されるAWSリソースの種類のこと。AWSリソースタイプとTerraformのリソースタイプはおおよそ一致している。
+操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
 
 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
@@ -882,7 +882,7 @@ data "aws_ami" "bastion" {
 
 #### ▼ outputとは
 
-モジュール内のリソースが持つ値をモジュール外に出力する。または、他の```.tfstate```ファイルのリソースで使用できるようにする。可読性の観点から、リソース一括ではなく、具体的な```attribute```を出力するようにした方が良い。
+モジュール内の```resource```ブロックが持つ値をモジュール外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
 
 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
@@ -890,7 +890,7 @@ data "aws_ami" "bastion" {
 
 **＊実装例＊**
 
-例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```の方法が異なる。
+例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```ブロックの方法が異なる。
 
 ```terraform
 ###############################################
@@ -904,14 +904,14 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
-モジュール内のリソースが持つ値をモジュール外に出力する場合、```module```から出力する。
+モジュール内の```resource```ブロックが持つ値をモジュール外に出力する場合、```module```から出力する。
 
 ```terraform
 ###############################
 # ALB
 ###############################
 module "foo" {
-  # モジュールのResourceを参照する。
+  # モジュールのresourceブロックを参照する。
   source = "../modules/foo"
   
   # モジュールに他のモジュールのoutputを渡す。
@@ -919,7 +919,7 @@ module "foo" {
 }
 ```
 
-一方で、他の```.tfstate```ファイルのリソースで使用する場合、```terraform_remote_state```から出力する。
+一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```から出力する。
 
 ```terraform
 # outputのあるtfstateファイルを参照する。
@@ -936,11 +936,11 @@ resource "foo" "this" {
 }
 ```
 
-#### ▼ ```count```関数の```output```
+#### ▼ ```count```関数の```output```ブロック
 
 ノート内の[こちら](#count)を参考にせよ。
 
-#### ▼ ```for_each```関数の```output```
+#### ▼ ```for_each```関数の```output```ブロック
 
 ノート内の[こちら](#for_each)を参考にせよ。
 
@@ -950,7 +950,7 @@ resource "foo" "this" {
 
 ### メタ引数とは
 
-全てのリソースで使用できるオプションのこと。
+全ての```resource```ブロックで使用できるオプションのこと。
 
 <br>
 
@@ -958,11 +958,11 @@ resource "foo" "this" {
 
 #### ▼ depends_onとは
 
-リソース間の依存関係を明示的に定義する。Terraformでは、基本的にリソース間の依存関係が暗黙的に定義されている。しかし、複数のリソースが関わると、リソースを適切な順番で作成できない場合があるため、そういったときに使用する。
+```resource```ブロック間の依存関係を明示的に定義する。Terraformでは、基本的に```resource```ブロック間の依存関係が暗黙的に定義されている。しかし、複数の```resource```ブロックが関わると、```resource```ブロックを適切な順番で作成できない場合があるため、そういったときに使用する。
 
 #### ▼ ALB target group vs. ALB、ECS
 
-例として、ALB target groupを示す。ALB Target groupとALBのリソースを適切な順番で作成できないため、ECSの作成時にエラーが起こる。ALBの後にALB target groupを作成する必要がある。
+例として、ALB target groupを示す。ALB Target groupとALBの```resource```ブロックを適切な順番で作成できないため、ECSの作成時にエラーが起こる。ALBの後にALB target groupを作成する必要がある。
 
 **＊実装例＊**
 
@@ -994,7 +994,7 @@ resource "aws_lb_target_group" "this" {
 
 #### ▼ Internet Gateway vs. EC2、Elastic IP、NAT Gateway
 
-例として、NAT Gatewayを示す。NAT Gateway、Internet Gateway、のリソースを適切な順番で作成できないため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。
+例として、NAT Gatewayを示す。NAT Gateway、Internet Gateway、の```resource```ブロックを適切な順番で作成できないため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。
 
 ```terraform
 ###############################################
@@ -1103,7 +1103,7 @@ resource "aws_s3_bucket_policy" "foo" {
 
 #### ▼ countとは
 
-指定した数だけ、リソースの作成を繰り返す。```count.index```でインデックス数を展開する。
+指定した数だけ、```resource```ブロックの作成を繰り返す。```count.index```でインデックス数を展開する。
 
 **＊実装例＊**
 
@@ -1123,9 +1123,9 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ▼ list型で```output```
+#### ▼ list型で```output```ブロック
 
-リソースの作成に```count```関数を使用した場合、そのリソースはlist型として扱われる。そのため、キー名を指定して```output```できる。この時、```output```はlist型になる。ちなみに、```for_each```関数で作成したリソースはアスタリスクでインデックス名を指定できないので、注意。
+```resource```ブロックの作成に```count```関数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、キー名を指定して出力できる。この時、```output```ブロックはlist型になる。ちなみに、```for_each```関数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。
 
 **＊実装例＊**
 
@@ -1180,7 +1180,7 @@ output "private_datastore_subnet_ids" {
 
 #### ▼ for_eachとは
 
-事前に```for_each```に格納したmap型の```key```の数だけ、リソースを繰り返し実行する。繰り返し処理を行う時に、```count```とは違い、要素名を指定して出力できる。
+事前に```for_each```に格納したmap型の```key```の数だけ、```resource```ブロックを繰り返し実行する。繰り返し処理を行う時に、```count```とは違い、要素名を指定して出力できる。
 
 **＊実装例＊**
 
@@ -1220,7 +1220,7 @@ resource "aws_subnet" "public" {
 
 #### ▼ 冗長化されたAZにおける設定
 
-冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```関数を使用すると、少ない実装で作成できる。```for_each```関数で作成されたリソースは```apply```中にmap構造として扱われ、リソース名の下層にキー名でリソースが並ぶ構造になっている。これを参照するために、『```<リソースタイプ>.<リソース名>[each.key].<attribute>```』とする
+冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```関数を使用すると、少ない実装で作成できる。```for_each```関数で作成された```resource```ブロックは```apply```中にmap構造として扱われ、```resource```ブロック名の下層にキー名で```resource```ブロックが並ぶ構造になっている。これを参照するために、『```<resourceタイプ>.<resourceブロック名>[each.key].<attribute>```』とする
 
 **＊実装例＊**
 
@@ -1302,9 +1302,9 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ▼ 単一値で```output```
+#### ▼ 単一値で```output```ブロック
 
-リソースの作成に```for_each```関数を使用した場合、そのリソースはmap型として扱われる。そのため、キー名を指定して```output```できる。
+```resource```ブロックの作成に```for_each```関数を使用した場合、その```resource```ブロックはmap型として扱われる。そのため、キー名を指定して出力できる。
 
 ```terraform
 ###############################################
@@ -1326,7 +1326,7 @@ output "public_c_subnet_id" {
 }
 ```
 
-#### ▼ map型で```output```
+#### ▼ map型で```output```ブロック
 
 **＊実装例＊**
 
@@ -1519,11 +1519,11 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 #### ▼ lifecycleとは
 
-リソースの作成、更新、そして削除のプロセスをカスタマイズする。
+```resource```ブロックの作成、更新、そして削除のプロセスをカスタマイズする。
 
 #### ▼ create_before_destroy
 
-リソースを新しく作成した後に削除するように、変更できる。通常時、Terraformの処理順序として、リソースの削除後に作成が行われる。しかし、他のAWSリソースと依存関係が存在する場合、先に削除が行われることによって、他のAWSリソースに影響が出てしまう。これに対処するために、先に新しいリソースを作成し、紐付けし直してから、削除する必要がある。
+```resource```ブロックを新しく作成した後に削除するように、変更できる。通常時、Terraformの処理順序として、```resource```ブロックの削除後に作成が行われる。しかし、他のAWSリソースと依存関係が存在する場合、先に削除が行われることによって、他のAWSリソースに影響が出てしまう。これに対処するために、先に新しい```resource```ブロックを作成し、紐付けし直してから、削除する必要がある。
 
 **＊実装例＊**
 
@@ -1606,7 +1606,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで起こったリソースの作成・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
+実インフラのみで起こった```resource```ブロックの作成・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 
@@ -1653,7 +1653,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
 **＊実装例＊**
 
-使用例はすくないが、ちなみにリソース全体を無視する場合は```all```値を設定する。
+使用例はすくないが、ちなみに```resource```ブロック全体を無視する場合は```all```値を設定する。
 
 ```terraform
 resource "aws_foo" "foo" {

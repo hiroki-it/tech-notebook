@@ -17,7 +17,7 @@ description: インシデント＠監視の知見を記録しています。
 
 ### オンコールとは
 
-エラーイベントが通知された時に、エラー修正の担当者に連絡（メールアドレス、電話番号、SMS、など）をとれる状態にあること。
+エラーイベントが通知された時に、エラー修正の担当者に連絡できる状態（メールアドレス、電話番号、SMS、など）にあること。
 
 参考：https://response.pagerduty.com/oncall/being_oncall/
 
@@ -66,30 +66,6 @@ description: インシデント＠監視の知見を記録しています。
 
 <br>
 
-### アラートの抑制
-
-#### ▼ アラートの抑制とは
-
-通知不要なアラートや、実際には重要度の高くないアラートが頻発する場合、アラート疲れしてしまう。そういった場合は、アラートを抑制する
-
-#### ▼ アラートの条件の変更
-
-アラートの条件となる期間を拡大し、または閾値を緩和するようにし、送信されるアラート数を減らす。
-
-#### ▼ アラートの一時無効化
-
-特定の期間に発生したアラートを無視するようにし、アラートが一定期間だけ送信されないようにする。
-
-参考：https://thinkit.co.jp/article/13558
-
-#### ▼ アラートの重要度の格下げ
-
-アラートの重要度を下げるようにし、アラートが恒久的に送信されないようにする。
-
-参考：https://thinkit.co.jp/article/13558
-
-<br>
-
 ## 02. インシデント管理
 
 ### インシデントとは
@@ -104,6 +80,8 @@ description: インシデント＠監視の知見を記録しています。
 <br>
 
 ### インシデント管理
+
+![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/incident_management.png)
 
 一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。また、二次担当者に通知をエスカレーションさせる。これらを自動化するためのツールがいくつかある。
 
@@ -138,7 +116,11 @@ PagerDuty、Splunk On-call、など
 
 #### ▼ 解決フェーズの種類
 
-![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_incident_phase.png)
+参考：
+
+- https://thinkit.co.jp/article/13420
+
+- https://support.pagerduty.com/docs/incidents#incident-statuses
 
 | 解決フェーズ | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -146,11 +128,7 @@ PagerDuty、Splunk On-call、など
 | Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolvedフェーズに移行しない場合は、再びTriggerdフェーズに戻る。 |
 | Resoleved    | インシデントのタスクを解決した                               |
 
-参考：
-
-- https://thinkit.co.jp/article/13420
-
-- https://support.pagerduty.com/docs/incidents#incident-statuses
+![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_incident_phase.png)
 
 <br>
 
@@ -220,7 +198,63 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 04. インシデント管理の事後評価
+## 04. アラート、インシデントの通知抑制
+
+### アラートの通知抑制
+
+#### ▼ アラートの抑制とは
+
+通知不要なアラートや、実際には重要度の高くないアラートの通知が頻発する場合、アラート疲れしてしまう。そういった場合は、アラートの通知を抑制する。
+
+#### ▼ エラーイベントの重要度レベルの調節
+
+アラートの重要度レベルを調節し、通知するべきアラートを選別する。
+
+#### ▼ アラートの一時無効化
+
+特定の期間に発生したアラートを無視するようにし、アラートが一定期間だけ通知されないようにする。
+
+#### ▼ アラートのグループ化
+
+いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。
+
+参考：https://knowledge.sakura.ad.jp/11635/
+
+#### ▼ アラートの条件の調節
+
+アラートの条件となる期間を拡大し、またはエラーイベントの閾値を緩和するようにし、アラートの通知数を減らす。
+
+<br>
+
+### インシデントの通知抑制
+
+#### ▼ インシデントの抑制とは
+
+全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。そういった場合は、インシデントの通知を抑制する
+
+参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
+
+#### ▼ エラーイベントの重要度レベルの調節
+
+インシデントの重要度レベルを調節し、インシデントの優先度付けする。
+
+参考：https://thinkit.co.jp/article/13558
+
+#### ▼ インシデントの一時無効化
+
+特定の期間に発生したインシデントを無視するようにし、インシデントが一定期間だけ通知されないようにする。
+
+参考：https://thinkit.co.jp/article/13558
+
+#### ▼ インシデントのグループ化
+
+いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。
+
+参考：https://knowledge.sakura.ad.jp/11635/
+
+<br>
+
+## 05. インシデント管理の事後評価
 
 ### MTTxメトリクス
 
