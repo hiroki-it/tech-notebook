@@ -458,7 +458,7 @@ $ terraform apply \
 
 #### ▼ -refresh-only
 
-すでに管理対象の```resource```ブロックにて、実インフラがTerraform外で変更されている場合に、これを```.tfstate```ファイルに反映する。```terraform import```とは異なり、create処理が計画されるような管理対象外の```resource```ブロックの情報は```.tfstate```ファイルに反映できない。
+すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を扱うことはできず、代わりに```terraform import```コマンドの実行が必要になる。
 
 参考：
 

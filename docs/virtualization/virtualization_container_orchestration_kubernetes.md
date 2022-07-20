@@ -223,6 +223,28 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 <br>
 
+### Nodeグループ
+
+#### ▼ Nodeグループとは
+
+同じ設定値（```metadata.labels```キー、CPU、メモリ、など）や同じ役割を持ったNodeのグループのこと。KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできないが、クラウドプロバイダーの機能を使用して、Nodeグループを実現できる。基本的には、Nodeグループは冗長化されたNodeで構成されており、IDは違えど、Node名は全て同じである。Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化Nodeのいずれかに対してルーティングすることになる。
+
+参考：
+
+- https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
+- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
+
+#### ▼ Nodeのオートスケーリング
+
+20220720時点で、KubernetesのAPIにはNodeのオートスケーリング機能はない。ただ、cluster-autoscalerプラグインを使用すると、各クラウドプロバイダーのAPIからNodeのオートスケーリングを実行できるようになる。
+
+参考：
+
+- https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
+- https://blog.inductor.me/entry/2021/12/06/165743
+
+<br>
+
 ## 01-04. アドオン
 
 ### admission controllersプラグイン
