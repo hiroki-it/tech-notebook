@@ -869,7 +869,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 ## 03-02-02. on EC2
 
-### EC2インスタンスのAMI
+### EC2インスタンスの最適化AMI
 
 任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
 
@@ -877,9 +877,9 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 | AMI名                         | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
-| ECS最適化Amazon Linux 2       | 標準的なEC2インスタンスを作成できる。最も推奨。              |
+| ECS最適化Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。   |
 | ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
-| ECS最適化Amazon Linux         | 標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
+| ECS最適化Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
 | ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |
 | ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 |
 | ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |
@@ -1341,11 +1341,19 @@ EKS Clusterを作成すると、ENIが作成される。これにより、デー
 
 ### マルチNode
 
+#### ▼ マルチNodeとは
+
 マルチNodeを作成する場合、AZごとにNodeを作成する。
 
 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
 
 ![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_multi-node.png)
+
+#### ▼ Node間のファイル共有
+
+EFSを使用して、Node間でファイルを共有する。
+
+参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
 
 <br>
 
@@ -1632,14 +1640,19 @@ data:
 
 #### ▼ Fargate Nodeとは
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+
+Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2 Nodeを使用するようにする。
+
+- DaemonSetが必要
+- Fargateで設定可能な最大スペックを超えたスペックが必要
+- emptyDirボリューム以外が必要
 
 参考：
 
 - https://www.sunnycloud.jp/column/20210315-01/
 - https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/
-
-![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+- https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
 
 #### ▼ Fargateプロファイル
 
@@ -1662,11 +1675,98 @@ Fargateを設定する。
 
 #### ▼ EC2 Nodeとは
 
+![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
+
 EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタマイズ性が高く、Node当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
 
 参考：https://www.sunnycloud.jp/column/20210315-01/
 
-![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
+#### ▼ EC2 Nodeの最適化AMI
+
+任意のEC2 Nodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2 Nodeをセットアップする手間が省ける。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html
+
+| AMI名                     | 説明                                                         |
+| ------------------------- | ------------------------------------------------------------ |
+| EKS最適化Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |
+| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 |
+| EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |
+
+#### ▼ EC2 NodeのカスタムAMI
+
+EC2 NodeのAMIにカスタムAMIを使用する場合、EC2のユーザーデータとして、パラメーターを渡す必要がある。最適化AMIにはデフォルトでパラメーターが設定されているため、これは不要である。
+
+参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+# 主要なパラメーターは以下の通り。
+# その他のパラメーター：https://github.com/awslabs/amazon-eks-ami/blob/584f9a56c76fc9e7e8632f6ea45e29d45f2eab63/files/bootstrap.sh#L14-L35
+#
+# --b64-cluster-ca：kube-apiserverの証明書の値を設定する。
+# --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。
+# --container-runtime：コンテナランタイムとしてcontainerdを使用する。
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca F5tLN***** \
+  --apiserver-endpoint https://G6jWLdSk*****.*.ap-northeast-1.eks.amazonaws.com \
+  --container-runtime containerd
+```
+
+ユーザーデータの注意点として、各パラメーターはハードコーディングせずに、SSMパラメーターストアから取得するようにする。
+
+参考：
+
+- https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
+- https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+SSM_PARAMETER_STORE=$(aws ssm get-parameters-by-path --with-decryption --path "/")
+
+for PARAMS in $(echo ${SSM_PARAMETER_STORE} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
+  echo "export ${PARAMS##*/}"
+done >> "${SETENV_SHELL}"
+
+source "${SETENV_SHELL}"
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
+```
+
+
+
+<br>
+
+### Nodeグループタイプ
+
+#### ▼ マネージド
+
+Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、Nodeが配置される全てのプライベートサブネットに適用される。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-managed-node-group.html
+- https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
+
+#### ▼ セルフマネージド
+
+Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/launch-workers.html
 
 <br>
 
@@ -1721,26 +1821,31 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 <br>
 
-### コマンド
+### マウントポイントの登録と解除
 
-#### ▼ マウント
+#### ▼ マウントポイントの登録と解除とは
 
-DNS経由で、EFSマウントヘルパーを使用した場合を示す。
+```mount```コマンドと```unmount```コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
 
 参考：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
 
+#### ▼ 登録
+
 ```bash
-# EFSで、マウントポイントを登録
 # mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
 $ mount -t efs -o tls fs-*****:/ /var/www/foo
+```
 
-# マウントポイントを解除
-$ umount /var/www/foo
+#### ▼ 解除
 
-# dfコマンドでマウントしているディレクトリを確認できる
+```df```コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、```unmount```コマンドを実行する。
+
+```bash
 $ df
 Filesystem                                  1K-blocks Used Available Use% Mounted on
 fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
+
+$ umount /var/www/foo
 ```
 
 <br>

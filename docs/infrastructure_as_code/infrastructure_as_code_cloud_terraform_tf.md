@@ -63,7 +63,7 @@ description: ロジック＠Terraformの知見を記録しています。
       "module": "module.ec2", # モジュールの場合に追加される。
       "mode": "managed", # importや、resourceブロックのapplyで追加される。
       "type": "aws_instance", # resourceタイプ
-      "name": "foo", # リソース名
+      "name": "bastion", # リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [ # 設定値
         {

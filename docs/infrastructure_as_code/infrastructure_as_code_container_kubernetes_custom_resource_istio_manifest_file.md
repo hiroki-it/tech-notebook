@@ -389,6 +389,31 @@ spec:
 
 ### spec.trafficPolicy
 
+#### ▼ connectionPool
+
+Podの同時接続数の制限数を設定する。制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
+
+参考：
+
+- https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
+- https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+      tcp:
+        maxConnections: 100
+```
+
 #### ▼ loadBalancer
 
 Podへのルーティング時に使用するロードバランシングアルゴリズムを設定する。

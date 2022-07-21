@@ -17,7 +17,95 @@ description: コマンド＠Terraformの知見を記録しています。
 
 ### global option
 
+#### ▼ -chdir
+
+コマンドを実行する作業ディレクトリを指定する。
+
 参考：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
+
+<br>
+
+### apply
+
+#### ▼ -parallelism
+
+並列処理数を設定できる。デフォルト値は```10```である。
+
+```bash
+$ terraform apply \
+    -var-file=foo.tfvars \
+    -parallelism=30
+```
+
+#### ▼ -refresh-only
+
+すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を扱うことはできず、代わりに```terraform import```コマンドの実行が必要になる。
+
+参考：
+
+- https://learn.hashicorp.com/tutorials/terraform/refresh
+- https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
+- https://rurukblog.com/post/terraform-refresh-onlyt/
+
+```bash
+$ terraform apply -refresh-only
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
+```
+
+#### ▼ -target
+
+特定の```resource```ブロックを使用して、```terraform apply```コマンドを実行する。リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合に、特定の差分のみをプロビジョニングできる。
+
+```bash
+$ terraform apply \
+    -var-file=foo.tfvars \
+    -target=<resourceタイプ>.<resourceブロック名>
+```
+
+モジュールを使用している場合、指定の方法が異なる。
+
+```bash
+$ terraform apply \
+    -var-file=foo.tfvars \
+    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
+```
+
+**＊例＊**
+
+```bash
+$ terraform apply \
+    -var-file=foo.tfvars \
+    -target=aws_instance.bastion
+```
+
+#### ▼ -var-file
+
+クラウドプロバイダー上にクラウドインフラストラクチャを作成する。
+
+```bash
+$ terraform apply -var-file foo.tfvars
+```
+
+```bash
+# ディレクトリを指定することも可能
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
+```
+
+成功すると、以下のメッセージが表示される。
+
+```bash
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+#### ▼ 実行プランファイル
+
+事前に、```terraform plan```コマンドによって生成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
+
+```bash
+$ terraform apply foo.tfplan
+```
 
 <br>
 
@@ -110,25 +198,6 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 ```bash
 $ terraform init -upgrade
-```
-
-<br>
-
-### validate
-
-#### ▼ validateとは
-
-設定ファイルの検証を行う。
-
-```bash
-$ terraform validate
-
-Success! The configuration is valid.
-```
-
-```bash
-# ディレクトリを指定することも可能
-$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate
 ```
 
 <br>
@@ -303,18 +372,6 @@ your Terraform state and will henceforth be managed by Terraform.
 
 <br>
 
-### refresh
-
-#### ▼ -var-file
-
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルに反映する。
-
-```bash
-$ terraform refresh -var-file=foo.tfvars
-```
-
-<br>
-
 ### plan
 
 #### ▼ シンボルの見方
@@ -444,83 +501,49 @@ $ terraform plan \
 
 <br>
 
-### apply
-
-#### ▼ -parallelism
-
-並列処理数を設定できる。デフォルト値は```10```である。
-
-```bash
-$ terraform apply \
-    -var-file=foo.tfvars \
-    -parallelism=30
-```
-
-#### ▼ -refresh-only
-
-すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を扱うことはできず、代わりに```terraform import```コマンドの実行が必要になる。
-
-参考：
-
-- https://learn.hashicorp.com/tutorials/terraform/refresh
-- https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
-- https://rurukblog.com/post/terraform-refresh-onlyt/
-
-```bash
-$ terraform apply -refresh-only
-
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
-```
-
-#### ▼ -target
-
-特定の```resource```ブロックを使用して、```terraform apply```コマンドを実行する。
-
-```bash
-$ terraform apply \
-    -var-file=foo.tfvars \
-    -target=<resourceタイプ>.<resourceブロック名>
-```
-
-モジュールを使用している場合、指定の方法が異なる。
-
-```bash
-$ terraform apply \
-    -var-file=foo.tfvars \
-    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
-```
+### refresh（非推奨）
 
 #### ▼ -var-file
 
-クラウドプロバイダー上にクラウドインフラストラクチャを作成する。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルに反映する。非推奨であり、代わりに、```terraform apply -refresh-only```コマンドを使用する。
 
 ```bash
-$ terraform apply -var-file foo.tfvars
-```
-
-```bash
-# ディレクトリを指定することも可能
-$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
-```
-
-成功すると、以下のメッセージが表示される。
-
-```bash
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-```
-
-#### ▼ 実行プランファイル
-
-事前に、```terraform plan```コマンドによって生成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
-
-```bash
-$ terraform apply foo.tfplan
+$ terraform refresh -var-file=foo.tfvars
 ```
 
 <br>
 
 ### state
+
+#### ▼ list
+
+```.tfstate```ファイルで定義されている```resource```ブロック（```.tfstate```ファイル上では```managed```モード）の一覧を取得する。
+
+```bash
+$ terraform state
+```
+
+以下の通り、モジュールも含めて、```resource```ブロックが表示される。
+
+```bash
+aws_instance.www-1a
+aws_instance.www-1c
+aws_key_pair.key_pair
+module.alb_module.aws_alb.alb
+module.ami_module.data.aws_ami.amazon_linux_2
+module.route53_module.aws_route53_record.r53_record
+module.route53_module.aws_route53_zone.r53_zone
+module.security_group_module.aws_security_group.security_group_alb
+module.security_group_module.aws_security_group.security_group_ecs
+module.security_group_module.aws_security_group.security_group_instance
+module.vpc_module.aws_internet_gateway.internet_gateway
+module.vpc_module.aws_route_table.route_table_public
+module.vpc_module.aws_route_table_association.route_table_association_public_1a
+module.vpc_module.aws_route_table_association.route_table_association_public_1c
+module.vpc_module.aws_subnet.subnet_public_1a
+module.vpc_module.aws_subnet.subnet_public_1c
+module.vpc_module.aws_vpc.vpc
+```
 
 #### ▼ rm
 
@@ -581,6 +604,75 @@ Successfully removed 1 resource instance(s).
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
+#### ▼ show
+
+```bash
+$ terraform state show
+
+{
+  "version": 4,
+  "terraform_version": "1.0.6",
+  "serial": 3,
+  "lineage": "*****-*****-*****-*****-*****",
+  "outputs": { # outputブロックのapplyで追加される。
+    "foo_ids": {
+      "value": "*****",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data", # dataブロックのapplyで追加される。
+      "type": "aws_caller_identity", # resourceタイプ
+      "name": "current", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "<アカウントID>",
+            "arn": "*****",
+            "id": "*****",
+            "user_id": "*****"
+            ...
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.ec2", # モジュールの場合に追加される。
+      "mode": "managed", # importや、resourceブロックのapplyで追加される。
+      "type": "aws_instance", # resourceタイプ
+      "name": "bastion", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "*****",
+            "name": "prd-foo-instance"
+            "tags": {
+              "Env": "prd",
+              "ManagedBy": "terraform"
+              "Repository": "https://github.com/*****"
+            },
+            "description": "*****",
+            ...
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+特定の```resource```ブロックのみを表示することもできる。
+
+```bash
+$ terraform state show aws_instance.bastion
+```
+
 <br>
 
 ### taint
@@ -615,36 +707,21 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 <br>
 
-### state list
+### validate
 
-#### ▼ state listとは
+#### ▼ validateとは
 
-ファイル内で定義しているresourceの一覧を取得する。
+設定ファイルの検証を行う。
 
 ```bash
-$ terraform state list
+$ terraform validate
+
+Success! The configuration is valid.
 ```
 
-以下の通り、モジュールも含めて、resourceが表示される。
-
 ```bash
-aws_instance.www-1a
-aws_instance.www-1c
-aws_key_pair.key_pair
-module.alb_module.aws_alb.alb
-module.ami_module.data.aws_ami.amazon_linux_2
-module.route53_module.aws_route53_record.r53_record
-module.route53_module.aws_route53_zone.r53_zone
-module.security_group_module.aws_security_group.security_group_alb
-module.security_group_module.aws_security_group.security_group_ecs
-module.security_group_module.aws_security_group.security_group_instance
-module.vpc_module.aws_internet_gateway.internet_gateway
-module.vpc_module.aws_route_table.route_table_public
-module.vpc_module.aws_route_table_association.route_table_association_public_1a
-module.vpc_module.aws_route_table_association.route_table_association_public_1c
-module.vpc_module.aws_subnet.subnet_public_1a
-module.vpc_module.aws_subnet.subnet_public_1c
-module.vpc_module.aws_vpc.vpc
+# ディレクトリを指定することも可能
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate
 ```
 
 <br>
