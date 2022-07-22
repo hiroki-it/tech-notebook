@@ -461,7 +461,154 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 02. RDS：Relational Database Service
+## 02. LB
+
+- ALB：Application Load Balancer
+- NLB：Network Load Balancer
+- GLB：Gateway Load Balancer
+
+<br>
+
+## 02-02. ALB：Application Load Balancing
+
+### ALBとは
+
+クラウドリバースプロキシサーバー、かつクラウドロードバランサーとして働く。リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
+
+参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer
+
+![ALBの機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBの機能.png)
+
+<br>
+
+### セットアップ
+
+#### ▼ 設定
+
+| 設定項目             | 説明                                                         | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| リスナー             | ALBに割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。 |                                                              |
+| スキマー             | パブリックネットワークからのインバウンド通信を待ち受けるか、あるいはプライベートネットワークからのインバウンド通信を待ち受けるかを設定する。 |                                                              |
+| セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、ALBが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース（CloudFrontなど）、などを含む。<br>・参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
+| ルール               | リクエストのルーティングのロジックを設定する。               |                                                              |
+| ターゲットグループ   | ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。 | ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる。 |
+| ヘルスチェック       | ターゲットグループに属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。 |                                                              |
+
+#### ▼ ターゲットグループ
+
+| ターゲットの指定方法 | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| インスタンス         | ターゲットが、EC2インスタンスでなければならない。            |
+| IPアドレス           | ターゲットのパブリックIPアドレスが、静的でなければならない。 |
+| Lambda               | ターゲットが、Lambdaでなければならない。                     |
+
+<br>
+
+### ルールの設定例
+
+| ユースケース                                                 | ポート    | IF                                             | THEN                                                         |
+| ------------------------------------------------------------ | --------- | ---------------------------------------------- | ------------------------------------------------------------ |
+| リクエストが```80```番ポートを指定した時に、```443```番ポートにリダイレクトしたい。 | ```80```  | それ以外の場合はルーティングされないリクエスト | ルーティング先：```https://#{host}:443/#{path}?#{query}```<br>ステータスコード：```HTTP_301``` |
+| リクエストが```443```番ポートを指定した時に、ターゲットグループに転送したい。 | ```443``` | それ以外の場合はルーティングされないリクエスト | 特定のターゲットグループ                                     |
+
+<br>
+
+### ALBインスタンス
+
+#### ▼ ALBインスタンスとは
+
+ALBの実体で、各ALBインスタンスが異なるグローバルIPアドレスを持つ。複数のAZにルーティングするようにALBを設定した場合、各AZにALBインスタンスが1つずつ配置される。
+
+参考：https://blog.takuros.net/entry/2019/08/27/075726
+
+![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb-instance.png)
+
+#### ▼ 割り当てられるIPアドレス
+
+ALBに割り当てられるIPアドレスには、VPCのものが適用される。そのため、EC2インスタンスのセキュリティグループでは、VPCのCIDRブロックを許可するように設定する必要がある。
+
+#### ▼ 自動スケーリング
+
+単一障害点にならないように、負荷が高まるとALBインスタンスが増えるように自動スケールアウトする仕組みを持つ。
+
+#### ▼ ```500```系ステータスコードの原因
+
+参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
+
+#### ▼ ALBのセキュリティグループ
+
+Route53からルーティングされるパブリックIPアドレスを受信できるようにしておく必要がある。パブリックネットワークに公開するサイトであれば、IPアドレスは全ての範囲（```0.0.0.0/0```と``` ::/0```）にする。社内向けのサイトであれば、社内のプライベートIPアドレスのみ（```*.*.*.*/32```）を許可する。
+
+<br>
+
+### アプリケーションが常時SSLの場合
+
+#### ▼ 問題
+
+アプリケーションが常時SSLになっているアプリケーション（例：WordPress）の場合、ALBからアプリケーションにHTTPプロトコルでルーティングすると、HTTPSプロトコルへのリダイレクトループが発生してしまう。常時SSLがデフォルトになっていないアプリケーションであれば、これは起こらない。
+
+参考：https://cloudpack.media/525
+
+#### ▼ Webサーバーにおける対処方法
+
+ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、WebサーバーへのリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
+
+参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+
+**＊実装例＊**
+
+```apacheconf
+SetEnvIf X-Forwarded-Proto https HTTPS=on
+```
+
+#### ▼ アプリケーションにおける対処方法
+
+![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
+
+ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションへのリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、Webサーバー側の対応不要）。
+
+参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+
+**＊実装例＊**
+
+
+```php
+<?php
+    
+// index.php
+if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
+    && $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") {
+    $_SERVER["HTTPS"] = "on";
+}
+```
+
+<br>
+
+### ロードバランシングアルゴリズム
+
+#### ▼ ロードバランシングアルゴリズムとは
+
+ターゲットへのリクエスト転送時の加重ルールを設定する。
+
+参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
+
+#### ▼ ラウンドロビン
+
+受信したリクエストを、ターゲットに均等にルーティングする。
+
+#### ▼ 最小未処理リクエスト（ファステスト）
+
+受信したリクエストを、未処理のリクエスト数が最も少ないターゲットにルーティングする。
+
+参考：https://www.infraexpert.com/study/loadbalancer4.html
+
+<br>
+
+## 02-03. NLB：Network Load Balancer
+
+<br>
+
+## 03. RDS：Relational Database Service
 
 ### セットアップ
 
@@ -682,7 +829,7 @@ $ aws rds modify-db-instance \
 
 <br>
 
-## 02-02. RDS（Aurora）
+## 03-02. RDS（Aurora）
 
 ### セットアップ
 
@@ -1000,7 +1147,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 02-03. RDS（非Aurora）
+## 03-03. RDS（非Aurora）
 
 ### ダウンタイム
 

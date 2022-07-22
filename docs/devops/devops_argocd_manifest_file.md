@@ -352,6 +352,18 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
+### Tips
+
+#### ▼ ヘルスチェックが終わらない
+
+参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+
+#### ▼ 同期してもOut of syncが解消されない
+
+参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
+
+<br>
+
 ## 03. labels（```argocd.argoproj.io/secret-type```の場合）
 
 ### repository
@@ -918,7 +930,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
 | ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              |                                                              |                                                              |
+| ```PruneLast```              | 全てのKubernetesが正常になった後で、Pruneを実行する。        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

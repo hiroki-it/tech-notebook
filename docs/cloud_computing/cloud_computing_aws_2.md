@@ -881,7 +881,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 | ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
 | ECS最適化Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
 | ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |
-| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 |
+| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。GPUが必要名アプリケーション（計算処理系、機械学習系のアプリケーション）のために選択する。 |
 | ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |
 
 <br>
@@ -1690,7 +1690,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 | AMI名                     | 説明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
 | EKS最適化Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |
-| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 |
+| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。GPUが必要名アプリケーション（計算処理系、機械学習系のアプリケーション）のために選択する。 |
 | EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |
 
 #### ▼ EC2 NodeのカスタムAMI

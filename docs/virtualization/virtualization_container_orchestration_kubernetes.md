@@ -72,11 +72,18 @@ Clusterの様々な設定値を保持し、冗長化されたKubernetesリソー
 
 #### ▼ kube-apiserverとは
 
-kubernetesクライアントにkueneretes-APIを公開する。クライアントが```kubectl```コマンドを実行すると、kube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。
-
-参考：https://thinkit.co.jp/article/17453
-
 ![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
+
+kubernetesクライアントにkueneretes-APIを公開する。クライアントが```kubectl```コマンドを実行すると、kube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。何らかの理由でkubernetesクライアントのリクエストのパラメーターと、kube-apiserverのエンドポイントの仕様が合致しないと、kube-apiserverのバリデーションが失敗し、以下のようなエラーログが返却される。
+
+```
+the server could not find the requested resource
+```
+
+参考：
+
+- https://thinkit.co.jp/article/17453
+- https://vamdemicsystem.black/kubernetes/%E3%80%90macosx%E3%80%91%E3%80%90kubernetes%E3%80%91kubectl-apply%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%80%8Cfailed-to-download-openapi-the-server-could-not-find-the-requested-resource-falling-bac
 
 #### ▼ ヘルスチェックエンドポイント
 
@@ -251,14 +258,31 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 #### ▼ admission controllersプラグインとは
 
-![kubernetes_admission-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controller.png)
+![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
-認証認可を終えたkube-apiserverに対するリクエストのバリデーションを実行する。アプリケーションでいうところのコントローラーと同じような責務を持っている。
+kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission controllersプラグインを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
 
 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 - https://knowledge.sakura.ad.jp/21129/
+- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+#### ▼ admission controllersプラグインの構成
+
+![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
+
+admission controllersプラグインは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission controllersの各プラグインで定義する以外に、Webhookプラグインで独自処理をコールするように定義することもできる。
+
+参考：
+
+- https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+- https://gashirar.hatenablog.com/entry/2020/10/31/141357
+
+| ステップ             | 説明                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| Mutating admission   | 作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理を定義する。 |
+| Validating admission | パラメーターのバリデーションを実行する独自処理を定義する。   |
 
 <br>
 
@@ -381,6 +405,20 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 <br>
 
+### Job
+
+#### ▼ Jobとは
+
+複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に終了（SuccessfulDelete）させる。デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/workloads/controllers/job/
+- https://qiita.com/MahoTakara/items/82853097a1911671a704
+- https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+
+<br>
+
 ### Pod
 
 #### ▼ Podとは
@@ -404,22 +442,24 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
 
-#### ▼ ライフサイクル
+#### ▼ Podが終了するまでの流れ
 
-![pod_lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_lifecycle.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 参考：
 
 - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
-- https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+- https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
 
-（１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
+（１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。または、
 
-（２）Podが、Terminating状態になる。
+（２）Podが、終了を開始する。
 
-（３）Podは、削除プロセスを開始する。```spec.preStop```キーの設定が実行される。SIGTERMシグナルが送信され、削除プロセスは完了する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎても削除プロセスが完了していない場合は、SIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
 
-（４）他のKubernetesリソース（Deployment、Service、など）の管理対象から、該当のPodが削除される。
+（４）kubeletは、コンテナランタイムを経由して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは終了する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが終了していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+
+（５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
 
 <br>
 

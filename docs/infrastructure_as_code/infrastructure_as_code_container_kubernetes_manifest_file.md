@@ -860,6 +860,8 @@ spec:
 
 Jobの試行の上限実行時間を設定する。設定された時間を超過すると、エラーが返却される。```spec.backoffLimit```キーよりも優先される。
 
+参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
