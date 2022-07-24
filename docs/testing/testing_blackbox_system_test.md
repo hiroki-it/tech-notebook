@@ -210,69 +210,6 @@ description: システムテスト＠ブラックボックステストの知見�
 
 <br>
 
-### 実際値の指標
-
-#### ▼ 各指標の関係性
-
-参考：https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
-
-![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mtxx.png)
-
-#### ▼ MTTF：Mean Time To Failure
-
-稼働開始地点から故障開始地点の平均稼働時間のこと。
-
-参考：https://e-words.jp/w/MTTF.html
-
-#### ▼ MTBF：Mean Time Between Failure
-
-特定の障害と次の障害の故障開始地点間の平均稼働時間のこと。
-
-参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
-
-#### ▼ MTTR：Mean Time To Repair
-
-障害の復旧開始地点終了と終了地点間の平均障害時間のこと。目標値のRTOとは異なることに注意する。
-
-参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
-
-#### ▼ 稼働率
-
-システムの実際の稼働時間割合を表す。以下の計算式で算出できる。
-
-参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
-
-```mathematica
-(稼働率)
-= (動作した時間) ÷ (全体の時間)
-```
-
-この数式は、以下ように書き換えられる。
-
-```mathematica
-(稼働率)
-= (MTBF) ÷ (MTBF ＋ MTTR)
-```
-
-システムが冗長化されている場合、全てのインスタンスの非稼働率をかけて、全体から引くことで、稼働率を算出できる。
-
-```mathematica
-(稼働率)
-= 1 - (1 - 稼働率) × (1 - 稼働率)
-```
-
-**＊例＊**
-
-システムが冗長化されている例を示す。すでに稼働率は算出されているものとする。全てのインスタンスの非稼働率をかけて、全体から引く。
-
-```mathematica
-1 - (1-0.81) × (1-0.64) = 0.9316
-```
-
-![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/稼働率の計算.jpg)
-
-<br>
-
 ### テストケース例
 
 #### ▼ 背景
@@ -335,7 +272,9 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 
 ## 03-05. Testing in production
 
-システムをリリースしてしまい、実際のユーザーの手を借りて実地的にテストする。
+### Testing in productionとは
+
+本番環境にて、実際のユーザーの手を借りて実地的にテストする。
 
 - カナリアリリース中のテスト
 - カオスエンジニアリング

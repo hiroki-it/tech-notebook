@@ -94,12 +94,13 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 #### ▼ 合成監視（外部監視、外形監視）
 
-『外部監視、外形監視』ともいう。実際のユーザーの一連の操作を模したリクエストをアプリケーションに送信し、レスポンスに関するメトリクスのデータポイントを収集した後、これを監視する。ユーザーを模したリクエストを作成するという意味合いで、『合成』という。ユーザー視点で監視できる。
+『外部監視、外形監視』ともいう。実際のユーザーの一連の操作を模したリクエストをアプリケーションに送信し、レスポンスに関するメトリクスのデータポイントを収集した後、これを監視する。ユーザーを模したリクエストを作成するという意味合いで、『合成』という。ユーザー視点で監視できる。特に、クリティカルユーザージャーニーの一連の操作を監視すると良い。
 
 参考：
 
 - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
 - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
+- https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
 <br>
 
