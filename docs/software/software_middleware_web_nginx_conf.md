@@ -371,7 +371,7 @@ worker_rlimit_nofile  8192;
 
 ```nginx
 http {
-    # Nginxのバージョンを表示するかどうか
+    # Nginxのバージョンを表示するか否か
     server_tokens      off;
     # MIMEタイプを設定
     include            /etc/nginx/mime.types;
@@ -381,9 +381,9 @@ http {
                              "$status $body_bytes_sent "$http_referer" "
                              ""$http_user_agent" "$http_x_forwarded_for"";
     access_log         /var/log/nginx/access.log  main;
-    # sendfileシステムコールを使用するかどうか
+    # sendfileシステムコールを使用するか否か
     sendfile           on;
-    # ヘッダーとファイルをまとめてレスポンスするかどうか
+    # ヘッダーとファイルをまとめてレスポンスするか否か
     tcp_nopush         on;
     # keepaliveを維持する時間
     keepalive_timeout  65;
@@ -520,7 +520,7 @@ listen 443 ssl;
 
 #### ▼ sendfile
 
-クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
+クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
@@ -586,7 +586,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 
 #### ▼ tcp_nopush
 
-上述のLinuxの```sendfile```システムコールを使用する場合に適用できる。クライアントへのレスポンス時、ヘッダーとファイルを1つのパケットにまとめて返信するかどうかを設定する。
+上述のLinuxの```sendfile```システムコールを使用する場合に適用できる。クライアントへのレスポンス時、ヘッダーとファイルを1つのパケットにまとめて返信するか否かを設定する。
 
 **＊実装例＊**
 

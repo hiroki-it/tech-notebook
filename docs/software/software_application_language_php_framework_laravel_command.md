@@ -39,7 +39,7 @@ $ php artisan config:clear
 
 #### ▼ factory
 
-Factoryを自動的に生成する。
+Factoryを自動的に作成する。
 
 ```bash
 $ php artisan make:factory <Factory名> --model=<対象とするModel名>
@@ -62,7 +62,7 @@ $ php artisan make:request <Request名>
 
 #### ▼ HTTP｜middleware
 
-Middlewareクラスを自動生成する。
+Middlewareクラスを自動作成する。
 
 ```bash
 $ php artisan make:middleware <Middleware名>
@@ -78,7 +78,7 @@ $ php artisan make:migration create_<テーブル名>_table
 
 #### ▼ model
 
-Eloquentモデルを自動生成する。
+Eloquentモデルを自動作成する。
 
 ```bash
 $ php artisan make:model <Eloquentモデル名>
@@ -86,7 +86,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ▼ resource
 
-Resourceクラスを自動生成する。
+Resourceクラスを自動作成する。
 
 ```bash
 $ php artisan make:resource <Resource名>
@@ -94,7 +94,7 @@ $ php artisan make:resource <Resource名>
 
 #### ▼ provider
 
-Providerクラスを自動生成する。
+Providerクラスを自動作成する。
 
 ```bash
 $ php artisan make:provider <クラス名>
@@ -102,7 +102,7 @@ $ php artisan make:provider <クラス名>
 
 #### ▼ seeder
 
-Seederクラスを自動生成する。
+Seederクラスを自動作成する。
 
 ```bash
 $ php artisan make:seeder <Seeder名>

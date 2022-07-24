@@ -199,7 +199,7 @@ logto = /dev/stdout
 
 ### master
 
-マスターモードで起動するかどうかを設定する。
+マスターモードで起動するか否かを設定する。
 
 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
@@ -260,7 +260,7 @@ python-path = /var/www/foo
 
 ### socket
 
-UNIXドメインソケットを使用する場合に、ソケットファイルの生成場所と、インバウンド通信を待ち受けるポート番号を設定する。Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
+UNIXドメインソケットを使用する場合に、ソケットファイルの作成場所と、インバウンド通信を待ち受けるポート番号を設定する。Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
 参考： 
 
@@ -276,7 +276,7 @@ socket = /etc/uwsgi/uwsgi.sock:5000
 
 ### vacuum
 
-uwsgiプロセス終了時にソケットファイルを削除するかどうかを設定する。
+uwsgiプロセス終了時にソケットファイルを削除するか否かを設定する。
 
 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
 

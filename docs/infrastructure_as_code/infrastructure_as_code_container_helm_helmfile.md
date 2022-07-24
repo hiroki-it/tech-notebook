@@ -134,7 +134,7 @@ releases:
 
 #### ▼ createNamespace
 
-リリース時にNamespaceが存在しない場合に、これの作成を有効化するかどうかを設定する。
+リリース時にNamespaceが存在しない場合に、これの作成を有効化するか否かを設定する。
 
 ```yaml
 releases:

@@ -152,7 +152,7 @@ metadata:
 
 #### ▼ istio-injection
 
-アドミッションコントローラーを使用して、Envoyコンテナを自動的に作成するかどうかを設定する。
+admission-controllersのWebhook機能を使用して、Envoyコンテナを自動的に作成するか否かを設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -190,7 +190,7 @@ Deploymentの```spec.template```キーや、Podの```metadata```キーにて、E
 
 #### ▼ proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが生成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+Envoyコンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -740,7 +740,7 @@ spec:
 
 #### ▼ mtls
 
-istio-proxyコンテナ間の通信で相互TLSを有効化するかどうかを設定する。
+istio-proxyコンテナ間の通信で相互TLSを有効化するか否かを設定する。
 
 #### ▼ mode
 
@@ -834,7 +834,7 @@ spec:
 
 #### ▼ mesh
 
-マイクロサービス間の通信を有効化するかどうかを設定する。
+マイクロサービス間の通信を有効化するか否かを設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

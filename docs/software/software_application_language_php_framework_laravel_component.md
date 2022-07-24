@@ -553,7 +553,7 @@ class EventServiceProvider extends ServiceProvider
 
 #### ▼ 任意のEloquentモデルCRUDイベントの検知
 
-Laravelの多くのコンポーネントに、```boot```メソッドが定義されている。Eloquentモデルでは、インスタンス生成時に```boot```メソッドがコールされ、これによりに```bootTraits```メソッドが実行される。Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると、```bootTraits```メソッドはこれをコールする。```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
+Laravelの多くのコンポーネントに、```boot```メソッドが定義されている。Eloquentモデルでは、インスタンス作成時に```boot```メソッドがコールされ、これによりに```bootTraits```メソッドが実行される。Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると、```bootTraits```メソッドはこれをコールする。```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。
 
 参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
 
@@ -733,7 +733,7 @@ class ExecutorConstant
 
 #### ▼ スタックトレース
 
-Laravelはスローされる例外のメッセージをスタックトレースで生成する。また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、```[previous exception]```によって例外が結合される。スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。ちなみに、ログの詳細度は```APP_DEBUG```環境変数で制御できる。
+Laravelはスローされる例外のメッセージをスタックトレースで作成する。また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、```[previous exception]```によって例外が結合される。スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。ちなみに、ログの詳細度は```APP_DEBUG```環境変数で制御できる。
 
 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
@@ -1503,7 +1503,7 @@ Storage::put("file.txt", "file.txt");
 
 #### ▼ Validatorクラス、```fails```メソッド
 
-Validateファサードの```make```メソッドを使用して、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを使用して、バリデーションでエラーが起こった場合の処理を定義する。
+Validateファサードの```make```メソッドを使用して、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
 
 **＊実装例＊**
 
@@ -1531,7 +1531,7 @@ class FooController extends Controller
             "body"  => "required",
         ]);
 
-        // バリデーション時にエラーが起こった場合
+        // バリデーション時にエラーが発生した場合
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
             // validatorを渡すことでエラーメッセージをViewに渡せる。
@@ -1546,7 +1546,7 @@ class FooController extends Controller
 
 #### ▼ ```validate```メソッド
 
-Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 ```php
 <?php
@@ -1573,7 +1573,7 @@ class FooController extends Controller
                 "body"  => "required",
             ])->validate();
 
-        // バリデーション時にエラーが起こった場合
+        // バリデーション時にエラーが発生した場合
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
             // validatorを渡すことでエラーメッセージをViewに渡せる。
@@ -1779,9 +1779,9 @@ class FooController extends Controller
 
 ### ```route```ヘルパー
 
-#### ▼ ルートエイリアスを基にURL生成
+#### ▼ ルートエイリアスを基にURL作成
 
-ルートにエイリアスがついている場合、エイリアスに応じてURLを生成する。ドメインは自動で補完される。
+ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。ドメインは自動で補完される。
 
 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
@@ -1800,7 +1800,7 @@ $url = route('foos_index');
 
 #### ▼ ```base_path```ヘルパー
 
-引数を設定しない場合、projectルートディレクトリの絶対パスを生成する。また、projectルートディレクトリからの相対パスを引数として、絶対パスを生成する。
+引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。また、projectルートディレクトリからの相対パスを引数として、絶対パスを作成する。
 
 ```php
 <?php
@@ -1814,7 +1814,7 @@ $path = base_path("vendor/bin");
 
 #### ▼ ```public_path```ヘルパー
 
-引数を設定しない場合、publicディレクトリの絶対パスを生成する。また、publicディレクトリからの相対パスを引数として、絶対パスを生成する。
+引数を設定しない場合、publicディレクトリの絶対パスを作成する。また、publicディレクトリからの相対パスを引数として、絶対パスを作成する。
 
 ```php
 <?php
@@ -1828,7 +1828,7 @@ $path = public_path("css/app.css");
 
 #### ▼ ```storage_path```ヘルパー
 
-引数を設定しない場合、storageディレクトリの絶対パスを生成する。まあ、storageディレクトリからの相対パスを引数として、絶対パスを生成する。
+引数を設定しない場合、storageディレクトリの絶対パスを作成する。まあ、storageディレクトリからの相対パスを引数として、絶対パスを作成する。
 
 ```php
 <?php
@@ -1844,9 +1844,9 @@ $path = storage_path("app/file.txt");
 
 ### ```url```ヘルパー
 
-#### ▼ パスを基にURL生成
+#### ▼ パスを基にURL作成
 
-指定したパスに応じてURLを生成する。ドメインは自動で補完される。
+指定したパスに応じてURLを作成する。ドメインは自動で補完される。
 
 参考：https://readouble.com/laravel/5.7/ja/urls.html
 
@@ -1865,9 +1865,9 @@ $url = url('/foo');
 
 ### 初期値レコードの定義
 
-#### ▼ Fakerによるランダム値生成
+#### ▼ Fakerによるランダム値作成
 
-Fakerはレコードの値をランダムに生成するためのパッケージである。Farkerクラスは、プロパティにランダムなデータを保持している。このプロパティを特に、Formattersという。
+Fakerはレコードの値をランダムに作成するためのパッケージである。Farkerクラスは、プロパティにランダムなデータを保持している。このプロパティを特に、Formattersという。
 
 参考：https://fwhy.github.io/faker-docs/
 
@@ -2025,7 +2025,7 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 参考：
 
@@ -2049,7 +2049,7 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメーターのバリデーションを実行する。
-        // エラーが起こった場合は元のWebページにリダイレクト
+        // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "limit" => ["required", Rule::in([25, 50, 100])],
             "order" => ["required", Rule::in(["ascend", "descend"])],
@@ -2064,7 +2064,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // ルールの定義、バリデーションの実行
-        // エラーが起こった場合は元のWebページにリダイレクト
+        // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "title" => ["required", "string", "max:255"],
             "body"  => ["required", "string", "max:255"],
@@ -2095,7 +2095,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // ルールの定義、メッセージボディのバリデーションを実行する。
-        // エラーが起こった場合は元のWebページにリダイレクト
+        // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "title" => "required|string|max:5255",
             "body"  => "required|string|max:255",
@@ -2109,7 +2109,7 @@ class FooController extends Controller
 
 #### ▼ ルール定義 & バリデーション自動実行
 
-Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 **＊実装例＊**
 
@@ -2128,7 +2128,7 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメーターのバリデーションを実行する。
-        // エラーが起こった場合は元のWebページにリダイレクト
+        // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
         // 続きの処理
@@ -2140,7 +2140,7 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // メッセージボディのバリデーションを実行する。
-        // エラーが起こった場合は元のWebページにリダイレクト
+        // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
         // 続きの処理
@@ -2339,7 +2339,7 @@ class FooRequest extends FormRequest
 
 #### ▼ ```in```メソッド
 
-決められた複数の値に合致する値であるかどうかを検証する。
+決められた複数の値に合致する値であるか否かを検証する。
 
 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
 
@@ -2596,7 +2596,7 @@ class FooAfterMiddleware
 
 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
-また、同一セッションで一意なCSRFトークンを生成する。CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
+また、同一セッションで一意なCSRFトークンを作成する。CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
@@ -2868,7 +2868,7 @@ class FooController extends Controller
 LOG_CHANNEL=<オプション名>
 ```
 
-なお、```storage```ディレクトリ配下にログファイルを生成するようなログチャンネルを設定した場合に、phpがこのディレクトリへのアクセス権限を持たないため、アクセスできるようにする必要がある。権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
+なお、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合に、phpがこのディレクトリへのアクセス権限を持たないため、アクセスできるようにする必要がある。権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
 
 ```bash
 # Failed to open stream: Permission denied
@@ -2961,7 +2961,7 @@ return [
 
 #### ▼ ```stderr```キー
 
-全てのログを標準エラー出力に対して出力する。Docker上でLaravelを稼働させる場合は、生成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。なお、独自カスタマイズとして、```stream```キーをstdout変更すれば、標準出力にログを出力もできる。
+全てのログを標準エラー出力に対して出力する。Docker上でLaravelを稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。なお、独自カスタマイズとして、```stream```キーをstdout変更すれば、標準出力にログを出力もできる。
 
 ```php
 return [
@@ -3468,7 +3468,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Eメール通知内容の定義
 
-MailMessageクラスのメソッドを使用して、Eメール通知の内容を生成する。```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
+MailMessageクラスのメソッドを使用して、Eメール通知の内容を作成する。```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
 
 参考：
 
@@ -3987,7 +3987,7 @@ class UserController extends Controller
 
 #### ▼ アプリケーション側の対応
 
-セッション開始時にCSRFトークンが生成される。Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
+セッション開始時にCSRFトークンが作成される。Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
 参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
@@ -4246,7 +4246,7 @@ class DatabaseSeeder extends Seeder
 
 | 用途の種類                                                   | 説明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| AppServiceProvider                                           | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（生成） |
+| AppServiceProvider                                           | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（作成） |
 | MacroServiceProvider                                         | ServiceContainerへのメソッドのバインド（登録）               |
 | RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラーの対応関係の定義                   |
 | EventServiceProvider                                         | EventListenerとEventhandler関数の対応関係の定義              |
@@ -4316,7 +4316,7 @@ interface Container extends ContainerInterface
 
 #### ▼ 単一のクラスをバインド/リゾルブ
 
-AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するだけでインスタンスが生成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
+AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するだけでインスタンスが作成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
@@ -4979,7 +4979,7 @@ Controllerクラスから返却されたデータは、```{{ 変数名 }}```で�
 
 #### ▼ バリデーションメッセージの出力
 
-バリデーションでエラーが起こった場合、バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。MessageBagクラスは、Blade上で```errors```変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
+バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。MessageBagクラスは、Blade上で```errors```変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
 
 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 

@@ -47,7 +47,7 @@ externalDocs: # externalDocsフィールド
 
 #### ▼ ReDocの場合
 
-ReDocを使用して、OpenAPI仕様から```.html```ファイルを生成する。
+ReDocを使用して、OpenAPI仕様から```.html```ファイルを作成する。
 
 参考：https://qiita.com/icck/items/97d00495ec324e1902d6
 

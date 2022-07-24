@@ -1293,7 +1293,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
+ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが作成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
 
 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
@@ -1336,7 +1336,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 }
 ```
 
-NLBのアクセスログを送信するバケット内には、自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。
+NLBのアクセスログを送信するバケット内には、自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが作成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。
 
 ```yaml
 {
@@ -1960,7 +1960,7 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 | EC2                          | 秘密鍵                                  | Terraformで作成する時にGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。                                                                                                                                                                                                              |
 | ENI                          | 全て                                   | 特定のAWSリソース（ALB、セキュリティグループなど）の作成に伴って、自動的に作成されるため、Terraformで管理できない。                                                                                                                                                                                                    |
 | EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『ECSタスクが完了するまで待機』オプションを選択すると自動で作成されるため、Terraformで管理できない。このルールは、ECSのECSタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止（完了？）した状態を表す。                                                                                         |
-| Global Accelerator           | セキュリティグループ                           | リソースを作成するとセキュリティグループが自動生成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                         |
+| Global Accelerator           | セキュリティグループ                           | リソースを作成するとセキュリティグループが自動作成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                         |
 | IAMユーザー                    | 全て                                   | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
 | IAMユーザーグループ            | 全て                                   | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
 | IAMロール                    | ユーザーに紐付くロール                          | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |

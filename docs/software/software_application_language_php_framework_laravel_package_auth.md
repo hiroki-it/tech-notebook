@@ -84,7 +84,7 @@ return [
 
 #### ▼ ルーティングの保護
 
-BeforeMiddlwareで認証済みのユーザーかどうかを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
+BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
 
 参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
 
@@ -257,7 +257,7 @@ final class AuthenticationController
 
 <br>
 
-### 認証済みかどうかの判定
+### 認証済みか否かの判定
 
 #### ▼ ```user```メソッド
 
@@ -450,7 +450,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 #### ▼ ```authorization```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内かどうかを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスする。
 
 参考：
 
@@ -459,7 +459,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 **＊実装例＊**
 
-ユーザーが該当IDのFooモデルを更新する権限があるかどうかを検証する。
+ユーザーが該当IDのFooモデルを更新する権限があるか否かを検証する。
 
 ```php
 <?php
@@ -504,7 +504,7 @@ class FooController extends Controller
 
 #### ▼ ```can```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザーのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザーの認可スコープの範囲内かどうかを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザーのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザーの認可スコープの範囲内か否かを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスする。
 
 参考：
 
@@ -513,7 +513,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-ユーザーがFooモデルを作成する権限があるかどうかを検証する。
+ユーザーがFooモデルを作成する権限があるか否かを検証する。
 
 ```php
 <?php
@@ -574,9 +574,9 @@ Composerでインストールする必要がある。
 $ composer require laravel/passport
 ```
 
-#### ▼ OAuth認証のトークン管理テーブルを生成
+#### ▼ OAuth認証のトークン管理テーブルを作成
 
-事前に、Passportの管理テーブルを生成する必要があるため、マイグレーションを実行する。
+事前に、Passportの管理テーブルを作成する必要があるため、マイグレーションを実行する。
 
 ```bash
 $ php artisan migrate
@@ -605,11 +605,11 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。             |
 | oauth_clients                 | Passportで使用している付与タイプを管理する。                   |
 | oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する。                |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再生成をリクエストするために使用する。<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
-#### ▼ トークンを生成
+#### ▼ トークンを作成
 
-コマンド実行により、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを生成する。
+コマンド実行により、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを作成する。
 
 ```bash
 $ php artisan passport:install
@@ -632,7 +632,7 @@ Client secret: *****
 代わりに、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。
 
 ```bash
-# oauthキーを生成
+# oauthキーを作成
 $ php artisan passport:keys
 
 # Persinal Access Tokenを作成する。
@@ -1022,9 +1022,9 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 $ composer require laravel/breeze:^1.0 --dev
 ```
 
-#### ▼ 認証処理ファイルの自動生成
+#### ▼ 認証処理ファイルの自動作成
 
-認証処理に関連するクラスを自動生成できる。Bladeに組み合わせるJavaScriptを選択できる。
+認証処理に関連するクラスを自動作成できる。Bladeに組み合わせるJavaScriptを選択できる。
 
 ```bash
 $ php artisan breeze:install
@@ -1052,9 +1052,9 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 $ composer require laravel/ui:^1.0 --dev
 ```
 
-#### ▼ 認証処理ファイルの自動生成
+#### ▼ 認証処理ファイルの自動作成
 
-認証処理に関連するクラスを自動生成できる。Bladeに組み合わせるJavaScriptを選択できる。
+認証処理に関連するクラスを自動作成できる。Bladeに組み合わせるJavaScriptを選択できる。
 
 ```bash
 # Vuejsを使用する場合。

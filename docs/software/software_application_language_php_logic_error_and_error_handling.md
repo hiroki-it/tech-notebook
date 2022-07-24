@@ -198,19 +198,19 @@ class Foo
 
         } catch (ExternalApiErrorException $exception) {
 
-            // ExternalApiErrorExceptionが起こったときの処理
+            // ExternalApiErrorExceptionが発生した時の処理
 
         } catch (HttpRequestErrorException $exception) {
 
-            // HttpRequestErrorExceptionが起こったときの処理
+            // HttpRequestErrorExceptionが発生した時の処理
 
         } catch (Exception $exception) {
 
-            // その他（自社ソフトウェアなど）のExceptionが起こっときの処理
+            // その他（自社ソフトウェアなど）のExceptionが起こっ時の処理
 
         } finally {
 
-            // 例外を補足したかどうかに関わらず実行する。
+            // 例外を補足したか否かに関わらず実行する。
             // try句やcatch句の返却処理や終了処理が行われる直前に実行される。
 
         }
@@ -417,7 +417,7 @@ try-catch文に伴うロギングの場合、catch句の中でこれを実行す
 
 #### ▼ 例外ごとのロギング
 
-例えば、メッセージアプリケーションのAPIに対してメッセージ生成のリクエストを送信する時、例外の種類に合わせて、外部APIとの接続失敗によるエラーログを生成と、自社ソフトウェアなどその他原因によるエラーログを生成を行う必要がある。
+例えば、メッセージアプリケーションのAPIに対してメッセージ作成のリクエストを送信する時、例外の種類に合わせて、外部APIとの接続失敗によるエラーログを作成と、自社ソフトウェアなどその他原因によるエラーログを作成を行う必要がある。
 
 **＊実装例＊**
 
@@ -434,7 +434,7 @@ class Foo
         try {
 
             // 外部APIのURL、送信方法、トークンなどのパラメーターが存在するかを検証。
-            // 外部APIのためのリクエストメッセージを生成。
+            // 外部APIのためのリクエストメッセージを作成。
             // 外部APIのURL、送信方法、トークンなどのパラメーターを設定。
 
         } catch (\HttpRequestErrorException $exception) {

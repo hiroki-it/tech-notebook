@@ -176,7 +176,7 @@ $ ssh-keygen -t rsa
 
 # 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
 Enter file in which to save the key: hiroki-it
-# 鍵の使用時にパスワードの入力を要求するかどうかは任意である。
+# 鍵の使用時にパスワードの入力を要求するか否かは任意である。
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
 ```
@@ -449,7 +449,7 @@ $ git stash clear
 
 #### ▼ statusとは
 
-addステージやcommitステージにファイルが存在しているかどうかを取得する。
+addステージやcommitステージにファイルが存在しているか否かを取得する。
 
 <br>
 

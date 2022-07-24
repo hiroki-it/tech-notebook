@@ -130,7 +130,7 @@ func main() {
 
 #### ▼ ```go.sum```ファイルとは
 
-PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるかどうかを検知できる。
+PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
 
 <br>
 
@@ -304,7 +304,7 @@ db.Where("age = 20").Find(&user)
 
 #### ▼ ```TableName```メソッド
 
-デフォルトではGormモデルの名前をスネークケースに変更し、また複数形とした名前のテーブルが生成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
+デフォルトではGormモデルの名前をスネークケースに変更し、また複数形とした名前のテーブルが作成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
 
 参考：https://gorm.io/docs/conventions.html#TableName
 
@@ -544,12 +544,12 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 | よく使用するメソッド                      | 説明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ```Mock.On```メソッド                 | 関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。 |
-| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたかどうかを検証する。 |
+| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。 |
 | ```assert.Exactly```メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値だけでなく、データ型も検証できる。 |
 
 #### ▼ 前処理と後処理
 
-テスト関数を実行する直前に、前処理を実行する。モックの生成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
+テスト関数を実行する直前に、前処理を実行する。モックの作成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
@@ -568,7 +568,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 **＊実装例＊**
 
-事前にモックを生成するために、```BeforeTest```関数を使用する。
+事前にモックを作成するために、```BeforeTest```関数を使用する。
 
 ```go
 package foo
@@ -590,7 +590,7 @@ type FooSuite struct {
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
-	// モックを生成する。
+	// モックを作成する。
 	suite.fooMock = &FooMock{}
 }
 
@@ -616,7 +616,7 @@ func (suite *FooSuite) TestMethod() {
 
 	suite.T().Helper()
 
-	// 前処理で生成したモックを使用する。
+	// 前処理で作成したモックを使用する。
 	fooMock := suite.fooMock
 
 	// 以降にテスト処理

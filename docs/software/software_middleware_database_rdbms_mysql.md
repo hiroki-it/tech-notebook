@@ -212,7 +212,7 @@ log_timestamps = SYSTEM
 
 ### general_log
 
-一般ログを出力するかどうかを設定する。
+一般ログを出力するか否かを設定する。
 
 ```ini
 [mysqld]
@@ -234,7 +234,7 @@ general_log_file = mysql-general.log
 
 ### log_queries_not_using_indexes
 
-DBインデックスを使用するかどうかを設定する。
+DBインデックスを使用するか否かを設定する。
 
 ```ini
 [mysqld]
@@ -256,7 +256,7 @@ long_query_time = 3
 
 ### pid-file
 
-プロセスIDが記載されたファイルの生成先を設定する。
+プロセスIDが記載されたファイルの作成先を設定する。
 
 ```ini
 [mysqld]
@@ -276,7 +276,7 @@ secure-file-priv = /var/lib/mysql-files
 
 ### slow_query_log
 
-スロークエリログを出力するかどうかを設定する。
+スロークエリログを出力するか否かを設定する。
 
 ```ini
 [mysqld]

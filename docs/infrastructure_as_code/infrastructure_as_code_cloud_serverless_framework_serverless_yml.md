@@ -235,7 +235,7 @@ functions:
 
 ### packageとは
 
-生成されるアーティファクトのパスを設定する。
+作成されるアーティファクトのパスを設定する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 

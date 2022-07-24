@@ -70,7 +70,7 @@ $ helm install <リリース名> <チャートへのパス>
 
 #### ▼ --dry-run
 
-Kubernetesにapplyされるリソースのマニフェストファイルを取得する。applyする前に、チャートの設定が正しいかどうかを確認できる。
+Kubernetesにapplyされるリソースのマニフェストファイルを取得する。applyする前に、チャートの設定が正しいか否かを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -316,7 +316,7 @@ Error: failed to download "<チャートリポジトリ名>"
 
 #### ▼ index
 
-チャートリポジトリのメタデータが設定された```index.yaml```ファイルを生成する。
+チャートリポジトリのメタデータが設定された```index.yaml```ファイルを作成する。
 
 ```bash
  $ helm repo index <チャートへのパス>

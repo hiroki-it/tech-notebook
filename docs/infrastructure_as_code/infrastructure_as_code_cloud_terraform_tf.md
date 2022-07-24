@@ -19,7 +19,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 #### ▼ ```.tfstate```ファイルとは
 
-実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで生成される。
+実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで作成される。
 
 参考：https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 
@@ -958,7 +958,7 @@ resource "foo" "this" {
 
 #### ▼ depends_onとは
 
-```resource```ブロック間の依存関係を明示的に定義する。Terraformでは、基本的に```resource```ブロック間の依存関係が暗黙的に定義されている。しかし、複数の```resource```ブロックが関わると、```resource```ブロックを適切な順番で作成できない場合があるため、そういったときに使用する。
+```resource```ブロック間の依存関係を明示的に定義する。Terraformでは、基本的に```resource```ブロック間の依存関係が暗黙的に定義されている。しかし、複数の```resource```ブロックが関わると、```resource```ブロックを適切な順番で作成できない場合があるため、そういった時に使用する。
 
 #### ▼ ALB target group vs. ALB、ECS
 
@@ -1606,7 +1606,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで起こった```resource```ブロックの作成・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
+実インフラのみで発生した```resource```ブロックの作成・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 

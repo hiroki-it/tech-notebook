@@ -235,7 +235,7 @@ commands:
 
 #### ▼ string型
 
-引数として、任意の文字列を渡したいときに使用する。```workflows```にて、値を設定する。
+引数として、任意の文字列を渡したい時に使用する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -311,7 +311,7 @@ workflows:
 
 #### ▼ enum型
 
-引数として、特定の文字列や整数のみを渡したいときに使用する。```workflows```にて、値を設定する。
+引数として、特定の文字列や整数のみを渡したい時に使用する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -329,7 +329,7 @@ jobs:
         enum: ["dev", "stg", "prd"]
     steps:
       - run:
-        # デフォルト値testを与えるときは何も設定しない
+        # デフォルト値testを与える時は何も設定しない
         name: Deploy to << parameters.environment >>
         command:
         # 何らかの処理
@@ -356,7 +356,7 @@ workflows:
 
 #### ▼ job parametersを参照
 
-引数として、任意の文字列を```executors```に渡したいときに使用する。他のparametersとは異なり、```job```にて、値を設定する。
+引数として、任意の文字列を```executors```に渡したい時に使用する。他のparametersとは異なり、```job```にて、値を設定する。
 
 ```yaml 
 version: 2.1

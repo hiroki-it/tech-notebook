@@ -212,7 +212,7 @@ version: <バージョンタグ>
 
 ### index.yamlファイルとは
 
-チャートのメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動生成されるため、ユーザーが設定する項目は少ない。
+チャートのメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
 
 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
@@ -238,7 +238,7 @@ version: <バージョンタグ>
 
 #### ▼ generatedとは
 
-コマンドによって```index.yaml```ファイルが生成された日付を設定する。
+コマンドによって```index.yaml```ファイルが作成された日付を設定する。
 
 ```yaml
 generated: "2022-01-01T12:00:00.197173+09:00"

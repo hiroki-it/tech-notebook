@@ -277,7 +277,7 @@ $ php -r '
 
 ### clear-cache
 
-インストール時に生成されたキャッシュを削除する。
+インストール時に作成されたキャッシュを削除する。
 
 ```bash
 $ composer clear-cache

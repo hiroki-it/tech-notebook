@@ -206,7 +206,7 @@ PHPでは、```array_push```メソッドと```array_pop```メソッドで実装�
 
 #### ▼ ヒープ
 
-  Priority Queueを実現するときに使用される。各ノードにデータが格納されている。
+  Priority Queueを実現する時に使用される。各ノードにデータが格納されている。
 
 ![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ1.gif)
 

@@ -259,7 +259,7 @@ spec:
 
 #### ▼ enableTracing
 
-全てのEnvoyコンテナに関して、分散トレースの収集を有効化するかどうかを設定する。
+全てのEnvoyコンテナに関して、分散トレースの収集を有効化するか否かを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

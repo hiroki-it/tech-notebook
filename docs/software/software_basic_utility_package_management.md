@@ -143,7 +143,7 @@ $ yum list | grep <検索文字>
 
 #### ▼ repolist
 
-リポジトリか有効かどうかの一覧を取得する。
+リポジトリか有効か否かの一覧を取得する。
 
 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 

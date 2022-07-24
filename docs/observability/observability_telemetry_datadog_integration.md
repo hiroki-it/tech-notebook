@@ -31,7 +31,7 @@ description: インテグレーション＠Datadogの知見を記録していま
 
 ### インテグレーションパイプラインパッケージ
 
-ログの生成元に合わせて、プロセッサーのセットが組み込まれたパイプラインを提供してくれる。
+ログの作成元に合わせて、プロセッサーのセットが組み込まれたパイプラインを提供してくれる。
 
 参考：
 
@@ -56,7 +56,7 @@ description: インテグレーション＠Datadogの知見を記録していま
 
 #### ▼ 共通の手順
 
-AWSリソースで生成されたメトリクス/ログ/分散トレースをDatadogに転送できるようにする。
+AWSリソースで作成されたメトリクス/ログ/分散トレースをDatadogに転送できるようにする。
 
 参考：https://docs.datadoghq.com/integrations/amazon_web_services/?tab=roledelegation#setup
 

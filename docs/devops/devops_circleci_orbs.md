@@ -191,9 +191,9 @@ orbs:
 jobs:
   aws-ecr/build-and-push-image:
     name: ecr_build_and_push_image
-    # Docker Layer Cacheを使用するかどうか (有料)
+    # Docker Layer Cacheを使用するか否か (有料)
     remote-docker-layer-caching: true
-    # リポジトリがない時に作成するかどうか。
+    # リポジトリがない時に作成するか否か。
     create-repo: true
     no-output-timeout: 20m
     # projectを作業ディレクトリとした時の相対パス

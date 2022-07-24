@@ -761,7 +761,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
     storage.type  filesystem
 ```
 
-指定した場所に```cpu.0```ディレクトリが生成され、そこにあるflbファイル上でバッファリングが実行される。
+指定した場所に```cpu.0```ディレクトリが作成され、そこにあるflbファイル上でバッファリングが実行される。
 
 ```bash
 $ ls -ls /var/log/fluent-bit/cpu.0

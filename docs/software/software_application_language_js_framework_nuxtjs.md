@@ -76,7 +76,7 @@ $ yarn start
 
 #### ▼ ```dev```
 
-開発環境でSSGアプリケーションを稼働させるために使用する。Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイルを生成する。そのため、SSGモードで生成されるアプリケーションは完全な静的ファイルでない。また、```build```コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+開発環境でSSGアプリケーションを稼働させるために使用する。Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイルを作成する。そのため、SSGモードで作成されるアプリケーションは完全な静的ファイルでない。また、```build```コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -91,7 +91,7 @@ $ yarn dev
 
 #### ▼ ```generate```
 
-本番環境でSSGアプリケーションを稼働させるために使用する。```dev```コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイルを生成する。そのため、SSGは完全な静的ファイルからなる。ビルド時にバックエンドに接続し、DBに格納したデータ（例：画像パス）を元に、静的ファイルをビルドできる。SSGモードのために使用する。
+本番環境でSSGアプリケーションを稼働させるために使用する。```dev```コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイルを作成する。そのため、SSGは完全な静的ファイルからなる。ビルド時にバックエンドに接続し、DBに格納したデータ（例：画像パス）を元に、静的ファイルをビルドできる。SSGモードのために使用する。
 
 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -201,7 +201,7 @@ const nuxtConfig: Configuration = {
 
 #### ▼ hardSource
 
-ビルド時のキャッシュを有効化するかどうかを設定する。ビルドの完了が早くなる。
+ビルド時のキャッシュを有効化するか否かを設定する。ビルドの完了が早くなる。
 
 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
@@ -336,7 +336,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-SSG/SSRモードの```yarn dev```（開発用コマンド）、またSSRモードの```yarn build```の時のみ、```node_module```ディレクトリ内に生成するパッケージを設定する。
+SSG/SSRモードの```yarn dev```（開発用コマンド）、またSSRモードの```yarn build```の時のみ、```node_module```ディレクトリ内に作成するパッケージを設定する。
 
 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 

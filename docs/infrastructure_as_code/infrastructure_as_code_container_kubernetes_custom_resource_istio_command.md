@@ -88,7 +88,7 @@ $ kubectl label namespace default istio-injection=enabled
 
 #### ▼ analyzeとは
 
-Istioが正しく機能しているかどうかを検証する。
+Istioが正しく機能しているか否かを検証する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 

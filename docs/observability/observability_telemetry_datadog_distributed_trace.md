@@ -37,7 +37,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 ### Traceエージェントとは
 
-サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを生成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
+サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを作成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
 参考：
 
@@ -136,7 +136,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 #### ▼ インストールの動作確認
 
-パッケージが正しく読み込まれているかどうかは、```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる。
+パッケージが正しく読み込まれているか否かは、```php --ri=ddtrace```コマンドまたは```phpinfo```メソッドの結果から確認できる。
 
 ```bash
 # 成功の場合
@@ -161,7 +161,7 @@ Extension 'ddtrace' not present.
 
 #### ▼ パラメータの動作確認
 
-パラメーターがトレーサーに渡されたかどうかは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
+パラメーターがトレーサーに渡されたか否かは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
 
 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
@@ -319,7 +319,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 <br>
 
-## 03. 分散トレースの生成
+## 03. 分散トレースの作成
 
 ### 分散トレース
 

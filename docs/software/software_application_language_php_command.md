@@ -92,7 +92,7 @@ zlib
 [Zend Modules]
 ```
 
-なお、実際に読み込まれているかどうかは、```get_loaded_extensions```メソッドで確認できる。`
+なお、実際に読み込まれているか否かは、```get_loaded_extensions```メソッドで確認できる。`
 
 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 

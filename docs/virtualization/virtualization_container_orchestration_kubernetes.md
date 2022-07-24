@@ -254,13 +254,13 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 ## 01-04. アドオン
 
-### admission controllersプラグイン
+### admission-controllers
 
-#### ▼ admission controllersプラグインとは
+#### ▼ admission-controllersとは
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
-kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission controllersプラグインを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
+kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission-controllersを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
 
 参考：
 
@@ -268,11 +268,11 @@ kube-apiserverのリクエストの処理時には認証認可プロセスがあ
 - https://knowledge.sakura.ad.jp/21129/
 - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
-#### ▼ admission controllersプラグインの構成
+#### ▼ admission-controllersの構成
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission controllersプラグインは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission controllersの各プラグインで定義する以外に、Webhookプラグインで独自処理をコールするように定義することもできる。
+admission-controllersは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission controllersの各プラグインで定義する以外に、Webhookプラグインで独自処理をコールするように定義することもできる。Istioの```metadata.labels.istio-injection```キーの自動挿入は、admission controllersのWebhookを使用した機能である。
 
 参考：
 

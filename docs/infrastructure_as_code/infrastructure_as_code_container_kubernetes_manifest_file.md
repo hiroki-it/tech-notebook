@@ -1350,7 +1350,7 @@ kube-schedulerがPodを作成するNodeを設定する。```spec.nodeSelector```
 
 #### ▼ nodeAffinity
 
-ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内にPodを生成する。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内にPodを作成する。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
 
 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1377,7 +1377,7 @@ spec:
 
 #### ▼ podAffinity
 
-Podの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内にPodを生成する。
+Podの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内にPodを作成する。
 
 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1461,14 +1461,14 @@ spec:
 
 #### ▼ resources
 
-Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNodeのPodをスケーリングする。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているかどうかの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNodeのPodをスケーリングする。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
 | キー名         | 説明                                             | 補足                                                         |
 | -------------- | ------------------------------------------------ | ------------------------------------------------------------ |
 | ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
-| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再生成される。<br>参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
 ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
@@ -1632,7 +1632,7 @@ spec:
 
 #### ▼ livenessProbeとは
 
-コンテナが起動しているかどうかのヘルスチェックを設定する。
+コンテナが起動しているか否かのヘルスチェックを設定する。
 
 参考：https://www.ianlewis.org/jp/kubernetes-health-check
 
@@ -1716,7 +1716,7 @@ spec:
 
 #### ▼ readinessProbeとは
 
-すで起動中のコンテナが仕様上正しく稼働しているかどうかの準備済みチェックを設定する。
+すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。
 
 参考：https://www.ianlewis.org/jp/kubernetes-health-check
 
@@ -1783,7 +1783,7 @@ Pod内コンテナのライフサイクルの再起動ポリシーを設定す�
 
 #### ▼ Always
 
-コンテナが終了した場合に、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）かどうかに関わらず、常にコンテナを再起動する。
+コンテナが終了した場合に、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -2543,7 +2543,7 @@ spec:
 
 #### ▼ targetPort
 
-受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するかどうかを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するか否かを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
 
 **＊実装例＊**
 

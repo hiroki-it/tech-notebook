@@ -155,7 +155,7 @@ crw-------  psaux                 # PS2マウス、キーボード
 crw-rw-rw-  ptmx                  # 仮想端末
 crw-------  ptp0                  # 時刻同期
 drwxr-xr-x  pts                   # 仮想端末
-crw-rw-rw-  random                # 乱数生成
+crw-rw-rw-  random                # 乱数作成
 crw-rw-r--+ rfkill                # ワイヤレスデバイスのON/OFF
 lrwxrwxrwx  rtc -> rtc0           # リアルタイムクロック
 crw-------  rtc0                  # リアルタイムクロック
@@ -181,7 +181,7 @@ crw-rw----  ttyS31                # シリアルポート
 crw-rw----  udmabuf               # DMAバッファ
 crw-------  uhid                  # USB、Bluetooth
 crw-------  uinput                # 仮想インプットデバイス
-crw-rw-rw-  urandom               # 乱数生成　ブロックなし
+crw-rw-rw-  urandom               # 乱数作成　ブロックなし
 drwxr-xr-x  usb                   # USB
 crw-------  userio                # User I/O
 crw-rw----  vcs                   # 仮想コンソールメモリ ttyのバッファ
@@ -286,9 +286,9 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ### タスク管理とは
 
-![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
+![ジョブステップからタスクの作成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの作成.png)
 
-タスク管理によって、イニシエーターによるジョブステップからタスクが生成される。タスクが生成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
+タスク管理によって、イニシエーターによるジョブステップからタスクが作成される。タスクが作成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
 
 参考：https://www.amazon.co.jp/dp/4297124513
 
@@ -320,7 +320,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 **＊例＊**
 
-生成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
+作成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
 
 ![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
 
@@ -359,7 +359,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 #### ▼ 障害管理とは
 
-ソフトウェアに障害が起こった時の障害修復を管理する。
+ソフトウェアに障害が発生した時の障害修復を管理する。
 
 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 

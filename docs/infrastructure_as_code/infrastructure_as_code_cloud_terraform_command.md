@@ -101,7 +101,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 #### ▼ 実行プランファイル
 
-事前に、```terraform plan```コマンドによって生成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
+事前に、```terraform plan```コマンドによって作成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
 
 ```bash
 $ terraform apply foo.tfplan
@@ -182,7 +182,7 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 #### ▼ --migrate-state
 
-初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するかどうかを選択できる。
+初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するか否かを選択できる。
 
 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
@@ -206,7 +206,7 @@ $ terraform init -upgrade
 
 #### ▼ -check
 
-インデントを揃えるべき箇所が存在するかどうかを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
+インデントを揃えるべき箇所が存在するか否かを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
 
 ```bash
 $ terraform fmt -check
@@ -490,7 +490,7 @@ $ terraform plan \
 
 #### ▼ -out
 
-実行プランファイルを生成する。```terraform apply```コマンドのために使用できる。
+実行プランファイルを作成する。```terraform apply```コマンドのために使用できる。
 
 ```bash
 $ terraform plan \

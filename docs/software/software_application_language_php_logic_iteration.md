@@ -233,7 +233,7 @@ $oneDimension = call_user_func_array(
 
 **＊実装例＊**
 
-例えば、以下のような多次元配列があったとする。配列のscoreキーから値を取り出し、一次元配列を生成する。
+例えば、以下のような多次元配列があったとする。配列のscoreキーから値を取り出し、一次元配列を作成する。
 
 ```php
 <?php
@@ -251,7 +251,7 @@ $twoDimension = [
   ]
 ];
 
-// この配列のscoreキーから値を取り出し、一次元配列を生成する。
+// この配列のscoreキーから値を取り出し、一次元配列を作成する。
 $oneDimension = array_column($twoDimension, 'score');
 
 // Array

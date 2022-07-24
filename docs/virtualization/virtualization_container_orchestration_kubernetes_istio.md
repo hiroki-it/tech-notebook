@@ -225,7 +225,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 | 通信方向       | 機能                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | インバウンド   | IngressGatewayの機能のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                              |
-| アウトバウンド | istio-proxyコンテナの送信するアウトバウンド通信をTLSで暗号化するかどうか、を決定する機能を担う。 | 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| アウトバウンド | istio-proxyコンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決定する機能を担う。 | 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
@@ -324,7 +324,19 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 
 <br>
 
-## 06. 認証
+## 06. 障害対策
+
+### サーキットブレイカー
+
+#### ▼ サーキットブレイカーとは
+
+マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
+
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
+
+<br>
+
+## 07. 認証
 
 マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
 
@@ -335,7 +347,7 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 
 <br>
 
-## 06-02. 認可
+## 07-02. 認可
 
 参考：https://istio.io/latest/docs/concepts/security/#authorization
 

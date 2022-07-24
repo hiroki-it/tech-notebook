@@ -46,19 +46,13 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 知見の共有になれば幸いです。<br>
 <span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
 
-### ■ クリーンアーキテクチャ
-
-▶ https://github.com/hiroki-it/ddd-backend-with-laravel （ Clean-Arch、Laravel、GitHub Actions、など）
-
-▶ https://github.com/hiroki-it/ddd-backend-with-gin （ Clean-Arch、Gin、など）
-
-▶ https://github.com/hiroki-it/notify-slack-of-amplify-events （ Clean-Arch、Go、Serverless Framework、CircleCI、など）
-
-### ■ マイクロサービスアーキテクチャ
-
-▶ https://github.com/hiroki-it/microservices-backend （ Microservices-Arch、など）
-
-▶ https://github.com/hiroki-it/microservices-manifests （ K8s、Istio、など）
+| アーキテクチャ                 | 使用技術                                            | リポジトリ                                                  |
+| ------------------------------ | --------------------------------------------------- | ----------------------------------------------------------- |
+| クリーンアーキテクチャ         | Clean-Arch、Laravel、GitHub Actions、...            | https://github.com/hiroki-it/ddd-backend-with-laravel       |
+|                                | Clean-Arch、Gin、...                                | https://github.com/hiroki-it/ddd-backend-with-gin           |
+|                                | Clean-Arch、Go、Serverless Framework、CircleCI、... | https://github.com/hiroki-it/notify-slack-of-amplify-events |
+| マイクロサービスアーキテクチャ | Microservices-Arch、...                             | https://github.com/hiroki-it/microservices-backend          |
+|                                | K8s、Istio、...                                     | https://github.com/hiroki-it/microservices-manifests        |
 
 <br>
 

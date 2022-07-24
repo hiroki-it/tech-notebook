@@ -35,7 +35,7 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### リポジトリサーバー
 
-監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを生成する。
+監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
 
 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -43,7 +43,7 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### Applicationコントローラー
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないかどうかを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
 
 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -51,7 +51,7 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 
 ### Redisサーバー
 
-リポジトリサーバー内のマニフェストファイルのキャッシュを生成し、これを管理する。
+リポジトリサーバー内のマニフェストファイルのキャッシュを作成し、これを管理する。
 
 参考：
 
@@ -74,7 +74,9 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 ## 01-02. ユースケース
 
-### 基本構成
+### 共通
+
+#### ▼ 基本構成
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
@@ -85,6 +87,12 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 - https://blog.vpantry.net/2021/01/cicd-2/
 - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
+
+#### ▼ 検証
+
+Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。そのため、同期すれば元の状態に戻る。こういった点でも、ArgoCDを入れる方が、Kubernetesの修正の検証がしやすい。注意点として、マニフェストファイルに何かを追加するような変更は差分として認識されないため、同期しても元に戻らない。
+
+参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
 
 <br>
 
@@ -576,7 +584,7 @@ spec:
 | ------------- |--------------------------------------------------------------------------------------------------------|
 | ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定する。                                                 |
 | ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外する。                                                   |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するかどうかを設定する。 |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -892,15 +900,15 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 #### ▼ automated
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化するかどうかを設定する。
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化するか否かを設定する。
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 | 設定項目         | 説明                                                                                                           | 補足                                                                                                                 |
 | ---------------- |--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースの削除を自動同期するかどうかを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                |
+| ```prune```      | リソースの削除を自動同期するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                |
 | ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                           |
-| ```allowEmpty``` | 自動同期中に、ApplicationやApplication配下のリソースを検出できなくなってしまい、マニフェストファイルから空の状態を許可するかどうかを設定する。                           | 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
+| ```allowEmpty``` | 自動同期中に、ApplicationやApplication配下のリソースを検出できなくなってしまい、マニフェストファイルから空の状態を許可するか否かを設定する。                           | 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1003,7 +1011,7 @@ spec:
 | 設定項目                    | 説明                                                         |
 | --------------------------- | ------------------------------------------------------------ |
 | ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する。      |
-| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するかどうかを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
+| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
 | ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
 | ```previewReplicaCount```   | グリーン環境のPod数を設定する。                              |
 | ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する。    |

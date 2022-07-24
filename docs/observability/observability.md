@@ -169,7 +169,7 @@ description: 可観測性の知見を記録しています。
 
 #### ▼ Centralized logging（集中ロギング）
 
-マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。
+マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。各ログに一意なIDを割り当て、人繋ぎに紐付ける必要がある。
 
 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
@@ -181,9 +181,9 @@ description: 可観測性の知見を記録しています。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
-マイクロサービスから収集されたスパンのセットのこと。スパンを紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
+マイクロサービスから収集されたスパンのセットのこと。スパンをIDで紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
 
-参考：
+か参考：
 
 - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
@@ -206,9 +206,16 @@ description: 可観測性の知見を記録しています。
 
 #### ▼ スパン間の紐付け
 
-リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
+リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。各マイクロサービスで、リクエストにIDが割り当てられているか確認し、もしなければ割り当てるといった処理が繰り返される。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
 
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+参考：
+
+- https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+- https://zenn.dev/lempiji/articles/b752b644d22a59
+
+![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
+
+
 
 #### ▼ データポイント化
 

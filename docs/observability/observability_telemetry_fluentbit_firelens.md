@@ -140,7 +140,7 @@ ECSタスクのコンテナ定義にて、アプリケーションコンテナ�
         "config-file-type": "file",
         # 設定上書きのため読み出し
         "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
-        # ECSの情報をFireLensコンテナに送信するかどうか
+        # ECSの情報をFireLensコンテナに送信するか否か
         "enable-ecs-log-metadata": "true"
       }
     },
@@ -387,9 +387,9 @@ FireLensコンテナで処理中のログのキー値を修正したい場合、
     Key_Name        container_name
     # 使用するパーサールール
     Parser          docker-name-parser
-    # 解析されたキーの元の値を保持するかどうか
+    # 解析されたキーの元の値を保持するか否か
     Preserve_Key    false
-    # 解析されたキー以外を保持するかどうか
+    # 解析されたキー以外を保持するか否か
     Reserve_Data    true
 ```
 
@@ -442,7 +442,7 @@ FireLensコンテナで複数行のログを処理したい場合、```parsers_m
 
 #### ▼ ```stream_processor.conf```ファイルとは
 
-ログの生成元のコンテナごとに異なる処理を設定したい場合、```stream_processor.conf```ファイルでSTREAM_TASKセクションを定義する必要がある。
+ログの作成元のコンテナごとに異なる処理を設定したい場合、```stream_processor.conf```ファイルでSTREAM_TASKセクションを定義する必要がある。
 
 #### ▼ STREAM_TASKセクション
 

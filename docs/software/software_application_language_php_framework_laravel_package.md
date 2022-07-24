@@ -71,7 +71,7 @@ class RoleType extends Enum
     public const SALES_ROLE = 5;       // 営業職
     
     /**
-     * コールセンター職の区分値を持つかどうかを判定します。
+     * コールセンター職の区分値を持つか否かを判定します。
      */    
     public function isCallRole()
     {
@@ -87,7 +87,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 経理職の区分値を持つかどうかを判定します。
+     * 経理職の区分値を持つか否かを判定します。
      */       
     public function isFinanceRole()
     {
@@ -95,7 +95,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 企画職の区分値を持つかどうかを判定します。
+     * 企画職の区分値を持つか否かを判定します。
      */       
     public function isPlanRole()
     {
@@ -103,7 +103,7 @@ class RoleType extends Enum
     }  
     
     /**
-     * 営業職の区分値を持つかどうかを判定します。
+     * 営業職の区分値を持つか否かを判定します。
      */       
     public function isSalesRole()
     {
@@ -171,7 +171,7 @@ return [
 
 #### ▼ Facade
 
-PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを生成する。
+PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを作成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
@@ -179,9 +179,9 @@ PHPStromで、メソッドが定義された場所にジャンプできるよう
 $ php artisan ide-helper:generate
 ```
 
-#### ▼ アノテーション生成
+#### ▼ アノテーション作成
 
-PHPStromで、LaravelのEloquentモデルでのアノテーションを自動生成する。
+PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
@@ -191,7 +191,7 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを生成する。
+PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを作成する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
