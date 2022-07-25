@@ -243,7 +243,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 ### Istiodとは
 
-Envoyコンテナを統括的に管理する。
+istio-proxyコンテナを統括的に管理する。
 
 参考：
 
@@ -272,7 +272,7 @@ Envoyコンテナを統括的に管理する。
 
 #### ▼ sidecar-injectorとは
 
-Envoyコンテナをサイドカーとして稼働させる。
+istio-proxyコンテナをサイドカーとして稼働させる。
 
 <br>
 

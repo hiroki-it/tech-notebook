@@ -414,8 +414,6 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 - 社外への周知内容
 ```
 
-
-
 #### ▼ 他社事例
 
 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
@@ -425,7 +423,5 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 | AWS      | https://aws.amazon.com/jp/message/5467D2/                    |
 | Heroku   | https://status.heroku.com/incidents/151                      |
 | Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
-
-<br>
 
 <br>

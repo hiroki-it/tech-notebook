@@ -78,7 +78,7 @@ istio-proxyコンテナの設定を上書きできる。
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
+DeploymentやPodの```metadata.anontations```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -152,7 +152,7 @@ metadata:
 
 #### ▼ istio-injection
 
-admission-controllersのWebhook機能を使用して、Envoyコンテナを自動的に作成するか否かを設定する。
+admission-controllersのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -184,13 +184,13 @@ metadata:
 
 #### ▼ annotations
 
-Deploymentの```spec.template```キーや、Podの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```spec.template```キーや、Podの```metadata```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ▼ proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+istio-proxyコンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -212,7 +212,7 @@ spec:
 
 #### ▼ sidecar.istio.io/inject
 
-特定のPodでのみ、Envoyコンテナを自動的に作成しないようにする。
+特定のPodでのみ、istio-proxyコンテナを自動的に作成しないようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -231,7 +231,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyCPU
 
-Envoyコンテナで使用するCPUサイズを設定する。
+istio-proxyコンテナで使用するCPUサイズを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -252,7 +252,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyImage
 
-Envoyコンテナの作成に使用するコンテナイメージを設定する。
+istio-proxyコンテナの作成に使用するコンテナイメージを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -273,7 +273,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyMemory
 
-Envoyコンテナで使用するメモリサイズを設定する。
+istio-proxyコンテナで使用するメモリサイズを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 

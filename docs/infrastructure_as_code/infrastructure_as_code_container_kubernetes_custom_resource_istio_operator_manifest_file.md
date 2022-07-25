@@ -222,13 +222,13 @@ spec:
 
 #### ▼ meshConfigとは
 
-全てのEnvoyコンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
+全てのistio-proxyコンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ▼ accessLogFile
 
-全てのEnvoyコンテナに関して、アクセスログの出力先を設定する。
+全てのistio-proxyコンテナに関して、アクセスログの出力先を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -243,7 +243,7 @@ spec:
 
 #### ▼ defaultConfig
 
-Envoyコンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
+istio-proxyコンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -259,7 +259,7 @@ spec:
 
 #### ▼ enableTracing
 
-全てのEnvoyコンテナに関して、分散トレースの収集を有効化するか否かを設定する。
+全てのistio-proxyコンテナに関して、分散トレースの収集を有効化するか否かを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -274,7 +274,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全てのEnvoyコンテナに関して、使用するGatewayの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全てのistio-proxyコンテナに関して、使用するGatewayの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -289,7 +289,7 @@ spec:
 
 #### ▼ ingressService
 
-全てのEnvoyコンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全てのistio-proxyコンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -304,7 +304,7 @@ spec:
 
 #### ▼ proxyHttpPort
 
-全てのEnvoyコンテナに関して、Cluster外からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する。
+全てのistio-proxyコンテナに関して、Cluster外からのインバウンド通信（特にHTTPプロトコル通信）を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -319,7 +319,7 @@ spec:
 
 #### ▼ proxyListenPort
 
-全てのEnvoyコンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
+全てのistio-proxyコンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -445,7 +445,7 @@ spec:
 
 #### ▼ sidecarInjectorWebhook
 
-Envoyコンテナごとのオプション値を設定する。
+istio-proxyコンテナごとのオプション値を設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 

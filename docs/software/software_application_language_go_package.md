@@ -169,7 +169,21 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 <br>
 
-## 05. gorm
+## 05. client-go
+
+### client-goとは
+
+Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
+
+参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
+
+kube-apiserverの認証認可を通過するために、kubeconfigファイルをコンテナにマウントする必要がある。
+
+参考：https://nishipy.com/archives/1363
+
+<br>
+
+## 06. gorm
 
 ### gormとは
 
@@ -461,7 +475,7 @@ db.Save(&user)
 
 <br>
 
-## 06. testify
+## 07. testify
 
 ### testifyとは
 
@@ -625,7 +639,7 @@ func (suite *FooSuite) TestMethod() {
 
 <br>
 
-## 07. validator
+## 08. validator
 
 ### validatorとは
 

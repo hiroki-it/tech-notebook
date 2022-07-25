@@ -498,7 +498,7 @@ Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンド
 ```bash
 $ minikube kubectl -- version
 
-# kubectlのバージョン
+# kubectlコマンドのバージョン
 Client Version: version.Info{
   Major:"1",
   Minor:"22",
@@ -511,11 +511,11 @@ Client Version: version.Info{
   Platform:"darwin/amd64"
 }
 
-# Kubernetesのバージョン
+# kube-apiserverのバージョン
 Server Version: version.Info{
   Major:"1",
   Minor:"22",
-  GitVersion:"v1.22.3",
+  GitVersion:"v1.22.3", # EKSであれば、『v1.22.10-eks-84b4fe6』になっている。
   GitCommit:"*****",
   GitTreeState:"clean",
   BuildDate:"2021-11-17T15:41:42Z",

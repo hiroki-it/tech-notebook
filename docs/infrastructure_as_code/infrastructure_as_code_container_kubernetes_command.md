@@ -795,7 +795,7 @@ kubectlとKubernetesのバージョンをそれぞれ取得する。両方のバ
 ```bash
 $ kubectl version                                                             
 
-# kubectlのバージョン
+# kubectlコマンドのバージョン
 Client Version: version.Info{
   Major:"1",
   Minor:"22",
@@ -808,7 +808,7 @@ Client Version: version.Info{
   Platform:"darwin/amd64"
 }
 
-# Kubernetesのバージョン
+# kube-apiserverのバージョン
 Server Version: version.Info{
   Major:"1",
   Minor:"22",

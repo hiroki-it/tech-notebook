@@ -223,7 +223,29 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 <br>
 
-## 04. アップグレード
+## 04. バージョンの互換性
+
+### kube-apiserver
+
+#### ▼ kube-apiserverが冗長化されている場合
+
+冗長化されたkube-apiserverのバージョン差は、前方の```1```個のマイナーバージョン以内に収める必要がある。
+
+参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
+
+<br>
+
+### kubectl
+
+#### ▼ kube-apiserverの場合
+
+```kubectl```コマンドとkube-apiserverのバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収める必要がある。
+
+参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
+
+<br>
+
+## 05. アップグレード
 
 ### アップグレード要件
 
@@ -234,7 +256,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 <br>
 
-### Clusterのアップグレード
+### Clusterのアップグレード手法
 
 #### ▼ ライブアップグレード
 
@@ -261,7 +283,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 <br>
 
-## 05. CIDRブロックの設計
+## 06. CIDRブロックの設計
 
 ### ワーカーNodeの場合
 
@@ -286,7 +308,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 <br>
 
-## 06. 監視の設計
+## 07. 監視の設計
 
 ### Cluster
 

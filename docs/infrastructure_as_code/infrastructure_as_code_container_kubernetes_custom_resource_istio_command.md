@@ -74,7 +74,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にapplyできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
+KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。istio-proxyコンテナをサイドカーコンテナとして自動的にapplyできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
@@ -168,7 +168,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 #### ▼ kube-injectとは
 
-Envoyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
+istio-proxyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 
@@ -301,7 +301,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ proxy-statusとは
 
-IngressGateway、EgressGateway、Envoyコンテナのステータスを取得する。
+IngressGateway、EgressGateway、istio-proxyコンテナのステータスを取得する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
