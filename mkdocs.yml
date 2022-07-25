@@ -279,6 +279,7 @@ nav:
           - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
           - ■ Kubernetes:
               - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
+              - kubernetesアドオン: virtualization/virtualization_container_orchestration_kubernetes_addon.md
               - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
               - Minikube: virtualization/virtualization_container_orchestration_kubernetes_minikube.md
 
