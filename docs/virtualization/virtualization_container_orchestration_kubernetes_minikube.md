@@ -216,7 +216,7 @@ spec:
 
 **＊例＊**
 
-CNIとしてBridgeプラグインを使用している。CIDRブロックは、```192.168.49.2/24```である。
+CNIとしてBridgeアドオンを使用している。CIDRブロックは、```192.168.49.2/24```である。
 
 ```bash
 $ minikube ssh
@@ -236,7 +236,7 @@ docker@minikube:~$ ip addr | grep eth0
 
 **＊例＊**
 
-CNIとしてBridgeプラグインを使用している。CIDRブロックは、```10.85.0.0/16```である。
+CNIとしてBridgeアドオンを使用している。CIDRブロックは、```10.85.0.0/16```である。
 
 ```bash
 $ minikube ssh
@@ -278,11 +278,11 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 #### ▼ addonsとは
 
-Minikubeのプラグインを操作する。
+Minikubeのアドオンを操作する。
 
 #### ▼ enable
 
-プラグインを有効化するか否かを設定する。
+アドオンを有効化するか否かを設定する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
@@ -303,7 +303,7 @@ foo-ingress   nginx   *       <IPアドレス>    80      12m
 
 #### ▼ list
 
-有効できるプラグインの一覧を取得する。
+有効できるアドオンの一覧を取得する。
 
 ```bash
 $ minikube addons list
@@ -347,7 +347,7 @@ $ minikube addons list
 
 ### cni
 
-使用するcniプラグインを設定する。
+使用するcniアドオンを設定する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 

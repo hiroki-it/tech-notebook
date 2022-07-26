@@ -43,6 +43,15 @@ description: Istio＠仮想化の知見を記録しています。
 | ```istio-proxy``` | Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。<br>参考：https://sreake.com/blog/istio/ |
 | ```istio-init```  | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。                       |
 
+#### ▼ ```istio-proxy```コンテナが作成される仕組み
+
+サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成する処理は、admission-controllersのmutating-admission-webhookを使用した機能である。istio-injectionが有効になっている場合、Podの作成処理時に、KubernetesからIstioにWebhookが送信される。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admission時に、WebhookがIstio内のsidecar-injector-webhookサーバーの```/inject```エンドポイントに送信される。これを受信したsidecar-injector-webhookサーバーは、istio-proxyコンテナを作成する処理を返信する。Kubernetesはこれを受信し、Podにistio-proxyコンテナを作成する。
+
+参考：https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
+
+![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
+
+
 <br>
 
 ### コントロールプレーン
@@ -331,6 +340,8 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 #### ▼ サーキットブレイカーとは
 
 マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
+
+参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
 
 ![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
 

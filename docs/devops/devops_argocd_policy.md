@@ -161,9 +161,7 @@ repository/
 
 ### ダッシュボード
 
-ダッシュボード
-
-のURLはIngressを入り口に作成することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
+ダッシュボードのURLはIngressを入り口に作成することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
 
 <br>
 
@@ -180,17 +178,23 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 ## 04. エラー解決
 
-### 既に存在しないリソースを検出し続けてしまう
+### Applicationの削除時にエラーが起こる
 
-PruneによるKubernetesリソースの削除を有効化した場合、Prune後に存在しないリソースを監視し続けてしまう現象が起こることがある。また、Applicationの削除時に、削除中ステータスのまま処理が進まないなる場合がある。これらの場合には、```spec.syncPolicy.allowEmpty```キーを有効化しつつ、Applicationの```metadata.finalizers```キーの値を```kubectl edit```コマンドで空配列に変更する。
+PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことでエラーが起こることがある。これらの場合には、以下の手順でApplicationを削除する。
 
 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
+1. Applicationの```spec.syncPolicy.allowEmpty```キーを有効化する。
+
+2. フォアグラウンドで削除すると、Applicationの`metadata.finalizers`キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl edit`コマンドを使用する必要がある。
+
+   参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+
+3. 1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
+
 ```bash
 $ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
-```
 
-```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -199,6 +203,20 @@ spec:
 
 # 〜 中略 〜
 ```
+
+<br>
+
+### ヘルスチェックが終わらない
+
+参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+
+<br>
+
+### 同期してもOut of syncが解消されない
+
+参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
+
+<br>
 
 <br>
 

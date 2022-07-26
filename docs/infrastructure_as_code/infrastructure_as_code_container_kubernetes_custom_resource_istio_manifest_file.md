@@ -152,7 +152,7 @@ metadata:
 
 #### ▼ istio-injection
 
-admission-controllersのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
+admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 

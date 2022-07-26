@@ -360,18 +360,6 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
-### Tips
-
-#### ▼ ヘルスチェックが終わらない
-
-参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
-
-#### ▼ 同期してもOut of syncが解消されない
-
-参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
-
-<br>
-
 ## 03. labels（```argocd.argoproj.io/secret-type```の場合）
 
 ### repository
@@ -904,11 +892,11 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
-| 設定項目         | 説明                                                                                                           | 補足                                                                                                                 |
-| ---------------- |--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| ```prune```      | リソースの削除を自動同期するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースの削除を自動同期しない。                        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                           |
-| ```allowEmpty``` | 自動同期中に、ApplicationやApplication配下のリソースを検出できなくなってしまい、マニフェストファイルから空の状態を許可するか否かを設定する。                           | 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
+| 設定項目         | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```prune```      | リソースをapplyしつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。 | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
+| ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。 | 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

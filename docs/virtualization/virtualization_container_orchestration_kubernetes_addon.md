@@ -13,13 +13,13 @@ description: kubernetesアドオン＠仮想化の知見を記録しています
 
 <br>
 
-## 01. admission-controllers
+## 01. admission-controllersアドオン
 
-### admission-controllersとは
+### admission-controllersアドオンとは
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
-kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission-controllersを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
+kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission-controllersアドオンを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
 
 参考：
 
@@ -29,13 +29,13 @@ kube-apiserverのリクエストの処理時には認証認可プロセスがあ
 
 <br>
 
-### admission-controllersの仕組み
+### admission-controllersアドオンの仕組み
 
-#### ▼ admission-controllersの構成
+#### ▼ admission-controllersアドオンの構成
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission controllersの各プラグインで定義する以外に、Webhookプラグインで独自処理をコールするように定義することもできる。
+admission-controllersアドオンは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission-controllersアドオンで定義する以外に、Webhookアドオンで独自処理をコールするように定義することもできる。
 
 参考：
 
@@ -47,9 +47,9 @@ admission-controllersは、2つのステップから構成されている。各�
 | mutating-admission   | 作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理を定義する。 |
 | validating-admission | パラメーターのバリデーションを実行する独自処理を定義する。   |
 
-#### ▼ 使用プラグインの確認
+#### ▼ 使用アドオンの確認
 
-有効化されているプラグインは、コントロールプレーンのログから確認できる。
+有効化されているadmission-controllersアドオンの機能は、コントロールプレーンのログから確認できる。
 
 参考：https://sotoiwa.hatenablog.com/entry/2020/12/28/115826
 
@@ -146,23 +146,15 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 }
 ```
 
-#### ▼ Webhookの例
-
-サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成する処理は、mutating-admissionのWebhookを使用した機能である。istio-injectionが有効になっている場合、Podの作成処理時に、KubernetesからIstioにWebhookが送信される。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admission時に、WebhookがIstio内のsidecar-injector-webhookサーバーの```/inject```エンドポイントに送信される。これを受信したsidecar-injector-webhookサーバーは、istio-proxyコンテナを作成する処理を返信する。Kubernetesはこれを受信し、Podにistio-proxyコンテナを作成する。
-
-参考：https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
-
-![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
-
 <br>
 
-## 02. cniプラグイン
+## 02. cniアドオン
 
-### cniプラグインとは
+### cniアドオンとは
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。kubeletによって実行される。Clusterネットワークの種類に応じたプラグインが用意されている。
+Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。kubeletによって実行される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
 
 参考：
 
@@ -171,9 +163,9 @@ Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネ�
 
 <br>
 
-## 03. core-dns（旧kube-dns）
+## 03. core-dnsアドオン（旧kube-dns）
 
-### core-dnsとは
+### core-dnsアドオンとは
 
 ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
