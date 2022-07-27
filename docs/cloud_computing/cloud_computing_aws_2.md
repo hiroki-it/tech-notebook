@@ -875,14 +875,14 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html 
 
-| AMI名                         | 説明                                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| ECS最適化Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。   |
-| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |
-| ECS最適化Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |
-| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |
-| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。GPUが必要名アプリケーション（計算処理系、機械学習系のアプリケーション）のために選択する。 |
-| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |
+| AMI名                         | 説明                                                         | 特に相性の良いアプリ                                         |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ECS最適化Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              |
+| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                              |
+| ECS最適化Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |                                                              |
+| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
+| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
+| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |                                                              |
 
 <br>
 
@@ -1683,15 +1683,15 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 #### ▼ EC2 Nodeの最適化AMI
 
-任意のEC2 Nodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2 Nodeをセットアップする手間が省ける。
+任意のEC2 Nodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2 Nodeをセットアップする手間が省ける。必ずしも、全てのワーカーNodeを同じAMIで構築する必要はない。ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のワーカーNode上で稼働させる（例：計算処理系アプリはEKS最適化高速AMIのワーカーNode上で動かす）といった方法でもよい。
 
 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html
 
-| AMI名                     | 説明                                                         |
-| ------------------------- | ------------------------------------------------------------ |
-| EKS最適化Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |
-| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。GPUが必要名アプリケーション（計算処理系、機械学習系のアプリケーション）のために選択する。 |
-| EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |
+| AMI名                     | 説明                                                         | 特に相性の良いPod                                            |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| EKS最適化Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              |
+| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |
+| EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
 
 #### ▼ EC2 NodeのカスタムAMI
 

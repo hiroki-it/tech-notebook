@@ -343,6 +343,11 @@ $ helm repo remove <チャート名>
 "<チャートリポジトリ名>" has been removed from your repositories
 ```
 
+```bash
+# チャート名をreleasesとしている場合
+$ helm repo remove releases
+```
+
 #### ▼ update
 
 事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの情報を更新する。チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
@@ -394,6 +399,11 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 $ helm show all <チャート名>
 ```
 
+```bash
+# チャート名をreleasesとしている場合
+$ helm show all releases
+```
+
 #### ▼ chart
 
 チャートの```Chart.yaml```ファイルを取得する。
@@ -422,6 +432,11 @@ $ helm show values <チャート名>
 # valuesファイルが表示される。
 ```
 
+```bash
+# チャート名をreleasesとしている場合
+$ helm show values releases
+```
+
 <br>
 
 ### template
@@ -432,6 +447,11 @@ Kubernetesにapplyされるリソースのマニフェストファイルを出�
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>
+```
+
+```bash
+# チャート名をreleasesとしている場合
+$ helm template prd releases >| releases.yaml
 ```
 
 #### ▼ -f

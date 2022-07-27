@@ -18,17 +18,38 @@ description: VictoriaMetrics＠テレメトリー収集ツールの知見を記�
 
 ### アーキテクチャ
 
-リモートストレージとして、Prometheusで収集したメトリクスを保管する。シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、ストレージにメトリクスを書き込める。また読み出しエンドポイントを指定すれば、ストレージからメトリクスを読み込める。
+#### ▼ リモートストレージとして
+
+ロードバランサー、vmselect、vmstorage、vminsert、から構成されている。リモートストレージとして、Prometheusで収集したメトリクスを保管する。シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vminsertを経由して、vmstorageにメトリクスを書き込める。また読み出しエンドポイントを指定すれば、vmselectを経由して、vmstorageからメトリクスを読み込める。
 
 参考：https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 
-![victoria-metrics_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_architecture.png)
+![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_remote-storage_architecture.png)
+
+#### ▼ 監視ツールとして
+
+vmagent、vmalert、から構成されている。また、アラートのルーティングのためにalertmanager、可視化のためにGrafana、が必要である。vmagentがPull型でメトリクスを収集し、エラーイベントが検出されれば、vmalertがアラームを作成する。この場合はPrometheusが不要になる。
+
+参考：
+
+- https://speakerdeck.com/bo0km4n/victoriametrics-plus-prometheusdegou-zhu-surufu-shu-kubernetesfalsejian-shi-ji-pan?slide=30
+- https://www.sobyte.net/post/2022-05/vmalert/
+
+![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
+
+<br>
+
+### ロードバランサー
+
+#### ▼ ロードバランサーとは
+
+HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
 <br>
 
 ### vmselect
 
-#### ▼ vmselect
+#### ▼ vmselectとは
 
 クライアントから読み出しリクエストを受信し、vmstorageからデータを読み出す。
 
@@ -68,7 +89,7 @@ vmstorageは、サイズいっぱいまでデータが保管されると、ラ�
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vmstorageの```/var/lib/victoriametrics/```ディレクトリ配下の増加量（日）を調査し、これに非機能要件の保管日数をかけることで、vmstorageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
+vmstorageの```/var/lib/victoriametrics```ディレクトリ配下の増加量（日）を調査し、これに非機能要件の保管日数をかけることで、vmstorageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
 
 参考：https://docs.victoriametrics.com/#capacity-planning
 

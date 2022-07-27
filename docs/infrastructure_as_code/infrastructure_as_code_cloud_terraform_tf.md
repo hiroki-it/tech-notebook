@@ -919,7 +919,7 @@ module "foo" {
 }
 ```
 
-一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```から出力する。
+一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```ブロックから出力する。
 
 ```terraform
 # outputのあるtfstateファイルを参照する。

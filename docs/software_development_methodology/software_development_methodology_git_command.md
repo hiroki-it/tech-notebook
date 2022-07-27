@@ -110,6 +110,16 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 <br>
 
+### init
+
+ローカルマシンのディレクトリとGitHubリポジトリを紐づける。エディタにGitHubリポジトリを再反映するためにも使用できる。
+
+```bash
+$ git init
+```
+
+<br>
+
 ### remote
 
 #### ▼ set-url origin <SSH URL>
