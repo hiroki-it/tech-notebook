@@ -35,6 +35,8 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### リポジトリサーバー
 
+#### ▼ リポジトリサーバーとは
+
 監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
 
 参考：https://weseek.co.jp/tech/95/#i-7
@@ -360,146 +362,7 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
-## 03. labels（```argocd.argoproj.io/secret-type```の場合）
-
-### repository
-
-#### ▼ repositoryとは
-
-監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
-
-参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
-
-#### ▼ マニフェストリポジトリの場合
-
-マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
-  type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
-```
-
-#### ▼ チャートレジストリの場合
-
-チャートレジストリの認証情報を設定する。チャートレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-参考：
-
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
-  type: helm
-  username: foo
-  password: bar
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
-  type: helm
-  username: baz
-  password: qux
-```
-
-#### ▼ OCIレジストリの場合
-
-OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに別々のSecretで認証情報を設定する必要がある。ただし、1つのOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-参考：
-
-- https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-oci-registry
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-  type: helm
-  username: foo
-  password: bar
-  enableOCI: "true"
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-oci-registry # 任意のOCIレジストリ名
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-  type: helm
-  username: baz
-  password: qux
-  enableOCI: "true"
-```
-
-AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
-
-参考：
-
-- https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
-- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-- https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
-
-<br>
-
-## 04. Application
+## 03. Application
 
 ### Applicationとは
 
@@ -518,6 +381,20 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 - https://argo-cd.readthedocs.io/en/latest/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
 - https://github.com/argoproj/argo-cd/discussions/7908
 - https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
+
+#### ▼ 操作の種類
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/core_concepts/
+- https://github.com/argoproj/argo-cd/discussions/8260
+
+| 同期名       | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があればapplyする。 |
+| Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
+| Hard Refresh | Redisサーバーに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
+| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースをapplyすることはない。<br>参考：https://twitter.com/reoring/status/1476046977599406087 |
 
 <br>
 
@@ -943,6 +820,82 @@ spec:
 
 <br>
 
+## 03. Job
+
+### metadata
+
+#### ▼ generateName
+
+同期フェーズフック名を設定する。
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: foo-hook
+```
+
+<br>
+
+### metadata.annotations
+
+#### ▼ argocd.argoproj.io/hook
+
+フックを設定する同期フェーズ（同期前、同期時、同期スキップ時、同期後、同期失敗時）を設定する。
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
+- https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: SyncFail # 同期失敗時
+```
+
+#### ▼ argocd.argoproj.io/sync-wave
+
+同じ同期フェーズに実行するように設定したフックが複数ある場合に、これらの実行の優先度付けを設定する。正負の数字を設定でき、数字が小さい方が優先される。優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+
+参考：
+
+- https://weseek.co.jp/tech/95/
+- https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3つの中で一番優先される。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 1 # 優先度1
+```
+
+<br>
+
 ## 05. Rollout
 
 ### spec.analysis
@@ -1051,7 +1004,146 @@ spec:
 
 <br>
 
-## 06. Workflow
+## 06. Secret
+
+### metadata.labels
+
+#### ▼ argocd.argoproj.io/secret-typeとは
+
+設定値は```repository```とする。監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+
+参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+
+#### ▼ マニフェストリポジトリの場合
+
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
+#### ▼ チャートレジストリの場合
+
+チャートレジストリの認証情報を設定する。チャートレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
+  type: helm
+  username: foo
+  password: bar
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
+  type: helm
+  username: baz
+  password: qux
+```
+
+#### ▼ OCIレジストリの場合
+
+OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに別々のSecretで認証情報を設定する必要がある。ただし、1つのOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+参考：
+
+- https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+- https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-oci-registry
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  type: helm
+  username: foo
+  password: bar
+  enableOCI: "true"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-oci-registry # 任意のOCIレジストリ名
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  type: helm
+  username: baz
+  password: qux
+  enableOCI: "true"
+```
+
+AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
+
+参考：
+
+- https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+- https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+- https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
+
+<br>
+
+## 07. Workflow
 
 ### spec.entrypoint
 

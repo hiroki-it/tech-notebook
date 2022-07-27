@@ -182,12 +182,13 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまう
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 参考：
 
 - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
+- https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
 
 #### ▼ ダイナミックキュー
 

@@ -1695,7 +1695,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 #### ▼ EC2 NodeのカスタムAMI
 
-EC2 NodeのAMIにカスタムAMIを使用する場合、EC2のユーザーデータとして、パラメーターを渡す必要がある。最適化AMIにはデフォルトでパラメーターが設定されているため、これは不要である。
+EC2 NodeのAMIにカスタムAMIを使用する場合、EC2起動時にユーザーデータとして、```bootstrap.sh```ファイルにパラメーターを渡す必要がある。一方で、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
@@ -1717,7 +1717,7 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータの注意点として、各パラメーターはハードコーディングせずに、SSMパラメーターストアから取得するようにする。
+ユーザーデータの注意点として、各パラメーターはハードコーディングせずに、パラメーターストアから取得するようにする。
 
 参考：
 

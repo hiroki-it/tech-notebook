@@ -142,7 +142,9 @@ apiVersion: v1
 kind: Config
 clusters:
   - cluster:
+      # kube-apiserverのSSL証明書
       certificate-authority-data: LS0tLS1 ...
+      # kube-apiserverのURL
       server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
       
     # 〜 中略 〜  

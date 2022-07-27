@@ -577,6 +577,56 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
+### Systems Manager（旧SSM）
+
+#### ▼ get-parameters-by-path
+
+特定のパスで始まる全てのSSMパラメーターを取得する。
+
+参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
+
+```bash
+# パスのないパラメーターの場合
+$ aws ssm get-parameters-by-path --path "/"
+
+{
+    "Parameters": [
+        {
+            "Name": "FOO",
+            
+            # 〜 中略 〜
+        },
+        {
+            "Name": "BAR",
+            
+            # 〜 中略 〜
+        },
+   ]
+ }
+```
+
+```bash
+# 『/FOO』で始まるパラメーターの場合
+$ aws ssm get-parameters-by-path --path "/FOO"
+
+{
+    "Parameters": [
+        {
+            "Name": "/FOO",
+            
+            # 〜 中略 〜
+        },
+        {
+            "Name": "/FOO/BAR",
+            
+            # 〜 中略 〜
+        },
+   ]
+ }
+```
+
+<br>
+
 ## 07. 認証認可のTips
 
 ### SSO

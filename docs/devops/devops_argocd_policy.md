@@ -176,7 +176,7 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 <br>
 
-## 04. エラー解決
+## 05. エラー解決
 
 ### Applicationの削除時にエラーが起こる
 
@@ -206,6 +206,15 @@ spec:
 
 <br>
 
+### すでに削除されたPodが監視され続ける
+
+すでに削除したPodを監視し続けてしまうことがあり、この場合Podが存在しないため、Podの削除すらできなくなってしまう。この問題が起こった場合、以下のいずれかで解決する。
+
+- argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。
+- 親になるリソース（Deployment、DaemonSet、など）を一度削除する。ただ、親になるリソースを削除する必要があるため、やや危険である。
+
+<br>
+
 ### ヘルスチェックが終わらない
 
 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
@@ -218,8 +227,6 @@ spec:
 
 <br>
 
-<br>
-
-## 04. アップグレード
+## 06. アップグレード
 
 ArgoCDが自分自身をアップグレードできるように、親Applicationを子Applicationで管理する。
