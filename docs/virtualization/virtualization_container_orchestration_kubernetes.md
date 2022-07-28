@@ -135,6 +135,17 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 - https://kubernetes.io/docs/concepts/architecture/controller/
 - https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
 
+#### ▼ reconciliation
+
+マニフェストファイルで宣言された状態と、実際の状態を比較し、宣言通りに回復すること。この比較を繰り返すことで、自己修復できるようになる。
+
+![kubernetes_reconciliation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation.png)
+
+参考：
+
+- https://www.oreilly.com/library/view/programming-kubernetes/9781492047094/ch01.html
+- https://speakerdeck.com/yosshi_/korekaraxue-hukubernetesfalsereconciliation-loop?slide=27
+
 <br>
 
 ### kube-scheduler

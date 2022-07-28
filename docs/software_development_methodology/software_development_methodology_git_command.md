@@ -120,6 +120,21 @@ $ git init
 
 <br>
 
+### ignore
+
+#### ▼ global ignore
+
+```~/.config/git/ignore```ファイルに設定されたファイルは、グローバルに無視される。
+
+参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
+
+```
+.DS_Store
+.idea/
+```
+
+<br>
+
 ### remote
 
 #### ▼ set-url origin <SSH URL>

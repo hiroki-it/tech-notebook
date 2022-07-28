@@ -72,16 +72,6 @@ Istioの機能のセットを提供する。
 
 <br>
 
-### KubernetesにおけるIstioの有効化
-
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。istio-proxyコンテナをサイドカーコンテナとして自動的にapplyできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
-
-```bash
-$ kubectl label namespace default istio-injection=enabled
-```
-
-<br>
-
 ## 02. istioctlコマンド
 
 ### analyze

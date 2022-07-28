@@ -2083,7 +2083,7 @@ spec:
 
 #### ▼ apiGroupsとは
 
-resourceキーで指定するKubernetesリソースのKubernetes-APIグループを設定する。空文字はコアグループを表す。
+resourceキーで指定するKubernetesリソースのKubernetes-APIグループ名を設定する。空文字はコアグループを表す。
 
 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 

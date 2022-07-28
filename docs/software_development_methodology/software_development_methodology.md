@@ -85,6 +85,16 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 <br>
 
+### フルサイクルエンジニアリング
+
+#### ▼ フルサイクルエンジニアリングとは
+
+機能開発に対して、一人のエンジニアが開発から運用までの一連の作業（インフラ/アプリ/デザインの開発、テスト、リリース、運用）を行う手法のこと。責務が分離されないことで、開発からリリースまでの速度が上がり、ユーザーから素早く評価を得られるようになる。そのため、SREの実践になる。
+
+![full-cycle-engineering](/Users/hiroki-hasegawa/Downloads/full-cycle-engineering.png)
+
+<br>
+
 ## 02. その他
 
 ### CASEツール：Computer Aided Software Enginnering

@@ -152,26 +152,28 @@ metadata:
 
 #### ▼ istio-injection
 
-admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
+特定のNamespaceで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: foo-namespace
   labels:
     istio-injection: enabled
 ```
 
 #### ▼ istio.io/rev
 
-IstoOperatorの```spec.revision```キーと同じ。
+IstoOperatorの```spec.revision```キーと同じ。特定のNamespaceで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: foo-namespace
   labels:
     istio.io/rev: 1-12-1 # ハイフン繋ぎのバージョン表記
 ```
@@ -180,13 +182,32 @@ metadata:
 
 ## 04-02. Pod＠Kubernetesでの設定
 
-### annotationsとは
+### annotations
 
-#### ▼ annotations
+#### ▼ annotationsとは
 
 Deploymentの```spec.template```キーや、Podの```metadata```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
+
+#### ▼ istio.io/rev
+
+IstoOperatorの```spec.revision```キーと同じ。特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      annotations:
+        istio.io/rev: 1-12-1
+```
 
 #### ▼ proxy.istio.io/config.configPath
 
@@ -212,7 +233,9 @@ spec:
 
 #### ▼ sidecar.istio.io/inject
 
-特定のPodでのみ、istio-proxyコンテナを自動的に作成しないようにする。
+特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 ```yaml
 apiVersion: apps/v1

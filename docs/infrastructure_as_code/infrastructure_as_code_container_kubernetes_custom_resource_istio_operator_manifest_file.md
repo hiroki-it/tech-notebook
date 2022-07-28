@@ -36,7 +36,7 @@ Operator controller will watch namespaces: istio-system
 - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 ```bash
-# ```istioctl```コマンド
+# istioctlコマンド
 $ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
 
 ✔ Istio core installed

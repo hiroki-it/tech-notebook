@@ -27,6 +27,8 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### APIサーバー
 
+#### ▼ APIサーバーとは
+
 ```argocd```コマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
 
 参考：https://weseek.co.jp/tech/95/#i-7
@@ -45,6 +47,8 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 ### Applicationコントローラー
 
+#### ▼ Applicationコントローラーとは
+
 kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
 
 参考：https://weseek.co.jp/tech/95/#i-7
@@ -52,6 +56,8 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 <br>
 
 ### Redisサーバー
+
+#### ▼ Redisサーバーとは
 
 リポジトリサーバー内のマニフェストファイルのキャッシュを作成し、これを管理する。
 
@@ -63,6 +69,8 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 <br>
 
 ### Dexサーバー
+
+#### ▼ Dexサーバーとは
 
 ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
 
@@ -395,6 +403,40 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
 | Hard Refresh | Redisサーバーに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
 | Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースをapplyすることはない。<br>参考：https://twitter.com/reoring/status/1476046977599406087 |
+
+<br>
+
+### spec.ignoreDifferences
+
+#### ▼ ignoreDifferencesとは
+
+特定のKubernetesリソースの特定の設定値の差分を無視する。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
+- https://blog.framinal.life/entry/2021/10/04/224722
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  ignoreDifferences:
+    # KubernetesリソースのKubernetes-APIのグループ名
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        # spec.replicas（インスタンス数）の設定値の変化を無視する。
+        - /spec/replicas
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+      jqPathExpressions:
+        # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+        - /spec/metrics
+```
 
 <br>
 
@@ -802,7 +844,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
-| ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
 | ```PruneLast```              | 全てのKubernetesが正常になった後で、Pruneを実行する。        | 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
 
 ```yaml

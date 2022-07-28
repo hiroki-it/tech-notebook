@@ -54,7 +54,7 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、同期時の操作手順として、親Applicationの同期を実行し、その後子Applicationの同期を実行することになる。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、同期時の操作手順として、親Applicationの画面で子Applicationの同期を実行し、その後子Applicationの画面で同期を実行することになる。
 
 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
@@ -223,7 +223,12 @@ spec:
 
 ### 同期してもOut of syncが解消されない
 
-参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
+admission-controllersのmutating-admission-webhookによって、同期後にKubernetesリソースの状態が変更されるような場合、同期してもOut of syncになってしまう。
+
+参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
+- https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
 
 <br>
 
