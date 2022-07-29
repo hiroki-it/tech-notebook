@@ -137,9 +137,9 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 #### ▼ reconciliation
 
-マニフェストファイルで宣言された状態と、実際の状態を比較し、宣言通りに回復すること。この比較を繰り返すことで、自己修復できるようになる。
-
 ![kubernetes_reconciliation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation.png)
+
+Controllerは、マニフェストファイルで宣言された状態と、実際の状態を比較し、宣言通りに回復する。この比較を繰り返すことにより、自己修復できるようになる。
 
 参考：
 
@@ -190,7 +190,7 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 #### ▼ kubeletとは
 
-ワーカーNode上で稼働し、コンテナランタイムを操作することでPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+ワーカーNode上で稼働し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
 参考：https://thinkit.co.jp/article/17453
 

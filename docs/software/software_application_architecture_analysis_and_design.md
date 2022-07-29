@@ -146,7 +146,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表現する。                       |                                  |
 | サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | アクターとソフトウェアの境界線を表現する。                   |                                  |
 | パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_package.png) | アクターによって提供する機能に違いがある場合、これの境界線を表現する。 |                                  |
-| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターと機能を結ぶことで、機能がアクターに提供されることを表現する。 |                                  |
+| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターと機能を結ぶことにより、機能がアクターに提供されることを表現する。 |                                  |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に、is-a-kind-ofな関係（グループとメンバーの関係性）があることを表現する。 |                                  |
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表現する。 | ```<< invoke >>```も同じである。 |
 | 先行：<br>```<< precedes >>```                               | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表現する。 |                                  |

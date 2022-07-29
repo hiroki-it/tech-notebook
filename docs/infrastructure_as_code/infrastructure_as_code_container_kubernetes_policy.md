@@ -48,7 +48,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ### リポジトリ分割のメリット
 
-リポジトリを分割することで、以下のメリットがある。
+リポジトリを分割することにより、以下のメリットがある。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
@@ -262,7 +262,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-既存のClusterのバージョンをそのままアップグレードする方法。Cluster内で旧ワーカーNodeと旧マスターNodeを残したまま、新マスターNodeとワーカーNodeをapplyする。新Nodeが正常に稼働したことが確認できたら、ここで```kubectl drain --ignore-daemonsets```コマンドを実行すると、Drain処理が始まる。コマンドで```--ignore-daemonsets```オプションを有効化しないと、DaemonSetのPodを退避させられない。Drain処理では、旧NodeからPodが退避し、現在稼働中の新しいNodeでPodが再作成される。Drain処理が完了すれば、旧Nodeは停止してもよい。一度に作業するNode数（Surge数）を増やすことで、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
+既存のClusterのバージョンをそのままアップグレードする方法。Cluster内で旧ワーカーNodeと旧マスターNodeを残したまま、新マスターNodeとワーカーNodeをapplyする。新Nodeが正常に稼働したことが確認できたら、ここで```kubectl drain --ignore-daemonsets```コマンドを実行すると、Drain処理が始まる。コマンドで```--ignore-daemonsets```オプションを有効化しないと、DaemonSetのPodを退避させられない。Drain処理では、旧NodeからPodが退避し、現在稼働中の新しいNodeでPodが再作成される。Drain処理が完了すれば、旧Nodeは停止してもよい。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
 
 参考：
 

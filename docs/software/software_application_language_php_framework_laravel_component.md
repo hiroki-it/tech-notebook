@@ -1534,7 +1534,7 @@ class FooController extends Controller
         // バリデーション時にエラーが発生した場合
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
-            // validatorを渡すことでエラーメッセージをViewに渡せる。
+            // validatorを渡すことにより、エラーメッセージをViewに渡せる。
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
@@ -1576,7 +1576,7 @@ class FooController extends Controller
         // バリデーション時にエラーが発生した場合
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
-            // validatorを渡すことでエラーメッセージをViewに渡せる。
+            // validatorを渡すことにより、エラーメッセージをViewに渡せる。
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
@@ -2310,7 +2310,7 @@ class FooRequest extends FormRequest
 }
 ```
 
-テーブルにカラム数が多い場合は、Where句をつけることで、特定のカラムのみ検証もできる。
+テーブルにカラム数が多い場合は、Where句をつけることにより、特定のカラムのみ検証もできる。
 
 ```php
 <?php
@@ -4535,7 +4535,7 @@ class Interactor
 
 #### ▼ ```make```メソッド
 
-引数の型でリゾルブを実行する以外に、```make```メソッドも使用できる。```make```メソッドの引数にクラスの名前空間を渡すことで、インスタンスがリゾルブされる。
+引数の型でリゾルブを実行する以外に、```make```メソッドも使用できる。```make```メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
 
 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 

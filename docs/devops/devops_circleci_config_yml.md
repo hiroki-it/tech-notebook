@@ -43,7 +43,7 @@ CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュに
 
 ```yaml
 workflows:
-  # build以外を実行しないことで、buildのみを検証できる。
+  # build以外を実行しないことにより、buildのみを検証できる。
   build-test-and-deploy:
     jobs:
       - build

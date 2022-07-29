@@ -131,7 +131,7 @@ echo $a.$i.$u; // あいう
 
 ![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue3.gif)
 
-PHPでは、```array_push```メソッドと```array_shift```メソッドを組み合わせることで実装できる。
+PHPでは、```array_push```メソッドと```array_shift```メソッドを組み合わせることにより、実装できる。
 
 **＊実装例＊**
 

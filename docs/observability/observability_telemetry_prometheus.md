@@ -392,7 +392,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 #### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることで、データポイント数が減るため、合計のサイズを小さくできる。
+Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 

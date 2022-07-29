@@ -55,7 +55,7 @@ apiVersion: v1
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することで、デフォルトとする。Ingressが新しくapplyされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 参考：
 

@@ -17,7 +17,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 ### リポジトリ分割のメリット
 
-リポジトリを分割することで、以下のメリットがある。
+リポジトリを分割することにより、以下のメリットがある。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
@@ -161,7 +161,7 @@ repository/
 
 ### ダッシュボード
 
-ダッシュボードのURLはIngressを入り口に作成することで公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
+ダッシュボードのURLはIngressを入り口に作成することにより、公開する。また、ログイン方法は、デフォルトのBasic認証ではなく、SSOを使用する。
 
 <br>
 
@@ -180,7 +180,7 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 ### Applicationの削除時にエラーが起こる
 
-PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことでエラーが起こることがある。これらの場合には、以下の手順でApplicationを削除する。
+PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、エラーが起こることがある。これらの場合には、以下の手順でApplicationを削除する。
 
 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
@@ -223,7 +223,7 @@ spec:
 
 ### 同期してもOut of syncが解消されない
 
-admission-controllersのmutating-admission-webhookによって、同期後にKubernetesリソースの状態が変更されるような場合、同期してもOut of syncになってしまう。
+同期後にKubernetesリソースの状態が変更されるような場合、同期してもOut of syncになってしまう。
 
 参考：
 
