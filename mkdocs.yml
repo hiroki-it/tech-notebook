@@ -359,6 +359,7 @@ nav:
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
           - オンコールとインシデント管理: observability/observability_monitoring_oncall_incident_management.md
+          - サービスレベル: observability/observability_monitoring_service_level.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
           - Prometheus: observability/observability_telemetry_prometheus.md
