@@ -379,13 +379,18 @@ nav:
               - 監視: observability/observability_telemetry_datadog_monitoring.md
               - インテグレーション: observability/observability_telemetry_datadog_integration.md
 
-  - 👥 ソフトウェア開発手法論/SRE:
+  - 👥 ソフトウェア開発手法論/SREing:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
-      - SRE: software_development_methodology/software_development_methodology_site_reliability_engineering.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
+      - SREing:
+          - SREing: software_development_methodology/software_development_methodology_site_reliability_engineering.md
+          - アンチパターン: software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.md
+          - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
+
+  - 👣 バージョン管理:
       - ■ Git:
-          - GitHub: software_development_methodology/software_development_methodology_git_github.md
-          - コマンド: software_development_methodology/software_development_methodology_git_command.md
+          - GitHub: version_control/version_control_git_github.md
+          - コマンド: version_control/version_control_git_command.md
 
   - 📊 統計分析:
       - R: statistic_analysis/statistic_analysis_r.md
