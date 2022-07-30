@@ -283,8 +283,8 @@ nav:
               - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
               - Minikube: virtualization/virtualization_container_orchestration_kubernetes_minikube.md
 
-  - ⚙️ Infrastructure as Code:
-      - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
+  - ⚙️ IaC:
+      - IaC: infrastructure_as_code/infrastructure_as_code.md
       - ■ 手続き型:
           - ■ サーバープロビジョニング:
               - ■ Ansible:
