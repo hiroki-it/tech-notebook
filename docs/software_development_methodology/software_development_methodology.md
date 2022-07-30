@@ -9,7 +9,7 @@ description: ソフトウェア開発手法論の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -35,7 +35,7 @@ description: ソフトウェア開発手法論の知見を記録しています�
 
 ソフトウェア設計に入るまでに試作品を作り、要件定義をより正確にする開発方法。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p456.png)
 
@@ -47,7 +47,7 @@ description: ソフトウェア開発手法論の知見を記録しています�
 
 Visual Basicなどの開発支援ツールを使用して、短期間で設計～テストまでを繰り返す開発方法。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p462-1.png)
 
@@ -71,7 +71,7 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 スパイラルモデルの派生型。スパイラルモデルよりも短い期間で、設計～テストまでを繰り返す開発方法。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p463.png)
 
@@ -115,7 +115,7 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 リバースエンジニアリング
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p459.png)
 

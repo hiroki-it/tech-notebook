@@ -9,7 +9,7 @@ description: 組み込み機器の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -39,7 +39,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 **＊例＊：温度センサ、加速度センサ、照度センサ、…**
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png)
 
@@ -61,7 +61,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 入力されたエネルギーもしくはコンピュータが出力した電気信号を物理的運動に変換する装置のこと。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p119-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png)
 
@@ -77,7 +77,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 洗濯機
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png)
 
@@ -89,7 +89,7 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 エアコン
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p120-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png)
 

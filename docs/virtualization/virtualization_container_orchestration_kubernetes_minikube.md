@@ -9,7 +9,7 @@ description: Minikube＠仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: Minikube＠仮想化の知見を記録しています。
 
 ホストマシン上に仮想サーバーを作成する。この仮想サーバー内に単一のワーカーNodeを持つClusterを作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/
 - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
@@ -32,7 +32,7 @@ description: Minikube＠仮想化の知見を記録しています。
 
 ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、単一のワーカーNodeを持つClusterを作成する。
 
-参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
+ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_docker_driver.png)
 
@@ -44,11 +44,11 @@ description: Minikube＠仮想化の知見を記録しています。
 
 ゲスト（ワーカーNode）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
-参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
+ℹ️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
 #### ▼ ドライバーの種類
 
-参考：https://minikube.sigs.k8s.io/docs/drivers/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 | ホスト側のOS | ゲスト（ワーカーNode）側のOS              |
 |---------|--------------------------------|
@@ -64,7 +64,7 @@ description: Minikube＠仮想化の知見を記録しています。
 
 NodePort Serviceを作成しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
 
-参考：https://future-architect.github.io/articles/20220112a/
+ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube ip
@@ -74,7 +74,7 @@ $ minikube ip
 
 LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
 
-参考：https://future-architect.github.io/articles/20220112a/
+ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube tunnel
@@ -84,7 +84,7 @@ $ minikube tunnel
 
 ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
 
-参考：https://future-architect.github.io/articles/20220112a/
+ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube ssh
@@ -104,7 +104,7 @@ docker@minikube:~$ curl -X GET http://<IPアドレス>
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
 ```bash
 $ mkdir -p ~/.minikube/files/etc
@@ -119,7 +119,7 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 | ドライバー名        | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のワーカーNodeのディレクトリ |
 |---------------|---------|-----------------|--------------------------|
@@ -138,7 +138,7 @@ $ minikube start
 
 ゲスト仮想環境内のワーカーNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
 - ```/data```
 - ```/var/lib/minikube```
@@ -157,7 +157,7 @@ $ minikube start
 
 Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーごとのを使用して、ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる。またワーカーNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからワーカーNode、ワーカーNodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内コンテナに間接的にマウントできる。
 
-参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
+ℹ️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
 #### ▼ HyperKitドライバーを使用する場合
 
@@ -212,7 +212,7 @@ spec:
 
 ワーカーNode内で```ip addr```コマンドを実行すると、ワーカーNodeに割り当てられたCIDRブロックを確認できる。
 
-参考：https://nishipy.com/archives/1467
+ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 
@@ -232,7 +232,7 @@ docker@minikube:~$ ip addr | grep eth0
 
 ワーカーNode内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
-参考：https://nishipy.com/archives/1467
+ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 
@@ -284,13 +284,13 @@ Minikubeのアドオンを操作する。
 
 アドオンを有効化するか否かを設定する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/addons/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
 開発環境専用のIngressコントローラーとして、Nginx Ingressコントローラーを有効化するか否かを設定する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
-参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
 ```bash
 $ minikube addons enable ingress
@@ -349,7 +349,7 @@ $ minikube addons list
 
 使用するcniアドオンを設定する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/start/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 ```bash
 $ minikube start --cni=bridge
@@ -367,7 +367,7 @@ minikubeコマンドに関するパラメーターを操作する。
 
 ```kubectl```コマンド実行時のデフォルト値を設定する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/config/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
 **＊例＊**
 
@@ -391,7 +391,7 @@ minikube config set memory 16384
 
 Kubernetesのバージョンのデフォルト値を設定する。
 
-参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
+ℹ️ 参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
 
 ```bash
 $ minikube config set kubernetes-version=v1.23.0
@@ -424,7 +424,7 @@ $ minikube dashboard
 
 ホストでdockerコマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
 **＊実行例＊**
 
@@ -490,7 +490,7 @@ $ minikube ip
 
 Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
-参考：
+ℹ️ 参考：
 
 - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
 - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html
@@ -533,7 +533,7 @@ Server Version: version.Info{
 
 ホスト側のファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
 ```bash
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
@@ -559,7 +559,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 Minikubeのコンテキスト情報が誤っている場合に、正しく修正する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
 ```bash
 $ minikube update-context
@@ -576,7 +576,7 @@ $ minikube update-context
 
 NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceにポートフォワーディングを実行する。また、ServiceのIPアドレスを返却する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/service/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/service/
 
 ```bash
 $ minikube service <NodePort Servie名/LoadBalancer Servie名>
@@ -593,7 +593,7 @@ Opening service <Service名> in default browser...
 
 ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに接続できる```kubectl port-forward```コマンドを使用すると良い。
 
-参考：https://mome-n.com/posts/minikube-service-fixed-port/
+ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
 ```bash
 $ kubectl port-forward <Service名> 8080:80
@@ -609,7 +609,7 @@ $ minikube ip
 
 ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できる。
 
-参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 ```bash
 $ minikube ssh
@@ -655,7 +655,7 @@ http://*.*.*.*:57761
 
 仮想環境にSSH接続を行う。
 
-参考：
+ℹ️ 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/ssh/
 - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
@@ -753,7 +753,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 ゲスト仮想環境を作成し、仮想環境内にワーカーNodeを作成する。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/start/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 **＊実行例＊**
 
@@ -844,7 +844,7 @@ $ minikube start --docker-env
 
 ゲスト仮想環境のドライバーを指定し、```start```コマンドを実行する。ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。ドライバーの使用前に、これをインストールしておく必要があることに注意する。
 
-参考：https://minikube.sigs.k8s.io/docs/drivers/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 **＊実行例＊**
 
@@ -857,7 +857,7 @@ $ minikube start --driver=virtualbox
 
 Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```start```コマンドを実行する。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
 ```bash
 $ minikube start --kubernetes-version=v1.23.0
@@ -897,7 +897,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Clusterネットワーク外からPodに接続できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
-参考：
+ℹ️ 参考：
 
 - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
@@ -924,7 +924,7 @@ $ minikube tunnel
 
 コマンドの詳細な実行ログを標準エラー出力に出力する。
 
-参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
+ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 ```bash
 $ minikube start --alsologtostderr

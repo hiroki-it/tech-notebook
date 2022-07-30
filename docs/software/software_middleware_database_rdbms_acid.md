@@ -9,7 +9,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 トランザクションを実現するため必要な機能を略して『ACID』という。
 
-参考：
+ℹ️ 参考：
 
 - http://tooljp.com/jyosho/docs/ACID/ACID.html
 - https://atmarkit.itmedia.co.jp/ait/articles/1801/31/news011.html
@@ -62,7 +62,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### 一連の流れ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
@@ -88,7 +88,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 複数のSQLをセットで扱い、まとめてDBに書き込む。
 
-参考：https://oss-db.jp/dojo/dojo_01
+ℹ️ 参考：https://oss-db.jp/dojo/dojo_01
 
 #### ▼ PDOによるRDBの書き込み系の操作
 
@@ -125,7 +125,7 @@ try{
 
 詳しくは、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
 
 <br>
 
@@ -139,7 +139,7 @@ try{
 
 コミットの結果をメモリ上で管理し、ある程度まとまってからデータファイル（```.db```ファイル）に書き込む。これにより、書き込み後にすぐ読み出しが必要な場合に、読み出しが速くなる。
 
-参考：https://www.kimullaa.com/entry/2019/10/28/000000
+ℹ️ 参考：https://www.kimullaa.com/entry/2019/10/28/000000
 
 ![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
@@ -149,7 +149,7 @@ try{
 
 コミットの結果をメモリ上に書き込むと同時に、ディスク上のジャーナルファイルには更新前ログを書き込む。データファイルに書き込むよりも書き込み量が少なく済むため、短時間で終わる。また、コミットの途中で障害が発生した場合に、メモリ上のデータが削除されてしまう、ジャーナルファイルの更新前ログをバックアップとして、データを復元できる。
 
-参考：
+ℹ️ 参考：
 
 - https://gihyo.jp/dev/serial/01/db-academy/000202
 - https://www.kimullaa.com/entry/2019/10/28/000000
@@ -162,7 +162,7 @@ try{
 
 チェックポイントで、ディスク上のジャーナルファイルの更新後ログをストレージ上のデータファイルに反映させる。この時、チェックポイントは、自動実行または手動実行で作成する。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トランザクション.jpg)
 
@@ -174,7 +174,7 @@ try{
 
 データの時系列を戻す修復方法である。障害によって、トランザクション内の一連のステートメントがすべて実行されなかった場合、ディスク上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
@@ -192,7 +192,7 @@ try{
 
 データの時系列を進める修復方法である。障害によって、トランザクションの終了後に一連のステートメントの更新結果がストレージに反映されなかった場合、ディスク上のジャーナルファイルの更新後ログを使用して、ストレージ上のデータファイルに更新結果を反映させる。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 #### ▼ システム障害からの回復
 
@@ -208,7 +208,7 @@ try{
 
 ストレージを初期化/交換した後、バックアップファイルからDBを修復する。ディスク上のジャーナルファイルの更新後ログ『```a = 5```』『```b = 1```』を使用して、修復できる限りロールフォワードを行う。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/媒体障害の障害回復機能.jpg)
 
@@ -268,7 +268,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 アプリケーションのレコードのUPDATE処理が、レコードの取得と更新からなるとする。ソフトウェアのユーザAとBがおり、ユーザBがUPDATE処理時に取得しなければならないレコードの状態は、ユーザAがUPDATE処理を終えた後のものである。しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。結果として、ユーザBのUPDATE処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
 
-参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
+ℹ️ 参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-1.png)
 
@@ -282,7 +282,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 #### ▼ 排他制御の種類
 
-参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+ℹ️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 | ロック名            | 説明                                       |
 | ------------------- | ------------------------------------------ |
@@ -303,13 +303,13 @@ UPDATE処理競合問題を許容し、排他制御を使用しない選択肢�
 
 DBで、CRUDのREAD処理以外の処理を実行できなくする。レコードのREAD処理を実行する時に、他者によってUPDATE処理されたくない場合に使用する。『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。MySQLでは、『```SELECT ... LOCK IN SHARE MODE```』を使用する。
 
-参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ 占有ロック
 
 DBで、CRUDの全ての処理を実行できなくする。レコードのUPDATE処理を実行する時に、他者によってUPDATE/READ処理の両方を実行させない場合に使用する。MySQLでは、『```SELECT ... FOR UPDATE```』を使用する。
 
-参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
+ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ デッドロック現象
 
@@ -330,7 +330,7 @@ DBで、CRUDの全ての処理を実行できなくする。レコードのUPDAT
 
 DBのレコードにはバージョンに関するカラム値（最終更新日時など）が存在しているとする。UPDATE処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。続けて更新する直前に、DBからバージョンの値を改めて取得する。保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新しいバージョンだった場合、UPDATE処理が失敗する。競合によるエラーを表す```409```ステータスをレスポンスとして返信すると良い。
 
-参考：
+ℹ️ 参考：
 
 - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
 - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
@@ -339,7 +339,7 @@ DBのレコードにはバージョンに関するカラム値（最終更新日
 
 ユーザAがDBのレコードを取得した時点でロックを起動し、ユーザBはレコードの取得すらできなくする。ユーザAが更新を終えてロックが解除され、そこで初めてユーザBはレコードを取得できるようになる。アプリケーションで悲観的ロックを実装することは難易度が高く、基本的にはDBが提供するロック機能を使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
 - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
@@ -348,7 +348,7 @@ DBのレコードにはバージョンに関するカラム値（最終更新日
 
 ORMが楽観的ロックの機能を持っている場合がある。PHPのORMであるDoctrineのロック機能については、以下のリンクを参考にせよ。
 
-参考：
+ℹ️ 参考：
 
 - https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/transactions-and-concurrency.html#locking-support
 - https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a#or-%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A5%BD%E8%A6%B3%E7%9A%84%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E5%AE%9F%E8%A3%85%E6%9C%89%E7%84%A1

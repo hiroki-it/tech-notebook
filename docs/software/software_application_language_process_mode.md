@@ -9,7 +9,7 @@ description: 言語別の処理方式の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: 言語別の処理方式の知見を記録しています。
 
 プログラムを実行する時の開始点となるファイル/関数のこと。エントリーポイントのファイル/関数を開始点として、そのプログラムの全てのファイルの処理が実行される。
 
-参考：https://en.wikipedia.org/wiki/Entry_point
+ℹ️ 参考：https://en.wikipedia.org/wiki/Entry_point
 
 <br>
 
@@ -83,7 +83,7 @@ func main() {
 
 プロセスでシングルスレッドが実行されている場合、複数の処理を『独立的』に実行すること。
 
-参考：
+ℹ️ 参考：
 
 - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 - https://moz.hatenablog.jp/entry/2018/04/10/175643
@@ -101,7 +101,7 @@ func main() {
 
 プロセスでマルチスレッドが実行されている場合、各スレッド上で複数の処理を『同時発生的』に実行すること。開始は同時であるが、終了はバラバラになる。
 
-参考：
+ℹ️ 参考：
 
 - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 - https://moz.hatenablog.jp/entry/2018/04/10/175643
@@ -114,7 +114,7 @@ func main() {
 
 parallelパッケージを使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/krakjoe/parallel
 - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
@@ -123,13 +123,13 @@ parallelパッケージを使用する。
 
   Web Workerを使用する。
 
-参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
+ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
 #### ▼ Goの場合
 
 Goroutinesを使用する。ただし、実行環境によっては並列処理にならずに、並行処理になってしまうことがある。それが理由か否かはわからないが、Goのドキュメントでは、Goroutinesは```concurrency```の項目に記載されている。
 
-参考：
+ℹ️ 参考：
 
 - https://medium.com/sprocket-inc/goroutine-concurrent-and-parallel-programming-669eaae55e73
 - https://golang.org/doc/effective_go#concurrency
@@ -151,7 +151,7 @@ Goroutinesを使用する。ただし、実行環境によっては並列処理�
 
 完了を待たずに後続の処理が始まり、後続の処理と同時に実行されるような処理のこと。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/kiyodori/items/da434d169755cbb20447
 - https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
@@ -166,13 +166,13 @@ Goroutinesを使用する。ただし、実行環境によっては並列処理�
 
 #### ▼ JavaScriptの場合
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
 
 #### ▼ Node.jsの場合
 
 JavaScriptと同じような記法で実装できるNode.jsについて、Node.jsの組み込み関数（特にI/O処理系）は、非同期処理化するための実装がなされている。そのため、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
 - https://blog.honjala.net/entry/2018/08/08/022027

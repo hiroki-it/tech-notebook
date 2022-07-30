@@ -9,7 +9,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 クリティカルユーザージャーニーの満足度に影響を与えるメトリクス（リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延、など）をSLIとするとよい。
 
-参考：
+ℹ️ 参考：
 
 - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
@@ -40,13 +40,13 @@ ECサイトであれば、以下がCUJとなる。
 2. 商品をカートに追加する。
 3. 商品を購入する。
 
-参考：https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+ℹ️ 参考：https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
 #### ▼ メトリクスの例（Microsoft）
 
 MTtxメトリクスをSLIとし、そのダッシュボードを作成すると良い。その他、可用性やQoS：Quality of Serviceに関するメトリクスをSLIに選択すると良い。具体的には、可用性は稼働時間を基に定量化できる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/4873119618
 - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
@@ -77,7 +77,7 @@ SLIとして採用した指標の目標値のこと。ユーザーの視点で�
 
 稼働時間をSLIとし、1ヶ月間（```720```時間）の稼働時間のSLOを```99```%とした場合、エラーバジェットは```1```%（```7.2```時間）になる。
 
-参考：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
+ℹ️ 参考：https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
 
 <br>
 
@@ -87,7 +87,7 @@ SLIとして採用した指標の目標値のこと。ユーザーの視点で�
 
 SLOをパーセントで定めることにより、状況によらず、一定の基準を設けることができる。基準値は、予測値を使用すると良い。Datadogでは、通常時のメトリクスのデータから予測値を算出してくれる。
 
-参考：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
+ℹ️ 参考：https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear
 
 | 指標                           | 目標値の例                                         |
 | ------------------------------ | -------------------------------------------------- |
@@ -99,7 +99,7 @@ SLOをパーセントで定めることにより、状況によらず、一定�
 
 #### ▼ 目標値の例（Google）
 
-参考：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
+ℹ️ 参考：https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
 
 <br>
 
@@ -133,13 +133,13 @@ SLOを達成したか否かを判断する場合に、ヒストグラムが有�
 
 経産省がSLAのガイドラインを策定している。
 
-参考：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf
+ℹ️ 参考：https://www.meti.go.jp/policy/netsecurity/secdoc/contents/downloadfils/080121saasgl.pdf
 
 #### ▼ 返金率の例（AWS）
 
 AWSではサービスレベルの項目として、サーバー稼働率を採用している。これに対して、ほとんどのAWSリソースで、以下のSLAが設定されている。各リソースにSLAが定義されている。
 
-参考：https://aws.amazon.com/jp/legal/service-level-agreements/
+ℹ️ 参考：https://aws.amazon.com/jp/legal/service-level-agreements/
 
 **＊例＊**
 
@@ -153,12 +153,12 @@ EC2、EBS、ECS、EKS、の例を示す。
 
 #### ▼ 対応開始時間の例（PureCloud）
 
-参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
+ℹ️ 参考：https://jp-help.mypurecloud.com/articles/service-level-agreements/
 
 #### ▼ 保証期間の例（Google）
 
 SLAは、サイト提供会社と利用者の合意で決める目標値である。違反の規約が無ければ、SLAでなくSLOである。SLAの補償期間は一日単位で設定すると良い。SLA違反の場合には、返金を補償とする場合があるが、これ以外の補償方法でも良い。
 
-参考：https://www.amazon.co.jp/dp/4873119618
+ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>

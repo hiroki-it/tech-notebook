@@ -9,7 +9,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -70,7 +70,7 @@ repository/
 
 ```.tfstate```ファイルを分割することにより、以下のメリットがある。
 
-参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 - ```terraform apply```コマンドの実行途中に問題が発生し、```.tfstate```ファイルが破損したとしても、影響範囲をクラウドプロバイダーの実行環境内に閉じられる。
 - ```terraform plan```コマンドや```terraform apply```コマンドの実行時間を短縮できる。
@@ -154,7 +154,7 @@ repository/
 
 CloudFormationでは、クラウドインフラのリソースの設定変更頻度、運用チームの責務範囲、爆発半径、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと混乱するため、個人的には、いずれかの観点に統一した方が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://zoo200.net/terraform-tutorial-module-and-directory/
 - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
@@ -164,7 +164,7 @@ CloudFormationでは、クラウドインフラのリソースの設定変更頻
 
 クラウドインフラのリソースの設定変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
-参考：
+ℹ️ 参考：
 
 - https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
 - https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
@@ -816,7 +816,7 @@ output "nginx_ecr_repository_url" {
 
 前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルのbackendオプションを、『s3』から『local』に変更する。
 
-参考：https://repl.info/archives/1435/
+ℹ️ 参考：https://repl.info/archives/1435/
 
 ```terraform
 terraform {
@@ -955,7 +955,7 @@ resource "aws_rds_cluster" "this" {
 
 Terraformでは、メジャーバージョン単位でアップグレードを行うことが推奨されている。そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず1つずつメジャーバージョンをアップグレードするように気をつける。この時、次のメジャーバージョンの『最新』までアップグレードしてしまって問題ない（例：現在のバージョンが `v0.13.0` であれば、`0.14`系の最新にアップグレード）。また、アップグレードの都度、リリースを行う。
 
-参考：https://www.terraform.io/upgrade-guides/1-0.html 
+ℹ️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
 
 ### 4. terraform planコマンドの警告/エラーを解決
 
@@ -965,7 +965,7 @@ Terraformでは、メジャーバージョン単位でアップグレードを�
 
 Terraformとプロバイダーのバージョンは独立して管理されている。プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。アップグレードガイドについては、以下のリンクを参考せよ。
 
-参考：
+ℹ️ 参考：
 
 - Terraform：https://www.terraform.io/language/upgrade-guides
 - AWSプロバイダー：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade
@@ -1055,7 +1055,7 @@ DBインスタンスの設定変更でダウンタイムが発生する場合、
 
 ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
 
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 <br>
 

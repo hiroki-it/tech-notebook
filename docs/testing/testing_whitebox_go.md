@@ -9,7 +9,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -45,7 +45,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 網羅率はパッケージを単位として解析される。網羅については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 <br>
 
@@ -61,7 +61,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルに『```_test```』を加えたパッケージ名の場合、それはブラックボックステスト風のホワイトテストになる。ちなみに、Goでは1つのディレクトリ内に1つのパッケージ名しか宣言できないが、ブラックボックステストのために『```_test```』を加えることは許されている。
 
-参考：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
+ℹ️ 参考：https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
 
 <br>
 
@@ -73,7 +73,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 ### テーブル駆動テスト
 
-参考：https://github.com/golang/go/wiki/TableDrivenTests
+ℹ️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
 
 <br>
 

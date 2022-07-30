@@ -51,7 +51,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 今回の変更が他のプログラムに悪影響を与えていないかを検証するために、そのプログラムの機能テストと非機能テストを改めて実行すること。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 
@@ -61,7 +61,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 機能要件を満たせているかを検証する。ホワイトボックスでの機能テストとは意味合いが異なるので注意する。
 
-参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+ℹ️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
 
 <br>
 
@@ -73,7 +73,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 許容可能な最大の負荷を検証する。また、テスト結果から、運用時の監視で参考にするための、安全範囲（青信号）、危険範囲（黄色信号）、限界値（赤信号）、を導く必要がある。ロードテストとは区別すること。ストレステストには、性能テスト、限界テスト、耐久テストがある。
 
-参考：
+ℹ️ 参考：
 
 - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -82,7 +82,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 ![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stress-test_parameter.png)
 
-参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
 
 | テストのパラメーター | 説明                                                         |
 | -------------------- | ------------------------------------------------------------ |
@@ -100,7 +100,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 一定時間内に、ユーザーが一連のリクエスト（例：ログイン、閲覧、登録、ログアウト）を行った時に、ソフトウェアのスループットとレスポンス時間にどのような変化があるかを検証する。具体的にはテスト時に、アクセス数を段階的に増加させて、その結果をグラフ化する。グラフ結果を元に、想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し、また性能の負荷が最大になる値を導く。これらを運用時の監視の参考値にする。
 
-参考：
+ℹ️ 参考：
 
 - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -113,7 +113,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 性能の限界値に達するほどのリクエスト数が送信された時に、障害回避処理（例：アクセスが込み合っている旨のページを表示）が実行されるかを検証する。具体的にはテスト時に、障害回避処理以外の動作（エラー、間違った処理、障害回復後にも復旧できない、システムダウン）が起こらないかを確認する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -130,7 +130,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 長時間の大量リクエストが送信された時に、短時間では検出できないどのような問題が存在するかを検証する。具体的にはテスト時に、長時間の大量リクエストを処理させ、問題（例：微量のメモリリークが蓄積してメモリを圧迫、セッションデータが蓄積してメモリやストレージを圧迫、ログが蓄積してストレージを圧迫、ヒープやトランザクションログがCPUやI/O処理を圧迫）を起こす。これにより、どんな問題が起こるかを確認する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
@@ -143,7 +143,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 ソフトウェアが通常/ピーク/障害時の実地的な負荷を再現し、これに耐えられるか否かを検証する。ストレステストとは区別すること。
 
-参考：https://stackify.com/what-is-load-testing/
+ℹ️ 参考：https://stackify.com/what-is-load-testing/
 
 <br>
 
@@ -184,7 +184,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 仮に障害があったとしても、どれだけシステムの利用可能な時間を長くできるかを程度を表す。
 
-参考：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
+ℹ️ 参考：https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
 
 <br>
 
@@ -200,13 +200,13 @@ description: システムテスト＠ブラックボックステストの知見�
 
 障害が発生した時に、どの時点まで、データを復旧させるかの目標値のこと。もしRPOが```5```分だとすると、障害前の```5```分間で作成されたデータは復旧できないことは許容することになる。
 
-参考：https://e-words.jp/w/RPO.html
+ℹ️ 参考：https://e-words.jp/w/RPO.html
 
 #### ▼ RTO（目標復旧時間）
 
 障害が発生した時に、どの時間までに、データを復旧させるかの目標値のこと。もしRTOが```1```時間だとすると、```1```時間はデータを復旧できないままになることを許容することになる。
 
-参考：https://e-words.jp/w/RTO.html
+ℹ️ 参考：https://e-words.jp/w/RTO.html
 
 <br>
 
@@ -266,7 +266,7 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 
 ### 耐障害性テストとは
 
-参考：https://blog.cybozu.io/entry/2018/09/06/080000
+ℹ️ 参考：https://blog.cybozu.io/entry/2018/09/06/080000
 
 <br>
 
@@ -279,7 +279,7 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 - カナリアリリース中のテスト
 - カオスエンジニアリング
 
-参考：https://www.optimizely.com/optimization-glossary/testing-in-production/
+ℹ️ 参考：https://www.optimizely.com/optimization-glossary/testing-in-production/
 
 ### カオスエンジニアリング
 
@@ -287,7 +287,7 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 
 実験的に、本番環境のシステムに『カオス』を挿入し、高負荷な状態に至らせる。その結果から、システムに潜む想定外の問題を表面化させる。カオスエンジニアリングは、実地的なテストであり、今まさに実際のユーザーが使用しているソフトウェアに対して実施することになるため、ビジネスサイドの理解が必要になる。対象となるシステムは、マイクロサービスアーキテクチャであっても、モノリスアーキテクチャであっても、問題ない。本格的なカオスエンジニアリングを採用している日系企業は少なく、国内事例はまだ少ない。
 
-参考：
+ℹ️ 参考：
 
 - https://principlesofchaos.org/
 - https://codezine.jp/article/detail/14526
@@ -295,7 +295,7 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 
 #### ▼ 手順
 
-参考：https://zenn.dev/hodagi/articles/3ce6ccdb00538c
+ℹ️ 参考：https://zenn.dev/hodagi/articles/3ce6ccdb00538c
 
 1. 本番環境のシステムから様々なテレメトリーを収集し、安定している通常状態（定常状態）を定義する。
 2. 定常状態を対照群、またカオスエンジニアリングが実施された状態を実験群とする。『実験群では障害が起こる』という仮説の下、これを反証することを目指す。

@@ -9,7 +9,7 @@ description: テレメトリー収集ツールの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: テレメトリー収集ツールの知見を記録しています�
 
 ### メトリクス
 
-参考：
+ℹ️ 参考：
 
 - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
@@ -37,7 +37,7 @@ description: テレメトリー収集ツールの知見を記録しています�
 
 ### ログ
 
-参考：https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
+ℹ️ 参考：https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 
 | アクション                 | Fluentd/Fluentbit | Protail | Elasticsearch | Grafana loki | Logstash | OpenTelemetry |
 | -------------------------- | -------------------------- | -------------------------- | ------------- | ------------ | -------- | -------- |
@@ -54,7 +54,7 @@ description: テレメトリー収集ツールの知見を記録しています�
 
 ### 分散トレース
 
-参考：
+ℹ️ 参考：
 
 - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
@@ -80,13 +80,13 @@ description: テレメトリー収集ツールの知見を記録しています�
 
 Grafanaは、ダッシュボードとストレージから構成されている。PromQLに基づいて、収集されたメトリクスを可視化する。
 
-参考：https://community.grafana.com/t/architecture-of-grafana/50090
+ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images//grafana_architecture.png)
 
 #### ▼ データソース
 
-参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
+ℹ️ 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
 
 | データソース名       | 例                                             |
 | -------------------- | ---------------------------------------------- |
@@ -108,7 +108,7 @@ PromQLによるデータポイントの抽出をメトリクスとし、複数�
 
 Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTelクライアントパッケージの使用が推奨）、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード（UI）、から構成されている。
 
-参考：https://www.jaegertracing.io/docs/latest/architecture/
+ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
@@ -116,25 +116,25 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 2022/07/16時点で、OTelクライアントパッケージを使用することが推奨されている。参考程度に、jaegerクライアントパッケージの仕組みを記載する。アプリケーションにて、jaegerクライアントパッケージはスパンを作成し、またリクエストメッセージにコンテキスト情報（トレースID、スパンID、OpenTracingバゲージ）を付与する。jaegerクライアントパッケージは、コンテナ内でデーモンとして稼働するjaegerエージェントにスパンを渡す。
 
-参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
+ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
 
 #### ▼ jaegerエージェント
 
 コンテナにて、デーモンとして稼働し、スパンの受信をリッスンする。
 
-参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
+ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
 
 #### ▼ jaegerコレクター
 
 jaegerコレクターは、プッシュ型でjaegerエージェントからコンテキスト情報を収集し、ローカルストレージに保存する。
 
-参考：https://www.jaegertracing.io/docs/latest/architecture/#collector
+ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#collector
 
 #### ▼ ローカルストレージまたはリモートストレージ
 
 リモートストレージとして、Cassandra、Elasticsearch、Kafka、を使用できる。
 
-参考：https://www.jaegertracing.io/docs/latest/architecture/#query
+ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#query
 
 #### ▼ ダッシュボード（UI）
 
@@ -150,7 +150,7 @@ jaegerコレクターは、プッシュ型でjaegerエージェントからコ�
 
 Kialiは、フロントエンドアプリケーションとバックエンドアプリケーションから構成されている。バックエンドアプリケーションは、Prometheusで収集されたメトリクスを再収集し、Istioの可視化を拡張する。フロントエンドアプリケーションは、ダッシュボードとして機能する。現状は、Istioのコンポーネントに依存している。
 
-参考：https://kiali.io/docs/architecture/architecture/
+ℹ️ 参考：https://kiali.io/docs/architecture/architecture/
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
 
@@ -166,7 +166,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 OpenTelemetryは、サードパーティパッケージ、OTelクライアントパッケージ、OTelコレクター、から構成されている。OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール（テレメトリーを収集できる状態にするツール）を使用せずに、一括してインスツルメント化できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://opentelemetry.io/docs/
 - https://dzone.com/refcardz/getting-started-with-opentelemetry
@@ -181,12 +181,12 @@ OpenTelemetry用パッケージは、OTelクライアントパッケージの一
 
 OTelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、から構成されている。アプリケーションをインスツルメント化する。OpenTelemetry用パッケージからのテレメトリーデータを、APIパッケージで受け取り、最終的にOTelコレクターにこれを渡す。
 
-参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
+ℹ️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
 #### ▼ OTelコレクター
 
 OTelコレクターは、レシーバー、プロセッサー、エクスポーター、から構成されている。OTelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
 
-参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
+ℹ️ 参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_collector.png)

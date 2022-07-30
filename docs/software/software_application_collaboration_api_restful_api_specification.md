@@ -9,7 +9,7 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 RESTful-APIの仕様を実装により説明するためのフォーマットのこと。JSON型またはYAML型で実装できる。いくつかのフィールドから構成されている。
 
-参考：https://spec.openapis.org/oas/v3.1.0#fixed-fields
+ℹ️ 参考：https://spec.openapis.org/oas/v3.1.0#fixed-fields
 
 ```yaml
 openapi: # openapiフィールド
@@ -49,7 +49,7 @@ externalDocs: # externalDocsフィールド
 
 ReDocを使用して、OpenAPI仕様から```.html```ファイルを作成する。
 
-参考：https://qiita.com/icck/items/97d00495ec324e1902d6
+ℹ️ 参考：https://qiita.com/icck/items/97d00495ec324e1902d6
 
 ```bash
 $ npm install -g redoc-cli
@@ -65,7 +65,7 @@ $ redoc-cli bundle openapi.yaml redoc.html
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
 <br>
 
@@ -490,7 +490,7 @@ APIに対して送信されるリクエストメッセージのデータ、ま�
 
 データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを行う。
 
-参考：https://spec.openapis.org/oas/v3.1.0#data-types
+ℹ️ 参考：https://spec.openapis.org/oas/v3.1.0#data-types
 
 **＊実装例＊**
 

@@ -9,7 +9,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,25 +21,25 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_history.png)
 
-参考：https://tech-blog.rakus.co.jp/entry/20201218/architecture
+ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/20201218/architecture
 
 | 年代    | アーキテクチャ                     | 説明                                                         | 補足                                                         |
 | ------- | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1999 ～ | モノリシックアーキテクチャ         | 1999年台、バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。しかし、モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文（『大きな泥だんご』）で指摘された。 | 参考：https://ja.wikipedia.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A5%E3%81%A0%E3%82%93%E3%81%94 |
-| 2014    | マイクロサービスアーキテクチャ     | 2014年にThoughtWorks社は、マイクロサービス指向アーキテクチャとドメイン駆動設計を統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを考案した。 | 参考：<br>・https://martinfowler.com/articles/microservices.html<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
-| 2017    | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると、その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう。2017年にCloud Elements社は、これに対処するためにミニマイクロサービスアーキテクチャを考案した。このアーキテクチャでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを複数のマイクロサービスに分割する。この粒度を、マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ。 | 参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
-| 2018    | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの、複数のマイクロサービスが必要になることは変わらず、その分だけ開発チームが必要になる問題は解決されなかった。そこで、Root Insurance社はモジュラモノリスを考案した。モジュラモノリスでは、マイクロサービスの概念を取り入れずに、アプリケーションを細かいモジュールに分割する。反対に、最初モジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。 | 参考：<br>・https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4<br>・https://creators-note.chatwork.com/entry/2020/12/02/090000#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3<br>・https://eh-career.com/engineerhub/entry/2022/07/25/093000 |
+| 1999 ～ | モノリシックアーキテクチャ         | 1999年台、バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。しかし、モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文（『大きな泥だんご』）で指摘された。 | ℹ️ 参考：https://ja.wikipedia.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A5%E3%81%A0%E3%82%93%E3%81%94 |
+| 2014    | マイクロサービスアーキテクチャ     | 2014年にThoughtWorks社は、マイクロサービス指向アーキテクチャとドメイン駆動設計を統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを考案した。 | ℹ️ 参考：<br>・https://martinfowler.com/articles/microservices.html<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
+| 2017    | ミニマイクロサービスアーキテクチャ | マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると、その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう。2017年にCloud Elements社は、これに対処するためにミニマイクロサービスアーキテクチャを考案した。このアーキテクチャでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを複数のマイクロサービスに分割する。この粒度を、マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ。 | ℹ️ 参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
+| 2018    | モジュラーモノリス                 | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの、複数のマイクロサービスが必要になることは変わらず、その分だけ開発チームが必要になる問題は解決されなかった。そこで、Root Insurance社はモジュラモノリスを考案した。モジュラモノリスでは、マイクロサービスの概念を取り入れずに、アプリケーションを細かいモジュールに分割する。反対に、最初モジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。 | ℹ️ 参考：<br>・https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4<br>・https://creators-note.chatwork.com/entry/2020/12/02/090000#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3<br>・https://eh-career.com/engineerhub/entry/2022/07/25/093000 |
 
 #### ▼ モジュール/マイクロサービスの粒度の比較
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
 
-参考：https://tech-blog.rakus.co.jp/entry/20201218/architecture
+ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/20201218/architecture
 
 | モジュールの大きさ | 粒度名         | 説明                                                         |
 | ------------------ | ------------ | ------------------------------------------------------------ |
 | 一番大きい         | モノリシック | アプリケーションのモジュールが分割されておらず、アプリケーションをデプロイの単位とする。 |
-|                    | モジュラー   | アプリケーションがモジュールに分割されており、アプリケーションをデプロイの単位とする。モジュール間のデータのやり取りに通信を使うか否かや、モジュール間でDBを共有するか否かの選択によって、作成パターンがいくつかある。<br>参考：https://scrapbox.io/tsuwatch/%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%81%82%E3%81%84%E3%81%A0 |
+|                    | モジュラー   | アプリケーションがモジュールに分割されており、アプリケーションをデプロイの単位とする。モジュール間のデータのやり取りに通信を使うか否かや、モジュール間でDBを共有するか否かの選択によって、作成パターンがいくつかある。<br>ℹ️ 参考：https://scrapbox.io/tsuwatch/%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%81%82%E3%81%84%E3%81%A0 |
 |                    | ミニマイクロサービス | アプリケーションがサブドメイン（または境界付けられたコンテキスト）を単位としたマイクロサービスに分割されており、アプリケーションを構成するマイクロサービスのある程度のまとまりをデプロイの単位とする。また、DBを各マイクロサービスで共有する。 |
 | 一番小さい         | マイクロ     | アプリケーションがサブドメイン（または境界付けられたコンテキスト）を単位としたマイクロサービスまたはルートエンティティに分割されており、アプリケーションを構成するマイクロサービスそれぞれをデプロイの単位とする。また、DBを各マイクロサービスで共有せずに、マイクロサービスごとに設置する。 |
 
@@ -73,7 +73,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 #### ▼ dapr
 
-参考：
+ℹ️ 参考：
 
 - https://www.publickey1.jp/blog/19/dapr.html
 - https://github.com/dapr/dapr
@@ -94,7 +94,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール（KubernetesやTerraformなど）、を```1```個のリポジトリでディレクトリで分割して管理する。ただし、バックエンド/フロントエンド/IaCツールは異なるモノリポジトリとしても良い。Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている。
 
-参考：https://www.fourtheorem.com/blog/monorepo
+ℹ️ 参考：https://www.fourtheorem.com/blog/monorepo
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
 
@@ -103,7 +103,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール（KubernetesやTerraformなど）、をそれぞれ異なるリポジトリで管理する。
 
 
-参考：https://www.fourtheorem.com/blog/monorepo
+ℹ️ 参考：https://www.fourtheorem.com/blog/monorepo
 
 ![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
 
@@ -201,7 +201,7 @@ project/
 
 IaCツールにTerraformを使用した場合を示す。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html
 
 ```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ
@@ -224,7 +224,7 @@ infrastructure_repository/
 
 マイクロサービスアーキテクチャにおける分散システム状のバックエンドのコンポーネントのこと。特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするために、ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある。腐食防止レイヤーは、異なるコンテキストから受信したデータを、そのマイクロサービスのコンテキストにあったデータ形式に変換する責務を持つ。CQRSでは、これはプロセスマネージャパターンとして知られている。一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/czeslavo/process-manager
 - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
@@ -236,7 +236,7 @@ infrastructure_repository/
 
 **＊例＊**
 
-参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
+ℹ️ 参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
 
 ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を行う。
 
@@ -260,7 +260,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 サブドメインまたは境界付けられたコンテキストをマイクロサービスの粒度とする。解決領域となる境界付けられたコンテキストがサブドメインの中に```1```個しか含まれていない場合は、境界付けられたコンテキストをマイクロサービスの粒度して考えることになる。図にて、境界付けられたコンテキスト間で、『利用者』という単語に対する定義づけ/意味合いが異なっていることに留意する。ドメイン駆動設計では境界付けられたコンテキストが```1```個のアプリケーションに相当するため、境界付けられたコンテキストで分割した場合、マイクロサービスアーキテクチャは複数のアプリケーションから構成されるアーキテクチャと捉えられる。さらに小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries
 - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
@@ -271,7 +271,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ルートエンティティをマイクロサービスの単位とする。ただし、データに着目した従来のステートソーシングのルートエンティティを使用することはアンチパターンである。最良な解決策として、振舞に着目したイベントソーシングを使用する必要がある。また、各マイクロサービスを名詞ではなく動詞で命名すると良い。その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。
 
-参考：
+ℹ️ 参考：
 
 - https://www.koslib.com/posts/entity-services-anti-pattern/
 - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
@@ -285,7 +285,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 複数のマイクロサービスをセットでデプロイしなければならず、マイクロサービス間のデプロイが独立していないような粒度のパターン。例えば、マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果、複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある。分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/
 - https://r-kaga.com/blog/what-is-distributed-monolith
@@ -302,7 +302,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービス間で相互通信を行う。送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を行うことになる。また、マイクロサービス間で直接的にリクエストを送受信することになる。
 
-参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
+ℹ️ 参考：https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
 #### ▼ 直接的な通信
 
@@ -311,7 +311,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 | プロコトル     | 説明                                                                                                                                                                                                                                                |
 |-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 従来のTCP/IP | 従来のTCP/IPプロトコルを使用する。                                                                                                                                                                                                                               |
-| gRPC      | HTTP/1.1に代わるHTTP/2が組み込まれたgRPCプロトコルを使用する。HTTPであると、通信相手のマイクロサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のマイクロサービスのメソッドを直接的に実行できる。そのため、HTTPよりもマイクロサービスの連携に適している。<br>参考：https://techdozo.dev/grpc-for-microservices-communication/ |
+| gRPC      | HTTP/1.1に代わるHTTP/2が組み込まれたgRPCプロトコルを使用する。HTTPであると、通信相手のマイクロサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のマイクロサービスのメソッドを直接的に実行できる。そのため、HTTPよりもマイクロサービスの連携に適している。<br>ℹ️ 参考：https://techdozo.dev/grpc-for-microservices-communication/ |
 
 <br>
 
@@ -323,7 +323,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービスからマイクロサービスに一方通行の通信を行う。送信側と受信側で通信処理が独立して実行されるため、メッセージキューを介した非同期通信を行うことになる。
 
-参考：
+ℹ️ 参考：
 
 - https://en.wikipedia.org/wiki/Message_queue
 - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
@@ -332,7 +332,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 イベント駆動方式では、メッセージキューを介してマイクロサービス間の通信を行う。メッセージキューでは受信したメッセージを一方向にしか配信できないため、もしマイクロサービス間双方向に送信したい場合は、上流マイクロサービスからメッセージを受信するメッセージキューと。下流マイクロサービスから受信するメッセージキューを別々に設置する。メッセージキューはPub/Subデザインパターンで自前で実装するか、または外部サービス（AWS-SQS、Kafka、など）を使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://en.wikipedia.org/wiki/Message_queue
 - https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
@@ -366,7 +366,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。
 
-参考：
+ℹ️ 参考：
 
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 - https://qiita.com/Ladicle/items/4ba57078128d6affadd5
@@ -377,7 +377,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
 
-参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
+ℹ️ 参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
 
 <br>
 
@@ -389,7 +389,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 モノリシックなアプリケーションがドメイン層だけでなくプレゼンテーション層のロジックも持っている場合、ドメイン層をマイクロサービスに分離する前に、プレゼンテーション層をフロントエンドアプリケーションとして分離しておく必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
 - https://bliki-ja.github.io/PresentationDomainSeparation/
@@ -411,7 +411,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 - キャッシュの作成
 - リクエスト制限
 
-参考：
+ℹ️ 参考：
 
 - https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern
 - https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/
@@ -422,13 +422,13 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ RESTful-API
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 #### ▼ GraphQL-API
 
 従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。
 
-参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
+ℹ️ 参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
 
 ![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/graphql-api.png)
 
@@ -440,19 +440,19 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 API Gatewayを自前で実装する。Kubernetes内で管理できるメリットがある。
 
-参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
+ℹ️ 参考：https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 
 #### ▼ OSSを使用
 
 API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管理できるメリットがある。
 
-参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
+ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用
 
 クラウドプロバイダー（例：AWS）が提供するAPI Gatewayを使用する。クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。その場合、フロントエンドアプリケーションがAPI Gatewayに通信を送信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 
-参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
+ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
 
 <br>
 
@@ -462,7 +462,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを```1```個だけ作成する。
 
-参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+ℹ️ 参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 
 ![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
@@ -470,7 +470,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 マイクロサービスにリクエストを送信するアプリケーションの種類（Webアプリケーション、Mobileアプリケーション、他社アプリケーション）に応じたAPI Gatewayを作成する。ただし、複数のクライアントをWebアプリとして開発することもできるため、同じWebからのアクセスであっても、別々のAPI Gatewayを作成する場合がある。
 
-参考：
+ℹ️ 参考：
 
 - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 - https://codezine.jp/article/detail/11305?p=4
@@ -487,11 +487,11 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 ```1```個のトランザクション処理によって、```1```個のマイクロサービスのDBを操作する方法。推奨される。マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に行う仕組みが必要になる。デザインパターンとして、Sagaパターン、TCCパターン、などがある。
 
-参考：https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
+ℹ️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
 
 #### ▼ ローカルトランザクションの種類
 
-参考：https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
+ℹ️ 参考：https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
 
 <br>
 
@@ -501,7 +501,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 分散トランザクションとも言う。```1```個のトランザクション処理によって、複数のマイクロサービスのDBを操作する方法。非推奨である。
 
-参考：https://thinkit.co.jp/article/14639?page=0%2C1
+ℹ️ 参考：https://thinkit.co.jp/article/14639?page=0%2C1
 
 <br>
 
@@ -515,7 +515,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 複数のローカルトランザクションを非同期通信で連続的に実行する方法。上流マイクロサービスのローカルトランザクションの完了をイベントとして、下流マイクロサービスのDB処理を連続的にコールしていく。ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。
 
-参考：
+ℹ️ 参考：
 
 - https://thinkit.co.jp/article/14639?page=0%2C1
 - https://qiita.com/nk2/items/d9e9a220190549107282
@@ -529,7 +529,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 受注に関するトランザクションが異なるマイクロサービスにまたがる例。
 
-参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+ℹ️ 参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
 
 ![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_example.png)
 
@@ -547,7 +547,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 Sagaパターンにて、一連のローカルトランザクションの実行をまとめて制御する責務を持ったコンポーネント（オペレーションサービス）を設置する。```1```個のリクエストが送信された時に、オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく。マイクロサービスアーキテクチャだけでなく、サービス指向アーキテクチャでも使用される。オーケストレーションが推奨である。
 
-参考：
+ℹ️ 参考：
 
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://news.mynavi.jp/itsearch/article/devsoft/1598
@@ -558,7 +558,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 マイクロサービス間のローカルトランザクションの連携方式として、メッセージキューを使用する。各マイクロサービスがイベントのパブリッシュとサブスクライブを行う。各マイクロサービスは、自身の次に実行されるマイクロサービスを知らない。各マイクロサービスは、処理結果をオーケストレーターに返却する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.12-technology.com/2021/08/dbsaga.html
 - https://qiita.com/somen440/items/a6c323695627235128e9
@@ -576,7 +576,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 Sagaパターンにて、各マイクロサービスで下流マイクロサービスに連携する責務を持たせ、ローカルトランザクションを連続的に実行する。```1```個のリクエストが送信された時に、マイクロサービスからマイクロサービスに処理が繋がっていく。
 
-参考：
+ℹ️ 参考：
 
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
@@ -586,7 +586,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 以下のリポジトリを参考にせよ。
 
-参考：https://github.com/fedeoliv/microservices-transactions
+ℹ️ 参考：https://github.com/fedeoliv/microservices-transactions
 
 ![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
 
@@ -594,7 +594,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 マイクロサービス間のローカルトランザクションの連携方式として、メッセージキューを使用する。各マイクロサービスがイベントのパブリッシュとサブスクライブを行う。各マイクロサービスは、自身の次に実行されるマイクロサービスを知っている。各マイクロサービスは、次のマイクロサービスにイベントを渡せる別のキューに処理結果を返却する。
 
-参考：https://www.12-technology.com/2021/08/dbsaga.html
+ℹ️ 参考：https://www.12-technology.com/2021/08/dbsaga.html
 
 ![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_message-queue.png)
 
@@ -608,7 +608,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 ビジネスの出来事をモデリングし、データとして永続化する。現在の状態を取得する場合は、初期のデータに全ての出来事を適用する。CQRSと相性が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
 - https://martinfowler.com/articles/201701-event-driven.html
@@ -621,7 +621,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 ビジネスの現在の状態をモデリングし、データとして永続化する。過去の状態は上書きされる。
 
-参考：http://masuda220.jugem.jp/?eid=435
+ℹ️ 参考：http://masuda220.jugem.jp/?eid=435
 
 <br>
 
@@ -639,7 +639,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 セッションデータを作成する認証マイクロサービスを```1```個だけ配置し、セッションベースのForm認証を実現する。各マイクロサービスはセッションデータに基づいてユーザーを認証する。```1```個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるセッションストレージを各マイクロサービスに配置する。認証マイクロサービスが単一障害点になるというデメリットがある。
 
-参考：
+ℹ️ 参考：
 
 - https://please-sleep.cou929.nu/microservices-auth-design.html
 - https://engineer.retty.me/entry/2019/12/21/171549
@@ -650,7 +650,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 セッションデータを作成する認証マイクロサービスを```1```個だけ配置し、セッションベースのForm認証を実現する。各マイクロサービスはセッションデータに基づいてユーザーを認証する。```1```個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるセッションストレージを```1```個だけ配置する。耐障害性のあるセッションストレージが必要になるというデメリットがある。
 
-参考：
+ℹ️ 参考：
 
 - https://please-sleep.cou929.nu/microservices-auth-design.html
 - https://engineer.retty.me/entry/2019/12/21/171549
@@ -661,7 +661,7 @@ Sagaパターンにて、各マイクロサービスで下流マイクロサー�
 
 JWTを作成する認証マイクロサービスを```1```個だけ配置し、CookieベースのForm認証を実現する。各マイクロサービスはJWTに基づいてユーザーを認証する。```1```個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保存させる。クライアント側に保存されたJWTの失効が難しいというデメリットがある。
 
-参考：
+ℹ️ 参考：
 
 - https://please-sleep.cou929.nu/microservices-auth-design.html
 - https://engineer.retty.me/entry/2019/12/21/171549
@@ -672,7 +672,7 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 JWTを作成する認証マイクロサービスを```1```個だけ配置し、CookieベースのForm認証を実現する。各マイクロサービスはJWTに基づいてユーザーを認証する。```1```個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込む。ただ分散型の認証とは異なり、クライアント側にはJWTの代わりとなるOpaqueトークンを保存させるようにする。また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
 
-参考：
+ℹ️ 参考：
 
 - https://please-sleep.cou929.nu/microservices-auth-design.html
 - https://engineer.retty.me/entry/2019/12/21/171549
@@ -687,7 +687,7 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 マイクロサービスが個別に認可を担う。各マイクロサービスで認可処理が重複する可能性がある。
 
-参考：https://please-sleep.cou929.nu/microservices-auth-design.html
+ℹ️ 参考：https://please-sleep.cou929.nu/microservices-auth-design.html
 
 <br>
 
@@ -695,7 +695,7 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 全てのマイクロサービスの認可処理を担うマイクロサービスを```1```個だけ配置する。各マイクロサービスの認可処理が密結合になる可能性がある。
 
-参考：https://please-sleep.cou929.nu/microservices-auth-design.html
+ℹ️ 参考：https://please-sleep.cou929.nu/microservices-auth-design.html
 
 <br>
 

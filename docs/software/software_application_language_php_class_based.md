@@ -9,7 +9,7 @@ description: クラス＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ### has-one、has-manyな関係性とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
@@ -233,7 +233,7 @@ $car = new Car();
 
 ### is-a-kind-ofな関係性とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
@@ -502,7 +502,7 @@ class Mammal implements Animal
 
 クラスからデータやメソッドをコールした時、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。類似するものとして、プロトタイプチェーンは以下のリンクを参考にせよ。
 
-参考：
+ℹ️ 参考：
 
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based.html
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based_method_data.html
@@ -674,7 +674,7 @@ trait UnsupportedMagicMethodTrait
 
 #### ▼ 継承よりも優れた点
 
-参考：https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
+ℹ️ 参考：https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
 
 <br>
 
@@ -764,7 +764,7 @@ printTest();
 
 Composerのオートロード機能を有効化した上で、外部ファイルのクラスの```namespace```を```use```で指定するだけで、そのクラスのみを読み込める。非クラスを読み込むことはできない。動的な値は持たず、静的に読み込むことに注意。ただし、チームの各エンジニアが好きな物を読み込んでいたら、スパゲッティコードになりかねない。そこで、チームでの開発では、記述ルールを設けて、```use```で読み込んで良いものを決めておくと良い。なお、composerのオートロード機能を使用しない場合、```require```関数と```use```の両方が必要である。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
 
 #### ▼ 外部ファイルのクラスからメソッドをコール
 
@@ -836,7 +836,7 @@ class Bar
 
 ### useな関係とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 <br>
 
@@ -848,7 +848,7 @@ class Bar
 
 クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
@@ -1022,7 +1022,7 @@ class ModuleB
 
 凝集度の程度を表す指標のこと。LCOMの計測方法にはいくつか種類がある。LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。
 
-参考：
+ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/B082WXZVPC
 - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
@@ -1043,7 +1043,7 @@ class ModuleB
 
 サプライヤー側（依存先）の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
 
-参考：
+ℹ️ 参考：
 
 - https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
 - https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
@@ -1301,7 +1301,7 @@ $sample = new Sample($container);
 
 インターフェース（または抽象クラス）で抽象メソッドを記述することによって、実装クラスでの実装が強制される。つまり、実装クラスは抽象クラスに依存している。より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる（原則２）。原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。よって、全てのレイヤーがインターフェースに依存するようになる（原則１）。
 
-参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
+ℹ️ 参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
 ![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づく設計の場合.png)
 

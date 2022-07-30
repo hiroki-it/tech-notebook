@@ -58,7 +58,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 いずれもThrowableインターフェースを実装している。以下リンクを参考にせよ。
 
-参考：https://www.php.net/manual/ja/reserved.exceptions.php
+ℹ️ 参考：https://www.php.net/manual/ja/reserved.exceptions.php
 
 <br>
 
@@ -68,11 +68,11 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 エラーの種類に合わせて、```Exception```クラスを継承した独自例外クラスを実装し、使い分けると良い。```__construct```メソッドに、メッセージやエラーコード（例外コード）などを渡せる。エラーコードのデフォルト値はゼロである。
 
-参考：https://www.php.net/manual/ja/exception.construct.php
+ℹ️ 参考：https://www.php.net/manual/ja/exception.construct.php
 
 エラーコードはステータスコードと異なり、例外を識別するためのものである。異常系レスポンスのエラーコードデータとして使用される。混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 
@@ -111,7 +111,7 @@ function foo(string $foo) {
 
 （例）InvalidArgumentException、
 
-参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
+ℹ️ 参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
 
 <br>
 
@@ -168,7 +168,7 @@ function value() {
 
 層別の例外については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 
@@ -296,7 +296,7 @@ class Foo
 
 例外をtry-catch文でキャッチした後、別の新しい例外をスローしても良い。その場合は、例外のコンストラクタの第三引数（```previous```）を使用して、キャッチされていた元の例外も検知できるようにする。ちなみに、この例外をロギングする場合、スタックトレースログとして出力される。
 
-参考：
+ℹ️ 参考：
 
 - http://blog.tojiru.net/article/455279557.html
 - https://www.php.net/manual/ja/exception.construct.php
@@ -309,7 +309,7 @@ class Foo
 
 想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 - https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository
@@ -318,7 +318,7 @@ class Foo
 
 コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。
 
-参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
+ℹ️ 参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 
 <br>
 
@@ -328,7 +328,7 @@ class Foo
 
 #### ▼ ```error_log```関数
 
-参考：https://www.php.net/manual/ja/function.error-log.php
+ℹ️ 参考：https://www.php.net/manual/ja/function.error-log.php
 
 ```php
 error_log(
@@ -370,7 +370,7 @@ class Notification
 
 他に、Loggerインターフェースを使用することも多い。
 
-参考：https://github.com/php-fig/log
+ℹ️ 参考：https://github.com/php-fig/log
 
 ```php
 <?php

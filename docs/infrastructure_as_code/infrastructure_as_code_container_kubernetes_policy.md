@@ -9,7 +9,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ### 開発環境
 
-参考：
+ℹ️ 参考：
 
 - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
 - https://blog.cybozu.io/entry/2019/07/03/170000
@@ -34,7 +34,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ### 本番環境
 
-参考：https://techstep.hatenablog.com/entry/2019/12/23/000715
+ℹ️ 参考：https://techstep.hatenablog.com/entry/2019/12/23/000715
 
 |            | 全て自前                                                     | 作成ツール（Kubeadm、Rancher、Kops、Kubespray）              | クラウドプロバイダー（AWS EKS、GCP GKE、など）               |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -110,7 +110,7 @@ repository/ # bazサービス
 
 マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のマニフェストファイルを作成する。マニフェストの```apply```の順番を制御しにくいデメリットがある。
 
-参考：https://www.amazon.co.jp/dp/B08FZX8PYW
+ℹ️ 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
 ```yaml
 repository/
@@ -176,7 +176,7 @@ repository/
 
 Kubernetesに関する```metadata.labels```キーを以下に示す。
 
-参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
 | キー              | 説明                                               | 値の例                           |
 | ----------------- | -------------------------------------------------- |-------------------------------|
@@ -231,7 +231,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 冗長化されたkube-apiserverのバージョン差は、前方の```1```個のマイナーバージョン以内に収める必要がある。
 
-参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
+ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
 
 <br>
 
@@ -241,7 +241,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ```kubectl```コマンドとkube-apiserverのバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収める必要がある。
 
-参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
+ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
 
 <br>
 
@@ -264,7 +264,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 既存のClusterのバージョンをそのままアップグレードする方法。Cluster内で旧ワーカーNodeと旧マスターNodeを残したまま、新マスターNodeとワーカーNodeをapplyする。新Nodeが正常に稼働したことが確認できたら、ここで```kubectl drain --ignore-daemonsets```コマンドを実行すると、Drain処理が始まる。コマンドで```--ignore-daemonsets```オプションを有効化しないと、DaemonSetのPodを退避させられない。Drain処理では、旧NodeからPodが退避し、現在稼働中の新しいNodeでPodが再作成される。Drain処理が完了すれば、旧Nodeは停止してもよい。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
 
-参考：
+ℹ️ 参考：
 
 - https://logmi.jp/tech/articles/323032
 - https://logmi.jp/tech/articles/323033
@@ -276,7 +276,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 新しいバージョンのClusterを作成する方法。旧Cluster（Prodブルー）を残したまま、新マスターNodeとワーカーNodeを含むCluster（Testグリーン）をapplyする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
-参考：
+ℹ️ 参考：
 
 - https://logmi.jp/tech/articles/323033
 - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
@@ -289,7 +289,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、Istioなどのリソースを導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の2倍のIPアドレスを持つCIDRブロックを設定すると良い。
 
-参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
+ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
 | Node当たりの最大Pod数 | ワーカーNode当たりのCIDRブロック | IPアドレス数 |
 | ------------------------- | ------------------------ | -------------- |
@@ -312,7 +312,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 ### Cluster
 
-参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス       | 単位     | 説明                                                       | アラート条件例                                                 |
 | ---------------- | -------- | ---------------------------------------------------------- |---------------------------------------------------------|
@@ -327,7 +327,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 #### ▼ Pod全体
 
-参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス      | 単位     | 説明                                                      | アラート条件例                                               |
 | --------------- | -------- | --------------------------------------------------------- |-------------------------------------------------------|
@@ -337,7 +337,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 #### ▼ コンテナ
 
-参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス     | 単位     | 説明                                                     | アラート条件例                                               | 補足                                                         |
 | -------------- | -------- | -------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

@@ -9,7 +9,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 WSGIアプリケーションの実行に関するメソッドを持つ。クラスの引数に、グローバル変数の『```__name__```』あるいはエントリーポイントのパスを直接的に設定する。環境変数の```FLASK_APP```で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
 
-参考：https://flask.palletsprojects.com/en/2.0.x/api/
+ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/
 
 ```python
 from flask import Flask
@@ -61,7 +61,7 @@ PREFIX_FOO = "foo"
 
 設定されたルーティングを元に、WerkzeugによるWebサーバーを起動する。開発環境のみで推奨される方法である。
 
-参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
+ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 
 ```python
 from flask import Flask
@@ -78,7 +78,7 @@ app.run()
 
 #### ▼ 引数
 
-参考：
+ℹ️ 参考：
 
 - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
@@ -101,7 +101,7 @@ app.run()
 
 アプリケーションのエントリーポイントを設定する。
 
-参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
+ℹ️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 | ```FLASK_APP```の値     | 説明                                                   |
 | ----------------------- | ------------------------------------------------------ |
@@ -120,7 +120,7 @@ app.run()
 
 Pythonのコードを配置するディレクトリに```__init__.py```ファイルを配置し、ここでFlaskクラスのインスタンスを作成するメソッドを定義する。
 
-参考：
+ℹ️ 参考：
 
 - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
@@ -144,7 +144,7 @@ def create_app():
 
 プロジェクトのルートディレクトリに、```create_app```メソッドを実行するエントリーポイント（例：```main.py```ファイル）を配置する。名前空間を判定する条件分の外で```create_app```メソッドを実行しないと、uwsgiがapp変数を見つけられない。
 
-参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
+ℹ️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 
 ```python
 from src import create_app
@@ -159,7 +159,7 @@ if __name__ == '__main__':
 
 本番環境では、アプリケーションの実行に```run```関数と```flask run```コマンドを使用しないようにする。代わりに、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。本番環境と開発環境を同様にするために、本番環境だけでなく開発環境でもコマンドを使用しないようにしても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 - https://serip39.hatenablog.com/entry/2020/07/06/070000

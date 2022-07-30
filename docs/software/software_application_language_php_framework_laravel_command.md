@@ -9,7 +9,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 アプリケーションの開発に役立つコマンドを提供する。
 
-参考：https://readouble.com/laravel/8.x/ja/artisan.html
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html
 
 <br>
 
@@ -138,7 +138,7 @@ $ php artisan migrate:status
 
 指定した履歴数だけ、ロールバックを行う。
 
-参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:rollback --step=<ロールバック数>
@@ -158,7 +158,7 @@ $ php artisan migrate
 
 初期の状態まで、全てのロールバックを実行する。
 
-参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```bash
 $ php artisan migrate:reset
@@ -168,7 +168,7 @@ $ php artisan migrate:reset
 
 全てのロールバック（```migrate:reset```）を実行し、次いで```migrate```を実行する。
 
-参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 ```bash
 $ php artisan migrate:refresh
@@ -178,7 +178,7 @@ $ php artisan migrate:refresh
 
 全てのテーブルを削除と```migrate```を実行する。マイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
-参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
 ```bash
 $ php artisan migrate:fresh
@@ -194,7 +194,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CD時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
-参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
 ```bash
 $ php artisan migrate --force

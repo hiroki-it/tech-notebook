@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 『内部ポインタ』とは、PHPの配列で、参照したい要素を位置で指定するためのカーソルのこと。Goにおけるポインタは、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
 
 **＊実装例＊**
 

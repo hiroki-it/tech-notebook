@@ -9,7 +9,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -40,7 +40,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
 - https://embedded.hatenadiary.org/entry/20081101/p3
@@ -145,7 +145,7 @@ $ yum list | grep <検索文字>
 
 リポジトリか有効か否かの一覧を取得する。
 
-参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
+ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
 ```bash
 $ yum repolist all

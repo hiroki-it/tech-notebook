@@ -9,7 +9,7 @@ description: datadogエージェントの設定＠テレメトリー収集ツー
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,19 +23,19 @@ Datadogにデータを送信するためには、アプリケーションにdata
 
 ### メトリクス収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
 ### ログ収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
 
 <br>
 
 ### 分散トレース収集について
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 
@@ -57,7 +57,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 #### ▼ インストール（Ansibleの場合）
 
-参考：https://app.datadoghq.com/account/settings#agent/ubuntu
+ℹ️ 参考：https://app.datadoghq.com/account/settings#agent/ubuntu
 
 ```yaml
 - task:
@@ -78,7 +78,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 datadogエージェントを設定する。 ```/etc/datadog-agent```ディレクトリに配置される。datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://app.datadoghq.com/account/settings#agent
 - https://docs.datadoghq.com/getting_started/agent/#configuration
@@ -154,7 +154,7 @@ datadogコンテナのベースイメージとなるdatadogイメージがDatado
 
 ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
-参考：https://hub.docker.com/r/datadog/agent
+ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
 ```yaml
 [
@@ -178,7 +178,7 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 ]
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://gallery.ecr.aws/datadog/agent
 - https://github.com/DataDog/datadog-agent
@@ -187,7 +187,7 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 
 あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
 
-参考：https://hub.docker.com/r/datadog/agent
+ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
 ```dockerfile
 FROM data/agent:latest
@@ -212,7 +212,7 @@ FROM data/agent:latest
 
 Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
 
-参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
+ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
 #### ▼ コンテナ定義
 
@@ -291,7 +291,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
 
 datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
 
-参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
+ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 
 ```yaml
 {
@@ -318,7 +318,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である。ただサーバーの場合とは異なり、環境変数から値を設定できる。
 
-参考：https://docs.datadoghq.com/getting_started/agent/#configuration 
+ℹ️ 参考：https://docs.datadoghq.com/getting_started/agent/#configuration 
 
 <br>
 
@@ -328,13 +328,13 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 全てのテレメトリーに関する環境変数として使用できる。datadogコンテナの環境変数として設定する。
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
+ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である。 |                                                              |                                              |
 | ```DD_ENV```      | APMを使用する場合、マイクロサービスやトレースにて、```env```タグに値を設定する。 |                                                              | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | コンテナのホスト名を設定する。                               | AWS ECS Fargateの場合は、これを使用しないようにする。<br>参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する。                               | AWS ECS Fargateの場合は、これを使用しないようにする。<br>ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
 | ```ECS_FARGATE``` | AWS ECS Fargateを使用する場合、これを宣言する。                        |                                                              |                                              |
 
 <br>
@@ -345,18 +345,18 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 通常メトリクスに関する環境変数として使用できる。一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
+ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化するか否かを設定する。                                | AWS ECS Fargateを使用している場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
-| ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化するか否かを設定する。                                | AWS ECS Fargateを使用している場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>ℹ️ 参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
+| ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>ℹ️ 参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ▼ カスタムメトリクス
 
 カスタムメトリクスに関する環境変数として使用できる。
 
-参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
+ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
 | 変数名                               | 説明                                                    |
 | ------------------------------------ | ------------------------------------------------------- |
@@ -372,8 +372,8 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 | 変数名                | 説明                                | 補足                                                         |
 | --------------------- | ----------------------------------- | ------------------------------------------------------------ |
-| ```DD_LOGS_ENABLED``` | ログの収集を有効化するか否かを設定する。            | 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents |
-| ```DD_LOG_LEVEL```    | APMに送信するログレベルを設定する。 | 参考：https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables |
+| ```DD_LOGS_ENABLED``` | ログの収集を有効化するか否かを設定する。            | ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents |
+| ```DD_LOG_LEVEL```    | APMに送信するログレベルを設定する。 | ℹ️ 参考：https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables |
 
 <br>
 
@@ -385,7 +385,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 #### ▼ PHPトレーサーの場合
 
-参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
+ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 
 | 変数名                                        | 説明                                                         | 画面                                   |
 | --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |

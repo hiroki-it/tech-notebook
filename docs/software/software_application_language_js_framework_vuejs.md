@@ -9,7 +9,7 @@ description: Vue.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: Vue.jsの知見を記録しています。
 
 #### ▼ MVVMアーキテクチャとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html
 
 #### ▼ MVVMアーキテクチャにおける各層の責務
 
@@ -107,7 +107,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 Vueコンストラクタ関数を使用して、インスタンス化することによって、ルートVueインスタンスが作成される。インスタンスの変数名```vm```はVIewModelの意味である。インスタンス化時、全てのコンポーネントのデータが初期化される。各コンポーネントで個別に状態を変化させたいものは、```props```オプションではなく、```data```オプションとして扱う。
 
-参考：https://v1-jp.vuejs.org/guide/instance.html
+ℹ️ 参考：https://v1-jp.vuejs.org/guide/instance.html
 
 **＊実装例＊**
 
@@ -623,7 +623,7 @@ Webアプリケーション全体に1つ存在し、全体的なRouter機能を�
 | ---------- | ------------------------------------------------------------ |
 | ```push``` | ```query```オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の1つ前の履歴に移動する。 |
 
-参考：https://router.vuejs.org/guide/essentials/navigation.html
+ℹ️ 参考：https://router.vuejs.org/guide/essentials/navigation.html
 
 **＊実装例＊**
 
@@ -842,7 +842,7 @@ module.exports = new Vuex.Store({
 
 Vueインスタンスの作成から破棄までの間に実行される関数のこと。全ての関数を使用する必要はない。
 
-参考：https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
+ℹ️ 参考：https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
 
 | 順番 | フック名      | タイミング                                                   |
 | :--- | :------------ | :----------------------------------------------------------- |
@@ -859,7 +859,7 @@ Vueインスタンスの作成から破棄までの間に実行される関数�
 
 ブラウザ上のリアルDOMの要素を、Vue.jsの処理によって作成される仮想DOMの要素で置き換えること。
 
-参考：https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM
+ℹ️ 参考：https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM
 
 #### ▼ beforeCreate
 

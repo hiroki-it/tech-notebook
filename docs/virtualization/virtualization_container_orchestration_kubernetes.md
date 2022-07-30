@@ -9,7 +9,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 ### アーキテクチャ
 
-参考：https://kubernetes.io/docs/concepts/overview/components/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/components/
 
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
 
@@ -27,7 +27,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 KubernetesのIaCについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
 
 <br>
 
@@ -35,7 +35,7 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 ### マスターコンポーネントとは
 
-参考：
+ℹ️ 参考：
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
 - https://kubernetes.io/docs/concepts/overview/components/
@@ -59,7 +59,7 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 Clusterの様々な設定値を保持し、冗長化されたKubernetesリソース間にこれを共有する。Kubernetesに標準で組み込まれているが、別のOSSである。
 
-参考：
+ℹ️ 参考：
 
 - https://thinkit.co.jp/article/17453
 - https://landscape.cncf.io/?selected=etcd
@@ -80,7 +80,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 the server could not find the requested resource
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://thinkit.co.jp/article/17453
 - https://vamdemicsystem.black/kubernetes/%E3%80%90macosx%E3%80%91%E3%80%90kubernetes%E3%80%91kubectl-apply%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%80%8Cfailed-to-download-openapi-the-server-could-not-find-the-requested-resource-falling-bac
@@ -89,7 +89,7 @@ the server could not find the requested resource
 
 kube-apiserverにはヘルスチェック（```healthy```、```liveness```、```readiness```）のエンドポイントがある。```kubectl get```コマンドでヘルスチェックを実行できる。
 
-参考：https://kubernetes.io/docs/reference/using-api/health-checks/
+ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/health-checks/
 
 ```bash
 # readinessエンドポイントをコールする。
@@ -124,13 +124,13 @@ healthz check passed
 
 kube-controlerを一括で管理する。kube-controlerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
 
-参考：https://thinkit.co.jp/article/17453
+ℹ️ 参考：https://thinkit.co.jp/article/17453
 
 #### ▼ kube-controller
 
 各Kubernetesリソースの状態が、マニフェストファイルの宣言的設定通りになるように制御する。Kubernetesリソースごとにkube-controllerが存在している。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/architecture/controller/
 - https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
@@ -141,7 +141,7 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 Controllerは、マニフェストファイルで宣言された状態と、実際の状態を比較し、宣言通りに回復する。この比較を繰り返すことにより、自己修復できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.oreilly.com/library/view/programming-kubernetes/9781492047094/ch01.html
 - https://speakerdeck.com/yosshi_/korekaraxue-hukubernetesfalsereconciliation-loop?slide=27
@@ -154,7 +154,7 @@ Controllerは、マニフェストファイルで宣言された状態と、実�
 
 ワーカーNodeが複数ある場合に、ワーカーNodeとPodのスペックを基に、Podを配置するべきNodeを判定する。
 
-参考：https://thinkit.co.jp/article/17453
+ℹ️ 参考：https://thinkit.co.jp/article/17453
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
 
@@ -165,7 +165,7 @@ Controllerは、マニフェストファイルで宣言された状態と、実�
 1. フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
 2. スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたワーカーNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいワーカーNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
 - https://techblog.ap-com.co.jp/entry/2019/06/20/191459
@@ -179,7 +179,7 @@ Controllerは、マニフェストファイルで宣言された状態と、実�
 
 ワーカーNode上で稼働するKubernetesコンポーネントのこと。
 
-参考：
+ℹ️ 参考：
 
 - https://cstoku.dev/posts/2018/k8sdojo-24/
 - https://kubernetes.io/docs/concepts/overview/components/
@@ -192,7 +192,7 @@ Controllerは、マニフェストファイルで宣言された状態と、実�
 
 ワーカーNode上で稼働し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
-参考：https://thinkit.co.jp/article/17453
+ℹ️ 参考：https://thinkit.co.jp/article/17453
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
@@ -206,7 +206,7 @@ Controllerは、マニフェストファイルで宣言された状態と、実�
 
 iptablesのルールで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
@@ -215,15 +215,15 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 | モード    | 説明                                                         | 補足                                                         |
 | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables |
-| userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace |
-| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs |
+| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables |
+| userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace |
+| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs |
 
 #### ▼ その他のプロキシー
 
 ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが、他にもいくつかある。
 
-参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
 - ```kubectl proxy```コマンド
 - ```minikube tunnel```コマンド
@@ -237,7 +237,7 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
 
-参考：https://thinkit.co.jp/article/17453
+ℹ️ 参考：https://thinkit.co.jp/article/17453
 
 <br>
 
@@ -247,7 +247,7 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 同じ設定値（```metadata.labels```キー、CPU、メモリ、など）や同じ役割を持ったNodeのグループのこと。KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできないが、クラウドプロバイダーの機能を使用して、Nodeグループを実現できる。基本的には、Nodeグループは冗長化されたNodeで構成されており、IDは違えど、Node名は全て同じである。Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化Nodeのいずれかに対してルーティングすることになる。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
@@ -256,7 +256,7 @@ iptablesのルールで定義されたルーティング先のIPアドレスを�
 
 20220720時点で、KubernetesのAPIにはNodeのオートスケーリング機能はない。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからNodeのオートスケーリングを実行できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
 - https://blog.inductor.me/entry/2021/12/06/165743
@@ -279,7 +279,7 @@ kubernetesクライアントは、```kubectl```コマンドを使用して、kub
 
 Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
 
 <br>
 
@@ -287,7 +287,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 マニフェストファイルによって量産されたKubernetesリソースのインスタンスのこと。
 
-参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
+ℹ️ 参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
 
 <br>
 
@@ -297,7 +297,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 コンテナの実行に関する機能を提供する。
 
-参考：https://thinkit.co.jp/article/13542
+ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -307,7 +307,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
-参考：https://thinkit.co.jp/article/13611
+ℹ️ 参考：https://thinkit.co.jp/article/13611
 
 #### ▼ Pod数の固定
 
@@ -321,7 +321,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 ReplicaSetを操作し、新しいPodをapplyする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 - https://sorarinu.dev/2021/08/kubernetes_01/
@@ -330,7 +330,7 @@ ReplicaSetを操作し、新しいPodをapplyする。また、ワーカーNode�
 
 Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
 
-参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
+ℹ️ 参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 <br>
 
@@ -340,7 +340,7 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に終了（SuccessfulDelete）させる。デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/job/
 - https://qiita.com/MahoTakara/items/82853097a1911671a704
@@ -354,7 +354,7 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動/停止や水平スケールイン/スケールアウトを実行する。
 
-参考：https://kubernetes.io/docs/concepts/workloads/pods/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/
 
 **＊例＊**
 
@@ -364,7 +364,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ▼ リソースの単位
 
-参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 | 単位                | 例                                             |
 | ------------------- | ---------------------------------------------- |
@@ -375,7 +375,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
@@ -398,7 +398,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ワーカーNode上のPod数を維持管理する。ただしDaemonSetとは異なり、Podを指定した個数に維持管理できる。ワーカーNodeのCPUやメモリの使用率に合わせて、Podを動的に増減させる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
 - https://thinkit.co.jp/article/13611
@@ -415,7 +415,7 @@ ReplicaSetを操作し、ワーカーNodeのCPUやメモリの使用率に合わ
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
 - https://sorarinu.dev/2021/08/kubernetes_01/
@@ -428,7 +428,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 ワーカーNode上のコンテナをNode外に公開する機能を提供する。
 
-参考：https://thinkit.co.jp/article/13542
+ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -440,7 +440,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 IngressコントローラーによってClusterネットワーク外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 - https://thinkit.co.jp/article/18263
@@ -450,8 +450,8 @@ IngressコントローラーによってClusterネットワーク外からイン
 
 | パラメーター |                                                              |
 | ------------ | ------------------------------------------------------------ |
-| パス         | パスの値に基づいて、Serviceにルーティングする。<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
-| ```Host```ヘッダー | ```Host```ヘッダーの値に基づいて、Serviceにルーティングする。<br>参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
+| パス         | パスの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
+| ```Host```ヘッダー | ```Host```ヘッダーの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
 
 #### ▼ Ingressコントローラー
 
@@ -459,7 +459,7 @@ IngressコントローラーによってClusterネットワーク外からイン
 
 Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
-参考：
+ℹ️ 参考：
 
 - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
 - https://www.containiq.com/post/kubernetes-ingress
@@ -467,7 +467,7 @@ Ingressの設定に基づいてClusterネットワーク外からのインバウ
 
 #### ▼ Ingressコントローラーの種類
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
@@ -489,13 +489,13 @@ Ingressの設定に基づいてClusterネットワーク外からのインバウ
 
 Serviceタイプごとに、特定のネットワーク範囲にPodを公開する。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
-参考：https://kubernetes.io/docs/concepts/services-networking/service/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/
 
 #### ▼ ClusterIP Service
 
 ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク内からのみアクセスできる。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。
 
-参考：
+ℹ️ 参考：
 
 - https://zenn.dev/suiudou/articles/aa2194b6f53f8f
 - https://thinkit.co.jp/article/18263
@@ -514,7 +514,7 @@ options ndots:5
 
 ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
 
-参考：
+ℹ️ 参考：
 
 - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 - https://thinkit.co.jp/article/18263
@@ -523,7 +523,7 @@ options ndots:5
 
 NodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。1つのポートから1つのServiceにしかルーティングできない。ServiceNodeのIPアドレスは別に確認する必要があり、NodeのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのClusterエンドポイントには、NodePortの概念が取り入れられている。
 
-参考：
+ℹ️ 参考：
 
 - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 - https://thinkit.co.jp/article/18263
@@ -532,13 +532,13 @@ NodeのIPアドレスを返却し、Serviceの指定したポートに対する�
 
 PodのCNAMEを返却し、Serviceに対するインバウンド通信をPodにルーティングする。
 
-参考：https://thinkit.co.jp/article/13739
+ℹ️ 参考：https://thinkit.co.jp/article/13739
 
 #### ▼ Headless Service
 
 PodのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Podが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
 
-参考：
+ℹ️ 参考：
 
 - https://thinkit.co.jp/article/13739
 - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
@@ -557,7 +557,7 @@ $ dig <Service名>.<Namespace名>.svc.cluster.local
 
 また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
 
-参考：https://thinkit.co.jp/article/13739
+ℹ️ 参考：https://thinkit.co.jp/article/13739
 
 ```bash
 $ dig <Pod名>.<Service名>.<Namespace名>.svc.cluster.local
@@ -577,7 +577,7 @@ $ dig <Pod名>.<Service名>.<Namespace名>.svc.cluster.local
 
 Kubernetesリソースの設定データ、機密データ、ボリュームに関する機能を提供する。
 
-参考：https://thinkit.co.jp/article/13542
+ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -607,7 +607,7 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてPodに出力する。
 
-参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
 <br>
 
@@ -617,7 +617,7 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 セキュリティやクォーターに関する機能を提供する。
 
-参考：https://thinkit.co.jp/article/13542
+ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -627,7 +627,7 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 Kubernetesに関する実行ユーザーに認証認可を設定する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
 - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
@@ -645,7 +645,7 @@ Kubernetesに関する実行ユーザーに認証認可を設定する。
 
 Pod間で通信する場合のインバウンド/アウトバウンド通信の送受信ルールを設定する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/B08FZX8PYW
 - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
@@ -666,7 +666,7 @@ Pod間で通信する場合のインバウンド/アウトバウンド通信の�
 
 kubernetesマスターともいう。マスターコンポーネントが稼働する。クライアントが```kubectl```コマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
 - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
@@ -676,7 +676,7 @@ kubernetesマスターともいう。マスターコンポーネントが稼働�
 
 ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/architecture/nodes/
 - https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
@@ -689,7 +689,7 @@ kubernetesマスターともいう。マスターコンポーネントが稼働�
 
 新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。Node上のPod間でボリュームを共有できる。PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
 
-参考：
+ℹ️ 参考：
 
 - https://thinkit.co.jp/article/14195
 
@@ -702,7 +702,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。機能としては、Volumeの一種であるHostPathと同じである。マルチNodeには対応していないため、本番環境では非推奨である。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
 - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
@@ -711,7 +711,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。マルチNodeに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/storage/volumes/#local
 - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
@@ -724,7 +724,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 認可スコープを設定する。
 
-参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
 
 | ロール名    | 説明                                   | 補足                                                         |
 | ----------- | -------------------------------------- | ------------------------------------------------------------ |
@@ -739,7 +739,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 定義された認可スコープをAccountに紐づける。
 
-参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
 | バインディング名   | 説明                             | 補足                                                         |
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
@@ -754,7 +754,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 既存（ワーカーNode、NFS、iSCSI、Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する。
 
-参考：https://thinkit.co.jp/article/14195
+ℹ️ 参考：https://thinkit.co.jp/article/14195
 
 Dockerのボリュームとは独立した機能であることに注意する。
 
@@ -784,11 +784,11 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、NodeとPod内コンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
 
-参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 HostPathは非推奨である。
 
-参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
+ℹ️ 参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 ```bash
 # Node内でdockerコマンドを実行
@@ -833,13 +833,13 @@ $ docker inspect <コンテナID>
 
 Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。Node上のPod間でボリュームを共有できない。
 
-参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
+ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ▼ 外部ボリューム
 
 クラウドプロバイダーやNFSから提供されるストレージ領域を使用したボリュームとし、コンテナにマウントする。
 
-参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
+ℹ️ 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
 <br>
 
@@ -847,7 +847,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 ### Metadataリソースとは
 
-参考：https://thinkit.co.jp/article/13542
+ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
 
@@ -857,7 +857,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 Kubernetesリソースの水平スケーリングを定義する。Metric serverから取得したKubernetesリソースのメトリクス値のうち、指定したメトリクス値とターゲット値の比較に基づいて、Podをスケールイン/スケールアウトさせる。
 
-参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
+ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
@@ -865,7 +865,7 @@ Kubernetesリソースの水平スケーリングを定義する。Metric server
 
 オートスケーリング時の現在のPod数は、次の計算式で算出される。算出結果に基づいて、スケールアウト/スケールインが実行される。
 
-参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
+ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
 
 ```mathematica
 (必要な最大Pod数)
@@ -888,7 +888,7 @@ Kubernetesリソースの水平スケーリングを定義する。Metric server
 
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 - https://www.amazon.co.jp/dp/B08FZX8PYW
@@ -905,7 +905,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。
 
-参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 ```bash
 $ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
@@ -915,7 +915,7 @@ $ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets
 
 SecretProviderClassで定義されたプロバイダーのAPIと通信し、外部Secretのデータを参照する。その後、tmpfとしてVolumeに書き込む。
 
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 ![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
 
@@ -923,7 +923,7 @@ SecretProviderClassで定義されたプロバイダーのAPIと通信し、外�
 
 CSIの仕様によって標準化された外部ボリューム。プロバイダー上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
 
-参考：https://thinkit.co.jp/article/17635
+ℹ️ 参考：https://thinkit.co.jp/article/17635
 
 <br>
 
@@ -935,7 +935,7 @@ CSIの仕様によって標準化された外部ボリューム。プロバイ�
 
 同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
 
-参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
+ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
 
@@ -947,7 +947,7 @@ CSIの仕様によって標準化された外部ボリューム。プロバイ�
 
 同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。
 
-参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
 
@@ -959,7 +959,7 @@ CSIの仕様によって標準化された外部ボリューム。プロバイ�
 
 Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。
 
-参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
+ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_service-network.png)
 
@@ -971,7 +971,7 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 同じPod内のコンテナ間で通信するため、Pod内のネットワークのみを経由する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
-参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+ℹ️ 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
 <br>
 
@@ -996,7 +996,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 Podの稼働するNodeが同じ/異なるで経由するネットワークが異なる。
 
-参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 | 条件             | 経由するネットワーク                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -1020,7 +1020,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使用できるのでおすすめである。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
 - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
@@ -1085,7 +1085,7 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 Serviceにリクエストを送信するために必要な情報を、環境変数として出力する。
 
-参考：https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
+ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
 
 **＊実装例＊**
 
@@ -1112,7 +1112,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 Cluster内に権威DNSサーバーとしてのKubernetesリソース（CoreDNS、kube-dns、HashiCorp Consul、など）を配置し、Serviceの名前解決を行う。Podを作成すると、kubeletによって、Pod内コンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスが自動的に設定される。Pod内コンテナが他のコンテナにアウトバウンド通信を送信する場合、自身の```/etc/resolv.conf```ファイルを確認し、権威DNSサーバーによって宛先のコンテナの名前解決を行う。
 
-参考：
+ℹ️ 参考：
 
 - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
@@ -1139,7 +1139,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 Clusterネットワーク内の全てのServiceにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
@@ -1174,7 +1174,7 @@ Address:  10.105.157.184
 [root@<Pod名>:~] $ nslookup <Service名>.<Namespace名>
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name

@@ -9,7 +9,7 @@ description: Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -35,7 +35,7 @@ description: Goの知見を記録しています。
 
 #### ▼ yumリポジトリから
 
-参考：https://www.cyberithub.com/install-go-on-centos/
+ℹ️ 参考：https://www.cyberithub.com/install-go-on-centos/
 
 ```bash
 $ yum install -y epel-release
@@ -110,7 +110,7 @@ CMD ["/go/bin/cmd"]
 
 パスは好みであるが、```$HOME/go```とすることが多い。ディレクトリ構成のベストプラクティスは以下のリンクを参考にせよ。
 
-参考：https://github.com/golang-standards/project-layout
+ℹ️ 参考：https://github.com/golang-standards/project-layout
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
@@ -207,7 +207,7 @@ Goでは文の処理はセミコロンで区切られる。ただし、セミコ
 
 Goの命名規則は、GitHubのWikiに記載されている。
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments
 
 #### ▼ ディレクトリ名
 
@@ -217,15 +217,15 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 小文字一単語で命名する。ディレクトリ名に小文字一単語が使用されている場合は、これと同じにするとなお良い。また、処理中の変数名と被るとパッケージのインポートに失敗するため、変数名と被らないように、できるだけ省略しない名前の方が良い。ただし、テストファイルに関しては、パッケージ名を『```foo_test```』として良い。
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments#package-names
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#package-names
 
 #### ▼ ファイル名
 
 小文字一単語またはスネークケースで命名する。ファイル名とパッケージ名は合わせる必要はないが、独自ルールを設けても良い。例えばドメイン駆動設計の場合、ルートエンティティのファイル名とパッケージ名を合わせるように工夫できる。
 
-参考：https://ja.stackoverflow.com/q/41599
+ℹ️ 参考：https://ja.stackoverflow.com/q/41599
 
-参考：
+ℹ️ 参考：
 
 #### ▼ 関数、type、構造体
 
@@ -235,13 +235,13 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 末尾に『```er```』をつける。
 
-参考：https://golang.org/doc/effective_go#interface-names
+ℹ️ 参考：https://golang.org/doc/effective_go#interface-names
 
 #### ▼ レシーバ名
 
 構造体名の頭一文字または頭二文字を取って命名する。アプリケーション内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取ると良い。また、修飾語と組み合わせて構成される構造体名の場合、被修飾語の頭二文字を取る。オブジェクト指向で使われる『```this```』『```self```』
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
 - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
@@ -254,11 +254,11 @@ httpClientであれば、修飾語は『```http```』被修飾語『```client```
 
 英単語の頭一文字、頭二文字、略語、で命名する。これは、実際の処理を強調し、変数を目立たなくするためである。ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名しても良い。
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
 
 省略名については、略語検索サイトで探す。代わりに、Goリファレンスからその単語がどう省略されているかを探しても良い。
 
-参考：https://www.allacronyms.com/
+ℹ️ 参考：https://www.allacronyms.com/
 
 #### ▼ モックの変数
 
@@ -304,19 +304,19 @@ func main() {
 
 #### ▼ コメントの書式
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 
 #### ▼ Uber風のお作法
 
 Uber社が採用しているお作法。
 
-参考：https://github.com/uber-go/guide/blob/master/style.md
+ℹ️ 参考：https://github.com/uber-go/guide/blob/master/style.md
 
 #### ▼ イミュータブルにできない
 
 Goには、標準でイミュータブルの機能がなく、これを無理に実現しようとすると逆に保守性が低くなることがある。そのため、イミュータブルにするか否かは慎重に判断する。
 
-参考：
+ℹ️ 参考：
 
 - https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F
 - https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F

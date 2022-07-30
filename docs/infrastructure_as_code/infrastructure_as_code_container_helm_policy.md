@@ -9,7 +9,7 @@ description: 設計ポリシー＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -86,7 +86,7 @@ repository/
 
 ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
 - https://helm.sh/docs/topics/charts/#the-chart-file-structure
@@ -115,7 +115,7 @@ repository/
 
 実行環境別に```values```ファイルと```.tpl```ファイルを作成する。```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある。テンプレートからマニフェストファイルを作成する時に、各環境の```values.yaml```を参照する。
 
-参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
+ℹ️ 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
 ```yaml
 repository/
@@ -190,13 +190,13 @@ labels:
 
 ファイル名はスネークケースとし、Kubernetesリソースを識別できる名前とする。
 
-参考：https://helm.sh/docs/chart_best_practices/templates/
+ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 #### ▼ 拡張子
 
 拡張子は```.yaml```とする。
 
-参考：https://helm.sh/docs/chart_best_practices/templates/
+ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 <br>
 
@@ -212,7 +212,7 @@ Helmのチャートのアップグレードは、リリースをアップグレ�
 
 非カスタムリソースのみからなるリリースのアップグレードは以下の手順で行う。アップグレードが正常に完了したことがわかるように、```--wait```オプションを有効化すると良い。
 
-参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
 （１）```helm upgrade```コマンドを実行し、既存のリリースをアップグレードする。
 
@@ -232,7 +232,7 @@ $ helm list
 
 Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、アップグレードとアンインストールは```kubectl```コマンドで実行する必要がある。
 
-参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
+ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
 
 （１）```kubectl apply```コマンドを実行し、新しいバージョンのカスタムリソースをapplyする。
 

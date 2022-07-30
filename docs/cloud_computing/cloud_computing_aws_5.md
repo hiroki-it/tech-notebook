@@ -44,7 +44,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 | 設定項目                   | 説明                                                         | 補足                                                         |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ブロックパブリックアクセス | パブリックネットワークがS3にアクセスする時の許否を設定する。 | ・ブロックパブリックアクセスを無効にすると、項目ごとの方法（ACL、バケットポリシー、アクセスポイントポリシー）によるアクセスが許可される。もし他のAWSリソースからのアクセスを許可する場合は、ブロックパブリックアクセスを無効化した上でバケットポリシーに許可対象を定義するか、あるいはブロックパブリックアクセスでは拒否できないIAMポリシーをAWSリソースに設定する。<br>・ブロックパブリックアクセスを全て有効にすると、パブリックネットワークからの全アクセスを遮断できる。<br>・特定のオブジェクトで、アクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。 |
-| バケットポリシー           | IAMユーザー（クロスアカウントも可）またはAWSリソースがS3へにアクセスするためのポリシーで管理する。 | ・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー（クロスアカウントも可）やAWSリソースがS3にアクセスするために必要である。ただし代わりに、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>参考：https://awesome-linus.com/2020/02/04/s3-bucket-public-access/<br>・ポリシーを紐付けできないCloudFrontやALBなどでは、自身へのアクセスログを作成するために必須である。 |
+| バケットポリシー           | IAMユーザー（クロスアカウントも可）またはAWSリソースがS3へにアクセスするためのポリシーで管理する。 | ・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー（クロスアカウントも可）やAWSリソースがS3にアクセスするために必要である。ただし代わりに、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>ℹ️ 参考：https://awesome-linus.com/2020/02/04/s3-bucket-public-access/<br>・ポリシーを紐付けできないCloudFrontやALBなどでは、自身へのアクセスログを作成するために必須である。 |
 | アクセスコントロールリスト | IAMユーザー（クロスアカウントも可）がS3にアクセスする時の許否を設定する。 | ・バケットポリシーと機能が重複する。<br>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても、特定のオブジェクトでアクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。 |
 | CORSの設定                 |                                                              |                                                              |
 
@@ -78,7 +78,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み権限を実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 **＊実装例＊**
 
@@ -212,7 +212,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 認証/認可情報をパラメーターに持つURLのこと。S3では、署名付きURLを発行し、S3へのアクセス権限を外部のユーザーに一時的に付与する。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
 
 <br>
 
@@ -236,13 +236,13 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 許可する送信元IPアドレスにセキュリティグループIDを設定した場合、そのセキュリティグループが紐付けられているENIと、このENIに紐付けられたリソースからのトラフィックを許可できる。リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 
 許可する送信元IPアドレスに、自分自身のセキュリティグループIDを設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。
 
-参考：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
+ℹ️ 参考：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
 
 <br>
 
@@ -299,7 +299,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -317,7 +317,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 Parameter Storeで管理される環境変数はKMSによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
 
@@ -338,7 +338,7 @@ Systems Managerパラメーター名は、『```/<リソース名>/<環境変数
 
 EC2インスタンス（ECSやEKSのコンテナのホストを含む）に接続できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
 - https://blog.denet.co.jp/aws-systems-manager-session-manager/
@@ -347,7 +347,7 @@ EC2インスタンス（ECSやEKSのコンテナのホストを含む）に接�
 
 TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 
-参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+ℹ️ 参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
 
 #### ▼ 同時AWSセッションの上限数
 
@@ -379,8 +379,8 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 | タイプ           | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている（たぶん）。<br>ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
 | Sessionタイプ    |                                                              |                                                              |
 
 #### ▼ テンプレート
@@ -388,13 +388,13 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 作業内容の鋳型こと。ランブックを指定し、変更箇所に基づいた作業内容を定義する。
 デフォルトではテンプレートの作成自体にも承認が必要になる。ただし、指定した権限を持つユーザーはテンプレートの承認をスキップするように設定できる。
 
-参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
+ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
 
 #### ▼ 変更リクエスト
 
 鋳型に基づいた実際の作業のこと。作業のたびにテンプレートを指定し、リクエストを提出する。承認が必要になる。
 
-参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
+ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
 
 <br>
 
@@ -421,7 +421,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | ------------------------ | ------------------------------------------------------------ |
 | サブスクリプション       | サブスクリプションを登録する。                               |
 | アクセスポリシー         | トピックへのアクセス権限を設定する。                         |
-| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>参考：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
+| 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>ℹ️ 参考：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。 |
 | 暗号化                   |                                                              |
 
@@ -470,13 +470,13 @@ IAMユーザーに対して、特定のAWSアカウントのAWSリソースに�
 
 STSへのリクエストの結果、新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
-参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
+ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の権限を委譲するようにする。
 
-参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
 
@@ -563,7 +563,7 @@ aws_sts_credentials="$(aws sts assume-role \
 
 STSのエンドポイントから一時的なクレデンシャル情報が発行される。また同時に、このクレデンシャル情報は、```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。
 
-参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
 # レスポンスデータ
@@ -597,7 +597,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 レスポンスされたデータからクレデンシャル情報を抽出する。この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。代わりに、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。クレデンシャル情報を環境変数として出力し、使用できるようにする。
 
-参考：https://stedolan.github.io/jq/
+ℹ️ 参考：https://stedolan.github.io/jq/
 
 
 ```bash
@@ -653,7 +653,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ APIコールできるリソース
 
-参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
 #### ▼ Lambda
 
@@ -690,7 +690,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ 注意が必要な項目
 
-参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 |              | 設定値         | 補足                        |
 | ------------ | -------------- | --------------------------- |

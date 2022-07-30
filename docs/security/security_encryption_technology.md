@@ -9,7 +9,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -269,7 +269,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 通常のSSL/TLSを使用した通信では、通信の受信側のみSSLサーバー証明書を設定すればよいが、相互TLSでは受信側だけでなく送信側にも設定が必要になる。
 
-参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
+ℹ️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 
 #### ▼ SSL/TLSにおけるデジタル証明書とドメイン認証
 

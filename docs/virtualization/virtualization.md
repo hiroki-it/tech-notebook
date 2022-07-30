@@ -9,7 +9,7 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -87,7 +87,7 @@ Docker、LXC、OpenVZ、など
 
 sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もオーバーヘッドが小さい。
 
-参考：https://codezine.jp/article/detail/7894
+ℹ️ 参考：https://codezine.jp/article/detail/7894
 
 ![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 
@@ -151,13 +151,13 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 #### ▼ ホットスタンバイ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p613-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-1.png)
 
 #### ▼ コールドスタンバイ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p613-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-2.png)
 

@@ -9,7 +9,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### タグの種類
 
-参考：
+ℹ️ 参考：
 
 - https://docs.datadoghq.com/getting_started/tagging/
 - https://www.datadoghq.com/ja/blog/tagging-best-practices/
@@ -37,13 +37,13 @@ description: テレメトリー間の紐付け＠Datadog
 
 統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、テレメトリー間を紐付けられる。
 
-参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
+ℹ️ 参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
 
 <br>
 
 ### 各コンソール画面での使い方
 
-参考：https://docs.datadoghq.com/getting_started/tagging/using_tags/
+ℹ️ 参考：https://docs.datadoghq.com/getting_started/tagging/using_tags/
 
 <br>
 
@@ -98,7 +98,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 フレームワーク以外のパッケージなどの分散トレースに関しては、紐づけられないことを許容している。APMのservice名とECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。service名はインテグレーション名が自動で割り当てられるが、トレーサーに環境変数を渡して変更もできる。フレームワークのインテグレーション名は `DD_SERVICE_NAME` から設定する一方で、それ以外のタグ名は `DD_SERVICE_MAPPING` から設定する。
 
-参考：https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D
+ℹ️ 参考：https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D
 
 #### ▼ env
 
@@ -196,7 +196,7 @@ FluentBitの設定ファイルからタグ付けする。
 
 スパンと構造化ログの統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、分散トレース全体と構造化ログ間を紐付けられる。
 
-参考：https://docs.datadoghq.com/tracing/connect_logs_and_traces/
+ℹ️ 参考：https://docs.datadoghq.com/tracing/connect_logs_and_traces/
 
 <br>
 
@@ -204,7 +204,7 @@ FluentBitの設定ファイルからタグ付けする。
 
 スパンと構造化ログに、同じトレースIDとスパンIDを割り当てると、スパンと構造化ログ間を紐付けられる。これにより、その構造化ログが、いずれのマイクロサービスで、またどのタイミングで発生したものかを確認できる。
 
-参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
+ℹ️ 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
 
 ![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
 

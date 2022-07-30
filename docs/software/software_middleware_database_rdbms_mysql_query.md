@@ -9,7 +9,7 @@ description: クエリロジック@MySQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -77,7 +77,7 @@ FROM
 
 | プライマリーキーになるもの                                                   | 説明                                                         | 補足                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| MySQLのAuto Increment機能によって増加する番号カラム    | プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。CREATE処理でドメインモデルを作成する時に、『```0```』または『```null```』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に＋１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>参考：https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html | ・ドメインモデルとDBがより密結合になり、Active Recordパターンと相性が良い。<br>MySQLの環境変数として『```NO_AUTO_VALUE_ON_ZERO```』を設定すると、『```0```』の割り当てによる自動連番が拒否されるようになる。 |
+| MySQLのAuto Increment機能によって増加する番号カラム    | プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。CREATE処理でドメインモデルを作成する時に、『```0```』または『```null```』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に＋１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>ℹ️ 参考：https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html | ・ドメインモデルとDBがより密結合になり、Active Recordパターンと相性が良い。<br>MySQLの環境変数として『```NO_AUTO_VALUE_ON_ZERO```』を設定すると、『```0```』の割り当てによる自動連番が拒否されるようになる。 |
 | UUID（例：```3cc807ab-8e31-3071-aee4-f8f03781cb91```） | CREATE処理でモデルを作成する時に、アプケーションで作成したUUID値をドメインモデルのID値として割り当てる。UUID値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID値の作成関数は言語の標準パッケージとして用意されている。 | ・ドメインモデルとDBがより疎結合にでき、Repositoryパターンと相性が良い。<br>UUID値は文字列として管理されるため、DBアクセス処理の負荷が高まってしまう。<br>プライマリーキーを使用してソートできない。 |
 
 #### ▼ 複合プライマリーキー
@@ -98,7 +98,7 @@ FROM
 
 各テーブルのプライマリーキーを統合的に管理するテーブルを採番テーブルという。各テーブルのプライマリーキーは採番テーブルを元に割り当てられるため、連番ではなく飛び飛びになる。
 
-参考：http://blog.livedoor.jp/sasata299/archives/51280681.html
+ℹ️ 参考：http://blog.livedoor.jp/sasata299/archives/51280681.html
 
 あらかじめ、最初のレコードのみ手動で挿入しておく。
 
@@ -157,7 +157,7 @@ DBで、アプリケーションのCRUD処理に対するバリデーション�
 
 あらかじめ一連のSQL文をDBに格納しておき、Call文で呼び出す方式。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p325.gif)
 
@@ -233,7 +233,7 @@ integer値がどのくらい増えるかによって、3つを使い分ける。
 
 string型のカラムに関して、WHERE句の比較における値の特定、ORDER BY句における並び替えの昇順降順、JOIN句における結合、GROUP BYにおけるグループ化のルールを定義する。カラム/テーブル/DB単位で設定でき、比較するカラム同士では同じ照合順序が設定されている必要がある。
 
-参考：https://johobase.com/sqlserver-where-collate/
+ℹ️ 参考：https://johobase.com/sqlserver-where-collate/
 
 #### ▼ 照合順序の種類
 
@@ -435,7 +435,7 @@ FROM ---> JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> ORDER BY
 
 指定したカラムを取得する。MySQLでは、取得結果の並び順が毎回異なるため、プライマリーキーの昇順で取得したい場合は、```ORDER BY```句を使用して、明示的に並び替えるようにする。
 
-参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
+ℹ️ 参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 
 ```sql
 SELECT
@@ -914,7 +914,7 @@ WHERE
 
 テーブルから特定のカラムだけを抜き出し、検索しやすいように並び替え、名前を付けて保存しておいたもの。インデックスとして保存されたカラムから特定のレコードを直接的に取得できるため、SQLの実行時間がカラム数に依存しなくなる。インデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。
 
-参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 #### ▼ クラスタインデックス
 
@@ -938,7 +938,7 @@ CREATE INDEX foo_index
 
 複数のカラムを基準にして、テーブルを並び替えたインデックスのこと。対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない（一意の値の多い）カラムが検出される。そして、カラムのレコードの昇順で並び替えられ、インデックスとして保存される。
 
-参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
 ```sql
 CREATE INDEX foo_index
@@ -980,7 +980,7 @@ CREATE INDEX foo_index
 
 設定した```SELECT```句が仮に実行された場合、いずれのテーブルのいずれのカラムを取得することになるか（実行計画）を取得する。また、想定実行時間も検出できるため、スロークエリの検出に役立つ。
 
-参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
+ℹ️ 参考：https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
 
 ```sql
 EXPLAIN

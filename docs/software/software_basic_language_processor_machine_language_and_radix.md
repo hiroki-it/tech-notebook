@@ -9,7 +9,7 @@ description: 機械語と進数の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -45,7 +45,7 @@ description: 機械語と進数の知見を記録しています。
 
 1000 Byte = 1k Byte
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p106.png)
 
@@ -340,7 +340,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 無限小数
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p067-1.png)
 
@@ -354,7 +354,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 初代のドラゴンクエストの経験値の上限は『65535』だった。これは、経験値が16bit（2 Byte）で表されており、桁溢れが起きることを防ぐために65535以上は計算しないようになっていた。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p068.png)
 
@@ -362,7 +362,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 情報落ち
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p069.png)
 
@@ -372,7 +372,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 円周率は、途中で計算を打ち切る。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-1.png)
 
@@ -380,7 +380,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 桁落ち
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-2.png)
 
@@ -388,7 +388,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 丸め誤差
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p071.png)
 
@@ -607,7 +607,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 ーーーーーーーーーーー
  0000 0000 0000 1000
 
-参考：https://ameblo.jp/kou05/entry-10883110086.html
+ℹ️ 参考：https://ameblo.jp/kou05/entry-10883110086.html
 
 **＊例題＊**
 

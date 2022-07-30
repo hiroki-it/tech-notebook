@@ -9,7 +9,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -65,7 +65,7 @@ HTTPプロトコルを使用したリクエストを、『リソースに対す�
 
 RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の4つを使用して、データ処理の方法をリクエストする。それぞれが、APIのユースケースに対応する。ユースケースごとのメソッド名については、Laravelを参考にする。
 
-参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
+ℹ️ 参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
 
 | HTTPメソッド | エンドポイント                         | ユースケース                                                 | メソッド名の例  |
 | ------------ | -------------------------------------- | ------------------------------------------------------------ | --------------- |
@@ -77,7 +77,7 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の4つを使�
 
 POST送信とPUT送信の重要な違いについてまとめる。データを作成するユースケースの時はPOST送信、または更新する時はPUT送信を使用する。ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/a/2691891/12771072
 - https://restfulapi.net/rest-put-vs-post/
@@ -95,14 +95,14 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 
 すでにHTTPメソッド自体に動詞の意味合いが含まれるため、エンドポイントに動詞を含めないようにする。この時、アクセスするリソース名がわかりやすいような名詞を使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
 ただし慣例として、認証のエンドポイントが動詞（```login```、```logout```、```register```）になることは許容されている。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
 - https://www.developer.com/web-services/best-practices-restful-api
@@ -373,7 +373,7 @@ POST https://example.com
 
 リクエストヘッダーにパラメーターを割り当てて送信する。送信時のヘッダー名は大文字でも小文字でもいずれでも問題ないが、内部的に小文字に変換されるため、小文字が推奨である。APIキーのヘッダー名の頭文字に『```X```』を付けるのは、独自ヘッダーの頭文字に『```X```』を付ける慣習があったためである。ただし、現在は非推奨である。
 
-参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
+ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
 POST https://example.com
@@ -391,7 +391,7 @@ x-api-key: *****
 
 クライアントに対して、概要がわかるステータスコードをレスポンスとして返信する。```200```ステータスコード以外に関して、セキュリティ上の理由のため、エラーの具体的な内容はバックエンドのtry-catchやフロントエンドのポップアップで別の言葉に置き換える。
 
-参考：https://qiita.com/unsoluble_sugar/items/b080a16701946fcfce70
+ℹ️ 参考：https://qiita.com/unsoluble_sugar/items/b080a16701946fcfce70
 
 | コード    | 概要                                           | 説明                                                         |
 | --------- | ---------------------------------------------- | ------------------------------------------------------------ |
@@ -399,20 +399,20 @@ x-api-key: *****
 | ```401``` | 認証エラー                                     | 誤ったリクエストである。認証プロセスで正しいトークンが発行されず、認可プロセスのリクエストでこの誤ったトークンを送信したことを表す。認可の失敗ではなく、認証の失敗であることに注意する。 |
 | ```403``` | 認可エラーによるトークン所有者の認可スコープ外 | 誤ったリクエストである。APIに認証プロセスが存在し、トークンの発行が必要だとする。認証プロセスにて正しいトークンが発行されたが、認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表す。 |
 | 同上        | 送信元IPアドレスの閲覧禁止                     | 誤ったリクエストである。APIに認証/認可プロセスが存在せず、トークン発行と閲覧権限検証が不要だとする。送信元IPアドレスに閲覧権限がないと判定されてことを表す。 |
-| ```404``` | Webページが見つからない                        | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが```404```ステータスを自動的に返信してくれるが、独自の```404```ページを用意した場合は、そのままでは検索エンジンは```200```ステータスを返信してしまうため、アプリケーション側で明示的に```404```ステータスを返信する必要がある。アプリケーションは```404```ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを```200```ステータスと扱ってしまう（ブラウザでは```200```ステータスが返信される）現象を『ソフト```404```』という。<br>参考：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
+| ```404``` | Webページが見つからない                        | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが```404```ステータスを自動的に返信してくれるが、独自の```404```ページを用意した場合は、そのままでは検索エンジンは```200```ステータスを返信してしまうため、アプリケーション側で明示的に```404```ステータスを返信する必要がある。アプリケーションは```404```ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを```200```ステータスと扱ってしまう（ブラウザでは```200```ステータスが返信される）現象を『ソフト```404```』という。<br>ℹ️ 参考：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
 | ```405``` | 許可されていないHTTPメソッド                   | 誤ったリクエストである。エンドポイントのパスは正しいが、HTTPメソッドは誤っていることを表す。 |
-| ```409``` | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html |
+| ```409``` | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html |
 | ```412``` | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。 |
 | ```422``` | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。 |
-| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。Nginxなどのリバースプロキシが持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200 |
-| ```500``` | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。Nginxなどのリバースプロキシが持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>ℹ️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200 |
+| ```500``` | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 | ```503``` | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。 |
 
 #### ▼ リダイレクトとリライトの違い
 
 リダイレクトでは、リクエストされたURLをサーバー側で新しいURLに書き換えてブラウザに返信し、ブラウザがリクエストを再送信する。そのため、クライアント側は新しいURLで改めてリクエストを送信することになる。一方で、リライトでは、リクエストされたURLをサーバー側で異なるURLに書き換え、サーバーがそのままリクエストを送信する。そのため、クライアント側は古いURLのままリクエストを送信することになる。その他の違いについては、以下のリンクを参考にせよ。
 
-参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+ℹ️ 参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
 
 #### ▼ リライトとフォワードの違い
 
@@ -438,19 +438,19 @@ x-api-key: *****
 
 .NETのフレームワーク。コンテキストクラスが用意されている。
 
-参考：https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
+ℹ️ 参考：https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
 
 #### ▼ Ginの場合
 
 Goのフレームワーク。コンテキスト構造体が用意されている。
 
-参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context
+ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context
 
 #### ▼ Nuxt.jsの場合
 
 JavaScriptのフレームワーク。コンテキストオブジェクトが用意されている。
 
-参考：https://nuxtjs.org/ja/docs/internals-glossary/context/
+ℹ️ 参考：https://nuxtjs.org/ja/docs/internals-glossary/context/
 
 #### ▼ Lambdaの場合
 
@@ -635,7 +635,7 @@ X-Powered-By: PHP/7.3.22
 
 POST/PUTメソッドでは、処理後のデータを200レスポンスとして返信する。もし処理後のデータを返信しない場合、改めてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。
 
-参考：
+ℹ️ 参考：
 
 - https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
 - https://qiita.com/wim/items/dbb6def4e207f6048735
@@ -644,7 +644,7 @@ POST/PUTメソッドでは、処理後のデータを200レスポンスとして
 
 DELETEメソッドでは、メッセージのみを200レスポンスとして返信する。空ボディ204レスポンスとして返信しても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
 - https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
@@ -678,7 +678,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 
 そこで、できるだけデータ構造をフラットにする。ただし、見やすさによっては階層構造も許容される。
 
-参考：https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
+ℹ️ 参考：https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
 
 **＊例＊**
 
@@ -733,7 +733,7 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 }
 ```
 
-参考：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
+ℹ️ 参考：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
 
 <br>
 
@@ -753,7 +753,7 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 POST/PUT送信で、ボディパラメーターのデータ形式を表現する識別子のこと。リクエストヘッダー/レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。GET送信には不要である。
 
-参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
+ℹ️ 参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
 | トップレベルタイプ | サブレベルタイプ      | 意味                                |
 | ------------------ | --------------------- | ----------------------------------- |
@@ -866,7 +866,7 @@ Set-Cookie: sessionId=<セッションID>
 
 セッション数はGoogleコンソールで確認できる。GoogleConsoleにおけるセッションについては、以下のリンクを参考にせよ。
 
-参考：https://support.google.com/analytics/answer/6086069?hl=ja
+ℹ️ 参考：https://support.google.com/analytics/answer/6086069?hl=ja
 
 #### ▼ セッションIDの発行、セッションデータの作成
 
@@ -899,7 +899,7 @@ session.save_path = "/tmp"
 
 なお、PHP-FPMを使用している場合は、```/etc/php.ini```ファイルではなく、```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/phpredis/phpredis/issues/1097
 - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
@@ -924,7 +924,7 @@ session.gc_maxlifetime = 86400
 
 ただし、有効期限が切れた後にセッションデータを初期化するか否かは確率によって定められている。確率は、 『```gc_probability```÷```gc_divisor```』 で計算される。
 
-参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
+ℹ️ 参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
 
 ```ini
 # 有効期限後に100%初期化されるようにする。

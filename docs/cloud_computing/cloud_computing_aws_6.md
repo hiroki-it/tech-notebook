@@ -20,7 +20,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 クラウドプライベートネットワークとして働く。プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に作成できる。異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
 
-参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+ℹ️ 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
 ![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
 
@@ -30,7 +30,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ IPアドレスの種類
 
-参考：
+ℹ️ 参考：
 
 - https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
 - https://qiita.com/masato930/items/ba242f0171a76ce0994f
@@ -44,7 +44,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 #### ▼ DNS名の割り当て
 
 VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
@@ -53,8 +53,8 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 | 紐付け名      | 補足                                                         |
 | ------------- | ------------------------------------------------------------ |
-| EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
-| ENIとの紐付け | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| EC2との紐付け | 非推奨の方法である。<br>ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| ENIとの紐付け | 推奨される方法である。<br>ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>
 
@@ -64,7 +64,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 クラウドネットワークインターフェースとして働く。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -73,9 +73,9 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 | リソースの種類       | 役割                                                                             | 補足                                                         |
 | -------------------- |--------------------------------------------------------------------------------| ------------------------------------------------------------ |
 | ALB                  | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。                                             |                                                              |
-| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
 | GlobalAccelerator    |                                                                                |                                                              |
 | NAT Gateway          | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。                                     |                                                              |
 | RDS                  |                                                                                |                                                              |
@@ -133,7 +133,7 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 
 クラウドルーターのマッピングテーブルとして働く。サブネットに紐付けることにより、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。注意点として、Network ACLよりも後に評価される。
 
-参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
+ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
 | Destination（送信先のIPの範囲） |                Target                 |
 |:----------------------:| :-----------------------------------: |
@@ -179,7 +179,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 プライベートリンクともいう。プライベートIPアドレスを持つENIとして機能し、AWSリソースからアウトバウンド通信を受信する。もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
 
-参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
 **＊リソース例＊**
 
@@ -203,14 +203,14 @@ S3、DynamoDBのみ
 
 DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。```1```個のパブリックIPに対して、```1```個のプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 DNATについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
@@ -222,14 +222,14 @@ DNATについては、以下のリンクを参考にせよ。
 
 SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。```1```個のパブリックIPに対して、複数のプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、```1```個のパブリックIPアドレスで送信する。この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 SNATについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
 
@@ -303,7 +303,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 定義できるルール数や文字数に制限がある。以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
+ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
 
 | 設定項目                          | 説明                                                         | 補足                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -348,7 +348,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Overview                 | WAFによって許可/拒否されたリクエストのアクセスログを確認できる。 |                                                              |
-| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Rules                    | 順番にルールを判定し、一致するルールがあればアクションを実行する。この時、一致するルールの後にあるルールは。判定されない。 | AWSマネージドルールについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html |
 | Associated AWS resources | WAFを紐付けるAWSリソースを設定する。                     | CloudFront、ALBなどに紐付けできる。                        |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する。 |                                                              |
 
@@ -381,7 +381,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ▼ ルールの種類
 
-参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
+ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
 | ルール名     | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -396,13 +396,13 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 ルールに該当するリクエスト数を数え、許可/拒否せずに次のルールを検証する。計測結果に応じて、Countモードを無効化し、拒否できるようにする。
 
-参考：https://oji-cloud.net/2020/09/18/post-5501/
+ℹ️ 参考：https://oji-cloud.net/2020/09/18/post-5501/
 
 #### ▼ ルールグループアクションの上書き
 
 ルールのCountモードが有効になっている場合、Countアクションに続けて、そのルールの元のアクションを実行する。そのため、Countアクションしつつ、Blockアクションを実行できる（仕様がややこしすぎるので、なんとかしてほしい）。
 
-参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
+ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
 
 | マネージドルールの元のアクション | Countモード | 上書きオプション | 結果                                                         |
 | -------------------------------- | ----------- | ---------------- | ------------------------------------------------------------ |
@@ -415,7 +415,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 WAFを紐付けられるリソースにセキュリティグループも紐づけている場合、セキュリティグループのルールが先に検証される。例えば、WAFをALBに紐づけ、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
 
-参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
+ℹ️ 参考：https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
 
 <br>
 
@@ -495,7 +495,7 @@ Gmail、サンダーバード、Yahooメールなどと同類のメール管理�
 
 ロードテストを実施できる。CloudFormationで作成でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
 
-参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
+ℹ️ 参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 
 #### ▼ インフラ構成
 

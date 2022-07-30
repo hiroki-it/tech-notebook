@@ -9,7 +9,7 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -39,7 +39,7 @@ Orbsのパッケージの処理の最小単位は```step```である。そのた
 
 AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動で入力してくれる。オプションが```env_var_name```型は、基本的に全てのスコープレベルの環境変数を受け付ける。ただしAlpine Linuxでは、『```$BASH_ENV```』を使用して、複数の```run```間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
 
-参考：https://github.com/circleci/circleci-docs/issues/1650
+ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 **＊実装例＊**
 
@@ -228,7 +228,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 
 オプションを使用して、```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で、ポーリングの総実行時間を定義できる。
 
-参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
 **＊実装例＊**
 

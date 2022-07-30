@@ -9,7 +9,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 helmチャートのkube-prometheus-stackチャートをapplyする。このチャート内にPrometheusOperatorが含まれている。
 
-参考：
+ℹ️ 参考：
 
 - https://prometheus-operator.dev/docs/operator/api/
 - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/

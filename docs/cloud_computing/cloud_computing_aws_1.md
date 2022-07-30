@@ -19,7 +19,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 AWSリソースの操作単位である。Webサイトのクラウドインフラの実行環境ごとに作成したほうが良い。アカウントIDは機密情報ではないため、仮にバージョン管理してしまうようなことがあっても問題ない。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html
 - https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
@@ -54,7 +54,7 @@ AWSリソースの操作単位である。Webサイトのクラウドインフ�
 
 サーバーレスアプリケーションを作成するためのクラウドインフラストラクチャのフレームワーク。
 
-参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
+ℹ️ 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
 <br>
 
@@ -132,7 +132,7 @@ $ amplify publish
 
 #### ▼ 連携できるバージョン管理システム
 
-参考：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+ℹ️ 参考：https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
 
 #### ▼ 対応するバージョン管理リポジトリ構造
 
@@ -145,7 +145,7 @@ $ amplify publish
 
 バージョン管理リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが作成され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが作成される。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
 - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
@@ -249,13 +249,13 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | ステージ                 | API Gatewayをデプロイする環境を定義する。                                           |                                                              |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。                         |                                                              |
 | ゲートウェイのレスポンス |                                                                      |                                                              |
-| モデル                   | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                          | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| モデル                   | リクエスト/レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                          | OpenAPI仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
 | リソースポリシー         | ポリシーを使用して、API Gatewayにセキュリティを定義づける。                                  |                                                              |
 | ドキュメント             |                                                                      |                                                              |
 | ダッシュボード           |                                                                      |                                                              |
 | APIの設定                |                                                                      |                                                              |
 | 使用サイズプラン             | 有料サービスとしてAPIを公開し、料金体系に応じてリクエストサイズを制限するために使用する。APIキーにリクエスト量のレートを設定する。 | 有料サービスとして使用しないAPIの場合は、レートを設定する必要はない。 |
-| APIキー                  | APIキー認証を設定する。                                                        | ・その他のアクセス制御の方法として、以下がある。<br>参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については、以下のリンクを参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| APIキー                  | APIキー認証を設定する。                                                        | ・その他のアクセス制御の方法として、以下がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 | クライアント証明書       | SSL証明書をAPI Gatewayに割り当てる。                                            | APIが、API Gatewayからルーティングされたリクエストであること識別できるようになる。 |
 | CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう、ロールを設定する。                         | ```1```個のAWSアカウントにつき、```1```個のロールを設定すれば良い。            |
 
@@ -278,7 +278,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 認可                        | 定義したLambdaまたはCognitoによるオーソライザーを有効化するか否かを設定する。 |                                                              |
 | リクエストの検証            | 『URLクエリ文字列パラメーター』『HTTPリクエストヘッダー』『リクエスト本文』のバリデーションを有効化するか否かを設定する。 |                                                              |
-| APIキーの必要性             | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
+| APIキーの必要性             | リクエストヘッダーにおけるAPIキーのバリデーションを行う。リクエストのヘッダーに『```x-api-key```』を含み、これにAPIキーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html |
 | URLクエリ文字列パラメーター | リクエストされたURLのクエリパラメーターのバリデーションを行う。 |                                                              |
 | HTTPリクエストヘッダー      | リクエストヘッダーのバリデーションを行う。                   |                                                              |
 | リクエスト本文              | リクエストボディのバリデーションを行う。                     |                                                              |
@@ -306,13 +306,13 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 
 以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
 #### ▼ CORSの有効化
 
 CORSを有効化し、異なるオリジンによって表示されたページからのリクエストを許可する。以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
 
 <br>
 
@@ -322,7 +322,7 @@ CORSを有効化し、異なるオリジンによって表示されたページ�
 
 API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデータを自動的にマッピングする機能のこと。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
 
 また、VPCリンクの設定によって、VPCエンドポイントサービスが作成される。
 
@@ -345,7 +345,7 @@ API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデ�
 
 API GatewayとLambdaの間で、リクエスト/レスポンスのJSONデータを自動的にマッピングする機能のこと。プロキシ統合を使用すると、Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。プロキシ統合を使用しない場合、LambdaとAPI Gatewayの間のマッピングを手動で行う必要がある。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
 
 | 設定項目                     | 説明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
@@ -457,16 +457,16 @@ API Gatewayは上記のJSONデータを受信した後、```body```のみ値を�
 
 | 設定項目                           | 説明                                                                                                                         |
 | ---------------------------------- |----------------------------------------------------------------------------------------------------------------------------|
-| キャッシュ設定                     | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                   |
-| デフォルトのメソッドスロットリング | リクエスト数（個/秒）制限を設定する。<br>参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
-| WAF                                | 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                     |
+| キャッシュ設定                     | ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                   |
+| デフォルトのメソッドスロットリング | リクエスト数（個/秒）制限を設定する。<br>ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
+| WAF                                | ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                     |
 | クライアント証明書                 | 紐付けるWAFを設定する。                                                                                                              |
 
 #### ▼ ステージ変数
 
 デプロイされるステージ固有の環境変数を設定できる。Lambda関数名、エンドポイントURL、パラメーターマッピング、マッピングテンプレートで値を出力できる。以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
 
 #### ▼ SDKの作成
 
@@ -478,13 +478,13 @@ API Gatewayは上記のJSONデータを受信した後、```body```のみ値を�
 
 API Gatewayの通常のデプロイメントの仕組みあ隠蔽されている。ダウンタイム無しで、新しいステージをデプロイできる。
 
-参考：https://forums.aws.amazon.com/thread.jspa?threadID=238876
+ℹ️ 参考：https://forums.aws.amazon.com/thread.jspa?threadID=238876
 
 #### ▼ カナリアリリース
 
 カナリアリリースを使用して、新しいステージをデプロイする。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
 
 | 設定項目                                   | 説明 |
 | ------------------------------------------ | ---- |
@@ -501,13 +501,13 @@ API Gatewayの通常のデプロイメントの仕組みあ隠蔽されている
 
 CloudWatchログにAPI Gatewayの実行ログを送信するか否かを設定できる。リクエスト/レスポンスの構造もログに出力するようにした方が良い。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
 
 #### ▼ カスタムアクセスログ
 
 CloudWatchログにAPI Gatewayのアクセスログを送信するか否かを設定できる。アクセスログを構造化ログとして出力できる。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
 
 <br>
 
@@ -515,7 +515,7 @@ CloudWatchログにAPI Gatewayのアクセスログを送信するか否かを�
 
 X-Rayを使用して、API Gatewayを開始点とした分散トレースを収集する。まず、API GatewayでトレースIDが作成される。その後、各AWSリソースでスパンを取得し、スパンを紐付けることより、分散トレースを表現できる。なおX-Rayでは、親スパンをセグメント、子スパンをサブセグメントと呼ぶ。
 
-参考：https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
+ℹ️ 参考：https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
 
 <br>
 
@@ -523,7 +523,7 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 
 #### ▼ エンドポイントタイプ
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
 
 | タイプ名     | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -579,7 +579,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 #### ▼ ECSの場合
 
-参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>
 
@@ -606,7 +606,7 @@ CPU平均使用率に段階的な閾値を設定する。
 5. リクエスト数が減少し、CPU使用率が20%に低下する。
 6. ECSタスク数が2つにスケールインし、CPU使用率40%に維持される。
 
-参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
 
 | 設定項目                           | 説明                                                         | 補足                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -625,7 +625,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 メインリージョンの何らかのAWSリソースで障害が発生し、データが失われる可能性がある。そこで、主要なリージョンとは別に、障害用リージョンを用意しておく。主要リージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779
 - https://techblog.finatext.com/aws-cross-region-cross-account-backup-5952a990c1c1
@@ -659,7 +659,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 ドメインのSSL証明書を発行するためには、そのドメインの所有者であることを証明する必要がある。AWSだけでなく、GMOなどのドメインを購入できる各サービスに検証方法が用意されている。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html
 - https://jp.globalsign.com/support/proceeding/147.html
@@ -668,7 +668,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 CMによってRoute53に自動作成されるCNAMEレコード値を使用して、ドメインの所有者であることを証明する。証明書が失効しそうになった時に、CNAMEレコード値が照合され、CMが証明書を再発行してくれる。なお、ドメインをAWS以外（例：お名前ドットコム）で購入している場合は、NSレコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html
 - https://dev.classmethod.jp/articles/route53-domain-onamae/
@@ -677,13 +677,13 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 ドメインの所有者にメールを送信し、これを承認することにより所有者であることを証明する。ドメインをAWS以外（例：お名前ドットコム）で購入している場合は、そちらで設定したメールアドレス宛に確認メールが送信される。
 
-参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
+ℹ️ 参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
 
 #### ▼ 検証方法の変更
 
 既存の証明書の検証方法は変更できない。そのため、検証方法を変更した証明書を新しく発行し、これを紐づける必要がある。古い証明書は削除しておく。
 
-参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -740,7 +740,7 @@ CircleCIのサイトは、SSL証明書のためにACMを使用している。
 
 ALBではSSL証明書の変更でダウンタイムは発生しない。既存のセッションを維持しつつ、新しいSSL証明書が適用される。CloudFrontは謎...
 
-参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+ℹ️ 参考：https://aws.typepad.com/sajp/2014/04/elb-ssl.html
 
 <br>
 
@@ -770,7 +770,7 @@ SNSを経由して、CloudWatchからの通知をチャットアプリケーシ�
 
 AWSリソースのイベントを、EventBridge（CloudWatchイベント）を使用して、Chatbotに転送できるが、全てのAWSリソースをサポートしているわけではない。サポート対象のAWSリソースは以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
+ℹ️ 参考：https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
 #### ▼ インシデント
 
@@ -803,7 +803,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 #### ▼ Distributions
 
-参考：https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
+ℹ️ 参考：https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
 
 | 設定項目                 | 説明                                                         | 補足 |
 | ------------------------ | ------------------------------------------------------------ | ---- |
@@ -822,7 +822,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | WAF             | CloudFrontに紐付けるWAFを設定する。                                                    |                                                                                                                                                                                                          |
 | CNAME           | CloudFrontのデフォルトドメイン名（```*****.cloudfront.net.```）に紐付けるRoute53レコード名を設定する。   | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                             |
 | SSL Certificate | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                            | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                                  |
-| Security Policy | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
+| Security Policy | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
 | Default Root Object | オリジンのドキュメントルートを設定する。                                                        | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『```/```』でリクエストした時に、オリジンのルートディレクトリ配下にある```index,html```ファイルがドキュメントルートになる。                                                    |
 | Standard Logging | CloudFrontのアクセスログをS3に作成するか否かを設定する。                                         |                                                                                                                                                                                                          |
 
@@ -848,7 +848,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定     | ・パスパターンが静的ファイルへのリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルへのリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
 | Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。        | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                   |
 | TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。           | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、```Cache-Control```ヘッダー、```Expires```ヘッダーの値の組み合わせによって決まる。                                    |
-| Whitelist Header               | Headers を参考にせよ。                              | 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist・```Accept-*****```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-*****-Viewer```：デバイスタイプのboolean値が格納されている。 |
+| Whitelist Header               | Headers を参考にせよ。                              | ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist・```Accept-*****```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-*****-Viewer```：デバイスタイプのboolean値が格納されている。 |
 | Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                    | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                            |
 | Compress Objects Automatically | レスポンス時に```.gzip```ファイルとして圧縮するか否かを設定               | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを送信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                                                                          |
 
@@ -915,7 +915,7 @@ CloudFrontとオリジン間でHTTPS通信を行う場合、両方にSSL証明�
 
 オリジンにルーティングするべきリクエストを、各種パラメーターのAll（全許可）/一部許可/None（全拒否）で設定できる。また、キャッシュ作成の有無にも関係している。CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。キャッシュ判定時のパターンを減らし、ヒット率を向上させるために、全ての項目で『None（全拒否）』を選択した方が良い。最終的に、対象のファイルがCloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『```X-Cache:```』が『```Hit from cloudfront```』または『```Miss from cloudfront```』のどちらで判断できる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
@@ -924,7 +924,7 @@ CloudFrontとオリジン間でHTTPS通信を行う場合、両方にSSL証明�
 
 リクエストヘッダーのうち、オリジンへのルーティングを許可し、またキャッシュキーと見なすパラメーターを設定する。Cookieとクエリストリングと比べて、同じ設定でもキャッシュ作成の有無が異なることに注意する。
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web
 
 | 機能名           | オリジンリクエストの可否                                     | キャッシュ作成の有無                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -936,7 +936,7 @@ CloudFrontとオリジン間でHTTPS通信を行う場合、両方にSSL証明�
 
 Cookie情報のキー名のうち、オリジンへのルーティングを許可し、またキャッシュキーと見なすパラメーターを設定する。リクエストのヘッダーに含まれるCookie情報（キー名/値）が変動していると、CloudFrontに保存されたキャッシュがヒットしない。CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。例えば、GoogleAnalyticsのキー名（```_ga```）の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。そのため、ユーザーを一意に判定することが難しくなってしまう。GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので、オリジンにとっても基本的に不要である。セッションIDは```Cookie```ヘッダーに設定されているため、フォーム送信に関わるパスパターンでは、セッションIDのキー名を許可する必要がある。
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
 
 | 機能名           | オリジンリクエストの可否                                     | キャッシュ作成の有無                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -948,7 +948,7 @@ Cookie情報のキー名のうち、オリジンへのルーティングを許�
 
 クエリストリングのうち、オリジンへのルーティングを許可し、またキャッシュキーと見なすパラメーターを設定する。異なるクエリパラメーターのキャッシュを別々に作成するか否かを設定できる。
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
 
 | 機能名   | オリジンリクエストの可否                                     | キャッシュ作成の有無                                   |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------ |
@@ -966,7 +966,7 @@ Cookie情報のキー名のうち、オリジンへのルーティングを許�
 
 #### ▼ ヒット率の向上について
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html
 
 <br>
 
@@ -974,7 +974,7 @@ Cookie情報のキー名のうち、オリジンへのルーティングを許�
 
 #### ▼ ヒット率の向上について
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
 
 <br>
 
@@ -984,7 +984,7 @@ Cookie情報のキー名のうち、オリジンへのルーティングを許�
 
 CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching
@@ -1031,7 +1031,7 @@ TTL秒によるキャッシュの自動削除を待たずに、手動でキャ�
 
 CloudFrontは世界中に設置される『Point Of Presence（エッジロケーション＋中間層キャッシュ）』にデプロイされる。
 
-参考：https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
+ℹ️ 参考：https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
 
 #### ▼ エッジロケーションにおける全エッジサーバーのIPアドレス
 
@@ -1044,7 +1044,7 @@ $ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
 
 もしくは、以下のリンクを直接的に参考し、『```"service": "CLOUDFRONT"```』となっている部分を探す。
 
-参考：https://ip-ranges.amazonaws.com/ip-ranges.json
+ℹ️ 参考：https://ip-ranges.amazonaws.com/ip-ranges.json
 
 #### ▼ エッジロケーションの使用中サーバーのIPアドレス
 
@@ -1076,7 +1076,7 @@ This XML file does not appear to have any style information associated with it. 
 
 オリジンからカスタムエラーページをレスポンスするパスパターンを定義する。Lamnda@Edgeを使用したCloudFrontの場合は、Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
 
-参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
 
 <br>
 
@@ -1138,7 +1138,7 @@ CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 #### ▼ ログ送信権限
 
-参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 
 #### ▼ 操作コマンド
 
@@ -1193,7 +1193,7 @@ AWSリソースで発生したメトリクスのデータポイントを収集�
 
 #### ▼ 概念図
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
 - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
@@ -1216,7 +1216,7 @@ CloudWatchメトリクス上では、以下の様に確認できる。
 
 RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスのデータポイントを収集する。SQLレベルで監視できるようになる。パラメーターグループの```performance_schema```を有効化する必要がある。対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html
 - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
@@ -1255,7 +1255,7 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 ログ内で検知する文字列を設定する。大文字と小文字を区別するため、網羅的に設定する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
 - https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
@@ -1284,7 +1284,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 『```ERROR:```』が含まれ、かつ『```MethodNotAllowedHttpException```』が含まれないログを検知する。OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。そのため、ここではOR条件を使用していない。
 
-参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
+ℹ️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
 ```bash
 "ERROR:" -MethodNotAllowedHttpException
@@ -1302,7 +1302,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 CloudWatchログエージェントを設定する。OS、ミドルウェア、アプリケーションに分類して設定すると良い。
 
-参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
 **＊実装例＊**
 
@@ -1387,7 +1387,7 @@ $ service awslogs start
 
 汎用的なクエリを示す。
 
-参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
 
 **＊例＊**
 
@@ -1435,7 +1435,7 @@ fields @timestamp, @message, @logStream
 | -------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
 | 閾値の種類                       |                                                            |                                                              |
 | アラームを実行するデータポイント | アラートを発生させるデータポイント数を設定する。           |                                                              |
-| 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが発生しないことを正常と見なす場合は『```notBreaching```』とし、発生しないことを異常とする場合は、『```breaching```』とする。<br>参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
+| 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する。 | データポイントが発生しないことを正常と見なす場合は『```notBreaching```』とし、発生しないことを異常とする場合は、『```breaching```』とする。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
 
 <br>
 
@@ -1479,7 +1479,7 @@ CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CD環�
 
 CodeBuildの設定を行う。ルートディレクトリの直下に配置しておく。
 
-参考：https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+ℹ️ 参考：https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 
 **＊実装例＊**
 
@@ -1526,19 +1526,19 @@ artifacts:
 
 ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 #### ▼ EC2の場合
 
 インプレースデプロイ、ブルー/グリーンデプロイメント、を利用できる。
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 #### ▼ Lambdaの場合
 
 ブルー/グリーンデプロイメント、を利用できる。
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
 <br>
 
@@ -1548,7 +1548,7 @@ artifacts:
 
 新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。リポジトリに事前に配置するのではなく、CI/CDの中で動的に作成するようにした方が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
 - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -1585,7 +1585,7 @@ artifacts:
 
 ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。ECSタスク定義名を```<TASK_DEFINITION>```とすると、```taskdef.json```ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
 ```yaml
 version: 0.0
@@ -1608,7 +1608,7 @@ Resources:
 
 新しいバージョンタグを含むイメージリポジトリURLを、```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である。これはリポジトリに事前に配置するのではなく、CI/CDの中で動的に作成するようにした方が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
@@ -1617,7 +1617,7 @@ Resources:
 
 デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新しいバージョンタグを含むイメージリポジトリURLが自動的に代入される。
 
-参考：
+ℹ️ 参考：
 
 - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
@@ -1694,13 +1694,13 @@ Resources:
 
 ### EC2インスタンスのインプレースデプロイメント
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
 
 <br>
 
 ### EC2インスタンスのブルー/グリーンデプロイメント
 
-参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 
 <br>
 
@@ -1712,10 +1712,10 @@ Resources:
 
 専用線方式のWANとして機能し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。なお、DirectConnectは、それ専用の中継VPC内に作成する。
 
-参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
+ℹ️ 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 WANの種類については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
 
 <br>

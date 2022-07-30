@@ -9,7 +9,7 @@ description: JMeter＠システムテストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: JMeter＠システムテストの知見を記録しています。
 
 JMeterをインストールし、環境を作成する。
 
-参考：https://jmeter.apache.org/download_jmeter.cgi
+ℹ️ 参考：https://jmeter.apache.org/download_jmeter.cgi
 
 <br>
 
@@ -25,7 +25,7 @@ JMeterをインストールし、環境を作成する。
 
 JMeterは、以下のコンポーネントから構成されている。
 
-参考：https://www.guru99.com/jmeter-element-reference.html
+ℹ️ 参考：https://www.guru99.com/jmeter-element-reference.html
 
 ![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
 
@@ -41,7 +41,7 @@ JMeterは、以下のコンポーネントから構成されている。
 
 （２）JMeterのGUI版にて、シナリオ（```jmx```ファイル）を作成する。スループットコントローラーでURLリスト（```csv```ファイル）をJMeterの組み込み関数で読み込むようにする。csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば```10000```個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
-参考：https://jmeter.apache.org/usermanual/functions.html#__Random
+ℹ️ 参考：https://jmeter.apache.org/usermanual/functions.html#__Random
 
 （３）AWSリソースのスペック、VPNなど、再現テストの周辺準備が整っていることを確認する。
 

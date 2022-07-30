@@ -9,7 +9,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -33,7 +33,7 @@ CI/CDのステージを持つ。build/test/deployステージに加えて、継�
 
 Skaffoldの各ステージでは、それ専用のツールをコールできる。
 
-参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+ℹ️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
 
@@ -45,7 +45,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 コンテナイメージのビルド方法を定義する。
 
-参考：https://skaffold.dev/docs/pipeline-stages/builders/
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
 
@@ -55,7 +55,7 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 ビルドされるイメージの名前を設定する。
 
-参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
+ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
 ```yaml
 build:
@@ -70,7 +70,7 @@ build:
 
 マイクロサービスのルートまでのパスを設定する。
 
-参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
+ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
 ```yaml
 build:
@@ -135,7 +135,7 @@ build:
 
 BuildKit機能の有効化を設定する。BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
 
-参考：https://genzouw.com/entry/2021/07/17/100615/2724/
+ℹ️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 
 ```yaml
 build:
@@ -151,7 +151,7 @@ build:
 
 コミットIDをバージョンタグとして設定する。
 
-参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
 ```yaml
 build:
@@ -163,7 +163,7 @@ build:
 
 sha256ハッシュ値と```latest```タグをバージョンタグとして設定する。
 
-参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
 ```yaml
 build:
@@ -197,7 +197,7 @@ portForward:
 
 Kubernetesリソースのテスト方法を定義する。
 
-参考：https://skaffold.dev/docs/pipeline-stages/testers/
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
 
@@ -205,7 +205,7 @@ Kubernetesリソースのテスト方法を定義する。
 
 ファイルを指定し、コンテナ構造テストを実施する。
 
-参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+ℹ️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
 ```yaml
 test:
@@ -232,7 +232,7 @@ fileExistenceTests:
 
 Kubernetesリソースのデプロイ手法を定義する。
 
-参考：https://skaffold.dev/docs/pipeline-stages/deployers/
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
 <br>
 
@@ -242,7 +242,7 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 ```kubectl```コマンドを使用して、Kubernetesリソースをデプロイする。ワイルドカードを使用できる。
 
-参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
 ```yaml
 deploy:
@@ -260,7 +260,7 @@ deploy:
 
 Helmを使用して、Kubernetesリソースをデプロイする。
 
-参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 
 ```yaml
 deploy:

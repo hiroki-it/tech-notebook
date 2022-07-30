@@ -9,7 +9,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ description: ロジック＠Terraformの知見を記録しています。
 
 実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで作成される。
 
-参考：https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+ℹ️ 参考：https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 
 #### ▼ 読み方
 
-参考：https://chroju.dev/blog/terraform_state_introduction
+ℹ️ 参考：https://chroju.dev/blog/terraform_state_introduction
 
 ```yaml
 {
@@ -94,7 +94,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.terraform.io/language/files/dependency-lock
 - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
@@ -140,7 +140,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 ハッシュ値を設定する、タグごとに役割が異なる。
 
-参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 | タグ名   | 説明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -198,7 +198,7 @@ terraform {
 
 インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
-参考：https://www.terraform.io/language/settings/backends/s3
+ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
 
 **＊実装例＊**
 
@@ -506,7 +506,7 @@ provider "aws" {}
 
 ルートモジュールでネストモジュール読み出し、ネストモジュールに対して変数を渡す。
 
-参考：https://www.terraform.io/language/modules/sources
+ℹ️ 参考：https://www.terraform.io/language/modules/sources
 
 #### ▼ 同一リポジトリ内から読み込む
 
@@ -547,7 +547,7 @@ module "alb" {
 
 サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
 
-参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
 
 ```terraform
 ###############################
@@ -575,7 +575,7 @@ module "alb" {
 
 上の項目ほど優先される。
 
-参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
+ℹ️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
 #### ▼ ```-var```、```-var-file```
 
@@ -767,7 +767,7 @@ variable "rds_parameter_group_values" {
 
 ネストモジュール内にスコープを持つ変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.terraform.io/language/values/locals
 - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
@@ -796,7 +796,7 @@ AWSのAPIに対してリクエストを送信し、クラウドインフラを�
 
 操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
 
-参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 #### ▼ 実装方法
 
@@ -884,7 +884,7 @@ data "aws_ami" "bastion" {
 
 モジュール内の```resource```ブロックが持つ値をモジュール外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
 
-参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 #### ▼ 実装方法
 
@@ -1390,7 +1390,7 @@ resource "aws_lb" "this" {
 
 指定したブロックを繰り返し作成する。
 
-参考：https://www.terraform.io/language/expressions/dynamic-blocks
+ℹ️ 参考：https://www.terraform.io/language/expressions/dynamic-blocks
 
 #### ▼ map型の場合
 
@@ -1765,7 +1765,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ path式
 
-参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
+ℹ️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 | 変数                      | 値                                                     | 例                         |
 | ------------------------- | ------------------------------------------------------ | -------------------------- |

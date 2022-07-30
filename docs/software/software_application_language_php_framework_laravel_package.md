@@ -11,7 +11,7 @@ description: 専用パッケージ＠Laravelの知見を記録しています。
 
 WebpackをLaravelを介して操作できるパッケージのこと。Breezeパッケージにも同梱されている。
 
-参考：https://readouble.com/laravel/8.x/ja/mix.html
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/mix.html
 
 <br>
 
@@ -37,7 +37,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package_auth.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package_auth.html
 
 <br>
 
@@ -47,7 +47,7 @@ $ npm run watch
 
 #### ▼ コード
 
-参考：https://github.com/BenSampo/laravel-enum
+ℹ️ 参考：https://github.com/BenSampo/laravel-enum
 
 #### ▼ Enumクラスの定義
 
@@ -142,7 +142,7 @@ $staff->roleType->isSalesRole(); // false
 
 PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 - https://pleiades.io/help/phpstorm/laravel.html
@@ -173,7 +173,7 @@ return [
 
 PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
 ```bash
 $ php artisan ide-helper:generate
@@ -183,7 +183,7 @@ $ php artisan ide-helper:generate
 
 PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
 $ php artisan ide-helper:models
@@ -193,7 +193,7 @@ $ php artisan ide-helper:models
 
 PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
 ```bash
 $ php artisan ide-helper:meta

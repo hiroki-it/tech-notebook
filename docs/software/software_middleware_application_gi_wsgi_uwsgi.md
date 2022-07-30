@@ -9,7 +9,7 @@ description: uWSGI＠ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ description: uWSGI＠ミドルウェアの知見を記録しています。
 
 ### リバースプロキシサーバーのミドルウェアとして
 
-参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
+ℹ️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uwsgi.png)
 
@@ -51,7 +51,7 @@ $ pip3 install uwsgi
 
 uWSGIの起動時の値を設定する。JSON形式やXML形式でも問題ない。
 
-参考：
+ℹ️ 参考：
 
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 - https://qiita.com/11ohina017/items/da2ae5b039257752e558
@@ -122,7 +122,7 @@ uWSGIの```uwsgi```プロセスのプールを設定する。
 
  アプリケーションのインスタンスの変数名を設定する。デフォルト値は、```application```である。
 
-参考：
+ℹ️ 参考：
 
 - https://laplace-daemon.com/nginx-uwsgi-flask/
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
@@ -138,7 +138,7 @@ callable = app
 
 作業ディレクトリから移動する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
 
 ```ini
 [uwsgi]
@@ -151,7 +151,7 @@ chdir=/var/www/foo
 
 UNIXドメインソケットファイルの権限を設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
 
 ```ini
 [uwsgi]
@@ -162,7 +162,7 @@ chmod-socket = 666
 
 ### die-on-term
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
 
 ```ini
 [uwsgi]
@@ -175,7 +175,7 @@ die-on-term = true
 
 HTTPプロトコルを使用する場合に、受信するインバウンド通信のIPアドレスと、インバウンド通信を待ち受けるポート番号を設定する。Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
 
 ```ini
 [uwsgi]
@@ -188,7 +188,7 @@ http = 0.0.0.0:5000
 
 ログの出力先を設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
 
 ```ini
 [uwsgi]
@@ -201,7 +201,7 @@ logto = /dev/stdout
 
 マスターモードで起動するか否かを設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
 
 ```ini
 [uwsgi]
@@ -214,7 +214,7 @@ master = true
 
 Pythonでアプリケーションファクトリーパターンを採用している場合に、エントリーポイントのディレクトリ名とファクトリーメソッド名を設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
 
 ```ini
 [uwsgi]
@@ -225,7 +225,7 @@ module = src:create_app()
 
 ### processes
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
 
 ```ini
 [uwsgi]
@@ -236,7 +236,7 @@ processes = 1
 
 ### py-autoreload
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
 
 ```ini
 [uwsgi]
@@ -249,7 +249,7 @@ py-autoreload = 1
 
 アプリケーションのあるディレクトリを設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
 
 ```ini
 [uwsgi]
@@ -262,7 +262,7 @@ python-path = /var/www/foo
 
 UNIXドメインソケットを使用する場合に、ソケットファイルの作成場所と、インバウンド通信を待ち受けるポート番号を設定する。Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-参考： 
+ℹ️ 参考： 
 
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
 - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
@@ -278,7 +278,7 @@ socket = /etc/uwsgi/uwsgi.sock:5000
 
 uwsgiプロセス終了時にソケットファイルを削除するか否かを設定する。
 
-参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
+ℹ️ 参考：https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
 
 ```ini
 [uwsgi]
@@ -291,7 +291,7 @@ vacuum = true
 
 エントリーポイントとするファイルを設定する。
 
-参考：
+ℹ️ 参考：
 
 - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 - https://django.kurodigi.com/uwsgi-basic/

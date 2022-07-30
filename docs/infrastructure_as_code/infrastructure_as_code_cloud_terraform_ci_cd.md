@@ -9,7 +9,7 @@ description: CI/CD＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -254,7 +254,7 @@ workflows:
 
 Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 **＊実装例＊**
 
@@ -424,7 +424,7 @@ terraform -chdir=./${ENV} validate
 
 Terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
 
-参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
+ℹ️ 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
 <br>
 

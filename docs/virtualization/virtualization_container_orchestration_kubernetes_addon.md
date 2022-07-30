@@ -9,7 +9,7 @@ description: kubernetesアドオン＠仮想化の知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: kubernetesアドオン＠仮想化の知見を記録しています
 
 kube-apiserverのリクエストの処理時には認証認可プロセスがある。admission-controllersアドオンを導入すると、この後に、作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理や、パラメーターのバリデーションを実行する処理を定義できる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 - https://knowledge.sakura.ad.jp/21129/
@@ -37,7 +37,7 @@ kube-apiserverのリクエストの処理時には認証認可プロセスがあ
 
 admission-controllersアドオンは、2つのステップから構成されている。各ステップで実行する具体的な処理は、admission-controllersアドオンで定義する以外に、Webhookアドオンで独自処理をコールするように定義することもできる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
 - https://gashirar.hatenablog.com/entry/2020/10/31/141357
@@ -51,7 +51,7 @@ admission-controllersアドオンは、2つのステップから構成されて�
 
 有効化されているadmission-controllersアドオンの機能は、コントロールプレーンのログから確認できる。
 
-参考：https://sotoiwa.hatenablog.com/entry/2020/12/28/115826
+ℹ️ 参考：https://sotoiwa.hatenablog.com/entry/2020/12/28/115826
 
 ```bash
 $ aws logs get-log-events \
@@ -74,7 +74,7 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 
 #### ▼ 構成
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/
 - https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
@@ -156,7 +156,7 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 
 Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。kubeletによって実行される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
 
-参考：
+ℹ️ 参考：
 
 - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
 - https://kubernetes.io/docs/concepts/cluster-administration/networking/
@@ -169,7 +169,7 @@ Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネ�
 
 ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
-参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
@@ -179,7 +179,7 @@ Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネ�
 
 CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNS Serviceによって管理されている。
 
-参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 ```bash
 # CoreDNS Service

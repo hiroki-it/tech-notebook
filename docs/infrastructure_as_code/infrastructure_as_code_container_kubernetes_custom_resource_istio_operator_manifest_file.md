@@ -9,7 +9,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースをapplyするようになっている。
 
-参考：https://istio.io/latest/docs/setup/install/operator/
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/
 
 ```bash
 $ istioctl operator init
@@ -30,7 +30,7 @@ Operator controller will watch namespaces: istio-system
 
 （２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースをapplyする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをapplyすることもできる。```kubectl```コマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
@@ -79,7 +79,7 @@ metadata:
 
 IstioOperator経由でIstioリソースをapplyする。
 
-参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
+ℹ️ 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
 #### ▼ egressGateways
 
@@ -102,7 +102,7 @@ spec:
 
 執筆時点（2022/06/04）では、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、Gatewayを使用するようにする。一応このオプションの説明は残しておく。IngressGatewayのオプションを設定する。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -130,7 +130,7 @@ spec:
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
-参考：
+ℹ️ 参考：
 
 - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 - https://github.com/istio/istio/issues/23303
@@ -224,7 +224,7 @@ spec:
 
 全てのistio-proxyコンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
-参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ▼ accessLogFile
 
@@ -340,7 +340,7 @@ spec:
 
 IstioOperator経由でapplyされるIstioリソースのNamespaceを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -360,7 +360,7 @@ spec:
 
 applyに使用するプロファイルを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -380,7 +380,7 @@ spec:
 
 コントロールプレーン（Istiod）をカナリアリリースを使用してアップグレードする場合に、新しくapplyするバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 - https://istio.io/latest/docs/setup/upgrade/canary/
@@ -403,7 +403,7 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
-参考：
+ℹ️ 参考：
 
 - https://hub.docker.com/r/istio/proxyv2/tags
 - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
@@ -447,7 +447,7 @@ spec:
 
 istio-proxyコンテナごとのオプション値を設定する。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

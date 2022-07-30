@@ -9,7 +9,7 @@ description: ドキュメンテーション＠SREingの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ドキュメンテーション＠SREingの知見を記録してい�
 
 システムに関するあらゆることを体系的にまとめた文書のこと。
 
-参考：https://www.amazon.co.jp/dp/4873119618
+ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>
 

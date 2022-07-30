@@ -8,7 +8,7 @@ title: 【IT技術の知見】GitHub
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -32,7 +32,7 @@ title: 【IT技術の知見】GitHub
 
 リポジトリの直下に```.github```ディレクトリを配置し、```ISSUE_TEMPLATE.md```や```PULL_REQUEST_TEMPLATE.md```の名前でファイルを配置する。Issueのテンプレートに関して、代わりに```ISSUE_TEMPLATE```ディレクトリを配置し、任意の名前のmdファイルを配置すると、複数のテンプレートを作成できる。
 
-参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+ℹ️ 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
 ```yaml
 repository/
@@ -166,7 +166,7 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 Gitでソフトウェアを開発する場合に、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flowを簡略化したものに、GitHub-flowやGitlab-flowがある。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/Voronenko/gitflow-release
 - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
@@ -181,7 +181,7 @@ Gitでソフトウェアを開発する場合に、役割を持たせたブラ�
 
 ブランチのデプロイ先となる実行環境は、以下の通りに分類できる。より上位の実行環境ほど、本番環境に近くなる。UAT環境、ステージング環境、サンドボックス環境は、いずれも本番環境の検証場所であり、企業によって意味合いにブレがある。
 
-参考：https://www.quora.com/What-is-difference-between-testing-environment-and-staging
+ℹ️ 参考：https://www.quora.com/What-is-difference-between-testing-environment-and-staging
 
 |                            | ブランチ           |
 | -------------------------- | ------------------ |
@@ -235,7 +235,7 @@ Gitでソフトウェアを開発する場合に、役割を持たせたブラ�
 
 『```release/v<セマンティックバージョニング>```』とする。タグの付与先対象とするブランチは、『```Taget: main```』を選択する。
 
-参考：https://semver.org/lang/ja/
+ℹ️ 参考：https://semver.org/lang/ja/
 
 #### ▼ リリース名
 
@@ -319,13 +319,13 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 （８）プッシュする。この時、マージコミットを作成する時、基点ブランチ以外からマージしていると、差分のコミットが1つにまとまらず、
 
-参考：http://www-creators.com/archives/1938
+ℹ️ 参考：http://www-creators.com/archives/1938
 
 #### ▼ GitHubを使用して
 
 プルリクエスト上に『Resolve conflicts』ボタンが出現し、ここからコンフリクトを修正できる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
 - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315

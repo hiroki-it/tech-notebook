@@ -9,7 +9,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 ### Carbonとは
 
-参考：https://github.com/briannesbitt/Carbon
+ℹ️ 参考：https://github.com/briannesbitt/Carbon
 
 <br>
 
@@ -142,7 +142,7 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 配列データやオブジェクトデータに対して、クエリを実行できるようになる。他の同様パッケージとして、Linqがある。
 
-参考：https://github.com/TimeToogo/Pinq/
+ℹ️ 参考：https://github.com/TimeToogo/Pinq/
 
 <br>
 
@@ -185,7 +185,7 @@ class Foo
 
 通常、リクエストメッセージの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ（外部のAPIなど）に対して、リクエストメッセージの送受信できる。
 
-参考：https://github.com/guzzle/guzzle
+ℹ️ 参考：https://github.com/guzzle/guzzle
 
 <br>
 
@@ -193,7 +193,7 @@ class Foo
 
 #### ▼ GET送信
 
-参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
+ℹ️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
 **＊実装例＊**
 
@@ -218,7 +218,7 @@ $response = $client->request(
 
 #### ▼ POST送信
 
-参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+ℹ️ 参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
 
 ```php
 <?php
@@ -294,7 +294,7 @@ $body = json_decode($response->getBody(), true);
 
 ローカルまたは指定したURLの```.html```ファイルから、PDFや画像のファイルを作成するパッケージ。
 
-参考：https://github.com/KnpLabs/snappy
+ℹ️ 参考：https://github.com/KnpLabs/snappy
 
 <br>
 
@@ -322,7 +322,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 リクエストされたデータが正しいかを、サーバサイド側で検証する。フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。
 
-参考：https://github.com/Respect/Validation
+ℹ️ 参考：https://github.com/Respect/Validation
 
 ```php
 <?php
@@ -340,7 +340,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/line/line-bot-sdk-php
 - https://developers.line.biz/ja/docs/messaging-api/overview/

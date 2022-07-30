@@ -10,7 +10,7 @@ description: VictoriaMetrics＠テレメトリー収集ツールの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -22,7 +22,7 @@ description: VictoriaMetrics＠テレメトリー収集ツールの知見を記�
 
 ロードバランサー、vm-select、vm-storage、vm-insert、から構成されている。リモートストレージとして、Prometheusで収集したメトリクスを保管する。シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。なおPrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
@@ -34,7 +34,7 @@ description: VictoriaMetrics＠テレメトリー収集ツールの知見を記�
 
 vm-agent、vm-storage、vm-alert、から構成されている。また、アラートのルーティングのためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
-参考：
+ℹ️ 参考：
 
 - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 - https://www.sobyte.net/post/2022-05/vmalert/
@@ -75,7 +75,7 @@ $ curl -X GET http://<VictoriaMetricsのIPアドレス>:8428/prometheus/api/v1/q
 
 データをファイルシステムに保管する。保管時にデータを圧縮している。公式での情報は見つからなかったが、圧縮率は約```10%```らしい。
 
-参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
+ℹ️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ storageDataPath
 
@@ -99,13 +99,13 @@ VictoriaMetricsのプロセスの起動時にて、```storageDataPath```オプ�
 
 vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
 
-参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
+ℹ️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
 #### ▼ ストレージの必要サイズの見積もり
 
 vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量（日）を調査し、これに非機能要件の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。また、```20```%の空きサイズを考慮するために、増加量を```1.2```倍する必要がある。
 
-参考：https://docs.victoriametrics.com/#capacity-planning
+ℹ️ 参考：https://docs.victoriametrics.com/#capacity-planning
 
 **＊例＊**
 
@@ -151,7 +151,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 systemctlを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
 - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/

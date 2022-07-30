@@ -9,7 +9,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -33,7 +33,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 #### ▼ 接尾辞の種類
 
-参考：https://prograshi.com/platform/docker/docker-image-tags-difference/
+ℹ️ 参考：https://prograshi.com/platform/docker/docker-image-tags-difference/
 
 | 接尾辞名                                                   | 説明                                     | OS           | ユーティリティ | パッケージマネージャー系統             |
 |--------------------------------------------------------|----------------------------------------|--------------|---------|---------------------------|
@@ -47,7 +47,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ（AMD系、ARM系、など）がある。同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。例えば、MacBook 2020 にはIntel、またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、```docker pull```時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。コンテナの現在のCPUアーキテクチャは、```docker inspect```コマンドで確認できる。
 
-参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
 ```bash
 $ docker inspect <コンテナ名>
@@ -64,7 +64,7 @@ $ docker inspect <コンテナ名>
 
 イメージのバージョンには種類があり、追跡できるバージョンアップが異なる。
 
-参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
+ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 | バージョン例 | 追跡できるバージョンアップ                                   |
 | ------------ | ------------------------------------------------------------ |
@@ -172,7 +172,7 @@ EXPOSE 80
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『```&&```』で1つにまとめてしまう方が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://www.itbook.info/network/docker02.html
 - https://yuhabeem.com/2021/03/27/311/
@@ -292,7 +292,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 ## 04. イメージのサイバー攻撃を対策する
 
-参考：
+ℹ️ 参考：
 
 - https://blog.aquasec.com/docker-security-best-practices
 - https://www.creationline.com/lab/aquasecurity/43087

@@ -9,7 +9,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -29,7 +29,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 ```yaml
 argocd-repository/
@@ -56,7 +56,7 @@ k8s-repository/
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、同期時の操作手順として、親Applicationの画面で子Applicationの同期を実行し、その後子Applicationの画面で同期を実行することになる。
 
-参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
+ℹ️ 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
 ```yaml
 # 親Application
@@ -169,7 +169,7 @@ repository/
 
 Applicationで使用する機密な環境変数は、Secretで管理する。このSecretをどの場所に保存するかについて議論がなされている。
 
-参考：
+ℹ️ 参考：
 
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 - https://blog.mmmcorp.co.jp/blog/2022/02/24/yassan-argocd-with-aws-secrets-manager/
@@ -184,13 +184,13 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。これらの場合には、以下の手順でApplicationを削除する。
 
-参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+ℹ️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
 （１）Applicationの```spec.syncPolicy.allowEmpty```キーを有効化する。
 
 （２）フォアグラウンドで削除すると、Applicationの`metadata.finalizers`キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
 
-参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+ℹ️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 ```bash
 $ kubectl patch crd applications.argoproj.io \
@@ -221,7 +221,7 @@ $ kubectl patch ns argocd \
 
 ### ヘルスチェックが終わらない
 
-参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
 <br>
 
@@ -229,7 +229,7 @@ $ kubectl patch ns argocd \
 
 同期後にKubernetesリソースの状態が変更されるような場合、同期してもOut of syncになってしまう。
 
-参考：
+ℹ️ 参考：
 
 - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
 - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
