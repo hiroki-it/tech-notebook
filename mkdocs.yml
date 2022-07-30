@@ -390,8 +390,8 @@ nav:
 
   - 🦶 バージョン管理:
       - ■ Git:
-          - GitHub: version_control/version_control_git_github.md
           - コマンド: version_control/version_control_git_command.md
+          - GitHub: version_control/version_control_git_github.md
 
   - 📊 統計分析:
       - R: statistic_analysis/statistic_analysis_r.md
