@@ -388,7 +388,7 @@ nav:
           - アンチパターン: software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.md
           - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
 
-  - 👣 バージョン管理:
+  - 🦶 バージョン管理:
       - ■ Git:
           - GitHub: version_control/version_control_git_github.md
           - コマンド: version_control/version_control_git_command.md
