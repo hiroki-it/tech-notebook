@@ -88,12 +88,13 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 #### ▼ PD：Progressive Delivery
 
-特にカナリアリリースやブルー/グリーンデプロイメントでデプロイされたアプリケーションに関して、ユーザーのアクセスから収集されたテレメトリーを分析し、問題があればロールバックする。
+特にカナリアリリースやブルー/グリーンデプロイメントでデプロイされたアプリケーションに関して、ユーザーのアクセスから収集されたテレメトリーを分析し、問題があれば自動でロールバックする。問題の判定基準としては、障害の有無やSLO閾値未満がある。
 
 ℹ️ 参考：
 
 - https://r-kaga.com/blog/what-is-progressive-delivery
 - https://codezine.jp/article/detail/14476
+- https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
 
 | ステップ | 詳細                                 | 自動化の可否 | 説明                                                 |
 | -------- | ------------------------------------ | ------------ | ---------------------------------------------------- |

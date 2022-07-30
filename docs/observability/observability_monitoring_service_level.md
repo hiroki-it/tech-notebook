@@ -21,6 +21,36 @@ description: サービスレベル＠監視の知見を記録しています。
 
 <br>
 
+### SLIの決め方
+
+#### ▼ ユーザージャーニー（カスタマージャーニー）
+
+『カスタマージャーニー』とも言う。ユーザーが問題を解決するために辿る一連の行動のこと。
+
+ℹ️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+
+#### ▼ クリティカルユーザージャーニーとSLO
+
+ユーザージャーニーの中でも、特にビジネスの収益への影響力が多いもののこと。クリティカルジャーニーで実行されるシステムコンポーネントのメトリクス（例：ステータスコード、レイテンシー）をSLIとする。
+
+ℹ️ 参考：https://quaffmedia.com/what-is-critical-user-journey/
+
+**＊例＊**
+
+ECサイトであれば、以下の一連の行動がクリティカルユーザージャーニーとなる。
+
+1. 商品を検索する。
+2. 該当の商品を閲覧する。
+3. 商品をカートに追加する。
+4. 商品を購入する。
+
+ℹ️ 参考：
+
+- https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
+- https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+
+<br>
+
 ### SLIの例
 
 #### ▼ メトリクスの例（Google）
@@ -31,16 +61,6 @@ description: サービスレベル＠監視の知見を記録しています。
 
 - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
-
-**＊例＊**
-
-ECサイトであれば、以下がCUJとなる。
-
-1. 商品を検索する。
-2. 商品をカートに追加する。
-3. 商品を購入する。
-
-ℹ️ 参考：https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
 #### ▼ メトリクスの例（Microsoft）
 

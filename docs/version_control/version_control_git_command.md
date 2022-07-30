@@ -17,7 +17,7 @@ description: コマンド@Gitの知見を記録しています。
 
 ### clone
 
-#### ▼ <HTTPS接続>
+#### ▼ HTTPS接続
 
 Basic認証でGitHubにログインし、クローンする。GitHubのユーザー名とパスワードが必要になる。
 
@@ -25,7 +25,7 @@ Basic認証でGitHubにログインし、クローンする。GitHubのユーザ
 $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
-#### ▼ <SSH接続>
+#### ▼ SSH接続
 
 SSH接続でGitHubにログインし、クローンする。GitHubの自身の公開鍵を登録する必要がある。サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
 
