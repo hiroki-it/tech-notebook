@@ -9,7 +9,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 ## 02. メモリ管理（記憶管理）
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
 
 <br>
 
@@ -43,7 +43,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 物理ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下に物理ディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
-参考：
+ℹ️ 参考：
 
 - https://win2012r2.com/2018/05/13/post-268/
 - http://www.miloweb.net/partition.html
@@ -54,7 +54,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 Windowsでは、CドライブとDドライブがパーティションに相当する。
 
-参考：http://www.miloweb.net/partition.html
+ℹ️ 参考：http://www.miloweb.net/partition.html
 
 **＊例＊**
 
@@ -91,7 +91,7 @@ $ diskutil list
 
 カーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。```/dev```ディレクトリ配下に配置されている。各ファイルには具体的な入出力装置を示す番号（メジャー番号、マイナー番号）が割り当てられている。デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
 
-参考：
+ℹ️ 参考：
 
 - https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
 - https://qiita.com/angel_p_57/items/1faafa275525469788b4
@@ -100,7 +100,7 @@ $ diskutil list
 
 Dockerのデバイスファイルを確認する。
 
-参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
+ℹ️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 
 ```bash
 $ ls -l /dev
@@ -155,7 +155,7 @@ crw-------  psaux                 # PS2マウス、キーボード
 crw-rw-rw-  ptmx                  # 仮想端末
 crw-------  ptp0                  # 時刻同期
 drwxr-xr-x  pts                   # 仮想端末
-crw-rw-rw-  random                # 乱数生成
+crw-rw-rw-  random                # 乱数作成
 crw-rw-r--+ rfkill                # ワイヤレスデバイスのON/OFF
 lrwxrwxrwx  rtc -> rtc0           # リアルタイムクロック
 crw-------  rtc0                  # リアルタイムクロック
@@ -181,7 +181,7 @@ crw-rw----  ttyS31                # シリアルポート
 crw-rw----  udmabuf               # DMAバッファ
 crw-------  uhid                  # USB、Bluetooth
 crw-------  uinput                # 仮想インプットデバイス
-crw-rw-rw-  urandom               # 乱数生成　ブロックなし
+crw-rw-rw-  urandom               # 乱数作成　ブロックなし
 drwxr-xr-x  usb                   # USB
 crw-------  userio                # User I/O
 crw-rw----  vcs                   # 仮想コンソールメモリ ttyのバッファ
@@ -207,19 +207,19 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ある程度のまとまりでデータを扱う入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
 
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ キャラクターデバイス（キャラクタースペシャルファイル）
 
 一文字単位でデータを扱う入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
 
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ 擬似デバイス
 
 デバイスファイルの中で、実際の装置に対応していないデバイスファイル。標準入出力（```/dev/stdin```、```/dev/stdout```）や破棄（```/dev/null```）などがある。
 
-参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 <br>
 
@@ -229,7 +229,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 定期的に実行するように設定されたバッチ処理を、特に『ジョブ』という。ジョブ管理では、複数のジョブを管理でき、各ジョブを独立して実行する。UNIXでは```at```や```cron```に、またWindowsではタスクスケジューラーがジョブ管理機能を持つ。
 
-参考：
+ℹ️ 参考：
 
 - https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%96%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 - https://strategicppm.wordpress.com/2010/01/20/batch-vs-job-processes-becoming-more-efficient/
@@ -252,7 +252,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ジョブスケジューラーにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使用するべきとのこと。複数のジョブ（定期的に実行するように設定されたバッチ処理）の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。ややこしいことに、タスクスケジューラーとも呼ぶ。
 
-参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
+ℹ️ 参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
 <br>
 
@@ -286,11 +286,11 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ### タスク管理とは
 
-![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
+![ジョブステップからタスクの作成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの作成.png)
 
-タスク管理によって、イニシエーターによるジョブステップからタスクが生成される。タスクが生成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
+タスク管理によって、イニシエーターによるジョブステップからタスクが作成される。タスクが作成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -320,7 +320,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 **＊例＊**
 
-生成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
+作成されたタスクの到着時刻と処理時間は以下のとおりである。強制的なディスパッチは、『20秒』ごとに起こるとする。
 
 ![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
 
@@ -341,7 +341,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 デバイスドライバーとミドルウェア間で実行されるデータ通信処理を管理する。
 
-参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>
 
@@ -351,7 +351,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ミドルウェアやアプリケーションの運用処理（メトリクス収集、障害対応、記憶情報の保護）を管理する。
 
-参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>
 
@@ -359,8 +359,8 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 #### ▼ 障害管理とは
 
-ソフトウェアに障害が起こった時の障害修復を管理する。
+ソフトウェアに障害が発生した時の障害修復を管理する。
 
-参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 <br>

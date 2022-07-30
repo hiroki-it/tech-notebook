@@ -9,7 +9,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 PHP-FPMは、Server API、Zend Engine、から構成される。
 
-参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
+ℹ️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
 ![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_architecture.png)
 
@@ -29,7 +29,7 @@ PHP-FPMは、Server API、Zend Engine、から構成される。
 
 PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。そして、リクエストを受信するたびに、プロセスを割り当てている。あらかじめ準備されたプロセス群を『プール』という。
 
-参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
+ℹ️ 参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
 
 <br>
 
@@ -41,7 +41,7 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
@@ -114,7 +114,7 @@ $ systemctl status php-fpm.service
 
 PHP-FPMの全てのプロセスを設定する。設定ファイルを切り分ける場合、```/etc/php-fpm.d```ディレクトリ配下に```<実行ユーザー名>.conf```ファイルの名前で配置する。PHP-FPMの仕様として、異なる```.conf```ファイルで同じプールで同じオプションを設定した場合は、後ろにくる名前のファイルの設定が優先されるようになっている。そのため、同じプールの設定を異なる```.conf```ファイルに分割する場合に、同じオプションを設定しないように注意する。
 
-参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
+ℹ️ 参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 ```ini
 ;;;;;;;;;;;;;;;;;;;;;
@@ -165,7 +165,7 @@ daemonize = yes
 
 PHP-FPMの```www```プロセスのプールを設定する。```www.conf```ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。```php.ini```ファイルによって読み込まれ、```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。ちなみに、『```www-data```』はApacheプロセスのユーザー名のデフォルト値である。
 
-参考：
+ℹ️ 参考：
 
 - https://www.php.net/manual/ja/install.fpm.configuration.php
 - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
@@ -174,7 +174,7 @@ PHP-FPMの```www```プロセスのプールを設定する。```www.conf```フ�
 
 PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。PHP-FPMの仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは```zz-docker.conf```ファイルの設定が最優先になっている。このファイルに後勝ちできるように、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
-参考：
+ℹ️ 参考：
 
 - https://www.kengotakimoto.com/posts/laravel_with_docker-compose
 - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
@@ -243,7 +243,7 @@ pid = /run/php-fpm/php-fpm.pid
 
 PHP-FPMの```www```プロセスのプールを設定する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.php.net/manual/ja/install.fpm.configuration.php
 - https://hackers-high.com/linux/php-fpm-config/
@@ -254,7 +254,7 @@ PHP-FPMの```www```プロセスのプールを設定する。
 
 デフォルトでは、環境変数の衝突や悪意ある注入を防ぐために、最初にプール内の環境変数を全て削除している。これにより、設定ファイルに環境変数を出力できないようになっている。この最初の削除処理を無効化する。
 
-参考：https://takapi86.hatenablog.com/entry/2019/07/29/225558
+ℹ️ 参考：https://takapi86.hatenablog.com/entry/2019/07/29/225558
 
 ```ini
 [www]
@@ -293,7 +293,7 @@ group = www-data
 
 ### listen
 
-生成されたUNIXドメインソケットファイルの場所を設定する。
+作成されたUNIXドメインソケットファイルの場所を設定する。
 
 ```ini
 [www]
@@ -363,7 +363,7 @@ listen.owner = www-data
 
 Apacheでのみ使用できる。PHPの```ini```ファイルで設定されたbool値のオプションを上書きし、他から上書きされないようにする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-参考：
+ℹ️ 参考：
 
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
 - https://www.php.net/manual/en/ini.list.php
@@ -383,7 +383,7 @@ php_admin_flag[log_errors] = on
 
 Apacheでのみ使用できる。PHPの```ini```ファイルで設定されたbool値以外のオプションを上書きし、他から上書きされないようにする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-参考：
+ℹ️ 参考：
 
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
 - https://www.php.net/manual/en/ini.list.php
@@ -405,14 +405,14 @@ php_admin_value[error_log] = /dev/stderr
 
 PHPの```ini```ファイルで設定されたbool値のオプションを上書きする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-参考：
+ℹ️ 参考：
 
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
 - https://www.php.net/manual/en/ini.list.php
 
 #### ▼ php_value[display_errors]
 
-Webページ上にエラーを表示するかどうかを設定する。
+Webページ上にエラーを表示するか否かを設定する。
 
 ```ini
 [www]
@@ -427,7 +427,7 @@ php_flag[display_errors] = off
 
 PHPの```ini```ファイルで設定されたbool値以外のオプションを上書きする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-参考：
+ℹ️ 参考：
 
 - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
 - https://www.php.net/manual/en/ini.list.php
@@ -436,7 +436,7 @@ PHPの```ini```ファイルで設定されたbool値以外のオプションを�
 
 セッションの保存形式を設定する。デフォルト値は```files```形式でサーバー内に保存する。```redis```レコード形式でセッションDB（PHP Redis、ElastiCache Redisなど）に保存するように設定もできる。
 
-参考：https://zapanet.info/blog/item/3364
+ℹ️ 参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -449,7 +449,7 @@ php_value[session.save_handler] = redis
 
 セッションの保存場所のディレクトリを設定する。保存形式に```redis```を設定した場合には、Redisのエンドポイントを設定できる。デフォルト値は```/var/lib/php/session```ディレクトリである。
 
-参考：https://zapanet.info/blog/item/3364
+ℹ️ 参考：https://zapanet.info/blog/item/3364
 
 ```ini
 [www]
@@ -471,7 +471,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 子プロセス数の増減タイプを設定する。```static```の場合は、リクエスト数によらず一定数の子プロセスをメモリに割り当て、```dynamic```の場合はリクエスト数によって子プロセスを増減させる。
 
-参考：https://life.iua.jp/?p=230
+ℹ️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -484,7 +484,7 @@ pm = dynamic
 
 子プロセスの最大数を設定する。子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。
 
-参考：
+ℹ️ 参考：
 
 - https://life.iua.jp/?p=230
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
@@ -500,7 +500,7 @@ pm.max_children = 50
 
 アイドル状態にしておく子プロセスの最大数を設定する。
 
-参考：https://life.iua.jp/?p=230
+ℹ️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -513,7 +513,7 @@ pm.max_spare_servers = 35
 
 アイドル状態にしておく子プロセスの最小数を設定する。
 
-参考：https://life.iua.jp/?p=230
+ℹ️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]
@@ -526,7 +526,7 @@ pm.min_spare_servers = 5
 
 PHP-FPM起動時の子プロセス数を設定する。
 
-参考：https://life.iua.jp/?p=230
+ℹ️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]

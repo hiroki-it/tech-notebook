@@ -9,7 +9,7 @@ description: 可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: 可観測性の知見を記録しています。
 
 『収集されたデータから、システムと想定内と想定外の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。システムの想定内の不具合は『監視』や『テスト』によって検知できるが、想定外のものを検知できない。可観測性は、監視やテストも含むスーパーセットであり、想定内の不具合だけでなく、想定外の不具合も表面化する。想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
-参考：
+ℹ️ 参考：
 
 - https://blog.thundra.io/observability-driven-development-for-serverless
 - https://sookocheff.com/post/architecture/testing-in-production/
@@ -48,7 +48,7 @@ description: 可観測性の知見を記録しています。
 
 可観測性を実現するために収集する必要のある```3```個のデータ要素（『メトリクス』『ログ』『分散トレース』）のこと。NewRelicやDatadogはテレメトリーの要素を全て持つ。また、AWSではCloudWatch（メトリクス＋ログ）とX-Ray（分散トレース）を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 - https://knowledge.sakura.ad.jp/26395/
@@ -59,7 +59,7 @@ description: 可観測性の知見を記録しています。
 
 システムを、テレメトリーを収集できるような状態にすること。計装するためには、メトリクス収集用のツール、ロギングパッケージ、分散トレースのためのリクエストIDの付与、などを用意する必要がある。多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetryではこれらの収集機能をフレームワークとして提供しようとしている。
 
-参考：
+ℹ️ 参考：
 
 - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
 - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
@@ -72,7 +72,7 @@ description: 可観測性の知見を記録しています。
 
 とある分析にて、一定期間に発生した複数のデータポイントの集計値のこと。『平均』『合計』『最小/最大』『平方根』などを使用して、データポイントを集計する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
@@ -87,7 +87,7 @@ description: 可観測性の知見を記録しています。
 
 分析対象から得られる最小単位の数値データのこと。データポイントは、分析ごとに存在している。例えば、とある分析で一分ごとに対象が測定される場合、一分ごとに得られる数値データがデータポイントとなる。一方で、一時間ごとの測定の場合、一時間ごとに得られる数値データがデータポイントである。
 
-参考：
+ℹ️ 参考：
 
 - https://whatis.techtarget.com/definition/data-point
 - https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/
@@ -129,7 +129,7 @@ description: 可観測性の知見を記録しています。
 
 特定の瞬間に発生したイベントが記載されたデータのこと。
 
-参考：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
+ℹ️ 参考：https://newrelic.com/jp/blog/how-to-relic/metrics-events-logs-and-traces
 
 <br>
 
@@ -165,13 +165,13 @@ description: 可観測性の知見を記録しています。
 
 マイクロサービスアーキテクチャの各サービスから収集されたログを、バラバラに分析/管理する。
 
-参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+ℹ️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ▼ Centralized logging（集中ロギング）
 
-マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。
+マイクロサービスアーキテクチャの各サービスから収集されたログを、一元的に分析/管理する。各ログに一意なIDを割り当て、人繋ぎに紐付ける必要がある。
 
-参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
+ℹ️ 参考：https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 <br>
 
@@ -181,9 +181,9 @@ description: 可観測性の知見を記録しています。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
-マイクロサービスから収集されたスパンのセットのこと。スパンを紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
+マイクロサービスから収集されたスパンのセットのこと。スパンをIDで紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
@@ -197,7 +197,7 @@ description: 可観測性の知見を記録しています。
 
 マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。JSON型で定義されることが多い。SaaSツールによってJSON型の構造が異なる。
 
-参考：
+ℹ️ 参考：
 
 - https://opentracing.io/docs/overview/spans/
 - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
@@ -206,9 +206,15 @@ description: 可観測性の知見を記録しています。
 
 #### ▼ スパン間の紐付け
 
-リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
+![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
 
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。各マイクロサービスで、リクエストにIDが割り当てられているか確認し、もしなければ割り当てるといった処理が繰り返される。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
+
+ℹ️ 参考：
+
+- https://zenn.dev/lempiji/articles/b752b644d22a59
+- https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+
 
 #### ▼ データポイント化
 
@@ -222,7 +228,7 @@ description: 可観測性の知見を記録しています。
 
 上から下に読むと、上流サービス（上位スパン）が下流サービス（下位スパン）を処理をコールしていることを確認できる。下から上に読むと、下流サービス（下位スパン）から上流サービス（上位スパン）に結果を返却していることを確認できる。
 
-参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+ℹ️ 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
 <br>
 
@@ -230,7 +236,7 @@ description: 可観測性の知見を記録しています。
 
 モノリスなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
 
-参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+ℹ️ 参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
 
 **＊例＊**
 

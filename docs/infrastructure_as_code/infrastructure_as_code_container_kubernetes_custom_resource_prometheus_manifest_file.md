@@ -9,7 +9,7 @@ description: マニフェストファイル＠Prometheusの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -59,7 +59,7 @@ Prometheusのセットアップ方法を決定する。
 
 アラートルールとレコーディングルールを決定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
 
-参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 <br>
 
@@ -69,7 +69,7 @@ Prometheusのセットアップ方法を決定する。
 
 アラートグループを設定できる。アラートが多すぎる場合に、アラートをグループ化し、通知頻度を調節すると良い。
 
-参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
+ℹ️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
 
 #### ▼ name
 
@@ -95,7 +95,7 @@ spec:
 
 アラートのルールを設定する。
 
-参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 | 項目              | 説明                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -137,7 +137,7 @@ spec:
 
 Serviceに対してPull型通信を送信し、これに紐づくリソースのメトリクスのデータポイントを収集する。
 
-参考：
+ℹ️ 参考：
 
 - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
@@ -171,7 +171,7 @@ spec:
 
 Serviceの待ち受けるパスを設定する。
 
-参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -188,7 +188,7 @@ spec:
 
 Serviceの待ち受けるポート名を設定する。
 
-参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -258,7 +258,7 @@ spec:
 
 特定のNamespaceを収集対象として設定する。
 
-参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -289,7 +289,7 @@ metadata:
 
 収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
 
-参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

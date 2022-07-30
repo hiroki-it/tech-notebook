@@ -9,7 +9,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し、また一方で保存されたキャッシュを取得する。キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.codetd.com/en/article/12312272
 - https://rainbow-engine.com/nginx-apache-difference/
@@ -125,7 +125,7 @@ server {
 
 Nginxは、インバウンド通信を複数のWebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
 
-参考：http://nginx.org/en/docs/http/load_balancing.html
+ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
 
 **＊実装例＊**
 
@@ -183,7 +183,7 @@ server {
 
 nginxを```apt-get```コマンドでインストールすると、旧バージョンが指定されるため、```apt```コマンドを使用する。
 
-参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
+ℹ️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 ```bash
 $ apt install nginx
@@ -251,7 +251,7 @@ FastCGIプロトコルでルーティングする場合に使用する。アプ�
 
 Debian10の設定ファイルを以下に示す。
 
-参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
+ℹ️ 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
 **＊実装例＊**
 
@@ -293,7 +293,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 #### ▼ events
 
-参考：https://nginx.org/en/docs/ngx_core_module.html#events
+ℹ️ 参考：https://nginx.org/en/docs/ngx_core_module.html#events
 
 **＊実装例＊**
 
@@ -339,7 +339,7 @@ pid  logs/nginx.pid;
 
 workerプロセスが同時に処理できるコネクションの最大数を設定する。
 
-参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+ℹ️ 参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
 ```nginx
 worker_connections  1024;
@@ -367,11 +367,11 @@ worker_rlimit_nofile  8192;
 
 全てのインバウンド通信に共通する処理を設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
 ```nginx
 http {
-    # Nginxのバージョンを表示するかどうか
+    # Nginxのバージョンを表示するか否か
     server_tokens      off;
     # MIMEタイプを設定
     include            /etc/nginx/mime.types;
@@ -381,9 +381,9 @@ http {
                              "$status $body_bytes_sent "$http_referer" "
                              ""$http_user_agent" "$http_x_forwarded_for"";
     access_log         /var/log/nginx/access.log  main;
-    # sendfileシステムコールを使用するかどうか
+    # sendfileシステムコールを使用するか否か
     sendfile           on;
-    # ヘッダーとファイルをまとめてレスポンスするかどうか
+    # ヘッダーとファイルをまとめてレスポンスするか否か
     tcp_nopush         on;
     # keepaliveを維持する時間
     keepalive_timeout  65;
@@ -449,7 +449,7 @@ location / {
 
 特定のルーティング先に関する処理を設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
 **＊実装例＊**
 
@@ -478,7 +478,7 @@ server {
 
 以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 <br>
 
@@ -488,7 +488,7 @@ server {
 
 ```Content-Type```ヘッダーの値が```mime.types```ファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
 **＊実装例＊**
 
@@ -502,7 +502,7 @@ default_type application/octet-stream
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
 **＊実装例＊**
 
@@ -520,9 +520,9 @@ listen 443 ssl;
 
 #### ▼ sendfile
 
-クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
+クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
 **＊実装例＊**
 
@@ -534,7 +534,7 @@ sendfile on;
 
 受信するインバウンド通信の```Host```ヘッダーの値を設定する。ちなみに```Host```ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
 ```nginx
 server_name example.com;
@@ -556,7 +556,7 @@ server_name localhost;
 
 HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効にする必要がある。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
 **＊実装例＊**
 
@@ -586,7 +586,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 
 #### ▼ tcp_nopush
 
-上述のLinuxの```sendfile```システムコールを使用する場合に適用できる。クライアントへのレスポンス時、ヘッダーとファイルを1つのパケットにまとめて返信するかどうかを設定する。
+上述のLinuxの```sendfile```システムコールを使用する場合に適用できる。クライアントへのレスポンス時、ヘッダーとファイルを1つのパケットにまとめて返信するか否かを設定する。
 
 **＊実装例＊**
 
@@ -598,7 +598,7 @@ tcp_nopush on;
 
 指定されたパスのファイルを順に探してアクセスする。また、最後のパラメーターで内部リダイレクトする。最後のパラメーターでは、異なるパスまたはステータスコードを指定できる。もし、nginxとアプリケーションを別々の仮想環境で稼働させている場合、```try_files```ディレクティブがファイル探索の対象とする場所は、あくまでnginxの稼働する仮想環境内になることに注意する。内部リダイレクトによって、nginx内でリクエストが再処理される。異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックで改めて処理される。内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
 
 ```nginx
 location / {
@@ -686,7 +686,7 @@ server {
 
 リクエストのURLがトレイリングスラッシュで終わる全ての場合、指定されたファイルをURLの末尾に追加する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
 
 **＊実装例＊**
 
@@ -704,7 +704,7 @@ index index.php;
 
 レスポンス時に付与するレスポンスヘッダーを設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 
 **＊実装例＊**
 
@@ -723,7 +723,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 インバウンド通信のルーティング先をグループ化する。デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。
 
-参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 
 **＊実装例＊**
 
@@ -744,7 +744,7 @@ upstream foo_servers {
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
 **＊実装例＊**
 
@@ -756,7 +756,7 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
 **＊実装例＊**
 
@@ -774,7 +774,7 @@ fastcgi_pass localhost:9000;
 
 HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
-参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
 **＊実装例＊**
 

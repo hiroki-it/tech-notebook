@@ -9,7 +9,7 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description: Authenticate（認証）/Authorization（認可）＠セキュリ�
 
 HTTP通信の中で認証を行う認証スキームのこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
 
-参考：
+ℹ️ 参考：
 
 - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 - https://architecting.hateblo.jp/entry/2020/03/27/130535
@@ -41,7 +41,7 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 
 認証時に、```Cookie```ヘッダーの値を使用する認証スキームのこと。『Cookieベースの認証』ともいう。ステートフル化を行うため、HTTP認証には属していない。認証情報の一時的な保存は、サーバーのセッションデータで行うため、認証解除（ログアウト）をサーバー側で制御できる。```Cookie```ヘッダーによる送受信では、CSRFの危険性がある。
 
-参考：
+ℹ️ 参考：
 
 - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
@@ -72,7 +72,7 @@ POST https://example.com/foo-form
 }
 ```
 
-サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを生成し、セッションデータに書き込む。
+サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
 
 ```bash
 # セッションデータ
@@ -95,13 +95,13 @@ cookie: sessionid=<セッションID>
 
 認証解除時、サーバーでセッションデータを削除する。
 
-参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
+ℹ️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
 #### ▼ トークンを使用したForm認証の場合（トークンベース）
 
 トークンを```Cookie```ヘッダーに割り当て、リクエストを送信する。この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
-参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+ℹ️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
@@ -109,7 +109,7 @@ cookie: sessionid=<セッションID>
 
 再利用のため、```Cookie```ヘッダーに割り当てるための値（セッションID、トークン）は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。Chromeの場合は、Cookieストレージに保持される。確認方法については、以下のリンクを参考にせよ。
 
-参考：
+ℹ️ 参考：
 
 - https://developer.chrome.com/docs/devtools/storage/cookies/
 - https://qiita.com/cobachan/items/05fa537a4ffcb189d001
@@ -122,13 +122,13 @@ cookie: sessionid=<セッションID>
 
 事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。API GatewayにおけるAPIキー認証については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 #### ▼ 照合情報の送信方法
 
 独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメータの割り当てについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 ```http
 GET https://example.com/bar.php
@@ -143,7 +143,7 @@ x-api-key: <APIキー>
 
 クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
 
-参考：https://www.contentful.com/help/personal-access-tokens/
+ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```http
 GET https://example.com/bar.php
@@ -152,7 +152,7 @@ authorization: <Personal Acccess Token>
 
 | サービス例 | トークン名            | 説明                                                         |
 | ---------- | --------------------- | ------------------------------------------------------------ |
-| GitHub     | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
+| GitHub     | Personal access Token | HTTPSを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>ℹ️ 参考：https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 <br>
 
@@ -204,7 +204,7 @@ WWW-Authenticate: Basic realm=""
 
 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
-参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
+ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```http
 POST https://example.com/foo-form/logout
@@ -236,7 +236,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ```http
 POST https://example.com/foo-form
-authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
+authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
 <br>
@@ -249,15 +249,15 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が生成し
 
 #### ▼ Bearerトークン（署名なしトークン）とは
 
-単なる文字列で定義されたアクセストークン。Bearer認証にて、トークンとして使用する。署名なしトークンとも呼ばれ、実際に認証された本人かどうかを判定する機能は無く、トークンを持っていればそれを本人として認可する。そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。
+単なる文字列で定義されたアクセストークン。Bearer認証にて、トークンとして使用する。署名なしトークンとも呼ばれ、実際に認証された本人か否かを判定する機能は無く、トークンを持っていればそれを本人として認可する。そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。
 
-参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
+ℹ️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 #### ▼ Bearer認証の仕組み
 
 指定されたエンドポイントに対して、```POST```リクエストを送信する。この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 
-参考：
+ℹ️ 参考：
 
 - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
@@ -272,7 +272,7 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
 レスポンスボディにBearerトークンを含むレスポンスが返信される。他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
 
-参考：
+ℹ️ 参考：
 
 - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/resources/access-token/
@@ -292,7 +292,7 @@ Content-Type: application/json
 
 発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て、リクエストを送信する。ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
@@ -311,7 +311,7 @@ WWW-Authenticate: Bearer realm=""
 
 認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
@@ -323,7 +323,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 #### ▼ 正常系/異常系レスポンス
 
-参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+ℹ️ 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 
@@ -353,7 +353,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルマシンに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、LocalStorage/SessionStorageに保持される。LocalStorageはSessionStorageと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンクを参考にせよ
 
-参考：
+ℹ️ 参考：
 
 - https://developer.chrome.com/docs/devtools/storage/localstorage/
 - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
@@ -426,7 +426,7 @@ Webサイトごとに認証/認可を行うのではなく、特定のWebサイ�
 
 SSOには、認証フェーズと認可フェーズがあり、```3```個の役割が定義されている。
 
-参考：https://japan.zdnet.com/article/35126144/
+ℹ️ 参考：https://japan.zdnet.com/article/35126144/
 
 1. クライアントが、HTTPリクエストにIDとパスワードを設定してリクエスト。
 2. IdP：Identity Providerが、IDを『認証』し、クライアント側にアクセストークンを発行。
@@ -436,14 +436,14 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 | 役割              | 説明                                                         | 例                                          |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------- |
 | APIクライアント   | APIに対して、リクエストを送信したいサーバーのこと。          | Ouath認証の仕組みにおけるクライアント。     |
-| Identity Provider | トークンを生成するサーバーのこと。                           | Ouath認証の仕組みにおける認可サーバー。     |
+| Identity Provider | トークンを作成するサーバーのこと。                           | Ouath認証の仕組みにおける認可サーバー。     |
 | APIサーバー       | クライアントに対して、リソースのレスポンスを送信するサーバーのこと。 | Ouath認証の仕組みにおけるリソースサーバー。 |
 
 #### ▼ ステータスコード
 
 認証フェーズにて、誤ったトークンが発行されたことを表現したい場合、```401```ステータスを使用する。認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に閲覧権限がないことを表現したい場合、```403```ステータスを使用する。ステータスコードについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 <br>
 
@@ -459,14 +459,14 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | クライアントアプリ | リソースオーナに対するアクション機能を持つ。                 | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを介したリダイレクトによって実現することに注意する。 |
 | リソースオーナー   | クライアントを使用しているユーザー。                         |                                                              |
-| 認可サーバー       | リソースサーバーがリソースオーナーにアクセスできるトークンを生成する。 | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
+| 認可サーバー       | リソースサーバーがリソースオーナーにアクセスできるトークンを作成する。 | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>ℹ️ 参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | リソースサーバー   | クライアントのアカウント情報を持っている。                   |                                                              |
 
 #### ▼ 認可コードフローの場合
 
 最も基本的な認可コードフローを説明する。
 
-参考：
+ℹ️ 参考：
 
 - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
@@ -529,7 +529,7 @@ Content-Type: application/x-www-form-urlencoded
 
 （６）Instagramは認可コードを照合し、アクセストークンを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLを割り当て、ブラウザにレスポンスを返信する。ブラウザからFacebookにレスポンスがリダイレクトされる。ブラウザはFacebookにリクエストを再送信する。
 
-参考：
+ℹ️ 参考：
 
 - https://boxil.jp/mag/a3207/
 - https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844
@@ -558,15 +558,15 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 認可サーバーによるOAuth認証のトークンの付与方法には種類がある。
 
-参考：https://oauth.net/2/grant-types/
+ℹ️ 参考：https://oauth.net/2/grant-types/
 
 | 付与タイプ名             | 説明                                                         | 使用例                                                       |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する。推奨されている。<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携                              |
-| Client Credentials Grant | 推奨されている。<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                                              |
-| Device Code              | 推奨されている。<br>参考：https://oauth.net/2/grant-types/device-code/ |                                                              |
-| Implicit Grant           | 非推奨されている。<br>参考：https://oauth.net/2/grant-types/implicit/ |                                                              |
-| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨されている。<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する。推奨されている。<br>ℹ️ 参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携                              |
+| Client Credentials Grant | 推奨されている。<br>ℹ️ 参考：https://oauth.net/2/grant-types/client-credentials/ |                                                              |
+| Device Code              | 推奨されている。<br>ℹ️ 参考：https://oauth.net/2/grant-types/device-code/ |                                                              |
+| Implicit Grant           | 非推奨されている。<br>ℹ️ 参考：https://oauth.net/2/grant-types/implicit/ |                                                              |
+| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨されている。<br>ℹ️ 参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>ℹ️ 参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
 <br>
 
@@ -596,7 +596,7 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをbase64方式によってエンコードし、ドットでつないだトークン。Bear認証やOauth認証のトークンとして使用できる。ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。
 
-参考：
+ℹ️ 参考：
 
 - https://meetup-jp.toast.com/3511
 - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
@@ -614,15 +614,15 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 <br>
 
-### JWTの生成
+### JWTの作成
 
-#### ▼ JWT生成の全体像
+#### ▼ JWT作成の全体像
 
 JWTは以下のサイトから取得できる。
 
-参考：https://jwt.io/
+ℹ️ 参考：https://jwt.io/
 
-JWTの生成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
+JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
 
 ```javascript
 // <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
@@ -631,7 +631,7 @@ const token = base64urlEncoding(header) + "." +
       base64urlEncoding(signature)
 ```
 
-#### ▼ ヘッダーのJSONデータの生成
+#### ▼ ヘッダーのJSONデータの作成
 
 ヘッダーは以下のJSONデータで定義される。署名のための暗号化アルゴリズムは、『```HS256```』『```RS256```』『```ES256```』『```none```』から選択できる。
 
@@ -642,7 +642,7 @@ const header = {
 }
 ```
 
-#### ▼ ペイロードのJSONデータの生成
+#### ▼ ペイロードのJSONデータの作成
 
 ペイロードは以下のJSONデータで定義される。ペイロードには、実際に送信したいJSONを設定する。必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。
 
@@ -664,7 +664,7 @@ const payload = {
 }
 ```
 
-#### ▼ 署名のJSONデータの生成
+#### ▼ 署名のJSONデータの作成
 
 例えばJavaScriptであれば、以下のような処理が実行されている。
 
@@ -681,7 +681,7 @@ const signature = HMACSHA256(
 
 #### ▼ 保持方法と安全度の比較
 
-参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
+ℹ️ 参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 
 | クライアント保持方法 | 組み合わせ             | おすすめ度 | コメント                                                     |
 | :------------------- | ---------------------- | :--------- | :----------------------------------------------------------- |

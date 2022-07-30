@@ -9,7 +9,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -33,7 +33,7 @@ nginxプロセスを安全に再起動する。systemctlコマンドでも再起
 $ nginx -s reload
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://serverfault.com/questions/378581/nginx-config-reload-without-downtime
 - https://www.nyamucoro.com/entry/2019/07/27/222829
@@ -49,7 +49,7 @@ $ nginx -s reload
 $ nginx -t
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html
@@ -62,7 +62,7 @@ $ nginx -t
 
 Nginxの設定ファイルのバリデーションを実行する。
 
-参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+ℹ️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 ```bash
 $ service nginx configtest

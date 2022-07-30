@@ -9,7 +9,7 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -94,13 +94,13 @@ Available test(s):
 
 PHPUnitの設定を行う。デフォルトの設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。また、```Test```で終わるphpファイルを作成しておく必要がある。
 
-参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
+ℹ️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
 
 #### ▼ ```testsuites```タグ
 
 テストスイートを定義できる。```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、また対象のディレクトリ名を変更できる。
 
-参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 ```xml
 <phpunit>
@@ -126,7 +126,7 @@ PHPUnitの設定を行う。デフォルトの設定では、あらかじめル�
 
 PHPUnitの実行前に設定する```ini_set```関数、```define```関数、グローバル変数、を定義できる。タグ名との対応関係については、以下のリンクを参考にせよ。
 
-参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
 **＊実装例＊**
 
@@ -163,7 +163,7 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 実際の値と期待値を比較し、結果に応じて```SUCCESS```または```FAILURES```を返却する。非staticまたはstaticとしてコールできる。
 
-参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 ```php
 $this->assertTrue();
@@ -175,7 +175,7 @@ self::assertTrue()
 
 #### ▼ assertTrue
 
-実際値が```true```かどうかを検証する。
+実際値が```true```か否かを検証する。
 
 ```php
 $this->assertTrue($response->isOk());
@@ -206,7 +206,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 テスト対象のメソッドの引数を事前に用意する。メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
 
-参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
 **＊実装例＊**
 
@@ -253,7 +253,7 @@ class FooTest extends TestCase
 
 **＊実装例＊**
 
-DIコンテナを事前に生成する。
+DIコンテナを事前に作成する。
 
 ```php
 <?php
@@ -275,7 +275,7 @@ class FooTest extends TestCase
 
 **＊実装例＊**
 
-単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。そのため、これと同様に依存先のクラスのモックを事前に生成しておく。
+単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。そのため、これと同様に依存先のクラスのモックを事前に作成しておく。
 
 ```php
 <?php
@@ -291,7 +291,7 @@ class FooTest extends TestCase
         // 基本的には、一番最初に記述する。
         parent::setUp();
         
-        // 事前にモックを生成しておく。
+        // 事前にモックを作成しておく。
         $this->bar = Phake::mock(Bar::class);
     }
     
@@ -340,7 +340,7 @@ class FooTest extends TestCase
 
 #### ▼ ```createMock```メソッド
 
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを生成する。以降の処理での用途によって、呼び名が異なることに注意する。ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
+クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。以降の処理での用途によって、呼び名が異なることに注意する。ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
 
 ```php
 <?php
@@ -826,7 +826,7 @@ class FooControllerTest extends TestCase
 
 ユニットテスト時のテストダブルを提供する。
 
-参考：https://github.com/mlively/Phake#phake
+ℹ️ 参考：https://github.com/mlively/Phake#phake
 
 <br>
 
@@ -834,7 +834,7 @@ class FooControllerTest extends TestCase
 
 #### ▼ ```mock```メソッド
 
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを生成する。以降の処理での用途によって、呼び名が異なることに注意する。
+クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。以降の処理での用途によって、呼び名が異なることに注意する。
 
 ```php
 <?php

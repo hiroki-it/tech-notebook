@@ -9,7 +9,7 @@ description: ソフトウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ソフトウェアの知見を記録しています。
 
 システムのうちで、『OS』『ミドルウェア』『アプリケーション（アプリケーションソフトウェア）』の要素を合わせたグループのこと。『OS』『ミドルウェア』『ハードウェア』をインフラとも呼ぶ。
 
-参考：https://thinkit.co.jp/article/11526
+ℹ️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
@@ -31,7 +31,7 @@ description: ソフトウェアの知見を記録しています。
 
 Webシステムのソフトウェアを開発する上でのベストプラクティスのこと。
 
-参考：https://12factor.net/ja/
+ℹ️ 参考：https://12factor.net/ja/
 
 <br>
 
@@ -51,7 +51,7 @@ Webシステムのソフトウェアを開発する上でのベストプラク�
 
 端末のシステムによって稼働するアプリケーションのこと。一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
 
-参考：https://www.sbbit.jp/article/cont1/28197
+ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -67,7 +67,7 @@ Office、BookLiveのアプリ版
 
 Webサーバー上で稼働するソフトウェアのこと。URLをWebサーバーにリクエストすることにより利用でき、随時、Webサーバーとデータ通信を行う。全ての人が無料で利用できるものと、お金を払った人だけが利用できるものがある。
 
-参考：https://www.sbbit.jp/article/cont1/28197
+ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -91,7 +91,7 @@ Google Drive、Dropbox
 
 端末でWebviewを稼働させ、ソフトウェアの```.html```ファイルのレンダリングをWebview上で行うアプリケーションのこと。
 
-参考：https://www.sbbit.jp/article/cont1/28197
+ℹ️ 参考：https://www.sbbit.jp/article/cont1/28197
 
 **＊例＊**
 
@@ -107,7 +107,7 @@ Google Drive、Dropbox
 - Nginx
 - IIS
 
-参考：https://thinkit.co.jp/article/11837
+ℹ️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -118,7 +118,7 @@ Google Drive、Dropbox
 - NGINX Unit（WebサーバーのNginxと組み合わせて使用できるミドルウェア）
 - Tomcat
 
-参考：https://thinkit.co.jp/article/11837
+ℹ️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -129,7 +129,7 @@ Google Drive、Dropbox
 - PostgreSQL
 - Oracle Database
 
-参考：https://thinkit.co.jp/article/11837
+ℹ️ 参考：https://thinkit.co.jp/article/11837
 
 <br>
 
@@ -155,7 +155,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 ### 基本ソフトウェア
 
-参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+ℹ️ 参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 ![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
 
@@ -169,7 +169,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 UNIXから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware）に分岐する。
 
-参考：http://officemiyajima.com/index.php?What%20is%20Linux
+ℹ️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
 ![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux-distribution.png)
 
@@ -177,7 +177,7 @@ UNIXから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware�
 
 Debian、Ubuntu、など
 
-参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+ℹ️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -190,7 +190,7 @@ Debian GNU/Linux 10 \n \l
 
 RedHat、CentOS、Fedora、など
 
-参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
+ℹ️ 参考：https://aoi-f.blog.ss-blog.jp/2010-09-13
 
 ```bash
 # 確認方法
@@ -272,6 +272,6 @@ Windows 8以降で採用されている新しいFirmware
 
 ### OSSの種類
 
-参考：https://openstandia.jp/oss_info/
+ℹ️ 参考：https://openstandia.jp/oss_info/
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)

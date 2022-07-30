@@ -9,7 +9,7 @@ description: ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ハードウェアの知見を記録しています。
 
 システムのうちで、ソフトウェア（OS、ミドルウェア、アプリケーション）以外の要素を合わせたグループのこと。
 
-参考：https://thinkit.co.jp/article/11526
+ℹ️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
@@ -27,7 +27,7 @@ description: ハードウェアの知見を記録しています。
 
 ### ハードウェアの種類
 
-参考：https://living-maou.com/computer-composition/
+ℹ️ 参考：https://living-maou.com/computer-composition/
 
 ![hardware_computer_five-parts](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hardware_computer_five-parts.png)
 
@@ -114,7 +114,7 @@ CPUが1秒間に何回命令を実行するかを表す。
 
 #### ▼ Mask ROMとは
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
 
@@ -124,7 +124,7 @@ CPUが1秒間に何回命令を実行するかを表す。
 
 #### ▼ Programmable ROMとは
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
 
@@ -197,7 +197,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 ### 実効アクセス時間
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p171-1.png)
 
@@ -227,7 +227,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 データを永続化できる不揮発的な記憶装置のこと。
 
-参考：https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
+ℹ️ 参考：https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
 
 <br>
 
@@ -235,7 +235,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 物理的なストレージのこと。HDDとSSDがある。単に『ディスク』ともいう。
 
-参考：
+ℹ️ 参考：
 
 - https://jisaku-pc.net/hddnavi/disk_drive.html
 - https://pctrouble.net/storage/disk_drive.html
@@ -247,7 +247,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 物理ディスク上に作成される仮想的なストレージのこと。単に『ドライブ』ともいう。Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
 
-参考：
+ℹ️ 参考：
 
 - https://jisaku-pc.net/hddnavi/disk_drive.html
 - https://pctrouble.net/storage/disk_drive.html
@@ -262,7 +262,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 断片化されたデータ領域を整理整頓する。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-1.png)
 
@@ -272,7 +272,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 複数の物理的なHDDを仮想的に統合し、1つのHDDであるかのように見せかける。
 
-参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
+ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
 | 種類  | 説明                                                       |
 | ----- | :--------------------------------------------------------- |
@@ -300,7 +300,7 @@ GPUとVRAMのサイズによって、扱うことのできる解像度と色数�
 
 色数によって、１ドット当たり何ビットを要するが異なる。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
 

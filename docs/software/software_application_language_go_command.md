@@ -9,7 +9,7 @@ description: コマンド@Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -43,16 +43,16 @@ $ go get <ドメインをルートとしたURL>
 
 #### ▼ buildとは
 
-指定したパスをビルド対象として、ビルドのアーティファクトを生成する。```foo_test.go```ファイルはビルドから自動的に除外される。
+指定したパスをビルド対象として、ビルドのアーティファクトを作成する。```foo_test.go```ファイルはビルドから自動的に除外される。
 
 ```bash
-# cmdディレクトリをビルド対象として、ルートディレクトリにcmdアーティファクトを生成する。
+# cmdディレクトリをビルド対象として、ルートディレクトリにcmdアーティファクトを作成する。
 $ go build ./cmd
 ```
 
 もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、```panic```メソッドが原因を握りつぶしている可能性を考える。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
 
 ```bash
 exit status 2. Docker build ran into internal error. Please retry. If this keeps happening, please open an issue..
@@ -60,19 +60,19 @@ exit status 2. Docker build ran into internal error. Please retry. If this keeps
 
 #### ▼ ```-o```
 
-指定したパスにビルドのアーティファクトを生成する。ビルド対象パスを指定しない場合、ルートディレクトリのgoファイルをビルドの対象とする。
+指定したパスにビルドのアーティファクトを作成する。ビルド対象パスを指定しない場合、ルートディレクトリのgoファイルをビルドの対象とする。
 
 ```bash
 # ルートディレクトリ内のgoファイルをビルド対象として
-# $HOME/go/binディレクトリにルートディレクトリ名アーティファクトを生成する。
+# $HOME/go/binディレクトリにルートディレクトリ名アーティファクトを作成する。
 $ go build -o $HOME/go/bin
 ```
 
-また、指定したパス内のgoファイルをビルド対象として、指定したパスにビルドのアーティファクトを生成もできる。
+また、指定したパス内のgoファイルをビルド対象として、指定したパスにビルドのアーティファクトを作成もできる。
 
 ```bash
 # cmdディレクトリ内のgoファイルをビルド対象として
-# $HOME/go/binディレクトリにcmdアーティファクトを生成する。
+# $HOME/go/binディレクトリにcmdアーティファクトを作成する。
 $ go build -o $HOME/go/bin ./cmd
 ```
 
@@ -186,7 +186,7 @@ $ go test -v ./...
 
 テスト時に、```foo_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する。反対に、```foo_test.go```ファイルがなければ、そのパッケージの網羅率は解析しない。網羅条件については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 ```bash
 $ go test -cover ./...

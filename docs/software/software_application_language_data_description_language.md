@@ -9,7 +9,7 @@ description: データ記述言語＠言語の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -140,7 +140,7 @@ json["prefecture"] = "Tokyo";
 
 キーはアルファベット順に並べると良い。以下のサイトで並び替えられる。
 
-参考：https://r37r0m0d3l.github.io/json_sort/
+ℹ️ 参考：https://r37r0m0d3l.github.io/json_sort/
 
 <br>
 
@@ -276,7 +276,7 @@ class StaffParser {
 
     // ID
     if (criteria.id) {
-      // JSONが生成される。
+      // JSONが作成される。
       json.id = _.trim(criteria.id);
     }
 

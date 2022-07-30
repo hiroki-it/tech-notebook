@@ -9,7 +9,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 #### ▼ インストール
 
-参考：https://getcomposer.org/download/
+ℹ️ 参考：https://getcomposer.org/download/
 
 ```bash
 # インストーラーをダウンロードする。
@@ -43,7 +43,7 @@ $ php -r "unlink('composer-setup.php');"
 
 名前空間とパスの対応関係を設定する。```require```関数を使用せずに、クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://getcomposer.org/doc/04-schema.md#autoload
 - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
@@ -75,7 +75,7 @@ $ php -r "unlink('composer-setup.php');"
 
 Composerのコマンドのオプションのデフォルト値を設定する。
 
-参考：https://getcomposer.org/doc/04-schema.md#config
+ℹ️ 参考：https://getcomposer.org/doc/04-schema.md#config
 
 ```yaml
 {
@@ -97,7 +97,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 インストールされるパッケージとバージョンを設定する。
 
-参考：https://getcomposer.org/doc/04-schema.md#package-links
+ℹ️ 参考：https://getcomposer.org/doc/04-schema.md#package-links
 
 ```bash
 # 個人的に一番おすすめ
@@ -171,7 +171,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 コマンドのエイリアスを設定する。
 
-参考：https://getcomposer.org/doc/04-schema.md#scripts
+ℹ️ 参考：https://getcomposer.org/doc/04-schema.md#scripts
 
 ```yaml
 {
@@ -204,7 +204,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 Composerのバージョンを設定する。インストールされているcomposerと齟齬がないようにする。
 
-参考：https://getcomposer.org/doc/04-schema.md#version
+ℹ️ 参考：https://getcomposer.org/doc/04-schema.md#version
 
 ```yaml
 {
@@ -277,7 +277,7 @@ $ php -r '
 
 ### clear-cache
 
-インストール時に生成されたキャッシュを削除する。
+インストール時に作成されたキャッシュを削除する。
 
 ```bash
 $ composer clear-cache
@@ -289,7 +289,7 @@ $ composer clear-cache
 
 パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```コマンドを実行し、プロジェクト内で```composer install```コマンドを実行することと同じである。新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開した方が便利である。なお、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
-参考：https://getcomposer.org/doc/03-cli.md#create-project
+ℹ️ 参考：https://getcomposer.org/doc/03-cli.md#create-project
 
 ```bash
 # カレントディレクトリ配下にプロジェクトを作成する。
@@ -320,7 +320,7 @@ Checking https connectivity to packagist: OK
 
 事前に設定された```autoload```プロパティを基に、クラスの名前空間とパスの対応関係を登録する。
 
-参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+ℹ️ 参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
 
 ```bash
 $ composer dump-autoload
@@ -356,7 +356,7 @@ $ composer dump-autoload
 
 対話形式で```composer.json```ファイルを作成する。
 
-参考：https://getcomposer.org/doc/03-cli.md#init
+ℹ️ 参考：https://getcomposer.org/doc/03-cli.md#init
 
 ```bash
 $ composer init
@@ -370,7 +370,7 @@ $ composer init
 
 事前に```composer.json```ファイルに書き込まれたパッケージを、```composer.lock```ファイルに書き込まれたバージョンでインストールする。
 
-参考：
+ℹ️ 参考：
 
 - https://getcomposer.org/doc/03-cli.md#install-i
 - https://prograshi.com/framework/laravel/require-update-install/
@@ -419,7 +419,7 @@ $ composer install --prefer-source
 
 指定したパッケージをアンインストールした後、再インストールする。
 
-参考：https://getcomposer.org/doc/03-cli.md#reinstall
+ℹ️ 参考：https://getcomposer.org/doc/03-cli.md#reinstall
 
 ```bash
 $ composer reinstall <パッケージ名>
@@ -441,7 +441,7 @@ $ composer install -vvv
 
 パッケージを```composer.json```ファイルと```composer.lock```ファイルの両方から削除する。
 
-参考：
+ℹ️ 参考：
 
 - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
 - https://getcomposer.org/doc/03-cli.md#remove
@@ -458,7 +458,7 @@ $ composer remove <パッケージ名>
 
 パッケージ名を```composer.json```ファイルと```composer.lock```ファイルの両方に書き込み、インストールする。または、パッケージのアップグレード/ダウングレードする場合に、パッケージのバージョンを書き換える。コマンドを使用せずに自分で実装しても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://getcomposer.org/doc/03-cli.md#require
 - https://prograshi.com/framework/laravel/require-update-install/
@@ -485,7 +485,7 @@ $ composer <スクリプト名>
 
 事前に```composer.json```ファイルに書き込まれたパッケージを最新のバージョンでインストールし、```composer.lock```ファイルを書き換える。```composer.lock```ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。パッケージ内でエラーが発生したら、```composer update```コマンドによるパッケージの更新が原因だと考えた方が良い。いずれかのパッケージで新しいバージョンがリリースされたが、これに不具合があった可能性が高い。
 
-参考：
+ℹ️ 参考：
 
 - https://getcomposer.org/doc/03-cli.md#update
 - https://prograshi.com/framework/laravel/require-update-install/

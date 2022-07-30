@@ -9,7 +9,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 Dockerを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
 
 <br>
 
@@ -27,7 +27,7 @@ Dockerを宣言的に定義し、コンテナのプロビジョニングを行�
 
 コンテナオーケストレーションにおける1つのコンテナを定義する。サービス名には役割名（```app```、```web```、```db```）を名付けると良い。コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。```docker-compose```コマンドの引数として指定するため、できるだけ簡潔にする。オプション一覧は以下のリンクを参考にせよ。
 
-参考：https://docs.docker.jp/compose/compose-file.html
+ℹ️ 参考：https://docs.docker.jp/compose/compose-file.html
 
 <br>
 
@@ -107,7 +107,7 @@ services:
 
 **＊実装例＊**
 
-mysqlイメージを使用してコンテナを作成するときに、最初に文字コードを設定するコマンドを実行する。
+mysqlイメージを使用してコンテナを作成する時に、最初に文字コードを設定するコマンドを実行する。
 
 ```yaml
 services:
@@ -179,11 +179,11 @@ MYSQL_PASSWORD=qux # 一般ユーザーのパス
 
 mysqlイメージでは、環境変数の設定に応じて、コンテナ起動時にSQLが実行されるようになっている。DB名の環境変数が設定されている場合は『```CREATE DATABASE```』、またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される。
 
-参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
+ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
 
 ルートユーザー名は定義できず、『```root```』となる。
 
-参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
+ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
 
 <br>
 
@@ -191,7 +191,7 @@ mysqlイメージでは、環境変数の設定に応じて、コンテナ起動
 
 他のコンテナに対してコンテナポートを開放する。ホスト側からはアクセスできないことに注意する。
 
-参考：https://docs.docker.com/compose/compose-file/compose-file-v3/#expose
+ℹ️ 参考：https://docs.docker.com/compose/compose-file/compose-file-v3/#expose
 
 ```yaml
 services:
@@ -276,9 +276,9 @@ services:
 
 #### ▼ ```fluentd```
 
-コンテナで生成されたログをFluentdコンテナに転送する。ログの転送元よりも先に起動するようにしておく必要がある。
+コンテナで作成されたログをFluentdコンテナに転送する。ログの転送元よりも先に起動するようにしておく必要がある。
 
-参考：https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
+ℹ️ 参考：https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
 
 **＊実装例＊**
 
@@ -434,7 +434,7 @@ services:
 
 ### ```stdin_open```
 
-docker-composeコマンドの裏側で実行される```docker run```コマンドで、```i```オプションを有効化するかどうかを設定する。
+docker-composeコマンドの裏側で実行される```docker run```コマンドで、```i```オプションを有効化するか否かを設定する。
 
 **＊実装例＊**
 
@@ -448,7 +448,7 @@ services:
 
 ### ```tty```
 
-docker-composeコマンドの裏側で実行される```docker run```コマンドで、```t```オプションを有効化するかどうかを設定する。疑似ターミナルを割り当てるによって、```exit```の後もバックグラウンドでコンテナを起動させ続けられる。
+docker-composeコマンドの裏側で実行される```docker run```コマンドで、```t```オプションを有効化するか否かを設定する。疑似ターミナルを割り当てるによって、```exit```の後もバックグラウンドでコンテナを起動させ続けられる。
 
 **＊実装例＊**
 
@@ -480,13 +480,13 @@ services:
 
 最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。dockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
 
-参考：https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
+ℹ️ 参考：https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
 
 **＊実装例＊**
 
 MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。datadirディレクトリについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html
 
 ```yaml
 service:
@@ -508,7 +508,7 @@ volumes:
 mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
 ```
 
-参考：https://t-cr.jp/memo/c5179ef2b476237a
+ℹ️ 参考：https://t-cr.jp/memo/c5179ef2b476237a
 
 <br>
 
@@ -609,7 +609,7 @@ $ docker network inspect foo-network
 
 異なる```docker-compose.yml```ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、```<プロジェクト名>_<外部ネットワーク名>```になる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 - https://nishinatoshiharu.com/external-docker-network/
@@ -697,7 +697,7 @@ volumes:
 
 mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある。このディレクトリ配下に配置された```sql```ファイルや```bash```プロセスは、mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される。そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの投入や複数DBの作成を実現できる。具体的な実行タイミングについては、以下のリンクを参考にせよ。
 
-参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
+ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
 **＊実装例＊**
 
@@ -741,5 +741,5 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 
 PHPUnitで接続するDBを指定する方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 

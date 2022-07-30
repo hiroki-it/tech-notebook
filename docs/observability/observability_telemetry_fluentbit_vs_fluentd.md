@@ -9,7 +9,7 @@ description: FluentBit vs. Fluentd＠テレメトリー収集ツールの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: FluentBit vs. Fluentd＠テレメトリー収集ツールの知見�
 
 アプリケーションからログを収集し、これをフィルタリングした後、複数の宛先にルーティングする。
 
-参考：https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
+ℹ️ 参考：https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
 
 <br>
 

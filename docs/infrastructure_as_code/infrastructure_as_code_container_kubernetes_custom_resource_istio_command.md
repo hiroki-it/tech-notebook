@@ -9,7 +9,7 @@ description: コマンド＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ $ brew install istioctl
 
 #### ▼ GitHubリポジトリから
 
-参考：https://istio.io/latest/docs/setup/getting-started/#download
+ℹ️ 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
 （１）インストール先のディレクトリに移動する。
 
@@ -54,11 +54,11 @@ $ export PATH=$PWD/bin:$PATH
 
 Istioの機能のセットを提供する。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
 #### ▼ プロファイルの種類
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
@@ -72,25 +72,15 @@ Istioの機能のセットを提供する。
 
 <br>
 
-### KubernetesにおけるIstioの有効化
-
-KubernetesリソースでIstioリソースを使用できるように、```istio-injection```キーの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にapplyできるようになる。```default```以外のNamespace名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
-
-```bash
-$ kubectl label namespace default istio-injection=enabled
-```
-
-<br>
-
 ## 02. istioctlコマンド
 
 ### analyze
 
 #### ▼ analyzeとは
 
-Istioが正しく機能しているかどうかを検証する。
+Istioが正しく機能しているか否かを検証する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 
 
 
@@ -138,13 +128,13 @@ $ istioctl x uninstall --purge
 
 プロファイルをインストールし、また設定値を変更する。
 
-参考：https://istio.io/latest/docs/setup/install/istioctl/
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/
 
 #### ▼ -f
 
 IstioOperatorのマニフェストファイルを使用して、プロファイルをインストールする。
 
-参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
 $ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
@@ -154,13 +144,13 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 インストールするもの、または変更する項目を指定する。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
 | オプション例                               | 説明                                                         | 補足                                                         |
 | ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```meshConfig.accessLogFile=/dev/stdout``` | アクセスログの出力先を標準出力に変更する。                   |                                                              |
 | ```profile=default```                      | 指定したプロファイルをインストールする。                     |                                                              |
-| ```revision=n-n-n```                       | 既存のIstioのコントロールプレーンを稼働させつつ、指定したバージョンのコントロールプレーンをカナリアリリースする。バージョンは、ケバブケースで設定する必要がある。 | 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
+| ```revision=n-n-n```                       | 既存のIstioのコントロールプレーンを稼働させつつ、指定したバージョンのコントロールプレーンをカナリアリリースする。バージョンは、ケバブケースで設定する必要がある。 | ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
 
 <br>
 
@@ -168,9 +158,9 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 #### ▼ kube-injectとは
 
-Envoyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
+istio-proxyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 
 ```bash
 $ istioctl kube-inject
@@ -184,7 +174,7 @@ $ istioctl kube-inject
 
 ymlファイルの差分を取得する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
 $ istioctl manifest diff <変更前マニフェストファイルへのパス> <変更後マニフェストへのパス>
@@ -215,7 +205,7 @@ Operator controller will watch namespaces: istio-system
 
 Istioのプロファイルを操作する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
 #### ▼ list
 
@@ -243,7 +233,7 @@ Istio configuration profiles:
 
 Istio上で管理されるEnvoyの構成情報を取得する。
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
 - https://sreake.com/blog/istio/
@@ -301,9 +291,9 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ proxy-statusとは
 
-IngressGateway、EgressGateway、Envoyコンテナのステータスを取得する。
+IngressGateway、EgressGateway、istio-proxyコンテナのステータスを取得する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
 ```bash
 $ istioctl proxy-status  
@@ -324,7 +314,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 Istioのインプレースデプロイメントを実行する。
 
-参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 ```bash
 $ istioctl upgrade
@@ -345,7 +335,7 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 
 Istioリソースのapplyが正しく実行されたかを検証する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
+ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 
 ```bash
 $ istioctl verify-install

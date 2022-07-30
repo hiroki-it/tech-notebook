@@ -9,7 +9,7 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
 **＊実装例＊**
 
@@ -35,7 +35,7 @@ configValidationMode: warn
 
 スコープが```serverless.yml```ファイル内のみの変数を設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
 
 **＊実装例＊**
 
@@ -52,7 +52,7 @@ custom:
 
 Serverless Frameworkのバージョンを設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
 **＊実装例＊**
 
@@ -66,7 +66,7 @@ frameworkVersion: '2'
 
 ### functionsとは
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions
 
 <br>
 
@@ -88,7 +88,7 @@ functions:
 
 Lambda関数の環境変数を設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 
 **＊実装例＊**
 
@@ -109,7 +109,7 @@ functions:
 
 Lambda関数に紐づけて作成するEventBridgeを設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
 
 **＊実装例＊**
 
@@ -127,7 +127,7 @@ functions:
 
 Lambda関数に紐づけるSQSを設定する。新しくSQSを作成できず、既存のSQSと紐づける機能しかないことに注意する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
 **＊実装例＊**
 
@@ -161,7 +161,7 @@ functions:
 
 Lambda関数の再試行回数を設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
 **＊実装例＊**
 
@@ -235,9 +235,9 @@ functions:
 
 ### packageとは
 
-生成されるアーティファクトのパスを設定する。
+作成されるアーティファクトのパスを設定する。
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 
 <br>
 
@@ -370,7 +370,7 @@ provider:
 
 ### resourcesとは（awsプロバイダーの場合）
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
 
 <br>
 
@@ -406,7 +406,7 @@ resources:
 
 ### serviceとは（awsプロバイダーの場合）
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
+ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
 
 **＊実装例＊**
 

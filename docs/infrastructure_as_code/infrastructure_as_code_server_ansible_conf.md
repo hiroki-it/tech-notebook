@@ -9,7 +9,7 @@ description: 設定ファイル＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: 設定ファイル＠Ansibleの知見を記録しています。
 
 コントロールノードと管理対象ノードから構成される。コントロールノードに相当するデプロイサーバーにはAnsibleがインストールされている。もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
-参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
+ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
 ![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
 
@@ -29,7 +29,7 @@ description: 設定ファイル＠Ansibleの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ sudo apt -y install sshpass
@@ -43,7 +43,7 @@ $ pip3 install ansible
 
 ### ディレクトリ構成
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
 - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
@@ -87,7 +87,7 @@ repository/
 
 ### 命名規則
 
-参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
+ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 
 <br>
 
@@ -99,7 +99,7 @@ repository/
 
 サーバーのセットアップ処理を設定する。実装の種類別に、```roles```ディレクトリに切り分けても良い。
 
-参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
 
 **＊実装例＊**
 
@@ -140,7 +140,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 
 特定の機能に関するタスクが設定されたファイルを配置する。```playbook.yml```ファイルを切り分けるために使用する。
 
-参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
+ℹ️ 参考：https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
 #### ▼ taskディレクトリ
 
@@ -237,7 +237,7 @@ taskファイルの後続処理が設定されたhandlerファイルを配置す
 
 複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。```inventories```ディレクトリと同じ階層に配置し、また```inventory```ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。自動的に読み込まれ、```playbook```ファイルや```inventory```ファイルで出力できる。
 
-参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
+ℹ️ 参考：https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
 #### ▼ group_varファイル
 
@@ -259,7 +259,7 @@ ports:
 
 ポート番号のリストを```playbook```ファイルで出力する
 
-参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
+ℹ️ 参考：https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
 ```yaml
 # 〜 中略 〜
@@ -301,7 +301,7 @@ ports:
 
 管理対象ノードが設定された```inventory```ファイルを配置する。Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
 
-参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
+ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
@@ -311,7 +311,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 管理対象ノードを設定する。```ini```形式または```yml```形式で定義する。実行環境（本番/ステージング）別にファイルを切り分けると良い。また、サーバーを冗長化している場合は、これも別々に定義しておく。プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
 - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
@@ -392,7 +392,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 プレイの実行先のノードを設定する。必須である。
 
-参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -424,7 +424,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 #### ▼ becomeとは
 
-プレイをroot権限で実行するかどうかを設定する。
+プレイをroot権限で実行するか否かを設定する。
 
 ```yaml
 - become: yes
@@ -436,7 +436,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 #### ▼ gather_factsとは
 
-ファクト変数を収集するかどうかを設定する。
+ファクト変数を収集するか否かを設定する。
 
 ```yaml
 - gather_facts: no
@@ -450,7 +450,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上で実行するセットアップ処理を手続き的に設定する。必須である。
 
-参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -472,7 +472,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上で```service```コマンドの実行を設定する。
 
-参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
+ℹ️ 参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
 ```yaml
 - tasks:
@@ -489,7 +489,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『```|```』を使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
@@ -507,7 +507,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上で```systemctl```コマンドの実行を設定する。
 
-参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
+ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
 ```yaml
 - tasks:
@@ -540,7 +540,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノードに設定された環境変数を出力する。```gather_facts```オプションを有効化する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
@@ -568,7 +568,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 task内で出力できる環境変数を設定する。
 
-参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
+ℹ️ 参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
 
 ```yaml
 - task:
@@ -588,7 +588,7 @@ task内で出力できる環境変数を設定する。
 
 プレイで使用する設定値を変数として設定する。設定した変数は、```ansible.builtin.template```オプションを使用して```j2```ファイルに出力できる。
 
-参考：
+ℹ️ 参考：
 
 - https://blog.katsubemakito.net/ansible/ansible-1st-4
 - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
@@ -621,7 +621,7 @@ task内で出力できる環境変数を設定する。
 
 コントロールノードに設定された環境変数を出力する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env

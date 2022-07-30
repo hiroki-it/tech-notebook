@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,11 +19,11 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 DDDが適する機能要件の多いアプリケーションだけでなく、あらゆる種類のソフトウェアに適用できる。クリーンアーキテクチャ原著の序文にて、著者は『私は、今まで色々な種類のシステムを作ってきたが、どのシステムもアーキテクチャもルールは同じだった。異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
 
-参考：https://www.amazon.co.jp/dp/B07FSBHS2V
+ℹ️ 参考：https://www.amazon.co.jp/dp/B07FSBHS2V
 
 #### ▼ 構成
 
-参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+ℹ️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
@@ -62,11 +62,11 @@ DDDが適する機能要件の多いアプリケーションだけでなく、�
 
 | 入力時/出力時 | 責務                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 入力           | インフラ層のルーターから入力される認証情報を照合し、認証を実行する。 | 認証はインターフェース層あるいはユースケース層に実装する。<br>参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173 |
-|                | インフラ層のルーターから入力されるパラメーターをAPI仕様（必須、書式、など）と照らし合わせ、バリデーションを実行する。 | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり、データの値が正しいかどうかの検証は、ユースケース層やドメイン層に実装する。 |
-|                | インフラ層のルーターから入力されるパラメーターをリクエストモデルに変換し、ユースケース層のインターラクターに入力する。 | リクエストモデル生成処理で、ドメイン層への依存が必要になる。リクエストモデル生成処理を切り分け、ユースケース層に配置すると、コントローラーがドメイン層に依存することを防げる。 |
+| 入力           | インフラ層のルーターから入力される認証情報を照合し、認証を実行する。 | 認証はインターフェース層あるいはユースケース層に実装する。<br>ℹ️ 参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173 |
+|                | インフラ層のルーターから入力されるパラメーターをAPI仕様（必須、書式、など）と照らし合わせ、バリデーションを実行する。 | データの値がAPI仕様と比較して正しいか否かを検証することに止まり、データの値が正しいか否かの検証は、ユースケース層やドメイン層に実装する。 |
+|                | インフラ層のルーターから入力されるパラメーターをリクエストモデルに変換し、ユースケース層のインターラクターに入力する。 | リクエストモデル作成処理で、ドメイン層への依存が必要になる。リクエストモデル作成処理を切り分け、ユースケース層に配置すると、コントローラーがドメイン層に依存することを防げる。 |
 | 出力           | ユースケース層のインターラクターから出力されるレスポンスモデルを、JSONデータとしてフロントエンドにに返信する。 | バックエンドをAPIとして使用する場合、プレゼンターは不要である。 |
-|                | ユースケース層のインターラクターから出力されるプレゼンターをビューモデルに変換し、バックエンドのテンプレートエンジンに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを生成する場合、プレゼンターが必要である。 |
+|                | ユースケース層のインターラクターから出力されるプレゼンターをビューモデルに変換し、バックエンドのテンプレートエンジンに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを作成する場合、プレゼンターが必要である。 |
 
 <br>
 
@@ -76,7 +76,7 @@ DDDが適する機能要件の多いアプリケーションだけでなく、�
 
 バックエンドからフロントエンドに出力するため、。バックエンドがテンプレートエンジンを持つフレームワークの時に、バックエンドからフロントエンドのロジックを分離するために使用する。一方で、バックエンドとフロントエンドを完全に分離し、バックエンドがJSONデータを返信するAPIとして機能する場合や、フロントエンドにテンプレートエンジンを組み込む場合は、プレゼンターを使用しない。補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-参考：
+ℹ️ 参考：
 
 - https://izumisy.work/entry/2019/12/12/000521
 - https://codezine.jp/article/detail/9749
@@ -129,7 +129,7 @@ class FormatValidator
 
 インターフェース層からユースケース層までの処理の流れを以下に示す。
 
-参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+ℹ️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
 ![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
 
@@ -143,11 +143,11 @@ class FormatValidator
 
 | 入力時/出力時 | 責務                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 入力           | プレゼンテーション層のコントローラーから入力されるリクエストパラメーターを、ソフトウェア上のルール（ユースケース）と照らし合わせてバリデーションを実行する。 | データの値がシステム上あり得ないかどうかを検証する。ビジネス上あり得ない値かどうかはドメイン層にSpecificationパターンとして実装する。 |
+| 入力           | プレゼンテーション層のコントローラーから入力されるリクエストパラメーターを、ソフトウェア上のルール（ユースケース）と照らし合わせてバリデーションを実行する。 | データの値がシステム上あり得ないか否かを検証する。ビジネス上あり得ない値か否かはドメイン層にSpecificationパターンとして実装する。 |
 |                | ドメイン層のメソッドを組み合わせて、ユーザーの要求に対するソフトウェアの振舞（ユースケース）を具現化する。 |                                                              |
 |                | プレゼンテーション層のコントローラーから入力されるリクエストパラメーターを、ドメイン層のインターフェースリポジトリに渡せるドメインモデルに変換する。 |                                                              |
 | 出力           | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルに変換し、インターフェース層のコントローラーに出力する。 | バックエンドをAPIとして使用する場合、プレゼンターは不要である。 |
-|                | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルを経てプレゼンターに変換し、インターフェース層のコントローラーに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを生成する場合、プレゼンターが必要である。 |
+|                | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルを経てプレゼンターに変換し、インターフェース層のコントローラーに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを作成する場合、プレゼンターが必要である。 |
 
 #### ▼ ユースケースとメソッド名
 
@@ -159,14 +159,14 @@ class FormatValidator
 | showFoo              | showFooRequest                     | showFooResponse                      |                                                              |
 | createFoo            | createFooRequest                   | createFooResponse                    |                                                              |
 | updateFoo            | updateFooRequest                   | updateFooResponse                    |                                                              |
-| saveFoo（upsertFoo） | saveFooRequest（upsertFooRequest） | saveFooResponse（upsertFooResponse） | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>参考：https://github.com/little-hands/ddd-q-and-a/issues/241 |
+| saveFoo（upsertFoo） | saveFooRequest（upsertFooRequest） | saveFooResponse（upsertFooResponse） | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>ℹ️ 参考：https://github.com/little-hands/ddd-q-and-a/issues/241 |
 | deleteFoo            | deleteFooRequest                   | deleteFooResponse                    |                                                              |
 
 #### ▼ ユースケース図
 
 ユースケース図については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -791,7 +791,7 @@ class YmdType extends Type
 
 ドメイン層のエンティティに持たせるとやや不自然で、他のドメインオブジェクトを対象とした振舞ロジックを切り分けたもの。ドメインサービスは、他のドメインオブジェクトにロジックをメソッドとして提供するだけで、自身の状態を変化させるメソッドは持たせないようにする。全てのメソッドを1つのドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理した方が良い。この時、エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する。ちなみに、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/little-hands/ddd-q-and-a/issues/159
 - https://www.amazon.co.jp/dp/B082WXZVPC
@@ -799,9 +799,9 @@ class YmdType extends Type
 
 #### ▼ 重複確認
 
-ドメイン層のリポジトリを使用して、該当の名前のエンティティがDBに存在するかどうかを検証する。ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
+ドメイン層のリポジトリを使用して、該当の名前のエンティティがDBに存在するか否かを検証する。ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
 - https://www.amazon.co.jp/dp/B082WXZVPC
@@ -830,7 +830,7 @@ class CheckDuplicateFooService
     }
     
     /**
-     * エンティティがすでに存在しているかどうかを判定します。
+     * エンティティがすでに存在しているか否かを判定します。
      *
      * @param Foo $foo
      * @return bool
@@ -849,7 +849,7 @@ class CheckDuplicateFooService
 
 ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
 - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
@@ -951,7 +951,7 @@ class FooSpecification
 
 #### ▼ 検索条件入力データ
 
-リクエストのパスパラメーターとクエリパラメーターを引数として、検索条件のオブジェクトを生成する。ビジネスルールのバリデーションを行うSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。
+リクエストのパスパラメーターとクエリパラメーターを引数として、検索条件のオブジェクトを作成する。ビジネスルールのバリデーションを行うSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。
 
 **＊実装例＊**
 
@@ -978,7 +978,7 @@ class FooCriteria
     private string $email;
 
     /**
-     * 検索条件のオブジェクトを生成します。
+     * 検索条件のオブジェクトを作成します。
      * 
      * @param array $array
      * @return $this
@@ -1082,7 +1082,7 @@ final class User
 
 ドメイン層のロジックをユースケース層のユースケース層に実装してしまうと、ドメイン層のエンティティや値オブジェクトに実装するドメインロジックがなくなってしまい、ドメイン貧血症になる。ドメイン層とユースケース層のアプリケーションサービスのいずれに実装するべきかは、モデリングの対象がビジネスルールに基づくものなのか、ソフトウェア利用者のユースケースに基づくものなのかである。
 
-参考：https://www.amazon.co.jp/dp/B082WXZVPC
+ℹ️ 参考：https://www.amazon.co.jp/dp/B082WXZVPC
 
 <br>
 
@@ -1550,7 +1550,7 @@ class Address extends ValueObject
     }
 
     /**
-     * 郵便番号を生成し、返却します
+     * 郵便番号を作成し、返却します
      * 
      * @return string
      */
@@ -1564,7 +1564,7 @@ class Address extends ValueObject
     }
 
     /**
-     * 住所を生成し、返却します
+     * 住所を作成し、返却します
      * 
      * @return string
      */
@@ -1669,7 +1669,7 @@ class Name extends ValueObject
 
 #### ▼ 不変性の実現方法
 
-値オブジェクトは不変的であり、インスタンスとして生成されて以降、データは変更されない。オブジェクトの不変性を実現するために、オブジェクトにセッターを定義しないようにし、データの設定には```construct```メソッドだけを使用するようにする。
+値オブジェクトは不変的であり、インスタンスとして作成されて以降、データは変更されない。オブジェクトの不変性を実現するために、オブジェクトにセッターを定義しないようにし、データの設定には```construct```メソッドだけを使用するようにする。
 
 **＊実装例＊**
 
@@ -1811,7 +1811,7 @@ $foo->bar // __getメソッドが代わりにコールされ、プロパティ�
 
 ### 交換可能性
 
-オブジェクトが新しくインスタンス化された場合、以前に同一オブジェクトから生成されたインスタンスから新しく置き換える必要がある。
+オブジェクトが新しくインスタンス化された場合、以前に同一オブジェクトから作成されたインスタンスから新しく置き換える必要がある。
 
 <br>
 
@@ -2051,7 +2051,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと。依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 <br>
 
@@ -2059,7 +2059,7 @@ class DogOrder
 
 インフラ層のリポジトリでは、ルートエンティティの単位で、データの書き込み/読み出しのトランザクション処理を実行する。ルートエンティティを定義づける時の注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。
 
-参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+ℹ️ 参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
@@ -2069,7 +2069,7 @@ class DogOrder
 
 #### ▼ DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 ### リポジトリ
 
@@ -2079,7 +2079,7 @@ class DogOrder
 
 デザインパターンの一種。一例として、以下のメソッドを持つ。具体的な実装については、インターフェースリポジトリの実装を参考にせよ。CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
-参考：
+ℹ️ 参考：
 
 - https://codewithshadman.com/repository-pattern-csharp/
 - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
@@ -2092,15 +2092,15 @@ class DogOrder
 | findAllByCriteria | Criteria型                           | ドメインモデル型を持つ配列 | 条件に合致した全てのドメインモデルを取得する。               |
 | create            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成する。               |
 | update            | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを更新する。               |
-| save（upsert）    | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるかどうかを確認する。取得できない場合は、更新処理を実行する。<br>参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
+| save（upsert）    | ルートエンティティのドメインモデル型 | void型                     | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>ℹ️ 参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                                 | void型                     | ルートエンティティのドメインモデルを削除する。               |
 
 #### ▼ 他の類似するデザインパターンとの比較
 
 | デザインパターン      | 駆動の種類  | ドメインモデルとテーブルの関連度合い                                                                                 | 採用パッケージ例                                                   | 適所                                                                                             | 補足                                                                                                                   |
 |---------------|--------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Active Record | DB駆動   | ・非常に強い。<br>・手順としてテーブル設計が先にあり、1つのドメインモデルが1つのテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent（PHP）<br>・Active Record（Ruby）<br>・Hibernate（Java） | ビジネスロジックが複雑でないアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
-| Data Mapper   | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                          | Doctrine                                                   | ビジネスロジックが複雑なアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3   | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
+| Active Record | DB駆動   | ・非常に強い。<br>・手順としてテーブル設計が先にあり、1つのドメインモデルが1つのテーブルに対応している。<br>・テーブル間のリレーションシップによって、ドメインモデル間の依存関係が決まる。 | ・Eloquent（PHP）<br>・Active Record（Ruby）<br>・Hibernate（Java） | ビジネスロジックが複雑でないアプリケーション<br>ℹ️ 参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく、ORMの実装方法の1つである。<br>ℹ️ 参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/   |
+| Data Mapper   | ドメイン駆動 | ・弱い<br>・Entityマネージャを使用して、ドメインモデルをDBに永続化する。                                                          | Doctrine                                                   | ビジネスロジックが複雑なアプリケーション<br>ℹ️ 参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3   | ActiveRecordパターンと同じく、ORMの実装方法の1つである。<br>ℹ️ 参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
 | Repository    | ドメイン駆動 | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。1つのドメインモデルが複数のテーブルを参照しても良い。                      |                                                            | ビジネスロジックが複雑なアプリケーション                                                                           | DB、RDMS、NoSQL、なんでもでも良い。                                                                                              |
 | なし            | なし     | 非常に弱い                                                                                              | DBファサード                                                    |                                                                                                |                                                                                                                      |
 
@@ -2108,7 +2108,7 @@ class DogOrder
 
 リポジトリパターンを使用する。責務として、DBに対してデータの書き込み/読み出しのトランザクション処理を実行する。トランザクションはルートエンティティを単位として定義する必要があるため、リポジトリも同じくルートエンティティを単位として定義づけることになる。そのため、引数の型はルートエンティティのドメインモデル型になる。リポジトリではルートエンティティを意識して実装する必要がある一方で、DBのどのテーブルにデータが存在しているかを問わない。これにより、ルートエンティティとDBテーブルを別々に設計できる。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
 
 #### ▼ インターフェースリポジトリ
 
@@ -2183,7 +2183,7 @@ DBに対する書き込み操作を行う。
 
 
 
-参考：
+ℹ️ 参考：
 
 - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2210,7 +2210,7 @@ class DogToyRepository
      */
     public function create(DogToy $dogToy): DogToy
     {
-        // クエリビルダ生成
+        // クエリビルダ作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2246,7 +2246,7 @@ class DogToyRepository
      */
     public function update(DogToy $dogToy): DogToy
     {
-        // クエリビルダ生成
+        // クエリビルダ作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2284,7 +2284,7 @@ class DogToyRepository
      */
     public function delete(ToyId $toyId): bool
     {
-        // クエリビルダ生成
+        // クエリビルダ作成
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
@@ -2309,7 +2309,7 @@ DBに対する書き込み操作を行う。
 3. ファクトリによって、レコードからエンティティや値オブジェクトを作成する。
 4. リポジトリからルートエンティティを返却し、ユースケース層に渡す。
 
-参考：
+ℹ️ 参考：
 
 - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -2337,7 +2337,7 @@ class DogToyRepository
      */
     public function findAll(): array
     {
-        // クエリビルダ生成
+        // クエリビルダ作成
         $query = $this->createQueryBuilder();
         
         // SQLを設定する。
@@ -2458,7 +2458,7 @@ class DogComboFactory
 
 ドメインイベントが発生した場合、それに紐付く処理を実行する。フレームワークの機能に依存することになるため、実装の詳細をインフラ層におく。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
@@ -2467,7 +2467,7 @@ class DogComboFactory
 
 イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。そのため、名前は『イベント名』＋Listener（Handler）となる。
 
-参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
+ℹ️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
 <br>
 
@@ -2485,7 +2485,7 @@ class DogComboFactory
 
 パスワードのハッシュ化。
 
-参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
+ℹ️ 参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
 
 <br>
 
@@ -2495,7 +2495,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり、スローされた例外を対処する責務は、より上位レイヤーに持たせる。より上位レイヤーでは、そのレイヤーに合った例外に詰め替えて、これをスローする。最終的には、ユーザーインターフェース層まで持ち上げ、画面上のポップアップで警告文としてこれを表示する。例外スローの意義については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
 
 <br>
 

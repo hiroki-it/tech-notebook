@@ -9,7 +9,7 @@ description: ブラックボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ホワイトボックステストと組み合わせてユニットテストを構成する。実装内容は気にせず、入力に対して、適切な出力が行われているかを検証する。ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-参考：https://www.amazon.co.jp/dp/477415377X
+ℹ️ 参考：https://www.amazon.co.jp/dp/477415377X
 
 ![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
 

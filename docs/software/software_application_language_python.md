@@ -9,7 +9,7 @@ description: Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -134,7 +134,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 Pythonの命名規則は、PEPに記載されている。
 
-参考：
+ℹ️ 参考：
 
 - https://www.python.org/dev/peps/pep-0007/
 - https://pep8-ja.readthedocs.io/ja/latest/
@@ -184,7 +184,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 ディレクトリに相当する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.python.org/ja/3/reference/import.html#packages
 
@@ -203,7 +203,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 パッケージ内の各ファイルに相当する。
 
-参考：
+ℹ️ 参考：
 
 - https://rinatz.github.io/python-book/ch04-01-modules/
 - https://qiita.com/msi/items/d91ea3900373ff8b09d7
@@ -220,13 +220,13 @@ Pythonの命名規則は、PEPに記載されている。
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
-参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+ℹ️ 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
 
 #### ▼ アスタリスクを使用しないこと
 
 アスタリスクによるインポートは非推奨である。
 
-参考：https://python.civic-apps.com/wildcard-import/
+ℹ️ 参考：https://python.civic-apps.com/wildcard-import/
 
 #### ▼ 絶対パスを使用すること
 
@@ -267,7 +267,7 @@ def bar():
 
 複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、1つずつインポートした方が良い。
 
-参考：https://www.tech-teacher.jp/blog/python-import/
+ℹ️ 参考：https://www.tech-teacher.jp/blog/python-import/
 
 ```python
 # import foo, bar

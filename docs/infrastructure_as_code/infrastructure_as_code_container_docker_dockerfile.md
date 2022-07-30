@@ -9,7 +9,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 Dockerを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
 
 <br>
 
@@ -37,6 +37,12 @@ Dockerfileを使用することにより、コンテナイメージの作成か�
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 ```
 
+その他、プルしたコンテナイメージ内でちょっとしたコマンドを検証したいといった場合にも役立つ。
+
+```bash
+$ docker run --rm -it <検証したいコンテナイメージID> ls
+```
+
 <br>
 
 ## 02. 命令
@@ -47,13 +53,13 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 
 ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが```tar```ファイルの場合は解凍する。また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。
 
-参考：https://docs.docker.com/engine/reference/builder/#add
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#add
 
 #### ▼ COPYとの違い
 
 似た命令として```COPY```がある。```ADD```は```COPY```とは異なり、インターネットからファイルをダウンロードし、解凍も行う。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、```COPY```が推奨である。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/zembutsu/items/a96b68277d699f79418d
 - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles
@@ -140,7 +146,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 イメージのプロセスの起動コマンドを実行する。パラメータの記述形式には、文字列形式、JSON形式がある。
 
-参考：https://docs.docker.com/engine/reference/builder/#cmd
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
 
 #### ▼ 注意点
 
@@ -167,7 +173,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 ホスト側（第一引数）のディレクトリ/ファイルをコンテナ側（第二引数）にコピーする。コンテナ側のパスは、```WORKDIR```をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『```/```』で終える必要がある。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストからコンテナにコピーしたい時によく使用する。
 
-参考：https://docs.docker.com/engine/reference/builder/#copy
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#copy
 
 <br>
 
@@ -177,7 +183,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 イメージのプロセスの起動コマンドを実行する。
 
-参考：https://docs.docker.com/engine/reference/builder/#entrypoint
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#entrypoint
 
 #### ▼ CMDとの違い
 
@@ -196,7 +202,7 @@ $ docker run --rm -it <コンテナイメージ名> /bin/bash
 
 OS上のコマンド処理で展開できる変数を定義できる。
 
-参考：https://docs.docker.com/engine/reference/builder/#env
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#env
 
 <br>
 
@@ -206,7 +212,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 他のコンテナに対してコンテナポートを開放する。また、コンテナイメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用できるコンテナポートとして保証する機能もある。ホスト側からはアクセスできないことに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/engine/reference/builder/#expose
 
@@ -224,7 +230,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ベースのコンテナイメージを、コンテナにインストールする。
 
-参考：https://docs.docker.com/engine/reference/builder/#from
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#from
 
 ```dockerfile
 FROM python:latest-slim
@@ -244,7 +250,7 @@ FROM python:latest-slim
 
 イメージの対応するCPUアーキテクチャを設定する。ただし、DockerがマシンのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
 
-参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
+ℹ️ 参考：https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
 ```dockerfile
 FROM --platform=linux/amd64 python:latest-slim
@@ -260,7 +266,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ベースイメージ上に、ソフトウェアをインストールする。
 
-参考：https://docs.docker.com/engine/reference/builder/#run
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#run
 
 <br>
 
@@ -270,7 +276,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ボリュームマウントを行う。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/engine/reference/builder/#volume
 - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
@@ -283,6 +289,6 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ビルド中の各命令の作業ディレクトリを絶対パスで指定する。また、コンテナ接続時の最初のディレクトリも定義できる。
 
-参考：https://docs.docker.com/engine/reference/builder/#workdir
+ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#workdir
 
 <br>

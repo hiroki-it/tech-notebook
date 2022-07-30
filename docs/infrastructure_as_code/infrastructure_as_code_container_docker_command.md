@@ -9,7 +9,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 1. Docker Hubから、ベースとなるコンテナイメージをインストールする。
 2. Dockerfileがイメージレイヤーからなるコンテナイメージをビルド。
-3. コマンドによって、コンテナイメージ上にコンテナレイヤーを生成し、コンテナを作成。
+3. コマンドによって、コンテナイメージ上にコンテナレイヤーを作成し、コンテナを作成。
 4. コマンドによって、停止中コンテナを起動。
 5. コマンドによって、起動中コンテナに接続。
 
@@ -47,7 +47,7 @@ $ docker attach <起動中コンテナ名>
 
 **＊例＊**
 
-キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するかどうかを設定する。
+キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、```--force-rm```オプションを有効化するか否かを設定する。
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
@@ -59,7 +59,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ビルドするステージ名を設定する。マルチステージビルドの時に使用する。ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
+ℹ️ 参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
@@ -126,7 +126,7 @@ $ docker logs <コンテナ名>
 
 **＊例＊**
 
-コンテナレイヤーを生成し、コンテナを作成。起動はしない。
+コンテナレイヤーを作成し、コンテナを作成。起動はしない。
 
 ```bash
 $ docker create <コンテナ名> <コンテナイメージ名>:<バージョンタグ>
@@ -434,7 +434,7 @@ ff02::2	ip6-allrouters
 
 指定したホストポートとコンテナポートのマッピングを実行する。```--publish-all```オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
-参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -444,7 +444,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコ�
 
 他のコンテナに公開するコンテナポートを```expose```オプションで設定できる。これはDockerfileでEXPOSE命令として設定しても良い。なお、プロセスの受信するポートと合わせる必要がある。
 
-参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --expose=80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash

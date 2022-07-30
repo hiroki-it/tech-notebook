@@ -9,7 +9,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 ### セットアップ
 
-参考：https://pip.pypa.io/en/stable/installation/
+ℹ️ 参考：https://pip.pypa.io/en/stable/installation/
 
 <br>
 
@@ -61,7 +61,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 指定したパッケージをインストールする。
 
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
+ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
 ```bash
 $ pip3 install <パッケージ名>
@@ -83,7 +83,7 @@ $ pip3 freeze > requirements.txt
 
 アップグレードできるパッケージを一括でアップグレードする場合は、パイプラインと組み合わせる必要がある。
 
-参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
+ℹ️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
 
 ```bash
 $ pip3 freeze --local \
@@ -94,7 +94,7 @@ $ pip3 freeze --local \
 
 pip自身をアップグレードする。
 
-参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
+ℹ️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
 ```bash
 $ pip3 install --upgrade pip
@@ -127,7 +127,7 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 pipでインストールされたパッケージを元に、要件ファイルを作成する。
 
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
+ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
 ```bash
 # インストールのため
@@ -190,7 +190,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 pipでインストールしたパッケージ情報を取得する。
 
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
+ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
 ```bash
 $ pip3 show sphinx
@@ -218,7 +218,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 指定したパッケージをインストールする。
 
-参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
+ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 ```bash
 $ pip3 uninstall -y <パッケージ名>

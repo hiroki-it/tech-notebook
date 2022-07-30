@@ -9,7 +9,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -35,13 +35,13 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードをバイナリ形式のコードに翻訳した後、CPU上で命令が実行される。命令の結果はメモリに保管される。
 
-参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+ℹ️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/compiler_language.png)
 
 #### ▼ コンパイラによるビルド
 
-コンパイルによって、コードは機械語からなるバイナリ形式のコードに変換される。その後、バイナリ形式のコードはリンクされ。exeファイルとなる。この一連のプロセスを『ビルド』という。また、ビルドによって生成されたファイルを『アーティファクト（成果物）』という。
+コンパイルによって、コードは機械語からなるバイナリ形式のコードに変換される。その後、バイナリ形式のコードはリンクされ。exeファイルとなる。この一連のプロセスを『ビルド』という。また、ビルドによって作成されたファイルを『アーティファクト（成果物）』という。
 
 ![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ビルドとコンパイル.jpg)
 
@@ -55,7 +55,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードの文字列を言語の最小単位（トークン）の列に分解する。 以下に、トークンの分類方法の例を以下に示す。字句解析のアルゴリズムは、LexやFlexで実装されている。解析器をルーツを辿れない問題をブートストラップ問題という。
 
-参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
+ℹ️ 参考：https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
@@ -63,7 +63,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 トークンの列をツリー構造に変換する。構文解析のアルゴリズムは、BisonやYaccで実装されている。解析器をルーツを辿れない問題をブートストラップ問題という。コンパイラ型言語の構文解析に失敗した時、これらの構文解析言語はシンタックスエラーを出力する。
 
-参考：https://ja.wikipedia.org/wiki/Bison
+ℹ️ 参考：https://ja.wikipedia.org/wiki/Bison
 
 #### （３）Semantics analysis（意味解析）
 
@@ -73,7 +73,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードの冗長な部分を削除または編集する。機械語をより短くできる。
 
-#### （５）Code generation（コード生成）
+#### （５）Code generation（コード作成）
 
 最適化されたコードをバイナリ形式のコードに変換する。
 
@@ -101,7 +101,7 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 
 コードをバイナリ形式のコードに一行ずつ変換し、その都度、CPU上で命令が実行される。命令の結果はメモリに保管される。
 
-参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+ℹ️ 参考：https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 

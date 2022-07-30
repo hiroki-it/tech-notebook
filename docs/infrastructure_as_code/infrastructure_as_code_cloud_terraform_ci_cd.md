@@ -9,44 +9,9 @@ description: CI/CD＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
-
-## 01. リリース
-
-### リリースの粒度
-
-#### ▼ 大原則：プルリクエストを1つずつリリース
-
-基本的には、プルリクエストを1つずつリリースする。ただし、軽微なupdate処理が実行されるプルリクエストであれば、まとめてリリースしても良い。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要がある。経験則で、create処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。プルリクエストを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。
-
-#### ▼ 既存のリソースに対して、新しいリソースを紐づける場合
-
-既存のリソースに対して、新しいリソースを紐づける場合、新しいリソースの作成と紐づけを別々にリリースする。ロールバックでもたつきにくく、またTerraformで問題が起こったとしても変更点が紐づけだけなので、原因を追究しやすい。
-
-#### ▼ Terraformとプロバイダーの両方をアップグレードする場合
-
-Terraformとプロバイダーを別々にリリースする。
-
-#### ▼ DBインスタンスの設定変更でダウンタイムが発生する場合
-
-DBインスタンスの設定変更でダウンタイムが発生する場合、それぞれのDBインスタンスに対する変更を別々にリリースする。また、リリース順序は以下の通りとする。プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。
-
-1. リードレプリカの変更をリリースする。
-2. プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが機能する。
-
-ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
-
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
-
-<br>
-
-### ロールバックの方法
-
-Terraformには、インフラのバージョンのロールバック機能がない。そこで、1つ前のリリースタグをRerunすることにより、バージョンのロールバックを実行する。今回のリリースのcreate処理が少ないほどRerunでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。もしリリース時に問題が起こった場合、インフラのバージョンのロールバックを行う必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、1つ前のリリースタグをRerunするか否かを判断する。
-
-
 
 ## 02. CircleCIを使用したCI/CD
 
@@ -289,7 +254,7 @@ workflows:
 
 Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 **＊実装例＊**
 
@@ -459,7 +424,7 @@ terraform -chdir=./${ENV} validate
 
 Terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
 
-参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
+ℹ️ 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
 <br>
 
@@ -498,17 +463,23 @@ terraform -chdir=./${ENV} apply \
 
 ### ```tfnotify.yml```ファイル
 
-あらかじめ、GitHubのアクセストークンを発行し、CIツールの環境変数に登録しておく。
+#### ▼ ci
 
-**＊実装例＊**
-
-例として、GitHubの特定のリポジトリのプルリクエストエストにPOSTで送信する。
+使用するCIツールを設定する。
 
 ```yaml
 # https://github.com/mercari/tfnotify
 ---
 ci: circleci
+```
 
+#### ▼ notifier
+
+リポジトリに通知をPOST送信できるように、認証情報を設定する。
+
+```yaml
+# https://github.com/mercari/tfnotify
+---
 notifier:
   github:
     # 環境変数に登録したパーソナルアクセストークン
@@ -517,7 +488,15 @@ notifier:
       # 送信先のユーザー名もしくは組織名
       owner: "foo-company"
       name: "foo-repository"
+```
 
+#### ▼ terraform
+
+通知内容を設定する。
+
+```yaml
+# https://github.com/mercari/tfnotify
+---
 terraform:
   plan:
     template: |
@@ -544,3 +523,6 @@ terraform:
       <pre><code>{{ .Body }}
       </pre></code></details>
 ```
+
+<br>
+

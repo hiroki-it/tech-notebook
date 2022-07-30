@@ -10,7 +10,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -18,7 +18,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 Symfonyに組み込まれているORM。Data Mapperパターンで実装されている。
 
-参考：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
+ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-orm/en/2.11/tutorials/getting-started.html
 
 <br>
 
@@ -30,7 +30,7 @@ Symfonyに組み込まれているORM。Data Mapperパターンで実装され�
 
 CRUD処理に必要なSQLを保持し、トランザクションによってSQLを実行する。
 
-参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
+ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html
 
 **＊実装例＊**
 
@@ -131,7 +131,7 @@ $queryBuilder->getConnection()
 
 プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する方法。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、これを実行できなくなるため、SQLインジェクションの対策にもなる。SQLインジェクションについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
 **＊実装例＊**
 

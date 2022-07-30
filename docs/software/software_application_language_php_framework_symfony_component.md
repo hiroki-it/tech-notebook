@@ -9,13 +9,13 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
 ## 01. 参考になるリファレンス
 
-参考：https://symfony.com/doc/current/the-fast-track/ja/
+ℹ️ 参考：https://symfony.com/doc/current/the-fast-track/ja/
 
 <br>
 
@@ -48,7 +48,7 @@ symfony/
 │   
 ├── test/ # 自動テスト（Unit tests等）
 │  
-├── var/ # 自動生成されるファイル
+├── var/ # 自動作成されるファイル
 │   ├── cache/ # キャッシュファイル
 │   ├── logs/ # ログファイル
 │   └── sessions/
@@ -287,7 +287,7 @@ done
 #### ▼ オブジェクトから取り出されたメソッドの役割
 
 1. カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
-1. カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを生成。
+1. カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを作成。
 1. カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
    このカーネルを、特別に『HTTPカーネル』と呼ぶ。
 

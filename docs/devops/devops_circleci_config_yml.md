@@ -9,7 +9,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 ### アーキテクチャ
 
-参考：https://circleci.com/docs/2.0/server-3-overview/
+ℹ️ 参考：https://circleci.com/docs/2.0/server-3-overview/
 
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circleci_architecture.png)
 
@@ -35,7 +35,7 @@ description: config.yml@CircleCIの知見を記録しています。
 
 CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを使用することが推奨されている。なお、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
 
-参考：https://circleci.com/docs/2.0/gh-bb-integration/
+ℹ️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ▼ デバッグの事前準備
 
@@ -43,7 +43,7 @@ CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュに
 
 ```yaml
 workflows:
-  # build以外を実行しないことで、buildのみを検証できる。
+  # build以外を実行しないことにより、buildのみを検証できる。
   build-test-and-deploy:
     jobs:
       - build
@@ -91,7 +91,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH接続
 
-参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 （１）CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
 
@@ -115,7 +115,7 @@ https://circleci.com/docs/2.0/insights-tests/
 
 SSHキーを作成する必要がある。
 
-参考：https://circleci.com/docs/2.0/add-ssh-key/
+ℹ️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
 
 | 鍵名         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -235,7 +235,7 @@ commands:
 
 #### ▼ string型
 
-引数として、任意の文字列を渡したいときに使用する。```workflows```にて、値を設定する。
+引数として、任意の文字列を渡したい時に使用する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -311,7 +311,7 @@ workflows:
 
 #### ▼ enum型
 
-引数として、特定の文字列や整数のみを渡したいときに使用する。```workflows```にて、値を設定する。
+引数として、特定の文字列や整数のみを渡したい時に使用する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -329,7 +329,7 @@ jobs:
         enum: ["dev", "stg", "prd"]
     steps:
       - run:
-        # デフォルト値testを与えるときは何も設定しない
+        # デフォルト値testを与える時は何も設定しない
         name: Deploy to << parameters.environment >>
         command:
         # 何らかの処理
@@ -356,7 +356,7 @@ workflows:
 
 #### ▼ job parametersを参照
 
-引数として、任意の文字列を```executors```に渡したいときに使用する。他のparametersとは異なり、```job```にて、値を設定する。
+引数として、任意の文字列を```executors```に渡したい時に使用する。他のparametersとは異なり、```job```にて、値を設定する。
 
 ```yaml 
 version: 2.1
@@ -516,7 +516,7 @@ jobを実行する仮想環境を選択できる。
 
 dockerコンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
-参考：https://circleci.com/docs/ja/2.0/building-docker-images/
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
@@ -578,7 +578,7 @@ jobs:
 
 CircleCIの実行環境のスペックを設定する。Workflow間のキャッシュの使い回しと同様にして、ビルドの完了までの速さを改善できる。
 
-参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
+ℹ️ 参考：https://circleci.com/docs/ja/configuration-reference#resourceclass
 
 ```yaml
 version: 2.1
@@ -642,7 +642,7 @@ workflows:
 
 Workflow間で使いまわせるキャッシュを作成する。```resource_class```オプションによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のworkflowで同じパッケージがインストールされる。しかし、workflowのたびに、パッケージをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のworkflowのビルド時に、vendorディレクトリ配下に配置されたアーティファクトを再利用する。この機能は、複数のworkflowの間だけでなく、1つのworkflowの中でも利用できる。
 
-参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
@@ -1056,7 +1056,7 @@ workflows:
 
 処理を実行するディレクトリーを指定する。
 
-参考：
+ℹ️ 参考：
 
 - https://www.engilaboo.com/circleci-working-directory/
 - https://nju33.com/notes/circleci/articles
@@ -1076,7 +1076,7 @@ workflows:
 
 環境変数は基本的にシェルの実行時のみ使用でき、CircleCIのオプション値としては出力できない。ただし、```docker```オプションだけは例外的に出力できる。
 
-参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#using-parameters-and-bash-environment
 
 ```yaml
 # 出力できない
@@ -1114,7 +1114,7 @@ steps:
 
 アプリケーションの```.env```ファイルをCirlcCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。ここで出力している環境変数は、以下のリンクを参考にせよ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_nuxtjs.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_nuxtjs.html
 
 ```bash
 $ cat .env | base64
@@ -1153,7 +1153,7 @@ jobs:
 
 一番参照範囲が小さく、```run```における同じ```command```内のみで参照できる。```command```内で使用する環境変数を定義するためには、『```$BASH_ENV```』に```export```コマンドを格納する必要がある。定義したものを使用するためには、『```$BASH_ENV```』を```source```で読み込む必要があるために注意する。
 
-参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 **＊実装例＊**
 
@@ -1180,7 +1180,7 @@ jobs:
 
 CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```間』で共有できる。ただし、Alpine Linuxでは、この共有機能を使えないため注意する（かなりたくさんある）。
 
-参考：https://github.com/circleci/circleci-docs/issues/1650
+ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
 ```yaml
 version: 2.1 
@@ -1325,7 +1325,7 @@ jobs:
 
 実行環境にmachineタイプを選択した場合、docker-composeがプリインストールされている。
 
-参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
+ℹ️ 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 
 <br>
 
@@ -1335,7 +1335,7 @@ jobs:
 
 CircleCIでDocker Composeを使用する場合に必要である。Docker Composeは、コンテナの作成の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの作成後に、プロセスが完全に起動していないのにも関わらず、次のコンテナの作成を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に作成されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを使用しても良い。
 
-参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
+ℹ️ 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
 **＊実装例＊**
 

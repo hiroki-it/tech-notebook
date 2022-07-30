@@ -9,7 +9,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,7 +23,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
-参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
 
@@ -47,7 +47,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。
 
-参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
+ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
 ![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/tcp-ip_structure.png)
 
@@ -59,7 +59,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 各アプリケーションがプロセスとして稼働しており、それぞれがデータ（メッセージ）を作成する。各プロセスは特定のポート番号を受信する。
 
-参考：https://netdekagaku.com/netstat-command/
+ℹ️ 参考：https://netdekagaku.com/netstat-command/
 
 ![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/application_expose-port.png)
 
@@ -81,15 +81,15 @@ $ sudo lsof -i -P | grep LISTEN
 2. 送信側のメールサーバーは、メールを受信側のメールサーバーに転送する。
 3. 受信側のアプリケーションは、各々が指定したプロトコルに応じて、受信側のメールサーバーからメールデータを取得する。
 
-参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
+ℹ️ 参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
 ![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/smtp_pop3_imap4.png)
 
 #### ▼ 送信側のメールサーバーのモック
 
-メールデータの送信機能を開発するときに、送信テストを行う必要があり、この内容は公開したくない。そこで、送信側のメールサーバーのモックを提供するサービスを利用する。この送信側メールサーバーモックは、クライアントから受信したメールのテストデータを受信側のメールサーバーに転送しないため、安全に送信テストを実施できる。Mailtrapがおすすめである。
+メールデータの送信機能を開発する時に、送信テストを行う必要があり、この内容は公開したくない。そこで、送信側のメールサーバーのモックを提供するサービスを利用する。この送信側メールサーバーモックは、クライアントから受信したメールのテストデータを受信側のメールサーバーに転送しないため、安全に送信テストを実施できる。Mailtrapがおすすめである。
 
-参考：https://mailtrap.io/
+ℹ️ 参考：https://mailtrap.io/
 
 <br>
 
@@ -133,7 +133,7 @@ GmailでPOPかIMAPを設定できる。
 
 #### ▼ APOPとは
 
-  メール受信の際に、チャレンジレスポンス方式の認証を行うことで平文の認証情報がネットワークに流れるのを防止するプロトコル
+  メール受信の際に、チャレンジレスポンス方式の認証を行うことにより、平文の認証情報がネットワークに流れるのを防止するプロトコル
 
   <br>
 
@@ -183,7 +183,7 @@ GET http://127.0.0.1:8080
 
 IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。主要ポートが使われている場合は、代替ポートを使用することになる。各プロトコルで慣例として使われている代替ポートは、以下の検索サイトを参考にせよ。
 
-参考：https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
+ℹ️ 参考：https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 
 ![ポート番号とプロトコルの対応関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ポート番号とプロトコルの対応関係.png)
 
@@ -209,7 +209,7 @@ IANAが登録申請を受けて公開しているポート番号。企業が作�
 
 #### ▼ ポートスキャナとは
 
-ポートスキャナを使用することによって、各ポート番号にアクセスし、応答があるかどうかや、どのようなソフトウェアが応答するかを調べ、一覧表示できる。
+ポートスキャナを使用することによって、各ポート番号にアクセスし、応答があるか否かや、どのようなソフトウェアが応答するかを調べ、一覧表示できる。
 
 <br>
 

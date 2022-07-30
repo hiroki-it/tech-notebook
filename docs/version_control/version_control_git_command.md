@@ -9,7 +9,7 @@ description: コマンド@Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -55,7 +55,7 @@ $ git config --local --list
 
 Macでは、1つのマシンで```2```個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
-参考：https://sy-base.com/myrobotics/others/git-push_403error/
+ℹ️ 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
 #### ▼ --<影響範囲> user.name
 
@@ -106,6 +106,31 @@ gitのデフォルトエディタを設定する。ここでは、Vimをデフ�
 
 ```bash
 $ git config --global core.editor "vim -c "set fenc=utf-8""
+```
+
+<br>
+
+### init
+
+ローカルマシンのディレクトリとGitHubリポジトリを紐づける。エディタにGitHubリポジトリを再反映するためにも使用できる。
+
+```bash
+$ git init
+```
+
+<br>
+
+### ignore
+
+#### ▼ global ignore
+
+```~/.config/git/ignore```ファイルに設定されたファイルは、グローバルに無視される。
+
+ℹ️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
+
+```
+.DS_Store
+.idea/
 ```
 
 <br>
@@ -164,7 +189,7 @@ and the repository exists.
 
 GitHubとSSH接続を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
-参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
+ℹ️ 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
 （１）```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する。
 
@@ -176,7 +201,7 @@ $ ssh-keygen -t rsa
 
 # 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
 Enter file in which to save the key: hiroki-it
-# 鍵の使用時にパスワードの入力を要求するかどうかは任意である。
+# 鍵の使用時にパスワードの入力を要求するか否かは任意である。
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
 ```
@@ -449,7 +474,7 @@ $ git stash clear
 
 #### ▼ statusとは
 
-addステージやcommitステージにファイルが存在しているかどうかを取得する。
+addステージやcommitステージにファイルが存在しているか否かを取得する。
 
 <br>
 
@@ -457,7 +482,7 @@ addステージやcommitステージにファイルが存在しているかど�
 
 コマンドに入力できる形式で出力する。CIの自動化で使うことが多い。
 
-参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+ℹ️ 参考：https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 
 ```bash
  $ git status --porcelain

@@ -9,7 +9,7 @@ description: スクリプト＠ユーティリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -59,7 +59,7 @@ echo bar
 
 改行時にコメントを挿入すると、以降のオプションがコメントアウトされてしまう。コメントをバッククオートで囲う必要がある。
 
-参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
+ℹ️ 参考：https://mixi-developers.mixi.co.jp/readable-shell-script-23f881852671
 
 ```bash
 #!/bin/bash
@@ -117,7 +117,7 @@ esac
 
 現在の親プロセスのまま、シェルスクリプトを実行する。そのため、シェルスクリプトの実行前に定義されたシェル変数を使用できる。また、シェルスクリプト内で定義したシェル変数は、シェルスクリプトの実行後も維持される。
 
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ source hello.sh
@@ -127,7 +127,7 @@ $ source hello.sh
 
 現在の親プロセスから子プロセスを作成し、シェルスクリプトを実行する。そのため、シェルスクリプトの実行前（親プロセス）に定義されたシェル変数を使用できない。また、シェルスクリプト内（子プロセス）で定義したシェル変数は、シェルスクリプトの実行後に破棄される。
 
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ bash hello.sh
@@ -143,7 +143,7 @@ $ . hello.sh
 
 新しくインタラクティブを開き、処理を実行する。そのため、シェル変数のライフサイクルは```bash```コマンドと同じである。相対パスもしくは絶対パスでシェルスクリプトを指定する。実行するファイルをカレントディレクトリ配下に配置できない。
 
-参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 $ ./hello.sh
@@ -177,7 +177,7 @@ $ apk add make
 
 シェルの種類を選択する。種類ごとに使用できるオプションがやや異なる。また同時に、```set```コマンドのオプションを有効化でき、これは全てのターゲットに適用される。
 
-参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
+ℹ️ 参考：https://askubuntu.com/questions/805816/set-e-o-pipefail-not-working-because-of-make-incompatibility
 
 ```makefile
 SHELL=/bin/bash -xeu
@@ -190,7 +190,7 @@ SHELL=/bin/bash -xeu
 SHELL=/bin/bash -o pipefail
 ```
 
-参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
+ℹ️ 参考：https://stackoverflow.com/questions/23079651/equivalent-of-pipefail-in-gnu-make
 
 #### ▼ ターゲット
 
@@ -226,7 +226,7 @@ baz: foo baz # foo、bazを事前に実行する。
 
 ターゲットと同じ名前のファイルがある場合、```make```コマンドでターゲットを指定できなくなる。```.PHONY```を使用すると、ファイル名ではなくターゲットを明示できる。
 
-参考：https://advancedinsight.jp/using_phony_target_for_makefile/
+ℹ️ 参考：https://advancedinsight.jp/using_phony_target_for_makefile/
 
 ```makefile
 # ターゲットであることを明示する。
@@ -250,7 +250,7 @@ baz qux:
 
 変数の代入を定義したタイミングで変数の代入が行われる。
 
-参考：https://make-muda.net/2014/10/1824/
+ℹ️ 参考：https://make-muda.net/2014/10/1824/
 
 ```makefile
 FOO:=foo
@@ -263,7 +263,7 @@ echo:
 
 変数をコールしたタイミングで変数の代入が行われる。
 
-参考：https://make-muda.net/2014/10/1824/
+ℹ️ 参考：https://make-muda.net/2014/10/1824/
 
 ```makefile
 FOO=foo
@@ -274,7 +274,7 @@ echo:
 
 ターゲット内では、標準出力への出力をシェル変数に代入できない。そのため、シェル変数はターゲット外で定義する必要がある。また、遅延評価で代入し、```$(shell ...)```とする必要がある。
 
-参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
+ℹ️ 参考：https://qiita.com/vega77/items/5206c397258b5b372fc4
 
 ```makefile
 FOO=$(shell echo "foo")
@@ -314,7 +314,7 @@ foo:
 
 一般的に、Makefileはパッケージのビルドとインストールのために実装される。この時に慣例として、ターゲット名は```make```（ターゲット無し）と```install```になっていることが多い。
 
-参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
+ℹ️ 参考：https://qiita.com/chihiro/items/f270744d7e09c58a50a5
 
 （１）パッケージをインストールする。
 
@@ -348,7 +348,7 @@ $ make -j4
 $ make check
 ```
 
-（５）生成されたコードのファイルを、指定したディレクトリ配下にコピーする。
+（５）作成されたコードのファイルを、指定したディレクトリ配下にコピーする。
 
 ```bash
 # installと命令するが、実際はコピー。sudoを付ける。
