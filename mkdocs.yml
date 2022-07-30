@@ -383,7 +383,7 @@ nav:
   - 👥 ソフトウェア開発手法論/SREing:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
-      - SREing:
+      - ■ SREing:
           - SREing: software_development_methodology/software_development_methodology_site_reliability_engineering.md
           - アンチパターン: software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.md
           - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
