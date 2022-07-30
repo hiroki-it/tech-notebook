@@ -178,30 +178,34 @@ Applicationで使用する機密な環境変数は、Secretで管理する。こ
 
 ## 05. エラー解決
 
-### Applicationの削除時にエラーが起こる
+### 削除できない系
 
-PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、エラーが起こることがある。これらの場合には、以下の手順でApplicationを削除する。
+#### ▼ Applicationを削除できない
+
+PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。これらの場合には、以下の手順でApplicationを削除する。
 
 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
-1. Applicationの```spec.syncPolicy.allowEmpty```キーを有効化する。
+（１）Applicationの```spec.syncPolicy.allowEmpty```キーを有効化する。
 
-2. フォアグラウンドで削除すると、Applicationの`metadata.finalizers`キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl edit`コマンドを使用する必要がある。
+（２）フォアグラウンドで削除すると、Applicationの`metadata.finalizers`キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
 
-   参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
-
-3. 1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
+参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 ```bash
-$ kubectl edit apps <ArgoCDのアプリケーション名> -n argocd
+$ kubectl patch crd applications.argoproj.io \
+    -p '{"metadata":{"finalizers":[]}} ' \
+    --type=merge
+```
 
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  finalizers: [] # 空配列に変更する。
-spec:
+（３）1つ目の`spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
 
-# 〜 中略 〜
+#### ▼ Namespaceを削除できない
+
+```bash
+$ kubectl patch ns argocd \
+    -p '{"metadata":{"finalizers":[]}} ' \
+    --type=merge
 ```
 
 <br>

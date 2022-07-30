@@ -275,11 +275,11 @@ title: 【IT技術の知見】目次
 
 <br>
 
-## ⚙️ Infrastructure as Code
+## ⚙️ IaC
 
-### Infrastructure as Code
+### IaC
 
-* [📖：︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
+* [📖：IaC](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
 
 ### 手続き型
 
@@ -375,6 +375,7 @@ title: 【IT技術の知見】目次
 * 監視
     * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html)
     * [📖：︎オンコールとインシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_oncall_incident_management.html)
+    * [📖：︎サービスレベル](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_service_level.html)
     
 ### テレメトリー収集ツール
 
@@ -407,24 +408,30 @@ title: 【IT技術の知見】目次
 
 <br>
 
-## 👥 ソフトウェア開発手法論/SRE
+## 👥 ソフトウェア開発手法論/SREing
 
 ### ソフトウェア開発手法論
 
 * [📖：︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology.html)
 
-### SRE
+### SREing
 
-* [📖：︎SRE](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
+* [📖：︎SREing](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
+* [📖：︎アンチパターン](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_antipattern.html)
+* [📖：︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_documentation.html)
 
 ### プロジェクト管理
 
 * [📖：︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_project_management.html)
 
+<br>
+
+## 🦶 バージョン管理
+
 ### Git
 
-* [📖：︎GitHub](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_github.html)
-* [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_git_command.html)
+* [📖：︎GitHub](https://hiroki-it.github.io/tech-notebook-mkdocs/version_control/version_control_git_github.html)
+* [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/version_control/version_control_git_command.html)
 
 <br>
 
