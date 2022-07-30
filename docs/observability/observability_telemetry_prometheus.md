@@ -10,7 +10,7 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -18,9 +18,9 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 ### アーキテクチャ
 
-Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを生成し、Alertmanagerに送信する。
+Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
-参考：
+ℹ️ 参考：
 
 - https://danielfm.me/prometheus-for-developers/
 - https://prometheus.io/docs/introduction/overview/
@@ -36,7 +36,7 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 
 メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、またGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
-参考：
+ℹ️ 参考：
 
 - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
@@ -79,18 +79,18 @@ scrape_configs:
 
 ルールの種類によって、収集後の処理が異なる。
 
-参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 | ルール名             | 説明                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| アラートルール       | 収集されたデータポイントがアラート条件に合致する場合、アラートを生成し、Alertmanagerにこれを送信する。 |
+| アラートルール       | 収集されたデータポイントがアラート条件に合致する場合、アラートを作成し、Alertmanagerにこれを送信する。 |
 | レコーディングルール | 収集されたデータポイントをローカルストレージに保管する。     |
 
 #### ▼ 設定ファイル
 
 設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
-参考：
+ℹ️ 参考：
 
 - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
@@ -132,9 +132,9 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 #### ▼ ローカルストレージ
 
-Prometheusは、ローカルの時系列データベースに、収集した全てのメトリクスを保管する。また、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が起こり、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
+Prometheusは、ローカルの時系列データベースに、収集した全てのメトリクスを保管する。また、収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
-参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
 ```yaml
 prometheus/
@@ -157,7 +157,7 @@ prometheus/
 
 また、時系列データベースはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする方法として、収集間隔を長くする、不要なデータポイントの収集をやめる、といった方法がある。
 
-参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 # ワーカーNode内
@@ -182,18 +182,19 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。エンドポイントは、『```https://<IPアドレス>/api/v1/write```』になる。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまう
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
+- https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
 
 #### ▼ ダイナミックキュー
 
 リモートストレージにメトリクスを送信する場合に、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
-参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
 
@@ -205,7 +206,7 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 Prometheusのアラートを受信し、特定の条件下でルーティングする。
 
-参考：
+ℹ️ 参考：
 
 - https://prometheus.io/docs/alerting/latest/alertmanager/
 - https://www.designet.co.jp/ossinfo/alertmanager/
@@ -221,7 +222,7 @@ Prometheusのアラートを受信し、特定の条件下でルーティング�
 
 PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://openstandia.jp/oss_info/prometheus
 - https://danielfm.me/prometheus-for-developers/
@@ -242,7 +243,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 **＊例＊**
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
 - https://prometheus.io/docs/instrumenting/exporters/
@@ -250,7 +251,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 | Exporter名                                                   | Exportタイプ | ポート番号 | エンドポイント | 説明                                                         |
 | :----------------------------------------------------------- | ------------ | ---------- | -------------- | ------------------------------------------------------------ |
 | [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ```9100``` | ```/metrics``` | ノードのメトリクスのデータポイントを収集する。               |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上           | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。<br>参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上           | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。<br>ℹ️ 参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
 | [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | ```9113``` | 同上           | Nginxのメトリクスのデータポイントを収集する。                |
 | [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | ```9117``` | 同上           | Apacheのメトリクスのデータポイントを収集する。               |
 | [black box expoter](https://github.com/prometheus/blackbox_exporter) | Deplyoment型 | ```9115``` | 同上           | 各種通信プロトコルの状況をメトリクスとして収集する。         |
@@ -264,7 +265,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして機能する。
 
-参考：https://prometheus.io/docs/practices/pushing/
+ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
 
 <br>
 
@@ -282,25 +283,25 @@ Prometheusで収集したメトリクスを抽出し、集計できる。
 
 特定の時点の時系列データのこと。
 
-参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間の時系列データのこと。
 
-参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Scalar
 
 浮動小数点の数値型データのこと。
 
-参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ String
 
 文字列型データのこと。
 
-参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 <br>
 
@@ -310,13 +311,13 @@ Prometheusで収集したメトリクスを抽出し、集計できる。
 
 期間内の合計数を算出する。
 
-参考：https://www.opsramp.com/prometheus-monitoring/promql/
+ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
 rate関数のラッパーであり、rate関数の結果（1秒当たりの平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
 
-参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
 # rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
@@ -328,7 +329,7 @@ increase(foo_metrics[5m])
 
 平均増加率（%/秒）を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
 
-参考：https://www.opsramp.com/prometheus-monitoring/promql/
+ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 <br>
 
@@ -340,7 +341,7 @@ increase(foo_metrics[5m])
 
 Prometheusが収集したデータポイントの合計数を表す。
 
-参考：
+ℹ️ 参考：
 
 - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -350,7 +351,7 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
-参考：
+ℹ️ 参考：
 
 - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -361,7 +362,7 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
 Prometheusが作成したチャンクの合計数を表す。
 
-参考：
+ℹ️ 参考：
 
 - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 - https://christina04.hatenablog.com/entry/prometheus-node-exporter
@@ -391,9 +392,9 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 #### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることで、データポイント数が減るため、合計のサイズを小さくできる。
+Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
-参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -428,7 +429,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
 - https://www.robustperception.io/how-much-space-does-the-wal-take-up/

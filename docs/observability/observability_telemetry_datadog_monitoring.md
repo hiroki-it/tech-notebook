@@ -9,7 +9,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 ログモニターのクエリは、ログコンソールと同じ仕組みで機能する。そのため、最初はログコンソールで必要なログを絞り込めるかを確認し、問題なければログモニターのクエリを設定する。
 
-参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
+ℹ️ 参考：https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B
 
 #### ▼ シングルアラート
 
@@ -37,19 +37,35 @@ description:  監視＠Datadogの知見を記録しています。
 
 <br>
 
-## 01-02. 通知内容の定義
+## 01-02. アラートの作成
+
+### グループ化
+
+<br>
+
+### 作成条件
+
+#### ▼ Auto resolve
+
+アラートを通知した後に、一定期間同じエラーイベントが発生しなければ、通知したアラートを取り下げる。
+
+ℹ️ 参考：https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve
+
+<br>
+
+## 01-03. アラートの通知内容
 
 ### 変数
 
 #### ▼ 変数を使用した重要度レベルの共通化
 
-重要度レベルは、アプリケーション間で共通である方が良い。通知内容に変数を使用することにより、異なるアプリケーションに共通のアラート条件を適用できるようになる。そのため、アプリケーション間で重要度レベルを共通化できる。ステータスに応じてアラートするかどうかの決め方については、以下のリンクを参考にせよ。
+重要度レベルは、アプリケーション間で共通である方が良い。通知内容に変数を使用することにより、異なるアプリケーションに共通のアラート条件を適用できるようになる。そのため、アプリケーション間で重要度レベルを共通化できる。ステータスに応じてアラートするか否かの決め方については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
 #### ▼ テンプレート変数
 
-参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
+ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables
 
 #### ▼ マルチアラート変数
 
@@ -59,15 +75,15 @@ description:  監視＠Datadogの知見を記録しています。
 
 構造化ログの属性値またはタグ値を変数として出力する。```{{log.attributes.<キー名>}}``` または```{{log.tags.<キー名>}}```として実装する。
 
-参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
+ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
 #### ▼ コンポジットモニター変数
 
-参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
+ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables
 
 #### ▼ 条件変数
 
-参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
+ℹ️ 参考：https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables
 
 <br>
 
@@ -88,7 +104,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 通知先とテキストを定義する。マークダウン記法を使用できる。
 
-参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
+ℹ️ 参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
 
 ```markdown
 <!-- Datadogに設定した通知先 -->
@@ -118,7 +134,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 Datadogで、ブラウザのエラーは以下に分類される。
 
-参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
+ℹ️ 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
 | エラーのソース       | エラーの例                                                   |
 | -------------------- | ------------------------------------------------------------ |
@@ -136,11 +152,11 @@ Datadogで、ブラウザのエラーは以下に分類される。
 
 Datadog社の物理サーバーからリクエストが送信される。物理サーバー自体はAWSやAzureによって管理されており、使用する物理サーバーのリージョンを選択できる。リージョンごとに数個ずつ物理サーバーが存在しているため、もし合成監視対象のアプリケーションでIP制限が行われている場合は、これらの物理サーバーのIPからのリクエストを許可する必要がある。
 
-参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
+ℹ️ 参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
 
 #### ▼ ヘッダー
 
-参考：
+ℹ️ 参考：
 
 - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests

@@ -9,7 +9,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 ```1```個のVPC内には複数のサブネットが入る。そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、VPC内でIPアドレスが枯渇しないようにする。RFC1918では、以下のCIDRブロックが推奨されている。
 
-参考：
+ℹ️ 参考：
 
 - https://note.com/takashi_sakurada/n/n502fb0299938
 - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
@@ -38,7 +38,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。この時、CIDRブロックと、これの開始IPアドレスと終了IPアドレスをメモしておくと良い。各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。例えば、以前に開発したアプリケーションが```10.200.47.0```までを使用していた場合、```10.200.48.0```から使用を始める。また、VPCで許可されるIPアドレスの個数は最多```65536```個（```/16```）で最少16個（```/28```）であり、実際は```512```個（```/23```）ほどあれば問題ないため、```10.200.48.0/23```を設定する。
 
-参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
+ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
 
 <br>
 
@@ -48,7 +48,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。この時、VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。例えば、VPCの最初のIPアドレスを```10.0.0.0```とした場合は、1つ目のパブリックサブネットのサブネットマスクは、```10.0.0.0```から始める。パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。例えば、VPCのサブネットマスクを```/16``` としている場合は、各サブネットのサブネットマスクは```/24```とする。一方で、VPCを```/23```としている場合は、各サブネットは```/27```とする。また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、その代わりに、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。
 
-参考：
+ℹ️ 参考：
 
 - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
@@ -67,7 +67,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 パブリックネットワークとの通信の遮断具合から名前をつける。
 
-参考：https://mihono-bourbon.com/aws-network-1/
+ℹ️ 参考：https://mihono-bourbon.com/aws-network-1/
 
 | 名前                | 種類         | 役割                                                                                                           | 配置例                  |
 | ------------------- | ------------ |--------------------------------------------------------------------------------------------------------------| ----------------------- |
@@ -79,7 +79,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 ![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_component-type.png)
 
-参考：https://dev.classmethod.jp/articles/create_nat_gateway/
+ℹ️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
 
 配置するコンポーネントの種類に関する名前をつける。
 
@@ -116,7 +116,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットのCIDRブロックを設定する。
 
-参考：https://koejima.com/archives/1950/
+ℹ️ 参考：https://koejima.com/archives/1950/
 
 |    Destination（プライベートCIDRブロック）     | Target |
 | :--------------------------------------------: | :----: |
@@ -138,7 +138,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 ALBでアラートするべきメトリクスを示す。
 
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
+ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
 | メトリクス名                   | 単位     | 説明                                                         | アラート条件例                                               |
 | ------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -156,7 +156,7 @@ ALBでアラートするべきメトリクスを示す。
 
 API Gatewayでアラートするべきメトリクスを示す。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
 
 | メトリクス名       | 単位       | 説明                                                         | アラート条件例                                               |
 | ------------------ | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -169,20 +169,20 @@ API Gatewayでアラートするべきメトリクスを示す。
 
 EC2でアラートするべきメトリクスを示す。
 
-参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
+ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
 
 | メトリクス名               | 単位     | 説明                                                         | アラート条件例                                               |
 | -------------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CPUUtilization             | %        | EC2インスタンスで使用されているCPU使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |
 | MemoryUtilization          | %        | EC2インスタンスで使用されているメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |
-| StatusCheckFailed_Instance | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                              |
-| StatusCheckFailed_System   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                              |
+| StatusCheckFailed_Instance | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                              |
+| StatusCheckFailed_System   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                              |
 
 #### ▼ ECS
 
 ECSクラスターまたはサービスでアラートするべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスのメトリクスを区別できる。
 
-参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 
 | メトリクス名      | 単位     | 説明                                                         | アラート条件例                                               | 補足                                                         |
 | ----------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -194,43 +194,43 @@ ECSクラスターまたはサービスでアラートするべきメトリク�
 
 Redisでアラートするべきメトリクスを示す。
 
-参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
 
 | メトリクス名      | 単位     | 説明 | アラート条件例 | 補足                                                                                           |
 | ----------------- | -------- | ---- | -------------- |----------------------------------------------------------------------------------------------|
-| BytesUsedForCache | バイト数    | Redisで使用されているメモリ使用量をデータポイントとする。 | ・統計 : 期間内合計サイズ<br/>・期間 : ```5```分<br/>・閾値 : ```>= 8```GB |                                                                                              |
-| CPUUtilization    | %        | ノードのCPU使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br/>・期間 : ```5```分<br/>・閾値 : ```>= 80``` |                                                                                              |
-| Evictions         | カウント | 空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 1``` |                                                                                              |
-| SwapUsage         | バイト数    | ストレージ上のスワップ領域の使用量をデータポイントとする。 | ・統計 : 期間内最大サイズ<br/>・期間 : ```5```分<br/>・閾値 : ```>= 50```GB | 使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>参考：https://zenn.dev/dehio3/scraps/710a9714ce9496 |
+| BytesUsedForCache | バイト数    | Redisで使用されているメモリ使用量をデータポイントとする。 | ・統計 : 期間内合計サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 8```GB |                                                                                              |
+| CPUUtilization    | %        | ノードのCPU使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |                                                                                              |
+| Evictions         | カウント | 空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1``` |                                                                                              |
+| SwapUsage         | バイト数    | ストレージ上のスワップ領域の使用量をデータポイントとする。 | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 50```GB | 使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>ℹ️ 参考：https://zenn.dev/dehio3/scraps/710a9714ce9496 |
 
 #### ▼ RDS（Aurora）
 
 RDS（Aurora）でアラートするべきメトリクスを示す。
 
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
 | メトリクス名        | 単位     | 説明                                                         | アラート条件例                                               | 補足                                                         |
 | ------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| BlockedTransactions | カウント | 秒あたりトランザクションの拒否の回数をデータポイントとする。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 1``` |                                                              |
+| BlockedTransactions | カウント | 秒あたりトランザクションの拒否の回数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1``` |                                                              |
 | CPUUtilization      | %        | Aurora DBインスタンスのCPU使用率をデータポイントとする。     | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |                                                              |
-| DatabaseConnections | カウント | Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 400``` | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
-| Deadlocks | カウント | 秒あたりデッドロック平均数をデータポイントとする。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 1``` |  |
+| DatabaseConnections | カウント | Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 400``` | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
+| Deadlocks | カウント | 秒あたりデッドロック平均数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1``` |  |
 | EngineUptime        | 秒       | インスタンスの起動時間をデータポイントとする。               |                                                              | ダウンタイムの最低発生時間の参考になる。                     |
-| FreeableMemory      | バイト数    | Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br/>・期間 : ```5```分<br/>・閾値 : ```>= 2```GB |                                                              |
-| FreeLocalStorage    | バイト数 | Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br/>・期間 : ```5```分<br/>・閾値 : ```>= 10```GB | DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。 |
-| LoginFailures | カウント | Aurora DBへのログインの失敗回数をデータポイントとする。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 1``` |  |
+| FreeableMemory      | バイト数    | Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 2```GB |                                                              |
+| FreeLocalStorage    | バイト数 | Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 10```GB | DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。 |
+| LoginFailures | カウント | Aurora DBへのログインの失敗回数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1``` |  |
 
 #### ▼ RDS（非Aurora）
 
 RDS（非Aurora）でアラートするべきメトリクスを示す。RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。
 
-参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
+ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
 
 | メトリクス名        | 単位     | 説明                                                         | アラート条件例                                               | 補足                                                         |
 | ------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CPUUtilization      | %        | DBインスタンスのCPU使用率をデータポイントとする。            | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |                                                              |
-| DatabaseConnections | カウント | DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br/>・期間 : ```5```分<br/>・閾値 : ```>= 400``` | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
-| FreeableMemory      | バイト数    | DBインスタンスの使用できるメモリサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br/>・期間 : ```5```分<br/>・閾値 : ```>= 2```GB |                                                              |
+| DatabaseConnections | カウント | DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 400``` | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
+| FreeableMemory      | バイト数    | DBインスタンスの使用できるメモリサイズをデータポイントとする。 | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 2```GB |                                                              |
 
 <br>
 

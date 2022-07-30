@@ -9,7 +9,7 @@ description: メモリ管理＠基本ソフトウェアの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: メモリ管理＠基本ソフトウェアの知見を記録して�
 
 プログラムは、メモリ上の仮想アドレスの領域に割り当てられている。この時のプログラム自体を『プロセス』という。プロセスの代わりに『タスク』ということもある。プロセスとして割り当てられたプログラムはCPUに参照され、CPUのコア上で処理が実行される。
 
-参考：https://jpazamu.com/thread_process/#index_id5
+ℹ️ 参考：https://jpazamu.com/thread_process/#index_id5
 
 <br>
 
@@ -27,9 +27,9 @@ description: メモリ管理＠基本ソフトウェアの知見を記録して�
 
 #### ▼ 親/子プロセスとは
 
-プロセスが新しいプロセスを生成する場合、プロセス間には親子関係がある。例えば、ターミナルの親プロセスは```shell```や```bash```であり、任意のユーティリティを実行すると、これの子プロセスが生成されることになる。プロセスIDが```1```のプロセスが、全てのプロセスの親である。
+プロセスが新しいプロセスを作成する場合、プロセス間には親子関係がある。例えば、ターミナルの親プロセスは```shell```や```bash```であり、任意のユーティリティを実行すると、これの子プロセスが作成されることになる。プロセスIDが```1```のプロセスが、全てのプロセスの親である。
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
@@ -58,7 +58,7 @@ PID  TTY  TIME     CMD
 
 単一のメモリ上で、複数のプロセスがアドレスに割り当てられる仕組みのこと。優先度の低いプロセスからCPUを切り離し、優先度の高いプロセスにCPUを割り当てる、といった仕組みを持つ。現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
-参考：
+ℹ️ 参考：
 
 - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 - https://webpia.jp/thread_process/
@@ -73,13 +73,13 @@ PID  TTY  TIME     CMD
 
 物理メモリ、ストレージ上のスワップ領域、などプロセスが使用可能な全ての領域使用され、プロセスを新しく割り当てられなくなってしまった場合に実行される。現在割り当てられているプロセスのうち、最も使用領域の大きいプロセスを強制的に終了する。
 
-参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
+ℹ️ 参考：https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
 
 #### ▼ 確認方法
 
 もしOOMキラーが実行された場合は、```/var/log/messages```ファイルにログが出力される。
 
-参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+ℹ️ 参考：https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
 
 ```bash
 $ cat /var/log/messages | grep Kill
@@ -96,7 +96,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 メモリ上ではプログラムがプロセスとして割り当てられており、プログラムはCPUのコア上で実行される。CPUのコアと紐付くプロセスの実行単位を『スレッド』という。
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
 - https://webpia.jp/thread_process/
@@ -115,7 +115,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 メモリ上の特定のプロセスで、複数のスレッドを実行できる仕組みのこと。各スレッドがプロセスに割り当てられているアドレスを共有して使用する。
 
-参考：https://webpia.jp/thread_process/
+ℹ️ 参考：https://webpia.jp/thread_process/
 
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
 
@@ -127,7 +127,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと。
 
-参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
 
@@ -135,7 +135,7 @@ CPUのコアが単一のスレッドが紐付くようなマルチスレッド�
 
 CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと。
 
-参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
 
@@ -155,7 +155,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想記憶 ⇒ 仮想メモリ
 
-参考：https://itmanabi.com/real-memory-mng/
+ℹ️ 参考：https://itmanabi.com/real-memory-mng/
 
 ![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アドレス空間管理の種類.png)
 
@@ -181,7 +181,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 物理メモリの領域を、```1```個の区画として扱い、プロセスに割り当てる方式。単一のプロセスしか読み込めず、余りのメモリ領域は利用できない。
 
-参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+ℹ️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単一区画方式.png)
 
@@ -189,7 +189,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 物理メモリの領域を、複数の同じ大きさの区画に分割し、各区画にプロセスに割り当てる方式。複数のプロセスを読み込めるが、単一区画方式と同様に、余ったメモリ領域は利用できない。
 
-参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+ℹ️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重区画方式.png)
 
@@ -201,7 +201,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 物理メモリの領域を、プロセスの大きさに応じて、区画を様々な大きさの区画に分割し、プロセスに割り当てる方式。固定区画方式とは異なり、メモリ領域を有効に利用できる。
 
-参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+ℹ️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
 ![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/可変区画方式.png)
 
@@ -213,7 +213,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 物理メモリの領域を優先度の高いプロセスに割り当て、反対に優先度が低いプロセスはストレージ上のスワップファイルに退避させる方式。これにより、物理メモリの領域を確保できる。
 
-参考：
+ℹ️ 参考：
 
 - https://itmanabi.com/real-memory-mng/
 - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
@@ -235,13 +235,14 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 ### GC：ガベージコレクション
 
 #### ▼ ガベージコレクションとは
-確保された物理メモリのうち、解放できるメモリをプロセスから解放する。物理メモリを使用しているオブジェクトが何かしらから参照されているかどうかを元に、解放するかどうかを判定する。
+
+確保された物理メモリのうち、解放できるメモリをプロセスから解放する。物理メモリを使用しているオブジェクトが何かしらから参照されているか否かを元に、解放するか否かを判定する。
 
 #### ▼ アルゴリズム
 
 ガベージコレクションには様々なアルゴリズムがあり、採用されているアルゴリズムは言語ごとに異なる。Goのガベージコレクションについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
 
 <br>
 
@@ -253,7 +254,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想メモリの実装方法の一種。仮想メモリのアドレス空間を『固定長』の領域（ページ）、また物理メモリのアドレス空間を『固定長』の領域（ページフレーム）に分割し、管理する方式。
 
-参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
+ℹ️ 参考：http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
 
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページの構造.png)
 
@@ -261,7 +262,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想メモリは、CPUの処理によって稼働したプロセスの要求を、物理メモリの代理として受け付ける。ストレージから物理メモリのページフレームにページを読み込むことを『Page-in』という。また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![ページインとページアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページインとページアウト.png)
 
@@ -269,7 +270,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 仮想メモリのアドレス空間を、物理メモリのアドレス空間とストレージにマッピングすることによって、物理メモリのアドレス空間を疑似的に大きく見せかけられる。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png)
 
@@ -293,7 +294,7 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 
 MMUによって、仮想メモリのアドレスは、物理メモリのアドレスに変換される。この仕組みを、『動的アドレス変換機構』と呼ぶ。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![メモリ管理ユニット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリ管理ユニット.png)
 
@@ -310,7 +311,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
 
@@ -332,7 +333,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ 『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-2.png)
 
@@ -340,7 +341,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ 『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-1.png)
 

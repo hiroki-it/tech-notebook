@@ -9,7 +9,7 @@ description: ブラウザレンダリングの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -311,15 +311,15 @@ img { float: right }
 
 リソースの文字列からHTMLタグが認識され、トークンに変換される。各トークンは、```1```個のオブジェクトに変換される。
 
-![DOMツリーが生成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが生成されるまで.png)
+![DOMツリーが作成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが作成されるまで.png)
 
-HTMLパーサーは、オブジェクトをノードとして、DOMツリーを生成する。DOMツリーを生成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの生成を再開する。DOMのインターフェースについては、以下のリンクを参考にせよ。
+HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。DOMツリーを作成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。DOMのインターフェースについては、以下のリンクを参考にせよ。
 
-参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![DOMツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリー.png)
 
-同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。レスポンスされた```.css```ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを生成する。
+同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。レスポンスされた```.css```ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
 
 ![CSSOMツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CSSOMツリー.png)
 
@@ -330,13 +330,13 @@ HTMLパーサーは、オブジェクトをノードとして、DOMツリーを�
 
 #### ▼ 構造解析の流れ
 
-レンダリングエンジンは、最初に出現するルート要素を根（ルート）、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを生成する。
+レンダリングエンジンは、最初に出現するルート要素を根（ルート）、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを作成する。
 
 **＊例＊**
 
 ![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
 
-参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
+ℹ️ 参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
 <br>
 
@@ -360,7 +360,7 @@ JavaScriptのインタプリタのこと。JavaScriptエンジンは、レンダ
 
 JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード一行ずつに対し、繰り返し行う。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html
 
 ## 03-02. イベント
 
@@ -370,7 +370,7 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 
 ブラウザの各操作はイベントとして```.js```ファイルまたは```.html```ファイルに紐付けられている。
 
-参考：https://developer.mozilla.org/ja/docs/Web/Events
+ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
 
 #### ▼ イベントハンドラ関数とは
 
@@ -462,7 +462,7 @@ document.getElementById("btn").addEventListener("click", () => {
 
 ### Rendering処理とは
 
-レンダリングツリーが生成され、ブラウザ上のどこに何を描画するのかを計算する。CalculateStyle処理とLayout処理に分けられる。
+レンダリングツリーが作成され、ブラウザ上のどこに何を描画するのかを計算する。CalculateStyle処理とLayout処理に分けられる。
 
 <br>
 
@@ -470,7 +470,7 @@ document.getElementById("btn").addEventListener("click", () => {
 
 ### CalculateStyle処理とは
 
-レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを生成する。
+レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを作成する。
 
 ![Renderツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Renderツリー.png)
 
@@ -520,7 +520,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 クライアントのブラウザで、レスポンスされた静的コンテンツのキャッシュが作成される。Chromeの場合は、CacheStorageに保持される。確認方法については、以下のリンクを参考にせよ。
 
-参考：https://developer.chrome.com/docs/devtools/storage/cache/
+ℹ️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
 ![ブラウザのキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ブラウザのキャッシュ.png)
 
@@ -532,7 +532,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 オブジェクトのプロパティで、メソッド処理結果のキャッシュが作成される。必要な場合、これを取り出して再利用する。Laravelのキャッシュ機能については、以下のリンクを参考にせよ。
 
-参考：https://readouble.com/laravel/8.x/ja/cache.html
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
 
 <br>
 
@@ -556,7 +556,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 === （１）キャッシュの有効時間が切れるまで ===
 
 1. クライアントのブラウザは、リクエストをサーバーに送信する。
-2. サーバーは、特定のアルゴリズムを使用してハッシュ値を生成し、これをコンテンツのETag値とする。
+2. サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツのETag値とする。
 3. サーバーは、```ETag```ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
 4. クライアントのブラウザは、コンテンツとETag値をキャッシュする。
 5. キャッシュの有効時間が切れるまで、ブラウザキャッシュを使用し続ける。
@@ -576,7 +576,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 === （４）検証により、ブラウザキャッシュを使用せず ===
 
 1. ETag値の比較検証の結果、一致しない。
-2. サーバーは、両方の値が一致しない場合、ETag値を生成し、これをコンテンツの新しいETag値とする。
+2. サーバーは、両方の値が一致しない場合、ETag値を作成し、これをコンテンツの新しいETag値とする。
 3. サーバーは、```ETag```ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。
 4. クライアントのブラウザは、コンテンツとETag値をキャッシュする。
 

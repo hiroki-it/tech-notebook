@@ -9,7 +9,7 @@ description: ファイル共有システム＠基本ソフトウェアの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ NFSサーバーに配置されたファイルを、他のサーバー（NFSク�
 
 （１）ホスト側のMacOSにて、```/etc/exports```ファイルにマウントオプションを設定する。また、```/etc/exports```ファイルを検証する。
 
-参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
+ℹ️ 参考：https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 
 ```bash
 # マウントオプションを設定する。
@@ -58,7 +58,7 @@ Exports list on localhost:
 
 （３）NFSクライアントにて、必要なパッケージをインストールする。
 
-参考：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
+ℹ️ 参考：https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
 
 ```bash
 # Ubuntuの場合

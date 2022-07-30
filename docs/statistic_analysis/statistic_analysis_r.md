@@ -9,7 +9,7 @@ description: 統計分析＠Rの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -257,7 +257,7 @@ fancyRpartPlot(tree)
 sample1 <- read.csv("CV_data.csv")
 
 
-# ダミー変数に変換するために必要な情報が格納されたリストを生成。
+# ダミー変数に変換するために必要な情報が格納されたリストを作成。
 library(caret)
 tmp  <-  dummyVars(~.,  data = sample1)
 
@@ -281,7 +281,7 @@ plot(cluster1)
 
 <br>
 
-## 05. グラフ生成関数
+## 05. グラフ作成関数
 
 ### ```ggplot```メソッド
 

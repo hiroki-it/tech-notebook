@@ -9,7 +9,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,15 +23,15 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 データリンク層からトランスポート層までに対するサイバー攻撃（そもそものネットワークへの侵入、ポートスキャン、など）を遮断する。
 
-参考：https://digital-jyoshisu.com/archives/468
+ℹ️ 参考：https://digital-jyoshisu.com/archives/468
 
 #### ▼ パケットフィルタリング型ファイアウォール
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
 
-パケットのヘッダ情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可するべきかどうかを決定する。パケットのデータは検査しない。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが設置されている。
+パケットのヘッダ情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可するべきか否かを決定する。パケットのデータは検査しない。速度を重視する場合はこちら。ファイアウォールとWebサーバーの間には、NATルーターやNAPTルーターが設置されている。
 
-参考：
+ℹ️ 参考：
 
 - https://www.rworks.jp/system/system-column/sys-entry/21277/
 - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
@@ -40,7 +40,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 Ubuntuにおけるiptables。```/etc/sysconfig/iptables```ファイルにルールを設定する。```iptables-save```コマンドでこのファイルを作成できる。
 
-参考：https://linuc.org/study/knowledge/540/
+ℹ️ 参考：https://linuc.org/study/knowledge/540/
 
 ```bash
 $ cat /etc/sysconfig/iptables
@@ -59,7 +59,7 @@ COMMIT
 
 Centosにおけるfirewalld。デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
 
-参考：
+ℹ️ 参考：
 
 - https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html
 - https://knowledge.sakura.ad.jp/22269/
@@ -86,7 +86,7 @@ public (active)
 
 アクセスが許可されている送信元IPアドレスを確認する。
 
-参考：https://kaede.jp/2018/02/11022556/
+ℹ️ 参考：https://kaede.jp/2018/02/11022556/
 
 ```bash
 $ firewall-cmd --get-active-zones
@@ -101,21 +101,21 @@ public
 
 Win10におけるファイアウォール。
 
-参考：https://pc-karuma.net/windows-10-firewall-open-port/
+ℹ️ 参考：https://pc-karuma.net/windows-10-firewall-open-port/
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリングの設定.gif)
 
 #### ▼ ゲートウェイ型ファイアウォール（プロキシサーバー型）
 
-パケットのデータに基づいて、パケットを許可するべきかどうかを決定する。
+パケットのデータに基づいて、パケットを許可するべきか否かを決定する。
 
-参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
+ℹ️ 参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
 
 #### ▼ サーキットレベル型ファイアウォール
 
 トランスポート層の段階でサイバー攻撃を遮断するファイアウォールのこと。
 
-参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
+ℹ️ 参考：https://www.rworks.jp/system/system-column/sys-entry/21277/
 
 <br>
 
@@ -127,7 +127,7 @@ Win10におけるファイアウォール。
 
 ネットワーク層からプレゼンテーション層までに対するサイバー攻撃（Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など）を遮断するセキュリティシステムのこと。
 
-参考：https://digital-jyoshisu.com/archives/468
+ℹ️ 参考：https://digital-jyoshisu.com/archives/468
 
 <br>
 
@@ -139,14 +139,14 @@ Win10におけるファイアウォール。
 
 アプリケーション層に対するサイバー攻撃（SQLインジェクション、XSS、OSコマンドインジェクション、など）を遮断するセキュリティシステムのこと。
 
-参考：
+ℹ️ 参考：
 
 - https://digital-jyoshisu.com/archives/468
 - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
 
 #### ▼ WAFの種類
 
-参考：hhttps://liskul.com/waf-15products-35757
+ℹ️ 参考：hhttps://liskul.com/waf-15products-35757
 
 | WAFの種類        | 説明                                                         | 例                                                   |
 | ---------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
@@ -210,7 +210,7 @@ Google play で、過去にアプリとして忍び込んでいたトロイの�
 
 ![トロイの木馬](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トロイの木馬.jpg)
 
-感染方法がギリシャ神話上のトロイの木馬に似ていることに由来する。有用なプログラムであるように見せかけて、パソコン利用者に実行させることで感染。裏で不正な処理を行う。
+感染方法がギリシャ神話上のトロイの木馬に似ていることに由来する。有用なプログラムであるように見せかけて、パソコン利用者に実行させることにより、感染。裏で不正な処理を行う。
 
 ※トロイの木馬はギリシャ神話に登場する。ギリシャ軍は難攻不落のトロイ城を陥落させるため、中に精鋭部隊を忍び込ませた木馬をトロイ城の近くに置いて帰った。戦利品だと勘違いしたトロイ軍は、城内に木馬を持ち帰った。夜中、木馬の中に隠れた精鋭部隊が自軍の兵士をトロイ城に引き入れ、城を制圧した。
 
@@ -256,17 +256,17 @@ Google play で、過去にアプリとして忍び込んでいたトロイの�
 
 二者間の通信に割り込み、盗聴/改竄/成りすましによって通信を攻撃する。
 
-参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
+ℹ️ 参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
 
 #### ▼ 【対策】通信の暗号化
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_encryption_technology.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_encryption_technology.html
 
 #### ▼ 【対策】チェックサム
 
-sha256によって生成された文字列をファイル情報として添付し、これを送受信の両側で照合することにより、通知途中でファイルが改竄されていないことを保証する。
+sha256によって作成された文字列をファイル情報として添付し、これを送受信の両側で照合することにより、通知途中でファイルが改竄されていないことを保証する。
 
-参考：https://academy.gmocloud.com/know/20200116/8627
+ℹ️ 参考：https://academy.gmocloud.com/know/20200116/8627
 
 <br>
 
@@ -276,7 +276,7 @@ sha256によって生成された文字列をファイル情報として添付�
 
 ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトにアクセスしたとする。悪意のあるサイトのサーバーは、ユーザーのセッションIDを使用して、ログインしていた元のサイトのサーバーを攻撃する。サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
 
-参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
+ℹ️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf.png)
 
@@ -324,7 +324,7 @@ x-csrf-token: <トークン>
 
 サーバー側では、POSTリクエストによって送信されたトークンとワンタイムトークンを比較し、認証を実行する。以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、```401```ステータスを返却する。
 
-参考：
+ℹ️ 参考：
 
 - https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
 - https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
@@ -340,7 +340,7 @@ x-csrf-token: <トークン>
 
 #### ▼ セッションID固定化とは
 
-参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
+ℹ️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
 ![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-fixation.png)
 
@@ -376,7 +376,7 @@ max_input_vars = 1000
 
 同じ送信元からの一分間あたりのリクエスト数を制限する。例えば、WAF、API Gatewayの機能を使用する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 <br>
 
@@ -392,13 +392,13 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 DBのSQLクエリのパラメーターとなる入力では、『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ。そのため、これらのパラメーターが割り当てられているリクエストメッセージを拒否する。例えば、WAFの機能を使用する。
 
-参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
+ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
 #### ▼ 【対策】プレースホルダー
 
-プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する方法。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、型をチェックすることで実行できなくなるようにできるため、SQLインジェクションの対策になる。プレースホルダーについては、以下のリンクを参考にせよ。
+プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する方法。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできるため、SQLインジェクションの対策になる。プレースホルダーについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_sql.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_sql.html
 
 <br>
 
@@ -416,13 +416,13 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 異なるドメインで表示されるページからのリクエストを許可する仕組みのこと。デフォルトでは、異なるドメインで表示されるページからのリクエストは拒否されるようになっている。異なるドメインで表示されるページからのリクエストを許可したい場合は、ページからのリクエストメッセージとサーバーからのレスポンスメッセージの両方で対応が必要である。
 
-参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
+ℹ️ 参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
 
 **＊実装例＊**
 
 まず、リクエストメッセージの```Origin```ヘッダーに送信元オリジンを設定する。加えて、```Cookie```ヘッダーを持つリクエストメッセージを送信したい場合は、JavaScriptの実装で```withCredentials```オプションに```true```を割り当てる。JavaScriptのパッケージによってオプション名が異なるため注意する。
 
-参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
+ℹ️ 参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
 ```http
 GET https://foo.com/bar
@@ -451,7 +451,7 @@ return new Promise((resolve, reject) => {
 
 次に、レスポンスメッセージの```Access-Control-Allow-Origin```ヘッダーに、許可された送信元オリジンを割り当てて返信する。```Cookie```ヘッダーを持つリクエストメッセージを許可する場合、同じくレスポンスメッセージの```Access-Control-Allow-Credentials```ヘッダーに```true```を割り当てる。その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、```405```ステータスでエラーレスポンスが返信される。
 
-参考：
+ℹ️ 参考：
 
 - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
 - https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
@@ -479,9 +479,9 @@ Access-Control-Allow-Headers: *
 
 #### ▼ 【対策】```Set-Cookie```ヘッダーのDomain属性
 
-リクエストメッセージが```Cookie```ヘッダーを持つことを許可した場合、サブドメインのオリジンにも```Cookie```ヘッダーの送信を許可するかどうかを制御できる。サブドメインレスポンスメッセージの```Set-Cookie```ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ```Cookie```ヘッダーを持つリクエストを許可でき、サブドメインへの送信を拒否できる。一方で、ドメインが割り当てた場合は、そのページからサブドメインに対しても、```Cookie```ヘッダーを持つリクエストを許可できる。ドメインではなく、オリジンであることに注意する。
+リクエストメッセージが```Cookie```ヘッダーを持つことを許可した場合、サブドメインのオリジンにも```Cookie```ヘッダーの送信を許可するか否かを制御できる。サブドメインレスポンスメッセージの```Set-Cookie```ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ```Cookie```ヘッダーを持つリクエストを許可でき、サブドメインへの送信を拒否できる。一方で、ドメインが割り当てた場合は、そのページからサブドメインに対しても、```Cookie```ヘッダーを持つリクエストを許可できる。ドメインではなく、オリジンであることに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://zenn.dev/agektmr/articles/f8dcd345a88c97
 - https://azisava.sakura.ne.jp/programming/0017.html#sec4-1
@@ -521,7 +521,7 @@ Set-Cookie: HttpOnly
 
 異なるドメインからのリクエストが```Cookie```ヘッダーを持つことを許可/拒否する。ここでリクエストを制御しているのは、オリジンではなく、ドメインであることに注意する。
 
-参考：https://zenn.dev/agektmr/articles/f8dcd345a88c97
+ℹ️ 参考：https://zenn.dev/agektmr/articles/f8dcd345a88c97
 
 ```http
 200 OK
@@ -573,9 +573,9 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 #### ▼ 【対策】BCryptによるハッシュ化
 
-BCryptを使用して、Blowfish方式に基づく暗号化を実行する。Blowfish方式では、同じパスワードの文字列であっても異なるハッシュ値が生成されるため、レインボー攻撃を防げる。Blowfish方式で生成されたハッシュ値は、異なるルールで生成された複数のハッシュ値の組み合わせである。
+BCryptを使用して、Blowfish方式に基づく暗号化を実行する。Blowfish方式では、同じパスワードの文字列であっても異なるハッシュ値が作成されるため、レインボー攻撃を防げる。Blowfish方式で作成されたハッシュ値は、異なるルールで作成された複数のハッシュ値の組み合わせである。
 
-参考：
+ℹ️ 参考：
 
 - https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/
 - https://medium-company.com/bcrypt/

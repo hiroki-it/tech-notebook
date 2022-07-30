@@ -11,7 +11,7 @@ description: 専用パッケージ＠Laravelの知見を記録しています。
 
 WebpackをLaravelを介して操作できるパッケージのこと。Breezeパッケージにも同梱されている。
 
-参考：https://readouble.com/laravel/8.x/ja/mix.html
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/mix.html
 
 <br>
 
@@ -37,7 +37,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package_auth.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_package_auth.html
 
 <br>
 
@@ -47,7 +47,7 @@ $ npm run watch
 
 #### ▼ コード
 
-参考：https://github.com/BenSampo/laravel-enum
+ℹ️ 参考：https://github.com/BenSampo/laravel-enum
 
 #### ▼ Enumクラスの定義
 
@@ -71,7 +71,7 @@ class RoleType extends Enum
     public const SALES_ROLE = 5;       // 営業職
     
     /**
-     * コールセンター職の区分値を持つかどうかを判定します。
+     * コールセンター職の区分値を持つか否かを判定します。
      */    
     public function isCallRole()
     {
@@ -87,7 +87,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 経理職の区分値を持つかどうかを判定します。
+     * 経理職の区分値を持つか否かを判定します。
      */       
     public function isFinanceRole()
     {
@@ -95,7 +95,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 企画職の区分値を持つかどうかを判定します。
+     * 企画職の区分値を持つか否かを判定します。
      */       
     public function isPlanRole()
     {
@@ -103,7 +103,7 @@ class RoleType extends Enum
     }  
     
     /**
-     * 営業職の区分値を持つかどうかを判定します。
+     * 営業職の区分値を持つか否かを判定します。
      */       
     public function isSalesRole()
     {
@@ -142,7 +142,7 @@ $staff->roleType->isSalesRole(); // false
 
 PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 - https://pleiades.io/help/phpstorm/laravel.html
@@ -171,19 +171,19 @@ return [
 
 #### ▼ Facade
 
-PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを生成する。
+PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
 ```bash
 $ php artisan ide-helper:generate
 ```
 
-#### ▼ アノテーション生成
+#### ▼ アノテーション作成
 
-PHPStromで、LaravelのEloquentモデルでのアノテーションを自動生成する。
+PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
 $ php artisan ide-helper:models
@@ -191,9 +191,9 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを生成する。
+PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを作成する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
 ```bash
 $ php artisan ide-helper:meta

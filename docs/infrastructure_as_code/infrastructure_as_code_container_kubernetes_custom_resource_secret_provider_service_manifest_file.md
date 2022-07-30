@@ -9,7 +9,7 @@ description: マニフェストファイル＠SecretProviderClassの知見を記
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ description: マニフェストファイル＠SecretProviderClassの知見を記
 
 #### ▼ spec.providerとは
 
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -44,13 +44,13 @@ spec:
 
 プロバイダーに応じて、参照する外部Secretストアのデータを設定する。
 
-参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects
 
 外部Sercretを識別する情報を設定する。
 
-参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
+ℹ️ 参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -66,7 +66,7 @@ spec:
         objectType: "secretsmanager"
 ```
 
-参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
+ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

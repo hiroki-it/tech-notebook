@@ -9,7 +9,7 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 Laravelに組み込まれているORM。Active Recordパターンで実装されている。内部にはPDOが使用されており、Laravelクエリビルダよりも隠蔽度が高い。
 
-参考：
+ℹ️ 参考：
 
 - https://readouble.com/laravel/8.x/ja/eloquent.html
 - https://codezine.jp/article/detail/12805
@@ -30,7 +30,7 @@ Laravelに組み込まれているORM。Active Recordパターンで実装され
 
 テーブルとモデルが一対一の関係になるデザインパターンのこと。さらに、テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される。ビジネスロジックが複雑でないアプリケーションの開発に適している。オブジェクト間の依存関係については、以下のリンクを参考せよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
@@ -96,7 +96,7 @@ class Foo extends Model
 
 ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。```hasOne```メソッド、```hasMany```メソッド、```belongsTo```メソッドを使用して表現する。
 
-参考：
+ℹ️ 参考：
 
 - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
 - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
@@ -104,7 +104,7 @@ ER図における各テーブルのリレーションシップを元に、モデ
 
 ER図については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -479,7 +479,7 @@ $filtered->all();
 // [3, 4]
 ```
 
-ちなみに、複数の条件を設定したいときは、早期リターンを使用する必要がある。
+ちなみに、複数の条件を設定したい時は、早期リターンを使用する必要がある。
 
 **＊実装例＊**
 
@@ -529,7 +529,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。どちらの方法でコールしても同じである。
 
-参考：
+ℹ️ 参考：
 
 - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
 - https://qiita.com/mpyw/items/7c7e8dc665584122a275
@@ -545,7 +545,7 @@ Eloquentモデルを継承すると、以下のクラスからメソッドをコ
 
 Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。その他のメソッドについては、以下のリンクを参考にせよ。
 
-参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
+ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
 | CRUDメソッドの種類 |         返却値型         |               返却値               | 返却値の説明         |
 | :----------------: | :----------------------: | :--------------------------------: | :------------------- |
@@ -558,7 +558,7 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。その他のメソッドについては、以下のリンクを参考にせよ。
 
-参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
+ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
 | CRUDメソッドの種類 | 返却値型 |         返却値          | 返却値の説明 |
 | :----------------: | :------: | :---------------------: | :----------- |
@@ -574,7 +574,7 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 INSERT文を実行する。Eloquentモデルには```create```メソッドがないため、代わりにEloquentビルダーが持つ```create```メソッドがコールされる。```create```メソッドに挿入先のカラムと値を渡し、これを実行する。別の方法として、Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行しても良い。```save```メソッドはUPDATE処理も実行できるが、```fill```メソッドでID値を割り当てない場合は、CREATE処理が実行される。```create```メソッドまたは```save```メソッドによるCREATE処理では、レコードの挿入後に、```lastInsertId```メソッドに相当する処理が実行される。これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。
 
-参考：
+ℹ️ 参考：
 
 - https://codelikes.com/laravel-eloquent-basic/#toc9
 - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
@@ -641,7 +641,7 @@ class FooDTO extends Model
 
 レコードを全て取得するSELECT句を発行する。MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、```orderBy```メソッドを使用して、明示的に並び替えるようにする。Eloquentモデルには```all```メソッドがないため、代わりにEloquentビルダーが持つ```all```メソッドがコールされる。全てのプライマリーキーのCollection型を配列型として返却する。```toArray```メソッドで配列型に再帰的に変換できる。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
 
@@ -678,7 +678,7 @@ class FooController extends Controller
 
 レコードを1つ取得するSELECT句を発行する。Eloquentモデルには```find```メソッドがないため、代わりにEloquentビルダーが持つ```find```メソッドがコールされる。引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。```toArray```メソッドで配列型に変換できる。
 
-参考：
+ℹ️ 参考：
 
 - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
@@ -744,7 +744,7 @@ class FooController extends Controller
 
 開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。これらのパラメーターはクエリパラメーターとして渡すと良い。
 
-参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
 **＊実装例＊**
 
@@ -779,7 +779,7 @@ class FooController extends Controller
 
 指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを使用する。プライマリーキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを使用して、プライマリーキーの昇順を明示的に設定する。
 
-参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
 **＊実装例＊**
 
@@ -822,7 +822,7 @@ class FooController extends Controller
 
 指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。
 
-参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
 **＊実装例＊**
 
@@ -853,7 +853,7 @@ class FooController extends Controller
 
 指定したカラムの降順でレコードを並び替えるSELECT句を発行する。
 
-参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
 ```php
 <?php
@@ -882,11 +882,11 @@ class FooController extends Controller
 
 親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。この仕組みをEagerロードという。Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。テーブル間に一対多（親子）のリレーションシップがある場合に使用する。N+1問題を防げる。
 
-参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
 ただし、```with```メソッドに他のメソッドをチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。
 
-参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
+ℹ️ 参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
 
 **＊実装例＊**
 
@@ -992,7 +992,7 @@ class Employee extends Model
 
 UPDATE文を実行する。Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行する。```save```メソッドはCREATE処理も実行できるが、```fill```メソッドでID値を割り当てた場合は、UPDATE処理が実行される。
 
-参考：
+ℹ️ 参考：
 
 - https://codelikes.com/laravel-eloquent-basic/#toc9
 - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
@@ -1189,7 +1189,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。リポジトリパターンについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
 <br>
 

@@ -9,7 +9,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 コンピュータのソフトウェアとハードウェアによる通信機能を、7つのレイヤーに分割したもの。
 
-参考：https://www.infraexpert.com/study/networking3.html
+ℹ️ 参考：https://www.infraexpert.com/study/networking3.html
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
 
@@ -27,7 +27,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
-参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
 

@@ -9,7 +9,7 @@ description: ネットワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description: ネットワークの知見を記録しています。
 
 限定された領域だけで接続できるネットワークのこと。LAN内では、各機器はプライベートIPアドレスで識別されている。LAN内に設置されたNATルーターが、WAN内のグローバルIPアドレスとLAN内のプライベートIPアドレスを相互変換する。
 
-参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
+ℹ️ 参考：http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
 
 ![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network_lan.jpeg)
 
@@ -39,7 +39,7 @@ description: ネットワークの知見を記録しています。
 
 LANは、バリアセグメント、パブリックサブネット（非武装地帯）、プライベートサブネット（内部ネットワーク）、に分割できる。AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
 
-参考：
+ℹ️ 参考：
 
 - https://www.techtarget.com/searchsecurity/definition/DMZ
 - https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html
@@ -68,7 +68,7 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 ルーターは、パブリックネットワーク、各プライベートネットワークの入り口、各プライベートネットワーク間で共有、といった方法で設置する。プライベートネットワークの入り口に設置する場合、例えば、自宅内に設置するルーターがある。インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
 
-参考：
+ℹ️ 参考：
 
 - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
 - https://michisugara.jp/modem_router
@@ -77,7 +77,7 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 #### ▼ ルーターの種類
 
-参考：
+ℹ️ 参考：
 
 - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
 - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
@@ -93,13 +93,13 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 受信した通信を適切な宛先に転送すること。通信の宛先を制御することを表現する場合、単に『転送する』よりも『ルーティングする』と表現した方が良い。
 
-参考：https://www.infraexpert.com/study/routing.html
+ℹ️ 参考：https://www.infraexpert.com/study/routing.html
 
 #### ▼ ホップバイホップルーティング
 
 ネットワーク内でルーターがルーターに通信をルーティングする時、各ルーターが最適なルーティング先を選択すること。
 
-参考：https://ascii.jp/elem/000/000/444/444681/3/
+ℹ️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
 
 ![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router_hop-by-hop-routing.jpeg)
 
@@ -122,7 +122,7 @@ NATの機能を持つルーターのこと。
 
 種類の異なるネットワーク間で、IPアドレスを相互変換する。1つのIPアドレスに対して、1つの内部IPアドレスを紐付けられる。図で言う上側のアウトバウンド通信時の送信元IPアドレスの変換を『SNAT』といい、下側のインバウンド通信時の送信先IPアドレスの変換を『SNAT』という。1つの通信で両方が必要である。
 
-参考：
+ℹ️ 参考：
 
 - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -142,7 +142,7 @@ NATの機能を持つルーターのこと。
 
 NATルーターの機能のうち、送信先IPアドレスを変換すること（```グローバルIPアドレス``` → ```プライベートIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```）。NATルーター自体を複数のプライベートネットワークで共有することがある。
 
-参考：https://rainbow-engine.com/dnat-snat-difference/
+ℹ️ 参考：https://rainbow-engine.com/dnat-snat-difference/
 
 **＊例＊**
 
@@ -154,7 +154,7 @@ NATルーターは、プライベートネットワークに入る時に、パ�
 
 NATルーターの機能のうち送信元IPアドレスを変換すること（```プライベートIPアドレス``` → ```グローバルIPアドレス```、```プライベートIPアドレス``` → ```プライベートIPアドレス```）。NATルーター自体を複数のプライベートネットワークで共有することがある。
 
-参考：https://rainbow-engine.com/dnat-snat-difference/
+ℹ️ 参考：https://rainbow-engine.com/dnat-snat-difference/
 
   **＊例＊**
 
@@ -203,7 +203,7 @@ NAPTの機能を持つルーターのこと。
 
 『IPマスカレード』ともいう。種類の異なるネットワーク間で、IPアドレスとポート番号を変換すること。1つのIPアドレスに対して、複数の内部IPアドレスを紐付けられる。AWSやGCPなどで使用されているようなNATルーターはこちらであり、IPアドレスとポート番号の両方を指定することにより、VPC内のプライベートIPアドレスに単一のパブリックIPアドレスを割り当てるようになっている。
 
-参考：
+ℹ️ 参考：
 
 - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
@@ -237,7 +237,7 @@ NAPTの機能を持つルーターのこと。
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
-参考：https://qiita.com/att55/items/162950627dc593c72f23
+ℹ️ 参考：https://qiita.com/att55/items/162950627dc593c72f23
 
 | サーバー名                 | 機能                                                         |
 | -------------------------- | ------------------------------------------------------------ |
@@ -248,7 +248,7 @@ NAPTの機能を持つルーターのこと。
 
 ![プロキシサーバーのキャッシュ機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーのキャッシュ機能.png)
 
-参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.html
+ℹ️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.html
 
 | サーバー名                 | 機能                                                         |
 | -------------------------- | ------------------------------------------------------------ |
@@ -279,7 +279,7 @@ NAPTの機能を持つルーターのこと。
 
 異なるLAN間のハブになるネットワークのこと。インターネットサービスプロバイダーがサービスとして提供している。WAN内では、各LANはグローバルIPアドレスで識別されている。各LANがWANに接続するためには、DTE（例：ブロードバンドルーター、Wifiルーター）、DCE（例：モデム）、電柱にあるアクセス回線、が必要になる。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/hymnofpeace/items/7f09a7a10e843552a8cb
 - https://xtech.nikkei.com/it/article/COLUMN/20080715/310872/
@@ -298,13 +298,13 @@ NAPTの機能を持つルーターのこと。
 
 データの送信元と送信先が決まっており、特定のユーザーがアクセス回線を専有する。他のLANから閉じられた専用のアクセス回線であり、特定のLAN間でのみデータ通信を行う。
 
-参考：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
+ℹ️ 参考：http://makiyamashinji.web.fc2.com/emprus/design/wan.html
 
 #### ▼ 回線交換方式
 
 データの送信元と送信先が決まっておらず、複数のユーザーでWAFを共有する。ただし、特定のユーザーのデータがアクセス回線を通過している間、他のユーザーはアクセス回線を使用できない。少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
 
-参考：
+ℹ️ 参考：
 
 - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 - https://www.infraexpert.com/study/wan3.html
@@ -315,7 +315,7 @@ NAPTの機能を持つルーターのこと。
 
 パケット化されたデータの送信元と送信先が決まっておらず、複数のユーザーでWAFを共有する。複数のユーザーでアクセス回線を同時に使用できる。対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
 - https://www.infraexpert.com/study/wan3.html
@@ -330,7 +330,7 @@ NAPTの機能を持つルーターのこと。
 
 ネットワーク内の機器の位置情報のこと。ネットワーク内のLAN内のルーターを境に、グローバルIPアドレスとプライベートIPアドレスに分けられる。IPアドレスの例示では、```x```を使用しないようにする。
 
-参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+ℹ️ 参考：https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address.png)
 
@@ -346,7 +346,7 @@ NAPTの機能を持つルーターのこと。
 
 LAN内で使用される。異なるプライベートネットワーク間では、同じIPアドレスが存在する。プライベートIPアドレスは、RFC1918で推奨された範囲を使用することが多い。
 
-参考：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
 | RFC1918推奨のCIDRブロック | IPアドレス                                | 個数           |
 | ------------------------- | ----------------------------------------- | -------------- |
@@ -370,7 +370,7 @@ LAN内で使用される。異なるプライベートネットワーク間で�
 
 IPアドレスのオクテットは、ネットワーク部とホスト部に分類できる。
 
-参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
+ℹ️ 参考：https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
 ![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ip-address_portion.png)
 
@@ -424,7 +424,7 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 ネットワーク内での位置情報であるIPアドレスに紐づき、ネットワーク上のIPアドレスの場所を人間にわかる識別子にしたもの。
 
-参考：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
+ℹ️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 
 <br>
 
@@ -442,7 +442,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 完全修飾ドメイン名は、所属ネットワークを指すドメイン名と、そのネットワークにおける具体的なサーバーを指すホスト名からなる。ただし、サーバーのホスト名が『www』である場合、クライアントはURLの指定時にホスト名を省略できる。例えば、『```www.example.com```』という完全修飾ドメイン名をURLで指定する場合、『```example.com```』としても良い。
 
-参考：https://ascii.jp/elem/000/000/419/419685/2/
+ℹ️ 参考：https://ascii.jp/elem/000/000/419/419685/2/
 
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain_namespace.png)
 
@@ -462,7 +462,7 @@ URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から�
 
 URLやメールアドレスのドメイン名とIPアドレスを相互変換すること。特に、ドメイン名を基にIPアドレスを返却させるような問い合わせを『正引き』、反対にIPアドレスを基にドメイン名を返却させるような問い合わせを『逆引き』という。例えば、外部WebサーバーのグローバルIPアドレスが『203.142.205.139』であると知っている場合、URLのプロトコル部分以下を『```203.142.205.139```』としてリクエストすれば、外部Webサーバーが提供するサイトにアクセスできる。しかし、グローバルIPアドレスは数字の羅列であるため、人間には覚えにくい。そこで、グローバルIPアドレスの代わりに、完全修飾ドメイン名をURLの一部として使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
@@ -475,7 +475,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 ドメイン名とIPアドレスのマッピングを管理する。名前解決でDNSサーバに問い合わせる前に参照される。もし```/etc/hosts```ファイルで名前解決が行われた場合は、DNSサーバば使用されない。WebサーバーのIPアドレスがDNSサーバーに登録されていない時、またはDNSサーバーが不具合の時に、DNSサーバーの代わりとして使用する。
 
-参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
+ℹ️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
 **＊実行例＊**
 
@@ -491,7 +491,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 名前解決に使用するDNSサーバーのIPアドレスや、問い合わせで使用するドメイン名の後に付与する文字列を定義する。名前解決では、まず最初に、```/etc/resolv.conf```ファイルに定義されたDNSサーバに問い合わせる。
 
-参考：https://linuc.org/study/knowledge/507/
+ℹ️ 参考：https://linuc.org/study/knowledge/507/
 
 **＊例＊**
 
@@ -511,7 +511,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 『ネームサーバー』『権威DNSサーバー』ともいう。ドメイン名とIPアドレスのマッピングを管理する。
 
-参考：https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
+ℹ️ 参考：https://www.quora.com/What-is-the-difference-if-any-between-DNS-server-and-name-server
 
 #### ▼ キャッシュDNSサーバー
 
@@ -549,7 +549,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。反対に、サーバーから流出する方向をアウトバウンドという。
 
-参考：
+ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/B0043D2EKO/
 - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -562,7 +562,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 通信の送受信全体の中の位置で通信を見た時、通信が送信された前半の位置を相対的にアップストリームという。反対に、通信が受信される後半の位置を相対的にダウンストリームという。
 
-参考：
+ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/B0043D2EKO/
 - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -606,13 +606,13 @@ $ nslookup example # 実際には、example.fooとなる
 
 とあるネットワーク地点でのスループットのこと。
 
-参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
+ℹ️ 参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
 
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィック.png)
 
 総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。
 
-参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
+ℹ️ 参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィックのグラフ.png)
 

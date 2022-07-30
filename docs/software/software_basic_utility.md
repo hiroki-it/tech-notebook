@@ -9,7 +9,7 @@ description: ユーティリティ（サービスプログラム）＠基本ソ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -77,7 +77,7 @@ $ chmod 600 <ファイルへのパス>
 
 ディレクトリ内のファイルに対して、再帰的に権限を付与する。ディレクトリ名にスラッシュをつける必要がある。
 
-参考：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
+ℹ️ 参考：http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 
 ```bash
 $ chmod -R 600 <ディレクトリ名>/
@@ -114,7 +114,7 @@ $ chmod -R 600 <ディレクトリ名>/
 
 現在の```chmod```コマンドの実行者以外にアクセス権限を付与する。
 
-参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
+ℹ️ 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
 
 ```bash
 $ chmod go+r <ファイルへのパス>
@@ -246,7 +246,7 @@ $ crontab <ファイルへのパス>
 
 （１）拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。この時、最後に改行がないとエラー（```premature EOF```）になるため、改行を追加する。
 
-参考：
+ℹ️ 参考：
 
 ```bash
 # /etc/cron.hourly/cron-hourly.txt
@@ -316,7 +316,7 @@ foo.txt: ASCII text
 
 エディタを開き、登録済みのcronファイルを変更/削除する。
 
-参考：https://nontitle.xyz/archives/1065
+ℹ️ 参考：https://nontitle.xyz/archives/1065
 
 ```bash
 $ crontab -e
@@ -418,7 +418,7 @@ curl -X GET https://example.com
 
 パーティションで区切られたストレージのうち、マウントされているもののみを取得する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
 
 **＊実行例＊**
 
@@ -453,7 +453,7 @@ $ df -h -m -t
 
 類似する```df```コマンドでは、パーティションで区切られたストレージのうちでマウントされたもののみを取得する。一方で```fdisk```コマンドでは、マウントされているか否かに関わらず、パーティションで区切られた全てのストレージを取得する。
 
-参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
+ℹ️ 参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
 
 <br>
 
@@ -463,7 +463,7 @@ $ df -h -m -t
 
 正引きの名前解決を実行する
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
 - https://dev.classmethod.jp/articles/dig-route53-begginer/
@@ -512,7 +512,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 
 逆引きの名前解決を実行する。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
 
 ```bash
 $ dig -x 182.22.28.252
@@ -563,7 +563,7 @@ $ du ./ | sort -n
 
 読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ（KB）、を取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、```-h```オプションを使用しないようにする。
 
-参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -h ./
@@ -580,7 +580,7 @@ $ du -h ./
 
 指定したディレクトリ内の合計サイズ（KB）を取得する。
 
-参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
+ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 ```bash
 $ du -s ./
@@ -612,7 +612,7 @@ $ echo "$<変数名>"
 
 基本的な手順としては、シェル変数を設定し、これを環境変数に追加する。シェル変数と環境変数については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html
 
 ```bash
 # シェル変数を設定
@@ -752,7 +752,7 @@ Swap:             0           0           0
 
 メモリ使用率は、以下の計算式で算出できる。
 
-参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
+ℹ️ 参考：https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
 
 ```mathematica
 メモリ使用率 =
@@ -800,7 +800,7 @@ $ cat foo.txt | grep -i bar
 
 指定したデバイスファイルに紐づくパーティションを拡張する。
 
-参考：https://blog.denet.co.jp/try-growpart/
+ℹ️ 参考：https://blog.denet.co.jp/try-growpart/
 
 ```bash
 $ growpart <デバイスファイル名> 1
@@ -891,7 +891,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - http://proger.blog10.fc2.com/blog-entry-66.html
 - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
@@ -1031,7 +1031,7 @@ $ swapoff /swap_volume
 
 指定したデバイスファイルを、これに紐づくディレクトリ（マウントポイント）にマウントする。
 
-参考：
+ℹ️ 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
@@ -1044,7 +1044,7 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 
 マウントのファイル共有システムの種類を設定する。種類によって、パラメータの入力方法が異なる。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
 
@@ -1064,7 +1064,7 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 
 指定したIPアドレス/ドメインに、TCPプロトコルでパケットを送信する。
 
-参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
+ℹ️ 参考：https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 ```bash
 $ nc <IPアドレス/ドメイン> <ポート番号>
@@ -1163,16 +1163,16 @@ $ rm -R <ディレクトリ名>
 
 ```bash
 $ find ./* \
-  -name "*.md" \
-  -type f | xargs sed -i -e 's/、/、/g' -e 's/。/。/g'
+    -name "*.md" \
+    -type f | xargs sed -i -e 's/、/、/g' -e 's/。/。/g'
 ```
 
 スラッシュを含む文字列を置換する場合には、スラッシュをエスケープする必要である。
 
 ```bash
 $ find ./* \
-  -name "*.md" \
-  -type f | xargs sed -i -e 's/foo\/bar/FooBar/g'
+    -name "*.md" \
+    -type f | xargs sed -i -e 's/foo\/bar/FooBar/g'
 ```
 
 ちなみにMacOSで```-i```オプションを使用する場合は、オプションの引数に空文字を渡す必要がある。
@@ -1180,15 +1180,15 @@ $ find ./* \
 ```bash
 # MacOSの場合
 $ find ./* \
-  -name "*.md" \
-  -type f | xargs sed -i '' -e 's/foo\/bar/FooBar/g'
+    -name "*.md" \
+    -type f | xargs sed -i '' -e 's/foo\/bar/FooBar/g'
 ```
 
 #### ▼ ```1s/^```
 
 ファイルの一行目にテキストを追加する。
 
-参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
+ℹ️ 参考：https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 
 ```bash
 find ./* \
@@ -1209,7 +1209,7 @@ find ./* \
 
 アプリケーション系ミドルウェア（PHP-FPM、uWSGI）、Web系ミドルウェア（Apache、Nginx）、データ収集系エージェント（datadogエージェント、cloudwatchエージェント）などで様々なデーモンの操作に使用される。ただし、デーモン自体もコマンドを提供しているため、できる限りデーモンの機能を使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html
 - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html
@@ -1370,7 +1370,7 @@ getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.
 
 ユーティリティがすでに実行途中の場合、プロセスIDを指定してシステムコールをトレースする。
 
-参考：https://tech-lab.sios.jp/archives/17394
+ℹ️ 参考：https://tech-lab.sios.jp/archives/17394
 
 ```bash
 $ strace -p <プロセスID>
@@ -1398,7 +1398,7 @@ $ tar -xf foo.tar.gz
 
 #### ▼ -v
 
-解凍中のディレクトリ/ファイルの生成ログを取得する。
+解凍中のディレクトリ/ファイルの作成ログを取得する。
 
 ```bash
 $ tar -xvf foo.tar.gz
@@ -1493,7 +1493,7 @@ $ tree
 
 #### ▼ -I
 
-パターンにマッチしたファイルを除外し、それ以外のファイルの場合はディレクトリのみを取得する。```-o```オプションで生成されたファイルがある場合に役立つ。
+パターンにマッチしたファイルを除外し、それ以外のファイルの場合はディレクトリのみを取得する。```-o```オプションで作成されたファイルがある場合に役立つ。
 
 ```bash
 $ tree -I tree.txt -o tree.txt
@@ -1526,7 +1526,7 @@ $ tree -P providers.tf
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
 
-参考：
+ℹ️ 参考：
 
 - https://webkaru.net/linux/traceroute-command/
 - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
@@ -1548,7 +1548,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 
 もし、IPアドレスがアスタリスクになった場合は、それ以降のルーターに通信が届いていないことを表す。
 
-参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
+ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
 
 ```bash
 $ traceroute google.com
@@ -1567,7 +1567,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 
 IPアドレスの名前解決を実行せずに、IPアドレスをそのまま取得する。
 
-参考：
+ℹ️ 参考：
 
 - https://webkaru.net/linux/traceroute-command/
 - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false

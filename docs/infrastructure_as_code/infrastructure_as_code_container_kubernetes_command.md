@@ -9,7 +9,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 ユーザーが、```config```ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成するか、あるいはコマンドの実行時に```config```ファイルを明示的に指定する必要がある。
 
-参考：https://blog.inductor.me/entry/2021/03/13/205452
+ℹ️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
 
 ```bash
 $ cd ~/.kube
@@ -46,7 +46,7 @@ $ kubectl get pods --kubeconfig=/etc/kubernetes/kubeconfig
 
 同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストファイルの差分を更新する。全ての項目を更新できるわけでない。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 #### ▼ -f -R
 
@@ -83,7 +83,7 @@ pod/foo-pod configured
 
 ```kubectl```コマンドに関するパラメーターを操作する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ▼ current-context
 
@@ -202,7 +202,7 @@ users:
 
 ホストPCのファイルまたはディレクトリを指定したPod内コンテナにコピーする。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ▼ オプション無し
 
@@ -222,7 +222,7 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 様々なリソースを作成する。```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。そのため、```f```オプションでマニフェストファイルを指定し、おぶえジェクトを作成した方が良い。同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊例＊**
 
@@ -254,7 +254,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
 - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
@@ -273,7 +273,7 @@ $ kubectl create secret docker-registry foo-secret \
 
 Secretを作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
 - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
@@ -308,7 +308,7 @@ secret/foo-secret created
 
 SSL証明書を持つSecretを作成する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
 ```bash
 $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
@@ -322,7 +322,7 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 
 リソースの詳細な情報を参照する。簡易的な情報を参照する時は、```kubectl get```コマンドを使用する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 ```bash
 $ kubectl describe nodes
@@ -341,7 +341,7 @@ $ kubectl describe pod <Pod名> | grep Node:
 
 Kubernetesリソースの設定値をapplyせずに変更する。Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
 
-参考：https://github.com/kubernetes/kubernetes/issues/24913
+ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 ```bash
 $ kubectl edit <Pod以外のリソース名>
@@ -355,7 +355,7 @@ $ kubectl edit <Pod以外のリソース名>
 
 指定したPod内コンテナでコマンドを実行する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
 #### ▼ -it
 
@@ -385,7 +385,7 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 Serviceを作成する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
@@ -420,7 +420,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 リソースの簡易的な情報を参照する。詳細な情報を参照する時は、```kubectl describe```コマンドを使用する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 **＊例＊**
 
@@ -608,7 +608,7 @@ $ kubectl label --overwrite <リソース名> foo=bar
 
 指定したリソースのログを取得する。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
 #### ▼ -c
 
@@ -654,7 +654,7 @@ $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名
 
 Kubernetesリソースをダウンタイム無しで更新する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
@@ -663,7 +663,7 @@ Kubernetesリソースをダウンタイム無しで更新する。
 
 指定したKubernetesをローリングリスタートする。
 
-参考：https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
+ℹ️ 参考：https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
 
 ```bash
 $ kubectl rollout restart deployment -n kube-system
@@ -677,7 +677,7 @@ $ kubectl rollout restart deployment -n kube-system
 
 JSON/YAML形式を入力値として、リソースの設定値を変更する。ただし、マニフェストファイルは変更されない。
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 
 #### ▼ pv
 
@@ -687,7 +687,7 @@ PersistentVolumeの設定値を変更する。
 
 削除されないボリュームを削除する。
 
-参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
 
 ```bash
 $ kubectl get pv \
@@ -704,7 +704,7 @@ $ kubectl get pv \
 
 ホストのポートから指定したリソースのポートに対して、ポートフォワーディングを実行する。開発環境にて、Serviceを経由せずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
@@ -725,7 +725,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 #### ▼ --address、--accept-hosts
 
-参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
+ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
 **＊実行例＊**
 
@@ -743,7 +743,7 @@ Starting to serve on [::]:8001
 
 Deployment、Pod、Jobを作成する。
 
-参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+ℹ️ 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
 #### ▼ --restart、--image、--port
 
@@ -787,7 +787,7 @@ minikube   523m         13%    4393Mi          27%
 
 kubectlとKubernetesのバージョンをそれぞれ取得する。両方のバージョンに差があっても、1つ以内のメジャーバージョンであれば許容範囲である。
 
-参考：
+ℹ️ 参考：
 
 - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
 - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
@@ -795,7 +795,7 @@ kubectlとKubernetesのバージョンをそれぞれ取得する。両方のバ
 ```bash
 $ kubectl version                                                             
 
-# kubectlのバージョン
+# kubectlコマンドのバージョン
 Client Version: version.Info{
   Major:"1",
   Minor:"22",
@@ -808,7 +808,7 @@ Client Version: version.Info{
   Platform:"darwin/amd64"
 }
 
-# Kubernetesのバージョン
+# kube-apiserverのバージョン
 Server Version: version.Info{
   Major:"1",
   Minor:"22",

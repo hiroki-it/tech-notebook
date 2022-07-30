@@ -9,7 +9,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 コマンドを実行する作業ディレクトリを指定する。
 
-参考：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
+ℹ️ 参考：https://www.terraform.io/cli/commands#switching-working-directory-with-chdir
 
 <br>
 
@@ -41,7 +41,7 @@ $ terraform apply \
 
 すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を扱うことはできず、代わりに```terraform import```コマンドの実行が必要になる。
 
-参考：
+ℹ️ 参考：
 
 - https://learn.hashicorp.com/tutorials/terraform/refresh
 - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
@@ -101,7 +101,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 #### ▼ 実行プランファイル
 
-事前に、```terraform plan```コマンドによって生成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
+事前に、```terraform plan```コマンドによって作成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
 
 ```bash
 $ terraform apply foo.tfplan
@@ -115,7 +115,7 @@ $ terraform apply foo.tfplan
 
 ```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ネストモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新しいバージョンのインストールするために、本コマンドを実行する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://spacelift.io/blog/terraform-init
 - https://reboooot.net/post/what-is-terraform/
@@ -135,7 +135,7 @@ Initializing provider plugins...
 
 指定したバックエンドの初期化をスキップする。一度でもバックエンドを初期化している場合は、改めて初期化することは不要なので、このオプションを使用する。
 
-参考：https://www.terraform.io/cli/commands/init#backend-initialization
+ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init -backend=false
@@ -167,7 +167,7 @@ $ terraform init \
 
 初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元々設定したバックエンドが異なる場合、元々のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
-参考：
+ℹ️ 参考：
 
 - https://www.terraform.io/cli/commands/init#backend-initialization
 - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
@@ -178,13 +178,13 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。
 
-参考：https://repl.info/archives/1435/
+ℹ️ 参考：https://repl.info/archives/1435/
 
 #### ▼ --migrate-state
 
-初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するかどうかを選択できる。
+初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するか否かを選択できる。
 
-参考：https://www.terraform.io/cli/commands/init#backend-initialization
+ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
 ```bash
 $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
@@ -194,7 +194,7 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 現在のバージョンを基に、```.terraform.lock.hcl```ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。
 
-参考：https://www.terraform.io/cli/commands/init#upgrade
+ℹ️ 参考：https://www.terraform.io/cli/commands/init#upgrade
 
 ```bash
 $ terraform init -upgrade
@@ -206,7 +206,7 @@ $ terraform init -upgrade
 
 #### ▼ -check
 
-インデントを揃えるべき箇所が存在するかどうかを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
+インデントを揃えるべき箇所が存在するか否かを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
 
 ```bash
 $ terraform fmt -check
@@ -237,7 +237,7 @@ main.tf
 
 ```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリに、ネストモジュールをインストールする。ただ、```terraform init```コマンドに同じ機能が含まれている。
 
-参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
+ℹ️ 参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
 
 ```bash
 $ terraform get
@@ -249,7 +249,7 @@ $ terraform get
 
 rosource間の依存関係をグラフ化する。これにより、どの```resource```ブロックが他のどの```resource```ブロックを使用しているかがわかる。Graphvizのダウンロードが必要である。
 
-参考：https://graphviz.org/download/
+ℹ️ 参考：https://graphviz.org/download/
 
 ```bash
 $ terraform graph | dot -Tsvg > graph.svg
@@ -263,11 +263,11 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 （１）Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。2022/07/19時点で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを一つずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
 
-参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
+ℹ️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
 （２）```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
-参考：
+ℹ️ 参考：
 
 - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 - https://dev.classmethod.jp/articles/terraform_import_for_each/
@@ -332,7 +332,7 @@ No changes. Infrastructure is up-to-date.
 
 何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
 
-参考：https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+ℹ️ 参考：https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 
 #### ▼ importできない```resource```タイプ
 
@@ -490,7 +490,7 @@ $ terraform plan \
 
 #### ▼ -out
 
-実行プランファイルを生成する。```terraform apply```コマンドのために使用できる。
+実行プランファイルを作成する。```terraform apply```コマンドのために使用できる。
 
 ```bash
 $ terraform plan \
@@ -549,7 +549,7 @@ module.vpc_module.aws_vpc.vpc
 
 ```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```関数や```for_each```関数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471

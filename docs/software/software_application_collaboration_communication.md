@@ -9,7 +9,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,7 +23,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 非同期処理の一種である。そのため、通信の完了を待たずに後続の処理が始まる。後続の全処理が非同期通信と無関係であれば、そのままで問題は起こらない。しかし、後続の処理に非同期通信の結果を使用するものが含まれている場合、この処理だけは非同期通信の後に実行されるように定義する必要がある。特定の処理が非同期通信の後に実行されるように定義する方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
 
 <br>
 
@@ -57,10 +57,10 @@ JavaScriptで非同期通信を実現する手法のこと。JavaScript、HTML�
 
 | オブジェクト/メソッド                | 提供                   | 説明                                                         | 補足                                                         |
 | ------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| xhrオブジェクト     | ビルトインオブジェクト | 今では使用することは少ないが、Ajaxが登場した初期の頃によく使われた。 | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
-| ```fetch```メソッド | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
-| JQueryオブジェクト  | JQueryパッケージ       |                                                              | 参考：<br>・https://api.jquery.com/category/ajax/shorthand-methods/<br>・https://api.jquery.com/jquery.ajax |
-| axiosオブジェクト   | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |
+| xhrオブジェクト     | ビルトインオブジェクト | 今では使用することは少ないが、Ajaxが登場した初期の頃によく使われた。 | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
+| ```fetch```メソッド | ビルトイン関数         |                                                              | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
+| JQueryオブジェクト  | JQueryパッケージ       |                                                              | ℹ️ 参考：<br>・https://api.jquery.com/category/ajax/shorthand-methods/<br>・https://api.jquery.com/jquery.ajax |
+| axiosオブジェクト   | Axiosパッケージ        |                                                              | ℹ️ 参考：https://github.com/axios/axios#request-method-aliases  |
 
 <br>
 
@@ -70,7 +70,7 @@ JavaScriptで非同期通信を実現する手法のこと。JavaScript、HTML�
 
 #### ▼ GET送信
 
-参考：https://blog.capilano-fw.com/?p=6920#Ajax
+ℹ️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -97,7 +97,7 @@ xhr.send();
 
 #### ▼ POST送信
 
-参考：https://blog.capilano-fw.com/?p=6920#Ajax
+ℹ️ 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 **＊実装例＊**
 
@@ -175,7 +175,7 @@ $.post(url, params);
 
 任意のHTTPメソッド、URL、ヘッダー、メッセージボディなどを設定し、非同期的にデータを送受信する。Promiseオブジェクトを返却する。
 
-参考：https://api.jquery.com/jquery.ajax
+ℹ️ 参考：https://api.jquery.com/jquery.ajax
 
 **＊実装例＊**
 

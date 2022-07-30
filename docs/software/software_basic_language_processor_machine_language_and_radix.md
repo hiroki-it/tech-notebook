@@ -9,7 +9,7 @@ description: 機械語と進数の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -45,7 +45,7 @@ description: 機械語と進数の知見を記録しています。
 
 1000 Byte = 1k Byte
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p106.png)
 
@@ -284,7 +284,7 @@ CPUでは、各データは2進法によって区別されている。CPUは4 �
 
 ### 逆ポーランド表記法（後置表記法）
 
-演算子（＋、－、×、÷など）を被演算子（数値や変数、また計算の結果）の後ろに書くことで数式を表現する方法。ちなみに、人間が使用している表記方法は、『中置記法』という。
+演算子（＋、－、×、÷など）を被演算子（数値や変数、また計算の結果）の後ろに書くことにより、数式を表現する方法。ちなみに、人間が使用している表記方法は、『中置記法』という。
 
 **＊例＊**
 
@@ -340,7 +340,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 無限小数
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p067-1.png)
 
@@ -354,7 +354,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 初代のドラゴンクエストの経験値の上限は『65535』だった。これは、経験値が16bit（2 Byte）で表されており、桁溢れが起きることを防ぐために65535以上は計算しないようになっていた。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p068.png)
 
@@ -362,7 +362,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 情報落ち
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p069.png)
 
@@ -372,7 +372,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 円周率は、途中で計算を打ち切る。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-1.png)
 
@@ -380,7 +380,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 桁落ち
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p070-2.png)
 
@@ -388,7 +388,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ### 丸め誤差
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p071.png)
 
@@ -516,7 +516,7 @@ Y = ( A + B ) × ( C － ( D ÷ E ) )
 
 ![論理式一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/論理式一覧.png)
 
-以下のベン図では、集合Aと集合Bは入力が『1』の場合、外側は入力が『0』の場合を表している。演算方法を思い出すときには、ベン図を思い出せ。
+以下のベン図では、集合Aと集合Bは入力が『1』の場合、外側は入力が『0』の場合を表している。演算方法を思い出す時には、ベン図を思い出せ。
 
 <br>
 
@@ -607,7 +607,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 ーーーーーーーーーーー
  0000 0000 0000 1000
 
-参考：https://ameblo.jp/kou05/entry-10883110086.html
+ℹ️ 参考：https://ameblo.jp/kou05/entry-10883110086.html
 
 **＊例題＊**
 
@@ -646,7 +646,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 
 XとYの否定論理積 X NAND Yは、NOT(X AND Y)として定義される。X OR YをNANDだけを使用して表した論理式はどれか。
 
-⇒X=0、Y=0のときにX OR Yが『0』になることから、『0』になる選択肢を探す。
+⇒X=0、Y=0の時にX OR Yが『0』になることから、『0』になる選択肢を探す。
 
 #### ▼ ((X NAND Y) NAND X) NAND Y
   ((0 NAND 0)NAND 0)NAND 0

@@ -9,7 +9,7 @@ description: Docker＠仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: Docker＠仮想化の知見を記録しています。
 
 Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、から構成される。
 
-参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
+ℹ️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
 ![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
 
@@ -31,7 +31,7 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 イメージレイヤーの実体は、```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。
 
-参考：
+ℹ️ 参考：
 
 - https://www.creationline.com/lab/35518
 - https://tech-lab.sios.jp/archives/21103#OverlayFS
@@ -53,7 +53,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
-参考：https://blog.codecamp.jp/programming-docker-image-container
+ℹ️ 参考：https://blog.codecamp.jp/programming-docker-image-container
 
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
@@ -63,7 +63,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 DockerのIaCについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html
 
 <br>
 
@@ -75,7 +75,7 @@ DockerのIaCについては、以下のリンクを参考にせよ。
 
 dockerクライアントは、dockerコマンドを使用してdockerデーモンAPIをコールできる。
 
-参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
+ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
@@ -97,7 +97,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 コンテナのファイルデータをホスト上のストレージに一時化/非永続化/永続化するための方法である。
 
-参考：
+ℹ️ 参考：
 
 - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 - https://maku77.github.io/docker/mount/
@@ -114,7 +114,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 ホスト側のストレージ上のディレクトリを、コンテナ側にマウントすることにより、データを永続化する。ホストで作成されるデータが継続的に変化する場合に適しており、例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である。しかし、ホスト側のデータを永続化する方法としては不適である。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/storage/bind-mounts/
 - https://www.takapy.work/entry/2019/02/24/110932
@@ -172,7 +172,7 @@ $ cat settings.json
 
 ホスト側のストレージ上にあるdockerエリア（```/var/lib/docker/volumes```ディレクトリ）のマウントポイント（```/var/lib/docker/volumes/<ボリューム名>/_data```）を、コンテナ側にマウントすることより、データを永続化する。ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/storage/volumes/
 - https://www.takapy.work/entry/2019/02/24/110932
@@ -181,7 +181,7 @@ $ cat settings.json
 
 dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという。また、デバイスファイルに紐づくディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
 #### ▼ 使用方法
 
@@ -209,7 +209,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 Docker on Linuxでのみ使用できる。ホスト側のメモリ上にあるディレクトリを、コンテナ側にマウントすることにより、データを非永続化する。コンテナが停止すると、tmpfsマウントは終了し、ディレクトリは削除される。
 
-参考：https://docs.docker.com/storage/tmpfs/
+ℹ️ 参考：https://docs.docker.com/storage/tmpfs/
 
 <br>
 
@@ -219,7 +219,7 @@ Docker on Linuxでのみ使用できる。ホスト側のメモリ上にある�
 
 本番環境で、ホストからコンテナにバインドマウントを実行できる。しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう（例：```cd```コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう）。一方でボリュームマウントでは、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。これにより、マウントに関係のないファイルへはアクセスできないようになっている。そのため、バインドマウントより安全である。
 
-参考：
+ℹ️ 参考：
 
 - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
 - https://blog.logrocket.com/docker-volumes-vs-bind-mounts/
@@ -230,11 +230,11 @@ Docker on Linuxでのみ使用できる。ホスト側のメモリ上にある�
 
 脆弱性の観点から、本番環境ではボリュームマウント（```VOLUME```）や```COPY```を使用して、アプリケーションをコンテナイメージに組み込むようにする。
 
-参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
+ℹ️ 参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
 
 その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する（例：ディレクトリの実行権限を変更するなど）場合は```COPY```の方が便利である。方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に```COPY```しておく。これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。
 
-参考：
+ℹ️ 参考：
 
 - https://www.nyamucoro.com/entry/2018/03/15/200412
 - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
@@ -245,10 +245,10 @@ Docker on Linuxでのみ使用できる。ホスト側のメモリ上にある�
 
 | コンテナへのコードの組み込み方 | パフォーマンスに関する説明                                   | 補足                                                         |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| バインドマウント               | バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナのパフォーマンスは悪い。 | 参考：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison<br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
-| ボリュームマウント             | ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナのパフォーマンスが良い。 | 参考：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163  |
+| バインドマウント               | バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナのパフォーマンスは悪い。 | ℹ️ 参考：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison<br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
+| ボリュームマウント             | ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナのパフォーマンスが良い。 | ℹ️ 参考：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163  |
 | ```COPY```                     | ```COPY```では、コンテナイメージのビルド時にコードを組み込むだけで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナのパフォーマンスが良い。このことは、DockerだけでなくKubernetesでも同様である。 |                                                              |
-| NFS                            | NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナのパフォーマンスが良い。 | 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010     |
+| NFS                            | NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナのパフォーマンスが良い。 | ℹ️ 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010     |
 
 <br>
 
@@ -260,7 +260,7 @@ Docker on Linuxでのみ使用できる。ホスト側のメモリ上にある�
 
 複数のコンテナ間に対して、仮想ネットワークで接続させる。また、仮想ネットワークを物理ネットワークの間を、仮想ブリッジを使用してbridge接続する。ほとんどの場合、この方法を使用する。
 
-参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html
+ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html
 
 ![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
@@ -337,7 +337,7 @@ $ curl --fail http://127.0.0.1:8080
 
 『コンテナ』から『コンテナ』に対して、アウトバウンド通信を送信する。ここでのコンテナのホスト名は、コンテナ内の『```/etc/hosts```』に定義されたものとなる。リクエストはホストを経由せず、そのままコンテナに送信される。コンテナ間のネットワーク接続の成否を確認できる。コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
 
 **＊実行例＊**
 
@@ -391,7 +391,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 構造化ログに変換し、サイドカーとして稼働するFluentdコンテナに送信する。ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.docker.com/config/containers/logging/fluentd/
 - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
@@ -407,13 +407,13 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ none
 
-標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。 ファイルに出力しないことで、開発環境のアプリケーションサイズの肥大化を防ぐ。
+標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。 ファイルに出力しないことにより、開発環境のアプリケーションサイズの肥大化を防ぐ。
 
 #### ▼ awslogs
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
 
-参考：https://docs.docker.com/config/containers/logging/awslogs/
+ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
 ```yaml
 {
@@ -428,7 +428,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
 
-参考：https://docs.docker.com/config/containers/logging/gcplogs/
+ℹ️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
 ```yaml
 {
@@ -474,7 +474,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 公式のnginxイメージは、```/dev/stdout```というシンボリックリンクを、```/var/log/nginx/access.log```ファイルに作成している。また、```/dev/stderr```というシンボリックリンクを、```/var/log/nginx/error.log```ファイルに作成している。これにより、これらのファイルに対するログの出力は、```/dev/stdout```と```/dev/stderr```に転送される。
 
-参考：https://docs.docker.com/config/containers/logging/
+ℹ️ 参考：https://docs.docker.com/config/containers/logging/
 
 #### ▼ php-fpmイメージ
 

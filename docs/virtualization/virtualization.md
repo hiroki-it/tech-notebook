@@ -9,7 +9,7 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -77,15 +77,17 @@ Docker、LXC、OpenVZ、など
 
 ### 処理速度の違い
 
-#### ▼ Overheadの小ささ
+#### ▼ オーバーヘッドの小ささ
 
-ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。この分だけ、時間（Overhead）を要する。一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、Overheadが小さい。
+ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。この分だけ、時間（オーバーヘッド）を要する。一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
-#### ▼ Overheadの比較
+#### ▼ オーバーヘッドの比較
 
-sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もOverheadが小さい。
+sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もオーバーヘッドが小さい。
+
+ℹ️ 参考：https://codezine.jp/article/detail/7894
 
 ![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 
@@ -113,7 +115,7 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 #### ▼ 水平スケーリングとは
 
-仮想環境の台数を増やすことで、仮想環境全体の処理能力を向上させる。その逆は、スケールイン。
+仮想環境の台数を増やすことにより、仮想環境全体の処理能力を向上させる。その逆は、スケールイン。
 
 ![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
 
@@ -129,7 +131,9 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 ### Dualシステム
 
-同じ処理を行う```2```個の仮想環境からなるシステム構成のこと。随時、処理結果を照合する。いずれかで障害が起こった場合、異常が発生したシステムを切り離し、残る片方で処理を続けることによって、故障を乗り切る。
+#### ▼ Dualシステムとは
+
+同じ処理を行う```2```個の仮想環境からなるシステム構成のこと。随時、処理結果を照合する。いずれかで障害が発生した場合、異常が発生したシステムを切り離し、残る片方で処理を続けることによって、故障を乗り切る。
 
 ![デュアルシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュアルシステム.png)
 
@@ -137,7 +141,9 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 ### Duplexシステム
 
-オンライン処理を行う主系の仮想環境と、ジョブを実行する従系のそれからなるシステム構成のこと。主系で障害が起こった場合、主系のオンライン処理を従系に引き継いで処理を続けることにより、障害を乗り切る。
+#### ▼ Duplexシステムとは
+
+オンライン処理を行う主系の仮想環境と、ジョブを実行する従系のそれからなるシステム構成のこと。主系で障害が発生した場合、主系のオンライン処理を従系に引き継いで処理を続けることにより、障害を乗り切る。
 
 ![デュプレックスシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュプレックスシステム.png)
 
@@ -145,13 +151,13 @@ sysbenchというベンチマークツールを使用して、CPU・メモリ・
 
 #### ▼ ホットスタンバイ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p613-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-1.png)
 
 #### ▼ コールドスタンバイ
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p613-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p613-2.png)
 

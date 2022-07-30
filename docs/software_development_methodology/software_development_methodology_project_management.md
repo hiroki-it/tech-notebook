@@ -9,13 +9,13 @@ description: プロジェクト管理の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
 ## 01. 見積もりに関する指標
 
-参考：https://www.ipa.go.jp/files/000003910.pdf
+ℹ️ 参考：https://www.ipa.go.jp/files/000003910.pdf
 
 | 指標名   | 説明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -34,7 +34,7 @@ description: プロジェクト管理の知見を記録しています。
 
 プログラムステップ法ともいう。プログラム本数やコードの行数（論理LOC、ステップ数）に基づいて、見積もりに関する指標を定量化する。この時、『開発規模（か）』『工数（こ）』『生産性（せ）』の単位間の関係は、『みはじ』と同じになる。
 
-参考：
+ℹ️ 参考：
 
 - https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html
 - https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html
@@ -105,7 +105,7 @@ description: プロジェクト管理の知見を記録しています。
 
 全体的な工程に必要な日数は、所要日数が最も多い経路に影響される。この経路を、クリティカルパスという。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p509.jpg)
 
@@ -113,7 +113,7 @@ description: プロジェクト管理の知見を記録しています。
 
 全体的な工程の中で、任意の結合点に取り掛かるために必要な最少日数のこと。クリティカルパスに影響されるので注意。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-1.jpg)
 
@@ -121,7 +121,7 @@ description: プロジェクト管理の知見を記録しています。
 
 全体的な工程の中で、任意の結合点に取り掛かるために必要な最多日数のこと。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p510-2.jpg)
 
@@ -131,7 +131,7 @@ description: プロジェクト管理の知見を記録しています。
 
 チーム内で各タスクを相対的に見積もる方法のこと。
 
-参考：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
+ℹ️ 参考：https://www.mof-mof.co.jp/blog/column/agile-estimation-planning-poker
 
 <br>
 

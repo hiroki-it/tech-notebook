@@ -9,7 +9,7 @@ description: Vue.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: Vue.jsの知見を記録しています。
 
 #### ▼ MVVMアーキテクチャとは
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html
 
 #### ▼ MVVMアーキテクチャにおける各層の責務
 
@@ -96,7 +96,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
   
 </div>
 
-<!-- ルートVueインスタンスの生成は外部スクリプトで行う。 -->
+<!-- ルートVueインスタンスの作成は外部スクリプトで行う。 -->
 <script 
     <src={{ asset(".../index.js") }}>
 </script>
@@ -105,9 +105,9 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 ![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-instance.png)
 
-Vueコンストラクタ関数を使用して、インスタンス化することによって、ルートVueインスタンスが生成される。インスタンスの変数名```vm```はVIewModelの意味である。インスタンス化時、全てのコンポーネントのデータが初期化される。各コンポーネントで個別に状態を変化させたいものは、```props```オプションではなく、```data```オプションとして扱う。
+Vueコンストラクタ関数を使用して、インスタンス化することによって、ルートVueインスタンスが作成される。インスタンスの変数名```vm```はVIewModelの意味である。インスタンス化時、全てのコンポーネントのデータが初期化される。各コンポーネントで個別に状態を変化させたいものは、```props```オプションではなく、```data```オプションとして扱う。
 
-参考：https://v1-jp.vuejs.org/guide/instance.html
+ℹ️ 参考：https://v1-jp.vuejs.org/guide/instance.html
 
 **＊実装例＊**
 
@@ -237,7 +237,7 @@ var vm = new Vue({
   // ViewModel層
   //=============
 
-  // 親コンポーネント以降では、Vueインスタンスを生成しないようにする。
+  // 親コンポーネント以降では、Vueインスタンスを作成しないようにする。
   module.exports = {
 
     /* propsオプション
@@ -365,7 +365,7 @@ View層のフォーム送信イベントが起きた時点で、ViewModel層に�
   ></v-foo-component>
 </div>
 
-<!-- Vueインスタンスの生成は外部スクリプトで行う。 -->
+<!-- Vueインスタンスの作成は外部スクリプトで行う。 -->
 <script src="{{ asset(".../index.js") }}">
 </script>
 ```
@@ -605,7 +605,7 @@ var vm = new Vue({
 
     // watchオプション
     watch: {
-        // スタック内で履歴の移動が起こった時に、対応付けた無名関数を実行。
+        // スタック内で履歴の移動が発生した時に、対応付けた無名関数を実行。
         "$route": function (to, from) {
             if (to.fullPath !== from.fullPath) {
                 // 何らかの処理。
@@ -623,7 +623,7 @@ Webアプリケーション全体に1つ存在し、全体的なRouter機能を�
 | ---------- | ------------------------------------------------------------ |
 | ```push``` | ```query```オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の1つ前の履歴に移動する。 |
 
-参考：https://router.vuejs.org/guide/essentials/navigation.html
+ℹ️ 参考：https://router.vuejs.org/guide/essentials/navigation.html
 
 **＊実装例＊**
 
@@ -840,14 +840,14 @@ module.exports = new Vuex.Store({
 
 #### ▼ ライフサイクルフックとは
 
-Vueインスタンスの生成から破棄までの間に実行される関数のこと。全ての関数を使用する必要はない。
+Vueインスタンスの作成から破棄までの間に実行される関数のこと。全ての関数を使用する必要はない。
 
-参考：https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
+ℹ️ 参考：https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
 
 | 順番 | フック名      | タイミング                                                   |
 | :--- | :------------ | :----------------------------------------------------------- |
-| 1    | beforeCreate  | Vueインスタンスの生成前                                      |
-| 2    | created       | Vueインスタンスの生成後                                      |
+| 1    | beforeCreate  | Vueインスタンスの作成前                                      |
+| 2    | created       | Vueインスタンスの作成後                                      |
 | 3    | beforeMount   | Vueインスタンスがマウントされる前                            |
 | 4    | mounted       | Vueインスタンスがマウントされた後                            |
 | 5    | beforeUpdate  | データ更新時の再レンダリング前                               |
@@ -857,17 +857,17 @@ Vueインスタンスの生成から破棄までの間に実行される関数�
 
 #### ▼ マウントとは
 
-ブラウザ上のリアルDOMの要素を、Vue.jsの処理によって生成される仮想DOMの要素で置き換えること。
+ブラウザ上のリアルDOMの要素を、Vue.jsの処理によって作成される仮想DOMの要素で置き換えること。
 
-参考：https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM
+ℹ️ 参考：https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM
 
 #### ▼ beforeCreate
 
-Vueインスタンスの生成前に実行される。
+Vueインスタンスの作成前に実行される。
 
 **＊検証例＊**
 
-beforeCreateフックの動作を検証する。```data```オプションは、Vueインスタンス生成後に有効になるため、beforeCreateフックでコールできず、```undefined```になる。
+beforeCreateフックの動作を検証する。```data```オプションは、Vueインスタンス作成後に有効になるため、beforeCreateフックでコールできず、```undefined```になる。
 
 ```vue
 <template>
@@ -896,7 +896,7 @@ undefined
 
 #### ▼ created
 
-フックの中で特によく使用する。Vueインスタンスの生成後に実行される。マウント前に必要な処理を実装する。
+フックの中で特によく使用する。Vueインスタンスの作成後に実行される。マウント前に必要な処理を実装する。
 
 **＊実装例＊**
 
@@ -904,7 +904,7 @@ undefined
 
 **＊検証例＊**
 
-createdフックの動作を検証する。```data```オプションは、Vueインスタンス生成後に設定されるため、createdフックでコールでき、処理結果が表示される。
+createdフックの動作を検証する。```data```オプションは、Vueインスタンス作成後に設定されるため、createdフックでコールでき、処理結果が表示される。
 
 ```vue
 <template>
@@ -938,7 +938,7 @@ Vueインスタンスがマウントされる前に実行される。
 
 **＊検証例＊**
 
-beforeMountフックの動作を検証する。```data```オプションから```name```変数への展開は、マウントによって実行される。そのため、beforeMountフックの段階では要素自体が生成されておらず、何も表示されない。
+beforeMountフックの動作を検証する。```data```オプションから```name```変数への展開は、マウントによって実行される。そのため、beforeMountフックの段階では要素自体が作成されておらず、何も表示されない。
 
 ```vue
 <template>
@@ -963,7 +963,7 @@ var vm = new Vue({
 
 ```bash
 # 結果
-# 要素が生成されていないため、何も表示されない。
+# 要素が作成されていないため、何も表示されない。
 ```
 
 #### ▼ mounted

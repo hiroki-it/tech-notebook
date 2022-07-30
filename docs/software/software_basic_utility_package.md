@@ -9,7 +9,7 @@ description: パッケージ＠ユーティリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -43,7 +43,7 @@ $ yum install -y bind-utils
 
 #### ▼ オプション無し
 
-参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+ℹ️ 参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
 
 **＊実行例＊**
 
@@ -74,7 +74,7 @@ Address:  172.217.175.3 # IPv4アドレス
 
 権威DNSサーバーを使用して名前解決する場合、引数なしで```nslookup```コマンドを実行する。
 
-参考：
+ℹ️ 参考：
 
 - http://linux.kororo.jp/cont/server/nslookup_dns.php
 - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
@@ -102,7 +102,7 @@ Address: 142.251.42.131
 
 正引き/逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
 
 **＊例＊**
 
@@ -157,7 +157,7 @@ $ yum install -y net-tools
 
 ### 接続状態の一覧
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
 
 <br>
 
@@ -167,7 +167,7 @@ $ yum install -y net-tools
 
 オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
 
-参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
+ℹ️ 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
 
 ```bash
 $ netstat -plunt
@@ -248,7 +248,7 @@ $ brew install speedtest-cli
 
 SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
 
-参考：https://www.speedtest.net/ja
+ℹ️ 参考：https://www.speedtest.net/ja
 
 ```bash
 $ speedtest-cli
@@ -268,7 +268,7 @@ Upload: 182.00 Mbit/s # アップロード速度
 
 #### ▼ pipリポジトリから
 
-参考：http://supervisord.org/installing.html#installing-a-distribution-package
+ℹ️ 参考：http://supervisord.org/installing.html#installing-a-distribution-package
 
 ```bash
 $ pip3 install supervisor
@@ -282,7 +282,7 @@ $ pip3 install supervisor
 
 Python製のユーティリティである。プロセスをデーモン化し、一括で管理する。
 
-参考：
+ℹ️ 参考：
 
 - http://supervisord.org/index.html
 - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
@@ -291,13 +291,13 @@ Python製のユーティリティである。プロセスをデーモン化し�
 
 supervisordを操作する。
 
-参考：http://supervisord.org/introduction.html#supervisor-components
+ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
 supervisor自体のプロセスのこと。
 
-参考：http://supervisord.org/introduction.html#supervisor-components
+ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
 <br>
 
@@ -307,7 +307,7 @@ supervisor自体のプロセスのこと。
 
 supervisorの```supervisord```プロセスのプールを設定する。
 
-参考：http://supervisord.org/configuration.html#supervisord-section-settings
+ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
 ```ini
 [supervisord]
@@ -344,7 +344,7 @@ loglevel=info
 
 #### ▼ nodaemon
 
-supervisordをフォアグラウンドで起動するかどうかを設定する。
+supervisordをフォアグラウンドで起動するか否かを設定する。
 
 ```ini
 [supervisord]
@@ -386,7 +386,7 @@ user=root
 
 常駐プログラムのプロセスを設定する。
 
-参考：
+ℹ️ 参考：
 
 - http://supervisord.org/configuration.html#program-x-section-settings
 - https://christina04.hatenablog.com/entry/2015/07/21/215525
@@ -403,7 +403,7 @@ user=root
 
 #### ▼ autorestart
 
-デーモン化されたプロセスの異常停止時に自動的に起動させるかどうかを設定する。
+デーモン化されたプロセスの異常停止時に自動的に起動させるか否かを設定する。
 
 ```ini
 [program:foo]
@@ -412,7 +412,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるかどうか、を設定する。
+supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否か、を設定する。
 
 ```ini
 [program:foo]
@@ -430,7 +430,7 @@ command=/usr/sbin/crond -n
 
 #### ▼ redirect_stderr
 
-デーモン化されたプロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する。
+デーモン化されたプロセスの標準出力への出力を標準エラー出力に転送するか否かを設定する。
 
 ```ini
 [program:foo]
@@ -450,7 +450,7 @@ startretries=10
 
 デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
-参考：http://supervisord.org/configuration.html#supervisord-section-values
+ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
 ```ini
 [program:foo]
@@ -519,7 +519,7 @@ programs=bar,baz
 
 指定したデーモンを再起動する。```all```とした場合は、全てを再起動する。
 
-参考：http://supervisord.org/running.html#supervisorctl-actions
+ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl restart <デーモン名>
@@ -529,7 +529,7 @@ $ supervisorctl restart <デーモン名>
 
 もし```supervisord.conf```ファイルの設定を変更した場合に、これを読み出し直す。
 
-参考：http://supervisord.org/running.html#supervisorctl-actions
+ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
 ```bash
 $ supervisorctl update
@@ -553,7 +553,7 @@ $ brew install sops
 
 コマンドのパラメーターを定義する。
 
-参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
+ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
 ```yaml
 creation_rules:
@@ -596,14 +596,16 @@ $ sops -e <暗号化前の.yamlファイル/.jsonファイル> > <暗号化後�
 
 プロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
 
-参考：
+ℹ️ 参考：
 
 - https://cameong.hatenablog.com/entry/2016/10/18/121400
 - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
 #### ▼ systemd：system daemon
 
-ユニットファイルに基づいて、プロセスをユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
+ユニットファイルに基づいて、プロセスをユニット別に管理する。ユニットは拡張子の違いで判別する。
+
+ℹ️ 参考：https://www.kabegiwablog.com/entry/2018/06/11/100000
 
 | ユニットタイプ  | ユニットの拡張子 | 説明                                         |
 | --------------- | ---------------- | -------------------------------------------- |
@@ -631,10 +633,10 @@ $ apt-get install systemd
 
 #### ▼ ユニットファイルとは
 
-systemdによるプロセスの起動/停止方法を定義したファイル。デフォルト値が定義されたファイルは```/usr/lib/systemd/system```ディレクトリ配下に配置され、これは変更できない。カスタムユニットファイルは、```/etc/sytemd/system```ディレクトリ配下に配置する。
+デーモンの起動/停止方法を定義したファイル。デフォルト値が定義されたファイルは```/usr/lib/systemd/system```ディレクトリ配下に配置され、これは変更できない。カスタムユニットファイルは、```/etc/sytemd/system```ディレクトリ配下に配置する。
 
 
-参考：
+ℹ️ 参考：
 
 - https://tex2e.github.io/blog/linux/create-my-systemd-service
 - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
@@ -651,6 +653,8 @@ Description=The Apache HTTP Server
 After=network.target remote-fs.target nss-lookup.target
 Documentation=man:httpd(8)
 Documentation=man:apachectl(8)
+# ユニットが失敗状態時に起動するユニット
+OnFailure=notify-email@%i.service
 ```
 
 #### ▼ Serviceセクション
@@ -689,7 +693,7 @@ WantedBy=multi-user.target
 
 サーバー内で```/etc/sytemd/system```ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。全てのデーモンのカスタムユニットファイルを再読み込みする。ただし、デーモンが既に稼働中の場合は、```systemctl restart```コマンドが別途必要になる。
 
-参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
+ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
 ```bash
 $ systemctl daemon-reload
@@ -723,7 +727,7 @@ $ systemctl enable httpd.service
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
 
-参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
@@ -824,7 +828,7 @@ $ systemctl start nginx.service
 
 デーモン化されたプロセスの状態を確認する。
 
-参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 ```bash
 $ systemctl status <ユニット名>
@@ -859,6 +863,81 @@ $ systemctl stop nginx.service
 
 <br>
 
+### journalctl
+
+#### ▼ journalctlとは
+
+systemで管理する全てのユニットのログを取得する。```grep```コマンドで特定のエラーログレベルに絞る必要がある。
+
+ℹ️ 参考：https://qiita.com/aosho235/items/9fbff75e9cccf351345c
+
+```bash
+$ journalctl | grep error
+```
+
+#### ▼ -u
+
+特定のユニットのみのログを取得する。
+
+```bash
+$ journalctl -u foo.service | grep error
+```
+
+<br>
+
+### systemdのアラート
+
+#### ▼ アラートを直接的に通知する場合
+
+デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
+
+ℹ️ 参考：
+
+- https://serverfault.com/a/924434
+- https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
+
+```ini
+[Unit]
+
+# 〜 中略 〜
+
+# ユニットが失敗状態時に起動するユニット
+OnFailure=notify-email@%i.service
+```
+
+```/etc/systemd/system/notify-email@.service```ファイルで、失敗状態時に起動するユニットを定義しておく。```ExecStart```オプションで、特定のアドレスにメールを送信するようにする。
+
+```ini
+# notify-email@.serviceファイル
+[Unit]
+Description=Sent email 
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c \
+    'systemctl status %i | /mailx -Ssendwait -s "[SYSTEMD_%i] Fail" example@gmail.com'
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### ▼ アラートを間接的に通知する場合
+
+デーモンが失敗状態になった時に、ログを経由して、アラートを間接的に送信するためには、```StandardOutput```オプションや```StandardError```オプションを使用する。一度、ログとして出力し、このログをCloudWatchログなどに送信する。
+
+ℹ️ 参考：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
+
+```ini
+[Service]
+
+# 〜 中略 〜
+
+StandardOutput=file:/var/log/foo-service/stdout.log
+StandardError=file:/var/log/foo-service/stderr.log
+```
+
+<br>
+
 ## 08. tcpdump
 
 ### インストール
@@ -885,7 +964,7 @@ $ yum install -y tcpdump
 
 今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。パケットの送信元と送信先がわかる。最初の３行はスリーウェイハンドシェイクを表す。
 
-参考：
+ℹ️ 参考：
 
 - http://blog.livedoor.jp/sonots/archives/18239717.html
 - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
@@ -898,13 +977,13 @@ $ tcpdump
 
 インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
 
-参考：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
+ℹ️ 参考：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
 
 **＊例＊**
 
 スリーウェイハンドシェイクのパケットの例。
 
-参考：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+ℹ️ 参考：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
 
 ```bash
 # クライアントからサーバーへのSYNCリクエスト
@@ -919,7 +998,7 @@ $ tcpdump
 
 <br>
 
-awkコマンドやgrepコマンドと組み合わせると、特定のIPアドレスを送信元/送信先としたパケットがあるかどうかを検出できる。
+awkコマンドやgrepコマンドと組み合わせると、特定のIPアドレスを送信元/送信先としたパケットがあるか否かを検出できる。
 
 ```bash
 $ tcpdump <コマンド、オプション> \
@@ -933,7 +1012,7 @@ $ tcpdump <コマンド、オプション> \
 
 指定したネットワークインターフェースにて、パケットの内容を取得する。```-i```オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
 
-参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
+ℹ️ 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
 
 ```bash
 $ tcpdump -i eth0
@@ -945,7 +1024,7 @@ $ tcpdump -i eth0
 
 全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。
 
-参考：https://go-journey.club/archives/1472
+ℹ️ 参考：https://go-journey.club/archives/1472
 
 ```bash
 $ tcpdump -nn ip
@@ -959,7 +1038,7 @@ $ tcpdump -nn ip
 
 全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
 
-参考：https://go-journey.club/archives/1472
+ℹ️ 参考：https://go-journey.club/archives/1472
 
 ```bash
 $ tcpdump -nn port 80
@@ -973,7 +1052,7 @@ $ tcpdump -nn port 80
 
 送信先の情報でフィルタリングし、パケットを取得する。
 
-参考：https://orebibou.com/ja/home/201505/20150525_001/
+ℹ️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 
@@ -991,7 +1070,7 @@ $ tcpdump dst port 80
 
 送信元の情報でフィルタリングし、パケットを取得する。
 
-参考：https://orebibou.com/ja/home/201505/20150525_001/
+ℹ️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
 
 #### ▼ port
 

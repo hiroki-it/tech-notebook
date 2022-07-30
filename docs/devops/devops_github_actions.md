@@ -9,7 +9,7 @@ description: GitHub Actions＠DevOpsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -90,7 +90,7 @@ jobs:
 
 使用するOSに応じて、いくつかの汎用的なソフトウェアがプリインストールされている。
 
-参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
+ℹ️ 参考：https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
 <br>
 
@@ -98,9 +98,9 @@ jobs:
 
 #### ▼ continue-on-error
 
-同じ```steps```キー内の```run```キーが失敗しても成功扱いにするかどうかを設定する。
+同じ```steps```キー内の```run```キーが失敗しても成功扱いにするか否かを設定する。
 
-参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
+ℹ️ 参考：https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
 
 ```yaml
 jobs:
@@ -121,7 +121,7 @@ jobs:
 
 条件を満たした場合に、後続の```run```キーを実行する。
 
-参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
+ℹ️ 参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 
 ```yaml
 jobs:
@@ -158,7 +158,7 @@ jobs:
 
 使用するActionsを設定する。
 
-参考：https://github.com/marketplace?category=&query=&type=actions&verification=
+ℹ️ 参考：https://github.com/marketplace?category=&query=&type=actions&verification=
 
 ```yaml
 jobs:
@@ -246,7 +246,7 @@ Error: Can't find 'action.yml', 'action.yaml' ...
 
 compositeでは、Secretsを使用できない。そのため、```input```キーのパラメーターとして渡す必要がある。
 
-参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
+ℹ️ 参考：https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
 
 ```yaml
 jobs:
@@ -299,7 +299,7 @@ runs:
 
 もし```steps```を定義する場合は、```shell```キーでシェルの種類を指定する必要がある。
 
-参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
+ℹ️ 参考：https://stackoverflow.com/questions/71041836/github-actions-required-property-is-missing-shell
 
 ```yaml
 runs:
@@ -325,7 +325,7 @@ runs:
 
 環境変数を定義する。Secretの値を設定できない。
 
-参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+ℹ️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 env:
@@ -351,7 +351,7 @@ jobs:
 
 #### ▼ env
 
-参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+ℹ️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 jobs:
@@ -369,7 +369,7 @@ jobs:
 
 環境ファイル（```GITHUB_ENV```）に値を入力することにより、```job```内の環境変数として使用できるようになる。
 
-参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+ℹ️ 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
 ```yaml
 jobs:
@@ -398,7 +398,7 @@ jobs:
 
 #### ▼ env
 
-参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
+ℹ️ 参考：https://docs.github.com/en/actions/learn-github-actions/environment-variables#about-environment-variables
 
 ```yaml
 jobs:
@@ -428,7 +428,7 @@ jobs:
 
 以降の全ての処理でマスキングが実行される。もちろん、```inputs```キーで渡した値にもマスキングが維持される。
 
-参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
+ℹ️ 参考：https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
 ```yaml
 jobs:
@@ -457,7 +457,7 @@ runs:
 
 これに関しては以前は非対応であったため、```add-mask```コマンドを使用した方法がネット上で見つかることに注意する。
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
 - https://github.com/actions/runner/issues/643#issuecomment-708228940
@@ -500,7 +500,7 @@ runs:
 
 リポジトリの設定のSecrets項目に変数名と値を登録する。プロジェクト内、すなわちリポジトリ内で参照できる。出力された変数の値は、以降の処理でマスキングされる。
 
-参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
+ℹ️ 参考：https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
 ```yaml
 jobs:
@@ -520,7 +520,7 @@ jobs:
 
 リポジトリの設定のEnvironment項目に変数名と値を登録する。GitHub Actionsでのみ参照できる。出力された変数の値は、以降の処理でマスキングされる。Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://btj0.com/blog/github/use-env/
 - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
@@ -594,7 +594,7 @@ jobs:
 
 変数の値をマスキングする。以降、ログに出力される場合は、『```***```』のようにアスタリスクで表示される。
 
-参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
+ℹ️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log
 
 ```yaml
 jobs:
@@ -618,7 +618,7 @@ jobs:
 
 GitHub Actionsの独自パラメーターを入力する。
 
-参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+ℹ️ 参考：https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 ```yaml
 jobs:
@@ -655,7 +655,7 @@ jobs:
 
 入力したパラメーターは、異なる```step```の間で出力できる。
 
-参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
+ℹ️ 参考：https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps
 
 ```yaml
 jobs:
@@ -698,7 +698,7 @@ jobs:
 
 入力したパラメーターは、異なる```job```の間で出力できる。先に実行される```job```キーの```output```キーに入力する必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 - https://swfz.hatenablog.com/entry/2020/04/18/160235

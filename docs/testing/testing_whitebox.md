@@ -9,7 +9,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 ### ホワイトボックステストの種類
 
-参考：https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
+ℹ️ 参考：https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
 
 - 整形
 - 静的解析
@@ -39,7 +39,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 クラスや構造体のメソッドが、それ単体で仕様通りに処理が動作するかを検証する方法。検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを行う必要がある。この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
 
 <br>
 
@@ -55,13 +55,13 @@ description: ホワイトボックステストの知見を記録しています�
 
 Roy Osherove氏の命名規則に従って、『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する。期待される返却値の命名で『正常系テスト』か『異常系テスト』かと識別する。例えば、正常系であれば『```testFoo_Xxx_ReturnXxx```』、また異常系であれば『```testFoo_Xxx_ExceptionThrown```』や『```testFoo_Xxx_ErrorThrown```』とする。Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。
 
-参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+ℹ️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 #### ▼ アサーションの比較値
 
 ユニットテストのアサーションメソッドで、期待値と実際値を比較する場合、期待値を定数として管理した方が良い。
 
-参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+ℹ️ 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
 <br>
 
@@ -71,7 +71,7 @@ Roy Osherove氏の命名規則に従って、『テスト対象のメソッド�
 
 ユニットテストでは、各コンポーネントの依存対象のコンポーネントをテストダブル（代替品）に置き換える。
 
-参考：https://en.wikipedia.org/wiki/Test_double
+ℹ️ 参考：https://en.wikipedia.org/wiki/Test_double
 
 <br>
 
@@ -79,9 +79,9 @@ Roy Osherove氏の命名規則に従って、『テスト対象のメソッド�
 
 #### ▼ モック
 
-上層クラス（上層構造体）が下層クラスを正しくコールできるかどうかを検証したい時に、上層クラス以外の部分の処理は不要であり、下層クラスの実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『モック』という。スタブとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックでは、クラスのメソッドとデータが全てダミー実装に置き換わる。もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡した時のコール回数と指定回数を比較する。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるモックについては、以下のリンクを参考にせよ。
+上層クラス（上層構造体）が下層クラスを正しくコールできるか否かを検証したい時に、上層クラス以外の部分的処理は不要であり、下層クラスの実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『モック』という。スタブとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックでは、クラスのメソッドとデータが全てダミー実装に置き換わる。もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡した時のコール回数と指定回数を比較する。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるモックについては、以下のリンクを参考にせよ。
 
-参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
 | ツール名 | モックのメソッドの返却値                                     | 補足                                                         |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -90,9 +90,9 @@ Roy Osherove氏の命名規則に従って、『テスト対象のメソッド�
 
 #### ▼ スタブ
 
-クラスのメソッドの処理を検証したい時に、検証対象外のクラスに依存している部分は、実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。モックとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックと同様にスタブでも、クラスのメソッドとデータが全てダミー実装に置き換わる。スタブには、正しい処理を実行するように引数と返却値を持つメソッドを定義し、その他の実体のある処理が正しく実行されるかを検証する。これらにより、検証対象の処理のみが実体であっても、一連の処理を実行できる。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。
+クラスのメソッドの処理を検証したい時に、依存している下層クラスは、実体があるかのように見せかける。この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。モックとは、使用されるテストが異なるが、どちらも擬似オブジェクトである。モックと同様にスタブでも、クラスのメソッドとデータが全てダミー実装に置き換わる。スタブには、正しい処理を実行するように引数と返却値を持つメソッドを定義し、その他の実体のある処理が正しく実行されるかを検証する。これらにより、検証対象の処理のみが実体であっても、一連の処理を実行できる。なお、用語の定義はテストフレームワークごとにやや異なることに注意する。PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。
 
-参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
 
 <br>
 
@@ -108,11 +108,11 @@ PHPUnit、Phake、Mockery、JUnit
 
 網羅条件に基づいたユニットテストの品質指標である。採用した網羅で考えられる全ての条件のうち、テストで検証できている割合で表す。 網羅率はテストスイートやパッケージを単位として解析され、これは言語別に異なる。Goで命令網羅の網羅率を検出するユニットテストについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_command.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_command.html
 
 PHPUnitで網羅率を解析する方法については、以下のリンクを参考にせよ。
 
-参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
+ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
 
 <br>
 
@@ -124,7 +124,7 @@ PHPUnitで網羅率を解析する方法については、以下のリンクを�
 
 全ての命令が実行されるかを検証する。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -140,7 +140,7 @@ AとBは、『1』または『0』になり得るとする。
 
 全ての判定が実行されるかを検証する。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -157,7 +157,7 @@ AとBは、『1』または『0』になり得るとする。
 
 各条件が、取り得る全ての値で実行されるかを検証する。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -181,7 +181,7 @@ AとBは、『1』または『0』になり得るとする。
 
 各条件が、取り得る全ての値で、かつ全ての組み合わせが実行されるかを検証する。一般的に、複数条件網羅を採用すれば、最低限のソフトウェア品質を担保できていると言える。
 
-参考：https://www.amazon.co.jp/dp/4297124513
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 **＊例＊**
 
@@ -206,7 +206,7 @@ AとBは、『1』または『0』になり得るとする。
 
 ### 循環複雑度の種類
 
-参考：
+ℹ️ 参考：
 
 - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
 - https://szk-takanori.hatenablog.com/entry/20111219/p1
@@ -224,8 +224,20 @@ AとBは、『1』または『0』になり得るとする。
 
 ### 機能テストとは
 
-エンドポイントにリクエストを送信し、レスポンスが正しく返信されるかどうかを検証する方法。スタブを使用することは少ない。ブラックボックステストの機能テストとは異なることに注意する。
+エンドポイントにリクエストを送信し、レスポンスが正しく返信されるか否かを検証する方法。スタブを使用することは少ない。ブラックボックステストの機能テストとは異なることに注意する。
 
-参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+ℹ️ 参考：https://eh-career.com/engineerhub/entry/action/2019/10/03/103000/#%E5%A2%83%E7%95%8C%E5%80%A4%E3%83%86%E3%82%B9%E3%83%88
+
+<br>
+
+## 04. その他のテスト手法
+
+### CDCテスト：Consumer Drive Contract
+
+#### ▼ CDCテストとは
+
+マイクロサービスのコントローラーがコールされてから、DBの操作が完了するまでを、テストする。下流マイクロサービスのコールはモック化またはスタブ化する。
+
+ℹ️ 参考：https://qiita.com/AHA_oretama/items/e2c7db87cc5264c701ae
 
 <br>

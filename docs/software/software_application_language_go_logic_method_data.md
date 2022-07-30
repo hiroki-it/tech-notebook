@@ -249,7 +249,7 @@ func main() {
 
 構造体のフィールドとして構造体を保持することにより、依存関係を構成する。依存される側をサプライヤー、また依存する側をクライアントという。構造体間に依存関係を構成するには、クライアントにサプライヤーを注入する。注入方法には、『コンストラクタインジェクション』『セッターインジェクション』『セッターインジェクション』がある。詳しくは、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 ```go
 package main
@@ -601,7 +601,7 @@ func main() {
 
 定義された変数に対して、&（アンパサンド）を宣言すると、メモリアドレスを参照できる。参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。PHPにおけるポインタは、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based_method_data.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -681,7 +681,7 @@ type slice struct {
 }
 ```
 
-参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+ℹ️ 参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
 
 #### ▼ 宣言と代入
 
@@ -1014,7 +1014,7 @@ func main() {
 
 もし、構造体に実装されたメソッドに不足があると、委譲が自動的に取り消される。エラーは発生しないため、実装されたメソッドが十分であることを実装者が知らなければならない。アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。
 
-参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+ℹ️ 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
 ```go
 package main
@@ -1236,7 +1236,7 @@ func main() {
 
 #### ▼ ```main```関数とは
 
-goのエントリーポイントとなる。goのプログラムが起動したときに、各パッケージの```init```関数が実行された後、```main```関数が実行される。```main```関数をビルド対象に指定すると、これを開始点として読み込まれるファイルが枝分かれ状にビルドされていく。ステータス『0』でプロセスを終了する。
+goのエントリーポイントとなる。goのプログラムが起動した時に、各パッケージの```init```関数が実行された後、```main```関数が実行される。```main```関数をビルド対象に指定すると、これを開始点として読み込まれるファイルが枝分かれ状にビルドされていく。ステータス『0』でプロセスを終了する。
 
 **＊実装例＊**
 
@@ -1351,7 +1351,7 @@ func main() {
 
 #### ▼ メソッドとは
 
-データ型や型リテラルに紐付けられている関数のこと。Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることで、擬似的にオブジェクトを表現できる。
+データ型や型リテラルに紐付けられている関数のこと。Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。
 
 #### ▼ レシーバによる紐付け
 
@@ -1501,7 +1501,7 @@ func main() {
 
 **＊実装例＊**
 
-即時関数をdefer関数化している。処理の最後にランタイムエラーが起こったとき、これを```recover```メソッドで吸収できる。
+即時関数をdefer関数化している。処理の最後にランタイムエラーが発生したとき、これを```recover```メソッドで吸収できる。
 
 ```go
 package main
@@ -1926,7 +1926,7 @@ func main() {
 
 前の処理の終了を待たずに次の処理を開始し、それぞれの処理が独立して終了する。結果、終了する順番は順不同になる。
 
-参考：https://golang.org/pkg/sync/
+ℹ️ 参考：https://golang.org/pkg/sync/
 
 **＊実装例＊**
 
@@ -2042,7 +2042,7 @@ func main() {
 
 例外スローの意義は、以下の参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_validation.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 
@@ -2106,7 +2106,7 @@ func main() {
 
 errorsパッケージの```New```メソッドにエラーを設定する。これにより、独自のエラーを保持するerrorインターフェースを定義できる。errorインターフェースはErrorメソッドを自動的に実行する。
 
-参考：https://golang.org/pkg/errors/#New
+ℹ️ 参考：https://golang.org/pkg/errors/#New
 
 **＊実装例＊**
 
@@ -2141,7 +2141,7 @@ func main() {
 
 fmtパッケージの```Errorf```メソッドで独自エラーを作成できる。事前に定義したフォーマットを元にエラーを設定する。これにより、独自のエラーを保持するerrorインターフェースを定義できる。errorインターフェースはErrorメソッドを自動的に実行する。
 
-参考：https://golang.org/pkg/fmt/#Errorf
+ℹ️ 参考：https://golang.org/pkg/fmt/#Errorf
 
 **＊実装例＊**
 
@@ -2209,7 +2209,7 @@ func main() {
 
 #### ▼ xerrorsパッケージとは
 
-標準のerrorsパッケージには、エラーにスタックトレース情報が含まれていない。xerrorsパッケージによって生成されるerrorインターフェースには、errorインターフェースが返却された行数がスタックトレースとして含まれている。
+標準のerrorsパッケージには、エラーにスタックトレース情報が含まれていない。xerrorsパッケージによって作成されるerrorインターフェースには、errorインターフェースが返却された行数がスタックトレースとして含まれている。
 
 #### ▼ ```New```関数によるトレース付与
 
@@ -2280,7 +2280,7 @@ func main() {
 
 Goにはデフォルトで、ロギング用パッケージが用意されている。ただし、機能が乏しいので、外部パッケージ（例：logrus）も推奨である。
 
-参考：
+ℹ️ 参考：
 
 - https://pkg.go.dev/log
 - https://github.com/sirupsen/logrus
@@ -2318,7 +2318,7 @@ if err != nil {
 
 渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして```panic```メソッドを実行する。ちなみに、```panic```メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。ただし、```panic```ではビルドやアーティファクト実行のエラー時に終了ステータスだけを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である（ビルド失敗の原因がわからずに時間を溶かした経験あり）。
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
 **＊実装例＊**
 
@@ -2359,7 +2359,7 @@ if err != nil {
 
 テンプレートでは、『```{{```』と『```}}```』の記号がロジックで使用される。これを、文字として使用する場合は、ロジックとして認識されないように、エスケープする必要がある。エスケープ時は、```{{"<記号>"}}```ようにする。
 
-参考：https://stackoverflow.com/questions/17641887/how-do-i-escape-and-delimiters-in-go-templates
+ℹ️ 参考：https://stackoverflow.com/questions/17641887/how-do-i-escape-and-delimiters-in-go-templates
 
 ```yaml
 {{ {{"{{"}} foo {{"}}"}} }}
@@ -2373,7 +2373,7 @@ if err != nil {
 
 ### パッケージのコード
 
-参考：https://golang.org/pkg/
+ℹ️ 参考：https://golang.org/pkg/
 
 <br>
 
@@ -2412,7 +2412,7 @@ func main() {
 
 構造体をJSONに変換する。変換前に、マッピングを行うようにする。引数のデータ型は、ポインタ型または非ポインタ型のいずれでも問題ない。ただし、他の多くの関数がポインタ型を引数型としていることから、それに合わせてポインタ型で渡すことが多い。
 
-参考：https://golang.org/pkg/encoding/json/#Marshal
+ℹ️ 参考：https://golang.org/pkg/encoding/json/#Marshal
 
 **＊実装例＊**
 
@@ -2500,7 +2500,7 @@ func main() {
 
 JSONを構造体に変換する。リクエストの受信によく使われる。リクエストのメッセージボディにはバイト型データが割り当てられているため、```Unmarshal```関数の第一引数はバイト型になる。また、第二引数として、変換後の構造体のメモリアドレスを渡すことにより、第一引数がその構造体に変換される。内部的には、そのメモリアドレスに割り当てられている変数を書き換えている。```Unmarshal```関数に渡す構造体のフィールドはパブリックが必要であるが、```Marshal```関数と同様にして、```UnMarshalJSON```関数を構造体に定義すれば、代わりにこれをコールできる。
 
-参考：https://golang.org/pkg/encoding/json/#Unmarshal
+ℹ️ 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
 **＊実装例＊**
 
@@ -2545,7 +2545,7 @@ JSONから構造体にパースするために```Unmarshal```関数を実行し�
 
 CloudWatchは様々なイベントを扱うため、一部のJSON構造が動的に変化する。そのため、```RawMessage```関数が使用されている。
 
-参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
+ℹ️ 参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 ```go
 package events
@@ -2652,7 +2652,7 @@ func main() {
 
 接頭接尾辞の無いメソッド（```Print```メソッド、```Sprint```メソッド、```Fprint```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぐ。
 
-参考：
+ℹ️ 参考：
 
 - https://golang.org/pkg/fmt/#Print
 - https://golang.org/pkg/fmt/#Fprint
@@ -2710,7 +2710,7 @@ func main() {
 
 接頭辞に```S```のあるメソッド（```Sprint```メソッド、```Sprintf```メソッド、```Sprintln```メソッド、など）が属する。接頭辞が```F```や```P```のメソッドとは異なり、処理結果を標準出力に出力せずに返却する。標準出力に出力できる他の関数の引数として渡す必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://golang.org/pkg/fmt/#Sprint
 - https://golang.org/pkg/fmt/#Sprintf
@@ -2726,7 +2726,7 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 
 接尾辞に```ln```のあるメソッド（```Println```メソッド、```Fprintln```メソッド、```Sprintln```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
 
-参考：
+ℹ️ 参考：
 
 - https://golang.org/pkg/fmt/#Println
 - https://golang.org/pkg/fmt/#Fprintln
@@ -2751,7 +2751,7 @@ package mainimport "fmt"func main() {    fmt.Println("Hello", "world!")    fmt.P
 | ```%+v```      | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
 | ```%#v```      | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
 
-参考：
+ℹ️ 参考：
 
 - https://golang.org/pkg/fmt/#Printf
 - https://golang.org/pkg/fmt/#Fprintf
@@ -2824,7 +2824,7 @@ package mainimport "fmt"func main() {    var first string = "Hiroki"        var 
 
 HTTPクライアントまたはWebサーバを提供する。そのため、GoではNginxやApacheが不要である。ただし、GoによるWebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
 
-参考：
+ℹ️ 参考：
 
 - https://golang.org/pkg/net/http/#pkg-index
 - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go

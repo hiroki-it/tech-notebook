@@ -46,7 +46,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | エンドポイントタイプ         | ルーティング先のAWSリソースを設定する。                      | ALB、NLB、EC2、Elastic IPを選択できる。                      |
 | 重み                         | 複数のエンドポイントがある場合、それぞれの重みを設定する。   | 各エンドポイントの重みの合計値を256とし、1～255で相対値を設定する。 |
-| クライアントIPアドレスの保持 | ```X-Forwarded-For```ヘッダーにクライアントIPアドレスを含めてルーティングするかどうかを設定する。 |                                                              |
+| クライアントIPアドレスの保持 | ```X-Forwarded-For```ヘッダーにクライアントIPアドレスを含めてルーティングするか否かを設定する。 |                                                              |
 
 <br>
 
@@ -64,7 +64,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
 
-参考：https://speedtest.globalaccelerator.aws/#/
+ℹ️ 参考：https://speedtest.globalaccelerator.aws/#/
 
 <br>
 
@@ -74,7 +74,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 | 設定項目   | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ソース     | 元データを管理するデータウェアハウスやデータベースを設定する。 | データウェアハウスの方が、データベースよりも保存形式の柔軟性が高い。<br>参考：https://www.topgate.co.jp/dwh-db-difference |
+| ソース     | 元データを管理するデータウェアハウスやデータベースを設定する。 | データウェアハウスの方が、データベースよりも保存形式の柔軟性が高い。<br>ℹ️ 参考：https://www.topgate.co.jp/dwh-db-difference |
 | ターゲット | 処理済データを管理するデータウェアハウスやデータベースを設定する。 |                                                              |
 
 <br>
@@ -186,7 +186,7 @@ AWSリソースに関する認可のスコープを定義する。各アクシ�
 
 AWSリソースの識別子のこと。
 
-参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
 ```yaml
 {
@@ -207,7 +207,7 @@ AWSリソースの識別子のこと。
 
 AWSリソースを作成した時に自動的に作成されるロール。他には紐付けできない専用のポリシーが紐付けられている。『```AWSServiceRoleFor*****```』という名前で自動的に作成される。特に設定せずとも、自動的にリソースに紐付けられる。関連するリソースを削除するまで、ロール自体できない。サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
 #### ▼ クロスアカウントのアクセスロール  
 
@@ -426,7 +426,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管する。
 
-参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
+ℹ️ 参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
 
 <br>
 
@@ -436,7 +436,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。転送時にLambda関数を使用することにより、収集したデータを加工できる。
 
-参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
+ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
 
 <br>
 
@@ -444,10 +444,10 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 | 項目       | 説明                                                                                                          | 補足                                                                                                                                                        |
 |----------|-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| レコードの変換  | バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。                                                                 | Lambdaを使用する。<br>参考：https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html                                                         |
+| レコードの変換  | バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。                                                                 | Lambdaを使用する。<br>ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html                                                         |
 | 転送先      | 転送先とするS3バケットを設定する。                                                                                          |                                                                                                                                                           |
-| ディレクトリ名  | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、執筆時点（2021/11/09）では、UTCのみ設定できる。      | もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
-| バッファー    | Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限サイズを設定できる。 | 参考：https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency                                                                     |
+| ディレクトリ名  | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、執筆時点（2021/11/09）では、UTCのみ設定できる。      | もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>ℹ️ 参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
+| バッファー    | Kinesis Data Firehoseでは、受信したログを一旦バッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限サイズを設定できる。 | ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency                                                                     |
 | ファイル形式   | 転送時のファイル形式を設定できる。                                                                                           | ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い。                                                                            |
 | バックアップ   | 収集したデータを加工する場合、加工前データを保管しておく。                                                                               |                                                                                                                                                           |
 | 暗号化      |                                                                                                             |                                                                                                                                                           |
@@ -462,7 +462,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、分析する。
 
-参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
+ℹ️ 参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
 
 <br>
 

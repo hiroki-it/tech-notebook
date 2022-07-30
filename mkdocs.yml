@@ -279,11 +279,12 @@ nav:
           - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
           - ■ Kubernetes:
               - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
+              - kubernetesアドオン: virtualization/virtualization_container_orchestration_kubernetes_addon.md
               - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
               - Minikube: virtualization/virtualization_container_orchestration_kubernetes_minikube.md
 
-  - ⚙️ Infrastructure as Code:
-      - Infrastructure as Code: infrastructure_as_code/infrastructure_as_code.md
+  - ⚙️ IaC:
+      - IaC: infrastructure_as_code/infrastructure_as_code.md
       - ■ 手続き型:
           - ■ サーバープロビジョニング:
               - ■ Ansible:
@@ -358,6 +359,7 @@ nav:
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
           - オンコールとインシデント管理: observability/observability_monitoring_oncall_incident_management.md
+          - サービスレベル: observability/observability_monitoring_service_level.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
           - Prometheus: observability/observability_telemetry_prometheus.md
@@ -378,13 +380,18 @@ nav:
               - 監視: observability/observability_telemetry_datadog_monitoring.md
               - インテグレーション: observability/observability_telemetry_datadog_integration.md
 
-  - 👥 ソフトウェア開発手法論/SRE:
+  - 👥 ソフトウェア開発手法論/SREing:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
-      - SRE: software_development_methodology/software_development_methodology_site_reliability_engineering.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
+      - ■ SREing:
+          - SREing: software_development_methodology/software_development_methodology_site_reliability_engineering.md
+          - アンチパターン: software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.md
+          - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
+
+  - 🦶 バージョン管理:
       - ■ Git:
-          - GitHub: software_development_methodology/software_development_methodology_git_github.md
-          - コマンド: software_development_methodology/software_development_methodology_git_command.md
+          - コマンド: version_control/version_control_git_command.md
+          - GitHub: version_control/version_control_git_github.md
 
   - 📊 統計分析:
       - R: statistic_analysis/statistic_analysis_r.md

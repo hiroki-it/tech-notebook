@@ -9,7 +9,7 @@ description: マニフェストファイル＠Istioの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: マニフェストファイル＠Istioの知見を記録してい�
 
 プロファイルを指定し、Istioリソースをapplyする。
 
-参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
 $ istioctl install --set profile=demo
@@ -35,7 +35,7 @@ $ istioctl install --set profile=demo
 
 googleapisチャートリポジトリからapplyする。
 
-参考：https://github.com/istio/istio/tree/master/manifests/charts
+ℹ️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
 
 ```bash
 $ kubectl apply -k github.com/istio/installer/base
@@ -64,7 +64,7 @@ $ minikube start --cpus=4 --memory=16384
 
 VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適用される。
 
-参考：
+ℹ️ 参考：
 
 - https://sreake.com/blog/istio/
 - https://istio.io/latest/docs/reference/config/networking/virtual-service/
@@ -74,19 +74,19 @@ VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適�
 
 istio-proxyコンテナの設定を上書きできる。
 
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
+DeploymentやPodの```metadata.anontations```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
 
-参考：https://istio.io/latest/docs/reference/config/annotations/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ▼ istio-proxyコンテナの定義
 
 DeploymentやPodでistio-proxyコンテナを定義することにより設定を上書きできる。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
 ```yaml
 apiVersion: apps/v1
@@ -152,26 +152,28 @@ metadata:
 
 #### ▼ istio-injection
 
-アドミッションコントローラーを使用して、Envoyコンテナを自動的に作成するかどうかを設定する。
+特定のNamespaceで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
 
-参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: foo-namespace
   labels:
     istio-injection: enabled
 ```
 
 #### ▼ istio.io/rev
 
-IstoOperatorの```spec.revision```キーと同じ。
+IstoOperatorの```spec.revision```キーと同じ。特定のNamespaceで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: foo-namespace
   labels:
     istio.io/rev: 1-12-1 # ハイフン繋ぎのバージョン表記
 ```
@@ -180,19 +182,38 @@ metadata:
 
 ## 04-02. Pod＠Kubernetesでの設定
 
-### annotationsとは
+### annotations
 
-#### ▼ annotations
+#### ▼ annotationsとは
 
-Deploymentの```spec.template```キーや、Podの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```spec.template```キーや、Podの```metadata```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
-参考：https://istio.io/latest/docs/reference/config/annotations/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
+#### ▼ istio.io/rev
+
+IstoOperatorの```spec.revision```キーと同じ。特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment # もしくはPod
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      annotations:
+        istio.io/rev: 1-12-1
+```
 
 #### ▼ proxy.istio.io/config.configPath
 
-Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが生成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+istio-proxyコンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
-参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
 ```yaml
 apiVersion: apps/v1
@@ -212,7 +233,9 @@ spec:
 
 #### ▼ sidecar.istio.io/inject
 
-特定のPodでのみ、Envoyコンテナを自動的に作成しないようにする。
+特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
+
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
 ```yaml
 apiVersion: apps/v1
@@ -231,9 +254,9 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyCPU
 
-Envoyコンテナで使用するCPUサイズを設定する。
+istio-proxyコンテナで使用するCPUサイズを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/annotations/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
 apiVersion: apps/v1
@@ -252,9 +275,9 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyImage
 
-Envoyコンテナの作成に使用するコンテナイメージを設定する。
+istio-proxyコンテナの作成に使用するコンテナイメージを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/annotations/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
 apiVersion: apps/v1
@@ -273,9 +296,9 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyMemory
 
-Envoyコンテナで使用するメモリサイズを設定する。
+istio-proxyコンテナで使用するメモリサイズを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/annotations/
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
 apiVersion: apps/v1
@@ -302,7 +325,7 @@ spec:
 
 DestinationRule上のインバウンド通信をルーティングできるNamespaceを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
@@ -340,7 +363,7 @@ spec:
 
 インバウンド通信のルーティング元とするServiceの名前を設定する。これにより、Envoyは特定のServiceからのルーティングのみ受信するようになる。
 
-参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
 **＊実装例＊**
 
@@ -360,7 +383,7 @@ spec:
 
 VirtualServiceのサブセット名に関して、ルーティング先とするPodの```metadata.labels```キーを設定する
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
 - https://blog.1q77.com/2020/03/istio-part3/
@@ -393,7 +416,7 @@ spec:
 
 Podの同時接続数の制限数を設定する。制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
 - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
@@ -418,7 +441,7 @@ spec:
 
 Podへのルーティング時に使用するロードバランシングアルゴリズムを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -436,7 +459,7 @@ spec:
 
 ポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -455,7 +478,7 @@ spec:
 
 ポート番号別のルーティングで使用するポート番号を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -474,7 +497,7 @@ spec:
 
 Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
 
-参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -498,7 +521,7 @@ spec:
 
 変更を適用する```envoy.yaml```ファイルの項目を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -532,7 +555,7 @@ spec:
 
 変更を適用するリスナーを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -553,7 +576,7 @@ spec:
 
 変更を適用する通信の方向を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -587,7 +610,7 @@ spec:
             "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
 ```
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
 - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
@@ -603,7 +626,7 @@ spec:
 
 Gatewayの適用対象のIngressGatewayに付与された```metadata.labels```キーを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -624,7 +647,7 @@ spec:
 
 ポート名を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -642,7 +665,7 @@ spec:
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -660,7 +683,7 @@ spec:
 
 受信するインバウンド通信のプロトコルを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -680,7 +703,7 @@ spec:
 
 Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。ワイルドカードを使用できる。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -698,7 +721,7 @@ spec:
 
 #### ▼ tls.privateKey
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -716,7 +739,7 @@ spec:
 
 受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
 
@@ -740,13 +763,13 @@ spec:
 
 #### ▼ mtls
 
-istio-proxyコンテナ間の通信で相互TLSを有効化するかどうかを設定する。
+istio-proxyコンテナ間の通信で相互TLSを有効化するか否かを設定する。
 
 #### ▼ mode
 
 相互TLSのタイプを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -775,7 +798,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 VirtualService上のインバウンド通信をルーティングできるNamespaceを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
@@ -815,7 +838,7 @@ spec:
 
 インバウンド通信をいずれのGatewayから受信するかを設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ <Namespace名>/<Gateway名>
 
@@ -834,7 +857,7 @@ spec:
 
 #### ▼ mesh
 
-マイクロサービス間の通信を有効化するかどうかを設定する。
+マイクロサービス間の通信を有効化するか否かを設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -855,7 +878,7 @@ spec:
 
 HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
@@ -902,7 +925,7 @@ spec:
 
 受信するインバウンド通信のルーティング先のドメイン名あるいはService名を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -918,7 +941,7 @@ spec:
 
 受信するインバウンド通信のルーティング先のポート番号を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -939,7 +962,7 @@ spec:
 
 Serviceのサブセット名を設定する。DestinationRuleにて、ルーティング先の設定に使用する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -966,7 +989,7 @@ spec:
 
 重み付けルーティングの割合を設定する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -999,7 +1022,7 @@ spec:
 
 TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする。
 
-参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
 #### ▼ match
 

@@ -9,7 +9,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -111,7 +111,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 もしコンソール画面からSSL証明書の検証方法を変更する場合、検証方法の異なるSSL証明書を作成してこれに切り替えたうえで、古いSSL証明書を削除する必要がある。これに合わせて、Terraformでもリリースを二回に分ける。
 
-参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -224,7 +224,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。もしステージをコンソール画面上から作成している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下のリンクを参考にせよ。
 
-参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
+ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
@@ -544,7 +544,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
-参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
+ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
 <br>
 
@@ -552,7 +552,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 Terraformは、特に依存関係を実装しない場合、『ターゲットグループ → ALB/NLB → リスナー』の順で```resource```ブロックを作成する。問題として、ALB/NLBやリスナーの作成が終わる前に、ECSサービスの作成が始まってしまう。ALB/NLBの作成（※リスナーも含む可能性）が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。リスナーの後にECSサービスを作成するようにし、『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順で```resource```ブロックを作成できるようにする。
 
-参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
+ℹ️ 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
 <br>
 
@@ -627,7 +627,7 @@ resource "aws_instance" "bastion" {
 
 Internet Gatewayの後にEC2を作成できるようにする。
 
-参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
 <br>
 
@@ -1011,7 +1011,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ターゲットグループの転送プロトコルがTCPの場合は、設定できないヘルスチェックオプションがいくつかある。ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ、パスを設定できる。
 
-参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
+ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
 <br>
 
@@ -1019,7 +1019,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。リンクのNOTE文を参考にせよ。
 
-参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
+ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
 <br>
 
@@ -1034,7 +1034,7 @@ status code: 400, request id: *****
 
 このエラーが発生した場合、コンソール画面上でリスナーを削除したうえで、もう一度```terraform apply```コマンドを実行する。
 
-参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
+ℹ️ 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
 <br>
 
@@ -1170,7 +1170,7 @@ Terraformに値をハードコーディングしたくない場合は、Systems 
 
 DBクラスターでは、レプリケーションのために、```3```個のAZが必要である。そのため、指定したAZが2つであっても、コンソール画面上で```3```個のAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```オプションでAZを指定しておく必要がある。
 
-参考：
+ℹ️ 参考：
 
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
 - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
@@ -1194,7 +1194,7 @@ DBクラスターでは、レプリケーションのために、```3```個のAZ
 
 Auroraでは、クラスターにインスタンスを1つだけ紐づけると、プライマリーインスタンスとして作成される。また以降インスタンスを紐づけると、リードレプリカとして自動的に作成されていく。AZのマップデータに対して```for_each```関数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。
 
-参考：
+ℹ️ 参考：
 
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 - https://github.com/hashicorp/terraform/issues/5333
@@ -1223,7 +1223,7 @@ DBクラスターとDBインスタンスの両方に、```preferred_backup_windo
 
 Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合に、各インスタンスを自動的にAZに配置するようになっている。そのため、サブネットグループに複数のサブネットを紐づけるようにする。
 
-参考：https://github.com/hashicorp/terraform/issues/5333
+ℹ️ 参考：https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
@@ -1293,9 +1293,9 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
+ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが作成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
 
-参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 ```yaml
 {
@@ -1336,7 +1336,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 }
 ```
 
-NLBのアクセスログを送信するバケット内には、自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。
+NLBのアクセスログを送信するバケット内には、自動的に『```/AWSLogs/<アカウントID>```』の名前でディレクトリが作成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。
 
 ```yaml
 {
@@ -1941,9 +1941,9 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 以下の理由で、個人的には、一部のAWSリソースではTerraformを使用しない方が良い。
 
 - ビジネスロジックを持つAWSリソースでは、継続的な改善のサイクルが早い（変更の要望頻度が高い）ため、リリースまでに時間がかかるTerraformで管理すると、このサイクルを阻害してしまう：（API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシー、など）
-- セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかない：（EC2の秘密鍵、Systems Managerパラメータストア、など）
+- セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかず、また```.tfstate```ファイルに書き込まれないようにする：（EC2の秘密鍵、Systems Managerパラメータストア、など）
 - Terraformによる初期作成時に必要であり、それがないとそもそも```terraform apply```コマンドできない：（Terraform用IAMユーザー、tfstateを管理するS3バケット、など）
-- Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことで削除を防げる：（tfstateを管理するS3バケットなど）
+- Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：（tfstateを管理するS3バケットなど）
 - Terraformで特定のAWSリソースを作成すると、それに伴って自動で作成されてしまう：（ENIなど）
 - そもそもAWSがAPIを公開していないことが理由で、Terraformで実装できない：（Chatbotなど）
 
@@ -1951,7 +1951,7 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 
 ### 詳細
 
-また、AWSの仕様上の理由で、管理外になってしまうものもある。Terraformの管理外の```resource```ブロックには、コンソール画面上から、『```Not managed by = Terraform```』というタグをつけた方が良い。
+また、AWSの仕様上の理由で、管理外になってしまうものもある。
 
 | AWSリソース                  | 管理外の部分                               | 管理外の理由                                                                                                                                                                                                                                                               |
 | ---------------------------- |--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1960,16 +1960,16 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 | EC2                          | 秘密鍵                                  | Terraformで作成する時にGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。                                                                                                                                                                                                              |
 | ENI                          | 全て                                   | 特定のAWSリソース（ALB、セキュリティグループなど）の作成に伴って、自動的に作成されるため、Terraformで管理できない。                                                                                                                                                                                                    |
 | EventBridge                  | StepFunctionsGetEventsForECSTaskRule | StepFunctionsでECS RunTaskの『ECSタスクが完了するまで待機』オプションを選択すると自動で作成されるため、Terraformで管理できない。このルールは、ECSのECSタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止（完了？）した状態を表す。                                                                                         |
-| Global Accelerator           | セキュリティグループ                           | リソースを作成するとセキュリティグループが自動生成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                         |
+| Global Accelerator           | セキュリティグループ                           | リソースを作成するとセキュリティグループが自動作成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                         |
 | IAMユーザー                    | 全て                                   | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
 | IAMユーザーグループ            | 全て                                   | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
 | IAMロール                    | ユーザーに紐付くロール                          | ビジネスロジックを持ち、変更の要望頻度が高い。                                                                                                                                                                                                                                              |
-|                              | サービスリンクロール                           | サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
+|                              | サービスリンクロール                           | サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
 | IAMポリシー                  |                                      | ビジネスロジックを持ち、変更の要望頻度が高い。ただし、IPアドレス制限ポリシーなど、自動化した方が便利になる場合はこの限りではない。                                                                                                                                                                                                   |
 | RDS                          | admin以外のユーザー                         | 個別のユーザー作成のために、mysql providerという機能を使用する必要がある。ただし、moduleディレクトリ配下に```provider.tf```ファイルを配置する必要があるため、ディレクトリ構成に難がある。                                                                                                                                                       |
 | Route53                      | NSレコード                               | ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。                                                                                                                                                                                                         |
 | S3                           | ```.tfstate```ファイルの管理バケット                   | ```.tfstate```ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。また、Terraformで誤って削除してしまわないようにする。                                                                                                                                                                                     |
-| Systems Managerパラメータストア          | 全て                                   | AWSリソースで使用する機密な環境変数を出力するため。                                                                                                                                                                                                                                          |
+| Systems Managerパラメータストア          | 全て                                   | セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかず、また```.tfstate```ファイルに書き込まれてしまうため。                                                                                                                                   |
 
 <br>
 

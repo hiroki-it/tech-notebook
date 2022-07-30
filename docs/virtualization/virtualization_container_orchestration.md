@@ -9,7 +9,7 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 ### 単一ホスト上のコンテナオーケストレーション
 
-単一ホスト上のコンテナが対象である。異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの生成、コンテナの作成、コンテナの起動、を実行できる。
+単一ホスト上のコンテナが対象である。異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動、を実行できる。
 
 | ツール名                       | ベンダー |
 | ------------------------------ | -------- |
@@ -30,7 +30,7 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 複数ホスト上のコンテナが対象である。どのホスト上のdockerデーモンに対して、どのコンテナに関する操作を行うのかを選択的に命令できる。
 
-参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
 | ツール名                        | ベンダー |
 | ------------------------------- | -------- |
@@ -52,13 +52,13 @@ description: コンテナオーケストレーション＠仮想化の知見を�
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからログを受信し、他にルーティングする。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 
 datadogコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからメトリクスのデータポイントを収集する。
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
@@ -68,7 +68,7 @@ datadogコンテナをサイドカーコンテナとして稼働させ、アプ�
 
 アプリケーションコンテナと同じPod内や、ECSタスク内に、リバースプロキシコンテナ（Envoy、Linkerd、など）を配置する。サービスメッシュを実現するために採用される。サイドカーパターンではないが、このプロキシコンテナのことをサイドカーコンテナともいう。
 
-参考：https://logmi.jp/tech/articles/321841
+ℹ️ 参考：https://logmi.jp/tech/articles/321841
 
 <br>
 
