@@ -225,9 +225,9 @@ $ kubectl patch ns argocd \
 
 <br>
 
-### 同期してもOut of syncが解消されない
+### 同期してもOutOfSyncステータスが解消されない
 
-同期後にKubernetesリソースの状態が変更されるような場合、同期してもOut of syncになってしまう。
+同期後にKubernetesリソースの状態が変更されるような場合、同期してもSyncedステータスではなくOutOfSyncステータスになってしまう。
 
 ℹ️ 参考：
 

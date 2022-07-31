@@ -167,7 +167,7 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 #### ▼ Linux系統とは
 
-UNIXから分岐したLinuxは、さらに3系統（Debian、RedHat、Slackware）に分岐する。
+UNIXから分岐したLinuxは、加えて3系統（Debian、RedHat、Slackware）に分岐する。
 
 ℹ️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
@@ -210,7 +210,7 @@ Slackwareなど
 
 #### ▼ BSD系統とは
 
-UNIXから分岐したBSDは、さらに複数の系統（MacOSなど）に分岐する。
+UNIXから分岐したBSDは、加えて複数の系統（MacOSなど）に分岐する。
 
 <br>
 

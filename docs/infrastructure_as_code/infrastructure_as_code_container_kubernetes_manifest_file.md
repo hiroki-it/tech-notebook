@@ -1718,9 +1718,12 @@ spec:
 
 #### ▼ readinessProbeとは
 
-すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。
+すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
 
-ℹ️ 参考：https://www.ianlewis.org/jp/kubernetes-health-check
+ℹ️ 参考：
+
+- https://www.ianlewis.org/jp/kubernetes-health-check
+- https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
 
 #### ▼ httpGet
 
@@ -1861,7 +1864,7 @@ spec:
 
 Podが終了する時の待機時間を設定する。
 
-![pod_lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_lifecycle.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 ℹ️ 参考：
 

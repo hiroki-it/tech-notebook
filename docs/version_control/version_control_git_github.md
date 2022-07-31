@@ -90,7 +90,7 @@ GitHubだとプルリクエストであるが、GitLabだとマージリクエ�
 
 削除できないため、クローズするしかない。犯した罪は背負って生きていかなければならない。
 
-参照：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
+ℹ️ 参考：https://stackoverflow.com/questions/18318097/delete-a-closed-pull-request-from-github
 
 <br>
 

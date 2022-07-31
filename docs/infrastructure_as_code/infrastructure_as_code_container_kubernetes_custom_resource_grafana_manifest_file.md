@@ -19,7 +19,7 @@ description: マニフェストファイル＠Grafanaの知見を記録してい
 
 #### ▼ grafanaチャートリポジトリから
 
-最小構成をapplyする場合、grafanaチャートのみをapplyする。
+最小構成をapplyする場合、grafanaチャートのみをリリースする。
 
 ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
@@ -29,7 +29,7 @@ $ helm install <リリース名> grafana/grafana
 
 #### ▼ kube-prometheus-stackチャートリポジトリから
 
-Prometheusと連携しやすくする場合は、helmチャートのkube-prometheus-stackチャートをインストールする。
+Prometheusと連携しやすくする場合は、helmチャートのkube-prometheus-stackチャートをリリースする。
 
 ℹ️ 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 

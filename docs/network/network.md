@@ -248,7 +248,7 @@ NAPTの機能を持つルーターのこと。
 
 ![プロキシサーバーのキャッシュ機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロキシサーバーのキャッシュ機能.png)
 
-ℹ️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.html
+ℹ️ 参考：https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm
 
 | サーバー名                 | 機能                                                         |
 | -------------------------- | ------------------------------------------------------------ |

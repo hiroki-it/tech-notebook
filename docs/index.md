@@ -239,7 +239,7 @@ title: 【IT技術の知見】目次
 * [📖：︎S〜U](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_5.html)
 * [📖：︎V〜Z](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_6.html)
 * 設計ポリシー 
-    * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_reliability.html)
+    * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_reliability.html)
     * [📖：︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
     * [📖：︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
   
@@ -417,8 +417,8 @@ title: 【IT技術の知見】目次
 ### SREing
 
 * [📖：︎SREing](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
-* [📖：︎アンチパターン](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_antipattern.html)
-* [📖：︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_documentation.html)
+* [📖：︎アンチパターン](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering_antipattern.html)
+* [📖：︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.html)
 
 ### プロジェクト管理
 

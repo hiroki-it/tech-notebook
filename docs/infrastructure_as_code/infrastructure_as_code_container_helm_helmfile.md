@@ -246,9 +246,12 @@ $ helmfile -f ./helmfile.yaml <コマンド>
 
 #### ▼ apply
 
-まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。
+まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。```helmfile sync```コマンドとは異なり、リリース間に差分がないと、リビジョン番号は更新されない。
 
-ℹ️ 参考：https://github.com/helmfile/helmfile#apply
+ℹ️ 参考：
+
+- https://github.com/helmfile/helmfile#apply
+- https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ```bash
 $ helmfile apply
@@ -329,7 +332,9 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのリリースに関して、```helm upgrade --install```コマンドを実行する。
+全てのリリースに関して、```helm upgrade --install```コマンドを実行する。```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。
+
+参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ℹ️ 参考：helmfile/helmfile#sync
 

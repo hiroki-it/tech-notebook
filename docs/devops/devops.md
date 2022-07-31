@@ -23,7 +23,7 @@ description: DevOpsの知見を記録しています。
 
 ## 01-02. 優れたリリース
 
-### 優れたリリースとは
+### 優れたリリースとその実現方法
 
 #### ▼ リリースが自動化されていること
 
@@ -266,3 +266,5 @@ AWS（API Gateway、Route53やALBによる重み付けルーティング）、Ar
 
 - https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81
 - https://newrelic.com/jp/resources/undefined/next-phase-of-devops
+
+<br>

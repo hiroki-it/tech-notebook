@@ -335,6 +335,23 @@ $ kubectl describe pod <Pod名> | grep Node:
 
 <br>
 
+### drain
+
+#### ▼ drainとは
+
+ワーカーNodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。ワーカーNodeが他に存在すれば、そのNode上でPodが再作成される。
+
+参考：
+
+- https://cstoku.dev/posts/2018/k8sdojo-21/
+- https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe
+
+```bash
+$ kubectl drain <ワーカーNode名>
+```
+
+<br>
+
 ### edit
 
 #### ▼ editとは

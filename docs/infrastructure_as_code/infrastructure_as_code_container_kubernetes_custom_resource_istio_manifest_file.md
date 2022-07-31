@@ -13,40 +13,51 @@ description: マニフェストファイル＠Istioの知見を記録してい�
 
 <br>
 
-## 01. セットアップ
+## 01. 全部入りセットアップ
 
-### コマンドを使用して
+### チャートリポジトリから
 
-#### ▼ istioctlコマンドを使用して
+#### ▼ GCRから
 
-プロファイルを指定し、Istioリソースをapplyする。
+プロファイルを指定し、GCRからIstioのチャートをリリースする。istioctlのDockerfileにURLが定義されている。
 
-ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+ℹ️ 参考：
+
+- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+- https://github.com/istio/istio/blob/master/istioctl/docker/Dockerfile.istioctl
 
 ```bash
+# gcr.io/istio-release/baseから
 $ istioctl install --set profile=demo
 ```
 
 <br>
 
-### チャートリポジトリから
+## 01-02. コンポーネント別セットアップ
 
-#### ▼ googleapisチャートリポジトリから
+#### ▼ Google APIsから
 
-googleapisチャートリポジトリからapplyする。
+googleapisチャートリポジトリから、Ingressのコンポーネント別にチャートをリリースする。
 
-ℹ️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
 ```bash
-$ kubectl apply -k github.com/istio/installer/base
+$ helm repo add istio https://istio-release.storage.googleapis.com/charts
+$ helm repo update
 
-# コンポーネントを個別にセットアップすることもできる。
-$ helm install istio-ingressgateway istio/gateway
+# 共通部分（IstioBase）のみ
+$ helm install -n istio-system istio-base istio/base
+
+# Istiodのみ
+$ helm install -n istio-system istiod istio/istiod
+
+# IngressGatewayのみ
+$ helm install -n istio-system istio-ingressgateway istio/gateway
 ```
 
 <br>
 
-## 01-02. その他のセットアップ
+## 01-03. その他のセットアップ
 
 ### Minikubeのセットアップ
 

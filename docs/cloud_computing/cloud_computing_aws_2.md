@@ -85,7 +85,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ ルートデバイスボリュームとは
 
-EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームが紐づいている。複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐づけることもできる。さらに、このブロックデバイスが、マウントポイントtになるディレクトリ紐づいている。つまりEC2インスタンスが作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保管される。複数のルートボリュームを紐づける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
+EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームが紐づいている。複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐づけることもできる。加えて、このブロックデバイスが、マウントポイントtになるディレクトリ紐づいている。つまりEC2インスタンスが作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保管される。複数のルートボリュームを紐づける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
 
 ℹ️ 参考：
 
@@ -780,7 +780,7 @@ EC2でのみ使用できる。Dockerのbridgeネットワークに相当する�
 
 #### ▼ awsvpcモード
 
-FargateとEC2の両方で使用できる。awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
+FargateとEC2の両方で使用できる。awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナに通信するとき（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するだけで、コンテナ間で通信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、加えてコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
 ℹ️ 参考：
 
@@ -855,7 +855,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 | 設定項目                      | 説明                                                         | 補足                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する。         |                                                              |
-| ```awslogs-datetime-format``` | 日時フォーマットを定義し、またこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し、またこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する。           |                                                              |
 | ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
 
@@ -986,7 +986,7 @@ Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化�
 
 #### ▼ マイグレーション
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 **＊実装例＊**
 
@@ -1685,7 +1685,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 任意のEC2 Nodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2 Nodeをセットアップする手間が省ける。必ずしも、全てのワーカーNodeを同じAMIで構築する必要はない。ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のワーカーNode上で稼働させる（例：計算処理系アプリはEKS最適化高速AMIのワーカーNode上で動かす）といった方法でもよい。
 
-ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html
+ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
 | AMI名                     | 説明                                                         | 特に相性の良いPod                                            |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -1729,13 +1729,14 @@ set -o xtrace
 
 set -o xtrace
 
-SSM_PARAMETER_STORE=$(aws ssm get-parameters-by-path --with-decryption --path "/")
+PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
 
-for PARAMS in $(echo ${SSM_PARAMETER_STORE} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
-  echo "export ${PARAMS##*/}"
-done >> "${SETENV_SHELL}"
+# ClusterのSSL証明書、kube-apiserverのエンドポイント、をパラメーターストアから取得する。
+for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
+  echo "export ${parameter##*/}"
+done >> "${EXPORT_ENVS}"
 
-source "${SETENV_SHELL}"
+source "${EXPORT_ENVS}"
 
 /etc/eks/bootstrap.sh foo-eks-cluster \
   --b64-cluster-ca $B64_CLUSTER_CA \
@@ -1755,8 +1756,8 @@ Nodeグループ内の各Nodeと、Nodeグループごとのオートスケー�
 
 ℹ️ 参考：
 
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-managed-node-group.html
+- https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
+- https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html
 - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
 
 #### ▼ セルフマネージド
@@ -1765,8 +1766,8 @@ Nodeグループ内の各Nodeと、Nodeグループごとのオートスケー�
 
 ℹ️ 参考：
 
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/launch-workers.html
+- https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+- https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
 
 <br>
 

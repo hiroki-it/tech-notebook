@@ -286,7 +286,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ### タスク管理とは
 
-![ジョブステップからタスクの作成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの作成.png)
+![task_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/task_management.png)
 
 タスク管理によって、イニシエーターによるジョブステップからタスクが作成される。タスクが作成されると実行可能状態になる。ディスパッチャによって実行可能状態から実行状態になる。
 

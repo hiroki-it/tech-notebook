@@ -196,7 +196,7 @@ RUN yum -y install httpd php php-mbstring php-pear \
 && rm -Rf /var/cache/dnf
 ```
 
-さらに、これは以下の様にも書ける。
+加えて、これは以下の様にも書ける。
 
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール

@@ -301,7 +301,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 機能変更によって、コンポーネント間にどのような依存関係が新しく追加されるかを自動的に検出し、記録できるようにする。
 
-参考：https://github.com/ortelius/ortelius
+ℹ️ 参考：https://github.com/ortelius/ortelius
 
 <br>
 
@@ -335,7 +335,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 ビジネス側と話し合い、ユーザーニーズ、ビジネスの収益、に基づいたSLOを設定する。ビジネスとSLOの双方向で、定期的に更新する（例：SLOに合わせて営業時間を更新する）。
 
-参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
+ℹ️ 参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
 
 <br>
 

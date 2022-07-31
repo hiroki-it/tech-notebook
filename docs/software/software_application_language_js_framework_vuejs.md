@@ -181,7 +181,7 @@ var vm = new Vue({
 
     /* watchオプション
     ・Vueインスタンス内の値の変化を監視する関数を定義。
-    ・Vue-Routerを参照せよ。
+    ・Vue-Routerも参考にせよ。
     */
     watch: {},
 

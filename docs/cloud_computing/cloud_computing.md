@@ -31,21 +31,33 @@ description: クラウドコンピューティングの知見を記録してい�
 
 <br>
 
-## 02. クラウドコンピューティングの種類
+## 02. クラウドコンピューティング
+
+### 具体例
 
 ℹ️ 参考：
 
 - https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
 - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
 - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
+- https://cloud-textbook.com/46/#baremetal
 
-|                          | ユーザーの管理領域                                           | AWS                   | GCP                                                          | Azure                     |
-| ------------------------ | ------------------------------------------------------------ | --------------------- | ------------------------------------------------------------ | ------------------------- |
-| オンプレミス（自社所有） | 全て。OpenStackを使用して、オンプレミス環境に仮想クラウドを作成することも含む。 | -                     | -                                                            | -                         |
-| IaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS | AWS EC2               | Google Compute Engine                                        | Azure Virtual Machine     |
-| CaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate           | Google Cloud Run                                             | Azure Container Instances |
-| PaaS                     | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk | Google App Engine                                            | Azure App Service         |
-| FaaS                     | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda            | Google Cloud Functions                                       | Azure Functions           |
-| SaaS                     | なし                                                         |                       | Google Apps（Google Map、Google Cloud、Google Calender など） |                           |
+|                          | ユーザーの管理領域                                           | AWS                                     | GCP                                                          | Azure                     |
+| ------------------------ | ------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------- |
+| オンプレミス（自社所有） | 全て。OpenStackを使用して、オンプレミス環境に仮想クラウドを作成することも含む。 | -                                       | -                                                            | -                         |
+| IaaS（ベアメタル）       | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS、仮想マシン<br>仮想マシン込みのIaaSとは異なり、ハードウェア上にユーザーが仮想マシンを作成し、管理する必要がある。 | AWS EC2（ベアメタルインスタンスタイプ） | Bare Metal Solution                                          | -                         |
+| IaaS（仮想マシン込）     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS<br>ベアメタル型IaaSとは異なり、ハードウェア上にユーザーが仮想マシンを作成する必要がなく、これの管理もしてくれる。 | AWS EC2                                 | Google Compute Engine                                        | Azure Virtual Machine     |
+| CaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate                             | Google Cloud Run                                             | Azure Container Instances |
+| PaaS                     | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk                   | Google App Engine                                            | Azure App Service         |
+| FaaS                     | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda                              | Google Cloud Functions                                       | Azure Functions           |
+| SaaS                     | なし                                                         |                                         | Google Apps（Google Map、Google Cloud、Google Calender など） |                           |
+
+<br>
+
+### マルチクラウドプロバイダー
+
+複数のクラウドプロバイダーを使用して、システムを開発する。特定のクラウドプロバイダーに依存しないような設計が必要になる。
+
+参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
 
 <br>

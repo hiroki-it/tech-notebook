@@ -225,7 +225,7 @@ class Foo
 
 RDBの処理用語に相当する```beginTransaction```メソッド、```commit```メソッド、```rollBack```メソッドを使用して、RDBを操作する。
 
-参照：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
+ℹ️ 参考：https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html
 
 **＊実装例＊**
 

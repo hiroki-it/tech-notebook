@@ -311,17 +311,17 @@ img { float: right }
 
 リソースの文字列からHTMLタグが認識され、トークンに変換される。各トークンは、```1```個のオブジェクトに変換される。
 
-![DOMツリーが作成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが作成されるまで.png)
+![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree_process.png)
 
 HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。DOMツリーを作成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。DOMのインターフェースについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
-![DOMツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリー.png)
+![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree.png)
 
 同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを行う。レスポンスされた```.css```ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
 
-![CSSOMツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CSSOMツリー.png)
+![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cssom-tree.png)
 
 <br>
 

@@ -1000,7 +1000,7 @@ DBの操作処理を提供する。Eloquentの代わりに、DBファサード�
 
 #### ▼ ```transaction```メソッド
 
-一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。さらに```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
+一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。加えて```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
 ℹ️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -1600,9 +1600,9 @@ class FooController extends Controller
 
 #### ▼ 一覧
 
-以下リンクを参照せよ。
+以下リンクを参考にせよ。
 
-https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 <br>
 
@@ -2025,7 +2025,7 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 ℹ️ 参考：
 
@@ -3784,7 +3784,7 @@ EloquentモデルをJSONデータとしてレスポンスする時に、一旦�
 
 #### ▼ 単一のEloquentモデルの配列化
 
-単一のEloquentモデルを配列に変換する。Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。LaravelはレスポンスのJSONデータを作成するために、まず```toArray```メソッドにより配列化し、さらにこれをJSONデータに変換する。
+単一のEloquentモデルを配列に変換する。Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。LaravelはレスポンスのJSONデータを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSONデータに変換する。
 
 **＊実装例＊**
 
@@ -4737,7 +4737,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ▼ リクエスト数制限
 
-一分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する。さらに、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、```configureRateLimiting```メソッドによって、```429```ステータスでレスポンスが返信される。
+一分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する。加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、```configureRateLimiting```メソッドによって、```429```ステータスでレスポンスが返信される。
 
 ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
@@ -4793,7 +4793,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ▼ EventとListenerの登録
 
-EventとListenerの対応関係を定義する。なお、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参照せよ。
+EventとListenerの対応関係を定義する。なお、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参考にせよ。
 
 ```php
 <?php

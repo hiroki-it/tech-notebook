@@ -420,7 +420,7 @@ workflows:
    build-push:
      jobs:
        - build:
-           # jobにてexecutor名を設定し、さらにexecutorに値を渡す
+           # jobにてexecutor名を設定し、加えてexecutorに値を渡す
            executor_param:
              name: python
              # バージョン3.5を設定

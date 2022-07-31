@@ -404,13 +404,26 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Hard Refresh | Redisサーバーに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
 | Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースをapplyすることはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
 
+#### ▼ ヘルスステータスの種類
+
+参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+
+| ステータス名 | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| Healthy      | 全てのKubernetesリソースは正常に稼働している。               |
+| Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。 |
+| Degraded     | 一部のKubernetesリソースは正常に稼働していない。             |
+| Suspended    | 一部のKubernetesリソースは、イベント（例：CronJobなど）が実行されることを待機している。 |
+| Missing      | 調査中...                                                    |
+| Unknown      | 調査中...                                                    |
+
 <br>
 
 ### spec.ignoreDifferences
 
 #### ▼ ignoreDifferencesとは
 
-特定のKubernetesリソースの特定の設定値の差分を無視する。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
+Syncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
 
 ℹ️ 参考：
 
@@ -436,6 +449,32 @@ spec:
       jqPathExpressions:
         # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
         - /spec/metrics
+  syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
+```
+
+注意点として、Syncステータスの判定時に無視されるだけで、内部的に同期は実行されてしまうため、同期のたびに設定値が元に戻ってしまう。そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
+
+ℹ️ 参考：
+
+- https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
+- https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  ignoreDifferences:
+  
+    # 〜 中略 〜
+  
+  syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
 ```
 
 <br>
@@ -845,7 +884,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
 | ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              | 全てのKubernetesが正常になった後で、Pruneを実行する。        | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
+| ```PruneLast```              | 通常のPruneでは、同期しながら旧いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースを同期してしまい、正常に稼働した後に旧いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

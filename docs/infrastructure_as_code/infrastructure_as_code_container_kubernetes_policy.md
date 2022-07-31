@@ -124,7 +124,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-さらに、実行環境やコンポーネント（app、db）別に分割してもよい。
+加えて、実行環境やコンポーネント（app、db）別に分割してもよい。
 
 ```yaml
 repository/
@@ -247,7 +247,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ## 05. アップグレード
 
-### アップグレード要件
+### アップグレード要件の例
 
 - アプリケーションでダウンタイムが発生しない。
 - 稼働中の全体リソースが減らない。
@@ -256,30 +256,77 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 <br>
 
-### Clusterのアップグレード手法
+### マスターNodeの場合
 
-#### ▼ ライブアップグレード
+#### ▼ インプレース方式
+
+マスターNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されているため、マスターNodeのみインプレース方式でアップグレードする。必要であれば、マスターNode上のkubernetesアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
+
+参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+
+<br>
+
+### ワーカーNodeの場合
+
+#### ▼ インプレース方式
+
+既存のNodeグループ内のワーカーNodeをそのままアップグレードする方法。ワーカーNodeを稼働させたままアップグレードする。
+
+参考：https://logmi.jp/tech/articles/323033
+
+#### ▼ ライブ方式
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-既存のClusterのバージョンをそのままアップグレードする方法。Cluster内で旧ワーカーNodeと旧マスターNodeを残したまま、新マスターNodeとワーカーNodeをapplyする。新Nodeが正常に稼働したことが確認できたら、ここで```kubectl drain --ignore-daemonsets```コマンドを実行すると、Drain処理が始まる。コマンドで```--ignore-daemonsets```オプションを有効化しないと、DaemonSetのPodを退避させられない。Drain処理では、旧NodeからPodが退避し、現在稼働中の新しいNodeでPodが再作成される。Drain処理が完了すれば、旧Nodeは停止してもよい。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
+新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
+
+ℹ️ 参考：
+
+- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+- https://logmi.jp/tech/articles/323032
+
+（１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）をapplyする。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+
+（２）```kubectl drain```コマンドを実行し、Drain処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。Drain処理によって、旧Nodeグループ内ワーカーNode上でのPodのスケジューリングが無効化され、加えて旧Nodeグループ内ワーカーNodeからPodが退避する。その後、新Nodeグループ内ワーカーNode上でPodが再作成される。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+
+ℹ️ 参考：https://dunkshoot.hatenablog.com/
+
+```bash
+$ kubectl drain <ワーカーNode名> \
+    --ignore-daemonsets \
+    --delete-emptydir-data
+```
+
+（３）Drain処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。
+
+（４）動作が問題なければ、旧Nodeグループを削除する。
+
+#### ▼ ローリングアップデート方式
+
+ローリングアップデート方式でワーカーNodeをアップグレードする方法。一部のクラウドプロバイダー（例：AWS）のみが提供している
+
+ℹ️ 参考：
+
+- https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
+- https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
+
+#### ▼ ブルーグリーン方式
+
+![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
+
+新しいClusterを作成することにより、ワーカーNodeをアップグレードする方法。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
 ℹ️ 参考：
 
 - https://logmi.jp/tech/articles/323032
 - https://logmi.jp/tech/articles/323033
-- https://qiita.com/tkusumi/items/946b0f31931d21a78058
-
-#### ▼ Clusterマイグレーション
-
-![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
-
-新しいバージョンのClusterを作成する方法。旧Cluster（Prodブルー）を残したまま、新マスターNodeとワーカーNodeを含むCluster（Testグリーン）をapplyする。特定のポート番号からのみ新Clusterにアクセスできるようにし、新Clusterの動作を開発者の目で確認する。新Clusterの動作に問題がなければ、社外を含む全てのアクセスのルーティング先を、新Clusterに手動で切り替える。新Clusterへの切り替えが完全に完了した後、新ClusterからCluster環境にロールバックを行う場合に備えて、旧Clusterは削除せずに残しておく。何を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なり、ロードバランサーを基点とする場合が多い。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
-
-ℹ️ 参考：
-
-- https://logmi.jp/tech/articles/323033
 - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+
+（１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）をapplyする。新Clusterには、全てのKubernetesリソースが揃っている。
+
+（２）社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。
+
+（３）動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。
 
 <br>
 

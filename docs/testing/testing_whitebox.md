@@ -232,12 +232,25 @@ AとBは、『1』または『0』になり得るとする。
 
 ## 04. その他のテスト手法
 
-### CDCテスト：Consumer Drive Contract
+### Componentテスト
 
-#### ▼ CDCテストとは
+マイクロサービス単体をテストする。
+
+ℹ️ 参考：https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
+
+<br>
+
+### CDCテスト：Consumer Drive Contract
 
 マイクロサービスのコントローラーがコールされてから、DBの操作が完了するまでを、テストする。下流マイクロサービスのコールはモック化またはスタブ化する。
 
-ℹ️ 参考：https://qiita.com/AHA_oretama/items/e2c7db87cc5264c701ae
+ℹ️ 参考：
+
+- https://qiita.com/tofu511/items/e6e1f34252ff28c54790
+- https://qiita.com/AHA_oretama/items/e2c7db87cc5264c701ae
 
 <br>
+
+### End-to-Endテスト
+
+ℹ️ 参考：https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/

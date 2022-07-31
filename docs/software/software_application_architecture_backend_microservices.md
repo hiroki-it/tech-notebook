@@ -34,7 +34,9 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/architecture_deployment_comparison.png)
 
-ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/20201218/architecture
+ℹ️ 参考：
+
+- https://tech-blog.rakus.co.jp/entry/20201218/architecture
 
 | モジュールの大きさ | 粒度名         | 説明                                                         |
 | ------------------ | ------------ | ------------------------------------------------------------ |
@@ -258,7 +260,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_bounded-context.png)
 
-サブドメインまたは境界付けられたコンテキストをマイクロサービスの粒度とする。解決領域となる境界付けられたコンテキストがサブドメインの中に```1```個しか含まれていない場合は、境界付けられたコンテキストをマイクロサービスの粒度して考えることになる。図にて、境界付けられたコンテキスト間で、『利用者』という単語に対する定義づけ/意味合いが異なっていることに留意する。ドメイン駆動設計では境界付けられたコンテキストが```1```個のアプリケーションに相当するため、境界付けられたコンテキストで分割した場合、マイクロサービスアーキテクチャは複数のアプリケーションから構成されるアーキテクチャと捉えられる。さらに小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。
+サブドメインまたは境界付けられたコンテキストをマイクロサービスの粒度とする。解決領域となる境界付けられたコンテキストがサブドメインの中に```1```個しか含まれていない場合は、境界付けられたコンテキストをマイクロサービスの粒度して考えることになる。図にて、境界付けられたコンテキスト間で、『利用者』という単語に対する定義づけ/意味合いが異なっていることに留意する。ドメイン駆動設計では境界付けられたコンテキストが```1```個のアプリケーションに相当するため、境界付けられたコンテキストで分割した場合、マイクロサービスアーキテクチャは複数のアプリケーションから構成されるアーキテクチャと捉えられる。加えて小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。
 
 ℹ️ 参考：
 
@@ -387,10 +389,11 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/presentation_domain_separation.png)
 
-モノリシックなアプリケーションがドメイン層だけでなくプレゼンテーション層のロジックも持っている場合、ドメイン層をマイクロサービスに分離する前に、プレゼンテーション層をフロントエンドアプリケーションとして分離しておく必要がある。
+モノリシックなアプリケーションには二つの段階（v1、v2）がある。v2では、アプリケーションがプレゼンテーション層、アプリケーション層、ドメイン層、インフラ層、を持っており、このうちプレゼンテーション層がフロントエンドアプリケーションとして分離されている。続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。
 
 ℹ️ 参考：
 
+- https://cloud.google.com/architecture/devops/devops-tech-architecture?hl=ja
 - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
 - https://bliki-ja.github.io/PresentationDomainSeparation/
 - https://tech.mti.co.jp/entry/2021/04/12/112833

@@ -31,12 +31,15 @@ KubernetesのIaCについては、以下のリンクを参考にせよ。
 
 <br>
 
-## 01-02. マスターコンポーネント
+## 01-02. コントロールプレーンコンポーネント（マスターコンポーネント）
 
-### マスターコンポーネントとは
+### コントロールプレーンコンポーネントとは
+
+『マスターコンポーネント』ともいう。マスターNode上で稼働するコンポーネントのことで、Cluster内のワーカーNode自体と、ワーカーNode内のPodを管理する。
 
 ℹ️ 参考：
 
+- https://kubernetes.io/docs/concepts/overview/components/#control-plane-components
 - https://cstoku.dev/posts/2018/k8sdojo-24/
 - https://kubernetes.io/docs/concepts/overview/components/
 - https://thinkit.co.jp/article/17453
@@ -664,7 +667,7 @@ Pod間で通信する場合のインバウンド/アウトバウンド通信の�
 
 #### ▼ マスターNode（kubernetesマスター）
 
-kubernetesマスターともいう。マスターコンポーネントが稼働する。クライアントが```kubectl```コマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
+kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。クライアントが```kubectl```コマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーNodeが操作される。
 
 ℹ️ 参考：
 

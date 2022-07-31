@@ -307,7 +307,6 @@ if (PHP_VERSION_ID < 70000) {
 
 $request = Request::createFromGlobals();  //（１）
 
-// 以下の実装ファイルも参照せよ。
 $response = $kernel->handle($request); //（２）
 
 $response->send(); //（３）
