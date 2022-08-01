@@ -665,6 +665,20 @@ $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名
 
 <br>
 
+### replace
+
+#### ▼ replaceとは
+
+Kubernetesリソースを一度削除し、別のマニフェストファイルで再作成する。
+
+ℹ️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
+
+```bash
+$ kubectl replace -f foo.yaml
+```
+
+<br>
+
 ### rollout
 
 #### ▼ rolloutとは

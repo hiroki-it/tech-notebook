@@ -15,6 +15,8 @@ description: アンチパターン@SREingの知見を記録しています。
 
 ## 01. アンチパターン集（Dropbox）
 
+### SREの探求
+
 ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 ### 1. サイトリライアビリティオペレーション
@@ -171,6 +173,8 @@ description: アンチパターン@SREingの知見を記録しています。
 #### ▼ パターンの概要
 
 インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。
+
+参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
 
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/infrastructure_mutable_immutable.jpeg)
 

@@ -21,6 +21,8 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
+
 <br>
 
 ### モノリポジトリ

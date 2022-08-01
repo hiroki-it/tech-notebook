@@ -1123,6 +1123,41 @@ resource "aws_instance" "server" {
 }
 ```
 
+#### ▼ 作成の有無の条件分岐
+
+特定の実行環境でリソースの作成の有無を切り替えたい場合に、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```関数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
+
+参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
+
+```terraform
+# 特定の実行環境の.terraform.tfvarsファイル
+enable_provision = 1
+```
+
+```terraform
+variable "enable_provision" {
+  description = "enable provision"
+  type        = number
+  default     = 0
+}
+```
+
+```terraform
+###############################################
+# EC2
+###############################################
+resource "aws_instance" "server" {
+  count = var.enable_provision
+  
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "ec2-${count.index}"
+  }
+}
+```
+
 #### ▼ list型で```output```ブロック
 
 ```resource```ブロックの作成に```count```関数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、キー名を指定して出力できる。この時、```output```ブロックはlist型になる。ちなみに、```for_each```関数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。

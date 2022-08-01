@@ -423,7 +423,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ignoreDifferencesとは
 
-Syncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
+特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
 
 ℹ️ 参考：
 
@@ -449,9 +449,6 @@ spec:
       jqPathExpressions:
         # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
         - /spec/metrics
-  syncPolicy:
-    syncOptions:
-      - RespectIgnoreDifferences=true
 ```
 
 注意点として、Syncステータスの判定時に無視されるだけで、内部的に同期は実行されてしまうため、同期のたびに設定値が元に戻ってしまう。そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
@@ -901,7 +898,38 @@ spec:
 
 <br>
 
-## 03. Job
+## 04. ConfigMap
+
+### data.resource.customizations
+
+#### ▼ ignoreDifferences.all
+
+ArgoCD全体で```spec.ignoreDifferences```オプションと同じ機能を有効化する。
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+        # spec.replicas（インスタンス数）の設定値の変化を無視する。
+        - /spec/replicas
+    jqPathExpressions:
+        # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+        - /spec/metrics
+```
+
+<br>
+
+## 05. Job
 
 ### metadata
 
@@ -915,6 +943,8 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
+  name: foo-job
   generateName: foo-hook
 ```
 
@@ -935,6 +965,8 @@ metadata:
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
+  name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail # 同期失敗時
 ```
@@ -952,6 +984,8 @@ metadata:
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
+  name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/sync-wave: -1 # 優先度-1（3つの中で一番優先される。）
@@ -961,6 +995,8 @@ metadata:
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
+  name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
@@ -970,6 +1006,8 @@ metadata:
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
+  name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/sync-wave: 1 # 優先度1
@@ -977,7 +1015,7 @@ metadata:
 
 <br>
 
-## 05. Rollout
+## 06. Rollout
 
 ### spec.analysis
 
@@ -993,6 +1031,7 @@ Progressive Deliveryを使用する場合に、詳細を設定する。
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
+  namespace: argocd
   name: foo-rollout
 spec:
   analysis:
@@ -1005,6 +1044,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
+  namespace: argocd
   name: foo-rollout
 spec:
   analysis:
@@ -1043,6 +1083,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
+  namespace: argocd
   name: foo-blue-green-rollout
 spec:
   strategy:
@@ -1073,6 +1114,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
+  namespace: argocd
   name: foo-canary-rollout
 spec:
   strategy:
@@ -1085,7 +1127,7 @@ spec:
 
 <br>
 
-## 06. Secret
+## 07. Secret
 
 ### metadata.labels
 
@@ -1224,7 +1266,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
-## 07. Workflow
+## 08. Workflow
 
 ### spec.entrypoint
 
@@ -1291,7 +1333,7 @@ spec:
 
 <br>
 
-## 06-02. WorkflowTemplate
+## 08-02. WorkflowTemplate
 
 ### spec.templates
 
