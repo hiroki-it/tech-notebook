@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠Kubernetes
-description: マニフェストファイル＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Kubernetes
+description: リソース定義＠Kubernetesの知見を記録しています。
 ---
 
-# マニフェストファイル＠Kubernetes
+# リソース定義＠Kubernetes
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: マニフェストファイル＠Kubernetesの知見を記録して
 
 <br>
 
-## 01. マニフェストファイル＠Kubernetesとは
+## 01. リソース定義＠Kubernetesとは
 
 Kubernetesを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
@@ -64,7 +64,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合に、In
 
 #### ▼ istio固有のキー
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 

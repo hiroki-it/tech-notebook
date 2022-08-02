@@ -64,7 +64,7 @@ rule_files:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-    - targets: ['localhost:9090']
+      - targets: ['localhost:9090']
 ```
 
 <br>

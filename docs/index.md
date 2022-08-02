@@ -312,22 +312,21 @@ title: 【IT技術の知見】目次
     * [📖：︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.html)
 * Kubernetes
-    * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html)
+    * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.html)
     * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.html)
     * カスタムリソース
         * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.html)
-        * [📖：︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_secret_provider_class_manifest_file.html)
-        * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_grafana_manifest_file.html)
+        * [📖：︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_secret_provider_class_resource_definition.html)
+        * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_grafana_resource_definition.html)
         * ArgoCD
-            * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_manifest_file.html)
+            * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_resource_definition.html)
         * Istio
-            * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html)
-            * [📖：︎Operator](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_operator_manifest_file.html)
+            * [📖：︎IstioOperator](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_operator_resource_definition.html)
+            * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html)
             * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.html)
         * Prometheus 
-            * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_manifest_file.html)
-            * [📖：︎Operator](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_operator_manifest_file.html)
+            * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_resource_definition.html)
 * Helm
     * [📖：︎チャート](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_chart.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_command.html)
@@ -359,7 +358,7 @@ title: 【IT技術の知見】目次
     * [📖：︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
     * [📖：︎orbs](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_orbs.html)
 * ArgoCD
-    * [📖：︎マニフェストファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_file.html)
+    * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_resource_definition.html)
     * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policy.html)
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)

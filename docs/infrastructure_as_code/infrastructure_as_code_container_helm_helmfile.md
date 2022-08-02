@@ -334,9 +334,10 @@ Source: project/manifests/persistent-volume.yaml
 
 全てのリリースに関して、```helm upgrade --install```コマンドを実行する。```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。
 
-参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+ℹ️ 参考：
 
-ℹ️ 参考：helmfile/helmfile#sync
+- https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+- helmfile/helmfile#sync
 
 ```bash
 $ helmfile sync

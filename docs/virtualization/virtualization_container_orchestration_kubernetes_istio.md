@@ -36,12 +36,12 @@ description: Istio＠仮想化の知見を記録しています。
 
 ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-#### ▼ Proxy
+#### ▼ コンテナ
 
-| コンテナ名        | 機能                                                                                                            |
-| ----------------- |---------------------------------------------------------------------------------------------------------------|
-| ```istio-proxy``` | Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。<br>ℹ️ 参考：https://sreake.com/blog/istio/ |
-| ```istio-init```  | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。                       |
+| コンテナ名        | 機能                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| ```istio-proxy``` | リバースプロキシとして機能する。Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。<br>ℹ️ 参考：https://sreake.com/blog/istio/ |
+| ```istio-init```  | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。 |
 
 #### ▼ ```istio-proxy```コンテナが作成される仕組み
 
@@ -118,7 +118,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 IstioのIaCについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 
@@ -128,7 +128,7 @@ IstioのIaCについては、以下のリンクを参考にせよ。
 
 Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。Istioリソースは、IaCによってマニフェストファイルで定義される。Istioのマニフェストファイルについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 

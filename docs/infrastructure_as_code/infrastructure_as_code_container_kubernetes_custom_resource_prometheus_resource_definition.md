@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠Prometheus
-description: マニフェストファイル＠Prometheusの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Prometheus
+description: リソース定義＠Prometheusの知見を記録しています。
 ---
 
-# マニフェストファイル＠Prometheus
+# リソース定義＠Prometheus
 
 ## はじめに
 

@@ -1127,18 +1127,18 @@ resource "aws_instance" "server" {
 
 特定の実行環境でリソースの作成の有無を切り替えたい場合に、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```関数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
-参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
 ```terraform
 # 特定の実行環境の.terraform.tfvarsファイル
-enable_provision = 1
+enable_provision = true
 ```
 
 ```terraform
 variable "enable_provision" {
   description = "enable provision"
-  type        = number
-  default     = 0
+  type        = bool
+  default     = false
 }
 ```
 
@@ -1147,7 +1147,7 @@ variable "enable_provision" {
 # EC2
 ###############################################
 resource "aws_instance" "server" {
-  count = var.enable_provision
+  count = var.enable_provision ? 1 : 0
   
   ami           = "ami-a1b2c3d4"
   instance_type = "t2.micro"

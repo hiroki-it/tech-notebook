@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠Grafana
-description: マニフェストファイル＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Grafana
+description: リソース定義＠Grafanaの知見を記録しています。
 ---
 
-# マニフェストファイル＠Grafana
+# リソース定義＠Grafana
 
 ## はじめに
 

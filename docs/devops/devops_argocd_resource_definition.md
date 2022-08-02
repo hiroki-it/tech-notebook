@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠ArgoCD
-description: マニフェストファイル＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠ArgoCD
+description: リソース定義＠ArgoCDの知見を記録しています。
 ---
 
-# マニフェストファイル＠ArgoCD
+# リソース定義＠ArgoCD
 
 ## はじめに
 
@@ -406,7 +406,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ヘルスステータスの種類
 
-参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
 | ステータス名 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -906,7 +906,7 @@ spec:
 
 ArgoCD全体で```spec.ignoreDifferences```オプションと同じ機能を有効化する。
 
-参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
 ```yaml
 apiVersion: v1

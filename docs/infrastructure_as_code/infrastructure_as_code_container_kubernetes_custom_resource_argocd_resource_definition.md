@@ -1,10 +1,10 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠ArgoCD
-description: マニフェストファイル＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠ArgoCD
+description: リソース定義＠ArgoCDの知見を記録しています。
 
 ---
 
-# マニフェストファイル＠ArgoCD
+# リソース定義＠ArgoCD
 
 ## はじめに
 
@@ -18,6 +18,6 @@ description: マニフェストファイル＠ArgoCDの知見を記録してい�
 
 manifestファイルの定義方法については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_resource_definition.html
 
 <br>

@@ -58,6 +58,6 @@ description: クラウドコンピューティングの知見を記録してい�
 
 複数のクラウドプロバイダーを使用して、システムを開発する。特定のクラウドプロバイダーに依存しないような設計が必要になる。
 
-参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
+ℹ️ 参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
 
 <br>

@@ -235,11 +235,33 @@ spec:
 
 ## 02. Operator
 
-### Operatorとは
+### Operatorの仕組み
 
-kube-controllerにように、カスタムリソースを宣言通りに作成してくれる。自分自身でカスタムリソースを定義する必要がない。
+#### ▼ アーキテクチャ
 
-ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/extend-kubernetes/operator/
+![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator_architecture.png)
+
+Operatorは、Operator-API、operator-controller、認可権限付与リソース、から構成されている。
+
+ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work#deploying_workloads_in_kubernetes
+
+#### ▼ Opetator-API
+
+operator-controllerにリクエストを送信するためのAPIを提供する。
+
+![kubernetes_operator-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-api.png)
+
+#### ▼ operator-controller
+
+カスタムリソース定義のマニフェストファイルとKubernetes-APIを仲介し、マニフェストファイルの宣言通りにカスタムリソースを作成する。また、kube-controller-managerはoperator-controllerを定期的に実行し、reconciliationループの仕組みによって、カスタムリソースを修復する。
+
+ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work#deploying_workloads_in_kubernetes
+
+![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
+
+#### ▼ 認可権限付与リソース
+
+Kubernetes-APIをコールできるように、operator-controllerに認可権限を付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 <br>
 

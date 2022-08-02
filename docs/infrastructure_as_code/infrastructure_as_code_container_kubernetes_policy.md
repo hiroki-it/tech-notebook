@@ -262,7 +262,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 マスターNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されているため、マスターNodeのみインプレース方式でアップグレードする。必要であれば、マスターNode上のkubernetesアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
 
-参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
 
 <br>
 
@@ -272,7 +272,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 既存のNodeグループ内のワーカーNodeをそのままアップグレードする方法。ワーカーNodeを稼働させたままアップグレードする。
 
-参考：https://logmi.jp/tech/articles/323033
+ℹ️ 参考：https://logmi.jp/tech/articles/323033
 
 #### ▼ ライブ方式
 

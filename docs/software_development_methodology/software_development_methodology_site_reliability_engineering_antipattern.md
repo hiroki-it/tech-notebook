@@ -174,7 +174,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。
 
-参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
+ℹ️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
 
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/infrastructure_mutable_immutable.jpeg)
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】マニフェストファイル＠Istio
-description: マニフェストファイル＠Istioの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Istio
+description: リソース定義＠Istioの知見を記録しています。
 ---
 
-# マニフェストファイル＠Istio
+# リソース定義＠Istio
 
 ## はじめに
 

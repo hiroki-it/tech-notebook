@@ -27,7 +27,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 KubernetesのIaCについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.html
 
 <br>
 
@@ -131,21 +131,22 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 #### ▼ kube-controller
 
-各Kubernetesリソースの状態が、マニフェストファイルの宣言的設定通りになるように制御する。Kubernetesリソースごとにkube-controllerが存在している。
+マニフェストファイルとKubernetes-APIを仲介し、マニフェストファイルの宣言通りにKubernetesリソースを作成する。
 
 ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/architecture/controller/
 - https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
 
-#### ▼ reconciliation
+#### ▼ reconciliationループ
 
-![kubernetes_reconciliation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation.png)
+![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
-Controllerは、マニフェストファイルで宣言された状態と、実際の状態を比較し、宣言通りに回復する。この比較を繰り返すことにより、自己修復できるようになる。
+kube-controller-managerは、kube-controllerを定期的に実行し、マニフェストファイルの宣言通りにKubernetesリソースを修復する。
 
 ℹ️ 参考：
 
+- https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work#how_operators_reconcile_kubernetes_cluster_states
 - https://www.oreilly.com/library/view/programming-kubernetes/9781492047094/ch01.html
 - https://speakerdeck.com/yosshi_/korekaraxue-hukubernetesfalsereconciliation-loop?slide=27
 
@@ -282,7 +283,7 @@ kubernetesクライアントは、```kubectl```コマンドを使用して、kub
 
 Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_file.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.html
 
 <br>
 
