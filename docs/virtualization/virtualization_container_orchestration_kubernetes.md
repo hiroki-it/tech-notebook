@@ -125,7 +125,7 @@ healthz check passed
 
 #### ▼ kube-controller-managerとは
 
-kube-controlerを一括で管理する。kube-controlerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
+kube-controllerを一括で管理する。kube-controllerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
 
 ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -142,7 +142,7 @@ kube-controlerを一括で管理する。kube-controlerを使用して、kube-ap
 
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
-kube-controller-managerは、kube-controllerを定期的に実行し、マニフェストファイルの宣言通りにKubernetesリソースを修復する。
+kube-controller-managerは、kube-controllerを反復的に実行し、マニフェストファイルの宣言通りにKubernetesリソースを修復する。
 
 ℹ️ 参考：
 

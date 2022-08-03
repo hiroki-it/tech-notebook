@@ -473,7 +473,7 @@ commands:
 jobs:
   deploy:
     steps:
-    # ～ 中略 ～
+    # 〜 中略 〜
 
 workflows:
   # ステージング環境にデプロイ

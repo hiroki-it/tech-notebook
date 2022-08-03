@@ -50,7 +50,7 @@ PREFIX_FOO = "foo"
     def show():
         # DBへのアクセス処理
 
-# 中略から 
+# 〜 中略 〜
 ```
 
 <br>

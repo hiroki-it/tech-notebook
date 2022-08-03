@@ -290,13 +290,84 @@ Linuxで使用できるパッケージを管理する。異なるバージョン
 $ arch -arm64 brew install <パッケージ名>
 ```
 
+#### ▼ autoremove
+
+パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に```--dry-run```オプションを有効化し、対象のパッケージを確認すると良い。
+
+参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+
+```bash
+$ brew autoremove --dry-run
+
+$ brew autoremove
+```
+
+#### ▼ cleanup
+
+パッケージの古いバージョンのキャッシュを削除する。
+
+参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+
+```bash
+$ brew cleanup
+```
+
+#### ▼ doctor
+
+brewの設定に不備がないかを検証する。
+
+```bash
+$ brew doctor 
+Your system is ready to brew.
+
+# パッケージとエイリアスが正しく紐づいていない場合
+$ brew doctor
+Warning: You have unlinked kegs in your Cellar.
+Leaving kegs unlinked can lead to build-trouble and cause formulae that depend on
+those kegs to fail to run properly once built. Run `brew link` on these:
+  <該当のパッケージ名>
+  ...
+```
+
 #### ▼ install
+
+パッケージをインストールする。
 
 ```bash
 # Intel Macの場合
 $ brew install <パッケージ名>
 
 $ brew install <パッケージ名>@<バージョンタグ>
+```
+
+#### ▼ link
+
+brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
+
+参考：https://hacknote.jp/archives/23816/
+
+```bash
+$ brew link <パッケージ名>
+```
+
+#### ▼ update
+
+brew本体をアップグレードする。
+
+参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+
+```bash
+$ brew update
+```
+
+#### ▼ upgrade
+
+brew本体とパッケージの両方をアップグレードする。
+
+参考：https://www.curict.com/item/bc/bcc0607.html
+
+```bash
+$ brew upgrade
 ```
 
 <br>
