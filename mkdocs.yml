@@ -331,7 +331,7 @@ nav:
               - ■ Terraform:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
                   - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
-                  - CI/CD: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md
+                  - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd_pipeline.md
                   - ■ tfファイル:
                       - tfファイル: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.md
                       - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.md
