@@ -378,7 +378,7 @@ spec:
 
 #### ▼ revisionとは
 
-コントロールプレーン（Istiod）をカナリアリリースを使用してアップグレードする場合に、新しくapplyするバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
+コントロールプレーン（Istiod）をカナリアリリースを使用してアップグレードする場合、新しくapplyするバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
 ℹ️ 参考：
 
@@ -424,7 +424,7 @@ spec:
 
 #### ▼ valuesとは
 
-IstioOperatorに、Helmを使用させてIstioリソースをapplyする場合に、Helmの```values```ファイルの代わりになる。
+IstioOperatorに、Helmを使用させてIstioリソースをapplyする場合、Helmの```values```ファイルの代わりになる。
 
 #### ▼ gateways.istio-ingressgateway.runAsRoot
 

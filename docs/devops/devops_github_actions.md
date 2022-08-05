@@ -119,7 +119,7 @@ jobs:
 
 #### ▼ if
 
-条件を満たした場合に、後続の```run```キーを実行する。
+条件を満たした場合、後続の```run```キーを実行する。
 
 ℹ️ 参考：https://docs.github.com/ja/actions/learn-github-actions/expressions#status-check-functions
 

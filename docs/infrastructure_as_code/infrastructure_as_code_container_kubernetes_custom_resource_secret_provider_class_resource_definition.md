@@ -15,7 +15,7 @@ description: リソース定義＠SecretProviderClassの知見を記録してい
 
 ## 01. SecretProviderClassとは
 
-外部Secretストアのデータを参照する場合に、Secretストアのプロバイダーを設定する。
+外部Secretストアのデータを参照する場合、Secretストアのプロバイダーを設定する。
 
 <br>
 

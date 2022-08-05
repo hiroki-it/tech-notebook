@@ -557,7 +557,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 ### update-context
 
-Minikubeのコンテキスト情報が誤っている場合に、正しく修正する。
+Minikubeのコンテキスト情報が誤っている場合、正しく修正する。
 
 ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 

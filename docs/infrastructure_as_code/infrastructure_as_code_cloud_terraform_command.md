@@ -55,7 +55,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは
 
 #### ▼ -target
 
-特定の```resource```ブロックを使用して、```terraform apply```コマンドを実行する。リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合に、特定の差分のみをプロビジョニングできる。
+特定の```resource```ブロックを使用して、```terraform apply```コマンドを実行する。リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合、特定の差分のみをプロビジョニングできる。
 
 ```bash
 $ terraform apply \
@@ -68,7 +68,7 @@ $ terraform apply \
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
+    -target=module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
 ```
 
 **＊例＊**
@@ -214,7 +214,7 @@ $ terraform fmt -check
 
 #### ▼ -diff
 
-インデントを揃えるべき箇所が存在する場合に、これを取得する。
+インデントを揃えるべき箇所が存在する場合、これを取得する。
 
 ```bash
 $ terraform fmt -diff
@@ -280,10 +280,10 @@ $ terraform import \
 ```
 
 ```bash
-# moduleを使用して定義されている場合
+# moduleブロックを使用して定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    module.<モジュール名>.<resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+    module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
 ```
 
 ```bash
@@ -311,15 +311,15 @@ $ terraform import \
 ```
 
 ```bash
-# moduleを使用し、for_each関数で定義されている場合
+# moduleブロックを使用し、for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<モジュール名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
 
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<モジュール名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
 ```
 
 そして、ローカルマシンの```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
@@ -419,7 +419,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 | 変更内容                                       | される/されない |
 |--------------------------------------------| ---------------- |
 | ```resource```ブロック名の変更                                   | される           |
-| モジュール名の変更                                  | される           |
+| moduleブロック名の変更                                  | される           |
 | ファイルやディレクトリを指定するパスの変更                      | されない         |
 | ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない         |
 
@@ -463,7 +463,36 @@ $ terraform plan \
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
+    -target=module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
+```
+
+指定方法は、全てのブロックを対象とした```terraform plan```コマンドが参考になる。```grep```コマンドを使用してresourceタイプ名やmoduleブロック名で抽出すると、指定方法がわかる。
+
+```bash
+# resourceブロックの指定方法を調べる。
+$ terraform plan | grep <resourceタイプ>
+
+# foo.bar will be created
+# foo.baz will be changed
+
+$ terraform plan \
+    -var-file=foo.tfvars \
+    -target=foo.bar \
+    -target=foo.baz \
+```
+```bash
+# moduleブロックの指定方法を調べる。
+$ terraform plan | grep <moduleブロック名>
+
+# module.qux.quux will be changed
+# module.qux.corge will be changed
+# module.grault will be destoryed
+
+$ terraform plan \
+    -var-file=foo.tfvars \
+    -target=module.qux.quux \
+    -target=module.qux.corge \
+    -target=module.grault
 ```
 
 #### ▼ -refresh
@@ -564,7 +593,7 @@ Successfully removed 1 resource instance(s).
 ```
 
 ```bash
-# moduleを使用して定義されている場合
+# moduleブロックを使用して定義されている場合
 $ terraform state rm module.ec2.aws_instance.bastion
 
 Removed module.ec2.aws_instance.bastion
@@ -594,7 +623,7 @@ $ terraform state rm 'aws_instance.bastion[1]'
 ```
 
 ```bash
-# moduleを使用し、for_each関数で定義されている場合
+# moduleブロックを使用し、for_each関数で定義されている場合
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名1>"]'
 
 Removed module.ec2.aws_instance.bastion["<キー名1>"]
@@ -684,7 +713,7 @@ $ terraform state show aws_instance.bastion
 ```bash
 $ terraform taint \
     -var-file=foo.tfvars \
-    module.<モジュール名>.<resourceタイプ>.<resourceブロック名>
+    module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
 ```
 
 この後の```terraform plan```コマンドのログからも、```-/+```で削除が行われる想定で、差分を比較していることがわかる。

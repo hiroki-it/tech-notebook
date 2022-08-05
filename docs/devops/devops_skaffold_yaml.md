@@ -25,7 +25,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 #### ▼ ステージの種類
 
-CI/CDのステージを持つ。build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。ただし、Skaffoldは、基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
+CI/CDパイプラインのステップをステージと呼ぶ。build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。ただし、Skaffoldは、基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 

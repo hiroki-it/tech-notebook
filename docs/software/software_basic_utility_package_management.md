@@ -294,7 +294,7 @@ $ arch -arm64 brew install <パッケージ名>
 
 パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に```--dry-run```オプションを有効化し、対象のパッケージを確認すると良い。
 
-参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+ℹ️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
 
 ```bash
 $ brew autoremove --dry-run
@@ -306,7 +306,7 @@ $ brew autoremove
 
 パッケージの古いバージョンのキャッシュを削除する。
 
-参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew cleanup
@@ -344,7 +344,7 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
-参考：https://hacknote.jp/archives/23816/
+ℹ️ 参考：https://hacknote.jp/archives/23816/
 
 ```bash
 $ brew link <パッケージ名>
@@ -354,7 +354,7 @@ $ brew link <パッケージ名>
 
 brew本体をアップグレードする。
 
-参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew update
@@ -364,7 +364,7 @@ $ brew update
 
 brew本体とパッケージの両方をアップグレードする。
 
-参考：https://www.curict.com/item/bc/bcc0607.html
+ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
 ```bash
 $ brew upgrade

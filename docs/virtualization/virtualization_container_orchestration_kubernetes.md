@@ -156,7 +156,7 @@ kube-controller-managerは、kube-controllerを反復的に実行し、マニフ
 
 #### ▼ kube-schedulerとは
 
-ワーカーNodeが複数ある場合に、ワーカーNodeとPodのスペックを基に、Podを配置するべきNodeを判定する。
+ワーカーNodeが複数ある場合、ワーカーNodeとPodのスペックを基に、Podを配置するべきNodeを判定する。
 
 ℹ️ 参考：https://thinkit.co.jp/article/17453
 

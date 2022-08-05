@@ -37,7 +37,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 <br>
 
-## 01-02. アラートの作成
+## 01-02. アラートの発火
 
 ### グループ化
 
@@ -47,7 +47,7 @@ description:  監視＠Datadogの知見を記録しています。
 
 #### ▼ Auto resolve
 
-アラートを通知した後に、一定期間同じエラーイベントが発生しなければ、通知したアラートを取り下げる。
+アラートを通知した後に、一定期間同じエラーイベントが発生しなければ、発火したアラートを取り下げる。
 
 ℹ️ 参考：https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve
 

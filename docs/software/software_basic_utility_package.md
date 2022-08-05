@@ -439,7 +439,7 @@ redirect_stderr=true
 
 #### ▼ startretries
 
-デーモン化されたプロセスの起動に失敗した場合に、何回再試行するかを設定する。
+デーモン化されたプロセスの起動に失敗した場合、何回再試行するかを設定する。
 
 ```ini
 [program:foo]
@@ -527,7 +527,7 @@ $ supervisorctl restart <デーモン名>
 
 #### ▼ update
 
-もし```supervisord.conf```ファイルの設定を変更した場合に、これを読み出し直す。
+もし```supervisord.conf```ファイルの設定を変更した場合、これを読み出し直す。
 
 ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 

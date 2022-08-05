@@ -55,7 +55,7 @@ apiVersion: v1
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-IngressがClusterネットワーク内に1つしか存在しない場合に、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合に、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 ℹ️ 参考：
 
@@ -571,6 +571,31 @@ spec:
 
 デプロイメントの方法を設定する。
 
+#### ▼ Recreate
+
+インプレースデプロイメントを使用して、新しいPodをapplyする。
+
+ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo
+      app.kubernetes.io/component: app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: foo
+        app.kubernetes.io/component: app
+```
+
 #### ▼ RollingUpdate
 
 ローリングアップデートを使用して、新しいPodをapplyする。
@@ -734,7 +759,7 @@ spec:
 
 #### ▼ annotationsとは
 
-外部Ingressを使用する場合に、オプションを設定する。
+外部Ingressを使用する場合、オプションを設定する。
 
 #### ▼ AWS固有のキー
 
@@ -746,7 +771,7 @@ spec:
 
 #### ▼ ingressClassNameとは
 
-標準のIngressの代わりに外部Ingressを使用する場合に、IngressClassの```metadata.name```キー値を設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キー値を設定する。
 
 ℹ️ 参考：
 
@@ -807,7 +832,7 @@ spec:
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに、外部Ingressを使用する場合に、そのIngressのマニフェストのAPIを設定する。
+標準のIngressの代わりに、外部Ingressを使用する場合、そのIngressのマニフェストのAPIを設定する。
 
 ℹ️ 参考：
 
@@ -1189,7 +1214,7 @@ PersistentVolumeのライフサイクルを設定する。
 
 #### ▼ Delete
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に、PersistentVolumeも自動的に削除する。クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolumeも自動的に削除する。クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
 
 ℹ️ 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -1206,7 +1231,7 @@ spec:
 
 #### ▼ Recycle（非推奨）
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除された場合に、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。将来的に廃止予定のため、非推奨。
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。将来的に廃止予定のため、非推奨。
 
 ℹ️ 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -1788,7 +1813,7 @@ Pod内コンテナのライフサイクルの再起動ポリシーを設定す�
 
 #### ▼ Always
 
-コンテナが終了した場合に、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
+コンテナが終了した場合、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -1804,7 +1829,7 @@ spec:
 
 #### ▼ Never
 
-コンテナが終了した場合に、コンテナを再起動しない。
+コンテナが終了した場合、コンテナを再起動しない。
 
 ```yaml
 apiVersion: v1
@@ -1820,7 +1845,7 @@ spec:
 
 #### ▼ OnFailure
 
-コンテナが終了した場合に、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
+コンテナが終了した場合、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -2014,7 +2039,7 @@ spec:
 
 #### ▼ persistentVolumeClaim
 
-PersistentVolumeを使用する場合に、PersistentVolumeClaimを設定する。
+PersistentVolumeを使用する場合、PersistentVolumeClaimを設定する。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -2420,7 +2445,7 @@ spec:
       port: 9000
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合に、```spec.ports.appProtocol```キーが使用しなければ、```spec.ports.name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
+もしIstio VirtualServiceからインバウンド通信を受信する場合、```spec.ports.appProtocol```キーが使用しなければ、```spec.ports.name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
 
 ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 

@@ -446,7 +446,7 @@ $ aws iam update-user \
 
 #### ▼ get-resources
 
-AWSリソースがリソースグループで管理されている場合に、特定のタグを持つAWSリソースを取得する。
+AWSリソースがリソースグループで管理されている場合、特定のタグを持つAWSリソースを取得する。
 
 ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 

@@ -160,7 +160,7 @@ prometheus/
 ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
-# ワーカーNode内
+# ワーカーNode内（EKSワーカーNodeの場合）
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
 
 -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:07 00004931
@@ -192,7 +192,7 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 #### ▼ ダイナミックキュー
 
-リモートストレージにメトリクスを送信する場合に、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
+リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
 ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 

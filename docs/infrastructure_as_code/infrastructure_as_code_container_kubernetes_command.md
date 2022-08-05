@@ -546,7 +546,7 @@ $ kubectl get service/istio-ingressgateway \
 
 #### ▼ -o wide
 
-指定したリソースの詳細な情報を取得する。Nodeが複数がある場合に、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
+指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 ```bash
 $ kubectl get pod -o wide
@@ -683,7 +683,7 @@ $ kubectl replace -f foo.yaml
 
 #### ▼ rolloutとは
 
-Kubernetesリソースをダウンタイム無しで更新する。
+Deployment、DamonSet、StatefulSet、に紐づくPodを操作する。
 
 ℹ️ 参考：
 
@@ -692,12 +692,15 @@ Kubernetesリソースをダウンタイム無しで更新する。
 
 #### ▼ restart
 
-指定したKubernetesをローリングリスタートする。
+Podを再作成する。ConfigMapやSecretのデータの変更後、Podにこれを読み込ませるために役立つ。
 
-ℹ️ 参考：https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
+ℹ️ 参考：
+
+- https://qiita.com/Veritas666777/items/45383ca2d14a6700d0f6
+- https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
 
 ```bash
-$ kubectl rollout restart deployment -n kube-system
+$ kubectl rollout restart deployment grafana -n prometheus
 ```
 
 <br>

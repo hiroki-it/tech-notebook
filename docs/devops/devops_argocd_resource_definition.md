@@ -49,7 +49,7 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 #### ▼ Applicationコントローラーとは
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合に、再同期を試みる。
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再同期を試みる。
 
 ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -90,7 +90,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
-指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合に、Kubernetesの状態をこれに同期する。
+指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれに同期する。
 
 ℹ️ 参考：
 
@@ -397,7 +397,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 - https://argo-cd.readthedocs.io/en/stable/core_concepts/
 - https://github.com/argoproj/argo-cd/discussions/8260
 
-| 同期名       | 説明                                                         |
+| 操作名       | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があればapplyする。 |
 | Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
@@ -527,7 +527,7 @@ spec:
 | ------------- |--------------------------------------------------------------------------------------------------------|
 | ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定する。                                                 |
 | ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外する。                                                   |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合に、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -878,7 +878,7 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 
 | 設定項目                     | 説明                                                         | 補足                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合に、これを有効化しておいた方が良い。 |                                                              |
+| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
 | ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
 | ```PruneLast```              | 通常のPruneでは、同期しながら旧いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースを同期してしまい、正常に稼働した後に旧いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
@@ -973,7 +973,7 @@ metadata:
 
 #### ▼ argocd.argoproj.io/sync-wave
 
-同じ同期フェーズに実行するように設定したフックが複数ある場合に、これらの実行の優先度付けを設定する。正負の数字を設定でき、数字が小さい方が優先される。優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+同じ同期フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。正負の数字を設定でき、数字が小さい方が優先される。優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
 
 ℹ️ 参考：
 
@@ -1021,7 +1021,7 @@ metadata:
 
 #### ▼ analysisとは
 
-Progressive Deliveryを使用する場合に、詳細を設定する。
+Progressive Deliveryを使用する場合、詳細を設定する。
 
 ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
@@ -1074,7 +1074,7 @@ spec:
 | --------------------------- | ------------------------------------------------------------ |
 | ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する。      |
 | ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
-| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合に、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
+| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
 | ```previewReplicaCount```   | グリーン環境のPod数を設定する。                              |
 | ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する。    |
 | ```scaleDownDelaySeconds``` |                                                              |

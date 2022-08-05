@@ -986,7 +986,7 @@ Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化�
 
 #### ▼ マイグレーション
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDツールで実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDパイプライン中に実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 **＊実装例＊**
 
@@ -1497,7 +1497,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 | 項目                                            | 説明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPS通信を受け付ける場合に、SSL証明書のARNを設定する。 |
+| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPS通信を受け付ける場合、SSL証明書のARNを設定する。 |
 | ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
 | ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
@@ -2186,7 +2186,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
             "appId": "<アプリケーションID>",
             "branchName": "<ブランチ名>",
             "jobId": "<ジョブID>",
-            "jobStatus": "<CI/CDのステータス>"
+            "jobStatus": "<CI/CDパイプラインのステータス>"
         }
     }
 }

@@ -192,7 +192,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CD時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
+マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
 ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 

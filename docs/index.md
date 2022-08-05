@@ -338,7 +338,7 @@ title: 【IT技術の知見】目次
 * Terraform
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)
     * [📖：設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html)
-    * [📖：︎CI/CD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.html)
+    * [📖：︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd_pipeline.html)
     * tfファイル
         * [📖：︎tfファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.html)
         * [📖：︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.html)

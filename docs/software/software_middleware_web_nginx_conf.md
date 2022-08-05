@@ -554,7 +554,7 @@ server_name localhost;
 
 #### ▼ ssl
 
-HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効にする必要がある。
+HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。
 
 ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
@@ -566,7 +566,7 @@ ssl on;
 
 #### ▼ ssl_certificate
 
-HTTPSプロトコルを受信する場合に、PEM証明書のパスを設定する。
+HTTPSプロトコルを受信する場合、PEM証明書のパスを設定する。
 
 **＊実装例＊**
 
@@ -576,7 +576,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ▼ ssl_certificate_key
 
-HTTPSプロトコルを受信する場合に、PEM秘密鍵のパスを設定する。
+HTTPSプロトコルを受信する場合、PEM秘密鍵のパスを設定する。
 
 **＊実装例＊**
 

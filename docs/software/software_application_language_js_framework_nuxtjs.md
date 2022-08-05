@@ -297,7 +297,7 @@ export function foo() {
 
 #### ▼ quiet
 
-ビルド時にログを最小限にする。CI/CDツールでログが確認できなくなるため、無効化しておいた方が良い。
+ビルド時にログを最小限にする。CIツールでログが確認できなくなるため、無効化しておいた方が良い。
 
 ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 

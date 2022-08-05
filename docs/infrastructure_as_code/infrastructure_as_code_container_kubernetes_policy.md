@@ -44,7 +44,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 02. リポジトリ構成
+## 02. リポジトリ構成ポリシー
 
 ### リポジトリ分割のメリット
 
@@ -102,7 +102,7 @@ repository/ # bazサービス
 
 <br>
 
-## 02-02. ディレクトリ構成
+## 02-02. ディレクトリ構成ポリシー
 
 ### ディレクトリ/ファイルの構成
 
@@ -215,7 +215,7 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 #### ▼ ファイル名
 
-ケバブケースとする。ファイル名は、ディレクトリ構成による。
+ケバブケースとする。ファイル名は、ディレクトリ構成ポリシーによる。
 
 #### ▼ 拡張子
 
@@ -256,31 +256,51 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 <br>
 
-### マスターNodeの場合
+### マスターNodeのアップグレード
+
+#### ▼ マスターNodeのアップグレードとは
+
+まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のkubernetesアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
+
+ℹ️ 参考：
+
+- https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
+- https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
 
 #### ▼ インプレース方式
 
-マスターNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されているため、マスターNodeのみインプレース方式でアップグレードする。必要であれば、マスターNode上のkubernetesアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
+マスターNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されているため、マスターNodeのみインプレース方式でアップグレードする。
 
 ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
 
 <br>
 
-### ワーカーNodeの場合
+### ワーカーNodeのアップグレード
+
+#### ▼ ワーカーNodeのアップグレードとは
+
+マスターNodeのアップグレードが終わったら、ワーカーNodeをアップグレードする。クラウドプロバイダーのマネージドNodeグループを使用している場合、ワーカーNodeが新しいマシンイメージに基づいてオートスケーリングされるように設定しておく。
+
+ℹ️ 参考：https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
+
+| 方法                       | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
+| -------------------------- | -------- | ------------ | ------------ | ------------------------------------------------------------ |
+| インプレース方式           | 短い     | 簡単         | 長い         | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。 |
+| ライブ方式                 | ^        | ^            | v            |                                                              |
+| ローリングアップデート方式 | ^        | ^            | v            |                                                              |
+| ブルーグリーン方式         | 長い     | 難しい       | なし         | Clusterの作成の労力が、もう一つ実行環境を作成することに相当する。 |
 
 #### ▼ インプレース方式
 
-既存のNodeグループ内のワーカーNodeをそのままアップグレードする方法。メンテナンス時間を設けて数時間のダウンタイムを許容できる場合、一番楽な方法。
+既存のNodeグループ内のワーカーNodeをそのままアップグレードする方法。ワーカーNodeのアップグレード時間がそのままダウンタイムになるため、メンテナンス時間を設けられる場合にのみ使用できる。
 
 ℹ️ 参考：https://logmi.jp/tech/articles/323033
 
 （１）ワーカーNodeを削除する。
 
-（２）マスターNodeをアップグレードする。
+（２）ワーカーNodeを再作成する。
 
-（３）ワーカーNodeを再作成する。
-
-#### ▼ ライブ方式
+▼ ライブ方式
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 

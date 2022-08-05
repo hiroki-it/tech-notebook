@@ -748,7 +748,7 @@ spec:
 
 #### ▼ tls.serverCertificate
 
-受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合に、SSL/TLS証明書を設定する。
+受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合、SSL/TLS証明書を設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 

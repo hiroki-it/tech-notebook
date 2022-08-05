@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CI/CD＠Terraform
-description: CI/CD＠Terraformの知見を記録しています。
+title: 【IT技術の知見】CI/CDパイプライン＠Terraform
+description: CI/CDパイプライン＠Terraformの知見を記録しています。
 ---
 
-# CI/CD＠Terraform
+# CI/CDパイプライン＠Terraform
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: CI/CD＠Terraformの知見を記録しています。
 
 <br>
 
-## 02. CircleCIを使用したCI/CD
+## 02. CircleCIを使用したCI/CDパイプライン
 
 ### 要素
 
@@ -27,11 +27,13 @@ description: CI/CD＠Terraformの知見を記録しています。
 
 #### ▼ Job
 
-| jobs       | 説明                                                         |
-| ---------- | ------------------------------------------------------------ |
-| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。 |
-| 承認Job |                                                              |
-| apply      | stg環境またはprd環境にデプロイ                               |
+| jobs     | 説明                                                                        |
+|----------|---------------------------------------------------------------------------|
+| plan     | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。               |
+| 承認Job    |                                                                           |
+| apply    | stg環境またはprd環境に対して、```terraform apply```コマンドを実行する。                         |
+| plan（任意） | ```terraform apply```によって差分が無くなったかを、```terraform plan```コマンドを改めて実行し、確認する。 |
+
 
 #### ▼ Workflow
 

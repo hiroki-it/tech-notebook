@@ -161,7 +161,7 @@ env:
     key: # 環境変数のハードコーディング
       
 #=====================      
-# バックエンドのCI/CD
+# バックエンドのCI/CDパイプライン
 #===================== 
 backend:
   phases:
@@ -176,7 +176,7 @@ backend:
         - # コマンド
         
 #=====================         
-# フロントエンドのCI/CD
+# フロントエンドのCI/CDパイプライン
 #=====================  
 frontend:
   phases:
@@ -1453,7 +1453,7 @@ fields @timestamp, @message, @logStream
 
 #### ▼ CodePipeline
 
-CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CD環境を作成する。CodeCommitは、他のコード管理サービスで代用できる。
+CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CDパイプラインを作成する。CodeCommitは、他のコード管理サービスで代用できる。
 
 ![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/code-pipeline.png)
 
@@ -1546,7 +1546,7 @@ artifacts:
 
 #### ▼ ```imagedefinitions.json```ファイル
 
-新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。リポジトリに事前に配置するのではなく、CI/CDの中で動的に作成するようにした方が良い。
+新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。リポジトリに事前に配置するのではなく、CI/CDパイプライン中で動的に作成するようにした方が良い。
 
 ℹ️ 参考：
 
@@ -1606,7 +1606,7 @@ Resources:
 
 #### ▼ ```imageDetail.json```ファイル
 
-新しいバージョンタグを含むイメージリポジトリURLを、```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である。これはリポジトリに事前に配置するのではなく、CI/CDの中で動的に作成するようにした方が良い。
+新しいバージョンタグを含むイメージリポジトリURLを、```taskdef.json```ファイルの ```<IMAGE1_NAME>```に代入するために必要である。これはリポジトリに事前に配置するのではなく、CI/CDパイプライン中で動的に作成するようにした方が良い。
 
 ℹ️ 参考：
 

@@ -510,7 +510,7 @@ provider "aws" {}
 
 #### ▼ 同一リポジトリ内から読み込む
 
-同じリポジトリ内にmoduleがある場合に、それを指定して読み込む。
+同じリポジトリ内にmoduleがある場合、それを指定して読み込む。
 
 **＊実装例＊**
 
@@ -529,7 +529,7 @@ module "alb" {
 
 #### ▼ 外部リポジトリから読み込む
 
-外部リポジトリにmoduleがある場合に、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
+外部リポジトリにmoduleがある場合、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
 
 ```terraform
 ###############################
@@ -1125,7 +1125,7 @@ resource "aws_instance" "server" {
 
 #### ▼ 作成の有無の条件分岐
 
-特定の実行環境でリソースの作成の有無を切り替えたい場合に、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```関数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
+特定の実行環境でリソースの作成の有無を切り替えたい場合、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```関数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
@@ -1735,7 +1735,7 @@ resource "aws_security_group" "ec2" {
 
   dynamic ingress {
     # 環境が複数あるとする。（prd-1、prd-2、stg-1、stg-2）
-    # 環境名がprdという文字を含むキーがあった場合に、全てprdキーの方を使用する。
+    # 環境名がprdという文字を含むキーがあった場合、全てprdキーの方を使用する。
     for_each = length(regexall("prd", var.env)) > 0 ? var.security_group_ingress_ec2_ssh.prd : var.security_group_ingress_ec2_ssh.stg
     content {
       cidr_blocks = [ ingress.value["cidr_blocks"] ]
