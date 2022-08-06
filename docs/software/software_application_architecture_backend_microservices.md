@@ -393,7 +393,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ℹ️ 参考：
 
-- https://cloud.google.com/architecture/devops/devops-tech-architecture?hl=ja
+- https://cloud.google.com/architecture/devops/devops-tech-architecture
 - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
 - https://bliki-ja.github.io/PresentationDomainSeparation/
 - https://tech.mti.co.jp/entry/2021/04/12/112833

@@ -1,19 +1,23 @@
 ---
-title: 【IT技術の知見】システムテスト＠ブラックボックステスト
-description: システムテスト＠ブラックボックステストの知見を記録しています。
+title: 【IT技術の知見】総合テスト＠ブラックボックステスト
+description: 総合テスト＠ブラックボックステストの知見を記録しています。
 ---
 
-# システムテスト＠ブラックボックステスト
+# 総合テスト＠ブラックボックステスト
 
-## 01. システムテスト
+## 01. 総合テスト（システムテスト）
 
-### システムテストとは
+### 総合テストとは
 
-既存/新規を含む全てのコンポーネントを組み合わせ、全てのコンポーネント間の連携が正しく機能しているかを検証する。
+既存機能/追加/変更を含む全てのコンポーネントを組み合わせ、全てのコンポーネント間の連携が正しく機能しているかを検証する。
+
+参考：https://pm-rasinban.com/ut-it-st
+
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 
 <br>
 
-### システムテストの種類
+### 総合テストの種類
 
 #### ▼ 機能テスト
 
@@ -51,16 +55,6 @@ description: システムテスト＠ブラックボックステストの知見�
 不良摘出実績線（信頼度成長曲線）は、プログラムの品質の状態を表し、S字型でないものはプログラムの品質が良くないことを表す。
 
 ![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/信頼度成長曲線の悪い例.jpg)
-
-<br>
-
-### 回帰テスト
-
-今回の変更が他のプログラムに悪影響を与えていないかを検証するために、そのプログラムの機能テストと非機能テストを改めて実行すること。
-
-ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
-
-![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 
 <br>
 
@@ -242,7 +236,7 @@ Kubernetes Nodeに相当する仮想サーバー上で、Kubernetesリソース�
 
   - アラート
 
-    - アラートのルーティング：Alertmanager
+    - 受信したアラートの通知：Alertmanager
 
 #### ▼ テスト内容
 

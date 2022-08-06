@@ -859,7 +859,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 #### ▼ HorizontalPodAutoscalerとは
 
-Kubernetesリソースの水平スケーリングを定義する。Metric serverから取得したKubernetesリソースのメトリクス値のうち、指定したメトリクス値とターゲット値の比較に基づいて、Podをスケールイン/スケールアウトさせる。
+Kubernetesリソースの水平スケーリングを定義する。Metric serverから取得したKubernetesリソースに関するメトリクス値のうち、指定したメトリクス値とターゲット値の比較に基づいて、Podをスケールイン/スケールアウトさせる。
 
 ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 

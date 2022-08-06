@@ -18,7 +18,7 @@ description: Prometheus＠テレメトリー収集ツールの知見を記録し
 
 ### アーキテクチャ
 
-Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースのメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
+Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
 ℹ️ 参考：
 
@@ -48,14 +48,14 @@ global:
   scrape_interval:     15s
   evaluation_interval: 15s 
 
-# アラートの送信先とするAlertmanagerを設定する。
+# 使用するAlertmanagerを設定する。
 alerting:
   alertmanagers:
   - static_configs:
     - targets:
       # - alertmanager:9093
 
-# Alertmanagerのルーティングルールを設定する。
+# Alertmanagerの通知先ルールを設定する。
 rule_files:
   # - "first_rules.yml"
   # - "second_rules.yml"
@@ -204,15 +204,24 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 ### Alertmanagerとは
 
-Prometheusのアラートを受信し、特定の条件下でルーティングする。
+Prometheusのアラートを受信し、特定の条件下で通知する。受信したアラートは、AlertmanagerのUI上に表示される。
 
 ℹ️ 参考：
 
 - https://prometheus.io/docs/alerting/latest/alertmanager/
 - https://www.designet.co.jp/ossinfo/alertmanager/
 - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
+- https://amateur-engineer-blog.com/alertmanager-silence/
 
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
+
+<br>
+
+### Silence
+
+受信したアラートの通知を一時的に無効化する。Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
+
+参考：https://amateur-engineer-blog.com/alertmanager-silence/
 
 <br>
 
@@ -250,16 +259,17 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 | Exporter名                                                   | Exportタイプ | ポート番号 | エンドポイント | 説明                                                         |
 | :----------------------------------------------------------- | ------------ | ---------- | -------------- | ------------------------------------------------------------ |
-| [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ```9100``` | ```/metrics``` | ノードのメトリクスのデータポイントを収集する。               |
+| [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ```9100``` | ```/metrics``` | ノードに関するメトリクスのデータポイントを収集する。         |
 | [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上           | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。<br>ℹ️ 参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
-| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | ```9113``` | 同上           | Nginxのメトリクスのデータポイントを収集する。                |
-| [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | ```9117``` | 同上           | Apacheのメトリクスのデータポイントを収集する。               |
+| [process-exporter](https://github.com/ncabatoff/process-exporter) | DaemonSet型  | ```9256``` | ```/metrics``` | 特定のプロセスに関するメトリクスのデータポイントを収集する。 |
+| [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | ```9113``` | 同上           | Nginxに関するメトリクスのデータポイントを収集する。          |
+| [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | ```9117``` | 同上           | Apacheに関するメトリクスのデータポイントを収集する。         |
 | [black box expoter](https://github.com/prometheus/blackbox_exporter) | Deplyoment型 | ```9115``` | 同上           | 各種通信プロトコルの状況をメトリクスとして収集する。         |
-| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter) | Sidecar型    | ```9104``` | 同上           | MySQL/MariaDBのメトリクスのデータポイントを収集する。        |
-| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter) | Sidecar型    | ```9187``` | 同上           | PostgreSQLのメトリクスのデータポイントを収集する。           |
-| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter) | Sidecar型    | ```9121``` | 同上           | Oracleのメトリクスのデータポイントを収集する。               |
-| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | Deployment型 | ```9114``` | 同上           | ElasticSearchのメトリクスのデータポイントを収集する。        |
-| [redis-exporter](https://github.com/oliver006/redis_exporter) | Sidecar型    | ```9121``` | 同上           | Redisのメトリクスのデータポイントを収集する。                |
+| [mysqld-exporter](https://github.com/prometheus/mysqld_exporter) | Sidecar型    | ```9104``` | 同上           | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。  |
+| [postgres-exporter](https://github.com/prometheus-community/postgres_exporter) | Sidecar型    | ```9187``` | 同上           | PostgreSQLに関するメトリクスのデータポイントを収集する。     |
+| [oracledb-exporter](https://github.com/iamseth/oracledb_exporter) | Sidecar型    | ```9121``` | 同上           | Oracleに関するメトリクスのデータポイントを収集する。         |
+| [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | Deployment型 | ```9114``` | 同上           | ElasticSearchに関するメトリクスのデータポイントを収集する。  |
+| [redis-exporter](https://github.com/oliver006/redis_exporter) | Sidecar型    | ```9121``` | 同上           | Redisに関するメトリクスのデータポイントを収集する。          |
 
 #### ▼ PushGateway
 

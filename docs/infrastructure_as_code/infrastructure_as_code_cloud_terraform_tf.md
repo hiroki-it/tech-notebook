@@ -13,579 +13,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 <br>
 
-## 01. ルートモジュールの実装
-
-### terraform  settings
-
-#### ▼ terraform settingsとは
-
-```terraform```コマンドの実行時に、エントリーポイントとして機能するファイル。
-
-#### ▼ required_providers
-
-AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なる```resource```タイプが提供される。一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。
-
-**＊実装例＊**
-
-```terraform
-terraform {
-
-  required_providers {
-    # awsプロバイダを定義
-    aws = {
-      # グローバルソースアドレスを指定
-      source  = "hashicorp/aws"
-      
-      # プロバイダーのバージョン変更時は initを実行
-      version = "3.0" 
-    }
-  }
-}
-```
-
-#### ▼ backend
-
-インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
-
-ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
-
-**＊実装例＊**
-
-```terraform
-terraform {
-
-  # ローカルマシンで管理するように設定
-  backend "local" {
-    path = "${path.module}/terraform.tfstate"
-  }
-}
-```
-
-```terraform
-terraform {
-
-  # S3で管理するように設定
-  backend "s3" {
-    # バケット名
-    bucket                  = "prd-foo-tfstate-bucket"
-    # .tfstateファイル名
-    key                     = "terraform.tfstate"
-    region                  = "ap-northeast-1"
-    # credentialsファイルの場所
-    shared_credentials_file = "$HOME/.aws/credentials"
-    # credentialsファイルのプロファイル名
-    profile                 = "bar-profile"
-  }
-}
-```
-
-どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくと良い。
-
-**＊実装例＊**
-
-```yaml
-{
-    "Version": "2008-10-17",
-    "Statement": [
-        {
-            "Effect": "Deny",
-            "Principal": "*",
-            "Action": "s3:DeleteObject",
-            "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*"
-        }
-    ]
-}
-```
-
-<br>
-
-### provider
-
-#### ▼ providerとは
-
-Terraformで操作するクラウドインフラベンダーを設定する。ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
-
-**＊実装例＊**
-
-```terraform
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-    # awsプロバイダを定義
-    aws = {
-      # 何らかの設定
-    }
-  }
-  
-  backend "s3" {
-    # 何らかの設定
-  }
-}
-
-# awsプロバイダを指定
-provider "aws" {
-  # アカウント認証の設定
-}
-```
-
-<br>
-
-### multiple providers
-
-#### ▼ multiple providersとは
-
-複数の```provider```を実装し、エイリアスを使用して、これらを動的に切り替える方法。
-
-**＊実装例＊**
-
-```terraform
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.0"
-    }
-  }
-}
-
-provider "aws" {
-  # デフォルト値とするリージョン
-  region = "ap-northeast-1"
-}
-
-provider "aws" {
-  # 別リージョン
-  alias  = "ue1"
-  region = "us-east-1"
-}
-```
-
-#### ▼ ネストモジュールでproviderを切り替える
-
-ネストモジュールで```provider```を切り替えるには、ルートモジュールで```provider```の値を明示的に渡す必要がある。
-
-**＊実装例＊**
-
-```terraform
-module "route53" {
-  source = "../modules/route53"
-
-  providers = {
-    aws = aws.ue1
-  }
-  
-  # その他の設定値
-}
-```
-
-加えてネストモジュールで、```provider```の値を設定する必要がある。
-
-**＊実装例＊**
-
-```terraform
-###############################################
-# Route53
-###############################################
-resource "aws_acm_certificate" "example" {
-  # CloudFrontの仕様のため、us-east-1リージョンでSSL証明書を作成します。
-  provider = aws
-
-  domain_name               = "example.com"
-  subject_alternative_names = ["*.example.com"]
-  validation_method         = "DNS"
-
-  tags = {
-    Name = "prd-foo-cert"
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-```
-
-<br>
-
-### ```module```ブロック
-
-#### ▼ ```module```ブロックとは
-
-ルートモジュールでネストモジュール読み出し、ネストモジュールに対して通常変数を渡す。
-
-ℹ️ 参考：https://www.terraform.io/language/modules/sources
-
-#### ▼ 同一リポジトリ内から読み込む
-
-同じリポジトリ内にmoduleがある場合、それを指定して読み込む。
-
-**＊実装例＊**
-
-```terraform
-###############################
-# ALB
-###############################
-module "alb" {
-  # moduleブロックを参照する。
-  source = "../modules/alb"
-  
-  # moduleブロックに他のmoduleブロックのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
-}
-```
-
-#### ▼ 外部リポジトリから読み込む
-
-外部リポジトリにmoduleがある場合、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
-
-```terraform
-###############################
-# ALB
-###############################
-module "alb" {
-  # moduleブロックを参照する。
-  # SSHの場合
-  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git"
-  
-  # moduleブロックに他のmoduleブロックのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
-}
-```
-
-サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
-
-ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
-
-```terraform
-###############################
-# ALB
-###############################
-module "alb" {
-  # moduleブロックを参照する。
-  # SSHの場合
-  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
-  
-  # moduleブロックに他のmoduleブロックのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
-}
-```
-
-<br>
-
-## 01-02. クレデンシャル情報
-
-### 必要な情報
-
-```terraform```コマンドでクラウドプロバイダーと通信するためには、クラウドプロバイダーへのアクセス権限が必要にある。
-
-<br>
-
-### 設定方法
-
-#### ▼ ハードコーディングによる設定
-
-リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
-
-**＊実装例＊**
-
-```terraform
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.0"
-    }
-  }
-  
-  backend "s3" {
-    bucket     = "prd-foo-tfstate-bucket"
-    key        = "terraform.tfstate"
-    region     = "ap-northeast-1"
-    # アクセスキーID
-    access_key = "*****"
-    # シークレットアクセスキー
-    secret_key = "*****"
-  }
-}
-
-provider "aws" {
-  region     = "ap-northeast-1"
-  # アクセスキーID
-  access_key = "*****"
-  # シークレットアクセスキー
-  secret_key = "*****"
-}
-```
-
-#### ▼ credentialsファイルによる設定
-
-クレデンシャル情報は、```~/.aws/credentials```ファイルに記載されている。
-
-```ini
-# 標準プロファイル
-[default]
-aws_access_key_id=*****
-aws_secret_access_key=*****
-
-# 独自プロファイル
-[bar-profile]
-aws_access_key_id=*****
-aws_secret_access_key=*****
-```
-
-credentialsファイルを読み出し、プロファイル名を設定することにより、クレデンシャル情報を参照できる。
-
-**＊実装例＊**
-
-```terraform
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-  
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.0"
-    }
-  }
-  
-  # credentialsファイルから、アクセスキーID、シークレットアクセスキーを読み込む
-  backend "s3" {
-    # バケット名
-    bucket                  = "prd-foo-tfstate-bucket"
-    # .tfstateファイル名とバケット内ディレクトリ構造
-    key                     = "terraform.tfstate"
-    region                  = "ap-northeast-1"
-    # credentialsファイルの場所
-    shared_credentials_file = "$HOME/.aws/credentials"
-    # credentialsファイルのプロファイル名
-    profile                 = "bar-profile"
-  }
-}
-
-# credentialsファイルから、アクセスキーID、シークレットアクセスキーを読み込む
-provider "aws" {
-  region                  = "ap-northeast-1"
-  profile                 = "foo"
-  shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
-}
-```
-
-#### ▼ 環境変数による設定
-
-Credentialsファイルではなく、```export```コマンドを使用して、必要な情報も設定できる。参照できる環境変数名は決まっている。
-
-```bash
-# regionの代わり
-$ export AWS_DEFAULT_REGION="ap-northeast-1"
-
-# access_keyの代わり
-$ export AWS_ACCESS_KEY_ID="*****"
-
-# secret_keyの代わり
-$ export AWS_SECRET_ACCESS_KEY="*****"
-
-# profileの代わり
-$ export AWS_PROFILE="bar-profile"
-
-# tokenの代わり（AWS STSを使用する場合）
-$ export AWS_SESSION_TOKEN="*****"
-```
-
-環境変数を設定すると、値が```provider```に自動的に出力される。CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
-
-```terraform
-terraform {
-  required_version = "0.13.5"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "3.0"
-    }
-  }
-  
-  # リージョン、アクセスキーID、シークレットアクセスキーは不要
-  backend "s3" {
-    bucket  = "<バケット名>"
-    key     = "<.tfstateファイル名とバケット内ディレクトリ構造>"
-  }
-}
-
-# リージョン、アクセスキーID、シークレットアクセスキーは不要
-provider "aws" {}
-```
-
-<br>
-
-## 02. ネストモジュールの実装
-
-### ```resource```ブロック
-
-#### ▼ ```resource```ブロックとは
-
-AWSのAPIに対してリクエストを送信し、クラウドインフラを作成する。
-
-#### ▼ ```resource```タイプ
-
-操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
-
-ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-```terraform
-###############################################
-# ALB
-###############################################
-resource "aws_lb" "this" {
-  name               = "prd-foo-alb"
-  load_balancer_type = "application"
-  security_groups    = ["*****"]
-  subnets            = ["*****","*****"]
-}
-```
-
-<br>
-
-### ```data```ブロック
-
-#### ▼ ```data```ブロックとは
-
-AWSのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。ルートモジュールも実装できるが、各モジュールに実装した方が分かりやすい。
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-例として、ECSタスク定義名を指定して、AWSから
-
-```terraform
-###############################################
-# ECS task definition
-###############################################
-data "aws_ecs_task_definition" "this" {
-  task_definition = "prd-foo-ecs-task-definition"
-}
-```
-
-**＊実装例＊**
-
-例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
-
-```terraform
-###############################################
-# AMI
-###############################################
-data "aws_ami" "bastion" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "name"
-    values = ["amzn-ami-hvm-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "block-device-mapping.volume-type"
-    values = ["gp2"]
-  }
-}
-```
-
-<br>
-
-### ```output```ブロック
-
-#### ▼ ```output```ブロックとは
-
-```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
-
-ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```ブロックの方法が異なる。
-
-```terraform
-###############################################
-# ALB
-###############################################
-output "alb_zone_id" {
-  value = aws_lb.this.zone_id
-}
-
-output "elb_service_account_arn" {
-  value = data.aws_elb_service_account.this.arn
-}
-```
-
-```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する場合、```module```から出力する。
-
-```terraform
-###############################
-# ALB
-###############################
-module "foo" {
-  # moduleブロックを参照する。
-  source = "../modules/foo"
-  
-  # moduleブロックに他のmoduleブロックのoutputを渡す。
-  foo_id = module.alb.alb_zone_id
-}
-```
-
-一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```ブロックから出力する。
-
-```terraform
-# outputのあるtfstateファイルを参照する。
-data "terraform_remote_state" "alb" {
-    backend = "s3"
-    config = {
-        bucket = "bucket"
-        key = "alb.tfstate"
-    }
-}
-
-resource "foo" "this" {
-    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
-}
-```
-
-#### ▼ ```count```関数の```output```ブロック
-
-ノート内の[こちら](#count)を参考にせよ。
-
-#### ▼ ```for_each```関数の```output```ブロック
-
-ノート内の[こちら](#for_each)を参考にせよ。
-
-<br>
-
-## 03. バックエンド内のファイル
+## 01. バックエンド内のファイル
 
 ### ```.tfstate```ファイル
 
@@ -771,13 +199,266 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 <br>
 
-## 04. 変数
+## 02. ルートモジュールの実装
+
+### ```terraform```ブロック
+
+#### ▼ ```terraform```ブロックとは
+
+```terraform```コマンドの実行時に、エントリーポイントとして機能するファイル。
+
+#### ▼ required_providers
+
+AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なる```resource```タイプが提供される。一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。
+
+**＊実装例＊**
+
+```terraform
+terraform {
+
+  required_providers {
+    # awsプロバイダを定義
+    aws = {
+      # グローバルソースアドレスを指定
+      source  = "hashicorp/aws"
+      
+      # プロバイダーのバージョン変更時は initを実行
+      version = "3.0" 
+    }
+  }
+}
+```
+
+#### ▼ ```backend```ブロック
+
+インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
+
+ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
+
+**＊実装例＊**
+
+```terraform
+terraform {
+
+  # ローカルマシンで管理するように設定
+  backend "local" {
+    path = "${path.module}/terraform.tfstate"
+  }
+}
+```
+
+```terraform
+terraform {
+
+  # S3で管理するように設定
+  backend "s3" {
+    # バケット名
+    bucket                  = "prd-foo-tfstate-bucket"
+    # .tfstateファイル名
+    key                     = "terraform.tfstate"
+    region                  = "ap-northeast-1"
+    # credentialsファイルの場所
+    shared_credentials_file = "$HOME/.aws/credentials"
+    # credentialsファイルのプロファイル名
+    profile                 = "bar-profile"
+  }
+}
+```
+
+どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくと良い。
+
+**＊実装例＊**
+
+```yaml
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:DeleteObject",
+            "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*"
+        }
+    ]
+}
+```
+
+<br>
+
+### ```provider```ブロック
+
+#### ▼ ```provider```ブロックとは
+
+Terraformで操作するクラウドインフラベンダーを設定する。ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
+
+**＊実装例＊**
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    # awsプロバイダを定義
+    aws = {
+      # 何らかの設定
+    }
+  }
+  
+  backend "s3" {
+    # 何らかの設定
+  }
+}
+
+# awsプロバイダを指定
+provider "aws" {
+  # アカウント認証の設定
+}
+```
+
+#### ▼ マルチprovidersとは
+
+複数の```provider```を実装し、エイリアスを使用して、これらを動的に切り替える方法。
+
+**＊実装例＊**
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.0"
+    }
+  }
+}
+
+provider "aws" {
+  # デフォルト値とするリージョン
+  region = "ap-northeast-1"
+}
+
+provider "aws" {
+  # 別リージョン
+  alias  = "ue1"
+  region = "us-east-1"
+}
+```
+
+#### ▼ ネストモジュールでproviderを切り替える
+
+ネストモジュールで```provider```を切り替えるには、ルートモジュールで```provider```の値を明示的に渡す必要がある。
+
+**＊実装例＊**
+
+```terraform
+module "route53" {
+  source = "../modules/route53"
+
+  providers = {
+    aws = aws.ue1
+  }
+  
+  # その他の設定値
+}
+```
+
+加えてネストモジュールで、```provider```の値を設定する必要がある。
+
+**＊実装例＊**
+
+```terraform
+###############################################
+# Route53
+###############################################
+resource "aws_acm_certificate" "example" {
+  # CloudFrontの仕様のため、us-east-1リージョンでSSL証明書を作成します。
+  provider = aws
+
+  domain_name               = "example.com"
+  subject_alternative_names = ["*.example.com"]
+  validation_method         = "DNS"
+
+  tags = {
+    Name = "prd-foo-cert"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+<br>
+
+### ```module```ブロック
+
+#### ▼ ```module```ブロックとは
+
+ルートモジュールでネストモジュール読み出し、ネストモジュールに対して通常変数を渡す。
+
+ℹ️ 参考：https://www.terraform.io/language/modules/sources
+
+#### ▼ 同一リポジトリ内から読み込む
+
+同じリポジトリ内にmoduleがある場合、それを指定して読み込む。
+
+**＊実装例＊**
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  source = "../modules/alb"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+#### ▼ 外部リポジトリから読み込む
+
+外部リポジトリにmoduleがある場合、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  # SSHの場合
+  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
+
+ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  # SSHの場合
+  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+<br>
 
 ### 環境変数
 
-#### ▼ 優先順位
-
-上の項目ほど優先される。
+#### ▼ 環境変数の優先順位
 
 ℹ️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
@@ -798,90 +479,14 @@ $ terraform plan -var-file=foo.tfvars
 
 #### ▼ ```terraform.tfvars```ファイル
 
+実行ファイルに入力したい環境変数を定義する。『```terraform.tfvars```』という名前にすると、```terraform```コマンドの実行時に自動的に読み込まれる。
+
 ```bash
 # ファイルを指定しなくとも読み込まれる
 $ terraform plan
 ```
 
-#### ▼ ```TF_VAR_<環境変数名>```
-
-環境変数としてエクスポートしておくと自動的に読み込まれる。```<環境変数名>```の文字が、実際の環境変数名としてTerraformに渡される。
-
-```bash
-$ printenv
-
-TF_VAR_ecr_version_tag=foo
-```
-
-<br>
-
-### ```.tfvars```ファイル
-
-#### ▼ ```.tfvars```ファイルの用途
-
-実行ファイルに入力したい環境変数を定義する。『```terraform.tfvars```』という名前にすると、```terraform```コマンドの実行時に自動的に読み込まれる。各サービスの間で実装方法が同じため、VPCのみ例を示す。
-
 **＊実装例＊**
-
-```terraform
-###############################
-# VPC
-###############################
-vpc_cidr_block = "*.*.*.*/n" # CIDRブロック
-```
-
-#### ▼ 値のデータ型
-
-単一値、list型、map型で定義できる。AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。
-
-**＊実装例＊**
-
-```terraform
-###############################################
-# RDS
-###############################################
-variable "rds_parameter_group_values" {
-  type = map(string)
-}
-
-###############################################
-# VPC
-###############################################
-variable "vpc_availability_zones" {
-  type = map(string)
-}
-
-variable "vpc_cidr" {
-  type = string
-}
-
-variable "vpc_endpoint_port_https" {
-  type = number
-}
-
-variable "vpc_subnet_private_datastore_cidrs" {
-  type = map(string)
-}
-
-variable "vpc_subnet_private_app_cidrs" {
-  type = map(string)
-}
-
-variable "vpc_subnet_public_cidrs" {
-  type = map(string)
-}
-
-###############################################
-# WAF
-###############################################
-variable "waf_allowed_global_ip_addresses" {
-  type = list(string)
-}
-
-variable "waf_blocked_user_agents" {
-  type = list(string)
-}
-```
 
 ```terraform
 ###############################################
@@ -925,15 +530,367 @@ waf_blocked_user_agents = [
 ]
 ```
 
+#### ▼ ```TF_VAR_<環境変数名>```
+
+環境変数としてエクスポートしておくと自動的に読み込まれる。```<環境変数名>```の文字が、実際の環境変数名としてTerraformに渡される。
+
+```bash
+$ printenv
+
+TF_VAR_ecr_version_tag=foo
+```
+
 <br>
 
-### variable 
+## 02-02. クレデンシャル情報
 
-#### ▼ variableとは
+### 必要な情報
 
-```resource```ブロックで使用する変数のデータ型を定義する。
+```terraform```コマンドでクラウドプロバイダーと通信するためには、クラウドプロバイダーへのアクセス権限が必要にある。
+
+<br>
+
+### 設定方法
+
+#### ▼ ハードコーディングによる設定
+
+リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
 
 **＊実装例＊**
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.0"
+    }
+  }
+  
+  backend "s3" {
+    bucket     = "prd-foo-tfstate-bucket"
+    key        = "terraform.tfstate"
+    region     = "ap-northeast-1"
+    # アクセスキーID
+    access_key = "*****"
+    # シークレットアクセスキー
+    secret_key = "*****"
+  }
+}
+
+provider "aws" {
+  region     = "ap-northeast-1"
+  # アクセスキーID
+  access_key = "*****"
+  # シークレットアクセスキー
+  secret_key = "*****"
+}
+```
+
+#### ▼ credentialsファイルによる設定
+
+クレデンシャル情報は、```~/.aws/credentials```ファイルに記載されている。
+
+```ini
+# 標準プロファイル
+[default]
+aws_access_key_id=*****
+aws_secret_access_key=*****
+
+# 独自プロファイル
+[bar-profile]
+aws_access_key_id=*****
+aws_secret_access_key=*****
+```
+
+credentialsファイルを読み出し、プロファイル名を設定することにより、クレデンシャル情報を参照できる。
+
+**＊実装例＊**
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+  
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.0"
+    }
+  }
+  
+  # credentialsファイルから、アクセスキーID、シークレットアクセスキーを読み込む
+  backend "s3" {
+    # バケット名
+    bucket                  = "prd-foo-tfstate-bucket"
+    # .tfstateファイル名とバケット内ディレクトリ構造
+    key                     = "terraform.tfstate"
+    region                  = "ap-northeast-1"
+    # credentialsファイルの場所
+    shared_credentials_file = "$HOME/.aws/credentials"
+    # credentialsファイルのプロファイル名
+    profile                 = "bar-profile"
+  }
+}
+
+# credentialsファイルから、アクセスキーID、シークレットアクセスキーを読み込む
+provider "aws" {
+  region                  = "ap-northeast-1"
+  profile                 = "foo"
+  shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
+}
+```
+
+#### ▼ 環境変数による設定
+
+Credentialsファイルではなく、```export```コマンドを使用して、必要な情報も設定できる。参照できる環境変数名は決まっている。
+
+```bash
+# regionの代わり
+$ export AWS_DEFAULT_REGION="ap-northeast-1"
+
+# access_keyの代わり
+$ export AWS_ACCESS_KEY_ID="*****"
+
+# secret_keyの代わり
+$ export AWS_SECRET_ACCESS_KEY="*****"
+
+# profileの代わり
+$ export AWS_PROFILE="bar-profile"
+
+# tokenの代わり（AWS STSを使用する場合）
+$ export AWS_SESSION_TOKEN="*****"
+```
+
+環境変数を設定すると、値が```provider```に自動的に出力される。CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.0"
+    }
+  }
+  
+  # リージョン、アクセスキーID、シークレットアクセスキーは不要
+  backend "s3" {
+    bucket  = "<バケット名>"
+    key     = "<.tfstateファイル名とバケット内ディレクトリ構造>"
+  }
+}
+
+# リージョン、アクセスキーID、シークレットアクセスキーは不要
+provider "aws" {}
+```
+
+<br>
+
+## 03. ネストモジュールの実装
+
+### ```resource```ブロック
+
+#### ▼ ```resource```ブロックとは
+
+AWSのAPIに対してリクエストを送信し、クラウドインフラを作成する。
+
+#### ▼ ```resource```タイプ
+
+操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
+
+ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+
+#### ▼ 実装方法
+
+**＊実装例＊**
+
+```terraform
+###############################################
+# ALB
+###############################################
+resource "aws_lb" "this" {
+  name               = "prd-foo-alb"
+  load_balancer_type = "application"
+  security_groups    = ["*****"]
+  subnets            = ["*****","*****"]
+}
+```
+
+<br>
+
+### ```data```ブロック
+
+#### ▼ ```data```ブロックとは
+
+AWSのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。ルートモジュールも実装できるが、各モジュールに実装した方が分かりやすい。
+
+#### ▼ 実装方法
+
+**＊実装例＊**
+
+例として、ECSタスク定義名を指定して、AWSから
+
+```terraform
+###############################################
+# ECS task definition
+###############################################
+data "aws_ecs_task_definition" "this" {
+  task_definition = "prd-foo-ecs-task-definition"
+}
+```
+
+**＊実装例＊**
+
+例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
+
+```terraform
+###############################################
+# AMI
+###############################################
+data "aws_ami" "bastion" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["amzn-ami-hvm-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "block-device-mapping.volume-type"
+    values = ["gp2"]
+  }
+}
+```
+
+<br>
+
+### ```output```ブロック
+
+#### ▼ ```output```ブロックとは
+
+```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
+
+ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+
+#### ▼ 実装方法
+
+**＊実装例＊**
+
+例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```ブロックの方法が異なる。
+
+```terraform
+###############################################
+# ALB
+###############################################
+output "alb_zone_id" {
+  value = aws_lb.this.zone_id
+}
+
+output "elb_service_account_arn" {
+  value = data.aws_elb_service_account.this.arn
+}
+```
+
+```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する場合、```module```から出力する。
+
+```terraform
+###############################
+# ALB
+###############################
+module "foo" {
+  # moduleブロックを参照する。
+  source = "../modules/foo"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  foo_id = module.alb.alb_zone_id
+}
+```
+
+一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```ブロックから出力する。
+
+```terraform
+# outputのあるtfstateファイルを参照する。
+data "terraform_remote_state" "alb" {
+    backend = "s3"
+    config = {
+        bucket = "bucket"
+        key = "alb.tfstate"
+    }
+}
+
+resource "foo" "this" {
+    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
+}
+```
+
+#### ▼ ```count```引数の```output```ブロック
+
+ノート内の[こちら](#count)を参考にせよ。
+
+#### ▼ ```for_each```引数の```output```ブロック
+
+ノート内の[こちら](#for_each)を参考にせよ。
+
+<br>
+
+### ```local```ブロック
+
+#### ▼ ```local```ブロックとは
+
+ネストモジュール内にスコープを持つ通常変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
+
+ℹ️ 参考：
+
+- https://www.terraform.io/language/values/locals
+- https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+
+```terraform
+locals {
+  foo = "FOO"
+}
+
+resource "aws_instance" "example" {
+  foo = local.foo
+}
+```
+
+<br>
+
+## 04. ルート/ネストモジュールで共通の実装
+
+### ```variable```ブロック 
+
+#### ▼ ```variable```ブロックとは
+
+```.tfvars```ファイル、```module```ブロック、```resource```ブロック、で使用する変数に関して、データ型やデフォルト値を定義する。
+
+#### ▼ データ型
+
+単一値、list型、map型を定義できる。
+
+**＊実装例＊**
+
+AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値、などはmap型として保持しておくと良い。また、IPアドレスのセット、ユーザーエージェント、などはlist型として保持しておくと良い。
 
 ```terraform
 ###############################################
@@ -961,34 +918,65 @@ variable "rds_instance_class" {
 variable "rds_parameter_group_values" {
   type = map(string)
 }
+
+###############################################
+# VPC
+###############################################
+variable "vpc_availability_zones" {
+  type = map(string)
+}
+
+variable "vpc_cidr" {
+  type = string
+}
+
+variable "vpc_endpoint_port_https" {
+  type = number
+}
+
+variable "vpc_subnet_private_datastore_cidrs" {
+  type = map(string)
+}
+
+variable "vpc_subnet_private_app_cidrs" {
+  type = map(string)
+}
+
+variable "vpc_subnet_public_cidrs" {
+  type = map(string)
+}
+
+###############################################
+# WAF
+###############################################
+variable "waf_allowed_global_ip_addresses" {
+  type = list(string)
+}
+
+variable "waf_blocked_user_agents" {
+  type = list(string)
+}
 ```
 
-<br>
+#### ▼ デフォルト値
 
-### local　
+変数のデフォルト値を定義できる。
 
-#### ▼ localとは
+**＊実装例＊**
 
-ネストモジュール内にスコープを持つ通常変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
-
-ℹ️ 参考：
-
-- https://www.terraform.io/language/values/locals
-- https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+```module```ブロックや```resource```ブロック内で、```count```引数を使用して`条件分岐を定義した場合に、そのフラグ値となるbool型値をデフォルト値として定義すると良い。
 
 ```terraform
-locals {
-  foo = "FOO"
-}
-
-resource "aws_instance" "example" {
-  foo = local.foo
+variable "enable_provision" {
+  description = "enable provision"
+  type        = bool
+  default     = false
 }
 ```
 
 <br>
 
-## 05. メタ引数
+## 04. メタ引数
 
 ### メタ引数とは
 
@@ -996,9 +984,9 @@ resource "aws_instance" "example" {
 
 <br>
 
-### depends_on
+### ```depends_on```引数
 
-#### ▼ depends_onとは
+#### ▼ ```depends_on```引数とは
 
 ```resource```ブロック間の依存関係を明示的に定義する。Terraformでは、基本的に```resource```ブロック間の依存関係が暗黙的に定義されている。しかし、複数の```resource```ブロックが関わると、```resource```ブロックを適切な順番で作成できない場合があるため、そういった時に使用する。
 
@@ -1141,11 +1129,11 @@ resource "aws_s3_bucket_policy" "foo" {
 
 <br>
 
-### count
+### ```count```引数
 
-#### ▼ countとは
+#### ▼ ```count```引数とは
 
-指定した数だけ、```resource```ブロックの作成を繰り返す。```count.index```でインデックス数を展開する。
+指定した数だけ、```resource```ブロックの作成を繰り返す。```count.index```オプションでインデックス数を展開する。
 
 **＊実装例＊**
 
@@ -1167,7 +1155,7 @@ resource "aws_instance" "server" {
 
 #### ▼ 作成の有無の条件分岐
 
-特定の実行環境でリソースの作成の有無を切り替えたい場合、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```関数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
+特定の実行環境でリソースの作成の有無を切り替えたい場合、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```引数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
@@ -1202,11 +1190,11 @@ resource "aws_instance" "server" {
 
 #### ▼ list型で```output```ブロック
 
-```resource```ブロックの作成に```count```関数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、キー名を指定して出力できる。この時、```output```ブロックはlist型になる。ちなみに、```for_each```関数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。
+```resource```ブロックの作成に```count```引数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、キー名を指定して出力できる。この時、```output```ブロックはlist型になる。ちなみに、```for_each```引数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。
 
 **＊実装例＊**
 
-例として、VPCのサブネットを示す。ここでは、パブリックサブネット、applicationサブネット、datastoreサブネット、を```count```関数で作成したとする。
+例として、VPCのサブネットを示す。ここでは、パブリックサブネット、applicationサブネット、datastoreサブネット、を```count```引数で作成したとする。
 
 ```terraform
 ###############################################
@@ -1253,11 +1241,11 @@ output "private_datastore_subnet_ids" {
 
 <br>
 
-### for_each
+### ```for_each```引数
 
-#### ▼ for_eachとは
+#### ▼ ```for_each```引数とは
 
-事前に```for_each```に格納したmap型の```key```の数だけ、```resource```ブロックを繰り返し実行する。繰り返し処理を行う時に、```count```とは違い、要素名を指定して出力できる。
+事前に```for_each```引数に格納したmap型の```key```の数だけ、```resource```ブロックを繰り返し実行する。繰り返し処理を行う時に、```count```引数とは違い、要素名を指定して出力できる。
 
 **＊実装例＊**
 
@@ -1297,11 +1285,11 @@ resource "aws_subnet" "public" {
 
 #### ▼ 冗長化されたAZにおける設定
 
-冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```関数を使用すると、少ない実装で作成できる。```for_each```関数で作成された```resource```ブロックは```apply```中にmap構造として扱われ、```resource```ブロック名の下層にキー名で```resource```ブロックが並ぶ構造になっている。これを参照するために、『```<resourceタイプ>.<resourceブロック名>[each.key].<attribute>```』とする
+冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```引数を使用すると、少ない実装で作成できる。```for_each```引数で作成された```resource```ブロックは```terraform apply```コマンド実行中にmap構造として扱われ、```resource```ブロック名の下層にキー名で```resource```ブロックが並ぶ構造になっている。これを参照するために、『```<resourceタイプ>.<resourceブロック名>[each.key].<attribute>```』とする
 
 **＊実装例＊**
 
-パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くNAT Gatewayの設定が冗長化されたAZで共通の場合、```for_each```関数で作成する。
+パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くNAT Gatewayの設定が冗長化されたAZで共通の場合、```for_each```引数で作成する。
 
 ```terraform
 ###############################################
@@ -1381,7 +1369,7 @@ resource "aws_nat_gateway" "this" {
 
 #### ▼ 単一値で```output```ブロック
 
-```resource```ブロックの作成に```for_each```関数を使用した場合、その```resource```ブロックはmap型として扱われる。そのため、キー名を指定して出力できる。
+```resource```ブロックの作成に```for_each```引数を使用した場合、その```resource```ブロックはmap型として扱われる。そのため、キー名を指定して出力できる。
 
 ```terraform
 ###############################################
@@ -1461,9 +1449,9 @@ resource "aws_lb" "this" {
 
 <br>
 
-### dynamic
+### ```dynamic```引数
 
-#### ▼ dynamicとは
+#### ▼ ```dynamic```引数とは
 
 指定したブロックを繰り返し作成する。
 
@@ -1592,9 +1580,9 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 <br>
 
-### lifecycle
+### ```lifecycle```引数
 
-#### ▼ lifecycleとは
+#### ▼ ```lifecycle```引数とは
 
 ```resource```ブロックの作成、更新、そして削除のプロセスをカスタマイズする。
 
@@ -1683,7 +1671,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで発生した```resource```ブロックの作成・更新・削除を無視し、```.tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```.tfstate```ファイルに差分があっても、```.tfstate```ファイルの値が更新されなくなる。
+実インフラのみで発生した```resource```ブロックの作成・更新・削除を無視し、```.tfstate```ファイルに反映しないようにする。これにより、```ignore_changes```引数を定義したタイミング以降、実インフラと```.tfstate```ファイルに差分があっても、```.tfstate```ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 
@@ -1745,9 +1733,9 @@ resource "aws_foo" "foo" {
 
 <br>
 
-### regexall
+### ```regexall```引数
 
-#### ▼ regexallとは
+#### ▼ ```regexall```引数とは
 
 正規表現ルールに基づいて、文字列の中から文字を抽出する。これを応用して、特定の文字列を含む場合に条件を分岐させるようにできる。
 

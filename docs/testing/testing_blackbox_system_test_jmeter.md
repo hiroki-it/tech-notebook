@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JMeter＠システムテスト
-description: JMeter＠システムテストの知見を記録しています。
+title: 【IT技術の知見】JMeter＠総合テスト
+description: JMeter＠総合テストの知見を記録しています。
 ---
 
-# JMeter＠システムテスト
+# JMeter＠総合テスト
 
 ## はじめに
 

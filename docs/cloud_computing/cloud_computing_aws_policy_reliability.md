@@ -180,7 +180,7 @@ EC2でアラートするべきメトリクスを示す。
 
 #### ▼ ECS
 
-ECSクラスターまたはサービスでアラートするべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスのメトリクスを区別できる。
+ECSクラスターまたはサービスでアラートするべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。
 
 ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 

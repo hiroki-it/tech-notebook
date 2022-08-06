@@ -19,24 +19,28 @@ description: ブラックボックステストの知見を記録しています�
 
 ホワイトボックステストと組み合わせて単体テストを構成する。実装内容は気にせず、入力に対して、適切な出力が行われているかを検証する。単体テストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/477415377X
+ℹ️ 参考：https://service.shiftinc.jp/column/4801/
 
-![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
+![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_black-box-test.png)
 
 <br>
 
 ### ブラックボックステストの種類
 
 - 結合テスト
-- システムテスト
+- 総合テスト
 
 <br>
 
-## 02. 単体テスト
+## 02. 単体テスト（ユニットテスト）
 
 ### 単体テストとは
 
-新規のコンポーネントのみが単体で正しく機能するかを検証する。
+機能追加/変更を含むコンポーネントのみが単体で正しく機能するかを検証する。
+
+参考：https://pm-rasinban.com/ut-it-st
+
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 
 <br>
 
@@ -66,13 +70,15 @@ description: ブラックボックステストの知見を記録しています�
 
 <br>
 
-## 03. 結合テスト
+## 03. 結合テスト（インテグレーションテスト）
 
 ### 結合テストとは
 
-既存/新規を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく機能しているかを検証する。
+機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく機能しているかを検証する。
 
-![結合テスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p491-1.jpg)
+参考：https://pm-rasinban.com/ut-it-st
+
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 
 <br>
 
@@ -126,8 +132,17 @@ description: ブラックボックステストの知見を記録しています�
 
 <br>
 
-### システムテスト
+## 04. 回帰テスト
 
+既存コンポーネントの機能テストと非機能テストを改めて実施し、機能追加/変更を含むコンポーネントが、既存のコンポーネントに影響を与えていないかを検証する。
+
+ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+
+![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 
 <br>
+
+## 04. 総合テスト（システムテスト）
+
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test.html
 

@@ -32,7 +32,7 @@ description: VictoriaMetrics＠テレメトリー収集ツールの知見を記�
 
 #### ▼ 監視ツールとして
 
-vm-agent、vm-storage、vm-alert、から構成されている。また、アラートのルーティングのためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
+vm-agent、vm-storage、vm-alert、から構成されている。また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
 ℹ️ 参考：
 

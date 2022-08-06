@@ -26,7 +26,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを作成する。クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。非同期通信は、Ajaxの手法を使用して実現される。また、静的ファイルの部分的な作成は、MVVMアーキテクチャによって実現する。SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。
 
-ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications?hl=ja
+ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SPアプリにおけるデータ通信の仕組み.png)
 

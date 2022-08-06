@@ -19,7 +19,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-プロファイルを指定し、GCRからIstioのチャートをリリースする。istioctlのDockerfileにURLが定義されている。
+プロファイルを指定し、GCRからIstioのチャートをインストールする。istioctlのDockerfileにURLが定義されている。
 
 ℹ️ 参考：
 
@@ -37,7 +37,7 @@ $ istioctl install --set profile=demo
 
 #### ▼ Google APIsから
 
-googleapisチャートリポジトリから、Ingressのコンポーネント別にチャートをリリースする。
+googleapisチャートリポジトリから、Ingressのコンポーネント別にチャートをインストールする。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 

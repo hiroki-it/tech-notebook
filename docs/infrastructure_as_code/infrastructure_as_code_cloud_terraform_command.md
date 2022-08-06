@@ -150,7 +150,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-指定したバックエンドにある```.tfstate```ファイルを使用して、ローカルマシンの```.terraform```ディレクトリを初期化する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
+指定したバックエンドにある```.tfstate```ファイルを使用して、ローカルマシンの```.terraform```ディレクトリを初期化する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -396,7 +396,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、環境変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、環境変数が定義されたファイルを実行すると、```variable```ブロックで宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -602,7 +602,7 @@ module.vpc_module.aws_vpc.vpc
 
 #### ▼ rm
 
-```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```関数や```for_each```関数を使用している場合は、シングルクオーテーションで囲う必要がある。
+```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```引数や```for_each```引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
 ℹ️ 参考：
 

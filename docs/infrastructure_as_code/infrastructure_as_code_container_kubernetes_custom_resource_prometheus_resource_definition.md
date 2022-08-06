@@ -25,7 +25,7 @@ Alertmanagerのセットアップ方法を決定する。
 
 ### AlertmanagerConfigとは
 
-Alertmanagerのアラートグループやルーティング先のルールを決定する。
+Alertmanagerのアラートグループや通知先ルールを決定する。
 
 <br>
 
@@ -117,7 +117,7 @@ spec:
           annotations:
             summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内コンテナのCPU使用率の上昇しました。
             description: {{ {{"{{"}} $labels.source {{"}}"}} }}コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。
-            # アラートのルーティングのクールダウン期間
+            # 受信したアラートの通知のクールダウン期間
             for: 1m
             # PromQL
             expr: ...
@@ -135,14 +135,14 @@ spec:
 
 ### ServiceMonitorとは
 
-Serviceに対してPull型通信を送信し、これに紐づくリソースのメトリクスのデータポイントを収集する。
+指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
 ℹ️ 参考：
 
 - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
-![prometheus_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_service-monitor.png)
+![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor.png)
 
 <br>
 
@@ -287,9 +287,14 @@ metadata:
 
 #### ▼ matchLabels
 
+![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor_match-labels.png)
+
 収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
 
-ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+ℹ️ 参考：
+
+- https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

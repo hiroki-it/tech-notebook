@@ -89,6 +89,15 @@ SSGの場合、静的ファイルをデプロイしさえすれば、アプリ�
 | NoSQL        | DynamoDB                  |
 | ファイル保管 | S3                        |
 
+#### ▼ CI/CDパイプライン
+
+GitHubのブランチごとにアプリケーションのCi/CDパイプラインが発火するようにすれば、プルリクエストごとにアプリケーションの実行環境を用意できる。ただし、App Runnerを使用した方がよいかもしれない。
+
+ℹ️ 参考：
+
+- https://zenn.dev/intercept6/articles/4016e9d61ab36761685d
+- https://devblog.thebase.in/entry/2021/12/22/110000
+
 <br>
 
 ### セットアップ
@@ -537,7 +546,7 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 
 ### Auto Scalingとは
 
-アプリケーションのメトリクスの閾値を基準として、自動水平スケーリングを自動的に実行する。
+アプリケーションに関するメトリクスの閾値を基準として、自動水平スケーリングを自動的に実行する。
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Auto-scaling.png)
 

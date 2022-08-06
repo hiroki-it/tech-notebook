@@ -482,7 +482,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 
 #### ▼ uninstallとは
 
-指定したリリースによってapplyされたKubernetesリソースを削除する。
+インストール済みのリリースを指定し、インストールされたKubernetesリソースを削除する。
 
 ℹ️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
@@ -496,13 +496,13 @@ $ helm uninstall <リリース名>
 
 #### ▼ upgradeとは
 
-指定したバージョンのチャートを使用して、Helmのリリースをアップグレードする。
+指定したバージョンのチャートを使用して、インストール済みのリリースをアップグレードする。
 
 ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --install
 
-新しいリビジョン番号を作成し、apply済のリリースをアップグレードする。
+新しいリビジョン番号を作成し、インストール済のリリースをアップグレードする。
 
 ```bash
 $ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>

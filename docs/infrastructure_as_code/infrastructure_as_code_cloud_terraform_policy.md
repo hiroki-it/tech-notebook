@@ -80,7 +80,7 @@ repository/
 
 #### ▼ 方法
 
-```backend```ブロックの```key```オプションで、下層のディレクトリ名に分割名を設定する。
+```backend```オプションの```key```オプションで、下層のディレクトリ名に分割名を設定する。
 
 ```terraform
 terraform {
@@ -533,7 +533,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 #### ▼ bool型の命名
 
-```count```関数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のbool型環境変数を用意する。
+```count```引数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のbool型環境変数を用意する。
 
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
@@ -674,7 +674,7 @@ resource "aws_lambda_function" "echo_helloworld" {
 
 **＊実装例＊**
 
-例として、CloudWatchを示す。リソース名は`ecs_container_nginx`、リソースタイプは`aws_cloudwatch_log_group`、attributeは`name`オプションである。
+例として、CloudWatchを示す。リソース名は```ecs_container_nginx```、リソースタイプは```aws_cloudwatch_log_group```、attributeは```name```オプションである。
 
 ```terraform
 output "ecs_container_nginx_cloudwatch_log_group_name" {
@@ -801,7 +801,7 @@ module "alb" {
 
 #### ▼ 設定の並び順、行間
 
-最初に```count```オプションや```for_each```オプションを設定し改行する。その後、各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）。最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。ただし実際、これらの全ての設定が必要なリソースはない。
+最初に```count```引数や```for_each```引数を設定し改行する。その後、各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）。最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。ただし実際、これらの全ての設定が必要なリソースはない。
 
 **＊実装例＊**
 
@@ -942,7 +942,7 @@ $ asdf install
 
 ### 機密情報の管理
 
-機密情報を```ignore_changes```に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
+機密情報を```ignore_changes```引数に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
 
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 
@@ -951,9 +951,8 @@ $ asdf install
 resource "aws_rds_cluster" "this" {
   
   # 実際の値はSecrets Managerから参照する。
-  master_username                 = var.rds_db_master_username_ssm_parameter_value
-  master_password                 = var.rds_db_master_password_ssm_parameter_value  
-  
+  master_username = var.rds_db_master_username_ssm_parameter_value
+  master_password = var.rds_db_master_password_ssm_parameter_value  
   lifecycle {
     ignore_changes = [
       # ユーザー名とパスワードが.tfstateファイルに書き込まれなくなる。
@@ -966,7 +965,15 @@ resource "aws_rds_cluster" "this" {
 
 <br>
 
-### outputブロック
+### ```.tfstate```ファイルの暗号化
+
+バックエンドのファイル暗号化機能を使用する。バックエンド内の```.tfstate```ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
+
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
+
+<br>
+
+### outputブロックの暗号化
 
 ```output```ブロックに機密情報を含む場合は、```sensitive```オプションを有効化する。
 
@@ -1063,21 +1070,25 @@ $ terraform plan -var-file=foo.tfvars -no-color \
 
 ### （３）テストの実施
 
+#### ▼ 回帰テスト
+
+テストフレームワークを使用し、既存のブロックの単体テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+
 #### ▼ 単体テスト
 
-テストフレームワークを使用し、新規のリソースを単体テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+テストフレームワークを使用し、機能追加/変更を含むブロックの単体テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
-参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#test
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#test
 
 #### ▼ 結合テスト
 
-クラウドプロバイダーのモックを使用し、既存/新規を含む複数のリソースを組み合わせた結合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+クラウドプロバイダーのモックを使用し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
-参考：https://docs.localstack.cloud/ci/
+ℹ️ 参考：https://docs.localstack.cloud/ci/
 
-#### ▼ システムテスト
+#### ▼ 総合テスト
 
-実際の稼働環境に対して```terraform apply```コマンドを実行し、既存/新規を含む全てのリソースを組み合わせたシステムテストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+実際の稼働環境に対して```terraform apply```コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
 <br>
 
