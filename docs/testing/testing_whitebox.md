@@ -17,9 +17,11 @@ description: ホワイトボックステストの知見を記録しています�
 
 ### ホワイトボックステストとは
 
-![p492-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-2.jpg)
-
 ブラックボックステストと組み合わせて単体テストを構成する。実装内容が適切かを確認しながら、入力に対して、適切な出力が行われているかを検証する。
+
+参考：https://hldc.co.jp/blog/2018/05/25/1387/
+
+![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_whitebox-test.png)
 
 <br>
 
