@@ -426,6 +426,8 @@ repository/
 
 ポリシーのためにJSONを定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。なお、```templatefile```メソッドでこれを読みこむ時、```bash```ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
 
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
+
 ```yaml
 repository/
 └── modules/
@@ -463,7 +465,7 @@ repository/
 
 #### ▼ opsディレクトリ
 
-CI/CDパイプライン上のTerraformの実行で必要なシェルスクリプトは、```ops```ディレクトリで管理する。
+CI/CDパイプライン上の```terraform```コマンドの実行で必要なシェルスクリプトは、```ops```ディレクトリで管理する。
 
 ```yaml
 repository/
@@ -475,49 +477,42 @@ repository/
 
 ## 04. 命名規則と並び順
 
-### module
+### 環境変数（通常変数も同じ）
 
-#### ▼ 命名規則
+#### ▼ 対象リソースに合わせる命名
 
-ディレクトリ名で命名する。スネークケースによる命名を採用する。
-
-#### ▼ 並び順
-
-環境変数を並べる```# Variables```コメントと、モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける。```# Variables```コメントの部分では、```terraform.tfvars```ファイルと同じ並び順になるようにする。また、```# Output values```コメントの部分では、```output```ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
+複数のリソースで共通して使用する場合（将来的にそうなる可能性も含めて）は、Generalに配置し、グローバルな名前を付ける。クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
 
 ```terraform
 ###############################################
-# ALB root module
+# General
 ###############################################
-module "alb" {
-  source = "../modules/alb"
-
-  # Variables
-  environment                   = var.environment                   # General
-  region                        = var.region
-  service                       = var.service
-  alb_listener_port_http        = var.alb_listener_port_http        # ALB
-  alb_listener_port_https       = var.alb_listener_port_https
-  ecs_container_nginx_port_http = var.ecs_container_nginx_port_http # ECS
-
-  # Output values
-  api_acm_certificate_arn                = module.acm_an1.api_acm_certificate_arn
-  global_accelerator_acm_certificate_arn = module.acm_an1.global_accelerator_acm_certificate_arn
-  alb_s3_bucket_id                       = module.s3.alb_s3_bucket_id
-  alb_security_group_id                  = module.security_group.alb_security_group_id
-  public_a_subnet_id                     = module.vpc.public_a_subnet_id
-  public_c_subnet_id                     = module.vpc.public_c_subnet_id
-  vpc_id                                 = module.vpc.vpc_id
-}
+camel_case_prefix = "Bar"
+region            = "ap-northeast-1"
+environment       = "stg"
+service           = "bar"
 ```
 
-<br>
+一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名、がわかるように命名する。
 
-### 変数
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
 
-#### ▼ 命名規則
+```terraform
+# 種類が無い時（thisの時）
+# 例：ecs_service_desired_count = 2
+<使用するクラウドプロバイダーのリソースの名前>_<オプション名> = ****
 
-複数の値を持つlist型やmap型の変数であれば複数形で命名する。一方で、string型など値が1つしかなければ単数形とする。
+
+# 種類がある時
+# 例：ecs_task_cpu = 1024
+<使用するクラウドプロバイダーのリソースの名前>_<種類名>_<オプション名> = ****
+```
+
+#### ▼ list型、map型の命名
+
+複数の値を持つlist型やmap型の環境変数であれば複数形で命名する。一方で、string型など値が```1```個しかなければ単数形とする。
+
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 **＊実装例＊**
 
@@ -532,73 +527,49 @@ vpc_cidr                           = "*.*.*.*/23"
 vpc_subnet_private_datastore_cidrs = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
 vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
+
+
 ```
 
-#### ▼ 並び順
+#### ▼ bool型の命名
 
-Generalの変数を先頭に配置し、その他のクラウドプロバイダーのリソース別のものはアルファベット順に変数を並べる。
+```count```関数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のbool型環境変数を用意する。
+
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
+
+```terraform
+enable_foo = true
+```
 
 <br>
 
-### 環境変数
+### ```module```ブロック
 
 #### ▼ 命名規則
 
-環境変数は、```.tfvars```ファイルでは定義できる。複数のリソースで使用する場合（将来的にそうなる可能性も含めて）は、Generalに配置し、グローバルな名前を付ける。クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
+```source```オプションで指定するディレクトリ名で命名する。スネークケースによる命名を採用する。
 
 ```terraform
 ###############################################
-# General
+# ALB root module
 ###############################################
-camel_case_prefix = "Bar"
-region            = "ap-northeast-1"
-environment       = "stg"
-service           = "bar"
+module "alb" {
+  source = "../modules/alb"
+}
 ```
-
-環境変数の名前は以下の様にする。
-
-```terraform
-# 種類が無い時（thisの時）
-# 例：ecs_service_desired_count = 2
-<使用するクラウドプロバイダーのリソースの名前>_<オプション名> = ****
-
-
-# 種類がある時
-# 例：ecs_task_cpu = 1024
-<使用するクラウドプロバイダーのリソースの名前>_<種類名>_<オプション名> = ****
-```
-
-list型またはmap型であれば複数形、それ以外であれば単数形とする。
 
 ```terraform
 ###############################################
-# Route53
+# ALB root module
 ###############################################
-
-# ～ 中略 ～
-
-###############################################
-# VPC
-###############################################
-
-# ～ 中略 ～
-
-###############################################
-# WAF
-###############################################
-waf_blocked_user_agents = [
-  "AdCrawler",
-]
+module "alb" {
+  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
+}
 ```
-
-#### ▼ 並び順
-
-クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
 
 <br>
 
-### resource、data
+### ```resource```ブロック、```data```ブロック
 
 #### ▼ リソースに種類がある場合
 
@@ -650,7 +621,7 @@ resource "aws_internet_gateway" "this" {
 }
 ```
 
-#### ▼ 接頭辞、接尾辞
+#### ▼ 接頭辞、接尾辞の場合
 
 Lambda以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。
 
@@ -693,39 +664,9 @@ resource "aws_lambda_function" "echo_helloworld" {
 }
 ```
 
-#### ▼ 設定の並び順、行間
-
-最初に`count`や`for_each`を設定し改行する。その後、各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）。最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。ただし実際、これらの全ての設定が必要なリソースはない。
-
-**＊実装例＊**
-
-```terraform
-###############################################
-# EXAMPLE
-###############################################
-resource "aws_baz" "this" {
-  for_each = var.vpc_availability_zones # 最初にfor_each
-  # スペース
-  subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
-  # スペース
-  tags = {
-    Name = format(
-      "prd-foo-%d-baz",
-      each.value
-    )
-  }
-  # スペース
-  depends_on = []
-  # スペース
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-```
-
 <br>
 
-### output
+### ```output```ブロック
 
 #### ▼ リソースに種類がある場合
 
@@ -783,13 +724,13 @@ output "alb_dns_name" {
 }
 ```
 
-#### ▼ 冗長な場合
+#### ▼ 冗長な場合（アンチパターン）
 
 ルール通りに命名すると、一部のクラウドプロバイダーのリソースで冗長な名前になってしまうことがある。この場合は、省略を許容する。
 
 **＊実装例＊**
 
-ルール通りに名付けると、『```laravel_ecr_repository_repository_url```』というoutput名になってしまう。repositoryが二回繰り返されることになるため、1つ省略している。
+ルール通りに名付けると、『```laravel_ecr_repository_repository_url```』という```output```ブロック名になってしまう。repositoryが二回繰り返されることになるため、1つ省略している。
 
 ```terraform
 ###############################################
@@ -812,11 +753,89 @@ output "nginx_ecr_repository_url" {
 
 <br>
 
+## 04-02. 並び順
+
+### 環境変数
+
+#### ▼ 並び順
+
+Generalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。
+
+<br>
+
+### ```module```ブロック
+
+#### ▼ 並び順
+
+環境変数を並べる```# Variables```コメントと、モジュール間の値を受け渡しを並べる```# Output values```コメントに分ける。```# Variables```コメントの部分では、```terraform.tfvars```ファイルと同じ並び順になるようにする。また、```# Output values```コメントの部分では、```output```ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。
+
+```terraform
+###############################################
+# ALB root module
+###############################################
+module "alb" {
+  source = "../modules/alb"
+
+  # Variables
+  environment                   = var.environment                   # General
+  region                        = var.region
+  service                       = var.service
+  alb_listener_port_http        = var.alb_listener_port_http        # ALB
+  alb_listener_port_https       = var.alb_listener_port_https
+  ecs_container_nginx_port_http = var.ecs_container_nginx_port_http # ECS
+
+  # Output values
+  api_acm_certificate_arn                = module.acm_an1.api_acm_certificate_arn
+  global_accelerator_acm_certificate_arn = module.acm_an1.global_accelerator_acm_certificate_arn
+  alb_s3_bucket_id                       = module.s3.alb_s3_bucket_id
+  alb_security_group_id                  = module.security_group.alb_security_group_id
+  public_a_subnet_id                     = module.vpc.public_a_subnet_id
+  public_c_subnet_id                     = module.vpc.public_c_subnet_id
+  vpc_id                                 = module.vpc.vpc_id
+}
+```
+
+<br>
+
+### ```resource```ブロック、```data```ブロック
+
+#### ▼ 設定の並び順、行間
+
+最初に```count```オプションや```for_each```オプションを設定し改行する。その後、各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）。最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。ただし実際、これらの全ての設定が必要なリソースはない。
+
+**＊実装例＊**
+
+```terraform
+###############################################
+# EXAMPLE
+###############################################
+resource "aws_baz" "this" {
+  for_each = var.vpc_availability_zones # 最初にfor_each
+  # スペース
+  subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
+  # スペース
+  tags = {
+    Name = format(
+      "prd-foo-%d-baz",
+      each.value
+    )
+  }
+  # スペース
+  depends_on = []
+  # スペース
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+<br>
+
 ## 05. 開発環境
 
 ### 開発方法
 
-前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルのbackendオプションを、『s3』から『local』に変更する。
+前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルの```backend```オプションを、『s3』から『local』に変更する。
 
 ℹ️ 参考：https://repl.info/archives/1435/
 
@@ -917,11 +936,15 @@ $ asdf install
 
 特に```terraform plan```コマンドと```terraform apply```コマンドの実行時に関して、コマンドの実行者には通常にはクラウドプロバイダーへのアクセス権限を与えず、コマンドの実行時にのみ一時的な権限を付与する。これを行わないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が常時コマンドを実行できるようになってしまう。一時権限の付与方法としては、AWS STSがある。
 
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
+
 <br>
 
 ### 機密情報の管理
 
-機密情報を```ignore_changes```に指定し、```tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これをdataブロックで参照する。
+機密情報を```ignore_changes```に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
+
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 
 ```terraform
 # AWS RDSの場合
@@ -940,6 +963,14 @@ resource "aws_rds_cluster" "this" {
   }
 }
 ```
+
+<br>
+
+### outputブロック
+
+```output```ブロックに機密情報を含む場合は、```sensitive```オプションを有効化する。
+
+ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
 
 <br>
 
@@ -980,22 +1011,35 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 ## 08. レビュー
 
-### （１）コンソール画面にログイン
+### （１）レビューための知見収集
+
+#### ▼ コンソール画面にログイン
 
 ただコードを眺めているより、レビュー対象がコンソール画面のどこに相当するのかも並行して確認した方が、Terraformを理解しやすい。コンソール画面にログインする。
 
-<br>
-
-### （２）クラウドプロバイダーのドキュメントや技術記事を確認
+#### ▼ クラウドプロバイダーのドキュメントや技術記事を確認
 
 コンソール画面の相当する設定箇所がわかったところで、設定値が正しいか否かを確認する。以下を確認する。
 
 - クラウドプロバイダーのドキュメント
 - 技術記事
 
+#### ▼ Terraformのドキュメントや技術記事を確認
+
+AWSを作成する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
+
+- TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+- 技術記事
+
+注意点として、AWSプロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。以下の点でレビューする。
+
+- プロジェクトの設計ポリシーに即しているか
+- リファレンスに非推奨と注意書きされた方法で実装していないか
+- リリースの粒度は適切か
+
 <br>
 
-### （３）差分が正しいかを確認
+### （２）```terraform plan```コマンドの結果を確認
 
 #### ▼ 大前提
 
@@ -1017,22 +1061,27 @@ $ terraform plan -var-file=foo.tfvars -no-color \
 
 <br>
 
-### （４）Terraformのドキュメントや技術記事を確認
+### （３）テストの実施
 
-AWSを作成する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
+#### ▼ 単体テスト
 
-- TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-- 技術記事
+テストフレームワークを使用し、新規のリソースを単体テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
-注意点として、AWSプロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。以下の点でレビューする。
+参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#test
 
-- プロジェクトの設計ポリシーに即しているか
-- リファレンスに非推奨と注意書きされた方法で実装していないか
-- リリースの粒度は適切か
+#### ▼ 結合テスト
+
+クラウドプロバイダーのモックを使用し、既存/新規を含む複数のリソースを組み合わせた結合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+
+参考：https://docs.localstack.cloud/ci/
+
+#### ▼ システムテスト
+
+実際の稼働環境に対して```terraform apply```コマンドを実行し、既存/新規を含む全てのリソースを組み合わせたシステムテストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
 <br>
 
-### （５）developブランチへのマージは問題ないか
+### （４）developブランチへのマージは問題ないか
 
 developブランチにマージするコミット = 次にリリースするコミット である。他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、developブランチへのマージに『待った！』をかけること。
 

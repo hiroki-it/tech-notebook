@@ -13,168 +13,17 @@ description: ロジック＠Terraformの知見を記録しています。
 
 <br>
 
-## 01. ルートモジュールにおける実装
-
-### ```.tfstate```ファイル
-
-#### ▼ ```.tfstate```ファイルとは
-
-実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで作成される。
-
-ℹ️ 参考：https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
-
-#### ▼ 読み方
-
-ℹ️ 参考：https://chroju.dev/blog/terraform_state_introduction
-
-```yaml
-{
-  "version": 4,
-  "terraform_version": "1.0.6",
-  "serial": 3,
-  "lineage": "*****-*****-*****-*****-*****",
-  "outputs": { # outputブロックのapplyで追加される。
-    "foo_ids": {
-      "value": "*****",
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "mode": "data", # dataブロックのapplyで追加される。
-      "type": "aws_caller_identity", # resourceタイプ
-      "name": "current", # リソース名
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [ # 設定値
-        {
-          "schema_version": 0,
-          "attributes": {
-            "account_id": "<アカウントID>",
-            "arn": "*****",
-            "id": "*****",
-            "user_id": "*****"
-            ...
-          },
-          "sensitive_attributes": []
-        }
-      ]
-    },
-    {
-      "module": "module.ec2", # モジュールの場合に追加される。
-      "mode": "managed", # importや、resourceブロックのapplyで追加される。
-      "type": "aws_instance", # resourceタイプ
-      "name": "bastion", # リソース名
-      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [ # 設定値
-        {
-          "schema_version": 0,
-          "attributes": {
-            "arn": "*****",
-            "name": "prd-foo-instance"
-            "tags": {
-              "Env": "prd",
-              "ManagedBy": "terraform"
-              "Repository": "https://github.com/*****"
-            },
-            "description": "*****",
-            ...
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-<br>
-
-### ```.terraform.lock.hcl```ファイル
-
-#### ▼ ```.terraform.lock```.ファイルとは
-
-開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
-
-ℹ️ 参考：
-
-- https://www.terraform.io/language/files/dependency-lock
-- https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
-- https://qiita.com/mziyut/items/0f4109c425165f5011df
-
-もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
-
-```bash
-$ terraform init -upgrade
-```
-
-#### ▼ version
-
-プロバイダーのバージョンを設定する。
-
-```terraform
-provider "registry.terraform.io/hashicorp/aws" {
-  
-  # 〜 中略 〜
-  
-  version = "4.3.0"
-  
-  # 〜 中略 〜
-
-}
-```
-
-#### ▼ constraints
-
-```terraform
-provider "registry.terraform.io/hashicorp/aws" {
-  
-  # 〜 中略 〜
-  
-  constraints = ">= 3.19.0"
-  
-  # 〜 中略 〜
-
-}
-```
-
-#### ▼ hashes
-
-ハッシュ値を設定する、タグごとに役割が異なる。
-
-ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
-
-| タグ名   | 説明                                                         |
-| -------- | ------------------------------------------------------------ |
-| ```h1``` | 開発者が使用しているOSを表現するハッシュ値を設定する。```zh```タグの```zip```パッケージのOS名に存在しないOS値が、```h1```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
-| ```zh``` | プロバイダーの```zip```パッケージ（```terraform-provider-aws_<バージョン>_<OS名>```）のチェックサムハッシュ値を設定する。```h1```タグのOS値に存在しないOS名の```zip```パッケージが、```zh```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
-
-```terraform
-provider "registry.terraform.io/hashicorp/aws" {
-  
-  # 〜 中略 〜
-  
-  hashes = [
-    "h1:*****",
-    "h1:*****",
-    "zh:*****",
-    ...
-  ]
-  
-  # 〜 中略 〜
-
-}
-```
-
-<br>
+## 01. ルートモジュールの実装
 
 ### terraform  settings
 
 #### ▼ terraform settingsとは
 
-terraformの実行時に、エントリーポイントとして機能するファイル。
+```terraform```コマンドの実行時に、エントリーポイントとして機能するファイル。
 
 #### ▼ required_providers
 
-AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なる```resource```タイプが提供される。一番最初に読みこまれるファイルのため、変数やモジュール化などが行えない。
+AWSやGCPなど、使用するプロバイダを定義する。プロバイダによって、異なる```resource```タイプが提供される。一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。
 
 **＊実装例＊**
 
@@ -196,7 +45,7 @@ terraform {
 
 #### ▼ backend
 
-インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
+インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
 ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
 
@@ -360,7 +209,80 @@ resource "aws_acm_certificate" "example" {
 
 <br>
 
-### クレデンシャル情報の設定方法
+### ```module```ブロック
+
+#### ▼ ```module```ブロックとは
+
+ルートモジュールでネストモジュール読み出し、ネストモジュールに対して通常変数を渡す。
+
+ℹ️ 参考：https://www.terraform.io/language/modules/sources
+
+#### ▼ 同一リポジトリ内から読み込む
+
+同じリポジトリ内にmoduleがある場合、それを指定して読み込む。
+
+**＊実装例＊**
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  source = "../modules/alb"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+#### ▼ 外部リポジトリから読み込む
+
+外部リポジトリにmoduleがある場合、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  # SSHの場合
+  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
+
+ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+
+```terraform
+###############################
+# ALB
+###############################
+module "alb" {
+  # moduleブロックを参照する。
+  # SSHの場合
+  source = "git::https://github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+<br>
+
+## 01-02. クレデンシャル情報
+
+### 必要な情報
+
+```terraform```コマンドでクラウドプロバイダーと通信するためには、クラウドプロバイダーへのアクセス権限が必要にある。
+
+<br>
+
+### 設定方法
 
 #### ▼ ハードコーディングによる設定
 
@@ -403,7 +325,7 @@ provider "aws" {
 
 クレデンシャル情報は、```~/.aws/credentials```ファイルに記載されている。
 
-```
+```ini
 # 標準プロファイル
 [default]
 aws_access_key_id=*****
@@ -470,7 +392,7 @@ $ export AWS_SECRET_ACCESS_KEY="*****"
 # profileの代わり
 $ export AWS_PROFILE="bar-profile"
 
-#tokenの代わり（AWS STSを使用する場合）
+# tokenの代わり（AWS STSを使用する場合）
 $ export AWS_SESSION_TOKEN="*****"
 ```
 
@@ -500,74 +422,356 @@ provider "aws" {}
 
 <br>
 
-### module
+## 02. ネストモジュールの実装
 
-#### ▼ moduleとは
+### ```resource```ブロック
 
-ルートモジュールでネストモジュール読み出し、ネストモジュールに対して変数を渡す。
+#### ▼ ```resource```ブロックとは
 
-ℹ️ 参考：https://www.terraform.io/language/modules/sources
+AWSのAPIに対してリクエストを送信し、クラウドインフラを作成する。
 
-#### ▼ 同一リポジトリ内から読み込む
+#### ▼ ```resource```タイプ
 
-同じリポジトリ内にmoduleがある場合、それを指定して読み込む。
+操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
+
+ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+
+#### ▼ 実装方法
 
 **＊実装例＊**
 
 ```terraform
-###############################
+###############################################
 # ALB
-###############################
-module "alb" {
-  # モジュールのresourceブロックを参照する。
-  source = "../modules/alb"
-  
-  # モジュールに他のモジュールのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+###############################################
+resource "aws_lb" "this" {
+  name               = "prd-foo-alb"
+  load_balancer_type = "application"
+  security_groups    = ["*****"]
+  subnets            = ["*****","*****"]
 }
 ```
-
-#### ▼ 外部リポジトリから読み込む
-
-外部リポジトリにmoduleがある場合、それを指定して読み込む。外部リポジトリとしては、GitHub、Terraformレジストリ、S3、GCS、などを指定できる。HTTPSやSSHでプロトコルを指定できるが、鍵の登録が不要なHTTPの方が簡単なので推奨である。
-
-```terraform
-###############################
-# ALB
-###############################
-module "alb" {
-  # モジュールのresourceブロックを参照する。
-  # SSHの場合
-  source = "github.com/hiroki-hasegawa/terraform-modules.git"
-  
-  # モジュールに他のモジュールのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
-}
-```
-
-サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
-
-ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
-
-```terraform
-###############################
-# ALB
-###############################
-module "alb" {
-  # モジュールのresourceブロックを参照する。
-  # SSHの場合
-  source = "github.com/hiroki-hasegawa/terraform-modules.git//module/alb"
-  
-  # モジュールに他のモジュールのoutputを渡す。
-  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
-}
-```
-
-
 
 <br>
 
-## 02. 変数
+### ```data```ブロック
+
+#### ▼ ```data```ブロックとは
+
+AWSのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。ルートモジュールも実装できるが、各モジュールに実装した方が分かりやすい。
+
+#### ▼ 実装方法
+
+**＊実装例＊**
+
+例として、ECSタスク定義名を指定して、AWSから
+
+```terraform
+###############################################
+# ECS task definition
+###############################################
+data "aws_ecs_task_definition" "this" {
+  task_definition = "prd-foo-ecs-task-definition"
+}
+```
+
+**＊実装例＊**
+
+例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
+
+```terraform
+###############################################
+# AMI
+###############################################
+data "aws_ami" "bastion" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["amzn-ami-hvm-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "block-device-mapping.volume-type"
+    values = ["gp2"]
+  }
+}
+```
+
+<br>
+
+### ```output```ブロック
+
+#### ▼ ```output```ブロックとは
+
+```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
+
+ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+
+#### ▼ 実装方法
+
+**＊実装例＊**
+
+例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```ブロックの方法が異なる。
+
+```terraform
+###############################################
+# ALB
+###############################################
+output "alb_zone_id" {
+  value = aws_lb.this.zone_id
+}
+
+output "elb_service_account_arn" {
+  value = data.aws_elb_service_account.this.arn
+}
+```
+
+```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する場合、```module```から出力する。
+
+```terraform
+###############################
+# ALB
+###############################
+module "foo" {
+  # moduleブロックを参照する。
+  source = "../modules/foo"
+  
+  # moduleブロックに他のmoduleブロックのoutputを渡す。
+  foo_id = module.alb.alb_zone_id
+}
+```
+
+一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```ブロックから出力する。
+
+```terraform
+# outputのあるtfstateファイルを参照する。
+data "terraform_remote_state" "alb" {
+    backend = "s3"
+    config = {
+        bucket = "bucket"
+        key = "alb.tfstate"
+    }
+}
+
+resource "foo" "this" {
+    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
+}
+```
+
+#### ▼ ```count```関数の```output```ブロック
+
+ノート内の[こちら](#count)を参考にせよ。
+
+#### ▼ ```for_each```関数の```output```ブロック
+
+ノート内の[こちら](#for_each)を参考にせよ。
+
+<br>
+
+## 03. バックエンド内のファイル
+
+### ```.tfstate```ファイル
+
+#### ▼ ```.tfstate```ファイルとは
+
+実インフラのインフラの状態が定義されたjsonファイルのこと。初回時、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで作成される。
+
+ℹ️ 参考：
+
+- https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+- https://chroju.dev/blog/terraform_state_introduction
+
+```yaml
+{
+  "version": 4,
+  "terraform_version": "1.0.6",
+  "serial": 3,
+  "lineage": "*****-*****-*****-*****-*****",
+  "outputs": { # outputブロックのapplyで追加される。
+    "foo_ids": {
+      "value": "*****",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data", # dataブロックのapplyで追加される。
+      "type": "aws_caller_identity", # resourceタイプ
+      "name": "current", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "<アカウントID>",
+            "arn": "*****",
+            "id": "*****",
+            "user_id": "*****"
+            ...
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.ec2", # moduleブロックの場合に追加される。
+      "mode": "managed", # importや、resourceブロックのapplyで追加される。
+      "type": "aws_instance", # resourceタイプ
+      "name": "bastion", # リソース名
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [ # 設定値
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "*****",
+            "name": "prd-foo-instance"
+            "tags": {
+              "Env": "prd",
+              "ManagedBy": "terraform"
+              "Repository": "https://github.com/*****"
+            },
+            "description": "*****",
+            ...
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### ▼ ```.tfstate```ファイルのロック
+
+```.tfstate```ファイルの競合を防ぐために、```terraform apply```コマンドの処理中に```.tfstate```ファイルはロックされる。```terraform apply```コマンドが完了すれば、ロックは解除される。ロックされている間、他のユーザーは一連の```terraform```コマンドを実行できなくなる。
+
+#### ▼ 残骸ロックの解除方法
+
+```terraform apply```コマンドの完了前に処理を強制中断してしまうと、ロックが残ってしまう。これが起こると、以降、一連の```terraform```コマンドを実行できなくなってしまう。
+
+ℹ️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+
+```bash
+$ terraform plan
+Acquiring state lock. This may take a few moments...
+
+Error: Error acquiring the state lock
+Error message: resource temporarily unavailable
+Lock Info:
+   ID:        89e54252-fef0-2a68-17bf-e0bb411ff1e3 # これを使う
+   Path:      terraform.tfstate
+   Operation: OperationTypeInvalid
+   Who:       hiroki-hasegawa
+   Version:   1.1.5
+   Created:   2022-02-21 06:26:07.435925 +0000 UTC
+   Info:      
+```
+
+その場合、```terraform force-unlock```コマンドでIDを指定すれば、ロックを解除できる。
+
+```bash
+$ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
+```
+
+<br>
+
+<br>
+
+### ```.terraform.lock.hcl```ファイル
+
+#### ▼ ```.terraform.lock```.ファイルとは
+
+開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
+
+ℹ️ 参考：
+
+- https://www.terraform.io/language/files/dependency-lock
+- https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
+- https://qiita.com/mziyut/items/0f4109c425165f5011df
+
+もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
+
+```bash
+$ terraform init -upgrade
+```
+
+#### ▼ version
+
+プロバイダーのバージョンを設定する。
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  version = "4.3.0"
+  
+  # 〜 中略 〜
+
+}
+```
+
+#### ▼ constraints
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  constraints = ">= 3.19.0"
+  
+  # 〜 中略 〜
+
+}
+```
+
+#### ▼ hashes
+
+ハッシュ値を設定する、タグごとに役割が異なる。
+
+ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+
+| タグ名   | 説明                                                         |
+| -------- | ------------------------------------------------------------ |
+| ```h1``` | 開発者が使用しているOSを表現するハッシュ値を設定する。```zh```タグの```zip```パッケージのOS名に存在しないOS値が、```h1```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
+| ```zh``` | プロバイダーの```zip```パッケージ（```terraform-provider-aws_<バージョン>_<OS名>```）のチェックサムハッシュ値を設定する。```h1```タグのOS値に存在しないOS名の```zip```パッケージが、```zh```タグに設定されている場合、通信中に改竄されたと見なされ、エラーになる。 |
+
+```terraform
+provider "registry.terraform.io/hashicorp/aws" {
+  
+  # 〜 中略 〜
+  
+  hashes = [
+    "h1:*****",
+    "h1:*****",
+    "zh:*****",
+    ...
+  ]
+  
+  # 〜 中略 〜
+
+}
+```
+
+<br>
+
+## 04. 変数
 
 ### 環境変数
 
@@ -599,9 +803,9 @@ $ terraform plan -var-file=foo.tfvars
 $ terraform plan
 ```
 
-#### ▼ ```TF_VAR_<変数名>```
+#### ▼ ```TF_VAR_<環境変数名>```
 
-環境変数としてエクスポートしておくと自動的に読み込まれる。```<変数名>```の文字が、実際の変数名としてTerraformに渡される。
+環境変数としてエクスポートしておくと自動的に読み込まれる。```<環境変数名>```の文字が、実際の環境変数名としてTerraformに渡される。
 
 ```bash
 $ printenv
@@ -765,7 +969,7 @@ variable "rds_parameter_group_values" {
 
 #### ▼ localとは
 
-ネストモジュール内にスコープを持つ変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
+ネストモジュール内にスコープを持つ通常変数。ルートモジュールとネストモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
 ℹ️ 参考：
 
@@ -784,169 +988,7 @@ resource "aws_instance" "example" {
 
 <br>
 
-## 03. ```resource```ブロックの実装
-
-### ```resource```ブロック
-
-#### ▼ ```resource```ブロックとは
-
-AWSのAPIに対してリクエストを送信し、クラウドインフラを作成する。
-
-#### ▼ ```resource```タイプ
-
-操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
-
-ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-```terraform
-###############################################
-# ALB
-###############################################
-resource "aws_lb" "this" {
-  name               = "prd-foo-alb"
-  load_balancer_type = "application"
-  security_groups    = ["*****"]
-  subnets            = ["*****","*****"]
-}
-```
-
-<br>
-
-### data
-
-#### ▼ dataとは
-
-AWSのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。ルートモジュールも実装できるが、各モジュールに実装した方が分かりやすい。
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-例として、ECSタスク定義名を指定して、AWSから
-
-```terraform
-###############################################
-# ECS task definition
-###############################################
-data "aws_ecs_task_definition" "this" {
-  task_definition = "prd-foo-ecs-task-definition"
-}
-```
-
-**＊実装例＊**
-
-例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
-
-```terraform
-###############################################
-# AMI
-###############################################
-data "aws_ami" "bastion" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "name"
-    values = ["amzn-ami-hvm-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "block-device-mapping.volume-type"
-    values = ["gp2"]
-  }
-}
-```
-
-<br>
-
-### output
-
-#### ▼ outputとは
-
-モジュール内の```resource```ブロックが持つ値をモジュール外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
-
-ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
-
-#### ▼ 実装方法
-
-**＊実装例＊**
-
-例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```ブロックの方法が異なる。
-
-```terraform
-###############################################
-# ALB
-###############################################
-output "alb_zone_id" {
-  value = aws_lb.this.zone_id
-}
-
-output "elb_service_account_arn" {
-  value = data.aws_elb_service_account.this.arn
-}
-```
-モジュール内の```resource```ブロックが持つ値をモジュール外に出力する場合、```module```から出力する。
-
-```terraform
-###############################
-# ALB
-###############################
-module "foo" {
-  # モジュールのresourceブロックを参照する。
-  source = "../modules/foo"
-  
-  # モジュールに他のモジュールのoutputを渡す。
-  foo_id = module.alb.alb_zone_id
-}
-```
-
-一方で、他の```.tfstate```ファイルの```resource```ブロックで使用する場合、```terraform_remote_state```ブロックから出力する。
-
-```terraform
-# outputのあるtfstateファイルを参照する。
-data "terraform_remote_state" "alb" {
-    backend = "s3"
-    config = {
-        bucket = "bucket"
-        key = "alb.tfstate"
-    }
-}
-
-resource "foo" "this" {
-    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
-}
-```
-
-#### ▼ ```count```関数の```output```ブロック
-
-ノート内の[こちら](#count)を参考にせよ。
-
-#### ▼ ```for_each```関数の```output```ブロック
-
-ノート内の[こちら](#for_each)を参考にせよ。
-
-<br>
-
-## 04. メタ引数
+## 05. メタ引数
 
 ### メタ引数とは
 
@@ -1431,7 +1473,7 @@ resource "aws_lb" "this" {
 
 **＊実装例＊**
 
-map型のキー名と値の両方を設定値として使用する。例として、RDSパラメーターグループの```parameter```ブロックを、map型変数を使用して繰り返し作成する。
+map型のキー名と値の両方を設定値として使用する。例として、RDSパラメーターグループの```parameter```ブロックを、map型通常変数を使用して繰り返し作成する。
 
 ```terraform
 ###############################################
@@ -1514,7 +1556,7 @@ resource "aws_security_group" "ec2" {
 
 **＊実装例＊**
 
-例として、WAFの正規表現パターンセットの```regular_expression```ブロックを、list型変数を使用して繰り返し作成する。
+例として、WAFの正規表現パターンセットの```regular_expression```ブロックを、list型通常変数を使用して繰り返し作成する。
 
 ```terraform
 ###############################################
@@ -1641,7 +1683,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで発生した```resource```ブロックの作成・更新・削除を無視し、```tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```tfstate```ファイルに差分があっても、```tfstate```ファイルの値が更新されなくなる。
+実インフラのみで発生した```resource```ブロックの作成・更新・削除を無視し、```.tfstate```ファイルに反映しないようにする。これにより、オプションを```ignore_changes```したタイミング以降、実インフラと```.tfstate```ファイルに差分があっても、```.tfstate```ファイルの値が更新されなくなる。
 
 **＊実装例＊**
 
@@ -1752,7 +1794,7 @@ resource "aws_security_group" "ec2" {
 
 <br>
 
-## 05. tpl形式の切り出しと読み出し
+## 06. tpl形式の切り出しと読み出し
 
 ### ```templatefile```関数
 
@@ -1838,7 +1880,7 @@ ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 #### ▼ 設定方法
 
-integer型を変数として渡せるように、拡張子をjsonではなくtplとするのが良い。```image```キーでは、ECRイメージのURLを設定する。バージョンタグは任意で指定でき、もし指定しない場合は、『```latest```』という名前のタグが自動的に割り当てられる。バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、```secrets```キーでは、Systems Managerパラメータストアの値を参照できる。ログ分割の目印を設定する```awslogs-datetime-format```キーでは、タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い。これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。
+integer型を通常変数として渡せるように、拡張子をjsonではなくtplとするのが良い。```image```キーでは、ECRイメージのURLを設定する。バージョンタグは任意で指定でき、もし指定しない場合は、『```latest```』という名前のタグが自動的に割り当てられる。バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、```secrets```キーでは、Systems Managerパラメータストアの値を参照できる。ログ分割の目印を設定する```awslogs-datetime-format```キーでは、タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い。これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。
 
 **＊実装例＊**
 

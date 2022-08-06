@@ -604,7 +604,7 @@ import (
 )
 
 /**
- * ユニットテストのテストスイートを構成する。
+ * 単体テストのテストスイートを構成する。
  */
 type FooSuite struct {
 	suite.Suite
@@ -612,7 +612,7 @@ type FooSuite struct {
 }
 
 /**
- * ユニットテストの直前の前処理を実行する。
+ * 単体テストの直前の前処理を実行する。
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
@@ -621,7 +621,7 @@ func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 }
 
 /**
- * ユニットテストのテストスイートを実行する。
+ * 単体テストのテストスイートを実行する。
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})

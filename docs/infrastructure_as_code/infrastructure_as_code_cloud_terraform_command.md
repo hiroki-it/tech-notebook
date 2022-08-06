@@ -27,6 +27,8 @@ description: コマンド＠Terraformの知見を記録しています。
 
 ### apply
 
+#### ▼ apply
+
 #### ▼ -parallelism
 
 並列処理数を設定できる。デフォルト値は```10```である。
@@ -63,7 +65,7 @@ $ terraform apply \
     -target=<resourceタイプ>.<resourceブロック名>
 ```
 
-モジュールを使用している場合、指定の方法が異なる。
+```module```ブロックを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform apply \
@@ -99,9 +101,9 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-#### ▼ 実行プランファイル
+#### ▼ ```.tfplan```ファイル
 
-事前に、```terraform plan```コマンドによって作成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、変数をオプションに設定する必要はない。
+事前に、```terraform plan```コマンドによって作成された実行プランファイルを元に、```terraform apply```コマンドを実行する。実行プランを渡す場合は、環境変数をオプションに設定する必要はない。
 
 ```bash
 $ terraform apply foo.tfplan
@@ -148,7 +150,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-指定したバックエンドにある```.tfstate```ファイルを使用して、ローカルマシンの```.terraform```ディレクトリを初期化する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では変数を使用できないため、こちらのオプションが推奨である。
+指定したバックエンドにある```.tfstate```ファイルを使用して、ローカルマシンの```.terraform```ディレクトリを初期化する。また、```terraform plan```コマンドや```terraform apply```コマンドの向き先を別のバックエンドに切り替える。バックエンドの代わりに、```terraform settings```ブロック内の```backend```オプションで指定しても良い。ただし、```terraform setting```ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -204,6 +206,10 @@ $ terraform init -upgrade
 
 ### fmt
 
+#### ▼ fmtとは
+
+```.tf```ファイルのコードを整形する。
+
 #### ▼ -check
 
 インデントを揃えるべき箇所が存在するか否かを判定する。もし存在する場合『```1```』、存在しない場合は『```0```』を返却する。
@@ -258,6 +264,30 @@ $ terraform graph | dot -Tsvg > graph.svg
 <br>
 
 ### import
+
+#### ▼ importとは
+
+実インフラの状態を読み込み、```.tfstate```ファイルに反映する。
+
+#### ▼ -var-file
+
+```.tfvars```ファイルを指定して、```terraform import```コマンドを実行する。
+
+```bash
+$ terraform import \
+    -var-file=foo.tfvars \
+    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+
+    
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+```
+
+<br>
+
+### importのプラクティス
 
 #### ▼ importの手順
 
@@ -354,78 +384,19 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
 
-#### ▼ -var-file
-
-```.tfvars```ファイルを指定して、```terraform import```コマンドを実行する。
-
-```bash
-$ terraform import \
-    -var-file=foo.tfvars \
-    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
-
-    
-Import successful!
-
-The resources that were imported are shown above. These resources are now in
-your Terraform state and will henceforth be managed by Terraform.
-```
+#### 
 
 <br>
 
 ### plan
 
-#### ▼ シンボルの見方
+#### ▼ planとは
 
-作成（```+```）、更新（```~```）、削除（```-```）、再作成（```-/+```）で表現される。
-
-```
-+ create
-~ update in-place
-- destroy
--/+ destroy and then create replacement
-```
-
-#### ▼ 出力内容の読み方
-
-前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象の```resource```ブロックの数を確認しても、前半部分の```resource```ブロックは含まれていないことがわかる。
-
-```bash
-Note: Objects have changed outside of Terraform
-
-Terraform detected the following changes made outside of Terraform since the
-last "terraform apply":
-
-  # Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出。
-
-Unless you have made equivalent changes to your configuration, or ignored the
-relevant attributes using ignore_changes, the following plan may include
-actions to undo or respond to these changes.
-
-─────────────────────────────────────────────────────────────────────────────
-
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  ~ update in-place
-
-Terraform will perform the following actions:
-  
-  # Terraformのコードの変更によって、実インフラがどのように変更されるか。
-  
-Plan: 0 to add, 1 to change, 0 to destroy.  
-```
-
-#### ▼ 差分認識される/されない変更
-
-| 変更内容                                       | される/されない |
-|--------------------------------------------| ---------------- |
-| ```resource```ブロック名の変更                                   | される           |
-| moduleブロック名の変更                                  | される           |
-| ファイルやディレクトリを指定するパスの変更                      | されない         |
-| ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない         |
+実行計画を取得する。
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルには反映せずに、設定ファイルの記述との差分を検証する。スクリプト実行時に、環境変数が定義されたファイルを実行すると、```variable```で宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -433,7 +404,7 @@ $ terraform plan -var-file=foo.tfvars
 
 ```bash
 # ディレクトリを指定することも可能
-# 第一引数で変数ファイルの相対パス、第二引数でをルートモジュールの相対パス
+# 第一引数で環境変数ファイルの相対パス、第二引数でをルートモジュールの相対パス
 $ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
     -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
@@ -458,7 +429,7 @@ $ terraform plan \
     -target=<resourceタイプ>.<resourceブロック名>
 ```
 
-モジュールを使用している場合、指定の方法が異なる。
+```module```ブロックを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform plan \
@@ -466,7 +437,7 @@ $ terraform plan \
     -target=module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
 ```
 
-指定方法は、全てのブロックを対象とした```terraform plan```コマンドが参考になる。```grep```コマンドを使用してresourceタイプ名やmoduleブロック名で抽出すると、指定方法がわかる。
+指定方法は、全てのブロックを対象とした```terraform plan```コマンドが参考になる。```grep```コマンドを使用してresourceタイプ名や```module```ブロック名で抽出すると、指定方法がわかる。
 
 ```bash
 # resourceブロックの指定方法を調べる。
@@ -530,6 +501,57 @@ $ terraform plan \
 
 <br>
 
+### planのプラクティス
+
+#### ▼ 出力内容の読み方
+
+リソースの作成（```+```）、更新（```~```）、削除（```-```）、再作成（```-/+```）で表現される。
+
+```mathematica
++ create
+~ update in-place
+- destroy
+-/+ destroy and then create replacement
+```
+
+前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象の```resource```ブロックの数を確認しても、前半部分の```resource```ブロックは含まれていないことがわかる。
+
+```bash
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply":
+
+  # Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出。
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+  
+  # Terraformのコードの変更によって、実インフラがどのように変更されるか。
+  
+Plan: 0 to add, 1 to change, 0 to destroy.  
+```
+
+#### ▼ 差分認識される/されない変更
+
+| 変更内容                                                     | される/されない |
+| ------------------------------------------------------------ | --------------- |
+| ```resource```ブロック名の変更                               | される          |
+| ```module```ブロック名の変更                                 | される          |
+| ファイルやディレクトリを指定するパスの変更                   | されない        |
+| ```resource```ブロックにハードコーディングされた値を環境変数に変更（```.tfvars```ファイルに移行） | されない        |
+
+<br>
+
 ### refresh（非推奨）
 
 #### ▼ -var-file
@@ -544,6 +566,10 @@ $ terraform refresh -var-file=foo.tfvars
 
 ### state
 
+#### ▼ stateとは
+
+```.tfstate```ファイルを操作する。
+
 #### ▼ list
 
 ```.tfstate```ファイルで定義されている```resource```ブロック（```.tfstate```ファイル上では```managed```モード）の一覧を取得する。
@@ -552,7 +578,7 @@ $ terraform refresh -var-file=foo.tfvars
 $ terraform state
 ```
 
-以下の通り、モジュールも含めて、```resource```ブロックが表示される。
+以下の通り、```module```ブロックも含めて、```resource```ブロックが表示される。
 
 ```bash
 aws_instance.www-1a
@@ -670,7 +696,7 @@ $ terraform state show
       ]
     },
     {
-      "module": "module.ec2", # モジュールの場合に追加される。
+      "module": "module.ec2", # moduleブロックの場合に追加される。
       "mode": "managed", # importや、resourceブロックのapplyで追加される。
       "type": "aws_instance", # resourceタイプ
       "name": "bastion", # リソース名

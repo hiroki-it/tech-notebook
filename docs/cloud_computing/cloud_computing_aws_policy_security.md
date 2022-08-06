@@ -75,7 +75,7 @@ NLBはセキュリティグループに対応していない。そのため、NL
 
 #### ▼ ALBの場合
 
-ALBからEC2にインバウンド通信をルーティングする場合、は、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。
+ALBからEC2にインバウンド通信をルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
 

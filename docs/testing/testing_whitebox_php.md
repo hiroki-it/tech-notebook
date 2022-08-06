@@ -27,7 +27,7 @@ PhpStorm、PHPStan、Larastan
 
 <br>
 
-### ユニットテスト/機能テスト
+### 単体テスト/機能テスト
 
 PHPUnit
 
@@ -37,7 +37,7 @@ PHPUnit
 
 ### PHPUnitとは
 
-ユニットテスト/機能テストや、ユニットテスト時のテストダブルを提供する。
+単体テスト/機能テストや、単体テスト時のテストダブルを提供する。
 
 <br>
 
@@ -413,7 +413,7 @@ class FooTest extends TestCase
 
 ## 02-02. テスト例
 
-### ユニットテスト例
+### 単体テスト例
 
 **＊実装例＊**
 
@@ -824,7 +824,7 @@ class FooControllerTest extends TestCase
 
 ### Phakeとは
 
-ユニットテスト時のテストダブルを提供する。
+単体テスト時のテストダブルを提供する。
 
 ℹ️ 参考：https://github.com/mlively/Phake#phake
 

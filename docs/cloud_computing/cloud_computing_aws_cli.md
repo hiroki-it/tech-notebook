@@ -378,7 +378,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-## 03. AWSリソース別のTips
+## 03. AWSリソース別のプラクティス
 
 ### CloudWatch
 
@@ -627,7 +627,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
-## 07. 認証認可のTips
+## 07. 認証認可のプラクティス
 
 ### SSO
 
