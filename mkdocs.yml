@@ -146,6 +146,7 @@ nav:
                       - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
           - ■ サービスメッシュ系:
               - ■ Envoy:
+                  - Envoy: software/software_middleware_service_mesh_envoy.md
                   - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
       - ■ アプリケーションソフトウェア:
           - ■ アーキテクチャ:
