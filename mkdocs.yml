@@ -276,69 +276,65 @@ nav:
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ:
           - Docker: virtualization/virtualization_container_docker.md
-      - ■ コンテナオーケストレーション:
-          - コンテナオーケストレーション: virtualization/virtualization_container_orchestration.md
-          - ■ Kubernetes:
-              - Kubernetes: virtualization/virtualization_container_orchestration_kubernetes.md
-              - kubernetesアドオン: virtualization/virtualization_container_orchestration_kubernetes_addon.md
-              - Istio: virtualization/virtualization_container_orchestration_kubernetes_istio.md
-              - Minikube: virtualization/virtualization_container_orchestration_kubernetes_minikube.md
 
   - ⚙️ IaC:
       - IaC: infrastructure_as_code/infrastructure_as_code.md
       - ■ 手続き型:
-          - ■ サーバープロビジョニング:
-              - ■ Ansible:
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_server_ansible_conf.md
-          - ■ コンテナプロビジョニング:
-              - ■ Docker:
-                  - Dockerfile: infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_command.md
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_docker_policy.md
+          - ■ Ansible:
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_conf.md
+          - ■ Docker:
+              - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_docker_command.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_docker_policy.md
       - ■ 宣言型:
-          - ■ サーバープロビジョニング:
-              - ■ Vagrant:
-                  - Vagrantfile: infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md
-              - ■ Packer:
-                  - template.json: infrastructure_as_code/infrastructure_as_code_server_packer_template_json.md
-          - ■ コンテナプロビジョニング:
-              - ■ Docker Compose:
-                  - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md
-              - ■ Kubernetes:
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_kubernetes_policy.md
-                  - ■ カスタムリソース:
-                      - カスタムリソース: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource.md
-                      - SecretProviderClass: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_secret_provider_class_resource_definition.md
-                      - Grafana: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_grafana_resource_definition.md
-                      - ■ ArgoCD:
-                          - リソース定義: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_argocd_resource_definition.md
-                      - ■ Istio:
-                          - IstioOperator: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_operator_resource_definition.md
-                          - リソース定義: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.md
-                          - コマンド: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_command.md
-                      - ■ Prometheus:
-                          - リソース定義: infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_prometheus_resource_definition.md
+          - ■ Docker Compose:
+              - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
+          - ■ Kubernetes:
+              - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+              - kubernetesアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
               - ■ Helm:
-                  - チャート: infrastructure_as_code/infrastructure_as_code_container_helm_chart.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_container_helm_command.md
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_container_helm_policy.md
-                  - Helmfile: infrastructure_as_code/infrastructure_as_code_container_helm_helmfile.md
-          - ■ クラウドインフラプロビジョニング:
-              - ■ Terraform:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md
-                  - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd_pipeline.md
-                  - ■ tfファイル:
-                      - tfファイル: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf.md
-                      - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_cloud_terraform_tf_aws_provider.md
-              - ■ Serverless Framework:
-                  - serverless.yml: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md
+                    - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_chart.md
+                    - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_command.md
+                    - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_policy.md
+                    - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_helmfile.md
+              - ■ Minikube:
+                    - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_minikube.md
+                    - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_minikube_command.md
+              - ■ カスタムリソース:
+                  - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
+                  - ■ ArgoCD:
+                        - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
+                  - ■ Grafana:
+                        - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
+                  - ■ Istio:
+                      - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+                      - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
+                  - ■ Prometheus:
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
+                  - ■ SecretProviderClass:
+                        - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.md
 
+          - ■ Packer:
+              - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
+          - ■ Serverless Framework:
+              - serverless.yml: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md
+          - ■ Terraform:
+              - コマンド: infrastructure_as_code/infrastructure_as_code_terraform_command.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
+              - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
+              - ■ tfファイル:
+                  - tfファイル: infrastructure_as_code/infrastructure_as_code_terraform_tf.md
+                  - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.md
+          - ■ Vagrant:
+              - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
   - ♾️ DevOps:
       - DevOps: devops/devops.md
       - GitHub Actions: devops/devops_github_actions.md
