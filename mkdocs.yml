@@ -321,7 +321,7 @@ nav:
                   - ■ SecretProviderClass:
                         - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.md
                   - ■ VictoriaMetrics:
-                      - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.md
+                      - VictoriaMetrics: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.md
           - ■ Packer:
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
           - ■ Serverless Framework:
