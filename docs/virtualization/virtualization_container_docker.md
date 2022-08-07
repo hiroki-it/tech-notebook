@@ -329,7 +329,7 @@ $ curl --fail http://127.0.0.1:8080
 
 『コンテナ』から『コンテナ』に対して、アウトバウンド通信を送信する。ここでのコンテナのホスト名は、コンテナ内の『```/etc/hosts```』に定義されたものとなる。リクエストはホストを経由せず、そのままコンテナに送信される。コンテナ間のネットワーク接続の成否を確認できる。コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 **＊実行例＊**
 

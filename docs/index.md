@@ -68,7 +68,7 @@ title: 【IT技術の知見】目次
         * [📖：︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
     * WSGI
         * [📖：︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
-        * [📖：︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_conf.html)
+        * [📖：︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
     * ASGI
         * [📖：︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
@@ -317,7 +317,7 @@ title: 【IT技術の知見】目次
     
 * Minikube
     * [📖：Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_minikube.html)
-    * [📖：コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_minikube_commnad.html)
+    * [📖：コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_minikube_command.html)
     
 * カスタムリソース
     * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)

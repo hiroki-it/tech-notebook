@@ -45,7 +45,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 クラスや構造体のメソッドが、それ単体で仕様通りに処理が動作するかを検証する方法。検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとに単体テストを実施する必要がある。この時、データアクセスに関わる層の単体テストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
 
 <br>
 
