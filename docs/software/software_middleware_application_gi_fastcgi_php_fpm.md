@@ -189,7 +189,7 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 #### ▼ ```docker.conf```ファイルとは
 
-PHP-FPMをDockerで稼働させるために必要な項目を設定する。ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。
+PHP-FPMをコンテナで稼働させるために必要な項目を設定する。ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。
 
 ```ini
 [global]

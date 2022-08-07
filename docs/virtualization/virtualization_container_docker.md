@@ -63,7 +63,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 DockerのIaCについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html
 
 <br>
 
@@ -443,9 +443,9 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 ### 各ベンダーのコンテナイメージのログ出力先
 
-#### ▼ dockerコンテナの標準出力/標準エラー出力
+#### ▼ コンテナの標準出力/標準エラー出力
 
-Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。dockerコンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
+Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。コンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
 
 ```bash
 [root@<コンテナID>:/dev] $ ls -la

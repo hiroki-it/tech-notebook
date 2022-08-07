@@ -15,7 +15,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ## 01. docker-compose.ymlとは
 
-Dockerを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
+コンテナを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
 

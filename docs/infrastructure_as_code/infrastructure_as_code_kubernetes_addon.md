@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】kubernetesアドオン＠仮想化
-description: kubernetesアドオン＠仮想化の知見を記録しています。
+title: 【IT技術の知見】kubernetesアドオン＠Kubernetes
+description: kubernetesアドオン＠Kubernetesの知見を記録しています。
 ---
 
-# kubernetesアドオン＠仮想化
+# kubernetesアドオン＠Kubernetes
 
 ## はじめに
 

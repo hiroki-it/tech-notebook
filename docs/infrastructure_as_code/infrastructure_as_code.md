@@ -63,7 +63,115 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 <br>
 
-## 02. プロビジョニング
+## 02. 手続き型
+
+### 手続き型とは
+
+インフラの構成順序を手続き的に定義することによって、インフラを作成/更新/削除する手法のこと。インフラの操作順序を人間が理解しておく必要があり、インフラの構成管理のコストが高い。一方で、順番さえ理解していれば、構成ファイルを簡単に実装できるため、学習コストが低い。
+
+ℹ️ 参考：
+
+- https://ja.wikipedia.org/wiki/Infrastructure_as_Code
+- https://techblog.locoguide.co.jp/entry/2021/05/24/145342
+- https://architecting.hateblo.jp/entry/2020/03/22/020137
+
+<br>
+
+### サーバー系
+
+#### ▼ サーバープロビジョニング（物理/仮想）
+
+- Ansible
+- Chef
+
+<br>
+
+### コンテナ系
+
+#### ▼ コンテナプロビジョニング
+
+- Ansible Container
+- Dockerfile
+
+<br>
+
+### クラウドインフラストラクチャ系
+
+#### ▼ クラウドインフラストラクチャプロビジョニング
+
+- Ansible
+
+<br>
+
+## 03. 宣言型
+
+### 宣言型とは
+
+インフラのあるべき状態を定義することによって、インフラを作成/更新/削除する手法のこと。ツールごとに独自の宣言方法を持っており、学習コストが高い。その一方で、最終的な状態を定義しさえすれば、作成/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
+
+ℹ️ 参考：
+
+- https://ja.wikipedia.org/wiki/Infrastructure_as_Code
+- https://techblog.locoguide.co.jp/entry/2021/05/24/145342
+
+<br>
+
+### サーバー系
+
+#### ▼ サーバープロビジョニング（物理/仮想）
+
+- CFEngine
+- Puppet
+- Vagrantfile
+
+#### ▼ マシンイメージプロビジョニング
+
+- Packer
+
+<br>
+
+### コンテナ系
+
+#### ▼ コンテナプロビジョニング
+
+- Vagrantfile
+
+#### ▼ コンテナイメージプロビジョニング
+
+- Packer
+
+#### ▼ コンテナオーケストレーション
+
+- Ansible Container
+- Docker compose
+- Kubernetes
+
+ℹ️ 参考：
+
+- https://qiita.com/kounan13/items/57adfbf3a5f209afa586
+- https://knowledge.sakura.ad.jp/9473/
+
+<br>
+
+### クラウドインフラストラクチャ系
+
+#### ▼ クラウドインフラストラクチャプロビジョニング
+
+- AWS CloudFormation
+- Azure Resource Manager
+- GCP Deployment Manager
+- SAM
+- Serverless Framework
+- Terraform
+- Vagrant
+
+#### ▼ クラウドインフラストラクチャイメージプロビジョニング
+
+- Packer
+
+<br>
+
+## 04. プロビジョニング
 
 ### サーバープロビジョニング
 
@@ -94,75 +202,81 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 <br>
 
-## 03. 手続き型
+## 05. コンテナオーケストレーション
 
-### 手続き型とは
+### コンテナオーケストレーション
 
-インフラの構成順序を手続き的に定義することによって、インフラを作成/更新/削除する手法のこと。インフラの操作順序を人間が理解しておく必要があり、インフラの構成管理のコストが高い。一方で、順番さえ理解していれば、構成ファイルを簡単に実装できるため、学習コストが低い。
+複数のコンテナの稼働（プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワーク、など）を一括で管理する。
 
-ℹ️ 参考：
-
-- https://ja.wikipedia.org/wiki/Infrastructure_as_Code
-- https://techblog.locoguide.co.jp/entry/2021/05/24/145342
+ℹ️ 参考：https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
 <br>
 
-### ツールの種類
+### コンテナオーケストレーションの種類
 
-#### ▼ サーバー（物理/仮想）
+#### ▼ 単一ホストの場合
 
-- Ansible
-- Chef
+単一ホスト上のコンテナが対象である。異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動、を実行できる。
 
-#### ▼ コンテナ
-
-- Ansible Container
-- Dockerfile
-
-#### ▼ クラウドインフラストラクチャ
-
-- Ansible
+| ツール名                       | ベンダー |
+| ------------------------------ | -------- |
+| Docker Compose                 | Docker   |
+| ECS：Elastic Container Service | Amazon   |
 
 <br>
 
-## 04. 宣言型
+#### ▼ 複数ホストの場合
 
-### 宣言型とは
+複数ホスト上のコンテナが対象である。どのホスト上のdockerデーモンに対して、どのコンテナに関する操作を行うのかを選択的に命令できる。
 
-インフラのあるべき状態を定義することによって、インフラを作成/更新/削除する手法のこと。ツールごとに独自の宣言方法を持っており、学習コストが高い。その一方で、最終的な状態を定義しさえすれば、作成/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
+ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
-ℹ️ 参考：
-
-- https://ja.wikipedia.org/wiki/Infrastructure_as_Code
-- https://techblog.locoguide.co.jp/entry/2021/05/24/145342
+| ツール名                        | ベンダー |
+| ------------------------------- | -------- |
+| Docker Swarm                    | Docker   |
+| Kubernetes                      | Google   |
+| EKS：Elastic Kubernetes Service | Amazon   |
 
 <br>
 
-### ツールの種類
+## 05-02. オーケストレーションパターン
 
-#### ▼ サーバー（物理/仮想）
+### オーケストレーションパターンとは
 
-- CFEngine
-- Packer（反対に、仮想サーバーからマシンイメージを作成する）
-- Puppet
-- Vagrantfile
+複数のコンテナを配置方法のデザインパターンのこと。
 
-#### ▼ コンテナ
+<br>
 
-- Docker compose
-- Kubernetes
-- Packer（反対に、コンテナからコンテナイメージを作成する）
-- Vagrantfile
+### サイドカーパターン
 
-#### ▼ クラウドインフラストラクチャ
+#### ▼ サイドカーパターンとは
 
-- AWS CloudFormation
-- Azure Resource Manager
-- GCP Deployment Manager
-- Packer（反対に、クラウドサーバーからマシンイメージを作成する）
-- SAM
-- Serverless Framework
-- Terraform
-- Vagrant
+アプリケーションコンテナと同じPod内や、ECSタスク内に、アプリケーションの一部の機能のみを持つコンテナを配置する。
+
+#### ▼ ロギングコンテナの配置
+
+FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからログを受信し、他にルーティングする。
+
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html
+
+#### ▼ メトリクス収集コンテナの配置
+
+datadogコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからメトリクスのデータポイントを収集する。
+
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+
+<br>
+
+### アンバサダーパターン
+
+#### ▼ アンバサダーパターンとは
+
+アプリケーションコンテナと同じPod内や、ECSタスク内に、リバースプロキシコンテナ（Envoy、Linkerd、など）を配置する。サービスメッシュを実現するために採用される。サイドカーパターンではないが、このプロキシコンテナのことをサイドカーコンテナともいう。
+
+ℹ️ 参考：https://logmi.jp/tech/articles/321841
+
+<br>
+
+### アダプターパターン
 
 <br>

@@ -203,7 +203,7 @@ project/
 
 IaCツールにTerraformを使用した場合を示す。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_policy.html
 
 ```yaml
 # クラウドインフラのIaCツールを管理するリポジトリ

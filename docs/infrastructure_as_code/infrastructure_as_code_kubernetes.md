@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubernetes＠仮想化
-description: Kubernetes＠仮想化の知見を記録しています。
+title: 【IT技術の知見】Kubernetes
+description: Kubernetesの知見を記録しています。
 ---
 
-# Kubernetes＠仮想化
+# Kubernetes
 
 ## はじめに
 
@@ -27,7 +27,7 @@ description: Kubernetes＠仮想化の知見を記録しています。
 
 KubernetesのIaCについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html
 
 <br>
 
@@ -283,7 +283,7 @@ kubernetesクライアントは、```kubectl```コマンドを使用して、kub
 
 Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_resource_definition.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html
 
 <br>
 

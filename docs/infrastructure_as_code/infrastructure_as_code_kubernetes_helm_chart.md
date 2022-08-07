@@ -19,7 +19,7 @@ description: チャート＠Helmの知見を記録しています。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは、パッケージマネージャーとしてのHelmクライアント、チャートとリリース、チャートアーカイブ（```.tgz```形式）、チャートアーカイブのレジストリとしてのチャートレジストリ、チャートレジストリ内にある複数のチャートリポジトリ、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースがapplyされる。
+Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースがapplyされる。
 
 ℹ️ 参考：
 
@@ -29,27 +29,9 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 
 <br>
 
-### チャート
+### チャートレジストリ
 
-#### ▼ チャートとは
-
-必要なKubernetesリソースを作成するためのマニフェストファイルのセットのこと。
-
-参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
-
-#### ▼ チャートアーカイブ
-
-```.tgz```形式で圧縮されたチャートのパッケージ。
-
-#### ▼ リリース
-
-実際にインストールされたチャートのインスタンスのこと。
-
-参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
-
-<br>
-
-#### ▼ チャートレジストリ
+#### ▼ チャートレジストリとは
 
 チャートレジストリとして使用できるものの一覧を示す。チャートレジストリ内にリポジトリを配置する。
 
@@ -60,21 +42,20 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 | AWSリソース（ECR、S3）     |                                                        |
 | GCPリソース             |                                                        |
 
-#### ▼ チャートリポジトリURL
-
-| リポジトリの種類  | 説明                                                       | 形式                                                         | 例                                      |
-|-----------|----------------------------------------------------------| ------------------------------------------------------------ | --------------------------------------- |
-| チャートリポジトリ | チャートのプッシュやプル時に、チャートレジストリ内のリポジトリを指定する場合は、HTTPSプロトコルを使用する。 | ```https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart```     |
-| OCIリポジトリ  | チャートのプッシュやプル時に、OCIレジストリ内のリポジトリを指定する場合は、OCIプロトコルを使用する。    | ```oci://<チャートレジストリ名>/<チャートリポジトリ名>```    | ```oci://foo-registry/foo-repository``` |
-
-
 <br>
 
 ### チャートリポジトリ
 
-#### ▼ 構成
+#### ▼ チャートリポジトリとは
 
-ルートディレクトリ配下に、```index.yaml```ファイル、チャートアーカイブ、を配置する。
+| リポジトリの種類   | 説明                                                         | 形式                                                         | 例                                      |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+| チャートリポジトリ | チャートのプッシュやプル時に、チャートレジストリ内のリポジトリを指定する場合は、HTTPSプロトコルを使用する。 | ```https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart```     |
+| OCIリポジトリ      | チャートのプッシュやプル時に、OCIレジストリ内のリポジトリを指定する場合は、OCIプロトコルを使用する。 | ```oci://<チャートレジストリ名>/<チャートリポジトリ名>```    | ```oci://foo-registry/foo-repository``` |
+
+#### ▼ 複数のバージョンを同時に管理する場合
+
+チャートリポジトリ内に複数のバージョンのチャートを管理する場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ、を配置する。GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理する場合は、このチャートリポジトリに相当する。チャートアーカイブがGitHub Pages上に公開され、HelmがURLでチャートを指定できるようになる。
 
 ℹ️ 参考：
 
@@ -82,12 +63,74 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
 ```yaml
-charts/
+# チャートリポジトリ内に複数のバージョンのチャートを管理する
+repository/ # チャートリポジトリ
 ├── index.yaml
-├── foo-0.1.2.tgz
-├── bar-0.1.2.tgz
+├── foo-chart-1.0.0.tgz # fooチャートアーカイブ
+├── foo-chart-2.0.0.tgz 
+├── bar-chart-1.0.0.tgz # barチャートアーカイブ
+├── bar-chart-2.0.0.tgz
+├── baz-chart-1.0.0.tgz # bazチャートアーカイブ
+├── baz-chart-2.0.0.tgz
 ...
 ```
+
+#### ▼ 一つのバージョンのみ管理する場合
+
+チャートリポジトリ内に一つのバージョンのチャートのみを管理する場合、```index.yaml```ファイルとチャートアーカイブが不要になる。GitHubにて、リリースごとにタグ付けしてチャートを管理する場合やそもそもタグ付けしない場合は、このチャートリポジトリに相当する。
+
+```yaml
+# チャートリポジトリ内に一つのバージョンのチャートのみを管理する
+repository/ # チャートリポジトリ
+├── foo-chart # fooチャート
+├── bar-chart # barチャート
+├── baz-chart # bazチャート
+...
+```
+
+<br>
+
+### チャート
+
+#### ▼ チャートとは
+
+必要なKubernetesリソースを作成するためのマニフェストファイルのセットのこと。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
+
+ℹ️ 参考：
+
+- https://helm.sh/docs/intro/using_helm/#three-big-concepts
+- https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
+- https://helm.sh/docs/topics/charts/#the-chart-file-structure
+- https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
+- https://helm.sh/docs/helm/helm_package/
+- https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
+
+```yaml
+repository/
+├── foo-chart/ # fooチャート
+│   ├── charts/ # 依存する他のチャートを配置する。
+│   ├── temlaptes/ # ユーザー定義のチャートを配置する。ディレクトリ構造は自由である。
+│   │   ├── tests/
+│   │   ├── _helpers.tpl # ヘルパー関数のみを設定する。
+│   │   └── template.yaml # チャートの共通ロジックを設定する。
+│   │
+│   ├── .helmignore # チャートアーカイブの作成時に無視するファイルを設定する。
+│   ├── Chart.yaml # チャートの概要を設定する。頭文字は大文字である必要がある。
+│   └── values.yaml # テンプレートの変数に出力する値を設定する。
+│
+├── bar-chart/ # barチャート
+...
+```
+
+#### ▼ チャートアーカイブ
+
+```.tgz```形式で圧縮されたチャートのパッケージ。
+
+#### ▼ リリース
+
+実際にインストールされたチャートのインスタンスのこと。
+
+参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>
 
@@ -109,7 +152,45 @@ $ sudo apt-get install helm
 
 <br>
 
-## 03. Chart.yamlファイル
+## 03. index.yamlファイル
+
+### index.yamlファイルとは
+
+チャートリポジトリ内の各チャートアーカイブのメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
+
+ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### apiVersion
+
+#### ▼ apiVersionとは
+
+ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### entries
+
+#### ▼ entriesとは
+
+ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+
+<br>
+
+### generated
+
+#### ▼ generatedとは
+
+コマンドによって```index.yaml```ファイルが作成された日付を設定する。
+
+```yaml
+generated: "2022-01-01T12:00:00.197173+09:00"
+```
+
+<br>
+
+## 04. Chart.yamlファイル
 
 ### apiVersion
 
@@ -231,43 +312,7 @@ version: <バージョンタグ>
 
 <br>
 
-## 04. index.yamlファイル
 
-### index.yamlファイルとは
-
-チャートのメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
-
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
-
-<br>
-
-### apiVersion
-
-#### ▼ apiVersionとは
-
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
-
-<br>
-
-### entries
-
-#### ▼ entriesとは
-
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
-
-<br>
-
-### generated
-
-#### ▼ generatedとは
-
-コマンドによって```index.yaml```ファイルが作成された日付を設定する。
-
-```yaml
-generated: "2022-01-01T12:00:00.197173+09:00"
-```
-
-<br>
 
 ## 05. value.yaml
 

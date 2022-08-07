@@ -509,7 +509,7 @@ $ composer update -vvv
 
 #### ▼ ```COMPOSER_MEMORY_LIMIT```
 
-Composerのコマンドの実行時のメモリ上限を設定する。メモリ上限を無しにして、コマンドを実行できる。phpバイナリファイルを使用する。dockerコンテナ内で実行する場合、設定画面からコンテナのCPUやメモリを増設もできる。
+Composerのコマンドの実行時のメモリ上限を設定する。メモリ上限を無しにして、コマンドを実行できる。phpバイナリファイルを使用する。コンテナ内で実行する場合、設定画面からコンテナのCPUやメモリを増設もできる。
 
 ```bash
 $ COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -vvv

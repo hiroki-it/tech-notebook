@@ -277,7 +277,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 #### ▼ 証明書バンドル
 
-ルート認証局と中間認証局の認証局がセットになったファイルのこと。認証局によって発行方法は異なり、証明書を単体あるいはバンドル形式で発行する場合がある。
+認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
 
 ℹ️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
@@ -291,9 +291,11 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 ![VPN（ネットワーク間）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPN（ネットワーク間）.png)
 
-#### ▼ インターネットVPNでのSSL/TLS通信の利用
+#### ▼ 通信の暗号化/復号化
 
-VPNゲートウェイとのSSL/TLS通信によって、インターネットVPNを実現できる。
+リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
+
+参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
 

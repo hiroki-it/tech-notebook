@@ -38,7 +38,9 @@ repository/
 
 ### ポリリポジトリ（推奨）
 
-#### ▼ 各チャートを同じリポジトリにする（推奨）
+#### ▼ 各チャートを同じリポジトリで管理する（推奨）
+
+各チャートを同じリポジトリで管理する。各チャートの全てのバージョンをリポジトリ内で管理すると、```index.yaml```ファイルやチャートアーカイブが必要になってしまうため、一つのバージョンのみを管理するようにする。
 
 ```yaml
 # KubernetesとHelmを同じリポジトリにする場合
@@ -58,7 +60,9 @@ repository/
 ...
 ```
 
-#### ▼ 各チャートを異なるリポジトリにする
+#### ▼ 各チャートを異なるリポジトリで管理する
+
+各チャートを異なるリポジトリで管理する。この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理する方が良い。
 
 ```yaml
 # KubernetesとHelmを同じリポジトリにする場合
@@ -80,37 +84,6 @@ repository/
 
 ## 02. ディレクトリ構成ポリシー 
 
-### chartディレクトリ
-
-#### ▼ 必須の要素
-
-ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
-
-ℹ️ 参考：
-
-- https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
-- https://helm.sh/docs/topics/charts/#the-chart-file-structure
-- https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
-- https://helm.sh/docs/helm/helm_package/
-- https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
-
-```yaml
-repository/
-├── chart/
-│   ├── charts/ # 依存する他のチャートを配置する。
-│   ├── temlaptes/ # ユーザー定義のチャートを配置する。ディレクトリ構造は自由である。
-│   │   ├── tests/
-│   │   ├── _helpers.tpl # ヘルパー関数のみを設定する。
-│   │   └── template.yaml # チャートの共通ロジックを設定する。
-│   │
-│   ├── .helmignore # チャートアーカイブの作成時に無視するファイルを設定する。
-│   ├── Chart.yaml # チャートの概要を設定する。頭文字は大文字である必要がある。
-│   └── values.yaml # テンプレートの変数に出力する値を設定する。
-│
-├── chart-<バージョンタグ>.tgz # チャートアーカイブ。
-...
-```
-
 #### ▼ 実行環境別
 
 実行環境別に```values```ファイルと```.tpl```ファイルを作成する。```.tpl```ファイルは```templates```ディレクトリ内に置く必要がある。テンプレートからマニフェストファイルを作成する時に、各環境の```values.yaml```を参照する。
@@ -119,7 +92,7 @@ repository/
 
 ```yaml
 repository/
-├── chart/
+├── foo-chart/
 │   ├── temlaptes/
 │   │   ├── manifests/ # 共通のマニフェストファイル
 │   │   ├── tpls/ # .tplファイル
@@ -272,26 +245,37 @@ $ helm diff <チャート名> -f values.yaml | pbcopy
 
 <br>
 
-### （２）テストの実施
-
-#### ▼ 回帰テスト
-
-テストフレームワークを使用し、既存のチャートの回帰テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+### （２）チャートのホワイトボックステスト
 
 #### ▼ 単体テスト
 
-テストフレームワークを使用し、機能追加/変更を含むチャートの単体テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+```helm test```コマンドやテストフレームワーク（例：Terratest）を使用し、機能追加/変更を含むチャートの単体テストを実施する。```helm test```コマンドを使用する場合、チャートの```/templates/test```ディレクトリ以下にテストコードを配置する必要があり、```helm install```時にリリースにテストコードも含まれてしまうことに注意する。これは、CI/CDパイプライン上で実施しても良い。
 
 ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
+#### ▼ 回帰テスト
+
+ゴールデンファイルを事前に作成しておき、既存のチャートの回帰テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+
+ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+
+<br>
+
+### （３）チャートのブラックボックステスト
+
 #### ▼ 結合テスト
 
-Kubernetesのモックを使用し、機能追加/変更を含む複数のチャートを組み合わせた結合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+実際の稼働環境に対して```helm install```コマンドを実行し、追加/変更を含む複数のチャートを組み合わせた結合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
 
-ℹ️ 参考：https://docs.localstack.cloud/ci/
+ℹ️ 参考：
+
+- https://camunda.com/blog/2022/03/test/
+- https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
 
 #### ▼ 総合テスト
 
-実際の稼働環境に対して```helm install```コマンドを実行し、既存機能/追加/変更を含むチャートを組み合わせた総合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+実際の稼働環境に対して```helm install```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。これは、CI/CDパイプライン上で実施しても良い。
+
+ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
 <br>

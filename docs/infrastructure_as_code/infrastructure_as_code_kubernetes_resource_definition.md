@@ -64,7 +64,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 
 #### ▼ istio固有のキー
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 
@@ -92,7 +92,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
-- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_helm_chart.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm_chart.html
 
 <br>
 

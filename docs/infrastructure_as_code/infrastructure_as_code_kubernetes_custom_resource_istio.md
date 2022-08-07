@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio＠仮想化
-description: Istio＠仮想化の知見を記録しています。
+title: 【IT技術の知見】Istio＠Kubernetes
+description: Istio＠Kubernetesの知見を記録しています。
 ---
 
-# Istio＠仮想化
+# Istio＠Kubernetes
 
 ## はじめに
 
@@ -118,7 +118,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 IstioのIaCについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 
@@ -128,7 +128,7 @@ IstioのIaCについては、以下のリンクを参考にせよ。
 
 Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。Istioリソースは、IaCによってマニフェストファイルで定義される。Istioのマニフェストファイルについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_container_kubernetes_custom_resource_istio_resource_definition.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 

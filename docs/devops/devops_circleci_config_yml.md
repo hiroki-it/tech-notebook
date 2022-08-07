@@ -85,7 +85,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のdockerコンテナを作成し、展開ファイルを元にテストを実施
+# 専用のコンテナを作成し、展開ファイルを元にテストを実施
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
@@ -514,7 +514,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ▼ dockerタイプとは
 
-dockerコンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+コンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境コンテナの中でコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境コンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 ℹ️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -1296,7 +1296,7 @@ Projectレベルより参照範囲が大きく、異なるプロジェクト間�
 
 #### ▼ dockerタイプの場合
 
-自分でdocker-composeをインストールする必要がある。実行環境としてのdockerコンテナと、ビルドしたdockerコンテナが入れ子にならないように、```setup_remote_docker```を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
+自分でdocker-composeをインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、```setup_remote_docker```を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
 
 ```yaml
 version: 2.1
@@ -1388,7 +1388,7 @@ jobs:
             docker network create foo-network
             docker-compose up --build -d
       - restore_vendor
-      # dockerコンテナに対してcomspoerコマンドを送信
+      # コンテナに対してcomspoerコマンドを送信
       - run:
           name: Composer install
           command: |
@@ -1402,17 +1402,17 @@ jobs:
           command: |
             # 代わりにsleepコマンドでも良い。
             dockerize -wait tcp://localhost:3306 -timeout 1m
-      # dockerコンテナに対してマイグレーションコマンドを送信
+      # コンテナに対してマイグレーションコマンドを送信
       - run:
           name: Run artisan migration
           command: |
             docker-compose exec laravel-container php artisan migrate --force
-      # dockerコンテナに対してPHP-Unitコマンドを送信
+      # コンテナに対してPHP-Unitコマンドを送信
       - run:
           name: Run unit test
           command: |
             dockercompose exec laravel-container ./vendor/bin/phpunit
-      # dockerコンテナに対してPHP-Stanコマンドを送信  
+      # コンテナに対してPHP-Stanコマンドを送信  
       - run:
           name: Run static test
           command: |
