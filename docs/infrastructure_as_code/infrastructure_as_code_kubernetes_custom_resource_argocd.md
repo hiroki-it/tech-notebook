@@ -1,0 +1,168 @@
+---
+title: 【IT技術の知見】ArgoCD＠DevOps
+description: ArgoCD＠DevOpsの知見を記録しています。
+---
+
+# ArgoCD＠DevOps
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
+## 01. ArgoCDの仕組み
+
+### アーキテクチャ
+
+ArgoCDサーバー、リポジトリサーバー、アプリケーションコントローラー、RedisDexサーバー、から構成される。
+
+ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+
+<br>
+
+### APIサーバー
+
+#### ▼ APIサーバーとは
+
+```argocd```コマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+
+ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### リポジトリサーバー
+
+#### ▼ リポジトリサーバーとは
+
+監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
+
+ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### Applicationコントローラー
+
+#### ▼ Applicationコントローラーとは
+
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再同期を試みる。
+
+ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+
+<br>
+
+### Redisサーバー
+
+#### ▼ Redisサーバーとは
+
+リポジトリサーバー内のマニフェストファイルのキャッシュを作成し、これを管理する。
+
+ℹ️ 参考：
+
+- https://weseek.co.jp/tech/95/
+- https://blog.manabusakai.com/2021/04/argo-cd-cache/
+
+<br>
+
+### Dexサーバー
+
+#### ▼ Dexサーバーとは
+
+ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
+
+ℹ️ 参考：
+
+- https://weseek.co.jp/tech/95/
+- https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
+- https://zenn.dev/onsd/articles/a3ea24b01da413
+
+<br>
+
+## 01-02. ユースケース
+
+### 共通
+
+#### ▼ 基本構成
+
+![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
+
+指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれに同期する。
+
+ℹ️ 参考：
+
+- https://blog.vpantry.net/2021/01/cicd-2/
+- https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
+- https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
+
+#### ▼ 検証
+
+Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。そのため、同期すれば元の状態に戻る。こういった点でも、ArgoCDを入れる方が、Kubernetesの修正の検証がしやすい。注意点として、マニフェストファイルに何かを追加するような変更は差分として認識されないため、同期しても元に戻らない。
+
+ℹ️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
+
+<br>
+
+### アプリケーションリポジトリ起点
+
+#### ▼ テンプレート構成管理ツールを使用しない場合
+
+![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks.png)
+
+（１）アプリケーションリポジトリで、開発者がアプリケーションの変更をmainブランチにマージする。
+
+（２）CIツールが、コンテナイメージをECRにプッシュする。
+
+（３）CIツールは、マニフェストリポジトリをクローンし、マニフェストファイルのコンテナイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。変更したマニフェストをマニフェストリポジトリにプッシュする。
+
+（４）プルリクエストを自動作成する。
+
+（５）マニフェストリポジトリで、リリース責任者がプルリクエストをmainブランチにマージする。
+
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
+
+ℹ️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+
+#### ▼ テンプレート構成管理ツールを使用した場合
+
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_eks_helm.png)
+
+（１）同じ
+
+（２）同じ
+
+（３）CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストファイルのコンテナイメージのハッシュ値を変更する。このマニフェストファイルの変更は、```yq```コマンドなどで直接的に実行する。
+
+（４）同じ
+
+（５）同じ
+
+（６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
+
+ℹ️ 参考：
+
+- https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
+- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
+
+<br>
+
+### マニフェストリポジトリ起点
+
+![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_gcp.png)
+
+ℹ️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+
+（１）マニフェストリポジトリで、開発者がマニフェストファイルの変更をmainブランチにマージする。
+
+（２）マニフェストリポジトリで、リリース責任者がマニフェストファイルやチャートの変更をmainブランチにマージする。
+
+（３）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
+
+<br>
+
+### チャートリポジトリ起点
+
+<br>

@@ -13,7 +13,18 @@ description: カスタムリソース@Kubernetesの知見を記録していま�
 
 <br>
 
-## 01. カスタムリソース定義
+## 01. カスタムリソースとは
+
+Kubernetesに標準で備わっていないKubernetesリソースを提供する。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+- https://www.amazon.co.jp/dp/B08FZX8PYW
+
+<br>
+
+## 01-02. カスタムリソース定義
 
 ### apiVersion
 

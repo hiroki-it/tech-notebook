@@ -13,39 +13,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 <br>
 
-## 01. Apacheの仕組み
-
-### アーキテクチャ
-
-Apacheは、Apacheコアとモジュールから構成される。モジュールには、静的/動的モジュールがある。静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている。一方で、動的モジュールは```mod_so```を使用して拡張機能的に組み込め、また取り外しできる。
-
-ℹ️ 参考：https://thinkit.co.jp/article/120/1
-
-![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apache_architecture.png)
-
-<br>
-
-## 01-02. ユースケース
-
-### リバースプロキシサーバーのミドルウェアとして
-
-#### ▼ HTTP/HTTPSプロトコルでルーティング
-
-#### ▼ FastCGIプロトコルでルーティング
-
-mod_fcgidモジュールを読み込むことによって、FastCGIプロトコルでルーティングできるようになる。
-
-ℹ️ 参考：https://httpd.apache.org/mod_fcgid/
-
-<br>
-
-### Appサーバーのミドルウェアとして
-
-mod_phpモジュールを読み込むことによって、Appサーバーのミドルウェアとしても機能させられる。
-
-<br>
-
-## 02. セットアップ
+## 01. セットアップ
 
 ### インストール
 
@@ -57,7 +25,7 @@ $ apt install apache2
 
 <br>
 
-## 03. 設定ファイルの種類
+## 02. 設定ファイルの種類
 
 ### ```httpd.conf```ファイル
 
@@ -96,7 +64,7 @@ Apacheの主要な設定ファイル。Includeディレクティブを使用す�
 
 <br>
 
-## 04. Coreにおける設定ディレクティブ
+## 03. Coreにおける設定ディレクティブ
 
 ### ServerRoot
 
@@ -257,7 +225,7 @@ MaxKeepAliveRequests 1000
 
 <br>
 
-## 04-02. mod_soにおける設定ディレクティブ
+## 03-02. mod_soにおける設定ディレクティブ
 
 ### LoadModule
 
@@ -277,7 +245,7 @@ LoadModule dir_module modules/mod_dir.so
 
 <br>
 
-## 04-03. mod_dirにおける設定ディレクティブ
+## 03-03. mod_dirにおける設定ディレクティブ
 
 ### DirectoryIndex
 
@@ -350,7 +318,7 @@ AllowOverride Indexes
 
 <br>
 
-## 04-04. mod_writeにおける設定ディレクティブ
+## 03-04. mod_writeにおける設定ディレクティブ
 
 ### RewriteCond
 
@@ -398,7 +366,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 <br>
 
-## 04-05. mod_setenvifにおける設定ディレクティブ
+## 03-05. mod_setenvifにおける設定ディレクティブ
 
 ### SetEnvIf
 
@@ -417,7 +385,7 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 <br>
 
-## 04-06. mod_log_configにおける設定ディレクティブ
+## 03-06. mod_log_configにおける設定ディレクティブ
 
 ### LogFormat
 
@@ -498,7 +466,7 @@ LogLevel warn
 
 <br>
 
-## 04-07. mod_sslにおける設定ディレクティブ 
+## 03-07. mod_sslにおける設定ディレクティブ 
 
 ### SSLCertificateFile
 
@@ -528,7 +496,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 <br>
 
-## 04-08. mod_headersにおける設定ディレクティブ
+## 03-08. mod_headersにおける設定ディレクティブ
 
 ### Header
 

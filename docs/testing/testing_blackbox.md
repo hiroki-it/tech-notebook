@@ -44,7 +44,7 @@ description: ブラックボックステストの知見を記録しています�
 
 機能追加/変更を含むコンポーネントのみが単体で正しく機能するかを検証する。
 
-参考：https://pm-rasinban.com/ut-it-st
+ℹ️ 参考：https://pm-rasinban.com/ut-it-st
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 
@@ -82,7 +82,7 @@ description: ブラックボックステストの知見を記録しています�
 
 機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく機能しているかを検証する。
 
-参考：https://pm-rasinban.com/ut-it-st
+ℹ️ 参考：https://pm-rasinban.com/ut-it-st
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_blackbox-test_unit_integration_system.png)
 

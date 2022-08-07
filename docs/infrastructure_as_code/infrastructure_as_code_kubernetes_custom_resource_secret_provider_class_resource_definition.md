@@ -13,9 +13,21 @@ description: リソース定義＠SecretProviderClassの知見を記録してい
 
 <br>
 
-## 01. SecretProviderClassとは
+## 01. セットアップ
 
-外部Secretストアのデータを参照する場合、Secretストアのプロバイダーを設定する。
+### チャートリポジトリから
+
+#### ▼ GitHubリポジトリから
+
+プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。
+
+ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+
+```bash
+$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+
+$ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
+```
 
 <br>
 
@@ -24,6 +36,8 @@ description: リソース定義＠SecretProviderClassの知見を記録してい
 ### spec.provider
 
 #### ▼ spec.providerとは
+
+
 
 ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 

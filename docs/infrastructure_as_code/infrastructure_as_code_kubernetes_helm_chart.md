@@ -130,7 +130,7 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
-参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
+ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>
 

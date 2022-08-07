@@ -50,11 +50,14 @@ title: 【IT技術の知見】目次
 #### ▼ Web系
 
 * Nginx
+    * [📖：︎Nginx](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx.html)
     * [📖：︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html)
 * Apache
+    * [📖：︎Apache](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache.html)
     * [📖：︎apache.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_conf.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html)
+    
 
 #### ▼ アプリケーション系
 
@@ -62,8 +65,10 @@ title: 【IT技術の知見】目次
     * [📖：︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html)
     * FastCGI
         * [📖：︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html)
+        * [📖：︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
     * WSGI
         * [📖：︎uWSGI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_uwsgi.html)
+        * [📖：︎設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_wsgi_conf.html)
     * ASGI
         * [📖：︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
@@ -79,6 +84,7 @@ title: 【IT技術の知見】目次
 #### ▼ サービスメッシュ系
 
 * Envoy
+    * [📖：︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
     * [📖：︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
 
 <br>
@@ -317,8 +323,10 @@ title: 【IT技術の知見】目次
     * [📖：カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)
     
     * ArgoCD
+        * [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html)
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
-    
+        * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
+        
     * Grafana
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
     
@@ -355,8 +363,8 @@ title: 【IT技術の知見】目次
 * [📖：設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
 * [📖：︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
 * tfファイル
-  * [📖：︎tfファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf.html)
-  * [📖：︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.html)
+    * [📖：︎tfファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf.html)
+    * [📖：︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.html)
 
 #### ▼ Vagrant
 
@@ -374,9 +382,6 @@ title: 【IT技術の知見】目次
 * CircleCI
     * [📖：︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
     * [📖：︎orbs](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_orbs.html)
-* ArgoCD
-    * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_resource_definition.html)
-    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd_policy.html)
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)
@@ -408,12 +413,13 @@ title: 【IT技術の知見】目次
 #### ▼ Datadog
 
 * [📖：︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html)
-* [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html)
-* [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html)
-* [📖：分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)
-* [📖：テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html)
 * [📖：︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_monitoring.html)
 * [📖：︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_integration.html)
+* テレメトリー収集
+    * [📖：︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html)
+    * [📖：︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html)
+    * [📖：分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)
+    * [📖：テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html)
 
 #### ▼ Googleアプリ
 

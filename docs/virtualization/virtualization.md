@@ -59,7 +59,7 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 Docker、Containerd、LXC、OpenVZ、など
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 

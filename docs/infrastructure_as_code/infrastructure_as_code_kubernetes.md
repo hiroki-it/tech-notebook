@@ -878,51 +878,6 @@ Kubernetesリソースの水平スケーリングを定義する。Metric server
 
 <br>
 
-## 03-07. カスタムリソース
-
-### カスタムリソースとは
-
-Kubernetesに標準で備わっていないKubernetesリソースを提供する。
-
-ℹ️ 参考：
-
-- https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
-- https://www.amazon.co.jp/dp/B08FZX8PYW
-
-<br>
-
-### SecretProviderClass
-
-#### ▼ SecretProviderClassとは
-
-外部Secretストアのデータを参照するための機能を提供する。
-
-#### ▼ セットアップ
-
-プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。
-
-ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
-
-```bash
-$ helm install -n kube-system csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver
-```
-
-#### ▼ CSIドライバー
-
-SecretProviderClassで定義されたプロバイダーのAPIと通信し、外部Secretのデータを参照する。その後、tmpfとしてVolumeに書き込む。
-
-ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-
-![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
-
-#### ▼ CSI Volume
-
-CSIの仕様によって標準化された外部ボリューム。プロバイダー上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
-
-ℹ️ 参考：https://thinkit.co.jp/article/17635
-
-<br>
-
 ## 04. Kubernetesネットワーク
 
 ### Nodeネットワーク
