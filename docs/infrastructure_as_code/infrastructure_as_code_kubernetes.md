@@ -23,14 +23,6 @@ description: Kubernetesの知見を記録しています。
 
 <br>
 
-### IaC
-
-KubernetesのIaCについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html
-
-<br>
-
 ## 01-02. コントロールプレーンコンポーネント（マスターコンポーネント）
 
 ### コントロールプレーンコンポーネントとは

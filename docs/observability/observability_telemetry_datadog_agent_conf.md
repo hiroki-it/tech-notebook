@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】datadogエージェントの設定＠テレメトリー収集ツール
-description: datadogエージェントの設定＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】datadogエージェントの設定＠Datadog
+description: datadogエージェントの設定＠Datadogの知見を記録しています。
 ---
 
-# datadogエージェントの設定＠テレメトリー収集ツール
+# datadogエージェントの設定＠Datadog
 
 ## はじめに
 

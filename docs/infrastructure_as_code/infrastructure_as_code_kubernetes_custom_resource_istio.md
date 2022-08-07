@@ -114,14 +114,6 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 <br>
 
-### IaC
-
-IstioのIaCについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
-
-<br>
-
 ## 02. リソースとオブジェクト
 
 ### Istioリソース

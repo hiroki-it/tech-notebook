@@ -13,14 +13,6 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. リソース定義＠Kubernetesとは
-
-Kubernetesを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_orchestration_kubernetes.html
-
-<br>
-
 ## 02. apiVersion
 
 Kubernetes-APIのバージョンを設定する。

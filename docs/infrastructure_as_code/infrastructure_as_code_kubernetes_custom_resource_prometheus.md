@@ -1,10 +1,10 @@
 ---
-title: 【IT技術の知見】Prometheus＠テレメトリー収集ツール
-description: Prometheus＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】Prometheus＠Kubernetes
+description: Prometheus＠Kubernetes
 
 ---
 
-# Prometheus＠テレメトリー収集ツール
+# Prometheus＠Kubernetes
 
 ## はじめに
 

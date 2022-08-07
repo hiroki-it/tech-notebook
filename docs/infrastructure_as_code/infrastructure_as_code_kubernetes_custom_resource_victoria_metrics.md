@@ -1,10 +1,10 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠テレメトリー収集ツール
-description: VictoriaMetrics＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】VictoriaMetrics＠Kubernetes
+description: VictoriaMetrics＠Kubernetesの知見を記録しています。
 
 ---
 
-# VictoriaMetrics＠テレメトリー収集ツール
+# VictoriaMetrics＠Kubernetes
 
 ## はじめに
 
