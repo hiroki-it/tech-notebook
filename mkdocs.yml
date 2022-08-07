@@ -121,9 +121,11 @@ nav:
           - Linux系: software/software_middleware_linux.md
           - ■ Web系:
               - ■ Nginx:
+                  - Nginx: software/software_middleware_web_nginx.md
                   - nginx.conf: software/software_middleware_web_nginx_conf.md
                   - コマンド: software/software_middleware_web_nginx_command.md
               - ■ Apache:
+                  - Apache: software/software_middleware_web_apache.md
                   - apache.conf: software/software_middleware_web_apache_conf.md
                   - コマンド: software/software_middleware_web_apache_command.md
           - ■ アプリケーション系:
