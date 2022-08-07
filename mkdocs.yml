@@ -312,7 +312,7 @@ nav:
               - ■ カスタムリソース:
                   - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
                   - ■ ArgoCD:
-                      - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource.md
+                      - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
                   - ■ Grafana:
