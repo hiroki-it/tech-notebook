@@ -13,7 +13,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 02. apiVersion
+## 01. apiVersion
 
 Kubernetes-APIのバージョンを設定する。
 
@@ -23,13 +23,13 @@ apiVersion: v1
 
 <br>
 
-## 02-02. kind
+## 01-02. kind
 
 作成されるKubernetesリソースの種類を設定する。
 
 <br>
 
-## 02-03. metadata
+## 01-03. metadata
 
 ### annotation
 
@@ -94,7 +94,7 @@ Kubernetesリソースを一意に識別するための名前を設定する。
 
 <br>
 
-## 03. Config
+## 02. Config
 
 ### clusters
 
@@ -323,7 +323,7 @@ users:
 
 <br>
 
-## 04. ConfigMap
+## 03. ConfigMap
 
 ### data
 
@@ -382,7 +382,7 @@ data:
 
 <br>
 
-## 05. CronJob
+## 04. CronJob
 
 ### spec.jobTemplate
 
@@ -465,7 +465,7 @@ spec:
 
 <br>
 
-## 06 Deployment
+## 05 Deployment
 
 ### spec.replicas
 
@@ -652,7 +652,7 @@ spec:
 
 <br>
 
-## 07. HorizontalPodAutoscaler
+## 06. HorizontalPodAutoscaler
 
 ### spec.scaleTargetRef
 
@@ -745,7 +745,7 @@ spec:
 
 <br>
 
-## 08. Ingress
+## 07. Ingress
 
 ### annotations
 
@@ -818,7 +818,7 @@ spec:
 
 <br>
 
-## 09. IngressClass
+## 08. IngressClass
 
 ### spec.controller
 
@@ -871,7 +871,7 @@ spec:
 
 <br>
 
-## 10. Job
+## 09. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -952,13 +952,13 @@ spec:
 
 <br>
 
-## 11. Node
+## 10. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
 
 <br>
 
-## 12. PersistentVolume
+## 11. PersistentVolume
 
 ### spec.accessModes
 
@@ -1286,7 +1286,7 @@ spec:
 
 <br>
 
-## 13. PersistentVolumeClaim
+## 12. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1354,7 +1354,7 @@ spec:
 
 <br>
 
-## 14. Pod
+## 13. Pod
 
 ### spec.affinity
 
@@ -2089,7 +2089,7 @@ spec:
 
 <br>
 
-## 15. ReplicaController
+## 14. ReplicaController
 
 旧Deployment。非推奨である。
 
@@ -2097,7 +2097,7 @@ spec:
 
 <br>
 
-## 16. Role、ClusterRole
+## 15. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -2155,7 +2155,7 @@ rules:
 
 <br>
 
-## 17. RoleBinding、ClusterRoleBinding
+## 16. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -2221,7 +2221,7 @@ subjects:
 
 <br>
 
-## 18. Secret
+## 17. Secret
 
 ### data
 
@@ -2403,7 +2403,7 @@ stringData:
 
 <br>
 
-## 19. Service
+## 18. Service
 
 ### spec.ports
 
@@ -2630,7 +2630,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 20. ServiceAccount
+## 19. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -2669,7 +2669,7 @@ imagePullSecrets:
 
 <br>
 
-## 21. ServiceEntry
+## 20. ServiceEntry
 
 ### spec.hosts
 
@@ -2729,7 +2729,7 @@ spec:
 
 <br>
 
-## 22. StatefulSet
+## 21. StatefulSet
 
 ### spec.serviceName
 
