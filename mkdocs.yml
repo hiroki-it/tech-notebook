@@ -307,7 +307,9 @@ nav:
               - ■ カスタムリソース:
                   - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
                   - ■ ArgoCD:
+                      - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
+                      - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
                   - ■ Grafana:
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
                   - ■ Istio:
@@ -346,9 +348,6 @@ nav:
       - ■ CircleCI:
           - config.yml: devops/devops_circleci_config_yml.md
           - orbs: devops/devops_circleci_orbs.md
-      - ■ ArgoCD:
-          - リソース定義: devops/devops_argocd_resource_definition.md
-          - 設計ポリシー: devops/devops_argocd_policy.md
       - ■ Skaffold:
           - skaffold.yaml: devops/devops_skaffold_yaml.md
           - コマンド: devops/devops_skaffold_command.md
