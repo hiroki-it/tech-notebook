@@ -132,6 +132,7 @@ nav:
               - GI: software/software_middleware_application_gi.md
               - ■ FastCGI:
                   - PHP-FPM: software/software_middleware_application_gi_fastcgi_php_fpm.md
+                  - 設定ファイル: software/software_middleware_application_gi_fastcgi_php_fpm_conf.md
               - ■ WSGI:
                   - uWSGI: software/software_middleware_application_gi_wsgi_uwsgi.md
                   - 設定ファイル: software/software_middleware_application_gi_wsgi_uwsgi_conf.md
