@@ -271,7 +271,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ignoreDifferencesとは
 
-特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admission-webhook機能、マニフェストファイルの自動整形、など）の場合に使用する。
+特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストファイルの自動整形、など）の場合に使用する。
 
 ℹ️ 参考：
 

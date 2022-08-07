@@ -260,7 +260,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 #### ▼ マスターNodeのアップグレードとは
 
-まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のkubernetesアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
+まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
 
 ℹ️ 参考：
 

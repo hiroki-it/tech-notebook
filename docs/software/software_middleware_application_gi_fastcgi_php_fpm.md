@@ -48,23 +48,7 @@ PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ
 
 <br>
 
-## 02. セットアップ
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install php-fpm
-```
-
-```bash
-$ apt-get install php-fpm
-```
-
-<br>
-
-## 03. コマンド
+## 02. コマンド
 
 ### php-fpmコマンド
 
@@ -106,7 +90,7 @@ $ systemctl status php-fpm.service
 
 <br>
 
-## 04. ログ
+## 03. ログ
 
 ### ログの種類
 

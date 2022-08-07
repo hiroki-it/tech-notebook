@@ -13,7 +13,23 @@ description: 設定ファイル＠PHP-FPMの知見を記録しています。
 
 <br>
 
-## 01. 設定ファイルの種類（※ Dockerの場合）
+## 01. セットアップ
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+```bash
+$ apt install php-fpm
+```
+
+```bash
+$ apt-get install php-fpm
+```
+
+<br>
+
+## 02. 設定ファイルの種類（※ Dockerの場合）
 
 ### ```/usr/local/etc/php-fpm.conf```ファイル
 
@@ -120,7 +136,7 @@ decorate_workers_output = no
 
 <br>
 
-## 02. globalセクション
+## 03. globalセクション
 
 ### error_log
 
@@ -144,7 +160,7 @@ pid = /run/php-fpm/php-fpm.pid
 
 <br>
 
-## 03. wwwセクション
+## 04. wwwセクション
 
 ### wwwセクションとは
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】kubernetesアドオン＠Kubernetes
-description: kubernetesアドオン＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】アドオン＠Kubernetes
+description: アドオン＠Kubernetesの知見を記録しています。
 ---
 
-# kubernetesアドオン＠Kubernetes
+# アドオン＠Kubernetes
 
 ## はじめに
 
@@ -42,14 +42,14 @@ admission-controllersアドオンは、2つのステップから構成されて�
 - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
 - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
-| ステップ             | 説明                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| mutating-admission   | 作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理を定義する。 |
-| validating-admission | パラメーターのバリデーションを実行する独自処理を定義する。   |
+| ステップ名                    | 説明                                                         |
+|--------------------------| ------------------------------------------------------------ |
+| mutating-admissionステップ   | 作成リクエストや変更リクエストのパラメーターを条件に応じて書き換える処理を定義する。 |
+| validating-admissionステップ | パラメーターのバリデーションを実行する独自処理を定義する。   |
 
 #### ▼ 使用アドオンの確認
 
-有効化されているadmission-controllersアドオンの機能は、コントロールプレーンのログから確認できる。
+各ステップで有効化されているadmission-controllersアドオンの機能は、コントロールプレーンのログから確認できる。
 
 ℹ️ 参考：https://sotoiwa.hatenablog.com/entry/2020/12/28/115826
 
@@ -70,21 +70,75 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 
 <br>
 
-### Webhookで送受信されるデータ
+### mutating-admissionステップ
 
-#### ▼ 構成
+#### ▼ ステップの設定例
+
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
+
+MutatingWebhookConfigurationにて、validating-admissionステップでのWebhookを設定できる。
 
 ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/
-- https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
+- https://gashirar.hatenablog.com/entry/2020/10/31/141357
+- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+**＊例＊**
 
 ```yaml
-# mutating-admission、validating-admission、でのkube-apiserverへのリクエスト
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: sidecar-injector-webhook-cfg
+  labels:
+    app: sidecar-injector
+webhooks:
+    # webhook名はDNS名にする。
+  - name: sidecar-injector.morven.me
+    # 発火ルールを登録する。（例：Podの作成/更新リクエスト時に発火する）
+    rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+    # Webhookサーバーの情報を登録する。
+    clientConfig:
+      # Webhookサーバーの前段にあるServiceを登録する。
+      service:
+        name: sidecar-injector-webhook-service
+        namespace: sidecar-injector
+        path: "/mutate"
+      # WebhookサーバーをCluster内部に自作する場合は、Webhookサーバーに証明書バンドルを登録する。
+      caBundle: Ci0tLS0tQk...
+    # 特定のラベル値のNamespaceに属するPodのみを対象とする。
+    namespaceSelector:
+      matchLabels:
+        # sidecar-injection=enabledのNamespaceに属するPodのみを対象とする。
+        sidecar-injection: enabled
+```
+
+#### ▼ Webhookサーバーの実装
+
+もしWebhookサーバーをCluster内部に自作する場合は、サーバーを別途実装する必要がある。また、Webhookを受信できるように、前段にServiceを配置する。
+
+ℹ️ 参考：https://gashirar.hatenablog.com/entry/2020/10/31/141357
+
+#### ▼ Webbookサーバーへのリクエストメッセージ
+
+kube-apiserverは、特定のリクエストを受信すると、Webhookサーバーに以下のリクエストメッセージを送信する。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+- https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
+
+**＊例＊**
+
+```yaml
 {
   "apiVersion": "admission.k8s.io/v1beta1",
   "kind": "AdmissionReview",
-  # kube-apiserverへのリクエストのパラメーター
+  # Webhookサーバーへのリクエストのパラメーター
   "request": {
     "uid": "705ab4f5-6393-11e8-b7cc-42010a800002",
     "kind": {"group":"autoscaling","version":"v1","kind":"Scale"},
@@ -113,14 +167,21 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 }
 ```
 
+#### ▼ Webbookサーバーからのレスポンスメッセージ
+
+Webhookサーバーは、以下のレスポンスメッセージを返信する。
+
+ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+
+**＊例＊**
+
 ```yaml
-# mutating-admissionの場合のkube-apiserverからのレスポンス
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
   "response": {
     "uid": "<value from request.uid>",
-    # 宛先のkube-apiserverでバリデーションに成功したか否か
+    # 宛先のWebhookサーバーが受信したか否か
     "allowed": true,
     "patchType": "JSONPatch",
     # PatchされるKubernetesリソース
@@ -129,14 +190,77 @@ I1228 00:21:20.695026 1 flags.go:33] FLAG: --enable-admission-plugins="[Namespac
 }
 ```
 
+<br>
+
+### validating-admissionステップ
+
+#### ▼ ステップの設定
+
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
+
+ValidatingWebhookConfigurationにて、validating-admissionステップでのWebhookを設定できる。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+- https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
+- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+**＊例＊**
+
 ```yaml
-# validating-admissionの場合のkube-apiserverからのレスポンス
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: foo-validation-webhook-configuration
+webhooks:
+    # webhook名はDNS名にする。
+  - name: foo.example.com
+    # 発火ルールを登録する。（例：Podの作成/更新リクエスト時に発火する）
+    rules:
+      - apiGroups:   [""]
+        apiVersions: ["v1"]
+        operations:  ["CREATE", "UPDATE"]
+        resources:   ["pods"]
+        scope:       "Namespaced"
+    # Webhookサーバーの情報を登録する。
+    clientConfig:
+      # Webhookサーバーの前段にあるServiceを登録する。
+      service:
+        namespace: foo-namespace
+        name: foo-webhook-service
+        port: 443
+        path: /validate
+      # WebhookサーバーをCluster内部に自作する場合は、Webhookサーバーに証明書バンドルを登録する。
+      caBundle: Ci0tLS0tQk...
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 5
+```
+
+#### ▼ Webhookサーバーの実装
+
+もしWebhookサーバーをCluster内部に自作する場合は、サーバーを別途実装する必要がある。また、Webhookを受信できるように、前段にServiceを配置する。
+
+#### ▼ Webbookサーバーへのリクエストメッセージ
+
+mutating-admissionステップと同じである。
+
+#### ▼ Webbookサーバーからのレスポンスメッセージ
+
+Webhookサーバーは、以下のレスポンスメッセージを返信する。
+
+ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+
+**＊例＊**
+
+```yaml
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
   "response": {
     "uid": "<value from request.uid>",
-    # 宛先のkube-apiserverでバリデーションに成功したか否か
+    # 宛先のWebhookサーバーが受信したか否か
     "allowed": true,
     "status": {
       "code": 403,

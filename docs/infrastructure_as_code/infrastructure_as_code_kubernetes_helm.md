@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】チャート＠Helm
-description: チャート＠Helmの知見を記録しています。
+title: 【IT技術の知見】Helm
+description: Helmの知見を記録しています。
 ---
 
-# チャート＠Helm
+# Helm
 
 ## はじめに
 

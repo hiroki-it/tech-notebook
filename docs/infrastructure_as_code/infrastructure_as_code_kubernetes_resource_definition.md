@@ -84,7 +84,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 ℹ️ 参考：
 
 - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
-- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm_chart.html
+- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm.html
 
 <br>
 

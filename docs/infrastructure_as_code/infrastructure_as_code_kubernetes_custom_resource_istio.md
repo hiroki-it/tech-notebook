@@ -45,7 +45,7 @@ description: Istio＠Kubernetesの知見を記録しています。
 
 #### ▼ ```istio-proxy```コンテナが作成される仕組み
 
-サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成する処理は、admission-controllersのmutating-admission-webhookを使用した機能である。istio-injectionが有効になっている場合、Podの作成処理時に、KubernetesからIstioにWebhookが送信される。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admission時に、WebhookがIstio内のsidecar-injector-webhookサーバーの```/inject```エンドポイントに送信される。これを受信したsidecar-injector-webhookサーバーは、istio-proxyコンテナを作成する処理を返信する。Kubernetesはこれを受信し、Podにistio-proxyコンテナを作成する。
+サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成する処理は、admission-controllersのmutating-admissionステップでのWebhookを使用した機能である。istio-injectionが有効になっている場合、Podの作成処理時に、KubernetesからIstioにWebhookが送信される。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admission時に、WebhookがIstio内のsidecar-injector-webhookサーバーの```/inject```エンドポイントに送信される。これを受信したsidecar-injector-webhookサーバーは、istio-proxyコンテナを作成する処理を返信する。Kubernetesはこれを受信し、Podにistio-proxyコンテナを作成する。
 
 ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
 

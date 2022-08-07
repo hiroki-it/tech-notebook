@@ -442,18 +442,22 @@ IngressコントローラーによってClusterネットワーク外からイン
 - https://thinkit.co.jp/article/18263
 - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
-#### ▼ 使用例
+#### ▼ ルーティングパラメーター
 
-| パラメーター |                                                              |
+| ルーティングパラメーター名 |                                                              |
 | ------------ | ------------------------------------------------------------ |
 | パス         | パスの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout<br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png) |
 | ```Host```ヘッダー | ```Host```ヘッダーの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting<br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
 
-#### ▼ Ingressコントローラー
+<br>
+
+### Ingressコントローラー
+
+#### ▼ Ingressコントローラーとは
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+Ingressコントローラーは、Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 ℹ️ 参考：
 
@@ -476,6 +480,27 @@ Ingressの設定に基づいてClusterネットワーク外からのインバウ
 | Nginx Ingressコントローラー                           | ✅        | ✅        |
 | Istio Ingress                                         | ✅        | ✅        |
 | Istio Gateway（Ingressとしても使用できる）            | ✅        | ✅        |
+
+#### ▼ SSL証明書の割り当て
+
+![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller_certificate.png)
+
+Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
+
+参考：
+
+- https://blog.sakamo.dev/post/ingress-nginx/
+- https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
+
+#### ▼ Ingressの設定値のバリデーション
+
+Ingressコントローラーは、『```***-controller-admission```』というServiceでWebhookサーバーを公開している。このWebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。これにより、不正なIngressが稼働することを防止できる。このWebhookサーバーの登録時、まず『```***-create```』というPodが有効期限の長いSSL証明書を持つSecretを作成する。その後、『```***-patch```』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、WebhookサーバーにSSL証明書が割り当てられる。
+
+参考：
+
+- https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
+- https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
+- https://blog.sakamo.dev/post/ingress-nginx/
 
 <br>
 
