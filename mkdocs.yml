@@ -316,10 +316,12 @@ nav:
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                   - ■ Prometheus:
+                      - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
                   - ■ SecretProviderClass:
                         - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.md
-
+                  - ■ VictoriaMetrics:
+                      - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.md
           - ■ Packer:
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
           - ■ Serverless Framework:
@@ -358,8 +360,6 @@ nav:
           - サービスレベル: observability/observability_monitoring_service_level.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
-          - Prometheus: observability/observability_telemetry_prometheus.md
-          - VictoriaMetrics: observability/observability_telemetry_victoria_metrics.md
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
