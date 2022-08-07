@@ -134,6 +134,7 @@ nav:
                   - PHP-FPM: software/software_middleware_application_gi_fastcgi_php_fpm.md
               - ■ WSGI:
                   - uWSGI: software/software_middleware_application_gi_wsgi_uwsgi.md
+                  - 設定ファイル: software/software_middleware_application_gi_wsgi_uwsgi_conf.md
               - ■ ASGI:
                   - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
           - ■ データベース系:
