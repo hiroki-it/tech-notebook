@@ -300,7 +300,7 @@ nav:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
-              - kubernetesアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
+              - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
               - ■ Helm:
                   - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_helm.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_command.md
