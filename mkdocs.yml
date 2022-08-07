@@ -369,13 +369,13 @@ nav:
               - FireLensコンテナ: observability/observability_telemetry_fluentbit_firelens.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
-              - メトリクス収集: observability/observability_telemetry_datadog_metrics.md
-              - ログ収集: observability/observability_telemetry_datadog_log.md
-              - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
-              - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
               - インテグレーション: observability/observability_telemetry_datadog_integration.md
-
+              - ■ テレメトリー収集:
+                  - メトリクス収集: observability/observability_telemetry_datadog_metrics.md
+                  - ログ収集: observability/observability_telemetry_datadog_log.md
+                  - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
+                  - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
   - 👥 ソフトウェア開発手法論/SREing:
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
