@@ -911,7 +911,7 @@ class FooTest extends TestCase
 
 ### PHPStanとは
 
-静的解析を実行する。
+静的解析による構文テストを実施する。
 
 <br>
 
@@ -919,7 +919,7 @@ class FooTest extends TestCase
 
 #### ▼ オプション無し
 
-全てのファイルを対象として、静的解析を行う
+全てのファイルを対象として、静的解析による構文テストを実施する。
 
 ```bash
 $ vendor/bin/phpstan analyse

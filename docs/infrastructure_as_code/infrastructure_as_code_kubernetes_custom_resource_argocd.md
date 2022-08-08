@@ -17,7 +17,7 @@ description: ArgoCD＠DevOpsの知見を記録しています。
 
 ### アーキテクチャ
 
-ArgoCDサーバー、リポジトリサーバー、アプリケーションコントローラー、RedisDexサーバー、から構成される。
+argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
 
 ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
@@ -25,19 +25,27 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 <br>
 
-### APIサーバー
+### argocd-server
 
-#### ▼ APIサーバーとは
+#### ▼ argocd-serverとは
 
-```argocd```コマンドのクライアントやダッシュボードからリクエストを受信し、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+```argocd```コマンドクライアントのエンドポイントやダッシュボードを公開し、リクエストに応じて、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
 
 ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
+#### ▼ ダッシュボードの公開
+
+ワーカーNodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
+
+参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
+
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
+
 <br>
 
-### リポジトリサーバー
+### repo-server
 
-#### ▼ リポジトリサーバーとは
+#### ▼ repo-serverとは
 
 監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
 
@@ -45,21 +53,21 @@ ArgoCDサーバー、リポジトリサーバー、アプリケーションコ�
 
 <br>
 
-### Applicationコントローラー
+### application-controller
 
-#### ▼ Applicationコントローラーとは
+#### ▼ application-controllerとは
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。リポジトリサーバーからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再同期を試みる。
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれをapplyする。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再同期を試みる。
 
 ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
 <br>
 
-### Redisサーバー
+### redis-server
 
-#### ▼ Redisサーバーとは
+#### ▼ redis-serverとは
 
-リポジトリサーバー内のマニフェストファイルのキャッシュを作成し、これを管理する。
+repo-server内のマニフェストファイルのキャッシュを作成し、これを管理する。
 
 ℹ️ 参考：
 
@@ -68,9 +76,9 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 
 <br>
 
-### Dexサーバー
+### dex-server
 
-#### ▼ Dexサーバーとは
+#### ▼ dex-serverとは
 
 ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
 

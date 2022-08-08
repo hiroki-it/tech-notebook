@@ -487,7 +487,7 @@ Ingressコントローラーは、Ingressの設定に基づいてClusterネッ�
 
 Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
 
-参考：
+ℹ️ 参考：
 
 - https://blog.sakamo.dev/post/ingress-nginx/
 - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
@@ -496,7 +496,7 @@ Ingressコントローラーは、Secretに設定されたSSL証明書を参照�
 
 Ingressコントローラーは、『```***-controller-admission```』というServiceでWebhookサーバーを公開している。このWebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。これにより、不正なIngressが稼働することを防止できる。このWebhookサーバーの登録時、まず『```***-create```』というPodが有効期限の長いSSL証明書を持つSecretを作成する。その後、『```***-patch```』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、WebhookサーバーにSSL証明書が割り当てられる。
 
-参考：
+ℹ️ 参考：
 
 - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
 - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks

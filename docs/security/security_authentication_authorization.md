@@ -418,20 +418,20 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ▼ SSOとは
 
-Webサイトごとに認証/認可を行うのではなく、特定のWebサイトに認証フェーズを委譲し、認可フェースはWebサイト別に行う。
+Webサイトごとに認証フェーズと認可フェーズを行うのではなく、認証フェーズは特定のWebサイトに委譲し、認可フェースだけはWebサイトごとに実施する。
 
 #### ▼ 認証フェーズと認可フェーズ
+
+1. クライアントが、HTTPリクエストにIDとパスワードを設定してリクエスト。
+2. IdP：Identity Providerが、IDを『認証』し、クライアント側にアクセストークンを発行。
+3. クライアントが、HTTPリクエストのヘッダーにアクセストークンを設定してリクエスト。
+4. アクセストークンが『認可』されれば、API側がデータをレスポンスする。
 
 ![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.jpg)
 
 SSOには、認証フェーズと認可フェーズがあり、```3```個の役割が定義されている。
 
 ℹ️ 参考：https://japan.zdnet.com/article/35126144/
-
-1. クライアントが、HTTPリクエストにIDとパスワードを設定してリクエスト。
-2. IdP：Identity Providerが、IDを『認証』し、クライアント側にアクセストークンを発行。
-3. クライアントが、HTTPリクエストのヘッダーにアクセストークンを設定してリクエスト。
-4. アクセストークンが『認可』されれば、API側がデータをレスポンスする。
 
 | 役割              | 説明                                                         | 例                                          |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------- |
@@ -444,6 +444,14 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 認証フェーズにて、誤ったトークンが発行されたことを表現したい場合、```401```ステータスを使用する。認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に閲覧権限がないことを表現したい場合、```403```ステータスを使用する。ステータスコードについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+
+#### ▼ 共通認証フェーズとして使用できるサービス
+
+（例）Auth0、Facebook、GitHub、GitLab、Google
+
+参考：https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
+
+![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/auth0_sso.png)
 
 <br>
 

@@ -249,7 +249,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | ------------ | ------------------------------------------------------------ |
 | Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があればapplyする。 |
 | Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
-| Hard Refresh | Redisサーバーに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
+| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
 | Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースをapplyすることはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
 
 #### ▼ ヘルスステータスの種類
@@ -259,7 +259,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | ステータス名 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Healthy      | 全てのKubernetesリソースは正常に稼働している。               |
-| Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。 |
+| Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。 |
 | Degraded     | 一部のKubernetesリソースは正常に稼働していない。             |
 | Suspended    | 一部のKubernetesリソースは、イベント（例：CronJobなど）が実行されることを待機している。 |
 | Missing      | 調査中...                                                    |
@@ -697,7 +697,7 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 | 設定項目         | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```prune```      | リソースをapplyしつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
+| ```prune```      | リソースをapplyしつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
 | ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
 | ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
@@ -935,6 +935,7 @@ metadata:
   name: foo-blue-green-rollout
 spec:
   strategy:
+    # B/Gデプロイメイト
     blueGreen:
       activeService: foo-active-service
       previewService: foo-preview-service
@@ -966,6 +967,7 @@ metadata:
   name: foo-canary-rollout
 spec:
   strategy:
+    # カナリアリリース
     canary:
       steps:
         - setWeight: 25
