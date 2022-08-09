@@ -375,9 +375,9 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 ## 01-03. 複数の認証の組み合わせ
 
-### Two Step Verification（二段階認証）
+### TSV：Two Step Verification（二段階認証）
 
-#### ▼ Two Step Verificationとは
+#### ▼ 二段階認証とは
 
 認証時に、段階的に```2```個の方法を設定し、クライアントを照合する。
 
@@ -390,19 +390,26 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 <br>
 
-### Two Factor Authorization（二要素認証）
+### TFA：Two Factor Authorization（二要素認証）
 
-#### ▼ Two Factor Authorizationとは
+#### ▼ 二要素認証とは
 
-二段階認証のうちで特に、認証時に異なる要素の方法を使用して、段階的にクライアントを照合すること方法のこと。後述するOAuth認証を組み込んでも良い。
+二段階認証のうちで特に、認証時に異なる要素の方法を使用して、段階的にクライアントを照合すること方法のこと。
 
 | 一要素目の認証例       | 二要素目の認証例                                             |
 | ---------------------- | ------------------------------------------------------------ |
-| IDとパスワード（知識） | 事前登録された電話番号のSMSで受信したワンタイムパスワード（所持） |
+| IDとパスワード（知識） | 事前に連携登録されたQRコード読込アプリで発行したワンタイムパスワード（所持） |
+|                        | 事前登録された電話番号のSMSで受信したワンタイムパスワード（所持） |
 |                        | 事前登録された電話番号のSMSで受信した認証コード（所持）      |
 |                        | OAuth認証（所持）                                            |
 |                        | 指紋（生体）                                                 |
 | 暗証番号（知識）       | キャッシュカード（所持）                                     |
+
+<br>
+
+### MFA：Multiple Factor Authorization（多要素認証）
+
+#### ▼ 多要素認証とは
 
 <br>
 
@@ -418,7 +425,9 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ▼ SSOとは
 
-Webサイトごとに認証フェーズと認可フェーズを行うのではなく、認証フェーズは特定のWebサイトに委譲し、認可フェースだけはWebサイトごとに実施する。
+Webサイトごとに認証フェーズと認可フェーズを行うのではなく、認証フェーズは特定のWebサイトに委譲し、認可フェースだけはWebサイトごとに実施する。セキュリティ強度の向上というよりは、利便性の向上のために使用することが多い。そのため別途、二要素認証などと組み合わせて、セキュリティ強度を向上させた方が良い。二要素認証とSSOを組み合わせる場合、委譲先の外部の認証フェーズに二要素認証を追加することになる（例：GitHubアカウントを用いたSSO時に、ワンタイムパスワードの入力も要求される）。
+
+ℹ️ 参考：https://www.idnetworks.co.jp/wP/2014/04/04/sso-with-2fa/
 
 #### ▼ 認証フェーズと認可フェーズ
 
@@ -449,7 +458,7 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 （例）Auth0、Facebook、GitHub、GitLab、Google
 
-参考：https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
+ℹ️ 参考：https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
 
 ![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/auth0_sso.png)
 

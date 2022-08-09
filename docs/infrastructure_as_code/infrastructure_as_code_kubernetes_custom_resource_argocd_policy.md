@@ -163,7 +163,7 @@ repository/
 
 認証認可の手法としてSSOを採用する。認証フェーズを外部（Auth0、GitHub、GitLab、など）に委譲し、ArgoCDでは認可フェーズのみを実施する。
 
-参考：https://int128.hatenablog.com/entry/2019/10/03/134508
+ℹ️ 参考：https://int128.hatenablog.com/entry/2019/10/03/134508
 
 <br>
 
@@ -196,7 +196,7 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 ```bash
 $ kubectl patch crd applications.argoproj.io \
-    -p '{"metadata":{"finalizers":[]}} ' \
+    -p '{"metadata":{"finalizers":[]}}' \
     --type=merge
 ```
 
@@ -206,7 +206,7 @@ $ kubectl patch crd applications.argoproj.io \
 
 ```bash
 $ kubectl patch ns argocd \
-    -p '{"metadata":{"finalizers":[]}} ' \
+    -p '{"metadata":{"finalizers":[]}}' \
     --type=merge
 ```
 

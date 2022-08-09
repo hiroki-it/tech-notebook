@@ -15,16 +15,13 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ## 01. 全部入りセットアップ
 
-### チャートリポジトリから
+### マニフェストファイルとして
 
 #### ▼ GCRから
 
-プロファイルを指定し、GCRからIstioのチャートをインストールする。istioctlのDockerfileにURLが定義されている。
+プロファイルを指定し、Istioのマニフェストファイルをインストールする。
 
-ℹ️ 参考：
-
-- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
-- https://github.com/istio/istio/blob/master/istioctl/docker/Dockerfile.istioctl
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
 # gcr.io/istio-release/baseから
@@ -35,9 +32,11 @@ $ istioctl install --set profile=demo
 
 ## 01-02. コンポーネント別セットアップ
 
-#### ▼ Google APIsから
+### チャートとして
 
-googleapisチャートリポジトリから、Ingressのコンポーネント別にチャートをインストールする。
+#### ▼ Google-APIsから
+
+Google-APIsから、Istioのコンポーネント別にチャートをインストールする。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
@@ -46,12 +45,15 @@ $ helm repo add istio https://istio-release.storage.googleapis.com/charts
 $ helm repo update
 
 # 共通部分（IstioBase）のみ
+# baseチャート
 $ helm install -n istio-system istio-base istio/base
 
 # Istiodのみ
+# istiodチャート
 $ helm install -n istio-system istiod istio/istiod
 
 # IngressGatewayのみ
+# gatewayチャート
 $ helm install -n istio-system istio-ingressgateway istio/gateway
 ```
 

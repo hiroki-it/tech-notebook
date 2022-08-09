@@ -238,6 +238,51 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 <br>
 
+### セットアップ（ライブラリとして）
+
+#### ▼ GitHubリポジトリから
+
+サーバー内でライブラリとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールする。
+
+```bash
+# node-exporterの場合
+# https://github.com/prometheus/node_exporter
+$ curl -fsOL https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz
+$ tar xvf node_exporter-1.0.0.linux-amd64.tar.gz
+$ mv node_exporter-1.0.0.linux-amd64/node_exporter /usr/local/bin/node_exporter
+```
+
+<br>
+
+### セットアップ（チャートとして）
+
+#### ▼ GitHubリポジトリから
+
+GitHubから目的に応じたチャートをインストールする。
+
+```bash
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+
+# 一括の場合
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+$ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
+
+# node-exporterの場合
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
+$ helm install prometheus-node-exporter prometheus-community/prometheus-node-exporter -n prometheus -f values.yaml
+
+# kube-state-metricsの場合
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
+$ helm install kube-state-metrics prometheus-community/kube-state-metrics -n prometheus -f values.yaml
+
+# mysql-exporterの場合
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
+$ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-exporter -n prometheus -f values.yaml
+```
+
+<br>
+
 ### Exporterタイプ
 
 #### ▼ Exporterタイプの種類
@@ -260,7 +305,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 | Exporter名                                                   | Exportタイプ | ポート番号 | エンドポイント | 説明                                                         |
 | :----------------------------------------------------------- | ------------ | ---------- | -- | ------------------------------------------------------------ |
 | [node-exporter](https://github.com/prometheus/node_exporter) | DaemonSet型  | ```9100``` | ```/metrics``` | ノードに関するメトリクスのデータポイントを収集する。         |
-| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上 | Kubernetesのリソース単位でメトリクスのデータポイントを収集する。<br>ℹ️ 参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
+| [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) | Deplyoment型 | ```8080``` | 同上 | Exporterという名前ではないが、Exporterの一種である。<br>参考：https://kashionki38.hatenablog.com/entry/2020/08/06/011420<br>Kubernetesのリソース単位でメトリクスのデータポイントを収集する。<br>ℹ️ 参考：https://tech-blog.abeja.asia/entry/2016/12/20/202631 |
 | [process-exporter](https://github.com/ncabatoff/process-exporter) | DaemonSet型  | ```9256``` | 同上 | 特定のプロセスに関するメトリクスのデータポイントを収集する。 |
 | [nginx-vts-exporter](https://github.com/hnlq715/nginx-vts-exporter) | Sidecar型    | ```9113``` | 同上 | Nginxに関するメトリクスのデータポイントを収集する。          |
 | [apache-exporter](https://github.com/Lusitaniae/apache_exporter) | Sidecar型    | ```9117``` | 同上 | Apacheに関するメトリクスのデータポイントを収集する。         |

@@ -37,7 +37,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 ワーカーNodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
 
-参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
+ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 
 ![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 

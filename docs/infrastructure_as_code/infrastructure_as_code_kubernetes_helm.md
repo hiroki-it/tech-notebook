@@ -330,7 +330,7 @@ version: <バージョンタグ>
 
 #### ▼ fullnameOverride
 
-デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。```nameOverride```オプションとは独立しており、```fullnameOverride```オプションでインストールしたリリースをアンインストールする前に```nameOverride```オプションを有効化してしまうと、```fullnameOverride```オプション時のKubernetesリソースが残骸として残ってしまう。
 
 #### ▼ image.pullPolicy
 
@@ -366,7 +366,7 @@ Ingressの作成を有効化する。
 
 #### ▼ nameOverride
 
-デフォルトでは、チャートによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```nameOverride```オプションを設定していた場合、Kubernetesリソース名は『```＜リリース名＞-＜nameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。
+デフォルトでは、チャートによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```nameOverride```オプションを設定していた場合、Kubernetesリソース名は『```＜リリース名＞-＜nameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。```fullnameOverride```オプションとは独立しており、```nameOverride```オプションでインストールしたリリースをアンインストールする前に```fullnameOverride```オプションを有効化してしまうと、```nameOverride```オプション時のKubernetesリソースが残骸として残ってしまう。
 
 #### ▼ nodeSelector
 

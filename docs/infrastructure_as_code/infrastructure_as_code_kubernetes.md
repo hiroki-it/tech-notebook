@@ -897,9 +897,11 @@ Kubernetesリソースの水平スケーリングを定義する。Metric server
 
 <br>
 
-### VertialPodAutoscaler
+### VerticalPodAutoscaler
 
-#### ▼ HorizontalPodAutoscalerとは
+#### ▼ VerticalPodAutoscalerとは
+
+ℹ️ 参考：https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
 
 <br>
 

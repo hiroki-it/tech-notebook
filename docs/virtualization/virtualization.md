@@ -25,13 +25,13 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ ホスト型仮想化とは
 
+![ホスト型仮想化](https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png)
+
 物理サーバーのホスト上で、仮想サーバー（仮想マシン）を作成する。
 
 #### ▼ Provider例
 
 Oracle VM VirtualBox、VMware Workstation、など
-
-![ホスト型仮想化](https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png)
 
 <br>
 
@@ -39,13 +39,13 @@ Oracle VM VirtualBox、VMware Workstation、など
 
 #### ▼ ハイパーバイザー型仮想化とは
 
+![ハイパーバイザー型仮想化](https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png)
+
 物理サーバーのBIOSから起動したハイパーバイザー上で、仮想サーバー（仮想マシン）を作成する。この時、ホストは使用しない。
 
 #### ▼ Provider例
 
 VMware vSphere Hypervisor、Xen、KVM、など
-
-![ハイパーバイザー型仮想化](https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png)
 
 <br>
 
@@ -53,15 +53,18 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 #### ▼ コンテナ型仮想化とは
 
+![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
+
 物理サーバーのホスト上で、仮想サーバーと同様の機能を持つコンテナを作成する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを使用して、単一のOS上に独立したコンテナを作成する。
 
 #### ▼ Provider例
 
-Docker、Containerd、LXC、OpenVZ、など
+Docker、Containerd、Podman、LXC、OpenVZ、など
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+ℹ️ 参考：
 
-![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
+- https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+- https://news.mynavi.jp/techplus/article/zerocontena-7/
 
 <br>
 

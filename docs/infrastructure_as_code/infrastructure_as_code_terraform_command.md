@@ -127,8 +127,10 @@ $ terraform apply foo.tfplan
 Initializing provider plugins...
 - Reusing previous version of hashicorp/aws from the dependency lock file
 - Reusing previous version of pagerduty/pagerduty from the dependency lock file
-- Installing hashicorp/aws v4.3.0...
+# AWSプロバイダーのバージョン
+- Installing hashicorp/aws v4.3.0... 
 - Installed hashicorp/aws v4.3.0 (signed by HashiCorp)
+# 使用しているその他のプロバイダーのバージョン
 - Installing foo/bar v2.3.0...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
@@ -384,9 +386,7 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
 
-#### 
-
-<br>
+ <br>
 
 ### plan
 
@@ -421,7 +421,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。
+特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使える。
 
 ```bash
 $ terraform plan \

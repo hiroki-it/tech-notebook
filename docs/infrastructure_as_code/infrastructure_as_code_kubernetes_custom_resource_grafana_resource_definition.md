@@ -15,26 +15,34 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 ## 01. セットアップ
 
-### チャートリポジトリから
+### チャートとして
 
-#### ▼ grafanaチャートリポジトリから
+#### ▼ GitHubリポジトリから
 
-最小構成をapplyする場合、grafanaチャートのみをインストールする。
+GitHubリポジトリからgrafanaチャートをインストールする。
 
 ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 ```bash
-$ helm install <リリース名> grafana/grafana
+$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm repo update
+
+$ helm install grafana grafana/grafana -n grafana -f values.yaml
 ```
 
-#### ▼ kube-prometheus-stackチャートリポジトリから
+Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールする。
 
-Prometheusと連携しやすくする場合は、helmチャートのkube-prometheus-stackチャートをインストールする。
+ℹ️ 参考：
 
-ℹ️ 参考：https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+- https://github.com/prometheus-operator/prometheus-operator#helm-chart
+- https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
 ```bash
-$ helm install <リリース名> prometheus-community/kube-prometheus-stack
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+
+$ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
 ```
 
 <br>
