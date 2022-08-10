@@ -202,5 +202,5 @@ Datadog社の物理サーバーからリクエストが送信される。物理�
 
 ## 06. コスト
 
-https://docs.datadoghq.com/account_management/billing/usage_details/
+ℹ️ 参考：https://docs.datadoghq.com/account_management/billing/usage_details/
 

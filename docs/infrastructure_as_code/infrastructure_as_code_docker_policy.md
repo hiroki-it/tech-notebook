@@ -298,3 +298,18 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 - https://www.creationline.com/lab/aquasecurity/43087
 
 <br>
+
+## 05. CIパイプライン
+
+### Dockerfileのホワイトボックステスト
+
+#### ▼ 静的解析
+
+```docker build```コマンドを使用し、Dockerfileの構文テストを実施する。これは、CIパイプライン上で実施しても良い。
+
+#### ▼ セキュリティテスト
+
+外部のセキュリティテストツール（例：trivy）を使用し、Dockerfileの脆弱性検出テストを実施する。これは、CIパイプライン上で実施しても良い。
+
+<br>
+

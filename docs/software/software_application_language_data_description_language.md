@@ -17,8 +17,6 @@ description: データ記述言語＠言語の知見を記録しています。
 
 ### JSON：JavaScript Object Notation
 
-一番外側を波括弧で囲う。
-
 ```json
 {
   "account": 200,
@@ -31,7 +29,7 @@ description: データ記述言語＠言語の知見を記録しています。
 
 <br>
 
-### YAML：YAML Ain"t a Markup Language
+### YAML：YAML Ain't a Markup Language
 
 ```yaml
 account: 200  

@@ -15,17 +15,19 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ## 01. 全部入りセットアップ
 
-### マニフェストファイルとして
+### チャートとして
 
 #### ▼ GCRから
 
-プロファイルを指定し、Istioのマニフェストファイルをインストールする。
+プロファイルを指定し、Istioのチャートをインストールする。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
-ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 ```bash
-# gcr.io/istio-release/baseから
 $ istioctl install --set profile=demo
+
+# 外部のチャートを使用する場合
+$ istioctl install --manifests=foo-chart
 ```
 
 <br>

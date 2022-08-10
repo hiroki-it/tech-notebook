@@ -239,7 +239,7 @@ http {
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
-https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
 **＊実装例＊**
 

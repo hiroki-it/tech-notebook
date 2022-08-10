@@ -279,7 +279,7 @@ foo-release         ./charts/foo         0.0.1
 
 #### ▼ destroyとは
 
-インストール済みの全てのリリースをアンインストールする。
+インストール済みの全てのチャートをアンインストールする。
 
 ℹ️ 参考：https://github.com/helmfile/helmfile#destroy
 

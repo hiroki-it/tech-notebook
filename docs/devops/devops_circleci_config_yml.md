@@ -109,7 +109,7 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 各テストのパフォーマンスや成功失敗率を確認できる。
 
-https://circleci.com/docs/2.0/insights-tests/
+ℹ️ 参考：https://circleci.com/docs/2.0/insights-tests/
 
 #### ▼ SSHキー
 

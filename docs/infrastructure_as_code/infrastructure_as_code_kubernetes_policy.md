@@ -17,6 +17,8 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ### 開発環境
 
+#### ▼ Kubernetesの実行環境
+
 ℹ️ 参考：
 
 - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
@@ -30,9 +32,17 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 | マルチNode             | 不可                                                         | 可能                                                         | 可能                                                 |
 | Nodeのカスタマイズ性   | 高い                                                         | 低い                                                         | 高い                                                 |
 
+#### ▼ Kubernetesリソースのapply
+
+|      | Skaffold                                                     | Telepresence                                                 |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesの検証環境に転送する。<br>参考：https://thinkit.co.jp/article/17853 |
+
 <br>
 
 ### 本番環境
+
+#### ▼ Kubernetesの実行環境
 
 ℹ️ 参考：https://techstep.hatenablog.com/entry/2019/12/23/000715
 
@@ -41,6 +51,12 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 | 説明       | オンプレ、仮想サーバー上にマスターNodeやワーカーNodeとなる仮想サーバーを事前に作成しておく。仮想サーバー上にKubernetesをセットアップする。 | オンプレ/仮想サーバー上にマスターNodeやワーカーNodeとなる仮想サーバーを事前に作成しておく。ツールを使用して、仮想サーバー上にKubernetesをセットアップする。 | クラウドプロバイダーが仮想サーバー上にKubernetesをセットアップしてくれている。 |
 | メリット   | 全て自前なため、自由にカスタマイズできる。                   | カスタマイズ性が高い。                                       | マネージドであるため、ユーザーがKubernetesのNodeを管理するコストが低い。2022年3月の現在では、Kubernetesの本番環境として、ベタープラクティスである。 |
 | デメリット | ユーザーがKubernetesのNodeを管理するコストが高い。           | ユーザーがKubernetesのNodeを管理するコストが高い。           | カスタマイズ性が低い                                         |
+
+#### ▼ Kubernetesリソースのapply
+
+|      | kubectl apply                                                | ArgoCD                                                       |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 概要 | CIOpsによって、Kubernetesの本番環境にKubernetesリソースをapplyする。非推奨である。 | GitOpsによって、Kubernetesの本番環境にKubernetesリソースをapplyする。 |
 
 <br>
 

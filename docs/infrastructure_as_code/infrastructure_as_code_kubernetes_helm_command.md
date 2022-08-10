@@ -177,7 +177,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 #### ▼ listとは
 
-Helmを使用してapplyしたリリースの一覧を取得する。チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
+リリースの一覧を取得する。チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 ℹ️ 参考：https://helm.sh/docs/helm/helm_list/
 
@@ -485,7 +485,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 
 #### ▼ uninstallとは
 
-インストール済みのリリースを指定し、インストールされたKubernetesリソースを削除する。
+リリースを指定し、そのリリースでインストールされたKubernetesリソースを削除する。
 
 ℹ️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
@@ -499,7 +499,7 @@ $ helm uninstall <リリース名>
 
 #### ▼ upgradeとは
 
-指定したバージョンのチャートを使用して、インストール済みのリリースをアップグレードする。
+指定したバージョンのチャートを使用して、リリースをアップグレードする。
 
 ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 

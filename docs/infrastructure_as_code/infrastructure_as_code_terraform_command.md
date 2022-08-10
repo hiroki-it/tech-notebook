@@ -476,7 +476,7 @@ $ terraform plan \
     -refresh=true
 ```
 
-https://github.com/hashicorp/terraform/issues/17311
+ℹ️ 参考：https://github.com/hashicorp/terraform/issues/17311
 
 #### ▼ -parallelism
 

@@ -535,8 +535,7 @@ text=a&text2=b
 
 GET送信ではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
 
-POSTMANで、GET送信にメッセージボディを含めることについて：
-https://github.com/postmanlabs/postman-app-support/issues/131
+ℹ️ 参考：https://github.com/postmanlabs/postman-app-support/issues/131
 
 <br>
 

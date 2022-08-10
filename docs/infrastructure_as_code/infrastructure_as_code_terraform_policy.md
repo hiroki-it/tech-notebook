@@ -833,43 +833,7 @@ resource "aws_baz" "this" {
 
 ## 05. 開発環境
 
-### 開発方法
-
-前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルの```backend```オプションを、『s3』から『local』に変更する。
-
-ℹ️ 参考：https://repl.info/archives/1435/
-
-```terraform
-terraform {
-
-  backend "local" {
-  }
-}
-```
-
-GitHubリポジトリにこの変更をプッシュしないように気を付ける必要がある。ただし、バックエンドに```s3```を指定する```terraform init```コマンドをCIのステップを設けておけば、```provider.tf```ファイルで```local```の指定していことがエラーになるような仕組みを作れる。もし間違えてコミットしてしまった場合は、元に戻すように再コミットすればよい。
-
-```bash
-#!/bin/bash
-
-terraform -chdir=./prd init \
-  -upgrade \
-  -reconfigure \
-  -backend=true \
-  -backend-config="bucket=prd-foo-tfstate-bucket" \
-  -backend-config="key=terraform.tfstate" \
-  -backend-config="encrypt=true"
-```
-
-```bash
-Error: Invalid backend configuration argument
-
-The backend configuration argument "bucket" given on the command line is not expected for the selected backend type.
-```
-
-<br>
-
-### 作業者間のterraformコマンドのバージョン統一
+### terraformコマンドのセットアップ
 
 #### ▼ docker-compose.ymlファイルを用いる場合
 
@@ -926,6 +890,42 @@ terraform  *https://github.com/asdf-community/asdf-hashicorp.git
 
 $ asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 $ asdf install
+```
+
+<br>
+
+### 開発方法
+
+前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルの```backend```オプションを、『s3』から『local』に変更する。
+
+ℹ️ 参考：https://repl.info/archives/1435/
+
+```terraform
+terraform {
+
+  backend "local" {
+  }
+}
+```
+
+GitHubリポジトリにこの変更をプッシュしないように気を付ける必要がある。ただし、バックエンドに```s3```を指定する```terraform init```コマンドをCIのステップを設けておけば、```provider.tf```ファイルで```local```の指定していことがエラーになるような仕組みを作れる。もし間違えてコミットしてしまった場合は、元に戻すように再コミットすればよい。
+
+```bash
+#!/bin/bash
+
+terraform -chdir=./prd init \
+  -upgrade \
+  -reconfigure \
+  -backend=true \
+  -backend-config="bucket=prd-foo-tfstate-bucket" \
+  -backend-config="key=terraform.tfstate" \
+  -backend-config="encrypt=true"
+```
+
+```bash
+Error: Invalid backend configuration argument
+
+The backend configuration argument "bucket" given on the command line is not expected for the selected backend type.
 ```
 
 <br>
@@ -1020,9 +1020,17 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 ### 各ブロックのホワイトボックステスト
 
+#### ▼ 整形
+
+Terraformの整形コマンド（```terraform fmt```コマンド）を使用し、ソースコードを整形する。これは、CIパイプライン上で実施しても良い。
+
 #### ▼ 静的解析
 
-Terraformの静的解析コマンド（```terraform fmt```コマンド、```terraform validate```コマンド）を使用し、静的解析による機能追加/変更を含むブロックの構文テストを実施する。これは、CIパイプライン上で実施しても良い。
+Terraformの静的解析コマンド（```terraform validate```コマンド）を使用し、静的解析による機能追加/変更を含むブロックの構文テストを実施する。これは、CIパイプライン上で実施しても良い。
+
+#### ▼ セキュリティテスト
+
+外部のセキュリティテストツール（例：tfsec）を使用し、Terraformの脆弱性検出テストを実施する。これは、CIパイプライン上で実施しても良い。
 
 #### ▼ 単体テスト
 
