@@ -17,7 +17,7 @@ description: データ記述言語＠言語の知見を記録しています。
 
 ### JSON：JavaScript Object Notation
 
-```json
+```yaml
 {
   "account": 200,
   "fruit": [

@@ -111,12 +111,12 @@ terraform {
 
 ```yaml
 repository/
-├── dev/ # 開発環境
+├── tes/ # テスト環境
 │   ├── providers.tf
 │   ...
 │
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
 ```
 
 <br>
@@ -127,7 +127,7 @@ repository/
 
 ```yaml
 repository/
-├── dev/ # 開発環境
+├── tes/ # テスト環境
 │   ├── aws/ # AWS
 │   │    ├── providers.tf # aws/terraform.tfstate
 │   │    ...
@@ -144,8 +144,8 @@ repository/
 │       ├── providers.tf
 │       ...
 │
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
 ```
 
 <br>
@@ -173,7 +173,7 @@ CloudFormationでは、クラウドインフラのリソースの設定変更頻
 
 ```yaml
 repository/
-├── dev/ # 開発環境
+├── tes/ # テスト環境
 │   ├── aws/ # AWS
 │   │   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
 │   │   │   ├── providers.tf # aws/high-freq/terraform.tfstate
@@ -226,8 +226,8 @@ repository/
 │           ├── providers.tf
 │           ...
 │
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
 ```
 
 #### ▼ 運用チームの責務範囲
@@ -236,7 +236,7 @@ repository/
 
 ```yaml
 repository/
-├── dev/ # 開発環境
+├── tes/ # テスト環境
 │   ├── aws/ # AWS
 │   │   ├── foo-team # fooチーム
 │   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
@@ -265,8 +265,8 @@ repository/
 │           ├── providers.tf # pagerduty/baz-team/terraform.tfstate
 │           ...
 │
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
 ```
 
 <br>
@@ -282,15 +282,15 @@ repository/
 ```yaml
 repository/
 ├── modules/ # ネストモジュール
-├── dev/ # 開発環境ルートモジュール
-│   ├── dev.tfvars
+├── tes/ # テスト環境ルートモジュール
+│   ├── tes.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-├── prd/ # 本番環境ルートモジュール
-└── stg/ # ステージング環境ルートモジュール
+├── stg/ # ステージング環境ルートモジュール
+└── prd/ # 本番環境ルートモジュール
 ```
 
 <br>
@@ -303,8 +303,8 @@ repository/
 
 ```yaml
 repository/
-├── dev/ # 開発環境ルートモジュール
-│   ├── dev.tfvars
+├── tes/ # テスト環境ルートモジュール
+│   ├── tes.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
@@ -369,18 +369,18 @@ repository/
 repository/
 └── modules/
     ├── route53/ # Route53
-    │   ├── dev/ # 開発
-    │   ├── prd/ # 本番
-    │   └── stg/ # ステージング
+    │   ├── tes/ # テスト環境
+    │   ├── stg/ # ステージング環境
+    │   └── prd/ # 本番環境
     │ 
     ├── ssm/ # Systems Manager
-    │   ├── dev/
-    │   ├── prd/
-    │   └── stg/
+    │   ├── tes/
+    │   ├── stg/
+    │   └── prd/
     │ 
     └── waf/ # WAF
         └── alb/ 
-            ├── dev/
+            ├── tes/
             ├── prd/
             └── stg/
 ```
@@ -1022,34 +1022,44 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 #### ▼ 整形
 
-Terraformの整形コマンド（```terraform fmt```コマンド）を使用し、ソースコードを整形する。これは、CIパイプライン上で実施しても良い。
+Terraformの整形コマンド（```terraform fmt```コマンド）を使用し、ソースコードを整形する。
 
 #### ▼ 静的解析
 
-Terraformの静的解析コマンド（```terraform validate```コマンド）を使用し、静的解析による機能追加/変更を含むブロックの構文テストを実施する。これは、CIパイプライン上で実施しても良い。
+Terraformの静的解析コマンド（```terraform validate```コマンド）を使用して、機能追加/変更を含むブロックの静的解析を実施する。外部の静的解析ツール（例：tflint）を使用しても良い。
 
-#### ▼ セキュリティテスト
+#### ▼ 脆弱性テスト
 
-外部のセキュリティテストツール（例：tfsec）を使用し、Terraformの脆弱性検出テストを実施する。これは、CIパイプライン上で実施しても良い。
+Terraformの脆弱性テストを実施する。外部の脆弱性テストツール（例：tfsec）を使用しても良い。
+
+#### ▼ ドライラン
+
+テスト環境に対して```terraform plan```コマンドを実行し、ドライランを実施する。```terraform plan```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
+
+参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
-外部のテストツール（例：Terratest）を使用し、機能追加/変更を含むブロックの単体テストを実施する。これは、CIパイプライン上で実施しても良い。
+テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。外部のテストツール（例：Terratest）を使用しても良い。この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。また、確認後にリソースを```terraform destory```コマンドで削除する。残骸のリソースが残ることがあるので、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
+
+ℹ️ 参考：
+
+- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+- https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
+
+#### ▼ 結合テスト
+
+テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。外部のテストツール（例：Terratest）を使用しても良い。この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。また、確認後にリソースを```terraform destory```コマンドで削除する。残骸のリソースが残ることがあるので、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
+
+ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 <br>
 
-## 08-02. CDパイプライン
-
-
-### ```terraform plan```コマンドの実行
-
-#### ▼ 大前提
-
-```terraform plan```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
+### ホワイトボックステスト結果の通知
 
 #### ▼ CDパイプラインがある場合
 
-```terraform plan```コマンドをCDパイプライン上で実行している場合、tfnotifyなどの通知ツールを使用し、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
+```terraform plan```コマンドをCDパイプライン上で実行している場合、通知ツール（例：tfnotify）を使用し、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
 
 #### ▼ CDパイプラインがない場合
 
@@ -1060,6 +1070,10 @@ $ terraform plan -var-file=foo.tfvars -no-color \
     | grep -A 500 'Terraform will perform the following actions' \
     | pbcopy
 ````
+
+<br>
+
+## 08-02. CDパイプライン
 
 ### レビュー
 
@@ -1097,15 +1111,25 @@ developブランチにマージするコミット = 次にリリースするコ�
 
 #### ▼ 結合テスト
 
-実際の稼働環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。これは、CDパイプライン上で実施しても良い。
+ステージング環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#test
+ℹ️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
 
 #### ▼ 総合テスト（擬似的総合テストも含む）
 
-実際の稼働環境に対して```terraform apply```コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。クラウドプロバイダーのモックを使用し、擬似的な総合テストを実施しても良い。また、CDパイプライン上で実施しても良い。
+ステージング環境に対して```terraform apply```コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。クラウドプロバイダーのモックを使用し、擬似的な総合テストを実施しても良い。
 
 ℹ️ 参考：https://docs.localstack.cloud/ci/
+
+<br>
+
+### ドキュメントの作成
+
+#### ▼ 独自moduleブロックの場合
+
+独自moduleブロックを使用している場合、```variables```ブロックや```output```ブロックに基づいて、```module```ブロックの仕様書を作成しておく。外部のドキュメント生成ツール（例：Terraform-doc）を使用しても良い。
+
+ℹ️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6
 
 <br>
 

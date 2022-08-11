@@ -52,7 +52,7 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 
 最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
 
-```http
+```yaml
 POST https://example.com/users
 
 {
@@ -63,7 +63,7 @@ POST https://example.com/users
 
 次回の認証時に、再びユーザーが認証情報を送信する。
 
-```http
+```yaml
 POST https://example.com/foo-form
 
 {
@@ -74,22 +74,24 @@ POST https://example.com/foo-form
 
 サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
 
-```bash
+```yaml
 # セッションデータ
 { sessionid: ***** }
 ```
 
 レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: sessionid=<セッションID>
 ```
 
 サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。加えて次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
 
-```http
+```yaml
 POST https://example.com/foo-form
+
 cookie: sessionid=<セッションID>
 ```
 
@@ -120,9 +122,7 @@ cookie: sessionid=<セッションID>
 
 #### ▼ APIキー認証とは
 
-事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。API GatewayにおけるAPIキー認証については、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
+事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。
 
 #### ▼ 照合情報の送信方法
 
@@ -130,8 +130,9 @@ cookie: sessionid=<セッションID>
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
-```http
+```yaml
 GET https://example.com/bar.php
+
 x-api-key: <APIキー>
 ```
 
@@ -145,8 +146,9 @@ x-api-key: <APIキー>
 
 ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
 
-```http
+```yaml
 GET https://example.com/bar.php
+
 authorization: <Personal Acccess Token>
 ```
 
@@ -177,28 +179,31 @@ authorization: <Personal Acccess Token>
 
 最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
 
-```http
+```yaml
 GET https://example.com/foo-form
 ```
 
 サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。ユーザーに表示するための認証領域には、任意の値を持たせられ、サイト名が設定されることが多い。
 
-```http
+```yaml
 401 Unauthorized
+
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 『```<ユーザー名>:<パスワード>```』をbase64方式でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
 
-```http
+```yaml
 POST https://example.com/foo-form
+
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
 サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。また、認証情報をブラウザのWebストレージに保存する。
 
-```http
+```yaml
 200 OK
+
 WWW-Authenticate: Basic realm=""
 ```
 
@@ -206,15 +211,17 @@ WWW-Authenticate: Basic realm=""
 
 ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
-```http
+```yaml
 POST https://example.com/foo-form/logout
+
 authorization: Basic <誤った認証情報>
 ```
 
 サーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
-```http
+```yaml
 401 Unauthorized
+
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
@@ -229,13 +236,15 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 #### ▼ Digest認証の仕組み
 
-```http
+```yaml
 200 OK
+
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-```http
+```yaml
 POST https://example.com/foo-form
+
 authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -262,10 +271,11 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
-```http
+```yaml
 POST https://example.com/foo
-Content-Type: application/x-www-form-urlencoded
-    
+
+Content-Type: application/x-www-form-urlencoded    
+
 # ボディ
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
@@ -277,8 +287,9 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/resources/access-token/
 
-```http
+```yaml
 200 OK
+
 X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
 Content-Type: application/json
 
@@ -297,15 +308,17 @@ Content-Type: application/json
 - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
-```http
+```yaml
 POST https://example.com/foo
+
 authorization: Bearer <Bearerトークン>
 ```
 
 サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
 
-```http
+```yaml
 200 OK
+
 WWW-Authenticate: Bearer realm=""
 ```
 
@@ -316,8 +329,9 @@ WWW-Authenticate: Bearer realm=""
 - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
 
-```http
+```yaml
 401 Unauthorized
+
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
@@ -327,31 +341,35 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 
-```http
+```yaml
 200 OK
+
 WWW-Authenticate: Bearer realm=""
 ```
 
 失敗の場合は、error属性にエラメッセージを割り当てたレスポンスを返信する。
 
-```http
+```yaml
 400 Bad Request
+
 WWW-Authenticate: Bearer error="invalid_request"
 ```
 
-```http
+```yaml
 401 Unauthorized
+
 WWW-Authenticate: Bearer realm="token_required"
 ```
 
-```http
+```yaml
 403 Forbidden
+
 WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
 #### ▼ ```Authorization```ヘッダーのトークンのクライアント保持
 
-不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルマシンに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、LocalStorage/SessionStorageに保持される。LocalStorageはSessionStorageと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンクを参考にせよ
+不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルマシンに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、ローカルストレージあるいはセッションストレージに保持される。ローカルストレージはセッションストレージと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンクを参考にせよ
 
 ℹ️ 参考：
 
@@ -497,7 +515,7 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 （３）一時的に有効な認可コードを発行してもらうため、FacebookはInstagram認可サーバーに認可リクエストを送信する。
 
-```http
+```yaml
 GET https://www.instagram.com/auth?<下表で説明>
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
@@ -514,8 +532,9 @@ HOST: authorization-server.com # 認可サーバーのホスト
 
 （４）Instagramの認可サーバーは認可リクエストを受信し、認可コードを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLと認可レスポンスパラメーターを割り当て、ブラウザにレスポンスを返信する。ブラウザはFacebookにリクエストを再送信し、Facebookは認可レスポンスパラメーターを受け取る。
 
-```http
+```yaml
 302 Found
+
 Location: https://www.facebook.com/login?<下表で説明>
 ```
 
@@ -526,8 +545,9 @@ Location: https://www.facebook.com/login?<下表で説明>
 
 （５）Facebookは、認可コードを割り当てた認可リクエストをInstagramのサーバーに送信する。
 
-```http
+```yaml
 POST https://www.instagram.com/auth?
+
 Host: authorization-server.com # 認可サーバーのホスト
 Content-Type: application/x-www-form-urlencoded
 
@@ -551,8 +571,9 @@ Content-Type: application/x-www-form-urlencoded
 - https://boxil.jp/mag/a3207/
 - https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844
 
-```http
+```yaml
 302 Found
+
 Location: https://www.facebook.com/login
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-store
@@ -624,8 +645,9 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 #### ▼ Bear認証の場合
 
-```http
+```yaml
 GET https://example.com/bar.php
+
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
@@ -698,13 +720,16 @@ const signature = HMACSHA256(
 
 #### ▼ 保持方法と安全度の比較
 
-ℹ️ 参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
+ℹ️ 参考：
 
-| クライアント保持方法 | 組み合わせ             | おすすめ度 | コメント                                                     |
-| :------------------- | ---------------------- | :--------- | :----------------------------------------------------------- |
-| localStorage         |                        | 🔺〜✖️       | XSSでJWTが盗まれる可能性がある。                             |
-| ```Cookie```ヘッダー | プリフライトリクエスト | 🔺          | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある。 |
-| ```Cookie```ヘッダー | CSRFトークン           | ⭕          |                                                              |
-| SameSiteCookie       |                        | ⭕          | SPAとAPIが同一オリジンの必要がある。                         |
+- https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
+- https://blog.flatt.tech/entry/auth0_access_token_poc
+
+| クライアント保持方法                                         | 組み合わせ             | おすすめ度 | コメント                                                     |
+| :----------------------------------------------------------- | ---------------------- | :--------- | :----------------------------------------------------------- |
+| インメモリ、```Cookie```ヘッダー、ローカルストレージ、セッションストレージ | なし                   | △ 〜 ×️     | XSSでJWTが盗まれる可能性がある。                             |
+| ```Cookie```ヘッダー                                         | プリフライトリクエスト | △          | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある。 |
+| ```Cookie```ヘッダー                                         | CSRFトークン           | ⭕          |                                                              |
+| SameSiteCookie                                               |                        | ⭕          | SPAとAPIが同一オリジンの必要がある。                         |
 
 <br>

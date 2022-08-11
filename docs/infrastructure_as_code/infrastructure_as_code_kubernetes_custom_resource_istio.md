@@ -293,20 +293,7 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
-## 04. IstioOperator
-
-### IstioOperatorとは
-
-Istioのインストールや、Istioリソースの操作ができるリソースのこと。
-
-ℹ️ 参考：
-
-- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/
-- https://istio.io/latest/docs/setup/install/operator/#update
-
-<br>
-
-## 05. Injectionテスト
+## 04. Injectionテスト
 
 ### Faultインジェクション
 
@@ -325,7 +312,7 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 
 <br>
 
-## 06. 障害対策
+## 05. 障害対策
 
 ### サーキットブレイカー
 
@@ -339,7 +326,7 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 
 <br>
 
-## 07. 認証
+## 06. 認証
 
 マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
 
@@ -350,7 +337,7 @@ Istioのインストールや、Istioリソースの操作ができるリソー�
 
 <br>
 
-## 07-02. 認可
+## 06-02. 認可
 
 ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
 

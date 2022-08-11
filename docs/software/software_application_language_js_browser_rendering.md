@@ -588,7 +588,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 レスポンスヘッダーにて、```Cache-Control```ヘッダーに```no-store```を設定する。この場合、ETag値が無効になり、ブラウザキャッシュを使用しなくなる。
 
-```http
+```yaml
 HTTP/1.1 200
 # ～ 中略 ～
 Cache-Control: no-store
@@ -602,7 +602,7 @@ Cache-Control: no-store
 
 レスポンスヘッダーにて、```Cache-Control```ヘッダーに```max-age=31536000```を設定する。Expireヘッダーに有効時間を設定しても良いが、```Cache-Control```ヘッダーの有効時間が優先される。この場合、有効時間を過ぎると、ETag値を比較検証するようになる。
 
-```http
+```yaml
 HTTP/1.1 200
 # ～ 中略 ～
 Cache-Control: max-age=31536000
@@ -616,7 +616,7 @@ Cache-Control: max-age=31536000
 
 レスポンスヘッダーにて、```Cache-Control```ヘッダーに```max-age=0```を設定する。また、Expireヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時にETag値を比較検証するようになる。
 
-```http
+```yaml
 HTTP/1.1 200
 # ～ 中略 ～
 Cache-Control: max-age=0

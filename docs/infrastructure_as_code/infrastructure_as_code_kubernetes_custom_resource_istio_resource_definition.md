@@ -53,7 +53,11 @@ $ helm install -n istio-system istio-base istio/base
 # Istiodのみ
 # istiodチャート
 $ helm install -n istio-system istiod istio/istiod
+```
 
+IngressGatewayのインストールは必須ではない。
+
+```bash
 # IngressGatewayのみ
 # gatewayチャート
 $ helm install -n istio-system istio-ingressgateway istio/gateway

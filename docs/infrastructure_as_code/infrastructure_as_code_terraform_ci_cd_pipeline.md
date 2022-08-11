@@ -21,7 +21,7 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 | env  | 説明                                                         |
 | ---- | ------------------------------------------------------------ |
-| dev  | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
+| tes  | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
 | stg  | ステージング環境                                             |
 | prd  | 本番環境                                                     |
 
@@ -31,17 +31,17 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 |----------|---------------------------------------------------------------------------|
 | plan     | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。               |
 | 承認Job    |                                                                           |
-| apply    | stg環境またはprd環境に対して、```terraform apply```コマンドを実行する。                         |
+| apply    | ステージング環境または本番環境に対して、```terraform apply```コマンドを実行する。                       |
 | plan（任意） | ```terraform apply```によって差分が無くなったかを、```terraform plan```コマンドを改めて実行し、確認する。 |
 
 
 #### ▼ Workflow
 
-| workflows | 説明                                 |
-| --------- | ------------------------------------ |
-| feature   | featureブランチからdev環境にデプロイ |
-| develop   | developブランチからstg環境にデプロイ |
-| main      | mainブランチからprd環境にデプロイ    |
+| workflows | 説明                         |
+| --------- |----------------------------|
+| feature   | featureブランチからテスト環境にデプロイ    |
+| develop   | developブランチからステージング環境にデプロイ |
+| main      | mainブランチから本番環境にデプロイ        |
 
 <br>
 
@@ -57,7 +57,7 @@ executors:
     parameters:
       env:
         type: enum
-        enum: [ "dev", "stg", "prd" ]
+        enum: [ "tes", "stg", "prd" ]
     docker:
       - image: hashicorp/terraform:<バージョンタグ>
     working_directory: ~/foo_infrastructure
@@ -166,27 +166,27 @@ jobs:
       - terraform_apply
 
 workflows:
-  # Development env
+  # テスト環境
   feature:
     jobs:
       - plan:
-          name: plan_dev
+          name: plan_tes
           exr:
             name: primary_container
-            env: dev
+            env: tes
           filters:
             branches:
               only:
                 - /feature.*/
       - apply:
-          name: apply_dev
+          name: apply_tes
           exr:
             name: primary_container
-            env: dev
+            env: tes
           requires:
-            - plan_dev
+            - plan_tes
 
-  # Staging env
+  # ステージング環境
   develop:
     jobs:
       - plan:
@@ -211,7 +211,7 @@ workflows:
           requires:
             - hold_apply_stg
 
-  # Production env
+  # 本番環境
   main:
     jobs:
       - plan:
@@ -256,8 +256,6 @@ workflows:
 
 Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
-
 **＊実装例＊**
 
 ```bash
@@ -268,10 +266,10 @@ set -u
 
 # 事前に環境変数にインフラ環境名を代入する。
 case $ENV in
-    "dev")
-        aws_account_id="<作業環境アカウントID>"
-        aws_access_key_id="<作業環境アクセスキーID>"
-        aws_secret_access_key="<作業環境シークレットアクセスキー>"
+    "tes")
+        aws_account_id="<テスト環境アカウントID>"
+        aws_access_key_id="<テスト環境アクセスキーID>"
+        aws_secret_access_key="<テスト環境シークレットアクセスキー>"
         aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
     ;;
     "stg")

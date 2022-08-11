@@ -98,9 +98,9 @@ repository/
 │   │   ...
 │   │
 │   ├── values/
-│   │   ├── prd.yaml # 本番環境へのapply時に出力する値
+│   │   ├── tes.yaml # テスト環境へのapply時に出力する値
 │   │   ├── stg.yaml # ステージング環境へのapply時に出力する値
-│   │   └── dev.yaml # 開発環境へのapply時に出力する値
+│   │   └── prd.yaml # 本番環境へのapply時に出力する値
 ...
 ```
 
@@ -117,12 +117,12 @@ repository/
 │   │   ├── common/ # 共通のマニフェストファイルの部品
 │   │   ├── prd/ # 本番環境のみで適用するマニフェストの部品
 │   │   ├── stg/
-│   │   └── dev/         
+│   │   └── tes/         
 │   │
 │   ├── values/
-│   │   ├── prd.yaml # 本番環境へのapply時に出力する値
+│   │   ├── tes.yaml # テスト環境へのapply時に出力する値
 │   │   ├── stg.yaml # ステージング環境へのapply時に出力する値
-│   │   └── dev.yaml # 開発環境へのapply時に出力する値
+│   │   └── prd.yaml # 本番環境へのapply時に出力する値
 ...
 ```
 
@@ -145,9 +145,9 @@ repository/
 │   ...
 │
 ├── values/
-│   ├── prd.yaml # 本番環境へのapply時に出力する値
+│   ├── tes.yaml # テスト環境へのapply時に出力する値
 │   ├── stg.yaml # ステージング環境へのapply時に出力する値
-│   └── dev.yaml # 開発環境へのapply時に出力する値
+│   └── prd.yaml # 本番環境へのapply時に出力する値
 ...
 ```
 
@@ -247,44 +247,46 @@ $ kubectl delete -f <古いバージョンのカスタムリソースのマニ�
 
 #### ▼ 静的解析
 
-Helmの静的解析コマンド（```helm lint```コマンド）を使用し、静的解析による機能追加/変更を含むチャートの構文テストを実施する。
+Helmの静的解析コマンド（```helm lint```コマンド）を使用し、機能追加/変更を含むチャートの静的解析を実施する。
 
-#### ▼ セキュリティテスト
+#### ▼ ドライラン
 
-外部のセキュリティテストツール（例：checkov）を使用し、チャートの脆弱性検出テストを実施する。これは、CIパイプライン上で実施しても良い。
+テスト環境に対して```helm diff```コマンドを実行し、ドライランを実施する。```helm diff```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
+
+参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+
+#### ▼ 脆弱性テスト
+
+外部の脆弱性テストツール（例：checkov）を使用し、チャートの脆弱性テストを実施する。
 
 #### ▼ 単体テスト
 
-Helmの単体テストコマンド（```helm test```コマンド）、外部のテストツール（例：Terratest）を使用し、機能追加/変更を含むチャートの単体テストを実施する。```helm test```コマンドを使用する場合、チャートの```/templates/test```ディレクトリ以下にテストコードを配置する必要がある。そのため、```helm upgrade```コマンドでインストールされるリリースにテストコードも含まれてしまうことに注意する。これは、CIパイプライン上で実施しても良い。
+Helmの単体テストコマンド（```helm test```コマンド）を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。外部のテストツール（例：Terratest）を使用しても良い。```helm test```コマンドを使用する場合、チャートの```/templates/test```ディレクトリ以下にテストコードを配置する必要がある。そのため、```helm upgrade```コマンドでインストールされるリリースにテストコードも含まれてしまうことに注意する。
 
-ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+ℹ️ 参考：
+
+- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+- https://camunda.com/blog/2022/03/test/
 
 #### ▼ 回帰テスト
 
-ゴールデンファイルを事前に作成しておき、既存のチャートの回帰テストを実施する。これは、CIパイプライン上で実施しても良い。
+ゴールデンファイルを事前に作成しておき、既存のチャートの回帰テストを実施する。
 
 ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
 <br>
 
-
-## 05-02. CDパイプライン
-
-### ```helm diff```コマンドの実行
-
-#### ▼ 大前提
-
-```helm diff```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
+### ホワイトボックステスト結果の通知
 
 #### ▼ CDパイプラインがある場合
 
-```helm diff```コマンドをCDパイプライン上で実行している場合、GitOpsツールの差分機能を使用し、リリース間のマニフェストファイルの差分を確認できるようにしておく。
+```helm diff```コマンドをGitOpsによるCDパイプライン上で実行している場合、GitOpsツールの差分機能を使用し、差分画面のURLを共有する。または通知ツール（例：argocd-bot）を使用し、GitHub上に差分の結果が通知されるようにする。
 
-ℹ️ 参考：https://www.youtube.com/watch?v=k_zp_Som7Mc
+ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
 
 #### ▼ CDパイプラインがない場合
 
-```helm diff```コマンドをCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。これを確認し、差分が正しいかをレビューする。
+```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
 ```bash
 $ helm diff <チャート名> -f values.yaml | pbcopy
@@ -292,21 +294,24 @@ $ helm diff <チャート名> -f values.yaml | pbcopy
 
 <br>
 
+## 05-02. CDパイプライン
+
 ### チャートのブラックボックステスト
 
 #### ▼ 結合テスト
 
-実際の稼働環境に対して```helm upgrade```コマンドを実行し、追加/変更を含む複数のチャートを組み合わせた結合テストを実施する。これは、CDパイプライン上で実施しても良いが、デメリットとして```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
+テスト環境に対して```helm upgrade```コマンドを実行し、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。これは、CDパイプライン上で実施しても良いが、デメリットとして```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
 
 ℹ️ 参考：
 
+- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 - https://camunda.com/blog/2022/03/test/
 - https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
 - https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
 
 #### ▼ 総合テスト
 
-実際の稼働環境に対して```helm upgrade```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。これは、CDパイプライン上で実施しても良いが、デメリットとして```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
+テスト環境に対して```helm upgrade```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
 
 ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 

@@ -109,17 +109,17 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 
 **＊悪い実装例＊**
 
-```http
+```yaml
 GET https://example.com/show-user/12345
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
-```http
+```yaml
 GET https://example.com/users/foo
 ```
 
@@ -127,11 +127,11 @@ GET https://example.com/users/foo
 
 動詞を許容するのであれば```login```や```logout```とし、名詞を採用するのであれば```session```とする。
 
-```http
+```yaml
 GET https://example.com/login
 ```
 
-```http
+```yaml
 GET https://example.com/session
 ```
 
@@ -142,14 +142,14 @@ GET https://example.com/session
 ここで、```service```、```api```、といったキーワードは、なくても問題ない。
 
 
-```http
+```yaml
 GET https://example.com/service/api/users/12345
 ```
 
 **＊良い実装例＊**
 
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
@@ -159,7 +159,7 @@ GET https://example.com/users/12345
 
 ここで、Usersを意味する『```u```』といった略称は、当時の設計者しかわからないため、不要である。
 
-```http
+```yaml
 GET https://example.com/u/12345
 ```
 
@@ -167,7 +167,7 @@ GET https://example.com/u/12345
 
 略称を使わずに、『users』とする。
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
@@ -175,13 +175,13 @@ GET https://example.com/users/12345
 
 **＊悪い実装例＊**
 
-```http
+```yaml
 GET https://example.com/Users/12345
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
@@ -189,7 +189,7 @@ GET https://example.com/users/12345
 
 **＊悪い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users_id/12345
 ```
 
@@ -197,13 +197,13 @@ GET https://example.com/users_id/12345
 
 スネークケースやキャメケースを使わずに、ケバブケースを使用する。
 
-```http
+```yaml
 GET https://example.com/users-id/12345
 ```
 
 ただし、そもそもケバブ方式も利用せずに、スラッシュで区切ってしまうのも手である
 
-```http
+```yaml
 GET https://example.com/users/id/12345
 ```
 
@@ -213,13 +213,13 @@ GET https://example.com/users/id/12345
 
 Usersという集合の中に、Idが存在しているため、単数形は使用しない。
 
-```http
+```yaml
 GET https://example.com/user/12345
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
@@ -229,13 +229,13 @@ GET https://example.com/users/12345
 
 悪意のあるユーザーに、脆弱性を狙われる可能性があるため、ソフトウェアの設計方法がばれないアーキテクチャにすること。ミドルウェアにCGIプログラムが使用されていることや、phpを使用していることがばれてしまう。
 
-```http
+```yaml
 GET https://example.com/cgi-bin/get_users.php
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
@@ -245,38 +245,38 @@ GET https://example.com/users/12345
 
 メソッドから、処理の目的はわかるので、URIに対応する動詞名を実装する必要はない。
 
-```http
+```yaml
 GET https://example.com/users/get/12345
 ```
 
-```http
+```yaml
 POST https://example.com/users/create/12345
 ```
 
 
-```http
+```yaml
 PUT https://example.com/users/update/12345
 ```
 
-```http
+```yaml
 DELETE https://example.com/users/delete/12345
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/{id}
 ```
 
-```http
+```yaml
 POST https://example.com/users
 ```
 
-```http
+```yaml
 PUT https://example.com/users/{id}
 ```
 
-```http
+```yaml
 DELETE https://example.com/users/{id}
 ```
 
@@ -286,19 +286,19 @@ DELETE https://example.com/users/{id}
 
 ここで、```alpha```、```v2```、といったキーワードは、当時の設計者しかわからないため、適さない。ただし、利便上、使用する場合もある。
 
-```http
+```yaml
 GET https://example.com/v2/users/12345
 ```
 
 **＊良い実装例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
 URLにバージョンを表記しない代わりに、リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い。
 
-```http
+```yaml
 X-Api-Version: 1
 ```
 
@@ -308,11 +308,11 @@ X-Api-Version: 1
 
 GET送信とPOST送信の間で、IDパラメーターのHTTPメソッドが統一されていない。
 
-```http
+```yaml
 GET https://example.com/users/?id=12345
 ```
 
-```http
+```yaml
 POST https://example.com/users/12345/messages
 ```
 
@@ -321,11 +321,11 @@ POST https://example.com/users/12345/messages
 以下の様に、異なるHTTPメソッドの間でも統一する。
 
 
-```http
+```yaml
 GET https://example.com/users/12345
 ```
 
-```http
+```yaml
 POST https://example.com/users/12345/messages
 ```
 
@@ -338,7 +338,7 @@ POST https://example.com/users/12345/messages
 
 URIの構造のうち、パスまたはクエリストリングにパラメーターを割り当てて送信する。それぞれ、パスパラメーターまたはクエリパラメーターという。
 
-```http
+```yaml
 GET https://example.com:80/users/777?text1=a&text2=b
 ```
 
@@ -350,7 +350,7 @@ GET https://example.com:80/users/777?text1=a&text2=b
 
 | データの送信先         | パスパラメーター | クエリパラメーター |
 | ------------------------ | :------------: | :--------------: |
-| 単一条件で決まる検索処理 |       ⭕        |        🔺         |
+| 単一条件で決まる検索処理 |       ⭕        |        △         |
 | 複数条件で決まる検索処理 |       ✕        |        ⭕         |
 | フィルタリング処理       |       ✕        |        ⭕         |
 | ソーティング処理         |       ✕        |        ⭕         |
@@ -359,7 +359,7 @@ GET https://example.com:80/users/777?text1=a&text2=b
 
 JSON型データ内に定義し、メッセージボディにパラメーターを割り当てて送信する。
 
-```http
+```yaml
 POST https://example.com
 
 # メッセージボディ
@@ -375,8 +375,9 @@ POST https://example.com
 
 ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
-```http
+```yaml
 POST https://example.com
+
 # Authorizationヘッダー
 authorization: Bearer ${Token}
 # APIキーヘッダー
@@ -393,20 +394,20 @@ x-api-key: *****
 
 ℹ️ 参考：https://qiita.com/unsoluble_sugar/items/b080a16701946fcfce70
 
-| コード    | 概要                                           | 説明                                                         |
-| --------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| ```200``` | 成功                                           | 正しいリクエストである。                                     |
-| ```401``` | 認証エラー                                     | 誤ったリクエストである。認証プロセスで正しいトークンが発行されず、認可プロセスのリクエストでこの誤ったトークンを送信したことを表す。認可の失敗ではなく、認証の失敗であることに注意する。 |
-| ```403``` | 認可エラーによるトークン所有者の認可スコープ外 | 誤ったリクエストである。APIに認証プロセスが存在し、トークンの発行が必要だとする。認証プロセスにて正しいトークンが発行されたが、認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表す。 |
-| 同上        | 送信元IPアドレスの閲覧禁止                     | 誤ったリクエストである。APIに認証/認可プロセスが存在せず、トークン発行と閲覧権限検証が不要だとする。送信元IPアドレスに閲覧権限がないと判定されてことを表す。 |
+| コード    | 概要                                           | 説明                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------- | ---------------------------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```200``` | 成功                                           | 正しいリクエストである。                                                                                                                                                                                                                                                                                                                                                                                          |
+| ```401``` | 認証エラー                                     | 誤ったリクエストである。認証プロセスで正しいトークンが発行されず、認可プロセスのリクエストでこの誤ったトークンを送信したことを表す。認可の失敗ではなく、認証の失敗であることに注意する。                                                                                                                                                                                                                                                                                                          |
+| ```403``` | 認可エラーによるトークン所有者の認可スコープ外 | 誤ったリクエストである。APIに認証プロセスが存在し、トークンの発行が必要だとする。認証プロセスにて正しいトークンが発行されたが、認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表す。                                                                                                                                                                                                                                                                                                 |
+| 同上        | 送信元IPアドレスの閲覧禁止                     | 誤ったリクエストである。APIに認証/認可プロセスが存在せず、トークン発行と閲覧権限検証が不要だとする。送信元IPアドレスに閲覧権限がないと判定されてことを表す。                                                                                                                                                                                                                                                                                                                     |
 | ```404``` | Webページが見つからない                        | 誤ったリクエストである。存在しないWebページをリクエストしていることを表す。もし、Webページの存在しないURLにリクエストがあった場合、検索エンジンが```404```ステータスを自動的に返信してくれるが、独自の```404```ページを用意した場合は、そのままでは検索エンジンは```200```ステータスを返信してしまうため、アプリケーション側で明示的に```404```ステータスを返信する必要がある。アプリケーションは```404```ステータスの処理を実行しているのにもかかわらず、検索エンジンがこれを```200```ステータスと扱ってしまう（ブラウザでは```200```ステータスが返信される）現象を『ソフト```404```』という。<br>ℹ️ 参考：https://www.sakurasaku-labo.jp/blogs/soft-404-error |
-| ```405``` | 許可されていないHTTPメソッド                   | 誤ったリクエストである。エンドポイントのパスは正しいが、HTTPメソッドは誤っていることを表す。 |
-| ```409``` | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html |
-| ```412``` | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。 |
-| ```422``` | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。 |
-| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。Nginxなどのリバースプロキシが持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>ℹ️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200 |
-| ```500``` | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
-| ```503``` | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。 |
+| ```405``` | 許可されていないHTTPメソッド                   | 誤ったリクエストである。エンドポイントのパスは正しいが、HTTPメソッドは誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                      |
+| ```409``` | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html                                                                                                                                                                       |
+| ```412``` | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。                                                                                                                                                                                                                                                                                                                                                                     |
+| ```422``` | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                   |
+| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。リバースプロキシ（例：Nginx）が持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>ℹ️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                                                                               |
+| ```500``` | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html                                                                                                                                                                                                                                  |
+| ```503``` | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。                                                                                                                                                                                                                                                                                                                                                              |
 
 #### ▼ リダイレクトとリライトの違い
 
@@ -466,8 +467,9 @@ JavaScriptのフレームワーク。コンテキストオブジェクトが用�
 
 クエリパラメーターに送信するデータを記述する方法。リクエストメッセージは、以下の要素に分類できる。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。
 
-```http
+```yaml
 GET https://example.com/bar-form.php?text1=a&text2=b
+
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
@@ -496,8 +498,9 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 
 クエリパラメーターを、URLに記述せず、メッセージボディに記述してリクエストメッセージを送る方法。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。メッセージボディに情報が記述されるため、履歴では確認できない。また、SSLによって暗号化されるため、傍受できない。リクエストメッセージは、以下の要素に分類できる。
 
-```http
+```yaml
 POST https://example.com/bar-form.php
+
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
@@ -583,8 +586,9 @@ curl_close($curl);
 
 **＊例＊**
 
-```http
+```yaml
 200 OK
+
 # レスポンスで送信するMIMEタイプ
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
@@ -706,7 +710,7 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 
 **＊例＊**
 
-```http
+```yaml
 GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
@@ -772,15 +776,16 @@ POST/PUT送信で、ボディパラメーターのデータ形式を表現する
 
 最も良い方法は、リクエストの```Content-Type```ヘッダーに、『```application/json```』を設定することによりある。
 
-```http
+```yaml
 POST https://example.com/users/12345
+
 # ヘッダー
 Content-Type: application/json
 ```
 
 他に、URIでデータ型を記述する方法がある。
 
-```http
+```yaml
 POST https://example.com/users/12345?format=json
 ```
 
@@ -852,13 +857,13 @@ setcookie(
 
 特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。この時、セッションIDを使用すると、セッションの各リクエストの送信元を同一クライアントとして識別できる。HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。セッションIDは、Cookie情報の1つとして、```Cookie```ヘッダーと```Set-Cookie```ヘッダーを使用して送受信される。
 
-```http
+```yaml
 # リクエストヘッダーの場合
 Cookie: sessionid=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 ```
 
 
-```http
+```yaml
 # レスポンスヘッダーの場合
 Set-Cookie: sessionId=<セッションID>
 ```

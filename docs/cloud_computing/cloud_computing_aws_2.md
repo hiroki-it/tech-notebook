@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -654,7 +654,7 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-role.png)
 
-ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。アプリケーションにS3やSystems Managerへのアクセス権限を与えたい場合は、タスク実行ロールではなくタスクロールに権限を紐付ける。
+ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
 
 ℹ️ 参考：
 
@@ -706,7 +706,7 @@ Parameter Storeから変数を取得するために、ECSタスクロールに�
 
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
-ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』が紐付けられたロールを、タスクに紐付ける必要がある。このポリシーには、ECRへのアクセス権限の他、CloudWatchログにログを作成するための権限が設定されている。ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
+ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』が紐付けられたロールを、タスクに紐付ける必要がある。このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
 
 ℹ️ 参考：
 
@@ -1037,7 +1037,7 @@ echo exitStatus ${EXIT_STATUS}
 exit ${EXIT_STATUS}
 ```
 
-なお、実行IAMユーザーを作成し、ECSタスクを起動できる最低限の権限を紐付ける。
+なお、実行IAMユーザーを作成し、ECSタスクを起動できる必要最低限の認可スコープを紐付ける。
 
 ```yaml
 {
@@ -1134,7 +1134,7 @@ Session Managerを使用してECSタスク内のコンテナに接続し、コ�
     {
       "Effect": "Allow",
       "Action": [
-        # ssmmessages APIへのアクセス権限
+        # ssmmessages APIへの認可スコープ
         "ssmmessages:CreateControlChannel",
         "ssmmessages:CreateDataChannel",
         "ssmmessages:OpenControlChannel",
@@ -1146,7 +1146,7 @@ Session Managerを使用してECSタスク内のコンテナに接続し、コ�
 }
 ```
 
-（４）ECS Execを実行するユーザーに、実行権限のポリシーを付与する。
+（４）ECS Execを実行するユーザーに、IAMポリシーを付与する。
 
 ```yaml
 {
@@ -1275,7 +1275,7 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 | 名前                             | クラスターの名前を設定する。                                 |                                                              |
 | Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
 | クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。              | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html |
-| シークレット                     | Secretに保持するデータをAWS KMSで暗号化するか否かを設定する。 | AWS KMSについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_4.html |
+| シークレット                     | Secretに保持するデータをAWS KMSで暗号化するか否かを設定する。 |  |
 | VPC、サブネット                  | ENIを配置するサブネットを設定する。                          | 複数のAZにまたがっている必要がある。                         |
 | クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
 | クラスターIPアドレスファミリー   |                                                              |                                                              |
@@ -1478,7 +1478,7 @@ NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 aws-load-balancer-controller   2/2     2            0           22m
 ```
 
-もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているかを確認する。
+もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているか否かを確認する。
 
 ```yaml
 {"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on *.*.*.*:53: read udp *.*.*.*:43958->*.*.*.*:53: read: connection refused"}
@@ -1555,7 +1555,7 @@ $ kubectl proxy
 
 （７）ダッシュボードに接続する。
 
-```http
+```yaml
 GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
 ```
 
@@ -1624,7 +1624,7 @@ data:
         auto_create_group true
 ```
 
-（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへのアクセス権限を持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへのアクセス権限が付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには権限が付与されないため、Podが作成された後に必要な権限（例：コンテナがRDSにアクセスする権限など）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには認可スコープが付与されないため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 ℹ️ 参考：
 
@@ -1662,7 +1662,7 @@ Fargateを設定する。
 
 | コンポーネント名            | 説明                                                         | 補足                                                         |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへのアクセス権限のみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット                  | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
 | ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
 | ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
@@ -2053,7 +2053,7 @@ redis *****:6379> monitor
 
 #### ▼ 計画的なダウンタイムとは
 
-Redisクラスターでは、エンジンバージョンなどのアップグレード時に、Redisノードの再起動が必要である。サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。
+Redisクラスターでは、設定値（例：エンジンバージョン）のアップグレード時に、Redisノードの再起動が必要である。サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。
 
 #### ▼ バックアップとインポートによるダウンタイムの最小化
 
@@ -2227,7 +2227,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": ":github: プルリクエスト検証用環境"
+        "text": ":github: プルリクエスト環境"
       }
     },
     {

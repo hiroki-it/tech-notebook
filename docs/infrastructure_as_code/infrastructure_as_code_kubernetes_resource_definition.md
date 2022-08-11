@@ -753,9 +753,7 @@ spec:
 
 外部Ingressを使用する場合、オプションを設定する。
 
-#### ▼ AWS固有のキー
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_1.html
+#### ▼ AWS固有のキ
 
 <br>
 
@@ -964,7 +962,7 @@ Kubernetesの実行時に自動的に作成される。もし手動で作成す�
 
 #### ▼ accessModesとは
 
-ボリュームへのアクセス権限を設定する。
+ボリュームへの認可スコープを設定する。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
@@ -1496,7 +1494,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
 - https://smallit.co.jp/blog/667/
 
-```bash
+```yaml
 $ kubectl describe node <Node名>
 
 # 〜 中略 〜

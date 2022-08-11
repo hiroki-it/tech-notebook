@@ -821,7 +821,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 
 **＊実装例＊**
 
-```json
+```yaml
 {
   "token_type": "Bearer",
   "expires_in": 31536000,
@@ -839,7 +839,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 $response = $client->request("GET", "/api/user", [
     "headers" => [
         "Accept"        => "application/json",
-        "Authorization" => "Bearer *****",
+        "Authorization" => "Bearer <アクセストークン>",
     ]
 ]);
 

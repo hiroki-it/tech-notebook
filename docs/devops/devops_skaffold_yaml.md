@@ -217,7 +217,7 @@ test:
 ```yaml
 schemaVersion: 2.0.0
 
-# イメージにファイルが存在するか否かをテストする。
+# イメージにファイルが存在するか否かを検証する。
 fileExistenceTests:
   - name: PHP file
     path: /var/www/public/index.php

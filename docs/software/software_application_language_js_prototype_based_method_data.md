@@ -253,7 +253,7 @@ console.log(foo); // ERROR
 
 また、```try-catch```構文では変数への代入が保証されていないため、```let```を使用して、あらかじめ初期化しておく必要がある。
 
-```js
+```javascript
 const asyncFunc = async () => {
     
     // 初期化するとundefinedになる。

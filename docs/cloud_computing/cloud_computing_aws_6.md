@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -288,11 +288,11 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | 通信できるVPC数                               | 一対一            | 一対一、一対多                      | 一対一、一対多、多対多 |
 | 通信できるIPアドレスの種類                    | IPv4、IPv6        | IPv4                                | IPv4、IPv6             |
 | 接続できるリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
-| CIDRブロックがVPC間で被ることによる通信の可否 | ✖︎                 | ⭕                                   | ✖︎                      |
+| CIDRブロックがVPC間で被ることによる通信の可否 | ×︎                 | ⭕                                   | ×︎                      |
 | クロスアカウント                              | ⭕                 | ⭕                                   | ⭕                      |
-| クロスリージョン                              | ⭕                 | ✖︎                                   | ⭕                      |
+| クロスリージョン                              | ⭕                 | ×︎                                   | ⭕                      |
 | VPC間                                         | ⭕                 | ⭕                                   | ⭕                      |
-| VPC-オンプレ間                                | ✖︎                 | ✖︎                                   | ⭕                      |
+| VPC-オンプレ間                                | ×︎                 | ×︎                                   | ⭕                      |
 
 <br>
 
@@ -355,7 +355,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 『全てのルール』または『個別のルール』におけるアクセス許可/拒否の履歴を確認できる。ALBやCloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。ただし、３時間分しか残らない。一例として、CloudFrontに紐付けしたWAFで取得できるログを以下に示す。
 
-```http
+```yaml
 GET /foo/
 # ホスト
 Host: example.jp

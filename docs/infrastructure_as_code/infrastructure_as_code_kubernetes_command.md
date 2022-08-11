@@ -506,7 +506,7 @@ $ kubectl get pods -A -o wide | grep <Node名>
 
 指定したSecretをYAML形式で取得する。正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
-```bash
+```yaml
 $ kubectl get secret <Secret名> -o yaml
 
 apiVersion: v1
@@ -581,6 +581,16 @@ $ kubectl get pods -l <キー>=<値>, <キー>=<値>
 
 ```bash
 $ kubectl get deployment --selector=<キー>=<値>
+```
+
+#### ▼ --watch
+
+指定したPodの情報を継続的に取得する。
+
+参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+
+```bash
+$ kubectl get pods --watch
 ```
 
 <br>
@@ -755,7 +765,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 #### ▼ proxyとは
 
-ローカルホストとkube-apiserverの間にフォワード/リバースプロキシサーバーとして機能するリソースを作成する。kube-proxyとは異なるリソースであることに注意する。
+kube-apiserverの前段にフォワード/リバースプロキシサーバーとして機能するリソースを作成する。kube-proxyとは異なるリソースであることに注意する。
 
 #### ▼ --address、--accept-hosts
 

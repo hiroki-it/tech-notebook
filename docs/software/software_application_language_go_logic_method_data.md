@@ -9,7 +9,7 @@ description: メソッド/データ@Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -659,8 +659,8 @@ func main() {
 | データ型                | ポインタ型で扱うべきか | 説明                                                         |
 | ----------------------- | ---------------------- | ------------------------------------------------------------ |
 | 構造体                  | ⭕️            | ポインタ型として扱うと、構造体が持つメモリアドレスを処理するだけでよくなる。ポインタ型としない場合と比べて、少ないメモリ消費で構造体を扱える。 |
-| slice、map、chan、 func | 🔺                      | データサイズの大きさによる。                                 |
-| プリミティブ型          | ✖️                      | ポインタ型で扱うメリットはない。                             |
+| slice、map、chan、 func | △                      | データサイズの大きさによる。                                 |
+| プリミティブ型          | ×️                      | ポインタ型で扱うメリットはない。                             |
 
 <br>
 
@@ -1296,7 +1296,7 @@ func main() {
 
 引数の型として、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨される。
 
-https://github.com/golang/go/wiki/CodeReviewComments#pass-values
+ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 
 #### ▼ Closure（無名関数）とは
 

@@ -82,10 +82,10 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 コマンドにより、テストに必要なコンテナイメージをプルし、コンテナを作成する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
 ```bash
-# バージョン2.1の設定ファイルの処理を展開
+# バージョン2.1の設定ファイルの処理を展開する。
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のコンテナを作成し、展開ファイルを元にテストを実施
+# 専用のコンテナを作成し、展開ファイルを元にテストを実施する。
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
@@ -324,9 +324,9 @@ jobs:
       # 引数を定義
       environment:
         # デフォルト値
-        default: "dev"
+        default: "tes"
         type: enum
-        enum: ["dev", "stg", "prd"]
+        enum: ["tes", "stg", "prd"]
     steps:
       - run:
         # デフォルト値testを与える時は何も設定しない
@@ -358,7 +358,7 @@ workflows:
 
 引数として、任意の文字列を```executors```に渡したい時に使用する。他のparametersとは異なり、```job```にて、値を設定する。
 
-```yaml 
+```yaml
 version: 2.1
 
 executors:
@@ -1112,9 +1112,7 @@ steps:
 
 #### ▼ ```.env```ファイルの安全な複製方法
 
-アプリケーションの```.env```ファイルをCirlcCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。ここで出力している環境変数は、以下のリンクを参考にせよ
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_nuxtjs.html
+アプリケーションの```.env```ファイルをCirlcCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。
 
 ```bash
 $ cat .env | base64

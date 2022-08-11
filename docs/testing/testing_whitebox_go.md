@@ -27,7 +27,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 <br>
 
-### 単体テスト/機能テストツール
+### 単体テスト、機能テストツール
 
 標準の```go fmt```コマンド
 
@@ -43,9 +43,7 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 ### 網羅率
 
-網羅率はパッケージを単位として解析される。網羅については、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+網羅率はパッケージを単位として解析される。
 
 <br>
 

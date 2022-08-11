@@ -920,11 +920,11 @@ spec:
 
 | 設定項目                    | 説明                                                         |
 | --------------------------- | ------------------------------------------------------------ |
-| ```activeService```         | ブルー環境へのルーティングに使用するServiceを設定する。      |
-| ```autoPromotionEnabled```  | ブルー環境からグリーン環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
-| ```autoPromotionSeconds```  | ブルー環境からグリーン環境への切り替えを手動で行う場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
-| ```previewReplicaCount```   | グリーン環境のPod数を設定する。                              |
-| ```previewService```        | グリーン環境へのルーティングに使用するServiceを設定する。    |
+| ```activeService```         | 旧環境へのルーティングに使用するServiceを設定する。      |
+| ```autoPromotionEnabled```  | 旧環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、```autoPromotionSeconds```の秒数だけ切り替えを待機する。 |
+| ```autoPromotionSeconds```  | 旧環境から新環境への切り替えを手動で行う場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動で切り替わってしまうことに注意する。 |
+| ```previewReplicaCount```   | 新環境のPod数を設定する。                              |
+| ```previewService```        | 新環境へのルーティングに使用するServiceを設定する。    |
 | ```scaleDownDelaySeconds``` |                                                              |
 
 ```yaml

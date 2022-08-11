@@ -292,7 +292,7 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 
 ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
-```json
+```yaml
 {
   "errorMessage": "<エラーメッセージ>",
   "errorType": "<エラータイプ>"

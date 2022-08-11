@@ -1988,14 +1988,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // 開発環境用の初期データ
-        if (app()->environment("dev")) {
+        if (app()->environment("local")) {
             $this->call([
                 // ダミーデータ
                 FooSeeder::class,
                 BarSeeder::class
             ]);
         }
-        
+
+        // テスト環境用の初期データ
+        if (app()->environment("tes")) {
+            $this->call([
+                // リアルデータ
+            ]);
+        }
+                
         // ステージング環境用の初期データ
         if (app()->environment("stg")) {
             $this->call([
@@ -2868,7 +2875,7 @@ class FooController extends Controller
 LOG_CHANNEL=<オプション名>
 ```
 
-なお、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへのアクセス権限を持たないため、アクセスできるようにする必要がある。権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
+なお、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たないため、アクセスできるようにする必要がある。権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
 
 ```bash
 # Failed to open stream: Permission denied
@@ -4217,8 +4224,15 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         
+        // テスト環境用の初期データ
+        if (app()->environment("tes")) {
+            $this->call([
+                // リアルデータ
+            ]);
+        }
+        
         // ステージング環境用の初期データ
-        if (App::environment("staging")) {
+        if (App::environment("stg")) {
             $this->call([
                 // リアルデータ
                 ProductsSeeder::class
@@ -4226,7 +4240,7 @@ class DatabaseSeeder extends Seeder
         }
         
         // 本番環境用の初期データ
-        if (App::environment("production")) {
+        if (App::environment("prd")) {
             $this->call([
                 // リアルデータ
                 ProductsSeeder::class

@@ -102,8 +102,6 @@ Address: 142.251.42.131
 
 正引き/逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
-
 **＊例＊**
 
 名前解決を行い、NSレコード値を返却させる。

@@ -636,7 +636,7 @@ import (
 )
 
 /**
- * Methodメソッドが成功することをテストする。
+ * Methodメソッドが成功することを検証する。
  */
 func (suite *FooSuite) TestMethod() {
 

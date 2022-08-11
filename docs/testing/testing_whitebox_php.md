@@ -17,27 +17,90 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 
 ### 整形
 
-PhpStorm、PHP-CS-Fixer
+- PhpStorm
+- PHP-CS-Fixer
 
 <br>
 
 ### 静的解析
 
-PhpStorm、PHPStan、Larastan
+- PhpStorm
+- PHPStan
+- Larastan
 
 <br>
 
-### 単体テスト/機能テスト
+### 単体テスト、機能テスト
 
-PHPUnit
+- PHPUnit
 
 <br>
 
-## 02. PHPUnit
+## 02. PHPStan
+
+### PHPStanとは
+
+静的解析を実施する。
+
+<br>
+
+### コマンド
+
+#### ▼ オプション無し
+
+全てのファイルを対象として、静的解析を実施する。
+
+```bash
+$ vendor/bin/phpstan analyse
+```
+
+<br>
+
+### phpstan.neonファイル
+
+#### ▼ ```phpstan.neonファイル```とは
+
+PHPStanの設定を行う。
+
+#### ▼ ```includes```
+
+```yaml
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+```
+
+#### ▼ ```parameters```
+
+静的解析の設定を行う。
+
+**＊実装例＊**
+
+```yaml
+parameters:
+    # 解析対象のディレクトリ
+    paths:
+        - src
+    # 解析の厳格さ（最大レベルは８）。各レベルの解析項目については以下のリンクを参考にせよ。
+    # https://phpstan.org/user-guide/rule-levels
+    level: 5
+    # 発生を無視するエラーメッセージ
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+    # 解析対象として除外するディレクトリ
+    excludes_analyse:
+        - ./src/Foo/*
+        
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
+```
+
+<br>
+
+## 03. PHPUnit
 
 ### PHPUnitとは
 
-単体テスト/機能テストや、単体テスト時のテストダブルを提供する。
+単体テストと機能テストの実施に必要な機能を提供し、またテストを実施する。
 
 <br>
 
@@ -411,7 +474,7 @@ class FooTest extends TestCase
 
 <br>
 
-## 02-02. テスト例
+## 03-02. テスト例
 
 ### 単体テスト例
 
@@ -511,7 +574,7 @@ class FooMessage
 }
 ```
 
-#### ▼ 正常系テスト例
+#### ▼ 正常系テストの場合
 
 メソッドのアノテーションで、```@test```を宣言する。
 
@@ -564,7 +627,7 @@ class FooNotificationTest extends TestCase
 # OK
 ```
 
-#### ▼ 異常系テスト例
+#### ▼ 異常系テストの場合
 
 メソッドのアノテーションで、```@test```と```@expectedException```を宣言する。
 
@@ -738,7 +801,7 @@ class FooControllerTest extends TestCase
                 "message" => "Hello World!"
             ],
             [
-                "HTTP_X_API_Token" => "Bearer *****"
+                "HTTP_X_API_Token" => "Bearer <APIキー>"
             ]
         );
 
@@ -794,7 +857,7 @@ class FooControllerTest extends TestCase
                 "message" => ""
             ],
             [
-                "HTTP_X_API_Token" => "Bearer *****"
+                "HTTP_X_API_Token" => "Bearer <APIキー>"
             ]
         );
 
@@ -820,11 +883,11 @@ class FooControllerTest extends TestCase
 
 <br>
 
-## 03. Phake
+## 04. Phake
 
 ### Phakeとは
 
-単体テスト時のテストダブルを提供する。
+単体テストに必要なテストダブルを提供する。
 
 ℹ️ 参考：https://github.com/mlively/Phake#phake
 
@@ -907,60 +970,3 @@ class FooTest extends TestCase
 
 <br>
 
-## 04. PHPStan
-
-### PHPStanとは
-
-静的解析による構文テストを実施する。
-
-<br>
-
-### コマンド
-
-#### ▼ オプション無し
-
-全てのファイルを対象として、静的解析による構文テストを実施する。
-
-```bash
-$ vendor/bin/phpstan analyse
-```
-
-<br>
-
-### phpstan.neonファイル
-
-#### ▼ ```phpstan.neonファイル```とは
-
-PHPStanの設定を行う。
-
-#### ▼ ```includes```
-
-```yaml
-includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
-```
-
-#### ▼ ```parameters```
-
-静的解析の設定を行う。
-
-**＊実装例＊**
-
-```yaml
-parameters:
-    # 解析対象のディレクトリ
-    paths:
-        - src
-    # 解析の厳格さ（最大レベルは８）。各レベルの解析項目については以下のリンクを参考にせよ。
-    # https://phpstan.org/user-guide/rule-levels
-    level: 5
-    # 発生を無視するエラーメッセージ
-    ignoreErrors:
-        - '#Unsafe usage of new static#'
-    # 解析対象として除外するディレクトリ
-    excludes_analyse:
-        - ./src/Foo/*
-        
-    checkMissingIterableValueType: false
-    inferPrivatePropertyTypeFromConstructor: true
-```

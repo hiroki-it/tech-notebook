@@ -97,7 +97,7 @@ foreach ($a as $foo) {
 
 複雑な走査を行うために、組み込み関数が用意されている。
 
-https://www.php.net/manual/ja/ref.array.php
+ℹ️ 参考：https://www.php.net/manual/ja/ref.array.php
 
 #### ▼ 配列の値へのアクセス
 

@@ -119,7 +119,7 @@ $ yarn start
 
 SSRモードとSSGモードで、```build```コマンド時に使用されるWebpackの最適化方法を指定できる。`
 
-https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
+ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
 <br>
 

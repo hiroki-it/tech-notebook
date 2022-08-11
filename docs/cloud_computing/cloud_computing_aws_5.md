@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -76,7 +76,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ ALBのアクセスログの保存を許可
 
-パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み権限を実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
+パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み認可スコープを実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
@@ -131,7 +131,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ Lambdaからのアクセスを許可
 
-バケットポリシーは不要である。代わりに、AWS管理ポリシーの『```AWSLambdaExecute```』が紐付けられたロールをLambdaに紐付ける必要がある。このポリシーには、S3へのアクセス権限の他、CloudWatchログにログを作成するための権限が設定されている。
+バケットポリシーは不要である。代わりに、AWS管理ポリシーの『```AWSLambdaExecute```』が紐付けられたロールをLambdaに紐付ける必要がある。このポリシーには、S3への認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
 
 ```yaml
 {
@@ -210,7 +210,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 #### ▼ 署名付きURLとは
 
-認証/認可情報をパラメーターに持つURLのこと。S3では、署名付きURLを発行し、S3へのアクセス権限を外部のユーザーに一時的に付与する。
+認証/認可情報をパラメーターに持つURLのこと。S3では、署名付きURLを発行し、S3への認可スコープを外部のユーザーに一時的に付与する。
 
 ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
 
@@ -226,7 +226,7 @@ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 ### セットアップ
 
-インバウンド通信を許可するルールとアウトバウンドルールを設定できる。特定のセキュリティグループに紐づけられているAWSリソースを見つけたい場合は、ネットワークインターフェースでセキュリティグループのIDを検索し、インスタンスIDや説明文から、いずれのAWSリソースが紐づいているかを確認する。
+インバウンド通信を許可するルールとアウトバウンドルールを設定できる。特定のセキュリティグループに紐づけられているAWSリソースを見つけたい場合は、ネットワークインターフェースでセキュリティグループのIDを検索し、インスタンスIDや説明文から、いずれのAWSリソースが紐づいているか否かを確認する。
 
 <br>
 
@@ -386,7 +386,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 #### ▼ テンプレート
 
 作業内容の鋳型こと。ランブックを指定し、変更箇所に基づいた作業内容を定義する。
-デフォルトではテンプレートの作成自体にも承認が必要になる。ただし、指定した権限を持つユーザーはテンプレートの承認をスキップするように設定できる。
+デフォルトではテンプレートの作成自体にも承認が必要になる。ただし、指定した認可スコープを持つユーザーはテンプレートの承認をスキップするように設定できる。
 
 ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
 
@@ -420,7 +420,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | 設定項目                 | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
 | サブスクリプション       | サブスクリプションを登録する。                               |
-| アクセスポリシー         | トピックへのアクセス権限を設定する。                         |
+| アクセスポリシー         | トピックへの認可スコープを設定する。                         |
 | 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時のリトライ方法を設定する。<br>ℹ️ 参考：https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。 |
 | 暗号化                   |                                                              |
@@ -468,13 +468,13 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
-STSへのリクエストの結果、別の認証と認可の権限を持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+STSへのリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
 ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
-IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の権限を委譲するようにする。
+IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
 
 ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
@@ -520,10 +520,10 @@ set -u
 
 # 事前に環境変数にインフラ環境名を代入する。
 case $ENV in
-    "dev")
-        aws_account_id="<作業環境アカウントID>"
-        aws_access_key_id="<作業環境アクセスキーID>"
-        aws_secret_access_key="<作業環境シークレットアクセスキー>"
+    "tes")
+        aws_account_id="<テスト環境アカウントID>"
+        aws_access_key_id="<テスト環境アクセスキーID>"
+        aws_secret_access_key="<テスト環境シークレットアクセスキー>"
         aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
     ;;
     "stg")
@@ -629,7 +629,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 #### 5. 接続確認
 
-ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるかを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
+ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるか否かを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
 
 ```bash
 #!/bin/bash

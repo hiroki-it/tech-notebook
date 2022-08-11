@@ -167,6 +167,15 @@ kube-controller-managerは、kube-controllerを反復的に実行し、マニフ
 - https://techblog.ap-com.co.jp/entry/2019/06/20/191459
 - https://kubernetes.io/ja/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90
 
+#### ▼ descheduler
+
+kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、特定のワーカーNodeにPodが偏ったり、Podが残骸として残ることがある。そこで、deschedulerをJobとして起動させ、Podを再スケジュールする。
+
+ℹ️ 参考：
+
+- https://torumakabe.github.io/post/k8s_descheduler/
+- https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
+
 <br>
 
 ## 01-03. Nodeコンポーネント
@@ -301,7 +310,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（FluentBit、datadogエージェント、cAdvisorエージェントなどのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：FluentBit、datadogエージェント、cAdvisorエージェント、などのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 ℹ️ 参考：https://thinkit.co.jp/article/13611
 
@@ -415,6 +424,12 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
 - https://sorarinu.dev/2021/08/kubernetes_01/
+
+#### ▼ ライフサイクル
+
+StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成しない。作成中のPodがReady状態になってから、次のPodを作成し始める。そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
+
+参考：https://thinkit.co.jp/article/13611
 
 <br>
 

@@ -13,7 +13,46 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 <br>
 
-## 01. Alertmanager
+## 01. セットアップ
+
+### マニフェストリポジトリから
+
+#### ▼ GitHubリポジトリから
+
+GitHubから直接applyする。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+
+ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+
+```bash
+$ git clone https://github.com/prometheus-operator/prometheus-operator.git
+$ kubectl create -f bundle.yaml
+```
+
+<br>
+
+### チャートとして
+
+#### ▼ GitHubリポジトリから
+
+GitHubリポジトリからkube-prometheus-stackチャートをインストールする。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+
+```bash
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+
+$ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
+```
+
+ℹ️ 参考：
+
+- https://github.com/prometheus-operator/prometheus-operator#helm-chart
+- https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+- https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
+
+<br>
+
+## 02. Alertmanager
 
 ### Alertmanagerとは
 
@@ -21,7 +60,7 @@ Alertmanagerのセットアップ方法を決定する。
 
 <br>
 
-## 02. AlertmanagerConfig
+## 03. AlertmanagerConfig
 
 ### AlertmanagerConfigとは
 
@@ -29,7 +68,7 @@ Alertmanagerのアラートグループや通知先ルールを決定する。
 
 <br>
 
-## 03. PodMonitor
+## 04. PodMonitor
 
 ### PodMonitorとは
 
@@ -37,7 +76,7 @@ Podに対してPull型通信を送信し、これのデータポイントを収�
 
 <br>
 
-## 04. Probe
+## 05. Probe
 
 ### Probeとは
 
@@ -45,7 +84,7 @@ Ingressや静的IPアドレスのメトリクスに対してPull型通信を送�
 
 <br>
 
-## 05. Prometheus
+## 06. Prometheus
 
 ### Prometheusとは
 
@@ -53,7 +92,7 @@ Prometheusのセットアップ方法を決定する。
 
 <br>
 
-## 06. PrometheusRule
+## 07. PrometheusRule
 
 ### PrometheusRuleとは
 
@@ -131,7 +170,7 @@ spec:
 
 <br>
 
-## 07. ServiceMonitor
+## 08. ServiceMonitor
 
 ### ServiceMonitorとは
 
@@ -322,7 +361,7 @@ metadata:
 
 <br>
 
-## 08. ThanosRuler
+## 09. ThanosRuler
 
 ### ThanosRuler
 

@@ -180,7 +180,7 @@ Win10におけるファイアウォール。
 
 #### ▼ Macroウイルスとは
 
-Wordなどのワープロアプリや、Excelなどの表計算アプリケーションに感染
+ワープロアプリ（例：Word）や、表計算アプリケーション（例：Excel）に感染
 
 ![Macroウイルス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Macroウイルス.jpg)
 
@@ -286,8 +286,9 @@ sha256によって作成された文字列をファイル情報として添付�
 
 認証時に、セッションIDだけでなく、ワンタイムトークンも併用する。認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを```Set-Cookie```ヘッダーの```csrftoken```パラメーター（フレームワークによっては、これに相当するパラメーター）や独自ヘッダーに割り当てて、レスポンスを返信する。
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: csrftoken=<トークン>
 # 独自ヘッダー
 X-CSRF-TOKEN: <トークン>
@@ -312,8 +313,9 @@ X-CSRF-TOKEN: <トークン>
 
 認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。どちらを使用するかは、バックエンド側の仕様によって異なる。
 
-```http
+```yaml
 POST https://example.com/bar-form.php
+
 # 独自ヘッダー
 x-csrf-token: <トークン>
 
@@ -376,8 +378,6 @@ max_input_vars = 1000
 
 同じ送信元からの一分間あたりのリクエスト数を制限する。例えば、WAF、API Gatewayの機能を使用する。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws.html
-
 <br>
 
 ### SQLインジェクション
@@ -424,8 +424,9 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 ℹ️ 参考：https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
-```http
+```yaml
 GET https://foo.com/bar
+
 # 送信元オリジン
 Origin: https://example.com
 ```
@@ -456,8 +457,9 @@ return new Promise((resolve, reject) => {
 - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
 - https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
 
-```http
+```yaml
 200 OK
+
 # 許可された送信元オリジン
 Access-Control-Allow-Origin: https://example.com
 # リクエストメッセージがCookieヘッダーを持つことを許可する場合
@@ -470,8 +472,9 @@ Access-Control-Allow-Headers: Content-Type
 
 ちなみに、```Cookie```ヘッダーを持つリクエストメッセージを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。
 
-```http
+```yaml
 200 OK
+
 # 全てのオリジンを許可
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: *
@@ -490,13 +493,15 @@ Access-Control-Allow-Headers: *
 
 Domain属性に```example.com```が割り当てられていたとする。最初にドットがついているドメイン（```.example.com```）でも、同じ値として認識される。この場合、```example.com```に加えて、サブドメイン（```foo.example.com```）に対しても、```Cookie```ヘッダーを持つリクエストを送信できる。
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: domain=example.com
 ```
 
-```http
+```yaml
 POST http://foo.example.com/bar-form.php
+
 # 送信元オリジン
 Origin: https://example.com
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>
@@ -506,8 +511,9 @@ Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 
 これを有効化した場合、```Set-Cookie```ヘッダーに```HttpOnly```属性が割り当てられるようになる。JavaScriptから```Cookie```ヘッダーにアクセスできなくできる。
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: HttpOnly
 ```
 
@@ -523,8 +529,9 @@ Set-Cookie: HttpOnly
 
 ℹ️ 参考：https://zenn.dev/agektmr/articles/f8dcd345a88c97
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: SameSite=None
 ```
 
@@ -532,8 +539,9 @@ Set-Cookie: SameSite=None
 
 これを有効化した場合、```Set-Cookie```ヘッダーに```Secure```属性が割り当てられるようになる。HTTPSプロトコルを使用した場合のみ、リクエストメッセージに```Cookie```ヘッダーを割り当てられるようになる。
 
-```http
+```yaml
 200 OK
+
 Set-Cookie: Secure
 ```
 

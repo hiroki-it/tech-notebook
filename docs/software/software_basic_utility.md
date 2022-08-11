@@ -112,7 +112,7 @@ $ chmod -R 600 <ディレクトリ名>/
 
 #### ▼ go
 
-現在の```chmod```コマンドの実行者以外にアクセス権限を付与する。
+現在の```chmod```コマンドの実行者以外に認可スコープを付与する。
 
 ℹ️ 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
 
@@ -296,7 +296,7 @@ $ crontab -l
 1 * * * * root run-parts /etc/cron.hourly/cron.hourly
 ```
 
-（４）ログに表示されているかを確認する。
+（４）ログに表示されているか否かを確認する。
 
 ```bash
 $ cd /var/log
@@ -407,7 +407,7 @@ HTTPメソッドを設定する。
 **＊実行例＊**
 
 ```bash
-curl -X GET https://example.com
+$ curl -X GET https://example.com
 ```
 
 <br>

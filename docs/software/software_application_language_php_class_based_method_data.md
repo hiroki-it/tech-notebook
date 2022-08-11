@@ -122,7 +122,7 @@ foo($data);
 
 同じクラス内と、その子クラス、その親クラスでのみ呼び出せる。
 
-https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
+ℹ️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 
 #### ▼ オブジェクト指向の場合
 

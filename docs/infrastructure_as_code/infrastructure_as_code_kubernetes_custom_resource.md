@@ -250,7 +250,7 @@ spec:
 
 #### ▼ アーキテクチャ
 
-Operatorは、Operator-API、operator-controller、認可権限付与リソース、から構成されている。
+Operatorは、Operator-API、operator-controller、認可スコープ付与リソース、から構成されている。
 
 ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 
@@ -272,9 +272,9 @@ operator-controllerにリクエストを送信するためのAPIを提供する�
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-#### ▼ 認可権限付与リソース
+#### ▼ 認可スコープ付与リソース
 
-Kubernetes-APIをコールできるように、operator-controllerに認可権限を付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
+Kubernetes-APIをコールできるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

@@ -33,23 +33,23 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 ```yaml
 argocd-repository/
-├── dev/
+├── tes/
 │   ├── foo-application.yaml # foo-k8sリポジトリのdevディレクトリを監視
 │   ├── bar-application.yaml # bar-k8sリポジトリのdevディレクトリを監視
 │   └── baz-application.yaml # baz-k8sリポジトリのdevディレクトリを監視
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 ```yaml
 k8s-repository/
-├── dev/
+├── tes/
 │   ├── deployment.yaml # あるいはhelmチャート
 │   ....
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
@@ -61,18 +61,18 @@ k8s-repository/
 ```yaml
 # 親Application
 parent-argocd-repository/
-├── dev/ # Applicationを管理する
+├── tes/ # Applicationを管理する
 │   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
 │   └── obsv-application.yaml # child-argocd-manifestリポジトリの/dev/obsvディレクトリを監視
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 ```yaml
 # 子Application
 child-argocd-repository/
-├── dev/
+├── tes/
 │   ├── app
 │   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
 │   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視
@@ -86,13 +86,13 @@ child-argocd-repository/
 │       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
 │       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 ```yaml
 k8s-repository/
-├── dev/
+├── tes/
 │   ├── app
 │   │   ├── account
 │   │   │   ├── deployment.yaml  # あるいはhelmチャート
@@ -103,8 +103,8 @@ k8s-repository/
 │       │   ├── deployment.yaml # あるいはhelmチャート
 │       ...
 │ 
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 <br>
@@ -115,29 +115,29 @@ k8s-repository/
 
 ```yaml
 repository/
-├── dev/
+├── tes/
 │   └── foo-application.yaml # fooリポジトリを監視する。
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 ```yaml
 repository/
-├── dev/
+├── tes/
 │   └── bar-application.yaml # barリポジトリを監視する。
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 ```yaml
 repository/
-├── dev/
+├── tes/
 │   └── baz-application.yaml # bazリポジトリを監視する。
 │
-├── prd/
-└── stg/
+├── stg/
+└── prd/
 ```
 
 <br>
@@ -150,9 +150,9 @@ repository/
 
 ```yaml
 repository/
-├── dev/ # 開発環境
-├── prd/ # 本番環境
-└── stg/ # ステージング環境
+├── tes/ # テスト環境
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
 ```
 
 <br>

@@ -93,7 +93,7 @@ done
 #!/bin/bash
 
 case "$ENV" in
-    "dev")
+    "tes")
         VAR="foo"
     ;;
     "stg")
@@ -342,7 +342,7 @@ $ ../configure --prefix="<コードのインストール先のパス>"
 $ make -j4
 ```
 
-（４）任意で、```exe```ファイルのテストを行える。
+（４）任意で、```exe```ファイルを検証する。
 
 ```bash
 $ make check

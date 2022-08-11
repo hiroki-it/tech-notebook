@@ -53,22 +53,24 @@ $ pip3 install ansible
 repository/
 ├── playbook.yml
 ├── group_vars/
-│   ├── prd/ # 本番環境
+│   ├── tes/ # テスト環境
 │   │   └── foo.yml
 │   │
-│   └── dev/
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
 │
 ├── host_vars/
 │   ├── bar_host.yml
 │   └── baz_host.yml
 │   
 ├── inventories/
-│   ├── prd/ # 本番環境
+│   ├── tes/ # テスト環境
 │   │   ├── hosts_a.yml # 冗長化されたサーバーa
 │   │   ├── hosts_c.yml # 冗長化されたサーバーc
 │   │   └── host_vars.yml
 │   │
-│   └── dev/
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
 │      
 └── roles/
     ├── app/ # appサーバー
@@ -318,7 +320,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 ```yaml
 # inventoryファイル
-# 開発環境
+# テスト環境
 - all:
     hosts:
       app:

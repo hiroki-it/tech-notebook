@@ -72,7 +72,7 @@ paths:
 
 パススルー条件やresponseキー以下の統合レスポンスを設定できる。 
 
-```yaml       
+```yaml
 paths:
   /users:
     post:
@@ -1074,10 +1074,10 @@ components:
 
 API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。
 
-```http
+```yaml
 GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
 
-X-API-Key：*****
+X-API-Key: *****
 ```
 
 **実装例**

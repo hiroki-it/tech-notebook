@@ -15,7 +15,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ## 01. 実行環境
 
-### 開発環境
+### テスト環境
 
 #### ▼ Kubernetesの実行環境
 
@@ -36,7 +36,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 |      | Skaffold                                                     | Telepresence                                                 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesの検証環境に転送する。<br>参考：https://thinkit.co.jp/article/17853 |
+| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>参考：https://thinkit.co.jp/article/17853 |
 
 <br>
 
@@ -145,7 +145,7 @@ repository/
 ```yaml
 repository/
 └── foo/ # fooサービス
-    ├── dev # 開発環境
+    ├── tes # テスト環境
     │   ├── deployment.yaml
     │   ├── service.yaml
     │   ├── persistent-volume.yaml
@@ -376,7 +376,7 @@ $ kubectl drain <ワーカーNode名> \
 
 ### ワーカーNodeの場合
 
-Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、Istioなどのリソースを導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の2倍のIPアドレスを持つCIDRブロックを設定すると良い。
+Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の2倍のIPアドレスを持つCIDRブロックを設定すると良い。
 
 ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
@@ -436,25 +436,49 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 <br>
 
-## 07. CIパイプライン
+## 07. セキュリティ
+
+### 認証認可
+
+#### ▼ Kubernetesリソースの場合
+
+RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
+
+ℹ️ 参考：
+
+- https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
+- https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+
+#### ▼ コンテナの場合
+
+Podの```spec.securityContext```を使用して、コンテナの実行ユーザーの認可スコープを非特権化する。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+- https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+
+<br>
+
+## 08. CIパイプライン
 
 ### マニフェストファイルのホワイトボックステスト
 
 #### ▼ 静的解析
 
-外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの構文テストを実施する。これは、CIパイプライン上で実施しても良い。
+外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの静的解析を実施する。
 
 ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06
 
 #### ▼ 非推奨apiVersionテスト
 
-外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionの検出テストを実施する。これは、CIパイプライン上で実施しても良い。
+外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionの検出テストを実施する。
 
 ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
 
-#### ▼ セキュリティテスト
+#### ▼ 脆弱性テスト
 
-外部のセキュリティテストツール（例：trivy）を使用し、マニフェストファイルの脆弱性検出テストを実施する。これは、CIパイプライン上で実施しても良い。
+外部の脆弱性テストツール（例：trivy）を使用し、マニフェストファイルの脆弱性テストを実施する。
 
 ℹ️ 参考：
 
@@ -463,17 +487,17 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 <br>
 
-## 07-02. CDパイプライン
+## 08-02. CDパイプライン
 
 ### マニフェストのブラックボックステスト
 
 #### ▼ 結合テスト
 
-実際の稼働環境に対して```kubectl apply```コマンドを実行し、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。これは、CDパイプライン上で実施しても良い。
+テスト環境に対して```kubectl apply```コマンドを実行し、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。
 
 #### ▼ 総合テスト
 
-実際の稼働環境に対して```kubectl apply```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。これは、CDパイプライン上で実施しても良い。
+テスト環境に対して```kubectl apply```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。
 
 ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 

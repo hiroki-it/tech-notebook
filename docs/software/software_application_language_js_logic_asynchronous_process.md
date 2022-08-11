@@ -351,7 +351,7 @@ const asyncFunc = async () => {
 
 await宣言により、コールバック地獄のコードが分かりやすくなる。
 
-```js
+```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
 
