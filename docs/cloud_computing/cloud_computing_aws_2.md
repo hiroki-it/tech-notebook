@@ -1226,7 +1226,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context <ClusterのARN>
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
 #### ▼ VPC
@@ -1524,7 +1524,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 ```bash
-$ kubectl config use-context <ClusterのARN>
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
 （３）マニフェストファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。

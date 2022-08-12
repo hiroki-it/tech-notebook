@@ -19,7 +19,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 #### ▼ 仮想サーバー系のドライバーの場合
 
-ホストマシン上に仮想サーバーを作成する。この仮想サーバー内に単一のワーカーNodeを持つClusterを作成する。
+ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にワーカーNodeを持つClusterを作成する。
 
 ℹ️ 参考：
 
@@ -30,7 +30,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 #### ▼ Dockerドライバーの場合
 
-ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、単一のワーカーNodeを持つClusterを作成する。
+ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、ワーカーNodeを持つClusterを作成する。
 
 ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 

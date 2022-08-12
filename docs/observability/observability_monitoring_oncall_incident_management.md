@@ -260,7 +260,7 @@ fields @timestamp, @message, @logStream
 
 ℹ️ 参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
 
-#### ▼ システムの特定のコンポーネントを無視
+#### ▼ 特定のシステムを無視
 
 特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。
 

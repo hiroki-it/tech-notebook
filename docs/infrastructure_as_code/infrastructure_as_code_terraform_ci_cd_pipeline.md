@@ -39,9 +39,9 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 | workflows | 説明                         |
 | --------- |----------------------------|
-| feature   | featureブランチからテスト環境にデプロイ    |
-| develop   | developブランチからステージング環境にデプロイ |
-| main      | mainブランチから本番環境にデプロイ        |
+| feature   | ```feature```ブランチからテスト環境にデプロイ    |
+| develop   | ```develop```ブランチからステージング環境にデプロイ |
+| main      | ```main```ブランチから本番環境にデプロイ        |
 
 <br>
 

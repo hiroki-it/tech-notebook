@@ -74,7 +74,7 @@ repository/
 
 ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
-- ```terraform apply```コマンドの実行途中に問題が発生し、```.tfstate```ファイルが破損したとしても、影響範囲をクラウドプロバイダーの実行環境内に閉じられる。
+- ```terraform apply```コマンドの実行途中に問題が発生し、```.tfstate```ファイルが破損したとしても、影響範囲をその```.tfstate```ファイルのリソース内に閉じられる。
 - ```terraform plan```コマンドや```terraform apply```コマンドの実行時間を短縮できる。
 - リソースタイプが同じであっても、同じ名前を付けられる。
 
@@ -410,12 +410,14 @@ repository/
         ├── cloudfront/
         └── regional_sets/ # Regionalタイプのセット
             ├── ip_sets/   # IPセット
-            │   ├── prd/
-            │   └── stg/
+            │   ├── tes/
+            │   ├── stg/
+            │   └── prd/
             │    
             └── regex_pattern_sets/ # 正規表現パターンセット
-                ├── prd/
-                └── stg/
+                ├── tes/
+                ├── stg/
+                └── prd/
 ```
 
 <br>
@@ -884,7 +886,7 @@ asdfパッケージを使用して、```terraform```コマンドをインスト�
 ```bash
 $ asdf plugin list all | grep terraform
 
-terraform  *https://github.com/asdf-community/asdf-hashicorp.git
+terraform   *https://github.com/asdf-community/asdf-hashicorp.git
 ...
 
 
@@ -1067,7 +1069,7 @@ Terraformの脆弱性テストを実施する。外部の脆弱性テストツ�
 
 ````bash
 $ terraform plan -var-file=foo.tfvars -no-color \
-    | grep -A 500 'Terraform will perform the following actions' \
+    | grep -A 1000 'Terraform will perform the following actions' \
     | pbcopy
 ````
 
@@ -1101,9 +1103,9 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 - リファレンスに非推奨と注意書きされた方法で実装していないか
 - リリースの粒度は適切か
 
-#### ▼ developブランチへのマージは問題ないか
+#### ▼ ```develop```ブランチへのマージは問題ないか
 
-developブランチにマージするコミット = 次にリリースするコミット である。他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、developブランチへのマージに『待った！』をかけること。
+```develop```ブランチにマージするコミット = 次にリリースするコミット である。他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、```develop```ブランチへのマージに『待った！』をかけること。
 
 <br>
 

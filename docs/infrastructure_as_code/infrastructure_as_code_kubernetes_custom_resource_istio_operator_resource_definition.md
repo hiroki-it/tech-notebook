@@ -137,7 +137,7 @@ spec:
 
 最終的な設定値は、```kubectl get```コマンドで確認できる。
 
-```yaml
+```bash
 $ kubectl -n istio-system get service istio-ingressgateway -o yaml
 
 apiVersion: v1

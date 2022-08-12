@@ -387,11 +387,11 @@ foo-plugin <バージョンタグ>
 #### ▼ plugin
 
 ```bash
- # プラグインのURLを調べる。
- $ asdf plugin list all | grep <プラグイン名>
+# プラグインのURLを調べる。
+$ asdf plugin list all | grep <プラグイン名>
  
- # プラグインをローカルマシンに登録する。（まだインストールされていない）
- $ asdf plugin add <プラグイン名> <URL>
+# プラグインをローカルマシンに登録する。（まだインストールされていない）
+$ asdf plugin add <プラグイン名> <URL>
 ```
 
 #### ▼ install

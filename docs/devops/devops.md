@@ -103,9 +103,11 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 <br>
 
-### CI/CDパイプラインの実現手法の種類
+## 01-04. CI/CDパイプラインの実現
 
-#### ▼ CIOps
+### CIOps
+
+#### ▼ CIOpsとは
 
 CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。例えばCircleCIでアプリケーションのビルドからデプロイまでを実現する。KubernetesをCIOpsでデプロイすることはアンチパターンとされている。
 
@@ -114,11 +116,29 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
 
-#### ▼ GitOps
+#### ▼ 技術ツール例
+
+- CircleCI
+- GitHub Actions
+- GitLab CI
+- Jenkins
+- CodePipeline
+
+<br>
+
+### GitOps
+
+#### ▼ GitOpsとは
 
 CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実現する手法のこと。
 
 ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+
+#### ▼ 技術ツール例
+
+- ArgoCD
+- Flux
+- Jenkins X
 
 <br>
 

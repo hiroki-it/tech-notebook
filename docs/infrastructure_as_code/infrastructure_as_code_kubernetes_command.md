@@ -506,7 +506,7 @@ $ kubectl get pods -A -o wide | grep <Node名>
 
 指定したSecretをYAML形式で取得する。正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
-```yaml
+```bash
 $ kubectl get secret <Secret名> -o yaml
 
 apiVersion: v1

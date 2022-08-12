@@ -881,7 +881,6 @@ jobs:
 
 ```yaml
 workflows:
-  # Featureブランチをレビュー
   feature:
     jobs:
       - build:

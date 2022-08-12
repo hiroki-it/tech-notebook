@@ -317,7 +317,7 @@ provider "aws" {
 
 #### ▼ マルチprovidersとは
 
-複数の```provider```を実装し、エイリアスを使用して、これらを動的に切り替える方法。
+複数の```provider```ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
 
 **＊実装例＊**
 
@@ -345,9 +345,9 @@ provider "aws" {
 }
 ```
 
-#### ▼ ネストモジュールでproviderを切り替える
+#### ▼ ```module```ブロックでプロバイダーを切り替える
 
-ネストモジュールで```provider```を切り替えるには、ルートモジュールで```provider```の値を明示的に渡す必要がある。
+```module```ブロックでプロバイダーを切り替えるには、```module```ブロックに```provider```ブロックの値を明示的に渡す必要がある。
 
 **＊実装例＊**
 
@@ -363,7 +363,7 @@ module "route53" {
 }
 ```
 
-加えてネストモジュールで、```provider```の値を設定する必要がある。
+加えて```module```ブロックで、```provider```引数の値を設定する必要がある。
 
 **＊実装例＊**
 
@@ -395,9 +395,13 @@ resource "aws_acm_certificate" "example" {
 
 #### ▼ ```module```ブロックとは
 
-ルートモジュールでネストモジュール読み出し、ネストモジュールに対して通常変数を渡す。
+複数の```resource```ブロックをまとめ、一つの```resource```ブロックのように扱う。ドキュメントを確認すれば、いずれの```resource```ブロックが```module```ブロックに含まれているかがわかる。```module```ブロック間で変数を受け渡すときは、必ずルートモジュールを経由し、```module```ブロック内で```module```ブロックを呼び出すことはしない。
 
-ℹ️ 参考：https://www.terraform.io/language/modules/sources
+ℹ️ 参考：
+
+- https://www.terraform.io/language/modules/sources
+- https://qiita.com/bigwheel/items/2b420183639416b5c6bb
+- https://registry.terraform.io/namespaces/terraform-aws-modules
 
 #### ▼ 同一リポジトリ内から読み込む
 
@@ -664,7 +668,7 @@ $ export AWS_PROFILE="bar-profile"
 $ export AWS_SESSION_TOKEN="*****"
 ```
 
-環境変数を設定すると、値が```provider```に自動的に出力される。CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
+環境変数を設定すると、値が```provider```ブロックに自動的に出力される。CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
 
 ```terraform
 terraform {

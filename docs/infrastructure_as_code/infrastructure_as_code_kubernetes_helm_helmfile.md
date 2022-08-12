@@ -25,7 +25,7 @@ helmコマンドを宣言的に実行できる。ただし、ArgoCDでも同様�
 
 #### ▼ マイクロサービス別
 
-マイクロサービスをapplyの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.yaml```ファイルを置く。
+マイクロサービスをapplyの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
 
 ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
 
@@ -33,21 +33,13 @@ helmコマンドを宣言的に実行できる。ただし、ArgoCDでも同様�
 repository/
 ├── foo/ # fooサービス
 │   ├── helmfile.d/
-│   │   └── helmfile.yaml
+│   │   └── helmfile.yaml # helmfile.dファイル
 │   │
-│   └── chart/ # チャート
+│   ├── chart/ # チャート（外部チャートを使用する場合は不要）
+│   └── values/ # 環境別のvaluesファイル
 │
 ├── bar/ # barサービス
-│   ├── helmfile.d/
-│   │   └── helmfile.yaml
-│   │
-│   └── chart/ # チャート
-│
 └── baz/ # bazサービス
-    ├── helmfile.d/
-    │   └── helmfile.yaml
-    │
-    └── chart/ # チャート
 ```
 
 リリース単位は、Kubernetesリソースとすると良い。
@@ -61,34 +53,20 @@ repository/
 │   │   ├── persistent-volume.yaml
 │   │   └── persistent-volume-claim.yaml
 │   │
-│   └── chart/ # チャート
+│   ├── chart/ # チャート（外部チャートを使用する場合は不要）
+│   └── values/ # 環境別のvaluesファイル
 │
 ├── bar/ # barサービス
-│   ├── helmfile.d/
-│   │   ├── deployment.yaml
-│   │   ├── service.yaml
-│   │   ├── persistent-volume.yaml
-│   │   └── persistent-volume-claim.yaml
-│   │
-│   └── chart/ # チャート
-│
 └── baz/ # bazサービス
-    ├── helmfile.d/
-    │   ├── deployment.yaml
-    │   ├── service.yaml
-    │   ├── persistent-volume.yaml
-    │   └── persistent-volume-claim.yaml
-    │
-    └── chart/ # チャート
 ```
 
 <br>
 
-## 03. helmfile.yaml
+## 03. helmfile.dファイル
 
 ### environments
 
-環境名のリストとして機能し、```helmfile```コマンド時に```helmfile.yaml```ファイル内に環境名を渡せる。
+環境名のリストとして機能し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
 
 ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 

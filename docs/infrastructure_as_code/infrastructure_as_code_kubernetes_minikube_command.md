@@ -616,7 +616,9 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するワーカーNode数を指定し、```start```コマンドを実行する。
+作成するワーカーNode数を指定し、```start```コマンドを実行する。マルチNodeのClusterを作成できる。
+
+参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
 **＊実行例＊**
 

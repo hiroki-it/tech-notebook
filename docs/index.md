@@ -326,7 +326,6 @@ title: 【IT技術の知見】目次
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)
         * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.html)
     * Prometheus
-      
         * [📖：︎Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html)
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.html)
     * SecretProviderClass

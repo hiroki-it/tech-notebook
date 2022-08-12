@@ -1494,7 +1494,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
 - https://smallit.co.jp/blog/667/
 
-```yaml
+```bash
 $ kubectl describe node <Node名>
 
 # 〜 中略 〜

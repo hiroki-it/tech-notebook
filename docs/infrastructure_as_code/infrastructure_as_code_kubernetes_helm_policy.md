@@ -194,7 +194,33 @@ labels:
 
 <br>
 
-## 04. チャートのアップグレード
+## 04. 開発環境
+
+#### ▼ asdfパッケージを使用する場合
+
+バージョンを統一するために、```.tool-versions```ファイルを作成する。
+
+```bash
+# .tool-versionsファイル
+helm <バージョンタグ>
+```
+
+asdfパッケージを使用して、```helm```コマンドをインストールする。```.tool-versions```ファイルに定義されたバージョンがインストールされる。
+
+```bash
+$ asdf plugin list all | grep helm
+
+helm   *https://github.com/Antiarchitect/asdf-helm.git
+...
+
+
+$ asdf plugin add https://github.com/Antiarchitect/asdf-helm.git
+$ asdf install
+```
+
+<br>
+
+## 05. チャートのアップグレード
 
 ### チャートのアップグレードとは
 
@@ -241,7 +267,7 @@ $ kubectl delete -f <古いバージョンのカスタムリソースのマニ�
 
 <br>
 
-## 05. CIパイプライン
+## 06. CIパイプライン
 
 ### チャートのホワイトボックステスト
 
