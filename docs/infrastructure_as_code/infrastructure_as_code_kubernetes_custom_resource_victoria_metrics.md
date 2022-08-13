@@ -1,10 +1,10 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠Kubernetes
-description: VictoriaMetrics＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】VictoriaMetrics＠カスタムリソース
+description: VictoriaMetrics＠カスタムリソースの知見を記録しています。
 
 ---
 
-# VictoriaMetrics＠Kubernetes
+# VictoriaMetrics＠カスタムリソース
 
 ## はじめに
 

@@ -752,7 +752,7 @@ spec:
 
 #### ▼ ignoreDifferences.all
 
-ArgoCD全体で```spec.ignoreDifferences```オプションと同じ機能を有効化する。
+ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
@@ -905,7 +905,7 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイ手法を設定する。大前提として、そもそもArgoCDはマニフェストをapplyしているだけなので、デプロイ手法は、Deploymentの```spec.strategy```や、DaemonSetとStatefulSetの```spec.updateStrategy```の設定値に依存する。ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
+デプロイ手法を設定する。大前提として、そもそもArgoCDはマニフェストをapplyしているだけなので、デプロイ手法は、Deploymentの```spec.strategy```キーや、DaemonSetとStatefulSetの```spec.updateStrategy```キーの設定値に依存する。ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
 
 #### ▼ blueGreen
 

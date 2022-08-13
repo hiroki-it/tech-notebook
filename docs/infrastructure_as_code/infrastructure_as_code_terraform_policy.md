@@ -48,7 +48,12 @@ repository/
 
 ```yaml
 repository/
-├── modules/
+├── modules/ # ネストモジュール
+│   ├── foo-module/
+│   ...
+│  
+├── main.tf # ルートモジュール
+├── variables.tf
 ...
 ```
 
@@ -58,7 +63,14 @@ repository/
 
 ```yaml
 repository/
-├── main.tf
+├── main.tf # ルートモジュール（リポジトリのURLを指定し、ネストモジュールを読み込む）
+├── variables.tf
+...
+```
+
+```yaml
+repository/
+├── modules/ # ネストモジュール
 ...
 ```
 

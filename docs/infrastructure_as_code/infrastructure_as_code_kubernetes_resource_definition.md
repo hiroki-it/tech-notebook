@@ -616,7 +616,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをapplyするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```キーを```100```%、また```maxUnavailable```キーを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをapplyするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 
@@ -952,7 +952,7 @@ spec:
 
 ## 10. Node
 
-Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```オプションを```false```とする必要がある。
+Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 
@@ -1049,7 +1049,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する。Volum
 
 #### ▼ path
 
-Node側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```オプションで設定する。
+Node側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -1548,7 +1548,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内コンテナのマウントポイントを設定する。```spec.volumes```オプションで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```オプションで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内コンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -1598,7 +1598,7 @@ spec:
 
 #### ▼ hostnameとは
 
-Podのホスト名を設定する。また、```spec.hostname```オプションが設定されていない時は、```metadata.name```がホスト名として使用される。
+Podのホスト名を設定する。また、```spec.hostname```キーが設定されていない時は、```metadata.name```がホスト名として使用される。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 

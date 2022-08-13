@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio＠Kubernetes
-description: Istio＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】Istio＠カスタムリソース
+description: Istio＠カスタムリソースの知見を記録しています。
 ---
 
-# Istio＠Kubernetes
+# Istio＠カスタムリソース
 
 ## はじめに
 

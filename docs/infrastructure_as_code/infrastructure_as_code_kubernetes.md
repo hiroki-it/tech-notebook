@@ -385,7 +385,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
 
-（１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。または、
+（１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
 （２）Podが、終了を開始する。
 

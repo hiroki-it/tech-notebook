@@ -326,7 +326,7 @@ version: <バージョンタグ>
 
 #### ▼ affinity
 
-チャート内のDeploymentの```spec.template.spec.affinity```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.affinity```キーに値を設定する。
 
 #### ▼ fullnameOverride
 
@@ -336,15 +336,15 @@ version: <バージョンタグ>
 
 #### ▼ image.pullPolicy
 
-チャート内のDeploymentの```spec.template.spec.containers.imagePullPolicy```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers.imagePullPolicy```キーに値を設定する。
 
 #### ▼ imagePullSecrets
 
-チャート内のDeploymentの```spec.template.spec.imagePullSecrets```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.imagePullSecrets```キーに値を設定する。
 
 #### ▼ image.repository
 
-チャート内のDeploymentの```spec.template.spec.containers.image```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers.image```キーに値を設定する。
 
 #### ▼ image.tag
 
@@ -360,11 +360,11 @@ Ingressの作成を有効化する。
 
 #### ▼ ingress.hosts
 
-チャート内のIngressの```spec.rules```オプションに値を設定する。
+チャート内のIngressの```spec.rules```キーに値を設定する。
 
 #### ▼ ingress.tls
 
-チャート内のIngressの```spec.tls```オプションに値を設定する。
+チャート内のIngressの```spec.tls```キーに値を設定する。
 
 #### ▼ nameOverride
 
@@ -372,15 +372,15 @@ Ingressの作成を有効化する。
 
 #### ▼ nodeSelector
 
-チャート内のDeploymentの```spec.template.spec.nodeSelector```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.nodeSelector```キーに値を設定する。
 
 #### ▼ podSecurityContext
 
-チャート内のDeploymentの```spec.template.spec.securityContext```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.securityContext```キーに値を設定する。
 
 #### ▼ replicaCount
 
-チャート内のDeploymentの```spec.replicas```オプションに値を設定する。
+チャート内のDeploymentの```spec.replicas```キーに値を設定する。
 
 #### ▼ resources
 
@@ -400,15 +400,15 @@ ServiceAccountの作成を有効化する。
 
 #### ▼ service.type
 
-チャート内のServiceの```spec.type```オプションに値を設定する。
+チャート内のServiceの```spec.type```キーに値を設定する。
 
 #### ▼ service.port
 
-チャート内のServiceの```spec.ports.port```オプションに値を設定する。
+チャート内のServiceの```spec.ports.port```キーに値を設定する。
 
 #### ▼ tolerations
 
-チャート内のDeploymentの```spec.template.spec.tolerations```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.tolerations```キーに値を設定する。
 
 <br>
 

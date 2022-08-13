@@ -457,7 +457,7 @@ RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープ
 
 #### ▼ コンテナの場合
 
-Podの```spec.securityContext```を使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
+Podの```spec.securityContext```キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
 ℹ️ 参考：
 

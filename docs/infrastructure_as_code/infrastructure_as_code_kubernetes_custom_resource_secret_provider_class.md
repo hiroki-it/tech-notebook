@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SecretProviderClass＠Kubernetes
-description: SecretProviderClass＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】SecretProviderClass＠カスタムリソース
+description: SecretProviderClass＠カスタムリソースの知見を記録しています。
 ---
 
-# SecretProviderClass＠Kubernetes
+# SecretProviderClass＠カスタムリソース
 
 ## はじめに
 
