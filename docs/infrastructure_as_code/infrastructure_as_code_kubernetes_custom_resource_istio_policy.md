@@ -17,6 +17,8 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ### インプレース方式
 
+ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+
 <br>
 
 ### カナリアリリース方式
@@ -28,5 +30,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 （３）アップグレードしたEnvoyの動作が問題なければ、Namespaceを単位として、Envoyをアップグレードしていく。
 
 （４）全てのNamespaceのEnvoyのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンを削除する。
+
+ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/
 
 <br>

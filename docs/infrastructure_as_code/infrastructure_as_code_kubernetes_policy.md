@@ -218,7 +218,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 |      | Skaffold                                                     | Telepresence                                                 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>参考：https://thinkit.co.jp/article/17853 |
+| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>ℹ️ 参考：https://thinkit.co.jp/article/17853 |
 
 <br>
 

@@ -95,7 +95,7 @@ scrape_configs:
 - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
-````bash
+```bash
 $ ls -1 /etc/prometheus
 
 certs/
@@ -116,7 +116,7 @@ prometheus-prometheus-kube-prometheus-general.rules.yaml
 prometheus-prometheus-kube-prometheus-node.rules.yaml
 prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
 prometheus-prometheus-kube-prometheus-prometheus.yaml
-````
+```
 
 <br>
 

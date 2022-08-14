@@ -17,7 +17,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-データプレーンとコントロールプレーンによって、サービスメッシュを実現する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+データプレーン、コントロールプレーン、から構成される。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 ℹ️ 参考：
 
@@ -32,20 +32,48 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ### データプレーンとは
 
-インバウンド通信をマイクロサービスにルーティングする機能を持つ。Istioは、プロキシ機能を持つ```istio-proxy```コンテナを自動的に作成し、これがマイクロサービスに通信をルーティングする。
+iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
 
 ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
 <br>
 
-### サイドカーコンテナ
+### 自動注入されるコンテナ
 
-Istioは、新しく作成されたPod内にサイドカーコンテナ（```istio-proxy```コンテナ、```istio-init```コンテナ）を注入する。
+#### ▼ ```istio-init```コンテナ
 
-| サイドカーコンテナ名 | 機能                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| ```istio-proxy```    | リバースプロキシとして機能する。Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。<br>ℹ️ 参考：https://sreake.com/blog/istio/ |
-| ```istio-init```     | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。 |
+![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-init.png)
+
+Podの初期化時に、Pod内にiptablesを適用する。
+
+ℹ️ 参考：
+
+- https://istio.io/v1.13/blog/2019/data-plane-setup/#traffic-flow-from-application-container-to-sidecar-proxy	
+- https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+
+#### ▼ iptables
+
+Pod内へのインバウンド通信とPod外へのアウトバウンド通信を、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトする。
+
+ℹ️ 参考：
+
+- https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#traffic-interception-implementation-details
+- https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/tools/istio-iptables/pkg/cmd/root.go#L219
+
+```bash
+$ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
+```
+
+#### ▼ ```istio-proxy```コンテナ（サイドカープロキシ）
+
+![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
+
+リバースプロキシのサイドカーコンテナとして機能する。Envoyとpilot-agentがミドルウェアとして稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+
+ℹ️ 参考：
+
+- https://istio.io/v1.13/blog/2019/data-plane-setup/
+- https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 <br>
 
@@ -57,16 +85,37 @@ Istioは、新しく作成されたPod内にサイドカーコンテナ（```ist
 
 ℹ️ 参考：
 
-- https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
+- https://www.sobyte.net/post/2022-07/istio-sidecar-injection/#istio-sidecar-auto-injection-implementation
 - https://www.solo.io/blog/istios-networking-in-depth/
 
 ![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
 
 #### ▼ webhookサーバー
 
-webhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。サイドカーコンテナを作成するためのAdmissionReviewレスポンスを返信する。Kubernetesはこれを受信し、Pod内にサイドカーコンテナを作成する。
+webhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するためのAdmissionReviewレスポンスを作成し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
 
-参考：https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L364
+ℹ️ 参考：
+
+- https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171
+- https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
+
+<br>
+
+### Istio CNIアドオン
+
+#### ▼ Istio CNIとは
+
+![istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio-cni.png)
+
+ワーカーNode上でDaemonSetとして稼働し、```istio-init```コンテナと同様にPod内にiptablesをPodに適用する。```istio-init```コンテナの脆弱性の問題を回避するために導入する。もしIstio CNIアドオンを使用する場合は、```istio-init```コンテナが不要になる。
+
+ℹ️ 参考：https://www.redhat.com/architect/istio-CNI-plugin
+
+#### ▼ ```istio-validation```コンテナ
+
+Istio CNIを使用している場合にのみそう挿入されるコンテナ。Istio CNIのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
+
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
 <br>
 

@@ -867,9 +867,9 @@ $ git push origin <コミットID>:master
 
 リモートブランチのタグを削除する。
 
-````bash
+```bash
 $ git push --delete origin <バージョンタグ>
-````
+```
 
 **＊実行例＊**
 

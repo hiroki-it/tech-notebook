@@ -1087,11 +1087,11 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 ```terraform plan```コマンドをCDパイプライン上で実行していない（手動で実行している）場合、```terraform plan```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。```grep```コマンドを使用して、差分の表記部分のみを取得すると良い。これを確認し、差分が正しいかをレビューする。
 
-````bash
+```bash
 $ terraform plan -var-file=foo.tfvars -no-color \
     | grep -A 1000 'Terraform will perform the following actions' \
     | pbcopy
-````
+```
 
 <br>
 

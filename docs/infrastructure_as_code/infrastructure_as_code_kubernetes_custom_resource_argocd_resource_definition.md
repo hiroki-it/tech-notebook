@@ -1156,7 +1156,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:<バージョンタグ>
-          command: ["sh"]
+          command: ['sh']
           source: |
             echo "Hello World"
 ```
@@ -1223,7 +1223,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:<バージョンタグ>
-          command: ["sh"]
+          command: ['sh']
           source: |
             echo "Hello World"
 ```

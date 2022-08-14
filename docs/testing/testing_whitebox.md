@@ -77,7 +77,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 #### ▼ 単体テストの構成
 
-単体テストはテストスイート（テストの組）から構成され、、テストスイートはテストケース（テスト関数）に分類できる。例えば、Goでは構造体をテストスイートとし、単体テストを定義する。
+単体テストはテストスイート（テストの組）から構成され、テストスイートはテストケース（テスト関数）に分類できる。例えば、Goでは構造体をテストスイートとし、単体テストを定義する。
 
 ![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/test-plan_test-suite_test-case.jpg)
 

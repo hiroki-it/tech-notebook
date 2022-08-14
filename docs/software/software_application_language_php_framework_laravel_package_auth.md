@@ -764,7 +764,7 @@ class User extends Authenticatable
 }
 ```
 
-6. Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（`````/oauth/xxx`````）が有効になる。また、アクセストークンを発行できるよになる。
+6. Passportの```routes```メソッドをコールする。これにより、Passportの認証フェーズに関わる全てのルーティング（```/oauth/xxx```）が有効になる。また、アクセストークンを発行できるよになる。
 
 **＊実装例＊**
 

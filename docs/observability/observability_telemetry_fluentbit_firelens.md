@@ -408,7 +408,7 @@ PARSERセクションでコンテナ名を抽出したおかげで、STREAM_TASK
 
 #### ▼ ```parsers_multiline.conf```ファイル
 
-FireLensコンテナで複数行のログを処理したい場合、```parsers_multiline.conf```ファイルでMULTILINE_PARSERを設定する必要がある。。
+FireLensコンテナで複数行のログを処理したい場合、```parsers_multiline.conf```ファイルでMULTILINE_PARSERを設定する必要がある。
 
 ℹ️ 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
 
