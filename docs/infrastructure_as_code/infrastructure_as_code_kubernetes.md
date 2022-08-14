@@ -429,7 +429,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成しない。作成中のPodがReady状態になってから、次のPodを作成し始める。そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
 
-参考：https://thinkit.co.jp/article/13611
+ℹ️ 参考：https://thinkit.co.jp/article/13611
 
 <br>
 
@@ -509,7 +509,7 @@ Ingressコントローラーは、Secretに設定されたSSL証明書を参照�
 
 #### ▼ Ingressの設定値のバリデーション
 
-Ingressコントローラーは、『```***-controller-admission```』というServiceでWebhookサーバーを公開している。このWebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。これにより、不正なIngressが稼働することを防止できる。このWebhookサーバーの登録時、まず『```***-create```』というPodが有効期限の長いSSL証明書を持つSecretを作成する。その後、『```***-patch```』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、WebhookサーバーにSSL証明書が割り当てられる。
+Ingressコントローラーは、『```***-controller-admission```』というServiceでwebhookサーバーを公開している。このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。これにより、不正なIngressが稼働することを防止できる。このwebhookサーバーの登録時、まず『```***-create```』というPodが有効期限の長いSSL証明書を持つSecretを作成する。その後、『```***-patch```』というPodがValidatingWebhookConfigurationにこのSSL証明書を設定し、webhookサーバーにSSL証明書が割り当てられる。
 
 ℹ️ 参考：
 

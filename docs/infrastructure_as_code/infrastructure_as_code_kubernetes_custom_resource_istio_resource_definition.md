@@ -81,7 +81,7 @@ $ minikube start --cpus=4 --memory=16384
 
 #### ▼ VirtualService、DestinationRuleの定義
 
-VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適用される。
+VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナに適用される。
 
 ℹ️ 参考：
 
@@ -91,19 +91,19 @@ VirtualServiceとDestinationRuleの設定値は、istio-proxyコンテナに適�
 
 #### ▼ EnvoyFilterの定義
 
-istio-proxyコンテナの設定を上書きできる。
+```istio-proxy```コンテナの設定を上書きできる。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
+DeploymentやPodの```metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
-#### ▼ istio-proxyコンテナの定義
+#### ▼ ```istio-proxy```コンテナの定義
 
-DeploymentやPodでistio-proxyコンテナを定義することにより設定を上書きできる。
+DeploymentやPodで```istio-proxy```コンテナを定義することにより設定を上書きできる。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
@@ -171,7 +171,7 @@ metadata:
 
 #### ▼ istio-injection
 
-特定のNamespaceで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成するか否かを設定する。
+特定のNamespaceで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナの```istio-proxy```コンテナをPod内に自動的に作成するか否かを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -205,7 +205,7 @@ metadata:
 
 #### ▼ annotationsとは
 
-Deploymentの```spec.template```キーや、Podの```metadata```キーにて、istio-proxyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```spec.template```キーや、Podの```metadata```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -230,7 +230,7 @@ spec:
 
 #### ▼ proxy.istio.io/config.configPath
 
-istio-proxyコンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -273,7 +273,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyCPU
 
-istio-proxyコンテナで使用するCPUサイズを設定する。
+```istio-proxy```コンテナで使用するCPUサイズを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -294,7 +294,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyImage
 
-istio-proxyコンテナの作成に使用するコンテナイメージを設定する。
+```istio-proxy```コンテナの作成に使用するコンテナイメージを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -315,7 +315,7 @@ spec:
 
 #### ▼ sidecar.istio.io/proxyMemory
 
-istio-proxyコンテナで使用するメモリサイズを設定する。
+```istio-proxy```コンテナで使用するメモリサイズを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -782,7 +782,7 @@ spec:
 
 #### ▼ mtls
 
-istio-proxyコンテナ間の通信で相互TLSを有効化するか否かを設定する。
+```istio-proxy```コンテナ間の通信で相互TLSを有効化するか否かを設定する。
 
 #### ▼ mode
 

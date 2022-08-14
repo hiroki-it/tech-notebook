@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### アーキテクチャ
 
-ℹ️ 参考：https://delftswa.github.io/chapters/vagrant/
+ℹ️ 参考：http://delftswa.github.io/chapters/vagrant/
 
 ### ユースケース
 

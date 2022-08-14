@@ -158,7 +158,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 #### ▼ kube-injectとは
 
-istio-proxyコンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```istio-injection```タグをNamespaceに付与しても良い。
+```istio-proxy```コンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 
@@ -291,7 +291,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ proxy-statusとは
 
-IngressGateway、EgressGateway、istio-proxyコンテナのステータスを取得する。
+IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 

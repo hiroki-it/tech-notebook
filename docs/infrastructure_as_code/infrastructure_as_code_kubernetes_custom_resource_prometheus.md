@@ -338,7 +338,7 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 Pull型通信の宛先のIPアドレスが動的に変化する場合（例：スケーリングなど）、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
-参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
+ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 <br>
 

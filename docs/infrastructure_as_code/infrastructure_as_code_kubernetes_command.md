@@ -587,7 +587,7 @@ $ kubectl get deployment --selector=<キー>=<値>
 
 指定したPodの情報を継続的に取得する。
 
-参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
 ```bash
 $ kubectl get pods --watch

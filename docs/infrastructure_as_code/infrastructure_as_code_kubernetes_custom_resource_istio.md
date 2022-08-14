@@ -28,52 +28,74 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 <br>
 
-### データプレーン
+## 01-02. データプレーン
 
-#### ▼ データプレーンとは
+### データプレーンとは
 
-インバウンド通信をマイクロサービスにルーティングする機能を持つ。Istioは、プロキシ機能を持つistio-proxyコンテナを自動的に作成し、これがマイクロサービスに通信をルーティングする。
+インバウンド通信をマイクロサービスにルーティングする機能を持つ。Istioは、プロキシ機能を持つ```istio-proxy```コンテナを自動的に作成し、これがマイクロサービスに通信をルーティングする。
 
 ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-#### ▼ コンテナ
+<br>
 
-| コンテナ名        | 機能                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| ```istio-proxy``` | リバースプロキシとして機能する。Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。<br>ℹ️ 参考：https://sreake.com/blog/istio/ |
-| ```istio-init```  | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。 |
+### サイドカーコンテナ
 
-#### ▼ ```istio-proxy```コンテナが作成される仕組み
+Istioは、新しく作成されたPod内にサイドカーコンテナ（```istio-proxy```コンテナ、```istio-init```コンテナ）を注入する。
 
-サイドカーコンテナのistio-proxyコンテナをPod内に自動的に作成する処理は、admission-controllersのmutating-admissionステップでのWebhookを使用した機能である。istio-injectionが有効になっている場合、Podの作成処理時に、KubernetesからIstioにWebhookが送信される。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admission時に、WebhookがIstio内のsidecar-injector-webhookサーバーの```/inject```エンドポイントに送信される。これを受信したsidecar-injector-webhookサーバーは、istio-proxyコンテナを作成する処理を返信する。Kubernetesはこれを受信し、Podにistio-proxyコンテナを作成する。
-
-ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
-
-![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
-
+| サイドカーコンテナ名 | 機能                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| ```istio-proxy```    | リバースプロキシとして機能する。Envoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。<br>ℹ️ 参考：https://sreake.com/blog/istio/ |
+| ```istio-init```     | iptablesのルールをPodに適用する。これにより、Podは受信したいずれのインバウンド通信を```istio-proxy```コンテナにルーティングするか、を決定する。 |
 
 <br>
 
-### コントロールプレーン
+### サイドカーコンテナ注入の仕組み
 
-#### ▼ コントロールプレーンとは
+#### ▼ kube-apiserver内のmutating-admissionステップ
 
-データプレーンを包括的に管理する機能を持つ。Istioは、istio-proxyコンテナの管理機能を持つistidというPodを作成する。このPod内には、Pilot、Citadel、Galley、に相当するコンテナが稼働している。
+この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewリクエストをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
+
+ℹ️ 参考：
+
+- https://www.sobyte.net/post/2022-07/istio-sidecar-injection/
+- https://www.solo.io/blog/istios-networking-in-depth/
+
+![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
+
+#### ▼ webhookサーバー
+
+webhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。サイドカーコンテナを作成するためのAdmissionReviewレスポンスを返信する。Kubernetesはこれを受信し、Pod内にサイドカーコンテナを作成する。
+
+参考：https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L364
+
+<br>
+
+## 01-03. コントロールプレーン
+
+### コントロールプレーンとは
+
+データプレーンを包括的に管理する機能を持つ。Istioは、```istio-proxy```コンテナの管理機能を持つistidというPodを作成する。このPod内には、Pilot、Citadel、Galley、に相当するコンテナが稼働している。
 
 ℹ️ 参考：
 
 - https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
 - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
-#### ▼ Citadel
+<br>
+
+### Citadel
 
 マイクロサービス間の認証やトレースIDを管理する。
 
-#### ▼ Galley
+<br>
+
+### Galley
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
 
-#### ▼ Pilot
+<br>
+
+### Pilot
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったプロキシコンテナを作成する。他に、Istioの設定を、Istioによって注入されるEnvoyの設定に変換する。
 
@@ -82,9 +104,11 @@ description: Istio＠カスタムリソースの知見を記録しています�
 | コンテナ名      | 機能                                                         |
 | --------------- | ------------------------------------------------------------ |
 | ```discovery``` | サービスレジストリに登録された情報を基に、マイクロサービスが他のマイクロサービスを識別する。（サービスディスカバリー） |
-| ```agent```     | istio-proxyコンテナを起動する。                              |
+| ```agent```     | ```istio-proxy```コンテナを起動する。                              |
 
-#### ▼ Mixer
+<br>
+
+###  Mixer
 
 v1.5からデータプレーン側に統合された。
 
@@ -92,7 +116,7 @@ v1.5からデータプレーン側に統合された。
 
 <br>
 
-### Istio、Envoy（Istio無し）、Kubernetesの対応関係
+## 01-04.  Istio、Envoy（Istio無し）、Kubernetesの対応関係
 
 Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
@@ -226,11 +250,11 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 | 通信方向       | 機能                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | インバウンド   | IngressGatewayの機能のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                              |
-| アウトバウンド | istio-proxyコンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決定する機能を担う。 | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| アウトバウンド | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決定する機能を担う。 | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
-DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値としてistio-proxyコンテナに適用される。
+DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として```istio-proxy```コンテナに適用される。
 
 ℹ️ 参考：
 
@@ -244,7 +268,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 ### Istiodとは
 
-istio-proxyコンテナを統括的に管理する。
+```istio-proxy```コンテナを統括的に管理する。
 
 ℹ️ 参考：
 
@@ -273,7 +297,7 @@ istio-proxyコンテナを統括的に管理する。
 
 #### ▼ sidecar-injectorとは
 
-istio-proxyコンテナをサイドカーとして稼働させる。
+```istio-proxy```コンテナをサイドカーとして稼働させる。
 
 <br>
 

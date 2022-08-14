@@ -472,24 +472,12 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 #### ▼ 静的解析
 
-外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの静的解析を実施する。
-
-ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06
-
-#### ▼ 非推奨apiVersionテスト
-
-外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionの検出テストを実施する。
-
-ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
-
-#### ▼ 脆弱性テスト
-
-外部の脆弱性テストツール（例：trivy）を使用し、マニフェストファイルの脆弱性テストを実施する。
-
-ℹ️ 参考：
-
-- https://blog.nflabs.jp/entry/2021/12/24/091803
-- https://weblog.grimoh.net/entry/2022/01/02/100000
+| 観点               | 説明                                                         | 補足                                                         |
+|------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 文法の誤り            | 外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの静的解析を実施する。 | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
+| ベストプラクティス違反      |                                                              |                                                              |
+| 非推奨apiVersionの使用 | 外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionの検出テストを実施する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
+| 脆弱性              | 外部の脆弱性テストツール（例：trivy）を使用し、マニフェストファイルの脆弱性テストを実施する。 | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
 
 <br>
 
