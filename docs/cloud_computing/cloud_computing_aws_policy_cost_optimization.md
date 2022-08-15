@@ -77,7 +77,7 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 | オンデマンドインスタンス | EC2インスタンスの使用期間に応じて使用料金を支払う。 | ℹ️ 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/ |
 | Savings Plans            |                                                              |                                                        |
 | リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。 |                                                        |
-| スポットインスタンス     | 休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
+| スポットインスタンス     | 休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
 
 #### ▼ 実行時間
 

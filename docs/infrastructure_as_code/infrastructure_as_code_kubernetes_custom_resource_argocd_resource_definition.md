@@ -935,7 +935,7 @@ metadata:
   name: foo-blue-green-rollout
 spec:
   strategy:
-    # B/Gデプロイメイト
+    # ブルー/グリーンデプロイメイト
     blueGreen:
       activeService: foo-active-service
       previewService: foo-preview-service

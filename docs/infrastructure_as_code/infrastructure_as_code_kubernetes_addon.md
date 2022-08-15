@@ -280,7 +280,7 @@ webhookサーバーは、AdmissionReviewで定義されたレスポンスを返�
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-Clusterネットワーク内のIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。kubeletによって実行される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
+PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNICに割り当てる。これにより、Clusterネットワーク内にあるPodに通信できるようにする。cniアドオンは、kubeletによるPodの起動時に有効化される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
 
 ℹ️ 参考：
 

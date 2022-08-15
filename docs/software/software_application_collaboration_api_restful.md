@@ -405,7 +405,7 @@ x-api-key: *****
 | ```409``` | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html                                                                                                                                                                       |
 | ```412``` | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。                                                                                                                                                                                                                                                                                                                                                                     |
 | ```422``` | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメーターが誤っていることを表す。                                                                                                                                                                                                                                                                                                                                                                   |
-| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。リバースプロキシ（例：Nginx）が持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>ℹ️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                                                                               |
+| ```499``` | 接続切断エラー                                 | 誤ったリクエストである。リバースプロキシサーバー（例：Nginx）が持つ非標準のステータスコードであり、接続の途中でクライアントが接続を切断してしまったことを表す。<br>ℹ️ 参考：https://secure.netowl.jp/bbs/detail.cgi?td=4200                                                                                                                                                                                                                                                           |
 | ```500``` | サーバーエラー                                 | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html                                                                                                                                                                                                                                  |
 | ```503``` | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。                                                                                                                                                                                                                                                                                                                                                              |
 
@@ -593,7 +593,7 @@ curl_close($curl);
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
 Connection: close
-# Webサーバー（nginx、apache、AmazonS3などが表示される）
+# webサーバー（nginx、apache、AmazonS3などが表示される）
 Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
 # リファラポリシー（nginx、apache、などで実装可能）

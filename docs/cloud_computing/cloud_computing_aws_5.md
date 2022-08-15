@@ -336,7 +336,7 @@ Systems Managerパラメーター名は、『```/<リソース名>/<環境変数
 
 #### ▼ Session Managerとは
 
-EC2インスタンス（ECSやEKSのコンテナのホストを含む）に接続できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
+EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
 ℹ️ 参考：
 
@@ -629,7 +629,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 #### 5. 接続確認
 
-ロールを引き受けた新しいアカウントを使用して、AWSリソースに接続できるか否かを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
+ロールを引き受けた新しいアカウントを使用して、AWSリソースに通信できるか否かを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
 
 ```bash
 #!/bin/bash

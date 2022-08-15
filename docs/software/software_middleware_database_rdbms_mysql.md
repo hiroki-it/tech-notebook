@@ -24,7 +24,7 @@ mysqlコマンドのみをインストールしたい場合
 $ dnf install -y mysql
 ```
 
-mysqlコマンド、DBサーバー機能、をインストールしたい場合はこちら
+mysqlコマンド、dbサーバー機能、をインストールしたい場合はこちら
 
 ```bash
 $ dnf install -y mysql-server

@@ -1082,7 +1082,7 @@ spec:
 
 ```spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
 
-参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
+ℹ️ 参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
 
 ```yaml
 apiVersion: v1
@@ -1101,7 +1101,7 @@ spec:
   initContainers:
     - name: readiness-check-db
       image: busybox:1.28
-      # StatefulSetのDBコンテナの3306番ポートに接続できるまで、本Podのfoo-ginコンテナの起動を待機する。
+      # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command: [
         'sh',

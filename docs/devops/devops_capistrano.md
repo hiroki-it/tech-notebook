@@ -19,9 +19,9 @@ description: Capistrano＠DevOpsの知見を記録しています。
 
 インプレースデプロイメントを実現する。
 
-1. 自身のパソコンからデプロイサーバーにリモート接続する。
-2. デプロイサーバーの自動デプロイツール（例：Capistrano）が、デプロイサーバーからWebサーバーにリモート接続する。
-3. 自動デプロイツールが、WebサーバーのGitを操作し、```git pull```あるいは```git clone```を実行する。その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
+1. 自身のパソコンからデプロイサーバーにリモート通信する。
+2. デプロイサーバーの自動デプロイツール（例：Capistrano）が、デプロイサーバーからwebサーバーにリモート通信する。
+3. 自動デプロイツールが、webサーバーのGitを操作し、```git pull```あるいは```git clone```を実行する。その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
 ![capistorano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/capistorano_ec2.png)
 

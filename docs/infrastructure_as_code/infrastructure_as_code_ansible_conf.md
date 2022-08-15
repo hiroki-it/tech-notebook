@@ -81,8 +81,8 @@ repository/
     │   ├── tasks/
     │   └── templates/
     │    
-    ├── db/ # DBサーバー
-    └── web/ # Webサーバー
+    ├── db/ # dbサーバー
+    └── web/ # webサーバー
 ```
 
 <br>

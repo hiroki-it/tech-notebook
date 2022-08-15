@@ -39,7 +39,7 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 ![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_fastcgi.png)
 
-PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
+PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
 ℹ️ 参考：
 

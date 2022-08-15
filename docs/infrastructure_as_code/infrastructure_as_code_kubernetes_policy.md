@@ -281,7 +281,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 #### ▼ マスターNodeのアップグレードとは
 
-まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のアドオン（例：eks-core-dns、eks-kube-proxy、eks-vpc-cni）をアップグレードする。
+まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のアドオン（例：core-dns、kube-proxy、vpc-cni）を別々にアップグレードする。
 
 ℹ️ 参考：
 
@@ -304,12 +304,12 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ℹ️ 参考：https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
 
-| 方法                       | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
-| -------------------------- | -------- | ------------ | ------------ | ------------------------------------------------------------ |
-| インプレース方式           | 短い     | 簡単         | 長い         | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。 |
-| ライブ方式                 | ^        | ^            | v            |                                                              |
+| 方法            | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
+|---------------| -------- | ------------ | ------------ | ------------------------------------------------------------ |
+| インプレース方式      | 短い     | 簡単         | 長い         | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。 |
+| ライブ方式         | ^        | ^            | v            |                                                              |
 | ローリングアップデート方式 | ^        | ^            | v            |                                                              |
-| ブルーグリーン方式         | 長い     | 難しい       | なし         | Clusterの作成の労力が、もう一つ実行環境を作成することに相当する。 |
+| ブルー/グリーン方式    | 長い     | 難しい       | なし         | Clusterの作成の労力が、もう一つ実行環境を作成することに相当する。 |
 
 #### ▼ インプレース方式
 
@@ -357,7 +357,7 @@ $ kubectl drain <ワーカーNode名> \
 - https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
 - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 
-#### ▼ ブルーグリーン方式
+#### ▼ ブルー/グリーン方式
 
 ![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
 

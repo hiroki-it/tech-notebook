@@ -463,9 +463,17 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 02. LB
 
-- ALB：Application Load Balancer
-- NLB：Network Load Balancer
-- GLB：Gateway Load Balancer
+ℹ️ 参考：
+
+- https://aws.amazon.com/jp/elasticloadbalancing/features/
+- https://faq.support.nifcloud.com/faq/show/420?site_domain=default
+
+| 負荷分散対象のOSI層 | ターゲット                      | リスナーの対応プロトコル  | LB名                           | セキュリティグループ |
+| ----------- | ------------------------------- | ------------------------- | ------------------------------ | -------------------- |
+| ```L7```          | IPアドレス、インスタンス、Lamba | HTTP、HTTPS、gRPC         | ALB：Application Load Balancer | 可                   |
+| ```L4```          | IPアドレス、インスタンス、ALB   | TCP、UDP、TLS             | NLB：Network Load Balancer     | 不可                 |
+| ```L3```、```L4```      | IPアドレス、インスタンス        | IP                        | GLB：Gateway Load Balancer     | 不可                 |
+| ```L4```、```L7```      | なし                            | HTTP、HTTPS、TCP、SSL/TLS | CLB：Classic Load Balancer     | 可                   |
 
 <br>
 
@@ -549,9 +557,9 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 ℹ️ 参考：https://cloudpack.media/525
 
-#### ▼ Webサーバーにおける対処方法
+#### ▼ webサーバーにおける対処方法
 
-ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、WebサーバーへのリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
+ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、webサーバーへのリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
 
 ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
@@ -565,7 +573,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 ![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
 
-ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションへのリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、Webサーバー側の対応不要）。
+ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションへのリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、webサーバー側の対応不要）。
 
 ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
@@ -645,7 +653,7 @@ RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害�
 
 #### ▼ OSの隠蔽とは
 
-RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。そのためDBサーバーのようには操作できず、OSのバージョン確認やSSH接続を行えない。
+RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH接続を行えない。
 
 ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
 
@@ -928,9 +936,9 @@ Auroraをエンジンバージョンに選択した場合に使用できる。�
 
 | エンドポイント名           | 役割              | エンドポイント：ポート番号                                   | 説明                                                         |
 | -------------------------- | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| クラスターエンドポイント   | 書き込み/読み出し | ```<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | プライマリーインスタンスに接続できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster |
-| リーダーエンドポイント     | 読み出し          | ```<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | リードレプリカに接続できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
-| インスタンスエンドポイント |                   | ```<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | 選択したDBインスタンスに接続できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントそのままなため、アプリケーションが影響を付ける。非推奨である。 |
+| クラスターエンドポイント   | 書き込み/読み出し | ```<DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster |
+| リーダーエンドポイント     | 読み出し          | ```<DBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | リードレプリカに通信できる。DBインスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントの転送先は新しいプライマリーインスタンスに変更される。もしリードレプリカが全てダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスに転送するようになる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Reader |
+| インスタンスエンドポイント |                   | ```<DBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>``` | 選択したDBインスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントそのままなため、アプリケーションが影響を付ける。非推奨である。 |
 
 <br>
 

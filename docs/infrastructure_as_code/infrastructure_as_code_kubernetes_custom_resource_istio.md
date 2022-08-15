@@ -17,14 +17,50 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-データプレーン、コントロールプレーン、から構成される。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+データプレーン、コントロールプレーン、から構成される。```L1```から```L6```上で稼働し、```L7```（アプリケーション層）にて、マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 ℹ️ 参考：
 
 - https://istio.io/latest/docs/ops/deployment/architecture/
 - https://techblog.zozo.com/entry/zozotown-istio-production-ready
+- https://www.amazon.co.jp/dp/B09XN9RDY1
 
 ![istio_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_architecture.png)
+
+<br>
+
+### 他のOSSツールとの比較
+
+ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
+
+| 機能                               | Istio | Linkerd | Consul |
+| ---------------------------------- |:-----:|:--------:|:------:|
+| 機能の豊富さ                       | ⭕️   | △       | △     |
+| 異なるClusterのデータプレーン内管理 | ⭕️   | ×       | ⭕️    |
+| 仮想マシンのデータプレーン内管理 | ⭕️ | × | ⭕️ |
+| ダッシュボード                     | × |    ⭕️    | ⭕️   |
+| サービスディスカバリー             | ⭕️   |    ⭕️    | ⭕️    |
+| メトリクス収集                     | ⭕️   |    ⭕️    | ×     |
+| 分散トレース収集                   | ⭕️   | ×       | ⭕️    |
+| 相互TLS                            | ⭕️   |    ⭕️    | ⭕️    |
+| ポリシーベースのACL                | ⭕️   | ×       | ×     |
+| 意図ベースのACL                    | ×    | ×       | ⭕️    |
+| 証明書管理                         | ⭕️   | ×       | ⭕️    |
+| HTTP/1.2、HTTP/2.0、gRPC           | ⭕️   |    ⭕️    | ×     |
+| TCP                                | ⭕️   |    ⭕️    | ⭕️    |
+| カスタムリソース                   | ⭕️   |    ⭕️    | ×     |
+| サイドカーインジェクション         | ⭕️   |    ⭕️    | ⭕️    |
+| ブルー/グリーンデプロイメント      | ⭕️   | ×       | ×     |
+| カナリアリリース                   | ⭕️   |    ⭕️    | ×     |
+| 属性ベースのルーティング           | ⭕️   | ×       | ×     |
+| リクエスト数制限（レートリミット） | ⭕️   |    ⭕️    | ×     |
+| OSI層の```L7```に対応              | ⭕️   | ×       | ×     |
+| Spiffeに対応                       | ⭕️   | ×       | ⭕️    |
+| 再試行処理                         | ⭕️   |    ⭕️    | ×     |
+| タイムアウト                       | ⭕️   |    ⭕️    | ×     |
+| サーキットブレイカー               | ⭕️   | ×       | ×     |
+| Ingressコントローラー              | ⭕️   | ×       | ×     |
+| Egressコントローラー               | ⭕️   | ×       | ×     |
 
 <br>
 
@@ -38,7 +74,7 @@ iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、か�
 
 <br>
 
-### 自動注入されるコンテナ
+### 自動注入されるコンポーネント
 
 #### ▼ ```istio-init```コンテナ
 
@@ -64,11 +100,11 @@ Pod内へのインバウンド通信とPod外へのアウトバウンド通信�
 $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 ```
 
-#### ▼ ```istio-proxy```コンテナ（サイドカープロキシ）
+#### ▼ ```istio-proxy```コンテナ（サイドカーコンテナ）
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシのサイドカーコンテナとして機能する。Envoyとpilot-agentがミドルウェアとして稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの機能を持つサイドカーコンテナである。Envoyとpilot-agentがミドルウェアとして稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 ℹ️ 参考：
 
@@ -77,7 +113,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 <br>
 
-### サイドカーコンテナ注入の仕組み
+### ```istio-proxy```コンテナ注入の仕組み
 
 #### ▼ kube-apiserver内のmutating-admissionステップ
 
@@ -98,24 +134,6 @@ webhookサーバーは、AdmissionReviewリクエストを```/inject```エンド
 
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
-
-<br>
-
-### Istio CNIアドオン
-
-#### ▼ Istio CNIとは
-
-![istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio-cni.png)
-
-ワーカーNode上でDaemonSetとして稼働し、```istio-init```コンテナと同様にPod内にiptablesをPodに適用する。```istio-init```コンテナの脆弱性の問題を回避するために導入する。もしIstio CNIアドオンを使用する場合は、```istio-init```コンテナが不要になる。
-
-ℹ️ 参考：https://www.redhat.com/architect/istio-CNI-plugin
-
-#### ▼ ```istio-validation```コンテナ
-
-Istio CNIを使用している場合にのみそう挿入されるコンテナ。Istio CNIのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
-
-ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
 <br>
 
@@ -165,7 +183,47 @@ v1.5からデータプレーン側に統合された。
 
 <br>
 
-## 01-04.  Istio、Envoy（Istio無し）、Kubernetesの対応関係
+## 01-04. マルチサービスメッシュ
+
+### 異なるCluster内コンテナのデータプレーン内管理
+
+#### ▼ 同じプライベートネットワーク内の場合
+
+異なるClusterが同じプライベートネットワーク内に属している場合に、Clusterのコントロールプレーン間でデータプレーンを管理し合うことにより、この時、IngressGatewayを使用せずに、異なるClusterのコンテナが直接的に通信できる。
+
+ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+
+![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_same-network.png)
+
+#### ▼ 異なるプライベートネットワーク内の場合
+
+異なるClusterが異なるプライベートネットワーク内に属している場合に、Clusterのコントロールプレーン間でデータプレーンを管理し合うことにより、この時、IngressGatewayを経由して、異なるClusterのコンテナが間接的に通信できる。
+
+ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+
+![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
+
+<br>
+
+### 仮想サーバー内コンテナのデータプレーン内管理
+
+#### ▼ 同じプライベートネットワーク内の場合
+
+仮想マシンがコントロールプレーンと同じプライベートネットワーク内に属している場合に、この仮想マシンに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想マシンを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想マシン上のコンテナが直接的に通信できる。
+
+ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
+
+![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_same-network.png)
+
+#### ▼ 異なるプライベートネットワーク内の場合
+
+仮想マシンがコントロールプレーンと異なるプライベートネットワーク内に属している場合に、この仮想マシンに```istio-proxy```コンテナを注入することにより、データプレーン内で管理できるようになる。この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想マシン上のコンテナが間接的に通信できる。
+
+![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_difficult-network.png)
+
+<br>
+
+## 01-05.  Istio、Envoy（Istio無し）、Kubernetesの対応関係
 
 Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
@@ -191,9 +249,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 
 ### Istioリソース
 
-Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。Istioリソースは、IaCによってマニフェストファイルで定義される。Istioのマニフェストファイルについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
+Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。
 
 <br>
 
@@ -414,3 +470,24 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
 
+<br>
+
+## 07. アドオン
+
+### istio-cniアドオン
+
+#### ▼ istio-cniアドオンとは
+
+ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。```istio-init```コンテナの脆弱性の問題を回避するために導入する。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる。
+
+ℹ️ 参考：https://www.redhat.com/architect/istio-CNI-plugin
+
+![istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio-cni.png)
+
+#### ▼ ```istio-validation```コンテナ
+
+istio-cniを使用している場合にのみそう挿入されるコンテナ。istio-cniのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
+
+ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
+
+<br>

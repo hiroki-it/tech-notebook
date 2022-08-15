@@ -209,7 +209,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
+マスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
 
 ℹ️ 参考：
 
@@ -282,9 +282,7 @@ kubernetesクライアントは、```kubectl```コマンドを使用して、kub
 
 ### Kubernetesリソース
 
-Kubernetes上でアプリケーションを稼働させる概念のこと。Kubernetesリソースは、IaCによってマニフェストファイルで定義される。マニフェストファイルについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html
+Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 <br>
 
@@ -310,9 +308,12 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。Kube
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：FluentBit、datadogエージェント、cAdvisorエージェント、などのデータ収集プロセス）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
-ℹ️ 参考：https://thinkit.co.jp/article/13611
+ℹ️ 参考：
+
+- https://thinkit.co.jp/article/13611
+- https://github.com/kubernetes/kops/issues/6527#issue-413870064
 
 #### ▼ Pod数の固定
 

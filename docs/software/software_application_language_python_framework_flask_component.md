@@ -59,7 +59,7 @@ PREFIX_FOO = "foo"
 
 #### ▼ ```run```メソッドとは
 
-設定されたルーティングを元に、WerkzeugによるWebサーバーを起動する。開発環境のみで推奨される方法である。
+設定されたルーティングを元に、Werkzeugによるwebサーバーを起動する。開発環境のみで推奨される方法である。
 
 ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.run
 

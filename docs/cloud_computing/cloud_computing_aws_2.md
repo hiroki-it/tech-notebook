@@ -1252,11 +1252,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
 | ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
-| Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
-| kube-dns                   | CoreDNS                 |                                                              |
-| kube-proxy                 | kube-proxy              |                                                              |
-| 種々のCNIプラグイン        | aws-nodeコンテナ        | VPCのIPアドレスをPodに割り当て、Clusterネットワーク内にある通信がPodに接続できるようにする。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html<br>・https://tech-blog.optim.co.jp/entry/2021/11/10/100000 |
-| これら以外のリソース       | なし                    |                                                              |
+| Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |                                                        |
 
 <br>
 
@@ -1744,30 +1740,69 @@ source "${EXPORT_ENVS}"
   --container-runtime containerd
 ```
 
+<br>
 
+### Nodeグループ
+
+#### ▼ タイプ
+
+| タイプ名         | 説明                                                         | 補足                                                         |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| マネージド       | Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、Nodeが配置される全てのプライベートサブネットに適用される。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
+| セルフマネージド | Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
+
+#### ▼ 起動テンプレート
+
+同じNodeグループのEC2インスタンスの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。ワーカーNodeのスケールアウト時に、この設定値に基づいてEC2インスタンスが作成される。
+
+#### ▼ スケジュールアクション
+
+同じNodeグループのEC2インスタンスの定期アクションを設定する。Kubernetesのテスト環境では、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間の間だけ停止させられる。
 
 <br>
 
-### Nodeグループタイプ
+## 03-03-04. EKSアドオン
 
-#### ▼ マネージド
+### EKSアドオンとは
 
-Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、Nodeが配置される全てのプライベートサブネットに適用される。
+EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
+
+参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
+
+<br>
+
+### eks-code-dnsアドオン
+
+#### ▼ eks-code-dnsアドオンとは
+
+EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+
+<br>
+
+### eks-kube-proxy
+
+#### ▼ eks-kube-proxyアドオンとは
+
+EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
+
+参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+
+<br>
+
+### eks-vpc-cniアドオン
+
+#### ▼ eks-vpc-cniアドオンとは
+
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
+
+EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodに通信できるようにする。
 
 ℹ️ 参考：
 
-- https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
-- https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html
-- https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
-
-#### ▼ セルフマネージド
-
-Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。
-
-ℹ️ 参考：
-
-- https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-- https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
+- https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+- https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 
 <br>
 
