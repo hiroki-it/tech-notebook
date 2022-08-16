@@ -169,7 +169,7 @@ kube-controller-managerは、kube-controllerを反復的に実行し、マニフ
 
 #### ▼ descheduler
 
-kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、特定のワーカーNodeにPodが偏ったり、Podが残骸として残ることがある。そこで、deschedulerをJobとして起動させ、Podを再スケジュールする。
+kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した後、ワーカーNodeが復旧したとしても、Podが元々のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを手動で実行すれば良いが、deschedulerを使用すれば、これを自動化できる。deschedulerをJobとして起動させ、Podを自動的に再スケジュールする。
 
 ℹ️ 参考：
 
@@ -325,7 +325,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、新しいPodをapplyする。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、新しいPodを作成する。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
 ℹ️ 参考：
 

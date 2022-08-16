@@ -71,32 +71,64 @@ description: Go＠ホワイトボックステストの知見を記録してい�
 
 ### テーブル駆動テスト
 
+テストデータ（```data```、```in```）と期待値（```expected```、```want```）をファイル（例：```.json```、```.yaml```）として用意しておく。これを```ReadFile```関数で読み出し、テストケースの構造体を定義する。テストケースの構造体を反復処理し、テストを実施する。
+
 ℹ️ 参考：https://github.com/golang/go/wiki/TableDrivenTests
 
-<br>
-
-### POSTデータの切り分け
-
-POSTリクエストを受信するテストを実施する時に、JSONデータをファイルに切り分けておく。これを```ReadFile```関数で読み出すようにする。
-
-**＊実装例＊**
 
 ```go
 package test
 
 import (
 	"io/ioutil"
+	"testing"
 )
 
 /**
- * mainメソッドをテストします。
+ * fooメソッドをテストします。
  */
-func TestMain(t *testing.T) {
-	// jsonファイルの読み出し
-	data, err := ioutil.ReadFile("../testdata/data.json")
+func TestFoo(t *testing.T) {
 
-	// 以下にテストコードを実装していく
+	// ファイルを読み込む。
+	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
+	data_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
+
+	expected_foo_failed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
+	data_foo_failed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
+
+	// テストケース
+	cases := []struct {
+		// テストケース名
+		name string
+		// 期待値
+		expected string
+		// テストデータ
+		data []byte
+	}{
+		{
+			name:     "TestFoo_SucceedStatus_ReturnOk",
+			expected: expected_foo_succeed_status,
+			data:     data_foo_succeed_status,
+		},
+		{
+			name:     "TestFoo_FailedStatus_ReturnOk",
+			expected: expected_foo_failed_status,
+			data:     data_foo_failed_status,
+		},
+	}
+
+	// テストケースを反復で処理する。
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+
+			// fooメソッドを実行し、実際値を作成する。
+
+			// 期待値と実際値を比較する。
+			assert.JSONEq(t, tt.expected, actual)
+		})
+	}
 }
+
 ```
 
 <br>

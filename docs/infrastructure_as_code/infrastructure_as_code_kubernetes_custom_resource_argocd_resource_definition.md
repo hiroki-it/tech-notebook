@@ -41,7 +41,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 $ kubectl create namespace argocd
 ```
 
-（３）ArgoCDのマニフェストファイルを指定し、Kubernetes上にArgoCDをapplyする。
+（３）ArgoCDのマニフェストファイルを指定し、Kubernetes上にArgoCDを作成する。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -245,12 +245,12 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 - https://argo-cd.readthedocs.io/en/stable/core_concepts/
 - https://github.com/argoproj/argo-cd/discussions/8260
 
-| 操作名       | 説明                                                         |
-| ------------ | ------------------------------------------------------------ |
-| Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があればapplyする。 |
-| Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
-| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。 |
-| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースをapplyすることはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
+| 操作名       | 説明                                                                                                                                              |
+| ------------ |-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があれば```kubectl apply```コマンドを実行する。                                                                                |
+| Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。                                                                                           |
+| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。                                                         |
+| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースを作成することはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
 
 #### ▼ ヘルスステータスの種類
 
@@ -348,15 +348,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストファイルをapplyする。
+マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストファイルで```kubectl apply```コマンドを実行。
 
 ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-| リポジトリの種類                                   | 管理方法                     | マニフェストファイルのapply方法                           |
-|--------------------------------------------| ---------------------------- | ------------------------------------------------------------ |
-| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的にapplyする。                               |
-| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
-| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的にapplyする。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| リポジトリの種類                                   | 管理方法                     | マニフェストファイルのapply方法                                       |
+|--------------------------------------------| ---------------------------- |----------------------------------------------------------|
+| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
+| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
 
 <br>
 
@@ -424,7 +424,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。各実行環境に、実行環境に対応したブランチを指定するマニフェストファイルをapplyしておくとよい。これにより、各実行環境内のApplicationは特定のブランチのみを監視するようになる。
+監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。各実行環境に、実行環境に対応したブランチを指定するマニフェストファイルを定義しておくとよい。これにより、各実行環境内のApplicationは特定のブランチのみを監視するようになる。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -488,7 +488,7 @@ helmコマンドに相当するパラメーターを設定する。Helmfileの�
 
 | 設定項目          | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```releaseName``` | applyするリリース名を設定する。                           |                                                              |
+| ```releaseName``` | 作成するリリース名を設定する。                           |                                                              |
 | ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのマニフェストファイルにハードコーディングして定義する。 |                                                              |
 | ```valueFiles```  | apply時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
 
@@ -697,7 +697,7 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 | 設定項目         | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```prune```      | リソースをapplyしつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
+| ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
 | ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
 | ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
@@ -905,7 +905,7 @@ spec:
 
 #### ▼ strategyとは
 
-デプロイ手法を設定する。大前提として、そもそもArgoCDはマニフェストをapplyしているだけなので、デプロイ手法は、Deploymentの```spec.strategy```キーや、DaemonSetとStatefulSetの```spec.updateStrategy```キーの設定値に依存する。ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
+デプロイ手法を設定する。大前提として、そもそもArgoCDは```kubectl apply```コマンドでリソースを作成しているだけなので、デプロイ手法は、Deploymentの```spec.strategy```キーや、DaemonSetとStatefulSetの```spec.updateStrategy```キーの設定値に依存する。ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
 
 #### ▼ blueGreen
 

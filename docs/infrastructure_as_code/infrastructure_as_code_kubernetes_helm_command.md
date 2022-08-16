@@ -52,7 +52,7 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 #### ▼ installとは
 
-チャートなどを指定し、Kubernetesリソースとしてapplyする。チャートへのパスを指定する以外にも、指定方法には種類がある。
+チャートなどを指定し、Kubernetesリソースとして作成する。チャートへのパスを指定する以外にも、指定方法には種類がある。
 
 ℹ️ 参考：https://helm.sh/docs/helm/helm_install/
 
@@ -70,7 +70,7 @@ $ helm install <リリース名> <チャートへのパス>
 
 #### ▼ --dry-run
 
-Kubernetesにapplyされるリソースのマニフェストファイルを取得する。applyする前に、チャートの設定が正しいか否かを確認できる。
+Kubernetesに作成されるリソースのマニフェストファイルを取得する。作成する前に、チャートの設定が正しいか否かを確認できる。
 
 ```bash
 $ helm install --dry-run <リリース名> <チャートへのパス>
@@ -446,7 +446,7 @@ $ helm show values releases
 
 #### ▼ templateとは
 
-Kubernetesにapplyされるリソースのマニフェストファイルを出力する。```.yaml```ファイルにリダイレクトするようにすると良い。
+Kubernetesに作成されるリソースのマニフェストファイルを出力する。```.yaml```ファイルにリダイレクトするようにすると良い。
 
 ```bash
 $ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>

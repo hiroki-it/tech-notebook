@@ -1767,7 +1767,7 @@ source "${EXPORT_ENVS}"
 
 EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
 
-参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
+ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
 
 <br>
 
@@ -1777,7 +1777,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -1787,7 +1787,7 @@ EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとし�
 
 EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
 
-参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 

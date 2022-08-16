@@ -19,16 +19,38 @@ description: リソース定義＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-プロファイルを指定し、Istioのチャートをインストールする。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+```istioctl```コマンドを使用して、Istioのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 ```bash
+# Istioのdemoチャートをインストールし、リソースを作成する。
 $ istioctl install --set profile=demo
 
 # 外部のチャートを使用する場合
 $ istioctl install --manifests=foo-chart
 ```
+
+#### ▼ GCRから（IstioOperator制御）
+
+IstioOperatorを使用して、Istioのチャートを間接的にインストールしても良い。
+
+ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+
+```yaml
+# istio-operator.yamlファイル
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  profile: demo # Istioのdemoチャートをインストールし、リソースを作成する。
+```
+
+````bash
+$ kubectl apply -f istio-operator.yaml
+````
 
 <br>
 
@@ -38,7 +60,7 @@ $ istioctl install --manifests=foo-chart
 
 #### ▼ Google-APIsから
 
-Google-APIsから、Istioのコンポーネント別にチャートをインストールする。
+Google-APIsから、Istioのコンポーネント別にチャートをインストールし、リソースを作成する。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
@@ -194,7 +216,7 @@ kind: Namespace
 metadata:
   name: foo-namespace
   labels:
-    istio.io/rev: 1-12-1 # ハイフン繋ぎのバージョン表記
+    istio.io/rev: 1-0-0 # ハイフン繋ぎのバージョン表記
 ```
 
 <br>

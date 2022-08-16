@@ -13,7 +13,9 @@ description: カスタムリソース@Kubernetesの知見を記録していま�
 
 <br>
 
-## 01. カスタムリソースとは
+## 01. カスタムリソース
+
+### カスタムリソースとは
 
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
 
@@ -21,6 +23,20 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 - https://www.amazon.co.jp/dp/B08FZX8PYW
+
+### セットアップ
+
+#### ▼ マニフェストファイルとして
+
+カスタムリソースのマニフェストファイルを用いて、```kubectl apply```コマンドを手動で実行し、カスタムリソースを作成する。
+
+#### ▼ チャートとして
+
+カスタムリソース自体のチャートをインストールし、カスタムリソースを作成する。
+
+#### ▼ チャートとして（Operator制御）
+
+Operatorのチャートをインストールし、Operatorにカスタムリソースを作成させる。
 
 <br>
 

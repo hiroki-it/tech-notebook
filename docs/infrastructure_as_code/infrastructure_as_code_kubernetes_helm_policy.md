@@ -253,7 +253,7 @@ Helmは、カスタムリソースを含むチャートのインストールは�
 
 ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
 
-（１）```kubectl apply```コマンドを実行し、新しいバージョンのカスタムリソースをapplyする。
+（１）```kubectl apply```コマンドを実行し、新しいバージョンのカスタムリソースを作成する。
 
 ```bash
 $ kubectl apply -f <新しいバージョンのカスタムリソースのマニフェストファイルのURL>

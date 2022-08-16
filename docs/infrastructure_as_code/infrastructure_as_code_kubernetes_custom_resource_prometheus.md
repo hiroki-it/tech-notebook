@@ -242,7 +242,7 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 #### ▼ GitHubリポジトリから
 
-サーバー内でライブラリとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールする。
+サーバー内でライブラリとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
 
 ```bash
 # node-exporterの場合
@@ -254,11 +254,11 @@ $ mv node_exporter-1.0.0.linux-amd64/node_exporter /usr/local/bin/node_exporter
 
 <br>
 
-### セットアップ（チャートとして）
+### セットアップ
 
-#### ▼ GitHubリポジトリから
+#### ▼ GitHubリポジトリから（チャートとして）
 
-GitHubから目的に応じたチャートをインストールする。
+GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

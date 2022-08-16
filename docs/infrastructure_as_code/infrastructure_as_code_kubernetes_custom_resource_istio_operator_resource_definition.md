@@ -15,7 +15,13 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 ## 01. セットアップ
 
-（１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースをapplyするようになっている。
+### チャートとして
+
+#### ▼ GCRから
+
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+
+（１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/
 
@@ -28,7 +34,7 @@ Operator controller will watch namespaces: istio-system
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースをapplyする。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースをapplyすることもできる。```kubectl```コマンドでもapplyできるが、applyの成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
 ℹ️ 参考：
 
@@ -37,7 +43,7 @@ Operator controller will watch namespaces: istio-system
 
 ```bash
 # istioctlコマンド
-$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
+$ istioctl install -y -f istio-operator.yaml
 
 ✔ Istio core installed
 ✔ Istiod installed
@@ -48,9 +54,22 @@ Making this installation the default for injection and validation.
 
 ```bash
 # kubectlコマンド
-$ kubectl apply -f <IstioOperatorのマニフェストファイルへのパス>
+$ kubectl apply -f istio-operator.yaml
 
 istiooperator.install.istio.io/istio-operator created
+```
+
+#### ▼ チャートリポジトリから
+
+IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+
+ℹ️ 参考：
+
+- https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
+- https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
+
+```bash
+$ helm install istio-operator manifests/charts/istio-operator -n istio-operator -f values.yaml
 ```
 
 <br>
@@ -77,13 +96,13 @@ metadata:
 
 #### ▼ componentとは
 
-IstioOperator経由でIstioリソースをapplyする。
+IstioOperator制御でIstioリソースを作成する。
 
 ℹ️ 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
 #### ▼ egressGateways
 
-IstioOperator経由でapplyされるEgressGatewayのオプションを設定する。
+IstioOperator制御で作成されるEgressGatewayのオプションを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -338,7 +357,7 @@ spec:
 
 #### ▼ namespaceとは
 
-IstioOperator経由でapplyされるIstioリソースのNamespaceを設定する。
+IstioOperator制御で作成されるIstioリソースのNamespaceを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -378,7 +397,7 @@ spec:
 
 #### ▼ revisionとは
 
-コントロールプレーン（Istiod）をカナリアリリースを使用してアップグレードする場合、新しくapplyするバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
+コントロールプレーン（Istiod）をカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
 ℹ️ 参考：
 
@@ -424,7 +443,7 @@ spec:
 
 #### ▼ valuesとは
 
-IstioOperatorに、Helmを使用させてIstioリソースをapplyする場合、Helmの```values```ファイルの代わりになる。
+IstioOperatorに、Helmを使用させてIstioリソースを作成する場合、Helmの```values```ファイルの代わりになる。
 
 #### ▼ gateways.istio-ingressgateway.runAsRoot
 

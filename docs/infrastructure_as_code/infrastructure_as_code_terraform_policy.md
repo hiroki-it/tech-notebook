@@ -115,6 +115,27 @@ terraform {
 }
 ```
 
+#### ▼ 依存関係の一方向化
+
+各コンポーネントの依存関係が一方方向になるようにする。ディレクトリ名に番号を付け、必ず自分より小さな番号の```.tfstate```ファイルを参照するようにすると良い。
+
+ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
+
+```yaml
+repository/
+├── tes/ # テスト環境
+│   └── aws/ # AWS
+│       ├── 01-foo/
+│       ├── 02-bar/
+│       ├── 03-baz/
+│       ├── 04-qux/
+│       ├── 05-quux/
+│       └── 06-corge/
+│    
+├── stg/ # ステージング環境
+└── prd/ # 本番環境
+```
+
 <br>
 
 ### 実行環境別（必須）
@@ -431,6 +452,8 @@ repository/
                 ├── stg/
                 └── prd/
 ```
+
+<br>
 
 <br>
 
@@ -1149,7 +1172,7 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 #### ▼ 独自moduleブロックの場合
 
-独自moduleブロックを使用している場合、```variables```ブロックや```output```ブロックに基づいて、```module```ブロックの仕様書を作成しておく。外部のドキュメント生成ツール（例：Terraform-doc）を使用しても良い。
+独自moduleブロックを使用している場合、```variable```ブロックや```output```ブロックに基づいて、```module```ブロックの仕様書を作成しておく。外部のドキュメント生成ツール（例：Terraform-doc）を使用しても良い。
 
 ℹ️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6
 

@@ -19,7 +19,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 #### ▼ GitHubリポジトリから
 
-GitHubリポジトリからgrafanaチャートをインストールする。
+GitHubリポジトリからgrafanaチャートをインストールし、リソースを作成する。
 
 ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
@@ -30,7 +30,7 @@ $ helm repo update
 $ helm install grafana grafana/grafana -n grafana -f values.yaml
 ```
 
-Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールする。
+Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
 ℹ️ 参考：
 
@@ -51,7 +51,7 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 #### ▼ ドキュメントから
 
-Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これをapplyする。
+Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これを作成する。
 
 ℹ️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 

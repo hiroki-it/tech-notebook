@@ -255,6 +255,8 @@ $ terraform get
 
 ### graph
 
+#### ▼ graphとは
+
 rosource間の依存関係をグラフ化する。これにより、どの```resource```ブロックが他のどの```resource```ブロックを使用しているかがわかる。Graphvizのダウンロードが必要である。
 
 ℹ️ 参考：https://graphviz.org/download/
@@ -262,6 +264,17 @@ rosource間の依存関係をグラフ化する。これにより、どの```res
 ```bash
 $ terraform graph | dot -Tsvg > graph.svg
 ```
+
+#### ▼ 図形の見方
+
+ℹ️ 参考：https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
+
+| 図形  | 種類                                               |
+|-----|--------------------------------------------------|
+| 楕円  | ルートモジュール                                         |
+| 菱形  | ```provider```ブロック                               |
+| 四角  | ```resource```ブロック、```data```ブロック                |
+| ノート | ```variable```ブロック、```output```ブロック、```local```ブロック |
 
 <br>
 

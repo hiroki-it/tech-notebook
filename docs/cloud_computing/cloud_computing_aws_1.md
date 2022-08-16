@@ -192,7 +192,7 @@ frontend:
     preBuild:
       commands:
         - npm install
-        # 環境変数として登録したエンコード値をデコード
+        # base64方式でエンコードした環境変数をデコード
         - echo $ENV | base64 -di > .env
         - cat .env
     build:

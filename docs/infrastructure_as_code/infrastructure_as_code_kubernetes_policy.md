@@ -218,7 +218,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 |      | Skaffold                                                     | Telepresence                                                 |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースをapplyする。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>ℹ️ 参考：https://thinkit.co.jp/article/17853 |
+| 概要 | CIOpsによって、Kubernetesの開発環境にKubernetesリソースを作成する。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>ℹ️ 参考：https://thinkit.co.jp/article/17853 |
 
 <br>
 
@@ -240,7 +240,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 |      | kubectl apply                                                | ArgoCD                                                       |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要 | CIOpsによって、Kubernetesの本番環境にKubernetesリソースをapplyする。非推奨である。 | GitOpsによって、Kubernetesの本番環境にKubernetesリソースをapplyする。 |
+| 概要 | CIOpsによって、Kubernetesの本番環境にKubernetesリソースを作成する。非推奨である。 | GitOpsによって、Kubernetesの本番環境にKubernetesリソースを作成する。 |
 
 <br>
 
@@ -332,7 +332,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 - https://logmi.jp/tech/articles/323032
 
-（１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）をapplyする。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+（１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
 （２）```kubectl drain```コマンドを実行し、Drain処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。Drain処理によって、旧Nodeグループ内ワーカーNode上でのPodのスケジューリングが無効化され、加えて旧Nodeグループ内ワーカーNodeからPodが退避する。その後、新Nodeグループ内ワーカーNode上でPodが再作成される。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
@@ -369,7 +369,7 @@ $ kubectl drain <ワーカーNode名> \
 - https://logmi.jp/tech/articles/323033
 - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 
-（１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）をapplyする。新Clusterには、全てのKubernetesリソースが揃っている。
+（１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 
 （２）社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。
 

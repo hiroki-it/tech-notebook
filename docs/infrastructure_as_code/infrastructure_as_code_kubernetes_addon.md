@@ -114,20 +114,15 @@ webhooks:
         sidecar-injection: enabled
 ```
 
-#### ▼ webhookサーバー
-
-webhookサーバーは、Cluster内部または外部に設置できる。webhookサーバーはPod内で稼働させ、MutatingWebhookConfigurationで指定できるようにServiceでルーティングさせる。
-
-ℹ️ 参考：https://gashirar.hatenablog.com/entry/2020/10/31/141357
-
 #### ▼ AdmissionReviewリクエスト
 
-kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReviewで定義されたJSONデータを送信する。
+kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
 ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
 - https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
+- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -135,7 +130,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 {
   "apiVersion": "admission.k8s.io/v1beta1",
   "kind": "AdmissionReview",
-  # webhookサーバーへのリクエストのパラメーター
+  # AdmissionRequest（webhookサーバーへのリクエストのパラメーター）
   "request": {
     "uid": "705ab4f5-6393-11e8-b7cc-42010a800002",
     "kind": {"group":"autoscaling","version":"v1","kind":"Scale"},
@@ -155,7 +150,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
         "some-key":["some-value1", "some-value2"]
       }
     },
-    # kube-apiserverでリクエストされたKubernetesリソース
+    # kube-apiserverでリクエストされたKubernetesリソースを表す。
     "object": {"apiVersion":"autoscaling/v1","kind":"Scale",...},
     "oldObject": {"apiVersion":"autoscaling/v1","kind":"Scale",...},
     "options": {"apiVersion":"meta.k8s.io/v1","kind":"UpdateOptions",...},
@@ -164,11 +159,22 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 }
 ```
 
+#### ▼ webhookサーバー
+
+webhookサーバーは、Cluster内部または外部に設置できる。webhookサーバーはPod内で稼働させ、MutatingWebhookConfigurationで指定できるようにServiceでルーティングさせる。
+
+ℹ️ 参考：https://gashirar.hatenablog.com/entry/2020/10/31/141357
+
 #### ▼ AdmissionReviewレスポンス
 
-webhookサーバーは、AdmissionReviewで定義されたレスポンスを返信する。
+webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストファイルのpatch処理の定義方法は、JSON Patchツールに依存している。
 
-ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+- https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
+- https://jsonpatch.com/
 
 **＊例＊**
 
@@ -176,15 +182,29 @@ webhookサーバーは、AdmissionReviewで定義されたレスポンスを返�
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
+  # AdmissionResponse
   "response": {
     "uid": "<value from request.uid>",
-    # 宛先のwebhookサーバーが受信したか否か
+    # 宛先のwebhookサーバーが受信したか否かを表す。
     "allowed": true,
+    # PathによるPatch処理を行う。
     "patchType": "JSONPatch",
-    # webhookサーバーによってPatchされるKubernetesリソース
+    # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
     "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
   }
 }
+```
+
+```yaml
+# patchキーをbase64方式でデコードした場合
+# 例として、マニフェストファイルにキー（spec.replicas）と値（3）を追加する。
+[
+  {
+    "op": "add",
+    "path": "/spec/replicas",
+    "value": 3
+  }
+]
 ```
 
 <br>
@@ -240,19 +260,24 @@ webhooks:
     timeoutSeconds: 5
 ```
 
+#### ▼ AdmissionReviewリクエスト
+
+kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
+
+ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+
 #### ▼ webhookサーバー
 
 webhookサーバーは、Cluster内部または外部に設置できる。webhookサーバーはPod内で稼働させ、ValidatingWebhookConfigurationで指定できるようにServiceでルーティングさせる。
 
-#### ▼ AdmissionReviewリクエスト
-
-kube-apiserverは、mutating-admissionステップと同じAdmissionReviewリクエストを送信する。
-
 #### ▼ AdmissionReviewレスポンス
 
-webhookサーバーは、AdmissionReviewで定義されたレスポンスを返信する。
+webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 
-ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -260,9 +285,10 @@ webhookサーバーは、AdmissionReviewで定義されたレスポンスを返�
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
+  # AdmissionResponse
   "response": {
     "uid": "<value from request.uid>",
-    # 宛先のwebhookサーバーが受信したか否か
+    # 宛先のwebhookサーバーが受信したか否かを表す。
     "allowed": true,
     "status": {
       "code": 403,

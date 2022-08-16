@@ -565,7 +565,7 @@ spec:
 
 #### ▼ Recreate
 
-インプレースデプロイメントを使用して、新しいPodをapplyする。
+インプレースデプロイメントを使用して、新しいPodを作成する。
 
 ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/
 
@@ -590,7 +590,7 @@ spec:
 
 #### ▼ RollingUpdate
 
-ローリングアップデートを使用して、新しいPodをapplyする。
+ローリングアップデートを使用して、新しいPodを作成する。
 
 ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -603,7 +603,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをapplyする。
+      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodを作成する。
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
@@ -616,7 +616,7 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-もし```maxSurge```キーを```100```%、また```maxUnavailable```キーを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをapplyするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```キーを```100```%、また```maxUnavailable```キーを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。また、Podの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 

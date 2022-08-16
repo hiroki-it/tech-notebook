@@ -135,6 +135,46 @@ webhookサーバーは、AdmissionReviewリクエストを```/inject```エンド
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
 
+#### ▼ AdmissionReviewレスポンス
+
+Istioでサイドカーインジェクション機能が有効化されている場合に、webhookサーバーは、AdmissionReview内のAdmissionResponseにサイドカーコンテナを作成するpatch処理を格納し、レスポンスとして返信する。
+
+ℹ️ 参考：
+
+- https://github.com/istio/istio/blob/e1f63e8ce82e3bad28c2bb0a87f4bc7ffefac1b9/pkg/kube/inject/webhook.go#L909-L915
+- https://github.com/istio/istio/blob/b3d1566a2af8591d8a74c648108e549c3879d45f/pkg/kube/inject/webhook_test.go#L960-L975
+
+```yaml
+[
+
+  # 〜 中略 〜
+
+  {
+    "op": "add",
+    # キー（spec.initContainers[1]）の部分にvalueキー値を追加する。
+    "path": "/spec/initContainers/1",
+    # マニフェストファイルに追加される構造を表す。
+    "value": {
+        "name": "istio-init",
+        "resources": {}
+    }
+  },
+  {
+    "op": "add",
+    # キー（spec.containers[1]）の部分にvalueキー値を追加する。
+    "path": "/spec/containers/1",
+    # マニフェストファイルに追加される構造を表す。
+    "value": {
+        "name": "istio-proxy",
+        "resources": {}
+    }
+  }
+  
+  # 〜 中略 〜
+    
+]
+```
+
 <br>
 
 ## 01-03. コントロールプレーン
