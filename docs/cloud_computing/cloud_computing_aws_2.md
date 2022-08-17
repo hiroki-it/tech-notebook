@@ -1252,7 +1252,9 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
 | ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
-| Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |                                                        |
+| Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
+| ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-user-role.html |
+| Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-user-role.html |
 
 <br>
 
@@ -1405,9 +1407,9 @@ $ eksctl create iamserviceaccount \
 
 ```bash
 $ eksctl get iamserviceaccount \
-  --cluster foo-eks-cluster \
-  --name aws-load-balancer-controller \
-  --namespace kube-system
+    --cluster foo-eks-cluster \
+    --name aws-load-balancer-controller \
+    --namespace kube-system
 
 2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
 2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1

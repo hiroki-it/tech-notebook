@@ -624,7 +624,9 @@ spec:
 
 ### spec.template（設定項目はPodと同じ）
 
-Deploymentで維持管理するPodを設定する。設定項目はPodと同じである。
+Deploymentで維持管理するPodのテンプレートを設定する。設定項目はPodと同じである。
+
+参考：https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
 **＊実装例＊**
 

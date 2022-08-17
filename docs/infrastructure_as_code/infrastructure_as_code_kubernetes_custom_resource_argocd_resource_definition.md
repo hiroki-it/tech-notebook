@@ -186,7 +186,7 @@ ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-#### ▼ kubectlコマンドを使用して
+#### ▼ ```kubectl```コマンドを使用して
 
 ArgoCDのApplicationを削除する。
 

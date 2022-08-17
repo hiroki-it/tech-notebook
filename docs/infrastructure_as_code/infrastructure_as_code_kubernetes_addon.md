@@ -33,7 +33,7 @@ kube-apiserverのリクエストの処理時には認証認可プロセスがあ
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、2つのステップから構成されている。各ステップではadmissionアドオンを使用して処理を発火させることができ、組み込み処理または独自処理を発火させられる。
+admission-controllersアドオンは、2つのステップから構成されている。Kubernetesリソースに対する作成/更新/削除の実行時やkube-apiserverからのプロキシへの転送時に、各ステップではadmissionアドオンを使用して処理（組み込み処理、独自処理）を発火させられる。読出時は発火しない。
 
 ℹ️ 参考：
 

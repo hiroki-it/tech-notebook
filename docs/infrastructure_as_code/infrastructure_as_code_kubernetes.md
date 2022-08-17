@@ -80,6 +80,29 @@ the server could not find the requested resource
 - https://thinkit.co.jp/article/17453
 - https://vamdemicsystem.black/kubernetes/%E3%80%90macosx%E3%80%91%E3%80%90kubernetes%E3%80%91kubectl-apply%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%80%8Cfailed-to-download-openapi-the-server-could-not-find-the-requested-resource-falling-bac
 
+#### ▼ 認証
+
+![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
+
+アプリケーションの認証と同じように、```kubectl```コマンドのクライアントが許可されたクライアントかどうかを検証する。Cluster外部からのクライアントの場合はUserAccountの設定値で、反対に内部からの場合はServiceAccountで、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/concepts/security/controlling-access/#authentication
+- https://knowledge.sakura.ad.jp/21129/
+- https://santakalog.com/2020/02/28/k8s-architecture/
+
+#### ▼ 認可
+
+![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
+
+アプリケーションの認可と同じように、```kubectl```コマンドのクライアントの権限の範囲（認可スコープ）を検証する。認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
+
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/concepts/security/controlling-access/#authorization
+- https://santakalog.com/2020/02/28/k8s-architecture/
+
 #### ▼ ヘルスチェックエンドポイント
 
 kube-apiserverにはヘルスチェック（```healthy```、```liveness```、```readiness```）のエンドポイントがある。```kubectl get```コマンドでヘルスチェックを実行できる。
@@ -165,7 +188,7 @@ kube-controller-managerは、kube-controllerを反復的に実行し、マニフ
 
 - https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
 - https://techblog.ap-com.co.jp/entry/2019/06/20/191459
-- https://kubernetes.io/ja/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90
 
 #### ▼ descheduler
 
@@ -209,7 +232,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-マスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
+クライアントやマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。これにより、PodのIPアドレスが変わっても、ワーカーNode外部からのインバウンド通信をPodに継続的にルーティングできる。モードごとに、Podの名前解決の方法が異なる。
 
 ℹ️ 参考：
 
@@ -759,9 +782,14 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ Role、ClusterRoleとは
 
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
 認可スコープを設定する。
 
-ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+- https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 | ロール名    | 説明                                   | 補足                                                         |
 | ----------- | -------------------------------------- | ------------------------------------------------------------ |
@@ -774,9 +802,14 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ RoleBinding、ClusterRoleBindingとは
 
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
 定義された認可スコープをAccountに紐づける。
 
-ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+ℹ️ 参考：
+
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+- https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 | バインディング名   | 説明                             | 補足                                                         |
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |

@@ -117,7 +117,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 #### ▼ kube-apiserver内のmutating-admissionステップ
 
-この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewリクエストをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
+この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはIstiodにあるwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewリクエストをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
 
 ℹ️ 参考：
 
@@ -128,7 +128,9 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 #### ▼ webhookサーバー
 
-webhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するためのAdmissionReviewレスポンスを作成し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
+![istio_sidecar-injection_istiod]https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
+
+Istiodにあるwebhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するためのAdmissionReviewレスポンスを作成し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
 
 ℹ️ 参考：
 
@@ -518,7 +520,7 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 #### ▼ istio-cniアドオンとは
 
-ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。```istio-init```コンテナの脆弱性の問題を回避するために導入する。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる。
+ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。iptablesを適用できるような認可スコープは過剰であることが問題視されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる。
 
 ℹ️ 参考：https://www.redhat.com/architect/istio-CNI-plugin
 
