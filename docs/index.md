@@ -194,15 +194,18 @@ title: 【IT技術の知見】目次
 
 ## 🧪 テスト
 
-* ホワイトボックステスト
-    * [📖：︎ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox.html)
-    * [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html)
-    * [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_go.html)
-* ︎ブラックボックステスト
-    * [📖：︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox.html)
-    * 総合テスト
-        * [📖：︎総合テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test.html)
-        * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test_jmeter.html)
+#### ▼ ホワイトボックステスト
+
+* [📖：︎ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox.html)
+* [📖：︎PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html)
+* [📖：︎Go](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_go.html)
+
+#### ▼ ブラックボックステスト
+
+* [📖：︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox.html)
+* 総合テスト
+    * [📖：︎総合テスト](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test.html)
+    * [📖：︎JMeter](https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_blackbox_system_test_jmeter.html)
 
 <br>
 

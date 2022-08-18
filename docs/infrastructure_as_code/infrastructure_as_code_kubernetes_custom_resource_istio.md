@@ -104,7 +104,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの機能を持つサイドカーコンテナである。Envoyとpilot-agentがミドルウェアとして稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの機能を持つサイドカーコンテナである。ミドルウェアとしてEnvoy、デーモンとしてpilot-agent、が稼働している。Istiodにメトリクスを提供する。VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 ℹ️ 参考：
 
@@ -117,7 +117,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 #### ▼ kube-apiserver内のmutating-admissionステップ
 
-この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはIstiodにあるwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewリクエストをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
+この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはIstiodにあるwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
 
 ℹ️ 参考：
 
@@ -128,16 +128,17 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 #### ▼ webhookサーバー
 
-![istio_sidecar-injection_istiod]https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
+![istio_sidecar-injection_istiod](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
 
-Istiodにあるwebhookサーバーは、AdmissionReviewリクエストを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するためのAdmissionReviewレスポンスを作成し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
+Istiodにあるwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
 
 ℹ️ 参考：
 
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
+- https://www.amazon.co.jp/dp/B09XN9RDY1
 
-#### ▼ AdmissionReviewレスポンス
+#### ▼ AdmissionResponse
 
 Istioでサイドカーインジェクション機能が有効化されている場合に、webhookサーバーは、AdmissionReview内のAdmissionResponseにサイドカーコンテナを作成するpatch処理を格納し、レスポンスとして返信する。
 

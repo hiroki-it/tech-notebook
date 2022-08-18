@@ -781,7 +781,7 @@ $ cat foo.txt | grep bar
 標準出力に出力された文字列のうち、以降の数行を取得する。
 
 ```bash
-$ cat foo.txt | grep -A 5
+$ cat foo.txt | grep bar -A 5
 ```
 
 #### ▼ -i

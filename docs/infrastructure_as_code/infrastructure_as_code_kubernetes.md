@@ -84,7 +84,7 @@ the server could not find the requested resource
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認証と同じように、```kubectl```コマンドのクライアントが許可されたクライアントかどうかを検証する。Cluster外部からのクライアントの場合はUserAccountの設定値で、反対に内部からの場合はServiceAccountで、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
+アプリケーションの認証と同じように、```kubectl```コマンドのクライアントが許可されたクライアントかどうかを検証する。Cluster内部からの場合はServiceAccountで、反対にCluster外部からのクライアントの場合はUserAccountに基づいて、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
 
 ℹ️ 参考：
 

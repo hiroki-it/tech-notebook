@@ -1104,7 +1104,7 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 #### ▼ CDパイプラインがある場合
 
-```terraform plan```コマンドをCDパイプライン上で実行している場合、通知ツール（例：tfnotify）を使用し、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
+```terraform plan```コマンドをCDパイプライン上で実行している場合、通知ツール（例：tfnotify、tfcmt）を使用し、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
 
 #### ▼ CDパイプラインがない場合
 
