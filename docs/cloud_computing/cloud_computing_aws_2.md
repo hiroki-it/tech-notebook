@@ -167,7 +167,7 @@ Session Managerを使用してEC2インスタンスに接続し、ログイン�
 
 ### AMIとは
 
-EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームのコピーが内蔵されたテンプレートである。
+EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームの両方が内蔵されたコピーのこと。
 
 ℹ️ 参考：
 
@@ -424,7 +424,7 @@ EC2インスタンスにオートスケーリングを適用している場合�
 
 #### ▼ スナップショットとは
 
-バックアップとしてのEBSボリュームのコピーのこと。ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
+EBSボリュームのコピーのこと。ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
 
 ℹ️ 参考：https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
@@ -1253,8 +1253,8 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
 | Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
-| ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-user-role.html |
-| Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-user-role.html |
+| ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
+| Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
 
 <br>
 
@@ -1296,7 +1296,7 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 #### ▼ コントロールプレーンへのインバウンド通信
 
-コントロールプレーンでは、```kubectl``` コマンドのエンドポイントとしてNLBが配置されている。VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
+コントロールプレーンでは、```kubectl```コマンドのエンドポイントとしてNLBが配置されている。VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
 
 ℹ️ 参考：
 
@@ -1375,7 +1375,7 @@ $ aws iam create-policy \
     --policy-document file://iam_policy.json
 ```
 
-（４）IAM Open ID Connect providerをEKSに紐づける。
+（４）IAM OIDC providerをEKS Clusterに紐づける。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \
@@ -1779,7 +1779,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
 
-ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -1789,7 +1789,7 @@ EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとし�
 
 EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
 
-ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 

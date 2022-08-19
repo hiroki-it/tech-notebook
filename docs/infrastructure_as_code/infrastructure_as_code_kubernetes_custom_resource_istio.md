@@ -89,16 +89,19 @@ Podの初期化時に、Pod内にiptablesを適用する。
 
 #### ▼ iptables
 
-Pod内へのインバウンド通信とPod外へのアウトバウンド通信を、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトする。
+![istio_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables.png)
+
+Pod内へのインバウンド通信とPod外へのアウトバウンド通信を、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトする（画像はアウトバウンド時の経路）。
+
+```bash
+$ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
+```
 
 ℹ️ 参考：
 
 - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#traffic-interception-implementation-details
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/tools/istio-iptables/pkg/cmd/root.go#L219
-
-```bash
-$ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
-```
+- https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 #### ▼ ```istio-proxy```コンテナ（サイドカーコンテナ）
 
@@ -521,11 +524,14 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 #### ▼ istio-cniアドオンとは
 
-ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。iptablesを適用できるような認可スコープは過剰であることが問題視されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる。
+![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-cni.png)
 
-ℹ️ 参考：https://www.redhat.com/architect/istio-CNI-plugin
+ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。OSに干渉するような認可スコープは過剰であることが問題視されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる代わりに、```istio-validation```コンテナが必要になる。
 
-![istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio-cni.png)
+ℹ️ 参考：
+
+- https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+- https://www.redhat.com/architect/istio-CNI-plugin
 
 #### ▼ ```istio-validation```コンテナ
 

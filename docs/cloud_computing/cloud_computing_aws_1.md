@@ -630,6 +630,21 @@ CPU平均使用率に段階的な閾値を設定する。
 
 ## 05. Backup
 
+### 対応AWSリソース
+
+ℹ️ 参考：https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
+
+| AWSリソースの種類 | バックアップ内容                                             |
+| ----------------- | ------------------------------------------------------------ |
+| EC2               | EC2インスタンスのAMIを作成する。                             |
+| S3                | S3バケットの中身のバックアップを作成する。                   |
+| EBSボリューム     | EBSボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
+| Aurora RDS        | Aurora cluster全体のバックアップを作成する。                 |
+
+<br>
+
+### 障害対策
+
 ![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/backup_multi-region.png)
 
 メインリージョンの何らかのAWSリソースで障害が発生し、データが失われる可能性がある。そこで、主要なリージョンとは別に、障害用リージョンを用意しておく。主要リージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。

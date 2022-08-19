@@ -971,7 +971,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 ### 認証認可
 
-特に```terraform plan```コマンドと```terraform apply```コマンドの実行時に関して、コマンドの実行者には通常時にはクラウドプロバイダーへの認証と認可の権限を一切与えず、コマンドの実行時だけこれらを与える。これを行わないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が自由にリソースを操作できるようになってしまう。認証と認可の一時的な権限付与方法としては、AWS STSがある。
+特に```terraform plan```コマンドと```terraform apply```コマンドの実行時に関して、コマンドの実行者には通常時にはクラウドプロバイダーへの認証と認可の権限を一切与えず、コマンドの実行時だけこれらを与える。これを行わないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が自由にリソースを操作できるようになってしまう。認証と認可の一時的な権限付与方法としては、OIDCがある。
 
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 
@@ -980,7 +980,6 @@ The backend configuration argument "bucket" given on the command line is not exp
 ### 機密情報の管理
 
 機密情報を```ignore_changes```引数に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
-
 ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 
 ```terraform
@@ -1010,7 +1009,7 @@ resource "aws_rds_cluster" "this" {
 
 <br>
 
-### outputブロックの暗号化
+### ```output```ブロックの暗号化
 
 ```output```ブロックに機密情報を含む場合は、```sensitive```オプションを有効化する。
 

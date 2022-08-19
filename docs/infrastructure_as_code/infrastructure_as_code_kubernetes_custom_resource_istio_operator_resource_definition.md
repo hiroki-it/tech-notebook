@@ -98,7 +98,43 @@ metadata:
 
 IstioOperator制御でIstioリソースを作成する。
 
-ℹ️ 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
+ℹ️ 参考：
+
+- https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
+- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
+
+#### ▼ base
+
+ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    base:
+      enabled: true
+```
+
+#### ▼ cni
+
+ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    cni:
+      enabled: true
+      namespace: kube-system
+```
 
 #### ▼ egressGateways
 
@@ -113,13 +149,28 @@ metadata:
 spec:
   components:
     egressGateways:
-    - name: istio-egressgateway
-      enabled: true
+      - name: istio-egressgateway
+        enabled: true
 ```
 
 #### ▼ ingressGateways
 
-執筆時点（2022/06/04）では、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、Gatewayを使用するようにする。一応このオプションの説明は残しておく。IngressGatewayのオプションを設定する。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+IstioOperator制御で作成されるIngressGatewayのオプションを設定する。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway
+        enabled: true
+```
+
+執筆時点（2022/06/04）では、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、IstioのGatewayとして定義するようにする。一応このオプションの説明は残しておく。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
 
 ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -215,6 +266,38 @@ status:
   loadBalancer:
     ingress:
     - ip: 10.108.30.158
+```
+
+#### ▼ istiodRemote
+
+ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    istiodRemote:
+      enabled: false
+```
+
+#### ▼ pilot
+
+ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    pilot:
+      enabled: true
 ```
 
 <br>
@@ -443,7 +526,7 @@ spec:
 
 #### ▼ valuesとは
 
-IstioOperatorに、Helmを使用させてIstioリソースを作成する場合、Helmの```values```ファイルの代わりになる。
+IstioOperatorの内部で使用されているHelmの```values```ファイルを上書きする。
 
 #### ▼ gateways.istio-ingressgateway.runAsRoot
 

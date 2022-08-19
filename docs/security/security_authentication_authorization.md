@@ -612,19 +612,19 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 #### ▼ SAML認証とは
 
-調査中...
+Oauth認証による認可フェーズと組み合わせて認証認可を実現する。
+
+ℹ️ 参考：https://baasinfo.net/?p=4418
 
 <br>
 
-### OpenID Connect
+### OpenID Connect認証
 
-#### ▼ OpenID Connectとは
+#### ▼ OpenID Connect認証とは
 
-調査中...
+Oauth認証による認可フェーズと組み合わせて認証認可を実現する。
 
-#### ▼ 使用される認証スキーム
-
-調査中...
+ℹ️ 参考：https://baasinfo.net/?p=4418
 
 <br>
 
@@ -643,7 +643,7 @@ OAuth認証では、認証スキーマとしてBearer認証が選択されるこ
 
 ### 認証での利用
 
-#### ▼ Bear認証の場合
+#### ▼ Bearer認証の場合
 
 ```yaml
 GET https://example.com/bar.php

@@ -141,6 +141,23 @@ data "aws_ami" "bastion" {
     values = ["ami-040c9333a9c90b2b6"]
   }
 }
+
+# 後述の説明を参考にせよ。（２）
+data "aws_ami" "backuped" {
+  most_recent = true
+  
+  owners      = ["self"]
+  
+  filter {
+    name   = "name"
+    values = ["AwsBackup_*"]
+  }
+
+  filter {
+    name   = "tag:Env"
+    values = ["prd"]
+  }
+}
 ```
 
 <br>
@@ -148,6 +165,12 @@ data "aws_ami" "bastion" {
 ### （１）取得するAMIのバージョンを固定
 
 取得するAMIが常に最新になっていると、EC2が再作成されなねない。そこで、特定のAMIを取得できるようにしておく。```most_recent```は無効化しておき、特定のAMIをフィルタリングする。
+
+<br>
+
+### （２）AWS Backupで作成したAMIを参照
+
+AWS BackupでEC2のAMIを作成している場合に、フィルターの条件を使用して、AMIを参照する。
 
 <br>
 
@@ -1942,12 +1965,25 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 
 以下の理由で、個人的には、一部のAWSリソースではTerraformを使用しない方が良い。
 
-- ビジネスロジックを持つAWSリソースでは、継続的な改善のサイクルが早い（変更の要望頻度が高い）ため、リリースまでに時間がかかるTerraformで管理すると、このサイクルを阻害してしまう：（API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシー、など）
-- セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかず、また```.tfstate```ファイルに書き込まれないようにする：（EC2の秘密鍵、Systems Managerパラメータストア、など）
-- Terraformによる初期作成時に必要であり、それがないとそもそも```terraform apply```コマンドできない：（Terraform用IAMユーザー、tfstateを管理するS3バケット、など）
-- Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：（tfstateを管理するS3バケットなど）
-- Terraformで特定のAWSリソースを作成すると、それに伴って自動で作成されてしまう：（ENIなど）
-- そもそもAWSがAPIを公開していないことが理由で、Terraformで実装できない：（Chatbotなど）
+- ビジネスロジックを持つAWSリソースでは、継続的な改善のサイクルが早い（変更の要望頻度が高い）ため、リリースまでに時間がかかるTerraformで管理すると、このサイクルを阻害してしまう：
+  - API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシー、など
+
+- セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかず、また```.tfstate```ファイルに書き込まれないようにする：
+  - EC2の秘密鍵、Systems Managerパラメータストア、など
+
+- Terraformによる初期作成時に必要であり、それがないとそもそも```terraform apply```コマンドできない：
+  - Terraform用IAMユーザー、tfstateを管理するS3バケット、など
+  - これに関しては、CloudFormationで作成しても良い。
+
+- Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：
+  - tfstateを管理するS3バケットなど
+
+- Terraformで特定のAWSリソースを作成すると、それに伴って自動で作成されてしまう：
+  - ENIなど
+
+- そもそもAWSがAPIを公開していないことが理由で、Terraformで実装できない：
+  - Chatbotなど
+
 
 <br>
 

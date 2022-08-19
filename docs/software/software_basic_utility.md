@@ -708,7 +708,7 @@ $ find ./* -type f | xargs grep "<検索文字>" 2> /dev/null
 
 #### ▼ -name
 
-ファイル名が```.conf``` で終わるものを全て検索する。
+ファイル名が```.conf```で終わるものを全て検索する。
 
 ```bash
 $ find ./* -name "*.conf" -type f

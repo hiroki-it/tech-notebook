@@ -126,7 +126,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 執筆時点（2020/10/08）では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保存できない。よって、危険ではあるが、パブリックアクセスを有効化する必要がある。
 
 ```bash
-// ポリシーは不要
+# ポリシーは不要
 ```
 
 #### ▼ Lambdaからのアクセスを許可
@@ -482,11 +482,123 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 <br>
 
+### IAMロールの委譲先ユーザー
+
+#### ▼ IAMロールの委譲先ユーザーの種類
+
+IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
+
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
+
+ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+
+#### ▼ IAMユーザー
+
+IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。IAMユーザーの場合、外部IDが必要になる。
+
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+
+#### ▼ AWSリソース
+
+IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。IAMリソースの場合、外部IDが必要になる。
+
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+
+#### ▼ フェデレーテッドユーザー
+
+OIDC認証、SAML認証、によって認証済みのユーザーに委譲できる。OIDC認証のフェデレーテッドユーザーの場合、JWTが必要になる。
+
+ℹ️ 参考：
+
+- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+
+<br>
+
+### フェデレーテッドユーザー
+
+#### ▼ AWS OIDC認証
+
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Principal": {
+          "Federated": "cognito-identity.amazonaws.com"
+        },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            "StringEquals": {
+              "cognito-identity.amazonaws.com:aud": "ap-northeast-1:12345678-abcd-abcd-abcd-123456"
+            },
+            "ForAnyValue:StringLike": {
+              "cognito-identity.amazonaws.com:amr": "unauthenticated"
+            }
+        }
+    }
+}
+
+```
+
+#### ▼ 外部OIDC認証
+
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+
+```yaml
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Principal": {
+          "Federated": "accounts.google.com"
+        },
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            "StringEquals": {
+              "accounts.google.com:aud": "66677788899900pro0"
+            },
+            "ForAnyValue:StringLike": {
+              "accounts.google.com:amr": "unauthenticated"
+            }
+        }
+    }
+}
+```
+
+#### ▼ AWS SAML
+
+ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<アカウントID>:saml-provider/<プロバイダー名>"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "SAML:aud": "https://signin.aws.amazon.com/saml"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
 ### セットアップ
 
 #### 1. IAMロールに信頼ポリシーを紐付け
 
-必要なポリシーが設定されたIAMロールを作成する。その時信頼ポリシーでは、ユーザーの```ARN```を信頼されたエンティティとして設定しておく。これにより、そのユーザーに対して、ロールを紐付けできるようになる。
+必要なポリシーが設定されたIAMロールを作成する。その時信頼ポリシーでは、IAMユーザーの```ARN```を信頼されたエンティティとして設定しておく。これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
 
 ```yaml
 {
@@ -500,6 +612,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
       "Action": "sts:AssumeRole",
       "Condition": {
         "StringEquals": {
+          # IAMユーザーを使用する場合は、外部IDが必要になる。
           "sts:ExternalId": "<適当な文字列>"
         }
       }
@@ -510,7 +623,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 #### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティ（ユーザー）から、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。
+信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDC認証によるフェデレーションユーザーの場合は、```--web-identity-token```オプションに発行されたJWTを設定する必要がある。
 
 ```bash
 #!/bin/bash
@@ -634,9 +747,8 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 ```bash
 #!/bin/bash
 
-# 3-2を選択した場合、credentialsファイルを参照するオプションが必要がある。
-aws s3 ls --profile <プロファイル名>
-2020-**-** **:**:** <.tfstateファイルが管理されるバケット名>
+# credentialsファイルを参照するオプションが必要がある。
+aws s3 ls --profile <プロファイル名> <.tfstateファイルが管理されるバケット名>
 ```
 
 <br>

@@ -24,23 +24,35 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 - https://www.amazon.co.jp/dp/B08FZX8PYW
 
-### セットアップ
+<br>
 
-#### ▼ マニフェストファイルとして
+## 01-02. セットアップ
 
-カスタムリソースのマニフェストファイルを用いて、```kubectl apply```コマンドを手動で実行し、カスタムリソースを作成する。
+### マニフェストファイルとして
 
-#### ▼ チャートとして
+#### ▼ 非Operator制御
+
+カスタムリソースのマニフェストファイルを使用して```kubectl apply```コマンドを実行し、カスタムリソースを作成する。
+
+#### ▼ Operator制御
+
+Operatorのマニフェストファイルを使用して```kubectl apply```コマンドを実行し、Operatorにカスタムリソースを作成させる。
+
+<br>
+
+### チャートとして
+
+#### ▼ 非Operator制御
 
 カスタムリソース自体のチャートをインストールし、カスタムリソースを作成する。
 
-#### ▼ チャートとして（Operator制御）
+#### ▼ Operator制御
 
 Operatorのチャートをインストールし、Operatorにカスタムリソースを作成させる。
 
 <br>
 
-## 01-02. カスタムリソース定義
+## 01-03. カスタムリソース定義
 
 ### apiVersion
 
