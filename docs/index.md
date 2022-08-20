@@ -285,6 +285,7 @@ title: 【IT技術の知見】目次
 
 #### ▼ Ansible
 
+* [📖：Ansible](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible.html)
 * [📖：設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_conf.html)
 
 #### ▼ Docker

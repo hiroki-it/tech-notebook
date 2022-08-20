@@ -1,0 +1,94 @@
+---
+title: 【IT技術の知見】 Ansible＠IaC
+description: Ansible＠IaCの知見を記録しています。
+---
+
+# Ansible
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+<br>
+
+## 01. Ansibleの仕組み
+
+コントロールノードと管理対象ノードから構成される。コントロールノードに相当するデプロイサーバーにはAnsibleがインストールされている。もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
+
+ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
+
+![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
+
+<br>
+
+## 02. セットアップ
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+```bash
+$ sudo apt -y install sshpass
+$ sudo apt -y install python3-pip
+$ pip3 install ansible
+```
+
+<br>
+
+## 04. 設計ポリシー
+
+### ディレクトリ構成ポリシー
+
+ℹ️ 参考：
+
+- https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+- https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+- https://thinkit.co.jp/article/9871
+
+```yaml
+repository/
+├── playbook.yml
+├── group_vars/
+│   ├── tes/ # テスト環境
+│   │   └── foo.yml
+│   │
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
+│
+├── host_vars/
+│   ├── bar_host.yml
+│   └── baz_host.yml
+│   
+├── inventories/
+│   ├── tes/ # テスト環境
+│   │   ├── hosts_a.yml # 冗長化されたサーバーa
+│   │   ├── hosts_c.yml # 冗長化されたサーバーc
+│   │   └── host_vars.yml
+│   │
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
+│      
+└── roles/
+    ├── app/ # appサーバー
+    ├── common/ # 共通
+    │   ├── handlers/
+    │   │   └── main.yml
+    │   │   
+    │   ├── tasks/
+    │   └── templates/
+    │    
+    ├── db/ # dbサーバー
+    └── web/ # webサーバー
+```
+
+<br>
+
+### 命名規則
+
+ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
+
+<br>
