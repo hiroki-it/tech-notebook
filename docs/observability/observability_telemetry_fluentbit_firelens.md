@@ -432,7 +432,7 @@ FireLensコンテナで複数行のログを処理したい場合、```parsers_m
     name                  multiline
     match                 *
     multiline.key_content log
-    # ファイルを読み込む。組み込みパーサ（goなど）を使用することも可能。
+    # ファイルを読み込む。ビルトインパーサ（goなど）を使用することも可能。
     multiline.parser      go, laravel
 ```
 

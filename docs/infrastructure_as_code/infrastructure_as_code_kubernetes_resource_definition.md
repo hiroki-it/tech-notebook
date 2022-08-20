@@ -1840,7 +1840,7 @@ Pod内コンテナのライフサイクルの再起動ポリシーを設定す�
 
 #### ▼ Always
 
-コンテナが終了した場合、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
+コンテナが停止した場合、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -1856,7 +1856,7 @@ spec:
 
 #### ▼ Never
 
-コンテナが終了した場合、コンテナを再起動しない。
+コンテナが停止した場合、コンテナを再起動しない。
 
 ```yaml
 apiVersion: v1
@@ -1872,7 +1872,7 @@ spec:
 
 #### ▼ OnFailure
 
-コンテナが終了した場合、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
+コンテナが停止した場合、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -1914,7 +1914,7 @@ spec:
 
 #### ▼ terminationGracePeriodSecondsとは
 
-Podが終了する時の待機時間を設定する。
+Podを削除する時の待機時間を設定する。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 

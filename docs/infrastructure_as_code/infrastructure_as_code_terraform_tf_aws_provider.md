@@ -1966,23 +1966,23 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 以下の理由で、個人的には、一部のAWSリソースではTerraformを使用しない方が良い。
 
 - ビジネスロジックを持つAWSリソースでは、継続的な改善のサイクルが早い（変更の要望頻度が高い）ため、リリースまでに時間がかかるTerraformで管理すると、このサイクルを阻害してしまう：
-  - API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシー、など
+    - API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシー、など
 
 - セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な値を管理するわけにはいかず、また```.tfstate```ファイルに書き込まれないようにする：
-  - EC2の秘密鍵、Systems Managerパラメータストア、など
+    - EC2の秘密鍵、Systems Managerパラメータストア、など
 
 - Terraformによる初期作成時に必要であり、それがないとそもそも```terraform apply```コマンドできない：
-  - Terraform用IAMユーザー、tfstateを管理するS3バケット、など
-  - これに関しては、CloudFormationで作成しても良い。
+    - Terraform用IAMユーザー、tfstateを管理するS3バケット、など
+    - これに関しては、CloudFormationで作成しても良い。
 
 - Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：
-  - tfstateを管理するS3バケットなど
+    - tfstateを管理するS3バケットなど
 
 - Terraformで特定のAWSリソースを作成すると、それに伴って自動で作成されてしまう：
-  - ENIなど
+    - ENIなど
 
 - そもそもAWSがAPIを公開していないことが理由で、Terraformで実装できない：
-  - Chatbotなど
+    - Chatbotなど
 
 
 <br>

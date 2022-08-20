@@ -108,12 +108,31 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 
 ![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
 
-インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。EBSボリュームとは異なり、コンピューティングとして機能するEC2インスタンス内にルートデバイスボリュームが存在している。そのため、インスタンスストアボリュームは、EC2インスタンスが終了すると一緒に削除されてしまう。
+インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。EBSボリュームとは異なり、コンピューティングとして機能するEC2インスタンス内にルートデバイスボリュームが存在している。そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
 
 ℹ️ 参考：
 
 - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
 - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+<br>
+
+### EC2インスタンスのライフサイクルフェーズ
+
+![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_ec2_lifecycle_phase.png)
+
+EC2インスタンスのライフサイクルにはフェーズがある。
+
+ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+
+| フェーズ名  | 説明      |
+|--------|---------|
+| pending | インスタンスを開始する前に必要な準備があり、これが完了していない。 |
+| running | インスタンスの起動が完了し、実行中である。 |
+| stopping | インスタンスを停止している途中である。 |
+| stopped | インスタンスの停止が完了した。 |
+| shutting-down | インスタンスを削除している途中である。 |
+| terminated | インスタンスの削除が完了した。 |
 
 <br>
 
@@ -614,17 +633,27 @@ ECSタスク実行ロールを使用して、ECSタスクのライフサイク�
 
 ECSタスクをどのような設定値を基に作成するかを設定できる。ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
 
-#### ▼ ECSタスクのライフサイクル
+#### ▼ ECSタスクのライフサイクルフェーズ
 
-![ecs_task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task_life-cycle.png)
+![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task_lifecycle_phase.png)
 
-ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にライフサイクルを持つ。AWS側の操作が終了した時点でRunningステータスになるが、コンテナの起動に時間がかかるようなアプリケーション（例：SSR）の場合は、Runningステータスであっても使用できる状態ではないことに注意する。
+ECSタスクのライフサイクルにはフェーズがある。ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にフェーズを持つ。
 
 ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
-正常停止と異常停止に関わらず、停止理由を確認できる。
+| フェーズ名    | 説明                                                | 補足                                                                                                                       |
+|----------|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Provisioning | ECSタスクの起動前に必要な準備（例；ENIの紐付け）があり、これが完了していない。        |                                                                                                                          |
+| Pending  | ECSタスク内のコンテナの起動がまだ完了していない。                        |                                                                                                                          |
+| Activating | ECSタスク内の全てのコンテナの起動が完了したが、ECSタスク全体のセットアップは完了していない。 |                                                                                                                          |
+| Running  | ECSタスク内の全てのコンテナの起動とECSタスク全体の準備が完了し、実行中である。        | コンテナの起動が完了すればRunningフェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション（例：フレームワークのビルトインサーバー機能）の場合は、Runningフェーズであっても使用できないことに注意する。   |
+| De-activating | ECSタスク内のコンテナを停止する前に必要な処理があり、これが完了していない。           |                                                                                                                          |
+| Stopping | ECSタスク内のコンテナが正常/異常に停止しようとしている途中である。               |                                                                                                                          |
+| De-provisioning | ECSタスク全体を停止する前に必要な準備（例；ENIの解除）があり、これが完了していない。     |                                                                                                                          |
+| Stopped  | ECSタスク全体が停止した。                                    | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html |
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html
+#### 
+
 
 <br>
 
@@ -855,7 +884,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 | 設定項目                      | 説明                                                         | 補足                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する。         |                                                              |
-| ```awslogs-datetime-format``` | 日時フォーマットを定義し、またこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する。           |                                                              |
 | ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
 

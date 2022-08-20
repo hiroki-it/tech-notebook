@@ -812,18 +812,26 @@ spec:
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
+| 項目       | 説明           |
+|----------|--------------|
+| UNSET    | 調査中...       |
+| DISABLE  | 相互TLSを使用しない。 |
+| PERMISSIVE | 調査中...       |
+| STRICT   | 相互TLSを使用する。  |
+
+
 ```yaml
 apiVersion: install.istio.io/v1alpha1
-kind: IstioOperator
+kind: PeerAuthentication
 metadata:
   namespace: istio-system
-  name: istio-operator
+  name: peer-authentication
 spec:
   mtls:
-    mode: DISABLE # 相互TLSを使用しない。
+    mode: STRICT # 相互TLSを使用する。
 ```
 
-相互TLSを有効化する場合はSSL証明書が必要になり、これがないと以下のようなエラーになる。
+相互TLSを使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになる。
 
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED

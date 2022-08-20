@@ -100,7 +100,7 @@ parameters:
 
 ### PHPUnitとは
 
-単体テストと機能テストの実施に必要な機能を提供し、またテストを実施する。
+単体テストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
 
 <br>
 
@@ -161,7 +161,7 @@ PHPUnitの設定を行う。デフォルトの設定では、あらかじめル�
 
 #### ▼ ```testsuites```タグ
 
-テストスイートを定義できる。```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、また対象のディレクトリ名を変更できる。
+テストスイートを定義できる。```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。
 
 ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 

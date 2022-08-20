@@ -351,7 +351,7 @@ TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 
 #### ▼ 同時AWSセッションの上限数
 
-同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを終了できていない可能性がある。Session Managerで既存のセッションを終了できる。
+同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを完了できていない可能性がある。Session Managerで既存のセッションを完了できる。
 
 ```bash
 # ECS Execの場合
@@ -488,9 +488,9 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
 
-![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
-
 ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
 #### ▼ IAMユーザー
 
@@ -623,7 +623,7 @@ OIDC認証、SAML認証、によって認証済みのユーザーに委譲でき
 
 #### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDC認証によるフェデレーションユーザーの場合は、```--web-identity-token```オプションに発行されたJWTを設定する必要がある。
+信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDC認証によるフェデレーションユーザーの場合は、```--external-id```オプションの代わりに、```--web-identity-token```オプションに発行されたJWTを設定する必要がある。
 
 ```bash
 #!/bin/bash

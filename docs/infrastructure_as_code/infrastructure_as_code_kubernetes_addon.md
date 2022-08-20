@@ -33,7 +33,7 @@ kube-apiserverにて、認証ステップと認可ステップの後にadmission
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionステップによる処理（例：アドオン組み込み処理、独自処理）を発火させられる。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionステップによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
 ℹ️ 参考：
 
@@ -51,7 +51,7 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 ### admissionアドオンとは
 
-admissionアドオンは、組み込み処理や独自処理を発火させられるアドオンから構成されている。```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
+admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
 
 ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 

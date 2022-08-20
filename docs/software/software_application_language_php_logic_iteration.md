@@ -95,7 +95,7 @@ foreach ($a as $foo) {
 
 #### ▼ 配列関数
 
-複雑な走査を行うために、組み込み関数が用意されている。
+複雑な走査を行うために、ビルトイン関数が用意されている。
 
 ℹ️ 参考：https://www.php.net/manual/ja/ref.array.php
 

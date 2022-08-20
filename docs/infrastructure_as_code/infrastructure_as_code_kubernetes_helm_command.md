@@ -541,7 +541,7 @@ $ helm upgrade --skip-crds -f <valuesファイルへのパス> <リリース名>
 
 #### ▼ --wait
 
-作成したPodがReady状態になるまで、```helm upgrade```コマンドの終了を待機する。
+作成したPodがReady状態になるまで、```helm upgrade```コマンドの完了を待機する。
 
 ```bash
 $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チャートへのパス>

@@ -476,7 +476,7 @@ kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 
 **＊例＊**
 
-Running状態のPodのみを取得する。
+RunningフェーズのPodのみを取得する。
 
 ```bash
 $ kubectl get pods | grep Running

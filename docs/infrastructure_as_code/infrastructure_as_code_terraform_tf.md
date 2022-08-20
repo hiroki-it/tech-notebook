@@ -704,7 +704,7 @@ AWSのAPIに対してリクエストを送信し、クラウドインフラを�
 
 #### ▼ ```resource```タイプ
 
-操作されるAWSリソースの種類のこと。AWSリソースとTerraformの```resource```タイプはおおよそ一致している。
+操作されるリソースの種類のこと。リソースとTerraformの```resource```タイプはおおよそ一致している。
 
 ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
@@ -1592,7 +1592,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 #### ▼ create_before_destroy
 
-```resource```ブロックを新しく作成した後に削除するように、変更できる。通常時、Terraformの処理順序として、```resource```ブロックの削除後に作成が行われる。しかし、他のAWSリソースと依存関係が存在する場合、先に削除が行われることによって、他のAWSリソースに影響が出てしまう。これに対処するために、先に新しい```resource```ブロックを作成し、紐付けし直してから、削除する必要がある。
+```resource```ブロックを新しく作成した後に削除するように、変更できる。通常時、Terraformの処理順序として、```resource```ブロックの削除後に作成が行われる。しかし、他のリソースと依存関係が存在する場合、先に削除が行われることによって、他のリソースに影響が出てしまう。これに対処するために、先に新しい```resource```ブロックを作成し、紐付けし直してから、削除する必要がある。
 
 **＊実装例＊**
 

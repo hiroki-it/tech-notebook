@@ -32,9 +32,9 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 ## 📚 知見の記録 (Knowledge)
 
 技術的な知識を体系的に整理するため、ノートにまとめております。<br>
-<span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook every day. )</span>
+<span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook. )</span>
 
-▶ **技術ノート**：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html  (in Japanese)
+▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/about.html)** (in Japanese)
 
 <br>
 
@@ -46,13 +46,13 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 知見の共有になれば幸いです。<br>
 <span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
 
-| アーキテクチャ                 | 使用技術                                            | リポジトリ                                                  |
-| ------------------------------ | --------------------------------------------------- | ----------------------------------------------------------- |
-| クリーンアーキテクチャ         | Clean-Arch、Laravel、GitHub Actions、...            | https://github.com/hiroki-it/ddd-backend-with-laravel       |
-|                                | Clean-Arch、Gin、...                                | https://github.com/hiroki-it/ddd-backend-with-gin           |
-|                                | Clean-Arch、Go、Serverless Framework、CircleCI、... | https://github.com/hiroki-it/notify-slack-of-amplify-events |
-| マイクロサービスアーキテクチャ | Microservices-Arch、...                             | https://github.com/hiroki-it/microservices-backend          |
-|                                | K8s、Istio、...                                     | https://github.com/hiroki-it/microservices-manifests        |
+| アーキテクチャ                 | 使用技術                                            | リポジトリ（in Japanese）                                                                            |
+| ------------------------------ | --------------------------------------------------- |-----------------------------------------------------------------------------------------------|
+| クリーンアーキテクチャ         | Clean-Arch、Laravel、GitHub Actions、...            | [ddd-backend-with-laravel](https://github.com/hiroki-it/ddd-backend-with-laravel)             |
+|                                | Clean-Arch、Gin、...                                | [ddd-backend-with-gin](https://github.com/hiroki-it/ddd-backend-with-gin)                     |
+|                                | Clean-Arch、Go、Serverless Framework、CircleCI、... | [notify-slack-of-amplify-events](https://github.com/hiroki-it/notify-slack-of-amplify-events) |
+| マイクロサービスアーキテクチャ | Microservices-Arch、...                             | [microservices-backend](https://github.com/hiroki-it/microservices-backend)                   |
+|                                | K8s、Istio、...                                     | [microservices-manifests](https://github.com/hiroki-it/microservices-manifests)               |
 
 <br>
 
@@ -61,7 +61,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
 <span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
 
-▶ **Wantedly**：[https://www.wantedly.com/id/h_hasegawa](https://www.wantedly.com/id/h_hasegawa) (in Japanese)
+▶ **[Wantedly](https://www.wantedly.com/id/h_hasegawa)** (in Japanese)
 
 <br>
 
@@ -70,6 +70,6 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
 <span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
 
-▶ **Speaker Deck**：[https://speakerdeck.com/hiroki_hasegawa](https://speakerdeck.com/hiroki_hasegawa) (in Japanese)
+▶ **[Speaker Deck](https://speakerdeck.com/hiroki_hasegawa)** (in Japanese)
 
 <br>

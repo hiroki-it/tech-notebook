@@ -367,7 +367,7 @@ ls: cannot access foo: No such file or directory
 
 #### ▼ リダイレクトによるファイル追記
 
-echoプロセスの標準出力を既存の```stdout.txt```ファイルにリダイレクトし、また追記する。
+echoプロセスの標準出力を既存の```stdout.txt```ファイルにリダイレクトし、加えて追記する。
 
 ```bash
 $ echo 'Hello World' >> stdout.txt

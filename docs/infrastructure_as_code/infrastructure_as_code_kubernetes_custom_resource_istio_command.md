@@ -126,7 +126,7 @@ $ istioctl x uninstall --purge
 
 #### ▼ installとは
 
-プロファイルをインストールし、また設定値を変更する。
+プロファイルをインストールし、加えて設定値を変更する。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/
 

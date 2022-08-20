@@ -267,6 +267,18 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 ℹ️ 参考：https://thinkit.co.jp/article/17453
 
+#### ▼ コンテナのライフサイクルフェーズ
+
+コンテナのライフサイクルにはフェーズがある。
+
+ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+
+| フェーズ名 | 説明                                    |
+| --------------- |---------------------------------------|
+| Waiting         | RunningフェーズとTerminatedフェーズ以外のフェーズにある。 |
+| Running         | コンテナの起動が完了し、実行中である。                   |
+| Terminated      | コンテナが正常/異常に停止した。                      |
+
 <br>
 
 ### Nodeグループ
@@ -367,7 +379,7 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 #### ▼ Jobとは
 
-複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に終了（SuccessfulDelete）させる。デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に削除（SuccessfulDelete）させる。デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
 
 ℹ️ 参考：
 
@@ -391,16 +403,35 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-#### ▼ リソースの単位
+#### ▼ Podのライフサイクルフェーズとコンディション
 
-ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+Podのライフサイクルにはフェーズがある。
 
-| 単位                | 例                                             |
-| ------------------- | ---------------------------------------------- |
-| ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
-| ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
+ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase
 
-#### ▼ Podが終了するまでの流れ
+| フェーズ名 | 説明                                                   | 補足                                                         |
+| ---------- |------------------------------------------------------| ------------------------------------------------------------ |
+| Pending    | PodがワーカーNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。 |                                                              |
+| Running    | Pod内の全てのコンテナの起動が完了し、実行中である。                          | コンテナの起動が完了すればRunningフェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション（例：フレームワークのビルトインサーバー機能）の場合は、RunningフェーズであってもReadyコンディションではないことに注意する。 |
+| Succeed    | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                     |                                                              |
+| Failed     | Pod内の全てのコンテナの起動が完了し、その後に異常に停止した。                     |                                                              |
+| Unknown    | ワーカーNodeとPodの間の通信に異常があり、ワーカーNodeがPodから情報を取得できなかった。   |                                                              |
+
+各フェーズには詳細なコンディションがある。例えばRunningフェーズであっても、Readyコンディションになっていない可能性がある。そのため、Podが正常であると見なすためには、『Runningフェーズ』かつ『Readyコンディション』である必要がある。
+
+ℹ️ 参考：
+
+- https://stackoverflow.com/a/59354112
+- https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions
+
+| 各フェーズのコンディション名 | 説明                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| PodScheduled                 | ワーカーNodeへのPodのスケジューリングが完了した。            |
+| ContainersReady              | 全てのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
+| Initialized                  | 全ての```init```コンテナの起動が完了した。                   |
+| Ready                        | Pod全体の準備が完了した。                                    |
+
+#### ▼ Podが削除されるまでの流れ
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
@@ -411,13 +442,24 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 （１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
-（２）Podが、終了を開始する。
+（２）Podが、削除を開始する。
 
 （３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
 
-（４）kubeletは、コンテナランタイムを経由して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは終了する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが終了していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）kubeletは、コンテナランタイムを経由して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
+
+#### ▼ CPUとメモリの割り当て
+
+そのPodに割り当てられたCPUとメモリを、Pod内のコンテナが分け合って使用する。
+
+ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
+
+| 単位                | 例                                             |
+| ------------------- | ---------------------------------------------- |
+| ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
+| ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
 
 <br>
 
@@ -1096,7 +1138,7 @@ Serviceがルーティング先とするポート番号を確認する。
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-また、Serviceがルーティング対象とするPodにて、コンテナが待ち受けているポート番号を確認する。
+Serviceがルーティング対象とするPodにて、コンテナが待ち受けているポート番号を確認する。
 
 ```bash
 # 先にlabelから、Serviceのルーティング対象のPodを確認する
