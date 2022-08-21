@@ -174,31 +174,31 @@ KubernetesのワーカーNode上で、Kubernetesリソースとアプリケー�
 
 #### ▼ テストケース例
 
-| コンポーネント     | テスト種別（UT：単体テスト、IT：結合テスト） | 組み合わせ（ITの場合のみ）     | テストケース                                                 | 補足                                                         |
-| ------------------ | -------------------------------------------- | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| prometheus         | UT                                           |                                | Podが正常である。                                            | Statusが Runningフェーズ、かつPodがReadyコンディション、であることを正常とみなす。 |
-|                    | UT                                           |                                | ・Podで収集したメトリクスがローカルストレージに永続化されている。<br>・PodのローカルストレージがワーカーNodeにマウントされており、Podが削除されてもローカルストレージを再マウントできる。 |                                                              |
-|                    | IT                                           | Prometheus＋EKS                | Cluster内のKubernetesリソースのメトリクスの異常値から、アラートを発火できる。 |                                                              |
-|                    | IT                                           | Prometheus＋kube-state-metrics | ダッシュボードでPromQLを入力し、kube-state-metrics経由で収集しているメトリクスを確認できる。 |                                                              |
-|                    | IT                                           | Prometheus＋node-exporter      | ダッシュボードでPromQLを入力し、node-exporter経由で収集しているメトリクスを確認できる。 |                                                              |
-|                    | IT                                           | Prometheus＋VictoriaMetrics    | Prometheusからメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。 |                                                              |
-| Alertmanager       | UT                                           |                                | Podが正常である。                                            |                                                              |
-|                    | UT                                           |                                | ダッシュボード上から新しく作成したSilenceが、正常に機能している。 |                                                              |
-|                    | UT                                           |                                | 条件を満たすアラートルールがあった場合に、アラートを通知できる。 |                                                              |
-|                    | IT                                           | Alertmanager＋Prometheus       | Prometheusから送信されたアラートを受信できる。               |                                                              |
-| Grafana            | UT                                           |                                | Podが正常である。                                            |                                                              |
-|                    | UT                                           |                                | 既存のダッシュボードを正しく読み込めるか。                   |                                                              |
-|                    | IT                                           | Grafana＋Prometheus            | ダッシュボードでPromQLを入力し、Prometheusのメトリクスを確認できる。 |                                                              |
-|                    | IT                                           | Grafana＋Prometheus            | 任意のダッシュボードでPrometheusのメトリクスのリアルタイムデータを確認できる。 |                                                              |
-|                    | IT                                           | Grafana＋Prometheus            | ダッシュボード上で、datasource、namespace、type、resolusion、の条件を変更し、リアルタイムデータを確認できる。 |                                                              |
-| PrometheusOperator | UT                                           |                                | PodMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                              |
-|                    | UT                                           |                                | Probeの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                              |
-|                    | UT                                           |                                | PrometheusRuleの既存の設定が正常に機能しており、異常を検知すると発火できる。 |                                                              |
-|                    | UT                                           |                                | ServiceMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                              |
-|                    | UT                                           |                                | PrometheusOperatorのアラートが発火されていない。             |                                                              |
-| kube-state-metrics | UT                                           |                                | Podが正常である。                                            |                                                              |
-| node-exporter      | UT                                           |                                | Podが正常である。                                            |                                                              |
-| その他             |                                              |                                | Namespace=prometheusにて、不要なPodが稼働していないか。      |                                                              |
+| コンポーネント     | テスト種別（UT：単体テスト、IT：結合テスト） | 組み合わせ（ITの場合のみ）     | テストケース                                                 | 補足                                               |
+| ------------------ | -------------------------------------------- | ------------------------------ | ------------------------------------------------------------ |--------------------------------------------------|
+| prometheus         | UT                                           |                                | Podが正常である。                                            | 『PodがRunningフェーズかつReadyコンディションであること』をPodの正常とみなす。 |
+|                    | UT                                           |                                | ・Podで収集したメトリクスがローカルストレージに永続化されている。<br>・PodのローカルストレージがワーカーNodeにマウントされており、Podが削除されてもローカルストレージを再マウントできる。 |                                                  |
+|                    | IT                                           | Prometheus＋EKS                | Cluster内のKubernetesリソースのメトリクスの異常値から、アラートを発火できる。 |                                                  |
+|                    | IT                                           | Prometheus＋kube-state-metrics | ダッシュボードでPromQLを入力し、kube-state-metrics経由で収集しているメトリクスを確認できる。 |                                                  |
+|                    | IT                                           | Prometheus＋node-exporter      | ダッシュボードでPromQLを入力し、node-exporter経由で収集しているメトリクスを確認できる。 |                                                  |
+|                    | IT                                           | Prometheus＋VictoriaMetrics    | Prometheusからメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。 |                                                  |
+| Alertmanager       | UT                                           |                                | Podが正常である。                                            |                                                  |
+|                    | UT                                           |                                | ダッシュボード上から新しく作成したSilenceが、正常に機能している。 |                                                  |
+|                    | UT                                           |                                | 条件を満たすアラートルールがあった場合に、アラートを通知できる。 |                                                  |
+|                    | IT                                           | Alertmanager＋Prometheus       | Prometheusから送信されたアラートを受信できる。               |                                                  |
+| Grafana            | UT                                           |                                | Podが正常である。                                            |                                                  |
+|                    | UT                                           |                                | 既存のダッシュボードを正しく読み込めるか。                   |                                                  |
+|                    | IT                                           | Grafana＋Prometheus            | ダッシュボードでPromQLを入力し、Prometheusのメトリクスを確認できる。 |                                                  |
+|                    | IT                                           | Grafana＋Prometheus            | 任意のダッシュボードでPrometheusのメトリクスのリアルタイムデータを確認できる。 |                                                  |
+|                    | IT                                           | Grafana＋Prometheus            | ダッシュボード上で、datasource、namespace、type、resolusion、の条件を変更し、リアルタイムデータを確認できる。 |                                                  |
+| PrometheusOperator | UT                                           |                                | PodMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
+|                    | UT                                           |                                | Probeの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
+|                    | UT                                           |                                | PrometheusRuleの既存の設定が正常に機能しており、異常を検知すると発火できる。 |                                                  |
+|                    | UT                                           |                                | ServiceMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
+|                    | UT                                           |                                | PrometheusOperatorのアラートが発火されていない。             |                                                  |
+| kube-state-metrics | UT                                           |                                | Podが正常である。                                            |                                                  |
+| node-exporter      | UT                                           |                                | Podが正常である。                                            |                                                  |
+| その他             |                                              |                                | Namespace=prometheusにて、不要なPodが稼働していないか。      |                                                  |
 
 <br>
 

@@ -134,6 +134,33 @@ $ kubectl get --raw='/readyz?verbose'
 healthz check passed
 ```
 
+#### ▼ 他のコンポーネントとの通信
+
+kube-apiserverは、クライアントからKubernetesリソースの作成/更新/削除リクエストを受信すると、他のコンポーネントと通信してKubernetesリソースを間接的に操作する。ここでは、Podの作成リクエストが送信された場合の流れを記載する。
+
+![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_communication.png)
+
+ℹ️ 参考：
+
+- https://blog.vpantry.net/2020/05/k8s-5/
+- https://medium.com/jorgeacetozi/kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-3a0179fc8186
+
+（１）クライアントがPodの作成リクエストを送信する。
+
+（２）kube-apiserverはリクエストを受信し、Podの作成宣言の情報をetcdに永続化する。
+
+（３）しばらくすると、kube-apiserverのwatchイベントがetcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
+
+（４）kube-schedulerは、Podの配置対象となるワーカーNodeをフィルタリングとスコアリングによって決定し、さらにkube-apiserverにバインディング情報として返却する。
+
+（５）kube-apiserverは、バインディング情報をetcdに永続化する。
+
+（６）しばらくすると、kube-apiserverのwatchイベントがetcdにバインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
+
+（７）kubeletは、コンテナランタイム（例：Docker、Containerd）のデーモンを操作してコンテナを作成し、kube-apiserverにこれを返却する。
+
+（８）kube-apiserverは、Podが作成されたことをetcdに永続化する。
+
 <br>
 
 ### kube-controller-manager

@@ -129,7 +129,7 @@ Googleアナリティクスでは、1つのドメイン当たりのセッショ�
 
 ![increase-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/increase-rate.png)
 
-増加率は、増加量が基準量全体の何倍（何割分）であるかで表される。そのため、以下で算出できる。
+増加率は、増加量が基準量全体の何倍（何割分）であるかで表す。そのため、以下で算出できる。
 
 ℹ️ 参考：https://kj01.kgu.mydns.jp/fujimoto/inen/kaisetu_zoka.html
 

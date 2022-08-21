@@ -30,24 +30,24 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 ```yaml
 # roleファイル
 # appサーバー
-- hosts:          app
-  become:         yes
+- hosts: app
+  become: yes
   force_handlers: true
   roles:
     - common/vim
     - app/php
 
 # dbサーバー
-- hosts:          db
-  become:         yes
+- hosts: db
+  become: yes
   force_handlers: true
   roles:
     - common/vim
     - db/mysql
 
 # webサーバー
-- hosts:          web
-  become:         yes
+- hosts: web
+  become: yes
   force_handlers: true
   roles:
     - common/vim

@@ -171,7 +171,7 @@ root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 [root@<コンテナID>:~] $ exit
 
 # コンテナの状態を確認
-$ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedになっている
+$ docker container ps -a --no-trunc # コンテナのフェーズがEXITedになっている
 ```
 
 一方で```docker exec```コマンドでは、起動中コンテナでコマンドを実行する。実行するコマンドが```bash```や```shell```の場合、コンテナに通信できる。```exit```コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
@@ -194,7 +194,7 @@ root        34  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 [root@<コンテナID>:~] $ exit
 
 # コンテナの状態を確認
-$ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになっている
+$ docker container ps -a --no-trunc # コンテナのフェーズがUPになっている
 ```
 
 <br>

@@ -754,7 +754,7 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 #### ▼ MIME typeとは
 
-POST/PUT送信で、ボディパラメーターのデータ形式を表現する識別子のこと。リクエストヘッダー/レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。GET送信には不要である。
+POST/PUT送信で、ボディパラメーターのデータ形式を表す識別子のこと。リクエストヘッダー/レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。GET送信には不要である。
 
 ℹ️ 参考：https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
