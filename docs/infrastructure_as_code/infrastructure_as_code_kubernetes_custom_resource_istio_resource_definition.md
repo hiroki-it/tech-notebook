@@ -19,7 +19,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-```istioctl```コマンドを使用して、Istioのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+```istioctl```コマンドを使用して、Istioのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
@@ -143,7 +143,17 @@ spec:
       containers:
         - name: foo-gin
           image: foo-gin
+        # istio-proxyコンテナの設定を上書きする。
         - name: istio-proxy
+          lifecycle:
+            preStop:
+              exec:
+               # istio-proxyコンテナが、マイクロサービスのコンテナよりも後に終了するようにする。
+               command: [
+                 "/bin/sh",
+                 "-c",
+                 "sleep 5; while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
+               ]
 ```
 
 <br>

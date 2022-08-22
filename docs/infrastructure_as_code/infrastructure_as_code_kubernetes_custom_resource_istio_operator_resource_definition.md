@@ -19,7 +19,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。プロファイルは、実際には設定済みのIstioOperatorであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
@@ -103,9 +103,35 @@ IstioOperator制御でIstioリソースを作成する。
 - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
+#### ▼ <component名>.k8s
+
+各componentが共通して持つ設定項目である。各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  components:
+    <component名>:
+      enabled: true
+      k8s:
+        # HorizontalPodAutoscaler
+        hpaSpec:
+          maxReplicas: 10
+          minReplicas: 2 # componentを冗長化する
+```
+
 #### ▼ base
 
-ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+baseコンポーネントのオプションを設定する。baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
+
+ℹ️ 参考：
+
+- https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+- https://github.com/istio/istio/issues/22491#issuecomment-604745090
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -120,6 +146,8 @@ spec:
 ```
 
 #### ▼ cni
+
+istio-cniコンポーネントのオプションを設定する。
 
 ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
@@ -138,7 +166,7 @@ spec:
 
 #### ▼ egressGateways
 
-IstioOperator制御で作成されるEgressGatewayのオプションを設定する。
+egressGatewaysコンポーネントのオプションを設定する。EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -155,7 +183,7 @@ spec:
 
 #### ▼ ingressGateways
 
-IstioOperator制御で作成されるIngressGatewayのオプションを設定する。
+ingressGatewaysコンポーネントのオプションを設定する。IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -170,7 +198,7 @@ spec:
         enabled: true
 ```
 
-執筆時点（2022/06/04）では、IstioOperatorの```spec.components.ingressGateways.k8s```キー以下でIngressGatewayを設定することは非推奨であり、IstioのGatewayとして定義するようにする。一応このオプションの説明は残しておく。IngressGatewayの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+```spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
 
 ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -192,10 +220,6 @@ spec:
                 port: 80
                 protocol: TCP
                 targetPort: 80
-  values:
-    gateways:
-      istio-ingressgateway:
-        runAsRoot: true
 ```
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
@@ -270,6 +294,8 @@ status:
 
 #### ▼ istiodRemote
 
+istiodコンポーネントのオプションを設定する。
+
 ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
@@ -298,6 +324,25 @@ spec:
   components:
     pilot:
       enabled: true
+
+```
+
+<br>
+
+### spec.defaultRevision
+
+#### ▼ defaultRevisionとは
+
+参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  defaultRevision	: true
 ```
 
 <br>
@@ -327,6 +372,21 @@ spec:
 全ての```istio-proxy```コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
+#### ▼ accessLogEncoding
+
+アクセスログのファイル形式を設定する。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  meshConfig:
+    accessLogEncoding: JSON
+```
 
 #### ▼ accessLogFile
 
@@ -372,6 +432,21 @@ metadata:
 spec:
   meshConfig:
     enableTracing: true
+```
+
+#### ▼ holdApplicationUntilProxyStarts
+
+```istio-proxy```コンテナの起動後にマイクロサービスのコンテナを起動するか否か、を設定する。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  meshConfig:
+    holdApplicationUntilProxyStarts: true
 ```
 
 #### ▼ ingressSelector
@@ -460,7 +535,7 @@ spec:
 
 #### ▼ profileとは
 
-applyに使用するプロファイルを設定する。
+プロファイルを設定する。実際には設定済みのIstioOperatorである。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -494,7 +569,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  revision: 1-12-1 # ハイフン繋ぎのバージョン表記
+  revision: 1-0-0 # ハイフン繋ぎのバージョン表記
 ```
 
 <br>
@@ -526,11 +601,57 @@ spec:
 
 #### ▼ valuesとは
 
-IstioOperatorの内部で使用されているHelmの```values```ファイルを上書きする。
+```manifests/charts/global.yaml```ファイルの設定値を上書きする。
 
-#### ▼ gateways.istio-ingressgateway.runAsRoot
+参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
 
-IstioOperatorをrootユーザーで実行する。
+#### ▼ base
+
+```values```ファイルの```base```の項目を上書きする。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  values:
+    base:
+      enableCRDTemplates: false
+      validationURL: ""
+```
+
+#### ▼ gateways.istio-ingressgateway
+
+```values```ファイルの```istio-egressgateway```の項目を上書きする。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  values:
+    gateways:
+      istio-egressgateway:
+        env: {}
+        autoscaleEnabled: true
+        type: ClusterIP
+        name: istio-egressgateway
+        secretVolumes:
+          - name: egressgateway-certs
+            secretName: istio-egressgateway-certs
+            mountPath: /etc/istio/egressgateway-certs
+          - name: egressgateway-ca-certs
+            secretName: istio-egressgateway-ca-certs
+            mountPath: /etc/istio/egressgateway-ca-certs
+```
+
+#### ▼ gateways.istio-ingressgateway
+
+```values```ファイルの```istio-ingressgateway```の項目を上書きする。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -542,7 +663,71 @@ spec:
   values:
     gateways:
       istio-ingressgateway:
+        # IstioOperatorをrootユーザーで実行する。
         runAsRoot: true
+        autoscaleEnabled: true
+        type: LoadBalancer
+        name: istio-ingressgateway
+        env: {}
+        secretVolumes:
+          - name: ingressgateway-certs
+            secretName: istio-ingressgateway-certs
+            mountPath: /etc/istio/ingressgateway-certs
+          - name: ingressgateway-ca-certs
+            secretName: istio-ingressgateway-ca-certs
+            mountPath: /etc/istio/ingressgateway-ca-certs
+```
+
+#### ▼ pilot
+
+```values```ファイルの```pilot```の項目を上書きする。
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  values:
+    pilot:
+      autoscaleEnabled: true
+      autoscaleMin: 1
+      autoscaleMax: 5
+      replicaCount: 1
+      image: pilot
+      traceSampling: 1.0
+      env: {}
+      cpu:
+        targetAverageUtilization: 80
+      nodeSelector: {}
+      keepaliveMaxServerConnectionAge: 30m
+      enableProtocolSniffingForOutbound: true
+      enableProtocolSniffingForInbound: true
+      deploymentLabels:
+      podLabels: {}
+      configMap: true
+```
+
+#### ▼ proxy_init
+
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-operator
+spec:
+  values:
+    proxy_init:
+    image: proxyv2
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 1024Mi
+      requests:
+        cpu: 10m
+        memory: 10Mi
 ```
 
 #### ▼ sidecarInjectorWebhook

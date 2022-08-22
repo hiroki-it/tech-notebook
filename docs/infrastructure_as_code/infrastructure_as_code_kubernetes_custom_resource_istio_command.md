@@ -52,7 +52,7 @@ $ export PATH=$PWD/bin:$PATH
 
 #### ▼ プロファイルとは
 
-Istioの機能のセットを提供する。
+Istioの機能のセットを提供する。実際には設定済みのIstioOperatorであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に配置される。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -60,6 +60,7 @@ Istioの機能のセットを提供する。
 
 ℹ️ 参考：
 
+- https://github.com/istio/istio/tree/master/manifests/profiles
 - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 

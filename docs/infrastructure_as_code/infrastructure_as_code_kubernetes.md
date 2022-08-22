@@ -48,7 +48,7 @@ description: Kubernetesの知見を記録しています。
 
 <br>
 
-### etcd
+### etcd（エトセディー）
 
 #### ▼ etcdとは
 

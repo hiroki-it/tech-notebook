@@ -196,7 +196,9 @@ labels:
 
 ## 04. 開発環境
 
-#### ▼ asdfパッケージを使用する場合
+### helmコマンドのセットアップ
+
+#### ▼ バージョンの固定
 
 バージョンを統一するために、```.tool-versions```ファイルを作成する。
 
@@ -321,7 +323,9 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 ```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
 ```bash
-$ helm diff <チャート名> -f values.yaml | pbcopy
+$ helm diff <チャート名> -f values.yaml \
+    | grep -A 1000 Comparing \
+    | pbcopy
 ```
 
 <br>

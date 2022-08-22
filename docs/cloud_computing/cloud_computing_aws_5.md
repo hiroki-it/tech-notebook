@@ -305,17 +305,17 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 ## 04. Systems Manager（旧SSM）
 
-### Parameter Store
+### SMパラメータストア
 
-#### ▼ Parameter Storeとは
+#### ▼ SMパラメータストアとは
 
-機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてEC2インスタンス（ECSやEKSのコンテナのホストを含む）に出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
+変数をキーバリュー型で永続化する。永続化されている間は暗号化されており、復号化した上で、環境変数としてEC2インスタンス（ECSやEKSのコンテナのホストを含む）に出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
 
 #### ▼ KMSを使用した暗号化と復号化
 
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
 
-Parameter Storeで管理される環境変数はKMSによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
+SMパラメータストアに永続化される変数はKMSによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
 ℹ️ 参考：
 
@@ -328,7 +328,7 @@ Parameter Storeで管理される環境変数はKMSによって暗号化され�
 
 #### ▼ 命名規則
 
-Systems Managerパラメーター名は、『```/<リソース名>/<環境変数名>```』とするとわかりやすい。
+SMパラメーター名は、『```/<リソース名>/<変数名>```』とするとわかりやすい。
 
 <br>
 

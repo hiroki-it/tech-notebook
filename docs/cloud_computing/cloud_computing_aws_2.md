@@ -166,13 +166,13 @@ $ openssl pkcs8 \
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
 
-| VPCエンドポイントの接続先 | プライベートDNS名                              | 説明                                                        |
-| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| EC2                       | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。 |
-| Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```         | Parameter StoreにGETリクエストを送信するため。              |
-| Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                       |
+| VPCエンドポイントの接続先  | プライベートDNS名                              | 説明                                         |
+|-----------------| ---------------------------------------------- |--------------------------------------------|
+| EC2             | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。            |
+| Systems Manager  | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのSMパラメータストアにGETリクエストを送信するため。 |
+| Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                 |
 
-Session Managerを使用してEC2インスタンスに接続し、ログインシェルを起動する。System Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
+Session Managerを使用してEC2インスタンスに接続し、ログインシェルを起動する。Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
 
 ℹ️ 参考：
 
@@ -714,7 +714,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 **＊実装例＊**
 
-Parameter Storeから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
+SMパラメータストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
 
 ```yaml
 {
@@ -974,24 +974,24 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
-| 設定項目                        | 対応するdockerコマンドオプション        | 説明                                                         | 補足                                                         |
-| ------------------------------- | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 設定項目                        | 対応するdockerコマンドオプション        | 説明                                                       | 補足                                                         |
+| ------------------------------- | --------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
 | cpu                             | ```--cpus```                            | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment<br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                      | ```--dns```                             | コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。 |                                                              |
-| essential                       |                                         | コンテナが必須か否かを設定する。                             | ・```true```の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>```false```の場合、コンテナが停止しても、その他のコンテナは停止しない。 |
+| essential                       |                                         | コンテナが必須か否かを設定する。                           | ・```true```の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>```false```の場合、コンテナが停止しても、その他のコンテナは停止しない。 |
 | healthCheck<br>(command)        | ```--health-cmd```                      | ホストからFargateに対して、```curl```コマンドによるリクエストを送信し、レスポンス内容を確認。 |                                                              |
-| healthCheck<br>(interval)       | ```--health-interval```                 | ヘルスチェックの間隔を設定する。                             |                                                              |
-| healthCheck<br>(retries)        | ```--health-retries```                  | ヘルスチェックを成功と見なす回数を設定する。                 |                                                              |
-| hostName                        | ```--hostname```                        | コンテナにホスト名を設定する。                               |                                                              |
-| image                           |                                         | ECRのURLを設定する。                                         | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html |
+| healthCheck<br>(interval)       | ```--health-interval```                 | ヘルスチェックの間隔を設定する。                           |                                                              |
+| healthCheck<br>(retries)        | ```--health-retries```                  | ヘルスチェックを成功と見なす回数を設定する。               |                                                              |
+| hostName                        | ```--hostname```                        | コンテナにホスト名を設定する。                             |                                                              |
+| image                           |                                         | ECRのURLを設定する。                                       | 指定できるURLの記法は、Dockerfileの```FROM```と同じである。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html |
 | logConfiguration<br>(logDriver) | ```--log-driver```                      | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
-| logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                   |                                                              |
+| logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                 |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html |
-| secrets<br>(volumesFrom)        |                                         | Parameter Storeから出力する環境変数を設定する。           |                                                              |
+| secrets<br>(volumesFrom)        |                                         | SMパラメータストアから出力する変数を設定する。           |                                                              |
 | memory                          | ```--memory```                          | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
-| ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                              |                                                              |
+| ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                            |                                                              |
 
 <br>
 
@@ -1118,13 +1118,13 @@ CodeDeployを使用してデプロイを行う。
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                              |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
-| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
-| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
-| Parameter Store           | ```ssm.ap-northeast-1.amazonaws.com```                       | Parameter StoreにGETリクエストを送信するため。    |
-| Secrets Manager           | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。             |
+| VPCエンドポイントの接続先  | プライベートDNS名                                            | 説明                                          |
+|-----------------| ------------------------------------------------------------ |---------------------------------------------|
+| CloudWatchログ    | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。                |
+| ECR             | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。                       |
+| S3              | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため                  |
+| Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのSMパラメータストアにGETリクエストを送信するため。 |
+| Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。                  |
 
 プライベートサブネット内のFargateからVPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。
 
@@ -1142,7 +1142,7 @@ CodeDeployを使用してデプロイを行う。
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。System Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 ℹ️ 参考：
 
@@ -1281,7 +1281,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
 | ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
 | PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
-| Secret                     | System Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
+| Secret                     | Systems Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
 | ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
 | Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
 
@@ -1378,7 +1378,7 @@ EKS Clusterを作成すると、ENIが作成される。これにより、デー
 
 #### ▼ Node間のファイル共有
 
-EFSを使用して、Node間でファイルを共有する。
+EFSを使用して、Node間でファイルを共有する。PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
 
 ℹ️ 参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
 
@@ -1744,7 +1744,7 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータの注意点として、各パラメーターはハードコーディングせずに、パラメーターストアから取得するようにする。
+ユーザーデータの注意点として、各パラメーターはハードコーディングしない。SMパラメーターストアに永続化し、これから取得するようにする。
 
 ℹ️ 参考：
 
@@ -1758,7 +1758,7 @@ set -o xtrace
 
 PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
 
-# ClusterのSSL証明書、kube-apiserverのエンドポイント、をパラメーターストアから取得する。
+# ClusterのSSL証明書、kube-apiserverのエンドポイントの値をSMパラメーターストアから取得する。
 for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
   echo "export ${parameter##*/}"
 done >> "${EXPORT_ENVS}"

@@ -1396,7 +1396,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『``
 
 <br>
 
-## 15. System Manager
+## 15. Systems Manager
 
 ### まとめ
 

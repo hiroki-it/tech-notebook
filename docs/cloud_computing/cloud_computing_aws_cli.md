@@ -581,7 +581,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 #### ▼ get-parameters-by-path
 
-特定のパスで始まる全てのSSMパラメーターを取得する。
+特定のパスで始まる全ての変数をSMパラメータストアから取得する。
 
 ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
