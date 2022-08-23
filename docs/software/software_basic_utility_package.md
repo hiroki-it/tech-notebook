@@ -551,16 +551,23 @@ $ brew install sops
 
 #### ▼ ```secrets.yaml```ファイル
 
-sopsによって自動生成された暗号化後ファイル。```sops```キー以下に暗号化に使用したツールが記載される。外部の暗号化キーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用せずに安全に変数を管理できる。
+sopsによって自動的に作成される暗号化後ファイル。```sops```キー以下に暗号化に使用したツールが記載される。外部の暗号化キーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、安全に変数を管理できる。
 
-参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
+ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```yaml
-# 暗号化された変数
-envs:
-    DB_USERNAME: ENC[...
-    DB_PASSWORD: ENC[...
+# 暗号化前
+DB_USERNAME: ENC[...
+DB_PASSWORD: ENC[...
+```
+
+```yaml
+# 暗号化後
+DB_USERNAME: ENC[...
+DB_PASSWORD: ENC[...
+# 暗号化に使用したツール
 sops:
+    # 使用する暗号化サービス
     kms:
       - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****
         created_at: '2021-01-01T12:00:00Z'
@@ -605,7 +612,7 @@ sops -e <復号前の.yamlファイル/.jsonファイル> > <復号後の.yaml�
 
 #### ▼ -e
 
-暗号化ルール（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイル/```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+外部の暗号化サービス（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイル/```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
 # AWS KMSをルールとして使用する。
@@ -1030,8 +1037,8 @@ awkコマンドやgrepコマンドと組み合わせると、特定のIPアド�
 
 ```bash
 $ tcpdump <コマンド/オプション> \
-  | awk -F ' ' '{print $3}' \
-  | grep <特定のIPアドレス>
+    | awk -F ' ' '{print $3}' \
+    | grep <特定のIPアドレス>
 ```
 
 <br>

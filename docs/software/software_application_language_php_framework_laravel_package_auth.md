@@ -26,7 +26,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを使用したForm認証のために使用する。                 |
-| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために使用する。それぞれの認証方法に違いについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| APIガード    | Bearer認証、APIキー認証、OAuth、などのために使用する。それぞれの認証方法に違いについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
 
 #### ▼ カスタムガード
 
@@ -48,7 +48,7 @@ APIガードの認証で使用するトークンをJWTに変更したい時に�
 | ドライバーの種類  | 認証の種類                         | 実装クラス         | 備考                                                         |
 | ----------------- | ---------------------------------- | ------------------ | ------------------------------------------------------------ |
 | sessionドライバー | セッションIDを使用したForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| tokenドライバー   | Bearer認証、APIキー認証、OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
+| tokenドライバー   | Bearer認証、APIキー認証、OAuth | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
 
 ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。```auth.php```ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。
 
@@ -556,7 +556,7 @@ class FooController extends Controller
 
 ### Passportパッケージとは
 
-Ouath認証を実装できる。OAuth認証については、以下のリンクを参考にせよ。
+Ouath認証を実装できる。OAuthについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
 
@@ -574,7 +574,7 @@ Composerでインストールする必要がある。
 $ composer require laravel/passport
 ```
 
-#### ▼ OAuth認証のトークン管理テーブルを作成
+#### ▼ OAuthのトークン管理テーブルを作成
 
 事前に、Passportの管理テーブルを作成する必要があるため、マイグレーションを実行する。
 
@@ -644,11 +644,11 @@ $ php artisan passport:client --password
 
 <br>
 
-### 実装できるOAuth認証の種類
+### 実装できるOAuthの種類
 
-#### ▼ OAuth認証
+#### ▼ OAuth
 
-OAuth認証に関して、以下のトークン付与タイプを実装できる。
+OAuthに関して、以下のトークン付与タイプを実装できる。
 
 | 付与タイプ               | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
@@ -685,7 +685,7 @@ return [
 ];
 ```
 
-2. OAuth認証（認証フェーズ＋認可フェーズ）を行うために、```auth.php```ファイルで、```driver```キーにpassportドライバを設定する。また、```provider```キーで、```users```を設定する。
+2. OAuth（認証フェーズ＋認可フェーズ）を行うために、```auth.php```ファイルで、```driver```キーにpassportドライバを設定する。また、```provider```キーで、```users```を設定する。
 
 **＊実装例＊**
 
@@ -735,7 +735,7 @@ return [
 ];
 ```
 
-4. Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuth認証に成功したユーザーのみがルーティングを行えるようになる。
+4. Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
 **＊実装例＊**
 

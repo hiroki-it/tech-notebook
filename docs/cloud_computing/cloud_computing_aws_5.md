@@ -506,7 +506,7 @@ IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲で�
 
 #### ▼ フェデレーテッドユーザー
 
-OIDC認証、SAML認証、によって認証済みのユーザーに委譲できる。OIDC認証のフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
+OIDC、SAML、によって発行されたユーザーに委譲できる。OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
 ℹ️ 参考：
 
@@ -517,9 +517,9 @@ OIDC認証、SAML認証、によって認証済みのユーザーに委譲でき
 
 ### フェデレーテッドユーザー
 
-#### ▼ AWS OIDC認証
+#### ▼ AWS OIDC
 
-IAMロールの信頼されたエンティティに、AWS OIDC認証済みのユーザーを設定する。
+IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
@@ -545,9 +545,9 @@ IAMロールの信頼されたエンティティに、AWS OIDC認証済みのユ
 
 ```
 
-#### ▼ 外部OIDC認証
+#### ▼ 外部OIDC
 
-IAMロールの信頼されたエンティティに、外部OIDC認証済みのユーザーを設定する。
+IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
 
 ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
@@ -575,7 +575,7 @@ IAMロールの信頼されたエンティティに、外部OIDC認証済みの�
 
 #### ▼ AWS SAML
 
-IAMロールの信頼されたエンティティに、AWS SAML認証済みのユーザーを設定する。
+IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
@@ -630,7 +630,7 @@ IAMロールの信頼されたエンティティに、AWS SAML認証済みのユ
 
 #### 2. ロールを引き受けたクレデンシャル情報をリクエスト
 
-信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDC認証によるフェデレーションユーザーの場合は、```--external-id```オプションの代わりに、```--web-identity-token```オプションを使用する。このオプションに、発行されたJWTを設定する必要がある。
+信頼されたエンティティから、STSのエンドポイント（```https://sts.amazonaws.com```）に対して、ロールの紐付けをリクエストする。OIDCによるフェデレーションユーザーの場合は、```--external-id```オプションの代わりに、```--web-identity-token```オプションを使用する。このオプションに、発行されたJWTを設定する必要がある。
 
 ```bash
 #!/bin/bash

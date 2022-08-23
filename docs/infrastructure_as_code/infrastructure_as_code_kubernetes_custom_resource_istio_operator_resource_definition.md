@@ -333,7 +333,7 @@ spec:
 
 #### ▼ defaultRevisionとは
 
-参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -407,6 +407,8 @@ spec:
 
 ```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
+ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -416,7 +418,9 @@ metadata:
 spec:
   meshConfig:
     defaultConfig:
-    # 〜 中略 〜
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+        BOOTSTRAP_XDS_AGENT: "true"
 ```
 
 #### ▼ enableTracing
@@ -603,7 +607,7 @@ spec:
 
 ```manifests/charts/global.yaml```ファイルの設定値を上書きする。
 
-参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
+ℹ️ 参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 

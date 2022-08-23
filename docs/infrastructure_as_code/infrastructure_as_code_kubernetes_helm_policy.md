@@ -314,7 +314,7 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 #### ▼ CDパイプラインがある場合
 
-```helm diff```コマンドをGitOpsによるCDパイプライン上で実行している場合、GitOpsツールの差分機能を使用し、差分画面のURLを共有する。または通知ツール（例：argocd-bot）を使用し、GitHub上に差分の結果が通知されるようにする。
+```helm diff```コマンドをGitOpsによるCDパイプライン上で実行している場合、GitOpsツールの差分機能を使用し、差分画面のURLを共有する。またはCDツールの通知機能（例：argocd-bot）を使用し、GitHubのプルリク上にCDパイプラインの結果が通知されるようにする。
 
 ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
 

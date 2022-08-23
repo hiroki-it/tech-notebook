@@ -168,7 +168,7 @@ $ npm install @nuxtjs/dotenv
 API_URL=https://example.com/api
 # APIのURL。ブラウザ上のJavaScriptからAPIへのリクエストで使用する。
 API_URL_BROWSER=https://example.com/api
-# APIのOauth認証の情報
+# APIのOAuthの情報
 OAUTH_CLIENT_ID=
 OAUTH_CLIENT_SECRET=
 # GoogleMapのURL
