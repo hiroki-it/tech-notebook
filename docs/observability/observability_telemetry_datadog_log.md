@@ -323,7 +323,6 @@ instances:
 
 ## Log section
 logs:
-
   - type: file
     path: "/path/to/laravel.log"
     service: php
@@ -672,7 +671,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 
 以下のようなGrokパーサールールを定義する。```data```マッチャーを使用して、また```wafacl_name```カスタム属性をエクストラクト先とする。抽出する必要のない文字列は、ワイルドカード（```.*```）を指定する。
 
-```bash
+```
 Rule .*\/webacl\/%{data:wafacl_name}\/.*
 ```
 

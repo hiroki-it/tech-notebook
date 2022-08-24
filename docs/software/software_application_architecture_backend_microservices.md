@@ -343,7 +343,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ## 04. マイクロサービス間通信の管理
 
-### 非メッシュ
+### 非メッシュとメッシュ
 
 #### ▼ 非メッシュとは
 
@@ -354,32 +354,44 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 - 鍵とSSL証明書を管理しきれない。
 - ソフトウェアの全体像が把握できない
 
+#### ▼ メッシュとは
+
+参考：https://solace.com/blog/event-mesh-service-mesh-for-microservices/
+
+![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mesh.png)
+
 <br>
 
-### メッシュ
+### サービスメッシュ
 
-#### ▼ メッシュ
-
-マイクロサービス間で直接的にリクエストを送受信するのではなく、これをサイドカーパターンで設置したリバースプロキシコンテナ経由で行う。また、各サイドカーコンテナをコントロールプレーンで統括的に管理する。これにより、マイクロサービス間の通信をより簡単に管理できる。
-
-#### ▼ サービスメッシュ
+#### ▼ サービスメッシュとは
 
 ![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
 
-マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。
+マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。マイクロサービス間で直接的にリクエストを送受信する場合と比較して、通信の諸々（例：トラフィック制御、セキュリティ、テレメトリー収集）を一元的に制御しやすい。
 
 ℹ️ 参考：
 
 - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
-- https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
-- https://qiita.com/yasuabe2613/items/3bff44e662c922083264#service-mesh
+
+#### ▼ サービスメッシュの層
+
+![service-mesh_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png)
+
+マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。多くのサービスメッシュツールでは、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーを注入することで、アプリケーションエンジニアがこれらのロジックを意識せずに、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できるようになる。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+
+<br>
+
+### イベントメッシュ
 
 #### ▼ イベントメッシュ
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
 
-ℹ️ 参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 
 <br>
 
@@ -469,7 +481,7 @@ API GatewayのOSS（Kong、Tyk、Apigee）を使用する。Kubernetes内で管�
 
 ![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
-#### ▼ BFF：Backends  For Frontends
+#### ▼ BFF：Backends For Frontends
 
 マイクロサービスにリクエストを送信するアプリケーションの種類（Webアプリケーション、Mobileアプリケーション、他社アプリケーション）に応じたAPI Gatewayを作成する。ただし、複数のクライアントをWebアプリとして開発することもできるため、同じWebからのアクセスであっても、別々のAPI Gatewayを作成する場合がある。
 

@@ -151,6 +151,24 @@ Istioでサイドカーインジェクション機能が有効化されている
 - https://github.com/istio/istio/blob/b3d1566a2af8591d8a74c648108e549c3879d45f/pkg/kube/inject/webhook_test.go#L960-L975
 
 ```yaml
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  # AdmissionResponse
+  "response": {
+    "uid": "<value from request.uid>",
+    "allowed": true,
+    # PathによるPatch処理を行う。
+    "patchType": "JSONPatch",
+    # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
+    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
+  }
+}
+```
+
+
+
+```yaml
 [
 
   # 〜 中略 〜
@@ -187,7 +205,7 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 ### コントロールプレーンとは
 
-データプレーンを包括的に管理する機能を持つ。Istioは、```istio-proxy```コンテナの管理機能を持つistidというPodを作成する。このPod内には、Pilot、Citadel、Galley、に相当するコンテナが稼働している。
+Pilotに相当する```discovery```コンテナ、Citadelに相当する```citadel```コンテナ、Galleyに相当する```galley```コンテナから構成される。
 
 ℹ️ 参考：
 
@@ -200,11 +218,15 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 マイクロサービス間の認証やトレースIDを管理する。
 
+参考：https://hub.docker.com/r/istio/citadel/tags
+
 <br>
 
 ### Galley
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
+
+参考：https://hub.docker.com/r/istio/galley/tags
 
 <br>
 
@@ -212,7 +234,10 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったプロキシコンテナを作成する。他に、Istioの設定を、Istioによって注入されるEnvoyの設定に変換する。
 
-ℹ️ 参考：https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
+ℹ️ 参考：
+
+- https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
+- https://hub.docker.com/r/istio/pilot/tags
 
 | コンテナ名      | 機能                                                         |
 | --------------- | ------------------------------------------------------------ |

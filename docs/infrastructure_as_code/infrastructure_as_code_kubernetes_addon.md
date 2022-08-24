@@ -143,6 +143,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 ℹ️ 参考：
 
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+- https://tokibi.hatenablog.com/entry/2020/01/07/150359
 - https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
 - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 - https://gashirar.hatenablog.com/entry/2020/10/31/141357
@@ -151,32 +152,70 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 
 ```yaml
 {
-  "apiVersion": "admission.k8s.io/v1beta1",
+  "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
-  # AdmissionRequest（webhookサーバーへのリクエストのパラメーター）
+  # AdmissionRequest
   "request": {
     "uid": "705ab4f5-6393-11e8-b7cc-42010a800002",
-    "kind": {"group":"autoscaling","version":"v1","kind":"Scale"},
-    "resource": {"group":"apps","version":"v1","resource":"deployments"},
+    "kind": {
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale"
+    },
+    # 変更されるKubernetesリソースの種類を表す。
+    "resource": {
+      "group": "apps",
+      "version": "v1",
+      "resource": "deployments"
+    },
     "subResource": "scale",
-    "requestKind": {"group":"autoscaling","version":"v1","kind":"Scale"},
-    "requestResource": {"group":"apps","version":"v1","resource":"deployments"},
+    "requestKind": {
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale"
+    },
+    "requestResource": {
+      "group": "apps",
+      "version": "v1",
+      "resource": "deployments"
+    },
     "requestSubResource": "scale",
     "name": "my-deployment",
     "namespace": "my-namespace",
+    # kube-apiserverの操作の種類を表す。
     "operation": "UPDATE",
+    # 認証認可されたユーザーを表す。
     "userInfo": {
       "username": "admin",
       "uid": "014fbff9a07c",
-      "groups": ["system:authenticated","my-admin-group"],
+      "groups": [
+        "system:authenticated",
+        "my-admin-group"
+      ],
       "extra": {
-        "some-key":["some-value1", "some-value2"]
+        "some-key": [
+          "some-value1",
+          "some-value2"
+        ]
       }
     },
-    # kube-apiserverでリクエストされたKubernetesリソースを表す。
-    "object": {"apiVersion":"autoscaling/v1","kind":"Scale",...},
-    "oldObject": {"apiVersion":"autoscaling/v1","kind":"Scale",...},
-    "options": {"apiVersion":"meta.k8s.io/v1","kind":"UpdateOptions",...},
+    # 新しく認証認可されたオブジェクトを表す。
+    "object": {
+      "apiVersion": "autoscaling/v1",
+      "kind": "Scale"
+    },
+    # Kubernetesリソースの操作前の状態を表す。
+    "oldObject": {
+      "apiVersion": "autoscaling/v1",
+      "kind": "Scale"
+    },
+    # 認証認可された操作の種類を表す。
+    "options": {
+      "apiVersion": "meta.k8s.io/v1",
+      "kind": "UpdateOptions"
+    },
+    # ドライランモードで実行されていることを表す。
+    # etcdに永続化されない。
     "dryRun": false
   }
 }
@@ -310,6 +349,28 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
   }
 }
 ```
+
+<br>
+
+## cluster-autoscalerアドオン
+
+### cluster-autoscalerアドオンとは
+
+![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
+
+ワーカーNodeの水平スケーリングを実行する。Metrics serverから取得したPodの最大リソース消費量（```spec.resources```キーの合計値）とワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールイン/スケールアウトさせる。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。マスターNodeに配置することが推奨されている。
+
+参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+
+<br>
+
+### クラウドプロバイダー別
+
+#### ▼ AWSの場合
+
+AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用できる。
+
+参考：https://sreake.com/blog/learn-about-karpenter/
 
 <br>
 

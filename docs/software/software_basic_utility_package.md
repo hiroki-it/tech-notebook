@@ -551,30 +551,40 @@ $ brew install sops
 
 #### ▼ ```secrets.yaml```ファイル
 
-sopsによって自動的に作成される暗号化後ファイル。```sops```キー以下に暗号化に使用したツールが記載される。外部の暗号化キーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、安全に変数を管理できる。
+sopsによって暗号化されたファイル。自動的に作成される。```sops```キー以下に暗号化に使用したツールが記載される。外部の暗号化キーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、安全に変数を管理できる。
 
 ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```yaml
-# 暗号化前
-DB_USERNAME: ENC[...
-DB_PASSWORD: ENC[...
+# plan.yaml
+# 平文
+DB_USERNAME: foo-user
+DB_PASSWORD: password
+```
+
+```bash
+# 平文ファイルを暗号化する。
+$ sops -e plan.yaml > secret.yaml
 ```
 
 ```yaml
+# secret.yaml
 # 暗号化後
 DB_USERNAME: ENC[...
 DB_PASSWORD: ENC[...
 # 暗号化に使用したツール
 sops:
-    # 使用する暗号化サービス
+    # AWS KMS
     kms:
       - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****
         created_at: '2021-01-01T12:00:00Z'
         enc: *****
         aws_profile: ""
+    # GCP KMS
     gcp_kms: []
+    # Azure Key Vault
     azure_kv: []
+    # HashiCorp Vault
     hc_vault: []
     lastmodified: '2021-01-01T12:00:00Z'
     mac: ENC[...
@@ -586,7 +596,7 @@ sops:
 
 #### ▼ ```.sops.yaml```ファイル
 
-コマンドのパラメーターを定義する。
+```sops```コマンドのパラメーターを定義する。コマンドを実行するディレクトリに配置しておく必要がある。
 
 ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
@@ -598,6 +608,12 @@ creation_rules:
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 ```
 
+環境変数でパラメーターを渡す必要がなくなる。
+
+```bash
+$ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
+```
+
 <br>
 
 ### サブコマンド無し
@@ -607,7 +623,7 @@ creation_rules:
 ```.yaml```ファイル/```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
-sops -e <復号前の.yamlファイル/.jsonファイル> > <復号後の.yamlファイル/.jsonファイル>
+sops -d <復号前の.yamlファイル/.jsonファイル> > <復号後の.yamlファイル/.jsonファイル>
 ```
 
 #### ▼ -e
@@ -618,7 +634,14 @@ sops -e <復号前の.yamlファイル/.jsonファイル> > <復号後の.yaml�
 # AWS KMSをルールとして使用する。
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
-$ sops -e <暗号化前の.yamlファイル/.jsonファイル> > <暗号化後の.yamlファイル/.jsonファイル>
+$ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
+```
+
+外部の暗号化サービスを使用する場合、そのサービスの認証を済ませておく必要がある。
+
+```bash
+# AWS KMSをルールとして使用する場合
+Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
 ```
 
 <br>

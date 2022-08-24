@@ -319,9 +319,20 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
 
-#### ▼ Nodeのオートスケーリング
+#### ▼ Nodeグループの粒度
 
-20220720時点で、KubernetesのAPIにはNodeのオートスケーリング機能はない。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからNodeのオートスケーリングを実行できるようになる。
+| Nodeグループ名の例     | 説明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| ```apigateway```       | API Gatewayのアプリケーションのコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。 |
+| ```batch```、```job``` | バッチ処理やジョブ（定期的に実行するように設定されたバッチ処理）のコンテナを配置する。 |
+| ```collector```        | ログやメトリクスを収集するリソース（例：Prometheus、Alertmanager、のPod）のコンテナを配置する。 |
+| ```ingress```          | ワーカーNodeへのインバウンド通信の入口になるリソース（例：Ingress、IngressGateway）のコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。 |
+| ```mesh```             | サービスメッシュ（例：Istio）のコントロールプレーンのコンテナを稼働させる。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。 |
+| ```service```          | マイクロサービスのアプリケーションのコンテナを稼働させる。   |
+
+#### ▼ ワーカーNodeのオートスケーリング
+
+KubernetesのAPIにはNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
 ℹ️ 参考：
 
@@ -996,7 +1007,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
-Kubernetesリソースの水平スケーリングを定義する。Metrics serverから取得したKubernetesリソースに関するメトリクス値のうち、指定したメトリクス値とターゲット値の比較に基づいて、Podをスケールイン/スケールアウトさせる。HorizontalPodAutoscalerを使用するためには、Metrics serverも別途インストールしておく必要がある。
+Podの水平スケーリングを実施する。Metrics serverから取得したPodに関するメトリクス値とターゲット値を比較し、Podをスケールイン/スケールアウトさせる。HorizontalPodAutoscalerを使用するためには、Metrics serverも別途インストールしておく必要がある。
 
 ℹ️ 参考：
 
@@ -1022,7 +1033,12 @@ Kubernetesリソースの水平スケーリングを定義する。Metrics serve
 
 #### ▼ VerticalPodAutoscalerとは
 
-ℹ️ 参考：https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
+Podの垂直スケーリングを実行する。
+
+ℹ️ 参考：
+
+- https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
+- https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
 <br>
 

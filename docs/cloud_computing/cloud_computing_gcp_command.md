@@ -60,6 +60,20 @@ $ gcloud auth login
 
 認証時のデフォルト値を設定する。
 
+#### ▼ list
+
+認証情報を取得する。
+
+```bash
+$ gcloud config list
+
+[core]
+account = hiroki.hasegawa
+disable_usage_reporting = True
+
+Your active configuration is: [default]
+```
+
 #### ▼ set
 
 認証の特定の項目のデフォルト値を設定する。
