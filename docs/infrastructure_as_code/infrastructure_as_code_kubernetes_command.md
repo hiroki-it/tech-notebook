@@ -549,7 +549,7 @@ $ kubectl get service/istio-ingressgateway \
 指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 ```bash
-$ kubectl get pod -o wide
+$ kubectl get pods -o wide
 
 NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
 foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>

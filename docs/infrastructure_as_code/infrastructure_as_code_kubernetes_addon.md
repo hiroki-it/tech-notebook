@@ -33,11 +33,12 @@ kube-apiserverにて、認証ステップと認可ステップの後にadmission
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionステップによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
 ℹ️ 参考：
 
 - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+- https://www.digihunch.com/2022/01/kubernetes-admission-control/
 - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
 | ステップ名                   | 説明                                   |
@@ -85,11 +86,14 @@ ValidatingAdmissionWebhook,
 
 #### ▼ MutatingAdmissionWebhookアドオン
 
+![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review.png)
+
 MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストを送信し、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewのレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
-ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+ℹ️ 参考：
 
-![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review.png)
+- https://gashirar.hatenablog.com/entry/2020/10/31/141357
+- https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
 
 #### ▼ MutatingWebhookConfiguration
 
@@ -99,7 +103,7 @@ MutatingWebhookConfigurationでは、mutating-admissionステップのWebhookの
 
 ℹ️ 参考：
 
-- https://gashirar.hatenablog.com/entry/2020/10/31/141357
+- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 
 **＊例＊**
@@ -114,7 +118,7 @@ metadata:
 webhooks:
     # webhook名はDNS名にする。
   - name: sidecar-injector.morven.me
-    # 発火ルールを登録する。（例：Podの作成/更新リクエスト時に発火する）
+    # 発火条件を登録する。（例：Podの作成/更新リクエスト時に発火する）
     rules:
       - operations: ["CREATE", "UPDATE"]
         apiGroups: [""]
@@ -144,9 +148,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
 - https://tokibi.hatenablog.com/entry/2020/01/07/150359
-- https://zenn.dev/kanatakita/articles/6d6e5391336c1c5669c2
 - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
-- https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
 **＊例＊**
 
@@ -283,6 +285,7 @@ ValidatingWebhookConfigurationでは、validating-admissionステップのWebhoo
 
 - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
+- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
 **＊例＊**
 
@@ -294,7 +297,7 @@ metadata:
 webhooks:
     # webhook名はDNS名にする。
   - name: foo.example.com
-    # 発火ルールを登録する。（例：Podの作成/更新リクエスト時に発火する）
+    # 発火条件を登録する。（例：Podの作成/更新リクエスト時に発火する）
     rules:
       - apiGroups:   [""]
         apiVersions: ["v1"]
@@ -352,7 +355,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 <br>
 
-## cluster-autoscalerアドオン
+## 02. cluster-autoscalerアドオン
 
 ### cluster-autoscalerアドオンとは
 
@@ -360,7 +363,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 ワーカーNodeの水平スケーリングを実行する。Metrics serverから取得したPodの最大リソース消費量（```spec.resources```キーの合計値）とワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールイン/スケールアウトさせる。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。マスターNodeに配置することが推奨されている。
 
-参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
 <br>
 
@@ -370,11 +373,11 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用できる。
 
-参考：https://sreake.com/blog/learn-about-karpenter/
+ℹ️ 参考：https://sreake.com/blog/learn-about-karpenter/
 
 <br>
 
-## 02. cniアドオン
+## 03. cniアドオン
 
 ### cniアドオンとは
 
@@ -389,7 +392,7 @@ PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNI
 
 <br>
 
-## 03. core-dnsアドオン（旧kube-dns）
+## 04. core-dnsアドオン（旧kube-dns）
 
 ### core-dnsアドオンとは
 

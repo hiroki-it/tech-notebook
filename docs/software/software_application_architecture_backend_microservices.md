@@ -356,7 +356,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ メッシュとは
 
-参考：https://solace.com/blog/event-mesh-service-mesh-for-microservices/
+ℹ️ 参考：https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 
 ![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mesh.png)
 
@@ -381,7 +381,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。多くのサービスメッシュツールでは、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーを注入することで、アプリケーションエンジニアがこれらのロジックを意識せずに、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できるようになる。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 
 <br>
 

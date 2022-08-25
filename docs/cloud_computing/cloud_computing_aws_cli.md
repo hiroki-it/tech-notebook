@@ -84,7 +84,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 <br>
 
-## 01-02. 設定ファイル/環境変数
+## 01-02. 設定ファイル、環境変数
 
 ### ```~/.aws/confidentials```ファイル
 

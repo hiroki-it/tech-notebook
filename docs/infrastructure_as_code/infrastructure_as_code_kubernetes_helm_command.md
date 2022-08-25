@@ -13,7 +13,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 <br>
 
-## 01. helmコマンド
+## 01. ```helm```コマンド
 
 ### create
 
@@ -94,7 +94,7 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 #### ▼ kube-context
 
-helmコマンドの向き先を指定して、```helm install```コマンドを実行する。
+```helm```コマンドの向き先を指定して、```helm install```コマンドを実行する。
 
 ```bash
 # Minikubeの場合
@@ -299,7 +299,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 #### ▼ add
 
-helmコマンドの実行環境にチャートリポジトリを登録する。
+```helm```コマンドの実行環境にチャートリポジトリを登録する。
 
 ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
 
@@ -309,7 +309,7 @@ $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL
 "<チャート名>" has been added to your repositories
 ```
 
-登録していないチャートにhelmコマンドでアクセスしようとするとエラーになる。
+登録していないチャートに```helm```コマンドでアクセスしようとするとエラーになる。
 
 ```bash
 $ helm show all <チャートリポジトリ名>
@@ -555,7 +555,7 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 
 #### ▼ helm-secretsとは
 
-Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、helmコマンドを実行する。元々の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
+Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元々の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
 
 ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 

@@ -57,7 +57,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 #### ▼ application-controllerとは
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再同期を試みる。
+kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
 
 ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
@@ -98,7 +98,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 ![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd.png)
 
-指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれに同期する。
+指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。
 
 ℹ️ 参考：
 
@@ -108,7 +108,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 #### ▼ 検証
 
-Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。そのため、同期すれば元の状態に戻る。こういった点でも、ArgoCDを入れる方が、Kubernetesの修正の検証がしやすい。注意点として、マニフェストファイルに何かを追加するような変更は差分として認識されないため、同期しても元に戻らない。
+Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。そのため、Syncすれば元の状態に戻る。こういった点でも、ArgoCDを入れる方が、Kubernetesの修正の検証がしやすい。注意点として、マニフェストファイルに何かを追加するような変更は差分として認識されないため、Syncしても元に戻らない。
 
 ℹ️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
 

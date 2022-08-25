@@ -116,7 +116,7 @@ $ argocd app create guestbook \
 $ argocd app sync guestbook --dry-run
 ```
 
-（１１）自動同期を有効化する。
+（１１）自動Syncを有効化する。
 
 ```bash
 $ argocd app set guestbook --sync-policy automated
@@ -230,7 +230,7 @@ Kubernetesのカスタムリソースから定義される。監視対象のKube
 
 #### ▼ 自己監視
 
-Application自体もカスタムリソースなため、ApplicationがApplication自身のソースの変更を監視し、同期できる。
+Application自体もカスタムリソースなため、ApplicationがApplication自身のソースの変更を監視し、Syncできる。
 
 ℹ️ 参考：
 
@@ -271,7 +271,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ignoreDifferencesとは
 
-特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。同期後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストファイルの自動整形、など）の場合に使用する。
+特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。Sync後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストファイルの自動整形、など）の場合に使用する。
 
 ℹ️ 参考：
 
@@ -299,7 +299,7 @@ spec:
         - /spec/metrics
 ```
 
-注意点として、Syncステータスの判定時に無視されるだけで、内部的に同期は実行されてしまうため、同期のたびに設定値が元に戻ってしまう。そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
+注意点として、Syncステータスの判定時に無視されるだけで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。そこで別途、```RespectIgnoreDifferences```オプションも有効にしておくと良い。
 
 ℹ️ 参考：
 
@@ -355,8 +355,8 @@ spec:
 | リポジトリの種類                                   | 管理方法                     | マニフェストファイルのapply方法                                       |
 |--------------------------------------------| ---------------------------- |----------------------------------------------------------|
 | マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
-| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
-| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的にhelmコマンドが実行される。 |
+| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
+| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 
 <br>
 
@@ -479,18 +479,39 @@ spec:
 
 #### ▼ helm
 
-helmコマンドに相当するパラメーターを設定する。Helmfileのように、helmコマンドを宣言的に実行できる。注意点として、
+```helm```コマンドに渡すパラメーターを設定する。Helmfileと同じように、```helm```コマンドを宣言的に実行できる。
 
 ℹ️ 参考：
 
 - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
 - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
 
-| 設定項目          | 説明                                                         | 補足                                                         |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```releaseName``` | 作成するリリース名を設定する。                           |                                                              |
-| ```values```      | デフォルト値を、```values```ファイルとしてではなく、ArgoCDのマニフェストファイルにハードコーディングして定義する。 |                                                              |
-| ```valueFiles```  | apply時に使用する```values```ファイルを設定する。         | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
+| 設定項目          | 説明                                         | 補足                                                         |
+| ----------------- |--------------------------------------------| ------------------------------------------------------------ |
+| ```releaseName``` | 作成するリリース名を設定する。                            |                                                              |
+| ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。 |                                                              |
+| ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。           | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
+
+
+```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  source:
+    helm:
+      releaseName: prd
+      values: |-
+        foo: foo
+        bar: bar
+        baz: baz
+```
+
+監視対象のリポジトリにある```values```ファイルを使用する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -506,6 +527,10 @@ spec:
         - ./prd.yaml
 ```
 
+暗号化された```values```ファイルを使用することもできる。あらかじめ、sopsを使用して```values```ファイルを暗号化しておき、監視対象のリポジトリに```.sops.yaml```ファイルと```secrets.yaml```ファイル（暗号化後の```values```ファイル）を配置しておく必要がある。
+
+参考：https://github.com/camptocamp/argocd-helm-sops-example
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -516,11 +541,11 @@ spec:
   source:
     helm:
       releaseName: prd
-      values: |-
-        foo: FOO
-        bar: BAR
-        baz: BAZ
+      valueFiles:
+        # helm-secretsを使用して暗号化されたvaluesファイル
+        - ./secrets.yaml
 ```
+
 
 ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用し、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
 
@@ -559,7 +584,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    repoURL: <チャートリポジトリURL>
+    repoURL: https://foo.example.com/foo-chart
 ```
 
 #### ▼ targetRevision
@@ -622,6 +647,15 @@ spec:
   source:
     targetRevision: <バージョンタグ>
 ```
+<br>
+
+### spec.source.plugin
+
+#### ▼ plugin
+
+argocdのアドオンを使用する。
+
+参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
 
 <br>
 
@@ -682,7 +716,7 @@ spec:
 
 #### ▼ syncPolicyとは
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を設定する。
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Syncを設定する。
 
 ℹ️ 参考：
 
@@ -691,14 +725,14 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期
 
 #### ▼ automated
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動同期を有効化するか否かを設定する。
+GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Syncを有効化するか否かを設定する。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 | 設定項目         | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動同期は実行されない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
 | ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
@@ -717,7 +751,7 @@ spec:
 
 #### ▼ syncOptions
 
-GtiOpsでのマニフェストファイルの同期処理の詳細を設定する。
+GtiOpsでのマニフェストファイルのSync処理の詳細を設定する。
 
 ℹ️ 参考：
 
@@ -728,8 +762,8 @@ GtiOpsでのマニフェストファイルの同期処理の詳細を設定す�
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
-| ```PrunePropagationPolicy``` | 同期後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              | 通常のPruneでは、同期しながら旧いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースを同期してしまい、正常に稼働した後に旧いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
+| ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| ```PruneLast```              | 通常のPruneでは、Syncしながら旧いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースをSyncしてしまい、正常に稼働した後に旧いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -783,7 +817,7 @@ data:
 
 #### ▼ generateName
 
-同期フェーズフック名を設定する。
+Syncフェーズフック名を設定する。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
 
@@ -802,7 +836,7 @@ metadata:
 
 #### ▼ argocd.argoproj.io/hook
 
-フックを設定する同期フェーズ（同期前、同期時、同期スキップ時、同期後、同期失敗時）を設定する。
+フックを設定するSyncフェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
 
 ℹ️ 参考：
 
@@ -816,12 +850,12 @@ metadata:
   namespace: argocd
   name: foo-job
   annotations:
-    argocd.argoproj.io/hook: SyncFail # 同期失敗時
+    argocd.argoproj.io/hook: SyncFail # Sync失敗時
 ```
 
 #### ▼ argocd.argoproj.io/sync-wave
 
-同じ同期フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。正負の数字を設定でき、数字が小さい方が優先される。優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+同じSyncフェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。正負の数字を設定でき、数字が小さい方が優先される。優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
 
 ℹ️ 参考：
 

@@ -54,7 +54,7 @@ k8s-repository/
 
 #### ▼ Applicationのマニフェストファイルを監視する場合
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、同期時の操作手順として、親Applicationの画面で子Applicationの同期を実行し、その後子Applicationの画面で同期を実行することになる。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
 
 ℹ️ 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
@@ -229,9 +229,9 @@ $ kubectl patch ns argocd \
 
 <br>
 
-### 同期してもOutOfSyncステータスが解消されない
+### SyncしてもOutOfSyncステータスが解消されない
 
-同期後にKubernetesリソースの状態が変更されるような場合、同期してもSyncedステータスではなくOutOfSyncステータスになってしまう。
+Sync後にKubernetesリソースの状態が変更されるような場合、SyncしてもSyncedステータスではなくOutOfSyncステータスになってしまう。
 
 ℹ️ 参考：
 

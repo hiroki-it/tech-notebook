@@ -127,7 +127,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 - https://www.sobyte.net/post/2022-07/istio-sidecar-injection/#istio-sidecar-auto-injection-implementation
 - https://www.solo.io/blog/istios-networking-in-depth/
 
-![kubernetes_admission-controllers_istio-injection.ong](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.ong.png)
+![kubernetes_admission-controllers_istio-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.png)
 
 #### ▼ webhookサーバー
 
@@ -137,7 +137,7 @@ Istiodにあるwebhookサーバーは、AdmissionReviewを```/inject```エンド
 
 ℹ️ 参考：
 
-- https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171
+- https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171-L172
 - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
 - https://www.amazon.co.jp/dp/B09XN9RDY1
 
@@ -165,8 +165,6 @@ Istioでサイドカーインジェクション機能が有効化されている
   }
 }
 ```
-
-
 
 ```yaml
 [
@@ -205,7 +203,7 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 ### コントロールプレーンとは
 
-Pilotに相当する```discovery```コンテナ、Citadelに相当する```citadel```コンテナ、Galleyに相当する```galley```コンテナから構成される。
+Istiod（Pilotに相当する```discovery```コンテナ、Citadelに相当する```citadel```コンテナ、Galleyに相当する```galley```コンテナ）から構成される。```istio-proxy```コンテナや```istio-init```コンテナを注入し、```istio-proxy```コンテナの設定を一括管理する。語尾の『```d```』は、デーモンの意味であるが、Istiodの各種コンテナはReplicaSet内のPodで稼働している。
 
 ℹ️ 参考：
 
@@ -218,7 +216,7 @@ Pilotに相当する```discovery```コンテナ、Citadelに相当する```citad
 
 マイクロサービス間の認証やトレースIDを管理する。
 
-参考：https://hub.docker.com/r/istio/citadel/tags
+ℹ️ 参考：https://hub.docker.com/r/istio/citadel/tags
 
 <br>
 
@@ -226,7 +224,7 @@ Pilotに相当する```discovery```コンテナ、Citadelに相当する```citad
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
 
-参考：https://hub.docker.com/r/istio/galley/tags
+ℹ️ 参考：https://hub.docker.com/r/istio/galley/tags
 
 <br>
 
@@ -440,60 +438,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 <br>
 
-## 03. Istiod
-
-### Istiodとは
-
-```istio-proxy```コンテナを統括的に管理する。
-
-ℹ️ 参考：
-
-- https://istio.io/latest/docs/ops/deployment/architecture/
-- https://speakerdeck.com/kurochan/ru-men-envoy?slide=34
-
-<br>
-
-### Citadal
-
-#### ▼ Citadalとは
-
-暗号鍵やSSL証明書を管理する。
-
-ℹ️ 参考：https://knowledge.sakura.ad.jp/20489/
-
-<br>
-
-### Galley
-
-#### ▼ Galleyとは
-
-<br>
-
-### sidecar-injector
-
-#### ▼ sidecar-injectorとは
-
-```istio-proxy```コンテナをサイドカーとして稼働させる。
-
-<br>
-
-### Mixer
-
-#### ▼ Mixerとは
-
-認証やデータ収集を行う。
-
-<br>
-
-### Pilot
-
-#### ▼ Pilotとは
-
-Serviceディスカバリやトラフィックの管理を行う。
-
-<br>
-
-## 04. Injectionテスト
+## 03. Injectionテスト
 
 ### Faultインジェクション
 
@@ -512,7 +457,7 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
-## 05. 障害対策
+## 04. 障害対策
 
 ### サーキットブレイカー
 
@@ -526,7 +471,7 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
-## 06. 認証
+## 05. 認証
 
 マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
 
@@ -537,13 +482,13 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
-## 06-02. 認可
+## 05-02. 認可
 
 ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
 
 <br>
 
-## 07. アドオン
+## 06. アドオン
 
 ### istio-cniアドオン
 

@@ -556,20 +556,18 @@ sopsによって暗号化されたファイル。自動的に作成される。`
 ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```yaml
-# plan.yaml
-# 平文
+# value.yamlファイル（平文ファイル）
 DB_USERNAME: foo-user
 DB_PASSWORD: password
 ```
 
 ```bash
 # 平文ファイルを暗号化する。
-$ sops -e plan.yaml > secret.yaml
+$ sops -e value.yaml > secret.yaml
 ```
 
 ```yaml
-# secret.yaml
-# 暗号化後
+# secret.yamlファイル（暗号化後ファイル）
 DB_USERNAME: ENC[...
 DB_PASSWORD: ENC[...
 # 暗号化に使用したツール
@@ -602,9 +600,11 @@ sops:
 
 ```yaml
 creation_rules:
+    # 平文のファイル
   - path_regex: /foo/foo.yaml
+    # 暗号化ツール
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-  - path_regex: /bar/.*\.yaml # 再帰的に指定できる。
+  - path_regex: /bar/.*\.yaml # 平文ファイルを再帰的に指定できる。
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 ```
 
@@ -616,11 +616,19 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 
 <br>
 
+### 環境変数
+
+```EnvVar```キーのある項目を参照せよ。
+
+参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
+
+<br>
+
 ### サブコマンド無し
 
 #### ▼ -d
 
-```.yaml```ファイル/```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
 sops -d <復号前の.yamlファイル/.jsonファイル> > <復号後の.yamlファイル/.jsonファイル>
@@ -628,7 +636,7 @@ sops -d <復号前の.yamlファイル/.jsonファイル> > <復号後の.yaml�
 
 #### ▼ -e
 
-外部の暗号化サービス（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイル/```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+外部の暗号化サービス（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
 # AWS KMSをルールとして使用する。

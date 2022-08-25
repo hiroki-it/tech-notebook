@@ -15,7 +15,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 ## 01. Helmfileの仕組み
 
-helmコマンドを宣言的に実行できる。ただし、ArgoCDでも同様のことを設定できるため、もしhelmコマンドの実行を自動化したい場合は、ArgoCDを使用すると良い。
+```helm```コマンドを宣言的に実行できる。ただし、ArgoCDのApplicationの```spec.source.helm```キーでも```helm```コマンドを宣言的に実行でき、かつ実行を自動化できる。そのため、できるだけArgoCDを使用した方が良い。
 
 <br>
 

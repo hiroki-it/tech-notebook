@@ -52,7 +52,7 @@ description: Kubernetesの知見を記録しています。
 
 #### ▼ etcdとは
 
-Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化する。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。Kubernetesに標準で組み込まれているが、別のOSSである。
+Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化する。語尾の『```d```』は、分散（distribution）の意味である。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。Kubernetesに標準で組み込まれているが、別のOSSである。
 
 ℹ️ 参考：
 
@@ -151,15 +151,19 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （３）しばらくすると、kube-apiserverのwatchイベントがetcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
 
-（４）kube-schedulerは、Podの配置対象となるワーカーNodeをフィルタリングとスコアリングによって決定し、さらにkube-apiserverにバインディング情報として返却する。
+（４）kube-schedulerは、Podの配置対象となるワーカーNodeをフィルタリングとスコアリングによって決定する。
 
-（５）kube-apiserverは、バインディング情報をetcdに永続化する。
+（５）kube-apiserverは、バインディング情報（PodとワーカーNodeの紐付き情報）をetcdに永続化する。
 
-（６）しばらくすると、kube-apiserverのwatchイベントがetcdにバインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
+（６）しばらくすると、kube-apiserverのwatchイベントは、バインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
 
-（７）kubeletは、コンテナランタイム（例：Docker、Containerd）のデーモンを操作してコンテナを作成し、kube-apiserverにこれを返却する。
+（７）kubeletは、etcdのバインディング情報に基づいて、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
 
-（８）kube-apiserverは、Podが作成されたことをetcdに永続化する。
+（８）コンテナランタイムデーモンは、コンテナを作成する。
+
+（９）kubeletは、Podが作成されたことをkube-apiserverに通知する。
+
+（８）kube-apiserverは、Podの作成完了をetcdに永続化する。
 
 <br>
 
@@ -1159,7 +1163,7 @@ $ kubectl run \
 # マルチNodeの場合
 
 # Podが稼働するNodeを確認する。
-$ kubectl get pod <Pod名> -o wide
+$ kubectl get pods <Pod名> -o wide
 
 # 指定したNode上で、curl送信用のコンテナを作成する。
 $ kubectl debug node/<Node名> \
@@ -1185,9 +1189,9 @@ Serviceがルーティング対象とするPodにて、コンテナが待ち受�
 
 ```bash
 # 先にlabelから、Serviceのルーティング対象のPodを確認する
-$ kubectl get pod -l <名前>=<値> -o wide
+$ kubectl get pods -l <名前>=<値> -o wide
 
-$ kubectl get pod <Pod名> -o yaml | grep containerPort:
+$ kubectl get pods <Pod名> -o yaml | grep containerPort:
 ```
 
 両方のポート番号が一致しているかを確認する。
