@@ -376,7 +376,11 @@ $ brew upgrade
 
 #### ▼ asdfとは
 
-Linuxで使用できるパッケージを管理する。また、異なるバージョンを同時に管理できる。ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。また、```.tool-version```ファイルをリポジトリのルートディレクトリに置いておけば、異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールできる。
+Linuxで使用できるパッケージを管理する。また、異なるバージョンを同時に管理できる。ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
+
+#### ▼ ```.tool-version```ファイル
+
+```.tool-version```ファイルをリポジトリのルートディレクトリに置いておく必要がある。異なる開発者がリポジトリ直下でパッケージをインストールした時に、特定のバージョンをインストールを強制できる。
 
 ```bash
 # .tool-versionsファイル
@@ -384,7 +388,57 @@ Linuxで使用できるパッケージを管理する。また、異なるバー
 foo-plugin <バージョンタグ>
 ```
 
+もし```.tool-version```ファイルがないと、asdfでインストールしたコマンドで以下のようなエラーになる。
+
+```bash
+# asdfでsopsをインストールしたとする。
+$ sops -e plain.yaml
+ 
+No version is set for command sops
+Consider adding one of the following versions in your config file at 
+sops <バージョン>
+```
+
+#### ▼ セットアップ
+
+```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
+
+参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+
+```bash
+$ brew install asdf
+```
+
+#### ▼ global
+
+ホームディレクトリ（```~/```）に```.tool-version```ファイルを作成する。
+
+```bash
+$ asdf global <プラグイン名> 1.0.0
+````
+
+#### ▼ list
+
+インストールされているパッケージで使用できるバージョンの一覧を取得する。
+
+```bash
+$ asdf list all <プラグイン名>
+```
+
+#### ▼ local
+
+現在のディレクトリに、```.tool-version```ファイルを作成する。事前に```asdf install```コマンドでプラグインの特定のバージョンをインストールしておく必要がある。
+
+```bash
+$ asdf local <プラグイン名> 1.0.0
+```
+
 #### ▼ plugin
+
+```bash
+# 現在インストールされているプラグインを取得する。
+$ asdf plugin list
+```
 
 ```bash
 # プラグインのURLを調べる。
@@ -398,6 +452,14 @@ $ asdf plugin add <プラグイン名> <URL>
 
 ```bash
 # 登録済みのプラグインをインストールする。
+$ asdf install <プラグイン名> 1.0.0
+
+Downloading <プラグイン名> from <URL>
+```
+
+もし、```.tool-version```ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。
+
+```bash
 $ asdf install
 ```
 

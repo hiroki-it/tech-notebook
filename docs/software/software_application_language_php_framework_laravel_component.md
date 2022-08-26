@@ -1049,7 +1049,7 @@ class FooRepository extends Repository implements DomainFooRepository
             DB::commit();
         } catch (Exception $e) {
 
-            // ロールバックを実行する。
+            // ロールバックする。
             DB::rollback();
         }
     }
@@ -1109,7 +1109,7 @@ class FooRepository extends Repository implements DomainFooRepository
             DB::commit();
         } catch (\Exception $e) {
             
-            // ロールバックを実行する。
+            // ロールバックする。
             DB::rollback();
         }
     }
@@ -3083,7 +3083,7 @@ return [
 
 #### ▼ ```up```メソッド、```down```メソッド
 
-コマンドによるマイグレーション時にコールされる。```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。```down```メソッドでCREATEのロールバックを実行する。
+コマンドによるマイグレーション時にコールされる。```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。```down```メソッドで```up```メソッドの結果をロールバックする。
 
 **＊実装例＊**
 

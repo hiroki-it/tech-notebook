@@ -1110,7 +1110,7 @@ exit ${EXIT_STATUS}
 
 #### ▼ ブルー/グリーンデプロイメント
 
-CodeDeployを使用してデプロイを行う。
+CodeDeployを使用してデプロイする。
 
 <br>
 

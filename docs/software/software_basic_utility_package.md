@@ -568,8 +568,8 @@ $ sops -e value.yaml > secret.yaml
 
 ```yaml
 # secret.yamlファイル（暗号化後ファイル）
-DB_USERNAME: ENC[...
-DB_PASSWORD: ENC[...
+DB_USERNAME: ENC[AES256...
+DB_PASSWORD: ENC[AES256...
 # 暗号化に使用したツール
 sops:
     # AWS KMS
@@ -585,7 +585,7 @@ sops:
     # HashiCorp Vault
     hc_vault: []
     lastmodified: '2021-01-01T12:00:00Z'
-    mac: ENC[...
+    mac: ENC[AES256...
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.6.1
@@ -600,18 +600,27 @@ sops:
 
 ```yaml
 creation_rules:
-    # 平文のファイル
-  - path_regex: /foo/foo.yaml
-    # 暗号化ツール
+    # 平文ファイル名を設定する。
+  - path_regex: /foo/value.yaml
+    # AWS KMSを使用する。
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-  - path_regex: /bar/.*\.yaml # 平文ファイルを再帰的に指定できる。
-    kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
+    # 平文ファイルを再帰的に指定できる。
+  - path_regex: /bar/.*\.yaml
+    # GCP KMSを使用する。
+    gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 
-環境変数でパラメーターを渡す必要がなくなる。
+```bash
+# ファイル名が path_regex=/foo/value.yaml のルールに該当するため、AWS KMSを使用して暗号化される。
+$ sops -e /foo/value.yaml
+```
+
+```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 
 ```bash
-$ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
+$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
+
+$ sops -e /foo/value.yaml
 ```
 
 <br>
@@ -631,7 +640,7 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 ```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
-sops -d <復号前の.yamlファイル/.jsonファイル> > <復号後の.yamlファイル/.jsonファイル>
+$ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
 ```
 
 #### ▼ -e

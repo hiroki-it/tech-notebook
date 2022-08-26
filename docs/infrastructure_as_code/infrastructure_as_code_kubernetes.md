@@ -249,7 +249,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 #### ▼ kubeletとは
 
-ワーカーNode上で稼働し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+ワーカーNode上で稼働し、コンテナランタイムを操作することにより、コンテナとPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
 ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -502,6 +502,24 @@ Podのライフサイクルにはフェーズがある。
 | ------------------- | ---------------------------------------------- |
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
+
+#### ▼ クライアントがPod内のログを閲覧できる仕組み
+
+![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
+
+（１）クライアントが```kubectl logs```コマンドを実行する。
+
+（２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
+
+（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<名前空間>_<ポッド名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。
+
+参考：https://www.creationline.com/lab/29281
+
+補足として、DaemonSetとして稼働するFluentdは、ワーカーNodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
+
+参考：https://note.com/shift_tech/n/n503b32e5cd35
+
+
 
 <br>
 

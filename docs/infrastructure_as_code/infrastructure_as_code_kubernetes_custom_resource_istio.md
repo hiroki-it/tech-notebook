@@ -80,22 +80,35 @@ iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、か�
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-init.png)
 
-Podの初期化時に、Pod内にiptablesを適用する。
+コンテナの起動時に、```istio-iptables```コマンドを実行し、iptablesをPodに適用する。
+
+
+```bash
+# コンテナの起動時
+$ istio-iptables \
+    -p 15001 \
+    -z 15006 \
+    -u 1337 \
+    -m REDIRECT \
+    -i * \
+    -x \
+    -b * \
+    -d 15090,15021,15020
+```
 
 ℹ️ 参考：
 
 - https://istio.io/v1.13/blog/2019/data-plane-setup/#traffic-flow-from-application-container-to-sidecar-proxy	
 - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+- https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
+
 
 #### ▼ iptables
 
 ![istio_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables.png)
 
-Pod内へのインバウンド通信とPod外へのアウトバウンド通信を、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトする（画像はアウトバウンド時の経路）。
+Pこのiptablesにより、Pod内外へのインバウンド（またはアウトバウンド通信）は、一度、istio-proxyコンテナの15006（または15001）番ポートにリダイレクトされるようになる（画像はアウトバウンド時の経路）。
 
-```bash
-$ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
-```
 
 ℹ️ 参考：
 
@@ -120,7 +133,7 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 #### ▼ kube-apiserver内のmutating-admissionステップ
 
-この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時に、kube-apiserverはIstiodにあるwebhookサーバーにリクエストを送信する。具体的には、Pod、Deployment、StatefulSet、DaemonSet、によるPodの作成処理でkube-apiserverにコールすると、mutating-admissionステップ時に、kube-apiserverはAdmissionReviewをIstio内のwebhookサーバーの```/inject```エンドポイントに送信する。
+この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時にkube-apiserverは、1. kube-apiserverは、admission-controllersアドオンのmutating-admissionステップにて、AdmissionReview構造体のAdmissionRequestにリクエストパラメーターを詰める。その後、Istiod内のwebhook-serviceの```/inject```エンドポイントの```443```番ポートにAdmissionReviewのリクエストを送信する。
 
 ℹ️ 参考：
 
@@ -129,11 +142,54 @@ $ iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-port 15001
 
 ![kubernetes_admission-controllers_istio-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.png)
 
+```yaml
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  # AdmissionRequest
+  "request": {
+
+    # 〜 中略 〜
+
+    # 変更されるKubernetesリソースの種類を表す。
+    "resource": {
+      "group": "apps",
+      "version": "v1",
+      "resource": "deployments"
+    },
+    # kube-apiserverの操作の種類を表す。
+    "operation": "UPDATE",
+    # 新しく認証認可されたオブジェクトを表す。
+    "object": {
+      "apiVersion": "autoscaling/v1",
+      "kind": "Scale"
+    },
+    # Kubernetesリソースの操作前の状態を表す。
+    "oldObject": {
+      "apiVersion": "autoscaling/v1",
+      "kind": "Scale"
+    },
+    # 認証認可された操作の種類を表す。
+    "options": {
+      "apiVersion": "meta.k8s.io/v1",
+      "kind": "UpdateOptions"
+    },
+
+    # 〜 中略 〜
+
+  }
+}
+```
+
+#### ▼ webbhook-service
+
+Istiod内のwebhook-serviceはAdmissionReviewのリクエストを受信する。webhook-serviceは、リクエストをIstiod内のdiscoveryコンテナの```15017```番ポートにポートフォワーディングする。
+
 #### ▼ webhookサーバー
 
 ![istio_sidecar-injection_istiod](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
 
-Istiodにあるwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
+Istiod内のwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
 
 ℹ️ 参考：
 
@@ -212,7 +268,26 @@ Istiod（Pilotに相当する```discovery```コンテナ、Citadelに相当す�
 
 <br>
 
-### Citadel
+### ```discovery```コンテナ
+
+各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合った```istio-proxy```コンテナを作成する。Istioのマニフェストファイルの設定をEnvoyの```envoy.yaml```ファイルの設定に変換する。
+
+| ポート番号 | 待ち受けるリクエスト              |
+|-------|-------------------------|
+| 8080  | サービスメッシュのデバッグエンドポイントに対するリクエスト |
+| 15010 | webhook-                |
+| 15017 |                         |
+
+
+ℹ️ 参考：
+
+- https://www.amazon.co.jp/dp/B09XN9RDY1
+- https://hub.docker.com/r/istio/pilot/tags
+- https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
+
+<br>
+
+### ```citadel```コンテナ
 
 マイクロサービス間の認証やトレースIDを管理する。
 
@@ -220,27 +295,12 @@ Istiod（Pilotに相当する```discovery```コンテナ、Citadelに相当す�
 
 <br>
 
-### Galley
+### ```galley```コンテナ
 
 コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
 
 ℹ️ 参考：https://hub.docker.com/r/istio/galley/tags
 
-<br>
-
-### Pilot
-
-コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったプロキシコンテナを作成する。他に、Istioの設定を、Istioによって注入されるEnvoyの設定に変換する。
-
-ℹ️ 参考：
-
-- https://blog.devgenius.io/implementing-service-discovery-for-microservices-df737e012bc2
-- https://hub.docker.com/r/istio/pilot/tags
-
-| コンテナ名      | 機能                                                         |
-| --------------- | ------------------------------------------------------------ |
-| ```discovery``` | サービスレジストリに登録された情報を基に、マイクロサービスが他のマイクロサービスを識別する。（サービスディスカバリー） |
-| ```agent```     | ```istio-proxy```コンテナを起動する。                              |
 
 <br>
 

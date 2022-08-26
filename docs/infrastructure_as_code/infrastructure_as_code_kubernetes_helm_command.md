@@ -505,7 +505,7 @@ $ helm uninstall <リリース名>
 
 #### ▼ --atomic
 
-```helm upgrade```コマンドが正常に完了しなかった場合に、ロールバックを実行する。
+```helm upgrade```コマンドが正常に完了しなかった場合に、ロールバックする。
 
 ```bash
 $ helm upgrade --atomic -f <valuesファイルへのパス> <リリース名> <チャートへのパス>

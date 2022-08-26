@@ -1311,7 +1311,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 ℹ️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
-```bash
+```yaml
 "ERROR:" -MethodNotAllowedHttpException
 ```
 
@@ -1595,7 +1595,7 @@ artifacts:
 
 ![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/blue-green-deployment.jpeg)
 
-以下の手順でデプロイを行う。
+以下の手順でデプロイする。
 
 1. ECRのコンテナイメージを更新
 2. ECSタスク定義の新しいリビジョンを作成。

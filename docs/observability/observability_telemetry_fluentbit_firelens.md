@@ -30,7 +30,7 @@ description: FireLensコンテナ＠FluentBitの知見を記録しています�
 （３）コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『```<コンテナ名>-firelens-<ECSタスクID>```』というタグ名で処理されている。
 
 
-```bash
+```yaml
 # 本来、改行はないが、わかりやすいように改行している。
 # <コンテナ名>-firelens-<ECSタスクID>
 [0] foo-firelens-*****: [
@@ -315,7 +315,7 @@ FireLensコンテナにカスタム値を設定する。コンテナ定義の```
 
 AWSやDatadogにルーティングするための設定が必要である。もし```fluent-bit_custom.conf```ファイルでOUTPUTセクションを設定した場合は、awsfirelensログドライバーの```options```キーは何も設定する必要がない。
 
-```bash
+```yaml
 "logConfiguration": {
 	"logDriver":"awsfirelens",
 },
@@ -324,7 +324,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 
 ファイルで設定する代わりに、```options```キーでOUTPUTセクションを設定もできる。
 
-```bash
+```yaml
 "logConfiguration": {
 	"logDriver":"awsfirelens",
 	"options": {

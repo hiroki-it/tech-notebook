@@ -527,7 +527,7 @@ spec:
         - ./prd.yaml
 ```
 
-暗号化された```values```ファイルを使用することもできる。あらかじめ、sopsを使用して```values```ファイルを暗号化しておき、監視対象のリポジトリに```.sops.yaml```ファイルと```secrets.yaml```ファイル（暗号化後の```values```ファイル）を配置しておく必要がある。
+暗号化された```values```ファイルを使用することもできる。
 
 参考：https://github.com/camptocamp/argocd-helm-sops-example
 
@@ -546,6 +546,30 @@ spec:
         - ./secrets.yaml
 ```
 
+あらかじめ、sopsを使用して```values```ファイルを暗号化しておき、監視対象のリポジトリに```.sops.yaml```ファイルと```secrets.yaml```ファイル（暗号化後の```values```ファイル）を配置しておく必要がある。
+
+```yaml
+# secrets.yamlファイル
+data:
+  AWS_ACCESS_KEY: ENC[AES256...
+  AWS_SECRET_ACCESS_KEY: ENC[AES256...
+sops:
+  ...
+```
+
+ArgoCDは暗号化された```values```ファイルを復号化し、チャートをインストールするが、ダッシュボード上では展開された場所は『```+++++```』となっており、マスキングされている。
+
+```yaml
+# values.yamlファイルの暗号化された値を展開するテンプレートファイル
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-aws-credentials
+type: Opaque
+data:
+  AWS_ACCESS_KEY: {{ .Values.data.AWS_ACCESS_KEY }} # ArgoCD上ではマスキングされている。
+  AWS_SECRET_ACCESS_KEY: {{ .Values.data.AWS_SECRET_ACCESS_KEY }}
+```
 
 ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用し、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
 
