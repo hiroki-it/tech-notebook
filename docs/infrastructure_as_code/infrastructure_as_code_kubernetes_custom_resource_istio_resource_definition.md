@@ -48,9 +48,9 @@ spec:
   profile: demo # Istioのdemoチャートをインストールし、リソースを作成する。
 ```
 
-````bash
+```bash
 $ kubectl apply -f istio-operator.yaml
-````
+```
 
 <br>
 

@@ -329,11 +329,11 @@ users:
 
 #### ▼ dataとは
 
-Kubernetesリソースに渡す非機密データを設定する。
+Kubernetesリソースに渡す機密でない変数を設定する。
 
-#### ▼ string型データ
+#### ▼ string型変数
 
-ConfigMapに設定するstring型データを設定する。
+ConfigMapに設定するstring型変数を設定する。
 
 ```yaml
 apiVersion: v1
@@ -358,7 +358,7 @@ data:
   number: "1"
 ```
 
-改行すれば、設定ファイルのstring型データも設定できる。
+改行すれば、設定ファイルのstring型変数も設定できる。
 
 ```yaml
 apiVersion: v1
@@ -1945,7 +1945,7 @@ Pod内で使用するボリュームを設定する。
 
 #### ▼ configMap
 
-ConfigMapのデータをコンテナのディレクトリにマウントする。
+ConfigMapの変数をコンテナのディレクトリにマウントする。
 
 **＊実装例＊**
 
@@ -2262,11 +2262,11 @@ subjects:
 
 #### ▼ dataとは
 
-Kubernetesリソースに渡す機密データを設定する。
+Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型データ
+#### ▼ string型変数
 
-Secretで保持するstring型データを設定する。使用前にbase64方式で自動的にデコードされるため、あらかじめエンコード値を設定しておく必要がある。
+Secretで保持するstring型変数を設定する。使用時に```base64```方式で自動的にデコードされるため、あらかじめ```base64```方式でエンコードしておく必要がある。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -2276,11 +2276,11 @@ kind: Secret
 metadata:
   name: foo-secret
 data:
-  username: *****
+  username: ***** # base64方式でエンコードされた値
   password: *****
 ```
 
-string型しか設定できないため、デコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型しか設定できないため、```base64```方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -2300,11 +2300,11 @@ data:
 
 #### ▼ stringDataとは
 
-Kubernetesリソースに渡す機密データを設定する。
+Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型データ
+#### ▼ string型変数
 
-Secretで保持するstring型データを設定する。平文で設定しておく必要がある。
+Secretで保持するstring型変数を設定する。平文で設定しておく必要がある。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -2344,7 +2344,7 @@ Secretの種類を設定する。
 
 #### ▼ kubernetes.io/basic-auth
 
-Basic認証のためのデータを設定する。
+Basic認証のための変数を設定する。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
 
@@ -2382,7 +2382,7 @@ data:
 
 #### ▼ kubernetes.io/service-account-token
 
-ServiceAccountのためのデータを設定する。ただし、自動的に作成されるため、ユーザーが設定する必要はない。
+ServiceAccountのための変数を設定する。ただし、自動的に作成されるため、ユーザーが設定する必要はない。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 
@@ -2400,7 +2400,7 @@ stringData:
 
 #### ▼ kubernetes.io/tls
 
-SSL/TLSを使用するためのデータを設定する。SSL証明書と秘密鍵の文字列が必要である。ユースケースとしては、データをIngressに割り当て、IngressとServiceの間をHTTPSで通信する例がある。
+SSL/TLSを使用するための変数を設定する。SSL証明書と秘密鍵の文字列が必要である。ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSで通信する例がある。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
@@ -2421,7 +2421,7 @@ data:
 
 #### ▼ Opaque
 
-任意のデータを設定する。ほとんどのユースケースに適する。
+任意の変数を設定する。ほとんどのユースケースに適する。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
 

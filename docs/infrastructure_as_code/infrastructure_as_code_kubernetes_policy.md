@@ -443,7 +443,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 ## 07. セキュリティ
 
-### 認証認可
+### 認証/認可の実施
 
 #### ▼ Kubernetesリソースの場合
 
@@ -464,6 +464,25 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 
+Secretの```data```キーには、```base64```方式でエンコードされた値を設定する必要がある。この```base64```方式エンコード値をどのように管理するかには選択肢がある。
+
+<br>
+
+### 機密な変数の管理
+
+#### ▼ Secretの変数の場合
+
+ℹ️ 参考：
+
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
+- https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
+
+| 管理方法                                                 | 説明                                                                                                                                            |
+| -------------------------------------------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------|
+| GitHub                                                   | ```base64```方式エンコード値をGitHubリポジトリでそのまま管理する。非推奨である。                                                                                             |
+| GitHub + 疑似的なキーバリュー型ストレージ                | ```base64```方式エンコード値を暗号化キー（例：AWS KMS、GCP KMS、など）でさらに暗号化し、疑似的なキーバリュー型ストレージ（例：sops）で管理する。デプロイ時に```base64```方式エンコード値に復号化する。                      |
+| GitHub + クラウドのキーバリュー型ストレージ + Secret CSI | ```base64```方式エンコード値を暗号化キー（例：AWS KMS、GCP KMS、など）でさらに暗号化し、クラウドのキーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）で管理する。デプロイ時に```base64```方式エンコード値に復号化する。 |
+
 <br>
 
 ## 08. CIパイプライン
@@ -472,12 +491,12 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 #### ▼ 静的解析
 
-| 観点               | 説明                                                         | 補足                                                         |
-|------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 文法の誤り            | 外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの静的解析を実施する。 | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
-| ベストプラクティス違反      |                                                              |                                                              |
-| 非推奨apiVersionの使用 | 外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionの検出テストを実施する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
-| 脆弱性              | 外部の脆弱性テストツール（例：trivy）を使用し、マニフェストファイルの脆弱性テストを実施する。 | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
+| 観点            | 説明                                                         | 補足                                                         |
+|---------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 文法の誤りテスト          | 外部の静的解析ツール（例：kubeconform）を使用し、マニフェストファイルの静的解析を実施する。 | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
+| ベストプラクティス違反テスト    |                                                              |                                                              |
+| 非推奨apiVersionテスト  | 外部の非推奨apiVersionテストツール（例：pluto）を使用し、マニフェストファイルの非推奨apiVersionテストを実施する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
+| 脆弱性テスト            | 外部の脆弱性テストツール（例：trivy）を使用し、マニフェストファイルの脆弱性テストを実施する。 | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
 
 <br>
 
@@ -503,7 +522,7 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 | 採用可能な戦略              | 具体的な方法                             |
 |----------------------|------------------------------------|
-| インプレースデプロイメント（非推奨）   | DeploymentのReplace戦略を採用する。|
+| インプレースデプロイメント（非推奨）   | DeploymentのReplace戦略を採用する。非推奨である。 |
 | ローリングアップデート          | DeploymentのRollingUpdate戦略を採用する。|
 | BGデプロイメント            | CDツールのBGデプロイメント機能を採用する。            |
 | カナリアリリース             | CDツールのカナリアリリース機能を採用する。             |
@@ -515,7 +534,7 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 | 採用可能な戦略            | 具体的な方法                           |
 |--------------------|----------------------------------|
-| インプレースデプロイメント（非推奨） | DeploymentのReplace戦略を採用する。|
+| インプレースデプロイメント（非推奨） | DeploymentのReplace戦略を採用する。非推奨である。 |
 | ローリングアップデート        | DeploymentのRollingUpdate戦略を採用する。|
 
 
@@ -523,15 +542,23 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 ### ロールバック
 
+#### ▼ CDパイプラインがない場合（非自動化）
+
 Kubernetesには、マニフェストファイルのロールバック機能がない。そこで、過去のリリースタグを```kubectl apply```コマンドでデプロイすることにより、バージョンをロールバックする。
-
-<br>
-
-### 事後処理
 
 #### ▼ CDパイプラインがある場合
 
-CDツールの通知機能（例：ArgoCD Notification）を使用し、CDパイプラインの結果が通知されるようにする。
+CDツールの機能（例：BGデプロイメント、カナリアリリース、Progressive Delivery、など）を採用する。
+
+<br>
+
+## 08-03. 事後処理
+
+### 通知
+
+#### ▼ CDパイプラインがある場合
+
+CDツールの通知機能（例：ArgoCD Notification）を使用し、ArgoCDによるデプロイの結果が通知されるようにする。
 
 #### ▼ CDパイプラインがない場合（非自動化）
 

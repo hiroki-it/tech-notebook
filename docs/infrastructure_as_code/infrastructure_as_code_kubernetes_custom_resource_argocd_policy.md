@@ -161,22 +161,19 @@ repository/
 
 ## 03. セキュリティ
 
-### 認証認可の手法
+### 認証/認可の実施
 
-認証認可の手法としてSSOを採用する。認証フェーズを外部（Auth0、GitHub、GitLab、など）に委譲し、ArgoCDでは認可フェーズのみを実施する。
+一時的な認証/認可サービス（例：AWS STS）を使用して、ArgoCDに紐づく実行ユーザー（ログインユーザー）を一時的に認証し、また同じく一時的な認可スコープを付与する（例：AWS STS）。一時的な認証/認可としないと、認証情報が漏洩した場合、認証情報の所有者が常にデプロイできるようになってしまう。
 
 ℹ️ 参考：https://int128.hatenablog.com/entry/2019/10/03/134508
 
 <br>
 
-### 機密情報の管理
+### 機密な変数の管理
 
-Applicationで使用する機密な環境変数は、使用前は暗号化しておき、使用時のみ復号化する。このSecretをどの場所に保存するかについて議論がなされている。
+#### ▼ Secretの変数の場合
 
-ℹ️ 参考：
-
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
-- https://blog.mmmcorp.co.jp/blog/2022/02/24/yassan-argocd-with-aws-secrets-manager/
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 

@@ -403,7 +403,7 @@ sops <バージョン>
 
 ```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
 
-参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 ```bash
 $ brew install asdf
@@ -415,7 +415,7 @@ $ brew install asdf
 
 ```bash
 $ asdf global <プラグイン名> 1.0.0
-````
+```
 
 #### ▼ list
 

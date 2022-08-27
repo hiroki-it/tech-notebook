@@ -264,7 +264,7 @@ Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを�
 set -xeuo pipefail
 set -u
 
-# 事前に環境変数にインフラ環境名を代入する。
+# 事前に環境変数に実行環境名を代入する。
 case $ENV in
     "tes")
         aws_account_id="<テスト環境アカウントID>"

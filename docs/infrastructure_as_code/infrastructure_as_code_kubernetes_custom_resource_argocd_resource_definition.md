@@ -529,7 +529,7 @@ spec:
 
 暗号化された```values```ファイルを使用することもできる。
 
-参考：https://github.com/camptocamp/argocd-helm-sops-example
+ℹ️ 参考：https://github.com/camptocamp/argocd-helm-sops-example
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -546,18 +546,21 @@ spec:
         - ./secrets.yaml
 ```
 
-あらかじめ、sopsを使用して```values```ファイルを暗号化しておき、監視対象のリポジトリに```.sops.yaml```ファイルと```secrets.yaml```ファイル（暗号化後の```values```ファイル）を配置しておく必要がある。
+あらかじめ、sopsを使用して、```values```ファイルを暗号化し、疑似的なキーバリュー型ストレージに設定しておく。監視対象のリポジトリに```.sops.yaml```ファイルと```secrets.yaml```ファイル（疑似的なキーバリュー型ストレージ）を配置しておく必要がある。
 
 ```yaml
 # secrets.yamlファイル
+
+# 疑似的なキーバリュー型ストレージ
 data:
   AWS_ACCESS_KEY: ENC[AES256...
   AWS_SECRET_ACCESS_KEY: ENC[AES256...
+
 sops:
   ...
 ```
 
-ArgoCDは暗号化された```values```ファイルを復号化し、チャートをインストールするが、ダッシュボード上では展開された場所は『```+++++```』となっており、マスキングされている。
+ArgoCDは暗号化された```values```ファイルを復号化し、チャートをインストールする。なおArgoCD上では、Secretのdataキーは```base64```方式でエンコードされる。
 
 ```yaml
 # values.yamlファイルの暗号化された値を展開するテンプレートファイル
@@ -567,7 +570,7 @@ metadata:
   name: foo-aws-credentials
 type: Opaque
 data:
-  AWS_ACCESS_KEY: {{ .Values.data.AWS_ACCESS_KEY }} # ArgoCD上ではマスキングされている。
+  AWS_ACCESS_KEY: {{ .Values.data.AWS_ACCESS_KEY }} # base64方式でエンコードされる。
   AWS_SECRET_ACCESS_KEY: {{ .Values.data.AWS_SECRET_ACCESS_KEY }}
 ```
 
@@ -679,7 +682,7 @@ spec:
 
 argocdのアドオンを使用する。
 
-参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
+ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
 
 <br>
 

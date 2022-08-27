@@ -551,12 +551,13 @@ $ brew install sops
 
 #### ▼ ```secrets.yaml```ファイル
 
-sopsによって暗号化されたファイル。自動的に作成される。```sops```キー以下に暗号化に使用したツールが記載される。外部の暗号化キーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、安全に変数を管理できる。
+sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。自動的に作成される。```sops```キー以下に暗号化の設定値が記載される。外部のキーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、疑似的なストレージとして変数を管理できる。なお、暗号化キー（例：AWS KMS、GCP KMS）は外部のものを使用した方が良い。
 
 ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```yaml
 # value.yamlファイル（平文ファイル）
+
 DB_USERNAME: foo-user
 DB_PASSWORD: password
 ```
@@ -568,9 +569,12 @@ $ sops -e value.yaml > secret.yaml
 
 ```yaml
 # secret.yamlファイル（暗号化後ファイル）
+
+# 疑似的なキーバリュー型ストレージ（AWS SMパラメータストア、Hashicorp Vault、に相当する）
 DB_USERNAME: ENC[AES256...
 DB_PASSWORD: ENC[AES256...
-# 暗号化に使用したツール
+
+# sopsの暗号化の設定
 sops:
     # AWS KMS
     kms:
@@ -602,11 +606,11 @@ sops:
 creation_rules:
     # 平文ファイル名を設定する。
   - path_regex: /foo/value.yaml
-    # AWS KMSを使用する。
+    # AWS KMSを暗号化キーとして使用する。
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
     # 平文ファイルを再帰的に指定できる。
   - path_regex: /bar/.*\.yaml
-    # GCP KMSを使用する。
+    # GCP KMSを暗号化キーとして使用する。
     gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 
@@ -629,7 +633,7 @@ $ sops -e /foo/value.yaml
 
 ```EnvVar```キーのある項目を参照せよ。
 
-参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
+ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 
 <br>
 
@@ -645,19 +649,19 @@ $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化�
 
 #### ▼ -e
 
-外部の暗号化サービス（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+外部の暗号化キー（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
-# AWS KMSをルールとして使用する。
+# AWS KMSを暗号化キーとして使用する。
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
 $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
 ```
 
-外部の暗号化サービスを使用する場合、そのサービスの認証を済ませておく必要がある。
+外部の暗号化キーを使用する場合、そのサービスの認証を済ませておく必要がある。
 
 ```bash
-# AWS KMSをルールとして使用する場合
+# AWS KMSを暗号化キーとして使用する場合
 Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
 ```
 

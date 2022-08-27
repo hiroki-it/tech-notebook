@@ -381,8 +381,10 @@ title: 【IT技術の知見】目次
 * [📖：︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 * [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
 * CircleCI
+    * [📖：︎CircleCI](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci.html)
     * [📖：︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
     * [📖：︎orbs](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_orbs.html)
+    * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_policy.html)
 * Skaffold
     * [📖：︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
     * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)

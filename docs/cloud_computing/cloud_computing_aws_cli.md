@@ -627,7 +627,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
-## 07. 認証認可のプラクティス
+## 07. 認証/認可の手法
 
 ### SSO
 

@@ -1297,19 +1297,19 @@ Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClust
 
 #### ▼ セットアップ
 
-| 設定項目                         | 説明                                                         | 補足                                                         |
-| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 名前                             | クラスターの名前を設定する。                                 |                                                              |
-| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。            | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
-| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。              | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html |
-| シークレット                     | Secretに保持するデータをAWS KMSで暗号化するか否かを設定する。 |  |
-| VPC、サブネット                  | ENIを配置するサブネットを設定する。                          | 複数のAZにまたがっている必要がある。                         |
-| クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。              | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー   |                                                              |                                                              |
-| CIDRブロック                     |                                                              |                                                              |
-| クラスターエンドポイントアクセス |                                                              |                                                              |
-| ネットワークアドオン             |                                                              |                                                              |
-| コントロールプレーンのログ       |                                                              |                                                              |
+| 設定項目                         | 説明                                          | 補足                                                         |
+| -------------------------------- |---------------------------------------------| ------------------------------------------------------------ |
+| 名前                             | クラスターの名前を設定する。                              |                                                              |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。             | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html |
+| シークレット                     | Secretに保持するデータをAWS KMSの暗号化キーで暗号化するか否かを設定する。 |  |
+| VPC、サブネット                  | ENIを配置するサブネットを設定する。                         | 複数のAZにまたがっている必要がある。                         |
+| クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。                | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   |                                             |                                                              |
+| CIDRブロック                     |                                             |                                                              |
+| クラスターエンドポイントアクセス |                                             |                                                              |
+| ネットワークアドオン             |                                             |                                                              |
+| コントロールプレーンのログ       |                                             |                                                              |
 
 <br>
 

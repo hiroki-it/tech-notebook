@@ -29,7 +29,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 #### ▼ argocd-serverとは
 
-```argocd```コマンドクライアントのエンドポイントやダッシュボードを公開し、リクエストに応じて、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証認可ツールに認証認可処理を委譲する。
+```argocd```コマンドクライアントのエンドポイントやダッシュボードを公開し、リクエストに応じて、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
 
 ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 

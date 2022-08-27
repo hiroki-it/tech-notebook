@@ -513,11 +513,11 @@ Podのライフサイクルにはフェーズがある。
 
 （３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<名前空間>_<ポッド名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。
 
-参考：https://www.creationline.com/lab/29281
+ℹ️ 参考：https://www.creationline.com/lab/29281
 
 補足として、DaemonSetとして稼働するFluentdは、ワーカーNodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
-参考：https://note.com/shift_tech/n/n503b32e5cd35
+ℹ️ 参考：https://note.com/shift_tech/n/n503b32e5cd35
 
 
 
@@ -763,11 +763,19 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 #### ▼ Secretとは
 
-セキュリティに関するデータを管理し、コンテナに選択的に提供する。
+変数を永続化し、Podに出力する。
+
+ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
+
+#### ▼ コンテナイメージプルのパラメーターとして
+
+Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。Secretに永続化された値を復号化し、```kubectl```コマンドにパラメーターとして出力できる。
+
+ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
 
 #### ▼ コンテナの環境変数として
 
-機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてPodに出力する。
+永続化された値を復号化し、Pod内のコンテナに環境変数として出力できる。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
@@ -787,7 +795,7 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 #### ▼ Accountとは
 
-Kubernetesに関する実行ユーザーに認証認可を設定する。
+Kubernetesに関する実行ユーザーに認証/認可を設定する。
 
 ℹ️ 参考：
 
@@ -796,8 +804,8 @@ Kubernetesに関する実行ユーザーに認証認可を設定する。
 
 | アカウント名         | 説明                                                                                                                   | 補足                                                                                         |
 |----------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに、認証認可を設定する。認証済みの実行ユーザーのプロセスは、Kubernetes自体と通信する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される。認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる。 |
-| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに、認証認可を設定する。認証済みの実行ユーザーのクライアントは、Kubernetes自体を操作する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。 | アカウント情報は、``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある。                       |
+| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのプロセスは、Kubernetes自体と通信する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される。認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる。 |
+| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのクライアントは、Kubernetes自体を操作する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。 | アカウント情報は、``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある。                       |
 
 <br>
 

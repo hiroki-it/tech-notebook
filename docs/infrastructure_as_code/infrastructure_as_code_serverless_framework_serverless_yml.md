@@ -86,7 +86,7 @@ functions:
 
 ### environment
 
-Lambda関数の環境変数を設定する。
+Lambda関数の変数を設定する。
 
 ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 

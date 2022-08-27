@@ -186,7 +186,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
     "namespace": "my-namespace",
     # kube-apiserverの操作の種類を表す。
     "operation": "UPDATE",
-    # 認証認可されたユーザーを表す。
+    # 認証/認可されたユーザーを表す。
     "userInfo": {
       "username": "admin",
       "uid": "014fbff9a07c",
@@ -201,7 +201,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
         ]
       }
     },
-    # 新しく認証認可されたオブジェクトを表す。
+    # 新しく認証/認可されたオブジェクトを表す。
     "object": {
       "apiVersion": "autoscaling/v1",
       "kind": "Scale"
@@ -211,7 +211,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
       "apiVersion": "autoscaling/v1",
       "kind": "Scale"
     },
-    # 認証認可された操作の種類を表す。
+    # 認証/認可された操作の種類を表す。
     "options": {
       "apiVersion": "meta.k8s.io/v1",
       "kind": "UpdateOptions"

@@ -109,7 +109,7 @@ CIパイプラインとCDパイプラインを組み合わせた手法のこと�
 
 #### ▼ CIOpsとは
 
-CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。例えばCircleCIでアプリケーションのビルドからデプロイまでを実現する。KubernetesをCIOpsでデプロイすることはアンチパターンとされている。
+CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。例えばCircleCIでアプリケーションのビルドからデプロイまでを実現する。
 
 ℹ️ 参考：
 
@@ -123,6 +123,12 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 - GitLab CI
 - Jenkins
 - CodePipeline
+
+#### ▼ アンチパターンとなる場合
+
+Kubernetesを使用している場合に、リポジトリ側でkubeconfigファイルをバージョン管理することになってしまうため、非推奨である。ただ、どうしてもCIOpsを採用したいのであれば、暗号化キー（例：AWS KMS、GCP KMS、など）で```kubeconfig```ファイルを暗号化する。
+
+ℹ️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 
 <br>
 
@@ -139,6 +145,7 @@ CIツールを使用してCIパイプラインを、またはCDツールを使�
 - ArgoCD
 - Flux
 - Jenkins X
+- PipeCD
 
 <br>
 

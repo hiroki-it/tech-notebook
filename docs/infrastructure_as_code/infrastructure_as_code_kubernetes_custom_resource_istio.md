@@ -107,7 +107,7 @@ $ istio-iptables \
 
 ![istio_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables.png)
 
-Pこのiptablesにより、Pod内外へのインバウンド（またはアウトバウンド通信）は、一度、istio-proxyコンテナの15006（または15001）番ポートにリダイレクトされるようになる（画像はアウトバウンド時の経路）。
+Pこのiptablesにより、Pod内へのインバウンド（または外へのアウトバウンド通信）は、一度、istio-proxyコンテナの```15006```（または```15001```）番ポートにリダイレクトされるようになる（画像はアウトバウンド時の経路）。
 
 
 ℹ️ 参考：
@@ -159,7 +159,7 @@ Pこのiptablesにより、Pod内外へのインバウンド（またはアウ�
     },
     # kube-apiserverの操作の種類を表す。
     "operation": "UPDATE",
-    # 新しく認証認可されたオブジェクトを表す。
+    # 新しく認証/認可されたオブジェクトを表す。
     "object": {
       "apiVersion": "autoscaling/v1",
       "kind": "Scale"
@@ -169,7 +169,7 @@ Pこのiptablesにより、Pod内外へのインバウンド（またはアウ�
       "apiVersion": "autoscaling/v1",
       "kind": "Scale"
     },
-    # 認証認可された操作の種類を表す。
+    # 認証/認可された操作の種類を表す。
     "options": {
       "apiVersion": "meta.k8s.io/v1",
       "kind": "UpdateOptions"

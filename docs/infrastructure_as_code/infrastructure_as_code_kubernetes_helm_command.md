@@ -599,6 +599,7 @@ Encrypted ./values/secrets.yaml
 db:
   user: *****
   password: *****
+
 # sopsキーが追記される。
 sops:
   # 〜 中略 〜
