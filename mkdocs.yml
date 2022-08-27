@@ -364,8 +364,10 @@ nav:
       - Capistrano: devops/devops_capistrano.md
       - ArgoCD: devops/devops_argocd.md
       - ■ CircleCI:
+          - CircleCI: devops/devops_circleci.md
           - config.yml: devops/devops_circleci_config_yml.md
           - orbs: devops/devops_circleci_orbs.md
+          - 設計ポリシー: devops/devops_circleci_policy.md
       - ■ Skaffold:
           - skaffold.yaml: devops/devops_skaffold_yaml.md
           - コマンド: devops/devops_skaffold_command.md
