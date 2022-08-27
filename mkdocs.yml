@@ -100,6 +100,7 @@ nav:
 
   - 🌳 システム:
       - システム: system/system.md
+      - システム特性: system/system_properties.md
 
   - 🧬 ソフトウェア:
       - ソフトウェア: software/software.md
