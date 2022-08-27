@@ -608,7 +608,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 #### ▼ ソーシャルエンジニアリングとは
 
-技術的な手法ではなく、物理的な手法（盗み見、盗み聞き、成りすまし、詐欺など）によってパスワードを取得し、アクセスする手法。
+技術的な手法ではなく、物理的な手法（例：盗み見、盗み聞き、成りすまし、詐欺など）によってパスワードを取得し、アクセスする手法。
 
 ![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソーシャルエンジニアリング.png)
 

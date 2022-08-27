@@ -7,6 +7,7 @@ title: 【IT技術の知見】目次
 ## 🌳 システム
 
 * [📖：︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system.html)
+* [📖：︎システム特性](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system_properties.html)
 
 <br>
 
@@ -269,7 +270,7 @@ title: 【IT技術の知見】目次
 
 * [📖：︎仮想化](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization.html)
 
-### コンテナ
+### コンテナ型仮想化
 
 * [📖：︎Docker](https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html)
 

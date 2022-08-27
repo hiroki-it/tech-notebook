@@ -210,7 +210,7 @@ Slackwareなど
 
 #### ▼ BSD系統とは
 
-UNIXから分岐したBSDは、加えて複数の系統（MacOSなど）に分岐する。
+UNIXから分岐したBSDは、加えて複数の系統（例：MacOSなど）に分岐する。
 
 <br>
 

@@ -317,7 +317,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 
 ```yaml
 "logConfiguration": {
-	"logDriver":"awsfirelens",
+	"logDriver": "awsfirelens",
 },
 ```
 
@@ -326,7 +326,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 
 ```yaml
 "logConfiguration": {
-	"logDriver":"awsfirelens",
+	"logDriver": "awsfirelens",
 	"options": {
 	   "Name": "datadog",
 	   "Host": "http-intake.logs.datadoghq.com",

@@ -206,7 +206,7 @@ class Foo
 
         } catch (Exception $exception) {
 
-            // その他（自社ソフトウェアなど）のExceptionが起こっ時の処理
+            // その他（例：自社ソフトウェアなど）のExceptionが起こっ時の処理
 
         } finally {
 
@@ -465,7 +465,7 @@ class Foo
             
             // 下流クラスによる例外スローを含む処理
 
-            // その他（自社ソフトウェアなど）によるエラーをロギング
+            // その他（例：自社ソフトウェアなど）によるエラーをロギング
             $this->logger->error(sprintf(
                 "ERROR: %s at %s line %s",
                 $exception->getMessage(),

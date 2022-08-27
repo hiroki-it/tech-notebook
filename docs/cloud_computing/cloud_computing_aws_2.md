@@ -856,7 +856,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。もしNAT Gatewayを設置したとする。この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。もしNAT Gatewayを設置したとする。この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
@@ -1126,7 +1126,7 @@ CodeDeployを使用してデプロイする。
 | Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのSMパラメータストアにGETリクエストを送信するため。 |
 | Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。                  |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース（コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。
 
 ℹ️ 参考：
 

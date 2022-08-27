@@ -294,10 +294,10 @@ X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
 Content-Type: application/json
 
 {
-  "access_token":"*****",
+  "access_token": "*****",
   "expires_in":3600,
-  "scope":"messaging:push",
-  "token_type":"Bearer"
+  "scope": "messaging:push",
+  "token_type": "Bearer"
 }
 ```
 
@@ -515,18 +515,22 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
-- https://boxil.jp/mag/a3207/
 
 ![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_authorization-code_facebook.png)
 
-Facebookで認証フェーズのみでログインし、連携先のクライアントアプリには認可フェーズのみでログインする。
+Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。
+
+参考：https://contents.saitolab.org/oauth/
 
 （１）ブラウザは、免許証作成サイトにログインしようとする。免許証作成サイトは、Facebookアカウントの使用するかどうかをレスポンスする。
 
-（２）ブラウザは、Facebookアカウントを使用することをリクエストする。免許更新サイトはFacebookの認可サーバーに認可リクエストを送信する。
+（２）ブラウザは、Facebookアカウントを使用することをリクエストする。免許証作成サイトはFacebookの認可サーバーに認可リクエストを送信する。
+
+参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 
 ```yaml
-GET https://www..com/auth?<下表で説明>
+GET https://www.facebook.com/auth?<下表で説明>
+
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
@@ -540,26 +544,30 @@ HOST: authorization-server.com # 認可サーバーのホスト
 | code_challenge         | チャレンジ      | 任意           |
 | code_challege_method   | メソッド        | 任意           |
 
-（３）免許作成サイトの認可サーバーは、認可コードを発行する。```Location```ヘッダーにURLと認可レスポンスパラメーターを割り当て、Facebookに認可画面（Facebookが権限を求めています画面）をレスポンスする。
+（３）ブラウザに認可画面（Facebookが権限を求めています画面）をレスポンスする。
+
+（４）ブラウザで、認可画面に情報を入力し、Facebookに送信する。
+
+（５）Facebookの認可サーバーは、認可コードを発行する。```Location```ヘッダーに免許証作成サイトURLと認可レスポンスパラメーターを割り当て、ブラウザに送信する。
+
+参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
 
 ```yaml
 302 Found
 
-Location: https://www.facebook.com/login?<下表で説明>
+Location: https://www.免許証作成サイト.com/login?<下表で説明>
 ```
 
 | クエリストリングのキーの種類 | 値           | 必須/任意                                                    |
 | ---------------------------- | ------------ | ------------------------------------------------------------ |
-| code                         | 認可コード   | 必須                                                         |
-| state                        | 任意の文字列 | 認可リクエストのクエリストリングで、stateキーが使用されていれば必須 |
+| ```code```                   | 認可コード   | 必須                                                         |
+| ```state```                  | 任意の文字列 | 認可リクエストのクエリストリングで、stateキーが使用されていれば必須 |
 
-（４）Facebookは、ブラウザに認可画面をレスポンスする。
+（６）ブラウザでリダイレクトが発生し、免許証作成サイトに認可コードが送信される。
 
-（５）ブラウザで、認可画面に情報を入力し、Facebookに送信する。
+（７）免許証作成サイトは、Facebookの認可サーバーに認可コードを送信する。
 
-（６）Facebookは認可コードをレスポンスする。
-
-（７）免許作成サイトは、認可コードをFacebookの認可サーバーにリクエストを送信する。
+参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 
 ```yaml
 POST https://www.facebook.com/auth?
@@ -580,31 +588,29 @@ Content-Type: application/x-www-form-urlencoded
 | ```client_id```     | クライアントID     | 条件により必須                                               |
 | ```client_secret``` | シークレット値     | 条件により必須                                               |
 
-（８）Facebookの認可サーバーは、アクセストークンを免許作成サイトに送信する。
+（８）Facebookの認可サーバーは、アクセストークンを免許証作成サイトに送信する。
 
-（９）免許作成サイトは、Facebookの認可サーバーはブラウザにレスポンスする。
+（９）免許証作成サイトは、Facebookの認可サーバーにアクセストークンをそのまま送信する。
 
-ℹ️ 参考：
-
-- https://boxil.jp/mag/a3207/
-- https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844
+ℹ️ 参考：https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
 
 ```yaml
-302 Found
+HTTP/1.1 200 OK
 
-Location: https://www.facebook.com/login
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-store
 Pragma: no-cache
 
 {
-  "access_token":"<アクセストークン>",       # 必須
-  "token_type":"<トークンタイプ>",          # 必須
-  "expires_in":<有効秒数>,                 # 任意
-  "refresh_token":"<リフレッシュトークン>",  # 任意
-  "scope":"<認可スコープ>"                  # 要求したスコープ群と差異があれば必須
+  "access_token": "<アクセストークン>",       # 必須
+  "token_type": " <トークンタイプ>",          # 必須
+  "expires_in": <有効秒数>,                 # 任意
+  "refresh_token": "<リフレッシュトークン>",  # 任意
+  "scope": "<認可スコープ>"                  # 要求したスコープ群と差異があれば必須
 }
 ```
+
+（１０）Facebookは、免許証作成サイトを認可し、アカウント情報を送信する。
 
 #### ▼ 使用される認証スキーム
 
@@ -630,9 +636,7 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 #### ▼ SAMLとは
 
-OAuthを拡張した仕組みで認証/認可を実現する。 
-
-ℹ️ 参考：https://baasinfo.net/?p=4418
+OAuthとは異なる仕組みで認証認可を実現する。
 
 <br>
 
@@ -640,7 +644,7 @@ OAuthを拡張した仕組みで認証/認可を実現する。
 
 #### ▼ OIDCとは
 
-OAuthを拡張した仕組みで認証/認可を実現する。
+OAuthをベースとして、これに認証フェーズを追加し、認証/認可を実現する。
 
 ℹ️ 参考：https://baasinfo.net/?p=4418
 
@@ -650,46 +654,7 @@ OAuthを拡張した仕組みで認証/認可を実現する。
 
 #### ▼ 認可コードフロー
 
-Facebookには認証フェーズと認可フェーズでログインする点はOAuthと同じであるが、免許作成サイトには認証フェーズと認可フェーズでログインしていることに留意する。
-
-ℹ️ 参考：https://wagby.com/wdn8/juser-oidc.html
-
-（１）まず、ブラウザはFacebookにリクエストを送信し、Facebook自体の認証フェーズと認可フェーズが完了する（ログインする）。
-
-（２）ユーザーが、Facebookアカウントを使用して免許作成サイトにログインしようとする。Facebookはブラウザにアカウント連携の承認ボタンをレスポンスとして返信する。ユーザーは、表示された承認ボタンを押し、ブラウザはFacebookにリクエストを送信する。
-
-（３）Facebookは、免許作成サイトで認証フェーズと認可フェーズを行いつつ、認可コードを発行してもらうため、免許作成サイト認可サーバーのエンドポイントに認可リクエストを送信する。
-
-ℹ️ 参考：https://tech.yyh-gl.dev/blog/id_token_and_access_token/
-
-```yaml
-GET https://www.免許作成サイト.com/auth?<下表で説明>
-HOST: authorization-server.com # 認可サーバーのホスト
-```
-
-（４）免許作成サイトの認可サーバーは認可リクエストを受信する。免許作成サイト は、Facebookにリダイレクトできるように、```Location```ヘッダーにURLと認可レスポンスパラメーター（認可コードなど）を割り当て、免許作成サイトのログイン画面と一緒にレスポンスを返信する。
-
-（５）ブラウザがレスポンスを受信すると、免許作成サイト のログイン画面が表示される。ログインに成功すると、```Location```ヘッダーのURL（Facebook）にリダイレクトが発生する。認可レスポンスパラメーターには認可コードが含まれており、Facebookは認可コードを受信する。
-
-```yaml
-302 Found
-
-Location: https://www.facebook.com/login?<下表で説明>
-```
-
-（６）Facebookは、認可コードを割り当てた認可リクエストを免許作成サイトのサーバーに送信する。
-
-```yaml
-POST https://www.免許作成サイト.com/auth?
-
-Host: authorization-server.com # 認可サーバーのホスト
-Content-Type: application/x-www-form-urlencoded
-
-# ボディ
-# 下表で説明
-```
-
-（８）免許作成サイトは認可コードを照合し、IDトークンとアクセストークンを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLを割り当て、ブラウザにレスポンスを返信する。ブラウザからFacebookにレスポンスがリダイレクトされる。ブラウザはFacebookにリクエストを再送信する。
+Facebookには認証フェーズと認可フェーズでログインする点はOAuthと同じであるが、免許証作成サイトには認証フェーズと認可フェーズでログインする。
 
 <br>
 

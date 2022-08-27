@@ -441,6 +441,16 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 **＊例＊**
 
+特定のNamespaceの全てのKubernetesリソースを取得する。
+
+参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
+
+```bash
+$ kubectl get -n foo "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')"
+```
+
+**＊例＊**
+
 指定したNodeの情報を取得する。
 
 ```bash

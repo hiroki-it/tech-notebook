@@ -50,7 +50,7 @@ description: クラウドコンピューティングの知見を記録してい�
 | CaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate                             | Google Cloud Run                                             | Azure Container Instances |
 | PaaS                     | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk                   | Google App Engine                                            | Azure App Service         |
 | FaaS                     | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda                              | Google Cloud Functions                                       | Azure Functions           |
-| SaaS                     | なし                                                         |                                         | Google Apps（Google Map、Google Cloud、Google Calender など） |                           |
+| SaaS                     | なし                                                         |                                         | Google Apps（例：Google Map、Google Cloud、Google Calender など） |                           |
 
 <br>
 

@@ -239,12 +239,12 @@ IAMロールにインラインポリシーを紐付ける。このロールを�
 
 ```yaml
 {
-  "Version":"2012-10-17",
+  "Version": "2012-10-17",
   "Statement":[
     {
-      "Effect":"Allow",
-      "Action":"acm:ListCertificates",
-      "Resource":"*"
+      "Effect": "Allow",
+      "Action": "acm:ListCertificates",
+      "Resource": "*"
     }
   ]
 }
@@ -256,12 +256,12 @@ IAMロールにインラインポリシーを紐付ける。このロールを�
 
 ```yaml
 {
-  "Version":"2012-10-17",
+  "Version": "2012-10-17",
   "Statement":[
     {
-      "Effect":"Allow",
-      "Action":"*",
-      "Resource":"*"
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*"
     }
   ]
 }
@@ -424,7 +424,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 ### Kinesis Data Streamsとは
 
-リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管する。
+リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、保管する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
 
@@ -434,7 +434,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 ### Kinesis Data Firehoseとは
 
-リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。転送時にLambda関数を使用することにより、収集したデータを加工できる。
+リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。転送時にLambda関数を使用することにより、収集したデータを加工できる。
 
 ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
 
@@ -460,7 +460,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 ### Kinesis Data Analyticsとは
 
-リアルタイムなストリーミングデータ（動画データ、音声データ、など）を継続的に収集し、分析する。
+リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、分析する。
 
 ℹ️ 参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
 
