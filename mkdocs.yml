@@ -258,7 +258,9 @@ nav:
   - 🔐 セキュリティ:
       - サイバー攻撃: security/security_cyber_attacks.md
       - 通信データの暗号化技術: security/security_encryption_technology.md
-      - 認証/認可: security/security_authentication_authorization.md
+      - 認証/認可:
+           - 認証: security/security_auth_authentication.md
+           - 認可: security/security_auth_authorization.md
 
   - ⛅️ クラウドコンピューティング:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
