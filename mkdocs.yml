@@ -259,8 +259,8 @@ nav:
       - サイバー攻撃: security/security_cyber_attacks.md
       - 通信データの暗号化技術: security/security_encryption_technology.md
       - 認証/認可:
-         - 認証: security/security_auth_authentication.md
-         - 認可: security/security_auth_authorization.md
+          - 認証: security/security_auth_authentication.md
+          - 認可: security/security_auth_authorization.md
 
   - ⛅️ クラウドコンピューティング:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
@@ -331,11 +331,11 @@ nav:
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
                   - ■ Jaeger:
-                        - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
+                      - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
                   - ■ Kiali:
-                        - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
+                      - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
                   - ■ OpenTelemetry:
-                        - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
+                      - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
                   - ■ Prometheus:
                       - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
