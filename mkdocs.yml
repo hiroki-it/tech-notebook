@@ -281,7 +281,7 @@ nav:
           - コマンド: cloud_computing/cloud_computing_gcp_command.md
   - 📦 仮想化:
       - 仮想化: virtualization/virtualization.md
-      - ■ コンテナ:
+      - ■ コンテナ型仮想化:
           - Docker: virtualization/virtualization_container_docker.md
 
   - ⚙️ IaC:
