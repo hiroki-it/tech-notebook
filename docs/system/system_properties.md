@@ -29,7 +29,7 @@ description: システム特性＠システムの知見を記録しています�
 
 #### ▼ SLOの遵守
 
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology_site_reliability_engineering.html
 
 <br>
 
@@ -41,7 +41,7 @@ description: システム特性＠システムの知見を記録しています�
 
 仮想環境自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-参考：https://www.idcf.jp/words/scale-out.html
+ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
 
 ![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアップ.png)
 
@@ -53,7 +53,7 @@ description: システム特性＠システムの知見を記録しています�
 
 仮想環境のインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-参考：https://www.idcf.jp/words/scale-out.html
+ℹ️ 参考：https://www.idcf.jp/words/scale-out.html
 
 ![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スケールアウト.png)
 
@@ -75,7 +75,7 @@ description: システム特性＠システムの知見を記録しています�
 
 同じ状態の複数のシステムやコンポーネントを設置し、システムやコンポーネントで障害が起こったとしても、利用可能な稼働時間を長くする。ただし、複数のハードウェアを用意することは大変なため、仮想環境の文脈で説明されることが多い。
 
-参考：https://it-trend.jp/words/availability
+ℹ️ 参考：https://it-trend.jp/words/availability
 
 <br>
 
@@ -97,7 +97,7 @@ description: システム特性＠システムの知見を記録しています�
 
 稼働中インスタンスと待機中インスタンスを設置する冗長化方法のこと。通常時は稼働中インスタンスのみにルーティングするようにしておく。稼働中インスタンスで障害が発生した場合、インバウンド通信のルーティング先を待機中インスタンスに切り替える。
 
-参考：https://www.idcf.jp/words/failover.html
+ℹ️ 参考：https://www.idcf.jp/words/failover.html
 
 ![デュプレックスシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュプレックスシステム.png)
 
@@ -105,7 +105,7 @@ description: システム特性＠システムの知見を記録しています�
 
 インバウンド通信のルーティング先を待機中インスタンスに切り替える時、手動で切り替えることを『スイッチオーバー』、自動で切り替えることを『フェイルオーバー』という。
 
-参考：https://www.idcf.jp/words/failover.html
+ℹ️ 参考：https://www.idcf.jp/words/failover.html
 
 <br>
 

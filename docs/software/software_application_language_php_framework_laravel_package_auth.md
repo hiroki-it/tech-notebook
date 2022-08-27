@@ -26,7 +26,7 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを使用したForm認証のために使用する。                 |
-| APIガード    | Bearer認証、APIキー認証、OAuth、などのために使用する。それぞれの認証方法に違いについては、以下のリンクを参考にせよ。<br>ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| APIガード    | Bearer認証、APIキー認証、OAuth、などのために使用する。 |
 
 #### ▼ カスタムガード
 
@@ -556,9 +556,7 @@ class FooController extends Controller
 
 ### Passportパッケージとは
 
-Ouath認証を実装できる。OAuthについては、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
+OAuthを実装できる。
 
 <br>
 
@@ -650,18 +648,18 @@ $ php artisan passport:client --password
 
 OAuthに関して、以下のトークン付与タイプを実装できる。
 
-| 付与タイプ               | 説明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| Authorization Code Grant | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
-| Client Credentials Grant | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
-| Implicit Grant           | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
-| Password Grant           | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| 付与タイプ               |
+| ------------------------ |
+| Authorization Code Grant |
+| Client Credentials Grant |
+| Implicit Grant           |
+| Password Grant           |
 
 #### ▼ その他
 
-| 認証方法              | 説明                                                         |
-| --------------------- | ------------------------------------------------------------ |
-| Personal Access Token | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html |
+| 認証方法              |
+| --------------------- |
+| Personal Access Token |
 
 <br>
 
@@ -943,10 +941,6 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 APIキー認証とセッションIDを使用したForm認証機能の認証処理のみを提供する。ルーティングとDBアクセスに関する処理は提供しない。
 
 ℹ️ 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
-
-APIキー認証とセッションIDを使用したForm認証については、以下のリンクを参考にせよ。
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_authentication_authorization.html
 
 <br>
 
