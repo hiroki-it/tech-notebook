@@ -275,6 +275,64 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 デジタル証明書をSSLに使用する場合、特にSSL証明書という。提供される秘密鍵と組み合わせて、ドメインの認証に使用される。
 
+#### ▼ オレオレSSL証明書の作成
+
+以下のコマンドで、SSL証明書のための、秘密鍵、証明書署名要求、自己署名証明書、を作成できる。この時の認証局は『自分』である。
+
+参考：
+
+- https://www.karakaram.com/creating-self-signed-certificate/
+- https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
+
+（１）秘密鍵（```.key```ファイル）を作成する。
+
+```bash
+$ openssl genrsa 2048 -keyout server.key
+
+Generating RSA private key, 2048 bit long modulus
+.............................................+++
+.....................................................................+++
+e is 65537 (0x10001)
+```
+
+証明書署名要求（```.csr```ファイル）を作成する。対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
+
+```bash
+$ openssl req -new -key server.key -out server.csr
+
+Country Name (2 letter code) []:
+State or Province Name (full name) []:
+Locality Name (eg, city) []:
+Organization Name (eg, company) []:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
+Email Address []:
+```
+
+（３）証明書署名要求を秘密鍵で署名し、自己署名証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
+
+```bash
+$ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out server.crt
+```
+
+（４）秘密鍵（```.key```ファイル）、自己署名証明書（```.crt```ファイル）、を該当の箇所に設定する。例えば、Nginxの設定ファイルなら、以下の通りとなる。
+
+```nginx
+#-------------------------------------
+# HTTPリクエスト
+#-------------------------------------
+server {
+    # 443番ポートで待ち受けるようにし、SSL証明書の使用を必要にする。
+    # listen 80;
+    listen 443 ssl;
+
+    # 証明書を設定する。
+    ssl_certificate     /etc/nginx/ssl/server.crt;
+    # 秘密鍵を設定する。
+    ssl_certificate_key /etc/nginx/ssl/server.key;        ：
+}
+```
+
 #### ▼ 証明書バンドル
 
 認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。

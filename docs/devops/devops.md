@@ -126,7 +126,7 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 
 #### ▼ アンチパターンとなる場合
 
-Kubernetesを使用している場合に、リポジトリ側でkubeconfigファイルをバージョン管理することになってしまうため、非推奨である。ただ、どうしてもCIOpsを採用したいのであれば、暗号化キー（例：AWS KMS、GCP KMS、など）で```kubeconfig```ファイルを暗号化する。
+Kubernetesを使用している場合に、リポジトリ側で```kubeconfig```ファイルをバージョン管理することになってしまうため、非推奨である。ただ、どうしてもCIOpsを採用したいのであれば、暗号化キー（例：AWS KMS、GCP KMS、など）で```kubeconfig```ファイルを暗号化する。
 
 ℹ️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
 

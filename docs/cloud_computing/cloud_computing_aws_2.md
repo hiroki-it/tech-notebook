@@ -1734,13 +1734,13 @@ set -o xtrace
 # 主要なパラメーターは以下の通り。
 # その他のパラメーター：https://github.com/awslabs/amazon-eks-ami/blob/584f9a56c76fc9e7e8632f6ea45e29d45f2eab63/files/bootstrap.sh#L14-L35
 #
-# --b64-cluster-ca：kube-apiserverの証明書の値を設定する。
+# --b64-cluster-ca：kube-apiserverのSSL証明書の値を設定する。
 # --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。
 # --container-runtime：コンテナランタイムとしてcontainerdを使用する。
 
 /etc/eks/bootstrap.sh foo-eks-cluster \
-  --b64-cluster-ca F5tLN***** \
-  --apiserver-endpoint https://G6jWLdSk*****.*.ap-northeast-1.eks.amazonaws.com \
+  --b64-cluster-ca ***** \
+  --apiserver-endpoint https://*****.*****.ap-northeast-1.eks.amazonaws.com \
   --container-runtime containerd
 ```
 

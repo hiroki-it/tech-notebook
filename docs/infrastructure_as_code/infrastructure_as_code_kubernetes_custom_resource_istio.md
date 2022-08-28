@@ -259,16 +259,17 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 ### コントロールプレーンとは
 
-Istiod（Pilotに相当する```discovery```コンテナ、Citadelに相当する```citadel```コンテナ、Galleyに相当する```galley```コンテナ）から構成される。```istio-proxy```コンテナや```istio-init```コンテナを注入し、```istio-proxy```コンテナの設定を一括管理する。語尾の『```d```』は、デーモンの意味であるが、Istiodの各種コンテナはReplicaSet内のPodで稼働している。
+Istiodは、Pilot機能、Citadel機能、Galley機能、を持つ。語尾の『```d```』は、デーモンの意味であるが、Istiodの実体は、istiod-deploymentである。
 
 ℹ️ 参考：
 
 - https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
 - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
+- https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
 
 <br>
 
-### ```discovery```コンテナ
+### Pilot機能
 
 | ポート番号 | 役割                                                                                                      |
 |-------|---------------------------------------------------------------------------------------------------------|
@@ -276,37 +277,37 @@ Istiod（Pilotに相当する```discovery```コンテナ、Citadelに相当す�
 | 15010 | XDSサーバーに対するリクエストを待ち受ける。                                                                                 |
 | 15017 | コンテナを注入するwebhookサーバーに対するリクエストを待ち受ける。webhook-serviceは、discoveryコンテナの```15017```番ポートにリクエストをポートフォワーディングする。 |
 
-
-各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合った```istio-proxy```コンテナを作成する。Istioのマニフェストファイルの設定をEnvoyの```envoy.yaml```ファイルの設定に変換する。
+Istiodに対するリクエストを様々なポート番号で待ち受ける。リクエストに応じて、Kubernetes側のPod内の```istio-proxy```コンテナの設定を変更する。 各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。
 
 ℹ️ 参考：
 
 - https://www.amazon.co.jp/dp/B09XN9RDY1
 - https://hub.docker.com/r/istio/pilot/tags
 - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
+- https://qiita.com/Takagi_/items/89985b4cbc6647860c8c
 
 <br>
 
-### ```citadel```コンテナ
+### Citadel機能
 
-マイクロサービス間の認証やトレースIDを管理する。
+マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、そのSSL証明書を作成し、また期限が切れたら更新する。
 
-ℹ️ 参考：https://hub.docker.com/r/istio/citadel/tags
+ℹ️ 参考：https://github.com/istio/istio/blob/1aca7a67afd7b3e1d24fafb2fbfbeaf1e41534c0/operator/pkg/object/objects_test.go#L122
 
 <br>
 
-### ```galley```コンテナ
+### Galley機能
 
-コンテナオーケストレーションツール（Kubernetes、OpenShift、など）の種類を認識し、ツールに合ったIstiodコンポーネントを作成する。
+調査中...
 
-ℹ️ 参考：https://hub.docker.com/r/istio/galley/tags
+ℹ️ 参考：https://github.com/istio/istio/blob/1aca7a67afd7b3e1d24fafb2fbfbeaf1e41534c0/operator/pkg/object/objects_test.go#L152
 
 
 <br>
 
 ###  Mixer
 
-v1.5からデータプレーン側に統合された。
+```v1.5```から、データプレーン側に統合された。
 
 ℹ️ 参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability
 

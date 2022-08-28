@@ -181,7 +181,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAP
 
 ### セットアップ
 
-kube-apiserverの認証/認可を通過するために、kubeconfigファイルをコンテナにマウントする必要がある。
+kube-apiserverの認証/認可を通過するために、```kubeconfig```ファイルをコンテナにマウントする必要がある。
 
 ℹ️ 参考：https://nishipy.com/archives/1363
 

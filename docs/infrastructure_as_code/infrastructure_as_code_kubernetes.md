@@ -1326,3 +1326,26 @@ Address:  10.105.157.184
 
 <br>
 
+## 05. 証明書
+
+![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
+
+| 設置場所                      | 種類               | 説明                                                         |
+| ----------------------------- | ------------------ | ------------------------------------------------------------ |
+| kubectlコマンドのクライアント | クライアント証明書 | kubectlコマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するため。 |
+| kube-apiserver                | SSL証明書          |                                                              |
+| kube-apiserver                | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するため。   |
+| kube-apiserver                | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するため。      |
+| kubelet                       | クライアント証明書 | kubeletが、kube-apiserverを認証するため。                    |
+| control-manager               | クライアント証明書 | control-managerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
+| kube-scheduler                | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
+| front-proxy                   | クライアント証明書 |                                                              |
+|                               | SSL証明書          |                                                              |
+
+参考：
+
+- https://qiita.com/nsawa/items/4f11ac89707aad2c3d4a#tls%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%93%E3%81%A7%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
+- https://kubernetes.io/docs/setup/best-practices/certificates/#all-certificates
+
+
+

@@ -29,7 +29,9 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 <br>
 
-### xDSサーバー
+### コントロールプレーン
+
+#### ▼ XDSサーバーの種類
 
 動的な設定に関する情報を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
@@ -46,6 +48,13 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 | RDS：Route Discovery Service         | Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。 |
 | SDS：Secret Discovery Service        | Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。 |
 | VHDS：Virtual Host Discovery Service | Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。 |
+
+#### ▼ コントロールプレーンの差し替え
+
+Envoyの標準のコントロールプレーンを外部のコントロールプレーンに差し替えられる。
+
+- IstioのIstiod
+- CunsulのConsulコントロールプレーン
 
 <br>
 
