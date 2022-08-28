@@ -362,7 +362,7 @@ traversalは、横断する（ディレクトリを乗り越える）の意味�
 
 #### ▼ DoS攻撃、DDos攻撃とは
 
-アクセスが集中することによりwebサーバーがパンクすることを利用し、悪意を持ってwebサーバーに大量のデータを送りつける手法。リクエストの送信元が1つの場合はDos攻撃、複数の場合はDDos攻撃という。
+アクセスが集中することによりwebサーバーがパンクすることを利用し、悪意を持ってwebサーバーに多くのデータを送りつける手法。リクエストの送信元が1つの場合はDos攻撃、複数の場合はDDos攻撃という。
 
 ![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DoS攻撃.png)
 

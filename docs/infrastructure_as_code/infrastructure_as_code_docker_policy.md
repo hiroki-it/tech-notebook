@@ -331,7 +331,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 | 文法の誤りテスト       | Dockerの```build```コマンド（```terraform validate```コマンド）を使用して、Dockerfileの文法の誤りテストを実施する。 |
 | ベストプラクティス違反テスト | 外部の静的解析ツール（例：hadolint）を使用して、Dockerfileのベストプラクティス違反テストを実施する。 |
 | 脆弱性テスト （イメージスキャン）  | 外部の脆弱性テストツール（例：trivy）を使用し、Dockerfileの脆弱性テスト（イメージスキャン）を実施する。 |
-| コンテナ構造テスト | 外部の脆弱性テストツール（例：container-structure-test）を使用し、Dockerfileのコンテナ構造テスト（例：期待するファイルが存在するか、コンテナ起動時の```ENTRYPOINT```が正しく機能するか、など）を実施する。<br>参考：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
+| コンテナ構造テスト | 外部の脆弱性テストツール（例：container-structure-test）を使用し、Dockerfileのコンテナ構造テスト（例：期待するファイルが存在するか、コンテナ起動時の```ENTRYPOINT```が正しく機能するか、など）を実施する。<br>ℹ️ 参考：https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF |
 
 <br>
 

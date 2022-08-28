@@ -534,7 +534,7 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
             "StringEquals": {
-              "cognito-identity.amazonaws.com:aud": "ap-northeast-1:12345678-abcd-abcd-abcd-123456"
+              "cognito-identity.amazonaws.com:aud": "*****"
             },
             "ForAnyValue:StringLike": {
               "cognito-identity.amazonaws.com:amr": "unauthenticated"
@@ -563,7 +563,7 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
             "StringEquals": {
-              "accounts.google.com:aud": "66677788899900pro0"
+              "accounts.google.com:aud": "*****"
             },
             "ForAnyValue:StringLike": {
               "accounts.google.com:amr": "unauthenticated"

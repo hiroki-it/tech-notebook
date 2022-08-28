@@ -465,7 +465,7 @@ spec:
 
 <br>
 
-## 05 Deployment
+## 05. Deployment
 
 ### spec.replicas
 
@@ -656,29 +656,12 @@ spec:
 
 ## 06. HorizontalPodAutoscaler
 
-### spec.scaleTargetRef
 
-水平スケーリングを紐づけるKubernetesリソースを設定する。
+### spec.maxReplicas、spec.minReplicas
 
-ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+#### ▼ ### maxReplicas、minReplicas、とは
 
-```yaml
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: foo-horizontal-pod-autoscaler
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment # Deploymentに水平スケーリングを紐づける。
-    name: foo-deployment
-```
-
-<br>
-
-### spec.maxReplicas
-
-水平スケーリングのスケールアウト時の最大Pod数を設定する。
+水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
 
 ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
@@ -689,22 +672,6 @@ metadata:
   name: foo-horizontal-pod-autoscaler
 spec:
   maxReplicas: 5
-```
-
-<br>
-
-### spec.minReplicas
-
-水平スケーリングのスケールイン時の最小Pod数を設定する。
-
-ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
-
-```yaml
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: foo-horizontal-pod-autoscaler
-spec:
   minReplicas: 1
 ```
 
@@ -743,6 +710,29 @@ spec:
       resource:
         name: cpu
         targetAverageUtilization: 60
+```
+
+<br>
+
+
+### spec.scaleTargetRef
+
+#### ▼ scaleTargetRefとは
+
+水平スケーリングを紐づけるKubernetesリソースを設定する。
+
+ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+```yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment # Deploymentに水平スケーリングを紐づける。
+    name: foo-deployment
 ```
 
 <br>

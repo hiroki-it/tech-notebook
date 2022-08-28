@@ -4143,7 +4143,7 @@ class ExecutorConstant
 
 #### ▼ CSVファイルによる定義
 
-CSVファイルを使用して、初期データを定義する。DBファサードを使用するよりも。大量のデータを定義しやすい。この時、```LOAD DATA LOCAL INFILE```文を使用すると、高速で処理できる。
+CSVファイルを使用して、初期データを定義する。DBファサードを使用するよりも。大サイズのデータを定義しやすい。この時、```LOAD DATA LOCAL INFILE```文を使用すると、高速で処理できる。
 
 ℹ️ 参考：https://i-407.com/blog/tech/n3/
 

@@ -385,7 +385,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+ワーカーNode上のPodの個数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 ℹ️ 参考：
 
@@ -402,7 +402,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、新しいPodを作成する。また、ワーカーNodeのCPUやメモリの使用率に合わせて、Clusterネットワーク内のPodのレプリカ数を維持管理する。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：appコンテナ）なコンテナを含むPodを扱う。
 
 ℹ️ 参考：
 
@@ -527,7 +527,7 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する。ただしDaemonSetとは異なり、Podを指定した個数に維持管理できる。ワーカーNodeのCPUやメモリの使用率に合わせて、Podを動的に増減させる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
+ワーカーNode上のPod数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
 ℹ️ 参考：
 
@@ -540,7 +540,7 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ StatefulSetとは
 
-ReplicaSetを操作し、ワーカーNodeのCPUやメモリの使用率に合わせて、Podの個数を維持管理する。ただしDeploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
+ReplicaSetを操作し、Podの個数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。Deploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
