@@ -1260,7 +1260,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 
 #### ▼ VPC
 
-EKS Fargate Nodeはプライベートサブネットで稼働する。この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS Fargate NodeとInternet Gateway間のネットワークを繋げる必要がある。そのために、パブリックサブネットにNAT Gatewayを置く。
+EKS FargateワーカーNodeはプライベートサブネットで稼働する。この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。そのために、パブリックサブネットにNAT Gatewayを置く。
 
 <br>
 
@@ -1279,7 +1279,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 | Ingressコントローラー      | AWS LBコントローラー    | ALB Ingressを自動的に作成する。ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                   |
 |                            | API Gateway+NLB        | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                   |
 | マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
-| ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                    |
+| ワーカーNode               | FargateワーカーNode、EC2ワーカーNode  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                    |
 | PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                        |
 | Secret                     | Systems Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                 |
 | ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                  |
@@ -1291,7 +1291,7 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 #### ▼ EKS Clusterとは
 
-Fargate NodeやEC2 Nodeの管理グループ単位のこと。KubernetesのClusterに相当する。
+FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこと。KubernetesのClusterに相当する。
 
 ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 
@@ -1603,13 +1603,13 @@ EC2にはない制約については、以下のリンクを参考にせよ。
 
 #### ▼ メトリクス収集
 
-ワーカーNode内のメトリクスのデータポイントを収集する上で、FargateはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
+FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
 
 ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
 
 #### ▼ ログルーティング
 
-ワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
+FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
 
 ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
 
@@ -1651,7 +1651,7 @@ data:
         auto_create_group true
 ```
 
-（３）ワーカーNode（EC2、Fargate）にECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには認可スコープが付与されないため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+（３）FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには認可スコープが付与されないため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 ℹ️ 参考：
 
@@ -1663,13 +1663,13 @@ data:
 
 <br>
 
-### Fargate Node
+### FargateワーカーNode
 
-#### ▼ Fargate Nodeとは
+#### ▼ FargateワーカーNodeとは
 
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのNodeに相当する。EC2と比べてカスタマイズ性が低く、Node当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2 Nodeを使用するようにする。
+Fargate上で稼働するKubernetesのホストのこと。KubernetesのワーカーNodeに相当する。EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2ワーカーNodeを使用するようにする。
 
 - DaemonSetが必要
 - Fargateで設定可能な最大スペックを超えたスペックが必要
@@ -1690,17 +1690,17 @@ Fargateを設定する。
 | コンポーネント名            | 説明                                                         | 補足                                                         |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
-| サブネット                  | EKS Fargate Nodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
-| ポッドセレクタ（Namespace） | EKS Fargate Node上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
-| ポッドセレクタ（Label）     | EKS Fargate Node上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
+| サブネット                  | EKS FargateワーカーNodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
+| ポッドセレクタ（Namespace） | EKS FargateワーカーNode上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
+| ポッドセレクタ（Label）     | EKS FargateワーカーNode上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
 
 <br>
 
 ## 03-03-03. on EC2
 
-### EC2 Node
+### EC2ワーカーNode
 
-#### ▼ EC2 Nodeとは
+#### ▼ EC2ワーカーNodeとは
 
 ![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
 
@@ -1708,9 +1708,9 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 
-#### ▼ EC2 Nodeの最適化AMI
+#### ▼ EC2ワーカーNodeの最適化AMI
 
-任意のEC2 Nodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2 Nodeをセットアップする手間が省ける。必ずしも、全てのワーカーNodeを同じAMIで構築する必要はない。ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のワーカーNode上で稼働させる（例：計算処理系アプリはEKS最適化高速AMIのワーカーNode上で動かす）といった方法でもよい。
+任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNode上で稼働させる（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
 
 ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
@@ -1720,9 +1720,9 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 | EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |
 | EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
 
-#### ▼ EC2 NodeのカスタムAMI
+#### ▼ EC2ワーカーNodeのカスタムAMI
 
-EC2 NodeのAMIにカスタムAMIを使用する場合、EC2起動時にユーザーデータとして、```bootstrap.sh```ファイルにパラメーターを渡す必要がある。一方で、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時にユーザーデータとして、```bootstrap.sh```ファイルにパラメーターを渡す必要がある。一方で、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
 
 ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
@@ -1775,16 +1775,28 @@ source "${EXPORT_ENVS}"
 
 ### Nodeグループ
 
-#### ▼ タイプ
+#### ▼ Nodeグループタイプ
 
-| タイプ名         | 説明                                                         | 補足                                                         |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| マネージド       | Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、Nodeが配置される全てのプライベートサブネットに適用される。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
-| セルフマネージド | Nodeグループ内の各Nodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
+| Nodeグループタイプ名 | 説明                                                         | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| マネージド           | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
+| セルフマネージド     | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
 
-#### ▼ 起動テンプレート
+#### ▼ 起動テンプレートとタグ
 
-同じNodeグループのEC2インスタンスの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。ワーカーNodeのスケールアウト時に、この設定値に基づいてEC2インスタンスが作成される。EC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートのリソースタグに```Name```タグを設定しておくと、ワーカーNodeにインスタンス名を設定できる。
+同じNodeグループのEC2ワーカーNodeの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。スケールアウト時に、この設定値に基づいてEC2ワーカーNodeが作成される。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
+- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
+
+| タグ                                           | 値                    | 説明                                                         |
+| ---------------------------------------------- | --------------------- | ------------------------------------------------------------ |
+| ```Name```                                     | EC2ワーカーNodeの名前 | EC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートのリソースタグに```Name```タグを設定しておくと、EC2ワーカーNodeにインスタンス名を設定できる。 |
+| ```kubernetes.io/cluster/<クラスター名>```     | ```owned```           | セルフマネージド型のEC2ワーカーNodeを使用している場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。 |
+| ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned```           | ClusterAutoscalerがEC2ワーカーNodeを検出するために必要である。 |
+| ```k8s.io/cluster-autoscaler/enabled```        | ```true```            | 同上                                                         |
 
 #### ▼ スケジュールアクション
 

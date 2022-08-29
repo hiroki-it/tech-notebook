@@ -268,7 +268,7 @@ spec:
 
 ### Operatorとは
 
-カスタムコントローラーの一種で、カスタムリソースのうちで名前付きカスタムリソース（CustomResourceDefinitionではない独自```kind```キー値）
+カスタムコントローラーの一種で、カスタムリソースのうちで名前付きカスタムリソース（CustomResourceDefinitionではない独自```kind```キー値）を、マニフェストファイルの宣言通りに作成する。
 
 参考：https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/
 
