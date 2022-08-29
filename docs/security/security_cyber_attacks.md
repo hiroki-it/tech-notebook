@@ -172,7 +172,7 @@ Win10におけるファイアウォール。
 
 ### Malware の語源
 
-『malicious（悪意のある）＋ software（ソフトウェア）』
+『malicious（悪意のある）+ software（ソフトウェア）』
 
 <br>
 

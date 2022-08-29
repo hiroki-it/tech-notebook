@@ -353,9 +353,11 @@ Istiodに対するリクエストを様々なポート番号で待ち受ける�
 
 <br>
 
-## 01-05.  Istio、Envoy（Istio無し）、Kubernetesの対応関係
+## 01-05.  Istio、Envoy（Istio無し）、Kubernetes
 
-Kubernetes、Envoy、Kubernetesの比較は以下の通り
+### 対応関係
+
+Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 
 ℹ️ 参考：
 
@@ -364,14 +366,24 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通り
 - https://github.com/envoyproxy/go-control-plane
 - https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| Istio＋Kubernetes＋Envoy | Kubernetes＋Envoy | Kubernetesのみ                 |
+| Istio+Kubernetes+Envoy | Kubernetes+Envoy | Kubernetesのみ                 |
 | ------------------------ | ----------------- | ------------------------------ |
 | DestinationRule          | Route             | kube-proxy                     |
 | EnvoyFilter              | Listener          | kube-proxy                     |
 | Istiod                   | go-control-plane  | -                              |
 | ServiceEntry             | Cluster           | Service                        |
-| VirtualService＋Gateway  | Route＋Listener   | Ingress＋Ingressコントローラー |
+| VirtualService+Gateway  | Route+Listener   | Ingress+Ingressコントローラー |
 | WorkloadEntry            | Endpoint          | Endpoint                       |
+
+<br>
+
+### クラウドプロバイダーとKubernetesの境界
+
+KubernetesのIngressをクラウドプロバイダー環境で使用する場合は、これをロードバランサーに置き換える必要がある。一方でIstioのVirtualServiceとGatewayをクラウドプロバイダー環境で使用する場合は、置き換える必要がなくなる。そのため、クラウドプロバイダーとKubernetesの境界を明確化できるようになる。
+
+参考：https://www.linkedin.com/pulse/end-in-transit-encryption-microservices-aws-eks-istio-rahul-natarajan/
+
+![istio_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_loud-provider.png)
 
 <br>
 

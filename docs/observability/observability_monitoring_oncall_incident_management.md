@@ -339,7 +339,7 @@ fields @timestamp, @message, @logStream
 
 ```mathematica
 (稼働率)
-= (MTBF) ÷ (MTBF ＋ MTTR)
+= (MTBF) ÷ (MTBF + MTTR)
 ```
 
 システムが冗長化されている場合、全てのインスタンスの非稼働率をかけて、全体から引くことにより、稼働率を算出できる。

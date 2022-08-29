@@ -105,7 +105,7 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
 #### ▼ インスタンスストアボリューム
-
+__
 ![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
 
 インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。EBSボリュームとは異なり、コンピューティングとして機能するEC2インスタンス内にルートデバイスボリュームが存在している。そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
@@ -1272,18 +1272,18 @@ EKS Fargate Nodeはプライベートサブネットで稼働する。この時�
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
 
-| Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                         |
-| -------------------------- | ----------------------- | ------------------------------------------------------------ |
-| Cluster                    | EKS Cluster           | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html |
-| Ingress                    | ALB Ingress             | AWS LBコントローラーによって、自動的に作成される。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| Ingressコントローラー      | AWS LBコントローラー    | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/ |
-|                            | API Gateway＋NLB        | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/ |
-| マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
-| ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html |
-| PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html |
-| Secret                     | Systems Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html |
-| ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
-| Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html |
+| Kubernetes上でのリソース名 | EKS上でのリソース名     | 補足                                                                                                                                                                                                                                                         |
+| -------------------------- | ----------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Cluster                    | EKS Cluster           | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                       |
+| Ingress                    | ALB Ingress             | IngressはALB Ingressに置き換える必要がある。AWS LBコントローラーを作成すると、ALB Ingressは自動的に作成される。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html<br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| Ingressコントローラー      | AWS LBコントローラー    | ALB Ingressを自動的に作成する。ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                   |
+|                            | API Gateway+NLB        | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                   |
+| マスターNode               | EKSコントロールプレーン | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
+| ワーカーNode               | Fargate Node、EC2 Node  | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                    |
+| PersistentVolume           | EBS、EFS                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                        |
+| Secret                     | Systems Manager          | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                 |
+| ServiceAccount、UserAccount | IAMユーザー | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                  |
+| Role、ClusterRole | IAMロール | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                  |
 
 <br>
 
@@ -1784,7 +1784,7 @@ source "${EXPORT_ENVS}"
 
 #### ▼ 起動テンプレート
 
-同じNodeグループのEC2インスタンスの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。ワーカーNodeのスケールアウト時に、この設定値に基づいてEC2インスタンスが作成される。
+同じNodeグループのEC2インスタンスの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。ワーカーNodeのスケールアウト時に、この設定値に基づいてEC2インスタンスが作成される。EC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートのリソースタグに```Name```タグを設定しておくと、ワーカーNodeにインスタンス名を設定できる。
 
 #### ▼ スケジュールアクション
 

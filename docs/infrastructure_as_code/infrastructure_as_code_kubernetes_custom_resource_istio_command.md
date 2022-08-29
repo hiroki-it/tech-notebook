@@ -133,7 +133,7 @@ $ istioctl x uninstall --purge
 
 #### ▼ -f
 
-IstioOperatorのマニフェストファイルを使用して、プロファイルをインストールし、リソースを作成する。
+IstioOperatorのマニフェストファイルをkube-apiserverに送信し、リソースを作成する。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 

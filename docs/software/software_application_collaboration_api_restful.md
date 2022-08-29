@@ -509,7 +509,7 @@ Connection: keep-alive
 Content-Length: 15
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
 Cache-Control: no-store
-# オリジン（プロトコル＋ドメイン＋ポート番号）
+# オリジン（プロトコル+ドメイン+ポート番号）
 Origin: https://example.com
 Upgrade-Insecure-Requests: 1
 # リクエストで送信するMIMEタイプ

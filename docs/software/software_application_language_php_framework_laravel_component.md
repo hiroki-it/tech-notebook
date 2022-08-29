@@ -1427,7 +1427,7 @@ class FileSystemPublicController extends Controller
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
-        // 保存先パス（ディレクトリ＋ファイル名）
+        // 保存先パス（ディレクトリ+ファイル名）
         $saved_file_path = "/images/foo.jpg";
 
         // foo.jpgを『/images/foo.jpg』に保存

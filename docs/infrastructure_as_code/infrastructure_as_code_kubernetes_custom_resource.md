@@ -26,33 +26,25 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 <br>
 
-## 01-02. セットアップ
-
-### マニフェストファイルとして
-
-#### ▼ 非Operator制御
-
-カスタムリソースのマニフェストファイルを使用して```kubectl apply```コマンドを実行し、カスタムリソースを作成する。
-
-#### ▼ Operator制御
-
-Operatorのマニフェストファイルを使用して```kubectl apply```コマンドを実行し、Operatorにカスタムリソースを作成させる。
-
-<br>
-
 ### チャートとして
 
-#### ▼ 非Operator制御
+#### ▼ クライアント管理
 
-カスタムリソース自体のチャートをインストールし、カスタムリソースを作成する。
+カスタムリソース自体のチャートをインストールし、クライアントがカスタムリソースを作成する。
 
-#### ▼ Operator制御
+#### ▼ Operator管理
 
-Operatorのチャートをインストールし、Operatorにカスタムリソースを作成させる。
+Operatorのチャートをインストールし、後はOperatorにカスタムリソースを作成させる。
 
 <br>
 
 ## 01-03. カスタムリソース定義
+
+### カスタムリソース定義
+
+カスタムリソースを宣言的に定義する。ただし、kube-controllerはetcd内のカスタムリソース定義を検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
+
+参考：https://hi1280.hatenablog.com/entry/2019/11/15/003101
 
 ### apiVersion
 
@@ -274,35 +266,42 @@ spec:
 
 ## 02. Operator
 
+### Operatorとは
+
+カスタムコントローラーの一種で、カスタムリソースのうちで名前付きカスタムリソース（CustomResourceDefinitionではない独自```kind```キー値）
+
+参考：https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/
+
+<br>
+
 ### Operatorの仕組み
 
 #### ▼ アーキテクチャ
 
-Operatorは、Operator-API、operator-controller、認可スコープ付与リソース、から構成されている。
+Operatorは、operator-controller、認可スコープ付与リソース、から構成されている。
 
-ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+ℹ️ 参考：
+
+- https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+- https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
+
 
 ![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator_architecture.png)
 
-#### ▼ Opetator-API
-
-operator-controllerにリクエストを送信するためのAPIを提供する。
-
-![kubernetes_operator-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-api.png)
-
-ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
-
 #### ▼ operator-controller
 
-カスタムリソース定義のマニフェストファイルとKubernetes-APIを仲介し、マニフェストファイルの宣言通りにカスタムリソースを作成する。またkube-controller-managerは、operator-controllerを反復的に実行し、reconciliationループの仕組みによって、カスタムリソースを修復する。
+名前付きカスタムリソースのkube-controllerとして機能する（ただし、kube-controllerとは異なり、ワーカーNode上で稼働する）。kube-controllerと同様にして、kube-apiserverを介して、etcdにwatchイベントを送信する。名前付きカスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletに名前付きカスタムリソースの作成をコールする。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、名前付きカスタムリソースはマニフェストファイルの宣言通りに定期的に修復される（reconciliationループ）。
 
-ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+ℹ️ 参考：
+
+- https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
+- https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
 #### ▼ 認可スコープ付与リソース
 
-Kubernetes-APIをコールできるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
+operator-controllerがkube-apiserverをコールできるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

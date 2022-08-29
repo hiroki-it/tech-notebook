@@ -1054,7 +1054,7 @@ TTL秒によるキャッシュの自動削除を待たずに、手動でキャ�
 
 #### ▼ Point Of Presence
 
-CloudFrontは世界中に設置される『Point Of Presence（エッジロケーション＋中間層キャッシュ）』にデプロイされる。
+CloudFrontは世界中に設置される『Point Of Presence（エッジロケーション+中間層キャッシュ）』にデプロイされる。
 
 ℹ️ 参考：https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
 

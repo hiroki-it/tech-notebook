@@ -17,23 +17,23 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ### チャートとして
 
-#### ▼ GCRから
+#### ▼ GCRから（設定済み）
 
-```istioctl```コマンドを使用して、Istioのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
 ```bash
-# Istioのdemoチャートをインストールし、リソースを作成する。
+# IstioOperatorのdemoをインストールし、リソースを作成する。
 $ istioctl install --set profile=demo
 
 # 外部のチャートを使用する場合
 $ istioctl install --manifests=foo-chart
 ```
 
-#### ▼ GCRから（IstioOperator制御）
+#### ▼ GCRから（ユーザー定義）
 
-IstioOperatorを使用して、Istioのチャートを間接的にインストールしても良い。
+IstioOperatorを独自で定義しても良い。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 

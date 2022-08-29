@@ -138,9 +138,12 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 ### ロードテストとは
 
-ソフトウェアが平常/ピーク/障害時の実地的な負荷を再現し、これに耐えられるか否かを検証する。ストレステストとは区別すること。
+様々な実地的（例：平常時、ピーク時、障害時）な負荷を再現し、これに耐えられるか否かを検証する。ストレステストとは区別すること。
 
-ℹ️ 参考：https://stackify.com/what-is-load-testing/
+ℹ️ 参考：
+
+- https://stackify.com/what-is-load-testing/
+- https://webrage.jp/techblog/non_functional_testing/
 
 <br>
 

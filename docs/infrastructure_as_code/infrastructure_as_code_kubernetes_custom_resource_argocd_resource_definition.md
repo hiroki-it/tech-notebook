@@ -41,7 +41,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 $ kubectl create namespace argocd
 ```
 
-（３）ArgoCDのマニフェストファイルを指定し、Kubernetes上にArgoCDを作成する。
+（３）マニフェストファイルを指定し、kube-apiserverに送信する。
 
 ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -371,10 +371,10 @@ spec:
 - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
 - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
-| 設定項目      | 説明                                                                                                     |
-| ------------- |--------------------------------------------------------------------------------------------------------|
-| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定する。                                                 |
-| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外する。                                                   |
+| 設定項目      | 説明                                                                                            |
+| ------------- |-----------------------------------------------------------------------------------------------|
+| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定し、kube-apiserverに送信する                             |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外し、kube-apiserverに送信する                                                  |
 | ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml

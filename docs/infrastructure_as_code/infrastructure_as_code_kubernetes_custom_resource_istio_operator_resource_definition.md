@@ -19,7 +19,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。プロファイルは、実際には設定済みのIstioOperatorであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
@@ -96,7 +96,7 @@ metadata:
 
 #### ▼ componentとは
 
-IstioOperator制御でIstioリソースを作成する。
+IstioOperator管理でIstioリソースを作成する。
 
 ℹ️ 参考：
 
@@ -519,7 +519,7 @@ spec:
 
 #### ▼ namespaceとは
 
-IstioOperator制御で作成されるIstioリソースのNamespaceを設定する。
+IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
 
 ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 

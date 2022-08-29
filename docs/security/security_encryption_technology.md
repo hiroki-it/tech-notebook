@@ -322,7 +322,7 @@ $ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out s
 # HTTPリクエスト
 #-------------------------------------
 server {
-    # 443番ポートで待ち受けるようにし、SSL証明書の使用を必要にする。
+    # 443番ポートで待ち受けるようにし、SSL証明書の使用する。
     # listen 80;
     listen 443 ssl;
 

@@ -659,7 +659,7 @@ spec:
 
 ### spec.maxReplicas、spec.minReplicas
 
-#### ▼ ### maxReplicas、minReplicas、とは
+#### ▼ maxReplicas、minReplicas、とは
 
 水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
 

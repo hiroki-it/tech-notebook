@@ -19,7 +19,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 #### ▼ GitHubリポジトリから
 
-GitHubリポジトリ上のマニフェストファイルを使用して、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+GitHubリポジトリ上のマニフェストファイルを送信し、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
 ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 

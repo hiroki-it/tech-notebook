@@ -2465,7 +2465,7 @@ class DogComboFactory
 
 #### ▼ 命名規則
 
-イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。そのため、名前は『イベント名』＋Listener（Handler）となる。
+イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。そのため、名前は『イベント名』+Listener（Handler）となる。
 
 ℹ️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 

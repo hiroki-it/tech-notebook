@@ -149,13 +149,13 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （２）kube-apiserverはリクエストを受信し、Podの作成宣言の情報をetcdに永続化する。
 
-（３）しばらくすると、kube-apiserverのwatchイベントがetcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
+（３）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
 
 （４）kube-schedulerは、Podの配置対象となるワーカーNodeをフィルタリングとスコアリングによって決定する。
 
 （５）kube-apiserverは、バインディング情報（PodとワーカーNodeの紐付き情報）をetcdに永続化する。
 
-（６）しばらくすると、kube-apiserverのwatchイベントは、バインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
+（６）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
 
 （７）kubeletは、etcdのバインディング情報に基づいて、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
 
@@ -163,7 +163,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （９）kubeletは、Podが作成されたことをkube-apiserverに通知する。
 
-（８）kube-apiserverは、Podの作成完了をetcdに永続化する。
+（１０）kube-apiserverは、Podの作成完了をetcdに永続化する。
 
 <br>
 
@@ -177,7 +177,7 @@ kube-controllerを一括で管理する。kube-controllerを使用して、kube-
 
 #### ▼ kube-controller
 
-マニフェストファイルとKubernetes-APIを仲介し、マニフェストファイルの宣言通りにKubernetesリソースを作成する。
+マニフェストファイルとkube-apiserverを仲介し、マニフェストファイルの宣言通りにKubernetesリソースを作成する。
 
 ℹ️ 参考：
 
@@ -188,7 +188,7 @@ kube-controllerを一括で管理する。kube-controllerを使用して、kube-
 
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
-kube-controller-managerは、kube-controllerを反復的に実行し、マニフェストファイルの宣言通りにKubernetesリソースを修復する。
+kube-controller-managerは、kube-controllerを反復的に実行する。これにより、Kubernetesリソースはマニフェストファイルの宣言通りに定期的に修復される。
 
 ℹ️ 参考：
 
@@ -435,7 +435,7 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 #### ▼ Podとは
 
-コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動/停止や水平スケールイン/スケールアウトを実行する。
+コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動/停止や水平スケールアウト/スケールインを実行する。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/
 
@@ -1037,7 +1037,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
-Podの水平スケーリングを実施する。Metrics serverから取得したPodに関するメトリクス値とターゲット値を比較し、Podをスケールイン/スケールアウトさせる。HorizontalPodAutoscalerを使用するためには、Metrics serverも別途インストールしておく必要がある。
+Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
 
 ℹ️ 参考：
 
@@ -1332,12 +1332,12 @@ Address:  10.105.157.184
 
 | 設置場所                      | 種類               | 説明                                                         |
 | ----------------------------- | ------------------ | ------------------------------------------------------------ |
-| kubectlコマンドのクライアント | クライアント証明書 | kubectlコマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するため。 |
-| kube-apiserver                | SSL証明書          |                                                              |
+| kube-apiserver                | SSL証明書          | kube-apiserverが各コンポーネントからHTTPリクエストを受信するため。 |
 | kube-apiserver                | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するため。   |
 | kube-apiserver                | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するため。      |
+| ```kubectl```コマンドのクライアント | クライアント証明書 | ```kubectl```コマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するため。 |
 | kubelet                       | クライアント証明書 | kubeletが、kube-apiserverを認証するため。                    |
-| control-manager               | クライアント証明書 | control-managerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
+| kube-controller-manager               | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
 | kube-scheduler                | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
 | front-proxy                   | クライアント証明書 |                                                              |
 |                               | SSL証明書          |                                                              |
