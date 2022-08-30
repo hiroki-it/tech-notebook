@@ -1342,7 +1342,7 @@ Address:  10.105.157.184
 | front-proxy                   | クライアント証明書 |                                                              |
 |                               | SSL証明書          |                                                              |
 
-参考：
+ℹ️ 参考：
 
 - https://qiita.com/nsawa/items/4f11ac89707aad2c3d4a#tls%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%93%E3%81%A7%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
 - https://kubernetes.io/docs/setup/best-practices/certificates/#all-certificates

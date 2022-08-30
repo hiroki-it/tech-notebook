@@ -327,7 +327,7 @@ SES、Cost Explorer、など
 
 #### ▼ --filters
 
-EC2、AutoScaling、RDS、など
+EC2、オートスケーリング、RDS、など
 
 ```bash
 # 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。

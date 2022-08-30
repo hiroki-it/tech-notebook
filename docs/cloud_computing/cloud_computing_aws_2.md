@@ -1777,30 +1777,38 @@ source "${EXPORT_ENVS}"
 
 #### ▼ Nodeグループタイプ
 
-| Nodeグループタイプ名 | 説明                                                         | 補足                                                         |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| マネージド           | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
-| セルフマネージド     | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
+| Nodeグループタイプ名 | 説明                                                         | EC2ワーカーのセットアップ方法                                | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| マネージド           | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。 | EKSのNodeグループ機能を使用する。起動テンプレートを指定し、EC2ワーカーNodeを作成する。 | 同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間の間だけ停止させられる。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
+| セルフマネージド     | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | 任意のオートスケーリングで作成されたEC2インスタンスを使用する。オートスケーリングのタグ付け機能で、```kubernetes.io/cluster/<クラスター名>```タグをつけ、Nodeグループに参加させる。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
 
-#### ▼ 起動テンプレートとタグ
+<br>
 
-同じNodeグループのEC2ワーカーNodeの設定値（例：インスタンスタイプ、AMI、セキュリティグループ、EBS、タグ、ネットワークインターフェース、その他）を事前に設定しておく。スケールアウト時に、この設定値に基づいてEC2ワーカーNodeが作成される。
+### EC2ワーカーNodeのタグ
 
-参考：
+#### ▼ マネージドNodeグループ
 
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
-- https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
+ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/launch-templates.html
+
+| タグ       | 値                    | 説明                                                         |
+| ---------- | --------------------- | ------------------------------------------------------------ |
+| ```Name``` | EC2ワーカーNodeの名前 | Nodeグループで指定する起動テンプレートのリソースタグに、```Name```タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。 |
+
+#### ▼ セルフマネージドNodeグループ
+
+ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
 
 | タグ                                           | 値                    | 説明                                                         |
 | ---------------------------------------------- | --------------------- | ------------------------------------------------------------ |
-| ```Name```                                     | EC2ワーカーNodeの名前 | EC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートのリソースタグに```Name```タグを設定しておくと、EC2ワーカーNodeにインスタンス名を設定できる。 |
-| ```kubernetes.io/cluster/<クラスター名>```     | ```owned```           | セルフマネージド型のEC2ワーカーNodeを使用している場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。 |
-| ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned```           | ClusterAutoscalerがEC2ワーカーNodeを検出するために必要である。 |
-| ```k8s.io/cluster-autoscaler/enabled```        | ```true```            | 同上                                                         |
+| ```Name```                                     | EC2ワーカーNodeの名前 | EC2インスタンスの名前は```Name```タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの```Name```タグに、ワーカーNode名を設定しておく。 |
+| ```kubernetes.io/cluster/<クラスター名>```     | ```owned```           | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。 |
 
-#### ▼ スケジュールアクション
+#### ▼ その他
 
-同じNodeグループのEC2インスタンスの定期アクションを設定する。Kubernetesのテスト環境では、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間の間だけ停止させられる。
+| アドオン名                 | タグ                                           | 値          | 説明                                                         |
+| -------------------------- | ---------------------------------------------- | ----------- | ------------------------------------------------------------ |
+| cluster-autoscalerアドオン | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerアドオンを使用する場合、cluster-autoscalerアドオンがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html |
+| 同上                       | ```k8s.io/cluster-autoscaler/enabled```        | ```true```  | 同上                                                         |
 
 <br>
 

@@ -1679,7 +1679,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 **＊実装例＊**
 
-例として、ECSを示す。ECSでは、AutoScalingによってECSタスク数が増加する。そのため、これらを無視する必要がある。
+例として、ECSを示す。ECSでは、オートスケーリングによってECSタスク数が増加する。そのため、これらを無視する必要がある。
 
 ```terraform
 ###############################################
@@ -1691,7 +1691,7 @@ resource "aws_ecs_service" "this" {
 
   lifecycle {
     ignore_changes = [
-      # AutoScalingによるECSタスク数の増減を無視。
+      # オートスケーリングによるECSタスク数の増減を無視。
       desired_count,
     ]
   }
@@ -1700,7 +1700,7 @@ resource "aws_ecs_service" "this" {
 
 **＊実装例＊**
 
-例として、Redisを示す。Redisでは、AutoScalingによってプライマリー数とレプリカ数が増減する。そのため、これらを無視する必要がある。
+例として、Redisを示す。Redisでは、オートスケーリングによってプライマリー数とレプリカ数が増減する。そのため、これらを無視する必要がある。
 
 
 ```terraform

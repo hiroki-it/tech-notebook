@@ -279,7 +279,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 以下のコマンドで、SSL証明書のための、秘密鍵、証明書署名要求、自己署名証明書、を作成できる。この時の認証局は『自分』である。
 
-参考：
+ℹ️ 参考：
 
 - https://www.karakaram.com/creating-self-signed-certificate/
 - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd

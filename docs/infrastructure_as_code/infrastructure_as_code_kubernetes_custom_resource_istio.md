@@ -381,7 +381,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 
 KubernetesのIngressをクラウドプロバイダー環境で使用する場合は、これをロードバランサーに置き換える必要がある。一方でIstioのVirtualServiceとGatewayをクラウドプロバイダー環境で使用する場合は、置き換える必要がなくなる。そのため、クラウドプロバイダーとKubernetesの境界を明確化できるようになる。
 
-参考：https://www.linkedin.com/pulse/end-in-transit-encryption-microservices-aws-eks-istio-rahul-natarajan/
+ℹ️ 参考：https://www.linkedin.com/pulse/end-in-transit-encryption-microservices-aws-eks-istio-rahul-natarajan/
 
 ![istio_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_loud-provider.png)
 

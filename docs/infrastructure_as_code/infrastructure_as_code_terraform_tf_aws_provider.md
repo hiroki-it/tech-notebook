@@ -579,9 +579,9 @@ Terraformは、特に依存関係を実装しない場合、『ターゲット�
 
 <br>
 
-### （４）AutoScalingによるECSタスク数の増減を無視
+### （４）オートスケーリングによるECSタスク数の増減を無視
 
-AutoScalingによって、ECSタスク数が増減するため、これを無視する。
+オートスケーリングによって、ECSタスク数が増減するため、これを無視する。
 
 <br>
 
@@ -946,7 +946,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 **＊実装例＊**
 
-サービス名を指定して、Application Auto Scalingのサービスリンクロールを作成する。
+サービス名を指定して、Applicationオートスケーリングのサービスリンクロールを作成する。
 
 ```terraform
 ###############################################
@@ -967,7 +967,7 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 }
 ```
 
-Application Auto Scalingにサービスリンクロールを紐付ける。手動でも設定できるが、Terraformの管理外で自動的に紐付けられるため、あえて妥協しても良い。
+Applicationオートスケーリングにサービスリンクロールを紐付ける。手動でも設定できるが、Terraformの管理外で自動的に紐付けられるため、あえて妥協しても良い。
 
 ```terraform
 #########################################
@@ -980,7 +980,7 @@ resource "aws_appautoscaling_target" "ecs" {
   max_capacity       = 4
   min_capacity       = 2
   
-  # この設定がなくとも、サービスリンクロールが自動的に作成され、AutoScalingに紐付けられる。
+  # この設定がなくとも、サービスリンクロールが自動的に作成され、オートスケーリングに紐付けられる。
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
 }
 ```
