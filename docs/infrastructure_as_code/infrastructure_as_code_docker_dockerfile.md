@@ -138,7 +138,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 #### ▼ CMDとは
 
-イメージのプロセスの起動コマンドを実行する。パラメータの記述形式には、文字列形式、JSON形式がある。
+イメージのプロセスの起動コマンドを実行する。パラメータの記述形式には、文字列形式、```.json```形式がある。
 
 ℹ️ 参考：https://docs.docker.com/engine/reference/builder/#cmd
 

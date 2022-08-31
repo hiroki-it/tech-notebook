@@ -717,7 +717,7 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは4つのステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+エラーハンドリングは```4```個のステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
 

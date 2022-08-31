@@ -67,6 +67,19 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 <br>
 
+### VPCトラフィックミラーリング
+
+![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
+
+ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
+
+参考：
+
+- https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
+- https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
+
+<br>
+
 ### 紐付けられるリソース
 
 | リソースの種類       | 役割                                                                             | 補足                                                         |

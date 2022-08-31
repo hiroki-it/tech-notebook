@@ -31,7 +31,7 @@ $ pip3 install uwsgi
 
 #### ▼ ```uwsgi.ini```ファイルとは
 
-uWSGIの起動時の値を設定する。JSON形式やXML形式でも問題ない。
+uWSGIの起動時の値を設定する。```.json```形式やXML形式でも問題ない。
 
 ℹ️ 参考：
 

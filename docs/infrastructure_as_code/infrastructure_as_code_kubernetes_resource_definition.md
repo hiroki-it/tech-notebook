@@ -45,6 +45,15 @@ apiVersion: v1
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotation: 
+    kubernetes.io/ingress.class: foo-class
+...
+```
+
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
 IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
@@ -54,9 +63,14 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
 - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
-#### ▼ istio固有のキー
-
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotation: 
+    ingressclass.kubernetes.io/is-default-class: "true"
+...
+```
 
 <br>
 
@@ -65,6 +79,15 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 #### ▼ labelsとは
 
 Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels: 
+    app: foo-gin
+...
+```
 
 ℹ️ 参考：
 
@@ -88,9 +111,53 @@ string型である必要がある。int型を割り当てようとするとエ�
 
 <br>
 
+### managedFields
+
+#### ▼ managedFieldsとは
+
+```kubectl apply```コマンドの代わりに、```kubectl apply--server-side```コマンドを使用した場合に、追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
+
+参考：
+
+- https://qiita.com/superbrothers/items/aeba9406691388b6a19e
+- https://www.slideshare.net/pfi/metadatamanagedfields-kubernetes-meetup-tokyo-48-251269647
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    managedFields:
+      # kubectlコマンドによる管理
+      - manager: kubectl
+        apiVersion: apps/v1
+        operation: Apply
+        fields:
+          ... # マネージャーが変更したマニフェスト部分
+      # kube-controller-managerによる管理（後からの変更）
+      - manager: kube-controller-manager
+        apiVersion: apps/v1
+        operation: Update
+        time: '2022-01-01T16:00:00.000Z'
+        fields:
+          ... # マネージャーが変更したマニフェスト部分
+```
+
+<br>
+
 ### name
 
+#### ▼ nameとは
+
 Kubernetesリソースを一意に識別するための名前を設定する。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: foo-deployment
+...
+```
 
 <br>
 
@@ -358,7 +425,7 @@ data:
   number: "1"
 ```
 
-改行すれば、設定ファイルのstring型変数も設定できる。
+パイプ（``` |```）を使用すれば、設定ファイルをstring型変数として設定できる。
 
 ```yaml
 apiVersion: v1

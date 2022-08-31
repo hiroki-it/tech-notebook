@@ -202,7 +202,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。これ
 
 #### ▼ kube-schedulerとは
 
-ワーカーNodeが複数ある場合、ワーカーNodeとPodのスペックを基に、Podを配置するべきNodeを判定する。
+ワーカーNodeが複数ある場合、ワーカーNodeとPodのスペックを基に、Podを配置するべきワーカーNodeを判定する。
 
 ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -212,7 +212,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。これ
 
 ![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
 
-1. フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
+1. フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすワーカーNodeを選定する。
 2. スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたワーカーNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいワーカーNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
 
 ℹ️ 参考：
@@ -316,7 +316,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 #### ▼ Nodeグループとは
 
-同じ設定値（```metadata.labels```キー、CPU、メモリ、など）や同じ役割を持ったNodeのグループのこと。KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできないが、クラウドプロバイダーの機能を使用して、Nodeグループを実現できる。基本的には、Nodeグループは冗長化されたNodeで構成されており、IDは違えど、Node名は全て同じである。Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化Nodeのいずれかに対してルーティングすることになる。
+同じ設定値（```metadata.labels```キー、CPU、メモリ、など）や同じ役割を持ったNodeのグループのこと。KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできないが、クラウドプロバイダーの機能を使用して、Nodeグループを実現できる。基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
 
 ℹ️ 参考：
 
@@ -336,7 +336,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 #### ▼ ワーカーNodeのオートスケーリング
 
-KubernetesのAPIにはNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
+KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
 ℹ️ 参考：
 
@@ -394,7 +394,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ Pod数の固定
 
-DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
+DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止したとしても、稼働中のワーカーNode内のPodを増やすことはない。
 
 <br>
 
@@ -411,7 +411,7 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 #### ▼ Pod数の維持
 
-Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
+Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止した場合、稼働中のワーカーNode内でレプリカ数を維持するようにPod数を増やす。
 
 ℹ️ 参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
@@ -563,7 +563,7 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 ### Discovery&LBリソースとは
 
-ワーカーNode上のコンテナをNode外に公開する機能を提供する。
+ワーカーNode上のコンテナをワーカーNode外に公開する機能を提供する。
 
 ℹ️ 参考：https://thinkit.co.jp/article/13542
 
@@ -655,7 +655,7 @@ Serviceタイプごとに、特定のネットワーク範囲にPodを公開す�
 
 #### ▼ ClusterIP Service
 
-ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク内からのみアクセスできる。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。
+ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とし、Ingressが無ければClusterネットワーク内からのみアクセスできる。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。他のServiceとは異なり、クラウドプロバイダー環境でIngressに相当するLBが必要になるため、クラウドプロバイダーとKubernetesリソースの境界が曖昧になってしまう。
 
 ℹ️ 参考：
 
@@ -674,7 +674,7 @@ options ndots:5
 
 #### ▼ LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
+ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
 
 ℹ️ 参考：
 
@@ -683,12 +683,11 @@ options ndots:5
 
 #### ▼ NodePort Service
 
-NodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。Clusterネットワーク外/内の両方からアクセスできる。1つのポートから1つのServiceにしかルーティングできない。ServiceNodeのIPアドレスは別に確認する必要があり、NodeのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのClusterエンドポイントには、NodePortの概念が取り入れられている。
+ワーカーNodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。ワーカーNodeはServiceのIPアドレスを返却するが、Serviceのポート番号と紐づくワーカーNodeのポート番号はデフォルトではランダムであるため、ワーカーNodeのポート番号を固定する必要がある。この時、一つのワーカーNodeのポート番号につき、一つのServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
 
-ℹ️ 参考：
-
+参考：
+- https://stackoverflow.com/a/64605782
 - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
-- https://thinkit.co.jp/article/18263
 
 #### ▼ ExternalName Service
 
@@ -962,7 +961,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath（本番環境で非推奨）
 
-Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、NodeとPod内コンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
+ワーカーNode上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、ワーカーNodeとPod内コンテナ間で実行され、同一ワーカーNode上のPod間でこのボリュームを共有できる。
 
 ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -971,7 +970,7 @@ HostPathは非推奨である。
 ℹ️ 参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 ```bash
-# Node内でdockerコマンドを実行
+# ワーカーNode内でdockerコマンドを実行
 $ docker inspect <コンテナID>
   
     {
@@ -1011,7 +1010,7 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。Node上のPod間でボリュームを共有できない。
+Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。ワーカーNode上のPod間でボリュームを共有できない。
 
 ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -1078,7 +1077,7 @@ Podの垂直スケーリングを実行する。
 
 #### ▼ Nodeネットワークとは
 
-同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
+同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。
 
 ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -1139,14 +1138,14 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ### 通信経路
 
-Podの稼働するNodeが同じ/異なるで経由するネットワークが異なる。
+Podの稼働するワーカーNodeが同じ/異なるで経由するネットワークが異なる。
 
 ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 | 条件             | 経由するネットワーク                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
-| Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
+| ワーカーNodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
+| ワーカーNodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
 
 <br>
 
@@ -1163,7 +1162,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 [root@<Pod名>:~] $ curl -X GET http://<Serviceのドメイン名やIPアドレス>
 ```
 
-一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使用できるのでおすすめである。
+一方で、```kubectl exec```コマンドが運用的に禁止されているような状況もある。そのような状況下で、シングルワーカーNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内にcurlコマンドによるデバッグ用のPodを一時的に新規作成する。マルチワーカーNodeの場合は、（たぶん）名前が一番昇順のワーカーNode上でPodが作成されてしまい、ワーカーNodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。デバッグの実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使用できるのでおすすめである。
 
 ℹ️ 参考：
 
@@ -1171,7 +1170,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
 ```bash
-# シングルNodeの場合
+# シングルワーカーNodeの場合
 
 # curl送信用のコンテナを作成する。
 $ kubectl run \
@@ -1186,13 +1185,13 @@ $ kubectl run \
 ```
 
 ```bash
-# マルチNodeの場合
+# マルチワーカーNodeの場合
 
-# Podが稼働するNodeを確認する。
+# Podが稼働するワーカーNodeを確認する。
 $ kubectl get pods <Pod名> -o wide
 
-# 指定したNode上で、curl送信用のコンテナを作成する。
-$ kubectl debug node/<Node名> \
+# 指定したワーカーNode上で、curl送信用のコンテナを作成する。
+$ kubectl debug node/<ワーカーNode名> \
     -n default \
     -it \
     --image=yauritux/busybox-curl

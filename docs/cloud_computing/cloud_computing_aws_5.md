@@ -100,7 +100,9 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 #### ▼ CloudFrontのファイル読み出しを許可
 
-パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーを設定する必要がある。
+パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーでCloudFrontの識別情報を設定する必要がある。なお2022/08/31時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。
+
+参考：https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
 
 **＊実装例＊**
 
@@ -112,7 +114,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <OAIのID番号>"
+        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <オリジンアクセスアイデンティティのID番号>"
       },
       "Action": "s3:GetObject",
       "Resource": "arn:aws:s3:::<バケット名>/*"
@@ -434,7 +436,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 | Lambda                | Lambda                |                                                              |
 | Eメール               | 任意のメールアドレス  |                                                              |
 | HTTP/HTTPS            | 任意のドメイン名      | Chatbotのドメイン名は『```https://global.sns-api.chatbot.amazonaws.com```』 |
-| JSON形式のメール      | 任意のメールアドレス  |                                                              |
+| ```.json```形式のメール      | 任意のメールアドレス  |                                                              |
 | SMS                   | SMS                   | 受信者の電話番号を設定する。                                 |
 
 <br>

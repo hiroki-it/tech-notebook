@@ -512,11 +512,11 @@ $ kubectl get pods -A -o wide | grep <Node名>
 
 #### ▼ -o yaml
 
-指定したKubernetesリソースの設定を取得し、YAML形式で出力する。
+指定したKubernetesリソースの設定を取得し、```.yaml```形式で出力する。
 
 **＊例＊**
 
-指定したSecretをYAML形式で取得する。正規表現と同様に、一部の文字列ではエスケープする必要がある。
+指定したSecretを```.yaml```形式で取得する。正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
 ```bash
 $ kubectl get secret <Secret名> -o yaml
@@ -731,7 +731,7 @@ $ kubectl rollout restart deployment grafana -n prometheus
 
 #### ▼ patchとは
 
-JSON/YAML形式を入力値として、リソースの設定値を変更する。ただし、マニフェストファイルは変更されない。
+JSON/```.yaml```形式を入力値として、リソースの設定値を変更する。ただし、マニフェストファイルは変更されない。
 
 ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 

@@ -239,7 +239,7 @@ kind: Service
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {...} # ここにも、JSON形式で設定値が記載されている。
+      {...} # ここにも、.json形式で設定値が記載されている。
   creationTimestamp: "2022-01-01T12:00:00Z"
   labels:
     app: istio-ingressgateway

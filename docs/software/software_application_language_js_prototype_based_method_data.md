@@ -467,7 +467,7 @@ for (const [property, value] of Object.entries(object)) {
 
 #### ▼ スプレッド構文とは
 
-ドット3つで記載する。順序を保ったまま配列を走査し、値を取得する。オブジェクトは捜査できない。
+ドット```3```個で記載する。順序を保ったまま配列を走査し、値を取得する。オブジェクトは捜査できない。
 
 ```javascript
 const array = ["foo", "bar", "baz"];

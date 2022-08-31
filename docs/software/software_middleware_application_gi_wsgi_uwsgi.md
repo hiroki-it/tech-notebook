@@ -23,7 +23,7 @@ description: uWSGI＠ミドルウェアの知見を記録しています。
 
 ## 01-02. ユースケース
 
-### リバースプロキシサーバーのミドルウェアとして
+### リバースプロキシのミドルウェアとして
 
 ℹ️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 

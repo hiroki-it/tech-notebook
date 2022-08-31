@@ -255,7 +255,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 #### ▼ json
 
-JSON形式で取得する。
+```.json```形式で取得する。
 
 ```bash
 $ aws iam list-users --output json > data.json
@@ -263,7 +263,7 @@ $ aws iam list-users --output json > data.json
 
 #### ▼ yaml
 
-YAML形式で取得する。
+```.yaml```形式で取得する。
 
 ```bash
 $ aws iam list-users --output yaml > data.yaml
