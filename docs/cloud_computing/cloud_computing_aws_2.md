@@ -268,7 +268,7 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 
 #### ▼ サイズの拡張
 
-サイズを拡張するためには、実際のEBSボリューム、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して対応する必要がある。
+サイズを拡張するためには、実際のEBSボリューム、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して作業が必要にある。
 
 ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 

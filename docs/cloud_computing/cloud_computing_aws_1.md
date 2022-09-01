@@ -1557,23 +1557,31 @@ artifacts:
 
 <br>
 
-## 11-03. Code系サービス：CodeDeploy
+## 11-03. CodeDeploy（EC2の場合）
 
 ### 利用できるデプロイメント手法
-
-#### ▼ ECSの場合
-
-ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
-
-ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
-
-#### ▼ EC2の場合
 
 インプレースデプロイ、ブルー/グリーンデプロイメント、を利用できる。
 
 ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
 
-#### ▼ Lambdaの場合
+<br>
+
+### インプレースデプロイメント
+
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+
+<br>
+
+### ブルー/グリーンデプロイメント
+
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+
+<br>
+
+## 11-03-02. CodeDeploy（Lambdaの場合）
+
+### 利用できるデプロイメント手法
 
 ブルー/グリーンデプロイメント、を利用できる。
 
@@ -1581,7 +1589,17 @@ artifacts:
 
 <br>
 
-### ECSタスクのローリングアップデート
+## 11-03-03. CodeDeploy（ECSの場合）
+
+### 利用できるデプロイメント手法
+
+ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。
+
+ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+
+<br>
+
+### ローリングアップデート
 
 #### ▼ ```imagedefinitions.json```ファイル
 
@@ -1603,7 +1621,7 @@ artifacts:
 
 <br>
 
-### ECSタスクのブルー/グリーンデプロイメント
+### ブルー/グリーンデプロイメント
 
 #### ▼ 仕組み
 
@@ -1728,18 +1746,6 @@ Resources:
   ]
 }
 ```
-
-<br>
-
-### EC2インスタンスのインプレースデプロイメント
-
-ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
-
-<br>
-
-### EC2インスタンスのブルー/グリーンデプロイメント
-
-ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
 
 <br>
 

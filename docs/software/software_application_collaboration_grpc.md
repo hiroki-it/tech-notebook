@@ -162,7 +162,7 @@ $ protoc ./foo/foo.proto --go_out=plugins=grpc:foo
 # foo.pb.goファイルが作成される。
 ```
 
-ちなみに、```pb```ファイルには、gRPCサーバーとして登録するための```Register*****ServiceServer```関数が定義される。
+ちなみに、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
 
 ```go
 // 〜 中略 〜

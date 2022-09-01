@@ -231,9 +231,9 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 <br>
 
-### 物理ディスク
+### ディスク
 
-物理的なストレージのこと。HDDとSSDがある。単に『ディスク』ともいう。
+ストレージのこと。HDDとSSDがある。単に『ディスク』ともいう。
 
 ℹ️ 参考：
 
@@ -245,7 +245,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 ### 仮想ドライブ
 
-物理ディスク上に作成される仮想的なストレージのこと。単に『ドライブ』ともいう。Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
+ディスク上に作成される仮想的なストレージのこと。単に『ドライブ』ともいう。Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
 
 ℹ️ 参考：
 
@@ -254,7 +254,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 <br>
 
-## 06-02. 物理ディスク
+## 06-02. ディスク
 
 ### HDD：Hard Disk Drive
 
@@ -270,7 +270,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 #### ▼ RAID：Redundant Arrays of Inexpensive Disks
 
-複数の物理的なHDDを仮想的に統合し、1つのHDDであるかのように見せかける。
+複数のHDDを仮想的に統合し、1つのHDDであるかのように見せかける。
 
 ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 

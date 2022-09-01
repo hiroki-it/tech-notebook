@@ -41,7 +41,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-物理ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下に物理ディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下にディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 ℹ️ 参考：
 
@@ -58,19 +58,19 @@ Windowsでは、CドライブとDドライブがパーティションに相当�
 
 **＊例＊**
 
-MacOSでは、```diskutil```コマンドを実行するとパーティションを確認できる。物理ディスクに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。
+MacOSでは、```diskutil```コマンドを実行するとパーティションを確認できる。ディスクに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。
 
 ```bash
 $ diskutil list
 
-# 物理ディスク：disk0
+# ディスク：disk0
 /dev/disk0 (internal, physical):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      GUID_partition_scheme                               *500.3 GB  disk0
    1:                        EFI    EFI                        314.6 MB   disk0s1
    2:                 Apple_APFS    Container disk1            500.0 GB   disk0s2
 
-# 物理ディスク：disk1
+# ディスク：disk1
 /dev/disk1 (synthesized):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      APFS Container Scheme    -                          +500.0 GB  disk1
@@ -138,7 +138,7 @@ crw-r--r--  kmsg                  # カーネルログ
 crw-rw-rw-  kvm                   # 仮想化のkvm
 lrwxrwxrwx  log -> /run/systemd/journal/dev-log   # システムログ
 crw-rw----  loop-control          # ループデバイス
-drwxr-xr-x  mapper                # 物理ディスクのマッピング
+drwxr-xr-x  mapper                # ディスクのマッピング
 crw-------  mei0                  # インテルチップセット
 crw-r-----  mem                   # メモリ
 drwxrwxrwt  mqueue                # POSIX メッセージキュー
@@ -159,7 +159,7 @@ crw-rw-rw-  random                # 乱数作成
 crw-rw-r--+ rfkill                # ワイヤレスデバイスのON/OFF
 lrwxrwxrwx  rtc -> rtc0           # リアルタイムクロック
 crw-------  rtc0                  # リアルタイムクロック
-brw-rw----  sda                   # 物理ディスク
+brw-rw----  sda                   # ディスク
 brw-rw----  sda1                  # ディスクパーティション
 brw-rw----  sda2                  # ディスクパーティション
 crw-rw----  sg0                   # SCSIデバイス

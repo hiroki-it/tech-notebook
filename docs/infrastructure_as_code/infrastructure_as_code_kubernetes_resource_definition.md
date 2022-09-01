@@ -115,7 +115,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 
 #### ▼ managedFieldsとは
 
-```kubectl apply```コマンドの代わりに、```kubectl apply--server-side```コマンドを使用した場合に、追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
+```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
 
 参考：
 
@@ -126,21 +126,24 @@ string型である必要がある。int型を割り当てようとするとエ�
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    managedFields:
-      # kubectlコマンドによる管理
-      - manager: kubectl
-        apiVersion: apps/v1
-        operation: Apply
-        fields:
-          ... # マネージャーが変更したマニフェスト部分
-      # kube-controller-managerによる管理（後からの変更）
-      - manager: kube-controller-manager
-        apiVersion: apps/v1
-        operation: Update
-        time: '2022-01-01T16:00:00.000Z'
-        fields:
-          ... # マネージャーが変更したマニフェスト部分
+  managedFields:
+    # kubectlコマンドによる管理
+    - manager: kubectl # デフォルト値
+      apiVersion: apps/v1
+      # kube-apiserverに対するリクエスト内容
+      operation: Apply
+      # マネージャーが変更したマニフェスト部分
+      fields:
+        ...
+    # kube-controller-managerによる管理（後からの変更）
+    - manager: kube-controller-manager
+      apiVersion: apps/v1
+      # kube-apiserverに対するリクエスト内容
+      operation: Update
+      time: '2022-01-01T16:00:00.000Z'
+      # マネージャーが変更したマニフェスト部分
+      fields:
+        ...
 ```
 
 <br>

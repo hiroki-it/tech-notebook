@@ -613,6 +613,14 @@ module.vpc_module.aws_subnet.subnet_public_1c
 module.vpc_module.aws_vpc.vpc
 ```
 
+#### ▼ pull
+
+リモートにある```tfstate```ファイルをローカルマシンにダウンロードする。
+
+```bash
+$ terraform state pull > <tfstateファイル名>
+```
+
 #### ▼ rm
 
 ```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```引数や```for_each```引数を使用している場合は、シングルクオーテーションで囲う必要がある。

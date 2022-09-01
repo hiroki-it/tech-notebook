@@ -803,12 +803,12 @@ $ cat foo.txt | grep -i bar
 ℹ️ 参考：https://blog.denet.co.jp/try-growpart/
 
 ```bash
-$ growpart <デバイスファイル名> 1
+$ growpart <パーティションに紐づくデバイスファイル名> 1
 ```
 
 **＊例＊**
 
-先に、```lsblk```コマンドでパーティションを確認する。また、```df```コマンドでパーティションに紐づくデバイスファイルを確認する。
+先に、```lsblk```コマンドでパーティションを確認する。
 
 ```bash
 $ lsblk
@@ -817,7 +817,10 @@ NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
 xvda          202:0    0    16G   0  disk             # ボリューム
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
 nvme1n1       259:1    0   200G   0  disk  /var/lib
+```
+また、```df```コマンドでパーティションに紐づくデバイスファイルを確認する。
 
+```bash
 $ df -h
 
 Filesystem     Size   Used  Avail  Use%   Mounted on
@@ -829,6 +832,14 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 
 ```bash
 $ growpart /dev/xvda 1
+```
+
+#### ▼ --dry-run
+
+コマンドをドライランする。
+
+```bash
+$ growpart --dry-run /dev/xvda 1
 ```
 
 <br>

@@ -445,6 +445,28 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
+#### ▼ 例外的なマスターNode上のPod
+
+脆弱性の観点で、デフォルトではマスターNodeにPodはスケジューリングされない。これは、マスターNodeには```node-role.kubernetes.io/master: NoSchedule```が設定されているためである。一方で、ワーカーNodeにはこれがないため、Podを稼働させられる。
+
+ℹ️ 参考：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
+
+```bash
+# マスターNodeの場合
+$ kubectl describe nodes <マスターNode名> | grep -i taint
+Taints: node-role.kubernetes.io/master:NoSchedule
+
+# ワーカーNodeの場合
+$ kubectl describe nodes <ワーカーNode名> | grep -i taint
+Taints: <none>
+```
+
+ただし、セルフマネージドなマスターNodeを使用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。
+
+```bash
+$ kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
 #### ▼ Podのライフサイクルフェーズとコンディション
 
 Podのライフサイクルにはフェーズがある。
