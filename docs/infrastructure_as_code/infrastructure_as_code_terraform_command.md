@@ -434,7 +434,9 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使える。
+特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使える。```-target```オプションで指定するアドレスは、```terraform plan```コマンド自身の出力結果や、```terraform state list```コマンドで確認できる。
+
+参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
 ```bash
 $ terraform plan \
@@ -462,7 +464,7 @@ $ terraform plan | grep <resourceタイプ>
 $ terraform plan \
     -var-file=foo.tfvars \
     -target=foo.bar \
-    -target=foo.baz \
+    -target=foo.baz
 ```
 ```bash
 # moduleブロックの指定方法を調べる。
@@ -585,10 +587,12 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ list
 
-```.tfstate```ファイルで定義されている```resource```ブロック（```.tfstate```ファイル上では```managed```モード）の一覧を取得する。
+```.tfstate```ファイルで定義されている```resource```ブロック（```.tfstate```ファイル上では```managed```モード）の一覧を取得する。```terraform apply```コマンドで```-target```オプションを使用する前にアドレスを確認したい場合や、```terraform apply```コマンドの実行に失敗した時に```.tfstate```ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
+
+参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
 ```bash
-$ terraform state
+$ terraform state list
 ```
 
 以下の通り、```module```ブロックも含めて、```resource```ブロックが表示される。
@@ -615,7 +619,7 @@ module.vpc_module.aws_vpc.vpc
 
 #### ▼ pull
 
-リモートにある```tfstate```ファイルをローカルマシンにダウンロードする。
+リモートにある```.tfstate```ファイルをローカルマシンにダウンロードする。
 
 ```bash
 $ terraform state pull > <tfstateファイル名>

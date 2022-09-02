@@ -894,6 +894,27 @@ DBエンジンにAuroraを選択した場合にのみ使用できる。DBイン�
 
 ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
 
+#### ▼ グローバルクラスター
+
+![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster_global.png)
+
+リージョン間に跨いだDBクラスターから構成されている。メインリージョンにあるプライマリークラスターのクラスターボリュームと、DRリージョンのセカンダリークラスターのクラスターボリュームのデータは、定期的に同期される。プライマリインスタンスは、プライマリークラスターのみに存在している。メインリージョンで障害が起こった場合は、以下が起こる。
+
+（１）メインリージョンで障害が発生する。
+
+（２）DRリージョンのセカンダリークラスターがプライマリークラスターに昇格し、クラスター内のリードレプリカインスタンスがプライマリインスタンスになる。
+
+（３）メインリージョンのプライマリーインスタンスをフェイルオーバーさせる。各種エンドポイントが無効化され、アクセスできなくなる（```NXDOMAIN```になる）。
+
+（４）メインリージョンの障害が回復する。
+
+（５）DRリージョンをフェイルオーバーさせる。メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
+
+参考：
+
+- https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
+- https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
+
 <br>
 
 ### DBインスタンス

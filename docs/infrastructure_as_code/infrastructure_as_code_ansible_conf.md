@@ -376,16 +376,39 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 <br>
 
-### ansible.builtin.apt、ansible.builtin.yum
+### ansible.builtin.apt
 
-管理対象ノード上にパッケージをインストールする。
+管理対象ノード上にパッケージをaptリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
+
+参考：
+
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+- https://qiita.com/tkit/items/7ad3e93070e97033f604
 
 ```yaml
 - tasks:
-  - name: Install Nginx
-    ansible.builtin.apt:
-      name: nginx
-      state: latest
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx=1.0.0
+        state: present
+```
+
+### ansible.builtin.yum
+
+管理対象ノード上にパッケージをyumリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
+
+参考：
+
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
+- https://qiita.com/tkit/items/7ad3e93070e97033f604
+
+
+```yaml
+- tasks:
+    - name: Install Nginx
+      ansible.builtin.yum:
+        name: nginx=1.0.0
+        state: present
 ```
 
 <br>
@@ -398,11 +421,11 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - name: Start nginx service
-    ansible.builtin.service:
-      name: Start nginx
-      state: started
-      enabled: yes
+    - name: Start nginx service
+      ansible.builtin.service:
+        name: Start nginx
+        state: started
+        enabled: 'yes'
 ```
 
 <br>
@@ -418,9 +441,9 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - task:
-  - name: Echo foo
-    ansible.builtin.shell: |
-      echo foo
+    - name: Echo foo
+      ansible.builtin.shell: |
+        echo foo
 ```
 
 <br>
@@ -448,12 +471,11 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 - tasks:
-  - name: Upload nginx.conf
-    ansible.builtin.template:
-      src: nginx.conf.j2
-      dest: /etc/nginx/nginx.conf
-      owner: root
-      group: root
+    - name: Start nginx systemd
+      ansible.builtin.systemd:
+        name: Start nginx
+        state: started
+        enabled: 'yes'
 ```
 
 <br>
@@ -476,7 +498,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 ```
 ```yaml
 - vars:
-      foo: ansible_env.FOO
+    foo: ansible_env.FOO
   tasks:
     - name: Upload foo.conf
       ansible.builtin.template:
@@ -494,12 +516,12 @@ task内で出力できる環境変数を設定する。
 
 ```yaml
 - task:
-  - name: Echo foo
-    ansible.builtin.shell: |
-      echo foo
-      echo ${FOO}
-    environment: 
-      FOO: FOO
+    - name: Echo foo
+      ansible.builtin.shell: |
+        echo foo
+        echo ${FOO}
+      environment:
+        FOO: FOO
 ```
 
 <br>
@@ -554,7 +576,7 @@ task内で出力できる環境変数を設定する。
 
 ```yaml
 - vars:
-      foo: lookup("env", "FOO")
+    foo: 'lookup("env", "FOO")'
   tasks:
     - name: Upload foo.conf
       ansible.builtin.template:

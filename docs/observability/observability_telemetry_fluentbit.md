@@ -877,6 +877,8 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     log_group_name    /prd-foo-ecs-container/laravel/log
     # ログストリーム名。予約変数あり。ECSタスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
+    # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
+    role_arn          arn:aws:iam::<アカウントID>:role/prd-foo-flunetbit-role
     
 [OUTPUT]
     Name              cloudwatch_logs
@@ -885,6 +887,8 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     region            ap-northeast-1
     log_group_name    /prd-foo-ecs-container/nginx/log
     log_stream_name   container/nginx/$(ecs_task_id)
+    # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
+    role_arn          arn:aws:iam::<アカウントID>:role/prd-foo-flunetbit-role
 ```
 
 CloudWatchログに送信されるデータはJSON型である。```log```キーにログが割り当てられている。特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。例えば、```log```キーのみを送信する場合、『```log```』と設定する。

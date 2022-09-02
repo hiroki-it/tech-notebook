@@ -309,7 +309,37 @@ terraform {
 
 # awsプロバイダを指定
 provider "aws" {
-  # アカウント認証の設定
+  # アクセスキー、シークレットアクセスキー、はハードコーディングしない。
+
+  # デフォルト値とするリージョン名
+  region = "ap-northeast-1"
+}
+```
+
+**＊実装例＊**
+
+```terraform
+terraform {
+  required_version = "0.13.5"
+
+  required_providers {
+    # gcpプロバイダを定義
+    gcp = {
+      # 何らかの設定
+    }
+  }
+  
+  backend "gcs" {
+    # 何らかの設定
+  }
+}
+
+# gcpプロバイダを指定
+provider "google" {
+  # アクセスキー、シークレットアクセスキー、はハードコーディングしない。
+  
+  # デフォルト値とするリージョン名
+  region = "asia-northeast1"
 }
 ```
 

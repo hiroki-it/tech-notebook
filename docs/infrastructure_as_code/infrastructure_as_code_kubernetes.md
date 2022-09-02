@@ -677,7 +677,7 @@ Serviceタイプごとに、特定のネットワーク範囲にPodを公開す�
 
 #### ▼ ClusterIP Service
 
-ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とし、Ingressが無ければClusterネットワーク内からのみアクセスできる。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。他のServiceとは異なり、クラウドプロバイダー環境でIngressに相当するLBが必要になるため、クラウドプロバイダーとKubernetesリソースの境界が曖昧になってしまう。
+ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とし、Ingressが無いとClusterネットワーク内からのみしかアクセスできないため、より安全である。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。他のServiceとは異なり、クラウドプロバイダー環境でIngressに相当するLBが必要になるため、クラウドプロバイダーとKubernetesリソースの境界が曖昧になってしまう。
 
 ℹ️ 参考：
 

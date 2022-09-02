@@ -754,6 +754,14 @@ KillSignal=SIGCONT
 PrivateTmp=true
 ```
 
+環境変数ファイル（```EnvironmentFile```）は、```.env```ファイルと同じような形式のものを作成する。
+
+```bash
+FOO=foo
+BAR=bar
+BAZ=baz
+```
+
 #### ▼ Installセクション
 
 ユニットのインストール（```systemctl enable```コマンドの実行）時のオプションを設定する。
