@@ -280,6 +280,7 @@ nav:
               - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
               - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
               - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
+              - FireLensコンテナ: cloud_computing/cloud_computing_aws_firelens.md
       - ■ GCP:
           - コマンド: cloud_computing/cloud_computing_gcp_command.md
   - 📦 仮想化:
@@ -321,6 +322,9 @@ nav:
                       - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
+                  - ■ FluentBit/Fluentd:
+                      - FluentBit vs. Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_vs_fluentd.md
+                      - FluentBit: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.md
                   - ■ Grafana:
                       - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
@@ -386,10 +390,6 @@ nav:
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
-          - ■ FluentBit/Fluentd:
-              - FluentBit vs. Fluentd: observability/observability_telemetry_fluentbit_vs_fluentd.md
-              - FluentBit: observability/observability_telemetry_fluentbit.md
-              - FireLensコンテナ: observability/observability_telemetry_fluentbit_firelens.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
