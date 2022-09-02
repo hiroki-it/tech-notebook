@@ -254,11 +254,11 @@ title: 【IT技術の知見】目次
     * [📖：︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_reliability.html)
     * [📖：︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
     * [📖：︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
-  
 * その他
     * [📖：︎AWS CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cli.html)
     * [📖：︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     * [📖：︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
+    * [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_firelens.html)
 
 ### GCP
 
@@ -325,6 +325,9 @@ title: 【IT技術の知見】目次
         * [📖：︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html)
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
         * [📖：︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
+    * FluentBit/Fluentd
+        * [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_vs_fluentd.html)
+        * [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.html)
     * Grafana
         * [📖：︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
         * [📖：︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
@@ -409,12 +412,6 @@ title: 【IT技術の知見】目次
 #### ▼ テレメトリー収集ツール
 
 - [📖：テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
-
-#### ▼ FluentBit/Fluentd
-
-* [📖：FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_vs_fluentd.html)
-* [📖：︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html)
-* [📖：︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_firelens.html)
 
 #### ▼ Datadog
 

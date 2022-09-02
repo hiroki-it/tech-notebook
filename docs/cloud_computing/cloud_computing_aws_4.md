@@ -910,7 +910,7 @@ DBエンジンにAuroraを選択した場合にのみ使用できる。DBイン�
 
 （５）DRリージョンをフェイルオーバーさせる。メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
-参考：
+ℹ️ 参考：
 
 - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
 - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79

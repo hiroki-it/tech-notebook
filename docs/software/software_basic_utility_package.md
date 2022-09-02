@@ -551,12 +551,13 @@ $ brew install sops
 
 #### ▼ ```secrets.yaml```ファイル
 
-sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。自動的に作成される。```sops```キー以下に暗号化の設定値が記載される。外部のキーバリュー型ストレージ（例：AWS SMパラメータストア、Hashicorp Vault、など）を使用しなくとも、疑似的なストレージとして変数を管理できる。なお、暗号化キー（例：AWS KMS、GCP KMS）は外部のものを使用した方が良い。
+sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。```sops```キー以下に暗号化の設定値が記載される。他の疑似的なキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドのキーバリュー型ストレージ（例：AWS SMパラメーターストア、など）よりも簡単に変数を管理できる。
 
 ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```yaml
-# value.yamlファイル（平文ファイル）
+# values.yamlファイル（平文ファイル）
+$ cat values.yaml
 
 DB_USERNAME: foo-user
 DB_PASSWORD: password
@@ -564,13 +565,13 @@ DB_PASSWORD: password
 
 ```bash
 # 平文ファイルを暗号化する。
-$ sops -e value.yaml > secret.yaml
+$ sops -e values.yaml > secrets.yaml
 ```
 
 ```yaml
-# secret.yamlファイル（暗号化後ファイル）
+$ cat secrets.yaml
 
-# 疑似的なキーバリュー型ストレージ（AWS SMパラメータストア、Hashicorp Vault、に相当する）
+# 疑似的なキーバリュー型ストレージ（AWS SMパラメーターストア、Hashicorp Vault、に相当する）
 DB_USERNAME: ENC[AES256...
 DB_PASSWORD: ENC[AES256...
 
@@ -605,18 +606,21 @@ sops:
 ```yaml
 creation_rules:
     # 平文ファイル名を設定する。
-  - path_regex: /foo/value.yaml
+  - path_regex: ./foo/value\.yaml
     # AWS KMSを暗号化キーとして使用する。
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-    # 平文ファイルを再帰的に指定できる。
-  - path_regex: /bar/.*\.yaml
+```
+```yaml
+creation_rules:
+  # 平文ファイルを再帰的に指定できる。
+  - path_regex: ./bar/*\.yaml
     # GCP KMSを暗号化キーとして使用する。
     gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 
 ```bash
-# ファイル名が path_regex=/foo/value.yaml のルールに該当するため、AWS KMSを使用して暗号化される。
-$ sops -e /foo/value.yaml
+# ファイル名が path_regex=/foo/values.yaml のルールに該当するため、AWS KMSを使用して暗号化される。
+$ sops -e /foo/values.yaml
 ```
 
 ```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
@@ -624,14 +628,14 @@ $ sops -e /foo/value.yaml
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
-$ sops -e /foo/value.yaml
+$ sops -e /foo/values.yaml
 ```
 
 <br>
 
 ### 環境変数
 
-```EnvVar```キーのある項目を参照せよ。
+```EnvVar```キーの定義された項目を参照せよ。
 
 ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 

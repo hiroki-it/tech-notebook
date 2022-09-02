@@ -258,7 +258,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ、アプリケーションコンテナからログを受信し、他にルーティングする。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.html
 
 #### ▼ メトリクス収集コンテナの配置
 

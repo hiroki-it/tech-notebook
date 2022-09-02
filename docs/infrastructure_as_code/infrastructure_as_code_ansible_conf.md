@@ -380,7 +380,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上にパッケージをaptリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
 - https://qiita.com/tkit/items/7ad3e93070e97033f604
@@ -397,7 +397,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 管理対象ノード上にパッケージをyumリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
 
-参考：
+ℹ️ 参考：
 
 - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
 - https://qiita.com/tkit/items/7ad3e93070e97033f604

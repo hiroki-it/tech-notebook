@@ -135,7 +135,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// ConvertId パスパラメータのidのデータ型を変換します。
+// ConvertId パスパラメーターのidのデータ型を変換します。
 func ConvertId() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		id, err := strconv.Atoi(ctx.Param("id"))

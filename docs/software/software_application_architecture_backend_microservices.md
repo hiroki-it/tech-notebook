@@ -387,7 +387,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー（レスポンス速度）が重要である。Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
 
-参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
+ℹ️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
 ![service-mesh_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_reverse-proxy.png)
 

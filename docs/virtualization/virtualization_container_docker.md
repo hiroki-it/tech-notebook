@@ -137,7 +137,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 マウント元の詳細なディレクトリ名は、```/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json```ファイルから確認できる。
 
-```bash
+```yaml
 $ cat settings.json
 
 {

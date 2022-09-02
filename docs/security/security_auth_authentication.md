@@ -124,7 +124,7 @@ cookie: sessionid=<セッションID>
 
 #### ▼ 照合情報の送信方法
 
-独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメータの割り当てについては、以下のリンクを参考にせよ。
+独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメーターの割り当てについては、以下のリンクを参考にせよ。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 

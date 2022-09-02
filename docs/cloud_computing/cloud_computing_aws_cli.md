@@ -483,9 +483,9 @@ $ aws s3 ls s3://<バケット名>
 
 ```bash
 $ aws s3 ls s3://<バケット名> \
-  --summarize \
-  --recursive \
-  --human-readable
+    --summarize \
+    --recursive \
+    --human-readable
 ```
 
 <br>
@@ -577,15 +577,32 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
+### Secret Manager
+
+#### ▼ get-secret-value
+
+特定のSecretに格納されている文字列を取得する。
+
+参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
+
+```bash
+$ aws secretsmanager get-secret-value \
+    --secret-id=<シークレット名> \
+    --query=SecretString \
+    --output=text
+```
+
+<br>
+
 ### Systems Manager（旧SSM）
 
 #### ▼ get-parameters-by-path
 
-特定のパスで始まる全ての変数をSMパラメータストアから取得する。
+特定のパスで始まる全ての変数をSMパラメーターストアから取得する。
 
 ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
-```bash
+```yaml
 # パスのないパラメーターの場合
 $ aws ssm get-parameters-by-path --path "/"
 
@@ -605,7 +622,7 @@ $ aws ssm get-parameters-by-path --path "/"
  }
 ```
 
-```bash
+```yaml
 # 『/FOO』で始まるパラメーターの場合
 $ aws ssm get-parameters-by-path --path "/FOO"
 
@@ -627,7 +644,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
-## 07. 認証/認可の手法
+## 04. 認証/認可の手法
 
 ### SSO
 

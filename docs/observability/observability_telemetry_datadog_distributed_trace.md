@@ -159,7 +159,7 @@ $  php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 
-#### ▼ パラメータの動作確認
+#### ▼ パラメーターの動作確認
 
 パラメーターがトレーサーに渡されたか否かは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
 

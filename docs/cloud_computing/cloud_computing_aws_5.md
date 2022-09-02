@@ -102,7 +102,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーでCloudFrontの識別情報を設定する必要がある。なお2022/08/31時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。
 
-参考：https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
+ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
 
 **＊実装例＊**
 
@@ -307,9 +307,9 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 ## 04. Systems Manager（旧SSM）
 
-### SMパラメータストア
+### SMパラメーターストア
 
-#### ▼ SMパラメータストアとは
+#### ▼ SMパラメーターストアとは
 
 変数をキーバリュー型で永続化する。永続化されている間は暗号化されており、復号化した上で、環境変数としてEC2インスタンス（ECSやEKSのコンテナのホストを含む）に出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
 
@@ -317,7 +317,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
 
-SMパラメータストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
+SMパラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
 ℹ️ 参考：
 

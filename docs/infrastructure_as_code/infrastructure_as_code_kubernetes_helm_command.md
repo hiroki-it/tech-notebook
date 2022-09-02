@@ -595,6 +595,8 @@ Encrypted ./values/secrets.yaml
 ```
 
 ```yaml
+$ cat ./values/secrets.yaml
+
 # secrets.yamlファイル
 db:
   user: *****

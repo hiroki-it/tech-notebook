@@ -169,7 +169,7 @@ $ openssl pkcs8 \
 | VPCエンドポイントの接続先  | プライベートDNS名                              | 説明                                         |
 |-----------------| ---------------------------------------------- |--------------------------------------------|
 | EC2             | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。            |
-| Systems Manager  | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのSMパラメータストアにGETリクエストを送信するため。 |
+| Systems Manager  | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのSMパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                 |
 
 Session Managerを使用してEC2インスタンスに接続し、ログインシェルを起動する。Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
@@ -714,7 +714,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 **＊実装例＊**
 
-SMパラメータストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
+SMパラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
 
 ```yaml
 {
@@ -892,7 +892,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_firelens.html
+ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_firelens.html
 
 <br>
 
@@ -987,7 +987,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | logConfiguration<br>(logDriver) | ```--log-driver```                      | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                 |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html |
-| secrets<br>(volumesFrom)        |                                         | SMパラメータストアから出力する変数を設定する。           |                                                              |
+| secrets<br>(volumesFrom)        |                                         | SMパラメーターストアから出力する変数を設定する。           |                                                              |
 | memory                          | ```--memory```                          | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
@@ -1123,7 +1123,7 @@ CodeDeployを使用してデプロイする。
 | CloudWatchログ    | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。                |
 | ECR             | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。                       |
 | S3              | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため                  |
-| Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのSMパラメータストアにGETリクエストを送信するため。 |
+| Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのSMパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。                  |
 
 プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。

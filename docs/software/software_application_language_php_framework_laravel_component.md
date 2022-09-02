@@ -2189,7 +2189,7 @@ class FooRequest extends FormRequest
 
 <br>
 
-### パスパラメータのバリデーション
+### パスパラメーターのバリデーション
 
 #### ▼ ルールの定義 ＆ バリデーション自動実行
 
@@ -2702,7 +2702,7 @@ class Kernel extends HttpKernel
 
 ## 10-04. HTTP｜Request
 
-### リクエストパラメータの取得
+### リクエストパラメーターの取得
 
 #### ▼ クエリパラメーター/メッセージボディ
 
@@ -2728,17 +2728,17 @@ class FooController extends Controller
     {
         $params = $request->all(); // 全てのパラメーターを連想配列で取得する。
 
-        $foo = $request->input('foo'); // 指定したパラメータの値を取得する。
+        $foo = $request->input('foo'); // 指定したパラメーターの値を取得する。
         
-        $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する。
+        $qux = $request->input('foo.qux'); // ネストされたパラメーターの値を取得する。
 
         $params = $request->only(['foo', 'bar']); // 指定したパラメーターを連想配列で取得する。
 
         $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する。
 
-        $foo = $request->foo; // 指定したパラメータの値を取得する。
+        $foo = $request->foo; // 指定したパラメーターの値を取得する。
 
-        $foo = request('foo'); // 指定したパラメータの値を取得する。
+        $foo = request('foo'); // 指定したパラメーターの値を取得する。
     }
 }
 ```
@@ -2767,7 +2767,7 @@ class FooController extends Controller
     {
         $params = $request->query(); // 全てのパラメーターを連想配列で取得する。
 
-        $foo = $request->query('foo'); // 指定したパラメータの値を取得する。
+        $foo = $request->query('foo'); // 指定したパラメーターの値を取得する。
     }
 }
 ```
@@ -2800,14 +2800,14 @@ class FooController extends Controller
     {
         $params = $request->route(); // 全てのパラメーターを連想配列で取得する。
 
-        $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する。
+        $fooId = $request->route('fooId'); // 指定したパラメーターの値を取得する。
 
-        $fooId = $request->route->parameter('fooId'); // 指定したパラメータの値を取得する。
+        $fooId = $request->route->parameter('fooId'); // 指定したパラメーターの値を取得する。
     }
 }
 ```
 
-代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメータの値を取得しても良い。
+代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。
 
 **＊実装例＊**
 
@@ -3981,7 +3981,7 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $id = $user->id; // パスパラメータのidに紐付くユーザーが自動的に渡されている。
+        $id = $user->id; // パスパラメーターのidに紐付くユーザーが自動的に渡されている。
     }
 }
 ```
