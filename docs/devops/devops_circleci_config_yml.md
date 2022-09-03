@@ -1044,7 +1044,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは```run```キーを実行する時に『```$BASH_ENV```』が```source```キーで自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```キー間』で共有できる。ただし、Alpine Linuxでは、この共有機能を使えないため注意する（かなりたくさんある）。
+CircleCIでは```run```キーを実行する時に『```$BASH_ENV```』が```source```キーで自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```キー間』で共有できる。ただし、Alpine Linuxでは、この共有機能を使用できないため注意する（かなりたくさんある）。
 
 ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 

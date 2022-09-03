@@ -36,7 +36,7 @@ description: 監視＠可観測性の知見を記録しています。
 | -------------------- | ------------------------------------------------------------ |
 | データの収集         | 監視対象からデータを収集する。データとしては、メトリクスのデータポイント、アプリケーションログ、ブラウザログ、ユーザートラフィック、ユーザーエンゲージメント、検索クローラーのサイト評価などがある。プル型またはプッシュ型の収集方法があり、ログは全てプッシュ型になる。<br>ℹ️ 参考：https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007<br>![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monitoring_collecting_pull_push.png) |
 | ↓                    |                                                              |
-| データの保管         | 収集したデータをストレージに保管する。データサイズを抑える方法として、データポイント数の抑制や、ダウンサンプリングがある。ダウンサンプリングでは、古いデータポイントを時間単位で集約することにより、ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる。<br>ℹ️ 参考：https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/ |
+| データの保管         | 収集したデータをストレージに保管する。データサイズを抑える方法として、データポイント数の抑制や、ダウンサンプリングがある。ダウンサンプリングでは、旧いデータポイントを時間単位で集約することにより、ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる。<br>ℹ️ 参考：https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/ |
 | データの分析         | 保管したデータをクエリで抽出し、集計する。                   |
 | データの可視化       | 分析したデータを監視ダッシュボードに表示し、目視できるようにする。 |
 | レポートの作成       | 算出値をグラフ化として、レポートを作成する。                 |

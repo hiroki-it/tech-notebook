@@ -30,7 +30,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 （１）旧コントロールプレーンを残したまま、新コントロールプレーンを作成する。
 
-（２）特定のNamespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を新しいバージョンに変更する。これにより、コントロールプレーンはNamespace内の```istio-proxy```コンテナをアップグレードする。
+（２）特定のNamespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンはNamespace内の```istio-proxy```コンテナをアップグレードする。
 
 ![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 

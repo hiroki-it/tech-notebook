@@ -37,7 +37,7 @@ Orbsのパッケージの処理の最小単位は```step```である。そのた
 
 #### ▼ オプションへの引数の渡し方と注意点
 
-AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動で入力してくれる。オプションが```env_var_name```型は、基本的に全てのスコープレベルの環境変数を受け付ける。ただしAlpine Linuxでは、『```$BASH_ENV```』を使用して、複数の```run```間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
+AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動的に入力してくれる。オプションが```env_var_name```型は、基本的に全てのスコープレベルの環境変数を受け付ける。ただしAlpine Linuxでは、『```$BASH_ENV```』を使用して、複数の```run```間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
 
 ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -356,7 +356,7 @@ jobs:
   aws-ecs/run-task:
     name: ecs_run_task_for_migration
     cluster: "${SERVICE}-ecs-cluster"
-    # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう。
+    # LATESTとするとその時点の最新バージョンを自動的に割り振られてしまう。
     platform-version: 1.4.0
     awsvpc: true
     launch-type: FARGATE

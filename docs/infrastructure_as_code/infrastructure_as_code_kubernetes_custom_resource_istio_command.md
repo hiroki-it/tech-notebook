@@ -39,7 +39,7 @@ $ cd /Users/hiroki.hasegawa/projects
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
 ```
 
-（３）istioctlへのパスを環境変数に登録する。
+（３）```istioctl```コマンドへのパスを環境変数に登録する。
 
 ```bash
 $ cd istio-1.12.1
@@ -52,7 +52,7 @@ $ export PATH=$PWD/bin:$PATH
 
 #### ▼ プロファイルとは
 
-Istioの機能のセットを提供する。実際には設定済みのIstioOperatorであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に配置される。
+Istioの機能のセットを提供する。実際には設定済みのIstioOperatorであり、```istioctl```コマンドのインストール時に```manifests```ディレクトリ以下に配置される。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -159,12 +159,19 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 #### ▼ kube-injectとは
 
-```istio-proxy```コンテナをサイドカーコンテナとして作成する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
-ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
+ℹ️ 参考：
+
+- https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
+- https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
+
+#### ▼ -f
+
+指定したマニフェストファイルのPodに```istio-proxy```コンテナを注入する。
 
 ```bash
-$ istioctl kube-inject
+$ istioctl kube-inject -f pod.yaml
 ```
 
 <br>
@@ -288,6 +295,74 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 <br>
 
+### tag
+
+#### ▼ tagとは
+
+リビジョン番号のエイリアスとして、```istio.io/rev```ラベルの値を操作する。
+
+#### ▼ generate
+
+```istio.io/rev```ラベルの値を作成する。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
+
+```bash
+$ istioctl tag generate <ラベルの値>
+```
+
+**＊例＊**
+
+````prd-blue````というラベル値を新しく作成し、さらに```1-0-0```のエイリアスとする。
+
+```bash
+$ istioctl tag generate prd-blue --revision 1-0-0
+```
+
+````tes-green````というラベル値を新しく作成し、さらに```1-0-1```のエイリアスとする。
+
+```bash
+$ istioctl tag generate tes-green --revision 1-0-1
+```
+
+#### ▼ list
+
+ラベル値とそれに紐づくリビジョン番号の一覧を取得する。
+
+参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+
+```bash
+$ istioctl tag list
+```
+
+**＊例＊**
+
+```bash
+$ istioctl tag list
+
+TAG        REVISION   NAMESPACES
+prd-blue   1-0-0      istioinaction
+tes-green  1-0-1      istioinaction
+```
+
+#### ▼ set
+
+既存のラベル値をリビジョン番号のエイリアスとする。
+
+参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+
+```bash
+$ istioctl tag set <ラベルの値> --revision <リビジョン番号>
+```
+
+**＊例＊**
+
+```bash
+$ istioctl tag set prd-blue --revision 1-0-0
+```
+
+<br>
+
 ### proxy-status
 
 #### ▼ proxy-statusとは
@@ -360,7 +435,7 @@ Checked 3 Istio Deployments
 
 #### ▼ versionとは
 
-Istiodのバージョンを取得する。
+Istiodコントロールプレーンのバージョンを取得する。
 
 ```bash
 $ istioctl version

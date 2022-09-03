@@ -323,7 +323,7 @@ ES6から、糖衣構文の```class```によって、オブジェクトを宣言
 // named exportによる出力
 export class Foo {
     
-    // classでしか使えない。
+    // classでしか使用できない。
     // Setterの代わりにコンストラクタでイミュータブルを実現。
     // データの宣言と格納が同時に行われる。
     constructor(value) {
@@ -353,7 +353,7 @@ foo.getValue();
 // named exportによる出力
 export const Foo = class {
     
-    // classでしか使えない。
+    // classでしか使用できない。
     // Setterの代わりにコンストラクタでイミュータブルを実現。
     // データの宣言と格納が同時に行われる。
     constructor(value) {

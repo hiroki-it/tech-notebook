@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit＠テレメトリー収集ツール
-description: FluentBit＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】FluentBit＠カスタムリソース
+description: FluentBit＠カスタムリソースの知見を記録しています。
 ---
 
-# FluentBit＠テレメトリー収集ツール
+# FluentBit＠カスタムリソース
 
 ## はじめに
 

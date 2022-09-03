@@ -69,9 +69,9 @@ Cluster内のKubernetesリソースの設定値をキーバリュー型で永続
 
 ![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
 
-kubernetesクライアントにkueneretes-APIを公開する。クライアントが```kubectl```コマンドを実行すると、kube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。何らかの理由でkubernetesクライアントのリクエストのパラメーターと、kube-apiserverのエンドポイントの仕様が合致しないと、kube-apiserverのバリデーションが失敗し、以下のようなエラーログが返却される。
+kubernetesクライアントにマスターNodeを公開する。クライアントが```kubectl```コマンドを実行すると、マスターNode上のkube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
 
-```
+```log
 the server could not find the requested resource
 ```
 
@@ -177,7 +177,7 @@ kube-controllerを一括で管理する。kube-controllerを使用して、kube-
 
 #### ▼ kube-controller
 
-マニフェストファイルとkube-apiserverを仲介し、マニフェストファイルの宣言通りにKubernetesリソースを作成する。
+マニフェストファイルとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
 
 ℹ️ 参考：
 
@@ -188,7 +188,7 @@ kube-controllerを一括で管理する。kube-controllerを使用して、kube-
 
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
-kube-controller-managerは、kube-controllerを反復的に実行する。これにより、Kubernetesリソースはマニフェストファイルの宣言通りに定期的に修復される。
+kube-controller-managerは、kube-controllerを反復的に実行する。これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
 
 ℹ️ 参考：
 

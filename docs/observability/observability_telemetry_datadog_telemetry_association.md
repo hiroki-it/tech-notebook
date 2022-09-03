@@ -96,7 +96,7 @@ description: テレメトリー間の紐付け＠Datadog
 〇：laravel -> order、order-service
 ✕：laravel -> order-laravel、order-service-laravel
 
-フレームワーク以外のパッケージなどの分散トレースに関しては、紐づけられないことを許容している。APMのservice名とECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。service名はインテグレーション名が自動で割り当てられるが、トレーサーに環境変数を渡して変更もできる。フレームワークのインテグレーション名は `DD_SERVICE_NAME` から設定する一方で、それ以外のタグ名は `DD_SERVICE_MAPPING` から設定する。
+フレームワーク以外のパッケージなどの分散トレースに関しては、紐づけられないことを許容している。APMのservice名とECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。service名はインテグレーション名が自動的に割り当てられるが、トレーサーに環境変数を渡して変更もできる。フレームワークのインテグレーション名は `DD_SERVICE_NAME` から設定する一方で、それ以外のタグ名は `DD_SERVICE_MAPPING` から設定する。
 
 ℹ️ 参考：https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D
 

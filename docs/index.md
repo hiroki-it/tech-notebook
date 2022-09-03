@@ -263,6 +263,7 @@ title: 【IT技術の知見】目次
 ### GCP
 
 * [📖：︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_command.html)
+* [📖：︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_anthos.html)
 
 <br>
 
@@ -289,6 +290,7 @@ title: 【IT技術の知見】目次
 #### ▼ Ansible
 
 * [📖：Ansible](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible.html)
+* [📖：コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_command.html)
 * [📖：設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_conf.html)
 
 #### ▼ Docker

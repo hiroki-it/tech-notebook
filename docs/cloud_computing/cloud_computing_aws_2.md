@@ -574,15 +574,15 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 #### ▼ データプレーンとは
 
-コンテナの実行環境のこと。『```on EC2```』『```on Fargate```』という呼び方は、データプレーンがECSの実行環境（```execution environment```）の意味合いを持つからである。
+コンテナの実行環境のこと。『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがECSの実行環境（```execution environment```）の意味合いを持つからである。
 
-#### ▼ EC2の場合
+#### ▼ EC2ワーカーNodeの場合
 
-EC2インスタンスをホストとして、コンテナを作成する。
+EC2インスタンスをワーカーNodeとして、コンテナを作成する。
 
-#### ▼ Fargateの場合
+#### ▼ FargateワーカーNodeの場合
 
-マネージドなサーバーをホストとして、コンテナを作成する。実体は、EC2インスタンスをホストとして、コンテナを稼働させている（ドキュメントに記載がないが、AWSサポートに確認済み）。
+FargateをワーカーNodeとして、コンテナを作成する。Fargateの実体はEC2インスタンスである（ドキュメントに記載がないが、AWSサポートに確認済み）。
 
 ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -896,7 +896,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 <br>
 
-## 03-02-02. on EC2
+## 03-02-02. on-EC2
 
 ### EC2インスタンスの最適化AMI
 
@@ -927,7 +927,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 03-02-03. on Fargate
+## 03-02-03. on-Fargate
 
 ### セットアップ
 
@@ -1588,7 +1588,7 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 <br>
 
-## 03-03-02. on Fargate
+## 03-03-02. on-Fargate（FargateワーカーNode）
 
 ### セットアップ
 
@@ -1696,7 +1696,7 @@ Fargateを設定する。
 
 <br>
 
-## 03-03-03. on EC2
+## 03-03-03. on-EC2（EC2ワーカーNode）
 
 ### EC2ワーカーNode
 
@@ -1722,7 +1722,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 #### ▼ EC2ワーカーNodeのカスタムAMI
 
-EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時にユーザーデータとして、```bootstrap.sh```ファイルにパラメーターを渡す必要がある。一方で、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、```bootstrap.sh```ファイルに決められたパラメーターを渡す必要がある。なお、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
 
 ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
@@ -1744,7 +1744,7 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータの注意点として、各パラメーターはハードコーディングしない。SMパラメーターストアに永続化し、これから取得するようにする。
+ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。SMパラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
 
 ℹ️ 参考：
 
@@ -1763,6 +1763,7 @@ for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Va
   echo "export ${parameter##*/}"
 done >> "${EXPORT_ENVS}"
 
+# 出力する。
 source "${EXPORT_ENVS}"
 
 /etc/eks/bootstrap.sh foo-eks-cluster \
@@ -2151,9 +2152,9 @@ Redisクラスターでは、設定値（例：エンジンバージョン）の
 
 （３）新しく作成したRedisクラスターをアップグレードする。
 
-（４）アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。
+（４）アプリケーションの接続先を旧いRedisクラスターから新しいものに変更する。
 
-（５）古いRedisクラスターを削除する。
+（５）旧いRedisクラスターを削除する。
 
 <br>
 

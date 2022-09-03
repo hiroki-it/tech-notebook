@@ -120,7 +120,7 @@ Pこのiptablesにより、Pod内へのインバウンド（または外への�
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの機能を持つサイドカーコンテナである。ミドルウェアとしてEnvoy、デーモンとしてpilot-agent、が稼働している。Istiodにメトリクスを提供する。VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの機能を持つサイドカーコンテナである。ミドルウェアとしてEnvoy、デーモンとしてpilot-agent、が稼働している。Istiodコントロールプレーンにメトリクスを提供する。VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 ℹ️ 参考：
 
@@ -133,7 +133,7 @@ Pこのiptablesにより、Pod内へのインバウンド（または外への�
 
 #### ▼ kube-apiserver内のmutating-admissionステップ
 
-この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時にkube-apiserverは、1. kube-apiserverは、admission-controllersアドオンのmutating-admissionステップにて、AdmissionReview構造体のAdmissionRequestにリクエストパラメーターを詰める。その後、Istiod内のwebhook-serviceの```/inject```エンドポイントの```443```番ポートにAdmissionReviewのリクエストを送信する。
+この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時にkube-apiserverは、1. kube-apiserverは、admission-controllersアドオンのmutating-admissionステップにて、AdmissionReview構造体のAdmissionRequestにリクエストパラメーターを詰める。その後、Istiodコントロールプレーン内のwebhook-serviceの```/inject```エンドポイントの```443```番ポートにAdmissionReviewのリクエストを送信する。
 
 ℹ️ 参考：
 
@@ -183,13 +183,13 @@ Pこのiptablesにより、Pod内へのインバウンド（または外への�
 
 #### ▼ webbhook-service
 
-Istiod内のwebhook-serviceはAdmissionReviewのリクエストを受信する。webhook-serviceは、リクエストをIstiod内のdiscoveryコンテナの```15017```番ポートにポートフォワーディングする。
+Istiodコントロールプレーン内のwebhook-serviceはAdmissionReviewのリクエストを受信する。webhook-serviceは、リクエストをIstiodコントロールプレーン内のdiscoveryコンテナの```15017```番ポートにポートフォワーディングする。
 
 #### ▼ webhookサーバー
 
 ![istio_sidecar-injection_istiod](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
 
-Istiod内のwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを作成するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
+Istiodコントロールプレーン内のwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを注入するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
 
 ℹ️ 参考：
 
@@ -259,7 +259,7 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 ### コントロールプレーンとは
 
-Istiodは、Pilot機能、Citadel機能、Galley機能、を持つ。語尾の『```d```』は、デーモンの意味であるが、Istiodの実体は、istiod-deploymentである。
+Istiodコントロールプレーンは、Pilot機能、Citadel機能、Galley機能、を持つ。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
 ℹ️ 参考：
 
@@ -277,7 +277,7 @@ Istiodは、Pilot機能、Citadel機能、Galley機能、を持つ。語尾の�
 | 15010 | XDSサーバーに対するリクエストを待ち受ける。                                                                                 |
 | 15017 | コンテナを注入するwebhookサーバーに対するリクエストを待ち受ける。webhook-serviceは、discoveryコンテナの```15017```番ポートにリクエストをポートフォワーディングする。 |
 
-Istiodに対するリクエストを様々なポート番号で待ち受ける。リクエストに応じて、Kubernetes側のPod内の```istio-proxy```コンテナの設定を変更する。 各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。
+Istiodコントロールプレーンに対するリクエストを様々なポート番号で待ち受ける。リクエストに応じて、Kubernetes側のPod内の```istio-proxy```コンテナの設定を変更する。 各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。
 
 ℹ️ 参考：
 
@@ -370,7 +370,7 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 | ------------------------ | ----------------- | ------------------------------ |
 | DestinationRule          | Route             | kube-proxy                     |
 | EnvoyFilter              | Listener          | kube-proxy                     |
-| Istiod                   | go-control-plane  | -                              |
+| Istiodコントロールプレーン                   | go-control-plane  | -                              |
 | ServiceEntry             | Cluster           | Service                        |
 | VirtualService+Gateway  | Route+Listener   | Ingress+Ingressコントローラー |
 | WorkloadEntry            | Endpoint          | Endpoint                       |

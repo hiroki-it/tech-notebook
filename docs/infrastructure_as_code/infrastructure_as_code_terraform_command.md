@@ -115,7 +115,7 @@ $ terraform apply foo.tfplan
 
 #### ▼ initとは
 
-```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新しいバージョンのインストールするために、本コマンドを実行する必要がある。
+```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
 
 ℹ️ 参考：
 
@@ -434,7 +434,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使える。```-target```オプションで指定するアドレスは、```terraform plan```コマンド自身の出力結果や、```terraform state list```コマンドで確認できる。
+特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。```-target```オプションで指定するアドレスは、```terraform plan```コマンド自身の出力結果や、```terraform state list```コマンドで確認できる。
 
 ℹ️ 参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 

@@ -15,7 +15,9 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 ## 01. apiVersion
 
-Kubernetes-APIのバージョンを設定する。
+APIグループのバージョンを設定する。
+
+ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
 ```yaml
 apiVersion: v1
@@ -2198,7 +2200,7 @@ spec:
 
 #### ▼ apiGroupsとは
 
-resourceキーで指定するKubernetesリソースのKubernetes-APIグループ名を設定する。空文字はコアグループを表す。
+resourceキーで指定するKubernetesリソースのAPIグループの名前を設定する。空文字はコアグループを表す。
 
 ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 

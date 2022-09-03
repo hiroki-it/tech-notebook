@@ -203,7 +203,7 @@ metadata:
 
 #### ▼ istio-injection
 
-特定のNamespaceで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。admission-controllersアドオンのWebhook機能を使用して、サイドカーコンテナの```istio-proxy```コンテナをPod内に自動的に作成するか否かを設定する。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。```istio.io/rev```キーの代わりに```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -218,7 +218,7 @@ metadata:
 
 #### ▼ istio.io/rev
 
-IstoOperatorの```spec.revision```キーと同じ。特定のNamespaceで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーの代わりに```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 ```yaml
 apiVersion: v1

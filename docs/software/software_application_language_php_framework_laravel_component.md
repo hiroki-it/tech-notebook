@@ -27,7 +27,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | ---- | ------------------------------------------------------- | ------------------------------------------------------------ |
 | 1    | リクエストを受信する。                                  |                                                              |
 | 2    | ```index.php```ファイル                                 | エントリーポイントから処理が始まる。                           |
-| 3    | Autoload                                                | ```autoload.php```ファイルにて、パッケージを自動でロードする。 |
+| 3    | Autoload                                                | ```autoload.php```ファイルにて、パッケージを自動的にロードする。 |
 | 4    | Load App                                                | ```bootstrap/app.php```ファイルにて、ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する。 |
 | 5    | Http Kernel                                             | Kernelを実行する。                                           |
 | 6    | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。 |
@@ -503,7 +503,7 @@ final class UserCreatedEventListener
 }
 ```
 
-任意の場所でイベントを発行すると、リスナーが自動でコールされる。
+任意の場所でイベントを発行すると、リスナーが自動的にコールされる。
 
 ```php
 <?php
@@ -717,7 +717,7 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは```4```個のステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+エラーハンドリングは```4```個のステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動的に返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
 ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
 
@@ -819,7 +819,7 @@ class Handler extends ExceptionHandler
 
 #### ▼ ```render```メソッド
 
-Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動で返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。その代わりに、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
+Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。その代わりに、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
 
 ℹ️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -1781,7 +1781,7 @@ class FooController extends Controller
 
 #### ▼ ルートエイリアスを基にURL作成
 
-ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。ドメインは自動で補完される。
+ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。ドメインは自動的に補完される。
 
 ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
@@ -1846,7 +1846,7 @@ $path = storage_path("app/file.txt");
 
 #### ▼ パスを基にURL作成
 
-指定したパスに応じてURLを作成する。ドメインは自動で補完される。
+指定したパスに応じてURLを作成する。ドメインは自動的に補完される。
 
 ℹ️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
 

@@ -325,7 +325,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新しいバージョンを1つずつしかアップグレードできない。
+新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
 
 ℹ️ 参考：
 

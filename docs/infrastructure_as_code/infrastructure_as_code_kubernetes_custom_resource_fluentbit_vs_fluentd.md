@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit vs. Fluentd＠テレメトリー収集ツール
-description: FluentBit vs. Fluentd＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】FluentBit vs. Fluentd＠カスタムリソース
+description: FluentBit vs. Fluentd＠カスタムリソースの知見を記録しています。
 ---
 
-# FluentBit vs. Fluentd＠テレメトリー収集ツール
+# FluentBit vs. Fluentd＠カスタムリソース
 
 ## はじめに
 
