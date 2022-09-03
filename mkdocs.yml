@@ -293,6 +293,7 @@ nav:
       - ■ 手続き型:
           - ■ Ansible:
               - Ansible: infrastructure_as_code/infrastructure_as_code_ansible.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_ansible_command.md
               - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_conf.md
           - ■ Docker:
               - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
