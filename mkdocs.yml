@@ -283,6 +283,7 @@ nav:
               - FireLensコンテナ: cloud_computing/cloud_computing_aws_firelens.md
       - ■ GCP:
           - コマンド: cloud_computing/cloud_computing_gcp_command.md
+          - Anthos: cloud_computing/cloud_computing_gcp_anthos.md
   - 📦 仮想化:
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ型仮想化:
