@@ -9,7 +9,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,7 +23,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
-ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/
+> ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/
 
 ```bash
 $ istioctl operator init
@@ -36,10 +36,10 @@ Operator controller will watch namespaces: istio-system
 
 （２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
-- https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+> - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+> - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 ```bash
 # istioctlコマンド
@@ -63,10 +63,10 @@ istiooperator.install.istio.io/istio-operator created
 
 IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
-- https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
+> - https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
+> - https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
 
 ```bash
 $ helm install istio-operator manifests/charts/istio-operator -n istio-operator -f values.yaml
@@ -98,10 +98,10 @@ metadata:
 
 IstioOperator管理でIstioリソースを作成する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
-- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
+> - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
 #### ▼ <component名>.k8s
 
@@ -128,10 +128,10 @@ spec:
 
 baseコンポーネントのオプションを設定する。baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
-- https://github.com/istio/istio/issues/22491#issuecomment-604745090
+> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> - https://github.com/istio/istio/issues/22491#issuecomment-604745090
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -149,7 +149,7 @@ spec:
 
 istio-cniコンポーネントのオプションを設定する。
 
-ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -200,7 +200,7 @@ spec:
 
 ```spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -224,10 +224,10 @@ spec:
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
-- https://github.com/istio/istio/issues/23303
+> - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
+> - https://github.com/istio/istio/issues/23303
 
 最終的な設定値は、```kubectl get```コマンドで確認できる。
 
@@ -296,7 +296,7 @@ status:
 
 istiodコンポーネントのオプションを設定する。
 
-ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -312,7 +312,7 @@ spec:
 
 #### ▼ pilot
 
-ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -333,7 +333,7 @@ spec:
 
 #### ▼ defaultRevisionとは
 
-ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -371,7 +371,7 @@ spec:
 
 全ての```istio-proxy```コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
-ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ▼ accessLogEncoding
 
@@ -407,7 +407,7 @@ spec:
 
 ```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
-ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -521,7 +521,7 @@ spec:
 
 IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
 
-ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -541,7 +541,7 @@ spec:
 
 プロファイルを設定する。実際には設定済みのIstioOperatorである。
 
-ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -561,10 +561,10 @@ spec:
 
 Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
-- https://istio.io/latest/docs/setup/upgrade/canary/
+> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> - https://istio.io/latest/docs/setup/upgrade/canary/
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -584,10 +584,10 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://hub.docker.com/r/istio/proxyv2/tags
-- https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
+> - https://hub.docker.com/r/istio/proxyv2/tags
+> - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -607,7 +607,7 @@ spec:
 
 ```manifests/charts/global.yaml```ファイルの設定値を上書きする。
 
-ℹ️ 参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
+> ℹ️ 参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 
@@ -738,7 +738,7 @@ spec:
 
 ```istio-proxy```コンテナごとのオプション値を設定する。
 
-ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
+> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

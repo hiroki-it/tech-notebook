@@ -9,7 +9,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 アラートが通知された時に、エラー修正の担当者に連絡できる状態（メールアドレス、電話番号、SMS、など）にあること。
 
-ℹ️ 参考：https://response.pagerduty.com/oncall/being_oncall/
+> ℹ️ 参考：https://response.pagerduty.com/oncall/being_oncall/
 
 <br>
 
@@ -61,7 +61,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 エラーイベントと見なすログステータスの目安は以下の通りである。
 
-ℹ️ 参考：https://engineering.otobank.co.jp/entry/2016/09/20/181756
+> ℹ️ 参考：https://engineering.otobank.co.jp/entry/2016/09/20/181756
 
 | ログステータス | 説明                                             | 重要度レベルへの変換例 |
 | -------------- | ------------------------------------------------ | --------------------- |
@@ -94,10 +94,10 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 サービスの停止を起こし得る想定外のイベントのこと。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
-- https://response.pagerduty.com/before/what_is_an_incident/
+> - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
+> - https://response.pagerduty.com/before/what_is_an_incident/
 
 <br>
 
@@ -107,7 +107,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。また、二次担当者に通知をエスカレーションさせる。これらを自動化するためのツールがいくつかある。
 
-ℹ️ 参考：https://smart-stage.jp/topics/itsm_keyword_relate/p3/
+> ℹ️ 参考：https://smart-stage.jp/topics/itsm_keyword_relate/p3/
 
 **＊技術ツール例＊**
 
@@ -123,7 +123,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。そのため、インシデントの優先度付けが必要がある。
 
-ℹ️ 参考：https://response.pagerduty.com/oncall/alerting_principles/
+> ℹ️ 参考：https://response.pagerduty.com/oncall/alerting_principles/
 
 | エラーイベントの重要度レベル | 優先度                                 |
 | ---------------------------- | -------------------------------------- |
@@ -143,11 +143,11 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 #### ▼ 解決フェーズの種類
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://thinkit.co.jp/article/13420
+> - https://thinkit.co.jp/article/13420
 
-- https://support.pagerduty.com/docs/incidents#incident-statuses
+> - https://support.pagerduty.com/docs/incidents#incident-statuses
 
 | 解決フェーズ | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -203,7 +203,7 @@ fields @timestamp, @message, @logStream
 
 ![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_on-call.png)
 
-ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
+> ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
 
 （１）CloudWactchアラームからPagerDutyのServiceに、アラートが通知される。場合によっては、PagerDutyからオンコール担当者に電話がかかる。
 
@@ -221,7 +221,7 @@ fields @timestamp, @message, @logStream
 
 インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネージメント手法のこと。
 
-ℹ️ 参考：https://fastalert.jp/column/disaster-prevention/incident-command-system
+> ℹ️ 参考：https://fastalert.jp/column/disaster-prevention/incident-command-system
 
 #### ▼ 指揮
 
@@ -261,7 +261,7 @@ fields @timestamp, @message, @logStream
 
 いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。
 
-ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
+> ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
 
 #### ▼ アラートの条件の調節
 
@@ -275,32 +275,32 @@ fields @timestamp, @message, @logStream
 
 全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。そういった場合は、インシデントの通知を抑制する。
 
-ℹ️ 参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
+> ℹ️ 参考：https://pagerduty.digitalstacks.net/blog/suppress-your-data/
 
 #### ▼ 特定のシステムを無視
 
 特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。
 
-ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ℹ️ 参考：https://thinkit.co.jp/article/13558
 
 #### ▼ インシデントの一時無効化
 
 特定のシステムにて、指定した期間に発生したインシデントを無視し、インシデントが一定期間だけ通知されないようにする。
 
-ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ℹ️ 参考：https://thinkit.co.jp/article/13558
 
 #### ▼ エラーイベントの重要度レベルの調節
 
 特定のシステムにて、インシデントごとに重要度レベルを調節し、インシデントの優先度付けする。特定のインシデント以外は通知されないようにする。
 
-ℹ️ 参考：https://thinkit.co.jp/article/13558
+> ℹ️ 参考：https://thinkit.co.jp/article/13558
 
 
 #### ▼ インシデントのグループ化
 
 特定のシステムにて、いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。
 
-ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
+> ℹ️ 参考：https://knowledge.sakura.ad.jp/11635/
 
 <br>
 
@@ -310,10 +310,10 @@ fields @timestamp, @message, @logStream
 
 #### ▼ MTxxメトリクスとは
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
-- https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
+> - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
+> - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
 
 ![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mtxx.png)
 
@@ -328,7 +328,7 @@ fields @timestamp, @message, @logStream
 
 システムの実際の稼働時間割合を表す。以下の計算式で算出できる。
 
-ℹ️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
+> ℹ️ 参考：https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
 ```mathematica
 (稼働率)
@@ -369,16 +369,16 @@ fields @timestamp, @message, @logStream
 | MTTE         | インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。 |      |
 | MTTF         | オンコール担当がタスクに着手してから、これを完了するまで。   |      |
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.amazon.co.jp/dp/4873119618
-- https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
+> - https://www.amazon.co.jp/dp/4873119618
+> - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
 
 #### ▼ ダッシュボード
 
 MTxxメトリクスをダッシュボード化する。実際に時間と目標時間を比較すれば、今回のインシデント管理の良し悪しを判断できるため、インシデント管理自体をソフトウェア開発と同様に反復的に改善しやすくになる。DRI Hops（インシデントの直接的に責任者）の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 ![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics_dash-board.png)
 
@@ -421,7 +421,7 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 
 #### ▼ PagerDutyのテンプレート
 
-ℹ️ 参考：https://response.pagerduty.com/after/post_mortem_template/
+> ℹ️ 参考：https://response.pagerduty.com/after/post_mortem_template/
 
 ```markdown
 # ポストモーテム
@@ -466,7 +466,7 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 
 #### ▼ 他社事例
 
-ℹ️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
+> ℹ️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
 
 | サービス | リンク                                                       |
 | -------- | ------------------------------------------------------------ |

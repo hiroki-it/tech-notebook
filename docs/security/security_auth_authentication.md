@@ -9,7 +9,7 @@ description: Authenticate（認証）＠認証/認可の知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,11 +25,11 @@ description: Authenticate（認証）＠認証/認可の知見を記録してい
 
 HTTP通信の中で認証を行う認証スキームのこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
-- https://architecting.hateblo.jp/entry/2020/03/27/130535
-- https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
+> - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+> - https://architecting.hateblo.jp/entry/2020/03/27/130535
+> - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
 
 <br>
 
@@ -39,10 +39,10 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 
 認証時に、```Cookie```ヘッダーの値を使用する認証スキームのこと。『Cookieベースの認証』ともいう。ステートフル化を行うため、HTTP認証には属していない。認証情報の一時的な保存は、サーバーのセッションデータで行うため、認証解除（ログアウト）をサーバー側で制御できる。```Cookie```ヘッダーによる送受信では、CSRFの危険性がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
-- https://auth0.com/docs/sessions/cookies#cookie-based-authentication
+> - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
+> - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
 #### ▼ セッションIDを使用したForm認証の場合（セッションベース）
 
@@ -95,13 +95,13 @@ cookie: sessionid=<セッションID>
 
 認証解除時、サーバーでセッションデータを削除する。
 
-ℹ️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
+> ℹ️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
 #### ▼ トークンを使用したForm認証の場合（トークンベース）
 
 トークンを```Cookie```ヘッダーに割り当て、リクエストを送信する。この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
-ℹ️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+> ℹ️ 参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
@@ -109,10 +109,10 @@ cookie: sessionid=<セッションID>
 
 再利用のため、```Cookie```ヘッダーに割り当てるための値（セッションID、トークン）は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。Chromeの場合は、Cookieストレージに保持される。確認方法については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developer.chrome.com/docs/devtools/storage/cookies/
-- https://qiita.com/cobachan/items/05fa537a4ffcb189d001
+> - https://developer.chrome.com/docs/devtools/storage/cookies/
+> - https://qiita.com/cobachan/items/05fa537a4ffcb189d001
 
 <br>
 
@@ -126,7 +126,7 @@ cookie: sessionid=<セッションID>
 
 独自ヘッダーとして、```x-api-key```ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。リクエストヘッダへのパラメーターの割り当てについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 ```yaml
 GET https://example.com/bar.php
@@ -142,7 +142,7 @@ x-api-key: <APIキー>
 
 クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
 
-ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
+> ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```yaml
 GET https://example.com/bar.php
@@ -207,7 +207,7 @@ WWW-Authenticate: Basic realm=""
 
 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
-ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
+> ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```yaml
 POST https://example.com/foo-form/logout
@@ -258,16 +258,16 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 
 単なる文字列で定義されたアクセストークン。Bearer認証にて、トークンとして使用する。署名なしトークンとも呼ばれ、実際に認証された本人か否かを判定する機能は無く、トークンを持っていればそれを本人として認可する。そのため、トークンの文字列が流出してしまわないよう、厳重に管理する必要がある。
 
-ℹ️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
+> ℹ️ 参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 #### ▼ Bearer認証の仕組み
 
 指定されたエンドポイントに対して、```POST```リクエストを送信する。この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
-- https://ja.developer.box.com/reference/post-oauth2-token/#request
+> - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+> - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
 ```yaml
 POST https://example.com/foo
@@ -280,10 +280,10 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
 レスポンスボディにBearerトークンを含むレスポンスが返信される。他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
-- https://ja.developer.box.com/reference/resources/access-token/
+> - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+> - https://ja.developer.box.com/reference/resources/access-token/
 
 ```yaml
 200 OK
@@ -301,10 +301,10 @@ Content-Type: application/json
 
 発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て、リクエストを送信する。ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
-- https://ja.developer.box.com/reference/post-oauth2-token/#response
+> - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
+> - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
 ```yaml
 POST https://example.com/foo
@@ -322,10 +322,10 @@ WWW-Authenticate: Bearer realm=""
 
 認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
-- https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
+> - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
+> - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
 
 ```yaml
 401 Unauthorized
@@ -335,7 +335,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 #### ▼ 正常系/異常系レスポンス
 
-ℹ️ 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+> ℹ️ 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
 成功の場合は、realm属性を空にしたレスポンスを返信する。
 
@@ -369,11 +369,11 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルマシンに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、ローカルストレージあるいはセッションストレージに保持される。ローカルストレージはセッションストレージと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンクを参考にせよ
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developer.chrome.com/docs/devtools/storage/localstorage/
-- https://developer.chrome.com/docs/devtools/storage/sessionstorage/
-- https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
+> - https://developer.chrome.com/docs/devtools/storage/localstorage/
+> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+> - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
 
 <br>
 

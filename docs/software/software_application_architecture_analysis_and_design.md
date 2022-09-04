@@ -9,7 +9,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -33,7 +33,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 要件定義とユースケース図を基に、オブジェクト図を作成する。ユースケース図に含まれる名詞に着目し、オブジェクトを抽出する。これにより、ソフトウェアの具体的な静的構造を明確化させる。
 
-ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90
+> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90
 
 <br>
 
@@ -47,16 +47,16 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 オブジェクト図を参考にしつつ、これに時系列を取り入れ、シーケンス図を作成する。シーケンス図ではソフトウェアの『構造』を設計できないため、これはクラス図に託す。システムシーケンス図とシーケンス図の違いについて、以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
-- https://en.wikipedia.org/wiki/Sequence_diagram
+> - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
+> - https://en.wikipedia.org/wiki/Sequence_diagram
 
 #### 3. 設計のレビュー
 
 ソフトウェアの静的構造を設計するクラス図と、動的な振舞を設計するシーケンス図の間の整合性から、設計を妥当性をレビューする。
 
-ℹ️ 参考：https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
+> ℹ️ 参考：https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
 
 #### 4. デザインパターンの導入
 
@@ -80,7 +80,7 @@ description: オブジェクト指向分析設計＠アーキテクチャの知�
 
 UML、概念データモデリング、構造化分析、リアルタイム分析、がある。
 
-ℹ️ 参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
+> ℹ️ 参考：https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
 
 ![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/diagrams.png)
 <br>
@@ -133,10 +133,10 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 記法
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://it-koala.com/usecasediagrams-1832
-- https://www.itsenka.com/contents/development/uml/usecase.html
+> - https://it-koala.com/usecasediagrams-1832
+> - https://www.itsenka.com/contents/development/uml/usecase.html
 
 ![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram.png)
 
@@ -157,7 +157,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、色々な方がユースケース図とクラス図を作成されている。いずれの方も非常に参考になる
 
-ℹ️ 参考：https://github.com/tooppoo/ticket-modeling
+> ℹ️ 参考：https://github.com/tooppoo/ticket-modeling
 
 （１）映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
 
@@ -196,11 +196,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 アクターとソフトウェアの出入力を基に、ユーザーの要求に対するソフトウェアの『動的な振舞』を表す。オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
-- https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
-- https://katzn.hatenablog.com/entry/2013/05/08/235531
+> - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
+> - https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
+> - https://katzn.hatenablog.com/entry/2013/05/08/235531
 
 <br>
 
@@ -249,10 +249,10 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | スロット     | インスタンスが保持する具体的なデータを表す。『```<属性名>:<データ型> = <値>```』で表記する。                          |
 | リンク      | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                       |
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://thinkit.co.jp/article/40/3/3.html
-- https://www.itsenka.com/contents/development/uml/object.html
+> - https://thinkit.co.jp/article/40/3/3.html
+> - https://www.itsenka.com/contents/development/uml/object.html
 
 ![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/object-diagram.png)
 
@@ -276,7 +276,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ドメインモデル図がある。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 
@@ -296,7 +296,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。Association（関連）、Aggregation（集約）、Composition（合成）が使用される。『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 #### ▼ is-a-kind-of（グループとメンバーの関係性）
 
@@ -304,7 +304,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。Generalization（汎化）、Realization（実現）が使用される。実装例は以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 #### ▼ use（引数型/返却値型として使用する関係性）
 
@@ -312,7 +312,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として使用する関係性である。Dependency（依存）が使用される。実装例は以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 <br>
 
@@ -322,7 +322,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 クラス間がデータとして保持する関係性にある時に、保持される側クラスが何個のクラスに保持されるか、また反対に保持する側クラスが保持される側クラスを何個保持するか、を表す。このように```2```個の見方があることが混乱するので注意する。オブジェクト図のインスタンス間のリンク記号数を参考にして定義する。
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html
 
 #### ▼ 記法
 
@@ -365,7 +365,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。『I
 
  リレーションとカーディナリティを組み合わせて、エンティティ間の関係性の強さを表す。```(カラム数/レコード数)```で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。
 
-ℹ️ 参考：https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb
+> ℹ️ 参考：https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb
 
 ![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リレーションとカーディナリティ.png)
 
@@ -395,10 +395,10 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。『I
 
 オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://rainbow-engine.com/sequence-diagram-sample/
-- https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
+> - https://rainbow-engine.com/sequence-diagram-sample/
+> - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
 
 | 記号名                               | 説明                                                         | 補足                                                         |
 | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |

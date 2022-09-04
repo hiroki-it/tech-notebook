@@ -9,7 +9,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 指定したパスにチャートのサンプルファイルを作成する。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_create/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_create/
 
 ```bash
 $ helm create <チャートへのパス>
@@ -35,7 +35,7 @@ $ helm create <チャートへのパス>
 
 指定したリリースの履歴を取得する。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_history/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_history/
 
 ```bash
 $ helm history <リリース名>
@@ -54,7 +54,7 @@ REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRI
 
 チャートなどを指定し、Kubernetesリソースとして作成する。チャートへのパスを指定する以外にも、指定方法には種類がある。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_install/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
 $ helm install <リリース名> <チャートへのパス>
@@ -86,7 +86,7 @@ kind: Deployment
 
 指定した```values```ファイル使用して、```helm install```コマンドを実行する。チャートのルートパスに『```values.yaml```』の名前でファイルが存在している場合、自動的に読み込まれるため、このオプションは不要である。これ以外の名前の場合は、オプションによる```values```ファイルの指定が必要になる。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_install/#options
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_install/#options
 
 ```bash
 $ helm install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
@@ -114,10 +114,10 @@ $ helm install <リリース名> <チャートリポジトリ名> --kube-context
 
 Helmの構文をバリデーションを実行する。あくまでHelmの構文マニフェストファイル自体の記法の誤りは検出してくれないことに注意する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/helm/helm_lint/
-- https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
+> - https://helm.sh/docs/helm/helm_lint/
+> - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
 
 ```bash
 $ helm lint <チャートへのパス>
@@ -179,7 +179,7 @@ $ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./
 
 リリースの一覧を取得する。チャートは、バージョンによって中身の```.yaml```ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_list/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_list/
 
 ```bash
 $ helm list
@@ -196,7 +196,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 チャートからチャートアーカイブを作成する。または、すでにアーカイブが存在する場合は更新する。アーカイブ名にはバージョンが設定される。複数のチャートを指定できる。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_package/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_package/
 
 ```bash
 $ helm package <fooチャートへのパス> <barチャートへのパス> <bazチャートへのパス>
@@ -230,7 +230,7 @@ $ helm pull <チャートリポジトリURL> -d <プル先のディレクトリ>
 
 OCIリポジトリからもプルできる。
 
-ℹ️ 参考：https://helm.sh/blog/storing-charts-in-oci/
+> ℹ️ 参考：https://helm.sh/blog/storing-charts-in-oci/
 
 ```bash
 # AWSの場合
@@ -301,7 +301,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 ```helm```コマンドの実行環境にチャートリポジトリを登録する。
 
-ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
+> ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
 
 ```bash
 $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL>
@@ -355,7 +355,7 @@ $ helm repo remove releases
 
 事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの情報を更新する。チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 
 ```bash
 $ helm repo update <チャートリポジトリ名>
@@ -373,7 +373,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 事前に```helm repo add```コマンドで追加しておいたチャートリポジトリを検索する。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
 #### ▼ hub
 
@@ -427,7 +427,7 @@ version: <バージョンタグ>
 
 チャートに渡せるパラメーターを```values```ファイルとして取得する。```values```ファイル本体は、チャートリポジトリで閲覧できる。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 
 ```bash
 $ helm show values <チャート名>
@@ -487,7 +487,7 @@ $ helm template <リリース名> <チャートへのパス> -f <valuesファイ
 
 リリースを指定し、そのリリースでインストールされたKubernetesリソースを削除する。
 
-ℹ️ 参考：https://helm.sh/docs/helm/helm_uninstall/
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_uninstall/
 
 ```bash
 $ helm uninstall <リリース名>
@@ -501,7 +501,7 @@ $ helm uninstall <リリース名>
 
 指定したバージョンのチャートを使用して、リリースをアップグレードする。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --atomic
 
@@ -531,9 +531,9 @@ TEST SUITE: None
 
 Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソースのインストールを実行する仕様になっている。```--skip-crds```オプションを有効化すると、このインストールをスキップし、非カスタムリソースのみをインストールできる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/helm/helm_upgrade/
+> - https://helm.sh/docs/helm/helm_upgrade/
 
 ```bash
 $ helm upgrade --skip-crds -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
@@ -557,7 +557,7 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 
 Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元々の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
 
-ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+> ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
 ```bash
 $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョンタグ>
@@ -567,7 +567,7 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 指定した```values```ファイルを復号化し、```.yaml.dec```ファイルに出力する。
 
-ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 ```bash
 $ helm secrets dec <暗号化されたvaluesファイル>
@@ -586,7 +586,7 @@ db:
 
 指定した```values```ファイルを暗号化し、元々の```values```ファイルを上書きする。
 
-ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 ```bash
 $ helm secrets enc <平文のvaluesファイル>
@@ -611,7 +611,7 @@ sops:
 
 指定した```values```ファイルを復号化して取得する。
 
-ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
 ```bash
 $ helm secrets view <暗号化されたvaluesファイル>

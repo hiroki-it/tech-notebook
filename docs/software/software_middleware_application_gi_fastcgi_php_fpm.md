@@ -9,7 +9,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見
 
 PHP-FPMは、Server API、Zend Engine、から構成される。
 
-ℹ️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
+> ℹ️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
 ![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_architecture.png)
 
@@ -29,7 +29,7 @@ PHP-FPMは、Server API、Zend Engine、から構成される。
 
 PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。そして、リクエストを受信するたびに、プロセスを割り当てている。あらかじめ準備されたプロセス群を『プール』という。
 
-ℹ️ 参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
+> ℹ️ 参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
 
 <br>
 
@@ -41,10 +41,10 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
+> - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
 
 <br>
 

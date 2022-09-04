@@ -9,7 +9,7 @@ description: クラウドコンピューティングの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,7 +25,7 @@ description: クラウドコンピューティングの知見を記録してい�
 
 インターネットを経由して、ベンダーのサーバーに自身のデータを保存し、利用すること。ベンダーが、システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって、サービスの名称が異なる。
 
-ℹ️ 参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
+> ℹ️ 参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
 
 ![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/on-premises_iaas_caas_paas_faas_saas.png)
 
@@ -35,12 +35,12 @@ description: クラウドコンピューティングの知見を記録してい�
 
 ### 具体例
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
-- https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
-- https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
-- https://cloud-textbook.com/46/#baremetal
+> - https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
+> - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
+> - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
+> - https://cloud-textbook.com/46/#baremetal
 
 |                          | ユーザーの管理領域                                           | AWS                                     | GCP                                                          | Azure                     |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------- |
@@ -58,6 +58,6 @@ description: クラウドコンピューティングの知見を記録してい�
 
 複数のクラウドプロバイダーを使用して、システムを開発する。特定のクラウドプロバイダーに依存しないような設計が必要になる。
 
-ℹ️ 参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
+> ℹ️ 参考：https://blog.scaleway.com/10-best-practices-for-a-successful-multi-cloud-strategy/
 
 <br>

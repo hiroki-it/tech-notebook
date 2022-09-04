@@ -9,7 +9,7 @@ description: 設計ポリシー＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -108,7 +108,7 @@ repository/
 
 実行環境別に```values```ファイルを作成する。また、実行環境ごとにマニフェストファイルの構造に差分があるとし、```templates```ディレクトリ配下に実行環境別のディレクトリを配置する。
 
-ℹ️ 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
+> ℹ️ 参考：https://github.com/codefresh-contrib/helm-promotion-sample-app
 
 ```yaml
 repository/
@@ -184,13 +184,13 @@ labels:
 
 ファイル名はスネークケースとし、Kubernetesリソースを識別できる名前とする。
 
-ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 #### ▼ 拡張子
 
 拡張子は```.yaml```とする。
 
-ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
 
 <br>
 
@@ -239,7 +239,7 @@ $ asdf install
 
 非カスタムリソースのみからなるチャートのアップグレードは以下の手順で行う。アップグレードが正常に完了したことがわかるように、```--wait```オプションを有効化すると良い。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
 （１）```helm upgrade```コマンドを実行し、インストール済みのチャートをアップグレードする。
 
@@ -257,7 +257,7 @@ $ helm list
 
 Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、アップグレードとアンインストールは```kubectl```コマンドで実行する必要がある。
 
-ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
+> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
 
 （１）```kubectl apply```コマンドを実行し、新バージョンのカスタムリソースを作成する。
 
@@ -295,22 +295,22 @@ $ kubectl delete -f <旧バージョンのカスタムリソースのマニフ�
 
 テスト環境に対して```helm diff```コマンドを実行し、ドライランを実施する。```helm diff```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
 
-ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
 Helmの単体テストコマンド（```helm test```コマンド）を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。外部のテストツール（例：Terratest）を使用しても良い。```helm test```コマンドを使用する場合、チャートの```/templates/test```ディレクトリ以下にテストコードを配置する必要がある。そのため、```helm upgrade```コマンドでインストールされるリリースにテストコードも含まれてしまうことに注意する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
-- https://camunda.com/blog/2022/03/test/
+> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - https://camunda.com/blog/2022/03/test/
 
 #### ▼ 回帰テスト
 
 事前に、既存のチャートでゴールデンファイルを作成しておき、回帰テストを実施する。
 
-ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+> ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
 <br>
 
@@ -320,7 +320,7 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 GitOpsツールの差分機能を使用し、差分画面のURLを共有する。またはCDツールの通知機能（例：argocd-bot）を使用し、CDパイプラインの結果が通知されるようにする。
 
-ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
+> ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
 
 #### ▼ CDパイプラインがない場合（非自動化）
 
@@ -342,18 +342,18 @@ $ helm diff <チャート名> -f values.yaml \
 
 テスト環境に対して```helm upgrade```コマンドを実行し、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。これは、CDパイプライン上で実施しても良いが、デメリットとして```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
-- https://camunda.com/blog/2022/03/test/
-- https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
-- https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
+> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - https://camunda.com/blog/2022/03/test/
+> - https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
+> - https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
 
 #### ▼ 総合テスト
 
 テスト環境に対して```helm upgrade```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では```helm upgrade```コマンドで出力される警告ログを確認できなくなってしまう。
 
-ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+> ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
 ### デプロイ
 
@@ -398,7 +398,7 @@ CDツールの機能（例：BGデプロイメント、カナリアリリース�
 
 ### 通知
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html
 
 <br>
 

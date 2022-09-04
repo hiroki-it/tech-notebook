@@ -9,7 +9,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 GitHubリポジトリ上のマニフェストファイルを送信し、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
-ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
 ```bash
 $ git clone https://github.com/prometheus-operator/prometheus-operator.git
@@ -43,12 +43,12 @@ $ helm repo update
 $ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
 ```
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/prometheus-operator/prometheus-operator#helm-chart
-- https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
-- https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
+> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+> - https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
 
 <br>
 
@@ -98,7 +98,7 @@ Prometheusのセットアップ方法を決定する。
 
 アラートルールとレコーディングルールを決定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
 
-ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 <br>
 
@@ -108,7 +108,7 @@ Prometheusのセットアップ方法を決定する。
 
 アラートグループを設定できる。アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。
 
-ℹ️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
+> ℹ️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
 
 #### ▼ name
 
@@ -134,7 +134,7 @@ spec:
 
 アラートのルールを設定する。
 
-ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 | 項目              | 説明                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -176,10 +176,10 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://prometheus-operator.dev/docs/operator/design/#servicemonitor
-- https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
+> - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor.png)
 
@@ -210,7 +210,7 @@ spec:
 
 Serviceの待ち受けるパスを設定する。
 
-ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -227,7 +227,7 @@ spec:
 
 Serviceの待ち受けるポート名を設定する。
 
-ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -297,7 +297,7 @@ spec:
 
 特定のNamespaceを収集対象として設定する。
 
-ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -330,10 +330,10 @@ metadata:
 
 収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
-- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
+> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

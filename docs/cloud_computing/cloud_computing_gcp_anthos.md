@@ -9,7 +9,8 @@ description: Anthos＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
 
 <br>
 
@@ -24,10 +25,10 @@ description: Anthos＠GCPの知見を記録しています。
 Anthosは、クラスタ管理コンポーネント、サービス管理コンポーネント、ポリシー管理コンポーネント、から構成される。
 
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://future-architect.github.io/articles/20210319/
-- https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
+> - https://future-architect.github.io/articles/20210319/
+> - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
 #### ▼ クラスタ管理コンポーネント
 
@@ -45,7 +46,7 @@ Kubernetesの設定値を保持する。
 
 ### CI/CDパイプライン
 
-ℹ️ 参考：https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
+> ℹ️ 参考：https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
 
 <br>
 
@@ -53,10 +54,10 @@ Kubernetesの設定値を保持する。
 
 Anthos GKE Clusterの機能を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Cluster機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
-- https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
+> - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
+> - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 
 | Clusterの種類 | Kubernetesバージョン |
 | :------------ | :------------------- |
@@ -90,7 +91,7 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos C
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
 
-on-オンプレミスは、```kubectl```コマンドの実行環境となるKind製ワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。GCPのAPIを介して、オンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+on-オンプレミスは、```kubectl```コマンドの実行環境となるワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。GCPのAPIを介して、オンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure?hl=ja
 
@@ -104,23 +105,23 @@ on-オンプレミスは、```kubectl```コマンドの実行環境となるKind
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
 
-マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```のロードバランサーから構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるKind製ワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```のロードバランサーから構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 参考：
 
-- https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
-- https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
+> - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
+> - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
 #### ▼ スタンドアローンClusterタイプ
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
-マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるワークステーション、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるKind製ワークステーション、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 参考：
 
-- https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
-- https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
+> - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
+> - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
 <br>
 

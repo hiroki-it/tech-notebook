@@ -9,7 +9,7 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -157,13 +157,13 @@ Available test(s):
 
 PHPUnitの設定を行う。デフォルトの設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。また、```Test```で終わるphpファイルを作成しておく必要がある。
 
-ℹ️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
+> ℹ️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
 
 #### ▼ ```testsuites```タグ
 
 テストスイートを定義できる。```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。
 
-ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
+> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 ```xml
 <phpunit>
@@ -189,7 +189,7 @@ PHPUnitの設定を行う。デフォルトの設定では、あらかじめル�
 
 PHPUnitの実行前に設定する```ini_set```関数、```define```関数、グローバル変数、を定義できる。タグ名との対応関係については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
+> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
 **＊実装例＊**
 
@@ -226,7 +226,7 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 実際の値と期待値を比較し、結果に応じて```SUCCESS```または```FAILURES```を返却する。非staticまたはstaticとしてコールできる。
 
-ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
+> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 ```php
 $this->assertTrue();
@@ -269,7 +269,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 テスト対象のメソッドの引数を事前に用意する。メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
 
-ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
+> ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
 **＊実装例＊**
 
@@ -889,7 +889,7 @@ class FooControllerTest extends TestCase
 
 単体テストに必要なテストダブルを提供する。
 
-ℹ️ 参考：https://github.com/mlively/Phake#phake
+> ℹ️ 参考：https://github.com/mlively/Phake#phake
 
 <br>
 

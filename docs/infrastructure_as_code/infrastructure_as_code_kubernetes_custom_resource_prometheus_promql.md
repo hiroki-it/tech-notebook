@@ -9,7 +9,7 @@ description: PromQL＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,25 +21,25 @@ description: PromQL＠Prometheus
 
 特定の時点の時系列データのこと。
 
-ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間の時系列データのこと。
 
-ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Scalar
 
 浮動小数点の数値型データのこと。
 
-ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ String
 
 文字列型データのこと。
 
-ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
+> ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 <br>
 
@@ -49,13 +49,13 @@ description: PromQL＠Prometheus
 
 期間内の合計数を算出する。
 
-ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
 rate関数のラッパーであり、rate関数の結果（1秒当たりの平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
 
-ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+> ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
 # rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
@@ -67,7 +67,7 @@ increase(foo_metrics[5m])
 
 平均増加率（%/秒）を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
 
-ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
+> ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 <br>
 
@@ -79,20 +79,20 @@ increase(foo_metrics[5m])
 
 Prometheusが収集したデータポイントの合計数を表す。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
 
 #### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
 
 Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
 
 
@@ -100,10 +100,10 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
 Prometheusが作成したチャンクの合計数を表す。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-- https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
+> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
 <br>
 
@@ -132,7 +132,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
-ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -167,12 +167,12 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 1.2
 ```
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
-- https://www.robustperception.io/how-much-space-does-the-wal-take-up/
-- https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
-- https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
+> - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
+> - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
+> - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
+> - https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
 
 #### ▼ リモートストレージの必要サイズ（KB/日）
 

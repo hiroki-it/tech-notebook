@@ -10,7 +10,7 @@ description: Prometheus＠Kubernetes
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -20,11 +20,11 @@ description: Prometheus＠Kubernetes
 
 Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://danielfm.me/prometheus-for-developers/
-- https://prometheus.io/docs/introduction/overview/
-- https://knowledge.sakura.ad.jp/11635/#Prometheus-3
+> - https://danielfm.me/prometheus-for-developers/
+> - https://prometheus.io/docs/introduction/overview/
+> - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_architecture.png)
 
@@ -36,10 +36,10 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 
 メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
-- https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
+> - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
+> - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
 
 ```yaml
 $ cat /etc/prometheus/prometheus.yml
@@ -79,7 +79,7 @@ scrape_configs:
 
 ルールの種類によって、収集後の処理が異なる。
 
-ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 | ルール名             | 説明                                                         |
 | -------------------- | ------------------------------------------------------------ |
@@ -90,10 +90,10 @@ scrape_configs:
 
 設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-- https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 ```bash
 $ ls -1 /etc/prometheus
@@ -134,7 +134,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 Prometheusは、ローカルの時系列データベースの```data```ディレクトリ配下に、収集した全てのメトリクスを保管する。収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
-ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
 ```yaml
 data/
@@ -168,7 +168,7 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 
 時系列データベースのディレクトリはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする（例：データポイントの収集間隔を長くする、不要なデータポイントの収集をやめる）と良い。
 
-ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
 ```bash
 # ワーカーNode内（EKSワーカーNodeの場合）
@@ -195,17 +195,17 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
-- https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
-- https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
+> - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
+> - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
+> - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
 
 #### ▼ ダイナミックキュー
 
 リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
-ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+> ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_dynamic-queues_shard.png)
 
@@ -217,12 +217,12 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 Prometheusのアラートを受信し、特定の条件下で通知する。受信したアラートは、AlertmanagerのUI上に表示される。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://prometheus.io/docs/alerting/latest/alertmanager/
-- https://www.designet.co.jp/ossinfo/alertmanager/
-- https://knowledge.sakura.ad.jp/11635/#Prometheus-3
-- https://amateur-engineer-blog.com/alertmanager-silence/
+> - https://prometheus.io/docs/alerting/latest/alertmanager/
+> - https://www.designet.co.jp/ossinfo/alertmanager/
+> - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
+> - https://amateur-engineer-blog.com/alertmanager-silence/
 
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
 
@@ -232,7 +232,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。受�
 
 受信したアラートの通知を一時的に無効化する。Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
 
-ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-silence/
+> ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-silence/
 
 <br>
 
@@ -242,10 +242,10 @@ Prometheusのアラートを受信し、特定の条件下で通知する。受�
 
 PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://openstandia.jp/oss_info/prometheus
-- https://danielfm.me/prometheus-for-developers/
+> - https://openstandia.jp/oss_info/prometheus
+> - https://danielfm.me/prometheus-for-developers/
 
 <br>
 
@@ -311,10 +311,10 @@ $ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-e
 
 **＊例＊**
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
-- https://prometheus.io/docs/instrumenting/exporters/
+> - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
+> - https://prometheus.io/docs/instrumenting/exporters/
 
 | Exporter名                                                   | 説明                                                         | Exportタイプ | 待ち受けポート番号 | 待ち受けエンドポイント |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------ | ---------- | -- |
@@ -339,7 +339,7 @@ $ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-e
 
 PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして機能する。
 
-ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
+> ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
 
 <br>
 
@@ -349,6 +349,6 @@ PrometheusがPush型メトリクスを対象から収集するためのエンド
 
 Pull型通信の宛先のIPアドレスが動的に変化する場合（例：スケーリングなど）、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
-ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
+> ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-service-discovery
 
 <br>

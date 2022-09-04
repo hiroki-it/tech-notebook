@@ -9,7 +9,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 標準入力からの入力を解釈し、カーネルを操作する。また、カーネルの処理結果を解釈し、標準出力/標準エラー出力に出力する。基本的には、いずれのシェルも同じ仕組みである。
 
-ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 ![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell.png)
 
@@ -31,10 +31,10 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 認証情報を必要とし、認証後に最初に起動するシェルのこと。パスワードは、```/etc/passwd```ファイルに設定されている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
-- https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
+> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 ```bash
 # ハイフンオプション有り
@@ -54,7 +54,7 @@ $ ssh
 
 認証情報を必要とせず、最初に起動するシェルのこと。
 
-ℹ️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> ℹ️ 参考：https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
 ```bash
 # ハイフンオプション無し
@@ -78,7 +78,7 @@ $ bash -c foo.sh
 
 現在の起動方法の種類は、変数の『```$0```』に格納されたシェルスクリプトのファイル名から確認できる。
 
-ℹ️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
+> ℹ️ 参考：https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
 ```bash
 $ echo $0
@@ -96,7 +96,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 
 ちなみに、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
 
-ℹ️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+> ℹ️ 参考：https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
 
 ```bash
 #!/bin/sh
@@ -111,7 +111,7 @@ echo $0 # foo.sh
 
 #### ▼ 系譜
 
-ℹ️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
+> ℹ️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
 
@@ -119,11 +119,11 @@ echo $0 # foo.sh
 
 シェルを起動するとき、各種設定ファイルが読み込まれる。ファイルが存在しなければ、自身で作成する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
-- https://leico.github.io/TechnicalNote/Mac/catalina-zsh
-- https://suwaru.tokyo/zshenv/
+> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
+> - https://suwaru.tokyo/zshenv/
 
 | bashの場合                    | zshの場合                 | 読み込まれるタイミング                                   |
 | ----------------------------- | ------------------------- |-----------------------------------------------|
@@ -151,7 +151,7 @@ $ echo $SHELL
 
 シェルでは、変数のスコープがプロセスの親子関係によって決まる。
 
-ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_variable_scope.png)
 
@@ -159,7 +159,7 @@ $ echo $SHELL
 
 現在実行中のプロセスでのみ有効な変数のこと。そのため、```source```コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義されたシェル変数を使用できない。
 
-ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -184,7 +184,7 @@ FOO=$(echo "foo")
 
 現在実行中のプロセスと、その子プロセスでも有効な変数のこと。そのため、シェルスクリプトの実行コマンドに限らず使用できる。
 
-ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
+> ℹ️ 参考：https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -246,7 +246,7 @@ $ apk add bash
 
 コマンド処理の後に、『```2>&1```』を追加すると、標準エラー出力への出力を標準出力にリダイレクトすることにより、処理の全ての結果を標準出力に出力できるうになる。
 
-ℹ️ 参考：https://teratail.com/questions/1285
+> ℹ️ 参考：https://teratail.com/questions/1285
 
 **＊例＊**
 
@@ -274,13 +274,13 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/1
 ```
 
-ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 #### ▼ 標準エラー出力に全て出力
 
 コマンド処理の後に、『```1>&2```』を追加すると、標準出力への出力を標準エラー出力にリダイレクトすることにより、処理の全ての結果を標準エラー出力に出力できるうになる。
 
-ℹ️ 参考：https://teratail.com/questions/1285
+> ℹ️ 参考：https://teratail.com/questions/1285
 
 ```bash
 $ echo "text" 1>&2
@@ -306,13 +306,13 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/2
 ```
 
-ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> ℹ️ 参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
 
 #### ▼ 標準出力とファイルに出力
 
 パイプラインで```tee```コマンドを繋ぐと、標準出力とファイルの両方に出力できる。
 
-ℹ️ 参考：https://glorificatio.org/archives/2903
+> ℹ️ 参考：https://glorificatio.org/archives/2903
 
 ```bash
 $ echo "text" | tee stdout.log
@@ -326,10 +326,10 @@ $ echo "text" | tee stdout.log
 
 『```<```、```>```』『```<<```、```>>```』の記号のこと。ファイルの内容を特定のプロセスの標準入力に転送する。あるいは反対に、特定のプロセスの標準出力/標準エラー出力をファイルに転送する。プロセスの標準入力への転送は、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
-- https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
+> - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
+> - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
 
 <br>
 
@@ -394,7 +394,7 @@ $ echo 'Hello World' >| stdout.txt
 
 シェルは、プロセスの処理結果をパイプラインに出力する。その後、パイプラインから出力内容をそのまま受け取り、別のプロセスに再び入力する。
 
-ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> ℹ️ 参考：http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 ![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline_shell.png)
 
@@ -425,7 +425,7 @@ $ find ./* -name "*.png" -type f -printf "%s\n" \
 
 パケットのうちで、```443```番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。
 
-ℹ️ 参考：https://it-ojisan.tokyo/awk-f/
+> ℹ️ 参考：https://it-ojisan.tokyo/awk-f/
 
 ```bash
 $ tcpdump dst port 443 \
@@ -474,7 +474,7 @@ $ sudo pgrep \
 
 コマンドの出力情報をページングして取得する。ファイルの行数が多い場合に役立つ。
 
-ℹ️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
+> ℹ️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
 
 | キー           | 説明                                 |
 | -------------- | ------------------------------------ |
@@ -523,16 +523,16 @@ $ cat source_ips.txt | uniq
 
 プロセスは別の新しいプロセスを作成できる。子プロセスの終了時に、親プロセスに終了ステータス（```0```〜```255```）が返却される。
 
-ℹ️ 参考：https://en.wikipedia.org/wiki/Exit_status
+> ℹ️ 参考：https://en.wikipedia.org/wiki/Exit_status
 
 <br>
 
 ### 終了ステータスの種類
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://tldp.org/LDP/abs/html/exitcodes.html
-- https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
+> - https://tldp.org/LDP/abs/html/exitcodes.html
+> - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
 
 | 値            | 意味                                      | エラーの原因                                                 | 発生例                                                 |
 | ------------- | ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |

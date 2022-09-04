@@ -9,7 +9,7 @@ description: Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ description: Helmの知見を記録しています。
 
 Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースが作成される。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
-- https://helm.sh/ja/docs/glossary/
-- https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
+> - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
+> - https://helm.sh/ja/docs/glossary/
+> - https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
 
 <br>
 
@@ -57,10 +57,10 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 
 チャートリポジトリ内に複数のバージョンのチャートを管理する場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ、を配置する。GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理する場合は、このチャートリポジトリに相当する。チャートアーカイブがGitHub Pages上に公開され、HelmがURLでチャートを指定できるようになる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
-- https://zenn.dev/mikutas/articles/2ab146fa1ea35b
+> - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
+> - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
 ```yaml
 # チャートリポジトリ内に複数のバージョンのチャートを管理する
@@ -96,14 +96,14 @@ repository/ # チャートリポジトリ
 
 必要なKubernetesリソースを作成するためのマニフェストファイルのセットのこと。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/intro/using_helm/#three-big-concepts
-- https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
-- https://helm.sh/docs/topics/charts/#the-chart-file-structure
-- https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
-- https://helm.sh/docs/helm/helm_package/
-- https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
+> - https://helm.sh/docs/intro/using_helm/#three-big-concepts
+> - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
+> - https://helm.sh/docs/topics/charts/#the-chart-file-structure
+> - https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
+> - https://helm.sh/docs/helm/helm_package/
+> - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
 
 ```yaml
 repository/
@@ -130,7 +130,7 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
-ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
+> ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#three-big-concepts
 
 <br>
 
@@ -140,7 +140,7 @@ repository/
 
 #### ▼ aptリポジトリから
 
-ℹ️ 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+> ℹ️ 参考：https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
 ```bash
 $ curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
@@ -158,7 +158,7 @@ $ sudo apt-get install helm
 
 チャートリポジトリ内の各チャートアーカイブのメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
 
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -166,7 +166,7 @@ $ sudo apt-get install helm
 
 #### ▼ apiVersionとは
 
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -174,7 +174,7 @@ $ sudo apt-get install helm
 
 #### ▼ entriesとは
 
-ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
+> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
 <br>
 
@@ -198,10 +198,10 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/topics/charts/#the-apiversion-field
-- https://helm.sh/docs/topics/v2_v3_migration/
+> - https://helm.sh/docs/topics/charts/#the-apiversion-field
+> - https://helm.sh/docs/topics/v2_v3_migration/
 
 ```yaml
 apiVersion: v2
@@ -215,7 +215,7 @@ apiVersion: v2
 
 Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。リリースバージョンは、GitHubのリリースタグで管理した方がよく、```appVersion```キーの値は特に変更しなくても良い。
 
-ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-appversion-field
 
 ```yaml
 appVersion: <バージョンタグ>
@@ -241,7 +241,7 @@ description: The chart of foo
 
 依存対象のチャートを設定する。設定されたチャートは、```charts```ディレクトリにダウンロードされる。
 
-ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-dependencies
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-dependencies
 
 ```yaml
 dependencies:
@@ -276,7 +276,7 @@ maintainers:
 
 Helmで作成されるKubernetesリソースの接頭辞を設定する。
 
-ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-chartyaml-file
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#the-chartyaml-file
 
 ```yaml
 name: foo
@@ -290,7 +290,7 @@ name: foo
 
 チャートのタイプを設定する。
 
-ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-types
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#chart-types
 
 ```yaml
 type: application
@@ -304,7 +304,7 @@ type: application
 
 チャートアーカイブのリリースバージョンを設定する。```template```ディレクトリ配下のファイルを変更した場合に更新する。
 
-ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
+> ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
 ```yaml
 version: <バージョンタグ>
@@ -322,7 +322,7 @@ version: <バージョンタグ>
 
 多くの外部チャートで共通して用意されている```values```ファイルのデフォルトオプションである。共通オプションは、外部チャート内の```_help.tpl```ファイルに出力される。
 
-ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
+> ℹ️ 参考：https://knowledge.sakura.ad.jp/23603/
 
 #### ▼ affinity
 
@@ -418,7 +418,7 @@ ServiceAccountの作成を有効化する。
 
 テンプレートからマニフェストファイルを作成するために必要な機能を提供する。
 
-ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
 
@@ -428,10 +428,10 @@ ServiceAccountの作成を有効化する。
 
 define関数で定義した文字列を加工して出力する。加工内容はパラメーターで設定できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
-- https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
+> - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+> - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
 
 <br>
 
@@ -441,7 +441,7 @@ define関数で定義した文字列を加工して出力する。加工内容�
 
 同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreachのように出力する。ただし、```values```ファイルからキーと値の両方を出力する場合は、```range```関数を使用するとロジックが増えて可読性が低くなるため、使用しない方が良い。
 
-ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 ```yaml
 # values.yamlファイル
@@ -467,7 +467,7 @@ metadata:
 
 一方で、値のみを出力する場合は、可読性が高くなる。
 
-ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 ```yaml
 # values.yamlファイル
@@ -493,7 +493,7 @@ data:
 
 ### required
 
-ℹ️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+> ℹ️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
@@ -501,7 +501,7 @@ data:
 
 define関数で定義した文字列をそのまま出力する。template関数よりもinclude関数が推奨されている。
 
-ℹ️ 参考：https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 
 <br>
 
@@ -511,7 +511,7 @@ define関数で定義した文字列をそのまま出力する。template関数
 
 チャートのルートパスにある```values.yaml```ファイル、または```helm```コマンドで指定した任意の```values```ファイルの値を出力する。特定の条件下で、```values```ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
 
-ℹ️ 参考：https://github.com/helm/helm/issues/8026
+> ℹ️ 参考：https://github.com/helm/helm/issues/8026
 
 ```yaml
 # values.yamlファイル
@@ -533,7 +533,7 @@ metadata:
 
 マニフェストファイルの```metadata```キーの値には文字列しか設定できない。```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。そのため、metadataキーの値にint型を出力しようとしてエラーになる。int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うとよい。
 
-ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 ```yaml
 # values.yamlファイル

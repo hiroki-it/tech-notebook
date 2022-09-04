@@ -9,7 +9,7 @@ description: リソース定義＠SecretProviderClassの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: リソース定義＠SecretProviderClassの知見を記録してい
 
 プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
 
-ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 ```bash
 $ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
@@ -40,7 +40,7 @@ $ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driv
 
 
 
-ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -59,13 +59,13 @@ spec:
 
 プロバイダーに応じて、参照する外部Secretストアのデータを設定する。
 
-ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects
 
 外部Sercretを識別する情報を設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
+> ℹ️ 参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -81,7 +81,7 @@ spec:
         objectType: "secretsmanager"
 ```
 
-ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
+> ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

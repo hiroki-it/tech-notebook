@@ -9,7 +9,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -111,7 +111,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 もしコンソール画面からSSL証明書の検証方法を変更する場合、検証方法の異なるSSL証明書を作成してこれに切り替えたうえで、旧いSSL証明書を削除する必要がある。これに合わせて、Terraformでもリリースを二回に分ける。
 
-ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
 <br>
 
@@ -247,7 +247,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。もしステージをコンソール画面上から作成している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
@@ -567,7 +567,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
-ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
+> ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
 <br>
 
@@ -575,7 +575,7 @@ ECSタスクの起動が完了する前にサービスがロードバランサ�
 
 Terraformは、特に依存関係を実装しない場合、『ターゲットグループ → ALB/NLB → リスナー』の順で```resource```ブロックを作成する。問題として、ALB/NLBやリスナーの作成が終わる前に、ECSサービスの作成が始まってしまう。ALB/NLBの作成（※リスナーも含む可能性）が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。リスナーの後にECSサービスを作成するようにし、『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順で```resource```ブロックを作成できるようにする。
 
-ℹ️ 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
+> ℹ️ 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
 <br>
 
@@ -652,7 +652,7 @@ resource "aws_instance" "bastion" {
 
 Internet Gatewayの後にEC2を作成できるようにする。
 
-ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+> ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
 <br>
 
@@ -1036,7 +1036,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ターゲットグループの転送プロトコルがTCPの場合は、設定できないヘルスチェックオプションがいくつかある。ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ、パスを設定できる。
 
-ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
+> ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
 <br>
 
@@ -1044,7 +1044,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。リンクのNOTE文を参考にせよ。
 
-ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
+> ℹ️ 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
 <br>
 
@@ -1059,7 +1059,7 @@ status code: 400, request id: *****
 
 このエラーが発生した場合、コンソール画面上でリスナーを削除したうえで、もう一度```terraform apply```コマンドを実行する。
 
-ℹ️ 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
+> ℹ️ 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
 <br>
 
@@ -1195,11 +1195,11 @@ Terraformに値をハードコーディングしたくない場合は、SMパラ
 
 DBクラスターでは、レプリケーションのために、```3```個のAZが必要である。そのため、指定したAZが2つであっても、コンソール画面上で```3```個のAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```引数でAZを指定しておく必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
-- https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
-- https://github.com/hashicorp/terraform-provider-aws/issues/1111
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
+> - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
+> - https://github.com/hashicorp/terraform-provider-aws/issues/1111
 
 <br>
 
@@ -1219,10 +1219,10 @@ DBクラスターでは、レプリケーションのために、```3```個のAZ
 
 Auroraでは、クラスターにインスタンスを1つだけ紐づけると、プライマリーインスタンスとして作成される。また以降インスタンスを紐づけると、リードレプリカとして自動的に作成されていく。AZのマップデータに対して```for_each```引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
-- https://github.com/hashicorp/terraform/issues/5333
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
+> - https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
@@ -1248,7 +1248,7 @@ DBクラスターとDBインスタンスの両方に、```preferred_backup_windo
 
 Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的にAZに配置するようになっている。そのため、サブネットグループに複数のサブネットを紐づけるようにする。
 
-ℹ️ 参考：https://github.com/hashicorp/terraform/issues/5333
+> ℹ️ 参考：https://github.com/hashicorp/terraform/issues/5333
 
 <br>
 
@@ -1320,7 +1320,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが作成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしても良い。東京リージョンのELBサービスアカウントIDは『```582318560864```』である。
 
-ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 ```yaml
 {

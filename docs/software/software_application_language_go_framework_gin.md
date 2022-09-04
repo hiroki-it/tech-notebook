@@ -9,7 +9,7 @@ description: Ginの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: Ginの知見を記録しています。
 
 リクエストメッセージからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
+> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
 <br>
 
@@ -31,7 +31,7 @@ description: Ginの知見を記録しています。
 
 ```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストメッセージからJSONデータを取得し、構造体に紐付ける。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
+> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
 <br>
 
@@ -49,7 +49,7 @@ description: Ginの知見を記録しています。
 
 同じリクエストにて```Set```関数でセットされたマップ型データから、インターフェース型で値を取得する。値が存在しない場合は、第二返却値で```false```を返却する。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
+> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
 <br>
 
@@ -100,7 +100,7 @@ c.JSON(200, &Foo{
 
 同じリクエストにて```Set```関数でセットされたマップ型データから、インターフェース型で値を取得する。値が存在しない場合は、ランタイムエラーとなる。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
+> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
 
 <br>
 
@@ -118,7 +118,7 @@ c.JSON(200, &Foo{
 
 当該のリクエストで利用できるマップ型データに、値を保存する。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
+> ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
 
 #### ▼ 注意点
 
@@ -210,7 +210,7 @@ c.JSON(400, gin.H{
 
 バリデーションのルールを定義する。標準のルールの一覧は、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
+> ℹ️ 参考：https://github.com/go-playground/validator/blob/65bb1236771df9bc1630c78a43b0bfea10fe7122/baked_in.go#L70
 
 
 

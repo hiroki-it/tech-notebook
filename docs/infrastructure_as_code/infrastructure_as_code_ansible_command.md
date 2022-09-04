@@ -9,21 +9,17 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
-## 01. ansibleコマンド
-
-<br>
-
-## 02. ansible-playbookコマンド
+## 01. ansible-playbookコマンド
 
 ### --ask-vault-pass
 
 ansible-vaultプラグインによって暗号化されたファイルを使用し、プロビジョニングを実行する。
 
-ℹ️ 参考：https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
+> ℹ️ 参考：https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
@@ -43,7 +39,7 @@ $ ansible-playbook foo-playbook.yaml -i ./inventories --ask-vault-pass
 
 inventoryファイルを指定する。これにより、プロビジョニングの実行先の管理対象ノードを指定できる。基本的には、ディレクトリを指定した方が良い。
 
-ℹ️ 参考：https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
+> ℹ️ 参考：https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
@@ -66,13 +62,13 @@ $ ansible-playbook foo-playbook.yaml -i ./inventories
 
 <br>
 
-## 03. ansible-vaultコマンド
+## 02. ansible-vaultコマンド
 
 ### decrypt
 
 指定した暗号化済みファイルを復号化する。
 
-ℹ️ 参考：https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> ℹ️ 参考：https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 ```bash
 $ ansible-vault decrypt parameters.yaml
@@ -84,10 +80,10 @@ $ ansible-vault decrypt parameters.yaml
 
 指定した平文ファイルを暗号化し、元々の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、```ansible-playbook```コマンドで```--ask-vault-pass```オプションを有効化する必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
-- https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
+> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 ```bash
 $ ansible-vault encrypt parameters.yaml

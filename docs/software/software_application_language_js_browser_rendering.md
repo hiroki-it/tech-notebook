@@ -9,7 +9,7 @@ description: ブラウザレンダリングの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -315,7 +315,7 @@ img { float: right }
 
 HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。DOMツリーを作成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。DOMのインターフェースについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dom-tree.png)
 
@@ -336,7 +336,7 @@ HTMLパーサーは、オブジェクトをノードとして、DOMツリーを�
 
 ![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
 
-ℹ️ 参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
+> ℹ️ 参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
 <br>
 
@@ -360,7 +360,7 @@ JavaScriptのインタプリタのこと。JavaScriptエンジンは、レンダ
 
 JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード一行ずつに対し、繰り返し行う。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html
 
 ## 03-02. イベント
 
@@ -370,7 +370,7 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 
 ブラウザの各操作はイベントとして```.js```ファイルまたは```.html```ファイルに紐付けられている。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/Events
 
 #### ▼ イベントハンドラ関数とは
 
@@ -520,7 +520,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 クライアントのブラウザで、レスポンスされた静的コンテンツのキャッシュが作成される。Chromeの場合は、CacheStorageに保持される。確認方法については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
+> ℹ️ 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
 ![ブラウザのキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ブラウザのキャッシュ.png)
 
@@ -532,7 +532,7 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 オブジェクトのプロパティで、メソッド処理結果のキャッシュが作成される。必要な場合、これを取り出して再利用する。Laravelのキャッシュ機能については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
+> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/cache.html
 
 <br>
 

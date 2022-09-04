@@ -9,7 +9,7 @@ description: Googleアナリティクス＠テレメトリー収集ツールの�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,16 +21,16 @@ description: Googleアナリティクス＠テレメトリー収集ツールの�
 
 Webページのローディング時に、非同期通信を使用してGoogleのCollection-APIにメトリクスを送信する。送信されたデータは、Googleアナリティクスコンソールから確認できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://developers.google.com/analytics/devguides/collection/gtagjs
-- https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
+> - https://developers.google.com/analytics/devguides/collection/gtagjs
+> - https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
 
 #### ▼ グローバルサイトタグの組み込み
 
 Googleアナリティクスで、メトリクスのデータポイントを収集するためには、アプリケーションの```head```タグに、トラッキングコードが設定されたグローバルサイトタグを組み込む必要がある。
 
-ℹ️ 参考：https://wacul-ai.com/blog/access-analysis/google-analytics-method/what-is-tracking-code/
+> ℹ️ 参考：https://wacul-ai.com/blog/access-analysis/google-analytics-method/what-is-tracking-code/
 
 ```html
 <head>
@@ -59,7 +59,7 @@ Googleアナリティクスで、メトリクスのデータポイントを収�
 
 ブラウザのdeveloperツールで、グローバルサイトタグが非同期通信を実行しているか否かを確認する。Chromeであれば、networkタブにて、『```www.google-analytics.com/collect```』に対するリクエストを探す。これが```200```系ステータスになっていれば、正しく動作していると見なせる。
 
-ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/protocol/v1/reference#endpoint
+> ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/protocol/v1/reference#endpoint
 
 ```yaml
 POST https://www.google-analytics.com/g/collect
@@ -113,7 +113,7 @@ Googleアナリティクスでは、1つのドメイン当たりのセッショ�
 
 （１）以下のURLにて、ランディングページ当たりのセッションの割合データを確認する。
 
-ℹ️ 参考：https://analytics.google.com/analytics/web/?authuser=1#/report/content-landing-pages
+> ℹ️ 参考：https://analytics.google.com/analytics/web/?authuser=1#/report/content-landing-pages
 
 （２）ランディングページの割合データの合計値をアプリケーションのものと見なし、対象のアプリケーション以外に関するURLをフィルタリングする。これにより、対象以外のセッション数の割合がわかる。例えば、対象が```/foo```を持ち、対象以外が```/bar```と```/baz```のURLを持つとする。この時、```/bar```と```/baz```のみがフィルタリングされるように条件を設定する。
 
@@ -131,7 +131,7 @@ Googleアナリティクスでは、1つのドメイン当たりのセッショ�
 
 増加率は、増加量が基準量全体の何倍（何割分）であるかで表す。そのため、以下で算出できる。
 
-ℹ️ 参考：https://kj01.kgu.mydns.jp/fujimoto/inen/kaisetu_zoka.html
+> ℹ️ 参考：https://kj01.kgu.mydns.jp/fujimoto/inen/kaisetu_zoka.html
 
 ```mathematica
 (増加量) = (ある量) - (基準量)

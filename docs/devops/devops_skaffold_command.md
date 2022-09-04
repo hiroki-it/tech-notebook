@@ -9,7 +9,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 ログレベルを指定し、```skaffold```コマンドを実行する。デフォルトは```warn```である。
 
-ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
+> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
 
 ```bash
 $ skaffold <任意のパラメーター> --verbosity=debug
@@ -35,7 +35,7 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 全てのコンテナイメージをビルドする。
 
-ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
+> ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
 ```bash
 $ skaffold build
@@ -135,7 +135,7 @@ $ skaffold run --port-forward
 
 ### コマンド別
 
-ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
+> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
 
 | コマンド                          | ポートフォワーディングの可否       |
 | --------------------------------- | ---------------------------------- |

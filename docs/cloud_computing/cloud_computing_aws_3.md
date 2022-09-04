@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -64,7 +64,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
 
-ℹ️ 参考：https://speedtest.globalaccelerator.aws/#/
+> ℹ️ 参考：https://speedtest.globalaccelerator.aws/#/
 
 <br>
 
@@ -186,7 +186,7 @@ AWSリソースに関する認可のスコープを定義する。各アクシ�
 
 AWSリソースの識別子のこと。
 
-ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
 ```yaml
 {
@@ -207,7 +207,7 @@ AWSリソースの識別子のこと。
 
 AWSリソースを作成した時に自動的に作成されるロール。他には紐付けできない専用のポリシーが紐付けられている。『```AWSServiceRoleFor*****```』という名前で自動的に作成される。特に設定せずとも、自動的にリソースに紐付けられる。関連するリソースを削除するまで、ロール自体できない。サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
 
 #### ▼ クロスアカウントのアクセスロール  
 
@@ -426,7 +426,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、保管する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
+> ℹ️ 参考：https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
 
 <br>
 
@@ -436,7 +436,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。転送時にLambda関数を使用することにより、収集したデータを加工できる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
+> ℹ️ 参考：https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
 
 <br>
 
@@ -462,7 +462,7 @@ IAMグループに対して、IAMロールを紐付ける。そのIAMグルー�
 
 リアルタイムなストリーミングデータ（例：動画データ、音声データ、など）を継続的に収集し、分析する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
+> ℹ️ 参考：https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
 
 <br>
 

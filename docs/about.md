@@ -57,7 +57,7 @@ title: 【IT技術の知見】当サイトについて
 
 以下のツールを使用して、本サイトを運用しております。こちらのリポジトリでバージョン管理しております。
 
-ℹ️ 参考：https://github.com/hiroki-it/tech-notebook-mkdocs
+> ℹ️ 参考：https://github.com/hiroki-it/tech-notebook-mkdocs
 
 | 役割                     | ツール名       |
 | ------------------------ | -------------- |

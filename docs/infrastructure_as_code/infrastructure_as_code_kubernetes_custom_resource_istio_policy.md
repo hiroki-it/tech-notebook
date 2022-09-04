@@ -9,7 +9,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,16 +17,16 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ### インプレース方式
 
-ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
+> ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 <br>
 
 ### カナリアリリース方式
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://istio.io/v1.10/docs/setup/upgrade/canary/
-- https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
+> - https://istio.io/v1.10/docs/setup/upgrade/canary/
+> - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 
 （１）旧コントロールプレーンを残したまま、新コントロールプレーンを作成する。
 

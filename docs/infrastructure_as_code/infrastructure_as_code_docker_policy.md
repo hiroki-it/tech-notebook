@@ -9,7 +9,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,10 +27,10 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 
 コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.aquasec.com/docker-security-best-practices
-- https://www.forcia.com/blog/002273.html
+> - https://blog.aquasec.com/docker-security-best-practices
+> - https://www.forcia.com/blog/002273.html
 
 ```dockerfile
 FROM alpine:3.12
@@ -54,15 +54,15 @@ ENTRYPOINT ["/app"]
 
 インストールされているパッケージを把握できるベースイメージを使用する。
 
-ℹ️ 参考：https://www.forcia.com/blog/002273.html
+> ℹ️ 参考：https://www.forcia.com/blog/002273.html
 
 #### ▼ ベースイメージの種類
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://prograshi.com/platform/docker/docker-image-tags-difference/
-- https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
-- https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
+> - https://prograshi.com/platform/docker/docker-image-tags-difference/
+> - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
+> - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
 
 | ベースイメージの種類名 | 接尾辞                                                    | 説明                                                         | OSの有無       | ユーティリティの有無 | パッケージマネージャー系統の有無 |
 | ---------------------- | --------------------------------------------------------- | ------------------------------------------------------------ | -------------- | -------------------- | -------------------------------- |
@@ -77,7 +77,7 @@ ENTRYPOINT ["/app"]
 
 Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ（AMD系、ARM系、など）がある。同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。例えば、MacBook 2020 にはIntel、またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、```docker pull```時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。コンテナの現在のCPUアーキテクチャは、```docker inspect```コマンドで確認できる。
 
-ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+> ℹ️ 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
 ```bash
 $ docker inspect <コンテナ名>
@@ -94,7 +94,7 @@ $ docker inspect <コンテナ名>
 
 イメージのバージョンには種類があり、追跡できるバージョンアップが異なる。
 
-ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
+> ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 | バージョン例 | 追跡できるバージョンアップ                                   |
 | ------------ | ------------------------------------------------------------ |
@@ -202,10 +202,10 @@ EXPOSE 80
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『```&&```』で1つにまとめてしまう方が良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.itbook.info/network/docker02.html
-- https://yuhabeem.com/2021/03/27/311/
+> - https://www.itbook.info/network/docker02.html
+> - https://yuhabeem.com/2021/03/27/311/
 
 例えば、以下のような時、
 

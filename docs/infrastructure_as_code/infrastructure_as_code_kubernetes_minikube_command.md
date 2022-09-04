@@ -9,7 +9,7 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,13 +25,13 @@ Minikubeのアドオンを操作する。
 
 アドオンを有効化するか否かを設定する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/addons/
 
 **＊例＊**
 
 開発環境専用のIngressコントローラーとして、Nginx Ingressコントローラーを有効化するか否かを設定する。本番環境では、同じくNginxIngressコントローラーや、クラウドプロバイダーのロードバランサーなどを使用する。
 
-ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
 ```bash
 $ minikube addons enable ingress
@@ -90,7 +90,7 @@ $ minikube addons list
 
 使用するcniアドオンを設定する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 ```bash
 $ minikube start --cni=bridge
@@ -108,7 +108,7 @@ minikubeコマンドに関するパラメーターを操作する。
 
 ```kubectl```コマンド実行時のデフォルト値を設定する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/config/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
 **＊例＊**
 
@@ -132,7 +132,7 @@ minikube config set memory 16384
 
 Kubernetesのバージョンのデフォルト値を設定する。
 
-ℹ️ 参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
+> ℹ️ 参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
 
 ```bash
 $ minikube config set kubernetes-version=v1.23.0
@@ -165,7 +165,7 @@ $ minikube dashboard
 
 ホストでdockerコマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンをコールできるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
 **＊実行例＊**
 
@@ -231,10 +231,10 @@ $ minikube ip
 
 Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://minikube.sigs.k8s.io/docs/handbook/kubectl/
-- https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
+> - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
 
 ```bash
 $ minikube kubectl -- version
@@ -274,7 +274,7 @@ Server Version: version.Info{
 
 ホスト側のファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
 ```bash
 $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
@@ -300,7 +300,7 @@ $ minikube mount /Users/hiroki.hasegawa/projects/foo:/data
 
 Minikubeのコンテキスト情報が誤っている場合、正しく修正する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
 ```bash
 $ minikube update-context
@@ -317,7 +317,7 @@ $ minikube update-context
 
 NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceにポートフォワーディングを実行する。また、ServiceのIPアドレスを返却する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/service/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/service/
 
 ```bash
 $ minikube service <NodePort Servie名/LoadBalancer Servie名>
@@ -334,7 +334,7 @@ Opening service <Service名> in default browser...
 
 ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに通信できる```kubectl port-forward```コマンドを使用すると良い。
 
-ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
+> ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
 ```bash
 $ kubectl port-forward <Service名> 8080:80
@@ -350,7 +350,7 @@ $ minikube ip
 
 ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できる。
 
-ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+> ℹ️ 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
 ```bash
 $ minikube ssh
@@ -396,10 +396,10 @@ http://*.*.*.*:57761
 
 仮想環境にSSH接続を行う。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://minikube.sigs.k8s.io/docs/commands/ssh/
-- https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
+> - https://minikube.sigs.k8s.io/docs/commands/ssh/
+> - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
 ```bash
 # Dockerドライバーによる仮想環境の場合
@@ -494,7 +494,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 ゲスト仮想環境を作成し、仮想環境内にワーカーNodeを作成する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
 **＊実行例＊**
 
@@ -585,7 +585,7 @@ $ minikube start --docker-env
 
 ゲスト仮想環境のドライバーを指定し、```start```コマンドを実行する。ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。ドライバーの使用前に、これをインストールしておく必要があることに注意する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 **＊実行例＊**
 
@@ -598,7 +598,7 @@ $ minikube start --driver=virtualbox
 
 Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```start```コマンドを実行する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
 ```bash
 $ minikube start --kubernetes-version=v1.23.0
@@ -618,7 +618,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 作成するワーカーNode数を指定し、```start```コマンドを実行する。マルチNodeのClusterを作成できる。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
 **＊実行例＊**
 
@@ -640,10 +640,10 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Clusterネットワーク外からPodに通信できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://minikube.sigs.k8s.io/docs/commands/tunnel/
-- https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
+> - https://minikube.sigs.k8s.io/docs/commands/tunnel/
+> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
 **＊実行例＊**
 
@@ -667,7 +667,7 @@ $ minikube tunnel
 
 コマンドの詳細な実行ログを標準エラー出力に出力する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 ```bash
 $ minikube start --alsologtostderr

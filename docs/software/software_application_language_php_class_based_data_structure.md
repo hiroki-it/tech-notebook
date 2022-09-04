@@ -8,7 +8,7 @@ title: 【IT技術の知見】データ構造＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -246,19 +246,19 @@ HashMapクラスによって実装される配列型。PHPの連想配列に相�
 
 #### ▼ 単方向List
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-1.gif)
 
 #### ▼ 双方向List
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-2.gif)
 
 #### ▼ 循環List
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-3.gif)
 
@@ -284,7 +284,7 @@ HashMapクラスによって実装される配列型。PHPの連想配列に相�
 
 スカラー型、複合型、その他、に分類できる。以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://www.php.net/manual/ja/language.types.intro.php
+> ℹ️ 参考：https://www.php.net/manual/ja/language.types.intro.php
 
 <br>
 

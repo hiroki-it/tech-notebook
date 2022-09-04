@@ -9,7 +9,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -59,7 +59,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ビルドするステージ名を設定する。マルチステージビルドの時に使用する。ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-ℹ️ 参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
+> ℹ️ 参考：https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
@@ -434,7 +434,7 @@ ff02::2	ip6-allrouters
 
 指定したホストポートとコンテナポートのマッピングを実行する。```--publish-all```オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
-ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+> ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -444,7 +444,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコ�
 
 他のコンテナに公開するコンテナポートを```expose```オプションで設定できる。これはDockerfileでEXPOSE命令として設定しても良い。なお、プロセスの受信するポートと合わせる必要がある。
 
-ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+> ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --expose=80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash

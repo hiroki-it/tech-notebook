@@ -8,7 +8,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -16,7 +16,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_logic_method_data.html
 
 <br>
 
@@ -57,7 +57,7 @@ go 1.16
 
 パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。なお、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
 
-ℹ️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+> ℹ️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
 ```
 module github.com/hiroki-hasegawa/repository
@@ -84,7 +84,7 @@ func main() {
 
 ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
 
-ℹ️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
+> ℹ️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```
 module foo.com/hiroki-it/repository
@@ -138,7 +138,7 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 ### aws-sdk-go-v2とは
 
-ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
+> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
 
 <br>
 
@@ -146,18 +146,18 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 汎用的な関数が同梱されている。
 
-ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
+> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
 ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
-- https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
+> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
+> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
 #### ▼ serviceパッケージ
 
-ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
+> ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
 
 <br>
 
@@ -165,7 +165,7 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
 
 <br>
 
@@ -175,7 +175,7 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
 
-ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
+> ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
 <br>
 
@@ -183,7 +183,7 @@ Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAP
 
 kube-apiserverの認証/認可を通過するために、```kubeconfig```ファイルをコンテナにマウントする必要がある。
 
-ℹ️ 参考：https://nishipy.com/archives/1363
+> ℹ️ 参考：https://nishipy.com/archives/1363
 
 <br>
 
@@ -191,7 +191,7 @@ kube-apiserverの認証/認可を通過するために、```kubeconfig```ファ�
 
 ```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
 
-ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
+> ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 
 <br>
 
@@ -207,7 +207,7 @@ Go製のORMである。
 
 #### ▼ MySQLの場合
 
-ℹ️ 参考：https://gorm.io/docs/connecting_to_the_database.html#MySQL
+> ℹ️ 参考：https://gorm.io/docs/connecting_to_the_database.html#MySQL
 
 ```go
 func NewDB() (*gorm.DB, error) {
@@ -259,7 +259,7 @@ func Close(db *gorm.DB) error {
 
 構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
 
-ℹ️ 参考：https://gorm.io/docs/models.html#embedded_struct
+> ℹ️ 参考：https://gorm.io/docs/models.html#embedded_struct
 
 ```go
 type User struct {
@@ -281,7 +281,7 @@ type User struct {
 
 『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
 
-ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
+> ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
 ```go
 type User struct {
@@ -301,7 +301,7 @@ type User struct {
 
 構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
 
-ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
+> ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
 ```go
 type User struct {
@@ -332,7 +332,7 @@ db.Where("age = 20").Find(&user)
 
 デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
 
-ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
+> ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
@@ -356,7 +356,7 @@ func (User) TableName() string {
 
 Gormモデルのフィールドに設定された値を元に、カラムを作成する。作成したカラムのプライマリーキーを、構造体から取得できる。
 
-ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
+> ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
 
 ```go
 user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
@@ -374,7 +374,7 @@ result.RowsAffected // returns inserted records count
 
 #### ▼ 全カラム取得
 
-ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
+> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-all-objects
 
 ```go
 user := User{}
@@ -391,7 +391,7 @@ result.Error        // returns error
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
 
-ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+> ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 ```go
 user := User{}
@@ -414,7 +414,7 @@ db.Find(&users, []int{1,2,3})
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
-ℹ️ 参考：https://gorm.io/docs/update.html#Update-single-column
+> ℹ️ 参考：https://gorm.io/docs/update.html#Update-single-column
 
 ```go
 // Update with conditions
@@ -436,7 +436,7 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 
 Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
 
-ℹ️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
+> ℹ️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
 ```go
 user := User{Id:111}
@@ -454,7 +454,7 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 
 Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。フィールド値がゼロ値であっても、スキップされない。
 
-ℹ️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
+> ℹ️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
 ```go
 user := User{Id:111}
@@ -472,7 +472,7 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
 
-ℹ️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
+> ℹ️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
 
 ```go
 user := User{Id:111}
@@ -493,7 +493,7 @@ db.Save(&user)
 
 モック、スタブ、アサーションメソッドを提供するパッケージ。Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。モックとスタブについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 <br>
 
@@ -526,7 +526,7 @@ type MockedAwsClient struct {
 
 #### ▼ スタブ化
 
-ℹ️ 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+> ℹ️ 参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
 | よく使用するメソッド              | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -561,11 +561,11 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ▼ アサーションメソッドによる検証
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
-- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+> - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
 
 | よく使用するメソッド                      | 説明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -577,11 +577,11 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 テスト関数を実行する直前に、前処理を実行する。モックの作成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
+> ℹ️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
 | よく使用する関数        | 実行タイミング | 説明                                                         |
 | ------------------- | -------------- | ------------------------------------------------------------ |

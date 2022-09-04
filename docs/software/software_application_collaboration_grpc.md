@@ -9,7 +9,7 @@ description: gRPC＠アプリケーション連携の知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ description: gRPC＠アプリケーション連携の知見を記録していま
 
 RPCフレームワークの一つで、プロトコルバッファーを使用してRPC（リモートプロシージャーコール）を実行する。RESTful-APIに対するリクエストではリクエストメッセージのヘッダーやボディを作成する必要があるが、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-- https://openstandia.jp/oss_info/grpc/
-- https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://openstandia.jp/oss_info/grpc/
+> - https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
 
 <br>
 
@@ -65,13 +65,13 @@ $ npm install grpc-tools
 
 gRPCでのAPI仕様であり、実装によりAPI仕様を説明する。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb```ファイルを自動作成する。このファイルには、サーバー側とクライアント側で必要な実装が定義されている。
 
-ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
 #### ▼ gRPCサーバー
 
 リモートプロシージャーコールを受け付けるサーバーを定義する。サーバーをgRPCサーバーとして登録する必要がある。
 
-ℹ️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> ℹ️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
@@ -111,7 +111,7 @@ $ npm install grpc
 
 gRPCサーバーのリモートプロシージャーコールを実行する。
 
-ℹ️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> ℹ️ 参考：https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 <br>
 
@@ -123,10 +123,10 @@ gRPCサーバーのリモートプロシージャーコールを実行する。
 
 クライアント側で呼び出せるようにする構造体や関数を定義する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-- https://christina04.hatenablog.com/entry/protoc-usage
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://christina04.hatenablog.com/entry/protoc-usage
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
@@ -151,10 +151,10 @@ service FooService {
 
 事前に用意した```proto```ファイルを使用して、```pb.go```ファイルを自動作成する。```pb.go```ファイルには、gRPCを使用する上で必要な構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://christina04.hatenablog.com/entry/protoc-usage
-- https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://christina04.hatenablog.com/entry/protoc-usage
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 ```bash
 $ protoc ./foo/foo.proto --go_out=plugins=grpc:foo 
@@ -178,10 +178,10 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 gRPCサーバーを実装する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-- https://entgo.io/ja/docs/grpc-server-and-client/
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://entgo.io/ja/docs/grpc-server-and-client/
 
 ```go
 package main
@@ -238,7 +238,7 @@ func main() {
 
 gRPCクライアントを実装する。
 
-ℹ️ 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> ℹ️ 参考：https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 ```go
 package main

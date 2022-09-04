@@ -9,7 +9,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -29,7 +29,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
 ```yaml
 argocd-repository/
@@ -56,7 +56,7 @@ k8s-repository/
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
 
-ℹ️ 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
+> ℹ️ 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 
 ```yaml
 # 親Application
@@ -165,7 +165,7 @@ repository/
 
 一時的な認証/認可サービス（例：AWS STS）を使用して、ArgoCDに紐づく実行ユーザー（ログインユーザー）を一時的に認証し、また同じく一時的な認可スコープを付与する（例：AWS STS）。一時的な認証/認可としないと、認証情報が漏洩した場合、認証情報の所有者が常にデプロイできるようになってしまう。
 
-ℹ️ 参考：https://int128.hatenablog.com/entry/2019/10/03/134508
+> ℹ️ 参考：https://int128.hatenablog.com/entry/2019/10/03/134508
 
 <br>
 
@@ -173,7 +173,7 @@ repository/
 
 #### ▼ Secretの変数の場合
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 
@@ -185,13 +185,13 @@ repository/
 
 PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。これらの場合には、以下の手順でApplicationを削除する。
 
-ℹ️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
+> ℹ️ 参考：https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
 （１）Applicationの```spec.syncPolicy.allowEmpty```キーを有効化する。
 
 （２）フォアグラウンドで削除すると、Applicationの`metadata.finalizers`キーの値に削除中のリソースが設定される。この配列を空配列に変更する。ArgoCDのUIからは変更できず、```kubectl patch```コマンドを使用する必要がある。
 
-ℹ️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+> ℹ️ 参考：https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
 ```bash
 $ kubectl patch crd applications.argoproj.io \
@@ -222,7 +222,7 @@ $ kubectl patch ns argocd \
 
 ### ヘルスチェックが終わらない
 
-ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
 <br>
 
@@ -230,10 +230,10 @@ $ kubectl patch ns argocd \
 
 Sync後にKubernetesリソースの状態が変更されるような場合、SyncしてもSyncedステータスではなくOutOfSyncステータスになってしまう。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
-- https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
+> - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
 
 <br>
 

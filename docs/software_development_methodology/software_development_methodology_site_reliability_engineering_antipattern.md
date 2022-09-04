@@ -9,7 +9,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 ### はじめに
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4873119618
 
 <br>
 
@@ -176,7 +176,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。
 
-ℹ️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
+> ℹ️ 参考：https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
 
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/infrastructure_mutable_immutable.jpeg)
 
@@ -221,7 +221,7 @@ description: アンチパターン@SREingの知見を記録しています。
 
 SREerの役割の一つとして、システムの設計段階でレビュー（例：派遣型、窓口型）を行う必要がある一方で、システムの数が多くなると、コンサルのステップがボトルネックになり、リリースの頻度が低くなる。
 
-ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
+> ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
 
 #### ▼ 解決策
 
@@ -307,7 +307,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 機能変更によって、コンポーネント間にどのような依存関係が新しく追加されるかを自動的に検出し、記録できるようにする。
 
-ℹ️ 参考：https://github.com/ortelius/ortelius
+> ℹ️ 参考：https://github.com/ortelius/ortelius
 
 <br>
 
@@ -341,7 +341,7 @@ MTTFを重要視し、MTTRを軽視してしまうこと。
 
 ビジネス側と話し合い、ユーザーニーズ、ビジネスの収益、に基づいたSLOを設定する。ビジネスとSLOの双方向で、定期的に更新する（例：SLOに合わせて営業時間を更新する）。またSLOは高過ぎれば良いということもなく、例えば```99.5```%と```99.9```%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて```99.99```%にする必要はない。
 
-ℹ️ 参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
+> ℹ️ 参考：https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
 
 <br>
 

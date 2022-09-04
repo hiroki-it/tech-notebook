@@ -9,7 +9,7 @@ description: コスト最適化＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -25,19 +25,19 @@ description: コスト最適化＠AWSの知見を記録しています。
 
 各種AWSリソースの設定の上限値を上げられる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
+> ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
 
 <br>
 
 ### 各種AWSリソースの上限値
 
-ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
+> ℹ️ 参考：https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
 
 <br>
 
 ### 方法
 
-ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
+> ℹ️ 参考：https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
 
 <br>
 
@@ -57,10 +57,10 @@ description: コスト最適化＠AWSの知見を記録しています。
 
 EBSボリュームは、ボリュームの使用率に関わらず、最大サイズに基づいて料金が発生する。また、複数のEBSボリュームをEC2に紐づけている場合は、その合計サイズで料金が発生する。そのため、必要最低限のサイズを選択するように、過剰なサイズを選択してはいけない。その他、ボリュームタイプによっては、IOPSやスループットの設定値が課金対象になっている。汎用SSD（gp2タイプ）であれば、EBSボリュームの最大サイズのみを考慮すれば良い。また、注意点として、リージョンごとに料金体系が異なる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/
-- https://aws.amazon.com/jp/ebs/pricing/
+> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/
+> - https://aws.amazon.com/jp/ebs/pricing/
 
 <br>
 
@@ -70,7 +70,7 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 
 使い方に応じた料金体系を選択できる。レスポンスの返信時に料金が発生する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 
 | 使い方名                     | 説明                                                         | 補足                                                   |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
@@ -83,7 +83,7 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 
 インスタンスのライフサイクルのフェーズに応じて、料金が発生する。EC2インスタンスを実行している時間分だけ料金がかかる。インスタンスを使用せずに設置しているだけであれば、料金はかからない。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 | フェーズ名  | 料金発生の有無 | 補足                                                       |
 |--------| -------------- | ---------------------------------------------------------- |
@@ -110,7 +110,7 @@ ECRに保存されたイメージの合計サイズが```500MB```を超えると
 
 Fargateでは、FargateワーカーNode内でPodが使用したリソースサイズによって、料金が決定する。そのため、冗長化するPod数を減らすことにより、料金を抑えられる。
 
-ℹ️ 参考：https://aws.amazon.com/jp/fargate/pricing/
+> ℹ️ 参考：https://aws.amazon.com/jp/fargate/pricing/
 
 **＊例＊**
 
@@ -146,7 +146,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 
 | 使い方名                     | 説明                                                         |
 | :----------------------- | ------------------------------------------------------------ |

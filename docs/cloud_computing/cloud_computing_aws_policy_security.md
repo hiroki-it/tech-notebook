@@ -9,7 +9,7 @@ description: セキュリティ＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -77,7 +77,7 @@ NLBはセキュリティグループに対応していない。そのため、NL
 
 ALBからEC2にインバウンド通信をルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
+> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
 
 | タイプ | プロトコル | ポート    | 送信先                              | 説明        |
 | ------ | ---------- | --------- | ----------------------------------- | ----------- |

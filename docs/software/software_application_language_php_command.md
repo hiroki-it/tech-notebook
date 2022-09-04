@@ -9,7 +9,7 @@ description: コマンド@PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -94,7 +94,7 @@ zlib
 
 なお、実際に読み込まれているか否かは、```get_loaded_extensions```メソッドで確認できる。`
 
-ℹ️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
+> ℹ️ 参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
 
 ```bash
 $ php -r 'print_r(get_loaded_extensions());'
@@ -119,7 +119,7 @@ Array
 
 コマンドラインからコードを実行できる。
 
-ℹ️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
+> ℹ️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
 **＊実行例＊**
 

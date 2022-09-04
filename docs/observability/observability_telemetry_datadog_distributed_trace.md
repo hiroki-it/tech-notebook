@@ -9,7 +9,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 デーモンであるdatadogエージェントに含まれている。アプリケーションから分散トレースを収集し、Datadogに転送する。
 
-ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
+> ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
@@ -29,7 +29,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 #### ▼ ```/etc/datadog-agent/datadog.yaml```ファイル
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html
 
 <br>
 
@@ -39,10 +39,10 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを作成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
-- https://inokara.hateblo.jp/entry/2017/10/01/164446
+> - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+> - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-tracer.png)
 
@@ -52,7 +52,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 #### ▼ パッケージ一覧
 
-ℹ️ 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+> ℹ️ 参考：https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
 #### ▼ デバッグ
 
@@ -94,10 +94,10 @@ env[DD_ENV] = 'prd'
 env[DD_VERSION] = '<バージョンタグ>'
 ```
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.datadoghq.com/tracing/setup/php/
-- https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
+> - https://docs.datadoghq.com/tracing/setup/php/
+> - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
 #### ▼ インストール（Ansibleの場合）
 
@@ -121,7 +121,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 アプリケーションコンテナのDockerfileにて、PHPトレーサーをインストールする。また、コンテナの環境変数として、```DD_SERVICE```、```DD_ENV```、```DD_VERSION```を渡す。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
@@ -163,7 +163,7 @@ Extension 'ddtrace' not present.
 
 パラメーターがトレーサーに渡されたか否かは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
 ```bash
 $ php --ri=ddtrace
@@ -236,7 +236,7 @@ datadogコンテナにトレースが送信されている場合は、受信で�
 
 TypeScriptやモジュールバンドルを使用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。対策として、```dd-trace```パッケージの```init```メソッドの実行をを別ファイルに分割し、これをエントリーポイント（```nuxt.config.js```ファイル）の先頭で読み込むようにする。また、フレームワークよりも先に読み込むことになるため、```.env```ファイル参照機能を使用できない。そこで、環境変数はインフラ側で設定する。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
 
 
 ```javascript
@@ -315,7 +315,7 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 初期化時に環境変数を設定できる。APMのマイクロサービスのタグ名に反映される。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -325,13 +325,13 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 #### ▼ 分散トレースとは
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
 #### ▼ Datadogにおける分散トレース
 
 Datadogで、分散トレースはスパンを持つ配列データとして定義される。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 ```yaml
 [
@@ -357,13 +357,13 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 
 #### ▼ スパンとは
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
 
 #### ▼ Datadogにおけるスパン
 
 Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
 **＊実装例＊**
 
@@ -434,13 +434,13 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 スパンの持つデータをデータポイントとして集計すると、メトリクスのデータポイントを収集できる。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/generate_metrics/
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/generate_metrics/
 
 #### ▼ メトリクス名の構成要素
 
 メトリクス名は『```trace.<スパン名>.<メトリクス接尾辞名>```』の名前で構成される。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/
 
 #### ▼ メトリクスのスパン名
 
@@ -456,7 +456,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 メトリクスの種類に応じた接尾辞名が割り当てられる。
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/metrics_namespace/#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%B5%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%B9
 
 **＊例＊**
 
@@ -473,7 +473,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 エントリす
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 
 <br>
 
@@ -485,10 +485,10 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の```4```個に分類される。各マイクロサービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる。タイプ名の種類については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
-- https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
+> - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
+> - https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
 
 <br>
 
@@ -498,7 +498,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 トレーサによって、マイクロサービスにタグを追加できる。PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ。コードから、PHPトレーサーがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
-- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+> - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
+> - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php

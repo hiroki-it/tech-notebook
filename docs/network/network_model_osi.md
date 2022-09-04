@@ -9,7 +9,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 OSI参照モデルは、物理層（```L1```）、データリンク層（```L2```）、ネットワーク層（```L3```）、トランスポート層（```L4```）、セッション層（```L5```）、プレゼンテーション層（```L6```）、アプリケーション層（```L7```）、から構成される。
 
-ℹ️ 参考：https://www.infraexpert.com/study/networking3.html
+> ℹ️ 参考：https://www.infraexpert.com/study/networking3.html
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
 
@@ -27,7 +27,7 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
-ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+> ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
 
@@ -39,7 +39,7 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 各概念層と通信機器の間の対応関係は以下の通りである。
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
 
 1. プライベートネットワークにクライアントPCがある。
 2. クライアントPCにて、Webブラウザのアプリケーションのプロセスが、OSIアプリケーション層、OSIプレゼンテーション層、OSIセッション層で稼働している。ここで、パケットが作成される。

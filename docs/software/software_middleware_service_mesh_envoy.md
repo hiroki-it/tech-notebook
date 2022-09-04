@@ -9,7 +9,7 @@ description: Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
-- https://i-beam.org/2019/03/13/envoy-xds-server/
-- https://github.com/salrashid123/envoy_discovery#prerequsites
+> - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
+> - https://i-beam.org/2019/03/13/envoy-xds-server/
+> - https://github.com/salrashid123/envoy_discovery#prerequsites
 
 <br>
 
@@ -35,10 +35,10 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
-- https://www.netstars.co.jp/kubestarblog/k8s-10/
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
+> - https://www.netstars.co.jp/kubestarblog/k8s-10/
 
 | サーバー名                           | 説明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
@@ -59,11 +59,11 @@ EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを�
 
 Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に```istio-proxy```コンテナを注入する。Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.linkode.co.jp/entry/2020/07/06/162915
-- https://openstandia.jp/oss_info/envoy/
-- https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
+> - https://blog.linkode.co.jp/entry/2020/07/06/162915
+> - https://openstandia.jp/oss_info/envoy/
+> - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
 <br>
 
@@ -71,7 +71,7 @@ Istioは、マイクロサービスのリバースプロキシコンテナとし
 
 フロントプロキシ機能と呼ばれている。
 
-ℹ️ 参考：https://tech.uzabase.com/entry/2020/09/28/140046
+> ℹ️ 参考：https://tech.uzabase.com/entry/2020/09/28/140046
 
 <br>
 

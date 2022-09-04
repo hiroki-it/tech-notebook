@@ -9,7 +9,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -40,10 +40,10 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
-- https://embedded.hatenadiary.org/entry/20081101/p3
+> - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
+> - https://embedded.hatenadiary.org/entry/20081101/p3
 
 ```bash
 # apt-fileパッケージをインストールする。
@@ -145,7 +145,7 @@ $ yum list | grep <検索文字>
 
 リポジトリか有効か否かの一覧を取得する。
 
-ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
+> ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
 ```bash
 $ yum repolist all
@@ -294,7 +294,7 @@ $ arch -arm64 brew install <パッケージ名>
 
 パッケージの依存先としてインストールされたパッケージのうち、現在使用されていないものをアンイントールする。事前に```--dry-run```オプションを有効化し、対象のパッケージを確認すると良い。
 
-ℹ️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
+> ℹ️ 参考：https://parashuto.com/rriver/tools/homebrew-most-used-commands
 
 ```bash
 $ brew autoremove --dry-run
@@ -306,7 +306,7 @@ $ brew autoremove
 
 パッケージの旧バージョンのキャッシュを削除する。
 
-ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew cleanup
@@ -344,7 +344,7 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
-ℹ️ 参考：https://hacknote.jp/archives/23816/
+> ℹ️ 参考：https://hacknote.jp/archives/23816/
 
 ```bash
 $ brew link <パッケージ名>
@@ -354,7 +354,7 @@ $ brew link <パッケージ名>
 
 brew本体をアップグレードする。
 
-ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
+> ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
 $ brew update
@@ -364,7 +364,7 @@ $ brew update
 
 brew本体とパッケージの両方をアップグレードする。
 
-ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
+> ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
 ```bash
 $ brew upgrade
@@ -403,7 +403,7 @@ sops <バージョン>
 
 ```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
 
-ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+> ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 ```bash
 $ brew install asdf

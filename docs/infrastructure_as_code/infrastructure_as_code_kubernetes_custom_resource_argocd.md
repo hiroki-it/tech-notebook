@@ -9,7 +9,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
 
-ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
+> ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
 ![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
 
@@ -31,13 +31,13 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 ```argocd```コマンドクライアントのエンドポイントやダッシュボードを公開し、リクエストに応じて、ArgoCDのApplicationを操作する。また、リポジトリの監視やKubernetes Clusterへのapplyに必要なクレデンシャル情報を管理し、連携可能な認証/認可ツールに認証/認可処理を委譲する。
 
-ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
 #### ▼ ダッシュボードの公開
 
 ワーカーNodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
 
-ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
+> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 
 ![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 
@@ -49,7 +49,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
 
-ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
 <br>
 
@@ -59,7 +59,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
 
-ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
+> ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
 <br>
 
@@ -69,10 +69,10 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 
 repo-server内のマニフェストファイルのキャッシュを作成し、これを管理する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://weseek.co.jp/tech/95/
-- https://blog.manabusakai.com/2021/04/argo-cd-cache/
+> - https://weseek.co.jp/tech/95/
+> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
 
 <br>
 
@@ -82,11 +82,11 @@ repo-server内のマニフェストファイルのキャッシュを作成し、
 
 ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://weseek.co.jp/tech/95/
-- https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
-- https://zenn.dev/onsd/articles/a3ea24b01da413
+> - https://weseek.co.jp/tech/95/
+> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
+> - https://zenn.dev/onsd/articles/a3ea24b01da413
 
 <br>
 
@@ -100,17 +100,17 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.vpantry.net/2021/01/cicd-2/
-- https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
-- https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
+> - https://blog.vpantry.net/2021/01/cicd-2/
+> - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
+> - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
 
 #### ▼ 検証
 
 Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。そのため、Syncすれば元の状態に戻る。こういった点でも、ArgoCDを入れる方が、Kubernetesの修正の検証がしやすい。注意点として、マニフェストファイルに何かを追加するような変更は差分として認識されないため、Syncしても元に戻らない。
 
-ℹ️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
+> ℹ️ 参考：https://qiita.com/masahata/items/e22b0d30b77251b941d8
 
 <br>
 
@@ -132,7 +132,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 （６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
-ℹ️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+> ℹ️ 参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
@@ -150,10 +150,10 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 （６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
-- https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
+> - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
+> - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
 
 <br>
 
@@ -161,7 +161,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 
 ![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_gcp.png)
 
-ℹ️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+> ℹ️ 参考：https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
 
 （１）マニフェストリポジトリで、開発者がマニフェストファイルの変更を```main```ブランチにマージする。
 

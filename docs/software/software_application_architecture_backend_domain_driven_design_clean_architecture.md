@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,11 +19,11 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 DDDが適する機能要件の多いアプリケーションだけでなく、あらゆる種類のソフトウェアに適用できる。クリーンアーキテクチャ原著の序文にて、著者は『私は、今まで色々な種類のシステムを作ってきたが、どのシステムもアーキテクチャもルールは同じだった。異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/B07FSBHS2V
+> ℹ️ 参考：https://www.amazon.co.jp/dp/B07FSBHS2V
 
 #### ▼ 構成
 
-ℹ️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> ℹ️ 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
@@ -76,10 +76,10 @@ DDDが適する機能要件の多いアプリケーションだけでなく、�
 
 バックエンドからフロントエンドに出力するため、。バックエンドがテンプレートエンジンを持つフレームワークの時に、バックエンドからフロントエンドのロジックを分離するために使用する。一方で、バックエンドとフロントエンドを完全に分離し、バックエンドがJSONデータを返信するAPIとして機能する場合や、フロントエンドにテンプレートエンジンを組み込む場合は、プレゼンターを使用しない。補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://izumisy.work/entry/2019/12/12/000521
-- https://codezine.jp/article/detail/9749
+> - https://izumisy.work/entry/2019/12/12/000521
+> - https://codezine.jp/article/detail/9749
 
 <br>
 
@@ -129,7 +129,7 @@ class FormatValidator
 
 インターフェース層からユースケース層までの処理の流れを以下に示す。
 
-ℹ️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+> ℹ️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
 ![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
 
@@ -166,7 +166,7 @@ class FormatValidator
 
 ユースケース図については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
@@ -791,21 +791,21 @@ class YmdType extends Type
 
 ドメイン層のエンティティに持たせるとやや不自然で、他のドメインオブジェクトを対象とした振舞ロジックを切り分けたもの。ドメインサービスは、他のドメインオブジェクトにロジックをメソッドとして提供するだけで、自身の状態を変化させるメソッドは持たせないようにする。全てのメソッドを1つのドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理した方が良い。この時、エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する。ちなみに、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/little-hands/ddd-q-and-a/issues/159
-- https://www.amazon.co.jp/dp/B082WXZVPC
-- https://codezine.jp/article/detail/10318
+> - https://github.com/little-hands/ddd-q-and-a/issues/159
+> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - https://codezine.jp/article/detail/10318
 
 #### ▼ 重複確認
 
 ドメイン層のリポジトリを使用して、該当の名前のエンティティがDBに存在するか否かを検証する。ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
-- https://www.amazon.co.jp/dp/B082WXZVPC
-- https://github.com/little-hands/ddd-q-and-a/issues/573
+> - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
+> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - https://github.com/little-hands/ddd-q-and-a/issues/573
 
 **＊実装例＊**
 
@@ -849,12 +849,12 @@ class CheckDuplicateFooService
 
 ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
-- https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
-- https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
-- https://github.com/little-hands/ddd-q-and-a/issues/121
+> - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
+> - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
+> - https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
+> - https://github.com/little-hands/ddd-q-and-a/issues/121
 
 **＊実装例＊**
 
@@ -1082,7 +1082,7 @@ final class User
 
 ドメイン層のロジックをユースケース層のユースケース層に実装してしまうと、ドメイン層のエンティティや値オブジェクトに実装するドメインロジックがなくなってしまい、ドメイン貧血症になる。ドメイン層とユースケース層のアプリケーションサービスのいずれに実装するべきかは、モデリングの対象がビジネスルールに基づくものなのか、ソフトウェア利用者のユースケースに基づくものなのかである。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/B082WXZVPC
+> ℹ️ 参考：https://www.amazon.co.jp/dp/B082WXZVPC
 
 <br>
 
@@ -2051,7 +2051,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと。依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 <br>
 
@@ -2059,7 +2059,7 @@ class DogOrder
 
 インフラ層のリポジトリでは、ルートエンティティの単位で、データの書き込み/読み出しのトランザクション処理を実行する。ルートエンティティを定義づける時の注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。
 
-ℹ️ 参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+> ℹ️ 参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
@@ -2069,7 +2069,7 @@ class DogOrder
 
 #### ▼ DIP（依存性逆転の原則）とは
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
 
 ### リポジトリ
 
@@ -2079,11 +2079,11 @@ class DogOrder
 
 デザインパターンの一種。一例として、以下のメソッドを持つ。具体的な実装については、インターフェースリポジトリの実装を参考にせよ。CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://codewithshadman.com/repository-pattern-csharp/
-- https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
-- https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
+> - https://codewithshadman.com/repository-pattern-csharp/
+> - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
+> - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
 
 | メソッド名        | 引数型                               | 返却値型                   | 処理内容                                                     |
 | ----------------- | ------------------------------------ | -------------------------- | ------------------------------------------------------------ |
@@ -2108,7 +2108,7 @@ class DogOrder
 
 リポジトリパターンを使用する。責務として、DBに対してデータの書き込み/読み出しのトランザクション処理を実行する。トランザクションはルートエンティティを単位として定義する必要があるため、リポジトリも同じくルートエンティティを単位として定義づけることになる。そのため、引数の型はルートエンティティのドメインモデル型になる。リポジトリではルートエンティティを意識して実装する必要がある一方で、DBのどのテーブルにデータが存在しているかを問わない。これにより、ルートエンティティとDBテーブルを別々に設計できる。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html
 
 #### ▼ インターフェースリポジトリ
 
@@ -2183,10 +2183,10 @@ DBに対する書き込み操作を行う。
 
 
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
-- https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
+> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
+> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 **＊実装例＊**
 
@@ -2309,10 +2309,10 @@ DBに対する書き込み操作を行う。
 3. ファクトリによって、レコードからエンティティや値オブジェクトを作成する。
 4. リポジトリからルートエンティティを返却し、ユースケース層に渡す。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
-- https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
+> - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
+> - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
 **＊実装例＊**
 
@@ -2458,16 +2458,16 @@ class DogComboFactory
 
 ドメインイベントが発生した場合、それに紐付く処理を実行する。フレームワークの機能に依存することになるため、実装の詳細をインフラ層におく。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
-- https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
+> - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
+> - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
 
 #### ▼ 命名規則
 
 イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。そのため、名前は『イベント名』+Listener（Handler）となる。
 
-ℹ️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
+> ℹ️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
 <br>
 
@@ -2485,7 +2485,7 @@ class DogComboFactory
 
 パスワードのハッシュ化。
 
-ℹ️ 参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
+> ℹ️ 参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
 
 <br>
 
@@ -2495,7 +2495,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり、スローされた例外を対処する責務は、より上位レイヤーに持たせる。より上位レイヤーでは、そのレイヤーに合った例外に詰め替えて、これをスローする。最終的には、ユーザーインターフェース層まで持ち上げ、画面上のポップアップで警告文としてこれを表示する。例外スローの意義については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
 
 <br>
 

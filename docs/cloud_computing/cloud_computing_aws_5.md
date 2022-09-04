@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -78,7 +78,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。バケットポリシーには、ALBからS3へのログ書き込み認可スコープを実装する。『```"AWS": "arn:aws:iam::582318560864:root"```』では、```582318560864```はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。これは、東京リージョンのアカウントIDである。その他のリージョンのアカウントIDについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
 **＊実装例＊**
 
@@ -102,7 +102,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 パブリックアクセスが無効化されたS3に対して、CloudFrontからのルーティングで静的ファイルを読み出したい場合、バケットポリシーでCloudFrontの識別情報を設定する必要がある。なお2022/08/31時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
 
 **＊実装例＊**
 
@@ -214,7 +214,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 認証/認可情報をパラメーターに持つURLのこと。S3では、署名付きURLを発行し、S3への認可スコープを外部のユーザーに一時的に付与する。
 
-ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
 
 <br>
 
@@ -238,13 +238,13 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 許可する送信元IPアドレスにセキュリティグループIDを設定した場合、そのセキュリティグループが紐付けられているENIと、このENIに紐付けられたリソースからのトラフィックを許可できる。リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+> ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 
 許可する送信元IPアドレスに、自分自身のセキュリティグループIDを設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。
 
-ℹ️ 参考：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
+> ℹ️ 参考：https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups
 
 <br>
 
@@ -301,7 +301,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 一般的なSMTP-AUTHでは、クライアントユーザーの認証が必要である。同様にして、AWSでもこれが必要であり、IAMユーザーを使用してこれを実現する。送信元となるアプリケーションにIAMユーザーを紐付け、このIAMユーザーにはユーザー名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザー名とパスワードを使用した認証を実行する。ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 <br>
 
@@ -319,13 +319,13 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 SMパラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
+> - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
 
-- https://note.com/hamaa_affix_tech/n/n02eb412d0327
+> - https://note.com/hamaa_affix_tech/n/n02eb412d0327
 
-- https://tech.libry.jp/entry/2020/09/17/130042
+> - https://tech.libry.jp/entry/2020/09/17/130042
 
 
 #### ▼ 命名規則
@@ -340,16 +340,16 @@ SMパラメーター名は、『```/<リソース名>/<変数名>```』とする
 
 EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
-- https://blog.denet.co.jp/aws-systems-manager-session-manager/
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
+> - https://blog.denet.co.jp/aws-systems-manager-session-manager/
 
 #### ▼ AWSセッション
 
 TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 
-ℹ️ 参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+> ℹ️ 参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
 
 #### ▼ 同時AWSセッションの上限数
 
@@ -390,13 +390,13 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 作業内容の鋳型こと。ランブックを指定し、変更箇所に基づいた作業内容を定義する。
 デフォルトではテンプレートの作成自体にも承認が必要になる。ただし、指定した認可スコープを持つユーザーはテンプレートの承認をスキップするように設定できる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
+> ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
 
 #### ▼ 変更リクエスト
 
 鋳型に基づいた実際の作業のこと。作業のたびにテンプレートを指定し、リクエストを提出する。承認が必要になる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
+> ℹ️ 参考：https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
 
 <br>
 
@@ -472,13 +472,13 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 STSへのリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
-ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
+> ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
 
-ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+> ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sts_multi-account.png)
 
@@ -490,7 +490,7 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
@@ -498,22 +498,22 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、が�
 
 IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。IAMユーザーの場合、外部IDが必要になる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
 IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。IAMリソースの場合、外部IDが必要になる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
 OIDC、SAML、によって発行されたユーザーに委譲できる。OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
-- https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 <br>
 
@@ -523,7 +523,7 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。OIDC�
 
 IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 ```yaml
 {
@@ -552,7 +552,7 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 ```yaml
 {
@@ -579,7 +579,7 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 
 IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
 ```yaml
 {
@@ -685,7 +685,7 @@ aws_sts_credentials="$(aws sts assume-role \
 
 STSのエンドポイントから一時的なクレデンシャル情報が発行される。また同時に、このクレデンシャル情報は、```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 ```yaml
 # レスポンスデータ
@@ -719,7 +719,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 レスポンスされたデータからクレデンシャル情報を抽出する。この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。代わりに、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。クレデンシャル情報を環境変数として出力し、使用できるようにする。
 
-ℹ️ 参考：https://stedolan.github.io/jq/
+> ℹ️ 参考：https://stedolan.github.io/jq/
 
 
 ```bash
@@ -774,7 +774,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ APIコールできるリソース
 
-ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+> ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
 #### ▼ Lambda
 
@@ -811,7 +811,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ 注意が必要な項目
 
-ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+> ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 |              | 設定値         | 補足                        |
 | ------------ | -------------- | --------------------------- |

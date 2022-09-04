@@ -9,7 +9,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -79,7 +79,7 @@ repository/ # bazサービス
 
 マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに別々のマニフェストファイルを作成する。マニフェストの```apply```の順番を制御しにくいデメリットがある。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
+> ℹ️ 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
 ```yaml
 repository/
@@ -145,7 +145,7 @@ repository/
 
 Kubernetesに関する```metadata.labels```キーを以下に示す。
 
-ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
 | キー              | 説明                                               | 値の例                           |
 | ----------------- | -------------------------------------------------- |-------------------------------|
@@ -200,11 +200,11 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 開発環境でKubernetesリソースの機能追加を検証するツールの例を記載する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
-- https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
-- https://blog.cybozu.io/entry/2019/07/03/170000
+> - https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+> - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
+> - https://blog.cybozu.io/entry/2019/07/03/170000
 
 |                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                 |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
@@ -228,7 +228,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 開発環境で検証後、Kubernetesリソースの機能追加を検証するツールの例を記載する。
 
-ℹ️ 参考：https://techstep.hatenablog.com/entry/2019/12/23/000715
+> ℹ️ 参考：https://techstep.hatenablog.com/entry/2019/12/23/000715
 
 |            | 全て自前                                                     | 作成ツール（Kubeadm、Rancher、Kops、Kubespray）              | クラウドプロバイダー（AWS EKS、GCP GKE、など）               |
 | ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -252,7 +252,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 冗長化されたkube-apiserverのバージョン差は、前方の```1```個のマイナーバージョン以内に収める必要がある。
 
-ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
+> ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
 
 <br>
 
@@ -262,7 +262,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ```kubectl```コマンドとkube-apiserverのバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収める必要がある。
 
-ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
+> ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
 
 <br>
 
@@ -283,16 +283,16 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のアドオン（例：core-dns、kube-proxy、vpc-cni）を別々にアップグレードする。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
-- https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
+> - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
+> - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
 
 #### ▼ インプレース方式
 
 マスターNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されているため、マスターNodeのみインプレース方式でアップグレードする。
 
-ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+> ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
 
 <br>
 
@@ -302,7 +302,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 マスターNodeのアップグレードが終わったら、ワーカーNodeをアップグレードする。クラウドプロバイダーのマネージドNodeグループを使用している場合、ワーカーNodeが新しいマシンイメージに基づいてオートスケーリングされるように設定しておく。
 
-ℹ️ 参考：https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
+> ℹ️ 参考：https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
 
 | 方法            | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
 |---------------| -------- | ------------ | ------------ | ------------------------------------------------------------ |
@@ -315,7 +315,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 既存のNodeグループ内のワーカーNodeをそのままアップグレードする方法。ワーカーNodeのアップグレード時間がそのままダウンタイムになるため、メンテナンス時間を設けられる場合にのみ使用できる。
 
-ℹ️ 参考：https://logmi.jp/tech/articles/323033
+> ℹ️ 参考：https://logmi.jp/tech/articles/323033
 
 （１）ワーカーNodeを削除する。
 
@@ -327,16 +327,16 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-- https://logmi.jp/tech/articles/323032
+> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - https://logmi.jp/tech/articles/323032
 
 （１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
 （２）```kubectl drain```コマンドを実行し、Drain処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。Drain処理によって、旧Nodeグループ内ワーカーNode上でのPodのスケジューリングが無効化され、加えて旧Nodeグループ内ワーカーNodeからPodが退避する。その後、新Nodeグループ内ワーカーNode上でPodが再作成される。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
-ℹ️ 参考：https://dunkshoot.hatenablog.com/
+> ℹ️ 参考：https://dunkshoot.hatenablog.com/
 
 ```bash
 $ kubectl drain <ワーカーNode名> \
@@ -352,10 +352,10 @@ $ kubectl drain <ワーカーNode名> \
 
 ローリングアップデート方式でワーカーNodeをアップグレードする方法。一部のクラウドプロバイダー（例：AWS）のみが提供している
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
-- https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
+> - https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
+> - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 
 #### ▼ ブルー/グリーン方式
 
@@ -363,11 +363,11 @@ $ kubectl drain <ワーカーNode名> \
 
 新しいClusterを作成することにより、ワーカーNodeをアップグレードする方法。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://logmi.jp/tech/articles/323032
-- https://logmi.jp/tech/articles/323033
-- https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - https://logmi.jp/tech/articles/323032
+> - https://logmi.jp/tech/articles/323033
+> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 
 （１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 
@@ -383,7 +383,7 @@ $ kubectl drain <ワーカーNode名> \
 
 Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の2倍のIPアドレスを持つCIDRブロックを設定すると良い。
 
-ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
 | Node当たりの最大Pod数 | ワーカーNode当たりのCIDRブロック | IPアドレス数 |
 | ------------------------- | ------------------------ | -------------- |
@@ -406,7 +406,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 ### Cluster
 
-ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス       | 単位     | 説明                                                       | アラート条件例                                                 |
 | ---------------- | -------- | ---------------------------------------------------------- |---------------------------------------------------------|
@@ -421,7 +421,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 #### ▼ Pod全体
 
-ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス      | 単位     | 説明                                                      | アラート条件例                                               |
 | --------------- | -------- | --------------------------------------------------------- |-------------------------------------------------------|
@@ -431,7 +431,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 #### ▼ コンテナ
 
-ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス     | 単位     | 説明                                                     | アラート条件例                                               | 補足                                                         |
 | -------------- | -------- | -------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -449,20 +449,20 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
 
-- https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
-- https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+> - https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
+> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 
 #### ▼ コンテナの場合
 
 Podの```spec.securityContext```キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-- https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+> - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 
 <br>
 
@@ -472,10 +472,10 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 
 Secretの```data```キーには、```base64```方式でエンコードされた値を設定する必要がある。この```base64```方式エンコード値をどのように管理するかには選択肢がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
-- https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
+> - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
 
 | 管理方法                                                 | 説明                                                                                                                                                       |
 | -------------------------------------------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -512,7 +512,7 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 
 テスト環境に対して```kubectl apply```コマンドを実行し、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。
 
-ℹ️ 参考：https://camunda.com/blog/2022/03/test/
+> ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
 <br>
 

@@ -9,7 +9,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 コントロールノードと管理対象ノードから構成される。コントロールノードに相当するデプロイサーバーにはAnsibleがインストールされている。もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
-ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
+> ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
 ![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible.png)
 
@@ -29,7 +29,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```bash
 $ sudo apt -y install sshpass
@@ -43,11 +43,11 @@ $ pip3 install ansible
 
 ### ディレクトリ構成ポリシー
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
-- https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
-- https://thinkit.co.jp/article/9871
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+> - https://thinkit.co.jp/article/9871
 
 ```yaml
 repository/
@@ -89,6 +89,6 @@ repository/
 
 ### 命名規則
 
-ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
+> ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 
 <br>

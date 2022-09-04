@@ -9,7 +9,7 @@ description: API Gatewayへのymlインポート＠AWSの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: API Gatewayへのymlインポート＠AWSの知見を記録して�
 
 API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルにキーを新たに実装する必要がある。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
 <br>
 
@@ -29,15 +29,15 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
 各種パラメーターもマッピングできる。メソッドリクエストから統合リクエストへのマッピングについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
 
 統合レスポンスからメソッドレスポンスへのマッピングについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
 #### ▼ セットアップ（VPCリンク&プロキシ統合）
 
@@ -199,7 +199,7 @@ x-amazon-apigateway-request-validators:
 
 インポートにあたり、以下に注意する。Swagger EditorでAPIの仕様書の```.html```ファイルを確認できる。
 
-ℹ️ 参考：https://editor.swagger.io/
+> ℹ️ 参考：https://editor.swagger.io/
 
  - OpenAPI仕様のバージョン2.0と3.0に対応している。
  - ```x-amazon-apigateway-integration```キーを各HTTPメソッドに定義する。
@@ -215,7 +215,7 @@ x-amazon-apigateway-request-validators:
 
 その他の非対応の記述については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
 
 <br>
 

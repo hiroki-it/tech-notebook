@@ -9,7 +9,7 @@ description: Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,10 +21,10 @@ description: Nginxの知見を記録しています。
 
 Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し、加えて一方で保存されたキャッシュを取得する。キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.codetd.com/en/article/12312272
-- https://rainbow-engine.com/nginx-apache-difference/
+> - https://www.codetd.com/en/article/12312272
+> - https://rainbow-engine.com/nginx-apache-difference/
 
 <br>
 
@@ -125,7 +125,7 @@ server {
 
 Nginxは、インバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
 
-ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
+> ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
 
 **＊実装例＊**
 

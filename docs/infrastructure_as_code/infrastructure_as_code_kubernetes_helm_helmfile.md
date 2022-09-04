@@ -9,7 +9,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -27,7 +27,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをapplyの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
 
-ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
+> ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
 
 ```yaml
 repository/
@@ -68,7 +68,7 @@ repository/
 
 環境名のリストとして機能し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
 
-ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
 ```yaml
 environments:
@@ -152,7 +152,7 @@ releases:
 
 Helmの実行時に複合化するSecretのファイルを設定する。
 
-ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
 ```yaml
 secrets:
@@ -191,7 +191,7 @@ repositories:
 
 使用する```helmfile.d```ディレクトリ下にある```helm.yaml```ファイルを再帰的に使用する。
 
-ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
 # helmfile.dディレクトリ配下を再帰的に読み込む。
@@ -202,7 +202,7 @@ $ helmfile <サブコマンド>
 
 リリース対象の実行環境名を設定する。
 
-ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
 $ helmfile -e prd <コマンド>
@@ -212,7 +212,7 @@ $ helmfile -e prd <コマンド>
 
 使用する```helmfile.yaml```ファイルを指定する。
 
-ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
 
 ```bash
 $ helmfile -f ./helmfile.yaml <コマンド>
@@ -226,10 +226,10 @@ $ helmfile -f ./helmfile.yaml <コマンド>
 
 まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。```helmfile sync```コマンドとは異なり、リリース間に差分がないと、リビジョン番号は更新されない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/helmfile/helmfile#apply
-- https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+> - https://github.com/helmfile/helmfile#apply
+> - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ```bash
 $ helmfile apply
@@ -259,7 +259,7 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
-ℹ️ 参考：https://github.com/helmfile/helmfile#destroy
+> ℹ️ 参考：https://github.com/helmfile/helmfile#destroy
 
 ```bash
 $ helmfile destroy
@@ -273,10 +273,10 @@ $ helmfile destroy
 
 全てのリリースに対して、helm-diffプラグインを実行する。helm-diffプラグインでは、リリース済みの最新バージョンと、```helm upgrade --debug --dry-run```コマンドの差分を取得する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/helmfile/helmfile#diff
-- https://github.com/databus23/helm-diff#helm-diff-plugin
+> - https://github.com/helmfile/helmfile#diff
+> - https://github.com/databus23/helm-diff#helm-diff-plugin
 
 ```bash
 $ helmfile diff
@@ -312,9 +312,9 @@ Source: project/manifests/persistent-volume.yaml
 
 全てのリリースに関して、```helm upgrade --install```コマンドを実行する。```helmfile apply```コマンドとは異なり、リリース間に差分がなくとも、リビジョン番号を更新する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
+> - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 - helmfile/helmfile#sync
 
 ```bash

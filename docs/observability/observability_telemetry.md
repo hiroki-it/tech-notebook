@@ -9,7 +9,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,10 +17,10 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 ### メトリクス
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
-- https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
+> - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
+> - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
 
 | アクション              | cAdvisor | Grafana | Kiali | kube-state-metrics | Prometheus | OpenTelemetry |
 |--------------------| -------- | ------- | ----- | ------------------ | ---------- | ---------- |
@@ -37,7 +37,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 ### ログ
 
-ℹ️ 参考：https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
+> ℹ️ 参考：https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 
 | アクション                 | Fluentd/Fluentbit | Protail | Elasticsearch | Grafana loki | Logstash | OpenTelemetry |
 | -------------------------- | -------------------------- | -------------------------- | ------------- | ------------ | -------- | -------- |
@@ -54,10 +54,10 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 ### 分散トレース
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
-- https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
+> - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
+> - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
 
 | アクション                 | Jaeger | Zipkin | Pinpoint | OpenTelemetry |
 | -------------------------- | ------ | ------ | -------- | ------------- |

@@ -9,7 +9,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 かなり大変なので、DockerfileやIstio経由でインストールすることが推奨。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/install
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/install
 
 <br>
 
@@ -27,7 +27,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 Dockerfileにて、独自の```envoy.yaml```ファイルを組み込む。拡張子は、```.yml```ではなく、```.yaml```とする。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
 ```dockerfile
 FROM envoyproxy/envoy:v1.20.1
@@ -39,7 +39,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 ### Istio
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
 
 <br>
 
@@ -47,7 +47,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 ### adminとは
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
 
 <br>
 
@@ -100,7 +100,7 @@ admin:
 
 固定値を設定する。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
 
 <br>
 
@@ -110,7 +110,7 @@ admin:
 
 受信するインバウンド通信のリスナーを設定する。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
 <br>
 
@@ -161,7 +161,7 @@ static_resources:
 
 特定のインバウンド通信を処理するフィルターを設定する。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
 ```yaml
 static_resources:
@@ -189,10 +189,10 @@ static_resources:
 
 #### ▼ typed_config.http_filters
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
-- https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
 ```yaml
 static_resources:
@@ -213,10 +213,10 @@ static_resources:
 | ```name```          | ルーティング名を設定する。                                   |
 | ```virtual_hosts``` | ルーティング先を設定する。特に```domains```キーには、受信するインバウンド通信の```Host```ヘッダーの値を設定する。ちなみに```Host```ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
-- https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
+> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
 
 ```yaml
 static_resources:
@@ -240,10 +240,10 @@ static_resources:
 
 統計ダッシュボードのメトリクスの接頭辞を設定する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
-- https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
+> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
 ```yaml
 static_resources:
@@ -271,7 +271,7 @@ static_resources:
 
 インバウンド通信を受信するリスナーの名前を設定する。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
 
 ```yaml
 static_resources:
@@ -287,7 +287,7 @@ static_resources:
 
 インバウンド通信のルーティング先のマイクロサービスをグループ化する。対象が1つであっても、```clusters```キーは必須である。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
 <br>
 
@@ -331,7 +331,7 @@ static_resources:
 
 ルーティング先のIPアドレスとポート番号のリストを設定する。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 
 ```yaml
 static_resources:  
@@ -405,7 +405,7 @@ static_resources:
 
 サービスディスカバリーの種類を設定する。ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
 
-ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
 
 ```yaml
 static_resources:  

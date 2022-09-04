@@ -9,7 +9,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 GitHubリポジトリからgrafanaチャートをインストールし、リソースを作成する。
 
-ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
+> ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 ```bash
 $ helm repo add grafana https://grafana.github.io/helm-charts
@@ -32,11 +32,11 @@ $ helm install grafana grafana/grafana -n grafana -f values.yaml
 
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/prometheus-operator/prometheus-operator#helm-chart
-- https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-- https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -53,7 +53,7 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これを作成する。
 
-ℹ️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
+> ℹ️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
 ```bash
 $ kubectl apply -f grafana.yaml
@@ -75,7 +75,7 @@ Grafanaのダッシュボードである。ConfigMapの```data```キーにダッ
 
 grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェストファイル化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
 
-ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+> ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 ```yaml
 # valuesファイル
@@ -112,7 +112,7 @@ data:
 
 kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 
-ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
 ```yaml
 # valuesファイル
@@ -137,7 +137,7 @@ kube-prometheus-stackチャートでは、prometheusのチャートの他、graf
 
 そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストファイルから作成したダッシュボードは、GUIからは削除できないようになっている。
 
-ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
+> ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
 ```yaml
 apiVersion: v1
@@ -153,6 +153,6 @@ data:
 
 ちなみに、kube-prometheus-stackチャート内にダッシュボードのConfigMapはすでに用意されており、これをインストールすると、いくつかのダッシュボードが作成される。
 
-ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 
 <br>

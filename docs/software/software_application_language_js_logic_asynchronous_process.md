@@ -8,7 +8,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -18,13 +18,13 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 #### ▼ 非同期処理とは
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html
 
 #### ▼ 非同期処理化
 
 処理の実行を部分的に遅らせると、後続する処理が先に実行される。これは非同期処理である。
 
-ℹ️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
+> ℹ️ 参考：https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
 
 **＊実装例＊**
 
@@ -56,13 +56,13 @@ asyncMethod();
 
 JavaScriptで、非同期処理の成否を管理し、後続する処理を定義できるオブジェクトのこと。Promiseオブジェクトの実装の仕様は取り決められており、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://promisesaplus.com/
+> ℹ️ 参考：https://promisesaplus.com/
 
 #### ▼ Promiseオブジェクトの種類
 
 ネイティブなJavaScriptのPromiseオブジェクト、JQueryのPromiseオブジェクト、がある。ネイティブの方が、Promiseオブジェクトの仕様により則った機能を持つ。
 
-ℹ️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
+> ℹ️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
 | リリース日 | 提供                                 | 種類                | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------ | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ JavaScriptで、非同期処理の成否を管理し、後続する処理を定�
 
 Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 ```javascript
 const asyncFunc = () => {
@@ -200,7 +200,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 補足として、NodeのHTTPパッケージの関数は、Promiseインスタンスのコールバック関数として使用しないと、正しく挙動しない。
 
-ℹ️ 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
+> ℹ️ 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 
 <br>
 
@@ -208,7 +208,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 #### ▼ コンストラクタを使用する場合
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 **＊実装例＊**
 
@@ -265,7 +265,7 @@ rejectFunc.catch((err) => {
 
 Promiseオブジェクトを明示的に使用する場合、Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある。一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 **＊実装例＊**
 
@@ -384,7 +384,7 @@ const asyncFunc = async () => {
 
 Promiseオブジェクトの```then```メソッド、```catch```メソッド、```finally```メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 **＊実装例＊**
 

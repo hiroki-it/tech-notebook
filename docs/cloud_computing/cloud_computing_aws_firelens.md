@@ -9,7 +9,7 @@ description: FireLensコンテナ＠FluentBitの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,11 +19,11 @@ description: FireLensコンテナ＠FluentBitの知見を記録しています�
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
-ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 （１）awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり、ログをFireLensコンテナに送信する。Fluentdログドライバーについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.docker.com/config/containers/logging/fluentd/
+> ℹ️ 参考：https://docs.docker.com/config/containers/logging/fluentd/
 
 （２）FireLensコンテナは、これを受信する。
 
@@ -50,10 +50,10 @@ description: FireLensコンテナ＠FluentBitの知見を記録しています�
 
 AWSが提供するFluentBitイメージによって作成されるコンテナである。FireLensコンテナでは、FluentBitがログルーティングプロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを作成して稼働できるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitを使用できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
-- https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
+> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
 
 <br>
 
@@ -63,16 +63,16 @@ AWSが提供するFluentBitイメージによって作成されるコンテナ�
 
 AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。Fargateからログが送信されると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。作成のための実装例については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://github.com/aws-samples/amazon-ecs-firelens-examples
-- https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
+> - https://github.com/aws-samples/amazon-ecs-firelens-examples
+> - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
 #### ▼ ログのルーティング先
 
 FluentBitが対応する宛先にログをルーティングできる。
 
-ℹ️ 参考：https://docs.fluentbit.io/manual/pipeline/outputs
+> ℹ️ 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
 <br>
 
@@ -84,7 +84,7 @@ FluentBitが対応する宛先にログをルーティングできる。
 
 ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定をそのまま使用する場合は、こちらを採用する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
@@ -94,11 +94,11 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 FROM amazon/aws-for-fluent-bit:latest
 ```
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://hub.docker.com/r/amazon/aws-for-fluent-bit
-- https://github.com/aws/aws-for-fluent-bit
-- https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub
+> - https://hub.docker.com/r/amazon/aws-for-fluent-bit
+> - https://github.com/aws/aws-for-fluent-bit
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub
 
 <br>
 
@@ -172,7 +172,7 @@ ECSタスクのコンテナ定義にて、アプリケーションコンテナ�
 
 #### ▼ ```logConfiguration```キーの詳細
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
 | 項目                                                | 説明                                                                                                                                                                                                                                                                                                                                                                                     |
 | --------------------------------------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -215,7 +215,7 @@ aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには�
 
 FireLensコンテナのデフォルトの設定ファイル。ローカルマシンでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
 ```bash
 [INPUT]
@@ -253,7 +253,7 @@ FireLensコンテナのデフォルトの設定ファイル。ローカルマシ
 
 FireLensコンテナにカスタム値を設定する。コンテナ定義の```config-file-value```キーで指定し、追加設定を実行する。これにより、FireLensコンテナの```fluent-bit.conf```ファイルに、カスタムファイルを読み込むためのINCLUDE文が挿入される。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
 ```bash
 [INPUT]
@@ -294,7 +294,7 @@ FireLensコンテナにカスタム値を設定する。コンテナ定義の```
 
 標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLensコンテナではforwardプラグインを設定する必要がある。ただし、デフォルトの設定ファイルには、INPUTがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない。
 
-ℹ️ 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
+> ℹ️ 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
 ```bash
 [INPUT]
@@ -342,7 +342,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 
 AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
 ```bash
 [root@<コンテナID>:/fluent-bit]$ ls -la
@@ -366,7 +366,7 @@ FireLensコンテナで処理中のログのキー値を修正したい場合、
 
 例えば、ECSのプラットフォームバージョンが```v1.3.0```の時、メタデータのDockerNameは『```/ecs-<ECSタスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>```』になる（例：```/ecs-foo-task-definition-1-bar-123456789```）。これを```v1.4.0```にアップグレードすればコンテナ名になるが、すぐにアップグレードに対応できないこともある。その場合はPARSERセクションにて、正規表現の名前付きキャプチャを使用してコンテナ名を抽出すると、以降のセクションで処理しやすくなる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v3.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v3.html
 
 ```bash
 [PARSER]
@@ -410,7 +410,7 @@ PARSERセクションでコンテナ名を抽出したおかげで、STREAM_TASK
 
 FireLensコンテナで複数行のログを処理したい場合、```parsers_multiline.conf```ファイルでMULTILINE_PARSERを設定する必要がある。
 
-ℹ️ 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
+> ℹ️ 参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
 
 #### ▼ MULTILINE_PARSERセクション
 
@@ -448,7 +448,7 @@ FireLensコンテナで複数行のログを処理したい場合、```parsers_m
 
 FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-firelens-<ECSタスクID>```』になっている。そのため、Stream Processorでログを抽出するためには、クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある。ちなみに、STREAM_TASKでタグ付けされたログは、INPUTから再び処理し直される。
 
-ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ＊実装例＊
 

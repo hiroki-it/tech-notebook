@@ -9,7 +9,7 @@ description: datadogエージェントの設定＠Datadogの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -23,19 +23,19 @@ Datadogにデータを送信するためには、アプリケーションにdata
 
 ### メトリクス収集について
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 
 <br>
 
 ### ログ収集について
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html
 
 <br>
 
 ### 分散トレース収集について
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
 
 <br>
 
@@ -57,7 +57,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 #### ▼ インストール（Ansibleの場合）
 
-ℹ️ 参考：https://app.datadoghq.com/account/settings#agent/ubuntu
+> ℹ️ 参考：https://app.datadoghq.com/account/settings#agent/ubuntu
 
 ```yaml
 - task:
@@ -78,12 +78,12 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 datadogエージェントを設定する。 ```/etc/datadog-agent```ディレクトリに配置される。datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://app.datadoghq.com/account/settings#agent
-- https://docs.datadoghq.com/getting_started/agent/#configuration
-- https://docs.datadoghq.com/agent/guide/agent-configuration-files/
-- https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
+> - https://app.datadoghq.com/account/settings#agent
+> - https://docs.datadoghq.com/getting_started/agent/#configuration
+> - https://docs.datadoghq.com/agent/guide/agent-configuration-files/
+> - https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
 
 <br>
 
@@ -154,7 +154,7 @@ datadogコンテナのベースイメージとなるdatadogイメージがDatado
 
 ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
-ℹ️ 参考：https://hub.docker.com/r/datadog/agent
+> ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
 ```yaml
 [
@@ -178,16 +178,16 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 ]
 ```
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://gallery.ecr.aws/datadog/agent
-- https://github.com/DataDog/datadog-agent
+> - https://gallery.ecr.aws/datadog/agent
+> - https://github.com/DataDog/datadog-agent
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
 あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
 
-ℹ️ 参考：https://hub.docker.com/r/datadog/agent
+> ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
 ```dockerfile
 FROM data/agent:latest
@@ -212,7 +212,7 @@ FROM data/agent:latest
 
 Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
 
-ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
+> ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
 #### ▼ コンテナ定義
 
@@ -291,7 +291,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
 
 datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
 
-ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
+> ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 
 ```yaml
 {
@@ -318,7 +318,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である。ただサーバーの場合とは異なり、環境変数から値を設定できる。
 
-ℹ️ 参考：https://docs.datadoghq.com/getting_started/agent/#configuration 
+> ℹ️ 参考：https://docs.datadoghq.com/getting_started/agent/#configuration 
 
 <br>
 
@@ -328,7 +328,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 全てのテレメトリーに関する環境変数として使用できる。datadogコンテナの環境変数として設定する。
 
-ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
+> ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
 | 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
@@ -345,7 +345,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 通常メトリクスに関する環境変数として使用できる。一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
 
-ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
+> ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
@@ -356,7 +356,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 カスタムメトリクスに関する環境変数として使用できる。
 
-ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
+> ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
 | 変数名                               | 説明                                                    |
 | ------------------------------------ | ------------------------------------------------------- |
@@ -385,7 +385,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 #### ▼ PHPトレーサーの場合
 
-ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 
 | 変数名                                        | 説明                                                         | 画面                                   |
 | --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |

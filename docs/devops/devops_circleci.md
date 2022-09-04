@@ -9,7 +9,7 @@ description: CircleCIの知見を記録しています。
 
 ### アーキテクチャ
 
-ℹ️ 参考：https://circleci.com/docs/2.0/server-3-overview/
+> ℹ️ 参考：https://circleci.com/docs/2.0/server-3-overview/
 
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circleci_architecture.png)
 
@@ -39,7 +39,7 @@ description: CircleCIの知見を記録しています。
 
 CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを使用することが推奨されている。なお、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
 
-ℹ️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
+> ℹ️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ▼ デバッグの事前準備
 
@@ -95,7 +95,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCIコンテナにSSH接続
 
-ℹ️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
+> ℹ️ 参考：https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 （１）CircleCI用に鍵を作成してもよいが、ここではGitHubの鍵をそのまま使用することとする。GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。この時、他の連携サービスと区別しやすいように、ホスト名を```github```とする。
 
@@ -113,13 +113,13 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 各テストのパフォーマンスや成功失敗率を確認できる。
 
-ℹ️ 参考：https://circleci.com/docs/2.0/insights-tests/
+> ℹ️ 参考：https://circleci.com/docs/2.0/insights-tests/
 
 #### ▼ SSHキー
 
 SSHキーを作成する必要がある。
 
-ℹ️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
+> ℹ️ 参考：https://circleci.com/docs/2.0/add-ssh-key/
 
 | 鍵名         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |

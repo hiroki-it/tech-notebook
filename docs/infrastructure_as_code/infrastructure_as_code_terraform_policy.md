@@ -9,7 +9,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,7 +21,7 @@ description: 設計ポリシー＠Terraformの知見を記録しています。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries
 
 <br>
 
@@ -84,7 +84,7 @@ repository/
 
 ```.tfstate```ファイルを分割することにより、以下のメリットがある。
 
-ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+> ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 - ```terraform apply```コマンドの実行途中に問題が発生し、```.tfstate```ファイルが破損したとしても、影響範囲をその```.tfstate```ファイルのリソース内に閉じられる。
 - ```terraform plan```コマンドや```terraform apply```コマンドの実行時間を短縮できる。
@@ -119,7 +119,7 @@ terraform {
 
 各コンポーネントの依存関係が一方向になるようにする。ディレクトリ名に番号を付け、必ず自分より小さな番号の```.tfstate```ファイルを参照するようにすると良い。
 
-ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
+> ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
 
 ```yaml
 repository/
@@ -189,20 +189,20 @@ repository/
 
 CloudFormationでは、クラウドインフラのリソースの設定変更頻度、運用チームの責務範囲、爆発半径、システムコンポーネン、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと可読性が悪くなるので、個人的にはいずれかの観点に統一した方が良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://zoo200.net/terraform-tutorial-module-and-directory/
-- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
-- https://zenn.dev/hajimeni/articles/e17b9808e0e82e
+> - https://zoo200.net/terraform-tutorial-module-and-directory/
+> - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks
+> - https://zenn.dev/hajimeni/articles/e17b9808e0e82e
 
 #### ▼ クラウドインフラのリソースの変更頻度
 
 クラウドインフラのリソースの設定変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
-- https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+> - https://towardsdatascience.com/data-quality-dataops-and-the-trust-blast-radius-4b0e9556bbda
+> - https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 ```yaml
 repository/
@@ -498,7 +498,7 @@ repository/
 
 ポリシーのために```.json```形式を定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。なお、```templatefile```関数でこれを読みこむ時、```bash```ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files
 
 ```yaml
 repository/
@@ -571,7 +571,7 @@ service           = "bar"
 
 一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名、がわかるように命名する。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention
 
 ```terraform
 # 種類が無い時（thisの時）
@@ -588,7 +588,7 @@ service           = "bar"
 
 複数の値を持つlist型やmap型の環境変数であれば複数形で命名する。一方で、string型など値が```1```個しかなければ単数形とする。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 **＊実装例＊**
 
@@ -611,7 +611,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 ```count```引数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のbool型環境変数を用意する。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
 ```terraform
 enable_foo = true
@@ -981,7 +981,7 @@ $ asdf install
 
 前提として、バックエンドにS3を使用しているものとする。Makefileのコマンドを実行する前に、```provider.tf```ファイルの```backend```オプションを、『s3』から『local』に変更する。
 
-ℹ️ 参考：https://repl.info/archives/1435/
+> ℹ️ 参考：https://repl.info/archives/1435/
 
 ```terraform
 terraform {
@@ -1019,7 +1019,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 一時的な認証/認可サービス（例：AWS STS）を使用して、```terraform```コマンドの実行ユーザーを一時的に認証し、また同じく一時的な認可スコープを付与する。一時的な認証/認可としないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が常にクラウドプロバイダーのリソースを操作できるようになってしまう。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 
 <br>
 
@@ -1027,7 +1027,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 機密な変数を```ignore_changes```引数に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 
 ```terraform
 # AWS RDSの場合
@@ -1053,7 +1053,7 @@ resource "aws_rds_cluster" "this" {
 
 バックエンドのファイル暗号化機能を使用する。バックエンド内の```.tfstate```ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state
 
 <br>
 
@@ -1061,7 +1061,7 @@ resource "aws_rds_cluster" "this" {
 
 ```output```ブロックに機密な変数を含む場合は、```sensitive```オプションを有効化する。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs
 
 <br>
 
@@ -1081,7 +1081,7 @@ resource "aws_rds_cluster" "this" {
 
 Terraformでは、メジャーバージョン単位でアップグレードを行うことが推奨されている。そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず1つずつメジャーバージョンをアップグレードするように気をつける。この時、次のメジャーバージョンの『最新』までアップグレードしてしまって問題ない（例：現在のバージョンが `v0.13.0` であれば、`0.14`系の最新にアップグレード）。また、アップグレードの都度、リリースを行う。
 
-ℹ️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
+> ℹ️ 参考：https://www.terraform.io/upgrade-guides/1-0.html 
 
 #### 4. terraform planコマンドの警告/エラーを解決
 
@@ -1091,7 +1091,7 @@ Terraformでは、メジャーバージョン単位でアップグレードを�
 
 Terraformとプロバイダーのバージョンは独立して管理されている。プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。アップグレードガイドについては、以下のリンクを参考せよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
 - Terraform：https://www.terraform.io/language/upgrade-guides
 - AWSプロバイダー：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade
@@ -1128,22 +1128,22 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 テスト環境に対して```terraform plan```コマンドを実行し、ドライランを実施する。```terraform plan```コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。リリースの粒度を小さくし、差分が少なくなるようにする。
 
-ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 #### ▼ 単体テスト
 
 テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。外部のテストツール（例：Terratest）を使用しても良い。この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。また、確認後にリソースを```terraform destory```コマンドで削除する。残骸のリソースが残ることがあるので、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
-- https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
+> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
 
 #### ▼ 結合テスト
 
 テスト環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。外部のテストツール（例：Terratest）を使用しても良い。この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。また、確認後にリソースを```terraform destory```コマンドで削除する。残骸のリソースが残ることがあるので、合わせてテスト環境の全てのリソースをツール（例：cloud-nuke）で削除する。
 
-ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> ℹ️ 参考：https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
 <br>
 
@@ -1205,13 +1205,13 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 ステージング環境に対して```terraform apply```コマンドを実行し、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する
 
-ℹ️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
+> ℹ️ 参考：https://www.infracloud.io/blogs/testing-iac-terratest/
 
 #### ▼ 総合テスト（擬似的総合テストも含む）
 
 ステージング環境に対して```terraform apply```コマンドを実行し、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。クラウドプロバイダーのモックを使用し、擬似的な総合テストを実施しても良い。
 
-ℹ️ 参考：https://docs.localstack.cloud/ci/
+> ℹ️ 参考：https://docs.localstack.cloud/ci/
 
 <br>
 
@@ -1221,7 +1221,7 @@ AWSを作成する場合、TerraformのAWSプロバイダーを使用してい�
 
 独自```module```ブロックを使用している場合、```variable```ブロックや```output```ブロックに基づいて、```module```ブロックの仕様書を作成しておく。外部のドキュメント生成ツール（例：Terraform-doc）を使用しても良い。
 
-ℹ️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6
+> ℹ️ 参考：https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6
 
 <br>
 
@@ -1248,7 +1248,7 @@ DBインスタンスの設定変更でダウンタイムが発生する場合、
 
 ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 <br>
 

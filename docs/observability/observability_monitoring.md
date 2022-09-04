@@ -9,7 +9,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,10 +19,10 @@ description: 監視＠可観測性の知見を記録しています。
 
 既知のメトリクスとログを基に、システムにおける想定内の不具合の発生を未然に防ぐこと。想定内という点で、可観測性と区別できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://en.wikipedia.org/wiki/Website_monitoring
-- https://blog.thundra.io/observability-driven-development-for-serverless
+> - https://en.wikipedia.org/wiki/Website_monitoring
+> - https://blog.thundra.io/observability-driven-development-for-serverless
 
 <br>
 
@@ -30,7 +30,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 監視は、以下の要素からなる。
 
-ℹ️ 参考：https://www.amazon.co.jp/dp/4873118646
+> ℹ️ 参考：https://www.amazon.co.jp/dp/4873118646
 
 | アクション           | 説明                                                         |
 | -------------------- | ------------------------------------------------------------ |
@@ -67,40 +67,40 @@ description: 監視＠可観測性の知見を記録しています。
 
 Webページのローディング時に、Navigation-timing-APIに対してリクエストを送信すると、Webページパフォーマンスに関するメトリクスのデータポイントを収集できる。JavaScriptにNavigation-timing-APIにリクエストを送信する処理を組み込み、ページパフォーマンスに関するメトリクスのデータポイントを収集した後、これを監視する。
 
-ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
+> ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/API/Navigation_timing_API
 
 ページローディング時間は特に重要である。Amazonの自社調査では、ローディング時間が100ms短くなるごとに、売り上げが```1```%増加することが明らかになった。```4```秒以下を目指すと良い。
 
-ℹ️ 参考：https://bit.ly/2y494hq
+> ℹ️ 参考：https://bit.ly/2y494hq
 
 #### ▼ Googleアナリティクスによる監視
 
 サイト訪問後のユーザーエンゲージメントをデータとして監視する。リアルユーザー監視の一種ともみなせるが、パフォーマンスの監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
-- https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
-- https://www.amazon.co.jp/dp/4873118646
+> - https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
+> - https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
+> - https://www.amazon.co.jp/dp/4873118646
 
 #### ▼ Googleサーチコンソールによる監視
 
 検索エンジン上（サイト訪問前）のユーザーエンゲージメントをデータとして監視する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://support.google.com/webmasters/answer/9128668?hl=en
-- https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
+> - https://support.google.com/webmasters/answer/9128668?hl=en
+> - https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
 
 #### ▼ 合成監視（外部監視、外形監視）
 
 『外部監視、外形監視』ともいう。実際のユーザーの一連の操作を模したリクエストをアプリケーションに送信し、レスポンスに関するメトリクスのデータポイントを収集した後、これを監視する。ユーザーを模したリクエストを作成するという意味合いで、『合成』という。ユーザー視点で監視できる。特に、クリティカルユーザージャーニーの一連の操作を監視すると良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://takehora.hatenadiary.jp/entry/2019/07/05/012036
-- https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
-- https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+> - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
+> - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
+> - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
 <br>
 
@@ -120,14 +120,14 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 
 サーバー内にStatsDを常駐させ、アプリケーションでStatsDパッケージを使用すると、メトリクスのデータポイントを収集できる。
 
-ℹ️ 参考：https://github.com/statsd/statsd/wiki
+> ℹ️ 参考：https://github.com/statsd/statsd/wiki
 
 CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
-- https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
+> - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
 
 <br>
 
@@ -163,11 +163,11 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 ロードバランサーからターゲットに専用のリクエストを送信し、ターゲットが正しく動作しているか否かを確認する。OSI参照モデルのいずれのレイヤーまでの動作を確認するかによって、ヘルスチェックに種類がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.f5.com/ja_jp/services/resources/glossary/health-check
-- https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
-- https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/material/data/1/7.html
+> - https://www.f5.com/ja_jp/services/resources/glossary/health-check
+> - https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
+> - https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/material/data/1/7.html
 
 | ヘルスチェック名 | ヘルスチェック対象のOSI層 | ターゲット             | 方法                                                         |
 | ---------------- |----------------| ---------------------- | ------------------------------------------------------------ |
@@ -179,7 +179,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 実際のユーザーのリクエストを借りて、ターゲットが正しく動作しているか否かを確認する。アクティブ型とは異なり、ユーザーを犠牲することになるため、Webサイトの信頼性が低下する可能性がある。
 
-ℹ️ 参考：https://neinvalli.hatenablog.com/entry/2017/10/31/002839
+> ℹ️ 参考：https://neinvalli.hatenablog.com/entry/2017/10/31/002839
 
 <br>
 
@@ -193,7 +193,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 ジョブの最後にリクエストを実行する。ジョブの開始から最後のリクエストまでが、一定の時間内に完了するか否かを確認する。
 
-ℹ️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
+> ℹ️ 参考：https://healthchecks.io/docs/monitoring_cron_jobs/
 
 ```bash
 # ジョブをCronを使用して実装する場合

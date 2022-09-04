@@ -9,7 +9,7 @@ description: 検証ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -35,7 +35,7 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 フロントエンドの検証については以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_validation.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_validation.html
 
 | 検証パターン             | ```isset($var)```、```!is_null($var)``` |      ```if($var)```、```!empty($var)```       |
 |:-------------------|:--------------------------------------:|:--------------------------------------------:|

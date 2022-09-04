@@ -9,7 +9,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -29,7 +29,7 @@ $ aws configure
 
 プロファイルを新しく作成する。
 
-ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
+> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
 
 ```bash
 $ aws configure --profile <プロファイル名>
@@ -96,7 +96,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 AWS CLIを実行するアカウントのアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -107,7 +107,7 @@ aws_access_key_id = *****
 
 AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -118,7 +118,7 @@ aws_secret_access_key = *****
 
 認証で補助的に使用するセッショントークン値を設定する。```config```ファイルに設定することもできるが、```confidentials```ファイルへの設定が推奨されている。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -133,7 +133,7 @@ aws_session_token = *****
 
 AWS CLIの返却値のデータ形式を設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -144,7 +144,7 @@ output = json
 
 AWS CLIで操作するAWSリソースのリージョンを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [default]
@@ -155,7 +155,7 @@ region = ap-northeast-1
 
 AWS CLIの実行で、IAMユーザーに委譲するIAMロールを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -166,7 +166,7 @@ role_arn = arn:aws:iam::<アカウントID>:role/foo-role
 
 IAMロールの委譲後のIAMユーザーの一時的な名前を設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -177,7 +177,7 @@ role_session_name = hiroki.hasegawa
 
 IAMロールの委譲先のIAMユーザーのプロファイル名を設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings
 
 ```ini
 [profile foo]
@@ -200,7 +200,7 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 
 現在のターミナルで使用するプロファイルを設定する。```AWS_PROFILE```変数よりも優先される。
 
-ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
 $ export AWS_DEFAULT_PROFILE=default
@@ -218,7 +218,7 @@ $ export AWS_DEFAULT_REGION=ap-northeast-1
 
 現在のターミナルで使用するプロファイルを設定する。
 
-ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
+> ℹ️ 参考：https://qiita.com/shonansurvivors/items/1fb53a2d3b8dddab6629#aws_default_profile%E3%81%A8aws_profile%E3%81%AE%E9%81%95%E3%81%84
 
 ```bash
 $ export AWS_PROFILE=foo-profile
@@ -251,7 +251,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 返却されるデータの形式を設定できる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html
 
 #### ▼ json
 
@@ -285,7 +285,7 @@ $ aws iam list-users --output text > data.tsv
 
 返却されるデータのページングを設定できる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
 
 #### ▼ --max-items
 
@@ -319,7 +319,7 @@ $ aws iam list-users --page-size 10
 
 AWSリソースのAPI側でフィルタリングし、実際に取得するデータを制御できる。AWSリソースごとに専用のオプションがある。代わりに、```jq```コマンドの```select```関数を使用しても良い。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
 #### ▼ --filter
 
@@ -352,7 +352,7 @@ ACM、など
 
 #### ▼ --query
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-client-side-output
 
 ```bash
 # 全てのキーと値を取得する。
@@ -401,7 +401,7 @@ $ aws cloudwatch set-alarm-state \
 
 全てのロググループに対して、一日当たりの収集サイズを```start-time```から```end-time```の間で取得する。```--dimensions ```オプションを使用して、特定のディメンション（ロググループ）に対して集計を実行もできる（ただし、やってみたけどうまくいかず）。
 
-ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
 ```bash
 $ aws cloudwatch get-metric-statistics \
@@ -448,7 +448,7 @@ $ aws iam update-user \
 
 AWSリソースがリソースグループで管理されている場合、特定のタグを持つAWSリソースを取得する。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
@@ -600,7 +600,7 @@ $ aws secretsmanager get-secret-value \
 
 特定のパスで始まる全ての変数をSMパラメーターストアから取得する。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 
 ```yaml
 # パスのないパラメーターの場合
@@ -652,7 +652,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 AWSにSSOでログインする。認証フェーズを外部（Google Apps、AzureAD、KeyCloak、など）に委譲し、AWSでは認可フェーズのみを実施する。追加でMFAを使用している場合は、ワンタイムコードの入力が要求される。
 
-ℹ️ 参考：https://github.com/Versent/saml2aws
+> ℹ️ 参考：https://github.com/Versent/saml2aws
 
 ```bash
 $ saml2aws login

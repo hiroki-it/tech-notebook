@@ -9,7 +9,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,10 +21,10 @@ description: ロジック＠Terraformの知見を記録しています。
 
 実インフラのインフラの状態が定義されたjsonファイルのこと。バックエンドの場所に限らず、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
-- https://chroju.dev/blog/terraform_state_introduction
+> - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+> - https://chroju.dev/blog/terraform_state_introduction
 
 ```yaml
 {
@@ -93,7 +93,7 @@ description: ロジック＠Terraformの知見を記録しています。
 
 ```terraform apply```コマンドの完了前に処理を強制中断してしまうと、ロックが残ってしまう。これが起こると、以降、一連の```terraform```コマンドを実行できなくなってしまう。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
 ```bash
 $ terraform plan
@@ -125,11 +125,11 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 
 ```terraform```ブロックの設定に基づいて、開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.terraform.io/language/files/dependency-lock
-- https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
-- https://qiita.com/mziyut/items/0f4109c425165f5011df
+> - https://www.terraform.io/language/files/dependency-lock
+> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
+> - https://qiita.com/mziyut/items/0f4109c425165f5011df
 
 もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
 
@@ -171,7 +171,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 ハッシュ値を設定する、タグごとに役割が異なる。
 
-ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+> ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
 | タグ名   | 説明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -231,7 +231,7 @@ terraform {
 
 インフラの状態ファイル（```.tfstate```ファイル）を管理する場所を設定する。S3などの実インフラで管理する場合、クレデンシャル情報を設定する必要がある。代わりに、```terraform init```コマンド実行時に指定しても良い。デフォルト値は```local```である。通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは```providers.tf```ファイルの```backend```オプションを参照し、CDの中で```terraform init```コマンドのオプションを使用して値を渡すようにする。
 
-ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
+> ℹ️ 参考：https://www.terraform.io/language/settings/backends/s3
 
 **＊実装例＊**
 
@@ -425,11 +425,11 @@ resource "aws_acm_certificate" "example" {
 
 複数の```resource```ブロックをまとめ、一つの```resource```ブロックのように扱う。ドキュメントを確認すれば、いずれの```resource```ブロックが```module```ブロックに含まれているかがわかる。任意の```resource```を含めて良いわけではなく、同じ責務を持つ```resource```ブロックをまとめ、凝集度が高くなるようにする。```module```ブロック間で変数を受け渡すときは、必ずルートモジュールを経由し、```module```ブロック内で```module```ブロックを呼び出すことはしない。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.terraform.io/language/modules/sources
-- https://qiita.com/bigwheel/items/2b420183639416b5c6bb
-- https://registry.terraform.io/namespaces/terraform-aws-modules
+> - https://www.terraform.io/language/modules/sources
+> - https://qiita.com/bigwheel/items/2b420183639416b5c6bb
+> - https://registry.terraform.io/namespaces/terraform-aws-modules
 
 #### ▼ ローカルモジュールから読み込む
 
@@ -470,7 +470,7 @@ module "alb" {
 
 サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ（```//```）つけ、その後にパスを続ける。
 
-ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+> ℹ️ 参考：https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
 
 ```terraform
 ###############################
@@ -492,7 +492,7 @@ module "alb" {
 
 #### ▼ 環境変数の優先順位
 
-ℹ️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
+> ℹ️ 参考：https://www.terraform.io/language/values/variables#variable-definition-precedence
 
 #### ▼ ```-var```、```-var-file```
 
@@ -734,7 +734,7 @@ AWSのAPIに対してリクエストを送信し、クラウドインフラを�
 
 操作されるリソースの種類のこと。リソースとTerraformの```resource```タイプはおおよそ一致している。
 
-ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+> ℹ️ 参考：https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 #### ▼ 実装方法
 
@@ -822,7 +822,7 @@ data "aws_ami" "bastion" {
 
 ```module```ブロック内の```resource```ブロックが持つ値を```module```ブロック外に出力する。または、他の```.tfstate```ファイルの```resource```ブロックで使用できるようにする。可読性の観点から、```resource```ブロック一括ではなく、具体的な```attribute```を出力するようにした方が良い。
 
-ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
+> ℹ️ 参考：https://qiita.com/yukihira1992/items/a674fe717a8ead7263e4
 
 #### ▼ 実装方法
 
@@ -891,10 +891,10 @@ resource "foo" "this" {
 
 通常変数であり、定義されたローカル/リモートモジュール内にのみスコープを持つ。ルートモジュールとローカル/リモートモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.terraform.io/language/values/locals
-- https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+> - https://www.terraform.io/language/values/locals
+> - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
 
 ```terraform
 locals {
@@ -1189,7 +1189,7 @@ resource "aws_instance" "server" {
 
 特定の実行環境でリソースの作成の有無を切り替えたい場合、```.terraform.tfvars```ファイルからフラグ値を渡し、これがあるかないかを```count```引数で判定し、条件分岐を実現する。フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
-ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
+> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#count
 
 ```terraform
 # 特定の実行環境の.terraform.tfvarsファイル
@@ -1487,7 +1487,7 @@ resource "aws_lb" "this" {
 
 指定したブロックを繰り返し作成する。
 
-ℹ️ 参考：https://www.terraform.io/language/expressions/dynamic-blocks
+> ℹ️ 参考：https://www.terraform.io/language/expressions/dynamic-blocks
 
 #### ▼ map型の場合
 
@@ -1862,7 +1862,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ path式
 
-ℹ️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
+> ℹ️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 | 変数                      | 値                                                     | 例                         |
 | ------------------------- | ------------------------------------------------------ | -------------------------- |

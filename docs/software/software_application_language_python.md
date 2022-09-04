@@ -9,7 +9,7 @@ description: Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -134,11 +134,11 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 Pythonの命名規則は、PEPに記載されている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.python.org/dev/peps/pep-0007/
-- https://pep8-ja.readthedocs.io/ja/latest/
-- https://qiita.com/naomi7325/items/4eb1d2a40277361e898b
+> - https://www.python.org/dev/peps/pep-0007/
+> - https://pep8-ja.readthedocs.io/ja/latest/
+> - https://qiita.com/naomi7325/items/4eb1d2a40277361e898b
 
 #### ▼ パッケージ
 
@@ -184,16 +184,16 @@ Pythonの命名規則は、PEPに記載されている。
 
 ディレクトリに相当する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.python.org/ja/3/reference/import.html#packages
+> - https://docs.python.org/ja/3/reference/import.html#packages
 
 #### ▼ 基本的には```__init__.py```ファイルを配置すること
 
 通常パッケージとして扱うディレクトリには。```__init__.py```ファイルを配置する必要がある。一方で、名前空間パッケージではこれが不要である。
 
-- https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
-- https://rinatz.github.io/python-book/ch04-02-packages/
+> - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
+> - https://rinatz.github.io/python-book/ch04-02-packages/
 
 <br>
 
@@ -203,10 +203,10 @@ Pythonの命名規則は、PEPに記載されている。
 
 パッケージ内の各ファイルに相当する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://rinatz.github.io/python-book/ch04-01-modules/
-- https://qiita.com/msi/items/d91ea3900373ff8b09d7
+> - https://rinatz.github.io/python-book/ch04-01-modules/
+> - https://qiita.com/msi/items/d91ea3900373ff8b09d7
 
 <br>
 
@@ -220,13 +220,13 @@ Pythonの命名規則は、PEPに記載されている。
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
-ℹ️ 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+> ℹ️ 参考：https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
 
 #### ▼ アスタリスクを使用しないこと
 
 アスタリスクによるインポートは非推奨である。
 
-ℹ️ 参考：https://python.civic-apps.com/wildcard-import/
+> ℹ️ 参考：https://python.civic-apps.com/wildcard-import/
 
 #### ▼ 絶対パスを使用すること
 
@@ -267,7 +267,7 @@ def bar():
 
 複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、1つずつインポートした方が良い。
 
-ℹ️ 参考：https://www.tech-teacher.jp/blog/python-import/
+> ℹ️ 参考：https://www.tech-teacher.jp/blog/python-import/
 
 ```python
 # import foo, bar

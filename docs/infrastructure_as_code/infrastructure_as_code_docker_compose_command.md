@@ -9,7 +9,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -169,7 +169,7 @@ $ docker-compose logs -f <サービス名>
 
 クラウドインフラストラクチャの削除をプロビジョニングする。コンテキストがAWSの場合は、ECSクラスターとその中身を削除する。
 
-ℹ️ 参考：https://github.com/docker/compose-cli
+> ℹ️ 参考：https://github.com/docker/compose-cli
 
 <br>
 
@@ -177,6 +177,6 @@ $ docker-compose logs -f <サービス名>
 
 クラウドインフラストラクチャの作成をプロビジョニングする。コンテキストがAWSの場合は、ECSクラスターとその中身を作成する。
 
-ℹ️ 参考：https://github.com/docker/compose-cli
+> ℹ️ 参考：https://github.com/docker/compose-cli
 
 <br>

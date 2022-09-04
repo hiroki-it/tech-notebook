@@ -8,7 +8,7 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -122,7 +122,7 @@ foo($data);
 
 同じクラス内と、その子クラス、その親クラスでのみ呼び出せる。
 
-ℹ️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
+> ℹ️ 参考：https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 
 #### ▼ オブジェクト指向の場合
 
@@ -441,7 +441,7 @@ $foo->foo;
 
 定義されていないデータや、アクセス権のないデータに値を設定しようとした時に、代わりにコールされる。オブジェクトの不変性を実現するために使用される。オブジェクトの不変性は、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -703,7 +703,7 @@ $D = objB()->objC()->objC();
 
 以下のリンクも参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_algorithm.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_algorithm.html
 
 1. 適当な値を基準値（Pivot）とする （※できれば中央値が望ましい）
 2. Pivotより小さい数を前方、大きい数を後方に分割する。
@@ -916,7 +916,7 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの```EventDispatcher```クラスが簡単である。以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
 
 ```php
 <?php
@@ -1344,13 +1344,13 @@ final class FlagConstant
 
 区分値をinteger型の定数として扱う。区分値をデータとして持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ 数値計算、数値比較
 
 計算処理や数値比較処理では、可読性の観点から、できるだけ数値を直書きしない。数値に意味合いを持たせ、定数として扱うと可読性が高くなる。ドメイン駆動設計の値オブジェクトを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ▼ URL
 
@@ -1690,7 +1690,7 @@ var_dump($result); // true
 
 エスケープのために、必ずバックスラッシュを付ける必要がある。
 
-ℹ️ 参考：https://www-creators.com/archives/3102
+> ℹ️ 参考：https://www-creators.com/archives/3102
 
 **＊実装例＊**
 
@@ -1710,7 +1710,7 @@ var_dump($result); // 1
 
 ワイルドカードは『```.*```』または『```.+```』で意味する。ドットは任意の文字、アスタリスクは直前の文字が```0```回以上反復すること、プラスは```1```回以上反復することを意味する。
 
-ℹ️ 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
+> ℹ️ 参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
 
 **＊実装例＊**
 
@@ -1739,7 +1739,7 @@ var_dump($result); // 1
 
 クエスチョンの前に記載された文字列に関して、あってもなくても問題ないことを意味する。
 
-ℹ️ 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
+> ℹ️ 参考：http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 
 ```php
 <?php
@@ -1782,7 +1782,7 @@ var_dump($result); // 1
 
 文字列をグループ化する。正規表現に規則性がある場合に有効である。
 
-ℹ️ 参考：http://www.turtle.gr.jp/techno/regular-expression.html
+> ℹ️ 参考：http://www.turtle.gr.jp/techno/regular-expression.html
 
 ```php
 <?php

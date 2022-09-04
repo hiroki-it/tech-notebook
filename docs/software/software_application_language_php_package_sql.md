@@ -9,7 +9,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,7 +17,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 SQLを抽象化するAPIをアプリケーションに提供する。SQLの種類が異なっていても、共通のロジックでクエリを実行できる。
 
-ℹ️ 参考：https://thinkit.co.jp/free/marugoto/1/4/1/
+> ℹ️ 参考：https://thinkit.co.jp/free/marugoto/1/4/1/
 
 ![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php_sql_package.png)
 
@@ -25,7 +25,7 @@ SQLを抽象化するAPIをアプリケーションに提供する。SQLの種�
 
 ### PDOとは
 
-ℹ️ 参考：https://www.javadrive.jp/php/pdo/
+> ℹ️ 参考：https://www.javadrive.jp/php/pdo/
 
 <br>
 

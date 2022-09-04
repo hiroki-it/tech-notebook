@@ -9,7 +9,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -31,7 +31,7 @@ $ apt install apache2
 
 Apacheの主要な設定ファイル。Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
 
-ℹ️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
+> ℹ️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
 <br>
 
@@ -41,16 +41,16 @@ Apacheの主要な設定ファイル。Includeディレクティブを使用す�
 
 基本的に、```httpd.conf```ファイルで全ての機能を設定できる。ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、```.htaccess```ファイルを使用する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
-- https://ja.wikipedia.org/wiki/.htaccess
+> - https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
+> - https://ja.wikipedia.org/wiki/.htaccess
 
 #### ▼ ルートディレクトリに置いた場合
 
 全てのファイルに対して、ディレクティブが適用される。
 
-ℹ️ 参考：https://htaccess.cman.jp/attention/
+> ℹ️ 参考：https://htaccess.cman.jp/attention/
 
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
 
@@ -58,7 +58,7 @@ Apacheの主要な設定ファイル。Includeディレクティブを使用す�
 
 設置したディレクトリ配下の階層のファイルに対して適用される。
 
-ℹ️ 参考：https://htaccess.cman.jp/attention/
+> ℹ️ 参考：https://htaccess.cman.jp/attention/
 
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 
@@ -346,7 +346,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 
@@ -512,7 +512,7 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 ```Referrer-Policy```ヘッダーを追加し、値を```no-referrer-when-downgrade```とする。ちなみに、Chrome85以降の```Referrer-Policy```ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://www.chromestatus.com/feature/6251880185331712
+> ℹ️ 参考：https://www.chromestatus.com/feature/6251880185331712
 
 ```apacheconf
 Header set Referrer-Policy "no-referrer-when-downgrade"

@@ -9,7 +9,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,10 +19,10 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 『Command Query Responsibility Segregation（コマンドクエリ責務分離）』の略。リポジトリパターンにおける更新系と参照系の処理を分離する設計のこと。更新系のオブジェクトはそのままリポジトリとしてインフラ層に配置する。一方で参照系のオブジェクトは、参照のユースケースに応じて『QueryServiceオブジェクト』として設計し、ユースケース層に配置する（これ重要）。ソフトウェアに部分的に組み込める。```N+1```問題にも対処できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
-- https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
+> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
 ![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png)
 
@@ -32,7 +32,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 一覧画面に表示するデータは複数の集約からなるため、それぞれの集約に対応するリポジトリの参照系処理を順々にコールし、取得したデータを組み合わせる必要がある。そのため、一覧表示の度に複数のリポジトリをコールすることとなり、ソフトウェアのパフォーマンスに悪影響が出る可能性がある。また、異なるリポジトリをまたいでWHERE句を使用できないため、複数の集約に渡る絞り込み検索を実装できない。しかしCQRSを使用すると、更新系のオブジェクトはリポジトリ、一方で参照系のオブジェクトはユースケースに応じたQueryServiceオブジェクトとして設計することになる。そのため、更新系では集約の単位をそのままにして、集約とは無関係な参照系処理を設計できる。
 
-ℹ️ 参考：https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> ℹ️ 参考：https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
 <br>
 
@@ -44,10 +44,10 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 CREATE、UPDATE、DELETE処理を実行する処理フローのこと。今回、クリーンアーキテクチャを前提としてCQRSを説明する。概念や実装方法は以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
-- https://github.com/hiroki-it/ddd-backend-with-laravel
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> - https://github.com/hiroki-it/ddd-backend-with-laravel
 
 #### ▼ 処理順序
 
@@ -65,10 +65,10 @@ CREATE、UPDATE、DELETE処理を実行する処理フローのこと。今回�
 
 READ処理を実行するオブジェクトのこと。今回、クリーンアーキテクチャを前提としてCQRSを説明する。Queryでは概念や実装方法は以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
-- https://github.com/hiroki-it/ddd-backend-with-laravel
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> - https://github.com/hiroki-it/ddd-backend-with-laravel
 
 #### ▼ 処理順序
 
@@ -91,7 +91,7 @@ READ処理を実行するオブジェクトのこと。今回、クリーンア�
 
 イベントソーシングの実装方法は様々ある。イベントソーシングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
-- https://postd.cc/using-cqrs-with-event-sourcing/
+> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> - https://postd.cc/using-cqrs-with-event-sourcing/

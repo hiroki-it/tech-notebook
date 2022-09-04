@@ -9,7 +9,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,10 +21,10 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にワーカーNodeを持つClusterを作成する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://minikube.sigs.k8s.io/docs/commands/
-- https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
+> - https://minikube.sigs.k8s.io/docs/commands/
+> - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine_driver.png)
 
@@ -32,7 +32,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、ワーカーNodeを持つClusterを作成する。
 
-ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
+> ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_docker_driver.png)
 
@@ -44,11 +44,11 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 ゲスト（ワーカーNode）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
-ℹ️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
+> ℹ️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
 #### ▼ ドライバーの種類
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 | ホスト側のOS | ゲスト（ワーカーNode）側のOS              |
 |---------|--------------------------------|
@@ -64,7 +64,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 
 NodePort Serviceを作成しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
 
-ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
+> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube ip
@@ -74,7 +74,7 @@ $ minikube ip
 
 LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
 
-ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
+> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube tunnel
@@ -84,7 +84,7 @@ $ minikube tunnel
 
 ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
 
-ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
+> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
 ```bash
 $ minikube ssh
@@ -104,7 +104,7 @@ docker@minikube:~$ curl -X GET http://<IPアドレス>
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
 ```bash
 $ mkdir -p ~/.minikube/files/etc
@@ -119,7 +119,7 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 | ドライバー名        | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のワーカーNodeのディレクトリ |
 |---------------|---------|-----------------|--------------------------|
@@ -138,7 +138,7 @@ $ minikube start
 
 ゲスト仮想環境内のワーカーNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
-ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
 - ```/data```
 - ```/var/lib/minikube```
@@ -157,7 +157,7 @@ $ minikube start
 
 Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーごとのを使用して、ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる。またワーカーNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからワーカーNode、ワーカーNodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内コンテナに間接的にマウントできる。
 
-ℹ️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
+> ℹ️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
 #### ▼ HyperKitドライバーを使用する場合
 
@@ -212,7 +212,7 @@ spec:
 
 ワーカーNode内で```ip addr```コマンドを実行すると、ワーカーNodeに割り当てられたCIDRブロックを確認できる。
 
-ℹ️ 参考：https://nishipy.com/archives/1467
+> ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 
@@ -232,7 +232,7 @@ docker@minikube:~$ ip addr | grep eth0
 
 ワーカーNode内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
-ℹ️ 参考：https://nishipy.com/archives/1467
+> ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 

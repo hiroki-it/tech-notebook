@@ -9,7 +9,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -17,13 +17,13 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### アーキテクチャ
 
-ℹ️ 参考：http://delftswa.github.io/chapters/vagrant/
+> ℹ️ 参考：http://delftswa.github.io/chapters/vagrant/
 
 ### ユースケース
 
 Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。Vagrantfile自体をプロビジョナーとして使用もできる。仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
 
-ℹ️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
+> ℹ️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
 ![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
 
@@ -35,7 +35,7 @@ Vagrantfileを使用して、プロバイダーとプロビジョナーを操作
 
 仮想サーバー/コンテナを提供する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/providers
+> ℹ️ 参考：https://www.vagrantup.com/docs/providers
 
 #### ▼ プロバイダーの種類
 
@@ -54,7 +54,7 @@ Vagrantfileを使用して、プロバイダーとプロビジョナーを操作
 
 プロバイダーによって作成された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/provisioning
+> ℹ️ 参考：https://www.vagrantup.com/docs/provisioning
 
 #### ▼ プロビジョナーの種類
 
@@ -81,7 +81,7 @@ Vagrantfileを使用して、プロバイダーとプロビジョナーを操作
 
 Vagrantfileのバージョンを設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/version
+> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -107,7 +107,7 @@ end
 
 仮想環境のベースとするボックス名を設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
+> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -157,13 +157,13 @@ end
 
 仮想環境のネットワークを設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
+> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ▼ forwarded_port
 
 ホストから仮想環境へポートフォワーディングを設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
+> ℹ️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -177,7 +177,7 @@ end
 
 仮想環境にプライベートIPアドレスを設定する。同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/networking/private_network
+> ℹ️ 参考：https://www.vagrantup.com/docs/networking/private_network
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -195,11 +195,11 @@ end
 
 プロバイダー固有のオプションを設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
+> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
 #### ▼ virtualbox
 
-ℹ️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
+> ℹ️ 参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -215,7 +215,7 @@ end
 
 #### ▼ docker
 
-ℹ️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
+> ℹ️ 参考：https://www.vagrantup.com/docs/providers/docker/configuration
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -236,16 +236,16 @@ end
 
 仮想環境のプロビジョニングを設定する。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
+> ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 #### ▼ shell
 
 shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式（```<<-```）を使用すると良い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.vagrantup.com/docs/provisioning/shell
-- https://monologu.com/vagrant-shell-provisioning/
+> - https://www.vagrantup.com/docs/provisioning/shell
+> - https://monologu.com/vagrant-shell-provisioning/
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -263,7 +263,7 @@ end
 
 ホスト側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。開発環境ではこのオプションを使用することは非推奨で、```ansible_local```オプションを使用することが推奨されている。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
+> ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -280,10 +280,10 @@ end
 
 仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分自身を指定してプロビジョニングを実行することになる。開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.vagrantup.com/docs/provisioning/ansible_local
-- https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
+> - https://www.vagrantup.com/docs/provisioning/ansible_local
+> - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -320,7 +320,7 @@ end
 
 ホスト上のディレクトリを仮想環境にマウントする。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
+> ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -334,7 +334,7 @@ end
 
 マウント方法を設定する。デフォルト値は、VirtualBox共有ディレクトリである。その他、NFS、RSync、SMBを設定できる。
 
-ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
+> ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -346,13 +346,13 @@ end
 
 ホストと仮想環境間のファイルの入出力の速度差によって、仮想環境のパフォーマンスに差がある。以下のリンクで、ロードテストを実施したところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
 
-ℹ️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
+> ℹ️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
 また、『```RSync > NFS```』『```NFS > SMB```』である。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
-- https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
+> - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
+> - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 
 これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良くなると考えておけばよい。

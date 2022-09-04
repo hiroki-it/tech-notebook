@@ -8,7 +8,7 @@ title: 【IT技術の知見】システム
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -18,7 +18,7 @@ title: 【IT技術の知見】システム
 
 ソフトウェア（OS、ミドルウェア、アプリケーション）とハードウェアの要素と合わせたグループのこと。
 
-ℹ️ 参考：https://thinkit.co.jp/article/11526
+> ℹ️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
@@ -38,7 +38,7 @@ title: 【IT技術の知見】システム
 
 システムのうちで、特にWeb技術に関するもののこと。ハードウェアとしてのwebサーバー/appサーバー/dbサーバーと、Webに関するソフトウェアからなる。近年は、仮想サーバー/コンテナを使用してWebシステムのハードウェア部分を作成することが多いため、Web/App/dbサーバーではなく、仮想Web/App/DB環境と呼ぶ方が適切かもしれない。
 
-ℹ️ 参考：http://www.iwass.co.jp/dev/devweb.html
+> ℹ️ 参考：http://www.iwass.co.jp/dev/devweb.html
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 

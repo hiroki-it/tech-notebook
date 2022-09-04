@@ -9,7 +9,7 @@ description: アドオン＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ description: アドオン＠Kubernetesの知見を記録しています。
 
 kube-apiserverにて、認証ステップと認可ステップの後にadmission-controllersアドオンのステップを実行できる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-- https://knowledge.sakura.ad.jp/21129/
-- https://www.sobyte.net/post/2022-07/k8s-auth/
+> - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+> - https://knowledge.sakura.ad.jp/21129/
+> - https://www.sobyte.net/post/2022-07/k8s-auth/
 
 <br>
 
@@ -35,11 +35,11 @@ kube-apiserverにて、認証ステップと認可ステップの後にadmission
 
 admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
-- https://www.digihunch.com/2022/01/kubernetes-admission-control/
-- https://gashirar.hatenablog.com/entry/2020/10/31/141357
+> - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+> - https://www.digihunch.com/2022/01/kubernetes-admission-control/
+> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
 | ステップ名                   | 説明                                   |
 | ---------------------------- | -------------------------------------- |
@@ -54,7 +54,7 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
 
-ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
+> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
 ```bash
 # admissionアドオンを確認する。
@@ -90,10 +90,10 @@ ValidatingAdmissionWebhook,
 
 MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストを送信し、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewのレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://gashirar.hatenablog.com/entry/2020/10/31/141357
-- https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
+> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
+> - https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
 
 #### ▼ MutatingWebhookConfiguration
 
@@ -101,10 +101,10 @@ MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionス�
 
 MutatingWebhookConfigurationでは、mutating-admissionステップのWebhookの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 
 **＊例＊**
 
@@ -144,11 +144,11 @@ webhooks:
 
 kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-- https://tokibi.hatenablog.com/entry/2020/01/07/150359
-- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -227,12 +227,12 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストファイルのpatch処理の定義方法は、JSON Patchツールに依存している。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
-- https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
-- https://jsonpatch.com/
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
+> - https://jsonpatch.com/
 
 **＊例＊**
 
@@ -273,7 +273,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 
 ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップでWebhookによる独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
-ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
 #### ▼ ValidatingWebhookConfiguration
 
@@ -281,11 +281,11 @@ ValidatingAdmissionWebhookアドオンを使用すると、validating-admission�
 
 ValidatingWebhookConfigurationでは、validating-admissionステップのWebhookの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
-- https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
-- https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
 **＊例＊**
 
@@ -323,16 +323,16 @@ webhooks:
 
 kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
-ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 #### ▼ AdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-- https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
 **＊例＊**
 
@@ -363,7 +363,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 ワーカーNodeの水平スケーリングを実行する。metrics-serverから取得したPodの最大リソース消費量（```spec.resources```キーの合計値）と、ワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればワーカーNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。マスターNodeに配置することが推奨されている。
 
-ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
+> ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
 <br>
 
@@ -373,7 +373,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用できる。
 
-ℹ️ 参考：https://sreake.com/blog/learn-about-karpenter/
+> ℹ️ 参考：https://sreake.com/blog/learn-about-karpenter/
 
 <br>
 
@@ -385,10 +385,10 @@ AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用�
 
 PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNICに割り当てる。これにより、Clusterネットワーク内にあるPodに通信できるようにする。cniアドオンは、kubeletによるPodの起動時に有効化される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
-- https://kubernetes.io/docs/concepts/cluster-administration/networking/
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
+> - https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 <br>
 
@@ -398,7 +398,7 @@ PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNI
 
 ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
-ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
@@ -408,7 +408,7 @@ PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNI
 
 CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNS Serviceによって管理されている。
 
-ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+> ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 ```bash
 # CoreDNS Service

@@ -9,7 +9,7 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -61,10 +61,10 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 Docker、Containerd、Podman、LXC、OpenVZ、など
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
-- https://news.mynavi.jp/techplus/article/zerocontena-7/
+> - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+> - https://news.mynavi.jp/techplus/article/zerocontena-7/
 
 <br>
 
@@ -90,7 +90,7 @@ Docker、Containerd、Podman、LXC、OpenVZ、など
 
 sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もオーバーヘッドが小さい。
 
-ℹ️ 参考：https://codezine.jp/article/detail/7894
+> ℹ️ 参考：https://codezine.jp/article/detail/7894
 
 ![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
 

@@ -9,7 +9,7 @@ description: Lambda関数の実装＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: Lambda関数の実装＠AWSの知見を記録しています。
 
 自身から起動することはなく、外部から要求されて実行される関数のこと。
 
-ℹ️ 参考：https://garop.com/36/
+> ℹ️ 参考：https://garop.com/36/
 
 <br>
 
@@ -29,7 +29,7 @@ description: Lambda関数の実装＠AWSの知見を記録しています。
 
 Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。```return```または```throw```を使用して、Lambdaのコール元にレスポンスを送信する。レスポンスとして、Promiseオブジェクトを送信もできる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 **＊実装例＊**
 
@@ -76,7 +76,7 @@ exports.handler = async (event) => {
 
 Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。このオブジェクトにはメソッドとプロパティを持つ。ハンドラ関数の初期名は```handler```であるが別名でも良い。```callback```メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
 （※『Non』が翻訳をおかしくしているため、英語版を推奨）
 
@@ -137,7 +137,7 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 #### ▼ ベストプラクティス
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
 
 <br>
 
@@ -153,7 +153,7 @@ Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリ�
 
 Lamda関数を実行するための関数。```Start```関数に渡すパラメーターには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。もし含まれていない場合は、Lambdaで内部エラーが起こる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
 
 ```go
 package main
@@ -183,7 +183,7 @@ func main() {
 
 contextオブジェクトとeventオブジェクトをパラメーターとして使用できる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
 
 <br>
 
@@ -191,7 +191,7 @@ contextオブジェクトとeventオブジェクトをパラメーターとし�
 
 #### ▼ 全種類
 
-ℹ️ 参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
+> ℹ️ 参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
 
 #### ▼ SNSイベントの場合
 
@@ -276,21 +276,21 @@ func main() {
 
 正常系レスポンスの構成要素については以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
 文字列を返却すると、Lambdaはその文字列をそのまま返信する。また、JSONをレスポンスもできる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
 #### ▼ 異常系
 
 Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
 エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
 ```yaml
 {
@@ -343,7 +343,7 @@ func main() {
 
 標準パッケージの```fmt```、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。CloudWatchログにてこれを確認する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 
 <br>
 
@@ -351,7 +351,7 @@ func main() {
 
 ### Amplify -> EventBridge -> Lambda ->Slack-API
 
-ℹ️ 参考：https://github.com/hiroki-it/notify-slack-of-amplify-events
+> ℹ️ 参考：https://github.com/hiroki-it/notify-slack-of-amplify-events
 
 <br>
 
@@ -376,7 +376,7 @@ func main() {
 
 各AWSオブジェクトのメソッドの後に、```promise```メソッドをチェーンできる。これにより、各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
+> ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
 
 ```javascript
 "use strict";
@@ -415,10 +415,10 @@ exports.handler = async (event) => {
 
 AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
-- https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
+> - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
+> - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
 
 ```javascript
 "use strict";

@@ -10,7 +10,7 @@ description: template.json＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -28,7 +28,7 @@ description: template.json＠Packerの知見を記録しています。
 
 プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、AnsibleでAMIの作成まで行い、TerraformでAMIからEC2インスタンスを作成するように区別する。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
 
-ℹ️ 参考：https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
+> ℹ️ 参考：https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
 
@@ -40,7 +40,7 @@ description: template.json＠Packerの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-ℹ️ 参考：https://www.packer.io/downloads
+> ℹ️ 参考：https://www.packer.io/downloads
 
 ```bash
 $ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -

@@ -8,7 +8,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -160,7 +160,7 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 
 Composerの```composer.lock```ファイルに相当する。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
 
 <br>
 
@@ -269,7 +269,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 #### ▼ aptリポジトリから
 
-ℹ️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+> ℹ️ 参考：https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
 ```bash
 $ apt-get install yarn
@@ -277,7 +277,7 @@ $ apt-get install yarn
 
 #### ▼ npmレジストリから
 
-ℹ️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
+> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/install#mac-stable
 
 ```bash
 $ npm install --global yarn
@@ -295,7 +295,7 @@ Npmと同じ。
 
 Composerの```composer.lock```ファイルに相当する。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_management.html
 
 <br>
 
@@ -331,7 +331,7 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 
 必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ、不足があれば```install```コマンドを実行する。
 
-ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+> ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
 ```bash
 $ yarn install --check-files
@@ -365,7 +365,7 @@ $ yarn remove <パッケージ名>
 
 指定したパッケージを```package.json```ファイルの範囲内でアップグレードする。
 
-ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 ```bash
 $ yarn upgrade <パッケージ名>@<バージョンタグ>
@@ -375,7 +375,7 @@ $ yarn upgrade <パッケージ名>@<バージョンタグ>
 
 全てのパッケージを、```package.json```ファイルを無視して最新までアップグレードする。
 
-ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 ```
 yarn upgrade --latest
@@ -391,7 +391,7 @@ yarn upgrade --latest
 
 JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.html```ファイルがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、Webページの読み出しが早くなる。
 
-ℹ️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
+> ℹ️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 

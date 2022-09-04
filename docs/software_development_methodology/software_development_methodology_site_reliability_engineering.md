@@ -9,7 +9,7 @@ description: SREing：Site Reliability Engineeringの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -83,7 +83,7 @@ SREingには、継続的な改善によって、システムの信頼性を向�
 
 SREerチームとアプリケーションチームの間で、どのようにコミュニケーションを行なっていくかは、SREerの組み込み方によって異なる。
 
-ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
+> ℹ️ 参考：https://x-tech5.co.jp/2022/02/21/204/
 
 <br>
 
@@ -95,16 +95,16 @@ SREerチームとアプリケーションチームの間で、どのようにコ
 
 SREチームのValueから、SREerに必要な技術がわかる。
 
-ℹ️ 参考：https://gist.github.com/south37/85d97e02d7816a31053971d63c164880
+> ℹ️ 参考：https://gist.github.com/south37/85d97e02d7816a31053971d63c164880
 
 #### ▼ 3-shake、Topotal
 
 提供しているサービスから、SREerに必要な技術がわかる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://sreake.com/
-- https://topotal.com/services/sre-as-a-service
+> - https://sreake.com/
+> - https://topotal.com/services/sre-as-a-service
 
 <br>
 
@@ -112,5 +112,5 @@ SREチームのValueから、SREerに必要な技術がわかる。
 
 #### ▼ SREウィークリー
 
-ℹ️ 参考：https://sreweekly.com/about-sre-weekly-2/
+> ℹ️ 参考：https://sreweekly.com/about-sre-weekly-2/
 

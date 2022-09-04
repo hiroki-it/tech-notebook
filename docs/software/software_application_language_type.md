@@ -9,7 +9,7 @@ description: 言語の種類＠アプリケーションを記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -21,11 +21,11 @@ description: 言語の種類＠アプリケーションを記録しています�
 
 プログラミングを行う時の様式のこと。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
-- https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
-- https://umtp-japan.org/event-seminar/4233
+> - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
+> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
+> - https://umtp-japan.org/event-seminar/4233
 
 <br>
 
@@ -33,11 +33,11 @@ description: 言語の種類＠アプリケーションを記録しています�
 
 複数の様式でプログラミングできる言語もあり、これは『マルチパラダイム言語』という。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://web-camp.io/magazine/archives/61816
-- https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
-- https://style.potepan.com/articles/12941.html
+> - https://web-camp.io/magazine/archives/61816
+> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
+> - https://style.potepan.com/articles/12941.html
 
 |            | 手続き型 | 構造化 | オブジェクト指向型 | 命令型 | 宣言型 | 関数型 | 論理型 |
 |------------|------|-----|-----------|-----|-----|-----|-----|
@@ -88,7 +88,7 @@ description: 言語の種類＠アプリケーションを記録しています�
 
 Java仮想マシンによって、中間言語方式で翻訳される。
 
-ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
+> ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
 （例）Java、Scala、Groovy、Kotlin、など。
 
@@ -100,7 +100,7 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 プログラミングの構成要素（データ、変数、関数）に対して、『型』という特性を付与する仕組みのこと。
 
-ℹ️ 参考：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+> ℹ️ 参考：https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
 
 <br>
 

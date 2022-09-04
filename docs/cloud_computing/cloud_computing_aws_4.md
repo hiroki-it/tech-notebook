@@ -9,7 +9,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -19,7 +19,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 他のAWSリソースのイベントによって駆動する関数を管理できる。ユースケースについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
+> ℹ️ 参考：ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
 ![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
 
@@ -46,7 +46,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 ### 設定のベストプラクティス
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration
 
 <br>
 
@@ -62,11 +62,11 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
 
 実行環境には、```3```個のフェーズがある。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
 
 ![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-lifecycle.png)
 
@@ -88,23 +88,23 @@ Lambdaは関数を実行する。実行環境側のランタイムは、APIを�
 
 #### ▼ ベースイメージの準備
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
 
 #### ▼ RIC：Runtime Interface Clients
 
 通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりにRICを使用してコンテナ内関数と通信を行う。言語別にRICパッケージが用意されている。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client
 
 #### ▼ RIE：Runtime Interface Emulator
 
 開発環境のコンテナで、擬似的にLambda関数を再現する。全ての言語で共通のRIEパッケージが用意されている。
 
-ℹ️ 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
+> ℹ️ 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
 
 RIEであっても、稼働させるためにAWSのクレデンシャル情報（アクセスキーID、シークレットアクセスキー、リージョン）が必要なため、環境変数や```credentials```ファイルを使用して、Lambdaにこれらの値を出力する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env
 
 **＊参考＊**
 
@@ -167,19 +167,19 @@ $ curl \
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+> - https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
 
 #### ▼ Node.jsの使用例
 
 以下のリンクを参考にせよ。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
-- https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+> - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
 
 <br>
 
@@ -189,7 +189,7 @@ $ curl \
 
 Lambdaは、関数の実行中に再びリクエストが送信されると、関数のインスタンスを新しく作成する。そして、各関数インスタンスを使用して、同時並行的にリクエストに応じる。デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 
 ![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda_concurrency-model.png)
 
@@ -238,13 +238,13 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 ビルド後のコードを```.zip```ファイルにしてアップロードする。ローカルマシンまたはS3からアップロードできる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
 
 #### ▼ ECRにおけるイメージ
 
 コンテナイメージの関数でのみ有効である。ビルド後のコードをコンテナイメージしてアップロードする。ECRからアップロードできる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
 
 <br>
 
@@ -275,7 +275,7 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
 <br>
 
@@ -463,10 +463,10 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 02. LB
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://aws.amazon.com/jp/elasticloadbalancing/features/
-- https://faq.support.nifcloud.com/faq/show/420?site_domain=default
+> - https://aws.amazon.com/jp/elasticloadbalancing/features/
+> - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
 
 | 負荷分散対象のOSI層 | ターゲット                      | リスナーの対応プロトコル  | LB名                           | セキュリティグループ |
 | ----------- | ------------------------------- | ------------------------- | ------------------------------ | -------------------- |
@@ -483,7 +483,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 クラウドリバースプロキシサーバー、かつクラウドロードバランサーとして働く。リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
 
-ℹ️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer
+> ℹ️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer
 
 ![ALBの機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBの機能.png)
 
@@ -527,7 +527,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ALBの実体で、各ALBインスタンスが異なるグローバルIPアドレスを持つ。複数のAZにルーティングするようにALBを設定した場合、各AZにALBインスタンスが1つずつ配置される。
 
-ℹ️ 参考：https://blog.takuros.net/entry/2019/08/27/075726
+> ℹ️ 参考：https://blog.takuros.net/entry/2019/08/27/075726
 
 ![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alb-instance.png)
 
@@ -541,7 +541,7 @@ ALBに割り当てられるIPアドレスには、VPCのものが適用される
 
 #### ▼ ```500```系ステータスコードの原因
 
-ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
+> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
 
 #### ▼ ALBのセキュリティグループ
 
@@ -555,13 +555,13 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 アプリケーションが常時SSLになっているアプリケーション（例：WordPress）の場合、ALBからアプリケーションにHTTPプロトコルでルーティングすると、HTTPSプロトコルへのリダイレクトループが発生してしまう。常時SSLがデフォルトになっていないアプリケーションであれば、これは起こらない。
 
-ℹ️ 参考：https://cloudpack.media/525
+> ℹ️ 参考：https://cloudpack.media/525
 
 #### ▼ webサーバーにおける対処方法
 
 ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、webサーバーへのリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
 
-ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
@@ -575,7 +575,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションへのリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、webサーバー側の対応不要）。
 
-ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
+> ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
 **＊実装例＊**
 
@@ -598,7 +598,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ターゲットへのリクエスト転送時の加重ルールを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
+> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
 
 #### ▼ ラウンドロビン
 
@@ -608,7 +608,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 受信したリクエストを、未処理のリクエスト数が最も少ないターゲットにルーティングする。
 
-ℹ️ 参考：https://www.infraexpert.com/study/loadbalancer4.html
+> ℹ️ 参考：https://www.infraexpert.com/study/loadbalancer4.html
 
 <br>
 
@@ -645,7 +645,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただし、その分費用が高いことに注意する。
 
-ℹ️ 参考：https://www.ragate.co.jp/blog/articles/10234
+> ℹ️ 参考：https://www.ragate.co.jp/blog/articles/10234
 
 <br>
 
@@ -655,7 +655,7 @@ RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害�
 
 RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH接続を行えない。
 
-ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
+> ℹ️ 参考：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
 
 #### ▼ 確認方法
 
@@ -706,7 +706,7 @@ SHOW variables LIKE '%version%';
 
 DBクラスター/DBインスタンスの設定の変更をスケジューリングする。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
 
 #### ▼ メンテナンスの適切な曜日/時間帯
 
@@ -718,11 +718,11 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア/OS/DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。『次のメンテナンスウィンドウ』を選択すれば実行タイミングをメンテナンスウィンドウの間設定できるが、これを行わない場合は『日付の適用』に表示された時間帯に強制実行される。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
 
 ちなみに保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
 
 ![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
 
@@ -739,7 +739,7 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。しかし、CLIを使用すると戻せる。
 
-ℹ️ 参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+> ℹ️ 参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
 
 ```bash
 $ aws rds describe-pending-maintenance-actions --output=table
@@ -784,10 +784,10 @@ $ aws rds apply-pending-maintenance-action \
 
 保留中の変更を画面上からは取り消せない。しかし、CLIを使用すると戻せる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
-- https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
+> - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
 
 ```bash
 $ aws rds modify-db-instance \
@@ -800,11 +800,11 @@ $ aws rds modify-db-instance \
 
 以下のような報告書のもと、調査と対応を行う。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
 
 またマージされる内容の調査のため、リリースノートの確認が必要になる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
 
 ```markdown
 # 調査
@@ -845,7 +845,7 @@ $ aws rds modify-db-instance \
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> ℹ️ 参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 | 設定項目                | 説明                                                         | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------------- | ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -865,7 +865,7 @@ $ aws rds modify-db-instance \
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> ℹ️ 参考：https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
 
 | 設定項目                               | 説明                                                         | 補足                                                         |
 | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -884,7 +884,7 @@ $ aws rds modify-db-instance \
 
 DBエンジンにAuroraを選択した場合にのみ使用できる。DBインスタンスとクラスターボリュームから構成されている。コンピューティングとして機能するDBインスタンスと、ストレージとして機能するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守れる。また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
 ![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster.png)
 
@@ -892,7 +892,7 @@ DBエンジンにAuroraを選択した場合にのみ使用できる。DBイン�
 
 コンソール画面にて、DBクラスター内の全てのDBインスタンスを削除すると、DBクラスターも自動的に削除される。一方で、AWS-APIをコールして全てのDBインスタンスを削除する場合、DBクラスターは自動的に削除されずに、空の状態になる。例えば、Terraformを使用してDBクラスターを作成する時に、インスタンスの作成に失敗するとDBクラスターが空になる、これは、TerraformがAWS-APIをコールした作成を行っているためである。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
 
 #### ▼ グローバルクラスター
 
@@ -910,10 +910,10 @@ DBエンジンにAuroraを選択した場合にのみ使用できる。DBイン�
 
 （５）DRリージョンをフェイルオーバーさせる。メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
-- https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
+> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
+> - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
 
 <br>
 
@@ -942,12 +942,12 @@ Auroraをエンジンバージョンに選択した場合に使用できる。�
 
 （２）リードレプリカが再起動され、この時に```20```～```30```秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
-- https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
-- https://noname.work/2407.html
-- https://www.yuulinux.tokyo/8070/
+> - https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
+> - https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
+> - https://noname.work/2407.html
+> - https://www.yuulinux.tokyo/8070/
 
 <br>
 
@@ -973,7 +973,7 @@ Auroraでは、設定値（例：OS、エンジンバージョン、MySQL）の�
 
 非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。ただし、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 #### ▼ エンジンタイプによるダウンタイムの最小化
 
@@ -1086,13 +1086,13 @@ NOW()
 
 プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。DBクラスター内の全てのDBインスタンスが同じAZに配置されている場合、あらかじめ異なるAZにリードレプリカを新しく作成する必要がある。また、フェイルオーバー時に、もしDBクラスター内にリードレプリカが存在していない場合、異なるAZに昇格後のプライマリーインスタンスが自動的に作成される。リードレプリカが存在している場合、これがプライマリーインスタンスに昇格する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance
 
 #### ▼ フェイルオーバーによるダウンタイムの最小化
 
 DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
-ℹ️ 参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
+> ℹ️ 参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
 （１）アプリケーションの接続先をプライマリーインスタンスにする。
 
@@ -1108,7 +1108,7 @@ Auroraの場合、フェイルオーバーによって昇格するDBインスタ
 2. インスタンスクラスの大きさ
 3. 同じサブネット
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
 #### ▼ ダウンタイムを最小化できない場合
 
@@ -1131,11 +1131,11 @@ DBインスタンスに応じたエンドポイントが用意されている。
 
 リードレプリカの手動追加もしくはオートスケーリングによって、Auroraに関するメトリクス（例：平均CPU使用率、平均DB接続数、など）がターゲット値を維持できるように、リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する。注意点として、RDS（非Aurora）スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
-- https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
-- https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
+> - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
+> - https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
 
 #### ▼ クエリキャッシュの利用
 
@@ -1145,7 +1145,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する。ただし、MySQ
 
 スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。スロークエリを検出する方法として、RDSの```long_query_time```パラメーターに基づいた検出や、```EXPLAIN```句による予想実行時間の比較などがある。ユニークキー、インデックス、```EXPLAIN```句、については以下のリンクを参考にせよ。
 
-ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_query.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_query.html
 
 #### ▼ テーブルを正規化し過ぎない
 
@@ -1172,7 +1172,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
 
 <br>
 
@@ -1182,7 +1182,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 #### ▼ ダウンタイムの発生条件
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
 | 変更する項目                         | ダウンタイムの有無 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------ | ------------------ |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1211,17 +1211,17 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
-ℹ️ 参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
+> ℹ️ 参考：https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
 （１）アプリケーションの接続先をプライマリーインスタンスにする。
 
 （２）特定の条件下でのみ、フェイルオーバーが自動的に実行される。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
 
 （3）非AuroraのRDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
 
 （4）フェイルオーバー時に約```1```～```2```分のダウンタイムが発生する。フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。
 
@@ -1231,7 +1231,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
-ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
 
 <br>
 
@@ -1249,7 +1249,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 クラウドDNSサーバーとして働く。リクエストされたドメイン名とEC2のグローバルIPアドレスをマッピングしている。名前の由来は、名前解決時に```53```番ポートを使用するためである。
 
-ℹ️ 参考：https://go-journey.club/archives/2665
+> ℹ️ 参考：https://go-journey.club/archives/2665
 
 <br>
 
@@ -1268,7 +1268,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 各ホストゾーンにドメインの名前解決方法を定義したレコードを設定する。
 
-ℹ️ 参考：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
+> ℹ️ 参考：https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
 
 #### ▼ レコードタイプの種類
 
@@ -1318,10 +1318,10 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 ドメイン名の名前解決ルールを設定する。
 
-ℹ️ 参考：
+> ℹ️ 参考：
 
-- https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
-- https://zenn.dev/seyama/articles/02118b0914183e
+> - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+> - https://zenn.dev/seyama/articles/02118b0914183e
 
 #### ▼ シンプル
 
