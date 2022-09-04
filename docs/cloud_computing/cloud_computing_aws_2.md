@@ -529,7 +529,7 @@ ECRのコンテナイメージの有効期間を定義できる。
 
 #### ▼ タグ名のベストプラクティス
 
-Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。その代わりに、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
+Dockerのベストプラクティスに則り、タグ名にlatestを使用しないようにする。代わりに、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する。
 
 > ℹ️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
 
@@ -892,7 +892,7 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_firelens.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_firelens.html
 
 <br>
 

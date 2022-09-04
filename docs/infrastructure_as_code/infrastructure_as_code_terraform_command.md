@@ -356,7 +356,7 @@ $ terraform import \
 ```
 
 ```bash
-# moduleブロックを使用し、for_each関数で定義されている場合
+# moduleブロックを使用して、for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
     'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
@@ -674,7 +674,7 @@ $ terraform state rm 'aws_instance.bastion[1]'
 ```
 
 ```bash
-# moduleブロックを使用し、for_each関数で定義されている場合
+# moduleブロックを使用して、for_each関数で定義されている場合
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名1>"]'
 
 Removed module.ec2.aws_instance.bastion["<キー名1>"]

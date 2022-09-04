@@ -583,7 +583,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 特定のSecretに格納されている文字列を取得する。
 
-参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
+> ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/get-secret-value.html
 
 ```bash
 $ aws secretsmanager get-secret-value \

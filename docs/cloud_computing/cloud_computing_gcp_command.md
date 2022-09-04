@@ -72,7 +72,7 @@ $ gcloud components update
 
 ```gcloud```コマンドのコンポーネントの一覧を取得する。
 
-参考：https://cloud.google.com/sdk/docs/components?hl=ja
+> ℹ️ 参考：https://cloud.google.com/sdk/docs/components?hl=ja
 
 ```bash
 $ gcloud components list

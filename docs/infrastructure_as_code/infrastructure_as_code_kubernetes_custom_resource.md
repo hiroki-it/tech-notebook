@@ -309,14 +309,14 @@ spec:
 
 #### ▼ 既にあるものを使用する
 
-参考：https://github.com/mercari/certificate-expiry-monitor-controller
+> ℹ️ 参考：https://github.com/mercari/certificate-expiry-monitor-controller
 
 #### ▼ 自前で実装する
 
 カスタムコントローラーを自前で実装する。
 
-参考：
-
+> ℹ️ 参考：
+>
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
 
@@ -328,7 +328,7 @@ spec:
 
 カスタムコントローラーを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
-参考：https://zoetrope.github.io/kubebuilder-training/
+> ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/
 
 <br>
 

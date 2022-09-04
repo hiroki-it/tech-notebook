@@ -33,7 +33,7 @@ $ istioctl install --manifests=foo-chart
 
 #### ▼ GCRから（ユーザー定義）
 
-IstioOperatorを独自で定義しても良い。
+プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 

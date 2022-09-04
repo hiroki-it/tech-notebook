@@ -7,7 +7,7 @@ title: 【IT技術の知見】目次
 ## 🌳 システム
 
 * [📖：︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system.html)
-* [📖：︎システム特性](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system_properties.html)
+* [📖：︎システム品質特性](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system_quality_attributes.html)
 
 <br>
 

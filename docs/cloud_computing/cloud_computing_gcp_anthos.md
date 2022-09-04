@@ -91,9 +91,9 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos C
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_on-premises_architecture.png)
 
-on-オンプレミスは、```kubectl```コマンドの実行環境となるワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。GCPのAPIを介して、オンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+on-オンプレミスは、各Clusterを作成するワークステーション（Clusterの作成後に削除される）、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、から構成される。GCPのAPIを介して、オンプレミス（例：VMWare）のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure?hl=ja
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure?hl=ja
 
 <br>
 
@@ -105,10 +105,10 @@ on-オンプレミスは、```kubectl```コマンドの実行環境となるワ�
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_multi-cluster.png)
 
-マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるKind製ワークステーション、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```のロードバランサーから構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+マルチClusterタイプのon-ベアメタルは、各Clusterを作成するKind製ワークステーション（Clusterの作成後に削除される）、マスターNodeの属する管理Cluster、ワーカーNodeの属するユーザーCluster、```L4```のロードバランサーから構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-参考：
-
+> ℹ️ 参考：
+>
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
@@ -116,10 +116,10 @@ on-オンプレミスは、```kubectl```コマンドの実行環境となるワ�
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
-マルチClusterタイプのon-ベアメタルは、```kubectl```コマンドの実行環境となるKind製ワークステーション、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+マルチClusterタイプのon-ベアメタルは、各Clusterを作成するKind製ワークステーション（Clusterの作成後に削除される）、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
-参考：
-
+> ℹ️ 参考：
+>
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
@@ -150,7 +150,7 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 #### ▼ オンプレミス環境の場合
 
-参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/upgrading
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/upgrading
 
 #### ▼ ベアメタル環境の場合
 
@@ -171,7 +171,7 @@ spec:
 
 また、Anthos GKE ClusterのバージョンとKubernetesのバージョンの対応関係を確認する。
 
-参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 | Anthos GKE Clusterのバージョン | Kubernetesのバージョン  |
 |----------------------|-------------------|
@@ -181,7 +181,7 @@ spec:
 
 （２）```bmctl```コマンドを使用して、Anthos GKE Clusterをアップグレードする。
 
-参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
 
 ```bash
 $ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
@@ -213,9 +213,9 @@ spec:
 
 #### ▼ GCP環境の場合
 
-（１）```asmcli```コマンドを使用し、新バージョンのIstiodコントロールプレーンをインストールする。
+（１）```asmcli```コマンドを使用して、新バージョンのIstiodコントロールプレーンをインストールする。
 
-参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
 
 ```bash
 $ ./asmcli install \
@@ -231,9 +231,9 @@ $ ./asmcli install \
 
 #### ▼ GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
 
-（１）```asmcli```コマンドを使用し、新バージョンのIstiodコントロールプレーンをインストールする。
+（１）```asmcli```コマンドを使用して、新バージョンのIstiodコントロールプレーンをインストールする。
 
-参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#outside-google-cloud
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#outside-google-cloud
 
 ```bash
 $ ./asmcli install \
@@ -250,7 +250,7 @@ $ ./asmcli install \
 
 データプレーンが新バージョンのIstiodコントロールプレーンに紐づくようにする。
 
-参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#switch_to_the_new_control_plane
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#switch_to_the_new_control_plane
 
 （１）Istiodコントロールプレーンの新バージョンのリビジョン値を取得する。
 

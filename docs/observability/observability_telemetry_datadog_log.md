@@ -81,7 +81,7 @@ FluentBitを稼働させたコンテナのこと。Datadogの代わりにログ�
 > ℹ️ 参考：
 >
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_firelens.html
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_firelens.html
 
 <br>
 

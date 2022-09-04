@@ -305,7 +305,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 ```istio.io/rev```ラベルの値を作成する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
 ```bash
 $ istioctl tag generate <ラベルの値>
@@ -329,7 +329,7 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 ラベル値とそれに紐づくリビジョン番号の一覧を取得する。
 
-参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+> ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
 $ istioctl tag list
@@ -349,7 +349,7 @@ tes-green  1-0-1      istioinaction
 
 既存のラベル値をリビジョン番号のエイリアスとする。
 
-参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+> ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
 $ istioctl tag set <ラベルの値> --revision <リビジョン番号>

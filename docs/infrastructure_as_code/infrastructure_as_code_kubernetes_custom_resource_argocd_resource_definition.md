@@ -574,11 +574,11 @@ data:
   AWS_SECRET_ACCESS_KEY: {{ .Values.data.AWS_SECRET_ACCESS_KEY }}
 ```
 
-ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用し、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
+ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用して、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
-内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。その代わりに、```argocd app history```コマンドで確認できる。
+内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。代わりに、```argocd app history```コマンドで確認できる。
 
 > ℹ️ 参考：
 >
