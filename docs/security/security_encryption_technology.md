@@ -426,11 +426,11 @@ server {
 
 ![デジタル証明書（SSL証明書）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デジタル証明書（SSL証明書）.gif)
 
-多くの場合、サーバーの提供会社が中間認証局をもっている。中間認証局とルート認証局の関係については、認証局そのもののなりすましの防止策を参照。
+多くの場合、サーバーの提供会社が中間認証局をもっている。
 
 **＊例＊**
 
-| サーバー提供者 | 自社の中間認証局名    | ルート認証局名 |
+| サーバー提供者 | 中間認証局名    | ルート認証局名 |
 | ------------ | --------------------- | -------------- |
 | AWS          | Amazon Trust Services | Starfield社    |
 | GCP          | Google Trust Services |                |
@@ -449,6 +449,8 @@ server {
 #### ▼ 認証局そのものの成りすましの防止策
 
 デジタル証明書（S/MIME証明書、SSL証明書）を発行する認証局そのものが、成りすましの可能性がある。そこで、認証局をランク付けし、ルート認証局が下位ランクの認証局に権限を与えることにより、下位の認証局の信頼性を持たせている。なお、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましである可能性は非常に低い。
+
+> ℹ️ 参考：https://zeropasoakita.livedoor.blog/archives/20294837.html
 
 ![認証局自体の成りすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/認証局自体の成りすまし防止.png)
 

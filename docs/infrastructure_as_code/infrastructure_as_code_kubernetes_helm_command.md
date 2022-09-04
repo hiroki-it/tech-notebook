@@ -98,7 +98,7 @@ $ helm install -f <valuesファイルへのパス> <リリース名> <チャー�
 
 ```bash
 # Minikubeの場合
-helm install <リリース名> <チャートリポジトリ名> --kube-context minikube
+$ helm install <リリース名> <チャートリポジトリ名> --kube-context minikube
 ```
 
 ```bash

@@ -11,7 +11,6 @@ description: Anthos＠GCPの知見を記録しています。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
-
 <br>
 
 
@@ -59,10 +58,10 @@ Anthos GKE Clusterの機能を外部のクラウドプロバイダーのCluster�
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 
-| Clusterの種類 | Kubernetesバージョン |
-| :------------ | :------------------- |
-| Amazon EKS    | 1.20, 1.21, 1.22     |
-| Microsoft AKS | 1.21, 1.22, 1.23     |
+| Clusterの種類 | Kubernetesバージョン               |
+| :------------ | :--------------------------------- |
+| Amazon EKS    | ```1.20```、```1.21```、```1.22``` |
+| Microsoft AKS | ```1.21```、```1.22```、```1.23``` |
 
 <br>
 
@@ -112,11 +111,11 @@ on-オンプレミスは、各Clusterを作成するワークステーション�
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
-#### ▼ スタンドアローンClusterタイプ
+#### ▼ スタンドアローンClusterタイプ（ハイブリッドタイプ）
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
-マルチClusterタイプのon-ベアメタルは、各Clusterを作成するKind製ワークステーション（Clusterの作成後に削除される）、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+スタンドアローンClusterタイプ（ハイブリッドタイプ）のon-ベアメタルは、各Clusterを作成するKind製ワークステーション（Clusterの作成後に削除される）、マスターNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 > ℹ️ 参考：
 >

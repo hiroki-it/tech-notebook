@@ -74,17 +74,29 @@ iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、か�
 
 <br>
 
-### 自動注入されるコンポーネント
+### ```istio-init```コンテナ
 
-#### ▼ ```istio-init```コンテナ
-
-![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-init.png)
+#### ▼ ```istio-init```コンテナとは
 
 コンテナの起動時に、```istio-iptables```コマンドを実行し、iptablesをPodに適用する。
 
+> ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+>
+
+![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-init.png)
+
+<br>
+
+### iptables
+
+#### ▼ ルーティング先制御
+
+iptablesは、Pod内のネットワークのルーティング先を決定する。
+
+> ℹ️ 参考：https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
 
 ```bash
-# コンテナの起動時
+# istio-initコンテナの起動時に実行する。
 $ istio-iptables \
     -p 15001 \
     -z 15006 \
@@ -96,27 +108,28 @@ $ istio-iptables \
     -d 15090,15021,15020
 ```
 
-> ℹ️ 参考：
->
-> - https://istio.io/v1.13/blog/2019/data-plane-setup/#traffic-flow-from-application-container-to-sidecar-proxy	
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
-> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
+#### ▼ インバウンド時
 
+iptablesにより、Pod内へのインバウンドは、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
 
-#### ▼ iptables
+![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
 
-![istio_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables.png)
+> ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
-Pこのiptablesにより、Pod内へのインバウンド（または外へのアウトバウンド通信）は、一度、istio-proxyコンテナの```15006```（または```15001```）番ポートにリダイレクトされるようになる（画像はアウトバウンド時の経路）。
+#### ▼ アウトバウンド時
 
+iptablesにより、Pod内へのからのアウトバウンド通信は、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
-> ℹ️ 参考：
->
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#traffic-interception-implementation-details
-> - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/tools/istio-iptables/pkg/cmd/root.go#L219
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+![istio_iptables_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound.png)
 
-#### ▼ ```istio-proxy```コンテナ（サイドカーコンテナ）
+> ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> 
+
+<br>
+
+### ```istio-proxy```コンテナ
+
+#### ▼ ```istio-proxy```コンテナとは
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
@@ -124,134 +137,29 @@ Pこのiptablesにより、Pod内へのインバウンド（または外への�
 
 > ℹ️ 参考：
 >
-> - https://istio.io/v1.13/blog/2019/data-plane-setup/
+> - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 <br>
 
-### ```istio-proxy```コンテナ注入の仕組み
+### istio-cniアドオンによる```istio-validation```コンテナ
 
-#### ▼ kube-apiserver内のmutating-admissionステップ
+#### ▼ istio-cniアドオンとは
 
-この処理は、admission-controllersアドオンのmutating-admissionステップでのWebhookを使用した機能である。```metadata.labels.istio-injection```キーが有効になっている場合、Podの作成処理時にkube-apiserverは、1. kube-apiserverは、admission-controllersアドオンのmutating-admissionステップにて、AdmissionReview構造体のAdmissionRequestにリクエストパラメーターを詰める。その後、Istiodコントロールプレーン内のwebhook-serviceの```/inject```エンドポイントの```443```番ポートにAdmissionReviewのリクエストを送信する。
+![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-cni.png)
 
-> ℹ️ 参考：
->
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-injection/#istio-sidecar-auto-injection-implementation
-> - https://www.solo.io/blog/istios-networking-in-depth/
-
-![kubernetes_admission-controllers_istio-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_istio-injection.png)
-
-```yaml
-{
-  "apiVersion": "admission.k8s.io/v1",
-  "kind": "AdmissionReview",
-  # AdmissionRequest
-  "request": {
-
-    # 〜 中略 〜
-
-    # 変更されるKubernetesリソースの種類を表す。
-    "resource": {
-      "group": "apps",
-      "version": "v1",
-      "resource": "deployments"
-    },
-    # kube-apiserverの操作の種類を表す。
-    "operation": "UPDATE",
-    # 新しく認証/認可されたオブジェクトを表す。
-    "object": {
-      "apiVersion": "autoscaling/v1",
-      "kind": "Scale"
-    },
-    # Kubernetesリソースの操作前の状態を表す。
-    "oldObject": {
-      "apiVersion": "autoscaling/v1",
-      "kind": "Scale"
-    },
-    # 認証/認可された操作の種類を表す。
-    "options": {
-      "apiVersion": "meta.k8s.io/v1",
-      "kind": "UpdateOptions"
-    },
-
-    # 〜 中略 〜
-
-  }
-}
-```
-
-#### ▼ webbhook-service
-
-Istiodコントロールプレーン内のwebhook-serviceはAdmissionReviewのリクエストを受信する。webhook-serviceは、リクエストをIstiodコントロールプレーン内のdiscoveryコンテナの```15017```番ポートにポートフォワーディングする。
-
-#### ▼ webhookサーバー
-
-![istio_sidecar-injection_istiod](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-injection_istiod.png)
-
-Istiodコントロールプレーン内のwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。その後、```istio-proxy```コンテナを注入するための処理をAdmissionReview内のAdmissionResponseに格納し、kube-apiserverに返信する。kube-apiserverはこれを受信し、Pod内にサイドカーコンテナを作成する。
+ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナはiptablesをPodに適用する権限を持っている。しかし、これは最小権限ではなく、脆弱性が指摘されている。```istio-init```コンテナの代替案として、istio-cniアドオンが提供されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる代わりに、```istio-validation```コンテナが必要になる。
 
 > ℹ️ 参考：
 >
-> - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171-L172
-> - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L963
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
+> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
+> - https://www.redhat.com/architect/istio-CNI-plugin
 
-#### ▼ AdmissionResponse
+#### ▼ ```istio-validation```コンテナ
 
-Istioでサイドカーインジェクション機能が有効化されている場合に、webhookサーバーは、AdmissionReview内のAdmissionResponseにサイドカーコンテナを作成するpatch処理を格納し、レスポンスとして返信する。
+istio-cniを使用している場合にのみそう挿入されるコンテナ。istio-cniのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
 
-> ℹ️ 参考：
->
-> - https://github.com/istio/istio/blob/e1f63e8ce82e3bad28c2bb0a87f4bc7ffefac1b9/pkg/kube/inject/webhook.go#L909-L915
-> - https://github.com/istio/istio/blob/b3d1566a2af8591d8a74c648108e549c3879d45f/pkg/kube/inject/webhook_test.go#L960-L975
-
-```yaml
-{
-  "apiVersion": "admission.k8s.io/v1",
-  "kind": "AdmissionReview",
-  # AdmissionResponse
-  "response": {
-    "uid": "<value from request.uid>",
-    "allowed": true,
-    # PathによるPatch処理を行う。
-    "patchType": "JSONPatch",
-    # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
-    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
-  }
-}
-```
-
-```yaml
-[
-
-  # 〜 中略 〜
-
-  {
-    "op": "add",
-    # キー（spec.initContainers[1]）の部分にvalueキー値を追加する。
-    "path": "/spec/initContainers/1",
-    # マニフェストファイルに追加される構造を表す。
-    "value": {
-        "name": "istio-init",
-        "resources": {}
-    }
-  },
-  {
-    "op": "add",
-    # キー（spec.containers[1]）の部分にvalueキー値を追加する。
-    "path": "/spec/containers/1",
-    # マニフェストファイルに追加される構造を表す。
-    "value": {
-        "name": "istio-proxy",
-        "resources": {}
-    }
-  }
-  
-  # 〜 中略 〜
-    
-]
-```
+> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
 <br>
 
@@ -259,57 +167,50 @@ Istioでサイドカーインジェクション機能が有効化されている
 
 ### コントロールプレーンとは
 
-Istiodコントロールプレーンは、Pilot機能、Citadel機能、Galley機能、を持つ。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
-> ℹ️ 参考：
->
-> - https://project.nikkeibp.co.jp/idg/atcl/idg/17/020100207/020100001/?ST=idg-cm-network&P=2
-> - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
-> - https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
-
-<br>
-
-### Pilot機能
-
-| ポート番号 | 役割                                                                                                      |
-|-------|---------------------------------------------------------------------------------------------------------|
-| 8080  | サービスメッシュのデバッグエンドポイントに対するリクエストを待ち受ける。                                                                    |
-| 15010 | XDSサーバーに対するリクエストを待ち受ける。                                                                                 |
-| 15017 | コンテナを注入するwebhookサーバーに対するリクエストを待ち受ける。webhook-serviceは、discoveryコンテナの```15017```番ポートにリクエストをポートフォワーディングする。 |
-
-Istiodコントロールプレーンに対するリクエストを様々なポート番号で待ち受ける。リクエストに応じて、Kubernetes側のPod内の```istio-proxy```コンテナの設定を変更する。 各種ポート番号（```8080```、```15010```、```15017```）でリクエストを待ち受ける。
+Istiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
 > ℹ️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
-> - https://hub.docker.com/r/istio/pilot/tags
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
-> - https://qiita.com/Takagi_/items/89985b4cbc6647860c8c
 
 <br>
 
-### Citadel機能
+### ポート番号別の機能
 
-マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、そのSSL証明書を作成し、また期限が切れたら更新する。
+#### ▼ ```8080```番
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/1aca7a67afd7b3e1d24fafb2fbfbeaf1e41534c0/operator/pkg/object/objects_test.go#L122
+```8080```番ポートでは、サービスメッシュのデバッグエンドポイントに対するリクエストを待ち受ける。
 
-<br>
+#### ▼ ```15010```番
 
-### Galley機能
+![istio_control-plane_xds_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_xds_service-discovery.png)
 
-調査中...
+```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のPodのマイクロサービスの宛先情報のレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、コンテナ内のpilot-agentプロセスがenvoyプロセスに作用し、既存の宛先情報を動的に変更する（ServiceDiscovery）。
 
-> ℹ️ 参考：https://github.com/istio/istio/blob/1aca7a67afd7b3e1d24fafb2fbfbeaf1e41534c0/operator/pkg/object/objects_test.go#L152
+> ℹ️ 参考：
+>
+> - https://faun.pub/how-to-integrate-your-service-registry-with-istio-34f54b058697
+> - https://www.kubernetes.org.cn/4208.html
 
+#### ▼ ```15012```番
 
-<br>
+```15012```番ポートでは、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書のレスポンスを返信する。マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、そのSSL証明書を作成し、また期限が切れたら更新する。
 
-###  Mixer
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/
 
-```v1.5```から、データプレーン側に統合された。
+#### ▼ ```15014```番
 
-> ℹ️ 参考：https://www.elastic.co/jp/blog/istio-monitoring-with-elastic-observability
+```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、データポイントのレスポンスを返信する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
+
+#### ▼ ```15017```番
+
+```15017```番ポートでは、Istioの```istid-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewのレスポンスを返信する。
+
 
 <br>
 
@@ -366,14 +267,14 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 > - https://github.com/envoyproxy/go-control-plane
 > - https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| Istio+Kubernetes+Envoy | Kubernetes+Envoy | Kubernetesのみ                 |
-| ------------------------ | ----------------- | ------------------------------ |
-| DestinationRule          | Route             | kube-proxy                     |
-| EnvoyFilter              | Listener          | kube-proxy                     |
-| Istiodコントロールプレーン                   | go-control-plane  | -                              |
-| ServiceEntry             | Cluster           | Service                        |
-| VirtualService+Gateway  | Route+Listener   | Ingress+Ingressコントローラー |
-| WorkloadEntry            | Endpoint          | Endpoint                       |
+| Istio+Kubernetes + Envoy | Kubernetes + Envoy | Kubernetesのみ                 |
+|--------------------------|--------------------| ------------------------------ |
+| DestinationRule          | Route              | kube-proxy                     |
+| EnvoyFilter              | Listener           | kube-proxy                     |
+| Istiodコントロールプレーン         | go-control-plane   | -                              |
+| ServiceEntry             | Cluster            | Service                        |
+| VirtualService+Gateway   | Route+Listener     | Ingress+Ingressコントローラー |
+| WorkloadEntry            | Endpoint           | Endpoint                       |
 
 <br>
 
@@ -551,25 +452,3 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 <br>
 
-## 06. アドオン
-
-### istio-cniアドオン
-
-#### ▼ istio-cniアドオンとは
-
-![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-cni.png)
-
-ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナと同様にして、Podにiptablesを適用する。OSに干渉するような認可スコープは過剰であることが問題視されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる代わりに、```istio-validation```コンテナが必要になる。
-
-> ℹ️ 参考：
->
-> - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
-> - https://www.redhat.com/architect/istio-CNI-plugin
-
-#### ▼ ```istio-validation```コンテナ
-
-istio-cniを使用している場合にのみそう挿入されるコンテナ。istio-cniのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
-
-> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
-
-<br>
