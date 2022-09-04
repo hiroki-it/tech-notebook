@@ -22,7 +22,7 @@ description: ロジック＠Terraformの知見を記録しています。
 実インフラのインフラの状態が定義されたjsonファイルのこと。バックエンドの場所に限らず、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
 
 > ℹ️ 参考：
-
+>
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
 > - https://chroju.dev/blog/terraform_state_introduction
 
@@ -126,7 +126,7 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```terraform```ブロックの設定に基づいて、開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://www.terraform.io/language/files/dependency-lock
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
 > - https://qiita.com/mziyut/items/0f4109c425165f5011df
@@ -426,7 +426,7 @@ resource "aws_acm_certificate" "example" {
 複数の```resource```ブロックをまとめ、一つの```resource```ブロックのように扱う。ドキュメントを確認すれば、いずれの```resource```ブロックが```module```ブロックに含まれているかがわかる。任意の```resource```を含めて良いわけではなく、同じ責務を持つ```resource```ブロックをまとめ、凝集度が高くなるようにする。```module```ブロック間で変数を受け渡すときは、必ずルートモジュールを経由し、```module```ブロック内で```module```ブロックを呼び出すことはしない。
 
 > ℹ️ 参考：
-
+>
 > - https://www.terraform.io/language/modules/sources
 > - https://qiita.com/bigwheel/items/2b420183639416b5c6bb
 > - https://registry.terraform.io/namespaces/terraform-aws-modules
@@ -892,7 +892,7 @@ resource "foo" "this" {
 通常変数であり、定義されたローカル/リモートモジュール内にのみスコープを持つ。ルートモジュールとローカル/リモートモジュールが別のリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
 > ℹ️ 参考：
-
+>
 > - https://www.terraform.io/language/values/locals
 > - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
 

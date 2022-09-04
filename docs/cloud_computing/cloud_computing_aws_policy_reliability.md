@@ -20,7 +20,7 @@ description: 信頼性＠AWSの知見を記録しています。
 ```1```個のVPC内には複数のサブネットが入る。そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、VPC内でIPアドレスが枯渇しないようにする。RFC1918では、以下のCIDRブロックが推奨されている。
 
 > ℹ️ 参考：
-
+>
 > - https://note.com/takashi_sakurada/n/n502fb0299938
 > - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
@@ -49,7 +49,7 @@ description: 信頼性＠AWSの知見を記録しています。
 VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。この時、VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。例えば、VPCの最初のIPアドレスを```10.0.0.0```とした場合は、1つ目のパブリックサブネットのサブネットマスクは、```10.0.0.0```から始める。パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。例えば、VPCのサブネットマスクを```/16``` としている場合は、各サブネットのサブネットマスクは```/24```とする。一方で、VPCを```/23```としている場合は、各サブネットは```/27```とする。また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、その代わりに、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。
 
 > ℹ️ 参考：
-
+>
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
 
@@ -129,7 +129,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 OSI層とAWSリソースの対応関係を以下に示す。
 
 > ℹ️ 参考：
-
+>
 > - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 

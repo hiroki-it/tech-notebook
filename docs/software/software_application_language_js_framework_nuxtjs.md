@@ -221,7 +221,7 @@ const nuxtConfig: Configuration = {
 クライアントサイドのみで参照できる環境変数を設定する。すなわち、SSRモードのクライアント側のみが対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。環境変数は、```context```オブジェクトの```config```変数から取得できる。
 
 > ℹ️ 参考：
-
+>
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
@@ -261,7 +261,7 @@ export function foo() {
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。すなわち、全モード（SSG/SPA/SSRモード）が対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
 
 > ℹ️ 参考：
-
+>
 > - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
 > - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
@@ -374,7 +374,7 @@ SSGモードの```generate```コマンドの実行時に、アーティファク
 ### ```plugin```ディレクトリ
 
 > ℹ️ 参考：
-
+>
 > - https://nuxtjs.org/docs/directory-structure/plugins/
 > - https://github.com/nuxt/nuxt.js/issues/2820
 

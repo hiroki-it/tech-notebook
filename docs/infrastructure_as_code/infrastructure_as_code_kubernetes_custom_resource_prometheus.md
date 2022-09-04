@@ -21,7 +21,7 @@ description: Prometheus＠Kubernetes
 Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
 > ℹ️ 参考：
-
+>
 > - https://danielfm.me/prometheus-for-developers/
 > - https://prometheus.io/docs/introduction/overview/
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
@@ -37,7 +37,7 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 
 > ℹ️ 参考：
-
+>
 > - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 > - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
 
@@ -91,7 +91,7 @@ scrape_configs:
 設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
 > ℹ️ 参考：
-
+>
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
@@ -196,7 +196,7 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
 > - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
@@ -218,7 +218,7 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 Prometheusのアラートを受信し、特定の条件下で通知する。受信したアラートは、AlertmanagerのUI上に表示される。
 
 > ℹ️ 参考：
-
+>
 > - https://prometheus.io/docs/alerting/latest/alertmanager/
 > - https://www.designet.co.jp/ossinfo/alertmanager/
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
@@ -243,7 +243,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。受�
 PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://openstandia.jp/oss_info/prometheus
 > - https://danielfm.me/prometheus-for-developers/
 
@@ -312,7 +312,7 @@ $ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-e
 **＊例＊**
 
 > ℹ️ 参考：
-
+>
 > - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
 > - https://prometheus.io/docs/instrumenting/exporters/
 

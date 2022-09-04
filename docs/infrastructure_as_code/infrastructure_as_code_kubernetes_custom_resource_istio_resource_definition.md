@@ -106,7 +106,7 @@ $ minikube start --cpus=4 --memory=16384
 VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナに適用される。
 
 > ℹ️ 参考：
-
+>
 > - https://sreake.com/blog/istio/
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/
@@ -435,7 +435,7 @@ spec:
 VirtualServiceのサブセット名に関して、ルーティング先とするPodの```metadata.labels```キーを設定する
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
 > - https://blog.1q77.com/2020/03/istio-part3/
 
@@ -468,7 +468,7 @@ spec:
 Podの同時接続数の制限数を設定する。制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
 > - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
 
@@ -662,7 +662,7 @@ spec:
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
@@ -938,7 +938,7 @@ spec:
 HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 

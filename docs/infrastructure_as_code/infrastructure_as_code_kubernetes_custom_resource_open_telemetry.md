@@ -22,7 +22,7 @@ description: OpenTelemetry＠カスタムリソースの知見を記録してい
 OpenTelemetryは、サードパーティパッケージ、OTelクライアントパッケージ、OTelコレクター、から構成されている。OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール（テレメトリーを収集できる状態にするツール）を使用せずに、一括してインスツルメント化できるようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://opentelemetry.io/docs/
 > - https://dzone.com/refcardz/getting-started-with-opentelemetry
 

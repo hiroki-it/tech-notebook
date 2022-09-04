@@ -95,7 +95,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 サービスの停止を起こし得る想定外のイベントのこと。
 
 > ℹ️ 参考：
-
+>
 > - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
 > - https://response.pagerduty.com/before/what_is_an_incident/
 
@@ -144,9 +144,8 @@ description: オンコールとインシデント管理＠監視の知見を記�
 #### ▼ 解決フェーズの種類
 
 > ℹ️ 参考：
-
+>
 > - https://thinkit.co.jp/article/13420
-
 > - https://support.pagerduty.com/docs/incidents#incident-statuses
 
 | 解決フェーズ | 説明                                                         |
@@ -311,7 +310,7 @@ fields @timestamp, @message, @logStream
 #### ▼ MTxxメトリクスとは
 
 > ℹ️ 参考：
-
+>
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
 
@@ -370,7 +369,7 @@ fields @timestamp, @message, @logStream
 | MTTF         | オンコール担当がタスクに着手してから、これを完了するまで。   |      |
 
 > ℹ️ 参考：
-
+>
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
 

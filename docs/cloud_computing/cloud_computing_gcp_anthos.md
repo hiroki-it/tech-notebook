@@ -26,7 +26,7 @@ Anthosは、クラスタ管理コンポーネント、サービス管理コン�
 
 
 > ℹ️ 参考：
-
+>
 > - https://future-architect.github.io/articles/20210319/
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
@@ -55,7 +55,7 @@ Kubernetesの設定値を保持する。
 Anthos GKE Clusterの機能を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Cluster機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
 
 > ℹ️ 参考：
-
+>
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 

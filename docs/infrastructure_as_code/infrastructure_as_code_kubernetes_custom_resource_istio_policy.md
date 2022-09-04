@@ -24,7 +24,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 ### カナリアリリース方式
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
 > - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 

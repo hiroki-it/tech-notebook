@@ -36,7 +36,7 @@ description: クラウドコンピューティングの知見を記録してい�
 ### 具体例
 
 > ℹ️ 参考：
-
+>
 > - https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
 > - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
 > - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html

@@ -54,7 +54,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 似た命令として```COPY```がある。```ADD```は```COPY```とは異なり、インターネットからファイルをダウンロードし、解凍も行う。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、```COPY```が推奨である。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/zembutsu/items/a96b68277d699f79418d
 > - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles
 
@@ -207,9 +207,8 @@ OS上のコマンド処理で展開できる変数を定義できる。
 他のコンテナに対してコンテナポートを開放する。また、コンテナイメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用できるコンテナポートとして保証する機能もある。ホスト側からはアクセスできないことに注意する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.docker.com/engine/reference/builder/#expose
-
 > - https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 #### ▼ プロセスによるポート受信
@@ -271,7 +270,7 @@ FROM --platform=linux/amd64 python:latest-slim
 ボリュームマウントを行う。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.docker.com/engine/reference/builder/#volume
 > - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
 

@@ -257,7 +257,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
 > - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
 
@@ -276,7 +276,7 @@ $ kubectl create secret docker-registry foo-secret \
 Secretを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
 > - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
 
@@ -344,7 +344,7 @@ $ kubectl describe pod <Pod名> | grep Node:
 ワーカーNodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。ワーカーNodeが他に存在すれば、そのNode上でPodが再作成される。
 
 > ℹ️ 参考：
-
+>
 > - https://cstoku.dev/posts/2018/k8sdojo-21/
 > - https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe
 
@@ -405,7 +405,7 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 Serviceを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 > - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
@@ -708,7 +708,7 @@ $ kubectl replace -f foo.yaml
 Deployment、DamonSet、StatefulSet、に紐づくPodを操作する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 > - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
 
@@ -717,7 +717,7 @@ Deployment、DamonSet、StatefulSet、に紐づくPodを操作する。
 Podを再作成する。ConfigMapやSecretのデータの変更後、Podにこれを読み込ませるために役立つ。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/Veritas666777/items/45383ca2d14a6700d0f6
 > - https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
 
@@ -761,7 +761,7 @@ $ kubectl get pv \
 ホストのポートから指定したリソースのポートに対して、ポートフォワーディングを実行する。開発環境にて、Serviceを経由せずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 
@@ -844,7 +844,7 @@ minikube   523m         13%    4393Mi          27%
 kubectlとKubernetesのバージョンをそれぞれ取得する。両方のバージョンに差があっても、1つ以内のメジャーバージョンであれば許容範囲である。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
 > - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
 

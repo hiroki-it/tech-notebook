@@ -34,7 +34,7 @@ $ pip3 install uwsgi
 uWSGIの起動時の値を設定する。```.json```形式やXML形式でも問題ない。
 
 > ℹ️ 参考：
-
+>
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 > - https://qiita.com/11ohina017/items/da2ae5b039257752e558
 
@@ -105,7 +105,7 @@ uWSGIの```uwsgi```プロセスのプールを設定する。
  アプリケーションのインスタンスの変数名を設定する。デフォルト値は、```application```である。
 
 > ℹ️ 参考：
-
+>
 > - https://laplace-daemon.com/nginx-uwsgi-flask/
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
 
@@ -274,7 +274,7 @@ vacuum = true
 エントリーポイントとするファイルを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
 > - https://django.kurodigi.com/uwsgi-basic/
 

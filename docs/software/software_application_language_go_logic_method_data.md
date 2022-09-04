@@ -2281,7 +2281,7 @@ func main() {
 Goにはデフォルトで、ロギング用パッケージが用意されている。ただし、機能が乏しいので、外部パッケージ（例：logrus）も推奨である。
 
 > ℹ️ 参考：
-
+>
 > - https://pkg.go.dev/log
 > - https://github.com/sirupsen/logrus
 
@@ -2653,7 +2653,7 @@ func main() {
 接頭接尾辞の無いメソッド（例：```Print```メソッド、```Sprint```メソッド、```Fprint```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぐ。
 
 > ℹ️ 参考：
-
+>
 > - https://golang.org/pkg/fmt/#Print
 > - https://golang.org/pkg/fmt/#Fprint
 > - https://golang.org/pkg/fmt/#Sprint
@@ -2711,7 +2711,7 @@ func main() {
 接頭辞に```S```のあるメソッド（例：```Sprint```メソッド、```Sprintf```メソッド、```Sprintln```メソッド、など）が属する。接頭辞が```F```や```P```のメソッドとは異なり、処理結果を標準出力に出力せずに返却する。標準出力に出力できる他の関数の引数として渡す必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://golang.org/pkg/fmt/#Sprint
 > - https://golang.org/pkg/fmt/#Sprintf
 > - https://golang.org/pkg/fmt/#Sprintln
@@ -2727,7 +2727,7 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 接尾辞に```ln```のあるメソッド（例：```Println```メソッド、```Fprintln```メソッド、```Sprintln```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
 
 > ℹ️ 参考：
-
+>
 > - https://golang.org/pkg/fmt/#Println
 > - https://golang.org/pkg/fmt/#Fprintln
 > - https://golang.org/pkg/fmt/#Sprintln
@@ -2752,7 +2752,7 @@ package mainimport "fmt"func main() {    fmt.Println("Hello", "world!")    fmt.P
 | ```%#v```      | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
 
 > ℹ️ 参考：
-
+>
 > - https://golang.org/pkg/fmt/#Printf
 > - https://golang.org/pkg/fmt/#Fprintf
 > - https://golang.org/pkg/fmt/#Sprintf
@@ -2825,7 +2825,7 @@ package mainimport "fmt"func main() {    var first string = "Hiroki"        var 
 HTTPクライアントまたはWebサーバを提供する。そのため、GoではNginxやApacheが不要である。ただし、Goによるwebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
 
 > ℹ️ 参考：
-
+>
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
 

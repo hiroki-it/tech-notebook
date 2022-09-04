@@ -62,7 +62,7 @@ VMware vSphere Hypervisor、Xen、KVM、など
 Docker、Containerd、Podman、LXC、OpenVZ、など
 
 > ℹ️ 参考：
-
+>
 > - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 > - https://news.mynavi.jp/techplus/article/zerocontena-7/
 

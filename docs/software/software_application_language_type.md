@@ -22,7 +22,7 @@ description: 言語の種類＠アプリケーションを記録しています�
 プログラミングを行う時の様式のこと。
 
 > ℹ️ 参考：
-
+>
 > - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
 > - https://umtp-japan.org/event-seminar/4233
@@ -34,7 +34,7 @@ description: 言語の種類＠アプリケーションを記録しています�
 複数の様式でプログラミングできる言語もあり、これは『マルチパラダイム言語』という。
 
 > ℹ️ 参考：
-
+>
 > - https://web-camp.io/magazine/archives/61816
 > - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
 > - https://style.potepan.com/articles/12941.html

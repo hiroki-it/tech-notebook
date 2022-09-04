@@ -23,7 +23,7 @@ description: VictoriaMetrics＠カスタムリソースの知見を記録して�
 ロードバランサー、vm-select、vm-storage、vm-insert、から構成されている。リモートストレージとして、Prometheusで収集したメトリクスを保管する。シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。なおPrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
 > - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
 > - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
@@ -35,7 +35,7 @@ description: VictoriaMetrics＠カスタムリソースの知見を記録して�
 vm-agent、vm-storage、vm-alert、から構成されている。また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
 > ℹ️ 参考：
-
+>
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
 
@@ -152,7 +152,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 systemctlを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/
 > - https://www.vultr.com/docs/install-and-configure-victoriametrics-on-debian/

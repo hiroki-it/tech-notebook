@@ -168,7 +168,7 @@ $ curl \
 以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
 
@@ -177,7 +177,7 @@ $ curl \
 以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
 
@@ -464,7 +464,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 ## 02. LB
 
 > ℹ️ 参考：
-
+>
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 > - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
 
@@ -785,7 +785,7 @@ $ aws rds apply-pending-maintenance-action \
 保留中の変更を画面上からは取り消せない。しかし、CLIを使用すると戻せる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
 > - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
 
@@ -911,7 +911,7 @@ DBエンジンにAuroraを選択した場合にのみ使用できる。DBイン�
 （５）DRリージョンをフェイルオーバーさせる。メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
 > ℹ️ 参考：
-
+>
 > - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
 > - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
 
@@ -943,7 +943,7 @@ Auroraをエンジンバージョンに選択した場合に使用できる。�
 （２）リードレプリカが再起動され、この時に```20```～```30```秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
 > - https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
 > - https://noname.work/2407.html
@@ -1132,7 +1132,7 @@ DBインスタンスに応じたエンドポイントが用意されている。
 リードレプリカの手動追加もしくはオートスケーリングによって、Auroraに関するメトリクス（例：平均CPU使用率、平均DB接続数、など）がターゲット値を維持できるように、リードレプリカの水平スケーリング（リードレプリカ数の増減）を実行する。注意点として、RDS（非Aurora）スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
 > - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
 > - https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
@@ -1319,7 +1319,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 ドメイン名の名前解決ルールを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
 > - https://zenn.dev/seyama/articles/02118b0914183e
 

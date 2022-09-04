@@ -503,7 +503,7 @@ class Mammal implements Animal
 クラスからデータやメソッドをコールした時、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。類似するものとして、プロトタイプチェーンは以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based_method_data.html
 
@@ -849,7 +849,7 @@ class Bar
 クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 > - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
 
@@ -1023,7 +1023,7 @@ class ModuleB
 凝集度の程度を表す指標のこと。LCOMの計測方法にはいくつか種類がある。LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。
 
 > ℹ️ 参考：
-
+>
 > - https://www.amazon.co.jp/dp/B082WXZVPC
 > - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
 
@@ -1044,7 +1044,7 @@ class ModuleB
 サプライヤー側（依存先）の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
 
 > ℹ️ 参考：
-
+>
 > - https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
 > - https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
 

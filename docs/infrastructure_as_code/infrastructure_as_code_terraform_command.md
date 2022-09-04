@@ -44,7 +44,7 @@ $ terraform apply \
 すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を扱うことはできず、代わりに```terraform import```コマンドの実行が必要になる。
 
 > ℹ️ 参考：
-
+>
 > - https://learn.hashicorp.com/tutorials/terraform/refresh
 > - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
 > - https://rurukblog.com/post/terraform-refresh-onlyt/
@@ -118,7 +118,7 @@ $ terraform apply foo.tfplan
 ```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://spacelift.io/blog/terraform-init
 > - https://reboooot.net/post/what-is-terraform/
 > - https://www.terraform.io/cli/commands/init#usage
@@ -172,7 +172,7 @@ $ terraform init \
 初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元々設定したバックエンドが異なる場合、元々のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
 > ℹ️ 参考：
-
+>
 > - https://www.terraform.io/cli/commands/init#backend-initialization
 > - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
@@ -313,7 +313,7 @@ your Terraform state and will henceforth be managed by Terraform.
 （２）```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/
 
@@ -630,7 +630,7 @@ $ terraform state pull > <tfstateファイル名>
 ```terraform import```コマンドで```.tfstate```ファイルに反映した設定値を削除する。```count```引数や```for_each```引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
 > - https://dev.classmethod.jp/articles/terraform_import_for_each/

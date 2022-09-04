@@ -59,7 +59,7 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 #### ▼ プロファイルの種類
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/istio/istio/tree/master/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
@@ -162,7 +162,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 ```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
 
@@ -242,7 +242,7 @@ Istio configuration profiles:
 Istio上で管理されるEnvoyの構成情報を取得する。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
 > - https://sreake.com/blog/istio/
 

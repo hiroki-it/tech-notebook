@@ -28,7 +28,7 @@ description: 設計ポリシー＠Dockerの知見を記録しています。
 コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。
 
 > ℹ️ 参考：
-
+>
 > - https://blog.aquasec.com/docker-security-best-practices
 > - https://www.forcia.com/blog/002273.html
 
@@ -59,7 +59,7 @@ ENTRYPOINT ["/app"]
 #### ▼ ベースイメージの種類
 
 > ℹ️ 参考：
-
+>
 > - https://prograshi.com/platform/docker/docker-image-tags-difference/
 > - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
@@ -203,7 +203,7 @@ EXPOSE 80
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『```&&```』で1つにまとめてしまう方が良い。
 
 > ℹ️ 参考：
-
+>
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
 

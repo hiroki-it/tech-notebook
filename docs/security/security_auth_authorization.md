@@ -96,7 +96,7 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 最も基本的な認可コードフローを説明する。
 
 > ℹ️ 参考：
-
+>
 > - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 > - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
 
@@ -249,7 +249,7 @@ Facebookには認証フェーズと認可フェーズでログインする点は
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータを```base64```方式によってエンコードし、ドットでつないだトークン。Bear認証やOAuthのトークンとして使用できる。ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。
 
 > ℹ️ 参考：
-
+>
 > - https://meetup-jp.toast.com/3511
 > - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
 
@@ -335,7 +335,7 @@ const signature = HMACSHA256(
 #### ▼ 保持方法と安全度の比較
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 > - https://blog.flatt.tech/entry/auth0_access_token_poc
 

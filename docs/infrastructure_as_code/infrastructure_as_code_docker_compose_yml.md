@@ -610,7 +610,7 @@ $ docker network inspect foo-network
 異なる```docker-compose.yml```ファイルから相互に通信できるネットワークを作成する。作成されるネットワーク名は、```<プロジェクト名>_<外部ネットワーク名>```になる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 > - https://nishinatoshiharu.com/external-docker-network/
 

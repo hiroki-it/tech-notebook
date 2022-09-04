@@ -231,7 +231,7 @@ Inputs
 ダミーの構造化ログをパイプラインにインプットする。非構造化ログはインプットデータとして使用できない。開発環境でパイプラインの動作を確認するために役立つ。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
 > - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
@@ -401,7 +401,7 @@ $ fluent-bit \
 ログのキーや値を加工する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
 > - https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
 
@@ -435,7 +435,7 @@ $ fluent-bit \
 #### ▼ セットアップ
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/pipeline/filters/modify
 > - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
 
@@ -548,7 +548,7 @@ Laravelのスタックトレースを結合する。
 マッチしたログを解析し、正規表現の名前付きキャプチャ機能（```?<foo>```）を使用して新しいキーに文字列を抽出する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/pipeline/filters/parser
 > - https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression
 
@@ -653,7 +653,7 @@ STREAM_TASKセッションは、独自のSQLステートメントで定義され
 SELECTステートメントの結果を使用して、データストリームを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement
 > - https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example
 
@@ -709,7 +709,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ログを蓄え、またこれを順番にROUTINGに渡す。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
 > - https://docs.fluentbit.io/manual/administration/buffering-and-storage
 
@@ -784,7 +784,7 @@ $ ls -ls /var/log/fluent-bit/cpu.0
 ログのアウトプット先を設定する。設定できるアウトプット先の種類については、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/output
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 

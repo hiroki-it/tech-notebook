@@ -70,7 +70,7 @@ RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフ
 初期開発時に作成して以降、めったに変更処理を実行せず、読み出し処理を主とするテーブル。ドメインのうちで、ID、識別コード、名前などに関するデータを管理する。
 
 > ℹ️ 参考：
-
+>
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
 
@@ -79,7 +79,7 @@ RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフ
 初期開発時に作成して以降、頻繁に変更処理を実行するテーブル。ドメインのうちで、履歴、数量、日付などに関するデータを管理する。
 
 > ℹ️ 参考：
-
+>
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
 

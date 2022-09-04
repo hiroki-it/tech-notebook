@@ -34,7 +34,7 @@ description: インテグレーション＠Datadogの知見を記録していま
 ログの作成元に合わせて、プロセッサーのセットが組み込まれたパイプラインを提供してくれる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#integration-pipelines
 > - https://docs.datadoghq.com/integrations/#cat-log-collection
 

@@ -44,7 +44,7 @@ $ pip3 install ansible
 ### ディレクトリ構成ポリシー
 
 > ℹ️ 参考：
-
+>
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871

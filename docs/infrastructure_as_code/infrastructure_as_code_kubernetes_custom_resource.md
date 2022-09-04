@@ -20,7 +20,7 @@ description: カスタムリソース@Kubernetesの知見を記録していま�
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
 
@@ -63,7 +63,7 @@ the server could not find the requested resource
 カスタムリソースを宣言的に定義する。ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
 
@@ -97,7 +97,7 @@ metadata:
 カスタムリソースが属するAPIグループの名前を設定する。例えば『```example.com```』というグループに定義とすると、```example.com/v1```というAPIからコールできるようになる。カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -115,7 +115,7 @@ spec:
 カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -254,7 +254,7 @@ spec:
 カスタムリソースの```spec```キー以下に設定できるキーを設定する。例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```spec.message```キーに任意の文字列を設定できるようになる。カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -281,7 +281,7 @@ spec:
 APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
 > - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
 
@@ -341,7 +341,7 @@ spec:
 Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
 
 > ℹ️ 参考：
-
+>
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
 
@@ -353,7 +353,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 カスタムコントローラーとして機能する。operator-controllerが稼働している状況でetcdにカスタムリソースを永続化すれば、バインディング情報に基づいて、operator-controllerはkubeletにカスタムリソースを作成させる。
 
 > ℹ️ 参考：
-
+>
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
 > - https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/

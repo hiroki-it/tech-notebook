@@ -246,8 +246,6 @@ $ crontab <ファイルへのパス>
 
 （１）拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。この時、最後に改行がないとエラー（```premature EOF```）になるため、改行を追加する。
 
-> ℹ️ 参考：
-
 ```bash
 # /etc/cron.hourly/cron-hourly.txt
 # 毎時・1分
@@ -464,7 +462,7 @@ $ df -h -m -t
 正引きの名前解決を実行する
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
 > - https://dev.classmethod.jp/articles/dig-route53-begginer/
 
@@ -903,7 +901,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - http://proger.blog10.fc2.com/blog-entry-66.html
 > - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
 
@@ -1043,7 +1041,7 @@ $ swapoff /swap_volume
 指定したデバイスファイルを、これに紐づくディレクトリ（マウントポイント）にマウントする。
 
 > ℹ️ 参考：
-
+>
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
 > - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
 
@@ -1056,9 +1054,8 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 マウントのファイル共有システムの種類を設定する。種類によって、パラメーターの入力方法が異なる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
-
 > - https://webkaru.net/linux/mount-command/
 
 NFSによるマウントを実行する。
@@ -1221,7 +1218,7 @@ find ./* \
 アプリケーション系ミドルウェア（PHP-FPM、uWSGI）、Web系ミドルウェア（Apache、Nginx）、データ収集系エージェント（datadogエージェント、cloudwatchエージェント）などで様々なデーモンの操作に使用される。ただし、デーモン自体もコマンドを提供しているため、できる限りデーモンの機能を使用する。
 
 > ℹ️ 参考：
-
+>
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_apache_command.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_command.html
 
@@ -1538,7 +1535,7 @@ $ tree -P providers.tf
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
 
 > ℹ️ 参考：
-
+>
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 
@@ -1579,7 +1576,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 IPアドレスの名前解決を実行せずに、IPアドレスをそのまま取得する。
 
 > ℹ️ 参考：
-
+>
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 

@@ -18,7 +18,7 @@ description: テレメトリー間の紐付け＠Datadog
 ### タグの種類
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/getting_started/tagging/
 > - https://www.datadoghq.com/ja/blog/tagging-best-practices/
 

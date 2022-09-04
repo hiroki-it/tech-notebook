@@ -51,7 +51,7 @@ description: FireLensコンテナ＠FluentBitの知見を記録しています�
 AWSが提供するFluentBitイメージによって作成されるコンテナである。FireLensコンテナでは、FluentBitがログルーティングプロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを作成して稼働できるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitを使用できる。
 
 > ℹ️ 参考：
-
+>
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
 
@@ -64,7 +64,7 @@ AWSが提供するFluentBitイメージによって作成されるコンテナ�
 AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。Fargateからログが送信されると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。作成のための実装例については、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/aws-samples/amazon-ecs-firelens-examples
 > - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
@@ -95,7 +95,7 @@ FROM amazon/aws-for-fluent-bit:latest
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://hub.docker.com/r/amazon/aws-for-fluent-bit
 > - https://github.com/aws/aws-for-fluent-bit
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub

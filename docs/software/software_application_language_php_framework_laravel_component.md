@@ -2035,7 +2035,7 @@ class DatabaseSeeder extends Seeder
 同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
 
@@ -2257,7 +2257,7 @@ return [
 バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。
 
 > ℹ️ 参考：
-
+>
 > - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
 > - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
@@ -2777,7 +2777,7 @@ class FooController extends Controller
 パスパラメーターを取得する。
 
 > ℹ️ 参考：
-
+>
 > - https://technote.space/posts/wpdb-laravel-get-url-parameter/
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
 > - https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
@@ -3478,7 +3478,7 @@ class TfaTokenNotification extends Notification
 MailMessageクラスのメソッドを使用して、Eメール通知の内容を作成する。```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
 
@@ -3766,7 +3766,7 @@ Notification::send($users, new FooNotification());
 オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
 
 > ℹ️ 参考：
-
+>
 > - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
 > - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
 
@@ -4008,7 +4008,7 @@ class UserController extends Controller
 Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
 > - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
@@ -4959,7 +4959,7 @@ class FooController extends Controller
 全てを追うことは難しいので、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。```read```メソッドは、```storage/framework/sessions```にあるセッションデータに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。Sessionクラスのメソッドは、```attribute```プロパティを使用して、セッションを操作する。最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションデータに新しい値が書き込まれる。
 
 > ℹ️ 参考：
-
+>
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handleStatefulRequest
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_startSession

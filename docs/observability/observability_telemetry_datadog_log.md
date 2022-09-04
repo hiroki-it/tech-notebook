@@ -68,7 +68,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 サーバーの場合とは異なり、AWS ECS Fargateのdatadogエージェントはログを収集できない。そのため、代わりにFireLensコンテナを使用する必要がある。メトリクスと分散トレースであれば収集できる。
 
 > ℹ️ 参考：
-
+>
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html
 
@@ -79,7 +79,7 @@ description: ログ収集＠Datadogの知見を記録しています。
 FluentBitを稼働させたコンテナのこと。Datadogの代わりにログを収集する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_firelens.html
 
@@ -96,7 +96,7 @@ FluentBitを稼働させたコンテナのこと。Datadogの代わりにログ�
 KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
 
 > ℹ️ 参考：
-
+>
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
@@ -105,7 +105,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、マ�
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
 
 > ℹ️ 参考：
-
+>
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
 > - https://docs.datadoghq.com/integrations/istio/
 
@@ -560,7 +560,7 @@ CRITICAL @http.status_code:[500 TO 599]
 パースルール（```%{<マッチャー名>:<エクストラクト名>:<フィルター名>}```）を使用して、```message```属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extract機能を使用すると、```message```属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher
 > - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
 > - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
@@ -1122,7 +1122,7 @@ autoFilledRule3 ...
 パイプラインで処理を終えたログをグループ化し、ログの破棄ルールや保管期間をグループごとに定義できる。インデックスを使用すれば、Datadogのログ保管のネックになる保管料金を抑えられる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/logs/indexes/
 > - https://tech-blog.abeja.asia/entry/why-datadog
 

@@ -89,7 +89,7 @@ daemonize = yes
 PHP-FPMの```www```プロセスのプールを設定する。```www.conf```ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。```php.ini```ファイルによって読み込まれ、```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。ちなみに、『```www-data```』はApacheプロセスのユーザー名のデフォルト値である。
 
 > ℹ️ 参考：
-
+>
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
@@ -98,7 +98,7 @@ PHP-FPMの```www```プロセスのプールを設定する。```www.conf```フ�
 PHP-FPMのベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。PHP-FPMの仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは```zz-docker.conf```ファイルの設定が最優先になっている。このファイルに後勝ちできるように、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
 > ℹ️ 参考：
-
+>
 > - https://www.kengotakimoto.com/posts/laravel_with_docker-compose
 > - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
 
@@ -167,7 +167,7 @@ pid = /run/php-fpm/php-fpm.pid
 PHP-FPMの```www```プロセスのプールを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://hackers-high.com/linux/php-fpm-config/
 
@@ -287,7 +287,7 @@ listen.owner = www-data
 Apacheでのみ使用できる。PHPの```ini```ファイルで設定されたbool値のオプションを上書きし、他から上書きされないようにする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
 > ℹ️ 参考：
-
+>
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -307,7 +307,7 @@ php_admin_flag[log_errors] = on
 Apacheでのみ使用できる。PHPの```ini```ファイルで設定されたbool値以外のオプションを上書きし、他から上書きされないようにする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
 > ℹ️ 参考：
-
+>
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -329,7 +329,7 @@ php_admin_value[error_log] = /dev/stderr
 PHPの```ini```ファイルで設定されたbool値のオプションを上書きする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
 > ℹ️ 参考：
-
+>
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -351,7 +351,7 @@ php_flag[display_errors] = off
 PHPの```ini```ファイルで設定されたbool値以外のオプションを上書きする。全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
 > ℹ️ 参考：
-
+>
 > - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
 > - https://www.php.net/manual/en/ini.list.php
 
@@ -408,7 +408,7 @@ pm = dynamic
 子プロセスの最大数を設定する。子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。
 
 > ℹ️ 参考：
-
+>
 > - https://life.iua.jp/?p=230
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
 

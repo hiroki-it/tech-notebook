@@ -75,7 +75,7 @@ Address:  172.217.175.3 # IPv4アドレス
 権威DNSサーバーを使用して名前解決する場合、引数なしで```nslookup```コマンドを実行する。
 
 > ℹ️ 参考：
-
+>
 > - http://linux.kororo.jp/cont/server/nslookup_dns.php
 > - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
 
@@ -281,7 +281,7 @@ $ pip3 install supervisor
 Python製のユーティリティである。プロセスをデーモン化し、一括で管理する。
 
 > ℹ️ 参考：
-
+>
 > - http://supervisord.org/index.html
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
@@ -385,7 +385,7 @@ user=root
 常駐プログラムのプロセスを設定する。
 
 > ℹ️ 参考：
-
+>
 > - http://supervisord.org/configuration.html#program-x-section-settings
 > - https://christina04.hatenablog.com/entry/2015/07/21/215525
 
@@ -680,7 +680,7 @@ Failed to call KMS encryption service: AccessDeniedException: status code: 400, 
 プロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
 
 > ℹ️ 参考：
-
+>
 > - https://cameong.hatenablog.com/entry/2016/10/18/121400
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
@@ -720,7 +720,7 @@ $ apt-get install systemd
 
 
 > ℹ️ 参考：
-
+>
 > - https://tex2e.github.io/blog/linux/create-my-systemd-service
 > - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
 > - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
@@ -983,7 +983,7 @@ $ journalctl -u foo.service | grep error
 デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
 
 > ℹ️ 参考：
-
+>
 > - https://serverfault.com/a/924434
 > - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
 
@@ -1056,7 +1056,7 @@ $ yum install -y tcpdump
 今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。パケットの送信元と送信先がわかる。最初の３行はスリーウェイハンドシェイクを表す。
 
 > ℹ️ 参考：
-
+>
 > - http://blog.livedoor.jp/sonots/archives/18239717.html
 > - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
 

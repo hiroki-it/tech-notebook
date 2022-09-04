@@ -22,7 +22,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_structure.png)
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
 > - https://github.com/salrashid123/envoy_discovery#prerequsites
@@ -36,7 +36,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
 > ℹ️ 参考：
-
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
 > - https://www.netstars.co.jp/kubestarblog/k8s-10/
 
@@ -60,7 +60,7 @@ EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを�
 Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に```istio-proxy```コンテナを注入する。Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
 > ℹ️ 参考：
-
+>
 > - https://blog.linkode.co.jp/entry/2020/07/06/162915
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33

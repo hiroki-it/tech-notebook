@@ -53,7 +53,7 @@ APIガードの認証で使用するトークンをJWTに変更したい時に�
 ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。```auth.php```ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。
 
 > ℹ️ 参考：
-
+>
 > - https://teratail.com/questions/171582
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 > - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
@@ -453,7 +453,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスする。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -507,7 +507,7 @@ class FooController extends Controller
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザーのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザーの認可スコープの範囲内か否かを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスする。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
@@ -959,7 +959,7 @@ $ composer require laravel/sanctum
 フロントエンド（外部のアプリケーションを含む）は任意とし、APIのみを実装する場合、使用が適している。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
 > - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
@@ -971,7 +971,7 @@ $ composer require laravel/sanctum
 フロントエンドにファーストパーティのSPA（自社のSPA）を使用して、バックエンドのAPIを実装する場合、使用が適している。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
 > - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
@@ -985,7 +985,7 @@ $ composer require laravel/sanctum
 Laravelが持つ全ての認証機能のバックエンド処理を提供する。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/fortify.html
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
 
@@ -998,7 +998,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 Laravelが持つ全ての認証機能のバックエンド（認証+ルーティング+DBアクセス）処理と、これに対応するフロントエンド処理を提供する。
 
 > ℹ️ 参考：
-
+>
 > - https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
 > - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
 

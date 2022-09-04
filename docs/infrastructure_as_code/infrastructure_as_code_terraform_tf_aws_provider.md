@@ -1196,7 +1196,7 @@ Terraformに値をハードコーディングしたくない場合は、SMパラ
 DBクラスターでは、レプリケーションのために、```3```個のAZが必要である。そのため、指定したAZが2つであっても、コンソール画面上で```3```個のAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```引数でAZを指定しておく必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
 > - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 > - https://github.com/hashicorp/terraform-provider-aws/issues/1111
@@ -1220,7 +1220,7 @@ DBクラスターでは、レプリケーションのために、```3```個のAZ
 Auroraでは、クラスターにインスタンスを1つだけ紐づけると、プライマリーインスタンスとして作成される。また以降インスタンスを紐づけると、リードレプリカとして自動的に作成されていく。AZのマップデータに対して```for_each```引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。
 
 > ℹ️ 参考：
-
+>
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 > - https://github.com/hashicorp/terraform/issues/5333
 

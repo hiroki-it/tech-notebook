@@ -33,7 +33,7 @@ $ helm install grafana grafana/grafana -n grafana -f values.yaml
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/prometheus-operator/prometheus-operator#helm-chart
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 > - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/

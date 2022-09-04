@@ -18,7 +18,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 ### メトリクス
 
 > ℹ️ 参考：
-
+>
 > - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
 
@@ -55,7 +55,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 ### 分散トレース
 
 > ℹ️ 参考：
-
+>
 > - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
 

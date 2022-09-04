@@ -458,7 +458,7 @@ runs:
 これに関しては以前は非対応であったため、```add-mask```コマンドを使用した方法がネット上で見つかることに注意する。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
 > - https://github.com/actions/runner/issues/643#issuecomment-708228940
 > - https://github.com/actions/runner/issues/475#issuecomment-1092734499
@@ -521,7 +521,7 @@ jobs:
 リポジトリの設定のEnvironment項目に変数名と値を登録する。GitHub Actionsでのみ参照できる。出力された変数の値は、以降の処理でマスキングされる。Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://btj0.com/blog/github/use-env/
 > - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
 
@@ -699,7 +699,7 @@ jobs:
 入力したパラメーターは、異なる```job```の間で出力できる。先に実行される```job```キーの```output```キーに入力する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 > - https://swfz.hatenablog.com/entry/2020/04/18/160235
 

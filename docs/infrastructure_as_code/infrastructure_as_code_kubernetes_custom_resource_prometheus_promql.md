@@ -80,7 +80,7 @@ increase(foo_metrics[5m])
 Prometheusが収集したデータポイントの合計数を表す。
 
 > ℹ️ 参考：
-
+>
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
@@ -90,7 +90,7 @@ Prometheusが収集したデータポイントの合計数を表す。
 Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
 > ℹ️ 参考：
-
+>
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
@@ -101,7 +101,7 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 Prometheusが作成したチャンクの合計数を表す。
 
 > ℹ️ 参考：
-
+>
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
 
@@ -168,7 +168,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
 > - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
 > - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4

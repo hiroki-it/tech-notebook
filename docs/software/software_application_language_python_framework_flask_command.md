@@ -56,7 +56,7 @@ $ flask run
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/cli.html
 

@@ -157,7 +157,7 @@ Datadog社の物理サーバーからリクエストが送信される。物理�
 #### ▼ ヘッダー
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 > - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
 

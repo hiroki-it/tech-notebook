@@ -151,7 +151,7 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
 
 > ℹ️ 参考：
-
+>
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
@@ -562,7 +562,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 #### ▼ アサーションメソッドによる検証
 
 > ℹ️ 参考：
-
+>
 > - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
 > - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions

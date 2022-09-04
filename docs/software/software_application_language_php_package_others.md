@@ -341,6 +341,6 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/line/line-bot-sdk-php
 > - https://developers.line.biz/ja/docs/messaging-api/overview/

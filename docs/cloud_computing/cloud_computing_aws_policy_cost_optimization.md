@@ -58,7 +58,7 @@ description: コスト最適化＠AWSの知見を記録しています。
 EBSボリュームは、ボリュームの使用率に関わらず、最大サイズに基づいて料金が発生する。また、複数のEBSボリュームをEC2に紐づけている場合は、その合計サイズで料金が発生する。そのため、必要最低限のサイズを選択するように、過剰なサイズを選択してはいけない。その他、ボリュームタイプによっては、IOPSやスループットの設定値が課金対象になっている。汎用SSD（gp2タイプ）であれば、EBSボリュームの最大サイズのみを考慮すれば良い。また、注意点として、リージョンごとに料金体系が異なる。
 
 > ℹ️ 参考：
-
+>
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/
 > - https://aws.amazon.com/jp/ebs/pricing/
 

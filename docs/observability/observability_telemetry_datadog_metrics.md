@@ -47,7 +47,7 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true```を割り当てると、トレースエージェントが有効になる。APMエージェントを有効化し、分散トレースを収集できる。APMでは、分散トレースを元にして、マイクロサービス間の依存関係をマイクロサービスマップとして確認できる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/agent/docker/apm/?tab=linux
 > - https://docs.datadoghq.com/tracing/#explore-datadog-apm
 
@@ -64,7 +64,7 @@ dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
 
 > ℹ️ 参考：
-
+>
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
@@ -73,7 +73,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、マ�
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
 
 > ℹ️ 参考：
-
+>
 > - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
 > - https://docs.datadoghq.com/integrations/istio/
 

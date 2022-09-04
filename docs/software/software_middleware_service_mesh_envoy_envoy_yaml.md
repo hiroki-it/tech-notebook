@@ -190,7 +190,7 @@ static_resources:
 #### ▼ typed_config.http_filters
 
 > ℹ️ 参考：
-
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
@@ -214,7 +214,7 @@ static_resources:
 | ```virtual_hosts``` | ルーティング先を設定する。特に```domains```キーには、受信するインバウンド通信の```Host```ヘッダーの値を設定する。ちなみに```Host```ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
 
 > ℹ️ 参考：
-
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
 > - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
 
@@ -241,7 +241,7 @@ static_resources:
 統計ダッシュボードのメトリクスの接頭辞を設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 

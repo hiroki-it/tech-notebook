@@ -102,7 +102,7 @@ SREチームのValueから、SREerに必要な技術がわかる。
 提供しているサービスから、SREerに必要な技術がわかる。
 
 > ℹ️ 参考：
-
+>
 > - https://sreake.com/
 > - https://topotal.com/services/sre-as-a-service
 

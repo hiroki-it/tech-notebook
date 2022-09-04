@@ -34,7 +34,7 @@ $ nginx -s reload
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://serverfault.com/questions/378581/nginx-config-reload-without-downtime
 > - https://www.nyamucoro.com/entry/2019/07/27/222829
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html
@@ -50,7 +50,7 @@ $ nginx -t
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html
 

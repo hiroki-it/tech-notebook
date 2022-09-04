@@ -44,7 +44,7 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/prometheus-operator/prometheus-operator#helm-chart
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 > - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
@@ -177,7 +177,7 @@ spec:
 指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
 > ℹ️ 参考：
-
+>
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
 
@@ -331,7 +331,7 @@ metadata:
 収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 

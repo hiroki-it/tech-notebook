@@ -79,7 +79,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 datadogエージェントを設定する。 ```/etc/datadog-agent```ディレクトリに配置される。datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://app.datadoghq.com/account/settings#agent
 > - https://docs.datadoghq.com/getting_started/agent/#configuration
 > - https://docs.datadoghq.com/agent/guide/agent-configuration-files/
@@ -179,7 +179,7 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://gallery.ecr.aws/datadog/agent
 > - https://github.com/DataDog/datadog-agent
 

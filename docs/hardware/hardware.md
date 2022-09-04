@@ -236,7 +236,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 ストレージのこと。HDDとSSDがある。単に『ディスク』ともいう。
 
 > ℹ️ 参考：
-
+>
 > - https://jisaku-pc.net/hddnavi/disk_drive.html
 > - https://pctrouble.net/storage/disk_drive.html
 > - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
@@ -248,7 +248,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 ディスク上に作成される仮想的なストレージのこと。単に『ドライブ』ともいう。Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
 
 > ℹ️ 参考：
-
+>
 > - https://jisaku-pc.net/hddnavi/disk_drive.html
 > - https://pctrouble.net/storage/disk_drive.html
 

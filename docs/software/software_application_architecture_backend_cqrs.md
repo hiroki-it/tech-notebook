@@ -20,7 +20,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 『Command Query Responsibility Segregation（コマンドクエリ責務分離）』の略。リポジトリパターンにおける更新系と参照系の処理を分離する設計のこと。更新系のオブジェクトはそのままリポジトリとしてインフラ層に配置する。一方で参照系のオブジェクトは、参照のユースケースに応じて『QueryServiceオブジェクト』として設計し、ユースケース層に配置する（これ重要）。ソフトウェアに部分的に組み込める。```N+1```問題にも対処できる。
 
 > ℹ️ 参考：
-
+>
 > - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 
@@ -45,7 +45,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 CREATE、UPDATE、DELETE処理を実行する処理フローのこと。今回、クリーンアーキテクチャを前提としてCQRSを説明する。概念や実装方法は以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 > - https://github.com/hiroki-it/ddd-backend-with-laravel
 
@@ -66,7 +66,7 @@ CREATE、UPDATE、DELETE処理を実行する処理フローのこと。今回�
 READ処理を実行するオブジェクトのこと。今回、クリーンアーキテクチャを前提としてCQRSを説明する。Queryでは概念や実装方法は以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 > - https://github.com/hiroki-it/ddd-backend-with-laravel
 
@@ -92,6 +92,6 @@ READ処理を実行するオブジェクトのこと。今回、クリーンア�
 イベントソーシングの実装方法は様々ある。イベントソーシングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
 
 > ℹ️ 参考：
-
+>
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/

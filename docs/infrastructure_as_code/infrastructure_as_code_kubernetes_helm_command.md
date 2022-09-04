@@ -115,7 +115,7 @@ $ helm install <リリース名> <チャートリポジトリ名> --kube-context
 Helmの構文をバリデーションを実行する。あくまでHelmの構文マニフェストファイル自体の記法の誤りは検出してくれないことに注意する。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/helm/helm_lint/
 > - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
 
@@ -532,7 +532,7 @@ TEST SUITE: None
 Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソースのインストールを実行する仕様になっている。```--skip-crds```オプションを有効化すると、このインストールをスキップし、非カスタムリソースのみをインストールできる。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/helm/helm_upgrade/
 
 ```bash

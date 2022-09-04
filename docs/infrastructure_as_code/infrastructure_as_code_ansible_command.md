@@ -81,7 +81,7 @@ $ ansible-vault decrypt parameters.yaml
 指定した平文ファイルを暗号化し、元々の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、```ansible-playbook```コマンドで```--ask-vault-pass```オプションを有効化する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
 > - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 

@@ -79,7 +79,7 @@ app.run()
 #### ▼ 引数
 
 > ℹ️ 参考：
-
+>
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
 
@@ -121,7 +121,7 @@ app.run()
 Pythonのコードを配置するディレクトリに```__init__.py```ファイルを配置し、ここでFlaskクラスのインスタンスを作成するメソッドを定義する。
 
 > ℹ️ 参考：
-
+>
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
 > - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
 > - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
@@ -160,7 +160,7 @@ if __name__ == '__main__':
 本番環境では、アプリケーションの実行に```run```関数と```flask run```コマンドを使用しないようにする。代わりに、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。本番環境と開発環境を同様にするために、本番環境だけでなく開発環境でもコマンドを使用しないようにしても良い。
 
 > ℹ️ 参考：
-
+>
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000
 

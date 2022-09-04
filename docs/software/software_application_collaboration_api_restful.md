@@ -78,7 +78,7 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の```4```個�
 POST送信とPUT送信の重要な違いについてまとめる。データを作成するユースケースの時はPOST送信、または更新する時はPUT送信を使用する。ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/a/2691891/12771072
 > - https://restfulapi.net/rest-put-vs-post/
 
@@ -96,14 +96,14 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 すでにHTTPメソッド自体に動詞の意味合いが含まれるため、エンドポイントに動詞を含めないようにする。この時、アクセスするリソース名がわかりやすいような名詞を使用する。
 
 > ℹ️ 参考：
-
+>
 > - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 > - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
 ただし慣例として、認証のエンドポイントが動詞（```login```、```logout```、```register```）になることは許容されている。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
 > - https://www.developer.com/web-services/best-practices-restful-api
 
@@ -639,7 +639,7 @@ X-Powered-By: PHP/7.3.22
 POST/PUTメソッドでは、処理後のデータを200レスポンスとして返信する。もし処理後のデータを返信しない場合、改めてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。
 
 > ℹ️ 参考：
-
+>
 > - https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
 > - https://qiita.com/wim/items/dbb6def4e207f6048735
 
@@ -648,7 +648,7 @@ POST/PUTメソッドでは、処理後のデータを200レスポンスとして
 DELETEメソッドでは、メッセージのみを200レスポンスとして返信する。空ボディ204レスポンスとして返信しても良い。
 
 > ℹ️ 参考：
-
+>
 > - https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
 > - https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
 
@@ -904,7 +904,7 @@ session.save_path = "/tmp"
 なお、PHP-FPMを使用している場合は、```/etc/php.ini```ファイルではなく、```/etc/php-fpm.d/www.conf```ファイルで保存場所を設定する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/phpredis/phpredis/issues/1097
 > - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
 

@@ -201,7 +201,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 開発環境でKubernetesリソースの機能追加を検証するツールの例を記載する。
 
 > ℹ️ 参考：
-
+>
 > - https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 > - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
 > - https://blog.cybozu.io/entry/2019/07/03/170000
@@ -284,7 +284,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 まず最初に、マスターNodeをアップグレードする。必要であれば、マスターNode上のアドオン（例：core-dns、kube-proxy、vpc-cni）を別々にアップグレードする。
 
 > ℹ️ 参考：
-
+>
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
 
@@ -328,7 +328,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
 
 > ℹ️ 参考：
-
+>
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 > - https://logmi.jp/tech/articles/323032
 
@@ -353,7 +353,7 @@ $ kubectl drain <ワーカーNode名> \
 ローリングアップデート方式でワーカーNodeをアップグレードする方法。一部のクラウドプロバイダー（例：AWS）のみが提供している
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 
@@ -364,7 +364,7 @@ $ kubectl drain <ワーカーNode名> \
 新しいClusterを作成することにより、ワーカーNodeをアップグレードする方法。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
 > ℹ️ 参考：
-
+>
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
@@ -450,7 +450,7 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
 
 > ℹ️ 参考：
-
+>
 
 > - https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
 > - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
@@ -460,7 +460,7 @@ RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープ
 Podの```spec.securityContext```キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 > - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
 
@@ -473,7 +473,7 @@ Podの```spec.securityContext```キーを使用して、コンテナのプロセ
 Secretの```data```キーには、```base64```方式でエンコードされた値を設定する必要がある。この```base64```方式エンコード値をどのように管理するかには選択肢がある。
 
 > ℹ️ 参考：
-
+>
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 > - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
 

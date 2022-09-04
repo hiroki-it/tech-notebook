@@ -20,7 +20,7 @@ description: 監視＠可観測性の知見を記録しています。
 既知のメトリクスとログを基に、システムにおける想定内の不具合の発生を未然に防ぐこと。想定内という点で、可観測性と区別できる。
 
 > ℹ️ 参考：
-
+>
 > - https://en.wikipedia.org/wiki/Website_monitoring
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 
@@ -78,7 +78,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 サイト訪問後のユーザーエンゲージメントをデータとして監視する。リアルユーザー監視の一種ともみなせるが、パフォーマンスの監視が主目的ではなく、リアルユーザー監視と補完し合う監視方法である。
 
 > ℹ️ 参考：
-
+>
 > - https://blog.uptrends.com/web-performance/rum-and-google-analytics-understanding-the-difference/
 > - https://developer.akamai.com/blog/2017/03/29/RUM-data-google-analytics
 > - https://www.amazon.co.jp/dp/4873118646
@@ -88,7 +88,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 検索エンジン上（サイト訪問前）のユーザーエンゲージメントをデータとして監視する。
 
 > ℹ️ 参考：
-
+>
 > - https://support.google.com/webmasters/answer/9128668?hl=en
 > - https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
 
@@ -97,7 +97,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 『外部監視、外形監視』ともいう。実際のユーザーの一連の操作を模したリクエストをアプリケーションに送信し、レスポンスに関するメトリクスのデータポイントを収集した後、これを監視する。ユーザーを模したリクエストを作成するという意味合いで、『合成』という。ユーザー視点で監視できる。特に、クリティカルユーザージャーニーの一連の操作を監視すると良い。
 
 > ℹ️ 参考：
-
+>
 > - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
 > - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
 > - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
@@ -125,7 +125,7 @@ Webページのローディング時に、Navigation-timing-APIに対してリ�
 CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
 > - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
 
@@ -164,7 +164,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 ロードバランサーからターゲットに専用のリクエストを送信し、ターゲットが正しく動作しているか否かを確認する。OSI参照モデルのいずれのレイヤーまでの動作を確認するかによって、ヘルスチェックに種類がある。
 
 > ℹ️ 参考：
-
+>
 > - https://www.f5.com/ja_jp/services/resources/glossary/health-check
 > - https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
 > - https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/material/data/1/7.html

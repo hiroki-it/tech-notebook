@@ -232,7 +232,7 @@ $ minikube ip
 Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 > ℹ️ 参考：
-
+>
 > - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
 
@@ -397,7 +397,7 @@ http://*.*.*.*:57761
 仮想環境にSSH接続を行う。
 
 > ℹ️ 参考：
-
+>
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
@@ -641,7 +641,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Clusterネットワーク外からPodに通信できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 > ℹ️ 参考：
-
+>
 > - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 

@@ -44,7 +44,7 @@ $ php -r "unlink('composer-setup.php');"
 名前空間とパスの対応関係を設定する。```require```関数を使用せずに、クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://getcomposer.org/doc/04-schema.md#autoload
 > - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
 
@@ -371,7 +371,7 @@ $ composer init
 事前に```composer.json```ファイルに書き込まれたパッケージを、```composer.lock```ファイルに書き込まれたバージョンでインストールする。
 
 > ℹ️ 参考：
-
+>
 > - https://getcomposer.org/doc/03-cli.md#install-i
 > - https://prograshi.com/framework/laravel/require-update-install/
 
@@ -442,7 +442,7 @@ $ composer install -vvv
 パッケージを```composer.json```ファイルと```composer.lock```ファイルの両方から削除する。
 
 > ℹ️ 参考：
-
+>
 > - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
 > - https://getcomposer.org/doc/03-cli.md#remove
 
@@ -459,7 +459,7 @@ $ composer remove <パッケージ名>
 パッケージ名を```composer.json```ファイルと```composer.lock```ファイルの両方に書き込み、インストールする。または、パッケージのアップグレード/ダウングレードする場合、パッケージのバージョンを書き換える。コマンドを使用せずに自分で実装しても良い。
 
 > ℹ️ 参考：
-
+>
 > - https://getcomposer.org/doc/03-cli.md#require
 > - https://prograshi.com/framework/laravel/require-update-install/
 
@@ -486,7 +486,7 @@ $ composer <スクリプト名>
 事前に```composer.json```ファイルに書き込まれたパッケージを最新のバージョンでインストールし、```composer.lock```ファイルを書き換える。```composer.lock```ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。パッケージ内でエラーが発生したら、```composer update```コマンドによるパッケージの更新が原因だと考えた方が良い。いずれかのパッケージで新バージョンがリリースされたが、これに不具合があった可能性が高い。
 
 > ℹ️ 参考：
-
+>
 > - https://getcomposer.org/doc/03-cli.md#update
 > - https://prograshi.com/framework/laravel/require-update-install/
 

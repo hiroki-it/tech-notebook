@@ -40,7 +40,7 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogに転送する。サーバーの場合とは異なり、自身が収集しにいくことはできない。仕組みとして、アプリケーションコンテナのトレースパッケージは分散トレースを作成し、datadogコンテナの『```http://localhost:8126```』にこれを送信する。datadogコンテナ内のdatadogエージェントはこれをHTTPSでDatadogに転送する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 > - https://inokara.hateblo.jp/entry/2017/10/01/164446
 
@@ -95,7 +95,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://docs.datadoghq.com/tracing/setup/php/
 > - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
@@ -486,7 +486,7 @@ PHPトレーサーでlaravel内からタグを収集した例
 トレーサによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の```4```個に分類される。各マイクロサービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる。タイプ名の種類については、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
 > - https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
 
@@ -499,6 +499,6 @@ PHPトレーサーでlaravel内からタグを収集した例
 トレーサによって、マイクロサービスにタグを追加できる。PHPトレーサの各インテグレーションのコードについては以下のリンクを参考にせよ。コードから、PHPトレーサーがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php

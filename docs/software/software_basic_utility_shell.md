@@ -32,7 +32,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 認証情報を必要とし、認証後に最初に起動するシェルのこと。パスワードは、```/etc/passwd```ファイルに設定されている。
 
 > ℹ️ 参考：
-
+>
 > - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 
@@ -120,7 +120,7 @@ echo $0 # foo.sh
 シェルを起動するとき、各種設定ファイルが読み込まれる。ファイルが存在しなければ、自身で作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
 > - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
 > - https://suwaru.tokyo/zshenv/
@@ -327,7 +327,7 @@ $ echo "text" | tee stdout.log
 『```<```、```>```』『```<<```、```>>```』の記号のこと。ファイルの内容を特定のプロセスの標準入力に転送する。あるいは反対に、特定のプロセスの標準出力/標準エラー出力をファイルに転送する。プロセスの標準入力への転送は、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
 > - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
 
@@ -530,7 +530,7 @@ $ cat source_ips.txt | uniq
 ### 終了ステータスの種類
 
 > ℹ️ 参考：
-
+>
 > - https://tldp.org/LDP/abs/html/exitcodes.html
 > - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
 

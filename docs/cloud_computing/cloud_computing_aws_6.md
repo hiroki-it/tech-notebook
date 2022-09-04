@@ -30,7 +30,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 #### ▼ IPアドレスの種類
 
 > ℹ️ 参考：
-
+>
 > - https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
 
@@ -43,8 +43,9 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 #### ▼ DNS名の割り当て
 
 VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
-> ℹ️ 参考：
 
+> ℹ️ 参考：
+>
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
 
@@ -74,7 +75,7 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
 
 > ℹ️ 参考：
-
+>
 > - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
 > - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
 
@@ -216,7 +217,7 @@ S3、DynamoDBのみ
 DNATの機能を持ち、グローバルIPアドレス（VPC外のIPアドレス）をプライベートIPアドレス（VPC内のIPアドレス）に変換する。```1```個のパブリックIPに対して、```1```個のプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
@@ -235,7 +236,7 @@ DNATについては、以下のリンクを参考にせよ。
 SNATの機能を持ち、プライベートIPアドレス（VPC内のIPアドレス）をグローバルIPアドレス（VPC外のIPアドレス）に変換する。```1```個のパブリックIPに対して、複数のプライベートIPを紐付けられる。つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、```1```個のパブリックIPアドレスで送信する。この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 

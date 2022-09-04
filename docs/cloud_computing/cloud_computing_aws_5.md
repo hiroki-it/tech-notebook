@@ -320,11 +320,9 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 SMパラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
-
 > - https://note.com/hamaa_affix_tech/n/n02eb412d0327
-
 > - https://tech.libry.jp/entry/2020/09/17/130042
 
 
@@ -341,7 +339,7 @@ SMパラメーター名は、『```/<リソース名>/<変数名>```』とする
 EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
 > - https://blog.denet.co.jp/aws-systems-manager-session-manager/
 
@@ -511,7 +509,7 @@ IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲で�
 OIDC、SAML、によって発行されたユーザーに委譲できる。OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
 
 > ℹ️ 参考：
-
+>
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 

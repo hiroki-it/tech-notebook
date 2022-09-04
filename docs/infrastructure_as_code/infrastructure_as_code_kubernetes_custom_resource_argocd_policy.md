@@ -231,7 +231,7 @@ $ kubectl patch ns argocd \
 Sync後にKubernetesリソースの状態が変更されるような場合、SyncしてもSyncedステータスではなくOutOfSyncステータスになってしまう。
 
 > ℹ️ 参考：
-
+>
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
 > - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
 

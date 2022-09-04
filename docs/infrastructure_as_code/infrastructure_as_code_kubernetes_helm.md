@@ -22,7 +22,7 @@ description: Helmの知見を記録しています。
 Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースが作成される。
 
 > ℹ️ 参考：
-
+>
 > - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
 > - https://helm.sh/ja/docs/glossary/
 > - https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
@@ -58,7 +58,7 @@ Helmは、パッケージマネージャーとしてのHelmクライアント、
 チャートリポジトリ内に複数のバージョンのチャートを管理する場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ、を配置する。GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理する場合は、このチャートリポジトリに相当する。チャートアーカイブがGitHub Pages上に公開され、HelmがURLでチャートを指定できるようになる。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
 > - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
@@ -97,7 +97,7 @@ repository/ # チャートリポジトリ
 必要なKubernetesリソースを作成するためのマニフェストファイルのセットのこと。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/intro/using_helm/#three-big-concepts
 > - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
 > - https://helm.sh/docs/topics/charts/#the-chart-file-structure
@@ -199,7 +199,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/topics/charts/#the-apiversion-field
 > - https://helm.sh/docs/topics/v2_v3_migration/
 
@@ -429,7 +429,7 @@ ServiceAccountの作成を有効化する。
 define関数で定義した文字列を加工して出力する。加工内容はパラメーターで設定できる。
 
 > ℹ️ 参考：
-
+>
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
 

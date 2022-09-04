@@ -143,7 +143,7 @@ $staff->roleType->isSalesRole(); // false
 PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 > - https://pleiades.io/help/phpstorm/laravel.html
 

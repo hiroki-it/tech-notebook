@@ -70,7 +70,7 @@ kube-controllerとして機能し、Applicationの状態がマニフェストフ
 repo-server内のマニフェストファイルのキャッシュを作成し、これを管理する。
 
 > ℹ️ 参考：
-
+>
 > - https://weseek.co.jp/tech/95/
 > - https://blog.manabusakai.com/2021/04/argo-cd-cache/
 
@@ -83,7 +83,7 @@ repo-server内のマニフェストファイルのキャッシュを作成し、
 ArgoCDに認証機能を付与し、権限を持つユーザー以外のリクエストを拒否する。
 
 > ℹ️ 参考：
-
+>
 > - https://weseek.co.jp/tech/95/
 > - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
 > - https://zenn.dev/onsd/articles/a3ea24b01da413
@@ -101,7 +101,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 指定したブランチのコードの状態を監視する。プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。
 
 > ℹ️ 参考：
-
+>
 > - https://blog.vpantry.net/2021/01/cicd-2/
 > - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
 > - https://blog.argoproj.io/introducing-argo-cd-declarative-continuous-delivery-for-kubernetes-da2a73a780cd
@@ -151,7 +151,7 @@ Applicationさえ削除しなければ、Kubernetesリソースをダッシュ�
 （６）ArgoCDがマニフェストファイルの変更を検知し、Kubernetesにプルする。
 
 > ℹ️ 参考：
-
+>
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
 

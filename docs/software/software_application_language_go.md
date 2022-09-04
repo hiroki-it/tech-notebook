@@ -225,8 +225,6 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 > ℹ️ 参考：https://ja.stackoverflow.com/q/41599
 
-> ℹ️ 参考：
-
 #### ▼ 関数、type、構造体
 
 アッパーキャメルケースまたはローワーキャメルケースで命名する。
@@ -242,7 +240,7 @@ Goの命名規則は、GitHubのWikiに記載されている。
 構造体名の頭一文字または頭二文字を取って命名する。アプリケーション内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取ると良い。また、修飾語と組み合わせて構成される構造体名の場合、被修飾語の頭二文字を取る。オブジェクト指向で使われる『```this```』『```self```』
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
 > - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
@@ -317,7 +315,7 @@ Uber社が採用しているお作法。
 Goには、標準でイミュータブルの機能がなく、これを無理に実現しようとすると逆に保守性が低くなることがある。そのため、イミュータブルにするか否かは慎重に判断する。
 
 > ℹ️ 参考：
-
+>
 > - https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F
 > - https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F
 

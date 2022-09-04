@@ -22,7 +22,7 @@ description: Minikube＠Kubernetesの知見を記録しています。
 ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にワーカーNodeを持つClusterを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://minikube.sigs.k8s.io/docs/commands/
 > - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 

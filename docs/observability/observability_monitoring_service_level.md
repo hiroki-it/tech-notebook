@@ -45,7 +45,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 4. 商品を購入する。
 
 > ℹ️ 参考：
-
+>
 > - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
 > - https://speakerdeck.com/arisgi/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
 
@@ -58,7 +58,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 クリティカルユーザージャーニーの満足度に影響を与えるメトリクス（リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延、など）をSLIとするとよい。
 
 > ℹ️ 参考：
-
+>
 > - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
 > - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
 
@@ -67,7 +67,7 @@ ECサイトであれば、以下の一連の行動がクリティカルユーザ
 MTtxメトリクスをSLIとし、そのダッシュボードを作成すると良い。その他、可用性やQoS：Quality of Serviceに関するメトリクスをSLIに選択すると良い。具体的には、可用性は稼働時間を基に定量化できる。
 
 > ℹ️ 参考：
-
+>
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
 > - https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso

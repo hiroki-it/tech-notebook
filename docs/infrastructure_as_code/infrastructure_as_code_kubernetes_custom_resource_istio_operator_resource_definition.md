@@ -37,7 +37,7 @@ Operator controller will watch namespaces: istio-system
 （２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 > - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
@@ -64,7 +64,7 @@ istiooperator.install.istio.io/istio-operator created
 IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/setup/install/operator/#deploy-the-istio-operator
 > - https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
 
@@ -99,7 +99,7 @@ metadata:
 IstioOperator管理でIstioリソースを作成する。
 
 > ℹ️ 参考：
-
+>
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
@@ -129,7 +129,7 @@ spec:
 baseコンポーネントのオプションを設定する。baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
 
 > ℹ️ 参考：
-
+>
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://github.com/istio/istio/issues/22491#issuecomment-604745090
 
@@ -225,7 +225,7 @@ spec:
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
 > ℹ️ 参考：
-
+>
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
 
@@ -562,7 +562,7 @@ spec:
 Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
 > ℹ️ 参考：
-
+>
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 > - https://istio.io/latest/docs/setup/upgrade/canary/
 
@@ -585,7 +585,7 @@ spec:
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://hub.docker.com/r/istio/proxyv2/tags
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
 

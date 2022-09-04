@@ -214,7 +214,7 @@ $ cat data.json | jq '.'"$KEY_NAME"'[]'
 パスによる取得結果の中から、特定のキーや値を持つオブジェクトを取得する。
 
 > ℹ️ 参考：
-
+>
 > - https://stedolan.github.io/jq/manual/#select(boolean_expression)
 > - https://qiita.com/kenyabe/items/29b7c615c4b6634a388e
 

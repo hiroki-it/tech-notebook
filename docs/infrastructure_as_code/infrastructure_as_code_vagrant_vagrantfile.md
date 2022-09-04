@@ -243,7 +243,7 @@ end
 shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式（```<<-```）を使用すると良い。
 
 > ℹ️ 参考：
-
+>
 > - https://www.vagrantup.com/docs/provisioning/shell
 > - https://monologu.com/vagrant-shell-provisioning/
 
@@ -281,7 +281,7 @@ end
 仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分自身を指定してプロビジョニングを実行することになる。開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
 
 > ℹ️ 参考：
-
+>
 > - https://www.vagrantup.com/docs/provisioning/ansible_local
 > - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
 
@@ -351,7 +351,7 @@ end
 また、『```RSync > NFS```』『```NFS > SMB```』である。
 
 > ℹ️ 参考：
-
+>
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 

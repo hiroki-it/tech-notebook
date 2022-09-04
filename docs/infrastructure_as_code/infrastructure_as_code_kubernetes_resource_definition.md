@@ -61,7 +61,7 @@ metadata:
 IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
@@ -92,7 +92,7 @@ metadata:
 ```
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
@@ -107,7 +107,7 @@ metadata:
 string型である必要がある。int型を割り当てようとするとエラーになり、これはHelmの```values```ファイル経由で『数字』を出力しようとする場合に起こる。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 > - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm.html
 
@@ -120,7 +120,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 ```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/superbrothers/items/aeba9406691388b6a19e
 > - https://www.slideshare.net/pfi/metadatamanagedfields-kubernetes-meetup-tokyo-48-251269647
 
@@ -546,7 +546,7 @@ spec:
 Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 > - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
@@ -767,7 +767,7 @@ spec:
 メトリクスの種類を設定する。以下のタイプを設定できる。
 
 > ℹ️ 参考：
-
+>
 > - https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
@@ -828,7 +828,7 @@ spec:
 標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キー値を設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
@@ -889,7 +889,7 @@ spec:
 標準のIngressの代わりに、外部Ingressを使用する場合、そのIngressのマニフェストのAPIを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
@@ -914,7 +914,7 @@ spec:
 外部Ingressに応じたパラメーターを設定する。代わりに、IngressClassParamsを使用しても良い。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclass
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#ingressclassparams
 
@@ -1184,7 +1184,7 @@ spec:
 Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
 
@@ -1235,7 +1235,7 @@ spec:
 ホスト上であらかじめNFSサーバーを起動しておく。NFSサーバーにストレージ領域を作成し、これをボリュームとする。ワーカーNode内のPodを、ホスト上のNFSサーバーにマウントする。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 > - https://ytsuboi.jp/archives/505
 > - https://qiita.com/reoring/items/4d80a04dd31e991dd233
@@ -1460,7 +1460,7 @@ spec:
 kube-schedulerがPodを作成するNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://stackoverflow.com/questions/57494369/kubectl-apply-deployment-to-specified-node-group-aws-eks
 
@@ -1589,7 +1589,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
 > - https://smallit.co.jp/blog/667/
 
@@ -1724,7 +1724,7 @@ spec:
 Podに適用するSecretを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 > - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
 > - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
@@ -1835,7 +1835,7 @@ spec:
 すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
 
 > ℹ️ 参考：
-
+>
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
 
@@ -1981,7 +1981,7 @@ Podを削除する時の待機時間を設定する。
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 > ℹ️ 参考：
-
+>
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
 
@@ -2054,7 +2054,7 @@ data:
 Volumeの一種であるEmptyDirボリュームを作成する。EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -2082,7 +2082,7 @@ spec:
 Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -2426,7 +2426,7 @@ stringData:
 イメージレジストリの認証情報を設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets
 > - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 > - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
@@ -2630,7 +2630,7 @@ spec:
 ちなみに、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
 
 > ℹ️ 参考：
-
+>
 > - https://github.com/search?q=php-fpm+kubernetes
 > - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
 
@@ -2715,7 +2715,7 @@ spec:
 Serviceのタイプを設定する。
 
 > ℹ️ 参考：
-
+>
 > - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
