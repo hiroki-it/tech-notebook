@@ -74,6 +74,8 @@ markdown_extensions:
       permalink: true
   # メタタグの有効化
   - meta
+  # htmlタグの有効化
+  - md_in_html
 
 # 外部プラグイン
 plugins:
