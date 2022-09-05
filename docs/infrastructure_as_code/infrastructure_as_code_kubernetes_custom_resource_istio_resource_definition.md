@@ -849,7 +849,67 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 <br>
 
-## 09. VirtualService
+## 09. ServiceEntry
+
+### spec.hosts
+
+#### ▼ hostsとは
+
+送信できるアウトバウンド通信のドメイン名を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+spec:
+  hosts:
+    - '*'
+```
+
+<br>
+
+### spec.ports
+
+#### ▼ portsとは
+
+送信できるアウトバウンド通信のポート番号を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+spec:
+  ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+    - name: https
+      number: 443
+      protocol: HTTPS
+```
+
+<br>
+
+### spec.resolution
+
+#### ▼ resolutionとは
+
+送信できるアウトバウンド通信のIPアドレスの設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-app-service-entry
+spec:
+  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
+```
+
+<br>
+
+## 10. VirtualService
 
 ### spec.exportTo
 

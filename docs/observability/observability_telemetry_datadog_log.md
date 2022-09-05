@@ -310,7 +310,7 @@ export default browserLogsForSsgPlugin
 
 #### ▼ PHP Monologの場合
 
-LogパッケージにMonologを使用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
+LogパッケージにMonologを採用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 

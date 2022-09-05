@@ -131,7 +131,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 共通鍵暗号方式と公開鍵暗号方式を組み合わせた暗号方式。両方の方式の長所と短所を補う。
 
- ![ハイブリッド暗号](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッド暗号.png)
+![ハイブリッド暗号](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ハイブリッド暗号.png)
 
 <br>
 
@@ -187,11 +187,14 @@ Webコンテンツデータ、メールデータ、その他
 
 #### ▼ SSH接続/操作する側に必要なソフトウェア
 
-『OpenSSH』、『TeraTerm』、『Putty』がある。
+- OpenSSH
+- TeraTerm
+- Putty
 
 #### ▼ SSH接続/操作される側に必要なソフトウェア
 
-『OpenSSH』、『Apache MINA/SSHD』
+- OpenSSH
+- Apache MINA/SSHD
 
 #### ▼ SSHポートフォワーディング（SSHポート転送）
 
@@ -229,7 +232,8 @@ SSHを介して、ファイル転送を行う。SSHの機能をより拡張し�
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 
-『WinSCP』、『Filezilla』
+- WinSCP
+- Filezilla
 
 #### ▼ ファイルを送信する側に必要なソフトウェア
 
@@ -243,7 +247,8 @@ SSHを介して、ファイル転送を行う。SSHとFTPを組み合わせた�
 
 #### ▼ ファイル要求側のクライアントソフトウェア
 
-『WinSCP』、『Filezilla』
+- WinSCP
+- Filezilla
 
 #### ▼ ファイル送信側のクライアントソフトウェア
 
@@ -265,19 +270,23 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSL接続に不備がある場合の警告.jpg)
 
-#### ▼ 相互TLS（mTLS）
+#### ▼ SSL証明書の作成に必要なもの
 
-通常のSSL/TLSを使用した通信では、通信の受信側のみSSLサーバー証明書を設定すればよいが、相互TLSでは受信側だけでなく送信側にも設定が必要になる。
+| ファイル       | 説明                                                         | 拡張子                                                    |
+| -------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
+| 秘密鍵         | SSL証明書と対になる秘密鍵として機能する。                    | ```pem```、```.key```、```.txt```                         |
+| 証明書署名要求 | 秘密鍵を署名し、公開鍵であるSSL証明書を作成するために使用する。 | ```.csr```、```.txt```                                    |
+| SSL証明書      | 秘密鍵と対になる公開鍵として機能する。                       | ```pem```、```.crt```、```.cert```、```.ca```、```.txt``` |
 
-> ℹ️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
-
-#### ▼ SSL/TLSにおけるデジタル証明書とドメイン認証
-
-デジタル証明書をSSLに使用する場合、特にSSL証明書という。提供される秘密鍵と組み合わせて、ドメインの認証に使用される。
+> ℹ️ 参考：
+>
+> - https://www.ssl-concier.com/news/topics/164
+> - https://install-memo.hatenadiary.org/entry/20110906/1315291837
+> - https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B
 
 #### ▼ オレオレSSL証明書の作成
 
-以下のコマンドで、SSL証明書のための、秘密鍵、証明書署名要求、自己署名証明書、を作成できる。この時の認証局は『自分』である。
+以下のコマンドで、秘密鍵、証明書署名要求、SSL証明書、を作成できる。この時の認証局は『自分』である。
 
 > ℹ️ 参考：
 >
@@ -309,24 +318,24 @@ Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # �
 Email Address []:
 ```
 
-（３）証明書署名要求を秘密鍵で署名し、自己署名証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
+（３）証明書署名要求を秘密鍵で署名し、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
 
 ```bash
 $ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out server.crt
 ```
 
-（４）秘密鍵（```.key```ファイル）、自己署名証明書（```.crt```ファイル）、を該当の箇所に設定する。例えば、Nginxの設定ファイルなら、以下の通りとなる。
+（４）秘密鍵（```.key```ファイル）、SSL証明書（```.crt```ファイル）、を該当の箇所に設定する。例えば、Nginxの設定ファイルなら、以下の通りとなる。
 
 ```nginx
 #-------------------------------------
 # HTTPリクエスト
 #-------------------------------------
 server {
-    # 443番ポートで待ち受けるようにし、SSL証明書の使用する。
+    # 443番ポートで待ち受けるようにし、SSL証明書を使用する。
     # listen 80;
     listen 443 ssl;
 
-    # 証明書を設定する。
+    # SSL証明書を設定する。
     ssl_certificate     /etc/nginx/ssl/server.crt;
     # 秘密鍵を設定する。
     ssl_certificate_key /etc/nginx/ssl/server.key;        ：
@@ -338,6 +347,16 @@ server {
 認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
 
 > ℹ️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
+
+#### ▼ 相互TLS（mTLS）
+
+通常のSSL/TLSを使用した通信では、通信の受信側のみSSLサーバー証明書を設定すればよいが、相互TLSでは受信側だけでなく送信側にも設定が必要になる。
+
+> ℹ️ 参考：https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
+
+#### ▼ SSL/TLSにおけるデジタル証明書とドメイン認証
+
+デジタル証明書をSSLに使用する場合、特にSSL証明書という。提供される秘密鍵と組み合わせて、ドメインの認証に使用される。
 
 <br>
 
@@ -526,12 +545,3 @@ webページに、サーバーに対してHTTPリクエストを送信するプ�
 
 <br>
 
-### Penetration テスト
-
-既知のサイバー攻撃を意図的に行い、システムの脆弱性を確認するテストのこと。
-
-**＊例＊**
-
-株式会社LACによるPenetration テストサービス
-
-![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ペネトレーションテスト.png)

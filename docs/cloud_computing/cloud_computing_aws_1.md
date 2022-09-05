@@ -719,7 +719,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 #### ▼ 検証方法の変更
 
-既存の証明書の検証方法は変更できない。そのため、検証方法を変更した証明書を新しく発行し、これを紐づける必要がある。旧い証明書は削除しておく。
+既存のSSL証明書の検証方法は変更できない。そのため、検証方法を変更した証明書を新しく発行し、これを紐づける必要がある。旧い証明書は削除しておく。
 
 > ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
 
@@ -843,14 +843,14 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 > ℹ️ 参考：https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
 
-| 設定項目                 | 説明                                                         | 補足 |
-| ------------------------ | ------------------------------------------------------------ | ---- |
-| General                  |                                                              |      |
-| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する。                  |      |
+| 設定項目                 | 説明                                   | 補足 |
+| ------------------------ |--------------------------------------| ---- |
+| General                  |                                      |      |
+| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する。              |      |
 | Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。 |      |
-| ErrorPage                | 指定したオリジンから、指定したファイルのレスポンスを返信する。 |      |
-| Restriction              |                                                              |      |
-| Invalidation             | CloudFrontに保存されているキャッシュを削除できる。           |      |
+| ErrorPage                | 指定したオリジンから、指定したファイルを含むレスポンスを返信する。    |      |
+| Restriction              |                                      |      |
+| Invalidation             | CloudFrontに保存されているキャッシュを削除できる。       |      |
 
 #### ▼ General
 

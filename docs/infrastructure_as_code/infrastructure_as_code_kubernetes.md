@@ -461,7 +461,7 @@ $ kubectl describe nodes <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
-ただし、セルフマネージドなマスターNodeを使用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。
+ただし、セルフマネージドなマスターNodeを採用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。マスターNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、マスターNodeにDaemonSetによるPodを稼働させることがある。
 
 ```bash
 $ kubectl taint nodes --all node-role.kubernetes.io/master-

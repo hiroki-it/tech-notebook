@@ -1383,7 +1383,7 @@ spec:
 
 <br>
 
-## 12. PersistentVolumeClaim
+## 13. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1451,7 +1451,7 @@ spec:
 
 <br>
 
-## 13. Pod
+## 14. Pod
 
 ### spec.affinity
 
@@ -2186,7 +2186,7 @@ spec:
 
 <br>
 
-## 14. ReplicaController
+## 15. ReplicaController
 
 旧Deployment。非推奨である。
 
@@ -2194,7 +2194,7 @@ spec:
 
 <br>
 
-## 15. Role、ClusterRole
+## 16. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -2252,7 +2252,7 @@ rules:
 
 <br>
 
-## 16. RoleBinding、ClusterRoleBinding
+## 17. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -2318,7 +2318,7 @@ subjects:
 
 <br>
 
-## 17. Secret
+## 18. Secret
 
 ### data
 
@@ -2500,7 +2500,7 @@ stringData:
 
 <br>
 
-## 18. Service
+## 19. Service
 
 ### spec.ports
 
@@ -2727,7 +2727,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 19. ServiceAccount
+## 20. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -2762,66 +2762,6 @@ metadata:
   name: foo-service-account
 imagePullSecrets:
   - name: foo-secret
-```
-
-<br>
-
-## 20. ServiceEntry
-
-### spec.hosts
-
-#### ▼ hostsとは
-
-送信できるアウトバウンド通信のドメイン名を設定する。
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ServiceEntry
-metadata:
-  name: foo-app-service-entry
-spec:
-  hosts:
-    - '*'
-```
-
-<br>
-
-### spec.ports
-
-#### ▼ portsとは
-
-送信できるアウトバウンド通信のポート番号を設定する。
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ServiceEntry
-metadata:
-  name: foo-app-service-entry
-spec:
-  ports:
-    - name: http
-      number: 80
-      protocol: HTTP
-    - name: https
-      number: 443
-      protocol: HTTPS
-```
-
-<br>
-
-### spec.resolution
-
-#### ▼ resolutionとは
-
-送信できるアウトバウンド通信のIPアドレスの設定する。
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ServiceEntry
-metadata:
-  name: foo-app-service-entry
-spec:
-  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
 ```
 
 <br>

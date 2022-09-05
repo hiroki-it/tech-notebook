@@ -650,7 +650,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 #### ▼ saml2aws
 
-AWSにSSOでログインする。認証フェーズを外部（Google Apps、AzureAD、KeyCloak、など）に委譲し、AWSでは認可フェーズのみを実施する。追加でMFAを使用している場合は、ワンタイムコードの入力が要求される。
+AWSにSSOでログインする。認証フェーズを外部（Google Apps、AzureAD、KeyCloak、など）に委譲し、AWSでは認可フェーズのみを実施する。追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 
 > ℹ️ 参考：https://github.com/Versent/saml2aws
 

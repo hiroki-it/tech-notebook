@@ -49,7 +49,7 @@ title: 【IT技術の知見】当サイトについて
 
 そのため、冗長な記載となることをご容赦いただけると幸いです。
 
-文章の書き方：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
+> ℹ️ 参考：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
 
 <br>
 

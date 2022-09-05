@@ -122,7 +122,7 @@ $ argocd app sync guestbook --dry-run
 $ argocd app set guestbook --sync-policy automated
 ```
 
-（１２）クラウドプロバイダーのコンテナイメージレジストリやチャートレジストリを使用している場合は、ログインが必要になる。
+（１２）クラウドプロバイダーのコンテナイメージレジストリやチャートレジストリを採用している場合は、ログインが必要になる。
 
 > ℹ️ 参考：
 >
@@ -711,7 +711,7 @@ spec:
 
 #### ▼ server
 
-kube-apiserverのURLを設定する。Kubernetesの実行環境としてEKSやGKEを使用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+kube-apiserverのURLを設定する。Kubernetesの実行環境としてEKSやGKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

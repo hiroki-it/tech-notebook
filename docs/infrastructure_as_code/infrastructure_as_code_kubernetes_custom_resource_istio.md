@@ -33,34 +33,34 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
 
-| 機能                               | Istio | Linkerd | Consul |
-| ---------------------------------- |:-----:|:--------:|:------:|
-| 機能の豊富さ                       | ⭕️   | △       | △     |
-| 異なるClusterのデータプレーン内管理 | ⭕️   | ×       | ⭕️    |
-| 仮想サーバーのデータプレーン内管理 | ⭕️ | × | ⭕️ |
-| ダッシュボード                     | × |    ⭕️    | ⭕️   |
-| サービスディスカバリー             | ⭕️   |    ⭕️    | ⭕️    |
-| メトリクス収集                     | ⭕️   |    ⭕️    | ×     |
-| 分散トレース収集                   | ⭕️   | ×       | ⭕️    |
-| 相互TLS                            | ⭕️   |    ⭕️    | ⭕️    |
-| ポリシーベースのACL                | ⭕️   | ×       | ×     |
-| 意図ベースのACL                    | ×    | ×       | ⭕️    |
-| 証明書管理                         | ⭕️   | ×       | ⭕️    |
-| HTTP/1.2、HTTP/2.0、gRPC           | ⭕️   |    ⭕️    | ×     |
-| TCP                                | ⭕️   |    ⭕️    | ⭕️    |
-| カスタムリソース                   | ⭕️   |    ⭕️    | ×     |
-| サイドカーインジェクション         | ⭕️   |    ⭕️    | ⭕️    |
-| ブルー/グリーンデプロイメント      | ⭕️   | ×       | ×     |
-| カナリアリリース                   | ⭕️   |    ⭕️    | ×     |
+| 機能                     | Istio | Linkerd | Consul |
+|------------------------|:-----:|:--------:|:------:|
+| 機能の豊富さ                 | ⭕️   | △       | △     |
+| 異なるClusterのデータプレーン内管理  | ⭕️   | ×       | ⭕️    |
+| 仮想サーバーのデータプレーン内管理      | ⭕️ | × | ⭕️ |
+| ダッシュボード                | × |    ⭕️    | ⭕️   |
+| サービスディスカバリー            | ⭕️   |    ⭕️    | ⭕️    |
+| メトリクス収集                | ⭕️   |    ⭕️    | ×     |
+| 分散トレース収集               | ⭕️   | ×       | ⭕️    |
+| 相互TLS                  | ⭕️   |    ⭕️    | ⭕️    |
+| ポリシーベースのACL            | ⭕️   | ×       | ×     |
+| 意図ベースのACL              | ×    | ×       | ⭕️    |
+| SSL証明書管理               | ⭕️   | ×       | ⭕️    |
+| HTTP/1.2、HTTP/2.0、gRPC | ⭕️   |    ⭕️    | ×     |
+| TCP                    | ⭕️   |    ⭕️    | ⭕️    |
+| カスタムリソース               | ⭕️   |    ⭕️    | ×     |
+| サイドカーインジェクション          | ⭕️   |    ⭕️    | ⭕️    |
+| ブルー/グリーンデプロイメント        | ⭕️   | ×       | ×     |
+| カナリアリリース               | ⭕️   |    ⭕️    | ×     |
 | 属性ベースのルーティング           | ⭕️   | ×       | ×     |
-| リクエスト数制限（レートリミット） | ⭕️   |    ⭕️    | ×     |
-| OSI層の```L7```に対応              | ⭕️   | ×       | ×     |
-| Spiffeに対応                       | ⭕️   | ×       | ⭕️    |
-| 再試行処理                         | ⭕️   |    ⭕️    | ×     |
-| タイムアウト                       | ⭕️   |    ⭕️    | ×     |
-| サーキットブレイカー               | ⭕️   | ×       | ×     |
-| Ingressコントローラー              | ⭕️   | ×       | ×     |
-| Egressコントローラー               | ⭕️   | ×       | ×     |
+| リクエスト数制限（レートリミット）      | ⭕️   |    ⭕️    | ×     |
+| OSI層の```L7```に対応       | ⭕️   | ×       | ×     |
+| Spiffeに対応              | ⭕️   | ×       | ⭕️    |
+| 再試行処理                  | ⭕️   |    ⭕️    | ×     |
+| タイムアウト                 | ⭕️   |    ⭕️    | ×     |
+| サーキットブレイカー             | ⭕️   | ×       | ×     |
+| Ingressコントローラー         | ⭕️   | ×       | ×     |
+| Egressコントローラー          | ⭕️   | ×       | ×     |
 
 <br>
 
@@ -123,7 +123,6 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 ![istio_iptables_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound.png)
 
 > ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
-> 
 
 <br>
 
@@ -133,12 +132,20 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの機能を持つサイドカーコンテナである。ミドルウェアとしてEnvoy、デーモンとしてpilot-agent、が稼働している。Istiodコントロールプレーンにメトリクスを提供する。VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの機能を持つサイドカーコンテナである。```pilot-agent```プロセス、```envoy```プロセス、が稼働している。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 > ℹ️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+
+#### ▼ ```pilot-agent```プロセス
+
+```istio-proxy```コンテナにて、Istiodコントロールプレーンにリクエスト（他サービスの宛先情報、SSL証明書、）を定期的に送信する。また、受信したレスポンスに応じて、```envoy```プロセスの設定を変更する。
+
+#### ▼ ```envoy```プロセス
+
+```istio-proxy```コンテナにて、リバースプロキシとして機能する。
 
 <br>
 
@@ -157,7 +164,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 
 #### ▼ ```istio-validation```コンテナ
 
-istio-cniを使用している場合にのみそう挿入されるコンテナ。istio-cniのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
+istio-cniを採用している場合にのみそう挿入されるコンテナ。istio-cniのDaemonSetがiptablesを適用し終わることを待機するために、これが完了したかどうかを検証する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 
@@ -186,9 +193,9 @@ Istiodコントロールプレーンは、各種ポート番号で```istio-proxy
 
 #### ▼ ```15010```番
 
-![istio_control-plane_xds_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_xds_service-discovery.png)
+![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のPodのマイクロサービスの宛先情報のレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、コンテナ内のpilot-agentプロセスがenvoyプロセスに作用し、既存の宛先情報を動的に変更する（ServiceDiscovery）。
+```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のPodのマイクロサービスの宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスはが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストファイルの宣言（ServiceEntry、WorkloadEntry）から、他のPodのマイクロサービスの宛先情報を取得する。
 
 > ℹ️ 参考：
 >
@@ -197,19 +204,21 @@ Istiodコントロールプレーンは、各種ポート番号で```istio-proxy
 
 #### ▼ ```15012```番
 
-```15012```番ポートでは、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書のレスポンスを返信する。マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、そのSSL証明書を作成し、また期限が切れたら更新する。
+![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/
+```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにSSL証明書を紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書を発行する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
 #### ▼ ```15014```番
 
-```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、データポイントのレスポンスを返信する。
+```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、データポイントを含むレスポンスを返信する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
 
 #### ▼ ```15017```番
 
-```15017```番ポートでは、Istioの```istid-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewのレスポンスを返信する。
+```15017```番ポートでは、Istioの```istid-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewを含むレスポンスを返信する。
 
 
 <br>

@@ -1736,7 +1736,7 @@ set -o xtrace
 #
 # --b64-cluster-ca：kube-apiserverのSSL証明書の値を設定する。
 # --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。
-# --container-runtime：コンテナランタイムとしてcontainerdを使用する。
+# --container-runtime：コンテナランタイムとしてcontainerdを使用する。代わりに、dockerも使用できる。
 
 /etc/eks/bootstrap.sh foo-eks-cluster \
   --b64-cluster-ca ***** \

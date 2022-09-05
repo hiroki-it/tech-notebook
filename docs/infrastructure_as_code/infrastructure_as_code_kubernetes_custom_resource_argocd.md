@@ -47,7 +47,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 #### ▼ repo-serverとは
 
-監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを使用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
+監視対象リポジトリを```/tmp```ディレクトリ以下にクローンする。もし、HelmやKustomizeを採用している場合は、これらを実行し、サーバー内にマニフェストファイルを作成する。
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
