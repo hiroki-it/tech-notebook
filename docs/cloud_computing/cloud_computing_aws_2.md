@@ -1447,6 +1447,7 @@ kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>
 
 # 作成されたServiceAccount
 $ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
+
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -1618,8 +1619,8 @@ FargateワーカーNode内のログを転送する上で、FargateはDaemonSet�
 > ℹ️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/ 
 
 ```yaml
-kind: Namespace
 apiVersion: v1
+kind: Namespace
 metadata:
   name: aws-observability
   labels:
@@ -1635,8 +1636,8 @@ $ kubectl apply -f config-map.yaml
 ```
 
 ```yaml
-kind: ConfigMap
 apiVersion: v1
+kind: ConfigMap
 metadata:
   name: aws-logging
   namespace: aws-observability
@@ -1691,8 +1692,8 @@ Fargateを設定する。
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Pod実行ロール               | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。 | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット                  | EKS FargateワーカーNodeが起動するサブネットIDを設定する。           | プライベートサブネットを設定する必要がある。                 |
-| ポッドセレクタ（Namespace） | EKS FargateワーカーNode上で稼働させるPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
-| ポッドセレクタ（Label）     | EKS FargateワーカーNode上で稼働させるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
+| ポッドセレクタ（Namespace） | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。 | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。 |
+| ポッドセレクタ（Label）     | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                              |
 
 <br>
 
@@ -1710,7 +1711,7 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 #### ▼ EC2ワーカーNodeの最適化AMI
 
-任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNode上で稼働させる（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
+任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 

@@ -41,7 +41,7 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 > - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
 > - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
 
-```yaml
+```bash
 $ cat /etc/prometheus/prometheus.yml
 
 global:

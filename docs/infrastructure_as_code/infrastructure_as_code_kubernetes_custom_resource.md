@@ -301,7 +301,7 @@ spec:
 
 ### カスタムコントローラーとは
 
-カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。kube-controllerと同様にして、カスタムコントローラーは、kube-apiserverを介してetcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成をコールする。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成をコールする。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
 
 <br>
 

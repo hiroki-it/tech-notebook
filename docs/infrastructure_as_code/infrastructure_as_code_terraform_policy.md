@@ -923,7 +923,7 @@ version: "3.8"
 services:
   terraform:
     container_name: foo-terraform
-    image: hashicorp/terraform:1.0.11
+    image: hashicorp/terraform:1.0.0
     volumes:
       - .:/var/infra
     working_dir: /var/infra

@@ -139,7 +139,7 @@ ECSタスクのコンテナ定義にて、アプリケーションコンテナ�
       "options": {
         "config-file-type": "file",
         # 設定上書きのため読み出し
-        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
+        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf",
         # ECSの情報をFireLensコンテナに送信するか否か
         "enable-ecs-log-metadata": "true"
       }
@@ -318,7 +318,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 ```yaml
 "logConfiguration": {
 	"logDriver": "awsfirelens",
-},
+}
 ```
 
 
@@ -337,7 +337,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 	   "dd_tags": "env:prd-foo",
 	   "provider": "ecs"
    }
-},
+}
 ```
 
 AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。

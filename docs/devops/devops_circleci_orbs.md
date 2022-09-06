@@ -52,7 +52,7 @@ orbs:
 jobs:
   foo_bar_baz:
     docker:
-      - image: circleci/python:<バージョンタグ>
+      - image: circleci/python:1.0.0
     steps:
       - attach_workspace:
           at: .
@@ -405,7 +405,7 @@ S3にコードとappspecファイルをデプロイできる。また、CodeDepl
 version: 2.1
 
 orbs:
-  aws-code-deploy: circleci/aws-code-deploy@1.0.1
+  aws-code-deploy: circleci/aws-code-deploy@1.0.0
 
 jobs:
   aws-code-deploy/deploy:

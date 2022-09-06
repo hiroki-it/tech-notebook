@@ -106,7 +106,7 @@ Jobの実行環境を設定する。
 ```yaml
 foo_job:
   image:
-    name: alpine:<バージョンタグ>
+    name: alpine:1.0.0
     entrypoint: ["sh"]
 ```
 

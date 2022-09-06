@@ -206,7 +206,7 @@ Istiodコントロールプレーンは、各種ポート番号で```istio-proxy
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにSSL証明書を紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書を発行する。
+```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 

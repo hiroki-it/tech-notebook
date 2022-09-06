@@ -40,10 +40,10 @@ $ helm create <チャートへのパス>
 ```bash
 $ helm history <リリース名>
 
-REVISION    UPDATED                   STATUS     CHART      APP VERSION   DESCRIPTION
-<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-<バージョンタグ>  <バージョンタグ>         Initial install
-<リリース名>  Wed Jan 01 12:00:00 2020  SUSPENDED  foo-1.1.0  1.1.0         Rolled back to 1
-<リリース名>  Wed Jan 01 12:00:00 2020  DEPLOYED   foo-1.0.1  1.1.1         Upgraded successfully
+REVISION     UPDATED                    STATUS     CHART               APP VERSION            DESCRIPTION
+<リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-<バージョンタグ>   <バージョンタグ>          Initial install
+<リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
+<リリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
 ```
 
 <br>

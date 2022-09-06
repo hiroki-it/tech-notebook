@@ -126,8 +126,10 @@ spec:
   groups:
     - name: foo-pod-alert-prometheus-rule
 
-     # グループは複数設定できる。
-     - name: ...
+  # グループは複数設定できる。
+  # - name: 
+  #   - foo
+  #   - bar
 ```
 
 #### ▼ rules

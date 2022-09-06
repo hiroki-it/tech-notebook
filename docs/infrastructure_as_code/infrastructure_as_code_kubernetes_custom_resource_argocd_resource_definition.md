@@ -590,7 +590,7 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリース
 $ argocd app history <Application名>
 
 ID  DATE                           REVISION
-0   2020-04-12 10:22:57 +0900 JST  1.0.1
+0   2020-04-12 10:22:57 +0900 JST  1.0.0
 1   2020-04-12 10:49:14 +0900 JST  <バージョンタグ>
 ```
 
@@ -1216,7 +1216,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:<バージョンタグ>
+        - image: alpline:1.0.0
           command: ['sh']
           source: |
             echo "Hello World"
@@ -1263,7 +1263,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:<バージョンタグ>
+        - image: alpline:1.0.0
           cource: |
             echo "Hello World"
 ```
@@ -1283,7 +1283,7 @@ spec:
   templates:
     - name: foo-template
       script:
-        - image: alpline:<バージョンタグ>
+        - image: alpline:1.0.0
           command: ['sh']
           source: |
             echo "Hello World"

@@ -21,61 +21,97 @@ description: Anthos＠GCPの知見を記録しています。
 #### ▼ 構造
 
 
-Anthosは、クラスタ管理コンポーネント、サービス管理コンポーネント、ポリシー管理コンポーネント、から構成される。
+Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
 
 
 > ℹ️ 参考：
 >
-> - https://future-architect.github.io/articles/20210319/
+> - https://www.fsi.co.jp/blog/5939/
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
-#### ▼ クラスタ管理コンポーネント
-
-GKEのコントロールプレーン、Nodeプール、から構成される。
-
-#### ▼ サービス管理コンポーネント
-
-Istioのサービスメッシュから構成される。サービスメッシュのコントロールプレーンはマネージドである。
-
-#### ▼ ポリシー管理コンポーネント
-
-Kubernetesの設定値を保持する。
-
 <br>
 
-### CI/CDパイプライン
+### Anthos GKE Cluster
 
-> ℹ️ 参考：https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
+#### ▼ Anthos GKE Clusterとは
 
-<br>
+GKE Cluster（マスターNode、ワーカーNode、を含む）から構成される。
 
-### アタッチCluster
+#### ▼ attached-cluster
 
-Anthos GKE Clusterの機能を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Cluster機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
+![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
+
+Anthos GKE Clusterの機能を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Clusterの機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
 
 > ℹ️ 参考：
 >
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
+> - https://www.jetstack.io/blog/anthos-attached-clusters/
 
 | Clusterの種類 | Kubernetesバージョン               |
 | :------------ | :--------------------------------- |
 | Amazon EKS    | ```1.20```、```1.21```、```1.22``` |
 | Microsoft AKS | ```1.21```、```1.22```、```1.23``` |
 
+#### ▼ cluster-operator
+
+GCP上のcluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他クラウドプロバイダー）にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。またkube-controller-managerはcluster-operatorを反復的に実行する。これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+
+> ℹ️ 参考：https://www.jetstack.io/blog/anthos-aws/
+
 <br>
 
-### Connect Gateway
+### Anthos Service Mesh
 
-GCP上で```kubectl```コマンドを実行し、各クラウドプロバイダー上のAnthos内のkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+#### ▼ Anthos Service Meshとは
+
+Istioから構成される。
+
+> ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
+
+![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
 <br>
 
-### Fleet workload identity
+### Anthos Config Management
+
+#### ▼ Anthos Config Managementとは
+
+anthos-config-management-operatorから構成される。GitOpsによって、Anthos GKE ClusterとAnthos Service Meshのリソース定義を一元的に管理する。
+
+> ℹ️ 参考：
+>
+> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
+
+![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
+
+#### ▼ GitOps
+
+![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
+
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management?hl=ja
+> - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
+
+<br>
+
+#### ▼ connect-gateway
+
+GCP上で```kubectl```コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+
+> ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
+
+![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
+
+#### ▼ fleet-workload-identity
 
 GCP側のアカウント情報と、各クラウドプロバイダーのAnthos Cluster内のサービスアカウントを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
-<br>
+> ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
+
+#### <br>
 
 ## 01-02. セットアップ
 
@@ -138,8 +174,7 @@ GCP環境上にAnthos GKE Clusterを作成する。
 
 GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure）のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：EKS、AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
-![anthos_on_aws_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_aws_architecture.png)
-
+![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_cloud-provider.png)
 
 <br>
 

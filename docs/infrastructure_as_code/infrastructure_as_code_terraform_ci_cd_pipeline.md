@@ -59,7 +59,7 @@ executors:
         type: enum
         enum: [ "tes", "stg", "prd" ]
     docker:
-      - image: hashicorp/terraform:<バージョンタグ>
+      - image: hashicorp/terraform:1.0.0
     working_directory: ~/foo_infrastructure
     environment:
       ENV: << parameters.env >>

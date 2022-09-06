@@ -493,7 +493,7 @@ spec:
 実行に失敗したJobに関して、上限の履歴数を設定する。
 
 ```yaml
-apiVersion: batch/v1
+apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
   name: hello
@@ -510,7 +510,7 @@ spec:
 Cronのルールを設定する。
 
 ```yaml
-apiVersion: batch/v1
+apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
   name: hello
@@ -719,7 +719,7 @@ spec:
     spec:
       containers:
         - name: foo-gin
-          image: foo-gin:<バージョンタグ>
+          image: foo-gin:1.0.0
           ports:
             - containerPort: 8080
 ```
@@ -772,7 +772,7 @@ spec:
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
 ```yaml
-apiVersion: autoscaling/v2beta1
+apiVersion: io.k8s.api.autoscaling.v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: foo-horizontal-pod-autoscaler
@@ -1156,7 +1156,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
@@ -1478,7 +1478,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
   affinity:
@@ -1488,14 +1488,18 @@ spec:
           - matchExpressions:
               - key: app.kubernetes.io/nodegroup # ワーカーNodeのlabel
                 operator: In
-                values: foo-group
+                values:
+                  - foo-group
 ```
 
 #### ▼ podAffinity
 
-Podの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内にPodを作成する。
+ワーカーNodeとPodの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内に、Podをスケジューリングする。
 
-> ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
+> ℹ️ 参考：
+>
+> - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
+> - https://zenn.dev/geek/articles/c74d204b00ba1a
 
 ```yaml
 apiVersion: v1
@@ -1505,18 +1509,51 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
   affinity:
     podAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-          - matchExpressions:
-            - key: app.kubernetes.io/app # Podのlabel
-              operator: In
-              values: bar-pod
+        - topologyKey: kubernetes.io/hostname # PodがスケジューリングされるワーカーNode
+          labelSelector:
+            - matchExpressions:
+              - key: app.kubernetes.io/app # Podのmetadata.labelsキー
+                operator: In
+                values: 
+                  - bar-pod
 ```
+
+#### ▼ podAntiAffinity
+
+ワーカーNodeとPodの```metadata.labels```キーを指定することにより、そのPodとは異なるワーカーNode内に、Podをスケジューリングする。
+
+> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      ports:
+        - containerPort: 8080
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: kubernetes.io/hostname # PodがスケジューリングされるワーカーNode
+          labelSelector:
+            - matchExpressions:
+               - key: app.kubernetes.io/app # Podのmetadata.labelsキー
+                 operator: In
+                 values: 
+                   - bar-pod
+```
+
+
 
 <br>
 
@@ -1542,7 +1579,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
 ```
@@ -1569,7 +1606,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
@@ -1633,7 +1670,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       resources:
         # 下限必要サイズ
         requests:
@@ -1661,7 +1698,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
       volumeMounts:
@@ -1685,7 +1722,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       ports:
         - containerPort: 8080
       workingDir: /go/src
@@ -1711,7 +1748,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   hostname: foo-pod
 ```
 
@@ -1737,7 +1774,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   imagePullSecrets:
     - name: foo-secret
 ```
@@ -1764,7 +1801,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         httpGet:
           port: 80
@@ -1783,7 +1820,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         failureThreshold: 5
 ```
@@ -1800,7 +1837,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         periodSeconds: 5
 ```
@@ -1821,7 +1858,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   nodeSelector:
     app.kubernetes.io/nodegroup: bar-group
 ```
@@ -1851,7 +1888,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         httpGet:
           port: 80
@@ -1870,7 +1907,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         failureThreshold: 5
 ```
@@ -1887,7 +1924,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       livenessProbe:
         periodSeconds: 5
 ```
@@ -1912,7 +1949,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   restartPolicy: Always
 ```
 
@@ -1928,7 +1965,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   restartPolicy: Never
 ```
 
@@ -1944,7 +1981,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
   restartPolicy: OnFailure
 ```
 
@@ -1966,7 +2003,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin::<バージョンタグ>
+      image: foo-gin:1.0.0
   serviceAccountName: foo-service-account
 ```
 
@@ -1993,7 +2030,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin::<バージョンタグ>
+      image: foo-gin:1.0.0
   terminationGracePeriodSeconds: 300
 ```
 
@@ -2019,7 +2056,7 @@ metadata:
 spec:
   containers:
     - name: foo-fluent-bit
-      image: fluent/fluent-bit:<バージョンタグ>
+      image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
           mountPath: /fluent-bit/etc/
@@ -2068,7 +2105,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -2096,7 +2133,7 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:<バージョンタグ>
+      image: foo-gin:1.0.0
       volumeMounts:
         - name: foo-gin-volume
           mountPath: /go/src
@@ -2295,7 +2332,7 @@ Roleの紐付け先のAccountの名前を設定する。
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: io.k8s.api.rbac.v1
 kind: RoleBinding
 metadata:
   name: foo-role-binding
@@ -2306,7 +2343,7 @@ subjects:
 ```
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: io.k8s.api.rbac.v1
 kind: ClusterRoleBinding
 metadata:
   name: foo-cluster-role-binding

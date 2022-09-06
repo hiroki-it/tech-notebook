@@ -29,7 +29,7 @@ description: ロジック＠Terraformの知見を記録しています。
 ```yaml
 {
   "version": 4,
-  "terraform_version": "1.0.6",
+  "terraform_version": "1.0.0",
   "serial": 3,
   "lineage": "*****-*****-*****-*****-*****",
   "outputs": { # outputブロックのapplyで追加される。

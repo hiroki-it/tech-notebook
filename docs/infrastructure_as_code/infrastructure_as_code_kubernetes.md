@@ -151,7 +151,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （３）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
 
-（４）kube-schedulerは、Podの配置対象となるワーカーNodeをフィルタリングとスコアリングによって決定する。
+（４）kube-schedulerは、Podのスケジューリング対象となるワーカーNodeをフィルタリングとスコアリングによって決定する。
 
 （５）kube-apiserverは、バインディング情報（PodとワーカーNodeの紐付き情報）をetcdに永続化する。
 
@@ -202,7 +202,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。これ
 
 #### ▼ kube-schedulerとは
 
-ワーカーNodeが複数ある場合、ワーカーNodeとPodのスペックを基に、Podを配置するべきワーカーNodeを判定する。
+ワーカーNodeが複数ある場合、ワーカーNodeとPodのスペックを基に、PodをスケジューリングするべきワーカーNodeを判定する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -441,13 +441,13 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 **＊例＊**
 
-PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPodに配置する。
+PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPod内に配置する。
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
 #### ▼ 例外的なマスターNode上のPod
 
-脆弱性の観点で、デフォルトではマスターNodeにPodはスケジューリングされない。これは、マスターNodeには```node-role.kubernetes.io/master: NoSchedule```が設定されているためである。一方で、ワーカーNodeにはこれがないため、Podを稼働させられる。
+脆弱性の観点で、デフォルトではマスターNodeにPodはスケジューリングされない。これは、マスターNodeには```node-role.kubernetes.io/master: NoSchedule```が設定されているためである。一方で、ワーカーNodeにはこれがないため、Podをスケジューリングできる。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
 
@@ -461,7 +461,7 @@ $ kubectl describe nodes <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
-ただし、セルフマネージドなマスターNodeを採用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。マスターNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、マスターNodeにDaemonSetによるPodを稼働させることがある。
+ただし、セルフマネージドなマスターNodeを採用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。マスターNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、マスターNodeにDaemonSetによるPodをスケジューリングすることがある。
 
 ```bash
 $ kubectl taint nodes --all node-role.kubernetes.io/master-
