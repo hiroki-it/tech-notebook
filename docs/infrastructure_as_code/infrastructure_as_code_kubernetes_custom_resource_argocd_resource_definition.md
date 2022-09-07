@@ -570,8 +570,8 @@ metadata:
   name: foo-aws-credentials
 type: Opaque
 data:
-  AWS_ACCESS_KEY: {{ .Values.data.AWS_ACCESS_KEY }} # base64方式でエンコードされる。
-  AWS_SECRET_ACCESS_KEY: {{ .Values.data.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY: {{ .Values.data.AWS_ACCESS_KEY | b64en }} # base64方式でエンコードされる。
+  AWS_SECRET_ACCESS_KEY: {{ .Values.data.AWS_SECRET_ACCESS_KEY | b64en }}
 ```
 
 ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリースするチャートの```apiVersion```キーの値が```v1```であれば、ArgoCDはHelmの```v2```を使用して、一方で```apiVersion```キーの値が```v2```であれば、Helmの```v3```を使用するようになっている。
@@ -1050,7 +1050,7 @@ spec:
 
 #### ▼ マニフェストリポジトリの場合
 
-マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
@@ -1088,7 +1088,7 @@ stringData:
 
 #### ▼ チャートレジストリの場合
 
-チャートレジストリの認証情報を設定する。チャートレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、1つのチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+チャートレジストリの認証情報を設定する。チャートレジストリごとに、別々のSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 > ℹ️ 参考：
 >
@@ -1127,7 +1127,7 @@ stringData:
 
 #### ▼ OCIレジストリの場合
 
-OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに別々のSecretで認証情報を設定する必要がある。ただし、1つのOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに別々のSecretで認証情報を設定する必要がある。ただし、```1```個のOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
 
 > ℹ️ 参考：
 >

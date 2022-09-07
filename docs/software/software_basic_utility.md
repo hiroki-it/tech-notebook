@@ -782,6 +782,14 @@ $ cat foo.txt | grep bar
 $ cat foo.txt | grep bar -A 5
 ```
 
+#### ▼ -e
+
+標準出力に出力された文字列のうち、複数の文字列を取得する。
+
+```bash
+$ cat foo.txt | grep -e bar -e baz
+```
+
 #### ▼ -i
 
 標準出力に出力された文字列のうち、大文字と小文字を区別せずに、合致するものだけを取得する。

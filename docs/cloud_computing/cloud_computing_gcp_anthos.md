@@ -54,12 +54,6 @@ Anthos GKE Clusterの機能を外部のクラウドプロバイダーのCluster�
 | Amazon EKS    | ```1.20```、```1.21```、```1.22``` |
 | Microsoft AKS | ```1.21```、```1.22```、```1.23``` |
 
-#### ▼ cluster-operator
-
-GCP上のcluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他クラウドプロバイダー）にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。またkube-controller-managerはcluster-operatorを反復的に実行する。これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
-
-> ℹ️ 参考：https://www.jetstack.io/blog/anthos-aws/
-
 <br>
 
 ### Anthos Service Mesh
@@ -78,15 +72,13 @@ Istioから構成される。
 
 #### ▼ Anthos Config Managementとは
 
-anthos-config-management-operatorから構成される。GitOpsによって、Anthos GKE ClusterとAnthos Service Meshのリソース定義を一元的に管理する。
+一連のacm-operator（cluster-operator、など）から構成される。
 
-> ℹ️ 参考：
->
-> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
+> ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
-#### ▼ GitOps
+一連のacm-operatorは、組み合わさって機能し、GitOpsを実現する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 
@@ -95,7 +87,16 @@ anthos-config-management-operatorから構成される。GitOpsによって、An
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management?hl=ja
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
 
+
+#### ▼ cluster-operator
+
+cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他クラウドプロバイダー）にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。またkube-controller-managerはcluster-operatorを反復的に実行する。これにより、Anthos GKE Clusterはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+
+> ℹ️ 参考：https://www.jetstack.io/blog/anthos-aws/
+
 <br>
+
+### その他
 
 #### ▼ connect-gateway
 
@@ -110,13 +111,6 @@ GCP上で```kubectl```コマンドを実行して各クラウドプロバイダ�
 GCP側のアカウント情報と、各クラウドプロバイダーのAnthos Cluster内のサービスアカウントを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
-
-#### <br>
-
-## 01-02. セットアップ
-
-クラスタ、スケーリング、ノード修復、リージョン別クラスタ、柔軟なメンテナンス、セキュリティ、アップグレードの支援、バックアップ、ロードバランサー、セットアップ済み。
-
 
 <br>
 
@@ -289,7 +283,7 @@ $ ./asmcli install \
 （１）Istiodコントロールプレーンの新バージョンのリビジョン値を取得する。
 
 ```bash
-$ kubectl get pod -n istio-system -L istio.io/rev
+$ kubectl get pod -n istio-system -l istio.io/rev
 
 NAME                       READY   STATUS    RESTARTS   AGE   REV
 istiod-asm-1143-1-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
@@ -298,7 +292,7 @@ istiod-1141-3-1-*****      1/1     Running   0          27s   asm-1143-1 # 新�
 istiod-1141-3-1-*****      1/1     Running   0          27s   asm-1143-1
 ```
 
-（２）Istioの```istio.io/rev```ラベルを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```ラベルを削除する。これらのラベルはコンフリクトを起こすため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```ラベルを推奨している。
+（２）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを削除する。これらのキーはコンフリクトを起こすため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
@@ -326,7 +320,7 @@ gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
 ```
 
-（６）```default```というラベル値が旧バージョンのエイリアスのままなので、新バージョンのリビジョン番号のエイリアスに変更する。
+（６）```istio.io/rev```キーの```default```という値が旧バージョンのエイリアスのままなので、新バージョンのリビジョン番号のエイリアスに変更する。
 
 
 ```bash

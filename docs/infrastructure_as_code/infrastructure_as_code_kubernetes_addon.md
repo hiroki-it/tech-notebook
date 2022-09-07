@@ -133,7 +133,7 @@ webhooks:
         path: "/mutate"
       # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-    # 特定のラベル値のNamespaceに属するPodのみを対象とする。
+    # 特定のNamespaceに属するPodのみを対象とする。
     namespaceSelector:
       matchLabels:
         # sidecar-injection=enabledのNamespaceに属するPodのみを対象とする。

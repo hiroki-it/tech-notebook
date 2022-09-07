@@ -617,12 +617,12 @@ metadata:
   name: foo-deployment
 spec:
   selector:
-    matchLabels: # Deploymentに紐づけるPodのLabel
+    matchLabels: # Deploymentに紐づけるPodのmetadata.labelsキー
       app.kubernetes.io/app: foo
       app.kubernetes.io/component: app
   template:
     metadata:
-      labels: # PodのLabel
+      labels: # Podのmetadata.labelsキー
         app.kubernetes.io/app: foo
         app.kubernetes.io/component: app
 ```
@@ -825,7 +825,7 @@ spec:
 
 #### ▼ ingressClassNameとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キー値を設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キーの値を設定する。
 
 > ℹ️ 参考：
 >
@@ -1283,9 +1283,9 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-          - key: app.kubernetes.io/nodegroup
+          - key: app.kubernetes.io/nodegroup # metadata.labelsキー
             operator: In
-            values:
+            values: # metadata.labelsキーの値
               - bar-group 
             # 開発環境であれば minikubeを指定する。
             # - minikube 
@@ -1457,16 +1457,25 @@ spec:
 
 #### ▼ affinityとは
 
-kube-schedulerがPodを作成するNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。
+kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
-> - https://stackoverflow.com/questions/57494369/kubectl-apply-deployment-to-specified-node-group-aws-eks
+> - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
+
+アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御はPodの作成時しか機能しない。Podが削除された後にワーカーNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+
+| アフィニティタイプ                                       | 別名  | 説明                                       |
+|-------------------------------------------------|-----|------------------------------------------|
+| requiredDuringSchedulingIgnoredDuringExecution  | ハード | もし条件に合致するワーカーNodeがない場合、Podをスケジューリングしない。  |
+| preferredDuringSchedulingIgnoredDuringExecution | ソフト | もし条件に合致するワーカーNodeがない場合でも、Podをスケジューリングする。 |
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 
 #### ▼ nodeAffinity
 
-ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内にPodを作成する。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内に新しいPodをスケジューリングする。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、Nodeグループ単位でPodをスケジューリングできる。
 
 > ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1483,18 +1492,22 @@ spec:
         - containerPort: 8080
   affinity:
     nodeAffinity:
+      # ハードアフィニティ
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              - key: app.kubernetes.io/nodegroup # ワーカーNodeのlabel
+              # PodをスケジューリングしたいNodeのmetadata.labelsキー
+              # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。
+              - key: app.kubernetes.io/nodegroup
                 operator: In
+                # 指定した値をキーに持つワーカーNodeに、Podをスケジューリングする。
                 values:
                   - foo-group
 ```
 
 #### ▼ podAffinity
 
-ワーカーNodeとPodの```metadata.labels```キーを指定することにより、そのPodと同じワーカーNode内に、Podをスケジューリングする。
+ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じワーカーNode内に、新しいPodをスケジューリングする。
 
 > ℹ️ 参考：
 >
@@ -1514,19 +1527,23 @@ spec:
         - containerPort: 8080
   affinity:
     podAffinity:
+      # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        - topologyKey: kubernetes.io/hostname # PodがスケジューリングされるワーカーNode
+        # PodをスケジューリングしたいワーカーNodeのmetadata.labelsキー
+        - topologyKey: kubernetes.io/hostname
           labelSelector:
             - matchExpressions:
-              - key: app.kubernetes.io/app # Podのmetadata.labelsキー
+              # Podのmetadata.labelsキー
+              - key: app.kubernetes.io/app
                 operator: In
+                # 指定した値をキーに持つPodと同じワーカーNodeに、Podをスケジューリングする。
                 values: 
                   - bar-pod
 ```
 
 #### ▼ podAntiAffinity
 
-ワーカーNodeとPodの```metadata.labels```キーを指定することにより、そのPodとは異なるワーカーNode内に、Podをスケジューリングする。
+ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのワーカー内のPodとは異なるワーカーNode内に、新しいPodをスケジューリングする。
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
@@ -1543,17 +1560,61 @@ spec:
         - containerPort: 8080
   affinity:
     podAntiAffinity:
+      # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        - topologyKey: kubernetes.io/hostname # PodがスケジューリングされるワーカーNode
+        # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+        - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
-               - key: app.kubernetes.io/app # Podのmetadata.labelsキー
+               # Podのmetadata.labelsキー
+               - key: app.kubernetes.io/app
                  operator: In
-                 values: 
+                 # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                 values:
                    - bar-pod
 ```
 
+もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じワーカーNodeにスケジューリングされることを避け、結果として全てのワーカーNodeにPodが```1```個ずつスケジューリングされるようになる。
 
+> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
+
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: foo-pod
+    spec:
+      containers:
+        - name: foo-gin
+          image: foo-gin:1.0.0
+          ports:
+            - containerPort: 8080
+      affinity:
+        podAntiAffinity:
+          # ハードアフィニティー
+          requiredDuringSchedulingIgnoredDuringExecution:
+            # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+            - topologyKey: topology.kubernetes.io/zone
+              labelSelector:
+                - matchExpressions:
+                   # Podのmetadata.labelsキー
+                   - key: app.kubernetes.io/app
+                     operator: In
+                     # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                     values:
+                       # 自身が複製するPodの名前
+                       - foo-pod
+```
 
 <br>
 
@@ -1614,7 +1675,7 @@ spec:
 
 #### ▼ resources
 
-Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNodeのPodをスケーリングする。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNodeのPodをスケーリングする。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのワーカーNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 > ℹ️ 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
@@ -1846,7 +1907,7 @@ spec:
 
 ### spec.nodeSelector
 
-kube-schedulerがPodを作成するNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 

@@ -299,27 +299,27 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ tagとは
 
-リビジョン番号のエイリアスとして、```istio.io/rev```ラベルの値を操作する。
+リビジョン番号のエイリアスとして、```istio.io/rev```キーの値を操作する。
 
 #### ▼ generate
 
-```istio.io/rev```ラベルの値を作成する。
+```istio.io/rev```キーの値を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
 ```bash
-$ istioctl tag generate <ラベルの値>
+$ istioctl tag generate <istio.io/revキーの値>
 ```
 
 **＊例＊**
 
-````prd-blue````というラベル値を新しく作成し、さらに```1-0-0```のエイリアスとする。
+```istio.io/rev```キーの````prd-blue````という値を新しく作成し、さらに```1-0-0```のエイリアスとする。
 
 ```bash
 $ istioctl tag generate prd-blue --revision 1-0-0
 ```
 
-````tes-green````というラベル値を新しく作成し、さらに```1-0-1```のエイリアスとする。
+```istio.io/rev```キーの````tes-green````という値を新しく作成し、さらに```1-0-1```のエイリアスとする。
 
 ```bash
 $ istioctl tag generate tes-green --revision 1-0-1
@@ -327,7 +327,7 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 #### ▼ list
 
-ラベル値とそれに紐づくリビジョン番号の一覧を取得する。
+istio.io/revキーの値とそれに紐づくリビジョン番号の一覧を取得する。
 
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
@@ -347,12 +347,12 @@ tes-green  1-0-1      istioinaction
 
 #### ▼ set
 
-既存のラベル値をリビジョン番号のエイリアスとする。
+既存のistio.io/revキーの値をリビジョン番号のエイリアスとする。
 
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
-$ istioctl tag set <ラベルの値> --revision <リビジョン番号>
+$ istioctl tag set <istio.io/revキーの値> --revision <リビジョン番号>
 ```
 
 **＊例＊**

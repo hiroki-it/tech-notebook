@@ -331,7 +331,7 @@ $ kubectl describe nodes
 ```
 
 ```bash
-# Podが稼働するNodeを取得する。
+# PodがスケジューリングされているNodeを取得する。
 $ kubectl describe pod <Pod名> | grep Node:
 ```
 
@@ -570,7 +570,40 @@ bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>
 
 #### ▼ -l
 
-特定の```metadata.labels```キーを持つPodを取得する。Serviceのルーティング先になっているPodを知りたい時に役立つ。
+特定の```metadata.labels```キーの値を持つKubernetesリソースを取得する。
+
+```bash
+$ kubectl get pods -l <キー>=<値>
+```
+
+複数の```metadata.labels```キーをAND条件で指定することもできる。
+
+```bash
+$ kubectl get pods -l <キー>=<値>,<キー>=<値>
+```
+
+```metadata.labels```キーの値をOR条件で指定することもできる。
+
+
+```bash
+$ kubectl get pods -l <キー>=<値>,<キー>=<値>
+```
+
+```bash
+$ kubectl get pods -l '<キー> in (<値>,<値>)'
+```
+
+**＊実行例＊**
+
+```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
+
+```bash
+$ kubectl get nodes -l topology.kubernetes.io/zone=ap-northeast-1a
+```
+
+#### ▼ -L
+
+特定の```metadata.labels```キーを持つKubernetesリソースを取得する。小文字の```-l```オプションもあるが、こちらは値まで絞り込みたい時に使用する。
 
 ```bash
 # 事前にServiceのルーティング先を確認しておく。
@@ -581,10 +614,17 @@ Selector: <キー>=<値> # Selectorでルーティング先のPodのmetadata.lab
 $ kubectl get pods -l <キー>=<値>
 ```
 
-複数の```metadata.labels```キーをAND条件で指定することもできる。
+**＊実行例＊**
+
+Nodeが作成されたAWSリージョンを取得する。
 
 ```bash
-$ kubectl get pods -l <キー>=<値>, <キー>=<値>
+$ kubectl get nodes -L topology.kubernetes.io/zone
+
+NAME                                         STATUS   ROLES    AGE     VERSION         ZONE
+ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   18h     v1.22.0-eks-*   ap-northeast-1a
+ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   18h     v1.22.0-eks-*   ap-northeast-1c
+ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   6h20m   v1.22.0-eks-*   ap-northeast-1d
 ```
 
 #### ▼ --selector
@@ -592,7 +632,7 @@ $ kubectl get pods -l <キー>=<値>, <キー>=<値>
 指定した```spec.selector```キーを持つDeploymentを取得する。
 
 ```bash
-$ kubectl get deployment --selector=<キー>=<値>
+$ kubectl get deployment --selector<キー>=<値>
 ```
 
 #### ▼ --watch

@@ -455,7 +455,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全ての```istio-proxy```コンテナに関して、使用するGatewayの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するGatewayの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -470,7 +470,7 @@ spec:
 
 #### ▼ ingressService
 
-全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キー値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

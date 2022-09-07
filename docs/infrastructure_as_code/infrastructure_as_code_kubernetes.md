@@ -249,7 +249,7 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 #### ▼ kubeletとは
 
-ワーカーNode上で稼働し、コンテナランタイムを操作することにより、コンテナとPodを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+ワーカーNode上で稼働し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -705,7 +705,7 @@ options ndots:5
 
 #### ▼ NodePort Service
 
-ワーカーNodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。ワーカーNodeはServiceのIPアドレスを返却するが、Serviceのポート番号と紐づくワーカーNodeのポート番号はデフォルトではランダムであるため、ワーカーNodeのポート番号を固定する必要がある。この時、一つのワーカーNodeのポート番号につき、一つのServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
+ワーカーNodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。ワーカーNodeはServiceのIPアドレスを返却するが、Serviceのポート番号と紐づくワーカーNodeのポート番号はデフォルトではランダムであるため、ワーカーNodeのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
 
 > ℹ️ 参考：
 >
@@ -778,6 +778,10 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 #### ▼ PersistentVolumeClaimとは
 
 設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
+
+#### ▼ 再作成する場合
+
+PersistentVolumeClaimは、紐づくPodを再作成しても再作成されない。設定を変更するためには、PersistentVolumeClaimを削除する必要がある。
 
 <br>
 
