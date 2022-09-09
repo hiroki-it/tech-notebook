@@ -1464,7 +1464,7 @@ kube-schedulerがPodをスケジューリングするワーカーNodeを設定�
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御はPodの作成時しか機能しない。Podが削除された後にワーカーNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。Podが削除された後にワーカーNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
 
 | アフィニティタイプ                                       | 別名  | 説明                                       |
 |-------------------------------------------------|-----|------------------------------------------|
@@ -1852,7 +1852,15 @@ spec:
 
 #### ▼ httpGet
 
-ヘルスチェックのエンドポイントを設定する。
+ヘルスチェックのエンドポイントを設定する。 自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
+
+| ツール          | エンドポイント              |
+|--------------|----------------------|
+| Kiali        | ```/kiali/healthz``` |
+| Grafana      | ```/-/healthy```     |
+| Prometheus   | ```/-/healthy```     |
+| Alertmaanger | ```/-/healthy```     |
+
 
 ```yaml
 apiVersion: v1

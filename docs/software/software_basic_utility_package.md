@@ -551,7 +551,7 @@ $ brew install sops
 
 #### ▼ ```secrets.yaml```ファイル
 
-sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。```sops```キー以下に暗号化の設定値が記載される。他の疑似的なキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドのキーバリュー型ストレージ（例：AWS SMパラメーターストア、など）よりも簡単に変数を管理できる。
+sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。```sops```キー以下に暗号化の設定値が記載される。他の疑似的なキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドのキーバリュー型ストレージ（例：AWS パラメーターストア、など）よりも簡単に変数を管理できる。
 
 > ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
@@ -568,10 +568,10 @@ DB_PASSWORD: password
 $ sops -e values.yaml > secrets.yaml
 ```
 
-```yaml
+```bash
 $ cat secrets.yaml
 
-# 疑似的なキーバリュー型ストレージ（AWS SMパラメーターストア、Hashicorp Vault、に相当する）
+# 疑似的なキーバリュー型ストレージ（AWS パラメーターストア、Hashicorp Vault、に相当する）
 DB_USERNAME: ENC[AES256...
 DB_PASSWORD: ENC[AES256...
 

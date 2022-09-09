@@ -58,7 +58,13 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 #### ▼ 共通認証フェーズとして使用できるサービス
 
-（例）Auth0、Facebook、GitHub、GitLab、Facebook
+（例）
+
+- Auth0
+- Facebook
+- GitHub
+- GitLab
+- Facebook
 
 > ℹ️ 参考：https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
 

@@ -204,7 +204,9 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 実装が複雑になることを避けるため、開発環境に対するapplyには、ArgoCD以外のツールを使用する。
 
-（例）Skaffold
+（例）
+
+- Skaffold
 
 #### ▼ ローカルマシンを監視
 

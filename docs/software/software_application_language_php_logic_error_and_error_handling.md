@@ -109,7 +109,9 @@ function foo(string $foo) {
 
 何のエラーが発生したかを判断できるように、名前は『```<エラー名>Exception```』とする。また、開発者にとって詳しく理解できるように、コンストラクタの引数にメッセージを渡す。
 
-（例）InvalidArgumentException、
+（例）
+
+- InvalidArgumentException
 
 > ℹ️ 参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
 

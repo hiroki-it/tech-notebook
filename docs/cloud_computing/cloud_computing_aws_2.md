@@ -43,7 +43,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 | Elastic Inference         |                                                              |                                                              |
 | クレジット仕様            |                                                              |                                                              |
 | ストレージ                | EC2インスタンスのストレージを設定する。                      |                                                              |
-| キーペア                  | SSH接続のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。 | ・Session Managerを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。 |
+| キーペア                  | SSH接続のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。 | ・セッションマネージャーを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。 |
 
 <br>
 
@@ -162,17 +162,17 @@ $ openssl pkcs8 \
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 
-#### ▼ Session Managerを使用したログインシェル起動
+#### ▼ セッションマネージャーを使用したログインシェル起動
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
 
 | VPCエンドポイントの接続先  | プライベートDNS名                              | 説明                                         |
 |-----------------| ---------------------------------------------- |--------------------------------------------|
 | EC2             | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。            |
-| Systems Manager  | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのSMパラメーターストアにGETリクエストを送信するため。 |
+| Systems Manager  | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerの機能を使用するため。                 |
 
-Session Managerを使用してEC2インスタンスに接続し、ログインシェルを起動する。Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
+セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
 
 > ℹ️ 参考：
 >
@@ -714,7 +714,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 **＊実装例＊**
 
-SMパラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
+パラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
 
 ```yaml
 {
@@ -987,7 +987,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | logConfiguration<br>(logDriver) | ```--log-driver```                      | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | ```--log-opt```                         | ログドライバーに応じて、詳細な設定を行う。                 |                                                              |
 | portMapping                     | ```--publish```<br>```--expose```       | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html |
-| secrets<br>(volumesFrom)        |                                         | SMパラメーターストアから出力する変数を設定する。           |                                                              |
+| secrets<br>(volumesFrom)        |                                         | パラメーターストアから出力する変数を設定する。           |                                                              |
 | memory                          | ```--memory```                          | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | memoryReservation               | ```--memory-reservation```              | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。 | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory |
 | mountPoints                     |                                         | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。 | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html |
@@ -1123,7 +1123,7 @@ CodeDeployを使用してデプロイする。
 | CloudWatchログ    | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。                |
 | ECR             | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。                       |
 | S3              | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため                  |
-| Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのSMパラメーターストアにGETリクエストを送信するため。 |
+| Systems Manager | ```ssm.ap-northeast-1.amazonaws.com```                       | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager | ```ssmmessage.ap-northeast-1.amazonaws.com```                | Secrets Managerの機能を使用するため。                  |
 
 プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントだけでなくNAT Gatewayも作成する必要がある。
@@ -1138,11 +1138,11 @@ CodeDeployを使用してデプロイする。
 
 ### Fargate上のコンテナへの接続
 
-#### ▼ Session Managerを使用したECS Exec
+#### ▼ セッションマネージャーを使用したECS Exec
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-Session Managerを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 > ℹ️ 参考：
 >
@@ -1154,7 +1154,7 @@ Session Managerを使用してECSタスク内のコンテナに接続し、コ�
 
 （２）VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。
 
-（３）ECSタスク実行ロールにIAMポリシーを付与する。これにより、ECSタスクがSession Managerにアクセスできるようになる。
+（３）ECSタスク実行ロールにIAMポリシーを付与する。これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。
 
 ```yaml
 {
@@ -1335,9 +1335,9 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 | 接続元パターン               | 接続方法パターン     |
 | ---------------------------- | -------------------- |
-| ローカルマシン               | Session Manager      |
-| VPC内の踏み台EC2インスタンス | Session Manager、SSH |
-| VPC内のCloud9                | Session Manager、SSH |
+| ローカルマシン               | セッションマネージャー      |
+| VPC内の踏み台EC2インスタンス | セッションマネージャー、SSH |
+| VPC内のCloud9                | セッションマネージャー、SSH |
 
 <br>
 
@@ -1745,7 +1745,7 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。SMパラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
+ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
 
 > ℹ️ 参考：
 >
@@ -1759,7 +1759,7 @@ set -o xtrace
 
 PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
 
-# ClusterのSSL証明書、kube-apiserverのエンドポイントの値をSMパラメーターストアから取得する。
+# ClusterのSSL証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。
 for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
   echo "export ${parameter##*/}"
 done >> "${EXPORT_ENVS}"
@@ -1781,7 +1781,7 @@ source "${EXPORT_ENVS}"
 
 | Nodeグループタイプ名 | 説明                                                         | EC2ワーカーのセットアップ方法                                | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| マネージド           | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。 | EKSのNodeグループ機能を使用する。起動テンプレートを指定し、EC2ワーカーNodeを作成する。 | 同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間の間だけ停止させられる。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
+| マネージド           | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。 | EKSのNodeグループ機能を使用する。起動テンプレートを指定し、EC2ワーカーNodeを作成する。 | 同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html<br>・https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97 |
 | セルフマネージド     | Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。 | 任意のオートスケーリングで作成されたEC2インスタンスを使用する。オートスケーリングのタグ付け機能で、```kubernetes.io/cluster/<クラスター名>```タグをつけ、Nodeグループに参加させる。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/worker.html<br>・https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html |
 
 <br>

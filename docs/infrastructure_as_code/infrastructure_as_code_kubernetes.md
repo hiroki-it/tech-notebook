@@ -223,7 +223,7 @@ kube-controller-managerは、kube-controllerを反復的に実行する。これ
 
 #### ▼ descheduler
 
-kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した後、ワーカーNodeが復旧したとしても、Podが元々のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを手動で実行すれば良いが、deschedulerを使用すれば、これを自動化できる。deschedulerをJobとして起動させ、Podを自動的に再スケジュールする。
+kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した後、ワーカーNodeが復旧したとしても、Podが元々のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをJobとして起動させ、Podを自動的に再スケジュールする。
 
 > ℹ️ 参考：
 >
@@ -409,11 +409,28 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 > - https://sorarinu.dev/2021/08/kubernetes_01/
 
-#### ▼ Pod数の維持
+#### ▼ ReplicaSetの置き換え
+
+DeploymentのReplicaSetを操作し、Podのレプリカを作成する。PodTemplate（```spec.template```キー）を変更した場合、新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
+
+![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_replace_replicaset.png)
+
+
+#### ▼ Podのレプリカ数の維持
 
 Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止した場合、稼働中のワーカーNode内でレプリカ数を維持するようにPod数を増やす。
 
 > ℹ️ 参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
+
+#### ▼ PersistentVolumeとの関係性
+
+DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。
+
+> ℹ️ 参考：https://www.amazon.com/dp/1617297615
+
+![kubernetes_deployment_perisitent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_perisitent-volume.png)
 
 <br>
 
@@ -555,6 +572,10 @@ Podのライフサイクルにはフェーズがある。
 >
 > - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
 > - https://thinkit.co.jp/article/13611
+
+#### ▼ PodTemplate
+
+Podの鋳型として機能する。ReplicaSetは、PodTemplateを用いてPodのレプリカを作成する。
 
 <br>
 
@@ -779,9 +800,6 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
-#### ▼ 再作成する場合
-
-PersistentVolumeClaimは、紐づくPodを再作成しても再作成されない。設定を変更するためには、PersistentVolumeClaimを削除する必要がある。
 
 <br>
 
@@ -789,7 +807,7 @@ PersistentVolumeClaimは、紐づくPodを再作成しても再作成されな�
 
 #### ▼ Secretとは
 
-変数を永続化し、Podに出力する。
+変数やファイルをキーバリュー型で永続化する。永続化されている間は```base64```方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
 

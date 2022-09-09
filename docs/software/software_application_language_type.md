@@ -76,13 +76,24 @@ description: 言語の種類＠アプリケーションを記録しています�
 
 コンパイラという言語プロセッサーによって、コンパイラ方式で翻訳される言語。
 
-（例）Go、C、C#、など。
+（例）
+
+- Go
+- C
+- C#
+- など
 
 #### ▼ インタプリタ型言語
 
 インタプリタという言語プロセッサーによって、インタプリタ方式で翻訳される言語をインタプリタ型言語という。
 
-（例）PHP、Ruby、JavaScript、Python、など。
+（例）
+
+- PHP
+- Ruby
+- JavaScript
+- Python
+- など
 
 #### ▼ 中間型言語
 
@@ -90,7 +101,13 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 > ℹ️ 参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
-（例）Java、Scala、Groovy、Kotlin、など。
+（例）
+
+- Java
+- Scala
+- Groovy
+- Kotlin
+- など
 
 <br>
 
@@ -108,11 +125,22 @@ Java仮想マシンによって、中間言語方式で翻訳される。
 
 #### ▼ 静的型付け
 
-（例）C、Go、Java、Scala
+（例）
+
+- C
+- Go
+- Java
+- Scala
+- など
 
 #### ▼ 動的型付け
 
-（例）PHP、Python、Ruby
+（例）
+
+- PHP
+- Python
+- Ruby
+- など
 
 <br>
 
