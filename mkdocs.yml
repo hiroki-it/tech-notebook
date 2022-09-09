@@ -169,7 +169,7 @@ nav:
               - ■ RESTful-API:
                   - RESTful-API: software/software_application_collaboration_api_restful.md
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
-              - gRPC: software/software_application_collaboration_grpc.md
+              - RPC-API: software/software_application_collaboration_api_rpc.md
           - ■ 言語:
               - 言語の種類: software/software_application_language_type.md
               - 言語別の処理方式: software/software_application_language_process_mode.md
