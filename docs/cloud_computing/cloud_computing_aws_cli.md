@@ -598,7 +598,7 @@ $ aws secretsmanager get-secret-value \
 
 #### ▼ get-parameters-by-path
 
-特定のパスで始まる全ての変数をSMパラメーターストアから取得する。
+特定のパスで始まる全ての変数をパラメーターストアから取得する。
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/aws-cli-all-ssm-parameter-get/
 

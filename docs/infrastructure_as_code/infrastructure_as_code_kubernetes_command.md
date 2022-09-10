@@ -745,7 +745,7 @@ $ kubectl replace -f foo.yaml
 
 #### ▼ rolloutとは
 
-Deployment、DamonSet、StatefulSet、に紐づくPodを操作する。
+Deployment、DamonSet、StatefulSet、で複製されたPodを操作する。
 
 > ℹ️ 参考：
 >
@@ -754,12 +754,12 @@ Deployment、DamonSet、StatefulSet、に紐づくPodを操作する。
 
 #### ▼ restart
 
-Podを再作成する。ConfigMapやSecretのデータの変更後、Podにこれを読み込ませるために役立つ。
+レプリカのPodを再作成する。PodのVolume（例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim）の設定を変更した後に、Podに再び読み込ませるために役立つ。
 
 > ℹ️ 参考：
 >
-> - https://qiita.com/Veritas666777/items/45383ca2d14a6700d0f6
-> - https://stackoverflow.com/questions/57559357/how-to-rolling-restart-pods-without-changing-deployment-yaml-in-kubernetes
+> - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
+> - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
 
 ```bash
 $ kubectl rollout restart deployment grafana -n prometheus

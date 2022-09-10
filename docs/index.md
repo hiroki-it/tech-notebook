@@ -109,7 +109,7 @@ title: 【IT技術の知見】目次
 * RESTful-API
     * [📖：︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
     * [📖：︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
-* [📖：︎gRPC](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_grpc.html)
+* [📖：︎RPC-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_rpc.html)
 
 ### 言語
 

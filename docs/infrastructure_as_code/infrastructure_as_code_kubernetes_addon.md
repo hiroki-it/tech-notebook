@@ -426,3 +426,52 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 ```
 
 <br>
+
+
+## 05. AWS EKSアドオン
+
+### AWS EKSアドオンとは
+
+EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。マネージドタイプとセルフマネージドタイプがあり、マネージドタイプではアドオンの設定値をAWSが管理し、ユーザーの設定を強制的に上書きする。一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-ons-configuration.html
+> - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
+
+<br>
+
+### eks-code-dnsアドオン
+
+#### ▼ eks-code-dnsアドオンとは
+
+EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+
+<br>
+
+### eks-kube-proxy
+
+#### ▼ eks-kube-proxyアドオンとは
+
+EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+
+<br>
+
+### eks-vpc-cniアドオン
+
+#### ▼ eks-vpc-cniアドオンとは
+
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
+
+EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodに通信できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+> - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
+
+<br>

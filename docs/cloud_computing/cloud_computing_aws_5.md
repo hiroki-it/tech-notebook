@@ -248,7 +248,28 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 <br>
 
-## 03. SES：Simple Email Service
+## 03. Secrets Manager
+
+### Secrets Manager
+
+変数やファイルをキーバリュー型で永続化する。永続化されている間は暗号化されており、復号化した上で、変数やファイルとして対象のAWSリソースに出力する。Kubernetesのシークレットの概念が取り入れられている。
+
+> ℹ️ 参考：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+
+<br>
+
+### セットアップ
+
+| 設定項目      |                                                             | 補足                                                         |
+|-----------| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| シークレットタイプ | 機密な変数やファイルを出力する対象のAWSリソースを設定する。 | 2022/09/09時点では、Basic認証（RDS、DocumentDB、Red、など）、それ以外の認証認可（APIキー認証、OAuth認可、など）に関する機密な変数を管理できる。 |
+| 暗号化キー     | 変数の暗号化方法を設定する。                                |                                                              |
+| 変数やファイル   | 変数やファイルをキーバリュー型で設定する。                  | 選択したシークレットタイプによって、設定できる変数が異なる。 |
+
+
+<br>
+
+## 04. SES：Simple Email Service
 
 ### SESとは
 
@@ -305,64 +326,30 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 <br>
 
-## 04. Systems Manager（旧SSM）
+## 05. Systems Manager（旧SSM）
 
-### SMパラメーターストア
+### チェンジカレンダー
 
-#### ▼ SMパラメーターストアとは
+![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sm-change-calender_scheduling.png)
 
-変数をキーバリュー型で永続化する。永続化されている間は暗号化されており、復号化した上で、環境変数としてEC2インスタンス（ECSやEKSのコンテナのホストを含む）に出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
+他のAWSリソース（例：SMオートメーション、EventBridge、など）を定期的に実行するCronとして使用する。定期的に実行するAWSリソースで、他のAWSリソース（EC2、RDS）の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
 
-#### ▼ KMSの暗号化キーを使用した暗号化と復号化
+> ℹ️ 参考：https://www.skyarch.net/blog/?p=22277
 
-![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
-
-SMパラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
-> - https://note.com/hamaa_affix_tech/n/n02eb412d0327
-> - https://tech.libry.jp/entry/2020/09/17/130042
-
-
-#### ▼ 命名規則
-
-SMパラメーター名は、『```/<リソース名>/<変数名>```』とするとわかりやすい。
-
-<br>
-
-### Session Manager
-
-#### ▼ Session Managerとは
-
-EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
-> - https://blog.denet.co.jp/aws-systems-manager-session-manager/
-
-#### ▼ AWSセッション
-
-TLS、Sigv4、KMSを使用して暗号化された接続のこと。
-
-> ℹ️ 参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
-
-#### ▼ 同時AWSセッションの上限数
-
-同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを完了できていない可能性がある。Session Managerで既存のセッションを完了できる。
-
-```bash
-# ECS Execの場合
-An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
+```
+チェンジカレンダー
+↓
+オートメーション、EventBridge（カレンダー取得処理、対象リソースの開始停止処理、を定義）
+↓
+EC2、RDS
 ```
 
 <br>
 
-### Change Manager
 
-#### ▼ Change Managerとは
+### チェンジマネージャー
+
+#### ▼ チェンジマネージャーとは
 
 AWSリソースの設定変更に承認フローを設ける。
 
@@ -398,7 +385,60 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-## 05. SNS：Simple Notification Service
+### パラメーターストア
+
+#### ▼ パラメーターストアとは
+
+変数やファイルをキーバリュー型で永続化する。永続化されている間は暗号化されており、復号化した上で、変数やファイルとして対象のAWSリソースに出力する。Kubernetesのシークレットの概念が取り入れられている。パラメーターのタイプは全て『SecureString』とした方が良い。
+
+> ℹ️ 参考：https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+
+#### ▼ KMSの暗号化キーを使用した暗号化と復号化
+
+![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+
+パラメーターストアに永続化される変数は、KMSの暗号化キーによって暗号化されており、EC2インスタンス（ECSやEKSのコンテナのホストを含む）で参照する時に復号化される。セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
+> - https://note.com/hamaa_affix_tech/n/n02eb412d0327
+> - https://tech.libry.jp/entry/2020/09/17/130042
+
+#### ▼ 命名規則
+
+SMパラメーター名は、『```/<リソース名>/<変数名>```』とするとわかりやすい。
+
+<br>
+
+### セッションマネージャー
+
+#### ▼ セッションマネージャーとは
+
+EC2インスタンス（ECSやEKSのコンテナのホストを含む）に通信できるようにする。SSH接続とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
+> - https://blog.denet.co.jp/aws-systems-manager-session-manager/
+
+#### ▼ AWSセッション
+
+TLS、Sigv4、KMSを使用して暗号化された接続のこと。
+
+> ℹ️ 参考：：https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+
+#### ▼ 同時AWSセッションの上限数
+
+同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを完了できていない可能性がある。セッションマネージャーで既存のセッションを完了できる。
+
+```bash
+# ECS Execの場合
+An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
+```
+<br>
+
+## 06. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -439,7 +479,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-## 06. SQS：Simple Queue Service
+## 07. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -460,7 +500,7 @@ AWSリソースを変更するためには『ランブック（ドキュメン�
 
 <br>
 
-## 07. STS：Security Token Service
+## 08. STS：Security Token Service
 
 ### STSとは
 
@@ -690,7 +730,7 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 # ~/.aws/cli/cacheディレクトリ配下にも保存される。
 {
   "Credentials": {
-    "AccessKeyId": "<アクセスキーID>" # 必要になる値
+    "AccessKeyId": "<アクセスキーID>", # 必要になる値"
     "SecretAccessKey": "<シークレットアクセスキー>", # 必要になる値
     "SessionToken": "<セッショントークン文字列>", # 必要になる値
     "Expiration": "<セッションの期限>",
@@ -760,7 +800,7 @@ aws s3 ls --profile <プロファイル名> <.tfstateファイルが管理され
 
 <br>
 
-## 08. Step Functions
+## 09. Step Functions
 
 ### Step Functionsとは
 
