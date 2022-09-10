@@ -148,9 +148,9 @@ $ cp -p <ファイルへのパス> <ファイルへのパス>.`date +"%Y%m%d"`
 
 <br>
 
-### Cron
+### cron
 
-#### ▼ Cronとは
+#### ▼ cronとは
 
 UNIXにて、Linuxの機能の一つであるジョブ管理を実現する。あらかじめ、ジョブ（定期的に実行するように設定されたバッチ処理）を登録しておき、指定したスケジュールに従って、ジョブを実行する。
 
@@ -414,7 +414,7 @@ $ curl -X GET https://example.com
 
 #### ▼ dfとは
 
-パーティションで区切られたストレージのうち、マウントされているもののみを取得する。
+パーティションの状態をデバイスファイル名で取得する。パーティションで区切られたストレージのうち、マウントされているもののみを取得する。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
 
@@ -804,12 +804,24 @@ $ cat foo.txt | grep -i bar
 
 #### ▼ growpartとは
 
-指定したデバイスファイルに紐づくパーティションを拡張する。
+パーティションに紐づくデバイスファイルを指定し、パーティションのサイズを拡張する。
 
 > ℹ️ 参考：https://blog.denet.co.jp/try-growpart/
 
 ```bash
 $ growpart <パーティションに紐づくデバイスファイル名> 1
+```
+
+パーティションに紐づくデバイスファイル名は、```df```コマンドで確認できる。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+
+```bash
+$ df
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
 
 **＊例＊**
@@ -820,7 +832,7 @@ $ growpart <パーティションに紐づくデバイスファイル名> 1
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ボリューム
+xvda          202:0    0    16G   0  disk             # 物理ボリューム
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
 nvme1n1       259:1    0   200G   0  disk  /var/lib
 ```
@@ -962,15 +974,15 @@ $ ls -l -h
 
 #### ▼ lsblkとは
 
-ボリュームやパーティション、これに紐づくデバイスファイルのマウントポイント、を取得する。
+物理ボリュームやパーティション、これに紐づくデバイスファイルのマウントポイント、を取得する。
 
 ```bash
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ボリューム
+xvda          202:0    0    16G   0  disk             # 物理ボリューム
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ボリューム
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # 物理ボリューム
 ```
 
 <br>
@@ -993,6 +1005,70 @@ com.docke 46089 hasegawa   80u  IPv6 *****      0t0  TCP *:3000 (LISTEN)
 LINE      48583 hasegawa    7u  IPv4 *****      0t0  TCP localhost:10400 (LISTEN)
 Google    93754 hasegawa  140u  IPv4 *****      0t0  TCP localhost:56772 (LISTEN)
 minikube  97246 hasegawa   19u  IPv4 *****      0t0  TCP 192.168.64.1:50252 (LISTEN)
+```
+
+<br>
+
+### lvdisplay
+
+論理ボリュームの一覧を取得する。
+
+> ℹ️ 参考：
+> 
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+> - https://centossrv.com/lvm-extend.shtml
+
+```bash
+$ lvdisplay
+
+  --- Logical volume ---
+  LV Name               /dev/VolGroup00/LogVol00
+  VG Name               VolGroup00
+  LV UUID               m2sx31-yglu-wjsG-yqq0-WPPn-3grk-n2LJBD
+  LV Write Access       read/write
+  LV Status             available
+  # open                1
+  LV Size               230.81 GB
+  Current LE            7386
+  Segments              1
+  Allocation            inherit
+  Read ahead sectors    0
+  Block device          253:0
+
+  --- Logical volume ---
+  LV Name               /dev/VolGroup00/LogVol01
+  VG Name               VolGroup00
+  LV UUID               VR4EHJ-mpxW-uadd-CpTX-lEyz-2OEU-0TyYDn
+  LV Write Access       read/write
+  LV Status             available
+  # open                1
+  LV Size               1.94 GB
+  Current LE            62
+  Segments              1
+  Allocation            inherit
+  Read ahead sectors    0
+  Block device          253:1
+```
+
+<br>
+
+### lvextend
+
+#### ▼ lvextend
+
+論理ボリュームに紐づくデバイスファイルを指定し、論理ボリュームのサイズを拡張する。
+
+> ℹ️ 参考：https://centossrv.com/lvm-extend.shtml
+
+#### ▼ -l
+
+指定した条件で、論理ボリュームを拡張する。
+
+> ℹ️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
+
+```bash
+# 空き領域の100%を使用して拡張する。
+$ lvextend -l +100%FREE <デバイスファイル名>
 ```
 
 <br>
@@ -1155,6 +1231,21 @@ $ printenv VAR
 ```bash
 # 稼働しているプロセスのうち、詳細情報に『xxx』を含むものを取得する。
 $ ps -aux | grep <検索文字>
+```
+
+<br>
+
+### resize2fs
+
+#### ▼ resize2fsとは
+
+ファイルシステムに紐づくデバイスファイルを指定し、ファイルシステムのサイズを拡張する。
+
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a069expandlvm.html
+
+```bash
+# 空き領域の100%を使用して拡張する。
+$ resize2fs <デバイスファイル名>
 ```
 
 <br>

@@ -35,20 +35,34 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 <br>
 
-### パーティション、ボリューム
+### パーティション、物理ボリューム
 
-#### ▼ パーティション、ボリュームとは
+#### ▼ パーティション、物理ボリュームとは
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下にディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下にディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 > ℹ️ 参考：
 >
 > - https://win2012r2.com/2018/05/13/post-268/
 > - http://www.miloweb.net/partition.html
 
-#### ▼ 確認方法
+#### ▼ パーティションの確認方法
+
+**＊例＊**
+
+Linuxでは、パーティションは```df```コマンドで確認できる。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+
+```bash
+$ df
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
+```
 
 **＊例＊**
 
@@ -85,6 +99,54 @@ $ diskutil list
 
 <br>
 
+### 論理ボリューム
+
+![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/logical-volume.png)
+
+異なる物理ボリュームにまたがる領域を組み合わせ、一つの仮想的なボリュームとした扱ったもの。
+
+> ℹ️ 参考：https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
+
+**＊例＊**
+
+Linuxでは論理ボリュームは、```lvdisplay```コマンドで確認できる。
+
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+
+```bash
+$ lvdisplay
+
+  --- Logical volume ---
+  LV Name               /dev/VolGroup00/LogVol00
+  VG Name               VolGroup00
+  LV UUID               m2sx31-yglu-wjsG-yqq0-WPPn-3grk-n2LJBD
+  LV Write Access       read/write
+  LV Status             available
+  # open                1
+  LV Size               230.81 GB
+  Current LE            7386
+  Segments              1
+  Allocation            inherit
+  Read ahead sectors    0
+  Block device          253:0
+
+  --- Logical volume ---
+  LV Name               /dev/VolGroup00/LogVol01
+  VG Name               VolGroup00
+  LV UUID               VR4EHJ-mpxW-uadd-CpTX-lEyz-2OEU-0TyYDn
+  LV Write Access       read/write
+  LV Status             available
+  # open                1
+  LV Size               1.94 GB
+  Current LE            62
+  Segments              1
+  Allocation            inherit
+  Read ahead sectors    0
+  Block device          253:1
+```
+
+<br>
+
 ### デバイスファイル
 
 #### ▼ デバイスファイルとは
@@ -96,9 +158,11 @@ $ diskutil list
 > - https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
 > - https://qiita.com/angel_p_57/items/1faafa275525469788b4
 
+#### ▼ デバイスファイルの確認方法
+
 **＊例＊**
 
-Dockerのデバイスファイルを確認する。
+Linuxのデバイスファイルは```/dev```ディレクトリ配下にある。Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。
 
 > ℹ️ 参考：https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
 

@@ -1856,11 +1856,11 @@ spec:
 
 | ツール          | エンドポイント              |
 |--------------|----------------------|
-| Kiali        | ```/kiali/healthz``` |
-| Grafana      | ```/-/healthy```     |
-| Prometheus   | ```/-/healthy```     |
 | Alertmaanger | ```/-/healthy```     |
-
+| Grafana      | ```/-/healthy```     |
+| Kiali        | ```/kiali/healthz``` |
+| Prometheus   | ```/-/healthy```     |
+| ...          | ...                  |
 
 ```yaml
 apiVersion: v1

@@ -334,15 +334,15 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 他のAWSリソース（例：SMオートメーション、EventBridge、など）を定期的に実行するCronとして使用する。定期的に実行するAWSリソースで、他のAWSリソース（EC2、RDS）の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
 
+> ℹ️ 参考：https://www.skyarch.net/blog/?p=22277
+
 ```
-SM チェンジカレンダー
+チェンジカレンダー
 ↓
-SM オートメーション、EventBridge（カレンダー取得処理、対象リソースの開始停止処理、を定義）
+オートメーション、EventBridge（カレンダー取得処理、対象リソースの開始停止処理、を定義）
 ↓
 EC2、RDS
 ```
-
-> ℹ️ 参考：https://www.skyarch.net/blog/?p=22277
 
 <br>
 

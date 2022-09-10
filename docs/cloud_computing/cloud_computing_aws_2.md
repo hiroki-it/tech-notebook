@@ -305,8 +305,8 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # EBSボリュームに紐づくデバイスファイル
-└─xvda1       202:1    0     8G   0  part  /          # パーティションに紐づくデバイスファイル
+xvda          202:0    0    16G   0  disk             # EBSボリューム
+└─xvda1       202:1    0     8G   0  part  /          # パーティション
 nvme1n1       259:1    0   200G   0  disk  /var/lib
 
 # ～ 中略 ～
@@ -333,7 +333,7 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 # ～ 中略 ～
 ```
 
-（５）今回、EBSボリューム内にパーティションがあるため、```growpart```コマンドを実行し、デバイスファイルに紐づくパーティションを拡張する。パーティションがなければ、この手順は不要である。改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されている。
+（５）今回、EBSボリューム内にパーティションがある。そのため、```growpart```コマンドでパーティションに紐づくデバイスファイルを指定し、パーティションのサイズを拡張する。パーティションがなければ、この手順は不要である。改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されている。
 
 ```bash
 $ growpart /dev/xvda 1
@@ -354,7 +354,8 @@ xvda    202:0    0  16G  0 disk            # EBSボリューム
 （６）もし```ext4```タイプであった場合、```resize2fs ```コマンドでデバイスファイルを指定し、EBSボリュームに紐づくデバイスファイルのサイズを拡張する。
 
 ```bash
-$ sudo resize2fs <デバイスファイル名>
+# 空き領域の100%を使用して拡張する。
+$ sudo resize2fs <ファイルシステムに紐づくデバイスファイル名>
 ```
 
 ```bash
@@ -393,7 +394,7 @@ $ xfs_growfs -d /var/lib
 $ df -hT
 
 Filesystem     Type  Size  Used  Avail  Use%  Mounted on
-/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # ボリュームに紐づくデバイスファイル
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # EBSボリュームに紐づくデバイスファイル
 
 # ～ 中略 ～
 ```
@@ -1811,51 +1812,6 @@ source "${EXPORT_ENVS}"
 | -------------------------- | ---------------------------------------------- | ----------- | ------------------------------------------------------------ |
 | cluster-autoscalerアドオン | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerアドオンを使用する場合、cluster-autoscalerアドオンがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html |
 | 同上                       | ```k8s.io/cluster-autoscaler/enabled```        | ```true```  | 同上                                                         |
-
-<br>
-
-## 03-03-04. EKSアドオン
-
-### EKSアドオンとは
-
-EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
-
-<br>
-
-### eks-code-dnsアドオン
-
-#### ▼ eks-code-dnsアドオンとは
-
-EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
-
-<br>
-
-### eks-kube-proxy
-
-#### ▼ eks-kube-proxyアドオンとは
-
-EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのマスターNode上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
-
-<br>
-
-### eks-vpc-cniアドオン
-
-#### ▼ eks-vpc-cniアドオンとは
-
-![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
-
-EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodに通信できるようにする。
-
-> ℹ️ 参考：
->
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
-> - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 
 <br>
 
