@@ -21,7 +21,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-データプレーン、コントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持ち、マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+サイドカーメッシュは、データプレーン、コントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -33,7 +33,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はデーモンとして稼働するエージェント）が```L4```（トランスポート層）、waypoint-proxy（実体はPod）が```L7```（アプリケーション層）に関する責務を持ち、マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel経由して、一度waypoint-proxyにリダイレクトされる。ztunnelエージェントを経由した段階でHTTPs通信になる。サイドカーメッシュと比較して、リソースを節約できる。サイドカーメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はデーモンとして稼働するエージェント）が```L4```（トランスポート層）、waypoint-proxy（実体はPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel経由して、一度waypoint-proxyにリダイレクトされる。ztunnelエージェントを経由した段階でHTTPs通信になる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカーメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカーメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
 ```
 インバウンド時：
@@ -87,11 +87,11 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 <br>
 
-## 01-02. データプレーン
+## 01-02. データプレーン（サイドカーメッシュ）
 
 ### データプレーンとは
 
-iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
+サイドカーメッシュのデータプレーンは、iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
 
 > ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
@@ -193,13 +193,13 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 <br>
 
-## 01-03. コントロールプレーン
+## 01-03. コントロールプレーン（サイドカーメッシュ）
 
 ### コントロールプレーンとは
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
-Istiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+サイドカーメッシュのIstiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
 > ℹ️ 参考：
 >

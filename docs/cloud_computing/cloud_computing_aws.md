@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS：Amazon Web Service
 description: AWS：Amazon Web Serviceの知見を記録しています。
 ---
 
-# AWS：Amazon Web Service（目次）
+# AWSリソース
 
 ## はじめに
 
