@@ -555,7 +555,7 @@ sopsによって暗号化されたファイルであり、疑似的なキーバ�
 
 > ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
-```yaml
+```bash
 # values.yamlファイル（平文ファイル）
 $ cat values.yaml
 

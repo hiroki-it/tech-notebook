@@ -259,8 +259,9 @@ title: 【IT技術の知見】目次
     > * ##### 📖 [︎S〜U](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_5.html)
     > * ##### 📖 [︎V〜Z](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_6.html)
 * #### <u>設計ポリシー</u>
+    > * ##### 📖 [︎可用性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_availability.html)
     > * ##### 📖 [︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_reliability.html)
-    > * ##### 📖 [︎セキュリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
+    > * ##### 📖 [︎安全性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
     > * ##### 📖 [︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
 * #### <u>その他</u>
     > * ##### 📖 [︎AWS CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cli.html)

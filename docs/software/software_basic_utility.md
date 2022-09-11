@@ -809,7 +809,7 @@ $ cat foo.txt | grep -i bar
 > ℹ️ 参考：https://blog.denet.co.jp/try-growpart/
 
 ```bash
-$ growpart <パーティションに紐づくデバイスファイル名> 1
+$ growpart <パーティションに紐づくデバイスファイル名> <パーティションの番号>
 ```
 
 パーティションに紐づくデバイスファイル名は、```df```コマンドで確認できる。
@@ -846,7 +846,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
 
-デバイスファイルを指定し、パーティションを拡張する。
+デバイスファイルを指定し、パーティションを拡張する。パーティションの番号は『```1```』である。
 
 ```bash
 $ growpart /dev/xvda 1
@@ -1069,6 +1069,35 @@ $ lvdisplay
 ```bash
 # 空き領域の100%を使用して拡張する。
 $ lvextend -l +100%FREE <デバイスファイル名>
+```
+
+**＊実行例＊**
+
+あらかじめ、論理ボリュームに紐づくデバイスファイル名を確認する。
+
+```bash
+$ lvdisplay
+
+--- Logical volume ---
+LV Name               /dev/VolGroup00/LogVol00
+VG Name               VolGroup00
+LV UUID               m2sx31-yglu-wjsG-yqq0-WPPn-3grk-n2LJBD
+LV Write Access       read/write
+LV Status             available
+# open                1
+LV Size               230.81 GB
+Current LE            7386
+Segments              1
+Allocation            inherit
+Read ahead sectors    0
+Block device          253:0
+```
+
+論理ボリュームのサイズを拡張する。
+
+```bash
+# 空き領域の100%を使用して拡張する。
+$ lvextend -l +100%FREE /dev/VolGroup00/LogVol00
 ```
 
 <br>

@@ -1021,7 +1021,7 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 ### 認証/認可の実施
 
-一時的な認証/認可サービス（例：AWS STS）を使用して、```terraform```コマンドの実行ユーザーを一時的に認証し、また同じく一時的な認可スコープを付与する。一時的な認証/認可としないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が常にクラウドプロバイダーのリソースを操作できるようになってしまう。
+一時的な認証/認可サービス（例：AWS STS、GCP条件付きロールバインディング）を使用して、```terraform```コマンドの実行ユーザーを一時的に認証し、また同じく一時的な認可スコープを付与する。一時的な認証/認可としないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が常にクラウドプロバイダーのリソースを操作できるようになってしまう。
 
 > ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 

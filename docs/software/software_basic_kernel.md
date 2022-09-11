@@ -54,7 +54,7 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 Linuxでは、パーティションは```df```コマンドで確認できる。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 
 ```bash
 $ df

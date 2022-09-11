@@ -23,7 +23,6 @@ description: Anthos＠GCPの知見を記録しています。
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
 
-
 > ℹ️ 参考：
 >
 > - https://www.fsi.co.jp/blog/5939/
@@ -207,9 +206,12 @@ spec:
 | ```1.12```系          | ```v1.23.5-gke``` |
 | ...                  | ...               |
 
-（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをアップグレードする。
+（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリングアップデート方式でアップグレードする。
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> ℹ️ 参考：
+> 
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
 
 ```bash
 $ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
@@ -299,7 +301,7 @@ istiod-1141-3-1-*****      1/1     Running   0          27s   asm-1143-1
 $ kubectl label namespace foo-namespace istio.io/rev=<新バージョンのリビジョン番号> istio-injection- --overwrite
 ```
 
-（３）Podを再作成し、新バージョンの```istio-proxy```コンテナを自動的に注入する。
+（３）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的に注入する。
 
 ```bash
 $ kubectl rollout restart deployment -n foo-namespace

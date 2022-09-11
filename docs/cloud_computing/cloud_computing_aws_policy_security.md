@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】セキュリティ＠AWS
-description: セキュリティ＠AWSの知見を記録しています。
+title: 【IT技術の知見】安全性＠AWS
+description: 安全性＠AWSの知見を記録しています。
 ---
 
-# セキュリティ＠AWS
+# 安全性＠AWS
 
 ## はじめに
 

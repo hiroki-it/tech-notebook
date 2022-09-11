@@ -17,6 +17,8 @@ description: 可観測性の知見を記録しています。
 
 ### 可観測性とは
 
+![observality_and_monitoring](/Users/hiroki-hasegawa/Downloads/observality_and_monitoring.png)
+
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
 
 『収集されたデータから、システムと想定内と想定外の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。システムの想定内の不具合は『監視』や『テスト』によって検知できるが、想定外のものを検知できない。可観測性は、監視やテストも含むスーパーセットであり、想定内の不具合だけでなく、想定外の不具合も表面化する。想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。

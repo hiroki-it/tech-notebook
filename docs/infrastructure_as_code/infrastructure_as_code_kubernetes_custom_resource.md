@@ -32,7 +32,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 | 問題                                                         | 解決策                                                       | 該当のカスタムリソース |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------- |
-| ```spec.affinity```キーの変更を適用するために、Podを再作成した。```spec.affinity```キーの設定が機能せず、変更前と同じワーカーNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じワーカーNodeにPodが再スケジューリングされている可能性がある。Podを再作成した後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
+| ```spec.affinity```キーの変更を適用するために、Podを再スケジューリングした。```spec.affinity```キーの設定が機能せず、変更前と同じワーカーNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じワーカーNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
 
 <br>
 

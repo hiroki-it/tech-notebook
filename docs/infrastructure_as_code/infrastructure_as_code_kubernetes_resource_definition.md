@@ -1383,7 +1383,7 @@ spec:
 
 <br>
 
-## 13. PersistentVolumeClaim
+## 12. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1451,7 +1451,7 @@ spec:
 
 <br>
 
-## 14. Pod
+## 13. Pod
 
 ### spec.affinity
 
@@ -1502,7 +1502,7 @@ spec:
                 operator: In
                 # 指定した値をキーに持つワーカーNodeに、Podをスケジューリングする。
                 values:
-                  - foo-group
+                  - ingress
 ```
 
 #### ▼ podAffinity
@@ -1566,12 +1566,12 @@ spec:
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
-               # Podのmetadata.labelsキー
-               - key: app.kubernetes.io/app
-                 operator: In
-                 # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
-                 values:
-                   - bar-pod
+              # Podのmetadata.labelsキー
+              - key: app.kubernetes.io/app
+                operator: In
+                # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                values:
+                  - bar-pod
 ```
 
 もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じワーカーNodeにスケジューリングされることを避け、結果として全てのワーカーNodeにPodが```1```個ずつスケジューリングされるようになる。
@@ -2288,6 +2288,70 @@ spec:
   hostPath:
     path: /data/src/foo
     type: DirectoryOrCreate
+```
+
+<br>
+
+## 14. PodDisruptionBudget
+
+### spec.maxUnavailable
+
+対象のPodを新しいワーカーNodeでスケジューリングする時に、既存のワーカーNodeで削除できるPodの最大数を設定する。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: foo-gin
+```
+
+<br>
+
+### spec.minAvailable
+
+対象のPodを新しいワーカーNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。このスケジューリングを待機するPodの最低限数を設定する。
+
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - https://zenn.dev/sasakiki/articles/a71d9158020266
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  minAvailable: 3 # 新しいワーカーNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  selector:
+    matchLabels:
+      app: foo-gin # 対象のPod
+```
+
+<br>
+
+### spec.selector
+
+対象のPodを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  selector:
+    matchLabels:
+      app: foo-gin # 対象のPod
 ```
 
 <br>

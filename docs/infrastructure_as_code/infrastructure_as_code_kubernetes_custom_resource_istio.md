@@ -205,6 +205,7 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 >
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
+> - https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
 
 <br>
 
