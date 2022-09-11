@@ -15,7 +15,11 @@ description: 可用性＠AWSの知見を記録しています。
 
 ## 01. DRリージョン
 
-### バックアップリストア型
+### DRリージョンとは
+
+メインリージョンで障害が起こった場合に、システムの利用可能な時間をできるだけ長くできる（可用性を高められる）ように、災害復旧用リージョンを用意しておく。
+
+### バックアップリストア構成
 
 ![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_backup-restore.png)
 
@@ -29,7 +33,7 @@ DRリージョンにメインリージョンのAWSリソース（例：EBSボリ
 
 <br>
 
-### パイロットライト型
+### パイロットライト構成
 
 ![dr-architecture_pilot-light](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_pilot-light.png)
 
@@ -42,7 +46,7 @@ DRリージョンに低スペックなDBを作成しておき、メインリー�
 
 <br>
 
-### ウォームスタンバイ型
+### ウォームスタンバイ構成
 
 ![dr-architecture_warm-standby](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_warm-standby.png)
 
@@ -55,7 +59,7 @@ DRリージョンにメインリージョンよりも低スペックなアプリ
 
 <br>
 
-### マルチサイトアクティブ
+### マルチサイトアクティブ構成
 
 ![dr-architecture_multi-site-active](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_multi-site-active.png)
 
@@ -65,3 +69,5 @@ DRリージョンにメインリージョンと同等なアプリケーション
 >
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
 > - https://michimani.net/post/aws-architecture-for-disaster-recovery/
+
+<br>
