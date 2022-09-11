@@ -279,7 +279,7 @@ nav:
           - V〜Z: cloud_computing/cloud_computing_aws_6.md
           - ■ 設計ポリシー:
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
-              - セキュリティ: cloud_computing/cloud_computing_aws_policy_security.md
+              - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
           - ■ その他:
               - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
