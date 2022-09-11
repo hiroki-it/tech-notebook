@@ -270,7 +270,7 @@ nav:
   - ⛅️ クラウドコンピューティング:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
-          - 目次: cloud_computing/cloud_computing_aws.md
+          - AWSリソース: cloud_computing/cloud_computing_aws.md
           - A〜D: cloud_computing/cloud_computing_aws_1.md
           - E: cloud_computing/cloud_computing_aws_2.md
           - F〜K: cloud_computing/cloud_computing_aws_3.md
