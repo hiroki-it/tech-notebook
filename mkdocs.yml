@@ -278,6 +278,7 @@ nav:
           - S〜U: cloud_computing/cloud_computing_aws_5.md
           - V〜Z: cloud_computing/cloud_computing_aws_6.md
           - ■ 設計ポリシー:
+              - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
               - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
