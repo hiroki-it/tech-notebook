@@ -61,7 +61,7 @@ k8s-repository/
 ```yaml
 # 親Application
 parent-argocd-repository/
-├── tes/ # Applicationを管理する
+├── tes/ # 子Applicationを管理する。
 │   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
 │   └── obsv-application.yaml # child-argocd-manifestリポジトリの/dev/obsvディレクトリを監視
 │
@@ -72,7 +72,7 @@ parent-argocd-repository/
 ```yaml
 # 子Application
 child-argocd-repository/
-├── tes/
+├── tes/ # マニフェストファイルやチャートを監視する。
 │   ├── app
 │   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
 │   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視
@@ -84,7 +84,7 @@ child-argocd-repository/
 │       ├── grafana-application.yaml           # k8sリポジトリの/dev/obsv/grafanaディレクトリを監視
 │       ├── kiali-application.yaml             # k8sリポジトリの/dev/obsv/kialiディレクトリを監視
 │       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
-│       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
+│       └── victoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
 │
 ├── stg/
 └── prd/

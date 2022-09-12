@@ -1791,7 +1791,7 @@ source "${EXPORT_ENVS}"
 
 #### ▼ マネージドNodeグループ
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/launch-templates.html
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
 
 | タグ       | 値                    | 説明                                                         |
 | ---------- | --------------------- | ------------------------------------------------------------ |
@@ -1799,7 +1799,7 @@ source "${EXPORT_ENVS}"
 
 #### ▼ セルフマネージドNodeグループ
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/worker.html
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/worker.html
 
 | タグ                                           | 値                    | 説明                                                         |
 | ---------------------------------------------- | --------------------- | ------------------------------------------------------------ |
@@ -1810,7 +1810,7 @@ source "${EXPORT_ENVS}"
 
 | アドオン名                 | タグ                                           | 値          | 説明                                                         |
 | -------------------------- | ---------------------------------------------- | ----------- | ------------------------------------------------------------ |
-| cluster-autoscalerアドオン | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerアドオンを使用する場合、cluster-autoscalerアドオンがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html |
+| cluster-autoscalerアドオン | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerアドオンを使用する場合、cluster-autoscalerアドオンがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
 | 同上                       | ```k8s.io/cluster-autoscaler/enabled```        | ```true```  | 同上                                                         |
 
 <br>

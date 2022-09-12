@@ -638,7 +638,7 @@ CPU平均使用率に段階的な閾値を設定する。
 > ℹ️ 参考：
 >
 > - https://blog.takuros.net/entry/2020/08/11/082712
-> - https://docs.aws.amazon.com/ja_jp/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
 
 <br>
 

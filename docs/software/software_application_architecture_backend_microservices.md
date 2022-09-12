@@ -341,68 +341,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-## 04. マイクロサービス間通信の管理
-
-### 非メッシュとメッシュ
-
-#### ▼ 非メッシュとは
-
-マイクロサービス間の通信を管理しない。しかし、以下のような問題が起こるため、非推奨である。
-
-- ソフトウェアのコンポーネント間通信を制御しきれない。
-- 障害時に何が起こるか分からない。
-- 鍵とSSL証明書を管理しきれない。
-- ソフトウェアの全体像が把握できない
-
-#### ▼ メッシュとは
-
-> ℹ️ 参考：https://solace.com/blog/event-mesh-service-mesh-for-microservices/
-
-![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mesh.png)
-
-<br>
-
-### サービスメッシュ
-
-#### ▼ サービスメッシュとは
-
-![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
-
-マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。マイクロサービス間で直接的にリクエストを送受信する場合と比較して、通信の諸々（例：トラフィック制御、セキュリティ、テレメトリー収集）を一元的に制御しやすい。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。
-
-> ℹ️ 参考：
->
-> - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
-> - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
-
-#### ▼ サービスメッシュの層
-
-![service-mesh_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png)
-
-マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。多くのサービスメッシュツールでは、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーを注入することで、アプリケーションエンジニアがこれらのロジックを意識せずに、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できるようになる。
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
-
-#### ▼ 適するリバースプロキシ
-
-マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー（レスポンス速度）が重要である。Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
-
-> ℹ️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
-
-![service-mesh_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_reverse-proxy.png)
-
-<br>
-
-### イベントメッシュ
-
-#### ▼ イベントメッシュ
-
-マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
-
-<br>
-
 ## 05. プレゼンテーションドメイン分離
 
 ### プレゼンテーションドメイン分離とは

@@ -17,11 +17,11 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-#### ▼ サイドカーメッシュ
+#### ▼ サイドカープロキシによるサービスメッシュ
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカーメッシュは、データプレーン、コントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+サイドカープロキシによるサービスメッシュは、データプレーン、コントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -33,7 +33,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はデーモンとして稼働するエージェント）が```L4```（トランスポート層）、waypoint-proxy（実体はPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel経由して、一度waypoint-proxyにリダイレクトされる。ztunnelエージェントを経由した段階でHTTPs通信になる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカーメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカーメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はデーモンとして稼働するエージェント）が```L4```（トランスポート層）、waypoint-proxy（実体はPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel経由して、一度waypoint-proxyにリダイレクトされる。ztunnelエージェントを経由した段階でHTTPs通信になる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカープロキシによるサービスメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシによるサービスメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
 ```
 インバウンド時：
@@ -87,11 +87,11 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 <br>
 
-## 01-02. データプレーン（サイドカーメッシュ）
+## 01-02. データプレーン（サイドカープロキシによるサービスメッシュ）
 
 ### データプレーンとは
 
-サイドカーメッシュのデータプレーンは、iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
+サイドカープロキシによるサービスメッシュのデータプレーンは、iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
 
 > ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
@@ -193,13 +193,13 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 <br>
 
-## 01-03. コントロールプレーン（サイドカーメッシュ）
+## 01-03. コントロールプレーン（サイドカープロキシによるサービスメッシュ）
 
 ### コントロールプレーンとは
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
-サイドカーメッシュのIstiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+サイドカープロキシによるサービスメッシュのIstiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
 > ℹ️ 参考：
 >
@@ -348,9 +348,14 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Clusterネット�
 
 #### ▼ Gatewayとは
 
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
+
 IngressGatewayの機能のうち、Clusterネットワーク外から受信したインバウンド通信をフィルタリングする機能を担う。
 
-> ℹ️ 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/blog/2018/v1alpha3-routing/
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
 <br>
 
@@ -358,12 +363,15 @@ IngressGatewayの機能のうち、Clusterネットワーク外から受信し�
 
 #### ▼ VirtualServiceとは
 
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
+
 IngressGatewayの機能のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
 
 > ℹ️ 参考：
 >
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
 #### ▼ Envoyの設定値として
 
@@ -404,7 +412,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ ServiceEntryとは
 
-アウトバウンド通信のうち、送信できるもののみを指定したドメインやEgressGatewayにルーティングする。ServiceEntryを使用しない場合は、全てのアウトバウンド通信がルーティングされる。
+サービスレジストリにサービスの宛先情報を登録する。サービスディスカバリーによって、宛先情報は動的に登録されるが、手動で登録したい時に使用する。
 
 > ℹ️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 

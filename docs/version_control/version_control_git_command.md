@@ -137,16 +137,44 @@ $ git init
 
 ### remote
 
-#### ▼ set-url origin <SSH URL>
+#### ▼ add origin
 
-プライベートリポジトリに接続する。```config```ファイルに記述されたユーザー名と接続名を設定する。```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で設定し直す。
+プライベートリポジトリのURLを登録し、プッシュ/プルできるようにする。
 
 ```bash
+$ git init
+
+# Basic認証
+$ git remote add origin https://github.com/hiroki.hasegawa/example.git
+
+# 登録された
+remote.origin.url=https://github.com/hiroki.hasegawa/example.git
+```
+
+```bash
+$ git init
+
+# SSH接続
+$ git remote add origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
+
+# 登録された
+remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
+```
+
+#### ▼ set-url origin
+
+プライベートリポジトリのURLを変更し、プッシュ/プルできるようにする。```config```ファイルに記述されたユーザー名と接続名を設定する。```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で設定し直す。
+
+```bash
+# SSH接続
 # 使用頻度の高いアカウントで所有するリポジトリ
 $ git remote set-url origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
 # 使用頻度の低いアカウントで所有するリポジトリ
 $ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
+
+# 変更された
+remote.origin.url=git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 ```
 
 ```bash
@@ -239,6 +267,7 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 ### branch
 
 #### ▼ branch --all
+
 作業中のローカルブランチとリモート追跡ブランチを取得する。
 
 #### ▼ --contains

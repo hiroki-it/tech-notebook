@@ -522,7 +522,7 @@ $ minikube start
 ワーカーNodeが作成されていることを確認できる。
 
 ```bash
-$ kubectl get nodes
+$ kubectl get node
 
 NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
@@ -625,7 +625,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 ```bash
 $ minikube start --nodes 3
 
-$ kubectl get nodes
+$ kubectl get node
 NAME           STATUS   ROLES                  AGE   VERSION
 minikube       Ready    control-plane,master   76s   v1.20.2
 minikube-m02   Ready    <none>                 42s   v1.20.2

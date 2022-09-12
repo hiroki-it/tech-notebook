@@ -101,6 +101,7 @@ CIツールを使用してCIパイプラインを、またはCDツールを使�
 - Flux
 - Jenkins X
 - PipeCD
+- Harness
 
 <br>
 

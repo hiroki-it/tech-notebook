@@ -35,7 +35,7 @@ $ ln -s /etc/kubernetes/kubeconfig config
 ```
 
 ```bash
-$ kubectl get pods --kubeconfig=/etc/kubernetes/kubeconfig
+$ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 ```
 
 <br>
@@ -456,10 +456,13 @@ $ kubectl get -n foo "$(kubectl api-resources --namespaced=true --verbs=list -o 
 指定したNodeの情報を取得する。
 
 ```bash
-$ kubectl get nodes 
+$ kubectl get node 
 
-NAME             STATUS   ROLES                  AGE   VERSION
-docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターNode
+NAME      STATUS   ROLES                  AGE   VERSION
+foo-node  Ready    control-plane,master   12h   v1.21.5 # マスターNode
+bar-node  Ready    worker                 12h   v1.21.5 # ワーカーNode
+baz-node  Ready    worker                 12h   v1.21.5 # 同上
+qux-node  Ready    worker                 12h   v1.21.5 # 同上
 ```
 
 **＊例＊**
@@ -467,7 +470,7 @@ docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターNod
 指定したPodの情報を取得する。
 
 ```bash
-$ kubectl get pods
+$ kubectl get pod
 
 NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    0/2     ImagePullBackOff   0          7m52s
@@ -479,7 +482,7 @@ bar-pod    2/2     Running            0          5m01s
 指定したServiceの情報を取得する。
 
 ```bash
-$ kubectl get services
+$ kubectl get service
 
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 foo-service    ClusterIP   *.*.*.*        <none>        80/TCP    10s
@@ -491,7 +494,7 @@ kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 RunningフェーズのPodのみを取得する。
 
 ```bash
-$ kubectl get pods | grep Running
+$ kubectl get pod | grep Running
 
 NAME       READY   STATUS             RESTARTS   AGE
 bar-pod    2/2     Running            0          5m01s
@@ -502,12 +505,12 @@ bar-pod    2/2     Running            0          5m01s
 指定したKubernetesリソースをNamespaceに関係なく取得する。
 
 ```bash
-$ kubectl get pods -A
+$ kubectl get pod -A
 ```
 
 ```bash
 # 指定したNode上のPodを全てNamespaceに関係なく取得する。
-$ kubectl get pods -A -o wide | grep <Node名>
+$ kubectl get pod -A -o wide | grep <Node名>
 ```
 
 #### ▼ -o yaml
@@ -560,12 +563,30 @@ $ kubectl get service/istio-ingressgateway \
 
 指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
+**＊実行例＊**
+
+Podの詳細な情報を取得する。
+
 ```bash
-$ kubectl get pods -o wide
+$ kubectl get pod -o wide
 
 NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
 foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>
 bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
+baz-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
+```
+
+**＊実行例＊**
+
+Nodeの詳細な情報を取得する。
+
+```bash
+$ kubectl get node -o wide
+
+NAME       STATUS   ROLES                  AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE         KERNEL-VERSION       CONTAINER-RUNTIME
+foo-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
+bar-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
+baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
 ```
 
 #### ▼ -l
@@ -573,24 +594,24 @@ bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>
 特定の```metadata.labels```キーの値を持つKubernetesリソースを取得する。
 
 ```bash
-$ kubectl get pods -l <キー>=<値>
+$ kubectl get pod -l <キー>=<値>
 ```
 
 複数の```metadata.labels```キーをAND条件で指定することもできる。
 
 ```bash
-$ kubectl get pods -l <キー>=<値>,<キー>=<値>
+$ kubectl get pod -l <キー>=<値>,<キー>=<値>
 ```
 
 ```metadata.labels```キーの値をOR条件で指定することもできる。
 
 
 ```bash
-$ kubectl get pods -l <キー>=<値>,<キー>=<値>
+$ kubectl get pod -l <キー>=<値>,<キー>=<値>
 ```
 
 ```bash
-$ kubectl get pods -l '<キー> in (<値>,<値>)'
+$ kubectl get pod -l '<キー> in (<値>,<値>)'
 ```
 
 **＊実行例＊**
@@ -598,7 +619,7 @@ $ kubectl get pods -l '<キー> in (<値>,<値>)'
 ```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
 
 ```bash
-$ kubectl get nodes -l topology.kubernetes.io/zone=ap-northeast-1a
+$ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 ```
 
 #### ▼ -L
@@ -611,7 +632,7 @@ $ kubectl describe services foo
 
 Selector: <キー>=<値> # Selectorでルーティング先のPodのmetadata.labelsキーがわかる
 
-$ kubectl get pods -l <キー>=<値>
+$ kubectl get pod -l <キー>=<値>
 ```
 
 **＊実行例＊**
@@ -619,12 +640,12 @@ $ kubectl get pods -l <キー>=<値>
 Nodeが作成されたAWSリージョンを取得する。
 
 ```bash
-$ kubectl get nodes -L topology.kubernetes.io/zone
+$ kubectl get node -L topology.kubernetes.io/zone
 
-NAME                                         STATUS   ROLES    AGE     VERSION         ZONE
-ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   18h     v1.22.0-eks-*   ap-northeast-1a
-ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   18h     v1.22.0-eks-*   ap-northeast-1c
-ip-*-*-*-*.ap-northeast-1.compute.internal   Ready    <none>   6h20m   v1.22.0-eks-*   ap-northeast-1d
+NAME       STATUS   ROLES    AGE     VERSION   ZONE
+foo-node   Ready    <none>   18h     v1.22.0   ap-northeast-1a
+bar-node   Ready    <none>   18h     v1.22.0   ap-northeast-1c
+baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 ```
 
 #### ▼ --selector
@@ -642,7 +663,7 @@ $ kubectl get deployment --selector<キー>=<値>
 > ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
 ```bash
-$ kubectl get pods --watch
+$ kubectl get pod --watch
 ```
 
 <br>

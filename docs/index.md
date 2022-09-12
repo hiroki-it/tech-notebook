@@ -75,18 +75,20 @@ title: 【IT技術の知見】目次
 
 * #### <u>DB系</u>
 
-    > * ##### <u>RDBMS</u>
-    > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
-    > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_acid.html)
+    > * ##### <u>データベース</u>
+    > > * ##### <u>RDBMS</u>
+    > > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
+    > > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_acid.html)
     > > * ##### <u>MySQL</u>
-    > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html)
-    > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql_query.html)
+    > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html)
+    > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_query.html)
 
 * #### <u>サービスメッシュ系</u>
-
-    > * ##### <u>Envoy</u>
-    > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
-    > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
+    
+    > * #### <u>サービスメッシュ</u>
+    > > * ##### <u>Envoy</u>
+    > > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
+    > > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
 
 <br>
 

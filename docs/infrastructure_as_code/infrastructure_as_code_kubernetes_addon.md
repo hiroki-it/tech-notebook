@@ -418,7 +418,7 @@ NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 # CoreDNS Pod
-$ kubectl get pods -n kube-system
+$ kubectl get pod -n kube-system
 
 NAME                                     READY   STATUS    RESTARTS   AGE
 coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
@@ -436,7 +436,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 > ℹ️ 参考：
 >
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/add-ons-configuration.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
 > - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
 
 <br>

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Envoy
-description: Envoyの知見を記録しています。
+title: 【IT技術の知見】Envoy＠サービスメッシュ
+description: Envoy＠サービスメッシュの知見を記録しています。
 ---
 
-# Envoy
+# Envoy＠サービスメッシュ
 
 ## はじめに
 
