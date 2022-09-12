@@ -73,7 +73,7 @@ title: 【IT技術の知見】目次
     > > * ##### <u>ASGI</u>
     > > > * ##### 📖 [︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
-* #### <u>DB系</u>
+* #### <u>データベース系</u>
 
     > * ##### <u>データベース</u>
     > > * ##### <u>RDBMS</u>
@@ -85,7 +85,7 @@ title: 【IT技術の知見】目次
 
 * #### <u>サービスメッシュ系</u>
     
-    > * #### <u>サービスメッシュ</u>
+    > * ##### <u>サービスメッシュ</u>
     > > * ##### <u>Envoy</u>
     > > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
     > > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
