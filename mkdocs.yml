@@ -147,12 +147,12 @@ nav:
               - ■ ASGI:
                   - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
           - ■ データベース系:
-              - ■ RDBMS:
+              - ■ データベース:
                   - RDBMS: software/software_middleware_database_rdbms.md
                   - ACID: software/software_middleware_database_rdbms_acid.md
-                  - ■ My︎SQL:
-                      - MySQL: software/software_middleware_database_rdbms_mysql.md
-                      - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
+              - ■ My︎SQL:
+                  - MySQL: software/software_middleware_database_rdbms_mysql.md
+                  - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
           - ■ サービスメッシュ系:
               - ■ Envoy:
                   - Envoy: software/software_middleware_service_mesh_envoy.md
