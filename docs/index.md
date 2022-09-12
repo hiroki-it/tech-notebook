@@ -84,8 +84,8 @@ title: 【IT技術の知見】目次
     > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_query.html)
 
 * #### <u>サービスメッシュ系</u>
-    
-    > * ##### <u>サービスメッシュ</u>
+
+    > * ##### 📖 [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh.html)
     > > * ##### <u>Envoy</u>
     > > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
     > > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
