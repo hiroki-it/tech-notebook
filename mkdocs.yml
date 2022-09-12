@@ -151,8 +151,8 @@ nav:
                   - RDBMS: software/software_middleware_database_rdbms.md
                   - ACID: software/software_middleware_database_rdbms_acid.md
               - ■ My︎SQL:
-                  - MySQL: software/software_middleware_database_rdbms_mysql.md
-                  - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
+                  - MySQL: software/software_middleware_database_mysql.md
+                  - クエリロジック: software/software_middleware_database_mysql_query.md
           - ■ サービスメッシュ系:
               - サービスメッシュ: software/software_middleware_service_mesh.md
               - ■ Envoy:
