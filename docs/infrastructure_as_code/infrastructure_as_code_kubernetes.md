@@ -470,18 +470,18 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ```bash
 # マスターNodeの場合
-$ kubectl describe nodes <マスターNode名> | grep -i taint
+$ kubectl describe node <マスターNode名> | grep -i taint
 Taints: node-role.kubernetes.io/master:NoSchedule
 
 # ワーカーNodeの場合
-$ kubectl describe nodes <ワーカーNode名> | grep -i taint
+$ kubectl describe node <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
 ただし、セルフマネージドなマスターNodeを採用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。マスターNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、マスターNodeにDaemonSetによるPodをスケジューリングすることがある。
 
 ```bash
-$ kubectl taint nodes --all node-role.kubernetes.io/master-
+$ kubectl taint node --all node-role.kubernetes.io/master-
 ```
 
 #### ▼ Podのライフサイクルフェーズとコンディション
@@ -835,24 +835,6 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 <br>
 
-### Account
-
-#### ▼ Accountとは
-
-Kubernetesに関する実行ユーザーに認証/認可を設定する。
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
-
-| アカウント名         | 説明                                                                                                                   | 補足                                                                                         |
-|----------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのプロセスは、Kubernetes自体と通信する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される。認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる。 |
-| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのクライアントは、Kubernetes自体を操作する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。 | アカウント情報は、``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある。                       |
-
-<br>
-
 ### NetworkPolicy
 
 #### ▼ NetworkPolicyとは
@@ -938,17 +920,17 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
 
-認可スコープを設定する。
+kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
-| ロール名    | 説明                                   | 補足                                                         |
-| ----------- | -------------------------------------- | ------------------------------------------------------------ |
-| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
-| ClusterRole | Cluster内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+| ロール名    | 説明                                   | 補足                                                                                                                                                                                                                                                         |
+| ----------- | -------------------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                     |
+| ClusterRole | Cluster内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 
 <br>
 
@@ -956,9 +938,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ RoleBinding、ClusterRoleBindingとは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
-
-定義された認可スコープをAccountに紐づける。
+RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
 
 > ℹ️ 参考：
 >
@@ -969,6 +949,27 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
 | RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
 | ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+
+<br>
+
+### ServiceAccount、UserAccount
+
+#### ▼ ServiceAccount、UserAccountとは
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
+kube-apiserverが、リクエストの送信元を認証できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+| アカウント名         | 説明                                                                                                               | 補足                                                                                                                                                                                                                                                         |
+|----------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ServiceAccount | kube-apiserverが、Kubernetesリソースを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                | クライアントの認証に必要なクライアント証明書は、``` ~/.kube/config/kubeconfig```ファイルに登録する必要がある。                                                                                                                                                                                    |
 
 <br>
 
@@ -987,7 +988,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 ```bash
 # Podに接続する
-kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # ストレージを表示する
 [root@<Pod名>:/var/www/html] $ df -h

@@ -25,7 +25,7 @@ title: 【IT技術の知見】目次
 
     > * ##### 📖 [︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
     > * ##### 📖 [︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
-    > * ##### 📖 [︎ファイル共有システム](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_file_share_system.html)
+    > * ##### 📖 [︎ストレージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_storage_management.html)
 
 * #### <u>ユーティリティ</u>
 

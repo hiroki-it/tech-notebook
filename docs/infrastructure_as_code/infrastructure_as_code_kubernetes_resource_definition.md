@@ -2420,6 +2420,19 @@ rules:
     verbs: ["get", "watch", "list"]
 ```
 
+全Kubernetesリソースへの全操作を許可する認可スコープの場合、以下の通りとなる。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+```
+
 <br>
 
 ## 17. RoleBinding、ClusterRoleBinding

@@ -765,7 +765,7 @@ spec:
           spec:
             containers:
             - name: istio-proxy
-              # ～ 中略 ～
+              ...
 ```
 
 <br>

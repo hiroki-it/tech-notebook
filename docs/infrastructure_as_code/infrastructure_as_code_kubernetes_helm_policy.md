@@ -323,21 +323,22 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 ### ホワイトボックステスト結果の通知
 
-#### ▼ CDパイプラインがある場合
+#### ▼ Helmの機能を使用する場合
 
-GitOpsツールの差分機能を使用して、差分画面のURLを共有する。またはCDツールの通知機能（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
-
-> ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
-
-#### ▼ CDパイプラインがない場合（非自動化）
-
-```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
+Helmには通知機能がなく、手動で周知する必要がある。そこで、```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
 ```bash
 $ helm diff <チャート名> -f values.yaml \
     | grep -A 1000 Comparing \
     | pbcopy
 ```
+
+#### ▼ Helm以外の機能を使用する場合
+
+GitOpsツールの差分機能を使用して、差分画面のURLを共有する。またはCDツールの通知機能（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
+
+> ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
+
 
 <br>
 
@@ -362,42 +363,23 @@ $ helm diff <チャート名> -f values.yaml \
 
 > ℹ️ 参考：https://camunda.com/blog/2022/03/test/
 
+<br>
+
 ### デプロイ
 
-#### ▼ CDパイプラインがある場合
-
-本番環境に対して、CDツールを使用して```helm install```コマンドを実行する。
-
-| 採用可能な戦略              | 具体的な方法                             |
-|----------------------|------------------------------------|
-| インプレースデプロイメント（非推奨）   | DeploymentのReplace戦略を採用する。非推奨である。  |
-| ローリングアップデート          | DeploymentのRollingUpdate戦略を採用する。   |
-| BGデプロイメント            | CDツールのBGデプロイメント機能を採用する。            |
-| カナリアリリース             | CDツールのカナリアリリース機能を採用する。             |
-| Progressive Delivery | CDツールのProgressive Delivery機能を採用する。 |
-
-#### ▼ CDパイプラインがない場合（非自動化）
-
-本番環境に対して、手動で```helm upgrade```コマンドを実行する。
-
-| 採用可能な戦略            | 具体的な方法                           |
-|--------------------|----------------------------------|
-| インプレースデプロイメント（非推奨） | DeploymentのReplace戦略を採用する。非推奨である。 |
-| ローリングアップデート        | DeploymentのRollingUpdate戦略を採用する。|
-
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 
 ### ロールバック
 
-#### ▼ CDパイプラインがない場合（非自動化）
+#### ▼ Helmの機能を使用する場合
 
 ```helm history```コマンドで過去のリリースタグ（リビジョン）を確認し、```helm rollback```コマンドでロールバックする。
 
-#### ▼ CDパイプラインがある場合
+#### ▼ Helm以外の機能を使用する場合
 
-CDツールの機能（例：BGデプロイメント、カナリアリリース、Progressive Delivery、など）を採用する。
-
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 
 <br>
 

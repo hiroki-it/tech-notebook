@@ -40,14 +40,29 @@ EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
 > - https://www.netstars.co.jp/kubestarblog/k8s-10/
 
-| サーバー名                           | 説明                                                         |
-| ------------------------------------ | ------------------------------------------------------------ |
-| CDS：Cluster Discovery Service       | Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。 |
-| EDS：Endpoint Discovery Service      | Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。 |
-| LDS：Listener Discovery Service      | Envoyの実行時に、リスナーの設定を動的に検出できるようにする。 |
-| RDS：Route Discovery Service         | Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。 |
-| SDS：Secret Discovery Service        | Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。 |
-| VHDS：Virtual Host Discovery Service | Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。 |
+#### ▼ CDS：Cluster Discovery Service
+
+Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+
+#### ▼ EDS：Endpoint Discovery Service
+
+Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+
+#### ▼ LDS：Listener Discovery Service
+
+Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+
+#### ▼ RDS：Route Discovery Service
+
+Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+
+#### ▼ SDS：Secret Discovery Service
+
+Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
+
+#### ▼ VHDS：Virtual Host Discovery Service
+
+Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。
 
 <br>
 

@@ -326,14 +326,40 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
+**＊実行例＊**
+
 ```bash
-$ kubectl describe nodes
+$ kubectl describe node
 ```
 
 ```bash
 # PodがスケジューリングされているNodeを取得する。
 $ kubectl describe pod <Pod名> | grep Node:
 ```
+
+#### ▼ -A
+
+**＊実行例＊**
+
+全てのNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
+
+```bash
+$ kubectl describe node -A | grep -e Name: -e cpu
+
+Name:               foo-node
+  cpu:                8
+  cpu:                7510m
+  cpu                1050m (13%)  4850m (64%) # <--- Node全体の使用率
+Name:               bar-node
+  cpu:                4
+  cpu:                3520m
+  cpu                2183m (62%)  4950m (140%) # <--- Node全体の使用率
+Name:               baz-node
+  cpu:                8
+  cpu:                7510m
+  cpu                1937m (25%)  10245m (136%) # <--- Node全体の使用率
+```
+
 
 <br>
 
@@ -782,8 +808,17 @@ Deployment、DamonSet、StatefulSet、で複製されたPodを操作する。
 > - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
 > - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
 
+**＊実行例＊**
+
+
 ```bash
+# Deployment配下のPodを再スケジューリングする。
 $ kubectl rollout restart deployment grafana -n prometheus
+```
+
+```bash
+# Daemonset配下のPodを再スケジューリングする。
+$ kubectl rollout restart daemonset fluentd -n fluentd
 ```
 
 <br>
