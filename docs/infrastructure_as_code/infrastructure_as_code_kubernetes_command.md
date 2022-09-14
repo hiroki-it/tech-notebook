@@ -474,7 +474,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 > ℹ️ 参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
 
 ```bash
-$ kubectl get -n foo "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')"
+$ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo
 ```
 
 **＊例＊**
@@ -650,20 +650,15 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 
 #### ▼ -L
 
-特定の```metadata.labels```キーを持つKubernetesリソースを取得する。小文字の```-l```オプションもあるが、こちらは値まで絞り込みたい時に使用する。
+特定の```metadata.labels```キーを持つKubernetesリソースを取得する。小文字の```-l```オプションもあるが、こちらは値まで絞り込みたい時に使用する。該当のキーがない場合は、空欄で表示される。
 
 ```bash
-# 事前にServiceのルーティング先を確認しておく。
-$ kubectl describe services foo
-
-Selector: <キー>=<値> # Selectorでルーティング先のPodのmetadata.labelsキーがわかる
-
-$ kubectl get pod -l <キー>=<値>
+$ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 ```
 
 **＊実行例＊**
 
-Nodeが作成されたAWSリージョンを取得する。
+Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
 ```bash
 $ kubectl get node -L topology.kubernetes.io/zone
@@ -672,6 +667,19 @@ NAME       STATUS   ROLES    AGE     VERSION   ZONE
 foo-node   Ready    <none>   18h     v1.22.0   ap-northeast-1a
 bar-node   Ready    <none>   18h     v1.22.0   ap-northeast-1c
 baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
+```
+
+**＊実行例＊**
+
+istioのコンテナ注入が有効されているNamespaceを確認するため、```istio.io/rev```キーを取得する。
+
+```bash
+$ kubectl get namespace -L istio.io/rev
+
+NAME                   STATUS   AGE     REV
+foo-namespace          Active   145d    1-0-0
+bar-namespace          Active   145d           # キーが設定されていないNamespace
+baz-namespace          Active   145d           # 同上
 ```
 
 #### ▼ --selector
@@ -700,9 +708,7 @@ $ kubectl get pod --watch
 
 指定したリソースの```metadata.labels```キーを操作する。
 
-#### ▼ オプション無し
-
-**＊例＊**
+#### ▼ オプション無し（キーの追加）
 
 指定したリソースに```metadata.labels```キーを作成する。
 
@@ -710,20 +716,34 @@ $ kubectl get pod --watch
 $ kubectl label <リソース名> foo=bar
 ```
 
+#### ▼ オプション無し（キーの削除）
+
 指定したリソースの```metadata.labels```キーを削除する。
 
 ```bash
 $ kubectl label <リソース名> foo-
 ```
 
+**＊例＊**
+
+```bash
+$ kubectl label namespace default istio.io/rev-
+```
+
 #### ▼ --overwrite
+
+指定したリソースに```metadata.labels```キーを上書きする。
+
+```bash
+$ kubectl label --overwrite <リソースの種類> <リソース名> foo=bar
+```
 
 **＊例＊**
 
-指定したリソースに```metadata.labels```キーの値を変更する。
+```istio-injection```キーを```istio.io/rev```キー（値は```1-0-0```）に上書きする。
 
 ```bash
-$ kubectl label --overwrite <リソース名> foo=bar
+$ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 ```
 
 <br>

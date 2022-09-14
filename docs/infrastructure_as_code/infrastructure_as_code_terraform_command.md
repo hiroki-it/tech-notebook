@@ -27,7 +27,32 @@ description: コマンド＠Terraformの知見を記録しています。
 
 ### apply
 
-#### ▼ apply
+#### ▼ applyとは
+
+インフラリソースをプロビジョニングする。
+
+#### ▼ -destroy
+
+指定したバックエンドで管理するリソースを削除する。削除後に、パラメーターとして使用した```tfvars```ファイル自体を削除する必要がある。
+
+```bash
+# 削除するまでに以下の手順が必要である。
+
+# 初期化
+$ terraform init -reconfigure -backend-config=backend.tfvars
+
+# 現状のtfstateファイルと実インフラの間に、差分がないことを確認する。
+$ terraform plan -var-file=./dev-bcp/terraform.tfvars
+
+No changes. Your infrastructure matches the configuration.
+
+
+# 実行計画
+$ terraform plan -destroy -var-file=foo.tfvars
+
+# 削除
+$ terraform apply -destroy -var-file=foo.tfvars
+```
 
 #### ▼ -parallelism
 
@@ -406,6 +431,20 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 #### ▼ planとは
 
 実行計画を取得する。
+
+#### ▼ -destroy
+
+指定したバックエンドで管理するリソースを削除する場合の実行計画を取得する。
+
+```bash
+$ terraform plan -destroy -var-file=foo.tfvars
+
+Terraform will perform the following actions:
+
+...
+
+Plan: 0 to add, 0 to change, 10 to destroy.
+```
 
 #### ▼ -var-file
 

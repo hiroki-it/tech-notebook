@@ -467,13 +467,14 @@ const getBacketBasedOnDeviceType = (headers) => {
 >
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/
 > - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
+> - https://www.infraexpert.com/study/tcpip8.html
 
-| 負荷分散対象のOSI層 | ターゲット                      | リスナーの対応プロトコル  | LB名                           | セキュリティグループ |
-| ----------- | ------------------------------- | ------------------------- | ------------------------------ | -------------------- |
-| ```L7```          | IPアドレス、インスタンス、Lamba | HTTP、HTTPS、gRPC         | ALB：Application Load Balancer | 可                   |
-| ```L4```          | IPアドレス、インスタンス、ALB   | TCP、UDP、TLS             | NLB：Network Load Balancer     | 不可                 |
-| ```L3```、```L4```      | IPアドレス、インスタンス        | IP                        | GLB：Gateway Load Balancer     | 不可                 |
-| ```L4```、```L7```      | なし                            | HTTP、HTTPS、TCP、SSL/TLS | CLB：Classic Load Balancer     | 可                   |
+| 負荷分散対象のOSI層 | LB名                           | ターゲット                      | リクエストヘッダー（```L7```） | パケットヘッダーのフィールド（```L4```） | リスナーの対応プロトコル  | セキュリティグループ |
+| ----------- | ------------------------------ | ------------------------------- |---------------------|--------------------------| ------------------------- | -------------------- |
+| ```L7```          | ALB：Application Load Balancer | IPアドレス、インスタンス、Lamba | URL、HTTPヘッダー        | 不可                       | HTTP、HTTPS、gRPC         | 可                   |
+| ```L4```          | NLB：Network Load Balancer     | IPアドレス、インスタンス、ALB   | 不可                  | IPアドレスフィールド、ポート番号フィールド   | TCP、UDP、TLS             | 不可                 |
+| ```L3```、```L4```      | GLB：Gateway Load Balancer     | IPアドレス、インスタンス        | 不可                  | IPアドレスフィールド、ポート番号フィールド   | IP                        | 不可                 |
+| ```L4```、```L7```      | CLB：Classic Load Balancer     | なし                            | URL、HTTPヘッダー        | IPアドレスフィールド、ポート番号フィールド   | HTTP、HTTPS、TCP、SSL/TLS | 可                   |
 
 <br>
 

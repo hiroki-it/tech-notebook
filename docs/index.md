@@ -15,7 +15,7 @@ title: 【IT技術の知見】目次
 
 ### ソフトウェア
 
-* 📖 [︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html)
+* ##### 📖 [︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html)
 
 <br>
 

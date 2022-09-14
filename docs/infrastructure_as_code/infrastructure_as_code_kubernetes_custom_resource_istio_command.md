@@ -111,7 +111,7 @@ $ istioctl analyze -n <Namespace名>
 
 <br>
 
-### destroy
+### uninstall
 
 #### ▼ istioctlコマンドを使用して
 
@@ -299,27 +299,29 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ▼ tagとは
 
-リビジョン番号のエイリアスとして、```istio.io/rev```キーの値を操作する。
+MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 
 #### ▼ generate
 
-```istio.io/rev```キーの値を作成する。
+MutatingWebhookConfigurationの```metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
 ```bash
-$ istioctl tag generate <istio.io/revキーの値>
+$ istioctl tag generate <エイリアス名> --revision <エイリアスの実体>
 ```
 
 **＊例＊**
 
-```istio.io/rev```キーの````prd-blue````という値を新しく作成し、さらに```1-0-0```のエイリアスとする。
+```prd-blue```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-0```を設定する。
 
 ```bash
 $ istioctl tag generate prd-blue --revision 1-0-0
 ```
 
-```istio.io/rev```キーの````tes-green````という値を新しく作成し、さらに```1-0-1```のエイリアスとする。
+```tes-green```というエイリアス（```istio.io/tag```キーの値）を作成し、エイリアスの実体（```istio.io/rev```キーの値）として```1-0-1```を設定する。
 
 ```bash
 $ istioctl tag generate tes-green --revision 1-0-1
@@ -327,7 +329,7 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 #### ▼ list
 
-istio.io/revキーの値とそれに紐づくリビジョン番号の一覧を取得する。
+MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
 
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
@@ -347,12 +349,12 @@ tes-green  1-0-1      istioinaction
 
 #### ▼ set
 
-既存のistio.io/revキーの値をリビジョン番号のエイリアスとする。
+MutatingWebhookConfigurationの```metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
 
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
-$ istioctl tag set <istio.io/revキーの値> --revision <リビジョン番号>
+$ istioctl tag set <エイリアス> --revision <エイリアスの実体>
 ```
 
 **＊例＊**
