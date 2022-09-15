@@ -22,11 +22,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Setup git
-        run: |
-          git config --local user.email "hasegawafeedshop@gmail.com"
-          git config --local user.name "github-actions"
-          git config pull.rebase false
       - name: Pip install
         run: |
           pip3 install -r requirements.txt
