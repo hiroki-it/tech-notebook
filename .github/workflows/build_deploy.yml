@@ -18,13 +18,8 @@ jobs:
           git config --local user.email "hasegawafeedshop@gmail.com"
           git config --local user.name "github-actions"
           git config pull.rebase false
-      - name: Setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
       - name: Pip install
-        run: |
-          pip3 install -r requirements.txt
+        uses: ./.github/workflows/composite/pip-install
       - name: Deploy MkDocs
         run: |
           mkdocs gh-deploy --force
