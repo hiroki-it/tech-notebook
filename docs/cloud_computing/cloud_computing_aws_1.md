@@ -638,7 +638,7 @@ CPU平均使用率に段階的な閾値を設定する。
 > ℹ️ 参考：
 >
 > - https://blog.takuros.net/entry/2020/08/11/082712
-> - https://docs.aws.amazon.com/ja_jp/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
 
 <br>
 
@@ -695,7 +695,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 #### ▼ ドメイン検証
 
-ドメインのSSL証明書を発行するためには、そのドメインの所有者であることを証明する必要がある。ドメインを購入できるサービス（例：AWS、GMO）に検証方法が用意されている。
+ドメインのSSL証明書を発行するためには、そのドメインの所有者であることを証明する必要がある。ドメインを購入できるサービス（例：AWS、GCP、GMO）に検証方法が用意されている。
 
 > ℹ️ 参考：
 >

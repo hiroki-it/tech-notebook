@@ -23,7 +23,6 @@ description: Anthos＠GCPの知見を記録しています。
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
 
-
 > ℹ️ 参考：
 >
 > - https://www.fsi.co.jp/blog/5939/
@@ -207,9 +206,12 @@ spec:
 | ```1.12```系          | ```v1.23.5-gke``` |
 | ...                  | ...               |
 
-（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをアップグレードする。
+（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> ℹ️ 参考：
+> 
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
 
 ```bash
 $ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
@@ -280,32 +282,38 @@ $ ./asmcli install \
 
 > ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#switch_to_the_new_control_plane
 
-（１）Istiodコントロールプレーンの新バージョンのリビジョン値を取得する。
+（１）Istiodコントロールプレーンの新バージョンの```istio.io/rev```キーの値を取得する。
 
 ```bash
 $ kubectl get pod -n istio-system -l istio.io/rev
 
 NAME                       READY   STATUS    RESTARTS   AGE   REV
-istiod-asm-1143-1-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
-istiod-asm-1143-1-*****    1/1     Running   0          68m   asm-1137-0
-istiod-1141-3-1-*****      1/1     Running   0          27s   asm-1143-1 # 新バージョンのリビジョン番号
-istiod-1141-3-1-*****      1/1     Running   0          27s   asm-1143-1
+istiod-asm-1137-1-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
+istiod-asm-1137-1-*****    1/1     Running   0          68m   asm-1137-0
+istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1 # 新バージョンのリビジョン番号
+istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
 ```
 
-（２）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを削除する。これらのキーはコンフリクトを起こすため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
+（２）```istio.io/rev```キーが設定されている全てのNamespaceを確認する。
+
+```bash
+$ kubectl get namespace -L istio.io/rev
+```
+
+（３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを起こすため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
 $ kubectl label namespace foo-namespace istio.io/rev=<新バージョンのリビジョン番号> istio-injection- --overwrite
 ```
 
-（３）Podを再作成し、新バージョンの```istio-proxy```コンテナを自動的に注入する。
+（４）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的に注入する。
 
 ```bash
 $ kubectl rollout restart deployment -n foo-namespace
 ```
 
-（４）新バージョンの```istio-proxy```コンテナが注入されたことを、イメージタグから確認する。
+（５）新バージョンの```istio-proxy```コンテナが注入されたことを、イメージタグから確認する。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
@@ -314,21 +322,26 @@ $ kubectl get pod -n foo-namespace -o jsonpath={.items[*].spec.containers[*].ima
 gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.1
 ```
 
-（５）ValidatingWebhookConfigurationをアップグレードする。
+（６）ValidatingWebhookConfigurationをアップグレードする。
 
 ```bash
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
 ```
 
-（６）```istio.io/rev```キーの```default```という値が旧バージョンのエイリアスのままなので、新バージョンのリビジョン番号のエイリアスに変更する。
+（７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなので、新バージョンに変更する。
 
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
 $ ./tmp/istioctl tag set default --revision <新バージョンのリビジョン番号>
+
+$ ./tmp/istioctl tag list
+
+TAG     REVISION   NAMESPACES
+default asm-1143-1 
 ```
 
-（７）旧バージョンのIstiodコントロールプレーン（実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget）を削除する。
+（８）旧バージョンのIstiodコントロールプレーン（実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget）を削除する。
 
 
 ```bash
@@ -336,14 +349,14 @@ $ ./tmp/istioctl tag set default --revision <新バージョンのリビジョ�
 $ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-<旧バージョンのリビジョン番号> -n istio-system --ignore-not-found=true
 ```
 
-（８）旧バージョンのIstioOperatorを削除する。
+（９）旧バージョンのIstioOperatorを削除する。
 
 ```bash
 # 旧バージョンのリビジョン番号：asm-1137-0
 $ kubectl delete IstioOperator installed-state-<旧バージョンのリビジョン番号> -n istio-system
 ```
 
-（９）全てのPodが正常に稼働していることを確認する。
+（１０）全てのPodが正常に稼働していることを確認する。
 
 ```bash
 $ kubectl get pod -A -o wide

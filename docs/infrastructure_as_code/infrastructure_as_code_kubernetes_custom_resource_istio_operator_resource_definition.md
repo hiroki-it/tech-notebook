@@ -122,6 +122,17 @@ spec:
         hpaSpec:
           maxReplicas: 10
           minReplicas: 2 # componentを冗長化する
+        affinity:
+          nodeAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100 
+                preference:
+                  matchExpressions:
+                    - key: app.kubernetes.io/nodegroup
+                      operator: In
+                      # meshというNodeグループにスケジューリングできるようにする。
+                      values:
+                        - mesh             
 ```
 
 #### ▼ base
@@ -440,7 +451,7 @@ spec:
 
 #### ▼ holdApplicationUntilProxyStarts
 
-```istio-proxy```コンテナの起動後にマイクロサービスのコンテナを起動するか否か、を設定する。
+```istio-proxy```コンテナの起動後にアプリコンテナを起動するか否か、を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -754,7 +765,7 @@ spec:
           spec:
             containers:
             - name: istio-proxy
-              # ～ 中略 ～
+              ...
 ```
 
 <br>

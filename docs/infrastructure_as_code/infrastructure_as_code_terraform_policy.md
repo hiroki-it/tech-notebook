@@ -1013,17 +1013,12 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 <br>
 
-## 03. CI/CDパイプライン自体の脆弱性対策
+## 03. CIツールに関する脆弱性対策
 
-### CI/CDパイプライン自体の脆弱性対策とは
-
-対象のソースコードの脆弱性ではなく、CI/CDパイプライン自体のそれに対処する。
-
-### 認証/認可の実施
-
-一時的な認証/認可サービス（例：AWS STS）を使用して、```terraform```コマンドの実行ユーザーを一時的に認証し、また同じく一時的な認可スコープを付与する。一時的な認証/認可としないと、クラウドプロバイダーの認証情報が漏洩した場合、認証情報の所有者が常にクラウドプロバイダーのリソースを操作できるようになってしまう。
-
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
+> ℹ️ 参考：
+> 
+> - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_policy.html
 
 <br>
 
@@ -1132,7 +1127,7 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 |-------------|--------------------------------------------------------------------------------------------------------------------| ---- |
 | 文法の誤りテスト        | Terraformの静的解析コマンド（```terraform validate```コマンド）を使用して、機能追加/変更を含むブロックの文法の誤りを検証する。代わりに、外部の静的解析ツール（例：tflint）を使用しても良い。 |      |
 | ベストプラクティス違反テスト  |                                                                                                                    |      |
-| 脆弱性テスト          | 外部の脆弱性テストツール（例：tfsec）を使用して、Terraformの脆弱性を検証する。                                                                     |      |
+| 脆弱性テスト          | 外部の脆弱性テストツール（例：tfsec）を使用して、Terraformの実装方法に起因する脆弱性を検証する。                                                                     |      |
 
 #### ▼ ドライラン
 
@@ -1160,19 +1155,20 @@ Terraformの整形コマンド（```terraform fmt```コマンド）を使用し�
 
 ### ホワイトボックステスト結果の通知
 
-#### ▼ CDパイプラインがある場合
+#### ▼ Terraformの機能を使用する場合
 
-通知ツール（例：tfnotify、tfcmt）を使用して、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
-
-#### ▼ CDパイプラインがない場合（非自動化）
-
-```terraform plan```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。```grep```コマンドを使用して、差分の表記部分のみを取得すると良い。これを確認し、差分が正しいかをレビューする。
+Terraformには通知機能がなく、手動で周知する必要がある。そこで、```terraform plan```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。```grep```コマンドを使用して、差分の表記部分のみを取得すると良い。これを確認し、差分が正しいかをレビューする。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars -no-color \
     | grep -A 1000 'Terraform will perform the following actions' \
     | pbcopy
 ```
+
+#### ▼ Terraform以外の機能を使用する場合
+
+通知ツール（例：tfnotify、tfcmt）を使用して、GitHub上に```terraform plan```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
+
 
 <br>
 
@@ -1256,11 +1252,11 @@ DBインスタンスの設定変更でダウンタイムが発生する場合、
 
 ### ロールバック
 
-#### ▼ CDパイプラインがない場合
+#### ▼ Terraformの機能を使用する場合
 
-Terraformには、クラウドインフラのバージョンのロールバック機能がない。そこで、過去のリリースタグを```terraform apply```コマンドでデプロイすることにより、バージョンをロールバックする。今回のリリースのcreate処理が少ないほど```terraform apply```コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。もしリリース時に問題が発生した場合、インフラのバージョンのロールバックする必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、過去のリリースタグを```terraform apply```コマンドを実行するか否かを判断する。
+Terraformには、クラウドインフラのバージョンのロールバック機能がなく、手動でロールバックする必要がある。そこで、過去のリリースタグを```terraform apply```コマンドでデプロイすることにより、バージョンをロールバックする。今回のリリースのcreate処理が少ないほど```terraform apply```コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。もしリリース時に問題が発生した場合、インフラのバージョンのロールバックする必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、過去のリリースタグを```terraform apply```コマンドを実行するか否かを判断する。
 
-#### ▼ CDパイプラインがある場合
+#### ▼ Terraform以外の機能を使用する場合
 
 CDパイプラインがない場合と同じである。
 
@@ -1268,14 +1264,14 @@ CDパイプラインがない場合と同じである。
 
 ## 08-03. 事後処理
 
-### 通知
+### デプロイの通知
 
-#### ▼ CI/CDパイプラインがある場合
+#### ▼ Terraformの機能を使用する場合
 
-通知ツール（例：tfnotify、tfcmt）を使用して、GitHub上に```terraform plan```コマンドや```terraform apply```コマンドの結果が通知されるようにする。これを確認し、差分が正しいかをレビューする。
+Terraformには通知機能がなく、手動で周知する必要がある。```terraform apply```コマンドの結果をクリップボードに出力し、これをリリースチケットに貼り付ける。
 
-#### ▼ CI/CDパイプラインがない場合（非自動化）
+#### ▼ Terraform以外の機能を使用する場合
 
-手動で周知する。
+通知ツール（例：tfnotify、tfcmt）を使用して、GitHub上に```terraform apply```コマンドの結果が通知されるようにする。
 
 <br>

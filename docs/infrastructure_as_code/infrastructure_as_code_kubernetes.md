@@ -27,7 +27,7 @@ description: Kubernetesの知見を記録しています。
 
 ### コントロールプレーンコンポーネントとは
 
-『マスターコンポーネント』ともいう。マスターNode上で稼働するコンポーネントのことで、Cluster内のワーカーNode自体と、ワーカーNode内のPodを管理する。
+『マスターコンポーネント』ともいう。マスターNode上で稼働するコンポーネントのことで、Cluster内のワーカーNode自体と、ワーカーNode内のPodを管理する。マスターNode上で直接的に稼働させる場合と、DeploymentやDaemonSetで複製されたPod内で稼働させる場合がある。
 
 > ℹ️ 参考：
 >
@@ -52,7 +52,7 @@ description: Kubernetesの知見を記録しています。
 
 #### ▼ etcdとは
 
-Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化する。語尾の『```d```』は、分散（distribution）の意味である。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。Kubernetesに標準で組み込まれているが、別のOSSである。
+Cluster内のKubernetesリソースの設定値をキーバリュー型で永続化する。語尾の『```d```』は、分散（distribution）の意味である。リクエストを受信したkube-apiserverは、etcdからKubernetesリソースの情報を参照する。Kubernetesに標準で組み込まれているが、別のOSSである。デフォルトでは、マスターNodeで直接的に稼働させる場合でも、あるいはPod内で稼働させる場合でも、```/var/lib/etcd```ディレクトリをローカルストレージとする。
 
 > ℹ️ 参考：
 >
@@ -60,6 +60,34 @@ Cluster内のKubernetesリソースの設定値をキーバリュー型で永続
 > - https://uzimihsr.github.io/post/2019-11-25-kubernetes-components/
 
 ![kubernetes_etcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_etcd.png)
+
+#### ▼ 設定
+
+```bash
+$ etcd \
+    --advertise-client-urls=https://*.*.*.*:2379 \
+    # HTTPSリクエストを受信するためのSSL証明書
+    --cert-file=/etc/kubernetes/pki/etcd/server.crt \
+    # HTTPSリクエストを送信するためのクライアント証明書
+    --client-cert-auth=true \
+    # マニフェストファイルを保管するローカルストレージ
+    --data-dir=/var/lib/etcd \
+    --initial-advertise-peer-urls=https://*.*.*.*:2380 \
+    --initial-cluster=foo-node=https://*.*.*.*:2380 \
+    # SSL証明書と対になる秘密鍵
+    --key-file=/etc/kubernetes/pki/etcd/server.key \
+    --listen-client-urls=https://127.0.0.1:2379,https://*.*.*.*:2379 \
+    --listen-metrics-urls=http://127.0.0.1:2381 \
+    --listen-peer-urls=https://*.*.*.*:2380 \
+    # etcdが稼働するマスターNode
+    --name=foo-node \
+    --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt \
+    --peer-client-cert-auth=true \
+    --peer-key-file=/etc/kubernetes/pki/etcd/peer.key \
+    --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt \
+    --snapshot-count=10000 \
+    --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+```
 
 <br>
 
@@ -79,6 +107,65 @@ the server could not find the requested resource
 >
 > - https://thinkit.co.jp/article/17453
 > - https://vamdemicsystem.black/kubernetes/%E3%80%90macosx%E3%80%91%E3%80%90kubernetes%E3%80%91kubectl-apply%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E3%80%8Cfailed-to-download-openapi-the-server-could-not-find-the-requested-resource-falling-bac
+
+#### ▼ 設定
+
+```bash
+$ kube-apiserver \
+    --advertise-address=*.*.*.* \
+    --allow-privileged=true \
+    --audit-policy-file=/etc/kubernetes/audit-policy.yaml \
+    --audit-webhook-batch-buffer-size=500 \
+    --audit-webhook-batch-max-size=40 \
+    --audit-webhook-batch-throttle-burst=400 \
+    --audit-webhook-batch-throttle-qps=300 \
+    --audit-webhook-config-file=/etc/kubernetes/audit-webhook.config \
+    --audit-webhook-mode=batch \
+    --audit-webhook-truncate-enabled=true \
+    # 認証フェーズの設定
+    --authentication-token-webhook-config-file=/etc/kubernetes/ais/authentication-webhook.yaml \
+    # 認可タイプ
+    --authorization-mode=Node,RBAC \
+    # 他のコンポーネントにHTTPSリクエストを送信するためのクライアント証明書
+    --client-ca-file=/etc/kubernetes/pki/ca.crt \
+    --enable-admission-plugins=NodeRestriction,PodTolerationRestriction \
+    --enable-bootstrap-token-auth=true \
+    --encryption-provider-config=/etc/kubernetes/pki/encryption_config.yaml \
+    --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt \
+    # etcdにHTTPSリクエストを送信するためのクライアント証明書
+    --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt \
+    # クライアント証明書と対になる秘密鍵
+    --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key \
+    # etcdの宛先情報
+    --etcd-servers=https://127.0.0.1:2379 \
+    --feature-gates=ServiceAccountIssuerDiscovery=true,IPv6DualStack=false \
+    --kubelet-certificate-authority=/etc/kubernetes/pki/ca.crt \
+    # kubeletにHTTPSリクエストを送信するためのクライアント証明書
+    --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt \
+    # クライアント証明書と対になる秘密鍵
+    --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key \
+    --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname \
+    --profiling=false \
+    # front-proxyにHTTPSリクエストを送信するためのクライアント証明書
+    --proxy-client-cert-file=/etc/kubernetes/pki/front-proxy-client.crt \
+    # クライアント証明書と対になる秘密鍵
+    --proxy-client-key-file=/etc/kubernetes/pki/front-proxy-client.key \
+    --requestheader-allowed-names=front-proxy-client \
+    --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
+    --requestheader-extra-headers-prefix=X-Extra- \
+    --requestheader-group-headers=X-Group \
+    --requestheader-username-headers=X-User \
+    --secure-port=6444 \
+    --service-account-issuer=https://kubernetes.default.svc.cluster.local \
+    # 他のKubernetesリソースが持つServiceAccountの秘密鍵と対になる公開鍵
+    --service-account-key-file=/etc/kubernetes/pki/sa.pub \
+    --service-account-max-token-expiration=48h \
+    --service-account-signing-key-file=/etc/kubernetes/pki/sa.key \
+    --service-cluster-ip-range=*.*.*.*/n \
+    --tls-cert-file=/etc/kubernetes/pki/apiserver.crt \
+    --tls-cipher-suites=***** \
+    --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
+```
 
 #### ▼ 認証
 
@@ -175,6 +262,40 @@ kube-controllerを一括で管理する。kube-controllerを使用して、kube-
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
+
+#### ▼ 設定
+
+```bash
+$ kube-controller-manager \
+    --allocate-node-cidrs=true \
+    --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf \
+    --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf \
+    --bind-address=127.0.0.1 \
+    # kube-apiserverにHTTPSリクエストを送信するためのクライアント証明書
+    --client-ca-file=/etc/kubernetes/pki/ca.crt \
+    --cluster-cidr=*.*.*.*/* \
+    --cluster-name=foo-cluster \
+    --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt \
+    --cluster-signing-key-file=/etc/kubernetes/pki/ca.key \
+    --controllers=*,bootstrapsigner,tokencleaner \
+    --feature-gates=IPv6DualStack=false \
+    --kubeconfig=/etc/kubernetes/controller-manager.conf \
+    --leader-elect=true \
+    # マスターNodeのサブネットマスク
+    --node-cidr-mask-size=23 \
+    --port=0 \
+    --profiling=false \
+    --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
+    # ルート認証局の証明書
+    --root-ca-file=/etc/kubernetes/pki/ca.crt \
+    # kube-apiserverの認証/認可を通過するために必要なServiceAccountの秘密鍵
+    # kube-apiserverには、これと対になる公開鍵が割り当てられている。
+    --service-account-private-key-file=/etc/kubernetes/pki/sa.key \
+    --service-cluster-ip-range=*.*.*.*/* \
+    --terminated-pod-gc-threshold=1000 \
+    --use-service-account-credentials=true
+```
+
 #### ▼ kube-controller
 
 マニフェストファイルとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
@@ -207,6 +328,20 @@ kube-controller-managerは、kube-controllerを反復的に実行する。これ
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
+
+#### ▼ 設定
+
+```bash
+$ kube-scheduler \
+    --authentication-kubeconfig=/etc/kubernetes/scheduler.conf \
+    --authorization-kubeconfig=/etc/kubernetes/scheduler.conf \
+    --bind-address=127.0.0.1 \
+    --feature-gates=IPv6DualStack=false \
+    --kubeconfig=/etc/kubernetes/scheduler.conf \
+    --leader-elect=true \
+    --port=0 \
+    --profiling=false
+```
 
 #### ▼ kube-schedulerの仕組み
 
@@ -470,18 +605,18 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ```bash
 # マスターNodeの場合
-$ kubectl describe nodes <マスターNode名> | grep -i taint
+$ kubectl describe node <マスターNode名> | grep -i taint
 Taints: node-role.kubernetes.io/master:NoSchedule
 
 # ワーカーNodeの場合
-$ kubectl describe nodes <ワーカーNode名> | grep -i taint
+$ kubectl describe node <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
 ただし、セルフマネージドなマスターNodeを採用している場合に、全てのマスターNodeでこれを解除すれば、Podを起動させられる。マスターNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、マスターNodeにDaemonSetによるPodをスケジューリングすることがある。
 
 ```bash
-$ kubectl taint nodes --all node-role.kubernetes.io/master-
+$ kubectl taint node --all node-role.kubernetes.io/master-
 ```
 
 #### ▼ Podのライフサイクルフェーズとコンディション
@@ -527,7 +662,7 @@ Podのライフサイクルにはフェーズがある。
 
 （３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
 
-（４）kubeletは、コンテナランタイムを経由して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）kubeletは、コンテナランタイムを介して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
 
@@ -550,7 +685,7 @@ Podのライフサイクルにはフェーズがある。
 
 （２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
 
-（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<名前空間>_<ポッド名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。
+（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。
 
 > ℹ️ 参考：https://www.creationline.com/lab/29281
 
@@ -835,24 +970,6 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 <br>
 
-### Account
-
-#### ▼ Accountとは
-
-Kubernetesに関する実行ユーザーに認証/認可を設定する。
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
-
-| アカウント名         | 説明                                                                                                                   | 補足                                                                                         |
-|----------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| ServiceAccount | Kubernetesリソースのプロセスの実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのプロセスは、Kubernetes自体と通信する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。       | Kubernetesリソースの各オブジェクトには自動的にServiceAccountが設定される。認証済みのユーザーに実行されたオブジェクトのみがKubernetesと通信できる。 |
-| UserAccount    | Kubernetes自体を操作するクライアントに実行ユーザーに、認証/認可を設定する。認証済みの実行ユーザーのクライアントは、Kubernetes自体を操作する権限を持つ。また、RoleBindingを使用して認可スコープも設定できる。 | アカウント情報は、``` ~/.kube/config/kubeconfig```ファイルにクライアント証明書として定義する必要がある。                       |
-
-<br>
-
 ### NetworkPolicy
 
 #### ▼ NetworkPolicyとは
@@ -938,17 +1055,17 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
 
-認可スコープを設定する。
+kube-apiserverが、認証されたKubernetesリソースからのリクエストを認可できるように、認可スコープを設定する。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
-| ロール名    | 説明                                   | 補足                                                         |
-| ----------- | -------------------------------------- | ------------------------------------------------------------ |
-| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
-| ClusterRole | Cluster内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+| ロール名    | 説明                                   | 補足                                                                                                                                                                                                                                                         |
+| ----------- | -------------------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Role        | Namespace内の認可スコープを設定する。   | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                     |
+| ClusterRole | Cluster内の認可スコープを設定する。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 
 <br>
 
@@ -956,9 +1073,7 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ RoleBinding、ClusterRoleBindingとは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
-
-定義された認可スコープをAccountに紐づける。
+RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
 
 > ℹ️ 参考：
 >
@@ -969,6 +1084,27 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 | ------------------ | -------------------------------- | ------------------------------------------------------------ |
 | RoleBinding        | RoleをAccountに紐づける。        | RoleとRoleBindingは同じNamespaceに属する必要がある。            |
 | ClusterRoleBinding | ClusterRoleをAccountに紐づける。 | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。 |
+
+<br>
+
+### ServiceAccount、UserAccount
+
+#### ▼ ServiceAccount、UserAccountとは
+
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_authorization.png)
+
+kube-apiserverが、リクエストの送信元を認証できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/
+> - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
+
+| アカウント名         | 説明                                                                                                               | 補足                                                                                                                                                                                                                                                         |
+|----------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ServiceAccount | kube-apiserverが、Kubernetesリソースを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
+| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                | クライアントの認証に必要なクライアント証明書は、``` ~/.kube/config/kubeconfig```ファイルに登録する必要がある。                                                                                                                                                                                    |
 
 <br>
 
@@ -987,7 +1123,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 ```bash
 # Podに接続する
-kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # ストレージを表示する
 [root@<Pod名>:/var/www/html] $ df -h
@@ -1081,7 +1217,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
-Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
+Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
 
 > ℹ️ 参考：
 >
@@ -1233,7 +1369,7 @@ $ kubectl run \
 # マルチワーカーNodeの場合
 
 # Podが稼働するワーカーNodeを確認する。
-$ kubectl get pods <Pod名> -o wide
+$ kubectl get pod <Pod名> -o wide
 
 # 指定したワーカーNode上で、curl送信用のコンテナを作成する。
 $ kubectl debug node/<ワーカーNode名> \
@@ -1259,9 +1395,9 @@ Serviceがルーティング対象とするPodにて、コンテナが待ち受�
 
 ```bash
 # 先にlabelから、Serviceのルーティング対象のPodを確認する
-$ kubectl get pods -l <名前>=<値> -o wide
+$ kubectl get pod -l <名前>=<値> -o wide
 
-$ kubectl get pods <Pod名> -o yaml | grep containerPort:
+$ kubectl get pod <Pod名> -o yaml | grep containerPort:
 ```
 
 両方のポート番号が一致しているかを確認する。
@@ -1372,24 +1508,25 @@ Address:  10.105.157.184
 
 ## 05. 証明書
 
-![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
-
-| 設置場所                      | 種類               | 説明                                                         |
-| ----------------------------- | ------------------ | ------------------------------------------------------------ |
-| kube-apiserver                | SSL証明書          | kube-apiserverが各コンポーネントからHTTPリクエストを受信するため。 |
-| kube-apiserver                | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するため。   |
-| kube-apiserver                | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するため。      |
-| ```kubectl```コマンドのクライアント | クライアント証明書 | ```kubectl```コマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するため。 |
-| kubelet                       | クライアント証明書 | kubeletが、kube-apiserverを認証するため。                    |
-| kube-controller-manager               | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
-| kube-scheduler                | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPリクエストを送信するため。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
-| front-proxy                   | クライアント証明書 |                                                              |
-|                               | SSL証明書          |                                                              |
+コンポーネント間でHTTPS通信を行うためにはSSLサーバー証明書が必須であり、通信をさらに安全にするためにクライアント証明書が使用されているところがある。
 
 > ℹ️ 参考：
 >
-> - https://qiita.com/nsawa/items/4f11ac89707aad2c3d4a#tls%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%93%E3%81%A7%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
-> - https://kubernetes.io/docs/setup/best-practices/certificates/#all-certificates
+> - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
+> - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
+
+![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
+
+| 送信元                         | 送信先            | 種類        | 説明                                                                                           |
+|-----------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
+| kube-apiserver              | kubelet        | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
+| kube-apiserver              | etcd           | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
+| ```kubectl```コマンドクライアントのローカルマシン | kube-apiserver | クライアント証明書 | ```kubectl```コマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。                                  |
+| kube-controller-manager     | kube-apiserver | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
+| kube-scheduler              | kube-apiserver | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。          |
+| その他のコンポーネント                 | kube-apiserver    | SSL証明書    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |
+| kube-apiserver              | kubelet             | SSL証明書    | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                 |
+| kube-apiserver               | front-proxy         | SSL証明書    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                             |
 
 
-
+<br>

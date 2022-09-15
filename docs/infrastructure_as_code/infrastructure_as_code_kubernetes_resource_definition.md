@@ -51,7 +51,7 @@ apiVersion: v1
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotation: 
+  annotations: 
     kubernetes.io/ingress.class: foo-class
 ...
 ```
@@ -69,7 +69,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotation: 
+  annotations: 
     ingressclass.kubernetes.io/is-default-class: "true"
 ...
 ```
@@ -162,6 +162,115 @@ kind: Deployment
 metadata:
   name: foo-deployment
 ...
+```
+
+<br>
+
+## 02. APIService
+
+### spec.group
+
+拡張apiserverが受信するAPIグループ名を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  group: foo.k8s.io
+```
+
+<br>
+
+### spec.groupPriorityMinimum
+
+同じAPIグループがある場合に、優先度を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  groupPriorityMinimum: 100
+```
+
+<br>
+
+
+### spec.insecureSkipTLSVerify
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  insecureSkipTLSVerify: true
+```
+
+<br>
+
+
+### spec.service
+
+拡張apiserverは、kube-apiserverからリクエストを直接的に受信するのではなく、専用のServiceを介してリクエストを受信する。この時、どのServiceからリクエストを受信するかを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  service:
+    name: foo-service
+    namespace: kube-system
+    port: 443
+```
+
+<br>
+
+
+### spec.version
+
+拡張apiserverが受信するAPIグループのバージョンを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  version: v1beta1
+```
+
+<br>
+
+### spec.versionPriority
+
+同じAPIグループがある場合に、バージョンの優先度を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  versionPriority: 100
 ```
 
 <br>
@@ -1383,7 +1492,7 @@ spec:
 
 <br>
 
-## 13. PersistentVolumeClaim
+## 12. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1451,7 +1560,7 @@ spec:
 
 <br>
 
-## 14. Pod
+## 13. Pod
 
 ### spec.affinity
 
@@ -1502,7 +1611,7 @@ spec:
                 operator: In
                 # 指定した値をキーに持つワーカーNodeに、Podをスケジューリングする。
                 values:
-                  - foo-group
+                  - ingress
 ```
 
 #### ▼ podAffinity
@@ -1566,12 +1675,12 @@ spec:
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
-               # Podのmetadata.labelsキー
-               - key: app.kubernetes.io/app
-                 operator: In
-                 # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
-                 values:
-                   - bar-pod
+              # Podのmetadata.labelsキー
+              - key: app.kubernetes.io/app
+                operator: In
+                # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                values:
+                  - bar-pod
 ```
 
 もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じワーカーNodeにスケジューリングされることを避け、結果として全てのワーカーNodeにPodが```1```個ずつスケジューリングされるようになる。
@@ -2292,6 +2401,70 @@ spec:
 
 <br>
 
+## 14. PodDisruptionBudget
+
+### spec.maxUnavailable
+
+対象のPodを新しいワーカーNodeでスケジューリングする時に、既存のワーカーNodeで削除できるPodの最大数を設定する。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: foo-gin
+```
+
+<br>
+
+### spec.minAvailable
+
+対象のPodを新しいワーカーNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。このスケジューリングを待機するPodの最低限数を設定する。
+
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - https://zenn.dev/sasakiki/articles/a71d9158020266
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  minAvailable: 3 # 新しいワーカーNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  selector:
+    matchLabels:
+      app: foo-gin # 対象のPod
+```
+
+<br>
+
+### spec.selector
+
+対象のPodを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+
+```yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: foo-pod-disruption-budget
+spec:
+  selector:
+    matchLabels:
+      app: foo-gin # 対象のPod
+```
+
+<br>
+
 ## 15. ReplicaController
 
 旧Deployment。非推奨である。
@@ -2354,6 +2527,19 @@ rules:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get", "watch", "list"]
+```
+
+全Kubernetesリソースへの全操作を許可する認可スコープの場合、以下の通りとなる。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: foo-cluster-role
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
 ```
 
 <br>

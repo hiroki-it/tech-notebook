@@ -155,7 +155,7 @@ For help, check out the documentation at https://docs.datadoghq.com/tracing/lang
 
 ```bash
 # 失敗の場合
-$  php --ri=ddtrace
+$ php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 

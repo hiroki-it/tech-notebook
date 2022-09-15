@@ -61,7 +61,7 @@ k8s-repository/
 ```yaml
 # 親Application
 parent-argocd-repository/
-├── tes/ # Applicationを管理する
+├── tes/ # 子Applicationを管理する。
 │   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
 │   └── obsv-application.yaml # child-argocd-manifestリポジトリの/dev/obsvディレクトリを監視
 │
@@ -72,7 +72,7 @@ parent-argocd-repository/
 ```yaml
 # 子Application
 child-argocd-repository/
-├── tes/
+├── tes/ # マニフェストファイルやチャートを監視する。
 │   ├── app
 │   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
 │   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視
@@ -84,7 +84,7 @@ child-argocd-repository/
 │       ├── grafana-application.yaml           # k8sリポジトリの/dev/obsv/grafanaディレクトリを監視
 │       ├── kiali-application.yaml             # k8sリポジトリの/dev/obsv/kialiディレクトリを監視
 │       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
-│       └── vicotoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
+│       └── victoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
 │
 ├── stg/
 └── prd/
@@ -159,17 +159,39 @@ repository/
 
 <br>
 
-## 03. CDパイプライン自体の脆弱性対策
+## 03. CDツールに関する脆弱性対策
 
-### CDパイプライン自体の脆弱性対策とは
+### CDツールに関する脆弱性対策とは
 
-対象のソースコードの脆弱性ではなく、CDパイプライン自体のそれに対処する。
+対象のソースコードの脆弱性ではなく、CDツールに関するそれに対処する。
 
-### 認証/認可の実施
+<br>
 
-一時的な認証/認可サービス（例：AWS STS）を使用して、ArgoCDに紐づく実行ユーザー（ログインユーザー）を一時的に認証し、また同じく一時的な認可スコープを付与する（例：AWS STS）。一時的な認証/認可としないと、認証情報が漏洩した場合、認証情報の所有者が常にデプロイできるようになってしまう。
+### 認証/認可
 
-> ℹ️ 参考：https://int128.hatenablog.com/entry/2019/10/03/134508
+#### ▼ CDツールを操作できる開発者に関する認証/認可
+
+CDツールを操作できる開発者を認証し、また認可スコープを付与する。利便性と安全性を兼ね備えた認証/認可方法を選ぶ。
+
+| 認証/認可方法  | 二要素認証 | 推奨/非推奨 |
+|---------|-------|-------|
+| Basic認証 | -     | 非推奨   |
+| OAuth   | あり    | 推奨    |
+|    | なし    | 非推奨    |
+| OIDC   | あり    | 推奨    |
+|    | なし    | 非推奨    |
+| SAML   | あり    | 推奨    |
+|    | なし    | 非推奨    |
+
+#### ▼ CDツール自体の認証/認可
+
+CDツールのServiceAccountを認証し、またClusterRoleの認可スコープを付与する。
+
+| 期限  | 説明                                  | 方法                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 推奨/非推奨 |
+|-----|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| 恒久的 | CDツールを恒久的に認証し、また同様に認可スコープを恒久的に付与する。 | Kubernetes v1.21 以前では、ServiceAccountの認証情報に期限がない。                                                                                                                                                                                                                                                                                                                                                                                                        | 非推奨    |
+| 一時的 | CDツールを一時的に認証し、また同様に認可スコープを一時的に付与する。 | Kubernetes v1.22 以降ではBoundServiceAccountTokenVolumeにより、ServiceAccountの情報が定期的に再作成されるようになっている。そのため、Kubernetes v1.22 以降に対応したCDツールのServiceAccountでは、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782 <br>・https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume | 推奨     |
+
 
 <br>
 
@@ -181,7 +203,18 @@ repository/
 
 <br>
 
-## 04. エラー解決
+## 04. 事後処理
+
+### 通知
+
+CDパイプライン上で実行しているステップ（例：デプロイ、ロールバック、など）の結果が通知されるようにする。通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
+
+
+
+
+<br>
+
+## 05. エラー解決
 
 ### 削除できない系
 
@@ -241,6 +274,8 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-## 05. アップグレード
+## 06. アップグレード
 
 ArgoCDが自分自身をアップグレードできるように、親Applicationを子Applicationで管理する。
+
+<br>

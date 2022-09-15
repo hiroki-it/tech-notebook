@@ -663,7 +663,29 @@ export PATH
 
 #### ▼ -l
 
-パーティションで区切られた全てのストレージを取得する。
+パーティションの一覧を取得する。
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+
+```bash
+$ fdisk -l
+
+ディスク /dev/vda: 20 GiB, 21474836480 バイト, 41943040 セクタ
+単位: セクタ (1 * 512 = 512 バイト)
+セクタサイズ (論理 / 物理): 512 バイト / 512 バイト
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+ディスクラベルのタイプ: gpt
+ディスク識別子: 301D27AA-0BF9-4B81-9B4A-3138251A4FD7
+
+# パーティションの情報
+デバイス   開始位置 最後から セクタ サイズ タイプ                 UUID
+/dev/vda1      2048   206847   204800   100M Linux ファイルシステム 56713D43-4900-46EB-92D5-1D09C9449B11
+/dev/vda2    206848  4401151  4194304     2G Linux スワップ         D156FFCF-97DE-45EB-A6B0-21A9B876129A
+/dev/vda3   4401152 41943006 37541855  17.9G Linux ファイルシステム C7A19722-4C31-4646-8ED4-DD4D86EFBC50
+```
 
 <br>
 
@@ -809,12 +831,32 @@ $ cat foo.txt | grep -i bar
 > ℹ️ 参考：https://blog.denet.co.jp/try-growpart/
 
 ```bash
-$ growpart <パーティションに紐づくデバイスファイル名> 1
+$ growpart <パーティションに紐づくデバイスファイル名> <パーティションの番号>
 ```
 
-パーティションに紐づくデバイスファイル名は、```df```コマンドで確認できる。
+パーティションに紐づくデバイスファイル名は、```fdisk```コマンドまたは```df```コマンドで確認できる。パーティションのデバイスファイル名を確認するだけであれば、マウントされているパーティションしか表示しない```df```コマンドよりも、```fdisk```コマンドの方がよいかもしれない。
 
-参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> ℹ️ 参考：
+> 
+> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+
+```bash
+$ fdisk -l
+
+ディスク /dev/vda: 20 GiB, 21474836480 バイト, 41943040 セクタ
+単位: セクタ (1 * 512 = 512 バイト)
+セクタサイズ (論理 / 物理): 512 バイト / 512 バイト
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+ディスクラベルのタイプ: gpt
+ディスク識別子: 301D27AA-0BF9-4B81-9B4A-3138251A4FD7
+
+# パーティションの情報
+デバイス   開始位置 最後から セクタ サイズ タイプ                 UUID
+/dev/vda1      2048   206847   204800   100M Linux ファイルシステム 56713D43-4900-46EB-92D5-1D09C9449B11
+/dev/vda2    206848  4401151  4194304     2G Linux スワップ         D156FFCF-97DE-45EB-A6B0-21A9B876129A
+/dev/vda3   4401152 41943006 37541855  17.9G Linux ファイルシステム C7A19722-4C31-4646-8ED4-DD4D86EFBC50
+```
 
 ```bash
 $ df
@@ -832,9 +874,9 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # 物理ボリューム
+xvda          202:0    0    16G   0  disk             # ディスク
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ディスク
 ```
 また、```df```コマンドでパーティションに紐づくデバイスファイルを確認する。
 
@@ -846,7 +888,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
 
-デバイスファイルを指定し、パーティションを拡張する。
+パーティションに紐づくデバイスファイルを指定し、パーティションを拡張する。パーティションの番号は『```1```』である。
 
 ```bash
 $ growpart /dev/xvda 1
@@ -974,15 +1016,17 @@ $ ls -l -h
 
 #### ▼ lsblkとは
 
-物理ボリュームやパーティション、これに紐づくデバイスファイルのマウントポイント、を取得する。
+物理ボリューム、パーティション、論理ボリューム、を取得する。個別に取得したければ、物理ボリュームは```pvdisplay```コマンド、パーティションは```fdisk```コマンド、論理ボリュームは```lvdisplay```コマンド、で確認する。
 
 ```bash
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # 物理ボリューム
+xvda          202:0    0    16G   0  disk             # ディスク
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # 物理ボリューム
+  ├─root      253:0    0     5G   0   lvm  /          # 論理ボリューム
+  └─swap      253:1    0     3G   0   lvm  [SWAP]
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ディスク
 ```
 
 <br>
@@ -1066,9 +1110,48 @@ $ lvdisplay
 
 > ℹ️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
 
+**＊実行例＊**
+
+パーティションの空き領域の100%を使用して拡張する。
+
+```bash
+$ lvextend -l +100%FREE <デバイスファイル名>
+```
+
+50G分の領域を拡張する。
+
+```bash
+$ lvextend -l +50G <デバイスファイル名>
+```
+
+
+**＊実行例＊**
+
+あらかじめ、論理ボリュームに紐づくデバイスファイル名を確認する。
+
+```bash
+$ lvdisplay
+
+--- Logical volume ---
+LV Name               /dev/VolGroup00/LogVol00
+VG Name               VolGroup00
+LV UUID               m2sx31-yglu-wjsG-yqq0-WPPn-3grk-n2LJBD
+LV Write Access       read/write
+LV Status             available
+# open                1
+LV Size               230.81 GB
+Current LE            7386
+Segments              1
+Allocation            inherit
+Read ahead sectors    0
+Block device          253:0
+```
+
+論理ボリュームのサイズを拡張する。
+
 ```bash
 # 空き領域の100%を使用して拡張する。
-$ lvextend -l +100%FREE <デバイスファイル名>
+$ lvextend -l +100%FREE /dev/VolGroup00/LogVol00
 ```
 
 <br>
@@ -1239,7 +1322,7 @@ $ ps -aux | grep <検索文字>
 
 #### ▼ resize2fsとは
 
-ファイルシステムに紐づくデバイスファイルを指定し、ファイルシステムのサイズを拡張する。
+ファイルシステムに紐づくデバイスファイルを指定し、ファイルシステムを拡張する。
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a069expandlvm.html
 
@@ -1252,13 +1335,21 @@ $ resize2fs <デバイスファイル名>
 
 ### rm
 
-#### ▼ -R
+#### ▼ -rf
 
-ディレクトリ自体と中のファイルを再帰的に削除する。
+トレイリングスラッシュなしの場合、ディレクトリ自体と中のファイルを再帰的に削除する。
 
 ```bash
-$ rm -R <ディレクトリ名> 
+$ rm -rf <ディレクトリ名>
 ```
+
+トレイリングスラッシュとワイルドカードありの場合、ディレクトリ内のみを削除する。
+
+```bash
+$ rm -rf <ディレクトリ名>/*/*
+```
+
+#### 
 
 <br>
 

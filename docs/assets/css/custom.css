@@ -101,21 +101,37 @@ h3:before {
     color: white;
     font-size: 1.9em;
     font-weight: bold;
+    text-transform: none;
 }
 
 .md-typeset h2 {
     font-size: 1.3em;
     font-weight: bold;
+    text-transform: none;
 }
 
 .md-typeset h3 {
     font-size: 1.2em;
     font-weight: bold;
+    text-transform: none;
 }
 
 .md-typeset h4 {
     font-size: 1.1em;
     font-weight: bold;
+    text-transform: none;
+}
+
+.md-typeset h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.md-typeset h6 {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: none;
 }
 
 /***************
@@ -271,7 +287,7 @@ th, td {
  引用
 ***************/
 blockquote {
-    font-size: 0.9em;
+    font-size: 0.95em;
 }
 
 /***************

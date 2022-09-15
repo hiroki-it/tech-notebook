@@ -486,7 +486,7 @@ services:
 
 MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。datadirディレクトリについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_mysql.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html
 
 ```yaml
 service:

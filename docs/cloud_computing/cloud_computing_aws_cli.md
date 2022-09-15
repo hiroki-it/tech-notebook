@@ -496,7 +496,7 @@ $ aws s3 ls s3://<バケット名> \
 
 ```bash
 $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://<コピー先S3バケット名>/<ディレクトリ名> \
-   --acl bucket-owner-full-control
+    --acl bucket-owner-full-control
 ```
 
 コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。

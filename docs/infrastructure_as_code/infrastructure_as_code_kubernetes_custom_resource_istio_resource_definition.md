@@ -146,14 +146,25 @@ spec:
         # istio-proxyコンテナの設定を上書きする。
         - name: istio-proxy
           lifecycle:
+            # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-               # istio-proxyコンテナが、マイクロサービスのコンテナよりも後に終了するようにする。
+               # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
+               # envoyプロセスとpilot-agentプロセスの終了を待機する。
                command: [
                  "/bin/sh",
                  "-c",
                  "sleep 5; while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
                ]
+            # istio-proxyコンテナ開始直後の処理
+            postStart:
+              exec:
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
+                # pilot-agentの起動完了を待機する。
+                command: [
+                  "pilot-agent",
+                  "wait"
+                ]
 ```
 
 <br>
@@ -546,7 +557,7 @@ spec:
 
 #### ▼ tls.mode
 
-Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。HTTPSプロトコルを使用しない場合は、```DISABLE```とする。
+Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
@@ -559,7 +570,19 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: DISABLE
+      mode: DISABLE # HTTP通信
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL # 相互TLS
 ```
 
 <br>
@@ -568,7 +591,7 @@ spec:
 
 ### spec.configPatches
 
-#### ▼ ApplyTo
+#### ▼ applyTo
 
 変更を適用する```envoy.yaml```ファイルの項目を設定する。
 
@@ -585,7 +608,7 @@ spec:
     - applyTo: NETWORK_FILTER
 ```
 
-#### ▼ ClusterMatch
+#### ▼ match
 
 変更を適用するClusterを設定する。
 
@@ -602,7 +625,7 @@ spec:
           name: foo-cluster
 ```
 
-#### ▼ ListenerMatch
+#### ▼ listener
 
 変更を適用するリスナーを設定する。
 
@@ -641,7 +664,7 @@ spec:
         context: SIDECAR_INBOUND
 ```
 
-#### ▼ Patch
+#### ▼ patch
 
 変更方法と変更内容を設定する。
 
@@ -855,7 +878,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 #### ▼ hostsとは
 
-送信できるアウトバウンド通信のドメイン名を設定する。
+サービスレジストリに登録する宛先のドメイン名を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -873,7 +896,7 @@ spec:
 
 #### ▼ portsとは
 
-送信できるアウトバウンド通信のポート番号を設定する。
+サービスレジストリに登録する宛先のポート番号を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -896,7 +919,7 @@ spec:
 
 #### ▼ resolutionとは
 
-送信できるアウトバウンド通信のIPアドレスの設定する。
+サービスレジストリに登録する宛先のIPアドレスの設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1004,11 +1027,11 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 
 #### ▼ match
 
-受信するインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
+受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
 **＊実装例＊**
 
-インバウンド通信のうち、```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する。
+受信したインバウンド通信のうち、```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1018,13 +1041,13 @@ metadata:
   name: foo-virtual-service
 spec:
   http:
-  - match:
-    - headers:
-        x-foo:
-          exact: bar
+    - match:
+      - headers:
+          x-foo:
+            exact: bar
 ```
 
-インバウンド通信のうち、URLの接頭辞が```/foo```のものだけにルールを適用する。
+受信したインバウンド通信のうち、URLの接頭辞が```/foo```のものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1034,15 +1057,52 @@ metadata:
   name: foo-virtual-service
 spec:
   http:
-  - match:
-    - headers:
-        uri:
-          prefix: /foo
+    - match:
+      - headers:
+          uri:
+            prefix: /foo
+```
+
+#### ▼ retries.attempt
+
+istio-proxyコンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - retries:
+        attempts: 3
+```
+
+#### ▼ retries.retryOn
+
+再試行する失敗理由を設定する。istio-proxyコンテナは、レスポンスの```x-envoy-retry-on```ヘッダーに割り当てるため、これの値を設定する。
+
+> ℹ️ 参考：
+> 
+> - https://sreake.com/blog/istio/
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - retries:
+        retryOn: 'connect-failure,refused-stream,unavailable,503'
 ```
 
 #### ▼ route.destination.host
 
-受信するインバウンド通信のルーティング先のドメイン名あるいはService名を設定する。
+受信したインバウンド通信のルーティング先とするServiceのドメイン名（あるいはService名）を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 

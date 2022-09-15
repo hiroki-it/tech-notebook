@@ -24,7 +24,6 @@ PHPの設定を取得する。
 ```bash
 $ php -i
 
-phpinfo()
 PHP Version => 7.4
 
 # 〜 中略 〜

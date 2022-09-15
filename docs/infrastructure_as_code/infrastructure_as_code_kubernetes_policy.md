@@ -207,15 +207,15 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 > - https://blog.cybozu.io/entry/2019/07/03/170000
 > - https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#2%E9%87%8D%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3
 
-|                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                         | クラウドプロバイダー（AWS EKS、GCP GKE、など）               |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 概要                   | カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022年3月の現在では、Kubernetesの開発環境として、ベタープラクティスである。 | セットアップが非常に簡単（有効化するだけ）なので、開発に取り掛かるまでが早い。 | セットアップが簡単なので、開発に取り掛かるまでが早い         | 実行環境を開発環境としても使用する。開発者ごとに異なるNamespaceを作成する。 |
+|                        | Minikube                                                     | Docker for Desktop                                           | Kind                                                         | クラウドプロバイダー（AWS EKS、GCP GKE、など）                            |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |-----------------------------------------------------------|
+| 概要                   | カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022年3月の現在では、Kubernetesの開発環境として、ベタープラクティスである。 | セットアップが非常に簡単（有効化するだけ）なので、開発に取り掛かるまでが早い。 | セットアップが簡単なので、開発に取り掛かるまでが早い         | 実行環境を開発環境としても使用する。開発者ごとに異なるNamespaceを作成する。これを採用している企業が多い。 |
 | セットアップの難易度   | 簡単                                                         | 非常に簡単                                                   | 簡単                                                         | 難しい                                                       |
-| コンテナランタイム     | docker、containerd、cri-o                                    | docker                                                       | containerd（ホストOSのdockerコンテナを作成し、この中にcontainerdコンテナを作成する） | docker、containerd                                           |
-| Kubernetesのバージョン | 任意のバージョンを指定できる。                               | Docker for Desktopのバージョンごとに、Kubernetesのバージョンが固定される。 | 任意のバージョンを指定できる。                               | 任意のバージョンを指定できる。                               |
-| マルチNode             | 可能                                                         | 可能                                                         | 可能                                                         | 可能                                                         |
-| Nodeのカスタマイズ性   | 高い                                                         | 低い                                                         | 高い                                                         | 高い                                                         |
-| 料金                   | 無料                                                         | 無料                                                         | 無料                                                         | 非常に高い                                                   |
+| コンテナランタイム     | docker、containerd、cri-o                                    | docker                                                       | containerd（ホストOSのdockerコンテナを作成し、この中にcontainerdコンテナを作成する） | docker、containerd                                         |
+| Kubernetesのバージョン | 任意のバージョンを指定できる。                               | Docker for Desktopのバージョンごとに、Kubernetesのバージョンが固定される。 | 任意のバージョンを指定できる。                               | 任意のバージョンを指定できる。                                           |
+| マルチNode             | 可能                                                         | 可能                                                         | 可能                                                         | 可能                                                        |
+| Nodeのカスタマイズ性   | 高い                                                         | 低い                                                         | 高い                                                         | 高い                                                        |
+| 料金                   | 無料                                                         | 無料                                                         | 無料                                                         | 非常に高い                                                     |
 
 #### ▼ Kubernetesリソースのapply
 
@@ -307,12 +307,11 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 > ℹ️ 参考：https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
 
-| 方法            | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
-|---------------| -------- | ------------ | ------------ | ------------------------------------------------------------ |
-| インプレース方式      | 短い     | 簡単         | 長い         | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。 |
-| ライブ方式         | ^        | ^            | v            |                                                              |
-| ローリングアップデート方式 | ^        | ^            | v            |                                                              |
-| ブルー/グリーン方式    | 長い     | 難しい       | なし         | Clusterの作成の労力が、もう一つ実行環境を作成することに相当する。 |
+| 方法       | 作業時間 | 手順の煩雑さ | ダウンタイム | 補足                                                         |
+|----------|------| ------------ | ------------ | ------------------------------------------------------------ |
+| インプレース方式 | より短い | より簡単         | より長い         | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。 |
+| ローリング方式（サージ方式、ライブ方式）         | ^    | ^            | v            |                                                              |
+| ブルー/グリーン方式 | より長い   | より難しい       | なし         | Clusterの作成の労力が、もう一つ実行環境を作成することに相当する。 |
 
 #### ▼ インプレース方式
 
@@ -324,22 +323,15 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 （２）ワーカーNodeを再作成する。
 
-▼ ライブ方式
+#### ▼ ローリング方式（サージ方式、ライブ方式）
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-新しいNodeグループを作成することにより、アップグレードする方法。一度に作業するワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
-
-> ℹ️ 参考：
->
-> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-> - https://logmi.jp/tech/articles/323032
+『サージ方式』『ライブ方式』ともいう。新Nodeグループを作成し、旧Nodeグループを順にドレインしていくことにより、アップグレードする方法。一度に作業するワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
 
 （１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
-（２）```kubectl drain```コマンドを実行し、Drain処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。Drain処理によって、旧Nodeグループ内ワーカーNode上でのPodのスケジューリングが無効化され、加えて旧Nodeグループ内ワーカーNodeからPodが退避する。その後、新Nodeグループ内ワーカーNode上でPodが再作成される。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
-
-> ℹ️ 参考：https://dunkshoot.hatenablog.com/
+（２）```kubectl drain```コマンドを実行し、ドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
 ```bash
 $ kubectl drain <ワーカーNode名> \
@@ -347,18 +339,23 @@ $ kubectl drain <ワーカーNode名> \
     --delete-emptydir-data
 ```
 
-（３）Drain処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。
+> ℹ️ 参考：
+>
+> - https://dunkshoot.hatenablog.com/
+> - https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/
+
+![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node_scheduling-pod-status.png)
+
+（３）ドレイン処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。
 
 （４）動作が問題なければ、旧Nodeグループを削除する。
 
-#### ▼ ローリングアップデート方式
-
-ローリングアップデート方式でワーカーNodeをアップグレードする方法。一部のクラウドプロバイダー（例：AWS）のみが提供している
-
 > ℹ️ 参考：
 >
-> - https://docs.aws.amazon.com/eks/latest/userguide/update-managed-node-group.html#mng-update
+> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - https://logmi.jp/tech/articles/323032
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#surge
 
 #### ▼ ブルー/グリーン方式
 
@@ -377,6 +374,7 @@ $ kubectl drain <ワーカーNode名> \
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#blue-green-upgrade-strategy
 
 <br>
 
@@ -384,7 +382,7 @@ $ kubectl drain <ワーカーNode名> \
 
 ### ワーカーNodeの場合
 
-Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の2倍のIPアドレスを持つCIDRブロックを設定すると良い。
+Kubernetesでは、稼働する可能性のあるPod数から、NodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の```2```倍のIPアドレスを持つCIDRブロックを設定すると良い。
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
@@ -497,9 +495,9 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 | 観点            | 説明                                                                 | 補足                                                         |
 |---------------|--------------------------------------------------------------------| ------------------------------------------------------------ |
 | 文法の誤りテスト          | 外部の文法の誤りテストツール（（例：kubeconform）を使用して、マニフェストファイルの文法の誤りを検証する。          | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
-| ベストプラクティス違反テスト    | 外部のベストプラクティス違反テストツール（例：polaris）を使用して、チャートの脆弱性を検証する。                 | ℹ️ 参考：https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3 |
+| ベストプラクティス違反テスト    | 外部のベストプラクティス違反テストツール（例：polaris）を使用して、チャートの実装方法に起因する脆弱性を検証する。                 | ℹ️ 参考：https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3 |
 | 非推奨apiVersionテスト  | 外部の非推奨apiVersionテストツール（例：pluto）を使用して、マニフェストファイルの非推奨apiVersionを検証する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
-| 脆弱性テスト            | 外部の脆弱性テストツール（例：trivy）を使用して、マニフェストファイルの脆弱性を検証する。                     | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
+| 脆弱性テスト            | 外部の脆弱性テストツール（例：trivy）を使用して、マニフェストファイルの実装方法に起因する脆弱性を検証する。                     | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
 
 <br>
 
@@ -521,52 +519,38 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 
 ### デプロイ
 
-#### ▼ CDパイプラインがある場合
+本番環境に対して、手動またはCDツールを使用して```kubectl apply```コマンドを実行する。
 
-本番環境に対して、CDツールを使用して```kubectl apply```コマンドを実行する。
-
-| 採用可能な戦略              | 具体的な方法                             |
-|----------------------|------------------------------------|
-| インプレースデプロイメント（非推奨）   | DeploymentのReplace戦略を採用する。非推奨である。 |
-| ローリングアップデート          | DeploymentのRollingUpdate戦略を採用する。|
-| BGデプロイメント            | CDツールのBGデプロイメント機能を採用する。            |
-| カナリアリリース             | CDツールのカナリアリリース機能を採用する。             |
-| Progressive Delivery | CDツールのProgressive Delivery機能を採用する。 |
-
-#### ▼ CDパイプラインがない場合（非自動化）
-
-本番環境に対して、手動で```kubectl apply```コマンドを実行する。
-
-| 採用可能な戦略            | 具体的な方法                           |
-|--------------------|----------------------------------|
-| インプレースデプロイメント（非推奨） | DeploymentのReplace戦略を採用する。非推奨である。 |
-| ローリングアップデート        | DeploymentのRollingUpdate戦略を採用する。|
+| 採用可能な戦略         | 方法                             | 推奨/非推奨 |
+|-----------------|--------------------------------|--------|
+| インプレースデプロイメント   | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。 | 非推奨    |
+| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。 | 推奨     |
+| BGデプロイメント       | Kubernetes自体はブルー/グリーンデプロイメントの機能を持たない。CDツールのBGデプロイメント機能を採用する。       | 推奨     |
+| カナリアリリース        | Kubernetes自体はカナリアリリースの機能を持たない。CDツールのカナリアリリース機能を採用する。         | 推奨     |
+| Progressive Delivery | Kubernetes自体はProgressive Deliveryの機能を持たない。CDツールのProgressive Delivery機能を採用する。 | 推奨     |
 
 
 <br>
 
 ### ロールバック
 
-#### ▼ CDパイプラインがない場合（非自動化）
-
-Kubernetesには、マニフェストファイルのロールバック機能がない。そこで、過去のリリースタグを```kubectl apply```コマンドでデプロイすることにより、バージョンをロールバックする。
-
-#### ▼ CDパイプラインがある場合
-
-CDツールの機能（例：BGデプロイメント、カナリアリリース、Progressive Delivery、など）を採用する。
+| デプロイ方法の採用状況   | 方法                       | 推奨/非推奨 |
+|---------------|--------------------------|-----|
+| DeploymentのRollingUpdate戦略を採用している場合 | 過去のリリースタグ（リビジョン）を再デプロイする。 | 非推奨 |
+| CDツールのBGデプロイメントを採用している場合 | 削除せずに残してある旧環境にルーティングし直す。手順は、CDツールによる。| 推奨  |
+| カナリアリリースを採用している場合 | 旧環境へのルーティングの重みづけを100%にする。手順は、CDツールによる。| 推奨  |
+| Progressive Deliveryを採用している場合 | 削除せずに残してある旧環境にルーティングし直す。手順はCDツールによる。 | 推奨  |
 
 <br>
 
 ## 08-03. 事後処理
 
-### 通知
+### デプロイの通知
 
-#### ▼ CDパイプラインがある場合
+#### ▼ Kubernetesの機能を使用する場合
 
-CDツールの通知機能（例：ArgoCD Notification）を使用して、ArgoCDによるデプロイの結果が通知されるようにする。
+Kubernetesには通知機能がなく、手動で周知する必要がある。
 
-#### ▼ CDパイプラインがない場合（非自動化）
-
-手動で周知する。
+#### ▼ Kubernetes以外の機能を使用する場合
 
 <br>

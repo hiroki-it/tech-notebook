@@ -69,9 +69,12 @@ markdown_extensions:
   - pymdownx.superfences
   # URLテキストのリンク化
   - pymdownx.magiclink
-  # 見出しのリンク
+  # 目次の設定
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=conten#table-of-contents
   - toc:
+      title: 'このページ内容'
       permalink: true
+      toc_depth: 4
   # メタタグの有効化
   - meta
   # htmlタグの有効化
@@ -110,7 +113,7 @@ nav:
           - ■ カーネル:
               - カーネル: software/software_basic_kernel.md
               - メモリ管理: software/software_basic_kernel_memory_management.md
-              - ファイル共有システム: software/software_basic_kernel_file_share_system.md
+              - ストレージ管理: software/software_basic_kernel_storage_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
               - パッケージ: software/software_basic_utility_package.md
@@ -144,13 +147,15 @@ nav:
               - ■ ASGI:
                   - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
           - ■ データベース系:
-              - ■ RDBMS:
-                  - RDBMS: software/software_middleware_database_rdbms.md
-                  - ACID: software/software_middleware_database_rdbms_acid.md
-                  - ■ My︎SQL:
-                      - MySQL: software/software_middleware_database_rdbms_mysql.md
-                      - クエリロジック: software/software_middleware_database_rdbms_mysql_query.md
+              - ■ データベース:
+                  - ■ RDBMS:
+                      - RDBMS: software/software_middleware_database_rdbms.md
+                      - ACID: software/software_middleware_database_rdbms_acid.md
+              - ■ My︎SQL:
+                  - MySQL: software/software_middleware_database_mysql.md
+                  - クエリロジック: software/software_middleware_database_mysql_query.md
           - ■ サービスメッシュ系:
+              - サービスメッシュ: software/software_middleware_service_mesh.md
               - ■ Envoy:
                   - Envoy: software/software_middleware_service_mesh_envoy.md
                   - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
@@ -267,7 +272,7 @@ nav:
   - ⛅️ クラウドコンピューティング:
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
-          - 目次: cloud_computing/cloud_computing_aws.md
+          - AWSリソース: cloud_computing/cloud_computing_aws.md
           - A〜D: cloud_computing/cloud_computing_aws_1.md
           - E: cloud_computing/cloud_computing_aws_2.md
           - F〜K: cloud_computing/cloud_computing_aws_3.md
@@ -275,8 +280,9 @@ nav:
           - S〜U: cloud_computing/cloud_computing_aws_5.md
           - V〜Z: cloud_computing/cloud_computing_aws_6.md
           - ■ 設計ポリシー:
+              - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
-              - セキュリティ: cloud_computing/cloud_computing_aws_policy_security.md
+              - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
           - ■ その他:
               - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
