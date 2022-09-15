@@ -1,0 +1,17 @@
+name: build
+
+on:
+  push:
+    branches:
+      - renovate/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Pip install
+        uses: ./.github/workflows/composite/pip-install
