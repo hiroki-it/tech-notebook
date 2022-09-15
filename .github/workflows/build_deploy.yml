@@ -1,4 +1,4 @@
-name: deploy
+name: build_deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
