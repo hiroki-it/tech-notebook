@@ -51,7 +51,7 @@ apiVersion: v1
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotation: 
+  annotations: 
     kubernetes.io/ingress.class: foo-class
 ...
 ```
@@ -69,7 +69,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotation: 
+  annotations: 
     ingressclass.kubernetes.io/is-default-class: "true"
 ...
 ```
@@ -162,6 +162,115 @@ kind: Deployment
 metadata:
   name: foo-deployment
 ...
+```
+
+<br>
+
+## 02. APIService
+
+### spec.group
+
+拡張apiserverが受信するAPIグループ名を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  group: foo.k8s.io
+```
+
+<br>
+
+### spec.groupPriorityMinimum
+
+同じAPIグループがある場合に、優先度を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  groupPriorityMinimum: 100
+```
+
+<br>
+
+
+### spec.insecureSkipTLSVerify
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  insecureSkipTLSVerify: true
+```
+
+<br>
+
+
+### spec.service
+
+拡張apiserverは、kube-apiserverからリクエストを直接的に受信するのではなく、専用のServiceを介してリクエストを受信する。この時、どのServiceからリクエストを受信するかを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  service:
+    name: foo-service
+    namespace: kube-system
+    port: 443
+```
+
+<br>
+
+
+### spec.version
+
+拡張apiserverが受信するAPIグループのバージョンを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  version: v1beta1
+```
+
+<br>
+
+### spec.versionPriority
+
+同じAPIグループがある場合に、バージョンの優先度を設定する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.foo.k8s.io
+spec:
+  versionPriority: 100
 ```
 
 <br>

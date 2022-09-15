@@ -427,8 +427,57 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 <br>
 
+## 05 metrics-server
 
-## 05. AWS EKSアドオン
+### metrics-serverとは
+
+KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングするためのAPIとして機能する。kube-apiserverは、メトリクスのリクエストをmetrics-serverにプロキシする。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+
+<br>
+
+### metrics-serverの仕組み
+
+#### ▼ 構造
+
+metrics-serverは、拡張apiserver、ローカルストレージ、スクレイパー、から構成される。
+
+> ℹ️ 参考：
+>
+> - https://speakerdeck.com/bells17/metrics-server?slide=20
+> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
+
+![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_metrics-server.png)
+
+#### ▼ 拡張apiserver
+
+ServiceとAPIServiceを介して、クライアントやKubernetesリソース（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスの時系列データのレスポンスを返信する。時系列データはローカルストレージに保管している。
+
+> ℹ️ 参考：
+> 
+> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
+> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
+
+なお、kubectlクライアントとしてリクエストを送信する場合は、```kubectl top```コマンドを実行する。
+
+```bash
+# Nodeのメトリクスを取得
+$ kubectl top node
+ 
+# Podのメトリクスを取得
+$ kubectl top pod -n <任意のNamespace>
+```
+
+#### ▼ ローカルストレージ
+
+メトリクスを時系列データとして保存する。
+
+#### ▼ スクレイパー
+
+対象からメトリクスを収集し、ローカルストレージに保存する。スクレイピングのために、ServiceAccountとClusterRoleを作成する必要がある。
+
+<br>
+
+## 06. AWS EKSアドオン
 
 ### AWS EKSアドオンとは
 

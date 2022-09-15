@@ -1014,7 +1014,7 @@ WantedBy=multi-user.target
 
 #### ▼ アラートを間接的に通知する場合
 
-デーモンが失敗状態になった時に、ログを経由して、アラートを間接的に送信するためには、```StandardOutput```オプションや```StandardError```オプションを使用する。一度、ログとして出力し、このログをCloudWatchログなどに送信する。
+デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、```StandardOutput```オプションや```StandardError```オプションを使用する。一度、ログとして出力し、このログをCloudWatchログなどに送信する。
 
 > ℹ️ 参考：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 

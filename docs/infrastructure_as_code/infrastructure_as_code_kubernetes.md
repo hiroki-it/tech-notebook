@@ -662,7 +662,7 @@ Podのライフサイクルにはフェーズがある。
 
 （３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
 
-（４）kubeletは、コンテナランタイムを経由して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）kubeletは、コンテナランタイムを介して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
 
@@ -685,7 +685,7 @@ Podのライフサイクルにはフェーズがある。
 
 （２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
 
-（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。
+（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。
 
 > ℹ️ 参考：https://www.creationline.com/lab/29281
 
@@ -1217,7 +1217,7 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
-Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
+Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
 
 > ℹ️ 参考：
 >
@@ -1529,7 +1529,4 @@ Address:  10.105.157.184
 | kube-apiserver               | front-proxy         | SSL証明書    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                             |
 
 
-
-
 <br>
-
