@@ -37,6 +37,7 @@ theme:
     - navigation.tracking
     - search.highlight
     - search.suggest
+    - toc.follow
 
 # URL形式
 use_directory_urls: false
