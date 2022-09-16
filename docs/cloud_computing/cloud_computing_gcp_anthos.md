@@ -322,7 +322,7 @@ $ kubectl get pod -n foo-namespace -o jsonpath={.items[*].spec.containers[*].ima
 gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.1
 ```
 
-（６）ValidatingWebhookConfigurationをアップグレードする。
+（６）webhookサーバーにポートフォワーディングするServiceの設定を更新する。
 
 ```bash
 $ kubectl apply -f ./asm/istio/istiod-service.yaml

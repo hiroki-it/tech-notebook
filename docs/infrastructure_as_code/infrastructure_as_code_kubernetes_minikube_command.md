@@ -654,7 +654,7 @@ $ minikube tunnel
 
 📌  NOTE: Please do not close this terminal as this process must stay alive for the tunnel to be accessible ...
 
-❗  The service/ingress <Serivce名> requires privileged ports to be exposed: [80]
+❗  The service/ingress <Service名> requires privileged ports to be exposed: [80]
 🔑  sudo permission will be asked for it.
 🏃  Starting tunnel for service <Service名>.
 ```

@@ -780,7 +780,7 @@ spec:
 
 #### ▼ syncOptions
 
-GtiOpsでのマニフェストファイルのSync処理の詳細を設定する。
+GitOpsでのマニフェストファイルのSync処理の詳細を設定する。
 
 > ℹ️ 参考：
 >

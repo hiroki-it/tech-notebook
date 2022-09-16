@@ -19,8 +19,7 @@ description: アドオン＠Kubernetesの知見を記録しています。
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
-kube-apiserverにて、認証ステップと認可ステップの後にadmission-controllersアドオンのステップを実行できる。
-
+有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmission-controllersアドオンのステップを実行できる。
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
@@ -34,7 +33,6 @@ kube-apiserverにて、認証ステップと認可ステップの後にadmission
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
 admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
-
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
@@ -52,12 +50,11 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 ### admissionアドオンとは
 
-admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
+admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
 ```bash
-# admissionアドオンを確認する。
 $ kube-apiserver -h | grep enable-admission-plugins
 
 CertificateApproval,
@@ -99,7 +96,7 @@ MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionス�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-MutatingWebhookConfigurationでは、mutating-admissionステップのWebhookの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
+MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
 
 > ℹ️ 参考：
 >
@@ -108,39 +105,117 @@ MutatingWebhookConfigurationでは、mutating-admissionステップのWebhookの
 
 **＊例＊**
 
+IstioのMutatingWebhookConfigurationは以下の通りである。
+
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: sidecar-injector-webhook-cfg
+  name: istio-sidecar-injector-<リビジョン番号>
   labels:
     app: sidecar-injector
 webhooks:
+  - name: rev.namespace.sidecar-injector.istio.io
+    admissionReviewVersions: ["v1", "v1beta1"]
+    # mutating-admissionステップ発火条件を登録する。
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+        scope: "*"
+    # Webhookの前段にあるServiceの情報を登録する。
+    clientConfig:
+      service:
+        name: istiod-<リビジョン番号>
+        namespace: istio-system
+        path: "/inject" # エンドポイント
+        port: 443
+      caBundle: Ci0tLS0tQk...
+    namespaceSelector:
+      matchExpressions:
+        - key: istio.io/rev
+          operator: In
+          values:
+            - <リビジョン番号>
+```
+
+<br>
+
+### ValidatingAdmissionWebhookアドオン
+
+#### ▼ ValidatingAdmissionWebhookアドオン
+
+ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップでWebhookによる独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+
+> ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+#### ▼ ValidatingWebhookConfiguration
+
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
+
+ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
+> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+
+**＊例＊**
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: istiod-default-validator
+webhooks:
     # webhook名はDNS名にする。
-  - name: sidecar-injector.morven.me
+  - name: validation.istio.io
+    admissionReviewVersions: ["v1", "v1beta1"]
+    sideEffects: None
+    timeoutSeconds: 5
     # 発火条件を登録する。（例：Podの作成/更新リクエスト時に発火する）
     rules:
-      - operations: ["CREATE", "UPDATE"]
-        apiGroups: [""]
-        apiVersions: ["v1"]
-        resources: ["pods"]
+      - apiGroups: ["security.istio.io", "networking.istio.io"]
+        apiVersions: ["*"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["*"]
+        scope: "*"
     # webhookサーバーの情報を登録する。
     clientConfig:
       # webhookサーバーの前段にあるServiceを登録する。
       service:
-        name: sidecar-injector-webhook-service
-        namespace: sidecar-injector
-        path: "/mutate"
+        namespace: istio-system
+        name: istiod-<リビジョン番号>
+        port: 443
+        path: /validate
       # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-    # 特定のNamespaceに属するPodのみを対象とする。
-    namespaceSelector:
-      matchLabels:
-        # sidecar-injection=enabledのNamespaceに属するPodのみを対象とする。
-        sidecar-injection: enabled
 ```
 
-#### ▼ AdmissionRequest
+<br>
+
+### AdmissionReview
+
+#### ▼ AdmissionReviewとは
+
+AdmissionReviewは、リクエストを定義するAdmissionRequestと、レスポンスを定義するAdmissionResponseからなる。admission-controllerアドオンとwebhookサーバーの間のリクエスト/レスポンスのデータである。
+
+> ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+
+```yaml
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  # AdmissionRequest
+  "request": {},
+  # AdmissionResponse
+  "response": {}  
+}
+```
+
+#### ▼ mutating-admissionステップのAdmissionRequest
 
 kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
@@ -170,22 +245,8 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
       "version": "v1",
       "resource": "deployments"
     },
-    "subResource": "scale",
-    "requestKind": {
-      "group": "autoscaling",
-      "version": "v1",
-      "kind": "Scale"
-    },
-    "requestResource": {
-      "group": "apps",
-      "version": "v1",
-      "resource": "deployments"
-    },
-    "requestSubResource": "scale",
-    "name": "my-deployment",
-    "namespace": "my-namespace",
     # kube-apiserverの操作の種類を表す。
-    "operation": "UPDATE",
+    "operation": "CREATE",
     # 認証/認可されたユーザーを表す。
     "userInfo": {
       "username": "admin",
@@ -201,29 +262,21 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
         ]
       }
     },
-    # 新しく認証/認可されたオブジェクトを表す。
-    "object": {
-      "apiVersion": "autoscaling/v1",
-      "kind": "Scale"
-    },
-    # Kubernetesリソースの操作前の状態を表す。
-    "oldObject": {
-      "apiVersion": "autoscaling/v1",
-      "kind": "Scale"
-    },
     # 認証/認可された操作の種類を表す。
     "options": {
       "apiVersion": "meta.k8s.io/v1",
-      "kind": "UpdateOptions"
+      "kind": "CreateOptions"
     },
     # ドライランモードで実行されていることを表す。
     # etcdに永続化されない。
     "dryRun": false
   }
+  
+  ...
 }
 ```
 
-#### ▼ AdmissionResponse
+#### ▼ mutating-admissionステップのAdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストファイルのpatch処理の定義方法は、JSON Patchツールに依存している。
 
@@ -255,77 +308,25 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 
 ```yaml
 # patchキーをbase64方式でデコードした場合
-# 例として、マニフェストファイルにキー（spec.replicas）と値（3）を追加する。
 [
   {
+    # 追加処理を実行する。
     "op": "add",
+    # .spec.replicasをターゲットとする。
     "path": "/spec/replicas",
+    # 値は3とする。
     "value": 3
   }
 ]
 ```
 
-<br>
-
-### ValidatingAdmissionWebhookアドオン
-
-#### ▼ ValidatingAdmissionWebhookアドオン
-
-ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップでWebhookによる独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
-
-> ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
-
-#### ▼ ValidatingWebhookConfiguration
-
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
-
-ValidatingWebhookConfigurationでは、validating-admissionステップのWebhookの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
-> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
-
-**＊例＊**
-
-```yaml
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingWebhookConfiguration
-metadata:
-  name: foo-validation-webhook-configuration
-webhooks:
-    # webhook名はDNS名にする。
-  - name: foo.example.com
-    # 発火条件を登録する。（例：Podの作成/更新リクエスト時に発火する）
-    rules:
-      - apiGroups:   [""]
-        apiVersions: ["v1"]
-        operations:  ["CREATE", "UPDATE"]
-        resources:   ["pods"]
-        scope:       "Namespaced"
-    # webhookサーバーの情報を登録する。
-    clientConfig:
-      # webhookサーバーの前段にあるServiceを登録する。
-      service:
-        namespace: foo-namespace
-        name: foo-webhook-service
-        port: 443
-        path: /validate
-      # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
-      caBundle: Ci0tLS0tQk...
-    admissionReviewVersions: ["v1"]
-    sideEffects: None
-    timeoutSeconds: 5
-```
-
-#### ▼ AdmissionRequest
+#### ▼ validating-admissionステップのAdmissionRequest
 
 kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
 > ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
-#### ▼ AdmissionResponse
+#### ▼ validating-admissionステップのAdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 
@@ -457,7 +458,7 @@ ServiceとAPIServiceを介して、クライアントやKubernetesリソース�
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
 
-なお、kubectlクライアントとしてリクエストを送信する場合は、```kubectl top```コマンドを実行する。
+なお、```kubectl```コマンドクライアントとしてリクエストを送信する場合は、```kubectl top```コマンドを実行する。
 
 ```bash
 # Nodeのメトリクスを取得

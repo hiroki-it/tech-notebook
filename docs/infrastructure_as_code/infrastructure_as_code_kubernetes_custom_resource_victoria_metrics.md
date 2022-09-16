@@ -164,7 +164,7 @@ $ systemctl start victoriametrics
 ```
 
 ```ini
-# victoriametrics.serivce
+# victoriametrics.service
 [Unit]
 Description=High-performance, cost-effective and scalable time series database, long-term remote storage for Prometheus
 After=network.target
@@ -177,12 +177,12 @@ Restart=on-failure
 RestartSec=1
 # プロセスの起動時にオプションを渡す。
 ExecStart=/usr/bin/victoria-metrics-prod \
-				# マウント先のディレクトリ
-				-storageDataPath=/var/lib/victoriametrics \
-				# 保管期間
-				-retentionPeriod 10d \
-				# Grafanaからのリクエストを待ち受けるポート番号
-				-graphiteListenAddr :2003
+            # マウント先のディレクトリ
+            -storageDataPath=/var/lib/victoriametrics \
+            # 保管期間
+            -retentionPeriod 10d \
+            # Grafanaからのリクエストを待ち受けるポート番号
+            -graphiteListenAddr :2003
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 LimitNOFILE=65536
 LimitNPROC=32000

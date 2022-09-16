@@ -97,7 +97,7 @@ $ etcd \
 
 ![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
 
-kubernetesクライアントにマスターNodeを公開する。クライアントが```kubectl```コマンドを実行すると、マスターNode上のkube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
+```kubectl```コマンドクライアントにマスターNodeを公開する。クライアントが```kubectl```コマンドを実行すると、マスターNode上のkube-apiserverがコールされ、コマンドに沿ってKubernetesリソースが操作される。存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
 
 ```log
 the server could not find the requested resource
@@ -128,6 +128,7 @@ $ kube-apiserver \
     --authorization-mode=Node,RBAC \
     # 他のコンポーネントにHTTPSリクエストを送信するためのクライアント証明書
     --client-ca-file=/etc/kubernetes/pki/ca.crt \
+    # 有効化しているadmissionアドオン
     --enable-admission-plugins=NodeRestriction,PodTolerationRestriction \
     --enable-bootstrap-token-auth=true \
     --encryption-provider-config=/etc/kubernetes/pki/encryption_config.yaml \
@@ -171,7 +172,7 @@ $ kube-apiserver \
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認証と同じように、```kubectl```コマンドのクライアントが許可されたクライアントかどうかを検証する。Cluster内部からの場合はServiceAccountで、反対にCluster外部からのクライアントの場合はUserAccountに基づいて、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
+アプリケーションの認証と同じように、```kubectl```コマンドクライアントが許可されたクライアントかどうかを検証する。Cluster内部からの場合はServiceAccountで、反対にCluster外部からのクライアントの場合はUserAccountに基づいて、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
 
 > ℹ️ 参考：
 >
@@ -183,7 +184,7 @@ $ kube-apiserver \
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認可と同じように、```kubectl```コマンドのクライアントの権限の範囲（認可スコープ）を検証する。認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
+アプリケーションの認可と同じように、```kubectl```コマンドクライアントの権限の範囲（認可スコープ）を検証する。認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
 
 > ℹ️ 参考：
 >
@@ -232,23 +233,23 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 > - https://blog.vpantry.net/2020/05/k8s-5/
 > - https://medium.com/jorgeacetozi/kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-3a0179fc8186
 
-（１）クライアントがPodの作成リクエストを送信する。
+（１）```kubectl```コマンドクライアントやKubernetesリソースがPodの作成リクエストを送信する。
 
 （２）kube-apiserverはリクエストを受信し、Podの作成宣言の情報をetcdに永続化する。
 
-（３）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdと実際のワーカーNodeの間に差分があることを検知し、さらにkube-schedulerにPodのスケジューリングをコールする。
+（３）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdとワーカーNode上のKubernetesリソースの間に差分があることを検知する。さらに、kube-schedulerにPodのスケジューリングをコールする。
 
-（４）kube-schedulerは、Podのスケジューリング対象となるワーカーNodeをフィルタリングとスコアリングによって決定する。
+（４）kube-schedulerは、フィルタリングとスコアリングの結果に基づいて、Podのスケジューリング対象となるワーカーNodeを決定する。
 
-（５）kube-apiserverは、バインディング情報（PodとワーカーNodeの紐付き情報）をetcdに永続化する。
+（５）kube-apiserverは、バインディング情報（スケジューリング対象ワーカーNodeとPod間の紐付き情報）をetcdに永続化する。
 
-（６）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知し、さらにkubeletにPodの作成をコールする。
+（６）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知する。らに、etcdのバインディング情報に基づいて、特定のワーカーNode上のkubeletにPodの作成をコールする。
 
-（７）kubeletは、etcdのバインディング情報に基づいて、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
+（７）kubeletは、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
 
-（８）コンテナランタイムデーモンは、コンテナを作成する。
+（８）コンテナランタイムのデーモンは、コンテナを作成する。
 
-（９）kubeletは、Podが作成されたことをkube-apiserverに通知する。
+（９）kubeletは、Podが作成されたことをkube-apiserverに返却する。
 
 （１０）kube-apiserverは、Podの作成完了をetcdに永続化する。
 
@@ -482,11 +483,11 @@ KubernetesのAPIにはワーカーNodeのオートスケーリング機能はな
 
 ## 02. Kubernetesの操作
 
-### kubernetesクライアント
+### ```kubectl```コマンドクライアント
 
-#### ▼ kubernetesクライアントとは
+#### ▼ ```kubectl```コマンドクライアントとは
 
-kubernetesクライアントは、```kubectl```コマンドを使用して、kubernetesマスターAPIをコールできる。
+```kubectl```コマンドクライアントは、```kubectl```コマンドを使用して、kubernetesマスターAPIをコールできる。
 
 <br>
 
@@ -656,7 +657,7 @@ Podのライフサイクルにはフェーズがある。
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
 
-（１）Kubernetesクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
+（１）```kubectl```コマンドクライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
 （２）Podが、削除を開始する。
 
@@ -1521,7 +1522,7 @@ Address:  10.105.157.184
 |-----------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
 | kube-apiserver              | kubelet        | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
 | kube-apiserver              | etcd           | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
-| ```kubectl```コマンドクライアントのローカルマシン | kube-apiserver | クライアント証明書 | ```kubectl```コマンドのクライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。                                  |
+| ```kubectl```コマンドクライアントのローカルマシン | kube-apiserver | クライアント証明書 | ```kubectl```コマンドクライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。                                  |
 | kube-controller-manager     | kube-apiserver | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
 | kube-scheduler              | kube-apiserver | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。          |
 | その他のコンポーネント                 | kube-apiserver    | SSL証明書    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |
