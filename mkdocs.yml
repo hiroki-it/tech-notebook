@@ -177,72 +177,72 @@ nav:
                   - RESTful-API: software/software_application_collaboration_api_restful.md
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
               - RPC-API: software/software_application_collaboration_api_rpc.md
-          - ■ 言語:
-              - 言語の種類: software/software_application_language_type.md
-              - 言語別の処理方式: software/software_application_language_process_mode.md
-              - ■ データ記述言語:
-                  - データ記述言語: software/software_application_language_data_description_language.md
-                  - ■ クエリロジック:
-                      - JSONクエリ: software/software_application_language_data_description_language_query_json.md
-              - ■ PHP:
-                  - PHP: software/software_application_language_php.md
-                  - コマンド: software/software_application_language_php_command.md
-                  - ■ クラスベース:
-                      - クラス: software/software_application_language_php_class_based.md
-                      - メソッド/データ: software/software_application_language_php_class_based_method_data.md
-                      - データ構造: software/software_application_language_php_class_based_data_structure.md
-                  - ■ ロジック:
-                      - 検証ロジック: software/software_application_language_php_logic_validation.md
-                      - エラーとエラーハンドリング: software/software_application_language_php_logic_error_and_error_handling.md
-                      - 反復ロジック: software/software_application_language_php_logic_iteration.md
-                      - アルゴリズム: software/software_application_language_php_logic_algorithm.md
-                      - デバッグ: software/software_application_language_php_logic_debug.md
-                  - ■ フレームワーク:
-                      - ■ Laravel:
-                          - コンポーネント: software/software_application_language_php_framework_laravel_component.md
-                          - ︎Eloquent ORM: software/software_application_language_php_framework_laravel_eloquent_orm.md
-                          - 専用パッケージ: software/software_application_language_php_framework_laravel_package.md
-                          - 認証/認可系パッケージ: software/software_application_language_php_framework_laravel_package_auth.md
-                          - コマンド: software/software_application_language_php_framework_laravel_command.md
-                      - ■ Symfony:
-                          - コンポーネント: software/software_application_language_php_framework_symfony_component.md
-                          - Doctrine ORM: software/software_application_language_php_framework_symfony_doctrine_orm.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_php_package_management.md
-                      - SQLパッケージ: software/software_application_language_php_package_sql.md
-                      - その他パッケージ: software/software_application_language_php_package_others.md
-              - ■ JavaScript:
-                  - ■ プロトタイプベース:
-                      - プロトタイプ: software/software_application_language_js_prototype_based.md
-                      - メソッド/データ: software/software_application_language_js_prototype_based_method_data.md
-                  - ■ ロジック:
-                      - 検証ロジック: software/software_application_language_js_logic_validation.md
-                      - 非同期処理ロジック: software/software_application_language_js_logic_asynchronous_process.md
-                      - デバッグ: software/software_application_language_js_logic_debug.md
-                  - ■ フレームワーク:
-                      - Vue.js: software/software_application_language_js_framework_vuejs.md
-                      - Nuxt.js: software/software_application_language_js_framework_nuxtjs.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_js_package_management.md
-                  - ■ ブラウザ:
-                      - ブラウザレンダリング: software/software_application_language_js_browser_rendering.md
-              - ■ Go:
-                  - Go: software/software_application_language_go.md
-                  - コマンド: software/software_application_language_go_command.md
-                  - ■ ロジック:
-                      - メソッド/データ: software/software_application_language_go_logic_method_data.md
-                  - ■ フレームワーク:
-                      - Gin: software/software_application_language_go_framework_gin.md
-                  - ■ パッケージ:
-                      - パッケージ: software/software_application_language_go_package.md
-              - ■ Python:
-                  - Python: software/software_application_language_python.md
-                  - ■ フレームワーク:
-                      - ■ Flask:
-                          - コンポーネント: software/software_application_language_python_framework_flask_component.md
-                          - コマンド: software/software_application_language_python_framework_flask_command.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_python_package_management.md
+      - ■ 言語:
+          - 言語の種類: software/software_application_language_type.md
+          - 言語別の処理方式: software/software_application_language_process_mode.md
+          - ■ データ記述言語:
+              - データ記述言語: software/software_application_language_data_description_language.md
+              - ■ クエリロジック:
+                  - JSONクエリ: software/software_application_language_data_description_language_query_json.md
+          - ■ PHP:
+              - PHP: software/software_application_language_php.md
+              - コマンド: software/software_application_language_php_command.md
+              - ■ クラスベース:
+                  - クラス: software/software_application_language_php_class_based.md
+                  - メソッド/データ: software/software_application_language_php_class_based_method_data.md
+                  - データ構造: software/software_application_language_php_class_based_data_structure.md
+              - ■ ロジック:
+                  - 検証ロジック: software/software_application_language_php_logic_validation.md
+                  - エラーとエラーハンドリング: software/software_application_language_php_logic_error_and_error_handling.md
+                  - 反復ロジック: software/software_application_language_php_logic_iteration.md
+                  - アルゴリズム: software/software_application_language_php_logic_algorithm.md
+                  - デバッグ: software/software_application_language_php_logic_debug.md
+              - ■ フレームワーク:
+                  - ■ Laravel:
+                      - コンポーネント: software/software_application_language_php_framework_laravel_component.md
+                      - ︎Eloquent ORM: software/software_application_language_php_framework_laravel_eloquent_orm.md
+                      - 専用パッケージ: software/software_application_language_php_framework_laravel_package.md
+                      - 認証/認可系パッケージ: software/software_application_language_php_framework_laravel_package_auth.md
+                      - コマンド: software/software_application_language_php_framework_laravel_command.md
+                  - ■ Symfony:
+                      - コンポーネント: software/software_application_language_php_framework_symfony_component.md
+                      - Doctrine ORM: software/software_application_language_php_framework_symfony_doctrine_orm.md
+              - ■ パッケージ:
+                  - パッケージ管理: software/software_application_language_php_package_management.md
+                  - SQLパッケージ: software/software_application_language_php_package_sql.md
+                  - その他パッケージ: software/software_application_language_php_package_others.md
+          - ■ JavaScript:
+              - ■ プロトタイプベース:
+                  - プロトタイプ: software/software_application_language_js_prototype_based.md
+                  - メソッド/データ: software/software_application_language_js_prototype_based_method_data.md
+              - ■ ロジック:
+                  - 検証ロジック: software/software_application_language_js_logic_validation.md
+                  - 非同期処理ロジック: software/software_application_language_js_logic_asynchronous_process.md
+                  - デバッグ: software/software_application_language_js_logic_debug.md
+              - ■ フレームワーク:
+                  - Vue.js: software/software_application_language_js_framework_vuejs.md
+                  - Nuxt.js: software/software_application_language_js_framework_nuxtjs.md
+              - ■ パッケージ:
+                  - パッケージ管理: software/software_application_language_js_package_management.md
+              - ■ ブラウザ:
+                  - ブラウザレンダリング: software/software_application_language_js_browser_rendering.md
+          - ■ Go:
+              - Go: software/software_application_language_go.md
+              - コマンド: software/software_application_language_go_command.md
+              - ■ ロジック:
+                  - メソッド/データ: software/software_application_language_go_logic_method_data.md
+              - ■ フレームワーク:
+                  - Gin: software/software_application_language_go_framework_gin.md
+              - ■ パッケージ:
+                  - パッケージ: software/software_application_language_go_package.md
+          - ■ Python:
+              - Python: software/software_application_language_python.md
+              - ■ フレームワーク:
+                  - ■ Flask:
+                      - コンポーネント: software/software_application_language_python_framework_flask_component.md
+                      - コマンド: software/software_application_language_python_framework_flask_command.md
+              - ■ パッケージ:
+                  - パッケージ管理: software/software_application_language_python_package_management.md
 
   - 🧪 テスト:
       - ■ ホワイトボックステスト:
