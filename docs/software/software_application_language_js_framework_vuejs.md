@@ -113,7 +113,7 @@ Vueコンストラクタ関数を使用して、インスタンス化するこ�
 
 ```javascript
 // ルートVueインスタンス
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
 
     // Vueインスタンスを使用するdivタグを設定.
@@ -375,7 +375,7 @@ index.jsの```methods:```内には、イベントハンドラ関数として```r
 **＊実装例＊**
 
 ```javascript
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
     // Vueインスタンスを使用するdivタグを設定.
@@ -405,7 +405,7 @@ var vm = new Vue({
 </template>
 
 <script>
-  // 変数への格納を省略してもよい
+  // 変数に対する格納を省略してもよい
   var vm = new Vue({
 
     // イベントハンドラ関数を定義
@@ -510,7 +510,7 @@ Vue.component("v-foo-component", {
     template: require("./xxx/xxx/foo")
 });
 
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     el: "#app"
 })
@@ -526,7 +526,7 @@ var vFooComponent = {
     template: require("./xxx/xxx/foo"),
 };
 
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
 
     el: "#app",
@@ -544,7 +544,7 @@ var vm = new Vue({
 **＊実装例＊**
 
 ```javascript
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
 
     el: "#app",
@@ -597,7 +597,7 @@ module.exports = router;
 ```javascript
 import router from "./router"
 
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
 
     // routerオプション
@@ -755,7 +755,7 @@ module.exports = new Vuex.Store({
 
 <br>
 
-### コンポーネントからVuexへのアクセス
+### コンポーネントからVuexに対するアクセス
 
 例えば、子コンポーネントのファイル（```template```タグを持つファイル）の下部に、以下を記述することにより、```Vuex.Store```メソッドとデータを受け渡しできるようになる。
 
@@ -911,7 +911,7 @@ createdフックの動作を検証する。```data```オプションは、Vueイ
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {
@@ -938,14 +938,14 @@ Vueインスタンスがマウントされる前に実行される。
 
 **＊検証例＊**
 
-beforeMountフックの動作を検証する。```data```オプションから```name```変数への展開は、マウントによって実行される。そのため、beforeMountフックの段階では要素自体が作成されておらず、何も表示されない。
+beforeMountフックの動作を検証する。```data```オプションから```name```変数に対する展開は、マウントによって実行される。そのため、beforeMountフックの段階では要素自体が作成されておらず、何も表示されない。
 
 ```vue
 <template>
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {
@@ -976,14 +976,14 @@ Vue.js以外の外部パッケージの読み出し、検索実行時のイベ�
 
 **＊検証例＊**
 
-beforeMountフックの動作を検証する。```data```オプションから```name```変数への展開は、elementへのマウント中に実行される。そのため、```mounted```メソッドが実行され、空文字が上書きされる。
+beforeMountフックの動作を検証する。```data```オプションから```name```変数に対する展開は、elementに対するマウント中に実行される。そのため、```mounted```メソッドが実行され、空文字が上書きされる。
 
 ```vue
 <template>
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {
@@ -1011,7 +1011,7 @@ var vm = new Vue({
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {
@@ -1044,7 +1044,7 @@ WindowオブジェクトやDocumentオブジェクトのメソッドによる要
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {
@@ -1080,7 +1080,7 @@ var vm = new Vue({
   <div>{{ name }}</div>
 </template>
 <script>
-// 変数への格納を省略してもよい
+// 変数に対する格納を省略してもよい
 var vm = new Vue({
     
   data() {

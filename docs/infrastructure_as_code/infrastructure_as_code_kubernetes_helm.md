@@ -19,7 +19,7 @@ description: Helmの知見を記録しています。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverをコールする。これにより、Kubernetes上にKubernetesリソースが作成される。
+Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。これにより、Kubernetes上にKubernetesリソースが作成される。
 
 > ℹ️ 参考：
 >

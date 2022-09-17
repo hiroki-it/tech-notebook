@@ -536,9 +536,9 @@ X-Rayを使用して、API Gatewayを開始点とした分散トレースを収�
 
 | タイプ名     | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| リージョン   | API Gatewayのエンドポイントへのリクエストを、リージョン内の物理サーバーで受け付ける。 |
-| プライベート | API Gatewayのエンドポイントへのリクエストを、VPC内からのみ受け付ける。 |
-| エッジ最適化 | API Gatewayのエンドポイントへのリクエストを、CloudFrontのエッジサーバーで受け付ける。 |
+| リージョン   | API Gatewayのエンドポイントに対するリクエストを、リージョン内の物理サーバーで受け付ける。 |
+| プライベート | API Gatewayのエンドポイントに対するリクエストを、VPC内からのみ受け付ける。 |
+| エッジ最適化 | API Gatewayのエンドポイントに対するリクエストを、CloudFrontのエッジサーバーで受け付ける。 |
 
 <br>
 
@@ -824,7 +824,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 ### CloudFrontとは
 
-クラウドリバースプロキシサーバーとして働く。VPCの外側（パブリックネットワーク）に設置されている。オリジンサーバー（コンテンツ提供元）をS3とした場合、動的コンテンツへのリクエストをEC2に振り分ける。また、静的コンテンツへのリクエストをキャッシュし、その上でS3へ振り分ける。次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。
+クラウドリバースプロキシサーバーとして働く。VPCの外側（パブリックネットワーク）に設置されている。オリジンサーバー（コンテンツ提供元）をS3とした場合、動的コンテンツに対するリクエストをEC2に振り分ける。また、静的コンテンツに対するリクエストをキャッシュし、その上でS3へ振り分ける。次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。
 
 ![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
 
@@ -883,7 +883,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | Path pattern                   | Behaviorを行うパスを設定する。                          |                                                                                                                                                                                                                                             |
 | Origin and Origin Group        | Behaviorを行うオリジンを設定する。                        |                                                                                                                                                                                                                                             |
 | Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・```HTTP and HTTPS```：両方受信し、そのままルーティング<br>・```Redirect HTTP to HTTPS```：両方受信し、HTTPSでルーティング<br>・```HTTPS Only```：HTTPSのみ受信し、HTTPSでルーティング                                                                                                     |
-| Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定     | ・パスパターンが静的ファイルへのリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルへのリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
+| Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定     | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                   |
 | Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。        | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                   |
 | TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。           | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、```Cache-Control```ヘッダー、```Expires```ヘッダーの値の組み合わせによって決まる。                                    |
 | Whitelist Header               | Headers を参考にせよ。                              | ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist・```Accept-*****```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-*****-Viewer```：デバイスタイプのboolean値が格納されている。 |
@@ -930,9 +930,9 @@ CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 ```
 
-#### ▼ CloudFrontとオリジン間のHTTPS通信
+#### ▼ CloudFrontとオリジン間のHTTPSプロトコル
 
-CloudFrontとオリジン間でHTTPS通信を行う場合、両方にSSL証明書を割り当てる必要がある。割り当てたとしても、以下の条件を満たさないとHTTPS通信を行うことはできない。CLoudFrontからオリジンに```Host```ヘッダーをルーティングしない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。一方で、```Host```ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、```Host```ヘッダーの値と一致するドメイン名が含まれている必要がある。
+CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。割り当てたとしても、以下の条件を満たさないとHTTPSプロトコルを使用することはできない。CLoudFrontからオリジンに```Host```ヘッダーをルーティングしない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。一方で、```Host```ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、```Host```ヘッダーの値と一致するドメイン名が含まれている必要がある。
 
 <br>
 
@@ -1512,17 +1512,22 @@ CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CDパ�
 
 ## 11-02. Code系サービス：CodeBuild
 
-### 設定ファイル
+### ```buildspec.yml```ファイル
 
-#### ▼ ```buildspec.yml```ファイル
+#### ▼ ECSの場合
 
-CodeBuildの設定を行う。ルートディレクトリの直下に配置しておく。
+ECSのために、CodeBuildの設定を行う。ルートディレクトリの直下に配置しておく。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+> - https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html
 
 **＊実装例＊**
 
-コンテナをビルドする場合を示す。
+コンテナをビルドする場合を示す。コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、```latest```タグもプッシュしておいた方が良い。
+
+> ℹ️ 参考：https://stackoverflow.com/questions/61070900/can-codepipeline-use-a-specific-commit
 
 ```yaml
 version: 0.2
@@ -1534,21 +1539,25 @@ phases:
   preBuild:
     commands:
       # ECRにログイン
-      - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
-      # バージョンタグはGitHubコミットのハッシュ値を使用
-      - VERSION_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
       # ECRのURLをCodeBuildの環境変数から作成
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
+      # バージョンタグはコミットのハッシュ値を使用
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
       # タグ付けしてイメージをビルド
-      - docker build -t REPOSITORY_URI:$VERSION_TAG -f Dockerfile .
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   postBuild:
     commands:
-      # ECRにコンテナイメージをプッシュ
-      - docker push $REPOSITORY_URI:$VERSION_TAG
+      # ECRにコンテナイメージをプッシュする。
+      # コミットハッシュ値のタグの前に、latestタグのコンテナイメージをプッシュしておく。
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       # ECRにあるデプロイ先のコンテナイメージの情報（imageDetail.json）
-      - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$VERSION_TAG > imageDetail.json
+      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
     
 # デプロイ対象とするビルドのアーティファクト    
 artifacts:

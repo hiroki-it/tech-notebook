@@ -508,7 +508,7 @@ An error occurred (ClientException) when calling the ExecuteCommand operation: U
 
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
-STSへのリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+STSに対するリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
 
 > ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role
 

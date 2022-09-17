@@ -93,8 +93,8 @@ description: テレメトリー間の紐付け＠Datadog
 
 ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『```<マイクロサービス名>```』とする。なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐づける時に、同じマイクロサービス名をタグに使用しなければならないためである。
 
-〇：laravel -> order、order-service
-✕：laravel -> order-laravel、order-service-laravel
+〇：laravel → order、order-service
+✕：laravel → order-laravel、order-service-laravel
 
 フレームワーク以外のパッケージなどの分散トレースに関しては、紐づけられないことを許容している。APMのservice名とECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。service名はインテグレーション名が自動的に割り当てられるが、トレーサーに環境変数を渡して変更もできる。フレームワークのインテグレーション名は `DD_SERVICE_NAME` から設定する一方で、それ以外のタグ名は `DD_SERVICE_MAPPING` から設定する。
 

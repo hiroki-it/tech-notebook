@@ -267,7 +267,7 @@ title: 【IT技術の知見】目次
     > * ##### 📖 [︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
 * #### <u>その他</u>
     > * ##### 📖 [︎AWS CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_cli.html)
-    > * ##### 📖 [︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
+    > * ##### 📖 [︎API Gatewayに対するymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     > * ##### 📖 [︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html)
     > * ##### 📖 [︎FireLensコンテナ](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_firelens.html)
 
@@ -382,7 +382,7 @@ title: 【IT技術の知見】目次
     > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
     > * ##### 📖 [設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
     > * ##### 📖 [︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
-    > * ##### tfファイル
+    > * ##### <u>tfファイル</u>
     > > * ##### 📖 [︎tfファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf.html)
     > > * ##### 📖 [︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.html)
 
@@ -452,7 +452,7 @@ title: 【IT技術の知見】目次
     > * ##### 📖 [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html)
     > * ##### 📖 [︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_monitoring.html)
     > * ##### 📖 [︎インテグレーション](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_integration.html)
-    > * ##### テレメトリー収集
+    > * ##### <u>テレメトリー収集</u>
     > > * ##### 📖 [︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html)
     > > * ##### 📖 [︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html)
     > > * ##### 📖 [分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)

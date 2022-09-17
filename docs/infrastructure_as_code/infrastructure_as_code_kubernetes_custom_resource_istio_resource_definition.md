@@ -214,7 +214,7 @@ metadata:
 
 #### ▼ istio-injection
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。```istio.io/rev```キーの代わりに```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -222,22 +222,56 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-namespace
+  name: foo-app-namespace
   labels:
     istio-injection: enabled
 ```
 
-#### ▼ istio.io/rev
+アプリケーション以外のNamespaceでは```disabled```値を設定することが多い。
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーの代わりに```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 ```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-namespace
+  name: foo-observability-namespace
+  labels:
+    istio-injection: disabled
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo-chaos-mesh-namespace
+  labels:
+    istio-injection: disabled
+```
+
+
+#### ▼ istio.io/rev
+
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo-app-namespace
   labels:
     istio.io/rev: 1-0-0 # ハイフン繋ぎのバージョン表記
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo-observability-namespace
+  labels:
+    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo-chaos-mesh-namespace
+  labels:
+    istio-injection: disabled
 ```
 
 <br>
@@ -497,6 +531,27 @@ spec:
         maxRequestsPerConnection: 1
       tcp:
         maxConnections: 100
+```
+
+#### ▼ outlierDetection
+
+サーキットブレイカーを設定する。
+
+> ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=25
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    outlierDetection:
+      interval: 10s # エラー検知の間隔
+      consecutiveGatewayErrors: 3 # サーキットブレイカーを実施するエラーの閾値数
+      baseEjectionTime: 30s # Podをルーティング先から切り離す秒数
+      maxEjectionPercent: 99
 ```
 
 #### ▼ loadBalancer
@@ -1025,6 +1080,27 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
+#### ▼ fault
+
+発生させるフォールトインジェクションを設定する。
+
+> ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - fault:
+      - abort:
+          httpStatus: 503 # 発生させるエラー
+          percentage:
+            value: 100 # エラーを発生させる確率
+```
+
 #### ▼ match
 
 受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
@@ -1065,7 +1141,7 @@ spec:
 
 #### ▼ retries.attempt
 
-istio-proxyコンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
+```istio-proxy```コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1081,7 +1157,7 @@ spec:
 
 #### ▼ retries.retryOn
 
-再試行する失敗理由を設定する。istio-proxyコンテナは、レスポンスの```x-envoy-retry-on```ヘッダーに割り当てるため、これの値を設定する。
+再試行する失敗理由を設定する。```istio-proxy```コンテナは、レスポンスの```x-envoy-retry-on```ヘッダーに割り当てるため、これの値を設定する。
 
 > ℹ️ 参考：
 > 
@@ -1219,7 +1295,7 @@ spec:
 
 #### ▼ route.destination.host
 
-httpの場合と同じである。
+```spec.http```キーと同じ機能である。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1236,7 +1312,7 @@ spec:
 
 #### ▼ route.destination.port
 
-httpの場合と同じである。
+```spec.http```キーと同じ機能である。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1255,7 +1331,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-httpの場合と同じである。
+```spec.http```キーと同じ機能である。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

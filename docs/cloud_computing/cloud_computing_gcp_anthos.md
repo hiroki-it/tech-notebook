@@ -300,7 +300,7 @@ istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
 $ kubectl get namespace -L istio.io/rev
 ```
 
-（３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを起こすため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
+（３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
@@ -322,10 +322,43 @@ $ kubectl get pod -n foo-namespace -o jsonpath={.items[*].spec.containers[*].ima
 gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.1
 ```
 
-（６）webhookサーバーにポートフォワーディングするServiceの設定を更新する。
+（６）webhookサーバーにポートフォワーディングするためのServiceの設定を更新する。
 
 ```bash
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
+```
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: istiod
+  namespace: istio-system
+  labels:
+    app: istiod
+    istio: pilot
+    istio.io/rev: asm-1143-1
+    release: istio
+spec:
+  ports:
+    - name: https-webhook
+      port: 443
+      protocol: TCP
+      targetPort: 15017
+    - name: grpc-xds 
+      port: 15010
+      protocol: TCP
+      targetPort: 15010
+    - name: https-dns 
+      port: 15012
+      protocol: TCP
+      targetPort: 15012
+    - name: http-monitoring
+      port: 15014
+      protocol: TCP
+      targetPort: 15014
+  selector:
+    app: istiod
+    istio.io/rev: asm-1143-1
 ```
 
 （７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなので、新バージョンに変更する。

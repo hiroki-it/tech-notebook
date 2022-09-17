@@ -240,6 +240,9 @@ description: 可観測性の知見を記録しています。
 
 **＊例＊**
 
+![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
+
+
 （１）```a1```：クライアントがリクエストを送信する。
 
 （２）```a1```：リクエストがロードバランサ－に到達する。
@@ -253,8 +256,6 @@ description: 可観測性の知見を記録しています。
 （６）```a2```～```a3```：アプリケーションで処理が実行される。
 
 （７）```a3```：アプリケーションがレスポンスをクライアントに返信する。
-
-![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
 
 <br>
 

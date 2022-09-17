@@ -32,7 +32,8 @@ description: アドオン＠Kubernetesの知見を記録しています。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアントからのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアント（```kubectl```実行者、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
@@ -451,14 +452,14 @@ metrics-serverは、拡張apiserver、ローカルストレージ、スクレイ
 
 #### ▼ 拡張apiserver
 
-ServiceとAPIServiceを介して、クライアントやKubernetesリソース（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスの時系列データのレスポンスを返信する。時系列データはローカルストレージに保管している。
+ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、Kubernetesリソース）からのリクエストを受信し、メトリクスの時系列データのレスポンスを返信する。時系列データはローカルストレージに保管している。
 
 > ℹ️ 参考：
 > 
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
 
-なお、```kubectl```コマンドクライアントとしてリクエストを送信する場合は、```kubectl top```コマンドを実行する。
+クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
 
 ```bash
 # Nodeのメトリクスを取得
@@ -467,6 +468,8 @@ $ kubectl top node
 # Podのメトリクスを取得
 $ kubectl top pod -n <任意のNamespace>
 ```
+
+クライアントがKubernetesリソースの場合は、Podのオートスケーリングを行うもの（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）がメトリクスを収集するためにリクエストを送信する。
 
 #### ▼ ローカルストレージ
 

@@ -19,7 +19,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 
 他のAWSリソースのイベントによって駆動する関数を管理できる。ユースケースについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
 ![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバーレスアーキテクチャとは.png)
 
@@ -42,7 +42,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 | 環境変数              | Lambdaの関数内に出力する環境変数を設定する。                          | デフォルトでは、環境変数はAWSマネージド型KMSキーによって暗号化される。 |
 | 同時実行数             | 同時実行の予約を設定する。                                      |                                                              |
 | プロビジョニングされた同時実行設定 |                                                    |                                                              |
-| モニタリング            | LambdaをCloudWatchまたはX-Rayを使用して、メトリクスのデータポイントを収集する。 | 次の方法がある<br>・CloudWatchによって、メトリクスのデータポイントを収集する。<br>・CloudWatchのLambda Insightsによって、パフォーマンスに関するメトリクスのデータポイントを収集する。<br>・X-Rayによって、APIへのリクエスト、Lambdaコール、Lambdaの下流とのデータ通信をトレースし、これらをスタックトレース化する。 |
+| モニタリング            | LambdaをCloudWatchまたはX-Rayを使用して、メトリクスのデータポイントを収集する。 | 次の方法がある<br>・CloudWatchによって、メトリクスのデータポイントを収集する。<br>・CloudWatchのLambda Insightsによって、パフォーマンスに関するメトリクスのデータポイントを収集する。<br>・X-Rayによって、APIに対するリクエスト、Lambdaコール、Lambdaの下流とのデータ通信をトレースし、これらをスタックトレース化する。 |
 
 ### 設定のベストプラクティス
 
@@ -560,7 +560,7 @@ Route53からルーティングされるパブリックIPアドレスを受信�
 
 #### ▼ webサーバーにおける対処方法
 
-ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、webサーバーへのリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションへのリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
+ALBを経由したリクエストには、リクエストヘッダーに```X-Forwarded-Proto```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。これが『HTTPS』だった場合、webサーバーに対するリクエストをHTTPSであるとみなすように対処する。これにより、アプリケーションに対するリクエストのプロトコルがHTTPSとなる（こちらを行った場合は、アプリケーション側の対応不要）。
 
 > ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
@@ -572,9 +572,9 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 #### ▼ アプリケーションにおける対処方法
 
-![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
+![ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
 
-ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションへのリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、webサーバー側の対応不要）。
+ALBを経由したリクエストには、リクエストヘッダーに```HTTP_X_FORWARDED_PROTO```ヘッダーが付与される。これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションに対するリクエストもHTTPSであるとみなすように、```index.php```に追加実装を行う（こちらを行った場合は、webサーバー側の対応不要）。
 
 > ℹ️ 参考：https://www.d-wood.com/blog/2017/11/29_9354.html
 
@@ -597,7 +597,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 #### ▼ ロードバランシングアルゴリズムとは
 
-ターゲットへのリクエスト転送時の加重ルールを設定する。
+ターゲットに対するリクエスト転送時の加重ルールを設定する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
 

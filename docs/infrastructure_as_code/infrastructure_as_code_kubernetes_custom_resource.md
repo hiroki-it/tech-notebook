@@ -311,7 +311,7 @@ spec:
 
 ### カスタムコントローラーとは
 
-カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成をコールする。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成リクエストを送信する。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
 
 <br>
 
@@ -370,7 +370,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 #### ▼ 認可スコープ付与リソース
 
-operator-controllerがkube-apiserverをコールできるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
+operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 > ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

@@ -54,7 +54,7 @@ HTTPSプロトコルの```8224```番ポートでインバウンド通信を待�
 PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
 
 ```bash
-# 読み出しエンドポイントをコールする。
+# 読み出しエンドポイントにリクエストを送信する。
 $ curl -X GET http://<VictoriaMetricsのIPアドレス>:8428/prometheus/api/v1/query \
   -d 'query=vm_http_request_errors_total'
 ```

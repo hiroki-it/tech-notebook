@@ -403,14 +403,14 @@ jobs:
      - checkout
      # コンテナが入れ子にならないようにする。
      - setup_remote_docker
-     - run: | # DockerHubへのログイン
+     - run: | # DockerHubに対するログイン
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
      # コンテナイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # コンテナイメージのDockerHubへのデプロイ
+     # コンテナイメージのDockerHubに対するデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -430,14 +430,14 @@ jobs:
    machine: true
    steps:
      - checkout
-     - run: | # DockerHubへのログイン
+     - run: | # DockerHubに対するログイン
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
      # コンテナイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # コンテナイメージのDockerHubへのデプロイ
+     # コンテナイメージのDockerHubに対するデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 

@@ -21,7 +21,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカープロキシによるサービスメッシュは、データプレーン、コントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+サイドカープロキシによるサービスメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -33,7 +33,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDamonset配下のPod）が```L4```（トランスポート層）、waypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPs通信になる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカープロキシによるサービスメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシによるサービスメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーン、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDamonset配下のPod）が```L4```（トランスポート層）、waypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカープロキシによるサービスメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシによるサービスメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
 インバウンド時の経路は以下の通りである。
 
@@ -90,7 +90,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 <br>
 
-## 01-02. データプレーン（サイドカープロキシによるサービスメッシュ）
+## 01-02. データプレーン（サイドカープロキシによるサービスメッシュの場合）
 
 ### データプレーンとは
 
@@ -196,13 +196,15 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 <br>
 
-## 01-03. コントロールプレーン（サイドカープロキシによるサービスメッシュ）
+## 01-03. Isiodコントロールプレーン（サイドカープロキシによるサービスメッシュの場合）
 
-### コントロールプレーンとは
+### Isiodコントロールプレーン
+
+#### ▼ Isiodコントロールプレーン
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
-サイドカープロキシによるサービスメッシュのIstiodコントロールプレーンは、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+サイドカープロキシによるサービスメッシュのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で```istio-proxy```コンテナからのリクエストを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
 
 > ℹ️ 参考：
 >
@@ -210,9 +212,86 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
 > - https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
 
-<br>
+#### ▼ istiod-deployment
 
-### ポート番号別の機能
+Istiodコントロールプレーンの実体である。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: istiod
+    istio.io/rev: <リビジョン番号>
+    release: istiod
+  name: istiod-<リビジョン番号>
+  namespace: istio-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: istiod
+      istio.io/rev: <リビジョン番号>
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: istiod
+        istio.io/rev: <リビジョン番号>
+    spec:
+      containers:
+        - args:
+            - discovery
+            - --monitoringAddr=:15014 # 15014番ポートの開放
+            - --log_output_level=default:info
+            - --domain
+            - cluster.local
+            - --keepaliveMaxServerConnectionAge
+            - 30m
+          image: docker.io/istio/pilot:<リビジョン番号>
+          imagePullPolicy: IfNotPresent
+          name: discovery
+          ports:
+            - containerPort: 8080 # 8080番ポートの開放
+              protocol: TCP
+            - containerPort: 15010 # 15010番ポートの開放
+              protocol: TCP
+            - containerPort: 15017 # 15017番ポートの開放
+              protocol: TCP
+          env:
+            # 15012番ポートの開放
+            - name: ISTIOD_ADDR
+              value: istiod-<リビジョン番号>.istio-system.svc:15012 # 15012番ポートの開放
+              
+          ... # かなり省略しているので、全体像はその都度確認すること。
+```
+
+ちなみに、istiod-deployment配下のPodには、HorizontalPodAutoscalerが設定されている。
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: istiod
+    istio.io/rev: <リビジョン番号>
+    release: istiod
+  name: istiod-<リビジョン番号>
+  namespace: istio-system
+spec:
+  maxReplicas: 5
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: istiod-<リビジョン番号>
+  targetCPUUtilizationPercentage: 80
+```
+
 
 #### ▼ ```8080```番
 
@@ -233,7 +312,7 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPS通信を行う場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
@@ -247,6 +326,238 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 ```15017```番ポートでは、Istioの```istid-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewを含むレスポンスを返信する。
 
+<br>
+
+### istiod-service
+
+#### ▼ istiod-serviceとは
+
+```istio-proxy```コンテナからIstiodコントロールプレーンに対するリクエストをポートフォワーディングする。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: istiod-<リビジョン番号>
+  namespace: istio-system
+  labels:
+    app: istiod
+    istio: pilot
+    istio.io/rev: <リビジョン番号>
+    release: istiod
+spec:
+  ports:
+    # webhookサーバーに対するリクエストを待ち受ける。
+    - name: https-webhook
+      port: 443
+      protocol: TCP
+      targetPort: 15017
+    # xDSサーバーに対するリクエストを待ち受ける。
+    - name: grpc-xds
+      port: 15010
+      protocol: TCP
+      targetPort: 15010
+    # SSL証明書に関するリクエストを待ち受ける。
+    - name: https-dns
+      port: 15012
+      protocol: TCP
+      targetPort: 15012
+    # メトリクス収集に関するリクエストを待ち受ける。
+    - name: http-monitoring
+      port: 15014
+      protocol: TCP
+      targetPort: 15014
+  selector:
+    app: istiod
+    istio.io/rev: <リビジョン番号>
+```
+
+#### ▼ istio-sidecar-injector-configuration
+
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingAdmissionWebhookアドオンを設定する。
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: istio-sidecar-injector-<リビジョン番号>
+  labels:
+    app: sidecar-injector
+webhooks:
+  - name: rev.namespace.sidecar-injector.istio.io
+    # mutating-admissionステップ発火条件を登録する。
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+        scope: "*"
+    # Webhookの前段にあるServiceの情報を登録する。
+    clientConfig:
+      service:
+        name: istiod-<リビジョン番号>
+        namespace: istio-system
+        path: "/inject" # エンドポイント
+        port: 443
+      caBundle: Ci0tLS0tQk...
+    namespaceSelector:
+      matchExpressions:
+        - key: istio.io/rev
+          operator: In
+          values:
+            - <リビジョン番号>
+```
+
+<br>
+
+### コンテナ注入の仕組み
+
+#### ▼ 全体像
+
+![istio_container-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_container-injection.png)
+
+#### ▼ クライアント → kube-apiserver
+
+（１）クライアント（```kubectl```コマンド実行者、Kubernetesリソース）が、Pod（Deployment、DaemonSet、StatefulSet、も含む）の作成リクエストを送信する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      containers:
+      - name: foo
+        image: foo:1.0.0
+        ports:
+          - containerPort: 80
+```
+
+#### ▼ kube-apiserver → Service + webhookサーバー
+
+（２）kube-apiserverは、認証ステップ、認可ステップ、を実行する。
+
+（３）kube-apiserverは、admission-controllersアドオンを実行する。
+
+（４）kube-apiserverは、admission-controllersアドオンのmutating-admissionステップにて、AdmissionReview構造体のAdmissionRequestにリクエストパラメーターを詰める。
+
+```yaml
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  # AdmissionRequest
+  "request": {
+
+    # 〜 中略 〜
+
+    # 変更されるKubernetesリソースの種類を表す。
+    "resource": {
+      "group": "apps",
+      "version": "v1",
+      "resource": "deployments"
+    },
+    # kube-apiserverの操作の種類を表す。
+    "operation": "CREATE",
+
+    # 認証認可された操作の種類を表す。
+    "options": {
+      "apiVersion": "meta.k8s.io/v1",
+      "kind": "CreateOptions"
+    },
+
+    # 〜 中略 〜
+
+  }
+}
+```
+
+（５）AdmissionReview構造体の```operation```キー値が```CREATE```になっているため、kube-apiserverは、IstioのService（istiod-service）の```/inject```エンドポイント（```443```番ポート）にAdmissionReviewのリクエストを送信する。 発火条件や宛先はMutatingWebhookConfigurationに設定されている
+
+![kubernetes_admission-controllers_admission-review_request](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review_request.png)
+
+#### ▼ Service + webhookサーバー → kube-apiserver
+
+（６）IstioのServiceはAdmissionReviewを受信する。Serviceは、リクエストをIstiodコントロールプレーン（```15017```番ポート）にポートフォワーディングする。
+
+（７）Istiodコントロールプレーン内のwebhookサーバーは、AdmissionReviewを```/inject```エンドポイントで受信する。
+
+```yaml
+# patch処理の例
+[
+
+  # 〜 中略 〜
+
+  {
+    "op": "add",
+    # spec.initContainers[1] を指定する。
+    "path": "/spec/initContainers/1",
+    # マニフェストファイルに追加される構造を表す。
+    "value": {
+        "name": "istio-init",
+        "resources": {}
+    }
+  },
+  {
+    "op": "add",
+    # spec.containers[1] を指定する。
+    "path": "/spec/containers/1",
+    # マニフェストファイルに追加される構造を表す。
+    "value": {
+        "name": "istio-proxy",
+        "resources": {}
+    }
+  }
+  
+  # 〜 中略 〜
+    
+]
+```
+
+> ℹ️ 参考：
+>
+> - https://github.com/istio/istio/blob/a19b2ac8af3ad937640f6e29eed74472034de2f5/pkg/kube/inject/webhook.go#L171-L172
+> - https://github.com/istio/istio/blob/b3d1566a2af8591d8a74c648108e549c3879d45f/pkg/kube/inject/webhook_test.go#L960-L975
+> - https://github.com/istio/istio/blob/1d3fdfd8b7fb81615ad75e6bba6598cb62c97264/pilot/pkg/bootstrap/server.go#L302
+
+（８）webhookサーバーで、コンテナ（```istio-init```コンテナ、```istio-proxy```コンテナ）を注入するpatch処理を定義する。
+
+> ℹ️ 参考：https://github.com/istio/istio/blob/e1f63e8ce82e3bad28c2bb0a87f4bc7ffefac1b9/pkg/kube/inject/webhook.go#L909-L915
+
+```yaml
+{
+  "apiVersion": "admission.k8s.io/v1",
+  "kind": "AdmissionReview",
+  # AdmissionResponse
+  "response": {
+    "uid": "<value from request.uid>",
+    "allowed": true,
+    "patchType": "JSONPatch",
+    # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
+    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
+  }
+}
+```
+
+（９）webhookサーバーは、kube-apiserverにAdmissionReviewを返信する。
+
+![kubernetes_admission-controllers_admission-review_response](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review_response.png)
+
+#### ▼ kube-apiserver → kubelet → コンテナランタイムのデーモン
+
+（１０）kube-apiserverは、AdmissionReviewを受信する。patch処理の定義に基づいて、リクエストの内容を書き換える。
+
+（１１）kube-apiserverは、kubeletにPodの作成をコールする。（実際は、kube-controller、etcd、kube-scheduler、と通信がある）
+
+（１２）kubeletは、コンテナランタイムデーモンを操作し、コンテナ（```app```、```istio-init```、```istio-proxy```）を作成する。
 
 <br>
 
@@ -290,9 +601,7 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 <br>
 
-## 01-05.  Istio、Envoy（Istio無し）、Kubernetes
-
-### 対応関係
+## 01-05.  IstioとEnvoy、Envoyのみ、Kubernetes、の比較
 
 Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 
@@ -303,14 +612,14 @@ Kubernetes、Envoy、Kubernetesの比較は以下の通りである。
 > - https://github.com/envoyproxy/go-control-plane
 > - https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| Istio+Kubernetes + Envoy | Kubernetes + Envoy | Kubernetesのみ                 |
-|--------------------------|--------------------| ------------------------------ |
-| DestinationRule          | Route              | kube-proxy                     |
-| EnvoyFilter              | Listener           | kube-proxy                     |
-| Istiodコントロールプレーン         | go-control-plane   | -                              |
-| ServiceEntry             | Cluster            | Service                        |
-| VirtualService+Gateway   | Route+Listener     | Ingress+Ingressコントローラー |
-| WorkloadEntry            | Endpoint           | Endpoint                       |
+| Istio + Kubernetes + Envoy | Kubernetes + Envoy | Kubernetesのみ           |
+|----------------------------|--------------------|------------------------|
+| DestinationRule            | Route              | kube-proxy             |
+| EnvoyFilter                | Listener           | kube-proxy             |
+| Istiodコントロールプレーン           | go-control-plane   | なし                     |
+| ServiceEntry               | Cluster            | Service                |
+| VirtualService+Gateway     | Route+Listener     | Ingress+Ingressコントローラー |
+| WorkloadEntry              | Endpoint           | Endpoint               |
 
 <br>
 
@@ -390,10 +699,10 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 > ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/ 
 
-| 場合                                 | VirtualService数                                             |
-| ------------------------------------ | ------------------------------------------------------------ |
-| API GatewayをIstio内で管理する場合   | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 |
-| API GatewayをIstio内で管理しない場合 | API Gatewayから全てのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある。 |
+| 場合                               | VirtualService数                                             |
+| ---------------------------------- | ------------------------------------------------------------ |
+| API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 |
+| API GatewayをIstioで管理しない場合 | API Gatewayから全てのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある。 |
 
 <br>
 
@@ -446,7 +755,7 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 <br>
 
-## 03. Injectionテスト
+## 03. インジェクションテスト
 
 ### Faultインジェクション
 
@@ -458,10 +767,10 @@ DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの
 
 #### ▼ テストの種類
 
-| テスト名         | 内容                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を引き起こす。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を引き起こす。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| テスト名         | 内容                                                                                                                                                    |
+| ---------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
 <br>
 

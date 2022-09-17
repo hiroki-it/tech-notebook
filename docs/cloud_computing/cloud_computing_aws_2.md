@@ -1519,7 +1519,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 | 項目                                            | 説明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPS通信を受け付ける場合、SSL証明書のARNを設定する。 |
+| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。 |
 | ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
 | ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |

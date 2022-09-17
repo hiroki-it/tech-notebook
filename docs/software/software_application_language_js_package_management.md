@@ -389,7 +389,7 @@ yarn upgrade --latest
 
 #### ▼ 読み込むパッケージをまとめる
 
-JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.html```ファイルがブラウザにレンダリングされると、JavaScriptのファイルへのリクエスト数が減るため、Webページの読み出しが早くなる。
+JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.html```ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
 
 > ℹ️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 

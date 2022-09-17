@@ -31,7 +31,9 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ Provider例
 
-Oracle VM VirtualBox、VMware Workstation、など
+- Oracle VM VirtualBox
+- VMware Workstation
+- など
 
 <br>
 
@@ -45,7 +47,10 @@ Oracle VM VirtualBox、VMware Workstation、など
 
 #### ▼ Provider例
 
-VMware vSphere Hypervisor、Xen、KVM、など
+- VMware vSphere Hypervisor
+- Xen
+- KVM
+- など
 
 <br>
 
@@ -59,7 +64,12 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 #### ▼ Provider例
 
-Docker、Containerd、Podman、LXC、OpenVZ、など
+- Docker
+- Containerd
+- Podman
+- LXC
+- OpenVZ
+- など
 
 > ℹ️ 参考：
 >

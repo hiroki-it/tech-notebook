@@ -349,7 +349,7 @@ func main() {
 
 ## 02-02. 関数例
 
-### Amplify -> EventBridge -> Lambda ->Slack-API
+### Amplify → EventBridge → Lambda → Slack-API
 
 > ℹ️ 参考：https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -409,7 +409,7 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### Amplify -> EventBridge -> Lambda ->  Slack-API
+### Amplify → EventBridge → Lambda → Slack-API
 
 **＊実装例＊**
 
@@ -628,7 +628,7 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### API Gateway -> Lambda -> S3
+### API Gateway → Lambda → S3
 
 **＊実装例＊**
 

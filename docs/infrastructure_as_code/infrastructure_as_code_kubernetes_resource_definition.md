@@ -117,7 +117,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 
 #### ▼ managedFieldsとは
 
-```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
+```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に追加される。マニフェストファイルで、クライアント（```kubectl```実行者、Kubernetesリソース）が管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
 
 > ℹ️ 参考：
 >
@@ -442,7 +442,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-```kubectl```コマンドのクライアントの認証情報を設定する。
+kube-apiserverのクライアント（特に```kubectl```コマン実行者）のUserAccountの情報を設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -668,12 +668,12 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -696,12 +696,12 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -727,12 +727,12 @@ metadata:
 spec:
   selector:
     matchLabels: # Deploymentに紐づけるPodのmetadata.labelsキー
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels: # Podのmetadata.labelsキー
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -760,12 +760,12 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -788,12 +788,12 @@ spec:
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -819,12 +819,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
     spec:
       containers:
         - name: foo-gin
@@ -2418,7 +2418,7 @@ spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app: foo-gin
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
@@ -2441,7 +2441,7 @@ spec:
   minAvailable: 3 # 新しいワーカーNodeで、3個のPodのスケジューリングが完了するまで待機する。
   selector:
     matchLabels:
-      app: foo-gin # 対象のPod
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
@@ -2460,7 +2460,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-gin # 対象のPod
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
@@ -3074,7 +3074,7 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
@@ -3123,13 +3123,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
@@ -3180,13 +3180,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
