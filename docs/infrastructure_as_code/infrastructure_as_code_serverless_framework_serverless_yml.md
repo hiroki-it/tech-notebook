@@ -125,7 +125,7 @@ functions:
 
 #### ▼ sqs
 
-Lambda関数に紐づけるSQSを設定する。新しくSQSを作成できず、既存のSQSと紐づける機能しかないことに注意する。
+Lambda関数に紐づけるSQSを設定する。新しくSQSを作成できず、既存のSQSと紐づける動作しかないことに注意する。
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 

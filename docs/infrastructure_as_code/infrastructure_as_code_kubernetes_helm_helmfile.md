@@ -66,7 +66,7 @@ repository/
 
 ### environments
 
-環境名のリストとして機能し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
+環境名のリストとして動作し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 

@@ -433,7 +433,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 ### metrics-serverとは
 
-KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングするためのAPIとして機能する。kube-apiserverは、メトリクスのリクエストをmetrics-serverにプロキシする。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングするためのAPIとして動作する。kube-apiserverは、メトリクスのリクエストをmetrics-serverにプロキシする。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
 <br>
 

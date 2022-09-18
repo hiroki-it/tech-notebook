@@ -87,7 +87,7 @@ Webページをテキストによって構成するための言語をマーク�
 
 #### ▼ インラインスクリプト
 
-JavaScriptファイルを直接的に組み込む方法。
+JavaScriptファイルを直接的に組み込む。
 
 ```html
 <script>
@@ -97,7 +97,7 @@ document.write("JavaScriptを直接的に組み込んでいます。")
 
 #### ▼ 外部スクリプト
 
-外部JavaScriptファイルを組み込む方法。
+外部JavaScriptファイルを組み込む。
 
 ```html
 <script src="sample.js"></sc
@@ -224,7 +224,7 @@ JavaScriptやHTMLの更新にブラウザが追いついていない場合、そ
 
 #### ▼ Pre-Loadingとは
 
-Downloading処理の優先順位を上げるように宣言する方法。優先度の高い分割リソースは、次のParse処理、Scripting処理も行われる。そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。
+Downloading処理の優先順位を上げるように宣言する。優先度の高い分割リソースは、次のParse処理、Scripting処理も行われる。そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。
 
 ```html
 <head>
@@ -248,15 +248,15 @@ Downloading処理の優先順位を上げるように宣言する方法。優先
 
 #### ▼ Lazy Loadingとは
 
-条件に合致した要素を随時読み込む方法。条件の指定方法には、```scroll```/```resize```イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。
+条件に合致した要素を随時読み込む。条件の指定方法には、```scroll```/```resize```イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。
 
 #### ▼ scrollイベントとresizeイベントに基づく読み出し
 
-scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む方法。
+scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。
 
 #### ▼ Intersection Observerによる要素の交差率に基づく読み出し
 
-Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む方法。例えば、交差率の閾値を『```0.5```』と設定すると、ターゲットエレメントの交差率が『```0.5```』を超えた要素を随時読み込む。
+Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。例えば、交差率の閾値を『```0.5```』と設定すると、ターゲットエレメントの交差率が『```0.5```』を超えた要素を随時読み込む。
 
 ![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/intersection-observer.png)
 

@@ -512,9 +512,9 @@ users:
 
 Kubernetesリソースに渡す機密でない変数を設定する。
 
-#### ▼ string型変数
+#### ▼ 変数の管理
 
-ConfigMapに設定するstring型変数を設定する。
+ConfigMapに設定する変数を設定する。
 
 ```yaml
 apiVersion: v1
@@ -539,7 +539,9 @@ data:
   number: "1"
 ```
 
-パイプ（``` |```）を使用すれば、設定ファイルをstring型変数として設定できる。
+#### ▼ ファイルに管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
 
 ```yaml
 apiVersion: v1
@@ -1584,7 +1586,7 @@ kube-schedulerがPodをスケジューリングするワーカーNodeを設定�
 
 #### ▼ nodeAffinity
 
-ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内に新しいPodをスケジューリングする。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、Nodeグループ単位でPodをスケジューリングできる。
+ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内に新しいPodをスケジューリングする。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するだけでなくNodeグループ単位でPodをスケジューリングできる。
 
 > ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1753,6 +1755,31 @@ spec:
       ports:
         - containerPort: 8080
 ```
+
+#### ▼ envFrom
+
+```spec.volumes.secret```キーとは異なり（ファイルとしてコンテナにマウントする）、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      ports:
+        - containerPort: 8080
+      envFrom:
+        - secretRef:
+            name: foo-secret # 環境変数としてコンテナに出力するSecret
+        - configMapRef:
+            name: foo-config-map # 環境変数としてコンテナに出力するConfigMap
+```
+
 
 #### ▼ imagePullPolicy
 
@@ -1928,7 +1955,7 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-Podに適用するSecretを設定する。
+プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。別途、ServiceAccountの```imagePullSecrets```キーでも同じSecretを指定しておき、このServiceAccountをPodに紐づける。これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
 > ℹ️ 参考：
 >
@@ -1944,9 +1971,9 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: private-foo-gin:1.0.0 # プライベートリポジトリ
   imagePullSecrets:
-    - name: foo-secret
+    - name: foo-repository-credentials-secret # プライベートリポジトリのクレデンシャル情報を持つSecret
 ```
 
 <br>
@@ -2024,7 +2051,7 @@ spec:
 
 ### spec.nodeSelector
 
-kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するだけでなくNodeグループにPodを作成できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
@@ -2222,7 +2249,7 @@ Pod内で使用するボリュームを設定する。
 
 #### ▼ configMap
 
-ConfigMapの変数をコンテナのディレクトリにマウントする。
+ConfigMapをコンテナのディレクトリにファイルとしてマウントする。Secretは、別の```spec.volumes.secret```キーで設定することに注意する。
 
 **＊実装例＊**
 
@@ -2237,11 +2264,12 @@ spec:
       image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
-          mountPath: /fluent-bit/etc/
+          mountPath: /fluent-bit/etc/ # ConfigMapをファイルとしてマウントするディレクトリ
   volumes:
     - name: foo-fluent-bit-conf-volume
       configMap:
-        name: foo-fluent-bit-conf-config-map
+        name: foo-fluent-bit-conf-config-map # ファイルとしてコンテナにマウントするConfigMap
+        defaultMode: 420 # ファイルの実行権限
 ```
 
 ```yaml
@@ -2398,6 +2426,39 @@ spec:
     path: /data/src/foo
     type: DirectoryOrCreate
 ```
+
+#### ▼ secret
+
+```spec.containers.envFrom```キーとは異なり（環境変数としてコンテナに出力する）、ファイルとしてコンテナにマウントするSecretを設定する。ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      volumeMounts:
+        - name: foo-secret-volume
+          mountPath: /etc/secrets # Secretをファイルとしてマウントするディレクトリ
+        - name: foo-config-map-volume
+          mountPath: /etc/config-maps # ConfigMapをファイルとしてマウントするディレクトリ
+  volumes:
+    - name: foo-secret-volume
+      secret:
+        secretName: foo-secret # ファイルとしてコンテナにマウントするSecret
+        defaultMode: 420 # ファイルの実行権限
+    - name: foo-config-map-volume
+      configMap:
+        name: foo-config-map # ファイルとしてコンテナにマウントするConfigMap
+        defaultMode: 420 # ファイルの実行権限
+```
+
 
 <br>
 
@@ -2618,7 +2679,7 @@ subjects:
 
 Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型変数
+#### ▼ 変数の管理
 
 Secretで保持するstring型変数を設定する。使用時に```base64```方式で自動的にデコードされるため、あらかじめ```base64```方式でエンコードしておく必要がある。
 
@@ -2634,7 +2695,7 @@ data:
   password: *****
 ```
 
-string型しか設定できないため、```base64```方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型の変数しか設定できないため、```base64```方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -2648,6 +2709,26 @@ data:
   number: "*****"
 ```
 
+#### ▼ 機密なファイルの管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#tls-secrets
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  # SSL証明書
+  foo.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+  # SSL証明書と対になる公開鍵
+  foo.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
 <br>
 
 ### stringData
@@ -2656,9 +2737,9 @@ data:
 
 Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型変数
+#### ▼ 機密な変数の管理
 
-Secretで保持するstring型変数を設定する。平文で設定しておく必要がある。
+Secretで保持するstring型の変数を設定する。平文で設定しておく必要がある。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -2672,7 +2753,7 @@ data:
   password: baz
 ```
 
-string型しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型の変数しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -2685,6 +2766,25 @@ stringData:
   enableFoo: "true" # ダブルクオーテーションで囲う。
   number: "1"
 ```
+
+#### ▼ 機密なファイルの管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+stringData:
+  config.yaml: |
+    apiUrl: "https://my.api.com/api/v1"
+    username: bar
+    password: baz
+```
+
 
 <br>
 
@@ -3043,7 +3143,7 @@ automountServiceAccountToken: false
 
 #### ▼ imagePullSecretsとは
 
-新しく作成されたPod内コンテナに自動挿入する```imagePullSecrets```キーを設定する。
+プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。これにより、ServiceAccountが紐づけられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
 
@@ -3053,7 +3153,7 @@ kind: ServiceAccount
 metadata:
   name: foo-service-account
 imagePullSecrets:
-  - name: foo-secret
+  - name: foo-repository-credentials-secret
 ```
 
 <br>

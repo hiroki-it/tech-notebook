@@ -33,7 +33,7 @@ Vagrantfileを使用して、プロバイダーとプロビジョナーを操作
 
 #### ▼ プロバイダーとは
 
-仮想サーバー/コンテナを提供する。
+仮想環境を提供する。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/providers
 
@@ -344,7 +344,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ホストと仮想環境間のファイルの入出力の速度差によって、仮想環境のパフォーマンスに差がある。以下のリンクで、ロードテストを実施したところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
+ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。以下のリンクで、ロードテストを実施したところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
 
 > ℹ️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 

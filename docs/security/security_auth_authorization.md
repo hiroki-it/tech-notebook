@@ -15,7 +15,7 @@ description: Authorization（認可）＠認証/認可の知見を記録して�
 
 ## 01. 認可とは
 
-認証済みのユーザーに対して、アクセス可能な権限範囲（認可スコープ）を付与する方法。
+認証済みのユーザーに対して、アクセス可能な権限範囲（認可スコープ）を付与する。
 
 <br>
 
@@ -120,7 +120,7 @@ Facebookで認証フェーズのみでログインし、連携先の免許証作
 
 ```yaml
 GET https://www.facebook.com/auth?<下表で説明>
-
+---
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
@@ -144,7 +144,7 @@ HOST: authorization-server.com # 認可サーバーのホスト
 
 ```yaml
 302 Found
-
+---
 Location: https://www.免許証作成サイト.com/login?<下表で説明>
 ```
 
@@ -161,10 +161,10 @@ Location: https://www.免許証作成サイト.com/login?<下表で説明>
 
 ```yaml
 POST https://www.facebook.com/auth?
-
+---
 Host: authorization-server.com # 認可サーバーのホスト
 Content-Type: application/x-www-form-urlencoded
-
+---
 # ボディ
 # 下表で説明
 ```
@@ -186,11 +186,11 @@ Content-Type: application/x-www-form-urlencoded
 
 ```yaml
 HTTP/1.1 200 OK
-
+---
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-store
 Pragma: no-cache
-
+---
 {
   "access_token": "<アクセストークン>",       # 必須
   "token_type": " <トークンタイプ>",          # 必須
@@ -234,9 +234,20 @@ OAuthとは異なる仕組みで認証/認可を実現する。
 
 #### ▼ OIDCとは
 
-OAuthをベースとして、これに認証フェーズを追加し、認証/認可を実現する。
+OAuthをベースとして、認証フェーズを追加し、認証/認可を実現する。
 
-> ℹ️ 参考：https://baasinfo.net/?p=4418
+> ℹ️ 参考：
+> 
+> - https://baasinfo.net/?p=4418
+> - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
+
+#### ▼ OAuthとの違い
+
+OIDCでは、OAuthとは異なり、アクセストークンではなく、IDトークンを使用する。
+
+> ℹ️ 参考：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+
+![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oidc_vs_oauth.png)
 
 #### ▼ OIDCの種類
 
@@ -267,7 +278,7 @@ Facebookには認証フェーズと認可フェーズでログインする点は
 
 ```yaml
 GET https://example.com/bar.php
-
+---
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 

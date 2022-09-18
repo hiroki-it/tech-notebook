@@ -1076,7 +1076,7 @@ API Gatewayのエンドポイントに対して、以下のパラメーターで
 
 ```yaml
 GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
-
+---
 X-API-Key: *****
 ```
 

@@ -150,7 +150,7 @@ Win10におけるファイアウォール。
 
 | WAFの種類        | 説明                                                         | 例                                                   |
 | ---------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
-| ソフトウェア型   | WAFの機能を持つソフトウェアを自社サーバーにセットアップし、これを設置する。 | SuiteGuard、SmartCloud、など                         |
+| ソフトウェア型   | WAFの能力を持つソフトウェアを自社サーバーにセットアップし、これを設置する。 | SuiteGuard、SmartCloud、など                         |
 | アプライアンス型 | WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを設置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など      |
 | クラウド型       | クラウドプロバイダーが提供するWAFを設置する。                | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、など |
 
@@ -288,7 +288,7 @@ sha256によって作成された文字列をファイル情報として添付�
 
 ```yaml
 200 OK
-
+---
 Set-Cookie: csrftoken=<トークン>
 # 独自ヘッダー
 X-CSRF-TOKEN: <トークン>
@@ -315,10 +315,11 @@ X-CSRF-TOKEN: <トークン>
 
 ```yaml
 POST https://example.com/bar-form.php
-
+---
 # 独自ヘッダー
 x-csrf-token: <トークン>
-
+---
+# ボディ
 {
   _token=<トークン>
 }
@@ -376,7 +377,7 @@ max_input_vars = 1000
 
 #### ▼ 【対策】同一送信元のリクエスト制限
 
-同じ送信元からの一分間あたりのリクエスト数を制限する。例えば、WAF、API Gatewayの機能を使用する。
+同じ送信元からの一分間あたりのリクエスト数を制限する。例えば、WAF、API Gatewayを使用する。
 
 <br>
 
@@ -390,13 +391,13 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 #### ▼ 【対策】特殊な文字列の無効化
 
-DBのSQLクエリのパラメーターとなる入力では、『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ。そのため、これらのパラメーターが割り当てられているリクエストメッセージを拒否する。例えば、WAFの機能を使用する。
+DBのSQLクエリのパラメーターとなる入力では、『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ。そのため、これらのパラメーターが割り当てられているリクエストメッセージを拒否する。例えば、WAFを使用する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
 #### ▼ 【対策】プレースホルダー
 
-プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する方法。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできるため、SQLインジェクションの対策になる。プレースホルダーについては、以下のリンクを参考にせよ。
+プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできるため、SQLインジェクションの対策になる。プレースホルダーについては、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_sql.html
 
@@ -426,7 +427,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 ```yaml
 GET https://foo.com/bar
-
+---
 # 送信元オリジン
 Origin: https://example.com
 ```
@@ -459,7 +460,7 @@ return new Promise((resolve, reject) => {
 
 ```yaml
 200 OK
-
+---
 # 許可された送信元オリジン
 Access-Control-Allow-Origin: https://example.com
 # リクエストメッセージがCookieヘッダーを持つことを許可する場合
@@ -474,7 +475,7 @@ Access-Control-Allow-Headers: Content-Type
 
 ```yaml
 200 OK
-
+---
 # 全てのオリジンを許可
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: *
@@ -495,13 +496,13 @@ Domain属性に```example.com```が割り当てられていたとする。最初
 
 ```yaml
 200 OK
-
+---
 Set-Cookie: domain=example.com
 ```
 
 ```yaml
 POST http://foo.example.com/bar-form.php
-
+---
 # 送信元オリジン
 Origin: https://example.com
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>
@@ -513,7 +514,7 @@ Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 
 ```yaml
 200 OK
-
+---
 Set-Cookie: HttpOnly
 ```
 
@@ -531,7 +532,7 @@ Set-Cookie: HttpOnly
 
 ```yaml
 200 OK
-
+---
 Set-Cookie: SameSite=None
 ```
 
@@ -541,7 +542,7 @@ Set-Cookie: SameSite=None
 
 ```yaml
 200 OK
-
+---
 Set-Cookie: Secure
 ```
 

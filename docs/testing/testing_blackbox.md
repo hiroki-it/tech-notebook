@@ -58,7 +58,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ### 単体テストとは
 
-機能追加/変更を含むコンポーネントのみが単体で正しく機能するかを検証する。
+機能追加/変更を含むコンポーネントのみが単体で正しく動作するかを検証する。ホワイトボックステストの単体テストとは意味合いが異なることに注意する。
 
 > ℹ️ 参考：https://pm-rasinban.com/ut-it-st
 
@@ -96,7 +96,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ### 結合テストとは
 
-機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく機能しているかを検証する。
+機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく動作しているかを検証する。
 
 > ℹ️ 参考：https://pm-rasinban.com/ut-it-st
 
@@ -183,7 +183,7 @@ KubernetesのワーカーNode上で、Kubernetesリソースとアプリケー�
 |                    | IT                                           | Prometheus + node-exporter      | ダッシュボードでPromQLを入力し、node-exporter経由で収集しているメトリクスを確認できる。 |                                                  |
 |                    | IT                                           | Prometheus + VictoriaMetrics    | Prometheusからメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。 |                                                  |
 | Alertmanager       | UT                                           |                                | Podが正常である。                                            |                                                  |
-|                    | UT                                           |                                | ダッシュボード上から新しく作成したSilenceが、正常に機能している。 |                                                  |
+|                    | UT                                           |                                | ダッシュボード上から新しく作成したSilenceが、正常に動作している。 |                                                  |
 |                    | UT                                           |                                | 条件を満たすアラートルールがあった場合に、アラートを通知できる。 |                                                  |
 |                    | IT                                           | Alertmanager + Prometheus       | Prometheusから送信されたアラートを受信できる。               |                                                  |
 | Grafana            | UT                                           |                                | Podが正常である。                                            |                                                  |
@@ -191,10 +191,10 @@ KubernetesのワーカーNode上で、Kubernetesリソースとアプリケー�
 |                    | IT                                           | Grafana + Prometheus            | ダッシュボードでPromQLを入力し、Prometheusのメトリクスを確認できる。 |                                                  |
 |                    | IT                                           | Grafana + Prometheus            | 任意のダッシュボードでPrometheusのメトリクスのリアルタイムデータを確認できる。 |                                                  |
 |                    | IT                                           | Grafana + Prometheus            | ダッシュボード上で、datasource、namespace、type、resolusion、の条件を変更し、リアルタイムデータを確認できる。 |                                                  |
-| PrometheusOperator | UT                                           |                                | PodMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
-|                    | UT                                           |                                | Probeの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
-|                    | UT                                           |                                | PrometheusRuleの既存の設定が正常に機能しており、異常を検知すると発火できる。 |                                                  |
-|                    | UT                                           |                                | ServiceMonitorの既存の設定が正常に機能しており、異常を検知するとアラートを発火できる。 |                                                  |
+| PrometheusOperator | UT                                           |                                | PodMonitorの既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。 |                                                  |
+|                    | UT                                           |                                | Probeの既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。 |                                                  |
+|                    | UT                                           |                                | PrometheusRuleの既存の設定が正常に動作しており、異常を検知すると発火できる。 |                                                  |
+|                    | UT                                           |                                | ServiceMonitorの既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。 |                                                  |
 |                    | UT                                           |                                | PrometheusOperatorのアラートが発火されていない。             |                                                  |
 | kube-state-metrics | UT                                           |                                | Podが正常である。                                            |                                                  |
 | node-exporter      | UT                                           |                                | Podが正常である。                                            |                                                  |

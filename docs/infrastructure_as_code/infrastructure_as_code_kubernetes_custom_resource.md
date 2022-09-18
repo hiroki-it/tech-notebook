@@ -360,7 +360,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして機能する。operator-controllerが稼働している状況でetcdにカスタムリソースを永続化すれば、バインディング情報に基づいて、operator-controllerはkubeletにカスタムリソースを作成させる。
+カスタムコントローラーとして動作する。operator-controllerが稼働している状況でetcdにカスタムリソースを永続化すれば、バインディング情報に基づいて、operator-controllerはkubeletにカスタムリソースを作成させる。
 
 > ℹ️ 参考：
 >

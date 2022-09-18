@@ -323,9 +323,9 @@ Helmの単体テストコマンド（```helm test```コマンド）を使用し�
 
 ### ホワイトボックステスト結果の通知
 
-#### ▼ Helmの機能を使用する場合
+#### ▼ Helmを使用する場合
 
-Helmには通知機能がなく、手動で周知する必要がある。そこで、```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
+Helmには通知能力がなく、手動で知らせる必要がある。そこで、```helm diff```コマンドをGitOpsによるCDパイプライン上で実行していない（手動で実行している）場合、```helm diff```コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。
 
 ```bash
 $ helm diff <チャート名> -f values.yaml \
@@ -333,9 +333,9 @@ $ helm diff <チャート名> -f values.yaml \
     | pbcopy
 ```
 
-#### ▼ Helm以外の機能を使用する場合
+#### ▼ Helm以外を使用する場合
 
-GitOpsツールの差分機能を使用して、差分画面のURLを共有する。またはCDツールの通知機能（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
+GitOpsツールの差分を使用して、差分画面のURLを共有する。またはCDツールの通知能力（例：argocd-bot）を使用して、CDパイプラインの結果が通知されるようにする。
 
 > ℹ️ 参考：https://github.com/argoproj-labs/argocd-bot
 
@@ -373,11 +373,11 @@ GitOpsツールの差分機能を使用して、差分画面のURLを共有す�
 
 ### ロールバック
 
-#### ▼ Helmの機能を使用する場合
+#### ▼ Helmを使用する場合
 
 ```helm history```コマンドで過去のリリースタグ（リビジョン）を確認し、```helm rollback```コマンドでロールバックする。
 
-#### ▼ Helm以外の機能を使用する場合
+#### ▼ Helm以外を使用する場合
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
 

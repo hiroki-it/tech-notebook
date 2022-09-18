@@ -79,7 +79,7 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 
 #### ▼ analyzeとは
 
-Istioが正しく機能しているか否かを検証する。
+Istioが正しく動作しているか否かを検証する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 

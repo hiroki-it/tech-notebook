@@ -60,7 +60,7 @@ description: 仮想化の知見を記録しています。
 
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 
-物理サーバーのホスト上で、仮想サーバーと同様の機能を持つコンテナを作成する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを使用して、単一のOS上に独立したコンテナを作成する。
+物理サーバーのホスト上で、仮想サーバーと同様の能力を持つコンテナを作成する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを使用して、単一のOS上に独立したコンテナを作成する。
 
 #### ▼ Provider例
 

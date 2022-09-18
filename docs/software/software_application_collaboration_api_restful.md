@@ -361,7 +361,7 @@ JSON型データ内に定義し、メッセージボディにパラメーター�
 
 ```yaml
 POST https://example.com
-
+---
 # メッセージボディ
 {
   "id": 1,
@@ -377,7 +377,7 @@ POST https://example.com
 
 ```yaml
 POST https://example.com
-
+---
 # Authorizationヘッダー
 authorization: Bearer ${Token}
 # APIキーヘッダー
@@ -465,11 +465,11 @@ JavaScriptのフレームワーク。コンテキストオブジェクトが用�
 
 #### ▼ GET送信の場合
 
-クエリパラメーターに送信するデータを記述する方法。リクエストメッセージは、以下の要素に分類できる。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。
+クエリパラメーターに送信するデータを記述する。リクエストメッセージは、以下の要素に分類できる。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。
 
 ```yaml
 GET https://example.com/bar-form.php?text1=a&text2=b
-
+---
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
@@ -500,7 +500,7 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 
 ```yaml
 POST https://example.com/bar-form.php
-
+---
 # リクエストされたドメイン名
 Host: example.com
 # 送信元IPアドレス
@@ -529,8 +529,8 @@ Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 # 送信元IPアドレス
 # ※ リバースプロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
-
-# ボディ。（SSLによって暗号化されるため閲覧不可）
+---
+# ボディ（SSLによって暗号化されるため閲覧不可）
 text=a&text2=b 
 ```
 
@@ -588,7 +588,7 @@ curl_close($curl);
 
 ```yaml
 200 OK
-
+---
 # レスポンスで送信するMIMEタイプ
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
@@ -625,7 +625,7 @@ X-Amz-Cf-Pop: SEA19-C2
 X-Amz-Cf-Id: *****==
 # 言語のバージョン（※ php.ini にて、expose_php = Off と設定することにより非表示にできる）
 X-Powered-By: PHP/7.3.22
-
+---
 # ボディ
 ここにサイトのHTMLのコード
 ```
@@ -727,11 +727,11 @@ GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 ```yaml
 {
-  "code": 400
+  "code": 400,
   "errors": [
     "〇〇は必ず入力してください。",
     "□□は必ず入力してください。"
-  ]
+  ],
   "url" : "https://foo-api-doc.co.jp"
 }
 ```
@@ -778,7 +778,7 @@ POST/PUT送信で、ボディパラメーターのデータ形式を表す識別
 
 ```yaml
 POST https://example.com/users/12345
-
+---
 # ヘッダー
 Content-Type: application/json
 ```

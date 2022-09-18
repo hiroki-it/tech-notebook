@@ -40,7 +40,7 @@ GKE Cluster（マスターNode、ワーカーNode、を含む）から構成さ�
 
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
-Anthos GKE Clusterの機能を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Clusterの機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
+Anthos GKE Clusterの能力を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Clusterの機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
 
 > ℹ️ 参考：
 >
@@ -77,7 +77,7 @@ Istioから構成される。
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
-一連のacm-operatorは、組み合わさって機能し、GitOpsを実現する。
+一連のacm-operatorは、組み合わさって動作し、GitOpsを実現する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 

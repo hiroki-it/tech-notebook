@@ -383,7 +383,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ▼ dockerタイプとは
 
-コンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境コンテナの中でコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境コンテナとは別の環境で```jobs```キーを行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+コンテナを実行環境として設定する。これを選択したうえで、コンテナイメージのビルド（Docker composeを含む）を実行する場合、実行環境コンテナの中でコンテナを作成するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境コンテナとは別の環境で```jobs```キーを行う必要がある。また、dockerコマンドがプリインストールされていないイメージであった場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選択した場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが動作しなくなる。
 
 > ℹ️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -509,7 +509,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-Workflow間で使いまわせるキャッシュを作成する。```resource_class```キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のworkflowで同じパッケージがインストールされる。しかし、workflowのたびに、パッケージをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のworkflowのビルド時に、vendorディレクトリ配下に配置されたアーティファクトを再利用する。この機能は、複数のworkflowの間だけでなく、```1```個のworkflowの中でも利用できる。
+Workflow間で使いまわせるキャッシュを作成する。```resource_class```キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。これを使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のworkflowで同じパッケージがインストールされる。しかし、workflowのたびに、パッケージをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のworkflowのビルド時に、vendorディレクトリ配下に配置されたアーティファクトを再利用する。この能力は、複数のworkflowの間だけでなく、```1```個のworkflowの中でも利用できる。
 
 > ℹ️ 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
@@ -575,7 +575,7 @@ jobs:
             yarn test
 ```
 
-ただし、この機能はcommandsで共通化した方が可読性が良い。
+ただし、この能力はcommandsで共通化した方が可読性が良い。
 
 **＊実装例＊**
 
@@ -960,8 +960,8 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 | Bash       | ```export```、```source```キー、```$BASH_ENV``` | ```run```キーにおける```command```キー内のシェルのみで参照できる。ただし、```$BASH_ENV```を使用すれば、異なる```commands```間で値を共有可能。 |
 | Container  | ```environment```キー                           | ```jobs```キー内の特定のコンテナのシェルのみで参照できる。        |
 | Job        | ```environment```キー                           | ```jobs```キー内のシェルのみで参照できる。                        |
-| Project    | Environment Variables機能                   | リポジトリ内のシェルのみ参照できる。                         |
-| Global     | Contexts機能                                | 異なるリポジトリ間のシェルで参照できる。                     |
+| Project    | Environment Variables能力                   | リポジトリ内のシェルのみ参照できる。                         |
+| Global     | Contexts能力                                | 異なるリポジトリ間のシェルで参照できる。                     |
 
 #### ▼ 環境変数の出力方法
 
@@ -1044,7 +1044,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは```run```キーを実行する時に『```$BASH_ENV```』が```source```キーで自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```キー間』で共有できる。ただし、Alpine Linuxでは、この共有機能を使用できないため注意する（かなりたくさんある）。
+CircleCIでは```run```キーを実行する時に『```$BASH_ENV```』が```source```キーで自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```キー間』で共有できる。ただし、Alpine Linuxでは、この共有を使用できないため注意する（かなりたくさんある）。
 
 > ℹ️ 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -1146,13 +1146,13 @@ jobs:
 
 ### Projectレベル
 
-Containerレベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。Environment Variables機能を使用する。環境変数の値が４文字未満、または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合、CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため、注意が必要である。
+Containerレベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。Environment Variablesを使用する。環境変数の値が４文字未満、または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合、CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため、注意が必要である。
 
 <br>
 
 ### Grobalレベル
 
-Projectレベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。Contexts機能を使用する。
+Projectレベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。Contextsを使用する。
 
 <br>
 

@@ -57,7 +57,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 
 #### ▼ application-controllerとは
 
-kube-controllerとして機能し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
+kube-controllerとして動作し、Applicationの状態がマニフェストファイルの宣言的設定通りになるように制御する。repo-serverからマニフェストファイルを取得し、指定されたKubernetes Clusterにこれを作成する。Applicationが管理するKubernetesリソースのマニフェストファイルと、監視対象リポジトリのマニフェストファイルの間に、差分がないか否かを継続的に監視する。この時、監視対象リポジトリを定期的にポーリングし、もしリポジトリ側に更新があった場合、再Syncを試みる。
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 

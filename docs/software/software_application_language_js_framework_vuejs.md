@@ -592,7 +592,7 @@ const router = new VueRouter({
 module.exports = router;
 ```
 
-また、Vue-Routerの機能を利用するために、```router```オプションをルートコンポーネントに注入する必要がある。
+また、Vue-Routerの能力を利用するために、```router```オプションをルートコンポーネントに注入する必要がある。
 
 ```javascript
 import router from "./router"

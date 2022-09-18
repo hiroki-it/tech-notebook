@@ -58,7 +58,7 @@ $ gcloud auth login
 
 #### ▼ componentとは
 
-```gcloud```コマンドの機能を管理する。
+```gcloud```コマンドのコンポーネントを管理する。
 
 #### ▼ update
 

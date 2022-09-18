@@ -203,7 +203,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 #### ▼ ```terraform```ブロックとは
 
-```terraform```コマンドの実行時に、エントリーポイントとして機能するファイル。
+```terraform```コマンドの実行時に、エントリーポイントとして動作するファイル。
 
 #### ▼ required_providers
 

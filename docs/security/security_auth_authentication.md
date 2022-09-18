@@ -15,7 +15,7 @@ description: Authenticate（認証）＠認証/認可の知見を記録してい
 
 ## 01. 認証とは
 
-通信しているユーザーが誰であるかを特定する方法。
+通信しているユーザーが誰であるかを特定する。
 
 <br>
 
@@ -46,20 +46,20 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 
 #### ▼ セッションIDを使用したForm認証の場合（セッションベース）
 
-セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
+（１）セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
 
-最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
+（２）最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。
 
 ```yaml
 POST https://example.com/users
-
+---
 {
     "email_address": "foo@gmail.com",
     "password": "foo"
 }
 ```
 
-次回の認証時に、再びユーザーが認証情報を送信する。
+（３）次回の認証時に、再びユーザーが認証情報を送信する。
 
 ```yaml
 POST https://example.com/foo-form
@@ -70,22 +70,22 @@ POST https://example.com/foo-form
 }
 ```
 
-サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
+（４）サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
 
 ```yaml
 # セッションデータ
 { sessionid: ***** }
 ```
 
-レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
+（５）レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
 
-```http
+```yaml
 200 OK
 ---
 Set-Cookie: sessionid=<セッションID>
 ```
 
-サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。加えて次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
+（６）サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。加えて次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
 
 ```yaml
 POST https://example.com/foo-form
@@ -93,7 +93,7 @@ POST https://example.com/foo-form
 cookie: sessionid=<セッションID>
 ```
 
-認証解除時、サーバーでセッションデータを削除する。
+（７）認証解除時、サーバーでセッションデータを削除する。
 
 > ℹ️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
@@ -130,7 +130,7 @@ cookie: sessionid=<セッションID>
 
 ```yaml
 GET https://example.com/bar.php
-
+---
 x-api-key: <APIキー>
 ```
 
@@ -146,7 +146,7 @@ x-api-key: <APIキー>
 
 ```yaml
 GET https://example.com/bar.php
-
+---
 authorization: <Personal Acccess Token>
 ```
 
@@ -175,51 +175,51 @@ authorization: <Personal Acccess Token>
 | ユーザー       | クライアントを使用している人物のこと。                       |
 | サーバー       | クライアントからリクエストを受信し、レスポンスを送信するアプリケーションのこと。 |
 
-最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
+（１）最初、クライアントは、認証後にアクセスできるWebページのリクエストをサーバーに送信する。
 
 ```yaml
 GET https://example.com/foo-form
 ```
 
-サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。ユーザーに表示するための認証領域には、任意の値を持たせられ、サイト名が設定されることが多い。
+（２）サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。ユーザーに表示するための認証領域には、任意の値を持たせられ、サイト名が設定されることが多い。
 
 ```yaml
 401 Unauthorized
-
+---
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-『```<ユーザー名>:<パスワード>```』をbase64方式でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
+（３）『```<ユーザー名>:<パスワード>```』をbase64方式でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo-form
-
+---
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。また、認証情報をブラウザのWebストレージに保存する。
+（４）サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。また、認証情報をブラウザのWebストレージに保存する。
 
 ```yaml
 200 OK
-
+---
 WWW-Authenticate: Basic realm=""
 ```
 
-認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
+（５）認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```yaml
 POST https://example.com/foo-form/logout
-
+---
 authorization: Basic <誤った認証情報>
 ```
 
-サーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
+（６）サーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
 ```yaml
 401 Unauthorized
-
+---
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
@@ -236,13 +236,13 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ```yaml
 200 OK
-
+---
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```yaml
 POST https://example.com/foo-form
-
+---
 authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -262,7 +262,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 
 #### ▼ Bearer認証の仕組み
 
-指定されたエンドポイントに対して、```POST```リクエストを送信する。この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
+（１）指定されたエンドポイントに対して、```POST```リクエストを送信する。この時、```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする。必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
 
 > ℹ️ 参考：
 >
@@ -271,14 +271,14 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 
 ```yaml
 POST https://example.com/foo
-
-Content-Type: application/x-www-form-urlencoded    
-
+---
+Content-Type: application/x-www-form-urlencoded
+---
 # ボディ
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
 
-レスポンスボディにBearerトークンを含むレスポンスが返信される。他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
+（２）レスポンスボディにBearerトークンを含むレスポンスが返信される。他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
 
 > ℹ️ 参考：
 >
@@ -287,10 +287,10 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
 ```yaml
 200 OK
-
+---
 X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
 Content-Type: application/json
-
+---
 {
   "access_token": "*****",
   "expires_in":3600,
@@ -299,7 +299,7 @@ Content-Type: application/json
 }
 ```
 
-発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て、リクエストを送信する。ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
+（３）発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て、リクエストを送信する。ここでは詳しく言及しないが、BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある。
 
 > ℹ️ 参考：
 >
@@ -308,19 +308,19 @@ Content-Type: application/json
 
 ```yaml
 POST https://example.com/foo
-
+---
 authorization: Bearer <Bearerトークン>
 ```
 
-サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
+（４）サーバーは、Bearerトークンを照合し、合致していれば、認証後のWebページを返信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
 
 ```yaml
 200 OK
-
+---
 WWW-Authenticate: Bearer realm=""
 ```
 
-認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
+（５）認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
 > ℹ️ 参考：
 >
@@ -329,7 +329,7 @@ WWW-Authenticate: Bearer realm=""
 
 ```yaml
 401 Unauthorized
-
+---
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
@@ -341,7 +341,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ```yaml
 200 OK
-
+---
 WWW-Authenticate: Bearer realm=""
 ```
 
@@ -349,19 +349,19 @@ WWW-Authenticate: Bearer realm=""
 
 ```yaml
 400 Bad Request
-
+---
 WWW-Authenticate: Bearer error="invalid_request"
 ```
 
 ```yaml
 401 Unauthorized
-
+---
 WWW-Authenticate: Bearer realm="token_required"
 ```
 
 ```yaml
 403 Forbidden
-
+---
 WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
@@ -374,18 +374,6 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 > - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
 > - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
-
-<br>
-
-### OAuth
-
-ノート内の[こちら](#02. 認可フェーズ)を参考にせよ。
-
-<br>
-
-### SAML
-
-ノート内の[こちら](#02. 認可フェーズ)を参考にせよ。
 
 <br>
 

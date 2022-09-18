@@ -63,7 +63,7 @@ spec:
 
 #### ▼ objects
 
-外部Sercretを識別する情報を設定する。
+外部Secretを識別する情報を設定する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
 

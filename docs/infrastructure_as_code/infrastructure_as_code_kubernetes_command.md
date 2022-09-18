@@ -893,7 +893,7 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 #### ▼ proxyとは
 
-kube-apiserverの前段にフォワード/リバースプロキシサーバーとして機能するリソースを作成する。kube-proxyとは異なるリソースであることに注意する。
+kube-apiserverの前段にフォワード/リバースプロキシサーバーとして動作するリソースを作成する。kube-proxyとは異なるリソースであることに注意する。
 
 #### ▼ --address、--accept-hosts
 

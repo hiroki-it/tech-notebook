@@ -193,7 +193,7 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして機能するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 > ℹ️ 参考：
 >
@@ -240,7 +240,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。受�
 
 ### Exporterとは
 
-PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして機能する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
+PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。また、各Exporterは待ち受けているエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各ワーカーNodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
 > ℹ️ 参考：
 >
@@ -337,7 +337,7 @@ $ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-e
 
 ### PushGatewayとは
 
-PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして機能する。
+PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして動作する。
 
 > ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
 

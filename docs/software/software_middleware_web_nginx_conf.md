@@ -125,7 +125,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 <br>
 
-## 03. Core機能
+## 03. Core
 
 ### ブロック
 

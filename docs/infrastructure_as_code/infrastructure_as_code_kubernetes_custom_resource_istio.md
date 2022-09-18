@@ -21,7 +21,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカープロキシによるサービスメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当する機能を使用しても良い。
+サイドカープロキシによるサービスメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりに、KubernetesやOpenShiftに内蔵されたIstioに相当するオプションを使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -59,9 +59,9 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
 
-| 機能（2022/08/21時点）      | Istio | Linkerd | Consul |
+| 能力（2022/08/21時点）      | Istio | Linkerd | Consul |
 |------------------------|:-----:|:--------:|:------:|
-| 機能の豊富さ                 | ⭕️   | △       | △     |
+| 能力の豊富さ                 | ⭕️   | △       | △     |
 | 異なるClusterのデータプレーン内管理  | ⭕️   | ×       | ⭕️    |
 | 仮想サーバーのデータプレーン内管理      | ⭕️ | × | ⭕️ |
 | ダッシュボード                | × |    ⭕️    | ⭕️   |
@@ -158,7 +158,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの機能を持つサイドカーコンテナである。```pilot-agent```プロセス、```envoy```プロセス、が稼働している。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの能力を持つサイドカーコンテナである。```pilot-agent```プロセス、```envoy```プロセス、が稼働している。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 > ℹ️ 参考：
 >
@@ -171,7 +171,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 
 #### ▼ ```envoy```プロセス
 
-```istio-proxy```コンテナにて、リバースプロキシとして機能する。
+```istio-proxy```コンテナにて、リバースプロキシとして動作する。
 
 <br>
 
@@ -246,7 +246,8 @@ spec:
       containers:
         - args:
             - discovery
-            - --monitoringAddr=:15014 # 15014番ポートの開放
+            # 15014番ポートの開放
+            - --monitoringAddr=:15014
             - --log_output_level=default:info
             - --domain
             - cluster.local
@@ -256,11 +257,14 @@ spec:
           imagePullPolicy: IfNotPresent
           name: discovery
           ports:
-            - containerPort: 8080 # 8080番ポートの開放
+            # 8080番ポートの開放
+            - containerPort: 8080
               protocol: TCP
-            - containerPort: 15010 # 15010番ポートの開放
+            # 15010番ポートの開放
+            - containerPort: 15010
               protocol: TCP
-            - containerPort: 15017 # 15017番ポートの開放
+            # 15017番ポートの開放
+            - containerPort: 15017
               protocol: TCP
           env:
             # 15012番ポートの開放
@@ -324,7 +328,7 @@ spec:
 
 #### ▼ ```15017```番
 
-```15017```番ポートでは、Istioの```istid-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewを含むレスポンスを返信する。
+```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewを含むレスポンスを返信する。
 
 <br>
 
@@ -662,7 +666,7 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Clusterネット�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの機能のうち、Clusterネットワーク外から受信したインバウンド通信をフィルタリングする機能を担う。
+IngressGatewayの能力のうち、Clusterネットワーク外から受信したインバウンド通信をフィルタリングする能力を担う。
 
 > ℹ️ 参考：
 > 
@@ -677,7 +681,7 @@ IngressGatewayの機能のうち、Clusterネットワーク外から受信し�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの機能のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
+IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をいずれのServiceにルーティングするか、を決定する能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
 
 > ℹ️ 参考：
 >
@@ -738,10 +742,10 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ DestinationRuleとは
 
-| 通信方向       | 機能                                                         | 補足                                                         |
+| 通信方向       | 能力                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| インバウンド   | IngressGatewayの機能のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決定する機能を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                              |
-| アウトバウンド | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決定する機能を担う。 | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決定する能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                              |
+| アウトバウンド | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決定する能力を担う。 | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
