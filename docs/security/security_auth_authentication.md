@@ -63,7 +63,7 @@ POST https://example.com/users
 
 ```yaml
 POST https://example.com/foo-form
-
+---
 {
     "email_address": "foo@gmail.com",
     "password": "foo"
@@ -79,9 +79,9 @@ POST https://example.com/foo-form
 
 レスポンスの```Set-Cookie```ヘッダーを使用して、セッションIDをクライアントに送信する。
 
-```yaml
+```http
 200 OK
-
+---
 Set-Cookie: sessionid=<セッションID>
 ```
 
@@ -89,7 +89,7 @@ Set-Cookie: sessionid=<セッションID>
 
 ```yaml
 POST https://example.com/foo-form
-
+---
 cookie: sessionid=<セッションID>
 ```
 
