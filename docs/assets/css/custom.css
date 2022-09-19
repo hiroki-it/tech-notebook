@@ -276,17 +276,15 @@ th, td {
  コードブロック
 ***************/
 
-/* コードブロックの背景色 */
-/* 文字色はhighlight.jsで設定 */
 pre code.hljs {
-    background-color: #313131
-}
+    /* コードブロックの背景色 */
+    /* 文字色はhighlight.jsで設定 */
+    background-color: #313131;
 
-/* 一部の文字色
-  materialテーマのコードのfg色が黒色であり、
-  これがhighlight.jsを上書きしてしまうので白にする
-*/
-:root > * {
+    /*一部の文字色
+      materialテーマのコードのfg色が黒色であり
+      これがhighlight.jsを上書きしてしまうので白にする
+    /*/
     --md-code-fg-color: white;
 }
 
