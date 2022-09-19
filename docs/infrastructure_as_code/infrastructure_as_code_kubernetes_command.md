@@ -658,6 +658,21 @@ $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 
 **＊実行例＊**
 
+AWS EKSにて、Nodeグループの種類を確認するため、```eks.amazonaws.com/nodegroup```キーを取得する。
+
+```bash
+$ kubectl get node -L eks.amazonaws.com/nodegroup
+
+NAME        STATUS   ROLES    AGE    VERSION       NODEGROUP
+foo-node    Ready    <none>   31d    v1.22.0-eks   service
+bar-node    Ready    <none>   41d    v1.22.0-eks   collector
+baz-node    Ready    <none>   6d8h   v1.22.0-eks   ingress
+qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
+...
+```
+
+**＊実行例＊**
+
 Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
 ```bash
@@ -668,6 +683,7 @@ foo-node   Ready    <none>   18h     v1.22.0   ap-northeast-1a
 bar-node   Ready    <none>   18h     v1.22.0   ap-northeast-1c
 baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 ```
+
 
 **＊実行例＊**
 
@@ -938,6 +954,94 @@ $ kubectl run <Pod名> --restart=Never --image=<コンテナイメージ名>:<�
 
 ```bash
 $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
+```
+
+<br>
+
+### taint
+
+#### ▼ taintとは
+
+NodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
+
+| エフェクト | 説明                                                                                                                    |
+|-------|-----------------------------------------------------------------------------------------------------------------------|
+| NoExecute      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングする。                                              |
+| NoSchedule      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。                                             |
+| PreferNoSchedule      | Tolerationが付与されたPodをスケジューリングするが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングする。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。 |
+
+
+**＊実行例＊**
+
+NodeにTaint（```app=batch:NoSchedule```）を付与する。
+
+```bash
+$ kubectl taint node foo-node app=batch:NoSchedule
+```
+
+これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
+
+> ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:dev
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  tolerations:
+    - key: app
+      value: batch
+      operator: Equal
+      effect: NoSchedule
+```
+
+**＊実行例＊**
+
+マスターNodeとして扱うTaintをNodeに付与する。キー名のみ指定し、値は指定していない。
+
+```bash
+$ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
+```
+
+これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
+
+> ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:dev
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+      effect: NoSchedule
+```
+
+#### ▼ ```-```（ラベル値のハイフン）
+
+指定したNodeからTaintを削除する。
+
+> ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
+
+**＊実行例＊**
+
+```bash
+$ kubectl taint node foo-node app=batch:NoSchedule-
 ```
 
 <br>

@@ -437,7 +437,7 @@ spec:
   template:
     metadata:
       labels:
-        app: foo
+        app.kubernetes.io/app: foo-pod
     spec:
       containers:
       - name: foo

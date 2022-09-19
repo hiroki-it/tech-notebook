@@ -124,3 +124,5 @@ Apacheの設定ファイルのバリデーションを実行する。
 ```bash
 $ service httpd configtest
 ```
+
+<br>

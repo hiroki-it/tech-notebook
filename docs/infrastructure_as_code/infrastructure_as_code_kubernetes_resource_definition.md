@@ -1758,7 +1758,7 @@ spec:
 
 #### ▼ envFrom
 
-```spec.volumes.secret```キーとは異なり（ファイルとしてコンテナにマウントする）、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+```spec.volumes.secret```キー（ファイルとしてコンテナにマウントする）とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
 
 **＊実装例＊**
 
@@ -2429,7 +2429,7 @@ spec:
 
 #### ▼ secret
 
-```spec.containers.envFrom```キーとは異なり（環境変数としてコンテナに出力する）、ファイルとしてコンテナにマウントするSecretを設定する。ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
+```spec.containers.envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
 

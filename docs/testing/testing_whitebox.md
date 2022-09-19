@@ -322,8 +322,6 @@ AとBは、『1』または『0』になり得るとする。
 
 ### CDCテスト：Consumer Drive Contract
 
-複数のマイクロサービスを組み合わせた結合的な機能テスト。
-
 > ℹ️ 参考：
 >
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/

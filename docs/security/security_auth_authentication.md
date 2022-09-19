@@ -53,6 +53,7 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 ```yaml
 POST https://example.com/users
 ---
+# ボディ
 {
     "email_address": "foo@gmail.com",
     "password": "foo"
@@ -64,6 +65,7 @@ POST https://example.com/users
 ```yaml
 POST https://example.com/foo-form
 ---
+# ボディ
 {
     "email_address": "foo@gmail.com",
     "password": "foo"
@@ -293,7 +295,7 @@ Content-Type: application/json
 ---
 {
   "access_token": "*****",
-  "expires_in":3600,
+  "expires_in": 3600,
   "scope": "messaging:push",
   "token_type": "Bearer"
 }

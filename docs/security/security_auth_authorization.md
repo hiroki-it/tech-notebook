@@ -187,10 +187,12 @@ Content-Type: application/x-www-form-urlencoded
 ```yaml
 HTTP/1.1 200 OK
 ---
+# ヘッダー
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-store
 Pragma: no-cache
 ---
+# ボディ
 {
   "access_token": "<アクセストークン>",       # 必須
   "token_type": " <トークンタイプ>",          # 必須

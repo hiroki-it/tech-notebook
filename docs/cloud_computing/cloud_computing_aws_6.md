@@ -371,6 +371,7 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 
 ```yaml
 GET /foo/
+---
 # ホスト
 Host: example.jp
 Upgrade-Insecure-Requests: 1

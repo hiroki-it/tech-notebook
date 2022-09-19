@@ -239,7 +239,6 @@ MaxKeepAliveRequests 1000
 
 ```apacheconf
 # ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする。
-
 LoadModule dir_module modules/mod_dir.so
 ```
 
