@@ -276,16 +276,13 @@ th, td {
  コードブロック
 ***************/
 
-pre code.hljs {
+pre code {
     /* コードブロックの背景色 */
-    /* 文字色はhighlight.jsで設定 */
-    background-color: #313131;
+    /* 文字色はpygmentsで設定 */
+    --md-code-bg-color: #E6E6E6;
 
-    /*一部の文字色
-      materialテーマのコードのfg色が黒色であり
-      これがhighlight.jsを上書きしてしまうので白にする
-    /*/
-    --md-code-fg-color: white;
+    /* インラインはそのままに、コードハイライト部分のみ色を変更する。*/
+    --md-code-fg-color: #313131;
 }
 
 /* コードブロックの文字サイズ */
@@ -296,7 +293,7 @@ pre code.hljs {
 /* クリップボードへコピーのボタンの色 */
 .md-clipboard:after {
     /* マウスオーバーによる色の変化を無効化 */
-    background-color: white;
+    background-color: black;
 }
 
 /*
