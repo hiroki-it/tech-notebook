@@ -76,6 +76,8 @@ markdown_extensions:
         # ただ、highlight.jsが対応していない言語だと、対象のCSSクラスが生成されず、CSSが効かない。
         # ハイライトの二重適用になってしまうが、クラスを生成するために、pygmentsも有効化する。
         use_pygments: true
+        # pygmentsのテーマ名は以下で選択できるが、機能しない...
+        # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
   - pymdownx.superfences
   - pymdownx.inlinehilite
   # URLテキストのリンク化
