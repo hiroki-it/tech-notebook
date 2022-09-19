@@ -275,13 +275,41 @@ th, td {
 /***************
  コードブロック
 ***************/
-.linenos {
-    background-color: #313131 !important;
+
+/* コードブロックの背景色 */
+/* 文字色はhighlight.jsで設定 */
+pre code.hljs {
+    background-color: #313131
 }
 
-.highlighttable .linenodiv pre {
-    color: white
+/* 一部の文字色
+  materialテーマのコードのfg色が黒色であり、
+  これがhighlight.jsを上書きしてしまうので白にする
+*/
+:root > * {
+    --md-code-fg-color: white;
 }
+
+/* コードブロックの文字サイズ */
+.md-typeset pre {
+    font-size: 1.3em;
+}
+
+/*
+pymdownxではなくhighlight.jsでハイライトする場合、行番号の機能を使用できなくなる。
+将来的にpymdownxを使用する場合に備えてコメントアウトしておく。
+*/
+
+/* 行番号の背景色 */
+/*highlighttable .linenos {*/
+/*    background-color: #313131 !important;*/
+/*}*/
+
+/* 行番号の文字色 */
+/*highlighttable .linenodiv pre {*/
+/*    color: white*/
+/*}*/
+
 
 /***************
  引用

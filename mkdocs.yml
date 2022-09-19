@@ -61,14 +61,19 @@ extra:
 extra_css:
   - assets/css/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  # VSCodeのダークテーマを使用する
+  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css"
+extra_javascript:
+  # highlight.jsを読み込む
+  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"
+  - javascripts/config.js
 
 # 標準プラグイン
 markdown_extensions:
   # コードブロックのハイライト化
   - pymdownx.highlight:
-      pygments_style: monokai
-      linenums: true
-      anchor_linenums: true
+        # highlight.jsを使用するため、pygmentsによるコードハイライトは無効化する
+        use_pygments: false
   - pymdownx.superfences
   - pymdownx.inlinehilite
   # URLテキストのリンク化
