@@ -68,6 +68,7 @@ markdown_extensions:
   - pymdownx.highlight:
       pygments_style: monokai
       linenums: true
+      anchor_linenums: true
   - pymdownx.superfences
   # URLテキストのリンク化
   - pymdownx.magiclink
