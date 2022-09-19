@@ -293,6 +293,12 @@ pre code.hljs {
     font-size: 1.3em;
 }
 
+/* クリップボードへコピーのボタンの色 */
+.md-clipboard:after {
+    /* マウスオーバーによる色の変化を無効化 */
+    background-color: white;
+}
+
 /*
 pymdownxではなくhighlight.jsでハイライトする場合、行番号の機能を使用できなくなる。
 将来的にpymdownxを使用する場合に備えてコメントアウトしておく。
