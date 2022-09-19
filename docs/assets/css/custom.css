@@ -279,7 +279,7 @@ th, td {
 pre code {
     /* コードブロックの背景色 */
     /* 文字色はpygmentsで設定 */
-    --md-code-bg-color: #E6E6E6;
+    --md-code-bg-color: #CCCCCC;
 
     /* インラインはそのままに、コードハイライト部分のみ色を変更する。*/
     --md-code-fg-color: #313131;
