@@ -73,7 +73,9 @@ markdown_extensions:
   # コードブロックのハイライト化
   - pymdownx.highlight:
         # highlight.jsを使用するため、pygmentsによるコードハイライトは無効化する
-        use_pygments: false
+        # ただ、highlight.jsが対応していない言語だと、対象のCSSクラスが生成されず、CSSが効かない。
+        # ハイライトの二重適用になってしまうが、クラスを生成するために、pygmentsも有効化する。
+        use_pygments: true
   - pymdownx.superfences
   - pymdownx.inlinehilite
   # URLテキストのリンク化
