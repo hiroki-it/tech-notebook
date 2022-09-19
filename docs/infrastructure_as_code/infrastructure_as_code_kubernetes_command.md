@@ -665,8 +665,8 @@ $ kubectl get node -L eks.amazonaws.com/nodegroup
 
 NAME        STATUS   ROLES    AGE    VERSION       NODEGROUP
 foo-node    Ready    <none>   31d    v1.22.0-eks   service
-bar-node    Ready    <none>   41d    v1.22.0-eks   collector
-baz-node    Ready    <none>   6d8h   v1.22.0-eks   ingress
+bar-node    Ready    <none>   41d    v1.22.0-eks   ingress
+baz-node    Ready    <none>   6d8h   v1.22.0-eks   collector
 qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 ...
 ```

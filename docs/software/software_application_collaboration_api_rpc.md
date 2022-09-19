@@ -41,11 +41,8 @@ repository/
 │   │   └── server.go # fooサービスをgRPCサーバーとして使う場合の処理
 │   │
 │   ├── bar
-│   ...
-│
-├── doc/ # RPC-API仕様書（自動作成先）
-│   ├── foo.html
-│   ├── bar.html
+│   │   ├── client.py # barサービスをgRPCクライアントとして使う場合の処理
+│   │   └── server.py # barサービスをgRPCサーバーとして使う場合の処理
 │   ...
 │
 ├── proto/ # .protoファイル
@@ -53,9 +50,14 @@ repository/
 │   ├── bar.proto
 │   ...
 │
+├── doc/ # RPC-API仕様書（自動作成先）
+│   ├── foo.html
+│   ├── bar.html
+│   ...
+│
 └── pb_go/ # .pb.goファイル（自動作成先）
     ├── foo.pb.go
-    ├── bar.pb.go
+    ├── bar.pb.py
     ...
 ```
 
@@ -95,7 +97,7 @@ $ npm install grpc-tools
 
 #### ▼ サービス定義ファイル（```.proto```ファイル）
 
-gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb.go```ファイルを自動作成する。
+gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb.*```ファイルを自動作成する。
 
 > ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
@@ -107,7 +109,7 @@ $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
 $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 ```
 
-#### ▼ ```pb.go```ファイル
+#### ▼ ```pb.*```ファイル（拡張子は言語ごとに異なる）
 
 ```.proto```ファイルから自動作成される。このファイルには、サーバー側とクライアント側で必要な実装が定義されており、開発者はそのまま使用すれば良い。
 
