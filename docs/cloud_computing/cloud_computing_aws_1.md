@@ -1181,7 +1181,7 @@ CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 #### ▼ 操作コマンド
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 # EC2内にある設定ファイルを、CloudWatchエージェントに読み込ませる（再起動を含む）
@@ -1400,7 +1400,7 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 設定後、```awslogs```コマンドでプロセスを起動する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 # CloudWatchエージェントの再起動

@@ -52,10 +52,10 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 $ kubectl get all -n argocd
 ```
 
-（４）ArgoCDダッシュボードを公開する。
+（４）LoadBalancer Serviceを使用して、ArgoCDダッシュボードを公開する。
 
 ```bash
-$ kubectl patch svc argocd-server \
+$ kubectl patch service argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
@@ -67,9 +67,11 @@ $ kubectl get secret argocd-initial-admin-secret \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-（６）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行する。```minikube tunnel```ではポート番号を指定できないことに注意する。
+（６）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
+
 
 ```bash
+# Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 

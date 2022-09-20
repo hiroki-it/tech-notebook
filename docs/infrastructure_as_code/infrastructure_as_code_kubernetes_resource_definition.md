@@ -1990,13 +1990,13 @@ spec:
 
 ヘルスチェックのエンドポイントを設定する。 自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
 
-| ツール          | エンドポイント              |
-|--------------|----------------------|
-| Alertmaanger | ```/-/healthy```     |
-| Grafana      | ```/-/healthy```     |
+| ツール          | エンドポイント     |
+|--------------|-------------|
+| Alertmaanger | ```/-/healthy``` |
+| Grafana      | ```/healthz```     |
 | Kiali        | ```/kiali/healthz``` |
-| Prometheus   | ```/-/healthy```     |
-| ...          | ...                  |
+| Prometheus   | ```/-/healthy``` |
+| ...          | ...         |
 
 ```yaml
 apiVersion: v1

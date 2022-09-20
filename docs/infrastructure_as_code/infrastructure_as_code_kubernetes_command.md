@@ -52,7 +52,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 kube-apiserverに送信するマニフェストファイルを指定する。```-R```オプションでディレクトリ内のファイルを再帰的に指定もできる。
 
-**＊実行例＊**
+**＊例＊**
 
 マニフェストファイルを指定し、```kubectl apply```コマンドを実行する。
 
@@ -136,7 +136,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 
 パラメーターのデフォルト値が設定された```~/.kude/config```ファイルを取得する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl config view
@@ -246,7 +246,7 @@ service/foo-service created
 
 Pod数を維持管理するReplicaSetを作成する。Podを削除するためには、Deployment自体を削除しなければならない。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
@@ -268,7 +268,7 @@ $ kubectl create secret docker-registry foo-secret \
     --docker-username=bar \
     --docker-password=baz \
     --docker-email=http://baz.example.com \
-    --namespace=foo-namespace
+    -n foo-namespace
 ```
 
 #### ▼ secret generic
@@ -326,7 +326,7 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl describe node
@@ -339,12 +339,12 @@ $ kubectl describe pod <Pod名> | grep Node:
 
 #### ▼ -A
 
-**＊実行例＊**
+**＊例＊**
 
 全てのNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
 
 ```bash
-$ kubectl describe node -A | grep -e Name: -e cpu
+$ kubectl describe node -A | grep -e Name -e cpu
 
 Name:               foo-node
   cpu:                8
@@ -474,7 +474,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 > ℹ️ 参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
 
 ```bash
-$ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo
+$ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo-namespace
 ```
 
 **＊例＊**
@@ -520,7 +520,7 @@ kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 RunningフェーズのPodのみを取得する。
 
 ```bash
-$ kubectl get pod | grep Running
+$ kubectl get pod | grep -e NAME -e Running
 
 NAME       READY   STATUS             RESTARTS   AGE
 bar-pod    2/2     Running            0          5m01s
@@ -536,7 +536,7 @@ $ kubectl get pod -A
 
 ```bash
 # 指定したNode上のPodを全てNamespaceに関係なく取得する。
-$ kubectl get pod -A -o wide | grep <Node名>
+$ kubectl get pod -A -o wide | grep -e NAME -e <Node名>
 ```
 
 #### ▼ -o yaml
@@ -565,13 +565,17 @@ data:
   BAZ: *****
 ```
 
+#### ▼ -o jsonpath
+
+指定したKubernetesリソースの特定の設定を出力する。
+
 **＊例＊**
 
 Istioのバージョンを取得する。
 
 ```bash
-$ kubectl get customResourceDefinition/istiooperators.install.istio.io \
-    --namespace=istio-system \
+$ kubectl get crd istiooperators.install.istio.io \
+    -n istio-system \
     -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
 ```
 
@@ -580,16 +584,32 @@ $ kubectl get customResourceDefinition/istiooperators.install.istio.io \
 ロードバランサーのIPアドレスを取得する。
 
 ```bash
-$ kubectl get service/istio-ingressgateway \
-    --namespace=istio-system \
+$ kubectl get service istio-ingressgateway \
+    -n istio-system \
     -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
+```
+
+**＊例＊**
+
+Pod内のコンテナを取得する。
+
+```bash
+# 特定のPodを対象とする。
+$ kubectl get pod foo-pod \
+    -n foo-namespace \
+    -o jsonpath="{.spec.containers[*].name}" | sed 's/ /\n/g' && echo
+
+# 全てのPodを対象とする。
+$ kubectl get pod \
+    -n foo-namespace \
+    -o jsonpath="{.items[*].spec.containers[*].name}" | sed 's/ /\n/g' && echo
 ```
 
 #### ▼ -o wide
 
 指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
-**＊実行例＊**
+**＊例＊**
 
 Podの詳細な情報を取得する。
 
@@ -602,7 +622,7 @@ bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>
 baz-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 Nodeの詳細な情報を取得する。
 
@@ -640,7 +660,7 @@ $ kubectl get pod -l <キー>=<値>,<キー>=<値>
 $ kubectl get pod -l '<キー> in (<値>,<値>)'
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
 
@@ -656,7 +676,7 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 AWS EKSにて、Nodeグループの種類を確認するため、```eks.amazonaws.com/nodegroup```キーを取得する。
 
@@ -671,7 +691,7 @@ qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 ...
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
@@ -685,7 +705,7 @@ baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 istioのコンテナ注入が有効されているNamespaceを確認するため、```istio.io/rev```キーを取得する。
 
@@ -697,6 +717,23 @@ foo-namespace          Active   145d    1-0-0
 bar-namespace          Active   145d           # キーが設定されていないNamespace
 baz-namespace          Active   145d           # 同上
 ```
+
+**＊例＊**
+
+特定のKubernetesリソースがどのように管理されているかを取得する。公式のHelmチャートには、Deployment、Daemonset、StatefulSet、にタグがついていることが多い。
+
+```bash
+# argocd.argoproj.io/instance：ArgoCDのApplication名
+# app.kubernetes.io/managed-by：テンプレート管理のツール名
+# helm.sh/chart：テンプレート管理ツールがHelmの場合に、チャート名
+# release：Helmチャートのリリース名
+$ kubectl get -A <Kubernetesリソース> \
+    -L argocd.argoproj.io/instance \
+    -L app.kubernetes.io/managed-by \
+    -L helm.sh/chart \
+    -L release
+```
+
 
 #### ▼ --selector
 
@@ -844,7 +881,7 @@ Deployment、DamonSet、StatefulSet、で複製されたPodを操作する。
 > - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
 > - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
 
-**＊実行例＊**
+**＊例＊**
 
 
 ```bash
@@ -879,9 +916,9 @@ PersistentVolumeの設定値を変更する。
 
 ```bash
 $ kubectl get pv \
-  | tail -n+2 \
-  | awk '{print $1}' \
-  | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
+    | tail -n+2 \
+    | awk '{print $1}' \
+    | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
 ```
 
 <br>
@@ -890,17 +927,21 @@ $ kubectl get pv \
 
 #### ▼ port-forwardとは
 
-ホストのポートから指定したリソースのポートに対して、ポートフォワーディングを実行する。開発環境にて、Serviceを経由せずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
+ポートフォワーディングを実行し、ホストのポートからPodにアクセスできるようにする。Podを直接的に指定する場合と、他のKubernetesリソース（例：Service、Deployment）の情報を使用して、Podを指定する方法がある。この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
+> - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
 
-**＊実行例＊**
 
 ```bash
-$ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
+# Podを直接的に指定する場合
+$ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート番号>
+
+# Serviceの情報を使用して、Podを指定する場合
+$ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceのポート番号>
 ```
 
 <br>
@@ -915,7 +956,7 @@ kube-apiserverの前段にフォワード/リバースプロキシサーバー�
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
@@ -971,7 +1012,7 @@ NodeにTaintを付与する。エフェクトごとに、Tolerationが付与さ�
 | PreferNoSchedule      | Tolerationが付与されたPodをスケジューリングするが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングする。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。 |
 
 
-**＊実行例＊**
+**＊例＊**
 
 NodeにTaint（```app=batch:NoSchedule```）を付与する。
 
@@ -1002,7 +1043,7 @@ spec:
       effect: NoSchedule
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 マスターNodeとして扱うTaintをNodeに付与する。キー名のみ指定し、値は指定していない。
 
@@ -1038,7 +1079,7 @@ spec:
 
 > ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule-

@@ -902,7 +902,7 @@ $ git push origin <コミットID>:master
 $ git push --delete origin <バージョンタグ>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ git push --delete origin v1.0.0

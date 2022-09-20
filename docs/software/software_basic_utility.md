@@ -342,7 +342,7 @@ $ crontab -l
 
 GETリクエストを送信する。```jq```コマンドを使用すると、レスポンスを整形できる。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ curl -X GET https://example.com/foo/1 | jq . 
@@ -352,7 +352,7 @@ $ curl -X GET https://example.com/foo/1 | jq .
 
 メッセージボディを設定する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
@@ -362,7 +362,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/f
 
 指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ curl -L https://example.com/foo
@@ -372,7 +372,7 @@ $ curl -L https://example.com/foo
 
 インストール後のファイル名を定義する。これを指定しない場合、```-O```オプションを有効化する必要がある。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ curl -o <ファイルへのパス> https://example.com
@@ -390,7 +390,7 @@ $ curl -o <ファイルへのパス> https://example.com
 $ curl --resolve <ドメイン名>:<ポート番号>:<IPアドレス> https://example.com
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 リクエストの名前解決時に、```example.com```を正引きすると```127.0.0.1```が返却されるようにする。
 
@@ -402,7 +402,7 @@ $ curl --resolve example.com:80:127.0.0.1 https://example.com
 
 HTTPメソッドを設定する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ curl -X GET https://example.com
@@ -418,7 +418,7 @@ $ curl -X GET https://example.com
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ df
@@ -1110,7 +1110,7 @@ $ lvdisplay
 
 > ℹ️ 参考：https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
 
-**＊実行例＊**
+**＊例＊**
 
 パーティションの空き領域の100%を使用して拡張する。
 
@@ -1125,7 +1125,7 @@ $ lvextend -l +50G <デバイスファイル名>
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 あらかじめ、論理ボリュームに紐づくデバイスファイル名を確認する。
 

@@ -317,7 +317,9 @@ $ kubectl rollout restart deployment -n foo-namespace
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
-$ kubectl get pod -n foo-namespace -o jsonpath={.items[*].spec.containers[*].image}
+$ kubectl get pod \
+    -n foo-namespace \
+    -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
 
 gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.1
 ```

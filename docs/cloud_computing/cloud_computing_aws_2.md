@@ -1434,12 +1434,11 @@ $ eksctl utils associate-iam-oidc-provider \
 ```bash
 $ eksctl create iamserviceaccount \
     --cluster=foo-eks-cluster \
-    --namespace=kube-system \
+    -n kube-system \
     --name=aws-load-balancer-controller \
     --attach-policy-arn=arn:aws:iam::<アカウントID>:policy/AWSLoadBalancerControllerIAMPolicy \
     --override-existing-serviceaccounts \
     --approve
-
 ```
 
 （６）ServiceAccountがデプロイされたことを確認する。

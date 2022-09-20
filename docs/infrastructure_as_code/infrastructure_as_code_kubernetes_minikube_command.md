@@ -146,7 +146,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 Kubernetesのダッシュボードを開発環境に作成する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube dashboard
@@ -167,7 +167,7 @@ $ minikube dashboard
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube docker-env
@@ -332,12 +332,16 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 Opening service <Service名> in default browser...
 ```
 
-ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、Serviceを経由せずに直接的にPodに通信できる```kubectl port-forward```コマンドを使用すると良い。
+ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、```kubectl port-forward```コマンドでPodを指定すると良い。
 
 > ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
 ```bash
-$ kubectl port-forward <Service名> 8080:80
+# Podに直接的に指定する場合
+$ kubectl port-forward pod/<Pod名> 8080:80
+
+# Serviceの情報を使用して、Podを指定する場合
+$ kubectl port-forward svc/<Service名> 8080:80
 ```
 
 ServiceのIPアドレスがワーカーNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
@@ -474,7 +478,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 
 仮想環境にSSH接続を実行し、任意のコマンドを実行する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube ssh -- ls -la  
@@ -496,7 +500,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube start
@@ -575,7 +579,7 @@ Swap:          1023           0        1023
 
 別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube start --docker-env
@@ -587,7 +591,7 @@ $ minikube start --docker-env
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 # 事前にVirtualBoxのダウンロードが必要。
@@ -608,7 +612,7 @@ $ minikube start --kubernetes-version=v1.23.0
 
 ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、```start```コマンドを実行する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
@@ -620,7 +624,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube start --nodes 3
@@ -645,7 +649,7 @@ LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づ
 > - https://minikube.sigs.k8s.io/docs/commands/tunnel/
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ minikube tunnel

@@ -477,7 +477,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 > ℹ️ 参考：https://www.looklinux.com/etchosts-vs-etcresolv-conf-in-linux/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 127.0.0.1 localhost

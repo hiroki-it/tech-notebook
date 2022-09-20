@@ -45,7 +45,7 @@ memory_limit => 2048M => 2048M
 
 Configuration Fileの項目で、```php.ini```ファイルのあるディレクトリを取得する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ php --ini
@@ -72,7 +72,7 @@ drwxr-xr-x 1 root root  4096 Sep 25 12:22 conf.d
 
 現在インストールされているモジュールを取得する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ php -m
@@ -120,7 +120,7 @@ Array
 
 > ℹ️ 参考：https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 # PHPなので、処理終わりにセミコロンが必要
@@ -151,7 +151,7 @@ $ php -r '
 
 拡張モジュールの設定値を取得する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ php --ri=<拡張モジュール名>
