@@ -36,7 +36,7 @@ FROM python:3.10-slim
 
 # 〜 中略 〜
 
-CMD ["uvicorn", "main:app", "--reload", "--port" "8000"]
+CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 ```
 
 #### ▼ uvicornパッケージの```run```関数を使用する場合

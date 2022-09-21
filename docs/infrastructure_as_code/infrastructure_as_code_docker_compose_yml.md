@@ -673,9 +673,9 @@ version: "3.7"
 
 services:
   app:
-    build: # ～ 中略 ～
-    ports: # ～ 中略 ～
-    depends_on: # ～ 中略 ～
+    build: ...
+    ports: ...
+    depends_on: ...
     volumes:
       - example:/data # 下方のオプションが適用される。
       

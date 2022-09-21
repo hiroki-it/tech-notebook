@@ -77,7 +77,7 @@ Istioから構成される。
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
-一連のacm-operatorは、組み合わさって動作し、GitOpsを実現する。
+一連のacm-operatorは、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実現する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 
@@ -85,6 +85,7 @@ Istioから構成される。
 >
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management?hl=ja
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
+> - https://github.com/GoogleCloudPlatform/acm-policy-controller-library
 
 
 #### ▼ cluster-operator

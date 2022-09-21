@@ -2737,7 +2737,16 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 文字を連続で標準出力に出力する。
 
 ```go
-package mainimport "fmt"func main() {    fmt.Println("Hello", "world!")    fmt.Println("Hello", "world!")        // Hello world!    // Hello world!}
+package main
+
+import "fmt"
+
+func main() {    
+    fmt.Println("Hello", "world!")    
+    fmt.Println("Hello", "world!")        
+    // Hello world!    
+    // Hello world!
+}
 ```
 
 #### ▼ 接尾辞```f```メソッド
@@ -2813,7 +2822,20 @@ func main() {
 渡された複数の引数を文字列として結合する。
 
 ```go
-package mainimport "fmt"func main() {    var first string = "Hiroki"        var last string = "Hasegawa"        fmt.Printf("Im %s %s", first, last) // Im Hiroki Hasegawa}
+package main
+
+import "fmt"
+
+func main() {    
+    
+    var first string = "Hiroki"     
+    
+    var last string = "Hasegawa"        
+    
+    fmt.Printf("Im %s %s", first, last)
+    
+    // Im Hiroki Hasegawa
+}
 ```
 
 <br>
@@ -3096,10 +3118,6 @@ func main() {
 ファイルをReadOnly状態にする。
 
 ```go
-package main
-
-import (
-    "fmt"
 package main
 
 import (

@@ -991,7 +991,7 @@ $ cat .env | base64
 
 ```yaml
 jobs:
-  build
+  build:
     docker:
       - image: circleci/python:3.8-node
     steps:
@@ -1001,13 +1001,13 @@ jobs:
           command: |
             # base64方式エンコード値をデコードし、.envファイルを複製
             echo $ENV_FILE | base64 -di > .env
-       - run:
-           name: Install node module
-           commands: |
+      - run:
+          name: Install node module
+          commands: |
              yarn install
-       - run: 
-           name: Generate nuxt-ts
-           commands: |
+      - run: 
+          name: Generate nuxt-ts
+          commands: |
              yarn nuxt-ts generate
 ```
 
@@ -1343,7 +1343,7 @@ jobs:
   build_and_push:
     executor: docker/docker
     steps:
-      - setup_remote_docker
+      - setup_remote_docker:
           # DLCを有効化
           docker_layer_caching: true
       - checkout

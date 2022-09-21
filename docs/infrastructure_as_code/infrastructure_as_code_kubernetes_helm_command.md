@@ -594,7 +594,7 @@ $ helm secrets enc <平文のvaluesファイル>
 Encrypted ./values/secrets.yaml
 ```
 
-```yaml
+```bash
 $ cat ./values/secrets.yaml
 
 # secrets.yamlファイル

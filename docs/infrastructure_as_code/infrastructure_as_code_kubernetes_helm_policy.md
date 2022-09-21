@@ -144,14 +144,18 @@ repository/
 │   ├── temlaptes/
 │   ...
 │
-├── values/
-│   ├── tes.yaml # テスト環境へのapply時に出力する値
-│   ├── stg.yaml # ステージング環境へのapply時に出力する値
-│   └── prd.yaml # 本番環境へのapply時に出力する値
+└── values/
+    ├── tes # テスト環境へのインストール時に出力するvaluesファイル
+    │   ├── kubernetes/
+    │   ├── istio/
+    │   └── istio/
+    │
+    ├── stg/ # ステージング環境へのインストール時に出力するvaluesファイル
+    └── prd/ # 本番環境へのインストール時に出力するvaluesファイル
 ...
 ```
 
-ルートに配置した```values```ディレクトリには```values```ファイルを置く。```values```ファイルは、リソース間で共通に管理するか、あるいはリソース別に管理する。
+ルートに配置した```values```ディレクトリには```values```ファイルを置く。```values```ファイルは、リソース別に管理する。
 
 ```yaml
 # 共通のvaluesファイル
@@ -160,23 +164,28 @@ repository/
 #============
 labels:
   env: prd
-#============
-# Kubernetes
-#============
 
 #============
-# Istio
+# Deployment
 #============
+deployment:
+  ...
 
 #============
-# ArgoCD
+# Service
 #============
+service:
+  ...
 ```
 
 
 <br>
 
-## 03. 命名規則
+## 03. 実装ポリシー
+
+### 関数
+
+
 
 ### templateディレクトリ
 

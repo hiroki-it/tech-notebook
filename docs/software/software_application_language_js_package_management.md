@@ -64,7 +64,7 @@ $ yum install -y nodejs
 {
   "dependencies": {
     "foo": "^1.1.1",
-    "baz": "^1.0.0",
+    "bar": "^1.0.0",
     "baz": "git+https://github.com/baz/baz-package.git",
   },
 }

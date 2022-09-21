@@ -64,7 +64,7 @@ cor(ts, method = "pearson")
 
 原因と結果が1つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
 
-<img src = "https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png" width = 60%>
+![単回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png)
 
 #### ▼ 回帰方程式
 

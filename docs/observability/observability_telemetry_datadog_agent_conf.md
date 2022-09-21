@@ -237,7 +237,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
             "logDriver": "awslogs",
             "options": {
                 "awslogs-group": "/prd-foo/bar/log",
-                "awslogs-region": "ap-northeast-1"
+                "awslogs-region": "ap-northeast-1",
                 "awslogs-stream-prefix": "/container"
             }
         },

@@ -9,7 +9,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkcdocs/about.html
 
 <br>
 
@@ -163,6 +163,12 @@ metadata:
   name: foo-deployment
 ...
 ```
+
+#### ▼ 名前は変更不可
+
+Kubernetesにとって```metadata.name```キーはIDであり、後から変更できない。もし別の名前に変更したい場合は、再作成する必要がある。
+
+> ℹ️ 参考：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
 
 <br>
 
@@ -997,10 +1003,11 @@ spec:
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに、外部Ingressを使用する場合、そのIngressのマニフェストのAPIを設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、外部IngressとIngressコントローラーを紐づけられるように、コントローラーのAPIグループを設定する。
 
 > ℹ️ 参考：
 >
+> - https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-class-v1/#IngressClassSpec
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
