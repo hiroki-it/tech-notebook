@@ -358,6 +358,25 @@ $ curl -X GET https://example.com/foo/1 | jq .
 $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
 ```
 
+#### ▼ -k
+
+SSL証明書のエラーを無視する。オレオレ証明書を使用している場合に、以下のようなエラーでHTTPSプロトコルで通信できないため、これを無視する。
+
+```bash
+$ curl https://*.*.*.* -H 'Host:https://example.com'
+
+curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+
+# kオプションを有効化する。
+$ curl https://*.*.*.* -H 'Host:https://example.com' -k
+```
+
+
 #### ▼ -L
 
 指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。

@@ -49,7 +49,7 @@ apiVersion: v1
 
 ```yaml
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: Ingress
 metadata:
   annotations: 
     kubernetes.io/ingress.class: foo-class
@@ -67,7 +67,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 
 ```yaml
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: Ingress
 metadata:
   annotations: 
     ingressclass.kubernetes.io/is-default-class: "true"

@@ -1872,7 +1872,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 **＊実装例＊**
 
-ALB用のWAFに、APIキーまたはBearerトークンをOR条件ルールを設定する。あくまで例としてで、本来であれば、別々のルールとした方が良い。
+ALB用のWAFに、APIキーまたはBearerトークンをOR条件ルールを設定する。あくまで例としてで、本来であれば、異なるルールとした方が良い。
 
 ```terraform
 resource "aws_wafv2_web_acl" "api_gateway" {

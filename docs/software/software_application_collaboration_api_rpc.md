@@ -31,34 +31,72 @@ RPCフレームワークの一つで、プロトコルバッファーを使用�
 
 ## 02. ディレクトリ構成ポリシー
 
-### ポリリポジトリ
+### アプリとプロトコルバッファーを異なるリポジトリで管理（推奨）
 
-各マイクロサービスで```.proto```ファイルを管理しつつ、マイクロサービスの増減がわかりやすいように、RPC-API仕様書と```.pb.*```ファイルは一括で管理する。
+各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
+
+> ℹ️ 参考：
+> https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
+> https://lab.mo-t.com/blog/protocol-buffers
+
 
 ```yaml
+# プロトコルバッファー
 repository/
-├── src/
-│   ├── foo # マイクロサービス
-│   │   ├── foo.proto # .protoファイル
-│   │   ├── client.go # fooサービスをgRPCクライアントとして使う場合の処理
-│   │   └── server.go # fooサービスをgRPCサーバーとして使う場合の処理
+├── proto/ # サービス定義ファイル（.protoファイル）
+│   ├── foo/ # マイクロサービス
+│   │   ├── client/
+│   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
+│   │   │
+│   │   └── server/
+│   │       └── foo.proto # fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー
 │   │
-│   ├── bar
-│   │   ├── bar.proto # .protoファイル
-│   │   ├── client.py # barサービスをgRPCクライアントとして使う場合の処理
-│   │   └── server.py # barサービスをgRPCサーバーとして使う場合の処理
-│   ...
-
+│   ├── bar/
+│   ... ├── client/
+│       │   └── bar.proto
+│       │
+│       └── server/
+│           └── bar.proto
 │
-├── doc/ # RPC-API仕様書（マイクロサービスの一覧としても機能する）
-│   ├── foo.html
-│   ├── bar.html
+├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
+│   ├── foo/ # マイクロサービス
+│   │   └── foo.html
+│   │
+│   ├── bar/
+│   │   └── bar.html
 │   ...
 │
-└── pb_go/ # .pbファイル（マイクロサービスの一覧としても機能する）（バージョン管理しない）
-    ├── foo.pb.go
-    ├── bar.pb.py
+└── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+    ├── foo/ # マイクロサービス
+    │   └── foo.pb.go
+    │
+    ├── bar/
+    │   └── bar.pb.py
     ...
+```
+
+
+```yaml
+# アプリケーション
+repository/
+└── src/
+    ├── foo/ # マイクロサービス
+    │   └── infrastructure
+    │       └── grpc
+    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
+    │           │   └── client.py
+    │           │
+    │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
+    │           ... └── server.py
+    │
+    ├── bar/
+    ... └── infrastructure
+            └── grpc
+                ├── client/
+                │   └── client.py
+                │
+                ├── server/
+                ... └── server.py
 ```
 
 <br>
@@ -93,35 +131,7 @@ $ npm install grpc-tools
 
 <br>
 
-### 関連するファイル
-
-#### ▼ サービス定義ファイル（```.proto```ファイル）
-
-gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb.*```ファイルを自動作成する。
-
-> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
-
-```bash
-# foo.pb.goファイルを作成する。
-$ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
-
-# ワイルドカードで指定できる。
-$ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
-```
-
-#### ▼ ```pb.*```ファイル（拡張子は言語ごとに異なる）
-
-```.proto```ファイルから自動作成される。このファイルには、サーバー側とクライアント側で必要な実装が定義されており、開発者はそのまま使用すれば良い。
-
-#### ▼ RPC-API仕様書
-
-gRPCにおけるAPI仕様書である。仕様の実装である```.proto```ファイルを使用して、RPC-API仕様書を作成できる。
-
-```bash
-$ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
-```
-
-#### ▼ gRPCサーバー
+### gRPCサーバー
 
 リモートプロシージャーコールを受け付けるサーバーを定義する。サーバーをgRPCサーバーとして登録する必要がある。
 
@@ -160,9 +170,7 @@ $ npm install grpc
 
 <br>
 
-### 関連するファイル
-
-#### ▼ gRPCクライアント
+### gRPCクライアント
 
 gRPCサーバーをリモートプロシージャーコールする。
 
@@ -170,63 +178,44 @@ gRPCサーバーをリモートプロシージャーコールする。
 
 <br>
 
-## 03. Goの場合
 
-### サーバー側
+## 02-03. 共通ファイルのセットアップ
 
-#### ▼ ```.proto```ファイル
+### サービス定義ファイル（```.proto```ファイル）
 
-クライアントからのコールで返却する構造体や関数を定義する。
+gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから```pb.*```ファイルを自動作成する。
 
-> ℹ️ 参考：
->
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://christina04.hatenablog.com/entry/protoc-usage
-
-```protobuf
-// protoファイルの構文のバージョンを設定する。
-syntax = "proto3";
-
-// pb.goファイルで自動作成される時のパッケージ名
-package foo;
-
-// クライアント側からのリモートプロシージャーコール時に渡す引数を定義する。
-// フィールドのタグを1としている。メッセージ内でユニークにする必要があり、フィールドが増えれば別の数字を割り当てる。
-message Message {
-  string body = 1;
-}
-
-// クライアント側からリモートプロシージャーコールされる関数を定義する。
-service FooService {
-  rpc SayHello(Message) returns (Message) {}
-}
-```
-
-#### ▼ ```pb.go```ファイル
-
-事前に用意した```.proto```ファイルを使用して、```pb.go```ファイルを自動作成する。```pb.go```ファイルには、gRPCを使用する上で必要な構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
-
-> ℹ️ 参考：
->
-> - https://christina04.hatenablog.com/entry/protoc-usage
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
 ```bash
 # foo.pb.goファイルを作成する。
 $ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
+
+# ワイルドカードで指定できる。
+$ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 ```
 
-ちなみに、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
+<br>
 
-```go
-// 〜 中略 〜
+### ```pb.*```ファイル（拡張子は言語ごとに異なる）
 
-func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
-	s.RegisterService(&_FooService_serviceDesc, srv)
-}
+```.proto```ファイルから自動作成される。このファイルには、サーバー側とクライアント側の両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。
 
-// 〜 中略 〜
+<br>
+
+### RPC-API仕様書
+
+gRPCにおけるAPI仕様書である。仕様の実装である```.proto```ファイルを使用して、RPC-API仕様書を作成できる。
+
+```bash
+$ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 ```
+
+<br>
+
+## 03. Goの場合
+
+### サーバー側
 
 #### ▼ gRPCサーバー
 
@@ -333,3 +322,59 @@ func main() {
 ```
 
 <br>
+
+### 共通ファイル
+
+#### ▼ ```.proto```ファイル
+
+クライアントからのコールで返却する構造体や関数を定義する。
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - https://christina04.hatenablog.com/entry/protoc-usage
+
+```protobuf
+// protoファイルの構文のバージョンを設定する。
+syntax = "proto3";
+
+// pb.goファイルで自動作成される時のパッケージ名
+package foo;
+
+// クライアント側からのリモートプロシージャーコール時に渡す引数を定義する。
+// フィールドのタグを1としている。メッセージ内でユニークにする必要があり、フィールドが増えれば別の数字を割り当てる。
+message Message {
+  string body = 1;
+}
+
+// クライアント側からリモートプロシージャーコールされる関数を定義する。
+service FooService {
+  rpc SayHello(Message) returns (Message) {}
+}
+```
+
+#### ▼ ```pb.go```ファイル
+
+事前に用意した```.proto```ファイルを使用して、```pb.go```ファイルを自動作成する。```pb.go```ファイルには、サーバー側とクライアント側の両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
+
+> ℹ️ 参考：
+>
+> - https://christina04.hatenablog.com/entry/protoc-usage
+> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+
+```bash
+# foo.pb.goファイルを作成する。
+$ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
+```
+
+ちなみに、```pb.go```ファイルには、gRPCサーバーとして登録するための```Register<ファイル名>ServiceServer```関数が定義される。
+
+```go
+// 〜 中略 〜
+
+func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
+	s.RegisterService(&_FooService_serviceDesc, srv)
+}
+
+// 〜 中略 〜
+```

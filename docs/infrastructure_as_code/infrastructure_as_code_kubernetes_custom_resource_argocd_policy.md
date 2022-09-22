@@ -23,7 +23,7 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 <br>
 
-### モノリポジトリ構成ポリシー（推奨）
+### 各Applicationを同じリポジトリで管理（推奨）
 
 #### ▼ Kubernetesリソースのマニフェストファイルを監視する場合
 
@@ -109,7 +109,7 @@ k8s-repository/
 
 <br>
 
-### ポリリポジトリ
+### 各Applicationを異なるリポジトリで管理
 
 監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。
 
@@ -148,7 +148,7 @@ repository/
 
 ### 実行環境別（必須）
 
-必須の構成である。各実行環境に```terraform apply```コマンドを実行するためのApplicationを別々のディレクトリで管理する。Applicationでは、実行環境に対応するブランチのみを監視する。
+必須の構成である。各実行環境に```terraform apply```コマンドを実行するためのApplicationを異なるディレクトリで管理する。Applicationでは、実行環境に対応するブランチのみを監視する。
 
 ```yaml
 repository/
