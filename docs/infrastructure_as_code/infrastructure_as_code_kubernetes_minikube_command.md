@@ -523,7 +523,7 @@ $ minikube start
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ```
 
-ワーカーNodeが作成されていることを確認できる。
+コントロールプレーンNodeが作成されていることを確認できる。
 
 ```bash
 $ kubectl get node
@@ -534,7 +534,7 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 
 #### ▼ --cpus、--memory
 
-MinikubeのNodeのスペックを設定する。
+MinikubeのワーカーNodeのスペックを設定する。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -620,7 +620,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するワーカーNode数を指定し、```start```コマンドを実行する。マルチNodeのClusterを作成できる。
+作成するワーカーNode数を指定し、```start```コマンドを実行する。マルチワーカーNodeのClusterを作成できる。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
@@ -634,6 +634,7 @@ NAME           STATUS   ROLES                  AGE   VERSION
 minikube       Ready    control-plane,master   76s   v1.20.2
 minikube-m02   Ready    <none>                 42s   v1.20.2
 minikube-m03   Ready    <none>                 19s   v1.20.2
+minikube-m04   Ready    <none>                 19s   v1.20.2
 ```
 
 <br>

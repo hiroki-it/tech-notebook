@@ -263,7 +263,7 @@ SREingの実現に必要なツールをアプリ開発チームに導入した�
 - ユーザーからの評価を素早く得る
     - ユーザーからの評価を素早く得られるTesting in productionを含むデプロイ手法（例：ダークローンチ、カナリアリリース）を採用する。
 - ロールフォワード、ロールバックの自動化
-    - リリース前の予防を完璧にしない代わりに、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。
+    - リリース前の予防を完璧にしない代わりとして、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。
       - Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。
       - ℹ️ 参考：https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
 

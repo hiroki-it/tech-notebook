@@ -143,7 +143,7 @@ $ argocd repo add oci://<チャートレジストリ名> \
 
 #### ▼ マニフェストファイル経由
 
-（７）```argocd```コマンドの代わりに、マニフェストファイルでArgoCDを操作しても良い。
+（７）```argocd```コマンドの代わりとして、マニフェストファイルでArgoCDを操作しても良い。
 
 ```bash
 $ kubectl apply -f application.yaml
@@ -582,7 +582,7 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリース
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
-内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。代わりに、```argocd app history```コマンドで確認できる。
+内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。代わりとして、```argocd app history```コマンドで確認できる。
 
 > ℹ️ 参考：
 >

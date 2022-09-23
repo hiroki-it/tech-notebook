@@ -28,7 +28,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 ```bash
 $ istioctl operator init
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
 Operator controller will watch namespaces: istio-system
 ✔ Istio operator installed
 ✔ Installation complete
@@ -451,7 +451,7 @@ spec:
 
 #### ▼ holdApplicationUntilProxyStarts
 
-```istio-proxy```コンテナの起動後にアプリコンテナを起動するか否か、を設定する。
+```istio-proxy```コンテナの起動後にマイクロサービスコンテナを起動するか否か、を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

@@ -199,7 +199,7 @@ IstioOperatorを```istio-system```に作成する。
 ```bash
 $ istioctl operator init
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
 Operator controller will watch namespaces: istio-system
 ✔ Istio operator installed
 ✔ Installation complete

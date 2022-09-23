@@ -61,7 +61,7 @@ dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
+KubernetesのClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
 > ℹ️ 参考：
 >

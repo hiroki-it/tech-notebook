@@ -227,7 +227,7 @@ listen = /var/run/php-fpm/php-fpm.sock
 
 ### listen.acl_users
 
-コメントアウトが推奨である。代わりに、```listen.owner```と```listen.group```を設定する。
+コメントアウトが推奨である。代わりとして、```listen.owner```と```listen.group```を設定する。
 
 ```ini
 [www]

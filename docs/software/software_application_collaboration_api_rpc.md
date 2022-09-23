@@ -36,8 +36,9 @@ RPCフレームワークの一つで、プロトコルバッファーを使用�
 各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
 
 > ℹ️ 参考：
-> https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
-> https://lab.mo-t.com/blog/protocol-buffers
+>
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
+> - https://lab.mo-t.com/blog/protocol-buffers
 
 
 ```yaml

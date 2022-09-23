@@ -332,8 +332,9 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 $ kubectl describe node
 ```
 
+```grep```コマンドを使用して、PodがスケジューリングされているワーカーNodeを取得する。
+
 ```bash
-# PodがスケジューリングされているNodeを取得する。
 $ kubectl describe pod <Pod名> | grep Node:
 ```
 
@@ -341,7 +342,7 @@ $ kubectl describe pod <Pod名> | grep Node:
 
 **＊例＊**
 
-全てのNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
+全てのワーカーNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
 
 ```bash
 $ kubectl describe node -A | grep -e Name -e cpu
@@ -349,15 +350,15 @@ $ kubectl describe node -A | grep -e Name -e cpu
 Name:               foo-node
   cpu:                8
   cpu:                7510m
-  cpu                1050m (13%)  4850m (64%) # <--- Node全体の使用率
+  cpu                1050m (13%)  4850m (64%) # <--- ワーカーNode全体の使用率
 Name:               bar-node
   cpu:                4
   cpu:                3520m
-  cpu                2183m (62%)  4950m (140%) # <--- Node全体の使用率
+  cpu                2183m (62%)  4950m (140%) # <--- ワーカーNode全体の使用率
 Name:               baz-node
   cpu:                8
   cpu:                7510m
-  cpu                1937m (25%)  10245m (136%) # <--- Node全体の使用率
+  cpu                1937m (25%)  10245m (136%) # <--- ワーカーNode全体の使用率
 ```
 
 
@@ -367,7 +368,7 @@ Name:               baz-node
 
 #### ▼ drainとは
 
-ワーカーNodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。ワーカーNodeが他に存在すれば、そのNode上でPodが再作成される。
+ワーカーNodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。ワーカーNodeが他に存在すれば、そのワーカーNode上でPodが再作成される。
 
 > ℹ️ 参考：
 >
@@ -479,13 +480,13 @@ $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | 
 
 **＊例＊**
 
-指定したNodeの情報を取得する。
+全てのNode（セルフマネージドなコントロールプレーンNode、ワーカーNode）の情報を取得する。
 
 ```bash
 $ kubectl get node 
 
 NAME      STATUS   ROLES                  AGE   VERSION
-foo-node  Ready    control-plane,master   12h   v1.21.5 # マスターNode
+foo-node  Ready    control-plane,master   12h   v1.21.5 # コントロールプレーンNode
 bar-node  Ready    worker                 12h   v1.21.5 # ワーカーNode
 baz-node  Ready    worker                 12h   v1.21.5 # 同上
 qux-node  Ready    worker                 12h   v1.21.5 # 同上
@@ -517,7 +518,7 @@ kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 
 **＊例＊**
 
-RunningフェーズのPodのみを取得する。
+```grep```コマンドを使用して、RunningフェーズのPodのみを取得する。
 
 ```bash
 $ kubectl get pod | grep -e NAME -e Running
@@ -534,9 +535,10 @@ bar-pod    2/2     Running            0          5m01s
 $ kubectl get pod -A
 ```
 
+```grep```コマンドを使用して、特定のワーカーNodeのみを取得する。
+
 ```bash
-# 指定したNode上のPodを全てNamespaceに関係なく取得する。
-$ kubectl get pod -A -o wide | grep -e NAME -e <Node名>
+$ kubectl get pod -A -o wide | grep -e NAMESPACE -e <ワーカーNode名>
 ```
 
 #### ▼ -o yaml
@@ -607,7 +609,7 @@ $ kubectl get pod \
 
 #### ▼ -o wide
 
-指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
+指定したリソースの詳細な情報を取得する。ワーカーNodeが複数がある場合、ワーカーNodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 **＊例＊**
 
@@ -616,15 +618,35 @@ Podの詳細な情報を取得する。
 ```bash
 $ kubectl get pod -o wide
 
-NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
-foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>
-bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
-baz-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
+NAMESPACE   NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
+foo         foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>
+bar         bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
+baz         baz-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
 ```
 
 **＊例＊**
 
-Nodeの詳細な情報を取得する。
+```grep```コマンドを使用して、特定のPodのみを取得する。
+
+```bash
+$ kubectl get pod -o wide | grep -e NAMESPACE -e foo
+
+NAMESPACE   NAME        READY   STATUS        RESTARTS   AGE   IP          NODE       NOMINATED NODE   READINESS GATES
+foo         foo-pod     2/2     Running       0          16d   *.*.*.*     foo-node   <none>           <none>
+```
+
+```grep```コマンドを使用して、特定のServiceのみを取得する。
+
+
+```bash
+$ kubectl get service -o wide | grep -e NAMESPACE -e foo
+NAMESPACE   NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)       AGE   SELECTOR 
+foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d    app.kubernetes.io/instance=prd-foo-app
+```
+
+**＊例＊**
+
+セルフマネージドなコントロールプレーンNodeとワーカーNodeの詳細な情報を取得する。
 
 ```bash
 $ kubectl get node -o wide
@@ -662,7 +684,7 @@ $ kubectl get pod -l '<キー> in (<値>,<値>)'
 
 **＊例＊**
 
-```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
+```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるワーカーNodeを取得する。
 
 ```bash
 $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
@@ -693,7 +715,7 @@ qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 
 **＊例＊**
 
-Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
+ワーカーNodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
 ```bash
 $ kubectl get node -L topology.kubernetes.io/zone
@@ -1003,7 +1025,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 #### ▼ taintとは
 
-NodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
+ワーカーNodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
 
 | エフェクト | 説明                                                                                                                    |
 |-------|-----------------------------------------------------------------------------------------------------------------------|
@@ -1014,7 +1036,7 @@ NodeにTaintを付与する。エフェクトごとに、Tolerationが付与さ�
 
 **＊例＊**
 
-NodeにTaint（```app=batch:NoSchedule```）を付与する。
+ワーカーNodeにTaint（```app=batch:NoSchedule```）を付与する。
 
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule
@@ -1045,7 +1067,7 @@ spec:
 
 **＊例＊**
 
-マスターNodeとして扱うTaintをNodeに付与する。キー名のみ指定し、値は指定していない。
+コントロールプレーンNodeとして扱うTaintを付与する。キー名のみ指定し、値は指定していない。
 
 ```bash
 $ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
@@ -1075,7 +1097,7 @@ spec:
 
 #### ▼ ```-```（ラベル値のハイフン）
 
-指定したNodeからTaintを削除する。
+指定したワーカーNodeからTaintを削除する。
 
 > ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
@@ -1089,7 +1111,7 @@ $ kubectl taint node foo-node app=batch:NoSchedule-
 
 ### top
 
-NodeやPodのサチュレーションを取得する。
+ワーカーNodeやPodのサチュレーションを取得する。
 
 ```bash
 $ kubectl top node

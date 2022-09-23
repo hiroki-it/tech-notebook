@@ -91,7 +91,7 @@ $ helm install -n istio-system istio-ingressgateway istio/gateway
 
 ### Minikubeのセットアップ
 
-Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
+Istioによる種々のコンテナが稼働するために、MinikubeのワーカーNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -149,7 +149,7 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-               # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
+               # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも後に終了するようにする。
                # envoyプロセスとpilot-agentプロセスの終了を待機する。
                command: [
                  "/bin/sh",
@@ -159,7 +159,7 @@ spec:
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
+                # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するようにする。
                 # pilot-agentの起動完了を待機する。
                 command: [
                   "pilot-agent",

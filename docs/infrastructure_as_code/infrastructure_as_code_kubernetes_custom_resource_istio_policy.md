@@ -28,9 +28,9 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
 > - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 
-（１）旧コントロールプレーンを残したまま、新コントロールプレーンを作成する。
+（１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。
 
-（２）特定のNamespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンはNamespace内の```istio-proxy```コンテナをアップグレードする。
+（２）特定のNamespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
 
 ![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
@@ -40,6 +40,6 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 （４）もし途中で問題が起これば、```metadata.labels.istio.io/rev```キーのリビジョン値順番に元に戻していく。
 
-（５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンを削除する。
+（５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンNodeを削除する。
 
 <br>

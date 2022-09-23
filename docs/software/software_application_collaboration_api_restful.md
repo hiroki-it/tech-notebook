@@ -296,7 +296,7 @@ GET https://example.com/v2/users/12345
 GET https://example.com/users/12345
 ```
 
-URLにバージョンを表記しない代わりに、リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い。
+URLにバージョンを表記しない代わりとして、リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い。
 
 ```yaml
 X-Api-Version: 1
@@ -696,7 +696,7 @@ JSONの場合、階層構造にすると、データサイズが増えてしま�
 }
 ```
 
-代わりに、```Content-Type```ヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用しても良い。
+代わりとして、```Content-Type```ヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用しても良い。
 
 #### ▼ 日付データの形式に気をつけること
 

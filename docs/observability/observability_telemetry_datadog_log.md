@@ -93,7 +93,7 @@ FluentBitを稼働させたコンテナのこと。Datadogの代わりにログ�
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes.png)
 
-KubernetesのClusterやワーカーNodeからメトリクスを受信し、マスターNodeのkube-apiserverに転送する。
+KubernetesのClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンのkube-apiserverに転送する。
 
 > ℹ️ 参考：
 >

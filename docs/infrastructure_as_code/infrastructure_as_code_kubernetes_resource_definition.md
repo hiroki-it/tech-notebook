@@ -43,7 +43,7 @@ apiVersion: v1
 
 #### ▼ kubernetes.io/ingress.class
 
-現在、非推奨である。代わりに、```spec.ingressClassname```キーを指定する。
+現在、非推奨である。代わりとして、```spec.ingressClassname```キーを指定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
@@ -660,7 +660,7 @@ spec:
 
 #### ▼ replicasとは
 
-Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
+Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止した場合、稼働中のワーカーNode内でレプリカ数を維持するようにPod数が増加する。
 
 > ℹ️ 参考：
 >
@@ -1029,7 +1029,7 @@ spec:
 
 #### ▼ parametersとは
 
-外部Ingressに応じたパラメーターを設定する。代わりに、IngressClassParamsを使用しても良い。
+外部Ingressに応じたパラメーターを設定する。代わりとして、IngressClassParamsを使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -1151,7 +1151,7 @@ Kubernetesの実行時に自動的に作成される。もし手動で作成す�
 
 #### ▼ ReadWriteMany
 
-ボリュームに対して、複数Nodeから読み出し/書き込みできるようにする。Node間でDBを共有したい場合に使用する。
+ボリュームに対して、複数のワーカーNodeから読み出し/書き込みできるようにする。Node間でDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1167,7 +1167,7 @@ spec:
 
 #### ▼ ReadOnlyMany
 
-ボリュームに対して、複数Nodeから読み出しでき、また単一Nodeのみから書き込みできるようにする。Node間で読み出し処理のみDBを共有したい場合に使用する。
+ボリュームに対して、複数のワーカーNodeから読み出しでき、また単一のワーカーNodeのみから書き込みできるようにする。Node間で読み出し処理のみDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1183,7 +1183,7 @@ spec:
 
 #### ▼ ReadWriteOnce
 
-ボリュームに対して、単一Nodeからのみ読み出し/書き込みできるようにする。NodeごとにDBを分割したい場合に使用する。
+ボリュームに対して、単一のワーカーNodeからのみ読み出し/書き込みできるようにする。NodeごとにDBを分割したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1231,7 +1231,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する。Volum
 
 #### ▼ path
 
-Node側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
+ワーカーNode側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -1299,7 +1299,7 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
+Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、ワーカーNodeを明示的に指定できる。
 
 > ℹ️ 参考：
 >
@@ -1614,7 +1614,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              # PodをスケジューリングしたいNodeのmetadata.labelsキー
+              # PodをスケジューリングしたいワーカーNodeのmetadata.labelsキー
               # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。
               - key: app.kubernetes.io/nodegroup
                 operator: In
@@ -1744,9 +1744,9 @@ Pod内で起動するコンテナを設定する。PodをDeploymentやReplicaSet
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
-#### ▼ name、image、port
+#### ▼ name、image
 
-Podを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
+Podを構成するコンテナの名前、ベースイメージ、を設定する。
 
 **＊実装例＊**
 
@@ -1787,6 +1787,25 @@ spec:
             name: foo-config-map # 環境変数としてコンテナに出力するConfigMap
 ```
 
+#### ▼ ports
+
+コンテナが待ち受けているポート番号を、仕様として設定する。単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers.ports```キーは設定しなくとも問題ない。
+
+> ℹ️ 参考：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      # 公開するポート番号の仕様
+      ports:
+        - containerPort: 8080
+```
 
 #### ▼ imagePullPolicy
 
@@ -1824,10 +1843,10 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 | キー名         | 説明                                             | 補足                                                         |
 | -------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
+| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がワーカーNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
 | ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>ℹ️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>ℹ️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
-ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
+ちなみに、ワーカーNode全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
 > ℹ️ 参考：
 >
@@ -1835,17 +1854,17 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 > - https://smallit.co.jp/blog/667/
 
 ```bash
-$ kubectl describe node <Node名>
+$ kubectl describe node <ワーカーNode名>
 
 # 〜 中略 〜
 
 Capacity:
   attachable-volumes-aws-ebs:  20
-  cpu:                         4           # NodeのCPU
+  cpu:                         4           # ワーカーNodeのCPU
   ephemeral-storage:           123456789Ki
   hugepages-1Gi:               0
   hugepages-2Mi:               0
-  memory:                      1234567Ki   # Nodeのメモリー
+  memory:                      1234567Ki   # ワーカーNodeのメモリー
   pods:                        10          # スケジューリング可能なPodの最大数
 Allocatable:
   attachable-volumes-aws-ebs:  20
@@ -1888,7 +1907,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内コンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内コンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。ワーカーNode側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -2329,7 +2348,7 @@ spec:
 
 #### ▼ hostPath
 
-Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
+Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『ワーカーNode』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
 
 > ℹ️ 参考：
 >
