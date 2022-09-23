@@ -480,16 +480,16 @@ $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | 
 
 **＊例＊**
 
-全てのNode（セルフマネージドなコントロールプレーンNode、ワーカーNode）の情報を取得する。
+全てのNodeワーカーNodeの情報を取得する。
 
 ```bash
 $ kubectl get node 
 
 NAME      STATUS   ROLES                  AGE   VERSION
-foo-node  Ready    control-plane,master   12h   v1.21.5 # コントロールプレーンNode
-bar-node  Ready    worker                 12h   v1.21.5 # ワーカーNode
+foo-node  Ready    worker                 12h   v1.21.5 # ワーカーNode
+bar-node  Ready    worker                 12h   v1.21.5 # 同上
 baz-node  Ready    worker                 12h   v1.21.5 # 同上
-qux-node  Ready    worker                 12h   v1.21.5 # 同上
+# qux-node  Ready    control-plane,master   12h   v1.21.5 # セルフマネージドなコントロールプレーンNodeを使用する場合
 ```
 
 **＊例＊**
@@ -646,15 +646,15 @@ foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d
 
 **＊例＊**
 
-セルフマネージドなコントロールプレーンNodeとワーカーNodeの詳細な情報を取得する。
+ワーカーNodeの詳細な情報を取得する。
 
 ```bash
 $ kubectl get node -o wide
 
 NAME       STATUS   ROLES                  AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE         KERNEL-VERSION       CONTAINER-RUNTIME
-foo-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
+foo-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
 bar-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
-baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
+# baz-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
 ```
 
 #### ▼ -l
