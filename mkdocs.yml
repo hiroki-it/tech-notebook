@@ -358,6 +358,7 @@ nav:
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
+                      - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
                   - ■ Jaeger:
                       - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
                   - ■ Kiali:
