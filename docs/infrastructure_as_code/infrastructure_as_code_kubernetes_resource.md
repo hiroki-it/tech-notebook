@@ -70,7 +70,7 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 #### ▼ ReplicaSetの置き換え
 
-DeploymentのReplicaSetを操作し、Podのレプリカを作成する。PodTemplate（```spec.template```キー）を変更した場合、新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを旧いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 
@@ -355,7 +355,7 @@ Ingressコントローラーは、『```***-controller-admission```』というS
 
 ![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_service.png)
 
-Serviceタイプごとに、kube-proxyが作成したiptablesを使用して、Podにインバウンド通信をルーティングする。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
+kube-proxyが作成したiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
 > ℹ️ 参考：
 > 

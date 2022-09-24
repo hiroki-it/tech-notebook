@@ -398,6 +398,8 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 #### ▼ オーバーレイモード
 
+![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
+
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
 
 > ℹ️ 参考：
@@ -416,8 +418,6 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 
 #### ▼ アンダーレイモード
-
-![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
 

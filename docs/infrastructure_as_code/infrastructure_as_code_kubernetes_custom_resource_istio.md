@@ -99,15 +99,15 @@ description: Istio＠カスタムリソースの知見を記録しています�
 > - https://github.com/envoyproxy/go-control-plane
 > - https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
-|----------------------------|-----------------------------------|--------------------------|
-| Istiodコントロールプレーン           | go-control-plane                  | なし                       |
-| サービスレジストリ                  | etcd                              | etcd                  |
-| DestinationRule            | ```route```キー                     | kube-proxy               |
-| EnvoyFilter                | ```listener```キー                  | kube-proxy               |
-| ServiceEntry               | ```cluster```キー                   | Service                  |
-| VirtualService+Gateway     | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
-| WorkloadEntry              | ```endpoint```キー                  | Endpoint                 |
+| 能力                   | Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
+|----------------------|----------------------------|-----------------------------------|--------------------------|
+| サービスメッシュコントロールプレーン   | Istiodコントロールプレーン           | go-control-plane                  | なし                       |
+| サービスディスカバリー          | DestinationRule            | ```route```キー                     | kube-proxy               |
+| 同上                   | EnvoyFilter                | ```listener```キー                  | kube-proxy               |
+| 同上                   | ServiceEntry               | ```cluster```キー                   | Service                  |
+| 同上                   | WorkloadEntry              | ```endpoint```キー                  | Endpoint                 |
+| サービスレジストリ            | 調査中...                     | etcd                              | etcd                  |
+| インバウンド通信のPodへのルーティング | VirtualService + Gateway   | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
 
 
 <br>

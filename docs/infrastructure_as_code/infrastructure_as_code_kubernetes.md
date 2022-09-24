@@ -517,11 +517,15 @@ $ kubelet \
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。Serviveネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviveはiptableを使用してPodを動的に検出できる。モードごとに、Podの名前解決の方法が異なる。
+iptablesで定義されたルーティング先のIPアドレスを、その時点のPodのものに書き換える。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceはiptablesを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
 
 > ℹ️ 参考：https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 
 #### ▼ Podのロードバランサー
+
+Serviceがルーティング先とするPodをロードバランシングアルゴリズムによって決定する。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
 #### ▼ 起動コマンド
 
