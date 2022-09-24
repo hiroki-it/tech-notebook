@@ -385,22 +385,55 @@ AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用�
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-PodにNICを紐付け、Clusterネットワーク内のIPアドレスをPodのNICに割り当てる。これにより、Clusterネットワーク内にあるPodに通信できるようにする。cniアドオンは、kubeletによるPodの起動時に有効化される。Clusterネットワークの種類に応じたcniアドオンが用意されている。
+cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。また、Podに仮想NICを紐付け、ワーカーNode内のネットワークのIPアドレスをPodの仮想NICに割り当てる。これにより、PodをワーカーNode内のClusterネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 > ℹ️ 参考：
 >
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=27
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
-### Pod間通信の制御
+<br>
 
-#### ▼ 同じワーカーNode上のPod間の場合
+### アドオンで選べるモード
 
-#### ▼ 異なるワーカーNode上のPod間の場合
+#### ▼ オーバーレイモード
 
-実現方法がcniアドオンによって異なる。
+オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
 
-> ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
+> ℹ️ 参考：
+> 
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
+> - https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
+
+#### ▼ ルーティングモード
+
+ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+
+> ℹ️ 参考：
+> 
+> - https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
+
+#### ▼ アンダーレイモード
+
+![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
+
+アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+
+> ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
+
+#### ▼ AWSの独自モード
+
+![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
+
+AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングするPodの数だけワーカーNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスを付与できる。ワーカーNodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。ワーカーNodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、ワーカーNode上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、ワーカーNode当たり```1```個しかPodをスケジューリングできない）。
+
+> ℹ️ 参考：
+>
+> - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
+> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 
 <br>
 
@@ -439,7 +472,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 <br>
 
-## 05 metrics-server
+## 05. metrics-server
 
 ### metrics-serverとは
 
@@ -508,7 +541,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 #### ▼ eks-code-dnsアドオンとは
 
-EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+EKSの各ワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
@@ -518,7 +551,7 @@ EKSのワーカーNode上で、```kube-dns```という名前のDeploymentとし�
 
 #### ▼ eks-kube-proxyアドオンとは
 
-EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、ワーカーNode外からPodに通信できるようにする。
+EKSの各ワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、ワーカーNode外からPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
@@ -530,7 +563,7 @@ EKSのワーカーNode上で、```kube-proxy```という名前のDaemonSetとし
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
-EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodに通信できるようにする。
+EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：
 >

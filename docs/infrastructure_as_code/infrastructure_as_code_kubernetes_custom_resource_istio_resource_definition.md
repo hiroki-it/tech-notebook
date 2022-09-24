@@ -486,7 +486,7 @@ VirtualServiceのサブセット名に関して、ルーティング先とする
 
 **＊実装例＊**
 
-VirtualServiceのサブセット名が```v1```のインバウンド通信では、```version```タグが```v1```であるPodにルーティングする。```v2```も同様である。
+サブセットv1に対するインバウンド通信では、```version```キーの値が```v1```であるPodにルーティングする。```v2```も同様である。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

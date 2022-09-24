@@ -486,10 +486,10 @@ $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | 
 $ kubectl get node 
 
 NAME      STATUS   ROLES                  AGE   VERSION
-foo-node  Ready    worker                 12h   v1.21.5 # ワーカーNode
-bar-node  Ready    worker                 12h   v1.21.5 # 同上
-baz-node  Ready    worker                 12h   v1.21.5 # 同上
-# qux-node  Ready    control-plane,master   12h   v1.21.5 # セルフマネージドなコントロールプレーンNodeを使用する場合
+foo-node  Ready    worker                 12h   v1.22.0 # ワーカーNode
+bar-node  Ready    worker                 12h   v1.22.0 # 同上
+baz-node  Ready    worker                 12h   v1.22.0 # 同上
+# qux-node  Ready    control-plane,master   12h   v1.22.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
 ```
 
 **＊例＊**
@@ -654,7 +654,8 @@ $ kubectl get node -o wide
 NAME       STATUS   ROLES                  AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE         KERNEL-VERSION       CONTAINER-RUNTIME
 foo-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
 bar-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
-# baz-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
+baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0
+# qux-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         <none>        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合
 ```
 
 #### ▼ -l
@@ -1027,11 +1028,11 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 ワーカーNodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
 
-| エフェクト | 説明                                                                                                                    |
-|-------|-----------------------------------------------------------------------------------------------------------------------|
-| NoExecute      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングする。                                              |
-| NoSchedule      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。                                             |
-| PreferNoSchedule      | Tolerationが付与されたPodをスケジューリングするが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングする。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。 |
+| エフェクト | 説明                                                                                                                           |
+|-------|------------------------------------------------------------------------------------------------------------------------------|
+| NoExecute      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングする。                                                     |
+| NoSchedule      | Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。                                                    |
+| PreferNoSchedule      | Tolerationが付与されたPodをスケジューリングするが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングする。付与したPodがすでにスケジューリングされている場合、そのPodは再スケジューリングしない。 |
 
 
 **＊例＊**

@@ -169,8 +169,6 @@ summary(Reg)
 
 ![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰分析.png)
 
-
-
 #### ▼ 回帰方程式
 
 ![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰式.png)

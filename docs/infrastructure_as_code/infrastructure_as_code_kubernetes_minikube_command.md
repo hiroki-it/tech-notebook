@@ -631,10 +631,10 @@ $ minikube start --nodes 3
 
 $ kubectl get node
 NAME           STATUS   ROLES                  AGE   VERSION
-minikube       Ready    control-plane,master   76s   v1.20.2
-minikube-m02   Ready    <none>                 42s   v1.20.2
-minikube-m03   Ready    <none>                 19s   v1.20.2
-minikube-m04   Ready    <none>                 19s   v1.20.2
+minikube       Ready    control-plane,master   76s   v1.22.0 # コントロールプレーンNode
+minikube-m02   Ready    <none>                 42s   v1.22.0 # ワーカーNode
+minikube-m03   Ready    <none>                 19s   v1.22.0
+minikube-m04   Ready    <none>                 19s   v1.22.0
 ```
 
 <br>

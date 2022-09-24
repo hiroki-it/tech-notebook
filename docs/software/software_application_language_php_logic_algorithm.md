@@ -244,13 +244,7 @@ var_dump($result);
 
 ![バブルソート5](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バブルソート5.gif)
 
-
-
 ![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
-
- 
-
-
 
 ![バブルソート6](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バブルソート6.gif)
 

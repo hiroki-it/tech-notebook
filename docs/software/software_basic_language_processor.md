@@ -158,3 +158,5 @@ description: 言語プロセッサー（言語処理プログラム）＠基本�
 ### C言語とJavaのOSへの依存度比較
 
 ![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
+
+<br>

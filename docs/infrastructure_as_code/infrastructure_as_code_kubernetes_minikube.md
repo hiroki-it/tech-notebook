@@ -208,7 +208,7 @@ spec:
 
 ### KubernetesリソースのCIDRブロック
 
-#### ▼ ワーカーNode
+#### ▼ ワーカーNodeの場合
 
 ワーカーNode内で```ip addr```コマンドを実行すると、ワーカーNodeに割り当てられたCIDRブロックを確認できる。
 

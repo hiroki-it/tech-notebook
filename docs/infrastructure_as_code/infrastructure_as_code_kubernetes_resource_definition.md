@@ -281,7 +281,35 @@ spec:
 
 <br>
 
-## 02. Config
+## 03. CertificateSigningRequest
+
+### spec.request
+
+base64方式でエンコードした証明書署名要求（```.csr```ファイル）を設定する。
+
+> ℹ️ 参考：
+> 
+> - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
+> - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
+
+```yaml
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+  name: foo-csr
+spec:
+  groups:
+    - system:authenticated
+  # base64方式でエンコードした証明書署名要求ファイル
+  request: LS0tL...
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+    - digital signature
+    - key encipherment
+    - client auth
+```
+
+## 04. Config
 
 ### clusters
 
@@ -510,7 +538,7 @@ users:
 
 <br>
 
-## 03. ConfigMap
+## 05. ConfigMap
 
 ### data
 
@@ -571,7 +599,7 @@ data:
 
 <br>
 
-## 04. CronJob
+## 06. CronJob
 
 ### spec.jobTemplate
 
@@ -654,7 +682,7 @@ spec:
 
 <br>
 
-## 05. Deployment
+## 07. Deployment
 
 ### spec.replicas
 
@@ -843,7 +871,7 @@ spec:
 
 <br>
 
-## 06. HorizontalPodAutoscaler
+## 08. HorizontalPodAutoscaler
 
 
 ### spec.maxReplicas、spec.minReplicas
@@ -926,7 +954,7 @@ spec:
 
 <br>
 
-## 07. Ingress
+## 09. Ingress
 
 ### annotations
 
@@ -997,7 +1025,7 @@ spec:
 
 <br>
 
-## 08. IngressClass
+## 10. IngressClass
 
 ### spec.controller
 
@@ -1051,7 +1079,7 @@ spec:
 
 <br>
 
-## 09. Job
+## 11. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -1132,13 +1160,13 @@ spec:
 
 <br>
 
-## 10. Node
+## 12. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 
-## 11. PersistentVolume
+## 13. PersistentVolume
 
 ### spec.accessModes
 
@@ -1501,7 +1529,7 @@ spec:
 
 <br>
 
-## 12. PersistentVolumeClaim
+## 14. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1569,7 +1597,7 @@ spec:
 
 <br>
 
-## 13. Pod
+## 15. Pod
 
 ### spec.affinity
 
@@ -1949,6 +1977,28 @@ spec:
       ports:
         - containerPort: 8080
       workingDir: /go/src
+```
+
+<br>
+
+### spec.enableServiceLinks
+
+#### ▼ enableServiceLinks
+
+Serviceの宛先情報（IPアドレス、プロトコル、ポート番号）に関する環境変数をPod内に出力するかどうかを設定する。
+
+> ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  enableServiceLinks: false
 ```
 
 <br>
@@ -2488,7 +2538,7 @@ spec:
 
 <br>
 
-## 14. PodDisruptionBudget
+## 16. PodDisruptionBudget
 
 ### spec.maxUnavailable
 
@@ -2552,7 +2602,7 @@ spec:
 
 <br>
 
-## 15. ReplicaController
+## 17. ReplicaController
 
 旧Deployment。非推奨である。
 
@@ -2560,7 +2610,7 @@ spec:
 
 <br>
 
-## 16. Role、ClusterRole
+## 18. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -2631,7 +2681,7 @@ rules:
 
 <br>
 
-## 17. RoleBinding、ClusterRoleBinding
+## 19. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -2697,7 +2747,7 @@ subjects:
 
 <br>
 
-## 18. Secret
+## 20. Secret
 
 ### data
 
@@ -2739,7 +2789,7 @@ data:
 
 パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
 
-> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#tls-secrets
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
 ```yaml
 apiVersion: v1
@@ -2918,7 +2968,7 @@ stringData:
 
 <br>
 
-## 19. Service
+## 21. Service
 
 ### spec.ports
 
@@ -3145,7 +3195,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 20. ServiceAccount
+## 22. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -3184,7 +3234,7 @@ imagePullSecrets:
 
 <br>
 
-## 21. StatefulSet
+## 23. StatefulSet
 
 ### spec.serviceName
 
