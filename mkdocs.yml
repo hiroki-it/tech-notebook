@@ -327,6 +327,7 @@ nav:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
           - ■ Kubernetes:
               - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+              - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
