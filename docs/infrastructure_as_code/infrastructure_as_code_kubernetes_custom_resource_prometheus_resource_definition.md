@@ -156,7 +156,7 @@ spec:
      - rules:
         - alert: foo-pod-cpu-alert-prometheus-rule
           annotations:
-            summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内コンテナのCPU使用率の上昇しました。
+            summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内のコンテナのCPU使用率の上昇しました。
             description: {{ {{"{{"}} $labels.source {{"}}"}} }}コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。
             # 受信したアラートの通知のクールダウン期間
             for: 1m
@@ -191,7 +191,7 @@ spec:
 
 #### ▼ endpointsとは
 
-収集の対象とするServiceで待ち受けているエンドポイントを設定する。
+収集の対象とするServiceで待ち受けるエンドポイントを設定する。
 
 #### ▼ interval
 

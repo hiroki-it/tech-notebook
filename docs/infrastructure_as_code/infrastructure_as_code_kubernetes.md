@@ -56,9 +56,9 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 <br>
 
-### 待ち受けているポート番号
+### 待ち受けるポート番号
 
-コントロールプレーンコンポーネントのために、コントロールプレーンNodeが通信を待ち受けているデフォルトのポート番号は、以下の通りである。
+コントロールプレーンコンポーネントのために、コントロールプレーンNodeが通信を待ち受けるデフォルトのポート番号は、以下の通りである。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane
 
@@ -464,9 +464,9 @@ kube-schedulerは、既存のPodを削除して別のワーカーNodeに再ス�
 
 <br>
 
-### 待ち受けているポート番号
+### 待ち受けるポート番号
 
-ワーカーNodeが通信を待ち受けているデフォルトのポート番号は、以下の通りである。
+ワーカーNodeが通信を待ち受けるデフォルトのポート番号は、以下の通りである。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#node
 
@@ -581,7 +581,7 @@ $ kube-proxy \
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
+ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Service内ネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
 
 > ℹ️ 参考：https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 
@@ -616,10 +616,10 @@ $ kube-proxy \
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png)
 
 
-| 項目              | 仕組み         |
-|-----------------|-------------|
-| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。            |
-| ロードバランシングアルゴリズム | ラウンドロビン方式のみ |
+| 項目              | 仕組み                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------|
+| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| ロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                         |
 
 > ℹ️ 参考：
 > 
@@ -631,10 +631,10 @@ $ kube-proxy \
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)
 
-| 項目              | 仕組み                                                                  |
-|-----------------|----------------------------------------------------------------------|
+| 項目              | 仕組み                                                                              |
+|-----------------|----------------------------------------------------------------------------------|
 | サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| ロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、送信先ハッシュ値、送信元ハッシュ値、など                            |
+| ロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、送信先ハッシュ値、送信元ハッシュ値、など。                                       |
 
 
 > ℹ️ 参考：
@@ -689,7 +689,7 @@ $ kube-proxy \
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
 
-同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。Clusterネットワークの作成は、cniアドオンが担う。
+同じCluster内ネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。Cluster内ネットワークの作成は、cniアドオンが担う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
@@ -701,7 +701,7 @@ $ kube-proxy \
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
 
-同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。Node内ネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -713,7 +713,7 @@ $ kube-proxy \
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_service-network.png)
 
-Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。Serviceネットワークの作成は、Kubernetesが担う。
+Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。Service内ネットワークの作成は、Kubernetesが担う。
 
 > ℹ️ 参考：
 >
@@ -732,10 +732,10 @@ Pod内のネットワークのみを経由して、他のコンテナにアウ�
 
 #### ▼ 通信方法
 
-同じPod内コンテナ間は『```localhost:<ポート番号>```』で通信できる。
+同じPod内のコンテナ間は『```localhost:<ポート番号>```』で通信できる。
 
 ```bash
-# Pod内コンテナに接続する。
+# Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>:~] $ curl -X GET http://localhost:<ポート番号>
@@ -747,14 +747,14 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ### Pod間通信の経路
 
-Podの稼働するワーカーNodeが同じ/異なるで経由するネットワークが異なる。
+Pod内のコンテナから宛先のPodにアウトバウンド通信を送信する。この時、PodのスケジューリングされているワーカーNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 | 条件             | 経由するネットワーク                                         |
 | ---------------- | ------------------------------------------------------------ |
-| ワーカーNodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
-| ワーカーNodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
+| ワーカーNodeが異なる場合 | Node内ネットワーク + Cluster内ネットワーク + Service内ネットワーク |
+| ワーカーNodeが同じ場合   | Cluster内ネットワーク + Service内ネットワーク                    |
 
 <br>
 
@@ -762,7 +762,7 @@ Podの稼働するワーカーNodeが同じ/異なるで経由するネットワ
 
 #### ▼ ServiceのIPアドレス
 
-kubeletは、Pod内のコンテナにServiceの宛先情報（IPアドレス、プロトコル、ポート番号）を出力する。これを使用して、Serviceを介してPod間で通信する。
+kubeletは、Pod内のコンテナにServiceの宛先情報（IPアドレス、プロトコル、ポート番号）を出力する。Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 > 
@@ -792,7 +792,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 #### ▼ Serviceの完全修飾ドメイン名
 
-Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。Podのスケジューリング時に、kubeletはPod内コンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。Pod内コンテナが他のコンテナにアウトバウンド通信を送信する場合、自身の```/etc/resolv.conf```ファイルを確認し、権威DNSサーバーによって宛先のコンテナの名前解決を行う。
+Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルでPodの宛先情報を確認し、Podにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >
@@ -800,7 +800,7 @@ Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCo
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
 
 ```bash
-# Pod内コンテナに接続する。
+# Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # コンテナのresolv.confファイルの中身を確認する
@@ -819,7 +819,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ レコードタイプと完全修飾ドメイン名の関係
 
-Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
+Cluster内ネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
 
 > ℹ️ 参考：
 >
@@ -833,13 +833,13 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ Serviceに対する名前解決
 
-Pod内コンテナから宛先のServiceに対して、```nslookup```コマンドの正引きを検証する。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きを検証する。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
 
 ```bash
-# Pod内コンテナに接続する。
+# Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-# Pod内コンテナから宛先のServiceに対して、正引きの名前解決を行う
+# Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を行う
 [root@<Pod名>:~] $ nslookup <Service名>
 
 Server:         10.96.0.10
@@ -852,7 +852,7 @@ Address:  10.105.157.184
 ちなみに、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
-# Pod内コンテナから正引きの名前解決を行う。
+# Pod内のコンテナから正引きの名前解決を行う。
 [root@<Pod名>:~] $ nslookup <Service名>.<Namespace名>
 ```
 
@@ -872,7 +872,7 @@ Address:  10.105.157.184
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-（２）Serviceがルーティング対象とするPodにて、コンテナが待ち受けているポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+（２）Serviceがルーティング対象とするPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
 # 先にmetadata.labelキーから、Serviceのルーティング対象のPodを確認する
@@ -883,12 +883,12 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 （３）両方のポート番号が一致しているかを確認する。
 
-#### ▼ Serviceを介したPod間通信
+#### ▼ Serviceを介したアウトバウンド通信の送信
 
-Serviceを介して、宛先のPodにHTTPSプロトコルでリクエストを送信する。完全修飾ドメイン名またはIPアドレスを指定できる。
+Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。完全修飾ドメイン名またはIPアドレスを指定できる。
 
 ```bash
-# Pod内コンテナに接続する。
+# Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>:~] $ curl -X GET https://<Serviceの完全修飾ドメイン名/IPアドレス>:<ポート番号>

@@ -202,7 +202,7 @@ users:
 
 #### ▼ cpとは
 
-ホストPCのファイルまたはディレクトリを指定したPod内コンテナにコピーする。
+ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
@@ -399,7 +399,7 @@ $ kubectl edit <Pod以外のリソース名>
 
 #### ▼ execとは
 
-指定したPod内コンテナでコマンドを実行する。
+指定したPod内のコンテナでコマンドを実行する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 

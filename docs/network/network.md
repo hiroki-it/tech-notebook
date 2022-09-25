@@ -95,13 +95,19 @@ LANは、バリアセグメント、パブリックサブネット（非武装�
 
 > ℹ️ 参考：https://www.infraexpert.com/study/routing.html
 
+#### ▼ ホップ数
+
+リクエストの送信元から送信先までの間に、経由するルーター数のこと。ホップ数は、```traceroute```コマンドで確認できる。
+
+> ℹ️ 参考：https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
+
 #### ▼ ホップバイホップルーティング
+
+![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router_hop-by-hop-routing.jpeg)
 
 ネットワーク内でルーターがルーターに通信をルーティングする時、各ルーターが最適なルーティング先を選択すること。
 
 > ℹ️ 参考：https://ascii.jp/elem/000/000/444/444681/3/
-
-![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/router_hop-by-hop-routing.jpeg)
 
 <br>
 

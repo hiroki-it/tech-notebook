@@ -188,7 +188,7 @@ Podのライフサイクルにはフェーズがある。
 
 （３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
 
-（４）kubeletは、コンテナランタイムを介して、Pod内コンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
 
@@ -697,7 +697,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath（本番環境で非推奨）
 
-ワーカーNode上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、ワーカーNodeとPod内コンテナ間で実行され、同一ワーカーNode上のPod間でこのボリュームを共有できる。
+ワーカーNode上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、ワーカーNodeとPod内のコンテナ間で実行され、同一ワーカーNode上のPod間でこのボリュームを共有できる。
 
 > ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 

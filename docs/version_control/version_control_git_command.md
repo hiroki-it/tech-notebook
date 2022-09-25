@@ -204,6 +204,7 @@ Host gitlab.com
 
 ```bash
 $ git push
+
 ERROR: Permission to hiroki-hasegawa/*****.git denied to Foo.
 fatal: Could not read from remote repository.
 
@@ -306,6 +307,7 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 
 ```bash
 $ git branch --all
+
 * master
   remotes/origin/2019/Symfony_Nyumon/master
   remotes/origin/master
@@ -315,6 +317,7 @@ $ git branch --all
 
 ```bash
 $ git branch -d -r origin/2019/Symfony_Nyumon/master
+
 Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
 ```
 
@@ -389,6 +392,7 @@ $ git log
 
 ```bash
 $ git checkout 2019/Symfony2_Ny
+
 umon/master
 error: Your local changes to the following files would be overwritten by checkout:
         app/config/config.yml
@@ -405,6 +409,7 @@ Aborting
 
 ```bash
 $ git status
+
 On branch 2019/foo-repository/feature/6
 Your branch is up to date with "origin/2019/foo-repository/feature/6".
 
@@ -428,6 +433,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```bash
 $ git stash -u
+
 Saved working directory and index state WIP on 2019/foo-repository/feature/6: 649995e update #6 *****
 ```
 
@@ -670,10 +676,13 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 
 ```bash
 $ git push --force
+
 Total 0 (delta 0), reused 0 (delta 0)
 To github.com:hiroki-hasegawa/foo-repository.git
  + f0d8b1a...f81c813 master -> master (forced update)
 ```
+
+<br>
 
 ### rebase
 
@@ -865,9 +874,9 @@ $
 
 ```bash
 $ git branch -r \
-  | grep -v "\->" \
-  | grep -v main \
-  | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+    | grep -v "\->" \
+    | grep -v main \
+    | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
   
 $ git fetch --all
 
@@ -930,10 +939,10 @@ $ git push --tags
 
 ```bash
 $ git show-branch \
-  | grep "*" \
-  | grep -v "$(git rev-parse --abbrev-ref HEAD)" \
-  | head -1 \
-  | awk -F"[]~^[]" "{print $2}"
+    | grep "*" \
+    | grep -v "$(git rev-parse --abbrev-ref HEAD)" \
+    | head -1 \
+    | awk -F"[]~^[]" "{print $2}"
 ```
 
 <br>

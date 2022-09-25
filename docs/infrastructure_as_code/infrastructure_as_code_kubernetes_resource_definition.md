@@ -974,7 +974,7 @@ endpoints:
 
 #### ▼ portsとは
 
-Podが待ち受けているポート番号を設定する。Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
+Podが待ち受けるポート番号を設定する。Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
 
 ```yaml
 apiVersion: discovery.k8s.io/v1
@@ -1934,7 +1934,7 @@ spec:
 
 #### ▼ ports
 
-コンテナが待ち受けているポート番号を、仕様として設定する。単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers.ports```キーは設定しなくとも問題ない。
+コンテナが待ち受けるポート番号を、仕様として設定する。単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers.ports```キーは設定しなくとも問題ない。
 
 > ℹ️ 参考：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
 
@@ -1947,7 +1947,7 @@ spec:
   containers:
     - name: foo-gin
       image: foo-gin:1.0.0
-      # 待ち受けているポート番号の仕様
+      # 待ち受けるポート番号の仕様
       ports:
         - containerPort: 8080
 ```
@@ -2052,7 +2052,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内コンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。ワーカーNode側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内のコンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。ワーカーNode側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -2333,7 +2333,7 @@ spec:
 
 #### ▼ restartPolicyとは
 
-Pod内コンテナのライフサイクルの再起動ポリシーを設定する。
+Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。
 
 #### ▼ Always
 
