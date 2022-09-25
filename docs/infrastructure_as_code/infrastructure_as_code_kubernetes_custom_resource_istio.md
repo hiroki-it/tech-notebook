@@ -114,6 +114,8 @@ Pod
 
 ### Istioを採用する/しない場合の比較
 
+全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、全てのPodに```istio-proxy```コンテナを注入する必要はなく、マイクロサービスコンテナの稼働するPodのみでこれを行う。そのため、```istio-proxy```コンテナを注入しないPodでは、引き続きkube-proxyとServiceによるサービスメッシュを使用することになる。
+
 > ℹ️ 参考：
 >
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
@@ -124,11 +126,11 @@ Pod
 | 能力                   | Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
 |----------------------|----------------------------|-----------------------------------|--------------------------|
 | サービスメッシュコントロールプレーン   | Istiodコントロールプレーン           | go-control-plane                  | なし                       |
-| サービスディスカバリー          | DestinationRule            | ```route```キー                     | kube-proxy               |
-| 同上                   | EnvoyFilter                | ```listener```キー                  | kube-proxy               |
-| 同上                   | ServiceEntry               | ```cluster```キー                   | Service                  |
-| 同上                   | WorkloadEntry              | ```endpoint```キー                  | Endpoint                 |
-| サービスレジストリ            | 調査中...                     | etcd                              | etcd                  |
+| サービスディスカバリー          | DestinationRule            | ```route```キー                     | kube-proxy + Service     |
+| 同上                   | EnvoyFilter                | ```listener```キー                  | kube-proxy + Service     |
+| 同上                   | ServiceEntry               | ```cluster```キー                   | EndpointSlice            |
+| 同上                   | WorkloadEntry              | ```endpoint```キー                  | EndpointSlice            |
+| サービスレジストリ            | 調査中...                     | etcd                              | etcd                     |
 | インバウンド通信のPodへのルーティング | VirtualService + Gateway   | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
 
 
