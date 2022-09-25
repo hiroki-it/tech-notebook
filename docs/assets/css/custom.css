@@ -294,9 +294,11 @@ pre code {
     /* bool値の色 */
     --md-code-hl-constant-color: #800080;
 
+    /* string値の色 */
+    --md-code-hl-string-color: #b75d00;
+
     /* キーの色 */
     --md-code-hl-keyword-color: #0033FFFF;
-
 }
 
 /* コードブロックの文字サイズ */
