@@ -219,7 +219,7 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
 
-> ℹ️ 参考： https://wiki.centos.org/Cloud/AWS
+> ℹ️ 参考：https://wiki.centos.org/Cloud/AWS
 
 <br>
 
