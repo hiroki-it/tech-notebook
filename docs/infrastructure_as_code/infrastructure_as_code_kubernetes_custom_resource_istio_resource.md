@@ -111,7 +111,7 @@ spec:
         - --log_output_level=default:info
       image: docker.io/istio/proxyv2:<リビジョン番号>
       name: istio-proxy
-      # 公開するポート番号の仕様である。
+      # 待ち受けているポート番号の仕様
       # コンテナの公開ポートがspec.containers.portsキーに定義されていなくても問題ない。
       ports:
         - containerPort: 15090

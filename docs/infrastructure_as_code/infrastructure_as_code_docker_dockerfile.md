@@ -185,7 +185,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 ```bash
 # 上書きできず、失敗してしまう。
-$ docker run --rm -it <コンテナイメージ名> /bin/bash
+$ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 <br>

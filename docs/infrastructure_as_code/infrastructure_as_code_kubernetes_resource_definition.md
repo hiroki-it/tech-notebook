@@ -9,7 +9,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkcdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
 <br>
 
@@ -176,6 +176,8 @@ Kubernetesにとって```metadata.name```キーはIDであり、後から変更�
 
 ### spec.group
 
+#### ▼ groupとは
+
 拡張apiserverが受信するAPIグループ名を設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
@@ -192,6 +194,8 @@ spec:
 <br>
 
 ### spec.groupPriorityMinimum
+
+#### ▼ groupPriorityMinimumとは
 
 同じAPIグループがある場合に、優先度を設定する。
 
@@ -211,8 +215,9 @@ spec:
 
 ### spec.insecureSkipTLSVerify
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+#### ▼ insecureSkipTLSVerifyとは
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -227,6 +232,8 @@ spec:
 
 
 ### spec.service
+
+#### ▼ serviceとは
 
 拡張apiserverは、kube-apiserverからリクエストを直接的に受信するのではなく、専用のServiceを介してリクエストを受信する。この時、どのServiceからリクエストを受信するかを設定する。
 
@@ -249,6 +256,8 @@ spec:
 
 ### spec.version
 
+#### ▼ versionとは
+
 拡張apiserverが受信するAPIグループのバージョンを設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
@@ -265,6 +274,8 @@ spec:
 <br>
 
 ### spec.versionPriority
+
+#### ▼ versionPriorityとは
 
 同じAPIグループがある場合に、バージョンの優先度を設定する。
 
@@ -284,6 +295,8 @@ spec:
 ## 03. CertificateSigningRequest
 
 ### spec.request
+
+#### ▼ requestとは
 
 base64方式でエンコードした証明書署名要求（```.csr```ファイル）を設定する。
 
@@ -839,7 +852,9 @@ spec:
 
 <br>
 
-### spec.template（設定項目はPodと同じ）
+### spec.template
+
+#### ▼ templateとは（設定項目はPodと同じ）
 
 Deploymentで維持管理するPodのテンプレートを設定する。設定項目はPodと同じである。
 
@@ -871,8 +886,110 @@ spec:
 
 <br>
 
-## 08. HorizontalPodAutoscaler
+## 08. EndpointSlice
 
+### spec.endpoints
+
+#### ▼ endpointsとは
+
+Serviceでルーティング先とするPodに関して、『現在の』 宛先情報を設定する。Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
+
+#### ▼ addresses
+
+Podの現在のIPアドレスを設定する。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - addresses:
+      - *.*.*.*
+```
+
+#### ▼ condition
+
+Podの現在のライフサイクルフェーズを設定する。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - conditions:
+      ready: true
+      serving: true
+      terminating: false
+```
+
+#### ▼ nodeName
+
+Podが現在スケジューリングされているワーカーNode名を設定する。これにより、Serviceとそのルーティング先のPodが異なるワーカーNode上に存在していたとしても、ServiceはPodにルーティングできる。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - nodeName: foo-node
+```
+
+
+#### ▼ targetRef
+
+Podの識別子を設定する。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - targetRef:
+      kind: Pod
+      name: foo-pod
+      namespace: foo
+```
+
+
+#### ▼ zone
+
+Podが現在スケジューリングされているAZを設定する。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - zone: ap-northeast-1a
+```
+
+<br>
+
+### spec.ports
+
+#### ▼ portsとは
+
+Podが待ち受けているポート番号を設定する。Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+ports:
+  - name: http-foo
+    port: 443
+    protocol: TCP
+```
+
+<br>
+
+## 09. HorizontalPodAutoscaler
 
 ### spec.maxReplicas、spec.minReplicas
 
@@ -954,7 +1071,7 @@ spec:
 
 <br>
 
-## 09. Ingress
+## 10. Ingress
 
 ### annotations
 
@@ -1025,7 +1142,7 @@ spec:
 
 <br>
 
-## 10. IngressClass
+## 11. IngressClass
 
 ### spec.controller
 
@@ -1079,7 +1196,7 @@ spec:
 
 <br>
 
-## 11. Job
+## 12. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -1160,13 +1277,13 @@ spec:
 
 <br>
 
-## 12. Node
+## 13. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 
-## 13. PersistentVolume
+## 14. PersistentVolume
 
 ### spec.accessModes
 
@@ -1529,7 +1646,7 @@ spec:
 
 <br>
 
-## 14. PersistentVolumeClaim
+## 15. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -1597,7 +1714,7 @@ spec:
 
 <br>
 
-## 15. Pod
+## 16. Pod
 
 ### spec.affinity
 
@@ -1830,7 +1947,7 @@ spec:
   containers:
     - name: foo-gin
       image: foo-gin:1.0.0
-      # 公開するポート番号の仕様
+      # 待ち受けているポート番号の仕様
       ports:
         - containerPort: 8080
 ```
@@ -2538,7 +2655,7 @@ spec:
 
 <br>
 
-## 16. PodDisruptionBudget
+## 17. PodDisruptionBudget
 
 ### spec.maxUnavailable
 
@@ -2602,7 +2719,7 @@ spec:
 
 <br>
 
-## 17. ReplicaController
+## 18. ReplicaController
 
 旧Deployment。非推奨である。
 
@@ -2610,7 +2727,7 @@ spec:
 
 <br>
 
-## 18. Role、ClusterRole
+## 19. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -2681,7 +2798,7 @@ rules:
 
 <br>
 
-## 19. RoleBinding、ClusterRoleBinding
+## 20. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -2747,7 +2864,7 @@ subjects:
 
 <br>
 
-## 20. Secret
+## 21. Secret
 
 ### data
 
@@ -2968,7 +3085,7 @@ stringData:
 
 <br>
 
-## 21. Service
+## 22. Service
 
 ### spec.ports
 
@@ -3195,7 +3312,7 @@ Serviceのタイプを設定する。
 
 <br>
 
-## 22. ServiceAccount
+## 23. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -3234,7 +3351,7 @@ imagePullSecrets:
 
 <br>
 
-## 23. StatefulSet
+## 24. StatefulSet
 
 ### spec.serviceName
 

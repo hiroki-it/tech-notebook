@@ -601,7 +601,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 > ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
 
-#### ▼ ラウンドロビン
+#### ▼ ラウンドロビン方式
 
 受信したリクエストを、ターゲットに均等にルーティングする。
 

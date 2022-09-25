@@ -1178,7 +1178,7 @@ spec:
 
 #### ▼ route.destination.host
 
-受信したインバウンド通信のルーティング先とするServiceのドメイン名（あるいはService名）を設定する。
+受信したインバウンド通信でルーティング先とするServiceのドメイン名（あるいはService名）を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -1194,7 +1194,7 @@ spec:
 
 #### ▼ route.destination.port
 
-受信するインバウンド通信のルーティング先のポート番号を設定する。
+受信するインバウンド通信でルーティング先のポート番号を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 

@@ -101,7 +101,7 @@ BAZ
 
 JSONデータのリストから複数のオブジェクトを取得する場合、取得したオブジェクトを再びリストに入れる。
 
-```yaml
+```bash
 $ cat data.json | jq '.baz[]' | jq -s
 
 [
@@ -126,7 +126,7 @@ $ cat data.json | jq '.baz[]' | jq -s
 
 > ℹ️ 参考：https://www.wakuwakubank.com/posts/676-linux-jq/
 
-```yaml
+```bash
 $ cat data.json | jq '.'
 
 {
@@ -149,7 +149,7 @@ $ cat data.json | jq '.'
 
 > ℹ️ 参考：https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4#slicing-and-filtering
 
-```yaml
+```bash
 $ cat data.json | jq '.baz[]'
 
 {
@@ -160,7 +160,7 @@ $ cat data.json | jq '.baz[]'
 }
 ```
 
-```yaml
+```bash
 $ cat data.json | jq '.baz[0]'
 
 {
@@ -168,7 +168,7 @@ $ cat data.json | jq '.baz[0]'
 }
 ```
 
-```yaml
+```bash
 $ cat list.json | jq '.[]'
 
 {

@@ -416,7 +416,7 @@ $ docker rm --force $(docker ps --all --quiet)
 **＊例＊**
 
 ```bash
-$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 [root@<コンテナID>:/] $ cat /etc/hosts
@@ -437,7 +437,7 @@ ff02::2	ip6-allrouters
 > ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ --expose
@@ -447,7 +447,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するコ�
 > ℹ️ 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --expose=80 <使用するコンテナイメージ名>:<バージョンタグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --expose=80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ -a、-d

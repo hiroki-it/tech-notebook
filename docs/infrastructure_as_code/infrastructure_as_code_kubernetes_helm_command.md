@@ -555,7 +555,7 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 
 #### ▼ helm-secretsとは
 
-Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元々の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
+Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
 
 > ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
@@ -584,7 +584,7 @@ db:
 
 #### ▼ enc
 
-指定した```values```ファイルを暗号化し、元々の```values```ファイルを上書きする。
+指定した```values```ファイルを暗号化し、元の```values```ファイルを上書きする。
 
 > ℹ️ 参考：https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 

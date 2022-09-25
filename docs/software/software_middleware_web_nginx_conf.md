@@ -404,7 +404,7 @@ ssl on;
 
 #### ▼ ssl_certificate
 
-HTTPSプロトコルを受信する場合、PEM証明書のパスを設定する。
+HTTPSプロトコルを受信する場合、SSL証明書のパスを設定する。
 
 **＊実装例＊**
 
@@ -414,12 +414,22 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ▼ ssl_certificate_key
 
-HTTPSプロトコルを受信する場合、PEM秘密鍵のパスを設定する。
+HTTPSプロトコルを受信する場合、SSL証明書と対になる秘密鍵のパスを設定する。
 
 **＊実装例＊**
 
 ```nginx
 ssl_certificate_key /etc/nginx/ssl/server.key;
+```
+
+#### ▼ ssl_client_certificate
+
+HTTPSプロトコルを受信する場合、クライアント証明書のパスを設定する。
+
+**＊実装例＊**
+
+```nginx
+ssl_client_certificate /etc/nginx/ssl/clinet.crt;
 ```
 
 #### ▼ tcp_nopush

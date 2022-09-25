@@ -194,7 +194,7 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元々設定したバックエンドが異なる場合、元々のバックエンドの```.tfstate```ファイルはそのまま保持される。
+初期化のための```terraform init```コマンドの時、今現在で設定しているバックエンドにある```.tfstate```ファイルをそのまま使用する。```--migrate-state```オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの```.tfstate```ファイルはそのまま保持される。
 
 > ℹ️ 参考：
 >
@@ -211,7 +211,7 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 #### ▼ --migrate-state
 
-初期化のための```terraform init```コマンドの時、この時、元々設定していたバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元々のバックエンドの```.tfstate```ファイルを削除するか否かを選択できる。
+初期化のための```terraform init```コマンドの時、この時、元のバックエンドにある```.tfstate```ファイルをコピーし、指定したバックエンドに移行する。元のバックエンドの```.tfstate```ファイルを削除するか否かを選択できる。
 
 > ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
