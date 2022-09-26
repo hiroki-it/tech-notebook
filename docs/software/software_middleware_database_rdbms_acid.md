@@ -1,5 +1,5 @@
 ---
-title: 【IT技術の知見】ACID＠RDBMS
+titlIe: 【IT技術の知見】ACID＠RDBMS
 description: ACID＠RDBMSの知見を記録しています。
 ---
 

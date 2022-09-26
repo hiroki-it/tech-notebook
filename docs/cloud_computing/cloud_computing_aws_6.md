@@ -62,9 +62,25 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 ### ENIとは
 
-クラウドネットワークインターフェースとして働く。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
+クラウドネットワークインターフェースとして働く。対象のAWSリソースに、自身に紐づけられたIPアドレスを割り当てる。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
+
+<br>
+
+### 紐付けられるリソース
+
+| リソースの種類       | 役割                                                                             | 補足                                                         |
+| -------------------- |--------------------------------------------------------------------------------| ------------------------------------------------------------ |
+| ALB                  | ENIに紐付けられたIPアドレスを、ALBに割り当てる。                                                   |                                                              |
+| EC2                  | ENIに紐付けられたIPアドレスを、EC2に割り当てる。                                                   | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| GlobalAccelerator    |                                                                                |                                                              |
+| NAT Gateway          | ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。                                      |                                                              |
+| RDS                  |                                                                                |                                                              |
+| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。      |                                                              |
+| VPCエンドポイント    | Interface型のVPCエンドポイントとして動作する。                                                  |                                                              |
 
 <br>
 
@@ -78,22 +94,6 @@ ENIを介して、同じVPC内のインスタンスなどに、パケットの�
 >
 > - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
 > - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
-
-<br>
-
-### 紐付けられるリソース
-
-| リソースの種類       | 役割                                                                             | 補足                                                         |
-| -------------------- |--------------------------------------------------------------------------------| ------------------------------------------------------------ |
-| ALB                  | ENIに紐付けられたパブリックIPアドレスをALBに割り当てられる。                                             |                                                              |
-| EC2                  | ENIに紐付けられたパブリックIPアドレスがEC2に割り当てられる。                                             | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| Fargate環境のEC2     | 明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。        | Fargate環境のホストがEC2とは明言されていない。<br>ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
-| Elastic IP           | ENIにElastic IPアドレスが紐付けられる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。 | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
-| GlobalAccelerator    |                                                                                |                                                              |
-| NAT Gateway          | ENIに紐付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる。                                     |                                                              |
-| RDS                  |                                                                                |                                                              |
-| セキュリティグループ | ENIにセキュリティグループが紐付けれる。このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。      |                                                              |
-| VPCエンドポイント    | Interface型のVPCエンドポイントとして動作する。                                                  |                                                              |
 
 <br>
 

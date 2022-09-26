@@ -21,7 +21,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 WSGIアプリケーションの実行に関するメソッドを持つ。クラスの引数に、グローバル変数の『```__name__```』あるいはエントリーポイントのパスを直接的に設定する。環境変数の```FLASK_APP```で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
 
-> ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/api/
+> ℹ️ 参考：https://flask.palletsprojects.com/Ien/2.0.x/api/
 
 ```python
 from flask import Flask

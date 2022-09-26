@@ -355,7 +355,7 @@ $ curl -X GET https://example.com/foo/1 | jq .
 **＊例＊**
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foo
+$ curl -X POST -H "Content-Type:application/json" -d '{}' https://example.com/foo
 ```
 
 #### ▼ -k
@@ -363,7 +363,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/f
 SSL証明書のエラーを無視する。オレオレ証明書を使用している場合に、以下のようなエラーでHTTPSプロトコルで通信できないため、これを無視する。
 
 ```bash
-$ curl https://*.*.*.* -H 'Host:https://example.com'
+$ curl https://*.*.*.* -H 'Host:example.com'
 
 curl: (60) SSL certificate problem: self signed certificate
 More details here: https://curl.se/docs/sslcerts.html
@@ -373,7 +373,7 @@ establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
 
 # kオプションを有効化する。
-$ curl https://*.*.*.* -H 'Host:https://example.com' -k
+$ curl https://*.*.*.* -k -H 'Host:example.com'
 ```
 
 
@@ -415,6 +415,14 @@ $ curl --resolve <ドメイン名>:<ポート番号>:<IPアドレス> https://ex
 
 ```bash
 $ curl --resolve example.com:80:127.0.0.1 https://example.com
+```
+
+#### ▼ -v
+
+HTTPリクエストの詳細な情報を出力する。
+
+```bash
+$ curl -v https://example.com
 ```
 
 #### ▼ -X
@@ -1739,7 +1747,7 @@ $ tree -P providers.tf
 
 #### ▼ tracerouteとは
 
-通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。プロトコルやポート番号は指定する必要はない。
+宛先にUDPプロトコル/ICMPプロトコル（デフォルトはUDPプロトコル）でパケットを送信し、通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
 
@@ -1748,11 +1756,15 @@ $ tree -P providers.tf
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 
+**＊実行例＊**
+
+もし、```traceroute```コマンドが終了すれば、全てのルーターを経由できていることを表す。
+
 ```bash
 $ traceroute google.com
 
-traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
- 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーター
  2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
  3  g-o-4eb-a13-1-e-2-1.interq.or.jp (210.157.9.209)  0.784 ms  0.786 ms  0.778 ms
  4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  2.201 ms
@@ -1760,10 +1772,10 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
  6  as15169.ix.jpix.ad.jp (210.171.224.96)  2.105 ms  1.433 ms  1.618 ms
  7  209.85.243.58 (209.85.243.58)  1.623 ms  35.993 ms  1.596 ms
  8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms
- 9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms
+ 9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 最後のルーター
 ```
 
-もし、IPアドレスがアスタリスクになった場合は、それ以降のルーターに通信が届いていないことを表す。
+一方で、IPアドレスがアスタリスクになった場合は、それ以降のルーターに通信が届いていないことを表す。
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
 
@@ -1771,14 +1783,22 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 $ traceroute google.com
 
 traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
- 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーター
  2  g-o-p-4ee-a01-1-e-1-5.interq.or.jp (210.157.9.233)  0.845 ms  0.861 ms  0.844 ms
  3  g-o-4eb-a13-1-e-2-1.interq.or.jp (210.157.9.209)  0.784 ms  0.786 ms  0.778 ms
- 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # ここまでは届く
+ 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # このルーターまでは届く
  5  *  *  *                                                                 # その後失敗
  6  *  *  *
 ...
 ```
+
+#### ▼ -I
+
+ICMPプロトコルを使用して、パケットを送信する。TCPプロトコルの一種である。
+
+```bash
+$ traceroute -I -n google.com -p 443
+````
 
 #### ▼ -n
 
@@ -1789,19 +1809,39 @@ IPアドレスの名前解決を実行せずに、IPアドレスをそのまま�
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 
+**＊実行例＊**
+
 ```bash
 $ traceroute -n google.com
 
 traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
- 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms
- 2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms
+ 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms # 最初のルーター
+ 2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms # ここで、異なるネットワーク領域に入った可能性
  3  210.157.9.209  0.718 ms  0.722 ms  0.761 ms
  4  210.172.131.149  1.520 ms  1.894 ms  1.892 ms
  5  210.172.131.118  0.652 ms  0.645 ms  0.619 ms
  6  210.171.224.96  1.499 ms  1.705 ms  1.587 ms
- 7  209.85.243.58  1.575 ms  1.558 ms  1.557 ms
+ 7  209.85.243.58  1.575 ms  1.558 ms  1.557 ms # ここで、異なるネットワーク領域に入った可能性
  8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
- 9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms
+ 9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms # 最後のルーター
+```
+
+#### ▼ -p
+
+ポート番号を指定する。デフォルト値は、```33434```番ポートである。
+
+```bash
+$ traceroute *.*.*.* -p 9000
+```
+
+#### ▼ tcptraceroute
+
+宛先にTCPプロトコルでパケットを送信し、通信の送信元から送信先までに通過するルーターのIPアドレスを取得する。```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
+
+> ℹ️ 参考：https://succzero.hatenablog.com/entry/2013/09/01/181615
+
+```bash
+$ tcptraceroute google.com
 ```
 
 <br>

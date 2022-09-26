@@ -171,7 +171,7 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: istiod-default-validator
 webhooks:
-    # webhook名はDNS名にする。
+    # webhook名は完全修飾ドメイン名にする。
   - name: validation.istio.io
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None

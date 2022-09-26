@@ -825,6 +825,7 @@ Cluster内ネットワーク内の全てのServiceに完全修飾ドメイン名
 >
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
+> - https://eng-blog.iij.ad.jp/archives/9998
 
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             | 補足                                                                                                                                                                                                               |
 | -------------- | -------------------------------------------------------- | ------------------------------------------------------------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -861,6 +862,7 @@ Address:  10.105.157.184
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
+<br>
 
 ### 通信方法
 

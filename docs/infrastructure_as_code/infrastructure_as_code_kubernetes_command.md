@@ -1020,7 +1020,7 @@ $ kubectl run <Pod名> --restart=Never --image=<コンテナイメージ名>:<�
 $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
-#### ▼ Pod間通信のデバッグ
+#### ▼ Podのアウトバウンド通信のデバッグ
 
 ```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルワーカーNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチワーカーNodeの場合は、（たぶん）名前が一番昇順のワーカーNode上でPodが作成されてしまい、ワーカーNodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。検証の実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使用できるのでおすすめである。
 
@@ -1029,19 +1029,34 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 > - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
 > - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
+ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがいくつかある。
+
+
+> ℹ️ 参考：
+>
+> - https://hub.docker.com/r/praqma/network-multitool
+> - https://hub.docker.com/r/nicolaka/netshoot
+
 ```bash
 # シングルワーカーNodeの場合
 
 # curl送信用のコンテナを作成する。
-$ kubectl run \
+$ kubectl run \                
     -n default \
-    -it curl \
-    --image=yauritux/busybox-curl \
+    -it multitool \
+    --image=praqma/network-multitool \
     --rm \
     --restart=Never \
-    -- bash
+    -- /bin/bash
 
+# curlコマンドでデバッグする。
 [root@<Pod名>:~] $ curl -X GET https://<Serviceの完全修飾ドメイン名やIPアドレス>
+
+# tcptracerouteコマンドでデバッグする。
+[root@<Pod名>:~] $ tcptraceroute <Serviceの完全修飾ドメイン名やIPアドレス>
+
+# mtrコマンドでデバッグする。
+[root@<Pod名>:~] $ mtr <Serviceの完全修飾ドメイン名やIPアドレス>
 ```
 
 ```bash
@@ -1051,10 +1066,10 @@ $ kubectl run \
 $ kubectl get pod <Pod名> -o wide
 
 # 指定したワーカーNode上で、curl送信用のコンテナを作成する。
-$ kubectl debug node/<ワーカーNode名> \
+$ kubectl debug node/<ワーカーNode名> \                
     -n default \
     -it \
-    --image=yauritux/busybox-curl
+    --image=praqma/network-multitool
 
 [root@<Pod名>:~] $exit
 

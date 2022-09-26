@@ -1078,7 +1078,7 @@ CloudFrontには、エッジロケーションの数だけエッジサーバー�
 
 ```bash
 $ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
-  | jq  ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
+    | jq  ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
 もしくは、以下のリンクを直接的に参考し、『```"service": "CLOUDFRONT"```』となっている部分を探す。
