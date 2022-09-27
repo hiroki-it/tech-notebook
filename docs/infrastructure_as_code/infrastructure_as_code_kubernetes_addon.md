@@ -427,7 +427,7 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
 
-AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングするPodの数だけワーカーNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスを付与できる。ワーカーNodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。ワーカーNodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、ワーカーNode上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、ワーカーNode当たり```1```個しかPodをスケジューリングできない）。
+AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングするPodの数だけワーカーNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。ワーカーNodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。ワーカーNodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、ワーカーNode上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、ワーカーNode当たり```1```個しかPodをスケジューリングできない）。
 
 > ℹ️ 参考：
 >

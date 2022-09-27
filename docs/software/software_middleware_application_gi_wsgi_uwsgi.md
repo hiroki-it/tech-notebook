@@ -25,6 +25,11 @@ description: uWSGI＠ミドルウェアの知見を記録しています。
 
 ### リバースプロキシのミドルウェアとして
 
+#### ▼ 構成
+
+リバースプロキシのミドルウェアとして使用する場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを介して、後段のアプリケーションにアクセスできるようになる。
+
+
 > ℹ️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uwsgi.png)

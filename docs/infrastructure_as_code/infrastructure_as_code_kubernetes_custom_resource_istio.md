@@ -114,7 +114,7 @@ Pod
 
 ### Istioを採用する/しない場合の比較
 
-全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、実際の運用場面ではこれを行うことはなく、マイクロサービスコンテナの稼働するPodのみでこれを行えばよい。そのため、```istio-proxy```コンテナを注入しないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。
+KubernetesとIstioには重複する能力がいくつか（例：サービスディスカバリー）ある。全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、実際の運用場面ではこれを行うことはなく、マイクロサービスコンテナの稼働するPodのみでこれを行えばよい。そのため、```istio-proxy```コンテナを注入しないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。
 
 > ℹ️ 参考：
 >
@@ -123,15 +123,15 @@ Pod
 > - https://github.com/envoyproxy/go-control-plane
 > - https://istiobyexample-ja.github.io/istiobyexample/ingress/
 
-| 能力                      | Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
-|-------------------------|----------------------------|-----------------------------------|--------------------------|
-| サービスメッシュコントロールプレーン      | Istiodコントロールプレーン           | go-control-plane                  | なし                       |
-| サービスディスカバリー             | DestinationRule            | ```route```キー                     | kube-proxy + Service     |
-| 同上                      | EnvoyFilter                | ```listener```キー                  | kube-proxy + Service     |
-| 同上                      | ServiceEntry               | ```cluster```キー                   | EndpointSlice            |
-| 同上                      | WorkloadEntry              | ```endpoint```キー                  | EndpointSlice            |
-| サービスレジストリ               | 調査中...                     | etcd                              | etcd                     |
-| Node外からのインバウンド通信のルーティング | VirtualService + Gateway   | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
+| 能力                              | Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
+|---------------------------------|------------------------|-----------------------------------|--------------------------|
+| サービスメッシュコントロールプレーン              | Istiodコントロールプレーン       | go-control-plane                  | なし                       |
+| サービスディスカバリーでのルーティング先設定          | DestinationRule | ```route```キー                     | kube-proxy + Service     |
+| サービスディスカバリーでのリスナー設定             | EnvoyFilter + EndpointSlice  | ```listener```キー                  | kube-proxy + Service     |
+| サービスディスカバリーでの追加サービス設定           | ServiceEntry + EndpointSlice | ```cluster```キー                   | EndpointSlice            |
+| Cluster外ワーカーNodeに対するサービスディスカバリー | WorkloadEntry | ```endpoint```キー                  | Egress                   |
+| サービスレジストリ                       | 調査中...                 | etcd                              | etcd                     |
+| Node外からのインバウンド通信のルーティング         | VirtualService + Gateway | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
 
 
 <br>
@@ -436,7 +436,7 @@ webhooks:
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のPodの宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストファイルの宣言（ServiceEntry、WorkloadEntry）から、他のPodの宛先情報を取得する。
+```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストファイルの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。
 
 > ℹ️ 参考：
 >

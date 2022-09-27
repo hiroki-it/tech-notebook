@@ -981,6 +981,7 @@ spec:
 > ℹ️ 参考：
 >
 > - https://argoproj.github.io/argo-rollouts/features/bluegreen/
+> - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
 
 | 設定項目                    | 説明                                                         |
@@ -1018,6 +1019,7 @@ spec:
 > ℹ️ 参考：
 >
 > - https://argoproj.github.io/argo-rollouts/features/canary/
+> - https://argoproj.github.io/argo-rollouts/concepts/#canary
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
 | キー       | 説明                                                         |

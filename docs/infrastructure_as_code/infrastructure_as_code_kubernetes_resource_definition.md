@@ -3299,17 +3299,6 @@ spec:
 
 Serviceのタイプを設定する。
 
-> ℹ️ 参考：
->
-> - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
-
-| 値                        | IPアドレスの公開範囲 |
-| ------------------------- | ----------------- |
-| ClusterIP（デフォルト値） | Clusterネットワーク内からのみ |
-| NodePort                  | Clusterネットワーク外/内 |
-| LoadBalancer              | Clusterネットワーク外/内 |
-
 <br>
 
 ## 23. ServiceAccount

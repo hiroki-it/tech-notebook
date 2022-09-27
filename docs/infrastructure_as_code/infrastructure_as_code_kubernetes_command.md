@@ -1022,7 +1022,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 #### ▼ Podのアウトバウンド通信のデバッグ
 
-```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルワーカーNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチワーカーNodeの場合は、（たぶん）名前が一番昇順のワーカーNode上でPodが作成されてしまい、ワーカーNodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。検証の実行環境として、```yauritux/busybox-curl```イメージは、軽量かつ```curl```コマンドと```nslookup```コマンドの両方が使用できるのでおすすめである。
+```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルワーカーNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチワーカーNodeの場合は、（たぶん）名前が一番昇順のワーカーNode上でPodが作成されてしまい、ワーカーNodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
 
 > ℹ️ 参考：
 >
@@ -1041,6 +1041,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 # シングルワーカーNodeの場合
 
 # curl送信用のコンテナを作成する。
+# rmオプションを指定し、使用後に自動的に削除されるようにする。
 $ kubectl run \                
     -n default \
     -it multitool \
@@ -1066,6 +1067,7 @@ $ kubectl run \
 $ kubectl get pod <Pod名> -o wide
 
 # 指定したワーカーNode上で、curl送信用のコンテナを作成する。
+# rmオプションはない。
 $ kubectl debug node/<ワーカーNode名> \                
     -n default \
     -it \

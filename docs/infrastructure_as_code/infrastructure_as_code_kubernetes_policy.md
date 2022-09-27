@@ -521,13 +521,13 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 
 本番環境に対して、手動またはCDツールを使用して```kubectl apply```コマンドを実行する。
 
-| 採用可能な戦略         | 方法                             | 推奨/非推奨 |
-|-----------------|--------------------------------|--------|
-| インプレースデプロイメント   | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。 | 非推奨    |
-| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。 | 推奨     |
-| BGデプロイメント       | Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツールのBGデプロイメント機能を採用する。       | 推奨     |
-| カナリアリリース        | Kubernetes自体はカナリアリリースの能力を持たない。CDツールのカナリアリリース機能を採用する。         | 推奨     |
-| Progressive Delivery | Kubernetes自体はProgressive Deliveryの能力を持たない。CDツールのProgressive Delivery機能を採用する。 | 推奨     |
+| 採用可能な戦略         | 方法                                                                                                                                            | 推奨/非推奨 |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| インプレースデプロイメント   | KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。<br>ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/#toc2                 | 非推奨    |
+| ローリングアップデート     | KubernetesのDeploymentのRollingUpdate戦略を採用する。                                                                                                   | 推奨     |
+| BGデプロイメント       | Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール（例：ArgoCD）のBGデプロイメント機能を採用する。<br>ℹ️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#blue-green | 推奨     |
+| カナリアリリース        | Kubernetes自体はカナリアリリースの能力を持たない。CDツール（例：ArgoCD）のカナリアリリース機能を採用する。<br>ℹ️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#canary                       | 推奨     |
+| Progressive Delivery | Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール（例：ArgoCD）のProgressive Delivery機能を採用する。<br>ℹ️ 参考：https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery     | 推奨     |
 
 
 <br>
@@ -552,5 +552,7 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 Kubernetesには通知能力がなく、手動で知らせる必要がある。
 
 #### ▼ Kubernetes以外を使用する場合
+
+CDツールの通知機能（例：ArgoCD Notification）を使用して、CDパイプラインの結果が通知されるようにする。 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
 
 <br>

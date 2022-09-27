@@ -376,12 +376,29 @@ Serviceは、kube-proxyが更新したワーカーNode上で稼働するiptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ （チャプター5）
 
+#### ▼ Serviceのタイプのまとめ
+
+> ℹ️ 参考：
+>
+> - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
+
+| 値          | IPアドレスの公開範囲 | 経路                                                                           |
+|------------| ----------------- |------------------------------------------------------------------------------|
+| ClusterIP（デフォルト値） | Clusterネットワーク内からのみ | ```ClusterIP -> Pod```                                                       |
+| NodePort   | Clusterネットワーク外/内 | ```NodePort -> ClusterIP -> Pod```                                           |
+| LoadBalancer | Clusterネットワーク外/内 | ```ロードバランサー -> NodePort -> Pod``` または ```ロードバランサー -> Pod``` （ClusterIPは介さない） |
+| External   |調査中...  | 調査中...                                                                       |
+| HeadLess   | 調査中... | 調査中...                                                                       |
+
+
 #### ▼ ClusterIP Service
 
 ClusterネットワークのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とし、Ingressが無いとClusterネットワーク内からのみしかアクセスできないため、より安全である。ClusterネットワークのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。デフォルトのタイプである。他のServiceとは異なり、クラウドプロバイダー環境でIngressに相当するLBが必要になるため、クラウドプロバイダーとKubernetesリソースの境界が曖昧になってしまう。
 
 > ℹ️ 参考：
 >
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 > - https://zenn.dev/suiudou/articles/aa2194b6f53f8f
 > - https://thinkit.co.jp/article/18263
 
@@ -397,19 +414,21 @@ options ndots:5
 
 #### ▼ LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
+ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodに（あるいはNodePortを介して）ルーティングする。LoadBalancer Serviceでは、ClusterIPは介さない。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
 
 > ℹ️ 参考：
 >
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 > - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 > - https://thinkit.co.jp/article/18263
 
 #### ▼ NodePort Service
 
-ワーカーNodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。ワーカーNodeはServiceのIPアドレスを返却するが、Serviceのポート番号と紐づくワーカーNodeのポート番号はデフォルトではランダムであるため、ワーカーNodeのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
+ワーカーNodeのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をClusterIPを介してPodにルーティングする。ワーカーNode外からのインバウンド通信にIngressを必要とせず、Clusterネットワーク外/内の両方からアクセスできる。ワーカーNodeはServiceのIPアドレスを返却するが、Serviceのポート番号と紐づくワーカーNodeのポート番号はデフォルトではランダムであるため、ワーカーNodeのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。ただし、ClusterIP Serviceと比較して、クラウドプロバイダーとKubernetesの境界を明確化できる。
 
 > ℹ️ 参考：
 >
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 > - https://stackoverflow.com/a/64605782
 > - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 
