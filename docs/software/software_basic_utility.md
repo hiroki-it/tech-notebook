@@ -1808,7 +1808,7 @@ ICMPプロトコルを使用して、パケットを送信する。TCPプロト�
 
 ```bash
 $ traceroute -I -n google.com -p 443
-````
+```
 
 #### ▼ -n
 
