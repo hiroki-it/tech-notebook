@@ -713,7 +713,7 @@ CMによってRoute53に自動作成されるCNAMEレコード値を使用して
 
 #### ▼ Eメール検証
 
-ドメインの所有者にメールを送信し、これを承認することにより所有者であることを証明する。ドメインをAWS以外（例：お名前ドットコム）で購入している場合は、そちらで設定したメールアドレス宛に確認メールが送信される。
+ドメインの所有者にメールを送信し、これを承認することにより所有者であることを証明する。ドメインをAWS以外（例：お名前ドットコム）で購入している場合は、そちらで設定したメールアドレス宛に確認メールを送信する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
 
@@ -1760,9 +1760,17 @@ Resources:
 
 ## 11-03-04. CodeDeployと他のAWSリソースとの連携
 
-### 連携可能なAWSリソース
+### オートスケーリング
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws.html
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+
+### ALB、ELB、NLB
+
+#### ▼ インプレースデプロイメントの場合
+
+CodeDeployのデプロイの途中、ターゲットグループからインスタンスを切り離すことにより、インバウンド通信のインスタンスへのルーティングを遮断する。そのため、デプロイ中にユーザーはアプリにアクセスできなくなる。デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、アクセスできるようにする。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 <br>
 

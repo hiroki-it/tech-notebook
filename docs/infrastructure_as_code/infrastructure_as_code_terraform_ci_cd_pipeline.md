@@ -485,7 +485,7 @@ notifier:
     # 環境変数に登録したパーソナルアクセストークン
     token: $GITHUB_TOKEN
     repository:
-      # 送信先のユーザー名もしくは組織名
+      # 宛先のユーザー名もしくは組織名
       owner: "foo-company"
       name: "foo-repository"
 ```

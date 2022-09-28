@@ -443,19 +443,28 @@ Serviceを作成する。
 ClusterIP Serviceを作成する。
 
 ```bash
-$ kubectl expose <Service名> --type=ClusterIP --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> \
+    --type=ClusterIP \
+    --port=<受信ポート番号> \
+    --target-port=<転送先ポート番号>
 ```
 
 NodePort Serviceを作成する。
 
 ```bash
-$ kubectl expose <Service名> --type=NodePort --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> \
+    --type=NodePort \
+    --port=<受信ポート番号> \
+    --target-port=<転送先ポート番号>
 ```
 
 LoadBalancer Serviceを作成する。
 
 ```bash
-$ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> \
+    --type=LoadBalancer \
+    --port=<受信ポート番号> \
+    --target-port=<転送先ポート番号>
 ```
 
 <br>
@@ -1001,20 +1010,20 @@ Deployment、Pod、Jobを作成する。
 
 **＊例＊**
 
-もし```restart```オプションが```Always```なら、Deploymentが作成される。
+もし```restart```オプションが```Always```なら、Deploymentを作成する。
 
 
 ```bash
 $ kubectl run <Deployment名> --restart=Always --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
-もし```restart```オプションが```Never```なら、Podが作成される。
+もし```restart```オプションが```Never```なら、Podを作成する。
 
 ```bash
 $ kubectl run <Pod名> --restart=Never --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
-もし```restart```オプションが```OnFailure```なら、Jobが作成される。
+もし```restart```オプションが```OnFailure```なら、Jobを作成する。
 
 ```bash
 $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>

@@ -3258,8 +3258,8 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-  - targetPort: 8080
-    port: 80
+    - port: 80
+      targetPort: 8080
 ```
 
 ```yaml
@@ -3269,8 +3269,8 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-    - targetPort: 9000
-      port: 9000
+    - port: 9000
+      targetPort: 9000
 ```
 
 <br>
@@ -3297,7 +3297,84 @@ spec:
 
 ### spec.type
 
+#### ▼ typeとは
+
 Serviceのタイプを設定する。
+
+#### ▼ ClusterIPの場合
+
+ClusterIP Serviceを設定する。```spec.clusterIP```キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-clusterip-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-foo
+      protocol: TCP
+      port: 8080
+      targetPort: 80
+  selector:
+    app: foo-pod
+  # clusterIP: *.*.*.*
+```
+
+#### ▼ NodePortの場合
+
+NodePort Serviceを設定する。Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受けるポート番号（```30000``` 〜 ```32767```）を指定する。これを指定しない場合、コントロールプレーンNodeがランダムでポート番号を決める。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#nodeport
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-nodeip-service
+spec:
+  type: NodePort
+  ports:
+    - name: http-foo
+      protocol: TCP
+      nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
+      port: 8080
+      targetPort: 80
+  selector:
+    app: foo-pod
+```
+
+#### ▼ LoadBalancerの場合
+
+LoadBalancer Serviceを設定する。クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。同時に、```status.loadBalancer```キーが自動的に追加される。```status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。```status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#loadbalancer
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-loadbalancer-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http-foo
+      protocol: TCP
+      port: 8080
+      targetPort: 80
+  selector:
+    app: foo-pod
+# Kubernetesが自動的に追加するキー
+status:
+  loadBalancer:
+    # インバウンドの意味のingressである
+    ingress:
+      # External-IP
+      - ip: 192.0.2.127 
+```
 
 <br>
 

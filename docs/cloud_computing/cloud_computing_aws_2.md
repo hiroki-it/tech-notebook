@@ -874,10 +874,10 @@ Istioと同様にして、マイクロサービスが他のマイクロサービ
 
 | 設定項目                      | 説明                                                         | 補足                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する。         |                                                              |
+| ```awslogs-group```           | ログ宛先のCloudWatchログのロググループを設定する。         |                                                              |
 | ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する。           |                                                              |
-| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
+| ```awslogs-region```          | ログ宛先のCloudWatchログのリージョンを設定する。           |                                                              |
+| ```awslogs-stream-prefix```   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
 
 #### ▼ FireLensコンテナ
 
@@ -1199,7 +1199,7 @@ ECS_TASK_ID=bar
 bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
 ```
 
-（６）ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
+（６）ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『```/bin/bash```』や『```/bin/sh```』で指定すると、binより上のパスもECSに送信されてしまう。例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。これはCloudTrailでExecuteCommandイベントとして確認できる。ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
 ```bash
 #!/bin/bash
@@ -1367,7 +1367,7 @@ Pod provisioning timed out (will retry) for pod
 
 #### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
 
-EKS Clusterを作成すると、ENIが作成される。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。執筆時点（2022/05/27）では、データプレーンがコントロールプレーンと通信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKS Clusterを作成すると、ENIも作成する。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。執筆時点（2022/05/27）では、データプレーンがコントロールプレーンと通信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
 
 > ℹ️ 参考：
 >
@@ -2141,7 +2141,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 #### ▼ イベントパターン
 
-指定したAWSリソースでイベントが起こると、以下のようなJSONが送信される。イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに転送する。イベントパターンに定義しないキーは任意のデータと見なされる。
+指定したAWSリソースでイベントが起こると、以下のようなJSONを送信する。イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに転送する。イベントパターンに定義しないキーは任意のデータと見なされる。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 

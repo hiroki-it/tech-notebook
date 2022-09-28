@@ -1133,7 +1133,7 @@ ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチ�
 ```php
 <?php
 
-# ヘルスチェックが送信されるパス
+# ヘルスチェックを受信するパス
 Route::get("/healthcheck", function () {
     return response("success", 200);
 });
@@ -3964,7 +3964,7 @@ class Kernel extends HttpKernel
 Route::get('/users/{user}', 'UserController@index');
 ```
 
-かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストが送信されると、ユーザーIDが```1```のユーザーがDBから読み出され、コントローラーにインジェクションされる。
+かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストを送信すると、ユーザーIDが```1```のユーザーがDBから読み出され、コントローラーにインジェクションされる。
 
 ```php
 <?php
