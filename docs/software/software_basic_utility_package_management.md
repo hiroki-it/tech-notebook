@@ -283,12 +283,7 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ▼ brewとは
 
-Linuxで使用できるパッケージを管理する。異なるバージョンを同時に管理できない。M1 Macを採用している場合は、コマンドの前に```arch -arm64```をつける。
-
-```bash
-# M1 Macの場合
-$ arch -arm64 brew install <パッケージ名>
-```
+Linuxで使用できるパッケージを管理する。異なるバージョンを同時に管理できない。
 
 #### ▼ autoremove
 

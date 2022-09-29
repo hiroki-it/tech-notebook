@@ -322,6 +322,17 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 ## 04. CIパイプライン
 
+### コンテナイメージの署名
+
+コンテナイメージをビルドインのコマンド（例：```docker trust```コマンド）を使用して署名し、信頼された（ログイン済みの）イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。```docker trust```コマンドの内部では、notaryが使用されている。
+
+> ℹ️ 参考：
+> 
+> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+> - https://codezine.jp/article/detail/15119
+
+<br>
+
 ### Dockerfileのホワイトボックステスト
 
 #### ▼ 静的解析

@@ -634,7 +634,75 @@ spec:
 
 <br>
 
-## 01-04. マルチサービスメッシュ
+
+## 02. トラフィック管理
+
+### アウトバウンド通信の監視
+
+> ℹ️ 参考：https://istiobyexample.dev/monitoring-egress-traffic/
+
+| 宛先の種類              | 説明                          |
+|--------------------|-----------------------------|
+| PassthroughCluster | 明示的に設定された宛先                 |
+| BlackHoleCluster   | 設定されていない任意の宛先               |
+| 外部のサービス            | KubernetesのClusterの外にあるサービス |
+
+<br>
+
+### Faultインジェクション
+
+#### ▼ Faultインジェクションとは
+
+障害を意図的に注入し、サービスメッシュの動作を検証する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+
+#### ▼ テストの種類
+
+| テスト名         | 内容                                                                                                                                                    |
+| ---------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+
+<br>
+
+### サーキットブレイカー
+
+#### ▼ サーキットブレイカーとは
+
+マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。爆発半径を最小限にできる。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
+
+> ℹ️ 参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
+
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
+
+<br>
+
+## 03. セキュリティ
+
+### 認証
+
+マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
+
+> ℹ️ 参考：
+>
+> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+
+<br>
+
+### 認可
+
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
+
+<br>
+
+
+## 04. マルチサービスメッシュ
+
+### マルチサービスメッシュとは
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
 ### 異なるCluster内コンテナのデータプレーン内管理
 
@@ -673,56 +741,3 @@ spec:
 ![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 
 <br>
-
-<br>
-
-## 02. インジェクションテスト
-
-### Faultインジェクション
-
-#### ▼ Faultインジェクションとは
-
-障害を意図的に注入し、サービスメッシュの動作を検証する。
-
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
-
-#### ▼ テストの種類
-
-| テスト名         | 内容                                                                                                                                                    |
-| ---------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
-
-<br>
-
-## 03. 障害対策
-
-### サーキットブレイカー
-
-#### ▼ サーキットブレイカーとは
-
-マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。爆発半径を最小限にできる。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
-
-> ℹ️ 参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
-
-![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
-
-<br>
-
-## 04. 認証
-
-マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
-
-> ℹ️ 参考：
->
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
-
-<br>
-
-## 04-02. 認可
-
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
-
-<br>
-

@@ -203,7 +203,7 @@ worker_rlimit_nofile  8192;
 
 #### ▼ http
 
-全てのインバウンド通信に共通する処理を設定する。
+全てのHTTPプロトコルによるインバウンド通信に共通する処理を設定する。
 
 > ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 

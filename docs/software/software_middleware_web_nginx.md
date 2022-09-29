@@ -36,7 +36,7 @@ Nginxは、マスタープロセス、ワーカープロセス、プロキシキ
 
 リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のアプリケーションにアクセスできるようになる。
 
-#### ▼ HTTP/HTTPSプロトコルでルーティング
+#### ▼ HTTP/HTTPSプロトコルの場合
 
 Nginxは、インバウンド通信をappサーバーにルーティングする。また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保存されたキャッシュを取得し、レスポンスとして返信する。
 
@@ -70,9 +70,7 @@ server {
 }
 ```
 
-<br>
-
-#### ▼ FastCGIプロトコルでルーティング
+#### ▼ FastCGIプロトコルの場合
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
@@ -125,9 +123,9 @@ server {
 
 ### ロードバランサ－のミドルウェアとして
 
-#### ▼ HTTP/HTTPSプロトコルでルーティング
+#### ▼ ```L7```ロードバランサーの場合
 
-Nginxは、インバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
+Nginxは、HTTPプロトコルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
 
 > ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
 
@@ -173,6 +171,34 @@ server {
         server srv1.example.com;
         server srv2.example.com;
         server srv3.example.com;
+    }
+}
+```
+
+#### ▼ ```L4```ロードバランサーの場合
+
+Nginxは、TCPプロトコルのインバウンド通信を複数のサーバーに負荷分散的に振り分ける。
+
+> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2016-08-17-170114/
+
+**＊実装例＊**
+
+```nginx
+#-------------------------------------
+# TCPリクエスト
+#-------------------------------------
+stream {
+    error_log /var/log/nginx/stream.log info;
+    proxy_protocol on;
+    
+    upstream grpc_servers {
+        server 192.168.0.1:50051;
+        server 192.168.0.2:50051;
+    }
+    
+    server {
+        listen 50051;
+        proxy_pass grpc_servers;
     }
 }
 ```

@@ -505,6 +505,43 @@ $ docker start -i <停止中コンテナ名>
 
 <br>
 
+### trust
+
+#### ▼ trustとは
+
+コンテナイメージを署名する。
+
+> ℹ️ 参考：https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+
+#### ▼ inspect
+
+署名されたコンテナイメージか否かを確認する。
+
+> ℹ️ 参考：https://websetnet.net/how-to-sign-your-docker-images-to-increase-trust/
+
+```bash
+$ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
+
+[
+  {
+    "Name": "<コンテナイメージ名>:<バージョンタグ>"
+    "SignedTags": [
+      {
+        "SignedTag": "<バージョンタグ>"
+        "Digest": "8be25..."
+        "Signers": [
+          "<署名者の名前>"
+        ]
+      }
+    ],
+    
+    ...
+  }
+]
+```
+
+<br>
+
 ### stop
 
 #### ▼ stopとは
