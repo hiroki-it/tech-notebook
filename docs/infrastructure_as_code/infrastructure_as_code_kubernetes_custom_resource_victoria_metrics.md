@@ -53,10 +53,22 @@ HTTPSプロトコルの```8224```番ポートでインバウンド通信を待�
 
 PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
 
+> ℹ️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
+
 ```bash
 # 読み出しエンドポイントにリクエストを送信する。
-$ curl -X GET http://<VictoriaMetricsのIPアドレス>:8428/prometheus/api/v1/query \
-  -d 'query=vm_http_request_errors_total'
+$ curl -X GET http://<VictoriaMetricsのIPアドレス>:8428/api/v1/query -d 'query=vm_http_request_errors_total'
+```
+
+#### ▼ 書き込みエンドポイント
+
+PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
+
+> ℹ️ https://docs.victoriametrics.com/#high-availability
+
+```bash
+# 書き込みエンドポイントにリクエストを送信する。
+$ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 ```
 
 <br>
@@ -149,7 +161,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 ## 02. systemctlによる設定
 
-systemctlを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
+```systemctl```コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
 > ℹ️ 参考：
 >

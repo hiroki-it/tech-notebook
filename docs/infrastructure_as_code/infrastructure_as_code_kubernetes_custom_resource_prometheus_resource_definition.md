@@ -347,7 +347,7 @@ spec:
   - selector:
       matchLabels:
         app.kubernetes.io/managed-by: prometheus-operator
-        k8s-app: foo
+        app.kubernetes.io/app: foo-service
 ```
 
 ```yaml
@@ -357,7 +357,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/managed-by: prometheus-operator
-    k8s-app: kubelet
+    app.kubernetes.io/app: foo-service
 # 〜 中略 〜
 ```
 

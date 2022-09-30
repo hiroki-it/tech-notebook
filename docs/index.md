@@ -326,6 +326,9 @@ title: 【IT技術の知見】目次
     > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)
     > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
     > > * ##### 📖 [︎アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_addon.html)
+    > * ##### <u>Kustomize</u>
+    > > * ##### 📖 [Kustomize](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_kustomize.html)
+    > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_kustomize_policy.html)
     > * ##### <u>Helm</u>
     > > * ##### 📖 [︎Helm](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm.html)
     > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm_command.html)

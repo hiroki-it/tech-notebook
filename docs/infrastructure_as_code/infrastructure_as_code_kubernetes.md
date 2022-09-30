@@ -212,7 +212,7 @@ $ kube-apiserver \
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認証と同じように、クライアントが許可されたクライアントかどうかを検証する。Cluster内部からの場合はServiceAccountで、反対にCluster外部からのクライアントの場合はUserAccountに基づいて、クライアントを認証する。サービスアカウントを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。
+アプリケーションの認証と同じように、許可されたクライアントか否かを検証する。Kubernetesリソース（特に、Pod）からのリクエストの場合はServiceAccountで、反対にクライアントからの場合はUserAccountに基づいて、クライアントを認証する。ServiceAccountを作成すると、Bearerトークン（『```***-***-***-***-***-***```』のような形式）がSecretに格納される。クライアントは、```Authorization```ヘッダーにBearerトークンを割り当て、リクエストを送信する必要がある。このトークンは、Kubernetes ```v1.22```以降で定期的に更新されるようになった。
 
 > ℹ️ 参考：
 >

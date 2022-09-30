@@ -86,8 +86,8 @@ Kubernetesが、Kubernetesリソースの一意に識別するための情報を
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  labels: 
-    app: foo-gin
+  labels:
+    app.kubernetes.io/app: foo-deployment
 ...
 ```
 
@@ -3320,7 +3320,7 @@ spec:
       port: 8080
       targetPort: 80
   selector:
-    app: foo-pod
+    app.kubernetes.io/app: foo-pod
   # clusterIP: *.*.*.*
 ```
 
@@ -3344,7 +3344,7 @@ spec:
       port: 8080
       targetPort: 80
   selector:
-    app: foo-pod
+    app.kubernetes.io/app: foo-pod
 ```
 
 #### ▼ LoadBalancerの場合
@@ -3366,7 +3366,7 @@ spec:
       port: 8080
       targetPort: 80
   selector:
-    app: foo-pod
+    app.kubernetes.io/app: foo-pod
 # Kubernetesが自動的に追加するキー
 status:
   loadBalancer:
