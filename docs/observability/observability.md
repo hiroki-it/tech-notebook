@@ -181,7 +181,7 @@ description: 可観測性の知見を記録しています。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
-マイクロサービスから収集されたスパンのセットのこと。スパンをIDで紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
+マイクロサービスから収集されたスパンのセットのこと。スパンをトレースIDで紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
 
 > ℹ️ 参考：
 >
@@ -191,29 +191,51 @@ description: 可観測性の知見を記録しています。
 
 <br>
 
+### 分散トレースID
+
+#### ▼ IDの種類
+
+![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
+
+サービスメッシュでは、リバースプロキシ（例：Envoy、Linkerd2-proxy）、ロードバランサー（Istio IngressGateway、AWS ALB）、API Gateway（AWS API Gateway）で、インバウンド通信のHTTPヘッダーやRPCヘッダーに分散トレースIDが割り当てられているか（メッセージボディにIDを追加するツールもある）を確認し、もしなければ作成したトレースIDを新しく割り当てるようにする。
+
+| HTTPヘッダー名  | 説明                                                         |
+|------------| ------------------------------------------------------------ |
+| スパンIDヘッダー  | スパンIDが割り当てられている。                               |
+| トレースIDヘッダー | トレースIDが割り当てられている。                             |
+| 親スパンIDヘッダー | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
+
+
+> ℹ️ 参考：
+>
+> - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
+> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+
+
+#### ▼ 通信の伝播
+
+サービスメッシュのリバースプロキシは分散トレースのためのIDを生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービスでは、受信したインバウンド通信のヘッダーから分散トレースのIDを取得し、アウトバウンド通信のヘッダーにこのIDを割り当て直すような、実装が必要である。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
+
+> ℹ️ 参考：
+> 
+> - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
+> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
+> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/details/details.rb#L130-L187
+
+<br>
+
 ### スパン
 
 #### ▼ スパンとは
 
-マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。JSON型で定義されることが多い。SaaSツールによってJSON型の構造が異なる。
+マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。スパンには親子関係があり、最上位の親スパンを『ルートスパン』ともいう。JSON型で定義されることが多い。SaaSツールによってJSON型の構造が異なる。
 
 > ℹ️ 参考：
 >
 > - https://opentracing.io/docs/overview/spans/
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
-
-
-#### ▼ スパン間の紐付け
-
-![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
-
-リクエストヘッダーやボディにIDを割り当て、異なるマイクロサービスのスパン間を紐付ける。各マイクロサービスで、リクエストにIDが割り当てられているか確認し、もしなければ割り当てるといった処理が繰り返される。AWSを採用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
-
-> ℹ️ 参考：
->
-> - https://zenn.dev/lempiji/articles/b752b644d22a59
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 
 #### ▼ データポイント化

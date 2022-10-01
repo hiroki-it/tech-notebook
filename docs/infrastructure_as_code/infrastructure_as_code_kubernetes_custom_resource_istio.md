@@ -303,6 +303,7 @@ spec:
           image: docker.io/istio/pilot:<リビジョン番号>
           imagePullPolicy: IfNotPresent
           name: discovery
+          # 待ち受けるポート番号の仕様
           ports:
             # 8080番ポートの開放
             - containerPort: 8080

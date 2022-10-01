@@ -66,7 +66,7 @@ Envoyの実行時に、Cluster内メンバーのルーティングの設定を�
 
 <br>
 
-## 01-02. ユースケース
+## 02. ユースケース
 
 ### リバースプロキシのミドルウェアとして
 
@@ -99,5 +99,61 @@ Istioは、マイクロサービスのリバースプロキシコンテナとし
 <br>
 
 ### フォワードプロキシのミドルウェアとして
+
+<br>
+
+## 03. 分散トレースID
+
+### Envoyによるトレーシング
+
+Envoyは、分散トレースを作成できるように、自分自身を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
+
+<br>
+
+### HTTPヘッダーの場合
+
+#### ▼ 標準ヘッダー
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> 
+
+| HTTPヘッダー名     | 説明                             |
+| ------------------ | -------------------------------- |
+| ```X-REQUEST-ID``` | トレースIDが割り当てられている。 |
+
+#### ▼ zipkins系ヘッダー
+
+Envoyは、Zipkinsが使用するヘッダーを追加する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+
+| HTTPヘッダー名          | 説明                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| ```X-B3-SAMPLED```      |                                                              |
+| ```X-B3-SPANID```       | スパンIDが割り当てられている。                               |
+| ```X-B3-TRACEID```      | トレースIDが割り当てられている。                             |
+| ```X-B3-PARENTSPANId``` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
+
+#### ▼ AWS X-Ray系ヘッダー
+
+Envoyは、AWS X-Rayが使用するヘッダーを追加する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+
+| HTTPヘッダー名        | 説明                             |
+| --------------------- | -------------------------------- |
+| ```X-AMZN-TRACE-ID``` | トレースIDが割り当てられている。 |
+
+<br>
+
+### RPCヘッダーの場合
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
+
+| RPCヘッダー名        | 説明                             |
+| -------------------- | -------------------------------- |
+| ```GRPC-TRACE-BIN``` | トレースIDが割り当てられている。 |
 
 <br>
