@@ -30,7 +30,6 @@ theme:
   palette:
     scheme: dark
   features:
-    - navigation.expand
     - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
