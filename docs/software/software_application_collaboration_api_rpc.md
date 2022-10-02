@@ -379,3 +379,5 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 // 〜 中略 〜
 ```
+
+<br>

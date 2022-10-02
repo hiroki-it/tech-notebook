@@ -1541,7 +1541,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 | ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。 |
 | ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
 | ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
-| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先とするサブネットを設定する。      |
+| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先のサブネットを設定する。      |
 | ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、```ip```を設定する必要がある。 |
 | ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。 |
 | ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。 |

@@ -635,7 +635,6 @@ spec:
 
 <br>
 
-
 ## 02. トラフィック管理
 
 ### アウトバウンド通信の監視
@@ -679,27 +678,53 @@ spec:
 
 <br>
 
-## 03. セキュリティ
+## 03. 通信セキュリティ管理
+
+### SSL証明書
+
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
+
+<br>
 
 ### 認証
 
+#### ▼ 仕組み
+
 マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実現することを助ける。
 
-> ℹ️ 参考：
->
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
 <br>
 
 ### 認可
 
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization
+#### ▼ 仕組み
+
+> ℹ️ 参考：hhttps://istio.io/latest/docs/concepts/security/#authorization-architecture
 
 <br>
 
+## 04. 可観測性の管理
 
-## 04. マルチサービスメッシュ
+### メトリクス
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/metrics/
+
+<br>
+
+### ログ
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/logs/
+
+<br>
+
+### 分散トレース
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/distributed-tracing/
+
+<br>
+
+## 05. マルチサービスメッシュ
 
 ### マルチサービスメッシュとは
 

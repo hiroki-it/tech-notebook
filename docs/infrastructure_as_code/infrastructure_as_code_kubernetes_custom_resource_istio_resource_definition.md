@@ -419,7 +419,7 @@ spec:
 
 #### ▼ exportToとは
 
-DestinationRule上のインバウンド通信をルーティングできるNamespaceを設定する。
+そのDestinationRuleを使用できるNamespaceを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
@@ -440,7 +440,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在のNamespaceで使用できるようにする。
+全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -477,11 +477,16 @@ spec:
 
 ### spec.subsets
 
-VirtualServiceのサブセット名に関して、ルーティング先とするPodの```metadata.labels```キーを設定する
+#### ▼ subsetsとは
+
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
+
+ルーティング先のPodの```metadata.labels```キーを設定する
 
 > ℹ️ 参考：
 >
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
+> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 > - https://blog.1q77.com/2020/03/istio-part3/
 
 **＊実装例＊**
@@ -993,13 +998,13 @@ spec:
 
 #### ▼ exportToとは
 
-VirtualService上のインバウンド通信をルーティングできるNamespaceを設定する。
+そのVirtualServiceを使用できるNamespaceを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
-全てのNamespaceで使用できるようにする。
+全てのNamespaceでのみ使用できるようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1014,7 +1019,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-現在のNamespaceで使用できるようにする。
+全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1073,7 +1078,7 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 > ℹ️ 参考：
 >
@@ -1178,7 +1183,7 @@ spec:
 
 #### ▼ route.destination.host
 
-受信したインバウンド通信でルーティング先とするServiceのドメイン名（あるいはService名）を設定する。
+受信したインバウンド通信でルーティング先のServiceのドメイン名（あるいはService名）を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -1215,9 +1220,14 @@ spec:
 
 #### ▼ route.destination.subset
 
-Serviceのサブセット名を設定する。DestinationRuleにて、ルーティング先の設定に使用する。
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐づけたDestinationRuleのサブセットにルーティングされる。
+
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1275,7 +1285,7 @@ spec:
 
 #### ▼ tcpとは
 
-TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする。
+TCP/IPのプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 

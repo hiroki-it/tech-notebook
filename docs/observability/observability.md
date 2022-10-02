@@ -215,11 +215,12 @@ description: 可観測性の知見を記録しています。
 
 #### ▼ 通信の伝播
 
-サービスメッシュのリバースプロキシは分散トレースのためのIDを生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービスでは、受信したインバウンド通信のヘッダーから分散トレースのIDを取得し、アウトバウンド通信のヘッダーにこのIDを割り当て直すような、実装が必要である。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
+サービスメッシュのリバースプロキシは分散トレースのためのIDを生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービス（クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層）で、受信したインバウンド通信のヘッダーから分散トレースのIDを取得し、アウトバウンド通信のヘッダーにこのIDを割り当て直すような、実装が必要である。各分散トレースの収集ツール（例：LightStep、Zipkin、Datadog、AWS X-Ray）ごとに、ヘッダーからIDを簡単に取り出せるパッケージを使用すると良い。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
 
 > ℹ️ 参考：
 > 
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
+> - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
 > - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
 > - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/details/details.rb#L130-L187
 

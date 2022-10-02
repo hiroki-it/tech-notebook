@@ -582,16 +582,6 @@ data:
 
 **＊例＊**
 
-Istioのバージョンを取得する。
-
-```bash
-$ kubectl get crd istiooperators.install.istio.io \
-    -n istio-system \
-    -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
-```
-
-**＊例＊**
-
 ロードバランサーのIPアドレスを取得する。
 
 ```bash
@@ -614,6 +604,17 @@ $ kubectl get pod foo-pod \
 $ kubectl get pod \
     -n foo-namespace \
     -o jsonpath="{.items[*].spec.containers[*].name}" | sed 's/ /\n/g' && echo
+```
+
+
+**＊例＊**
+
+IstioOperatorに定義されたIstioのバージョンを取得する。
+
+```bash
+$ kubectl get istiooperator \
+    -n istio-system \
+    -o jsonpath="{.metadata.labels.operator\.istio\.io\/version}"
 ```
 
 #### ▼ -o wide

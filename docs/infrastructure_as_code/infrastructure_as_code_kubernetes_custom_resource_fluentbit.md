@@ -873,7 +873,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
 [OUTPUT]
     # プラグイン名
     Name              cloudwatch_logs
-    # ルーティング先とするログのタグ
+    # ルーティング先のログのタグ
     Match             laravel
     # アウトプットJSONのうち、宛先にルーティングするキー名
     log_key           log
@@ -934,7 +934,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 [OUTPUT]
     # プラグイン名
     Name              datadog
-    # ルーティング先とするログのタグ
+    # ルーティング先のログのタグ
     Match             laravel
     # ルーティング先ホスト
     Host              http-intake.logs.datadoghq.com

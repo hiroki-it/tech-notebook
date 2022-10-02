@@ -13,7 +13,80 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 <br>
 
-## 01. アップグレード
+## 01. セットアップ
+
+### 少ないコントロールプレーン
+
+クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを```1```個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
+
+### 冗長化
+
+コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
+
+<br>
+
+## 02. トラフィック管理
+
+### サブセット名を一つにする
+
+Istioリソースで設定するサブセット名は一つだけにする。これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  hosts:
+    - reviews
+  http:
+    - route:
+      - destination:
+          host: reviews
+          subset: v1
+```
+
+<br>
+
+### Istioリソースの使用可能範囲を限定する
+
+Istioリソースの```spec.exportTo```キーでは『```.```』を設定する。これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  hosts:
+    - foo-service.com
+  exportTo:
+    - "."
+  http:
+    - route:
+      - destination:
+          host: myservice
+```
+
+<br>
+
+### DestinationRuleを最初に更新する
+
+新しいサブセットを追加する場合、DestinationRuleを最初に更新する。これにより、ダウンタイムなしでサブセットを追加できる。DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
+
+<br>
+
+## 03. アップグレード
 
 ### インプレース方式
 

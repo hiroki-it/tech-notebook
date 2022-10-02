@@ -299,14 +299,17 @@ pre code {
 
     /* キーの色 */
     --md-code-hl-keyword-color: #0033FFFF;
-
-    /* コードブロック枠線 */
-    border: 0.1em solid black;
 }
 
 /* コードブロックの文字サイズ */
 .md-typeset pre {
     font-size: 1.3em;
+}
+
+/* クリップボードへコピーのボタンの色 */
+.md-clipboard:after {
+    /* マウスオーバーによる色の変化を無効化 */
+    background-color: black;
 }
 
 /*

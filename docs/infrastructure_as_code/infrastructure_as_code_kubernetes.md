@@ -587,7 +587,7 @@ $ kube-proxy \
 
 #### ▼ Podのロードバランサー
 
-ロードバランシングアルゴリズムによって、Serviceがルーティング先とするPodを決定する。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
+ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決定する。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
 
 > ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
@@ -868,16 +868,16 @@ Address:  10.105.157.184
 
 #### ▼ 事前確認
 
-（１）Serviceがルーティング先とするポート番号を確認する。
+（１）Serviceがルーティング先のポート番号を確認する。
 
 ```bash
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-（２）Serviceがルーティング対象とするPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
-# 先にmetadata.labelキーから、Serviceのルーティング対象のPodを確認する
+# 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する
 $ kubectl get pod -l <名前>=<値> -o wide
 
 $ kubectl get pod <Pod名> -o yaml | grep containerPort:

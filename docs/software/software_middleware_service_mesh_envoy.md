@@ -150,6 +150,8 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 ### RPCヘッダーの場合
 
+#### ▼ 標準ヘッダー
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 
 | RPCヘッダー名        | 説明                             |
