@@ -299,6 +299,9 @@ pre code {
 
     /* キーの色 */
     --md-code-hl-keyword-color: #0033FFFF;
+
+    /* コードブロック枠の縦線 */
+    border-right: 0.4em solid black;
 }
 
 /* コードブロックの文字サイズ */
