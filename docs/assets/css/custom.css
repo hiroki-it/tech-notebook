@@ -138,8 +138,8 @@ h3:before {
  リスト
 ***************/
 [dir=ltr] .md-typeset ol li, [dir=ltr] .md-typeset ul li {
-     margin-bottom: 0;
- }
+    margin-bottom: 0;
+}
 
 /***************
  サイドバー
@@ -186,7 +186,7 @@ h3:before {
 
 /* マウスオーバー時の動き */
 .md-tabs__link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* ロゴとタイトル間のスペース */
@@ -230,11 +230,11 @@ h3:before {
 
 /* マウスオーバー時の動き */
 .md-header__button.md-logo:hover :-webkit-any(img,svg) {
-  animation: rotate-anime 1.0s linear infinite;
+    animation: rotate-anime 1.0s linear infinite;
 }
 @keyframes rotate-anime {
-  0%  {transform: rotate(0);}
-  100%  {transform: rotate(360deg);}
+    0%  {transform: rotate(0);}
+    100%  {transform: rotate(360deg);}
 }
 
 /***************
