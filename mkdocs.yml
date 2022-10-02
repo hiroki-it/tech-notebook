@@ -84,7 +84,7 @@ markdown_extensions:
   # 目次の設定
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=conten#table-of-contents
   - toc:
-      title: 'このページ内容'
+      title: 'このページの内容'
       permalink: true
       toc_depth: 4
   # メタタグの有効化
