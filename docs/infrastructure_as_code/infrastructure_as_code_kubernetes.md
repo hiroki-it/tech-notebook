@@ -738,7 +738,7 @@ Pod内のネットワークのみを経由して、他のコンテナにアウ�
 # Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-[root@<Pod名>:~] $ curl -X GET http://localhost:<ポート番号>
+[root@<Pod名>:~] $ curl -X GET http://127.0.0.1:<ポート番号>
 ```
 
 <br>

@@ -1747,7 +1747,7 @@ $ tree -P providers.tf
 
 #### ▼ tracerouteとは
 
-宛先にUDPプロトコル/ICMPプロトコル（デフォルトはUDPプロトコル）でパケットを送信し、通信の送信元から宛先までに通過するルーターのIPアドレスを取得する。
+宛先にUDPプロトコル/ICMPプロトコル（デフォルトはUDPプロトコル）でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
 
@@ -1755,6 +1755,7 @@ $ tree -P providers.tf
 >
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+> - https://beginners-network.com/tracert_traceroute.html
 
 **＊実行例＊**
 
@@ -1764,11 +1765,11 @@ $ tree -P providers.tf
 $ traceroute google.com
 
 traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
- 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーター
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
  
  ...
  
- 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーター
+ 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元
  9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
 ```
 
@@ -1776,11 +1777,11 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大3
 $ traceroute 173.194.38.98
 
 traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
- 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーター
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
  
  ...
  
- 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーター
+ 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元IPアドレス
  9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
 ```
 
@@ -1792,7 +1793,7 @@ traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最�
 $ traceroute google.com
 
 traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
- 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーター
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
 
 ...
 
@@ -1808,11 +1809,13 @@ ICMPプロトコルを使用して、パケットを送信する。TCPプロト�
 
 ```bash
 $ traceroute -I -n google.com -p 443
+
+$ traceroute -I -n *.*.*.* -p 443
 ```
 
 #### ▼ -n
 
-IPアドレスの名前解決を実行せずに、IPアドレスをそのまま取得する。ネットワークの境目がわかりやすくなる。
+IPアドレスの名前解決を実行せずに、ルーターの送信元IPアドレスをそのまま取得する。ネットワークの境目がわかりやすくなる。
 
 > ℹ️ 参考：
 >
@@ -1825,7 +1828,7 @@ IPアドレスの名前解決を実行せずに、IPアドレスをそのまま�
 $ traceroute -n google.com
 
 traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
- 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms # 最初のルーター
+ 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms # 最初のルーターの送信元IPアドレス
  2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms # ここで、異なるネットワーク領域に入った可能性
  3  210.157.9.209  0.718 ms  0.722 ms  0.761 ms
  4  210.172.131.149  1.520 ms  1.894 ms  1.892 ms
@@ -1846,11 +1849,13 @@ $ traceroute *.*.*.* -p 9000
 
 #### ▼ -T
 
-宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターのIPアドレスを取得する。```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
+宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
 
 
 ```bash
 $ traceroute google.com -T -p 443
+
+$ traceroute *.*.*.* -T -p 443
 ```
 
 tracerouteコマンドのバージョンによっては、```-T```オプションがない場合があり、代わりとして```tcptraceroute```コマンドを使用する。

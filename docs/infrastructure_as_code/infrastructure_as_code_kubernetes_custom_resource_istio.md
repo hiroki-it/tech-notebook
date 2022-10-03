@@ -660,23 +660,12 @@ spec:
 #### ▼ テストの種類
 
 | テスト名         | 内容                                                                                                                                                    |
-| ---------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Deplayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abortインジェクション  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| --------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Delayインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abortインジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。<br>ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
 <br>
 
-### サーキットブレイカー
-
-#### ▼ サーキットブレイカーとは
-
-マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。爆発半径を最小限にできる。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
-
-> ℹ️ 参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
-
-![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
-
-<br>
 
 ## 03. 通信セキュリティ管理
 
@@ -700,7 +689,7 @@ spec:
 
 #### ▼ 仕組み
 
-> ℹ️ 参考：hhttps://istio.io/latest/docs/concepts/security/#authorization-architecture
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authorization-architecture
 
 <br>
 

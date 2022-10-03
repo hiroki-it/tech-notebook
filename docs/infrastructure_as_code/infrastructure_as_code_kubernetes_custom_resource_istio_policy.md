@@ -56,7 +56,7 @@ spec:
 
 ### Istioリソースの使用可能範囲を限定する
 
-Istioリソースの```spec.exportTo```キーでは『```.```』を設定する。これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+Istioリソースの```spec.exportTo```キーでは『```.```（ドット）』を設定する。これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
 

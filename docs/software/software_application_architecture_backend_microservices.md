@@ -660,3 +660,17 @@ JWTを作成する認証マイクロサービスを```1```個だけ配置し、C
 
 <br>
 
+## 09. マイクロサービスの品質特性を高める方法
+
+### 可用性の場合
+
+#### ▼ サーキットブレイカー
+
+マイクロサービス間に設置され、他のマイクロサービスに連鎖的に起こる障害（カスケード障害）を吸収する仕組みのこと。爆発半径を最小限にできる。下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
+
+> ℹ️ 参考：https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
+
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/circuit-breaker.png)
+
+<br>
+

@@ -975,6 +975,9 @@ $ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート�
 
 # Serviceの情報を使用して、Podを指定する場合
 $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceのポート番号>
+
+# ホストポートを介してPodのポートにアクセスする。
+$ curl http://127.0.0.1:<ホストポート番号>
 ```
 
 <br>

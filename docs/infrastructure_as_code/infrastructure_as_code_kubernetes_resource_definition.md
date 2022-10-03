@@ -48,7 +48,7 @@ apiVersion: v1
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations: 
@@ -66,7 +66,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations: 
@@ -83,7 +83,7 @@ metadata:
 Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -125,7 +125,7 @@ string型である必要がある。int型を割り当てようとするとエ�
 > - https://www.slideshare.net/pfi/metadatamanagedfields-kubernetes-meetup-tokyo-48-251269647
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   managedFields:
@@ -157,7 +157,7 @@ metadata:
 Kubernetesリソースを一意に識別するための名前を設定する。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
@@ -306,7 +306,7 @@ base64方式でエンコードした証明書署名要求（```.csr```ファイ�
 > - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
 ```yaml
-apiVersion: certificates.k8s.io/v1beta1
+apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
   name: foo-csr

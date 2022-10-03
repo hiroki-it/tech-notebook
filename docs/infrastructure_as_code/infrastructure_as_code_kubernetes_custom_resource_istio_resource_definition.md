@@ -653,7 +653,7 @@ spec:
 
 #### ▼ applyTo
 
-変更を適用する```envoy.yaml```ファイルの項目を設定する。
+上書きしたい```envoy.yaml```ファイルの項目を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
@@ -670,7 +670,7 @@ spec:
 
 #### ▼ match
 
-変更を適用するClusterを設定する。
+上書きしたい```envoy.yaml```ファイルのCluster項目を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -687,7 +687,7 @@ spec:
 
 #### ▼ listener
 
-変更を適用するリスナーを設定する。
+上書きしたい```envoy.yaml```ファイルのListener項目を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
@@ -708,7 +708,7 @@ spec:
 
 #### ▼ PatchContext
 
-変更を適用する通信の方向を設定する。
+上書きしたい```envoy.yaml```ファイルの通信の方向を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
@@ -726,7 +726,7 @@ spec:
 
 #### ▼ patch
 
-変更方法と変更内容を設定する。
+```envoy.yaml```ファイルの上書き方法と上書き内容を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1042,7 +1042,7 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
-#### ▼ <Namespace名>/<Gateway名>
+#### ▼ ```<Namespace名>/<Gateway名>```
 
 Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
 
@@ -1054,7 +1054,7 @@ metadata:
   name: foo-virtual-service
 spec:
   gateways:
-  - foo-namespace/foo-gateway
+    - foo-namespace/foo-gateway
 ```
 
 #### ▼ mesh
@@ -1069,7 +1069,7 @@ metadata:
   name: foo-virtual-service
 spec:
   gateways:
-  - mesh
+    - mesh
 ```
 
 <br>
