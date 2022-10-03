@@ -280,7 +280,7 @@ th, td {
  コードブロック
 ***************/
 
-pre code {
+.md-typeset pre code {
     /* コードブロックの背景色 */
     /* 文字色はpygmentsで設定 */
     --md-code-bg-color: #CCCCCC;
@@ -302,6 +302,9 @@ pre code {
 
     /* コードブロック枠線 */
     border: 0.1em solid black;
+
+    /* コードブロックの角 */
+    border-radius: 0.4em;
 }
 
 .md-typeset pre {
