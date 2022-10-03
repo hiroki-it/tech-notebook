@@ -304,8 +304,8 @@ pre code {
     border: 0.1em solid black;
 }
 
-/* コードブロックの文字サイズ */
 .md-typeset pre {
+    /* コードブロックの文字サイズ */
     font-size: 1.3em;
 }
 
