@@ -81,16 +81,16 @@ repository/
 # アプリケーション
 repository/
 └── src/
-    ├── foo/ # マイクロサービス
+    ├── foo/ # マイクロサービス（Go製）
     │   └── infrastructure
     │       └── grpc
     │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
-    │           │   └── client.py
+    │           │   └── client.go
     │           │
     │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
-    │           ... └── server.py
+    │           ... └── server.go
     │
-    ├── bar/
+    ├── bar/ # マイクロサービス（Python製）
     ... └── infrastructure
             └── grpc
                 ├── client/

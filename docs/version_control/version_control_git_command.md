@@ -282,6 +282,7 @@ $ git branch --contains
 ```
 
 #### ▼ --delete --force
+
 プッシュとマージの状態に関係なく、ローカルブランチを削除する。
 
 ```bash

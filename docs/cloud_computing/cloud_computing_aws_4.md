@@ -636,7 +636,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 #### ▼ DBMSに対応するRDB
 
 | DBMS       | RDB  | 互換性           |
-| ---------- | ---- | ---------------- |
+|------------| ---- | ---------------- |
 | Aurora     | RDS  | MySQL/PostgreSQL |
 | MariaDB    | RDS  | MariaDB          |
 | MySQL      | RDS  | MySQL            |
@@ -1240,9 +1240,27 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 <br>
 
-## 04. Redshit
+## 03-04. RDSプロキシ
 
-### Redshitとは
+### RDSプロキシとは
+
+クラウドDBプロキシとして働く。
+
+<br>
+
+### コネクションプールの管理
+
+![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_rds-proxy.png)
+
+アプリからRDSにクエリが送信された時、コネクションプール内の空いたコネクションをクエリに割り当て、RDSに転送する。アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリはRDSの同時接続の上限数（インスタンスタイプで決まる）を考慮しない。そのため、接続数が多くなりやすいアプリ（例：Lambda）を使用していると、アプリがRDSの同時接続の上限数を超えて接続してしまい、RDSがエラーを返却してしまう。RDSプロキシは、RDSの同時接続の上限数を考慮しつつ、コネクションプールからコネクションを割り当てるので、アプリがRDSの同時接続の上限数を超えて接続することがない。
+
+> ℹ️ 参考：https://blog.denet.co.jp/service-relay-2021-0711/
+
+<br>
+
+## 04. Redshift
+
+### Redshiftとは
 
 データウェアハウスとして働く。データベースよりも柔軟性の高い保存形式で処理済みのデータを管理できる。
 

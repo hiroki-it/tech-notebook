@@ -1172,3 +1172,74 @@ $ tcpdump src port 80
 ```
 
 <br>
+
+## 09. xclip
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+```bash
+$ apt install xclip
+```
+
+```bash
+$ apt-get install xclip
+```
+
+#### ▼ yumリポジトリから
+
+```bash
+$ yum install -y xclip
+```
+
+<br>
+
+### xclipとは
+
+標準出力/標準エラー出力の内容をコピーし、保持する。
+
+> ℹ️ 参考：https://linux.die.net/man/1/xclip
+
+<br>
+
+### -selection
+
+#### ▼ -selectionとは
+
+コピーした内容を保持する場所を選択する。
+
+> ℹ️ 参考：https://linuxfan.info/xclip
+
+**＊実行例＊**
+
+ファイルの内容をクリップボードにコピーする。
+
+```bash
+$ cat foo.txt | xclip -selection clipboard
+```
+
+**＊実行例＊**
+
+コマンドの実行結果をクリップボードにコピーする。
+
+```bash
+$ ls -la | xclip -selection clipboard
+```
+
+#### ▼ -o
+
+保持した内容をファイルに出力する。
+
+> ℹ️ 参考：https://linuxfan.info/xclip
+
+**＊実行例＊**
+
+クリップボードの内容をファイルに出力する。
+
+```bash
+$ xclip -selection clipboard -o > foo.txt
+```
+
+
+<br>

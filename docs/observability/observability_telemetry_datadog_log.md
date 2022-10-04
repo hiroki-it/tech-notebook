@@ -111,7 +111,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、コ�
 
 <br>
 
-## 04. ブラウザログの収集
+## 04. ブラウザのコンソールログの収集
 
 ### ブラウザログSDK
 
@@ -147,7 +147,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、コ�
       },
       "service": "prd-foo-ssg",
       "session_id": "*****",
-      # ブラウザログのステータス
+      # コンソールログのステータス
       "status": "error",
       # ブラウザで表示されたWebページのURL。非同期リクエストのエラーは、こちらではなくmessage属性に記載される。
       "view": {
@@ -155,7 +155,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、コ�
         "url": "https://example.com/"
       }
     },
-    # ブラウザログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。
+    # コンソールログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。
     "message": "XHR error POST https://async.jp",
     "service": "prd-foo-ssg",
     "tags": [
