@@ -109,7 +109,7 @@ DatadogのAPIキーを設定する。
 #
 api_key: <APIキー>
 
-# 〜 中略 〜
+...
 ```
 
 <br>
@@ -125,7 +125,7 @@ api_key: <APIキー>
 ログの収集はデフォルトで無効化されているため、有効化する必要がある。
 
 ```yaml
-# 〜 中略 〜
+...
 
 ##################################
 ## Log collection Configuration ##
@@ -137,7 +137,7 @@ api_key: <APIキー>
 #
 logs_enabled: true
 
-# 〜 中略 〜
+...
 ```
 
 <br>

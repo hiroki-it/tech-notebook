@@ -51,7 +51,7 @@ $ php -r "unlink('composer-setup.php');"
 ```yaml
 {
 
-    # 〜 中略 〜
+    ...
     
     "autoload": {
         "psr-4": {
@@ -66,7 +66,7 @@ $ php -r "unlink('composer-setup.php');"
         ]
     }
     
-    # 〜 中略 〜
+    ...
 
 }
 ```
@@ -80,7 +80,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 ```yaml
 {
 
-    # 〜 中略 〜
+    ...
     
     "config": {
         "preferred-install": "dist",
@@ -88,7 +88,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
         "optimize-autoloader": true
     }
     
-    # 〜 中略 〜
+    ...
 
 }
 ```
@@ -104,7 +104,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 # キャレット表記
 {
 
-    # 〜 中略 〜
+    ...
  
     "require": {
         "foo": "^1.1.1",  # >=1.1.1 and <1.2.0
@@ -112,7 +112,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
         "baz": "^0.0.1"   # >=0.0.1 and <0.0.2
     }
   
-    # 〜 中略 〜
+    ...
     
 }
 ```
@@ -121,7 +121,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 # チルダ表記
 {
 
-    # 〜 中略 〜
+    ...
     
     "require": {
         "foo": "~1.1.1",  # >=1.1.1 and <2.0.0
@@ -129,7 +129,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
         "baz": "~1"       # >=1.1.0 and <2.0.0
     }
   
-    # 〜 中略 〜
+    ...
     
 }
 ```
@@ -138,7 +138,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 # エックス、アスタリスク表記
 {
 
-    # 〜 中略 〜
+    ...
 
     "require": {
         "foo": "*",     # どんなバージョンでもOK
@@ -147,7 +147,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
         "qux": ""       # "*"と同じことになる = どんなバージョンでもOK
     }
 
-    # 〜 中略 〜
+    ...
   
 }
 ```
@@ -156,13 +156,13 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 # 固定
 {
 
-    # 〜 中略 〜
+    ...
 
     "require": {
         "bar": "1.1.1", # 1.1.1
     }
 
-    # 〜 中略 〜
+    ...
   
 }
 ```
@@ -176,7 +176,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 ```yaml
 {
 
-    # 〜 中略 〜
+    ...
   
     "scripts": {
         # エイリアス名
@@ -193,7 +193,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
         ]
     }
     
-    # 〜 中略 〜
+    ...
   
 }
 ```
@@ -208,11 +208,11 @@ Composerのバージョンを設定する。インストールされているcom
 
 ```yaml
 {
-    # 〜 中略 〜
+    ...
 
     "version": "1.10.23"
   
-    # 〜 中略 〜
+    ...
 }
 ```
 
@@ -252,7 +252,7 @@ return array(
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Events\\ExampleEvent' => $baseDir . '/app/Events/ExampleEvent.php',
     
-    # 〜 中略 〜
+    ...
     
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
     'phpDocumentor\\Reflection\\Utils' => $vendorDir . '/phpdocumentor/reflection-docblock/src/Utils.php',
@@ -336,7 +336,7 @@ $ composer dump-autoload
 
 ```yaml
 {
-    # 〜 中略 〜
+    ...
 
     "autoload": {
         "psr-4": {
@@ -344,7 +344,7 @@ $ composer dump-autoload
         }
     },
     
-    # 〜 中略 〜
+    ...
 }
 ```
 

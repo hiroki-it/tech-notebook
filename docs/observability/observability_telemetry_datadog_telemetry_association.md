@@ -58,7 +58,7 @@ description: テレメトリー間の紐付け＠Datadog
 ```yaml
 {
 
-    # ～ 中略 ～
+    ...
 
     "environment": [
       {
@@ -79,7 +79,7 @@ description: テレメトリー間の紐付け＠Datadog
       }
     ],
     
-    # ～ 中略 ～
+    ...
 }
 ```
 

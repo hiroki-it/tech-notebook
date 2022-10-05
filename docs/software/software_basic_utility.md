@@ -1563,7 +1563,7 @@ $ strace -c curl -s -o /dev/null https://www.google.com/
  16.64    0.010329         120        86         2 read
  16.64    0.010326         137        75           rt_sigaction
 
-# 〜 中略 〜
+...
 
   0.08    0.000048          24         2         2 access
   0.00    0.000000           0         1           execve
@@ -1583,7 +1583,7 @@ socket(AF_INET6, SOCK_DGRAM, IPPROTO_IP) = 3
 socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
 setsockopt(3, SOL_TCP, TCP_NODELAY, [1], 4) = 0
 
-# 〜 中略 〜
+...
 
 sin_addr=inet_addr("*.*.*.*")}, [128->16]) = 0
 getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.*.*.*")}, [128->16]) = 0

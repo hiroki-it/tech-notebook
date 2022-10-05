@@ -611,12 +611,12 @@ $ aws ssm get-parameters-by-path --path "/"
         {
             "Name": "FOO",
             
-            # 〜 中略 〜
+            ...
         },
         {
             "Name": "BAR",
             
-            # 〜 中略 〜
+            ...
         },
    ]
  }
@@ -631,12 +631,12 @@ $ aws ssm get-parameters-by-path --path "/FOO"
         {
             "Name": "/FOO",
             
-            # 〜 中略 〜
+            ...
         },
         {
             "Name": "/FOO/BAR",
             
-            # 〜 中略 〜
+            ...
         },
    ]
  }

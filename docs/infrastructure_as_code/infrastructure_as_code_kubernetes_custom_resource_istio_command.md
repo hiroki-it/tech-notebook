@@ -259,12 +259,12 @@ ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
 127.0.0.1:15000                  HEALTHY     OK                prometheus_stats
 127.0.0.1:15020                  HEALTHY     OK                agent
 
-# 〜 中略 〜
+...
 
 172.17.0.11:9090                 HEALTHY     OK                outbound|80||kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
 172.17.0.13:80                   HEALTHY     OK                outbound|80||foo-service.microservices-with-kubernetes.svc.cluster.local
 
-# 〜 中略 〜
+...
 
 192.168.64.14:8443               HEALTHY     OK                outbound|443||kubernetes.default.svc.cluster.local
 unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
@@ -422,7 +422,7 @@ $ istioctl verify-install
 ✔ ClusterRole: istiod-istio-system.istio-system checked successfully
 ✔ ClusterRole: istio-reader-istio-system.istio-system checked successfully
 
-# 〜 中略 〜
+...
 
 ✔ Service: istio-egressgateway.istio-system checked successfully
 ✔ ServiceAccount: istio-egressgateway-service-account.istio-system checked successfully

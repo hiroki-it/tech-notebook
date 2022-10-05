@@ -115,7 +115,7 @@ description:  監視＠Datadogの知見を記録しています。
 <!-- 復旧通知を転送しない場合、is_alert構文の中で定義する必要がある -->
 @<本番環境のアラートチャンネル>
 
-環境名：{{log.attributes.env}}
+実行環境名：{{log.attributes.env}}
 アプリケーション名：{{log.attributes.service}}
 ログステータス：{{log.attributes.log_status}}
 ソース名：{{log.tags.source}}

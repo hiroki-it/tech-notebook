@@ -81,16 +81,16 @@ grafanaチャートでは、```values```ファイルの```label```キーや```la
 # valuesファイル
   dashboards:
   
-    # 〜 中略 〜
+    ...
 
     label: grafana_dashboard
     labelValue: null
 
-    # 〜 中略 〜
+    ...
 
   datasources:
   
-    # 〜 中略 〜
+    ...
   
     label: grafana_datasource
     labelValue: null
@@ -120,16 +120,16 @@ kube-prometheus-stackチャートでは、prometheusのチャートの他、graf
   sidecar:
     dashboards:
     
-      # 〜 中略 〜
+      ...
  
       label: grafana_dashboard
       labelValue: "1"
       
-      # 〜 中略 〜
+      ...
 
     datasources:
 
-      # 〜 中略 〜
+      ...
 
       label: grafana_datasource
       labelValue: "1"

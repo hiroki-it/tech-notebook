@@ -319,7 +319,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: kube-system
-# 〜 中略 〜
+...
 ```
 
 <br>
@@ -358,7 +358,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: prometheus-operator
     app.kubernetes.io/app: foo-service
-# 〜 中略 〜
+...
 ```
 
 <br>

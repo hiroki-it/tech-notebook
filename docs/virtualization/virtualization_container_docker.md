@@ -142,11 +142,11 @@ $ cat settings.json
 
 {
 
-  # 〜 中略 〜
+  ...
 
   "dataFolder": "/Users/<ユーザー名>/Library/Containers/com.docker.docker/Data/vms/0/data",
   
-  # 〜 中略 〜
+  ...
   
   "filesharingDirectories": [
       "/tmp",
@@ -155,7 +155,7 @@ $ cat settings.json
       "/private"
   ],
 
-  # 〜 中略 〜
+  ...
 
 }
 ```

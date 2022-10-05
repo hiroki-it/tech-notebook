@@ -1102,12 +1102,12 @@ class CreateFooTable extends Migration
     {
         Schema::create("foo", function (Blueprint $table) {
             
-            // ～ 中略 ～
+            ...
             
             // deleted_atカラムを追加する。
             $table->softDeletes();
             
-            // ～ 中略 ～
+            ...
             
         });
     }

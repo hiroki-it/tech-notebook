@@ -310,7 +310,7 @@ supervisorの```supervisord```プロセスのプールを設定する。
 ```ini
 [supervisord]
 
-# 〜 中略 〜
+...
 ```
 
 #### ▼ directory
@@ -392,11 +392,11 @@ user=root
 ```ini
 [program:<プログラム名>]
 
-# 〜 中略 〜
+...
 
 [program:foo]
 
-# 〜 中略 〜
+...
 ```
 
 #### ▼ autorestart
@@ -990,7 +990,7 @@ $ journalctl -u foo.service | grep error
 ```ini
 [Unit]
 
-# 〜 中略 〜
+...
 
 # ユニットが失敗状態時に起動するユニット
 OnFailure=notify-email@%i.service
@@ -1021,7 +1021,7 @@ WantedBy=multi-user.target
 ```ini
 [Service]
 
-# 〜 中略 〜
+...
 
 StandardOutput=file:/var/log/foo-service/stdout.log
 StandardError=file:/var/log/foo-service/stderr.log

@@ -460,7 +460,7 @@ metadata:
   labels:
     app.kubernetes.io/app: {{ $general.appName }}
     
-    # 〜 中略 〜
+    ...
     
 {{- end }}
 ```

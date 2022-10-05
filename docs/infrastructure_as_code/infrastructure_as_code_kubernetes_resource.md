@@ -719,7 +719,7 @@ $ docker inspect <コンテナID>
   
     {
 
-        # 〜 中略 〜
+        ...
 
         "HostConfig": {
             "Binds": [
@@ -729,14 +729,14 @@ $ docker inspect <コンテナID>
                 "/var/lib/kubelet/pods/*****/containers/foo/*****:/dev/termination-log"
             ],
             
-            # 〜 中略 〜
+            ...
         },
         
-        # 〜 中略 〜
+        ...
         
         "Mounts": [
         
-            # 〜 中略 〜
+            ...
             
             {
                 "Type": "bind", # バインドマウントが使用されている。
@@ -747,7 +747,7 @@ $ docker inspect <コンテナID>
                 "Propagation": "rprivate"
             },
 
-            # 〜 中略 〜
+            ...
         ]
     }
 ```

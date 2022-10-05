@@ -512,7 +512,7 @@ spec:
   # AdmissionRequest
   "request": {
 
-    # 〜 中略 〜
+    ...
 
     # 変更されるKubernetesリソースの種類を表す。
     "resource": {
@@ -529,7 +529,7 @@ spec:
       "kind": "CreateOptions"
     },
 
-    # 〜 中略 〜
+    ...
 
   }
 }
@@ -549,7 +549,7 @@ spec:
 # patch処理の例
 [
 
-  # 〜 中略 〜
+  ...
 
   {
     "op": "add",
@@ -572,7 +572,7 @@ spec:
     }
   }
   
-  # 〜 中略 〜
+  ...
     
 ]
 ```

@@ -591,9 +591,12 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 ```yaml
 HTTP/1.1 200
 ---
-# ～ 中略 ～
+
+...
+
 Cache-Control: no-store
-# ～ 中略 ～
+
+...
 
 # ボディ
 ここにサイトのHTMLのコード
@@ -606,9 +609,12 @@ Cache-Control: no-store
 ```yaml
 HTTP/1.1 200
 ---
-# ～ 中略 ～
+
+...
+
 Cache-Control: max-age=31536000
-# ～ 中略 ～
+
+...
 
 # ボディ
 ここにサイトのHTMLのコード
@@ -621,10 +627,13 @@ Cache-Control: max-age=31536000
 ```yaml
 HTTP/1.1 200
 ---
-# ～ 中略 ～
+
+...
+
 Cache-Control: max-age=0
 Expires: Sat, 01 Jan 2000 00:00:00 GMT
-# ～ 中略 ～
+
+...
 
 # ボディ
 ここにサイトのHTMLのコード

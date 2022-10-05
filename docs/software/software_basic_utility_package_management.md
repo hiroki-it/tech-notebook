@@ -59,7 +59,7 @@ cc65: /usr/share/cc65/include/zlib.h
 dovecot-dev: /usr/include/dovecot/istream-zlib.h
 dovecot-dev: /usr/include/dovecot/ostream-zlib.h
 
-# ～ 中略 ～
+...
 
 tcllib: /usr/share/doc/tcllib/html/tcllib_zlib.html
 texlive-plain-generic: /usr/share/texlive/texmf-dist/tex4ht/ht-fonts/alias/arabi/nazlib.htf
@@ -162,7 +162,7 @@ C7.0.1406-base/x86_64            CentOS-7.0.1406 - Base          disabled
 C7.0.1406-centosplus/x86_64      CentOS-7.0.1406 - CentOSPlus    disabled
 C7.0.1406-extras/x86_64          CentOS-7.0.1406 - Extras        disabled
 
-# ～ 中略 ～
+...
 
 remi-test-debuginfo/x86_64       Remi's test RPM repository for  disabled
 !updates/7/x86_64                CentOS-7 - Updates              enabled:  3,323

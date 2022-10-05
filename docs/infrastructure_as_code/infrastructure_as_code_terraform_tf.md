@@ -69,10 +69,10 @@ description: ロジック＠Terraformの知見を記録しています。
           "schema_version": 0,
           "attributes": {
             "arn": "*****",
-            "name": "prd-foo-instance"
+            "name": "prd-foo-instance",
             "tags": {
               "Env": "prd",
-              "ManagedBy": "terraform"
+              "ManagedBy": "terraform",
               "Repository": "https://github.com/*****"
             },
             "description": "*****",
@@ -121,7 +121,7 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 
 ### ```.terraform.lock.hcl```ファイル
 
-#### ▼ ```.terraform.lock```.ファイルとは
+#### ▼ ```.terraform.lock```ファイルとは
 
 ```terraform```ブロックの設定に基づいて、開発者間で共有するべき情報（バージョン、ハッシュ値、など）が設定される。これにより例えば、他の人がリポジトリを使用する時に、異なるプロバイダーを宣言できないようになる。
 
@@ -144,11 +144,11 @@ $ terraform init -upgrade
 ```terraform
 provider "registry.terraform.io/hashicorp/aws" {
   
-  # 〜 中略 〜
+  ...
   
   version = "4.3.0"
   
-  # 〜 中略 〜
+  ...
 
 }
 ```
@@ -158,11 +158,11 @@ provider "registry.terraform.io/hashicorp/aws" {
 ```terraform
 provider "registry.terraform.io/hashicorp/aws" {
   
-  # 〜 中略 〜
+  ...
   
   constraints = ">= 3.19.0"
   
-  # 〜 中略 〜
+  ...
 
 }
 ```
@@ -181,7 +181,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 ```terraform
 provider "registry.terraform.io/hashicorp/aws" {
   
-  # 〜 中略 〜
+  ...
   
   hashes = [
     "h1:*****",
@@ -190,14 +190,49 @@ provider "registry.terraform.io/hashicorp/aws" {
     ...
   ]
   
-  # 〜 中略 〜
+  ...
 
 }
 ```
 
 <br>
 
-## 02. ルートモジュールの実装
+## 02. ホームディレクトリ（```~/```）内のファイル
+
+### ```~/.terraformrc```ファイル
+
+#### ▼ ```.terraformrc```ファイルとは
+
+```terraform```コマンドの実行者のみに適用する動作を設定する。
+
+> ℹ️ 参考：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+
+#### ▼ plugin_cache_dir
+
+最初の```terraform init```コマンド時に、プロバイダープラグインのキャッシュを作成する。以降、プロバイダープラグインをインストールする必要がなくなり、```terraform init```コマンドの速度を改善できる。
+
+> ℹ️ 参考：
+> 
+> - https://blog.jhashimoto.net/entry/2021/12/24/090000
+> - https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+
+```terraform
+# ~/.terraformrcファイル
+
+plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
+```
+
+<br>
+
+## 03. ルートモジュールの実装
+
+### ルートモジュールとは
+
+```terraform```コマンドの実行に最低限必要な```.tf```ファイルを配置する。
+
+> ℹ️ 参考：https://www.terraform.io/language/modules#the-root-module
+
+<br>
 
 ### ```terraform```ブロック
 
@@ -574,7 +609,7 @@ TF_VAR_ecr_version_tag=foo
 
 <br>
 
-## 02-02. クレデンシャル情報
+## 03-02. クレデンシャル情報
 
 ### 必要な情報
 
@@ -722,7 +757,18 @@ provider "aws" {}
 
 <br>
 
-## 03. ローカル/リモートモジュールの実装
+## 04. ローカル/リモートモジュールの実装
+
+### ローカル/リモートモジュールとは
+
+Terraformの```2```個以上のブロックをパッケージ化し、モジュールに値を渡せば、それらのブロックを一括でプロビジョニングできるようにする。
+
+> ℹ️ 参考：
+> 
+> - https://www.terraform.io/language/modules#child-modules
+> - https://www.terraform.io/language/modules#published-modules
+
+<br>
 
 ### ```resource```ブロック
 
@@ -908,7 +954,7 @@ resource "aws_instance" "example" {
 
 <br>
 
-## 04. ルート/ローカル/リモートモジュールで共通の実装
+## 05. ルート/ローカル/リモートモジュールで共通の実装
 
 ### ```variable```ブロック 
 
@@ -1008,7 +1054,7 @@ variable "enable_provision" {
 
 <br>
 
-## 04. メタ引数
+## 06. メタ引数
 
 ### メタ引数とは
 
@@ -1235,7 +1281,7 @@ resource "aws_instance" "server" {
 resource "aws_subnet" "public" {
   count = 2
   
-  # ～ 中略 ～
+  ...
 }
 
 ###############################################
@@ -1244,13 +1290,13 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private_app" {
   count = 2
   
-  # ～ 中略 ～
+  ...
 }
 
 resource "aws_subnet" "private_datastore" {
   count = 2
   
-  # ～ 中略 ～
+  ...
 }
 ```
 
@@ -1555,7 +1601,7 @@ security_group_ingress_ec2_ssh = {
 
 resource "aws_security_group" "ec2" {
 
-  # 〜 中略 〜
+  ...
 
   dynamic ingress {
     for_each = var.security_group_ingress_ec2_ssh
@@ -1568,7 +1614,7 @@ resource "aws_security_group" "ec2" {
     }
   }
   
-  # 〜 中略 〜
+  ...
 }
 ```
 
@@ -1632,7 +1678,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 ###############################################
 resource "aws_acm_certificate" "foo" {
 
-  # ～ 中略 ～
+  ...
 
   # 新しいSSL証明書を作成した後に削除する。
   lifecycle {
@@ -1651,7 +1697,7 @@ resource "aws_acm_certificate" "foo" {
 ###############################################
 resource "aws_rds_cluster_parameter_group" "this" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     create_before_destroy = true
@@ -1663,7 +1709,7 @@ resource "aws_rds_cluster_parameter_group" "this" {
 ###############################################
 resource "aws_db_subnet_group" "this" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     create_before_destroy = true
@@ -1681,7 +1727,7 @@ resource "aws_db_subnet_group" "this" {
 ###############################################
 resource "aws_elasticache_parameter_group" "redis" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     create_before_destroy = true
@@ -1693,7 +1739,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 ###############################################
 resource "aws_elasticache_subnet_group" "redis" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     create_before_destroy = true
@@ -1715,7 +1761,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 ###############################################
 resource "aws_ecs_service" "this" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     ignore_changes = [
@@ -1737,7 +1783,7 @@ resource "aws_ecs_service" "this" {
 ###############################################
 resource "aws_elasticache_replication_group" "redis" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     ignore_changes = [
@@ -1755,7 +1801,7 @@ resource "aws_elasticache_replication_group" "redis" {
 ```terraform
 resource "aws_foo" "foo" {
 
-  # ～ 中略 ～
+  ...
 
   lifecycle {
     ignore_changes = all
@@ -1793,7 +1839,7 @@ security_group_ingress_ec2_ssh = {
 ```terraform
 resource "aws_security_group" "ec2" {
 
-  # 〜 中略 〜
+  ...
 
   dynamic ingress {
     # 環境が複数あるとする。（prd-1、prd-2、stg-1、stg-2）
@@ -1808,13 +1854,13 @@ resource "aws_security_group" "ec2" {
     }
   }
 
-  # 〜 中略 〜
+  ...
 }
 ```
 
 <br>
 
-## 06. tpl形式の切り出しと読み出し
+## 07. tpl形式の切り出しと読み出し
 
 ### ```templatefile```関数
 
@@ -1893,7 +1939,7 @@ ECSタスク定義のうち、コンテナを定義する部分のこと。
     
   ],
 
-   # 〜 中略 〜
+   ...
 
 }
 ```

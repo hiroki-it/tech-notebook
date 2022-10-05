@@ -25,8 +25,7 @@ PHPの設定を取得する。
 $ php -i
 
 PHP Version => 7.4
-
-# 〜 中略 〜
+...
 
 ```
 
@@ -82,7 +81,7 @@ bcmath
 Core
 ctype
 
-# ～ 中略 ～
+...
 
 xmlreader
 xmlwriter
@@ -104,7 +103,7 @@ Array
     [1] => date
     [2] => libxml
     
-    # 〜 中略 〜
+    ...
     
     [33] => bcmath
     [34] => pdo_mysql

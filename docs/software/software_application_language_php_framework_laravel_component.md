@@ -246,13 +246,13 @@ return [
 
 return [
 
-    // ～ 中略 ～    
+    ...    
 
     "default" => env("DB_CONNECTION", "mysql"),
 
     "connections" => [
 
-        // ～ 中略 ～
+        ...
 
         "mysql" => [
             "driver"         => "mysql",
@@ -275,7 +275,7 @@ return [
         ],
     ],
 
-    // ～ 中略 ～        
+    ...        
 
 ];
 ```
@@ -808,7 +808,7 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
     
-    // ～ 中略 ～
+    ...
 
 }
 ```
@@ -838,7 +838,7 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
     
-    // ～ 中略 ～
+    ...
 }
 ```
 
@@ -1177,7 +1177,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     
-    // ～ 中略 ～
+    ...
     
     protected $routeMiddleware = [
         
@@ -1185,7 +1185,7 @@ class Kernel extends HttpKernel
         
     ];
     
-    // ～ 中略 ～    
+    ...    
     
 }
 ```
@@ -1323,7 +1323,7 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 中略 ～
+     ...
 
     "disks" => [
 
@@ -1332,7 +1332,7 @@ return [
             "root"   => storage_path("app"),
         ],
         
-     // ～ 中略 ～
+     ...
         
     // シンボリックリンクの関係を定義
     "links" => [
@@ -1366,11 +1366,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 中略 ～
+     ...
 
     "disks" => [
         
-        // ～ 中略 ～
+        ...
 
         "public" => [
             "driver"     => "local",
@@ -1379,7 +1379,7 @@ return [
             "visibility" => "public",
         ],
 
-        // ～ 中略 ～
+        ...
         
     ],
 ];
@@ -1456,11 +1456,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 中略 ～
+     ...
     
     "disks" => [
 
-        // ～ 中略 ～
+        ...
 
         "s3" => [
             "driver"   => "s3",
@@ -1711,7 +1711,7 @@ class FooController extends Controller
     public function index()
     {
 
-        // ～ 中略 ～
+        ...
 
         return response()->json([
             "name"  => "Abigail",
@@ -1739,7 +1739,7 @@ class FooController extends Controller
 {
     public function index()
     {
-        // ～ 中略 ～
+        ...
 
         // データ、ステータスコード、ヘッダーなどを設定する場合
         return response()->view(
@@ -1766,7 +1766,7 @@ class FooController extends Controller
 {
     public function index()
     {
-        // ～ 中略 ～
+        ...
 
         // ステータスコードのみ設定する場合
         return response()->view("foo")
@@ -2897,7 +2897,7 @@ LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Larave
     
 return [
 
-    // ～ 中略 ～    
+    ...    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -2908,7 +2908,7 @@ return [
             "ignore_exceptions" => false,
         ],
 
-        // ～ 中略 ～
+        ...
 
     ]
 ];
@@ -2923,7 +2923,7 @@ return [
 
 return [
 
-    // ～ 中略 ～    
+    ...    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -2934,7 +2934,7 @@ return [
             "days"   => 14,
         ],
 
-        // ～ 中略 ～
+        ...
 
     ]
 ];
@@ -2947,7 +2947,7 @@ return [
 ```php
 return [
 
-    // ～ 中略 ～    
+    ...    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -2960,7 +2960,7 @@ return [
             ],
         ],
 
-        // ～ 中略 ～
+        ...
 
     ]
 ];
@@ -2973,7 +2973,7 @@ return [
 ```php
 return [
 
-    // ～ 中略 ～
+    ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -2986,7 +2986,7 @@ return [
             ],
         ],
 
-        // ～ 中略 ～
+        ...
 
     ]
 ];
@@ -3339,11 +3339,11 @@ $ php artisan migrate
 ```php
 Schema::create("foos", function (Blueprint $table) {
     
-    // ～ 中略 ～
+    ...
     
     $table->bigIncrements("foo_id");
     
-    // ～ 中略 ～
+    ...
     
 });
 ```
@@ -3357,12 +3357,12 @@ Schema::create("foos", function (Blueprint $table) {
 ```php
 Schema::create("foos", function (Blueprint $table) {
     
-    // ～ 中略 ～
+    ...
     
     $table->bigIncrements("foo_id");
     $table->unsignedBigInteger("bar_id");
     
-    // ～ 中略 ～
+    ...
     
 });
 ```
@@ -3376,11 +3376,11 @@ VARCHAR型カラムを作成する。
 ```php
 Schema::create("foos", function (Blueprint $table) {
   
-    // ～ 中略 ～    
+    ...    
     
     $table->string("name");
     
-    // ～ 中略 ～
+    ...
     
 });
 ```
@@ -3394,11 +3394,11 @@ TIMESTAMP型カラムを作成する。
 ```php
 Schema::create("foos", function (Blueprint $table) {
     
-    // ～ 中略 ～
+    ...
     
     $table->timestamp("created_at");
     
-    // ～ 中略 ～
+    ...
 });
 ```
 
@@ -4105,7 +4105,7 @@ class ProductsSeeder extends Seeder
                 "deleted_at"   => NULL                
             ],
             
-            // ～ 中略 ～
+            ...
             
         ]);
     }
@@ -4689,14 +4689,14 @@ class CreateFooTable extends Migration
 
 return [
     
-    # ～ 中略 ～
+    ...
     
     'providers' => [
         // マクロサービスプロバイダー
         App\Providers\MigrationMacroServiceProvider::class,  
     ],
     
-    # ～ 中略 ～
+    ...
     
 ];        
 ```

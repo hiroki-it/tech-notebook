@@ -184,13 +184,13 @@ const foo = {
 // リテラル表記
 const foo = {
   
- // ～ 中略 ～
+ ...
   
   alertValue(value) {
       alert(value);
   }, 
   
-  // ～ 中略 ～
+  ...
 }
 ```
 

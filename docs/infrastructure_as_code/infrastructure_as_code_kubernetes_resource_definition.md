@@ -342,15 +342,15 @@ kind: Config
 clusters:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
     
-    # 〜 中略 〜
+    ...
   
   - name: docker-desktop
   
-    # 〜 中略 〜  
+    ...  
   
   - name: minikube
   
-    # 〜 中略 〜  
+    ...  
 ```
 
 #### ▼ cluster
@@ -367,13 +367,13 @@ clusters:
       # kube-apiserverのURL
       server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
       
-    # 〜 中略 〜  
+    ...  
     
   - cluster:
       certificate-authority-data: LS0tLS1 ...
       server: https://kubernetes.docker.internal:6443
       
-    # 〜 中略 〜  
+    ...  
     
   - cluster:
       certificate-authority: /Users/hiroki-hasegawa/.minikube/ca.crt
@@ -385,7 +385,7 @@ clusters:
           name: cluster_info
       server: https://127.0.0.1:52192
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
@@ -408,15 +408,15 @@ kind: Config
 contexts:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
   
-    # 〜 中略 〜
+    ...
   
   - name: docker-desktop
   
-    # 〜 中略 〜
+    ...
   
   - name: minikube
   
-    # 〜 中略 〜 
+    ... 
 ```
 
 #### ▼ context
@@ -431,13 +431,13 @@ contexts:
       cluster: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
       user: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
       
-    # 〜 中略 〜  
+    ...  
     
   - context:
       cluster: docker-desktop
       user: docker-desktop
       
-    # 〜 中略 〜  
+    ...  
     
   - context:
       cluster: minikube
@@ -450,7 +450,7 @@ contexts:
       namespace: default
       user: minikube
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
@@ -504,11 +504,11 @@ kind: Config
 users:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
   
-    # 〜 中略 〜
+    ...
     
   - name: docker-desktop
   
-    # 〜 中略 〜
+    ...
   
   - name: minikube
 ```
@@ -534,19 +534,19 @@ users:
           - prd-foo-eks-cluster
         command: aws
         
-    # 〜 中略 〜  
+    ...  
     
   - user:
       client-certificate-data: LS0tLS1 ...
       client-key-data: LS0tLS1 ...
       
-    # 〜 中略 〜  
+    ...  
       
   - user:
       client-certificate: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.crt
       client-key: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.key
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
@@ -2001,7 +2001,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 ```bash
 $ kubectl describe node <ワーカーNode名>
 
-# 〜 中略 〜
+...
 
 Capacity:
   attachable-volumes-aws-ebs:  20
@@ -2020,7 +2020,7 @@ Allocatable:
   memory:                      1234567Ki    # 実際に使用可能なメモリ
   pods:                        10
 
-# 〜 中略 〜
+...
 ```
 
 | ハードウェアリソース名 | 単位                                                         |
@@ -2821,12 +2821,12 @@ roleRef:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: foo-cluster-role-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: foo-cluster-role
 ```
 
@@ -2847,7 +2847,7 @@ metadata:
   name: foo-role-binding
 subjects:
   - apiGroup: ""
-    kind: ServiceAccount
+    kind: ServiceAccount # ServiceAccountに紐づける。
     name: foo-service-account
 ```
 
@@ -2858,8 +2858,8 @@ metadata:
   name: foo-cluster-role-binding
 subjects:
   - apiGroup: rbac.authorization.k8s.io
-    kind: Group
-    name: foo-group
+    kind: User # UserAccountに紐づける。
+    name: foo-user
 ```
 
 <br>

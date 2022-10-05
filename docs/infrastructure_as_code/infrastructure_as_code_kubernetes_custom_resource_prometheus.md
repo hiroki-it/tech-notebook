@@ -111,7 +111,7 @@ prometheus-eks-worker-rule.yaml
 prometheus-prometheus-kube-prometheus-alertmanager.rules.yaml
 prometheus-prometheus-kube-prometheus-general.rules.yaml
 
-# 〜 中略 〜
+...
 
 prometheus-prometheus-kube-prometheus-node.rules.yaml
 prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
@@ -178,7 +178,7 @@ $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-
 -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:09 00004932
 -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:12 00004933
 
-# 〜 中略 〜
+...
 
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898

@@ -672,14 +672,14 @@ OAuthに関して、以下のトークン付与タイプを実装できる。
 ```php
 return [
 
-    // ～ 中略 ～
+    ...
 
     "defaults" => [
         "guard" => "api",
         "passwords" => "users",
     ],
 
-    // ～ 中略 ～
+    ...
 ];
 ```
 
@@ -690,7 +690,7 @@ return [
 ```php
 return [
     
-    // ～ 中略 ～
+    ...
     
     "guards" => [
         "web" => [
@@ -705,7 +705,7 @@ return [
         ],
     ],
 
-    // ～ 中略 ～
+    ...
 ];
 ```
 
@@ -714,7 +714,7 @@ return [
 ```php
 return [
 
-    // ～ 中略 ～
+    ...
 
     "providers" => [
         "users" => [
@@ -729,7 +729,7 @@ return [
         // ],
     ],
 
-    // ～ 中略 ～
+    ...
 ];
 ```
 
@@ -758,7 +758,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
     
-    // ～ 中略 ～
+    ...
 }
 ```
 
@@ -773,7 +773,7 @@ use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    // ～ 中略 ～
+    ...
 
     public function boot()
     {

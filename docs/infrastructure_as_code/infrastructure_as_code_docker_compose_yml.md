@@ -326,7 +326,7 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -344,7 +344,7 @@ $ docker network inspect foo-network
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -372,7 +372,7 @@ $ docker network inspect <プロジェクト名>_default
     {
         "Name": "<プロジェクト名>_default",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -390,7 +390,7 @@ $ docker network inspect <プロジェクト名>_default
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "default",
@@ -572,7 +572,7 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -590,7 +590,7 @@ $ docker network inspect foo-network
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -627,7 +627,7 @@ services:
       # 接続したい外部ネットワーク名
       - shared-network
 
-# ～ 中略 ～
+...
     
 networks:
   # 公開したい外部ネットワーク名
@@ -646,7 +646,7 @@ services:
       # 接続したい外部ネットワーク名
       - shared-network
 
-# ～ 中略 ～
+...
 
 networks:
   # 公開したい外部ネットワーク名

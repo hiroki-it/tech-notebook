@@ -2558,7 +2558,7 @@ import (
 type CloudWatchEvent struct {
 	Version    string          `json:"version"`
 
-    // ～ 中略 ～
+    ...
     
 	Resources  []string        `json:"resources"`
     

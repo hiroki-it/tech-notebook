@@ -322,7 +322,7 @@ metadata:
 spec:
   ignoreDifferences:
   
-    # 〜 中略 〜
+    ...
   
   syncPolicy:
     syncOptions:

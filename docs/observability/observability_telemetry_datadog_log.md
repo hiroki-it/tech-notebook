@@ -219,7 +219,7 @@ const nuxtConfig: Configuration = {
     },
   },
     
-  // ～ 中略 ～
+  ...
 
   plugins: [
     ...(baseConfig.plugins || []),
@@ -230,7 +230,7 @@ const nuxtConfig: Configuration = {
     },
   ],
 
-  // ～ 中略 ～   
+  ...   
 
 }
 ```
@@ -534,16 +534,16 @@ CRITICAL @http.status_code:[500 TO 599]
 ```yaml
 {
 
-  # ～ 中略 ～
+  ...
 
   "http": {
   
-    # ～ 中略 ～
+    ...
       
     status_category: "info"
   },
   
-    # ～ 中略 ～
+    ...
 }
 ```
 
@@ -591,12 +591,12 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 {
   "content": {
     "attributes": {
-      # ～ 中略 ～
+      ...
     },
     "message": "[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ",
     "service": "prd-foo",
     "tags": [
-      # ～ 中略 ～
+      ...
     ]
   },
   "id": "*****"
@@ -707,12 +707,12 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 {
   "content": {
     "attributes": {
-      # ～ 中略 ～
+      ...
     },
     "message": "192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200",
     "service": "prd-foo",
     "tags": [
-      # ～ 中略 ～
+      ...
     ]
   },
   "id": "*****"
@@ -829,15 +829,15 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<アカ�
 {
   "content": {
   
-    # ～ 中略 ～
+    ...
     
     "service": "foo-apigateway",
     
-    # ～ 中略 ～
+    ...
     
   },
   
-  # ～ 中略 ～
+  ...
 
 }
 ```
@@ -894,7 +894,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 ```yaml
 {
-  # ～ 中略 ～
+  ...
 
   "useragent_details": {
     "browser": {
@@ -909,7 +909,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
     }
   }
   
-  # ～ 中略 ～
+  ...
 }
 ```
 
@@ -962,17 +962,17 @@ https://example.com%{http.url}
 {
   "date": 1609502400000,
   
-  # ～ 中略 ～
+  ...
   
   "http": {
   
-    # ～ 中略 ～
+    ...
     
     "url_full": "https://example.com/users?paginate=10&fooId=1"
     
   },
   
-    # ～ 中略 ～
+    ...
 }
 ```
 

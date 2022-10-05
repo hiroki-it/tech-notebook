@@ -172,7 +172,21 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 <br>
 
-## 03. アップグレード
+## bmctlコマンド
+
+### update
+
+カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
+
+https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+
+```bash
+$ bmctl update cluster -c <Cluster名> --admin-kubeconfig=<kubeconfigファイル>
+```
+
+<br>
+
+## 04. アップグレード
 
 ### Kubernetesのアップグレード
 
@@ -207,7 +221,7 @@ spec:
 | ```1.12```系          | ```v1.23.5-gke``` |
 | ...                  | ...               |
 
-（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。
+（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるので、このログを```tail```コマンドで確認する。
 
 > ℹ️ 参考：
 > 
@@ -215,9 +229,11 @@ spec:
 > - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
 
 ```bash
+# コマンドをインストールする。
 $ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
 $ chmod a+x bmctl
 
+# アップグレードする。
 $ bmctl upgrade cluster \
     -c <Cluster名> \
     --kubeconfig <kubeconfigファイルの場所>

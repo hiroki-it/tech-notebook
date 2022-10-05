@@ -425,7 +425,7 @@ FireLensコンテナで複数行のログを処理したい場合、```parsers_m
 
 ```bash
 [SERVICE]
-    # 〜 中略 〜
+    ...
     parsers_file          /parsers_multiline.conf
     
 [FILTER]
@@ -471,6 +471,6 @@ FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-
 
 ```bash
 [SERVICE]
-    # 〜 中略 〜
+    ...
     Streams_File stream_processor.conf
 ```

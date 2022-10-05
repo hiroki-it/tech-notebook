@@ -158,7 +158,7 @@ Package                    Version
 click                      8.0.3
 ghp-import                 2.0.2
 
-# 〜 中略 〜
+...
 
 wheel                      0.37.1
 zipp                       3.7.0
@@ -176,7 +176,7 @@ Package            Version Latest Type
 click              8.0.3   8.0.4  wheel
 importlib-metadata 4.10.0  4.11.2 wheel
 
-# 〜 中略 〜
+...
 
 pyparsing          3.0.6   3.0.7  wheel
 setuptools         60.5.0  60.9.3 wheel

@@ -458,7 +458,7 @@ addgroup
 adduser
 ar
 
-# 〜 中略 〜
+...
 
 xzcat
 yes
@@ -560,7 +560,7 @@ CPU variant     : 0x0
 CPU part        : 0x000
 CPU revision    : 0
 
-# 〜 中略 〜
+...
 
 processor       : 3
 BogoMIPS        : 48.00

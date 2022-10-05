@@ -79,7 +79,7 @@ $ helm install --dry-run <リリース名> <チャートへのパス>
 apiVersion: apps/v1
 kind: Deployment
 
-# 〜 中略 〜
+...
 ```
 
 #### ▼ -f
@@ -604,7 +604,7 @@ db:
 
 # sopsキーが追記される。
 sops:
-  # 〜 中略 〜
+  ...
 ```
 
 #### ▼ view
