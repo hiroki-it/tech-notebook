@@ -586,7 +586,7 @@ $ du ./ | sort -n
 
 #### ▼ -h
 
-読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ（KB）、を取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、```-h```オプションを使用しないようにする。
+読みやすい単位で、指定したディレクトリ内のサブディレクトリのサイズ、ディレクトリ全体の合計サイズ（KB）、を再帰的に取得する。ただし、細かい数値が省略されてしまうため、より正確なサイズを知りたい場合は、```-h```オプションを使用しないようにする。
 
 > ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
@@ -599,6 +599,19 @@ $ du -h ./
 27K   ./vendor/foo
 1.1M  ./vendor
 1.2M  ./
+```
+
+#### ▼ --max-depth=1
+
+再帰的にディレクトリのサイズを取得する時に、階層の深さを設定する。
+
+```bash
+$ du -h ./vendor/foo --max-depth=1
+
+27K   ./vendor/foo
+26K   ./vendor/foo2
+29K   ./vendor/foo3
+1.1M  ./vendor
 ```
 
 #### ▼ -s

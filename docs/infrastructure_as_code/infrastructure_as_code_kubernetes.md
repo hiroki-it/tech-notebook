@@ -289,7 +289,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （５）kube-apiserverは、バインディング情報（スケジューリング対象ワーカーNodeとPod間の紐付き情報）をetcdに永続化する。
 
-（６）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知する。らに、etcdのバインディング情報に基づいて、特定のワーカーNode上のkubeletにPodの作成をコールする。
+（６）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、バインディング情報が永続化されたことを検知する。さらに、etcdのバインディング情報に基づいて、特定のワーカーNode上のkubeletにPodの作成をコールする。
 
 （７）kubeletは、コンテナランタイム（例：Docker、Containerd）のデーモンにコンテナの作成をコールする。
 

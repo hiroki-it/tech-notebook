@@ -516,7 +516,17 @@ $ kubectl top pod -n <任意のNamespace>
 
 #### ▼ ローカルストレージ
 
-メトリクスを時系列データとして保存する。
+メトリクスを時系列データとして保存する。時系列データベースとして、独自DBを使用している。データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていないため、データソース型モデルと仮定してテーブル例を示す。
+
+| timestamp  | cluster     | namespace     | ... | cpu | memory |
+|------------|-------------|---------------|-----|-----|--------|
+| ```2022-01-01``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```10```  | ```10``` |
+| ```2022-01-02``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```20```  | ```30``` |
+
+> ℹ️ 参考：
+>
+> - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
+> - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
 
 #### ▼ スクレイパー
 

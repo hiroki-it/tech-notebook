@@ -360,7 +360,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして動作する。operator-controllerが稼働している状況でetcdにカスタムリソース定義を永続化すれば、NodeとPod間のバインディング情報に基づいて、operator-controllerはkubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、カスタムリソース定義の設定値の通りにカスタムリソースが作成されない。
+カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
 > ℹ️ 参考：
 >

@@ -338,6 +338,23 @@ $ kubectl describe node
 $ kubectl describe pod <Pod名> | grep Node:
 ```
 
+**＊例＊**
+
+```bash
+$ kubectl describe clusterrole foo-cluster-role
+
+Name:         anthos-baremetal-operator
+Labels:       <none>
+Annotations:  <none>
+PolicyRule:
+  Resources               Non-Resource URLs  Resource Names  Verbs
+  ---------               -----------------  --------------  -----
+  pods                    []                 []              [get list watch]
+  deployments.apps        []                 []              [create delete get list patch update watch]
+...
+
+```
+
 #### ▼ -A
 
 **＊例＊**
