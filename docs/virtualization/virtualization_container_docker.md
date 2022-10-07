@@ -83,7 +83,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 #### ▼ dockerデーモンとは
 
-ホスト側で稼働し、コンテナの操作を担う常駐プログラム。dockerクライアントにdockerデーモンAPIを公開する。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+ホスト側に常駐し、コンテナの操作を担うデーモン。dockerクライアントにdockerデーモンAPIを公開する。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
 

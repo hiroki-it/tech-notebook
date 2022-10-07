@@ -512,7 +512,7 @@ $ kubectl top node
 $ kubectl top pod -n <任意のNamespace>
 ```
 
-クライアントがKubernetesリソースの場合は、Podのオートスケーリングを行うもの（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）がメトリクスを収集するためにリクエストを送信する。
+クライアントがKubernetesリソースの場合は、Podのオートスケーリングを行うもの（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）がメトリクスのデータポイントを収集するためにリクエストを送信する。
 
 #### ▼ ローカルストレージ
 
@@ -530,7 +530,7 @@ $ kubectl top pod -n <任意のNamespace>
 
 #### ▼ スクレイパー
 
-対象からメトリクスを収集し、ローカルストレージに保存する。スクレイピングのために、ServiceAccountとClusterRoleを作成する必要がある。
+対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。スクレイピングのために、ServiceAccountとClusterRoleを作成する必要がある。
 
 <br>
 

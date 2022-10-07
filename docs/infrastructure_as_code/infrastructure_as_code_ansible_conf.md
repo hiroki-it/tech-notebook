@@ -19,7 +19,7 @@ description: 設定ファイル＠Ansibleの知見を記録しています。
 
 #### ▼ playbookファイルとは
 
-サーバーのセットアップ処理を設定する。実装の種類別に、```roles```ディレクトリに切り分けても良い。
+サーバーのセットアップ処理を設定する。処理を```roles```ディレクトリに切り分けても良い。切り分ける場合、```roles```ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。
 
 > ℹ️ 参考：https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
 
@@ -33,25 +33,49 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 - hosts: app
   become: yes
   force_handlers: true
+  # rolesディレクトリ以下に処理を切り分ける。
   roles:
-    - common/vim
-    - app/php
+    - common
+    - app
 
 # dbサーバー
 - hosts: db
   become: yes
   force_handlers: true
+  # rolesディレクトリ以下に処理を切り分ける。
   roles:
-    - common/vim
-    - db/mysql
+    - common
+    - db
 
 # webサーバー
 - hosts: web
   become: yes
   force_handlers: true
+  # rolesディレクトリ以下に処理を切り分ける。
   roles:
-    - common/vim
-    - web/nginx
+    - common
+    - web
+```
+
+```yaml
+repository/
+├── playbook.yml
+└── roles/
+    ├── common/
+    │   └── tasks/
+    │       └── main.yml
+    │
+    ├── app/
+    │   └── tasks/
+    │       └── main.yml
+    │
+    ├── db/
+    │   └── tasks/
+    │       └── main.yml
+    │
+    └── web/
+        └── tasks/
+            └── main.yml
 ```
 
 <br>
@@ -221,7 +245,7 @@ ports:
 
 #### ▼ inventoriesディレクトリとは
 
-管理対象ノードが設定された```inventory```ファイルを配置する。Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
+管理対象ノードの情報を設定する。Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
 
 > ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
@@ -231,12 +255,17 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 #### ▼ inventoryファイル
 
-管理対象ノードを設定する。```ini```形式または```yml```形式で定義する。実行環境（本番/ステージング）別にファイルを切り分けると良い。また、サーバーを冗長化している場合は、これも別々に定義しておく。プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
+管理対象ノードを設定する。複数の拡張子（```ini```形式、```yml```形式、```json```形式）で定義でき、```ansible-inventory```コマンドで```ini```形式から他の形式に変換できる。ただし、```ini```形式の場合は拡張子をつけない方が良い。実行環境（本番/ステージング）別にファイルを切り分けると良い。また、サーバーを冗長化している場合は、これも別々に定義しておく。プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
 
 > ℹ️ 参考：
 >
 > - https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
+> - https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini
+
+**＊実装例＊**
+
+もし```yml```形式の場合は以下の通りとなる。
 
 ```yaml
 # inventoryファイル
@@ -244,11 +273,11 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 - all:
     hosts:
       app:
-        # サーバーのIPアドレス
+        # 管理対象ノードのIPアドレス
         ansible_host: 127.0.0.1
-        # ログインするためのユーザー名
+        # 管理対象ノードにログインするためのユーザー名
         ansible_user: vagrant
-        # ログインするためのパスワード
+        # 管理対象ノードにログインするためのパスワード
         ansible_password: vagrant
       web:
         ansible_host: 127.0.0.1
@@ -270,10 +299,13 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
         hosts:
           # appサーバー
           app:
+            # 管理対象ノードのIPアドレス
             ansible_host: 192.168.111.101
+            # 管理対象ノードにログインするためのユーザー名
             ansible_user: ubuntu
+            # 管理対象ノードにログインするためのパスワード
             ansible_password: ubuntu
-            # SSH接続に使用する秘密鍵
+            # 管理対象ノードへのSSH接続に使用する秘密鍵
             ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
           # webサーバー
           web:
@@ -296,6 +328,96 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ssh_keys/prd-foo.pem
+```
+
+**＊実装例＊**
+
+もし```ini```形式の場合は以下の通りとなる。
+
+```ini
+# inventoryファイル
+# テスト環境
+
+# -------------------
+# 冗長化サーバーa
+# -------------------
+
+# appサーバー
+[server_a.hosts.app]
+# 管理対象ノードのIPアドレス
+ansible_host=192.168.111.101
+# 管理対象ノードにログインするためのユーザー名
+ansible_user=ubuntu
+# 管理対象ノードにログインするためのパスワード
+ansible_password=ubuntu
+# 管理対象ノードへのSSH接続に使用する秘密鍵
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# webサーバー
+[server_a.hosts.web]
+ansible_host=192.168.111.10
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# -------------------
+# 冗長化サーバーc
+# -------------------
+
+# appサーバー
+[server_c.hosts.app]
+ansible_host=192.168.111.102
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# webサーバー
+[server_c.hosts.web]
+ansible_host=192.168.111.11
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+```
+
+```ini
+# inventoryファイル
+# 本番環境
+
+# -------------------
+# 冗長化サーバーa
+# -------------------
+
+# appサーバー
+[server_a.hosts.app]
+ansible_host=192.168.111.101
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# webサーバー
+[server_a.hosts.web]
+ansible_host=192.168.111.10
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# -------------------
+# 冗長化サーバーc
+# -------------------
+
+# appサーバー
+[server_c.hosts.app]
+ansible_host=192.168.111.102
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
+
+# webサーバー
+[server_c.hosts.web]
+ansible_host=192.168.111.11
+ansible_user=ubuntu
+ansible_password=ubuntu
+ansible_ssh_private_key_file=/etc/ssh_keys/prd-foo.pem
 ```
 
 <br>
@@ -378,59 +500,70 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ### ansible.builtin.apt
 
-管理対象ノード上にパッケージをaptリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
+#### ▼ ansible.builtin.aptとは
+
+管理対象ノード上で、パッケージをaptリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
 
 > ℹ️ 参考：
 >
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
 > - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
+**＊実装例＊**
+
 ```yaml
-- tasks:
-    - name: Install Nginx
-      ansible.builtin.apt:
-        name: nginx=1.0.0
-        state: present
+# nginxをインストールします。
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx=1.0.0
+    state: present
 ```
 
-### ansible.builtin.yum
+### ansible.builtin.copy
 
-管理対象ノード上にパッケージをyumリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
+#### ▼ ansible.builtin.copyとは
 
-> ℹ️ 参考：
->
-> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
-> - https://qiita.com/tkit/items/7ad3e93070e97033f604
+ファイルを管理対象ノード上のディレクトリにそのまま配置する。
 
+**＊実装例＊**
 
 ```yaml
-- tasks:
-    - name: Install Nginx
-      ansible.builtin.yum:
-        name: nginx=1.0.0
-        state: present
+# 設定ファイルを配置します。
+- name: copy foo.json
+  ansible.builtin.copy:
+    src: foo.json
+    dest: /etc/foo.json
+    owner: root
+    group: root
+    mode: 0644
 ```
 
 <br>
 
 ### ansible.builtin.service
 
+#### ▼ ansible.builtin.serviceとは
+
 管理対象ノード上で```service```コマンドの実行を設定する。
 
 > ℹ️ 参考：https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
+**＊実装例＊**
+
 ```yaml
-- tasks:
-    - name: Start nginx service
-      ansible.builtin.service:
-        name: Start nginx
-        state: started
-        enabled: 'yes'
+# serviceコマンドを使用して、nginxを起動します。
+- name: Start nginx service
+  ansible.builtin.service:
+    name: Start nginx
+    state: started
+    enabled: 'yes'
 ```
 
 <br>
 
 ### ansible.builtin.shell
+
+#### ▼ ansible.builtin.shellとは
 
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『```|```』を使用する。
 
@@ -439,48 +572,113 @@ taskセクションの後に実行するセットアップ処理を設定する�
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 > - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
 
+**＊実装例＊**
+
 ```yaml
-- task:
-    - name: Echo foo
-      ansible.builtin.shell: |
-        echo foo
+- name: Echo foo
+  ansible.builtin.shell: |
+    echo foo
+```
+
+**＊実装例＊**
+
+```yaml
+- name: fetch-config config.json
+  ansible.builtin.shell: |
+    /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+      -a fetch-config \
+      -m ec2 \
+      -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
+      -s
 ```
 
 <br>
 
 ### ansible.builtin.systemd
 
+#### ▼ ansible.builtin.systemdとは
+
 管理対象ノード上で```systemctl```コマンドの実行を設定する。
 
 > ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
+**＊実装例＊**
+
 ```yaml
-- tasks:
-  - name: Start nginx systemd
-    ansible.builtin.systemd:
-      name: Start nginx
-      state: started
-      enabled: yes
+# systemdでnginxのプロセスを管理します。
+- name: Start nginx systemd
+  ansible.builtin.systemd:
+    name: Start nginx
+    state: started
+    enabled: yes
+    daemon_reload: yes
+```
+
+**＊実装例＊**
+
+```yaml
+# systemdでcloudwatchエージェントのプロセスを管理します。
+- name: Start cloudwatch-agent systemd
+  ansible.builtin.systemd:
+    name: cloudwatch-agent
+    state: started
+    enabled: yes
+    daemon_reload: yes
 ```
 
 <br>
 
 ### ansible.builtin.template
 
-管理対象ノード上に、テンプレート（```.j2```ファイル）から作成したファイルを配置する。
+#### ▼ ansible.builtin.templateとは
+
+テンプレート（```.j2```ファイル）から作成したファイルを管理対象ノード上のディレクトリに配置する。
+
+**＊実装例＊**
 
 ```yaml
-- tasks:
-    - name: Start nginx systemd
-      ansible.builtin.systemd:
-        name: Start nginx
-        state: started
-        enabled: 'yes'
+- name: Upload foo.conf
+  ansible.builtin.template:
+    src: foo.conf.j2
+    dest: /etc/foo/foo.conf
+```
+
+<br>
+
+### ansible.builtin.yum
+
+#### ▼ ansible.builtin.yumとは
+
+管理対象ノード上で、パッケージをyumリポジトリからインストールする。任意のバージョンのパッケージをインストールする場合は、```name```キーにそれを指定し、```state```キーの値は```present```とする。
+
+> ℹ️ 参考：
+>
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
+> - https://qiita.com/tkit/items/7ad3e93070e97033f604
+
+**＊実装例＊**
+
+```yaml
+# nginxをインストールします。
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx=1.0.0
+    state: present
+```
+
+```yaml
+# epelリポジトリをインストールします。
+- name: Install epel-release
+  ansible.builtin.yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
 ```
 
 <br>
 
 ### ansible_env
+
+#### ▼ ansible_envとは
 
 管理対象ノードに設定された環境変数を出力する。```gather_facts```オプションを有効化する必要がある。
 
@@ -498,30 +696,28 @@ taskセクションの後に実行するセットアップ処理を設定する�
 ```
 ```yaml
 - vars:
-    foo: ansible_env.FOO
-  tasks:
-    - name: Upload foo.conf
-      ansible.builtin.template:
-        src: foo.conf.j2
-        dest: /etc/foo/foo.conf
+    FOO: ansible_env.FOO
 ```
 
 <br>
 
 ### environment
 
+#### ▼ environmentとは
+
 task内で出力できる環境変数を設定する。
 
 > ℹ️ 参考：https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
 
+**＊実装例＊**
+
 ```yaml
-- task:
-    - name: Echo foo
-      ansible.builtin.shell: |
-        echo foo
-        echo ${FOO}
-      environment:
-        FOO: FOO
+- name: Echo foo
+  ansible.builtin.shell: |
+    echo foo
+    echo ${FOO}
+  environment:
+    FOO: FOO
 ```
 
 <br>
@@ -540,17 +736,16 @@ task内で出力できる環境変数を設定する。
 **＊実装例＊**
 
 ```yaml
-- vars:
+- name: Upload foo.conf
+  ansible.builtin.template:
+    src: foo.conf.j2
+    dest: /etc/foo/foo.conf
+  vars:
     foo: FOO
     bar: BAR
-  tasks:
-    - name: Upload foo.conf
-      ansible.builtin.template:
-        src: foo.conf.j2
-        dest: /etc/foo/foo.conf
 ```
 
-```bash
+```yaml
 # foo.conf.j2ファイル
 {{ foo }}
 ```
@@ -575,13 +770,12 @@ task内で出力できる環境変数を設定する。
 コントロールノードの環境変数の```FOO```を出力する。
 
 ```yaml
-- vars:
+- name: Upload foo.conf
+  ansible.builtin.template:
+    src: foo.conf.j2
+    dest: /etc/foo/foo.conf
+  vars:
     foo: 'lookup("env", "FOO")'
-  tasks:
-    - name: Upload foo.conf
-      ansible.builtin.template:
-        src: foo.conf.j2
-        dest: /etc/foo/foo.conf
 ```
 
 <br>

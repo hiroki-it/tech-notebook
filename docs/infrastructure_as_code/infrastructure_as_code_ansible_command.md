@@ -30,7 +30,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 全てのインベントリーを指定し、また暗号化済みファイルを復号化し、プロビジョニングを実行する。
 
 ```bash
-$ ansible-playbook foo-playbook.yaml -i ./inventories --ask-vault-pass
+$ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
 <br>
@@ -50,14 +50,14 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 fooインベントリのみを指定して、プロビジョニングを実行する。
 
 ```bash
-$ ansible-playbook foo-playbook.yaml -i ./inventories/foo-inventory
+$ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
 **＊例＊**
 
 全てのインベントリーを指定して、プロビジョニングを実行する。
 
 ```bash
-$ ansible-playbook foo-playbook.yaml -i ./inventories
+$ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
 <br>
@@ -71,7 +71,7 @@ $ ansible-playbook foo-playbook.yaml -i ./inventories
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 ```bash
-$ ansible-vault decrypt parameters.yaml
+$ ansible-vault decrypt parameters.yml
 ```
 
 <br>
@@ -86,15 +86,43 @@ $ ansible-vault decrypt parameters.yaml
 > - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 ```bash
-$ ansible-vault encrypt parameters.yaml
+$ ansible-vault encrypt parameters.yml
 
 New Vault password:
 Confirm New Vault password:
 Encryption successful
 ```
 ```bash
-$ cat parameters.yaml
+$ cat parameters.yml
 
 $ANSIBLE_VAULT;1.1;AES256
 *****
 ```
+
+<br>
+
+## 03. ansible-inventory
+
+### --list
+
+#### ▼ --listとは
+
+```inventory```ファイルを指定し、```json```形式に変換する。
+
+https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+
+```bash
+$ ansible-inventory -i ./inventories/inventory --list
+```
+
+#### ▼ -y
+
+```inventory```ファイルを指定し、```yml```形式に変換する。
+
+https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+
+```bash
+$ ansible-inventory -i ./inventories/inventory --list -y
+```
+
+<br>

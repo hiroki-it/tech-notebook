@@ -1129,23 +1129,99 @@ IAMユーザーによる操作や、ロールの紐付けの履歴を記録し�
 
 <br>
 
-## 10. CloudWatch
+## 10. CloudWatchエージェント
 
-### CloudWatchエージェント
+### CloudWatchエージェントとは
 
-#### ▼ CloudWatchエージェントとは
+インスタンス系AWSリソース（EC2、ECS、EKS、Lambda）内で稼働するデーモンのこと。インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。多くの場合、インスタンス系リソースは基本的なメトリクスを収集するが、一部のメトリクス（例：EC2のメモリ使用率やストレージ使用率）やログを収集しないため、これらをカスタムメトリクスとして収集できるようにする。
 
-インスタンス内で稼働する常駐システムのこと。インスタンス内のデータを収集し、CloudWatchに対して送信する。
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+> - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
 
-#### ▼ CloudWatchエージェントの設定
+<br>
 
-| セクションの種類        | 説明                                   | 補足                                                         |
-| ----------------------- | -------------------------------------- | ------------------------------------------------------------ |
-| ```agent```セクション   | CloudWatchエージェント全体を設定する。 | ・ウィザードを使用した場合、このセクションの設定はスキップされる。<br>・実装しなかった場合、デフォルト値が適用される。 |
-| ```metrics```セクション |                                        | ・ウィザードを使用した場合、このセクションの設定はスキップされる。<br>・実装しなかった場合、何も設定されない。 |
-| ```logs```セクション    |                                        |                                                              |
+### セットアップ
+
+#### ▼ インストール
+
+```bash
+$ yum install amazon-cloudwatch-agent -y
+```
+
+#### ▼ デーモン起動
+
+**＊例＊**
+
+```bash
+# EC2内にある設定ファイルを、CloudWatchエージェントに読み込ませる（再起動を含む）
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a fetch-config \
+    -m ec2 \
+    -s \
+    -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+# プロセスのステータスを確認
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -m ec2 \
+    -a status
+```
+
+```bash
+# 設定ファイルが読み込まれたかを確認
+
+### CloudWatchエージェントのプロセスのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+### 設定ファイルの構文チェックのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+
+### OSの起動と同時に、エージェントが稼働するように設定されているかを確認
+$ systemctl list-unit-files --type=service
+```
+
+<br>
+
+### ```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイル
+
+#### ▼ ```config.json```ファイルとは
 
 CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に、実行される。設定ファイルは分割できる。設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。CloudWatchエージェントを使用して、CloudWatchにログファイルを送信するだけであれば、設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い。```run_as_user```には、プロセスのユーザー名（例：```cwagent```）を設定する。
+
+#### ▼ ```agent```セクション
+
+CloudWatchエージェント全体を設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、デフォルト値が適用される。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
+
+```yaml
+{
+  "agent": {
+    "run_as_user": "cwagent"
+  }
+}
+```
+
+#### ▼ ```metrics```セクション
+
+ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、何も設定されない。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
+
+```yaml
+{
+  "agent": {
+    "run_as_user": "cwagent"
+  },
+  "metrics": {
+  }
+}
+```
+
+#### ▼ ```logs```セクション
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
 
 **＊実装例＊**
 
@@ -1175,40 +1251,10 @@ CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config
 }
 ```
 
-#### ▼ ログ送信権限
+### IAMロール
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 
-#### ▼ 操作コマンド
-
-**＊例＊**
-
-```bash
-# EC2内にある設定ファイルを、CloudWatchエージェントに読み込ませる（再起動を含む）
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-  -a fetch-config \
-  -m ec2 \
-  -s \
-  -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
-
-# プロセスのステータスを確認
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-  -m ec2 \
-  -a status
-```
-
-```bash
-# 設定ファイルが読み込まれたかを確認
-
-### CloudWatchエージェントのプロセスのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
-
-### 設定ファイルの構文チェックのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
-
-### OSの起動と同時に、エージェントが稼働するように設定されているかを確認
-$ systemctl list-unit-files --type=service
-```
 
 <br>
 
@@ -1335,7 +1381,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 #### ▼ CloudWatchログエージェントとは
 
-インスタンス内で稼働する常駐システムのこと。インスタンス内のデータを収集し、CloudWatchログに対して送信する。執筆時点（2020/10/05）では非推奨で、CloudWatchエージェントへの設定の移行が推奨されている。
+インスタンス内で稼働するデーモンのこと。インスタンス内のデータを収集し、CloudWatchログに対して送信する。執筆時点（2020/10/05）では非推奨で、CloudWatchエージェントへの設定の移行が推奨されている。
 
 #### ▼ ```/var/awslogs/etc/awslogs.conf```ファイル
 
@@ -1762,7 +1808,7 @@ Resources:
 
 ### オートスケーリング
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 
 ### ALB、ELB、NLB
 
@@ -1770,7 +1816,7 @@ Resources:
 
 CodeDeployのデプロイの途中、ターゲットグループからインスタンスを切り離すことにより、インバウンド通信のインスタンスへのルーティングを遮断する。そのため、デプロイ中にユーザーはアプリにアクセスできなくなる。デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、アクセスできるようにする。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
 
 <br>
 

@@ -173,7 +173,7 @@ $ git remote set-url origin git@github.com:<組織名またはgitユーザー名
 # 使用頻度の低いアカウントで所有するリポジトリ
 $ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
-# 変更された
+# 変更されたURL
 remote.origin.url=git@<任意の接続名>:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 ```
 

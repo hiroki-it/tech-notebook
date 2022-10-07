@@ -27,7 +27,7 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 ### jaegerクライアントパッケージ（非推奨）
 
-2022/07/16時点で、OTelクライアントパッケージを使用することが推奨されている。参考程度に、jaegerクライアントパッケージの仕組みを記載する。アプリケーションにて、jaegerクライアントパッケージはスパンを作成し、加えてリクエストメッセージにコンテキスト情報（トレースID、スパンID、OpenTracingバゲージ）を付与する。jaegerクライアントパッケージは、コンテナ内でデーモンとして稼働するjaegerエージェントにスパンを渡す。
+2022/07/16時点で、OTelクライアントパッケージを使用することが推奨されている。参考程度に、jaegerクライアントパッケージの仕組みを記載する。アプリケーションにて、jaegerクライアントパッケージはスパンを作成し、加えてリクエストメッセージにコンテキスト情報（トレースID、スパンID、OpenTracingバゲージ）を付与する。jaegerクライアントパッケージは、コンテナ内でデーモンとして常駐するjaegerエージェントにスパンを渡す。
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
 
@@ -35,7 +35,7 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 ### jaegerエージェント
 
-コンテナにて、デーモンとして稼働し、スパンの受信をリッスンする。
+コンテナ内でデーモンとして常駐し、スパンの受信をリッスンする。
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
 

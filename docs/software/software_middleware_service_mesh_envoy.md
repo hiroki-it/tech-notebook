@@ -123,9 +123,9 @@ Envoyは、分散トレースを作成できるように、自分自身を通過
 | ------------------ | -------------------------------- |
 | ```X-REQUEST-ID``` | トレースIDが割り当てられている。 |
 
-#### ▼ zipkins系ヘッダー
+#### ▼ zipkin系ヘッダー
 
-Envoyは、Zipkinsが使用するヘッダーを追加する。
+Envoyは、Zipkinが使用するヘッダーを追加する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
