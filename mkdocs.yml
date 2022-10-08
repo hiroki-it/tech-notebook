@@ -122,7 +122,7 @@ nav:
       - システム品質特性: system/system_quality_attributes.md
 
   - 🧬 ソフトウェア:
-      - testing/index.md
+      - software/index.md
       - ソフトウェア: software/software.md
       - ■ 基本ソフトウェア（OS）:
           - ■ カーネル:
