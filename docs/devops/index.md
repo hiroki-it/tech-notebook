@@ -1,7 +1,3 @@
----
-title: 【IT技術の知見】DevOps
----
-
 ## ♾️ DevOps
 
 * #### ︎<u>DevOps</u>

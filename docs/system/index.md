@@ -1,7 +1,3 @@
----
-title: 【IT技術の知見】システム
----
-
 ## 🌳 システム
 
 * ##### 📖 [︎システム](https://hiroki-it.github.io/tech-notebook-mkdocs/system/system.html)
