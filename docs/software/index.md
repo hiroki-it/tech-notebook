@@ -11,13 +11,11 @@
 ### 基本ソフトウェア（OS）
 
 * #### <u>カーネル</u>
-
   > * ##### 📖 [︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
   > * ##### 📖 [︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
   > * ##### 📖 [︎ストレージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_storage_management.html)
 
 * #### <u>ユーティリティ</u>
-
   > * ##### 📖 [︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
   > * ##### 📖 [︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
   > * ##### 📖 [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
@@ -25,7 +23,6 @@
   > * ##### 📖 [︎スクリプト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_script.html)
 
 * #### <u>言語プロセッサー</u>
-
   > * ##### 📖 [︎言語プロセッサー](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)
   > * ##### 📖 [︎機械語と進数](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor_machine_language_and_radix.html)
 
@@ -34,11 +31,9 @@
 ### ミドルウェア
 
 * #### <u>Linux系</u>
-
   > * ##### 📖 [︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
 
 * #### <u>Web系</u>
-
   > * ##### <u>Nginx</u>
   > > * ##### 📖 [︎Nginx](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx.html)
   > > * ##### 📖 [︎nginx.conf](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx_conf.html)
@@ -50,7 +45,6 @@
 
 
 * #### <u>アプリケーション系</u>
-
   > * ##### <u>GI</u>
   > > * ##### 📖 [︎GI](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi.html)
   > > * ##### <u>FastCGI</u>
@@ -63,7 +57,6 @@
   > > > * ##### 📖 [︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
 * #### <u>データベース系</u>
-
   > * ##### <u>データベース</u>
   > > * ##### <u>RDBMS</u>
   > > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
@@ -73,7 +66,6 @@
   > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_query.html)
 
 * #### <u>サービスメッシュ系</u>
-
   > * ##### 📖 [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh.html)
   > > * ##### <u>Envoy</u>
   > > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
@@ -84,7 +76,6 @@
 ### アプリケーションソフトウェア
 
 * #### <u>アーキテクチャ</u>
-
   > * ##### 📖 [︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html)
   > * ##### <u>バックエンド</u>
   > > * ##### 📖 [︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html)
@@ -95,7 +86,6 @@
   > > * ##### 📖 [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_frontend.html)
 
 * #### <u>アプリケーション間連携</u>
-
   > * ##### 📖 [︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_communication.html)
   > * ##### <u>RESTful-API</u>
   > > * ##### 📖 [︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
@@ -105,18 +95,15 @@
 ### 言語
 
 * #### <u>言語</u>
-
   > * ##### 📖 [言語の種類](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_type.html)
   > * ##### 📖 [︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
 
 * #### <u>データ記述言語</u>
-
   > * ##### 📖 [︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
   > * ##### <u>クエリロジック</u>
   > > * ##### 📖 [︎JSONクエリ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_query_json.html)
 
 * #### <u>PHP</u>
-
   > * ##### 📖 [PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_command.html)
   > * ##### <u>クラスベース</u>
@@ -145,7 +132,6 @@
   > > * ##### 📖 [︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_others.html)
 
 * #### <u>JavaScript</u>
-
   > * ##### <u>プロトタイプベース</u>
   > > * ##### 📖 [︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based.html)
   > > * ##### 📖 [︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_prototype_based_method_data.html)
@@ -162,7 +148,6 @@
   > > * ##### 📖 [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_browser_rendering.html)
 
 * #### <u>Go</u>
-
   > * ##### 📖 [Go](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_command.html)
   > * ##### <u>ロジック</u>
@@ -173,7 +158,6 @@
   > > > * ##### 📖 [パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_go_package.html)
 
 * #### <u>Python</u>
-
   > * ##### 📖 [︎Python](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_python.html)
   > * ##### <u>フレームワーク</u>
   > > * ##### <u>Flask</u>

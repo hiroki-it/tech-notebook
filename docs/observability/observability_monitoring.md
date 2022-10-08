@@ -194,8 +194,7 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
-> - https://qiita.com/murat
-> - a-tomohide/items/9bd1320865b2eba47538
+> - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
 
 <br>
 

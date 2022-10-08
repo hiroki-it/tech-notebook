@@ -101,7 +101,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 <br>
 
-## 03. ansible-inventory
+## 03. ansible-inventoryコマンド
 
 ### --list
 

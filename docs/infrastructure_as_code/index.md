@@ -1,3 +1,5 @@
+# セクションの目次
+
 ## ⚙️ IaC
 
 ### IaC
@@ -7,13 +9,11 @@
 ### 手続き型
 
 * #### <u>Ansible</u>
-
   > * ##### 📖 [Ansible](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible.html)
   > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_command.html)
   > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_conf.html)
 
 * #### <u>Docker</u>
-
   > * ##### 📖 [︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_command.html)
   > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_policy.html)
@@ -21,12 +21,10 @@
 ### 宣言型
 
 * #### <u>Docker Compose</u>
-
   > * ##### 📖 [︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_command.html)
 
 * #### <u>Kubernetes</u>
-
   > * ##### <u>Kubernetes</u>
   > > * ##### 📖 [︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes.html)
   > > * ##### 📖 [︎リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
@@ -82,16 +80,13 @@
 
 
 * #### <u>Packer</u>
-
   > * ##### 📖 [template.json](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_packer_template_json.html)
 
 * #### <u>Serverless Framework</u>
-
   > * ##### 📖 [︎serverless.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
 
 * #### <u>Terraform</u>
-
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
   > * ##### 📖 [設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
   > * ##### 📖 [︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
@@ -100,7 +95,6 @@
   > > * ##### 📖 [︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.html)
 
 * #### <u>Vagrant</u>
-
   > * ##### 📖 [Vagrantfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_vagrant_command.html)
 

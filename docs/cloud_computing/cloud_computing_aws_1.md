@@ -1129,136 +1129,7 @@ IAMユーザーによる操作や、ロールの紐付けの履歴を記録し�
 
 <br>
 
-## 10. CloudWatchエージェント
-
-### CloudWatchエージェントとは
-
-インスタンス系AWSリソース（EC2、ECS、EKS、Lambda）内で稼働するデーモンのこと。インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。多くの場合、インスタンス系リソースは基本的なメトリクスを収集するが、一部のメトリクス（例：EC2のメモリ使用率やストレージ使用率）やログを収集しないため、これらをカスタムメトリクスとして収集できるようにする。
-
-> ℹ️ 参考：
-> 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
-> - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
-
-<br>
-
-### セットアップ
-
-#### ▼ インストール
-
-```bash
-$ yum install amazon-cloudwatch-agent -y
-```
-
-#### ▼ デーモン起動
-
-**＊例＊**
-
-```bash
-# EC2内にある設定ファイルを、CloudWatchエージェントに読み込ませる（再起動を含む）
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-    -a fetch-config \
-    -m ec2 \
-    -s \
-    -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
-
-# プロセスのステータスを確認
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-    -m ec2 \
-    -a status
-```
-
-```bash
-# 設定ファイルが読み込まれたかを確認
-
-### CloudWatchエージェントのプロセスのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
-
-### 設定ファイルの構文チェックのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
-
-### OSの起動と同時に、エージェントが稼働するように設定されているかを確認
-$ systemctl list-unit-files --type=service
-```
-
-<br>
-
-### ```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイル
-
-#### ▼ ```config.json```ファイルとは
-
-CloudWatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に、実行される。設定ファイルは分割できる。設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。CloudWatchエージェントを使用して、CloudWatchにログファイルを送信するだけであれば、設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い。```run_as_user```には、プロセスのユーザー名（例：```cwagent```）を設定する。
-
-#### ▼ ```agent```セクション
-
-CloudWatchエージェント全体を設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、デフォルト値が適用される。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
-
-```yaml
-{
-  "agent": {
-    "run_as_user": "cwagent"
-  }
-}
-```
-
-#### ▼ ```metrics```セクション
-
-ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、何も設定されない。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
-
-```yaml
-{
-  "agent": {
-    "run_as_user": "cwagent"
-  },
-  "metrics": {
-  }
-}
-```
-
-#### ▼ ```logs```セクション
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
-
-**＊実装例＊**
-
-```yaml
-{
-  "agent": {
-    "run_as_user": "cwagent"
-  },
-  "logs": {
-    "logs_collected": {
-      "files": {
-        "collect_list": [
-          {
-            "file_path": "/var/log/nginx/error.log",
-            "log_group_name": "/foo-www/var/log/nginx/error_log",
-            "log_stream_name": "{instance_id}"
-          },
-          {
-            "file_path": "/var/log/php-fpm/error.log",
-            "log_group_name": "/foo-www/var/log/php-fpm/error_log",
-            "log_stream_name": "{instance_id}"
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
-### IAMロール
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
-
-
-<br>
-
-## 10-02. CloudWatchメトリクス
+## 10. CloudWatchメトリクス
 
 ### CloudWatchメトリクスとは
 
@@ -1316,7 +1187,7 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 <br>
 
-## 10-03. CloudWatchログ
+## 10-02. CloudWatchログ
 
 ### CloudWatchログとは
 
@@ -1381,7 +1252,7 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 #### ▼ CloudWatchログエージェントとは
 
-インスタンス内で稼働するデーモンのこと。インスタンス内のデータを収集し、CloudWatchログに対して送信する。執筆時点（2020/10/05）では非推奨で、CloudWatchエージェントへの設定の移行が推奨されている。
+インスタンス内で稼働するデーモンのこと。インスタンス内のデータを収集し、CloudWatchログに対して送信する。執筆時点（2020/10/05）では非推奨で、cloudwatchエージェントへの設定の移行が推奨されている。
 
 #### ▼ ```/var/awslogs/etc/awslogs.conf```ファイル
 
@@ -1449,7 +1320,7 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 **＊例＊**
 
 ```bash
-# CloudWatchエージェントの再起動
+# cloudwatchエージェントの再起動
 # 注意: restartだとCloudWatchに反映されない時がある。
 $ service awslogs restart
 
@@ -1497,6 +1368,195 @@ fields @timestamp, @message, @logStream
 ```
 
 <br>
+
+
+## 10-03. cloudwatchエージェント
+
+### cloudwatchエージェントとは
+
+インスタンス系AWSリソース（EC2、ECS、EKS、Lambda）内で稼働するデーモンのこと。インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。多くの場合、インスタンス系リソースは基本的なメトリクスを収集するが、一部のメトリクス（例：EC2のメモリ使用率やストレージ使用率）やログそのものを収集しない。cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+> - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
+> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/
+
+<br>
+
+### セットアップ
+
+#### ▼ インストール
+
+```bash
+$ yum install amazon-cloudwatch-agent -y
+
+# カスタムメトリクスの収集のために、collectdパッケージを使用する場合
+$ yum install collectd -y
+```
+
+#### ▼ デーモン起動
+
+**＊例＊**
+
+```bash
+# EC2内にある設定ファイルを、cloudwatchエージェントに読み込ませる（再起動を含む）
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a fetch-config \
+    -m ec2 \
+    -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
+    -s
+    
+
+# プロセスのステータスを確認
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -m ec2 \
+    -a status
+```
+
+```bash
+# 設定ファイルが読み込まれたかを確認
+
+### cloudwatchエージェントのプロセスのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+### 設定ファイルの構文チェックのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+
+### OSの起動と同時に、エージェントが稼働するように設定されているかを確認
+$ systemctl list-unit-files --type=service
+```
+
+<br>
+
+### ```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイル
+
+#### ▼ ```config.json```ファイルとは
+
+cloudwatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に、実行される。設定ファイルは分割できる。設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。cloudwatchエージェントを使用して、CloudWatchにログファイルを送信するだけであれば、設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い。```run_as_user```には、プロセスのユーザー名（例：```cwagent```）を設定する。
+
+#### ▼ ```agent```セクション
+
+cloudwatchエージェント全体を設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、デフォルト値が適用される。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
+
+```yaml
+{
+  "agent": {
+    "run_as_user": "cwagent",
+    "metrics_collection_interval": 60,
+    # 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール
+    "credentials": "arn:aws:iam::<アカウントID>:role/<IAMロール名>"
+  }
+}
+```
+
+#### ▼ ```metrics```セクション
+
+AWSリソースが標準で収集しないカスタムメトリクスのデータポイントの収集について設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、何も設定されない。
+
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
+> - https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
+
+```yaml
+{
+  "agent": {
+    "run_as_user": "cwagent"
+  },
+  "metrics": {
+    # メトリクスの収集単位とする名前空間のユーザー定義名
+    "namespace": "CWAgent",
+    # メトリクスの収集単位とするディメンション
+    "aggregation_dimensions": [
+      [
+        "InstanceId"
+      ]
+    ],
+    # ディメンションのユーザー定義名
+    "append_dimensions": {
+      "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+      "ImageId": "${aws:ImageId}",
+      "InstanceId": "${aws:InstanceId}",
+      "InstanceType": "${aws:InstanceType}"
+    },
+    # メモリ上のバッファーの保存時間
+    "force_flush_interval": 60,
+    # 収集対象のカスタムメトリクスの一覧（collectdパッケージまたはStatsDパッケージを使用する場合）
+    "metrics_collected": {
+      # ディスク系
+      "disk": {
+        "measurement": [
+          # ディスク使用率
+          "used_percent"
+        ],
+        "metrics_collection_interval": 60,
+        "resources": [
+          "*"
+        ]
+      },
+      # メモリ系
+      "mem": {
+        "measurement": [
+          # メモリ使用率
+          "mem_used_percent"
+        ],
+        "metrics_collection_interval": 60
+      }
+    }
+  }
+}
+```
+
+#### ▼ ```logs```セクション
+
+ログの収集について設定する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
+
+**＊実装例＊**
+
+```yaml
+{
+  "agent": {
+    "run_as_user": "cwagent"
+  },
+  "logs": {
+    # メモリ上のバッファーの保存時間
+    "force_flush_interval": 60,
+    "logs_collected": {
+      "files": {
+        # 収集対象のログの一覧
+        "collect_list": [
+          {
+            # 収集対象のログのディレクトリ
+            "file_path": "/var/log/nginx/error.log",
+            # CloudWatchログ上でのロググループ名
+            "log_group_name": "/foo-www/var/log/nginx/error_log",
+            # CloudWatchログ上でのログストリーム名
+            "log_stream_name": "{instance_id}"
+          },
+          {
+            "file_path": "/var/log/php-fpm/error.log",
+            "log_group_name": "/foo-www/var/log/php-fpm/error_log",
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### IAMロール
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
+
+
+<br>
+
 
 ## 10-04. CloudWatchアラーム
 
