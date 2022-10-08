@@ -453,7 +453,7 @@ nav:
           - GitHub: version_control/version_control_git_github.md
 
   - 📊 統計分析:
-      - version_control/index.md
+      - statistic_analysis/index.md
       - R: statistic_analysis/statistic_analysis_r.md
 
   - 📢 過去の技術系プレゼン: presentation.md
