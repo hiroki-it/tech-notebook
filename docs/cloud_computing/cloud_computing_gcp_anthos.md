@@ -20,7 +20,6 @@ description: Anthos＠GCPの知見を記録しています。
 
 #### ▼ 構造
 
-
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
 
 > ℹ️ 参考：

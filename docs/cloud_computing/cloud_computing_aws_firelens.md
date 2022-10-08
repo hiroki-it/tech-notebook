@@ -82,13 +82,13 @@ FluentBitが対応する宛先にログをルーティングできる。
 
 #### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されている```conf```ファイルの設定をそのまま使用する場合は、こちらを採用する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。デフォルトで内蔵されている```conf```ファイルの設定を上書きしたい場合は、こちらを採用する。
 
 ```dockerfile
 FROM amazon/aws-for-fluent-bit:latest
@@ -106,7 +106,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ▼ ```container_definition.json```ファイル
 
-ECSタスクのコンテナ定義にて、アプリケーションコンテナとlog_routerコンテナを設定する。log_routerという名前以外を設定できないことに注意する。
+ECSタスクのコンテナ定義にて、アプリケーションコンテナと```log_router```コンテナを設定する。log_routerという名前以外を設定できないことに注意する。
 
 ```yaml
 [
@@ -340,7 +340,7 @@ AWSやDatadogにルーティングするための設定が必要である。も�
 }
 ```
 
-AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。なお、datadogプラグインはFluentBit自体にインストール済みである。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
@@ -360,7 +360,6 @@ AWSから提供されているベースイメージには、AWSリソースに�
 #### ▼ ```parser.conf```ファイルとは
 
 FireLensコンテナで処理中のログのキーの値を修正したい場合、```parser.conf```ファイルでPARSERセクションを設定する必要がある。
-
 
 #### ▼ PARSERセクション
 
@@ -474,3 +473,5 @@ FireLensコンテナで処理中のログのタグ名は『```<コンテナ名>-
     ...
     Streams_File stream_processor.conf
 ```
+
+<br>

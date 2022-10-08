@@ -344,7 +344,7 @@ title: 【IT技術の知見】目次
     > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
     > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
     > > * ##### <u>FluentBit/Fluentd</u>
-    > > > * ##### 📖 [FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_vs_fluentd.html)
+    > > > * ##### 📖 [FluentBit vs. Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html)
     > > > * ##### 📖 [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.html)
     > > * ##### <u>Grafana</u>
     > > > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)

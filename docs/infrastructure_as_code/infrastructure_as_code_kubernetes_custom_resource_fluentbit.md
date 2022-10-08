@@ -13,39 +13,7 @@ description: FluentBit＠カスタムリソースの知見を記録していま�
 
 <br>
 
-## 01. FluentBitの仕組み
-
-### ログパイプラインの構造
-
-![fluent-bit_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture.png)
-
-Fluentdから概念図を拝借した。プッシュ型で収集されたログはまずインプットされる。メモリやファイルをバッファーとして使用でき、ログはチャンクとしてステージに蓄えられる。ステージに一定サイズのチャンクが蓄えられるか、または一定時間が経過すると、チャンクはキューに格納される。キューは、指定された宛先にログを順番にルーティングする。プロセスが再起動されると、メモリ/ファイルに蓄えられたログは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
-
-<br>
-
-### バッファーの構造
-
-バッファーは、ステージとキューから構成される。ログは、『```*-*.*.flb```』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
-
-> ℹ️ 参考：https://www.alpha.co.jp/blog/202103_01
-
-![fluent-bit_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_architecture_buffer.png)
-
-<br>
-
-### 複数のログパイプラインの集約
-
-複数のFluentBitを稼働させる場合、アウトプット先がそれぞれのログパイプラインを受信してもよいが、前段にメッセージキューを配置しても良い。メッセージキューを配置することにより、ログパイプラインが乱雑せずに集約できるようになる。
-
-> ℹ️ 参考：https://www.forcia.com/blog/001316.html
-
-![fluent-bit_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_message-queue.png)
-
-<br>
-
-## 02. セットアップ
+## 01. セットアップ
 
 ### confファイル
 
@@ -103,7 +71,7 @@ $ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 
 <br>
 
-## 03. SERVICEセクション
+## 02. SERVICEセクション
 
 ### SERVICEとは
 
@@ -175,7 +143,7 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 03-02. INPUT
+## 02-02. INPUT
 
 ### INPUTとは
 
@@ -380,7 +348,7 @@ $ fluent-bit \
 
 <br>
 
-## 03-03. PARSER
+## 02-03. PARSER
 
 ### PARSERとは
 
@@ -392,7 +360,7 @@ $ fluent-bit \
 
 <br>
 
-## 03-04. FILTER
+## 02-04. FILTER
 
 ### FILTERとは
 
@@ -623,7 +591,7 @@ Fluent Bit v1.8.6
 
 <br>
 
-## 03-05. STREAM_TASK
+## 02-05. STREAM_TASK
 
 ### STREAM_TASKとは
 
@@ -700,7 +668,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 <br>
 
-## 03-06. BUFFER
+## 02-06. BUFFER
 
 ### BUFFERとは
 
@@ -780,7 +748,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 <br>
 
-## 03-07. ROUTING、OUTPUT
+## 02-07. ROUTING、OUTPUT
 
 ### ROUTING、OUTPUTとは
 

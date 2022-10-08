@@ -336,7 +336,7 @@ logs:
 
 FireLensコンテナで稼働するFluentBitが、Datadogにログを送信する。以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_vs_fluentd.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html
 
 <br>
 

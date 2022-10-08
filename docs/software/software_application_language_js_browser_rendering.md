@@ -104,7 +104,7 @@ document.write("JavaScriptを直接的に組み込んでいます。")
     ript>
 ```
 
-CDNの仕組みを使用して、Web上からリソースを取得もできる。
+CDN（グローバルなキャッシュサーバー）の仕組みを使用して、Web上からリソースを取得もできる。
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js" integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=" crossorigin="anonymous"></script>
