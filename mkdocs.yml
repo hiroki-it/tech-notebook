@@ -110,8 +110,6 @@ plugins:
 
 # ナビゲーション
 nav:
-  - 目次: index.md
-
   - 当サイトについて: about.md
 
   - 自己紹介: self_introduction.md
