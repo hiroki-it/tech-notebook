@@ -35,6 +35,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
+    - navigation.indexes
     - search.highlight
     - search.suggest
     - toc.follow
@@ -116,10 +117,12 @@ nav:
   - 自己紹介: self_introduction.md
 
   - 🌳 システム:
+      - system/index.md
       - システム: system/system.md
       - システム品質特性: system/system_quality_attributes.md
 
   - 🧬 ソフトウェア:
+      - testing/index.md
       - ソフトウェア: software/software.md
       - ■ 基本ソフトウェア（OS）:
           - ■ カーネル:
@@ -255,6 +258,7 @@ nav:
                   - パッケージ管理: software/software_application_language_python_package_management.md
 
   - 🧪 テスト:
+      - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
           - PHP: testing/testing_whitebox_php.md
@@ -266,15 +270,18 @@ nav:
               - JMeter: testing/testing_blackbox_system_test_jmeter.md
 
   - 💻 ハードウェア:
+      - hardware/index.md
       - ハードウェア: hardware/hardware.md
       - 組み込み機器: hardware/hardware_embedded_system.md
 
   - 🌏 ネットワーク:
+      - network/index.md
       - ネットワーク: network/network.md
       - TCP階層モデル: network/network_model_tcp.md
       - OSI参照モデル: network/network_model_osi.md
 
   - 🔐 セキュリティ:
+      - security/index.md
       - サイバー攻撃: security/security_cyber_attacks.md
       - 通信データの暗号化技術: security/security_encryption_technology.md
       - ■ 認証/認可:
@@ -282,6 +289,7 @@ nav:
           - 認可: security/security_auth_authorization.md
 
   - ⛅️ クラウドコンピューティング:
+      - cloud_computing/index.md
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
           - AWSリソース: cloud_computing/cloud_computing_aws.md
@@ -305,11 +313,13 @@ nav:
           - コマンド: cloud_computing/cloud_computing_gcp_command.md
           - Anthos: cloud_computing/cloud_computing_gcp_anthos.md
   - 📦 仮想化:
+      - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ型仮想化:
           - Docker: virtualization/virtualization_container_docker.md
 
   - ⚙️ IaC:
+      - infrastructure_as_code/index.md
       - IaC: infrastructure_as_code/infrastructure_as_code.md
       - ■ 手続き型:
           - ■ Ansible:
@@ -392,6 +402,7 @@ nav:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
   - ♾️ DevOps:
+      - devops/index.md
       - DevOps: devops/devops.md
       - GitHub Actions: devops/devops_github_actions.md
       - GitLab CI: devops/devops_gitlab_ci.md
@@ -407,6 +418,7 @@ nav:
           - コマンド: devops/devops_skaffold_command.md
 
   - 🔎 可観測性:
+      - observability/index.md
       - 可観測性: observability/observability.md
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
@@ -426,7 +438,9 @@ nav:
                   - ログ収集: observability/observability_telemetry_datadog_log.md
                   - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
+
   - 👥 ソフトウェア開発手法論/SREing:
+      - software_development_methodology/index.md
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
       - ■ SREing:
@@ -435,12 +449,13 @@ nav:
           - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
 
   - 🦶 バージョン管理:
+      - version_control/index.md
       - ■ Git:
           - コマンド: version_control/version_control_git_command.md
           - GitHub: version_control/version_control_git_github.md
 
   - 📊 統計分析:
+      - version_control/index.md
       - R: statistic_analysis/statistic_analysis_r.md
 
-  - 📢 過去の技術系プレゼン:
-      - 一覧: presentation.md
+  - 📢 過去の技術系プレゼン: presentation.md
