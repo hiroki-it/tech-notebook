@@ -2,8 +2,13 @@
 
 ## ♾️ DevOps
 
-* #### ︎<u>DevOps</u>
-  > * ##### 📖 [︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
+### DevOps 
+
+- 📖 [︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
+
+<br>
+
+### CIOps
 
 * #### <u>GitHub Actions</u>
   > * ##### 📖 [︎GitHub Actions](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_github_actions.html)
@@ -14,9 +19,6 @@
 * #### <u>Capistrano</u>
   > * ##### 📖 [︎Capistrano](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_capistrano.html)
 
-* #### <u>ArgoCD</u>
-  > * ##### 📖 [︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
-
 * #### <u>CircleCI</u>
   > * ##### 📖 [︎CircleCI](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci.html)
   > * ##### 📖 [︎config.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_circleci_config_yml.html)
@@ -26,5 +28,12 @@
 * #### <u>Skaffold</u>
   > * ##### 📖 [︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_yaml.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_skaffold_command.html)
+
+<br>
+
+### GitOps
+
+* #### <u>ArgoCD</u>
+  > * ##### 📖 [︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops_argocd.html)
 
 <br>

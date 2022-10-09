@@ -88,11 +88,12 @@ repository/
     │           │   └── client.go
     │           │
     │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
-    │           ... └── server.go
+    │           │   └── server.go
+    │           ...
     │
     ├── bar/ # マイクロサービス（Python製）
-    ... └── infrastructure
-            └── grpc
+    │   └── infrastructure
+    ...     └── grpc
                 ├── client/
                 │   └── client.py
                 │

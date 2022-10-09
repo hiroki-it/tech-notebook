@@ -132,7 +132,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 #### ▼ ローカルストレージ
 
-Prometheusは、ローカルの時系列データベースの```data```ディレクトリ配下に、収集した全てのメトリクスを保管する。収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
+Prometheusは、ローカルのTSDBの```data```ディレクトリ配下に、収集した全てのメトリクスを保管する。収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
@@ -166,7 +166,7 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 ...
 ```
 
-時系列データベースのディレクトリはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする（例：データポイントの収集間隔を長くする、不要なデータポイントの収集をやめる）と良い。
+TSDBのディレクトリはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする（例：データポイントの収集間隔を長くする、不要なデータポイントの収集をやめる）と良い。
 
 > ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
@@ -193,7 +193,7 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus_remote-storage.png)
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、時系列データベースとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部の時系列データベースの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ（AWS Timestream、Google Bigquery、VictoriaMetrics、...）に保管できる。remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『```https://<IPアドレス>/api/v1/write```』になる（ポート番号はリモートストレージごとに異なる）。Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 > ℹ️ 参考：
 >
