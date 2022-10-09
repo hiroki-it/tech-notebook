@@ -68,7 +68,7 @@ KubernetesのClusterやワーカーNodeからメトリクスを受信し、コ�
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
-#### ▼ Kubernetes+Istioの場合
+#### ▼ Kubernetes + Istioの場合
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on_kubernetes_istio.png)
 

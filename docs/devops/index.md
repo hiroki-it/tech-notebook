@@ -4,7 +4,7 @@
 
 ### DevOps 
 
-> * ##### 📖 [︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
+* ##### 📖 [︎DevOps](https://hiroki-it.github.io/tech-notebook-mkdocs/devops/devops.html)
 
 <br>
 
