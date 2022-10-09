@@ -17,8 +17,6 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 ### アーキテクチャ
 
-![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/falco_architecture.png)
-
 ワーカーNodeとコンテナの間のシステムコールを収集し、異常なシステムコールを検知すれば、これを通知する。
 
 
@@ -26,6 +24,8 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 >
 > - https://www.designet.co.jp/ossinfo/kubernetes/falco/
 > - https://sysdig.jp/blog/sysdig-contributes-falco-kernel-ebpf-cncf-2/
+
+![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/falco_architecture.png)
 
 <br>
 

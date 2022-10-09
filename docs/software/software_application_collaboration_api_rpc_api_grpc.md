@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】RPC-API＠アプリケーション連携
-description: RPC-API＠アプリケーション連携の知見を記録しています。
+title: 【IT技術の知見】gRPC＠RPC-API
+description: gRPC＠RPC-APIの知見を記録しています。
 ---
 
-# RPC-API＠アプリケーション連携
+# gRPC＠RPC-API
 
 ## はじめに
 

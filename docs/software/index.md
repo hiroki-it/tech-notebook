@@ -99,7 +99,8 @@
   > * ##### <u>RESTful-API</u>
   > > * ##### 📖 [︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
   > > * ##### 📖 [︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
-  > * ##### 📖 [︎RPC-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_rpc.html)
+  > * ##### <u>RPC-API</u>
+  > > * ##### 📖 [︎gRPC](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_rpc_api_grpc.html)
 
 <br>
 
