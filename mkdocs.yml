@@ -166,7 +166,7 @@ nav:
                       - ACID: software/software_middleware_database_rdb_rdbms_acid.md
                   - ■ My︎SQL:
                       - MySQL: software/software_middleware_database_rdb_mysql.md
-                      - クエリロジック: software/software_middleware_database_rdb_mysql_query.md
+                      - 設定ファイル: software/software_middleware_database_rdb_mysql_conf.md
               - ■ TSDB:
                   - ■ VictoriaMetrics:
                       - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
