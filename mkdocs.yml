@@ -137,7 +137,6 @@ nav:
               - 言語プロセッサ: software/software_basic_language_processor.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
       - ■ ミドルウェア:
-          - Linux系: software/software_middleware_linux.md
           - ■ Web系:
               - ■ Nginx:
                   - Nginx: software/software_middleware_web_nginx.md
