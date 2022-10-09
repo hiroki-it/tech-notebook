@@ -43,9 +43,11 @@ $ pip3 install ansible
 
 ### ディレクトリ構成ポリシー
 
+#### ▼ ```group_vars```ディレクトリの構成
+
 > ℹ️ 参考：
 >
-> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
@@ -59,10 +61,34 @@ repository/
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
 │
+...
+```
+
+#### ▼ ```host_vars```ディレクトリの構成
+
+> ℹ️ 参考：
+>
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+> - https://thinkit.co.jp/article/9871
+
+```yaml
+repository/
+├── playbook.yml
 ├── host_vars/
 │   ├── bar_host.yml
 │   └── baz_host.yml
 │   
+...
+```
+
+#### ▼ ```inventories```ディレクトリの構成
+
+> ℹ️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+
+```yaml
+repository/
+├── playbook.yml
 ├── inventories/
 │   ├── tes/ # テスト環境
 │   │   ├── hosts_a.yml # 冗長化されたサーバーa
@@ -71,18 +97,42 @@ repository/
 │   │
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
-│      
-└── roles/
-    ├── app/ # appサーバー
-    ├── common/ # 共通
-    │   ├── handlers/
-    │   │   └── main.yml
-    │   │   
-    │   ├── tasks/
-    │   └── templates/
-    │    
-    ├── db/ # dbサーバー
-    └── web/ # webサーバー
+│ 
+...
+```
+
+#### ▼ ```roles```ディレクトリの構成
+
+> ℹ️ 参考：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
+
+```yaml
+repository/
+├── playbook.yml
+├── roles/
+│   ├── app/ # appサーバー
+│   │   ├── files/
+│   │   │   └── foo.conf
+│   │   │
+│   │   ├── handlers/
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── meta/
+│   │   │   └── main.yml
+│   │   │  
+│   │   ├── tasks/
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── templates/
+│   │   │   └── foo.conf.j2
+│   │   │
+│   │   └── vars/
+│   │       └── main.yml
+│   │
+│   ├── common/ # 共通
+│   ├── db/ # dbサーバー
+│   └── web/ # webサーバー
+│
+...
 ```
 
 <br>

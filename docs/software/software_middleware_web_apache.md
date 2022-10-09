@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Apache＠ミドルウェア
-description: Apache＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Apache＠Web系ミドルウェア
+description: Apache＠Web系ミドルウェアの知見を記録しています。
 ---
 
-# Apache＠ミドルウェア
+# Apache＠Web系ミドルウェア
 
 ## はじめに
 

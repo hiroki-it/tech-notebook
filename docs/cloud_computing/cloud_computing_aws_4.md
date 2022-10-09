@@ -1150,7 +1150,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する。ただし、MySQ
 
 スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。スロークエリを検出する方法として、RDSの```long_query_time```パラメーターに基づいた検出や、```EXPLAIN```句による予想実行時間の比較などがある。ユニークキー、インデックス、```EXPLAIN```句、については以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_query.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf_query.html
 
 #### ▼ テーブルを正規化し過ぎない
 

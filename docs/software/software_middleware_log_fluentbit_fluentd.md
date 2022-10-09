@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠ミドルウェア
-description: FluentBit/Fluentd＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd＠ログ系ミドルウェア
+description: FluentBit/Fluentd＠ログ系ミドルウェアの知見を記録しています。
 ---
 
-# FluentBit/Fluentd＠ミドルウェア
+# FluentBit/Fluentd＠ログ系ミドルウェア
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: FluentBit/Fluentd＠ミドルウェアの知見を記録してい�
 
 ## 01. FluentBit/Fluentdの仕組み
 
-### 構造
+### アーキテクチャ
 
 ![fluent-bit_fluentd_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_fluentd_architecture.png)
 

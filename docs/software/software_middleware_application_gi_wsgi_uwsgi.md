@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】uWSGI＠ミドルウェア
-description: uWSGI＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】uWSGI＠アプリケーション系ミドルウェア
+description: uWSGI＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# uWSGI＠ミドルウェア
+# uWSGI＠アプリケーション系ミドルウェア
 
 ## はじめに
 

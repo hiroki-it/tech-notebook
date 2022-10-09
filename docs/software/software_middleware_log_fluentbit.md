@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit＠ミドルウェア
-description: FluentBit＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】FluentBit＠ログ系ミドルウェア
+description: FluentBit＠ログ系ミドルウェアの知見を記録しています。
 ---
 
-# FluentBit＠ミドルウェア
+# FluentBit＠ログ系ミドルウェア
 
 ## はじめに
 

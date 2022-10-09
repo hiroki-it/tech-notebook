@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】RDBMS＠RDB
-description: RDBMS＠RDBの知見を記録しています。
+title: 【IT技術の知見】RDBMS＠DB系ミドルウェア
+description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 ---
 
-# RDBMS＠ミドルウェア
+# RDBMS＠DB系ミドルウェア
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: RDBMS＠RDBの知見を記録しています。
 
 ## 01. RDBMS（関係DB管理システム）の仕組み
 
-### 構造
+### アーキテクチャ
 
 RDBMSは、DBエンジン、ストレージエンジン、から構成される。
 

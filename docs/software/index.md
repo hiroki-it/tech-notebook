@@ -30,9 +30,6 @@
 
 ### ミドルウェア
 
-* #### <u>Linux系</u>
-  > * ##### 📖 [︎︎Linux系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_linux.html)
-
 * #### <u>Web系</u>
   > * ##### <u>Nginx</u>
   > > * ##### 📖 [︎Nginx](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_web_nginx.html)
@@ -63,7 +60,7 @@
   > > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms_acid.html)
   > > * ##### <u>MySQL</u>
   > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql.html)
-  > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_query.html)
+  > > > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf.html)
   > * ##### <u>TSDB</u>
   > > * ##### <u>VictoriaMetrics</u>
   > > > * ##### 📖 [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics.html)
@@ -72,6 +69,10 @@
   > * ##### <u>FluentBit/Fluentd</u>
   > > * ##### 📖 [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit_fluentd.html)
   > > * ##### 📖 [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html)
+
+* #### <u>セキュリティ系</u>
+  > * ##### 📖 [︎︎Linux標準](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_security_linux.html)
+  > * ##### 📖 [Falco](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_security_falco.html)
 
 * #### <u>サービスメッシュ系</u>
   > * ##### 📖 [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh.html)

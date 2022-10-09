@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Linux系＠ミドルウェア
-description: Linux系＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Linux標準＠セキュリティ系ミドルウェア
+description: Linux標準＠セキュリティ系ミドルウェアの知見を記録しています。
 ---
 
-# Linux系＠ミドルウェア
+# Linux標準＠セキュリティ系ミドルウェア
 
 ## はじめに
 
@@ -13,15 +13,15 @@ description: Linux系＠ミドルウェアの知見を記録しています。
 
 <br>
 
-## 01. セキュリティ系
+## 01. SELinux：Security Enhanced Linux
 
-### SELinux：Security Enhanced Linux
-
-#### ▼ SELinuxとは
+### SELinuxとは
 
 Linuxにデフォルトで導入されているミドルウェアで、セキュリティを制御する。
 
-#### ▼ SELinuxの無効化
+<br>
+
+### SELinuxの無効化
 
 アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
 

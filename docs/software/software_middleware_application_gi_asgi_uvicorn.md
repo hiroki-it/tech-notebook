@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Uvicorn＠ミドルウェア
-description: Uvicorn＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Uvicorn＠アプリケーション系ミドルウェア
+description: Uvicorn＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# Uvicorn＠ミドルウェア
+# Uvicorn＠アプリケーション系ミドルウェア
 
 ## はじめに
 

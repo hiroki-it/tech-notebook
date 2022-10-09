@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GI：Gateway Interface＠ミドルウェア
-description: GI：Gateway Interface＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】GI：Gateway Interface＠アプリケーション系ミドルウェア
+description: GI：Gateway Interface＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# GI：Gateway Interface＠ミドルウェア
+# GI：Gateway Interface＠アプリケーション系ミドルウェア
 
 ## はじめに
 

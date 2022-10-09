@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Envoy＠サービスメッシュ
-description: Envoy＠サービスメッシュの知見を記録しています。
+title: 【IT技術の知見】Envoy＠サービスメッシュ系ミドルウェア
+description: Envoy＠サービスメッシュ系ミドルウェアの知見を記録しています。
 ---
 
-# Envoy＠サービスメッシュ
+# Envoy＠サービスメッシュ系ミドルウェア
 
 ## はじめに
 

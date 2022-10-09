@@ -1,5 +1,16 @@
 # 自己紹介
 
+## 目次 (Contents)
+
+- [👋🏻 はじめまして (About me)](#-はじめまして-about-me)
+- [🎯 関心のある技術領域 (Area of interest)](#-関心のある技術領域-area-of-interest)
+- [📚 知見の記録 (Knowledge)](#-知見の記録-Knowledge)
+- [🏭 練習用リポジトリ (Repositories)](#-練習用リポジトリ-repositories)
+- [💼 経歴、職歴 (Career)](#-経歴職歴-career)
+- [📢 過去の技術系プレゼン (Presentation)](#-過去の技術系プレゼン-presentation)
+
+<br>
+
 ## 👋🏻 はじめまして (About me)
 
 長谷川広樹と申します。<br>
@@ -24,8 +35,11 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 特に、**拡張性**、**保守性**、**可読性** を高める技術に関心が強いです。<br>
 <span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**)</span>
 
-▶ マイクロサービスアーキテクチャ、サービスメッシュ、DDD、クラウドインフラ、IaC、DevOps、など<br>
-<span style="font-size: 90%;">( Microservices architecture, Service mesh, DDD, Cloud infrastructure, IaC, DevOps, etc. )</span>
+- マイクロサービスアーキテクチャ (Microservices architecture)
+- サービスメッシュ (Service mesh)
+- DDD
+- クラウドインフラ (Cloud infrastructure)
+- IaC
 
 <br>
 
