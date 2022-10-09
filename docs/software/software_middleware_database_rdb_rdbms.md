@@ -29,15 +29,15 @@ RDBMSは、DBエンジン、ストレージエンジン、から構成される�
 
 #### ▼ MariaDB
 
-  MariaDBDBを管理できるRDBMS
+MariaDBDBを管理できるRDBMS
 
 #### ▼ MySQL
 
-  MySQLDBを管理できるRDBMS
+MySQLDBを管理できるRDBMS
 
 #### ▼ PostgreSQL
 
-  PostgreSQLDBを管理できるRDBMS
+PostgreSQLDBを管理できるRDBMS
 
 <br>
 
@@ -117,55 +117,43 @@ masterテーブルとtransactionテーブルがわかるようにする命名す
 
 まず、主キーが受注Noと商品IDの2つであることを確認。これらの主キーは、複合主キーではないとする。
 
-1. **エクセルで表を作成**
-
-   エクセルで作られた以下の表があると仮定。
+（１）エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。
 
 ![非正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/非正規形.png)
 
-2. **第一正規化（繰り返し要素の排除）**
+（２）第一正規化（繰り返し要素の排除）を実施する。レコードを1つずつに分割する。
 
-   レコードを1つずつに分割。
+![第一正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形.png)
 
-   ![第一正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形.png)
+（３）第二正規化（主キーの関数従属性を排除）を実施する。主キーと特定のカラムが連動する（関数従属性がある）場合、カラムを左表として独立させる。今回、主キーが2つあるので、まず受注Noから関数従属性を排除していく。受注Noと他3カラムが連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。
 
-3. **第二正規化（主キーの関数従属性を排除）**
+![第二正規形-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-1.png)
 
-   主キーと特定のカラムが連動する（関数従属性がある）場合、カラムを左表として独立させる。今回、主キーが2つあるので、まず受注Noから関数従属性を排除していく。受注Noと他3カラムが連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。
+（４）商品IDの関数従属性を排除していく。商品IDと他2カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。
 
-   ![第二正規形-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-1.png)
+![第二正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-2.png)
 
-   次に、商品IDの関数従属性を排除していく。商品IDと他2カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。
+![第二正規形-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-3.png)
 
-   ![第二正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-2.png)
-
-   ![第二正規形-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第二正規形-3.png)
-
-4. **第三正規化（主キー以外のカラムの関数従属性を排除）**
-
-   次に主キー以外のカラムの関係従属性を排除していく。上記で独立させた```3```個の表のうち、一番左の表で、顧客IDと顧客名に関数従属性があるので、顧客IDを新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。
+（５）第三正規化（主キー以外のカラムの関数従属性を排除）を実施する。 主キー以外のカラムの関係従属性を排除していく。上記で独立させた```3```個の表のうち、一番左の表で、顧客IDと顧客名に関数従属性があるので、顧客IDを新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。
 
 ![第三正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第三正規形-1.png)
 
 ![第三正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第三正規形-2.png)
 
-5. **まとめ**
-
-   主キーの関係従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関係従属性の排除によって、顧客IDを新しい主キーとした顧客表に分割できた。
+（６）主キーの関係従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関係従属性の排除によって、顧客IDを新しい主キーとした顧客表に分割できた。
 
 ![正規化後にどんな表ができるのか](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/正規化後にどんな表ができるのか.png)
 
 **＊例＊**
 
-1. **エクセルで表を作成**
-
-   以下のような表の場合、行を分割し、異なる表と見なす。
+（１）エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
 
 ![非正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/非正規形-2.png)
 
-2. **第一正規化（繰り返し要素の排除）**
+（２）第一正規化（繰り返し要素の排除）を実施する。
 
-   ![第一正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形-2.png)
+![第一正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形-2.png)
 
 <br>
 

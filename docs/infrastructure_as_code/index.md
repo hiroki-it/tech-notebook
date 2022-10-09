@@ -69,9 +69,9 @@
   > > > * ##### 📖 [︎Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.html)
   > > > * ##### 📖 [︎PromQL](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.html)
-  > > * ##### <u>SecretProviderClass</u>
-  > > > * ##### 📖 [︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class.html)
-  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.html)
+  > > * ##### <u>SecretsストアCSIドライバー</u>
+  > > > * ##### 📖 [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secrets_store_csi_driver.html)
+  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secrets_store_csi_driver_resource_definition.html)
 
 
 * #### <u>Packer</u>

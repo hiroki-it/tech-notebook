@@ -104,6 +104,8 @@ metadata:
 
 ### spec.group
 
+#### ▼ groupとは
+
 カスタムリソースが属するAPIグループの名前を設定する。例えば『```example.com```』というグループに定義とすると、```example.com/v1```というAPIからコールできるようになる。カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
 
 > ℹ️ 参考：
@@ -121,6 +123,8 @@ spec:
 ```
 
 ### spec.scope
+
+#### ▼ scopeとは
 
 カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
 
@@ -142,9 +146,13 @@ spec:
 
 ### spec.names
 
+#### ▼ namesとは
+
+カスタムリソースの様々な場面での名前を設定する。
+
 #### ▼ kind
 
-カスタムリソースの名前を設定する。例えば『```Foo```』という宣言名にすると、マニフェストファイルの```kind```キーで、```Foo```というカスタムリソース名で使用できるようになる。
+カスタムリソースの```kind```キー名を設定する。例えば『```Foo```』という宣言名にすると、マニフェストファイルの```kind```キーで、```Foo```というカスタムリソース名で使用できるようになる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
