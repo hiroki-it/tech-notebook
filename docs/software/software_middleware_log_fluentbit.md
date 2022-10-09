@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit＠カスタムリソース
-description: FluentBit＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】FluentBit＠ミドルウェア
+description: FluentBit＠ミドルウェアの知見を記録しています。
 ---
 
-# FluentBit＠カスタムリソース
+# FluentBit＠ミドルウェア
 
 ## はじめに
 

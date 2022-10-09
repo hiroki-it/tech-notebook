@@ -49,9 +49,6 @@
   > > > * ##### 📖 [︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
   > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
-  > > * ##### <u>FluentBit/Fluentd</u>
-  > > > * ##### 📖 [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.html)
-  > > > * ##### 📖 [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.html)
   > > * ##### <u>Grafana</u>
   > > > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
@@ -75,8 +72,6 @@
   > > * ##### <u>SecretProviderClass</u>
   > > > * ##### 📖 [︎SecretProviderClass](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.html)
-  > > * ##### <u>VictoriaMetrics</u>
-  > > > * ##### 📖 [︎VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.html)
 
 
 * #### <u>Packer</u>

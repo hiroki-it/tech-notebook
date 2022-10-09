@@ -1,10 +1,10 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠カスタムリソース
-description: VictoriaMetrics＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】VictoriaMetrics＠TSDB
+description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ---
 
-# VictoriaMetrics＠カスタムリソース
+# VictoriaMetrics＠TSDB
 
 ## はじめに
 

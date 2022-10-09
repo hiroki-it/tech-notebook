@@ -1,6 +1,6 @@
 ---
-title: 【IT技術の知見】MySQL＠ミドルウェア
-description: MySQL＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】MySQL＠RDB
+description: MySQL＠RDBの知見を記録しています。
 ---
 
 # MySQL

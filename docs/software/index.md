@@ -57,13 +57,21 @@
   > > > * ##### 📖 [︎Uvicorn](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_asgi_uvicorn.html)
 
 * #### <u>データベース系</u>
-  > * ##### <u>データベース</u>
+  > * ##### <u>RDB</u>
   > > * ##### <u>RDBMS</u>
-  > > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms.html)
-  > > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdbms_acid.html)
+  > > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms.html)
+  > > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms_acid.html)
   > > * ##### <u>MySQL</u>
-  > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html)
-  > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql_query.html)
+  > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql.html)
+  > > > * ##### 📖 [クエリロジック](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_query.html)
+  > * ##### <u>TSDB</u>
+  > > * ##### <u>VictoriaMetrics</u>
+  > > > * ##### 📖 [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics.html)
+
+* #### <u>ログ系</u>
+  > * ##### <u>FluentBit/Fluentd</u>
+  > > * ##### 📖 [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit_fluentd.html)
+  > > * ##### 📖 [︎FluentBit](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_log_fluentbit.html)
 
 * #### <u>サービスメッシュ系</u>
   > * ##### 📖 [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh.html)
@@ -91,6 +99,8 @@
   > > * ##### 📖 [︎RESTful-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html)
   > > * ##### 📖 [︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
   > * ##### 📖 [︎RPC-API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_rpc.html)
+
+<br>
 
 ### 言語
 
