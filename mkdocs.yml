@@ -160,13 +160,20 @@ nav:
               - ■ ASGI:
                   - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
           - ■ データベース系:
-              - ■ データベース:
+              - ■ RDB:
                   - ■ RDBMS:
-                      - RDBMS: software/software_middleware_database_rdbms.md
-                      - ACID: software/software_middleware_database_rdbms_acid.md
-              - ■ My︎SQL:
-                  - MySQL: software/software_middleware_database_mysql.md
-                  - クエリロジック: software/software_middleware_database_mysql_query.md
+                      - RDBMS: software/software_middleware_database_rdb_rdbms.md
+                      - ACID: software/software_middleware_database_rdb_rdbms_acid.md
+                  - ■ My︎SQL:
+                      - MySQL: software/software_middleware_database_rdb_mysql.md
+                      - クエリロジック: software/software_middleware_database_rdb_mysql_query.md
+              - ■ TSDB:
+                  - ■ VictoriaMetrics:
+                      - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
+          - ■ ログ系:
+              - ■ FluentBit/Fluentd:
+                   - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
+                   - FluentBit: software/software_middleware_log_fluentbit.md
           - ■ サービスメッシュ系:
               - サービスメッシュ: software/software_middleware_service_mesh.md
               - ■ Envoy:
@@ -356,9 +363,6 @@ nav:
                       - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
-                  - ■ FluentBit/Fluentd:
-                      - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_fluentd.md
-                      - FluentBit: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.md
                   - ■ Grafana:
                       - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
@@ -382,8 +386,6 @@ nav:
                   - ■ SecretProviderClass:
                       - SecretProviderClass: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.md
-                  - ■ VictoriaMetrics:
-                      - VictoriaMetrics: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.md
           - ■ Packer:
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
           - ■ Serverless Framework:
