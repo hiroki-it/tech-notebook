@@ -138,7 +138,7 @@ spec:
     # objectNameキーに、ARN（arn:aws:secretsmanager:ap-northeast-1:<アカウントID>:secret:<Secretストア名>）を指定しても良い。
     # その場合、objectTypeキーは不要になる。
     objects: |
-      - objectName: "foo-secret"
+      - objectName: "<Secret名>"
       - objectType: "secretsmanager"
 ```
 

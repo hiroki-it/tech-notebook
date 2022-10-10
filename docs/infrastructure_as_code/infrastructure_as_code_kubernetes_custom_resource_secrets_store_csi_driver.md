@@ -25,11 +25,18 @@ SecretsストアCSIドライバーは、CSIドライバー、CSIボリューム�
 
 #### ▼ CSIドライバーとは
 
-CSIドライバーは、SecretProviderClassで定義されたプロバイダーのAPIと通信し、プロバイダーのSecretのデータを参照する。その後、Secretを介さずにPodに直接的にマウントする。
-
-> ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 ![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/secrets-store-csi-volume.png)
+
+
+CSIドライバーは、SecretProviderClassで定義されたプロバイダーのAPIと通信し、プロバイダーのSecretのデータを参照する。その後、Secretを介さずにPodに直接的にマウントする。ExternalSecretsOperatorと比較して、Secretを作成しない点で脆弱性が高い一方で、Kubernetesとプロバイダーが密結合になってしまう。
+
+> ℹ️ 参考：
+> 
+> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
+> - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
+
 
 <br>
 
@@ -37,11 +44,8 @@ CSIドライバーは、SecretProviderClassで定義されたプロバイダー�
 
 #### ▼ CSIボリュームとは
 
-CSIの仕様によって標準化された外部ボリューム。プロバイダー上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。Secretの変数をボリュームに保存するため、ExternalSecretsOperatorと比較して、脆弱性が高い。
+CSIの仕様によって標準化された外部ボリューム。プロバイダー上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
 
-> ℹ️ 参考：
-> 
-> - https://thinkit.co.jp/article/17635
-> - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
+> ℹ️ 参考：https://thinkit.co.jp/article/17635
 
 <br>

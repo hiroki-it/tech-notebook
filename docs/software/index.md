@@ -17,10 +17,14 @@
 
 * #### <u>ユーティリティ</u>
   > * ##### 📖 [︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
-  > * ##### 📖 [︎パッケージ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package.html)
   > * ##### 📖 [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
   > * ##### 📖 [︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
   > * ##### 📖 [︎スクリプト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_script.html)
+  > * ##### <u>パッケージ</u>
+  > > * ##### 📖 [︎メモリ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_memory.html)
+  > > * ##### 📖 [︎ネットワーク系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_network.html)
+  > > * ##### 📖 [︎セキュリティ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_security.html)
+  > > * ##### 📖 [︎ストレージ系](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_storage.html)
 
 * #### <u>言語プロセッサー</u>
   > * ##### 📖 [︎言語プロセッサー](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_language_processor.html)

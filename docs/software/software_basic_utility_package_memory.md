@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パッケージ＠ユーティリティ
-description: パッケージ＠ユーティリティの知見を記録しています。
+title: 【IT技術の知見】メモリ系＠パッケージ
+description: メモリ系＠パッケージの知見を記録しています。
 ---
 
-# パッケージ＠ユーティリティ
+# メモリ系＠パッケージ
 
 ## はじめに
 
@@ -13,254 +13,7 @@ description: パッケージ＠ユーティリティの知見を記録してい�
 
 <br>
 
-## 01. dnsutils/bind-utils
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install dnsutils
-```
-
-```bash
-$ apt-get install dnsutils
-```
-
-#### ▼ yumリポジトリから
-
-```bash
-$ yum install -y bind-utils
-```
-
-<br>
-
-### nslookup
-
-#### ▼ nslookupとは
-
-正引き/逆引きによる名前解決を行う。もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。
-
-#### ▼ オプション無し
-
-> ℹ️ 参考：https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
-
-**＊例＊**
-
-```bash
-# 正引き
-$ nslookup google.co.jp
-
-# 非権威DNSサーバー（キャッシュDNSサーバー）からの返信
-Non-authoritative answer:
-Server:  UnKnown
-Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
-
-Name:  google.co.jp
-Addresses:  2404:6800:4004:80f::2003 # IPv6アドレス
-            172.217.175.3            # IPv4アドレス
-```
-
-```bash
-# 逆引き
-$ nslookup 172.217.175.3
-
-Server:  UnKnown
-Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
-
-Name:  nrt20s18-in-f3.1e100.net # IPv4アドレスにマッピングされたドメイン名
-Address:  172.217.175.3 # IPv4アドレス
-```
-
-権威DNSサーバーを使用して名前解決する場合、引数なしで```nslookup```コマンドを実行する。
-
-> ℹ️ 参考：
->
-> - http://linux.kororo.jp/cont/server/nslookup_dns.php
-> - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
-
-```bash
-$ nslookup
-
-# 入力を求められるため、権威DNSサーバーを指定する。
->  server ns1.google.com
-Default server: ns1.google.com
-Address: 216.239.32.10#53
-Default server: ns1.google.com
-Address: 2001:4860:4802:32::a#53
-
-# 入力を求められるため、権威DNSサーバーにドメインを問い合わせる。
-> google.co.jp
-Server:         ns1.google.com
-Address:        216.239.32.10#53
-
-Name:   google.co.jp
-Address: 142.251.42.131
-```
-
-#### ▼ -type
-
-正引き/逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
-
-**＊例＊**
-
-名前解決を行い、NSレコード値を返却させる。
-
-```bash
-$ nslookup -type=NS google.co.jp
-
-Non-authoritative answer:
-Server:  UnKnown
-Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
-
-google.co.jp    nameserver = ns3.google.com
-google.co.jp    nameserver = ns4.google.com
-google.co.jp    nameserver = ns2.google.com
-google.co.jp    nameserver = ns1.google.com
-
-ns1.google.com  AAAA IPv6 address = 2001:4860:4802:32::a
-ns2.google.com  AAAA IPv6 address = 2001:4860:4802:34::a
-ns3.google.com  AAAA IPv6 address = 2001:4860:4802:36::a
-ns4.google.com  AAAA IPv6 address = 2001:4860:4802:38::a
-ns1.google.com  internet address = 216.239.32.10
-ns2.google.com  internet address = 216.239.34.10
-ns3.google.com  internet address = 216.239.36.10
-ns4.google.com  internet address = 216.239.38.10
-(root)  ??? unknown type 41 ???
-```
-
-<br>
-
-## 02. net-tools
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install net-tools 
-```
-
-```bash
-$ apt-get install net-tools
-```
-
-#### ▼ yumリポジトリから
-
-```bash
-$ yum install -y net-tools 
-```
-
-<br>
-
-### 接続状態の一覧
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
-
-<br>
-
-### netstat
-
-#### ▼ -plunt
-
-オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。
-
-> ℹ️ 参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
-
-```bash
-$ netstat -plunt
-
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name     
-tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
-tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
-tcp6       0      0 :::9000                 :::*                    LISTEN      1/php-fpm: master p 
-tcp6       0      0 :::15020                :::*                    LISTEN      -
-```
-
-<br>
-
-## 03. pstree
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install pstree
-```
-
-```bash
-$ apt-get install pstree
-```
-
-<br>
-
-### pstreeとは
-
-プロセスの親子関係をツリー状に取得する。
-
-```bash
-# MacOSの場合
-$ pstree
-
--+= 00001 root /sbin/launchd
- |--= 00059 root /usr/sbin/syslogd
- |--= 00060 root /usr/libexec/UserEventAgent (System)
- |-+= 00062 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_ctl
- | \-+= 00286 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon
- |   |--- 00323 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon --scan-process
- |   |--- 00455 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_fcor
-...
-```
-
-<br>
-
-## 04. speedtest-cli
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install speedtest-cli
-```
-
-#### ▼ brewリポジトリから
-
-```bash
-$ brew install speedtest-cli
-```
-
-<br>
-
-### speedtest-cli
-
-SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
-
-> ℹ️ 参考：https://www.speedtest.net/ja
-
-```bash
-$ speedtest-cli
-
-Testing download 
-Download: 168.61 Mbit/s # ダウンロード速度
-
-Testing upload 
-Upload: 182.00 Mbit/s # アップロード速度
-```
-
-<br>
-
-## 05. supervisor
+## 01. supervisor
 
 ### インストール
 
@@ -278,7 +31,7 @@ $ pip3 install supervisor
 
 #### ▼ supervisor
 
-Python製のユーティリティである。プロセスをデーモン化し、一括で管理する。
+Python製のユーティリティである。メモリ上のプロセスをデーモン化し、一括で管理する。
 
 > ℹ️ 参考：
 >
@@ -382,7 +135,7 @@ user=root
 
 #### ▼ programセクションとは
 
-デーモンのプロセスを設定する。
+デーモン化されたプロセスを設定する。
 
 > ℹ️ 参考：
 >
@@ -535,149 +288,13 @@ $ supervisorctl update
 
 <br>
 
-## 06. sops
-
-### インストール
-
-#### ▼ brewリポジトリから
-
-```bash
-$ brew install sops
-```
-
-<br>
-
-### sopsの構成要素
-
-#### ▼ ```secrets.yaml```ファイル
-
-sopsによって暗号化されたファイルであり、疑似的なキーバリュー型ストレージを持つ。```sops```キー以下に暗号化の設定値が記載される。他の疑似的なキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドのキーバリュー型ストレージ（例：AWS パラメーターストア、など）よりも簡単に変数を管理できる。
-
-> ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
-
-```bash
-# values.yamlファイル（平文ファイル）
-$ cat values.yaml
-
-DB_USERNAME: foo-user
-DB_PASSWORD: password
-```
-
-```bash
-# 平文ファイルを暗号化する。
-$ sops -e values.yaml > secrets.yaml
-```
-
-```bash
-$ cat secrets.yaml
-
-# 疑似的なキーバリュー型ストレージ（AWS パラメーターストア、Hashicorp Vault、に相当する）
-DB_USERNAME: ENC[AES256...
-DB_PASSWORD: ENC[AES256...
-
-# sopsの暗号化の設定
-sops:
-    # AWS KMS
-    kms:
-      - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****
-        created_at: '2021-01-01T12:00:00Z'
-        enc: *****
-        aws_profile: ""
-    # GCP KMS
-    gcp_kms: []
-    # Azure Key Vault
-    azure_kv: []
-    # HashiCorp Vault
-    hc_vault: []
-    lastmodified: '2021-01-01T12:00:00Z'
-    mac: ENC[AES256...
-    pgp: []
-    unencrypted_suffix: _unencrypted
-    version: 3.6.1
-```
-
-
-#### ▼ ```.sops.yaml```ファイル
-
-```sops```コマンドのパラメーターを定義する。コマンドを実行するディレクトリに配置しておく必要がある。
-
-> ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
-
-```yaml
-creation_rules:
-    # 平文ファイル名を設定する。
-  - path_regex: ./foo/value\.yaml
-    # AWS KMSを暗号化キーとして使用する。
-    kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-```
-```yaml
-creation_rules:
-  # 平文ファイルを再帰的に指定できる。
-  - path_regex: ./bar/*\.yaml
-    # GCP KMSを暗号化キーとして使用する。
-    gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
-```
-
-```bash
-# ファイル名が path_regex=/foo/values.yaml のルールに該当するため、AWS KMSを使用して暗号化される。
-$ sops -e /foo/values.yaml
-```
-
-```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
-
-```bash
-$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-
-$ sops -e /foo/values.yaml
-```
-
-<br>
-
-### 環境変数
-
-```EnvVar```キーの定義された項目を参照せよ。
-
-> ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
-
-<br>
-
-### サブコマンド無し
-
-#### ▼ -d
-
-```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
-
-```bash
-$ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
-```
-
-#### ▼ -e
-
-外部の暗号化キー（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
-
-```bash
-# AWS KMSを暗号化キーとして使用する。
-$ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
-
-$ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.yamlファイル/.jsonファイル>
-```
-
-外部の暗号化キーを使用する場合、そのサービスの認証を済ませておく必要がある。
-
-```bash
-# AWS KMSを暗号化キーとして使用する場合
-Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
-```
-
-<br>
-
-## 07. systemctl：system control（旧service）
+## 02. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
 #### ▼ systemctl
 
-プロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
+メモリ上のプロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
 
 > ℹ️ 参考：
 >
@@ -1029,151 +646,7 @@ StandardError=file:/var/log/foo-service/stderr.log
 
 <br>
 
-## 08. tcpdump
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install tcpdump
-```
-
-```bash
-$ apt-get install tcpdump
-```
-
-#### ▼ yumリポジトリから
-
-```bash
-$ yum install -y tcpdump
-```
-
-<br>
-
-### tcpdumpとは
-
-今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。パケットの送信元と宛先がわかる。最初の３行はスリーウェイハンドシェイクを表す。
-
-> ℹ️ 参考：
->
-> - http://blog.livedoor.jp/sonots/archives/18239717.html
-> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
-
-```bash
-$ tcpdump
-
-[時間] IP [送信元IPアドレス].[シーケンス番号] > [宛先サーバー].[ポート番号]: [パケットの説明]
-```
-
-インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
-
-> ℹ️ 参考：https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
-
-**＊例＊**
-
-スリーウェイハンドシェイクのパケットの例。
-
-> ℹ️ 参考：https://please-sleep.cou929.nu/tcpdump-study-pt1.html
-
-```bash
-# クライアントからサーバーへのSYNCリクエスト
-09:36:20.760358 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [S], seq 2250708012, win 65535, options [mss 1460,nop,wscale 4,nop,nop,TS val 938288017 ecr 0,sackOK,eol], length 0
-
-# サーバーからクライアントへのACKリクエストとSYNリクエスト
-09:36:20.885412 IP 93.184.216.119.http > 10.0.1.23.65428: Flags [S.], seq 1676582138, ack 2250708013, win 14600, options [mss 1400,nop,nop,sackOK,nop,wscale 6], length 0
-
-# クライアントからサーバーへのACKリクエスト
-09:36:20.885482 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [.], ack 1, win 16384, length 0
-```
-
-<br>
-
-```awk```コマンドや```grep```コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。
-
-```bash
-$ tcpdump <コマンド/オプション> \
-    | awk -F ' ' '{print $3}' \
-    | grep <特定のIPアドレス>
-```
-
-<br>
-
-### -i <ネットワークインターフェース名>
-
-指定したネットワークインターフェースにて、パケットの内容を取得する。```-i```オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。
-
-> ℹ️ 参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
-
-```bash
-$ tcpdump -i eth0
-```
-
-<br>
-
-### -nn <プロトコル名>
-
-全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。
-
-> ℹ️ 参考：https://go-journey.club/archives/1472
-
-```bash
-$ tcpdump -nn ip
-```
-
-<br>
-
-### -nn
-
-#### ▼ port
-
-全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。
-
-> ℹ️ 参考：https://go-journey.club/archives/1472
-
-```bash
-$ tcpdump -nn port 80
-```
-
-<br>
-
-### dst
-
-#### ▼ dst
-
-パケットを宛先情報でフィルタリングし、パケットを取得する。
-
-> ℹ️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
-
-#### ▼ port
-
-指定したポート番号を宛先とするパケットのみを取得する。
-
-```bash
-$ tcpdump dst port 80
-```
-
-<br>
-
-### src
-
-#### ▼ src
-
-パケットを送信元情報でフィルタリングし、パケットを取得する。
-
-> ℹ️ 参考：https://orebibou.com/ja/home/201505/20150525_001/
-
-#### ▼ port
-
-指定したポート番号を送信元とするパケットのみを取得する。
-
-```bash
-$ tcpdump src port 80
-```
-
-<br>
-
-## 09. xclip
+## 03. xclip
 
 ### インストール
 
@@ -1213,7 +686,7 @@ $ yum install -y xclip
 
 **＊実行例＊**
 
-ファイルの内容をクリップボードにコピーする。
+ファイルの内容を、メモリ上のクリップボードにコピーする。
 
 ```bash
 $ cat foo.txt | xclip -selection clipboard
@@ -1221,7 +694,7 @@ $ cat foo.txt | xclip -selection clipboard
 
 **＊実行例＊**
 
-コマンドの実行結果をクリップボードにコピーする。
+コマンドの実行結果を、メモリ上のクリップボードにコピーする。
 
 ```bash
 $ ls -la | xclip -selection clipboard
@@ -1241,5 +714,4 @@ $ ls -la | xclip -selection clipboard
 $ xclip -selection clipboard -o > foo.txt
 ```
 
-
-<br>
+<br> 
