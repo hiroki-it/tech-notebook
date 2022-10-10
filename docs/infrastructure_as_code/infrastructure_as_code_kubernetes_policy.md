@@ -25,7 +25,7 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 ### アプリとIaCを同じリポジトリで管理
 
-アプリケーションと同じリポジトリにて、```kubernetes```ディレクトリを作成し、ここにマニフェストファイルを配置する。
+アプリケーションと同じリポジトリにて、```kubernetes```ディレクトリを作成し、ここにマニフェストを配置する。
 
 ```yaml
 repository/
@@ -77,7 +77,7 @@ repository/ # bazサービス
 
 #### ▼ マイクロサービス別
 
-マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに異なるマニフェストファイルを作成する。マニフェストの```apply```の順番を制御しにくいデメリットがある。
+マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに異なるマニフェストを作成する。```kubectl```コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/B08FZX8PYW
 
@@ -126,7 +126,7 @@ repository/
 
 #### ▼ ディレクトリ無し
 
-ディレクトリを作成しない。代わりに、マイクロサービス別にマニフェストファイルを作成し、関連する全てのKubernetesリソースをこの中で定義する。
+ディレクトリを作成しない。代わりに、マイクロサービス別にマニフェストを作成し、関連する全てのKubernetesリソースをこの中で定義する。
 
 ```yaml
 repository/
@@ -180,7 +180,7 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 <br>
 
-### マニフェストファイル
+### マニフェスト
 
 #### ▼ ファイル名
 
@@ -488,16 +488,16 @@ Secretの```data```キーには、```base64```方式でエンコードされた�
 
 ## 08. CIパイプライン
 
-### マニフェストファイルのホワイトボックステスト
+### マニフェストのホワイトボックステスト
 
 #### ▼ 静的解析
 
 | 観点            | 説明                                                                 | 補足                                                         |
 |---------------|--------------------------------------------------------------------| ------------------------------------------------------------ |
-| 文法の誤りテスト          | 外部の文法の誤りテストツール（（例：kubeconform）を使用して、マニフェストファイルの文法の誤りを検証する。          | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
+| 文法の誤りテスト          | 外部の文法の誤りテストツール（（例：kubeconform）を使用して、マニフェストの文法の誤りを検証する。          | ℹ️ 参考：https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06 |
 | ベストプラクティス違反テスト    | 外部のベストプラクティス違反テストツール（例：polaris）を使用して、チャートの実装方法に起因する脆弱性を検証する。                 | ℹ️ 参考：https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3 |
-| 非推奨apiVersionテスト  | 外部の非推奨apiVersionテストツール（例：pluto）を使用して、マニフェストファイルの非推奨apiVersionを検証する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
-| 脆弱性テスト            | 外部の脆弱性テストツール（例：trivy）を使用して、マニフェストファイルの実装方法に起因する脆弱性を検証する。                     | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
+| 非推奨apiVersionテスト  | 外部の非推奨apiVersionテストツール（例：pluto）を使用して、マニフェストの非推奨apiVersionを検証する。 | ℹ️ 参考：https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically |
+| 脆弱性テスト            | 外部の脆弱性テストツール（例：trivy）を使用して、マニフェストの実装方法に起因する脆弱性を検証する。                     | ℹ️ 参考：<br>・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 |
 
 <br>
 

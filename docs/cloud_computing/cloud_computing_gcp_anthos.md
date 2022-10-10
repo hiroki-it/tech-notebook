@@ -272,7 +272,7 @@ $ ./asmcli install \
     --output_dir ./tmp \
     --enable_all \
     --ca mesh_ca \
-    --custom_overlay ./foo/<IstioOperatorのマニフェストファイル>
+    --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
 #### ▼ GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
@@ -289,7 +289,7 @@ $ ./asmcli install \
     --output_dir ./tmp \
     --enable_all \
     --ca mesh_ca \
-    --custom_overlay ./foo/<IstioOperatorのマニフェストファイル>
+    --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
 #### ▼ 共通の事後処理

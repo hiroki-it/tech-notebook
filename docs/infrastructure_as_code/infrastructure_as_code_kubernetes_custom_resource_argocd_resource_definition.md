@@ -41,7 +41,7 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 $ kubectl create namespace argocd
 ```
 
-（３）マニフェストファイルを指定し、kube-apiserverに送信する。
+（３）マニフェストを指定し、kube-apiserverに送信する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -144,9 +144,9 @@ $ argocd repo add oci://<チャートレジストリ名> \
     --password $(aws ecr get-login-password --region ap-northeast-1)
 ```
 
-#### ▼ マニフェストファイル経由
+#### ▼ マニフェスト経由
 
-（７）```argocd```コマンドの代わりとして、マニフェストファイルでArgoCDを操作しても良い。
+（７）```argocd```コマンドの代わりとして、マニフェストでArgoCDを操作しても良い。
 
 ```bash
 $ kubectl apply -f application.yaml
@@ -254,9 +254,9 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 | 操作名       | 説明                                                                                                                                              |
 | ------------ |-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sync         | 監視対象リポジトリとのマニフェストファイルの差分を確認し、差分があれば```kubectl apply```コマンドを実行する。                                                                                |
-| Refresh      | 監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。                                                                                           |
-| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストファイルの差分を確認する。差分を確認するだけで、applyは実行しない。                                                         |
+| Sync         | 監視対象リポジトリとのマニフェストの差分を確認し、差分があれば```kubectl apply```コマンドを実行する。                                                                                |
+| Refresh      | 監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するだけで、applyは実行しない。                                                                                           |
+| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、監視対象リポジトリとのマニフェストの差分を確認する。差分を確認するだけで、applyは実行しない。                                                         |
 | Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するだけで、Kubernetesリソースを作成することはない。<br>ℹ️ 参考：https://twitter.com/reoring/status/1476046977599406087 |
 
 #### ▼ ヘルスステータスの種類
@@ -278,7 +278,7 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ignoreDifferencesとは
 
-特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。Sync後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストファイルの自動整形、など）の場合に使用する。
+特定のApplicationのSyncステータス（Synced、OutOfSync）の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。Sync後にKubernetesリソースが変化するような仕様（動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストの自動整形、など）の場合に使用する。
 
 > ℹ️ 参考：
 >
@@ -355,13 +355,13 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストファイルで```kubectl apply```コマンドを実行。
+マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストで```kubectl apply```コマンドを実行。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
-| リポジトリの種類                                   | 管理方法                     | マニフェストファイルのapply方法                                       |
+| リポジトリの種類                                   | 管理方法                     | マニフェストのapply方法                                       |
 |--------------------------------------------| ---------------------------- |----------------------------------------------------------|
-| マニフェストリポジトリ（GitHub）                        | マニフェストファイルそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
+| マニフェストリポジトリ（GitHub）                        | マニフェストそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
 | チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 | OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 
@@ -371,7 +371,7 @@ spec:
 
 #### ▼ directory
 
-監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のマニフェストファイルを指定できるようにする。
+監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のマニフェストを指定できるようにする。
 
 > ℹ️ 参考：
 >
@@ -380,9 +380,9 @@ spec:
 
 | 設定項目      | 説明                                                                                            |
 | ------------- |-----------------------------------------------------------------------------------------------|
-| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルのみを指定し、kube-apiserverに送信する                             |
-| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストファイルを除外し、kube-apiserverに送信する                                                  |
-| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストファイルを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
+| ```include``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する                             |
+| ```exclude``` | ```path```キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する                                                  |
+| ```recurse``` | ```path```キーで指定したディレクトリにサブディレクトリが存在している場合、全てのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -431,7 +431,7 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。各実行環境に、実行環境に対応したブランチを指定するマニフェストファイルを定義しておくと良い。これにより、各実行環境内のApplicationは特定のブランチのみを監視するようになる。
+監視対象のマニフェストリポジトリのブランチやバージョンタグを設定する。各実行環境に、実行環境に対応したブランチを指定するマニフェストを定義しておくと良い。これにより、各実行環境内のApplicationは特定のブランチのみを監視するようになる。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
 
@@ -765,7 +765,7 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Sync�
 
 | 設定項目         | 説明                                                         | 補足                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストファイルが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
+| ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるので、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning |
 | ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing |
 | ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
@@ -785,7 +785,7 @@ spec:
 
 #### ▼ syncOptions
 
-GitOpsでのマニフェストファイルのSync処理の詳細を設定する。
+GitOpsでのマニフェストのSync処理の詳細を設定する。
 
 > ℹ️ 参考：
 >

@@ -965,7 +965,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
-| 設定項目                        | 対応するdockerコマンドオプション        | 説明                                                       | 補足                                                         |
+| 設定項目                        | 対応する```docker```コマンドオプション        | 説明                                                       | 補足                                                         |
 | ------------------------------- | --------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
 | cpu                             | ```--cpus```                            | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。 | ℹ️ 参考：<br>・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment<br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247 |
 | dnsServers                      | ```--dns```                             | コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。 |                                                              |
@@ -1568,7 +1568,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
-（３）マニフェストファイルを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
+（３）マニフェストを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
@@ -1820,10 +1820,10 @@ source "${EXPORT_ENVS}"
 
 #### ▼ その他
 
-| アドオン名                 | タグ                                           | 値          | 説明                                                         |
-| -------------------------- | ---------------------------------------------- | ----------- | ------------------------------------------------------------ |
-| cluster-autoscalerアドオン | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerアドオンを使用する場合、cluster-autoscalerアドオンがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
-| 同上                       | ```k8s.io/cluster-autoscaler/enabled```        | ```true```  | 同上                                                         |
+| アドオン名              | タグ                                           | 値          | 説明                                                         |
+| ---------------------- | ---------------------------------------------- | ----------- | ------------------------------------------------------------ |
+| cluster-autoscaler | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
+| 同上                   | ```k8s.io/cluster-autoscaler/enabled```        | ```true```  | 同上                                                         |
 
 <br>
 

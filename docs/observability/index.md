@@ -2,9 +2,9 @@
 
 ## 🔎 可観測性
 
-* #### <u>可観測性</u>
-  > * ##### 📖 [︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html)
+### 可観測性、監視
 
+* #### 📖 [︎可観測性](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html)
 * #### <u>監視</u>
   > * ##### 📖 [︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html)
   > * ##### 📖 [︎オンコールとインシデント管理](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring_oncall_incident_management.html)
@@ -12,9 +12,7 @@
 
 ### テレメトリー収集ツール
 
-* #### <u>テレメトリー収集ツール</u>
-  > * ##### 📖 [テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
-
+* #### 📖 [テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
 * #### <u>Datadog</u>
   > * ##### 📖 [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html)
   > * ##### 📖 [︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_monitoring.html)

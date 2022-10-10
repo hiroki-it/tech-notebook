@@ -15,30 +15,36 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 ## 01. カーネルとは
 
-狭義のOSである。広義のOSは、ユーティリティや言語プロセッサーも含む基本ソフトウェア全体である。
+狭義のOSであり、ソフトウェア全体に関する様々な管理機能を持つ。広義のOSは、ユーティリティや言語プロセッサーも含む基本ソフトウェア全体である。
 
 <br>
 
-## 02. メモリ管理（記憶管理）
+## 02. メモリ管理
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
 
 <br>
 
-## 03. I/O（入出力）管理
+## 03. ストレージ管理
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_storage_management.html
+
+<br>
+
+## 04. I/O（入出力）管理
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_io_management.html
 
 <br>
 
-## 04. ジョブ管理
+## 05. ジョブ管理
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_job_management.html
 
 
 <br>
 
-## 05. タスク管理
+## 06. タスク管理
 
 ### タスク管理とは
 
@@ -89,11 +95,9 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 <br>
 
-## 06. その他の管理
+## 07. 通信管理
 
-### 通信管理
-
-#### ▼ 通信管理とは
+### 通信管理とは
 
 デバイスドライバーとミドルウェア間で実行されるデータ通信処理を管理する。
 
@@ -101,9 +105,9 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 <br>
 
-### 運用管理
+## 08. 運用管理
 
-#### ▼ 運用管理とは
+### 運用管理とは
 
 ミドルウェアやアプリケーションの運用処理（メトリクス収集、障害対応、記憶情報の保護）を管理する。
 
@@ -111,9 +115,9 @@ description: カーネル（制御プログラム）＠基本ソフトウェア�
 
 <br>
 
-### 障害管理
+## 09. 障害管理
 
-#### ▼ 障害管理とは
+### 障害管理とは
 
 ソフトウェアに障害が発生した時の障害修復を管理する。
 

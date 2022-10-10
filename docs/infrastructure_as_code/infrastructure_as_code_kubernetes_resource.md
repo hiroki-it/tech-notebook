@@ -24,7 +24,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 ### Kubernetesオブジェクト
 
-マニフェストファイルによって量産されたKubernetesリソースのインスタンスのこと。
+マニフェストによって量産されたKubernetesリソースのインスタンスのこと。
 
 > ℹ️ 参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
 
@@ -44,7 +44,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+ワーカーNode上のPodの個数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 > ℹ️ 参考：
 >
@@ -61,7 +61,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを扱う。
 
 > ℹ️ 参考：
 >
@@ -227,7 +227,7 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
+ワーカーNode上のPod数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
 > ℹ️ 参考：
 >
@@ -244,7 +244,7 @@ Podの鋳型として動作する。ReplicaSetは、PodTemplateを用いてPod�
 
 #### ▼ StatefulSetとは
 
-ReplicaSetを操作し、Podの個数を維持管理する。Podの負荷に合わせてPodを水平スケーリングしない（HorizontalPodAutoscalerが必要である）。Deploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
+ReplicaSetを操作し、Podの個数を維持管理する。Podの負荷に合わせてPodを自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。Deploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -774,43 +774,5 @@ Podの既存のストレージ領域をボリュームとし、コンテナに�
 
 <br>
 
-### HorizontalPodAutoscaler
 
-#### ▼ HorizontalPodAutoscalerとは
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
-
-Podの水平スケーリングを実施する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
-
-> ℹ️ 参考：
->
-> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
-> - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
-
-#### ▼ 最大Pod数の求め方
-
-オートスケーリング時の現在のPod数は、次の計算式で算出される。算出結果に基づいて、スケールアウト/スケールインが実行される。
-
-> ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
-
-```mathematica
-(必要な最大Pod数)
-= (現在のPod数) x (現在のPodのCPU平均使用率) ÷ (現在のPodのCPU使用率のターゲット値)
-```
-
-例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
-
-<br>
-
-### VerticalPodAutoscaler
-
-#### ▼ VerticalPodAutoscalerとは
-
-Podの垂直スケーリングを実行する。
-
-> ℹ️ 参考：
->
-> - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205
-> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
-
-<br>

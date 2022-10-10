@@ -279,7 +279,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 
 #### ▼ mutating-admissionステップのAdmissionResponse
 
-webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストファイルのpatch処理の定義方法は、JSON Patchツールに依存している。
+webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。
 
 > ℹ️ 参考：
 >
@@ -357,29 +357,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 <br>
 
-## 02. cluster-autoscalerアドオン
-
-### cluster-autoscalerアドオンとは
-
-![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
-
-ワーカーNodeの水平スケーリングを実行する。metrics-serverから取得したPodの最大リソース消費量（```spec.resources```キーの合計値）と、ワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればワーカーNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。コントロールプレーンに配置することが推奨されている。
-
-> ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
-
-<br>
-
-### クラウドプロバイダー別
-
-#### ▼ AWSの場合
-
-AWSの場合、cluster-autoscalerアドオンの代わりにKarpenterを使用できる。
-
-> ℹ️ 参考：https://sreake.com/blog/learn-about-karpenter/
-
-<br>
-
-## 03. cniアドオン
+## 02. cniアドオン
 
 ### cniアドオンとは
 
@@ -437,7 +415,7 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 <br>
 
-## 04. core-dnsアドオン（旧kube-dns）
+## 03. core-dnsアドオン（旧kube-dns）
 
 ### core-dnsアドオンとは
 
@@ -472,59 +450,9 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 <br>
 
-## 05. metrics-server
 
-### metrics-serverとは
 
-KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングしつつ、収集したメトリクスを独自APIで公開する。クライアント（```kubectl```コマンド実行者、Kubernetesリソース）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
-
-<br>
-
-### metrics-serverの仕組み
-
-#### ▼ 構造
-
-metrics-serverは、拡張apiserver、ローカルストレージ、スクレイパー、から構成される。
-
-> ℹ️ 参考：
->
-> - https://speakerdeck.com/bells17/metrics-server?slide=20
-> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
-
-![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_metrics-server.png)
-
-#### ▼ 拡張apiserver
-
-ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、Kubernetesリソース）からのリクエストを受信し、メトリクスのデータポイントのレスポンスを返信する。データポイントはローカルストレージに保管している。
-
-> ℹ️ 参考：
-> 
-> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
-> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
-
-クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
-
-```bash
-# ワーカーNodeのメトリクスを取得
-$ kubectl top node
- 
-# Podのメトリクスを取得
-$ kubectl top pod -n <任意のNamespace>
-```
-
-クライアントがKubernetesリソースの場合は、Podのオートスケーリングを行うもの（例：HorizontalPodAutoscaler、VerticalPodAutoscaler）がメトリクスのデータポイントを収集するためにリクエストを送信する。
-
-#### ▼ ローカルストレージ
-
-メトリクスのデータポイントを保存する。
-
-#### ▼ スクレイパー
-
-対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。スクレイピングのために、ServiceAccountとClusterRoleを作成する必要がある。
-
-<br>
-
-## 06. AWS EKSアドオン
+## 04. AWS EKSアドオン
 
 ### AWS EKSアドオンとは
 

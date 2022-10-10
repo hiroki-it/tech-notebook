@@ -101,7 +101,7 @@ $ etcd \
     --cert-file=/etc/kubernetes/pki/etcd/server.crt \
     # HTTPSリクエストを送信するためのクライアント証明書
     --client-cert-auth=true \
-    # マニフェストファイルを保管するローカルストレージ
+    # マニフェストを保管するローカルストレージ
     --data-dir=/var/lib/etcd \
     --initial-advertise-peer-urls=https://*.*.*.*:2380 \
     --initial-cluster=foo-node=https://*.*.*.*:2380 \
@@ -353,7 +353,7 @@ $ kube-controller-manager \
 
 #### ▼ kube-controllerとは
 
-マニフェストファイルとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
+マニフェストとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
 
 > ℹ️ 参考：
 >
@@ -424,19 +424,6 @@ $ kube-scheduler \
 
 <br>
 
-### descheduler
-
-#### ▼ deschedulerとは
-
-kube-schedulerは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した後、ワーカーNodeが復旧したとしても、Podが元のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをJobとして起動させ、Podを自動的に再スケジュールする。
-
-> ℹ️ 参考：
->
-> - https://torumakabe.github.io/post/k8s_descheduler/
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
-
-<br>
-
 ## 03. Nodeコンポーネント
 
 ### Nodeコンポーネントとは
@@ -501,7 +488,7 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 ### ワーカーNodeのオートスケーリング
 
-KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerアドオンを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
+KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
 > ℹ️ 参考：
 >
@@ -897,4 +884,3 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 ```
 
 <br>
-

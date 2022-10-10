@@ -437,7 +437,7 @@ webhooks:
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストファイルの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。
+```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。
 
 > ℹ️ 参考：
 >
@@ -555,7 +555,7 @@ spec:
     "op": "add",
     # spec.initContainers[1] を指定する。
     "path": "/spec/initContainers/1",
-    # マニフェストファイルに追加される構造を表す。
+    # マニフェストに追加される構造を表す。
     "value": {
         "name": "istio-init",
         "resources": {}
@@ -565,7 +565,7 @@ spec:
     "op": "add",
     # spec.containers[1] を指定する。
     "path": "/spec/containers/1",
-    # マニフェストファイルに追加される構造を表す。
+    # マニフェストに追加される構造を表す。
     "value": {
         "name": "istio-proxy",
         "resources": {}

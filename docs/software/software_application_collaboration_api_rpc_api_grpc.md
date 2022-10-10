@@ -53,11 +53,12 @@ repository/
 │   │       └── foo.proto # fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー
 │   │
 │   ├── bar/
-│   ... ├── client/
-│       │   └── bar.proto
-│       │
-│       └── server/
-│           └── bar.proto
+│   │   ├── client/
+│   │   │   └── bar.proto
+│   │   │
+│   │   └── server/
+│   │       └── bar.proto
+│   ...
 │
 ├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
 │   ├── foo/ # マイクロサービス
@@ -65,6 +66,7 @@ repository/
 │   │
 │   ├── bar/
 │   │   └── bar.html
+│   │
 │   ...
 │
 └── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
@@ -73,6 +75,7 @@ repository/
     │
     ├── bar/
     │   └── bar.pb.py
+    │
     ...
 ```
 
@@ -89,16 +92,19 @@ repository/
     │           │
     │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
     │           │   └── server.go
+    │           │
     │           ...
     │
     ├── bar/ # マイクロサービス（Python製）
     │   └── infrastructure
-    ...     └── grpc
-                ├── client/
-                │   └── client.py
-                │
-                ├── server/
-                ... └── server.py
+    │     └── grpc
+    │           ├── client/
+    │           │   └── client.py
+    │           │
+    │           ├── server/
+    │           │   └── server.py
+    │           │
+    ...         ...
 ```
 
 <br>

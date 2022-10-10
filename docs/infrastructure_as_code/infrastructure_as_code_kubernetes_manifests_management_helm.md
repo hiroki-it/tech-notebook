@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Helm
-description: Helmの知見を記録しています。
+title: 【IT技術の知見】Helm＠マニフェスト管理
+description: Helm＠マニフェスト管理の知見を記録しています。
 ---
 
-# Helm
+# Helm＠マニフェスト管理
 
 ## はじめに
 
@@ -19,13 +19,21 @@ description: Helmの知見を記録しています。
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/helm_architecture.png)
 
-Helmは、パッケージマネージャーとしてのHelmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。Helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。これにより、Kubernetes上にKubernetesリソースが作成される。
+Helmは、helmクライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、から構成される。
 
 > ℹ️ 参考：
 >
 > - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
 > - https://helm.sh/ja/docs/glossary/
 > - https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
+
+<br>
+
+### helmクライアント
+
+#### ▼ helmクライアントとは
+
+helmクライアントは、リポジトリからインストールしたチャートアーカイブに基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。これにより、Kubernetes上にKubernetesリソースが作成される。
 
 <br>
 
@@ -94,7 +102,7 @@ repository/ # チャートリポジトリ
 
 #### ▼ チャートとは
 
-必要なKubernetesリソースを作成するためのマニフェストファイルのセットのこと。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
+必要なKubernetesリソースを作成するためのマニフェストのセットをパッケージ化し、管理しやすくしたもの。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
 
 > ℹ️ 参考：
 >
@@ -416,7 +424,7 @@ ServiceAccountの作成を有効化する。
 
 ### アクションとは
 
-テンプレートからマニフェストファイルを作成するために必要な機能を提供する。
+テンプレートからマニフェストを作成するために必要な機能を提供する。
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -531,7 +539,7 @@ metadata:
 
 #### ▼ metadataキーで使用する場合の注意点
 
-マニフェストファイルの```metadata```キーの値には文字列しか設定できない。```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。そのため、metadataキーの値にint型を出力しようとしてエラーになる。int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うと良い。
+マニフェストの```metadata```キーの値には文字列しか設定できない。```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。そのため、metadataキーの値にint型を出力しようとしてエラーになる。int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うと良い。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
@@ -539,7 +547,7 @@ metadata:
 # values.yamlファイル
 metadata:
   labels:
-    # マニフェストファイルで、int型で出力しようとする。
+    # マニフェストで、int型で出力しようとする。
     id: "1"
 ```
 

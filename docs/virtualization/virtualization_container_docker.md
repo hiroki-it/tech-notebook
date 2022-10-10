@@ -71,7 +71,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 #### ▼ dockerクライアントとは
 
-dockerクライアントは、dockerコマンドを使用してdockerデーモンAPIをコールできる。
+dockerクライアントは、```docker```コマンドを使用してdockerデーモンAPIをコールできる。
 
 > ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
 
@@ -83,7 +83,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 #### ▼ dockerデーモンとは
 
-ホスト側に常駐し、コンテナの操作を担うデーモン。dockerクライアントにdockerデーモンAPIを公開する。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+ホスト側に常駐し、コンテナの操作を担うデーモン。dockerクライアントにdockerデーモンAPIを公開する。クライアントが```docker```コマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
 

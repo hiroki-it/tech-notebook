@@ -133,12 +133,12 @@ $ istioctl x uninstall --purge
 
 #### ▼ -f
 
-IstioOperatorのマニフェストファイルをkube-apiserverに送信し、リソースを作成する。
+IstioOperatorのマニフェストをkube-apiserverに送信し、リソースを作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
-$ istioctl install -y -f <IstioOperatorのマニフェストファイルへのパス>
+$ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 ```
 
 #### ▼ --set
@@ -168,7 +168,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストファイルへの�
 
 #### ▼ -f
 
-指定したマニフェストファイルのPodに```istio-proxy```コンテナを注入する。
+指定したマニフェストのPodに```istio-proxy```コンテナを注入する。
 
 ```bash
 $ istioctl kube-inject -f pod.yaml
@@ -185,7 +185,7 @@ ymlファイルの差分を取得する。
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
-$ istioctl manifest diff <変更前マニフェストファイルへのパス> <変更後マニフェストへのパス>
+$ istioctl manifest diff <変更前マニフェストへのパス> <変更後マニフェストへのパス>
 ```
 
 <br>

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kustomize＠Iac
-description: Kustomize＠Iacの知見を記録しています。
+title: 【IT技術の知見】Kustomize＠マニフェスト管理
+description: Kustomize＠マニフェスト管理の知見を記録しています。
 ---
 
-# Kustomize＠Iac
+# Kustomize＠マニフェスト管理
 
 ## はじめに
 

@@ -25,9 +25,9 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 ### 各Applicationを同じリポジトリで管理（推奨）
 
-#### ▼ Kubernetesリソースのマニフェストファイルを監視する場合
+#### ▼ Kubernetesリソースのマニフェストを監視する場合
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストファイルやhelmチャートが管理されている。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
@@ -52,7 +52,7 @@ k8s-repository/
 └── prd/
 ```
 
-#### ▼ Applicationのマニフェストファイルを監視する場合
+#### ▼ Applicationのマニフェストを監視する場合
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
 
@@ -72,7 +72,7 @@ parent-argocd-repository/
 ```yaml
 # 子Application
 child-argocd-repository/
-├── tes/ # マニフェストファイルやチャートを監視する。
+├── tes/ # マニフェストやチャートを監視する。
 │   ├── app
 │   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
 │   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視

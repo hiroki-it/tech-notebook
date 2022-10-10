@@ -39,6 +39,8 @@ I/Oは、文脈によって意味合いが異なる。
 
 > ℹ️ 参考：https://dev-labo.com/aws/difference-iops-throughput/
 
+<br>
+
 ## 02. 標準入出力
 
 ### stdin（標準入力）

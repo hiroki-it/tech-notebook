@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Minikube＠Kubernetes
-description: Minikube＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】Minikube＠開発環境
+description: Minikube＠開発環境の知見を記録しています。
 ---
 
-# Minikube＠Kubernetes
+# Minikube＠開発環境
 
 ## はじめに
 

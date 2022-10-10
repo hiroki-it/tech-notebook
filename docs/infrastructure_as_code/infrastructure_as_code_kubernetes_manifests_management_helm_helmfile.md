@@ -103,7 +103,7 @@ releases:
 
 #### ▼ namespace
 
-チャートをインストールするNamespaceを設定する。各マニフェストファイルで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。ただし、マニフェストファイル側だけしか見ていないと、Namespaceが指定されていないように見えるので、注意が必要である。
+チャートをインストールするNamespaceを設定する。各マニフェストで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるので、注意が必要である。
 
 ```yaml
 releases:
@@ -284,12 +284,12 @@ $ helmfile diff
 
 #### ▼ grepとの組み合わせ
 
-マニフェストファイルの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。```grep```を使用して、差分のあるリソースやファイルを確認しておく。
+マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。```grep```を使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
 $ helmfile diff | grep kind
 
-# 差分のあるマニフェストファイルのkindキーのみを取得する。
+# 差分のあるマニフェストのkindキーのみを取得する。
 kind: Service
 kind: Deployment
 kind: PersistentVolume
@@ -298,7 +298,7 @@ kind: PersistentVolume
 ```bash
 $ helmfile diff | grep Source
 
-# 差分のあるマニフェストファイルのkindキーのみを取得する。
+# 差分のあるマニフェストのkindキーのみを取得する。
 Source: project/manifests/service.yaml
 Source: project/manifests/deployment.yaml
 Source: project/manifests/persistent-volume.yaml

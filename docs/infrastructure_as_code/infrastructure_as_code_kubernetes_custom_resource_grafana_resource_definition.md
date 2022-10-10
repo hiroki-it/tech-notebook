@@ -73,7 +73,7 @@ Grafanaのダッシュボードである。ConfigMapの```data```キーにダッ
 
 #### ▼ grafanaチャートの場合
 
-grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェストファイル化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
+grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
 
 > ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
@@ -135,7 +135,7 @@ kube-prometheus-stackチャートでは、prometheusのチャートの他、graf
       labelValue: "1"
 ```
 
-そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストファイルから作成したダッシュボードは、GUIからは削除できないようになっている。
+そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
 
 > ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 

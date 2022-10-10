@@ -25,7 +25,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 <br>
 
-## 02. dockerコマンド
+## 02. ```docker```コマンド
 
 ### attach
 
@@ -568,7 +568,7 @@ $ docker stop $(docker ps --all --quiet)
 
 #### ▼ create
 
-ボリュームマウントを作成する。dockerコマンドではなく、docker-composeコマンドで作成することが推奨されている。
+ボリュームマウントを作成する。```docker```コマンドではなく、docker-composeコマンドで作成することが推奨されている。
 
 **＊例＊**
 

@@ -102,7 +102,7 @@ $ minikube start --cni=bridge
 
 #### ▼ configとは
 
-minikubeコマンドに関するパラメーターを操作する。
+```minikube```コマンドに関するパラメーターを操作する。
 
 #### ▼ set
 
@@ -163,7 +163,7 @@ $ minikube dashboard
 
 #### ▼ docker-envとは
 
-ホストでdockerコマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
+ホストで```docker```コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
