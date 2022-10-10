@@ -356,7 +356,7 @@ nav:
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
               - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
               - リソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.md
-              - Secret管理:
+              - ■ Secret管理:
                   - ■ SecretsストアCSIドライバー:
                       - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver_resource_definition.md
