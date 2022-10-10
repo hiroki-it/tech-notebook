@@ -476,7 +476,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 ### metrics-serverとは
 
-KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングするためのAPIとして動作する。kube-apiserverは、メトリクスのリクエストをmetrics-serverにプロキシする。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングしつつ、収集したメトリクスを独自APIで公開する。クライアント（```kubectl```コマンド実行者、Kubernetesリソース）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
 <br>
 
@@ -495,7 +495,7 @@ metrics-serverは、拡張apiserver、ローカルストレージ、スクレイ
 
 #### ▼ 拡張apiserver
 
-ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、Kubernetesリソース）からのリクエストを受信し、メトリクスの時系列データのレスポンスを返信する。時系列データはローカルストレージに保管している。
+ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、Kubernetesリソース）からのリクエストを受信し、メトリクスのデータポイントのレスポンスを返信する。データポイントはローカルストレージに保管している。
 
 > ℹ️ 参考：
 > 
@@ -516,17 +516,7 @@ $ kubectl top pod -n <任意のNamespace>
 
 #### ▼ ローカルストレージ
 
-メトリクスを時系列データとして保存する。TSDBとして、独自DBを使用している。データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていないため、データソース型モデルと仮定してテーブル例を示す。
-
-| timestamp  | cluster     | namespace     | ... | cpu | memory |
-|------------|-------------|---------------|-----|-----|--------|
-| ```2022-01-01``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```10```  | ```10``` |
-| ```2022-01-02``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```20```  | ```30``` |
-
-> ℹ️ 参考：
->
-> - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
-> - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
+メトリクスのデータポイントを保存する。
 
 #### ▼ スクレイパー
 

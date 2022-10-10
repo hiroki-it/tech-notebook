@@ -90,7 +90,7 @@ $ terraform apply \
     -target=<resourceタイプ>.<resourceブロック名>
 ```
 
-```module```ブロックを使用している場合、指定の方法が異なる。
+```module```ブロックを採用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform apply \

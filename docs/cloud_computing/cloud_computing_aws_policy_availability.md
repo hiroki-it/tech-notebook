@@ -19,6 +19,8 @@ description: 可用性＠AWSの知見を記録しています。
 
 メインリージョンで障害が起こった場合に、システムの利用可能な時間をできるだけ長くできる（可用性を高められる）ように、災害復旧用リージョンを用意しておく。
 
+<br>
+
 ### バックアップリストア構成
 
 ![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dr-architecture_backup-restore.png)

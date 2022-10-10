@@ -188,27 +188,7 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 <br>
 
-## 03. tcpdump
-
-### インストール
-
-#### ▼ aptリポジトリから
-
-```bash
-$ apt install tcpdump
-```
-
-```bash
-$ apt-get install tcpdump
-```
-
-#### ▼ yumリポジトリから
-
-```bash
-$ yum install -y tcpdump
-```
-
-## 04. speedtest-cli
+## 03. speedtest-cli
 
 ### インストール
 
@@ -226,7 +206,7 @@ $ brew install speedtest-cli
 
 <br>
 
-### speedtest-cli
+### speedtest-cliとは
 
 SPEEDTESTのAPIを使用して、ダウンロード（下り）とアップロード（上り）の通信速度を解析する。
 
@@ -240,6 +220,28 @@ Download: 168.61 Mbit/s # ダウンロード速度
 
 Testing upload 
 Upload: 182.00 Mbit/s # アップロード速度
+```
+
+<br>
+
+## 04. tcpdump
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+```bash
+$ apt install tcpdump
+```
+
+```bash
+$ apt-get install tcpdump
+```
+
+#### ▼ yumリポジトリから
+
+```bash
+$ yum install -y tcpdump
 ```
 
 <br>
@@ -366,4 +368,4 @@ $ tcpdump src port 80
 
 <br>
 
-## 
+

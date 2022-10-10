@@ -132,7 +132,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 #### ▼ ローカルストレージ
 
-Prometheusは、ローカルのTSDBの```data```ディレクトリ配下に、収集した全てのメトリクスを保管する。収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
+Prometheusは、```data```ディレクトリ配下をTSDBとして、収集した全てのメトリクスを保管する。収集したメトリクスをデフォルトで```2```時間ごとにブロック化し、```data```ディレクトリ配下に配置する。現在処理中のブロックはメモリ上に保持されており、同時にストレージの```/data/wal```ディレクトリにもバックアップとして保存される（ちなみにRDBMSでは、これをジャーナルファイルという）。これにより、Prometheusで障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/storage/#local-storage
 
@@ -184,6 +184,20 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
 drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 ```
+
+#### ▼ 独自TSDB
+
+Prometheusでは、独自のTSDB（```data```ディレクトリ配下）を採用している。データソース型モデルとメトリクス型モデルがあり、Prometheusではいずれを採用しているのかの記載が見つかっていないため、データソース型モデルと仮定してテーブル例を示す。
+
+| timestamp  | cluster     | namespace     | ... | cpu | memory |
+|------------|-------------|---------------|-----|-----|--------|
+| ```2022-01-01``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```10```  | ```10``` |
+| ```2022-01-02``` | ```foo-cluster``` | ```foo-namespace``` | ... | ```20```  | ```30``` |
+
+> ℹ️ 参考：
+>
+> - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
+> - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
 
 <br>
 
