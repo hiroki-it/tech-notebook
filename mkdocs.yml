@@ -74,10 +74,10 @@ extra_css:
 markdown_extensions:
   # コードブロックのハイライト化
   - pymdownx.highlight:
-        # highlight.jsを使用する場合は、falseにする。
-        use_pygments: true
-        # pygmentsのテーマ名は以下で選択できるが、機能しない...
-        # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
+      # highlight.jsを使用する場合は、falseにする。
+      use_pygments: true
+      # pygmentsのテーマ名は以下で選択できるが、機能しない...
+      # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
   - pymdownx.superfences
   - pymdownx.inlinehilite
   # URLテキストのリンク化
@@ -135,10 +135,10 @@ nav:
               - シェル: software/software_basic_utility_shell.md
               - スクリプト: software/software_basic_utility_script.md
               - ■ パッケージ:
-                - メモリ系: software/software_basic_utility_package_memory.md
-                - ネットワーク系: software/software_basic_utility_package_network.md
-                - セキュリティ系: software/software_basic_utility_package_security.md
-                - ストレージ系: software/software_basic_utility_package_storage.md
+                  - メモリ系: software/software_basic_utility_package_memory.md
+                  - ネットワーク系: software/software_basic_utility_package_network.md
+                  - セキュリティ系: software/software_basic_utility_package_security.md
+                  - ストレージ系: software/software_basic_utility_package_storage.md
           - ■ 言語プロセッサ:
               - 言語プロセッサ: software/software_basic_language_processor.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
@@ -177,8 +177,8 @@ nav:
                       - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
           - ■ ログ系:
               - ■ FluentBit/Fluentd:
-                   - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
-                   - FluentBit: software/software_middleware_log_fluentbit.md
+                  - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
+                  - FluentBit: software/software_middleware_log_fluentbit.md
           - ■ セキュリティ系:
               - Linux標準: software/software_middleware_security_linux.md
               - Falco: software/software_middleware_security_falco.md
@@ -410,6 +410,7 @@ nav:
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
+
   - ♾️ DevOps:
       - devops/index.md
       - DevOps: devops/devops.md
