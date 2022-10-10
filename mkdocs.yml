@@ -127,6 +127,8 @@ nav:
               - カーネル: software/software_basic_kernel.md
               - メモリ管理: software/software_basic_kernel_memory_management.md
               - ストレージ管理: software/software_basic_kernel_storage_management.md
+              - I/O管理: software/software_basic_kernel_io_management.md
+              - ジョブ管理: software/software_basic_kernel_job_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
