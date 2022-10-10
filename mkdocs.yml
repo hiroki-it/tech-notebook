@@ -129,10 +129,14 @@ nav:
               - ストレージ管理: software/software_basic_kernel_storage_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
-              - パッケージ: software/software_basic_utility_package.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
               - シェル: software/software_basic_utility_shell.md
               - スクリプト: software/software_basic_utility_script.md
+              - ■ パッケージ:
+                - メモリ系: software/software_basic_utility_package_memory.md
+                - ネットワーク系: software/software_basic_utility_package_network.md
+                - セキュリティ系: software/software_basic_utility_package_security.md
+                - ストレージ系: software/software_basic_utility_package_storage.md
           - ■ 言語プロセッサ:
               - 言語プロセッサ: software/software_basic_language_processor.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
