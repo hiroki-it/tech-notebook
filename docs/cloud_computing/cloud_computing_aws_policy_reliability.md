@@ -149,7 +149,9 @@ OSI層とAWSリソースの対応関係を以下に示す。
 
 ### 監視すべきメトリクスとアラート条件例
 
-#### ▼ 独自メトリクス
+#### ▼ 独自の名前空間
+
+名前空間ユーザー定義としたメトリクスの監視ポリシーは以下の通りである。
 
 | メトリクス名                | 単位     | 説明                                                         | アラート条件例                                   |
 |-----------------------| -------- | ------------------------------------------------------------ | ------------------------------------------------ |
@@ -157,7 +159,7 @@ OSI層とAWSリソースの対応関係を以下に示す。
 
 #### ▼ ALB
 
-ALBでアラートするべきメトリクスを示す。
+名前空間をALBとしたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
@@ -175,7 +177,7 @@ ALBでアラートするべきメトリクスを示す。
 
 #### ▼ API Gateway
 
-API Gatewayでアラートするべきメトリクスを示す。
+名前空間をAPI Gatewayとしたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
 
@@ -188,7 +190,7 @@ API Gatewayでアラートするべきメトリクスを示す。
 
 #### ▼ EC2
 
-EC2でアラートするべきメトリクスを示す。
+名前空間をEC2としたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
 
@@ -201,7 +203,7 @@ EC2でアラートするべきメトリクスを示す。
 
 #### ▼ ECS
 
-ECSクラスターまたはサービスでアラートするべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。
+名前空間をECSクラスターまたはECSサービスとしたメトリクスの監視ポリシーは以下の通りである。ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 
@@ -213,7 +215,7 @@ ECSクラスターまたはサービスでアラートするべきメトリク�
 
 #### ▼ ElastiCache Redis
 
-Redisでアラートするべきメトリクスを示す。
+名前空間をRedisとしたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
 
@@ -226,7 +228,7 @@ Redisでアラートするべきメトリクスを示す。
 
 #### ▼ RDS（Aurora）
 
-RDS（Aurora）でアラートするべきメトリクスを示す。
+名前空間をRDS（Aurora）としたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
@@ -243,7 +245,7 @@ RDS（Aurora）でアラートするべきメトリクスを示す。
 
 #### ▼ RDS（非Aurora）
 
-RDS（非Aurora）でアラートするべきメトリクスを示す。RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。
+名前空間をRDS（非Aurora）としたメトリクスの監視ポリシーは以下の通りである。RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
 
@@ -256,6 +258,8 @@ RDS（非Aurora）でアラートするべきメトリクスを示す。RDSの�
 <br>
 
 #### ▼ S3
+
+名前空間をS3としたメトリクスの監視ポリシーは以下の通りである。
 
 | メトリクス名 | 単位     | 説明                                                         | アラート条件例                                               |
 | ------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

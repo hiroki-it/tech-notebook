@@ -568,7 +568,7 @@ $ docker stop $(docker ps --all --quiet)
 
 #### ▼ create
 
-ボリュームマウントを作成する。```docker```コマンドではなく、docker-composeコマンドで作成することが推奨されている。
+ボリュームマウントを作成する。```docker```コマンドではなく、```docker compose```コマンドで作成することが推奨されている。
 
 **＊例＊**
 

@@ -116,3 +116,19 @@ spec:
 （５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンNodeを削除する。
 
 <br>
+
+## 03. 監視ポリシー
+
+### ```istio-proxy```コンテナ
+
+名前空間を```istio-proxy```コンテナとしたメトリクスの監視ポリシーは以下の通りである。
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/metrics/
+
+| メトリクス                                   | 単位     | 説明                                                                       | アラート条件例                                                 |
+|-----------------------------------------| -------- |--------------------------------------------------------------------------|---------------------------------------------------------|
+| 総リクエスト数（```istio_requests_total```）     | カウント | ```istio-proxy```コンテナが受信した総リクエスト数を表す。メトリクスの名前空間に対して様々なディメンションを設定できる。<br>ℹ️ 参考：https://blog.christianposta.com/understanding-istio-telemetry-v2/ |   |
+| 総gRPCリクエスト数（```istio_request_messages_total```） | カウント | ```istio-proxy```コンテナが受信した総gRPCリクエスト数を表す。                                |   |
+| 総gRPCレスポンス数（```istio_response_messages_total```） | カウント | ```istio-proxy```コンテナが受信した総gRPCレスポンス数を表す。                                |   |
+
+<br>

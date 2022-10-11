@@ -45,6 +45,17 @@ description: PromQL＠Prometheus
 
 ### 関数
 
+#### ▼ by
+
+集計したデータポイントをラベルごとに集計する。
+
+> ℹ️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
+
+```bash
+# 直近1時間に関して、Istioのistio-proxyコンテナが受信した総リクエストをコンテナの種類ごとに集計する。
+sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destination_app)
+```
+
 #### ▼ count
 
 期間内の合計数を算出する。
@@ -53,13 +64,14 @@ description: PromQL＠Prometheus
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果（1秒当たりの平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
+rate関数のラッパーであり、rate関数の結果（平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
 
 > ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
 # rate関数に期間（今回は5m）を自動的に掛けた数値を算出する。
 increase(foo_metrics[5m])
+# foo_metricsの平均増加率（%/秒）を集計する。
 = rate(foo_metrics[1h]) * 5 * 60
 ```
 
@@ -69,11 +81,40 @@ increase(foo_metrics[5m])
 
 > ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
+```bash
+# 直近1時間に関して、foo_metricsの平均増加率（%/秒）を集計する。
+rate(foo_metrics[1h])
+```
+
+#### ▼ ```[]```
+
+直近、何時間（分、秒）のデータポイントを集計するかを設定する。
+
+```bash
+# 直近5分に関して、foo_metricsの平均増加率（%/秒）を集計する。
+rate(foo_metrics[5m])
+```
+
+> ℹ️ 参考：
+> 
+> https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
+> https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector> 
+> https://gavin-zhou.medium.com/victoriametrics%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%88%E3%82%8A%E3%82%88%E3%81%84prometheus-rate-%E9%96%A2%E6%95%B0-6a69c36cee8f
+
 <br>
 
-## 02. メトリクス
+### ディメンション
 
-### ```prometheus_tsdb_*```
+#### ▼ 指定方法
+
+メトリクス名の後に```{<ディメンション名>}```を設定することで、ディメンションを単位としてデータポイントを集計する。
+
+
+<br>
+
+## 02. 標準メトリクス
+
+### ローカルストレージのメトリクス（```prometheus_tsdb_*```）
 
 #### ▼ prometheus_tsdb_head_samples_appended_total
 
@@ -93,8 +134,6 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
 > - https://christina04.hatenablog.com/entry/prometheus-node-exporter
-
-
 
 #### ▼ prometheus_tsdb_compaction_chunk_samples_sum
 

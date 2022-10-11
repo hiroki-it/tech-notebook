@@ -13,7 +13,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 <br>
 
-## 01. docker-composeコマンド
+## 01. ```docker compose```コマンド
 
 ### config
 
@@ -22,7 +22,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 バリデーションとして、```docker-compose.yml```ファイルを展開する。ファイル内で、相対パスや変数を使用している場合、これらが正しく設定されているかを確認できる。
 
 ```bash
-$ docker-compose config
+$ docker compose config
 ```
 
 <br>
@@ -38,7 +38,7 @@ $ docker-compose config
 キャッシュを使用せずにコンテナイメージをビルドする。
 
 ```bash
-$ docker-compose build --no-cache
+$ docker compose build --no-cache
 ```
 
 <br>
@@ -55,7 +55,7 @@ $ docker-compose build --no-cache
 
 ```bash
 # アタッチモード
-$ docker-compose up <サービス名>
+$ docker compose up <サービス名>
 ```
 
 #### ▼ -d
@@ -64,7 +64,7 @@ $ docker-compose up <サービス名>
 
 ```bash
 # デタッチモード
-$ docker-compose up -d <サービス名>
+$ docker compose up -d <サービス名>
 ```
 
 #### ▼ --build
@@ -72,7 +72,7 @@ $ docker-compose up -d <サービス名>
 イメージをビルドし、コンテナを作成する。
 
 ```bash
-$ docker-compose up --build -d <サービス名>
+$ docker compose up --build -d <サービス名>
 ```
 
 #### ▼ -f
@@ -80,7 +80,7 @@ $ docker-compose up --build -d <サービス名>
 ファイルを指定して、docker-composeを実行する。
 
 ```bash
-$ docker-compose up -f foo-docker-compose.yml
+$ docker compose up -f foo-docker-compose.yml
 ```
 
 <br>
@@ -97,7 +97,7 @@ $ docker-compose up -f foo-docker-compose.yml
 
 ```bash
 # アタッチモード
-$ docker-compose run --rm --service-ports <サービス名>
+$ docker compose run --rm --service-ports <サービス名>
 ```
 
 #### ▼ -d --service-ports
@@ -106,7 +106,7 @@ $ docker-compose run --rm --service-ports <サービス名>
 
 ```bash
 # デタッチモード
-$ docker-compose run --rm -d --service-ports <サービス名>
+$ docker compose run --rm -d --service-ports <サービス名>
 ```
 
 <br>
@@ -118,7 +118,7 @@ $ docker-compose run --rm -d --service-ports <サービス名>
 指定したサービスの起動中コンテナを全て停止する。
 
 ```bash
-$ docker-compose stop <サービス名>
+$ docker compose stop <サービス名>
 ```
 
 <br>
@@ -134,7 +134,7 @@ $ docker-compose stop <サービス名>
 全てのリソース（イメージ、コンテナ、ボリューム、ネットワーク）を削除する。
 
 ```bash
-$ docker-compose down --rmi all --volumes --remove-orphans
+$ docker compose down --rmi all --volumes --remove-orphans
 ```
 
 <br>
@@ -150,7 +150,7 @@ $ docker-compose down --rmi all --volumes --remove-orphans
 バックグラウンドでログを取得する。
 
 ```bash
-$ docker-compose logs <サービス名>
+$ docker compose logs <サービス名>
 ```
 
 #### ▼ -f
@@ -158,7 +158,7 @@ $ docker-compose logs <サービス名>
 フォアグラウンドでログを取得する。
 
 ```bash
-$ docker-compose logs -f <サービス名>
+$ docker compose logs -f <サービス名>
 ```
 
 <br>

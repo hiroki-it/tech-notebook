@@ -407,6 +407,8 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 ### Cluster
 
+Clusterをディメンションとしたメトリクスの監視ポリシーは以下の通りである。
+
 > ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス       | 単位     | 説明                                                       | アラート条件例                                                 |
@@ -422,6 +424,8 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 
 #### ▼ Pod全体
 
+Pod全体をディメンションとしたメトリクスの監視ポリシーは以下の通りである。
+
 > ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
 | メトリクス      | 単位     | 説明                                                      | アラート条件例                                               |
@@ -431,6 +435,8 @@ AWS EKSでの目安であるが、サブネットごとに```/19```や```/20```�
 | Podの最低必要数 | カウント | 同じDeployment内のPodの必要最低数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```<= 2```       |
 
 #### ▼ コンテナ
+
+コンテナをディメンションとしたメトリクスの監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://www.tigera.io/learn/guides/kubernetes-monitoring/
 
