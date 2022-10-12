@@ -87,7 +87,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=<resourceタイプ>.<resourceブロック名>
+    -target='<resourceタイプ>.<resourceブロック名>'
 ```
 
 ```module```ブロックを採用している場合、指定の方法が異なる。
@@ -95,7 +95,7 @@ $ terraform apply \
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
+    -target='module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
 **＊例＊**
@@ -103,7 +103,7 @@ $ terraform apply \
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
-    -target=aws_instance.bastion
+    -target='aws_instance.bastion'
 ```
 
 #### ▼ -var-file
@@ -457,7 +457,7 @@ $ terraform plan -var-file=foo.tfvars
 ```bash
 # ディレクトリを指定することも可能
 # 第一引数で環境変数ファイルの相対パス、第二引数でをルートモジュールの相対パス
-$ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> plan \
     -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
 
@@ -480,7 +480,7 @@ actions need to be performed.
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=<resourceタイプ>.<resourceブロック名>
+    -target='<resourceタイプ>.<resourceブロック名>'
 ```
 
 ```module```ブロックを使用している場合、指定の方法が異なる。
@@ -488,7 +488,7 @@ $ terraform plan \
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
+    -target='module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
 指定方法は、全てのブロックを対象とした```terraform plan```コマンドが参考になる。```grep```コマンドを使用してresourceタイプ名や```module```ブロック名で抽出すると、指定方法がわかる。
@@ -502,8 +502,8 @@ $ terraform plan | grep <resourceタイプ>
 
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=foo.bar \
-    -target=foo.baz
+    -target='foo.bar' \
+    -target='foo.baz'
 ```
 ```bash
 # moduleブロックの指定方法を調べる。
@@ -515,9 +515,9 @@ $ terraform plan | grep <moduleブロック名>
 
 $ terraform plan \
     -var-file=foo.tfvars \
-    -target=module.qux.quux \
-    -target=module.qux.corge \
-    -target=module.grault
+    -target='module.qux.quux' \
+    -target='module.qux.corge' \
+    -target='module.grault'
 ```
 
 #### ▼ -refresh

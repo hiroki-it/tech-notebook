@@ -204,11 +204,13 @@ fields @timestamp, @message, @logStream
 
 > ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
 
-（１）CloudWactchアラームからPagerDutyのServiceに、アラートが通知される。場合によっては、PagerDutyからオンコール担当者に電話がかかる。
+（１）CloudWatchアラームからPagerDutyのServiceに、アラートが通知される。
 
-（２）オンコール担当者は、PagerDutyのServiceを確認する。
+（２）PagerDutyのServiceから。インシデントがメールや電話宛に通知される。
 
-（３）解決フェーズがOpenになっているインシデント
+（３）オンコール担当者は、PagerDutyのServiceを確認する。
+
+（４）解決フェーズがOpenになっているインシデント
 
 <br>
 

@@ -19,7 +19,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 02. cluster-autoscaler
+## 02. cluster-autoscaler、karpenter
 
 ### cluster-autoscalerとは
 
@@ -29,15 +29,37 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
+例えば、以下のようなシナリオが考えられる。
+
+（１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、ワーカーNodeが```1```台では足りない。
+
+（２）事前にスペックを指定したワーカーNodeをもう```1```台作成する。
+
+（３）新しく作成したワーカーNodeでPodをスケジューリングする。
+
+（４）結果として、```2```台それぞれで```70```%を消費するPodがスケジューリングされている。
+
 <br>
 
-### クラウドプロバイダー別
+### karpenterとは
 
-#### ▼ AWSの場合
+AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterではよしなにスペックを選んでくれる。
 
-AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。
+> ℹ️ 参考：
+> 
+> https://sreake.com/blog/learn-about-karpenter/
+> https://blog.inductor.me/entry/2021/12/06/165743
 
-> ℹ️ 参考：https://sreake.com/blog/learn-about-karpenter/
+例えば、以下のようなシナリオが考えられる。
+
+（１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 しかし、ワーカーNodeが```1```台では足りない。```70 + 70 = 140%```になるので、既存のワーカーNodeの少なくとも```1.4```倍のスペックが必要となる。
+
+（２）新しく決定したスペックで、ワーカーNodeを新しく作成する。
+
+（３）新しく作成したワーカーNodeにPodをスケジューリングする。また、既存のワーカーNodeが不要であれば削除する。
+
+（４）結果として、```1```台で```2```個のPodがスケジューリングされている。
+
 
 <br>
 
