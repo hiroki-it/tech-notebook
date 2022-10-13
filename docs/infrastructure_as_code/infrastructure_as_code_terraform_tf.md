@@ -921,15 +921,81 @@ resource "foo" "this" {
 }
 ```
 
-#### ▼ ```count```引数の```output```ブロック
+#### ▼ ```count```引数を使用した場合の注意点
 
-ノート内の[こちら](#count)を参考にせよ。
+```resource```ブロックの作成に```count```引数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、```output```ブロックではキー名を指定して出力できる。ちなみに、```for_each```引数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。
 
-#### ▼ ```for_each```引数の```output```ブロック
+**＊実装例＊**
 
-ノート内の[こちら](#for_each)を参考にせよ。
+例として、VPCのサブネットを示す。ここでは、パブリックサブネット、applicationサブネット、datastoreサブネット、を```count```引数で作成したとする。
+
+```terraform
+###############################################
+# パブリックサブネット
+###############################################
+resource "aws_subnet" "public" {
+  count = 2
+  
+  ...
+}
+
+###############################################
+# プライベートサブネット
+###############################################
+resource "aws_subnet" "private_app" {
+  count = 2
+  
+  ...
+}
+
+resource "aws_subnet" "private_datastore" {
+  count = 2
+  
+  ...
+}
+```
+
+#### ▼ list型```output```ブロック
+
+インデックスキーをアスタリスクを指定した場合、list型になる。
+
+```terraform
+###############################################
+# Output VPC
+###############################################
+output "public_subnet_ids" {
+  value = aws_subnet.public[*].id # IDのリスト型
+}
+
+output "private_app_subnet_ids" {
+  value = aws_subnet.private_app[*].id # IDのリスト型
+}
+
+output "private_datastore_subnet_ids" {
+  value = aws_subnet.private_datastore[*].id # IDのリスト型
+}
+```
+
+#### ▼ スカラー型```output```ブロック
+
+インデックスキー（```0```番目）を指定した場合、スカラー型になる。
+
+```terraform
+output "public_subnet_ids" {
+  value = aws_subnet.public[0].id # IDの文字列
+}
+
+output "private_app_subnet_ids" {
+  value = aws_subnet.private_app[0].id # IDの文字列
+}
+
+output "private_datastore_subnet_ids" {
+  value = aws_subnet.private_datastore[0].id # IDの文字列
+}
+```
 
 <br>
+
 
 ### ```local```ブロック
 
@@ -1266,56 +1332,6 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ▼ list型で```output```ブロック
-
-```resource```ブロックの作成に```count```引数を使用した場合、その```resource```ブロックはlist型として扱われる。そのため、キー名を指定して出力できる。この時、```output```ブロックはlist型になる。ちなみに、```for_each```引数で作成した```resource```ブロックはアスタリスクでインデックス名を指定できないので、注意。
-
-**＊実装例＊**
-
-例として、VPCのサブネットを示す。ここでは、パブリックサブネット、applicationサブネット、datastoreサブネット、を```count```引数で作成したとする。
-
-```terraform
-###############################################
-# パブリックサブネット
-###############################################
-resource "aws_subnet" "public" {
-  count = 2
-  
-  ...
-}
-
-###############################################
-# プライベートサブネット
-###############################################
-resource "aws_subnet" "private_app" {
-  count = 2
-  
-  ...
-}
-
-resource "aws_subnet" "private_datastore" {
-  count = 2
-  
-  ...
-}
-```
-
-```terraform
-###############################################
-# Output VPC
-###############################################
-output "public_subnet_ids" {
-  value = aws_subnet.public[*].id
-}
-
-output "private_app_subnet_ids" {
-  value = aws_subnet.private_app[*].id
-}
-
-output "private_datastore_subnet_ids" {
-  value = aws_subnet.private_datastore[*].id
-}
-```
 
 <br>
 

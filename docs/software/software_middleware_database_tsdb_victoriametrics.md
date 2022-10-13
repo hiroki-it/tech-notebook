@@ -57,7 +57,9 @@ PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイン
 
 ```bash
 # 読み出しエンドポイントにリクエストを送信する。
-$ curl -X GET http://<VictoriaMetricsのIPアドレス>:8428/api/v1/query -d 'query=vm_http_request_errors_total'
+$ curl \
+    -X GET http://<VictoriaMetricsのIPアドレス>:8428/api/v1/query \
+    -d 'query=vm_http_request_errors_total'
 ```
 
 #### ▼ 書き込みエンドポイント
@@ -146,11 +148,15 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量�
 増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。そのため、以下の数式で```10```日分のサイズを算出できる。
 
 ```mathematica
-(増加量の合計) = 12900 - 10535 = 2365 (MB/日)
+(増加量の合計)
+= 12900 - 10535 
+= 2365 (MB/日)
 ```
 
 ```mathematica
-(10日分を保管するために必要なサイズ) = 2365 × 1.2 × 10 = 28380 (MB/10日) 
+(10日分を保管するために必要なサイズ) 
+= 2365 × 1.2 × 10 
+= 28380 (MB/10日) 
 ```
 
 VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvm-storageのサイズ以上にする必要がある。

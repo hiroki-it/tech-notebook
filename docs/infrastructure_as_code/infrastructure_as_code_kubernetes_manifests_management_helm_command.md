@@ -48,6 +48,20 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 
 <br>
 
+### get
+
+#### ▼ getとは
+
+特定のリリースに含まれる```helm template```コマンドの結果を取得する。
+
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
+
+```bash
+$ helm get <リリース名>
+```
+
+<br>
+
 ### install
 
 #### ▼ installとは
@@ -550,6 +564,16 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 <br>
 
 ## 02. プラグイン系コマンド
+
+### helm-diff
+
+```helm get```コマンドによる最新のマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。etcd上のマニフェストと比較しているわけでないことに注意する。
+
+```bash
+$ helm diff
+```
+
+<br>
 
 ### helm-secrets
 

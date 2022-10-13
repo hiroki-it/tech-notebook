@@ -26,7 +26,7 @@ description: template.json＠Packerの知見を記録しています。
 
 #### ▼ AWSの場合
 
-プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、AnsibleでAMIの作成まで行い、TerraformでAMIからEC2インスタンスを作成するように区別する。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
+プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、PackerでプロビジョナーとしてAnsibleを指定してAMIを作成しつつ、TerraformでAMIからEC2インスタンスを作成したとする。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
 
@@ -188,6 +188,23 @@ EC2インスタンスへのSSH接続時に使用するユーザー名を設定�
   ]
 }
 ```
+
+#### ▼ force_deregister
+
+同じ名前のマシンイメージが存在する場合に、既存のマシンイメージを登録解除してからこれを作成するようにするか否か、を設定する。Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。マシンイメージの名前の重複を許可しないプロバイダー（例：AWS）では、一つの名前のマシンイメージを一回しか作成できないことになってしまう。そういった場合に必要になる。
+
+
+```yaml
+}
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "force_deregister": true,
+    }
+  ]
+}
+```
+
 
 #### ▼ launch_block_device_mappings
 

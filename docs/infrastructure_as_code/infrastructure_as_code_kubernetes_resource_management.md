@@ -47,8 +47,8 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 > ℹ️ 参考：
 > 
-> https://sreake.com/blog/learn-about-karpenter/
-> https://blog.inductor.me/entry/2021/12/06/165743
+> - https://sreake.com/blog/learn-about-karpenter/
+> - https://blog.inductor.me/entry/2021/12/06/165743
 
 例えば、以下のようなシナリオが考えられる。
 

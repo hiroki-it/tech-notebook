@@ -424,7 +424,27 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
 
- <br>
+<br>r
+### output
+
+```tfstate```ファイルの```output```ブロックを表示する。
+
+> ℹ️ 参考：
+> 
+> - https://www.terraform.io/cli/commands/output
+> - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
+
+```bash
+$ $ terraform output -json
+
+{
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-004c2d1ba7394b3d6"
+  }
+}
+```
 
 ### plan
 

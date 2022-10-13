@@ -468,10 +468,11 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 #### ▼ becomeとは
 
-プレイをroot権限で実行するか否かを設定する。
+プレイをroot権限で実行するか否かを設定する。root以外であれば、```become_user```キーを設定する。
 
 ```yaml
 - become: yes
+  become_user: foo-user
 ```
 
 <br>
@@ -588,7 +589,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
     /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
       -a fetch-config \
       -m ec2 \
-      -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
+      -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
       -s
 ```
 
@@ -620,11 +621,25 @@ taskセクションの後に実行するセットアップ処理を設定する�
 # systemdでcloudwatchエージェントのプロセスを管理します。
 - name: Start cloudwatch-agent systemd
   ansible.builtin.systemd:
-    name: cloudwatch-agent
+    name: amazon-cloudwatch-agent
     state: started
     enabled: yes
     daemon_reload: yes
 ```
+
+#### ▼ state
+
+ユニットの最終的な状態を設定する。
+
+> ℹ️ 参考：https://dekitakotono.blogspot.com/2019/05/systemd.html
+
+| 設定値 | 説明                                        |
+|-----|-------------------------------------------|
+| ```reloaded```    | 最終的な状態としてdeamon_reloadするように、ユニットを再読み込みする。 |
+| ```restarted```    | 最終的な状態として再起動するように、ユニットを再起動する。             |
+| ```started```    | 最終的な状態として停止しているように、ユニットを起動する。             |
+| ```stopped```    | 最終的な状態として停止しているさうに、ユニットを停止する。             |
+
 
 <br>
 
