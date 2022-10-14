@@ -41,14 +41,14 @@
   > > > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
   > > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
   > * ##### <u>マニフェスト管理</u>
-  > > * ##### <u>Kustomize</u>
-  > > > * ##### 📖 [Kustomize](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html)
-  > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.html)
   > > * ##### <u>Helm</u>
   > > > * ##### 📖 [︎Helm](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html)
   > > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.html)
   > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.html)
   > > > * ##### 📖 [︎Helmfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html)
+  > > * ##### <u>Kustomize</u>
+  > > > * ##### 📖 [Kustomize](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html)
+  > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.html)
   > * ##### <u>カスタムリソース</u>
   > > * ##### 📖 [カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)
   > > * ##### <u>ArgoCD</u>

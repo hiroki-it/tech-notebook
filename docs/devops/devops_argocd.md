@@ -15,6 +15,6 @@ description: ArgoCD＠DevOpsの知見を記録しています。
 
 ## こちらまで
 
-ArgoCDについては、以下のリンクを参考にせよ。
+ArgoCDはセクションが重複しており、以下のセクションを参照してください。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html

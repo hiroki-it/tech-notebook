@@ -380,6 +380,12 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
 
+**＊例＊**
+
+- Flannel-vxlan
+- Calico-ipip
+- Weave
+
 > ℹ️ 参考：
 > 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
@@ -390,6 +396,13 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
 
+**＊例＊**
+
+- clico-bgp
+- flannel-hostgw
+- sriov
+
+
 > ℹ️ 参考：
 > 
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
@@ -398,6 +411,8 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 #### ▼ アンダーレイモード
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+
+- Aliyun
 
 > ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 

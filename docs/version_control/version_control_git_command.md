@@ -918,7 +918,7 @@ $ git push --delete origin <バージョンタグ>
 $ git push --delete origin v1.0.0
 ```
 
-なお、ローカルマシンのタグは別に削除する必要がある。
+注意点として、ローカルマシンのタグは別に削除する必要がある。
 
 ```bash
 $ git tag -d v1.0.0

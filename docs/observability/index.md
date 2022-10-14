@@ -13,6 +13,11 @@
 ### テレメトリー収集ツール
 
 * #### 📖 [テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry.html)
+* #### 📖 [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_fluentbit_fluentd.html)
+* #### 📖 [Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_grafana.html)
+* #### 📖 [Jaeger](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_jaeger.html)
+* #### 📖 [OpenTelemetry](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_open_telemetry.html)
+* #### 📖 [Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_prometheus.html)
 * #### <u>Datadog</u>
   > * ##### 📖 [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html)
   > * ##### 📖 [︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_monitoring.html)
@@ -22,7 +27,6 @@
   > > * ##### 📖 [︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html)
   > > * ##### 📖 [分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)
   > > * ##### 📖 [テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html)
-
 * #### <u>Googleアプリ</u>
   > * ##### 📖 [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_analytics.html)
   > * ##### 📖 [︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_search_console.html)

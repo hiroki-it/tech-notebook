@@ -26,9 +26,12 @@ description: template.json＠Packerの知見を記録しています。
 
 #### ▼ AWSの場合
 
-プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、PackerでプロビジョナーとしてAnsibleを指定してAMIを作成しつつ、TerraformでAMIからEC2インスタンスを作成したとする。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
+プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、PackerでプロビジョナーとしてAnsibleを指定してAMIを作成しつつ、TerraformでAMIからEC2インスタンスを作成したとする。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。注意点として、起動中のEC2インスタンスからAMIを作成するわけではなく、設定値が同じ新しいEC2インスタンスからAMIを作成するだけであり、AMIに内蔵されているEBSボリュームも新品であるため、バックアップツールとしては使用できない。
 
-> ℹ️ 参考：https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
+> ℹ️ 参考：
+> 
+> - https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
+> - https://qiita.com/mitzi2funk/items/c963483a11a1912e3c44#01-2-use-case
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
 

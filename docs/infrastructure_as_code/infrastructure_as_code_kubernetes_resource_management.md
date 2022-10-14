@@ -43,7 +43,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 ### karpenterとは
 
-AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterではよしなにスペックを選んでくれる。
+AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterでは、作成されるワーカーNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
 
 > ℹ️ 参考：
 > 

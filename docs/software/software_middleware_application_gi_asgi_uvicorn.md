@@ -86,7 +86,7 @@ FROM python:3.10-slim
 CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000" ]
 ```
 
-なお、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
+注意点として、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
 
 > ℹ️ 参考：https://www.uvicorn.org/#quickstart
 
