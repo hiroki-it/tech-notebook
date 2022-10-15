@@ -399,8 +399,8 @@ nav:
                       - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
                       - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.md
-
           - ■ Packer:
+              - Packer: infrastructure_as_code/infrastructure_as_code_packer.md
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
           - ■ Serverless Framework:
               - serverless.yml: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md
