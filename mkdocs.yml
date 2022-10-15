@@ -346,13 +346,13 @@ nav:
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_docker_policy.md
       - ■ 宣言型:
           - ■ Docker Compose:
-              - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
+              - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
           - ■ Kubernetes:
               - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
               - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
-              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
               - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
               - リソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.md
@@ -384,9 +384,9 @@ nav:
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
                   - ■ Istio:
                       - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                       - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
-                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
                       - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
                   - ■ Jaeger:
