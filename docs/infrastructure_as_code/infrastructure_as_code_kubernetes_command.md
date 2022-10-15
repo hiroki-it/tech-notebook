@@ -871,7 +871,7 @@ $ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名> | grep -i error
 
 **＊例＊**
 
-Namespace名、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
+Namespace名、Pod名、コンテナ名、を指定し、kube-proxyのログを確認する。
 
 ```bash
 $ kubectl logs -n kube-system <Pod名> -c kube-proxy | grep -i error

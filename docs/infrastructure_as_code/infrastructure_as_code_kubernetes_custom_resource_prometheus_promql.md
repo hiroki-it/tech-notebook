@@ -97,9 +97,9 @@ rate(foo_metrics[5m])
 
 > ℹ️ 参考：
 > 
-> https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
-> https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector> 
-> https://gavin-zhou.medium.com/victoriametrics%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%88%E3%82%8A%E3%82%88%E3%81%84prometheus-rate-%E9%96%A2%E6%95%B0-6a69c36cee8f
+> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
+> - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector> 
+> - https://gavin-zhou.medium.com/victoriametrics%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%88%E3%82%8A%E3%82%88%E3%81%84prometheus-rate-%E9%96%A2%E6%95%B0-6a69c36cee8f
 
 <br>
 

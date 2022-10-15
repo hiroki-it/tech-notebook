@@ -377,9 +377,9 @@ DB ＞ テーブル ＞ レコード ＞ カラム の順に、粒度は大き�
 
 > ℹ️ 参考：
 >
-> https://stackoverflow.com/questions/40615565/test-performance-rollback-vs-restoring-point
-> https://dev.mysql.com/doc/refman/8.0/en/point-in-time-recovery.html
-> https://www.techscore.com/blog/2014/12/22/mysql%E3%81%A8posqgresql%E3%81%AEpitr%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%EF%BC%86%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA%E3%81%AE%E9%81%95%E3%81%84%EF%BC%88/
+> - https://stackoverflow.com/questions/40615565/test-performance-rollback-vs-restoring-point
+> - https://dev.mysql.com/doc/refman/8.0/en/point-in-time-recovery.html
+> - https://www.techscore.com/blog/2014/12/22/mysql%E3%81%A8posqgresql%E3%81%AEpitr%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%EF%BC%86%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA%E3%81%AE%E9%81%95%E3%81%84%EF%BC%88/
 
 #### ▼ ツール
 

@@ -42,15 +42,15 @@ description: クラウドコンピューティングの知見を記録してい�
 > - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
 > - https://cloud-textbook.com/46/#baremetal
 
-|                          | ユーザーの管理領域                                           | AWS                                     | GCP                                                          | Azure                     |
-| ------------------------ | ------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------- |
-| オンプレミス（自社所有） | 全て。OpenStackを使用して、オンプレミス環境に仮想クラウドを作成することも含む。 | -                                       | -                                                            | -                         |
+|                          | ユーザーの管理領域                                                                                                                          | AWS                                     | GCP                                                          | Azure                     |
+| ------------------------ |------------------------------------------------------------------------------------------------------------------------------------| --------------------------------------- | ------------------------------------------------------------ | ------------------------- |
+| オンプレミス（自社所有） | 全て。OpenStackを使用して、オンプレミス環境に仮想クラウドを作成することも含む。                                                                                       | -                                       | -                                                            | -                         |
 | IaaS（ベアメタル）       | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS、仮想サーバー<br>仮想サーバー込みのIaaSとは異なり、ハードウェア上にユーザーが仮想サーバーを作成し、管理する必要がある。 | AWS EC2（ベアメタルインスタンスタイプ） | Bare Metal Solution                                          | -                         |
-| IaaS（仮想サーバー込）     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS<br>ベアメタル型IaaSとは異なり、ハードウェア上にユーザーが仮想サーバーを作成する必要がなく、これの管理もしてくれる。 | AWS EC2                                 | Google Compute Engine                                        | Azure Virtual Machine     |
-| CaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ | AWS Fargate                             | Google Cloud Run                                             | Azure Container Instances |
-| PaaS                     | リクエストリプライ方式のアプリケーション、データ             | AWS Elastic Beanstalk                   | Google App Engine                                            | Azure App Service         |
-| FaaS                     | イベントドリブン方式の関数プログラム、データ                 | AWS Lambda                              | Google Cloud Functions                                       | Azure Functions           |
-| SaaS                     | なし                                                         |                                         | Google Apps（例：Google Map、Google Cloud、Google Calender など） |                           |
+| IaaS（仮想サーバー込）     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS<br>ベアメタル型IaaSとは異なり、ハードウェア上にユーザーが仮想サーバーを作成する必要がなく、これの管理もしてくれる。                        | AWS EC2                                 | Google Compute Engine                                        | Azure Virtual Machine     |
+| CaaS                     | リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ                                                                                         | AWS Fargate                             | Google Cloud Run                                             | Azure Container Instances |
+| PaaS                     | リクエストリプライ方式のアプリケーション、データ                                                                                                           | AWS Elastic Beanstalk                   | Google App Engine                                            | Azure App Service         |
+| FaaS                     | イベントドリブン方式の関数プログラム、データ                                                                                                             | AWS Lambda                              | Google Cloud Functions                                       | Azure Functions           |
+| SaaS                     | なし                                                                                                                                 |                                         | Google Apps（例：Google Map、Google Cloud、Google Calender など） |                           |
 
 <br>
 

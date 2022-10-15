@@ -19,6 +19,8 @@ description: サービスレベル＠監視の知見を記録しています。
 
 サービスレベルの指標とするメトリクスのこと。
 
+> ℹ️ 参考：https://newrelic.com/jp/topics/what-are-slos-slis-slas#toc-sli-
+
 <br>
 
 ### SLIの決め方

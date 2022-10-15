@@ -4,7 +4,7 @@
 
 ### クラウドコンピューティング
 
-* ##### 📖 [︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing.html)
+* #### 📖 [︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing.html)
 
 ### AWS
 
@@ -29,7 +29,7 @@
 
 ### GCP
 
-* ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_command.html)
-* ##### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_anthos.html)
+* #### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_command.html)
+* #### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_anthos.html)
 
 <br>

@@ -392,7 +392,7 @@ CloudWatchアラームの状態を変更する。
 $ aws cloudwatch set-alarm-state \
     --alarm-name "prd-foo-alarm" \
     --state-value ALARM \
-    --state-reason "アラーム!!"
+    --state-reason "アラート!!"
 ```
 
 #### ▼ get-metric-statistics
