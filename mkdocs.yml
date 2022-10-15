@@ -408,13 +408,13 @@ nav:
           - ■ Terraform:
               - コマンド: infrastructure_as_code/infrastructure_as_code_terraform_command.md
               - 設定ファイル: infrastructure_as_code/infrastructure_as_code_terraform_conf.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
-              - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
               - ■ tfファイル:
                   - ブロック: infrastructure_as_code/infrastructure_as_code_terraform_tf_block.md
                   - モジュール: infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md
               - ■ プロバイダー:
                   - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
+              - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
