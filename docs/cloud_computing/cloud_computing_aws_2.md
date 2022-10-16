@@ -213,7 +213,7 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 ### AMIの共有
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/sharing-amis.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
 
 | 共有先              | 説明  |
 |------------------|-----|

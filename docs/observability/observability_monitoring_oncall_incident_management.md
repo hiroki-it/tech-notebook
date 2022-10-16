@@ -184,7 +184,7 @@ description: オンコールとインシデント管理＠監視の知見を記�
 （５）Log Insightsを使用して、ロググループの直近のエラーログを抽出する。
 
 ```sql
-# 小文字と大文字を区別せずに、Errorを含むログを検索する。
+-- 小文字と大文字を区別せずに、Errorを含むログを検索する。
 fields @timestamp, @message, @logStream
 | filter @message like /(?i)(Error)/
 | sort @timestamp desc

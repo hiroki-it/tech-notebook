@@ -646,23 +646,40 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 
 XとYの否定論理積 X NAND Yは、NOT(X AND Y)として定義される。X OR YをNANDだけを使用して表した論理式はどれか。
 
-⇒X=0、Y=0の時にX OR Yが『0』になることから、『0』になる選択肢を探す。
+```X=0```、```Y=0```の時にX OR Yが『```0```』になることから、『```0```』になる選択肢を探す。
 
 #### ▼ ((X NAND Y) NAND X) NAND Y
-  ((0 NAND 0)NAND 0)NAND 0
-  =(1 NAND 0) NAND 0
-  =1 NAND 0
-  =1
+
+```mathematica
+((0 NAND 0)NAND 0)NAND 0
+=(1 NAND 0) NAND 0
+=1 NAND 0
+=1
+```
+
 #### ▼ (X NAND X) NAND (Y NAND Y)
-  (0 NAND 0)NAND(0 NAND 0)
-  =1 NAND 1
-  =0
+
+```mathematica
+(0 NAND 0)NAND(0 NAND 0)
+=1 NAND 1
+=0
+```
+
 #### ▼ (X NAND Y) NAND (X NAND Y)
-  (0 NAND 0)NAND(0 NAND 0)
-  =1 NAND 1
-  =0
+
+```mathematica
+(0 NAND 0)NAND(0 NAND 0)
+=1 NAND 1
+=0
+```
+
 #### ▼ X NAND (Y NAND (X NAND Y))
-  0 NAND(0 NAND(0 NAND 0))
-  =0 NAND (0 NAND 1)
-  =0 NAND 1
-  =1
+
+```mathematica
+0 NAND(0 NAND(0 NAND 0))
+=0 NAND (0 NAND 1)
+=0 NAND 1
+=1
+```
+
+<br>

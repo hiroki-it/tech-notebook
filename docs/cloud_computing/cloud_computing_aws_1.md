@@ -1382,11 +1382,30 @@ fields @timestamp, @message, @logStream
 > - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/
 
+プロセスは、デーモン化しておくと良い。
+
+```bash
+$ systemctl list-unit-files --type=service | grep amazon-cloudwatch-agent
+
+$ systemctl status amazon-cloudwatch-agent
+
+● amazon-cloudwatch-agent.service - Amazon CloudWatch Agent
+   Loaded: loaded (/etc/systemd/system/amazon-cloudwatch-agent.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2022-10-13 19:04:56 JST; 42min ago
+ Main PID: 2959 (amazon-cloudwat)
+   CGroup: /system.slice/amazon-cloudwatch-agent.service
+           └─2959 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent -config /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.toml -envconfig /opt/aws/amazon-cloudwatch-agent/etc/env-config.json -pidfile /opt/aws/amazon-cloudwatch-agent/var/amazon-cloudwatch-agent.pid
+
+Oct 13 19:04:56 *** systemd[1]: Started Amazon CloudWatch Agent.
+Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json does not exist or cannot read. Skipping it.
+Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_user...
+```
+
 <br>
 
-### セットアップ
+### インストール
 
-#### ▼ インストール
+#### ▼ yumリポジトリから
 
 ```bash
 $ yum install amazon-cloudwatch-agent -y
@@ -1395,45 +1414,65 @@ $ yum install amazon-cloudwatch-agent -y
 $ yum install collectd -y
 ```
 
-#### ▼ デーモン起動
+<br>
 
-**＊例＊**
+### 設定ファイルの配置
+
+#### ▼ ウィザードの場合
+
+ウィザードを使用して設定ファイル（```amazon-cloudwatch-agent.json```ファイル）をセットアップする場合、ウィザードは```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/bin```ディレクトリ配下に自動的に作成する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
+
+#### ▼ 手動の場合
+
+手動で設定ファイル（```amazon-cloudwatch-agent.json```ファイル）をセットアップする場合、```amazon-cloudwatch-agent.json```ファイルを指定されたディレクトリに配置する必要がある。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
+
+| OS      | 配置先のパス                                              |
+|---------|-----------------------------------------------------|
+| Linux   | ```/opt/aws/amazon-cloudwatch-agent/etc```          |
+| Windows | ```$Env:ProgramData\Amazon\AmazonCloudWatchAgent``` |
+
+<br>
+
+### ```amazon-cloudwatch-agent.json```ファイル
+
+#### ▼ ```amazon-cloudwatch-agent.json```ファイルとは
+
+cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。全てのセクションを設定する必要はなく、```logs```セクションまたは```metrics```セクションのいずれかのみを設定でもよい（例：cloudwatchエージェントを使用してCloudWatchにログファイルを送信するだけであれば、```log```セッションのみ）。注意点として、cloudwatchエージェントは、起動後に```amazon-cloudwatch-agent.json```ファイルを```/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json```ファイルとして移動してしまい、元々の```amazon-cloudwatch-agent.json```ファイルは無くなってしまう。
+
+> ℹ️ 参考：https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
+
+#### ▼ ```amazon-cloudwatch-agent-ctl```コマンド
+
+```amazon-cloudwatch-agent-ctl```コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
+
+**＊実行例＊**
+
+設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。
 
 ```bash
-# EC2内にある設定ファイルを、cloudwatchエージェントに読み込ませる（再起動を含む）
+# 
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -a fetch-config \
     -m ec2 \
     -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
     -s
-    
+```
 
-# プロセスのステータスを確認
+**＊実行例＊**
+
+プロセスのステータスを確認する。
+
+```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -m ec2 \
     -a status
 ```
-
-```bash
-# 設定ファイルが読み込まれたかを確認
-
-### cloudwatchエージェントのプロセスのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
-
-### 設定ファイルの構文チェックのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
-
-### OSの起動と同時に、エージェントが稼働するように設定されているかを確認
-$ systemctl list-unit-files --type=service
-```
-
-<br>
-
-### ```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイル
-
-#### ▼ ```config.json```ファイルとは
-
-cloudwatchエージェントは、```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に、実行される。設定ファイルは分割できる。設定後、```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる。cloudwatchエージェントを使用して、CloudWatchにログファイルを送信するだけであれば、設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い。```run_as_user```には、プロセスのユーザー名（例：```cwagent```）を設定する。
 
 #### ▼ ```agent```セクション
 
@@ -1444,6 +1483,7 @@ cloudwatchエージェント全体を設定する。ウィザードを使用し�
 ```yaml
 {
   "agent": {
+    # プロセスのユーザー名を設定する。
     "run_as_user": "cwagent",
     "metrics_collection_interval": 60,
     # 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール
@@ -1459,7 +1499,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 > ℹ️ 参考：
 > 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection
-> - https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html
 
 ```yaml
 {
@@ -1468,6 +1508,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
   },
   "metrics": {
     # メトリクスの収集単位とする名前空間のユーザー定義名
+    # デフォルトでCWAgentになる。
     "namespace": "CWAgent",
     # メトリクスの収集単位とするディメンション
     "aggregation_dimensions": [
@@ -1486,13 +1527,18 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
     "force_flush_interval": 60,
     # 収集対象のカスタムメトリクスの一覧（collectdパッケージまたはStatsDパッケージを使用する場合）
     "metrics_collected": {
+      # collectdパッケージの使用を宣言する。必ず設定する必要がある。
+      "collectd": {
+        "metrics_aggregation_interval": 60
+      },
       # ディスク系
       "disk": {
         "measurement": [
-          # ディスク使用率
+          # ディスク使用率メトリクス
           "used_percent"
         ],
         "metrics_collection_interval": 60,
+        # マウントポイントを設定する。
         "resources": [
           "*"
         ]
@@ -1500,7 +1546,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
       # メモリ系
       "mem": {
         "measurement": [
-          # メモリ使用率
+          # メモリ使用率メトリクス
           "mem_used_percent"
         ],
         "metrics_collection_interval": 60
@@ -1550,13 +1596,43 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 }
 ```
 
-### IAMロール
+<br>
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
+### ログ
 
+#### ▼ ```amazon-cloudwatch-agent.log```ファイル
+
+cloudwatchエージェントのプロセスに関するログを出力する。
+
+```bash
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+```
+
+#### ▼ ```configuration-validation.log```ファイル
+
+cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。
+
+```bash
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+```
 
 <br>
 
+### IAMロール
+
+#### ▼ EC2インスタンスの場合
+
+EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐づける必要がある。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
+
+#### ▼ AWS外のサーバーの場合
+
+AWS外（オンプレミス、他のクラウドプロバイダー）のサーバーでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐づける必要がある。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
+
+<br>
 
 ## 10-04. CloudWatchアラーム
 

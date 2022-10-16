@@ -584,7 +584,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 **＊実装例＊**
 
 ```yaml
-- name: fetch-config config.json
+- name: fetch-config amazon-cloudwatch-agent.json
   ansible.builtin.shell: |
     /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
       -a fetch-config \

@@ -156,7 +156,7 @@ Win10におけるファイアウォール。
 
 <br>
 
-## 01-02. サイバー攻撃の検出
+## 02. サイバー攻撃の検出
 
 ### Detection Systemとは
 
@@ -168,87 +168,7 @@ Win10におけるファイアウォール。
 
 <br>
 
-## 02. Malware の種類と特徴
-
-### Malware の語源
-
-『malicious（悪意のある）+ software（ソフトウェア）』
-
-<br>
-
-### Macroウイルス
-
-#### ▼ Macroウイルスとは
-
-ワープロアプリ（例：Word）や、表計算アプリケーション（例：Excel）に感染
-
-![Macroウイルス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Macroウイルス.jpg)
-
-<br>
-
-### Worm
-
-#### ▼ Wormとは
-
-自己複製し、1つのコンピュータから、```4```個の経路（ネットワーク、メール、共有ディレクトリ、USB）を辿って、他のコンピュータに感染を広げていく。パソコンがグローバルIPで直接的にインターネットに接続していると感染しやすい。ワームを防ぐためには、パソコンにプライベートIPアドレスを設定し、NATやNAPTなどを介して、インターネットに接続させる必要がある。
-
-**＊例＊**
-
-共有ディレクトリ経由での感染拡大
-
-![worm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/worm.jpg)
-
-<br>
-
-### トロイの木馬
-
-#### ▼ トロイの木馬とは
-
-**＊例＊**
-
-Google play で、過去にアプリとして忍び込んでいたトロイの木馬
-
-![トロイの木馬](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トロイの木馬.jpg)
-
-感染方法がギリシャ神話上のトロイの木馬に似ていることに由来する。有用なプログラムであるように見せかけて、パソコン利用者に実行させることにより、感染。裏で不正な処理を行う。
-
-※トロイの木馬はギリシャ神話に登場する。ギリシャ軍は難攻不落のトロイ城を陥落させるため、中に精鋭部隊を忍び込ませた木馬をトロイ城の近くに置いて帰った。戦利品だと勘違いしたトロイ軍は、城内に木馬を持ち帰った。夜中、木馬の中に隠れた精鋭部隊が自軍の兵士をトロイ城に引き入れ、城を制圧した。
-
-<br>
-
-### Spyware
-
-#### ▼ Spywareとは
-
-パソコン利用者の個人情報を収集し、外部に送信する。
-
-![スパイウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スパイウェア.png)
-
-<br>
-
-### Bot
-
-#### ▼ Botとは
-
-あらかじめBot化させておいたパソコンを踏み台として、攻撃者の命令通りに動かす。
-
-#### ▼ パソコンがボット化するまでのプロセス
-
-![ボット化のプロセス（パソコン）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（パソコン）.jpg)
-
-#### ▼ スマホがボット化するまでのプロセス
-
-![ボット化のプロセス（スマホ）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（スマホ）.jpg)
-
-#### ▼ Bot の使われ方
-
-  まず、攻撃先のネットワーク内にあるパソコンをBot化させる。攻撃者は、Bot化したパソコンを踏み台としてサーバーを攻撃させるように、C&Cサーバーに命令を出す。
-
-![C&Cサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/C&Cサーバー.png)
-
-<br>
-
-## 03. サイバー攻撃/その対策
+## 03. サイバー攻撃の種類、対策
 
 ### Man In The Middle攻撃（中間者攻撃）
 
@@ -603,8 +523,6 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 <br>
 
-## 04. その他のサイバー攻撃
-
 ### ソーシャルエンジニアリング
 
 #### ▼ ソーシャルエンジニアリングとは
@@ -612,6 +530,11 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 技術的な手法ではなく、物理的な手法（例：盗み見、盗み聞き、成りすまし、詐欺など）によってパスワードを取得し、アクセスする手法。
 
 ![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソーシャルエンジニアリング.png)
+
+#### ▼ 【対策】
+
+調査中...
+
 
 <br>
 
@@ -621,17 +544,10 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 対象のインターネット内のパソコンに攻撃プログラムを仕込んで配置し、攻撃者からの命令でサーバーを攻撃させる手法（※ボットを使用した攻撃など）
 
-#### ▼ パソコンがボット化するまでのプロセス（再掲）
+#### ▼ 【対策】
 
-![ボット化のプロセス（パソコン）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（パソコン）.jpg)
+調査中...
 
-#### ▼ スマホがボット化するまでのプロセス（再掲）
-
-![ボット化のプロセス（スマホ）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボット化のプロセス（スマホ）.jpg)
-
-#### ▼ Bot の使われ方（再掲）
-
-![C&Cサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/C&Cサーバー.png)
 
 <br>
 
@@ -643,6 +559,11 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DNSキャッシュポイズニング.gif)
 
+#### ▼ 【対策】
+
+調査中...
+
+
 <br>
 
 ### Back Door
@@ -652,6 +573,10 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
 
 ![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バックドア.png)
+
+#### ▼ 【対策】
+
+調査中...
 
 <br>
 

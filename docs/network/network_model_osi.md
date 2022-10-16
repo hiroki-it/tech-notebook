@@ -25,11 +25,11 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 ## 02. 各レイヤーの責務
 
-各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
+各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
 > ℹ️ 参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
-![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
 
 <br>
 
@@ -52,3 +52,5 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 9. サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
 
 ![OSI参照モデルと通信機器.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデルと通信機器.jpg)
+
+<br>

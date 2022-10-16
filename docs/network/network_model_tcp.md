@@ -17,7 +17,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 TCP階層モデルは、ネットワークインターフェース層、インターネット層、トランスポート層、アプリケーション層、から構成される。TCP/IPモデルで使用されるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。暗号化プロトコルを使用している場合は、各階層でそのプロトコルがパケットヘッダーを暗号化する。
 
-![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
 
 <br>
 
