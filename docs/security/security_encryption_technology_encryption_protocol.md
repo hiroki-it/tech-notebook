@@ -19,6 +19,8 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。
 
+> ℹ️ 参考：https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
+
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol.png)
 
 <br>
@@ -27,17 +29,20 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 #### ▼ 通信データの種類
 
-Webコンテンツデータ、メールデータ、その他
+- Webコンテンツデータ
+- メールデータ
 
 #### ▼ 通信データの作成、ヘッダ情報追加、カプセル化
 
 パケット交換方式におけるパケットのヘッダ情報は、パソコンの各概念層のプロトコルによって追加されていく。
 
+> ℹ️ 参考：https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
+
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットの構造.jpg)
 
 <br>
 
-## 02. アプリケーション層におけるメールデータの暗号化技術
+## 02. 【アプリケーション層】メールデータの暗号化技術
 
 ### S/MIME：Secure MIME
 
@@ -53,38 +58,31 @@ Webコンテンツデータ、メールデータ、その他
 
 <br>
 
-## 03. アプリケーション層におけるリモート通信/操作やファイル転送の暗号化技術
+## 02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術
 
 ### SSH：Secure Shell
 
 #### ▼ SSHとは
 
-公開鍵暗号方式に基づく暗号化プロトコル。公開鍵暗号方式と、公開鍵認証方式やパスワード認証方式の技術を使用して、インターネットを経由して、サーバーのリモート通信/操作を行う。物理webサーバーであっても、webサーバーであっても、SSHによるリモート通信/操作の仕組みは同じである。
-
 ![ssh接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh接続.png)
 
-#### ▼ SSH接続/操作する側に必要なソフトウェア
+公開鍵暗号方式に基づく暗号化プロトコル。公開鍵暗号方式と、公開鍵認証方式やパスワード認証方式の技術を使用して、インターネットを経由して、サーバーのリモート通信/操作を行う。物理webサーバーであっても、webサーバーであっても、SSHによるリモート通信/操作の仕組みは同じである。
 
-- OpenSSH
-- TeraTerm
-- Putty
-
-#### ▼ SSH接続/操作される側に必要なソフトウェア
-
-- OpenSSH
-- Apache MINA/SSHD
+| インストール先 | ツール例                   |
+|---------|------------------------|
+| 送信元マシン内 | OpenSSH、TeraTerm、Putty、など |
+| 宛先マシン内  | OpenSSH、Apache MINA/SSHD、など               |
 
 #### ▼ SSHポートフォワーディング（SSHポート転送）
 
-ローカルサーバーと踏み台サーバーのSSH接続と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーのアプリケーションに間接的に通信を行う方法。
+ローカルマシンと踏み台サーバーのSSH接続と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的に通信する。
 
 **＊例＊**
 
-踏み台サーバー（例：EC2）を使用して、ローカルサーバー（例：自身のパソコン）の```20000```番ポートが開放されたアプリケーションと、リモートサーバー（例：RDS）の```3306```番ポートが開放されたアプリケーションをマッピングできるようになる。DBMSクライアントソフトでは、リモートにあるdbサーバーに接続するために、この仕組みがよく使用される。
+ローカルマシンの```20000```番ポートに対する通信を、踏み台サーバーを介して、リモートサーバーの```3306```番ポートにポートフォワーディングする。
 
 ```bash
-# ローカルマシンの20000番ポートが割り当てられたアプリケーションに対する通信を、RDSの3306番ポートのアプリケーションに転送。
-[local pc] $ ssh -L20000:*****.rds.amazonaws.com:3306 username@fumidai.com 
+$ ssh -L20000:<リモートサーバー>:3306 username@<踏み台サーバーのIPアドレス>
 ```
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
@@ -123,16 +121,43 @@ SSHを介して、ファイル転送を行う。SSHの能力をより拡張し�
 
 SSHを介して、ファイル転送を行う。SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をより拡張したものである。
 
-#### ▼ ファイル要求側のクライアントソフトウェア
-
-- WinSCP
-- Filezilla
-
-#### ▼ ファイル送信側のクライアントソフトウェア
+| インストール先 | ツール例                |
+|---------|---------------------|
+| 送信元マシン内 | WinSCP、Filezilla、など |
+| 宛先マシン内  | なし                  |
 
 <br>
 
-## 04. トランスポート層におけるヘッダ情報の暗号化技術
+### RDP：Remote Desktop（リモートデスクトップ）
+
+#### ▼ リモートデスクトップとは
+
+![encryption_protocol_remote-desktop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/encryption_protocol_remote-desktop.png)
+
+ゲートウェイマシン上で稼働するリモートデスクトップツールを介して、異なるネットワーク内のアプリケーションと通信する。
+
+| インストール先  | ツール例                   |
+|----------|------------------------|
+| 送信元マシン内  | Chromeリモートデスクトップ、など    |
+| ゲートウェイマシン内 | Guacamole（guardを含む）、など |
+| 宛先マシン内   | なし                     |
+
+
+> ℹ️ 参考：
+>  
+> - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
+> - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
+> - https://openstandia.jp/oss_info/guacamole/
+
+#### ▼ 他の暗号化プロトコルとの組み合わせ
+
+ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体への通信でも暗号化プロトコル（例：VPN）を使用した方がよい。例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
+
+> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
+
+<br>
+
+## 03. 【トランスポート層】ヘッダ情報の暗号化技術
 
 ### SSL/TLS：Secure Sockets Layer / Transport Layer Security
 
@@ -239,26 +264,7 @@ server {
 
 <br>
 
-### VPN：Virtual Private Network（仮想プライベートネットワーク）
-
-#### ▼ VPNとは
-
-異なるネットワーク間で安全な通信を行うための仕組み。IPsecやSSL/TLSによって実現される。
-
-![VPN（ネットワーク間）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPN（ネットワーク間）.png)
-
-#### ▼ 通信の暗号化/復号化
-
-リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
-
-> ℹ️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
-
-![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
-
-<br>
-
-
-## 05. ネットワーク層におけるヘッダ情報の暗号化技術
+## 05. 【ネットワーク層】ヘッダ情報の暗号化技術
 
 ### IPsec：Internet Protocol Security
 
@@ -278,20 +284,23 @@ server {
 
 #### ▼ VPNとは
 
-異なるネットワーク間で安全な通信を行うための仕組み。使用されている暗号化プロトコルを基に、『PPTP-VPN』、『SSL/TLS-VPN』、『IPsec-VPN』がある。
-
 ![VPN（ネットワーク間）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPN（ネットワーク間）.png)
 
-#### ▼ PPTP-VPNの例
+異なるネットワーク間で安全な通信を行うための仕組み。異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-『PPTP』
+> ℹ️ 参考：
+>
+> - www.amazon.co.jp/dp/B0756SS7N3
+> - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
+> - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
 
-#### ▼ SSL/TLS-VPNの例
+#### ▼ 通信の暗号化/復号化
 
-『OpenVPN』
+リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
 
-#### ▼ IPsec-VPNの例
+> ℹ️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
-『L2TP/IPSec』
+![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
+
 
 <br>
