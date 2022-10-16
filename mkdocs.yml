@@ -291,9 +291,12 @@ nav:
 
   - 🌏 ネットワーク:
       - network/index.md
-      - ネットワーク: network/network.md
-      - TCP階層モデル: network/network_model_tcp.md
-      - OSI参照モデル: network/network_model_osi.md
+      - ■ ネットワーク:
+            - ネットワーク: network/network.md
+            - IPアドレス: network/network_ip_address.md
+      - ■ モデル:
+            - TCP階層モデル: network/network_model_tcp.md
+            - OSI参照モデル: network/network_model_osi.md
 
   - 🔐 セキュリティ:
       - security/index.md
