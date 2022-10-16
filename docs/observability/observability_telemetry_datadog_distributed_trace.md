@@ -374,7 +374,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
       "duration": 123,           # 処理の所要時間
       "error": 0,                # エラーの有無
       "meta": {
-        "env": "prd"             # タグのり
+        "env": "prd"             # タグ
       },
       "metrics": {
         "baz-sum": 123           # マイクロサービスのメトリクス

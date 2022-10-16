@@ -12,6 +12,7 @@
 
 * #### <u>カーネル</u>
   > * ##### 📖 [︎カーネル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel.html)
+  > * ##### 📖 [︎プロセス管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_process_management.html)
   > * ##### 📖 [︎メモリ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html)
   > * ##### 📖 [︎ストレージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_storage_management.html)
   > * ##### 📖 [︎I/O管理](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_io_management.html)

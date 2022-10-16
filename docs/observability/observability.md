@@ -99,9 +99,9 @@ description: 可観測性の知見を記録しています。
 
 <br>
 
-### 分散トレースの設計
+### 分散トレースの基になるスパンの設計
 
-#### ▼ 分散トレースの基になるスパンの持つ情報
+#### ▼ スパンの持つ情報
 
 > ℹ️ 参考：https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
 
@@ -235,13 +235,14 @@ description: 可観測性の知見を記録しています。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
-マイクロサービスから収集されたスパンのセットのこと。スパンをトレースIDで紐付けることによって、異なるマイクロサービスを横断するを一繋ぎにし、リクエストによる一連の処理を認識できるようになる。
+マイクロサービスから収集されたスパンのセットのこと。スパンをトレースIDで紐付けることによって、```1```個のリクエストで発生したマイクロサービスを横断する処理を、一繋ぎに表現できるようになる。
 
 > ℹ️ 参考：
 >
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
 > - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
+> - https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/
 
 <br>
 
