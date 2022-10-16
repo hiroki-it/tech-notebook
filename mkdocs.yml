@@ -297,7 +297,9 @@ nav:
 
   - 🔐 セキュリティ:
       - security/index.md
-      - サイバー攻撃: security/security_cyber_attacks.md
+      - ■ サイバー攻撃:
+          - サイバー攻撃: security/security_cyber_attacks.md
+          - マルウェア: security/security_cyber_attacks_malware.md
       - ■ 通信データの暗号化技術:
           - 通信データの暗号化技術: security/security_encryption_technology.md
           - 暗号化プロトコル: security/security_encryption_technology_encryption_protocol.md
