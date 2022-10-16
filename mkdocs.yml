@@ -302,6 +302,7 @@ nav:
           - マルウェア: security/security_cyber_attacks_malware.md
       - ■ 通信データの暗号化技術:
           - 通信データの暗号化技術: security/security_encryption_technology.md
+          - 暗号方式: security/security_encryption_technology_encryption_method.md
           - 暗号化プロトコル: security/security_encryption_technology_encryption_protocol.md
       - ■ 認証/認可:
           - 認証: security/security_auth_authentication.md
