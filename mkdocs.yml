@@ -340,7 +340,10 @@ nav:
       - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ型仮想化:
-          - Docker: virtualization/virtualization_container_docker.md
+          - ■ Docker:
+              - Docker: virtualization/virtualization_container_docker.md
+              - ストレージ: virtualization/virtualization_container_docker_storage.md
+              - ネットワーク: virtualization/virtualization_container_docker_network.md
 
   - ⚙️ IaC:
       - infrastructure_as_code/index.md
@@ -361,11 +364,13 @@ nav:
           - ■ Kubernetes:
               - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
-              - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
-              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+              - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
               - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
               - リソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.md
+              - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
+              - ■ Kubernetesリソース:
+                  - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
+                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - ■ Secret管理:
                   - ■ SecretsストアCSIドライバー:
                       - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver.md
