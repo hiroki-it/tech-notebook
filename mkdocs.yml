@@ -292,11 +292,11 @@ nav:
   - 🌏 ネットワーク:
       - network/index.md
       - ■ ネットワーク:
-            - ネットワーク: network/network.md
-            - IPアドレス: network/network_ip_address.md
+          - ネットワーク: network/network.md
+          - IPアドレス: network/network_ip_address.md
       - ■ モデル:
-            - TCP階層モデル: network/network_model_tcp.md
-            - OSI参照モデル: network/network_model_osi.md
+          - TCP階層モデル: network/network_model_tcp.md
+          - OSI参照モデル: network/network_model_osi.md
 
   - 🔐 セキュリティ:
       - security/index.md
@@ -380,8 +380,8 @@ nav:
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
                       - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
                   - ■ Kustomize:
-                        - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
-                        - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
+                      - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
+                      - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
               - ■ カスタムリソース:
                   - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
                   - ■ ArgoCD:
