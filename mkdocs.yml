@@ -294,6 +294,7 @@ nav:
       - ■ ネットワーク:
           - ネットワーク: network/network.md
           - IPアドレス: network/network_ip_address.md
+          - ルーター: network/network_router.md
       - ■ モデル:
           - TCP階層モデル: network/network_model_tcp.md
           - OSI参照モデル: network/network_model_osi.md
