@@ -1189,3 +1189,5 @@ Pathの値に属性までのアクセスを『```@```』から入力すると、
 Pathの値にタグ名をそのまま入力すると、タグがファセットの値に登録される。
 
 ![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_facet_tag.png)
+
+<br>
