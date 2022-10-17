@@ -356,3 +356,5 @@ end
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 
 これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良くなると考えておけばよい。
+
+<br>
