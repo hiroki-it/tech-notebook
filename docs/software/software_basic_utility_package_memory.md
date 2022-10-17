@@ -670,7 +670,7 @@ $ yum install -y xclip
 
 ### xclipとは
 
-標準出力/標準エラー出力の内容をコピーし、保持する。
+標準出力/標準エラー出力の内容をコピーし、メモリ上に保持する。
 
 > ℹ️ 参考：https://linux.die.net/man/1/xclip
 

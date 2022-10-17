@@ -380,6 +380,14 @@ $ aws ec2 describe-instances \
 
 ## 03. AWSリソース別のプラクティス
 
+### グローバルオプション
+
+#### ▼ --region
+
+リージョンを指定して、コマンドを実行する。```credentials```ファイルや環境変数を変更する手間が省ける。
+
+<br>
+
 ### CloudWatch
 
 #### ▼ set-alarm-state
@@ -393,6 +401,13 @@ $ aws cloudwatch set-alarm-state \
     --alarm-name "prd-foo-alarm" \
     --state-value ALARM \
     --state-reason "アラート!!"
+```
+
+```bash
+$ aws cloudwatch set-alarm-state \
+    --alarm-name "prd-foo-alarm" \
+    --state-value OK \
+    --state-reason "大丈夫です!!"
 ```
 
 #### ▼ get-metric-statistics

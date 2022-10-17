@@ -32,7 +32,7 @@
   > * ##### 📖 [︎リソース管理](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.html)
   > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
   > * ##### <u>Kubernetesリソース</u>
-  > > * ##### 📖 [︎リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
+  > > * ##### 📖 [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
   > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
   > * ##### <u>Secret管理</u>
   > > * ##### <u>SecretsストアCSIドライバー</u>

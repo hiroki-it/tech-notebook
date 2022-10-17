@@ -329,7 +329,7 @@ module "alb" {
 # ALB
 ###############################
 module "alb" {
-  # ローカルモジュールを参照する。
+  # リモートモジュールを参照する。
   # SSHの場合
   source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git//module/sub-directory"
   
