@@ -369,7 +369,7 @@ nav:
               - リソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
               - ■ Kubernetesリソース:
-                  - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
+                  - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - ■ Secret管理:
                   - ■ SecretsストアCSIドライバー:
