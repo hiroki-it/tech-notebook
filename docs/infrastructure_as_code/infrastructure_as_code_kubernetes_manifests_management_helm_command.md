@@ -439,7 +439,7 @@ version: <バージョンタグ>
 
 #### ▼ values
 
-チャートに渡せるパラメーターを```values```ファイルとして取得する。```values```ファイル本体は、チャートリポジトリで閲覧できる。
+チャートに渡せるパラメーターを```values```ファイルとして取得する。```values```ファイル本体は、チャートリポジトリで参照できる。
 
 > ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
 

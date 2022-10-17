@@ -11,7 +11,9 @@
   > * ##### 📖 [︎暗号化プロトコル](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_encryption_technology_encryption_protocol.html)
 * #### <u>認証/認可</u>
   > * ##### 📖 [︎認証](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authentication.html)
-  > * ##### 📖 [︎認可](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authorization.html)
+  > * ##### <u>認可</u>
+  > > * ##### 📖 [︎認可](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authorization.html)
+  > > * ##### 📖 [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authorization_open_policy_agent.html)
 
 <br>
 

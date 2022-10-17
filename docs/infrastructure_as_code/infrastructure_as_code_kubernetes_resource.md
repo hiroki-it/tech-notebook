@@ -203,7 +203,7 @@ Podのライフサイクルにはフェーズがある。
 | ```m```：millicores | ```1```コア = ```1000```ユニット = ```1000```m |
 | ```Mi```：mebibyte  | ```1```Mi = ```1.04858```MB                    |
 
-#### ▼ クライアントがPod内のログを閲覧できる仕組み
+#### ▼ クライアントがPod内のログを参照できる仕組み
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_logging.png)
 
@@ -315,7 +315,7 @@ IngressコントローラーによってClusterネットワーク外からイン
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressコントローラーは、Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して閲覧する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+Ingressコントローラーは、Ingressの設定に基づいてClusterネットワーク外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 > ℹ️ 参考：
 >

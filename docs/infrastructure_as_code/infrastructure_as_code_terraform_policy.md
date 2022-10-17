@@ -588,9 +588,9 @@ vpc_subnet_private_app_cidrs       = { a = "*.*.*.*/25", c = "*.*.*.*/25" }
 vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 ```
 
-#### ▼ bool型の命名
+#### ▼ boolean型の命名
 
-```count```引数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のbool型環境変数を用意する。
+```count```引数による条件分岐でリソースの作成の有無を切り替えている場合、```enable_***```という名前のboolean型環境変数を用意する。
 
 > ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
