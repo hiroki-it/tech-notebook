@@ -287,6 +287,9 @@ nav:
   - 💻 ハードウェア:
       - hardware/index.md
       - ハードウェア: hardware/hardware.md
+      - CPU: hardware/hardware_cpu.md
+      - メモリ: hardware/hardware_memory.md
+      - ストレージ: hardware/hardware_storage.md
       - 組み込み機器: hardware/hardware_embedded_system.md
 
   - 🌏 ネットワーク:
