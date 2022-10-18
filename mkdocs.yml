@@ -415,6 +415,8 @@ nav:
                       - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
                   - ■ Kiali:
                       - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
+                  - ■ OpenPolicyAgent:
+                      - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
                   - ■ OpenTelemetry:
                       - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
                   - ■ Prometheus:
