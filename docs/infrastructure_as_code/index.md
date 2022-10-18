@@ -11,7 +11,8 @@
 * #### <u>Ansible</u>
   > * ##### 📖 [Ansible](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible.html)
   > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_command.html)
-  > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_conf.html)
+  > * ##### 📖 [Playbook](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html)
+  > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html)
 
 * #### <u>Docker</u>
   > * ##### 📖 [︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)
@@ -71,6 +72,8 @@
   > > > * ##### 📖 [︎Jaeger](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.html)
   > > * ##### <u>Kiali</u>
   > > > * ##### 📖 [︎Kiali](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.html)
+  > > * ##### <u>OpenPolicyAgent</u>
+  > > > * ##### 📖 [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.html)
   > > * ##### <u>OpenTelemetry</u>
   > > > * ##### 📖 [︎OpenTelemetry](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.html)
   > > * ##### <u>Prometheus</u>

@@ -232,7 +232,7 @@ server {
     # SSL証明書を設定する。
     ssl_certificate     /etc/nginx/ssl/server.crt;
     # 秘密鍵を設定する。
-    ssl_certificate_key /etc/nginx/ssl/server.key;        ：
+    ssl_certificate_key /etc/nginx/ssl/server.key;
 }
 ```
 

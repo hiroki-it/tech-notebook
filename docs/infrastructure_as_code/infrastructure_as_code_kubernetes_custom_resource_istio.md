@@ -391,7 +391,7 @@ spec:
 
 #### ▼ istio-sidecar-injector-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingAdmissionWebhookアドオンを設定する。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookアドオンを設定する。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -414,7 +414,8 @@ webhooks:
       service:
         name: istiod-<リビジョン番号>
         namespace: istio-system
-        path: "/inject" # エンドポイント
+        # エンドポイント
+        path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
     namespaceSelector:

@@ -42,7 +42,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 ### コントロールプレーンNode（kubernetesマスター）とは
 
-kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。クライアント（```kubectl```実行者、Kubernetesリソース）がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。コントロールプレーンNodeがマネージドなツールを使用した方がよく、『Nodeのクライアント操作=ワーカーNodeのクライアント操作』と考える。
+kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。クライアント（```kubectl```実行者、Kubernetesリソース）がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
 
 > ℹ️ 参考：
 >

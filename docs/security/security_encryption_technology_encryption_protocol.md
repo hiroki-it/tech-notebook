@@ -128,7 +128,7 @@ SSHを介して、ファイル転送を行う。SSHとFTPを組み合わせた�
 
 <br>
 
-### RDP：Remote Desktop（リモートデスクトップ）
+### RDP：Remote Desktop Protocol（リモートデスクトッププロトコル）
 
 #### ▼ リモートデスクトップとは
 

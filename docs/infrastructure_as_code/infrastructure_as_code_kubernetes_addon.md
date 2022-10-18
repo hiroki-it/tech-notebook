@@ -86,7 +86,7 @@ ValidatingAdmissionWebhook,
 
 ![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review.png)
 
-MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストを送信し、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
+MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
 > ℹ️ 参考：
 >
@@ -130,7 +130,8 @@ webhooks:
       service:
         name: istiod-<リビジョン番号>
         namespace: istio-system
-        path: "/inject" # エンドポイント
+        # エンドポイント
+        path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
     namespaceSelector:
@@ -147,7 +148,7 @@ webhooks:
 
 #### ▼ ValidatingAdmissionWebhookアドオン
 
-ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップでWebhookによる独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
 > ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
@@ -218,7 +219,7 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
 
 #### ▼ mutating-admissionステップのAdmissionRequest
 
-kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
+kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメーターを格納し、リクエストとして送信する。
 
 > ℹ️ 参考：
 >
