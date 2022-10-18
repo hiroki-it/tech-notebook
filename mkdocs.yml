@@ -283,6 +283,7 @@ nav:
           - ■ 総合テスト:
               - 総合テスト: testing/testing_blackbox_system_test.md
               - JMeter: testing/testing_blackbox_system_test_jmeter.md
+              - ChaosMesh: testing/testing_blackbox_system_test_chaos_mesh.md
 
   - 💻 ハードウェア:
       - hardware/index.md
