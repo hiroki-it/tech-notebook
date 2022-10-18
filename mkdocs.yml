@@ -357,7 +357,8 @@ nav:
           - ■ Ansible:
               - Ansible: infrastructure_as_code/infrastructure_as_code_ansible.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_ansible_command.md
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_conf.md
+              - Playbook: infrastructure_as_code/infrastructure_as_code_ansible_playbook.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_cfg.md
           - ■ Docker:
               - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_command.md
