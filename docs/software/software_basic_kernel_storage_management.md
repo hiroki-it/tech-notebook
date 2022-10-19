@@ -466,8 +466,8 @@ $ sudo apt-get install -y nfs-common
 
 ```bash
 $ sudo mount -t nfs \
-  <MacOSのIPアドレス>:/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ> \
-  <マウントポイント>
+    <MacOSのIPアドレス>:/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ> \
+    <マウントポイント>
 ```
 
 <br>

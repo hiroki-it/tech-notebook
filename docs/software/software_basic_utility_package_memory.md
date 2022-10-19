@@ -463,7 +463,7 @@ dev-mqueue.mount                  loaded active mounted POSIX Message Queue File
 
 #### ▼ list-unit-files
 
-デーモン化されたプロセスのUnitの一覧を取得する。
+デーモン化されたプロセスのUnitの一覧と、OS起動時にデーモンが自動起動するようになっているか否か、を取得する。
 
 ```bash
 $ systemctl list-unit-files --type=<ユニットの拡張子>

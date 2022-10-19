@@ -628,7 +628,7 @@ $ docker volume inspect <ボリューム名>
 # dockerエリアをボリュームマウントして起動
 # マウントポイントのボリューム名を使用
 $ docker run -d -it --name <コンテナ名> /bin/bash \
-  --mount type=volume, src=<ホストボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
+    --mount type=volume, src=<ホストボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
 ```
 
 **＊実装例＊**

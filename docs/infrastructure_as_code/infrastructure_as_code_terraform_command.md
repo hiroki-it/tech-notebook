@@ -268,7 +268,7 @@ main.tf
 
 ### get
 
-```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリに、ローカル/リモートモジュールをインストールする。ただ、```terraform init```コマンドに同じ機能が含まれている。
+```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリに、ローカル/リモートモジュールをインストールする。ただし、```terraform init```コマンドに同じ機能が含まれている。
 
 > ℹ️ 参考：https://ozashu.hatenablog.com/entry/2019/05/07/000541
 
@@ -406,7 +406,7 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ importできない```resource```タイプ
 
-```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。その場合、```.tfstate```ファイルと実インフラの差分を解消できない。ただ、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。その場合、```.tfstate```ファイルと実インフラの差分を解消できない。ただし、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
 
 #### ▼ importを行わなかった場合のエラー
 

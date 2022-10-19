@@ -268,6 +268,17 @@ healthz check passed
 
 <br>
 
+### SLI/SLO
+
+kube-apiserverには、SLIとSLOが設定されている。
+
+> ℹ️ 参考：
+> 
+> - https://povilasv.me/kubernetes-api-server-slo-alerts-the-definitive-guide/
+> - https://github.com/kubernetes/community/tree/master/sig-scalability/slos
+
+<br>
+
 ### 他のコンポーネントとの通信
 
 kube-apiserverは、クライアントからKubernetesリソースの作成/更新/削除リクエストを受信すると、他のコンポーネントと通信してKubernetesリソースを間接的に操作する。ここでは、Podの作成リクエストが送信された場合の流れを記載する。
@@ -488,7 +499,7 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 ### ワーカーNodeのオートスケーリング
 
-KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただ、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
+KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない（2022/07/20執筆時点）。ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
 
 > ℹ️ 参考：
 >

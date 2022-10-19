@@ -109,6 +109,14 @@ VictoriaMetricsのプロセスの起動時にて、```storageDataPath```オプ�
 └── tmp/
 ```
 
+```du```コマンドを使用して、ストレージ使用量を確認できる。
+
+```bash
+$ du -hs /var/lib/victoriametrics/data
+
+100G /var/lib/victoria-metrics/data
+```
+
 #### ▼ ReadOnlyモード
 
 vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
