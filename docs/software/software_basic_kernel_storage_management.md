@@ -109,9 +109,11 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 <br>
 
-## 02. パーティション、物理ボリューム
+## 02. パーティション、物理ボリューム、マウントポイント
 
-### パーティション、物理ボリュームとは
+### パーティション、物理ボリューム
+
+#### ▼ パーティション、物理ボリューム、とは
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
@@ -124,27 +126,41 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 <br>
 
-### パーティションの確認方法
+### マウントポイント
+
+#### ▼ マウントポイントとは
+
+パーティションにアクセスできるディレクトリのこと。
+
+> ℹ️ 参考：https://allabout.co.jp/gm/gc/438839/
+
+<br>
+
+### パーティション、マウントポイント、の確認方法
 
 #### ▼ Linuxの場合
 
+Linuxでは、パーティションとマウントポイントは```df```コマンドで確認できる。
+
 **＊例＊**
 
-Linuxでは、パーティションは```df```コマンドで確認できる。
+```Filesystem```列にパーティション、```Mounted on```列にパーティションに対応するマウントポイント、が表示される。
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> ℹ️ 参考：
+> 
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
 
 ```bash
 $ df
 
+# パーティション、マウントポイント
 Filesystem     Size   Used  Avail  Use%   Mounted on
-/dev/xvda1       8G   1.9G    14G   12%   /           # パーティションに紐づくデバイスファイル
+/dev/xvda1       8G   1.9G    14G   12%   /          
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
 
 #### ▼ Windowsの場合
-
-**＊例＊**
 
 Windowsでは、CドライブとDドライブがパーティションに相当する。
 
@@ -152,9 +168,13 @@ Windowsでは、CドライブとDドライブがパーティションに相当�
 
 #### ▼ MacOSの場合
 
+MacOSでは、```diskutil```コマンドを実行するとパーティションとマウントポイントを確認できる。
+
+> ℹ️ 参考：https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
+
 **＊例＊**
 
-MacOSでは、```diskutil```コマンドを実行するとパーティションを確認できる。ディスクに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。
+ディスクに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される（例：パーティション名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる）。
 
 ```bash
 $ diskutil list

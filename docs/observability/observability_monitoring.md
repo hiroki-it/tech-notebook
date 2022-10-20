@@ -338,6 +338,9 @@ CloudWatchでは、StatsDからのメトリクスの送信をサポートして�
 
 ビジネス指標を対象として、監視を実施する。ビジネス指標の監視に特化した監視ツールを、特に『BIツール』ともいう。
 
-> ℹ️ 参考：https://www.datadoghq.com/solutions/real-time-business-intelligence/
+> ℹ️ 参考：
+> 
+> - https://www.datadoghq.com/solutions/real-time-business-intelligence/
+> - https://qiita.com/tomo_will/items/e0f00b3f08ac607286da#bi%E3%83%84%E3%83%BC%E3%83%AB%E6%AF%8E%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9
 
 <br>

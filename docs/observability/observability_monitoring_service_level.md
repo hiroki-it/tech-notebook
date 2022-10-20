@@ -85,7 +85,7 @@ SLIとして採用した指標の目標値のこと。ユーザーの視点で�
 > ℹ️ 参考：https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
 
 
-![slo_user-hapiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/slo_user-hapiness.png)
+![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/slo_user-happiness.png)
 
 
 <br>

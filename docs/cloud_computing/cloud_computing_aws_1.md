@@ -1468,6 +1468,24 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -s
 ```
 
+cloudwatchエージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。
+
+```ini
+[Unit]
+Description=Amazon CloudWatch Agent
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/aws/amazon-cloudwatch-agent/bin/start-amazon-cloudwatch-agent
+KillMode=process
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target
+```
+
 **＊実行例＊**
 
 プロセスのステータスを確認する。

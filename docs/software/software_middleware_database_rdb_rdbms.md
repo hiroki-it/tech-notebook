@@ -11,33 +11,24 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
 
+
 <br>
 
 ## 01. RDBMS（関係DB管理システム）の仕組み
+
+### RDBMSの種類
+
+| RDBMS      | RDB           |
+|------------|---------------|
+| MariaDB    | MariaDBのDB    |
+| MySQL      | MySQLのDB      |
+| PostgreSQL | PostgreSQLのDB |
 
 ### アーキテクチャ
 
 RDBMSは、DBエンジン、ストレージエンジン、から構成される。
 
 ![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DB管理システムの仕組み.png)
-
-<br>
-
-### RDBMSの種類
-
-![DBMS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMS.jpg)
-
-#### ▼ MariaDB
-
-MariaDBDBを管理できるRDBMS
-
-#### ▼ MySQL
-
-MySQLDBを管理できるRDBMS
-
-#### ▼ PostgreSQL
-
-PostgreSQLDBを管理できるRDBMS
 
 <br>
 
@@ -53,11 +44,32 @@ RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフ
 
 <br>
 
-### RDB
+### RDB（関係DB）
 
 #### ▼ RDBとは
 
 データ同士がテーブル状に関係を持つデータ格納形式で構成されるのこと。NoSQLとは異なり、データはストレージに保存する。
+
+<br>
+
+### コネクション
+
+#### ▼ コネクションとは
+
+アプリからDBへのクエリ送信時の通信のこと。
+
+> ℹ️ 参考：https://en.wikipedia.org/wiki/Database_connection
+
+#### ▼ コネクションプール
+
+![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/db_connection-pool.png)
+
+アプリからDBへのクエリ送信時に新しく作成したコネクションを、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。一定回数再利用されたり、一定期間使用されていないコネクションは削除される。
+
+> ℹ️ 参考：
+> 
+> - https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B
+> - https://gihyo.jp/dev/serial/01/db-academy/000502
 
 <br>
 
@@ -171,3 +183,102 @@ masterテーブルとtransactionテーブルがわかるようにする命名す
 
 <br>
 
+## 03. クエリチューニング
+
+### DBインデックスの作成
+
+#### ▼ DBインデックスとは
+
+テーブルから特定のカラムだけを抜き出し、検索しやすいように並び替え、名前を付けて保存しておいたもの。DBインデックスとして保存されたカラムから特定のレコードを直接的に取得できるため、SQLの実行時間がカラム数に依存しなくなる。DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。
+
+> ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+
+#### ▼ クラスターDBインデックス
+
+プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。
+
+```sql
+CREATE INDEX foo_index
+    ON foo_table (id)
+```
+
+#### ▼ セカンダリDBインデックス
+
+プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。
+
+```sql
+CREATE INDEX foo_index
+    ON foo_table (foo_column)
+```
+
+#### ▼ 複合DBインデックス
+
+複数のカラムを基準にして、テーブルを並び替えたDBインデックスのこと。対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない（一意の値の多い）カラムが検出される。そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。
+
+> ℹ️ 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
+
+```sql
+CREATE INDEX foo_index
+    ON foo_table (foo_column, bar_column, ...)
+```
+
+**＊例＊**
+
+以下のような```foo```テーブルがあり、```name```カラムと```address```カラムを基準に並び替えた```foo_index```という複合DBインデックス名を作成する。
+
+```sql
+CREATE INDEX foo_index
+    ON foo_table (name, address)
+```
+
+| id   | name      | address | old  |
+| ---- | --------- | ------- | ---- |
+| 1    | Suzuki    | Tokyo   | 24   |
+| 2    | Yamada    | Osaka   | 18   |
+| 3    | Takahashi | Nagoya  | 18   |
+| 4    | Honda     | Tokyo   | 16   |
+| 5    | Endou     | Tokyo   | 24   |
+
+各カラムで値の異なるレコード数が計測され、```name```カラムは```address```カラムよりも一意のレコードが多いため、```name```カラムの昇順（アルファベット順）に並び替えられ、DBインデックスとして保存される。
+
+| id   | name      | address | old  |
+| ---- | --------- | ------- | ---- |
+| 5    | Endou     | Tokyo   | 24   |
+| 4    | Honda     | Tokyo   | 18   |
+| 1    | Suzuki    | Tokyo   | 24   |
+| 3    | Takahashi | Nagoya  | 18   |
+| 2    | Yamada    | Osaka   | 18   |
+
+<br>
+
+## 04. アルゴリズム
+
+### 突き合わせ処理
+
+#### ▼ 突き合わせ処理とは
+
+ビジネスの基盤となるマスタデータ（例：商品データ、取引先データなど）と、日々更新されるトランザクションデータ（例：販売履歴、入金履歴など）を突き合わせ、新しいデータを作成する処理のこと。
+
+![マッチング処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マッチング処理_1.PNG)
+
+#### ▼ アルゴリズム
+
+![マッチング処理_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マッチング処理_4.png)
+
+#### ▼ 具体例
+
+とある生命保険会社では、顧客の保険契約データを契約マスタテーブルで、またそれとは別に、保険契約データの変更点（異動事由）を異動トランザクションテーブルで、管理している。毎日、契約マスタテーブルと異動トランザクションテーブルにおける前日レコードを突き合わせ、各契約の異動事由に応じて、変更後契約データとして、新契約マスタテーブルに挿入する。
+
+![マッチング処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マッチング処理_2.PNG)
+
+前処理として、契約マスタデータと異動トランザクションデータに共通する識別子が同じ順番で並んでいる必要がある。
+
+1. 契約マスタデータの1行目と、異動トランザクションデータの1行目の識別子を突き合わせる。『```契約マスタデータ = 異動トランザクションデータ```』の時、異動トランザクションデータを基に契約マスタデータを更新し、それを新しいデータとして変更後契約マスタデータに挿入する。
+2. 契約マスタデータの2行目と、異動トランザクションデータの2行目の識別子を突き合わせる。『```マスタデータ < トランザクションデータ```』の場合、マスタデータをそのまま変更後マスタテーブルに挿入する。
+3. マスタデータの3行目と、固定したままのトランザクションデータの2行目の識別子を突き合わせる。『```マスタデータ = トランザクションデータ```』の時、トランザクションデータを基にマスタデータを更新し、それを変更後データとして変更後マスタテーブルに挿入する。
+4. 『```契約マスタデータ < 異動トランザクションデータ```』になるまで、データを突き合わせる。
+5. 最終的に、変更後マスタテーブルは以下の通りになる。
+
+![マッチング処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マッチング処理_3.png)
+
+<br>
