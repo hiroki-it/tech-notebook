@@ -176,7 +176,7 @@ nav:
               - ■ TSDB:
                   - ■ VictoriaMetrics:
                       - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
-                      - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics_command.md
+                      - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
           - ■ ログ系:
               - ■ FluentBit/Fluentd:
                   - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
