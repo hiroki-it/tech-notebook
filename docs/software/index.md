@@ -71,6 +71,7 @@
   > * ##### <u>TSDB</u>
   > > * ##### <u>VictoriaMetrics</u>
   > > > * ##### 📖 [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics.html)
+  > > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_tsdb_victoriametrics_command.html)
 
 * #### <u>ログ系</u>
   > * ##### <u>FluentBit/Fluentd</u>

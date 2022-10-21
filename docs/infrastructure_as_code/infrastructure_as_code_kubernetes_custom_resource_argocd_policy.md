@@ -84,7 +84,7 @@ child-argocd-repository/
 │       ├── grafana-application.yaml           # k8sリポジトリの/dev/obsv/grafanaディレクトリを監視
 │       ├── kiali-application.yaml             # k8sリポジトリの/dev/obsv/kialiディレクトリを監視
 │       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
-│       └── victoria-metrics-application.yaml # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
+│       └── victoria-metrics-application.yaml  # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
 │
 ├── stg/
 └── prd/

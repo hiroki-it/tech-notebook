@@ -206,11 +206,18 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 
 異なるネットワーク間で安全な通信を行うための仕組み。異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
+| インストール先   | ツール例                                                |
+|-----------|-----------------------------------------------------|
+| 送信元マシン内   | OpenVpnClient、FortiClient、Zapp（Zscalerのクライアントツール）など |
+| 中継VPNマシン内 | OpenVpn、FortiGate、SDPゲートウェイ（ZscalerのVPNマシン）など       |
+| 宛先マシン内    | なし                                                  |
+
 > ℹ️ 参考：
 >
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
 > - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
+> - https://www.iim.co.jp/products/zscaler/zpa/
 
 #### ▼ 通信の暗号化/復号化
 
