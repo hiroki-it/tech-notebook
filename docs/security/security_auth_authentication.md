@@ -23,13 +23,7 @@ description: Authenticate（認証）＠認証/認可の知見を記録してい
 
 ### HTTP認証
 
-HTTP通信の中で認証を行う認証スキームのこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
-
-> ℹ️ 参考：
->
-> - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
-> - https://architecting.hateblo.jp/entry/2020/03/27/130535
-> - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_auth_authentication_http.html
 
 <br>
 
@@ -44,7 +38,7 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 > - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 > - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
-#### ▼ セッションIDを使用したForm認証の場合（セッションベース）
+#### ▼ セッションIDを使用したForm認証の場合
 
 （１）セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
 
@@ -99,7 +93,7 @@ cookie: sessionid=<セッションID>
 
 > ℹ️ 参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
-#### ▼ トークンを使用したForm認証の場合（トークンベース）
+#### ▼ トークンを使用したForm認証の場合
 
 トークンを```Cookie```ヘッダーに割り当て、リクエストを送信する。この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
@@ -131,7 +125,7 @@ cookie: sessionid=<セッションID>
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 ```yaml
-GET https://example.com/bar.php
+POST https://example.com/foo
 ---
 x-api-key: <APIキー>
 ```
@@ -147,7 +141,7 @@ x-api-key: <APIキー>
 > ℹ️ 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```yaml
-GET https://example.com/bar.php
+POST https://example.com/foo
 ---
 authorization: <Personal Acccess Token>
 ```
@@ -165,7 +159,7 @@ authorization: <Personal Acccess Token>
 
 #### ▼ 二段階認証とは
 
-認証時に、段階的に```2```個の方法を設定し、クライアントを照合する。
+```2```個の認証方法を設定し、クライアントを照合する。
 
 | 一段階目の認証例 | 二段階目の認証例 | 説明                                                         | 備考                                         |
 | ---------------- | ---------------- | ------------------------------------------------------------ | -------------------------------------------- |

@@ -13,7 +13,19 @@ description: HTTP認証＠認証の知見を記録しています。
 
 <br>
 
-## 01. Basic認証
+## 01. HTTP認証とは
+
+HTTP通信の中で認証を行う認証スキームのこと。リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する。認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除（ログアウト）をサーバー側で完全に制御できない。
+
+> ℹ️ 参考：
+>
+> - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+> - https://architecting.hateblo.jp/entry/2020/03/27/130535
+> - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
+
+<br>
+
+## 02. Basic認証
 
 ### Basic認証とは
 
@@ -83,7 +95,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 <br>
 
 
-## 02. Digest認証
+## 03. Digest認証
 
 ### Digest認証とは
 
@@ -107,7 +119,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成し
 
 <br>
 
-## 03. Bearer認証
+## 04. Bearer認証
 
 ### Bearer認証とは
 
