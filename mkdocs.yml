@@ -48,7 +48,7 @@ extra:
     provider: google
     property: G-HPJGWKTH9W
   generator: false
-  homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+  homepage: https://hiroki-it.github.io/tech-notebook-mkdocs/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/hiroki-it
