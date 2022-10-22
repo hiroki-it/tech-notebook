@@ -90,9 +90,9 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 > ℹ️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
-#### ▼ storageDataPath
+#### ▼ ディレクトリ構成
 
-VictoriaMetricsのプロセスの起動時にて、```storageDataPath```オプションでディレクトリ名を渡すことにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
+VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡すことにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
 
 ```yaml
 /var/lib/victoriametrics/
@@ -178,7 +178,10 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 <br>
 
-## 02. systemctlによる設定
+## 02. セットアップ
+
+### ```systemctl```コマンド
+
 
 ```systemctl```コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
@@ -188,11 +191,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/
 > - https://www.vultr.com/docs/install-and-configure-victoriametrics-on-debian/
 
-```bash
-# 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。
-$ systemctl daemon-reload
-$ systemctl start victoriametrics
-```
+（１）まず、ユニットファイルを作成する。
 
 ```ini
 # victoriametrics.service
@@ -222,8 +221,14 @@ LimitNPROC=32000
 WantedBy=multi-user.target
 ```
 
-<br>
+(２）victoriametricsのプロセスを```systemctl```で起動する。
 
-## 03. Helmによる設定
+
+```bash
+# 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。
+$ systemctl daemon-reload
+$ systemctl start victoriametrics
+```
+
 
 <br>
