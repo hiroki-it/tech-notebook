@@ -797,7 +797,7 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合、これを有効化しておいた方が良い。 |                                                              |
 | ```Validate```               |                                                              |                                                              |
 | ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。 | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              | 通常のPruneでは、Syncしながら旧いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースをSyncしてしまい、正常に稼働した後に旧いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
+| ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

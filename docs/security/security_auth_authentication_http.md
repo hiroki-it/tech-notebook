@@ -33,7 +33,7 @@ HTTP通信の中で認証を行う認証スキームのこと。リクエスト�
 
 <br>
 
-### 仕組み
+### Basic認証の仕組み
 
 ![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
 

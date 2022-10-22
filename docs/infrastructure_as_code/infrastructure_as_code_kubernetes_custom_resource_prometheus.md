@@ -166,7 +166,7 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 ...
 ```
 
-TSDBのディレクトリはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。収集されるデータポイントの合計サイズを小さくする（例：データポイントの収集間隔を長くする、不要なデータポイントの収集をやめる）と良い。
+TSDBのディレクトリはワーカーNodeにマウントされるため、ワーカーNodeのストレージサイズに注意する必要がある。データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
 
 > ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 

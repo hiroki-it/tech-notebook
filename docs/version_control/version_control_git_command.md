@@ -147,7 +147,7 @@ $ git init
 # Basic認証
 $ git remote add origin https://github.com/hiroki.hasegawa/example.git
 
-# 登録された
+# 登録されたGitHubリポジトリ
 remote.origin.url=https://github.com/hiroki.hasegawa/example.git
 ```
 
@@ -157,7 +157,7 @@ $ git init
 # SSH接続
 $ git remote add origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
-# 登録された
+# 登録されたGitHubリポジトリ
 remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 ```
 
@@ -814,7 +814,7 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 
 #### ▼ --interactive --root
 
-一番旧い、最初の履歴を削除する。
+一番古い、最初の履歴を削除する。
 
 （１）変更タブの表示
 

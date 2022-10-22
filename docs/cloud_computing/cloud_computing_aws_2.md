@@ -105,7 +105,7 @@ EBSで保管されているルートデバイスボリュームで、推奨の�
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
 
 #### ▼ インスタンスストアボリューム
-__
+
 ![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
 
 インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。EBSボリュームとは異なり、コンピューティングとして動作するEC2インスタンス内にルートデバイスボリュームが存在している。そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
@@ -277,6 +277,24 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 | ------------ | ---------- | ----------------------- |
 | Amazon Linux | ```t2.micro```   | ```8```                       |
 | CentOS       | ```t2.micro```   | ```10```                      |
+
+#### ▼ 現在の空き容量の確認
+
+EBSボリュームの現在の空き容量を確認するためには、```df```コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
+
+```bash
+[ec2-user ~]$ df -hT /dev/xvda1
+
+# パーティションの使用率が15%であることから、EBSボリュームの使用率がわかる。
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/xvda1     xfs       8.0G  1.2G  6.9G  15% /
+```
+
+<br>
+
+### EBSボリュームの拡張
 
 #### ▼ サイズの拡張
 
@@ -2134,9 +2152,9 @@ Redisクラスターでは、設定値（例：エンジンバージョン）の
 
 （３）新しく作成したRedisクラスターをアップグレードする。
 
-（４）アプリケーションの接続先を旧いRedisクラスターから新しいものに変更する。
+（４）アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。
 
-（５）旧いRedisクラスターを削除する。
+（５）古いRedisクラスターを削除する。
 
 <br>
 

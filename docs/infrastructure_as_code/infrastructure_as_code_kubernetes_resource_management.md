@@ -86,7 +86,7 @@ PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、P
 
 ### metrics-serverの仕組み
 
-metrics-serverは、拡張apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスをスクレイピングしつつ、収集したメトリクスを拡張apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+metrics-serverは、拡張apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスを拡張apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
 > ℹ️ 参考：
 >
@@ -136,7 +136,7 @@ $ kubectl top pod -n <任意のNamespace>
 
 ### スクレイパー
 
-対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。スクレイピングのために、ServiceAccountとClusterRoleを作成する必要がある。
+対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。収集のために、ServiceAccountとClusterRoleを作成する必要がある。
 
 <br>
 

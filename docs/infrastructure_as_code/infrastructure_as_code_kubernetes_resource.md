@@ -70,7 +70,7 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 #### ▼ ReplicaSetの置き換え
 
-PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを旧いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 

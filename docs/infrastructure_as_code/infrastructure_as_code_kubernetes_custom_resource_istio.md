@@ -74,6 +74,7 @@ Pod
 > - https://istio.io/latest/blog/2022/introducing-ambient-mesh/
 > - https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode
 > - https://github.com/istio/istio/blob/experimental-ambient/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml
+> - https://www.sobyte.net/post/2022-09/istio-ambient/
 
 <br>
 
