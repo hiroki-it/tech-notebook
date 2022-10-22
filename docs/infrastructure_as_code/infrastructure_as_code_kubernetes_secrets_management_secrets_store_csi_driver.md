@@ -37,7 +37,6 @@ CSIドライバーは、SecretProviderClassで定義されたプロバイダー�
 > - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
 > - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
 
-
 <br>
 
 ### CSIボリューム
