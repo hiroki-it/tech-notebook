@@ -317,6 +317,7 @@ nav:
           - ■ 認証:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
+              - トークン: security/security_auth_authentication_token.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
               - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
