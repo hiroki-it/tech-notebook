@@ -33,7 +33,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
   force_handlers: true
   # rolesディレクトリ以下に処理を切り分ける。上から順にrolesを実行する。
   roles:
-    - common
+    - shared
     - app
 
 # dbサーバー
@@ -41,7 +41,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
   become: yes
   force_handlers: true
   roles:
-    - common
+    - shared
     - db
 
 # webサーバー
@@ -49,7 +49,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
   become: yes
   force_handlers: true
   roles:
-    - common
+    - shared
     - web
 ```
 
@@ -57,7 +57,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 repository/
 ├── playbook.yml
 ├── roles/
-│   ├── common/
+│   ├── shared/
 │   │   └── tasks/
 │   │       └── main.yml
 │   │

@@ -16,37 +16,25 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 ## 01. Kubernetesネットワーク
 
-### Cluster内ネットワーク
+### Nodeネットワーク
 
-#### ▼ Cluster内ネットワークとは
-
-![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
-
-同じCluster内ネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。Cluster内ネットワークの作成は、cniアドオンが担う。
-
-> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
-
-<br>
-
-### Node内ネットワーク
-
-#### ▼ Node内ネットワークとは
+#### ▼ Nodeネットワークとは
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
 
-同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。Node内ネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
 <br>
 
-### Service内ネットワーク
+### Serviceネットワーク
 
-#### ▼ Service内ネットワークとは
+#### ▼ Serviceネットワークとは
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_service-network.png)
 
-Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。Service内ネットワークの作成は、Kubernetesが担う。
+Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。Serviceネットワークの作成は、Kubernetesが担う。
 
 > ℹ️ 参考：
 >
@@ -55,9 +43,22 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 <br>
 
-### Pod内ネットワーク
 
-#### ▼ Pod内ネットワークとは
+### Clusterネットワーク
+
+#### ▼ Clusterネットワークとは
+
+![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
+
+同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。Clusterネットワークの作成は、cniアドオンが担う。
+
+> ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+
+<br>
+
+### Podネットワーク
+
+#### ▼ Podネットワークとは
 
 Pod内のネットワークのみを経由して、他のコンテナにアウトバウンド通信を送信する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
@@ -86,8 +87,8 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 | 条件             | 経由するネットワーク                                         |
 | ---------------- | ------------------------------------------------------------ |
-| ワーカーNodeが異なる場合 | Node内ネットワーク + Cluster内ネットワーク + Service内ネットワーク |
-| ワーカーNodeが同じ場合   | Cluster内ネットワーク + Service内ネットワーク                    |
+| ワーカーNodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
+| ワーカーNodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
 
 <br>
 
@@ -152,7 +153,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ レコードタイプと完全修飾ドメイン名の関係
 
-Cluster内ネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
+Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
 
 > ℹ️ 参考：
 >
@@ -160,10 +161,10 @@ Cluster内ネットワーク内の全てのServiceに完全修飾ドメイン名
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
 > - https://eng-blog.iij.ad.jp/archives/9998
 
-| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             | 補足                                                                                                                                                                                                               |
-| -------------- | -------------------------------------------------------- | ------------------------------------------------------------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A/AAAAレコード | ```<Service名>.<Namespace名>.svc.cluster.local```        | ・通常のServiceの名前解決ではClusterIPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略でき、```<Service名>.<Namespace名>```でも名前解決できる。また、同じNamespace内から通信する場合は、さらに```<Namespace名>```も省略でき、```<Service名>```のみで名前解決できる。<br>ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12613605860.html |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                       | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。                                                                                                                                                              |
+| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                                                            | 補足                                                                                                                                                                                                               |
+| -------------- | -------------------------------------------------------- |-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| A/AAAAレコード | ```<Service名>.<Namespace名>.svc.cluster.local```        | ・通常のServiceの名前解決ではCluster-IPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略でき、```<Service名>.<Namespace名>```でも名前解決できる。また、同じNamespace内から通信する場合は、さらに```<Namespace名>```も省略でき、```<Service名>```のみで名前解決できる。<br>ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12613605860.html |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                                              | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。                                                                                                                                                              |
 
 #### ▼ Serviceに対する名前解決
 

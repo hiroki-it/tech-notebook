@@ -122,6 +122,36 @@ $ chmod go+r <ファイルへのパス>
 
 <br>
 
+### chown
+
+#### ▼ chownとは
+
+ユーザー所有権、グループ所有権、を変更する。
+
+> ℹ️ 参考：https://webkaru.net/linux/chown-command/
+
+```bash
+$ chown <ユーザー所有権>:<グループ所有権> <ファイル名>
+```
+
+**＊実装例＊**
+
+ユーザー所有権を```foo```に、グループ所有権を```bar```に変更する。
+
+```bash
+$ chown foo:foo bar.txt
+```
+
+#### ▼ -R
+
+ディレクトリと、ディレクトリ内のファイルの所有権を再帰的に変更する。
+
+```bash
+$ chown foo:foo ./bar -R
+```
+
+<br>
+
 ### cp
 
 #### ▼ -Rp

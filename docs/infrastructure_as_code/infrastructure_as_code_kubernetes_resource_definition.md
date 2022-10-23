@@ -1182,6 +1182,8 @@ spec:
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
+#### ▼ ALB Ingressの場合
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -1191,7 +1193,34 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: ingress.k8s.aws/alb
-  # Nginxコントローラーの場合は、k8s.io/ingress-nginx
+```
+
+#### ▼ Nginx Ingressの場合
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+#### ▼ Istio Ingressの場合
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: istio.io/ingress-controller
 ```
 
 <br>
@@ -1201,6 +1230,8 @@ spec:
 #### ▼ parametersとは
 
 外部Ingressに応じたパラメーターを設定する。代わりとして、IngressClassParamsを使用しても良い。
+
+#### ▼ ALB Ingressの場合
 
 > ℹ️ 参考：
 >
@@ -1213,7 +1244,6 @@ kind: IngressClass
 metadata:
   name: foo-ingress-class
 spec:
-  # AWS ALB Ingressの場合
   parameters:
     apiGroup: elbv2.k8s.aws
     kind: IngressClassParams

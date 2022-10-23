@@ -34,7 +34,7 @@ Istioの各コンポーネントのことにより、Kubernetesのカスタム�
 
 #### ▼ IngressGatewayとは
 
-Gateway、VirtualService、DestinationRuleの設定を基に、Clusterネットワーク外からインバウンド通信を受信し、Podにルーティングする。KubernetesリソースのIngressの代わりとして使用できる。
+Gateway、VirtualService、DestinationRuleの設定を基に、ワーカーNode外からインバウンド通信を受信し、Podにルーティングする。KubernetesリソースのIngressの代わりとして使用できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
@@ -42,12 +42,13 @@ Gateway、VirtualService、DestinationRuleの設定を基に、Clusterネット�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-IngressGatewayは、```istio-ingressgateway```というServiceと、Deployment配下の```istio-ingressgateway-*****```というPod（```istio-proxy```コンテナのみが稼働）、から構成される。
+IngressGatewayは、```istio-ingressgateway```というService（NodePort ServiceまたはLoadBalancer Service）と、Deployment配下の```istio-ingressgateway-*****```というPod（```istio-proxy```コンテナのみが稼働）、から構成される。
 
 > ℹ️ 参考：
 >
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
+> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -131,7 +132,7 @@ spec:
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの能力のうち、Clusterネットワーク外から受信したインバウンド通信をフィルタリングする能力を担う。
+IngressGatewayの能力のうち、ワーカーNode外から受信したインバウンド通信をフィルタリングする能力を担う。
 
 > ℹ️ 参考：
 >

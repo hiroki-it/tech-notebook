@@ -961,7 +961,7 @@ ModuleAとModuleBは、スタンプ結合の関係にある。
 ```php
 <?php
     
-class Common
+class Shared
 {
     private $value;
   
@@ -985,11 +985,11 @@ class ModuleA
 {
     public function methodA()
     {
-        $common = new Common(1);
+        $shared = new Shared(1);
         
         $moduleB = new ModuleB;
         
-        return $moduleB->methodB($common); // 1
+        return $moduleB->methodB($shared); // 1
     }
 }
 ```
@@ -999,9 +999,9 @@ class ModuleA
     
 class ModuleB
 {
-    public function methodB(Common $common)
+    public function methodB(Shared $shared)
     {
-        return $common->getValue(); // 1
+        return $shared->getValue(); // 1
     }
 }
 ```

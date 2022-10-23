@@ -114,7 +114,7 @@ repository/
 repository/
 ├── foo-chart/
 │   ├── templates/
-│   │   ├── common/ # 共通のマニフェストの部品
+│   │   ├── shared/ # 共通のマニフェストの部品
 │   │   ├── prd/ # 本番環境のみで適用するマニフェストの部品
 │   │   ├── stg/
 │   │   └── tes/         

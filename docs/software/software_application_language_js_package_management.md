@@ -34,6 +34,8 @@ $ yum install -y nodejs
 
 パッケージの作成者名を設定する。
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
+
 ```yaml
 {
   "author": {
@@ -48,6 +50,9 @@ $ yum install -y nodejs
 
 不具合の報告先のURLを設定する。
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
+
+
 ```yaml
 {
   "bugs": {
@@ -58,7 +63,10 @@ $ yum install -y nodejs
 
 #### ▼ dependencies
 
-本番環境と開発環境で依存するパッケージ名を設定する。NPMに登録されていないパッケージは、『```git+<GitHubリポジトリURL>```』を指定する。
+本番環境と開発環境で依存するパッケージ名を設定する。NPMに登録されていないパッケージは、『```git+<GitHubリポジトリURL>```』を指定する。```npm install```コマンドの実行時に```--production```オプションを有効化すると、```dependencies```キーが使用される。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+
 
 ```yaml
 {
@@ -72,6 +80,8 @@ $ yum install -y nodejs
 
 #### ▼ description
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
+
 ```yaml
 {
   "description": "This is foo package",
@@ -80,23 +90,56 @@ $ yum install -y nodejs
 
 #### ▼ devDependencies
 
-開発環境のみ依存するパッケージ名を設定する。
+開発環境のみ依存するパッケージ名を設定する。```npm install```コマンドの実行時に```--production```オプションを有効化しないと、```devDependencies```キーが使用される。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+
 
 ```yaml
 {
-  "devDependencies": {},
+  "devDependencies": {
+    "foo": "^1.1.1",
+    "bar": "^1.0.0",
+    "baz": "git+https://github.com/baz/baz-package.git",
+  },
 }
 ```
 
 #### ▼ directories
 
+パッケージのディレクトリ構造を設定する。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
+
 ```yaml
 {
-  "directories": {},
+  "directories": {
+      "doc": "foo/doc", # ドキュメント
+      "lib": "foo/lib" # 実装
+  },
+}
+```
+
+#### ▼ engines
+
+```npm```コマンドのバージョンを設定する。使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗させるようにする。
+
+> ℹ️ 参考：https://qiita.com/suin/items/994458418c737cc9c3e8
+
+```yaml
+{
+  "engines": {
+     "node": "1.0.0",
+     "npm": "1.0.0"
+  },
 }
 ```
 
 #### ▼ homepage
+
+パッケージを説明するWebサイトのリンクを設定する。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
 
 ```yaml
 {
@@ -104,6 +147,10 @@ $ yum install -y nodejs
 }
 ```
 #### ▼ main
+
+エントリポイントとなるファイルを設定する。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
 
 ```yaml
 {
@@ -115,6 +162,8 @@ $ yum install -y nodejs
 
 npmパッケージ名を設定する。全てのnpmパッケージの中で、一意の名前でなければならない。
 
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
+
 ```yaml
 {
   "name": "foo",
@@ -122,6 +171,8 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 ```
 
 #### ▼ repository
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
 
 ```yaml
 {
@@ -134,7 +185,10 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 
 #### ▼ scripts
 
-汎用コマンドとエイリアスを設定する。
+汎用コマンドとエイリアスを設定する。```npm run <エイリアス名>```コマンドで実行できる。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
+
 
 ```yaml
 {
@@ -147,6 +201,9 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 #### ▼ version
 
 パッケージのバージョンを設定する。
+
+> ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
+
 
 ```yaml
 {

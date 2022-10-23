@@ -579,7 +579,7 @@ $ kube-proxy \
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Service内ネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
+ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
 
 > ℹ️ 参考：https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 

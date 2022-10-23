@@ -31,6 +31,12 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ## 02. トラフィック管理
 
+### IngressGatewayではNodePort Serviceを選ぶ
+
+IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。NodePort Serviceを選ぶ場合、ワーカーNodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
+
+<br>
+
 ### サブセット名を一つにする
 
 Istioリソースで設定するサブセット名は一つだけにする。これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。

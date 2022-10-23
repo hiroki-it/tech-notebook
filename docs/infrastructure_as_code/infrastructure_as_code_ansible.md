@@ -128,7 +128,7 @@ repository/
 │   │   └── vars/
 │   │       └── main.yml
 │   │
-│   ├── common/ # 共通
+│   ├── shared/ # 共通
 │   ├── db/ # dbサーバー
 │   └── web/ # webサーバー
 │

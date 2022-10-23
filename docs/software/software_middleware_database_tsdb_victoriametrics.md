@@ -191,7 +191,7 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 > - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/
 > - https://www.vultr.com/docs/install-and-configure-victoriametrics-on-debian/
 
-（１）まず、ユニットファイルを作成する。
+（１）ユニットファイルを作成する。
 
 ```ini
 # victoriametrics.service

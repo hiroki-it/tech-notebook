@@ -579,7 +579,7 @@ spec:
 
 #### ▼ portLevelSettings.loadBalancer
 
-ポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
+Podのポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
@@ -598,7 +598,7 @@ spec:
 
 #### ▼ portLevelSettings.port
 
-ポート番号別のルーティングで使用するポート番号を設定する。
+Podのポート番号別ルーティングで使用するポート番号を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
@@ -797,7 +797,7 @@ spec:
 
 #### ▼ port.number
 
-インバウンド通信を待ち受けるポート番号を設定する。
+インバウンド通信を待ち受けるポート番号を設定する。IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、ワーカーNodeが待ち受けるポート番号に合わせて```30000```番ポートとする。一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -810,7 +810,7 @@ metadata:
 spec:
   servers:
   - port:
-      number: 80
+      number: 30000
 ```
 
 #### ▼ port.protocol

@@ -117,22 +117,23 @@ Pod
 
 KubernetesとIstioには重複する能力がいくつか（例：サービスディスカバリー）ある。全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、実際の運用場面ではこれを行うことはなく、マイクロサービスコンテナの稼働するPodのみでこれを行えばよい。そのため、```istio-proxy```コンテナを注入しないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。
 
+| 能力                              | Istio + Kubernetes + Envoy                                                                                                                                                            | Kubernetes + Envoy                | Kubernetesのみ                                 |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------------------------------------------|
+| サービスメッシュコントロールプレーン              | Istiodコントロールプレーン                                                                                                                                                                      | go-control-plane                  | なし                                           |
+| サービスディスカバリーでのルーティング先設定          | DestinationRule                                                                                                                                                                       | ```route```キー                     | kube-proxy + Service                         |
+| サービスディスカバリーでのリスナー設定             | EnvoyFilter + EndpointSlice                                                                                                                                                           | ```listener```キー                  | kube-proxy + Service                         |
+| サービスディスカバリーでの追加サービス設定           | ServiceEntry + EndpointSlice                                                                                                                                                          | ```cluster```キー                   | EndpointSlice                                |
+| Cluster外ワーカーNodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                         | ```endpoint```キー                  | Egress                                       |
+| サービスレジストリ                       | 調査中...                                                                                                                                                                                | etcd                              | etcd                                         |
+| ワーカーNode外からのインバウンド通信のルーティング     | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはワーカーNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である。）<br>・Ingress + IstioIngressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
+
+
 > ℹ️ 参考：
 >
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
-> - https://github.com/envoyproxy/go-control-plane
-> - https://istiobyexample-ja.github.io/istiobyexample/ingress/
-
-| 能力                              | Istio + Kubernetes + Envoy | Kubernetes + Envoy                | Kubernetesのみ             |
-|---------------------------------|------------------------|-----------------------------------|--------------------------|
-| サービスメッシュコントロールプレーン              | Istiodコントロールプレーン       | go-control-plane                  | なし                       |
-| サービスディスカバリーでのルーティング先設定          | DestinationRule | ```route```キー                     | kube-proxy + Service     |
-| サービスディスカバリーでのリスナー設定             | EnvoyFilter + EndpointSlice  | ```listener```キー                  | kube-proxy + Service     |
-| サービスディスカバリーでの追加サービス設定           | ServiceEntry + EndpointSlice | ```cluster```キー                   | EndpointSlice            |
-| Cluster外ワーカーNodeに対するサービスディスカバリー | WorkloadEntry | ```endpoint```キー                  | Egress                   |
-| サービスレジストリ                       | 調査中...                 | etcd                              | etcd                     |
-| Node外からのインバウンド通信のルーティング         | VirtualService + Gateway | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー |
+> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
+> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
 
 <br>
