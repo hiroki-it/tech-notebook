@@ -494,9 +494,9 @@ runs:
 
 <br>
 
-### Projectレベル（Repository Secrets）
+### 変数のスコープレベル
 
-#### ▼ Projectレベルとは
+#### ▼ Projectレベル（Repository Secrets）
 
 リポジトリの設定のSecrets項目に変数名と値を登録する。プロジェクト内、すなわちリポジトリ内で参照できる。出力された変数の値は、以降の処理でマスキングされる。
 
@@ -512,13 +512,9 @@ jobs:
           echo ${{ secrets.FOO }}
 ```
 
-<br>
+#### ▼ Actionレベル（Environment Secrets）
 
-### Actionレベル（Environment Secrets）
-
-#### ▼ Actionレベルとは
-
-リポジトリの設定のEnvironment項目に変数名と値を登録する。GitHub Actionsでのみ参照できる。出力された変数の値は、以降の処理でマスキングされる。Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
+リポジトリの設定のEnvironment項目に変数名と値を登録する。リポジトリ内のGitHub Actionsでのみ参照できる。また、シェルスクリプト内で環境変数を出力するためにも必要である。出力された変数の値は、以降の処理でマスキングされる。Projectレベルとは異なり、```env```キーに明示的に環境変数を渡す必要がある。
 
 > ℹ️ 参考：
 >
@@ -535,6 +531,24 @@ jobs:
       - name: Echo
         run: |
           echo ${{ secrets.FOO }}
+          source ./bar.sh
+```
+
+#### ▼ Stepレベル
+
+```jobs.foo.steps.env```キーに変数名と値を登録する。ステップ内でのみ参照できる。また、シェルスクリプト内で環境変数を出力するためにも必要である。出力された変数の値は、以降の処理でマスキングされる。
+
+```yaml
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        env:
+          FOO: foo
+        run: |
+          echo ${{ secrets.FOO }}
+          source ./bar.sh
 ```
 
 <br>

@@ -777,7 +777,7 @@ spec:
 
 ### spec.servers
 
-#### ▼ port.number
+#### ▼ port.name
 
 ポート名を設定する。
 
@@ -791,8 +791,8 @@ metadata:
   name: gateway
 spec:
   servers:
-  - port:
-      name: http
+    - port:
+        name: http
 ```
 
 #### ▼ port.number
@@ -809,8 +809,8 @@ metadata:
   name: gateway
 spec:
   servers:
-  - port:
-      number: 30000
+    - port:
+        number: 30000
 ```
 
 #### ▼ port.protocol
@@ -829,13 +829,13 @@ metadata:
   name: gateway
 spec:
   servers:
-  - port:
-      protocol: HTTP
+    - port:
+        protocol: HTTP
 ```
 
-#### ▼ hosts
+#### ▼ port.targetPort
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。ワイルドカードを使用できる。
+ServiceEntryで追加したサービスディスカバリーの宛先のポート番号を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -849,13 +849,16 @@ metadata:
   name: gateway
 spec:
   servers:
-  - hosts:
-      - "*" 
+    - port: 
+        targetPort: 80
 ```
 
-#### ▼ tls.privateKey
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+#### ▼ hosts
+
+Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。ワイルドカードを使用できる。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -865,15 +868,31 @@ metadata:
   name: gateway
 spec:
   servers:
-  - tls:
-      privateKey: /etc/certs/privatekey.pem
+    - hosts:
+        - "*" 
+```
+
+#### ▼ tls.privateKey
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
+spec:
+  servers:
+    - tls:
+        privateKey: /etc/certs/privatekey.pem
 ```
 
 #### ▼ tls.serverCertificate
 
 受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合、SSL/TLS証明書を設定する。
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 **＊実装例＊**
 
@@ -885,8 +904,8 @@ metadata:
   name: gateway
 spec:
   servers:
-  - tls:
-      serverCertificate: /etc/certs/server.pem
+    - tls:
+        serverCertificate: /etc/certs/server.pem
 ```
 
 <br>

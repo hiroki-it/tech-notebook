@@ -1174,7 +1174,7 @@ spec:
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、外部IngressとIngressコントローラーを紐づけられるように、コントローラーのAPIグループを設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐づけられるように、コントローラーのAPIグループを設定する。
 
 > ℹ️ 参考：
 >
@@ -3303,7 +3303,9 @@ spec:
 
 #### ▼ targetPort
 
-受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するか否かを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するか否かを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。デフォルトでは、```spec.ports.port```キーと同じに値になる。
+
+> ℹ️ 参考：https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
 
 **＊実装例＊**
 
@@ -3314,8 +3316,8 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-    - port: 80
-      targetPort: 8080
+    - port: 8080
+      targetPort: 8080 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
 
 ```yaml
@@ -3326,7 +3328,7 @@ metadata:
 spec:
   ports:
     - port: 9000
-      targetPort: 9000
+      targetPort: 9000 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
 
 <br>
@@ -3373,8 +3375,8 @@ spec:
   ports:
     - name: http-foo
       protocol: TCP
-      port: 8080
-      targetPort: 80
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
   selector:
     app.kubernetes.io/app: foo-pod
   # clusterIP: *.*.*.*
@@ -3397,8 +3399,8 @@ spec:
     - name: http-foo
       protocol: TCP
       nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
-      port: 8080
-      targetPort: 80
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
   selector:
     app.kubernetes.io/app: foo-pod
 ```
@@ -3419,8 +3421,8 @@ spec:
   ports:
     - name: http-foo
       protocol: TCP
-      port: 8080
-      targetPort: 80
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
   selector:
     app.kubernetes.io/app: foo-pod
 # Kubernetesが自動的に追加するキー

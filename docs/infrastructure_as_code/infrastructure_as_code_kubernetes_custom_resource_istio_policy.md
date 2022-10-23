@@ -33,7 +33,12 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ### IngressGatewayではNodePort Serviceを選ぶ
 
-IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。NodePort Serviceを選ぶ場合、ワーカーNodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
+IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。NodePort Serviceを選ぶ場合、ワーカーNodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。なお、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/istio/istio/issues/28310#issuecomment-733079966
+> - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
 
 <br>
 
