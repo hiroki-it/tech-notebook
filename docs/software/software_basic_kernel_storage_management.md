@@ -74,7 +74,7 @@ $ pvresize /dev/sda2
 $ lvextend -l +100%FREE /dev/root
 ```
 
-（７）ファイルシステムを拡張する。
+（７）ファイルシステムのサイズを拡張する。
 
 ```bash
 $ xfs_growfs -d /

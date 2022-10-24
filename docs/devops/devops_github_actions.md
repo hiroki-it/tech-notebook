@@ -520,6 +520,7 @@ jobs:
 >
 > - https://btj0.com/blog/github/use-env/
 > - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
+> - https://stackoverflow.com/a/61428342
 
 ```yaml
 jobs:
@@ -537,6 +538,8 @@ jobs:
 #### ▼ Stepレベル
 
 ```jobs.foo.steps.env```キーに変数名と値を登録する。ステップ内でのみ参照できる。また、シェルスクリプト内で環境変数を出力するためにも必要である。出力された変数の値は、以降の処理でマスキングされる。
+
+> ℹ️ 参考：https://stackoverflow.com/a/61428342
 
 ```yaml
 jobs:

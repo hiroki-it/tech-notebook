@@ -193,7 +193,7 @@ AWSリソースの識別子のこと。
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Resource": "arn:<パーティション>:<AWSリソース>:ap-northeast-1:<アカウントID>:<AWSリソースID>"
+      "Resource": "arn:<AWSリソース>:ap-northeast-1:<アカウントID>:<AWSリソースID>"
     }
   ]
 }
