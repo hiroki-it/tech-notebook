@@ -4,7 +4,7 @@
 
 詳しくは、こちらまで！！
 
-▶ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+▶ https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
 
 以下のツールを使用しております。
 
