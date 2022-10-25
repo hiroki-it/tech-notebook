@@ -1,78 +1,78 @@
-# 自己紹介
+---
+title: 【IT技術の知見】当サイトについて
+---
 
-## 👋🏻 はじめまして (About me)
+# 当サイトについて
 
-長谷川広樹と申します。<br>
-<span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
+## 俺の技術ノートとは
 
-大学院にて **生物情報学** の分野で研究を行い、理学修士を習得しました。<br>
-<span style="font-size: 90%;">( I studied **Bioinformatics** at the graduate school, and obtained a Master of Science. )</span>
-
-その後、Webアプリケーションの **SWE** としてキャリアをスタートしました。<br>
-<span style="font-size: 90%;">( After that, I started my career as a **SWE** in web applications. )</span>
-
-現在は、**SRE** として働かさせていただいております。<br>
-<span style="font-size: 90%;">( Currently, I'm working as a **SRE**. ) </span>
+**俺**（ [長谷川広樹](https://hiroki-it.github.io/tech-notebook-mkdocs/index.html) ）が、業務や学習から得た技術的な知見を、チートシート形式で記録した技術ノートです。
 
 <br>
 
-## 🎯 関心のある技術領域 (Area of interest)
+## サイトの目的
 
-Webアプリケーションのインフラ領域に軸足を置きつつ、バックエンド領域も好きです。<br>
-<span style="font-size: 90%;">( I focus on web infrastructure, and also like backend. )</span>
+以下の目的のために記録しております。
 
-特に、**拡張性**、**保守性**、**可読性** を高める技術に関心が強いです。<br>
-<span style="font-size: 90%;">( I'm very interested in technologies that enhance **extensibility**, **maintainability** and **readability**)</span>
+- 寝るとすぐに忘れてしまうので、その都度、インプットしたことを自分の言葉で書き、同時にアウトプットする。
+- 寝るとすぐに忘れてしまうので、その都度、知見を体系的に整理する。
+- 寝るとすぐに忘れてしまうので、その都度、誤った知見を修正する。
 
-- マイクロサービスアーキテクチャ (Microservices architecture)
-- サービスメッシュ (Service mesh)
-- DDD
-- クラウドインフラ (Cloud infrastructure)
-- IaC
+そのため、**記入途中の項目**、**誤った体系化**、**誤った情報**、**わかりにくい日本語**、が多く散見されると思います。
+
+これらにつきましては、ご容赦いただけると幸いです。
 
 <br>
 
-## 📚 知見の記録 (Knowledge)
+## 使い方
 
-技術的な知識を体系的に整理するため、ノートにまとめております。<br>
-<span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook. )</span>
+### 検索から
 
-▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/about.html)** (in Japanese)
+1. 画面右上の検索フォームからキーワードを検索します。
+2. 検索結果が複数のノートにまたがる場合、参照するべきノートを判断します。
+3. ノートをクリックします。
 
-<br>
+### 目次から
 
-## 🏭 練習用リポジトリ (Repositories)
-
-アーキテクチャ関連の技術を人知れず練習しております。<br>
-<span style="font-size: 90%;">( I practice architecture in the following repository. )</span>
-
-知見の共有になれば幸いです。<br>
-<span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
-
-| アーキテクチャ                 | 使用技術                                            | リポジトリ（in Japanese）                                                                            |
-| ------------------------------ | --------------------------------------------------- |-----------------------------------------------------------------------------------------------|
-| クリーンアーキテクチャ         | Clean-Arch、Laravel、GitHub Actions、...            | [ddd-backend-with-laravel](https://github.com/hiroki-it/ddd-backend-with-laravel)             |
-|                                | Clean-Arch、Gin、...                                | [ddd-backend-with-gin](https://github.com/hiroki-it/ddd-backend-with-gin)                     |
-|                                | Clean-Arch、Go、Serverless Framework、CircleCI、... | [notify-slack-of-amplify-events](https://github.com/hiroki-it/notify-slack-of-amplify-events) |
-| マイクロサービスアーキテクチャ | Microservices-Arch、...                             | [microservices-backend](https://github.com/hiroki-it/microservices-backend)                   |
-|                                | K8s、Istio、...                                     | [microservices-manifests](https://github.com/hiroki-it/microservices-manifests)               |
+1. ページ上部のナビゲーションをクリックをクリックします。
+2. 目次が表示されるので、ノートをクリックします。
 
 <br>
 
-## 💼 経歴、職歴 (Career)
+## 学習方法
 
-詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
-<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
+本サイトでは、以下を記載し、その概念を学習するようにしております。
 
-▶ **[Wantedly](https://www.wantedly.com/id/h_hasegawa)** (in Japanese)
+- 定義づけ（演繹的な学習）
+- 例（帰納的な学習）
+- 概念図（視覚優位な学習）
+
+そのため、冗長な記載となることをご容赦いただけると幸いです。
+
+> ℹ️ 参考：https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/how-to-write.pdf
 
 <br>
 
-## 📢 過去の技術系プレゼン (Presentation)
+## サイトの作成方法
 
-詳しくは、以下のサイトまでご訪問いただけると幸いです。<br>
-<span style="font-size: 90%;">( For details, we would appreciate it if you could visit the following site. )</span>
+以下のツールを使用して、本サイトを運用しております。こちらのリポジトリでバージョン管理しております。
 
-▶ **[Speaker Deck](https://speakerdeck.com/hiroki_hasegawa)** (in Japanese)
+> ℹ️ 参考：https://github.com/hiroki-it/tech-notebook-mkdocs
+
+| 役割                     | ツール名       |
+| ------------------------ | -------------- |
+| サイトジェネレーター     | MkDocs         |
+| デプロイ                 | GitHub Actions |
+| パッケージバージョン更新 | Renovate       |
+
+<br>
+
+## おわび
+
+このサイトで使われている説明や画像につきまして、様々な書籍やサイトから引用させていただいております。
+
+あくまで、上記の目的のためだけに使用させていただくという名目で、引用元を十分に記載しておりません。
+
+深くお詫び申し上げます。
 
 <br>

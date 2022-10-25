@@ -148,7 +148,7 @@ $ helm lint <チャートへのパス>
 指定した```values```ファイル使用して、```helm lint```コマンドを実行する。
 
 ```bash
-$ helm lint -f <valuesファイルへのパス> <チャートへのパス>
+$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
 ==> Linting kubernetes
 [INFO] Chart.yaml: icon is recommended
@@ -160,25 +160,9 @@ $ helm lint -f <valuesファイルへのパス> <チャートへのパス>
 複数のチャートに対して、同じ```values```ファイルを渡すこともできる。
 
 ```bash
-$ helm lint -f <valuesファイルへのパス> ./kubernetes ./istio ./argocd ./eks ./operator/istio
+$ helm lint <チャートへのパス> -f <valuesファイルへのパス>
 
-==> Linting ./kubernetes
-[INFO] Chart.yaml: icon is recommended
-[INFO] values.yaml: file does not exist
-
-==> Linting ./istio
-[INFO] Chart.yaml: icon is recommended
-[INFO] values.yaml: file does not exist
-
-==> Linting ./argocd
-[INFO] Chart.yaml: icon is recommended
-[INFO] values.yaml: file does not exist
-
-==> Linting ./eks
-[INFO] Chart.yaml: icon is recommended
-[INFO] values.yaml: file does not exist
-
-==> Linting ./operator/istio
+==> Linting <チャート>
 [INFO] Chart.yaml: icon is recommended
 [INFO] values.yaml: file does not exist
 
@@ -463,12 +447,8 @@ $ helm show values releases
 Kubernetesに作成されるリソースのマニフェストを出力する。```.yaml```ファイルにリダイレクトするようにすると良い。
 
 ```bash
-$ helm template <リリース名> <チャートへのパス> >| <出力先ファイル>
-```
-
-```bash
 # チャート名をreleasesとしている場合
-$ helm template prd releases >| releases.yaml
+$ helm template . -f values.yaml >| releases.yaml
 ```
 
 #### ▼ -f
@@ -476,7 +456,7 @@ $ helm template prd releases >| releases.yaml
 指定した```values```ファイル使用して、```helm template```コマンドを実行する。
 
 ```bash
-$ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>|
+$ helm template <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
 ```
 
 ```yaml
@@ -487,10 +467,10 @@ foo:
 
 #### ▼ -set
 
-デフォルト値を上書きし、```helm template```コマンドを実行する。
+デフォルト値を上書きし、```helm template```コマンドを実行する。機密な変数を一時的に出力する場合に使うと良い。
 
 ```bash
-$ helm template <リリース名> <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
+$ helm template <チャートへのパス> -f <valuesファイルへのパス> -set foo.user.password=$PASSWPRD >| <出力先ファイル>
 ```
 
 <br>

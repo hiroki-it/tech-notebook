@@ -944,9 +944,9 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ディスク
+xvda          202:0    0    16G   0  disk             # ストレージ
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ディスク
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ
 ```
 また、```df```コマンドでパーティションを確認する。
 
@@ -1098,17 +1098,17 @@ $ ls -l -h
 
 #### ▼ lsblkとは
 
-物理ボリューム、パーティション、論理ボリューム、を取得する。個別に取得したければ、物理ボリュームは```pvdisplay```コマンド、パーティションは```fdisk```コマンド、論理ボリュームは```lvdisplay```コマンド、で確認する。
+ストレージ上にある、物理ボリューム、パーティション、論理ボリューム、を取得する。個別に取得したければ、物理ボリュームは```pvdisplay```コマンド、パーティションは```fdisk```コマンド、論理ボリュームは```lvdisplay```コマンド、で確認する。
 
 ```bash
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ディスク
+xvda          202:0    0    16G   0  disk             # ストレージ
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
   ├─root      253:0    0     5G   0   lvm  /          # 論理ボリューム
   └─swap      253:1    0     3G   0   lvm  [SWAP]
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ディスク
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ
 ```
 
 <br>
@@ -1555,14 +1555,14 @@ $ set -o pipefail
 事前に、秘密鍵の権限は『```600```』にしておく。tty（擬似ターミナル）を使用する場合は、```-T```オプションをつける。
 
 ```bash
-$ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵のパス> -T
+$ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵へのパス> -T
 ```
 
 #### ▼ -l、-p、```<ポート番号>```、-i、-T、-vvv
 
 ```bash
 # -vvv：ログを出力する
-$ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
+$ ssh -l <サーバーのユーザー名>@<サーバーのホスト名> -p 22 -i <秘密鍵へのパス> -T -vvv
 ```
 
 #### ▼ ```~/.ssh/config```ファイル

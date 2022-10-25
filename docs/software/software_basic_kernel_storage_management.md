@@ -117,7 +117,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-ディスク上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下にディスクに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+ストレージ上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。1つの領域を複数に見せかけられる。```/dev```ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 > ℹ️ 参考：
 >
@@ -174,19 +174,19 @@ MacOSでは、```diskutil```コマンドを実行するとパーティション�
 
 **＊例＊**
 
-ディスクに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される（例：パーティション名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる）。
+ストレージに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される（例：パーティション名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる）。
 
 ```bash
 $ diskutil list
 
-# ディスク：disk0
+# ストレージ：disk0
 /dev/disk0 (internal, physical):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      GUID_partition_scheme                               *500.3 GB  disk0
    1:                        EFI    EFI                        314.6 MB   disk0s1
    2:                 Apple_APFS    Container disk1            500.0 GB   disk0s2
 
-# ディスク：disk1
+# ストレージ：disk1
 /dev/disk1 (synthesized):
    #:                       TYPE    NAME                       SIZE       IDENTIFIER
    0:      APFS Container Scheme    -                          +500.0 GB  disk1
@@ -338,9 +338,9 @@ crw-rw-rw-  random                # 乱数作成
 crw-rw-r--+ rfkill                # ワイヤレスデバイスのON/OFF
 lrwxrwxrwx  rtc -> rtc0           # リアルタイムクロック
 crw-------  rtc0                  # リアルタイムクロック
-brw-rw----  sda                   # ディスク
-brw-rw----  sda1                  # ディスクパーティション
-brw-rw----  sda2                  # ディスクパーティション
+brw-rw----  sda                   # ストレージ
+brw-rw----  sda1                  # ストレージパーティション
+brw-rw----  sda2                  # ストレージパーティション
 crw-rw----  sg0                   # SCSIデバイス
 crw-rw----+ sg1                   # SCSIデバイス
 drwxrwxrwt  shm                   # 共有メモリ
@@ -398,13 +398,13 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 #### ▼ ブロックデバイス（ブロックスペシャルファイル）
 
-ある程度のまとまりでデータを扱う入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
+ある程度のまとまりでデータを処理する入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
 
 > ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 
 #### ▼ キャラクターデバイス（キャラクタースペシャルファイル）
 
-一文字単位でデータを扱う入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
+一文字単位でデータを処理する入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
 
 > ℹ️ 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
 

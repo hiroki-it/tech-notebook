@@ -550,7 +550,7 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ ```forEach```関数を使用した代替法
 
-反復処理のループを```continue```でスキップと同じ動作を、配列を扱う関数のコールバック関数で早期リターンで実現できる。```continue```を使用するより、こちらの方が良い。
+反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。```continue```を使用するより、こちらの方が良い。
 
 > ℹ️ 参考：https://www.deep-rain.com/programming/javascript/778#continue
 

@@ -61,7 +61,7 @@ DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。その
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを扱う。
+ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを冗長化することに適する。
 
 > ℹ️ 参考：
 >

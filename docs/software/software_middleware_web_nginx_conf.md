@@ -414,7 +414,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ▼ ssl_certificate_key
 
-HTTPSプロトコルを受信する場合、SSL証明書と対になる秘密鍵のパスを設定する。
+HTTPSプロトコルを受信する場合、SSL証明書と対になる秘密鍵へのパスを設定する。
 
 **＊実装例＊**
 

@@ -19,7 +19,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 02. cluster-autoscaler、karpenter
+## 02. cluster-autoscaler
 
 ### cluster-autoscalerとは
 
@@ -29,7 +29,11 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
-例えば、以下のようなシナリオが考えられる。
+<br>
+
+### cluster-autoscalerの仕組み
+
+例えば、以下のような仕組みで、ワーカーNodeの自動水平スケーリングを実行する。
 
 （１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、ワーカーNodeが```1```台では足りない。
 
@@ -41,6 +45,8 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 <br>
 
+## 02-02. karpenter
+
 ### karpenterとは
 
 AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterでは、作成されるワーカーNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
@@ -50,7 +56,11 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 > - https://sreake.com/blog/learn-about-karpenter/
 > - https://blog.inductor.me/entry/2021/12/06/165743
 
-例えば、以下のようなシナリオが考えられる。
+<br>
+
+### karpenterの仕組み
+
+例えば、以下のような仕組みで、ワーカーNodeの自動水平スケーリングを実行する。
 
 （１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 しかし、ワーカーNodeが```1```台では足りない。```70 + 70 = 140%```になるので、既存のワーカーNodeの少なくとも```1.4```倍のスペックが必要となる。
 
@@ -67,12 +77,42 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 ### deschedulerとは
 
-deschedulerは、Podの再スケジューリングする。類似するkube-schedulerでは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した後、ワーカーNodeが復旧したとしても、Podが元のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをJobとして起動させ、Podを自動的に再スケジュールする。
+deschedulerは、Podを再スケジューリングする。類似するkube-schedulerでは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した場合に、その後ワーカーNodeが復旧したとしても、Podが元のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
 
 > ℹ️ 参考：
 >
 > - https://torumakabe.github.io/post/k8s_descheduler/
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
+
+<br>
+
+### ポリシー
+
+#### ▼ ポリシーとは
+
+再スケジューリングの対象とするPodの選定ルールを設定する。
+
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
+
+#### ▼ RemoveDuplicates
+
+Deployment、StatefulSet、Job、の配下にあるPodが、同じワーカーNode上でスケーリングされている場合、これらを他のワーカーNodeに再スケジューリングする。
+
+> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
+
+#### ▼ LowNodeUtilization
+
+ワーカーNodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないワーカーNodeにPodを再スケジューリングする。
+
+> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
+
+#### ▼ RemovePodsViolatingNodeAffinity
+
+```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なワーカーNodeに再スケジューリングする。
+
+#### ▼ 他にもいっぱい
+
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
 
 <br>
 

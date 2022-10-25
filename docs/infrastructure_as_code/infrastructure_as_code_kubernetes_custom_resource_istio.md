@@ -21,7 +21,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカープロキシによるサービスメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）と```L7```（アプリケーション層）に関する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりとして、KubernetesやOpenShiftに内蔵されたIstioに相当するオプションを使用しても良い。
+サイドカープロキシによるサービスメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）と```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりとして、KubernetesやOpenShiftに内蔵されたIstioに相当するオプションを使用しても良い。
 
 > ℹ️ 参考：
 >
@@ -33,40 +33,38 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDamonSet配下のPod）が```L4```（トランスポート層）、waypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）に関する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。リソース消費量の少ない```L4```と多い```L7```の責務が分離されているため、サイドカープロキシによるサービスメッシュと比較して、```L4```のみを使用する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシによるサービスメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDaemonSet配下のPod）が```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）、またwaypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。リソース消費量の少ない```L4```と多い```L7```のプロコトルの処理の責務が分離されているため、サイドカープロキシによるサービスメッシュと比較して、```L4```のプロトコルのみを処理する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシによるサービスメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
-インバウンド時の経路は以下の通りである。
+インバウンド時の通信の経路は以下の通りである。
 
-```
+```yaml
 外
 ↓
-ワーカーNode入口
+----- ワーカーNode
+↓
+リダイレクト
 ↓
 ztunnelのPod（L4）
 ↓
-…
-↓
 waypointのPod（L7）
 ↓
-Pod
-↓
-マイクロサービスコンテナ
+マイクロサービスのPod
 ```
 
-アウトバウンド時の経路は以下の通りである。
+アウトバウンド時の通信の経路は以下の通りである。
 
-```
+```yaml
 外
 ↑
-ワーカーNode出口
+----- ワーカーNode
 ↑
 waypointのPod（L7）
 ↑
 ztunnelのPod（L4）
 ↑
-Pod
+リダイレクト
 ↑
-マイクロサービスコンテナ
+マイクロサービスのPod
 ```
 
 > ℹ️ 参考：
@@ -75,6 +73,15 @@ Pod
 > - https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode
 > - https://github.com/istio/istio/blob/experimental-ambient/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml
 > - https://www.sobyte.net/post/2022-09/istio-ambient/
+> - https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/
+
+#### ▼ デザインパターンの比較
+
+| 項目            | サイドカープロキシによるサービスメッシュ                                       | アンビエントメッシュ             |
+|---------------|------------------------------------------------------------|------------------------|
+| Istioのアップグレード | サイドカーの再作成時に障害が起こる可能性がある。対策としては、Istioのカナリアリリース方式アップグレードがある。 | |
+| リソースの消費量      | サイドカーを各Podに注入することになるため、Pod全体としての合計のリソース消費量が多くなる。           | |
+
 
 <br>
 
@@ -459,7 +466,18 @@ webhooks:
 
 ```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、データポイントを含むレスポンスを返信する。
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
+```bash
+# ポートフォワーディングを実行する。
+$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+
+# デバッグダッシュボードにアクセスする。
+$ curl http://127.0.0.1:15014/debug
+```
+
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
+> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/
 
 #### ▼ ```15017```番
 

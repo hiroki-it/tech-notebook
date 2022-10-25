@@ -424,8 +424,9 @@ $ kube-scheduler \
 
 ![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler_flow.png)
 
-1. フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすワーカーNodeを選定する。
-2. スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたワーカーNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいワーカーNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
+（１）フィルタリングを行う。フィルタリングステップでは、まず全てのワーカーNodeの一覧を取得する。その後、Pod作成の条件を満たすワーカーNodeを選定する。
+
+（２）スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたワーカーNodeに点数をつける。その後、点数に基づいて、Pod作成に最も望ましいワーカーNodeを選定する。この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
 
 > ℹ️ 参考：
 >
