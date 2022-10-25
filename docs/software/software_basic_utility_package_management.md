@@ -9,7 +9,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
 
 <br>
 

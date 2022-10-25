@@ -9,7 +9,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
 
 <br>
 
@@ -441,7 +441,23 @@ webhooks:
 
 #### ▼ ```8080```番
 
-```8080```番ポートでは、サービスメッシュのデバッグエンドポイントに対するリクエストを待ち受ける。
+```8080```番ポートでは、サービスメッシュのデバッグエンドポイントに対するリクエストを待ち受ける。```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+
+> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
+
+```bash
+# ポートフォワーディングを実行する。
+$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+
+$ go tool pprof -http=:8080 localhost:15014/debug/pprof/heap
+
+Fetching profile over HTTP from http://localhost:15014/debug/pprof/heap
+Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
+Serving web UI on http://localhost:8080
+
+# どのパッケージでどのくらいリソースを消費しているか
+$ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
+```
 
 #### ▼ ```15010```番
 
@@ -477,7 +493,7 @@ $ curl http://127.0.0.1:15014/debug
 > ℹ️ 参考：
 > 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
-> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/
+> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3
 
 #### ▼ ```15017```番
 
