@@ -9,7 +9,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -486,10 +486,11 @@ spec:
 
 #### ▼ helm
 
-```helm```コマンドに渡すパラメーターを設定する。Helmfileと同じように、```helm```コマンドを宣言的に実行できる。
+```helm```コマンドに渡すパラメーターを設定する。Helmfileと同じように```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。
 
 > ℹ️ 参考：
 >
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
 > - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
 
@@ -689,7 +690,22 @@ spec:
 
 argocdのアドオンを使用する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
+#### ▼ helmfileの場合
+
+```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```プラグインを使用すればHelmfileの
+
+> ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  plugin:
+    name: helmfile
+```
 
 <br>
 

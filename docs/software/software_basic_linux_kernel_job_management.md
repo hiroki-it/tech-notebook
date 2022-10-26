@@ -1,15 +1,15 @@
 ---
-title: 【IT技術の知見】ジョブ管理＠カーネル
-description: ジョブ管理＠カーネルの知見を記録しています。
+title: 【IT技術の知見】ジョブ管理＠Linuxカーネル
+description: ジョブ管理＠Linuxカーネルの知見を記録しています。
 ---
 
-# ジョブ管理＠カーネル
+# ジョブ管理＠Linuxカーネル
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 

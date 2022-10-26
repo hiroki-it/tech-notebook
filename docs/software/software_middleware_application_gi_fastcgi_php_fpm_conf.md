@@ -9,7 +9,7 @@ description: 設定ファイル＠PHP-FPMの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -407,10 +407,7 @@ pm = dynamic
 
 子プロセスの最大数を設定する。子プロセスの最大数は、同時に処理できるリクエストの最大数に相当する。
 
-> ℹ️ 参考：
->
-> - https://life.iua.jp/?p=230
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_kernel_memory_management.html
+> ℹ️ 参考：https://life.iua.jp/?p=230
 
 ```ini
 [www]

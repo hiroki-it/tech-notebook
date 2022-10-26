@@ -37,7 +37,7 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 技術的な知識を体系的に整理するため、ノートにまとめております。<br>
 <span style="font-size: 90%;">( In order to systematically organize technical knowledge, I summarize it in my notebook. )</span>
 
-▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/index.html)** (in Japanese)
+▶ **[技術ノート](https://hiroki-it.github.io/tech-notebook-mkdocs/)** (in Japanese)
 
 <br>
 

@@ -9,13 +9,13 @@ description: Helmfile＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. Helmfileの仕組み
 
-```helm```コマンドを宣言的に実行できる。ただし、ArgoCDのApplicationの```spec.source.helm```キーでも```helm```コマンドを宣言的に実行でき、かつ実行を自動化できる。そのため、できるだけArgoCDを使用した方が良い。
+```helm```コマンドを宣言的に実行できる。ただし、ArgoCDのApplicationの```spec.source.helm```キーでも```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。そのため、できるだけArgoCDを使用した方が良い。
 
 <br>
 

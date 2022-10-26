@@ -9,7 +9,7 @@ description: IPアドレス＠ネットワークの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -118,7 +118,7 @@ IPアドレスをクラスとして分類し、各クラスでIPアドレスの�
 
 <br>
 
-### 構造
+### URLの構造
 
 URLは『```プロトコル + 完全修飾ドメイン名 + パス```』から、メールアドレスは『```ユーザ名 + 完全修飾ドメイン名```』から構成される。
 

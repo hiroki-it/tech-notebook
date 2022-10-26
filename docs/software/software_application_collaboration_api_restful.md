@@ -9,7 +9,7 @@ description: RESTful-API＠アプリケーション連携の知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -464,7 +464,7 @@ JavaScriptのフレームワーク。コンテキストオブジェクトが用�
 
 ## 03-02. リクエストメッセージ
 
-### 構造
+### リクエストメッセージの構造
 
 #### ▼ GET送信の場合
 
@@ -585,7 +585,7 @@ curl_close($curl);
 
 ## 03-03. レスポンスメッセージ
 
-### 構造
+### レスポンスメッセージの構造
 
 **＊例＊**
 

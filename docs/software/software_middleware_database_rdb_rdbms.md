@@ -9,7 +9,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 
 <br>
@@ -70,6 +70,10 @@ RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフ
 > 
 > - https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B
 > - https://gihyo.jp/dev/serial/01/db-academy/000502
+
+#### ▼ コネクションプロキシー
+
+アプリケーションとDBの間に、コネクションプロキシー（例：ProxySQL、PgBouncer、など）を配置する。これにより、コネクションプールの処理をコネクションプロキシーに委譲する。
 
 <br>
 

@@ -1,15 +1,15 @@
 ---
-title: 【IT技術の知見】メモリ管理＠カーネル
-description: メモリ管理＠カーネルの知見を記録しています。
+title: 【IT技術の知見】メモリ管理＠Linuxカーネル
+description: メモリ管理＠Linuxカーネルの知見を記録しています。
 ---
 
-# メモリ管理＠カーネル
+# メモリ管理＠Linuxカーネル
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
