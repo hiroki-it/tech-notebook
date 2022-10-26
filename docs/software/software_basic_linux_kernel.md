@@ -25,11 +25,32 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 ### アーキテクチャ
 
-Linuxカーネルは、システムコールインターフェース、各種管理コンポーネント、デバイスドライバー、から構成される。
+Linuxカーネルは、システムコール、各種管理コンポーネント、デバイスドライバー、などから構成される。
 
 > ℹ️ 参考：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_architecture.png)
+
+<br>
+
+### システムコール
+
+#### ▼ システムコールとは
+
+カーネルを操作できる関数（例：read、write、など）である。
+
+> ℹ️ 参考：
+> 
+> - http://curtaincall.weblike.jp/portfolio-unix/api.html
+> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+
+#### ▼ システムコールの仕組み
+
+上位のソフトウェア（アプリケーションソフトウェア、ミドルウェア）のプロセスは、システムコールにパラメーターを渡し、システムコールを実行する。システムコールはパラメーターに応じてカーネルを操作し、上位のソフトウェアのプロセスにカーネルの処理結果を返却する。
+
+> ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+
+![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_system-call.png)
 
 <br>
 
