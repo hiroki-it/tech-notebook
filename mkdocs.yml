@@ -123,13 +123,13 @@ nav:
       - software/index.md
       - ソフトウェア: software/software.md
       - ■ 基本ソフトウェア（OS）:
-          - ■ カーネル:
-              - カーネル: software/software_basic_kernel.md
-              - プロセス管理: software/software_basic_kernel_process_management.md
-              - メモリ管理: software/software_basic_kernel_memory_management.md
-              - ストレージ管理: software/software_basic_kernel_storage_management.md
-              - I/O（入出力）管理: software/software_basic_kernel_io_management.md
-              - ジョブ管理: software/software_basic_kernel_job_management.md
+          - ■ Linuxカーネル:
+              - Linuxカーネル: software/software_basic_linux_kernel.md
+              - プロセス管理: software/software_basic_linux_kernel_process_management.md
+              - メモリ管理: software/software_basic_linux_kernel_memory_management.md
+              - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
+              - I/O（入出力）管理: software/software_basic_linux_kernel_io_management.md
+              - ジョブ管理: software/software_basic_linux_kernel_job_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
