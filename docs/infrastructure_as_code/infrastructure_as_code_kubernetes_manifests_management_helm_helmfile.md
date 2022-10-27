@@ -77,7 +77,7 @@ environments:
 
 releases:
   - name: foo
-    chart: foo-chart
+    chart: ./foo-chart
     version: <バージョンタグ>
     values:
       - {{ .Environment.Name }}-values.yaml
@@ -191,7 +191,7 @@ repositories:
 
 使用する```helmfile.d```ディレクトリ下にある```helm.yaml```ファイルを再帰的に使用する。
 
-> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 # helmfile.dディレクトリ配下を再帰的に読み込む。
@@ -202,17 +202,27 @@ $ helmfile <サブコマンド>
 
 リリース対象の実行環境名を設定する。
 
-> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 $ helmfile -e prd <コマンド>
+```
+
+**＊実行例＊**
+
+```bash
+$ helmfile -e prd diff
+```
+
+```bash
+$ helmfile -e prd apply
 ```
 
 #### ▼ -f
 
 使用する```helmfile.yaml```ファイルを指定する。
 
-> ℹ️ 参考：https://github.com/helmfile/helmfile#cli-reference
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
 $ helmfile -f ./helmfile.yaml <コマンド>
@@ -228,7 +238,7 @@ $ helmfile -f ./helmfile.yaml <コマンド>
 
 > ℹ️ 参考：
 >
-> - https://github.com/helmfile/helmfile#apply
+> - https://helmfile.readthedocs.io/en/latest/#apply
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ```bash
@@ -259,7 +269,7 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
-> ℹ️ 参考：https://github.com/helmfile/helmfile#destroy
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
 
 ```bash
 $ helmfile destroy
@@ -275,7 +285,7 @@ $ helmfile destroy
 
 > ℹ️ 参考：
 >
-> - https://github.com/helmfile/helmfile#diff
+> - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
 
 ```bash

@@ -102,7 +102,8 @@ minikube
 適用できるコンテキストの一覧と現在のコンテキストを取得する。
 
 ```bash
-$ kubectl config get-contexts                                                                 
+$ kubectl config get-contexts
+
 CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 *         minikube         minikube         minikube         default
           docker-desktop   docker-desktop   docker-desktop
@@ -110,7 +111,7 @@ CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 
 #### ▼ use-context
 
-```kubectl```コマンドの宛先を、指定したKubernetes環境のkube-apiserverに変更する。
+```kubectl```コマンドの宛先を、指定したKubernetesの実行環境のkube-apiserverに変更する。
 
 **＊例＊**
 

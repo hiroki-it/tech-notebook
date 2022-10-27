@@ -34,7 +34,7 @@ $ getenforce
 Enforcing
 ```
 
-（２）```/etc/sellnux/config```を修正する。
+（２）```/etc/selinux/config```を修正する。
 
 ```bash
 # This file controls the state of SELinux on the system.

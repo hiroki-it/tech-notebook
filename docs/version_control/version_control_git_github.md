@@ -36,19 +36,23 @@ title: 【IT技術の知見】GitHub
 
 ```yaml
 repository/
-└── .github/
-    ├── ISSUE_TEMPLATE.md
-    └── PULL_REQUEST_TEMPLATE.md
+├── .github/
+│   ├── ISSUE_TEMPLATE.md
+│   └── PULL_REQUEST_TEMPLATE.md
+│
+...
 ```
 
 ```yaml
 repository/
-└── .github/
-    ├── ISSUE_TEMPLATE/
-    │   ├── FIX.md
-    │   └── UPDATE.md
-    │
-    └── PULL_REQUEST_TEMPLATE.md
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── FIX.md
+│   │   └── UPDATE.md
+│   │
+│   └── PULL_REQUEST_TEMPLATE.md
+│
+...
 ```
 
 #### ▼ タイトル

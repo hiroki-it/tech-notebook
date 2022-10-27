@@ -17,11 +17,22 @@ description: ArgoCD＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+
 argocd-server、repo-server、application-controller、redis-server、dex-server、から構成される。
 
 > ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_architecture.png)
+```bash
+$ kubectl get pod -n argocd
+
+NAME                                    READY   STATUS    RESTARTS   AGE
+argocd-server-*****                     1/1     Running   0          1d
+argocd-repo-server-*****                1/1     Running   0          1d
+argocd-redis-*****                      1/1     Running   0          1d
+argocd-application-controller-*****     1/1     Running   0          1d
+argocd-dex-server-*****                 1/1     Running   0          1d
+```
 
 <br>
 

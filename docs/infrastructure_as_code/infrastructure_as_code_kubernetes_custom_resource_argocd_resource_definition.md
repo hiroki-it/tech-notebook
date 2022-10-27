@@ -469,7 +469,7 @@ spec:
 
 #### ▼ chart
 
-監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。
+監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。リポジトリ
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
@@ -482,6 +482,7 @@ metadata:
 spec:
   source:
     chart: <チャート名>
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
 #### ▼ helm
@@ -619,7 +620,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    repoURL: https://foo.example.com/foo-chart
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
 #### ▼ targetRevision
@@ -692,7 +693,7 @@ argocdのアドオンを使用する。
 
 #### ▼ helmfileの場合
 
-```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```プラグインを使用すればHelmfileの
+```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```プラグインを使用すればHelmfileの機能も活用できる。
 
 > ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#intro
 

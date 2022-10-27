@@ -120,7 +120,7 @@ description: 可観測性の知見を記録しています。
 
 ### メトリクスとは
 
-とある分析にて、一定期間に発生した複数のデータポイントの集計値のこと。メトリクスは、特定の単位（平均、最大最小、合計）で再集計できる。
+とある分析にて、一定期間に発生した複数のデータポイントの集計値のこと。メトリクスは、データポイントの形式にあわせていくつかの形式（例：割合系、時間系、カウント系、など）がある。またメトリクスは、特定の方式（平均、最大最小、合計、データポイント数）で再集計できる。
 
 > ℹ️ 参考：
 >
@@ -128,6 +128,22 @@ description: 可観測性の知見を記録しています。
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+
+<br>
+
+### メトリクスの種類
+
+#### ▼ 割合系
+
+値を割合で表す。割合系データポイントの集計値である。
+
+#### ▼ 時間系
+
+値を期間で表す。時間系データポイントの集計値である。
+
+#### ▼ カウント系
+
+値を```0```か```1```で表す。カウント系データポイントの集計値である。
 
 <br>
 
