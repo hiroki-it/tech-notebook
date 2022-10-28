@@ -13,7 +13,7 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 <br>
 
-## 01. セットアップ
+## 01. GCP CLIのセットアップ
 
 ### auth
 

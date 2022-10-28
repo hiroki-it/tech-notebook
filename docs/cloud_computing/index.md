@@ -31,6 +31,6 @@
 
 * #### 📖 [︎GCP CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_cli.html)
 * #### <u>GCPリソース</u>
-  > * ##### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_resource_anthos.html)
+  > * ##### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_resource_a_anthos.html)
 
 <br>

@@ -13,7 +13,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 <br>
 
-## 01. セットアップ（configure）
+## 01. AWS CLIのセットアップ
 
 ### configure
 

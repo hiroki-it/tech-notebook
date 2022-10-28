@@ -29,6 +29,39 @@ $ helm create <チャートへのパス>
 
 <br>
 
+### dependency
+
+#### ▼ build
+
+```requirements.yaml```ファイルに定義された依存対象のチャートを、```chart```ディレクトリ内にダウンロードする。
+
+> ℹ️ 参考：https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+
+```bash
+$ helm dependency build
+
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "foo" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+```
+
+<br>
+
+### get
+
+#### ▼ getとは
+
+特定のリリースに含まれる```helm template```コマンドの結果を取得する。
+
+> ℹ️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
+
+```bash
+$ helm get <リリース名>
+```
+
+<br>
+
 ### history
 
 #### ▼ historyとは
@@ -44,20 +77,6 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 <リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-<バージョンタグ>   <バージョンタグ>          Initial install
 <リリース名>   Wed Jan 01 12:00:00 2020   SUSPENDED  foo-1.1.0  1.1.0    Rolled back to 1
 <リリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
-```
-
-<br>
-
-### get
-
-#### ▼ getとは
-
-特定のリリースに含まれる```helm template```コマンドの結果を取得する。
-
-> ℹ️ 参考：https://helm.sh/docs/helm/helm_get_manifest/
-
-```bash
-$ helm get <リリース名>
 ```
 
 <br>
