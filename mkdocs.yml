@@ -326,26 +326,27 @@ nav:
       - cloud_computing/index.md
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
-          - AWSリソース: cloud_computing/cloud_computing_aws.md
-          - A〜D: cloud_computing/cloud_computing_aws_1.md
-          - E: cloud_computing/cloud_computing_aws_2.md
-          - F〜K: cloud_computing/cloud_computing_aws_3.md
-          - L〜R: cloud_computing/cloud_computing_aws_4.md
-          - S〜U: cloud_computing/cloud_computing_aws_5.md
-          - V〜Z: cloud_computing/cloud_computing_aws_6.md
+          - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
+          - ■ AWSリソース:
+              - AWSリソース: cloud_computing/cloud_computing_aws_resource.md
+              - A〜D: cloud_computing/cloud_computing_aws_resource_1.md
+              - E: cloud_computing/cloud_computing_aws_resource_2.md
+              - F〜K: cloud_computing/cloud_computing_aws_resource_3.md
+              - L〜R: cloud_computing/cloud_computing_aws_resource_4.md
+              - S〜U: cloud_computing/cloud_computing_aws_resource_5.md
+              - V〜Z: cloud_computing/cloud_computing_aws_resource_6.md
+              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
+              - Lambda関数の実装: cloud_computing/cloud_computing_aws_resource_lambda_function.md
+              - FireLensコンテナ: cloud_computing/cloud_computing_aws_resource_firelens.md
           - ■ 設計ポリシー:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
               - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
-          - ■ その他:
-              - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
-              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
-              - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
-              - FireLensコンテナ: cloud_computing/cloud_computing_aws_firelens.md
       - ■ GCP:
-          - コマンド: cloud_computing/cloud_computing_gcp_command.md
-          - Anthos: cloud_computing/cloud_computing_gcp_anthos.md
+          - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
+          - ■ GCPリソース:
+              - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
   - 📦 仮想化:
       - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
