@@ -335,9 +335,9 @@ nav:
               - L〜R: cloud_computing/cloud_computing_aws_resource_4.md
               - S〜U: cloud_computing/cloud_computing_aws_resource_5.md
               - V〜Z: cloud_computing/cloud_computing_aws_resource_6.md
-              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_resource_api_gateway_import.md
-              - Lambda関数の実装: cloud_computing/cloud_computing_aws_resource_lambda_function.md
-              - FireLensコンテナ: cloud_computing/cloud_computing_aws_resource_firelens.md
+              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.md
+              - Lambda関数の実装: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
+              - FireLensコンテナ: cloud_computing/cloud_computing_aws_resource_e_firelens.md
           - ■ 設計ポリシー:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
@@ -346,7 +346,7 @@ nav:
       - ■ GCP:
           - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
           - ■ GCPリソース:
-              - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
+              - Anthos: cloud_computing/cloud_computing_gcp_resource_a_anthos.md
   - 📦 仮想化:
       - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
