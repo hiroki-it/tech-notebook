@@ -17,7 +17,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ### デザインパターン別
 
-#### ▼ サイドカープロキシによるサービスメッシュの構造
+#### ▼ サイドカープロキシによるサービスメッシュのアーキテクチャ
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
@@ -29,7 +29,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
 
-#### ▼ アンビエントメッシュの構造
+#### ▼ アンビエントメッシュのアーキテクチャ
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 

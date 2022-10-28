@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】コマンド＠GCP
-description: コマンド＠GCPの知見を記録しています。
+title: 【IT技術の知見】GCP CLI＠GCP
+description: GCP CLI＠GCPの知見を記録しています。
 ---
 
-# コマンド＠GCP
+# GCP CLI＠GCP
 
 ## はじめに
 

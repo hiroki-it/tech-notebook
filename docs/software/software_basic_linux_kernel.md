@@ -25,11 +25,17 @@ description: Linuxカーネル（制御プログラム）＠基本ソフトウ�
 
 ### アーキテクチャ
 
+#### ▼ モノリシックカーネルのアーキテクチャ
+
 Linuxカーネルは、システムコール、各種管理コンポーネント、デバイスドライバー、などから構成される。
 
 > ℹ️ 参考：https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/linux_kernel_architecture.png)
+
+#### ▼ マイクロカーネルのアーキテクチャ
+
+調査中...
 
 <br>
 
