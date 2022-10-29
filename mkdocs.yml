@@ -210,9 +210,11 @@ nav:
           - 言語の種類: software/software_application_language_type.md
           - 言語別の処理方式: software/software_application_language_process_mode.md
           - ■ データ記述言語:
-              - データ記述言語: software/software_application_language_data_description_language.md
-              - ■ クエリロジック:
-                  - JSONクエリ: software/software_application_language_data_description_language_query_json.md
+              - ■ JSON:
+                  - JSON: software/software_application_language_data_description_language_json.md
+                  - JSONクエリ: software/software_application_language_data_description_language_json_query.md
+              - ■ YAML:
+                  - YAML: software/software_application_language_data_description_language_yaml.md
           - ■ PHP:
               - PHP: software/software_application_language_php.md
               - コマンド: software/software_application_language_php_command.md
