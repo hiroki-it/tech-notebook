@@ -356,7 +356,7 @@ nav:
       - ■ GCP:
           - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
           - ■ GCPリソース:
-              - ■ Gで始まるGCPリソース:
+              - ■ Aで始まるGCPリソース:
                   - Anthos: cloud_computing/cloud_computing_gcp_resource_a_anthos.md
   - 📦 仮想化:
       - virtualization/index.md
