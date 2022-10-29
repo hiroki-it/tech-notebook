@@ -301,6 +301,7 @@ nav:
       - ■ ネットワーク:
           - ネットワーク: network/network.md
           - IPアドレス: network/network_ip_address.md
+          - ポート: network/network_port.md
           - ルーター: network/network_router.md
       - ■ モデル:
           - TCP階層モデル: network/network_model_tcp.md
