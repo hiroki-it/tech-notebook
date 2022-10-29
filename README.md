@@ -2,7 +2,7 @@
 
 『俺の技術ノート』というサイトを運用しています。
 
-元々は、[旧・俺の技術ノート](https://github.com/hiroki-it/tech-notebook)から、本サイトに移行しました。
+[旧・俺の技術ノート](https://github.com/hiroki-it/tech-notebook)から、本サイトに移行しました。
 
 詳しくは、こちらまで！！
 
