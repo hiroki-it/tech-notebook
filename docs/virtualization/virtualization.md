@@ -13,11 +13,19 @@ description: 仮想化の知見を記録しています。
 
 <br>
 
-## 01. 仮想化
+## 01. 仮想化とは
 
-### 仮想化とは
+1つの物理サーバー上で、仮想的なハードウェアやOSを稼働させる技術のこと。
 
-1つの物理サーバー上で仮想的なハードウェアを稼働させる技術のこと。仮想的あハードウェアの作成方法にはいくつか種類がある。
+<br>
+
+## 02. ハードウェア仮想化
+
+### ハードウェア仮想化とは
+
+物理サーバー上で、物理サーバーのハードウェア要素を完全に仮想化する。
+
+> ℹ️ 参考：https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization
 
 <br>
 
@@ -54,13 +62,25 @@ description: 仮想化の知見を記録しています。
 
 <br>
 
+## 02-02. OS仮想化
+
+### OS仮想化とは
+
+物理サーバー上で、ハードウェア要素を全て仮想化するのではなく、OSの一部分を仮想化する。
+
+> ℹ️ 参考：https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization
+
+<br>
+
 ### コンテナ型仮想化
 
 #### ▼ コンテナ型仮想化とは
 
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 
-物理サーバーのホスト上で、仮想サーバーと同様の能力を持つコンテナを作成する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを使用して、単一のOS上に独立したコンテナを作成する。
+物理サーバーのホスト上で、仮想サーバーと同様の能力を持つコンテナを作成する。OSのユーザー空間を分割し、各ユーザー空間上で独立したコンテナを作成する。
+
+> ℹ️ 参考：https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89
 
 #### ▼ Provider例
 
@@ -78,7 +98,7 @@ description: 仮想化の知見を記録しています。
 
 <br>
 
-## 01-02. 各仮想化のパフォーマンスの比較
+## 03. 各仮想化のパフォーマンスの比較
 
 ### 起動速度の違い
 

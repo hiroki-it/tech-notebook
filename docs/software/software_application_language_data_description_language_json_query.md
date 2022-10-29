@@ -253,3 +253,4 @@ cat list.json | jq '[.[].foo] | join(" ")'
 FOO BAR BAZ
 ```
 
+<br>
