@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】データ記述言語＠言語
-description: データ記述言語＠言語の知見を記録しています。
+title: 【IT技術の知見】JSON＠データ記述型言語
+description: JSON＠データ記述型言語の知見を記録しています。
 ---
 
-# データ記述言語＠言語
+# JSON＠データ記述型言語
 
 ## はじめに
 
@@ -13,9 +13,11 @@ description: データ記述言語＠言語の知見を記録しています。
 
 <br>
 
-## 01. データ記述言語
+## 01. JSON：JavaScript Object Notation
 
-### JSON：JavaScript Object Notation
+### 配列
+
+#### ▼ 括弧
 
 ```yaml
 {
@@ -29,28 +31,7 @@ description: データ記述言語＠言語の知見を記録しています。
 
 <br>
 
-### YAML：YAML Ain't a Markup Language
-
-```yaml
-account: 200  
-fruit:
-  - "banana"
-  - "apple"
-```
-
-<br>
-
-### マークアップ言語
-
-<br>
-
-### CSV：Comma Separated Vector
-
-データ解析の入力ファイルとしてよく使用するやつ。
-
-<br>
-
-## 02. 相互パース（シリアライズ+デシリアライズ）
+## 02. 相互パース（シリアライズ + デシリアライズ）
 
 ### バックエンドとフロントエンド間
 
@@ -142,7 +123,7 @@ json["prefecture"] = "Tokyo";
 
 <br>
 
-### JS型オブジェクト
+### フロントエンドの場合
 
 #### ▼ 定義方法
 
@@ -171,7 +152,7 @@ class Foo {
 
 <br>
 
-### PHP型オブジェクト
+### バックエンドの場合
 
 #### ▼ 定義方法
 
@@ -197,7 +178,7 @@ class Foo
 
 ## 02-03. オブジェクトデータの変換
 
-### フロントエンド
+### フロントエンドの場合
 
 #### ▼ シリアライズ：JS型からJSON
 
@@ -288,7 +269,7 @@ class StaffParser {
 
 <br>
 
-### バックエンド
+### バックエンドの場合
 
 #### ▼ デシリアライズ：JSONからPHP型
 
@@ -355,6 +336,3 @@ $json = json_encode($object);
 var_dump($json);
 // ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""
 ```
-
-<br>
-

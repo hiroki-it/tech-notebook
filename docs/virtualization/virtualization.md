@@ -33,7 +33,7 @@ description: 仮想化の知見を記録しています。
 
 - Oracle VM VirtualBox
 - VMware Workstation
-- など
+
 
 <br>
 
@@ -50,7 +50,7 @@ description: 仮想化の知見を記録しています。
 - VMware vSphere Hypervisor
 - Xen
 - KVM
-- など
+
 
 <br>
 
@@ -69,7 +69,7 @@ description: 仮想化の知見を記録しています。
 - Podman
 - LXC
 - OpenVZ
-- など
+
 
 > ℹ️ 参考：
 >

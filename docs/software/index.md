@@ -119,9 +119,11 @@
   > * ##### 📖 [︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html)
 
 * #### <u>データ記述言語</u>
-  > * ##### 📖 [︎データ記述言語](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language.html)
-  > * ##### <u>クエリロジック</u>
-  > > * ##### 📖 [︎JSONクエリ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_query_json.html)
+  > * ##### <u>JSON</u>
+  > > * ##### 📖 [︎JSON](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_json.html)
+  > > * ##### 📖 [︎JSONクエリ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_json_query.html)
+  > * ##### <u>YAML</u>
+  > > * ##### 📖 [︎YAML](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_data_description_language_yaml.html)
 
 * #### <u>PHP</u>
   > * ##### 📖 [PHP](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php.html)

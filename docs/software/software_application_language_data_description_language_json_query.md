@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JSONクエリ＠クエリロジック
-description: JSONクエリ＠クエリロジックの知見を記録しています。
+title: 【IT技術の知見】JSONクエリ＠JSON
+description: JSONクエリ＠JSONの知見を記録しています。
 ---
 
-# JSONクエリ＠クエリロジック
+# JSONクエリ＠JSON
 
 ## はじめに
 
