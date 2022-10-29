@@ -44,6 +44,8 @@ description: Lで始まるAWSリソース＠AWSの知見を記録しています
 | プロビジョニングされた同時実行設定 |                                                    |                                                              |
 | モニタリング            | LambdaをCloudWatchまたはX-Rayを使用して、メトリクスのデータポイントを収集する。 | 次の方法がある<br>・CloudWatchによって、メトリクスのデータポイントを収集する。<br>・CloudWatchのLambda Insightsによって、パフォーマンスに関するメトリクスのデータポイントを収集する。<br>・X-Rayによって、APIに対するリクエスト、Lambdaコール、Lambdaの下流とのデータ通信をトレースし、これらをスタックトレース化する。 |
 
+<br>
+
 ### 設定のベストプラクティス
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration

@@ -34,12 +34,13 @@
   > * ##### 📖 [︎信頼性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_reliability.html)
   > * ##### 📖 [︎安全性](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_security.html)
   > * ##### 📖 [︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
-
+* #### 📖 [︎ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_tools.html)
 
 ### GCP
 
 * #### 📖 [︎GCP CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_cli.html)
 * #### <u>GCPリソース</u>
-  > * ##### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_resource_a_anthos.html)
+  > * ##### <u>︎Aで始まるGCPリソース</u>
+  > > * ##### 📖 [︎Anthos](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_resource_a_anthos.html)
 
 <br>
