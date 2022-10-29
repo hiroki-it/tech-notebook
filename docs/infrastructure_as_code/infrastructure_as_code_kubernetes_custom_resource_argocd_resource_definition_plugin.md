@@ -86,7 +86,9 @@ spec:
 
 <br>
 
-### vaultとの連携
+## 02. vaultとの連携
+
+### セットアップ
 
 #### ▼ vaultのインストール
 
@@ -157,8 +159,9 @@ spec:
 
 <br>
 
-### helmfileとの連携
+## 03. helmfileとの連携
 
+### セットアップ
 
 #### ▼ helmfileのインストール
 
@@ -229,13 +232,13 @@ spec:
 
 <br>
 
-### helm-secretsとの連携
+## 04. helm-secretsとの連携
 
+### セットアップ
 
 #### ▼ helm-secretsのインストール
 
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
-
 
 #### ▼ プラグイン名の指定
 
@@ -289,3 +292,5 @@ spec:
   plugin:
     name: helm-secrets
 ```
+
+<br>

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見を記録しています。
+title: 【IT技術の知見】Sから始まるAWSリソース＠AWS
+description: Sから始まるAWSリソース＠AWSの知見を記録しています。
 ---
 
-# AWS：Amazon Web Service（S〜U）
+# ```S```から始まるAWSリソース＠AWS
 
 ## はじめに
 

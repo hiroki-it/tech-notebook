@@ -149,6 +149,8 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
 
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
+
 #### ▼ ```Start```関数
 
 Lamda関数を実行するための関数。```Start```関数に渡すパラメーターには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。もし含まれていない場合は、Lambdaで内部エラーが起こる。
@@ -358,6 +360,8 @@ func main() {
 ## 03. Node.jsによる実装
 
 ### デフォルトで使用できるパッケージ
+
+> ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
 以下のパッケージでは、npmを使用する必要はない。パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。
 

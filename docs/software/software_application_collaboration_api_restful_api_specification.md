@@ -65,7 +65,7 @@ $ redoc-cli bundle openapi.yaml redoc.html
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_api_gateway_import.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
 
 <br>
 

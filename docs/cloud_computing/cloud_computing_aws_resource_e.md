@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS：Amazon Web Service
-description: AWS：Amazon Web Serviceの知見を記録しています。
+title: 【IT技術の知見】Eで始まるAWSリソース＠AWS
+description: Eで始まるAWSリソース＠AWSの知見を記録しています。
 ---
 
-# AWS：Amazon Web Service（E）
+# ```E```で始まるAWSリソース＠AWS
 
 ## はじめに
 
@@ -12,6 +12,7 @@ description: AWS：Amazon Web Serviceの知見を記録しています。
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
+
 
 ## 01. EC2：Elastic Computer Cloud
 
@@ -907,12 +908,6 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 | ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ宛先のCloudWatchログのリージョンを設定する。           |                                                              |
 | ```awslogs-stream-prefix```   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。 | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。 |
-
-#### ▼ FireLensコンテナ
-
-以下のリンクを参考にせよ。
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_firelens.html
 
 <br>
 
