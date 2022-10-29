@@ -352,6 +352,7 @@ nav:
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
               - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
+          - ツール: cloud_computing/cloud_computing_aws_tools.md
       - ■ GCP:
           - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
           - ■ GCPリソース:
