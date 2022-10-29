@@ -2,6 +2,8 @@
 
 『俺の技術ノート』というサイトを運用しています。
 
+元々は、[旧・俺の技術ノート](https://github.com/hiroki-it/tech-notebook)から、本サイトに移行しました。
+
 詳しくは、こちらまで！！
 
 ▶ https://hiroki-it.github.io/tech-notebook-mkdocs/index.html
