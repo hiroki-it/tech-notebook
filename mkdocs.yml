@@ -132,6 +132,7 @@ nav:
               - ジョブ管理: software/software_basic_linux_kernel_job_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
+              - UNIX系標準ユーティリティ: software/software_basic_utility_unix.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
               - シェル: software/software_basic_utility_shell.md
               - スクリプト: software/software_basic_utility_script.md
