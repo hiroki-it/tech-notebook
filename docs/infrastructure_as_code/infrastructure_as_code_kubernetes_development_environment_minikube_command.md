@@ -632,12 +632,39 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 ```bash
 $ minikube start --nodes 3
 
+# コントロールプレーンNode、ワーカーNode、を確認する。
 $ kubectl get node
 NAME           STATUS   ROLES                  AGE   VERSION
 minikube       Ready    control-plane,master   76s   v1.22.0 # コントロールプレーンNode
 minikube-m02   Ready    <none>                 42s   v1.22.0 # ワーカーNode
 minikube-m03   Ready    <none>                 19s   v1.22.0
 minikube-m04   Ready    <none>                 19s   v1.22.0
+
+# コントロールプレーンNode、ワーカーNode、を確認する。
+$ minikube status
+
+minikube # コントロールプレーンNode
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+minikube-m02 # ワーカーNode
+type: Worker
+host: Running
+kubelet: Running
+```
+
+ちなみに、コントロールプレーンNodeも単なるNodeの一つなので、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
+
+```bash
+$ kubectl get pod -o wide
+
+NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
+nginx-deployment-*****   1/1     Running   0          16m   10.244.0.3   minikube       <none>           <none>           # コントロールプレーンNode上にある。
+nginx-deployment-*****   1/1     Running   0          16m   10.244.1.3   minikube-m02   <none>           <none>           # ワーカーNode上にある。
+nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikube-m02   <none>           <none>
 ```
 
 <br>

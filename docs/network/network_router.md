@@ -161,6 +161,46 @@ GET https://example.com:53
 | DNATの場合   | 外部IPアドレスをネットワークに公開し、外部IPアドレスを宛先IPアドレスとしたパケットを受信した場合に、宛先IPアドレスを内部IPアドレスに変換してルーティングする。 | NATルーターを通過した後、パケットの宛先IPアドレスを内部IPアドレスに変換する。          | 無し                                                                        |
 | SNATの場合   | NATルーターを通過した後、パケットの送信元IPアドレスを外部IPアドレスに変換する。NATルーターのIPアドレスを指定して通信する必要はない。             | NATルーターが受信したパケットのうちで、指定した『送信元IPアドレス』を持つパケットのみルールを適用し、そうでないパケットはそのまま通過させる。 | NATルーターが受信したパケットのうちで、指定した『宛先IPアドレス』を持つパケットのみルールを適用し、そうでないパケットはそのまま通過させる。 |
 
+<br>
+
+### 標準的NATルーター
+
+#### ▼ iptables（Linux/Ubuntu）による標準的NATルーター
+
+Linux/Ubuntuでのiptablesは、標準的なNATルーターかつパケットフィルタリング型ファイアウォールである。特に、NATルーターは```/etc/sysconfig/iptables```ファイルの```nat```テーブルで設定する。```iptables-save```コマンドでこのファイルを作成できる。
+
+| ````nat```テーブルに関するチェイン名      | 説明    |
+|---------------|------------|
+| OUTPUT    | パケットの送信時に、その送信を許可/拒否する。   |
+| PREROUTING    | パケットの受信時に、パケットの送信元IPアドレスとポート番号を変換する。   |
+| POSTROUTING    | パケットの送信時に、パケットの送信元IPアドレスとポート番号を変換する。   |
+
+
+> ℹ️ 参考：
+>
+> - https://christina04.hatenablog.com/entry/iptables-outline
+> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#nat%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
+
+
+**＊例＊**
+
+
+> ℹ️ 参考：https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
+
+```bash
+$ cat /etc/sysconfig/iptables
+
+...
+*nat
+# iptableで受信したパケットに関して、宛先IPアドレスを『10.0.1.2』に、ポート番号を『80』に変換する。
+-A PREROUTING -p tcp -m tcp --dport 10080 -j DNAT --to-destination 10.0.1.2:80
+# iptablesから送信するパケットに関して、送信元IPアドレスを『10.0.1.3』に変換する。
+-A POSTROUTING -d 10.0.1.2/32 -p tcp -m tcp --dport 80 -j SNAT --to-source 10.0.1.3
+COMMIT
+...
+```
+
+
 
 <br>
 

@@ -20,6 +20,7 @@
 
 * #### <u>ユーティリティ</u>
   > * ##### 📖 [︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility.html)
+  > * ##### 📖 [︎UNIX系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_unix.html)
   > * ##### 📖 [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_package_management.html)
   > * ##### 📖 [︎シェル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_shell.html)
   > * ##### 📖 [︎スクリプト](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_script.html)

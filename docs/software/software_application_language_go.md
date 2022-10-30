@@ -108,9 +108,12 @@ CMD ["/go/bin/cmd"]
 
 #### ▼ ```$GOPATH```
 
-パスは好みであるが、```$HOME/go```とすることが多い。ディレクトリ構成ポリシーのベストプラクティスは以下のリンクを参考にせよ。
+パスは好みであるが、```$HOME/go```とすることが多い。ローカルマシンで仮想環境を使用せずにGoのアプリを直接的にビルドする場合、プロジェクトをGOPATH配下に配置しなければならない。ディレクトリ構成ポリシーのベストプラクティスは以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://github.com/golang-standards/project-layout
+> ℹ️ 参考：
+> 
+> - https://github.com/golang-standards/project-layout
+> - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。

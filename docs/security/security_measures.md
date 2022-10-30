@@ -17,11 +17,12 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 ### ファイアウォールとは
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
-
 ```L2```（データリンク層）から```L4```（トランスポート層）までに対するサイバー攻撃（例：そもそものネットワークへの侵入、ポートスキャン、など）を防御する。
 
 > ℹ️ 参考：https://digital-jyoshisu.com/archives/468
+
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+
 
 <br>
 
@@ -38,30 +39,43 @@ description: ︎対策＠セキュリティの知見を記録しています。
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 > - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
 
-#### ▼ iptables（Ubuntu）
+#### ▼ iptables（Linux/Ubuntu）による標準的ファイアウォール
 
-Ubuntuでのiptablesは、パケットフィルタリング型ファイアウォールである。```/etc/sysconfig/iptables```ファイルにルールを設定する。```iptables-save```コマンドでこのファイルを作成できる。
+Linux/Ubuntuでのiptablesは、標準的なNATルーターかつパケットフィルタリング型ファイアウォールである。特に、パケットフィルタリングのルールは、```/etc/sysconfig/iptables```ファイルの```filter```テーブルで設定する。```iptables-save```コマンドでこのファイルを作成できる。
 
-> ℹ️ 参考：https://linuc.org/study/knowledge/540/
+
+| ````filter```テーブルに関するチェイン名      | 説明    |
+|---------------|------------|
+| INPUT    | パケットの受信時に、その送信を許可/拒否する。   |
+| FORWARD    | パケットの転送時に、その転送を許可/拒否する。   |
+| OUTPUT    | パケットの送信時に、その送信を許可/拒否する。   |
+
+> ℹ️ 参考：
+> 
+> - https://christina04.hatenablog.com/entry/iptables-outline- 
+> - https://linuc.org/study/knowledge/540/
+> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
 
 **＊例＊**
 
 ```bash
 $ cat /etc/sysconfig/iptables
 
+...
 *filter
 :INPUT DROP [5:300]
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [32:3205]
-# 22番ポートと80番ポート宛てのTCPプロトコルの通信を許可する。
+# 22番ポートと80番ポート宛てのTCPプロトコルのインバウンド通信を許可する。
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 COMMIT
+...
 ```
 
-#### ▼ firewalld（CentOS）
+#### ▼ firewalld（CentOS）による標準的ファイアウォール
 
-CentOSでのfirewalldは、パケットフィルタリング型ファイアウォールである。デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
+CentOSでのfirewalldは、標準的なパケットフィルタリング型ファイアウォールである。デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
 
 > ℹ️ 参考：
 >
@@ -103,10 +117,9 @@ public
   interfaces: ens192
 ```
 
-#### ▼ Windowsファイアウォール（Windows）
+#### ▼ Windowsファイアウォール（Windows）による標準的ファイアウォール
 
-
-Windowsにおけるファイアウォール。
+Windowsファイアウォールは、Windowsにおけるファイアウォールである。
 
 > ℹ️ 参考：https://pc-karuma.net/windows-10-firewall-open-port/
 
@@ -136,11 +149,13 @@ Windowsにおけるファイアウォール。
 
 ### IPSとは
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
-
 ```L3```（ネットワーク層）から```L6```（プレゼンテーション層）までに対するサイバー攻撃（Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など）を遮断するセキュリティシステムのこと。
 
 > ℹ️ 参考：https://digital-jyoshisu.com/archives/468
+
+
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+
 
 <br>
 
@@ -167,14 +182,16 @@ Windowsにおけるファイアウォール。
 
 ### WAFとは
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
-
 ```L7```（アプリケーション層）に対するサイバー攻撃（SQLインジェクション、XSS、OSコマンドインジェクション、など）を防御する。
 
 > ℹ️ 参考：
 >
 > - https://digital-jyoshisu.com/archives/468
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
+
+
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/security_protection-type.png)
+
 
 <br>
 
@@ -204,9 +221,12 @@ Windowsにおけるファイアウォール。
 
 ### ワンタイムトークンとは
 
+```L7```（アプリケーション層）に対するサイバー攻撃（例：CSRF）を防御する。認証時に、セッションIDだけでなく、ワンタイムトークンも併用する。認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを```Set-Cookie```ヘッダーの```csrftoken```パラメーター（フレームワークによっては、これに相当するパラメーター）や独自ヘッダーに割り当てて、レスポンスを返信する。
+
+> ℹ️ 参考：https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
+
 ![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf-token.png)
 
-```L7```（アプリケーション層）に対するサイバー攻撃（例：CSRF）を防御する。認証時に、セッションIDだけでなく、ワンタイムトークンも併用する。認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを```Set-Cookie```ヘッダーの```csrftoken```パラメーター（フレームワークによっては、これに相当するパラメーター）や独自ヘッダーに割り当てて、レスポンスを返信する。
 
 <br>
 
@@ -255,7 +275,6 @@ x-csrf-token: <トークン>
 
 > ℹ️ 参考：
 >
-> - https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
 > - https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
 > - https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95
 
@@ -289,11 +308,13 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 ### CORSとは  
 
-![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cors.png)
-
 ```L7```（アプリケーション層）に対するサイバー攻撃（例：CSRF、XSS）を防御する。 異なるドメインで表示されるページからのリクエストを許可する仕組みのこと。デフォルトでは、異なるドメインで表示されるページからのリクエストは拒否されるようになっている。異なるドメインで表示されるページからのリクエストを許可したい場合は、ページからのリクエストとサーバーからのレスポンスの両方で対応が必要である。
 
 > ℹ️ 参考：https://developer.mozilla.org/ja/docs/Glossary/Origin
+
+
+![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cors.png)
+
 
 <br>
 

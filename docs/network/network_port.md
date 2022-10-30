@@ -19,14 +19,14 @@ description: ポート＠ネットワークの知見を記録しています。
 
 ハードウェアの接続の差し込み口のこと。ハードウェア仮想化（仮想サーバー）やOS仮想化（コンテナ）を採用する場合、これらにもポートが存在することになる。
 
-> ℹ️ 参考：
-> 
-> - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
-> - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
-
 - ディスプレイポート
 - USBポート
 - LANポート
+
+> ℹ️ 参考：
+>
+> - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
+> - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
 
 <br>
 
