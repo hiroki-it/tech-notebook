@@ -19,7 +19,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-リクエストメッセージからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
+リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
 > ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
@@ -29,7 +29,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストメッセージからJSONデータを取得し、構造体に紐付ける。
+```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSONデータを取得し、構造体に紐付ける。
 
 > ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 

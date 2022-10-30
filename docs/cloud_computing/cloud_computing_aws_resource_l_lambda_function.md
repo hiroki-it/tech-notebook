@@ -648,7 +648,7 @@ const s3 = new aws.S3();
 exports.handler = (event, context, callback) => {
 
   // API Gatewayとのプロキシ統合を意識したJSON構造にする。
-  // レスポンスメッセージの初期値
+  // レスポンスの初期値
   const response = {
     "statusCode": null,
     "body": null
@@ -661,7 +661,7 @@ exports.handler = (event, context, callback) => {
     return callback(null, response);
   }
 
-  // リクエストメッセージバリデーション
+  // リクエストバリデーション
   if (!event.headers || !event.body) {
     response.statusCode = 400;
     response.body = "Parameters are not found.";

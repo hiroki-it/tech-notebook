@@ -321,15 +321,11 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 ## 03. 分散トレースの作成
 
-### 分散トレース
+### Datadogにおける分散トレース
 
-#### ▼ 分散トレースとは
+#### ▼ トレースの構成
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
-
-#### ▼ Datadogにおける分散トレース
-
-Datadogで、分散トレースはスパンを持つ配列データとして定義される。
+Datadogで、分散トレースは複数のスパンの配列データとして定義される。
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
@@ -341,7 +337,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 ]
 ```
 
-また、複数の分散トレースを配列データとして定義できる。
+また、複数の分散トレース自体を配列データとして定義できる。
 
 ```yaml
 [
@@ -351,15 +347,7 @@ Datadogで、分散トレースはスパンを持つ配列データとして定�
 ]
 ```
 
-<br>
-
-### スパン
-
-#### ▼ スパンとは
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability.html
-
-#### ▼ Datadogにおけるスパン
+#### ▼ スパンの構成
 
 Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。
 
@@ -467,17 +455,214 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 <br>
 
+
 ### エラートラッキング
 
 #### ▼ エラートラッキングの仕組み
-
-エントリす
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 
 <br>
 
-## 04. マイクロサービスの識別
+## 04. 分散トレースデータのマイクロサービス間伝播
+
+### Go（gRPCなし）の場合
+
+#### ▼ 先頭のマイクロサービス
+
+先頭のマイクロサービスでは、親スパンを作成する。また、後続のマイクロサービスに親スパンの分散トレースデータを伝播する。
+
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+
+```go
+package main
+
+import (
+	"log"
+	"net/http"
+
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+
+	// 親スパンを作成する。
+	span, ctx := tracer.StartSpanFromContext(
+		r.Context(),
+		"post.process",
+	)
+
+	defer span.Finish()
+
+	req, err := http.NewRequest(
+		"GET",
+		"https://example.com",
+		nil,
+	)
+
+	req = req.WithContext(ctx)
+
+	// アウトバウンド通信のリクエストヘッダーに、親スパンの分散トレースデータを伝播する。
+	err = tracer.Inject(
+		span.Context(),
+		tracer.HTTPHeadersCarrier(req.Header),
+	)
+
+	if err != nil {
+		log.Fatalf("failed to inject: %s", err)
+	}
+
+	http.DefaultClient.Do(req)
+}
+```
+
+#### ▼ 後続のマイクロサービス
+
+後続のマイクロサービスでは、受信したインバウンド通信から分散トレースデータを取得する。また、子スパンを作成し、後続のマイクロサービスに子スパンの分散トレースデータを伝播する。
+
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
+
+```go
+package main
+
+import (
+	"log"
+	"net/http"
+
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+
+	// インバウンド通信のリクエストヘッダーから分散トレースデータを取得する。
+	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
+
+	if err != nil {
+		log.Fatalf("failed to extract: %s", err)
+	}
+
+	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンの分散トレースデータを伝播する。
+	span := tracer.StartSpan(
+		"post.filter",
+		tracer.ChildOf(tracectx),
+	)
+
+	defer span.Finish()
+}
+
+```
+
+<br>
+
+### Go（gRPCあり）の場合
+
+#### ▼ gRPCサーバー側
+
+> ℹ️ 参考：
+>
+> - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
+> - https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127
+> - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
+> - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+
+	"google.golang.org/grpc"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+
+	grpctracer "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
+)
+
+func main() {
+
+	// トレーサーパッケージをセットアップする。
+	tracer.Start(tracer.WithEnv("prd"))
+
+	defer tracer.Stop()
+
+	// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。
+	streamServerInterceptor := grpc.StreamServerInterceptor(grpctracer.WithServiceName("foo-service"))
+	unaryServerInterceptor := grpc.UnaryServerInterceptor(grpctracer.WithServiceName("foo-service"))
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		grpc.StreamInterceptor(streamServerInterceptor),
+		grpc.UnaryInterceptor(unaryServerInterceptor),
+	)
+	
+	... // pb.goファイルに関する実装は省略している。
+
+	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
+	// gRPCサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
+
+	if err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+```
+
+#### ▼ gRPCクライアント側
+
+> ℹ️ 参考：
+> 
+> - https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example
+> - https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70
+> - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
+> - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
+
+```go
+package main
+
+import (
+	"log"
+
+	"google.golang.org/grpc"
+
+	grpctrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
+)
+
+func main() {
+
+	// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。
+	unaryClientInterceptor := grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))
+	streamClientInterceptor := grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))
+
+	// gRPCコネクションを作成する。
+	conn, err := grpc.Dial(
+		":9000",
+		grpc.WithInsecure(),
+		grpc.WithBlock(),
+		grpc.WithUnaryInterceptor(unaryClientInterceptor),
+		grpc.WithStreamInterceptor(streamClientInterceptor),
+	)
+
+	if err != nil {
+		log.Fatalf("did not connect: %s", err)
+	}
+
+	defer conn.Close()
+
+	... // pb.goファイルに関する実装は省略している。
+}
+```
+
+<br>
+
+## 05. マイクロサービスの識別
 
 ### マイクロサービスタイプ
 
@@ -502,3 +687,5 @@ PHPトレーサーでlaravel内からタグを収集した例
 >
 > - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
 > - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+
+<br>

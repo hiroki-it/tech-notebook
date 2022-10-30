@@ -219,7 +219,7 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 > - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
 > - https://www.iim.co.jp/products/zscaler/zpa/
 
-#### ▼ 通信の暗号化/復号化
+#### ▼ 通信データの暗号化/復号化
 
 リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
 
