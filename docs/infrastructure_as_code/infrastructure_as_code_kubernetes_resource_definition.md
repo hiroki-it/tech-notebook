@@ -558,7 +558,7 @@ users:
           - get-token
           - --cluster-name
           - prd-foo-eks-cluster
-        command: aws
+        command: "aws"
         
     ...  
     
@@ -1486,7 +1486,7 @@ spec:
       image: busybox:1.28
       # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command: ["sh", "-c"]
+      command: ["/bin/bash", "-c"]
       args:
         - |
           until nc -z db 3306

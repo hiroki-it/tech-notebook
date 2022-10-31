@@ -578,7 +578,7 @@ $ helm diff
 
 #### ▼ helm-secretsとは
 
-Sopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
+内部的にsopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
 
 > ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 

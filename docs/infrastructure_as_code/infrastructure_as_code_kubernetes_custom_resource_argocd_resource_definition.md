@@ -487,7 +487,7 @@ spec:
 
 #### ▼ helm
 
-```helm```コマンドに渡すパラメーターを設定する。Helmfileと同じように```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。
+```helm```コマンドに渡すパラメーターを設定する。helmfileと同じように```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。
 
 > ℹ️ 参考：
 >
@@ -499,7 +499,7 @@ spec:
 | ----------------- |--------------------------------------------| ------------------------------------------------------------ |
 | ```releaseName``` | 作成するリリース名を設定する。                            |                                                              |
 | ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。 |                                                              |
-| ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。           | ```values```ファイルは、チャートリポジトリ内にある必要がある。 |
+| ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。           | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br><br>ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されているため、新機能のリリースあとはこちらを使用した方が良さそう。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/pull/10432|
 
 
 ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。
@@ -1219,7 +1219,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ['sh']
+          command: ['/bin/bash']
           source: |
             echo "Hello World"
 ```
@@ -1286,7 +1286,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ['sh']
+          command: ['/bin/bash']
           source: |
             echo "Hello World"
 ```

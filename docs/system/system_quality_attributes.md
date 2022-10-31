@@ -9,7 +9,7 @@ description: システム品質特性＠システムの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://en.wikipedia.org/wiki/List_of_system_quality_attributes
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 

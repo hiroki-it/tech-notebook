@@ -53,6 +53,7 @@ command: |
 ```
 
 ```yaml
+# 処理中の構造
 { "command" => "echo foo\necho bar\n" }
 ```
 

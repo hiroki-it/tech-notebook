@@ -104,15 +104,6 @@ repository/ # チャートリポジトリ
 
 必要なKubernetesリソースを作成するためのマニフェストのセットをパッケージ化し、管理しやすくしたもの。ルートディレクトリに```Chart.yaml```ファイルと```template```ディレクトリを置く必要がある。また、チャートのコントリビュート要件も参考にすること。
 
-> ℹ️ 参考：
->
-> - https://helm.sh/docs/intro/using_helm/#three-big-concepts
-> - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
-> - https://helm.sh/docs/topics/charts/#the-chart-file-structure
-> - https://mixi-developers.mixi.co.jp/argocd-with-helm-7ec01a325acb
-> - https://helm.sh/docs/helm/helm_package/
-> - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
-
 ```yaml
 repository/
 ├── foo-chart/ # fooチャート
@@ -129,6 +120,15 @@ repository/
 ├── bar-chart/ # barチャート
 ...
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://helm.sh/docs/topics/charts/#the-chart-file-structure
+> - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
+> - https://helm.sh/docs/helm/helm_package/
+> - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
+
 
 #### ▼ チャートアーカイブ
 
@@ -434,7 +434,7 @@ ServiceAccountの作成を有効化する。
 
 #### ▼ includeとは
 
-define関数で定義した文字列を加工して出力する。加工内容はパラメーターで設定できる。
+```define```関数で定義した文字列を加工して出力する。加工内容はパラメーターで設定できる。
 
 > ℹ️ 参考：
 >
@@ -507,9 +507,12 @@ data:
 
 ### template
 
-define関数で定義した文字列をそのまま出力する。template関数よりもinclude関数が推奨されている。
+```define```関数で定義した文字列をそのまま出力する。```template```関数では出力内容を変数に格納できないため、これが可能な```include```関数が推奨されている。
 
-> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+> ℹ️ 参考：
+> 
+> - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+> - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
 
 <br>
 
