@@ -41,10 +41,10 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 #### ▼ iptables（Linux/Ubuntu）による標準的ファイアウォール
 
-Linux/Ubuntuでのiptablesは、標準的なNATルーターかつパケットフィルタリング型ファイアウォールである。特に、パケットフィルタリングのルールは、```/etc/sysconfig/iptables```ファイルの```filter```テーブルで設定する。```iptables-save```コマンドでこのファイルを作成できる。
+Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ファイアウォールである。特に、パケットフィルタリングのルールは、```/etc/sysconfig/iptables```ファイルの```filter```テーブルで設定する。```iptables-save```コマンドでこのファイルを作成できる。
 
 
-| ````filter```テーブルに関するチェイン名      | 説明    |
+| ```filter```テーブルに関するチェイン名      | 説明    |
 |---------------|------------|
 | INPUT    | パケットの受信時に、その送信を許可/拒否する。   |
 | FORWARD    | パケットの転送時に、その転送を許可/拒否する。   |
@@ -62,6 +62,7 @@ Linux/Ubuntuでのiptablesは、標準的なNATルーターかつパケットフ
 $ cat /etc/sysconfig/iptables
 
 ...
+
 *filter
 :INPUT DROP [5:300]
 :FORWARD DROP [0:0]
@@ -70,6 +71,7 @@ $ cat /etc/sysconfig/iptables
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 COMMIT
+
 ...
 ```
 

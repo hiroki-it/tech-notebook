@@ -22,7 +22,10 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。
 
-> ℹ️ 参考：https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
 
 - 連携先ツールがすでにインストールされた```argocd-repo-server```コンテナのイメージを使用する。
 - Podの```spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
@@ -60,12 +63,14 @@ data:
     - name: foo-plugin
       init:
         command: ["/bin/bash", "-c"]
-        args: |
-          # マニフェストの作成前に実行したい処理を定義する。
+        args:
+          - |
+            # マニフェストの作成前に実行したい処理を定義する。
       generate:
         command: ["/bin/bash", "-c"]
-        args: |
-          # 必要なマニフェストを作成する。
+        args:
+          - |
+            # 必要なマニフェストを作成する。
 ```
 
 
@@ -92,8 +97,10 @@ spec:
 
 #### ▼ vaultのインストール
 
-> ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
-
+> ℹ️ 参考：
+> 
+> - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
 #### ▼ プラグイン名の設定
 
@@ -128,14 +135,16 @@ data:
     - name: vault
       init:
         command: ["/bin/bash", "-c"]
-        args: |
-          set -euo pipefail
-          helm dependency build
+        args:
+          - |
+            set -euo pipefail
+            helm dependency build
       generate:
         command: ["/bin/bash", "-c"]
-        args: |
-          set -euo pipefail
-          helm template $ARGOCD_APP_NAME . --include-crds | argocd-vault-plugin generate -
+        args:
+          - |
+            set -euo pipefail
+            helm template $ARGOCD_APP_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
 
@@ -165,7 +174,44 @@ spec:
 
 #### ▼ helmfileのインストール
 
-調査中...
+> ℹ️ 参考：
+> 
+> - https://github.com/travisghansen/argo-cd-helmfile#installation
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: argocd-repo-server
+      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でHelmfileを使用する。
+      volumeMounts:
+        - mountPath: /usr/local/bin/helmfile
+          name: custom-tools
+          subPath: helmfile
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+  initContainers:
+    - name: install-vault
+      image: alpine:3.8
+      command: ["sh", "-c"]
+      # InitContainerにHelmfileをインストールする。
+      args:
+        - |
+          wget https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64 -O helmfile_linux_amd64 
+          chmod +x helmfile_linux_amd64
+          mv helmfile_linux_amd64 /custom-tools
+      # PodのボリュームにHelmfileを配置する。
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+```
+
 
 #### ▼ プラグイン名の指定
 
@@ -201,9 +247,10 @@ data:
     - name: helm-secrets
       generate:
         command: ["/bin/bash", "-c"]
-        args: |
-          set -euo pipefail
-          helmfile -f $HELMFILE_PATH -e $ENV $SELECTOR template"
+        args:
+          - |
+            set -euo pipefail
+            helmfile -f $HELMFILE_PATH -e $ENV $SELECTOR template"
 ```
 
 
@@ -238,7 +285,10 @@ spec:
 
 #### ▼ helm-secretsのインストール
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
+> ℹ️ 参考：
+> 
+> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
 #### ▼ プラグイン名の指定
 
@@ -272,11 +322,11 @@ data:
     - name: helm-secrets
       generate:
         command: ["/bin/bash", "-c"]
-        args: |
-          set -euo pipefail
-          helm secrets template -f $SECRETS -f $VALUES --namespace $ARGOCD_APP_NAMESPACE $ARGOCD_APP_NAME .
+        args:
+          - |
+            set -euo pipefail
+            helm secrets template -f $SECRETS -f $VALUES --namespace $ARGOCD_APP_NAMESPACE $ARGOCD_APP_NAME .
 ```
-
 
 #### ▼ プラグイン名の指定
 

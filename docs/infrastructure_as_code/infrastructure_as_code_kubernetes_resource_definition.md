@@ -1486,11 +1486,12 @@ spec:
       image: busybox:1.28
       # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command: [
-        'sh',
-        '-c',
-        'until nc -z db 3306 ; do sleep 1; done;'
-      ]
+      command: ["sh", "-c"]
+      args:
+        - |
+          until nc -z db 3306
+          do sleep 1
+          done
 ```
 
 

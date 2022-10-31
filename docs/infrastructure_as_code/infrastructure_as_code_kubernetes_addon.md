@@ -445,6 +445,8 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 ### CoreDNS Service/Pod
 
+#### ▼ CoreDNS Service/Podとは
+
 CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNS Serviceによって管理されている。
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
@@ -463,6 +465,7 @@ NAME                                     READY   STATUS    RESTARTS   AGE
 coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
 coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 ```
+
 
 <br>
 

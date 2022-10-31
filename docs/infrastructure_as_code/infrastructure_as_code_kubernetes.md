@@ -590,12 +590,33 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 
 > ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
+#### ▼ 確認方法
+
+```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）が宛先情報として登録されている。```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
+
+> ℹ️ 参考：
+> 
+> - https://dream.jp/vps/support/manual/mnl_security_04.html
+> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+
+```bash
+$ iptables -n -L KUBE-SERVICES -t nat --line-number
+
+Chain KUBE-SERVICES (2 references)
+num  target                     prot   opt   source      destination         
+1    KUBE-SVC-ERIFXISQEP7F7OF4  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns-tcp cluster IP */ tcp dpt:53
+2    KUBE-SVC-V2OKYYMBY3REGZOG  tcp    --    0.0.0.0/0   10.101.67.107        /* default/nginx-service cluster IP */ tcp dpt:8080
+3    KUBE-SVC-NPX46M4PTMTKRN6Y  tcp    --    0.0.0.0/0   10.96.0.1            /* default/kubernetes:https cluster IP */ tcp dpt:443
+4    KUBE-SVC-JD5MR3NA4I4DYORP  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:metrics cluster IP */ tcp dpt:9153
+5    KUBE-SVC-TCOU7JCQXEZGVUNU  udp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
+6    KUBE-NODEPORTS             all    --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
+```
+
 <br>
 
 ### プロキシモードの種類
 
 #### ▼ iptablesプロキシモード
-
 
 ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)
 
@@ -609,6 +630,7 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
+
 
 #### ▼ userspaceプロキシモード
 

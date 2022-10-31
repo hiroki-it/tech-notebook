@@ -41,22 +41,7 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39
 
-#### ▼ 確認方法
 
-```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Podが宛先情報として登録されている。
-
-```bash
-$ iptables -n -L KUBE-SERVICES -t nat --line-number
-
-Chain KUBE-SERVICES (2 references)
-num  target                     prot   opt   source      destination         
-1    KUBE-SVC-ERIFXISQEP7F7OF4  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns-tcp cluster IP */ tcp dpt:53
-2    KUBE-SVC-V2OKYYMBY3REGZOG  tcp    --    0.0.0.0/0   10.101.67.107        /* default/nginx-service cluster IP */ tcp dpt:8080
-3    KUBE-SVC-NPX46M4PTMTKRN6Y  tcp    --    0.0.0.0/0   10.96.0.1            /* default/kubernetes:https cluster IP */ tcp dpt:443
-4    KUBE-SVC-JD5MR3NA4I4DYORP  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:metrics cluster IP */ tcp dpt:9153
-5    KUBE-SVC-TCOU7JCQXEZGVUNU  udp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
-6    KUBE-NODEPORTS  all               --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
-```
 
 <br>
 
@@ -183,9 +168,9 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 | A/AAAAレコード | ```<Service名>.<Namespace名>.svc.cluster.local```        | ・通常のServiceの名前解決ではCluster-IPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略でき、```<Service名>.<Namespace名>```でも名前解決できる。また、同じNamespace内から通信する場合は、さらに```<Namespace名>```も省略でき、```<Service名>```のみで名前解決できる。<br>ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12613605860.html |
 | SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                                              | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。                                                                                                                                                              |
 
-#### ▼ Serviceに対する名前解決
+#### ▼ Pod内からServiceに対する正引き名前解決
 
-Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きを検証する。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -212,6 +197,38 @@ Address:  10.105.157.184
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
+
+
+#### ▼ Pod外からServiceに対する正引き名前解決
+
+（１）NginxのPodにルーティングするServiceが稼働しているとする。
+
+```bash
+$ kubectl get service
+                                                       
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
+```
+
+（２）CoreDNS Podが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
+
+```bash
+$ kubectl -n kube-system get pods -o wide -l k8s-app=kube-dns
+
+NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
+```
+
+（３）ここで、ワーカーNode内に接続する。Serviceの完全修飾ドメイン名（ここでは```nginx-service.default.svc.cluster.local```）をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
+
+```bash
+# ワーカーNode内に接続する。
+$ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
+
+10.101.67.107
+```
+
+> ℹ️ 参考：https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 <br>
 
