@@ -53,7 +53,7 @@ repository/
 │   │   ├── persistent-volume.yaml
 │   │   └── persistent-volume-claim.yaml
 │   │
-│   ├── chart/ # チャート（外部チャートを使用する場合は不要）
+│   ├── chart/ # ローカルのチャート（リモートのチャートをインストールする場合は不要）
 │   └── values/ # 環境別のvaluesファイル
 │
 ├── bar/ # barサービス

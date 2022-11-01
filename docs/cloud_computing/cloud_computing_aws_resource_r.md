@@ -193,9 +193,21 @@ $ aws rds modify-db-instance \
     --apply-immediately
 ```
 
-#### ▼ ミドルウェアのアップグレードの調査書
+<br>
 
-以下のような報告書のもと、調査と対応を行う。
+### アップグレード
+
+#### ▼ アップグレードの事前調査
+
+- メジャーバージョンごとにアップグレードを検証する。
+- 機能廃止があるかをリリースノートで確認し、その機能を使用していないかを調査する。
+- 想定されるダウンタイムを調査する。
+
+> ℹ️ 参考：https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
+
+#### ▼ アップグレード調査書
+
+以下のような調査書を作成する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
 

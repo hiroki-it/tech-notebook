@@ -355,15 +355,15 @@ spec:
 
 #### ▼ sourceとは
 
-マニフェストリポジトリ、チャートレジストリ、の変更を監視し、これらからプルしたマニフェストで```kubectl apply```コマンドを実行。
+リポジトリ（マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ）の変更を監視し、これらからプルしたマニフェストで```kubectl apply```コマンドを実行。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 | リポジトリの種類                                   | 管理方法                     | マニフェストのapply方法                                       |
 |--------------------------------------------| ---------------------------- |----------------------------------------------------------|
-| マニフェストリポジトリ（GitHub）                        | マニフェストそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
-| チャートレジストリ（ArtifactHub、GitHub、GitHub Pages） | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
-| OCIレジストリ（ECR）                              | チャートアーカイブ           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
+| マニフェストリポジトリ（例：GitHub内のリポジトリ）                        | マニフェストそのまま | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                 |
+| チャートリポジトリ（例：ArtifactHub、GitHub Pages、内のリポジトリ） | チャートアーカイブ（```.tgz```形式ファイル）           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
+| OCIリポジトリ（例：ECR内のリポジトリ）                              | チャートアーカイブ（```.tgz```形式ファイル）           | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 
 <br>
 
@@ -371,7 +371,7 @@ spec:
 
 #### ▼ directory
 
-監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。```path```キーで指定したディレクトリの構造に合わせて、特定のマニフェストを指定できるようにする。
+監視対象のマニフェストリポジトリのディレクトリ構造に関して設定する。また、リポジトリにチャートを配置しているがチャートリポジトリとして扱っていない場合、マニフェストリポジトリ内のローカルのチャートとして、監視することもできる。
 
 > ℹ️ 参考：
 >
@@ -392,7 +392,7 @@ metadata:
   name: foo-application
 spec:
   source:
-    path: ./kubernetes
+    path: ./manifests
     directory:
       recurse: true
 ```
@@ -409,7 +409,23 @@ metadata:
   name: foo-application
 spec:
   source:
-    path: ./kubernetes
+    path: ./manifests
+```
+
+マニフェストリポジトリ内のローカルのチャートも監視できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-application
+spec:
+  source:
+    path: ./charts
+    helm:
+      valueFiles:
+        - ./values/values-prd.yaml
 ```
 
 #### ▼ repoURL
@@ -469,7 +485,7 @@ spec:
 
 #### ▼ chart
 
-監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。リポジトリ
+監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
@@ -482,7 +498,6 @@ metadata:
 spec:
   source:
     chart: <チャート名>
-    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
 #### ▼ helm
@@ -498,8 +513,8 @@ spec:
 | 設定項目          | 説明                                         | 補足                                                         |
 | ----------------- |--------------------------------------------| ------------------------------------------------------------ |
 | ```releaseName``` | 作成するリリース名を設定する。                            |                                                              |
-| ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。 |                                                              |
-| ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。           | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br><br>ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されているため、新機能のリリースあとはこちらを使用した方が良さそう。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/pull/10432|
+| ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。 | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br><br>ただし、Applicationにvaluesファイルをハードコーディングした場合に、共有```values```ファイルと差分```values```ファイルに切り分けて定義できなくなってしまう。そこで、```values```オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに```values```ファイルがあっても```valueFiles```オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>ℹ️ 参考：https://github.com/argoproj/argo-cd/pull/10432                                                             |
+| ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。           | |
 
 
 ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。
@@ -587,7 +602,7 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリース
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
-内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。代わりとして、```argocd app history```コマンドで確認できる。
+ArgoCDは、内部的に```helm template```コマンドと```kubectl apply```コマンドを組み合わせて実行しているため、```helm list```コマンドでリリース履歴として確認できない。代わりとして、```argocd app history```コマンドで確認できる。
 
 > ℹ️ 参考：
 >
@@ -605,7 +620,7 @@ ID  DATE                           REVISION
 
 #### ▼ repoURL
 
-監視対象のチャートレジストリ内のリポジトリのURLを設定する。パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
+監視対象のチャートレジストリ内のリポジトリのURLを設定する。パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。チャートリポジトリとして扱うために、リポジトリのルート直下に```index.yaml```ファイルと```.tgz```ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。
 
 > ℹ️ 参考：
 >
@@ -620,7 +635,8 @@ metadata:
   name: foo-application
 spec:
   source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
+    repoURL: https://github.com/hiroki.hasegawa/helm-charts
 ```
 
 #### ▼ targetRevision
@@ -665,8 +681,8 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  source:
-    repoURL: <OCIリポジトリURL>
+  # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
+  repoURL: oci://<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
 #### ▼ targetRevision
@@ -752,7 +768,7 @@ GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Sync�
 
 #### ▼ automated
 
-GitOpsでのリポジトリ（GitHub、Helm）とKubernetesの間の自動Syncを有効化するか否かを設定する。開発者には参照権限のみの認可スコープを付与し、ArgoCDの自動Syncを有効化すれば、開発者がデプロイできなくなり、安全性が増す。
+GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間の自動Syncを有効化するか否かを設定する。開発者には参照権限のみの認可スコープを付与し、ArgoCDの自動Syncを有効化すれば、開発者がデプロイできなくなり、安全性が増す。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
