@@ -225,6 +225,171 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
+## 01-02. リポジトリの認証認可
+
+### Secret
+
+#### ▼ argocd.argoproj.io/secret-type
+
+設定値は```repository```とする。監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+
+<br>
+
+### マニフェストリポジトリの場合
+
+#### ▼ 注意点
+
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
+
+#### ▼ SSH接続の場合
+
+SSH接続に必要な秘密鍵を設定する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のマニフェストリポジトリ名
+  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # SSHによる認証の場合は秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
+<br>
+
+### チャートレジストリの場合
+
+#### ▼ 注意点
+
+チャートレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+#### ▼ Basic認証の場合
+
+Basic認証に必要なユーザー名とパスワードを設定する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
+  type: helm
+  username: foo
+  password: bar
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-registry # 任意のチャートレジストリ名
+  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
+  type: helm
+  username: baz
+  password: qux
+```
+
+<br>
+
+### OCIレジストリの場合
+
+#### ▼ 注意点
+
+OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに異なるSecretで認証情報を設定する必要がある。ただし、```1```個のOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+
+> ℹ️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+#### ▼ Basic認証の場合
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-oci-registry
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  type: helm
+  username: foo
+  password: bar
+  enableOCI: "true"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-oci-registry # 任意のOCIレジストリ名
+  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  type: helm
+  username: baz
+  password: qux
+  enableOCI: "true"
+```
+
+AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+> - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
+
+<br>
+
+
 ## 02. Application
 
 ### Applicationとは
@@ -1053,145 +1218,6 @@ spec:
         - pause:
             duration: 10
 ```
-
-<br>
-
-## 07. Secret
-
-### metadata.labels
-
-#### ▼ argocd.argoproj.io/secret-typeとは
-
-設定値は```repository```とする。監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
-
-#### ▼ マニフェストリポジトリの場合
-
-マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
-  type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
-```
-
-#### ▼ チャートレジストリの場合
-
-チャートレジストリの認証情報を設定する。チャートレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
-  type: helm
-  username: foo
-  password: bar
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
-  type: helm
-  username: baz
-  password: qux
-```
-
-#### ▼ OCIレジストリの場合
-
-OCIレジストリの認証情報を設定する。OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに異なるSecretで認証情報を設定する必要がある。ただし、```1```個のOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
-
-> ℹ️ 参考：
->
-> - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-oci-registry
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-  type: helm
-  username: foo
-  password: bar
-  enableOCI: "true"
----
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-oci-registry # 任意のOCIレジストリ名
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-  type: helm
-  username: baz
-  password: qux
-  enableOCI: "true"
-```
-
-AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
-
-> ℹ️ 参考：
->
-> - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
-> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-> - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
 
 <br>
 
