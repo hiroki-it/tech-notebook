@@ -241,29 +241,30 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ 注意点
 
-マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは```1```個でよい。
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
 
 > ℹ️ 参考：
 > 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 > - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
 
-#### ▼ HTTPS接続の場合
+#### ▼ Basic認証の場合
 
-Basic認証に必要なユーザー名とパスワードを設定する。ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
+Basic認証に必要なユーザー名とパスワードを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-kubernetes-secret
+  name: foo-argocd-kubernetes-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
   type: git
+  # Basic認証に必要なユーザー名とパスワードを設定する。
   username: foo
   password: bar
 ---
@@ -271,34 +272,35 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-istio-secret
+  name: foo-argocd-istio-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-istio-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
   type: git
+  # Basic認証に必要なユーザー名とパスワードを設定する。
   username: foo
   password: bar
 ```
 
-#### ▼ SSH接続の場合
+#### ▼ SSHの場合
 
-SSH接続に必要な秘密鍵を設定する。
+SSHに必要な秘密鍵を設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-kubernetes-secret
+  name: foo-argocd-kubernetes-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
   type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
+  # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
 ---
@@ -306,16 +308,60 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-istio-secret
+  name: foo-argocd-istio-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-istio-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
   type: git
-  # SSHによる認証の場合は秘密鍵を設定する。
+  # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
+#### ▼ OIDCの場合
+
+OIDCに必要なIDやトークンを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    name: keucloak
+    clientID: foo-oidc
+    clientSecret: *****
+    requestedScopes: ["openid", "profile", "email", "groups"]
+    requestedIDTokenClaims: {"groups": {"essential": true}}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+    name: foo-istio-repository # 任意のマニフェストリポジトリ名
+    url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+    type: git
+    # OIDCに必要なIDやトークンを設定する。
+    oidc.config: |
+      name: keucloak
+      clientID: foo-oidc
+      clientSecret: *****
+      requestedScopes: ["openid", "profile", "email", "groups"]
+      requestedIDTokenClaims: {"groups": {"essential": true}}
 ```
 
 <br>
@@ -333,7 +379,7 @@ stringData:
 
 #### ▼ Basic認証の場合
 
-Basic認証に必要なユーザー名とパスワードを設定する。
+Basic認証に必要なユーザー名とパスワードを設定する。ここでは、チャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
 apiVersion: v1
@@ -381,6 +427,8 @@ OCIプロトコルの有効化（```enableOCI```キー）が必要であるが�
 
 #### ▼ Basic認証の場合
 
+Basic認証に必要なユーザー名とパスワードを設定する。ここでは、OCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -395,7 +443,7 @@ stringData:
   type: helm
   username: foo
   password: bar
-  enableOCI: "true"
+  enableOCI: "true" # OCIリポジトリを有効化する。
 ---
 apiVersion: v1
 kind: Secret
@@ -410,7 +458,7 @@ stringData:
   type: helm
   username: baz
   password: qux
-  enableOCI: "true"
+  enableOCI: "true" # OCIリポジトリを有効化する。
 ```
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
