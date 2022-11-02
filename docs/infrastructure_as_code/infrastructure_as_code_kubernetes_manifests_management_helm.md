@@ -77,7 +77,7 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 #### ▼ リポジトリをチャートリポジトリとして扱う場合
 
-リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ（```.tgz```形式ファイル）、を配置する。GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理する場合は、このチャートリポジトリに相当する。チャートアーカイブ（```.tgz```形式ファイル）がGitHub Pages上に公開され、HelmがURLでチャートを指定できるようになる。これらにより、リモートからインストールできるようになる。
+リポジトリをチャートリポジトリとして扱う場合、チャートリポジトリのルートディレクトリ配下に、```index.yaml```ファイル、各バージョンのチャートアーカイブ（```.tgz```形式ファイル）、を配置する。これらにより、リモートからチャートリポジトリのURLを指定し、チャートをインストールできるようになる。ArtifactHubや、GitHubリポジトリにて```gh-pages```ブランチ上で複数のバージョンのチャートを管理するような使い方は、このチャートリポジトリに相当する。
 
 > ℹ️ 参考：
 >
@@ -85,7 +85,6 @@ helmクライアントは、リポジトリからインストールしたチャ�
 > - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
 
 ```yaml
-# チャートリポジトリ内に複数のバージョンのチャートを管理する
 repository/ # チャートリポジトリ
 ├── index.yaml
 ├── foo-chart-1.0.0.tgz # fooチャートアーカイブ
@@ -99,13 +98,12 @@ repository/ # チャートリポジトリ
 
 #### ▼ リポジトリをマニフェストリポジトリとしてのまま扱う場合
 
-リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、```index.yaml```ファイルとチャートアーカイブ（```.tgz```形式ファイル）が不要になる。
+リポジトリをチャートリポジトリとして扱わず、ローカルのチャートとして操作する場合、```index.yaml```ファイルとチャートアーカイブ（```.tgz```形式ファイル）が不要になる。リモートからは、チャートをインストールできない。
 
 > ℹ️ 参考：https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
 
 ```yaml
-# ローカルマシン
-repository/ # チャートリポジトリ
+repository/ # マニフェストリポジトリ
 ├── foo-chart # fooチャート
 ├── bar-chart # barチャート
 ├── baz-chart # bazチャート
@@ -222,14 +220,14 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
+```yaml
+apiVersion: v2
+```
+
 > ℹ️ 参考：
 >
 > - https://helm.sh/docs/topics/charts/#the-apiversion-field
 > - https://helm.sh/docs/topics/v2_v3_migration/
-
-```yaml
-apiVersion: v2
-```
 
 <br>
 
@@ -355,8 +353,6 @@ version: <バージョンタグ>
 #### ▼ fullnameOverride
 
 デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『```＜リリース名＞-＜Chart名＞```』になる。もし、```fullnameOverride```オプションを設定していた場合、Kubernetesリソースの名前は『```＜fullnameOverrideオプションの値＞```』になる。なおチャートごとに、Kubernetesリソース名の前後に特定の文字列（例：コンポーネント名、番号、インスタンスハッシュ値）がつくことがある。```nameOverride```オプションとは独立しており、```nameOverride```オプションでチャートをインストールした後に```fullnameOverride```オプションに移行したい場合、```nameOverride```オプションによるチャートを一度アンインストールする必要がある。しかし、そのまま```fullnameOverride```オプションに移行してしまうと、```nameOverride```オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
-
-今回のPodは、残骸のPodの可能性がある。
 
 #### ▼ image.pullPolicy
 

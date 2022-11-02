@@ -326,7 +326,7 @@ $ kubectl label namespace foo-namespace istio.io/rev=<新バージョンのリ�
 （４）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的に注入する。
 
 ```bash
-$ kubectl rollout restart deployment -n foo-namespace
+$ kubectl rollout restart deployment foo-deployment -n foo-namespace
 ```
 
 （５）新バージョンの```istio-proxy```コンテナが注入されたことを、イメージタグから確認する。

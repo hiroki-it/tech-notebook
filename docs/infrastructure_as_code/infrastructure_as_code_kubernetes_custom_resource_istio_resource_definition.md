@@ -1149,6 +1149,8 @@ spec:
 
 受信したインバウンド通信のうち、URLの接頭辞が```/foo```のものだけにルールを適用する。
 
+> ℹ️ 参考：https://istiobyexample.dev/path-based-routing/
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService

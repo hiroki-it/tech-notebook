@@ -56,7 +56,7 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 ### Alertmanagerとは
 
-Alertmanagerのセットアップ方法を決定する。
+Alertmanagerのセットアップ方法をを決める。
 
 <br>
 
@@ -64,7 +64,7 @@ Alertmanagerのセットアップ方法を決定する。
 
 ### AlertmanagerConfigとは
 
-Alertmanagerのアラートグループや通知先ルールを決定する。
+Alertmanagerのアラートグループや通知先ルールをを決める。
 
 <br>
 
@@ -88,7 +88,7 @@ Ingressや静的IPアドレスのメトリクスに対してPull型通信を送�
 
 ### Prometheusとは
 
-Prometheusのセットアップ方法を決定する。
+Prometheusのセットアップ方法をを決める。
 
 <br>
 
@@ -96,7 +96,7 @@ Prometheusのセットアップ方法を決定する。
 
 ### PrometheusRuleとは
 
-アラートルールとレコーディングルールを決定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
+アラートルールとレコーディングルールをを決める。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
@@ -367,4 +367,4 @@ metadata:
 
 ### ThanosRuler
 
-リモートストレージとしてThanosを使用する場合、これをセットアップ方法を決定する。
+リモートストレージとしてThanosを使用する場合、これをセットアップ方法をを決める。

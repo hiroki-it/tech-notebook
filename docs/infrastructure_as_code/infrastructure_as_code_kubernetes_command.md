@@ -937,12 +937,12 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 ```bash
 # Deployment配下のPodを再スケジューリングする。
-$ kubectl rollout restart deployment grafana -n prometheus
+$ kubectl rollout restart deployment foo-deployment -n foo-namespace
 ```
 
 ```bash
 # DaemonSet配下のPodを再スケジューリングする。
-$ kubectl rollout restart daemonset fluentd -n fluentd
+$ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 ```
 
 <br>

@@ -241,12 +241,46 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ 注意点
 
-マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+マニフェストリポジトリの認証情報を設定する。マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは```1```個でよい。
 
 > ℹ️ 参考：
 > 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 > - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
+
+#### ▼ HTTPS接続の場合
+
+Basic認証に必要なユーザー名とパスワードを設定する。ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  username: foo
+  password: bar
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  username: foo
+  password: bar
+```
 
 #### ▼ SSH接続の場合
 
@@ -261,8 +295,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
   type: git
   # SSHによる認証の場合は秘密鍵を設定する。
   sshPrivateKey: |
@@ -276,8 +310,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-registry # 任意のマニフェストリポジトリ名
-  url: <マニフェストリポジトリ名> # git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
   type: git
   # SSHによる認証の場合は秘密鍵を設定する。
   sshPrivateKey: |
@@ -286,11 +320,11 @@ stringData:
 
 <br>
 
-### チャートレジストリの場合
+### チャートリポジトリの場合
 
 #### ▼ 注意点
 
-チャートレジストリごとに、異なるSecretで認証情報を設定する必要がある。ただし、```1```個のチャートレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+チャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。ただし、監視する複数のリポジトリが、全て```1```個のチャートレジストリ内にある場合は、Secretは```1```個でよい。
 
 > ℹ️ 参考：
 >
@@ -310,8 +344,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-kubernetes
+  name: foo-kubernetes-repository # 任意のチャートリポジトリ名
+  url: https://storage.googleapis.com/foo-kubernetes # チャートリポジトリのURL
   type: helm
   username: foo
   password: bar
@@ -324,8 +358,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-registry # 任意のチャートレジストリ名
-  url: <チャートレジストリ内リポジトリのURL> # https://storage.googleapis.com/foo-istio
+  name: foo-istio-repository # 任意のチャートリポジトリ名
+  url: https://storage.googleapis.com/foo-istio # チャートリポジトリのURL
   type: helm
   username: baz
   password: qux
@@ -333,11 +367,11 @@ stringData:
 
 <br>
 
-### OCIレジストリの場合
+### OCIリポジトリの場合
 
 #### ▼ 注意点
 
-OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートレジストリと同様にして、OCIレジストリごとに異なるSecretで認証情報を設定する必要がある。ただし、```1```個のOCIレジストリ内のリポジトリしか監視しない場合は、Secretは1つでよい。
+OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。チャートリポジトリと同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。ただし、監視する複数のリポジトリが、全て```1```個のOCIレジストリ内にある場合は、Secretは```1```個でよい。
 
 > ℹ️ 参考：
 >
@@ -356,8 +390,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-oci-registry
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  name: foo-kubernetes-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: foo
   password: bar
@@ -371,8 +405,8 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-oci-registry # 任意のOCIレジストリ名
-  url: <OCIレジストリ内リポジトリ> # <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+  name: foo-istio-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: baz
   password: qux

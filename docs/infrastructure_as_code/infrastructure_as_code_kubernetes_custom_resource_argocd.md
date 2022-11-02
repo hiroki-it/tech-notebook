@@ -78,7 +78,7 @@ kube-controllerとして動作し、Applicationの状態がマニフェストの
 
 #### ▼ redis-serverとは
 
-repo-server内のマニフェストのキャッシュを作成し、これを管理する。
+repo-server内のマニフェストのキャッシュを作成し、これを管理する。ArgoCDでHardRefreshすると、redis-serverのPodを再起動する。
 
 > ℹ️ 参考：
 >
