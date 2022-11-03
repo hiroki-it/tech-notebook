@@ -411,6 +411,7 @@ nav:
               - ■ マニフェスト管理:
                   - ■ Helm:
                       - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
+                      - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
                       - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
