@@ -360,7 +360,8 @@ blockquote {
     }
 
     /* サイドバー */
-    div.md-sidebar {
+    /* NOTE: ローカルマシンでは適用されるのに、Web上だと適用されない */
+    .md-sidebar {
         width: 14.0rem;
     }
 }
