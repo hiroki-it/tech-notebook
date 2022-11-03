@@ -183,10 +183,6 @@ service:
 
 ## 03. 実装ポリシー
 
-### 関数
-
-
-
 ### templateディレクトリ
 
 #### ▼ 命名規則
@@ -200,6 +196,12 @@ service:
 拡張子は```.yaml```とする。
 
 > ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/
+
+#### ▼ アクションの選定
+
+YAMLファイルを丸ごと展開するようなアクション（例：```include```アクションなど）はできるだけ避け、マニフェストの共有部分を増やす。差分があるところに関しては、```Values```アクションを使用し、```values```ファイルからパラメーターを渡すだけになるように設計する。公式リポジトリの実装方法を見て学んだ方が早い。
+
+> ℹ️ 参考：https://github.com/istio/istio/tree/master/manifests/charts
 
 <br>
 

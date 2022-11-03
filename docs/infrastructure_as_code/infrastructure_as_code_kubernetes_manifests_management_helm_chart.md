@@ -299,6 +299,16 @@ ServiceAccountの作成を有効化する。
 
 <br>
 
+### コメントアウト
+
+Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト（例：```#```）であると、テンプレートの展開時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+
+```yaml
+{{- /* コメント */ -}}
+```
+
+<br>
+
 ### include
 
 #### ▼ includeとは
@@ -325,21 +335,33 @@ Helmのテンプレート内に、アクションや変数以外の理由で```{
 > ℹ️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
 ```yaml
-# テンプレート
+# Helmのテンプレート
+
+# Alertmanagerの通知内容の定義は以下を参考にした。
+# https://www.infinityworks.com/insights/slack-prometheus-alertmanager/
 
 ...
 
-- name: default-receiver
-  slack_configs:
-    - channel: slack
-      title: |
-        {{`{{ .Status | title }}: {{ .GroupLabels.alertname }}`}}
-      text: |
-        {{ printf "{{ range .Alerts.Firing }}{{ range .Labels.SortedPairs }} - {{ .Name }}: `{{ .Value }}`" }}
-        {{`{{ end }}`}}
-
+receivers:
+  - name: slack_webhook
+    slack_configs:
+      - channel: prd
+        send_resolved: true
+        api_url: https://hooks.slack.com/services/*****
+        # 波括弧（{}）をエスケープするために、『{{``}}』とprintfを使用している。
+        text: |
+          {{`{{ range .Alerts }}`}}
+            {{`*Summary:* {{ .Annotations.summary }}`}}
+            {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
+            {{`*Description:* {{ .Annotations.description }}`}}
+            *Details:*
+            {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
+            {{`{{ end }}`}}
+          {{`{{ end }}`}}
+          
 ...
 ```
+
 
 
 <br>
@@ -487,6 +509,35 @@ metadata:
 ```yaml
 baz:
 {{- include "foo-template" . }}
+```
+
+```yaml
+# 結果
+baz:
+- foo: FOO
+  bar: BAR
+```
+
+#### ▼ ハイフン
+
+```{{-```であると、テンプレートの展開時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
+
+> ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+
+```yaml
+{* tplファイル *}
+
+  {{- define "foo-template" }}
+
+- foo: FOO
+  bar: BAR
+
+  {{- end }}
+```
+
+```yaml
+baz:
+  {{- include "foo-template" . }} # 『{{-』の前にあるインデントは削除される。
 ```
 
 ```yaml

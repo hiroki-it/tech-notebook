@@ -747,7 +747,15 @@ spec:
 
 ### 分散トレース
 
-> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/distributed-tracing/
+#### ▼ メタデータ伝播（分散コンテキスト伝播）
+
+Istioは、分散トレースのためのメタデータを作成するが、これをマイクロサービス間で伝播することはしない。そのため、伝播のための実装が必要になる。
+
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
+> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
+> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/details/details.rb#L130-L187
 
 <br>
 

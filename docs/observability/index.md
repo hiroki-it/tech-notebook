@@ -25,7 +25,9 @@
   > * ##### <u>テレメトリー収集</u>
   > > * ##### 📖 [︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_metrics.html)
   > > * ##### 📖 [︎ログ収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_log.html)
-  > > * ##### 📖 [分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)
+  > > * ##### 分散トレース収集
+  > > > * ##### 📖 [分散トレース収集](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace.html)
+  > > > * ##### 📖 [トレーサー](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_distributed_trace_tracer.html)
   > > * ##### 📖 [テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_telemetry_association.html)
 * #### <u>Googleアプリ</u>
   > * ##### 📖 [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_analytics.html)

@@ -68,13 +68,13 @@ $ growpart /dev/sda 2
 $ pvresize /dev/sda2
 ```
 
-（６）論理ボリュームをlvextendコマンドで拡張する。ここでは、空き領域いっぱいに拡張する。
+（６）論理ボリュームを```lvextend```コマンドで拡張する。ここでは、空き領域いっぱいに拡張する。
 
 ```bash
 $ lvextend -l +100%FREE /dev/root
 ```
 
-（７）ファイルシステムのサイズを拡張する。
+（７）パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
 
 ```bash
 $ xfs_growfs -d /
@@ -174,7 +174,7 @@ MacOSでは、```diskutil```コマンドを実行するとパーティション�
 
 **＊例＊**
 
-ストレージに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される（例：パーティション名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる）。
+ストレージに紐づく```2```個のデバイスファイルが表示され、```disk0```ファイル は2つ、また```disk1```ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、```IDENTIFIER```列で表示される（例：パーティションのデバイスファイル名が```/dev/disk0```なら、マウントポイントは```/dev/disk0<IDENTIFIER名>```になる）。
 
 ```bash
 $ diskutil list
@@ -423,10 +423,53 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 パーティション内のファイルをデータとして使用できるようにする機能のこと。
 
-> ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12639340661.html
+> ℹ️ 参考：
+> 
+> - https://www.infraeye.com/study/linuxz22.html
+> - https://ameblo.jp/bakery-diary/entry-12639340661.html
 
 <br>
 
+### ファイルシステムの作成方法
+
+#### ▼ ファイルシステムの場合
+
+様々なタイプのファイルシステムを作成する。
+
+```bash
+$ mkfs -t <ファイルシステムのタイプ> <パーティションのデバイスファイル名>
+```
+
+```bash
+# xfsタイプの場合
+$ mkfs -t xfs /dev/sda5
+```
+
+> ℹ️ 参考：
+> 
+> - https://kazmax.zpp.jp/linux_beginner/mkfs.html
+> - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
+
+#### ▼ ```ext```系タイプの場合
+
+```ext```系タイプ（```ext2```、```ext3```、```ext4```）のファイルシステムを作成する。
+
+```bash
+$ mke2fs -t <ファイルシステムのタイプ> <パーティションのデバイスファイル名>
+```
+
+```bash
+# ext4タイプの場合
+$ mke2fs -t ext4 /dev/sda5
+```
+
+> ℹ️ 参考：
+> 
+> - https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/
+> - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
+
+
+<br>
 
 ## 05-02. ファイル共有システム
 

@@ -121,7 +121,6 @@ Envoyは、分散トレースを作成できるように、自分自身を通過
 #### ▼ 標準ヘッダー
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
-> 
 
 | HTTPヘッダー名     | 説明                             |
 | ------------------ | -------------------------------- |

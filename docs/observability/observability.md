@@ -300,16 +300,15 @@ description: 可観測性の知見を記録しています。
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 
-#### ▼ 分散トレースデータのマイクロサービス間伝播
+#### ▼ メタデータ伝播（分散コンテキスト伝播）
 
-サービスメッシュのリバースプロキシは分散トレースのためのIDを生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービス（クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層）で、受信したインバウンド通信のヘッダーから分散トレースのIDを取得し、アウトバウンド通信のヘッダーにこのIDを受け渡すような、実装が必要である。各分散トレースの収集ツール（例：OpenTelemetry、LightStep、Zipkin、Datadog、AWS X-Ray）ごとに、ヘッダーからIDを簡単に取り出せるパッケージを使用すると良い。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
+サービスメッシュのリバースプロキシは分散トレースのためのメタデータ（例：トレースID、マイクロサービスの属性情報、など）を生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐づける機能を持たない。そのためマイクロサービス（クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層）で、受信したインバウンド通信のヘッダーから分散トレースのメタデータを取得し、アウトバウンド通信のヘッダーにメタデータを渡すような、実装が必要である。各分散トレースの収集ツール（例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray）ごとに、ヘッダーからメタデータを簡単に取り出せるパッケージを使用すると良い。インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。
 
 > ℹ️ 参考：
-> 
+>
+> - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing?hl=ja#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
-> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/productpage/productpage.py#L180-L237
-> - https://github.com/istio/istio/blob/a9f4988c313b7df36f5d1da6b3b87cbe698935ae/samples/bookinfo/src/details/details.rb#L130-L187
 
 <br>
 
