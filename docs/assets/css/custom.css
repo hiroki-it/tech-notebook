@@ -110,25 +110,25 @@ h3:before {
 }
 
 .md-typeset h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h4 {
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h5 {
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h6 {
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
 }
@@ -331,7 +331,7 @@ pymdownxではなくhighlight.jsでハイライトする場合、行番号の機
  引用
 ***************/
 blockquote {
-    font-size: 0.95em;
+    font-size: 0.85em;
 }
 
 /***************
