@@ -355,8 +355,8 @@ blockquote {
     /* ノートの中心部分 */
     /* https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/00_mkdocs_setting/#_7 */
     .md-content {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        margin-left: 3.5rem;
+        margin-right: 3.5rem;
     }
 
     /* サイドバー */
