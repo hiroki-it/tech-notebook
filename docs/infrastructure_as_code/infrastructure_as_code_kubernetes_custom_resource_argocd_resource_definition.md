@@ -253,6 +253,7 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 Basic認証に必要なユーザー名とパスワードを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -268,6 +269,7 @@ stringData:
   username: foo
   password: bar
 ---
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -289,6 +291,7 @@ stringData:
 SSHに必要な秘密鍵を設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -304,6 +307,7 @@ stringData:
   sshPrivateKey: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
 ---
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -325,6 +329,7 @@ stringData:
 OIDCに必要なIDやトークンを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -334,7 +339,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
   type: git
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
@@ -344,6 +349,7 @@ stringData:
     requestedScopes: ["openid", "profile", "email", "groups"]
     requestedIDTokenClaims: {"groups": {"essential": true}}
 ---
+# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -353,7 +359,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
     name: foo-istio-repository # 任意のマニフェストリポジトリ名
-    url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+    url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
     type: git
     # OIDCに必要なIDやトークンを設定する。
     oidc.config: |
@@ -382,6 +388,7 @@ stringData:
 Basic認証に必要なユーザー名とパスワードを設定する。ここでは、チャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
+# 他と異なるチャートリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -396,6 +403,7 @@ stringData:
   username: foo
   password: bar
 ---
+# 他と異なるチャートリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -430,6 +438,7 @@ OCIプロトコルの有効化（```enableOCI```キー）が必要であるが�
 Basic認証に必要なユーザー名とパスワードを設定する。ここでは、OCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
+# 他と異なるOCIリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
@@ -445,6 +454,7 @@ stringData:
   password: bar
   enableOCI: "true" # OCIリポジトリを有効化する。
 ---
+# 他と異なるOCIリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
