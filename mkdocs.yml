@@ -443,6 +443,7 @@ nav:
                       - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
                   - ■ OpenTelemetry:
                       - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
+                      - トレーサー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry_tracer.md
                   - ■ Prometheus:
                       - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
