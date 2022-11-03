@@ -624,6 +624,15 @@ $ kubectl get pod \
     -o jsonpath="{.items[*].spec.containers[*].name}" | sed 's/ /\n/g' && echo
 ```
 
+**＊例＊**
+
+Podの現在のIPアドレスを取得する。
+
+```bash
+$ kubectl get pods foo-pod \
+    -n foo-namespace \
+    -o jsonpath="{.status.podIP}"
+````
 
 **＊例＊**
 

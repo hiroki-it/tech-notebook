@@ -17,7 +17,7 @@ description: ユーティリティ（サービスプログラム）＠基本ソ�
 
 ### Unix系の標準ユーティリティ
 
-
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_basic_utility_unix.html
 
 <br>
 

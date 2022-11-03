@@ -600,7 +600,7 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 > - https://zenn.dev/tayusa/articles/c705cd65b6ee74
 
 ```bash
-$ iptables -n -L KUBE-SERVICES -t nat --line-number
+$ iptables -L -n KUBE-SERVICES -t nat --line-number
 
 Chain KUBE-SERVICES (2 references)
 num  target                     prot   opt   source      destination         

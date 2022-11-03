@@ -6,6 +6,8 @@
 
 * #### 📖 [IaC](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code.html)
 
+<br>
+
 ### 手続き型
 
 * #### <u>Ansible</u>
@@ -18,6 +20,8 @@
   > * ##### 📖 [︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_command.html)
   > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_policy.html)
+
+<br>
 
 ### 宣言型
 

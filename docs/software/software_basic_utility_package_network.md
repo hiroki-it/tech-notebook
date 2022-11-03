@@ -13,7 +13,94 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 <br>
 
-## 01. dnsutils/bind-utils
+
+## 01. dig
+
+### digとは
+
+正引きの名前解決を実行する
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
+> - https://dev.classmethod.jp/articles/dig-route53-begginer/
+
+```bash
+$ dig yahoo.co.jp 
+
+# Header
+# 各セクションのステータスやフラグが表示される。
+; <<>> DiG 9.10.6 <<>> yahoo.co.jp
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23877 # 『NOERROR』は、正引きが成功したことを表す。
+;; flags: qr rd ra; QUERY: 1, ANSWER: 8, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+
+# Questionセクション
+;; QUESTION SECTION:
+;yahoo.co.jp.                   IN      A # Aレコードを問い合わせたことを表す。
+
+# Answerセクション
+# DNSレコード
+;; ANSWER SECTION:
+yahoo.co.jp.            35      IN      A       182.22.28.252 # 正引きで返却されたIPアドレスを表す。
+yahoo.co.jp.            35      IN      A       182.22.16.251
+yahoo.co.jp.            35      IN      A       183.79.217.124
+yahoo.co.jp.            35      IN      A       183.79.219.252
+yahoo.co.jp.            35      IN      A       183.79.250.123
+yahoo.co.jp.            35      IN      A       182.22.25.124
+yahoo.co.jp.            35      IN      A       183.79.250.251
+yahoo.co.jp.            35      IN      A       182.22.25.252
+
+# 正引きにかかった時間を表す。
+;; Query time: 7 msec
+# 正引きに利用したDNSサーバーを表す。
+# digコマンドのパラメーターでDNSサーバーを指定しない場合、digコマンドの実行元によって、異なるDNSサーバーが利用される。
+;; SERVER: 8.8.8.8#53(8.8.8.8) 
+;; WHEN: Mon May 30 22:33:44 JST 2022
+;; MSG SIZE  rcvd: 168
+
+```
+
+<br>
+
+### -x
+
+逆引きの名前解決を実行する。
+
+> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
+
+```bash
+$ dig -x 182.22.28.252
+
+; <<>> DiG 9.10.6 <<>> -x 182.22.28.252
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 9847
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;252.28.22.182.in-addr.arpa.    IN      PTR
+
+# AUTHORITYセクション
+# 権威DNSサーバーを表す。ドメイン名がわかる。
+;; AUTHORITY SECTION:
+28.22.182.in-addr.arpa. 663     IN      SOA     yahoo.co.jp. postmaster.yahoo.co.jp. 2202070000 1800 900 1209600 900
+
+;; Query time: 7 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Mon May 30 22:47:07 JST 2022
+;; MSG SIZE  rcvd: 113
+```
+
+<br>
+
+## 02. dnsutils/bind-utils
 
 ### インストール
 
@@ -131,7 +218,7 @@ ns4.google.com  internet address = 216.239.38.10
 
 <br>
 
-## 02. net-tools
+## 03. net-tools
 
 ### インストール
 
@@ -188,7 +275,7 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 <br>
 
-## 03. speedtest-cli
+## 04. speedtest-cli
 
 ### インストール
 
@@ -224,7 +311,7 @@ Upload: 182.00 Mbit/s # アップロード速度
 
 <br>
 
-## 04. tcpdump
+## 05. tcpdump
 
 ### インストール
 
@@ -367,5 +454,141 @@ $ tcpdump src port 80
 ```
 
 <br>
+
+
+## 06. traceroute
+
+### tracerouteとは
+
+宛先にUDPプロトコル/ICMPプロトコル（デフォルトはUDPプロトコル）でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。
+
+![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/traceroute.png)
+
+> ℹ️ 参考：
+>
+> - https://webkaru.net/linux/traceroute-command/
+> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+> - https://beginners-network.com/tracert_traceroute.html
+
+**＊実行例＊**
+
+もし、```traceroute```コマンドが終了すれば、全てのルーターを経由できていることを表す。
+
+```bash
+$ traceroute google.com
+
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
+ 
+ ...
+ 
+ 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元
+ 9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
+```
+
+```bash
+$ traceroute 173.194.38.98
+
+traceroute to 173.194.38.98 (173.194.38.98), 30 hops max, 60 byte packets # 最大30ホップ数（ルーター数）
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
+ 
+ ...
+ 
+ 8  209.85.251.239 (209.85.251.239)  2.357 ms  2.595 ms  2.475 ms # 最後のルーターの送信元IPアドレス
+ 9  nrt19s18-in-f2.1e100.net (173.194.38.98)  1.812 ms  1.849 ms  1.955 ms # 宛先のサーバー
+```
+
+アスタリスクは検証が実行中であることを表し、アスタリスクのまま変わらない場合は、それ以降のルーターに通信が届いていない可能性がある。
+
+> ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
+
+```bash
+$ traceroute google.com
+
+traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
+ 1  example.com (aaa.bbb.ccc.ddd)  1.016 ms  2.414 ms  2.408 ms # 最初のルーターの送信元IPアドレス
+
+...
+
+ 4  b-4ea-b13-1-e-0-1-0.interq.or.jp (210.172.131.149)  2.227 ms  2.218 ms  # このルーターまでは届く
+ 5  *  *  *                                                                 # その後失敗
+ 6  *  *  *
+...
+```
+
+<br>
+
+### -I
+
+ICMPプロトコルを使用して、パケットを送信する。TCPプロトコルの一種である。
+
+```bash
+$ traceroute -I -n google.com -p 443
+
+$ traceroute -I -n *.*.*.* -p 443
+```
+
+<br>
+
+### -n
+
+IPアドレスの名前解決を実行せずに、ルーターの送信元IPアドレスをそのまま取得する。ネットワークの境目がわかりやすくなる。
+
+> ℹ️ 参考：
+>
+> - https://webkaru.net/linux/traceroute-command/
+> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+
+**＊実行例＊**
+
+```bash
+$ traceroute -n google.com
+
+traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
+ 1  157.7.140.2  0.916 ms  1.370 ms  1.663 ms # 最初のルーターの送信元IPアドレス
+ 2  210.157.9.233  0.633 ms  0.735 ms  0.740 ms # ここで、異なるネットワーク領域に入った可能性
+ 3  210.157.9.209  0.718 ms  0.722 ms  0.761 ms
+ 4  210.172.131.149  1.520 ms  1.894 ms  1.892 ms
+ 5  210.172.131.118  0.652 ms  0.645 ms  0.619 ms
+ 6  210.171.224.96  1.499 ms  1.705 ms  1.587 ms
+ 7  209.85.243.58  1.575 ms  1.558 ms  1.557 ms # ここで、異なるネットワーク領域に入った可能性
+ 8  209.85.251.239  2.383 ms  2.740 ms  2.400 ms
+ 9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms # 最後のルーター
+```
+
+<br>
+
+### -p
+
+ポート番号を指定する。デフォルト値は、```33434```番ポートである。
+
+```bash
+$ traceroute *.*.*.* -p 9000
+```
+
+<br>
+
+### -T
+
+宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
+
+
+```bash
+$ traceroute google.com -T -p 443
+
+$ traceroute *.*.*.* -T -p 443
+```
+
+tracerouteコマンドのバージョンによっては、```-T```オプションがない場合があり、代わりとして```tcptraceroute```コマンドを使用する。
+
+
+> ℹ️ 参考：https://succzero.hatenablog.com/entry/2013/09/01/181615
+
+```bash
+$ tcptraceroute google.com 443
+```
+
+<br>
+
 
 

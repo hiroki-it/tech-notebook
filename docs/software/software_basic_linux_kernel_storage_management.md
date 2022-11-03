@@ -432,7 +432,7 @@ crw-rw-rw-  zero                  # ゼロ出力 （読み込むとゼロ）
 
 ### ファイルシステムの作成方法
 
-#### ▼ ファイルシステムの場合
+#### ▼ ```mkfs```コマンドの場合
 
 様々なタイプのファイルシステムを作成する。
 
@@ -450,7 +450,7 @@ $ mkfs -t xfs /dev/sda5
 > - https://kazmax.zpp.jp/linux_beginner/mkfs.html
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
 
-#### ▼ ```ext```系タイプの場合
+#### ▼ ```mke2fs```コマンドの場合
 
 ```ext```系タイプ（```ext2```、```ext3```、```ext4```）のファイルシステムを作成する。
 

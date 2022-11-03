@@ -36,6 +36,8 @@
   > * ##### 📖 [︎コスト最適化](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
 * #### 📖 [︎ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_tools.html)
 
+<br>
+
 ### GCP
 
 * #### 📖 [︎GCP CLI](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_gcp_cli.html)

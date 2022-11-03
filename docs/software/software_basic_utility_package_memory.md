@@ -13,7 +13,45 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 <br>
 
-## 01. supervisor
+
+## 01. pstree
+
+### インストール
+
+#### ▼ aptリポジトリから
+
+```bash
+$ apt install pstree
+```
+
+```bash
+$ apt-get install pstree
+```
+
+<br>
+
+### pstreeとは
+
+プロセスの親子関係をツリー状に取得する。
+
+```bash
+# MacOSの場合
+$ pstree
+
+-+= 00001 root /sbin/launchd
+ |--= 00059 root /usr/sbin/syslogd
+ |--= 00060 root /usr/libexec/UserEventAgent (System)
+ |-+= 00062 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_ctl
+ | \-+= 00286 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon
+ |   |--- 00323 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_daemon --scan-process
+ |   |--- 00455 root /Applications/ESET Endpoint Security.app/Contents/MacOS/esets_fcor
+...
+```
+
+<br>
+
+
+## 02. supervisor
 
 ### インストール
 
@@ -288,7 +326,7 @@ $ supervisorctl update
 
 <br>
 
-## 02. systemctl：system control（旧service）
+## 03. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
@@ -646,7 +684,7 @@ StandardError=file:/var/log/foo-service/stderr.log
 
 <br>
 
-## 03. xclip
+## 04. xclip
 
 ### インストール
 

@@ -212,7 +212,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの能力を持つサイドカーコンテナである。```pilot-agent```プロセス、```envoy```プロセス、が稼働している。仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの能力を持つサイドカーコンテナである。```pilot-agent```プロセス、```envoy```プロセス、が稼働している。```istio-proxy```コンテナは、アプリケーションコンテナのあるPodだけでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナに登録されたPodの宛先情報に基づいて、ルーティングを実行している。一方で、アプリケーションコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 > ℹ️ 参考：
 >
@@ -226,6 +226,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 #### ▼ ```envoy```プロセス
 
 ```istio-proxy```コンテナにて、リバースプロキシとして動作する。
+
 
 <br>
 
@@ -656,6 +657,8 @@ spec:
 
 ### サービスディスカバリーの仕組み
 
+#### ▼ 全体像
+
 （１）KubernetesのEndpointSliceに基づいて、Istiodコントロールプレーンは宛先情報をサービスレジストリに動的に登録する。
 
 （２）Pod内の```isti-proxy```コンテナは、Istioコントロールプレーンにリクエストを送信し、レスポンスされたPodの宛先情報を、自身の```envoy```プロセスに登録する。
@@ -670,6 +673,43 @@ spec:
 >
 > - https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
+
+#### ▼ 確認
+
+（１）```ps```コマンドを使用して、```istio-proxy```コンテナのプロセスのID（PID）を取得する。
+
+```bash
+# PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
+$ ps aux | grep envoy | awk '{print $2}'
+
+1234567
+2345678
+3456789
+```
+
+（２）```nsenter```コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに```iptables```コマンドを送信する。Istioによって管理されているChainのルールを取得できる。
+
+```bash
+$ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
+
+Chain ISTIO_INBOUND (1 references)
+...
+
+Chain ISTIO_IN_REDIRECT (3 references)
+...
+
+Chain ISTIO_OUTPUT (1 references)
+...
+
+Chain ISTIO_REDIRECT (1 references)
+...
+```
+
+> ℹ️ 参考：
+>
+> - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
+> - https://www.mapion.co.jp/news/column/cobs2366068-1-all/
+> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d
 
 <br>
 
