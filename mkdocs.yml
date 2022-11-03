@@ -509,7 +509,9 @@ nav:
               - ■ テレメトリー収集:
                   - メトリクス収集: observability/observability_telemetry_datadog_metrics.md
                   - ログ収集: observability/observability_telemetry_datadog_log.md
-                  - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
+                  - ■ 分散トレース収集:
+                      - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
+                      - トレーサー: observability/observability_telemetry_datadog_distributed_trace_tracer.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
 
   - 👥 ソフトウェア開発手法論/SREing:
