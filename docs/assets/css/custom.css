@@ -360,7 +360,7 @@ blockquote {
     }
 
     /* サイドバー */
-    .md-sidebar {
+    div.md-sidebar {
         width: 14.0rem;
     }
 }
