@@ -562,7 +562,7 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 
 <br>
 
-## 02. プラグイン系コマンド
+## 02. helm-diff
 
 ### helm-diff
 
@@ -574,9 +574,9 @@ $ helm diff
 
 <br>
 
-### helm-secrets
+## 03. helm-secrets
 
-#### ▼ helm-secretsとは
+### helm-secretsとは
 
 内部的にsopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
 
@@ -585,6 +585,22 @@ $ helm diff
 ```bash
 $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョンタグ>
 ```
+
+<br>
+
+### オブション
+
+#### ▼ -f
+
+暗号化されたvaluesファイルと平文のvaluesファイルを使用して、helmコマンドを実行する。
+
+```bash
+$ helm secrets template -f secrets.yaml -f values.yaml
+```
+
+<br>
+
+### サブコマンド
 
 #### ▼ dec
 

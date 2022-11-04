@@ -78,7 +78,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 $ curl http://127.0.0.1:8080
 ```
 
-#### ▼ argocdコマンドを使用して
+#### ▼ ```argocd```コマンドを使用して
 
 （７）```argocd```コマンドをインストールする。
 
@@ -785,7 +785,7 @@ metadata:
 spec:
   source:
     helm:
-      releaseName: prd
+      releaseName: foo
       values: |-
         foo: foo
         bar: bar
@@ -803,7 +803,7 @@ metadata:
 spec:
   source:
     helm:
-      releaseName: prd
+      releaseName: foo
       valueFiles:
         - ./prd.yaml
 ```
@@ -821,7 +821,7 @@ metadata:
 spec:
   source:
     helm:
-      releaseName: prd
+      releaseName: foo
       valueFiles:
         # helm-secretsを使用して暗号化されたvaluesファイル
         - ./secrets.yaml

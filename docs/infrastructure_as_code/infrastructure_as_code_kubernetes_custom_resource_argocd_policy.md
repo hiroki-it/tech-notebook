@@ -199,7 +199,7 @@ CDツールのServiceAccountを認証し、またClusterRoleの認可スコー�
 
 #### ▼ Secretの変数の場合
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+> ℹ️ 参考：https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
 
 <br>
 

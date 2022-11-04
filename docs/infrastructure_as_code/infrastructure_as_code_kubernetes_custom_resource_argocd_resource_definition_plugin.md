@@ -48,7 +48,7 @@ data:
 
 #### ▼ 必要なマニフェストの作成
 
-ツールとの連携にはマニフェストを作成する必要がある。ConfigMapの```data.configManagementPlugins```キーでそれらの処理を定義する。
+ツールとの連携にはマニフェストを作成する必要がある。ConfigMapの```data.configManagementPlugins```キーでそれらの処理を定義する。これらの処理は、ArgoCDのリポジトリの監視処理と同時に実行されるため、何らかのエラーがあると、監視処理のエラーとして扱われる。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp
 
@@ -91,6 +91,15 @@ spec:
 
 <br>
 
+### 環境変数
+
+ArgoCDと連携したツールでは、コマンドで以下の環境変数を使用できる。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
+
+
+<br>
+
 ## 02. Helmfileとの連携
 
 ### セットアップ
@@ -129,16 +138,15 @@ spec:
     - name: custom-tools
       emptyDir: {}
   initContainers:
-    - name: install-vault
+    - name: install-helmfile
       image: alpine:3.8
       command: ["/bin/bash", "-c"]
       # InitContainerにHelmfileをインストールする。
       args:
         - |
           apk --update add wget
-          wget https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64 -O helmfile_linux_amd64 
-          chmod +x helmfile_linux_amd64
-          mv helmfile_linux_amd64 /custom-tools
+          wget -q -O /custom-tools/helmfile https://github.com/roboll/helmfile/releases/download/v0.141.0/helmfile_linux_amd64
+          chmod +x /custom-tools/*
       # PodのボリュームにHelmfileを配置する。
       volumeMounts:
         - mountPath: /custom-tools
@@ -183,7 +191,7 @@ data:
         args:
           - |
             set -euo pipefail
-            helmfile -f $HELMFILE_PATH -e $ENV $SELECTOR template"
+            helmfile -f $HELMFILE_PATH -e $ENV template"
 ```
 
 
@@ -200,6 +208,9 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: master
+  path: .
   plugin:
     name: helmfile
     env:
@@ -220,15 +231,54 @@ spec:
 
 ```argocd-repo-server```コンテナがhelm-secretsを使用できるように、helm-secretsをインストールする。
 
-
 > ℹ️ 参考：
 >
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
+**＊実装例＊**
+
+ここでは、InitContainerを使用して、helm-secretsをインストールする。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argocd-repo-server-pod
+spec:
+  containers:
+    - name: argocd-repo-server
+      
+      ...
+      
+      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でsopsを使用する。
+      volumeMounts:
+        - mountPath: /usr/local/bin/sops
+          name: custom-tools
+          subPath: sops
+  volumes:
+    - name: custom-tools
+      emptyDir: {}
+  initContainers:
+    - name: install-helm-secrets
+      image: alpine:3.8
+      command: ["/bin/bash", "-c"]
+      # InitContainerに、sops、helm-secrets、をインストールする。
+      args:
+        - |
+          apk --update add wget
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<Helmのバージョン>/sops-<Helmのバージョン>.linux
+          wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
+          chmod +x /custom-tools/*
+      # Podのボリュームに、sops、helm-secrets、を配置する。
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+```
+
 <br>
 
-## 03-02. プラグインとして使用する場合
+## 03-02. ```spec.plugin```キー配下で使用する場合
 
 ### セットアップ
 
@@ -267,12 +317,13 @@ data:
         args:
           - |
             set -euo pipefail
-            helm secrets template -f $SECRETS -f $VALUES --namespace $ARGOCD_APP_NAMESPACE $ARGOCD_APP_NAME .
+            # 暗号化されたvaluesファイル（sopsのsecretsファイル）と平文のvaluesファイルを使用して、helmコマンドを実行する。
+            helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE -f $VALUES_FILE
 ```
 
 #### ▼ プラグイン名の指定
 
-Applicationでプラグイン名を指定する。
+Applicationでプラグイン名を指定する。また、必要な環境変数を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -281,13 +332,23 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: master
+  path: .
   plugin:
     name: helm-secrets
+    env:
+      - name: HELM_RELEASE_NAME
+        value: foo
+      - name: SOPS_SECRETS_FILE
+        value: ./sops/secret.prd.yaml
+      - name: VALUES_FILE
+        value: ./values/values-prd.yaml
 ```
 
 <br>
 
-## 03-03. Helmの一部として使用して使用する場合
+## 03-03. ```spec.source.helm```キー配下で使用する場合
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
@@ -309,9 +370,19 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-#### ▼ Applicationへの設定
+#### ▼ helm-secretsの使用
 
-helm-secretsプラグインを使用するために、```secrets://```を宣言する。
+
+監視しているリポジトリのルート直下に、以下のような```.sops.yaml```ファイルが配置されているとしている。
+
+```yaml
+---
+creation_rules:
+  - kms: <AWS KMSのARN>
+    encrypted_regex: "^secureJsonData$"
+```
+
+helm-secretsプラグインを使用するために、```spec.source.helm.valueFiles```キー配下で```secrets://<secrets.yamlファイル>```を設定する。
 
 > ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 
@@ -322,6 +393,9 @@ metadata:
   name: app
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: master
+    path: .
     helm:
       valueFiles:
         - values.yaml
@@ -331,62 +405,8 @@ spec:
 
 <br>
 
-## 04. sopsとの連携
 
-### セットアップ
-
-#### ▼ sopsのインストール
-
-```argocd-repo-server```コンテナがsopsを使用できるように、sopsをインストールする。
-
-> ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
-
-**＊実装例＊**
-
-ここでは、InitContainerを使用して、Helmfileをインストールする。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: argocd-repo-server-pod
-spec:
-  containers:
-    - name: argocd-repo-server
-      
-      ...
-      
-      # Podのボリュームを介して、argocd-repo-serverのコンテナ内でsopsを使用する。
-      volumeMounts:
-        - mountPath: /usr/local/bin/sops
-          name: custom-tools
-          subPath: sops
-  volumes:
-    - name: custom-tools
-      emptyDir: {}
-  initContainers:
-    - name: install-vault
-      image: alpine:3.8
-      command: ["/bin/bash", "-c"]
-      # InitContainerにsopsをインストールする。
-      args:
-        - |
-          apk add wget
-          wget https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux -O sops.linux 
-          chmod +x sops.linux
-          mv sops.linux /custom-tools
-      # Podのボリュームにsopsを配置する。
-      volumeMounts:
-        - mountPath: /custom-tools
-          name: custom-tools
-```
-
-
-
-<br>
-
-
-## 05. Vaultとの連携
+## 04. Vaultとの連携
 
 ### セットアップ
 
@@ -411,7 +431,7 @@ metadata:
   name: argocd-cm
 data:
   configManagementPlugins: |
-    - name: vault
+    - name: vault   
 ```
 
 
@@ -441,13 +461,13 @@ data:
         args:
           - |
             set -euo pipefail
-            helm template $ARGOCD_APP_NAME . --include-crds | argocd-vault-plugin generate -
+            helm template $HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
 
 #### ▼ プラグイン名の指定
 
-Applicationでプラグイン名を指定する。
+Applicationでプラグイン名を指定する。また、必要な環境変数を設定する。
 
 > ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
 
@@ -458,8 +478,14 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: master
+  path: .
   plugin:
     name: vault
+    env:
+      - name: HELM_RELEASE_NAME\
+        value: foo
 ```
 
 <br>
