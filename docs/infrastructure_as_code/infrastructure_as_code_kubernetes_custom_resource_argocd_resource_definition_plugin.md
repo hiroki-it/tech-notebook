@@ -214,7 +214,7 @@ spec:
 
 ## 03. helm-secretsとの連携
 
-### セットアップ
+### セットアップ（共通手順）
 
 #### ▼ helm-secretsのインストール
 
@@ -222,9 +222,15 @@ spec:
 
 
 > ℹ️ 参考：
-> 
+>
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+
+<br>
+
+## 03-02. プラグインとして使用する場合
+
+### セットアップ
 
 #### ▼ プラグイン名の指定
 
@@ -278,6 +284,50 @@ spec:
   plugin:
     name: helm-secrets
 ```
+
+<br>
+
+## 03-03. Helmの一部として使用して使用する場合
+
+### クラウドプロバイダー上の暗号化キーを使用する場合
+
+#### ▼ ServiceAccountの作成
+
+```argocd-repo-server```コンテを持つPodに紐づけるServiceAccountを作成する。
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+  annotations:
+    # AWS KMSに認可スコープを持つIAMロールと紐づけられるようにする。
+    eks.amazonaws.com/role-arn: <IAMロールのARN>
+automountServiceAccountToken: true
+```
+
+#### ▼ Applicationへの設定
+
+helm-secretsプラグインを使用するために、```secrets://```を宣言する。
+
+> ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+spec:
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+        - secrets://secrets.yaml
+```
+
 
 <br>
 

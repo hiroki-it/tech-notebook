@@ -42,7 +42,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 ### コントロールプレーンNode（kubernetesマスター）とは
 
-kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。クライアント（```kubectl```実行者、Kubernetesリソース）がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
+kubernetesマスターともいう。コントロールプレーンコンポーネントが稼働する。クライアント（```kubectl```クライアント、Kubernetesリソース）がKubernetesリソースを操作しようとリクエストを送信すると、まず最初に、コントロールプレーンNode上のkube-apiserverがリクエストを受信する。
 
 > ℹ️ 参考：
 >
@@ -52,7 +52,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 ### クライアント
 
-クライアント（```kubectl```実行者、Kubernetesリソース）は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
+クライアント（```kubectl```クライアント、Kubernetesリソース）は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
 
 <br>
 
@@ -364,7 +364,7 @@ $ kube-controller-manager \
 
 #### ▼ kube-controllerとは
 
-マニフェストとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。
+マニフェストとkube-apiserverを仲介し、リソース定義の宣言通りにKubernetesリソースを作成する。加えて、Kubernetesリソースのマニフェストの設定値をコマンド（例：```kubectl apply```コマンド、```kubectl edit```コマンド、など）で変更した場合に、etcd上でKubernetesリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。
 
 > ℹ️ 参考：
 >

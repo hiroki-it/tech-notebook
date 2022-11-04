@@ -548,7 +548,7 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 |-------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
 | kube-apiserver          | kubelet        | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
 | kube-apiserver          | etcd           | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
-| クライアント（```kubectl```実行者、Kubernetesリソース）のローカルマシン          | kube-apiserver | クライアント証明書 | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。                                  |
+| クライアント（```kubectl```クライアント、Kubernetesリソース）のローカルマシン          | kube-apiserver | クライアント証明書 | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。                                  |
 | kube-controller-manager | kube-apiserver | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
 | kube-scheduler          | kube-apiserver | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。          |
 | その他のコンポーネント             | kube-apiserver    | SSL証明書    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |

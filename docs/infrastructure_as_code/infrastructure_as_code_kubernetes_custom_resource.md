@@ -319,7 +319,7 @@ spec:
 
 ### カスタムコントローラーとは
 
-カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成リクエストを送信する。またkube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。
+カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成リクエストを送信する。加えて、カスタムリソースのマニフェストの設定値をコマンド（例：```kubectl apply```コマンド、```kubectl edit```コマンド、など）で変更した場合に、etcd上でカスタムリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。これらのコマンドは、etcd上のマニフェストの設定値を変更しているだけで、実際のカスタムリソースの設定値を変更しないことに注意する。また、kube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。ただし、カスタムコントローラー自体は```kubectl```クライアントが作成する必要がある。
 
 <br>
 
@@ -368,7 +368,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
+カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、ワーカーNodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
 > ℹ️ 参考：
 >

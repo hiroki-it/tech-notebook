@@ -403,7 +403,7 @@ $ kubectl drain <ワーカーNode名>
 
 #### ▼ editとは
 
-Kubernetesリソースの設定値をapplyせずに変更する。Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
+マニフェストの設定値を直接的に変更する。ただし、Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
 
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 

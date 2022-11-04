@@ -65,11 +65,12 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 
 | ユースケース         | default  | demo     | empty                         | external | minimal              | openshift | preview | remote |
-| :------------------- | :------- | :------- | :---------------------------- | -------- | :------------------- | --------- | ------- | ------ |
-| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい | -        | 最小限の機能が欲しい | ？        | -       | ？     |
-| istio-egressgateway  | -        | ○        | -                             | -        | -                    | ？        | -       | ？     |
-| istio-ingressgateway | ○        | ○        | -                             | -        | -                    | ？        | ○       | ？     |
-| istiod               | ○        | ○        | -                             | -        | ○                    | ？        | ○       | ？     |
+| :------------------- | :-------: | :-------: | :----------------------------: | :--------: | :-------------------: | :---------: | :-------: | :------: |
+| 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい | なし        | 最小限の機能が欲しい | ？        | なし       | ？     |
+| istio-egressgateway  | なし        | ✅        | なし                             | なし        | なし                    | ？        | なし       | ？     |
+| istio-ingressgateway | ✅        | ✅        | なし                             | なし        | なし                    | ？        | ✅       | ？     |
+| istiod               | ✅        | ✅        | なし                             | なし        | ✅                    | ？        | ✅       | ？     |
+
 
 <br>
 
@@ -82,8 +83,6 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 Istioが正しく動作しているか否かを検証する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
-
-
 
 成功した場合を以下に示す。
 

@@ -32,7 +32,7 @@ description: アドオン＠Kubernetesの知見を記録しています。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアント（```kubectl```実行者、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアント（```kubectl```クライアント、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
 > ℹ️ 参考：
 >
