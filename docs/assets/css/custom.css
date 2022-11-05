@@ -47,7 +47,7 @@ h2 {
     /* 背景：色 */
     background: #d7d7d7;
     /* 左線：太さ，色 */
-    border-left: 0.95em solid #2980B9;
+    border-left: 1.1em solid #2980B9;
 
     /* 上外部余白：大きさ */
     margin-top: 1.5em;
@@ -60,7 +60,7 @@ h3 {
     background: #ffffd5;
 
     /** タグ全体の下線 **/
-    border-bottom: solid 0.06em gray;
+    border-bottom: solid 0.1em #313131;
 
     /*行高*/
     line-height: 1.4;
