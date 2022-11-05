@@ -59,7 +59,8 @@ h2 {
 h3 {
     background: #ffffd5;
 
-    border-bottom: dotted 0.06em gray;
+    /** タグ全体の下線 **/
+    border-bottom: solid 0.06em gray;
 
     /*行高*/
     line-height: 1.4;
@@ -104,13 +105,13 @@ h3:before {
 }
 
 .md-typeset h2 {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h3 {
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-weight: bold;
     text-transform: none;
 }
@@ -119,6 +120,13 @@ h3:before {
     font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
+
+    /** 文字のみの下線 **/
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    text-decoration-thickness: 0.08em;
+    text-decoration-color: gray;
+    text-decoration-style: dashed;
 }
 
 .md-typeset h5 {
