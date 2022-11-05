@@ -200,8 +200,8 @@ jobs:
       - run:
         # デフォルト値testを与える時は何も設定しない
         name: Deploy to << parameters.environment >>
-        command:
-        # 何らかの処理
+        command: |
+          # 何らかの処理
     
 workflows:
   deploy:
@@ -819,9 +819,11 @@ jobs:
     steps:
       - checkout
       - run:
-          command: echo "building"
+          command: |
+            echo "building"
       - run:
-          command: echo "testing"
+          command: |
+            echo "testing"
           
 workflows:
   build:
@@ -830,11 +832,13 @@ workflows:
           # Workspace前に行う処理
           pre-steps:
             - run:
-                command: echo "install custom dependency"
+                command: |
+                  echo "install custom dependency"
           # Workspace後に行う処理
           post-steps:
             - run:
-                command: echo "upload artifact to s3"
+                command: |
+                  echo "upload artifact to s3"
 ```
 
 Orbsを使用する場合は、オプションに引数を渡す前に定義する。
@@ -849,11 +853,13 @@ workflows:
           # Workspace前に行う処理
           pre-steps:
             - run:
-                command: echo "FOO"
+                command: |
+                  echo "FOO"
           # Workspace後に行う処理
           post-steps:
             - run:
-                command: echo "FOO"
+                command: |
+                  echo "FOO"
           # Orbsのオプション
           name: foo
           dockerfile: foo

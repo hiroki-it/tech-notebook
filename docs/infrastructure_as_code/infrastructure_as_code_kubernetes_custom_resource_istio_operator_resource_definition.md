@@ -482,9 +482,8 @@ spec:
       lifecycle:
         postStart:
           exec:
-            command:
-              - pilot-agent
-              - wait
+            command: |
+              pilot-agent wait
 
 ...
 ```

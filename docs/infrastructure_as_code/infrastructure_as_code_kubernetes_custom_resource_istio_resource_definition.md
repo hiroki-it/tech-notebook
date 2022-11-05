@@ -151,20 +151,20 @@ spec:
               exec:
                # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも後に終了するようにする。
                # envoyプロセスとpilot-agentプロセスの終了を待機する。
-               command: [
-                 "/bin/bash",
-                 "-c",
-                 "sleep 5; while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
-               ]
+               command:
+                 - "/bin/bash"
+                 - "-c"
+                 - |
+                   sleep 5
+                   while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done"
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
                 # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するようにする。
                 # pilot-agentの起動完了を待機する。
-                command: [
-                  "pilot-agent",
-                  "wait"
-                ]
+                command:
+                 - |
+                  pilot-agent wait
 ```
 
 <br>

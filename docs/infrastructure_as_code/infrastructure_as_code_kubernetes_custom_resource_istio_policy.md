@@ -117,6 +117,7 @@ spec:
 > ℹ️ 参考：
 >
 > - https://istio.io/v1.10/docs/setup/upgrade/canary/
+> - https://jimmysong.io/blog/istio-canary-upgrade/
 > - https://medium.com/snowflake/blue-green-upgrades-of-istio-control-plane-7642bb2c39c2
 
 （１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。

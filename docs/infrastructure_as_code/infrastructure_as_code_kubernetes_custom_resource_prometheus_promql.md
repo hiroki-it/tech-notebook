@@ -47,12 +47,12 @@ description: PromQL＠Prometheus
 
 #### ▼ by
 
-集計したデータポイントをラベルごとに集計する。
+同じ種類のデータポイントをラベル単位で集約する。
 
 > ℹ️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 ```bash
-# 直近1時間に関して、Istioのistio-proxyコンテナが受信した総リクエストをコンテナの種類ごとに集計する。
+# 直近1時間に関して、Istioのistio-proxyコンテナが受信した総リクエストのデータポイントを、コンテナの種類ごとに集約する。
 sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destination_app)
 ```
 

@@ -120,7 +120,7 @@ description: 可観測性の知見を記録しています。
 
 ### メトリクスとは
 
-とある分析にて、一定期間に発生した複数のデータポイントの集計値のこと。メトリクスは、データポイントの形式にあわせていくつかの形式（例：パーセンテージ系、時分秒系、カウント系、バイト数系、など）がある。またメトリクスは、特定の方式（平均、最大最小、合計、再カウント数）で再集計できる。
+とある分析にて、一定期間に発生した同じ種類のデータポイントの集計値（例：CPU使用率、メモリ使用率、など）のこと。メトリクスは、データポイントの形式にあわせていくつかの形式（例：パーセンテージ系、時分秒系、カウント系、バイト数系、など）がある。またメトリクスは、特定の方式（平均、最大最小、合計、再カウント数）で再集計できる。
 
 > ℹ️ 参考：
 >
@@ -128,6 +128,7 @@ description: 可観測性の知見を記録しています。
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+
 
 <br>
 
@@ -177,6 +178,20 @@ description: 可観測性の知見を記録しています。
 冗長化されたメトリクス収集ツールのインスタンスが、単一の監視ツールやストレージツールにメトリクスを送信する場合、特定の期間には冗長化されたインスタンスが送信した同じデータポイントが存在することになる。この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。これにより、データポイント数を減らし、データポイントの合計データサイズを小さくする。重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。
 
 > ℹ️ 参考：https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+
+<br>
+
+### メトリクスの集約
+
+#### ▼ メトリクスの集約とは
+
+同じ種類のメトリクスを特定のグループ（例：AWS CloudWatchならば、ディメンション、名前空間）に集約する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+
+#### ▼ 集計との違い
+
+集計は、特定の方式（平均、最大最小、合計、再カウント数）で計算することを指す。
 
 <br>
 

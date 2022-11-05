@@ -956,7 +956,7 @@ $ git show-branch \
 
 ```bash
 $ git filter-branch -f --env-filter \
-    "GIT_AUTHOR_NAME="hiroki.hasegawa"; \
+     "GIT_AUTHOR_NAME="hiroki.hasegawa"; \
      GIT_AUTHOR_EMAIL="example@gmail.com"; \
      GIT_COMMITTER_NAME="hiroki.hasegawa"; \
      GIT_COMMITTER_EMAIL="example@gmail.com";" \

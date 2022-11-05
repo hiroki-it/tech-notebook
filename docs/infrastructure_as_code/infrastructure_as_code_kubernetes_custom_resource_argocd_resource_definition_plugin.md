@@ -85,6 +85,9 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
+  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+  targetRevision: master
+  path: .
   plugin:
     name: foo-plugin
 ```
@@ -191,7 +194,7 @@ data:
         args:
           - |
             set -euo pipefail
-            helmfile -f $HELMFILE_PATH -e $ENV template"
+            helmfile -f $HELMFILE -e $ENV template"
 ```
 
 
@@ -214,7 +217,7 @@ spec:
   plugin:
     name: helmfile
     env:
-      - name: HELMFILE_PATH
+      - name: HELMFILE
         value: ./helmfile.yaml
       - name: ENV
         value: prd
@@ -267,7 +270,7 @@ spec:
       args:
         - |
           apk --update add wget
-          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<Helmのバージョン>/sops-<Helmのバージョン>.linux
+          wget -q -O /custom-tools/sops https://github.com/mozilla/sops/releases/download/<sopsのバージョン>/sops-<sopsのバージョン>.linux
           wget -q -O /custom-tools/helm-secrets https://github.com/jkroepke/helm-secrets/releases/download/<Helmのバージョン>/helm-secrets.tar.gz | tar -C /custom-tools/helm-secrets -xzf-
           chmod +x /custom-tools/*
       # Podのボリュームに、sops、helm-secrets、を配置する。
@@ -484,7 +487,7 @@ spec:
   plugin:
     name: vault
     env:
-      - name: HELM_RELEASE_NAME\
+      - name: HELM_RELEASE_NAME
         value: foo
 ```
 

@@ -283,7 +283,7 @@ EC2インスタンスのクラウド内蔵ストレージとして働く。
 
 EBSボリュームの現在の空き容量を確認するためには、```df```コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
 
 ```bash
 [ec2-user ~]$ df -hT /dev/xvda1

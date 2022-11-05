@@ -477,35 +477,42 @@ IAMユーザーによる操作や、ロールの紐付けの履歴を記録し�
 
 AWSリソースで発生したメトリクスのデータポイントを収集する。
 
+
 <br>
 
-### ディメンション、名前空間、メトリクス名
+### メトリクスの集約
 
-#### ▼ 概念図
+#### ▼ メトリクスの集約とは
+
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+
+CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ（例：ディメンション、名前空間）に集約できる。
 
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
 
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+#### ▼ 集約の種類
 
-CloudWatchメトリクス上では、以下の様に確認できる。
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+
+
+| 集約名     | 説明    |
+|-----|-----|
+| ディメンション    | インスタンスの設定値をグループとした集約のこと（例：インスタンスID、スペック、AZ、など）。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される（例えば、EC2のストレージで、```/var/lib/foo```パーティションのストレージ使用率のデータポイントが```30```%だとする。EC2のインスタンスIDをディメンションにした場合に、```/var/lib/foo```以外のパーティションが```30```%より低いため、インスタンスIDのディメンション全体としては```10%```ほどのストレージ使用率になる）。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。
+| 名前空間    | AWSリソースをグループとした集約のこと（例：EC2、RDS、ALB、など）。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。
+
+#### ▼ 集約の確認方法
+
+CloudWatchメトリクス上では、各集約を以下の様に確認できる。
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
-
-
-#### ▼ ディメンション
-
-インスタンスの設定値を単位とした収集グループ（例：インスタンスID、スペック、AZ、など）のこと。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集計される（例えば、EC2のストレージで、```/var/lib/foo```パーティションのストレージ使用率のデータポイントが```30```%だとする。EC2のインスタンスIDをディメンションにした場合に、```/var/lib/foo```以外のパーティションが```30```%より低いため、インスタンスIDのディメンション全体としては```10%```ほどのストレージ使用率になる）。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。
-
-#### ▼ 名前空間
-
-AWSリソースを単位とした収集グループのこと。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスを収集すると、名前空間はCWAgentになる。
-
-#### ▼ メトリクス
-
-集計対象のデータポイントの発生領域を単位とした収集グループのこと。データポイントの発生領域名で表す。
 
 <br>
 
@@ -513,11 +520,11 @@ AWSリソースを単位とした収集グループのこと。AWSリソース�
 
 #### ▼ インサイトメトリクスは
 
-複数のCloudWatchメトリクスの結果を集計し、パフォーマンスに関するデータを収集する。
+異なるメトリクスを再集計し、パフォーマンスに関するメトリクスとして提供する。
 
 #### ▼ パフォーマンスインサイト
 
-RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスのデータポイントを収集する。SQLレベルで監視できるようになる。パラメーターグループの```performance_schema```を有効化する必要がある。対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
+RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスのデータポイントを収集する。特定の集約（例：個別のクエリ）で監視できるようになる。パラメーターグループの```performance_schema```を有効化する必要がある。対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：
 >
@@ -526,7 +533,7 @@ RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクス�
 
 #### ▼ Containerインサイト
 
-ECS、EKSのパフォーマンスに関するメトリクスのデータポイントを収集する。ECSクラスター/EKS Cluster、ECSサービス、ECSタスク、ECSコンテナ、単位で監視できるようになる。また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
+コンテナに関するAWSリソース（例：ECSクラスター/EKS Cluster、ECSサービス、ECSタスク、ECSコンテナ）のパフォーマンスに関するメトリクスのデータポイントを収集する。作成したメトリクスを特定の集約（例：個別のコンテナ）で扱えるになる。また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
 
 #### ▼ Lambdaインサイト
 
@@ -796,7 +803,7 @@ cloudwatchエージェントのオプションを設定する。セットアッ�
 
 ```amazon-cloudwatch-agent-ctl```コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
 
 **＊実行例＊**
 
@@ -871,10 +878,10 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
     "run_as_user": "cwagent"
   },
   "metrics": {
-    # メトリクスの収集単位とする名前空間のユーザー定義名
+    # メトリクスの集約とする名前空間のユーザー定義名
     # デフォルトでCWAgentになる。
     "namespace": "CWAgent",
-    # メトリクスの収集単位とするディメンション
+    # メトリクスの集約とするディメンション
     "aggregation_dimensions": [
       [
         # インスタンスID

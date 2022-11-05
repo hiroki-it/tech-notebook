@@ -112,7 +112,8 @@ mysqlイメージを使用してコンテナを作成する時に、最初に文
 ```yaml
 services:
   db:
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: |
+      mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
 ```
 
 <br>
@@ -723,7 +724,8 @@ services:
       MYSQL_USER: foo
       MYSQL_PASSWORD: foo
       TZ: "Asia/Tokyo"
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: |
+      mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     networks:
       - default
       

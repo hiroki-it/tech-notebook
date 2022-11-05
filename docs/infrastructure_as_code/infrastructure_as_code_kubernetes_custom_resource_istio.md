@@ -252,11 +252,49 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 <br>
 
-### 待ち受けるポート番号
+### コンテナで待ち受けるポート番号
+
+#### ▼ ```15000```番
+
+コンテナの```15000```番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15000
+
+#### ▼ ```15001```番
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+
+#### ▼ ```15004```番
+
+コントロールプレーンのコンテナの```8080```番ポートと一緒に使用される。用途がわからず調査中...
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15004
+
+#### ▼ ```15006```番
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+
+#### ▼ ```15020```番
+
+コンテナの```15020```番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15020
+
+#### ▼ ```15021```番
+
+コンテナの```15021```番ポートでは、kubeletからの準備済みチェックを待ち受ける。
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
+
+#### ▼ ```15053```番
+
+調査中...
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
 #### ▼ ```15090```番
 
-```15090```番ポートでは、```istio-proxy```コンテナのメトリクスを監視するツールからのリクエストを待ち受け、データポイントを含むレスポンスを返信する。
+コンテナの```15090```番ポートでは、```istio-proxy```コンテナのメトリクス収集ツールからのリクエストを待ち受け、```envoy```プロセスに渡される。リクエストの内容に応じて、データポイントのレスポンスを返信する。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -449,11 +487,11 @@ webhooks:
 
 <br>
 
-### 待ち受けるポート番号
+### コンテナで待ち受けるポート番号
 
 #### ▼ ```8080```番
 
-```8080```番ポートでは、サービスメッシュのデバッグエンドポイントに対するリクエストを待ち受ける。```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
 
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
@@ -471,11 +509,20 @@ Serving web UI on http://localhost:8080
 $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 ```
 
+#### ▼ ```9876```番
+
+コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/ops/diagnostic-tools/controlz/
+> - https://jimmysong.io/en/blog/istio-components-and-ports/
+
 #### ▼ ```15010```番
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。
+コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリクエストを待ち受け、コンテナ内部のプロセスに渡す。リクエストの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。なおIstiodコントロールプレーンは、サービスレジストリに登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。
 
 > ℹ️ 参考：
 >
@@ -486,13 +533,13 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、コンテナ内部のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
 #### ▼ ```15014```番
 
-```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、データポイントを含むレスポンスを返信する。
+コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、コンテナ内部のプロセスに渡す。リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
 
 ```bash
 # ポートフォワーディングを実行する。
@@ -509,7 +556,7 @@ $ curl http://127.0.0.1:15014/debug
 
 #### ▼ ```15017```番
 
-```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、AdmissionReviewを含むレスポンスを返信する。
+コンテナの```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、コンテナ内部のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
 
 
 <br>
@@ -702,17 +749,37 @@ $ ps aux | grep envoy | awk '{print $2}'
 ```bash
 $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
 
+# istio-proxyコンテナがデフォルトで待ち受けるポート番号にNATする。
 Chain ISTIO_INBOUND (1 references)
-...
+num  target             prot  opt  source     destination
+1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
+2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # メトリクス収集ツールからのリクエストを待ち受ける。
+3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからの準備済みチェックを待ち受ける。
+4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020
+5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
+
 
 Chain ISTIO_IN_REDIRECT (3 references)
-...
+num  target    prot  opt  source     destination
+1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006
+
 
 Chain ISTIO_OUTPUT (1 references)
-...
+num  target             prot  opt  source     destination
+1    RETURN             all   --   127.0.0.6  0.0.0.0/0
+2    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner UID match 1337
+3    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner UID match 1337
+4    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner UID match 1337
+5    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner GID match 1337
+6    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner GID match 1337
+7    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner GID match 1337
+8    RETURN             all   --   0.0.0.0/0  127.0.0.1
+9    ISTIO_REDIRECT     all   --   0.0.0.0/0  0.0.0.0/0
+
 
 Chain ISTIO_REDIRECT (1 references)
-...
+num  target     prot  opt  source     destination
+1    REDIRECT   tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15001
 ```
 
 > ℹ️ 参考：

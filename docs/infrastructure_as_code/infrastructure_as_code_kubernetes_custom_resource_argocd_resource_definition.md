@@ -1353,7 +1353,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ['/bin/bash']
+          command: ["/bin/bash", "-c"]
           source: |
             echo "Hello World"
 ```
@@ -1420,7 +1420,7 @@ spec:
     - name: foo-template
       script:
         - image: alpline:1.0.0
-          command: ['/bin/bash']
+          command: ["/bin/bash", "-c"]
           source: |
             echo "Hello World"
 ```

@@ -661,10 +661,8 @@ spec:
             - name: foo-alpine
               image: alpine:latest
               # 定期的に実行するコマンドを設定する。
-              command:
-                - /bin/sh
-                - -c
-                - echo Hello World
+              command: |
+                bin/sh -c "echo Hello World"
           restartPolicy: OnFailure
 ```
 
@@ -1324,10 +1322,8 @@ spec:
       containers:
         - name: foo-alpine
           image: alpine:latest
-          command:
-            - /bin/sh
-            - -c
-            - echo Hello World
+          command: |
+            /bin/sh -c "echo Hello World"
       restartPolicy: OnFailure
 ```
 
@@ -1489,9 +1485,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - |
-          until nc -z db 3306
-          do sleep 1
-          done
+          until nc -z db 3306; do sleep 1; done
 ```
 
 
@@ -2232,7 +2226,7 @@ spec:
 
 #### ▼ livenessProbeとは
 
-コンテナが起動しているか否かのヘルスチェックを設定する。
+kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。```spec.livenessProbe```では、コンテナがヘルスチェックを待ち受けられるように設定する。
 
 > ℹ️ 参考：https://www.ianlewis.org/jp/kubernetes-health-check
 
@@ -2324,7 +2318,7 @@ spec:
 
 #### ▼ readinessProbeとは
 
-すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
+kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを行う。```spec.readinessProbe```では、コンテナが準備済みチェックを待ち受けられるように設定する。何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
 
 > ℹ️ 参考：
 >
