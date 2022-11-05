@@ -749,13 +749,13 @@ $ ps aux | grep envoy | awk '{print $2}'
 ```bash
 $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
 
-# istio-proxyコンテナがデフォルトで待ち受けるポート番号にNATする。
+# istio-proxyコンテナへのインバウンド通信時に、コンテナがデフォルトで待ち受けるポート番号にNATする。
 Chain ISTIO_INBOUND (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
 2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # メトリクス収集ツールからのリクエストを待ち受ける。
 3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからの準備済みチェックを待ち受ける。
-4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020
+4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
 
 
@@ -764,6 +764,7 @@ num  target    prot  opt  source     destination
 1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006
 
 
+# istio-proxyコンテナからのアウトバウンド通信時に、コンテナがデフォルトで待ち受けるポート番号にNATする。
 Chain ISTIO_OUTPUT (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             all   --   127.0.0.6  0.0.0.0/0
