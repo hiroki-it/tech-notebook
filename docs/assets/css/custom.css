@@ -105,13 +105,13 @@ h3:before {
 }
 
 .md-typeset h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: bold;
     text-transform: none;
 }
 
 .md-typeset h3 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
     text-transform: none;
 }
@@ -120,13 +120,6 @@ h3:before {
     font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
-
-    /** 文字のみの下線 **/
-    text-decoration: underline;
-    text-underline-offset: 0.5em;
-    text-decoration-thickness: 0.08em;
-    text-decoration-color: gray;
-    text-decoration-style: dashed;
 }
 
 .md-typeset h5 {
