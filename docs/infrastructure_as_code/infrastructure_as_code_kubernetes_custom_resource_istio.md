@@ -188,21 +188,35 @@ $ istio-iptables \
     -d 15090,15021,15020
 ```
 
-#### ▼ インバウンド時
+#### ▼ Pod外からのインバウンド通信の場合
 
-iptablesにより、Pod内へのインバウンドは、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
+Pod外からのインバウンド通信は、iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。```istio-proxy```コンテナはこれを受信し、```localhost:<アプリケーションコンテナのポート番号>```でアプリケーションコンテナにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
 
-> ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> ℹ️ 参考：
+> 
+> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
 
-#### ▼ アウトバウンド時
+#### ▼ Pod外へのアウトバウンド通信の場合
 
-iptablesにより、Pod内へのからのアウトバウンド通信は、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+Pod外へのアウトバウンド通信は、iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
-![istio_iptables_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound.png)
+![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
 
-> ℹ️ 参考：https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> ℹ️ 参考：
+> 
+> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
+
+#### ▼ 自分自身へのアウトバウンド通信の場合
+
+自分自身（Pod内）へのアウトバウンド通信は、iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+
+> ℹ️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
+
+![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_self.png)
 
 <br>
 
@@ -218,6 +232,7 @@ iptablesにより、Pod内へのからのアウトバウンド通信は、```ist
 >
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
 
 #### ▼ ```pilot-agent```プロセス
 
@@ -266,11 +281,13 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 #### ▼ ```15004```番
 
-コントロールプレーンのコンテナの```8080```番ポートと一緒に使用される。用途がわからず調査中...
+コンテナの```15004```番ポートでは、コントロールプレーンのコンテナの```8080```番ポートと一緒に使用される。用途がわからず調査中...
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15004
 
 #### ▼ ```15006```番
+
+```15006```番ポートでは、アプリケーションコンテナへのリクエストを待ち受ける。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -749,7 +766,24 @@ $ ps aux | grep envoy | awk '{print $2}'
 ```bash
 $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
 
-# istio-proxyコンテナへのインバウンド通信時に、コンテナがデフォルトで待ち受けるポート番号にNATする。
+
+Chain PREROUTING (policy ACCEPT)
+...
+
+
+Chain INPUT (policy ACCEPT)
+...
+
+
+Chain OUTPUT (policy ACCEPT)
+...
+
+
+Chain POSTROUTING (policy ACCEPT)
+...
+
+
+# istio-proxyコンテナへのインバウンド通信時に、NAPT処理を実行する。
 Chain ISTIO_INBOUND (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
@@ -761,10 +795,10 @@ num  target             prot  opt  source     destination
 
 Chain ISTIO_IN_REDIRECT (3 references)
 num  target    prot  opt  source     destination
-1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006
+1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006 #
 
 
-# istio-proxyコンテナからのアウトバウンド通信時に、コンテナがデフォルトで待ち受けるポート番号にNATする。
+# istio-proxyコンテナからのアウトバウンド通信時に、NAPT処理を実行する。
 Chain ISTIO_OUTPUT (1 references)
 num  target             prot  opt  source     destination
 1    RETURN             all   --   127.0.0.6  0.0.0.0/0
