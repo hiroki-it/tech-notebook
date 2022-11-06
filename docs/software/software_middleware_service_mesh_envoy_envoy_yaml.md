@@ -23,9 +23,11 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 <br>
 
-### Dockerfile
+### 手動セットアップの場合
 
-Dockerfileにて、独自の```envoy.yaml```ファイルを組み込む。拡張子は、```.yml```ではなく、```.yaml```とする。
+#### ▼ Dockerfile
+
+Dockerfileにて、独自の```/etc/envoy/envoy.yaml```ファイルを組み込む。拡張子は、```.yml```ではなく、```.yaml```とする。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -37,9 +39,16 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 <br>
 
-### Istio
+### 自動セットアップの場合
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html
+#### ▼ Istio
+
+Istioは、Envoyをベースとしたリバースプロキシを自動的に挿入する。この場合、```/etc/istio/proxy/envoy-rev0.json```ファイルを設定ファイルとして扱う。
+
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/ops/deployment/architecture/#envoy
+> - https://cloud.tencent.com/developer/article/1701214
 
 <br>
 
@@ -47,7 +56,22 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 ### adminとは
 
+調査中...
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
+
+<br>
+
+### access_log_path
+
+#### ▼ access_log_pathとは
+
+```envoy```プロセスのログの出力先を設定する。
+
+```yaml
+admin:
+  access_log_path: /dev/null
+```
 
 <br>
 
@@ -55,7 +79,10 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 ### addressとは
 
+調査中...
+
 <br>
+
 
 ### socket_address
 
@@ -94,6 +121,93 @@ admin:
 
 <br>
 
+## 03. dynamic_active_clusters
+
+### dynamic_active_clustersとは
+
+Envoyは、コントロールプレーン（ビルトイン、Istio、Consul）のXDSに、通信の宛先情報を定期的にリクエストし、レスポンスに含まれる情報を```dynamic_active_clusters```配下に自動的に設定する。設定された内容は、```envoy```プロセスの稼働するサーバー/コンテナから```curl```コマンドを実行すると確認できる。
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
+> - https://cloud.tencent.com/developer/article/1701214
+
+
+```bash
+$ curl localhost:15000/config_dump | jq '.configs[1].dynamic_active_clusters'
+
+[
+  {
+    "cluster": {
+      "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
+      "name": "example_proxy_cluster",
+      "type": "LOGICAL_DNS",
+      "connect_timeout": "5s",
+      "dns_lookup_family": "V4_ONLY",
+      "load_assignment": {
+        "cluster_name": "foo-service",
+        "endpoints": [
+          {
+            "lb_endpoints": [
+              {
+                "endpoint": {
+                  "address": {
+                    # 通信の宛先情報
+                    # http://foo-service:8080 で宛先に通信を送信できる。
+                    "socket_address": {
+                      "address": "foo-service",
+                      "port_value": 8080
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+      
+      ...
+    },
+    
+    "last_updated": "2020-10-26T14:35:17.360Z",
+    
+    ...
+  }
+]
+```
+
+```cluster_name```キーのみを取得すれば、宛先を項目として取得できる。
+
+```bash
+$ curl localhost:15000/config_dump | jq '.configs[1].dynamic_active_clusters' | grep cluster_name
+```
+
+
+<br>
+
+### version_info
+
+宛先情報のバージョンが表示される。宛先情報が変わった場合、コントロールプレーンは```version_info```キーの値が変更する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
+
+```yaml
+[
+  {
+    # バージョンが更新されていく。
+    "version_info": "2022-01-01T12:00:00Z/2",
+    "cluster": {
+       ...
+     }
+    
+     ...
+      
+  }
+]
+```
+
+<br>
+
 ## 03. static_resources
 
 ### static_resourcesとは
@@ -123,9 +237,9 @@ admin:
 ```yaml
 static_resources:
   listeners:
-  - address:
-      socket_address:
-        protocol: TCP
+    - address:
+        socket_address:
+          protocol: TCP
 ```
 
 #### ▼ address
@@ -135,9 +249,9 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - address:
-      socket_address:
-        address: 0.0.0.0
+    - address:
+        socket_address:
+          address: 0.0.0.0
 ```
 
 #### ▼ port_value
@@ -148,9 +262,9 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - address:
-      socket_address:
-        port_value: 80
+    - address:
+        socket_address:
+          port_value: 80
 ```
 
 <br>
@@ -166,28 +280,32 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - filter_chains:
-    - filters:
-      - name: envoy.filters.network.http_connection_manager
+    - filter_chains:
+      - filters:
+        - name: envoy.filters.network.http_connection_manager
 ```
 
 #### ▼ typed_config.access_log
 
-Envoyのアクセスログの出力先を設定する。
+```envoy```プロセスのアクセスログの出力方法を設定する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
 ```yaml
 static_resources:
   listeners:
-  - filter_chains:
-    - filters:
-      - typed_config:
-          access_log:
-            - name: envoy.access_loggers.stdout
-              typed_config:
-                "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+    - filter_chains:
+      - filters:
+        - typed_config:
+            access_log:
+              - name: envoy.access_loggers.stdout
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
 #### ▼ typed_config.http_filters
+
+調査中...
 
 > ℹ️ 参考：
 >
@@ -221,19 +339,19 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - filter_chains:
-    - filters:
-      - typed_config:
-          route_config:
-            name: foo_route
-            virtual_hosts:
-            - name: foo_service
-              domains: ["*"]
-              routes:
-              - match:
-                  prefix: "/"
-                route:
-                  cluster: foo_cluster
+    - filter_chains:
+      - filters:
+        - typed_config:
+            route_config:
+              name: foo_route
+              virtual_hosts:
+                - name: foo_service
+                  domains: ["*"]
+                  routes:
+                  - match:
+                      prefix: "/"
+                    route:
+                      cluster: foo_cluster
 ```
 
 #### ▼ typed_config.stat_prefix
@@ -248,13 +366,15 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - filter_chains:
-    - filters:
-      - typed_config:
-          stat_prefix: ingress_http
+    - filter_chains:
+      - filters:
+        - typed_config:
+            stat_prefix: ingress_http
 ```
 
 #### ▼ typed_config."@type"
+
+調査中...
 
 ```yaml
 static_resources:
@@ -269,6 +389,8 @@ static_resources:
 
 ### name
 
+#### ▼ nameとは
+
 インバウンド通信を受信するリスナーの名前を設定する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
@@ -276,51 +398,84 @@ static_resources:
 ```yaml
 static_resources:
   listeners:
-  - name: foo_listener
+    - name: foo_listener
 ```
 
 <br>
 
-## 04. static_resources.clusters
+## 03-03. static_resources.clusters
 
 ### clustersとは
 
-インバウンド通信のルーティング先のマイクロサービスをグループ化する。対象が1つであっても、```clusters```キーは必須である。
+インバウンド通信のルーティング先のマイクロサービスをグループ化する。対象が```1```個であっても、```clusters```キーは必須である。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
 <br>
 
-### connect_timeout
+### circuit_breakers
 
-タイムアウトまでの時間を設定する。
+#### ▼ circuit_breakersとは
+
+ルーティング先の同時接続数の制限数を設定する。制限を超過した場合、宛先へのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
 
 ```yaml
 static_resources:  
   clusters:
-  - connect_timeout: 10s
+    - circuit_breakers:
+        thresholds:
+          - "priority": "DEFAULT",
+            "max_connections": 100000,
+            "max_pending_requests": 100000,
+            "max_requests": 100000
+          - "priority": "HIGH",
+            "max_connections": 100000,
+            "max_pending_requests": 100000,
+            "max_requests": 100000
+```
+
+<br>
+
+### connect_timeout
+
+#### ▼ connect_timeoutとは
+
+ルーティング時のタイムアウト時間を設定する。
+
+```yaml
+static_resources:  
+  clusters:
+    - connect_timeout: 10s
 ```
 
 <br>
 
 ### dns_lookup_family
 
+#### ▼ dns_lookup_familyとは
+
+調査中...
+
 ```yaml
 static_resources:  
   clusters:
-  - dns_lookup_family: v4_only
+    - dns_lookup_family: v4_only
 ```
 
 <br>
 
 ### lb_policy
 
+#### ▼ lb_policyとは
+
 ルーティングのアルゴリズムを設定する。
 
 ```yaml
 static_resources:  
   clusters:
-  - lb_policy: round_robin
+    - lb_policy: round_robin
 ```
 
 <br>
@@ -336,18 +491,18 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - load_assignment:
-      endpoints:
-        - lb_endpoints:
-          - endpoint:
-              address: 192.168.0.1
-              port_value: 80
-          - endpoint:
-              address: 192.168.0.1
-              port_value: 81
-          - endpoint:
-              address: bar-service
-              port_value: 82
+    - load_assignment:
+        endpoints:
+          - lb_endpoints:
+            - endpoint:
+                address: 192.168.0.1
+                port_value: 80
+            - endpoint:
+                address: 192.168.0.1
+                port_value: 81
+            - endpoint:
+                address: bar-service
+                port_value: 82
 ```
 
 #### ▼ cluster_name
@@ -357,20 +512,22 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - load_assignment:
-      cluster_name: foo_cluster
+    - load_assignment:
+        cluster_name: foo_cluster
 ```
 
 <br>
 
 ### name
 
+#### ▼ nameとは
+
 ルーティング先のグループの名前を設定する。
 
 ```yaml
 static_resources:  
   clusters:
-  - name: foo_cluster
+    - name: foo_cluster
 ```
 
 <br>
@@ -384,24 +541,29 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - transport_socket:
-      name: envoy.transport_sockets.tls
+    - transport_socket:
+        name: envoy.transport_sockets.tls
 ```
 
 #### ▼ typed_config
 
+調査中...
+
+
 ```yaml
 static_resources:  
   clusters:
-  - transport_socket:
-      typed_config:
-        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
-        sni: www.envoyproxy.io
+    - transport_socket:
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+          sni: www.envoyproxy.io
 ```
 
 <br>
 
 ### type
+
+#### ▼ typeとは
 
 サービスディスカバリーの種類を設定する。ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
 
@@ -410,7 +572,7 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - type: logical_dns
+    - type: logical_dns
 ```
 
 <br>

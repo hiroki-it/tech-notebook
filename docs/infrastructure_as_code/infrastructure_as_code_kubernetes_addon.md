@@ -458,6 +458,7 @@ $ kubectl get service -n kube-system
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
+
 # CoreDNS Pod
 $ kubectl get pod -n kube-system
 
@@ -469,7 +470,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 <br>
 
-## 外部Ingressコントローラー
+## 04. 外部Ingressコントローラー
 
 ### 外部Ingressコントローラーの種類
 
@@ -551,6 +552,7 @@ $ eksctl get iamserviceaccount \
 NAMESPACE       NAME                            ROLE ARN
 kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
 
+
 # 作成されたServiceAccount
 $ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
 
@@ -606,6 +608,7 @@ $ helm list -n kube-system
 NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
 aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
 
+
 $ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
@@ -642,9 +645,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 <br>
 
 
-
-
-## 04. AWS EKSアドオン
+## 05. AWS EKSアドオン
 
 ### AWS EKSアドオンとは
 

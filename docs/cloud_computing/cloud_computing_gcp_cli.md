@@ -58,6 +58,12 @@ $ gcloud auth login
 
 ```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報（```~/.config/gcloud/application_default_credentials.json```ファイル）とGCP SDKのための認証情報が更新される。
 
+> ℹ️ 参考：https://blog.pokutuna.com/entry/application-default-credentials
+
+```bash
+$ gcloud auth login --update-adc
+```
+
 <br>
 
 ### component

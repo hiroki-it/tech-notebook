@@ -498,11 +498,16 @@ DOMツリーの各ノードを、ブラウザ上に描画する。
 
 ### Rasterize処理とは
 
+調査中...
+
 <br>
 
 ## 05-03. CompositeLayers処理
 
 ### CompositeLaysers処理とは
+
+調査中...
+
 
 <br>
 
@@ -598,6 +603,7 @@ Cache-Control: no-store
 
 ...
 
+---
 # ボディ
 ここにサイトのHTMLのコード
 ```
@@ -616,6 +622,7 @@ Cache-Control: max-age=31536000
 
 ...
 
+---
 # ボディ
 ここにサイトのHTMLのコード
 ```
@@ -635,9 +642,10 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 ...
 
+---
 # ボディ
 ここにサイトのHTMLのコード
 ```
 
 
-
+<br>

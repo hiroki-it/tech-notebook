@@ -15,6 +15,8 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 ## 01. CGI
 
+調査中...
+
 ![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
 
 <br>
@@ -26,3 +28,7 @@ CGIプロトコルのパフォーマンスを向上させたプロトコル仕�
 <br>
 
 ## 03. WSGI
+
+調査中...
+
+<br>
