@@ -89,6 +89,12 @@ h3:before {
     top: 0.45em;
 }
 
+h4 {
+    /*h4の上部にスペースを入れ、区別しやすいようにする。*/
+    padding-top: 1.5em;
+}
+
+
 /***************
  文字
 ***************/
@@ -132,6 +138,10 @@ h3:before {
     font-size: 1.0em;
     font-weight: bold;
     text-transform: none;
+}
+
+p {
+    font-size: 1.0em;
 }
 
 /***************
