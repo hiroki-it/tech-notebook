@@ -785,6 +785,10 @@ $ cat foo.txt | grep bar
 $ cat foo.txt | grep bar
 ```
 
+```grep```コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになるが、これで問題が起こることがある...
+
+> ℹ️ 参考：https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
+
 <br>
 
 ### -A

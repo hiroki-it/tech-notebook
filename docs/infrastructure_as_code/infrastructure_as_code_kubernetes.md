@@ -285,11 +285,6 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 ![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_communication.png)
 
-> ℹ️ 参考：
->
-> - https://blog.vpantry.net/2020/05/k8s-5/
-> - https://medium.com/jorgeacetozi/kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-3a0179fc8186
-
 （１）クライアントやKubernetesリソースがPodの作成リクエストを送信する。
 
 （２）kube-apiserverはリクエストを受信し、Podの作成宣言の情報をetcdに永続化する。
@@ -309,6 +304,13 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 （９）kubeletは、Podが作成されたことをkube-apiserverに返却する。
 
 （１０）kube-apiserverは、Podの作成完了をetcdに永続化する。
+
+
+> ℹ️ 参考：
+>
+> - https://blog.vpantry.net/2020/05/k8s-5/
+> - https://medium.com/jorgeacetozi/kubernetes-master-components-etcd-api-server-controller-manager-and-scheduler-3a0179fc8186
+
 
 <br>
 

@@ -423,7 +423,7 @@ class AuthServiceProvider extends ServiceProvider
 
 #### ▼ AuthorizeMiddlewareによる認可
 
-ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合する。インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
+ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合する。インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。認可に失敗した場合、```403```ステータスを含むレスポンスを返信する。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
@@ -492,7 +492,7 @@ class FooController extends Controller
 
             $foo->fill($request->all())->save();
         } catch (Throwable $e) {
-            // 自前で403ステータスのレスポンスを返信する。
+            // 自前で403ステータスを含むレスポンスを返信する。
             return response()->json(['error' => $e->getMessage()], 403);
         }
 
@@ -538,7 +538,7 @@ class FooController extends Controller
 
         // 認可が失敗した場合、falseが返却される。
         if (!auth()->user()->can('update', [$foo->find($id), $request->barId])) {
-            // 自前で403ステータスのレスポンスを返信する。
+            // 自前で403ステータスを含むレスポンスを返信する。
             return response()->json(['error' => '認可エラー'], 403);
         }
 

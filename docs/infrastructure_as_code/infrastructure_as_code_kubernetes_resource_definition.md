@@ -2466,11 +2466,6 @@ Podを削除する時の待機時間を設定する。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-> ℹ️ 参考：
->
-> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
-> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2482,6 +2477,12 @@ spec:
       image: foo-gin:1.0.0
   terminationGracePeriodSeconds: 300
 ```
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
 
 <br>
 

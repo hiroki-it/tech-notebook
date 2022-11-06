@@ -19,11 +19,9 @@ description: Fで始まるAWSリソース＠AWSリソースの知見を記録し
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
-> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 （１）awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり、ログをFireLensコンテナに送信する。Fluentdログドライバーについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://docs.docker.com/config/containers/logging/fluentd/
 
 （２）FireLensコンテナは、これを受信する。
 
@@ -45,6 +43,12 @@ description: Fで始まるAWSリソース＠AWSリソースの知見を記録し
 ```
 
 （４） OUTPUTに渡され、FluentBitは指定した外部にログをルーティングする。
+
+> ℹ️ 参考：
+> 
+> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - https://docs.docker.com/config/containers/logging/fluentd/
+
 
 ### FireLensコンテナ
 

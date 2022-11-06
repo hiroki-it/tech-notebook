@@ -177,11 +177,6 @@ Podのライフサイクルにはフェーズがある。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-> ℹ️ 参考：
->
-> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
-> - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
-
 （１）クライアントは、```kubectl```コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
 
 （２）Podが、削除を開始する。
@@ -191,6 +186,13 @@ Podのライフサイクルにはフェーズがある。
 （４）kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+> - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
+
 
 #### ▼ CPUとメモリの割り当て
 
@@ -325,21 +327,6 @@ Ingressコントローラーは、Ingressの設定に基づいてワーカーNod
 > - https://www.containiq.com/post/kubernetes-ingress
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 
-#### ▼ Ingressコントローラーの種類
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
-> - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
-
-| コントローラー名                                      | 開発環境 | 本番環境 |
-| ----------------------------------------------------- | -------- | -------- |
-| minikubeアドオン（実体はNginx Ingressコントローラー） | ✅        |         |
-| AWS LBコントローラー                                 |         | ✅        |
-| GCP CLBコントローラー                                 |         | ✅        |
-| Nginx Ingressコントローラー                           | ✅        | ✅        |
-| Istio Ingress                                         | ✅        | ✅        |
-| Istio Gateway（Ingressとしても使用できる）            | ✅        | ✅        |
 
 #### ▼ SSL証明書の割り当て
 

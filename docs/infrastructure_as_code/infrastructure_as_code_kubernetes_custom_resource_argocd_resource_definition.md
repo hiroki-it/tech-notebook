@@ -328,6 +328,8 @@ stringData:
 
 OIDCに必要なIDやトークンを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
+
 ```yaml
 # 他と異なるマニフェストリポジトリ
 apiVersion: v1
@@ -343,7 +345,7 @@ stringData:
   type: git
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
-    name: keucloak
+    name: keycloak
     clientID: foo-oidc
     clientSecret: *****
     requestedScopes: ["openid", "profile", "email", "groups"]
@@ -363,7 +365,7 @@ stringData:
     type: git
     # OIDCに必要なIDやトークンを設定する。
     oidc.config: |
-      name: keucloak
+      name: keycloak
       clientID: foo-oidc
       clientSecret: *****
       requestedScopes: ["openid", "profile", "email", "groups"]

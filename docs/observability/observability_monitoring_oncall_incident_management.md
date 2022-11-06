@@ -211,8 +211,6 @@ fields @timestamp, @message, @logStream
 
 ![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_on-call.png)
 
-> ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
-
 （１）CloudWatchアラームからPagerDutyのServiceに、アラートが通知される。
 
 （２）PagerDutyのServiceから。インシデントがメールや電話宛に通知される。
@@ -220,6 +218,10 @@ fields @timestamp, @message, @logStream
 （３）オンコール担当者は、PagerDutyのServiceを確認する。
 
 （４）解決フェーズがOpenになっているインシデント
+
+
+> ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
+
 
 <br>
 

@@ -141,7 +141,7 @@ metrics-serverは、拡張apiserver、ローカルストレージ、スクレイ
 
 #### ▼ 拡張apiserverとは
 
-ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントのレスポンスを返信する。データポイントはローカルストレージに保管している。
+ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。データポイントはローカルストレージに保管している。
 
 > ℹ️ 参考：
 >

@@ -1126,7 +1126,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ▼ ヘルスチェックへの対応
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で、```200```ステータスのレスポンスを返信する。Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。RouteServiceProviderも参照せよ。
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で、```200```ステータスを含むレスポンスを返信する。Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。RouteServiceProviderも参照せよ。
 
 **＊実装例＊**
 

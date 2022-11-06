@@ -614,6 +614,54 @@ FargateをワーカーNodeとして、コンテナを作成する。Fargateの�
 
 <br>
 
+### 認証/認可
+
+#### ▼ EKSの場合
+
+![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_auth_architecture.png)
+
+（１）IAMユーザーと紐づいた```kubectl```クライアントが、コントロールプレーンにリクエストを送信する。kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。admission-controllersアドオンのWebhookではないことに注意する。
+
+（２）aws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
+
+（３）もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap（aws-auth）から、IAMユーザーに紐づくUserAccountを取得する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapAccounts: []
+  mapUsers: []
+  mapRoles: |
+    - rolearn: arn:aws:iam::<アカウントID>:role/foo-role # IAMロール名
+      username: foo-iam-user # IAMユーザー名
+      groups:
+        - system:masters # ClusterRoleBindingに定義されたGroup名
+    - rolearn: arn:aws:iam::<アカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名
+      username: system:node:{{EC2PrivateDNSName}} # ワーカーNodeの識別子
+      groups:
+        - system:bootstrappers
+        - system:nodes
+```
+
+（４）aws-iam-authenticator-serverは、kube-apiserverにUserAccountを含むレスポンスを返信する。
+
+（５）あとは、Kubernetesの標準の認可の仕組みである。kube-apiserverは、認可ステップでUserAccountに紐づくClusterRoleを取得する。```kubectl```クライアントは、Kubernetesリソースを操作できる。
+
+
+> ℹ️ 参考：
+>
+> - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
+> - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
+> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
+> - https://dev.to/aws-builders/eks-auth-deep-dive-4fib
+
+
+<br>
+
 ## 03-02. ECSデータプレーン
 
 ### ECSクラスター
@@ -1114,14 +1162,21 @@ exit ${EXIT_STATUS}
 
 ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rolling-update.png)
 
+（１）最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。 
+
+（２）最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる 
+
+（３）ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。 
+
+（４）ECSは、猶予期間後にALB/NLBによる新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。 
+
+（５）『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。 
+
+（６）全ての既存タスクが新タスクに置き換わる。
+
+
 > ℹ️ 参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
 
-1. 最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。
-2. 最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる
-3. ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。
-4. ECSは、猶予期間後にALB/NLBによる新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。
-5. 『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。
-6. 全ての既存タスクが新タスクに置き換わる。
 
 #### ▼ ブルー/グリーンデプロイメント
 
@@ -1419,156 +1474,6 @@ VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキ�
 EFSを使用して、ワーカーNode間でファイルを共有する。PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
 
 > ℹ️ 参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
-
-<br>
-
-### AWS LB Controller
-
-#### ▼ セットアップ
-
-（１）ローカルマシンにIAMポリシーの```.json```ファイルをダウンロードする。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
-
-```bash
-$ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json
-```
-
-（２）```.json```ファイルを使用して、IAMポリシーを作成する。
-
-```bash
-$ aws iam create-policy \
-    --policy-name AWSLoadBalancerControllerIAMPolicy \
-    --policy-document file://iam_policy.json
-```
-
-（４）IAM OIDC providerをEKS Clusterに紐づける。
-
-```bash
-$ eksctl utils associate-iam-oidc-provider \
-    --region=ap-northeast-1 \
-    --cluster=foo-eks-cluster \
-    --approve
-    
-2022-05-30 23:39:04 [ℹ]  eksctl version 0.96.0
-2022-05-30 23:39:04 [ℹ]  using region ap-northeast-1
-2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
-```
-
-（５）ServiceAccountを作成し、IAMロールと紐づける。
-
-```bash
-$ eksctl create iamserviceaccount \
-    --cluster=foo-eks-cluster \
-    -n kube-system \
-    --name=aws-load-balancer-controller \
-    --attach-policy-arn=arn:aws:iam::<アカウントID>:policy/AWSLoadBalancerControllerIAMPolicy \
-    --override-existing-serviceaccounts \
-    --approve
-```
-
-（６）ServiceAccountがデプロイされたことを確認する。
-
-> ℹ️ 参考：https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
-
-```bash
-$ eksctl get iamserviceaccount \
-    --cluster foo-eks-cluster \
-    --name aws-load-balancer-controller \
-    --namespace kube-system
-
-2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
-2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
-NAMESPACE       NAME                            ROLE ARN
-kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
-
-# 作成されたServiceAccount
-$ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
-
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
-  creationTimestamp: "2022-05-29T12:59:15Z"
-  labels:
-    app.kubernetes.io/managed-by: eksctl
-  name: aws-load-balancer-controller
-  namespace: kube-system
-  resourceVersion: "2103515"
-  uid: *****
-secrets:
-- name: aws-load-balancer-controller-token-****
-```
-
-（７）指定したリージョンにAWS LBコントローラーをデプロイする。この時、事前に作成したServiceAcountをALBに紐づける。
-
-```bash
-# FargateにAWS LBコントローラーをデプロイする場合
-$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
-    -n kube-system \
-    --set clusterName=foo-eks-cluster \
-    --set serviceAccount.create=false \
-    --set serviceAccount.name=aws-load-balancer-controller \
-    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
-    --set region=ap-northeast-1 \
-    --set vpcId=<VPCID>
- 
-AWS Load Balancer controller installed!
-```
-
-```bash
-# EC2にAWS LBコントローラーをデプロイする場合
-$ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
-    -n kube-system \
-    --set clusterName=foo-eks-cluster \
-    --set serviceAccount.create=false \
-    --set serviceAccount.name=aws-load-balancer-controller \
-    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
-    
-AWS Load Balancer controller installed!
-```
-
-（８）AWS LBコントローラーがデプロイされ、READY状態になっていることを確認する。
-
-```bash
-$ helm list -n kube-system
-
-NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
-aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
-
-$ kubectl get deployment -n kube-system aws-load-balancer-controller
-
-NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-aws-load-balancer-controller   2/2     2            0           22m
-```
-
-もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているか否かを確認する。
-
-```yaml
-{"level":"error","ts":*****.*****,"logger":"controller-runtime.manager.controller.ingress","msg":"Reconciler error","name":"foo-ingress","namespace":"foo","error":"ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on *.*.*.*:53: read udp *.*.*.*:43958->*.*.*.*:53: read: connection refused"}
-```
-
-（９）Ingressをデプロイし、IngressからALB Ingressを自動的に作成させる。以下の条件を満たす必要がある。
-
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
-
-#### ▼ IngressとALBの紐付け
-
-> ℹ️ 参考：
->
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
-> - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
-
-| 項目                                            | 説明                                                         |
-| ----------------------------------------------- | ------------------------------------------------------------ |
-| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。 |
-| ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
-| ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
-| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先のサブネットを設定する。      |
-| ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、```ip```を設定する必要がある。 |
-| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。 |
-| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。 |
 
 <br>
 

@@ -79,9 +79,9 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 ![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_component-type.png)
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
-
 配置するコンポーネントの種類に関する名前をつける。
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
 
 | 名前                  | 種類         | 役割                                          | 配置例                  |
 | --------------------- | ------------ |---------------------------------------------| ----------------------- |

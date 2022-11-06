@@ -21,6 +21,8 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 GCPアカウントの認証を行う。
 
+> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/auth
+
 #### ▼ application-default login
 
 GCP CLIによるGCPリソースへのアクセスを認証するために使用する。```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、クレデンシャル情報を定義する。また、これ使用してGCPにログインする。```~/.config/gcloud/application_default_credentials.json```ファイルは```1```個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
@@ -51,6 +53,10 @@ GCP SDKによるGCPリソースへのアクセスを認証するために使用�
 ```bash
 $ gcloud auth login
 ```
+
+#### ▼ login --update-adc
+
+```gcloud auth application-default login```コマンドと```gcloud auth login```コマンドを同時に実行する。これにより、GCP CLIのための認証情報（```~/.config/gcloud/application_default_credentials.json```ファイル）とGCP SDKのための認証情報が更新される。
 
 <br>
 
@@ -132,6 +138,27 @@ $ gcloud config set compute/region <リージョン名>
 
 WARNING: Property validation for compute/region was skipped.
 Updated property [compute/region].
+```
+
+<br>
+
+### container clusters
+
+#### ▼ container clustersとは
+
+> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/clusters
+
+#### ▼ list
+
+GKE Clusterの一覧を取得する。
+
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters?hl=ja#viewing_your_clusters
+
+```bash
+$ gcloud container clusters list
+
+NAME               LOCATION         MASTER_VERSION   MASTER_IP  MACHINE_TYPE  NODE_VERSION    NUM_NODES  STATUS
+foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.22.0-gke      3          RUNNING
 ```
 
 <br>

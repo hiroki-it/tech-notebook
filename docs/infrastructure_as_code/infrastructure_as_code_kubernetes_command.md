@@ -79,6 +79,24 @@ pod/foo-pod configured
 
 <br>
 
+### cluster-info
+
+#### ▼ cluster-infoとは
+
+コントロールプレーンNodeの情報を取得する。
+
+> ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
+
+```bash
+$ kubectl cluster-info
+
+Kubernetes control plane is running at https://*.*.*.*:443
+CoreDNS is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+````
+
+<br>
+
 ### config
 
 #### ▼ configとは
@@ -107,6 +125,7 @@ $ kubectl config get-contexts
 CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 *         minikube         minikube         minikube         default
           docker-desktop   docker-desktop   docker-desktop
+...
 ```
 
 #### ▼ use-context
