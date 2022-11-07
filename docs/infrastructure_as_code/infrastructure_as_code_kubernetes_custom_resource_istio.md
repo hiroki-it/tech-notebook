@@ -190,7 +190,7 @@ $ istio-iptables \
 
 #### ▼ Pod外からのインバウンド通信の場合
 
-Pod外からのインバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。```istio-proxy```コンテナはこれを受信し、```localhost:<アプリケーションコンテナのポート番号>```でアプリケーションコンテナにルーティングする。
+Pod外からアプリケーションコンテナへのインバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。```istio-proxy```コンテナはこれを受信し、ローカルホスト（```http://localhost:<アプリケーションコンテナのポート番号>```）のアプリケーションコンテナにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
 
@@ -201,7 +201,7 @@ Pod外からのインバウンド通信は、istio-iptablesにより、```istio-
 
 #### ▼ Pod外へのアウトバウンド通信の場合
 
-Pod外へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。サービスディスカバリーによってPodの宛先情報が、```istio-proxy```コンテナ内の```envoy```プロセスに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
+アプリケーションコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。サービスディスカバリーによってPodの宛先情報が、```istio-proxy```コンテナ内の```envoy```プロセスに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
 
 > ℹ️ 参考：
@@ -212,9 +212,9 @@ Pod外へのアウトバウンド通信は、istio-iptablesにより、```istio-
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
 
-#### ▼ 自分自身へのアウトバウンド通信の場合
+#### ▼ ローカスホスト通信の場合
 
-自分自身（Pod内）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+アプリケーションコンテナからローカルホスト（```http://localhost:<ポート番号>```）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
@@ -275,7 +275,16 @@ istio-cniを採用している場合にのみそう挿入されるコンテナ�
 
 ```istio-proxy```コンテナの```15000```番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。
 
-> ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#15000
+```bash
+# istio-proxyコンテナ内でローカルホストにリクエストを送信する。
+istio-proxy@<Pod名>: $ curl http://localhost:15000/config_dump
+```
+
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
+> - https://jimmysong.io/en/blog/istio-components-and-ports/#15000
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin
 
 #### ▼ ```15001```番
 

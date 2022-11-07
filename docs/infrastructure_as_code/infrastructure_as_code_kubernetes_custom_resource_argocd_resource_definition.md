@@ -1082,7 +1082,77 @@ spec:
 
 <br>
 
-## 04. ConfigMap
+## 03. AppProject
+
+### AppProjectとは
+
+Applicationの責務境界をProjectとして管理する。
+
+### sourceRepos
+
+プロジェクト内で監視可能なリポジトリを設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # その他、運用チーム名など
+spec:
+  sourceRepos:
+    - '*'
+```
+
+<br>
+
+### description
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # その他、運用チーム名など
+spec:
+  description: This is application in prd environment
+```
+
+<br>
+
+### destinations
+
+プロジェクト内でデプロイ先として指定可能なスコープを設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # その他、運用チーム名など
+spec:
+  destinations:
+    - namespace: '*' # 全てのNamespaceにデプロイできる。
+      server: https://kubernetes.default.svc
+```
+
+<br>
+
+### clusterResourceWhitelist
+
+プロジェクト内でデプロイ可能なリソースを設定する。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prd # その他、運用チーム名など
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+```
+
+
+<br>
+
+## 04. 専用ConfigMap
 
 ### data.resource.customizations
 
@@ -1113,7 +1183,7 @@ data:
 
 <br>
 
-## 05. Job
+## 05. 専用Job
 
 ### metadata
 
@@ -1315,7 +1385,7 @@ spec:
 
 <br>
 
-## 08. Workflow
+## 07. Workflow
 
 ### spec.entrypoint
 
@@ -1382,7 +1452,7 @@ spec:
 
 <br>
 
-## 08-02. WorkflowTemplate
+## 08. WorkflowTemplate
 
 ### spec.templates
 

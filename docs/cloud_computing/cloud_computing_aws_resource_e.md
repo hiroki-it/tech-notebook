@@ -969,12 +969,12 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 | AMI名                         | 説明                                                         | 特に相性の良いアプリ                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ECS最適化Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              |
-| ECS最適化Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                              |
-| ECS最適化Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |                                                              |
-| ECS最適化Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
-| ECS最適化Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
-| ECS最適化Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |                                                              |
+| ECS最適化 Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              |
+| ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                              |
+| ECS最適化 Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。 |                                                              |
+| ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
+| ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                 | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
+| ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                    |                                                              |
 
 <br>
 
@@ -1657,11 +1657,14 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
-| AMI名                     | 説明                                                         | 特に相性の良いPod                                            |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| EKS最適化Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              |
-| EKS最適化高速Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |
-| EKS最適化Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              |
+| AMI名                     | 説明                                                         | 特に相性の良いPod                                            | 補足 |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --- |
+| EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。   |                                                              | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html|
+| EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） | |
+| EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。 |                                                              | |
+| EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。 |                                                              | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
+
+
 
 #### ▼ EC2ワーカーNodeのカスタムAMI
 

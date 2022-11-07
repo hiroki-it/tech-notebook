@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SecretsストアCSIドライバー＠Secret管理
-description: SecretsストアCSIドライバー＠Secret管理の知見を記録しています。
+title: 【IT技術の知見】SecretsストアCSIドライバー＠CSIドライバー
+description: SecretsストアCSIドライバー＠CSIドライバーの知見を記録しています。
 ---
 
-# SecretsストアCSIドライバー＠Secret管理
+# SecretsストアCSIドライバー＠CSIドライバー
 
 ## はじめに
 

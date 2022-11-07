@@ -129,57 +129,48 @@ Envoyは、コントロールプレーン（ビルトイン、Istio、Consul）�
 
 > ℹ️ 参考：
 >
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
 > - https://cloud.tencent.com/developer/article/1701214
 
 
 ```bash
-$ curl localhost:15000/config_dump | jq '.configs[1].dynamic_active_clusters'
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl localhost:15000/config_dump?resource={dynamic_active_clusters}
 
 [
+  ...
+
   {
+    ...
+    
+    "@type": "type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster",
     "cluster": {
       "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
-      "name": "example_proxy_cluster",
-      "type": "LOGICAL_DNS",
-      "connect_timeout": "5s",
-      "dns_lookup_family": "V4_ONLY",
-      "load_assignment": {
-        "cluster_name": "foo-service",
-        "endpoints": [
-          {
-            "lb_endpoints": [
-              {
-                "endpoint": {
-                  "address": {
-                    # 通信の宛先情報
-                    # http://foo-service:8080 で宛先に通信を送信できる。
-                    "socket_address": {
-                      "address": "foo-service",
-                      "port_value": 8080
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        ]
+      "name": "foo-service",
+      "type": "EDS",
+      "eds_cluster_config":{
+        "eds_config": {
+          "ads": {},
+          "initial_fetch_timeout": "0s",
+          "resource_api_version": "V3"
+        },
+        "service_name": "foo-service"
       }
-      
-      ...
-    },
-    
-    "last_updated": "2020-10-26T14:35:17.360Z",
+    }
     
     ...
   }
+  
+  ...
 ]
 ```
 
-```cluster_name```キーのみを取得すれば、宛先を項目として取得できる。
+```grep```コマンドを使用して、```service_name```キーのみを取得すれば、宛先を一覧で取得できる。
 
 ```bash
-$ curl localhost:15000/config_dump | jq '.configs[1].dynamic_active_clusters' | grep cluster_name
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep service_name
 ```
 
 
@@ -196,6 +187,7 @@ $ curl localhost:15000/config_dump | jq '.configs[1].dynamic_active_clusters' | 
   {
     # バージョンが更新されていく。
     "version_info": "2022-01-01T12:00:00Z/2",
+    "@type": "type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster",
     "cluster": {
        ...
      }

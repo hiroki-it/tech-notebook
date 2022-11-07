@@ -39,10 +39,10 @@
   > * ##### <u>Kubernetesリソース</u>
   > > * ##### 📖 [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
   > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
-  > * ##### <u>Secret管理</u>
+  > * ##### <u>CSIドライバー</u>
   > > * ##### <u>SecretsストアCSIドライバー</u>
-  > > > * ##### 📖 [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver.html)
-  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver_resource_definition.html)
+  > > > * ##### 📖 [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.html)
+  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.html)
   > * ##### <u>開発環境</u>
   > > * ##### <u>Minikube</u>
   > > > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)

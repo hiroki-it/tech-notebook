@@ -208,8 +208,8 @@ preferences: {}
 users:
 - name: docker-desktop
   user:
-    client-certificate-data: REDACTED
-    client-key-data: REDACTED
+    client-certificate-data: REDACTED # クライアント証明書
+    client-key-data: REDACTED # 秘密鍵
 - name: minikube
   user:
     client-certificate: /Users/h.hasegawa/.minikube/profiles/minikube/client.crt

@@ -192,6 +192,40 @@ version: <バージョンタグ>
 <br>
 
 
+## 04. ```_helpers.tpl```ファイル
+
+### ```_helpers.tpl```ファイルとは
+
+あらゆる場所から使用できるテンプレートを設定する。汎用的なテンプレート（```metadata.labels```キーなど）の出力で使用する。
+
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/builtin_objects/
+
+<br>
+
+### ```metadata.labels```キーの出力
+
+```_helpers.tpl```ファイルで```metadata.labels```キーのセットをテンプレートとして定義しておく。マニフェストで、これらをまとめて出力する。
+
+```gotemplate
+{{- define "global.template.labels" -}}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+helm.sh/chart: {{ .Chart.Name }}
+{{- end -}}
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{ include "global.template.labels" . | indent 4 }} # まとめて出力する。
+
+...
+```
+
+<br>
+
 
 ## 04. values.yaml
 
@@ -301,7 +335,7 @@ ServiceAccountの作成を有効化する。
 
 ### コメントアウト
 
-Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト（例：```#```）であると、テンプレートの展開時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト（例：```#```）であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
 ```yaml
 {{- /* コメント */ -}}
@@ -326,11 +360,11 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 
 #### ▼ printfとは
 
-変数を文字列内に展開する。
+変数を文字列内に出力する。
 
 #### ▼ エスケープ
 
-Helmのテンプレート内に、アクションや変数以外の理由で```{}```を出力する場合（例：Alertmanagerのアラートの変数展開の定義）、これらとして認識されないようにエスケープする必要がある。エスケープのために```printf```アクションを使用することもできる。一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法（例：```{{`<記号を含む文字列全体>`}}```、```{{"<記号>"}}```）を使用できる。エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法（```{{"<記号>"}}```、```printf```アクション）が必要になる。
+Helmのテンプレート内に、アクションや変数以外の理由で```{}```を出力する場合（例：Alertmanagerのアラートの変数出力の定義）、これらとして認識されないようにエスケープする必要がある。エスケープのために```printf```アクションを使用することもできる。一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法（例：```{{`<記号を含む文字列全体>`}}```、```{{"<記号>"}}```）を使用できる。エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法（```{{"<記号>"}}```、```printf```アクション）が必要になる。
 
 > ℹ️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
@@ -376,20 +410,20 @@ receivers:
 
 ```yaml
 # values.yamlファイル
-general:
+global:
   env: prd
   appName: foo
 ```
 
-```yaml
+```gotemplate
 apiVersion: apps/v1
 kind: Deployment
 # キーと値の両方を取得すると、ロジックが増えて可読性が低くなる。
-{{- range $general := .Values.general }}
+{{- range $global := .Values.global }}
 metadata:
-  name: {{ $general.env }}-{{ $general.appName }}-pod
+  name: {{ $global.env }}-{{ $global.appName }}-pod
   labels:
-    app.kubernetes.io/app: {{ $general.appName }}
+    app.kubernetes.io/app: {{ $global.appName }}
     
     ...
     
@@ -412,11 +446,11 @@ ipAddresses:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: blocked-ip-iddresses-config-map
+  name: blocked-ip-addresses-config-map
 data:
   ip-addresses: |-
-    {{- range $.Values.ipAddresses }}
-      - {{ . }}
+    {{- range .Values.ipAddresses }}
+      - {{ . }} # 『.』を指定し、反復的に出力する。
     {{- end }} 
 ```
 
@@ -449,7 +483,7 @@ data:
 
 ```yaml
 # values.yamlファイル
-general:
+global:
   env: prd
   appName: foo
 ```
@@ -458,9 +492,9 @@ general:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.general.env }}-{{ .Values.general.appName }}-pod
+  name: {{ .Values.global.env }}-{{ .Values.global.appName }}-pod
   labels:
-    app.kubernetes.io/app: {{ .Values.general.appName }}
+    app.kubernetes.io/app: {{ .Values.global.appName }}
 ```
 
 #### ▼ metadataキーで使用する場合の注意点
@@ -489,7 +523,7 @@ metadata:
 
 <br>
 
-### 展開形式
+### 出力形式
 
 #### ▼ ドット
 
@@ -506,7 +540,7 @@ metadata:
 {{- end }}
 ```
 
-```yaml
+```gotemplate
 baz:
 {{- include "foo-template" . }}
 ```
@@ -518,13 +552,37 @@ baz:
   bar: BAR
 ```
 
+#### ▼ ドル
+
+出力時に、YAMLファイルのルートを明示的に出力する。アクションの中でアクションで、YAMLファイルのルートにアクセスしたい場合に役立つ。
+
+> ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
+
+**＊実装例＊**
+
+```range```アクションを使用すると、YAMLファイルへのアクセスのルートが変わってしまう。ルートを明示することにより、```range```アクション内でもYAMLファイルの正しいルートにアクセスできるようなる。
+
+```gotemplate
+{{- range $.Values.foo.namespaces }}
+apiVersion: apps/v1
+kind: Secrets
+metadata:
+  name: {{ $.Values.global.env }}-foo-secret
+  namespace: {{ . }}
+    
+  ...
+
+{{- end }}
+```
+
+
 #### ▼ ハイフン
 
-```{{-```であると、テンプレートの展開時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
+```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
 
 > ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 
-```yaml
+```gotemplate
 {* tplファイル *}
 
   {{- define "foo-template" }}
@@ -547,9 +605,9 @@ baz:
   bar: BAR
 ```
 
-#### ▼ nindent
+#### ▼ indent
 
-改行せずにそのままスペースを挿入した上で、内容を出力する。
+改行せずに、そのままスペースを挿入した上で、内容を出力する。
 
 > ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#28
 
@@ -564,10 +622,10 @@ baz:
 {{- end }}
 ```
 
-```yaml
+```gotemplate
 # 2つ分のスペースを挿入した上で、出力する。
 baz:
-{{- include "foo-template" . | nindent 2 }}
+{{- include "foo-template" . | indent 2 }}
 ```
 
 ```yaml
@@ -594,7 +652,7 @@ baz:
 {{- end }}
 ```
 
-```yaml
+```gotemplate
 # 改行しつつ、2つ分のスペースを挿入した上で、出力する。
 baz:
 {{- include "foo-template" . | nindent 2 }}
