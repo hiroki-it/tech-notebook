@@ -931,6 +931,8 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
+<br>
+
 ### 異なるCluster内コンテナのデータプレーン内管理
 
 #### ▼ 同じプライベートネットワーク内の場合

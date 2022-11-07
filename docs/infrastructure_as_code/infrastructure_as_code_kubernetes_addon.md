@@ -431,9 +431,9 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 <br>
 
-## 03. core-dnsアドオン（旧kube-dns）
+## 03. CoreDNSアドオン（旧kube-dns）
 
-### core-dnsアドオンとは
+### CoreDNSアドオンとは
 
 ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
@@ -467,6 +467,153 @@ coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
 coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 ```
 
+<br>
+
+## 03-02. Serviceの名前解決
+
+### Serviceの完全修飾ドメイン名
+
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルにCoreDNS ServiceのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
+
+> ℹ️ 参考：
+>
+> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+
+```bash
+# Pod内のコンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+# コンテナのresolv.confファイルの中身を確認する
+[root@<Pod名>] $ cat /etc/resolv.conf 
+
+nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
+search default.svc.cluster.local svc.cluster.local cluster.local 
+options ndots:5
+
+# CoreDNSを権威DNSサーバーとして使用している場合
+$ kubectl get service -n kube-system
+
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+```
+
+<br>
+
+### レコードタイプと完全修飾ドメイン名の関係
+
+Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
+> - https://eng-blog.iij.ad.jp/archives/9998
+
+| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                                                            | 補足                                                                                                                                                                                                               |
+| -------------- | -------------------------------------------------------- |-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| A/AAAAレコード | ```<Service名>.<Namespace名>.svc.cluster.local```        | ・通常のServiceの名前解決ではCluster-IPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略でき、```<Service名>.<Namespace名>```でも名前解決できる。また、同じNamespace内から通信する場合は、さらに```<Namespace名>```も省略でき、```<Service名>```のみで名前解決できる。<br>ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12613605860.html |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                                              | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。                                                                                                                                                              |
+
+<br>
+
+### 名前解決の仕組み
+
+#### ▼ Pod内からServiceに対する正引き名前解決
+
+Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+
+```bash
+# Pod内のコンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+# Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を行う
+[root@<Pod名>:~] $ nslookup <Service名>
+
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:  <Service名>.<Namespace名>.svc.cluster.local
+Address:  10.105.157.184
+```
+
+ちなみに、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+
+```bash
+# Pod内のコンテナから正引きの名前解決を行う。
+[root@<Pod名>:~] $ nslookup <Service名>.<Namespace名>
+```
+
+> ℹ️ 参考：
+>
+> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
+
+
+#### ▼ Pod外からServiceに対する正引き名前解決
+
+（１）NginxのPodにルーティングするServiceが稼働しているとする。
+
+```bash
+$ kubectl get service
+                                                       
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
+```
+
+（２）CoreDNS Podが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
+
+```bash
+$ kubectl -n kube-system get pods -o wide -l k8s-app=kube-dns
+
+NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
+```
+
+（３）ここで、ワーカーNode内に接続する。Serviceの完全修飾ドメイン名（ここでは```nginx-service.default.svc.cluster.local```）をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
+
+```bash
+# ワーカーNode内に接続する。
+$ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
+
+10.101.67.107
+```
+
+> ℹ️ 参考：https://zenn.dev/tayusa/articles/c705cd65b6ee74
+
+<br>
+
+### 疎通確認
+
+#### ▼ 事前確認
+
+（１）Serviceがルーティング先のポート番号を確認する。
+
+```bash
+$ kubectl get service <Service名> -o yaml | grep targetPort:
+```
+
+（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+
+```bash
+# 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する
+$ kubectl get pod -l <名前>=<値> -o wide
+
+$ kubectl get pod <Pod名> -o yaml | grep containerPort:
+```
+
+（３）両方のポート番号が一致しているかを確認する。
+
+#### ▼ Serviceを介したアウトバウンド通信の送信
+
+Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。完全修飾ドメイン名またはIPアドレスを指定できる。
+
+```bash
+# Pod内のコンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+[root@<Pod名>:~] $ curl -X GET https://<Serviceの完全修飾ドメイン名/IPアドレス>:<ポート番号>
+```
 
 <br>
 

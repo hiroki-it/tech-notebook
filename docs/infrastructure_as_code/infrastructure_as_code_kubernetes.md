@@ -30,14 +30,16 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ### デフォルトのSSL証明書
 
+
+![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
+
+
 コンポーネント間でHTTPSプロトコルを使用するためにはSSL証明書が必須であり、必須ではないが、通信をさらに安全にするためにクライアント証明書が使用されているところがある。クライアント証明書の場合、これを使用するクライアント側には、クライアント証明書と秘密鍵の両方を配置することになる。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
-
-![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
 
 | 送信元                     | 宛先            | 種類        | 説明                                                                                           |
 |-------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
@@ -52,7 +54,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 <br>
 
-#### ▼ SSL証明書の期限と更新
+### SSL証明書の期限と更新
 
 各SSL証明書の有効期限は```1```年間である。```kubelet```プロセスの実行時に、```--rotate-certificates```オプションを有効化すると、証明書の更新処理を自動化できる。
 

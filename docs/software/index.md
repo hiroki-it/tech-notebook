@@ -88,6 +88,7 @@
   > > * ##### <u>Envoy</u>
   > > > * ##### 📖 [︎Envoy](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy.html)
   > > > * ##### 📖 [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
+  > > > * ##### 📖 [︎API](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_service_mesh_envoy_apil.html)
 
 <br>
 
