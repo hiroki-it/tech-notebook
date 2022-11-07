@@ -222,7 +222,7 @@ const nuxtConfig: Configuration = {
 
   plugins: [
     ...(baseConfig.plugins || []),
-    // SSGのみで使用するため、clinetモードとする。
+    // SSGのみで使用するため、clientモードとする。
     {
       src: '@/plugins/datadog/browserLogsForSsg',
       mode: 'client'

@@ -495,7 +495,7 @@ class FooNotification
     
     private $logger;
         
-    public function __construct(Clinet $httpClient, string $token, LoggerInterface $logger)
+    public function __construct(Client $httpClient, string $token, LoggerInterface $logger)
     {
         $this->httpClient = $httpClient;        
         $this->token = $token;

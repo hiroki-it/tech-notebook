@@ -1,5 +1,19 @@
+---
+title: 【IT技術の知見】Nodeコンポーネント＠Kubernetes
+description: Nodeコンポーネント＠Kubernetesの知見を記録しています。
+---
 
-### 01. Nodeコンポーネントとは
+# Nodeコンポーネント＠Kubernetes
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+
+<br>
+
+## 01. Nodeコンポーネントとは
 
 ワーカーNode上で稼働するKubernetesコンポーネントのこと。
 
@@ -260,3 +274,5 @@ num  target                     prot   opt   source      destination
 | Waiting         | RunningフェーズとTerminatedフェーズ以外のフェーズにある。 |
 | Running         | コンテナの起動が完了し、実行中である。                   |
 | Terminated      | コンテナが正常/異常に停止した。                      |
+
+<br>

@@ -429,7 +429,7 @@ HTTPSプロトコルを受信する場合、クライアント証明書のパス
 **＊実装例＊**
 
 ```nginx
-ssl_client_certificate /etc/nginx/ssl/clinet.crt;
+ssl_client_certificate /etc/nginx/ssl/client.crt;
 ```
 
 #### ▼ tcp_nopush

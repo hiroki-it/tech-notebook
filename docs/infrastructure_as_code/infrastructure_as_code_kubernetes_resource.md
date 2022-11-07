@@ -520,35 +520,6 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 > ℹ️ 参考：https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 
-#### ▼ デフォルトのSSL証明書
-
-コンポーネント間でHTTPSプロトコルを使用するためにはSSLサーバー証明書が必須であり、通信をさらに安全にするためにクライアント証明書が使用されているところがある。
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
-> - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
-
-![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
-
-| 送信元                     | 宛先            | 種類        | 説明                                                                                           |
-|-------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
-| kube-apiserver          | kubelet        | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
-| kube-apiserver          | etcd           | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
-| クライアント（```kubectl```クライアント、Kubernetesリソース）のローカルマシン          | kube-apiserver | クライアント証明書 | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書に不一致があると、クライアントからのリクエストで、『```x509: certificate has expired or is not yet valid```』や『```error: You must be logged in to the server (Unauthorized)```』というエラーになる。                                  |
-| kube-controller-manager | kube-apiserver | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。 |
-| kube-scheduler          | kube-apiserver | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```kubeconfig```ファイルも必要になる。          |
-| その他のコンポーネント             | kube-apiserver    | SSL証明書    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |
-| kube-apiserver          | kubelet             | SSL証明書    | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                 |
-| kube-apiserver          | front-proxy         | SSL証明書    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                             |
-
-#### ▼ SSL証明書の期限と更新
-
-各SSL証明書の有効期限は```1```年間である。```kubelet```プロセスの実行時に、```--rotate-certificates```オプションを有効化すると、証明書の更新処理を自動化できる。
-
-> ℹ️ 参考：https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
-
-
 <br>
 
 ### NetworkPolicy
@@ -662,7 +633,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 | アカウント名         | 説明                                                                                                                      | 補足                                                                                                                                                                                                                                              |
 |----------------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ServiceAccount | kube-apiserverが、Kubernetesリソース（特にPod）を認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用してKubernetesリソースに認可スコープを設定する必要がある。 | 標準のKubernetesリソースには自動的にServiceAccountが設定される。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認証できるように、GitOpsツールのServiceAccountを作成する必要がある。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
-| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                       | クライアントの認証に必要なクライアント証明書は、``` ~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                    |
+| UserAccount    | kube-apiserverが、クライアントを認証できるようにする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。                       | クライアントの認証に必要なクライアント証明書は、```~/.kube/config```ファイルに登録する必要がある。                                                                                                                                                                                    |
 
 <br>
 
