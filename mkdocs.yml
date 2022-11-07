@@ -400,10 +400,10 @@ nav:
               - ■ Kubernetesリソース:
                   - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
                   - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
-              - ■ Secret管理:
+              - ■ CSIドライバー:
                   - ■ SecretsストアCSIドライバー:
-                      - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver.md
-                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_secrets_management_secrets_store_csi_driver_resource_definition.md
+                      - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.md
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.md
               - ■ 開発環境:
                   - ■ Minikube:
                       - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
