@@ -391,7 +391,10 @@ nav:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
               - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
           - ■ Kubernetes:
-              - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+              - ■ Kubernetes:
+                  Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+                  コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+                  Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
               - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
               - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
