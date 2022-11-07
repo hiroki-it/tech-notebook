@@ -190,6 +190,7 @@ nav:
               - ■ Envoy:
                   - Envoy: software/software_middleware_service_mesh_envoy.md
                   - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
+                  - API: software/software_middleware_service_mesh_envoy_api.md
       - ■ アプリケーションソフトウェア:
           - ■ アーキテクチャ:
               - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
