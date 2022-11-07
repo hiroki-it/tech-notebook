@@ -194,7 +194,7 @@ data:
         args:
           - |
             set -euo pipefail
-            helmfile -f $HELMFILE -e $ENV template"
+            helmfile -f $HELMFILE -e "$ENV" template"
 ```
 
 

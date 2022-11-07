@@ -193,7 +193,7 @@ frontend:
       commands:
         - npm install
         # base64方式エンコード値をデコード
-        - echo $ENV | base64 -di > .env
+        - echo "$ENV" | base64 -di > .env
         - cat .env
     build:
       commands:

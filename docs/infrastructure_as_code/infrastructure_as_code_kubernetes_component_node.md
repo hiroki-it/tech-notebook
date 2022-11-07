@@ -1,0 +1,262 @@
+
+### 01. Nodeコンポーネントとは
+
+ワーカーNode上で稼働するKubernetesコンポーネントのこと。
+
+> ℹ️ 参考：
+>
+> - https://cstoku.dev/posts/2018/k8sdojo-24/
+> - https://kubernetes.io/docs/concepts/overview/components/
+
+<br>
+
+
+## 02. ワーカーNode
+
+### ワーカーNodeとは
+
+ノードコンポーネントが稼働する。Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドで```--register-node=false```とする必要がある。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/architecture/nodes/
+> - https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
+
+<br>
+
+### ワーカーNodeで待ち受けるポート番号
+
+ワーカーNodeが通信を待ち受けるデフォルトのポート番号は、以下の通りである。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/ports-and-protocols/#node
+
+<br>
+
+
+## 03. Nodeグループ
+
+### Nodeグループとは
+
+KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできないが、クラウドプロバイダーを使用して、Nodeグループを実現できる。同じ設定値（```metadata.labels```キー、CPU、メモリ、など）や同じ役割を持ったNodeのグループのこと。基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
+> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
+
+<br>
+
+### Nodeグループの粒度
+
+| Nodeグループ名の例           | 説明                                                                                                                                                                        |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```gateway```、```ingress```        | ワーカーNodeへのインバウンド通信の入口になるリソース（例：Ingress、IngressGateway）のコンテナや、API Gatewayのアプリケーションのコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。 |
+| ```batch```、```job``` | バッチ処理やジョブ（定期的に実行するように設定されたバッチ処理）のコンテナを配置する。                                                                                                                               |
+| ```collector```       | ログやメトリクスのデータポイントを収集するリソース（例：Prometheus、Alertmanager、のPod）のコンテナを配置する。                                                                                                      |
+| ```master```          | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode（例：AWS EKS、GCP GKE、など）の場合、このNodeグループは不要になる。                                                              |
+| ```mesh```            | セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode（例：AWS AppMesh、など）の場合、このNodeグループは不要になる。                                                                    |
+| ```service```         | マイクロサービスのアプリケーションのコンテナを稼働させる。                                                                                                                                             |
+
+<br>
+
+### ワーカーNodeのオートスケーリング
+
+執筆時点（2022/07/20）では、KubernetesのAPIにはワーカーNodeのオートスケーリング機能はない。ただし、cluster-autoscalerを使用すると、各クラウドプロバイダーのAPIからワーカーNodeのオートスケーリングを実行できるようになる。
+
+> ℹ️ 参考：
+>
+> - https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
+> - https://blog.inductor.me/entry/2021/12/06/165743
+
+<br>
+
+
+## 04. kubelet
+
+### kubeletとは
+
+各ワーカーNode上で直接デーモンとして常駐し、コンテナランタイムを操作することにより、Podを作成する。また、ワーカーNodeやPodを監視し、メトリクスのデータポイントをkube-apiserverに提供する。
+
+> ℹ️ 参考：https://thinkit.co.jp/article/17453
+
+![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
+
+<br>
+
+### セットアップ
+
+#### ▼ 起動コマンド
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
+
+```bash
+$ kubelet \
+    --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf \
+    --kubeconfig=/etc/kubernetes/kubelet.conf \
+    --config=/var/lib/kubelet/config.yaml \ 
+    --authentication-token-webhook=true 
+    --authorization-mode=Webhook \
+    --container-runtime=remote \
+    --container-runtime-endpoint=unix:///run/containerd/containerd.sock \
+    --max-pods=250 \
+    --node-ip=*.*.*.* \
+    --rotate-server-certificates=true \
+    --seccomp-default=true \
+    --cgroup-driver=systemd \
+    --runtime-cgroups=/system.slice/containerd.service \
+    ...
+```
+
+<br>
+
+## 05. kube-proxy
+
+### kube-proxyとは
+
+kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、サービスディスカバリー、検出したサービス（Pod）に対するロードバランサー、として働く。
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes
+
+<br>
+
+### セットアップ
+
+#### ▼ 起動コマンド
+
+```bash
+$ kube-proxy \
+    --config=/var/lib/kube-proxy/config.conf \
+    --hostname-override=foo-node \
+    ...
+```
+
+<br>
+
+### kube-proxyの仕組み
+
+#### ▼ サービスディスカバリー
+
+![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
+
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
+
+> ℹ️ 参考：https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
+
+#### ▼ Podのロードバランサー
+
+ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodをを決める。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+
+#### ▼ 確認方法
+
+```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）が宛先情報として登録されている。```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
+
+> ℹ️ 参考：
+>
+> - https://dream.jp/vps/support/manual/mnl_security_04.html
+> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+
+```bash
+$ iptables -L -n KUBE-SERVICES -t nat --line-number
+
+Chain KUBE-SERVICES (2 references)
+num  target                     prot   opt   source      destination         
+1    KUBE-SVC-ERIFXISQEP7F7OF4  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns-tcp cluster IP */ tcp dpt:53
+2    KUBE-SVC-V2OKYYMBY3REGZOG  tcp    --    0.0.0.0/0   10.101.67.107        /* default/nginx-service cluster IP */ tcp dpt:8080
+3    KUBE-SVC-NPX46M4PTMTKRN6Y  tcp    --    0.0.0.0/0   10.96.0.1            /* default/kubernetes:https cluster IP */ tcp dpt:443
+4    KUBE-SVC-JD5MR3NA4I4DYORP  tcp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:metrics cluster IP */ tcp dpt:9153
+5    KUBE-SVC-TCOU7JCQXEZGVUNU  udp    --    0.0.0.0/0   10.96.0.10           /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
+6    KUBE-NODEPORTS             all    --    0.0.0.0/0   0.0.0.0/0            /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
+```
+
+<br>
+
+### プロキシモードの種類
+
+#### ▼ iptablesプロキシモード
+
+![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)
+
+| 項目              | 仕組み                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------|
+| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| ロードバランシングアルゴリズム | ランダム方式のみ。                                                                            |
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
+> - https://www.mtioutput.com/entry/kube-proxy-iptable
+> - https://github.com/kubernetes/kubernetes/pull/81430
+
+
+#### ▼ userspaceプロキシモード
+
+![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png)
+
+
+| 項目              | 仕組み                                                                                  |
+|-----------------|--------------------------------------------------------------------------------------|
+| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| ロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                         |
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
+> - https://github.com/kubernetes/kubernetes/pull/81430
+
+
+#### ▼ ipvsプロキシモード
+
+![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)
+
+| 項目              | 仕組み                                                                              |
+|-----------------|----------------------------------------------------------------------------------|
+| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
+| ロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                       |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
+> - https://github.com/kubernetes/kubernetes/pull/81430
+
+
+<br>
+
+### その他のプロキシー
+
+ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシーが、他にもいくつかある。
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+
+- ```kubectl proxy```コマンド
+- ```minikube tunnel```コマンド
+- LoadBalancer
+
+<br>
+
+## 06. コンテナランタイム（コンテナエンジン）
+
+### コンテナランタイムとは
+
+イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
+
+> ℹ️ 参考：https://thinkit.co.jp/article/17453
+
+<br>
+
+### コンテナのライフサイクルフェーズ
+
+コンテナのライフサイクルにはフェーズがある。
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+
+| フェーズ名 | 説明                                    |
+| --------------- |---------------------------------------|
+| Waiting         | RunningフェーズとTerminatedフェーズ以外のフェーズにある。 |
+| Running         | コンテナの起動が完了し、実行中である。                   |
+| Terminated      | コンテナが正常/異常に停止した。                      |

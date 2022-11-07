@@ -981,7 +981,7 @@ steps:
      name: echo FOO
      command: |
        echo $FOO
-       echo "This is ${FOO}"
+       echo "This is "$FOO""
 ```
 
 #### ▼ ```.env```ファイルの安全な複製方法
@@ -1244,7 +1244,7 @@ jobs:
       - run:
           name: Make env file
           command: |
-            echo $ENV | base64 --decode > .env
+            echo "$ENV" | base64 --decode > .env
       - run:
           name: Make env docker file
           command: |

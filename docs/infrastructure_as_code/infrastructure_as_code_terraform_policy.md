@@ -927,13 +927,13 @@ goのバイナリファイルを実行するためには、```docker-compose run
 env=
 
 init:
-	docker-compose run --rm terraform -chdir=./${ENV} init -reconfigure
+	docker-compose run --rm terraform -chdir=./"$ENV" init -reconfigure
 
 fmt:
 	docker-compose run --rm terraform fmt -recursive
 
 validate: init fmt
-	docker-compose run --rm terraform -chdir=./${ENV} validate
+	docker-compose run --rm terraform -chdir=./"$ENV" validate
 ```
 
 #### ▼ asdfパッケージを使用する場合

@@ -265,7 +265,7 @@ set -xeuo pipefail
 set -u
 
 # 事前に環境変数に実行環境名を代入する。
-case $ENV in
+case "$ENV" in
     "tes")
         aws_account_id="<テスト環境アカウントID>"
         aws_access_key_id="<テスト環境アクセスキーID>"
@@ -285,7 +285,7 @@ case $ENV in
         aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
     ;;
     *)
-        echo "The parameter ${ENV} is invalid."
+        echo "The parameter "$ENV" is invalid."
         exit 1
     ;;
 esac
@@ -297,7 +297,7 @@ aws configure set aws_default_region "ap-northeast-1"
 
 # https://sts.amazonaws.com に、ロールの紐付けをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<紐付けしたいIAMロール名>" \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"$ENV"-<紐付けしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
   --duration-seconds "<セッションの有効秒数>" \
@@ -330,9 +330,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} apply \
+terraform -chdir=./"$ENV" apply \
   -parallelism=30 \
-  ${ENV}.tfplan
+  "$ENV".tfplan
 ```
 
 <br>
@@ -369,11 +369,11 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} init \
+terraform -chdir=./"$ENV" init \
   -upgrade \
   -reconfigure \
   -backend=true \
-  -backend-config="bucket=${ENV}-tfstate-bucket" \
+  -backend-config="bucket="$ENV"-tfstate-bucket" \
   -backend-config="key=terraform.tfstate" \
   -backend-config="encrypt=true"
 ```
@@ -394,9 +394,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} plan \
-  -var-file=./${ENV}/foo.tfvars \
-  -out=${ENV}.tfplan \
+terraform -chdir=./"$ENV" plan \
+  -var-file=./"$ENV"/foo.tfvars \
+  -out="$ENV".tfplan \
   -parallelism=30
 ```
 
@@ -413,7 +413,7 @@ GitHubリポジトリにプッシュされたコードに対して```terraform v
 
 set -xeuo pipefail
 
-terraform -chdir=./${ENV} validate
+terraform -chdir=./"$ENV" validate
 ```
 
 <br>
@@ -441,9 +441,9 @@ Terraformの```terraform plan```コマンドまたは```terraform apply```コマ
 
 set -xeuo pipefail
 
-terraform -chdir=./${ENV} plan \
-  -out=${ENV}.tfplan \
-  -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
+terraform -chdir=./"$ENV" plan \
+  -out="$ENV".tfplan \
+  -parallelism=30 | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml plan
 ```
 
 ```bash
@@ -454,9 +454,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} apply \
+terraform -chdir=./"$ENV" apply \
   -parallelism=30 \
-  ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
+  "$ENV".tfplan | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml apply
 ```
 
 <br>

@@ -206,7 +206,7 @@ version: <バージョンタグ>
 
 ```_helpers.tpl```ファイルで```metadata.labels```キーのセットをテンプレートとして定義しておく。マニフェストで、これらをまとめて出力する。
 
-```gotemplate
+```yaml
 {{- define "global.template.labels" -}}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -415,7 +415,7 @@ global:
   appName: foo
 ```
 
-```gotemplate
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 # キーと値の両方を取得すると、ロジックが増えて可読性が低くなる。
@@ -525,7 +525,7 @@ metadata:
 
 ### 出力形式
 
-#### ▼ ドット
+#### ▼ ```.```（ドット）
 
 何も加工せずに、内容を出力する。
 
@@ -540,7 +540,7 @@ metadata:
 {{- end }}
 ```
 
-```gotemplate
+```yaml
 baz:
 {{- include "foo-template" . }}
 ```
@@ -552,7 +552,7 @@ baz:
   bar: BAR
 ```
 
-#### ▼ ドル
+#### ▼ ```$```（ドル）
 
 出力時に、YAMLファイルのルートを明示的に出力する。アクションの中でアクションで、YAMLファイルのルートにアクセスしたい場合に役立つ。
 
@@ -562,7 +562,7 @@ baz:
 
 ```range```アクションを使用すると、YAMLファイルへのアクセスのルートが変わってしまう。ルートを明示することにより、```range```アクション内でもYAMLファイルの正しいルートにアクセスできるようなる。
 
-```gotemplate
+```yaml
 {{- range $.Values.foo.namespaces }}
 apiVersion: apps/v1
 kind: Secrets
@@ -576,13 +576,13 @@ metadata:
 ```
 
 
-#### ▼ ハイフン
+#### ▼ ```-```（ハイフン）
 
 ```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
 
 > ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 
-```gotemplate
+```yaml
 {* tplファイル *}
 
   {{- define "foo-template" }}
@@ -622,7 +622,7 @@ baz:
 {{- end }}
 ```
 
-```gotemplate
+```yaml
 # 2つ分のスペースを挿入した上で、出力する。
 baz:
 {{- include "foo-template" . | indent 2 }}
@@ -652,7 +652,7 @@ baz:
 {{- end }}
 ```
 
-```gotemplate
+```yaml
 # 改行しつつ、2つ分のスペースを挿入した上で、出力する。
 baz:
 {{- include "foo-template" . | nindent 2 }}

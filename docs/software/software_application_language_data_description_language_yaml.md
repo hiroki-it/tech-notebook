@@ -109,6 +109,21 @@ command: >
 { "command" => "echo foo && echo bar\n" }
 ```
 
+```>```を使用すれば、一行の条件文を複数行で定義することもできる。
+
+```yaml
+command: if [ -z "$VAR" ];then echo foo; else echo bar; fi
+```
+
+```yaml
+command: >
+  if [ -z "$VAR" ];then
+    echo foo;
+  else
+    echo bar;
+  fi
+```
+
 #### ▼ ```>+```（大なり、プラス）
 
 改行をスペースに変換して処理する。また、最終行の改行だけでなく、それ以降の改行を全て保存する。改行した異なるコマンドが、スペースを挟んで繋がってしまうため、```&&```で繋ぐ必要がある。

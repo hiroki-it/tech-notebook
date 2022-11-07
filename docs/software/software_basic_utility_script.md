@@ -103,7 +103,7 @@ case "$ENV" in
         VAR="baz"
     ;;
     *)
-        echo "The parameter ${ENV} is invalid."
+        echo "The parameter "$ENV" is invalid."
         exit 1
     ;;
 esac
@@ -133,7 +133,7 @@ $ source hello.sh
 $ bash hello.sh
 ```
 
-#### ▼ ドット
+#### ▼ ```.```（ドット）
 
 ```bash
 $ . hello.sh
@@ -256,7 +256,7 @@ baz qux:
 FOO:=foo
 
 echo:
-	echo ${FOO} # echo
+	echo "$FOO" # echo
 ```
 
 #### ▼ 遅延評価代入
@@ -269,7 +269,7 @@ echo:
 FOO=foo
 
 echo:
-	echo ${FOO} # echo foo
+	echo "$FOO" # echo foo
 ```
 
 ターゲット内では、標準出力への出力をシェル変数に代入できない。そのため、シェル変数はターゲット外で定義する必要がある。また、遅延評価で代入し、```$(shell ...)```とする必要がある。
@@ -280,7 +280,7 @@ echo:
 FOO=$(shell echo "foo")
 
 echo:
-	echo ${FOO}
+	echo "$FOO"
 ```
 
 <br>
@@ -305,7 +305,7 @@ $ make foo FOO=foo
 FOO=default
 
 foo:
-	echo ${FOO}
+	echo "$FOO"
 ```
 
 <br>
@@ -351,8 +351,8 @@ $ make check
 （５）作成されたコードのファイルを、指定したディレクトリ配下にコピーする。
 
 ```bash
-# installと命令するが、実際はコピー。sudoを付ける。
-$ sudo make install
+# installと命令するが、実際はコピー。
+$ make install
 ```
 
 （６）元となったコードやバイナリ形式のコードを削除。
