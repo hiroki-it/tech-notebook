@@ -20,8 +20,8 @@
 * #### 📖 [Jaeger](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_jaeger.html)
 * #### 📖 [Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_prometheus.html)
 * #### <u>OpenTelemetry</u>
-  > * #### 📖 [OpenTelemetry](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_open_telemetry.html)
-  > * #### 📖 [トレーサー](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_open_telemetry_tracer.html)
+  > * ##### 📖 [OpenTelemetry](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_open_telemetry.html)
+  > * ##### 📖 [トレーサー](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_open_telemetry_tracer.html)
 * #### <u>Datadog</u>
   > * ##### 📖 [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_agent_conf.html)
   > * ##### 📖 [︎監視](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_datadog_monitoring.html)

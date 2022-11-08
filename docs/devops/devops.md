@@ -15,11 +15,13 @@ description: DevOpsの知見を記録しています。
 
 ## 01. DevOpsとは
 
-### 高品質システムの維持
+### 高品質なシステムの維持
+
+#### ▼ システムの品質とは
 
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software-quality-attributes_measurement.png)
 
-システムには、例えば以下の品質の特性がある（ISOの規格の場合）。
+システム（ソフトウェアとハードウェア、があるがここでは特にソフトウェア）には、例えば以下の品質の特性がある（ISOの規格の場合）。
 
 - 機能性
 - パフォーマンス効率性
@@ -30,7 +32,9 @@ description: DevOpsの知見を記録しています。
 - 保守性
 - 移植性（汎用性）
 
-これらの特性の程度は、例えば以下の観点で定量化できる。
+#### ▼ 定量化の方法
+
+品質特性の程度は、例えば以下の観点で定量化できる。
 
 - 採用されたアーキテクチャ
 - 採用されたコーディング手法
@@ -40,7 +44,6 @@ description: DevOpsの知見を記録しています。
 - ソースコードのサイズ
 - SREingの文脈でのユーザーからの満足度
 
-これら観点を管理し、一定水準以上の品質を維持しやすくするためには、維持するための作業を自動的に実施する仕組みづくりが必要である。
 
 > ℹ️ 参考：
 >
@@ -48,13 +51,39 @@ description: DevOpsの知見を記録しています。
 > - https://en.wikipedia.org/wiki/List_of_system_quality_attributes
 > - https://en.wikipedia.org/wiki/Software_quality#Measurement
 
+#### ▼ なぜ定量化するのか
+
+システムの品質の定量化には、以下のような利点がある。
+
+エンジニア側にとって
+
+- 中長期的な観点で、システムを拡張しやすくなる（保守性、拡張性）。
+- 障害が起こりにくくなる（信頼性）。また、障害が起こったとしてもシステムの稼働時間を延長できる（可用性）。
+- ビジネスよりも技術を優先するべき時の交渉材料になる。
+- エンジニアの仕事の成果としての交渉材料になる。
+
+ビジネス側にとって
+
+- ユーザーの満足度を高められ、結果的に売上につながる。
+- 技術よりもビジネスを優先するべき時の交渉材料になる。
+
+そのため、一定以上の高品質を維持するべきである。
+
+また、品質を維持しやすくするために、作業を自動的に実施する仕組みづくりが必要である。
+
 <br>
 
-### DevOpsとは
+### DevOps
 
-開発者と運用者が協調して開発と運用を行い、システムを継続的に改善する手法論のこと。DevOpsにて、品質を維持する作業を自動化することにより、一定水準以上の品質を維持しやすくする。DevOpsの実現方法には、CIOpsまたはGitOpsがある。
+#### ▼ DevOpsとは
+
+開発者と運用者が協調して開発と運用を行い、ソフトウェアを継続的に改善する手法論のこと。
 
 > ℹ️ 参考：https://e-words.jp/w/DevOps.html
+
+#### ▼ DevOpsと品質の関係
+
+DevOpsにて、品質を維持する作業を自動化することにより、一定水準以上の品質を維持しやすくする。DevOpsの実現方法には、CIOpsまたはGitOpsがある。
 
 <br>
 
@@ -64,6 +93,8 @@ description: DevOpsの知見を記録しています。
 
 #### ▼ CIOpsとは
 
+![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/devops_ciops.png)
+
 CIツールを使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。例えばCircleCIでアプリケーションのビルドからデプロイまでを実現する。
 
 > ℹ️ 参考：
@@ -72,6 +103,8 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 > - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
 
 #### ▼ 技術ツール例
+
+CIOpsでは、全ての手順をCIツールで実施するため、ユーザーフレンドリーかつヒューマンエラーの起こりにくいツールが良い。
 
 - CircleCI
 - GitHub Actions
@@ -83,9 +116,9 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 
 KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理由でCIOpsはアンチパターンとされている。
 
-| 理由    | 説明    |補足|
+| 理由    | 説明    | 補足 |
 |-----|-----|---|
-| セキュリティ    | リポジトリ側に```~/.kube/config```ファイルを置く必要がある。kubeconfigファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、sops暗号化キー（例：AWS KMS、GCP KMS、など）でkubeconfigファイルを暗号化しておき、これをCIパイプライン内に出力する。| ℹ️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499|
+| セキュリティ    | リポジトリ側に```~/.kube/config```ファイルを置く必要がある。```~/.kube/config```ファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、sops暗号化キー（例：AWS KMS、GCP KMS、など）でkubeconfigファイルを暗号化しておき、これをCIパイプライン内に出力する。| ℹ️ 参考：<br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499 <br>・https://devops-blog.virtualtech.jp/entry/20220418/1650250499|
 | 責務協会の分離    | CIOpsの場合、CIとCDが強く結合しており、切り分けて構築しにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。一方で、GitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用を別々のチームが担当できるようになる。|ℹ️ 参考：https://news.mynavi.jp/techplus/article/techp5025/|
 
 <br>
@@ -94,17 +127,25 @@ KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理
 
 #### ▼ GitOpsとは
 
+![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/devops_gitops.png)
+
 CIツールを使用してCIパイプラインを、またはCDツールを使用してCDパイプラインを、実現する手法のこと。
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
 
 #### ▼ 技術ツール例
 
+GitOpsでは、CDツールで実施する手順が多いため、多機能かつヒューマンエラーの起こりにくいツールが良い。執筆時点（2022/11/09）ではどのようなユースケースでも、OSSの開発が活発なArgoCDが良いかも。
+
 - ArgoCD
 - Flux
 - Jenkins X
 - PipeCD
 - Harness
+
+#### ▼ 相性の良いCIツール
+
+CIOpsでなくGitOpsを採用する場合、アプリケーションはマイクロサービスアーキテクチャを採用しているはずである。GitOpsでは、CIツールで実施する手順が少ないため、基本的にいずれのツールを使用しても問題ない。ただし、リポジトリの分割戦略にポリリポジトリ（マイクロサービスごとにリポジトリを用意する）を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集権的に管理し、他のリポジトリでこれを読み込むようにした方が楽である。外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール（例：GitLab CI）であれば、ポリリポジトリ戦略と相性が良い。
 
 <br>
 
