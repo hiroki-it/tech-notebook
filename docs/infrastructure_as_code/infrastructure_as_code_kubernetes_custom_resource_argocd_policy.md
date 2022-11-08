@@ -52,11 +52,14 @@ k8s-repository/
 └── prd/
 ```
 
-#### ▼ Applicationのマニフェストを監視する場合
+#### ▼ Applicationのマニフェストを監視する場合（Apps-Of-Appsパターン）
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
 
-> ℹ️ 参考：https://www.arthurkoziel.com/setting-up-argocd-with-helm/
+> ℹ️ 参考：
+> 
+> - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 
 ```yaml
 # 親Application

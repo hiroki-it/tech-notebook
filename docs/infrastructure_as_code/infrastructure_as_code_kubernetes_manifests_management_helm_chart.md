@@ -207,11 +207,11 @@ version: <バージョンタグ>
 ```_helpers.tpl```ファイルで```metadata.labels```キーのセットをテンプレートとして定義しておく。マニフェストで、これらをまとめて出力する。
 
 ```yaml
-{{- define "global.template.labels" -}}
+{{- define "global.template.labels" }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 helm.sh/chart: {{ .Chart.Name }}
-{{- end -}}
+{{- end }}
 ```
 
 ```yaml
@@ -335,11 +335,29 @@ ServiceAccountの作成を有効化する。
 
 ### コメントアウト
 
+#### ▼ Helmのコメントアウト
+
 Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト（例：```#```）であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
+
 ```yaml
-{{- /* コメント */ -}}
+{{- /* コメント */}}
 ```
+
+> ℹ️ 参考：
+> 
+> - https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+
+#### ▼ 細かな注意点
+
+また、改行コードを削除するためのハイフン（```-}}```）は、定義しないようにする。また、```*/}}```にはスペースを含めずに、一繋ぎで定義する。
+
+> ℹ️ 参考：https://github.com/helm/helm/issues/4191#issuecomment-417096290
+
+```yaml
+{{- /* コメント */}}
+```
+
 
 <br>
 
@@ -578,9 +596,12 @@ metadata:
 
 #### ▼ ```-```（ハイフン）
 
-```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
+```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。ただ、```-}}```は使用しない方が良いらしい。
 
-> ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+> ℹ️ 参考：
+> 
+> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+> - https://github.com/helm/helm/issues/4191#issuecomment-539149037
 
 ```yaml
 {* tplファイル *}

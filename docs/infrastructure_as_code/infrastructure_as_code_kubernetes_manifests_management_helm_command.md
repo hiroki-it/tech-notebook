@@ -566,7 +566,7 @@ $ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チ
 
 ### helm-diff
 
-```helm get```コマンドによる最新のマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。etcd上のマニフェストと比較しているわけでないことに注意する。
+```helm get```コマンドによる最新のリリースによるマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。etcd上のマニフェストと比較しているわけでないことに注意する。
 
 ```bash
 $ helm diff
@@ -592,7 +592,7 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 #### ▼ -f
 
-暗号化されたvaluesファイルと平文のvaluesファイルを使用して、helmコマンドを実行する。
+暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、helmコマンドを実行する。
 
 ```bash
 $ helm secrets template -f secrets.yaml -f values.yaml

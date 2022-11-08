@@ -3,7 +3,7 @@ title: 【IT技術の知見】API＠Envoy
 description: API＠Envoyの知見を記録しています。
 ---
 
-# envoy.yaml＠Envoy
+# API＠Envoy
 
 ## はじめに
 

@@ -475,7 +475,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルにCoreDNS ServiceのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、権威DNSサーバーを介し、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceを介して、Podにアウトバウンド通信を送信する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルにCoreDNS ServiceのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、権威DNSサーバーを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >

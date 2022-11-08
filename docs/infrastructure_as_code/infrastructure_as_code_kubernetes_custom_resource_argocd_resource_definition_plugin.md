@@ -317,11 +317,15 @@ data:
     - name: helm-secrets
       generate:
         command: ["/bin/bash", "-c"]
+        # 暗号化されたvaluesファイル（sopsのsecretsファイル）、平文のvaluesファイル、を使用してhelmコマンドを実行する。
         args:
-          - |
-            set -euo pipefail
-            # 暗号化されたvaluesファイル（sopsのsecretsファイル）と平文のvaluesファイルを使用して、helmコマンドを実行する。
-            helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE -f $VALUES_FILE
+          - > 
+            set -euo pipefail &&
+            if [ -z "$VALUES" ];then
+              helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE
+            else              
+              helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE -f $VALUES_FILE
+            fi
 ```
 
 #### ▼ プラグイン名の指定

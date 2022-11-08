@@ -81,9 +81,12 @@ CIツールを使用して、CIパイプラインとCDパイプラインの両�
 
 #### ▼ アンチパターンとなる場合
 
-KubernetesのCI/CDパイプラインにCIOpsを採用する場合、リポジトリ側に```~/.kube/config```ファイルを置く必要がある。kubeconfigファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、sops暗号化キー（例：AWS KMS、GCP KMS、など）でkubeconfigファイルを暗号化しておき、これをCIパイプライン内に出力する。
+KubernetesのCI/CDパイプラインにCIOpsを採用する場合、以下の理由でCIOpsはアンチパターンとされている。
 
-> ℹ️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499
+| 理由    | 説明    |補足|
+|-----|-----|---|
+| セキュリティ    | リポジトリ側に```~/.kube/config```ファイルを置く必要がある。kubeconfigファイルは機密性が高く、漏洩させたくない。ただし、どうしてもCIOpsを採用したいのであれば、sops暗号化キー（例：AWS KMS、GCP KMS、など）でkubeconfigファイルを暗号化しておき、これをCIパイプライン内に出力する。| ℹ️ 参考：https://devops-blog.virtualtech.jp/entry/20220418/1650250499|
+| 責務協会の分離    | CIOpsの場合、CIとCDが強く結合しており、切り分けて構築しにくい。そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。一方で、GitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用を別々のチームが担当できるようになる。|ℹ️ 参考：https://news.mynavi.jp/techplus/article/techp5025/|
 
 <br>
 
