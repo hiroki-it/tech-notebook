@@ -445,9 +445,6 @@ nav:
                       - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
                   - ■ OpenPolicyAgent:
                       - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
-                  - ■ OpenTelemetry:
-                      - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
-                      - トレーサー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry_tracer.md
                   - ■ Prometheus:
                       - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
@@ -502,11 +499,10 @@ nav:
           - FluentBit/Fluentd: observability/observability_telemetry_fluentbit_fluentd.md
           - Grafana: observability/observability_telemetry_grafana.md
           - Jaeger: observability/observability_telemetry_jaeger.md
-          - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
           - Prometheus: observability/observability_telemetry_prometheus.md
-          - ■ Googleアプリ:
-              - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
-              - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
+          - ■ OpenTelemetry:
+              - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
+              - トレーサー: observability/observability_telemetry_open_telemetry_tracer.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
@@ -518,6 +514,9 @@ nav:
                       - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
                       - トレーサー: observability/observability_telemetry_datadog_distributed_trace_tracer.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
+          - ■ Googleアプリ:
+                - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
+                - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
 
   - 👥 ソフトウェア開発手法論/SREing:
       - software_development_methodology/index.md
