@@ -464,7 +464,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 クラウドリバースプロキシサーバー、かつクラウドロードバランサーとして働く。リクエストを代理で受信し、EC2インスタンスへのアクセスをバランスよく分配することによって、サーバーへの負荷を緩和する。
 
-> ℹ️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer
+> ℹ️ 参考：https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
 
 ![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_alb.png)
 

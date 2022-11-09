@@ -274,8 +274,7 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 ### アップグレード要件の例
 
 - アプリケーションでダウンタイムが発生しない。
-- 稼働中の全体リソースが減らない。
-- コントロールプレーンNodeでは、kube-controller-manager、kube-schedulerの許容するが抑えられる。
+- コントロールプレーンNodeに関して、kube-controller-manager、kube-scheduler、でダウンタイムが発生することは許容する。
 - ワーカーNodeのストレージの消去は許容する。
 
 <br>
@@ -327,14 +326,14 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-『サージ方式』『ライブ方式』ともいう。新Nodeグループを作成し、旧Nodeグループを順にドレインしていくことにより、アップグレードする。一度に作業するワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを制御できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
+『サージ方式』『ライブ方式』ともいう。新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。一度にアップグレードするワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを調整できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
 
-（１）ワーカーNodeでは、旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+（１）旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
-（２）```kubectl drain```コマンドを実行し、ドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+（２）```kubectl drain```コマンドを実行し、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。この時、DaemonSetのPodを退避させられるように、```--ignore-daemonsets```オプションを有効化する。また、emptyDirボリュームを持つPodを退避できるように```--delete-emptydir-data```オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
 ```bash
-$ kubectl drain <ワーカーNode名> \
+$ kubectl drain <旧Nodeグループ内のワーカーNode名> \
     --ignore-daemonsets \
     --delete-emptydir-data
 ```
@@ -356,12 +355,13 @@ $ kubectl drain <ワーカーNode名> \
 > - https://logmi.jp/tech/articles/323032
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#surge
+> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
 
 #### ▼ ブルー/グリーン方式
 
 ![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
 
-新しいClusterを作成することにより、ワーカーNodeをアップグレードする。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
+『マイグレーション方式』ともいう。新しいClusterを作成することにより、ワーカーNodeをアップグレードする。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
 
 （１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 

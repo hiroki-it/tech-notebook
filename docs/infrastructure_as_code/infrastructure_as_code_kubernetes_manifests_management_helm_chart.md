@@ -227,7 +227,7 @@ metadata:
 <br>
 
 
-## 04. values.yaml
+## 05. values.yaml
 
 ### 共通オプション
 
@@ -323,7 +323,7 @@ ServiceAccountの作成を有効化する。
 
 <br>
 
-## 05. アクション
+## 06. アクション
 
 ### アクションとは
 
@@ -541,11 +541,13 @@ metadata:
 
 <br>
 
-### 出力形式
+## 07. 出力時のパス
 
-#### ▼ ```.```（ドット）
+### ```.```（ドット）
 
-何も加工せずに、内容を出力する。
+#### ▼ ドットとは
+
+テンプレートの内容をルートから出力する。
 
 ```yaml
 {* tplファイル *}
@@ -570,7 +572,11 @@ baz:
   bar: BAR
 ```
 
-#### ▼ ```$```（ドル）
+<br>
+
+### ```$```（ドル）
+
+#### ▼ ドルとは
 
 出力時に、YAMLファイルのルートを明示的に出力する。アクションの中でアクションで、YAMLファイルのルートにアクセスしたい場合に役立つ。
 
@@ -593,8 +599,13 @@ metadata:
 {{- end }}
 ```
 
+<br>
 
-#### ▼ ```-```（ハイフン）
+## 08. 出力形式
+
+### ```-```（ハイフン）
+
+#### ▼ ハイフンとは
 
 ```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。ただ、```-}}```は使用しない方が良いらしい。
 
@@ -626,7 +637,11 @@ baz:
   bar: BAR
 ```
 
-#### ▼ indent
+<br>
+
+### indent
+
+#### ▼ indentとは
 
 改行せずに、そのままスペースを挿入した上で、内容を出力する。
 
@@ -656,7 +671,11 @@ baz:
     bar: BAR
 ```
 
-#### ▼ nindent
+<br>
+
+### nindent
+
+#### ▼ nindentとは
 
 改行しつつ、スペースを挿入した上で、内容を出力する。
 
@@ -690,13 +709,13 @@ baz:
 
 <br>
 
-## 06. 変換
+## 09. 変換
 
 ### b64enc
 
 #### ▼ b64encとは
 
-```base64```方式でエンコードし、出力する。Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
+```base64```方式でエンコードする。Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
 
 ```yaml
 # values.yamlファイル
@@ -712,6 +731,48 @@ metadata:
 data:
   username: {{ .Values.username | b64enc }}
   password: {{ .Values.password | b64enc }}
+```
+
+<br>
+
+### sha256sum
+
+#### ▼ sha256sumとは
+
+入力内容をハッシュ値に変換する。SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+
+> ℹ️ 参考：
+> 
+> - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
+> - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: foo-pod
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+    spec:
+      containers:
+      - name: foo-gin
+        image: foo-gin:1.0.0
+        ports:
+          - containerPort: 8080
+        envFrom:
+          - secretRef:
+              name: foo-secret
+          - configMapRef:
+              name: foo-secret
+...
 ```
 
 <br>

@@ -202,6 +202,7 @@ $ aws rds modify-db-instance \
 - メジャーバージョンごとにアップグレードを検証する。
 - 機能廃止があるかをリリースノートで確認し、その機能を使用していないかを調査する。
 - 想定されるダウンタイムを調査する。
+- アップグレード後に起こりそうな問題が報告されているかを調査する。
 
 > ℹ️ 参考：https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
 

@@ -56,7 +56,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 > ℹ️ 参考：
 >
 > - https://qiita.com/zembutsu/items/a96b68277d699f79418d
-> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles
+> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
 
 **＊実装例＊**
 

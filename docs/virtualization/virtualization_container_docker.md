@@ -73,7 +73,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 dockerクライアントは、```docker```コマンドを使用してdockerデーモンAPIをコールできる。
 
-> ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
+> ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
