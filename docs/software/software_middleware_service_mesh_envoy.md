@@ -31,38 +31,155 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 ### コントロールプレーン
 
-#### ▼ XDSサーバーの種類
+#### ▼ コントロールプレーンとは
+
+データプレーンの```envoy```プロセスを管理する。サービスディスカバリーのためのAPI（XDS-API）を持つ。
+
+#### ▼ XDS-APIの種類
 
 EnvoyからgRPCのコールを受信し、動的な設定を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
+
+
+| サービスディスカバリー名    |  説明                                                                         | 
+|-------------------------|------------------------------------------------------------------------------|
+| CDS：Cluster Discovery Service    | Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。|
+| EDS：Endpoint Discovery Service    | Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。|     
+| LDS：Listener Discovery Service    | Envoyの実行時に、リスナーの設定を動的に検出できるようにする。|     
+| RDS：Route Discovery Service    | Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。|     
+| SDS：Secret Discovery Service    | Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。|     
+| VHDS：Virtual Host Discovery Service    | Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。|     
+| ...                                    | ...                                                         |
+
 
 > ℹ️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
 > - https://www.netstars.co.jp/kubestarblog/k8s-10/
+> - https://skyao.io/learning-envoy/xds/
 
-#### ▼ CDS：Cluster Discovery Service
 
-Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+<br>
 
-#### ▼ EDS：Endpoint Discovery Service
+### データプレーン
 
-Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+#### ▼ データプレーンとは
 
-#### ▼ LDS：Listener Discovery Service
+```envoy```プロセスが稼働し、通信を宛先にルーティングする。
 
-Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+> ℹ️ 参考：https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 
-#### ▼ RDS：Route Discovery Service
+![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_data-plane_architecture.png)
 
-Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+#### ▼ リスナー
 
-#### ▼ SDS：Secret Discovery Service
+```envoy```プロセスに対する通信を待ち受ける。コントロールプレーンのLDSはデータプレーンからのリモートプロシージャーコールによって宛先情報を返却し、```envoy```エージェントはリスナーに宛先情報を動的に設定する。
 
-Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/lds.proto#L30-L43
 
-#### ▼ VHDS：Virtual Host Discovery Service
+```go
 
-Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。
+...
+
+service ListenerDiscoveryService {
+  option (envoy.annotations.resource).type = "envoy.api.v2.Listener";
+  
+  ...
+
+  // リモートプロシージャーコール
+  rpc FetchListeners(DiscoveryRequest) returns (DiscoveryResponse) {
+    option (google.api.http).post = "/v2/discovery:listeners";
+    option (google.api.http).body = "*";
+  }
+}
+
+...
+
+```
+
+#### ▼ ルーター
+
+リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。コントロールプレーンのRDSはデータプレーンからのリモートプロシージャーコールによって宛先情報を返却し、```envoy```エージェントはルーターに宛先情報を動的に設定する。
+
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/rds.proto#L30-L43
+
+
+```go
+
+...
+
+service RouteDiscoveryService {
+  option (envoy.annotations.resource).type = "envoy.api.v2.RouteConfiguration";
+  
+  ...
+
+  // リモートプロシージャーコール
+  rpc FetchRoutes(DiscoveryRequest) returns (DiscoveryResponse) {
+    option (google.api.http).post = "/v2/discovery:routes";
+    option (google.api.http).body = "*";
+  }
+}
+
+...
+
+```
+
+
+
+#### ▼ クラスター
+
+ルーターからルーティングされた通信を受け取り、いずれかのエンドポイントにロードバランシングする。コントロールプレーンのCDSはデータプレーンからのリモートプロシージャーコールによって宛先情報を返却し、```envoy```エージェントはクラスターに宛先情報を動的に設定する。
+
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/cds.proto#L26-L39
+
+
+```go
+
+...
+
+service ClusterDiscoveryService {
+  option (envoy.annotations.resource).type = "envoy.api.v2.Cluster";
+  
+  ...
+
+  // リモートプロシージャーコール
+  rpc FetchClusters(DiscoveryRequest) returns (DiscoveryResponse) {
+    option (google.api.http).post = "/v2/discovery:clusters";
+    option (google.api.http).body = "*";
+  }
+}
+
+...
+
+```
+
+
+#### ▼ エンドポイント
+
+クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。コントロールプレーンのEDSはデータプレーンからのリモートプロシージャーコールによって宛先情報を返却し、```envoy```エージェントはクラスターに宛先情報を動的に設定する。
+
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/eds.proto#L26-L41
+
+
+```go
+
+...
+
+service EndpointDiscoveryService {
+  option (envoy.annotations.resource).type = "envoy.api.v2.ClusterLoadAssignment";
+  
+  ...
+
+  // リモートプロシージャーコール
+  rpc FetchEndpoints(DiscoveryRequest) returns (DiscoveryResponse) {
+    option (google.api.http).post = "/v2/discovery:endpoints";
+    option (google.api.http).body = "*";
+  }
+}
+
+...
+
+```
+
 
 <br>
 
