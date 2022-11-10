@@ -443,6 +443,54 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 <br>
 
+
+### セットアップ
+
+#### ▼ ConfigMap
+
+ConfigMapに```Corefile```ファイルを配置する。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-coredns
+  namespace: kube-system
+data:
+  Corefile: |
+    .:53 {
+        # エラーの出力先を設定する。
+        errors
+        # CoreDNSのヘルスチェックのレスポンスの待機時間を設定する。
+        health {
+            lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+            pods insecure
+            fallthrough in-addr.arpa ip6.arpa
+            ttl 30
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf {
+          # まずはUDPプロトコルによるルーティングを使用し、失敗した場合におTCPプロトコルを使用する。
+          prefer_udp
+          max_concurrent 1000
+        }
+        cache 30
+        loop
+        reload
+        # DNSロードバランシングを有効化する。
+        loadbalance
+    }
+```
+
+<br>
+
 ### CoreDNS Service/Pod
 
 #### ▼ CoreDNS Service/Podとは
@@ -468,6 +516,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 ```
 
 <br>
+
 
 ## 03-02. Serviceの名前解決
 

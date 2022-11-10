@@ -142,3 +142,15 @@ repository/
 > ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
 
 <br>
+
+## 04. 連携
+
+### Vault
+
+Ansibleの設定値を暗号化し、キーバリュー型ストアとして管理する。Ansibleの実行時にパスワードを要求し、これが正しければ復号化し、設定値として出力する。パスワード自体をファイル上でバージョン管理したい場合、sopsで暗号化することもできる。
+
+> ℹ️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
+
+![ansible_vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_vault.png)
+
+<br>
