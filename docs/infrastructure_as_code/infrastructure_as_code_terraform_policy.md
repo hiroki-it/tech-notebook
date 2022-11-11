@@ -118,122 +118,78 @@ terraform {
 }
 ```
 
-#### ▼ 依存関係の一方向化
-
-各コンポーネントの依存関係が一方向になるようにする。ディレクトリ名に番号を付け、必ず自分より小さな番号の```.tfstate```ファイルを参照するようにすると良い。
-
-> ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
-
-```yaml
-repository/
-├── tes/ # テスト環境
-│   └── aws/ # AWS
-│       ├── 01-foo/
-│       ├── 02-bar/
-│       ├── 03-baz/
-│       ├── 04-qux/
-│       ├── 05-quux/
-│       └── 06-corge/
-│    
-├── stg/ # ステージング環境
-└── prd/ # 本番環境
-```
-
 <br>
 
-### ルートディレクトリ構成方法の種類
-
-#### ▼ 実行環境別（必須）
-
-必須の構成である。まずはローカルモジュールを使用している場合を示す。実行環境別に、```foo.tfvars```ファイルで値を定義する。ルートモジュールと一緒に、```providers.tf```ファイルや```tfnotify.yml```ファイルも管理してしまうと良い。これにより、実行環境別に```.tfstate```ファイルが作成される。```terraform apply```コマンドの影響範囲を実行環境内に閉じられる。また、各環境の```.tfstate```ファイルの管理リソース（AWSならS3バケット）も分割した方がよい。
-
-```yaml
-repository/
-├── modules/ # ローカルモジュール
-├── tes/ # テスト環境ルートモジュール
-│   ├── tes.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
-├── stg/ # ステージング環境ルートモジュール
-└── prd/ # 本番環境ルートモジュール
-```
-
-リモートモジュールでも、ローカルモジュールの場合と同じである。
-
-```yaml
-repository/
-├── tes/ # テスト環境ルートモジュール
-│   ├── tes.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
-├── prd/ # 本番環境ルートモジュール
-└── stg/ # ステージング環境ルートモジュール
-```
-
-```yaml
-repository/
-├── main.tf # ALBリモートモジュール
-├── outputs.tf
-├── variables.tf
-...
-```
-
-```yaml
-repository/
-├── main.tf # CloudWatchリモートモジュール
-├── outputs.tf
-├── variables.tf
-...
-```
-
-```yaml
-repository/
-├── main.tf # WAFリモートモジュール
-├── outputs.tf
-├── variables.tf
-...
-```
+### リポジトリ/最上層ディレクトリの構成方法の種類
 
 #### ▼ クラウドプロバイダー別（必須）
 
-実行環境別に分けた上で、加えてクラウドプロバイダー別に```providers.tf```ファイルを作成する。これにより、クラウドプロバイダー別に```.tfstate```ファイルが作成される。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+リポジトリまたは最上層ディレクトリで分割し、クラウドプロバイダー別に```providers.tf```ファイルを作成する。これにより、クラウドプロバイダー別に```.tfstate```ファイルが作成される。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
 ```yaml
 repository/
-├── tes/ # テスト環境
-│   ├── aws/ # AWS
-│   │    ├── providers.tf # aws/terraform.tfstate
-│   │    ...
-│   │
-│   ├── datadog/ # Datadog
-│   │   ├── providers.tf # datadog/terraform.tfstate
-│   │   ...
-│   │
-│   ├── healthchecks/ # Healthchecks 
-│   │   ├── providers.tf # healthchecks/terraform.tfstate
-│   │   ...
-│   │ 
-│   └── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
-│       ├── providers.tf
-│       ...
+├── aws/ # AWS
+│   ├── providers.tf # aws/terraform.tfstate
+│   ...
 │
-├── stg/ # ステージング環境
-└── prd/ # 本番環境
+├── datadog/ # Datadog
+│   ├── providers.tf # datadog/terraform.tfstate
+│   ...
+│
+├── healthchecks/ # Healthchecks 
+│   ├── providers.tf # healthchecks/terraform.tfstate
+│   ...
+│ 
+└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
+    ├── providers.tf
+    ...
 ```
 
 <br>
 
-###  サブディレクトリ構成方法の種類
+### 最下層ディレクトリの構成方法の種類
+
+#### ▼ 実行環境別（必須）
+
+最下層ディレクトリで分割し、クラウドプロバイダー別かつ実行環境別に```providers.tfvars```ファイルを作成する。ルートモジュールと一緒に、```providers.tf```ファイルや```tfnotify.yml```ファイルも管理してしまうと良い。これにより、実行環境別に```.tfstate```ファイルが作成される。```terraform apply```コマンドの影響範囲を実行環境内に閉じられる。また、各環境の```.tfstate```ファイルの管理リソース（AWSならS3バケット）も分割した方がよい。
+
+
+```yaml
+repository/
+├── aws/ # AWS
+│   ├── tes/ # テスト環境
+│   │   ├── tes.tfvars
+│   │   ├── main.tf
+│   │   ├── providers.tf # aws/terraform.tfstate
+│   │   ├── tfnotify.yml
+│   │   └── variables.tf
+│   │
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
+│
+├── datadog/ # Datadog
+│   ├── tes/ # テスト環境
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
+│
+├── healthchecks/ # Healthchecks 
+│   ├── tes/ # テスト環境
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
+│ 
+└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
+    ├── tes/ # テスト環境
+    ├── stg/ # ステージング環境
+    └── prd/ # 本番環境
+```
+
+<br>
+
+### 中間ディレクトリ構成方法の種類
 
 #### ▼ 分割の目安
 
-CloudFormationでは、クラウドインフラのリソースの実装変更頻度、運用チームの責務範囲、爆発半径、システムコンポーネント、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと可読性が悪くなるので、個人的にはいずれかの観点に統一した方が良い。
+CloudFormationでは、クラウドインフラのリソースの実装変更頻度、運用チームの責務範囲、blast-radius、システムコンポーネント、などを状態管理の単位とすることが推奨されており、Terraformでのコンポーネント分割でもこれを真似すると良い。これらの観点の分割が混在してしまうと可読性が悪くなるので、個人的にはいずれかの観点に統一した方が良い。
 
 > ℹ️ 参考：
 >
@@ -243,7 +199,7 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 #### ▼ クラウドインフラのリソースの変更頻度
 
-クラウドインフラのリソースの実装変更頻度ごとにコンポーネントを分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
+中間ディレクトリをクラウドインフラのリソースの実装変更頻度ごとに分割する。各環境で独立して作成した```.tfstate```ファイルの管理リソース（AWSならS3バケット）内でディレクトリを作り、各ディレクトリに```.tfstate```ファイルを配置する。
 
 > ℹ️ 参考：
 >
@@ -252,101 +208,135 @@ CloudFormationでは、クラウドインフラのリソースの実装変更頻
 
 ```yaml
 repository/
-├── tes/ # テスト環境
-│   ├── aws/ # AWS
-│   │   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
+├── aws/ # AWS
+│   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
+│   │   ├── tes # テスト環境
 │   │   │   ├── providers.tf # aws/high-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
-│   │   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
+│   │   ├── stg # ステージング環境
 │   │   │   ├── providers.tf # aws/low-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
-│   │   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
+│   │   └── prd # 本番環境
 │   │       ├── providers.tf # aws/middle-freq/terraform.tfstate
 │   │       ...
 │   │
-│   ├── datadog/ # Datadog
-│   │   ├── high-freq
+│   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
+│   │   ├── tes
 │   │   │   ├── providers.tf
 │   │   │   ...
 │   │   │
-│   │   ├── low-freq
+│   │   ├── stg
 │   │   │   ├── providers.tf
 │   │   │   ...
 │   │   │
-│   │   └── middle-freq
+│   │   └── prd
 │   │       ├── providers.tf
 │   │       ...
 │   │
-│   ├── healthchecks/ # Healthchecks
-│   │   ├── high-freq
-│   │   │   ├── providers.tf
-│   │   │   ...
-│   │   │
-│   │   ├── low-freq
-│   │   │   ├── providers.tf
-│   │   │   ...
-│   │   │
-│   │   └── middle-freq
-│   │       ├── providers.tf
-│   │       ...
-│   │ 
-│   └── pagerduty/ # PagerDuty
-│       ├── high-freq
+│   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
+│       ├── tes
 │       │   ├── providers.tf
 │       │   ...
 │       │
-│       ├── low-freq
+│       ├── stg
 │       │   ├── providers.tf
 │       │   ...
 │       │
-│       └── middle-freq
+│       └── prd
 │           ├── providers.tf
 │           ...
-│
-├── stg/ # ステージング環境
-└── prd/ # 本番環境
+│    
+├── datadog/ # Datadog
+├── healthchecks/ # Healthchecks
+└── pagerduty/ # PagerDuty
 ```
 
 #### ▼ 運用チームの責務範囲
 
-運用チームの責務範囲ごとにコンポーネントを分割し、```tfstate```ファイルを管理するバックエンドにディレクトリ単位で認可スコープを設定する。ただし、チームの責務範囲や数は、組織の大きさに合わせて流動的に変化するものなので、個人的には保守性が高くない。
+中間ディレクトリを運用チームの責務範囲ごとに分割する。また、```tfstate```ファイルを管理するバックエンドにて、ディレクトリ単位で認可スコープを設定する。ただし、チームの責務範囲や数は、組織の大きさに合わせて流動的に変化するものなので、個人的には保守性が高くない。
 
 ```yaml
 repository/
-├── tes/ # テスト環境
-│   ├── aws/ # AWS
-│   │   ├── foo-team # fooチーム
+├── aws/ # AWS
+│   ├── foo-team # fooチーム
+│   │   ├── tes # テスト環境
 │   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
 │   │   │   ...
 │   │   │
-│   │   ├── bar-team # barチーム
+│   │   ├── stg # ステージング環境
 │   │   │   ├── providers.tf # aws/bar-team/terraform.tfstate
 │   │   │   ...
 │   │   │
-│   │   └── baz-team # bazチーム
+│   │   └── prd # 本番環境
 │   │       ├── providers.tf # aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
-│   ├── datadog/ # Datadog
-│   │   └── foo-team # fooチーム
-│   │       ├── providers.tf # datadog/foo-team/terraform.tfstate
+│   ├── bar-team # barチーム
+│   │   ├── tes
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   ├── stg
+│   │   │   ├── providers.tf
+│   │   │   ...
+│   │   │
+│   │   └── prd
+│   │       ├── providers.tf
 │   │       ...
 │   │
-│   ├── healthchecks/ # Healthchecks
-│   │   └── bar-team # barチーム
-│   │       ├── providers.tf # healthchecks/bar-team/terraform.tfstate
-│   │       ...
-│   │ 
-│   └── pagerduty/ # PagerDuty
-│       └── baz-team # bazチーム
-│           ├── providers.tf # pagerduty/baz-team/terraform.tfstate
+│   └── baz-team # bazチーム
+│       ├── tes
+│       │   ├── providers.tf
+│       │   ...
+│       │
+│       ├── stg
+│       │   ├── providers.tf
+│       │   ...
+│       │
+│       └── prd
+│           ├── providers.tf
 │           ...
-│
-├── stg/ # ステージング環境
-└── prd/ # 本番環境
+│    
+├── datadog/ # Datadog
+├── healthchecks/ # Healthchecks
+└── pagerduty/ # PagerDuty
 ```
+
+#### ▼ システムコンポーネント
+
+中間ディレクトリを任意のコンポーネントごとに分割する。この時、各コンポーネントの依存関係が一方向になるようにする。ディレクトリ名に番号を付けてもよい。必ず自分より小さな番号の```.tfstate```ファイルを参照するようにすると良い。
+
+> ℹ️ 参考：https://sreake.com/blog/terraform-state-structure/
+
+```yaml
+repository/
+├── aws/ # AWS
+│   ├── 01-foo/
+│   │   ├── tes # テスト環境
+│   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   ├── stg # ステージング環境
+│   │   │   ├── providers.tf # aws/bar-team/terraform.tfstate
+│   │   │   ...
+│   │   │
+│   │   └── prd # 本番環境
+│   │       ├── providers.tf # aws/baz-team/terraform.tfstate
+│   │       ...
+│   │
+│   ├── 02-bar/
+│   ├── 03-baz/
+│   ├── 04-qux/
+│   ├── 05-quux/
+│   └── 06-corge/
+│    
+├── datadog/ # Datadog
+├── healthchecks/
+└── pagerduty/
+```
+
 
 <br>
 
@@ -1009,9 +999,27 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 <br>
 
-### 機密な変数やファイルの管理
+### 機密な変数やファイルの扱い
 
-機密な変数を```ignore_changes```引数に指定し、```.tfstate```ファイルへの書き込みを防ぐ。その上で、Secrets Managerで値を管理し、これを```data```ブロックで参照する。
+#### ▼ パラメーターの暗号化と管理場所
+
+| 方法                                  | バージョン管理 | 暗号化と管理場所                                                                                                                                                                             |
+|-------------------------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GitHubリポジトリ                         | ⭕️  |```base64```方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。                                                                                                                             |
+| GitHubリポジトリ + キーバリュー型ストレージ      | ⭕|```base64```方式エンコード値を暗号化キー（例：AWS KMS、GCP KMS、など）で暗号化した上で、リポジトリ上でキーバリュー型ストレージ（例：sops、Hashicorp Vault）で管理する。クラウドインフラへのプロビジョニング時に```base64```方式エンコード値に復号化する。                                  |
+| GitHubリポジトリ + クラウドキーバリュー型ストレージ |  × |```base64```方式エンコード値を暗号化キー（例：AWS KMS、GCP KMS、など）で暗号化した上で、クラウドプロバイダー内のキーバリュー型ストレージ（例：AWS パラメーターストア、GCP SecretManager、など）で管理する。クラウドインフラへのプロビジョニング時に```base64```方式エンコード値に復号化する。 |
+
+
+#### ▼ ```tfstate```ファイルへの書き込みを防ぐ
+
+機密な変数を```ignore_changes```引数を使用して、```.tfstate```ファイルへの書き込みを防ぐ。その上で、特定の方法（例：sops、Secrets Manager）で実際の値を管理し、これを```data```ブロックで参照する。
+
+
+（１）初期構築時にダミー値を割り当ててプロビジョニングする。この時点で、```.tfstate```ファイルにはダミー値が書き込まれる。
+
+（２）```ignore_changes```引数を設定した後に、実際の値を設定する。
+
+（３）以降のプロビジョニングで、```.tfstate```ファイル上はダミー値のままになる。
 
 > ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 

@@ -486,6 +486,9 @@ data:
         reload
         # DNSロードバランシングを有効化する。
         loadbalance
+        hosts {
+          *.*.*.* <ホスト名>
+        }
     }
 ```
 

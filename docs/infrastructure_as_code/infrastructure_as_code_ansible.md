@@ -151,6 +151,6 @@ Ansibleの設定値を暗号化し、キーバリュー型ストアとして管�
 
 > ℹ️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
 
-![ansible_vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_vault.png)
+![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_ansible-vault.png)
 
 <br>
