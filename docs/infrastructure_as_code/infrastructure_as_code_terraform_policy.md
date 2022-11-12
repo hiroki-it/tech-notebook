@@ -1012,16 +1012,19 @@ The backend configuration argument "bucket" given on the command line is not exp
 
 #### ▼ ```tfstate```ファイルへの書き込みを防ぐ
 
-機密な変数を```ignore_changes```引数を使用して、```.tfstate```ファイルへの書き込みを防ぐ。その上で、特定の方法（例：sops、Secrets Manager）で実際の値を管理し、これを```data```ブロックで参照する。
+機密な変数を```ignore_changes```引数を使用して、```.tfstate```ファイルへの書き込みを防ぐ。その上で、特定の方法（例：sops、AWS Secrets Manager）で実際の値を管理し、これを```data```ブロックで参照する。
+
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
+> - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9
 
 
 （１）初期構築時にダミー値を割り当ててプロビジョニングする。この時点で、```.tfstate```ファイルにはダミー値が書き込まれる。
 
-（２）```ignore_changes```引数を設定した後に、実際の値を設定する。
+（２）```ignore_changes```引数を設定した後に、実際の値をコンソール画面から設定する。
 
 （３）以降のプロビジョニングで、```.tfstate```ファイル上はダミー値のままになる。
-
-> ℹ️ 参考：https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 
 ```terraform
 # AWS RDSの場合
