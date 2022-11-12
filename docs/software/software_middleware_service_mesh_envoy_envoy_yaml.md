@@ -66,7 +66,7 @@ Istioは、Envoyをベースとしたリバースプロキシを自動的に挿�
 
 #### ▼ access_log_pathとは
 
-```envoy```プロセスのログの出力先を設定する。
+Envoyのログの出力先を設定する。
 
 ```yaml
 admin:
@@ -126,13 +126,16 @@ admin:
 
 ### static_resourcesとは
 
-固定値を設定する。
+静的な宛先情報を設定する。執筆時点（2022/11/12）では、```listeners```キーと```clusters```キーのみを設定できる。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap
 
 <br>
 
-## 03-02. static_resources.listeners
+## 03-02. listeners
 
 ### listenersとは
 
@@ -172,7 +175,6 @@ static_resources:
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-
 ```yaml
 static_resources:
   listeners:
@@ -201,7 +203,7 @@ static_resources:
 
 #### ▼ typed_config.access_log
 
-```envoy```プロセスのアクセスログの出力方法を設定する。
+Envoyのアクセスログの出力方法を設定する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
@@ -317,7 +319,7 @@ static_resources:
 
 <br>
 
-## 03-03. static_resources.clusters
+## 03-03. clusters
 
 ### clustersとは
 
@@ -487,6 +489,44 @@ static_resources:
 static_resources:  
   clusters:
     - type: logical_dns
+```
+
+<br>
+
+## 04. dynamic_resources
+
+### dynamic_resourcesとは
+
+動的に宛先情報を設定する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources
+
+<br>
+
+### cds_config
+
+#### ▼ cds_configとは
+
+```cds.yaml```ファイル（CDS-APIから取得した動的な宛先情報が設定されたファイル）を読み込む。
+
+```yaml
+dynamic_resources:
+  cds_config:
+    path: /var/lib/envoy/cds.yaml
+```
+
+<br>
+
+### lds_config
+
+#### ▼ lds_configとは
+
+```lds.yaml```ファイル（LDS-APIから取得した動的な宛先情報が設定されたファイル）を読み込む。
+
+```yaml
+dynamic_resources:
+  lds_config:
+    path: /var/lib/envoy/lds.yaml
 ```
 
 <br>

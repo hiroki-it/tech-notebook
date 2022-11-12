@@ -739,7 +739,7 @@ resource "aws_instance" "server" {
 
 ```terraform
 ###############################################
-# Variables General
+# Variables Global
 ###############################################
 vpc_availability_zones             = { a = "a", c = "c" }
 vpc_cidr                           = "*.*.*.*/23"
@@ -779,7 +779,7 @@ resource "aws_subnet" "public" {
 
 ```terraform
 ###############################################
-# Variables General
+# Variables Global
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
@@ -859,7 +859,7 @@ resource "aws_nat_gateway" "this" {
 
 ```terraform
 ###############################################
-# Variables General
+# Variables Global
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
@@ -883,7 +883,7 @@ output "public_c_subnet_id" {
 
 ```terraform
 ###############################################
-# Variables General
+# Variables Global
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```

@@ -160,7 +160,7 @@ repository/
 ```yaml
 # 共通のvaluesファイル
 #============
-# General
+# Global
 #============
 labels:
   env: prd

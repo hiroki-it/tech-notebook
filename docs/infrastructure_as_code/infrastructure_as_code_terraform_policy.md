@@ -129,19 +129,19 @@ terraform {
 ```yaml
 repository/
 ├── aws/ # AWS
-│   ├── providers.tf # aws/terraform.tfstate
+│   ├── providers.tf # /aws/terraform.tfstate
 │   ...
 │
 ├── datadog/ # Datadog
-│   ├── providers.tf # datadog/terraform.tfstate
+│   ├── providers.tf # /datadog/terraform.tfstate
 │   ...
 │
 ├── healthchecks/ # Healthchecks 
-│   ├── providers.tf # healthchecks/terraform.tfstate
+│   ├── providers.tf # /healthchecks/terraform.tfstate
 │   ...
 │ 
-└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
-    ├── providers.tf
+└── pagerduty/ # PagerDuty
+    ├── providers.tf # /pagerduty/terraform.tfstate
     ...
 ```
 
@@ -160,7 +160,7 @@ repository/
 │   ├── tes/ # テスト環境
 │   │   ├── tes.tfvars
 │   │   ├── main.tf
-│   │   ├── providers.tf # aws/terraform.tfstate
+│   │   ├── providers.tf # /aws/terraform.tfstate
 │   │   ├── tfnotify.yml
 │   │   └── variables.tf
 │   │
@@ -168,19 +168,19 @@ repository/
 │   └── prd/ # 本番環境
 │
 ├── datadog/ # Datadog
-│   ├── tes/ # テスト環境
-│   ├── stg/ # ステージング環境
-│   └── prd/ # 本番環境
+│   ├── tes/
+│   ├── stg/
+│   └── prd/
 │
 ├── healthchecks/ # Healthchecks 
-│   ├── tes/ # テスト環境
-│   ├── stg/ # ステージング環境
-│   └── prd/ # 本番環境
+│   ├── tes/
+│   ├── stg/
+│   └── prd/
 │ 
-└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
-    ├── tes/ # テスト環境
-    ├── stg/ # ステージング環境
-    └── prd/ # 本番環境
+└── pagerduty/ # PagerDuty
+    ├── tes/
+    ├── stg/
+    └── prd/
 ```
 
 <br>
@@ -211,15 +211,15 @@ repository/
 ├── aws/ # AWS
 │   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # aws/high-freq/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/high-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # aws/low-freq/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/low-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # aws/middle-freq/terraform.tfstate
+│   │       ├── providers.tf # /aws/middle-freq/terraform.tfstate
 │   │       ...
 │   │
 │   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
@@ -262,15 +262,15 @@ repository/
 ├── aws/ # AWS
 │   ├── foo-team # fooチーム
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/foo-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # aws/bar-team/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/bar-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # aws/baz-team/terraform.tfstate
+│   │       ├── providers.tf # /aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
 │   ├── bar-team # barチーム
@@ -315,15 +315,15 @@ repository/
 ├── aws/ # AWS
 │   ├── 01-foo/
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # aws/foo-team/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/foo-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # aws/bar-team/terraform.tfstate
+│   │   │   ├── providers.tf # /aws/bar-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # aws/baz-team/terraform.tfstate
+│   │       ├── providers.tf # /aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
 │   ├── 02-bar/
@@ -528,11 +528,11 @@ repository/
 
 #### ▼ 対象リソースに合わせる命名
 
-複数のリソースで共通して使用する場合（将来的にそうなる可能性も含めて）は、Generalに配置し、グローバルな名前を付ける。クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
+複数のリソースで共通して使用する場合（将来的にそうなる可能性も含めて）は、Globalに配置し、グローバルな名前を付ける。クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。
 
 ```terraform
 ###############################################
-# General
+# Global
 ###############################################
 camel_case_prefix = "Bar"
 region            = "ap-northeast-1"
@@ -813,7 +813,7 @@ output "nginx_ecr_repository_url" {
 
 #### ▼ 並び順
 
-Generalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。
+Globalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。
 
 <br>
 
@@ -833,7 +833,7 @@ module "alb" {
   source = "../modules/alb"
 
   # Variables
-  environment                   = var.environment                   # General
+  environment                   = var.environment                   # Global
   region                        = var.region
   service                       = var.service
   alb_listener_port_http        = var.alb_listener_port_http        # ALB
