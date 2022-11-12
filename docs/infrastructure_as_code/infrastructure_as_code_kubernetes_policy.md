@@ -361,7 +361,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
 
-『マイグレーション方式』ともいう。新しいClusterを作成することにより、ワーカーNodeをアップグレードする。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつだけでなく飛び越えてアップグレードできる。
+『マイグレーション方式』ともいう。新しいClusterを作成することにより、ワーカーNodeをアップグレードする。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。
 
 （１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 

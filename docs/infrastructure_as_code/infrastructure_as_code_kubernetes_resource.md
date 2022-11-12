@@ -426,15 +426,15 @@ Serviceに対するインバウンド通信を、そのままPodにルーティ�
 > - https://hyoublog.com/2020/05/22/kubernetes-headless-service/
 
 ```bash
-$ dig <Service名>.<Namespace名>.svc.cluster.local
+$ dig <Serviceの完全修飾ドメイン名>
 
 ;; QUESTION SECTION:
-;<Service名>.<Namespace名>.svc.cluster.local. IN   A
+;<Serviceの完全修飾ドメイン名>. IN   A
 
 ;; ANSWER SECTION:
-<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.0.30
-<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.1.34
-<Service名>.<Namespace名>.svc.cluster.local. 30 IN A       10.8.2.55
+<Serviceの完全修飾ドメイン名>. 30 IN A       10.8.0.30
+<Serviceの完全修飾ドメイン名>. 30 IN A       10.8.1.34
+<Serviceの完全修飾ドメイン名>. 30 IN A       10.8.2.55
 ```
 
 また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
@@ -442,13 +442,13 @@ $ dig <Service名>.<Namespace名>.svc.cluster.local
 > ℹ️ 参考：https://thinkit.co.jp/article/13739
 
 ```bash
-$ dig <Pod名>.<Service名>.<Namespace名>.svc.cluster.local
+$ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 ;; QUESTION SECTION:
-;<Pod名>.<Service名>.<Namespace名>.svc.cluster.local. IN A
+;<Pod名>.<Serviceの完全修飾ドメイン名>. IN A
 
 ;; ANSWER SECTION:
-<Pod名>.<Service名>.<Namespace名>.svc.cluster.local. 30 IN A 10.8.0.30
+<Pod名>.<Serviceの完全修飾ドメイン名>. 30 IN A 10.8.0.30
 ```
 
 <br>

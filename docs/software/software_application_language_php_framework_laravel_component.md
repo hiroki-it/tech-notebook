@@ -366,7 +366,7 @@ REDIS_PORT=<Redisのポート>
 
 #### ▼ 構成
 
-イベントに関するデータを保持するだけで、ビジネスロジックを持たない構成となる。
+イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
@@ -2479,7 +2479,7 @@ $session = $request->session()->all();
 
 #### ▼ フラッシュデータの設定
 
-現在のセッションで、今回と次回のリクエストだけで有効な一時データを設定できる。
+現在のセッションで、今回と次回のリクエストのみで有効な一時データを設定できる。
 
 ```php
 $request->session()
@@ -4330,7 +4330,7 @@ interface Container extends ContainerInterface
 
 #### ▼ 単一のクラスをバインド/リゾルブ
 
-AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するだけでインスタンスが作成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
+AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスが作成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 

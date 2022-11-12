@@ -43,7 +43,9 @@ description: API＠Envoyの知見を記録しています。
 
 ### ```/clusters```エンドポイントとは
 
-サービスディスカバリーによって、Envoyが自身に動的に登録した宛先情報を返信する。
+サービスディスカバリーによって、Envoyが自身に動的に登録した宛先のネットワーク情報や統計情報を返信する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -52,26 +54,33 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
 
 <br>
 
-### よくある宛先
+### サービスメッシュツールごとの比較
 
-#### ▼ ```443```番ポートの宛先
+#### ▼ Istioの場合
 
-EnvoyをIstio上で動かしている場合、IstioのServiceを介して、Istiod内のwebhookサーバーにリクエストを送信している。
+Istioを使用している場合には、宛先のIPアドレスとポート番号が登録されている。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/clusters | grep 443
+envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
 
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::observability_name::outbound|443||istiod-1-0-0.istio-system.svc.cluster.local
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::default_priority::max_connections::4294967295
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::default_priority::max_pending_requests::4294967295
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::default_priority::max_requests::4294967295
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::default_priority::max_retries::4294967295
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::high_priority::max_connections::1024
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::high_priority::max_pending_requests::1024
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::high_priority::max_requests::1024
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::high_priority::max_retries::3
-outbound|443||istiod-1-0-0.istio-system.svc.cluster.local::added_via_api::true
+
+# 冗長化された宛先インスタンスのIPアドレスとポート番号
+# IPアドレスは宛先ごとに異なる
+outbound|<Nodeのポート番号>|<サブセット名>|<Serviceの完全修飾ドメイン名>::<PodのIPアドレス>:<コンテナが待ち受けるポート番号>::<宛先の統計的な情報>
+
+...
+
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:8080::zone::ap-northeast-1a
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:8080::zone::ap-northeast-1a
+outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:8080::zone::ap-northeast-1a
+
+...
+
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:8080::region::ap-northeast-1
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:8080::region::ap-northeast-1
+outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:8080::region::ap-northeast-1
+
 ...
 ```
 

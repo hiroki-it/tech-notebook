@@ -119,7 +119,7 @@ fastcgi_param  SERVER_ADDR        $server_addr;
 fastcgi_param  SERVER_PORT        $server_port;
 fastcgi_param  SERVER_NAME        $server_name;
 
-# PHPだけで必要な設定
+# PHPのみで必要な設定
 fastcgi_param  REDIRECT_STATUS    200;
 ```
 

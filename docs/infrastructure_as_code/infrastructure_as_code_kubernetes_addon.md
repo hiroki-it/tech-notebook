@@ -523,7 +523,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 ## 03-02. Serviceの名前解決
 
-### Serviceの完全修飾ドメイン名
+### Serviceの名前解決の仕組み
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
@@ -555,20 +555,31 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### レコードタイプと完全修飾ドメイン名の関係
+### レコードタイプ別の完全修飾ドメイン名
+
+#### ▼ レコードタイプ別の完全修飾ドメイン名とは
 
 Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
 
+#### ▼ ```A/AAAA```レコードの場合
+
+対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。また、同じNamespace内から通信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
+
 > ℹ️ 参考：
->
+> 
+> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
+> - https://ameblo.jp/bakery-diary/entry-12613605860.html
+> - https://eng-blog.iij.ad.jp/archives/9998
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
+
+#### ▼ ```SRV```レコードの場合
+
+対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
+
+> ℹ️ 参考：
+> 
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
-> - https://eng-blog.iij.ad.jp/archives/9998
-
-| レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                                                            | 補足                                                                                                                                                                                                               |
-| -------------- | -------------------------------------------------------- |-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A/AAAAレコード | ```<Service名>.<Namespace名>.svc.cluster.local```        | ・通常のServiceの名前解決ではCluster-IPが返却される。<br>・一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 | ・```svc.cluster.local```は省略でき、```<Service名>.<Namespace名>```でも名前解決できる。また、同じNamespace内から通信する場合は、さらに```<Namespace名>```も省略でき、```<Service名>```のみで名前解決できる。<br>ℹ️ 参考：https://ameblo.jp/bakery-diary/entry-12613605860.html |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local``` | 調査中...                                                                              | Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。                                                                                                                                                              |
 
 <br>
 
@@ -588,7 +599,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <Service名>.<Namespace名>.svc.cluster.local
+Name:  <Serviceの完全修飾ドメイン名>
 Address:  10.105.157.184
 ```
 
@@ -596,7 +607,7 @@ Address:  10.105.157.184
 
 ```bash
 # Pod内のコンテナから正引きの名前解決を行う。
-[root@<Pod名>:~] $ nslookup <Service名>.<Namespace名>
+[root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 
 > ℹ️ 参考：
@@ -669,6 +680,25 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>:~] $ curl -X GET https://<Serviceの完全修飾ドメイン名/IPアドレス>:<ポート番号>
 ```
+
+<br>
+
+## 03-03. Podの直接的な名前解決
+
+### Podの直接的な名前解決の仕組み
+
+Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決することもできる。
+
+<br>
+
+### レコードタイプ別の完全修飾ドメイン名
+
+#### ▼ ```A/AAAA```レコードの場合
+
+対応する完全修飾ドメイン名は、『```<PodのIPアドレス>.<Namespace名>.pod.cluster.local```』である。
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+
 
 <br>
 

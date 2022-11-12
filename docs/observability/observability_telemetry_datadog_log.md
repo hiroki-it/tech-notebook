@@ -270,7 +270,7 @@ export default browserLogsForSsgPlugin
 
 | 属性名                | 説明                                           | 補足                                                         | 例                                                           |
 | --------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```            | ログの作成元のホスト名を示す。                 | ログが作成元とは別の場所から受信した場合に役立つ。datadogコンテナの環境変数にて、```DD_HOSTNAME```を使用して```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```host```            | ログの作成元のホスト名を示す。                 | ログが作成元とは別の場所から受信した場合に役立つ。datadogコンテナの環境変数にて、```DD_HOSTNAME```を使用して```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
 | ```source```          | ログの作成元の名前を示す。                     | ベンダー名を使用するとわかりやすい。                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
 | ```status```          | ログのレベルを示す。                           |                                                              |                                                              |
 | ```service```         | ログの作成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。 | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
@@ -1012,12 +1012,12 @@ https://example.com%{http.url}
 
 serviceタグで流入させたログをsourceタグで振り分ける場合を示す。
 
-```bash
+```yaml
 log-pipeline
 ├── foo-pipeline # service:foo でログ流入
 |   ├── 共通処理
 │   ├── laravel-pipeline # source:laravel のログを処理
-│   ├── php-fpm-pipeline # source:laravel のログのうち、PHP-FPMのものだけを処理
+│   ├── php-fpm-pipeline # source:laravel のログのうち、PHP-FPMのもののみを処理
 |   └── 共通処理
 │ 
 ├── bar-pipeline

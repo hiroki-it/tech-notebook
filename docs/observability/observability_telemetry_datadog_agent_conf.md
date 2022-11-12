@@ -349,7 +349,7 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 | 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| ```DD_APM_ENABLED```           | APMエージェントを有効化するか否かを設定する。                                | AWS ECS Fargateを採用している場合、APMエージェントを有効化するだけでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>ℹ️ 参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化するか否かを設定する。                                | AWS ECS Fargateを採用している場合、APMエージェントを有効化するのみでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>ℹ️ 参考：https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
 | ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>ℹ️ 参考：https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 #### ▼ カスタムメトリクス

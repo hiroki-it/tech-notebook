@@ -249,10 +249,29 @@ Istio上で管理されるEnvoyの構成情報を取得する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 ```
 
-Envoyのエンドポイント情報を取得する。
+JSON形式で取得できるが、その場合は```jq```コマンドを組み合わせた方が良い。
+
 
 ```bash
-$ istioctl proxy-config endpoints <IngressGateway名> -n istio-system
+# 返却されたJSONから、1番目の項目だけ取得する。
+$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o json | jq '.[0]'
+```
+
+
+#### ▼ cluster
+
+Envoyのクラスターの設定値を取得する。
+
+```bash
+$ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
+```
+
+#### ▼ endpoints
+
+Envoyのエンドポイントの設定値を取得する。
+
+```bash
+$ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 
 ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
 127.0.0.1:15000                  HEALTHY     OK                prometheus_stats
@@ -270,21 +289,27 @@ unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 ```
 
-Envoyのリスナー情報を取得する。
+#### ▼ listeners
+
+Envoyのリスナーの設定値を取得する。許可する送信元IPアドレス、待ち受けるポート番号、などを取得する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
-$ istioctl proxy-config listeners <IngressGateway名> -n istio-system
+$ istioctl proxy-config listeners <Pod名> -n <PodのNamespace名>
 
-ADDRESS PORT  MATCH DESTINATION
-0.0.0.0 8080  ALL   Route: http.8080
-0.0.0.0 15021 ALL   Inline Route: /healthz/ready*
-0.0.0.0 15090 ALL   Inline Route: /stats/prometheus*
+ADDRESS  PORT   MATCH                      DESTINATION
+0.0.0.0  15001  ALL                        PassthroughCluster # アウトバウンド通信のルール
+0.0.0.0  15006  Addr: 10.244.0.22/32:9080  Inline Route: /*   # インバウンド通信のルール
+...
 ```
 
-のルーティング情報を取得する。
+#### ▼ routes
+
+Envoyのルーティングの設定値を取得する。
 
 ```bash
-$ istioctl proxy-config routes <IngressGateway名> -n istio-system
+$ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
 
 NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
 http.8080     *           /*                     foo-virtual-service.istio-system

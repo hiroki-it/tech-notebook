@@ -469,7 +469,7 @@ const result = SubFoo.getValue();
 console.log(result);
 ```
 
-また、```Object.create```メソッドを使用する場合、継承だけでなく、メンバを新しく追加もできる。
+また、```Object.create```メソッドを使用する場合、継承のみでなく、メンバを新しく追加もできる。
 
 **＊実装例＊**
 
