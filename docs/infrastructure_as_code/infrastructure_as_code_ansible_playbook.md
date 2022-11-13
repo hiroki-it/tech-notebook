@@ -194,9 +194,9 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 env: prd
 domain: example.com
 ip_addresses:
-  - 192.168.1.1
-  - 192.168.1.2
-  - 192.168.1.3
+  - 192.168.0.1
+  - 192.168.0.2
+  - 192.168.0.3
 ports:
   - 22/tcp
   - 80/tcp
@@ -300,7 +300,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
           # appサーバー
           app:
             # 管理対象ノードのIPアドレス
-            ansible_host: 192.168.111.101
+            ansible_host: 192.168.100.101
             # 管理対象ノードにログインするためのユーザー名
             ansible_user: ubuntu
             # 管理対象ノードにログインするためのパスワード
@@ -309,7 +309,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
           # webサーバー
           web:
-            ansible_host: 192.168.111.10
+            ansible_host: 192.168.100.10
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
@@ -318,13 +318,13 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
         hosts:
           # appサーバー
           app:
-            ansible_host: 192.168.111.102
+            ansible_host: 192.168.100.102
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
           # webサーバー
           web:
-            ansible_host: 192.168.111.11
+            ansible_host: 192.168.100.11
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
@@ -345,7 +345,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 # appサーバー
 [server_a.hosts.app]
 # 管理対象ノードのIPアドレス
-ansible_host=192.168.111.101
+ansible_host=192.168.100.101
 # 管理対象ノードにログインするためのユーザー名
 ansible_user=ubuntu
 # 管理対象ノードにログインするためのパスワード
@@ -355,7 +355,7 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # webサーバー
 [server_a.hosts.web]
-ansible_host=192.168.111.10
+ansible_host=192.168.100.10
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
@@ -366,14 +366,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # appサーバー
 [server_c.hosts.app]
-ansible_host=192.168.111.102
+ansible_host=192.168.100.102
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # webサーバー
 [server_c.hosts.web]
-ansible_host=192.168.111.11
+ansible_host=192.168.100.11
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
@@ -389,14 +389,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # appサーバー
 [server_a.hosts.app]
-ansible_host=192.168.111.101
+ansible_host=192.168.100.101
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # webサーバー
 [server_a.hosts.web]
-ansible_host=192.168.111.10
+ansible_host=192.168.100.10
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
@@ -407,14 +407,14 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # appサーバー
 [server_c.hosts.app]
-ansible_host=192.168.111.102
+ansible_host=192.168.100.102
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # webサーバー
 [server_c.hosts.web]
-ansible_host=192.168.111.11
+ansible_host=192.168.100.11
 ansible_user=ubuntu
 ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem

@@ -791,12 +791,21 @@ $ cat foo.txt | grep bar
 
 <br>
 
-### -A
+### -A、-B、-C
 
-標準出力に出力された文字列のうち、以降の数行を取得する。
+標準出力に出力された文字列のうち、周辺（以降、以前、前後）の数行を取得する。
 
 ```bash
+# 以降5行
 $ cat foo.txt | grep bar -A 5
+```
+```bash
+# 以前5行
+$ cat foo.txt | grep bar -B 5
+```
+```bash
+# 前後5行
+$ cat foo.txt | grep bar -C 5
 ```
 
 <br>

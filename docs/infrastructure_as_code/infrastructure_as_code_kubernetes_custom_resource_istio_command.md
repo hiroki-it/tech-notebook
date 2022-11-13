@@ -259,6 +259,7 @@ Istio上で管理されるEnvoyの構成情報を取得する。
 
 > ℹ️ 参考：
 >
+> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
 > - https://sreake.com/blog/istio/
 
@@ -289,7 +290,10 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o json | jq
 
 Envoyのクラスターの設定値を取得する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
@@ -307,13 +311,47 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
+JSON形式で取得すれば、より詳細な設定値を確認できる。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+
+```bash
+$ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn bar-service.bar-namespace.svc.cluster.local | jq '.[0]'
+
+{
+  # クラスター設定名
+  "name": "outbound|50002||bar-service.bar-namespace.svc.cluster.local",
+  "type": "EDS",
+  "edsClusterConfig": {
+    "edsConfig": {
+      "ads": {},
+      "initialFetchTimeout": "0s",
+      "resourceApiVersion": "V3"
+    },
+    # エンドポイント設定名を検索する。
+    # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
+    "serviceName": "outbound|50002||bar-service.bar-namespace.svc.cluster.local"
+  },
+  
+  ...
+}
+
+```
+
+#### ▼ --fqdn
+
+クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
+
+```bash
+$ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn foo-service.foo-namespace.svc.cluster.local | jq '.[0]'
+```
 
 #### ▼ --port
 
-クラスターへの送信時に指定するポート番号でフィルタリグし、取得する。
+クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。
 
 ```bash
-$ istioctl proxy-config routes foo-pod -n foo-namespace --port 80
+$ istioctl proxy-config routes foo-pod -n foo-namespace --port 50001
 ```
 
 <br>
@@ -325,6 +363,8 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --port 80
 
 Envoyのエンドポイントの設定値を取得する。
 
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
+
 ```bash
 $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 ```
@@ -332,18 +372,96 @@ $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 ```bash
 $ istioctl proxy-config endpoints foo-pod -n foo-namespace
 
-ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
-<PodのIPアドレス>:<コンテナポート>   HEALTHY     OK                <紐づいているクラスター設定名>
-192.168.0.1:80                   HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
-192.168.0.2:80                   HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
-192.168.0.3:80                   HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
+ENDPOINT                               STATUS      OUTLIER CHECK     CLUSTER
+<PodのIPアドレス>:<Podのコンテナポート>     HEALTHY     OK                <紐づいているクラスター設定名>
+10.0.0.1:80                            HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
+10.0.0.2:80                            HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
+10.0.0.3:80                            HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
 
 ...
 
-192.168.64.14:8443               HEALTHY     OK                outbound|443|v1|kubernetes.default.svc.cluster.local
-unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
-unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
+127.0.0.1:15000                        HEALTHY     OK                prometheus_stats
+127.0.0.1:15020                        HEALTHY     OK                agent
+unix://./etc/istio/proxy/SDS           HEALTHY     OK                sds-grpc
+unix://./etc/istio/proxy/XDS           HEALTHY     OK                xds-grpc
 ```
+
+JSON形式で取得すれば、より詳細な設定値を確認できる。
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+
+```bash
+$ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|50002||foo-service.foo-namespace.svc.cluster.local" -o json | jq '.[0]'
+
+{
+  # クラスター設定名
+  "name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
+  "addedViaApi": true,
+  "hostStatuses": [
+    {
+      "address": {
+        "socketAddress": {
+          # bar-podのインスタンスのIPアドレス
+          "address": "10.0.0.1",
+          # Podのコンテナポート
+          "portValue": 50002
+        }
+      },
+      
+      ...
+      
+      "locality": {
+        "region": "ap-northeast-1",
+        "zone": "ap-northeast-1a"
+      }
+    },
+    {
+      "address": {
+        "socketAddress": {
+          # bar-podのインスタンスのIPアドレス
+          "address": "10.0.0.2",
+          # Podのコンテナポート
+          "portValue": 50002
+        }
+      },
+      
+      ...
+      
+      "locality": {
+        "region": "ap-northeast-1",
+        "zone": "ap-northeast-1c"
+      }
+    },
+    {
+      "address": {
+        "socketAddress": {
+          # bar-podのインスタンスのIPアドレス
+          "address": "10.0.0.3",
+          # Podのコンテナポート
+          "portValue": 50002
+        }
+      },
+      
+      ...
+      
+      "locality": {
+        "region": "ap-northeast-1",
+        "zone": "ap-northeast-1d"
+      }
+    }
+  ],
+  "observabilityName": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+}
+
+```
+
+#### ▼ --cluster
+
+エンドポイントに紐づくクラスター名でフィルタリングし、エンドポイントを取得する。
+
+```bash
+$ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|50002||foo-service.foo-namespace.svc.cluster.local"
+````
 
 <br>
 
@@ -354,7 +472,7 @@ unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 
 Envoyのリスナーの設定値を取得する。
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener
 
 ```bash
 $ istioctl proxy-config listeners <Pod名> -n <PodのNamespace名>
@@ -384,6 +502,8 @@ ADDRESS               PORT                          MATCH                       
 
 Envoyのルーティングの設定値を取得する。
 
+> ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
+
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
 ```
@@ -392,7 +512,7 @@ $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
 $ istioctl proxy-config routes foo-pod -n foo-namespace
 
 NAME                         DOMAINS                                     MATCH    VIRTUAL SERVICE
-<SERVICEで待ち受けるポート番号>  <Serviceの完全修飾ドメイン名>                   <パス>    <VirtualService名>.<Namespace名>
+<Serviceで待ち受けるポート番号>  <Serviceの完全修飾ドメイン名>                   <パス>    <VirtualService名>.<Namespace名>
 
 50001                        foo-service.foo-namespace.svc.cluster.local  /*      foo-virtual-service.foo-namespace
 50002                        bar-service.bar-namespace.svc.cluster.local  /*      bar-virtual-service.bar-namespace
@@ -411,6 +531,7 @@ NAME                         DOMAINS                                     MATCH  
 
 JSON形式で取得すれば、より詳細な設定値を確認できる。
 
+> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
 $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | jq
@@ -425,6 +546,7 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | j
        {
         "name": "foo-service.foo-namespace.svc.cluster.local:50001",
         # Hostヘッダーの値を指定する。合致した場合に、この仮想ホストが選ばれる。
+        # 網羅的に検知できるように、色々なパターンを指定する。
         "domains": [
           "foo-service.foo-namespace.svc.cluster.local",
           "foo-service.foo-namespace.svc.cluster.local:50001",
@@ -434,8 +556,8 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | j
           "foo-service.foo-namespace.svc:50001",
           "foo-service.foo-namespace",
           "foo-service.foo-namespace:50001",
-          "192.168.0.2",
-          "192.168.0.2:50001"
+          "172.16.0.2",
+          "172.16.0.2:50001"
         ],
         "routes": [
           {
@@ -470,8 +592,8 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | j
           "bar-service.bar-namespace.svc:50002",
           "bar-service.bar-namespace",
           "bar-service.bar-namespace:50002",
-          "192.168.0.2",
-          "192.168.0.2:50002"
+          "172.16.0.2",
+          "172.16.0.2:50002"
         ],
         "routes": [
           {
@@ -505,8 +627,8 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | j
           "baz-service.baz-namespace.svc:50003",
           "baz-service.baz-namespace",
           "baz-service.baz-namespace:50003",
-          "192.168.0.3",
-          "192.168.0.3:50003"
+          "172.16.0.3",
+          "172.16.0.3:50003"
         ],
         "routes": [
           {

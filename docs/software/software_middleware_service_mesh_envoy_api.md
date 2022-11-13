@@ -13,7 +13,13 @@ description: API＠Envoyの知見を記録しています。
 
 <br>
 
-## 01. Global
+## 01. Envoy-API
+
+Envoyの設定値を
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
+
+## 02. Global
 
 ### version_info
 
@@ -39,11 +45,11 @@ description: API＠Envoyの知見を記録しています。
 
 <br>
 
-## 02. ```/clusters```エンドポイント
+## 03. ```/clusters```エンドポイント
 
 ### ```/clusters```エンドポイントとは
 
-サービスディスカバリーによって、Envoyが自身に動的に登録した宛先のネットワーク情報や統計情報を返信する。
+静的な設定値（特に、クラスター）、サービスディスカバリーによって動的に登録された設定値（特に、クラスター）を、見やすい形式でレスポンスとして返信する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
@@ -67,30 +73,28 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
-outbound|<Serviceの受信ポート>|<サブセット名>|<Serviceの完全修飾ドメイン名>::<PodのIPアドレス>:<Serviceのターゲットポート>::<宛先の統計的な情報>
+outbound|<Serviceの受信ポート>|<サブセット名>|<Serviceの完全修飾ドメイン名>::<PodのIPアドレス>:<Podのコンテナポート>::<Podのメタデータ>
+
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.1:80::zone::ap-northeast-1a
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.2:80::zone::ap-northeast-1a
+outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::zone::ap-northeast-1a
 
 ...
 
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:80::zone::ap-northeast-1a
-outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:80::zone::ap-northeast-1a
-outbound|50003|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:80::zone::ap-northeast-1a
-
-...
-
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:80::region::ap-northeast-1
-outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:80::region::ap-northeast-1
-outbound|50003|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:80::region::ap-northeast-1
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.1:80::region::ap-northeast-1
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.2:80::region::ap-northeast-1
+outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::region::ap-northeast-1
 
 ...
 ```
 
 <br>
 
-## 03. ```/config_dump```エンドポイント
+## 04. ```/config_dump```エンドポイント
 
 ### ```/config_dump```エンドポイントとは
 
-Envoyの現在の設定値を持つレスポンスを返信する。Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
+Envoyの現在の全ての設定値を、JSON形式でレスポンスとして返信する。Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
 
@@ -99,26 +103,39 @@ Envoyの現在の設定値を持つレスポンスを返信する。Envoyの稼�
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump
 ```
 
+<br>
+
+### include_edsパラメーター
+
+#### ▼ include_edsパラメーターとは
+
+サービスディスカバリーによって動的に登録された設定値（特に、エンドポイント）を、JSON形式でレスポンスとして返信する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?include_eds
+```
 
 <br>
 
 ### resourceパラメーター
 
-#### ▼ resourceパラメーター
+#### ▼ resourceパラメーターとは
 
-```resource```パラメーターをクエリストリングとして、```/config_dump```エンドポイントにリクエストを送信すると、設定を取得できる。
+静的な設定値（特に、リスナー、ルート、クラスター）、サービスディスカバリーによって動的に登録された設定値（特に、リスナー、ルート、クラスター）を、JSON形式でレスポンスとして返信する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
+```
+
 #### ▼ dynamic_active_clusters
 
-サービスディスカバリーによって、Envoyはコントロールプレーン（ビルトイン、Istio、Consul）のXDSに、通信の宛先情報を定期的にリクエストし、レスポンスに含まれる宛先情報を```clusters```キー配下に自動的に設定する。このうち、準備済みの宛先情報のみを返信する。
-
-> ℹ️ 参考：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
-> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
-> - https://cloud.tencent.com/developer/article/1701214
+準備済みのクラスター設定値を、JSON形式でレスポンスとして返信する。
 
 
 ```bash
@@ -160,24 +177,66 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep service_name
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
+> - https://cloud.tencent.com/developer/article/1701214
+
+
 #### ▼ dynamic_warm_clusters
 
-Envoyは、コントロールプレーン（ビルトイン、Istio、Consul）のXDSに、通信の宛先情報を定期的にリクエストし、レスポンスに含まれる宛先情報を```clusters```キー配下に自動的に設定する。このうち、準備が完了していない（ウォーミングアップ中）に宛先情報を返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
+準備が完了していない（ウォーミングアップ中の）クラスター設定値を、JSON形式でレスポンスとして返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
 
 > ℹ️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto.html?highlight=dynamiccluster#admin-v3-clustersconfigdump
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
 
 ```bash
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}
 
-{} # 何もなければ空配列になる。
+{} # ウォーミングアップ中のクラスター設定値が無ければ、空配列になる。
 ```
+
+
+#### ▼ dynamic_active_secrets
+
+調査中...
+
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_secrets}
+```
+
+#### ▼ dynamic_listeners
+
+サービスディスカバリーによって動的に登録された設定値（特に、リスナー）を、JSON形式でレスポンスとして返信する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-listenersconfigdump
+
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_listeners}
+```
+
+#### ▼ dynamic_route_configs
+
+サービスディスカバリーによって動的に登録された設定値（特に、ルート）を、JSON形式でレスポンスとして返信する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-listenersconfigdump
+
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_route_configs}
+```
+
 
 #### ▼ static_listeners
 
-静的な宛先情報を返信する。
+静的なリスナー設定値を返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

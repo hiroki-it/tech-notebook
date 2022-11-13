@@ -185,7 +185,7 @@ $ kube-apiserver \
     --service-account-key-file=/etc/kubernetes/pki/sa.pub \
     --service-account-max-token-expiration=48h \
     --service-account-signing-key-file=/etc/kubernetes/pki/sa.key \
-    --service-cluster-ip-range=*.*.*.*/n \
+    --service-cluster-ip-range=*.*.*.*/* \
     --tls-cert-file=/etc/kubernetes/pki/apiserver.crt \
     --tls-cipher-suites=***** \
     --tls-private-key-file=/etc/kubernetes/pki/apiserver.key \
