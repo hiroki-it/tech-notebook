@@ -92,7 +92,9 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 #### ▼ VirtualHostとは
 
-ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。VirtualHostという名前の通り、1 つのサーバー上で、仮想的に複数のドメインを扱うような処理も定義できる。複数のVirtualHostを設定した場合、1つ目がデフォルト設定として認識される。
+ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。VirtualHostという名前の通り、Apacheの稼働するサーバーが複数のドメインを仮想的に持つようにできる。複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの```Host```ヘッダー値がいずれのServerName値と一致するかで決まる。
+
+> ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
 
 **＊実装例＊**
 
@@ -100,7 +102,6 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 Listen 80
 NameVirtualHost *:80
 
-# Defaultサーバーとして扱う。
 <VirtualHost *:80>
     DocumentRoot /var/www/foo
     ServerName example.com

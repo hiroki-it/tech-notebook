@@ -67,19 +67,19 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
-outbound|<Nodeのポート番号>|<サブセット名>|<Serviceの完全修飾ドメイン名>::<PodのIPアドレス>:<コンテナが待ち受けるポート番号>::<宛先の統計的な情報>
+outbound|<Serviceの受信ポート>|<サブセット名>|<Serviceの完全修飾ドメイン名>::<PodのIPアドレス>:<Serviceのターゲットポート>::<宛先の統計的な情報>
 
 ...
 
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:8080::zone::ap-northeast-1a
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:8080::zone::ap-northeast-1a
-outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:8080::zone::ap-northeast-1a
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:80::zone::ap-northeast-1a
+outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:80::zone::ap-northeast-1a
+outbound|50003|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:80::zone::ap-northeast-1a
 
 ...
 
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:8080::region::ap-northeast-1
-outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:8080::region::ap-northeast-1
-outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:8080::region::ap-northeast-1
+outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.1:80::region::ap-northeast-1
+outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local::192.168.0.2:80::region::ap-northeast-1
+outbound|50003|v1|foo-servive.foo-namespace.svc.cluster.local::192.168.0.3:80::region::ap-northeast-1
 
 ...
 ```

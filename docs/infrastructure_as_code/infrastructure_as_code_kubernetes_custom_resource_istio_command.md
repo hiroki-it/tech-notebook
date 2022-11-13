@@ -13,7 +13,7 @@ description: コマンド＠Istioの知見を記録しています。
 
 <br>
 
-## 01. セットアップ
+## セットアップ
 
 ### インストール
 
@@ -74,11 +74,9 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 
 <br>
 
-## 02. istioctlコマンド
+## analyze
 
-### analyze
-
-#### ▼ analyzeとは
+### analyzeとは
 
 Istioが正しく動作しているか否かを検証する。
 
@@ -100,6 +98,8 @@ $ istioctl analyze
 Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
 ```
 
+### オプション
+
 #### ▼ -n
 
 Namespaceを指定しつつ、```analyze```コマンドを実行する。
@@ -110,9 +110,11 @@ $ istioctl analyze -n <Namespace名>
 
 <br>
 
-### uninstall
+## uninstall
 
-#### ▼ istioctlコマンドを使用して
+### オプション
+
+#### ▼ --purge
 
 Istioリソースを全てdestroyする。
 
@@ -122,13 +124,17 @@ $ istioctl x uninstall --purge
 
 <br>
 
-### install
+## install
 
-#### ▼ installとは
+### installとは
 
 プロファイルをインストールし、加えて設定値を変更する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/
+
+<br>
+
+### オプション
 
 #### ▼ -f
 
@@ -154,9 +160,9 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 <br>
 
-### kube-inject
+## kube-inject
 
-#### ▼ kube-injectとは
+### kube-injectとは
 
 ```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
@@ -164,6 +170,11 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 >
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
+
+
+<br>
+
+### オプション
 
 #### ▼ -f
 
@@ -175,9 +186,9 @@ $ istioctl kube-inject -f pod.yaml
 
 <br>
 
-### manifest diff
+## manifest diff
 
-#### ▼ diffとは
+### diffとは
 
 ymlファイルの差分を取得する。
 
@@ -189,9 +200,9 @@ $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マ
 
 <br>
 
-### operator
+## operator
 
-#### ▼ init
+### init
 
 IstioOperatorを```istio-system```に作成する。
 
@@ -206,15 +217,21 @@ Operator controller will watch namespaces: istio-system
 
 <br>
 
-### profile
+## profile
 
-#### ▼ profileとは
+### profileとは
 
 Istioのプロファイルを操作する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
-#### ▼ list
+<br>
+
+
+
+### list
+
+#### ▼ listとは
 
 利用できるプロファイルを取得する。
 
@@ -234,9 +251,9 @@ Istio configuration profiles:
 
 <br>
 
-### proxy-config
+## proxy-config
 
-#### ▼ proxy-config
+### proxy-configとは
 
 Istio上で管理されるEnvoyの構成情報を取得する。
 
@@ -249,85 +266,333 @@ Istio上で管理されるEnvoyの構成情報を取得する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 ```
 
-JSON形式で取得できるが、その場合は```jq```コマンドを組み合わせた方が良い。
+<br>
 
+### グローバルオプション
+
+#### ▼ -o
+
+出力形式を指定する。```jq```コマンドや```yq```コマンドと組み合わせた方が良い。
 
 ```bash
 # 返却されたJSONから、1番目の項目だけ取得する。
-$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o json | jq '.[0]'
+$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o json | jq
 ```
 
+<br>
 
-#### ▼ cluster
+
+
+### cluster
+
+#### ▼ clusterとは
 
 Envoyのクラスターの設定値を取得する。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
 ```
 
-#### ▼ endpoints
+```bash
+$ istioctl proxy-config cluster foo-pod -n foo-namespace
+
+SERVICE FQDN                                  PORT                         SUBSET        DIRECTION   TYPE                DESTINATION RULE
+<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名> 
+
+foo-service.foo-namespace.svc.cluster.local   50001                        v1            outbound     EDS                 foo-destination-rule.foo-namespace
+bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
+baz-service.bar-namespace.svc.cluster.local   50003                        v1            outbound     EDS                 baz-destination-rule.baz-namespace
+...
+```
+
+
+#### ▼ --port
+
+クラスターへの送信時に指定するポート番号でフィルタリグし、取得する。
+
+```bash
+$ istioctl proxy-config routes foo-pod -n foo-namespace --port 80
+```
+
+<br>
+
+
+### endpoints
+
+#### ▼ endpointsとは
 
 Envoyのエンドポイントの設定値を取得する。
 
 ```bash
 $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
+```
+
+```bash
+$ istioctl proxy-config endpoints foo-pod -n foo-namespace
 
 ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
-127.0.0.1:15000                  HEALTHY     OK                prometheus_stats
-127.0.0.1:15020                  HEALTHY     OK                agent
+<PodのIPアドレス>:<コンテナポート>   HEALTHY     OK                <紐づいているクラスター設定名>
+192.168.0.1:80                   HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
+192.168.0.2:80                   HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
+192.168.0.3:80                   HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
 
 ...
 
-172.17.0.11:9090                 HEALTHY     OK                outbound|80||kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
-172.17.0.13:80                   HEALTHY     OK                outbound|80||foo-service.microservices-with-kubernetes.svc.cluster.local
-
-...
-
-192.168.64.14:8443               HEALTHY     OK                outbound|443||kubernetes.default.svc.cluster.local
+192.168.64.14:8443               HEALTHY     OK                outbound|443|v1|kubernetes.default.svc.cluster.local
 unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 ```
 
-#### ▼ listeners
+<br>
 
-Envoyのリスナーの設定値を取得する。許可する送信元IPアドレス、待ち受けるポート番号、などを取得する。
+
+### listeners
+
+#### ▼ listenersとは
+
+Envoyのリスナーの設定値を取得する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
 $ istioctl proxy-config listeners <Pod名> -n <PodのNamespace名>
-
-ADDRESS  PORT   MATCH                      DESTINATION
-0.0.0.0  15001  ALL                        PassthroughCluster # アウトバウンド通信のルール
-0.0.0.0  15006  Addr: 10.244.0.22/32:9080  Inline Route: /*   # インバウンド通信のルール
-...
 ```
 
-#### ▼ routes
+```bash
+$ istioctl proxy-config listeners foo-pod -n foo-namespace
+
+ADDRESS               PORT                          MATCH                                 DESTINATION
+<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   Trans: raw_buffer; App: http/1.1,h2c  Route: <紐づいているルート設定名>
+<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   ALL                                   Cluster: <紐づいているクラスター設定名>
+
+172.16.0.1            50001                         Trans: raw_buffer; App: http/1.1,h2c  Route: 50001
+172.16.0.1            50001                         ALL                                   Cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
+172.16.0.2            50002                         Trans: raw_buffer; App: http/1.1,h2c  Route: 50002
+172.16.0.2            50002                         ALL                                   Cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+172.16.0.3            50003                         Trans: raw_buffer; App: http/1.1,h2c  Route: 50003
+172.16.0.3            50003                         ALL                                   Cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
+```
+
+<br>
+
+
+### routes
+
+#### ▼ routesとは
 
 Envoyのルーティングの設定値を取得する。
 
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名>
-
-NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
-http.8080     *           /*                     foo-virtual-service.istio-system
-              *           /stats/prometheus*     
-              *           /healthz/ready*  
 ```
+
+```bash
+$ istioctl proxy-config routes foo-pod -n foo-namespace
+
+NAME                         DOMAINS                                     MATCH    VIRTUAL SERVICE
+<SERVICEで待ち受けるポート番号>  <Serviceの完全修飾ドメイン名>                   <パス>    <VirtualService名>.<Namespace名>
+
+50001                        foo-service.foo-namespace.svc.cluster.local  /*      foo-virtual-service.foo-namespace
+50002                        bar-service.bar-namespace.svc.cluster.local  /*      bar-virtual-service.bar-namespace
+50003                        baz-service.baz-namespace.svc.cluster.local  /*      baz-virtual-service.baz-namespace
+
+...
+
+9000                         qux-service.qux-namespace.svc.cluster.local  /*      qux-virtual-service.qux-namespace
+
+...
+
+*                            /stats/prometheus*     
+*                            /healthz/ready*  
+...
+```
+
+JSON形式で取得すれば、より詳細な設定値を確認できる。
+
+
+```bash
+$ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | jq
+
+[
+  {
+    # ルート設定名
+    "name": "50001",
+    # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
+    "virtualHosts": [
+       # ワーカーNode外からfoo-podにインバウンド通信を送信する時に選ばれる。
+       {
+        "name": "foo-service.foo-namespace.svc.cluster.local:50001",
+        # Hostヘッダーの値を指定する。合致した場合に、この仮想ホストが選ばれる。
+        "domains": [
+          "foo-service.foo-namespace.svc.cluster.local",
+          "foo-service.foo-namespace.svc.cluster.local:50001",
+          "foo-service",
+          "foo-service:50001",
+          "foo-service.foo-namespace.svc",
+          "foo-service.foo-namespace.svc:50001",
+          "foo-service.foo-namespace",
+          "foo-service.foo-namespace:50001",
+          "192.168.0.2",
+          "192.168.0.2:50001"
+        ],
+        "routes": [
+          {
+            "match": {
+              "prefix": "/"
+            },
+            "route": {
+              # foo-podと紐づくクラスターを指定する。
+              "cluster": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local",
+              
+              ...
+              
+              },
+              "maxGrpcTimeout": "10800s"
+            },
+            
+            ...
+            
+          }
+        ],
+        "includeRequestAttemptCount": true
+      },
+      # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
+      {
+        "name": "bar-service.bar-namespace.svc.cluster.local:50002",
+        "domains": [
+          "bar-service.bar-namespace.svc.cluster.local",
+          "bar-service.bar-namespace.svc.cluster.local:50002",
+          "bar-service",
+          "bar-service:50002",
+          "bar-service.bar-namespace.svc",
+          "bar-service.bar-namespace.svc:50002",
+          "bar-service.bar-namespace",
+          "bar-service.bar-namespace:50002",
+          "192.168.0.2",
+          "192.168.0.2:50002"
+        ],
+        "routes": [
+          {
+            "match": {
+              "prefix": "/"
+            },
+            "route": {
+              "cluster": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
+              
+              ...
+              
+              },
+              "maxGrpcTimeout": "10800s"
+            },
+            
+            ...
+            
+          }
+        ],
+        "includeRequestAttemptCount": true
+      },
+      # foo-podからbaz-podにアウトバウンド通信を送信する時に選ばれる。
+      {
+        "name": "baz-service.baz-namespace.svc.cluster.local:50003",
+        "domains": [
+          "baz-service.baz-namespace.svc.cluster.local",
+          "baz-service.baz-namespace.svc.cluster.local:50003",
+          "baz-service",
+          "baz-service:50003",
+          "baz-service.baz-namespace.svc",
+          "baz-service.baz-namespace.svc:50003",
+          "baz-service.baz-namespace",
+          "baz-service.baz-namespace:50003",
+          "192.168.0.3",
+          "192.168.0.3:50003"
+        ],
+        "routes": [
+          {
+            "match": {
+              "prefix": "/"
+            },
+            "route": {
+              "cluster": "outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local",
+              
+              ...
+              
+              },
+              "maxGrpcTimeout": "10800s"
+            },
+            
+            ...
+            
+          }
+        ],
+        "includeRequestAttemptCount": true
+      },
+      {
+        ...
+      },
+      # 一致するルートが無かった場合のアウトバウンド通信に関するルートを指定する。
+      {
+        "name": "allow_any",
+        "domains": [
+            "*"
+        ],
+        "routes": [
+          {
+            "name": "allow_any",
+              "match": {
+                "prefix": "/"
+              },
+              "route": {
+                "cluster": "PassthroughCluster",
+                "timeout": "0s",
+                "maxGrpcTimeout": "0s"
+              }
+          }
+        ],
+        "includeRequestAttemptCount": true
+      },  
+    ],
+    "validateClusters": false
+  },
+]
+
+```
+
+#### ▼ --name
+
+ルート設定名でフィルタリグし、取得する。
+
+```bash
+$ istioctl proxy-config routes <Pod名> -n <PodのNamespace名> --name 50001
+```
+
+```bash
+$ istioctl proxy-config routes foo-pod -n foo-namespace
+
+NAME     DOMAINS                                      MATCH               VIRTUAL SERVICE
+50001    foo-service.foo-namespace.svc.cluster.local  /*                  foo-virtual-service.foo-namespace
+```
+
 
 <br>
 
-### tag
+## tag
 
-#### ▼ tagとは
+### tagとは
 
 MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 
-#### ▼ generate
+
+<br>
+
+
+
+### generate
+
+#### ▼ generateとは
 
 MutatingWebhookConfigurationの```metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
 
@@ -351,7 +616,11 @@ $ istioctl tag generate prd-blue --revision 1-0-0
 $ istioctl tag generate tes-green --revision 1-0-1
 ```
 
-#### ▼ list
+<br>
+
+### list
+
+#### ▼ listとは
 
 MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
 
@@ -371,7 +640,12 @@ prd-blue   1-0-0      istioinaction
 tes-green  1-0-1      istioinaction
 ```
 
-#### ▼ set
+<br>
+
+
+### set
+
+#### ▼ setとは
 
 MutatingWebhookConfigurationの```metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
 
@@ -389,9 +663,9 @@ $ istioctl tag set prd-blue --revision 1-0-0
 
 <br>
 
-### proxy-status
+## proxy-status
 
-#### ▼ proxy-statusとは
+### proxy-statusとは
 
 IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
 
@@ -410,9 +684,9 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 <br>
 
-### upgrade
+## upgrade
 
-#### ▼ upgradeとは
+### upgradeとは
 
 Istioのインプレースデプロイメントを実行する。
 
@@ -431,9 +705,9 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 
 <br>
 
-### verify-install
+## verify-install
 
-#### ▼ verify-installとは
+### verify-installとは
 
 Istioリソースのapplyが正しく実行されたかを検証する。
 
@@ -457,9 +731,9 @@ Checked 3 Istio Deployments
 
 <br>
 
-### version
+## version
 
-#### ▼ versionとは
+### versionとは
 
 Istiodコントロールプレーンのバージョンを取得する。
 
