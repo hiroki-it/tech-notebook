@@ -15,9 +15,52 @@ description: API＠Envoyの知見を記録しています。
 
 ## 01. Envoy-API
 
-Envoyの設定値を
+Envoyの設定値をレスポンスとして返信する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
+```bash
+# envoyコンテナ内でローカルホストにリクエストを送信する。
+envoy@<コンテナ名>: $ curl http://localhost:15000/help
+
+# 執筆時点（2022/11/13）でのエンドポイント
+  /: Admin home page
+  /certs: print certs on machine
+  /clusters: upstream cluster status
+  /config_dump: dump current Envoy configs (experimental)
+  /contention: dump current Envoy mutex contention stats (if enabled)
+  /cpuprofiler: enable/disable the CPU profiler
+  /drain_listeners: drain listeners
+  /healthcheck/fail: cause the server to fail health checks
+  /healthcheck/ok: cause the server to pass health checks
+  /heapprofiler: enable/disable the heap profiler
+  /help: print out list of admin commands
+  /hot_restart_version: print the hot restart compatibility version
+  /init_dump: dump current Envoy init manager information (experimental)
+  /listeners: print listener info
+  /logging: query/change logging levels
+  /memory: print current allocation/heap usage
+  /quitquitquit: exit the server
+  /ready: print server state, return 200 if LIVE, otherwise return 503
+  /reopen_logs: reopen access logs
+  /reset_counters: reset all counters to zero
+  /runtime: print runtime values
+  /runtime_modify: modify runtime values
+  /server_info: print server version/status information
+  /stats: print server stats
+  /stats/prometheus: print server stats in prometheus format
+  /stats/recentlookups: Show recent stat-name lookups
+  /stats/recentlookups/clear: clear list of stat-name lookups and counter
+  /stats/recentlookups/disable: disable recording of reset stat-name lookup names
+  /stats/recentlookups/enable: enable recording of reset stat-name lookup names
+```
+
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
+
+
+<br>
 
 ## 02. Global
 
