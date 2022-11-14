@@ -373,6 +373,7 @@ nav:
               - Docker: virtualization/virtualization_container_docker.md
               - ストレージ: virtualization/virtualization_container_docker_storage.md
               - ネットワーク: virtualization/virtualization_container_docker_network.md
+              - コマンド: virtualization/virtualization_container_docker_command.md
 
   - ⚙️ IaC:
       - infrastructure_as_code/index.md
