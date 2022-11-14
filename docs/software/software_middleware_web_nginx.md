@@ -127,7 +127,10 @@ server {
 
 Nginxは、HTTPプロトコルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
 
-> ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
+> ℹ️ 参考：
+> 
+> - http://nginx.org/en/docs/http/load_balancing.html
+> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
 **＊実装例＊**
 
@@ -177,9 +180,12 @@ server {
 
 #### ▼ ```L4```ロードバランサーの場合
 
-Nginxは、TCPプロトコルのインバウンド通信を複数のサーバーに負荷分散的に振り分ける。
+Nginxは、TCPプロトコルのインバウンド通信を複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。```L4```ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。
 
-> ℹ️ 参考：https://engineering.mercari.com/blog/entry/2016-08-17-170114/
+> ℹ️ 参考：
+> 
+> - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
+> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
 **＊実装例＊**
 

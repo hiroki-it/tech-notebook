@@ -15,7 +15,7 @@ description: API＠Envoyの知見を記録しています。
 
 ## 01. Envoy-API
 
-Envoyの設定値をレスポンスとして返信する。
+Envoyの設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すれば良いのかが個人的にはわかりにくく、サービスメッシュツール（例：Istio）でサポートされている付属ツール（例：```istioctl proxy-config```コマンド）を使用した方が良い。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -167,7 +167,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?include_eds
 
 #### ▼ resourceパラメーターとは
 
-静的な設定値（特に、リスナー、ルート、クラスター）、サービスディスカバリーによって動的に登録された設定値（特に、リスナー、ルート、クラスター）を、JSON形式でレスポンスとして返信する。
+```config_dump```エンドポイントのJSON形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 

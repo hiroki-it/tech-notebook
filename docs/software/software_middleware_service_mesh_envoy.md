@@ -87,7 +87,10 @@ XDS-APIは、EnvoyからgRPCのコールを受信し、動的な設定を返却�
 
 Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはリスナーに宛先情報を動的に設定する。
 
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/lds.proto#L30-L43
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/lds.proto#L30-L43
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 ```go
 
@@ -121,7 +124,10 @@ service ListenerDiscoveryService {
 
 Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはルーターに宛先情報を動的に設定する。
 
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/rds.proto#L30-L43
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/rds.proto#L30-L43
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 
 ```go
@@ -157,7 +163,10 @@ service RouteDiscoveryService {
 
 Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはルーターに宛先情報を動的に設定する。
 
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/cds.proto#L26-L39
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/cds.proto#L26-L39
+> - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 
 ```go

@@ -93,7 +93,7 @@ $ kubectl cluster-info
 Kubernetes control plane is running at https://*.*.*.*:443
 CoreDNS is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
-````
+```
 
 <br>
 
@@ -427,8 +427,17 @@ $ kubectl drain <ワーカーNode名>
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 ```bash
-$ kubectl edit <Pod以外のリソース名>
+$ kubectl edit <リソースの種類> <Pod以外のリソース名>
 ```
+
+```bash
+$ kubectl edit deployment foo-deployment
+```
+
+```bash
+$ kubectl edit statefulset foo-statefulset
+```
+
 
 <br>
 
@@ -651,7 +660,7 @@ Podの現在のIPアドレスを取得する。
 $ kubectl get pods foo-pod \
     -n foo-namespace \
     -o jsonpath="{.status.podIP}"
-````
+```
 
 **＊例＊**
 

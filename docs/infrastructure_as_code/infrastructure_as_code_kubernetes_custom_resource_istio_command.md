@@ -403,7 +403,7 @@ $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|5
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
           "address": "10.0.0.1",
-          # Podのコンテナポート
+          # bar-podのコンテナポート
           "portValue": 50002
         }
       },
@@ -420,7 +420,7 @@ $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|5
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
           "address": "10.0.0.2",
-          # Podのコンテナポート
+          # bar-podのコンテナポート
           "portValue": 50002
         }
       },
@@ -437,7 +437,7 @@ $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|5
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
           "address": "10.0.0.3",
-          # Podのコンテナポート
+          # bar-podのコンテナポート
           "portValue": 50002
         }
       },
@@ -461,7 +461,7 @@ $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|5
 
 ```bash
 $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|50002||foo-service.foo-namespace.svc.cluster.local"
-````
+```
 
 <br>
 

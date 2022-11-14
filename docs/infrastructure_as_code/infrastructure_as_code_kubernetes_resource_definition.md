@@ -2195,6 +2195,28 @@ spec:
 
 <br>
 
+### spec.hostNetwork
+
+#### ▼ hostNetworkとは
+
+Podが、自身の稼働するワーカーNodeのネットワークにアクセスできるかどうかを設定する。ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
+
+> ℹ️ 参考：https://stackoverflow.com/a/64793701
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-node-exporter
+spec:
+  containers:
+    - name: foo-node-exporter
+      image: prom/node-exporter:1.0.0
+  hostNetwork: true
+```
+
+<br>
+
 ### spec.imagePullSecrets
 
 #### ▼ imagePullSecretsとは
