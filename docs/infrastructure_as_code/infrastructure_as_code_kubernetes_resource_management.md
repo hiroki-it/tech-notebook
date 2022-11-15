@@ -84,6 +84,7 @@ deschedulerは、Podを再スケジューリングする。類似するkube-sche
 > - https://torumakabe.github.io/post/k8s_descheduler/
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
 
+
 <br>
 
 ### ポリシー
@@ -94,25 +95,116 @@ deschedulerは、Podを再スケジューリングする。類似するkube-sche
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
 
-#### ▼ RemoveDuplicates
-
-Deployment、StatefulSet、Job、の配下にあるPodが、同じワーカーNode上でスケーリングされている場合、これらを他のワーカーNodeに再スケジューリングする。
-
-> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
-
 #### ▼ LowNodeUtilization
 
 ワーカーNodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないワーカーNodeにPodを再スケジューリングする。
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
 
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  LowNodeUtilization:
+    enabled: true
+    params:
+      nodeResourceUtilizationThresholds:
+        thresholds:
+          cpu: 20
+          memory: 20
+          pods: 20
+        targetThresholds:
+          cpu: 50
+          memory: 50
+          pods: 50
+```
+
+
+#### ▼ RemoveDuplicates
+
+Deployment、StatefulSet、Job、の配下にあるPodが、同じワーカーNode上でスケーリングされている場合、これらを他のワーカーNodeに再スケジューリングする。
+
+> ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemoveDuplicates:
+    enabled: true
+```
+
+#### ▼ RemovePodsHavingTooManyRestarts
+
+調査中...
+
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemovePodsHavingTooManyRestarts:
+    enabled: true
+    params:
+      podsHavingTooManyRestarts:
+        podRestartThreshold: 100
+        includingInitContainers: true
+```
+
+
+
 #### ▼ RemovePodsViolatingNodeAffinity
 
 ```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なワーカーNodeに再スケジューリングする。
 
-#### ▼ 他にもいっぱい
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
-> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemovePodsViolatingNodeAffinity:
+    enabled: true
+```
+
+
+#### ▼ RemovePodsViolatingInterPodAntiAffinity
+
+調査中...
+
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemovePodsViolatingInterPodAntiAffinity:
+    enabled: true
+```
+
+#### ▼ RemovePodsViolatingTopologySpreadConstraint
+
+調査中...
+
+> ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemovePodsViolatingTopologySpreadConstraint:
+    enabled: true
+    params:
+      podsHavingTooManyRestarts:
+        podRestartThreshold: 100
+        includingInitContainers: true
+```
+
+
 
 <br>
 

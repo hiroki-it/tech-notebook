@@ -5,6 +5,7 @@
 ### ソフトウェア
 
 * ##### 📖 [︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software.html)
+* ##### 📖 [設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_policy.html)
 
 <br>
 
