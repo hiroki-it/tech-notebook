@@ -115,21 +115,33 @@ static_resources:
                 route_config:
                   name: local_route
                   virtual_hosts:
-                    - name: backend
+                    - name: 50001
                       domains:
-                        - "*"
+                        - foo-service.foo-namespace.svc.cluster.local
                       # ルート
                       routes:
                         - match:
                             # ホストベースルーティング
-                            host: foo-service.foo-namespace.svc.cluster.local
+                            path: /*
                           route:
                             # クラスター（ここではKubernetesのService）
-                            cluster: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
+                            cluster: foo-virtual-service.foo-namespace
+                    - name: 50002
+                      domains:
+                        - bar-service.bar-namespace.svc.cluster.local
+                      routes:
                         - match:
-                            host: bar-service.bar-namespace.svc.cluster.local
+                            path: /*
                           route:
-                            cluster: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+                            cluster: bar-virtual-service.bar-namespace
+                    - name: 50003
+                      domains:
+                        - baz-service.baz-namespace.svc.cluster.local
+                      routes:
+                        - match:
+                            path: /*
+                          route:
+                            cluster: baz-virtual-service.baz-namespace
 ```
 
 #### ▼ リスナーの動的な登録
@@ -232,35 +244,63 @@ service RouteDiscoveryService {
 static_resources:
   # クラスター
   clusters:
-      # クラスター（ここではKubernetesのService）
+    # クラスター（ここではKubernetesのService）
     - name: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
       connect_timeout: 0.25s
       type: STATIC
       lb_policy: ROUND_ROBIN
       load_assignment:
-          cluster_name: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
-          # エンドポイント
-          endpoints:
-            - lb_endpoints:
-                endpoint:
+        cluster_name: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
+        # エンドポイント
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
                   address:
                     socket_address:
-                      # クラスター（ここではService）の宛先情報
-                      address: foo-service.foo-namespace.svc.cluster.local
-                      port_value: 50001
+                      # エンドポイント（ここではPod）の宛先情報
+                      address: 10.0.0.1
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 10.0.0.2
+                      port_value: 80
     - name: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
       connect_timeout: 0.25s
       type: STATIC
       lb_policy: ROUND_ROBIN
       load_assignment:
-          cluster_name: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
-          endpoints:
-            - lb_endpoints:
-                endpoint:
+        cluster_name: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
                   address:
                     socket_address:
-                      address: bar-service.bar-namespace.svc.cluster.local
-                      port_value: 50002
+                      address: 11.0.0.1
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 11.0.0.2
+                      port_value: 80
+    - name: "outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local"
+      connect_timeout: 0.25s
+      type: STATIC
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+        cluster_name: "outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local"
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 12.0.0.1
+                      port_value: 80
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 12.0.0.2
+                      port_value: 80
 ```
 
 #### ▼ クラスター値の動的な登録

@@ -416,7 +416,7 @@ $ istioctl proxy-config endpoints foo-pod \
       "address": {
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
-          "address": "10.0.0.1",
+          "address": "11.0.0.1",
           # bar-podのコンテナポート
           "portValue": 50002
         }
@@ -433,7 +433,7 @@ $ istioctl proxy-config endpoints foo-pod \
       "address": {
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
-          "address": "10.0.0.2",
+          "address": "11.0.0.2",
           # bar-podのコンテナポート
           "portValue": 50002
         }
@@ -450,7 +450,7 @@ $ istioctl proxy-config endpoints foo-pod \
       "address": {
         "socketAddress": {
           # bar-podのインスタンスのIPアドレス
-          "address": "10.0.0.3",
+          "address": "11.0.0.3",
           # bar-podのコンテナポート
           "portValue": 50002
         }
