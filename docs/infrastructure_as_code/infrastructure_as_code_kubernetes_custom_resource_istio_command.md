@@ -576,8 +576,8 @@ $ istioctl proxy-config routes foo-pod \
           "foo-service.foo-namespace.svc:50001",
           "foo-service.foo-namespace",
           "foo-service.foo-namespace:50001",
-          "172.16.0.2",
-          "172.16.0.2:50001"
+          "172.16.0.1",
+          "172.16.0.1:50001"
         ],
         "routes": [
           {
