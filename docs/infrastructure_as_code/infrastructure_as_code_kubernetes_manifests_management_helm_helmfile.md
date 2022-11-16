@@ -225,7 +225,7 @@ $ helmfile -e prd apply
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
-$ helmfile -f ./helmfile.yaml <コマンド>
+$ helmfile -e prd -f ./helmfile.yaml <コマンド>
 ```
 
 <br>
@@ -242,7 +242,7 @@ $ helmfile -f ./helmfile.yaml <コマンド>
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ```bash
-$ helmfile apply
+$ helmfile -e prd apply
 
 Upgrading release=foo-release, chart=./charts/foo
 Release "foo-release" has been upgraded. Happy Helming!
@@ -272,7 +272,7 @@ foo-release         ./charts/foo         0.0.1
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
 
 ```bash
-$ helmfile destroy
+$ helmfile -e prd destroy
 ```
 
 <br>
@@ -289,7 +289,7 @@ $ helmfile destroy
 > - https://github.com/databus23/helm-diff#helm-diff-plugin
 
 ```bash
-$ helmfile diff
+$ helmfile -e prd diff
 ```
 
 #### ▼ grepとの組み合わせ
@@ -297,7 +297,7 @@ $ helmfile diff
 マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。```grep```を使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
-$ helmfile diff | grep kind
+$ helmfile -e prd diff | grep kind
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 kind: Service
@@ -306,7 +306,7 @@ kind: PersistentVolume
 ```
 
 ```bash
-$ helmfile diff | grep Source
+$ helmfile -e prd diff | grep Source
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 Source: project/manifests/service.yaml
@@ -325,7 +325,7 @@ Source: project/manifests/persistent-volume.yaml
 > ℹ️ 参考：https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 ```bash
-$ helmfile sync
+$ helmfile -e prd sync
 ```
 
 <br>
@@ -337,8 +337,22 @@ $ helmfile sync
 全てのリリースに関して、```helm template```コマンドを実行する。
 
 ```bash
-$ helmfile template
+$ helmfile -e prd template
 ```
 
 <br>
 
+### write-values
+
+#### ▼ write-valuesとは
+
+個人的に感動したコマンド。```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
+
+```bash
+$ helmfile -e prd -f ./helmfile.yaml write-values
+
+# helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。
+Writing values file foo-77cab19b/foo.yaml
+```
+
+<br>

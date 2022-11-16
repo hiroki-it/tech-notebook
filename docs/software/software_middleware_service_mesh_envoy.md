@@ -83,27 +83,76 @@ XDS-APIは、EnvoyからgRPCのコールを受信し、動的な設定を返却�
 
 リスナーでは、Envoyに対する通信を待ち受ける。
 
-#### ▼ リスナーへの動的な登録
+#### ▼ リスナーの静的な登録
 
-Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはリスナーに宛先情報を動的に設定する。
+```envoy.yaml```ファイルにて、```listeners```キーを設定することにより、Envoyに静的にリスナー値を静的に設定できる。
 
 > ℹ️ 参考：
 > 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/lds.proto#L30-L43
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+
+```yaml
+static_resources:
+  # リスナー
+  listeners:
+    - name: listener_0
+    - address:
+        socket_address:
+          address: 127.0.0.1
+          port_value: 10000
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: ingress_http
+                codec_type: AUTO
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                route_config:
+                  name: local_route
+                  virtual_hosts:
+                    - name: backend
+                      domains:
+                        - "*"
+                      # ルート
+                      routes:
+                        - match:
+                            # ホストベースルーティング
+                            host: foo-service.foo-namespace.svc.cluster.local
+                          route:
+                            # クラスター（ここではKubernetesのService）
+                            cluster: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
+                        - match:
+                            host: bar-service.bar-namespace.svc.cluster.local
+                          route:
+                            cluster: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+```
+
+#### ▼ リスナーの動的な登録
+
+Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/listener/v3/lds.proto#L23-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
-```go
+```protobuf
 
 ...
 
 service ListenerDiscoveryService {
-  option (envoy.annotations.resource).type = "envoy.api.v2.Listener";
+  option (envoy.annotations.resource).type = "envoy.config.listener.v3.Listener";
   
   ...
 
   // リモートプロシージャーコール
-  rpc FetchListeners(DiscoveryRequest) returns (DiscoveryResponse) {
-    option (google.api.http).post = "/v2/discovery:listeners";
+  rpc FetchListeners(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
+    option (google.api.http).post = "/v3/discovery:listeners";
     option (google.api.http).body = "*";
   }
 }
@@ -120,28 +169,39 @@ service ListenerDiscoveryService {
 
 ルーターでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
 
-#### ▼ ルーターへの動的な登録
+#### ▼ ルーター値の静的な登録
 
-Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはルーターに宛先情報を動的に設定する。
+```static_resources.listeners```キー配下で、リスナーと合わせて設定する。
+
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+
+
+#### ▼ ルーター値の動的な登録
+
+Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを実行し、宛先のルート値を取得する。また、Envoyは宛先のルート値を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/rds.proto#L30-L43
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/route/v3/rds.proto#L22-L42
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 
-```go
+```protobuf
 
 ...
 
 service RouteDiscoveryService {
-  option (envoy.annotations.resource).type = "envoy.api.v2.RouteConfiguration";
+  option (envoy.annotations.resource).type = "envoy.config.route.v3.RouteConfiguration";
   
   ...
 
   // リモートプロシージャーコール
-  rpc FetchRoutes(DiscoveryRequest) returns (DiscoveryResponse) {
-    option (google.api.http).post = "/v2/discovery:routes";
+  rpc FetchRoutes(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
+    option (google.api.http).post = "/v3/discovery:routes";
     option (google.api.http).body = "*";
   }
 }
@@ -159,28 +219,72 @@ service RouteDiscoveryService {
 
 クラスターでは、ルーターからルーティングされた通信を受け取り、いずれかのエンドポイントにロードバランシングする。
 
-#### ▼ クラスターへの動的な登録
+#### ▼ クラスター値の静的な登録
 
-Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはルーターに宛先情報を動的に設定する。
+```envoy.yaml```ファイルにて、```clusters```キーを設定することにより、Envoyに静的にクラスター値を静的に設定できる。
 
 > ℹ️ 参考：
 > 
-> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/cds.proto#L26-L39
+> - https://skyao.io/learning-envoy/architecture/concept/cluster.html
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+
+```yaml
+static_resources:
+  # クラスター
+  clusters:
+      # クラスター（ここではKubernetesのService）
+    - name: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
+      connect_timeout: 0.25s
+      type: STATIC
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+          cluster_name: "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
+          # エンドポイント
+          endpoints:
+            - lb_endpoints:
+                endpoint:
+                  address:
+                    socket_address:
+                      # クラスター（ここではService）の宛先情報
+                      address: foo-service.foo-namespace.svc.cluster.local
+                      port_value: 50001
+    - name: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+      connect_timeout: 0.25s
+      type: STATIC
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+          cluster_name: "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
+          endpoints:
+            - lb_endpoints:
+                endpoint:
+                  address:
+                    socket_address:
+                      address: bar-service.bar-namespace.svc.cluster.local
+                      port_value: 50002
+```
+
+#### ▼ クラスター値の動的な登録
+
+Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを実行し、宛先のクラスター値を取得する。また、Envoyは宛先のクラスター設定を自身に動的に設定する。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/cluster/v3/cds.proto#L22-L38
 > - https://github.com/envoyproxy/envoy/blob/main/source/common/config/type_to_endpoint.cc#L43-L87
 
 
-```go
+```protobuf
 
 ...
 
 service ClusterDiscoveryService {
-  option (envoy.annotations.resource).type = "envoy.api.v2.Cluster";
+  option (envoy.annotations.resource).type = "envoy.config.cluster.v3.Cluster";
   
   ...
 
   // リモートプロシージャーコール
-  rpc FetchClusters(DiscoveryRequest) returns (DiscoveryResponse) {
-    option (google.api.http).post = "/v2/discovery:clusters";
+  rpc FetchClusters(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
+    option (google.api.http).post = "/v3/discovery:clusters";
     option (google.api.http).body = "*";
   }
 }
@@ -197,25 +301,36 @@ service ClusterDiscoveryService {
 
 エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。
 
-#### ▼ エンドポイントへの動的な登録
+#### ▼ エンドポイント値の静的な登録
 
-Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを実行し、宛先情報を取得する。また、Envoyはルーターに宛先情報を動的に設定する。
-
-> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/api/v2/eds.proto#L26-L41
+```static_resources.clusters```キー配下で、リスナーと合わせて設定する。
 
 
-```go
+> ℹ️ 参考：
+>
+> - https://skyao.io/learning-envoy/architecture/concept/cluster.html
+> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+
+
+#### ▼ エンドポイント値の動的な登録
+
+Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを実行し、宛先のエンドポイント値を取得する。また、Envoyはルーターに宛先のエンドポイント設定を自身に動的に設定する。
+
+> ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
+
+
+```protobuf
 
 ...
 
 service EndpointDiscoveryService {
-  option (envoy.annotations.resource).type = "envoy.api.v2.ClusterLoadAssignment";
+option (envoy.annotations.resource).type = "envoy.config.endpoint.v3.ClusterLoadAssignment";
   
   ...
 
   // リモートプロシージャーコール
-  rpc FetchEndpoints(DiscoveryRequest) returns (DiscoveryResponse) {
-    option (google.api.http).post = "/v2/discovery:endpoints";
+  rpc FetchEndpoints(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
+    option (google.api.http).post = "/v3/discovery:endpoints";
     option (google.api.http).body = "*";
   }
 }

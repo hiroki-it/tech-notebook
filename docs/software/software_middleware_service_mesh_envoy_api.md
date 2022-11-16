@@ -178,7 +178,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 
 #### ▼ dynamic_active_clusters
 
-準備済みのクラスター設定値を、JSON形式でレスポンスとして返信する。
+準備済みのクラスター値を、JSON形式でレスポンスとして返信する。
 
 
 ```bash
@@ -231,7 +231,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 #### ▼ dynamic_warm_clusters
 
-準備が完了していない（ウォーミングアップ中の）クラスター設定値を、JSON形式でレスポンスとして返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
+準備が完了していない（ウォーミングアップ中の）クラスター値を、JSON形式でレスポンスとして返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
 
 > ℹ️ 参考：
 >
@@ -241,7 +241,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 ```bash
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}
 
-{} # ウォーミングアップ中のクラスター設定値が無ければ、空配列になる。
+{} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
 
@@ -279,7 +279,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 #### ▼ static_listeners
 
-静的なリスナー設定値を返信する。
+静的なリスナー値を返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

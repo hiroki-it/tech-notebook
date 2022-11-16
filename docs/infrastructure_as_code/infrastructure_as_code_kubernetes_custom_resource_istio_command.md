@@ -316,11 +316,15 @@ JSON形式で取得すれば、より詳細な設定値を確認できる。
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
-$ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn bar-service.bar-namespace.svc.cluster.local | jq '.[0]'
+$ istioctl proxy-config cluster foo-pod \
+    -n foo-namespace \
+    -o json \
+    --fqdn bar-service.bar-namespace.svc.cluster.local \
+    | jq '.[0]'
 
 {
-  # クラスター設定名
-  "name": "outbound|50002||bar-service.bar-namespace.svc.cluster.local",
+  # クラスター名
+  "name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
   "type": "EDS",
   "edsClusterConfig": {
     "edsConfig": {
@@ -328,9 +332,9 @@ $ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn bar-serv
       "initialFetchTimeout": "0s",
       "resourceApiVersion": "V3"
     },
-    # エンドポイント設定名を検索する。
+    # エンドポイント名を検索する。
     # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
-    "serviceName": "outbound|50002||bar-service.bar-namespace.svc.cluster.local"
+    "serviceName": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
   },
   
   ...
@@ -343,7 +347,11 @@ $ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn bar-serv
 クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
 
 ```bash
-$ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn foo-service.foo-namespace.svc.cluster.local | jq '.[0]'
+$ istioctl proxy-config cluster foo-pod \
+    -n foo-namespace \
+    -o json \
+    --fqdn foo-service.foo-namespace.svc.cluster.local \
+    | jq '.[0]'
 ```
 
 #### ▼ --port
@@ -351,7 +359,9 @@ $ istioctl proxy-config cluster foo-pod -n foo-namespace -o json --fqdn foo-serv
 クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。
 
 ```bash
-$ istioctl proxy-config routes foo-pod -n foo-namespace --port 50001
+$ istioctl proxy-config routes foo-pod \
+    -n foo-namespace \
+    --port 50001
 ```
 
 <br>
@@ -373,7 +383,7 @@ $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 $ istioctl proxy-config endpoints foo-pod -n foo-namespace
 
 ENDPOINT                               STATUS      OUTLIER CHECK     CLUSTER
-<PodのIPアドレス>:<Podのコンテナポート>     HEALTHY     OK                <紐づいているクラスター設定名>
+<PodのIPアドレス>:<Podのコンテナポート>     HEALTHY     OK                <紐づいているクラスター名>
 10.0.0.1:80                            HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
 10.0.0.2:80                            HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
 10.0.0.3:80                            HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
@@ -391,10 +401,14 @@ JSON形式で取得すれば、より詳細な設定値を確認できる。
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
-$ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|50002||foo-service.foo-namespace.svc.cluster.local" -o json | jq '.[0]'
+$ istioctl proxy-config endpoints foo-pod \
+    -n foo-namespace \
+    --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local" \
+    -o json \
+    | jq '.[0]'
 
 {
-  # クラスター設定名
+  # クラスター名
   "name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
   "addedViaApi": true,
   "hostStatuses": [
@@ -460,7 +474,9 @@ $ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|5
 エンドポイントに紐づくクラスター名でフィルタリングし、エンドポイントを取得する。
 
 ```bash
-$ istioctl proxy-config endpoints foo-pod -n foo-namespace --cluster "outbound|50002||foo-service.foo-namespace.svc.cluster.local"
+$ istioctl proxy-config endpoints foo-pod \
+    -n foo-namespace \
+    --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
 ```
 
 <br>
@@ -482,8 +498,8 @@ $ istioctl proxy-config listeners <Pod名> -n <PodのNamespace名>
 $ istioctl proxy-config listeners foo-pod -n foo-namespace
 
 ADDRESS               PORT                          MATCH                                 DESTINATION
-<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   Trans: raw_buffer; App: http/1.1,h2c  Route: <紐づいているルート設定名>
-<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   ALL                                   Cluster: <紐づいているクラスター設定名>
+<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   Trans: raw_buffer; App: http/1.1,h2c  Route: <紐づいているルート名>
+<ServiceのClusterIP>  <Serviceが待ち受けるポート番号>   ALL                                   Cluster: <紐づいているクラスター名>
 
 172.16.0.1            50001                         Trans: raw_buffer; App: http/1.1,h2c  Route: 50001
 172.16.0.1            50001                         ALL                                   Cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
@@ -534,11 +550,15 @@ JSON形式で取得すれば、より詳細な設定値を確認できる。
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
-$ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | jq
+$ istioctl proxy-config routes foo-pod \
+    -n foo-namespace \
+    --name 50001 \
+    -o json \
+    | jq
 
 [
   {
-    # ルート設定名
+    # ルート名
     "name": "50001",
     # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
     "virtualHosts": [
@@ -683,7 +703,7 @@ $ istioctl proxy-config routes foo-pod -n foo-namespace --name 50001 -o json | j
 
 #### ▼ --name
 
-ルート設定名でフィルタリグし、取得する。
+ルート名でフィルタリグし、取得する。
 
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名> --name 50001

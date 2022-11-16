@@ -30,27 +30,27 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ### デフォルトのSSL証明書
 
-
 ![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
 
-
 コンポーネント間でHTTPSプロトコルを使用するためにはSSL証明書が必須であり、必須ではないが、通信をさらに安全にするためにクライアント証明書が使用されているところがある。クライアント証明書の場合、これを使用するクライアント側には、クライアント証明書と秘密鍵の両方を配置することになる。
+
+| 送信元                     | 宛先            | 種類        | Node上の証明書のマウント先（kubeadmの場合）                                                                    | 説明                                                                                           |
+|-------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| kube-apiserver          | kubelet        | クライアント証明書 | ```/var/lib/kubelet/pki/*.pem```               | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
+| kube-apiserver          | etcd           | クライアント証明書 | 調査中...                                                | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
+| クライアント（```kubectl```クライアント、Kubernetesリソース）のローカルマシン          | kube-apiserver | クライアント証明書 | ```/etc/kubernetes/admin.conf```  | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、```~/.kube/config```ファイルの```client-certificate-data```キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『```x509: certificate has expired or is not yet valid```』や『```error: You must be logged in to the server (Unauthorized)```』というエラーになる。                                  |
+| kube-controller-manager | kube-apiserver | クライアント証明書 | 調査中... | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```~/.kube/config```ファイルも必要になる。 |
+| kube-scheduler          | kube-apiserver | クライアント証明書 | 調査中...    | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```~/.kube/config```ファイルも必要になる。          |
+| その他のコンポーネント             | kube-apiserver    | SSL証明書    | 調査中...                                            | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |
+| kube-apiserver          | kubelet             | SSL証明書    | 調査中                              | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                 |
+| kube-apiserver          | front-proxy         | SSL証明書    | 調査中...                                       | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                             |
+
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
 
-| 送信元                     | 宛先            | 種類        | 説明                                                                                           |
-|-------------------------|----------------|-----------|----------------------------------------------------------------------------------------------|
-| kube-apiserver          | kubelet        | クライアント証明書 | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                               |
-| kube-apiserver          | etcd           | クライアント証明書 | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                      |
-| クライアント（```kubectl```クライアント、Kubernetesリソース）のローカルマシン          | kube-apiserver | クライアント証明書 | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、```~/.kube/config```ファイルの```client-certificate-data```キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『```x509: certificate has expired or is not yet valid```』や『```error: You must be logged in to the server (Unauthorized)```』というエラーになる。                                  |
-| kube-controller-manager | kube-apiserver | クライアント証明書 | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```~/.kube/config```ファイルも必要になる。 |
-| kube-scheduler          | kube-apiserver | クライアント証明書 | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、```~/.kube/config```ファイルも必要になる。          |
-| その他のコンポーネント             | kube-apiserver    | SSL証明書    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                  |
-| kube-apiserver          | kubelet             | SSL証明書    | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                 |
-| kube-apiserver          | front-proxy         | SSL証明書    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                             |
 
 <br>
 

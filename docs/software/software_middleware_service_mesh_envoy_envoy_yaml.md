@@ -411,13 +411,13 @@ static_resources:
         endpoints:
           - lb_endpoints:
             - endpoint:
-                address: 192.168.0.1
+                address: 192.168.0.1 # クラスターのIPアドレス
                 port_value: 80
             - endpoint:
                 address: 192.168.0.1
                 port_value: 81
             - endpoint:
-                address: bar-service
+                address: foo-service.foo-namespace.svc.cluster.local # クラスター（ここではKubernetesのService）の完全修飾ドメイン名
                 port_value: 82
 ```
 
