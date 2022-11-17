@@ -181,10 +181,26 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 > ℹ️ 参考：https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 
+#### ▼ XDS-APIとの通信の仕組み
 
-#### ▼ XDS-APIへのリクエスト
+Envoyは、XDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理が、専用のエージェント（例：```pilot-agent```）に切り分けられている。
 
-Envoyは、コントロールプレーンのXDS-APIに定期的にリモートプロシージャーコールを実行し、返却された宛先情報を動的に設定する。Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理が、専用のエージェント（例：```pilot-agent```）に切り分けられている。
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
+
+
+（１）Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
+
+（２）Envoyは、リスナー値に紐づける必要のあるルート値を特定する。
+
+（３）Envoyは、クラスター値に紐づける必要のあるエンドポイント値を特定する。
+
+（３）Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
+
+（３）Envoyは、XDS-APIに定期的にリクエストを送信し、各設定を更新する。
+
+
+#### ▼ 実装
+
 
 ```protobuf
 message DiscoveryRequest {
@@ -210,6 +226,9 @@ message DiscoveryResponse {
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L47-L97
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L100-L141
 
+#### ▼ リクエスト内容の種類
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
 
 <br>
 
@@ -313,7 +332,7 @@ static_resources:
 
 #### ▼ リスナーの動的な登録
 
-Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -324,12 +343,20 @@ Envoyは、起動時にコントロールプレーンのLDS-APIにリモート�
 
 ...
 
+// リモートプロシージャーコール
 service ListenerDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.listener.v3.Listener";
-  
-  ...
 
-  // リモートプロシージャーコール
+  // Bidirectional Streaming RPC
+  rpc StreamListeners(stream discovery.v3.DiscoveryRequest)
+      returns (stream discovery.v3.DiscoveryResponse) {
+  }
+  
+  rpc DeltaListeners(stream discovery.v3.DeltaDiscoveryRequest)
+      returns (stream discovery.v3.DeltaDiscoveryResponse) {
+  }
+  
+  // Unary RPC
   rpc FetchListeners(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:listeners";
     option (google.api.http).body = "*";
@@ -467,7 +494,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
 
 #### ▼ ルート値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを実行し、宛先のルート値を取得する。また、Envoyは宛先のルート値を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のルート値を取得する。また、Envoyは宛先のルート値を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -479,12 +506,20 @@ Envoyは、起動時にコントロールプレーンのRDS-APIにリモート�
 
 ...
 
+// リモートプロシージャーコール
 service RouteDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.route.v3.RouteConfiguration";
-  
-  ...
 
-  // リモートプロシージャーコール
+  // Bidirectional Streaming RPC
+  rpc StreamRoutes(stream discovery.v3.DiscoveryRequest)
+      returns (stream discovery.v3.DiscoveryResponse) {
+  }
+
+  rpc DeltaRoutes(stream discovery.v3.DeltaDiscoveryRequest)
+      returns (stream discovery.v3.DeltaDiscoveryResponse) {
+  }
+
+  // Unary RPC
   rpc FetchRoutes(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:routes";
     option (google.api.http).body = "*";
@@ -669,7 +704,7 @@ static_resources:
 
 #### ▼ クラスター値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを実行し、宛先のクラスター値を取得する。また、Envoyは宛先のクラスター設定を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のクラスター値を取得する。また、Envoyは宛先のクラスター設定を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -681,12 +716,20 @@ Envoyは、起動時にコントロールプレーンのCDS-APIにリモート�
 
 ...
 
+// リモートプロシージャーコール
 service ClusterDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.cluster.v3.Cluster";
-  
-  ...
 
-  // リモートプロシージャーコール
+  // Bidirectional Streaming RPC
+  rpc StreamClusters(stream discovery.v3.DiscoveryRequest)
+      returns (stream discovery.v3.DiscoveryResponse) {
+  }
+
+  rpc DeltaClusters(stream discovery.v3.DeltaDiscoveryRequest)
+      returns (stream discovery.v3.DeltaDiscoveryResponse) {
+  }
+
+  // Unary RPC
   rpc FetchClusters(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:clusters";
     option (google.api.http).body = "*";
@@ -784,7 +827,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
 
 #### ▼ エンドポイント値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを実行し、宛先のエンドポイント値を取得する。また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイント値を取得する。また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
 
 > ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
@@ -793,12 +836,20 @@ Envoyは、起動時にコントロールプレーンのEDS-APIにリモート�
 
 ...
 
+// リモートプロシージャーコール
 service EndpointDiscoveryService {
-option (envoy.annotations.resource).type = "envoy.config.endpoint.v3.ClusterLoadAssignment";
-  
-  ...
+  option (envoy.annotations.resource).type = "envoy.config.endpoint.v3.ClusterLoadAssignment";
 
-  // リモートプロシージャーコール
+  // Bidirectional Streaming RPC
+  rpc StreamEndpoints(stream discovery.v3.DiscoveryRequest)
+      returns (stream discovery.v3.DiscoveryResponse) {
+  }
+
+  rpc DeltaEndpoints(stream discovery.v3.DeltaDiscoveryRequest)
+      returns (stream discovery.v3.DeltaDiscoveryResponse) {
+  }
+
+  // Unary RPC
   rpc FetchEndpoints(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:endpoints";
     option (google.api.http).body = "*";

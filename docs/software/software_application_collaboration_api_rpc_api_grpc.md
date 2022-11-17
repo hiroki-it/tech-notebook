@@ -45,11 +45,26 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 > ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 
+
+```protobuf
+service Request {
+  rpc Request (Request) returns (Response) {}
+}
+```
+
 #### ▼ Server Streaming RPC
 
 クライアントが```1```個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
 
 > ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
+
+
+```protobuf
+service Notification {
+  rpc Notification (NotificationRequest) returns (stream NotificationResponse) {}
+}
+```
+
 
 #### ▼ Client Streaming RPC
 
@@ -57,11 +72,24 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 > ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
 
+```protobuf
+service Upload {
+  rpc Upload (stream UploadRequest) returns (UploadResponse) {}
+}
+```
+
+
 #### ▼ Bidirectional Streaming RPC
 
 クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。また、双方向にリクエストを送信できる。クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
 
 > ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
+
+```protobuf
+service Chat {
+  rpc Chat (stream ChatRequest) returns (stream ChatResponse) {}
+}
+```
 
 <br>
 
@@ -375,9 +403,9 @@ func main() {
 
 > ℹ️ 参考：
 >
+> - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://christina04.hatenablog.com/entry/protoc-usage
-> - https://qiita.com/takat0-h0rikosh1/items/3e4c4daa0bf89f04d241
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
@@ -394,6 +422,7 @@ message Message {
   string body = 1;
 }
 
+// Unary RPC
 // クライアント側からリモートプロシージャーコールされる関数を定義する。
 service FooService {
   rpc SayHello(Message) returns (Message) {
