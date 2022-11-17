@@ -333,7 +333,7 @@ istio-proxy@<Pod名>: $ curl http://localhost:15000/config_dump
 
 ## 01-03. Isiodコントロールプレーン（サイドカープロキシによるサービスメッシュの場合）
 
-### Isiodコントロールプレーンとは
+### Isiodコントロールプレーン
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 

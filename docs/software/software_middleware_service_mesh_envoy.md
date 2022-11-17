@@ -45,17 +45,6 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
 
-| サービスディスカバリー名    |  説明                                                                         | 
-|-------------------------|------------------------------------------------------------------------------|
-| CDS：Cluster Discovery Service    | Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。|
-| EDS：Endpoint Discovery Service    | Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。|     
-| LDS：Listener Discovery Service    | Envoyの実行時に、リスナーの設定を動的に検出できるようにする。|     
-| RDS：Route Discovery Service    | Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。|     
-| SDS：Secret Discovery Service    | Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。|     
-| VHDS：Virtual Host Discovery Service    | Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。|     
-| ...                                    | ...                                                         |
-
-
 > ℹ️ 参考：
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
@@ -63,14 +52,54 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://skyao.io/learning-envoy/xds/
 
 
-#### ▼ XDS-APIのエンドポイント
+#### ▼ ADS：Aggregated XDS
 
-コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返却する。Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、go-control-planeが使用されている。
+各XDSの処理結果を紐付ける。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
+
+#### ▼ CDS：Cluster Discovery Service
+
+Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+
+#### ▼ EDS：Endpoint Discovery Service
+
+Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+
+#### ▼ LDS：Listener Discovery Service
+
+Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+
+#### ▼ RDS：Route Discovery Service
+
+Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+
+#### ▼ SDS：Secret Discovery Service
+
+Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
+
+#### ▼ VHDS：Virtual Host Discovery Service
+
+Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。
+
+<br>
+
+### XDS-APIのエンドポイント
+
+#### ▼ XDS-APIのエンドポイントとは
+
+コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返却する。
 
 > ℹ️ 参考：
 > 
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
+
+
+#### ▼ 実装
+
+Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、go-control-planeが使用されている。
 
 ```go
 package resource
@@ -135,6 +164,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 }
 ```
 
+
 <br>
 
 ## 01-03. データプレーン
@@ -175,6 +205,7 @@ message DiscoveryResponse {
 
 > ℹ️ 参考：
 > 
+> - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L47-L97
 > - https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/discovery.proto#L100-L141

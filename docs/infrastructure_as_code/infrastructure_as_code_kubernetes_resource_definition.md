@@ -1294,6 +1294,8 @@ spec:
 
 並列的に起動できるPod数を設定する。
 
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -1311,6 +1313,8 @@ spec:
 
 起動するPodを設定する。
 
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -1323,8 +1327,30 @@ spec:
         - name: foo-alpine
           image: alpine:latest
           command: |
-            /bin/sh -c "echo Hello World"
+            echo Hello World
       restartPolicy: OnFailure
+```
+
+<br>
+
+### spec.ttlSecondsAfterFinished
+
+#### ▼ ttlSecondsAfterFinishedとは
+
+Jobが成功/失敗した後にJob自体を削除する場合に、その秒数を設定する。
+
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically
+> - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  ttlSecondsAfterFinished: 30
 ```
 
 <br>
