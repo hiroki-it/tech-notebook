@@ -187,16 +187,15 @@ Envoyは、XDS-APIにリモートプロシージャーコールを単方向/双�
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 
-
-（１）Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
+（１）Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。取得した宛先情報を自身に設定する。
 
 （２）Envoyは、リスナー値に紐づける必要のあるルート値を特定する。
 
 （３）Envoyは、クラスター値に紐づける必要のあるエンドポイント値を特定する。
 
-（３）Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
+（３）Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。取得した宛先情報を自身に設定する。
 
-（３）Envoyは、XDS-APIに定期的にリクエストを送信し、各設定を更新する。
+（３）Envoyは、XDS-APIに定期的にリモートプロシージャーコールを単方向/双方向で実行し、宛先情報を自身に設定する。
 
 
 #### ▼ 実装
