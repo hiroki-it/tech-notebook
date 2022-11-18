@@ -195,7 +195,7 @@ Envoyは、XDS-APIにリモートプロシージャーコールを単方向/双�
 
 （４）Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。取得した宛先情報を自身に設定する。
 
-（５）Envoyは、XDS-APIに定期的にリモートプロシージャーコールを単方向/双方向で実行し、宛先情報を自身に設定する。
+（５）Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。取得した宛先情報を自身に設定する。
 
 
 #### ▼ 実装
@@ -346,7 +346,7 @@ Envoyは、起動時にコントロールプレーンのLDS-APIにリモート�
 service ListenerDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.listener.v3.Listener";
 
-  // Bidirectional Streaming RPC
+  // 双方向ストリーミングRPC
   rpc StreamListeners(stream discovery.v3.DiscoveryRequest)
       returns (stream discovery.v3.DiscoveryResponse) {
   }
@@ -355,7 +355,7 @@ service ListenerDiscoveryService {
       returns (stream discovery.v3.DeltaDiscoveryResponse) {
   }
   
-  // Unary RPC
+  // 単項RPC
   rpc FetchListeners(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:listeners";
     option (google.api.http).body = "*";
@@ -509,7 +509,7 @@ Envoyは、起動時にコントロールプレーンのRDS-APIにリモート�
 service RouteDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.route.v3.RouteConfiguration";
 
-  // Bidirectional Streaming RPC
+  // 双方向ストリーミングRPC
   rpc StreamRoutes(stream discovery.v3.DiscoveryRequest)
       returns (stream discovery.v3.DiscoveryResponse) {
   }
@@ -518,7 +518,7 @@ service RouteDiscoveryService {
       returns (stream discovery.v3.DeltaDiscoveryResponse) {
   }
 
-  // Unary RPC
+  // 単項RPC
   rpc FetchRoutes(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:routes";
     option (google.api.http).body = "*";
@@ -719,7 +719,7 @@ Envoyは、起動時にコントロールプレーンのCDS-APIにリモート�
 service ClusterDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.cluster.v3.Cluster";
 
-  // Bidirectional Streaming RPC
+  // 双方向ストリーミングRPC
   rpc StreamClusters(stream discovery.v3.DiscoveryRequest)
       returns (stream discovery.v3.DiscoveryResponse) {
   }
@@ -728,7 +728,7 @@ service ClusterDiscoveryService {
       returns (stream discovery.v3.DeltaDiscoveryResponse) {
   }
 
-  // Unary RPC
+  // 単項RPC
   rpc FetchClusters(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:clusters";
     option (google.api.http).body = "*";
@@ -839,7 +839,7 @@ Envoyは、起動時にコントロールプレーンのEDS-APIにリモート�
 service EndpointDiscoveryService {
   option (envoy.annotations.resource).type = "envoy.config.endpoint.v3.ClusterLoadAssignment";
 
-  // Bidirectional Streaming RPC
+  // 双方向ストリーミングRPC
   rpc StreamEndpoints(stream discovery.v3.DiscoveryRequest)
       returns (stream discovery.v3.DiscoveryResponse) {
   }
@@ -848,7 +848,7 @@ service EndpointDiscoveryService {
       returns (stream discovery.v3.DeltaDiscoveryResponse) {
   }
 
-  // Unary RPC
+  // 単項RPC
   rpc FetchEndpoints(discovery.v3.DiscoveryRequest) returns (discovery.v3.DiscoveryResponse) {
     option (google.api.http).post = "/v3/discovery:endpoints";
     option (google.api.http).body = "*";

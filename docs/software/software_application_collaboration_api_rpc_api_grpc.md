@@ -39,7 +39,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 ![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/grpc_connection-type.png)
 
-#### ▼ Unary RPC
+#### ▼ Unary RPC（単項RPC）
 
 クライアントが```1```個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。一番よく使用する。
 
@@ -48,11 +48,12 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 ```protobuf
 service Request {
-  rpc Request (Request) returns (Response) {}
+  rpc Request (Request) returns (Response) {
+  }
 }
 ```
 
-#### ▼ Server Streaming RPC
+#### ▼ Server Streaming RPC（サーバーストリーミングRPC）
 
 クライアントが```1```個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
 
@@ -61,12 +62,13 @@ service Request {
 
 ```protobuf
 service Notification {
-  rpc Notification (NotificationRequest) returns (stream NotificationResponse) {}
+  rpc Notification (NotificationRequest) returns (stream NotificationResponse) {
+  }
 }
 ```
 
 
-#### ▼ Client Streaming RPC
+#### ▼ Client Streaming RPC（クライアントストリーミングRPC）
 
 クライアントが複数個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。クライアントからのリクエストのデータサイズが大きくなる場合（例：アップロードサービス）に使用する。
 
@@ -74,12 +76,13 @@ service Notification {
 
 ```protobuf
 service Upload {
-  rpc Upload (stream UploadRequest) returns (UploadResponse) {}
+  rpc Upload (stream UploadRequest) returns (UploadResponse) {
+  }
 }
 ```
 
 
-#### ▼ Bidirectional Streaming RPC
+#### ▼ Bidirectional Streaming RPC（双方向ストリーミングRPC）
 
 クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。また、双方向にリクエストを送信できる。クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
 
@@ -87,7 +90,8 @@ service Upload {
 
 ```protobuf
 service Chat {
-  rpc Chat (stream ChatRequest) returns (stream ChatResponse) {}
+  rpc Chat (stream ChatRequest) returns (stream ChatResponse) {
+  }
 }
 ```
 
@@ -422,7 +426,7 @@ message Message {
   string body = 1;
 }
 
-// Unary RPC
+// 単項RPC
 // クライアント側からリモートプロシージャーコールされる関数を定義する。
 service FooService {
   rpc SayHello(Message) returns (Message) {

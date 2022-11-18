@@ -402,14 +402,14 @@ receivers:
         api_url: https://hooks.slack.com/services/*****
         # 波括弧（{}）をエスケープするために、『{{``}}』とprintfを使用している。
         text: |
-          {{`{{ range .Alerts }}`}}
-            {{`*Summary:* {{ .Annotations.summary }}`}}
-            {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
-            {{`*Description:* {{ .Annotations.description }}`}}
-            *Details:*
-            {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
-            {{`{{ end }}`}}
-          {{`{{ end }}`}}
+      {{`{{ range .Alerts }}`}}
+      {{`*Summary:* {{ .Annotations.summary }}`}}
+      {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
+      {{`*Description:* {{ .Annotations.description }}`}}
+        *Details:*
+      {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
+      {{`{{ end }}`}}
+      {{`{{ end }}`}}
           
 ...
 ```
@@ -476,11 +476,17 @@ data:
 
 ### required
 
+#### ▼ requiredとは
+
+調査中...
+
 > ℹ️ 参考：https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
 
 <br>
 
 ### template
+
+#### ▼ templateとは
 
 ```define```関数で定義した文字列をそのまま出力する。```template```関数では出力内容を変数に格納できないため、これが可能な```include```関数が推奨されている。
 
@@ -601,7 +607,7 @@ metadata:
 
 <br>
 
-## 08. 出力形式
+## 08. スペースや改行コードの除去
 
 ### ```-```（ハイフン）
 
@@ -773,6 +779,32 @@ spec:
           - configMapRef:
               name: foo-secret
 ...
+```
+
+<br>
+
+### toYaml
+
+#### ▼ toYamlとは
+
+YAML形式でテンプレートを出力する。```values```ファイルを出力したい場合に使用する。
+
+> ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+
+```yaml
+# values.yamlファイル
+parameters:
+  foo: FOO
+  bar: BAR
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  {{- toYaml .Values.parameters | nindent 2 }}
 ```
 
 <br>

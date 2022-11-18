@@ -363,7 +363,6 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
 
-
 #### ▼ operator-controller
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
@@ -384,9 +383,53 @@ operator-controllerがkube-apiserverにリクエストを送信できるよう�
 
 <br>
 
-### 一覧
+## 04. Operatorの開発
 
-> ℹ️ 参考：https://operatorhub.io/
+### 既存のOperatorをカスタマイズする場合
+
+#### ▼ client-goコンポーネント
+
+調査中...
+
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
+> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
+
+#### ▼ custom-controller-componentsコンポーネント
+
+調査中...
+
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
+> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
+
+<br>
+
+### 自前のOperatorを作成する場合
+
+#### ▼ OperatorFrameworkとは
+
+Operatorを開発するためのフレームワークのこと。OperatorHubで公開されている。
+
+> ℹ️ 参考：
+> 
+> - https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
+> - https://operatorhub.io/
+
+#### ▼ Operator SDK
+
+Operatorを、開発、テスト、リリース、ために必要なツールを提供する。
+
+#### ▼ Operator Lifecycle Manager
+
+Operatorの、作成、削除、を管理する。
+
+#### ▼ Operator Metering
+
+調査中...
+
 
 <br>
 

@@ -27,9 +27,10 @@ description: Cで始まるAWSリソース＠AWSの知見を記録しています
 
 認証局であるATSによって認証されたSSL証明書を管理できる。
 
-| 自社の中間認証局名         | ルート認証局名 |
-| -------------------------- | -------------- |
-| ATS：Amazon Trust Services | Starfield社    |
+| サーバー提供者 | 名前    | 
+| ------------ | --------------------- | 
+| 中間認証局          | ATS：Amazon Trust Services | 
+| ルート認証局          | Starfield社 |
 
 <br>
 

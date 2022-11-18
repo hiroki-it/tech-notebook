@@ -72,7 +72,10 @@
   > > > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
   > > * ##### <u>Istio</u>
-  > > > * ##### 📖 [︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html)
+  > > > * ##### <u>Istio</u>
+  > > > > * ##### 📖 [︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html)
+  > > > > * ##### 📖 [コントロールプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.html)
+  > > > > * ##### 📖 [データプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.html)
   > > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.html)
   > > > * ##### 📖 [︎リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)

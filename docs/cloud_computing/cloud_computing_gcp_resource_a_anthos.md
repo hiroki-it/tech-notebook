@@ -180,7 +180,7 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
 
-https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 ```bash
 $ bmctl update cluster -c <Cluster名> --admin-kubeconfig=<kubeconfigファイル>
