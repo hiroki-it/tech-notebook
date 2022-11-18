@@ -438,7 +438,10 @@ nav:
                       - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
                   - ■ Istio:
-                      - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+                      - ■ Istio:
+                          - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+                          - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.md
+                          - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
                       - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
