@@ -272,19 +272,20 @@ static_resources:
                   - name: "50001"
                     virtual_hosts:
                       - name: foo-host
+                        # ホストベース
                         domains:
-                          - foo-domain-com
+                          - "*"
                         # ルートのリスト
                         routes:
                           - match:
-                              # ホストベースルーティング
+                              # パスベース
                               prefix: /
                             route:
                               # クラスター
                               cluster: foo-cluster
                       - name: allow_any
                         domains:
-                          - '*' 
+                          - "*" 
                         routes:
                           - match:
                               prefix: /
@@ -294,7 +295,7 @@ static_resources:
                     virtual_hosts:
                       - name: bar-host
                         domains:
-                          - bar-domain-com
+                          - "*"
                         routes:
                           - match:
                               prefix: /
@@ -302,7 +303,7 @@ static_resources:
                               cluster: bar-cluster
                       - name: allow_any
                         domains:
-                          - '*' 
+                          - "*" 
                         routes:
                           - match:
                               prefix: /
@@ -312,7 +313,7 @@ static_resources:
                     virtual_hosts:
                       - name: baz-host
                         domains:
-                          - baz-domain-com
+                          - "*"
                         routes:
                           - match:
                               prefix: /
@@ -320,7 +321,7 @@ static_resources:
                               cluster: baz-cluster
                       - name: allow_any
                         domains:
-                          - '*' 
+                          - "*" 
                         routes:
                           - match:
                               prefix: /
@@ -384,6 +385,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
         '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
+    # 宛先IPアドレスとポート番号が合致した場合に、通信はリスナーで処理される。
     socketAddress:
       address: 172.16.0.1
       portValue: 50001
@@ -533,6 +535,7 @@ service RouteDiscoveryService {
 - name: "50001"
   virtual_hosts:
     - name: foo-service.foo-namespace.svc.cluster.local:50001
+      # ホストベース
       domains:
         - foo-service.foo-namespace.svc.cluster.local
         - foo-service.foo-namespace.svc.cluster.local:50001
@@ -547,14 +550,14 @@ service RouteDiscoveryService {
       # ルートのリスト
       routes:
         - match:
-            # ホストベースルーティング
+            # パスベース
             prefix: /
           route:
             # クラスター（ここではKubernetesのService）
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     - name: allow_any
       domains:
-        - '*'
+        - "*"
       routes:
         - match:
             prefix: /
@@ -582,7 +585,7 @@ service RouteDiscoveryService {
             cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
     - name: allow_any
       domains:
-        - '*'
+        - "*"
       routes:
         - match:
             prefix: /
@@ -610,7 +613,7 @@ service RouteDiscoveryService {
             cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
     - name: allow_any
       domains:
-        - '*'
+        - "*"
       routes:
         - match:
             prefix: /

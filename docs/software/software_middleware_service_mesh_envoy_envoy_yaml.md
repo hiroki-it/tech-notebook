@@ -270,9 +270,12 @@ static_resources:
               name: foo_route
               virtual_hosts:
                 - name: foo_service
-                  domains: ["*"]
+                  # ホストベース
+                  domains: 
+                    - "*"
                   routes:
                   - match:
+                      # パスベース
                       prefix: "/"
                     route:
                       cluster: foo_cluster

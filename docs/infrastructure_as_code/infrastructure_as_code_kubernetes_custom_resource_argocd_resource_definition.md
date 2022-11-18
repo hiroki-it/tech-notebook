@@ -1099,7 +1099,7 @@ metadata:
   name: prd # その他、運用チーム名など
 spec:
   sourceRepos:
-    - '*'
+    - "*"
 ```
 
 <br>
@@ -1128,7 +1128,7 @@ metadata:
   name: prd # その他、運用チーム名など
 spec:
   destinations:
-    - namespace: '*' # 全てのNamespaceにデプロイできる。
+    - namespace: "*" # 全てのNamespaceにデプロイできる。
       server: https://kubernetes.default.svc
 ```
 
@@ -1145,8 +1145,8 @@ metadata:
   name: prd # その他、運用チーム名など
 spec:
   clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
+    - group: "*"
+      kind: "*"
 ```
 
 

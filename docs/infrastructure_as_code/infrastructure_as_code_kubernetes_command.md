@@ -582,6 +582,18 @@ NAME       READY   STATUS             RESTARTS   AGE
 bar-pod    2/2     Running            0          5m01s
 ```
 
+**＊例＊**
+
+```wc```コマンドで出力内容の行数を数える。これにより、Podの個数を確認できる。
+
+> ℹ️ 参考：https://stackoverflow.com/a/61634879
+
+```bash
+$ kubectl get pod --no-headers | wc -l
+
+20
+```
+
 #### ▼ -A
 
 指定したKubernetesリソースをNamespaceに関係なく取得する。

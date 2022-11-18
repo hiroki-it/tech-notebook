@@ -102,7 +102,7 @@ kubeletは、Pod内のコンテナにServiceの宛先情報（IPアドレス、�
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
-> - https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A 
 
 **＊実装例＊**
 

@@ -966,7 +966,7 @@ metadata:
   name: foo-app-service-entry
 spec:
   hosts:
-    - '*'
+    - "*"
 ```
 
 <br>
