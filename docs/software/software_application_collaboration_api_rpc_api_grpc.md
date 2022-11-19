@@ -320,7 +320,7 @@ import (
 type Server struct {
 }
 
-// Helloを返却する関数
+// Helloを返信する関数
 func (s *Server) SayHello(ctx context.Context, in *pb.Message) (*Message, error) {
 	log.Printf("Received message body from client: %s", in.Body)
 	return &pb.Message{Body: "Hello From the Server!"}, nil
@@ -403,7 +403,7 @@ func main() {
 
 #### ▼ ```.proto```ファイル
 
-クライアントからのコールで返却する構造体や関数を定義する。
+クライアントからのコールで返信する構造体や関数を定義する。
 
 > ℹ️ 参考：
 >

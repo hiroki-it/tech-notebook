@@ -317,7 +317,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （８）コンテナランタイムのデーモンは、コンテナを作成する。
 
-（９）kubeletは、Podが作成されたことをkube-apiserverに返却する。
+（９）kubeletは、Podが作成されたことをkube-apiserverに返信する。
 
 （１０）kube-apiserverは、Podの作成完了をetcdに永続化する。
 

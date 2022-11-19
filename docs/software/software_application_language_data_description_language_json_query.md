@@ -38,10 +38,10 @@ $ brew install jq
   "bar": "BAR",
   "baz": [
     {
-      "qux": "QUX",
+      "qux": "QUX"
     },
     {
-      "quux": "QUUX",
+      "quux": "QUUX"
     }
   ]
 }

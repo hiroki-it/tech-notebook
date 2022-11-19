@@ -276,12 +276,45 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 出力形式を指定する。```jq```コマンドや```yq```コマンドと組み合わせた方が良い。
 
 ```bash
-# 返却されたJSONから、1番目の項目だけ取得する。
-$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o json | jq
+# 返却されたYAMLから、1番目の項目だけ取得する。
+$ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o yaml | yq
 ```
 
 <br>
 
+### all
+
+#### ▼ allとは
+
+Envoyの処理コンポーネントの設定を全て取得する
+
+```bash
+$ istioctl proxy-config all foo-pod \
+    -n foo-namespace \
+    -o yaml \
+    | yq '.configs[] | keys' | sort -f
+
+
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- bootstrap
+- dynamic_active_clusters
+- dynamic_active_secrets
+- dynamic_listeners
+- dynamic_route_configs
+- last_updated
+- static_clusters
+- static_listeners
+- static_route_configs
+- version_info
+- version_info
+```
+
+<br>
 
 
 ### cluster
@@ -311,35 +344,30 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
-JSON形式で取得すれば、より詳細な設定値を確認できる。
+YAML形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
 ```bash
 $ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
-    -o json \
+    -o yaml \
     --fqdn bar-service.bar-namespace.svc.cluster.local \
-    | jq '.[0]'
+    | yq '.[0]'
 
-{
-  # クラスター名
-  "name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
-  "type": "EDS",
-  "edsClusterConfig": {
-    "edsConfig": {
-      "ads": {},
-      "initialFetchTimeout": "0s",
-      "resourceApiVersion": "V3"
-    },
-    # エンドポイント名を検索する。
-    # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
-    "serviceName": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
-  },
-  
-  ...
-}
+# クラスター名
+name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+type: EDS
+edsClusterConfig:
+  edsConfig:
+    ads: {}
+    initialFetchTimeout: 0s
+    resourceApiVersion: V3
+  # エンドポイント名を検索する。
+  # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
+  serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 
+...
 ```
 
 #### ▼ --fqdn
@@ -349,9 +377,9 @@ $ istioctl proxy-config cluster foo-pod \
 ```bash
 $ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
-    -o json \
+    -o yaml \
     --fqdn foo-service.foo-namespace.svc.cluster.local \
-    | jq '.[0]'
+    | yq '.[0]'
 ```
 
 #### ▼ --port
@@ -396,7 +424,7 @@ unix://./etc/istio/proxy/SDS           HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS           HEALTHY     OK                xds-grpc
 ```
 
-JSON形式で取得すれば、より詳細な設定値を確認できる。
+YAML形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -404,68 +432,49 @@ JSON形式で取得すれば、より詳細な設定値を確認できる。
 $ istioctl proxy-config endpoints foo-pod \
     -n foo-namespace \
     --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local" \
-    -o json \
-    | jq '.[0]'
+    -o yaml \
+    | yq '.[0]'
 
-{
-  # クラスター名
-  "name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
-  "addedViaApi": true,
-  "hostStatuses": [
-    {
-      "address": {
-        "socketAddress": {
-          # bar-podのインスタンスのIPアドレス
-          "address": "11.0.0.1",
-          # bar-podのコンテナポート
-          "portValue": 50002
-        }
-      },
+# クラスター名
+name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+addedViaApi: true
+observabilityName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+hostStatuses:
+  - address:
+      socketAddress:
+        # bar-podのインスタンスのIPアドレス
+        address: 11.0.0.1
+        # bar-podのコンテナポート
+        portValue: 50002
+    locality:
+      region: ap-northeast-1
+      zone: ap-northeast-1a
+    
+    ...
+
+  - address:
+      socketAddress:
+        # bar-podのインスタンスのIPアドレス
+        address: 11.0.0.2
+        # bar-podのコンテナポート
+        portValue: 50002
+    locality:
+      region: ap-northeast-1
+      zone: ap-northeast-1c
       
       ...
-      
-      "locality": {
-        "region": "ap-northeast-1",
-        "zone": "ap-northeast-1a"
-      }
-    },
-    {
-      "address": {
-        "socketAddress": {
-          # bar-podのインスタンスのIPアドレス
-          "address": "11.0.0.2",
-          # bar-podのコンテナポート
-          "portValue": 50002
-        }
-      },
-      
-      ...
-      
-      "locality": {
-        "region": "ap-northeast-1",
-        "zone": "ap-northeast-1c"
-      }
-    },
-    {
-      "address": {
-        "socketAddress": {
-          # bar-podのインスタンスのIPアドレス
-          "address": "11.0.0.3",
-          # bar-podのコンテナポート
-          "portValue": 50002
-        }
-      },
-      
-      ...
-      
-      "locality": {
-        "region": "ap-northeast-1",
-        "zone": "ap-northeast-1d"
-      }
-    }
-  ],
-  "observabilityName": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local"
-}
+
+  - address:
+      socketAddress:
+        # bar-podのインスタンスのIPアドレス
+        address: 11.0.0.3
+        # bar-podのコンテナポート
+        portValue: 50002
+    locality:
+      region: ap-northeast-1
+      zone: ap-northeast-1d
+    
+    ...
 
 ```
 
@@ -545,7 +554,7 @@ NAME                         DOMAINS                                     MATCH  
 ...
 ```
 
-JSON形式で取得すれば、より詳細な設定値を確認できる。
+YAML形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -553,152 +562,108 @@ JSON形式で取得すれば、より詳細な設定値を確認できる。
 $ istioctl proxy-config routes foo-pod \
     -n foo-namespace \
     --name 50001 \
-    -o json \
-    | jq
+    -o yaml \
+    | yq
 
-[
-  {
-    # ルート名
-    "name": "50001",
-    # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
-    "virtualHosts": [
-       # ワーカーNode外からfoo-podにインバウンド通信を送信する時に選ばれる。
-       {
-        "name": "foo-service.foo-namespace.svc.cluster.local:50001",
-        # Hostヘッダーの値を指定する。合致した場合に、この仮想ホストが選ばれる。
-        # 網羅的に検知できるように、色々なパターンを指定する。
-        "domains": [
-          "foo-service.foo-namespace.svc.cluster.local",
-          "foo-service.foo-namespace.svc.cluster.local:50001",
-          "foo-service",
-          "foo-service:50001",
-          "foo-service.foo-namespace.svc",
-          "foo-service.foo-namespace.svc:50001",
-          "foo-service.foo-namespace",
-          "foo-service.foo-namespace:50001",
-          "172.16.0.1",
-          "172.16.0.1:50001"
-        ],
-        "routes": [
-          {
-            "match": {
-              "prefix": "/"
-            },
-            "route": {
-              # foo-podと紐づくクラスターを指定する。
-              "cluster": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local",
-              
-              ...
-              
-              },
-              "maxGrpcTimeout": "10800s"
-            },
+# ルート名
+- name: '50001'
+  # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
+  virtualHosts:
+    # ワーカーNode外からfoo-podにインバウンド通信を送信する時に選ばれる。
+    - name: foo-service.foo-namespace.svc.cluster.local:50001
+      # Hostヘッダーの値を指定する。合致した場合に、この仮想ホストが選ばれる。
+      # 網羅的に検知できるように、色々なパターンを指定する。
+      domains:
+        - foo-service.foo-namespace.svc.cluster.local
+        - foo-service.foo-namespace.svc.cluster.local:50001
+        - foo-service
+        - foo-service:50001
+        - foo-service.foo-namespace.svc
+        - foo-service.foo-namespace.svc:50001
+        - foo-service.foo-namespace
+        - foo-service.foo-namespace:50001
+        - 172.16.0.1
+        - 172.16.0.1:50001
+      routes:
+        - match:
+            prefix: /
+          route:
+            # foo-podと紐づくクラスターを指定する。
+            cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
             
             ...
             
-          }
-        ],
-        "includeRequestAttemptCount": true
-      },
-      # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
-      {
-        "name": "bar-service.bar-namespace.svc.cluster.local:50002",
-        "domains": [
-          "bar-service.bar-namespace.svc.cluster.local",
-          "bar-service.bar-namespace.svc.cluster.local:50002",
-          "bar-service",
-          "bar-service:50002",
-          "bar-service.bar-namespace.svc",
-          "bar-service.bar-namespace.svc:50002",
-          "bar-service.bar-namespace",
-          "bar-service.bar-namespace:50002",
-          "172.16.0.2",
-          "172.16.0.2:50002"
-        ],
-        "routes": [
-          {
-            "match": {
-              "prefix": "/"
-            },
-            "route": {
-              "cluster": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
-              
-              ...
-              
-              },
-              "maxGrpcTimeout": "10800s"
-            },
+          maxGrpcTimeout: 10800s
+          
+          ...
+          
+      includeRequestAttemptCount: true
+    # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
+    - name: bar-service.bar-namespace.svc.cluster.local:50002
+      domains:
+        - bar-service.bar-namespace.svc.cluster.local
+        - bar-service.bar-namespace.svc.cluster.local:50002
+        - bar-service
+        - bar-service:50002
+        - bar-service.bar-namespace.svc
+        - bar-service.bar-namespace.svc:50002
+        - bar-service.bar-namespace
+        - bar-service.bar-namespace:50002
+        - 172.16.0.2
+        - 172.16.0.2:50002
+      routes:
+        - match:
+            prefix: /
+          route:
+            cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
             
             ...
             
-          }
-        ],
-        "includeRequestAttemptCount": true
-      },
-      # foo-podからbaz-podにアウトバウンド通信を送信する時に選ばれる。
-      {
-        "name": "baz-service.baz-namespace.svc.cluster.local:50003",
-        "domains": [
-          "baz-service.baz-namespace.svc.cluster.local",
-          "baz-service.baz-namespace.svc.cluster.local:50003",
-          "baz-service",
-          "baz-service:50003",
-          "baz-service.baz-namespace.svc",
-          "baz-service.baz-namespace.svc:50003",
-          "baz-service.baz-namespace",
-          "baz-service.baz-namespace:50003",
-          "172.16.0.3",
-          "172.16.0.3:50003"
-        ],
-        "routes": [
-          {
-            "match": {
-              "prefix": "/"
-            },
-            "route": {
-              "cluster": "outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local",
-              
-              ...
-              
-              },
-              "maxGrpcTimeout": "10800s"
-            },
+          maxGrpcTimeout: 10800s
+          
+          ...
+          
+      includeRequestAttemptCount: true
+    # foo-podからbaz-podにアウトバウンド通信を送信する時に選ばれる。
+    - name: baz-service.baz-namespace.svc.cluster.local:50003
+      domains:
+        - baz-service.baz-namespace.svc.cluster.local
+        - baz-service.baz-namespace.svc.cluster.local:50003
+        - baz-service
+        - baz-service:50003
+        - baz-service.baz-namespace.svc
+        - baz-service.baz-namespace.svc:50003
+        - baz-service.baz-namespace
+        - baz-service.baz-namespace:50003
+        - 172.16.0.3
+        - 172.16.0.3:50003
+      routes:
+        - match:
+            prefix: /
+          route:
+            cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
             
             ...
             
-          }
-        ],
-        "includeRequestAttemptCount": true
-      },
-      {
-        ...
-      },
-      # 一致するルートが無かった場合のアウトバウンド通信に関するルートを指定する。
-      {
-        "name": "allow_any",
-        "domains": [
-            "*"
-        ],
-        "routes": [
-          {
-            "name": "allow_any",
-              "match": {
-                "prefix": "/"
-              },
-              "route": {
-                "cluster": "PassthroughCluster",
-                "timeout": "0s",
-                "maxGrpcTimeout": "0s"
-              }
-          }
-        ],
-        "includeRequestAttemptCount": true
-      },  
-    ],
-    "validateClusters": false
-  },
-]
-
+          maxGrpcTimeout: 10800s
+      includeRequestAttemptCount: true
+    
+    ...  
+    
+    # 条件に合致しない任意のアウトバウンド通信を送信する時に選ばれる。
+    - name: allow_any
+      domains:
+        - '*'
+      routes:
+        - name: allow_any
+          match:
+            prefix: /
+          route:
+            cluster: PassthroughCluster
+            timeout: 0s
+            maxGrpcTimeout: 0s
+      includeRequestAttemptCount: true
+  validateClusters: false
 ```
 
 #### ▼ --name

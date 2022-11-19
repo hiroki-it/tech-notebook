@@ -42,7 +42,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 #### ▼ XDS-APIとは
 
-コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返却するAPIを持つサーバー。主要なサーバーの一覧を示す。
+コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
 
 > ℹ️ 参考：
@@ -54,9 +54,12 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 #### ▼ ADS：Aggregated XDS
 
-各XDSの処理結果を紐付ける。
+各XDSの処理結果を紐付け、適切な順番に整理する。もしADSがないと、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で不整合が起こってしまう。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
+> - https://www.amazon.co.jp/dp/B09XN9RDY1
 
 #### ▼ CDS：Cluster Discovery Service
 
@@ -88,18 +91,18 @@ Envoyの実行時に、Cluster内メンバーのルーティングの設定を�
 
 #### ▼ XDS-APIのエンドポイントとは
 
-コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返却する。
+コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信する。
 
-> ℹ️ 参考：
-> 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
-> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
-> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
-
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
 
 #### ▼ 実装
 
-Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、go-control-planeが使用されている。
+Envoyを使用するサービスディスカバリーツールのいくつか（例：Istio）では、コントロールプレーンに```go-control-plane```パッケージが使用されている。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/resource/v3/resource.go#L34-L43
+> - https://github.com/envoyproxy/go-control-plane/blob/main/pkg/server/v3/gateway.go#L38-L98
 
 ```go
 package resource
@@ -173,17 +176,15 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ データプレーンの仕組み
 
-
 ![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/envoy_data-plane_architecture.png)
 
-
-データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。処理は、リスナー、ルート、クラスター、エンドポイント、から構成される。
+データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。データプレーンの処理は、コンポーネント（リスナー、ルート、クラスター、エンドポイント）から構成される。
 
 > ℹ️ 参考：https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 
 #### ▼ XDS-APIとの通信の仕組み
 
-Envoyは、XDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理が、専用のエージェント（例：```pilot-agent```）に切り分けられている。
+Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。Envoyが組み込まれたサービスメッシュツール（例：Istio）では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理が、専用のエージェント（例：```pilot-agent```）に切り分けられている。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 
@@ -248,7 +249,6 @@ message DiscoveryResponse {
 
 
 ```yaml
-# foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
 static_resources:
   # リスナーのリスト
   listeners:
@@ -332,7 +332,7 @@ static_resources:
 
 #### ▼ リスナーの動的な登録
 
-Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナー値を取得する。また、Envoyは宛先のリスナー値を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -370,7 +370,7 @@ service ListenerDiscoveryService {
 
 **＊実装例＊**
 
-KubernetesのPod内で```envoy```コンテナを稼働させるとする。
+Istioを使用して、```envoy```コンテナを稼働させるとする。Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
@@ -385,9 +385,9 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
         '@type': type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
-    # 宛先IPアドレスとポート番号が合致した場合に、通信はリスナーで処理される。
+    # 宛先IPアドレスとポート番号が合致した場合に、このリスナーで処理される。
     socketAddress:
-      address: 172.16.0.1
+      address: 172.16.0.1 # 全ての宛先IPアドレスを合致させる場合は、0.0.0.0 とする。
       portValue: 50001
   bindToPort: false
   filterChains:
@@ -406,6 +406,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
                   path: /dev/stdout
             cluster: outbound|50001|v1|foo-service.foo.svc.cluster.local
             statPrefix: outbound|50001|v1|foo-service.foo.svc.cluster.local
+  # アウトバウンド通信のみをこのリスナーで処理する。
   trafficDirection: OUTBOUND
 - name: 172.16.0.2_50002
   accessLog:
@@ -495,7 +496,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
 
 #### ▼ ルート値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のルート値を取得する。また、Envoyは宛先のルート値を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のルート値を取得する。また、Envoyは宛先のルート値を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -531,9 +532,15 @@ service RouteDiscoveryService {
 
 ```
 
+
+**＊実装例＊**
+
+Istioを使用して、```envoy```コンテナを稼働させるとする。Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+
+
 ```yaml
 - name: "50001"
-  virtual_hosts:
+  virtualHosts:
     - name: foo-service.foo-namespace.svc.cluster.local:50001
       # ホストベース
       domains:
@@ -565,7 +572,7 @@ service RouteDiscoveryService {
             cluster: PassthroughCluster
 # ワーカーNode外からbar-podにアウトバウンド通信を送信する時に選ばれる。
 - name: "50002"
-  virtual_hosts:
+  virtualHosts:
     - name: bar-service.bar-namespace.svc.cluster.local:50002
       domains:
         - bar-service.bar-namespace.svc.cluster.local
@@ -593,7 +600,7 @@ service RouteDiscoveryService {
             cluster: PassthroughCluster
 # ワーカーNode外からbaz-podにアウトバウンド通信を送信する時に選ばれる。
 - name: "50003"
-  virtual_hosts:
+  virtualHosts:
     - name: baz-service.baz-namespace.svc.cluster.local:50003
       domains:
         - baz-service.baz-namespace.svc.cluster.local
@@ -694,19 +701,19 @@ static_resources:
           - lb_endpoints:
               - endpoint:
                   address:
-                    socket_address:
+                    socketAddress:
                       address: 12.0.0.1
                       port_value: 80
               - endpoint:
                   address:
-                    socket_address:
+                    socketAddress:
                       address: 12.0.0.2
                       port_value: 80
 ```
 
 #### ▼ クラスター値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のクラスター値を取得する。また、Envoyは宛先のクラスター設定を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のクラスター値を取得する。また、Envoyは宛先のクラスター設定を自身に動的に設定する。
 
 > ℹ️ 参考：
 > 
@@ -745,67 +752,68 @@ service ClusterDiscoveryService {
 
 **＊実装例＊**
 
-KubernetesのPod内で```envoy```コンテナを稼働させるとする。
+Istioを使用して、```envoy```コンテナを稼働させるとする。Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
 # クラスター（ここではKubernetesのService）
 - name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
-  connect_timeout: 0.25s
+  connectTimeout: 0.25s
   type: STATIC
-  lb_policy: ROUND_ROBIN
-  load_assignment:
-    cluster_name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
+  lbPolicy: ROUND_ROBIN
+  loadAssignment:
+    clusterName: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     # エンドポイントのリスト
     endpoints:
-      - lb_endpoints:
+      - lbEndpoints:
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   # エンドポイント（ここではPod）の宛先情報
                   address: 10.0.0.1
-                  port_value: 80
+                  portValue: 80
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   address: 10.0.0.2
-                  port_value: 80
+                  portValue: 80
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-  connect_timeout: 0.25s
+  connectTimeout: 0.25s
   type: STATIC
-  lb_policy: ROUND_ROBIN
-  load_assignment:
-    cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  lbPolicy: ROUND_ROBIN
+  loadAssignment:
+    clusterName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
     endpoints:
-      - lb_endpoints:
+      - lbEndpoints:
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   address: 11.0.0.1
-                  port_value: 80
+                  portValue: 80
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   address: 11.0.0.2
-                  port_value: 80
+                  portValue: 80
 - name: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
-  connect_timeout: 0.25s
+  connectTimeout: 0.25s
   type: STATIC
-  lb_policy: ROUND_ROBIN
-  load_assignment:
-    cluster_name: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
+  lbPolicy: ROUND_ROBIN
+  loadAssignment:
+    clusterName: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
     endpoints:
-      - lb_endpoints:
+      - lbEndpoints:
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   address: 12.0.0.1
-                  port_value: 80
+                  portValue: 80
           - endpoint:
               address:
-                socket_address:
+                socketAddress:
                   address: 12.0.0.2
-                  port_value: 80
+                  portValue: 80
 ```
 
 <br>
@@ -829,7 +837,7 @@ KubernetesのPod内で```envoy```コンテナを稼働させるとする。
 
 #### ▼ エンドポイント値の動的な登録
 
-Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイント値を取得する。また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
+Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のエンドポイント値を取得する。また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
 
 > ℹ️ 参考：https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/endpoint/v3/eds.proto#L21-L40
 
