@@ -314,14 +314,78 @@ $ istioctl proxy-config all foo-pod \
 - version_info
 ```
 
+
 <br>
 
+### bootstrap
+
+#### ▼ bootstrapとは
+
+Envoyで、起動時に読み込まれる設定を取得する。
+
+```bash
+$ istioctl proxy-config bootstrap foo-pod \
+    -n foo-namespace \
+    -o yaml \
+    | yq
+
+bootstrap:
+  admin:
+    accessLogPath: /dev/null
+    address:
+      socketAddress:
+        address: 127.0.0.1
+        portValue: 15000
+    profilePath: /var/lib/istio/data/envoy.prof
+  dynamicResources:
+    adsConfig:
+      apiType: GRPC
+      grpcServices:
+        - envoyGrpc:
+            clusterName: xds-grpc
+      setNodeOnFirstMessageOnly: true
+      transportApiVersion: V3
+    cdsConfig:
+      # ADS-APIから取得した宛先情報のうち、クラスター値を設定する。
+      ads: {}
+      initialFetchTimeout: 0s
+      resourceApiVersion: V3
+    ldsConfig:
+      # ADS-APIから取得した宛先情報のうち、リスナー値を設定する。
+      ads: {}
+      initialFetchTimeout: 0s
+      resourceApiVersion: V3
+  layeredRuntime:
+    
+    ...
+  
+  node:
+    
+    ...
+  
+  staticResources:
+    
+    ...
+  
+  statsConfig:
+    
+    ...
+  
+  tracing:
+    
+    ...
+
+lastUpdated: "2022-11-16T08:12:07.162Z"
+```
+
+
+<br>
 
 ### cluster
 
 #### ▼ clusterとは
 
-Envoyのクラスターの設定値を取得する。
+Envoyのクラスターの静的/動的な設定値を取得する。
 
 > ℹ️ 参考：
 > 
@@ -353,19 +417,19 @@ $ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
     -o yaml \
     --fqdn bar-service.bar-namespace.svc.cluster.local \
-    | yq '.[0]'
+    | yq
 
-# クラスター名
-name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-type: EDS
-edsClusterConfig:
-  edsConfig:
-    ads: {}
-    initialFetchTimeout: 0s
-    resourceApiVersion: V3
-  # エンドポイント名を検索する。
-  # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
-  serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  # クラスター名
+- name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  type: EDS
+  edsClusterConfig:
+    edsConfig:
+      ads: {}
+      initialFetchTimeout: 0s
+      resourceApiVersion: V3
+    # エンドポイント名を検索する。
+    # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
+    serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 
 ...
 ```
@@ -399,7 +463,7 @@ $ istioctl proxy-config routes foo-pod \
 
 #### ▼ endpointsとは
 
-Envoyのエンドポイントの設定値を取得する。
+Envoyのエンドポイントの静的/動的な設定値を取得する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
 
@@ -420,6 +484,8 @@ ENDPOINT                               STATUS      OUTLIER CHECK     CLUSTER
 
 127.0.0.1:15000                        HEALTHY     OK                prometheus_stats
 127.0.0.1:15020                        HEALTHY     OK                agent
+
+# Unixドメインソケットでソケットファイルを指定している。
 unix://./etc/istio/proxy/SDS           HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS           HEALTHY     OK                xds-grpc
 ```
@@ -433,49 +499,50 @@ $ istioctl proxy-config endpoints foo-pod \
     -n foo-namespace \
     --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local" \
     -o yaml \
-    | yq '.[0]'
+    | yq
 
 # クラスター名
-name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-addedViaApi: true
-observabilityName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-hostStatuses:
-  - address:
-      socketAddress:
-        # bar-podのインスタンスのIPアドレス
-        address: 11.0.0.1
-        # bar-podのコンテナポート
-        portValue: 50002
-    locality:
-      region: ap-northeast-1
-      zone: ap-northeast-1a
+- name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  addedViaApi: true
+  observabilityName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  hostStatuses:
+    - address:
+        socketAddress:
+          # bar-podのインスタンスのIPアドレス
+          address: 11.0.0.1
+          # bar-podのコンテナポート
+          portValue: 50002
+      locality:
+        region: ap-northeast-1
+        zone: ap-northeast-1a
     
-    ...
-
-  - address:
-      socketAddress:
-        # bar-podのインスタンスのIPアドレス
-        address: 11.0.0.2
-        # bar-podのコンテナポート
-        portValue: 50002
-    locality:
-      region: ap-northeast-1
-      zone: ap-northeast-1c
-      
       ...
 
-  - address:
-      socketAddress:
-        # bar-podのインスタンスのIPアドレス
-        address: 11.0.0.3
-        # bar-podのコンテナポート
-        portValue: 50002
-    locality:
-      region: ap-northeast-1
-      zone: ap-northeast-1d
-    
-    ...
+    - address:
+        socketAddress:
+          # bar-podのインスタンスのIPアドレス
+          address: 11.0.0.2
+          # bar-podのコンテナポート
+          portValue: 50002
+      locality:
+        region: ap-northeast-1
+        zone: ap-northeast-1c
+      
+        ...
 
+    - address:
+        socketAddress:
+          # bar-podのインスタンスのIPアドレス
+          address: 11.0.0.3
+          # bar-podのコンテナポート
+          portValue: 50002
+      locality:
+        region: ap-northeast-1
+        zone: ap-northeast-1d
+    
+      ...
+
+...   
 ```
 
 #### ▼ --cluster
@@ -495,7 +562,7 @@ $ istioctl proxy-config endpoints foo-pod \
 
 #### ▼ listenersとは
 
-Envoyのリスナーの設定値を取得する。
+Envoyのリスナーの静的/動的な設定値を取得する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener
 
@@ -525,7 +592,7 @@ ADDRESS               PORT                          MATCH                       
 
 #### ▼ routesとは
 
-Envoyのルーティングの設定値を取得する。
+Envoyのルーティングの静的/動的な設定値を取得する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
 
@@ -664,6 +731,8 @@ $ istioctl proxy-config routes foo-pod \
             maxGrpcTimeout: 0s
       includeRequestAttemptCount: true
   validateClusters: false
+
+...
 ```
 
 #### ▼ --name

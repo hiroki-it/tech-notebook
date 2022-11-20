@@ -100,15 +100,22 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 データプレーンとコントロールプレーンの組み合わせには様々ある。
 
+| OSS名    | データプレーンの実装               | コントロールプレーンの実装                | サポートしているXDS-API |
+|---------| ------------------------------- | ------------------------------------- | ------------------- |
+| Istio   | Envoy                            | Istiod                               | 全てのXDS-API |
+| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity | 全てのXDS-API|
+| Consul  | ビルトインプロキシ、Envoy            | Consul-control-plane                 | 全てのXDS-API |
+| SPIRE  | Envoy                             | SPIRE                                | SDSのみ |
+| ...     | ...                             | ...                                   | ... |
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
 
-| OSS名    | データプレーンの実装 | コントロールプレーンの実装 |
-|---------| --- | --- |
-| Istio   | Envoy | Istiod |
-| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity |
-| Consul  | ビルトインプロキシ、Envoy | Consul-control-plane |
-| ...     | ... | ... |
+
+> ℹ️ 参考：
+>
+> - https://www.amazon.co.jp/dp/1492043788
+> - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
+> - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
+
 
 <br>
 

@@ -27,8 +27,6 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 - JavaScriptのAjax
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
-
 <br>
 
 ### 通信方向で見た種類
@@ -41,10 +39,10 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 クライアントとサーバー間が双方向でリクエストを送信し合う。
 
-> ℹ️ 参考：https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
-
 - gRPCの双方向ストリーミングRPC
 - Websocket
+
+> ℹ️ 参考：https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
 
 <br>
 

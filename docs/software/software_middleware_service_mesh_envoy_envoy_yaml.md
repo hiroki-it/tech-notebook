@@ -84,6 +84,8 @@ Envoyでは、YAMLファイルのキー名がスネークケースになって�
 
 Envoyのログの出力先を設定する。
 
+**＊実装例＊**
+
 ```yaml
 admin:
   access_log_path: /dev/null
@@ -106,6 +108,8 @@ admin:
 
 管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する。
 
+**＊実装例＊**
+
 ```yaml
 admin:
   address:
@@ -117,6 +121,8 @@ admin:
 
 管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する。『```0.0.0.0```』とすると、全てのIPアドレスを指定できる。
 
+**＊実装例＊**
+
 ```yaml
 admin:
   address:
@@ -127,6 +133,8 @@ admin:
 #### ▼ port_value
 
 管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する。
+
+**＊実装例＊**
 
 ```yaml
 admin:
@@ -167,6 +175,8 @@ admin:
 
 受信するインバウンド通信のプロトコルを設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:
   listeners:
@@ -179,6 +189,8 @@ static_resources:
 
 受信するインバウンド通信の送信元IPアドレスを設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:
   listeners:
@@ -190,6 +202,8 @@ static_resources:
 #### ▼ port_value
 
 インバウンド通信を待ち受けるポート番号を設定する。
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -209,6 +223,9 @@ static_resources:
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
+
+**＊実装例＊**
+
 ```yaml
 static_resources:
   listeners:
@@ -222,6 +239,9 @@ static_resources:
 Envoyのアクセスログの出力方法を設定する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
+
+**＊実装例＊**
+
 
 ```yaml
 static_resources:
@@ -243,6 +263,9 @@ static_resources:
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+
+**＊実装例＊**
+
 
 ```yaml
 static_resources:
@@ -267,6 +290,8 @@ static_resources:
 >
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
 > - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -298,6 +323,8 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
+**＊実装例＊**
+
 ```yaml
 static_resources:
   listeners:
@@ -309,7 +336,14 @@ static_resources:
 
 #### ▼ typed_config."@type"
 
-調査中...
+使用する拡張機能名を設定する。拡張機能名を指定することで、その拡張機能の設定を定義できるようになる。これは、Envoy特有の機能ではなく、gRPCの機能である。RPCでは、JSON内のデータのデータ型を指定するために使用する。
+
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
+> - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -329,6 +363,8 @@ static_resources:
 インバウンド通信を受信するリスナーの名前を設定する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -356,6 +392,8 @@ static_resources:
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -379,6 +417,8 @@ static_resources:
 
 ルーティング時のタイムアウト時間を設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -393,6 +433,8 @@ static_resources:
 
 調査中...
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -406,6 +448,8 @@ static_resources:
 #### ▼ lb_policyとは
 
 ルーティングのアルゴリズムを設定する。
+
+**＊実装例＊**
 
 ```yaml
 static_resources:  
@@ -422,6 +466,8 @@ static_resources:
 ルーティング先のIPアドレスとポート番号のリストを設定する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+
+**＊実装例＊**
 
 ```yaml
 static_resources:  
@@ -444,6 +490,8 @@ static_resources:
 
 ルーティング先のグループの名前を設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -459,6 +507,8 @@ static_resources:
 
 ルーティング先のグループの名前を設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -473,6 +523,8 @@ static_resources:
 
 ルーティング時に使用するソケット名を設定する。
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -484,6 +536,7 @@ static_resources:
 
 調査中...
 
+**＊実装例＊**
 
 ```yaml
 static_resources:  
@@ -504,6 +557,8 @@ static_resources:
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
 
+**＊実装例＊**
+
 ```yaml
 static_resources:  
   clusters:
@@ -522,11 +577,143 @@ static_resources:
 
 <br>
 
+### ads_config
+
+#### ▼ ads_configとは
+
+ADS-APIに関して設定する。
+
+#### ▼ grpc_services
+
+ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用して通信する。ADS-APIの宛先情報（IPアドレス、ポート番号）は、```static_resources.clusters```キー配下で設定しておく。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
+
+**＊実装例＊**
+
+Istioを使用せずに、```envoy```コンテナを直接的に稼働させるとする。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
+> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
+> - https://github.com/salrashid123/envoy_discovery/blob/master/envoy_config.yaml#L39-L74
+> - https://i-beam.org/2019/03/13/envoy-xds-server/
+
+```yaml
+dynamic_resources:
+  ads_config:
+    api_type: grpc
+    grpc_services:
+      - envoy_grpc:
+          cluster_name: xds_cluster
+
+# Envoyの識別子を設定する。
+node:
+  cluster: foo-cluster
+  id: foo-id
+
+static_resources:
+  clusters:
+    # XDS-APIをクラスターとする。
+    - name: xds_cluster
+      connect_timeout: 0.25s
+      lb_policy: ROUND_ROBIN
+      http2_protocol_options: {}
+      load_assignment:
+        cluster_name: xds_cluster
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    # XDS-APIの宛先情報
+                    socket_address:
+                      address: 127.0.0.1
+                      port_value: 15010
+    # 定義したXDS-APIのクラスターを指定する。
+    - name: services_cluster
+      type: EDS
+      connect_timeout: 0.25s
+      lb_policy: ROUND_ROBIN
+      eds_cluster_config:
+        eds_config:
+          resource_api_version: V3
+          api_config_source:
+            api_type: GRPC
+            transport_api_version: V3
+            grpc_services:
+              - envoy_grpc:
+                  cluster_name: xds_cluster
+```
+
+**＊実装例＊**
+
+Istioを使用して、```envoy```コンテナを稼働させるとする。Kubernetesでは、YAMLファイルのキー名の設計ポリシーがローワーキャメルケースであることに注意する。
+
+```yaml
+dynamicResources:
+  adsConfig:
+    apiType: grpc
+    grpcServices:
+      - envoyGrpc:
+          clusterName: xds-grpc
+
+staticResources:
+  clusters:
+    - connectTimeout: 1s
+      http2ProtocolOptions: {}
+      name: xdsCluster
+      type: static
+      # xds-apiの宛先情報を設定する。
+      loadAssignment:
+        clusterName: xdsCluster
+        endpoints:
+          - lbEndpoints:
+              - endpoint:
+                  address:
+                    pipe:
+                      # ここではソケットファイルを指定している。
+                      # envoyとxds-apiのプロセス間で、データを送受信する。
+                      path: ./etc/istio/proxy/xds
+```
+
+#### ▼ set_node_on_first_message_only
+
+調査中...
+
+**＊実装例＊**
+
+```yaml
+dynamic_resources:
+  ads_config:
+    set_node_on_first_message_only: true
+```
+
+#### ▼ transport_api_version
+
+調査中...
+
+**＊実装例＊**
+
+```yaml
+dynamic_resources:
+  ads_config:
+    transport_api_version: V3
+```
+
+<br>
+
 ### cds_config
 
 #### ▼ cds_configとは
 
+CDS-APIに関して設定する。
+
+#### ▼ path
+
 ```cds.yaml```ファイル（CDS-APIから取得した動的な宛先情報が設定されたファイル）を読み込む。
+
+**＊実装例＊**
 
 ```yaml
 dynamic_resources:
@@ -540,7 +727,13 @@ dynamic_resources:
 
 #### ▼ lds_configとは
 
+LDS-APIに関して設定する。
+
+#### ▼ path
+
 ```lds.yaml```ファイル（LDS-APIから取得した動的な宛先情報が設定されたファイル）を読み込む。
+
+**＊実装例＊**
 
 ```yaml
 dynamic_resources:

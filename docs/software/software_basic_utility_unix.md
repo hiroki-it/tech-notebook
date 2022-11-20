@@ -504,6 +504,26 @@ $ df -h -m -t
 
 <br>
 
+## diff
+
+### diffとは
+
+テキストファイルの内容を比較する。別途、```colordiff```パッケージを入れると見やすくなる。
+
+> ℹ️ 参考：https://kimuson.dev/blog/shell/color_diff/
+
+<br>
+
+### -u
+
+プラスとマイナスで差分を取得する。
+
+```bash
+$ diff -u foo.txt bar.txt
+```
+
+
+<br>
 
 ## du
 
