@@ -683,12 +683,13 @@ static_resources:
           - lb_endpoints:
               - endpoint:
                   address:
+                    # 冗長化された宛先の情報
                     socket_address:
                       address: 11.0.0.1
                       port_value: 80
               - endpoint:
-                  address:
-                    socket_address:
+                  # 冗長化された宛先の情報
+                  socket_address:
                       address: 11.0.0.2
                       port_value: 80
     - name: baz-cluster
@@ -701,11 +702,13 @@ static_resources:
           - lb_endpoints:
               - endpoint:
                   address:
+                    # 冗長化された宛先の情報
                     socketAddress:
                       address: 12.0.0.1
                       port_value: 80
               - endpoint:
                   address:
+                    # 冗長化された宛先の情報
                     socketAddress:
                       address: 12.0.0.2
                       port_value: 80

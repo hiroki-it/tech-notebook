@@ -20,6 +20,14 @@ Envoyの設定値をレスポンスとして返信する。ただ、欲しい設
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://localhost:15000/help
+```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/help" | jq
 
 # 執筆時点（2022/11/13）でのエンドポイント
   /: Admin home page
@@ -112,7 +120,14 @@ Istioを使用している場合には、宛先のIPアドレスとポート番�
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
+```
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?clusters" | jq
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
@@ -146,6 +161,14 @@ Envoyの現在の全ての設定値を、JSON形式でレスポンスとして�
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump
 ```
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump" | jq
+```
+
 <br>
 
 ### include_edsパラメーター
@@ -154,12 +177,72 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump
 
 サービスディスカバリーによって動的に登録された設定値（特に、エンドポイント）を、JSON形式でレスポンスとして返信する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?include_eds
 ```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?include_eds" | jq
+```
+
+
+#### ▼ ```dynamic_endpoint_configs```キー
+
+準備済みのエンドポイント値が設定されている。```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?include_eds" | jq '.configs[].dynamic_endpoint_configs'
+    
+  {
+    "endpoint_config": {
+      "@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
+      "cluster_name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
+      "endpoints": [
+        {
+          ...
+          
+          "lb_endpoints": [
+            {
+              "endpoint": {
+                "address": {
+                  "socket_address": {
+                    # 冗長化されたfoo-podのIPアドレス
+                    "address": "11.0.0.1",
+                    "port_value": 50002
+                  }
+                },
+                
+                ...
+
+              },
+              
+              ...
+              
+            }
+          ]
+        }
+      ],
+      
+      ...
+      
+    }
+  },
+```
+
 
 <br>
 
@@ -178,23 +261,31 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 
 #### ▼ dynamic_active_clusters
 
-準備済みのクラスター値を、JSON形式でレスポンスとして返信する。
+準備済みのクラスター値を、JSON形式でレスポンスとして返信する。クラスターに紐づく宛先に関して、```load_assignment```キーで宛先IPアドレスを直接的に設定する場合と、```service_name```キーでエイリアスを設定する場合がある。```service_name```キーに紐づく宛先情報は、```/config_dump?include_eds```エンドポイントのレスポンスの```dynamic_endpoint_configs```キー配下にある```cluster_name```キーで確認できる。
 
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}
+envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
+```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_active_clusters}" | jq | grep ClustersConfigDump.DynamicCluster -A 120
 
 [
   ...
 
   {
-    ...
-    
     "@type": "type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster",
+    "version_info": "2022-11-16T08:02:42Z/294",
     "cluster": {
       "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
-      "name": "foo-service",
+      "name": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local",
       "type": "EDS",
       "eds_cluster_config":{
         "eds_config": {
@@ -202,7 +293,9 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
           "initial_fetch_timeout": "0s",
           "resource_api_version": "V3"
         },
-        "service_name": "foo-service"
+        # エンドポイントに紐づくサービス名
+        # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#envoy-v3-api-field-config-cluster-v3-cluster-edsclusterconfig-service-name
+        "service_name": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
       }
     }
     
@@ -212,14 +305,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
   ...
 ]
 ```
-
-```grep```コマンドを使用して、```service_name```キーのみを取得すれば、宛先を一覧で取得できる。
-
-```bash
-# envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep service_name
-```
-
 
 > ℹ️ 参考：
 >
@@ -244,6 +329,13 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_warming_clusters}" | jq
+```
 
 #### ▼ dynamic_active_secrets
 
@@ -265,6 +357,15 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_listeners}
 ```
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_listeners}" | jq
+```
+
+
 #### ▼ dynamic_route_configs
 
 サービスディスカバリーによって動的に登録された設定値（特に、ルート）を、JSON形式でレスポンスとして返信する。
@@ -277,6 +378,14 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 ```
 
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_route_configs}" | jq
+```
+
 #### ▼ static_listeners
 
 静的なリスナー値を返信する。
@@ -284,6 +393,15 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={static_listeners}
+```
+
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl localhost:15000/config_dump?resource={static_listeners}" | jq
 
 {
  "configs": [

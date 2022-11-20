@@ -1946,13 +1946,15 @@ func main() {
 
 キューとして動作する。キューに値を格納し、加えてキューから値を取り出せる。
 
+> ℹ️ 参考：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+
 ```go
 package main
 
 import "fmt"
 
 func main() {
-	// チャンネルを任意のデータ型で作成
+	// チャンネルを作成
 	channel := make(chan string)
 
 	go func() {

@@ -508,7 +508,7 @@ $ istioctl proxy-config endpoints foo-pod \
   hostStatuses:
     - address:
         socketAddress:
-          # bar-podのインスタンスのIPアドレス
+          # 冗長化されたbar-podのインスタンスのIPアドレス
           address: 11.0.0.1
           # bar-podのコンテナポート
           portValue: 50002
@@ -520,7 +520,7 @@ $ istioctl proxy-config endpoints foo-pod \
 
     - address:
         socketAddress:
-          # bar-podのインスタンスのIPアドレス
+          # 冗長化されたbar-podのインスタンスのIPアドレス
           address: 11.0.0.2
           # bar-podのコンテナポート
           portValue: 50002
