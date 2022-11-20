@@ -957,7 +957,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 #### ▼ hostsとは
 
-サービスレジストリに登録する宛先のドメイン名を設定する。
+コンフィグストレージに登録する宛先のドメイン名を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -975,7 +975,7 @@ spec:
 
 #### ▼ portsとは
 
-サービスレジストリに登録する宛先のポート番号を設定する。
+コンフィグストレージに登録する宛先のポート番号を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -998,7 +998,7 @@ spec:
 
 #### ▼ resolutionとは
 
-サービスレジストリに登録する宛先のIPアドレスの設定する。
+コンフィグストレージに登録する宛先のIPアドレスの設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

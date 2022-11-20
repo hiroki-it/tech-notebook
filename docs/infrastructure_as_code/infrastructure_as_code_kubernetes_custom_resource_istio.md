@@ -133,7 +133,7 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | サービスディスカバリーでのリスナー値             | EnvoyFilter + EndpointSlice                                                                                                                                                            | ```listener```キー                  | kube-proxy + Service                         |
 | サービスディスカバリーでの追加サービス設定           | ServiceEntry + EndpointSlice                                                                                                                                                           | ```cluster```キー                   | EndpointSlice                                |
 | Cluster外ワーカーNodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                          | ```endpoint```キー                  | Egress                                       |
-| サービスレジストリ                       | 調査中...                                                                                                                                                                                 | etcd                              | etcd                                         |
+| サービスレジストリ                       | etcd                                                                                                                                                                                 | etcd                              | etcd                                         |
 | ワーカーNode外からのインバウンド通信のルーティング     | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはワーカーNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である。）<br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
 
 
@@ -304,15 +304,17 @@ spec:
 
 #### ▼ 全体像
 
-（１）KubernetesのEndpointSliceに基づいて、Istiodコントロールプレーンは、Podに紐づくServiceの完全修飾ドメイン名をサービスレジストリに動的に登録する。
+（１）Kubernetesは、EndpointSliceに基づいて、Podの宛先情報をサービスレジストリ（ここでは、kube-apiserverを介したetcd）に動的に登録する。
 
-（２）Pod内の```isti-proxy```コンテナは、Istioコントロールプレーンにリクエストを送信し、レスポンスされたPodに紐づくServiceの完全修飾ドメイン名を、自身の```envoy```プロセスに登録する。
+（２）Pod内の```isti-proxy```コンテナは、起動時に、Istioコントロールプレーンとの間でリモートプロシージャーコールを双方向で実行する。取得したPodの宛先情報を、自身の```envoy```プロセスに登録する。
 
-（３）Pod内のアプリケーションコンテナは、Podに紐づくServiceの完全修飾ドメイン名を指定して、アウトバウンド通信を送信する。
+（３）Pod内のアプリケーションコンテナは、Podの宛先情報を指定して、アウトバウンド通信を送信する。
 
 （４）アウトバウンド通信は、一度```istio-proxy```コンテナにリダイレクトされる。
 
-（５）```istio-proxy```コンテナは、Serviceに紐づくPodの宛先情報を使用して、実際のServiceを介さずに、Podに直接的にアウトバウンド通信を送信する（```istio-proxy```コンテナ自体がServiceのように働く）。ちなみに、もしIstioを使用していない場合は、kube-proxyとServiceによるサービスディスカバリーによって、Serviceを介してPodにリクエストを送信する。
+（５）```istio-proxy```コンテナは、Podの宛先情報を使用して、実際のServiceを介さずに、Podに直接的にアウトバウンド通信を送信する（```istio-proxy```コンテナ自体がServiceのように働く）。ちなみに、もしIstioを使用していない場合は、kube-proxyとServiceによるサービスディスカバリーによって、Serviceを介してPodにリクエストを送信する。
+
+（６）Pod内の```isti-proxy```コンテナは、定期的に、Istioコントロールプレーンとの間でリモートプロシージャーコールを双方向で実行する。取得したPodの宛先情報を、自身の```envoy```プロセスに登録する。
 
 > ℹ️ 参考：
 >
