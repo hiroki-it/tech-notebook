@@ -162,7 +162,7 @@ Initializing provider plugins...
 
 #### ▼ -backend=false
 
-指定したバックエンドの初期化をスキップする。一度でもバックエンドを初期化している場合は、改めて初期化することは不要なので、このオプションを使用する。
+指定したバックエンドの初期化をスキップする。一度でもバックエンドを初期化している場合は、改めて初期化することは不要なため、このオプションを使用する。
 
 > ℹ️ 参考：https://www.terraform.io/cli/commands/init#backend-initialization
 
@@ -542,7 +542,7 @@ $ terraform plan \
 
 #### ▼ -refresh
 
-このオプションをつければ、```terraform refresh```コマンドを同時に実行してくれる。ただし、デフォルトで```true```なので、不要である。
+このオプションをつければ、```terraform refresh```コマンドを同時に実行してくれる。ただし、デフォルトで```true```なため、不要である。
 
 ```bash
 $ terraform plan \

@@ -101,9 +101,7 @@ jobs:
       - run:
           name: Run create invalidation
           command: |
-            echo $AWS_CLOUDFRONT_ID |
-            base64 --decode |
-            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"
+            echo $AWS_CLOUDFRONT_ID | base64 --decode | aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"
             
 workflows:
   # ステージング環境にデプロイ
@@ -222,7 +220,7 @@ ECRイメージを使用して、新しいリビジョン番号のECSタスク�
 | 設定値                             | 説明                                                   |                                                                                                                                   |
 | --------------------------------- | ------------------------------------------------------ |-----------------------------------------------------------------------------------------------------------------------------------|
 | ```container-image-name-updates``` | コンテナ定義のコンテナ名とバージョンタグを上書きする。         | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                 |
-| ```verify-revision-is-deployed``` | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、ECSタスクが『Runningフェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないので、検知できる。 |
+| ```verify-revision-is-deployed``` | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、ECSタスクが『Runningフェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないため、検知できる。 |
 | ```max-poll-attempts```           | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                               |
 | ```poll-interval```               | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。 |                                                                                                                                   |
 

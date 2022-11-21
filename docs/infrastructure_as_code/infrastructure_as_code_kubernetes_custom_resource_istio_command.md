@@ -408,7 +408,7 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
-YAML形式で取得すれば、より詳細な設定値を確認できる。
+```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -490,7 +490,7 @@ unix://./etc/istio/proxy/SDS           HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS           HEALTHY     OK                xds-grpc
 ```
 
-YAML形式で取得すれば、より詳細な設定値を確認できる。
+```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -621,7 +621,7 @@ NAME                         DOMAINS                                     MATCH  
 ...
 ```
 
-YAML形式で取得すれば、より詳細な設定値を確認できる。
+```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 

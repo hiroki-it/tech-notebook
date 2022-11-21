@@ -31,9 +31,9 @@ $ sudo apt-get install helm
 
 <br>
 
-## 02. index.yamlファイル
+## 02. index.```.yaml```ファイル
 
-### index.yamlファイルとは
+### index.```.yaml```ファイルとは
 
 チャートリポジトリ内の各チャートアーカイブ（```.tgz```形式ファイル）のメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
 
@@ -69,7 +69,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 <br>
 
-## 03. Chart.yamlファイル
+## 03. Chart.```.yaml```ファイル
 
 ### apiVersion
 
@@ -422,38 +422,54 @@ receivers:
 
 #### ▼ rangeとは
 
-同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreachのように出力する。ただし、```values```ファイルからキーと値の両方を出力する場合は、```range```関数を使用するとロジックが増えて可読性が低くなるため、使用しない方が良い。
+同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreach関数のように出力する。
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
-```yaml
-# values.yamlファイル
-global:
-  env: prd
-  appName: foo
-```
+#### ▼ マップ型を扱う場合
+
+マップ型を入力値として使用できる。
+
+**＊実装例＊**
+
+もし、以下のようなSecretの生データがあるとする。
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-# キーと値の両方を取得すると、ロジックが増えて可読性が低くなる。
-{{- range $global := .Values.global }}
+# secret.raw.```.yaml```ファイル
+foo: FOO
+bar: bar
+```
+
+これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
+
+```yaml
+# valuesファイル
+config: eHh4OiB5eXkKenp6OiBxcXEK
+```
+
+```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。その後、```range```アクションでキーと値を取得し、Secretのデータとして割り当てる。
+
+```yaml
+{{ $decoded := .Values.config | b64dec | fromYaml }}
+apiVersion: v1
+kind: Secret
 metadata:
-  name: {{ $global.env }}-{{ $global.appName }}-pod
-  labels:
-    app.kubernetes.io/app: {{ $global.appName }}
-    
-    ...
-    
-{{- end }}
+  name: foo-secret
+type: Opaque
+data:
+  {{- range $key, $value := ($decoded) }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
 ```
 
-一方で、値のみを出力する場合は、可読性が高くなる。
+#### ▼ 配列型を扱う場合
+
+配列型を入力値として使用できる。
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 ```yaml
-# values.yamlファイル
+# values.```.yaml```ファイル
 ipAddresses:
   - 192.168.0.1/32
   - 192.168.0.2/32
@@ -506,7 +522,7 @@ data:
 > ℹ️ 参考：https://github.com/helm/helm/issues/8026
 
 ```yaml
-# values.yamlファイル
+# values.```.yaml```ファイル
 global:
   env: prd
   appName: foo
@@ -528,7 +544,7 @@ metadata:
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 ```yaml
-# values.yamlファイル
+# values.```.yaml```ファイル
 metadata:
   labels:
     # マニフェストで、int型で出力しようとする。
@@ -584,18 +600,18 @@ baz:
 
 #### ▼ ドルとは
 
-出力時に、YAMLファイルのルートを明示的に出力する。アクションの中でアクションで、YAMLファイルのルートにアクセスしたい場合に役立つ。
+出力時に、```.yaml```ファイルのルートを明示的に出力する。アクションの中でアクションで、```.yaml```ファイルのルートにアクセスしたい場合に役立つ。
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 **＊実装例＊**
 
-```range```アクションを使用すると、YAMLファイルへのアクセスのルートが変わってしまう。ルートを明示することにより、```range```アクション内でもYAMLファイルの正しいルートにアクセスできるようなる。
+```range```アクションを使用すると、```.yaml```ファイルへのアクセスのルートが変わってしまう。ルートを明示することにより、```range```アクション内でも```.yaml```ファイルの正しいルートにアクセスできるようなる。
 
 ```yaml
 {{- range $.Values.foo.namespaces }}
 apiVersion: apps/v1
-kind: Secrets
+kind: Secret
 metadata:
   name: {{ $.Values.global.env }}-foo-secret
   namespace: {{ . }}
@@ -619,6 +635,9 @@ metadata:
 > 
 > - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
+
+**＊実装例＊**
+
 
 ```yaml
 {* tplファイル *}
@@ -653,6 +672,8 @@ baz:
 
 > ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#28
 
+**＊実装例＊**
+
 ```yaml
 {* tplファイル *}
 
@@ -686,6 +707,9 @@ baz:
 改行しつつ、スペースを挿入した上で、内容を出力する。
 
 > ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#29
+
+
+**＊実装例＊**
 
 ```yaml
 {* tplファイル *}
@@ -723,8 +747,11 @@ baz:
 
 ```base64```方式でエンコードする。Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
 
+**＊実装例＊**
+
+
 ```yaml
-# values.yamlファイル
+# values.```.yaml```ファイル
 username: root
 password: 12345
 ```
@@ -735,6 +762,7 @@ kind: Secret
 metadata:
   name: foo-secret
 data:
+  # base64方式でエンコードする。
   username: {{ .Values.username | b64enc }}
   password: {{ .Values.password | b64enc }}
 ```
@@ -752,6 +780,8 @@ data:
 > - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
 > - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -765,8 +795,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/foo-secret.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/foo-configmap.yaml") . | sha256sum }}
     spec:
       containers:
       - name: foo-gin
@@ -783,16 +813,61 @@ spec:
 
 <br>
 
+### fromYaml
+
+#### ▼ fromYamlとは
+
+テキスト形式を```.yaml```形式に変換する。
+
+> ℹ️ 参考：
+> 
+> - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
+> - https://stackoverflow.com/a/62832814
+
+**＊実装例＊**
+
+もし、以下のようなSecretの生データがあるとする。
+
+```yaml
+# secret.raw.```.yaml```ファイル
+foo: FOO
+bar: bar
+```
+
+これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
+
+```yaml
+# valuesファイル
+config: eHh4OiB5eXkKenp6OiBxcXEK
+```
+
+```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。
+
+```yaml
+{{ $decoded := .Values.config | b64dec | fromYaml }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+type: Opaque
+data:
+  {{- range $key, $value := ($decoded) }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+```
+
+<br>
+
 ### toYaml
 
 #### ▼ toYamlとは
 
-YAML形式でテンプレートを出力する。```values```ファイルを出力したい場合に使用する。
+```.yaml```形式でテンプレートを出力する。```values```ファイルを出力したい場合に使用する。
 
 > ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
 ```yaml
-# values.yamlファイル
+# values..yamlファイル
 parameters:
   foo: FOO
   bar: BAR

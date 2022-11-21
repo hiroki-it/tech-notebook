@@ -243,7 +243,7 @@ GET https://example.com/users/12345
 
 **＊悪い実装例＊**
 
-メソッドから、処理の目的はわかるので、URIに対応する動詞名を実装する必要はない。
+メソッドから、処理の目的はわかるため、URIに対応する動詞名を実装する必要はない。
 
 ```yaml
 GET https://example.com/users/get/12345

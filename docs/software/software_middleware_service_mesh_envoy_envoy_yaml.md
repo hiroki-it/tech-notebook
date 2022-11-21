@@ -17,7 +17,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 ### インストール
 
-かなり大変なので、DockerfileやIstio経由でインストールすることが推奨。
+かなり大変なため、DockerfileやIstio経由でインストールすることが推奨。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/install
 

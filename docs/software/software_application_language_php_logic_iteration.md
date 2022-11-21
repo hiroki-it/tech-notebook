@@ -275,7 +275,7 @@ $oneDimension = array_column($twoDimension, 'score');
 <?php
     
 $count = 0
-// 反復回数が決まっていないので、満たせたらbreakで停止する。
+// 反復回数が決まっていないため、満たせたらbreakで停止する。
 while(true) {
     
     if($count = 10){

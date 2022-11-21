@@ -565,7 +565,7 @@ $ git revert <コミットID> --no-edit
 
 #### ▼ <コミットID> --edit
 
-指定したコミットのみを打ち消す新しいコミットを作成する。vimが起動するので、コミットメッセージを新しいものに変更する。
+指定したコミットのみを打ち消す新しいコミットを作成する。vimが起動するため、コミットメッセージを新しいものに変更する。
 
 ```bash
 $ git revert <コミットID> --edit
@@ -621,7 +621,7 @@ $ git reset --mixed <コミットID>
 
 #### ▼ --hard <コミットID>
 作業中のローカルブランチで、最新のワークツリー（=ディレクトリ）、インデックス（=```add```後）、HEAD（=コミット後）を指定の履歴まで戻し、それ以降を削除する。
-<font color="red">**ワークツリー（=ディレクトリ）内のファイルの状態も戻ってしまうので、取り扱い注意！！**</font>
+<font color="red">**ワークツリー（=ディレクトリ）内のファイルの状態も戻ってしまうため、取り扱い注意！！**</font>
 
 ```bash
 $ git reset --hard <コミットID>
@@ -761,7 +761,7 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
-5. プッシュしようとすると、```![rejected] develop -> develop (non-fast-forward)```とエラーが出るので、
+5. プッシュしようとすると、```![rejected] develop -> develop (non-fast-forward)```とエラーが出るため、
 
 ```bash
 $ git merge <ブランチ名> --allow-unrelated-histories

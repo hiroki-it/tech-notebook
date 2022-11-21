@@ -592,10 +592,44 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 #### ▼ -f
 
-暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、helmコマンドを実行する。
+暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。
 
 ```bash
-$ helm secrets template -f secrets.yaml -f values.yaml
+$ helm secrets template . -f secrets.yaml -f values.yaml
+```
+
+なおこの時、```values```ファイル側には```secrets.yaml```ファイルの値を設定しておく必要はない。
+
+> ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
+
+```yaml
+# secrets.yaml
+foo: F799Q8CQ...
+
+sops:
+  ...
+```
+```yaml
+# values.yaml
+bar: BAR
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+type: Opaque
+data:
+  foo: {{ .Values.foo | b64enc }}
+```
+
+なお、代わりに```helm```コマンドを使用し、```-f```オプションの値に```secrets://```をつけても良い。
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+
+```bash
+$ helm template . -f secrets://secrets.yaml
 ```
 
 <br>

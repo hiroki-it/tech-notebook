@@ -52,7 +52,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
 #### ▼ 親子コンポーネント間のデータ渡しの仕組み（Props Down, Events Up）
 
-まず、双方向データバインディングとは異なる概念なので、混乱しないように注意する。コンポーネント（```foo-component.vue```）の```script```タグ部分（ViewModel層）の親子間では、```props```と```$emit```メソッドを使用して、データを渡す。この仕組みを、Props Down, Events Upという。
+まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。コンポーネント（```foo-component.vue```）の```script```タグ部分（ViewModel層）の親子間では、```props```と```$emit```メソッドを使用して、データを渡す。この仕組みを、Props Down, Events Upという。
 
 ![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子コンポーネント間の双方向データバインディング.png)
 
@@ -320,7 +320,7 @@ class Foo {
         this.isOk = properties.isOk;
     }
 
-    // コンストラクタによって宣言されているので、アクセスできる。
+    // コンストラクタによって宣言されているため、アクセスできる。
     isOk() {
         // bool値を返却する例を考える。
         return this.isOk;

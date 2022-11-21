@@ -109,7 +109,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 ```inventory```ファイルを指定し、```json```形式に変換する。
 
-https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
 
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list
@@ -119,7 +119,7 @@ $ ansible-inventory -i ./inventories/inventory --list
 
 ```inventory```ファイルを指定し、```yml```形式に変換する。
 
-https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
 
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list -y

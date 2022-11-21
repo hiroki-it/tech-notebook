@@ -223,7 +223,7 @@ spec:
 | ```1.12```系          | ```v1.23.5-gke``` |
 | ...                  | ...               |
 
-（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるので、このログを```tail```コマンドで確認する。
+（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを```tail```コマンドで確認する。
 
 > ℹ️ 参考：
 > 
@@ -382,7 +382,7 @@ spec:
     istio.io/rev: asm-1143-1
 ```
 
-（７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなので、新バージョンに変更する。
+（７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
 
 ```bash

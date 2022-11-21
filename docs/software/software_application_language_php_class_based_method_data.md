@@ -723,7 +723,7 @@ class Foo
      */
     public function quickSort(array $array): array
     {
-        // 配列の要素数が1つしかない場合、クイックソートする必要がないので、返却する。
+        // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
         if (count($array) <= 1) {
             return $array;
         }
@@ -1035,7 +1035,7 @@ $optionName = function () use ($item) {
     $item->optionName();
 };
 
-// function()には引数が設定されていないので、コール時に引数は不要。
+// function()には引数が設定されていないため、コール時に引数は不要。
 echo $optionName;
 
 // 出力結果
