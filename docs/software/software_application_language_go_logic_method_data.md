@@ -1944,7 +1944,7 @@ func main() {
 
 #### ▼ channel
 
-キューとして動作する。キューに値を格納し、加えてキューから値を取り出せる。
+値を受信できるキューとして動作する。キューに値を送信し、加えてキューから値を受信できる。
 
 > ℹ️ 参考：https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
@@ -1958,11 +1958,11 @@ func main() {
 	channel := make(chan string)
 
 	go func() {
-		// チャンネルに値を格納
+		// チャンネルに値を送信する。
 		channel <- "ping"
 	}()
 
-	// チャンネルから値を取り出す
+	// チャンネルから値を受信する。
 	value := <-channel
 
 	fmt.Println(value)
@@ -2028,10 +2028,56 @@ func main() {
 
 エラー処理を含む関数でGoルーチンを宣言したい時に使用する。
 
-**＊実装例＊**
+#### ▼ select
+
+チャンネルに対する格納を非同期で待機する。
+
+> ℹ️ 参考：
+> 
+> - https://www.spinute.org/go-by-example/select.html
+> - https://leben.mobi/go/channel-and-select/go-programming/
 
 ```go
+package main
 
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+
+	// チャンネルを作成する。
+    c1 := make(chan string)
+    c2 := make(chan string)
+
+	// ここに、完了タイミングのバラバラな処理があるとする。
+    go func() {
+		// 完了までに2秒かかるとする。
+        time.Sleep(2 * time.Second)
+		// 値を送信する。
+        c1 <- "one"
+    }()
+    go func() {
+		// 完了までに1秒かかるとする。
+        time.Sleep(1 * time.Second)
+		// 値を送信する。
+        c2 <- "two"
+    }()
+
+    for i := 0; i < 2; i++ {
+        select {
+		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
+        case msg1 := <-c1:
+            fmt.Println("received", msg1)
+        case msg2 := <-c2:
+            fmt.Println("received", msg2)
+		// 受信が成功しなければ、defaultで処理する。	
+        default: 
+			fmt.Println("default")
+		}
+    }
+}
 ```
 
 <br>

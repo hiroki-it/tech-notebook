@@ -54,12 +54,14 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 #### ▼ ADS：Aggregated XDS
 
-各XDSの処理結果を紐付け、適切な順番に整理する。もしADSがないと、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こってしまう。
+各XDSの処理結果を紐付け、適切な順番に整理し、Envoyに提供する。各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
 > ℹ️ 参考：
 > 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 > - https://www.amazon.co.jp/dp/B09XN9RDY1
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
+> - https://i-beam.org/2019/01/22/hello-envoy/
 
 #### ▼ CDS：Cluster Discovery Service
 

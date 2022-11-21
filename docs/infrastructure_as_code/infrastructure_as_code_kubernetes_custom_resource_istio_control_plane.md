@@ -47,6 +47,8 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 istiod-deployment配下のPodは、Istiodコントロールプレーンの実体である。Pod内では```discovery```コンテナが稼働している。
 
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -84,8 +86,10 @@ spec:
             - cluster.local
             - --keepaliveMaxServerConnectionAge
             - 30m
+          # pilotイメージ
           image: docker.io/istio/pilot:<リビジョン番号>
           imagePullPolicy: IfNotPresent
+          # discoveryコンテナ
           name: discovery
           # 待ち受けるポート番号の仕様
           ports:
@@ -107,6 +111,21 @@ spec:
           
 # 重要なところ以外を省略しているので、全体像はその都度確認すること。
 ```
+
+Dockerfileとしては、最後に```pilot-discovery```プロセスを実行している。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
+> - https://zenn.dev/link/comments/e8a978a00c6325
+
+```dockerfile
+ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
+```
+
+そのため、```pilot-discovery```プロセスの実体は、GitHubの```pilot-discovery```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。
+
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
 
 #### ▼ HorizontalPodAutoscaler
 

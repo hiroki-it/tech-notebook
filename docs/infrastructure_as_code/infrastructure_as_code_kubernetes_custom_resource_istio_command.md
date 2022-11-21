@@ -410,7 +410,10 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 
 ```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
 
-> ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+> ℹ️ 参考：
+> 
+> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+> - https://www.amazon.co.jp/Istio-Action-Christian-Posta/dp/1617295825
 
 ```bash
 $ istioctl proxy-config cluster foo-pod \
@@ -424,11 +427,13 @@ $ istioctl proxy-config cluster foo-pod \
   type: EDS
   edsClusterConfig:
     edsConfig:
+      # ADS-APIを使用して取得することを指定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
-    # エンドポイント名を検索する。
-    # 冗長化されたエンドポイントのインスタンスから1個を選んでルーティングする。
+    # serviceNameをクラスター値として使用する。
+    # エンドポイント値はクラスター値と紐づいており、ADS-APIから取得したエンドポイント値をフィルタリングする。
+    # エンドポイント値にはいくつかのインスタンスが紐づいており、1個を選んでルーティングする。
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 
 ...
