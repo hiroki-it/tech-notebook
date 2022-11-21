@@ -321,3 +321,68 @@ $ curl http://127.0.0.1:15014/debug
 
 
 <br>
+
+## 03. IstiodコントロールプレーンのXDS-API
+
+### XDS-APIとは
+
+pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
+
+<br>
+
+### 実装
+
+> ℹ️ 参考：
+>
+> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#processrequest
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
+
+```go
+package xds
+
+...
+
+// ADSからEnvoyに宛先情報をリモートプロシージャーコールする。
+func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) error {
+	return s.Stream(stream)
+}
+
+func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
+	
+	...
+	
+	for {
+		
+		select {
+		
+		// Envoyからのコールを受信する。
+		case req, ok := <-con.reqChan:
+			if ok {
+				// コール内容に応じて、宛先情報を返信する。
+				if err := s.processRequest(req, con); err != nil {
+					return err
+				}
+			} else {
+				return <-con.errorChan
+			}
+			
+		// XDSからEnvoyに対してコールを送信する。
+		case pushEv := <-con.pushChannel:
+			err := s.pushConnection(con, pushEv)
+			pushEv.done()
+			if err != nil {
+				return err
+			}
+		case <-con.stop:
+			return nil
+		}
+	}
+}
+```
+
+実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
+
+> ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306

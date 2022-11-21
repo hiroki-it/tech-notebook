@@ -86,11 +86,28 @@ service Upload {
 
 クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。また、双方向にリクエストを送信できる。クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
 
-> ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
+> ℹ️ 参考：
+> 
+> - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
+> - https://reboooot.net/post/hello-grpc/
+> - https://christina04.hatenablog.com/entry/2017/11/13/203000
 
 ```protobuf
 service Chat {
   rpc Chat (stream ChatRequest) returns (stream ChatResponse) {
+    
+    // クライアントから受信する。
+    in, err := stream.Recv()
+        
+    ...
+    
+    // クライアントに送信もする。
+    stream.Send(message);
+    
+    ...
+
+    // リクエストを終了する。
+    err = stream.CloseSend()
   }
 }
 ```
@@ -321,7 +338,7 @@ type Server struct {
 }
 
 // Helloを返信する関数
-func (s *Server) SayHello(ctx context.Context, in *pb.Message) (*Message, error) {
+func (s *Server) SayHello (ctx context.Context, in *pb.Message) (*Message, error) {
 	log.Printf("Received message body from client: %s", in.Body)
 	return &pb.Message{Body: "Hello From the Server!"}, nil
 }

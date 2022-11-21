@@ -102,7 +102,7 @@ Pod外からアプリケーションコンテナへのインバウンド通信�
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-proxy.png)
 
-リバースプロキシの能力を持つサイドカーコンテナである。Dockerfileとしては、Envoyのバイナリファイルをインストールした後に```pilot-agent```プロセスを実行している。そのため、```pilot-agent```プロセス、```envoy```プロセス、が稼働している。```istio-proxy```コンテナは、アプリケーションコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Podの宛先情報に基づいて、ルーティングを実行している。一方で、アプリケーションコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+リバースプロキシの能力を持つサイドカーコンテナである。Dockerfileとしては、Envoyのバイナリファイルをインストールした後に```pilot-agent```プロセスを実行している。そのため、```pilot-agent```プロセス、```envoy```プロセス、が稼働している。
 
 ```dockerfile
 
@@ -118,6 +118,8 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
+```istio-proxy```コンテナは、アプリケーションコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Podの宛先情報に基づいて、ルーティングを実行している。一方で、アプリケーションコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+
 > ℹ️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
@@ -127,88 +129,59 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 #### ▼ ```pilot-agent```プロセス（旧```istio-agent```）
 
-元々は、```istio-agent```といわれていた。```istio-proxy```コンテナにて、Istiodコントロールプレーンとの間でリモートプロシージャーコール（他Podの宛先情報、SSL証明書、など）を双方向で実行する。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。また、取得したPodの宛先情報を```envoy```プロセスの設定を変更する。
+元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。XDS-APIとEnvoyの間の通信を仲介し、XDS-APIから取得したPodの宛先情報を```envoy```プロセスに登録する。
 
 ````go
-package app
+package adsc
 
 ...
 
-func getDNSDomain(podNamespace, domain string) string {
-	if len(domain) == 0 {
-		domain = podNamespace + ".svc." + constants.DefaultClusterLocalDomain
+func (a *ADSC) Run() error {
+	var err error
+
+	a.client = discovery.NewAggregatedDiscoveryServiceClient(a.conn)
+
+	// Istiodコントロールプレーンにリモートプロシージャーコールを実行する。
+	a.stream, err = a.client.StreamAggregatedResources(context.Background())
+	
+	if err != nil {
+		return err
 	}
-	return domain
+	
+	a.sendNodeMeta = true
+	
+	a.InitialLoad = 0
+	
+	for _, r := range a.cfg.InitialDiscoveryRequests {
+		if r.TypeUrl == v3.ClusterType {
+			a.watchTime = time.Now()
+		}
+		_ = a.Send(r)
+	}
+	
+	
+	a.RecvWg.Add(1)
+
+	// 宛先情報を受信する。
+	go a.handleRecv()
+	
+	return nil
 }
-
-...
-
 ````
 
 > ℹ️ 参考：
 >
-> - https://github.com/istio/istio/blob/master/pilot/cmd/pilot-agent/main.go
+> - https://www.jianshu.com/p/60e45bc9c4ac
+> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L423-L446
 > - https://github.com/istio/istio/blob/master/pilot/cmd/pilot-agent/app/cmd.go#L245-L250
-> - https://github.com/istio/istio/blob/master/pilot/cmd/pilot-agent/app/cmd.go#L270
 
-また、XDS-APIとの間で定期的にリモートプロシージャーコールを実行し、宛先情報を取得する。
-
-> ℹ️ 参考：
-> 
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
-
-```go
-package xds
-
-...
-
-func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) error {
-	return s.Stream(stream)
-}
-
-func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
-	
-	...
-	
-	for {
-		
-		select {
-		
-		// Envoyからのコールを受信する。
-		case req, ok := <-con.reqChan:
-			if ok {
-				// コール内容に応じて、宛先情報を返信する。
-				if err := s.processRequest(req, con); err != nil {
-					return err
-				}
-			} else {
-				return <-con.errorChan
-			}
-			
-		// XDSからEnvoyに対してコールを送信する。
-		case pushEv := <-con.pushChannel:
-			err := s.pushConnection(con, pushEv)
-			pushEv.done()
-			if err != nil {
-				return err
-			}
-		case <-con.stop:
-			return nil
-		}
-	}
-}
-```
-
-実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
-
-> ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
+また、定期的にリモートプロシージャーコールを実行し、宛先情報を取得する。
 
 #### ▼ ```envoy```プロセス
 
-```istio-proxy```コンテナにて、リバースプロキシとして動作する。
+```istio-proxy```コンテナにて、リバースプロキシとして動作する。```istio-proxy```コンテナにて、Istiodコントロールプレーンとの間でリモートプロシージャーコール（他Podの宛先情報、SSL証明書、など）を双方向で実行する。
 
+> ℹ️ 参考：https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 
 <br>
 
