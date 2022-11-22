@@ -335,7 +335,7 @@ pilot-agentを介して、Envoyとの間で定期的にリモートプロシー�
 > ℹ️ 参考：
 >
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
-> - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#processrequest
+> - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
@@ -358,10 +358,10 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		
 		select {
 		
-		// Envoyからのコールを受信する。
 		case req, ok := <-con.reqChan:
 			if ok {
-				// コール内容に応じて、宛先情報を返信する。
+				// Envoyからリモートプロシージャーを受信する。
+        // 受信内容に応じて、送信内容を作成する。
 				if err := s.processRequest(req, con); err != nil {
 					return err
 				}
@@ -369,8 +369,8 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 				return <-con.errorChan
 			}
 			
-		// XDSからEnvoyに対してコールを送信する。
 		case pushEv := <-con.pushChannel:
+      // Envoyにリモートプロシージャーを送信する。
 			err := s.pushConnection(con, pushEv)
 			pushEv.done()
 			if err != nil {

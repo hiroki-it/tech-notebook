@@ -44,10 +44,6 @@ USER foouser
 ENTRYPOINT ["/app"]
 ```
 
-あるいは、コンテナに接続できないようにしても良い。
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
-
 <br>
 
 ### 信頼できるベースイメージの選定

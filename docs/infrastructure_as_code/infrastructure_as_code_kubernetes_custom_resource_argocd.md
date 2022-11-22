@@ -88,6 +88,19 @@ spec:
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
+#### ▼ デバッグ
+
+```repo-server```コンテナには```kubectl exec```コマンドでは接続できないが、直接的にコマンドを送信することは可能である。そのため、デバッグ（例：```/tmp```ディレクトリ配下で、```helm template```コマンドを使用してSecretの値を確認する）が可能である。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+
+```bash
+$ kubectl exec foo-argocd-repo-server \
+    -c repo-server \
+    -n argocd \
+    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-charts && helm template foo-chart -f values-prd.yaml"
+```
+
 <br>
 
 ### application-controller
