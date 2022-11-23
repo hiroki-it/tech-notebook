@@ -137,7 +137,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 > - https://www.jianshu.com/p/60e45bc9c4ac
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 
-````go
+```go
 package adsc
 
 import (
@@ -184,7 +184,7 @@ func (a *ADSC) Run() error {
 	
 	return nil
 }
-````
+```
 
 
 > ℹ️ 参考：
@@ -252,10 +252,6 @@ func (a *ADSC) handleRecv() {
    }
 }
 ```
-
-
-
-
 
 #### ▼ Envoy
 
