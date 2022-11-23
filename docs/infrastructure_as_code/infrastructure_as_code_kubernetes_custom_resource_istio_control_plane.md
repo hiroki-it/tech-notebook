@@ -274,7 +274,7 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```descovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```descovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスが```envoy```プロセスの宛先情報設定を動的に変更する（サービスディスカバリー）。
+```descovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```descovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```がEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
 
 > ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
@@ -294,7 +294,7 @@ Istiodコントロールプレーンは、サービスレジストリ（例：ku
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```descovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```descovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```プロセスは```envoy```プロセスにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+```descovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```descovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```はEnvoyにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
@@ -334,6 +334,7 @@ pilot-agentを介して、Envoyとの間で定期的にリモートプロシー�
 
 > ℹ️ 参考：
 >
+> - https://cloudnative.to/blog/istio-pilot-3/
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
@@ -345,7 +346,7 @@ package xds
 
 ...
 
-// ADSからEnvoyに宛先情報をリモートプロシージャーコールする。
+// ADS-APIからEnvoyに宛先情報をリモートプロシージャーコールする。
 func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) error {
 	return s.Stream(stream)
 }
@@ -360,7 +361,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		
 		case req, ok := <-con.reqChan:
 			if ok {
-				// Envoyからリモートプロシージャーを受信する。
+				// pilot-agentからリモートプロシージャーを受信する。
         // 受信内容に応じて、送信内容を作成する。
 				if err := s.processRequest(req, con); err != nil {
 					return err
@@ -370,7 +371,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 			}
 			
 		case pushEv := <-con.pushChannel:
-      // Envoyにリモートプロシージャーを送信する。
+      // pilot-agentにリモートプロシージャーを送信する。
 			err := s.pushConnection(con, pushEv)
 			pushEv.done()
 			if err != nil {

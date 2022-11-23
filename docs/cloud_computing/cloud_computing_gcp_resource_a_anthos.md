@@ -160,7 +160,11 @@ on-オンプレミスは、各Clusterを作成するワークステーション�
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時にワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。Kindはコンテナを構築し、そのコンテナ内でAnthos Clusterを事前に検証する。
+Anthos Clusterの作成時やアップグレード時にワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。Kindはコンテナを構築し、そのコンテナ内でAnthos Clusterを事前に検証する。そのため、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
+
+```bash
+$ systemctl start docker
+````
 
 <br>
 
