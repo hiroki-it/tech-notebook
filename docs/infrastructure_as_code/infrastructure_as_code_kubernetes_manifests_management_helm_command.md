@@ -122,7 +122,7 @@ kind: Deployment
 > ℹ️ 参考：https://helm.sh/docs/helm/helm_install/#options
 
 ```bash
-$ helm install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
+$ helm install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 #### ▼ kube-context
@@ -227,6 +227,30 @@ Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 
 ```bash
 $ helm package <チャートへのパス> -d <作成するチャートアーカイブのパス>
+```
+
+<br>
+
+### plugin
+
+#### ▼ install
+
+プラグインをインストールする。
+
+```bash
+$ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
+```
+
+#### ▼ list
+
+インストール済みのプラグインの一覧を表示する。
+
+```bash
+$ helm plugin list
+
+NAME     VERSION  DESCRIPTION                                                                 
+diff     3.4.2    Preview helm upgrade changes as a diff                                      
+secrets  3.7.0    plugin provides secrets values encryption for Helm charts secure storing
 ```
 
 <br>
@@ -342,6 +366,13 @@ Error: failed to download "<チャートリポジトリ名>"
  $ helm repo index <チャートへのパス>
 ```
 
+
+**＊実行例＊**
+
+```bash
+$ helm repo index ./foo-chart
+```
+
 #### ▼ list
 
 事前に```helm repo add```コマンドで追加しておいたチャートリポジトリの一覧を取得する。
@@ -349,7 +380,7 @@ Error: failed to download "<チャートリポジトリ名>"
 ```bash
 $ helm repo list
 
-NAME　                URL                          
+NAME                 URL                          
 <チャートリポジトリ名>   https://example.com/charts
 ```
 
@@ -363,9 +394,10 @@ $ helm repo remove <チャート名>
 "<チャートリポジトリ名>" has been removed from your repositories
 ```
 
+**＊実行例＊**
+
 ```bash
-# チャート名をreleasesとしている場合
-$ helm repo remove releases
+$ helm repo remove foo-chart
 ```
 
 #### ▼ update
@@ -419,9 +451,10 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 $ helm show all <チャート名>
 ```
 
+**＊実行例＊**
+
 ```bash
-# チャート名をreleasesとしている場合
-$ helm show all releases
+$ helm show all foo-chart
 ```
 
 #### ▼ chart
@@ -453,8 +486,7 @@ $ helm show values <チャート名>
 ```
 
 ```bash
-# チャート名をreleasesとしている場合
-$ helm show values releases
+$ helm show values foo-chart
 ```
 
 <br>
@@ -478,11 +510,12 @@ $ helm template . -f values.yaml >| releases.yaml
 $ helm template <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
 ```
 
-```yaml
-# valuesファイル
-foo:
-  bar: QUX # 上書きされる
+**＊実行例＊**
+
+```bash
+$ helm template ./foo-chart -f ./values.yaml >| release.yaml
 ```
+
 
 #### ▼ -set
 
@@ -490,6 +523,13 @@ foo:
 
 ```bash
 $ helm template <チャートへのパス> -f <valuesファイルへのパス> -set foo.user.password=$PASSWPRD >| <出力先ファイル>
+```
+
+
+```yaml
+# valuesファイル
+foo:
+  bar: QUX # 上書きされる
 ```
 
 <br>
@@ -504,6 +544,12 @@ $ helm template <チャートへのパス> -f <valuesファイルへのパス> -
 
 ```bash
 $ helm uninstall <リリース名>
+```
+
+**＊実行例＊**
+
+```bash
+$ helm uninstall foo-release
 ```
 
 <br>
@@ -521,15 +567,22 @@ $ helm uninstall <リリース名>
 ```helm upgrade```コマンドが正常に完了しなかった場合に、ロールバックする。
 
 ```bash
-$ helm upgrade --atomic -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
+$ helm upgrade --atomic <リリース名> <チャートへのパス> -f <valuesファイルへのパス> 
 ```
+
+**＊実行例＊**
+
+```bash
+$ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
+```
+
 
 #### ▼ --install
 
 新しいリビジョン番号を作成し、インストール済のリリースをアップグレードする。
 
 ```bash
-$ helm upgrade --install -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
+$ helm upgrade --install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
 
 Release "<リリース名>" has been upgraded. Happy Helming!
 NAME: <リリース名>
@@ -549,7 +602,14 @@ Helmは、カスタムリソースを含むチャートのインストールは�
 > - https://helm.sh/docs/helm/helm_upgrade/
 
 ```bash
-$ helm upgrade --skip-crds -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
+$ helm upgrade --skip-crds <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+```
+
+**＊実行例＊**
+
+
+```bash
+$ helm upgrade --skip-crds foo-release ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
 #### ▼ --wait
@@ -557,7 +617,13 @@ $ helm upgrade --skip-crds -f <valuesファイルへのパス> <リリース名>
 作成したPodがReady状態になるまで、```helm upgrade```コマンドの完了を待機する。
 
 ```bash
-$ helm upgrade --wait -f <valuesファイルへのパス> <リリース名> <チャートへのパス>
+$ helm upgrade --wait <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+```
+
+**＊実行例＊**
+
+```bash
+$ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
 ```
 
 <br>
@@ -588,31 +654,53 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 <br>
 
-### オブション
+### secretsサブコマンド無し
+
+```secrets.yaml```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+
+```bash
+$ helm template ./foo-chart -f secrets://secrets.yaml
+```
+
+<br>
+
+### オプション
 
 #### ▼ -f
 
-暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。
-
-```bash
-$ helm secrets template . -f secrets.yaml -f values.yaml
-```
-
-なおこの時、```values```ファイル側には```secrets.yaml```ファイルの値を設定しておく必要はない。
+暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。 なおこの時、```values```ファイル側には```secrets.yaml```ファイルの値を設定しておく必要はない。
 
 > ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
+
+
+```bash
+$ helm secrets template <チャートへのパス> -f <sopsが作成したsecrets.yamlファイルへのパス> -f <valuesファイルへのパス>
+```
+
+
+**＊実行例＊**
+
+以下のような```secrets.yaml```ファイルがあるとする。
 
 ```yaml
 # secrets.yaml
 foo: F799Q8CQ...
 
 sops:
+  kms:
+    - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/<KMSのID>
+      created_at: '2017-12-19T11:02:39Z'
+      enc: AQICA...
+      aws_profile: ""
+      
   ...
+  
+  version: 3.7.0
 ```
-```yaml
-# values.yaml
-bar: BAR
-```
+
+また、以下のようなSecretがあるとする。
 
 ```yaml
 apiVersion: v1
@@ -624,13 +712,20 @@ data:
   foo: {{ .Values.foo | b64enc }}
 ```
 
-なお、代わりに```helm```コマンドを使用し、```-f```オプションの値に```secrets://```をつけても良い。
-
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+この時、```helm secrets```コマンドで```secrets.yaml```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。結果的に、base64方式でエンコードされ、マニフェストが作成される。
 
 ```bash
-$ helm template . -f secrets://secrets.yaml
+$ helm secrets template ./foo-chart -f secrets.yaml -f values.yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+type: Opaque
+data:
+  foo: Rjc5OVE4Q1E=...
 ```
+
 
 <br>
 

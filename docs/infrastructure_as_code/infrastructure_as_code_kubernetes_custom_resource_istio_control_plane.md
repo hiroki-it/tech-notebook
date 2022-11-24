@@ -284,9 +284,9 @@ Istiodコントロールプレーンは、サービスレジストリ（例：ku
 
 > ℹ️ 参考：
 >
+> - https://juejin.cn/post/7028572651421433892
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
 > - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
-> - https://juejin.cn/post/7028572651421433892
 > - https://www.kubernetes.org.cn/4208.html
 
 
@@ -328,17 +328,21 @@ $ curl http://127.0.0.1:15014/debug
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
+> ℹ️ 参考：
+>
+> - https://cloudnative.to/blog/istio-pilot-3/
+> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
+> - https://www.cnblogs.com/luozhiyun/p/14088989.html
+
 <br>
 
 ### 実装
 
 > ℹ️ 参考：
 >
-> - https://cloudnative.to/blog/istio-pilot-3/
-> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
-> - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L236-L238
-> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307
+> - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L307-L348
 > - https://github.com/istio/istio/blob/master/pilot/pkg/xds/ads.go#L190-L233
 
 ```go
@@ -361,7 +365,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		
 		case req, ok := <-con.reqChan:
 			if ok {
-				// pilot-agentからリモートプロシージャーを受信する。
+				// pilot-agentからリクエストを受信する。
         // 受信内容に応じて、送信内容を作成する。
 				if err := s.processRequest(req, con); err != nil {
 					return err
@@ -371,7 +375,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 			}
 			
 		case pushEv := <-con.pushChannel:
-      // pilot-agentにリモートプロシージャーを送信する。
+      // pilot-agentにリクエストを送信する。
 			err := s.pushConnection(con, pushEv)
 			pushEv.done()
 			if err != nil {

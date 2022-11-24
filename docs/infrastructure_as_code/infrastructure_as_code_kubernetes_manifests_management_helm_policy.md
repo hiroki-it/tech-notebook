@@ -256,7 +256,7 @@ $ asdf install
 （１）```helm upgrade```コマンドを実行し、インストール済みのチャートをアップグレードする。
 
 ```bash
-$ helm upgrade -f <valuesファイルへのパス> <リリース名> <チャートへのパス> --version <バージョンタグ> --wait
+$ helm upgrade <リリース名> <チャートへのパス> -f <valuesファイルへのパス> --version <バージョンタグ> --wait
 ```
 
 （２）リリースのリビジョン番号が新しくなっていることを確認する。

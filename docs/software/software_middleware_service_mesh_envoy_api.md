@@ -27,7 +27,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/help" | jq
+    -- bash -c "curl http://localhost:15000/help" | jq
 
 # 執筆時点（2022/11/13）でのエンドポイント
   /: Admin home page
@@ -127,7 +127,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?clusters" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?clusters" | jq
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
@@ -166,7 +166,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump" | jq
+    -- bash -c "curl http://localhost:15000/config_dump" | jq
 ```
 
 <br>
@@ -192,7 +192,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?include_eds" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | jq
 ```
 
 
@@ -205,7 +205,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?include_eds" | jq '.configs[].dynamic_endpoint_configs'
+    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | jq '.configs[].dynamic_endpoint_configs'
     
   {
     "endpoint_config": {
@@ -275,7 +275,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_active_clusters}" | jq | grep ClustersConfigDump.DynamicCluster -A 120
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}" | jq | grep ClustersConfigDump.DynamicCluster -A 120
 
 [
   ...
@@ -334,7 +334,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_warming_clusters}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}" | jq
 ```
 
 #### ▼ dynamic_active_secrets
@@ -362,7 +362,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_listeners}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_listeners}" | jq
 ```
 
 
@@ -383,7 +383,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?resource={dynamic_route_configs}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_route_configs}" | jq
 ```
 
 #### ▼ static_listeners
@@ -401,7 +401,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl localhost:15000/config_dump?resource={static_listeners}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={static_listeners}" | jq
 
 {
  "configs": [

@@ -90,9 +90,25 @@ spec:
 
 #### ▼ デバッグ
 
-```repo-server```コンテナには```kubectl exec```コマンドでは接続できないが、直接的にコマンドを送信することは可能である。そのため、デバッグ（例：```/tmp/<リポジトリ名>```ディレクトリ配下で、```helm template```コマンドを使用してSecretの値を確認する）が可能である。
+```repo-server```コンテナには```kubectl exec```コマンドでは接続できないが、直接的にコマンドを送信することは可能である。そのため、デバッグが可能である。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+
+**＊実行例＊**
+
+プラグインとして使用するためにインストールしたsopsのバージョンを確認する。
+
+```bash
+$ kubectl exec foo-argocd-repo-server \
+    -c repo-server \
+    -n argocd \
+    -- bash -c "sops --version"
+```
+
+**＊実行例＊**
+
+
+```/tmp/<リポジトリ名>```ディレクトリ配下で、```helm template```コマンドを使用してSecretの値を確認する。
 
 ```bash
 $ kubectl exec foo-argocd-repo-server \

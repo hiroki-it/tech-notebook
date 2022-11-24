@@ -57,7 +57,7 @@ DB_PASSWORD: ENC[AES256...
 sops:
     # AWS KMS
     kms:
-      - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****
+      - arn: arn:aws:kms:ap-northeast-1:<アカウントID>:key/<KMSのID>
         created_at: '2021-01-01T12:00:00Z'
         enc: *****
         aws_profile: ""

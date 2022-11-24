@@ -157,6 +157,8 @@ func (a *ADSC) Run() error {
 
 	// Envoyのgo-control-planeパッケージから提供されている。
 	// https://github.com/envoyproxy/go-control-plane/blob/main/envoy/service/discovery/v3/ads.pb.go#L213-L220
+	// また。.protoファイルで双方向ストリーミングRPCとして定義されている。
+	// https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/ads.proto#L32-L33
  	a.stream, err = a.client.StreamAggregatedResources(context.Background())
 	
 	if err != nil {
@@ -171,15 +173,14 @@ func (a *ADSC) Run() error {
 		if r.TypeUrl == v3.ClusterType {
 			a.watchTime = time.Now()
 		}
-		// Envoyに宛先情報を送信する。
+		// Envoyにリクエストを送信する。
 		_ = a.Send(r)
 	}
 	
 	
 	a.RecvWg.Add(1)
 
-	// ADS-APIから宛先情報を受信し、さらにEnvoyに登録する。
-	// handleRecvメソッド内で、Envoyの各処理コンポーネントに宛先情報を設定している。
+	// ADS-APIからリクエストを受信し、Envoyの各処理コンポーネント別に整理する。
 	go a.handleRecv()
 	
 	return nil
@@ -208,29 +209,32 @@ func (a *ADSC) handleRecv() {
 	
 		a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
 		switch msg.TypeUrl {
-		// 受信したリスナー値を処理する。
-		}
-		case v3.ListenerType:
+		
+        // 受信した宛先Podのリスナー値を処理する。
+         case v3.ListenerType:
 			listeners := make([]*listener.Listener, 0, len(msg.Resources))
 			for _, rsc := range msg.Resources {
 				...
 			}
 			a.handleLDS(listeners)
-		// 受信したクラスター値を処理する。	
+			
+		// 受信した宛先Podのクラスター値を処理する。	
 		case v3.ClusterType:
 			clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
 			for _, rsc := range msg.Resources {
 				...
 			}
 			a.handleCDS(clusters)
-		// 受信したエンドポイント値を処理する。	
+			
+		// 受信した宛先Podのエンドポイント値を処理する。	
 		case v3.EndpointType:
 			eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
 			for _, rsc := range msg.Resources {
 				...
 			}
 			a.handleEDS(eds)
-		// 受信したルート値を処理する。	
+			
+		// 受信した宛先Podのルート値を処理する。	
 		case v3.RouteType:
 			routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
 			for _, rsc := range msg.Resources {
@@ -247,6 +251,7 @@ func (a *ADSC) handleRecv() {
 
 		select {
 		// XDSUpdatesチャンネルに値を送信する。
+	    // 最終的に、Envoyに設定する。
 		case a.XDSUpdates <- msg:
         default:
    }
