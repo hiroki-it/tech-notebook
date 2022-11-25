@@ -283,7 +283,12 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ▼ brewとは
 
-Linuxで使用できるパッケージを管理する。異なるバージョンを同時に管理できない。
+Linuxで使用できるパッケージを管理する。最新バージョンしか管理できず、以前のバージョンを管理できない。
+
+> ℹ️ 参考：
+>
+> - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
+> - https://christina04.hatenablog.com/entry/install-old-version-with-homebrew
 
 #### ▼ autoremove
 

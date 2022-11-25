@@ -130,6 +130,12 @@ $ sops -e /foo/values.yaml
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
 ```
 
+**＊実行例＊**
+
+```bash
+$ sops -d secrets.yaml > values.yaml
+```
+
 #### ▼ -e
 
 外部の暗号化キー（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
@@ -146,6 +152,12 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 ```bash
 # AWS KMSを暗号化キーとして使用する場合
 Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
+```
+
+**＊実行例＊**
+
+```bash
+$ sops -e values.yaml > secrets.yaml
 ```
 
 <br>
