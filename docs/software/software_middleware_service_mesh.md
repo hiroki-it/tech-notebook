@@ -100,13 +100,13 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 データプレーンとコントロールプレーンの組み合わせには様々ある。
 
-| OSS名    | データプレーンの実装               | コントロールプレーンの実装                | サポートしているXDS-API |
-|---------| ------------------------------- | ------------------------------------- | ------------------- |
-| Istio   | Envoy                            | Istiod                               | 全てのXDS-API |
-| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity | 全てのXDS-API|
-| Consul  | ビルトインプロキシ、Envoy            | Consul-control-plane                 | 全てのXDS-API |
-| SPIRE  | Envoy                             | SPIRE                                | SDSのみ |
-| ...     | ...                             | ...                                   | ... |
+| OSS名   | データプレーンの実装              | コントロールプレーンの実装                     | サポートしているXDS-API |
+|---------|---------------------------|-------------------------------------|-----------------|
+| Istio   | Envoy                     | Istiod                              | 全てのXDS-API     |
+| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity | 全てのXDS-API     |
+| Consul  | ビルトインプロキシ、Envoy           | Consul-control-plane                | 全てのXDS-API     |
+| SPIRE   | Envoy                     | SPIRE                               | SDSのみ           |
+| ...     | ...                       | ...                                 | ...             |
 
 
 

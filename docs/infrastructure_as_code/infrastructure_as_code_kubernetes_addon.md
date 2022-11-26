@@ -40,9 +40,9 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 > - https://www.digihunch.com/2022/01/kubernetes-admission-control/
 > - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
-| ステップ名                   | 説明                                   |
-| ---------------------------- | -------------------------------------- |
-| mutating-admissionステップ   | リクエストの内容を変更する。           |
+| ステップ名                   | 説明                    |
+|--------------------------|-----------------------|
+| mutating-admissionステップ   | リクエストの内容を変更する。      |
 | validating-admissionステップ | リクエストを許可するか否かをを決める。 |
 
 <br>
@@ -711,15 +711,15 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 > - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
-| コントローラー名                                      | 開発環境 | 本番環境 |
-| ----------------------------------------------------- | -------- | -------- |
-| minikubeアドオン（実体はNginx Ingressコントローラー） | ✅        |         |
-| AWS LBコントローラー                                 |         | ✅        |
-| GCP CLBコントローラー                                 |         | ✅        |
-| Nginx Ingressコントローラー                           | ✅        | ✅        |
-| Istio Ingress                                         | ✅        | ✅        |
-| Istio Gateway          | ✅        | ✅        |
-| ...            | ...        | ...        |
+| コントローラー名                               | 開発環境 | 本番環境 |
+|-----------------------------------------|----------|----------|
+| minikubeアドオン（実体はNginx Ingressコントローラー） | ✅        |          |
+| AWS LBコントローラー                           |          | ✅        |
+| GCP CLBコントローラー                          |          | ✅        |
+| Nginx Ingressコントローラー                    | ✅        | ✅        |
+| Istio Ingress                           | ✅        | ✅        |
+| Istio Gateway                           | ✅        | ✅        |
+| ...                                     | ...      | ...      |
 
 
 <br>
@@ -864,15 +864,15 @@ aws-load-balancer-controller   2/2     2            0           22m
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
 
-| 項目                                            | 説明                                                         |
-| ----------------------------------------------- | ------------------------------------------------------------ |
-| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。 |
-| ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。 |
-| ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                            |
-| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先のサブネットを設定する。      |
+| 項目                                            | 説明                                                           |
+|-------------------------------------------------|--------------------------------------------------------------|
+| ```alb.ingress.kubernetes.io/certificate-arn``` | ALB IngressでHTTPSプロトコルを受け付ける場合、SSL証明書のARNを設定する。       |
+| ```alb.ingress.kubernetes.io/listen-ports```    | ALB Ingressでインバウンド通信を受け付けるポート番号を設定する。                  |
+| ```alb.ingress.kubernetes.io/scheme```          | ALB Ingressのスキームを設定する。                                       |
+| ```alb.ingress.kubernetes.io/subnets```         | ALB Ingressのルーティング先のサブネットを設定する。                             |
 | ```alb.ingress.kubernetes.io/target-type```     | ルーティング先のターゲットタイプを設定する。Fargateの場合は、```ip```を設定する必要がある。 |
-| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。 |
-| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。 |
+| ```alb.ingress.kubernetes.io/waf-acl-id```      | LBに紐づけるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。     |
+| ```alb.ingress.kubernetes.io/wafv2-acl-arn```   | LBに紐づけるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。    |
 
 <br>
 

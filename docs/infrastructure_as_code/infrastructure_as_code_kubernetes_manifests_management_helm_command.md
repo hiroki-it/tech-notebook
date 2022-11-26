@@ -93,13 +93,13 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 $ helm install <リリース名> <チャートへのパス>
 ```
 
-| パラメーター                                                 | 例                                                           | 補足                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| チャートへのパス                                             | ```./foo-chart```                                            |                                                              |
-| ```<チャートレジストリ名>/<チャートリポジトリ名>```          | ```foo-registry/foo-repository```                            | ℹ️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b       |
-| チャートリポジトリURL                                        | ```https://example.com/foo-chart```                          |                                                              |
-| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                              |
-| チャートアーカイブへのパス                                   | ```./foo-chart-<バージョンタグ>.tgz```                                  | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>ℹ️ 参考：https://helm.sh/docs/helm/helm_install/ |
+| パラメーター                                           | 例                                                              | 補足                                                                                                                                        |
+|--------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| チャートへのパス                                         | ```./foo-chart```                                               |                                                                                                                                             |
+| ```<チャートレジストリ名>/<チャートリポジトリ名>```                | ```foo-registry/foo-repository```                               | ℹ️ 参考：https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                    |
+| チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                             |
+| ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
+| チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>ℹ️ 参考：https://helm.sh/docs/helm/helm_install/ |
 
 #### ▼ --dry-run
 
@@ -697,6 +697,7 @@ sops:
       
   ...
   
+  # 暗号化時に使用したsopsのバージョン
   version: 3.7.0
 ```
 
@@ -712,7 +713,7 @@ data:
   foo: {{ .Values.foo | b64enc }}
 ```
 
-この時、```helm secrets```コマンドで```secrets.yaml```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。結果的に、base64方式でエンコードされ、マニフェストが作成される。
+この時、```helm secrets```コマンドで```secrets.yaml```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。結果的に、base64方式でエンコードされ、マニフェストが作成される。
 
 ```bash
 $ helm secrets template ./foo-chart -f secrets.yaml -f values.yaml

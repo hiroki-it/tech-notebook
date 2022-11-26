@@ -50,38 +50,38 @@ foo-ingress   nginx   *       <IPアドレス>    80      12m
 $ minikube addons list
 
 |-----------------------------|----------|--------------|-----------------------|
-|         ADDON NAME          | PROFILE  |    STATUS    |      MAINTAINER       |
-|-----------------------------|----------|--------------|-----------------------|
-| ambassador                  | minikube | disabled     | unknown (third-party) |
-| auto-pause                  | minikube | disabled     | google                |
-| csi-hostpath-driver         | minikube | disabled     | kubernetes            |
-| dashboard                   | minikube | enabled ✅   | kubernetes            |
-| default-storageclass        | minikube | enabled ✅   | kubernetes            |
-| efk                         | minikube | disabled     | unknown (third-party) |
-| freshpod                    | minikube | disabled     | google                |
-| gcp-auth                    | minikube | disabled     | google                |
-| gvisor                      | minikube | disabled     | google                |
-| helm-tiller                 | minikube | disabled     | unknown (third-party) |
-| ingress                     | minikube | enabled ✅   | unknown (third-party) |
-| ingress-dns                 | minikube | disabled     | unknown (third-party) |
-| istio                       | minikube | disabled     | unknown (third-party) |
-| istio-provisioner           | minikube | disabled     | unknown (third-party) |
-| kubevirt                    | minikube | disabled     | unknown (third-party) |
-| logviewer                   | minikube | disabled     | google                |
-| metallb                     | minikube | disabled     | unknown (third-party) |
-| metrics-server              | minikube | disabled     | kubernetes            |
-| nvidia-driver-installer     | minikube | disabled     | google                |
-| nvidia-gpu-device-plugin    | minikube | disabled     | unknown (third-party) |
-| olm                         | minikube | disabled     | unknown (third-party) |
-| pod-security-policy         | minikube | disabled     | unknown (third-party) |
-| portainer                   | minikube | disabled     | portainer.io          |
-| registry                    | minikube | disabled     | google                |
-| registry-aliases            | minikube | disabled     | unknown (third-party) |
-| registry-creds              | minikube | disabled     | unknown (third-party) |
-| storage-provisioner         | minikube | enabled ✅   | kubernetes            |
-| storage-provisioner-gluster | minikube | disabled     | unknown (third-party) |
-| volumesnapshots             | minikube | disabled     | kubernetes            |
-|-----------------------------|----------|--------------|-----------------------|
+| ADDON NAME                    | PROFILE    | STATUS         | MAINTAINER              |
+|-------------------------------|------------|----------------|-------------------------|
+| ambassador                    | minikube   | disabled       | unknown (third-party)   |
+| auto-pause                    | minikube   | disabled       | google                  |
+| csi-hostpath-driver           | minikube   | disabled       | kubernetes              |
+| dashboard                     | minikube   | enabled ✅      | kubernetes              |
+| default-storageclass          | minikube   | enabled ✅      | kubernetes              |
+| efk                           | minikube   | disabled       | unknown (third-party)   |
+| freshpod                      | minikube   | disabled       | google                  |
+| gcp-auth                      | minikube   | disabled       | google                  |
+| gvisor                        | minikube   | disabled       | google                  |
+| helm-tiller                   | minikube   | disabled       | unknown (third-party)   |
+| ingress                       | minikube   | enabled ✅      | unknown (third-party)   |
+| ingress-dns                   | minikube   | disabled       | unknown (third-party)   |
+| istio                         | minikube   | disabled       | unknown (third-party)   |
+| istio-provisioner             | minikube   | disabled       | unknown (third-party)   |
+| kubevirt                      | minikube   | disabled       | unknown (third-party)   |
+| logviewer                     | minikube   | disabled       | google                  |
+| metallb                       | minikube   | disabled       | unknown (third-party)   |
+| metrics-server                | minikube   | disabled       | kubernetes              |
+| nvidia-driver-installer       | minikube   | disabled       | google                  |
+| nvidia-gpu-device-plugin      | minikube   | disabled       | unknown (third-party)   |
+| olm                           | minikube   | disabled       | unknown (third-party)   |
+| pod-security-policy           | minikube   | disabled       | unknown (third-party)   |
+| portainer                     | minikube   | disabled       | portainer.io            |
+| registry                      | minikube   | disabled       | google                  |
+| registry-aliases              | minikube   | disabled       | unknown (third-party)   |
+| registry-creds                | minikube   | disabled       | unknown (third-party)   |
+| storage-provisioner           | minikube   | enabled ✅      | kubernetes              |
+| storage-provisioner-gluster   | minikube   | disabled       | unknown (third-party)   |
+| volumesnapshots               | minikube   | disabled       | kubernetes              |
+| ----------------------------- | ---------- | -------------- | ----------------------- |
 ```
 
 <br>
@@ -324,10 +324,10 @@ $ minikube service <NodePort Servie名/LoadBalancer Servie名>
 
 🏃  Starting tunnel for service <Service名>.
 |-----------|--------------|-------------|------------------------|
-| NAMESPACE |     NAME     | TARGET PORT |          URL           |
-|-----------|--------------|-------------|------------------------|
-| default   | <Service名>  |             | http://127.0.0.1:57761 |
-|-----------|--------------|-------------|------------------------|
+| NAMESPACE   | NAME           | TARGET PORT   | URL                      |
+|-------------|----------------|---------------|--------------------------|
+| default     | <Service名>    |               | http://127.0.0.1:57761   |
+| ----------- | -------------- | ------------- | ------------------------ |
 
 Opening service <Service名> in default browser...
 ```
@@ -374,15 +374,15 @@ $ curl -X GET http://*.*.*.*:57761
 $ minikube service list
 
 |----------------------|---------------------------|--------------|---------------------------|
-|      NAMESPACE       |           NAME            | TARGET PORT  |            URL            |
-|----------------------|---------------------------|--------------|---------------------------|
-| default              | foo-service               | http/80      | http://*.*.*.*:30001      |
-| default              | bar-service               | http/80      | http://*.*.*.*:30000      |
-| default              | kubernetes                | No node port |                           |
-| kube-system          | kube-dns                  | No node port |                           |
-| kubernetes-dashboard | dashboard-metrics-scraper | No node port |                           |
-| kubernetes-dashboard | kubernetes-dashboard      | No node port |                           |
-|----------------------|---------------------------|--------------|---------------------------|
+| NAMESPACE              | NAME                        | TARGET PORT    | URL                         |
+|------------------------|-----------------------------|----------------|-----------------------------|
+| default                | foo-service                 | http/80        | http://*.*.*.*:30001        |
+| default                | bar-service                 | http/80        | http://*.*.*.*:30000        |
+| default                | kubernetes                  | No node port   |                             |
+| kube-system            | kube-dns                    | No node port   |                             |
+| kubernetes-dashboard   | dashboard-metrics-scraper   | No node port   |                             |
+| kubernetes-dashboard   | kubernetes-dashboard        | No node port   |                             |
+| ---------------------- | --------------------------- | -------------- | --------------------------- |
 ```
 
 #### ▼ --url

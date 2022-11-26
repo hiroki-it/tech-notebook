@@ -116,7 +116,7 @@ masterテーブルとtransactionテーブルがわかるようにする命名す
 カラム名には単数系接頭辞をつけて命名する。例えば、```foo_id```、```foo_name```、```foo_type```とする。ただし、子テーブルの外部キーと紐付くカラムがある場合、そのカラムの接頭辞は、子テーブル名の単数形とする。例えば、```bar_id```とする。例外として、ActiveRecordパターンのフレームワーク（例：Laravelなど）では使用しない方がよいかもしれない。これらのフレームワークでは、単数形テーブル名の接頭辞がないカラム名を想定して機能が備わっていることがある。この場合、DBとの連携で毎回カラム名を明示する必要があったり、デフォルトではないカラム名を使用することによる不具合が発生したり、不便なことが多かったりするため、おすすめしない。
 
 | foo_id  | bar_id  | foo_name  | foo_type |
-| ------- | ------- | --------- | -------- |
+|---------|---------|-----------|----------|
 | ```1``` | ```1``` | ```foo``` | ```2```  |
 
 <br>
@@ -235,23 +235,23 @@ CREATE INDEX foo_index
     ON foo_table (name, address)
 ```
 
-| id   | name      | address | old  |
-| ---- | --------- | ------- | ---- |
-| 1    | Suzuki    | Tokyo   | 24   |
-| 2    | Yamada    | Osaka   | 18   |
-| 3    | Takahashi | Nagoya  | 18   |
-| 4    | Honda     | Tokyo   | 16   |
-| 5    | Endou     | Tokyo   | 24   |
+| id | name      | address | old |
+|----|-----------|---------|-----|
+| 1  | Suzuki    | Tokyo   | 24  |
+| 2  | Yamada    | Osaka   | 18  |
+| 3  | Takahashi | Nagoya  | 18  |
+| 4  | Honda     | Tokyo   | 16  |
+| 5  | Endou     | Tokyo   | 24  |
 
 各カラムで値の異なるレコード数が計測され、```name```カラムは```address```カラムよりも一意のレコードが多いため、```name```カラムの昇順（アルファベット順）に並び替えられ、DBインデックスとして保存される。
 
-| id   | name      | address | old  |
-| ---- | --------- | ------- | ---- |
-| 5    | Endou     | Tokyo   | 24   |
-| 4    | Honda     | Tokyo   | 18   |
-| 1    | Suzuki    | Tokyo   | 24   |
-| 3    | Takahashi | Nagoya  | 18   |
-| 2    | Yamada    | Osaka   | 18   |
+| id | name      | address | old |
+|----|-----------|---------|-----|
+| 5  | Endou     | Tokyo   | 24  |
+| 4  | Honda     | Tokyo   | 18  |
+| 1  | Suzuki    | Tokyo   | 24  |
+| 3  | Takahashi | Nagoya  | 18  |
+| 2  | Yamada    | Osaka   | 18  |
 
 <br>
 

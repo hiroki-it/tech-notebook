@@ -137,12 +137,12 @@ $ skaffold run --port-forward
 
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
 
-| コマンド                          | ポートフォワーディングの可否       |
-| --------------------------------- | ---------------------------------- |
-| ```skaffold dev```                    | ユーザー定義を参照                   |
-| ```skaffold dev --port-forward```     | ユーザー定義を参照         |
+| コマンド                                  | ポートフォワーディングの可否    |
+|---------------------------------------|-------------------|
+| ```skaffold dev```                    | ユーザー定義を参照       |
+| ```skaffold dev --port-forward```     | ユーザー定義を参照       |
 | ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
-| ```skaffold run```                | ポートフォワーディングを実行しない |
-| ```skaffold run --port-forward``` | ユーザー定義を参照         |
+| ```skaffold run```                    | ポートフォワーディングを実行しない |
+| ```skaffold run --port-forward```     | ユーザー定義を参照       |
 
 <br>

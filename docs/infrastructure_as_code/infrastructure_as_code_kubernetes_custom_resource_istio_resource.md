@@ -169,9 +169,9 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 > ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
-| 場合                               | VirtualService数                                             |
-| ---------------------------------- | ------------------------------------------------------------ |
-| API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 |
+| 場合                          | VirtualService数                                                                         |
+|-----------------------------|-----------------------------------------------------------------------------------------|
+| API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                    |
 | API GatewayをIstioで管理しない場合 | API Gatewayから全てのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある。 |
 
 <br>
@@ -208,10 +208,10 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ DestinationRuleとは
 
-| 通信方向       | 能力                                                         | 補足                                                         |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、をを決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                              |
-| アウトバウンド | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、をを決める能力を担う。 | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| 通信方向 | 能力                                                                                                                                 | 補足                                                                                                  |
+|----------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、をを決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                       |
+| アウトバウンド  | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、をを決める能力を担う。                                                             | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 

@@ -29,13 +29,13 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 > ℹ️ 参考：https://technical-seo.jp/crawler/
 
-| クローラー名 | 検索エンジン |
-| :----------- | :----------- |
-| Googlebot    | Google       |
-| Bingbot      | Bing検索     |
-| YandexBot    | YANDEX       |
-| Baiduspider  | Baidu        |
-| Mail.RU_Bot  | Mail.ru      |
+| クローラー名     | 検索エンジン |
+|:------------|:---------|
+| Googlebot   | Google   |
+| Bingbot     | Bing検索 |
+| YandexBot   | YANDEX   |
+| Baiduspider | Baidu    |
+| Mail.RU_Bot | Mail.ru  |
 
 例えば、Googlebotであれば、ユーザーエージェントは以下の様になっている。
 
@@ -116,11 +116,11 @@ Webサイトの全ページのうち、どのくらいが検索エンジンのDB
 > ℹ️ 参考：https://support.google.com/webmasters/answer/7440203#status_type
 
 | ステータス名 | DBインデックスへの登録の有無 |
-| ------------ | ---------------------------- |
-| 有効         | 登録された                   |
-| 警告         | 登録された                   |
-| エラー       | 登録されなかった             |
-| 除外         | 登録されなかった           |
+|---------|-------------------|
+| 有効    | 登録された             |
+| 警告    | 登録された             |
+| エラー     | 登録されなかった          |
+| 除外    | 登録されなかった          |
 
 <br>
 

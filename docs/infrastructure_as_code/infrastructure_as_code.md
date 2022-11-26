@@ -219,10 +219,10 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 単一ホスト上のコンテナが対象である。異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動、を実行できる。
 
-| ツール名                       | ベンダー |
-| ------------------------------ | -------- |
-| Docker Compose                 | Docker   |
-| ECS：Elastic Container Service | Amazon   |
+| ツール名                         | ベンダー   |
+|-------------------------------|--------|
+| Docker Compose                | Docker |
+| ECS：Elastic Container Service | Amazon |
 
 <br>
 
@@ -232,11 +232,11 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 > ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
-| ツール名                        | ベンダー |
-| ------------------------------- | -------- |
-| Docker Swarm                    | Docker   |
-| Kubernetes                      | Google   |
-| EKS：Elastic Kubernetes Service | Amazon   |
+| ツール名                          | ベンダー   |
+|--------------------------------|--------|
+| Docker Swarm                   | Docker |
+| Kubernetes                     | Google |
+| EKS：Elastic Kubernetes Service | Amazon |
 
 <br>
 

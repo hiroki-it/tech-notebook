@@ -37,13 +37,13 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_validation.html
 
-|                     | ```typeof $var``` | ```if($var)``` |
-|:--------------------|:-----------------:|:--------------:|
-| **```null```**      |   ```object```    |                |
-| **```0```**         |   ```number```    |                |
-| **```1```**         |   ```number```    |       ✅        |
-| **```""```**（空文字）   |   ```string```    |                |
-| **```"あ"```**       |   ```string```    |       ✅        |
-| **```NaN```**       |   ```number```    |                |
-| **```undefined```** |  ```undefined```  |                |
+|                      | ```typeof $var``` | ```if($var)``` |
+|:---------------------|:-----------------:|:--------------:|
+| **```null```**       |   ```object```    |                |
+| **```0```**          |   ```number```    |                |
+| **```1```**          |   ```number```    |       ✅        |
+| **```""```**（空文字） |   ```string```    |                |
+| **```"あ"```**        |   ```string```    |       ✅        |
+| **```NaN```**        |   ```number```    |                |
+| **```undefined```**  |  ```undefined```  |                |
 

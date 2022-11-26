@@ -49,13 +49,13 @@ Webアプリケーションのインフラ領域に軸足を置きつつ、バ�
 知見の共有になれば幸いです。<br>
 <span style="font-size: 90%;">( I would be happy if I could share my knowledge. )</span>
 
-| アーキテクチャ                 | 使用技術                                            | リポジトリ（in Japanese）                                                                            |
-| ------------------------------ | --------------------------------------------------- |-----------------------------------------------------------------------------------------------|
-| クリーンアーキテクチャ         | Clean-Arch、Laravel、GitHub Actions、...            | [ddd-backend-with-laravel](https://github.com/hiroki-it/ddd-backend-with-laravel)             |
-|                                | Clean-Arch、Gin、...                                | [ddd-backend-with-gin](https://github.com/hiroki-it/ddd-backend-with-gin)                     |
-|                                | Clean-Arch、Go、Serverless Framework、CircleCI、... | [notify-slack-of-amplify-events](https://github.com/hiroki-it/notify-slack-of-amplify-events) |
-| マイクロサービスアーキテクチャ | Microservices-Arch、...                             | [microservices-backend](https://github.com/hiroki-it/microservices-backend)                   |
-|                                | K8s、Istio、...                                     | [microservices-manifests](https://github.com/hiroki-it/microservices-manifests)               |
+| アーキテクチャ         | 使用技術                                        | リポジトリ（in Japanese）                                                                            |
+|-----------------|-------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| クリーンアーキテクチャ     | Clean-Arch、Laravel、GitHub Actions、...           | [ddd-backend-with-laravel](https://github.com/hiroki-it/ddd-backend-with-laravel)             |
+|                 | Clean-Arch、Gin、...                              | [ddd-backend-with-gin](https://github.com/hiroki-it/ddd-backend-with-gin)                     |
+|                 | Clean-Arch、Go、Serverless Framework、CircleCI、... | [notify-slack-of-amplify-events](https://github.com/hiroki-it/notify-slack-of-amplify-events) |
+| マイクロサービスアーキテクチャ | Microservices-Arch、...                          | [microservices-backend](https://github.com/hiroki-it/microservices-backend)                   |
+|                 | K8s、Istio、...                                   | [microservices-manifests](https://github.com/hiroki-it/microservices-manifests)               |
 
 <br>
 

@@ -59,10 +59,10 @@ title: 【IT技術の知見】当サイトについて
 
 > ℹ️ 参考：https://github.com/hiroki-it/tech-notebook-mkdocs
 
-| 役割                     | ツール名       |
-| ------------------------ | -------------- |
+| 役割           | ツール名          |
+|----------------|----------------|
 | サイトジェネレーター     | MkDocs         |
-| デプロイ                 | GitHub Actions |
+| デプロイ           | GitHub Actions |
 | パッケージバージョン更新 | Renovate       |
 
 <br>

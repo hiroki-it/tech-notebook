@@ -2,7 +2,6 @@
 title: 【IT技術の知見】コントロールプレーン＠Istio
 description: コントロールプレーン＠Istioの知見を記録しています。
 ---
-
 # コントロールプレーン＠Istio
 
 ## はじめに
@@ -106,16 +105,16 @@ spec:
             # 15012番ポートの開放
             - name: ISTIOD_ADDR
               value: istiod-<リビジョン番号>.istio-system.svc:15012 # 15012番ポートの開放
-              
+            
           ... 
-          
+        
 # 重要なところ以外を省略しているので、全体像はその都度確認すること。
 ```
 
 Dockerfileとしては、最後に```pilot-discovery```プロセスを実行している。
 
 > ℹ️ 参考：
-> 
+>
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
 > - https://zenn.dev/link/comments/e8a978a00c6325
 
@@ -289,7 +288,6 @@ Istiodコントロールプレーンは、サービスレジストリ（例：ku
 > - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
 > - https://www.kubernetes.org.cn/4208.html
 
-
 #### ▼ ```15012```番
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
@@ -318,7 +316,6 @@ $ curl http://127.0.0.1:15014/debug
 #### ▼ ```15017```番
 
 ```descovery```コンテナの```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、```descovery```コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
-
 
 <br>
 
@@ -356,13 +353,13 @@ func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) erro
 }
 
 func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
-	
+
 	...
-	
+
 	for {
-		
+	
 		select {
-		
+	
 		case req, ok := <-con.reqChan:
 			if ok {
 				// pilot-agentからリクエストを受信する。
@@ -373,7 +370,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 			} else {
 				return <-con.errorChan
 			}
-			
+		
 		case pushEv := <-con.pushChannel:
       // pilot-agentにリクエストを送信する。
 			err := s.pushConnection(con, pushEv)

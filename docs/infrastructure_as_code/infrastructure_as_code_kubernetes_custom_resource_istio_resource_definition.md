@@ -924,12 +924,12 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
-| 項目       | 説明           |
-|----------|--------------|
-| UNSET    | 調査中...       |
-| DISABLE  | 相互TLSを使用しない。 |
-| PERMISSIVE | 調査中...       |
-| STRICT   | 相互TLSを使用する。  |
+| 項目       | 説明             |
+|------------|----------------|
+| UNSET      | 調査中...        |
+| DISABLE    | 相互TLSを使用しない。 |
+| PERMISSIVE | 調査中...        |
+| STRICT     | 相互TLSを使用する。  |
 
 
 ```yaml

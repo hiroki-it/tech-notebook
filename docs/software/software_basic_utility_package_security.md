@@ -71,6 +71,7 @@ sops:
     mac: ENC[AES256...
     pgp: []
     unencrypted_suffix: _unencrypted
+    # 暗号化に使用したsopsのバージョン
     version: 3.6.1
 ```
 

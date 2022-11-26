@@ -44,48 +44,64 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信するAPIを持つサーバー。主要なサーバーの一覧を示す。
 
-
-> ℹ️ 参考：
->
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration
-> - https://www.netstars.co.jp/kubestarblog/k8s-10/
-> - https://skyao.io/learning-envoy/xds/
-
+> ℹ️ 参考：https://skyao.io/learning-envoy/xds/
 
 #### ▼ ADS：Aggregated XDS
 
-各XDSの処理結果を紐付け、適切な順番に整理し、Envoyに提供する。各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
+単一のエンドポイントを提供し、適切な順番で各XDS-APIから宛先情報を取得できる。各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
 > ℹ️ 参考：
 > 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
+> - https://www.amazon.co.jp/dp/B09XN9RDY1
 > - https://i-beam.org/2019/01/22/hello-envoy/
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ CDS：Cluster Discovery Service
 
-Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+単一のエンドポイントを提供し、クラスター値を取得できる。Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ EDS：Endpoint Discovery Service
 
-Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+単一のエンドポイントを提供し、エンドポイント値を取得できる。Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ LDS：Listener Discovery Service
 
-Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+単一のエンドポイントを提供し、リスナー値を取得できる。Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
+
+> ℹ️ 参考：
+> 
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ RDS：Route Discovery Service
 
-Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+単一のエンドポイントを提供し、ルート値を取得できる。Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
+
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ SDS：Secret Discovery Service
 
-Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
+単一のエンドポイントを提供し、証明書を取得できる。Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
 
-#### ▼ VHDS：Virtual Host Discovery Service
-
-Envoyの実行時に、Cluster内メンバーのルーティングの設定を動的に検出できるようにする。
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 <br>
 
@@ -488,7 +504,9 @@ Istioを使用して、```envoy```コンテナを稼働させるとする。Kube
 
 #### ▼ ルートとは
 
-ルートでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
+リスナーのサブセットである。ルートでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
+
+> ℹ️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ ルート値の静的な登録
 
@@ -832,7 +850,9 @@ Istioを使用して、```envoy```コンテナを稼働させるとする。Kube
 
 #### ▼ エンドポイントとは
 
-エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。
+クラスターのサブセットである。エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。
+
+> ℹ️ 参考：https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ エンドポイント値の静的な登録
 
@@ -939,8 +959,8 @@ Envoyは、分散トレースを作成できるように、自分自身を通過
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-| HTTPヘッダー名     | 説明                             |
-| ------------------ | -------------------------------- |
+| HTTPヘッダー名         | 説明                |
+|--------------------|-------------------|
 | ```X-REQUEST-ID``` | トレースIDが割り当てられている。 |
 
 #### ▼ zipkin系ヘッダー
@@ -949,11 +969,11 @@ Envoyは、Zipkinが使用するヘッダーを追加する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-| HTTPヘッダー名          | 説明                                                         |
-| ----------------------- | ------------------------------------------------------------ |
-| ```X-B3-SAMPLED```      |                                                              |
-| ```X-B3-SPANID```       | スパンIDが割り当てられている。                               |
-| ```X-B3-TRACEID```      | トレースIDが割り当てられている。                             |
+| HTTPヘッダー名              | 説明                                              |
+|-------------------------|---------------------------------------------------|
+| ```X-B3-SAMPLED```      |                                                   |
+| ```X-B3-SPANID```       | スパンIDが割り当てられている。                                |
+| ```X-B3-TRACEID```      | トレースIDが割り当てられている。                               |
 | ```X-B3-PARENTSPANId``` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
 
 #### ▼ AWS X-Ray系ヘッダー
@@ -962,8 +982,8 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-| HTTPヘッダー名        | 説明                             |
-| --------------------- | -------------------------------- |
+| HTTPヘッダー名            | 説明                |
+|-----------------------|-------------------|
 | ```X-AMZN-TRACE-ID``` | トレースIDが割り当てられている。 |
 
 <br>
@@ -974,8 +994,8 @@ Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext
 
-| RPCヘッダー名        | 説明                             |
-| -------------------- | -------------------------------- |
+| RPCヘッダー名            | 説明                |
+|----------------------|-------------------|
 | ```GRPC-TRACE-BIN``` | トレースIDが割り当てられている。 |
 
 <br>

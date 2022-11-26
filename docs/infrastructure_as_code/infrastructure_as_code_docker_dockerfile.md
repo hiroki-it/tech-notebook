@@ -233,10 +233,10 @@ FROM python:latest-slim
 
 指定できるイメージレジストリの例と記法は以下の通りである。
 
-| レジストリの種類           | 例                                                                                                            | 補足                                                         |
-|--------------------|--------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
-| DockerHub          | ```php:8.0-fpm```                                                                                            | https://hub.docker.com/_/php                                 |
-| クラウドプロバイダー（パブリック）  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                      |
+| レジストリの種類         | 例                                                                                                             | 補足                                                                                 |
+|--------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| DockerHub          | ```php:8.0-fpm```                                                                                              | https://hub.docker.com/_/php                                                         |
+| クラウドプロバイダー（パブリック）  | ECRパブリックギャラリーの場合：<br>```public.ecr.aws/bitnami/php-fpm:latest```                                             | https://gallery.ecr.aws/bitnami/php-fpm                                              |
 | クラウドプロバイダー（プライベート） | ECRプライベートレジストリの場合：<br>```<アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest``` | https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1 |
 
 #### ▼ CPUアーキテクチャの指定

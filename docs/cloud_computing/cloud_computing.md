@@ -91,62 +91,62 @@ XaaSに含まれないが、比較のために記載している。全てのシ�
 
 リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS、仮想サーバー、を用意する。仮想サーバー型IaaSとは異なり、ハードウェアのみで仮想サーバーは提供されないため、ハードウェア上にユーザーが仮想サーバーを作成し、管理する必要がある。
 
-| サービス名 | リソース名                              |
-| ---------- | --------------------------------------- |
-| AWS        | AWS EC2（ベアメタルインスタンスタイプ） |
-| GCP        | Bare Metal Solution                     |
-| Azure      |                                         |
+| サービス名 | リソース名                  |
+|--------|-------------------------|
+| AWS    | AWS EC2（ベアメタルインスタンスタイプ） |
+| GCP    | Bare Metal Solution     |
+| Azure  |                         |
 
 #### ▼ 仮想サーバー型IaaS
 
 リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、OS、を用意する。ベアメタル型IaaSとは異なり、ハードウェアと仮想サーバーの両方が提供される。
 
-| サービス名 | リソース名 |
-| ---------- | ---------- |
-| AWS           | AWS EC2 |
-| GCP           | Google Compute Engine |
-| Azure           | Azure Virtual Machine |
+| サービス名 | リソース名                |
+|--------|-----------------------|
+| AWS    | AWS EC2               |
+| GCP    | Google Compute Engine |
+| Azure  | Azure Virtual Machine |
 
 #### ▼ CaaS
 
 リクエストリプライ方式のアプリケーション、データ、ランタイム、ミドルウェア、コンテナ、を用意する。
 
-| サービス名 | リソース名 |
-| ---------- | ---------- |
-| AWS           | AWS Fargate |
-| GCP           | Google Cloud Run |
-| Azure           | Azure Container Instances |
+| サービス名 | リソース名                    |
+|--------|---------------------------|
+| AWS    | AWS Fargate               |
+| GCP    | Google Cloud Run          |
+| Azure  | Azure Container Instances |
 
 #### ▼ PaaS
 
 リクエストリプライ方式のアプリケーション、データ、を用意する。
 
-| サービス名 | リソース名 |
-| ---------- | ---------- |
-| AWS           | AWS Elastic Beanstalk、AWS RDS、AWS CloudFront、AWS Dynamo DB、AWS SES |
-| GCP           | Google App Engine、Google CLoud SQL |
-| Azure           | Azure App Service |
+| サービス名 | リソース名                                                             |
+|--------|--------------------------------------------------------------------|
+| AWS    | AWS Elastic Beanstalk、AWS RDS、AWS CloudFront、AWS Dynamo DB、AWS SES |
+| GCP    | Google App Engine、Google CLoud SQL                                 |
+| Azure  | Azure App Service                                                  |
 
 
 #### ▼ FaaS
 
 イベントドリブン方式の関数プログラム、データ、を用意する。
 
-| サービス名 | リソース名 |
-| ---------- | ---------- |
-| AWS           | AWS Lambda |
-| GCP           | Google Cloud Functions |
-| Azure           | Azure Functions |
+| サービス名 | リソース名                 |
+|--------|------------------------|
+| AWS    | AWS Lambda             |
+| GCP    | Google Cloud Functions |
+| Azure  | Azure Functions        |
 
 #### ▼ SaaS
 
 何も用意する必要はない。
 
-| サービス名 | リソース名                                                   |
-| ---------- | ------------------------------------------------------------ |
-| AWS        | AWS S3、AWS CloudWatch                                       |
-| GCP        | Google Apps（例：Google Map、Google Cloud、Google Calender など） |
-| Azure      | -                                                            |
+| サービス名 | リソース名                                                     |
+|--------|------------------------------------------------------------|
+| AWS    | AWS S3、AWS CloudWatch                                      |
+| GCP    | Google Apps（例：Google Map、Google Cloud、Google Calender など） |
+| Azure  | -                                                          |
 
 
 

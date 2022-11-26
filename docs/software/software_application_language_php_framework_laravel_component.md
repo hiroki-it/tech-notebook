@@ -23,23 +23,23 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 > ℹ️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
-|      | 用語                                                    | 説明                                                         |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------------ |
-| 1    | リクエストを受信する。                                  |                                                              |
-| 2    | ```index.php```ファイル                                 | エントリーポイントから処理が始まる。                         |
-| 3    | Autoload                                                | ```autoload.php```ファイルにて、パッケージを自動的にロードする。 |
-| 4    | Load App                                                | ```bootstrap/app.php```ファイルにて、ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する。 |
-| 5    | Http Kernel                                             | Kernelを実行する。                                           |
-| 6    | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。 |
-| 7    | Middleware                                              | BeforeMiddlewareを実行する。                                 |
-| 8    | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル、```app.php```ファイルなどのルーティング定義を元に、Routerが実行する。 |
-| 9    | FormRequest                                             | バリデーションを実行する。                                   |
-| 10   | Controller                                              | Controllerを基点として、DBにまで処理が走る。                 |
-| 11   | Resource                                                | DBから取得したコレクション型データを配列型データに変換する。 |
-| 12   | Response                                                | Responseを実行する。配列型データをJSONデータに変換する。     |
-| 13   | Terminate Middleware                                    | AfterMiddlewareが実行される。                                |
-| 14   | View                                                    | ```blade.php```ファイルを基に静的ファイルが作成される。      |
-| 15   | レスポンスを返信する。                                  |                                                              |
+|    | 用語                                                  | 説明                                                                                                |
+|----|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| 1  | リクエストを受信する。                                         |                                                                                                     |
+| 2  | ```index.php```ファイル                                   | エントリーポイントから処理が始まる。                                                                               |
+| 3  | Autoload                                              | ```autoload.php```ファイルにて、パッケージを自動的にロードする。                                                        |
+| 4  | Load App                                              | ```bootstrap/app.php```ファイルにて、ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する。 |
+| 5  | Http Kernel                                           | Kernelを実行する。                                                                                      |
+| 6  | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する。これにより、ServiceContainerにクラスがバインドされる。        |
+| 7  | Middleware                                            | BeforeMiddlewareを実行する。                                                                            |
+| 8  | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル、```app.php```ファイルなどのルーティング定義を元に、Routerが実行する。                                 |
+| 9  | FormRequest                                           | バリデーションを実行する。                                                                                     |
+| 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                   |
+| 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                             |
+| 12 | Response                                              | Responseを実行する。配列型データをJSONデータに変換する。                                                           |
+| 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                            |
+| 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
+| 15 | レスポンスを返信する。                                         |                                                                                                     |
 
 <br>
 
@@ -934,53 +934,53 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 以下のクラスは、デフォルトで登録されているFacadeである。
 
-| エイリアス名         | クラス名                                                     | サービスコンテナ結合キー |
-| :------------------- | :----------------------------------------------------------- | :----------------------- |
-| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html) | `app`                    |
-| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html) | `artisan`                |
-| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html) | `auth`                   |
-| Auth (Instance)      | [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html) | `auth.driver`            |
-| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html) | `blade.compiler`         |
-| Broadcast            | [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html) |                          |
-| Broadcast (Instance) | [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html) |                          |
-| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html) |                          |
-| Cache                | [Illuminate\Cache\CacheManager](https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html) | `cache`                  |
-| Cache (Instance)     | [Illuminate\Cache\Repository](https://laravel.com/api/8.x/Illuminate/Cache/Repository.html) | `cache.store`            |
-| Config               | [Illuminate\Config\Repository](https://laravel.com/api/8.x/Illuminate/Config/Repository.html) | `config`                 |
-| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html) | `cookie`                 |
-| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html) | `encrypter`              |
-| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html) | `db`                     |
-| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/8.x/Illuminate/Database/Connection.html) | `db.connection`          |
-| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html) | `events`                 |
-| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html) | `files`                  |
-| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html) |                          |
-| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html) | `hash`                   |
-| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/8.x/Illuminate/Translation/Translator.html) | `translator`             |
-| Log                  | [Illuminate\Log\LogManager](https://laravel.com/api/8.x/Illuminate/Log/LogManager.html) | `log`                    |
-| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html) | `mailer`                 |
-| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html) |                          |
-| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`          |
-| Password (Instance)  | [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html) | `auth.password.broker`   |
-| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html) | `queue`                  |
-| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html) | `queue.connection`       |
-| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Queue/Queue.html) |                          |
-| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html) | `redirect`               |
-| Redis                | [Illuminate\Redis\RedisManager](https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html) | `redis`                  |
-| Redis (Instance)     | [Illuminate\Redis\Connections\Connection](https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html) | `redis.connection`       |
-| Request              | [Illuminate\Http\Request](https://laravel.com/api/8.x/Illuminate/Http/Request.html) | `request`                |
-| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html) |                          |
-| Response (Instance)  | [Illuminate\Http\Response](https://laravel.com/api/8.x/Illuminate/Http/Response.html) |                          |
-| Route                | [Illuminate\Routing\Router](https://laravel.com/api/8.x/Illuminate/Routing/Router.html) | `router`                 |
-| Schema               | [Illuminate\Database\Schema\Builder](https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html) |                          |
-| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html) | `session`                |
-| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/8.x/Illuminate/Session/Store.html) | `session.store`          |
-| Storage              | [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html) | `filesystem`             |
-| Storage (Instance)   | [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html) | `filesystem.disk`        |
-| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html) | `url`                    |
-| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/8.x/Illuminate/Validation/Factory.html) | `validator`              |
-| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html) |                          |
-| View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html) | `view`                   |
-| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html) |                          |
+| エイリアス名              | クラス名                                                                                                                               | サービスコンテナ結合キー         |
+|:---------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|
+| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html)                             | `app`                  |
+| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html)                         | `artisan`              |
+| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html)                                         | `auth`                 |
+| Auth (Instance)      | [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html)                                 | `auth.driver`          |
+| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html)                 | `blade.compiler`       |
+| Broadcast            | [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html)             |                        |
+| Broadcast (Instance) | [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html)     |                        |
+| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html)                         |                        |
+| Cache                | [Illuminate\Cache\CacheManager](https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html)                                     | `cache`                |
+| Cache (Instance)     | [Illuminate\Cache\Repository](https://laravel.com/api/8.x/Illuminate/Cache/Repository.html)                                         | `cache.store`          |
+| Config               | [Illuminate\Config\Repository](https://laravel.com/api/8.x/Illuminate/Config/Repository.html)                                       | `config`               |
+| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html)                                         | `cookie`               |
+| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html)                                 | `encrypter`            |
+| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html)                         | `db`                   |
+| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/8.x/Illuminate/Database/Connection.html)                                   | `db.connection`        |
+| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html)                                       | `events`               |
+| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html)                               | `files`                |
+| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html)                     |                        |
+| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html)                         | `hash`                 |
+| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/8.x/Illuminate/Translation/Translator.html)                             | `translator`           |
+| Log                  | [Illuminate\Log\LogManager](https://laravel.com/api/8.x/Illuminate/Log/LogManager.html)                                             | `log`                  |
+| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html)                                                   | `mailer`               |
+| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html)                 |                        |
+| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`        |
+| Password (Instance)  | [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html)               | `auth.password.broker` |
+| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html)                                     | `queue`                |
+| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html)                               | `queue.connection`     |
+| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Queue/Queue.html)                                                   |                        |
+| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html)                                     | `redirect`             |
+| Redis                | [Illuminate\Redis\RedisManager](https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html)                                     | `redis`                |
+| Redis (Instance)     | [Illuminate\Redis\Connections\Connection](https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html)                 | `redis.connection`     |
+| Request              | [Illuminate\Http\Request](https://laravel.com/api/8.x/Illuminate/Http/Request.html)                                                 | `request`              |
+| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html)       |                        |
+| Response (Instance)  | [Illuminate\Http\Response](https://laravel.com/api/8.x/Illuminate/Http/Response.html)                                               |                        |
+| Route                | [Illuminate\Routing\Router](https://laravel.com/api/8.x/Illuminate/Routing/Router.html)                                             | `router`               |
+| Schema               | [Illuminate\Database\Schema\Builder](https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html)                           |                        |
+| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html)                             | `session`              |
+| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/8.x/Illuminate/Session/Store.html)                                               | `session.store`        |
+| Storage              | [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html)                 | `filesystem`           |
+| Storage (Instance)   | [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html)           | `filesystem.disk`      |
+| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html)                                 | `url`                  |
+| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/8.x/Illuminate/Validation/Factory.html)                                     | `validator`            |
+| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html)                                 |                        |
+| View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html)                                                 | `view`                 |
+| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html)                                                       |                        |
 
 <br>
 
@@ -4258,12 +4258,12 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ServiceProviderの用途
 
-| 用途の種類                                                   | 説明                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| AppServiceProvider                                           | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（作成） |
-| MacroServiceProvider                                         | ServiceContainerへのメソッドのバインド（登録）               |
-| RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラーの対応関係の定義                   |
-| EventServiceProvider                                         | EventListenerとEventhandler関数の対応関係の定義              |
+| 用途の種類                                                  | 説明                                                                       |
+|------------------------------------------------------------|--------------------------------------------------------------------------|
+| AppServiceProvider                                         | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（作成） |
+| MacroServiceProvider                                       | ServiceContainerへのメソッドのバインド（登録）                                          |
+| RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラーの対応関係の定義                                               |
+| EventServiceProvider                                       | EventListenerとEventhandler関数の対応関係の定義                               |
 
 #### ▼ ServiceProviderのコール
 
@@ -4900,13 +4900,13 @@ return [
 
 FormRequestクラスの```session```メソッドはStoreクラスを返却する。このクラスのメソッドを使用して、セッションを操作できる。
 
-| メソッド名   | 説明                                                        |
-| ------------ | ----------------------------------------------------------- |
-| ```get```    | セッションのキー名を指定して、```1```個の値を取得する。           |
-| ```all```    | セッションの全ての値を取得する。                             |
-| ```forget``` | セッションのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。 |
-| ```flush```  | セッションの全ての値を取得する。                             |
-| ```pull```   | セッションのキー名を指定して、```1```個の値を取得し、取得後に削除する。 |
+| メソッド名       | 説明                                                                   |
+|--------------|----------------------------------------------------------------------|
+| ```get```    | セッションのキー名を指定して、```1```個の値を取得する。                                 |
+| ```all```    | セッションの全ての値を取得する。                                                   |
+| ```forget``` | セッションのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。         |
+| ```flush```  | セッションの全ての値を取得する。                                                   |
+| ```pull```   | セッションのキー名を指定して、```1```個の値を取得し、取得後に削除する。                    |
 | ```has```    | セッションのキー名を指定して、値が存在しているかを検証する。```null```は```false```として判定する。 |
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
