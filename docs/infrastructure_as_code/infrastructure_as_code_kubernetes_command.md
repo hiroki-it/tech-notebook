@@ -163,9 +163,9 @@ $ kubectl config view
 
 apiVersion: v1
 clusters:
-####################################
+# ---------------------------------------------
 # Docker for Desktopのコンテキスト情報
-####################################
+# ---------------------------------------------
 - cluster:
     certificate-authority-data: DATA+OMITTED
     server: https://kubernetes.docker.internal:6443 # kube-apiserverのIPアドレス
@@ -175,9 +175,9 @@ contexts:
     cluster: docker-desktop
     user: docker-desktop
   name: docker-desktop
-####################################
+# ---------------------------------------------
 # Minikubeのコンテキスト情報
-####################################
+# ---------------------------------------------
 - cluster:
     certificate-authority: /Users/h.hasegawa/.minikube/ca.crt
     extensions:
@@ -199,9 +199,9 @@ contexts:
     namespace: default
     user: minikube
   name: minikube
-####################################
+# ---------------------------------------------
 # 現在のコンテキスト
-####################################
+# ---------------------------------------------
 current-context: docker-desktop
 kind: Config
 preferences: {}

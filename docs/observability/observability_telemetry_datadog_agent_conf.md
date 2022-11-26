@@ -98,9 +98,9 @@ datadogエージェントを設定する。 ```/etc/datadog-agent```ディレク
 DatadogのAPIキーを設定する。
 
 ```yaml
-#########################
-## Basic Configuration ##
-#########################
+# ---------------------------------------------
+# Basic Configuration 
+# ---------------------------------------------
 
 ## @param api_key - string - required
 ## @env DD_API_KEY - string - required
@@ -127,9 +127,9 @@ api_key: <APIキー>
 ```yaml
 ...
 
-##################################
-## Log collection Configuration ##
-##################################
+# ---------------------------------------------
+# Log collection Configuration
+# ---------------------------------------------
 
 ## @param logs_enabled - boolean - optional - default: false
 ## @env DD_LOGS_ENABLED - boolean - optional - default: false

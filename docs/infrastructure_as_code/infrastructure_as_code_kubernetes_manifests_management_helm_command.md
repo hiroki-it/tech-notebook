@@ -644,7 +644,7 @@ $ helm diff
 
 ### helm-secretsとは
 
-内部的にsopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。元の平文ファイルの名前は、```secrets.yaml```または```secrets.***.yaml```とする必要がある。
+内部的にsopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。
 
 > ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
@@ -654,9 +654,24 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 <br>
 
-### secretsサブコマンド無し
+### sopsとの連携
 
-```secrets.yaml```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
+#### ▼ ```secrets```ファイルの名前の制限
+
+sops単体では、```secrets```ファイルの名前は自由である。しかし、古いバージョンのhelm-secrets（zendesk製、jkroepke製の古いバージョン）を使用している場合、```secrets```ファイルの名前を『```secrets.yaml```』または『```secrets.***.yaml```』とする必要がある。
+
+> ℹ️ 参考：
+>
+> - https://github.com/zendesk/helm-secrets#usage-and-examples
+> - https://github.com/jkroepke/helm-secrets/pull/23
+
+<br>
+
+### secretsサブコマンド無しの場合
+
+#### ▼ ```secrets://```
+
+```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
 
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
@@ -670,7 +685,7 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 
 #### ▼ -f
 
-暗号化された```values```ファイル（```secrets.yaml```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。 なおこの時、```values```ファイル側には```secrets.yaml```ファイルの値を設定しておく必要はない。
+暗号化された```values```ファイル（```secrets```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。 なおこの時、```values```ファイル側には```secrets```ファイルの値を設定しておく必要はない。
 
 > ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
@@ -682,7 +697,7 @@ $ helm secrets template <チャートへのパス> -f <sopsが作成したsecret
 
 **＊実行例＊**
 
-以下のような```secrets.yaml```ファイルがあるとする。
+以下のような```secrets```ファイルがあるとする。
 
 ```yaml
 # secrets.yaml
@@ -713,7 +728,7 @@ data:
   foo: {{ .Values.foo | b64enc }}
 ```
 
-この時、```helm secrets```コマンドで```secrets.yaml```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。結果的に、base64方式でエンコードされ、マニフェストが作成される。
+この時、```helm secrets```コマンドで```secrets```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。結果的に、base64方式でエンコードされ、マニフェストが作成される。
 
 ```bash
 $ helm secrets template ./foo-chart -f secrets.yaml -f values.yaml

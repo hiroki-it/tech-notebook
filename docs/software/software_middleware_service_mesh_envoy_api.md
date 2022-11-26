@@ -27,7 +27,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/help" | jq
+    -- bash -c "curl http://localhost:15000/help"
 
 # 執筆時点（2022/11/13）でのエンドポイント
   /: Admin home page
@@ -127,7 +127,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?clusters" | jq
+    -- bash -c "curl http://localhost:15000/clusters"
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
@@ -166,7 +166,24 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump" | jq
+    -- bash -c "curl http://localhost:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
+
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- bootstrap
+- dynamic_active_clusters
+- dynamic_active_secrets
+- dynamic_listeners
+- dynamic_route_configs
+- last_updated
+- static_clusters
+- static_listeners
+- static_route_configs
+- version_info
+- version_info
 ```
 
 <br>
@@ -192,56 +209,103 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | jq
-```
+    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
 
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- '@type'
+- bootstrap
+- dynamic_active_clusters
+- dynamic_active_secrets
+- dynamic_endpoint_configs
+- dynamic_listeners
+- dynamic_route_configs
+- last_updated
+- static_clusters
+- static_endpoint_configs
+- static_listeners
+- static_route_configs
+- version_info
+- version_info
+```
 
 #### ▼ ```dynamic_endpoint_configs```キー
 
 準備済みのエンドポイント値が設定されている。```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
+
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```endpoint```値を確認してみる。
 
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | jq '.configs[].dynamic_endpoint_configs'
-    
-  {
-    "endpoint_config": {
-      "@type": "type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment",
-      "cluster_name": "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local",
-      "endpoints": [
-        {
-          ...
-          
-          "lb_endpoints": [
-            {
-              "endpoint": {
-                "address": {
-                  "socket_address": {
-                    # 冗長化されたfoo-podのIPアドレス
-                    "address": "11.0.0.1",
-                    "port_value": 50002
-                  }
-                },
-                
-                ...
+    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | yq -P
 
-              },
-              
-              ...
-              
-            }
-          ]
-        }
-      ],
-      
-      ...
-      
-    }
-  },
+...
+
+configs:
+  dynamic_endpoint_configs:
+    - endpoint_config:
+        "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+        # エンドポイントの親クラスター名を指定している。
+        cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+        endpoints:
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1a
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      # 冗長化されたfoo-podのIPアドレス
+                      address: 11.0.0.1
+                      # bar-pod内のコンテナが待ち受けているポート番号
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: bar
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1d
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 11.0.0.2
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: bar
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+        policy:
+          overprovisioning_factor: 140
+
+    ...
+
+    - endpoint_config:
+
+    ...
 ```
+
+
 
 
 <br>
@@ -270,40 +334,38 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
 ```
 
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```dynamic_active_clusters```値を確認してみる。
+
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}" | jq | grep ClustersConfigDump.DynamicCluster -A 120
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
 
-[
-  ...
-
-  {
-    "@type": "type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster",
-    "version_info": "2022-11-16T08:02:42Z/294",
-    "cluster": {
-      "@type": "type.googleapis.com/envoy.config.cluster.v3.Cluster",
-      "name": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local",
-      "type": "EDS",
-      "eds_cluster_config":{
-        "eds_config": {
-          "ads": {},
-          "initial_fetch_timeout": "0s",
-          "resource_api_version": "V3"
-        },
-        # エンドポイントに紐づくサービス名
+"configs":
+  - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
+    version_info: 2022-11-24T12:13:05Z/468
+    cluster:
+      "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster
+      # クラスター名
+      name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+      type: EDS
+      eds_cluster_config:
+        eds_config:
+          ads: {}
+          initial_fetch_timeout: 0s
+          resource_api_version: V3
+        # 本クラスターに紐づくエンドポイントの親クラスター名を指定している。
         # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#envoy-v3-api-field-config-cluster-v3-cluster-edsclusterconfig-service-name
-        "service_name": "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"
-      }
-    }
-    
-    ...
-  }
+        service_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  ...
+  
+  - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
   
   ...
-]
 ```
 
 > ℹ️ 参考：
@@ -329,12 +391,19 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
+
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```dynamic_warming_clusters```値を確認してみる。
+
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
+
+{} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
 #### ▼ dynamic_active_secrets
@@ -357,12 +426,53 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_listeners}
 ```
 
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```dynamic_listeners```値を確認してみる。
+
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_listeners}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_listeners}" | yq -P
+
+"configs":
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+    # リスナー名
+    name: 0.0.0.0_50002
+    active_state:
+      version_info: 2022-11-24T12:13:05Z/468
+      listener:
+        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+        name: 0.0.0.0_50002
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 50002
+        filter_chains:
+          - filter_chain_match:
+              transport_protocol: raw_buffer
+              application_protocols:
+                - http/1.1
+                - h2c
+            filters:
+              - name: envoy.filters.network.http_connection_manager
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                  stat_prefix: outbound_0.0.0.0_50001
+                  rds:
+                    config_source:
+                      ads: {}
+                      initial_fetch_timeout: 0s
+                      resource_api_version: V3
+                    # 本リスナーに紐づくルート名を指定している。
+                    route_config_name: 50002
+  ...
+  
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+  ...
 ```
 
 
@@ -377,13 +487,65 @@ $ kubectl exec \
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_route_configs}
 ```
 
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```dynamic_route_configs```値を確認してみる。
 
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_route_configs}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_route_configs}" | yq -P
+    
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+    version_info: 2022-11-24T12:13:05Z/468
+    route_config:
+      "@type": type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+      # ルート名
+      name: 50002
+      virtual_hosts:
+        # 仮想ホスト名
+        # foo-podからbar-podにアウトバウンド通信を送信する時に選ばれる。
+        - name: bar-service.bar-namespace.svc.cluster.local:50002
+          domains:
+            - bar-service.bar-namespace.svc.cluster.local
+            - bar-service.bar-namespace.svc.cluster.local:50002
+            - bar-service
+            - bar-service:50002
+            - bar-service.bar-namespace.svc
+            - bar-service.bar-namespace.svc:50002
+            - bar-service.bar-namespace
+            - bar-service.bar-namespace:50002
+            - 172.16.0.2
+            - 172.16.0.2:50002
+          routes:
+            - match:
+                prefix: /
+              route:
+                # 本ルートに紐づくクラスター名を指定している。
+                cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+                timeout: 0s
+                retry_policy:
+                  retry_on: connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes
+                  num_retries: 2
+                  retry_host_predicate:
+                    - name: envoy.retry_host_predicates.previous_hosts
+                  host_selection_retry_max_attempts: "5"
+                  retriable_status_codes:
+                    - 503
+                max_stream_duration:
+                  max_stream_duration: 0s
+                  grpc_timeout_header_max: 0s
+              decorator:
+                operation: bar-service.bar-namespace.svc.cluster.local:50002/*
+                
+  ...
+                  
+  - '@type': type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+  
+  ...
 ```
 
 #### ▼ static_listeners
@@ -396,45 +558,39 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={sta
 ```
 
 
+**＊実行例＊**
+
+foo-podに登録されているbar-podの```static_listeners```値を確認してみる。
+
 ```bash
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={static_listeners}" | jq
+    -- bash -c "curl http://localhost:15000/config_dump?resource={static_listeners}" | yq -P
 
-{
- "configs": [
-  {
-   "@type": "type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener",
-   "listener": {
-    "@type": "type.googleapis.com/envoy.config.listener.v3.Listener",
-    "address": {
-     "socket_address": {
-      "address": "0.0.0.0",
-      "port_value": 15090 # メトリクス収集ツールからのリクエストを受信するためのポート番号
-     }
-    },
-    
-    ...
-    
-  },
-  {
-   "@type": "type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener",
-   "listener": {
-    "@type": "type.googleapis.com/envoy.config.listener.v3.Listener",
-    "address": {
-     "socket_address": {
-      "address": "0.0.0.0",
-      "port_value": 15021 # kubeletからのヘルスチェックを受信するためのポート番号
-     }
-    },
-    
-    ...
-    
-  }
- ]
-}
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener
+    listener:
+      "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+      address:
+        socket_address:
+          address: 0.0.0.0
+          # メトリクス収集ツールからのリクエストを受信するためのポート番号
+          port_value: 15090
+
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener
+    listener:
+      "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+      address:
+        socket_address:
+          address: 0.0.0.0
+          # kubeletからのヘルスチェックを受信するためのポート番号
+          port_value: 15021
+
+   ...
 ```
 
 

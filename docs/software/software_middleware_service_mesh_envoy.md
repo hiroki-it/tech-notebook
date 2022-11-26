@@ -46,7 +46,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 
 > ℹ️ 参考：https://skyao.io/learning-envoy/xds/
 
-#### ▼ ADS：Aggregated XDS
+#### ▼ ADS-API：Aggregated XDS
 
 単一のエンドポイントを提供し、適切な順番で各XDS-APIから宛先情報を取得できる。各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまい、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
 
@@ -58,7 +58,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://i-beam.org/2019/01/22/hello-envoy/
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ CDS：Cluster Discovery Service
+#### ▼ CDS-API：Cluster Discovery Service
 
 単一のエンドポイントを提供し、クラスター値を取得できる。Envoyの実行時に、ルーティング先のClusterの設定を動的に検出できるようにする。
 
@@ -67,7 +67,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ EDS：Endpoint Discovery Service
+#### ▼ EDS-API：Endpoint Discovery Service
 
 単一のエンドポイントを提供し、エンドポイント値を取得できる。Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出できるようにする。
 
@@ -76,7 +76,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ LDS：Listener Discovery Service
+#### ▼ LDS-API：Listener Discovery Service
 
 単一のエンドポイントを提供し、リスナー値を取得できる。Envoyの実行時に、リスナーの設定を動的に検出できるようにする。
 
@@ -85,7 +85,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ RDS：Route Discovery Service
+#### ▼ RDS-API：Route Discovery Service
 
 単一のエンドポイントを提供し、ルート値を取得できる。Envoyの実行時に、ルーティングの設定を動的に検出できるようにする。
 
@@ -94,7 +94,7 @@ Envoyは、コントロールプレーンに相当するxDSサーバーと、デ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ SDS：Secret Discovery Service
+#### ▼ SDS-API：Secret Discovery Service
 
 単一のエンドポイントを提供し、証明書を取得できる。Envoyの実行時に、リスナーの暗号化の設定を動的に検出できるようにする。
 
@@ -410,7 +410,9 @@ Istioを使用して、```envoy```コンテナを稼働させるとする。Kube
   address:
     # 宛先IPアドレスとポート番号が合致した場合に、このリスナーで処理される。
     socketAddress:
+      # ServiceのIPアドレス
       address: 172.16.0.1 # 全ての宛先IPアドレスを合致させる場合は、0.0.0.0 とする。
+      # Serviceのポート番号
       portValue: 50001
   bindToPort: false
   filterChains:
@@ -690,8 +692,9 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      # エンドポイントの宛先情報
+                      # 宛先のIPアドレス
                       address: 10.0.0.1
+                      # 宛先が待ち受けているポート番号
                       port_value: 80
               - endpoint:
                   address:
@@ -798,8 +801,9 @@ Istioを使用して、```envoy```コンテナを稼働させるとする。Kube
           - endpoint:
               address:
                 socketAddress:
-                  # エンドポイント（ここではPod）の宛先情報
+                  # 宛先（ここではPod）のIPアドレス
                   address: 10.0.0.1
+                  # 宛先が待ち受けるポート番号
                   portValue: 80
           - endpoint:
               address:

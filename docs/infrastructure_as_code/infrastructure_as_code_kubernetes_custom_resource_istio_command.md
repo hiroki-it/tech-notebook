@@ -479,20 +479,20 @@ $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 ```bash
 $ istioctl proxy-config endpoints foo-pod -n foo-namespace
 
-ENDPOINT                               STATUS      OUTLIER CHECK     CLUSTER
-<PodのIPアドレス>:<Podのコンテナポート>     HEALTHY     OK                <紐づいているクラスター名>
-10.0.0.1:80                            HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
-10.0.0.2:80                            HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
-10.0.0.3:80                            HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
+ENDPOINT                                              STATUS      OUTLIER CHECK     CLUSTER
+<PodのIPアドレス>:<Pod内のコンテナが待ち受けているポート番号>  HEALTHY     OK                <紐づいているクラスター名>
+10.0.0.1:80                                           HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
+10.0.0.2:80                                           HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
+10.0.0.3:80                                           HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
 
 ...
 
-127.0.0.1:15000                        HEALTHY     OK                prometheus_stats
-127.0.0.1:15020                        HEALTHY     OK                agent
+127.0.0.1:15000                                      HEALTHY     OK                prometheus_stats
+127.0.0.1:15020                                      HEALTHY     OK                agent
 
 # Unixドメインソケットでソケットファイルを指定している。
-unix://./etc/istio/proxy/SDS           HEALTHY     OK                sds-grpc
-unix://./etc/istio/proxy/XDS           HEALTHY     OK                xds-grpc
+unix://./etc/istio/proxy/SDS                         HEALTHY     OK                sds-grpc
+unix://./etc/istio/proxy/XDS                         HEALTHY     OK                xds-grpc
 ```
 
 ```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
@@ -514,9 +514,9 @@ $ istioctl proxy-config endpoints foo-pod \
     - address:
         socketAddress:
           # 冗長化されたbar-podのインスタンスのIPアドレス
-          address: 11.0.0.1
-          # bar-podのコンテナポート
-          portValue: 50002
+          address: 10.0.0.1
+          # bar-pod内のコンテナが待ち受けているポート番号
+          portValue: 80
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1a
@@ -526,9 +526,9 @@ $ istioctl proxy-config endpoints foo-pod \
     - address:
         socketAddress:
           # 冗長化されたbar-podのインスタンスのIPアドレス
-          address: 11.0.0.2
-          # bar-podのコンテナポート
-          portValue: 50002
+          address: 10.0.0.2
+          # bar-pod内のコンテナが待ち受けているポート番号
+          portValue: 80
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1c
@@ -538,9 +538,9 @@ $ istioctl proxy-config endpoints foo-pod \
     - address:
         socketAddress:
           # bar-podのインスタンスのIPアドレス
-          address: 11.0.0.3
-          # bar-podのコンテナポート
-          portValue: 50002
+          address: 10.0.0.3
+          # bar-pod内のコンテナが待ち受けているポート番号
+          portValue: 80
       locality:
         region: ap-northeast-1
         zone: ap-northeast-1d
@@ -660,7 +660,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
-            # foo-podと紐づくクラスターを指定する。
+            # foo-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
             
             ...
@@ -687,6 +687,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
+            # bar-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
             
             ...
@@ -713,6 +714,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
+            # baz-podのルートと紐づくクラスターを指定する。
             cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
             
             ...

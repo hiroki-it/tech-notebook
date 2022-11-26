@@ -149,7 +149,7 @@ $ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バ�
 # デタッチドモードによって起動中コンテナに接続
 $ docker attach <起動中コンテナ名>
 
-# PID=1で、1つの/bin/bashプロセスが稼働していることを確認できる
+# PID=1で、1つのbashプロセスが稼働していることを確認できる
 [root@<コンテナID>:~] $ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
@@ -171,7 +171,7 @@ $ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バ�
 # 対話モードを使用して、デタッチドモードによって起動中コンテナに接続
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
 
-# PID=1,17で、2つの/bin/bashプロセスが稼働していることを確認できる
+# PID=1,17で、2つのbashプロセスが稼働していることを確認できる
 [root@<コンテナID>:~] $ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash

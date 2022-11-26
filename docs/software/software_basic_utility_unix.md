@@ -1385,7 +1385,7 @@ $ od -Ad -tx <ファイルへのパス>
 
 ### opsnsslとは
 
-指定した暗号化アルゴリズムを使用して、文字列を暗号化/復号化する。
+指定した暗号アルゴリズムを使用して、文字列を暗号化/復号化する。
 
 > ℹ️ 参考：https://memo.open-code.club/OpenSSL/%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/%E5%85%B1%E9%80%9A%E9%8D%B5%E6%9A%97%E5%8F%B7.html
 
@@ -1419,7 +1419,7 @@ $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 
 #### ▼ list-cipher-algorithmsとは
 
-使用できる暗号化アルゴリズムの一覧を取得する。
+使用できる暗号アルゴリズムの一覧を取得する。
 
 > ℹ️ 参考：https://en.wikipedia.org/wiki/OpenSSL#Algorithms
 
