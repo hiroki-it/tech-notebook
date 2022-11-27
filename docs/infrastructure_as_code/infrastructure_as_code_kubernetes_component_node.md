@@ -132,7 +132,7 @@ kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、サービ
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
 
 <br>
 
@@ -195,6 +195,8 @@ num  target                     prot   opt   source      destination
 
 ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png)
 
+デフォルトのプロキシモードである。
+
 | 項目            | 仕組み                                                                                                |
 |-----------------|----------------------------------------------------------------------------------------------------|
 | サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
@@ -225,6 +227,8 @@ num  target                     prot   opt   source      destination
 
 #### ▼ ipvsプロキシモード
 
+kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPVSProxyMode=true```、```--proxy-mode```オプションに```ipvs```を設定する。
+
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png)
 
 | 項目            | 仕組み                                                                                            |
@@ -235,6 +239,7 @@ num  target                     prot   opt   source      destination
 
 > ℹ️ 参考：
 >
+> - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
 > - https://github.com/kubernetes/kubernetes/pull/81430
 

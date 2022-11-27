@@ -87,9 +87,9 @@ ztunnelのPod（L4）
 
 <br>
 
-### 比較
+## 01-02. Istioを採用するのか否か
 
-#### ▼ 他のサービスメッシュツールとの比較
+### 他のサービスメッシュツールとの比較
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
 
@@ -122,7 +122,7 @@ ztunnelのPod（L4）
 | Ingressコントローラー                      |  ⭕️   |    ×    |   ×    |
 | Egressコントローラー                       |  ⭕️   |    ×    |   ×    |
 
-#### ▼ Istioを採用する/しない場合の比較
+### Istio、Kubernetes、の同じ機能の比較
 
 KubernetesとIstioには重複する能力がいくつか（例：サービスディスカバリー）ある。全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、実際の運用場面ではこれを行うことはなく、マイクロサービスコンテナの稼働するPodのみでこれを行えばよい。そのため、```istio-proxy```コンテナを注入しないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。
 
@@ -144,29 +144,37 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
-#### ▼ ホップ数の比較
+### Istioのメリット/デメリット
 
-**＊例＊**
+#### ▼ メリット
 
-```foo-app```コンテナと```istio-proxy```を持つfoo-podから、同じく```istio-proxy```を持つbar-podのIPアドレス（```11.0.0.1```）とポート番号（```80```）にパケットを送信してみる。この例では、```traceroute```コマンドから、ホップ数が```3```であることがわかる。
+| 項目                | Kubernetesのみを使用する場合                                                                                                                     | Istioを使用する場合                                                                                                       |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| サービスディスカバリー         | KubernetesのServiceとkube-proxyを使用する。                                                                                                       | Istiodコントロールプレーンと```istio-proxy```コンテナは、サービスディスカバリーを実施する。サービスディスカバリーだけでは、Kubernetesのサービスディスカバリーよりも特筆して優れた点はなさそう。 |
+| ロードバランシング           | KubernetesのServiceとkube-proxyを使用する。なお、Serviceとkube-proxyは、同じバージョンのPodにしかロードバランシングできず、もし異なるバージョンを対象にしたい場合、異なるServiceを作成する必要がある。 | Istiodコントロールプレーンと```istio-proxy```コンテナは、ロードバランシングを実施する。異なるバージョンのPodにロードバランシングできる。                                   |
+| サーキットブレイカー          | Kubernetesには機能がない。                                                                                                                        | ```istio-proxy```コンテナは、サーキットブレイカーを実施できる。                                                                             |
+| 証明書              | Podの作成に応じて、証明書のKubernetesリソース（Certificate、CertificateSigningRequest、など）を作成する。                                                       | Istiodコントロールプレーンと```istio-proxy```コンテナは、Podの作成に応じて、証明書を自動的に設定できる。                                           |
+| メトリクスと分散トレースの収集 | メトリクスと分散トレースの収集ツールを個別にセットアップする。                                                                                                       | メトリクスと分散トレースの収集ツールを一括してセットアップする。                                                                                 |
 
-```bash
-foo-app@<コンテナ名>: $ traceroute 11.0.0.1 -p 80
 
-traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
- 1  *-*-*-*.prometheus-kube-proxy.kube-system.svc.cluster.local (*.*.*.*)  0.007 ms  0.022 ms  0.005 ms
- 2  *-*-*-*.prometheus-node-exporter.prometheus.svc.cluster.local (*.*.*.*)  1.860 ms  1.846 ms  1.803 ms
- 3  11.0.0.1.bar-service.bar-namespace.svc.cluster.local (11.0.0.1)  1.848 ms  1.805 ms  1.834 ms
-```
+> ℹ️ 参考：
+>
+> - https://blog.container-solutions.com/wtf-is-istio
+> - https://www.containiq.com/post/kubernetes-service-mesh
+> - https://jimmysong.io/en/blog/why-do-you-need-istio-when-you-already-have-kubernetes/#shortcomings-of-kube-proxy
 
-```bash
-foo-app@<コンテナ名>: $ traceroute 11.0.0.1 -p 80
 
-traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
- 1  *.*.*.*   0.007 ms  0.022 ms  0.005 ms
- 2  *.*.*.*   1.860 ms  1.846 ms  1.803 ms
- 3  11.0.0.1  1.848 ms  1.805 ms  1.834 ms
-```
+#### ▼ デメリット
+
+| 項目                 | 説明                                                                                                                                                      |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nodeのリソース消費量の増加 | IstioのPod間通信では、Kubernetesと比べて、通信に必要なコンポーネント（例：Istiodコントロールプレーン、```istio-proxy```コンテナ）が増える。そのため、Nodeのリソース消費量が増え、また宛先Podからのレスポンス速度が低くなる。 |
+| 学習コストの増加         | Istioが多機能であり、学習コストが増加する。                                                                                                                           |
+
+> ℹ️ 参考：
+> 
+> - https://arxiv.org/pdf/2004.00372.pdf
+> - https://www.containiq.com/post/kubernetes-service-mesh
 
 <br>
 

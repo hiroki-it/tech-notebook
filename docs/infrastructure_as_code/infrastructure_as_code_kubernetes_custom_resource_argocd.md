@@ -99,7 +99,7 @@ spec:
 プラグインとして使用するためにインストールしたsopsのバージョンを確認する。
 
 ```bash
-$ kubectl exec foo-argocd-repo-server \
+$ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n argocd \
     -- bash -c "sops --version"
@@ -111,7 +111,7 @@ $ kubectl exec foo-argocd-repo-server \
 ```/tmp/<リポジトリ名>```ディレクトリ配下で、```helm template```コマンドを使用してSecretの値を確認する。
 
 ```bash
-$ kubectl exec foo-argocd-repo-server \
+$ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n argocd \
     -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-charts && helm template foo-chart -f values-prd.yaml"

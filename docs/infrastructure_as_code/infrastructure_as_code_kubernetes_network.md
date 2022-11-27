@@ -94,8 +94,41 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 <br>
 
-### ServiceのIPアドレスを使用する場合
+### PodのIPアドレスを指定する場合
 
+Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。
+
+**＊例＊**
+
+foo-podから、IPアドレス（```11.0.0.1```）とポート番号（```80```）を指定して、bar-podにパケットを送信してみる。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -- bash -c "traceroute 11.0.0.1 -p 80"
+
+traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
+ 1  *-*-*-*.prometheus-kube-proxy.kube-system.svc.cluster.local (*.*.*.*)    0.007 ms  0.022 ms  0.005 ms
+ 2  *-*-*-*.prometheus-node-exporter.prometheus.svc.cluster.local (*.*.*.*)  1.860 ms  1.846 ms  1.803 ms
+ 3  11.0.0.1.bar-service.bar-namespace.svc.cluster.local (11.0.0.1)          1.848 ms  1.805 ms  1.834 ms # 宛先のPod
+```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -- bash -c "traceroute -n 11.0.0.1 -p 80"
+
+traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
+ 1  *.*.*.*   0.007 ms  0.022 ms  0.005 ms
+ 2  *.*.*.*   1.860 ms  1.846 ms  1.803 ms
+ 3  11.0.0.1  1.848 ms  1.805 ms  1.834 ms # 宛先のPod
+```
+
+<br>
+
+### ServiceのIPアドレスを指定する場合
 
 kubeletは、Pod内のコンテナにServiceの宛先情報（IPアドレス、プロトコル、ポート番号）を出力する。Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
 
@@ -123,7 +156,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 <br>
 
-### Serviceの完全修飾ドメイン名を使用する場合
+### Serviceの完全修飾ドメイン名を指定する場合
 
 Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
 
