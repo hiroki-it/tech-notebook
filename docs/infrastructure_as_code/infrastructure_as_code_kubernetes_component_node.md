@@ -127,7 +127,7 @@ $ kubelet \
 
 ### kube-proxyとは
 
-kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、サービスディスカバリー、検出したサービス（Pod）に対するロードバランサー、として働く。
+kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス（Pod）に対する```L4```ロードバランサー、として働く。
 
 > ℹ️ 参考：
 >
@@ -151,13 +151,17 @@ $ kube-proxy \
 
 ### kube-proxyの仕組み
 
-#### ▼ サービスディスカバリー
+#### ▼ CoreDNSと組み合わせたサービスディスカバリー
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）やロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。プロキシモードごとに、Podの名前解決の方法が異なる。
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）や```L4```ロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
 
-> ℹ️ 参考：https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
+> ℹ️ 参考：
+> 
+> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
+> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
+> - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
 
 #### ▼ Podのロードバランサー
 
@@ -167,7 +171,7 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 
 #### ▼ 確認方法
 
-```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）が宛先情報として登録されている。```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
+```iptable```コマンドで、『```KUBE-SERVICES```』というチェインのターゲットを確認する。ターゲットには、Serviceのルーティング先となるPod（異なるワーカーNode上にある場合もある）の宛先情報が登録されている。```source```列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを```destination```列のIPアドレスに変換する。
 
 > ℹ️ 参考：
 >
@@ -199,8 +203,8 @@ num  target                     prot   opt   source      destination
 
 | 項目            | 仕組み                                                                                                |
 |-----------------|----------------------------------------------------------------------------------------------------|
-| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| ロードバランシングアルゴリズム | ランダム方式のみ。                                                                                          |
+| IPアドレスベースのサービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| ```L4```のロードバランシングアルゴリズム | ランダム方式のみ。                                                                                          |
 
 > ℹ️ 参考：
 >
@@ -216,8 +220,8 @@ num  target                     prot   opt   source      destination
 
 | 項目            | 仕組み                                                                                                |
 |-----------------|----------------------------------------------------------------------------------------------------|
-| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| ロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                                       |
+| IPアドレスベースのサービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                                       |
 
 > ℹ️ 参考：
 >
@@ -233,8 +237,8 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 
 | 項目            | 仕組み                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------|
-| サービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| ロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
+| IPアドレスベースのサービスディスカバリー     | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
+| ```L4```のロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
 
 
 > ℹ️ 参考：

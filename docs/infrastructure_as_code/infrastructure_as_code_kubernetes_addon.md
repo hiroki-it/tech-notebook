@@ -443,7 +443,6 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 <br>
 
-
 ### セットアップ
 
 #### ▼ ConfigMap
@@ -518,8 +517,16 @@ coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
 coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 ```
 
-<br>
+#### ▼ サービスディスカバリー
 
+Serviceとkube-proxyによるIPアドレスの動的な登録と組み合わせることにより、サービスディスカバリーを実装できる。
+
+> ℹ️ 参考：
+> 
+> - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
+> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
+
+<br>
 
 ## 03-02. Serviceの名前解決
 

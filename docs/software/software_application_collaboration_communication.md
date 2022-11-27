@@ -50,7 +50,7 @@ description: アプリケーション間通信＠アプリケーション連携�
 
 ### Ajaxとは：Asynchronous JavaScript + XML
 
-JavaScriptで非同期通信を実現する手法のこと。JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。
+JavaScriptで非同期通信を実装する手法のこと。JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。
 
 <br>
 

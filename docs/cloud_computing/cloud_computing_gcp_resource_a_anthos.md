@@ -79,7 +79,7 @@ Istioから構成される。
 
 #### ▼ acm-operatorの仕組み
 
-一連のacm-operator（cluster-operator、など）は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実現する。
+一連のacm-operator（cluster-operator、など）は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management_gitops.png)
 

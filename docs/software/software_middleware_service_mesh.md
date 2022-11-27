@@ -82,6 +82,17 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
+#### ▼ サービスディスカバリー
+
+![microservices_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_service-discovery.png)
+
+マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所（ドメイン、IPアドレス、ポート番号）を発見できるようにする仕組みのこと。
+
+> ℹ️ 参考：
+> 
+> - https://www.baeldung.com/cs/service-discovery-microservices
+> - https://www.getambassador.io/resources/service-discovery-microservices
+
 <br>
 
 ## 02-02. サービスメッシュの実装
