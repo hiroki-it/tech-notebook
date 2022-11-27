@@ -249,7 +249,7 @@ func main() {
 
 構造体のフィールドとして構造体を保持することにより、依存関係を構成する。依存される側をサプライヤー、また依存する側をクライアントという。構造体間に依存関係を構成するには、クライアントにサプライヤーを注入する。注入方法には、『コンストラクタインジェクション』『セッターインジェクション』『セッターインジェクション』がある。詳しくは、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ```go
 package main
@@ -601,7 +601,7 @@ func main() {
 
 定義された変数に対して、&（アンパサンド）を宣言すると、メモリアドレスを参照できる。参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。PHPにおけるポインタは、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based_method_data.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based_method_data.html
 
 **＊実装例＊**
 
@@ -2090,7 +2090,7 @@ func main() {
 
 例外スローの意義は、以下の参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_validation.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
 
 #### ▼ Goには例外が無い
 

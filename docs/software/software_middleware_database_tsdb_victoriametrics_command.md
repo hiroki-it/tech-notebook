@@ -25,7 +25,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 > - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
-**＊実行例＊**
+**＊例＊**
 
 ```30```日以前のデータを```5```分ごとダウンサンプリングにする。
 
@@ -44,7 +44,7 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
@@ -57,7 +57,7 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 
 インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
@@ -71,7 +71,7 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 > ℹ️ 参考：https://docs.victoriametrics.com/#storage
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
@@ -89,7 +89,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -retentionPeriod=90d
@@ -101,7 +101,7 @@ $ victoria-metrics-prod -retentionPeriod=90d
 
 転置インデックスのデータブロックの上限キャッシュサイズを設定する。デフォルトでは、キャッシュを作成しない。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBDataBlocks=0

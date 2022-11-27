@@ -719,7 +719,7 @@ class ExecutorConstant
 
 エラーハンドリングは```4```個のステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動的に返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
 
 <br>
 
@@ -4290,7 +4290,7 @@ class DatabaseSeeder extends Seeder
 
 ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ```php
 <?php

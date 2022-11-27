@@ -302,7 +302,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する。処理速度が速い。また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできるため、SQLインジェクションの対策になる。プレースホルダーについては、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_package_sql.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_sql.html
 
 <br>
 

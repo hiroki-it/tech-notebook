@@ -722,7 +722,7 @@ $ yum install -y xclip
 
 > ℹ️ 参考：https://linuxfan.info/xclip
 
-**＊実行例＊**
+**＊例＊**
 
 ファイルの内容を、メモリ上のクリップボードにコピーする。
 
@@ -730,7 +730,7 @@ $ yum install -y xclip
 $ cat foo.txt | xclip -selection clipboard
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 コマンドの実行結果を、メモリ上のクリップボードにコピーする。
 
@@ -744,7 +744,7 @@ $ ls -la | xclip -selection clipboard
 
 > ℹ️ 参考：https://linuxfan.info/xclip
 
-**＊実行例＊**
+**＊例＊**
 
 クリップボードの内容をファイルに出力する。
 

@@ -125,7 +125,7 @@ try{
 
 詳しくは、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_symfony_component.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_symfony_component.html
 
 <br>
 

@@ -166,7 +166,7 @@ Goroutinesを使用する。ただし、実行環境によっては並列処理�
 
 #### ▼ JavaScriptの場合
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_logic_asynchronous_process.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_logic_asynchronous_process.html
 
 #### ▼ Node.jsの場合
 

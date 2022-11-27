@@ -72,7 +72,7 @@ CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
 FROM base as production
 LABEL mantainer=${LABEL}
 
-COPY ./ /var/www/foo/
+COPY ../software /var/www/foo/
 
 CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
 ```

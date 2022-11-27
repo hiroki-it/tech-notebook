@@ -69,7 +69,7 @@ COPY go.mod go.sum /go/src/
 # パッケージをインストールする。
 RUN go get github.com/cosmtrek/air@v1.27.3
 
-COPY . /go/src/
+COPY ../software /go/src/
 
 # go mod tidyの実行を忘れると、次回のコンテナイメージのビルド時に、goのビルドに失敗するようになってしまう。
 # そのため、保険としてgo mod tidyを実行しておく。

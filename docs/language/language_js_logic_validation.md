@@ -35,7 +35,7 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_validation.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
 
 |                      | ```typeof $var``` | ```if($var)``` |
 |:---------------------|:-----------------:|:--------------:|

@@ -2051,7 +2051,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと。依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 <br>
 
@@ -2069,7 +2069,7 @@ class DogOrder
 
 #### ▼ DIP（依存性逆転の原則）とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_class_based.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ### リポジトリ
 
@@ -2492,7 +2492,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり、スローされた例外を対処する責務は、より上位レイヤーに持たせる。より上位レイヤーでは、そのレイヤーに合った例外に詰め替えて、これをスローする。最終的には、ユーザーインターフェース層まで持ち上げ、画面上のポップアップで警告文としてこれを表示する。例外スローの意義については、以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_logic_error_and_error_handling.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
 
 <br>
 

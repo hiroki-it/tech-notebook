@@ -18,7 +18,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 #### ▼ 非同期処理とは
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_process_mode.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_process_mode.html
 
 #### ▼ 非同期処理化
 

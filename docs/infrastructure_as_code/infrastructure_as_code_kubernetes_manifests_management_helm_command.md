@@ -367,7 +367,7 @@ Error: failed to download "<チャートリポジトリ名>"
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm repo index ./foo-chart
@@ -394,7 +394,7 @@ $ helm repo remove <チャート名>
 "<チャートリポジトリ名>" has been removed from your repositories
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm repo remove foo-chart
@@ -451,7 +451,7 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 $ helm show all <チャート名>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm show all foo-chart
@@ -510,7 +510,7 @@ $ helm template . -f values.yaml >| releases.yaml
 $ helm template <チャートへのパス> -f <valuesファイルへのパス> >| <出力先ファイル>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm template ./foo-chart -f ./values.yaml >| release.yaml
@@ -546,7 +546,7 @@ foo:
 $ helm uninstall <リリース名>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm uninstall foo-release
@@ -570,7 +570,7 @@ $ helm uninstall foo-release
 $ helm upgrade --atomic <リリース名> <チャートへのパス> -f <valuesファイルへのパス> 
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
@@ -605,7 +605,7 @@ Helmは、カスタムリソースを含むチャートのインストールは�
 $ helm upgrade --skip-crds <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 
 ```bash
@@ -620,7 +620,7 @@ $ helm upgrade --skip-crds foo-release ./foo-chart -f ./values.yaml >| release.y
 $ helm upgrade --wait <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
@@ -695,7 +695,7 @@ $ helm secrets template <チャートへのパス> -f <sopsが作成したsecret
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 以下のような```secrets```ファイルがあるとする。
 

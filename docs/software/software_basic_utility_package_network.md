@@ -335,12 +335,13 @@ $ yum install -y tcpdump
 
 ### tcpdumpとは
 
-今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。パケットの送信元と宛先がわかる。最初の３行はスリーウェイハンドシェイクを表す。
+今現在処理されているパケット（インバウンド通信とアウトバウンド通信）の情報を取得する。パケットの送信元と宛先から、送信元からの通信（```ping```、```nc```、```curl```、など）が届いているかを確認する。最初の```3```行はスリーウェイハンドシェイクを表す。
 
 > ℹ️ 参考：
 >
 > - http://blog.livedoor.jp/sonots/archives/18239717.html
 > - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
+> - https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html
 
 ```bash
 $ tcpdump
@@ -377,6 +378,17 @@ $ tcpdump
 $ tcpdump <コマンド/オプション> \
     | awk -F ' ' '{print $3}' \
     | grep <特定のIPアドレス>
+```
+
+**＊例＊**
+
+```ping```コマンドの送信先で、通信を受信できていることを確認する。
+
+> ℹ️ 参考：https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
+
+```bash
+# デフォルトでは、eth0のパケットを確認する。。
+$ tcpdump icmp -i eth0
 ```
 
 <br>
@@ -470,9 +482,9 @@ $ tcpdump src port 80
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 > - https://beginners-network.com/tracert_traceroute.html
 
-**＊実行例＊**
+**＊例＊**
 
-もし、```traceroute```コマンドが終了すれば、全てのルーターを経由できていることを表す。
+UDPプロトコルを使用して、パケットを送信する。もし、```traceroute```コマンドが終了すれば、全てのルーターを経由できていることを表す。
 
 ```bash
 $ traceroute google.com
@@ -522,6 +534,9 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 
 ICMPプロトコルを使用して、パケットを送信する。TCPプロトコルの一種である。
 
+
+**＊例＊**
+
 ```bash
 $ traceroute -I -n google.com -p 443
 
@@ -539,7 +554,7 @@ IPアドレスの名前解決を実行せずに、ルーターの送信元IPア�
 > - https://webkaru.net/linux/traceroute-command/
 > - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ traceroute -n google.com
@@ -562,6 +577,8 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
 
 ポート番号を指定する。デフォルト値は、```33434```番ポートである。
 
+**＊例＊**
+
 ```bash
 $ traceroute *.*.*.* -p 9000
 ```
@@ -572,6 +589,7 @@ $ traceroute *.*.*.* -p 9000
 
 宛先にTCPプロトコルでパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。```traceroute```コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外（ファイアウォールなど）のところで通信できない場合がある。
 
+**＊例＊**
 
 ```bash
 $ traceroute google.com -T -p 443
@@ -579,16 +597,44 @@ $ traceroute google.com -T -p 443
 $ traceroute *.*.*.* -T -p 443
 ```
 
+
+<br>
+
+
+### tracerouteの代わり
+
+#### ▼ tracepath
+
+> ℹ️ 参考：https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath
+
+**＊例＊**
+
+```bash
+$ tracepath -n google.com
+
+ 1?: [LOCALHOST]                                       pmtu 9001
+ 1:  *.*.*.*                                           0.200ms pmtu 1500
+ 1:  no reply
+ 2:  no reply
+ 3:  no reply
+ 4:  no reply
+ 5:  no reply
+```
+
+#### ▼ tcptraceroute
+
 tracerouteコマンドのバージョンによっては、```-T```オプションがない場合があり、代わりとして```tcptraceroute```コマンドを使用する。
 
-
 > ℹ️ 参考：https://succzero.hatenablog.com/entry/2013/09/01/181615
+
+**＊例＊**
 
 ```bash
 $ tcptraceroute google.com 443
 ```
 
 <br>
+
 
 
 

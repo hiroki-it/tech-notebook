@@ -208,7 +208,7 @@ $ helmfile <サブコマンド>
 $ helmfile -e prd <コマンド>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ helmfile -e prd diff

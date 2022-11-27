@@ -438,6 +438,9 @@ $ asdf local <プラグイン名> 1.0.0
 ```bash
 # 現在インストールされているプラグインを取得する。
 $ asdf plugin list
+
+# 登録しているプラグインを削除する。
+$ asdf plugin remove <プラグイン名>
 ```
 
 ```bash

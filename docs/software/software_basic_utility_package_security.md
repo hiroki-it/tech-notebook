@@ -34,8 +34,8 @@ sopsによって暗号化されたファイルであり、キーバリュー型�
 > ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
 ```bash
-# values.yamlファイル（平文ファイル）
-$ cat values.yaml
+# 平文ファイル
+$ cat foo-values.yaml
 
 DB_USERNAME: foo-user
 DB_PASSWORD: password
@@ -43,11 +43,12 @@ DB_PASSWORD: password
 
 ```bash
 # 平文ファイルを暗号化する。
-$ sops -e values.yaml > secrets.yaml
+$ sops -e ./values/foo-values.yaml > ./secrets/foo-secrets.yaml
 ```
 
 ```bash
-$ cat secrets.yaml
+# 暗号化されたファイル
+$ cat ./secrets/foo-secrets.yaml
 
 # キーバリュー型ストレージ
 DB_USERNAME: ENC[AES256...
@@ -84,23 +85,23 @@ sops:
 
 ```yaml
 creation_rules:
-    # 平文ファイル名を設定する。
-  - path_regex: ./foo/value\.yaml
+    # 特定の平文ファイル名を設定する。
+  - path_regex: ./values/value\.yaml
     # AWS KMSを暗号化キーとして使用する。
     kms: "arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 ```
 
 ```yaml
 creation_rules:
-  # 平文ファイルを再帰的に指定できる。
-  - path_regex: ./bar/*\.yaml
+    # ワイルドカードで平文ファイルを再帰的に指定できる。
+  - path_regex: ./values/*\.yaml
     # GCP KMSを暗号化キーとして使用する。
     gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 
 ```bash
-# ファイル名が path_regex=/foo/values.yaml のルールに該当するため、AWS KMSを使用して暗号化される。
-$ sops -e /foo/values.yaml
+# ファイル名が path_regexキーののルールに該当するため、AWS KMSを使用して暗号化される。
+$ sops -e ./values/foo-values.yaml
 ```
 
 ```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
@@ -108,7 +109,7 @@ $ sops -e /foo/values.yaml
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
-$ sops -e /foo/values.yaml
+$ sops -e ./values/foo-values.yaml
 ```
 
 <br>
@@ -131,10 +132,10 @@ $ sops -e /foo/values.yaml
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
-$ sops -d secrets.yaml > values.yaml
+$ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 ```
 
 #### ▼ -e
@@ -155,10 +156,10 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
-$ sops -e values.yaml > secrets.yaml
+$ sops -e ./values/foo-values.yaml > ./secrets/foo-secrets.yaml
 ```
 
 <br>

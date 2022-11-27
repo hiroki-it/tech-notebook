@@ -144,6 +144,29 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
+#### ▼ ホップ数の比較
+
+**＊例＊**
+
+```foo-app```コンテナと```istio-proxy```を持つfoo-podから、同じく```istio-proxy```を持つbar-podのIPアドレス（```11.0.0.1```）とポート番号（```80```）にパケットを送信してみる。この例では、```traceroute```コマンドから、ホップ数が```3```であることがわかる。
+
+```bash
+foo-app@<コンテナ名>: $ traceroute 11.0.0.1 -p 80
+
+traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
+ 1  *-*-*-*.prometheus-kube-proxy.kube-system.svc.cluster.local (*.*.*.*)  0.007 ms  0.022 ms  0.005 ms
+ 2  *-*-*-*.prometheus-node-exporter.prometheus.svc.cluster.local (*.*.*.*)  1.860 ms  1.846 ms  1.803 ms
+ 3  11.0.0.1.bar-service.bar-namespace.svc.cluster.local (11.0.0.1)  1.848 ms  1.805 ms  1.834 ms
+```
+
+```bash
+foo-app@<コンテナ名>: $ traceroute 11.0.0.1 -p 80
+
+traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
+ 1  *.*.*.*   0.007 ms  0.022 ms  0.005 ms
+ 2  *.*.*.*   1.860 ms  1.846 ms  1.803 ms
+ 3  11.0.0.1  1.848 ms  1.805 ms  1.834 ms
+```
 
 <br>
 

@@ -237,7 +237,7 @@ $ kubectl exec \
 
 準備済みのエンドポイント値が設定されている。```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```endpoint```値を確認してみる。
 
@@ -257,6 +257,7 @@ configs:
         # エンドポイントの親クラスター名を指定している。
         cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
         endpoints:
+           # bar-podのあるリージョン
           - locality:
               region: ap-northeast-1
               zone: ap-northeast-1a
@@ -264,7 +265,7 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化されたfoo-podのIPアドレス
+                      # 冗長化されたbar-podのIPアドレス
                       address: 11.0.0.1
                       # bar-pod内のコンテナが待ち受けているポート番号
                       port_value: 80
@@ -284,7 +285,9 @@ configs:
               - endpoint:
                   address:
                     socket_address:
+                      # 冗長化されたbar-podのIPアドレス
                       address: 11.0.0.2
+                      # bar-pod内のコンテナが待ち受けているポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -334,7 +337,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_active_clusters```値を確認してみる。
 
@@ -392,7 +395,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_warming_clusters```値を確認してみる。
 
@@ -426,7 +429,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_listeners}
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_listeners```値を確認してみる。
 
@@ -487,7 +490,7 @@ $ kubectl exec \
 envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_route_configs}
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_route_configs```値を確認してみる。
 
@@ -558,7 +561,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={sta
 ```
 
 
-**＊実行例＊**
+**＊例＊**
 
 foo-podに登録されているbar-podの```static_listeners```値を確認してみる。
 

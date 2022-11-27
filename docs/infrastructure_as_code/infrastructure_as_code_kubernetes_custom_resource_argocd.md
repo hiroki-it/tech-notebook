@@ -94,7 +94,7 @@ spec:
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
 
-**＊実行例＊**
+**＊例＊**
 
 プラグインとして使用するためにインストールしたsopsのバージョンを確認する。
 
@@ -105,7 +105,7 @@ $ kubectl exec foo-argocd-repo-server \
     -- bash -c "sops --version"
 ```
 
-**＊実行例＊**
+**＊例＊**
 
 
 ```/tmp/<リポジトリ名>```ディレクトリ配下で、```helm template```コマンドを使用してSecretの値を確認する。

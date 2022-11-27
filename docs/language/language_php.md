@@ -77,7 +77,7 @@ LABEL mantainer=${LABEL}
 FROM base as production
 LABEL mantainer=${LABEL}
 
-COPY ./ /var/www/foo/
+COPY ../software /var/www/foo/
 ```
 
 <br>
