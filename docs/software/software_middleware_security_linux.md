@@ -21,7 +21,9 @@ Linuxにデフォルトで導入されているミドルウェアで、セキュ
 
 <br>
 
-### SELinuxの無効化
+### 設定
+
+#### ▼ SELinuxの無効化
 
 アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
 
@@ -36,14 +38,15 @@ Enforcing
 
 （２）```/etc/selinux/config```を修正する。
 
-```bash
+```ini
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 #     enforcing - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
 #     disabled - No SELinux policy is loaded.
 
-SELINUX=disabled # <---- disabledに変更
+# disabledに変更する。
+SELINUX=disabled
 
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,

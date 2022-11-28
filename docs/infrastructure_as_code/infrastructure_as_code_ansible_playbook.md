@@ -94,7 +94,7 @@ taskファイルの後続処理が設定されたhandlerファイルを配置す
 
 ```yaml
 # handlerファイル
-- name: restart_php-fpm
+- name: Restart php-fpm
   service:
     name:  php-fpm
     state: restarted
@@ -520,6 +520,33 @@ taskセクションの後に実行するセットアップ処理を設定する�
     state: present
 ```
 
+<br>
+
+### ansible.builtin.lineinfile
+
+#### ▼ ansible.builtin.lineinfileとは
+
+管理対象ノード上にあるファイルを行単位で編集する。
+
+
+**＊実装例＊**
+
+SELinuxを無効化する。
+
+> ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
+
+```yaml
+# SELinuxを無効化します。
+- name: Disable SELinux
+  ansible.builtin.lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+```
+
+<br>
+
+
 ### ansible.builtin.copy
 
 #### ▼ ansible.builtin.copyとは
@@ -530,7 +557,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 ```yaml
 # 設定ファイルを配置します。
-- name: copy foo.json
+- name: Copy foo.json
   ansible.builtin.copy:
     src: foo.json
     dest: /etc/foo.json

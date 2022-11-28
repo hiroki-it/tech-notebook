@@ -130,7 +130,7 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 ### ServiceのIPアドレスを指定する場合
 
-kubeletは、Pod内のコンテナにServiceの宛先情報（IPアドレス、プロトコル、ポート番号）を出力する。Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
+kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、IPアドレス、ポート番号）を出力する。Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >

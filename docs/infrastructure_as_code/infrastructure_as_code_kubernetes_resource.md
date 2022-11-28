@@ -226,7 +226,7 @@ Podのライフサイクルにはフェーズがある。
 
 （２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
 
-（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/0.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。
+（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。なお、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
 
 > ℹ️ 参考：https://www.creationline.com/lab/29281
 
@@ -401,7 +401,7 @@ options ndots:5
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_nodeport-service.png)
 
-Serviceに対するインバウンド通信を、ワーカーNodeのNICのIPアドレスとポート番号、Cluster-IP、を介してPodにルーティングする。ワーカーNodeのNICのIPアドレスとポート番号はワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。Serviceのポート番号と紐づくワーカーNodeのNICのポート番号はデフォルトではランダムであるため、ワーカーNodeのNICのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
+Serviceに対するインバウンド通信を、ワーカーNodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。ワーカーNodeのNICの宛先情報はワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。Serviceのポート番号と紐づくワーカーNodeのNICのポート番号はデフォルトではランダムであるため、ワーカーNodeのNICのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
 > ℹ️ 参考：
 >
@@ -411,7 +411,7 @@ Serviceに対するインバウンド通信を、ワーカーNodeのNICのIPア�
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_loadbalancer-service.png)
 
-Serviceに対するインバウンド通信を、External-IP、ワーカーNodeのNICのIPアドレスとポート番号、Cluster-IP、を介してPodにルーティングする。External-IPはワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。クラウドプロバイダー環境（例：AWS）では、LoadBalancer Serviceを作成すると、External-IPを宛先とする```L4```ロードバランサー（例：AWS NLBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+Serviceに対するインバウンド通信を、External-IP、ワーカーNodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。External-IPはワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。クラウドプロバイダー環境（例：AWS）では、LoadBalancer Serviceを作成すると、External-IPを宛先とする```L4```ロードバランサー（例：AWS NLBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
 > ℹ️ 参考：
 >

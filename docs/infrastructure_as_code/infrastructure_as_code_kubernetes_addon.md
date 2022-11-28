@@ -519,7 +519,7 @@ coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
 
 #### ▼ サービスディスカバリー
 
-Serviceとkube-proxyによるIPアドレスの動的な登録と組み合わせることにより、サービスディスカバリーを実装できる。
+CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
 
 > ℹ️ 参考：
 > 

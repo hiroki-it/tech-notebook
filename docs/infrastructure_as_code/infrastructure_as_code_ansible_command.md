@@ -52,6 +52,7 @@ fooインベントリのみを指定して、プロビジョニングを実行�
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
+
 **＊例＊**
 
 全てのインベントリーを指定して、プロビジョニングを実行する。
@@ -112,6 +113,12 @@ $ANSIBLE_VAULT;1.1;AES256
 > ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
 
 ```bash
+$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
+```
+
+**＊例＊**
+
+```bash
 $ ansible-inventory -i ./inventories/inventory --list
 ```
 
@@ -120,6 +127,12 @@ $ ansible-inventory -i ./inventories/inventory --list
 ```inventory```ファイルを指定し、```yml```形式に変換する。
 
 > ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+
+```bash
+$ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
+```
+
+**＊例＊**
 
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list -y

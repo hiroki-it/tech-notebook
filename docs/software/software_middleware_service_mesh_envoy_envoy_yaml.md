@@ -585,7 +585,7 @@ ADS-APIに関して設定する。
 
 #### ▼ grpc_services
 
-ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用して通信する。ADS-APIの宛先情報（IPアドレス、ポート番号）は、```static_resources.clusters```キー配下で設定しておく。
+ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用して通信する。ADS-APIの宛先情報は、```static_resources.clusters```キー配下で設定しておく。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
 
