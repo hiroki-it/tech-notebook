@@ -82,17 +82,6 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
-#### ▼ サービスディスカバリー
-
-![microservices_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_service-discovery.png)
-
-マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所（IPアドレス、ポート番号）を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
-
-> ℹ️ 参考：
-> 
-> - https://www.baeldung.com/cs/service-discovery-microservices
-> - https://www.getambassador.io/resources/service-discovery-microservices
-
 <br>
 
 ## 02-02. サービスメッシュの実装
@@ -126,6 +115,53 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
 > - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
+
+
+<br>
+
+## 02-03. サービスディスカバリー
+
+### サービスディスカバリーとは
+
+マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所（IPアドレス、ポート番号）を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
+
+> ℹ️ 参考：https://www.getambassador.io/resources/service-discovery-microservices
+
+<br>
+
+### デザインパターン
+
+#### ▼ クライアントサイドパターン
+
+サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。実装方法として、NetflixのEureka、などがある。
+
+（１）送信元マイクロサービスは、宛先マイクロサービスのドメイン名をサービスレジストリに問い合わせ、IPアドレスやポート番号を返信する。
+
+（２）送信元マイクロサービスは、ロードバランサーを使用して、宛先マイクロサービスにリクエストをルーティングする。
+
+> ℹ️ 参考：
+>
+> - https://microservices.io/patterns/client-side-discovery.html
+> - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+
+#### ▼ サーバーサイドパターン
+
+![microservices_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices_service-discovery.png)
+
+サービスレジストリ（例：etcd）に問い合わせる責務が、リクエストの送信元から切り離されている。実装方法として、KubernetesのService、サイドカープロキシ（例：Istioの```istio-proxy```、Nginx、など）を設置する、などがある。
+
+（１）送信元マイクロサービスは、送信先マイクロサービスのドメイン名をリクエストに割り当て、ロードバランサーに送信する。ロードバランサーはサービスディスカバリーに問い合わせ、IPアドレスやポート番号を取得する。
+
+（２）ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
+
+> ℹ️ 参考：
+>
+> - https://microservices.io/patterns/server-side-discovery.html
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
+> - https://www.north-47.com/knowledge-base/service-discovery-in-a-microservices-architecture-client-vs-service-side-discovery/
+> - https://www.baeldung.com/cs/service-discovery-microservices
 
 
 <br>

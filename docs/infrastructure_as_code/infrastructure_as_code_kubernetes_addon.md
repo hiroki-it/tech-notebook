@@ -435,19 +435,51 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 ### CoreDNSアドオンとは
 
-ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+coredns-service、coredns-pod、coredns-configmap、から構成される。ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_coredns.png)
 
+
 <br>
 
-### セットアップ
+### coredns-service
 
-#### ▼ ConfigMap
+#### ▼ coredns-serviceとは
 
-ConfigMapに```Corefile```ファイルを配置する。
+CoreDNSはワーカーNode内にPodとして稼働しており、これはcoredns-serviceによって管理されている。
+
+> ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+
+```bash
+$ kubectl get service -n kube-system
+
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
+```
+
+<br>
+
+### coredns-pod
+
+#### ▼ coredns-podとは
+
+```bash
+$ kubectl get pod -n kube-system
+
+NAME                        READY   STATUS    RESTARTS   AGE
+coredns-558bd4d5db-hg75t    1/1     Running   0          1m0s
+coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
+```
+
+<br>
+
+### coredns-configmap
+
+#### ▼ coredns-configmapとは
+
+ConfigMapに```Corefile```ファイルを配置する。```Corefile```ファイルは、CoreDNSを設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
@@ -457,7 +489,7 @@ ConfigMapに```Corefile```ファイルを配置する。
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: foo-coredns
+  name: coredns-configmap
   namespace: kube-system
 data:
   Corefile: |
@@ -493,52 +525,18 @@ data:
 
 <br>
 
-### CoreDNS Service/Pod
-
-#### ▼ CoreDNS Service/Podとは
-
-CoreDNSはワーカーNode内にPodとして稼働しており、これはCoreDNS Serviceによって管理されている。
-
-> ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
-
-```bash
-# CoreDNS Service
-$ kubectl get service -n kube-system
-
-NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
-kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
-
-
-# CoreDNS Pod
-$ kubectl get pod -n kube-system
-
-NAME                                     READY   STATUS    RESTARTS   AGE
-coredns-558bd4d5db-hg75t                 1/1     Running   0          1m0s
-coredns-558bd4d5db-ltbxt                 1/1     Running   0          1m0s
-```
-
-#### ▼ サービスディスカバリー
-
-CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
-
-> ℹ️ 参考：
-> 
-> - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
-> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
-
-<br>
-
 ## 03-02. Serviceの名前解決
 
 ### Serviceの名前解決の仕組み
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルにCoreDNS ServiceのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、権威DNSサーバーを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（coredns-service）のIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、coredns-serviceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
 > - https://help.aliyun.com/document_detail/201873.html
 
@@ -634,7 +632,7 @@ NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
 ```
 
-（２）CoreDNS Podが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
+（２）coredns-podが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
 
 ```bash
 $ kubectl -n kube-system get pods -o wide -l k8s-app=kube-dns
@@ -705,6 +703,18 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 対応する完全修飾ドメイン名は、『```<PodのIPアドレス>.<Namespace名>.pod.cluster.local```』である。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+
+
+<br>
+
+## 03-04. サービスディスカバリー
+
+CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
+
+> ℹ️ 参考：
+>
+> - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
+> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 
 
 <br>
