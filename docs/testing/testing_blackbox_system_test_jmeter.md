@@ -23,11 +23,43 @@ JMeterをインストールし、環境を作成する。
 
 ## 02. JMeterの仕組み
 
+### アーキテクチャ
+
 JMeterは、以下のコンポーネントから構成されている。
 
 > ℹ️ 参考：https://www.guru99.com/jmeter-element-reference.html
 
 ![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
+
+<br>
+
+### パラメーター
+
+#### ▼ 全体像
+
+![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stress-test_parameter.png)
+
+> ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+
+#### ▼ スレッド数
+
+リクエストのユーザー数に相当する。
+
+#### ▼ ループ数
+
+ユーザー当たりのリクエスト送信数に相当する。
+
+#### ▼ ランプアップ秒
+
+リクエストを送信する期間に相当する。長くし過ぎすると、全てのリクエスト数を送信するまでに時間がかかるようになるため、負荷が小さくなる。
+
+<br>
+
+### シナリオの種類
+
+- 一定数のリクエストを送信し続ける。
+- 増加するリクエストを送信し続ける
+
 
 <br>
 

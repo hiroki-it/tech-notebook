@@ -1051,7 +1051,7 @@ $ composer require laravel/ui:^1.0 --dev
 認証処理に関連するクラスを自動作成できる。Bladeに組み合わせるJavaScriptを選択できる。
 
 ```bash
-# Vuejsを使用する場合。
+# Vue.jsを使用する場合。
 $ php artisan ui vue --auth
 
 # Reactを使用する場合

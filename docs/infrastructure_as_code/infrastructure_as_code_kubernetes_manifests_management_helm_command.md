@@ -644,7 +644,7 @@ $ helm diff
 
 ### helm-secretsとは
 
-内部的にsopsを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。
+暗号化ツールを使用して、```values```ファイルを暗号化/復号化しつつ、```helm```コマンドを実行する。
 
 > ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
@@ -654,16 +654,35 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version <バー
 
 <br>
 
-### sopsとの連携
+### バックエンド
+
+#### ▼ バックエンドとは
+
+helm-secretsの内部で使用する暗号化ツールのこと。
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
+
+#### ▼ 使用可能なバックエンド例
+
+- sops
+- vals
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
+
+<br>
+
+## 03-02. バックエンドがsopsの場合
+
+### 注意点
 
 #### ▼ ```secrets```ファイルの名前の制限
 
-sops単体では、```secrets```ファイルの名前は自由である。しかし、古いバージョンのhelm-secrets（zendesk製、jkroepke製の古いバージョン）を使用している場合、```secrets```ファイルの名前を『```secrets.yaml```』または『```secrets.***.yaml```』とする必要がある。
+helm-secretsには、zendesk製（2022/11/29時点でメンテナンスされていない）と、zendesk製からフォークされたjkroepke製がある。zendesk製を使用している場合、sopsの```secrets```ファイルの名前を『```secrets.yaml```』『```secrets.<任意の名前>.yaml```』とする必要がある。一方でjkeroepke製では、執筆時点（2022/11/29）で、```secrets```ファイルの名前が自由である。
 
 > ℹ️ 参考：
 >
 > - https://github.com/zendesk/helm-secrets#usage-and-examples
-> - https://github.com/jkroepke/helm-secrets/pull/23
+> - https://github.com/jkroepke/helm-secrets/wiki/Usage
 
 <br>
 
@@ -671,7 +690,7 @@ sops単体では、```secrets```ファイルの名前は自由である。しか
 
 #### ▼ ```secrets://```
 
-```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
+sopsの```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
 
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
@@ -689,15 +708,13 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 
 > ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
-
 ```bash
 $ helm secrets template <チャートへのパス> -f <sopsが作成したsecrets.yamlファイルへのパス> -f <valuesファイルへのパス>
 ```
 
-
 **＊例＊**
 
-以下のような```secrets```ファイルがあるとする。
+以下のようなsopsの```secrets```ファイルがあるとする。
 
 ```yaml
 # secrets.yaml

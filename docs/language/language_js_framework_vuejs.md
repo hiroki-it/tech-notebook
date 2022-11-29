@@ -181,7 +181,7 @@ var vm = new Vue({
 
     /* watchオプション
     ・Vueインスタンス内の値の変化を監視する関数を定義。
-    ・Vue-Routerも参考にせよ。
+    ・vue-routerも参考にせよ。
     */
     watch: {},
 
@@ -204,7 +204,7 @@ var vm = new Vue({
 
 例えば、親コンポーネントの子コンポーネントタグでクリックイベントが発火した時、子コンポーネントから、イベントに紐付いたイベントハンドラ関数がコールされる。
 
-```vue
+```html
 <template>
   <!----------------------------------------
   // View層
@@ -395,7 +395,7 @@ var vm = new Vue({
 
 **＊実装例＊**
 
-```vue
+```html
 <template>
   <!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる -->
   <form v-on:submit.prevent="search()">
@@ -423,25 +423,13 @@ var vm = new Vue({
 
 View層でクリックイベントが起きた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする。
 
-```
-
-```
-
 #### ▼ ```v-on:change="<イベントハンドラ関数>"```
 
 View層で```input```タグや```select```タグで、値の入力後にマウスフォーカスがタグから外れた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする
 
-```
-
-```
-
 #### ▼ ```v-on:input="<イベントハンドラ関数>"```
 
 View層で```input```タグで、一文字でも値が入力された時点で発火し、ViewModel層バインディングされたイベントハンドラ関数をコールする。```v-on:change```とは、イベントが発火するタイミングが異なるため、共存できる。
-
-```
-
-```
 
 <br>
 
@@ -472,14 +460,14 @@ View層で```input```タグで、一文字でも値が入力された時点で�
 
 実装方法は、```v-on:input="<イベントハンドラ関数>"```と同じである。例えば、以下の2つは同じである。
 
-```vue
+```html
 <input
     type="text"
     v-model="foo">
 </input>
 ```
 
-```vue
+```html
 <input 
     type="text"
     :value="foo"
@@ -560,11 +548,11 @@ var vm = new Vue({
 <br>
 
 
-## 02. Vue-Routerパッケージによるルーティング
+## 02. vue-routerパッケージによるルーティング
 
-### Vue-Router
+### vue-router
 
-#### ▼ Vue-Routerとは
+#### ▼ vue-routerとは
 
 ![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-router.png)
 
@@ -577,7 +565,7 @@ GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b
 **＊実装例＊**
 
 ```javascript
-// Vue-Routerパッケージを読み込む。
+// vue-routerパッケージを読み込む。
 const vueRouter = require("vue-router").default;
 
 // VueRouterインスタンスを作成する。
@@ -592,7 +580,7 @@ const router = new VueRouter({
 module.exports = router;
 ```
 
-また、Vue-Routerの能力を利用するために、```router```オプションをルートコンポーネントに注入する必要がある。
+また、vue-routerの能力を利用するために、```router```オプションをルートコンポーネントに注入する必要がある。
 
 ```javascript
 import router from "./router"
@@ -629,7 +617,12 @@ Webアプリケーション全体に1つ存在し、全体的なRouter機能を�
 
 ```javascript
 // users/?foo=xyz が履歴スタックに追加される。
-this.$router.push({ path : "/users", query: { foo : "xyz" }});
+this.$router.push({
+    path : "/users",
+    query: {
+        foo : "xyz" 
+    }
+});
 ```
 
 #### ▼ ```$route```（Routeオブジェクト）
@@ -656,7 +649,7 @@ JQueryにはJQueryRouter、ReactにはReact-Routerがある。
 
 #### ▼ Vuexとは
 
-Vuejsでパッケージの1つで、MVVMアーキテクチャのモデルに相当する機能を提供し、グローバルで参照できる。異なるコンポーネントで共通したデータを扱いたくとも、双方向データバインディングでは、親子コンポーネント間でしか、データを受け渡しできない。しかし、Vuexストア内で、データの状態の変化を管理することによって、親子関係なく、全てのコンポーネント間でデータを受け渡しできるようになる。
+Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相当する機能を提供し、グローバルで参照できる。異なるコンポーネントで共通したデータを扱いたくとも、双方向データバインディングでは、親子コンポーネント間でしか、データを受け渡しできない。しかし、Vuexストア内で、データの状態の変化を管理することによって、親子関係なく、全てのコンポーネント間でデータを受け渡しできるようになる。
 
 ※Vuexからなるモデルはどうあるべきか、について調査中...
 
@@ -785,7 +778,7 @@ module.exports = new Vuex.Store({
 
 **＊実装例＊**
 
-```vue
+```html
 <!-- 子コンポーネント -->
 <template>
   ...
@@ -869,7 +862,7 @@ Vueインスタンスの作成前に実行される。
 
 beforeCreateフックの動作を検証する。```data```オプションは、Vueインスタンス作成後に有効になるため、beforeCreateフックでコールできず、```undefined```になる。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -906,7 +899,7 @@ undefined
 
 createdフックの動作を検証する。```data```オプションは、Vueインスタンス作成後に設定されるため、createdフックでコールでき、処理結果が表示される。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -940,7 +933,7 @@ Vueインスタンスがマウントされる前に実行される。
 
 beforeMountフックの動作を検証する。```data```オプションから```name```変数に対する展開は、マウントによって実行される。そのため、beforeMountフックの段階では要素自体が作成されておらず、何も表示されない。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -978,7 +971,7 @@ Vue.js以外の外部パッケージの読み出し、検索実行時のイベ�
 
 beforeMountフックの動作を検証する。```data```オプションから```name```変数に対する展開は、elementに対するマウント中に実行される。そのため、```mounted```メソッドが実行され、空文字が上書きされる。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -1006,7 +999,7 @@ var vm = new Vue({
 
 ただし、全ての子コンポーネントでマウントが完了したことを待つために、```nextTick```メソッドを使用する必要がある。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -1039,7 +1032,7 @@ WindowオブジェクトやDocumentオブジェクトのメソッドによる要
 
 **＊検証例＊**
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>
@@ -1075,7 +1068,7 @@ var vm = new Vue({
 
 データが更新される時の再レンダリング後に実行される。再レンダリング後に要素を操作する処理を実装する。
 
-```vue
+```html
 <template>
   <div>{{ name }}</div>
 </template>

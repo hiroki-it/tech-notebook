@@ -1,6 +1,6 @@
 # セクションの目次
 
-## 👥 ソフトウェア開発手法論/SREing
+## 👥 ソフトウェア開発手法論
 
 * #### 📖 [︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-mkdocs/software_development_methodology/software_development_methodology.html)
 * #### <u>SREing</u>
