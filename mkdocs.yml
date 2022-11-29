@@ -528,7 +528,7 @@ nav:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
 
-  - 👥 ソフトウェア開発手法論/SREing:
+  - 👥 ソフトウェア開発手法論:
       - software_development_methodology/index.md
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
