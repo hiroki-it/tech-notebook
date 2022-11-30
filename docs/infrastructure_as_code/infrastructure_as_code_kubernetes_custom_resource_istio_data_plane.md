@@ -129,13 +129,14 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 #### ▼ ```pilot-agent```（旧```istio-agent```）
 
-元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。Envoyとの間で双方向ストリーミングRPCを確立し、XDS-APIから取得したPodの宛先情報をEnvoyに登録する。また反対に、Envoyからの設定情報のコールを受信する。
+元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。Envoyとの間で双方向ストリーミングRPCを確立し、XDS-APIから取得したPodの宛先情報をEnvoyに登録する。
 
 > ℹ️ 参考：
 > 
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
 > - https://www.jianshu.com/p/60e45bc9c4ac
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html
 
 ```go
 package adsc
@@ -260,9 +261,12 @@ func (a *ADSC) handleRecv() {
 
 #### ▼ Envoy
 
-```istio-proxy```コンテナにて、リバースプロキシとして動作する。Envoyとの間で双方向ストリーミングRPCを確立し、```pilot-agent```から宛先情報を受信する。また反対に、pilot-agentに設定情報をコールする。
+```istio-proxy```コンテナにて、リバースプロキシとして動作する。```pilot-agent```から宛先情報を受信する。
 
-> ℹ️ 参考：https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> ℹ️ 参考：
+> 
+> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - https://www.programmersought.com/article/5797698845/
 
 <br>
 
