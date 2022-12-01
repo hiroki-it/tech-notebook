@@ -13,13 +13,31 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. Dockerfile
+## 01. セットアップ
 
-### メリット
+### インストール
 
-Dockerfileを使用することにより、コンテナイメージの作成からコンテナの作成までを自動化できる。Dockerfileを使用しない場合、各イメージレイヤーのインストールを手動で行わなければならない。
+#### ▼ aptリポジトリから
 
-![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)<br>
+Dockerエンジン、CLI、インストールする。
+
+> ℹ️ 参考：https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+
+```bash
+$ apt-get install -y \
+    docker-ce \
+    docker-ce-cli
+```
+
+```docker```プロセスをデーモンとして起動する。
+
+> ℹ️ 参考：https://docs.docker.com/config/daemon/systemd/#start-the-docker-daemon
+
+```bash
+$ systemctl start docker
+```
+
+<br>
 
 ### イメージのデバッグ
 

@@ -86,7 +86,7 @@ daemonize = yes
 
 #### ▼ ```www.conf```ファイルとは
 
-PHP-FPMの```www```プロセスのプールを設定する。```www.conf```ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。```php.ini```ファイルによって読み込まれ、```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。ちなみに、『```www-data```』はApacheプロセスのユーザー名のデフォルト値である。
+PHP-FPMの```www```プロセスのプールを設定する。```www.conf```ファイルは、```/usr/local/etc/php-fpm.d```ディレクトリ配下に配置されている。```php.ini```ファイルによって読み込まれ、```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル（```/etc/nginx/nginx.conf```ファイル）とPHP-FPMの設定ファイル（```/usr/local/etc/php-fpm.d/www.conf```ファイル）の両方で、プロセスのユーザー名を『```www-data```』とする必要がある。ちなみに、『```www-data```』は```apache```プロセスのユーザー名のデフォルト値である。
 
 > ℹ️ 参考：
 >

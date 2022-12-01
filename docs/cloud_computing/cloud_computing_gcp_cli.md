@@ -120,6 +120,8 @@ The latest available version is: 400.0.0
 
 認証情報を取得する。
 
+**＊実行例＊**
+
 ```bash
 $ gcloud config list
 
@@ -133,6 +135,8 @@ Your active configuration is: [default]
 #### ▼ set
 
 認証の特定の項目のデフォルト値を設定する。
+
+**＊実行例＊**
 
 ```bash
 $ gcloud config set project <プロジェクト名>
@@ -160,6 +164,8 @@ GKE Clusterの一覧を取得する。
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters?hl=ja#viewing_your_clusters
 
+**＊実行例＊**
+
 ```bash
 $ gcloud container clusters list
 
@@ -169,11 +175,69 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 
 <br>
 
+### container node-pools
+
+#### ▼ container node-poolsとは
+
+> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
+
+#### ▼ describe
+
+GKE Node Poolの情報を取得する。アップグレードの手法を確認することもできる。
+
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies?hl=ja#inspect-upgrade-settings
+
+**＊実行例＊**
+
+```bash
+$ gcloud container node-pools describe foo-node-pool --cluster=foo-cluster
+
+...
+
+upgradeSettings:
+  blueGreenSettings:
+    nodePoolSoakDuration: 1800s
+    standardRolloutPolicy:
+      batchNodeCount: 1
+      batchSoakDuration: 10s
+  strategy: BLUE_GREEN # ブルー/グリーンアップグレード
+```
+
+#### ▼ update
+
+GKE Node Poolの設定を変更する。
+
+**＊実行例＊**
+
+> ℹ️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
+
+
+ローリング方式（サージ方式）のアップグレードを有効化する。
+
+```bash
+$ gcloud container node-pools update foo-node-pool \
+    --cluster=foo-cluster \
+    --enable-surge-upgrade
+```
+
+ローリング方式時に新しく追加できる最大インスタンス数と、削除できる最大インスタンス数を設定する。
+
+```bash
+$ gcloud container node-pools update foo-node-pool \
+    --cluster=foo-cluster \
+    --max-surge-upgrade=2 \
+    --max-unavailable-upgrade=1
+```
+
+<br>
+
 ### init
 
 #### ▼ initとは
 
 認証時のデフォルト値を対話方式で設定する。
+
+**＊実行例＊**
 
 ```bash
 $ gcloud init
@@ -223,6 +287,8 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 #### ▼ projectとは
 
 認可スコープの範囲内になるプロジェクトの一覧を取得する。
+
+**＊実行例＊**
 
 ```bash
 $ gcloud projects list

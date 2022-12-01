@@ -348,6 +348,18 @@ spec:
     - client auth
 ```
 
+定義したCertificateSigningRequestを承認し、SSL証明書（```.crt```）を作成するためには、```kubectl certificate approve```コマンドを使用する。
+
+```bash
+# 承認
+$ kubectl certificate approve foo-csr
+
+# SSL証明書を取得する。
+$ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.crt
+```
+
+<br>
+
 ## 04. Config
 
 ### clusters

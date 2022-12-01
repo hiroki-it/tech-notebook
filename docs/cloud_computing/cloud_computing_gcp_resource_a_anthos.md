@@ -160,10 +160,20 @@ on-オンプレミスは、各Clusterを作成するワークステーション�
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。Kindはコンテナを構築し、そのコンテナ内でAnthos Clusterを事前に検証する。そのため、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
+Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。そのため、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
 
 ```bash
 $ systemctl start docker
+```
+
+#### ▼ ブートストラップクラスター
+
+Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。```~/baremetal/bmctl-workspace/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+
+```bash
+$ kubectl get pod \
+    -n foo-namespace \
+    --kubeconfig ~/baremetal/bmctl-workspace/.kindkubeconfig
 ```
 
 <br>
@@ -190,12 +200,24 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 ### update
 
+#### ▼ updateとは
+
 カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 ```bash
-$ bmctl update cluster -c <Cluster名> --admin-kubeconfig=<kubeconfigファイル>
+$ bmctl update cluster -c foo-cluster -n foo-namespace
+```
+
+<br>
+
+#### ▼ --reuse-bootstrap-cluster
+
+既存のブートストラップクラスターを再利用し、Anthosをアップグレードする。
+
+```bash
+$ bmctl upgrade cluster -c foo-cluster -n foo-namespace --reuse-bootstrap-cluster
 ```
 
 <br>

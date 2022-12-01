@@ -17,7 +17,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 ### -c
 
-設定ファイルを指定して、nginxプロセスを実行する。
+設定ファイルを指定して、```nginx```プロセスを実行する。
 
 ```bash
 $ nginx -c ./custom-nginx.conf
@@ -27,7 +27,7 @@ $ nginx -c ./custom-nginx.conf
 
 ### reload
 
-nginxプロセスを安全に再起動する。```systemctl```コマンドでも再起動できる。
+```nginx```プロセスを安全に再起動する。```systemctl```コマンドでも再起動できる。
 
 ```bash
 $ nginx -s reload
