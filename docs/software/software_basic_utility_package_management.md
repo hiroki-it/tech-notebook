@@ -415,6 +415,11 @@ $ brew install asdf
 
 ```bash
 $ asdf global <プラグイン名> 1.0.0
+
+$ cat ~/.tool-versions 
+
+foo 1.0.0
+bar 1.0.0
 ```
 
 #### ▼ list
@@ -431,6 +436,11 @@ $ asdf list all <プラグイン名>
 
 ```bash
 $ asdf local <プラグイン名> 1.0.0
+
+$ cat .tool-versions 
+
+foo 1.0.0
+bar 1.0.0
 ```
 
 #### ▼ plugin

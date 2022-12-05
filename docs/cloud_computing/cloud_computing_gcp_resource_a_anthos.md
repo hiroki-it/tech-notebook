@@ -110,7 +110,7 @@ GCP上で```kubectl```コマンドを実行して各クラウドプロバイダ�
 
 #### ▼ fleet-workload-identity
 
-GCP側のアカウント情報と、各クラウドプロバイダーのAnthos Cluster内のServiceAccountを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
+GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
@@ -168,7 +168,7 @@ $ systemctl start docker
 
 #### ▼ ブートストラップクラスター
 
-Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。```~/baremetal/bmctl-workspace/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \
@@ -198,6 +198,24 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 ## bmctlコマンド
 
+### check preflight
+
+#### ▼ check preflightとは
+
+```bmctl upgrade```コマンドの実行時に実施されるプリフライトチェックのみを実施する。
+
+```bash
+$ ~/baremetal/bmctl check preflight -c foo-anthos-cluster  -n foo-namespace
+```
+
+#### ▼ --reuse-bootstrap-cluster
+
+プリフライトチェックの後、ブートストラップクラスターを削除せずに残しておく。
+
+```bash
+$ ~/baremetal/bmctl check preflight -c foo-anthos-cluster  -n foo-namespace --reuse-bootstrap-cluster
+```
+
 ### update
 
 #### ▼ updateとは
@@ -207,17 +225,27 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
 ```bash
-$ bmctl update cluster -c foo-cluster -n foo-namespace
+$ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
 <br>
 
-#### ▼ --reuse-bootstrap-cluster
+### upgrade
 
-既存のブートストラップクラスターを再利用し、Anthosをアップグレードする。
+#### ▼ upgradeとは
+
+AnthosのKubernetesのバージョンをプリフライトチェックで検証し、成功すればアップグレードする。
 
 ```bash
-$ bmctl upgrade cluster -c foo-cluster -n foo-namespace --reuse-bootstrap-cluster
+$ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace 
+```
+
+#### ▼ --reuse-bootstrap-cluster
+
+既存のブートストラップクラスターを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
+
+```bash
+$ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster
 ```
 
 <br>
@@ -240,7 +268,7 @@ $ kubectl get cluster -A -o yaml
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
-  name: foo-cluster
+  name: foo-anthos-cluster
   namespace: foo
 spec:
   anthosBareMetalVersion: 1.12.0 # 現在のバージョン
@@ -270,7 +298,7 @@ $ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
 $ chmod a+x bmctl
 
 # アップグレードする。
-$ bmctl upgrade cluster \
+$ ~/baremetal/bmctl upgrade cluster \
     -c <Cluster名> \
     --kubeconfig <kubeconfigファイルの場所>
 ```
@@ -283,7 +311,7 @@ $ kubectl get cluster -A -o yaml
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
-  name: foo-cluster
+  name: foo-anthos-cluster
   namespace: foo
 spec:
   anthosBareMetalVersion: 1.12.1 # 新バージョン

@@ -123,6 +123,20 @@ $ kubelet \
 
 <br>
 
+### ログ
+
+ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
+
+```bash
+$ journalctl -u kubelet.service
+
+-- Logs begin at Mon 2022-04-18 21:04:26 JST, end at Mon 2022-12-05 17:42:29 JST. --
+04/21 14:21:55 foo-node systemd[1]: Started kubelet: The Kubernetes Node Agent.
+...
+```
+
+<br>
+
 ## 05. kube-proxy
 
 ### kube-proxyとは
@@ -269,6 +283,123 @@ kube-proxyの起動時に、```--feature-gates```オプションに```SupportIPV
 イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
+
+<br>
+
+### セットアップ（Containerdの場合）
+
+#### ▼ Containerdのインストールの事前作業
+
+（１）```/etc/modules-load.d/containerd.conf```ファイルに、カーネルモジュールを設定する。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
+
+```bash
+overlay
+br_netfilter
+```
+
+（２）カーネルモジュールを読み込む。
+
+```bash
+$ modprobe overlay
+$ modprobe br_netfilter
+```
+
+（３）```/etc/sysctl.d/99-kubernetes-cri.conf```ファイルに、カーネルパラメーターを設定する。
+
+> ℹ️ 参考：https://www.memotansu.jp/kubernetes/3790/#toc2
+
+```bash
+net.bridge.bridge-nf-call-iptables=1
+net.ipv4.ip_forward=1
+net.bridge.bridge-nf-call-ip6tables=1
+```
+
+（４）カーネルに設定を反映する。
+
+```bash
+$ sysctl --system
+```
+
+#### ▼ Containerdのインストール
+
+（１）要件のパッケージをインストールする。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+```bash
+$ apt-get update -y \ 
+  && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+```
+
+（２）Dockerの公式GPGキーを追加する。
+
+```bash
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+```
+
+（３）リポジトリを追加する。
+
+```bash
+$ add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+```
+
+（４）Containerdをインストールする。
+
+```bash
+$ apt-get update && apt-get install containerd.io
+```
+
+#### ▼ Containerdの設定ファイルの準備
+
+（１）設定ファイルとして、```/etc/containerd/config.toml```ファイルを作成する。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+```bash
+$ mkdir -p /etc/containerd
+$ containerd config default | sudo tee /etc/containerd/config.toml
+```
+
+（２）Containerdに設定を反映する。
+
+```bash
+$ systemctl restart containerd
+```
+
+#### ▼ kubeletによるContainerdの指定
+
+kubeletの起動時に、```--container-runtime```オプションと```--container-runtime-endpoint```オプションを使用する。
+
+> ℹ️ 参考：https://repl.info/archives/2894/
+
+```bash
+$ kubelet \
+    --container-runtime=remote \
+    --container-runtime-endpoint=unix:///run/containerd/containerd.sock
+    ...
+```
+
+<br>
+
+### ログ
+
+ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
+
+```bash
+$ journalctl -u containerd.service
+
+-- Logs begin at Mon 2022-04-18 21:04:26 JST, end at Mon 2022-12-05 17:43:49 JST. --
+04/19 18:10:17 fo-node systemd[1]: Starting containerd container runtime...
+```
 
 <br>
 

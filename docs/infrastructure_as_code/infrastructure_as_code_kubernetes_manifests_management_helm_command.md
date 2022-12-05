@@ -253,6 +253,14 @@ diff     3.4.2    Preview helm upgrade changes as a diff
 secrets  3.7.0    plugin provides secrets values encryption for Helm charts secure storing
 ```
 
+#### ▼ uninstall
+
+指定したプラグインをアンインストールする。
+
+```bash
+$ helm plugin uninstall secrets
+```
+
 <br>
 
 ### pull
@@ -595,21 +603,22 @@ TEST SUITE: None
 
 #### ▼ --skip-crds
 
-Helmは、カスタムリソースを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソースのインストールを実行する仕様になっている。```--skip-crds```オプションを有効化すると、このインストールをスキップし、非カスタムリソースのみをインストールできる。
+Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。```install```オプションを有効化した上で、```--skip-crds```オプションを有効化すると、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールする。
 
 > ℹ️ 参考：
 >
 > - https://helm.sh/docs/helm/helm_upgrade/
 
 ```bash
-$ helm upgrade --skip-crds <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
+$ helm upgrade --skip-crds --install <リリース名> <チャートへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**
 
+```helm upgrade```コマンド時に、カスタムリソース定義の作成をスキップし、非カスタムリソース定義のみをインストールする。
 
 ```bash
-$ helm upgrade --skip-crds foo-release ./foo-chart -f ./values.yaml >| release.yaml
+$ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml
 ```
 
 #### ▼ --wait
@@ -628,9 +637,39 @@ $ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
 
 <br>
 
-## 02. helm-diff
+## 02. helm-dashboard
 
-### helm-diff
+### helm-dashboardとは
+
+```helm```コマンドで確認できる情報（例：インストールされているHelmチャート、リビジョン履歴、など）をダッシュボードで表示する。
+
+> ℹ️ 参考：https://github.com/komodorio/helm-dashboard
+
+<br>
+
+### セットアップ
+
+#### ▼ インストール
+
+> ℹ️ 参考：https://github.com/komodorio/helm-dashboard#installing
+
+```bash
+$ helm plugin install https://github.com/komodorio/helm-dashboard.git
+```
+
+#### ▼ 起動
+
+> ℹ️ 参考：https://github.com/komodorio/helm-dashboard#running
+
+```bash
+$ helm dashboard
+```
+
+<br>
+
+## 03. helm-diff
+
+### helm-diffとは
 
 ```helm get```コマンドによる最新のリリースによるマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。etcd上のマニフェストと比較しているわけでないことに注意する。
 
@@ -640,7 +679,17 @@ $ helm diff
 
 <br>
 
-## 03. helm-secrets
+### セットアップ
+
+#### ▼ インストール
+
+```bash
+$ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
+```
+
+<br>
+
+## 04. helm-secrets
 
 ### helm-secretsとは
 
@@ -648,8 +697,14 @@ $ helm diff
 
 > ℹ️ 参考：https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
+<br>
+
+### セットアップ
+
+#### ▼ インストール
+
 ```bash
-$ helm plugin install https://github.com/jkroepke/helm-secrets --version <バージョンタグ>
+$ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 ```
 
 <br>
@@ -671,7 +726,7 @@ helm-secretsの内部で使用する暗号化ツールのこと。
 
 <br>
 
-## 03-02. バックエンドがsopsの場合
+## 04-02. バックエンドがsopsの場合
 
 ### 注意点
 

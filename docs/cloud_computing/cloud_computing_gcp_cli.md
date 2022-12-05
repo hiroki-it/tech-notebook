@@ -190,7 +190,7 @@ GKE Node Poolの情報を取得する。アップグレードの手法を確認�
 **＊実行例＊**
 
 ```bash
-$ gcloud container node-pools describe foo-node-pool --cluster=foo-cluster
+$ gcloud container node-pools describe foo-node-pool --cluster=foo-anthos-cluster
 
 ...
 
@@ -216,7 +216,7 @@ GKE Node Poolの設定を変更する。
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \
-    --cluster=foo-cluster \
+    --cluster=foo-anthos-cluster \
     --enable-surge-upgrade
 ```
 
@@ -224,7 +224,7 @@ $ gcloud container node-pools update foo-node-pool \
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \
-    --cluster=foo-cluster \
+    --cluster=foo-anthos-cluster \
     --max-surge-upgrade=2 \
     --max-unavailable-upgrade=1
 ```

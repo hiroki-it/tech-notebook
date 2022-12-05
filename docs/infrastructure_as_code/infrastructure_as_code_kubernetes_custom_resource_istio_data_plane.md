@@ -15,9 +15,9 @@ description: データプレーン＠Istioの知見を記録しています。
 
 ## 01. データプレーンとは
 
-### サイドカープロキシによるサービスメッシュの場合
+### サイドカープロキシメッシュの場合
 
-サイドカープロキシによるサービスメッシュのデータプレーンは、istio-iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
+サイドカープロキシメッシュのデータプレーンは、istio-iptables、 ```istio-init```コンテナ、```istio-proxy```コンテナ、から構成される。
 
 > ℹ️ 参考：https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 

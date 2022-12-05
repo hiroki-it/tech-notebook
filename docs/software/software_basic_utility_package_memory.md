@@ -526,6 +526,10 @@ proc-fs-nfsd.mount            static
 proc-sys-fs-binfmt_misc.mount static
 ```
 
+#### ▼ log
+
+```systemctl```コマンドにはログを取得するオプションがないため、代わりに```journalctl```コマンドを使用する。
+
 #### ▼ reload
 
 デーモン化されたプロセスを安全に再起動する。

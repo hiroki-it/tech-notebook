@@ -248,8 +248,6 @@ $ kubectl exec \
     -c istio-proxy \
     -- bash -c "curl http://localhost:15000/config_dump?include_eds" | yq -P
 
-...
-
 configs:
   dynamic_endpoint_configs:
     - endpoint_config:
@@ -295,6 +293,26 @@ configs:
                   filter_metadata:
                     istio:
                       workload: bar
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1d
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      # 冗長化されたbaz-podのIPアドレス
+                      address: 11.0.0.3
+                      # baz-pod内のコンテナが待ち受けているポート番号
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: baz
                     envoy.transport_socket_match:
                       tlsMode: istio
                 load_balancing_weight: 1
@@ -451,7 +469,9 @@ $ kubectl exec \
         name: 0.0.0.0_50002
         address:
           socket_address:
+            # 受信したパケットのうちで、宛先IPアドレスでフィルタリングできるようにする。
             address: 0.0.0.0
+            # 受信したパケットのうちで、宛先ポート番号でフィルタリングできるようにする。
             port_value: 50002
         filter_chains:
           - filter_chain_match:

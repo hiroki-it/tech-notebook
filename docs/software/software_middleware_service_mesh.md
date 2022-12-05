@@ -61,9 +61,9 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 <br>
 
-### サイドカープロキシによるサービスメッシュ
+### サイドカープロキシメッシュ
 
-#### ▼ サイドカープロキシによるサービスメッシュとは
+#### ▼ サイドカープロキシメッシュとは
 
 ![service-mesh_sidecar-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy.png)
 

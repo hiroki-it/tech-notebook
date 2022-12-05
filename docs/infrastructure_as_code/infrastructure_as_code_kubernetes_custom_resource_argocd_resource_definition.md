@@ -360,16 +360,16 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-    name: foo-istio-repository # 任意のマニフェストリポジトリ名
-    url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
-    type: git
-    # OIDCに必要なIDやトークンを設定する。
-    oidc.config: |
-      name: keycloak
-      clientID: foo-oidc
-      clientSecret: *****
-      requestedScopes: ["openid", "profile", "email", "groups"]
-      requestedIDTokenClaims: {"groups": {"essential": true}}
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    name: keycloak
+    clientID: foo-oidc
+    clientSecret: *****
+    requestedScopes: ["openid", "profile", "email", "groups"]
+    requestedIDTokenClaims: {"groups": {"essential": true}}
 ```
 
 <br>
