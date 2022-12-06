@@ -205,15 +205,7 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 ```bmctl upgrade```コマンドの実行時に実施されるプリフライトチェックのみを実施する。
 
 ```bash
-$ ~/baremetal/bmctl check preflight -c foo-anthos-cluster  -n foo-namespace
-```
-
-#### ▼ --reuse-bootstrap-cluster
-
-プリフライトチェックの後、ブートストラップクラスターを削除せずに残しておく。
-
-```bash
-$ ~/baremetal/bmctl check preflight -c foo-anthos-cluster  -n foo-namespace --reuse-bootstrap-cluster
+$ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 ```
 
 ### update

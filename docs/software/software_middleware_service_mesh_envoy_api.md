@@ -194,10 +194,7 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値（特に、エンドポイント）を、JSON形式でレスポンスとして返信する。
 
-> ℹ️ 参考：
-> 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -236,6 +233,9 @@ $ kubectl exec \
 #### ▼ ```dynamic_endpoint_configs```キー
 
 準備済みのエンドポイント値が設定されている。```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
+
 
 **＊例＊**
 
@@ -348,7 +348,10 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 
 準備済みのクラスター値を、JSON形式でレスポンスとして返信する。クラスターに紐づく宛先に関して、```load_assignment```キーで宛先IPアドレスを直接的に設定する場合と、```service_name```キーでエイリアスを設定する場合がある。```service_name```キーに紐づく宛先情報は、```/config_dump?include_eds```エンドポイントのレスポンスの```dynamic_endpoint_configs```キー配下にある```cluster_name```キーで確認できる。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
+> ℹ️ 参考：
+>
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -440,7 +443,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 サービスディスカバリーによって動的に登録された設定値（特に、リスナー）を、JSON形式でレスポンスとして返信する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-listenersconfigdump
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -503,7 +506,7 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値（特に、ルート）を、JSON形式でレスポンスとして返信する。
 
-> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-listenersconfigdump
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

@@ -198,7 +198,10 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。データプレーンの処理は、コンポーネント（リスナー、ルート、クラスター、エンドポイント）から構成される。
 
-> ℹ️ 参考：https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
+> ℹ️ 参考：
+> 
+> - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
+> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
 #### ▼ XDS-APIとの通信の仕組み
 

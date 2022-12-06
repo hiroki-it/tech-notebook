@@ -218,7 +218,7 @@ PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、P
 
 ### metrics-serverの仕組み
 
-metrics-serverは、拡張apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスを拡張apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
 > ℹ️ 参考：
 >
@@ -229,9 +229,9 @@ metrics-serverは、拡張apiserver、ローカルストレージ、スクレイ
 
 <br>
 
-### 拡張apiserver
+### metrics-apiserver
 
-#### ▼ 拡張apiserverとは
+#### ▼ metrics-apiserverとは
 
 ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。データポイントはローカルストレージに保管している。
 
@@ -240,7 +240,7 @@ ServiceとAPIServiceを介して、クライアント（```kubectl```コマン�
 > - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
 
-#### ▼ 拡張apiserverへのリクエスト
+#### ▼ metrics-apiserverへのリクエスト
 
 クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
 
@@ -252,7 +252,7 @@ $ kubectl top node
 $ kubectl top pod -n <任意のNamespace>
 ```
 
-また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
+また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、metrics-apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
 
 > ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 

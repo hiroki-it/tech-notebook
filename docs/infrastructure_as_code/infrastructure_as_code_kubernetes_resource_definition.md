@@ -39,7 +39,10 @@ apiVersion: v1
 
 任意のキーと値を設定する。```metadata.labels```キーとは異なり、設定できる情報に制約がない。
 
-> ℹ️ 参考：https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
 #### ▼ kubernetes.io/ingress.class
 
@@ -76,6 +79,24 @@ metadata:
 
 <br>
 
+### generation
+
+#### ▼ generation
+
+Kubernetesリソースが最初に作成されてから何回変更されたかの回数（世代数）を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 3
+...
+```
+
+<br>
+
 ### labels
 
 #### ▼ labelsとは
@@ -94,6 +115,7 @@ metadata:
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
 #### ▼ 予約Label
@@ -182,6 +204,8 @@ metadata:
 
 Kubernetesリソースを一意に識別するための名前を設定する。
 
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -195,6 +219,113 @@ metadata:
 Kubernetesにとって```metadata.name```キーはIDであり、後から変更できない。もし別の名前に変更したい場合は、再作成する必要がある。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
+
+<br>
+
+### namespace
+
+#### ▼ namespaceとは
+
+Kubernetesリソースを作成するNamespaceを設定する。
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: foo-namespace
+...
+```
+
+<br>
+
+### uid
+
+#### ▼ uid
+
+そのKubernetesリソースを識別するユニークIDを設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  uid: *****
+...
+```
+
+<br>
+
+## 01-04. status
+
+### status
+
+#### ▼ statusとは
+
+Kubernetesリソースの現在の状態を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。Kubernetesリソースごとに、```status```キー配下の構造は異なっており、
+
+<br>
+
+### conditions
+
+#### ▼ conditionsとは
+
+```status```キーの履歴を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  ...
+
+status:
+  conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T06:24:02Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T07:01:45Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T07:01:45Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T06:24:02Z"
+      status: "True"
+      type: PodScheduled
+```
+
+<br>
+
+### observedGeneration
+
+#### ▼ observedGenerationとは
+
+kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```metadata.generation```キーの値を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。```metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+> - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  ...
+
+status:
+  observedGeneration: 3
+  conditions:
+    ...
+```
 
 <br>
 

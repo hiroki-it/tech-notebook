@@ -416,6 +416,7 @@ $ brew install asdf
 ```bash
 $ asdf global <プラグイン名> 1.0.0
 
+# ファイルが作成されたことを確認する。
 $ cat ~/.tool-versions 
 
 foo 1.0.0
@@ -437,6 +438,7 @@ $ asdf list all <プラグイン名>
 ```bash
 $ asdf local <プラグイン名> 1.0.0
 
+# ファイルが作成されたことを確認する。
 $ cat .tool-versions 
 
 foo 1.0.0
@@ -449,6 +451,7 @@ bar 1.0.0
 # 現在インストールされているプラグインを取得する。
 $ asdf plugin list
 
+
 # 登録しているプラグインを削除する。
 $ asdf plugin remove <プラグイン名>
 ```
@@ -456,6 +459,7 @@ $ asdf plugin remove <プラグイン名>
 ```bash
 # プラグインのURLを調べる。
 $ asdf plugin list all | grep <プラグイン名>
+
  
 # プラグインをローカルマシンに登録する。（まだインストールされていない）
 $ asdf plugin add <プラグイン名> <URL>
@@ -464,10 +468,18 @@ $ asdf plugin add <プラグイン名> <URL>
 #### ▼ install
 
 ```bash
+# プラグインをローカルマシンに登録する。（まだインストールされていない）
+$ asdf plugin add <プラグイン名> <URL>
+
+
 # 登録済みのプラグインをインストールする。
 $ asdf install <プラグイン名> 1.0.0
 
 Downloading <プラグイン名> from <URL>
+
+
+# インストールされたことを確認できる。
+$ asdf plugin list
 ```
 
 もし、```.tool-version```ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。

@@ -146,6 +146,7 @@ $ yum install -y nodejs
   "homepage": "https://example.com"
 }
 ```
+
 #### ▼ main
 
 エントリポイントとなるファイルを設定する。
@@ -434,8 +435,8 @@ $ yarn upgrade <パッケージ名>@<バージョンタグ>
 
 > ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
-```
-yarn upgrade --latest
+```bash
+$ yarn upgrade --latest
 ```
 
 <br>
@@ -484,5 +485,5 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.ht
 </html>
 ```
 
-
+<br>
 

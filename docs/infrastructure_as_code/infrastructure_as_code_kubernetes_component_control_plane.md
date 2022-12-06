@@ -330,6 +330,27 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 <br>
 
+### 拡張apiverver（aggregated apiserver）
+
+#### ▼ 拡張apiververとは
+
+標準のkube-apiserverを拡張したapiserverのこと。
+
+> ℹ️ 参考：
+> 
+> - https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
+> - https://qiita.com/go_vargo/items/c7a526c0d4dbc9199dd4
+> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
+
+##### ▼ 拡張apiserverの例
+
+- metrics-server
+- kube-discovery
+
+> ℹ️ 参考：https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
+
+<br>
+
 ## 06. kube-controller-manager
 
 ### kube-controller-managerとは
