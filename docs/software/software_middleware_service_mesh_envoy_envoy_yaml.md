@@ -581,7 +581,9 @@ static_resources:
 
 #### ▼ ads_configとは
 
-ADS-APIに関して設定する。
+ADS-APIに関して設定する。EnvoyがADS-APIにリクエストを送信するように設定できる。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 
 #### ▼ grpc_services
 

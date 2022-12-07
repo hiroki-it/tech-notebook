@@ -161,7 +161,6 @@ repository/
 │   │   ├── tes.tfvars
 │   │   ├── main.tf
 │   │   ├── providers.tf # /aws/terraform.tfstate
-│   │   ├── tfnotify.yml
 │   │   └── variables.tf
 │   │
 │   ├── stg/ # ステージング環境

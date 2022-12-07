@@ -42,7 +42,7 @@ description: コマンド＠Terraformの知見を記録しています。
 $ terraform init -reconfigure -backend-config=backend.tfvars
 
 # 現状のtfstateファイルと実インフラの間に、差分がないことを確認する。
-$ terraform plan -var-file=./dev-bcp/terraform.tfvars
+$ terraform plan -var-file=terraform.tfvars
 
 No changes. Your infrastructure matches the configuration.
 

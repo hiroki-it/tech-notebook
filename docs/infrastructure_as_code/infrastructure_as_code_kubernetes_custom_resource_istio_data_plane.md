@@ -132,7 +132,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。Envoyとの間で双方向ストリーミングRPCを確立し、XDS-APIから取得したPodの宛先情報をEnvoyに登録する。
 
 > ℹ️ 参考：
-> 
+>
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
 > - https://www.jianshu.com/p/60e45bc9c4ac
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
@@ -142,48 +142,49 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 package adsc
 
 import (
-	
-	...
-	
-    discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-	
-	...
+
+...
+
+discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
+
+...
 )
 ...
 
 func (a *ADSC) Run() error {
 	var err error
 
+	// 双方向ストリーミングRPCの接続を確立する。
 	a.client = discovery.NewAggregatedDiscoveryServiceClient(a.conn)
 
 	// Envoyのgo-control-planeパッケージから提供されている。
 	// https://github.com/envoyproxy/go-control-plane/blob/main/envoy/service/discovery/v3/ads.pb.go#L213-L220
 	// また。.protoファイルで双方向ストリーミングRPCとして定義されている。
 	// https://github.com/envoyproxy/envoy/blob/main/api/envoy/service/discovery/v3/ads.proto#L32-L33
- 	a.stream, err = a.client.StreamAggregatedResources(context.Background())
-	
+	a.stream, err = a.client.StreamAggregatedResources(context.Background())
+
 	if err != nil {
 		return err
 	}
-	
+
 	a.sendNodeMeta = true
-	
+
 	a.InitialLoad = 0
-	
+
 	for _, r := range a.cfg.InitialDiscoveryRequests {
 		if r.TypeUrl == v3.ClusterType {
 			a.watchTime = time.Now()
 		}
-		// Envoyにリクエストを送信する。
+		// istio-proxyコンテナの起動時に、Istiodコントロールプレーンにリクエストを送信する。
 		_ = a.Send(r)
 	}
-	
-	
+
+
 	a.RecvWg.Add(1)
 
 	// ADS-APIからリクエストを受信し、Envoyの各処理コンポーネント別に整理する。
 	go a.handleRecv()
-	
+
 	return nil
 }
 ```
@@ -191,7 +192,7 @@ func (a *ADSC) Run() error {
 
 > ℹ️ 参考：
 >
-> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L423-L446
+> - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L420-L446
 > - https://github.com/istio/istio/blob/
 
 ```Run```メソッドによるXDS-APIとの通信は、```istioctl```コマンドでも使用されている。
@@ -204,58 +205,58 @@ func (a *ADSC) Run() error {
 
 ```go
 func (a *ADSC) handleRecv() {
-	for{
-	
-		...
-	
-		a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
-		switch msg.TypeUrl {
-		
-        // 受信した宛先Podのリスナー値を処理する。
-         case v3.ListenerType:
-			listeners := make([]*listener.Listener, 0, len(msg.Resources))
-			for _, rsc := range msg.Resources {
-				...
-			}
-			a.handleLDS(listeners)
-			
-		// 受信した宛先Podのクラスター値を処理する。	
-		case v3.ClusterType:
-			clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
-			for _, rsc := range msg.Resources {
-				...
-			}
-			a.handleCDS(clusters)
-			
-		// 受信した宛先Podのエンドポイント値を処理する。	
-		case v3.EndpointType:
-			eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
-			for _, rsc := range msg.Resources {
-				...
-			}
-			a.handleEDS(eds)
-			
-		// 受信した宛先Podのルート値を処理する。	
-		case v3.RouteType:
-			routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
-			for _, rsc := range msg.Resources {
-				...
-			}
-			a.handleRDS(routes)
-		default:
-			if isMCP {
-				a.handleMCP(gvk, msg.Resources)
-			}
-		}
-		
-		...
+for{
 
-		select {
-		// XDSUpdatesチャンネルに値を送信する。
-	    // 最終的に、Envoyに設定する。
-		case a.XDSUpdates <- msg:
-        default:
-   }
+...
+
+a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
+switch msg.TypeUrl {
+
+// 受信した宛先Podのリスナー値を処理する。
+case v3.ListenerType:
+listeners := make([]*listener.Listener, 0, len(msg.Resources))
+for _, rsc := range msg.Resources {
+...
+}
+a.handleLDS(listeners)
+
+// 受信した宛先Podのクラスター値を処理する。	
+case v3.ClusterType:
+clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
+for _, rsc := range msg.Resources {
+...
+}
+a.handleCDS(clusters)
+
+// 受信した宛先Podのエンドポイント値を処理する。	
+case v3.EndpointType:
+eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
+for _, rsc := range msg.Resources {
+...
+}
+a.handleEDS(eds)
+
+// 受信した宛先Podのルート値を処理する。	
+case v3.RouteType:
+routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
+for _, rsc := range msg.Resources {
+...
+}
+a.handleRDS(routes)
+default:
+if isMCP {
+a.handleMCP(gvk, msg.Resources)
+}
+}
+
+...
+
+select {
+// XDSUpdatesチャンネルに値を送信する。
+// 最終的に、Envoyに設定する。
+case a.XDSUpdates <- msg:
+default:
+}
 }
 ```
 
@@ -264,7 +265,7 @@ func (a *ADSC) handleRecv() {
 ```istio-proxy```コンテナにて、リバースプロキシとして動作する。```pilot-agent```から宛先情報を受信する。
 
 > ℹ️ 参考：
-> 
+>
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.programmersought.com/article/5797698845/
 
