@@ -864,6 +864,10 @@ ArgoCDはHelmの```v2```と```v3```の両方を保持している。リリース
 
 ArgoCDを介してHelmを実行する場合、内部的には```helm template```コマンドとetcd上のマニフェストを```kubectl diff```コマンドで比較し、生じた差分を```kubectl apply```コマンドを使用してデプロイしている。そのため、Helmを手動でマニフェストをリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。一方で、リリース履歴が存在しない。Helmのリリース履歴の代わりとして、```argocd app history```コマンドで確認できる。
 
+```bash
+$ helm template . | kubectl diff
+```
+
 > ℹ️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data

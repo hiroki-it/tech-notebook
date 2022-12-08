@@ -382,7 +382,7 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 
 #### ▼ エスケープ
 
-Helmのテンプレート内に、アクションや変数以外の理由で```{}```を出力する場合（例：Alertmanagerのアラートの変数出力の定義）、これらとして認識されないようにエスケープする必要がある。エスケープのために```printf```アクションを使用することもできる。一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法（例：```{{`<記号を含む文字列全体>`}}```、```{{"<記号>"}}```）を使用できる。エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法（```{{"<記号>"}}```、```printf```アクション）が必要になる。
+Helmのテンプレート内に、アクションや変数以外の理由で```{}```を出力する場合（例：Alertmanagerのアラートの変数出力の定義）、これらとして認識されないようにエスケープする必要がある。また、エスケープする場合は必ず改行（```|```、```|-```、```|+```）で出力する必要がある。エスケープのために```printf```アクションを使用することもできる。一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法（例：```{{`<記号を含む文字列全体>`}}```、```{{"<記号>"}}```）を使用できる。エスケープしたい文字列にバッククオートが含まれる場合、『```{{`<記号を含む文字列>`}}```』を使用できず、他のエスケープ方法（```{{"<記号>"}}```、```printf```アクション）が必要になる。
 
 > ℹ️ 参考：https://github.com/helm/helm/issues/2798#issuecomment-890478869
 
@@ -401,15 +401,16 @@ receivers:
         send_resolved: true
         api_url: https://hooks.slack.com/services/*****
         # 波括弧（{}）をエスケープするために、『{{``}}』とprintfを使用している。
+        # エスケープする場合は、必ず改行で展開する必要がある。
         text: |
-      {{`{{ range .Alerts }}`}}
-      {{`*Summary:* {{ .Annotations.summary }}`}}
-      {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
-      {{`*Description:* {{ .Annotations.description }}`}}
-        *Details:*
-      {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
-      {{`{{ end }}`}}
-      {{`{{ end }}`}}
+          {{`{{ range .Alerts }}`}}
+          {{`*Summary:* {{ .Annotations.summary }}`}}
+          {{ printf "*Severity:* `{{ .Labels.severity }}`" }}
+          {{`*Description:* {{ .Annotations.description }}`}}
+          *Details:*
+          {{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}
+          {{`{{ end }}`}}
+          {{`{{ end }}`}}
           
 ...
 ```

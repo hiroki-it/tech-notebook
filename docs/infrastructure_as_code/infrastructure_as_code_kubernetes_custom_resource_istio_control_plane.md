@@ -279,7 +279,7 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
 
-Istiodコントロールプレーンは、サービスレジストリ（例：kube-apiserverを介したetcd、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
+Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
 
 > ℹ️ 参考：
 >
@@ -287,6 +287,7 @@ Istiodコントロールプレーンは、サービスレジストリ（例：ku
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
 > - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
 > - https://www.kubernetes.org.cn/4208.html
+> - https://etcd.io/docs/v3.3/learning/why/#comparison-chart
 
 #### ▼ ```15012```番
 
