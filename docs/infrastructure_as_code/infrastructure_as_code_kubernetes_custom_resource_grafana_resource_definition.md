@@ -47,9 +47,7 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 <br>
 
-### その他
-
-#### ▼ ドキュメントから
+### ドキュメントから
 
 Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これを作成する。
 
@@ -154,5 +152,15 @@ data:
 ちなみに、kube-prometheus-stackチャート内にダッシュボードのConfigMapはすでに用意されており、これをインストールすると、いくつかのダッシュボードが作成される。
 
 > ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+
+<br>
+
+#### ▼ 接続
+
+Grafanaのダッシュボードに接続できる。ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
+
+```bash
+$ kubectl port-forward svc/grafana -n prometheus 8080:80
+```
 
 <br>

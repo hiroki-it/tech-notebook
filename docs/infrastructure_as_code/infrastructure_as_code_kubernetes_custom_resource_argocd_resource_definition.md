@@ -59,24 +59,6 @@ $ kubectl patch service argocd-server \
     -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
-（５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
-
-```bash
-$ kubectl get secret argocd-initial-admin-secret \
-    -n argocd \
-    -o jsonpath="{.data.password}" | base64 -d; echo
-```
-
-（６）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
-
-
-```bash
-# Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-# ホストポートを介してPodのポートにアクセスする。
-$ curl http://127.0.0.1:8080
-```
 
 #### ▼ ```argocd```コマンドを使用して
 
@@ -173,6 +155,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
 ```
+
 
 <br>
 

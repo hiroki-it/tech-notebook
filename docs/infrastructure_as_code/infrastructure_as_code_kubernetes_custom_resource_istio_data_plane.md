@@ -2,7 +2,6 @@
 title: 【IT技術の知見】データプレーン＠Istio
 description: データプレーン＠Istioの知見を記録しています。
 ---
-
 # データプレーン＠Istio
 
 ## はじめに
@@ -77,12 +76,10 @@ Pod外からアプリケーションコンテナへのインバウンド通信�
 
 アプリケーションコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。サービスディスカバリーによってPodの宛先情報が、```istio-proxy```コンテナ内のEnvoyに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
-
 > ℹ️ 参考：
 >
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
-
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_outbound_other.png)
 
@@ -129,7 +126,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 #### ▼ ```pilot-agent```（旧```istio-agent```）
 
-元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。Envoyとの間で双方向ストリーミングRPCを確立し、XDS-APIから取得したPodの宛先情報をEnvoyに登録する。
+元々は、```istio-agent```といわれていた。実体は、GitHubの```pilot-agent```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストやADS-APIからのリクエストを仲介する。
 
 > ℹ️ 参考：
 >
@@ -189,7 +186,6 @@ func (a *ADSC) Run() error {
 }
 ```
 
-
 > ℹ️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L420-L446
@@ -205,69 +201,73 @@ func (a *ADSC) Run() error {
 
 ```go
 func (a *ADSC) handleRecv() {
-for{
+	
+    for{
+		
+		...
 
-...
+        a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
+        switch msg.TypeUrl {
 
-a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
-switch msg.TypeUrl {
+        // 受信した宛先Podのリスナー値を処理する。
+        case v3.ListenerType:
+	    	listeners := make([]*listener.Listener, 0, len(msg.Resources))
+	    	for _, rsc := range msg.Resources {
+                ...
+            }
+            a.handleLDS(listeners)
 
-// 受信した宛先Podのリスナー値を処理する。
-case v3.ListenerType:
-listeners := make([]*listener.Listener, 0, len(msg.Resources))
-for _, rsc := range msg.Resources {
-...
-}
-a.handleLDS(listeners)
+        // 受信した宛先Podのクラスター値を処理する。
+        case v3.ClusterType:
+            clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
+            for _, rsc := range msg.Resources {
+                ...
+            }
+            a.handleCDS(clusters)
 
-// 受信した宛先Podのクラスター値を処理する。	
-case v3.ClusterType:
-clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
-for _, rsc := range msg.Resources {
-...
-}
-a.handleCDS(clusters)
+        // 受信した宛先Podのエンドポイント値を処理する。
+        case v3.EndpointType:
+            eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
+            for _, rsc := range msg.Resources {
+                ...
+            }
+            a.handleEDS(eds)
 
-// 受信した宛先Podのエンドポイント値を処理する。	
-case v3.EndpointType:
-eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
-for _, rsc := range msg.Resources {
-...
-}
-a.handleEDS(eds)
+        // 受信した宛先Podのルート値を処理する。
+        case v3.RouteType:
+            routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
+            for _, rsc := range msg.Resources {
+                ...
+            }
+            a.handleRDS(routes)
+		
+        default:
+            if isMCP {
+	    		a.handleMCP(gvk, msg.Resources)
+            }
+	    }
 
-// 受信した宛先Podのルート値を処理する。	
-case v3.RouteType:
-routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
-for _, rsc := range msg.Resources {
-...
-}
-a.handleRDS(routes)
-default:
-if isMCP {
-a.handleMCP(gvk, msg.Resources)
-}
-}
+        ...
 
-...
-
-select {
-// XDSUpdatesチャンネルに値を送信する。
-// 最終的に、Envoyに設定する。
-case a.XDSUpdates <- msg:
-default:
-}
+        select {
+        // XDSUpdatesチャンネルに値を送信する。
+        // 最終的に、Envoyに設定する。
+        case a.XDSUpdates <- msg:
+        default:
+        }
+    }
 }
 ```
 
 #### ▼ Envoy
 
-```istio-proxy```コンテナにて、リバースプロキシとして動作する。```pilot-agent```から宛先情報を受信する。
+```istio-proxy```コンテナにて、リバースプロキシとして動作する。Envoyは、```pilot-agent```を介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールを```pilot-agent```を介して受信する。
 
 > ℹ️ 参考：
 >
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.programmersought.com/article/5797698845/
+> - https://blog.51cto.com/wangguishe/5800533
 
 <br>
 
@@ -315,7 +315,6 @@ istio-proxy@<Pod名>: $ curl http://localhost:15000/config_dump
 #### ▼ ```15001```番
 
 ```istio-proxy```コンテナの```15001```番ポートでは、アプリケーションコンテナからのアウトバウンド通信を待ち受ける。アプリケーションコンテナからのアウトバウンド通信は、一度、```istio-proxy```コンテナの```15001```番ポートリダイレクトされる。
-
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 

@@ -470,7 +470,7 @@ data:
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 ```yaml
-# values.```.yaml```ファイル
+# valuesファイル
 ipAddresses:
   - 192.168.0.1/32
   - 192.168.0.2/32
@@ -483,9 +483,10 @@ kind: ConfigMap
 metadata:
   name: blocked-ip-addresses-config-map
 data:
+  # 『.』を指定し、反復的に出力する。
   ip-addresses: |-
     {{- range .Values.ipAddresses }}
-      - {{ . }} # 『.』を指定し、反復的に出力する。
+      - {{ . }}
     {{- end }} 
 ```
 

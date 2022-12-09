@@ -52,6 +52,23 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 <br>
 
+### 接続
+
+#### ▼ Prometheus
+
+```bash
+$ kubectl port-forward svc/prometheus -n prometheus 9090:9090
+```
+
+#### ▼ Alertmanager
+
+```bash
+$ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
+```
+
+
+<br>
+
 ## 02. Alertmanager
 
 ### Alertmanagerとは

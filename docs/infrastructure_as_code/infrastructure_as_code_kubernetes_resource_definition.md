@@ -83,7 +83,7 @@ metadata:
 
 #### ▼ generation
 
-Kubernetesリソースが最初に作成されてから何回変更されたかの回数（世代数）を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。
+Kubernetesリソースが最初に作成されてから何回変更されたかの回数（世代数）を設定する。マニフェストのどこかの設定値を変更すると、世代数が増える。Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
 > ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 

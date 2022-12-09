@@ -252,6 +252,10 @@ string型のカラムに関して、WHERE句の比較における値の特定、
 
 ### 改行
 
+MySQLでは、```\r\n```を使用して、レコード内の値を改行する。
+
+> ℹ️ 参考：https://www.sukerou.com/2020/09/mysql.html
+
 ```mysql
 INSERT INTO foo_table (id,description) VALUES (1,'前の行\r\n後の行');
 ```
