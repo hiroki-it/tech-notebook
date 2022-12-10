@@ -171,6 +171,7 @@ nav:
               - ■ RDB:
                   - ■ RDBMS:
                       - RDBMS: software/software_middleware_database_rdb_rdbms.md
+                      - 設計ポリシー: software/software_middleware_database_rdb_rdbms_policy.md
                       - ACID: software/software_middleware_database_rdb_rdbms_acid.md
                   - ■ My︎SQL:
                       - MySQL: software/software_middleware_database_rdb_mysql.md
