@@ -2733,11 +2733,13 @@ data:
 Volumeの一種であるEmptyDirボリュームを作成する。EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。
 
 > ℹ️ 参考：
->
+
 > - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 **＊実装例＊**
+
+オンディスクストレージを設定する。
 
 ```yaml
 apiVersion: v1
@@ -2754,6 +2756,34 @@ spec:
   volumes:
     - name: foo-gin-volume
       emptyDir: {}
+```
+
+**＊実装例＊**
+
+インメモリストレージを設定する。注意点として、Podが使用できる上限メモリサイズを設定しない場合、PodはスケジューリングされたワーカーNodeのメモリ領域を最大限に使ってしまう。
+
+> ℹ️ 参考：
+> 
+> - https://www.linkedin.com/pulse/planning-use-memory-backed-volumes-kubernetes-read-once-banerjee/?trk=articles_directory
+> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        - name: foo-gin-volume
+          mountPath: /go/src
+  volumes:
+    - name: foo-gin-volume
+      emptyDir:
+        medium: Memory
+        sizeLimit: 1Gi
 ```
 
 #### ▼ hostPath

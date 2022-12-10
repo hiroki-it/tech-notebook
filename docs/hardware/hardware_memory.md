@@ -20,9 +20,10 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ DRAMとは
 
-メインメモリとして使用される。よく見るやつ。
+メインメモリとして使用される。データを保管できる揮発的な記憶装置のこと。
 
 ![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic_RAM.jpg)
+
 
 <br>
 

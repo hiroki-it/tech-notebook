@@ -238,91 +238,9 @@ webhooks:
 
 ## 02-02. ```discovery```コンテナ
 
-### 待ち受けるポート番号
+### XDS-API
 
-#### ▼ ```8080```番
-
-```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
-
-> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
-
-```bash
-# ポートフォワーディングを実行する。
-$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
-
-$ go tool pprof -http=:8080 localhost:15014/debug/pprof/heap
-
-Fetching profile over HTTP from http://localhost:15014/debug/pprof/heap
-Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
-Serving web UI on http://localhost:8080
-
-# どのパッケージでどのくらいリソースを消費しているか
-$ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
-```
-
-#### ▼ ```9876```番
-
-```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
-
-> ℹ️ 参考：
->
-> - https://istio.io/latest/docs/ops/diagnostic-tools/controlz/
-> - https://jimmysong.io/en/blog/istio-components-and-ports/
-
-#### ▼ ```15010```番
-
-![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
-
-```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```がEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
-
-> ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
-
-![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
-
-Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
-
-> ℹ️ 参考：
->
-> - https://juejin.cn/post/7028572651421433892
-> - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
-> - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
-> - https://www.kubernetes.org.cn/4208.html
-> - https://etcd.io/docs/v3.3/learning/why/#comparison-chart
-
-#### ▼ ```15012```番
-
-![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
-
-```discovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、```pilot-agent```はEnvoyにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
-
-> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
-
-#### ▼ ```15014```番
-
-コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
-
-```bash
-# ポートフォワーディングを実行する。
-$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
-
-# デバッグダッシュボードにアクセスする。
-$ curl http://127.0.0.1:15014/debug
-```
-
-> ℹ️ 参考：
->
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
-> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3
-
-#### ▼ ```15017```番
-
-```discovery```コンテナの```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、```discovery```コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
-
-<br>
-
-## 03. IstiodコントロールプレーンのXDS-API
-
-### XDS-APIとは
+#### ▼ XDS-APIとは
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
@@ -333,9 +251,7 @@ pilot-agentを介して、Envoyとの間で定期的にリモートプロシー�
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
 > - https://www.cnblogs.com/luozhiyun/p/14088989.html
 
-<br>
-
-### 実装
+#### ▼ XDS-APIの実装
 
 > ℹ️ 参考：
 >
@@ -389,3 +305,107 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
+
+
+<br>
+
+### インメモリストレージ
+
+<br>
+
+## 02-03. 待ち受けるポート番号
+
+### ```8080```番
+
+```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+
+> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
+
+```bash
+# ポートフォワーディングを実行する。
+$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+
+$ go tool pprof -http=:8080 localhost:15014/debug/pprof/heap
+
+Fetching profile over HTTP from http://localhost:15014/debug/pprof/heap
+Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
+Serving web UI on http://localhost:8080
+
+# どのパッケージでどのくらいリソースを消費しているか
+$ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
+```
+
+
+<br>
+
+### ```9876```番
+
+```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+
+> ℹ️ 参考：
+>
+> - https://istio.io/latest/docs/ops/diagnostic-tools/controlz/
+> - https://jimmysong.io/en/blog/istio-components-and-ports/
+
+
+<br>
+
+### ```15010```番
+
+![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
+
+```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
+
+> ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
+
+![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
+
+Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
+
+> ℹ️ 参考：
+>
+> - https://juejin.cn/post/7028572651421433892
+> - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
+> - https://github.com/istio/istio/blob/693d97627e70f1e4eadeaede8bb5a18136c8feed/pilot/pkg/serviceregistry/provider/providers.go#L20-L27
+> - https://www.kubernetes.org.cn/4208.html
+> - https://etcd.io/docs/v3.3/learning/why/#comparison-chart
+
+
+<br>
+
+### ```15012```番
+
+![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
+
+```discovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+
+> ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
+
+
+<br>
+
+### ```15014```番
+
+コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+
+```bash
+# ポートフォワーディングを実行する。
+$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+
+# デバッグダッシュボードにアクセスする。
+$ curl http://127.0.0.1:15014/debug
+```
+
+> ℹ️ 参考：
+>
+> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#metrics
+> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#istio-%E8%B0%83%E8%AF%95%E6%8E%A5%E5%8F%A3
+
+
+<br>
+
+### ```15017```番
+
+```discovery```コンテナの```15017```番ポートでは、Istioの```istiod-<リビジョン番号>```というServiceからのポートフォワーディングを待ち受け、```discovery```コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
+
+<br>

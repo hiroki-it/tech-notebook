@@ -66,9 +66,11 @@
   > * ##### <u>RDB</u>
   > > * ##### <u>RDBMS</u>
   > > > * ##### 📖 [︎RDBMS](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms.html)
+  > > > * ##### 📖 [設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms_policy.html)
   > > > * ##### 📖 [︎ACID](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_rdbms_acid.html)
   > > * ##### <u>MySQL</u>
   > > > * ##### 📖 [My︎SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql.html)
+  > > > * ##### 📖 [SQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_sql.html)
   > > > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf.html)
   > * ##### <u>TSDB</u>
   > > * ##### <u>VictoriaMetrics</u>
