@@ -338,6 +338,42 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 
 <br>
 
+### delete
+
+#### ▼ deleteとは
+
+Kubernetesリソースを削除する。
+
+```bash
+$ kubectl delete <Kubernetesリソース> <Kubernetesリソース名>
+```
+
+**＊例＊**
+
+Podを削除する。Podの場合、オプションの無い```kubectl delete```コマンドが安全な削除となる。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
+
+```bash
+$ kubectl delete pod foo-pod
+```
+
+#### ▼ --force
+
+特に```Terminating```ステータスのまま削除されないPodに関して、これを強制的に削除する。合わせて```--grace-period```オプションを有効化することにより、即時に削除できる。
+
+```bash
+$ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0 
+```
+
+> ℹ️ 参考：
+> 
+> - https://www.opensourcetech.tokyo/entry/20211207/1638879696
+> - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion
+
+
+<br>
+
 ### describe
 
 #### ▼ describeとは

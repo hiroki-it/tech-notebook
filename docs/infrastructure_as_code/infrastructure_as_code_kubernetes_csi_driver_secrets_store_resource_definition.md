@@ -180,5 +180,4 @@ spec:
       - resourceName: "projects/<プロジェクトID>/secrets/<Secret名>"
 ```
 
-
 <br>

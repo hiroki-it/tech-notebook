@@ -2810,10 +2810,10 @@ spec:
         - name: foo-gin-volume
           mountPath: /go/src
   volumes:
-  - name: foo-gin-volume
-    hostPath:
-      path: /data/src/foo
-      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+    - name: foo-gin-volume
+      hostPath:
+        path: /data/src/foo
+        type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
 #### ▼ name

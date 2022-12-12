@@ -23,11 +23,15 @@ description: Sから始まるAWSリソース＠AWSの知見を記録していま
 
 ### セットアップ
 
+#### ▼ コンソール画面
+
 | 設定項目   | 説明             |
 |------------|------------------|
 | バケット       | バケットに関して設定する。 |
 | バッチオペレーション |                  |
 | アクセスアナライザー |                  |
+
+#### ▼ プロパティ
 
 特にプロパティには、以下の項目がある。
 
@@ -42,6 +46,8 @@ description: Sから始まるAWSリソース＠AWSの知見を記録していま
 | Transfer acceleration |                                                                       |                                                                                                                                                             |
 | イベント                  |                                                                       |                                                                                                                                                             |
 | リクエスタ支払い            |                                                                       |                                                                                                                                                             |
+
+#### ▼ アクセス制限
 
 特にアクセス制限には、以下の項目がある。
 
@@ -282,6 +288,8 @@ description: Sから始まるAWSリソース＠AWSの知見を記録していま
 <br>
 
 ### セットアップ
+
+#### ▼ コンソール画面
 
 ![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SESとは.png)
 
@@ -680,7 +688,6 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 #!/bin/bash
 
 set -xeuo pipefail
-set -u
 
 # 事前に環境変数に実行環境名を代入する。
 case "$ENV" in

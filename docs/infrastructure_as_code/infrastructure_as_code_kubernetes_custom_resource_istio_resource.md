@@ -210,8 +210,8 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 | 通信方向 | 能力                                                                                                                                 | 補足                                                                                                  |
 |----------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、をを決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                       |
-| アウトバウンド  | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、をを決める能力を担う。                                                             | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                       |
+| アウトバウンド  | ```istio-proxy```コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                             | ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 

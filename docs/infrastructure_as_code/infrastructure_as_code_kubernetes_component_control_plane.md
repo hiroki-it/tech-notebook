@@ -307,7 +307,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 （３）しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。kube-controllerは、etcdとワーカーNode上のKubernetesリソースの間に差分があることを検知する。さらに、kube-schedulerにPodのスケジューリングをコールする。
 
-（４）kube-schedulerは、フィルタリングとスコアリングの結果に基づいて、Podのスケジューリング対象となるワーカーNodeをを決める。
+（４）kube-schedulerは、フィルタリングとスコアリングの結果に基づいて、Podのスケジューリング対象となるワーカーNodeを決める。
 
 （５）kube-apiserverは、バインディング情報（スケジューリング対象ワーカーNodeとPod間の紐付き情報）をetcdに永続化する。
 

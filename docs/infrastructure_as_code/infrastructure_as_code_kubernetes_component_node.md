@@ -179,7 +179,7 @@ kube-proxyは、ワーカーNode上で稼働するパケットフィルタリン
 
 #### ▼ Podのロードバランサー
 
-ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodをを決める。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
+ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決める。プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
 
 > ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 

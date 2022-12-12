@@ -43,7 +43,7 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 | ステップ名                   | 説明                    |
 |--------------------------|-----------------------|
 | mutating-admissionステップ   | リクエストの内容を変更する。      |
-| validating-admissionステップ | リクエストを許可するか否かをを決める。 |
+| validating-admissionステップ | リクエストを許可するか否かを決める。 |
 
 <br>
 
