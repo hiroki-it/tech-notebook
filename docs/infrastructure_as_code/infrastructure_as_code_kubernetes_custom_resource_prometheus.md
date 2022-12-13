@@ -18,7 +18,7 @@ description: Prometheus＠Kubernetes
 
 ### アーキテクチャ
 
-Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサーバー、から構成されている。Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
+Prometheusは、prometheusサーバー/コンテナ（Retrieval、ローカルの時系列ストレージ、HTTPサーバー）から構成されている。Kubernetesリソースに関するメトリクスのデータポイントを収集し、分析する。また設定された条件下でアラートを作成し、Alertmanagerに送信する。
 
 > ℹ️ 参考：
 >
@@ -30,9 +30,9 @@ Prometheusは、Retrieval、ローカルの時系列ストレージ、HTTPサー
 
 <br>
 
-## 01-02. Prometheus server
+## 01-02. prometheusサーバー/コンテナ
 
-### Prometheus serverとは
+### prometheusサーバー/コンテナとは
 
 メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
 

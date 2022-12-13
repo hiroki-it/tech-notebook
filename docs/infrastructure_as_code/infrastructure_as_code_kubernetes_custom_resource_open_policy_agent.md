@@ -171,7 +171,7 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 #### ▼ gatekeeper-validating-webhook-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。そのため、OpenPolicyが起動に失敗しても、Podが中止されることはない。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
@@ -224,6 +224,7 @@ webhooks:
         # エンドポイント
         path: /v1/admitlabel
         port: 443
+    # webhookサーバーのコールに失敗した場合の処理を設定する。
     failurePolicy: Fail
     matchPolicy: Exact
     namespaceSelector: {}

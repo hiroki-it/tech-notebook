@@ -109,6 +109,96 @@ Prometheusのセットアップ方法を決める。
 
 <br>
 
+### spec.alerting
+
+アラートの送信先を設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  alerting:
+    alertmanagers:
+      - apiVersion: v2
+        name: foo-alertmanager
+        namespace: prometheus
+        pathPrefix: /
+        port: web
+```
+
+<br>
+
+### spec.image
+
+prometheusコンテナのベースイメージを設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  image: 'quay.io/prometheus/prometheus:v1.0.0'
+```
+
+<br>
+
+### spec.remoteWrite
+
+リモート書き込み先を設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  remoteWrite:
+    - name: victoria-metrics
+      tlsConfig:
+        insecureSkipVerify: true
+      url: 'https://*.*.*.*:8248/api/v1/write'
+```
+
+<br>
+
+### spec.storage
+
+ローカルストレージを設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 200Gi
+        storageClassName: gp2-encrypted
+```
+
+<br>
+
 ## 07. PrometheusRule
 
 ### PrometheusRuleとは
@@ -135,7 +225,7 @@ Prometheusのセットアップ方法を決める。
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: pod-alert-prometheus-rule
+  name: pod-prometheus-rule
   namespace: prometheus
   labels:
     app.kubernetes.io/app: foo
@@ -155,13 +245,13 @@ spec:
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
-| 項目              | 説明                                                                                     |
-|-------------------|----------------------------------------------------------------------------------------|
-| ```alert```       | アラートルール名を設定する                                                                            |
+| 項目              | 説明                                                                                               |
+|-------------------|--------------------------------------------------------------------------------------------------|
+| ```alert```       | アラートルール名を設定する                                                                                   |
 | ```annotations``` | アラートルールによるアラートの通知内容を設定する。```metadata.labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
-| ```expr``` | アラートルールで監視するメトリクスに関するPromQLを設定する。 |
-| ```for``` | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。|
-| ```labels``` | アラートの通知内容に付与するラベルを設定する |
+| ```expr```        | アラートルールで監視するメトリクスに関するPromQLを設定する。                                                             |
+| ```for```         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                                      |
+| ```labels```      | アラートの通知内容に付与するラベルを設定する                                                                     |
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -196,10 +286,10 @@ spec:
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
-| 項目              | 説明                                                                                     |
-|-------------------|----------------------------------------------------------------------------------------|
-| ```record```       | レコーディングルール名を設定する                                                                            |
-| ```expr``` | レコーディングルールで監視するメトリクスに関するPromQLを設定する。 |
+| 項目         | 説明                                      |
+|--------------|-----------------------------------------|
+| ```record``` | レコーディングルール名を設定する                       |
+| ```expr```   | レコーディングルールで監視するメトリクスに関するPromQLを設定する。 |
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

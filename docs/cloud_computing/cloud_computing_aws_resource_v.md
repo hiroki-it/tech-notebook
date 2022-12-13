@@ -322,6 +322,11 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 
 ## 01-09. VPCフローログ
 
+VPC内のENIを通過するパケットをキャプチャできる。
 
+> ℹ️ 参考：
+> 
+> - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/flow-logs.html
+> - https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414
 
 <br>

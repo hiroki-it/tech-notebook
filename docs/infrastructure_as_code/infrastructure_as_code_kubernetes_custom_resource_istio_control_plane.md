@@ -199,7 +199,7 @@ spec:
 
 ### istio-sidecar-injector-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookアドオンを設定する。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookアドオンを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。そのため、Istioが起動に失敗し続けると、サイドカーコンテナの注入を有効しているPodがいつまでも作成されないことになる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -226,6 +226,10 @@ webhooks:
         path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
+    # webhookサーバーのコールに失敗した場合の処理を設定する。
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    # 適用するNamespaceを設定する。
     namespaceSelector:
       matchExpressions:
         - key: istio.io/rev

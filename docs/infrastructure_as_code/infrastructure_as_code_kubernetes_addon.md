@@ -40,9 +40,9 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 > - https://www.digihunch.com/2022/01/kubernetes-admission-control/
 > - https://gashirar.hatenablog.com/entry/2020/10/31/141357
 
-| ステップ名                   | 説明                    |
-|--------------------------|-----------------------|
-| mutating-admissionステップ   | リクエストの内容を変更する。      |
+| ステップ名                   | 説明                   |
+|--------------------------|----------------------|
+| mutating-admissionステップ   | リクエストの内容を変更する。     |
 | validating-admissionステップ | リクエストを許可するか否かを決める。 |
 
 <br>
@@ -106,7 +106,7 @@ MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火�
 
 **＊例＊**
 
-IstioのMutatingWebhookConfigurationは以下の通りである。
+IstioのMutatingWebhookConfigurationは以下の通りである。Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -134,6 +134,10 @@ webhooks:
         path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
+    # webhookサーバーのコールに失敗した場合の処理を設定する。
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    # 適用するNamaespaceを設定する。
     namespaceSelector:
       matchExpressions:
         - key: istio.io/rev
