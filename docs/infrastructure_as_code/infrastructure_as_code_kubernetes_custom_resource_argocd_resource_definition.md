@@ -309,7 +309,7 @@ stringData:
 
 #### ▼ OIDCの場合
 
-OIDCに必要なIDやトークンを設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppを作成すると発行される）を設定する。ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 
@@ -998,7 +998,7 @@ metadata:
 spec:
   destination:
     # EKSのkube-apiserverのエンドポイントを指定する。
-    server: https://*****.*****.ap-northeast-1.eks.amazonaws.com
+    server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
 <br>
@@ -1071,7 +1071,50 @@ spec:
 
 <br>
 
-## 03. AppProject
+## 03. ApplicationSet
+
+### ApplicationSet
+
+ArgoCDのApplicationは、```1```個のKubernetes Clusterにしかマニフェストを送信できない。そのため、二重管理になってしまうが、同じ設定値のApplicationをKubernetes Clusterに作成しなければならない。一方で、ApplicationSetであれば、対応するKubernetes ClusterごとにApplicationを自動作成してくれる。
+
+> ℹ️ 参考：
+> 
+> - https://techstep.hatenablog.com/entry/2021/12/02/085034
+> - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: foo-eks-cluster
+            url: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+          - cluster: foo-kubeadm-cluster
+            url: https://kubernetes.default.svc
+  template:
+    metadata:
+      # Cluster名を展開する。
+      name: '{{cluster}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+        targetRevision: HEAD
+        path: .
+      destination:
+        # ClusterのURLを展開する。
+        server: '{{url}}'
+        namespace: foo
+```
+
+<br>
+
+## 04. AppProject
 
 ### AppProjectとは
 
@@ -1141,7 +1184,7 @@ spec:
 
 <br>
 
-## 04. 専用ConfigMap
+## 05. 専用ConfigMap
 
 ### data.resource.customizations
 
@@ -1172,7 +1215,7 @@ data:
 
 <br>
 
-## 05. 専用Job
+## 06. 専用Job
 
 ### metadata
 
@@ -1258,7 +1301,7 @@ metadata:
 
 <br>
 
-## 06. Rollout
+## 07. Rollout
 
 ### spec.analysis
 
@@ -1374,7 +1417,7 @@ spec:
 
 <br>
 
-## 07. Workflow
+## 08. Workflow
 
 ### spec.entrypoint
 
@@ -1441,7 +1484,7 @@ spec:
 
 <br>
 
-## 08. WorkflowTemplate
+## 09. WorkflowTemplate
 
 ### spec.templates
 
@@ -1489,6 +1532,81 @@ spec:
 #### ▼ steps
 
 > ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+<br>
+
+## 10. ArgoCD Notification
+
+### セットアップ
+
+> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
+
+```bash
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
+```
+
+<br>
+
+### ConfigMap
+
+#### ▼ data.trigger
+
+通知条件を設定する。
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notification-cm
+data:
+  trigger.on-sync-status-unknown: |
+    - when: app.status.sync.status == 'Unknown'
+      send: [app-sync-status, github-commit-status]
+  trigger.sync-operation-change: |
+    - when: app.status.operationState.phase in ['Error', 'Failed']
+      send: [app-sync-failed, github-commit-status]
+  trigger.on-deployed: |
+    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+    oncePer: app.status.sync.revision
+    send: [app-sync-succeeded]
+```
+
+#### ▼ data.service
+
+通知先のURLを設定する。
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.slack: |
+    token: *****
+```
+
+#### ▼ data.template
+
+通知内容を設定する。
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  context: |
+    env: prd
+
+  template.a-slack-template-with-context: |
+    message: "ArgoCD sync in {{ .context.env }}"
+```
 
 <br>
 

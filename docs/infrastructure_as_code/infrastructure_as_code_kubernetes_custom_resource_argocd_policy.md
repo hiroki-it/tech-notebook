@@ -25,9 +25,9 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 ### 各Applicationを同じリポジトリで管理（推奨）
 
-#### ▼ Kubernetesリソースのマニフェストを監視する場合
+#### ▼ Appパターン（通常パターン）
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、全てのApplicationには親Applicationが存在しない。監視対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04
 
@@ -52,9 +52,9 @@ k8s-repository/
 └── prd/
 ```
 
-#### ▼ Applicationのマニフェストを監視する場合（Apps-Of-Appsパターン）
+#### ▼ App-Of-Appsパターン
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、監視対象リポジトリにはApplicationが管理されている。これにより、親Applicationで子Applicationをグループ化したように構成できる（Apps-Of-Appsパターン）。また、親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
+監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、全てのApplicationを管理する親Applicationを作成する。これにより、親Applicationで子Applicationをグループ化したように構成できる（App-Of-Appsパターン）。親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
 
 > ℹ️ 参考：
 > 
@@ -65,8 +65,7 @@ k8s-repository/
 # 親Application
 parent-argocd-repository/
 ├── tes/ # 子Applicationを管理する。
-│   ├── app-application.yaml # child-argocd-manifestリポジトリの/dev/appディレクトリを監視
-│   └── obsv-application.yaml # child-argocd-manifestリポジトリの/dev/obsvディレクトリを監視
+│   └── root-application.yaml # child-argocd-manifestリポジトリの/tesディレクトリを監視
 │
 ├── stg/
 └── prd/
@@ -75,19 +74,30 @@ parent-argocd-repository/
 ```yaml
 # 子Application
 child-argocd-repository/
+├── tes/ # 孫Applicationを管理する。
+│   ├── app-application.yaml   # grandchild-argocd-manifestリポジトリの/tes/appディレクトリを監視
+│   └── infra-application.yaml # grandchild-argocd-manifestリポジトリの/tes/infraディレクトリを監視
+│
+├── stg/
+└── prd/
+```
+
+```yaml
+# 孫Application
+grandchild-argocd-repository/
 ├── tes/ # マニフェストやチャートを監視する。
 │   ├── app
-│   │   ├── account-application.yaml      # k8sリポジトリの/dev/app/accountディレクトリを監視
-│   │   ├── customer-application.yaml     # k8sリポジトリの/dev/app/customerディレクトリを監視
-│   │   ├── orchestrator-application.yaml # k8sリポジトリの/dev/app/orchestratorディレクトリを監視
-│   │   └── order-application.yaml        # k8sリポジトリの/dev/app/orderディレクトリを監視
+│   │   ├── account-application.yaml      # k8sリポジトリの/tes/app/accountディレクトリを監視
+│   │   ├── customer-application.yaml     # k8sリポジトリの/tes/app/customerディレクトリを監視
+│   │   ├── orchestrator-application.yaml # k8sリポジトリの/tes/app/orchestratorディレクトリを監視
+│   │   └── order-application.yaml        # k8sリポジトリの/tes/app/orderディレクトリを監視
 │   │
-│   └── obsv
-│       ├── fluentd-application.yaml           # k8sリポジトリの/dev/obsv/fluentdディレクトリを監視
-│       ├── grafana-application.yaml           # k8sリポジトリの/dev/obsv/grafanaディレクトリを監視
-│       ├── kiali-application.yaml             # k8sリポジトリの/dev/obsv/kialiディレクトリを監視
-│       ├── prometheus-application.yaml        # k8sリポジトリの/dev/obsv/prometheusディレクトリを監視
-│       └── victoria-metrics-application.yaml  # k8sリポジトリの/dev/obsv/vicotoria-metricsディレクトリを監視
+│   └── infra
+│       ├── fluentd-application.yaml           # k8sリポジトリの/tes/infra/fluentdディレクトリを監視
+│       ├── grafana-application.yaml           # k8sリポジトリの/tes/infra/grafanaディレクトリを監視
+│       ├── kiali-application.yaml             # k8sリポジトリの/tes/infra/kialiディレクトリを監視
+│       ├── prometheus-application.yaml        # k8sリポジトリの/tes/infra/prometheusディレクトリを監視
+│       └── victoria-metrics-application.yaml  # k8sリポジトリの/tes/infra/vicotoria-metricsディレクトリを監視
 │
 ├── stg/
 └── prd/
@@ -101,7 +111,7 @@ k8s-repository/
 │   │   │   ├── deployment.yaml  # あるいはhelmチャート
 │   │   ...
 │   │
-│   └── obsv
+│   └── infra
 │       ├── fluentd
 │       │   ├── deployment.yaml # あるいはhelmチャート
 │       ...

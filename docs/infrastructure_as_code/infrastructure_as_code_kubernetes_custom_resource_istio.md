@@ -25,7 +25,7 @@ description: Istio＠カスタムリソースの知見を記録しています�
 >
 > - https://istio.io/latest/docs/ops/deployment/architecture/
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
+> - https://www.amazon.co.jp/dp/1617295825
 
 <br>
 

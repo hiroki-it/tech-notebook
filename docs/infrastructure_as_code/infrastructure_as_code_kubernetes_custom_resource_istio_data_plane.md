@@ -118,7 +118,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 > ℹ️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
+> - https://www.amazon.co.jp/dp/1617295825
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
 

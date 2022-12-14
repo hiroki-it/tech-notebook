@@ -1701,7 +1701,7 @@ set -o xtrace
 
 /etc/eks/bootstrap.sh foo-eks-cluster \
   --b64-cluster-ca ***** \
-  --apiserver-endpoint https://*****.*****.ap-northeast-1.eks.amazonaws.com \
+  --apiserver-endpoint https://*****.gr7.ap-northeast-1.eks.amazonaws.com \
   --container-runtime containerd
 ```
 

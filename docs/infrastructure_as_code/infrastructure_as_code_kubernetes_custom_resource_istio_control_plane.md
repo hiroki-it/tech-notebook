@@ -22,7 +22,7 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 > ℹ️ 参考：
 >
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
+> - https://www.amazon.co.jp/dp/1617295825
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
 > - https://istio.io/latest/docs/ops/integrations/prometheus/#configuration
 

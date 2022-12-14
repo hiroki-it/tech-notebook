@@ -505,3 +505,5 @@ metadata:
 ### ThanosRuler
 
 リモートストレージとしてThanosを使用する場合、これをセットアップ方法を決める。
+
+<br>
