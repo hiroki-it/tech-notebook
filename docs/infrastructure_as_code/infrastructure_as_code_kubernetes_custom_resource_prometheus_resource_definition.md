@@ -203,9 +203,12 @@ spec:
 
 ### PrometheusRuleとは
 
-ルール（アラートルール、レコーディングルール）を設定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。
+ルール（アラートルール、レコーディングルール）を設定する。PrometheusRuleの定義に応じて、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下にルールの設定ファイルが配置される。独自アラートルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたアラートルール（例：Mixins）を使用した方が良い。
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> ℹ️ 参考：
+> 
+> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - https://monitoring.mixins.dev/
 
 <br>
 

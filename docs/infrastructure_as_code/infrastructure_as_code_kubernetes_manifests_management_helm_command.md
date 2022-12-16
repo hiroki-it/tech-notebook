@@ -540,6 +540,14 @@ foo:
   bar: QUX # 上書きされる
 ```
 
+#### ▼ --include-crds
+
+カスタムリソース定義を含めて、マニフェストを出力する。
+
+```bash
+$ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
+```
+
 <br>
 
 ### uninstall

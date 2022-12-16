@@ -302,7 +302,7 @@ data:
 
 #### ▼ 必要なマニフェストの作成
 
-```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。
+```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。ちなみに、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
 
 > ℹ️ 参考：https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
 

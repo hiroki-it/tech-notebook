@@ -63,7 +63,12 @@ $ kubectl apply -f grafana.yaml
 
 ### Dashboardとは
 
-Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。
+Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：Mixins、Grafanaダッシュボードコミュニティ）のJSONをコピーした方が良い。
+
+> ℹ️ 参考：
+> 
+> - https://monitoring.mixins.dev
+> - https://grafana.com/grafana/dashboards/
 
 <br>
 
@@ -103,7 +108,7 @@ metadata:
     grafana_dashboard: "<labelValueに設定した値>"
 data:
   data.json: |-
-    # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
+    # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
 #### ▼ kube-prometheus-stackチャートの場合
@@ -146,12 +151,15 @@ metadata:
     grafana_dashboard: "1"
 data:
   data.json: |-
-    # Grafanaのダッシュボードからエクスポートした.jsonファイルを貼り付ける。
+    # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-ちなみに、kube-prometheus-stackチャート内にダッシュボードのConfigMapはすでに用意されており、これをインストールすると、いくつかのダッシュボードが作成される。
+ちなみに、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にMixinsも同時にインストールするようになっている。
 
-> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> ℹ️ 参考：
+> 
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> - https://monitoring.mixins.dev
 
 <br>
 

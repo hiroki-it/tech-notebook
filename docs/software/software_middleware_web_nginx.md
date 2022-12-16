@@ -34,7 +34,7 @@ Nginxは、マスタープロセス、ワーカープロセス、プロキシキ
 
 #### ▼ 構成
 
-リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のアプリケーションにアクセスできるようになる。
+サーバーサイドにNginxを配置し、リクエストをアプリケーションにプロキシする。 リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のアプリケーションにアクセスできるようになる。
 
 #### ▼ HTTP/HTTPSプロトコルの場合
 
@@ -116,6 +116,55 @@ server {
         # 設定ファイルからデフォルト値を読み込む
         include        fastcgi_params;
     }
+}
+```
+
+<br>
+
+
+### フォワードプロキシのミドルウェアとして
+
+#### ▼ 構成
+
+クライアントサイドにNginxを配置し、リクエストを外部ネットワークにプロキシする。
+
+#### ▼ HTTP/HTTPSプロトコルの場合
+
+```nginx
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+     server {
+         listen                         3128;
+
+         resolver                       8.8.8.8;
+
+         proxy_connect;
+         proxy_connect_allow            443 563;
+         proxy_connect_connect_timeout  10s;
+         proxy_connect_read_timeout     10s;
+         proxy_connect_send_timeout     10s;
+
+         # 受信したリクエストを外部ネットワークにプロキシする。
+         location / {
+             proxy_pass $scheme://$http_host$request_uri;
+             proxy_set_header Host $host;
+             proxy_set_header X-Forwarded-Proto $scheme;
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+             proxy_set_header X-Forwarded-Port $remote_port;
+         }
+     }
 }
 ```
 
