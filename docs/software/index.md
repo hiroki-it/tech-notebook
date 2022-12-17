@@ -114,5 +114,7 @@
   > > * ##### 📖 [︎API仕様書](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful_api_specification.html)
   > * ##### <u>RPC-API</u>
   > > * ##### 📖 [︎gRPC](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_rpc_api_grpc.html)
+  > * ##### <u>GraphQL-API</u>
+  > > * ##### 📖 [GraphQL](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_graphql_api_graphql.html)
 
 <br>

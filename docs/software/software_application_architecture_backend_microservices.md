@@ -389,11 +389,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ GraphQL-API
 
-従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。
-
-> ℹ️ 参考：https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
-
-![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/graphql-api.png)
 
 <br>
 
