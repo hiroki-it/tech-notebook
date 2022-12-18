@@ -335,7 +335,7 @@ Fetching profile over HTTP from http://localhost:15014/debug/pprof/heap
 Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
 Serving web UI on http://localhost:8080
 
-# どのパッケージでどのくらいリソースを消費しているか
+# どのパッケージでどのくらいハードウェアリソースを消費しているか
 $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 ```
 

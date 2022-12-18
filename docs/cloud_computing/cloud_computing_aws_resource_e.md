@@ -687,6 +687,14 @@ data:
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
 > - https://dev.to/aws-builders/eks-auth-deep-dive-4fib
 
+#### ▼ IRSA：IAM Roles for Service Accounts
+
+KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+
+> ℹ️ 参考：
+> 
+> - https://www.bigtreetc.com/column/eks-irsa/
+> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
 
 <br>
 

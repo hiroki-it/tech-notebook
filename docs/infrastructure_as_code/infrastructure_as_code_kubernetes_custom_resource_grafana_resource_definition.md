@@ -63,7 +63,7 @@ $ kubectl apply -f grafana.yaml
 
 ### Dashboardとは
 
-Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：Mixins、Grafanaダッシュボードコミュニティ）のJSONをコピーした方が良い。
+Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）のJSONをコピーした方が良い。
 
 > ℹ️ 参考：
 > 
@@ -154,7 +154,7 @@ data:
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
 
-ちなみに、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にMixinsも同時にインストールするようになっている。
+ちなみに、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にkubernetes-mixinsも同時にインストールするようになっている。
 
 > ℹ️ 参考：
 > 

@@ -389,6 +389,8 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ▼ GraphQL-API
 
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_graphql_api_graphql.html
+
 
 <br>
 

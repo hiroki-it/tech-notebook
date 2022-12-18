@@ -25,7 +25,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
 
-ワーカーNodeの自動水平スケーリングを実行する。metrics-serverから取得したPodの最大リソース消費量（```spec.resources```キーの合計値）と、ワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればワーカーNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。コントロールプレーンに配置することが推奨されている。
+ワーカーNodeの自動水平スケーリングを実行する。metrics-serverから取得したPodのハードウェアの最大リソース消費量（```spec.resources```キーの合計値）と、ワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればワーカーNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。コントロールプレーンに配置することが推奨されている。
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 

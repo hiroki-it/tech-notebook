@@ -605,6 +605,12 @@ kube-apiserverが、認証されたKubernetesリソースからのリクエス�
 | Role        | Cluster内の特定のNamespaceに属するKubernetesリソースに関する認可スコープを設定する。 | RoleとRoleBindingは同じNamespaceに属する必要がある。                                                                                                                                                                                                                                                                                                                      |
 | ClusterRole | Cluster内の全てのKubernesリソースに対する認可スコープを設定する。                  | ClusterRoleとClusterRoleBindingは同じNamespaceに属する必要がある。GitOpsを採用する場合、GitOpsツールはKubernetesリソースとして存在している。この時、kube-apiserverがGitOpsからのリクエストを認可できるように、GitOpsツールのServiceAccountにClusterRoleを紐づける必要がある。このClusterRoleには、全Kubernetesリソースへの全操作を許可する認可スコープを付与する。<br>ℹ️ 参考：https://dev.classmethod.jp/articles/argocd-for-external-cluster/#toc-6 |
 
+#### ▼ RBAC：Role-based access control
+
+Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
+
+> ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
 <br>
 
 ### RoleBinding、ClusterRoleBinding
@@ -658,6 +664,8 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 Dockerのボリュームとは独立した機能であることに注意する。
 
+> ℹ️ 参考：
+> 
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 

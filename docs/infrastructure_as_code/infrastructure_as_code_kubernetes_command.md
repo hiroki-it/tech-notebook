@@ -856,7 +856,7 @@ baz-namespace          Active   145d           # 同上
 
 **＊例＊**
 
-特定のKubernetesリソースがどのように管理されているかを取得する。公式のHelmチャートには、Deployment、Daemonset、StatefulSet、にタグがついていることが多い。
+特定のKubernetesリソースがどのように管理されているかを取得する。公式のHelmチャートでは、Deployment、Daemonset、StatefulSet、がタグを持つことが多い。
 
 ```bash
 # argocd.argoproj.io/instance：ArgoCDのApplication名
