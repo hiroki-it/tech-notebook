@@ -127,7 +127,7 @@ $ minikube config set cpus 4
 メモリサイズの上限値を設定する。
 
 ```bash
-minikube config set memory 16384
+$ minikube config set memory 16384
 ```
 
 Kubernetesのバージョンのデフォルト値を設定する。

@@ -150,7 +150,7 @@ admin:
 
 ### static_resourcesとは
 
-静的な宛先情報を設定する。執筆時点（2022/11/12）では、```listeners```キーと```clusters```キーのみを設定できる。
+静的な値を設定する。執筆時点（2022/11/12）では、```listeners```キーと```clusters```キーのみを設定できる。
 
 > ℹ️ 参考：
 > 
@@ -534,18 +534,73 @@ static_resources:
 
 #### ▼ typed_config
 
-調査中...
+インバウンド通信/アウトバウンド通信をHTTPSで送受信する場合に、証明書を設定する。
 
 **＊実装例＊**
 
+サービスメッシュツールを使用せずに、```envoy```コンテナを直接的に稼働させるとする。また、静的な値を設定したとする。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource
+
 ```yaml
-static_resources:  
+static_resources:
   clusters:
-    - transport_socket:
-        typed_config:
-          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
-          sni: www.envoyproxy.io
+    ...
+    - connect_timeout: 0.25s
+      load_assignment:
+        cluster_name: local_service_tls
+        transport_socket:
+          name: envoy.transport_sockets.tls
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+            common_tls_context:
+              # static_resources.secretsキーで定義したクライアント証明書を設定する。
+              tls_certificate_sds_secret_configs:
+                - name: client-cert
+
+  listeners:
+    ...
+    - filter_chains:
+        transport_socket:
+          name: envoy.transport_sockets.tls
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+            common_tls_context:
+              # static_resources.secretsキーで定義したSSL証明書を設定する。
+              tls_certificate_sds_secret_configs:
+                - name: server-cert
+              validation_context_sds_secret_config:
+                name: validation_context
+
+  secrets:
+    ## SSL証明書
+    - name: server-cert
+      tls_certificate:
+        certificate_chain:
+          filename: certs/server-cert.pem
+        private_key:
+          filename: certs/server-key.pem
+    # クライアント証明書
+    - name: client-cert
+      tls_certificate:
+        certificate_chain:
+          filename: certs/client-cert.pem
+        private_key:
+          filename: certs/client-key.pem
+    - name: validation_context
+      validation_context:
+        trusted_ca:
+          filename: certs/ca-cert.pem
+        verify_certificate_hash:
+          E0:F3:C8:CE:5E:2E:A3:05:F0:70:1F:F5:12:E3:6E:2E:97:92:82:84:A2:28:BC:F7:73:32:D3:39:30:A1:B6:FD
 ```
+
+
+**＊実装例＊**
+
+サービスメッシュツールを使用せずに、```envoy```コンテナを直接的に稼働させるとする。また、コントロールプレーンのSDS-APIから取得した動的な値を設定したとする。
+
+> ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server
 
 <br>
 
@@ -593,7 +648,7 @@ ADS-APIとして使用するクラスター名を設定する。クラスター�
 
 **＊実装例＊**
 
-Istioを使用せずに、```envoy```コンテナを直接的に稼働させるとする。
+サービスメッシュツールを使用せずに、```envoy```コンテナを直接的に稼働させるとする。
 
 > ℹ️ 参考：
 > 

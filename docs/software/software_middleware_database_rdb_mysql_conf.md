@@ -130,8 +130,8 @@ drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # fooDBのデータベー�
 -rw-r----- 1 mysql mysql 12582912 Dec 17 12:54 ibtmp1
 drwxr-x--- 2 mysql mysql     4096 Dec 17 09:54 mysql
 drwxr-x--- 2 mysql mysql     4096 Dec 17 09:54 performance_schema
--rw------- 1 mysql mysql     1680 Dec 17 09:54 private_key.pem
--rw-r--r-- 1 mysql mysql      452 Dec 17 09:54 public_key.pem
+-rw------- 1 mysql mysql     1680 Dec 17 09:54 private-key.pem
+-rw-r--r-- 1 mysql mysql      452 Dec 17 09:54 public-key.pem
 -rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 server-cert.pem
 -rw------- 1 mysql mysql     1680 Dec 17 09:54 server-key.pem
 drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys

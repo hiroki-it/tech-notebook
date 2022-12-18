@@ -71,6 +71,9 @@
   > > * ##### <u>Grafana</u>
   > > > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
   > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
+  > > * ##### <u>Kyverno</u>
+  > > > * ##### 📖 [Kyverno](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.html)
+  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.html)
   > > * ##### <u>Istio</u>
   > > > * ##### <u>Istio</u>
   > > > > * ##### 📖 [︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html)
