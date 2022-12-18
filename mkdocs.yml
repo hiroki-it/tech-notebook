@@ -187,7 +187,9 @@ nav:
                   - FluentBit: software/software_middleware_log_fluentbit.md
           - ■ セキュリティ系:
               - Linux標準: software/software_middleware_security_linux.md
-              - Falco: software/software_middleware_security_falco.md
+              - ■ Falco:
+                  - Falco: software/software_middleware_security_falco.md
+                  - 設定ファイル: software/software_middleware_security_falco_conf.md
           - ■ サービスメッシュ系:
               - サービスメッシュ: software/software_middleware_service_mesh.md
               - ■ Envoy:
