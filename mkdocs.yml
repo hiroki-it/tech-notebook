@@ -214,7 +214,7 @@ nav:
               - ■ RPC-API:
                   - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
               - ■ GraphQL-API:
-                    - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
+                  - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
 
   - 🔠 言語:
       - language/index.md
