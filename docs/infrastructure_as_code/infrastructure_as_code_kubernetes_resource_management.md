@@ -25,7 +25,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-autoscaler.png)
 
-ワーカーNodeの自動水平スケーリングを実行する。metrics-serverから取得したPodのハードウェアの最大リソース消費量（```spec.resources```キーの合計値）と、ワーカーNode全体のリソースの空き領域を比較し、ワーカーNodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればワーカーNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。コントロールプレーンに配置することが推奨されている。
+Nodeの自動水平スケーリングを実行する。metrics-serverから取得したPodのハードウェアの最大リソース消費量（```spec.resources```キーの合計値）と、Node全体のリソースの空き領域を比較し、Nodeをスケールアウト/スケールインさせる。現在の空き容量ではPodを新しく作成できないようであればNodeをスケールアウトし、反対に空き容量に余裕があればスケールインする。Kubernetes標準のリソースではなく、クラウドプロバイダーを使用する必要がある。コントロールプレーンに配置することが推奨されている。
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
 
@@ -33,13 +33,13 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 ### cluster-autoscalerの仕組み
 
-例えば、以下のような仕組みで、ワーカーNodeの自動水平スケーリングを実行する。
+例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
 
-（１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、ワーカーNodeが```1```台では足りない。
+（１）Podが、Nodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、Nodeが```1```台では足りない。
 
-（２）事前にスペックを指定したワーカーNodeをもう```1```台作成する。
+（２）事前にスペックを指定したNodeをもう```1```台作成する。
 
-（３）新しく作成したワーカーNodeでPodをスケジューリングする。
+（３）新しく作成したNodeでPodをスケジューリングする。
 
 （４）結果として、```2```台それぞれで```70```%を消費するPodがスケジューリングされている。
 
@@ -49,7 +49,7 @@ description: リソース管理＠Kubernetesの知見を記録しています。
 
 ### karpenterとは
 
-AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterでは、作成されるワーカーNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
+AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件（負荷が激しく変化するようなシステム）でも合っている。
 
 > ℹ️ 参考：
 > 
@@ -60,13 +60,13 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 ### karpenterの仕組み
 
-例えば、以下のような仕組みで、ワーカーNodeの自動水平スケーリングを実行する。
+例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
 
-（１）Podが、ワーカーNodeの```70```%にあたるリソースを要求する。 しかし、ワーカーNodeが```1```台では足りない。```70 + 70 = 140%```になるため、既存のワーカーNodeの少なくとも```1.4```倍のスペックが必要となる。
+（１）Podが、Nodeの```70```%にあたるリソースを要求する。 しかし、Nodeが```1```台では足りない。```70 + 70 = 140%```になるため、既存のNodeの少なくとも```1.4```倍のスペックが必要となる。
 
-（２）新しく決定したスペックで、ワーカーNodeを新しく作成する。
+（２）新しく決定したスペックで、Nodeを新しく作成する。
 
-（３）新しく作成したワーカーNodeにPodをスケジューリングする。また、既存のワーカーNodeが不要であれば削除する。
+（３）新しく作成したNodeにPodをスケジューリングする。また、既存のNodeが不要であれば削除する。
 
 （４）結果として、```1```台で```2```個のPodがスケジューリングされている。
 
@@ -77,7 +77,7 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 ### deschedulerとは
 
-deschedulerは、Podを再スケジューリングする。類似するkube-schedulerでは、既存のPodを削除して別のワーカーNodeに再スケジューリングすることはない。そのため、ワーカーNodeが障害が起こり、他のワーカーNodeにPodが退避した場合に、その後ワーカーNodeが復旧したとしても、Podが元のワーカーNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
+deschedulerは、Podを再スケジューリングする。類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。そのため、Nodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
 
 > ℹ️ 参考：
 >
@@ -97,7 +97,7 @@ deschedulerは、Podを再スケジューリングする。類似するkube-sche
 
 #### ▼ LowNodeUtilization
 
-ワーカーNodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないワーカーNodeにPodを再スケジューリングする。
+Nodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
 
@@ -122,7 +122,7 @@ strategies:
 
 #### ▼ RemoveDuplicates
 
-Deployment、StatefulSet、Job、の配下にあるPodが、同じワーカーNode上でスケーリングされている場合、これらを他のワーカーNodeに再スケジューリングする。
+Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 
@@ -156,7 +156,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
-```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なワーカーNodeに再スケジューリングする。
+```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
@@ -218,7 +218,7 @@ PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、P
 
 ### metrics-serverの仕組み
 
-metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのワーカーNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
+metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレージ、スクレイパー、から構成される。また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。KubernetesのNodeとPod（それ以外のKubernetesリソースは対象外）のメトリクスを収集しつつ、収集したメトリクスをmetrics-apiserverで公開する。クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）がmetrics-serverのAPIからメトリクスを参照する場合、まずはkube-apiserverにリクエストが送信され、metrics-serverへのプロキシを経て、メトリクスが返却される。似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。
 
 > ℹ️ 参考：
 >
@@ -245,7 +245,7 @@ ServiceとAPIServiceを介して、クライアント（```kubectl```コマン�
 クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
 
 ```bash
-# ワーカーNodeのメトリクスを取得
+# Nodeのメトリクスを取得
 $ kubectl top node
  
 # Podのメトリクスを取得

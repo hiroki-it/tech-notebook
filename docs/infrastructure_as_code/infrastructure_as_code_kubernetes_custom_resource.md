@@ -32,7 +32,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 | 問題                                                                                                                             | 解決策                                                                                                                                                  | 該当のカスタムリソース |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
-| ```spec.affinity```キーの変更を適用するために、Podを再スケジューリングした。```spec.affinity```キーの設定が機能せず、変更前と同じワーカーNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じワーカーNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系  |
+| ```spec.affinity```キーの変更を適用するために、Podを再スケジューリングした。```spec.affinity```キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐づけるために、同じNodeにPodが再スケジューリングされている可能性がある。Podを再スケジューリングした後に、すぐにPersistentVolumeも再作成する。 | Prometheus系  |
 
 <br>
 
@@ -319,7 +319,7 @@ spec:
 
 ### カスタムコントローラーとは
 
-カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、ワーカーNode上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成リクエストを送信する。加えて、カスタムリソースのマニフェストの設定値をコマンド（例：```kubectl apply```コマンド、```kubectl edit```コマンド、など）で変更した場合に、etcd上でカスタムリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。これらのコマンドは、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースの設定値を変更しないことに注意する。また、カスタムコントローラーはカスタムリソースのKubernetesリソース以外を作成することもできる。etcd上のカスタムリソースに応じて、外部サービスのAPI（例：証明書のFastly）をコールし、カスタムリソースと対になるもの（例：Fastlyの証明書）を作成することも可能である。kube-controller-managerは、ワーカーNodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。ただし、カスタムコントローラー自体は```kubectl```クライアントが作成する必要がある。
+カスタムリソースのためのkube-controllerに相当する。ただし、kube-controllerとは異なり、Node上で稼働する。カスタムコントローラーは、kube-apiserverを介して、etcdにwatchイベントを送信している。カスタムリソースのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、kubeletにカスタムリソースの作成リクエストを送信する。加えて、カスタムリソースのマニフェストの設定値をコマンド（例：```kubectl apply```コマンド、```kubectl edit```コマンド、など）で変更した場合に、etcd上でカスタムリソースのマニフェストを検知し、実際にカスタムリソースの設定値を都度変更してくれる。これらのコマンドは、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースの設定値を変更しないことに注意する。また、カスタムコントローラーはカスタムリソースのKubernetesリソース以外を作成することもできる。etcd上のカスタムリソースに応じて、外部サービスのAPI（例：証明書のFastly）をコールし、カスタムリソースと対になるもの（例：Fastlyの証明書）を作成することも可能である。kube-controller-managerは、Nodeにあるoperator-controllerを反復的に実行する。これにより、カスタムリソースはカスタムリソース定義の宣言通りに定期的に修復される（reconciliationループ）。ただし、カスタムコントローラー自体は```kubectl```クライアントが作成する必要がある。
 
 > ℹ️ 参考：https://youtu.be/pw8AVOJQ5uw?t=1372
 
@@ -369,7 +369,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、ワーカーNodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
+カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
 > ℹ️ 参考：
 >

@@ -36,7 +36,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 9  | FormRequest                                           | バリデーションを実行する。                                                                                     |
 | 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                   |
 | 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                             |
-| 12 | Response                                              | Responseを実行する。配列型データをJSONデータに変換する。                                                           |
+| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                           |
 | 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                            |
 | 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
 | 15 | レスポンスを返信する。                                         |                                                                                                     |
@@ -1690,9 +1690,9 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 ### ```response```ヘルパー
 
-#### ▼ JSONデータを含むレスポンス
+#### ▼ JSON型データを含むレスポンス
 
-返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSON型データを設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
 
 > ℹ️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
@@ -3002,7 +3002,7 @@ return [
 
 **＊実装例＊**
 
-外部のAPIに対してリクエストを送信し、データを取得する。取得したJSONデータを、クライアントにレスポンスする。この時、リクエスト処理のために、Guzzleパッケージを使用している。
+外部のAPIに対してリクエストを送信し、データを取得する。取得したJSON型データを、クライアントにレスポンスする。この時、リクエスト処理のために、Guzzleパッケージを使用している。
 
 ```php
 <?php
@@ -3787,11 +3787,11 @@ Notification::route('mail', $user->email_address)
 
 #### ▼ データ型変換の必要性
 
-EloquentモデルをJSONデータとしてレスポンスする時に、一旦、配列データに変換する必要がある。
+EloquentモデルをJSON型データとしてレスポンスする時に、一旦、配列データに変換する必要がある。
 
 #### ▼ 単一のEloquentモデルの配列化
 
-単一のEloquentモデルを配列に変換する。Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。LaravelはレスポンスのJSONデータを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSONデータに変換する。
+単一のEloquentモデルを配列に変換する。Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。LaravelはレスポンスのJSON型データを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSON型データに変換する。
 
 **＊実装例＊**
 

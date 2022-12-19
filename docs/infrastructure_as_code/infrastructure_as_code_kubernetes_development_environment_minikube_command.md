@@ -163,7 +163,7 @@ $ minikube dashboard
 
 #### ▼ docker-envとは
 
-ホストで```docker```コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のワーカーNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
+ホストで```docker```コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。バージョンタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
@@ -215,7 +215,7 @@ $ eval $(minikube docker-env -u)
 
 #### ▼ ipとは
 
-ゲスト仮想環境内のワーカーNodeのIPアドレスを取得する。
+ゲスト仮想環境内のNodeのIPアドレスを取得する。
 
 ```bash
 $ minikube ip
@@ -347,7 +347,7 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
-ServiceのIPアドレスがワーカーNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
+ServiceのIPアドレスがNodeのIPアドレスすることは、```minikube ip```コマンドから確認できる。
 
 ```bash
 $ minikube ip
@@ -465,12 +465,12 @@ yes
 zcat
 ```
 
-ワーカーNodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
+Nodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
 
 ```bash
 $ minikube ssh  
 
-# ワーカーNodeの中
+# Nodeの中
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 
 # コンテナの中
@@ -499,7 +499,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 #### ▼ startとは
 
-ゲスト仮想環境を作成し、仮想環境内にワーカーNodeを作成する。
+ゲスト仮想環境を作成し、仮想環境内にNodeを作成する。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
 
@@ -537,7 +537,7 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 
 #### ▼ --cpus、--memory
 
-MinikubeのワーカーNodeのスペックを設定する。
+MinikubeのNodeのスペックを設定する。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -623,7 +623,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するワーカーNode数を指定し、```start```コマンドを実行する。マルチワーカーNodeのClusterを作成できる。
+作成するNode数を指定し、```start```コマンドを実行する。マルチNodeのClusterを作成できる。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
@@ -632,7 +632,7 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 ```bash
 $ minikube start --nodes 3
 
-# コントロールプレーンNode、ワーカーNode、を確認する。
+# Nodeを確認する。
 $ kubectl get node
 NAME           STATUS   ROLES                  AGE   VERSION
 minikube       Ready    control-plane,master   76s   v1.22.0 # コントロールプレーンNode
@@ -640,7 +640,7 @@ minikube-m02   Ready    <none>                 42s   v1.22.0 # ワーカーNode
 minikube-m03   Ready    <none>                 19s   v1.22.0
 minikube-m04   Ready    <none>                 19s   v1.22.0
 
-# コントロールプレーンNode、ワーカーNode、を確認する。
+# Nodeを確認する。
 $ minikube status
 
 minikube # コントロールプレーンNode
@@ -673,7 +673,7 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。ワーカーNode外からPodに通信できるようになる。```minikube ssh```コマンドでワーカーNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 > ℹ️ 参考：
 >

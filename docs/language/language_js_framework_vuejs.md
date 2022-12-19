@@ -313,7 +313,7 @@ var vm = new Vue({
 class Foo {
 
     /*
-    ・コンポーネントからデータを受信。
+    ・コンポーネントからパケットを受信。
     ・プロパティの宣言と、同時に格納。
     */
     constructor(properties) {

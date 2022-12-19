@@ -368,7 +368,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。また、Podに仮想NICを紐付け、ワーカーNode内のネットワークのIPアドレスをPodの仮想NICに割り当てる。これにより、PodをワーカーNode内のClusterネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。cniアドオンは、kubeletによるPodの起動時に有効化される。
+cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。cniアドオンは、kubeletによるPodの起動時に有効化される。
 
 > ℹ️ 参考：
 >
@@ -377,18 +377,18 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 <br>
 
-### アドオンで選べるモード
+### オーバーレイモード
 
-#### ▼ オーバーレイモード
+#### ▼ オーバーレイモードとは
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 **＊例＊**
 
-- Flannel-vxlan
-- Calico-ipip
+- flannel-vxlan
+- calico-ipip
 - Weave
 
 > ℹ️ 参考：
@@ -397,9 +397,29 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
 
-#### ▼ ルーティングモード
+#### ▼ 同一Node上のPod間通信
 
-ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
+
+Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、を使用して、同じNode上のPod間でパケットを送受信する。
+
+> ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
+
+#### ▼ 同一Node上のPod間通信
+
+![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
+
+Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、Nodeのネットワークインターフェース（```eth```）を使用して、異なるNode上のPod間でパケットを送受信する。
+
+> ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
+
+<br>
+
+### ルーティングモード
+
+#### ▼ ルーティングモードとは
+
+ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 **＊例＊**
 
@@ -413,19 +433,27 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 
-#### ▼ アンダーレイモード
+<br>
 
-アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるワーカーNode上のPod同士が通信できるようにする。
+### アンダーレイモード
+
+#### ▼ アンダーレイモードとは
+
+アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 - Aliyun
 
 > ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 
-#### ▼ AWSの独自モード
+<br>
+
+### AWSの独自モード
+
+#### ▼ AWSの独自モードとは
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
 
-AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングするPodの数だけワーカーNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。ワーカーNodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるワーカーNode上のPod同士が通信できるようにする。ワーカーNodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、ワーカーNode上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、ワーカーNode当たり```1```個しかPodをスケジューリングできない）。
+AWSの独自モードは、Podの仮想ネットワークインターフェース（```veth```）、Nodeのネットワークインターフェース（```eth```）、から構成される。AWSでは、Node（EC2、Fargate）上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり```1```個しかPodをスケジューリングできない）。
 
 > ℹ️ 参考：
 >
@@ -439,7 +467,7 @@ AWSでは、ワーカーNode（EC2、Fargate）上でスケジューリングす
 
 ### CoreDNSアドオンとは
 
-coredns-service、coredns-pod、coredns-configmap、から構成される。ワーカーNode内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+coredns-service、coredns-pod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
@@ -452,7 +480,7 @@ coredns-service、coredns-pod、coredns-configmap、から構成される。ワ�
 
 #### ▼ coredns-serviceとは
 
-CoreDNSはワーカーNode内にPodとして稼働しており、これはcoredns-serviceによって管理されている。
+CoreDNSはNode内にPodとして稼働しており、これはcoredns-serviceによって管理されている。
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
@@ -572,7 +600,7 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ ```A/AAAA```レコードの場合
 
-対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。また、同じNamespace内から通信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
+対応する完全修飾ドメイン名は、『```<Service名>.<Namespace名>.svc.cluster.local```』である。通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。『```svc.cluster.local```』は省略でき、『```<Service名>.<Namespace名>```』のみを指定しても名前解決できる。また、同じNamespace内でパケットを送受信する場合は、さらに『```<Namespace名>```』も省略でき、『```<Service名>```』のみで名前解決できる。
 
 > ℹ️ 参考：
 > 
@@ -645,10 +673,10 @@ NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOM
 coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
 ```
 
-（３）ここで、ワーカーNode内に接続する。Serviceの完全修飾ドメイン名（ここでは```nginx-service.default.svc.cluster.local```）をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
+（３）ここで、Node内に接続する。Serviceの完全修飾ドメイン名（ここでは```nginx-service.default.svc.cluster.local```）をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
 
 ```bash
-# ワーカーNode内に接続する。
+# Node内に接続する。
 $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 
 10.101.67.107
@@ -915,7 +943,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 #### ▼ eks-code-dnsアドオンとは
 
-EKSの各ワーカーNode上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
@@ -925,7 +953,7 @@ EKSの各ワーカーNode上で、```kube-dns```という名前のDeploymentと�
 
 #### ▼ eks-kube-proxyアドオンとは
 
-EKSの各ワーカーNode上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、ワーカーNode外からPodにインバウンド通信をルーティングできるようにする。
+EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
@@ -937,7 +965,7 @@ EKSの各ワーカーNode上で、```kube-proxy```という名前のDaemonSetと
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
-EKSのワーカーNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
 
 > ℹ️ 参考：
 >

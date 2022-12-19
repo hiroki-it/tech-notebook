@@ -130,7 +130,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 ![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_istio-cni.png)
 
-各ワーカーNode上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナはistio-iptablesをPodに適用する権限を持っている。しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている（同様にして、ユーザーが```iptables```コマンドを実行する時も```sudo```権限が必要である）。```istio-init```コンテナの代替案として、istio-cniアドオンが提供されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる代わりとして、```istio-validation```コンテナが必要になる。
+各Node上で、```istio-cni-node```という名前のDaemonSetとして稼働する。```istio-init```コンテナはistio-iptablesをPodに適用する権限を持っている。しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている（同様にして、ユーザーが```iptables```コマンドを実行する時も```sudo```権限が必要である）。```istio-init```コンテナの代替案として、istio-cniアドオンが提供されている。もしistio-cniアドオンを使用する場合は、```istio-init```コンテナが不要になる代わりとして、```istio-validation```コンテナが必要になる。
 
 > ℹ️ 参考：
 >

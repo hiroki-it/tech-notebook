@@ -75,7 +75,7 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 #### ▼ SSHポートフォワーディング（SSHポート転送）
 
-ローカルマシンと踏み台サーバーのSSH接続と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的に通信する。
+ローカルマシンと踏み台サーバーのSSH接続と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 

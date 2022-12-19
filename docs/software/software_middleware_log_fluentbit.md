@@ -216,7 +216,7 @@ Inputs
 ```bash
 [INPUT]
     Name   dummy
-    # ダミーJSONデータ
+    # ダミーJSON型データ
     Dummy  {"message":"dummy"}
 ```
 

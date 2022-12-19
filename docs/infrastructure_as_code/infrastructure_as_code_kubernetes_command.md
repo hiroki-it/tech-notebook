@@ -388,7 +388,7 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 $ kubectl describe node
 ```
 
-```grep```コマンドを使用して、PodがスケジューリングされているワーカーNodeを取得する。
+```grep```コマンドを使用して、PodがスケジューリングされているNodeを取得する。
 
 ```bash
 $ kubectl describe pod <Pod名> | grep Node:
@@ -415,7 +415,7 @@ PolicyRule:
 
 **＊例＊**
 
-全てのワーカーNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
+全てのNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
 
 ```bash
 $ kubectl describe node -A | grep -e Name -e cpu
@@ -423,15 +423,15 @@ $ kubectl describe node -A | grep -e Name -e cpu
 Name:               foo-node
   cpu:                8
   cpu:                7510m
-  cpu                1050m (13%)  4850m (64%) # <--- ワーカーNode全体の使用率
+  cpu                1050m (13%)  4850m (64%) # <--- Node全体の使用率
 Name:               bar-node
   cpu:                4
   cpu:                3520m
-  cpu                2183m (62%)  4950m (140%) # <--- ワーカーNode全体の使用率
+  cpu                2183m (62%)  4950m (140%) # <--- Node全体の使用率
 Name:               baz-node
   cpu:                8
   cpu:                7510m
-  cpu                1937m (25%)  10245m (136%) # <--- ワーカーNode全体の使用率
+  cpu                1937m (25%)  10245m (136%) # <--- Node全体の使用率
 ```
 
 
@@ -441,7 +441,7 @@ Name:               baz-node
 
 #### ▼ drainとは
 
-ワーカーNodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。ワーカーNodeが他に存在すれば、そのワーカーNode上でPodが再作成される。
+Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
 > ℹ️ 参考：
 >
@@ -449,7 +449,7 @@ Name:               baz-node
 > - https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe
 
 ```bash
-$ kubectl drain <ワーカーNode名>
+$ kubectl drain <Node名>
 ```
 
 <br>
@@ -571,7 +571,7 @@ $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | 
 
 **＊例＊**
 
-全てのNodeワーカーNodeの情報を取得する。
+全てのNodeの情報を取得する。
 
 ```bash
 $ kubectl get node 
@@ -638,10 +638,10 @@ $ kubectl get pod --no-headers | wc -l
 $ kubectl get pod -A
 ```
 
-```grep```コマンドを使用して、特定のワーカーNodeのみを取得する。
+```grep```コマンドを使用して、特定のNodeのみを取得する。
 
 ```bash
-$ kubectl get pod -A -o wide | grep -e NAMESPACE -e <ワーカーNode名>
+$ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 ```
 
 #### ▼ -o yaml
@@ -722,7 +722,7 @@ $ kubectl get istiooperator \
 
 #### ▼ -o wide
 
-指定したリソースの詳細な情報を取得する。ワーカーNodeが複数がある場合、ワーカーNodeに渡ってKubernetesリソースの情報を確認できるところがよい。
+指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 **＊例＊**
 
@@ -759,7 +759,7 @@ foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d
 
 **＊例＊**
 
-ワーカーNodeの詳細な情報を取得する。
+Nodeの詳細な情報を取得する。
 
 ```bash
 $ kubectl get node -o wide
@@ -798,7 +798,7 @@ $ kubectl get pod -l '<キー> in (<値>,<値>)'
 
 **＊例＊**
 
-```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるワーカーNodeを取得する。
+```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
 
 ```bash
 $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
@@ -829,7 +829,7 @@ qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 
 **＊例＊**
 
-ワーカーNodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
+Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
 ```bash
 $ kubectl get node -L topology.kubernetes.io/zone
@@ -1138,7 +1138,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 #### ▼ Podのアウトバウンド通信のデバッグ
 
-```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルワーカーNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチワーカーNodeの場合は、（たぶん）名前が一番昇順のワーカーNode上でPodが作成されてしまい、ワーカーNodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+```kubectl exec```コマンドが運用的に禁止されているような状況がある。そのような状況下で、シングルNodeの場合は、```kubectl run```コマンドで、```--rm```オプションを有効化しつつ、Clusterネットワーク内に```curl```コマンドによる検証用のPodを一時的に新規作成する。マルチNodeの場合は、（たぶん）名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。そのため、代わりに```kubectl debug```コマンドを使用する。ただし、```kubectl debug```コマンドで作成されたPodは、使用後に手動で削除する必要がある。
 
 > ℹ️ 参考：
 >
@@ -1154,7 +1154,7 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 > - https://hub.docker.com/r/nicolaka/netshoot
 
 ```bash
-# シングルワーカーNodeの場合
+# シングルNodeの場合
 
 # curl送信用のコンテナを作成する。
 # rmオプションを指定し、使用後に自動的に削除されるようにする。
@@ -1177,14 +1177,14 @@ $ kubectl run \
 ```
 
 ```bash
-# マルチワーカーNodeの場合
+# マルチNodeの場合
 
-# Podが稼働するワーカーNodeを確認する。
+# Podが稼働するNodeを確認する。
 $ kubectl get pod <Pod名> -o wide
 
-# 指定したワーカーNode上で、curl送信用のコンテナを作成する。
+# 指定したNode上で、curl送信用のコンテナを作成する。
 # rmオプションはない。
-$ kubectl debug node/<ワーカーNode名> \                
+$ kubectl debug node/<Node名> \                
     -n default \
     -it \
     --image=praqma/network-multitool
@@ -1201,7 +1201,7 @@ $ kubectl delete -n default node-debugger-*****
 
 #### ▼ taintとは
 
-ワーカーNodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
+NodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
 
 | エフェクト            | 説明                                                                                                                                    |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -1212,7 +1212,7 @@ $ kubectl delete -n default node-debugger-*****
 
 **＊例＊**
 
-ワーカーNodeにTaint（```app=batch:NoSchedule```）を付与する。
+NodeにTaint（```app=batch:NoSchedule```）を付与する。
 
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule
@@ -1273,7 +1273,7 @@ spec:
 
 #### ▼ ```-```（ラベル値のハイフン）
 
-指定したワーカーNodeからTaintを削除する。
+指定したNodeからTaintを削除する。
 
 > ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
@@ -1287,7 +1287,7 @@ $ kubectl taint node foo-node app=batch:NoSchedule-
 
 ### top
 
-ワーカーNodeやPodのサチュレーションを取得する。
+NodeやPodのサチュレーションを取得する。
 
 ```bash
 $ kubectl top node

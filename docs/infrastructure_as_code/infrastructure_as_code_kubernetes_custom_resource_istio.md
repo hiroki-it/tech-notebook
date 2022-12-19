@@ -33,14 +33,14 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDaemonSet配下のPod）が```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）、またwaypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハードウェアリソース消費量の少ない```L4```と多い```L7```のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、```L4```のプロトコルのみを処理する場合に、ワーカーNodeのリソース消費量を節約できる。サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDaemonSet配下のPod）が```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）、またwaypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハードウェアリソース消費量の少ない```L4```と多い```L7```のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、```L4```のプロトコルのみを処理する場合に、Nodeのリソース消費量を節約できる。サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
 インバウンド時の通信の経路は以下の通りである。
 
 ```text
 外
 ↓
------ ワーカーNode
+----- Node
 ↓
 リダイレクト
 ↓
@@ -56,7 +56,7 @@ waypointのPod（L7）
 ```text
 外
 ↑
------ ワーカーNode
+----- Node
 ↑
 waypointのPod（L7）
 ↑
@@ -132,9 +132,9 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 | サービスディスカバリーでのルーティング先設定         | DestinationRule                                                                                                                                                                                    | ```route```キー                     | kube-proxy + Service                         |
 | サービスディスカバリーでのリスナー値               | EnvoyFilter + EndpointSlice                                                                                                                                                                        | ```listener```キー                  | kube-proxy + Service                         |
 | サービスディスカバリーでの追加サービス設定         | ServiceEntry + EndpointSlice                                                                                                                                                                       | ```cluster```キー                   | EndpointSlice                                |
-| Cluster外ワーカーNodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                                      | ```endpoint```キー                  | Egress                                       |
+| Cluster外Nodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                                      | ```endpoint```キー                  | Egress                                       |
 | サービスレジストリ                         | etcd                                                                                                                                                                                               | etcd                              | etcd                                         |
-| ワーカーNode外からのインバウンド通信のルーティング    | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはワーカーNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である。）<br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
+| Node外からのインバウンド通信のルーティング    | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である。）<br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
 
 
 > ℹ️ 参考：

@@ -42,7 +42,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ DaemonSetとは
 
-ワーカーNode上のPodの個数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、ワーカーNode内でPodを1つだけ維持管理する。ワーカーNodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、ワーカーNode内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+Node上のPodの個数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。Nodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 > ℹ️ 参考：
 >
@@ -51,7 +51,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ Pod数の固定
 
-DaemonSetは、ワーカーNode内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止したとしても、稼働中のワーカーNode内のPodを増やすことはない。
+DaemonSetは、Node内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
 
 <br>
 
@@ -76,7 +76,7 @@ PodTemplate（```spec.template```キー）を変更した場合、Deploymentは�
 
 #### ▼ Podのレプリカ数の維持
 
-Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止した場合、稼働中のワーカーNode内でレプリカ数を維持するようにPod数を増やす。
+Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
 
 > ℹ️ 参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
@@ -120,7 +120,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ▼ 例外的なコントロールプレーンNode上のPod
 
-脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。これは、コントロールプレーンNodeにはTaint（```node-role.kubernetes.io/master:NoSchedule```）が設定されているためである。一方で、ワーカーNodeにはこれがないため、Podをスケジューリングできる。
+脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。これは、コントロールプレーンNodeにはTaint（```node-role.kubernetes.io/master:NoSchedule```）が設定されているためである。一方で、Nodeにはこれがないため、Podをスケジューリングできる。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/43147941/allow-scheduling-of-pods-on-kubernetes-master
 
@@ -163,12 +163,12 @@ Podのライフサイクルにはフェーズがある。
 | Failed               | Pod内の全てのコンテナの起動が完了し、その後に異常に停止した。                                     |                                                                                                                                                                  |
 | ImagePullBackOff     | Pod内のコンテナイメージのプルに失敗した。                                                       |                                                                                                                                                                  |
 | OOMKilled            | Podのメモリの空きサイズが足らず、コンテナが強制終了された。                                           |                                                                                                                                                                  |
-| Pending              | PodがワーカーNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。                      |                                                                                                                                                                  |
+| Pending              | PodがNodeにスケジューリングされたが、Pod内の全てのコンテナの起動がまだ完了していない。                      |                                                                                                                                                                  |
 | PodInitializing      | Pod内にInitContainerがある場合の理由である。コンテナイメージをプルし、コンテナを作成している。                  |                                                                                                                                                                  |
 | PostStartHookError   | PodのPostStartフックに失敗した。                                                        |                                                                                                                                                                  |
 | Running              | Pod内の全てのコンテナの起動が完了し、実行中である。                                            | コンテナの起動が完了すれば```Running```フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション（例：フレームワークのビルトインサーバー機能）の場合は、```Running```フェーズであっても```Ready```コンディションではないことに注意する。 |
 | Succeed              | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                                     |                                                                                                                                                                  |
-| Unknown              | ワーカーNodeとPodの間の通信に異常があり、ワーカーNodeがPodから情報を取得できなかった。                     |                                                                                                                                                                  |
+| Unknown              | NodeとPodの間の通信に異常があり、NodeがPodから情報を取得できなかった。                     |                                                                                                                                                                  |
 
 #### ▼ Podのコンディション
 
@@ -182,7 +182,7 @@ Podのライフサイクルにはフェーズがある。
 
 | 各フェーズのコンディション名 | 説明                                                          |
 |------------------|-------------------------------------------------------------|
-| PodScheduled     | ワーカーNodeへのPodのスケジューリングが完了した。                                |
+| PodScheduled     | NodeへのPodのスケジューリングが完了した。                                |
 | ContainersReady  | 全てのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
 | Initialized      | 全ての```init```コンテナの起動が完了した。                               |
 | Ready            | Pod全体の準備が完了した。                                          |
@@ -226,11 +226,11 @@ Podのライフサイクルにはフェーズがある。
 
 （２）kube-apiserverが、```/logs/pods/<ログへのパス>```エンドポイントにリクエストを送信する。
 
-（３）kubeletはリクエストを受信し、ワーカーNodeの```/var/log```ディレクトリを読み込む。ワーカーNodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。なお、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
+（３）kubeletはリクエストを受信し、Nodeの```/var/log```ディレクトリを読み込む。Nodeの```/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log```ファイルは、Pod内のコンテナの```/var/lib/docker/container/<ID>/<ID>-json.log```ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。なお、削除されたPodのログは、引き続き```/var/log/pods```ディレクトリ配下に保管されている。
 
 > ℹ️ 参考：https://www.creationline.com/lab/29281
 
-補足として、DaemonSetとして稼働するFluentdは、ワーカーNodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
+補足として、DaemonSetとして稼働するFluentdは、Nodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
 > ℹ️ 参考：https://note.com/shift_tech/n/n503b32e5cd35
 
@@ -240,7 +240,7 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ ReplicaSetとは
 
-ワーカーNode上のPod数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
+Node上のPod数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
 
 > ℹ️ 参考：
 >
@@ -280,7 +280,7 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 ### Discovery&LBリソースとは
 
-ワーカーNode上のコンテナをワーカーNode外に公開する機能を提供する。
+Node上のコンテナをNode外に公開する機能を提供する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
 
@@ -304,7 +304,7 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-IngressコントローラーによってワーカーNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+IngressコントローラーによってNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
 > ℹ️ 参考：
 >
@@ -330,7 +330,7 @@ IngressコントローラーによってワーカーNode外からインバウン
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressコントローラーは、Ingressの設定に基づいてワーカーNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 > ℹ️ 参考：
 >
@@ -367,7 +367,7 @@ Ingressコントローラーは、『```***-controller-admission```』というS
 
 ![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_service.png)
 
-Serviceは、kube-proxyが更新したワーカーNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
+Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
 > ℹ️ 参考：
 >
@@ -379,7 +379,7 @@ Serviceは、kube-proxyが更新したワーカーNode上で稼働するiptables
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_clusterip-service.png)
 
-Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。Cluster-IPはServiceの```spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。Cluster-IPはワーカーNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。Cluster-IPはServiceの```spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして（レイヤーは異なるが）、PodのIPアドレスを宛先とする```L7```ロードバランサー（例：AWS ALBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
 > ℹ️ 参考：
 >
@@ -401,7 +401,7 @@ options ndots:5
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_nodeport-service.png)
 
-Serviceに対するインバウンド通信を、ワーカーNodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。ワーカーNodeのNICの宛先情報はワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。Serviceのポート番号と紐づくワーカーNodeのNICのポート番号はデフォルトではランダムであるため、ワーカーNodeのNICのポート番号を固定する必要がある。この時、```1```個のワーカーNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
+Serviceに対するインバウンド通信を、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。NodeのNICの宛先情報はNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。この時、```1```個のNodeのポート番号につき、```1```個のServiceとしか紐づけられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
 
 > ℹ️ 参考：
 >
@@ -411,7 +411,7 @@ Serviceに対するインバウンド通信を、ワーカーNodeのNICの宛先
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_loadbalancer-service.png)
 
-Serviceに対するインバウンド通信を、External-IP、ワーカーNodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。External-IPはワーカーNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。クラウドプロバイダー環境（例：AWS）では、LoadBalancer Serviceを作成すると、External-IPを宛先とする```L4```ロードバランサー（例：AWS NLBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、ロードバランサーのみが宛先IPアドレスを指定できる。クラウドプロバイダー環境（例：AWS）では、LoadBalancer Serviceを作成すると、External-IPを宛先とする```L4```ロードバランサー（例：AWS NLBとAWSターゲットグループ）を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
 
 > ℹ️ 参考：
 >
@@ -555,7 +555,7 @@ Pod間通信でのインバウンド/アウトバウンド通信の送受信ル�
 
 #### ▼ PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。ワーカーNode上のPod間でボリュームを共有できる。PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
+新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。Node上のPod間でボリュームを共有できる。PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
 
 > ℹ️ 参考：
 >
@@ -568,7 +568,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 #### ▼ HostPath（本番環境で非推奨）
 
-ワーカーNode上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。機能としては、Volumeの一種であるHostPathと同じである。マルチワーカーNodeには対応していないため、本番環境では非推奨である。
+Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。機能としては、Volumeの一種であるHostPathと同じである。マルチNodeには対応していないため、本番環境では非推奨である。
 
 > ℹ️ 参考：
 >
@@ -577,7 +577,7 @@ Dockerのボリュームとは独立した機能であることに注意する�
 
 #### ▼ Local（本番環境で推奨）
 
-ワーカーNode上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。マルチワーカーNodeに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
+Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。マルチNodeに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
 
 > ℹ️ 参考：
 >
@@ -658,7 +658,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 #### ▼ Volumeとは
 
-既存（ワーカーNode、NFS、iSCSI、Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する。
+既存（Node、NFS、iSCSI、Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/14195
 
@@ -690,7 +690,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath（本番環境で非推奨）
 
-ワーカーNode上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、ワーカーNodeとPod内のコンテナ間で実行され、同一ワーカーNode上のPod間でこのボリュームを共有できる。
+Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
 
 > ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -699,7 +699,7 @@ HostPathは非推奨である。
 > ℹ️ 参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
 ```bash
-# ワーカーNode内でdockerコマンドを実行
+# Node内でdockerコマンドを実行
 $ docker inspect <コンテナID>
   
     {
@@ -739,7 +739,7 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。ワーカーNode上のPod間でボリュームを共有できない。
+Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。Node上のPod間でボリュームを共有できない。
 
 > ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 

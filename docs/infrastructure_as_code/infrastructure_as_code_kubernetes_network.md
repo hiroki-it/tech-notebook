@@ -22,7 +22,7 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
 
-同じサブネットマスク内にあるワーカーNodeのNIC間を接続するネットワーク。Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -83,14 +83,14 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ### Pod間通信の経路
 
-Pod内のコンテナから宛先のPodにアウトバウンド通信を送信する。この時、PodのスケジューリングされているワーカーNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
+Pod内のコンテナから宛先のPodにアウトバウンド通信を送信する。この時、PodのスケジューリングされているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 | 条件              | 経由するネットワーク                               |
 |-----------------|--------------------------------------------|
-| ワーカーNodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
-| ワーカーNodeが同じ場合  | Clusterネットワーク + Serviceネットワーク              |
+| Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
+| Nodeが同じ場合  | Clusterネットワーク + Serviceネットワーク              |
 
 <br>
 

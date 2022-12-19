@@ -868,7 +868,7 @@ spec:
 
 #### ▼ replicasとは
 
-Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のワーカーNodeが存在していて、いずれかのワーカーNodeが停止した場合、稼働中のワーカーNode内でレプリカ数を維持するようにPod数が増加する。
+Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
 
 > ℹ️ 参考：
 >
@@ -1093,7 +1093,7 @@ endpoints:
 
 #### ▼ nodeName
 
-Podが現在スケジューリングされているワーカーNode名を設定する。これにより、Serviceとそのルーティング先のPodが異なるワーカーNode上に存在していたとしても、ServiceはPodにルーティングできる。
+Podが現在スケジューリングされているNode名を設定する。これにより、Serviceとそのルーティング先のPodが異なるNode上に存在していたとしても、ServiceはPodにルーティングできる。
 
 ```yaml
 apiVersion: discovery.k8s.io/v1
@@ -1517,7 +1517,7 @@ Kubernetesの実行時に自動的に作成される。もし手動で作成す�
 
 #### ▼ ReadWriteMany
 
-ボリュームに対して、複数のワーカーNodeから読み出し/書き込みできるようにする。Node間でDBを共有したい場合に使用する。
+ボリュームに対して、複数のNodeから読み出し/書き込みできるようにする。Node間でDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1533,7 +1533,7 @@ spec:
 
 #### ▼ ReadOnlyMany
 
-ボリュームに対して、複数のワーカーNodeから読み出しでき、また単一のワーカーNodeのみから書き込みできるようにする。Node間で読み出し処理のみDBを共有したい場合に使用する。
+ボリュームに対して、複数のNodeから読み出しでき、また単一のNodeのみから書き込みできるようにする。Node間で読み出し処理のみDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1549,7 +1549,7 @@ spec:
 
 #### ▼ ReadWriteOnce
 
-ボリュームに対して、単一のワーカーNodeからのみ読み出し/書き込みできるようにする。NodeごとにDBを分割したい場合に使用する。
+ボリュームに対して、単一のNodeからのみ読み出し/書き込みできるようにする。NodeごとにDBを分割したい場合に使用する。
 
 **＊実装例＊**
 
@@ -1597,7 +1597,7 @@ PersistentVolumeの一種であるHostPathボリュームを作成する。Volum
 
 #### ▼ path
 
-ワーカーNode側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
+Node側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -1664,7 +1664,7 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、ワーカーNodeを明示的に指定できる。
+Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
 
 > ℹ️ 参考：
 >
@@ -1715,7 +1715,7 @@ spec:
 
 #### ▼ nfsとは
 
-ホスト上であらかじめNFSサーバーを起動しておく。NFSサーバーにストレージ領域を作成し、これをボリュームとする。ワーカーNode内のPodを、ホスト上のNFSサーバーにマウントする。
+ホスト上であらかじめNFSサーバーを起動しておく。NFSサーバーにストレージ領域を作成し、これをボリュームとする。Node内のPodを、ホスト上のNFSサーバーにマウントする。
 
 > ℹ️ 参考：
 >
@@ -1742,13 +1742,13 @@ spec:
 
 #### ▼ nodeAffinityとは
 
-PersistentVolumeの作成先とするワーカーNodeを設定する。
+PersistentVolumeの作成先とするNodeを設定する。
 
 > ℹ️ 参考：https://qiita.com/ysakashita/items/67a452e76260b1211920
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のワーカーNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 
@@ -1940,25 +1940,25 @@ spec:
 
 #### ▼ affinityとは
 
-kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
+kube-schedulerがPodをスケジューリングするNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。Podが削除された後にワーカーNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。Podが削除された後にNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
 
 | アフィニティタイプ                                       | 別名 | 説明                                           |
 |-------------------------------------------------|------|----------------------------------------------|
-| requiredDuringSchedulingIgnoredDuringExecution  | ハード  | もし条件に合致するワーカーNodeがない場合、Podをスケジューリングしない。  |
-| preferredDuringSchedulingIgnoredDuringExecution | ソフト  | もし条件に合致するワーカーNodeがない場合でも、Podをスケジューリングする。 |
+| requiredDuringSchedulingIgnoredDuringExecution  | ハード  | もし条件に合致するNodeがない場合、Podをスケジューリングしない。  |
+| preferredDuringSchedulingIgnoredDuringExecution | ソフト  | もし条件に合致するNodeがない場合でも、Podをスケジューリングする。 |
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 
 #### ▼ nodeAffinity
 
-ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内に新しいPodをスケジューリングする。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
+Nodeの```metadata.labels```キーを指定することにより、そのNode内に新しいPodをスケジューリングする。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
 
 > ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1979,18 +1979,18 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              # PodをスケジューリングしたいワーカーNodeのmetadata.labelsキー
+              # PodをスケジューリングしたいNodeのmetadata.labelsキー
               # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。
               - key: app.kubernetes.io/nodegroup
                 operator: In
-                # 指定した値をキーに持つワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つNodeに、Podをスケジューリングする。
                 values:
                   - ingress
 ```
 
 #### ▼ podAffinity
 
-ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じワーカーNode内に、新しいPodをスケジューリングする。
+Node内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
 
 > ℹ️ 参考：
 >
@@ -2012,21 +2012,21 @@ spec:
     podAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたいワーカーNodeのmetadata.labelsキー
+        # PodをスケジューリングしたいNodeのmetadata.labelsキー
         - topologyKey: kubernetes.io/hostname
           labelSelector:
             - matchExpressions:
               # Podのmetadata.labelsキー
               - key: app.kubernetes.io/app
                 operator: In
-                # 指定した値をキーに持つPodと同じワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングする。
                 values: 
                   - bar-pod
 ```
 
 #### ▼ podAntiAffinity
 
-ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのワーカー内のPodとは異なるワーカーNode内に、新しいPodをスケジューリングする。
+Node内のPodを、```metadata.labels```キーで指定することにより、そのワーカー内のPodとは異なるNode内に、新しいPodをスケジューリングする。
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
@@ -2045,19 +2045,19 @@ spec:
     podAntiAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+        # PodをスケジューリングしたくないNodeのmetadata.labelsキー
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
               # Podのmetadata.labelsキー
               - key: app.kubernetes.io/app
                 operator: In
-                # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                 values:
                   - bar-pod
 ```
 
-もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じワーカーNodeにスケジューリングされることを避け、結果として全てのワーカーNodeにPodが```1```個ずつスケジューリングされるようになる。
+もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが```1```個ずつスケジューリングされるようになる。
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
@@ -2086,14 +2086,14 @@ spec:
         podAntiAffinity:
           # ハードアフィニティー
           requiredDuringSchedulingIgnoredDuringExecution:
-            # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+            # PodをスケジューリングしたくないNodeのmetadata.labelsキー
             - topologyKey: topology.kubernetes.io/zone
               labelSelector:
                 - matchExpressions:
                    # Podのmetadata.labelsキー
                    - key: app.kubernetes.io/app
                      operator: In
-                     # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                     # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                      values:
                        # 自身が複製するPodの名前
                        - foo-pod
@@ -2202,16 +2202,16 @@ spec:
 
 #### ▼ resources
 
-ワーカーNode全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、ワーカーNodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのワーカーNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 > ℹ️ 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
 | キー名           | 説明                           | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |----------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がワーカーNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                       |
+| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                       |
 | ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>ℹ️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>ℹ️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
-ちなみに、ワーカーNode全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
+ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
 > ℹ️ 参考：
 >
@@ -2219,17 +2219,17 @@ spec:
 > - https://smallit.co.jp/blog/667/
 
 ```bash
-$ kubectl describe node <ワーカーNode名>
+$ kubectl describe node <Node名>
 
 ...
 
 Capacity:
   attachable-volumes-aws-ebs:  20
-  cpu:                         4           # ワーカーNodeのCPU
+  cpu:                         4           # NodeのCPU
   ephemeral-storage:           123456789Ki
   hugepages-1Gi:               0
   hugepages-2Mi:               0
-  memory:                      1234567Ki   # ワーカーNodeのメモリー
+  memory:                      1234567Ki   # Nodeのメモリー
   pods:                        10          # スケジューリング可能なPodの最大数
 Allocatable:
   attachable-volumes-aws-ebs:  20
@@ -2272,7 +2272,7 @@ spec:
 
 #### ▼ volumeMount
 
-Pod内のコンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。ワーカーNode側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内のコンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -2368,7 +2368,7 @@ spec:
 
 #### ▼ hostNetworkとは
 
-Podが、自身の稼働するワーカーNodeのネットワークにアクセスできるかどうかを設定する。ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
+Podが、自身の稼働するNodeのネットワークにアクセスできるかどうかを設定する。ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
 
 > ℹ️ 参考：https://stackoverflow.com/a/64793701
 
@@ -2486,7 +2486,7 @@ spec:
 
 ### spec.nodeSelector
 
-kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
+kube-schedulerがPodをスケジューリングするNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
@@ -2760,7 +2760,7 @@ spec:
 
 **＊実装例＊**
 
-インメモリストレージを設定する。注意点として、Podが使用できる上限メモリサイズを設定しない場合、PodはスケジューリングされたワーカーNodeのメモリ領域を最大限に使ってしまう。
+インメモリストレージを設定する。注意点として、Podが使用できる上限メモリサイズを設定しない場合、PodはスケジューリングされたNodeのメモリ領域を最大限に使ってしまう。
 
 > ℹ️ 参考：
 > 
@@ -2788,7 +2788,7 @@ spec:
 
 #### ▼ hostPath
 
-Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『ワーカーNode』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
+Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
 
 > ℹ️ 参考：
 >
@@ -2932,7 +2932,7 @@ spec:
 
 ### spec.maxUnavailable
 
-対象のPodを新しいワーカーNodeでスケジューリングする時に、既存のワーカーNodeで削除できるPodの最大数を設定する。
+対象のPodを新しいNodeでスケジューリングする時に、既存のNodeで削除できるPodの最大数を設定する。
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
 
@@ -2952,7 +2952,7 @@ spec:
 
 ### spec.minAvailable
 
-対象のPodを新しいワーカーNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。このスケジューリングを待機するPodの最低限数を設定する。
+対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。このスケジューリングを待機するPodの最低限数を設定する。
 
 > ℹ️ 参考：
 > 
@@ -2965,7 +2965,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  minAvailable: 3 # 新しいワーカーNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  minAvailable: 3 # 新しいNodeで、3個のPodのスケジューリングが完了するまで待機する。
   selector:
     matchLabels:
       app.kubernetes.io/app: foo-pod # 対象のPod
@@ -3322,7 +3322,7 @@ stringData:
 
 #### ▼ kubernetes.io/tls
 
-SSL/TLSを使用するための変数を設定する。SSL証明書と秘密鍵の文字列が必要である。ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSで通信する例がある。
+SSL/TLSを使用するための変数を設定する。SSL証明書と秘密鍵の文字列が必要である。ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSでパケットを送受信する例がある。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 

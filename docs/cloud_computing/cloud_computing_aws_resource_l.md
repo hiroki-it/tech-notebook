@@ -124,7 +124,7 @@ $ docker run \
 ```
 
 ```bash
-# ハンドラー関数の引数に合ったJSONデータを送信する。
+# ハンドラー関数の引数に合ったJSON型データを送信する。
 $ curl \
     -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
     -d '{}'
@@ -360,7 +360,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 };
 ```
 
-オリジンリクエストは、以下のeventオブジェクトのJSONデータにマッピングされている。注意点として、一部のキーは省略している。
+オリジンリクエストは、以下のeventオブジェクトのJSON型データにマッピングされている。注意点として、一部のキーは省略している。
 
 ```yaml
 {

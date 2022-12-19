@@ -358,13 +358,13 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、ワーカーNode)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
+```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、Node)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
 
 > ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
 
-Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、ワーカーNode）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
+Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、Node）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
 
 > ℹ️ 参考：
 >

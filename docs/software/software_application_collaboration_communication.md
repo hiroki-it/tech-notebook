@@ -224,7 +224,7 @@ $.post(url, params);
 
 #### ▼ 任意のHTTPメソッド
 
-任意のHTTPメソッド、URL、ヘッダー、メッセージボディなどを設定し、非同期的にデータを送受信する。Promiseオブジェクトを返却する。
+任意のHTTPメソッド、URL、ヘッダー、メッセージボディなどを設定し、非同期的にパケットを送受信する。Promiseオブジェクトを返却する。
 
 > ℹ️ 参考：https://api.jquery.com/jquery.ajax
 

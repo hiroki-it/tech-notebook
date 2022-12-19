@@ -34,7 +34,7 @@ Istioの各コンポーネントのことにより、Kubernetesのカスタム�
 
 #### ▼ IngressGatewayとは
 
-Gateway、VirtualService、DestinationRuleの設定を基に、ワーカーNode外からインバウンド通信を受信し、Podにルーティングする。KubernetesリソースのIngressの代わりとして使用できる。
+Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。KubernetesリソースのIngressの代わりとして使用できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
@@ -132,7 +132,7 @@ spec:
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの能力のうち、ワーカーNode外から受信したインバウンド通信をフィルタリングする能力を担う。
+IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
 > ℹ️ 参考：
 >

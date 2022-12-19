@@ -318,7 +318,7 @@ end
 
 #### ▼ synced_folderとは
 
-ホスト上のディレクトリを仮想環境にマウントする。
+ホストのディレクトリを仮想環境にマウントする。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 

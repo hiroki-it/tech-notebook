@@ -333,7 +333,7 @@ CORSを有効化し、異なるオリジンによって表示されたページ�
 
 #### ▼ プライベート統合とは
 
-API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデータを自動的にマッピングする機能のこと。
+API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
 
@@ -356,7 +356,7 @@ API GatewayとVPCリンクの間で、リクエスト/レスポンスのJSONデ�
 
 #### ▼ Lambdaプロキシ統合とは
 
-API GatewayとLambdaの間で、リクエスト/レスポンスのJSONデータを自動的にマッピングする機能のこと。プロキシ統合を使用すると、Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。プロキシ統合を使用しない場合、LambdaとAPI Gatewayの間のマッピングを手動で行う必要がある。
+API GatewayとLambdaの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。プロキシ統合を使用すると、Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。プロキシ統合を使用しない場合、LambdaとAPI Gatewayの間のマッピングを手動で行う必要がある。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
 
@@ -372,7 +372,7 @@ API GatewayとLambdaの間で、リクエスト/レスポンスのJSONデータ�
 
 #### ▼ リクエスト時のマッピング
 
-API Gateway側でプロキシ統合を有効化すると、API Gatewayを経由したクライアントからのリクエストは、ハンドラ関数のeventオブジェクトのJSONデータにマッピングされる。
+API Gateway側でプロキシ統合を有効化すると、API Gatewayを経由したクライアントからのリクエストは、ハンドラ関数のeventオブジェクトのJSON型データにマッピングされる。
 
 ```yaml
 {
@@ -432,7 +432,7 @@ API Gateway側でプロキシ統合を有効化すると、API Gatewayを経由�
 
 #### ▼ レスポンス時のマッピング
 
-API Gatewayは、Lambdaからのレスポンスを、以下のJSONデータにマッピングする。これ以外の構造のJSONデータを送信すると、API Gatewayで『```Internal Server Error```』のエラーが起こる。
+API Gatewayは、Lambdaからのレスポンスを、以下のJSON型データにマッピングする。これ以外の構造のJSON型データを送信すると、API Gatewayで『```Internal Server Error```』のエラーが起こる。
 
 ```yaml
 {
@@ -456,7 +456,7 @@ API Gatewayは、Lambdaからのレスポンスを、以下のJSONデータに�
 }
 ```
 
-API Gatewayは上記のJSONデータを受信した後、```body```のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。
+API Gatewayは上記のJSON型データを受信した後、```body```のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。
 
 ```
 "Hello Lambda"

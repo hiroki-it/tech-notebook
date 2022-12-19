@@ -91,7 +91,7 @@ $ helm install -n istio-system istio-ingressgateway istio/gateway
 
 ### Minikubeのセットアップ
 
-Istioによる種々のコンテナが稼働するために、MinikubeのワーカーNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
+Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -797,7 +797,7 @@ spec:
 
 #### ▼ port.number
 
-インバウンド通信を待ち受けるポート番号を設定する。IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、ワーカーNodeが待ち受けるポート番号に合わせて```30000```番ポートとする。一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
+インバウンド通信を待ち受けるポート番号を設定する。IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて```30000```番ポートとする。一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 

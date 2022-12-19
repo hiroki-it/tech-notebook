@@ -642,7 +642,7 @@ ADS-APIに関して設定する。EnvoyがADS-APIにリクエストを送信す�
 
 #### ▼ grpc_services
 
-ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用して通信する。ADS-APIの宛先情報は、```static_resources.clusters```キー配下で設定しておく。
+ADS-APIとして使用するクラスター名を設定する。クラスターとはgRPCを使用してパケットを送受信する。ADS-APIの宛先情報は、```static_resources.clusters```キー配下で設定しておく。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
 
@@ -730,7 +730,7 @@ staticResources:
                   address:
                     pipe:
                       # ここではソケットファイルを指定している。
-                      # envoyとxds-apiのプロセス間で、データを送受信する。
+                      # envoyとxds-apiのプロセス間で、パケットを送受信する。
                       path: ./etc/istio/proxy/xds
 ```
 

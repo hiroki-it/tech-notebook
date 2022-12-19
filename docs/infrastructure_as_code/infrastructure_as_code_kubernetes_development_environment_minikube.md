@@ -19,7 +19,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ 仮想サーバー系のドライバーの場合
 
-ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にワーカーNodeを持つClusterを作成する。
+ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にNodeを持つClusterを作成する。
 
 > ℹ️ 参考：
 >
@@ -30,7 +30,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ Dockerドライバーの場合
 
-ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、ワーカーNodeを持つClusterを作成する。
+ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、Nodeを持つClusterを作成する。
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
@@ -42,7 +42,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーとは
 
-ゲスト（ワーカーNode）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
+ゲスト（Node）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
 
 > ℹ️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
@@ -50,7 +50,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-| ホスト側のOS | ゲスト（ワーカーNode）側のOS             |
+| ホスト側のOS | ゲスト（Node）側のOS             |
 |----------|--------------------------------|
 | Linux    | VirtualBox、Docker、KVM2、...     |
 | MacOS    | VirtualBox、Docker、HyperKit、... |
@@ -98,11 +98,11 @@ docker@minikube:~$ curl -X GET http://<IPアドレス>
 
 ## 01-02. マウント
 
-### ホストとワーカーNode間マウント
+### ホストとNode間マウント
 
-#### ▼ 標準のホストとワーカーNode間マウント
+#### ▼ 標準のホストとNode間マウント
 
-ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeのルート直下にマウントされる。
+ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
@@ -115,13 +115,13 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-#### ▼ 各ドライバーのホストとワーカーNode間マウント
+#### ▼ 各ドライバーのホストとNode間マウント
 
-ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のワーカーNodeの決められたディレクトリにマウントされる。
+ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeの決められたディレクトリにマウントされる。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
-| ドライバー名       | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のワーカーNodeのディレクトリ |
+| ドライバー名       | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のNodeのディレクトリ |
 |---------------|----------|------------------|-------------------------------|
 | VirtualBox    | Linux    | ```/home```      | ```/hosthome```               |
 | VirtualBox    | macOS    | ```/Users```     | ```/Users```                  |
@@ -132,11 +132,11 @@ $ minikube start
 
 <br>
 
-### ワーカーNodeとコンテナ間マウント
+### Nodeとコンテナ間マウント
 
-#### ▼ 標準のワーカーNodeとコンテナ間マウント
+#### ▼ 標準のNodeとコンテナ間マウント
 
-ゲスト仮想環境内のワーカーNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
+ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -151,11 +151,11 @@ $ minikube start
 
 <br>
 
-### ホスト-ワーカーNodeとコンテナ間
+### ホスト-Nodeとコンテナ間
 
 #### ▼ ホストをコンテナにマウントする方法
 
-Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のワーカーNodeのディレクトリにマウントできる。またワーカーNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからワーカーNode、ワーカーNodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
+Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
 
 > ℹ️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -163,13 +163,13 @@ Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/file
 
 **＊例＊**
 
-（１）HyperKitドライバーを使用する場合、ホストとワーカーNode間のマウント機能がない。そこで```mount```コマンドを使用して、ホスト側のディレクトリをワーカーNodeのボリュームにマウントする。
+（１）HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで```mount```コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
 
 ```bash
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
 
-（２）ワーカーNodeのボリュームをPod内のコンテナにマウントする。
+（２）NodeのボリュームをPod内のコンテナにマウントする。
 
 ```yaml
 apiVersion: apps/v1
@@ -208,9 +208,9 @@ spec:
 
 ### KubernetesリソースのCIDRブロック
 
-#### ▼ ワーカーNodeの場合
+#### ▼ Nodeの場合
 
-ワーカーNode内で```ip addr```コマンドを実行すると、ワーカーNodeに割り当てられたCIDRブロックを確認できる。
+Node内で```ip addr```コマンドを実行すると、Nodeに割り当てられたCIDRブロックを確認できる。
 
 > ℹ️ 参考：https://nishipy.com/archives/1467
 
@@ -221,7 +221,7 @@ CNIとしてBridgeアドオンを使用している。CIDRブロックは、```1
 ```bash
 $ minikube ssh
 
-# ワーカーNodeの中
+# Nodeの中
 docker@minikube:~$ ip addr | grep eth0
 
 10: eth0@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
@@ -230,7 +230,7 @@ docker@minikube:~$ ip addr | grep eth0
 
 #### ▼ Pod
 
-ワーカーNode内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
+Node内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
 > ℹ️ 参考：https://nishipy.com/archives/1467
 
@@ -241,7 +241,7 @@ CNIとしてBridgeアドオンを使用している。CIDRブロックは、```1
 ```bash
 $ minikube ssh
 
-# ワーカーNodeの中
+# Nodeの中
 docker@minikube:~$ ls -la /etc/cni/net.d
 -rw-r--r-- 1 root root  438 Nov 11  2021 100-crio-bridge.conf
 -rw-r--r-- 1 root root   54 Nov 11  2021 200-loopback.conf

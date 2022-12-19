@@ -29,7 +29,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSONデータを取得し、構造体に紐付ける。
+```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
 
 > ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
@@ -65,7 +65,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-JSONデータとして、レスポンスを返信する。第二引数の引数型がインターフェースになっているため、様々なデータ型を渡せる。
+JSON型データとして、レスポンスを返信する。第二引数の引数型がインターフェースになっているため、様々なデータ型を渡せる。
 
  **＊実装例＊**
 

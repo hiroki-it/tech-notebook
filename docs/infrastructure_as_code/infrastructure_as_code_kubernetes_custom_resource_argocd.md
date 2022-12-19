@@ -48,7 +48,7 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 ![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 
-ワーカーNodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
+Nodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
 
 > ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 

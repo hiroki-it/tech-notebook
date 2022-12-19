@@ -20,11 +20,23 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 #### ▼ bridgeネットワークとは
 
-複数のコンテナ間に対して、仮想ネットワークで接続させる。また、仮想ネットワークを物理ネットワークの間を、仮想ブリッジを使用してbridge接続する。ほとんどの場合、この方法を使用する。
+bridgeネットワークは、コンテナのネットワークインターフェース（```eth```）、ホストの仮想ネットワークインターフェース（```veth```）、ホストのブリッジ（```docker0```）、ホストのネットワークインターフェース（```eth*```）、から構成される。ホスト上にブリッジを作成し、```L2```（データリンク層）で複数のコンテナ間を接続する。また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
 
-> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html
+> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+
+```brctl```コマンドを使用し、```docker0```ブリッジがどの仮想インターフェースと接続されているかを確認できる。
+
+```bash
+$ brctl show docker0
+
+bridge name     bridge id               STP enabled     interfaces
+docker0         8000.02426c931c59       no              vethc06ae92
+```
+
+![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bridge-network.png)
+
+#### ▼ 経路例
 
 サーバーに対するリクエストがコンテナに届くまでを以下に示す。サーバーの```8080```番ポートと、WWWコンテナの```80```番ポートのアプリケーションの間で、ポートフォワーディングを行う。これにより、『```http://<サーバーのプライベートIPアドレス（localhost）>:8080```』にリクエストを送信すると、WWWコンテナのポート番号に転送されるようになる。
 
@@ -63,7 +75,11 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 #### ▼ hostネットワークとは
 
-特定のコンテナに対して、ホストと同じネットワーク情報をもたせる。
+![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_host-network.png)
+
+hostネットワークは、コンテナのネットワークインターフェース（```eth```）、ホストのネットワークインターフェース（```eth*```）、から構成される。特定のコンテナとホストを直接的に接続する。コンテナのIPアドレスは、ホストのIPアドレスになる。
+
+> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
 ```bash
 $ docker network list
@@ -71,6 +87,7 @@ $ docker network list
 NETWORK ID          NAME                    DRIVER              SCOPE
 ac017dda93d6        host                    host                local
 ```
+
 
 <br>
 
