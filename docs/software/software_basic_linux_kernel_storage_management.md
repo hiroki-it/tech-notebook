@@ -68,7 +68,7 @@ $ growpart /dev/sda 2
 $ pvresize /dev/sda2
 ```
 
-（６）論理ボリュームを```lvextend```コマンドで拡張する。ここでは、空き領域いっぱいに拡張する。
+（６）論理ボリュームを```lvextend```コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
 
 ```bash
 $ lvextend -l +100%FREE /dev/root

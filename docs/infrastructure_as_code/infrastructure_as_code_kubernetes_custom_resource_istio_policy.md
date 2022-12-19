@@ -153,7 +153,7 @@ spec:
 
 ### ```istio-proxy```コンテナ
 
-名前空間を```istio-proxy```コンテナとしたメトリクスの監視ポリシーは以下の通りである。
+メトリクスの名前空間を```istio-proxy```コンテナとした時の監視ポリシーは以下の通りである。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/metrics/
 

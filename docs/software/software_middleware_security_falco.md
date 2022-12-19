@@ -17,14 +17,15 @@ description: Falco＠セキュリティ系ミドルウェアの知見を記録�
 
 ### アーキテクチャ
 
-コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。Falcoは、システムコールのイベントを収集し、異常なイベントを検知すれば、これを通知する。Falco自体は、デーモンやDaemonSet配下のPodとして稼働させる。
+![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/falco_architecture.png)
+
+コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。eBPFを使用して、システムコールのイベントが発生した時に、Falcoの処理をフックする。これにより、Falcoはシステムコールのイベントを収集し、異常なイベントを検知すれば、これを通知する。Falco自体は、デーモンやDaemonSet配下のPodとして稼働させる。
 
 > ℹ️ 参考：
 >
 > - https://www.designet.co.jp/ossinfo/kubernetes/falco/
 > - https://sysdig.jp/blog/sysdig-contributes-falco-kernel-ebpf-cncf-2/
-
-![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/falco_architecture.png)
+> - https://gihyo.jp/admin/column/newyear/2022/cloudnative-prospect
 
 <br>
 

@@ -61,14 +61,56 @@ $ kubectl apply -f grafana.yaml
 
 ## 02. Dashboard
 
-### Dashboardとは
+### 独自ダッシュボード
 
-Grafanaのダッシュボードである。ConfigMapの```data```キーにダッシュボードのJSONを設定すると、ダッシュボードが自動的に作成される。独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）のJSONをコピーした方が良い。
+ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを作成できる。
+
+> 参考：https://grafana.com/grafana/dashboards/
+
+<br>
+
+### 公開ダッシュボード
+
+#### ▼ 公開ダッシュボード
+
+独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）を使用した方が良い。その場合、GitHubなどで公開されているJSONを、ConfigMapの```data```キーに貼り付ける。
 
 > ℹ️ 参考：
 > 
 > - https://monitoring.mixins.dev
 > - https://grafana.com/grafana/dashboards/
+
+#### ▼ Mixinダッシュボード
+
+> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+> 
+
+| 種類                     | コンポーネント          | ダッシュボード名                                       | メトリクスの例                                               |
+| ------------------------ | ----------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| Alertmanager             | Alertmanagerのpod       | Alertmanager / Overview                                |                                                              |
+| CoreDNS                  | CoreDNSのPod            | CoreDNS                                                | CoreDNSのPodに対するリクエスト（例：リクエスト数、レスポンスタイム）に関するメトリクス |
+| Kubernetesコンポーネント | kube-apiserver          | Kubernetes / API server                                | kube-apiserverのSLI、エラーバジェット、ハードウェアリソース消費（例：CPU使用率、メモリ使用率）に関するメトリクス |
+|                          | Cluster                 | Kubernetes / Networking / Cluster                      |                                                              |
+|                          | kube-controller-manager | Kubernetes / Controller Manager                        |                                                              |
+|                          | Cluster                 | Kubernetes / Compute Resources / Cluster               | Clusterのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | Pod                     | Kubernetes / Compute Resources / Namespace (Pods)      | Namespace単位で、Podのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | Pod                     | Kubernetes / Compute Resources / Node (Pods)           | Node単位で、Podのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | Pod                     | Kubernetes / Compute Resources / Pod                   | 各Podのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | Pod                     | Kubernetes / Compute Resources / Workload              | ワークロード（例：Deployment）単位で、Podのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | Pod                     | Kubernetes / Compute Resources / Namespace (Workloads) | ワークロード（例：Deployment）単位かつNamespace単位で、Podのハードウェアリソース消費（例：CPU使用率、メモリ使用率、CPU空きサイズ率、など）に関するメトリクス |
+|                          | kubelet                 | Kubernetes / Kubelet                                   |                                                              |
+|                          | Pod                     | Kubernetes / Networking / Namespace (Pods)             | Namespace単位で、Podのネットワークに関するメトリクス         |
+|                          |                         | Kubernetes / Networking / Namespace (Workload)         | ワークロード（例：Deployment）単位で、Podのネットワークに関するメトリクス |
+|                          |                         | Kubernetes / Persistent Volumes                        | Persistent Volumeの使用率に関するメトリクス                  |
+|                          |                         | Kubernetes / Networking / Pod                          | 各Podのネットワークに関するメトリクス                        |
+|                          | kube-proxy              | Kubernetes / Proxy                                     |                                                              |
+|                          | kube-scheduler          | Kubernetes / Scheduler                                 |                                                              |
+|                          |                         | Kubernetes / Networking / Workload                     |                                                              |
+| node-exporter            | node-exporterのPod      | Node Exporter / USE Method / Cluster                   |                                                              |
+|                          |                         | Node Exporter / USE Method / Node                      |                                                              |
+|                          |                         | Node Exporter / Nodes                                  |                                                              |
+| Prometheus               | PrometheusのPod         | Prometheus / Remote Write                              |                                                              |
+|                          |                         | Prometheus / Overview                                  |                                                              |
 
 <br>
 

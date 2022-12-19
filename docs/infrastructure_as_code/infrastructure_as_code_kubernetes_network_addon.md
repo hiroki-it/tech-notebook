@@ -135,7 +135,7 @@ AWSの独自モードは、Podの仮想ネットワークインターフェー�
 
 ### CoreDNSアドオンとは
 
-coredns-service、coredns-pod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
@@ -144,11 +144,11 @@ coredns-service、coredns-pod、coredns-configmap、から構成される。Node
 
 <br>
 
-### coredns-service
+### CoreDNSのService
 
-#### ▼ coredns-serviceとは
+#### ▼ CoreDNSのServiceとは
 
-CoreDNSはNode内にPodとして稼働しており、これはcoredns-serviceによって管理されている。
+CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのServiceによって管理されている。
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
@@ -161,9 +161,9 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### coredns-pod
+### CoreDNSのPod
 
-#### ▼ coredns-podとは
+#### ▼ CoreDNSのPodとは
 
 ```bash
 $ kubectl get pod -n kube-system
@@ -231,7 +231,7 @@ data:
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（coredns-service）のIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、coredns-serviceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（CoreDNSのService）のIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >
@@ -332,7 +332,7 @@ NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
 ```
 
-（２）coredns-podが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
+（２）CoreDNSのPodが稼働しているとする。ここで、CoreDNSのPodのIPアドレス（ここでは```10.244.0.2```）を確認しておく。
 
 ```bash
 $ kubectl -n kube-system get pods -o wide -l k8s-app=kube-dns

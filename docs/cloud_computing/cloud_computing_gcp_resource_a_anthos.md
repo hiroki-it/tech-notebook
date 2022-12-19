@@ -114,6 +114,12 @@ GCP側のアカウント情報と、各クラウドプロバイダーのAnthos�
 
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
+#### ▼ anetd
+
+cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
+
+> ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
+
 <br>
 
 ## 02. on-オンプレミス
