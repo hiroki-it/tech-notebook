@@ -165,7 +165,7 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 以下のリンクを参考にせよ。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_lambda_function.html
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
 <br>
 

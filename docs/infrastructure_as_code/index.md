@@ -30,14 +30,20 @@
   > * ##### 📖 [︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
   
 * #### <u>Kubernetes</u>
-  > * ##### ︎Kubernetes
+  > * ##### <u>Kubernetes</u>
   > > * ##### 📖 [︎Kubernetes](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes.html)
-  > > * ##### 📖 [コントロールプレーンコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html)
-  > > * ##### 📖 [Nodeコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
+  > > * ##### <u>コントロールプレーンコンポーネント</u>
+  > > > * ##### 📖 [コントロールプレーンコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html)
+  > > > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.html)
+  > > * ##### <u>Nodeコンポーネント</u>
+  > > > * ##### 📖 [Nodeコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
+  > > > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.html)
+  > > * ##### 📖 [︎クラウドプロバイダーアドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_addon.html)
+  > * ##### <u>ネットワーク</u>
+  > > * ##### 📖 [ネットワーク](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
+  > > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.html)
   > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)
-  > * ##### 📖 [ネットワーク](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
-  > * ##### 📖 [︎アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_addon.html)
-  > * ##### 📖 [︎リソース管理](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_management.html)
+  > * ##### 📖 [︎ハードウェアリソース管理](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.html)
   > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
   > * ##### 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_linter.html)
   > * ##### <u>Kubernetesリソース</u>

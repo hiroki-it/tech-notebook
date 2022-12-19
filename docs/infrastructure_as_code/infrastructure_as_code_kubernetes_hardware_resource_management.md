@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】リソース管理＠Kubernetes
-description: リソース管理＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】ハードウェアリソース管理＠Kubernetes
+description: ハードウェアリソース管理＠Kubernetesの知見を記録しています。
 ---
 
-# リソース管理＠Kubernetes
+# ハードウェアリソース管理＠Kubernetes
 
 ## はじめに
 

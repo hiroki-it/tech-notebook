@@ -20,7 +20,10 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 #### ▼ bridgeネットワークとは
 
-bridgeネットワークは、コンテナのネットワークインターフェース（```eth```）、ホストの仮想ネットワークインターフェース（```veth```）、ホストのブリッジ（```docker0```）、ホストのネットワークインターフェース（```eth*```）、から構成される。ホスト上にブリッジを作成し、```L2```（データリンク層）で複数のコンテナ間を接続する。また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
+![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bridge-network.png)
+
+
+bridgeネットワークは、コンテナのネットワークインターフェース（```eth```）、ホストの仮想ネットワークインターフェース（```veth```）、ホストのブリッジ（```docker0```）、NATルーターとしてのiptables、ホストのネットワークインターフェース（```eth```）、から構成される。ホスト上にブリッジを作成し、```L2```（データリンク層）で複数のコンテナ間を接続する。また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
 
 > ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
 
@@ -33,8 +36,6 @@ $ brctl show docker0
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02426c931c59       no              vethc06ae92
 ```
-
-![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bridge-network.png)
 
 #### ▼ 経路例
 

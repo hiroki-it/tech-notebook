@@ -128,10 +128,7 @@ metadata:
 
 string型である必要がある。int型を割り当てようとするとエラーになり、これはHelmの```values```ファイル経由で『数字』を出力しようとする場合に起こる。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm.html
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <br>
 
