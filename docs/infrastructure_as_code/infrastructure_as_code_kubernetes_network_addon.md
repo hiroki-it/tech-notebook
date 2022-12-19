@@ -34,19 +34,26 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーターとしてのiptables、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
-
-**＊例＊**
-
-- flannel-vxlan
-- calico-ipip
-- Weave
+オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外はiptables、Cilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。iptablesのCNIの場合、Podの```L2```間でパケットを送受信する。CiliumのCNIの場合、Podの```L3```または```L4```間でパケットを送受信する。を使用する場合と比べて、より上位のレイヤーまでの経路で済むので、オーバーヘッドが数ない。
 
 > ℹ️ 参考：
 >
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
+> - https://www.slideshare.net/ThomasGraf5/cilium-bringing-the-bpf-revolution-to-kubernetes-networking-and-security/28
+> - https://caddi.tech/archives/3864
+
+
+#### ▼ アドオン例
+
+> ℹ️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+
+- calico-ipip（Kubeadmで推奨）
+- flannel-vxlan
+- Weave
+- Cilium
+
 
 #### ▼ 同一Node上のPod間通信
 
@@ -60,7 +67,7 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
-Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーターとしてのiptables、Nodeのネットワークインターフェース（```eth```）を使用して、異なるNode上のPod間でパケットを送受信する。
+Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外はiptables、Cilium）、Nodeのネットワークインターフェース（```eth```）を使用して、異なるNode上のPod間でパケットを送受信する。
 
 > ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
 
@@ -72,17 +79,18 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
-**＊例＊**
-
-- clico-bgp
-- flannel-hostgw
-- sriov
-
-
 > ℹ️ 参考：
 >
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
+
+#### ▼ アドオン例
+
+> ℹ️ 参考：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+
+- calico-bgp（Kubeadmで推奨）
+- flannel-hostgw
+- sriov
 
 <br>
 
@@ -92,9 +100,12 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
+> ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
+
+#### ▼ アドオン例
+
 - Aliyun
 
-> ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 
 <br>
 
@@ -111,6 +122,10 @@ AWSの独自モードは、Podの仮想ネットワークインターフェー�
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+
+#### ▼ アドオン例
+
+- eks-vpc-cniアドオン（AWS EKSで推奨）
 
 <br>
 
