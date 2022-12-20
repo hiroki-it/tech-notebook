@@ -2,7 +2,7 @@
  ページ全体
 ***************/
 .md-grid {
-    max-width: 90%;
+    max-width: 92%;
 }
 
 /***************
@@ -366,8 +366,8 @@ blockquote {
     /* ノートの中心部分 */
     /* https://fereria.github.io/reincarnation_tech/10_Programming/99_Documentation/00_mkdocs_setting/#_7 */
     .md-content {
-        margin-left: 2.75rem;
-        margin-right: 2.75rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
 
     /* サイドバー */
