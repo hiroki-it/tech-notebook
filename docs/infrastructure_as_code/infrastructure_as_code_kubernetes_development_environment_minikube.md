@@ -50,7 +50,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
-| ホスト側のOS | ゲスト（Node）側のOS             |
+| ホスト側のOS | ゲスト（Node）側のOS                 |
 |----------|--------------------------------|
 | Linux    | VirtualBox、Docker、KVM2、...     |
 | MacOS    | VirtualBox、Docker、HyperKit、... |
@@ -122,13 +122,13 @@ $ minikube start
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 | ドライバー名       | ホスト側のOS | ホスト側のディレクトリ     | ゲスト仮想環境内のNodeのディレクトリ |
-|---------------|----------|------------------|-------------------------------|
-| VirtualBox    | Linux    | ```/home```      | ```/hosthome```               |
-| VirtualBox    | macOS    | ```/Users```     | ```/Users```                  |
-| VirtualBox    | Windows  | ```C://Users```  | ```/c/Users```                |
-| VMware Fusion | macOS    | ```/Users```     | ```/mnt/hgfs/Users```         |
-| KVM           | Linux    | なし               |                               |
-| HyperKit      | Linux    | なし（NFSマウントを参照） |                               |
+|---------------|----------|------------------|---------------------------|
+| VirtualBox    | Linux    | ```/home```      | ```/hosthome```           |
+| VirtualBox    | macOS    | ```/Users```     | ```/Users```              |
+| VirtualBox    | Windows  | ```C://Users```  | ```/c/Users```            |
+| VMware Fusion | macOS    | ```/Users```     | ```/mnt/hgfs/Users```     |
+| KVM           | Linux    | なし               |                           |
+| HyperKit      | Linux    | なし（NFSマウントを参照） |                           |
 
 <br>
 

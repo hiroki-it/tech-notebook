@@ -772,7 +772,7 @@ spec:
   source:
     helm:
       releaseName: foo
-      values: |-
+      values: |
         foo: foo
         bar: bar
         baz: baz
@@ -816,7 +816,7 @@ spec:
 あらかじめ、sopsを使用して、```values```ファイルを暗号化し、キーバリュー型ストレージに設定しておく。監視対象のリポジトリに```.sops.yaml```ファイルと```secrets```ファイル（キーバリュー型ストレージ）を配置しておく必要がある。
 
 ```yaml
-# secrets.yamlファイル
+# secretsファイル
 
 # キーバリュー型ストレージ
 data:

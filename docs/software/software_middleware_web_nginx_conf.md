@@ -223,7 +223,7 @@ http {
     sendfile           on;
     # ヘッダーとファイルをまとめてレスポンスするか否か
     tcp_nopush         on;
-    # keepaliveを維持する時間
+    # KeepAliveを維持する時間
     keepalive_timeout  65;
     default_type       application/octet-stream;
     include            /etc/nginx/mime.types;

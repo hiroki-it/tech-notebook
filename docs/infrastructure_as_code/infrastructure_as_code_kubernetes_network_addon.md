@@ -34,7 +34,7 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外はiptables、Cilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。iptablesのCNIの場合、Podの```L2```間でパケットを送受信する。CiliumのCNIの場合、Podの```L3```または```L4```間でパケットを送受信する。を使用する場合と比べて、より上位のレイヤーまでの経路で済むので、オーバーヘッドが数ない。
+オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 > ℹ️ 参考：
 >

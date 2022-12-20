@@ -277,6 +277,23 @@ $ helmfile -e prd destroy
 
 <br>
 
+### list
+
+#### ▼ list
+
+Helmfileでインストールしたチャートの一覧を取得する。
+
+```bash
+$ helmfile list
+
+NAME          NAMESPACE      ENABLED   LABELS   CHART              VERSION
+foo-chart     foo-namespace  true               charts/foo-chart   1.0.0
+bar-chart     bar-namespace  true               charts/bar-chart   1.0.0
+baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
+```
+
+<br>
+
 ### diff
 
 #### ▼ diffとは

@@ -389,7 +389,7 @@ creation_rules:
     encrypted_regex: "^secureJsonData$"
 ```
 
-helm-secretsプラグインを使用するために、```spec.source.helm.valueFiles```キー配下で```secrets://<secrets.yamlファイル>```を設定する。
+helm-secretsプラグインを使用するために、```spec.source.helm.valueFiles```キー配下で```secrets://<secretsファイル>```を設定する。
 
 > ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 

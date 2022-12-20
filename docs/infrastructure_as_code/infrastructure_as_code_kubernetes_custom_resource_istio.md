@@ -126,14 +126,14 @@ ztunnelのPod（L4）
 
 KubernetesとIstioには重複する能力がいくつか（例：サービスディスカバリー）ある。全てのPodの```istio-proxy```コンテナを注入する場合、kube-proxyとServiceによるサービスメッシュは不要になる。ただし、実際の運用場面ではこれを行うことはなく、マイクロサービスコンテナの稼働するPodのみでこれを行えばよい。そのため、```istio-proxy```コンテナを注入しないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。
 
-| 能力                              | Istio + Kubernetes + Envoy                                                                                                                                                                         | Kubernetes + Envoy                | Kubernetesのみ                                 |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------------------------------------------|
-| サービスメッシュコントロールプレーン                | Istiodコントロールプレーン                                                                                                                                                                                   | go-control-plane                  | なし                                           |
-| サービスディスカバリーでのルーティング先設定         | DestinationRule                                                                                                                                                                                    | ```route```キー                     | kube-proxy + Service                         |
-| サービスディスカバリーでのリスナー値               | EnvoyFilter + EndpointSlice                                                                                                                                                                        | ```listener```キー                  | kube-proxy + Service                         |
-| サービスディスカバリーでの追加サービス設定         | ServiceEntry + EndpointSlice                                                                                                                                                                       | ```cluster```キー                   | EndpointSlice                                |
-| Cluster外Nodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                                      | ```endpoint```キー                  | Egress                                       |
-| サービスレジストリ                         | etcd                                                                                                                                                                                               | etcd                              | etcd                                         |
+| 能力                          | Istio + Kubernetes + Envoy                                                                                                                                                                     | Kubernetes + Envoy                | Kubernetesのみ                                 |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------------------------------------------|
+| サービスメッシュコントロールプレーン            | Istiodコントロールプレーン                                                                                                                                                                               | go-control-plane                  | なし                                           |
+| サービスディスカバリーでのルーティング先設定     | DestinationRule                                                                                                                                                                                | ```route```キー                     | kube-proxy + Service                         |
+| サービスディスカバリーでのリスナー値           | EnvoyFilter + EndpointSlice                                                                                                                                                                    | ```listener```キー                  | kube-proxy + Service                         |
+| サービスディスカバリーでの追加サービス設定     | ServiceEntry + EndpointSlice                                                                                                                                                                   | ```cluster```キー                   | EndpointSlice                                |
+| Cluster外Nodeに対するサービスディスカバリー | WorkloadEntry                                                                                                                                                                                  | ```endpoint```キー                  | Egress                                       |
+| サービスレジストリ                     | etcd                                                                                                                                                                                           | etcd                              | etcd                                         |
 | Node外からのインバウンド通信のルーティング    | ・VirtualService + Gateway（内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である。）<br>・Ingress + Istio Ingressコントローラー + ClusterIP Service | ```route```キー  + ```listener```キー | Ingress + Ingressコントローラー + ClusterIP Service |
 
 
@@ -447,11 +447,11 @@ num  target     prot  opt  source     destination
 
 > ℹ️ 参考：https://istiobyexample.dev/monitoring-egress-traffic/
 
-| 宛先の種類          | 説明                         |
-|--------------------|-----------------------------|
-| PassthroughCluster | 明示的に設定された宛先           |
-| BlackHoleCluster   | 設定されていない任意の宛先          |
-| 外部のサービス          | KubernetesのClusterの外にあるサービス |
+| 宛先の種類          | 説明                         | 補足 |
+|--------------------|-----------------------------|---|
+| PassthroughCluster | 明示的に設定された宛先           | ```TLS Handshake timeout```となる場合、リトライが必要になる。|
+| BlackHoleCluster   | 設定されていない任意の宛先          | |
+| 外部のサービス          | KubernetesのClusterの外にあるサービス | |
 
 <br>
 

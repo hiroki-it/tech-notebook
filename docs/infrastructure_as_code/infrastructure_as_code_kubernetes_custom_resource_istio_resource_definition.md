@@ -129,6 +129,8 @@ DeploymentやPodで```istio-proxy```コンテナを定義することにより�
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -201,6 +203,8 @@ Istioリソースの一意に識別するための情報を設定する。
 
 Istioリソースを作成するNamespaceを設定する。デフォルトで```istio-system```になる。
 
+**＊実装例＊**
+
 ```yaml
 metadata:
   namespace: istio-system
@@ -217,6 +221,8 @@ metadata:
 指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -250,6 +256,8 @@ metadata:
 #### ▼ istio.io/rev
 
 指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -290,6 +298,8 @@ Deploymentの```spec.template```キーや、Podの```metadata```キーにて、`
 
 IstoOperatorの```spec.revision```キーと同じ。特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod
@@ -310,6 +320,8 @@ spec:
 ```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1
@@ -333,6 +345,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod
@@ -353,6 +367,8 @@ spec:
 ```istio-proxy```コンテナで使用するCPUサイズを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1
@@ -375,6 +391,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくはPod
@@ -395,6 +413,8 @@ spec:
 ```istio-proxy```コンテナで使用するメモリサイズを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1
@@ -427,6 +447,8 @@ spec:
 
 全てのNamespaceで使用できるようにする。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -441,6 +463,8 @@ spec:
 #### ▼ ```.```（ドット）
 
 全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -522,6 +546,8 @@ Podの同時接続数の制限数を設定する。制限を超過した場合�
 > - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
 > - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -544,6 +570,8 @@ spec:
 
 > ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=25
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -565,6 +593,8 @@ Podへのルーティング時に使用するロードバランシングアル�
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -582,6 +612,8 @@ spec:
 Podのポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -602,6 +634,8 @@ Podのポート番号別ルーティングで使用するポート番号を設�
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -620,6 +654,8 @@ spec:
 Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -657,6 +693,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -671,6 +709,8 @@ spec:
 #### ▼ match
 
 上書きしたい```envoy.yaml```ファイルのCluster項目を設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -690,6 +730,8 @@ spec:
 上書きしたい```envoy.yaml```ファイルのListener項目を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -712,6 +754,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -727,6 +771,8 @@ spec:
 #### ▼ patch
 
 ```envoy.yaml```ファイルの上書き方法と上書き内容を設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -752,6 +798,57 @@ spec:
 
 <br>
 
+### EnvoyFilter例
+
+#### ▼ KeepAliveの設定
+
+IngressGatewayでKeepAliveを実行できるようにする。
+
+> ℹ️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: istio-ingressgateway
+  namespace: foo
+spec:
+  configPatches:
+    - applyTo: LISTENER
+      match:
+        context: GATEWAY
+        listener:
+          name: 0.0.0.0_8443
+          portNumber: 8443
+      patch:
+        operation: MERGE
+        value:
+          socket_options:
+            - level: 1
+              name: 9
+              # KeepAliveを有効にする。
+              int_value: 1
+              state: STATE_PREBIND
+            - level: 6
+              name: 4
+              # 15秒間の無通信が発生したら、KeepAliveを実行する。
+              int_value: 15
+              state: STATE_PREBIND
+            - level: 6
+              name: 5
+              # 15秒間隔で、KeepAliveを実行する。
+              int_value: 15
+              state: STATE_PREBIND
+            - level: 6
+              name: 6
+              # 3回応答がなければ終了する。
+              int_value: 3
+              state: STATE_PREBIND
+```
+
+
+<br>
+
 ## 07. Gateway
 
 ### spec.selector
@@ -761,6 +858,8 @@ spec:
 Gatewayの適用対象のIngressGatewayに付与された```metadata.labels```キーを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -783,6 +882,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
@@ -800,6 +901,8 @@ spec:
 インバウンド通信を待ち受けるポート番号を設定する。IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて```30000```番ポートとする。一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -876,6 +979,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
@@ -931,6 +1036,8 @@ spec:
 | PERMISSIVE | 調査中...        |
 | STRICT     | 相互TLSを使用する。  |
 
+**＊実装例＊**
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -959,6 +1066,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
@@ -976,6 +1085,8 @@ spec:
 #### ▼ portsとは
 
 コンフィグストレージに登録する宛先のポート番号を設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -999,6 +1110,8 @@ spec:
 #### ▼ resolutionとは
 
 コンフィグストレージに登録する宛先のIPアドレスの設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1025,6 +1138,8 @@ spec:
 
 全てのNamespaceでのみ使用できるようにする。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1039,6 +1154,8 @@ spec:
 #### ▼ ```.```（ドット）
 
 全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1065,6 +1182,8 @@ spec:
 
 Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1079,6 +1198,8 @@ spec:
 #### ▼ mesh
 
 マイクロサービス間の通信を有効化するか否かを設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1109,6 +1230,8 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 発生させるフォールトインジェクションを設定する。
 
 > ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1169,6 +1292,8 @@ spec:
 
 ```istio-proxy```コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1190,6 +1315,8 @@ spec:
 > - https://sreake.com/blog/istio/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1208,6 +1335,8 @@ spec:
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1223,6 +1352,8 @@ spec:
 受信するインバウンド通信でルーティング先のポート番号を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1250,6 +1381,8 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 > - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1276,6 +1409,8 @@ spec:
 重み付けルーティングの割合を設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1312,6 +1447,8 @@ TCP/IPのプロトコルによるインバウンド通信を、Serviceを介し�
 
 #### ▼ match
 
+**＊実装例＊**
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1327,6 +1464,8 @@ spec:
 #### ▼ route.destination.host
 
 ```spec.http```キーと同じ機能である。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1344,6 +1483,8 @@ spec:
 #### ▼ route.destination.port
 
 ```spec.http```キーと同じ機能である。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1363,6 +1504,8 @@ spec:
 #### ▼ route.destination.subset
 
 ```spec.http```キーと同じ機能である。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

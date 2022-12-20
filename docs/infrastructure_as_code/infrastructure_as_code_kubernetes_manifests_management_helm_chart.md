@@ -484,7 +484,7 @@ metadata:
   name: blocked-ip-addresses-config-map
 data:
   # 『.』を指定し、反復的に出力する。
-  ip-addresses: |-
+  ip-addresses: |
     {{- range .Values.ipAddresses }}
       - {{ . }}
     {{- end }} 

@@ -37,6 +37,8 @@ OSI参照モデルは、物理層（```L1```）、データリンク層（```L2`
 
 ### アプリケーションへの操作がパケットになるまで
 
+アプリケーション層でパケットのメッセージ部分を作成し、レイヤーを経るたびにヘッダーを追加していく。パケット自体が暗号化されているため、実際の中身を確認することは難しい。
+
 ![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/osi-reference-model_packet.png)
 
 （１）アプリケーション層（```L7```）にて、アプリケーションの入力に応じて、パケットのメッセージ（データ）を作成し、```L7```ヘッダを追加する。

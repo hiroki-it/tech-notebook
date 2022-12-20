@@ -36,7 +36,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 9  | FormRequest                                           | バリデーションを実行する。                                                                                     |
 | 10 | Controller                                            | Controllerを基点として、DBにまで処理が走る。                                                                   |
 | 11 | Resource                                              | DBから取得したコレクション型データを配列型データに変換する。                                                             |
-| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                           |
+| 12 | Response                                              | Responseを実行する。配列型データをJSON型データに変換する。                                                         |
 | 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                            |
 | 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
 | 15 | レスポンスを返信する。                                         |                                                                                                     |

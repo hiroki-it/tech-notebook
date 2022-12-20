@@ -773,7 +773,7 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 > ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
 ```bash
-$ helm secrets template <チャートへのパス> -f <sopsが作成したsecrets.yamlファイルへのパス> -f <valuesファイルへのパス>
+$ helm secrets template <チャートへのパス> -f <sopsが作成したsecretsファイルへのパス> -f <valuesファイルへのパス>
 ```
 
 **＊例＊**
@@ -862,7 +862,7 @@ Encrypted ./values/secrets.yaml
 ```bash
 $ cat ./values/secrets.yaml
 
-# secrets.yamlファイル
+# secretsファイル
 db:
   user: *****
   password: *****

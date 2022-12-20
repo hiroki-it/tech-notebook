@@ -399,8 +399,13 @@ OnFailure=notify-email@%i.service
 
 serviceユニットのオプションを設定する。
 
+> ℹ️ 参考：https://serverfault.com/a/806620
+
 ```ini
 [Service]
+# デーモンの実行ユーザーを。もし設定しない場合、rootユーザーで実行する。
+# https://www.golinuxcloud.com/run-systemd-service-specific-user-group-linux/
+User=foo
 Type=notify
 EnvironmentFile=/etc/sysconfig/httpd
 # systemctl startコマンド時に実行するコマンド
