@@ -1287,7 +1287,9 @@ $ kubectl taint node foo-node app=batch:NoSchedule-
 
 ### top
 
-NodeやPodのサチュレーションを取得する。
+#### ▼ topとは
+
+NodeやPodに関して、ハードウェアリソースの消費量を取得する。
 
 ```bash
 $ kubectl top node
@@ -1295,6 +1297,26 @@ $ kubectl top node
 NAME       CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 minikube   523m         13%    4393Mi          27%       
 ```
+
+```bash
+$ kubectl top pod -n foo-namespace
+
+NAME      CPU(cores)   MEMORY(bytes)   
+foo-pod   5m           104Mi  
+```
+
+#### ▼ --containers
+
+Podのコンテナに関して、ハードウェアリソースの消費量を取得する。コンテナのリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
+
+```bash
+$ kubectl top pod --container -n foo-namespace
+
+POD       NAME            CPU(cores)   MEMORY(bytes)   
+foo-pod   foo-container   1m           19Mi            
+foo-pod   istio-proxy     5m           85Mi    
+```
+
 
 <br>
 

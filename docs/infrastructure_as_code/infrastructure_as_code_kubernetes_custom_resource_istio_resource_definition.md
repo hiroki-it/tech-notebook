@@ -802,7 +802,7 @@ spec:
 
 #### ▼ KeepAliveの設定
 
-IngressGatewayでKeepAliveを実行できるようにする。
+istio-ongressgatewayのPod内の```istio-proxy```コンテナで、KeepAliveを実行できるようにする。
 
 > ℹ️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 

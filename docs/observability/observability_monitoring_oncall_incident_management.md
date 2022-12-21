@@ -153,6 +153,23 @@ description: オンコールとインシデント管理＠監視の知見を記�
 
 <br>
 
+### インシデントの解決フェーズ
+
+#### ▼ 解決フェーズとは
+
+インシデントとして見なされたアラートが、どの程度解決できたのかを可視化する必要がある。
+
+#### ▼ 解決フェーズの種類
+
+| 解決フェーズ | 説明                                |
+|--------|-----------------------------------|
+| 発火     | アラートがインシデントとして見なされ、タスクが作成された。    |
+| 認知     | インシデントのタスクに対応中であるが、まだ解決できていない。 |
+| 解決済み  | インシデントのタスクを解決した。                  |
+
+
+<br>
+
 ### インシデント重要度レベル（severityレベル）
 
 #### ▼ インシデント重要度レベルとは
@@ -168,29 +185,6 @@ description: オンコールとインシデント管理＠監視の知見を記�
 | low               | いつかは解決する必要がある。              |
 | notification      | 解決する必要はない。                  |
 
-
-<br>
-
-### インシデントの解決フェーズ
-
-#### ▼ 解決フェーズとは
-
-インシデントとして見なされたアラートが、どの程度解決できたのかを可視化する必要がある。
-
-#### ▼ 解決フェーズの種類
-
-> ℹ️ 参考：
->
-> - https://thinkit.co.jp/article/13420
-> - https://support.pagerduty.com/docs/incidents#incident-statuses
-
-| 解決フェーズ     | 説明                                                                                                  |
-|--------------|-----------------------------------------------------------------------------------------------------|
-| Triggerd     | アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledgedフェーズを経ずに、そのままResolvedにしてもよい。 |
-| Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolvedフェーズに移行しない場合は、再びTriggerdフェーズに戻る。            |
-| Resoleved    | インシデントのタスクを解決した                                                                                     |
-
-![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_incident_phase.png)
 
 <br>
 
@@ -231,23 +225,6 @@ fields @timestamp, @message, @logStream
 （９）ログイベントがインシデントであれば、その旨をエスカレーションする。また、タスク化し、迅速に対応する。
 
 （１０）ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。タスク化し、時間のある時に対応する。
-
-#### ▼ PagerDutyの場合
-
-ここでは、PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたアラートをオンコール担当者が作業する。
-
-![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pagerduty_on-call.png)
-
-（１）CloudWatchアラームからPagerDutyのServiceに、アラートが通知される。
-
-（２）PagerDutyのServiceから。インシデントがメールや電話宛に通知される。
-
-（３）オンコール担当者は、PagerDutyのServiceを確認する。
-
-（４）解決フェーズがOpenになっているインシデント
-
-
-> ℹ️ 参考：https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
 
 
 <br>
@@ -458,7 +435,9 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 
 ```
 
-#### ▼ PagerDutyのテンプレート
+#### ▼ PagerDutyの事例
+
+PagerDuty社が公開しているテンプレートがある。
 
 > ℹ️ 参考：https://response.pagerduty.com/after/post_mortem_template/
 
@@ -503,7 +482,7 @@ MTxxメトリクスをダッシュボード化する。実際に時間と目標�
 - 社外への周知内容
 ```
 
-#### ▼ 他社事例
+#### ▼ その他の会社事例
 
 > ℹ️ 参考：https://response.pagerduty.com/after/effective_post_mortems/#examples
 

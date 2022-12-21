@@ -224,6 +224,11 @@ description: 可観測性の知見を記録しています。
 
 システム利用率（CPU利用率、メモリ理容室、ストレージ利用率、など）の飽和度のこと。例えば、以下の飽和度がある。```60```～```70```%で、警告ラインを設けておく必要がある。サーバー監視対象のメトリクスに属する。
 
+> ℹ️ 参考：
+> 
+> - https://codezine.jp/article/detail/11472
+> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html
+
 <br>
 
 ## 03. ログ

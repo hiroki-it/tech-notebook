@@ -1629,7 +1629,7 @@ data:
 
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのワーカーNodeに相当する。EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。一方で、各EC2のサチュレーションをユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2ワーカーNodeを使用するようにする。
+Fargate上で稼働するKubernetesのホストのこと。KubernetesのワーカーNodeに相当する。EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2ワーカーNodeを使用するようにする。
 
 - DaemonSetが必要
 - Fargateで設定可能な最大スペックを超えたスペックが必要
@@ -1664,7 +1664,7 @@ Fargateを設定する。
 
 ![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
 
-EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のサチュレーションをユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
 
 > ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 

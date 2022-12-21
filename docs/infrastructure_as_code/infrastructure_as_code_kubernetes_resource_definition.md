@@ -44,6 +44,23 @@ apiVersion: v1
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
+#### ▼ kubectl.kubernetes.io/last-applied-configuration
+
+kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。```kubectl edit```コマンドでマニフェストを変更してしまうと、```kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"extensions/v1beta1","kind":"Deployment" ....
+```
+
+<br>
+
 #### ▼ kubernetes.io/ingress.class
 
 現在、非推奨である。代わりとして、```spec.ingressClassname```キーを指定する。
@@ -1263,8 +1280,6 @@ spec:
 
 外部Ingressを使用する場合、オプションを設定する。
 
-#### ▼ AWS固有のキ
-
 <br>
 
 ### spec.ingressClassName
@@ -2285,7 +2300,20 @@ spec:
         limits:
           cpu: 500m
           memory: 128Mi
+    - name: istio-proxy
+      ...
 ```
+
+各コンテナの実際のハードウェアリソース消費量を確認する場合は、```kubectl top```コマンドを使用する。『```(実際の値) ÷ (メモリ上限値) × 100```』で計算できる。
+
+```bash
+$ kubectl top pod --container -n foo-namespace
+
+POD       NAME            CPU(cores)   MEMORY(bytes)   
+foo-pod   foo-gin         1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14%          
+foo-pod   istio-proxy     5m           85Mi          
+```
+
 
 #### ▼ volumeMount
 

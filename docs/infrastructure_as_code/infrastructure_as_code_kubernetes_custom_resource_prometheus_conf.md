@@ -113,21 +113,59 @@ groups:
 
 Retrievalのルールを設定する。
 
-> ℹ️ 参考：
-> 
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
-> - https://amateur-engineer-blog.com/prometheus-node-exporter/#toc2
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
+
+#### ▼ static_configs
+
+IPアドレスやポート番号の変わらない対象を監視する。
+
+> ℹ️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
 ```yaml
 scrape_configs:
+  # 自分自身を監視する。
   - job_name: prometheus
     static_configs:
       - targets:
         - localhost:9090'
+  # node-exporterの稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
         - <node-exporterの稼働するサーバーのIPアドレス>:9100
+```
+
+#### ▼ sd_configs
+
+IPアドレスやポート番号が動的に変化する対象を監視する。監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
+
+
+> ℹ️ 参考：
+> 
+> - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
+> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
+
+```yaml
+scrape_configs:
+  # AWS EC2をサービスディスカバリーで監視する。
+  - job_name: aws-ec2
+    ec2_sd_configs:
+      - port: 9100
+        filters:
+          - name: tag:Name
+            values:
+              - foo-instance
+  # node-exporterの稼働するサーバーをサービスディスカバリーで監視する。
+  - job_name: node-exporter
+    kubernetes_sd_configs:
+      # Service配下のPodを対象とする。
+      - role: endpoints
+      # 特定のPodのみを監視対象とする。
+      - source_labels:
+          - __meta_kubernetes_namespace
+          - __meta_kubernetes_pod_container_port_number
+        regex: foo-namespace;9100
+        action: keep
 ```
 
 <br>

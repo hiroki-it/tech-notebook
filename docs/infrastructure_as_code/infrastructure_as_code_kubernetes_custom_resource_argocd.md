@@ -88,6 +88,13 @@ spec:
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
+```bash
+$ kubectl -it exec foo-argocd-repo-server \
+    -c repo-server \
+    -n argocd \
+    -- bash -c "ls -la /tmp"
+```
+
 #### ▼ デバッグ
 
 ```repo-server```コンテナには```kubectl exec```コマンドでは接続できないが、直接的にコマンドを送信することは可能である。そのため、デバッグが可能である。

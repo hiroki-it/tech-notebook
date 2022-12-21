@@ -38,3 +38,9 @@
   > * ##### 📖 [︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_telemetry_google_search_console.html)
 
 <br>
+
+### インシデント管理ツール
+
+* #### 📖 [PagerDuty](https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_incident_management_pagerduty.html)
+
+<br>
