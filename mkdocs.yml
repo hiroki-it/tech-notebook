@@ -543,6 +543,8 @@ nav:
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
+      - ■ インシデント管理ツール:
+            - PagerDuty: observability/observability_incident_management_pagerduty.md
 
   - 👥 ソフトウェア開発手法論:
       - software_development_methodology/index.md
