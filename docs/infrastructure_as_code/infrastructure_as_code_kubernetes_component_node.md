@@ -106,11 +106,13 @@ KubernetesにはNodeグループというリソースがなく、グループを
 ```bash
 $ kubelet \
     --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf \
+    # kubeletの設定ファイル
     --kubeconfig=/etc/kubernetes/kubelet.conf \
-    --config=/var/lib/kubelet/config.yaml \ 
+    --config=/var/lib/kubelet/config.yaml \
     --authentication-token-webhook=true 
     --authorization-mode=Webhook \
     --container-runtime=remote \
+    # コンテナランタイムの設定
     --container-runtime-endpoint=unix:///run/containerd/containerd.sock \
     --max-pods=250 \
     --node-ip=*.*.*.* \
@@ -121,11 +123,40 @@ $ kubelet \
     ...
 ```
 
+#### ▼ kubelet.confファイル
+
+```/etc/kubernetes/kubelet.conf```ファイルにkubeletを設定する。
+
+```yaml
+apiVersion: v1
+clusters:
+  - cluster:
+      certificate-authority-data: MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+server: https://*.*.*.*:443
+name: default-cluster
+contexts:
+  - context:
+      cluster: default-cluster
+      namespace: default
+      user: default-auth
+    name: default-context
+current-context: default-context
+kind: Config
+preferences: {}
+users:
+  - name: default-auth
+    user:
+      client-certificate: /var/lib/kubelet/pki/kubelet-client-current.pem
+      client-key: /var/lib/kubelet/pki/kubelet-client-current.pem
+```
+
 <br>
 
 ### ログ
 
-ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
+#### ▼ kubeletのログの確認
+
+kubeletは、ワーカーNodeでデーモンとして常駐しているため、```journalctl```コマンドでログを取得できる。
 
 ```bash
 $ journalctl -u kubelet.service

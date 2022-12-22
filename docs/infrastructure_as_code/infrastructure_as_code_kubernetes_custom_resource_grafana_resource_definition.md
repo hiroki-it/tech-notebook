@@ -203,8 +203,6 @@ data:
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
 > - https://monitoring.mixins.dev
 
-<br>
-
 #### ▼ 接続
 
 Grafanaのダッシュボードに接続できる。ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
