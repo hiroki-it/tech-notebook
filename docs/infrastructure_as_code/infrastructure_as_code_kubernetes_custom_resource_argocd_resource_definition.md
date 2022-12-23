@@ -109,7 +109,7 @@ $ argocd app create guestbook \
     --repo https://github.com/hiroki-hasegawa/foo-manifests.git \
     --revision main \
     --dest-server https://kubernetes.default.svc \
-    --dest-namespace foo \
+    --dest-namespace foo-namespace \
     --auto-prune \
     --self-heal \
     --sync-option CreateNamespace=true
@@ -165,7 +165,7 @@ spec:
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: foo
+    namespace: foo-namespace
   syncPolicy:
     automated:
       prune: true
@@ -988,7 +988,7 @@ metadata:
   name: foo-application
 spec:
   destination:
-    namespace: foo
+    namespace: foo-namespace
 ```
 
 #### ▼ server
@@ -1127,7 +1127,7 @@ spec:
       destination:
         # ClusterのURLを展開する。
         server: '{{url}}'
-        namespace: foo
+        namespace: foo-namespace
 ```
 
 <br>

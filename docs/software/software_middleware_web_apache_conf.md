@@ -194,7 +194,9 @@ Group apache
 
 #### ▼ KeepAliveとは
 
-HTTPプロトコルのリクエストのクライアントに対して、セッションIDを付与するか否かを設定する。
+HTTPプロトコルのリクエストのクライアントとの接続時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
+
+> ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 
 **＊実装例＊**
 

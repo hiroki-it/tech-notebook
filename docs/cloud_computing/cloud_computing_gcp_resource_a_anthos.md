@@ -35,18 +35,18 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 GKE Cluster（コントロールプレーンNode、ワーカーNode、を含む）から構成される。
 
-#### ▼ attached-cluster
+#### ▼ アタッチCluster
 
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
-Anthos GKE Clusterの能力を外部のクラウドプロバイダーのClusterに委譲する。例えば、AWSで稼働するAnthos GKE Clusterの機能がEKS Clusterに委譲される。AnthosのKubernetesのバージョンは、各クラウドプロバイダーのClusterが対応するKubernetesのバージョンに依存する。
+AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS EKS、Azure AKS、RKE、K3s）のClusterに委譲する。AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
 
 > ℹ️ 参考：
 >
+> - https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/previous-generation/how-to/attach-kubernetes-clusters
 > - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 > - https://www.jetstack.io/blog/anthos-attached-clusters/
-
 
 #### ▼ Anthos、Kubernetesのバージョンの対応
 
@@ -267,7 +267,7 @@ apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
   name: foo-anthos-cluster
-  namespace: foo
+  namespace: foo-namespace
 spec:
   anthosBareMetalVersion: 1.12.0 # 現在のバージョン
 ...
@@ -310,7 +310,7 @@ apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
   name: foo-anthos-cluster
-  namespace: foo
+  namespace: foo-namespace
 spec:
   anthosBareMetalVersion: 1.12.1 # 新バージョン
 ...

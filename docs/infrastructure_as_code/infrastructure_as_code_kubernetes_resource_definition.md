@@ -1152,7 +1152,7 @@ endpoints:
   - targetRef:
       kind: Pod
       name: foo-pod
-      namespace: foo
+      namespace: foo-namespace
 ```
 
 

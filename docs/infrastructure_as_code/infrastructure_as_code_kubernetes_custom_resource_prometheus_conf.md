@@ -235,7 +235,7 @@ receivers:
 
 #### ▼ GitHubリポジトリから（バイナリとして）
 
-サーバー内でライブラリとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
+Node内でプロセスとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
 
 ```bash
 # node-exporterの場合
@@ -247,7 +247,7 @@ $ mv node_exporter-1.0.0.linux-amd64/node_exporter /usr/local/bin/node_exporter
 
 #### ▼ GitHubリポジトリから（チャートとして）
 
-GitHubから目的に応じたチャートをインストールし、リソースを作成する。
+Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

@@ -128,7 +128,7 @@ data/
         └── 00000000
 ```
 
-Prometheusの稼働するコンテナやサーバーに接続すれば、```data```ディレクトリを確認できる。
+Prometheusの稼働するコンテナやNodeに接続すれば、```data```ディレクトリを確認できる。
 
 ```bash
 $ kubectl exec -it prometheus -n prometheus -- sh
@@ -273,6 +273,32 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 | [elasticsearch-exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                   | Deployment型 | ```9114```    | 同上           |                      |
 | [redis-exporter](https://github.com/oliver006/redis_exporter)                            | Redisに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                           | Sidecar型    | ```9121```    | 同上           |                      |
 | open-telemetryのSDK                                                                       |                                                                                                                                                                                                                                                                           | 埋め込み型     |               |                |                      |
+
+<br>
+
+### 各Exporterから収集できるメトリクス
+
+#### ▼ node-exporterの場合
+
+node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+> ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
+
+```bash
+# Node内でコールする。
+$ curl http://localhost:9100/metrics
+
+# HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.
+# TYPE go_gc_duration_seconds summary
+
+go_gc_duration_seconds{quantile="0"} 4.1869e-05
+go_gc_duration_seconds{quantile="0.25"} 6.52e-05
+go_gc_duration_seconds{quantile="0.5"} 9.7895e-05
+go_gc_duration_seconds{quantile="0.75"} 0.000174561
+go_gc_duration_seconds{quantile="1"} 0.006224318
+go_gc_duration_seconds_sum 29.83657924
+...
+```
 
 <br>
 

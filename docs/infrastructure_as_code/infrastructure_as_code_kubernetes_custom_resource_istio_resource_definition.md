@@ -802,7 +802,7 @@ spec:
 
 #### ▼ KeepAliveの設定
 
-istio-ongressgatewayのPod内の```istio-proxy```コンテナで、KeepAliveを実行できるようにする。
+istio-ingressgatewayのPod内の```istio-proxy```コンテナで、KeepAliveを実行できるようにする。
 
 > ℹ️ 参考：https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
 
@@ -811,7 +811,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: istio-ingressgateway
-  namespace: foo
+  namespace: foo-namespace
 spec:
   configPatches:
     - applyTo: LISTENER

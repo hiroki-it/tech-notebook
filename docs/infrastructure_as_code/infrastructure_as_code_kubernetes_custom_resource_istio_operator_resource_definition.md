@@ -566,7 +566,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  namespace: foo
+  namespace: foo-namespace
 ```
 
 <br>
