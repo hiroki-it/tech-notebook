@@ -434,7 +434,9 @@ nav:
               - ■ マニフェスト管理:
                   - ■ Helm:
                       - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
-                      - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
+                      - ■ チャート:
+                          - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
+                          - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
                       - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
@@ -544,7 +546,7 @@ nav:
               - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
       - ■ インシデント管理ツール:
-            - PagerDuty: observability/observability_incident_management_pagerduty.md
+          - PagerDuty: observability/observability_incident_management_pagerduty.md
 
   - 👥 ソフトウェア開発手法論:
       - software_development_methodology/index.md
