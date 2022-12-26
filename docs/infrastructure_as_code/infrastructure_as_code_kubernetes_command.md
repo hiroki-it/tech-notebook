@@ -371,7 +371,6 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 > - https://www.opensourcetech.tokyo/entry/20211207/1638879696
 > - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion
 
-
 <br>
 
 ### describe

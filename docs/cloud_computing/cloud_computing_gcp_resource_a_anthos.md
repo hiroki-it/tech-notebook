@@ -298,7 +298,7 @@ $ chmod a+x bmctl
 # アップグレードする。
 $ ~/baremetal/bmctl upgrade cluster \
     -c <Cluster名> \
-    --kubeconfig <kubeconfigファイルの場所>
+    --kubeconfig <kubeconfigファイルへのパス>
 ```
 
 （３）Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
@@ -346,7 +346,7 @@ $ ./asmcli install \
 
 ```bash
 $ ./asmcli install \
-    --kubeconfig <kubeconfigファイルの場所> \
+    --kubeconfig <kubeconfigファイルへのパス> \
     --platform multicloud \
     --fleet_id <フリートのグループID> \
     --output_dir ./tmp \

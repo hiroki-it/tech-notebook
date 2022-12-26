@@ -341,7 +341,7 @@ workflows:
 
 **＊実装例＊**
 
-例えば、DBに対してマイグレーションを実行するためのECSタスクを起動する。```overrides```オプションでコンテナ定義のコマンドを上書きする。
+例えば、DBマイグレーションを実行するためのECSタスクを起動する。```overrides```オプションでコンテナ定義のコマンドを上書きする。
 
 ```yaml
 version: 2.1
@@ -362,7 +362,7 @@ jobs:
     security-group-ids: $AWS_SECURITY_GROUPS
     # ECSタスク定義名。最新リビジョン番号が自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
-    # ECSタスク起動時にマイグレーションコマンドを実行するように、Laravelコンテナのcommandキーを上書き
+    # ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
           
 workflows:

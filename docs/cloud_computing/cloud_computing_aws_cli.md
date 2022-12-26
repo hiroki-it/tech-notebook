@@ -609,6 +609,18 @@ $ aws secretsmanager get-secret-value \
 
 <br>
 
+### STS
+
+#### ▼ get-caller-identity
+
+一時的な認証情報を取得する。```~/.aws/cli/cache```ディレクトリ配下に認証情報のキャッシュが作成される。
+
+```bash
+$ aws sts get-caller-identity --profile foo
+```
+
+<br>
+
 ### Systems Manager（旧SSM）
 
 #### ▼ get-parameters-by-path

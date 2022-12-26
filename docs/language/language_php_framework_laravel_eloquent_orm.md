@@ -1052,7 +1052,7 @@ DELETE文を実行する。Eloquentモデルの```destroy```/```delete```メソ�
 
 #### ▼ SoftDeletesの有効化（論理削除）
 
-削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを使用する。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを使用する。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。DBマイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
 
 **＊実装例＊**
 
@@ -1082,7 +1082,7 @@ class FooDTO extends Model
 }
 ```
 
-マイグレーションファイルにて```softDeletes```メソッドを使用すると、削除フラグとして```deleted_at```カラムが追加されるようになる。```deleted_at```カラムのデフォルト値は```NULL```である。
+DBマイグレーションファイルにて```softDeletes```メソッドを使用すると、削除フラグとして```deleted_at```カラムが追加されるようになる。```deleted_at```カラムのデフォルト値は```NULL```である。
 
 ```php
 <?php

@@ -326,7 +326,7 @@ db.Where("age = 20").Find(&user)
 
 <br>
 
-### マイグレーション
+### DBマイグレーション
 
 #### ▼ ```TableName```メソッド
 

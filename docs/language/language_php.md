@@ -147,7 +147,7 @@ display_errors = on
 
 display_startup_errors = on
 
-# 開発環境では、ログをerror_log値の場所に出力
+# 開発環境では、ログをerror_log値へのパスに出力
 log_errors = on # 0(off)
 
 # 開発環境では、エラーログをファイルに出力
@@ -199,7 +199,7 @@ display_errors = off # on
 
 display_startup_errors = off
 
-# 本番環境では、エラーログをerror_log値の場所に出力
+# 本番環境では、エラーログをerror_log値へのパスに出力
 log_errors = on # 0(off)
 
  # 本番環境では、エラーログを標準エラー出力に出力

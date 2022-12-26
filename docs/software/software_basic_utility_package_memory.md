@@ -407,6 +407,7 @@ serviceユニットのオプションを設定する。
 # https://www.golinuxcloud.com/run-systemd-service-specific-user-group-linux/
 User=foo
 Type=notify
+# コマンドの引数（$OPTIONS変数）を定義したファイルを設定する。
 EnvironmentFile=/etc/sysconfig/httpd
 # systemctl startコマンド時に実行するコマンド
 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND

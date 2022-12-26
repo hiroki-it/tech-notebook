@@ -89,7 +89,7 @@ terraform {
     # .tfstateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
-    # credentialsファイルの場所
+    # credentialsファイルへのパス
     shared_credentials_file = "$HOME/.aws/credentials"
     # credentialsファイルのプロファイル名
     profile                 = "bar-profile"

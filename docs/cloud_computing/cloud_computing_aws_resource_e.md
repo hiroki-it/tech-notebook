@@ -1112,7 +1112,7 @@ Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化�
 
 ### ECSタスクの一時起動
 
-#### ▼ マイグレーション
+#### ▼ DBマイグレーション
 
 現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
@@ -1810,6 +1810,19 @@ InhibitDelayMaxSec=360
 EOF
 
 sudo systemctl restart systemd-logind
+```
+
+```Failed```ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。
+
+> ℹ️ 参考：https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
+
+```bash
+for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
+  echo $ns
+  kubectl get pods -n $ns -o json \
+    | jq -r '.items[] | select(.status.phase == "Failed") | select(.status.reason == "Shutdown" or .status.reason == "NodeShutdown" or .status.reason == "Terminated") | .metadata.name' \
+    | xargs --no-run-if-empty --max-args=100 --verbose kubectl -n $ns delete pods
+done
 ```
 
 <br>

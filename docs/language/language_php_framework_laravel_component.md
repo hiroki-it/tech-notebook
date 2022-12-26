@@ -223,7 +223,7 @@ return [
         ],
     ],
 
-    // マイグレーションファイルのあるディレクトリ
+    // DBマイグレーションファイルのあるディレクトリ
     "migrations"  => "migrations",
 
     // Redis接続情報
@@ -3083,7 +3083,7 @@ return [
 
 #### ▼ ```up```メソッド、```down```メソッド
 
-コマンドによるマイグレーション時にコールされる。```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。```down```メソッドで```up```メソッドの結果をロールバックする。
+コマンドによるDBマイグレーション時にコールされる。```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。```down```メソッドで```up```メソッドの結果をロールバックする。
 
 **＊実装例＊**
 
@@ -3134,7 +3134,7 @@ class CreateFooTable extends Migration
 
 **＊実装例＊**
 
-カラムを追加するためだけにマイグレーションファイルを作成する。
+カラムを追加するためだけにDBマイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration add_column --table=foos
@@ -3163,7 +3163,7 @@ class AddColumn extends Migration
 }
 ```
 
-マイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したDBマイグレーションファイルを削除する。
 
 ```bash
 $ php artisan migrate
@@ -3175,7 +3175,7 @@ $ php artisan migrate
 
 **＊実装例＊**
 
-カラム名を変更するためだけにマイグレーションファイルを作成する。
+カラム名を変更するためだけにDBマイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration rename_column --table=foos
@@ -3215,7 +3215,7 @@ class RenameColumn extends Migration
 }
 ```
 
-マイグレーションを実行すると、指定したテーブルのカラム名が変更される。実行後は、作成したマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラム名が変更される。実行後は、作成したDBマイグレーションファイルを削除する。
 
 ```bash
 $ php artisan migrate
@@ -3227,7 +3227,7 @@ $ php artisan migrate
 
 **＊実装例＊**
 
-データ型を変更するためだけにマイグレーションファイルを作成する。
+データ型を変更するためだけにDBマイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration change_column_data_type --table=foos
@@ -3267,7 +3267,7 @@ class ChangeColumnDataType extends Migration
 }
 ```
 
-マイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。実行後は、作成したマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。実行後は、作成したDBマイグレーションファイルを削除する。
 
 ```bash
 $ php artisan migrate
@@ -3279,7 +3279,7 @@ $ php artisan migrate
 
 **＊実装例＊**
 
-カラムを削除するためだけにマイグレーションファイルを作成する。
+カラムを削除するためだけにDBマイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration drop_column --table=foos
@@ -3318,7 +3318,7 @@ class DropColumn extends Migration
 }
 ```
 
-マイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したDBマイグレーションファイルを削除する。
 
 ```bash
 $ php artisan migrate
@@ -4583,7 +4583,7 @@ Laravelのライフサイクルで、ServiceContainerへのクラスのバイン
 
 ### MigrationMacroServiceProvider
 
-複数のテーブルに共通のカラムを作成するマイグレーション処理を提供する。
+複数のテーブルに共通のカラムを作成するDBマイグレーション処理を提供する。
 
 ```php
 <?php
@@ -4601,7 +4601,7 @@ use Illuminate\Support\ServiceProvider;
 class MigrationMacroServiceProvider extends ServiceProvider
 {
     /**
-     * サービスコンテナにマイグレーションメソッドをバインドします。
+     * サービスコンテナにDBマイグレーションメソッドをバインドします。
      *
      * @return void
      */
@@ -4638,7 +4638,7 @@ class MigrationMacroServiceProvider extends ServiceProvider
 }
 ```
 
-マイグレーションファイルにて、定義した```systemColumn```メソッドをコールする。
+DBマイグレーションファイルにて、定義した```systemColumn```メソッドをコールする。
 
 ```php
 <?php

@@ -1274,7 +1274,7 @@ jobs:
           command: |
             # 代わりにsleepコマンドでも良い。
             dockerize -wait tcp://localhost:3306 -timeout 1m
-      # コンテナに対してマイグレーションコマンドを送信
+      # コンテナに対してDBマイグレーションコマンドを送信
       - run:
           name: Run artisan migration
           command: |

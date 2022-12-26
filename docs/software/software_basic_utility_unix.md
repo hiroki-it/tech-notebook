@@ -488,10 +488,25 @@ map auto_home            0         0         0   100%       0          0  100%  
 
 ストレージの使用状況をメガバイトで取得する。
 
+**＊例＊**
+
+デバイスファイルと、これがマウントされたディレクトリの使用率を確認できる。
+
 ```bash
-# h：--human-readable
-# t：--total
-$ df -h -m -t
+# -h：--human-readable
+$ df -h -m --total
+
+Filesystem                        1M-blocks    Used   Available   ifree %iused  Mounted on
+devtmpfs                               1851       0        1851             0%  /dev
+tmpfs                                  1869       0        1869             0%  /dev/shm
+tmpfs                                  1869     192        1677            11%  /run
+tmpfs                                  1869       0        1869             0%  /sys/fs/cgroup
+/dev/mapper/rhel-root                 45031    3490       41541             8%  /
+/dev/sda1                              1014     202         813            20%  /boot
+
+...
+
+total                                 557167 390644      140909            74%  -
 ```
 
 <br>
@@ -771,8 +786,7 @@ $ find ./* -name "*.txt" -type f | xargs rm -rf
 
 ```bash
 # m：--mega
-# t：--total
-$ free -m --t
+$ free -m --total
 
               total        used        free      shared  buff/cache   available
 Mem:          15387        2682        6672           1        6032       12459

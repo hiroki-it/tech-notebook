@@ -60,7 +60,9 @@
   > * ##### <u>マニフェスト管理</u>
   > > * ##### <u>Helm</u>
   > > > * ##### 📖 [︎Helm](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html)
-  > > > * ##### 📖 [チャート](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html)
+  > > > * ##### <u>チャート</u>
+  > > > > * ##### 📖 [チャート](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html)
+  > > > > * ##### 📖 [関数](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html)
   > > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.html)
   > > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.html)
   > > > * ##### 📖 [︎Helmfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html)

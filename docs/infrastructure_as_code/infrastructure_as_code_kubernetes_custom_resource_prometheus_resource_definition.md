@@ -212,6 +212,21 @@ spec:
 
 <br>
 
+
+### 公開ルール
+
+#### ▼ 公開ルールとは
+
+独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール（例：kubernetes-mixins）を使用した方が良い。
+
+> ℹ️ 参考：https://monitoring.mixins.dev
+
+#### ▼ kubernetes-mixinsのPrometheusRule
+
+> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+
+<br>
+
 ### spec.groups
 
 #### ▼ groupsとは

@@ -22,7 +22,7 @@ description: PagerDuty＠インシデント管理ツールオンコールとイ�
 
 （１）CloudWatchアラームからPagerDutyのServiceに、アラートが通知される。
 
-（２）PagerDutyのServiceから。インシデントがメールや電話宛に通知される。
+（２）PagerDutyのServiceから。インシデントがメールや電話として通知される。執筆時点（2022/12/26）では、電話での通知は英語である。
 
 （３）オンコール担当者は、PagerDutyのServiceを確認する。
 

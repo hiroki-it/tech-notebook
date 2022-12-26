@@ -129,6 +129,18 @@ PodSecurityPolicy                policy/v1beta1                         v1.21.0 
 
 ## 04. 脆弱性テスト
 
-調査中...
+### kube-score
+
+#### ▼ セットアップ
+
+```bash
+$ brew install kube-score
+```
+
+#### ▼ score
+
+```bash
+$ helm template foo-chart -f values-prd.yaml | kube-score score -
+```
 
 <br>

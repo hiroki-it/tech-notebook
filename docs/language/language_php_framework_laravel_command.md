@@ -70,7 +70,7 @@ $ php artisan make:middleware <Middleware名>
 
 #### ▼ migration
 
-マイグレーションファイルを作成する。
+DBマイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration create_<テーブル名>_table
@@ -114,13 +114,13 @@ $ php artisan make:seeder <Seeder名>
 
 #### ▼ migrateとは
 
-マイグレーションファイルを元にテーブルを作成する。
+DBマイグレーションファイルを元にテーブルを作成する。
 
 ```bash
 $ php artisan migrate
 ```
 
-コマンド実行時、以下のエラーが出ることがある。マイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
+コマンド実行時、以下のエラーが出ることがある。DBマイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
 
 ```bash
 Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" not found
@@ -128,7 +128,7 @@ Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" n
 
 #### ▼ status
 
-マイグレーションの結果を確認する。
+DBマイグレーションの結果を確認する。
 
 ```bash
 $ php artisan migrate:status
@@ -144,13 +144,13 @@ $ php artisan migrate:status
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
-実際の使用場面として、マイグレーションに失敗した場合、1つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
+実際の使用場面として、DBマイグレーションに失敗した場合、1つ前の状態にロールバックしてDBマイグレーションファイルを修正した後、再びDBマイグレーションを行う。
 
 ```bash
-# マイグレーションに失敗したので、1つ前の状態にロールバック。
+# DBマイグレーションに失敗したので、1つ前の状態にロールバック。
 $ php artisan migrate:rollback --step=1
 
-# ファイル修正後にマイグレーションを実行
+# ファイル修正後にDBマイグレーションを実行
 $ php artisan migrate
 ```
 
@@ -176,7 +176,7 @@ $ php artisan migrate:refresh
 
 #### ▼ fresh
 
-全てのテーブルを削除と```migrate```を実行する。マイグレーションファイルの構文チェックを行わずに、強制的に実行される。
+全てのテーブルを削除と```migrate```を実行する。DBマイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
@@ -184,7 +184,7 @@ $ php artisan migrate:refresh
 $ php artisan migrate:fresh
 ```
 
-マイグレーション時、テーブルがすでに存在するエラーが起こることがある。この場合、テーブルがマイグレーションされる前までロールバックし、マイグレーションを再実行することが最適である。しかしそれが難しければ、このコマンドを実行する必要がある。
+DBマイグレーション時、テーブルがすでに存在するエラーが起こることがある。この場合、テーブルがDBマイグレーションされる前までロールバックし、DBマイグレーションを再実行することが最適である。しかしそれが難しければ、このコマンドを実行する必要がある。
 
 ```bash
 SQLSTATE[42S01]: <テーブル名> table or view already exists
@@ -192,7 +192,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
+DBマイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
