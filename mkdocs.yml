@@ -366,7 +366,9 @@ nav:
               - ■ Lで始まるAWSリソース:
                   - Lで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_l.md
                   - Lambda関数の実装: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
-              - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
+              - ■ Rで始まるAWSリソース:
+                  - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
+                  - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
               - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
               - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
               - Vで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_v.md
