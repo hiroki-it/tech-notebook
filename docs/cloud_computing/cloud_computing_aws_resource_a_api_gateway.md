@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】API Gateway＠AWS
-description: API Gateway＠AWSの知見を記録しています。
+title: 【IT技術の知見】API Gateway＠Aで始まるAWSリソース
+description: API Gateway＠Aで始まるAWSリソースの知見を記録しています。
 ---
 
-# API Gateway＠AWS
+# API Gateway＠Aで始まるAWSリソース
 
 ## はじめに
 

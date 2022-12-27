@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Sから始まるAWSリソース＠AWS
-description: Sから始まるAWSリソース＠AWSの知見を記録しています。
+title: 【IT技術の知見】Sで始まるAWSリソース＠AWS
+description: Sで始まるAWSリソース＠AWSの知見を記録しています。
 ---
 
-# ```S```から始まるAWSリソース＠AWS
+# ```S```で始まるAWSリソース＠AWS
 
 ## はじめに
 
