@@ -20,7 +20,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 ```bash
 # リポジトリの作成
-$ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
+$ curl -L https://rpm.nodesource.com/setup_<バージョン>.x | bash -
 
 # nodejsのインストールにnpmも含まれる
 $ yum install -y nodejs

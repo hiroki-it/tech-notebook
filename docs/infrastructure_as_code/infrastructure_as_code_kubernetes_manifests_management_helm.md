@@ -93,6 +93,7 @@ repository/ # チャートリポジトリ
 ├── bar-chart-2.0.0.tgz
 ├── baz-chart-1.0.0.tgz # bazチャートアーカイブ
 ├── baz-chart-2.0.0.tgz
+│
 ...
 ```
 
@@ -107,6 +108,7 @@ repository/ # マニフェストリポジトリ
 ├── foo-chart # fooチャート
 ├── bar-chart # barチャート
 ├── baz-chart # bazチャート
+│
 ...
 ```
 
@@ -132,6 +134,7 @@ repository/
 │   └── values.yaml # テンプレートの変数に出力する値を設定する。
 │
 ├── bar-chart/ # barチャート
+│
 ...
 ```
 

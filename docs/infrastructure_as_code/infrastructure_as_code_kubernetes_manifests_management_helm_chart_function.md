@@ -95,10 +95,10 @@ receivers:
 
 **＊実装例＊**
 
-もし、以下のようなSecretの生データがあるとする。
+もし、以下のような平文ファイルがあるとする。
 
 ```yaml
-# secret.raw.```.yaml```ファイル
+# plane.yamlファイル
 foo: FOO
 bar: bar
 ```
@@ -188,7 +188,7 @@ data:
 > ℹ️ 参考：https://github.com/helm/helm/issues/8026
 
 ```yaml
-# values.```.yaml```ファイル
+# values.yamlファイル
 global:
   env: prd
   appName: foo
@@ -210,7 +210,7 @@ metadata:
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
 ```yaml
-# values.```.yaml```ファイル
+# values.yamlファイル
 metadata:
   labels:
     # マニフェストで、int型で出力しようとする。
@@ -449,7 +449,7 @@ baz:
 
 
 ```yaml
-# values.```.yaml```ファイル
+# values.yamlファイル
 username: root
 password: 12345
 ```
@@ -524,10 +524,10 @@ spec:
 
 **＊実装例＊**
 
-もし、以下のようなSecretの生データがあるとする。
+もし、以下のような平文ファイルあるとする。
 
 ```yaml
-# secret.raw.```.yaml```ファイル
+# plane.yamlファイル
 foo: FOO
 bar: bar
 ```

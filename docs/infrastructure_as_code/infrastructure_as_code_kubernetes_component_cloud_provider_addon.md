@@ -70,7 +70,7 @@ EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働す�
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
 
 ```bash
-$ curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json
+$ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
 （２）```.json```ファイルを使用して、IAMポリシーを作成する。

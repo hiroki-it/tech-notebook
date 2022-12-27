@@ -3,7 +3,7 @@ title: 【IT技術の知見】ECS、EKS＠Eで始まるAWSリソース
 description: ECS、EKS＠Eで始まるAWSリソースの知見を記録しています。
 ---
 
-# ECS、EKS＠Eで始まるAWSリソース
+# ECS、EKS＠```E```で始まるAWSリソース
 
 ## はじめに
 

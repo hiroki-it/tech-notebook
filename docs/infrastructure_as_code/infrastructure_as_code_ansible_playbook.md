@@ -559,7 +559,7 @@ SELinuxを無効化する。
 
 **＊実装例＊**
 
-管理対象ノードで```chown```コマンドを実行する。
+管理対象ノードで```chown```コマンドを実行し、ファイルの所有権を設定する。
 
 ```yaml
 - name: Update foo-binary permission
@@ -735,7 +735,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.unarchiveとは
 
-管理対象ノードで```tar```コマンドを実行し、圧縮ファイルを解凍する。
+コントロールノードまたは管理対象ノードで```tar```コマンドを実行し、圧縮ファイルを解凍する。
 
 > ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
@@ -746,8 +746,29 @@ SELinuxを無効化する。
   ansible.builtin.unarchive:
     src: /tmp/foo-tool.tar.gz
     dest: /usr/local/bin
+    remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。
 ```
 
+<br>
+
+### ansible.builtin.user
+
+#### ▼ ansible.builtin.userとは
+
+シェルのユーザーを操作する。
+
+**＊実装例＊**
+
+ユーザーを作成する。無効なシェルを設定し、ログインできないようにしておく。
+
+> ℹ️ 参考：https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+
+```yaml
+- name: add user
+  ansible.builtin.user:
+    name: foo
+    shell: /bin/false
+```
 
 <br>
 
@@ -800,6 +821,7 @@ SELinuxを無効化する。
 ```yaml
 - gather_facts: yes
 ```
+
 ```yaml
 - vars:
     FOO: ansible_env.FOO

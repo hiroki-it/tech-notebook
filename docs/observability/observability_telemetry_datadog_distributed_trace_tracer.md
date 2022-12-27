@@ -23,7 +23,7 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 ```bash
 # GitHubリポジトリからパッケージをダウンロードする。
-$ curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
+$ curl -L https://github.com/DataDog/dd-trace-php/releases/download/0.63.0/datadog-php-tracer_0.63.0_amd64.deb
 
 # パッケージをインストールをする。
 $ dpkg -i datadog-php-tracer_0.69_amd64.deb

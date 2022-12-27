@@ -36,6 +36,7 @@ repository/
 ├── .github/
 │   └── workflows/
 │       └── foo.yml
+│
 ...
 ```
 
@@ -221,6 +222,7 @@ repository/
 │           │
 │           ├── baz/
 │           │   └── action.yml
+│           │
 ...        ...
 ```
 

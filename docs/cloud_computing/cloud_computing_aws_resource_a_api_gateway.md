@@ -3,7 +3,7 @@ title: 【IT技術の知見】API Gateway＠Aで始まるAWSリソース
 description: API Gateway＠Aで始まるAWSリソースの知見を記録しています。
 ---
 
-# API Gateway＠Aで始まるAWSリソース
+# API Gateway＠```A```で始まるAWSリソース
 
 ## はじめに
 

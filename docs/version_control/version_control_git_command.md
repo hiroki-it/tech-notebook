@@ -25,6 +25,26 @@ Basic認証でGitHubにログインし、クローンする。GitHubのユーザ
 $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
+ユーザ名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。 後者の場合、一つ目にURLに設定する方法がある。
+
+```bash
+$ git clone https://<ユーザー名>:<パスワード>@github.com/<組織名>/<GitHubリポジトリ名>.git
+```
+
+もう一つの方法として、```.netrc```ファイルに定義しておく。
+
+```bash
+machine github.com
+login <ユーザ名>
+password <パスワード>
+```
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
+> - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
+
+
 #### ▼ SSH接続
 
 SSH接続でGitHubにログインし、クローンする。GitHubの自身の公開鍵を登録する必要がある。サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
@@ -210,6 +230,26 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
+```
+
+<br>
+
+### submodule
+
+#### ▼ add
+
+カレントディレクトリにサブモジュールを作成する。
+
+```bash
+$ git submodule add https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
+```
+
+コマンドを実行すると、```.gitmodules```ファイルが作成される。
+
+```bash
+[submodule "modules/foo-sub-module"]
+	path = modules/foo-sub-module
+	url = https://github.com/hiroki-hasegawa/foo-sub-module.git
 ```
 
 <br>

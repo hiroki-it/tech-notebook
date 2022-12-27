@@ -17,7 +17,9 @@
   > * ##### 📖 [Bで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_b.html)
   > * ##### <u>︎Cで始まるAWSリソース</u>
   > > * ##### 📖 [︎Cで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_c.html)
+  > > * ##### 📖 [CloudFront](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_c_cloudfront.html)
   > > * ##### 📖 [CloudWatch](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_c_cloudwatch.html)
+  > > * ##### 📖 [Code系](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_c_code.html)
   > * ##### 📖 [Dで始まるAWSリソース︎](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_d.html)
   > * ##### <u>︎Eで始まるAWSリソース</u>
   > > * ##### 📖 [︎Eで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e.html)
@@ -30,7 +32,9 @@
   > * ##### <u>︎Lで始まるAWSリソース</u>
   > > * ##### 📖 [︎Lで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l.html)
   > > * ##### 📖 [︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html)
-  > * ##### 📖 [︎Rで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_r.html)
+  > * ##### <u>︎Rで始まるAWSリソース</u>
+  > > * ##### 📖 [︎Rで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_r.html)
+  > > * ##### 📖 [RDS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_r_rds.html)
   > * ##### 📖 [︎Sで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s.html)
   > * ##### 📖 [︎Tで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_t.html)
   > * ##### 📖 [︎Vで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_v.html)

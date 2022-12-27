@@ -15,6 +15,7 @@
   > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_command.html)
   > * ##### 📖 [Playbook](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html)
   > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html)
+  > * ##### 📖 [Ansible Galaxy](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html)
 
 * #### <u>Docker</u>
   > * ##### 📖 [︎Dockerfile](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)

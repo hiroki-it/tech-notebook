@@ -85,7 +85,7 @@ $ curl http://127.0.0.1:8080
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
 ```bash
-$ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+$ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 $ chmod +x /usr/local/bin/argocd
 ```
 
