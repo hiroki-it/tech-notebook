@@ -12,11 +12,15 @@
 * #### <u>AWSリソース</u>
   > * ##### <u>︎Aで始まるAWSリソース</u>
   > > * ##### 📖 [︎Aで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a.html)
+  > > * ##### 📖 [︎API Gateway](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway.html)
   > > * ##### 📖 [︎API Gatewayに対するymlインポート](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html)
   > * ##### 📖 [Bで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_b.html)
   > * ##### 📖 [︎Cで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_c.html)
   > * ##### 📖 [Dで始まるAWSリソース︎](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_d.html)
-  > * ##### 📖 [︎Eで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e.html)
+  > * ##### <u>︎Eで始まるAWSリソース</u>
+  > > * ##### 📖 [︎Eで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e.html)
+  > > * ##### 📖 [︎EC2](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_ec2.html)
+  > > * ##### 📖 [︎ECS、EKS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_ecs_eks.html)
   > * ##### 📖 [︎Fで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_f.html)
   > * ##### 📖 [︎Gで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_g.html)
   > * ##### 📖 [︎Iで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_i.html)
