@@ -349,7 +349,9 @@ nav:
                   - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_a_api_gateway.md
                   - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.md
               - Bで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_b.md
-              - Cで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_c.md
+              - ■ Cで始まるAWSリソース:
+                  - Cで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_c.md
+                  - CloudWatch: cloud_computing/cloud_computing_aws_resource_c_cloudwatch.md
               - Dで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_d.md
               - ■ Eで始まるAWSリソース:
                   - Eで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_e.md
