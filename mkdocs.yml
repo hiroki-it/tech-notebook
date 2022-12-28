@@ -359,20 +359,27 @@ nav:
                   - Eで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_e.md
                   - EC2: cloud_computing/cloud_computing_aws_resource_e_ec2.md
                   - ECS、EKS: cloud_computing/cloud_computing_aws_resource_e_ecs_eks.md
+                  - EFS: cloud_computing/cloud_computing_aws_resource_e_efs.md
+                  - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
               - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
               - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
               - Iで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_i.md
               - Kで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_k.md
               - ■ Lで始まるAWSリソース:
                   - Lで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_l.md
-                  - Lambda関数の実装: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
+                  - Lambda: cloud_computing/cloud_computing_aws_resource_l_lambda.md
+                  - Lambda関数: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
               - ■ Rで始まるAWSリソース:
                   - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
                   - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
               - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
               - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
-              - Vで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_v.md
-              - Wで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_w.md
+              - ■ Vで始まるAWSリソース:
+                  - ■ Vで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_v.md
+                  - ■ VPC: cloud_computing/cloud_computing_aws_resource_v_vpc.md
+              - ■ Wで始まるAWSリソース:
+                  - Wで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_w.md
+                  - WAF: cloud_computing/cloud_computing_aws_resource_w_waf.md
           - ■ 設計ポリシー:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
