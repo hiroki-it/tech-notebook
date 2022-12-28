@@ -276,32 +276,6 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 <br>
 
-### 各Exporterから収集できるメトリクス
-
-#### ▼ node-exporterの場合
-
-node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
-
-> ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
-
-```bash
-# Node内でコールする。
-$ curl http://localhost:9100/metrics
-
-# HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.
-# TYPE go_gc_duration_seconds summary
-
-go_gc_duration_seconds{quantile="0"} 4.1869e-05
-go_gc_duration_seconds{quantile="0.25"} 6.52e-05
-go_gc_duration_seconds{quantile="0.5"} 9.7895e-05
-go_gc_duration_seconds{quantile="0.75"} 0.000174561
-go_gc_duration_seconds{quantile="1"} 0.006224318
-go_gc_duration_seconds_sum 29.83657924
-...
-```
-
-<br>
-
 ## 04. PushGateway
 
 ### PushGatewayとは

@@ -13,7 +13,7 @@ description: PromQL＠Prometheus
 
 <br>
 
-## 01. ロジック
+## 01. 要素
 
 ### データ型
 
@@ -109,6 +109,17 @@ rate(foo_metrics[5m])
 
 メトリクス名の後に```{<ディメンション名>}```を設定することで、ディメンションを単位としてデータポイントを集計する。
 
+#### ▼ ディメンションの種類
+
+各メトリクスに共通するディメンションを示す。
+
+| 名前      | 説明                                          |
+|-----------|----------------------------------------------|
+| container | コンテナ名                                        |
+| service   | Service名                                     |
+| instance  | NodeのIPアドレスとポート番号                           |
+| job       | ```scrape_configs```キー配下の```job_name```キー名 |
+
 
 <br>
 
@@ -146,7 +157,7 @@ Prometheusが作成したチャンクの合計数を表す。
 
 <br>
 
-## 03. クエリのプラクティス
+## 02-02. 標準メトリクスを使用したクエリ
 
 ### データポイントの各種数値の算出
 
@@ -220,6 +231,108 @@ Prometheusで収集されたデータポイントの全サイズうち、リモ�
 ```bash
 rate(prometheus_remote_storage_bytes_total[1h]) *
 60 * 60 * 24
+```
+
+<br>
+
+## 03. node-exporter
+
+### node-exporterのメトリクス
+
+node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
+
+> ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
+
+```bash
+# Node内でコールする。
+$ curl http://localhost:9100/metrics
+
+# HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.
+# TYPE go_gc_duration_seconds summary
+
+go_gc_duration_seconds{quantile="0"} 4.1869e-05
+go_gc_duration_seconds{quantile="0.25"} 6.52e-05
+go_gc_duration_seconds{quantile="0.5"} 9.7895e-05
+go_gc_duration_seconds{quantile="0.75"} 0.000174561
+go_gc_duration_seconds{quantile="1"} 0.006224318
+go_gc_duration_seconds_sum 29.83657924
+...
+```
+
+<br>
+
+### node-exporterのメトリクスを使用したクエリ
+
+#### ▼ CPU使用率
+
+NodeのCPU使用率を取得する。
+
+> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
+
+```bash
+rate(node_cpu_seconds_total{mode!="idle"}[1m])
+```
+
+#### ▼ メモリ使用率
+
+Nodeのメモリ使用率を取得する。
+
+> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
+
+```bash
+node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+```
+
+#### ▼ ディスク使用率
+
+Nodeのディスク使用率を取得する。
+
+> ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
+
+```bash
+100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
+```
+
+```mountpoint```ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
+A
+```bash
+100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
+```
+
+```job```ディメンションを使用して、収集対象別にのディスク使用率を取得する。
+
+```bash
+100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
+```
+
+#### ▼ ディスクのI/OによるCPU使用率
+
+ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。```iostat```コマンドの```%util```指標と同じである。
+
+```bash
+rate(node_disk_io_time_seconds_total[1m])
+```
+
+> ℹ️ 参考：
+> 
+> - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
+> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+> - https://www.qoosky.io/techs/42affa2c4b
+
+#### ▼ パケットの受信サイズ
+
+Nodeのパケットの受信サイズを取得する。
+
+> ℹ️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
+
+```bash
+node_network_receive_packets_total
+```
+
+これを使用して、DDOS攻撃のアラートを作成することもできる。
+
+```bash
+(rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10
 ```
 
 <br>

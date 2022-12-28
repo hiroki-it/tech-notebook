@@ -601,9 +601,9 @@ $ traceroute *.*.*.* -T -p 443
 <br>
 
 
-### tracerouteの代わり
+## 06-02. tracerouteの代わり
 
-#### ▼ tracepath
+### tracepath
 
 > ℹ️ 参考：https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath
 
@@ -621,7 +621,11 @@ $ tracepath -n google.com
  5:  no reply
 ```
 
-#### ▼ tcptraceroute
+<br>
+
+### tcptraceroute
+
+#### ▼ tcptracerouteとは
 
 tracerouteコマンドのバージョンによっては、```-T```オプションがない場合があり、代わりとして```tcptraceroute```コマンドを使用する。
 
@@ -632,6 +636,15 @@ tracerouteコマンドのバージョンによっては、```-T```オプショ�
 ```bash
 $ tcptraceroute google.com 443
 ```
+
+#### ▼ -s、-p
+
+送信元のIPアドレスやポート番号を指定する。宛先ではないことに注意する。
+
+```bash
+$ tcptraceroute *.*.*.* -p 80
+```
+
 
 <br>
 

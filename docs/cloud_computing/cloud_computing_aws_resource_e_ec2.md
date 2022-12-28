@@ -200,7 +200,17 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 ### AMI OS
 
+#### ▼ AMI OSとは
+
+Linuxディストリビューション別にAMI OSを配布している。
+
+> ℹ️ 参考：https://aws.amazon.com/jp/mp/linux/
+
 #### ▼ Amazon Linux
+
+EC2インスタンスを作成するために最適化されたLinuxのこと。
+
+> ℹ️ 参考：https://www.acrovision.jp/service/aws/?p=609
 
 #### ▼ CentOS
 

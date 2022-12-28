@@ -239,7 +239,6 @@ Node内でプロセスとしてnode-exporterを動かす場合、GitHubリポジ
 
 ```bash
 # node-exporterの場合
-# https://github.com/prometheus/node_exporter
 
 # tmpディレクトリ配下にダウンロードする。
 $ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz 

@@ -292,6 +292,8 @@ Resources:
 
 > ℹ️ 参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 
+<br>
+
 ### ALB、ELB、NLB
 
 #### ▼ インプレースデプロイメントの場合

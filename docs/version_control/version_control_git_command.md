@@ -236,12 +236,20 @@ and the repository exists.
 
 ### submodule
 
+#### ▼ サブモジュールとは
+
+リポジトリ内の特定のディレクトリで他のリポジトリをリモート参照できるようにする。フォークと似た仕組みであり、```git submodule update```コマンドを実行しないと、サブモジュールの更新を取り込めない。そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
+
+> ℹ️ 参考：https://qiita.com/kohashi/items/f4a50c5436b326e9475b
+
 #### ▼ add
 
 カレントディレクトリにサブモジュールを作成する。
 
+> ℹ️ 参考：https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+
 ```bash
-$ git submodule add https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
+$ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
 ```
 
 コマンドを実行すると、```.gitmodules```ファイルが作成される。
@@ -250,6 +258,15 @@ $ git submodule add https://github.com/hiroki-hasegawa/foo-sub-module.git ./modu
 [submodule "modules/foo-sub-module"]
 	path = modules/foo-sub-module
 	url = https://github.com/hiroki-hasegawa/foo-sub-module.git
+	branch = main
+```
+
+#### ▼ update
+
+参照先のリポジトリで更新があった場合、それを取り込む。参照先の更新を自動的に取り込むことはできないため、以下のコマンドを必要なタイミングで実行する必要がある。上記を実行すると、サブモジュールのコミット情報が更新されて差分が生じるため、それをプッシュする。
+
+```bash
+$ git submodule update --remote <.gitmodulesに定義されたサブモジュール名>
 ```
 
 <br>

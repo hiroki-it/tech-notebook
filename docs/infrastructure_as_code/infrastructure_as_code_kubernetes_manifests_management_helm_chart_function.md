@@ -556,9 +556,38 @@ data:
 
 <br>
 
-## 05. コメントアウト
+## 05. 条件分岐
 
-#### ▼ Helmのコメントアウト
+### AND条件
+
+```and```演算子と```()```記号を使用する。
+
+> ℹ️ 参考：https://stackoverflow.com/a/49819239
+
+```yaml
+{{- if and (eq .Values.enableFoo true) (eq .Values.enableBar true) }}
+  ...
+{{- end }}
+```
+
+### OR条件
+
+```or```演算子と```()```記号を使用する。
+
+> ℹ️ 参考：https://stackoverflow.com/a/49819239
+
+```yaml
+{{- if or (eq .Values.env "dev") (eq .Values.env "tes") }}
+  ...
+{{- end }}
+```
+
+
+<br>
+
+## 06. コメントアウト
+
+### Helmのコメントアウト
 
 Helmのテンプレート内にコメントアウトを定義する。YAMLのコメントアウト（例：```#```）であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
 
@@ -567,11 +596,11 @@ Helmのテンプレート内にコメントアウトを定義する。YAMLのコ
 {{- /* コメント */}}
 ```
 
-> ℹ️ 参考：
->
-> - https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+> ℹ️ 参考：https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
 
-#### ▼ 細かな注意点
+<br>
+
+### 細かな注意点
 
 また、改行コードを削除するためのハイフン（```-}}```）は、定義しないようにする。また、```*/}}```にはスペースを含めずに、一繋ぎで定義する。
 
