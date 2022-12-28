@@ -38,7 +38,11 @@
   > * ##### <u>︎Rで始まるAWSリソース</u>
   > > * ##### 📖 [︎Rで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_r.html)
   > > * ##### 📖 [RDS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_r_rds.html)
-  > * ##### 📖 [︎Sで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s.html)
+  > * ##### <u>︎Sで始まるAWSリソース</u>
+  > > * ##### 📖 [︎Sで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s.html)
+  > > * ##### 📖 [S3](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_s3.html)
+  > > * ##### 📖 [STS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_sts.html)
+  > > * ##### 📖 [Systems Manager（旧SSM）](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_s_systems_manager.html)
   > * ##### 📖 [︎Tで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_t.html)
   > * ##### <u>︎Vで始まるAWSリソース</u>
   > > * ##### 📖 [︎Vで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_v.html)

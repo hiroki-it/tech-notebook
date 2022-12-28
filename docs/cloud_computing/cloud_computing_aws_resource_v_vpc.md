@@ -1,6 +1,6 @@
 ---
-title: 【IT技術の知見】VPC＠```V```で始まるAWSリソース
-description: VPC＠```V```で始まるAWSリソースの知見を記録しています。
+title: 【IT技術の知見】VPC＠Vで始まるAWSリソース
+description: VPC＠Vで始まるAWSリソースの知見を記録しています。
 ---
 
 # VPC＠```V```で始まるAWSリソース
