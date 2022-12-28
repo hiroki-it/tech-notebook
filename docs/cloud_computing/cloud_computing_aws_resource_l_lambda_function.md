@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Lambda関数の実装＠AWS
-description: Lambda関数の実装＠AWSの知見を記録しています。
+title: 【IT技術の知見】Lambda関数＠Lambda
+description: Lambda関数＠Lambdaの知見を記録しています。
 ---
 
-# Lambda関数の実装＠AWS
+# Lambda関数＠Lambda
 
 ## はじめに
 
@@ -684,6 +684,148 @@ exports.handler = (event, context, callback) => {
       return callback(null, response);
     });
 };
+```
+
+<br>
+
+### CloudFront → Lambda@Edge → S3
+
+![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge_dynamic-origin.png)
+
+**＊実装例＊**
+
+eventオブジェクトの```domainName```と```host.value```に代入されたバケットのドメイン名によって、転送先のバケットが決まる。そのため、この値を切り替えれば動的オリジンを実現できる。注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。
+
+```javascript
+"use strict";
+
+exports.handler = (event, context, callback) => {
+
+    const request = event.Records[0].cf.request;
+    // ログストリームに変数を出力する。
+    console.log(JSON.stringify({request}, null, 2));
+
+    const headers = request.headers;
+    const s3Backet = getBacketBasedOnDeviceType(headers);
+
+    request.origin.s3.domainName = s3Backet
+    request.headers.host[0].value = s3Backet
+    // ログストリームに変数を出力する。
+    console.log(JSON.stringify({request}, null, 2));
+
+    return callback(null, request);
+};
+
+/**
+ * デバイスタイプを基に、オリジンを切り替える。
+ *
+ * @param   {Object} headers
+ * @param   {string} env
+ * @returns {string} pcBucket|spBucket
+ */
+const getBacketBasedOnDeviceType = (headers) => {
+
+    const pcBucket = env + "-bucket.s3.amazonaws.com";
+    const spBucket = env + "-bucket.s3.amazonaws.com";
+
+    if (headers["cloudfront-is-desktop-viewer"]
+        && headers["cloudfront-is-desktop-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-tablet-viewer"]
+        && headers["cloudfront-is-tablet-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-mobile-viewer"]
+        && headers["cloudfront-is-mobile-viewer"][0].value === "true") {
+        return spBucket;
+    }
+
+    return spBucket;
+};
+```
+
+オリジンリクエストは、以下のeventオブジェクトのJSON型データにマッピングされている。注意点として、一部のキーは省略している。
+
+```yaml
+{
+  "Records": [
+    {
+      "cf": {
+        "request": {
+          "body": {
+            "action": "read-only",
+            "data": "",
+            "encoding": "base64",
+            "inputTruncated": false
+          },
+          "clientIp": "*.*.*.*",
+          "headers": {
+            "host": [
+              {
+                "key": "Host",
+                "value": "prd-sp-bucket.s3.ap-northeast-1.amazonaws.com"
+              }
+            ],
+            "cloudfront-is-mobile-viewer": [
+              {
+                "key": "CloudFront-Is-Mobile-Viewer",
+                "value": true
+              }
+            ],
+            "cloudfront-is-tablet-viewer": [
+              {
+                "key": "loudFront-Is-Tablet-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-smarttv-viewer": [
+              {
+                "key": "CloudFront-Is-SmartTV-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-desktop-viewer": [
+              {
+                "key": "CloudFront-Is-Desktop-Viewer",
+                "value": false
+              }
+            ],
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "Amazon CloudFront"
+              }
+            ]
+          },
+          "method": "GET",
+          "origin": {
+            "s3": {
+              "authMethod": "origin-access-identity",                
+              "customHeaders": {
+                  "env": [
+                      {
+                          "key": "env",
+                          "value": "prd"
+                      }
+                  ]
+              },
+              "domainName": "prd-sp-bucket.s3.amazonaws.com",
+              "path": "",
+              "port": 443,
+              "protocol": "https",
+              "region": "ap-northeast-1"
+            }
+          },
+          "querystring": "",
+          "uri": "/images/12345"
+        }
+      }
+    }
+  ]
+}
 ```
 
 <br>
