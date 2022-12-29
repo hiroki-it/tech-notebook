@@ -9,6 +9,8 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -16,7 +18,11 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 ## 01. ElastiCacheとは
 
-アプリケーションの代わりとして、セッション、クエリキャッシュ、を管理する。RedisとMemcachedがある。
+アプリケーションの代わりとして、セッション、クエリキャッシュ、を管理する。
+
+RedisとMemcachedがある。
+
+
 
 <br>
 
@@ -49,7 +55,11 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 ![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/redis-cluster.png)
 
-複数のRedisノードを持つRedisシャードから構成されている。```1```個のリクエストを処理するグループ単位である。
+複数のRedisノードを持つRedisシャードから構成されている。
+
+```1```個のリクエストを処理するグループ単位である。
+
+
 
 > ℹ️ 参考：
 >
@@ -59,7 +69,11 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 #### ▼ クラスターモード
 
-クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが作成される。反対に無効化すると、シャードは1つだけ作成される。
+クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが作成される。
+
+反対に無効化すると、シャードは1つだけ作成される。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
@@ -69,7 +83,15 @@ description: ElastiCache＠Eで始まるAWSリソースの知見を記録して�
 
 #### ▼ Redisシャードとは
 
-Redisノードのグループ。同じデータを保持するグループ単位であり、プライマリーノードとレプリカノードが含まれる。同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。一方で、AuroraのDBクラスターはこれに相当する概念である。
+Redisノードのグループ。
+
+同じデータを保持するグループ単位であり、プライマリーノードとレプリカノードが含まれる。
+
+同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。
+
+一方で、AuroraのDBクラスターはこれに相当する概念である。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 
@@ -81,13 +103,21 @@ Redisノードのグループ。同じデータを保持するグループ単位
 
 セッションやクエリキャッシュを保持するインスタンスのこと。
 
+
+
 <br>
 
 ### セッション管理機能
 
 #### ▼ セッション管理機能とは
 
-サーバー内のセッションデータの代わりにセッションIDを管理し、冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする。そのため、リリース後に既存のセッションが破棄されることがなくなり、ログイン状態を保持できるようになる。セッションIDについては、以下のリンクを参考にせよ。
+サーバー内のセッションデータの代わりにセッションIDを管理し、冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする。
+
+そのため、リリース後に既存のセッションが破棄されることがなくなり、ログイン状態を保持できるようになる。
+
+セッションIDについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -100,6 +130,8 @@ Redisノードのグループ。同じデータを保持するグループ単位
 #### ▼ クエリキャッシュ管理機能とは
 
 RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。
+
+
 
 ![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_1.png)
 
@@ -195,6 +227,8 @@ redis *****:6379> monitor
 
 プライマリーノードで障害が起こった場合に、リードレプリカノードをプライマリーノードに自動的に昇格する。
 
+
+
 | 障害の発生したノード | 挙動                                                   |
 |----------------|------------------------------------------------------|
 | プライマリーノード      | リードレプリカの1つがプライマリーノードに昇格し、障害が起きたプライマリーノードと置き換わる。 |
@@ -221,6 +255,8 @@ Redisクラスターでは、設定値（例：エンジンバージョン）の
 #### ▼ バックアップとインポートによるダウンタイムの最小化
 
 以下の手順で、ダウンタイムを最小限にしてアップグレードできる。
+
+
 
 （１）RedisのセッションやクエリキャッシュをS3にエクスポートする。
 

@@ -9,6 +9,8 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,6 +21,8 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを```1```個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
 
 <br>
@@ -26,6 +30,8 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 ### 冗長化
 
 コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
 
@@ -59,12 +65,18 @@ IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort
 
 単一障害点になることを防ぐために、一つのIngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
 
+
+
 <br>
 
 
 ### サブセット名を一つにする
 
-Istioリソースで設定するサブセット名は一つだけにする。これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
+Istioリソースで設定するサブセット名は一つだけにする。
+
+これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
 
@@ -111,7 +123,15 @@ spec:
 
 ### DestinationRuleを最初に更新する
 
-新しいサブセットを追加する場合、DestinationRuleを最初に更新する。これにより、ダウンタイムなしでサブセットを追加できる。DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
+新しいサブセットを追加する場合、DestinationRuleを最初に更新する。
+
+これにより、ダウンタイムなしでサブセットを追加できる。
+
+DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。
+
+DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
 
@@ -154,6 +174,8 @@ spec:
 ### ```istio-proxy```コンテナ
 
 メトリクスの名前空間を```istio-proxy```コンテナとした時の監視ポリシーは以下の通りである。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/metrics/
 

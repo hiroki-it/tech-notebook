@@ -9,6 +9,8 @@ description: PromQL＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +23,15 @@ description: PromQL＠Prometheus
 
 特定の時点の時系列データのこと。
 
+
+
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間の時系列データのこと。
+
+
 
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -33,11 +39,15 @@ description: PromQL＠Prometheus
 
 浮動小数点の数値型データのこと。
 
+
+
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ String
 
 文字列型データのこと。
+
+
 
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -49,6 +59,8 @@ description: PromQL＠Prometheus
 
 同じ種類のデータポイントをラベル単位で集約する。
 
+
+
 > ℹ️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
 ```bash
@@ -59,6 +71,8 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 #### ▼ count
 
 期間内の合計数を算出する。
+
+
 
 > ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
@@ -113,6 +127,8 @@ rate(foo_metrics[5m])
 
 各メトリクスに共通するディメンションを示す。
 
+
+
 | 名前      | 説明                                          |
 |-----------|----------------------------------------------|
 | container | コンテナ名                                        |
@@ -130,6 +146,8 @@ rate(foo_metrics[5m])
 #### ▼ prometheus_tsdb_head_samples_appended_total
 
 Prometheusが収集したデータポイントの合計数を表す。
+
+
 
 > ℹ️ 参考：
 >
@@ -149,6 +167,8 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 #### ▼ prometheus_tsdb_compaction_chunk_samples_sum
 
 Prometheusが作成したチャンクの合計数を表す。
+
+
 
 > ℹ️ 参考：
 >
@@ -241,6 +261,8 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
+
+
 > ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
 
 ```bash
@@ -267,6 +289,8 @@ go_gc_duration_seconds_sum 29.83657924
 
 NodeのCPU使用率を取得する。
 
+
+
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 ```bash
@@ -276,6 +300,8 @@ rate(node_cpu_seconds_total{mode!="idle"}[1m])
 #### ▼ メモリ使用率
 
 Nodeのメモリ使用率を取得する。
+
+
 
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
 
@@ -287,6 +313,8 @@ node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 
 Nodeのディスク使用率を取得する。
 
+
+
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 ```bash
@@ -294,12 +322,16 @@ Nodeのディスク使用率を取得する。
 ```
 
 ```mountpoint```ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
+
+
 A
 ```bash
 100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
 ```
 
 ```job```ディメンションを使用して、収集対象別にのディスク使用率を取得する。
+
+
 
 ```bash
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
@@ -323,6 +355,8 @@ rate(node_disk_io_time_seconds_total[1m])
 
 Nodeのパケットの受信サイズを取得する。
 
+
+
 > ℹ️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
 
 ```bash
@@ -330,6 +364,8 @@ node_network_receive_packets_total
 ```
 
 これを使用して、DDOS攻撃のアラートを作成することもできる。
+
+
 
 ```bash
 (rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10

@@ -9,6 +9,8 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 #### ▼ GitHubリポジトリから
 
-プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
+プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。
+
+GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
+
+
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
@@ -34,7 +40,11 @@ $ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driv
 
 ## 02. Pod＠Kubernetesでの設定
 
-SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。別途、Podに紐づくServiceAccountに、プロバイダーのSecretへの認可スコープを付与する必要がある。
+SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。
+
+別途、Podに紐づくServiceAccountに、プロバイダーのSecretへの認可スコープを付与する必要がある。
+
+
 
 > ℹ️ 参考：
 > 
@@ -77,7 +87,11 @@ spec:
 
 #### ▼ namespace
 
-Namespaceを設定する。Secretのマウント対象となるPodと同じNamespaceにする必要がある。
+Namespaceを設定する。
+
+Secretのマウント対象となるPodと同じNamespaceにする必要がある。
+
+
 
 > ℹ️ 参考：https://www.bigtreetc.com/column/eks-secrets/
 
@@ -95,6 +109,8 @@ metadata:
 #### ▼ providerとは
 
 Secretのプロバイダーを設定する。
+
+
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
@@ -114,6 +130,8 @@ spec:
 #### ▼ parametersとは
 
 プロバイダーに応じて、参照するSecretのデータを設定する。
+
+
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 

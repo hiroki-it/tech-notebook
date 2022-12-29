@@ -9,6 +9,8 @@ description: CPU＠ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,6 +27,8 @@ CPUは制御装置と演算装置からなる。CPUの制御部分は、プロ�
 ### CPUの歴史（※2009年まで）
 
 IntelとAMDにおけるCPUの歴史を以下に示す。
+
+
 
 ![IntelとAMDのCPUの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IntelとAMDにおけるCPUの歴史.png)
 
@@ -58,6 +62,8 @@ CPUの回路が処理と歩調を合わせるために使用する信号を、�
 
 CPUが1秒間に何回命令を実行するかを表す。
 
+
+
 （例題）
 
 ```mathematica
@@ -72,6 +78,8 @@ CPUが1秒間に何回命令を実行するかを表す。
 ![MIPSの例題](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MIPSの例題.png)
 
 1命令当たりの実行時間 (秒/命令) の求め方は以下の通り。
+
+
 
 ```
 1 ÷ 100 (×10^6 命令/秒) = 10n (秒/命令)

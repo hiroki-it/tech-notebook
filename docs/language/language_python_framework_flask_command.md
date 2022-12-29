@@ -9,6 +9,8 @@ description: コマンド＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -17,7 +19,11 @@ description: コマンド＠Flaskの知見を記録しています。
 
 ### flaskコマンドとは
 
-アプリケーションを実行する。あらかじめアプリケーションのエントリーポイントを環境変数の```FLASK_APP```に設定する必要がある。
+アプリケーションを実行する。
+
+あらかじめアプリケーションのエントリーポイントを環境変数の```FLASK_APP```に設定する必要がある。
+
+
 
 > ℹ️ 参考：https://flask.palletsprojects.com/en/2.0.x/cli/
 
@@ -32,6 +38,8 @@ $ export FLASK_APP=main.py
 #### ▼ routeとは
 
 登録済みのルーティングの一覧を取得する。
+
+
 
 ```bash
 $ flask routes
@@ -49,7 +57,11 @@ static          GET      /static/<path:filename>
 
 #### ▼ runとは
 
-Flaskクラスの```run```メソッドと同じ機能を持ち、インバウンド通信のリッスンを開始する。開発環境のみで推奨される方法である。
+Flaskクラスの```run```メソッドと同じ機能を持ち、インバウンド通信のリッスンを開始する。
+
+開発環境のみで推奨される方法である。
+
+
 
 ```bash
 $ flask run
@@ -64,6 +76,8 @@ $ flask run
 
 受信するインバウンド通信のIPアドレスを設定する。
 
+
+
 ```bash
 $ flask run --host=0.0.0.0
 ```
@@ -71,6 +85,8 @@ $ flask run --host=0.0.0.0
 #### ▼ --reload
 
 アプリケーションのホットリロードを有効化するか否かを設定する。
+
+
 
 > ℹ️ 参考：https://www.subarunari.com/entry/2018/03/10/%E3%81%84%E3%81%BE%E3%81%95%E3%82%89%E3%81%AA%E3%81%8C%E3%82%89_Flask_%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B_%E3%80%9CDebugger%E3%80%9C
 
@@ -82,11 +98,15 @@ $ flask run --reload
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
+
+
 ```bash
 $ flask run --port=8080
 ```
 
 Flaskが以前のプロセスを削除できなかった場合は、ポートが使用されてしまっているため、プロセスを削除する必要がある。
+
+
 
 ```bash
 OSError: [Errno 98] Address already in use

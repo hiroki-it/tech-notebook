@@ -9,6 +9,8 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -32,11 +34,19 @@ OpenTelemetryは、サードパーティパッケージ、OTelクライアント
 
 OpenTelemetry用パッケージは、OTelクライアントパッケージの一つであるAPIパッケージをコールし、テレメトリーデータを作成する。
 
+
+
 <br>
 
 ### OTelクライアントパッケージ
 
-OTelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、から構成されている。アプリケーションをインスツルメント化する。OpenTelemetry用パッケージからのテレメトリーデータを、APIパッケージで受け取り、最終的にOTelコレクターにこれを渡す。
+OTelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、から構成されている。
+
+アプリケーションをインスツルメント化する。
+
+OpenTelemetry用パッケージからのテレメトリーデータを、APIパッケージで受け取り、最終的にOTelコレクターにこれを渡す。
+
+
 
 > ℹ️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
@@ -47,7 +57,11 @@ OTelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 ### OTelコレクター
 
-OTelコレクターは、レシーバー、プロセッサー、エクスポーター、から構成されている。OTelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
+OTelコレクターは、レシーバー、プロセッサー、エクスポーター、から構成されている。
+
+OTelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
+
+
 
 > ℹ️ 参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
 

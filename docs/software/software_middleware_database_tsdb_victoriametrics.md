@@ -9,6 +9,8 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,21 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ リモートストレージとして
 
-ロードバランサー、vm-select、vm-storage、vm-insert、から構成されている。リモートストレージとして、Prometheusで収集したメトリクスを保管する。シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。なおPrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
+ロードバランサー、vm-select、vm-storage、vm-insert、から構成されている。
+
+リモートストレージとして、Prometheusで収集したメトリクスを保管する。
+
+シングルNodeモードとクラスターNodeモードがあり、Clusterモードでは各コンポーネントが冗長化される。
+
+エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。
+
+また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。
+
+なおPrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。
+
+代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
+
+
 
 > ℹ️ 参考：
 >
@@ -31,7 +47,17 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ 監視ツールとして
 
-vm-agent、vm-storage、vm-alert、から構成されている。また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
+vm-agent、vm-storage、vm-alert、から構成されている。
+
+また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
+
+vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。
+
+vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
+
+VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
+
+
 
 > ℹ️ 参考：
 >
@@ -46,11 +72,17 @@ vm-agent、vm-storage、vm-alert、から構成されている。また、アラ
 
 #### ▼ ロードバランサーとは
 
-HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
+HTTPSプロトコルの```8224```番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。
+
+このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
+
+
 
 #### ▼ 読み出しエンドポイント
 
 PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
+
+
 
 > ℹ️ 参考：https://docs.victoriametrics.com/url-examples.html#apiv1query
 
@@ -64,6 +96,8 @@ $ curl \
 #### ▼ 書き込みエンドポイント
 
 PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
+
+
 
 > ℹ️ https://docs.victoriametrics.com/#high-availability
 
@@ -80,19 +114,31 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 クライアントから読み出しリクエストを受信し、vm-storageからデータを読み出す。
 
+
+
 <br>
 
 ### vm-storage
 
 #### ▼ vm-storageとは
 
-データをファイルシステムに保管する。保管時にデータを圧縮している。公式での情報は見つからなかったが、圧縮率は約```10%```らしい。
+データをファイルシステムに保管する。
+
+保管時にデータを圧縮している。
+
+公式での情報は見つからなかったが、圧縮率は約```10%```らしい。
+
+
 
 > ℹ️ 参考：https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ ディレクトリ構成
 
-VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡すことにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
+VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起動する時に、```storageDataPath```オプションでディレクトリ名を渡すことにより、マウント先のディレクトリを設定できる。
+
+ディレクトリ構造は以下のようになっている。
+
+
 
 ```yaml
 /var/lib/victoriametrics/
@@ -110,6 +156,8 @@ VictoriaMetricsのプロセスを```victoria-metrics-prod```コマンドで起�
 
 ```du```コマンドを使用して、ストレージ使用量を確認できる。
 
+
+
 ```bash
 $ du -hs /var/lib/victoriametrics/data
 
@@ -118,7 +166,15 @@ $ du -hs /var/lib/victoriametrics/data
 
 #### ▼ ReadOnlyモード
 
-vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
+vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。
+
+これを回避するために、ReadOnlyモードがある。
+
+ReadOnlyモードにより、vm-storageの空きサイズが```minFreeDiskSpaceBytes```オプション値を超えると、書き込みできなくなるような仕様になっている。
+
+これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
+
+
 
 > ℹ️ 参考：https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
@@ -138,6 +194,8 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量�
 
 ここでは、増加率を以下の数式で算出している。
 
+
+
 ```mathematica
 (増加率) = ((当該時刻のサイズ) - (前時刻のサイズ)) ÷ (前時刻のサイズ) × 100
 ```
@@ -152,7 +210,15 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量�
 | ```23:00:00``` | ```13023```             | ```0.0020```       | ```26```            |
 | ```24:00:00``` | ```12900```             | ```-0.0094```      | ```123```           |
 
-増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。そのため、以下の数式で```10```日分のサイズを算出できる。
+増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。
+
+これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
+
+もし、データの保管日数が```10```日分という非機能的な品質であれば、vm-storageは常に過去```10```日分のデータを保管している必要がある。
+
+そのため、以下の数式で```10```日分のサイズを算出できる。
+
+
 
 ```mathematica
 (増加量の合計)
@@ -168,6 +234,8 @@ vm-storageの```/var/lib/victoriametrics```ディレクトリ配下の増加量�
 
 VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvm-storageのサイズ以上にする必要がある。
 
+
+
 <br>
 
 ### vm-insert
@@ -175,6 +243,8 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 #### ▼ vm-insertとは
 
 クライアントから書き込みリクエストを受信し、vm-storageにデータを書き込む。
+
+
 
 <br>
 
@@ -184,6 +254,8 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュー�
 
 
 ```systemctl```コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
+
+
 
 > ℹ️ 参考：
 >
@@ -222,6 +294,8 @@ WantedBy=multi-user.target
 ```
 
 (２）victoriametricsのプロセスを```systemctl```で起動する。
+
+
 
 
 ```bash

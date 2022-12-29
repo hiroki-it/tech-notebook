@@ -9,6 +9,8 @@ description: Anthos＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,6 +23,8 @@ description: Anthos＠GCPの知見を記録しています。
 #### ▼ 構造
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
+
+
 
 > ℹ️ 参考：
 >
@@ -60,6 +64,8 @@ AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS E
 #### ▼ Anthos Service Meshとは
 
 Istioから構成される。
+
+
 
 > ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 
@@ -104,19 +110,27 @@ cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを�
 
 GCP上で```kubectl```コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
+
+
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
 
 #### ▼ fleet-workload-identity
 
-GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
+GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。
+
+これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
+
+
 
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
 #### ▼ anetd
 
 cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
@@ -174,7 +188,11 @@ $ systemctl start docker
 
 #### ▼ ブートストラップクラスター
 
-Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+Kindがコンテナ内で作成する疑似的なAnthos Clusterのこと。
+
+```~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig```ファイルを指定することで、ブートストラップクラスターのkube-apiserverにリクエストを送信できる。
+
+
 
 ```bash
 $ kubectl get pod \
@@ -189,6 +207,8 @@ $ kubectl get pod \
 ### on-GCPの仕組み
 
 GCP環境上にAnthos GKE Clusterを作成する。
+
+
 
 <br>
 
@@ -210,6 +230,8 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 ```bmctl upgrade```コマンドの実行時に実施されるプリフライトチェックのみを実施する。
 
+
+
 ```bash
 $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 ```
@@ -219,6 +241,8 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 #### ▼ updateとは
 
 カスタムリソース定義の設定値を変更し、kube-apiserverに送信する。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
 
@@ -234,6 +258,8 @@ $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 
 AnthosのKubernetesのバージョンをプリフライトチェックで検証し、成功すればアップグレードする。
 
+
+
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace 
 ```
@@ -241,6 +267,8 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace
 #### ▼ --reuse-bootstrap-cluster
 
 既存のブートストラップクラスターを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
+
+
 
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster
@@ -274,6 +302,8 @@ spec:
 ```
 
 また、Anthos GKE ClusterのバージョンとKubernetesのバージョンの対応関係を確認する。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
@@ -358,6 +388,8 @@ $ ./asmcli install \
 #### ▼ 共通の事後処理
 
 データプレーンが新バージョンのIstiodコントロールプレーンに紐づくようにする。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#switch_to_the_new_control_plane
 

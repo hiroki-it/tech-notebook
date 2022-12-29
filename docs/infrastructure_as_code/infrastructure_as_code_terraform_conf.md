@@ -9,6 +9,8 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 #### ▼ ```.tfstate```ファイルとは
 
-実インフラのインフラの状態が定義されたjsonファイルのこと。バックエンドの場所に限らず、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
+実インフラのインフラの状態が定義されたjsonファイルのこと。
+
+バックエンドの場所に限らず、```terraform apply```コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。
+
+
 
 > ℹ️ 参考：
 >
@@ -87,11 +93,21 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 #### ▼ ```.tfstate```ファイルのロック
 
-```.tfstate```ファイルの競合を防ぐために、```terraform apply```コマンドの処理中に```.tfstate```ファイルはロックされる。```terraform apply```コマンドが完了すれば、ロックは解除される。ロックされている間、他のユーザーは一連の```terraform```コマンドを実行できなくなる。
+```.tfstate```ファイルの競合を防ぐために、```terraform apply```コマンドの処理中に```.tfstate```ファイルはロックされる。
+
+```terraform apply```コマンドが完了すれば、ロックは解除される。
+
+ロックされている間、他のユーザーは一連の```terraform```コマンドを実行できなくなる。
+
+
 
 #### ▼ 残骸ロックの解除方法
 
-```terraform apply```コマンドの完了前に処理を強制中断してしまうと、ロックが残ってしまう。これが起こると、以降、一連の```terraform```コマンドを実行できなくなってしまう。
+```terraform apply```コマンドの完了前に処理を強制中断してしまうと、ロックが残ってしまう。
+
+これが起こると、以降、一連の```terraform```コマンドを実行できなくなってしまう。
+
+
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
 
@@ -113,6 +129,8 @@ Lock Info:
 
 その場合、```terraform force-unlock```コマンドでIDを指定すれば、ロックを解除できる。
 
+
+
 ```bash
 $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```
@@ -131,7 +149,11 @@ $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
 > - https://qiita.com/mziyut/items/0f4109c425165f5011df
 
-もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
+もし、異なるプロバイダーを使用したい場合は、以下のコマンドを実行する。
+
+これにより、```.terraform.lock.hcl```ファイルのアップグレード/ダウングレードが実行される。
+
+
 
 ```bash
 $ terraform init -upgrade
@@ -140,6 +162,8 @@ $ terraform init -upgrade
 #### ▼ version
 
 プロバイダーのバージョンを設定する。
+
+
 
 ```terraform
 provider "registry.terraform.io/hashicorp/aws" {
@@ -170,6 +194,8 @@ provider "registry.terraform.io/hashicorp/aws" {
 #### ▼ hashes
 
 ハッシュ値を設定する、タグごとに役割が異なる。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 
@@ -205,11 +231,17 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 ```terraform```コマンドの実行者のみに適用する動作を設定する。
 
+
+
 > ℹ️ 参考：https://www.terraform.io/cli/config/config-file#provider-plugin-cache
 
 #### ▼ plugin_cache_dir
 
-最初の```terraform init```コマンド時に、プロバイダープラグインのキャッシュを作成する。以降、プロバイダープラグインをインストールする必要がなくなり、```terraform init```コマンドの速度を改善できる。
+最初の```terraform init```コマンド時に、プロバイダープラグインのキャッシュを作成する。
+
+以降、プロバイダープラグインをインストールする必要がなくなり、```terraform init```コマンドの速度を改善できる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -229,6 +261,8 @@ plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
 
 クレデンシャル情報は、```~/.aws/credentials```ファイルに記載されている。
 
+
+
 ```ini
 # 標準プロファイル
 [default]
@@ -242,6 +276,8 @@ aws_secret_access_key=*****
 ```
 
 ```credentials```ファイルを読み出し、プロファイル名を設定することにより、クレデンシャル情報を参照できる。
+
+
 
 **＊実装例＊**
 
@@ -283,7 +319,11 @@ provider "aws" {
 
 #### ▼ 環境変数による設定
 
-```credentials```ファイルではなく、```export```コマンドを使用して、必要な情報も設定できる。参照できる環境変数名は決まっている。
+```credentials```ファイルではなく、```export```コマンドを使用して、必要な情報も設定できる。
+
+参照できる環境変数名は決まっている。
+
+
 
 ```bash
 # regionの代わり
@@ -302,7 +342,11 @@ $ export AWS_PROFILE="bar-profile"
 $ export AWS_SESSION_TOKEN="*****"
 ```
 
-環境変数を設定すると、値が```provider```ブロックに自動的に出力される。CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
+環境変数を設定すると、値が```provider```ブロックに自動的に出力される。
+
+CircleCIのような、一時的に環境変数が必要になるような状況では有効な方法である。
+
+
 
 ```terraform
 # @ルートモジュール
@@ -337,13 +381,19 @@ provider "aws" {}
 
 ```terraform```コマンドでクラウドプロバイダーとパケットを送受信ためには、クラウドプロバイダーへの認可スコープが必要にある。
 
+
+
 <br>
 
 ### 設定方法
 
 #### ▼ ハードコーディングによる設定
 
-リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
+リージョンの他、アクセスキーIDとシークレットアクセスキーをハードコーディングで設定する。
+
+誤ってコミットしてしまう可能性があるため、ハードコーディングしないようにする。
+
+
 
 **＊実装例＊**
 

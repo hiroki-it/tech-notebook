@@ -9,6 +9,8 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,6 +22,8 @@ description: 設計ポリシー＠Kustomizeの知見を記録しています。
 #### ▼ 実行環境別
 
 実行環境別に```kustomization.yaml```ファイルを定義し、実行環境別に異なるリソース定義ファイルを作成できるようにする。
+
+
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 

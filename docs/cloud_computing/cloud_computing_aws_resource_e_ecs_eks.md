@@ -9,6 +9,8 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -49,11 +51,17 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 #### ▼ コントロールプレーンとは
 
-コンテナオーケストレーションを実行する環境を提供する。データプレーンのVPC外に存在している。
+コンテナオーケストレーションを実行する環境を提供する。
+
+データプレーンのVPC外に存在している。
+
+
 
 #### ▼ ECSの場合
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
 
@@ -62,6 +70,8 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 #### ▼ EKSの場合
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
+
+
 
 > ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
@@ -78,6 +88,8 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 #### ▼ EC2ワーカーNodeの場合
 
 EC2インスタンスをワーカーNodeとして、コンテナを作成する。
+
+
 
 #### ▼ FargateワーカーNodeの場合
 
@@ -152,6 +164,8 @@ KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。IRSA�
 
 ECSサービスの管理グループ単位のこと。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
 
 ![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_cluster.png)
@@ -160,7 +174,11 @@ ECSサービスの管理グループ単位のこと。
 
 ### ECSサービス
 
-ECSタスクの管理グループ単位のこと。ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。
+ECSタスクの管理グループ単位のこと。
+
+ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html
 
@@ -170,7 +188,11 @@ ECSタスクの管理グループ単位のこと。ECSタスクへのロード�
 
 #### ▼ ECSタスク
 
-コンテナインスタンスの管理グループ単位のこと。ECSタスク定義を基に作成される。
+コンテナインスタンスの管理グループ単位のこと。
+
+ECSタスク定義を基に作成される。
+
+
 
 ![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task.png)
 
@@ -178,7 +200,11 @@ ECSタスクの管理グループ単位のこと。ECSタスクへのロード�
 
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
-ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。Fargateの場合、ECSコンテナエージェントがプリインストールされている。
+ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。
+
+Fargateの場合、ECSコンテナエージェントがプリインストールされている。
+
+
 
 > ℹ️ 参考：
 >
@@ -187,13 +213,23 @@ ECSタスク実行ロールを使用して、ECSタスクのライフサイク�
 
 #### ▼ ECSタスク定義
 
-ECSタスクをどのような設定値を基に作成するかを設定できる。ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
+ECSタスクをどのような設定値を基に作成するかを設定できる。
+
+ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。
+
+ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。
+
+
 
 #### ▼ ECSタスクのライフサイクルフェーズ
 
 ![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task_lifecycle_phase.png)
 
-ECSタスクのライフサイクルにはフェーズがある。ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にフェーズを持つ。
+ECSタスクのライフサイクルにはフェーズがある。
+
+ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にフェーズを持つ。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
@@ -214,7 +250,11 @@ ECSタスクのライフサイクルにはフェーズがある。ECSタスク�
 
 #### ▼ サービスロール
 
-ECSサービスがECSタスクを操作するために必要なロールである。サービスリンクロールに含まれ、ECSの作成時に自動的に紐付けられる。
+ECSサービスがECSタスクを操作するために必要なロールである。
+
+サービスリンクロールに含まれ、ECSの作成時に自動的に紐付けられる。
+
+
 
 > ℹ️ 参考：
 >
@@ -225,7 +265,11 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 ![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_container-instance-role.png)
 
-コンテナのホストが他のAWSリソースにアクセスするために必要なロールである。Fargateの場合、不要である。
+コンテナのホストが他のAWSリソースにアクセスするために必要なロールである。
+
+Fargateの場合、不要である。
+
+
 
 > ℹ️ 参考：
 >
@@ -236,7 +280,11 @@ ECSサービスがECSタスクを操作するために必要なロールであ�
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-role.png)
 
-ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
+ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。
+
+アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
+
+
 
 > ℹ️ 参考：
 >
@@ -246,6 +294,8 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 **＊実装例＊**
 
 アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。
+
+
 
 ```yaml
 {
@@ -269,6 +319,8 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 パラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。
 
+
+
 ```yaml
 {
     "Version": "2012-10-17",
@@ -288,7 +340,15 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_task-execution-role.png)
 
-ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』が紐付けられたロールを、タスクに紐付ける必要がある。このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
+ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。
+
+AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』が紐付けられたロールを、タスクに紐付ける必要がある。
+
+このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
+
+ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。
+
+
 
 > ℹ️ 参考：
 >
@@ -319,6 +379,8 @@ ECSタスク内のECSコンテナエージェントが、他のAWSリソース�
 
 datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。
 
+
+
 ```yaml
 {
     "Version": "2012-10-17",
@@ -344,9 +406,15 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 
 外部ネットワークが無く、タスクと外と通信できない。
 
+
+
 #### ▼ hostモード
 
-EC2でのみ使用できる。Dockerのhostネットワークに相当する。
+EC2でのみ使用できる。
+
+Dockerのhostネットワークに相当する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
 
@@ -354,7 +422,11 @@ EC2でのみ使用できる。Dockerのhostネットワークに相当する。
 
 #### ▼ bridgeモード
 
-EC2でのみ使用できる。Dockerのbridgeネットワークに相当する。
+EC2でのみ使用できる。
+
+Dockerのbridgeネットワークに相当する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
 
@@ -377,7 +449,13 @@ FargateとEC2の両方で使用できる。awsの独自ネットワークモー�
 
 #### ▼ マルチECSサービスとは
 
-ECSクラスターが複数のECSサービスから構成される。マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
+ECSクラスターが複数のECSサービスから構成される。
+
+マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。
+
+ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
+
+
 
 > ℹ️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
@@ -386,6 +464,8 @@ ECSクラスターが複数のECSサービスから構成される。マイク�
 #### ▼ ECSサービスディスカバリー
 
 Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信できるようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -401,11 +481,17 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 #### ▼ プライベートサブネット内へのデータプレーンの配置
 
-プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
+プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。
+
+パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
+
+
 
 #### ▼ パブリックネットワークに対する通信
 
 データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。
+
+
 
 #### ▼ VPC外のAWSリソースに対する通信
 
@@ -415,7 +501,11 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
 
-代わりとして、VPCエンドポイントを設置する。より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
+代わりとして、VPCエンドポイントを設置する。
+
+より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
@@ -428,6 +518,8 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 #### ▼ awslogsドライバー
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
+
+
 
 > ℹ️ 参考：
 >
@@ -447,7 +539,11 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 ### EC2インスタンスの最適化AMI
 
-任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
+任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
+
+このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 
@@ -465,6 +561,8 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 ### タスク配置戦略
 
 ECSタスクをECSクラスターに配置する時のアルゴリズムを選択できる。
+
+
 
 | 戦略    | 説明                                  |
 |---------|-------------------------------------|
@@ -519,6 +617,8 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 ECSタスク内のコンテナ1つに対して、環境を設定する。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
 | 設定項目                        | 対応する```docker```コマンドオプション       | 説明                                                                                                                                                                            | 補足                                                                                                                                                                                                  |
@@ -546,7 +646,11 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 #### ▼ ECSタスクのIPアドレス
 
-ECSタスクごとに異なるプライベートIPが割り当てられる。このIPアドレスに対して、ALBはルーティングを行う。
+ECSタスクごとに異なるプライベートIPが割り当てられる。
+
+このIPアドレスに対して、ALBはルーティングを行う。
+
+
 
 #### ▼ FargateのIPアドレス
 
@@ -562,11 +666,23 @@ Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化�
 
 #### ▼ DBマイグレーション
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。
+
+CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。
+
+起動時に、```overrides```オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。
+
+正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。
+
+コマンドが実行された後に、タスクは自動的にStopped状態になる。
+
+
 
 **＊実装例＊**
 
 LaravelのSeederコマンドやロールバックコマンドを、ローカルマシンから実行する。
+
+
 
 ```bash
 #!/bin/bash
@@ -614,6 +730,8 @@ exit ${EXIT_STATUS}
 ```
 
 注意点として、実行IAMユーザーを作成し、ECSタスクを起動できる必要最低限の認可スコープを紐付ける。
+
+
 
 ```yaml
 {
@@ -666,6 +784,8 @@ exit ${EXIT_STATUS}
 
 CodeDeployを使用してデプロイする。
 
+
+
 <br>
 
 ### プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス
@@ -696,7 +816,13 @@ CodeDeployを使用してデプロイする。
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
+
+Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
+
+ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+
+
 
 > ℹ️ 参考：
 >
@@ -790,7 +916,11 @@ aws ecs execute-command \
 
 #### ▼ EKS Clusterとは
 
-FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこと。KubernetesのClusterに相当する。
+FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこと。
+
+KubernetesのClusterに相当する。
+
+
 
 > ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 
@@ -816,7 +946,13 @@ FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこ�
 
 #### ▼ VPC、サブネット
 
-EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBからインバウンド通信を受信すると良い。この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。そのために、パブリックサブネットにNAT Gatewayを置く。
+EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBからインバウンド通信を受信すると良い。
+
+この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。
+
+そのために、パブリックサブネットにNAT Gatewayを置く。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
@@ -851,7 +987,11 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 
 #### ▼ Podへのインバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、ALB Ingressを使用してPodにルーティングする。
+EKSでは、Podをプライベートサブネットに配置する必要がある。
+
+そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、ALB Ingressを使用してPodにルーティングする。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
 
@@ -859,7 +999,15 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 #### ▼ コントロールプレーンへのインバウンド通信
 
-コントロールプレーンでは、```kubectl```コマンドのエンドポイントとしてNLBが配置されている。VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
+コントロールプレーンでは、```kubectl```コマンドのエンドポイントとしてNLBが配置されている。
+
+VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。
+
+もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。
+
+この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
+
+
 
 > ℹ️ 参考：
 >
@@ -880,6 +1028,8 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 #### ▼ 宛先情報の管理方法
 
 アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントするようにする。
+
+
 
 ```yaml
 apiVersion: v1
@@ -903,7 +1053,11 @@ EKSでは、Podをプライベートサブネットに配置する必要があ�
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
 
-以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
+
+また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
+
+
 
 ```log
 Pod provisioning timed out (will retry) for pod
@@ -929,6 +1083,8 @@ VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキ�
 #### ▼ マルチワーカーNodeとは
 
 マルチワーカーNodeを作成する場合、AZごとにNodeを作成する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
 
@@ -1004,6 +1160,8 @@ GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 EC2にはない制約については、以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
@@ -1011,13 +1169,21 @@ EC2にはない制約については、以下のリンクを参考にせよ。
 
 #### ▼ メトリクス収集
 
-FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。収集ツールとして、OpenTelemetryをサポートしている。
+FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。
+
+収集ツールとして、OpenTelemetryをサポートしている。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
 
 #### ▼ ログルーティング
 
-FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。ロググーティングツールとして、FluentBitをサポートしている。
+FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。
+
+ロググーティングツールとして、FluentBitをサポートしている。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
 
@@ -1077,7 +1243,17 @@ data:
 
 ![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
 
-Fargate上で稼働するKubernetesのホストのこと。KubernetesのワーカーNodeに相当する。EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。以下の場合は、EC2ワーカーNodeを使用するようにする。
+Fargate上で稼働するKubernetesのホストのこと。
+
+KubernetesのワーカーNodeに相当する。
+
+EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。
+
+一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
+
+以下の場合は、EC2ワーカーNodeを使用するようにする。
+
+
 
 - DaemonSetが必要
 - Fargateで設定可能な最大スペックを超えたスペックが必要
@@ -1092,6 +1268,8 @@ Fargate上で稼働するKubernetesのホストのこと。Kubernetesのワー�
 #### ▼ Fargateプロファイル
 
 Fargateを設定する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
@@ -1112,7 +1290,13 @@ Fargateを設定する。
 
 ![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
 
-EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+EC2で稼働するKubernetesのホストのこと。
+
+Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。
+
+一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+
+
 
 > ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
 
@@ -1139,7 +1323,13 @@ EC2で稼働するKubernetesのホストのこと。Fargateと比べてカスタ
 
 #### ▼ EC2ワーカーNodeのカスタムAMIとは
 
-EC2ワーカーNodeの最適化AMIではないAMIのこと。EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、```bootstrap.sh```ファイルに決められたパラメーターを渡す必要がある。注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+EC2ワーカーNodeの最適化AMIではないAMIのこと。
+
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、```bootstrap.sh```ファイルに決められたパラメーターを渡す必要がある。
+
+注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
@@ -1161,7 +1351,11 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
+ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
+
+パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -1199,6 +1393,8 @@ kubeletのガベージコレクションを使用して、イメージキャッ�
 
 ディスク使用率が```70```%を超過した場合に、ディスク使用率```50```%分を解放する。
 
+
+
 ```bash
 #!/bin/bash
 
@@ -1232,7 +1428,11 @@ kubeletを使用してワーカーNodeの停止を待機し、Podが終了する
 **＊実装例＊**
 
 
-ワーカーNodeの停止を```6```分だけ待機し、その後に停止を始める。```6```分のうち後半```2```分を重要なPodのために停止に割り当てる。
+ワーカーNodeの停止を```6```分だけ待機し、その後に停止を始める。
+
+```6```分のうち後半```2```分を重要なPodのために停止に割り当てる。
+
+
 
 ```bash
 #!/bin/bash
@@ -1261,6 +1461,8 @@ sudo systemctl restart systemd-logind
 ```
 
 ```Failed```ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。
+
+
 
 > ℹ️ 参考：https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
 
@@ -1312,15 +1514,27 @@ done
 
 #### ▼ マネージドNodeグループ
 
-Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。
+Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。
+
+オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。
+
+
 
 #### ▼ Nodeのセットアップ方法
 
-起動テンプレートを使用し、EC2ワーカーNodeを作成する。EC2にタグ付けする場合は、起動テンプレートのタグ付け機能を使用する。
+起動テンプレートを使用し、EC2ワーカーNodeを作成する。
+
+EC2にタグ付けする場合は、起動テンプレートのタグ付け機能を使用する。
+
+
 
 #### ▼ タグ付けを使用した
 
-同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
+同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。
+
+EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -1334,6 +1548,8 @@ Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオ�
 #### ▼ セルフマネージドNodeグループ
 
 Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。
+
+
 
 #### ▼ Nodeのセットアップ方法
 

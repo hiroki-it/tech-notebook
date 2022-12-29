@@ -9,6 +9,8 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -79,7 +81,11 @@ sops:
 
 #### ▼ ```.sops.yaml```ファイル
 
-```sops```コマンドのパラメーターを定義する。コマンドを実行するディレクトリに配置しておく必要がある。
+```sops```コマンドのパラメーターを定義する。
+
+コマンドを実行するディレクトリに配置しておく必要がある。
+
+
 
 > ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
@@ -106,6 +112,8 @@ $ sops -e ./values/foo-values.yaml
 
 ```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 
+
+
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
@@ -118,6 +126,8 @@ $ sops -e ./values/foo-values.yaml
 
 ```EnvVar```キーの定義された項目を参照せよ。
 
+
+
 > ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 
 <br>
@@ -126,7 +136,11 @@ $ sops -e ./values/foo-values.yaml
 
 #### ▼ -d
 
-```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
+```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。
+
+標準出力に出力されるため、ファイルに書き出すようにすると良い。
+
+
 
 ```bash
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
@@ -150,6 +164,8 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 ```
 
 外部の暗号化キーを使用する場合、そのサービスの認証を済ませておく必要がある。
+
+
 
 ```bash
 # AWS KMSを暗号化キーとして使用する場合

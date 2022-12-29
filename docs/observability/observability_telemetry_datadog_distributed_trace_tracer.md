@@ -9,6 +9,8 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: トレーサー＠分散トレース収集の知見を記録して�
 
 #### ▼ インストール（手動の場合）
 
-採用しているミドルウェアごとに、インストール方法が異なる。サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
+採用しているミドルウェアごとに、インストール方法が異なる。
+
+サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
+
+
 
 ```bash
 # GitHubリポジトリからパッケージをダウンロードする。
@@ -33,6 +39,8 @@ $ rm datadog-php-tracer.deb
 ```
 
 また、PHP-FPMに環境変数を渡せるように、```www```プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
+
+
 
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル
@@ -52,6 +60,8 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 使用しているミドルウェアごとに、インストール方法が異なる。
 
+
+
 ```yaml
 - tasks:
     - name: Install dd-trace-php
@@ -68,7 +78,11 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 #### ▼ インストール（コンテナの場合）
 
-アプリケーションコンテナのDockerfileにて、PHPトレーサーをインストールする。また、コンテナの環境変数として、```DD_SERVICE```、```DD_ENV```、```DD_VERSION```を渡す。
+アプリケーションコンテナのDockerfileにて、PHPトレーサーをインストールする。
+
+また、コンテナの環境変数として、```DD_SERVICE```、```DD_ENV```、```DD_VERSION```を渡す。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
 
@@ -111,6 +125,8 @@ Extension 'ddtrace' not present.
 #### ▼ パラメーターの動作確認
 
 パラメーターがトレーサーに渡されたか否かは、```DATADOG TRACER CONFIGURATION```の項目で確認できる。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/
 
@@ -169,6 +185,8 @@ DATADOG TRACER CONFIGURATION => { ..... } # ここに設定のJSONが得られ�
 
 datadogコンテナにトレースが送信されている場合は、受信できていることを表すログを確認できる。
 
+
+
 ```log
 2022-01-01 12:00:00 UTC | TRACE | INFO | (pkg/trace/info/stats.go:111 in LogStats) | [lang:php lang_version:8.0.8 interpreter:fpm-fcgi tracer_version:0.64.1 endpoint_version:v0.4] -> traces received: 7, traces filtered: 0, traces amount: 25546 bytes, events extracted: 0, events sampled: 0
 ```
@@ -219,6 +237,8 @@ import { Configuration } from '@nuxt/types'
 
 トレーサーの起動ログは、```init```メソッドの```startupLogs```オプションを有効化すると確認できる。
 
+
+
 ```bash
 DATADOG TRACER CONFIGURATION -
 {
@@ -262,7 +282,11 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 ### 環境変数
 
-初期化時に環境変数を設定できる。APMのマイクロサービスのタグ名に反映される。
+初期化時に環境変数を設定できる。
+
+APMのマイクロサービスのタグ名に反映される。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
@@ -274,7 +298,11 @@ WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the
 
 #### ▼ 先頭のマイクロサービス
 
-先頭のマイクロサービスでは、親スパンを作成する。また、後続のマイクロサービスに親スパンのメタデータを伝播する。
+先頭のマイクロサービスでは、親スパンを作成する。
+
+また、後続のマイクロサービスに親スパンのメタデータを伝播する。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
@@ -291,6 +319,8 @@ import (
 func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	// 親スパンを作成する。
+
+
 	span, ctx := tracer.StartSpanFromContext(
 		r.Context(),
 		"post.process",
@@ -307,6 +337,8 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 	req = req.WithContext(ctx)
 
 	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
+
+
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),
@@ -322,7 +354,11 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 #### ▼ 後続のマイクロサービス
 
-後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
+後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
+
+また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
@@ -339,6 +375,8 @@ import (
 func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	// インバウンド通信のリクエストヘッダーからメタデータを取得する。
+
+
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {
@@ -346,6 +384,8 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンのメタデータを伝播する。
+
+
 	span := tracer.StartSpan(
 		"post.filter",
 		tracer.ChildOf(tracectx),
@@ -386,21 +426,29 @@ import (
 func main() {
 
 	// トレーサーパッケージをセットアップする。
+
+
 	tracer.Start(tracer.WithEnv("prd"))
 
 	defer tracer.Stop()
 
 	// ミドルウェアに関するメソッドに、マイクロサービスの属性情報と、これを分散トレースに設定する処理を渡す。
+
+
 	streamServerInterceptor := grpc.StreamServerInterceptor(grpctracer.WithServiceName("foo-service"))
 	unaryServerInterceptor := grpc.UnaryServerInterceptor(grpctracer.WithServiceName("foo-service"))
 
 	// gRPCサーバーを作成する。
+
+
 	grpcServer := grpc.NewServer(
 		grpc.StreamInterceptor(streamServerInterceptor),
 		grpc.UnaryInterceptor(unaryServerInterceptor),
 	)
 	
 	... // pb.goファイルに関する実装は省略している。
+
+
 
 	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
@@ -409,6 +457,8 @@ func main() {
 	}
 
 	// gRPCサーバーで通信を受信する。
+
+
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
@@ -442,10 +492,14 @@ import (
 func main() {
 
 	// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。
+
+
 	unaryClientInterceptor := grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))
 	streamClientInterceptor := grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))
 
 	// gRPCコネクションを作成する。
+
+
 	conn, err := grpc.Dial(
 		":9000",
 		grpc.WithInsecure(),
@@ -461,6 +515,8 @@ func main() {
 	defer conn.Close()
 
 	... // pb.goファイルに関する実装は省略している。
+
+
 }
 ```
 

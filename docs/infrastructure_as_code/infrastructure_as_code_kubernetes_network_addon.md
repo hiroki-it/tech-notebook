@@ -9,6 +9,8 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,15 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。cniアドオンは、kubeletによるPodの起動時に有効化される。
+cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。
+
+また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。
+
+これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。
+
+cniアドオンは、kubeletによるPodの起動時に有効化される。
+
+
 
 > ℹ️ 参考：
 >
@@ -100,6 +110,8 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
+
+
 > ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 
 #### ▼ アドオン例
@@ -135,7 +147,11 @@ AWSの独自モードは、Podの仮想ネットワークインターフェー�
 
 ### CoreDNSアドオンとは
 
-CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
+
+Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
@@ -149,6 +165,8 @@ CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
 #### ▼ CoreDNSのServiceとは
 
 CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのServiceによって管理されている。
+
+
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
@@ -179,7 +197,11 @@ coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 
 #### ▼ coredns-configmapとは
 
-ConfigMapに```Corefile```ファイルを配置する。```Corefile```ファイルは、CoreDNSを設定する。
+ConfigMapに```Corefile```ファイルを配置する。
+
+```Corefile```ファイルは、CoreDNSを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
@@ -264,7 +286,11 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ レコードタイプ別の完全修飾ドメイン名とは
 
-Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
+Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。
+
+レコードタイプごとに、完全修飾ドメイン名が異なる。
+
+
 
 #### ▼ ```A/AAAA```レコードの場合
 
@@ -292,7 +318,13 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ Pod内からServiceに対する正引き名前解決
 
-Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。
+
+Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。
+
+完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+
+
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -309,6 +341,8 @@ Address:  10.105.157.184
 ```
 
 ちなみに、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+
+
 
 ```bash
 # Pod内のコンテナから正引きの名前解決を行う。
@@ -377,7 +411,11 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 #### ▼ Serviceを介したアウトバウンド通信の送信
 
-Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。完全修飾ドメイン名またはIPアドレスを指定できる。
+Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。
+
+完全修飾ドメイン名またはIPアドレスを指定できる。
+
+
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -393,6 +431,8 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 ### Podの直接的な名前解決の仕組み
 
 Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決することもできる。
+
+
 
 <br>
 
@@ -410,6 +450,8 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 ## 02-04. サービスディスカバリー
 
 CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。
+
+
 
 > ℹ️ 参考：
 >

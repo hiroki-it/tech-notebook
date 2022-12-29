@@ -9,13 +9,23 @@ description: VPC＠Vで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. VPCとは：Virtual Private Cloud
 
-クラウドプライベートネットワークとして働く。プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に作成できる。異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
+クラウドプライベートネットワークとして働く。
+
+プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に作成できる。
+
+異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。
+
+VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
@@ -40,7 +50,11 @@ description: VPC＠Vで始まるAWSリソースの知見を記録しています
 
 #### ▼ DNS名の割り当て
 
-VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
+VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。
+
+```enableDnsHostnames```オプションと```enableDnsSupport```オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -60,7 +74,13 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 ### ENIとは
 
-クラウドネットワークインターフェースとして働く。対象のAWSリソースに、自身に紐づけられたIPアドレスを割り当てる。物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
+クラウドネットワークインターフェースとして働く。
+
+対象のAWSリソースに、自身に紐づけられたIPアドレスを割り当てる。
+
+物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
@@ -95,7 +115,11 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc_traffic-mirroring.png)
 
-ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
+ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。
+
+VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
+
+
 
 > ℹ️ 参考：
 >
@@ -110,6 +134,8 @@ ENIを介して、同じVPC内のインスタンスなどに、パケットの�
 
 クラウドプライベートネットワークにおけるセグメントとして働く。
 
+
+
 <br>
 
 ### サブネットの種類
@@ -118,9 +144,17 @@ ENIを介して、同じVPC内のインスタンスなどに、パケットの�
 
 LAN内の非武装地帯に相当する。
 
+
+
 #### ▼ プライベートサブネットとは
 
-LAN内の内部ネットワークに相当する。サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。ただし、サブネット内からサブネット外へのアウトバウンド通信は許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。
+LAN内の内部ネットワークに相当する。
+
+サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。
+
+ただし、サブネット内からサブネット外へのアウトバウンド通信は許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。
+
+
 
 ![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
 
@@ -130,7 +164,13 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 
 ### Network ACLとは
 
-サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く。ルートテーブルとサブネットの間に設置され、ルートテーブルよりも先に評価される。双方向のインバウンドルールとアウトバウンドルールを決める。
+サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く。
+
+ルートテーブルとサブネットの間に設置され、ルートテーブルよりも先に評価される。
+
+双方向のインバウンドルールとアウトバウンドルールを決める。
+
+
 
 ![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
 
@@ -151,7 +191,13 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 
 ### ルートテーブルとは
 
-クラウドルーターのマッピングテーブルとして働く。サブネットに紐付けることにより、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。注意点として、Network ACLよりも後に評価される。
+クラウドルーターのマッピングテーブルとして働く。
+
+サブネットに紐付けることにより、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。
+
+注意点として、Network ACLよりも後に評価される。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#RouteTables
 
@@ -165,11 +211,17 @@ LAN内の内部ネットワークに相当する。サブネット外からの�
 
 #### ▼ メインルートテーブル
 
-VPCの作成時に自動的に作成される。どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する。
+VPCの作成時に自動的に作成される。
+
+どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する。
+
+
 
 #### ▼ カスタムルートテーブル
 
 特定のサブネットのルーティングを設定する。
+
+
 
 <br>
 
@@ -177,7 +229,13 @@ VPCの作成時に自動的に作成される。どのルートテーブルに�
 
 ### VPCエンドポイントとは
 
-VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、アウトバウンド通信を実行できるようにする。Gateway型とInterface型がある。VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。
+VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、アウトバウンド通信を実行できるようにする。
+
+Gateway型とInterface型がある。
+
+VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。
+
+
 
 **＊例＊**
 
@@ -191,13 +249,21 @@ Fargateをプライベートサブネットに置いた場合、FargateからVPC
 
 NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外のリソースとの通信がより安全になる。
 
+
+
 <br>
 
 ### エンドポイントタイプ
 
 #### ▼ Interface型
 
-プライベートリンクともいう。プライベートIPアドレスを持つENIとして動作し、AWSリソースからアウトバウンド通信を受信する。もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
+プライベートリンクともいう。
+
+プライベートIPアドレスを持つENIとして動作し、AWSリソースからアウトバウンド通信を受信する。
+
+もし、このプライベートIPアドレスにプライベートDNSを紐づける場合は、VPCの```enableDnsHostnames```オプションと```enableDnsSupport```オプションを有効化する必要がある。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 
@@ -207,7 +273,11 @@ S3、DynamoDB以外の全てのリソース
 
 #### ▼ Gateway型
 
-ルートテーブルにおける定義に従う。VPCエンドポイントとして動作し、AWSリソースからアウトバウンド通信を受信する。
+ルートテーブルにおける定義に従う。
+
+VPCエンドポイントとして動作し、AWSリソースからアウトバウンド通信を受信する。
+
+
 
 **＊リソース例＊**
 
@@ -230,6 +300,8 @@ DNAT処理を実行し、グローバルIPアドレス（VPC外のIPアドレス
 
 DNATについては、以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
@@ -249,6 +321,8 @@ SNAT処理を実行し、プライベートIPアドレス（VPC内のIPアドレ
 
 SNATについては、以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network_model_tcp.html
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
@@ -265,6 +339,8 @@ SNATについては、以下のリンクを参考にせよ。
 
 『一対一』の関係で、『異なるVPC間』の双方向通信を可能にする。
 
+
+
 #### ▼ VPCピアリング接続の可否
 
 | アカウント    | VPCのあるリージョン | VPC内のCIDRブロック | 接続の可否 |
@@ -274,9 +350,13 @@ SNATについては、以下のリンクを参考にせよ。
 
 VPC に複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、VPC ピアリング接続はできない。
 
+
+
 ![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
 
 たとえ、IPv6が異なっていても、同様である。
+
+
 
 ![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
 
@@ -297,7 +377,11 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 
 #### ▼ Transit Gatewayとは
 
-『多対多』の関係で、『異なるVPC間』や『オンプレミス-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
+『多対多』の関係で、『異なるVPC間』や『オンプレミス-VPC間』の双方向通信を可能にする。
+
+クラウドルーターとして働く。
+
+
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
 
@@ -321,6 +405,8 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 ## 01-09. VPCフローログ
 
 VPC内のENIを通過するパケットをキャプチャできる。
+
+
 
 > ℹ️ 参考：
 > 

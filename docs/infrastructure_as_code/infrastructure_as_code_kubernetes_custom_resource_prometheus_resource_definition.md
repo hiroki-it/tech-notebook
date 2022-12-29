@@ -9,6 +9,8 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 #### ▼ GitHubリポジトリから
 
-GitHubリポジトリ上のマニフェストを送信し、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+GitHubリポジトリ上のマニフェストを送信し、リソースを作成する。
+
+PrometheusOperatorの基になるKubernetesリソースが含まれている。
+
+
 
 > ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
@@ -34,7 +40,11 @@ $ kubectl create -f bundle.yaml
 
 #### ▼ GitHubリポジトリから
 
-GitHubリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+GitHubリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。
+
+PrometheusOperatorの基になるKubernetesリソースが含まれている。
+
+
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -75,6 +85,8 @@ $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
 
 Alertmanagerのセットアップ方法を決める。
 
+
+
 <br>
 
 ## 03. AlertmanagerConfig
@@ -82,6 +94,8 @@ Alertmanagerのセットアップ方法を決める。
 ### AlertmanagerConfigとは
 
 Alertmanagerのアラートグループや通知先ルールを決める。
+
+
 
 <br>
 
@@ -91,6 +105,8 @@ Alertmanagerのアラートグループや通知先ルールを決める。
 
 Podに対してPull型通信を送信し、これのデータポイントを収集する。
 
+
+
 <br>
 
 ## 05. Probe
@@ -98,6 +114,8 @@ Podに対してPull型通信を送信し、これのデータポイントを収�
 ### Probeとは
 
 Ingressや静的IPアドレスのメトリクスに対してPull型通信を送信し、これらのデータポイントを収集する。
+
+
 
 <br>
 
@@ -107,11 +125,15 @@ Ingressや静的IPアドレスのメトリクスに対してPull型通信を送�
 
 Prometheusのセットアップ方法を決める。
 
+
+
 <br>
 
 ### spec.alerting
 
 アラートの送信先を設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -137,6 +159,8 @@ spec:
 
 prometheusコンテナのベースイメージを設定する。
 
+
+
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
@@ -154,6 +178,8 @@ spec:
 ### spec.remoteWrite
 
 リモート書き込み先を設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -176,6 +202,8 @@ spec:
 ### spec.storage
 
 ローカルストレージを設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -231,13 +259,19 @@ spec:
 
 #### ▼ groupsとは
 
-アラートグループを設定する。アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。
+アラートグループを設定する。
+
+アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。
+
+
 
 > ℹ️ 参考：https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
 
 #### ▼ name
 
 グループ名を設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -260,6 +294,8 @@ spec:
 #### ▼ rules（アラートルールの場合）
 
 ```alert```キーを宣言し、アラートルールを設定する。
+
+
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
@@ -285,6 +321,8 @@ spec:
          - alert: foo-pod-cpu-alert-prometheus-rule
            annotations:
              summary: 【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内のコンテナのCPU使用率の上昇しました。
+
+
              description: {{ {{"{{"}} $labels.source {{"}}"}} }}コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。
            # PromQL
            expr: ...
@@ -301,6 +339,8 @@ spec:
 #### ▼ rules（レコーディングルールの場合）
 
 ```record```キーを宣言し、レコーディングルールを設定する。
+
+
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
@@ -333,6 +373,8 @@ spec:
 
 指定したServiceに対してPull型通信を送信し、これに紐づくリソースに関するメトリクスのデータポイントを収集する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
@@ -348,9 +390,13 @@ spec:
 
 収集の対象とするServiceで待ち受けるエンドポイントを設定する。
 
+
+
 #### ▼ interval
 
 収集の間隔を設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -366,6 +412,8 @@ spec:
 #### ▼ path
 
 Serviceの待ち受けるパスを設定する。
+
+
 
 > ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
@@ -384,6 +432,8 @@ spec:
 
 Serviceの待ち受けるポート名を設定する。
 
+
+
 > ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
 ```yaml
@@ -401,6 +451,8 @@ spec:
 
 Serviceの待ち受けるプロトコルを設定する。
 
+
+
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -415,6 +467,8 @@ spec:
 #### ▼ targetPort
 
 Serviceの待ち受けるポート番号を設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -435,9 +489,13 @@ spec:
 
 収集の対象とするServiceが属するNamespaceを設定する。
 
+
+
 #### ▼ any
 
 全てNamespaceを収集対象として設定する。
+
+
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -453,6 +511,8 @@ spec:
 #### ▼ matchNames
 
 特定のNamespaceを収集対象として設定する。
+
+
 
 > ℹ️ 参考：https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
@@ -486,6 +546,8 @@ metadata:
 ![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor_match-labels.png)
 
 収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
+
+
 
 > ℹ️ 参考：
 >
@@ -523,5 +585,7 @@ metadata:
 ### ThanosRuler
 
 リモートストレージとしてThanosを使用する場合、これをセットアップ方法を決める。
+
+
 
 <br>

@@ -9,6 +9,8 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,7 +27,11 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 #### ▼ 内部ポインタと配列の関係
 
-『内部ポインタ』とは、PHPの配列で、参照したい要素を位置で指定するためのカーソルのこと。Goにおけるポインタは、以下のリンクを参考にせよ。
+『内部ポインタ』とは、PHPの配列で、参照したい要素を位置で指定するためのカーソルのこと。
+
+Goにおけるポインタは、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
 
@@ -37,15 +43,23 @@ description: 反復ロジック＠PHPの知見を記録しています。
 $array = ['あ', 'い', 'う'];
 
 // 内部ポインタが現在指定している要素を出力。
+
+
 echo current($array); // あ
 
 // 内部ポインタを1つ進め、要素を出力。
+
+
 echo next($array); // い
 
 // 内部ポインタを1つ戻し、要素を出力。
+
+
 echo prev($array); // あ
 
 // 内部ポインタを最後まで進め、要素を出力。
+
+
 echo end($array); // う
 
 // 内部ポインタを最初まで戻し、要素を出力
@@ -61,6 +75,8 @@ echo reset($array); // あ
 #### ▼ 基本
 
 配列を走査する。
+
+
 
 ```php
 <?php
@@ -97,11 +113,15 @@ foreach ($a as $foo) {
 
 複雑な走査を行うために、ビルトイン関数が用意されている。
 
+
+
 > ℹ️ 参考：https://www.php.net/manual/ja/ref.array.php
 
 #### ▼ 配列の値へのアクセス
 
 単に配列を作るのみでなく、要素にアクセスするためにも使われる。
+
+
 
 ```php
 <?php
@@ -110,10 +130,14 @@ class Foo
 {
      /**
      * オプションを調べて、文字列を返却します。
+
+
      */
     public function printOption(array $options)
     {
-        $result = '何も設定されていません。'
+        $result = '何も設定されていません。
+
+'
         
         // $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定
         foreach ($options as $option) {
@@ -155,6 +179,8 @@ function iteration($K, $A)
     for ($i = 0; $i < count($A); $i++) {
         
         // 前回の走査に今回のものを加算する。
+
+
         $currentLength += $A[$i];
 
         if ($currentLength >= $K) {
@@ -162,6 +188,8 @@ function iteration($K, $A)
             $topesNumber++;
 
             // 長さを元に戻す。
+
+
             $currentLength = 0;
         }
     }
@@ -184,6 +212,8 @@ function iteration($M, $A) {
     foreach ($A as $key => $value) {
         
         // vを固定して、以降のvと比較する。
+
+
         for ($i = $key; $i < count($A); $i++) {
             if($value <= $A[$i]){
                 // 加算代入
@@ -233,7 +263,11 @@ $oneDimension = call_user_func_array(
 
 **＊実装例＊**
 
-例えば、以下のような多次元配列があったとする。配列のscoreキーから値を取り出し、一次元配列を作成する。
+例えば、以下のような多次元配列があったとする。
+
+配列のscoreキーから値を取り出し、一次元配列を作成する。
+
+
 
 ```php
 <?php
@@ -252,6 +286,8 @@ $twoDimension = [
 ];
 
 // この配列のscoreキーから値を取り出し、一次元配列を作成する。
+
+
 $oneDimension = array_column($twoDimension, 'score');
 
 // Array
@@ -269,13 +305,21 @@ $oneDimension = array_column($twoDimension, 'score');
 
 #### ▼ 基本
 
-配列の走査を含む反復処理を行う。ただし、配列の走査は、```while```ではなく```foreach```を使用するようにする。また、```for```とは異なり、反復回数が決まっていない場合に使用する。
+配列の走査を含む反復処理を行う。
+
+ただし、配列の走査は、```while```ではなく```foreach```を使用するようにする。
+
+また、```for```とは異なり、反復回数が決まっていない場合に使用する。
+
+
 
 ```php
 <?php
     
 $count = 0
 // 反復回数が決まっていないため、満たせたらbreakで停止する。
+
+
 while(true) {
     
     if($count = 10){
@@ -323,7 +367,11 @@ while (true) {
 
 #### ▼ 無限ループとは
 
-反復処理では、何らかの状態になった時に反復処理を終えなければならない。しかし、終えられないと、無限ループが発生してしまう。
+反復処理では、何らかの状態になった時に反復処理を終えなければならない。
+
+しかし、終えられないと、無限ループが発生してしまう。
+
+
 
 <br>
 
@@ -333,12 +381,20 @@ while (true) {
 
 #### ▼ 基本
 
-配列の走査を含む反復処理を行う。ただし、配列の走査は、```for```ではなく```foreach```を使用するようにする。また、```while```とは異なり、反復回数が決まっている場合に使用する。
+配列の走査を含む反復処理を行う。
+
+ただし、配列の走査は、```for```ではなく```foreach```を使用するようにする。
+
+また、```while```とは異なり、反復回数が決まっている場合に使用する。
+
+
 
 ```php
 <?php
     
 // 10回反復することが決まっている。
+
+
 for($i = 1; $i <= 10; $i++){
     $count++
 }
@@ -380,6 +436,8 @@ echo $sum;
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
+
+
 ```php
 <?php
 
@@ -388,6 +446,8 @@ $array = [1, 2, 3, 4, 5];
 foreach ($array as $key => $value) {
 
     // キーが偶数の組をスキップする。
+
+
     if (!($key % 2 == 0)) {
         continue;
     }
@@ -402,7 +462,11 @@ foreach ($array as $key => $value) {
 
 #### ▼ array_walkを使用した代替法
 
-反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。```continue```を使用するより、こちらの方が良い。
+反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
+
+```continue```を使用するより、こちらの方が良い。
+
+
 
 ```php
 <?php
@@ -412,6 +476,8 @@ $array = [1, 2, 3, 4, 5];
 array_walk($array, function ($value, $key) {
 
     // キーが偶数の組をスキップする。
+
+
     if (!($key % 2 == 0)) {
         return; // continueと同じ動作を早期リターンで実現する。
     }
@@ -432,6 +498,8 @@ array_walk($array, function ($value, $key) {
 
 反復処理の現在のループを停止し、以降のループも実行しない。
 
+
+
 ```php
 <?php
 
@@ -440,6 +508,8 @@ $array = [1, 2, 3, 4, '', 5];
 foreach ($array as $value) {
 
     // 空の値で繰り返しを停止する。
+
+
     if (empty($value)) {
         break;
     }

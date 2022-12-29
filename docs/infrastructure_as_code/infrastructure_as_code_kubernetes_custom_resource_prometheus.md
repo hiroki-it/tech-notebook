@@ -9,6 +9,8 @@ description: Prometheus＠Kubernetes
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -33,7 +35,15 @@ Prometheusは、prometheusサーバー/コンテナ（Retrieval、ローカル�
 
 ### prometheusサーバー/コンテナとは
 
-メトリクスのデータポイントを収集し、管理する。またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
+メトリクスのデータポイントを収集し、管理する。
+
+またPromQLに基づいて、データポイントからメトリクスを分析できるようにする。
+
+```9090```番ポートで、メトリクスのデータポイントをプルし、加えてGrafanaのPromQLによるアクセスを待ち受ける。
+
+例えば、prometheus-operatorを使用した場合は、各コンポーネントのデフォルト値は、```/etc/prometheus/prometheus.yml```ファイルで定義する。
+
+
 
 > ℹ️ 参考：
 >
@@ -48,9 +58,13 @@ Prometheusは、prometheusサーバー/コンテナ（Retrieval、ローカル�
 
 定義されたPromQLのルールに基づいて、監視対象のデータポイントを定期的に収集する。
 
+
+
 #### ▼ Retrievalのルール
 
 ルールの種類によって、収集後の処理が異なる。
+
+
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
@@ -61,7 +75,13 @@ Prometheusは、prometheusサーバー/コンテナ（Retrieval、ローカル�
 
 #### ▼ 設定ファイル
 
-設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
+設定ファイルは```.yaml```ファイルで定義する。
+
+セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。
+
+例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
+
+
 
 > ℹ️ 参考：
 >
@@ -97,7 +117,11 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 #### ▼ HTTP serverとは
 
-メトリクスを参照するためのエンドポイントを公開する。PromQLをリクエストとして受信し、ローカルストレージからデータを返却する。
+メトリクスを参照するためのエンドポイントを公開する。
+
+PromQLをリクエストとして受信し、ローカルストレージからデータを返却する。
+
+
 
 <br>
 
@@ -130,6 +154,8 @@ data/
 
 Prometheusの稼働するコンテナやNodeに接続すれば、```data```ディレクトリを確認できる。
 
+
+
 ```bash
 $ kubectl exec -it prometheus -n prometheus -- sh
 
@@ -139,7 +165,11 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 ...
 ```
 
-TSDBのディレクトリはNodeにマウントされるため、Nodeのストレージサイズに注意する必要がある。データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
+TSDBのディレクトリはNodeにマウントされるため、Nodeのストレージサイズに注意する必要がある。
+
+データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
+
+
 
 > ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
@@ -190,7 +220,11 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 #### ▼ ダイナミックキュー
 
-リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
+リモートストレージにメトリクスを送信する場合、送信されたメトリクスをキューイングする。
+
+ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
 
@@ -202,7 +236,11 @@ Prometheusは、ローカルストレージにメトリクスを保管する代�
 
 ### Alertmanagerとは
 
-Prometheusのアラートを受信し、特定の条件下で通知する。受信したアラートは、AlertmanagerのUI上に表示される。
+Prometheusのアラートを受信し、特定の条件下で通知する。
+
+受信したアラートは、AlertmanagerのUI上に表示される。
+
+
 
 > ℹ️ 参考：
 >
@@ -217,7 +255,11 @@ Prometheusのアラートを受信し、特定の条件下で通知する。受�
 
 ### Silence
 
-受信したアラートの通知を一時的に無効化する。Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
+受信したアラートの通知を一時的に無効化する。
+
+Silenceされている期間、無効化されたアラートはAlertmanagerのUI上から削除され、通知されなくなる。
+
+
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-silence/
 
@@ -252,6 +294,8 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 
 ```exporter```という接尾辞がついていないExporterもある。
 
+
+
 **＊例＊**
 
 > ℹ️ 参考：
@@ -281,6 +325,8 @@ PrometheusがPull型通信でメトリクスのデータポイントを収集す
 ### PushGatewayとは
 
 PrometheusがPush型メトリクスを対象から収集するためのエンドポイントとして動作する。
+
+
 
 > ℹ️ 参考：https://prometheus.io/docs/practices/pushing/
 

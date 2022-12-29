@@ -9,6 +9,8 @@ description: Nuxt.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +23,17 @@ description: Nuxt.jsの知見を記録しています。
 
 アプリケーションをSSRとして稼働させる。
 
+
+
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ ```dev```
 
-開発環境のため、SSRアプリケーションをビルドし、Nodeサーバーを起動する。Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+開発環境のため、SSRアプリケーションをビルドし、Nodeサーバーを起動する。
+
+Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+
+
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -36,11 +44,23 @@ $ yarn dev
 
 ちなみに、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
 
+
+
 > ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 #### ▼ ```build```
 
-本番環境のため、Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する。```dev```コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。これにより、```.js```ファイルと```.css```ファイルはminifyされる。minifyにより、不要な改行やインデントが削除され、パッケージの読み出し用のURLはまとめられ、圧縮される。画像名はハッシュ化される。
+本番環境のため、Node.jsサーバーの起動前にSSRアプリケーションのビルドを実行する。
+
+```dev```コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。
+
+これにより、```.js```ファイルと```.css```ファイルはminifyされる。
+
+minifyにより、不要な改行やインデントが削除され、パッケージの読み出し用のURLはまとめられ、圧縮される。
+
+画像名はハッシュ化される。
+
+
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -51,7 +71,11 @@ $ yarn build
 
 #### ▼ ```start```
 
-本番環境のため、```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する。SSRモードのために使用する。
+本番環境のため、```yarn build```コマンドによるビルド完了後にNodeサーバーを起動する。
+
+SSRモードのために使用する。
+
+
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -61,6 +85,8 @@ $ yarn start
 ```
 
 ちなみに、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
+
+
 
 > ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -72,11 +98,21 @@ $ yarn start
 
 アプリケーションをSSGとして稼働させる。
 
+
+
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
 #### ▼ ```dev```
 
-開発環境でSSGアプリケーションを稼働させるために使用する。Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイルを作成する。そのため、SSGモードで作成されるアプリケーションは完全な静的ファイルでない。また、```build```コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+開発環境でSSGアプリケーションを稼働させるために使用する。
+
+Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイルを作成する。
+
+そのため、SSGモードで作成されるアプリケーションは完全な静的ファイルでない。
+
+また、```build```コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+
+
 
 > ℹ️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -86,6 +122,8 @@ $ yarn dev
 ```
 
 ちなみに、```yarn dev```コマンドを実行した場合、環境変数の```NODE_ENV```が```development```になる。
+
+
 
 > ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -104,6 +142,8 @@ $ yarn generate
 
 静的ホスティングサイトを起動する。
 
+
+
 ```bash
 # リファレンスでは nuxt startとなっているが、yarn startで問題ない。
 $ yarn start
@@ -111,13 +151,17 @@ $ yarn start
 
 ちなみに、```yarn start```コマンドを実行した場合、環境変数の```NODE_ENV```が```production```になる。
 
+
+
 > ℹ️ 参考：https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
 <br>
 
 ### ビルド時のWebpackオプション
 
-SSRモードとSSGモードで、```build```コマンド時に使用されるWebpackの最適化方法を指定できる。`
+SSRモードとSSGモードで、```build```コマンド時に使用されるWebpackの最適化方法を指定できる。
+
+`
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
@@ -125,7 +169,11 @@ SSRモードとSSGモードで、```build```コマンド時に使用されるWeb
 
 ### キャッシュ削除
 
-Nuxt.jsのキャッシュは```node_modules/.cache```ディレクトリ配下に作成される。そのため、キャッシュを削除したい場合はこのディレクトリごと削除する。
+Nuxt.jsのキャッシュは```node_modules/.cache```ディレクトリ配下に作成される。
+
+そのため、キャッシュを削除したい場合はこのディレクトリごと削除する。
+
+
 
 ```bash
 $ rm -rf node_modules/.cache/hard-source/
@@ -137,7 +185,11 @@ $ rm -rf node_modules/.cache/hard-source/
 
 ### ```nuxt.config.js```ファイルとは
 
-Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる。各プロパティは以下のリンクを参考にせよ。
+Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる。
+
+各プロパティは以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 
@@ -155,7 +207,13 @@ const nuxtConfig: Configuration = {
 
 #### ▼ ```.env```ファイルの読み出し
 
-あらかじめ、dotenvモジュールをインストールしておく。```process.env```から```.env```ファイルの変数を参照する。定数に代入する場合は、まとめて代入すると良い。
+あらかじめ、dotenvモジュールをインストールしておく。
+
+```process.env```から```.env```ファイルの変数を参照する。
+
+定数に代入する場合は、まとめて代入すると良い。
+
+
 
 > ℹ️ 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
@@ -201,7 +259,11 @@ const nuxtConfig: Configuration = {
 
 #### ▼ hardSource
 
-ビルド時のキャッシュを有効化するか否かを設定する。ビルドの完了が早くなる。
+ビルド時のキャッシュを有効化するか否かを設定する。
+
+ビルドの完了が早くなる。
+
+
 
 > ℹ️ 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
@@ -218,7 +280,19 @@ const nuxtConfig: Configuration = {
 
 #### ▼ privateRuntimeConfig
 
-クライアントサイドのみで参照できる環境変数を設定する。すなわち、SSRモードのクライアント側のみが対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+クライアントサイドのみで参照できる環境変数を設定する。
+
+すなわち、SSRモードのクライアント側のみが対応している。
+
+環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。
+
+ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。
+
+もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。
+
+環境変数は、```context```オブジェクトの```config```変数から取得できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -297,7 +371,11 @@ export function foo() {
 
 #### ▼ quiet
 
-ビルド時にログを最小限にする。CIツールでログが確認できなくなるため、無効化しておいた方が良い。
+ビルド時にログを最小限にする。
+
+CIツールでログが確認できなくなるため、無効化しておいた方が良い。
+
+
 
 > ℹ️ 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
@@ -315,6 +393,8 @@ const nuxtConfig: Configuration = {
 #### ▼ serverMiddleware
 
 リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を設定する。
+
+
 
 > ℹ️ 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
@@ -360,6 +440,8 @@ const nuxtConfig: Configuration = {
 ### ```dist```ディレクトリ：```distribution```
 
 SSGモードの```generate```コマンドの実行時に、アーティファクトが配置される。
+
+
 
 > ℹ️ 参考：https://nuxtjs.org/ja/docs/directory-structure/dist
 

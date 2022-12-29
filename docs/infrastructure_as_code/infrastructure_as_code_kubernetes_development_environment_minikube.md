@@ -9,6 +9,8 @@ description: Minikube＠開発環境の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ 仮想サーバー系のドライバーの場合
 
-ホストマシン上に仮想サーバーを作成する。この仮想サーバー内にNodeを持つClusterを作成する。
+ホストマシン上に仮想サーバーを作成する。
+
+この仮想サーバー内にNodeを持つClusterを作成する。
+
+
 
 > ℹ️ 参考：
 >
@@ -30,7 +36,11 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ Dockerドライバーの場合
 
-ホストマシン上にコンテナを作成する。このコンテナ内に仮想サーバーを作成し、Nodeを持つClusterを作成する。
+ホストマシン上にコンテナを作成する。
+
+このコンテナ内に仮想サーバーを作成し、Nodeを持つClusterを作成する。
+
+
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/local-kubernetes-networking
 
@@ -62,7 +72,13 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ NodePort Service経由
 
-NodePort Serviceを作成しておく。```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。このIPアドレスからPodにアクセスできる。
+NodePort Serviceを作成しておく。
+
+```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。
+
+このIPアドレスからPodにアクセスできる。
+
+
 
 > ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -72,7 +88,13 @@ $ minikube ip
 
 #### ▼ LoadBalancer Service経由
 
-LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
+LoadBalancer Serviceを作成しておく。
+
+```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。
+
+このIPアドレスからPodにアクセスできる。
+
+
 
 > ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -104,6 +126,8 @@ docker@minikube:~$ curl -X GET http://<IPアドレス>
 
 ホスト側の```$MINIKUBE_HOME/files```ディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
 
+
+
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
 
 ```bash
@@ -118,6 +142,8 @@ $ minikube start
 #### ▼ 各ドライバーのホストとNode間マウント
 
 ホスト以下のディレクトリ配下に保存されたファイルは、ゲスト仮想環境内のNodeの決められたディレクトリにマウントされる。
+
+
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
@@ -136,7 +162,13 @@ $ minikube start
 
 #### ▼ 標準のNodeとコンテナ間マウント
 
-ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
+ゲスト仮想環境内のNodeでは、以下のディレクトリからPersistentVolumeが自動的に作成される。
+
+そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。
+
+ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
+
+
 
 > ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -155,7 +187,15 @@ $ minikube start
 
 #### ▼ ホストをコンテナにマウントする方法
 
-Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
+Minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。
+
+またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。
+
+ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。
+
+このように、ホストからNode、NodeからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -212,11 +252,17 @@ spec:
 
 Node内で```ip addr```コマンドを実行すると、Nodeに割り当てられたCIDRブロックを確認できる。
 
+
+
 > ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 
-CNIとしてBridgeアドオンを使用している。CIDRブロックは、```192.168.49.2/24```である。
+CNIとしてBridgeアドオンを使用している。
+
+CIDRブロックは、```192.168.49.2/24```である。
+
+
 
 ```bash
 $ minikube ssh
@@ -232,11 +278,17 @@ docker@minikube:~$ ip addr | grep eth0
 
 Node内で```/etc/cni/net.d```ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
+
+
 > ℹ️ 参考：https://nishipy.com/archives/1467
 
 **＊例＊**
 
-CNIとしてBridgeアドオンを使用している。CIDRブロックは、```10.85.0.0/16```である。
+CNIとしてBridgeアドオンを使用している。
+
+CIDRブロックは、```10.85.0.0/16```である。
+
+
 
 ```bash
 $ minikube ssh

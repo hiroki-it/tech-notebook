@@ -9,6 +9,8 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -22,7 +24,11 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_node-network.png)
 
-同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
+
+Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
 
@@ -34,7 +40,11 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_service-network.png)
 
-Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。Serviceネットワークの作成は、Kubernetesが担う。
+Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでアウトバウンド通信を送信する。
+
+Serviceネットワークの作成は、Kubernetesが担う。
+
+
 
 > ℹ️ 参考：
 >
@@ -62,7 +72,11 @@ Podのアウトバウンド通信に割り当てられたホスト名を認識�
 
 #### ▼ Podネットワークとは
 
-Pod内のネットワークのみを経由して、他のコンテナにアウトバウンド通信を送信する。Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
+Pod内のネットワークのみを経由して、他のコンテナにアウトバウンド通信を送信する。
+
+Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
+
+
 
 > ℹ️ 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
@@ -83,7 +97,11 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ### Pod間通信の経路
 
-Pod内のコンテナから宛先のPodにアウトバウンド通信を送信する。この時、PodのスケジューリングされているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
+Pod内のコンテナから宛先のPodにアウトバウンド通信を送信する。
+
+この時、PodのスケジューリングされているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
@@ -96,7 +114,11 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 ### PodのIPアドレスを指定する場合
 
-Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。
+Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。
+
+ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。
+
+
 
 **＊例＊**
 
@@ -140,6 +162,8 @@ kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、
 **＊実装例＊**
 
 foo-app-serviceというServiceを作成した場合の環境変数を示す。
+
+
 
 ```bash
 $ kubectl exec -it foo-pod -- printenv | sort -n

@@ -9,6 +9,8 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -205,7 +207,9 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
         $this->addArgument(
           "year-month",
           InputArgument::REQUIRED,
-          "処理年月を設定してください。"
+          "処理年月を設定してください。
+
+"
         );
     }
   
@@ -214,6 +218,8 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
     {
         try {
                 // 日時フォーマットからCarbonインスタンスを作成する。
+
+
                 $year_month = Carbon::createFromFormat(
                   "Y-m",
                   $input->getArgument("year-month")
@@ -246,6 +252,8 @@ done
 **＊例＊**
 
 10秒ごとに、コマンドを自動実行する。
+
+
 
 ```bash
 #!/bin/bash
@@ -283,6 +291,8 @@ done
 （３）カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
    このカーネルを、特別に『HTTPカーネル』と呼ぶ。
 
+
+
 **【app.phpの実装例】**
 
 ```php
@@ -306,7 +316,11 @@ $response->send(); //（３）
 $kernel->terminate($request, $response);
 ```
 
-上記の```handle```メソッドが定義されているファイル。ここで定義された```handle```メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+上記の```handle```メソッドが定義されているファイル。
+
+ここで定義された```handle```メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+
+
 
 ```php
 <?php
@@ -340,6 +354,8 @@ public function handle
 #### ▼ リクエストからのデータ取得、JSON型データを含むレスポンス
 
 1. Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。
+
+
 2. Ajaxによるリクエストでない場合、ページレンダリングのみ
 
 ```php
@@ -355,6 +371,8 @@ class ExampleController extends AbstractController
     public function get(Request $req)
     {
         // Ajaxによるリクエストの場合。
+
+
         if ($req->headers->get("content-type") === "application/json") {
             
             $fooRepository = new FooRepository;
@@ -363,6 +381,8 @@ class ExampleController extends AbstractController
             //-- entityをObject型からArray型に変換する何らかの処理。--//
             
             // Ajaxにレンスポンス。
+
+
             return new JsonResponse([ 
                 "value" => $entityArray
               ]);
@@ -419,6 +439,8 @@ $request->get('foo');
 
 Symfonyから提供されるDIコンテナのこと。
 
+
+
 <br>
 
 ## 03-05. Routing
@@ -428,6 +450,8 @@ Symfonyから提供されるDIコンテナのこと。
 #### ▼ RoutingConfiguratorとは
 
 コントローラーに対するルーティングを設定する。
+
+
 
 ```php
 <?php
@@ -455,7 +479,11 @@ return function (RoutingConfigurator $routes) {
 
 #### ▼ FilesystemAdapterとは
 
-データをキャッシングできる。オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
+データをキャッシングできる。
+
+オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
+
+
 
 ```php
 <?php
@@ -472,10 +500,14 @@ if (!$cacheItemObj->isHit()) {
   // キャッシュアイテムオブジェクトに、データを設定
   $cacheItemObj->set(777);
   // キャッシュアイテムオブジェクトを紐付ける。
+
+
   $cache->save($cacheItemObj);
 }
 
 // キャッシュIDに紐付くデータがあった場合、キャッシュアイテムオブジェクトを取得。
+
+
 $cacheItemObj = $cache->get();
 
 ```

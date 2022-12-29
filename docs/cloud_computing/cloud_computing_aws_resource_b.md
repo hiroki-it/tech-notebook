@@ -9,6 +9,8 @@ description: Bで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -32,7 +34,13 @@ description: Bで始まるAWSリソース＠AWSの知見を記録しています
 
 ![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/backup_multi-region.png)
 
-リージョンの何らかのAWSリソースで障害が発生し、データが失われる可能性がある。そこで、メインリージョンとは別に、障害用のDRリージョンを用意しておく。メインリージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
+リージョンの何らかのAWSリソースで障害が発生し、データが失われる可能性がある。
+
+そこで、メインリージョンとは別に、障害用のDRリージョンを用意しておく。
+
+メインリージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
+
+
 
 > ℹ️ 参考：
 >

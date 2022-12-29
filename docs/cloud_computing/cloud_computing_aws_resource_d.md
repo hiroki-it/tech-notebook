@@ -9,6 +9,8 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,6 +27,8 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 > ℹ️ 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 
 WANの種類については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/network/network.html
 

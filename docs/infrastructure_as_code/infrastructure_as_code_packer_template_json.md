@@ -9,6 +9,8 @@ description: template.json＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -35,6 +37,8 @@ $ sudo apt-get update && sudo apt-get install packer
 
 作成するマシンイメージやコンテナイメージの内容を設定する。
 
+
+
 <br>
 
 ### typeがamazon-ebsの場合
@@ -42,6 +46,8 @@ $ sudo apt-get update && sudo apt-get install packer
 #### ▼ region
 
 AMIを作成するリージョンを設定する。
+
+
 
 ```yaml
 }
@@ -58,6 +64,8 @@ AMIを作成するリージョンを設定する。
 
 AMIの基とするAMIを設定する。
 
+
+
 ```yaml
 }
   "builders": [
@@ -72,6 +80,8 @@ AMIの基とするAMIを設定する。
 #### ▼ ami_name
 
 AMIの名前を設定する。
+
+
 
 ```yaml
 }
@@ -128,6 +138,8 @@ AMIの名前を設定する。
 #### ▼ ssh_username
 
 EC2インスタンスへのSSH接続時に使用するユーザー名を設定する。
+
+
 
 ```yaml
 }
@@ -189,6 +201,8 @@ EC2インスタンスへのSSH接続時に使用するユーザー名を設定�
 
 EC2インスタンスに紐づけるルートデバイスボリュームを設定する。
 
+
+
 ```yaml
 }
   "builders": [
@@ -216,6 +230,8 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 #### ▼ typeとは
 
 サーバー/コンテナのプロビジョナーを設定する。
+
+
 
 <br>
 
@@ -273,6 +289,8 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 ### variablesとは
 
 ファイル内で使用する変数を設定する。
+
+
 
 ```yaml
 {

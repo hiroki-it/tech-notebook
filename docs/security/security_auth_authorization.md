@@ -9,6 +9,8 @@ description: Authorization（認可）＠認証/認可の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -34,13 +36,23 @@ Webサイトごとに認証フェーズと認可フェーズを行うのでは�
 #### ▼ 仕組み
 
 1. クライアントが、HTTPリクエストにIDとパスワードを設定してリクエスト。
+
+
 2. IdP：Identity Providerが、IDを『認証』し、クライアント側にアクセストークンを発行。
+
+
 3. クライアントが、HTTPリクエストのヘッダーにアクセストークンを設定してリクエスト。
+
+
 4. アクセストークンが『認可』されれば、API側がデータをレスポンスする。
+
+
 
 ![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/sso.jpg)
 
 SSOには、認証フェーズと認可フェーズがあり、```3```個の役割が定義されている。
+
+
 
 > ℹ️ 参考：https://japan.zdnet.com/article/35126144/
 
@@ -52,7 +64,13 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 #### ▼ ステータスコード
 
-認証フェーズにて、誤ったトークンが発行されたことを表現したい場合、```401```ステータスを使用する。認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に参照権限がないことを表現したい場合、```403```ステータスを使用する。ステータスコードについては、以下のリンクを参考にせよ。
+認証フェーズにて、誤ったトークンが発行されたことを表現したい場合、```401```ステータスを使用する。
+
+認可フェーズにて、正しいトークンが発行されたが、トークンの所有者に参照権限がないことを表現したい場合、```403```ステータスを使用する。
+
+ステータスコードについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
@@ -80,7 +98,15 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 ![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_architecture.png)
 
-認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。クライアントアプリで認証フェーズのみでログインし、連携先のアプリには認可フェーズのみでログインする。OAuthは認可フェーズのみで構成されているため、間違っても『OAuth認証』とは言わない。認証フェーズと認可フェーズでは、```3```個の役割が定義されていることを説明したが、OAuthプロトコル```2.0```では、より具体的に```4```個の役割が定義されている。
+認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。
+
+クライアントアプリで認証フェーズのみでログインし、連携先のアプリには認可フェーズのみでログインする。
+
+OAuthは認可フェーズのみで構成されているため、間違っても『OAuth認証』とは言わない。
+
+認証フェーズと認可フェーズでは、```3```個の役割が定義されていることを説明したが、OAuthプロトコル```2.0```では、より具体的に```4```個の役割が定義されている。
+
+
 
 > ℹ️ 参考：https://ssaits.jp/promapedia/technology/oauth.html#
 
@@ -95,11 +121,15 @@ SSOには、認証フェーズと認可フェーズがあり、```3```個の役�
 
 OAuthには、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。
 
+
+
 #### ▼ 認可コードフロー
 
 ![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_authorization-code.png)
 
 最も基本的な認可コードフローを説明する。
+
+
 
 > ℹ️ 参考：
 >
@@ -109,6 +139,8 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 ![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oauth_authorization-code_facebook.png)
 
 Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。
+
+
 
 > ℹ️ 参考：https://contents.saitolab.org/oauth/
 
@@ -206,11 +238,17 @@ Pragma: no-cache
 
 #### ▼ 使用される認証スキーム
 
-OAuthでは、認証スキーマとしてBearer認証が選択されることが多く、AWSやGitHubは、独自の認証スキームを使用している。注意点として、認可サーバーによって発行されたBearerトークンは、```Authorization```ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。
+OAuthでは、認証スキーマとしてBearer認証が選択されることが多く、AWSやGitHubは、独自の認証スキームを使用している。
+
+注意点として、認可サーバーによって発行されたBearerトークンは、```Authorization```ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。
+
+
 
 #### ▼ 付与タイプ
 
 認可サーバーによるOAuthのトークンの付与方法には種類がある。
+
+
 
 > ℹ️ 参考：https://oauth.net/2/grant-types/
 
@@ -230,6 +268,8 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 OAuthとは異なる仕組みで認証/認可の両方を実装する。
 
+
+
 <br>
 
 ### OIDC：OpenID Connect（外部ID連携）
@@ -237,6 +277,8 @@ OAuthとは異なる仕組みで認証/認可の両方を実装する。
 #### ▼ OIDCとは
 
 OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -247,6 +289,8 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 
 OIDCでは、OAuthとは異なり、アクセストークンではなく、IDトークンを使用する。
 
+
+
 > ℹ️ 参考：https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/oidc_vs_oauth.png)
@@ -255,9 +299,13 @@ OIDCでは、OAuthとは異なり、アクセストークンではなく、IDト
 
 ベースになっているOAuthと同様にして、OIDCには仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。
 
+
+
 #### ▼ 認可コードフロー
 
 Facebookには認証フェーズと認可フェーズでログインする点はOAuthと同じであるが、免許証作成サイトには認証フェーズと認可フェーズでログインする。
+
+
 
 <br>
 

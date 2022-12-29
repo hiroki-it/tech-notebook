@@ -9,6 +9,8 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -37,6 +39,8 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 インバウンド時の通信の経路は以下の通りである。
 
+
+
 ```text
 外
 ↓
@@ -52,6 +56,8 @@ waypointのPod（L7）
 ```
 
 アウトバウンド時の通信の経路は以下の通りである。
+
+
 
 ```text
 外
@@ -188,6 +194,8 @@ KubernetesとIstioには重複する能力がいくつか（例：サービス�
 #### ▼ 全体像
 
 Istioでは、Admission Controllerを使用して、Podが作成される時にサイドカーコンテナを注入できるようにしている。
+
+
 
 ![istio_container-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_container-injection.png)
 
@@ -461,6 +469,8 @@ num  target     prot  opt  source     destination
 
 障害を意図的に注入し、サービスメッシュの動作を検証する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
 
 #### ▼ テストの種類
@@ -479,7 +489,11 @@ num  target     prot  opt  source     destination
 
 #### ▼ 仕組み
 
-マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実装する。
+マイクロサービスアーキテクチャにおける認証にはいくつか種類がある。
+
+そのうち、Istioは『分散型』と『ゲートウェイ分散型』の認証を実装する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
@@ -499,11 +513,17 @@ num  target     prot  opt  source     destination
 
 #### ▼ Istiod
 
-デフォルトでは、Istiodが中間認証局として働く。Istiodは、SSL証明書を必要とするKubernetesリソースに証明書を提供する。
+デフォルトでは、Istiodが中間認証局として働く。
+
+Istiodは、SSL証明書を必要とするKubernetesリソースに証明書を提供する。
+
+
 
 #### ▼ 外部の中間認証局
 
 Istiodを使用する代わりに、外部の中間認証局を使用して、SSL証明書を必要とするKubernetesリソースに証明書を提供する。
+
+
 
 - cert-manager
 - カスタムコントローラー
@@ -528,7 +548,11 @@ Istiodを使用する代わりに、外部の中間認証局を使用して、SS
 
 #### ▼ メタデータ伝播（分散コンテキスト伝播）
 
-Istioは、分散トレースのためのメタデータを作成するが、これをマイクロサービス間で伝播することはしない。そのため、伝播のための実装が必要になる。
+Istioは、分散トレースのためのメタデータを作成するが、これをマイクロサービス間で伝播することはしない。
+
+そのため、伝播のための実装が必要になる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -552,6 +576,8 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 異なるClusterが同じプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合うことにより、この時、IngressGatewayを使用せずに、異なるClusterのコンテナが直接的に通信できる。
 
+
+
 > ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
 ![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_cluster_same-network.png)
@@ -559,6 +585,8 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 #### ▼ 異なるプライベートネットワーク内の場合
 
 異なるClusterが異なるプライベートネットワーク内に属している場合に、ClusterのコントロールプレーンNode間でデータプレーンを管理し合うことにより、この時、IngressGatewayを経由して、異なるClusterのコンテナが間接的に通信できる。
+
+
 
 > ℹ️ 参考：https://zenn.dev/kuchima/articles/asm-hybrid-mesh
 
@@ -570,7 +598,11 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 同じプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想サーバーを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
+仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想サーバーを管理できるようになる。
+
+この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
 
@@ -578,7 +610,11 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で管理できるようになる。この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
+仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で管理できるようになる。
+
+この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
+
+
 
 ![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 

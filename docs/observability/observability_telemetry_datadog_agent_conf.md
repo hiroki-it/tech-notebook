@@ -9,6 +9,8 @@ description: datadogエージェントの設定＠Datadogの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -17,7 +19,11 @@ description: datadogエージェントの設定＠Datadogの知見を記録し�
 
 ### datadogエージェントとは
 
-Datadogとパケットを送受信するためには、アプリケーションにdatadogエージェントをインストールする必要がある。使用しているOSやIaCツールごとに、インストール方法が異なる。
+Datadogとパケットを送受信するためには、アプリケーションにdatadogエージェントをインストールする必要がある。
+
+使用しているOSやIaCツールごとに、インストール方法が異なる。
+
+
 
 <br>
 
@@ -76,7 +82,13 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 ### ```datadog.yaml```ファイルとは
 
-datadogエージェントを設定する。 ```/etc/datadog-agent```ディレクトリに配置される。datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
+datadogエージェントを設定する。
+
+ ```/etc/datadog-agent```ディレクトリに配置される。
+
+datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
+
+
 
 > ℹ️ 参考：
 >
@@ -93,9 +105,13 @@ datadogエージェントを設定する。 ```/etc/datadog-agent```ディレク
 
 全てのテレメトリーに関するオプションとして使用できる。
 
+
+
 #### ▼ api_key
 
 DatadogのAPIキーを設定する。
+
+
 
 ```yaml
 # ---------------------------------------------
@@ -120,9 +136,13 @@ api_key: <APIキー>
 
 ログに関するオプションとして使用できる。
 
+
+
 #### ▼ logs_enabled
 
 ログの収集はデフォルトで無効化されているため、有効化する必要がある。
+
+
 
 ```yaml
 ...
@@ -148,11 +168,19 @@ logs_enabled: true
 
 #### ▼ datadogイメージ
 
-datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている。ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+datadogコンテナのベースイメージとなるdatadogイメージがDatadog公式から提供されている。
+
+ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+
+
 
 #### ▼ DockerHubを使用する場合
 
-ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定する。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定する。
+
+datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+
+
 
 > ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
@@ -167,7 +195,11 @@ ECSタスクのコンテナ定義にて、DockerHubのURLを直接的に指定�
 
 #### ▼ ECRパブリックギャラリーを使用する場合
 
-ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。
+
+datadogエージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
+
+
 
 ```yaml
 [
@@ -185,7 +217,13 @@ ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのUR
 
 #### ▼ プライベートECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。
+
+ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。
+
+datadogエージェントにデフォルトで内蔵されている設定を上書きしたい場合は、こちらを採用する。
+
+
 
 > ℹ️ 参考：https://hub.docker.com/r/datadog/agent
 
@@ -210,7 +248,11 @@ FROM data/agent:latest
 
 #### ▼ datadogコンテナ
 
-Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
+Datadogが提供するdatadogイメージによって作成されるコンテナであり、コンテナのサイドカーコンテナとして配置される。
+
+コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスのデータポイントを収集し、Datadogにこれを転送する。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=logdriver#create-an-ecs-fargate-task
 
@@ -291,6 +333,8 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
 
 datadogコンテナがコンテナからメトリクスのデータポイントを収集できるように、ECSタスク実行ロールにポリシーを追加する必要がある。
 
+
+
 > ℹ️ 参考：https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#create-or-modify-your-iam-policy
 
 ```yaml
@@ -316,7 +360,11 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 ### ```datadog.yaml```ファイルとは
 
-コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である。ただサーバーの場合とは異なり、環境変数から値を設定できる。
+コンテナもサーバーと同様にして```datadog.yaml```ファイルが必要である。
+
+ただサーバーの場合とは異なり、環境変数から値を設定できる。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/getting_started/agent/#configuration 
 
@@ -326,7 +374,11 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 #### ▼ グローバル変数とは
 
-全てのテレメトリーに関する環境変数として使用できる。datadogコンテナの環境変数として設定する。
+全てのテレメトリーに関する環境変数として使用できる。
+
+datadogコンテナの環境変数として設定する。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
@@ -343,7 +395,11 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 #### ▼ 通常メトリクス
 
-通常メトリクスに関する環境変数として使用できる。一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
+通常メトリクスに関する環境変数として使用できる。
+
+一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
@@ -355,6 +411,8 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 #### ▼ カスタムメトリクス
 
 カスタムメトリクスに関する環境変数として使用できる。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
@@ -370,6 +428,8 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 ログに関する環境変数として使用できる。
 
+
+
 | 変数名                | 説明                         | 補足                                                                                                  |
 |-----------------------|----------------------------|-----------------------------------------------------------------------------------------------------|
 | ```DD_LOGS_ENABLED``` | ログの収集を有効化するか否かを設定する。 | ℹ️ 参考：https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents              |
@@ -381,7 +441,11 @@ datadogコンテナがコンテナからメトリクスのデータポイント�
 
 #### ▼ 分散トレース変数とは
 
-分散トレースに関する環境変数として使用できる。分散トレースのタグ名に反映される。
+分散トレースに関する環境変数として使用できる。
+
+分散トレースのタグ名に反映される。
+
+
 
 #### ▼ PHPトレーサーの場合
 

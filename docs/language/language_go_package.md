@@ -8,6 +8,8 @@ title: 【IT技術の知見】パッケージ@Go
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -15,6 +17,8 @@ title: 【IT技術の知見】パッケージ@Go
 ## 01. ビルトインパッケージ
 
 以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
 
@@ -28,11 +32,15 @@ title: 【IT技術の知見】パッケージ@Go
 
 インポートされているパッケージに合わせて、```go.mod```ファイルと```go.sum```ファイルを更新する。
 
+
+
 ```bash
 $ go mod tidy
 ```
 
 もし```go.sum```ファイルがあるのにも関わらず、以下のようなエラーが出る時は、```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある。
+
+
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
@@ -45,7 +53,13 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 #### ▼ ```go.mod```ファイルとは
 
-PHPにおける```composer.json```ファイルに相当する。インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。インストールしたい外部パッケージも定義できる。
+PHPにおける```composer.json```ファイルに相当する。
+
+インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。
+
+インストールしたい外部パッケージも定義できる。
+
+
 
 ```
 module github.com/hiroki-hasegawa/foo-repository
@@ -55,7 +69,15 @@ go 1.16
 
 #### ▼ インターネットからインポート
 
-パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。注意点として、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
+パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。
+
+```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。
+
+これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。
+
+注意点として、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
+
+
 
 > ℹ️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
@@ -82,7 +104,13 @@ func main() {
 
 #### ▼ ローカルマシンからインポート
 
-ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
+ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。
+
+独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
+
+パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
+
+
 
 > ℹ️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
@@ -95,6 +123,8 @@ replace github.com/hiroki-hasegawa/foo-repository => /
 ```
 
 また、ルートディレクトリのみでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
+
+
 
 ```yaml
 repository/
@@ -116,6 +146,8 @@ go 1.16
 
 これらにより、ローカルマシンのパッケージをインポートできるようになる。
 
+
+
 ```go
 import "local.packages/local-pkg"
 
@@ -130,7 +162,13 @@ func main() {
 
 #### ▼ ```go.sum```ファイルとは
 
-PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
+PHPにおける```composer.lock```ファイルに相当する。
+
+```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。
+
+パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
+
+
 
 <br>
 
@@ -146,9 +184,13 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 汎用的な関数が同梱されている。
 
+
+
 > ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
 ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
+
+
 
 > ℹ️ 参考：
 >
@@ -165,6 +207,8 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
 <br>
@@ -173,7 +217,11 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 ### client-goとは
 
-Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
+Kubernetesのkube-apiserverと通信できるパッケージ。
+
+使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
+
+
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
@@ -183,13 +231,21 @@ Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAP
 
 kube-apiserverの認証/認可を通過するために、```~/.kube/config```ファイルをコンテナにマウントする必要がある。
 
+
+
 > ℹ️ 参考：https://nishipy.com/archives/1363
 
 <br>
 
 ### client-goパッケージとkube-apiserverのバージョン整合性
 
-```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
+```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。
+
+例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。
+
+kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
+
+
 
 > ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 
@@ -200,6 +256,8 @@ kube-apiserverの認証/認可を通過するために、```~/.kube/config```フ
 ### gormとは
 
 Go製のORMである。
+
+
 
 <br>
 
@@ -212,7 +270,11 @@ Go製のORMである。
 ```go
 func NewDB() (*gorm.DB, error) {
     
-    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
+    // 接続情報。
+
+sprintfメソッドを使用すると、可読性が高い。
+
+
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("DB_USER"),
@@ -223,6 +285,8 @@ func NewDB() (*gorm.DB, error) {
 	)
 
     // DBに接続します。
+
+
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
@@ -241,6 +305,8 @@ func Close(db *gorm.DB) error {
 	}
 
     // DBとの接続を切断します。
+
+
 	err = sqlDb.Close()
 
 	if err != nil {
@@ -257,7 +323,11 @@ func Close(db *gorm.DB) error {
 
 #### ▼ Gormモデル埋め込み
 
-構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
+構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
+
+構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/models.html#embedded_struct
 
@@ -279,13 +349,19 @@ type User struct {
 
 #### ▼ プライマリーキー
 
-『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
+『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。
+
+もし、他の名前のフィールドをIDとして使用したい場合は、```gorm:"primaryKey"```タグをつける。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/conventions.html#ID-as-Primary-Key
 
 ```go
 type User struct {
 	ID   string // プライマリーキーとして使用される。
+
+
 	Name string
 }
 ```
@@ -293,13 +369,19 @@ type User struct {
 ```go
 type User struct {
 	UserID string `gorm:"primaryKey"` // プライマリーキーとして使用される。
+
+
 	Name   string
 }
 ```
 
 #### ▼ SoftDelete
 
-構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
+構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。
+
+Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
@@ -330,12 +412,18 @@ db.Where("age = 20").Find(&user)
 
 #### ▼ ```TableName```メソッド
 
-デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
+デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
+
+```TableName```メソッドにより、独自のテーブル名をつけられる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
+
+
 type User struct {
 	ID      int
 	Deleted gorm.DeletedAt
@@ -343,6 +431,8 @@ type User struct {
 }
 
 // テーブル名を『foo』になる。
+
+
 func (User) TableName() string {
 	return "foo"
 }
@@ -354,7 +444,11 @@ func (User) TableName() string {
 
 ### Create
 
-Gormモデルのフィールドに設定された値を元に、カラムを作成する。作成したカラムのプライマリーキーを、構造体から取得できる。
+Gormモデルのフィールドに設定された値を元に、カラムを作成する。
+
+作成したカラムのプライマリーキーを、構造体から取得できる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
 
@@ -391,6 +485,8 @@ result.Error        // returns error
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
 
+
+
 > ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 ```go
@@ -414,6 +510,8 @@ db.Find(&users, []int{1,2,3})
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
+
+
 > ℹ️ 参考：https://gorm.io/docs/update.html#Update-single-column
 
 ```go
@@ -434,7 +532,13 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 
 #### ▼ 複数カラム更新（暗黙的）
 
-Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
+
+または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。
+
+Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
@@ -452,7 +556,11 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 
 #### ▼ 複数カラム更新（明示的）
 
-Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。フィールド値がゼロ値であっても、スキップされない。
+Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
+
+フィールド値がゼロ値であっても、スキップされない。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
@@ -471,6 +579,8 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 #### ▼ 全カラム更新
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
 
@@ -491,7 +601,13 @@ db.Save(&user)
 
 ### testifyとは
 
-モック、スタブ、アサーションメソッドを提供するパッケージ。Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。モックとスタブについては、以下のリンクを参考にせよ。
+モック、スタブ、アサーションメソッドを提供するパッケージ。
+
+Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。
+
+モックとスタブについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
@@ -509,6 +625,8 @@ db.Save(&user)
 
 AWSクライアントをモック化する。
 
+
+
 ```go
 package amplify
 
@@ -518,6 +636,8 @@ import (
 
 /**
  * AWSクライアントをモック化します。
+
+
  */
 type MockedAwsClient struct {
 	mock.Mock
@@ -538,6 +658,8 @@ type MockedAwsClient struct {
 
 関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。
 
+
+
 ```go
 package amplify
 
@@ -552,6 +674,8 @@ type MockedAmplifyAPI struct {
 
 /**
  * AmplifyのGetBranch関数の処理をスタブ化します。
+
+
  */
 func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
 	arguments := mock.Called(ctx, params, optFns)
@@ -575,11 +699,19 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ▼ 前処理と後処理
 
-テスト関数を実行する直前に、前処理を実行する。モックの作成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
+テスト関数を実行する直前に、前処理を実行する。
+
+モックの作成のために使用すると良い。
+
+PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
@@ -596,6 +728,8 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 事前にモックを作成するために、```BeforeTest```関数を使用する。
 
+
+
 ```go
 package foo
 
@@ -605,6 +739,8 @@ import (
 
 /**
  * 単体テストのテストスイートを構成する。
+
+
  */
 type FooSuite struct {
 	suite.Suite
@@ -613,15 +749,21 @@ type FooSuite struct {
 
 /**
  * 単体テストの直前の前処理を実行する。
+
+
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
 	// モックを作成する。
+
+
 	suite.fooMock = &FooMock{}
 }
 
 /**
  * 単体テストのテストスイートを実行する。
+
+
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})
@@ -637,12 +779,16 @@ import (
 
 /**
  * Methodメソッドが成功することを検証する。
+
+
  */
 func (suite *FooSuite) TestMethod() {
 
 	suite.T().Helper()
 
 	// 前処理で作成したモックを使用する。
+
+
 	fooMock := suite.fooMock
 
 	// 以降にテスト処理
@@ -681,6 +827,8 @@ func NewValidator() *Validator {
 }
 
 // Validate バリデーションを実行します。
+
+
 func (v *FoobarbazValidator) Validate() map[string]string {
 
 	err := validator.New().Struct(v)
@@ -691,6 +839,8 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Field() {
 			// フィールドごとにマップ形式でバリデーションメッセージを構成します。
+
+
 			case "foo":
 				errorMessages["foo"] = v.stringValidation(err)
 				errorMessages["foo"] = v.requiredValidation(err)
@@ -707,11 +857,15 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 }
 
 // stringValidation string型指定のメッセージを返却します。
+
+
 func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }
 
 // requiredValidation 必須メッセージを返却します。
+
+
 func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は必須です", err.Field())
 }
@@ -732,23 +886,35 @@ func main() {
 	v := NewFoobarbazValidator()
 
 	// JSONを構造体にマッピングします。
+
+
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
+		log.Println("JSONエンコードに失敗しました。
+
+")
 	}
 
 	// バリデーションを実行します。
+
+
 	errorMessages := v.Validate()
 
 	if len(errorMessages) > 0 {
 		// マップをJSONに変換します。
+
+
 		byteJson, _ := json.Marshal(errorMessages)
 		fmt.Printf("%#v\n", byteJson)
 	}
 
 	// エンコード結果を出力します。
-	fmt.Println("データに問題はありません。")
+
+
+	fmt.Println("データに問題はありません。
+
+")
 }
 ```
 

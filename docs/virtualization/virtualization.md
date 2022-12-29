@@ -9,6 +9,8 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -24,6 +26,8 @@ description: 仮想化の知見を記録しています。
 ### ハードウェア仮想化とは
 
 物理サーバー上で、物理サーバーのハードウェアとソフトウェアの要素を完全に仮想化する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -71,6 +75,8 @@ description: 仮想化の知見を記録しています。
 
 物理サーバー上で、ソフトウェアであるOSを部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
 
+
+
 > ℹ️ 参考：
 > 
 > - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization\
@@ -85,6 +91,8 @@ description: 仮想化の知見を記録しています。
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 
 物理サーバーのホスト上で、OSのユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。
+
+
 
 > ℹ️ 参考：https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89
 

@@ -9,6 +9,8 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,6 +23,8 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 二者間の通信に割り込み、盗聴/改竄/成りすましによって通信を攻撃する。
 
+
+
 > ℹ️ 参考：https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
 
 <br>
@@ -29,7 +33,13 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 #### ▼ CSRFとは
 
-ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトにアクセスしたとする。悪意のあるサイトのサーバーは、ユーザーのセッションIDを使用して、ログインしていた元のサイトのサーバーを攻撃する。サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
+ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトにアクセスしたとする。
+
+悪意のあるサイトのサーバーは、ユーザーのセッションIDを使用して、ログインしていた元のサイトのサーバーを攻撃する。
+
+サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
+
+
 
 > ℹ️ 参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
@@ -61,7 +71,11 @@ traversalは、横断する（ディレクトリを乗り越える）の意味�
 
 #### ▼ DoS攻撃、DDos攻撃とは
 
-アクセスが集中することによりwebサーバーがパンクすることを利用し、悪意を持ってwebサーバーに多くのデータを送りつける手法。リクエストの送信元が1つの場合はDos攻撃、複数の場合はDDos攻撃という。
+アクセスが集中することによりwebサーバーがパンクすることを利用し、悪意を持ってwebサーバーに多くのデータを送りつける手法。
+
+リクエストの送信元が1つの場合はDos攻撃、複数の場合はDDos攻撃という。
+
+
 
 ![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DoS攻撃.png)
 
@@ -72,7 +86,11 @@ traversalは、横断する（ディレクトリを乗り越える）の意味�
 
 #### ▼ SQLインジェクションとは
 
-DBのSQLクエリのパラメーターとなる入力に、不正な文字列を入力して不正なSQLクエリを実行させ、DBの情報を抜き取る手法。ただし、近年は減少傾向にある。
+DBのSQLクエリのパラメーターとなる入力に、不正な文字列を入力して不正なSQLクエリを実行させ、DBの情報を抜き取る手法。
+
+ただし、近年は減少傾向にある。
+
+
 
 ![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQLインジェクション.jpg)
 
@@ -85,6 +103,8 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 WebアプリケーションによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる 。
 
+
+
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cross-cite-scripting.png)
 
 
@@ -96,6 +116,8 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 漏洩したパスワードを使用して、正面から正々堂々とアクセスする手法。
 
+
+
 ![パスワードリスト攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パスワードリスト攻撃.png)
 
 <br>
@@ -104,7 +126,15 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 #### ▼ Brute-force攻撃とReverse Brute-force攻撃とは
 
-Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
+Brute-forceは力ずくの意味。
+
+IDを固定して、パスワードを総当たりで試す手法。
+
+例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。
+
+一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
+
+
 
 ![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
@@ -119,6 +149,8 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 #### ▼ レインボー攻撃とは
 
 レインボーテーブルの文字列とハッシュ値の対応関係を元にして、ハッシュ化された暗号からパスワードを推測する手法。
+
+
 
 ![レインボー攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Rainbow攻撃.png)
 
@@ -151,6 +183,8 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 キャッシュDNSサーバーが持つIPアドレスを偽のIPアドレスに変え、偽のサイトに強制的にアクセスさせる手法。
 
+
+
 ![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DNSキャッシュポイズニング.gif)
 
 
@@ -161,6 +195,8 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 #### ▼ Back Doorとは
 
 例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
+
+
 
 ![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/バックドア.png)
 

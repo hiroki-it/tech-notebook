@@ -8,6 +8,8 @@ title: 【IT技術の知見】プロトタイプ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,16 +21,24 @@ title: 【IT技術の知見】プロトタイプ＠JavaScript
 
 JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト。
 
+
+
 <br>
 
 ### Object
 
-オブジェクトを作成するオブジェクト。他の全ての標準ビルトインオブジェクトの継承元になっているため、標準ビルトインオブジェクトは、Objectが持つメソッドとデータを使用できる。
+オブジェクトを作成するオブジェクト。
+
+他の全ての標準ビルトインオブジェクトの継承元になっているため、標準ビルトインオブジェクトは、Objectが持つメソッドとデータを使用できる。
+
+
 
 **＊実装例＊**
 
 ```javascript
 // new演算子を使用してインスタンスを作成する。
+
+
 const obj = new Object();
 ```
 
@@ -50,12 +60,16 @@ const obj = new Object();
 
 配列からkeyとvalueを取得する。
 
+
+
 **＊実装例＊**
 
 ```javascript
 const array = ["foo", "bar", "baz"];
 
 // key、valueを取得できる。
+
+
 const iterator = array.entries();
 
 // for-ofで展開
@@ -89,6 +103,8 @@ for (const value of iterator) {
 
 要素数を出力する。
 
+
+
 **＊実装例＊**
 
 ```javascript
@@ -109,6 +125,8 @@ console.log(
 
 JavaScriptからJSONにシリアライズする。
 
+
+
 **＊実装例＊**
 
 ```javascript
@@ -127,6 +145,8 @@ console.log(
 #### ▼ ```stringify```メソッド
 
 JSONからJavaScriptにデシリアライズする。
+
+
 
 **＊実装例＊**
 
@@ -160,6 +180,8 @@ console.log(
 const foo = {
   
   // 慣習的にアンダーバーでprivateを表す。
+
+
   _property: 0,
   
   alertValue: (value) => {
@@ -179,6 +201,8 @@ const foo = {
 #### ▼ 省略形
 
 リテラル表記で、```methodA(): fucntion{}``` とするところを、```methodA() {}```と記述できる。
+
+
 
 ```javascript
 // リテラル表記
@@ -208,6 +232,8 @@ const foo = {
 const foo = new Object({
 
   // 慣習的にアンダーバーでprivateを表す。
+
+
   _property: 0,
 
   setValue(value) {
@@ -228,7 +254,13 @@ const foo = new Object({
 const Foo = new Function();
 ```
 
-ただし、公式からこのような記法は、非推奨とされている。以下の関数宣言、関数式、アロー関数による関数式省略、の記法が推奨される。特にアロー関数では、```this```が宣言されたオブジェクト自身を指すため、保守性が高くおすすめである。
+ただし、公式からこのような記法は、非推奨とされている。
+
+以下の関数宣言、関数式、アロー関数による関数式省略、の記法が推奨される。
+
+特にアロー関数では、```this```が宣言されたオブジェクト自身を指すため、保守性が高くおすすめである。
+
+
 
 **＊実装例＊**
 
@@ -237,9 +269,13 @@ const Foo = new Function();
 function Foo() {
     
     // 慣習的にアンダーバーでprivateを表す。
+
+
     _property = 0;
 
     // プロパティ値として宣言した関数を、メソッドという。
+
+
     this.setValue = (value)  => {
         this._property = value;
     };   
@@ -258,6 +294,8 @@ const Foo = new Foo();
 const Foo = (value)  => {
     
     // 慣習的にアンダーバーでprivateを表す。
+
+
     _property = 0;
   
     this.setValue = (value)  => {
@@ -273,6 +311,8 @@ const Foo = (value)  => {
 const Foo = (value) => {
     
     // 慣習的にアンダーバーでprivateを表す。
+
+
     _property = 0;
   
     this.setValue = (value)  => {
@@ -286,6 +326,8 @@ const Foo = (value) => {
 ```
 
 リテラル表記と```Object```コンストラクタ関数による作成とは異なり、コンストラクタ関数によって宣言されたオブジェクトは、暗示的に```prototype```プロパティを持つ。
+
+
 
 **＊実装例＊**
 
@@ -324,8 +366,14 @@ ES6から、糖衣構文の```class```によって、オブジェクトを宣言
 export class Foo {
     
     // classでしか使用できない。
+
+
     // Setterの代わりにコンストラクタでイミュータブルを実現。
+
+
     // データの宣言と格納が同時に行われる。
+
+
     constructor(value) {
         this.property = value;
     }
@@ -354,8 +402,14 @@ foo.getValue();
 export const Foo = class {
     
     // classでしか使用できない。
+
+
     // Setterの代わりにコンストラクタでイミュータブルを実現。
+
+
     // データの宣言と格納が同時に行われる。
+
+
     constructor(value) {
         this._property = value;
     }
@@ -385,7 +439,13 @@ foo.getValue();
 
 #### ▼ プロトタイプチェーンとは
 
-オブジェクトが暗示的に持つ```prototype```プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。クラスベースのオブジェクト指向で使用されるクラスチェーンについては、別ノートを参照せよ。
+オブジェクトが暗示的に持つ```prototype```プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。
+
+オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。
+
+クラスベースのオブジェクト指向で使用されるクラスチェーンについては、別ノートを参照せよ。
+
+
 
 #### ▼ ```new Obejct```メソッドを使用した継承
 
@@ -393,10 +453,16 @@ foo.getValue();
 
 ```javascript
 // 大元となるオブジェクトは個別ファイルで管理しておくのがベター。
+
+
 // コンストラクタ関数の関数式による宣言。
+
+
 const Foo = (value)  => {
   
     // 慣習的にアンダーバーでprivateを表す。
+
+
     _property = 0;
   
     this.setValue = (value)  => {
@@ -411,14 +477,22 @@ const Foo = (value)  => {
 
 別クラスで、以下の様に継承する。
 
+
+
 **＊実装例＊**
 
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
+
+
 // prototypeプロパティの継承先のオブジェクトを宣言。
+
+
 const SubFoo = (subValue) => {
     
     // 慣習的にアンダーバーでprivateを表す。
+
+
     this.subProperty = subValue;
   
     this.setSubValue = (subValue) => {
@@ -431,9 +505,13 @@ const SubFoo = (subValue) => {
 }
 
 // new Foo()を使用した継承。
+
+
 SubFoo.prototype = new Foo();
 
 // SubFooクラスにはgetValue()は無い。
+
+
 // 継承元まで辿り、Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）。
 const result = SubFoo.getValue()
 console.log(result);
@@ -445,10 +523,16 @@ console.log(result);
 
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
+
+
 // prototypeプロパティの継承先のオブジェクトを宣言。
+
+
 const SubFoo = () => {
     
     // 慣習的にアンダーバーでprivateを表す。
+
+
     _property = 0;
   
     this.setSubValue = (subValue) => {
@@ -461,9 +545,13 @@ const SubFoo = () => {
 };
 
 // Object.create()を使用した継承。
+
+
 SubFoo.prototype = Object.create(Foo.prototype);
 
 // SubFooクラスにはgetValue()は無い。
+
+
 // 継承元まで辿り、Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）。
 const result = SubFoo.getValue();
 console.log(result);
@@ -471,10 +559,14 @@ console.log(result);
 
 また、```Object.create```メソッドを使用する場合、継承のみでなく、メンバを新しく追加もできる。
 
+
+
 **＊実装例＊**
 
 ```javascript
 // Object.create()による継承。
+
+
 SubFoo.prototype = Object.create(Foo.prototype, {
 
     // データを定義
@@ -488,6 +580,8 @@ SubFoo.prototype = Object.create(Foo.prototype, {
 });
 
 // SubFooクラスにはprintSubValue()が追加された。
+
+
 const result = SubFoo.printSubValue();
 console.log(result);
 ```
@@ -500,12 +594,16 @@ console.log(result);
 
 メソッド内の```this```は、fooオブジェクトを指す。
 
+
+
 **＊実装例＊**
 
 ```javascript
 const foo = {
 
   // 慣習的にアンダーバーでprivateを表す。
+
+
   _property: 0,
 
   setValue(value) {
@@ -520,6 +618,8 @@ const foo = {
 
 ```javascript
 // メソッド内のthisは、fooオブジェクトを指す。
+
+
 foo.setValue(1);
 foo.getValue(); // 1
 ```
@@ -531,6 +631,8 @@ foo.getValue(); // 1
 #### ▼ 関数宣言と関数式によるコンストラクタ関数内の```this```の場合
 
 コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
+
+
 
 **＊実装例＊**
 
@@ -559,6 +661,8 @@ const object2 = {
 ```javascript
 /* コンストラクタ関数内のthisの場合
 コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
+
+
 ここでは、object1とobject2
 */
 
@@ -568,7 +672,15 @@ object2.printParam; // object2 param
 
 #### ▼ アロー関数によるコンストラクタ関数内の```this```の場合
 
-アロー関数内の```this```の参照先には、十分な注意が必要である。今まで、JavaScriptでは、```this```の参照先が文脈によって変わることに批判が集まっていた。そこで、参照先が文脈によって変わらない機能が追加された。```this```は、自身が宣言されたオブジェクトを指す。
+アロー関数内の```this```の参照先には、十分な注意が必要である。
+
+今まで、JavaScriptでは、```this```の参照先が文脈によって変わることに批判が集まっていた。
+
+そこで、参照先が文脈によって変わらない機能が追加された。
+
+```this```は、自身が宣言されたオブジェクトを指す。
+
+
 
 **＊実装例＊**
 
@@ -597,8 +709,14 @@ const object2 = {
 ```javascript
 /* アロー関数内のthisの場合
 thisは、自身が宣言されたオブジェクトを指す。
+
+
 ここでは、一番外側のWindowオブジェクトであり、object1とobject2ではない。
+
+
 参照先は文脈によって変わらない。
+
+
 */
 
 object1.printParam; // global param

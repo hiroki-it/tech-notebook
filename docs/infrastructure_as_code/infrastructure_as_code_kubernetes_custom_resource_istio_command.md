@@ -9,6 +9,8 @@ description: コマンド＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -52,7 +54,11 @@ $ export PATH=$PWD/bin:$PATH
 
 #### ▼ プロファイルとは
 
-Istioの機能のセットを提供する。実際には設定済みのIstioOperatorであり、```istioctl```コマンドのインストール時に```manifests```ディレクトリ以下に配置される。
+Istioの機能のセットを提供する。
+
+実際には設定済みのIstioOperatorであり、```istioctl```コマンドのインストール時に```manifests```ディレクトリ以下に配置される。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -80,9 +86,13 @@ Istioの機能のセットを提供する。実際には設定済みのIstioOper
 
 Istioが正しく動作しているか否かを検証する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 
 成功した場合を以下に示す。
+
+
 
 ```bash
 $ istioctl analyze
@@ -91,6 +101,8 @@ $ istioctl analyze
 ```
 
 失敗した場合を以下に示す。
+
+
 
 ```bash
 $ istioctl analyze
@@ -103,6 +115,8 @@ Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 8
 #### ▼ -n
 
 Namespaceを指定しつつ、```analyze```コマンドを実行する。
+
+
 
 ```bash
 $ istioctl analyze -n <Namespace名>
@@ -118,6 +132,8 @@ $ istioctl analyze -n <Namespace名>
 
 Istioリソースを全てdestroyする。
 
+
+
 ```bash
 $ istioctl x uninstall --purge
 ```
@@ -130,6 +146,8 @@ $ istioctl x uninstall --purge
 
 プロファイルをインストールし、加えて設定値を変更する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/
 
 <br>
@@ -140,6 +158,8 @@ $ istioctl x uninstall --purge
 
 IstioOperatorのマニフェストをkube-apiserverに送信し、リソースを作成する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
@@ -149,6 +169,8 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 #### ▼ --set
 
 インストールするもの、または変更する項目を指定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -164,7 +186,11 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 ### kube-injectとは
 
-```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+```istio-proxy```コンテナを手動で注入する。
+
+代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+
+
 
 > ℹ️ 参考：
 >
@@ -180,6 +206,8 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 指定したマニフェストのPodに```istio-proxy```コンテナを注入する。
 
+
+
 ```bash
 $ istioctl kube-inject -f pod.yaml
 ```
@@ -191,6 +219,8 @@ $ istioctl kube-inject -f pod.yaml
 ### diffとは
 
 ymlファイルの差分を取得する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
@@ -205,6 +235,8 @@ $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マ
 ### init
 
 IstioOperatorを```istio-system```に作成する。
+
+
 
 ```bash
 $ istioctl operator init
@@ -223,6 +255,8 @@ Operator controller will watch namespaces: istio-system
 
 Istioのプロファイルを操作する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
 <br>
@@ -234,6 +268,8 @@ Istioのプロファイルを操作する。
 #### ▼ listとは
 
 利用できるプロファイルを取得する。
+
+
 
 ```bash
 $ istioctl profile list
@@ -257,6 +293,8 @@ Istio configuration profiles:
 
 Istio上で管理されるEnvoyの構成情報を取得する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
@@ -273,7 +311,11 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 
 #### ▼ -o
 
-出力形式を指定する。```jq```コマンドや```yq```コマンドと組み合わせた方が良い。
+出力形式を指定する。
+
+```jq```コマンドや```yq```コマンドと組み合わせた方が良い。
+
+
 
 ```bash
 # 返却されたYAMLから、1番目の項目だけ取得する。
@@ -322,6 +364,8 @@ $ istioctl proxy-config all foo-pod \
 #### ▼ bootstrapとは
 
 Envoyで、起動時に読み込まれる設定を取得する。
+
+
 
 ```bash
 $ istioctl proxy-config bootstrap foo-pod \
@@ -387,6 +431,8 @@ lastUpdated: "2022-11-16T08:12:07.162Z"
 
 Envoyのクラスターの静的/動的な設定値を取得する。
 
+
+
 > ℹ️ 参考：
 > 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
@@ -409,6 +455,8 @@ baz-service.bar-namespace.svc.cluster.local   50003                        v1   
 ```
 
 ```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -443,6 +491,8 @@ $ istioctl proxy-config cluster foo-pod \
 
 クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
 
+
+
 ```bash
 $ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
@@ -454,6 +504,8 @@ $ istioctl proxy-config cluster foo-pod \
 #### ▼ --port
 
 クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。
+
+
 
 ```bash
 $ istioctl proxy-config routes foo-pod \
@@ -469,6 +521,8 @@ $ istioctl proxy-config routes foo-pod \
 #### ▼ endpointsとは
 
 Envoyのエンドポイントの静的/動的な設定値を取得する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
 
@@ -496,6 +550,8 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 ```
 
 ```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -554,6 +610,8 @@ $ istioctl proxy-config endpoints foo-pod \
 
 エンドポイントに紐づくクラスター名でフィルタリングし、エンドポイントを取得する。
 
+
+
 ```bash
 $ istioctl proxy-config endpoints foo-pod \
     -n foo-namespace \
@@ -568,6 +626,8 @@ $ istioctl proxy-config endpoints foo-pod \
 #### ▼ listenersとは
 
 Envoyのリスナーの静的/動的な設定値を取得する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener
 
@@ -599,6 +659,8 @@ ADDRESS               PORT                          MATCH                       
 
 Envoyのルーティングの静的/動的な設定値を取得する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
 
 ```bash
@@ -627,6 +689,8 @@ NAME                         DOMAINS                                     MATCH  
 ```
 
 ```.yaml```形式で取得すれば、より詳細な設定値を確認できる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
 
@@ -746,6 +810,8 @@ $ istioctl proxy-config routes foo-pod \
 
 ルート名でフィルタリグし、取得する。
 
+
+
 ```bash
 $ istioctl proxy-config routes <Pod名> -n <PodのNamespace名> --name 50001
 ```
@@ -852,6 +918,8 @@ $ istioctl tag set prd-blue --revision 1-0-0
 
 IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 
 ```bash
@@ -873,6 +941,8 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 Istioのインプレースデプロイメントを実行する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/in-place/
 
 ```bash
@@ -893,6 +963,8 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 ### verify-installとは
 
 Istioリソースのapplyが正しく実行されたかを検証する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 
@@ -919,6 +991,8 @@ Checked 3 Istio Deployments
 ### versionとは
 
 Istiodコントロールプレーンのバージョンを取得する。
+
+
 
 ```bash
 $ istioctl version

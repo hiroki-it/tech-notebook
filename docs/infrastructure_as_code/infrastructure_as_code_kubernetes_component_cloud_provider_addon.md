@@ -9,6 +9,8 @@ description: クラウドプロバイダーアドオン＠Kubernetesの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -17,7 +19,13 @@ description: クラウドプロバイダーアドオン＠Kubernetesの知見を
 
 ### AWS EKSアドオンとは
 
-EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。マネージドタイプとセルフマネージドタイプがあり、マネージドタイプではアドオンの設定値をAWSが管理し、ユーザーの設定を強制的に上書きする。一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
+EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。
+
+マネージドタイプとセルフマネージドタイプがあり、マネージドタイプではアドオンの設定値をAWSが管理し、ユーザーの設定を強制的に上書きする。
+
+一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -30,7 +38,11 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 
 #### ▼ eks-code-dnsアドオンとは
 
-EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。同じCluster内の全てのPodの名前解決を行う。
+EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働する。
+
+同じCluster内の全てのPodの名前解決を行う。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
@@ -40,7 +52,11 @@ EKSの各Node上で、```kube-dns```という名前のDeploymentとして稼働�
 
 #### ▼ eks-kube-proxyアドオンとは
 
-EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
+EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働する。
+
+EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
@@ -52,7 +68,13 @@ EKSの各Node上で、```kube-proxy```という名前のDaemonSetとして稼働
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_eks-vpc-cni.png)
 
-EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+EKSのNode上で、```aws-node```という名前のDaemonSetとして稼働する。
+
+PodにAWS ENIを紐付け、Clusterネットワーク内のIPアドレスをPodのENIに割り当てる。
+
+これにより、EKSのClusterネットワーク内にあるPodにインバウンド通信をルーティングできるようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -185,6 +207,8 @@ aws-load-balancer-controller   2/2     2            0           22m
 ```
 
 もし、以下の様に、```53```番ポートへの接続でエラーになる場合は、CoreDNSによる名前解決が正しくできていないため、CoreDNSが正常に稼働しているか否かを確認する。
+
+
 
 ```yaml
 {

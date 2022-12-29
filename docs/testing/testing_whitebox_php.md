@@ -9,6 +9,8 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -42,6 +44,8 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 
 静的解析を実施する。
 
+
+
 <br>
 
 ### コマンド
@@ -49,6 +53,8 @@ description: PHP＠ホワイトボックステストの知見を記録してい�
 #### ▼ オプション無し
 
 全てのファイルを対象として、静的解析を実施する。
+
+
 
 ```bash
 $ vendor/bin/phpstan analyse
@@ -62,6 +68,8 @@ $ vendor/bin/phpstan analyse
 
 PHPStanの設定を行う。
 
+
+
 #### ▼ ```includes```
 
 ```yaml
@@ -72,6 +80,8 @@ includes:
 #### ▼ ```parameters```
 
 静的解析の設定を行う。
+
+
 
 **＊実装例＊**
 
@@ -102,6 +112,8 @@ parameters:
 
 単体テストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
 
+
+
 <br>
 
 ### コマンド
@@ -109,6 +121,8 @@ parameters:
 #### ▼ オプション無し
 
 全てのテストファイルを対象として、定義されたメソッドを実行する。
+
+
 
 ```bash
 $ vendor/bin/phpunit
@@ -125,6 +139,8 @@ OK (3 tests, 3 assertions)
 
 特定のテストファイルを対象として、定義されたメソッドを実行する。
 
+
+
 ```bash
 $ vendor/bin/phpunit --filter Foo
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
@@ -139,6 +155,8 @@ OK (1 tests, 1 assertions)
 #### ▼ --list-tests
 
 テストファイルの一覧を取得する。
+
+
 
 ```bash
 $ vendor/bin/phpunit --list-tests
@@ -155,13 +173,23 @@ Available test(s):
 
 #### ▼ ```phpunit.xml```ファイルとは
 
-PHPUnitの設定を行う。デフォルトの設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。また、```Test```で終わるphpファイルを作成しておく必要がある。
+PHPUnitの設定を行う。
+
+デフォルトの設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。
+
+また、```Test```で終わるphpファイルを作成しておく必要がある。
+
+
 
 > ℹ️ 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
 
 #### ▼ ```testsuites```タグ
 
-テストスイートを定義できる。```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。
+テストスイートを定義できる。
+
+```testsuites```タグ内の```testsuites```タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。
+
+
 
 > ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
@@ -187,13 +215,21 @@ PHPUnitの設定を行う。デフォルトの設定では、あらかじめル�
 
 #### ▼ ```php```タグ
 
-PHPUnitの実行前に設定する```ini_set```関数、```define```関数、グローバル変数、を定義できる。タグ名との対応関係については、以下のリンクを参考にせよ。
+PHPUnitの実行前に設定する```ini_set```関数、```define```関数、グローバル変数、を定義できる。
+
+タグ名との対応関係については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
 **＊実装例＊**
 
-Composerの実行時にメモリ不足にならないようにメモリを拡張する。また、テスト用のDBに通信できるよう、DBに関する環境変数を設定する。
+Composerの実行時にメモリ不足にならないようにメモリを拡張する。
+
+また、テスト用のDBに通信できるよう、DBに関する環境変数を設定する。
+
+
 
 ```xml
 <phpunit>
@@ -224,7 +260,11 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 #### ▼ アサーションメソッドとは
 
-実際の値と期待値を比較し、結果に応じて```SUCCESS```または```FAILURES```を返却する。非staticまたはstaticとしてコールできる。
+実際の値と期待値を比較し、結果に応じて```SUCCESS```または```FAILURES```を返却する。
+
+非staticまたはstaticとしてコールできる。
+
+
 
 > ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
 
@@ -240,13 +280,19 @@ self::assertTrue()
 
 実際値が```true```か否かを検証する。
 
+
+
 ```php
 $this->assertTrue($response->isOk());
 ```
 
 #### ▼ assertEquals
 
-『```==```』を使用して、期待値と実際値の整合性を検証する。データ型を検証できないため、```assertSame```メソッドを使用する方が良い。
+『```==```』を使用して、期待値と実際値の整合性を検証する。
+
+データ型を検証できないため、```assertSame```メソッドを使用する方が良い。
+
+
 
 ```php
 $this->assertSame(200, $response->getStatusCode());
@@ -254,7 +300,11 @@ $this->assertSame(200, $response->getStatusCode());
 
 #### ▼ assertSame
 
-『```===```』を使用して、期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。
+『```===```』を使用して、期待値と実際値の整合性を検証する。
+
+値のみでなく、データ型も検証できる。
+
+
 
 
 ```php
@@ -267,7 +317,13 @@ $this->assertSame(200, $response->getStatusCode());
 
 #### ▼ Data Provider
 
-テスト対象のメソッドの引数を事前に用意する。メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
+テスト対象のメソッドの引数を事前に用意する。
+
+メソッドのアノテーションで、```@test```と```@dataProvider データプロバイダ名```を宣言する。
+
+データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。
+
+
 
 > ℹ️ 参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
@@ -282,6 +338,8 @@ class FooTest extends TestCase
 {
     /** 
      * findメソッドをテストします。
+
+
      *
      * @test
      * @dataProvider methodDataProvider
@@ -293,6 +351,8 @@ class FooTest extends TestCase
     
     /** 
      * findメソッドを引数を用意します。
+
+
      *
      * @return array
      */    
@@ -314,9 +374,13 @@ class FooTest extends TestCase
 
 前処理として、全てのテスト関数の前にコールされるメソッドである。
 
+
+
 **＊実装例＊**
 
 DIコンテナを事前に作成する。
+
+
 
 ```php
 <?php
@@ -328,9 +392,13 @@ class FooTest extends TestCase
     protected $container;
     
     // 全てのテスト関数の前に実行される。
+
+
     protected function setUp()
     {
         // DIコンテナにデータを格納する。
+
+
         $this->container["option"];
     }
 }
@@ -338,7 +406,11 @@ class FooTest extends TestCase
 
 **＊実装例＊**
 
-単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。そのため、これと同様に依存先のクラスのモックを事前に作成しておく。
+単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。
+
+そのため、これと同様に依存先のクラスのモックを事前に作成しておく。
+
+
 
 ```php
 <?php
@@ -352,15 +424,21 @@ class FooTest extends TestCase
     protected function setUp()
     {
         // 基本的には、一番最初に記述する。
+
+
         parent::setUp();
         
         // 事前にモックを作成しておく。
+
+
         $this->bar = Phake::mock(Bar::class);
     }
     
     public function testFoo_Xxx_Xxx()
     {
         // 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。
+
+
         $foo = new Foo($this->bar)
             
         // 何らかのテストコード
@@ -370,7 +448,11 @@ class FooTest extends TestCase
 
 #### ▼ ```tearDown```メソッド
 
-後処理として、全てのテスト関数の後にコールされるメソッドである。グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。
+後処理として、全てのテスト関数の後にコールされるメソッドである。
+
+グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。
+
+
 
 **＊実装例＊**
 
@@ -389,9 +471,13 @@ class FooTest extends TestCase
     }
     
     // 全てのテスト関数の後に実行される。
+
+
     protected function tearDown()
     {
         // DIコンテナにnullを格納する。
+
+
         $this->container = null;
     }
 }
@@ -403,7 +489,13 @@ class FooTest extends TestCase
 
 #### ▼ ```createMock```メソッド
 
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。以降の処理での用途によって、呼び名が異なることに注意する。ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
+クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。
+
+以降の処理での用途によって、呼び名が異なることに注意する。
+
+ちなみに、PHPUnitの場合、モックのメソッドは```null```を返却する。
+
+
 
 ```php
 <?php
@@ -418,6 +510,8 @@ class FooTest extends TestCase
     public function testFoo()
     {    
         // モックとして使用する擬似オブジェクトを作成する。
+
+
         $mock = $this->createMock(Foo::class);
         
         // null
@@ -444,7 +538,11 @@ class Foo
 
 #### ▼ ```method```メソッド
 
- モックまたはスタブのメソッドに対して、処理の内容を定義する。特定の変数が渡された時に、特定の値を返却させられる。
+ モックまたはスタブのメソッドに対して、処理の内容を定義する。
+
+特定の変数が渡された時に、特定の値を返却させられる。
+
+
 
 ```php
 <?php
@@ -459,9 +557,13 @@ class FooTest extends TestCase
     public function testFoo_Xxx_Xxx()
     {    
         // スタブとして使用する擬似オブジェクトを作成する。
+
+
         $stub = $this->createMock(Foo::class);
         
         // スタブのメソッドに処理内容を定義する。
+
+
         $stub->method("find")
             ->with(1)
             ->willReturn([]);
@@ -481,6 +583,8 @@ class FooTest extends TestCase
 **＊実装例＊**
 
 以降のテスト例では、次のような通知クラスとメッセージクラスが前提にあるとする。
+
+
 
 ```php
 <?php
@@ -578,9 +682,13 @@ class FooMessage
 
 メソッドのアノテーションで、```@test```を宣言する。
 
+
+
 **＊実装例＊**
 
 リクエストにて、チャンネルとメッセージを送信した時に、レスポンスとして```TRUE```が返信されるかを検証する。
+
+
 
 ```php
 <?php
@@ -598,6 +706,8 @@ class FooNotificationTest extends TestCase
     public function setUp()
     {
         // 検証対象外のクラスはモックとする。
+
+
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -631,9 +741,13 @@ class FooNotificationTest extends TestCase
 
 メソッドのアノテーションで、```@test```と```@expectedException```を宣言する。
 
+
+
 **＊実装例＊**
 
 リクエストにて、メッセージのみを送信しようとした時に、例外を発生させられるかを検証する。
+
+
 
 ```php
 <?php
@@ -651,6 +765,8 @@ class FooNotificationTest extends TestCase
     public function setUp()
     {
         // 検証対象外のクラスはモックとする。
+
+
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -687,6 +803,8 @@ class FooNotificationTest extends TestCase
 
 メソッドのアノテーションで、```@test```を宣言する必要がある。
 
+
+
 ```php
 <?php
 
@@ -701,6 +819,8 @@ class FooControllerTest extends TestCase
     public function testFoo()
     {
         // アプリケーション自身のControllerクラスにリクエストを送信する処理。
+
+
         $client = new Client();
         $response = $client->request(
             "GET",
@@ -713,6 +833,8 @@ class FooControllerTest extends TestCase
         );
         
         // レスポンスの実際値と期待値の整合性を検証する。
+
+
     }
 }
 ```
@@ -720,6 +842,8 @@ class FooControllerTest extends TestCase
 #### ▼ テストケース例
 
 外部Webサイトが正常であることを前提として、外部Webサービスとの連携が含まれていることに注意する。
+
+
 
 | HTTPメソッド  | 分類   | データの条件                                                            | ```assert```メソッドの検証内容例                                                                                 |
 |-----------|--------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -741,6 +865,8 @@ class FooControllerTest extends TestCase
 
 Controllerが```200```ステータスを含むレスポンスを返信することを検証する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -757,6 +883,8 @@ class FooControllerTest extends TestCase
     public function testGetPage_GetRequest_Return200()
     {
         // 外部サービスがクライアントの場合はモックを使用する。
+
+
         $client = new Client();
 
         // GETリクエスト
@@ -768,6 +896,8 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する。
+
+
         $this->assertSame(200, $response->getStatusCode());
     }
 }
@@ -776,6 +906,8 @@ class FooControllerTest extends TestCase
 #### ▼ 正常系POST
 
 Controllerが```200```ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。
+
+
 
 **＊実装例＊**
 
@@ -810,18 +942,28 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する。
+
+
         $this->assertSame(200, $response->getStatusCode());
 
         // レスポンスデータを抽出する。
+
+
         $actual = json_decode($response->getContent(), true);
 
         // 更新されたデータのIDが正しいかを検証する。
+
+
         $this->assertSame(1, $actual["id"]);
 
         // レスポンスされたメッセージが正しいかを検証する。
+
+
         $this->assertSame(
             [
-                "データを変更しました。"
+                "データを変更しました。
+
+"
             ],
             $actual["message"]
         );
@@ -832,6 +974,8 @@ class FooControllerTest extends TestCase
 #### ▼ 異常系POST
 
 Controllerが```400```ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであること、を検証する。
+
+
 
 **＊実装例＊**
 
@@ -866,16 +1010,26 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 400ステータスが返却されるかを検証する。
+
+
         $this->assertSame(400, $response->getStatusCode());
 
         // レスポンスデータのエラーを抽出する。
+
+
         $actual = json_decode($response->getContent(), true);
 
         // レスポンスされたエラーメッセージが正しいかを検証する。
+
+
         $this->assertSame(
             [
-                "IDは必ず入力してください。",
-                "メッセージは必ず入力してください。"
+                "IDは必ず入力してください。
+
+",
+                "メッセージは必ず入力してください。
+
+"
             ],
             $actual["errors"]
         );
@@ -891,6 +1045,8 @@ class FooControllerTest extends TestCase
 
 単体テストに必要なテストダブルを提供する。
 
+
+
 > ℹ️ 参考：https://github.com/mlively/Phake#phake
 
 <br>
@@ -899,33 +1055,51 @@ class FooControllerTest extends TestCase
 
 #### ▼ ```mock```メソッド
 
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。以降の処理での用途によって、呼び名が異なることに注意する。
+クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。
+
+以降の処理での用途によって、呼び名が異なることに注意する。
+
+
 
 ```php
 <?php
 
 // モックとして使用する擬似オブジェクトを作成する。
+
+
 $mock = Phake::mock(Foo::class);
 
 // スタブとして使用する擬似オブジェクトを作成する。
+
+
 $stub = Phake::mock(Foo::class);
 ```
 
 #### ▼ ```when```メソッド
 
-モックまたはスタブのメソッドに対して、処理の内容を定義する。また、特定の変数が渡された時に、特定の値を返却させられる。
+モックまたはスタブのメソッドに対して、処理の内容を定義する。
+
+また、特定の変数が渡された時に、特定の値を返却させられる。
+
+
 
 **＊実装例＊**
 
 モックの```find```メソッドは、```1```が渡された時に、空配列を返却する。
 
+
+
 ```php
 <?php
     
-// スタブとして使用する擬似オブジェクトを作成する。    
+// スタブとして使用する擬似オブジェクトを作成する。
+
+    
 $stub = Phake::mock(Foo::class);
 
 // スタブのメソッドに処理内容を定義する。
+
+
 \Phake::when($stub)
     ->find(1)
     ->thenReturn([]);
@@ -934,6 +1108,8 @@ $stub = Phake::mock(Foo::class);
 #### ▼ ```verify```メソッド
 
 上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックのメソッドが```n```回実行できたことを検証する。
+
+
 
 **＊実装例＊**
 
@@ -950,10 +1126,14 @@ class FooTest extends TestCase
     public function testFoo_Bar_Baz()
     {    
         // モックとして使用する擬似オブジェクトを作成する。
+
+
         $mockFooRepository = Phake::mock(FooRepository::class);
         $fooId = Phake::mock(FooId::class);
 
         // モックのメソッドに処理内容を定義する。
+
+
         \Phake::when($mockFooRepository)
             ->find($fooId)
             ->thenReturn(new User(1)); 
@@ -965,6 +1145,8 @@ class FooTest extends TestCase
         $foo->getUser($fooId)
 
         // 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。
+
+
         Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);
     }
 }

@@ -9,6 +9,8 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -38,7 +40,9 @@ $ brew install pluto
 
 #### ▼ detect
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。```pluto detect-api-resources```コマンドとの違いは調査中...
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+
+```pluto detect-api-resources```コマンドとの違いは調査中...
 
 > ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
 
@@ -62,7 +66,9 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 
 #### ▼ detect-api-resources
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。```pluto detect```コマンドとの違いは調査中...
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+
+```pluto detect```コマンドとの違いは調査中...
 
 > ℹ️ 参考：https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
 
@@ -79,6 +85,8 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 #### ▼ detect-helm
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
+
+
 
 > ℹ️ 参考：https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
 
@@ -103,6 +111,8 @@ foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch
 #### ▼ list-versions
 
 Plutoが非推奨と見なしているバージョンの一覧を取得する。
+
+
 
 ```bash
 $ pluto list-versions

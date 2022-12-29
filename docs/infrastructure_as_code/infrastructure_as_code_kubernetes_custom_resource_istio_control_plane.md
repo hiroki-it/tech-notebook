@@ -8,6 +8,8 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,7 +20,11 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 ![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_ports.png)
 
-サイドカープロキシメッシュのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で```istio-proxy```コンテナからのリモートプロシージャーコールを待ち受ける。語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+サイドカープロキシメッシュのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号で```istio-proxy```コンテナからのリモートプロシージャーコールを待ち受ける。
+
+語尾の『```d```』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、istiod-deploymentである。
+
+
 
 > ℹ️ 参考：
 >
@@ -42,9 +48,15 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 コントロールプレーンのPodの可用性を高めるため、これを冗長化する。
 
+
+
 #### ▼ Pod
 
-istiod-deployment配下のPodは、Istiodコントロールプレーンの実体である。Pod内では```discovery```コンテナが稼働している。
+istiod-deployment配下のPodは、Istiodコントロールプレーンの実体である。
+
+Pod内では```discovery```コンテナが稼働している。
+
+
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/pkg/bootstrap/server.go#L412-L476
 
@@ -113,6 +125,8 @@ spec:
 
 Dockerfileとしては、最後に```pilot-discovery```プロセスを実行している。
 
+
+
 > ℹ️ 参考：
 >
 > - https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.pilot
@@ -124,11 +138,17 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 
 そのため、```pilot-discovery```プロセスの実体は、GitHubの```pilot-discovery```ディレクトリ配下の```main.go```ファイルで実行されるGoのバイナリファイルである。
 
+
+
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/pilot/cmd/pilot-discovery/main.go
 
 #### ▼ HorizontalPodAutoscaler
 
-istiod-deployment配下のPodには、HorizontalPodAutoscalerが設定されている。コントロールプレーンの可用性を高められる。
+istiod-deployment配下のPodには、HorizontalPodAutoscalerが設定されている。
+
+コントロールプレーンの可用性を高められる。
+
+
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -199,7 +219,13 @@ spec:
 
 ### istio-sidecar-injector-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookアドオンを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。そのため、Istioが起動に失敗し続けると、サイドカーコンテナの注入を有効しているPodがいつまでも作成されないことになる。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookアドオンを設定する。
+
+```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
+
+そのため、Istioが起動に失敗し続けると、サイドカーコンテナの注入を有効しているPodがいつまでも作成されないことになる。
+
+
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -248,6 +274,8 @@ webhooks:
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://cloudnative.to/blog/istio-pilot-3/
@@ -269,6 +297,8 @@ package xds
 ...
 
 // ADS-APIからEnvoyに宛先情報をリモートプロシージャーコールする。
+
+
 func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) error {
 	return s.Stream(stream)
 }
@@ -284,7 +314,11 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		case req, ok := <-con.reqChan:
 			if ok {
 				// pilot-agentからリクエストを受信する。
+
+
         // 受信内容に応じて、送信内容を作成する。
+
+
 				if err := s.processRequest(req, con); err != nil {
 					return err
 				}
@@ -294,6 +328,8 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 		
 		case pushEv := <-con.pushChannel:
       // pilot-agentにリクエストを送信する。
+
+
 			err := s.pushConnection(con, pushEv)
 			pushEv.done()
 			if err != nil {
@@ -308,6 +344,8 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名のメソッドがある。
 
+
+
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/istio-agent/xds_proxy.go#L299-L306
 
 
@@ -321,7 +359,11 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 ### ```8080```番
 
-```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+
+```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+
+
 
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
@@ -344,7 +386,11 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ### ```9876```番
 
-```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。
+
+ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -381,7 +427,15 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```discovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+```discovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。
+
+リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。
+
+```istio-proxy```コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐づける。
+
+また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 
@@ -390,7 +444,11 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 ### ```15014```番
 
-コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。
+
+リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+
+
 
 ```bash
 # ポートフォワーディングを実行する。

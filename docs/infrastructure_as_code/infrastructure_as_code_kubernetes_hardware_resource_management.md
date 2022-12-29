@@ -9,6 +9,8 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -16,6 +18,8 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 ## 01. リソース管理とは
 
 種々のKubernetesリソースの状態を管理する。
+
+
 
 <br>
 
@@ -34,6 +38,8 @@ Nodeの自動水平スケーリングを実行する。metrics-serverから取�
 ### cluster-autoscalerの仕組み
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
+
+
 
 （１）Podが、Nodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、Nodeが```1```台では足りない。
 
@@ -62,6 +68,8 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
 
+
+
 （１）Podが、Nodeの```70```%にあたるリソースを要求する。 しかし、Nodeが```1```台では足りない。```70 + 70 = 140%```になるため、既存のNodeの少なくとも```1.4```倍のスペックが必要となる。
 
 （２）新しく決定したスペックで、Nodeを新しく作成する。
@@ -77,7 +85,17 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 
 ### deschedulerとは
 
-deschedulerは、Podを再スケジューリングする。類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。そのため、Nodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
+deschedulerは、Podを再スケジューリングする。
+
+類似するkube-schedulerでは、既存のPodを削除して別のNodeに再スケジューリングすることはない。
+
+そのため、Nodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
+
+```kubectl rollout restart```コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
+
+deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
+
+
 
 > ℹ️ 参考：
 >
@@ -92,6 +110,8 @@ deschedulerは、Podを再スケジューリングする。類似するkube-sche
 #### ▼ ポリシーとは
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
+
+
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
 
@@ -123,6 +143,8 @@ strategies:
 #### ▼ RemoveDuplicates
 
 Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 
@@ -157,6 +179,8 @@ strategies:
 #### ▼ RemovePodsViolatingNodeAffinity
 
 ```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。
+
+
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
@@ -214,6 +238,8 @@ strategies:
 
 PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、Podの自動水平スケーリングを実行する。
 
+
+
 <br>
 
 ### metrics-serverの仕組み
@@ -244,6 +270,8 @@ ServiceとAPIServiceを介して、クライアント（```kubectl```コマン�
 
 クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
 
+
+
 ```bash
 # Nodeのメトリクスを取得
 $ kubectl top node
@@ -253,6 +281,8 @@ $ kubectl top pod -n <任意のNamespace>
 ```
 
 また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、metrics-apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
+
+
 
 > ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 
@@ -264,11 +294,17 @@ $ kubectl top pod -n <任意のNamespace>
 
 メトリクスのデータポイントを保存する。
 
+
+
 <br>
 
 ### スクレイパー
 
-対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。
+
+収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+
+
 
 <br>
 
@@ -278,7 +314,15 @@ $ kubectl top pod -n <任意のNamespace>
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
-Podの自動水平スケーリングを実行する。metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
+Podの自動水平スケーリングを実行する。
+
+metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。
+
+設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。
+
+HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -287,7 +331,11 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 
 #### ▼ 最大Pod数の求め方
 
-オートスケーリング時の現在のPod数は、次の計算式で算出される。算出結果に基づいて、スケールアウト/スケールインが実行される。
+オートスケーリング時の現在のPod数は、次の計算式で算出される。
+
+算出結果に基づいて、スケールアウト/スケールインが実行される。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
 
@@ -296,7 +344,11 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 = (現在のPod数) x (現在のPodのCPU平均使用率) ÷ (現在のPodのCPU使用率のターゲット値)
 ```
 
-例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。
+
+算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+
+
 
 <br>
 
@@ -305,6 +357,8 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 #### ▼ VerticalPodAutoscalerとは
 
 Podの垂直スケーリングを実行する。
+
+
 
 > ℹ️ 参考：
 >
