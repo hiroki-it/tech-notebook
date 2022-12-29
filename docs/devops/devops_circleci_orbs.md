@@ -91,15 +91,9 @@ jobs:
 
 aws-cliコマンドのインストールを行う。
 
-
-
 #### ▼ setup
 
-aws-cliコマンドのインストールと、Credentials情報の設定を行う。
-
-AWSリソースを操作するために使用する。
-
-
+aws-cliコマンドのインストールと、Credentials情報の設定を行う。AWSリソースを操作するために使用する。
 
 **＊実装例＊**
 
@@ -203,11 +197,7 @@ aws configure list
 
 #### ▼ build-and-push-image
 
-CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。
-
-```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
-
-
+CircleCIコンテナでコンテナイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
@@ -314,13 +304,7 @@ workflows:
 
 #### ▼ deploy-update-service（ブルー/グリーンデプロイメント使用時）
 
-ECSタスク定義を更新する。
-
-加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
-
-ローリングアップデートと同様にして、```verify-revision-is-deployed```オプションを使用できる。
-
-
+ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。ローリングアップデートと同様にして、```verify-revision-is-deployed```オプションを使用できる。
 
 **＊実装例＊**
 

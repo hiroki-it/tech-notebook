@@ -104,11 +104,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 ### cloud-controller-managerとは
 
-クラウドインフラを操作するcloud-controllerを一括で管理する。
-
-cloud-controllerを使用して、kube-apiserverがクラウドインフラを操作できるようにする。
-
-
+クラウドインフラを操作するcloud-controllerを一括で管理する。cloud-controllerを使用して、kube-apiserverがクラウドインフラを操作できるようにする。
 
 ![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cloud-controller-manager.png)
 
@@ -168,13 +164,7 @@ $ etcd \
 
 ![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
 
-クライアントにコントロールプレーンNodeを公開する。
-
-クライアントがリクエストを送信すると、コントロールプレーンNode上のkube-apiserverがコールされ、他のコンポーネントとHTTPプロトコルでパケットを送受信する。
-
-存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
-
-
+クライアントにコントロールプレーンNodeを公開する。クライアントがリクエストを送信すると、コントロールプレーンNode上のkube-apiserverがコールされ、他のコンポーネントとHTTPプロトコルでパケットを送受信する。存在しないリソース定義をリクエストされると、kube-apiserverはリソース定義を見つけられず、以下のエラーレスポンスを返信する。
 
 ```log
 the server could not find the requested resource
@@ -270,7 +260,11 @@ $ kube-apiserver \
 
 ![kubernetes_kube-apiserver_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_flow.png)
 
-アプリケーションの認可と同じように、クライアントの権限の範囲（認可スコープ）を検証する。認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
+アプリケーションの認可と同じように、クライアントの権限の範囲（認可スコープ）を検証する。
+
+認証されたServiceAccountやUserAccountを、RoleBindingされているRoleに基づいて認可する。
+
+
 
 > ℹ️ 参考：
 >
@@ -318,8 +312,6 @@ healthz check passed
 
 kube-apiserverには、SLIとSLOが設定されている。
 
-
-
 > ℹ️ 参考：
 >
 > - https://povilasv.me/kubernetes-api-server-slo-alerts-the-definitive-guide/
@@ -329,11 +321,7 @@ kube-apiserverには、SLIとSLOが設定されている。
 
 ### 他のコンポーネントとの通信
 
-kube-apiserverは、クライアントからKubernetesリソースの作成/更新/削除リクエストを受信すると、他のコンポーネントと通信してKubernetesリソースを間接的に操作する。
-
-ここでは、Podの作成リクエストが送信された場合の流れを記載する。
-
-
+kube-apiserverは、クライアントからKubernetesリソースの作成/更新/削除リクエストを受信すると、他のコンポーネントと通信してKubernetesリソースを間接的に操作する。ここでは、Podの作成リクエストが送信された場合の流れを記載する。
 
 ![kubernetes_kube-apiserver_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver_communication.png)
 
@@ -372,8 +360,6 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 標準のkube-apiserverを拡張したapiserverのこと。
 
-
-
 > ℹ️ 参考：
 > 
 > - https://itnext.io/comparing-kubernetes-api-extension-mechanisms-of-custom-resource-definition-and-aggregated-api-64f4ca6d0966
@@ -393,11 +379,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 ### kube-controller-managerとは
 
-kube-controllerを一括で管理する。
-
-kube-controllerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
-
-
+kube-controllerを一括で管理する。kube-controllerを使用して、kube-apiserverがKubernetesリソースを操作できるようにする。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/17453
 
@@ -460,11 +442,7 @@ $ kube-controller-manager \
 
 ![kubernetes_reconciliation-loop](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_reconciliation-loop.png)
 
-kube-controller-managerは、kube-controllerを反復的に実行する。
-
-これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
-
-
+kube-controller-managerは、kube-controllerを反復的に実行する。これにより、Kubernetesリソースはリソース定義の宣言通りに定期的に修復される。
 
 > ℹ️ 参考：
 >

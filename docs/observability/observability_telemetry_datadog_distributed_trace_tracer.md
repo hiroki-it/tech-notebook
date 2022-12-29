@@ -40,8 +40,6 @@ $ rm datadog-php-tracer.deb
 
 また、PHP-FPMに環境変数を渡せるように、```www```プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
 
-
-
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル
 [www]
@@ -319,8 +317,6 @@ import (
 func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	// 親スパンを作成する。
-
-
 	span, ctx := tracer.StartSpanFromContext(
 		r.Context(),
 		"post.process",
@@ -337,8 +333,6 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 	req = req.WithContext(ctx)
 
 	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
-
-
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),
@@ -375,8 +369,6 @@ import (
 func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	// インバウンド通信のリクエストヘッダーからメタデータを取得する。
-
-
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {
@@ -384,8 +376,6 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 子スパンを作成し、アウトバウンド通信のリクエストヘッダーに子スパンのメタデータを伝播する。
-
-
 	span := tracer.StartSpan(
 		"post.filter",
 		tracer.ChildOf(tracectx),
@@ -426,29 +416,21 @@ import (
 func main() {
 
 	// トレーサーパッケージをセットアップする。
-
-
 	tracer.Start(tracer.WithEnv("prd"))
 
 	defer tracer.Stop()
 
 	// ミドルウェアに関するメソッドに、マイクロサービスの属性情報と、これを分散トレースに設定する処理を渡す。
-
-
 	streamServerInterceptor := grpc.StreamServerInterceptor(grpctracer.WithServiceName("foo-service"))
 	unaryServerInterceptor := grpc.UnaryServerInterceptor(grpctracer.WithServiceName("foo-service"))
 
 	// gRPCサーバーを作成する。
-
-
 	grpcServer := grpc.NewServer(
 		grpc.StreamInterceptor(streamServerInterceptor),
 		grpc.UnaryInterceptor(unaryServerInterceptor),
 	)
 	
 	... // pb.goファイルに関する実装は省略している。
-
-
 
 	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
@@ -457,8 +439,6 @@ func main() {
 	}
 
 	// gRPCサーバーで通信を受信する。
-
-
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
@@ -492,14 +472,10 @@ import (
 func main() {
 
 	// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。
-
-
 	unaryClientInterceptor := grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))
 	streamClientInterceptor := grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))
 
 	// gRPCコネクションを作成する。
-
-
 	conn, err := grpc.Dial(
 		":9000",
 		grpc.WithInsecure(),
@@ -515,8 +491,6 @@ func main() {
 	defer conn.Close()
 
 	... // pb.goファイルに関する実装は省略している。
-
-
 }
 ```
 

@@ -129,7 +129,17 @@ $ yarn dev
 
 #### ▼ ```generate```
 
-本番環境でSSGアプリケーションを稼働させるために使用する。```dev```コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイルを作成する。そのため、SSGは完全な静的ファイルからなる。ビルド時にバックエンドに接続し、DBに格納したデータ（例：画像パス）を元に、静的ファイルをビルドできる。SSGモードのために使用する。
+本番環境でSSGアプリケーションを稼働させるために使用する。
+
+```dev```コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイルを作成する。
+
+そのため、SSGは完全な静的ファイルからなる。
+
+ビルド時にバックエンドに接続し、DBに格納したデータ（例：画像パス）を元に、静的ファイルをビルドできる。
+
+SSGモードのために使用する。
+
+
 
 > ℹ️ 参考：https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
@@ -332,7 +342,15 @@ export function foo() {
 
 #### ▼ publicRuntimeConfig
 
-サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。すなわち、全モード（SSG/SPA/SSRモード）が対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
+
+すなわち、全モード（SSG/SPA/SSRモード）が対応している。
+
+環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。
+
+環境変数は、```context```オブジェクトの```config```変数から取得できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -417,6 +435,8 @@ const nuxtConfig: Configuration = {
 ### buildModules
 
 SSG/SSRモードの```yarn dev```（開発用コマンド）、またSSRモードの```yarn build```の時のみ、```node_module```ディレクトリ内に作成するパッケージを設定する。
+
+
 
 > ℹ️ 参考：https://www.reddit.com/r/Nuxt/comments/gnzgrp/nuxtconfig_modules_vs_build_modules/
 

@@ -31,11 +31,7 @@ API Gatewayのインポートに当たり、OpenAPIの```.yaml```ファイルに
 
 #### ▼ ```x-amazon-apigateway-integration```キーとは
 
-該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である。
-
-各項目の説明は以下のリンクを参考にせよ。
-
-
+該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために ```x-amazon-apigateway-integration```キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
@@ -146,11 +142,7 @@ paths:
 
 #### ▼ ```x-amazon-apigateway-request-validators```キーとは
 
-メソッドリクエストで各種パラメーターのバリデーションを定義するために、```x-amazon-apigateway-request-validators```キーが必要である。
-
-実際に定義したものを使用する時は、後述の```x-amazon-apigateway-request-validator```キーが必要である。
-
-
+メソッドリクエストで各種パラメーターのバリデーションを定義するために、```x-amazon-apigateway-request-validators```キーが必要である。実際に定義したものを使用する時は、後述の```x-amazon-apigateway-request-validator```キーが必要である。
 
 #### ▼ セットアップ
 
@@ -186,13 +178,9 @@ x-amazon-apigateway-request-validators:
 
 メソッドリクエストで各種パラメーターのバリデーションを実行するために、```x-amazon-apigateway-request-validator```キーが必要である。
 
-
-
 #### ▼ セットアップ
 
 事前に定義した```x-amazon-apigateway-request-validators```キーの中から、使用するバリデーションのエイリアス名を宣言する。
-
-
 
 ```yaml
 paths:
@@ -236,34 +224,14 @@ Swagger EditorでAPIの仕様書の```.html```ファイルを確認できる。
 > ℹ️ 参考：https://editor.swagger.io/
 
  - OpenAPI仕様のバージョン2.0と3.0に対応している。
-
-
  - ```x-amazon-apigateway-integration```キーを各HTTPメソッドに定義する。
-
-
  - API Gatewayが```security```キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
-
-
- - リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『```x-api-key```』以外は設定できない。
-
-ただし、統合リクエストで転送する時に付与するヘッダー名は『```X-API-Key```』と設定できる。
-
-
+ - リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『```x-api-key```』以外は設定できない。ただし、統合リクエストで転送する時に付与するヘッダー名は『```X-API-Key```』と設定できる。
  - 統合リクエストでバックエンドに転送するAPIキーは、シングルクオートで囲う必要がある。
-
-
  - APIキーの作成は手動で行う必要がある。
-
-
 - ステージの作成は手動で行う必要がある。
-
-
 - ```servers```キーの実装はインポートしても反映できない。
-
-
 - マッピングテンプレートはVTLを使用して定義できる。
-
-
 
 #### ▼ その他非対応な記法
 

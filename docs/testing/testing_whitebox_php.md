@@ -392,13 +392,9 @@ class FooTest extends TestCase
     protected $container;
     
     // 全てのテスト関数の前に実行される。
-
-
     protected function setUp()
     {
         // DIコンテナにデータを格納する。
-
-
         $this->container["option"];
     }
 }
@@ -424,21 +420,15 @@ class FooTest extends TestCase
     protected function setUp()
     {
         // 基本的には、一番最初に記述する。
-
-
         parent::setUp();
         
         // 事前にモックを作成しておく。
-
-
         $this->bar = Phake::mock(Bar::class);
     }
     
     public function testFoo_Xxx_Xxx()
     {
         // 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。
-
-
         $foo = new Foo($this->bar)
             
         // 何らかのテストコード
@@ -471,13 +461,9 @@ class FooTest extends TestCase
     }
     
     // 全てのテスト関数の後に実行される。
-
-
     protected function tearDown()
     {
         // DIコンテナにnullを格納する。
-
-
         $this->container = null;
     }
 }
@@ -510,8 +496,6 @@ class FooTest extends TestCase
     public function testFoo()
     {    
         // モックとして使用する擬似オブジェクトを作成する。
-
-
         $mock = $this->createMock(Foo::class);
         
         // null
@@ -557,13 +541,9 @@ class FooTest extends TestCase
     public function testFoo_Xxx_Xxx()
     {    
         // スタブとして使用する擬似オブジェクトを作成する。
-
-
         $stub = $this->createMock(Foo::class);
         
         // スタブのメソッドに処理内容を定義する。
-
-
         $stub->method("find")
             ->with(1)
             ->willReturn([]);
@@ -706,8 +686,6 @@ class FooNotificationTest extends TestCase
     public function setUp()
     {
         // 検証対象外のクラスはモックとする。
-
-
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -765,8 +743,6 @@ class FooNotificationTest extends TestCase
     public function setUp()
     {
         // 検証対象外のクラスはモックとする。
-
-
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -819,8 +795,6 @@ class FooControllerTest extends TestCase
     public function testFoo()
     {
         // アプリケーション自身のControllerクラスにリクエストを送信する処理。
-
-
         $client = new Client();
         $response = $client->request(
             "GET",
@@ -833,8 +807,6 @@ class FooControllerTest extends TestCase
         );
         
         // レスポンスの実際値と期待値の整合性を検証する。
-
-
     }
 }
 ```
@@ -883,8 +855,6 @@ class FooControllerTest extends TestCase
     public function testGetPage_GetRequest_Return200()
     {
         // 外部サービスがクライアントの場合はモックを使用する。
-
-
         $client = new Client();
 
         // GETリクエスト
@@ -896,8 +866,6 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する。
-
-
         $this->assertSame(200, $response->getStatusCode());
     }
 }
@@ -942,23 +910,15 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する。
-
-
         $this->assertSame(200, $response->getStatusCode());
 
         // レスポンスデータを抽出する。
-
-
         $actual = json_decode($response->getContent(), true);
 
         // 更新されたデータのIDが正しいかを検証する。
-
-
         $this->assertSame(1, $actual["id"]);
 
         // レスポンスされたメッセージが正しいかを検証する。
-
-
         $this->assertSame(
             [
                 "データを変更しました。
@@ -1010,18 +970,12 @@ class FooControllerTest extends TestCase
         $response = $client->getResponse();
 
         // 400ステータスが返却されるかを検証する。
-
-
         $this->assertSame(400, $response->getStatusCode());
 
         // レスポンスデータのエラーを抽出する。
-
-
         $actual = json_decode($response->getContent(), true);
 
         // レスポンスされたエラーメッセージが正しいかを検証する。
-
-
         $this->assertSame(
             [
                 "IDは必ず入力してください。
@@ -1065,13 +1019,9 @@ class FooControllerTest extends TestCase
 <?php
 
 // モックとして使用する擬似オブジェクトを作成する。
-
-
 $mock = Phake::mock(Foo::class);
 
 // スタブとして使用する擬似オブジェクトを作成する。
-
-
 $stub = Phake::mock(Foo::class);
 ```
 
@@ -1092,14 +1042,10 @@ $stub = Phake::mock(Foo::class);
 ```php
 <?php
     
-// スタブとして使用する擬似オブジェクトを作成する。
-
-    
+// スタブとして使用する擬似オブジェクトを作成する。    
 $stub = Phake::mock(Foo::class);
 
 // スタブのメソッドに処理内容を定義する。
-
-
 \Phake::when($stub)
     ->find(1)
     ->thenReturn([]);
@@ -1126,14 +1072,10 @@ class FooTest extends TestCase
     public function testFoo_Bar_Baz()
     {    
         // モックとして使用する擬似オブジェクトを作成する。
-
-
         $mockFooRepository = Phake::mock(FooRepository::class);
         $fooId = Phake::mock(FooId::class);
 
         // モックのメソッドに処理内容を定義する。
-
-
         \Phake::when($mockFooRepository)
             ->find($fooId)
             ->thenReturn(new User(1)); 
@@ -1145,8 +1087,6 @@ class FooTest extends TestCase
         $foo->getUser($fooId)
 
         // 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。
-
-
         Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);
     }
 }

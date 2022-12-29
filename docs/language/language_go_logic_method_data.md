@@ -281,16 +281,10 @@ type Person struct {
  */
 func newPerson(name string) *Person {
     // new関数を使用する。
-
-
     // &Person{} に同じ。
-
-
 	person := new(Person)
 	
     // ポインタ型の初期化された構造体が返却される。
-
-
 	fmt.Printf("%#v\n", person) // &main.Person{Name:""}
 
 	// フィールドに代入する
@@ -418,8 +412,6 @@ type MyName struct {
 func NewMyName(firstName string, lastName string) *MyName {
 	return &MyName{
 		// コンストラクタ内で委譲する構造体を初期化する。
-
-
 		Name: &Name{
 			FirstName: firstName,
 			LastName:  lastName,
@@ -434,8 +426,6 @@ func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
 	// myName構造体は、Name構造体のメソッドをコールできる。
-
-
 	fmt.Printf("%#v\n", myName.fullName()) // "Hiroki Hasegawa"
 }
 ```
@@ -471,8 +461,6 @@ type MyName struct {
 func NewMyName(firstName string, lastName string) *MyName {
 	return &MyName{
 		// コンストラクタ内で委譲する構造体を初期化する。
-
-
 		Name: &Name{
 			FirstName: firstName,
 			LastName:  lastName,
@@ -492,8 +480,6 @@ func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
 	// 同じメソッドがある場合、委譲された側が優先。
-
-
 	fmt.Printf("%#v\n", myName.fullName()) // "委譲された構造体です"
 }
 ```
@@ -594,8 +580,6 @@ import (
 type Person struct {
 
 	// false、0、nil、空配列、空slice、空map、空文字を除外できる。
-
-
 	Id int `json:"id"`
 	
 	// 構造体はポインタ型としておく
@@ -729,7 +713,13 @@ func main() {
 
 #### ▼ 参照演算子（```&```）
 
-定義された変数に対して、&（アンパサンド）を宣言すると、メモリアドレスを参照できる。参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。PHPにおけるポインタは、以下のリンクを参考にせよ。
+定義された変数に対して、&（アンパサンド）を宣言すると、メモリアドレスを参照できる。
+
+参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。
+
+PHPにおけるポインタは、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based_method_data.html
 
@@ -744,8 +734,6 @@ func main() {
 	x := "a"
 
 	// メモリアドレスを参照する。
-
-
 	var p *string = &x
 	// p := &x と同じ
 
@@ -759,7 +747,11 @@ func main() {
 
 #### ▼ 間接参照演算子（```*```）
 
-ポインタ型の変数に対してアスタリスクを宣言すると、メモリアドレスに割り当てられているデータの実体を取得できる。ポインタを使用してデータの実体を取得することを『逆参照（デリファレンス）』という。
+ポインタ型の変数に対してアスタリスクを宣言すると、メモリアドレスに割り当てられているデータの実体を取得できる。
+
+ポインタを使用してデータの実体を取得することを『逆参照（デリファレンス）』という。
+
+
 
 ```go
 package main
@@ -914,20 +906,14 @@ import "fmt"
 
 func main() {
 	// 最後の要素の後にもカンマが必要である。
-
-
 	x := [5]string{"あ", "い", "う", "え", "お"}
 	fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
 
     // 0から3番目を参照する。
-
-
 	xa := x[0:3]
 	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
 
     // 2から5番目を参照する。
-
-
 	xb := x[2:5]
 	fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
 
@@ -935,8 +921,6 @@ func main() {
 	xb[0] = "Hiroki"
 
 	// xbしか上書きしていないが、他のスライスにも反映される。
-
-
 	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
 	fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
 	fmt.Printf("%#v\n", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
@@ -961,8 +945,6 @@ func main() {
 	fmt.Println(s) // [10 20 30 40]
 
 	// 要素を追加。
-
-
 	s = append(s, 50, 60, 70, 80)
 	fmt.Println(s) // [10 20 30 40 50 60 70 80]
 }
@@ -1138,8 +1120,6 @@ package main
 import "fmt"
 
 // インターフェースとそのメソッドを定義する。
-
-
 type AnimalInterface interface {
 	Name() string
 	Eat() string
@@ -1165,11 +1145,7 @@ func NewInsect(name string) (*InsectImpl, error) {
 	}, nil
 }
 
-// 構造体に関数を紐付ける。
-
-インターフェースを暗黙的に実装する。
-
-
+// 構造体に関数を紐付ける。インターフェースを暗黙的に実装する。
 func (i *InsectImpl) Name() string {
 	return i.name
 }
@@ -1190,8 +1166,6 @@ func main() {
 	}
 
 	// メソッドを実行する。
-
-
 	fmt.Println(insect.Name())
 	fmt.Println(insect.Eat())
 	fmt.Println(insect.Sleep())
@@ -1216,13 +1190,9 @@ package main
 import "fmt"
 
 // アップキャストの可否を使用して、構造体がインターフェースを満たしているを検証する。
-
-
 var _ AnimalInterface = &InsectImpl{} // もしくは (*InsectImpl)(nil)
 
 // インターフェースとそのメソッドを定義する。
-
-
 type AnimalInterface interface {
 	Name() string
 	Eat() string
@@ -1239,11 +1209,7 @@ func NewInsect(name string) (*InsectImpl, error) {
 	}, nil
 }
 
-// 構造体に関数を紐付ける。
-
-インターフェースを暗黙的に実装する。
-
-
+// 構造体に関数を紐付ける。インターフェースを暗黙的に実装する。
 func (i *InsectImpl) Name() string {
 	return i.name
 }
@@ -1256,8 +1222,6 @@ func main() {
 	}
 
 	// メソッドを実行する。
-
-
 	fmt.Println(insect.Name())
 }
 ```
@@ -1322,8 +1286,6 @@ func main() {
 	fmt.Printf("%#v\n", bar) // 2
 
 	// エラーになる。
-
-
 	// invalid operation: foo + bar (operator + not defined on interface)
 	baz := foo + bar
 
@@ -1667,8 +1629,6 @@ func NewPerson(name string) *Person {
 }
 
 // 構造体に関数を紐付ける。
-
-
 func (p Person) GetName() string {
 	return p.name
 }
@@ -1821,8 +1781,6 @@ func main() {
 	}()
 
 	// ここで意図的に処理を停止させている。
-
-
 	panic("Runtime error")
 }
 
@@ -1873,25 +1831,17 @@ import "fmt"
 func division(x int, y int) (int, int) {
 
 	// 商を計算する。
-
-
 	quotient := x / y
 
 	// 余りを計算する。
-
-
 	remainder := x % y
 
 	// 商と余りを返却する。
-
-
 	return quotient, remainder
 }
 
 func main() {
 	// 10÷3を計算する。
-
-
 	q, r := division(10, 3)
 	fmt.Printf("商=%d、余り=%d", q, r)
 }
@@ -1973,13 +1923,9 @@ import "fmt"
 func quotient(x int, y int) int {
 
 	// 商を計算する。
-
-
 	quotient := x / y
 
 	// を返却する。
-
-
 	return quotient
 }
 
@@ -2062,8 +2008,6 @@ import (
 )
 
 // エラーになる。
-
-
 text := "Hello World!"
 
 func main() {
@@ -2113,8 +2057,6 @@ func main() {
 package foo
 
 // 定数を定義する。
-
-
 const (
 	X  = "X"
 )
@@ -2148,8 +2090,6 @@ import (
 )
 
 // 定数を定義する。
-
-
 const (
 	yZ = "yZ"
 )
@@ -2331,14 +2271,10 @@ func main() {
 
 	go func() {
 		// チャンネルに値を送信する。
-
-
 		channel <- "ping"
 	}()
 
 	// チャンネルから値を受信する。
-
-
 	value := <-channel
 
 	fmt.Println(value)
@@ -2375,8 +2311,6 @@ import (
 func print(key int, value string) {
 	fmt.Println(key, value)
 	time.Sleep(time.Second * 1) // 処理完了に一秒かかると仮定する。
-
-
 }
 
 func main() {
@@ -2440,47 +2374,31 @@ import (
 func main() {
 
 	// チャンネルを作成する。
-
-
     c1 := make(chan string)
     c2 := make(chan string)
 
 	// ここに、完了タイミングのバラバラな処理があるとする。
-
-
     go func() {
 		// 完了までに2秒かかるとする。
-
-
         time.Sleep(2 * time.Second)
 		// 値を送信する。
-
-
         c1 <- "one"
     }()
     go func() {
 		// 完了までに1秒かかるとする。
-
-
         time.Sleep(1 * time.Second)
 		// 値を送信する。
-
-
         c2 <- "two"
     }()
 
     for i := 0; i < 2; i++ {
         select {
 		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
-
-
         case msg1 := <-c1:
             fmt.Println("received", msg1)
         case msg2 := <-c2:
             fmt.Println("received", msg2)
-		// 受信が成功しなければ、defaultで処理する。
-
-	
+		// 受信が成功しなければ、defaultで処理する。	
         default: 
 			fmt.Println("default")
 		}
@@ -2567,14 +2485,10 @@ import (
 
 func main() {
 	// 処理結果とerrorインターフェースが返却される。
-
-
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
 		// エラーの内容を出力する。
-
-
 		log.Fatalf("ERROR: %#v\n", err)
 	}
 
@@ -2615,8 +2529,6 @@ func main() {
 
 	if err != nil {
 		// 独自エラーメッセージを設定する。
-
-
 		myErr := NewError()
 		log.Fatalf("ERROR: %#v\n", myErr)
 	}
@@ -2695,14 +2607,10 @@ func main() {
 
 	if err != nil {
 		// 構造体に値を設定する。
-
-
 		myError := &Error{Message: "エラーが発生したため、処理を完了しました。
 
 "}
 		// 構造体をコールするのみで、Errorメソッドが実行される。
-
-
 		fmt.Printf("%#v\n", myError)
 		os.Exit(1)
 	}
@@ -2746,12 +2654,8 @@ func main() {
 
 	if err != nil {
 		// errorインターフェースが返却された行数が付与される。
-
-
 		errWithStack := NewErrorWithTrace()
 		// %+v\n を使用する。
-
-
 		log.Fatalf("ERROR: %+v\n", errWithStack)
 	}
 
@@ -2777,12 +2681,8 @@ func main() {
 
 	if err != nil {
 		// errorインターフェースが返却された行数が付与される。
-
-
 		errWithStack := xerrors.Errorf("ERROR: %w", err)
 		// %+v\n を使用する。
-
-
 		log.Fatalf("ERROR: %+v\n", errWithStack)
 	}
 
@@ -2798,7 +2698,11 @@ func main() {
 
 #### ▼ logパッケージとは
 
-Goにはデフォルトで、ロギング用パッケージが用意されている。ただし、機能が乏しいため、外部パッケージ（例：logrus）も推奨である。
+Goにはデフォルトで、ロギング用パッケージが用意されている。
+
+ただし、機能が乏しいため、外部パッケージ（例：logrus）も推奨である。
+
+
 
 > ℹ️ 参考：
 >
@@ -2838,15 +2742,19 @@ if err != nil {
 ```go
 if err != nil {
 	// 内部でos.Exit(1)を実行する。
-
-
 	log.Fatalf("ERROR: %#v\n", err)
 }
 ```
 
 #### ▼ 接尾辞```Panic```メソッド
 
-渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして```panic```メソッドを実行する。ちなみに、```panic```メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。ただし、```panic```ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である（ビルド失敗の原因がわからずに時間を溶かした経験あり）。
+渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして```panic```メソッドを実行する。
+
+ちなみに、```panic```メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。
+
+ただし、```panic```ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である（ビルド失敗の原因がわからずに時間を溶かした経験あり）。
+
+
 
 > ℹ️ 参考：https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
@@ -2859,8 +2767,6 @@ if err != nil {
 ```go
 if err != nil {
     // panicメソッドを実行する。
-
-
     log.Panicf("ERROR: %#v\n", err)
 }
 ```
@@ -3042,8 +2948,6 @@ func (p *Person) MarshalJSON() ([]byte, error) {
 
 	byteJson, err := json.Marshal(&struct {
 		// ここでjsonタグを定義する。
-
-
 		Name string `json:"name"`
 	}{
 		Name: p.Name(),
@@ -3102,8 +3006,6 @@ type Person struct {
 
 func main() {
 	// リクエストを受信した場合を想定する。
-
-
 	byte := []byte(`{"name":"Hiroki"}`)
 
 	var person Person
@@ -3111,8 +3013,6 @@ func main() {
 	fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
 
 	// person変数を変換後の値に書き換えている。
-
-
 	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
@@ -3250,7 +3150,11 @@ func main() {
 
 #### ▼ 接頭接尾辞無しメソッド
 
-接頭接尾辞の無いメソッド（例：```Print```メソッド、```Sprint```メソッド、```Fprint```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぐ。
+接頭接尾辞の無いメソッド（例：```Print```メソッド、```Sprint```メソッド、```Fprint```メソッド、など）が属する。
+
+複数の引数をスペースを挟んで繋ぐ。
+
+
 
 > ℹ️ 参考：
 >
@@ -3312,7 +3216,13 @@ func main() {
 
 #### ▼ 接頭辞```S```メソッド
 
-接頭辞に```S```のあるメソッド（例：```Sprint```メソッド、```Sprintf```メソッド、```Sprintln```メソッド、など）が属する。接頭辞が```F```や```P```のメソッドとは異なり、処理結果を標準出力に出力せずに返却する。標準出力に出力できる他の関数の引数として渡す必要がある。
+接頭辞に```S```のあるメソッド（例：```Sprint```メソッド、```Sprintf```メソッド、```Sprintln```メソッド、など）が属する。
+
+接頭辞が```F```や```P```のメソッドとは異なり、処理結果を標準出力に出力せずに返却する。
+
+標準出力に出力できる他の関数の引数として渡す必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -3328,7 +3238,11 @@ package mainimport "fmt"func main() {        // Sprintは返却するだけ    f
 
 #### ▼ 接尾辞```ln```メソッド
 
-接尾辞に```ln```のあるメソッド（例：```Println```メソッド、```Fprintln```メソッド、```Sprintln```メソッド、など）が属する。複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
+接尾辞に```ln```のあるメソッド（例：```Println```メソッド、```Fprintln```メソッド、```Sprintln```メソッド、など）が属する。
+
+複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
+
+
 
 > ℹ️ 参考：
 >
@@ -3582,8 +3496,6 @@ func main() {
 	byteJson, err := json.Marshal(user)
 
 	// リクエストを作成する。
-
-
 	request, err := http.NewRequest(
 		"POST",                    // HTTPメソッド
 		"https://example.api.com",      // URL
@@ -3591,18 +3503,12 @@ func main() {
 	)
 
 	// ヘッダーを作成する。
-
-
 	request.Header.Set("Content-Type", "application/json") // Content-Type
 
 	// クライアントを作成する。
-
-
 	client := &http.Client{}
 
 	// リクエストを送信する。
-
-
 	response, err := client.Do(request)
 
 	defer response.Body.Close()
@@ -3612,11 +3518,7 @@ func main() {
 	}
 
 	// レスポンスのボディを取得する。
-
-
 	// 代わりに、httputil.DumpResponseを使用しても良い。
-
-
 	body, _ := ioutil.ReadAll(response.Body)
 
 	log.Println(string(body))
@@ -3625,7 +3527,13 @@ func main() {
 
 #### ▼ ```ListenAndServe```メソッド
 
-サーバを起動する。第一引数にサーバーのURL、第二引数にServeMux関数（マルチプレクサ関数）を渡す。第二引数に```nil```を渡した場合、デフォルト引数として```http.DefaultServeMux```が渡される。
+サーバを起動する。
+
+第一引数にサーバーのURL、第二引数にServeMux関数（マルチプレクサ関数）を渡す。
+
+第二引数に```nil```を渡した場合、デフォルト引数として```http.DefaultServeMux```が渡される。
+
+
 
 **＊実装例＊**
 
@@ -3642,8 +3550,6 @@ func main() {
 	err := http.ListenAndServe(":8080", nil)
 
 	// 以下でも同じ。
-
-
 	// http.ListenAndServe(":8080", http.DefaultServeMux)
 
 	if err != nil {
@@ -3674,8 +3580,6 @@ import (
 
 func myHandler(writer http.ResponseWriter, request *http.Request) {
 	// HTMLをレスポンスとして返信する。
-
-
 	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
 }
 
@@ -3683,13 +3587,9 @@ func main() {
 	mux := http.NewServeMux()
 
 	// ルーティングと関数を設定する。
-
-
 	mux.HandleFunc("/", myHandler)
 
 	// サーバを起動する。
-
-
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {
@@ -3734,8 +3634,6 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// JSONをレスポンスとして返信する。
-
-
 	writer.Header().Set("Content-Type", "application/json; charset=utf-8")
 	writer.Write(byteJson)
 }
@@ -3744,13 +3642,9 @@ func main() {
 	mux := http.NewServeMux()
 
 	// ルーティングと関数を設定する。
-
-
 	mux.HandleFunc("/", myHandler)
 
 	// サーバを起動する。
-
-
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {

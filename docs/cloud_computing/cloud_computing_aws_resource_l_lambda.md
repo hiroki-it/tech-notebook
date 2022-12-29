@@ -73,7 +73,11 @@ description: Lambda＠Lで始まるAWSリソース
 
 #### ▼ 関数の実行環境
 
-Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。
+
+関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
 
@@ -138,6 +142,8 @@ Lambdaは関数を実行する。
 > ℹ️ 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
 
 RIEであっても、稼働させるためにAWSのクレデンシャル情報（アクセスキーID、シークレットアクセスキー、リージョン）が必要なため、環境変数や```credentials```ファイルを使用して、Lambdaにこれらの値を出力する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env
 

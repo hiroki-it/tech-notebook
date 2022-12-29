@@ -108,8 +108,6 @@ Datadogの代わりにログを収集する。
 
 KubernetesのClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverに転送する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
@@ -247,8 +245,6 @@ const nuxtConfig: Configuration = {
   plugins: [
     ...(baseConfig.plugins || []),
     // SSGのみで使用するため、clientモードとする。
-
-
     {
       src: '@/plugins/datadog/browserLogsForSsg',
       mode: 'client'
@@ -339,11 +335,7 @@ export default browserLogsForSsgPlugin
 
 #### ▼ PHP Monologの場合
 
-LogパッケージにMonologを採用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する。
-
-ここに、Datadogにログを送信するための設定を行う。
-
-
+LogパッケージにMonologを採用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ配下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_collection/php/?tab=phpmonolog#agent-configuration
 
@@ -507,7 +499,13 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ▼ ログステータスリマッパー
 
-指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス（```INFO```、```WARNING```、```ERROR```、など）として登録する。ログコンソール画面にて、ステータスファセットとして表示される。判定ルールについては、以下のリンクを参考にせよ。
+指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス（```INFO```、```WARNING```、```ERROR```、など）として登録する。
+
+ログコンソール画面にて、ステータスファセットとして表示される。
+
+判定ルールについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 
@@ -579,7 +577,13 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-これに対して、以下のようなカテゴリパーサーのルールを定義する。```http.status_code```属性のステータスコード値に応じて、```http.status_category```属性にレベル値（```info```、```notice```、```warning```、```critical```）に変換する。ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
+これに対して、以下のようなカテゴリパーサーのルールを定義する。
+
+```http.status_code```属性のステータスコード値に応じて、```http.status_category```属性にレベル値（```info```、```notice```、```warning```、```critical```）に変換する。
+
+ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/observability/observability_monitoring.html
 
@@ -612,7 +616,11 @@ CRITICAL @http.status_code:[500 TO 599]
 }
 ```
 
-これに対して、ステータスリマッパーのルールを定義する。```http.status_category```属性のログステータス値が、ステータスファセット（```INFO```、```WARNING```、```ERROR```、など）として登録されるようにする。
+これに対して、ステータスリマッパーのルールを定義する。
+
+```http.status_category```属性のログステータス値が、ステータスファセット（```INFO```、```WARNING```、```ERROR```、など）として登録されるようにする。
+
+
 
 <br>
 
@@ -752,7 +760,13 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 }
 ```
 
-以下のようなGrokパーサールールを定義する。```data```マッチャーを使用して、また```wafacl_name```カスタム属性をエクストラクト先とする。抽出する必要のない文字列は、ワイルドカード（```.*```）を指定する。
+以下のようなGrokパーサールールを定義する。
+
+```data```マッチャーを使用して、また```wafacl_name```カスタム属性をエクストラクト先とする。
+
+抽出する必要のない文字列は、ワイルドカード（```.*```）を指定する。
+
+
 
 ```
 Rule .*\/webacl\/%{data:wafacl_name}\/.*
@@ -1250,7 +1264,13 @@ autoFilledRule3 ...
 
 #### ▼ プリプロセッサー
 
-予約済み属性（```message```、```timestamp```、```status```、```host```、```service```）に基づいて、ログを構造化する。例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの```message```属性に割り当てられる。一方で、構造化ログであった場合は```message```属性は使用されない。
+予約済み属性（```message```、```timestamp```、```status```、```host```、```service```）に基づいて、ログを構造化する。
+
+例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの```message```属性に割り当てられる。
+
+一方で、構造化ログであった場合は```message```属性は使用されない。
+
+
 
 > ℹ️ 参考：https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
 

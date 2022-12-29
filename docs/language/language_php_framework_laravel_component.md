@@ -168,8 +168,6 @@ class FooCommand extends Command
         Log::info('START: artisan do-foo');
         
         // パラメーターを取得します。
-
-
         $bar = $this->argument('bar');
 
         // 何らかのコマンド処理
@@ -551,8 +549,6 @@ final class UserCreatedEventListener
     public function handle(UserCreatedEvent $userEvent)
     {
         // UserクラスがNotifiableトレイトに依存せずに通知を実行できるように、オンデマンド通知を使用します。
-
-
         Notification::route('mail', $userEvent->user->userEmailAddress->emailAddress)
             ->notify(new UserCreatedEventNotification($userEvent->user));
     }
@@ -643,16 +639,12 @@ trait UpdatedModelTrait
         // 任意のEloquentモデルのsaveメソッド実行時
         static::saved(function (Model $updatedModel) {
             // イベントを発生させる。
-
-
             event(new UpdatedModelEvent($updatedModel));
         });
 
         // 任意のEloquentモデルのdeleteメソッド実行時
         static::deleted(function (Model $updatedModel) {
             // イベントを発生させる。
-
-
             event(new UpdatedModelEvent($updatedModel));
         });
     }
@@ -667,13 +659,9 @@ trait UpdatedModelTrait
     protected static function saveWithoutEvents(): void
     {
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
-
-
         return static::withoutEvents(function () use ($options) {
             
             // プロパティの変更を保存。
-
-
             return $this->save($options);
         });
     }    
@@ -733,8 +721,6 @@ class UpdatedModelListener
         $by = $this->getModelUpdater();
 
         // create_byプロパティに値が設定されているかを判定。
-
-
         if (is_null($updatedModelEvent->updatedModel->created_by)) {     
             $updatedModelEvent->updatedModel->created_by = $by;
         }
@@ -754,15 +740,11 @@ class UpdatedModelListener
     private function getModelUpdater(): string
     {
         // コンソール経由で実行されたかを判定。
-
-
         if (app()->runningInConsole()) {
             return ExecutorConstant::ARTISAN_COMMAND;
         }
 
         // API認証に成功したかを判定。
-
-
         if (auth()->check()) {
             return ExecutorConstant::STAFF . ":" . auth()->id();
         }
@@ -933,13 +915,7 @@ class Handler extends ExceptionHandler
 
 #### ▼ ```render```メソッド
 
-Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。
-
-異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。
-
-代わりとして、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
-
-
+Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。代わりとして、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装する。
 
 > ℹ️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -970,7 +946,11 @@ class Handler extends ExceptionHandler
 
 #### ▼ Facadeとは
 
-Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。メソッドをコールできるようになる。
+Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。
+
+メソッドをコールできるようになる。
+
+
 
 #### ▼ Facadeを使用しない場合
 
@@ -1003,7 +983,13 @@ $foo->method();
 
 #### ▼ Facadeの静的プロキシを使用する場合
 
-静的メソッドの記法でコールできる。ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+静的メソッドの記法でコールできる。
+
+ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。
+
+例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+
+
 
 **＊実装例＊**
 
@@ -1191,8 +1177,6 @@ class FooRepository extends Repository implements DomainFooRepository
     public function save(Foo $foo): void
     {
         // トランザクション処理を開始する。
-
-
         DB::beginTransaction();
 
         try {
@@ -1204,14 +1188,10 @@ class FooRepository extends Repository implements DomainFooRepository
                 ->save();
 
             // コミットメントを実行する。
-
-
             DB::commit();
         } catch (Exception $e) {
 
             // ロールバックする。
-
-
             DB::rollback();
         }
     }
@@ -1260,34 +1240,24 @@ class FooRepository extends Repository implements DomainFooRepository
     public function save(Foo $foo)
     {
         // トランザクション処理を開始する。
-
-
         DB::beginTransaction();
         
         try {
             $this->fooDTO
             // オブジェクトにデータを設定する。
-
-
             ->fill([
                 "name"  => $foo->name(),
                 "age"   => $foo->age(),
                 "email" => $foo->email()
             ])
             // update文を実行する。
-
-
             ->save();            
             
             // コミットメントを実行する。
-
-
             DB::commit();
         } catch (\Exception $e) {
             
             // ロールバックする。
-
-
             DB::rollback();
         }
     }
@@ -1345,8 +1315,6 @@ Route::get("/healthcheck", function () {
 use App\Http\Controllers\Foo\FooController;
 
 // authエイリアスを設定する。
-
-
 Route::middleware("auth")->group(function () {
     Route::get("/foo", [FooController::class, "getFoo"]);
     Route::get("/foo/{fooId}", [FooController::class, "index"]);
@@ -1394,8 +1362,6 @@ class Kernel extends HttpKernel
 <?php
 
 // authエイリアスのMiddlewareクラスが使用される。
-
-
 Route::middleware("auth:api")->group(function () {
     // 何らのルーティング
 });
@@ -1489,8 +1455,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         // バリデーションルールとして『0〜9が1つ以上』を定義する。
-
-
         Route::pattern('fooId', '[0-9]+');
         
         // 〜 中略 〜
@@ -1667,8 +1631,6 @@ class FileSystemPublicController extends Controller
     public function putContentsInPublicDisk()
     {
         // 保存先をpublicに設定する。
-
-
         $disk = Storage::disk("public");
 
         // 保存先のファイルを読み込む
@@ -1771,7 +1733,15 @@ FormRequestクラスの```validated```メソッドや```validate```メソッド�
 
 #### ▼ Validatorクラス、```fails```メソッド
 
-Validateファサードの```make```メソッドを使用して、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
+Validateファサードの```make```メソッドを使用して、ルールを定義する。
+
+この時、第一引数で、バリデーションを行うリクエストデータを渡す。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
+
+
 
 **＊実装例＊**
 
@@ -1803,8 +1773,6 @@ class FooController extends Controller
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
             // validatorを渡すことにより、エラーメッセージをViewに渡せる。
-
-
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
@@ -1840,8 +1808,6 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // 元のWebページにリダイレクトする場合は、validateメソッドを使用する。
-
-
         $validator = Validator::make(
             $request->all(),
             [
@@ -1853,8 +1819,6 @@ class FooController extends Controller
         if ($validator->fails()) {
             // 指定したWebページにリダイレクト
             // validatorを渡すことにより、エラーメッセージをViewに渡せる。
-
-
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
@@ -2023,7 +1987,13 @@ class FooController extends Controller
 
 #### ▼ Viewテンプレートのレスポンス
 
-返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。
+
+また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。
+
+```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+
+
 
 **＊実装例＊**
 
@@ -2368,7 +2338,15 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。
+
+```validated```メソッドと間違わないように注意する。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+
+
 
 > ℹ️ 参考：
 >
@@ -2392,8 +2370,6 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメーターのバリデーションを実行する。
-
-
         // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "limit" => ["required", Rule::in([25, 50, 100])],
@@ -2442,8 +2418,6 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // ルールの定義、メッセージボディのバリデーションを実行する。
-
-
         // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
             "title" => "required|string|max:5255",
@@ -2487,8 +2461,6 @@ class FooController extends Controller
     public function index(Request $request)
     {
         // クエリパラメーターのバリデーションを実行する。
-
-
         // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
@@ -2501,8 +2473,6 @@ class FooController extends Controller
     public function update(Request $request)
     {
         // メッセージボディのバリデーションを実行する。
-
-
         // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validated();
 
@@ -2511,7 +2481,11 @@ class FooController extends Controller
 }
 ```
 
-FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+
 
 **＊実装例＊**
 
@@ -2932,7 +2906,13 @@ public function authorize()
 
 #### ▼ BeforeMiddleware
 
-ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。
+
+一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
+
+これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+
+
 
 **＊実装例＊**
 
@@ -2954,8 +2934,6 @@ class FooBeforeMiddleware
         // 何らかの処理
 
         // 次のMiddlewareクラスやControllerクラスに、FormRequestクラスを渡す。
-
-
         return $next($request);
     }
 }
@@ -2963,7 +2941,13 @@ class FooBeforeMiddleware
 
 #### ▼ AfterMiddleware
 
-コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。
+
+あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
+
+これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+
+
 
 **＊実装例＊**
 
@@ -2988,8 +2972,6 @@ class FooAfterMiddleware
         // 何らかの処理
 
         // 前のMiddlewareクラスやControllerクラスから、FormRequestクラスを受け取る。
-
-
         return $response;
     }
 }
@@ -3338,8 +3320,6 @@ $ chmod -R 777 /var/www/foo/storage
 
 LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_application_gi_fastcgi_php_fpm.html
 
 #### ▼ ```stack```キー
@@ -3585,13 +3565,9 @@ class CreateFooTable extends Migration
             $table->string("name")->comment("名前");
 
             // MigrationMacroServiceProviderのメソッドを使用する。
-
-
             $table->systemColumns();
 
             // deleted_atカラムを追加する。
-
-
             $table->softDeletes();
         });
     }
@@ -3708,8 +3684,6 @@ class RenameColumn extends Migration
     public function down()
     {
         // データ型の変更後でも、ロールバックできるようにしておく。
-
-
         Schema::table('foos', function (Blueprint $table) {
             $table->renameColumn('foo_id', 'foo_id');
         });
@@ -3774,8 +3748,6 @@ class ChangeColumnDataType extends Migration
     public function down()
     {
         // データ型の変更後でも、ロールバックできるようにしておく。
-
-
         Schema::table('foos', function (Blueprint $table) {
             $table->string('bar')->change();
         });
@@ -3964,7 +3936,17 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ▼ Notification
 
-通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+通知内容を定義する。
+
+```via```メソッドで受信チャンネルを定義する。
+
+この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。
+
+複数の値を設定した場合は、それぞれに通信が送信される。
+
+```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+
+
 
 **＊実装例＊**
 
@@ -3988,8 +3970,6 @@ class TfaTokenNotification extends Notification
     public function via($notifiable)
     {
         // 受信チャンネルを選択します。
-
-
     }
 
     /**
@@ -3999,8 +3979,6 @@ class TfaTokenNotification extends Notification
     public function toSms($notifiable)
     {
         // SMSのメッセージ内容を返却します。
-
-
     }
 
     /**
@@ -4010,8 +3988,6 @@ class TfaTokenNotification extends Notification
     public function toMail($notifiable)
     {
         // Emailのメッセージ内容を返却します。
-
-
     }
 
     /**
@@ -4021,8 +3997,6 @@ class TfaTokenNotification extends Notification
     public function toArray($notifiable)
     {
         // DBへの保存方法を返却します。
-
-
     }
 }
 ```
@@ -4061,8 +4035,6 @@ class TfaTokenNotification extends Notification
     {
         return [
             $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSでない場合は、Eメール通知とします。
-
-
             'database'
         ];
     }
@@ -4074,11 +4046,7 @@ class TfaTokenNotification extends Notification
     public function toMail($notifiable)
     {
         // Emailのメッセージ内容を返却します。
-
-
-        return (new MailMessage())->subject("コードを送信いたしました。
-
-")
+        return (new MailMessage())->subject("コードを送信いたしました。")
             ->markdown("template.mail", [
                 "tfa_token" => $notifiable->tfaToken()
             ]);
@@ -4125,8 +4093,6 @@ class TfaTokenNotification extends Notification
     {
         return [
             $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSの場合は、AWS-SNSを使用します。
-
-
             'database'
         ];
     }
@@ -4138,8 +4104,6 @@ class TfaTokenNotification extends Notification
     public function toSms($notifiable)
     {
         // SMSのメッセージ内容を返却します。
-
-
         return view("template.sms", [
             "subject"   => "コードを送信いたしました。
 
@@ -4193,8 +4157,6 @@ class TfaTokenNotification extends Notification
     public function toArray($notifiable)
     {
         // notificationsテーブルのdataカラムに、JSONで保存されます。
-
-
         return [
             "tfa_token" => $notifiable->tfaToken(),
         ];
@@ -4255,8 +4217,6 @@ class AwsSnsChannel
             $message = $notification->toSms($notifiable);
 
             // AWS SNSにメッセージを送信します。
-
-
             $this->awsSnsClient->publish([
                 "Message"     => $message,
                 "PhoneNumber" => $this->toE164nizeInJapan(
@@ -4284,8 +4244,6 @@ class AwsSnsChannel
     private function toE164nizeInJapan(string $phoneNumeber): string
     {
         // E.164形式の日本電話番号を返却します。
-
-
         return "+81" . substr($phoneNumeber, 1);
     }
 }
@@ -4470,8 +4428,6 @@ class FooController extends Controller
         // ここに、EloquentモデルをDBから取得する処理
         
         // Eloquentモデルを渡す。
-
-
         return new FooResource($foo);
     }
 }
@@ -4480,6 +4436,8 @@ class FooController extends Controller
 #### ▼ 複数のEloquentモデル（Collection型）の配列化
 
 複数のEloquentモデル（Collection型）を配列に変換する。
+
+
 
 ```php
 // ここに実装例
@@ -4665,11 +4623,7 @@ Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグ
 </form>
 ```
 
-Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。
-
-リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
-
-
+Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
 > ℹ️ 参考：
 >
@@ -4703,12 +4657,8 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
     }
 
     // laravelによってエンコードされたトークンをデコードする。
-
-
     const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
     // 環境変数を挿入するために、該当する実行環境名をCollection全体に適用しておく必要がある。
-
-
     pm.environment.set('XSRF_TOKEN', xsrfToken);
     console.log(xsrfToken);
     return true;
@@ -4865,18 +4815,12 @@ class ProductsSeeder extends Seeder
         foreach ($this->tables as $table) {
         
             // S3に保存してあるCSVファイルを読み込む。
-
-
             $csv = \Storage::get(migrations/csv/ . $table . '.csv');
             
             // 一時CSVファイルに書き込む。
-
-
             file_put_contents('/tmp/csv', $csv);
 
             // 一時ファイルを使用して、DBにCSVファイルの中身を書き込む。
-
-
             \DB::statement(
                 "LOAD DATA LOCAL INFILE '/tmp/csv'
                 INTO TABLE {$table}
@@ -5095,8 +5039,6 @@ class Qux
      * @param Foo $foo
      */
     public function method(Foo $foo) // リゾルブされる。
-
-
     {
         $foo->bar;
         $foo->baz;
@@ -5119,8 +5061,6 @@ class Qux
      * @param Foo $foo
      */
     public function __construct($foo) // 引数の型を指定しない場合、リゾルブされない。
-
-
     {
         $foo->bar;
         $foo->baz;
@@ -5227,7 +5167,13 @@ class FoosServiceProvider extends ServiceProvider
 
 #### ▼ インターフェースをバインドし、実装クラスをリゾルブ
 
-Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。
+
+これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。
+
+この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+
+
 
 **＊実装例＊**
 
@@ -5271,8 +5217,6 @@ class Interactor
      * @param FooRepositoryIF $fooRepository
      */
     public function __constructor(FooRepositoryIF $fooRepository) // リゾルブされる。
-
-
     {
         $this->fooRepository = $fooRepository;
     }
@@ -5409,13 +5353,9 @@ class CreateFooTable extends Migration
                 ->comment("名前");
             
             // MigrationMacroServiceProviderのメソッドを使用する。
-
-
             $table->systemColumns();
             
             // deleted_atカラムを追加する。
-
-
             $table->softDeletes();
         });
     }
@@ -5543,8 +5483,6 @@ class RouteServiceProvider extends ServiceProvider
 
         'api' => [
             // throttleミドルウェアを適用する。
-
-
             'throttle:limit_per_minute',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
@@ -5557,8 +5495,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('limit_per_minute', function (Request $request) {
             // 一分間当たり1000リクエストまでを許可する。
-
-
             return Limit::perMinute(1000);
         });
     }
@@ -5655,25 +5591,15 @@ return [
     'path'      => '/',
 
     // Set-Cookieヘッダーのdomain属性に値を割り当てる。
-
-
     'domain'    => env('SESSION_DOMAIN', null),
 
     // Set-Cookieヘッダーのsecure属性を有効化する。
-
-
     'secure'    => env('SESSION_SECURE_COOKIE', false),
 
     // Set-CookieヘッダーのHttpOnly属性を有効化する。
-
-
     'http_only' => true,
 
-    // Set-CookieヘッダーのsameSite属性に値を割り当てる。
-
-nullの場合、Laxとなる。
-
-
+    // Set-CookieヘッダーのsameSite属性に値を割り当てる。nullの場合、Laxとなる。
     'same_site' => null,
 ];
 ```
@@ -5845,7 +5771,15 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ▼ ```@include```（サブビュー）
 
-読み込んだファイル全体を出力する。読み込むファイルに対して、変数を渡すこともできる。```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み出し）の関係に近い。
+読み込んだファイル全体を出力する。
+
+読み込むファイルに対して、変数を渡すこともできる。
+
+```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。
+
+両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み出し）の関係に近い。
+
+
 
 **＊実装例＊**
 
@@ -5889,8 +5823,6 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 これを子テンプレートで```@extends```で継承すると、レンダリング時に、子テンプレートの```@section("foo")```-```@endsection```で定義した要素が、親テンプレートの```@yieid```メソッド部分に出力される。
 
-
-
 **＊実装例＊**
 
 ```html
@@ -5927,11 +5859,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ▼ ```@section```、```@show```、```@extends```、```@parent```
 
-子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。
-
-親テンプレートにて、```@section```-```@show```で要素を定義する。
-
-
+子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、```@section```-```@show```で要素を定義する。
 
 **＊実装例＊**
 
@@ -5999,13 +5927,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ▼ ```@stack```、```@push```
 
-子テンプレートのレンダリング時に、```.css```ファイルと```.js```ファイルを動的に出力する場合に使用する。
-
-親テンプレートにて、```@stack("foo")```を定義する。
-
-これを継承した子テンプレートのレンダリング時に、```@push("foo")```-```@endpush```で定義した要素が、```@stack```メソッド部分に出力される。
-
-
+子テンプレートのレンダリング時に、```.css```ファイルと```.js```ファイルを動的に出力する場合に使用する。親テンプレートにて、```@stack("foo")```を定義する。これを継承した子テンプレートのレンダリング時に、```@push("foo")```-```@endpush```で定義した要素が、```@stack```メソッド部分に出力される。
 
 **＊実装例＊**
 

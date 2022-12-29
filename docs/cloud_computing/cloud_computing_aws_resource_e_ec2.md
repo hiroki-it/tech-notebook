@@ -227,6 +227,8 @@ $ openssl pkcs8 \
 
 EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームの両方が内蔵されたコピーのこと。
 
+
+
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
@@ -372,6 +374,8 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 #### ▼ サイズの拡張
 
 サイズを拡張するためには、実際のストレージ（EBSボリューム）、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して作業が必要にある。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
@@ -600,11 +604,7 @@ EBSボリュームのコピーのこと。
 
 #### ▼ systems-managerエージェント
 
-Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。
-
-カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
-
-
+Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/ami-preinstalled-agent.html
 

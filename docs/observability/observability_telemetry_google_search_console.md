@@ -72,14 +72,8 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 #### ▼ 巡回方法
 
 - サイト外部のリンクから、サイトに訪問してくる。
-
-
 - 検索エンジンにリクエストを送信し、サイトに訪問してくる。
-
-
 - Googleサーチコンソールに登録された```sitemap.xml```ファイルを基に、サイトに訪問してくる。
-
-
 
 > ℹ️ 参考：https://www.allegro-inc.com/seo/xml-sitemap/
 

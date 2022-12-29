@@ -33,6 +33,8 @@ description: コマンド＠Laravelの知見を記録しています。
 
 キャッシュ（```bootstrap/cache/config.php```ファイル）を削除する。
 
+
+
 ```bash
 $ php artisan config:clear
 ```
@@ -202,6 +204,8 @@ $ php artisan migrate:reset
 
 全てのロールバック（```migrate:reset```）を実行し、次いで```migrate```を実行する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 ```bash
@@ -236,7 +240,11 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-DBマイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
+DBマイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。
+
+CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
@@ -279,11 +287,7 @@ $ php artisan optimize:clear
 
 #### ▼ seed
 
-Seederを実行する。
-
-Seederを新しく作成した時やSeeder名を変更した時、Composerの```dump-autoload```を実行する必要がある。
-
-
+Seederを実行する。Seederを新しく作成した時やSeeder名を変更した時、Composerの```dump-autoload```を実行する必要がある。
 
 ```bash
 $ composer dump-autoload

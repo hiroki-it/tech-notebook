@@ -59,8 +59,6 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	)
 
 	// マイクロサービスの属性情報を設定する。
-
-
 	attributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
 		semconv.ServiceNameKey.String("foo-service"),
@@ -68,8 +66,6 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	)
 
 	// トレーサーを定義する。
-
-
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -77,13 +73,9 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	)
 
 	// トレーサーをセットアップする。
-
-
 	otel.SetTracerProvider(tracerProvider)
 
 	// 後続のマイクロサービスへのアウトバウンド通信がタイムアウトだった場合に、分散トレースを削除する。
-
-
 	cleanUp := func() {
 		ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 		defer cancel()
@@ -115,21 +107,15 @@ import (
 )
 
 // httpRequest 親スパンを持つHTTPリクエストを作成する。
-
-
 func httpRequest(ctx context.Context) error {
 
 	// 親スパンを作成する。
-
-
 	var parentSpan trace.Span
 	ctx, parentSpan = otel.Tracer("example.com/foo-service").Start(ctx, "parent")
 
 	defer parentSpan.End()
 
 	// アウトバウンド通信のリクエストヘッダーに、親スパンのメタデータを伝播する。
-
-
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -141,8 +127,6 @@ func httpRequest(ctx context.Context) error {
 	}
 
 	// リクエストの送信元になっているマイクロサービスがわかるようにする。
-
-
 	req.Header.Set("User-Agent", "foo-service/1.0.0")
 
 	client := &http.Client{}
@@ -178,8 +162,6 @@ func main() {
 	defer cleanUp()
 
 	// 後続のマイクロサービスにアウトバウンド通信を送信する。
-
-
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}
@@ -219,19 +201,13 @@ import (
 
 func httpRequest(ctx context.Context) error {
 	
-	// 子スパンを作成する。
-
-親スパンからメタデータを取得する必要はない。
-
-
+	// 子スパンを作成する。親スパンからメタデータを取得する必要はない。
 	var childSpan trace.Span
 	ctx, childSpan = otel.Tracer("example.com/bar-service").Start(ctx, "child")
 
 	defer childSpan.End()
 
 	// アウトバウンド通信のリクエストヘッダーに、子スパンのメタデータを伝播する。
-
-
 	req, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet, "https://example.com",
@@ -243,8 +219,6 @@ func httpRequest(ctx context.Context) error {
 	}
 
 	// リクエストの送信元になっているマイクロサービスがわかるようにする。
-
-
 	req.Header.Set("User-Agent", "bar-service/1.0.0")
 
 	client := &http.Client{}
@@ -280,8 +254,6 @@ func main() {
 	defer cleanUp()
 
 	// 後続のマイクロサービスにアウトバウンド通信を送信する。
-
-
 	if err := httpRequest(ctx); err != nil {
 		panic(err)
 	}

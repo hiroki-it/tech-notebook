@@ -20,6 +20,8 @@ title: 【IT技術の知見】システム
 
 ソフトウェア（OS、ミドルウェア、アプリケーション）とハードウェアの要素と合わせたグループのこと。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
@@ -58,7 +60,11 @@ title: 【IT技術の知見】システム
 
 #### ▼ webサーバーとは
 
-リバースプロキシのミドルウェア（例：Apache、Nginxなど）を稼働させるためのサーバーのこと。また、webサーバーかつappサーバーのミドルウェアとして動作する（NGINX Unit）がインストールされていることもある。
+リバースプロキシのミドルウェア（例：Apache、Nginxなど）を稼働させるためのサーバーのこと。
+
+また、webサーバーかつappサーバーのミドルウェアとして動作する（NGINX Unit）がインストールされていることもある。
+
+
 
 #### ▼ 能力
 

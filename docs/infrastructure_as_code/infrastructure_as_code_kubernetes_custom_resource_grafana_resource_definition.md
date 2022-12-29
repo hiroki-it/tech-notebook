@@ -36,8 +36,6 @@ $ helm install grafana grafana/grafana -n grafana -f values.yaml
 
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://github.com/prometheus-operator/prometheus-operator#helm-chart
@@ -170,11 +168,7 @@ data:
 
 #### ▼ kube-prometheus-stackチャートの場合
 
-kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。
-
-kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
-
-
+kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 
 > ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
@@ -199,11 +193,7 @@ kube-prometheus-stackチャートの```values```ファイルでは、```labelVal
       labelValue: "1"
 ```
 
-そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。
-
-マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
-
-
+そのため、kube-prometheus-stackチャートを用いる場合は```grafana_dashboard```キーの値が```1```のConfigMapのみがダッシュボードの設定として読み込まれる。マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
 
 > ℹ️ 参考：https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/guides/persist-grafana/
 
@@ -221,8 +211,6 @@ data:
 
 ちなみに、kube-prometheus-stackチャートではダッシュボードのConfigMapはすでに用意されており、またその他にkubernetes-mixinsも同時にインストールするようになっている。
 
-
-
 > ℹ️ 参考：
 > 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
@@ -230,11 +218,7 @@ data:
 
 #### ▼ 接続
 
-Grafanaのダッシュボードに接続できる。
-
-ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
-
-
+Grafanaのダッシュボードに接続できる。ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
 
 ```bash
 $ kubectl port-forward svc/grafana -n prometheus 8080:80

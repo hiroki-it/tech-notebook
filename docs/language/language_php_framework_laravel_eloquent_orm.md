@@ -142,6 +142,8 @@ ER図については、以下のリンクを参考にせよ。
 
 Departmentモデルで、```hasMany```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
 
+
+
 ```php
 <?php
 
@@ -170,6 +172,8 @@ class Department extends Model
 
 また、Employeesモデルでは、```belongsTo```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
 
+
+
 ```php
 <?php
 
@@ -196,7 +200,11 @@ class Employee extends Model
 }
 ```
 
-リレーションを基にJOIN句のSQLを発行するために、Departmentモデル（親）の```hasMany```メソッドを実行する。これにより、DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる。
+リレーションを基にJOIN句のSQLを発行するために、Departmentモデル（親）の```hasMany```メソッドを実行する。
+
+これにより、DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる。
+
+
 
 ```php
 <?php
@@ -478,8 +486,6 @@ class Foo extends Model
 $foo = Foo::find(1);
 
 // nameプロパティを取得しているわけでなく、getNameAttributeメソッドを実行している。
-
-
 $fooName = $foo->name;
 ```
 
@@ -563,13 +569,9 @@ $filtered->all();
 $collection = collect([1, 2, 3, 4, "yes"]);
 
 // 複数の条件で抽出する。
-
-
 $filtered = $collection->filter(function ($value, $key) {
     
     // まずはyesを検証する。
-
-
     if($value == "yes") {
         return true;
     }
@@ -609,7 +611,13 @@ $filtered = $collection->first(function ($value, $key) {
 
 #### ▼ CRUDメソッドを持つクラス
 
-Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。どちらの方法でコールしても同じである。
+Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。
+
+Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。
+
+どちらの方法でコールしても同じである。
+
+
 
 > ℹ️ 参考：
 >
@@ -703,19 +711,13 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        // INSERT文を実行する。
-
-また同時にIDを取得する。
-
-
+        // INSERT文を実行する。また同時にIDを取得する。
         $foo->create($request->all());
 
         // 以下の実装でもよい
         // $foo->fill($request->all())->save();
 
         // 処理後にはEloquentモデルにID値が保持されている。
-
-
         $foo->id();
 
         // 続きの処理
@@ -878,7 +880,13 @@ class FooController extends Controller
 
 #### ▼ ```limit```メソッド、```offset```メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。これらのパラメーターはクエリパラメーターとして渡すと良い。
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。
+
+これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。
+
+これらのパラメーターはクエリパラメーターとして渡すと良い。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -1026,7 +1034,17 @@ class FooController extends Controller
 
 #### ▼ ```with```メソッド
 
-親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。この仕組みをEagerロードという。Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。テーブル間に一対多（親子）のリレーションシップがある場合に使用する。N+1問題を防げる。
+親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。
+
+この仕組みをEagerロードという。
+
+Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。
+
+テーブル間に一対多（親子）のリレーションシップがある場合に使用する。
+
+N+1問題を防げる。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
@@ -1038,7 +1056,11 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
+コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。
+
+これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
+
+
 
 ```php
 <?php
@@ -1054,15 +1076,11 @@ class EmployeeController
         $department = new Department();
 
         // Departmentに属するEmployeesを全て読み出します。
-
-
         // （departments : employees = 1 : 多）
         $employees = $department->with("employees")->get();
 
         foreach ($employees as $employee) {
             // ここではDBアクセスはせずに、プロパティに保持された値を取得するだけ。
-
-
             $name = $employee->name;
             
         }
@@ -1073,6 +1091,8 @@ class EmployeeController
 ```
 
 Department（親）に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。
+
+
 
 ```php
 <?php
@@ -1107,6 +1127,8 @@ class Department extends Model
 ```
 
 また、Employee（子）に、反対の多対一の関係を定義する。
+
+
 
 ```php
 <?php
@@ -1180,8 +1202,6 @@ class FooController extends Controller
         $foo = new Foo();
 
         // UPDATE文を実行する。
-
-
         $foo->fill($request->all())->save();
 
         // 続きの処理
@@ -1293,8 +1313,6 @@ class CreateFooTable extends Migration
             ...
             
             // deleted_atカラムを追加する。
-
-
             $table->softDeletes();
             
             ...
@@ -1413,7 +1431,15 @@ LaravelはActive Recordパターンを採用しており、これはビジネス
 
 #### ▼ DTOクラスの導入
 
-ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する。詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを仲介し、これらを疎結合にしてくれる。そのため、Repositoryパターンを実現できる。
+ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する。
+
+詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。
+
+ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを仲介し、これらを疎結合にしてくれる。
+
+そのため、Repositoryパターンを実現できる。
+
+
 
 ```php
 <?php
@@ -1516,19 +1542,13 @@ class FooRepository extends Repository implements DomainFooRepository
     {
         $this->fooDTO
             // INSERT文を実行する。
-
-
             ->create([
                 // ドメインモデルのデータをDTOに詰め替える。
-
-
                 "name"  => $foo->name(),
                 "age"   => $foo->age(),
             ]);
 
 //        以下の実装でも良い。
-
-
 //        $this->fooDTO
 //            ->fill([
 //                "name"  => $foo->name(),
@@ -1596,8 +1616,6 @@ class FooRepository extends Repository implements DomainFooRepository
             ->find($fooId->id());
 
         // DBアクセス処理後のDTOをドメインモデルに変換する。
-
-
         return new Foo(
             $fooDTO->id(),
             $fooDTO->name(),
@@ -1643,9 +1661,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
         $foos = [];
         foreach ($fooDTOs as $fooDTO)
-            // DBアクセス後のDTOをドメインモデルに変換する。
-
- 
+            // DBアクセス後のDTOをドメインモデルに変換する。 
             $foos = new Foo(
                 $fooDTO->id(),
                 $fooDTO->name(),
@@ -1697,15 +1713,11 @@ class FooRepository extends Repository implements DomainFooRepository
     {
         $this->fooDTO
             // ドメインモデルのデータをDTOに詰め替える。
-
-
             ->fill([
                 "name"  => $foo->name(),
                 "age"   => $foo->age(),
             ])
             // UPDATE文を実行する。
-
-
             ->save();
     }
 }
@@ -1765,13 +1777,9 @@ class FooRepository extends Repository implements DomainFooRepository
     public function delete(FooId $fooId): void
     {
         // destroyメソッドでレコードを削除する。
-
-
         $this->fooDTO->destroy($fooId->id());
         
         // deleteメソッドを使用しても良い。
-
-
         // $this->fooDTO->find($fooId->id())->delete();
     }
 }

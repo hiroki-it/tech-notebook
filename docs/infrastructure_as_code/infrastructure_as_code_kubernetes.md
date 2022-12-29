@@ -66,15 +66,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 #### ▼ 期限の確認方法
 
-各SSL証明書の有効期限は```1```年間である。
-
-証明書は、KubernetesリソースのConfigの```client-certificate-data```キー配下に設定されている。
-
-```openssl```コマンドの標準入力にこれを渡すと、証明書の期限を確認できる。
-
-Kubernetesでは非常に多くの証明書があるため、期限切れの証明書を特定することは大変である。
-
-
+各SSL証明書の有効期限は```1```年間である。証明書は、KubernetesリソースのConfigの```client-certificate-data```キー配下に設定されている。```openssl```コマンドの標準入力にこれを渡すと、証明書の期限を確認できる。Kubernetesでは非常に多くの証明書があるため、期限切れの証明書を特定することは大変である。
 
 > ℹ️ 参考：https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
 

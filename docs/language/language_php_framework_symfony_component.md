@@ -185,6 +185,8 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 シェルスクリプト（```.sh```）、またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -218,8 +220,6 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
     {
         try {
                 // 日時フォーマットからCarbonインスタンスを作成する。
-
-
                 $year_month = Carbon::createFromFormat(
                   "Y-m",
                   $input->getArgument("year-month")
@@ -371,8 +371,6 @@ class ExampleController extends AbstractController
     public function get(Request $req)
     {
         // Ajaxによるリクエストの場合。
-
-
         if ($req->headers->get("content-type") === "application/json") {
             
             $fooRepository = new FooRepository;
@@ -381,8 +379,6 @@ class ExampleController extends AbstractController
             //-- entityをObject型からArray型に変換する何らかの処理。--//
             
             // Ajaxにレンスポンス。
-
-
             return new JsonResponse([ 
                 "value" => $entityArray
               ]);
@@ -500,14 +496,10 @@ if (!$cacheItemObj->isHit()) {
   // キャッシュアイテムオブジェクトに、データを設定
   $cacheItemObj->set(777);
   // キャッシュアイテムオブジェクトを紐付ける。
-
-
   $cache->save($cacheItemObj);
 }
 
 // キャッシュIDに紐付くデータがあった場合、キャッシュアイテムオブジェクトを取得。
-
-
 $cacheItemObj = $cache->get();
 
 ```

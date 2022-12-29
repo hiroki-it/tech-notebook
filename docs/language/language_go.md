@@ -162,7 +162,11 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 #### ▼ ```bin```
 
-ビルドされたアーティファクト（バイナリファイル）を配置するディレクトリ。バイナリファイル名を指定すると、処理を実行できる。
+ビルドされたアーティファクト（バイナリファイル）を配置するディレクトリ。
+
+バイナリファイル名を指定すると、処理を実行できる。
+
+
 
 #### ▼ ```pkg```
 
@@ -198,7 +202,11 @@ package main
 import "<パッケージ名>"
 ```
 
-互いにインポートし合うと、循環参照エラー（```mport cycle not allowed```）になる。インターフェースと構造体の両方を同じパッケージに置いていると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
+互いにインポートし合うと、循環参照エラー（```mport cycle not allowed```）になる。
+
+インターフェースと構造体の両方を同じパッケージに置いていると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
+
+
 
 ![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/golang_import_cycle.png)
 
@@ -359,8 +367,6 @@ func main() {
 	}
 
 	// user_idキーが存在する場合、okにtrueが返却される。
-
-
 	userId, ok := userIds["user_id"]
 
 	if ok == false {

@@ -82,8 +82,6 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 $weeks = "Tue";
 
 // if文でTueに該当したら"火曜日"と表示する。
-
-
 if ($weeks == "Mon") {
     echo "月曜日";
 } elseif ($weeks == "Tue") {
@@ -118,11 +116,7 @@ if ($weeks == "Mon") {
 // 変数に Tue を格納
 $weeks = "Tue";
 
-// 条件分岐でTueに該当したら"火曜日"と表示する。
-
-breakでif文を抜けなければ、全て実行されてしまう。
-
-
+// 条件分岐でTueに該当したら"火曜日"と表示する。breakでif文を抜けなければ、全て実行されてしまう。
 switch ($weeks) {
     case "Mon":
         echo "月曜日";
@@ -184,17 +178,11 @@ class Example
     {
 
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
-
-
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
                 // if文を通過した場合、メソッドの返却値が格納される。
-
-
                 // 通過しない場合、定数が格納される。
-
-
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
                 } else {
@@ -246,17 +234,11 @@ class Example
     public function example($result)
     {
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
-
-
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
 
                 // if文を通過した場合、メソッドの返却値が格納される。
-
-
                 // 通過しない場合、定数が格納される。
-
-
                 $result["optionItemA"] = ($option->isOptionItemA())
                   ? $option->optionItemA()
                   : self::noOptionItem;
@@ -307,17 +289,11 @@ class Example
         $result["optionItemC"] = self::noOptionItem;
     
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
-
-
         if(!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
             
                 // if文を通過した場合、メソッドの返却値によって初期値0が上書きされる。
-
-
                 // 通過しない場合、初期値0が使用される。
-
-
                 if ($option->isOptionItemA()) {
                     $result["optionItemA"] = $option->optionItemA();
                 }
@@ -375,8 +351,6 @@ class Example
 ```php
 <?php
 // 西暦を格納する。
-
-
 $year = N;
 ```
 
@@ -422,8 +396,6 @@ function leapYear(int $year): string
 <?php
     
 // 西暦を格納する。
-
-
 $year = N;
     
 function leapYear(int $year): string
@@ -456,11 +428,7 @@ function leapYear(int $year): string
 
 #### ▼ switch-case-breakを使用した早期リターン
 
-if文の代わりに、```switch-case-break```によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。
-
-ここでは、メソッドに実装することを想定して、```break```ではなく```return```を使用している。
-
-
+if文の代わりに、```switch-case-break```によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。ここでは、メソッドに実装することを想定して、```break```ではなく```return```を使用している。
 
 **＊実装例＊**
 

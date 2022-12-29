@@ -62,7 +62,11 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-network.png)
 
-同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。Clusterネットワークの作成は、cniアドオンが担う。
+同じClusterネットワーク内にあるPodの仮想NIC（veth）間を接続するネットワーク。
+
+Clusterネットワークの作成は、cniアドオンが担う。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
 
@@ -152,7 +156,11 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 ### ServiceのIPアドレスを指定する場合
 
-kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、IPアドレス、ポート番号）を出力する。Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
+kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、IPアドレス、ポート番号）を出力する。
+
+Pod内のコンテナは、これを使用し、Serviceを介してPodにアウトバウンド通信を送信する。
+
+
 
 > ℹ️ 参考：
 >
@@ -162,8 +170,6 @@ kubeletは、Pod内のコンテナにServiceの宛先情報（プロトコル、
 **＊実装例＊**
 
 foo-app-serviceというServiceを作成した場合の環境変数を示す。
-
-
 
 ```bash
 $ kubectl exec -it foo-pod -- printenv | sort -n

@@ -61,7 +61,11 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 #### ▼ Directory traversalとは
 
-traversalは、横断する（ディレクトリを乗り越える）の意味。パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に参照またはダウンロードする。
+traversalは、横断する（ディレクトリを乗り越える）の意味。
+
+パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に参照またはダウンロードする。
+
+
 
 ![ディレクトリトラバーサル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ディレクトリトラバーサル.jpg)
 
@@ -126,15 +130,7 @@ WebアプリケーションによるHTML出力のエスケープ処理の欠陥�
 
 #### ▼ Brute-force攻撃とReverse Brute-force攻撃とは
 
-Brute-forceは力ずくの意味。
-
-IDを固定して、パスワードを総当たりで試す手法。
-
-例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。
-
-一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
-
-
+Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。
 
 ![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/brute-force-attack_reverse-brute-force-attack.png)
 
@@ -162,6 +158,8 @@ IDを固定して、パスワードを総当たりで試す手法。
 #### ▼ ソーシャルエンジニアリングとは
 
 技術的な手法ではなく、物理的な手法（例：盗み見、盗み聞き、成りすまし、詐欺など）によってパスワードを取得し、アクセスする手法。
+
+
 
 ![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソーシャルエンジニアリング.png)
 

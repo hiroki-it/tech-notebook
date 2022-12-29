@@ -21,8 +21,6 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ansible-vaultプラグインによって暗号化されたファイルを使用して、プロビジョニングを実行する。
 
-
-
 > ℹ️ 参考：https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
 
 ```bash

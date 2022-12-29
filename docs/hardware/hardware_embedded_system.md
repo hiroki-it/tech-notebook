@@ -21,7 +21,11 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 組み込み機器（限定的な用途向けに特定の能力を果たす事を目的とした機器）を制御するシステムのこと。
 
+
+
 ※パソコンは、汎用機器（汎用的な用途向けに多様な機能を果たす事を目的とした機器）に分類される。
+
+
 
 ![組み込みシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/組み込みシステム.png)
 
@@ -217,7 +221,11 @@ CPUとして、『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ プリンタの解像度
 
-```1```インチ当たりのドット数（dpi）によって、解像度が異なる。復習ではあるが、PC上では、ドット数がどのくらいのビット数を持つかで、解像度が変わる。
+```1```インチ当たりのドット数（dpi）によって、解像度が異なる。
+
+復習ではあるが、PC上では、ドット数がどのくらいのビット数を持つかで、解像度が変わる。
+
+
 
 ![DPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPI.jpg)
 
@@ -283,8 +291,6 @@ dpiが大きくなるにつれて、解像度は大きくなる。
 #### ▼ SCSI（Small Computer System Interface）
 
 ストレージ、CD-ROM、コンテナイメージスキャナなど、様々な周辺機器をデイジーチェーンするために使用するインターフェイス。
-
-
 
 ![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsiインターフェイス.jpg)
 

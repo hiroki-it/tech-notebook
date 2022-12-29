@@ -108,6 +108,8 @@ $ kubectl exec \
 
 静的な設定値（特に、クラスター）、サービスディスカバリーによって動的に登録された設定値（特に、クラスター）を、見やすい形式でレスポンスとして返信する。
 
+
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 ```bash
@@ -206,6 +208,8 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値（特に、エンドポイント）を、JSON形式でレスポンスとして返信する。
 
+
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
@@ -256,8 +260,6 @@ $ kubectl exec \
 **＊例＊**
 
 foo-podに登録されているbar-podの```endpoint```値を確認してみる。
-
-
 
 ```bash
 $ kubectl exec \
@@ -388,8 +390,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 foo-podに登録されているbar-podの```dynamic_active_clusters```値を確認してみる。
 
-
-
 ```bash
 $ kubectl exec \
     -it foo-pod \
@@ -430,7 +430,11 @@ $ kubectl exec \
 
 #### ▼ dynamic_warm_clusters
 
-準備が完了していない（ウォーミングアップ中の）クラスター値を、JSON形式でレスポンスとして返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
+準備が完了していない（ウォーミングアップ中の）クラスター値を、JSON形式でレスポンスとして返信する。
+
+もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
+
+
 
 > ℹ️ 参考：
 >
@@ -447,8 +451,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 **＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_warming_clusters```値を確認してみる。
-
-
 
 ```bash
 $ kubectl exec \
@@ -473,6 +475,8 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 サービスディスカバリーによって動的に登録された設定値（特に、リスナー）を、JSON形式でレスポンスとして返信する。
 
+
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
 ```bash
@@ -483,8 +487,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 **＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_listeners```値を確認してみる。
-
-
 
 ```bash
 $ kubectl exec \
@@ -538,6 +540,8 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値（特に、ルート）を、JSON形式でレスポンスとして返信する。
 
+
+
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
 ```bash
@@ -548,8 +552,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 **＊例＊**
 
 foo-podに登録されているbar-podの```dynamic_route_configs```値を確認してみる。
-
-
 
 ```bash
 $ kubectl exec \
@@ -623,8 +625,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={sta
 **＊例＊**
 
 foo-podに登録されているbar-podの```static_listeners```値を確認してみる。
-
-
 
 ```bash
 $ kubectl exec \

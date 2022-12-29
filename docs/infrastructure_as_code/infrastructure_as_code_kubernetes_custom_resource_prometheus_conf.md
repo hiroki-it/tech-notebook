@@ -263,8 +263,6 @@ receivers:
 
 Node内でプロセスとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
 
-
-
 ```bash
 # node-exporterの場合
 
@@ -279,8 +277,6 @@ $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_expo
 #### ▼ GitHubリポジトリから（チャートとして）
 
 Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
-
-
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

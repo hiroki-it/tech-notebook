@@ -121,8 +121,6 @@ repository/
 
 Ansibleのコントロールノードで```ansible-galaxy```コマンドを実行し、管理対象ノードの```~/.ansible/roles```ディレクトリ配下にモジュールをインストールする。
 
-
-
 > ℹ️ 参考：https://note.com/shift_tech/n/n087a9db743d1
 
 ```bash

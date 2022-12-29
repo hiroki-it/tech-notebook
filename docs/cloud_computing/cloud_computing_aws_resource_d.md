@@ -22,7 +22,11 @@ description: Dで始まるAWSリソース＠AWSの知見を記録しています
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/direct-connect.png)
 
-専用線方式のWANとして動作し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
+専用線方式のWANとして動作し、AWS側のプライベートネットワーク（VPC）と、ユーザー側のプライベートネットワークの間を接続する。
+
+注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
+
+
 
 > ℹ️ 参考：https://prtimes.jp/main/html/rd/p/000000050.000009999.html
 

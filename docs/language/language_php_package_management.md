@@ -254,7 +254,11 @@ Composerのバージョンを設定する。
 
 #### ▼ ```autoload.php```ファイルとは
 
-プロジェクト内の全てのphpファイルを名前空間に対応づけ、```require```関数を使用せずに名前空間のみでパッケージを読み込めるようにする。エントリーポイント（```index.php```ファイル）あるいは```bootstrap.php```ファイルで、```autoload.php```ファイルを読み込むようにすると良い。
+プロジェクト内の全てのphpファイルを名前空間に対応づけ、```require```関数を使用せずに名前空間のみでパッケージを読み込めるようにする。
+
+エントリーポイント（```index.php```ファイル）あるいは```bootstrap.php```ファイルで、```autoload.php```ファイルを読み込むようにすると良い。
+
+
 
 ```php
 <?php
@@ -370,8 +374,6 @@ $ composer dump-autoload
 
 存在するクラスが見つからないエラーに悩まされた時は、クラスが登録されていない可能性があるため、```dump-autoload```を実行すると良い。
 
-
-
 ```log
  Exception : Target class [FooClass] does not exist.
 ```
@@ -447,13 +449,7 @@ $ composer install --no-dev
 
 #### ▼ --prefer-dist
 
-Composerの配布サイトからインストールする。
-
-```prefer-source```オプションを使用するよりも高速でインストールできる。
-
-デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
-
-
+Composerの配布サイトからインストールする。```prefer-source```オプションを使用するよりも高速でインストールできる。デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
 
 ```bash
 $ composer install --prefer-dist

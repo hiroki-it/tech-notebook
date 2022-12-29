@@ -93,7 +93,11 @@ EC2インスタンスをワーカーNodeとして、コンテナを作成する�
 
 #### ▼ FargateワーカーNodeの場合
 
-FargateをワーカーNodeとして、コンテナを作成する。Fargateの実体はEC2インスタンスである（ドキュメントに記載がないが、AWSサポートに確認済み）。
+FargateをワーカーNodeとして、コンテナを作成する。
+
+Fargateの実体はEC2インスタンスである（ドキュメントに記載がないが、AWSサポートに確認済み）。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -149,7 +153,11 @@ data:
 
 #### ▼ IRSA：IAM Roles for Service Accounts
 
-KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。
+
+IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+
+
 
 > ℹ️ 参考：
 >
@@ -495,7 +503,13 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。もしNAT Gatewayを設置したとする。この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+
+もしNAT Gatewayを設置したとする。
+
+この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+
+
 
 > ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
@@ -518,8 +532,6 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 #### ▼ awslogsドライバー
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
-
-
 
 > ℹ️ 参考：
 >
@@ -656,7 +668,15 @@ ECSタスクごとに異なるプライベートIPが割り当てられる。
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
+Fargateは動的パブリックIPアドレス（Fargateの再作成後に変化するIPアドレス）を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。
+
+アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信（パブリックネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
+
+そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。
+
+これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
+
+
 
 > ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -800,7 +820,15 @@ CodeDeployを使用してデプロイする。
 | Systems Manager   | ```ssm.ap-northeast-1.amazonaws.com```                                                     | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager   | ```ssmmessage.ap-northeast-1.amazonaws.com```                                              | Secrets Managerを使用するため。                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。
+
+NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。
+
+そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。
+
+注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -816,13 +844,7 @@ CodeDeployを使用してデプロイする。
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_ecs-exec.png)
 
-セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
-
-Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
-
-ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
-
-
+セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 > ℹ️ 参考：
 >
@@ -1049,7 +1071,11 @@ data:
 
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
-EKSでは、Podをプライベートサブネットに配置する必要がある。プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+EKSでは、Podをプライベートサブネットに配置する必要がある。
+
+プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
 
@@ -1065,7 +1091,13 @@ Pod provisioning timed out (will retry) for pod
 
 #### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
 
-EKS Clusterを作成すると、ENIも作成する。これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。執筆時点（2022/05/27）では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+EKS Clusterを作成すると、ENIも作成する。
+
+これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
+
+執筆時点（2022/05/27）では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -1075,6 +1107,8 @@ EKS Clusterを作成すると、ENIも作成する。これにより、データ
 #### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
 
 VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
+
+
 
 <br>
 
@@ -1092,7 +1126,13 @@ VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキ�
 
 #### ▼ ワーカーNode間のファイル共有
 
-EFSを使用して、ワーカーNode間でファイルを共有する。PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
+EFSを使用して、ワーカーNode間でファイルを共有する。
+
+PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。
+
+ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
+
+
 
 > ℹ️ 参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
 
@@ -1306,7 +1346,15 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 #### ▼ EC2ワーカーNodeの最適化AMIとは
 
-任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
+任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
+
+このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。
+
+必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。
+
+EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 

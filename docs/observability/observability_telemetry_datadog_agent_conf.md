@@ -82,13 +82,7 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 ### ```datadog.yaml```ファイルとは
 
-datadogエージェントを設定する。
-
- ```/etc/datadog-agent```ディレクトリに配置される。
-
-datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
-
-
+datadogエージェントを設定する。 ```/etc/datadog-agent```ディレクトリに配置される。datadogエージェントをインストールすると、```datadog.yaml.example```ファイルが作成されるため、これをコピーして作成する。
 
 > ℹ️ 参考：
 >

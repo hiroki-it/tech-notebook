@@ -21,7 +21,15 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
-サイドカープロキシメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。サイドカープロキシを使用して、サービスメッシュを実装する。サイドカーは、```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）と```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。ただ必ずしも、Istioリソースを使用する必要はなく、代わりとして、KubernetesやOpenShiftに内蔵されたIstioに相当するオプションを使用しても良い。
+サイドカープロキシメッシュは、データプレーン、Isiodコントロールプレーン、から構成される。
+
+サイドカープロキシを使用して、サービスメッシュを実装する。
+
+サイドカーは、```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）と```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。
+
+ただ必ずしも、Istioリソースを使用する必要はなく、代わりとして、KubernetesやOpenShiftに内蔵されたIstioに相当するオプションを使用しても良い。
+
+
 
 > ℹ️ 参考：
 >
@@ -598,11 +606,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 同じプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想サーバーを管理できるようになる。
-
-この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
-
-
+仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想サーバーを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
 
@@ -610,11 +614,7 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
-仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で管理できるようになる。
-
-この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
-
-
+仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で管理できるようになる。この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
 
 ![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 

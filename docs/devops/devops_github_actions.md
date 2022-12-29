@@ -365,6 +365,8 @@ runs:
 
 定義された```workflow```（```.yaml```ファイル）内でのみ参照できる。
 
+
+
 #### ▼ env
 
 環境変数を定義する。
@@ -419,6 +421,8 @@ jobs:
 
 環境ファイル（```GITHUB_ENV```）に値を入力することにより、```job```内の環境変数として使用できるようになる。
 
+
+
 > ℹ️ 参考：https://docs.github.com/ja/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
 
 ```yaml
@@ -472,11 +476,7 @@ jobs:
 
 ### Secret変数とは
 
-環境変数と同様にしてGitHub Actions内で使用できる。
-
-また、```add-mask```コマンドと同様のマスキングが最初から実行されている。
-
-
+環境変数と同様にしてGitHub Actions内で使用できる。また、```add-mask```コマンドと同様のマスキングが最初から実行されている。
 
 <br>
 
@@ -518,8 +518,6 @@ runs:
 ```
 
 これに関しては以前は非対応であったため、```add-mask```コマンドを使用した方法がネット上で見つかることに注意する。
-
-
 
 > ℹ️ 参考：
 >
@@ -798,8 +796,6 @@ jobs:
 
 Secretsや```add-mask```コマンドでマスキングされた値も共有でき、またマスキングを維持できる。
 
-
-
 ```yaml
 jobs:
   foo:
@@ -858,8 +854,6 @@ jobs:
 ```
 
 ただし異なる```job```では、Secretsや```add-mask```コマンドでマスキングされた値は共有できず、空になってしまう。
-
-
 
 ```yaml
 jobs:

@@ -21,11 +21,7 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 #### ▼ GitHubリポジトリから
 
-プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。
-
-GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
-
-
+プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
@@ -139,6 +135,8 @@ spec:
 
 AWSプロバイダー上のSecret（AWS Secrets Manager、AWS Systems Manager）を識別する情報を設定する。
 
+
+
 > ℹ️ 参考：
 > 
 > - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
@@ -184,6 +182,8 @@ spec:
 #### ▼ objects（GCPプロバイダーの場合）
 
 GCPプロバイダー上のSecret（GCP Secret Manager）を識別する情報を設定する。
+
+
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

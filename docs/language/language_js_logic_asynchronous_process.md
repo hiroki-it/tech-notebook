@@ -115,17 +115,7 @@ const asyncFunc = () => {
 
 #### ▼ コンストラクタを使用する場合
 
-Promiseオブジェクトのコンストラクタ内では、暗黙的に```try-catch```が実行されている。
-
-そのため、結果のステータスが成功であれば```resolve```メソッドの結果を返却し、反対に失敗であれば```reject```メソッドを返却する。
-
-両方を実装すると良しなに実行してくれる。
-
-```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと、後続する処理も実行される。
-
-1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
-
-
+Promiseオブジェクトのコンストラクタ内では、暗黙的に```try-catch```が実行されている。そのため、結果のステータスが成功であれば```resolve```メソッドの結果を返却し、反対に失敗であれば```reject```メソッドを返却する。両方を実装すると良しなに実行してくれる。```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと、後続する処理も実行される。1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
 
 ```javascript
 const asyncFunc = () => {
@@ -133,13 +123,9 @@ const asyncFunc = () => {
     return new Promise((resolve, reject) => {
 
         // ステータスが成功の場合に選択される。
-
-
         resolve("SUCCESS"); // Promise { "SUCCESS" }
 
         // ステータスが失敗の場合に選択される。
-
-
         reject("FAILED"); // Promise { "FAILED" }
         
         console.log("test");
@@ -148,8 +134,6 @@ const asyncFunc = () => {
 
 console.log(asyncFunc()); 
 // 後続する処理も実行され、resolveメソッドの結果が返却される。
-
-
 // test
 // Promise { 'SUCCESS' }
 ```
@@ -173,8 +157,6 @@ const asyncFunc = () => {
 
 console.log(asyncFunc()); 
 // 後続する処理も実行されない。
-
-
 // Promise { 'SUCCESS' }
 ```
 
@@ -192,16 +174,12 @@ console.log(asyncFunc());
 const asyncFunc = () => {
 
     // ステータスが成功の場合に選択される。
-
-
     return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
 }
 
 const asyncFunc = () => {
 
     // ステータスが失敗の場合に選択される。
-
-
     return Promise.reject("FAILED"); // Promise { "FAILED" }
 }
 
@@ -336,14 +314,10 @@ Promiseや、これのコントラクタに渡す関数を実装する必要が�
 ```javascript
 const asyncFunc = async () => {
     // Promiseオブジェクトに渡すための関数内に暗黙的に定義される。
-
-
     return "SUCCESS"
 }
 
 // 単にreturnとしてもPromiseオブジェクトが返却される。
-
-
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
@@ -356,8 +330,6 @@ const asyncFunc = async () => {
 }
 
 // Promiseオブジェクトを返却するようにしても、入れ子にはならない。
-
-
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
@@ -368,8 +340,6 @@ const asyncFunc = async () => {
 }
 
 // Promiseオブジェクトを返却するようにしても、入れ子にはならない。
-
-
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
@@ -385,8 +355,6 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 ```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
-
-
 const asyncFunc = async () => {
     
     axios.get("/some/path").then((res) => {
@@ -424,8 +392,6 @@ const asyncFunc = async () => {
 const asyncFunc = async () => {
 
     // 以降の全処理がthenメソッドに渡される。
-
-
     const res = await axios.get("/some/path");
 
     console.log(res.data); // "some data"
@@ -442,8 +408,6 @@ await宣言により、コールバック地獄のコードが分かりやすく
 const asyncFunc = async () => {
 
     // コールバック関数地獄になっている。
-
-
     axios.get("/some/path1").then((res) => {
         const res1 = res;
         axios.get("/some/path1").then((res) => {
@@ -471,8 +435,6 @@ const asyncFunc = async () => {
 #### ▼ try-catch
 
 Promiseオブジェクトの```then```メソッド、```catch```メソッド、```finally```メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
-
-
 
 > ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -524,8 +486,6 @@ const asyncFunc = async () => {
 
 ```javascript
 // 5秒待機する。
-
-
 await new Promise((resolve) => {
     setTimeout(resolve, 5000)
 });

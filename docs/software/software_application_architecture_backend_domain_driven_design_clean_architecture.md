@@ -19,7 +19,13 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 #### ▼ 思想
 
-DDDが適する機能的アプリケーションのみでなく、あらゆる種類（例：非機能的アプリケーションなど）のソフトウェアに適用できる。クリーンアーキテクチャ原著の序文にて、著者は『私は、今まで色々な種類のシステムを作ってきたが、どのシステムもアーキテクチャもルールは同じだった。異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
+DDDが適する機能的アプリケーションのみでなく、あらゆる種類（例：非機能的アプリケーションなど）のソフトウェアに適用できる。
+
+クリーンアーキテクチャ原著の序文にて、著者は『私は、今まで色々な種類のシステムを作ってきたが、どのシステムもアーキテクチャもルールは同じだった。
+
+異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。
+
+
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/B07FSBHS2V
 
@@ -31,7 +37,15 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 #### ▼ クラス or 関数
 
-オブジェクト指向型と手続き型のマルチパラダイム言語の場合、アプリケーションをクラスまたは関数で実装できる。クリーンアーキテクチャはオブジェクト指向設計が前提にあるため、各レイヤーのパターンをクラスとして実装することが多い。ただし、クラスとして実装するとインスタンス化の手間があり、関数として実装しても、アーキテクチャの思想に反することがない場合がある（特に外側のレイヤー）。アーキテクチャのレイヤー別にこれを整理した。
+オブジェクト指向型と手続き型のマルチパラダイム言語の場合、アプリケーションをクラスまたは関数で実装できる。
+
+クリーンアーキテクチャはオブジェクト指向設計が前提にあるため、各レイヤーのパターンをクラスとして実装することが多い。
+
+ただし、クラスとして実装するとインスタンス化の手間があり、関数として実装しても、アーキテクチャの思想に反することがない場合がある（特に外側のレイヤー）。
+
+アーキテクチャのレイヤー別にこれを整理した。
+
+
 
 | レイヤー       | パターン       | クラス or 関数 |
 |------------|------------|-------------|
@@ -181,7 +195,15 @@ class FormatValidator
 
 #### ▼ ユースケースとメソッド名
 
-インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞（ユースケース）を具現化する。そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。Laravelの基本的なメソッド名（index、store、create、show、update、）が参考になる。CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
+インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞（ユースケース）を具現化する。
+
+そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。
+
+Laravelの基本的なメソッド名（index、store、create、show、update、）が参考になる。
+
+CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
+
+
 
 | メソッド名             | 引数型                           | 返却値型                           | 処理内容                                                                                                                                       |
 |--------------------|----------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -634,7 +656,13 @@ class FooInteractor
 
 #### ▼ ドメインイベントとは
 
-ドメイン層の中で、ビジネス的な『出来事』をモデリングしたもの。エンティティや値オブジェクトは『物』をモデリングするため、着眼点が異なる。エンティティデザインパターンの1つである『Pub/Subパターン』の概念を使用して、ドメインイベントとイベントリスナー（イベントハンドラー）の関連を表す。
+ドメイン層の中で、ビジネス的な『出来事』をモデリングしたもの。
+
+エンティティや値オブジェクトは『物』をモデリングするため、着眼点が異なる。
+
+エンティティデザインパターンの1つである『Pub/Subパターン』の概念を使用して、ドメインイベントとイベントリスナー（イベントハンドラー）の関連を表す。
+
+
 
 <br>
 
@@ -688,13 +716,9 @@ class ColorType
     private $name;
 
     // インスタンス化の時に、『色の区分値』を受け取る。
-
-
     public function __construct(string $value)
     {
         // $kbnValueに応じて、色名をnameデータにセットする。
-
-
         $this->value = $value;
         $this->name = static::$set[$value]["name"];
     }
@@ -1054,6 +1078,8 @@ class FooException extends Exception
 
 bool値メソッド（```isFoo```メソッド）のように、オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のために用意できているかを調べる処理する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -1124,8 +1150,6 @@ class FooCriteria
     public function build(array $array)
     {
         // 自身をインスタンス化。
-
-
         $criteria = new static();
 
         if (isset($array["id"])) {
@@ -1244,7 +1268,11 @@ final class User
 
 ### エンティティとは
 
-責務として、ビジネスのルールや制約の定義を持ち、値オブジェクトとは区別される。エンティティの責務をデザインパターンに切り分けても良い。一意で識別できるデータ（例：```id```データ）を持つ
+責務として、ビジネスのルールや制約の定義を持ち、値オブジェクトとは区別される。
+
+エンティティの責務をデザインパターンに切り分けても良い。
+
+一意で識別できるデータ（例：```id```データ）を持つ
 
 ![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
 
@@ -1254,7 +1282,11 @@ final class User
 
 #### ▼ 識別可能とは
 
-オブジェクトが識別子（例：IDなど）を持ち、他のオブジェクトと同じ属性をもっていても、区別される。この識別子は、DBのプライマリーキーに対応している。
+オブジェクトが識別子（例：IDなど）を持ち、他のオブジェクトと同じ属性をもっていても、区別される。
+
+この識別子は、DBのプライマリーキーに対応している。
+
+
 
 ```php
 <?php
@@ -1333,6 +1365,8 @@ class DogToy extends Entity
 
     /**
      * 犬用おもちゃ名（色）を返却します。
+
+
      *
      * @return string
      */
@@ -1513,7 +1547,11 @@ abstract class Id
 
 ### 値オブジェクトとは
 
-責務として、ビジネスのルールや制約の定義を持ち、エンティティと区別される。金額、数字、電話番号、文字列、日付、氏名、色などのユビキタス言語に関するデータを持つ一方で、一意で識別できるデータ（例：```id```データ）を持たない。
+責務として、ビジネスのルールや制約の定義を持ち、エンティティと区別される。
+
+金額、数字、電話番号、文字列、日付、氏名、色などのユビキタス言語に関するデータを持つ一方で、一意で識別できるデータ（例：```id```データ）を持たない。
+
+
 
 ![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
 
@@ -2031,8 +2069,6 @@ class Foo
 
 $foo = new Foo()
 $foo->bar // __getメソッドが代わりにコールされ、プロパティ値が返却される。
-
-
 ```
 
 <br>
@@ -2115,8 +2151,6 @@ final class ContactMail extends ValueObject
     public function equals(ValueObject $VO): bool
     {
         // 単一の属性を対象とする。
-
-
         return $this->value() === $VO->value();
     }
 }
@@ -2180,8 +2214,6 @@ final class PaymentInfoVO extends ValueObject
     public function equals(ValueObject $VO): bool
     {
         // 複数の属性を対象とする。
-
-
         return $this->paymentType->value() === $VO->paymentType->value()
             && $this->contactMail->value() === $VO->contactMail->value()
             && $this->price->value() === $VO->price->value();
@@ -2218,8 +2250,6 @@ abstract class ValueObject
     public function equals(ValueObject $VO): bool
     {
         // 全ての属性を反復的に検証します。
-
-
         foreach (get_object_vars($this) as $key => $value) {
             if ($this->__get($key) !== $VO->__get($key)) {
                 return false;
@@ -2523,8 +2553,6 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
-
-
         $query->insert("dog_toy_table")
             ->values([
                 // ルートエンティティの要素をカラム値として設定する。（IDは自動増分）
@@ -2565,12 +2593,8 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
-
-
         $query->update("dog_toy_table", "dog_toy")
             // ルートエンティティの要素をカラム値として設定する。
-
-
             ->set("dog_toy.name", $dogToy->getName()->value())
             ->set("dog_toy.type", $dogToy->getType()->value())
             ->set("dog_toy.price", $dogToy->getPriceVO()->value())
@@ -2583,6 +2607,8 @@ class DogToyRepository
 ```
 
 DELETE処理（論理削除）のため、DoctrineのQueryBuilderクラスの```update```メソッドを実行する。
+
+
 
 ```php
 <?php
@@ -2609,8 +2635,6 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する。
-
-
         $query->update("dog_toy_table", "dog_toy")
             // 論理削除
             ->set("dog_toy.is_deleted", FlagConstant::IS_ON)
@@ -2678,8 +2702,6 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを設定する。
-
-
         $query->select(
             "dog_toy.id    AS dog_toy_id",
             "dog_toy.name  AS dog_toy_name",
@@ -2693,15 +2715,11 @@ class DogToyRepository
         ->getQuery();    
         
         // SQLを実行する。
-
-
         $entities = $query->getResult();        
         
         $dogToys = [];
         foreach($entities as $entity){
             // 取得したエンティティをドメインモデルに変換する。
-
-
             $dogToys[] = $this->toDogToy($entity);
         }
         
@@ -2824,7 +2842,11 @@ class DogComboFactory
 
 #### ▼ 命名規則
 
-イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。そのため、名前は『イベント名』+Listener（Handler）となる。
+イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。
+
+そのため、名前は『イベント名』+Listener（Handler）となる。
+
+
 
 > ℹ️ 参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 

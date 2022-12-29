@@ -287,11 +287,7 @@ ports:
 
 #### ▼ inventoriesディレクトリとは
 
-管理対象ノードの情報を設定する。
-
-Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
-
-
+管理対象ノードの情報を設定する。Ansibleの実行時に、```-i```オプションでディレクトリを指定する。
 
 > ℹ️ 参考：https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
@@ -811,6 +807,8 @@ SELinuxを無効化する。
 #### ▼ ansible.builtin.templateとは
 
 テンプレート（```.j2```ファイル）から作成したファイルを管理対象ノードのディレクトリに配置する。
+
+
 
 **＊実装例＊**
 

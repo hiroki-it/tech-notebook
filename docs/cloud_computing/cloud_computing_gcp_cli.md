@@ -248,6 +248,8 @@ GKE Node Poolの設定を変更する。
 
 ローリング方式（サージ方式）のアップグレードを有効化する。
 
+
+
 ```bash
 $ gcloud container node-pools update foo-node-pool \
     --cluster=foo-anthos-cluster \

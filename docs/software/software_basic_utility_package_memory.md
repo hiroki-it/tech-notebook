@@ -277,7 +277,13 @@ startretries=10
 
 #### ▼ stdout_logfile、stderr_logfile
 
-デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
+デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。
+
+デフォルト値は```/var/log/supervisor```ディレクトリである。
+
+もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
+
+
 
 > ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -495,6 +501,8 @@ PrivateTmp=true
 
 環境変数ファイル（```EnvironmentFile```）は、```.env```ファイルと同じような形式のものを作成する。
 
+
+
 ```bash
 FOO=foo
 BAR=bar
@@ -504,6 +512,8 @@ BAZ=baz
 #### ▼ Installセクション
 
 ユニットのインストール（```systemctl enable```コマンドの実行）時のオプションを設定する。
+
+
 
 ```ini
 [Install]
@@ -561,7 +571,11 @@ $ systemctl enable httpd.service
 
 #### ▼ list-units
 
-デーモン化されたプロセスの稼働状態を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
+デーモン化されたプロセスの稼働状態を一覧を取得する。
+
+```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
+
+
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
@@ -749,7 +763,11 @@ $ journalctl -u foo.service | grep error
 
 #### ▼ アラートを直接的に通知する場合
 
-デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
+デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。
+
+この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
+
+
 
 > ℹ️ 参考：
 >
@@ -765,11 +783,7 @@ $ journalctl -u foo.service | grep error
 OnFailure=notify-email@%i.service
 ```
 
-```/etc/systemd/system/notify-email@.service```ファイルで、失敗状態時に起動するユニットを定義しておく。
-
-```ExecStart```オプションで、特定のアドレスにメールを送信するようにする。
-
-
+```/etc/systemd/system/notify-email@.service```ファイルで、失敗状態時に起動するユニットを定義しておく。```ExecStart```オプションで、特定のアドレスにメールを送信するようにする。
 
 ```ini
 # notify-email@.serviceファイル

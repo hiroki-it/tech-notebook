@@ -21,8 +21,6 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 PHP-FPMは、Server API、Zend Engine、から構成される。
 
-
-
 > ℹ️ 参考：https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
 ![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_architecture.png)
@@ -31,13 +29,7 @@ PHP-FPMは、Server API、Zend Engine、から構成される。
 
 ### プロセスプール
 
-PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。
-
-そして、リクエストを受信するたびに、プロセスを割り当てている。
-
-あらかじめ準備されたプロセス群を『プール』という。
-
-
+PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。そして、リクエストを受信するたびに、プロセスを割り当てている。あらかじめ準備されたプロセス群を『プール』という。
 
 > ℹ️ 参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
 
@@ -49,15 +41,7 @@ PHP-FPMでは、リクエストのたびにプロセスを起動するわけで�
 
 ![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm_fastcgi.png)
 
-PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ通信を行う。
-
-PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。
-
-そのため、設定値を別々に設定する必要がある。
-
-例えば、ログの出力先はそれぞれ個別に設定する必要がある。
-
-
+PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
 > ℹ️ 参考：
 >
@@ -88,11 +72,7 @@ $ php-fpm -t
 
 #### ▼ status
 
-PHP-FPMのプロセスが正常に実行中であることを確認する。
-
-プロセスがプールとして準備されていることも確認できる。
-
-
+PHP-FPMのプロセスが正常に実行中であることを確認する。プロセスがプールとして準備されていることも確認できる。
 
 ```bash
 $ systemctl status php-fpm.service

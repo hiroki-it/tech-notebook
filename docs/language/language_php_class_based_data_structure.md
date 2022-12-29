@@ -71,7 +71,11 @@ Array
 
 #### ▼ 連想配列
 
-キー名（赤、緑、黄、果物、野菜）ごとに値が格納された配列型のこと。下の例は、二次元配列かつ連想配列である。
+キー名（赤、緑、黄、果物、野菜）ごとに値が格納された配列型のこと。
+
+下の例は、二次元配列かつ連想配列である。
+
+
 
 ```bash
 Array
@@ -166,8 +170,6 @@ PHPでは、```array_push```メソッドと```array_shift```メソッドを組�
 $array = array("Blue", "Green");
 
 // 引数を、配列の最後に、要素として追加する。
-
-
 array_push($array, "Red");
 print_r($array);
 
@@ -181,8 +183,6 @@ print_r($array);
 //	)
 
 // 配列の最初の要素を取り出す。
-
-
 $theFirst= array_shift($array);
 print_r($array);
 
@@ -200,7 +200,11 @@ echo $theFirst; // Blue
 
 #### ▼ メッセージQueue
 
-送信側の好きなタイミングでファイル（メッセージ）をメッセージQueueに追加できる。また、受信側の好きなタイミングでメッセージを取り出せる。
+送信側の好きなタイミングでファイル（メッセージ）をメッセージQueueに追加できる。
+
+また、受信側の好きなタイミングでメッセージを取り出せる。
+
+
 
 ![メッセージキュー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メッセージキュー.jpg)
 
@@ -441,6 +445,8 @@ print_r($a);
 #### ▼ ```is_scalar```
 
 スカラー型（bool、float、int、string）を判定する。
+
+
 
 
 

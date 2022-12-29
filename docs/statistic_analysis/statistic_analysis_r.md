@@ -195,6 +195,8 @@ summary(Reg)
 
 説明変数が質的変数の場合、最も当てはまりの良い非線形モデル（ロジスティック分布）を推定する。
 
+
+
 ![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰分析.png)
 
 #### ▼ 回帰方程式
@@ -276,7 +278,11 @@ fancyRpartPlot(tree)
 
 ## 04. 階層クラスター分析
 
-データを、似ている順に階層的にグループ化（クラスタリング）していく分析手法。データ間の同一性を明らかにできる。
+データを、似ている順に階層的にグループ化（クラスタリング）していく分析手法。
+
+データ間の同一性を明らかにできる。
+
+
 
 ![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/階層クラスター分析.png)
 

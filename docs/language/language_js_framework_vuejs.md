@@ -33,7 +33,11 @@ ViewModel層から渡されたデータを出力するだけ。
 
 （２）ViewModel層（```index.js```、```foo-component.vue```の```script```タグ部分）
 
-プレゼンテーションロジック（フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など）や、ビジネスロジック（※控えめに）を記述する。scriptタグによって、JavaScriptが組み込まれている。
+プレゼンテーションロジック（フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など）や、ビジネスロジック（※控えめに）を記述する。
+
+scriptタグによって、JavaScriptが組み込まれている。
+
+
 
 （３）Model層（```store.js```または```foo.js```)
 
@@ -51,6 +55,8 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 2. ViewModel層では、```index.js```、```foo-component.vue```の```script```タグ部分
 
 3. Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```foo.js```）を設置する。
+
+
 4. これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
 
 
@@ -191,8 +197,6 @@ var vm = new Vue({
         // dataオプションのセッター
         load(query) {
             // ここでのthisはdataオプションを指す。
-
-
             this.isLoading = true;
             this.staffData = [];
             // ajaxメソッドをラッピングしたメソッドをコール
@@ -226,14 +230,10 @@ var vm = new Vue({
 
 
     ・vue-routerも参考にせよ。
-
-
     */
     watch: {},
 
     // テンプレートと親コンポーネントの対応になるようにする。
-
-
     component: {
 
         //『HTMLでのコンポーネントのタグ名：子コンポーネント』
@@ -261,9 +261,7 @@ var vm = new Vue({
   <!----------------------------------------
   // View層
   // ・親コンポーネント
-  // ・ここに、出力したいHTMLやTWIGを記述する。
-
- 
+  // ・ここに、出力したいHTMLやTWIGを記述する。 
   ------------------------------------------>
 
   <!-- 
@@ -294,8 +292,6 @@ var vm = new Vue({
   //=============
 
   // 親コンポーネント以降では、Vueインスタンスを作成しないようにする。
-
-
   module.exports = {
 
     /* propsオプション
@@ -393,12 +389,8 @@ class Foo {
     }
 
     // コンストラクタによって宣言されているため、アクセスできる。
-
-
     isOk() {
         // bool値を返却する例を考える。
-
-
         return this.isOk;
     }
 }
@@ -414,7 +406,11 @@ class Foo {
 
 ![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vueにおけるemitとv-onの連携.png)
 
-View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
+View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
+
+コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
+
+
 
 ```
 v-on:{イベント名}="{イベントハンドラ関数（methods: 内にあるメソッド）}"
@@ -496,8 +492,6 @@ var vm = new Vue({
     methods: {
       search() {
         // 親コンポーネントのsearchイベントを発火させる。
-
-
         this.$emit("search")
       },
     }
@@ -517,11 +511,7 @@ View層で```input```タグや```select```タグで、値の入力後にマウ�
 
 #### ▼ ```v-on:input="<イベントハンドラ関数>"```
 
-View層で```input```タグで、一文字でも値が入力された時点で発火し、ViewModel層バインディングされたイベントハンドラ関数をコールする。
-
-```v-on:change```とは、イベントが発火するタイミングが異なるため、共存できる。
-
-
+View層で```input```タグで、一文字でも値が入力された時点で発火し、ViewModel層バインディングされたイベントハンドラ関数をコールする。```v-on:change```とは、イベントが発火するタイミングが異なるため、共存できる。
 
 <br>
 
@@ -529,13 +519,7 @@ View層で```input```タグで、一文字でも値が入力された時点で�
 
 #### ▼ ```v-show```/```v-if```とは
 
-条件分岐を行うタグであり、```v-show```または```v-if```を使用して、プロパティ名を指定する。
-
-親テンプレートから渡された```props```内のプロパティ名が持つ値が```TRUE```の時に表示し、```FALSE```の時に非表示にする。
-
-もし頻繁に表示と非表示の切り替えを行うようなら、```v-if```の方が、描画コストが重たくなるリスクが高くなる為、```v-show```推奨である。
-
-
+条件分岐を行うタグであり、```v-show```または```v-if```を使用して、プロパティ名を指定する。親テンプレートから渡された```props```内のプロパティ名が持つ値が```TRUE```の時に表示し、```FALSE```の時に非表示にする。もし頻繁に表示と非表示の切り替えを行うようなら、```v-if```の方が、描画コストが重たくなるリスクが高くなる為、```v-show```推奨である。
 
 | タグ     | 使い分け                       |
 |--------|:---------------------------|
@@ -619,8 +603,6 @@ var vm = new Vue({
 
     components: {
         // 親コンポーネントにオブジェクト名をつける。
-
-
         "v-foo-component": vFooComponent
     }
 
@@ -668,13 +650,9 @@ GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b
 
 ```javascript
 // vue-routerパッケージを読み込む。
-
-
 const vueRouter = require("vue-router").default;
 
 // VueRouterインスタンスを作成する。
-
-
 const router = new VueRouter({
     routes: [
         {path: "/", component: Home},
@@ -683,14 +661,10 @@ const router = new VueRouter({
 })
 
 // 外部ファイルが、VueRouterインスタンスを読み込めるようにしておく。
-
-
 module.exports = router;
 ```
 
 また、vue-routerの能力を利用するために、```router```オプションをルートコンポーネントに注入する必要がある。
-
-
 
 ```javascript
 import router from "./router"
@@ -704,13 +678,9 @@ var vm = new Vue({
     // watchオプション
     watch: {
         // スタック内で履歴の移動が発生した時に、対応付けた無名関数を実行。
-
-
         "$route": function (to, from) {
             if (to.fullPath !== from.fullPath) {
                 // 何らかの処理。
-
-
             }
         },
     }
@@ -735,8 +705,6 @@ Webアプリケーション全体に1つ存在し、全体的なRouter機能を�
 
 ```javascript
 // users/?foo=xyz が履歴スタックに追加される。
-
-
 this.$router.push({
     path : "/users",
     query: {
@@ -760,8 +728,6 @@ this.$router.push({
 ### その他のRouterパッケージ
 
 JQueryにはJQueryRouter、ReactにはReact-Routerがある。
-
-
 
 <br>
 
@@ -803,11 +769,21 @@ Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相
 
 #### ▼ ```state:{}```
 
-データの状態の変化をいくつか管理する。クラスベースオブジェクト指向でいうところの、データ（プロパティ）に相当する。
+データの状態の変化をいくつか管理する。
+
+クラスベースオブジェクト指向でいうところの、データ（プロパティ）に相当する。
+
+
 
 #### ▼ ```mutations:{}```
 
-データに状態（```state```）を設定するメソッドをいくつか持つ。保守性の観点から、```mutations:{}```におくメソッド間は同期的に実行されるようにしておかなければならない。クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。
+データに状態（```state```）を設定するメソッドをいくつか持つ。
+
+保守性の観点から、```mutations:{}```におくメソッド間は同期的に実行されるようにしておかなければならない。
+
+クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。
+
+
 
 #### ▼ ```actions:{}```
 
@@ -823,13 +799,9 @@ Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相
 
 ```javascript
 // Vuexパッケージを読み込む。
-
-
 const vuex = require("vuex")
 
 // 外部ファイルが、このStoreインスタンスを読み込めるようにする。
-
-
 module.exports = new Vuex.Store({
 
     /* getters
@@ -852,13 +824,13 @@ module.exports = new Vuex.Store({
     */
     state: {
         // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
-
-
         staffData: [],
     },
 
     /* mutations
     ・データの状態（state）を変化させるメソッドを持つ。
+
+
     ・クラスベースオブジェクト指向のSetterメソッドに相当。
 
 
@@ -894,7 +866,9 @@ module.exports = new Vuex.Store({
     ・mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
 
 
-    ・contextオブジェクトからcommit機能を取り出す必要がある。（※省略記法あり）
+    ・contextオブジェクトからcommit機能を取り出す必要がある。
+
+（※省略記法あり）
     ・クラスベースオブジェクト指向のSetterメソッドに相当。
 
 
@@ -913,6 +887,8 @@ module.exports = new Vuex.Store({
 ### コンポーネントからVuexに対するアクセス
 
 例えば、子コンポーネントのファイル（```template```タグを持つファイル）の下部に、以下を記述することにより、```Vuex.Store```メソッドとデータを受け渡しできるようになる。
+
+
 
 #### ▼ ```computed: {}```
 
@@ -960,13 +936,9 @@ module.exports = new Vuex.Store({
 <script>
 
   // Vuex.Store()を読み込む。
-
-
   const store = require("./_store")
 
   // Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。
-
-
   const mapGetters = require("vuex").mapGetters;
   const mapActions = require("vuex").mapActions;
   const mapMutaions = require("vuex").mapMutaions;

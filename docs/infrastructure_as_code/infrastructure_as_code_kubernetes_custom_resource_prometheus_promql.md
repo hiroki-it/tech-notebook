@@ -80,6 +80,8 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 
 rate関数のラッパーであり、rate関数の結果（平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
 
+
+
 > ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
 ```bash
@@ -91,7 +93,11 @@ increase(foo_metrics[5m])
 
 #### ▼ rate
 
-平均増加率（%/秒）を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
+平均増加率（%/秒）を算出する。
+
+常に同じ割合で増加していく場合、横一直線のグラフになる。
+
+
 
 > ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
@@ -103,6 +109,8 @@ rate(foo_metrics[1h])
 #### ▼ ```[]```
 
 直近、何時間（分、秒）のデータポイントを集計するかを設定する。
+
+
 
 ```bash
 # 直近5分に関して、foo_metricsの平均増加率（%/秒）を集計する。
@@ -159,6 +167,8 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
+
+
 > ℹ️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
@@ -185,6 +195,8 @@ Prometheusが作成したチャンクの合計数を表す。
 
 Prometheusで収集されたデータポイントの平均サイズ（KB/秒）の増加率を分析する。
 
+
+
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
@@ -194,13 +206,19 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 Prometheusで収集されたデータポイントの合計数（個/秒）の増加率を分析する。
 
+
+
 ```bash
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
 #### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
+Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。
+
+計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
+
+
 
 > ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
@@ -213,6 +231,8 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 #### ▼ データポイントの合計サイズ（KB/日）の推移
 
 Prometheusで収集されたデータポイントの合計サイズ（KB/日）の推移を分析する。
+
+
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -227,7 +247,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ ローカルストレージの必要サイズ（KB/日）
 
-データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。ローカルストレージの部品ファイル分で、```20```%のサイズが必要になる。この結果から、ローカルストレージの必要サイズを推測できる。
+データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。
+
+ローカルストレージの部品ファイル分で、```20```%のサイズが必要になる。
+
+この結果から、ローカルストレージの必要サイズを推測できる。
+
+
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -246,7 +272,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ リモートストレージの必要サイズ（KB/日）
 
-Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ（KB/日）を分析する。この結果から、リモートストレージの必要サイズを推測できる。なお、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
+Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ（KB/日）を分析する。
+
+この結果から、リモートストレージの必要サイズを推測できる。
+
+なお、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
+
+
 
 ```bash
 rate(prometheus_remote_storage_bytes_total[1h]) *
@@ -260,8 +292,6 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 ### node-exporterのメトリクス
 
 node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
-
-
 
 > ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
 
@@ -339,7 +369,11 @@ A
 
 #### ▼ ディスクのI/OによるCPU使用率
 
-ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。```iostat```コマンドの```%util```指標と同じである。
+ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。
+
+```iostat```コマンドの```%util```指標と同じである。
+
+
 
 ```bash
 rate(node_disk_io_time_seconds_total[1m])

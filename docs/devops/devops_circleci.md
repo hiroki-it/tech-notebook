@@ -47,7 +47,13 @@ description: CircleCIの知見を記録しています。
 
 #### ▼ Webhook
 
-CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを使用することが推奨されている。注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
+CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック（プッシュフック）できるようになる。
+
+鍵のうちでデプロイキーを使用することが推奨されている。
+
+注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
+
+
 
 > ℹ️ 参考：https://circleci.com/docs/2.0/gh-bb-integration/
 

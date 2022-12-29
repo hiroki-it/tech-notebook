@@ -31,7 +31,17 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ### ```services```とは
 
-コンテナオーケストレーションにおける1つのコンテナを定義する。サービス名には役割名（```app```、```web```、```db```）を名付けると良い。コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。```docker compose```コマンドの引数として指定するため、できるだけ簡潔にする。オプション一覧は以下のリンクを参考にせよ。
+コンテナオーケストレーションにおける1つのコンテナを定義する。
+
+サービス名には役割名（```app```、```web```、```db```）を名付けると良い。
+
+コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。
+
+```docker compose```コマンドの引数として指定するため、できるだけ簡潔にする。
+
+オプション一覧は以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://docs.docker.jp/compose/compose-file.html
 
@@ -39,15 +49,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ### ```args```
 
-Dockerfileの```ARGS```に展開する変数を定義する。
-
-Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、```docker-compose.yml```ファイルにおける定義は変更しやすい。
-
-そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。
-
-他に、マルチステージビルドを使用しており、全てのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。
-
-
+Dockerfileの```ARGS```に展開する変数を定義する。Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、```docker-compose.yml```ファイルにおける定義は変更しやすい。そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。他に、マルチステージビルドを使用しており、全てのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。
 
 **＊実装例＊**
 
@@ -591,7 +593,11 @@ dockerエリアにVolumeが作成され、```service```オプション内に設�
 
 **＊実装例＊**
 
-MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。datadirディレクトリについては、以下のリンクを参考にせよ。
+MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。
+
+datadirディレクトリについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf.html
 
@@ -623,15 +629,7 @@ mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - P
 
 ### 変数展開
 
-環境変数を```docker-compose.yml```ファイルに展開する。
-
-変数の展開にあたり、```docker-compose.yml```ファイルと同じ階層にある```.env```ファイルが自動的に読み込まれる。
-
-この展開に```env_file```オプションを使用できない。
-
-そのため、例えば```.env```ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。
-
-
+環境変数を```docker-compose.yml```ファイルに展開する。変数の展開にあたり、```docker-compose.yml```ファイルと同じ階層にある```.env```ファイルが自動的に読み込まれる。この展開に```env_file```オプションを使用できない。そのため、例えば```.env```ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。
 
 **＊実装例＊**
 
@@ -668,6 +666,8 @@ networks:
 ```
 
 注意点として、このネットワークを明示的に設定する場合は、エイリアス名（default）で設定する。
+
+
 
 ```yaml
 services:
@@ -735,11 +735,7 @@ $ docker network inspect foo-network
 
 **＊実装例＊**
 
-バックエンドとフロントエンドが異なる```docker-compose.yml```ファイルで管理されている。
-
-フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
-
-
+バックエンドとフロントエンドが異なる```docker-compose.yml```ファイルで管理されている。フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
 
 ```yaml
 # バックエンドのDocker-compose
@@ -795,8 +791,6 @@ NFSプラグインを使用することにより、永続化データを```/var/
 
 以下にdocker-composeを使用した場合を示す。
 
-
-
 ```yaml
 version: "3.7"
 
@@ -824,25 +818,13 @@ volumes:
 
 #### ▼ ビルド時にSQL実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある。
-
-このディレクトリ配下に配置された```sql```ファイルや```bash```プロセスは、mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される。
-
-そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの投入や複数DBの作成を実現できる。
-
-具体的な実行タイミングについては、以下のリンクを参考にせよ。
-
-
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある。このディレクトリ配下に配置された```sql```ファイルや```bash```プロセスは、mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される。そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの投入や複数DBの作成を実現できる。具体的な実行タイミングについては、以下のリンクを参考にせよ。
 
 > ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
 **＊実装例＊**
 
-mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。
-
-以下のような、```docker-compose.yml```ファイルを作成する。
-
-
+mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、```docker-compose.yml```ファイルを作成する。
 
 ```yaml
 version: "3.7"
@@ -873,11 +855,7 @@ volumes:
   mysql_volume:
 ```
 
-また、```docker-entrypoint-initdb.d```ディレクトリ配下に配置するファイルとして、以下の```sql```ファイルを作成する。
-
-このファイルでは、```test```というDBを作成するためのSQLを実装する。
-
-
+また、```docker-entrypoint-initdb.d```ディレクトリ配下に配置するファイルとして、以下の```sql```ファイルを作成する。このファイルでは、```test```というDBを作成するためのSQLを実装する。
 
 ```sql
 -- /infra/docker/mysql/initにSQLファイルを配置する。

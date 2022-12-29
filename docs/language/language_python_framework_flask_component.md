@@ -160,7 +160,11 @@ def create_app():
 
 #### ▼ エントリーポイント
 
-プロジェクトのルートディレクトリに、```create_app```メソッドを実行するエントリーポイント（例：```main.py```ファイル）を配置する。名前空間を判定する条件分の外で```create_app```メソッドを実行しないと、uwsgiがapp変数を見つけられない。
+プロジェクトのルートディレクトリに、```create_app```メソッドを実行するエントリーポイント（例：```main.py```ファイル）を配置する。
+
+名前空間を判定する条件分の外で```create_app```メソッドを実行しないと、uwsgiがapp変数を見つけられない。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/13751277/how-can-i-use-an-app-factory-in-flask-wsgi-servers-and-why-might-it-be-unsafe
 

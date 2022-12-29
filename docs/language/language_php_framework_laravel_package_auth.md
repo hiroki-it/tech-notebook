@@ -159,19 +159,13 @@ final class AuthenticationController
 
         if (Auth::attempt($validated)) {
             // セッションID固定化を防ぐために、認証後にセッションを再作成します。
-
-
             $authenticationRequest->session()->regenerate();
 
             // 認証後のWebページにリダイレクトします。
-
-
             return redirect(RouteServiceProvider::HOME);
         }
 
         // 未認証のWebページにリダイレクトします。
-
-
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
@@ -281,24 +275,16 @@ final class AuthenticationController
         $validated = $authenticationRequest->validated();
 
         // guardに応じた認証を行います。
-
-
         if (Auth::guard($authenticationRequest->guard)->attempt($validated)) {
             
             // セッションID固定化を防ぐために、認証後にセッションを再作成します。
-
-
             $authenticationRequest->session()->regenerate();
 
             // ユーザー用認証後のWebページにリダイレクトします。
-
-
             return redirect(RouteServiceProvider::HOME);
         }
 
         // 未認証のWebページにリダイレクトします。
-
-
         return redirect(RouteServiceProvider::UNAUTHORIZED);
     }
 }
@@ -331,7 +317,11 @@ $user = auth()->user();
 
 **＊実装例＊**
 
-認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
+認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。
+
+そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
+
+
 
 ```php
 <?php
@@ -358,8 +348,6 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (auth()->guard($guard)->check()) {
                 // ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。
-
-
                 return redirect(RouteServiceProvider::HOME);
             }
         }
@@ -573,8 +561,6 @@ class FooController extends Controller
             $foo = new Foo();
 
             // 認可が失敗した場合、AuthorizationExceptionを投げる。
-
-
             $this->authorize('update', [$foo->find($id), $request->barId]);
 
             // Eloquentモデルが不要な検証であれば名前空間
@@ -583,8 +569,6 @@ class FooController extends Controller
             $foo->fill($request->all())->save();
         } catch (Throwable $e) {
             // 自前で403ステータスを含むレスポンスを返信する。
-
-
             return response()->json(['error' => $e->getMessage()], 403);
         }
 
@@ -641,12 +625,8 @@ class FooController extends Controller
         $foo = new Foo();
 
         // 認可が失敗した場合、falseが返却される。
-
-
         if (!auth()->user()->can('update', [$foo->find($id), $request->barId])) {
             // 自前で403ステータスを含むレスポンスを返信する。
-
-
             return response()->json(['error' => '認可エラー'], 403);
         }
 
@@ -844,8 +824,6 @@ return [
         "users" => [
             "driver" => "eloquent",
             // Eloquentモデルは自由に指定できる。
-
-
             "model"  => App\Models\User::class,
         ],
 
@@ -995,13 +973,9 @@ class CreateUsersTable extends Migration
             $table->string("api_token")->unique()->comment("APIトークン");
 
             // MigrationMacroServiceProviderのメソッドを使用する。
-
-
             $table->systemColumns();
 
             // deleted_atカラムを追加する。
-
-
             $table->softDeletes();
         });
     }
@@ -1092,6 +1066,8 @@ $ composer require laravel/sanctum
 
 フロントエンド（外部のアプリケーションを含む）は任意とし、APIのみを実装する場合、使用が適している。
 
+
+
 > ℹ️ 参考：
 >
 > - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
@@ -1103,6 +1079,8 @@ $ composer require laravel/sanctum
 ### SPA認証
 
 フロントエンドにファーストパーティのSPA（自社のSPA）を使用して、バックエンドのAPIを実装する場合、使用が適している。
+
+
 
 > ℹ️ 参考：
 >
@@ -1132,6 +1110,8 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 ### Breezeパッケージとは
 
 Laravelが持つ全ての認証機能のバックエンド（認証+ルーティング+DBアクセス）処理と、これに対応するフロントエンド処理を提供する。
+
+
 
 > ℹ️ 参考：
 >
@@ -1173,6 +1153,8 @@ $ php artisan breeze:install
 ### UIパッケージとは
 
 Laravelが持つ全ての認証機能のバックエンド（認証+ルーティング+DBアクセス）処理と、これに対応するフロントエンド処理を提供する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/7.x/ja/authentication.html
 

@@ -82,7 +82,13 @@ $ terraform apply \
 
 #### ▼ -refresh-only
 
-すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を処理することはできず、代わりに```terraform import```コマンドの実行が必要になる。
+すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、```.tfstate```ファイルにその状態を書き込む。
+
+具体的は、```terraform plan```コマンドで出力される```Note: Objects have changed outside of Terraform```の内容を指す。
+
+ただし、そもそもTerraformで管理されていない実インフラ（create処理判定されるもの）を処理することはできず、代わりに```terraform import```コマンドの実行が必要になる。
+
+
 
 > ℹ️ 参考：
 >
@@ -170,7 +176,13 @@ $ terraform apply foo.tfplan
 
 #### ▼ initとは
 
-```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
+```terraform```コマンドを実行しているローカルマシンの```.terraform```ディレクトリを初期化（```terraform.lock.hcl```ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど）を実行する。
+
+```.tfstate```ファイルを書き換えることはしないため、基本的には安全である。
+
+もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -486,7 +498,15 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ importできない```resource```タイプ
 
-```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。その場合、```.tfstate```ファイルと実インフラの差分を解消できない。ただし、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。
+
+その場合、```.tfstate```ファイルと実インフラの差分を解消できない。
+
+ただし、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。
+
+そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+
+
 
 #### ▼ importを行わなかった場合のエラー
 
@@ -587,13 +607,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。
-
-```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。
-
-```-target```オプションで指定するアドレスは、```terraform plan```コマンド自身の出力結果や、```terraform state list```コマンドで確認できる。
-
-
+特定の```resource```ブロックを使用して、```terraform plan```コマンドを実行する。```terraform plan```コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。```-target```オプションで指定するアドレスは、```terraform plan```コマンド自身の出力結果や、```terraform state list```コマンドで確認できる。
 
 > ℹ️ 参考：https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -708,7 +722,19 @@ $ terraform plan \
 -/+ destroy and then create replacement
 ```
 
-前半部分と後半部分に区別されている。前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。検出のため、applyによって変更される実インフラを表しているわけではない。そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。結果の最後に表示される対象の```resource```ブロックの数を確認しても、前半部分の```resource```ブロックは含まれていないことがわかる。
+前半部分と後半部分に区別されている。
+
+前半部分は、Terraform管理外の方法（画面上、他ツール）による実インフラの変更について、その変更前後を検出する。
+
+また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。
+
+検出のため、applyによって変更される実インフラを表しているわけではない。
+
+そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。
+
+結果の最後に表示される対象の```resource```ブロックの数を確認しても、前半部分の```resource```ブロックは含まれていないことがわかる。
+
+
 
 ```bash
 Note: Objects have changed outside of Terraform
@@ -751,11 +777,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルに反映する。
-
-非推奨であり、代わりに、```terraform apply -refresh-only```コマンドを使用する。
-
-
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を```.tfstate```ファイルに反映する。非推奨であり、代わりに、```terraform apply -refresh-only```コマンドを使用する。
 
 ```bash
 $ terraform refresh -var-file=foo.tfvars
@@ -970,8 +992,6 @@ $ terraform taint \
 ```
 
 この後の```terraform plan```コマンドのログからも、```-/+```で削除が行われる想定で、差分を比較していることがわかる。
-
-
 
 ```bash
 $ terraform plan -var-file=foo.tfvars

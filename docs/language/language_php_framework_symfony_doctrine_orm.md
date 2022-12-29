@@ -46,8 +46,6 @@ CRUD処理に必要なSQLを保持し、トランザクションによってSQL�
 <?php
     
 // QueryBuilderインスタンスを作成。
-
-
 $queryBuilder = $this->createQueryBuilder();
 ```
 
@@ -138,12 +136,8 @@ DB接続に関わる```getConnection```メソッドを開始点として、返�
 <?php
     
 // DBに接続。
-
-
 $queryBuilder->getConnection()
     // SQLを実行し、レコードを読み出す。
-
-
     ->executeQuery($queryBuilder->getSQL(),
           $queryBuilder->getParameters()
     )->fetchAll();
@@ -177,13 +171,9 @@ use Doctrine\DBAL\Connection;
 class DogToyQuery
 {
     // READ処理のSQLを定義するメソッド。
-
-
     public function read(Value $toyType): Array
     {
         // QueryBuilderインスタンスを作成。
-
-
         $queryBuilder = $this->createQueryBuilder();
         
         // プリペアードステートメントの定義
@@ -196,32 +186,18 @@ class DogToyQuery
         ])
           
           // FROMを設定する。
-
-
           ->from("mst_dog_toy", "dog_toy")
           
-          // WHEREを設定する。
-
-この時、値はプレースホルダーとしておく。
-
-
+          // WHEREを設定する。この時、値はプレースホルダーとしておく。
           ->where("dog_toy.type = :type")
           
-          // プレースホルダーに値を設定する。
-
-ここでは、引数で渡す『$toyType』とする。
-
-
+          // プレースホルダーに値を設定する。ここでは、引数で渡す『$toyType』とする。
           ->setParameter("type", $toyType);
         
         // DBに接続。
-
-
         return $queryBuilder->getConnection()
           
           // SQLを実行し、レコードを読み出す。
-
-
           ->executeQuery($queryBuilder->getSQL(),
             $queryBuilder->getParameters()
           )->fetchAll();
@@ -247,8 +223,6 @@ class Foo
     {
         
         // QueryBuilderインスタンスを作成。
-
-
         $queryBuilder = $this->createQueryBuilder();
         
         // 何らかのSQLを定義

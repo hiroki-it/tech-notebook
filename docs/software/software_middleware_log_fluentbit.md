@@ -179,8 +179,6 @@ Fluent Bit v1.8.6
 
 コマンドの```-i```オプションでINPUT名を指定し、実行もできる。
 
-
-
 ```bash
 Inputs
   cpu                     CPU Usage
@@ -504,8 +502,6 @@ $ fluent-bit \
 ```
 
 コマンドの```-f```オプションでFILTER名を指定し、実行もできる。
-
-
 
 ```bash
 Filters
@@ -860,8 +856,6 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/router
 
 コマンドの```-o```オプションでOUTPUT名を指定し、実行もできる。
-
-
 
 ```bash
 Outputs

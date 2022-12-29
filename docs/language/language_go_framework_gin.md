@@ -21,11 +21,7 @@ description: Ginの知見を記録しています。
 
 #### ▼ 処理
 
-リクエストからデータを取得し、構造体に紐付ける。
-
-Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
-
-
+リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
 > ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
@@ -35,11 +31,7 @@ Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコ�
 
 #### ▼ 処理
 
-```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。
-
-リクエストからJSON型データを取得し、構造体に紐付ける。
-
-
+```Content-Type```ヘッダーのMIMEタイプが```application/json```であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
 
 > ℹ️ 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
@@ -178,8 +170,6 @@ import (
 )
 
 // ConvertId パスパラメーターのidのデータ型を変換します。
-
-
 func ConvertId() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		id, err := strconv.Atoi(ctx.Param("id"))
@@ -208,8 +198,6 @@ type UserController struct {
 func (uc *UserController) GetUser(ctx *gin.Context) {
     
     // インターフェース型になってしまう。
-
-
 	userId, ok := ctx.Get("id")
 
 	if !ok {

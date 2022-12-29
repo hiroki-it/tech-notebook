@@ -40,11 +40,7 @@ $ kubectl create -f bundle.yaml
 
 #### ▼ GitHubリポジトリから
 
-GitHubリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。
-
-PrometheusOperatorの基になるKubernetesリソースが含まれている。
-
-
+GitHubリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

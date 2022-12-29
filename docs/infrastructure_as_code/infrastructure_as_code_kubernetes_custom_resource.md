@@ -48,11 +48,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 #### ▼ マニフェストとして
 
-カスタムリソース定義のマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。
-
-もしカスタムリソース定義を送信する前にカスタムリソースを送信してしまうと、kube-apiserverはカスタムリソース定義を見つけられずに、以下のエラーレスポンスを返信する。
-
-
+カスタムリソース定義のマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。もしカスタムリソース定義を送信する前にカスタムリソースを送信してしまうと、kube-apiserverはカスタムリソース定義を見つけられずに、以下のエラーレスポンスを返信する。
 
 ```log
 the server could not find the requested resource
@@ -86,11 +82,7 @@ the server could not find the requested resource
 
 ### カスタムリソース定義とは
 
-カスタムリソースを宣言的に定義する。
-
-ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
-
-
+カスタムリソースを宣言的に定義する。ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはカスタムコントローラーを作成する必要がある。
 
 > ℹ️ 参考：
 >
@@ -422,8 +414,6 @@ spec:
 
 Operatorパターンは、カスタムリソース、カスタムコントローラーのoperator-controller、認可スコープ付与リソース、から構成されている。
 
-
-
 > ℹ️ 参考：
 >
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
@@ -433,15 +423,7 @@ Operatorパターンは、カスタムリソース、カスタムコントロー
 
 ![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_operator-controller.png)
 
-カスタムコントローラーとして動作する。
-
-operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。
-
-operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。
-
-operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
-
-
+カスタムコントローラーとして動作する。operator-controllerが稼働している状況で、etcdにカスタムリソース定義を永続化したとする。operator-controllerは、NodeとPod間のバインディング情報に基づいて、kubeletにカスタムリソースを作成させる。operator-controllerに不具合があると、etcd上のカスタムリソース定義の通りにカスタムリソースが作成されない。
 
 > ℹ️ 参考：
 >
@@ -451,11 +433,7 @@ operator-controllerに不具合があると、etcd上のカスタムリソース
 
 #### ▼ 認可スコープ付与リソース
 
-operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。
-
-ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
-
-
+operator-controllerがkube-apiserverにリクエストを送信できるように、operator-controllerに認可スコープを付与する。ClusterRoleBinding、ClusterRole、ServiceAccount、などから構成されている。
 
 > ℹ️ 参考：https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 

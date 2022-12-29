@@ -95,8 +95,6 @@ echo $carbon; // 2019-07-07 19:07:07
 <?php
     
 // 日時数字から、Carbonインスタンスを作成する。
-
-
 $carbonFromeDate = Carbon::createFromDate(2019, 07, 07);
 
 echo $carbonFromeDate; // 2019-07-07
@@ -110,8 +108,6 @@ echo $carbonFromeDate; // 2019-07-07
 <?php
     
 // 時間数字から、Carbonインスタンスを作成する。
-
-
 $carbonFromTime = Carbon::createFromTime(19, 07, 07);
 
 echo $carbonFromTime; // 19:07:07
@@ -127,11 +123,7 @@ echo $carbonFromTime; // 19:07:07
 <?php
     
 // 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
-
-
 // 第一引数でフォーマットを指定する必要がある。
-
-
 $carbonFromFormat = Carbon::createFromFormat("Y-m-d H:m:s", "2019-07-07 19:07:07");
 
 echo $carbonFromFormat; // 2019-07-07 19:07:07
@@ -145,8 +137,6 @@ echo $carbonFromFormat; // 2019-07-07 19:07:07
 <?php
     
 // タイムスタンプフォーマットから、Carbonインスタンスを作成する。
-
-
 $carbonFromTimestamp = Carbon::createFromTimestamp(1562494027);
 
 echo $carbonFromTimestamp; // 2019-07-07 19:07:07
@@ -208,15 +198,11 @@ class Foo
         return [
           "data" => Traversable::from($entities)
             // 1つずつ要素を取り出し、関数に渡す。
-
-
             ->select(
               function ($entity) {
                   return $this->convertToArray($entity);
               })
             // indexからなる配列として返却。
-
-
             ->asArray(),
         ];
     }
@@ -229,7 +215,11 @@ class Foo
 
 ### Guzzleパッケージとは
 
-通常、リクエストの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ（例：外部のAPIなど）に対して、リクエストの送受信できる。
+通常、リクエストの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。
+
+しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ（例：外部のAPIなど）に対して、リクエストの送受信できる。
+
+
 
 > ℹ️ 参考：https://github.com/guzzle/guzzle
 

@@ -21,6 +21,8 @@ description: ハードウェアの知見を記録しています。
 
 システムのうちで、ソフトウェア（OS、ミドルウェア、アプリケーション）以外の要素を合わせたグループのこと。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/11526
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)

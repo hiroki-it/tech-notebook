@@ -23,8 +23,6 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 nginxを```apt-get```コマンドでインストールすると、旧バージョンが指定されるため、```apt```コマンドを使用する。
 
-
-
 > ℹ️ 参考：https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 ```bash
@@ -73,8 +71,6 @@ include  /usr/share/nginx/modules/*.conf;
 
 例えば、```mod-http-image-filter.conf```ファイルの内容は以下の通り。
 
-
-
 ```nginx
 load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
 ```
@@ -86,8 +82,6 @@ load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
 #### ▼ ```mime.types```ファイルとは
 
 リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
-
-
 
 ```nginx
 include /etc/nginx/mime.types;
@@ -376,13 +370,13 @@ server {
 
 ```Content-Type```ヘッダーの値が```mime.types```ファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
-
-
 > ℹ️ 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
 **＊実装例＊**
 
 任意のMIME type（指定なし）のインバウンド通信を処理する。
+
+
 
 ```nginx
 default_type application/octet-stream
@@ -454,7 +448,11 @@ server_name example.com;
 server_name 192.168.0.0;
 ```
 
-注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の```Host```ヘッダーの値は常に```localhost```（```127.0.0.1```）であるため、```localhost```を設定できる。```127.0.0.1```としてもよいが、```localhost```のIPアドレスが```127.0.0.1```でない場合も考慮して、```localhost```とした方が良い。
+注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の```Host```ヘッダーの値は常に```localhost```（```127.0.0.1```）であるため、```localhost```を設定できる。
+
+```127.0.0.1```としてもよいが、```localhost```のIPアドレスが```127.0.0.1```でない場合も考慮して、```localhost```とした方が良い。
+
+
 
 ```nginx
 server_name localhost;

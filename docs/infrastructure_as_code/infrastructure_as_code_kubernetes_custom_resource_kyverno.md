@@ -19,13 +19,7 @@ description: Kyverno＠カスタムリソースの知見を記録しています
 
 ![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kyverno_architecture.png)
 
-Kyvernoは、admission-controllersアドオン、webhookサーバー、Controller、から構成されている。
-
-kube-apiserverにマニフェストが送信した時、kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。
-
-送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
-
-
+Kyvernoは、admission-controllersアドオン、webhookサーバー、Controller、から構成されている。kube-apiserverにマニフェストが送信した時、kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
 
 > ℹ️ 参考：
 > 

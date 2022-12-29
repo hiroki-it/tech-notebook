@@ -103,7 +103,11 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 ### -retentionPeriod
 
-メトリクスの保管期間を設定する。```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし（```month```）で期間の単位を指定できる。
+メトリクスの保管期間を設定する。
+
+```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし（```month```）で期間の単位を指定できる。
+
+
 
 > ℹ️ 参考：
 > 

@@ -20,6 +20,8 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。
 
+
+
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
 STSに対するリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。

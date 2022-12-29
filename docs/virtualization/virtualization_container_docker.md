@@ -31,7 +31,11 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ### ベースイメージ
 
-ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。各イメージレジストリ（例：DockerHub、ECR、など）には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
+
+各イメージレジストリ（例：DockerHub、ECR、など）には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+
+
 
 <br>
 
@@ -117,17 +121,15 @@ dockerクライアントにdockerデーモンAPIを公開する。
 
 コンテナ内の標準出力（```/dev/stdout```）と標準エラー出力（```/dev/stderr```）に出力されたログを、ファイルやAPIに対して転送する。
 
+
+
 ```bash
 $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
 #### ▼ json-file
 
-標準出力/標準エラー出力に出力されたログを、```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する。
-
-デフォルトの設定値である。
-
-
+標準出力/標準エラー出力に出力されたログを、```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する。デフォルトの設定値である。
 
 ```yaml
 {
@@ -172,8 +174,6 @@ ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラ�
 #### ▼ awslogs
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
-
-
 
 > ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/
 

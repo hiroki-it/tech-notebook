@@ -423,15 +423,7 @@ $ helmfile -e prd template
 
 #### ▼ write-valuesとは
 
-個人的に感動したコマンド。
-
-```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。
-
-複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。
-
-この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
-
-
+個人的に感動したコマンド。```helmfile```コマンドの実行で使用される```values```ファイルを、ファイルに書き出す。複数の```values```ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた```values```ファイルが優先されるようになっている。この時に、```helmfile write-values```コマンドを使用すると、優先された値で定義された```values```ファイルを確認できる。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml write-values

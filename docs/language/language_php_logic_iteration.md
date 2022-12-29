@@ -21,7 +21,13 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 #### ▼ 走査（スキャン）
 
-配列内の要素を順に調べていくことを『走査（スキャン）』という。例えば、```foreach```は、配列内の全ての要素を走査する処理である。下図では、連想配列が表現されている。
+配列内の要素を順に調べていくことを『走査（スキャン）』という。
+
+例えば、```foreach```は、配列内の全ての要素を走査する処理である。
+
+下図では、連想配列が表現されている。
+
+
 
 ![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/配列の走査.png)
 
@@ -43,23 +49,15 @@ Goにおけるポインタは、以下のリンクを参考にせよ。
 $array = ['あ', 'い', 'う'];
 
 // 内部ポインタが現在指定している要素を出力。
-
-
 echo current($array); // あ
 
 // 内部ポインタを1つ進め、要素を出力。
-
-
 echo next($array); // い
 
 // 内部ポインタを1つ戻し、要素を出力。
-
-
 echo prev($array); // あ
 
 // 内部ポインタを最後まで進め、要素を出力。
-
-
 echo end($array); // う
 
 // 内部ポインタを最初まで戻し、要素を出力
@@ -179,8 +177,6 @@ function iteration($K, $A)
     for ($i = 0; $i < count($A); $i++) {
         
         // 前回の走査に今回のものを加算する。
-
-
         $currentLength += $A[$i];
 
         if ($currentLength >= $K) {
@@ -188,8 +184,6 @@ function iteration($K, $A)
             $topesNumber++;
 
             // 長さを元に戻す。
-
-
             $currentLength = 0;
         }
     }
@@ -212,8 +206,6 @@ function iteration($M, $A) {
     foreach ($A as $key => $value) {
         
         // vを固定して、以降のvと比較する。
-
-
         for ($i = $key; $i < count($A); $i++) {
             if($value <= $A[$i]){
                 // 加算代入
@@ -234,7 +226,15 @@ function iteration($M, $A) {
 
 #### ▼ 二次元配列を一次元配列に変換
 
-コールバック関数の使用が必要になる。```call_user_func_array```メソッドの第一引数に、コールバック関数の```array_merge```メソッドの文字列を渡し、第二引数に二次元配列を渡す。その結果、平坦になって一次元配列になる。例えば、不要なインデックス（0）で入れ子になっている場合に役に立つ。
+コールバック関数の使用が必要になる。
+
+```call_user_func_array```メソッドの第一引数に、コールバック関数の```array_merge```メソッドの文字列を渡し、第二引数に二次元配列を渡す。
+
+その結果、平坦になって一次元配列になる。
+
+例えば、不要なインデックス（0）で入れ子になっている場合に役に立つ。
+
+
 
 ```php
 <?php
@@ -286,8 +286,6 @@ $twoDimension = [
 ];
 
 // この配列のscoreキーから値を取り出し、一次元配列を作成する。
-
-
 $oneDimension = array_column($twoDimension, 'score');
 
 // Array
@@ -318,8 +316,6 @@ $oneDimension = array_column($twoDimension, 'score');
     
 $count = 0
 // 反復回数が決まっていないため、満たせたらbreakで停止する。
-
-
 while(true) {
     
     if($count = 10){
@@ -393,8 +389,6 @@ while (true) {
 <?php
     
 // 10回反復することが決まっている。
-
-
 for($i = 1; $i <= 10; $i++){
     $count++
 }
@@ -446,8 +440,6 @@ $array = [1, 2, 3, 4, 5];
 foreach ($array as $key => $value) {
 
     // キーが偶数の組をスキップする。
-
-
     if (!($key % 2 == 0)) {
         continue;
     }
@@ -476,8 +468,6 @@ $array = [1, 2, 3, 4, 5];
 array_walk($array, function ($value, $key) {
 
     // キーが偶数の組をスキップする。
-
-
     if (!($key % 2 == 0)) {
         return; // continueと同じ動作を早期リターンで実現する。
     }
@@ -508,8 +498,6 @@ $array = [1, 2, 3, 4, '', 5];
 foreach ($array as $value) {
 
     // 空の値で繰り返しを停止する。
-
-
     if (empty($value)) {
         break;
     }

@@ -23,8 +23,6 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 GitLab Runnerを処理の実行環境として、GitLabリポジトリの```gitlab-ci.yml```ファイルで定義されたパイプラインを実行する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://subscription.packtpub.com/book/cloud-&-networking/9781789531282/19/ch19lvl1sec32/the-runner-client-architecture

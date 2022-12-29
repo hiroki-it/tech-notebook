@@ -162,8 +162,6 @@ $tire3 = new Tire3();
 $tire4 = new Tire4();
 
 // Tireクラスのインスタンスの作成、Carによって制限されない。
-
-
 $car = new Car($tire1, $tire2, $tire3, $tire4);
 ```
 
@@ -245,8 +243,6 @@ class Car
     public function __construct()
     {
         // Lockクラスのインスタンスをデータとして保持。
-
-
         $this->lock = new Lock();
     }
 }
@@ -262,8 +258,6 @@ class Car
 <?php
     
 // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
-
-
 $car = new Car();
 ```
 
@@ -299,9 +293,7 @@ class Goods
     // 商品価格データ
     private $price = 0;
 
-    // コンストラクタ。
-
-商品名と商品価格を設定する
+    // コンストラクタ。商品名と商品価格を設定する
     public function __construct(string $name, int $price)
     {
         $this->name = $name;
@@ -407,11 +399,7 @@ class GoodsWithTax extends Goods
 ```php
 <?php
     
-// 抽象クラス。
-
-型として提供したいものを定義する。
-
-
+// 抽象クラス。型として提供したいものを定義する。
 abstract class ShainManagement
 {
     // 定数の定義
@@ -419,32 +407,16 @@ abstract class ShainManagement
     const TIME_TO_LEAVE = strtotime("19:00:00");
     
     // 抽象メソッド。
-
-
     // 処理内容を子クラスでOverrideしなければならない。
-
-
     abstract function toWork();
 
-    // 具象メソッド。
-
-出勤時刻を表示。
-
-もし遅刻していたら、代わりに差分を表示。
-
-
-    // 子クラスへそのまま継承される。
-
-子クラスでオーバーライドしなくても良い。
-
-
+    // 具象メソッド。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。
+    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
     public function toArrive()
     {
         $nowTime = strtotime( date("H:i:s") );
     
         // 出社時間より遅かった場合、遅刻と表示する。
-
-
         if($nowTime > self::TIME_TO_ARRIVE){
         
             return sprintf(
@@ -464,16 +436,8 @@ abstract class ShainManagement
     
     }
   
-    // 具象メソッド。
-
-退社時間と残業時間を表示。
-
-
-    // 子クラスへそのまま継承される。
-
-子クラスでオーバーライドしなくても良い。
-
-
+    // 具象メソッド。退社時間と残業時間を表示。
+    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
     public function toLeave()
     {
         $nowTime = strtotime( date("H:i:s") );
@@ -498,8 +462,6 @@ abstract class ShainManagement
 class EnginnerShainManagement extends ShainManagement
 {
     // 鋳型となった抽象クラスの抽象メソッドはOverrideしなければならない。
-
-
     public function toWork()
     {
         // 処理内容
@@ -573,8 +535,6 @@ interface Animal
 class Mammal implements Animal
 {
     // 実装クラスが正常に動作するために最低限必要なメソッドの実装を強制する。
-
-
      public function eat()
      {
           // 食べる
@@ -677,8 +637,6 @@ class SubFoo extends Foo
 $subFoo = new SubFoo;
 
 // SubFooクラスにはgetValue()は無い。
-
-
 // 継承元まで辿り、Fooクラスからメソッドがコールされる（クラスチェーン）。
 echo $subFoo->getValue();
 ```
@@ -709,8 +667,6 @@ class SubFoo extends Foo
     public function subFoo()
     {
         // 継承元のメソッドを参照。
-
-
         $foo = parent::foo();
     } 
 }
@@ -875,8 +831,6 @@ class Foo
 <?php
 
 // 外部ファイル名を指定して、クラスを読み込む。
-
-
 require_once("Foo.php");
 
 class Bar
@@ -895,8 +849,6 @@ class Bar
 <?php
   
 // 外部ファイル名を指定して、クラスを読み込む。
-
-
 require_once("Foo.php");
 
 class Bar
@@ -904,8 +856,6 @@ class Bar
     public function method()
     {    
         // Fooクラスの定数を出力。
-
-
         return Foo::VALUE;
     }
 }
@@ -925,8 +875,6 @@ function printTest() {
 <?php
 
 // 外部ファイル名を指定して読み込む。
-
-
 require_once ("printTestFunction.php");
 
 printTest();
@@ -966,15 +914,11 @@ Composerのオートロード機能を有効化した上で、外部ファイル
 <?php
   
 // 名前空間を定義。
-
-
 namespace Domain\Foo;
 
 class Foo
 {
     // 定数を定義。
-
-
     const VALUE = "これは定数です。";
   
     public function method1()
@@ -990,8 +934,6 @@ class Foo
 namespace Domain\Foo;
 
 // namespaceを指定して、外部ファイルのクラスを読み込む。
-
-
 use Domain\Foo;
 
 class Bar
@@ -1014,8 +956,6 @@ class Bar
 namespace Domain\Foo;
 
 // namespaceを指定して、外部ファイルのクラスを読み込む。
-
-
 use Domain\Foo;
 
 class Bar
@@ -1023,8 +963,6 @@ class Bar
     public function method()
     {    
         // Fooクラスの定数を出力。
-
-
         echo Foo::VALUE;
     }
 }
@@ -1281,7 +1219,11 @@ LCOM4は、クラスの各メソッド内で、保持する全てのデータに
 
 #### ▼ DIとは
 
-サプライヤー側（依存先）の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
+サプライヤー側（依存先）の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。
+
+『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -1375,8 +1317,6 @@ $supplier = new Supplier();
 $client = new Client();
 
 // ClientクラスはSuppierクラスに依存している。
-
-
 $client->setSupplier($supplier)
 ```
 
@@ -1467,7 +1407,11 @@ $user->method($name); // インジェクション
 
 #### ▼ DI Container（依存オブジェクト注入コンテナ）、Service Containerとは
 
-依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。あらかじめクラスを登録（バインド）しておき、必要な時にインスタンスを作成（リゾルブ）してくれる。注意点として、
+依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。
+
+あらかじめクラスを登録（バインド）しておき、必要な時にインスタンスを作成（リゾルブ）してくれる。
+
+注意点として、
 
 **＊実装例＊**
 
@@ -1501,8 +1445,6 @@ class Container
 <?php
     
 // autoload.php で、DIコンテナ自体のインスタンスを事前に作成。
-
-
 $container = new Container();
 ```
 
@@ -1513,8 +1455,6 @@ $container = new Container();
 require_once __DIR__ . "/autoload.php";
 
 // クラス名を宣言してインスタンスを作成。
-
-
 $sample = $container["sample"];
 ```
 
@@ -1542,8 +1482,6 @@ class Sample
 <?php
     
 // DIコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
-
-
 $sample = new Sample($container);
 ```
 
@@ -1595,7 +1533,19 @@ $sample = new Sample($container);
 
 #### ▼ DIPを満たす実装の場合
 
-インターフェース（または抽象クラス）で抽象メソッドを記述することによって、実装クラスでの実装が強制される。つまり、実装クラスは抽象クラスに依存している。より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる（原則２）。原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。よって、全てのレイヤーがインターフェースに依存するようになる（原則１）。
+インターフェース（または抽象クラス）で抽象メソッドを記述することによって、実装クラスでの実装が強制される。
+
+つまり、実装クラスは抽象クラスに依存している。
+
+より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる（原則２）。
+
+原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。
+
+また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。
+
+よって、全てのレイヤーがインターフェースに依存するようになる（原則１）。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
@@ -1608,9 +1558,19 @@ $sample = new Sample($container);
 これにより、原則２を満たす。
 
 
-2. Repositoryのインターフェース（抽象クラス）を、より上位のドメイン層に配置する。また、Repositoryの実装クラスを、より下位のインフラストラクチャ層に配置する。
+2. Repositoryのインターフェース（抽象クラス）を、より上位のドメイン層に配置する。
+
+また、Repositoryの実装クラスを、より下位のインフラストラクチャ層に配置する。
+
+
 3. 両方のクラスに対して、バインディング（紐付け）を行い、インターフェース（抽象クラス）をコールした時に、実際には実装クラスがコールされるようにする。
-4. ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース（抽象クラス）に依存することになる。これは、原則１を満たす。
+
+
+4. ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース（抽象クラス）に依存することになる。
+
+これは、原則１を満たす。
+
+
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 

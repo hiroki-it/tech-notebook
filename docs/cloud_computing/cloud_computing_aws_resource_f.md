@@ -223,11 +223,7 @@ log_routerという名前以外を設定できないことに注意する。
 
 ### 設定ファイル一覧
 
-aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリにはデフォルトで設定ファイルが用意されている。
-
-追加設定を実行するファイルはここに配置する。
-
-
+aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリにはデフォルトで設定ファイルが用意されている。追加設定を実行するファイルはここに配置する。
 
 ```bash
 [root@<コンテナID>:/fluent-bit/etc]$ ls -la
@@ -293,13 +289,7 @@ FireLensコンテナのデフォルトの設定ファイル。
 
 #### ▼ ```fluent-bit_custom.conf```ファイルとは
 
-FireLensコンテナにカスタム値を設定する。
-
-コンテナ定義の```config-file-value```キーで指定し、追加設定を実行する。
-
-これにより、FireLensコンテナの```fluent-bit.conf```ファイルに、カスタムファイルを読み込むためのINCLUDE文が挿入される。
-
-
+FireLensコンテナにカスタム値を設定する。コンテナ定義の```config-file-value```キーで指定し、追加設定を実行する。これにより、FireLensコンテナの```fluent-bit.conf```ファイルに、カスタムファイルを読み込むためのINCLUDE文が挿入される。
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
@@ -340,11 +330,7 @@ FireLensコンテナにカスタム値を設定する。
 
 #### ▼ INPUTセクション
 
-標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLensコンテナではforwardプラグインを設定する必要がある。
-
-ただし、デフォルトの設定ファイルには、INPUTがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない。
-
-
+標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLensコンテナではforwardプラグインを設定する必要がある。ただし、デフォルトの設定ファイルには、INPUTがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTを定義しなくても問題ない。
 
 > ℹ️ 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
@@ -365,11 +351,7 @@ FireLensコンテナにカスタム値を設定する。
 
 #### ▼ OUTPUTセクションとプラグイン
 
-AWSやDatadogにルーティングするための設定が必要である。
-
-もし```fluent-bit_custom.conf```ファイルでOUTPUTセクションを設定した場合は、awsfirelensログドライバーの```options```キーは何も設定する必要がない。
-
-
+AWSやDatadogにルーティングするための設定が必要である。もし```fluent-bit_custom.conf```ファイルでOUTPUTセクションを設定した場合は、awsfirelensログドライバーの```options```キーは何も設定する必要がない。
 
 ```yaml
 "logConfiguration": {

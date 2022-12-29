@@ -25,8 +25,6 @@ description: 設計ポリシー＠Kubernetesの知見を記録しています。
 
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
-
-
 <br>
 
 ### アプリとIaCを同じリポジトリで管理
@@ -106,6 +104,8 @@ repository/
 ```
 
 加えて、実行環境やコンポーネント（app、db）別に分割してもよい。
+
+
 
 ```yaml
 repository/
@@ -216,7 +216,11 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 #### ▼ 拡張子
 
-Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、```.yaml```ファイルの拡張子を```yml```ではなく```.yaml```でしている。そこで、Kubernetesや関連技術（Istio、Helm、Skaffold、Envoy、など）の```.yaml```ファイルの拡張子を```.yaml```で統一する。
+Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、```.yaml```ファイルの拡張子を```yml```ではなく```.yaml```でしている。
+
+そこで、Kubernetesや関連技術（Istio、Helm、Skaffold、Envoy、など）の```.yaml```ファイルの拡張子を```.yaml```で統一する。
+
+
 
 <br>
 
@@ -287,8 +291,6 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 冗長化されたkube-apiserverのバージョン差は、前方の```1```個のマイナーバージョン以内に収める必要がある。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
 
 <br>
@@ -299,8 +301,6 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ```kubectl```コマンドとkube-apiserverのバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収める必要がある。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/releases/version-skew-policy/#kubectl
 
 <br>
@@ -310,14 +310,8 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 ### アップグレード要件の例
 
 - アプリケーションでダウンタイムが発生しない。
-
-
 - コントロールプレーンNodeに関して、kube-controller-manager、kube-scheduler、でダウンタイムが発生することは許容する。
-
-
 - ワーカーNodeのストレージの消去は許容する。
-
-
 
 <br>
 
@@ -376,7 +370,15 @@ Kubernetesに関する開発プロジェクトを確認すると、そのほと�
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_live-upgrade.png)
 
-『サージ方式』『ライブ方式』ともいう。新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。一度にアップグレードするワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを調整できる。デメリットとして、新バージョンを1つずつしかアップグレードできない。
+『サージ方式』『ライブ方式』ともいう。
+
+新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。
+
+一度にアップグレードするワーカーNode数（Surge数）を増やすことにより、アップグレードの速さを調整できる。
+
+デメリットとして、新バージョンを1つずつしかアップグレードできない。
+
+
 
 （１）旧Nodeグループ（Prodブルー）を残したまま、新Nodeグループ（Testグリーン）を作成する。この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
 
@@ -411,7 +413,15 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cluster-migration.png)
 
-『マイグレーション方式』ともいう。新しいClusterを作成することにより、ワーカーNodeをアップグレードする。いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。
+『マイグレーション方式』ともいう。
+
+新しいClusterを作成することにより、ワーカーNodeをアップグレードする。
+
+いずれ（例：ロードバランサー）を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。
+
+メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。
+
+
 
 （１）旧Cluster（Prodブルー）を残したまま、新Cluster（Testグリーン）を作成する。新Clusterには、全てのKubernetesリソースが揃っている。
 
@@ -432,7 +442,13 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ### ワーカーNodeの場合
 
-Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNodeのCIDRブロックを算出すると良い。アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の```2```倍のIPアドレスを持つCIDRブロックを設定すると良い。
+Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNodeのCIDRブロックを算出すると良い。
+
+アプリケーションのPodがスケーリングすることや、カスタムリソース（例：Istio）を導入することも考慮して、尤もらしいIPアドレス数を算出できる。
+
+削除されるPodと作成されるPodが別のIPアドレスになるようにするために（IPアドレスの再利用を防ぐために）、Podの最大数の```2```倍のIPアドレスを持つCIDRブロックを設定すると良い。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
@@ -633,6 +649,10 @@ Kubernetesには通知能力がなく、手動で知らせる必要がある。
 
 #### ▼ Kubernetes以外を使用する場合
 
-CDツールの通知機能（例：ArgoCD Notification）を使用して、CDパイプラインの結果が通知されるようにする。 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
+CDツールの通知機能（例：ArgoCD Notification）を使用して、CDパイプラインの結果が通知されるようにする。
+
+ 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
+
+
 
 <br>

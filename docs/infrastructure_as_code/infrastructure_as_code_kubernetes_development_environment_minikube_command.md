@@ -269,13 +269,7 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。
-
-ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。
-
-ClientとServerのバージョンが自動的に揃えられる。
-
-
+Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 > ℹ️ 参考：
 >
@@ -387,8 +381,6 @@ Opening service <Service名> in default browser...
 ```
 
 ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、```kubectl port-forward```コマンドでPodを指定すると良い。
-
-
 
 > ℹ️ 参考：https://mome-n.com/posts/minikube-service-fixed-port/
 
@@ -659,8 +651,6 @@ Swap:          1023           0        1023
 #### ▼ --docker-env
 
 別に```docker-env```コマンドを実行しつつ、```start```コマンドを実行する。
-
-
 
 **＊例＊**
 

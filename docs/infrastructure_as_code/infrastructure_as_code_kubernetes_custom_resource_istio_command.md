@@ -158,8 +158,6 @@ $ istioctl x uninstall --purge
 
 IstioOperatorのマニフェストをkube-apiserverに送信し、リソースを作成する。
 
-
-
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 
 ```bash
@@ -186,11 +184,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 ### kube-injectとは
 
-```istio-proxy```コンテナを手動で注入する。
-
-代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
-
-
+```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
 > ℹ️ 参考：
 >
@@ -205,8 +199,6 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 #### ▼ -f
 
 指定したマニフェストのPodに```istio-proxy```コンテナを注入する。
-
-
 
 ```bash
 $ istioctl kube-inject -f pod.yaml
@@ -235,8 +227,6 @@ $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マ
 ### init
 
 IstioOperatorを```istio-system```に作成する。
-
-
 
 ```bash
 $ istioctl operator init
@@ -832,6 +822,8 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 
 
@@ -844,6 +836,8 @@ MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリア�
 #### ▼ generateとは
 
 MutatingWebhookConfigurationの```metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
 
@@ -873,6 +867,8 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
 
+
+
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
@@ -898,6 +894,8 @@ tes-green  1-0-1      istioinaction
 
 MutatingWebhookConfigurationの```metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 ```bash
@@ -917,8 +915,6 @@ $ istioctl tag set prd-blue --revision 1-0-0
 ### proxy-statusとは
 
 IngressGateway、EgressGateway、```istio-proxy```コンテナのステータスを取得する。
-
-
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 

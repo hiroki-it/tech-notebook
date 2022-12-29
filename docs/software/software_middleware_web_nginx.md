@@ -96,13 +96,7 @@ server {
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
-PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。
-
-静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。
-
-動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。
-
-
+PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。
 
 ```bash
 # 設定ファイルのバリデーション

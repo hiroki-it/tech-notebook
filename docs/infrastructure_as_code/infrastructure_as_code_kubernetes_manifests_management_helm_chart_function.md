@@ -383,13 +383,7 @@ metadata:
 
 #### ▼ ハイフンとは
 
-```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。
-
-反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。
-
-ただ、```-}}```は使用しない方が良いらしい。
-
-
+```{{-```であると、テンプレートの出力時にこれより前のインデントを削除する。反対に、```-}}```であると改行コードを削除し、不要な改行が挿入されないようにする。ただ、```-}}```は使用しない方が良いらしい。
 
 > ℹ️ 参考：
 >
@@ -541,7 +535,17 @@ data:
 
 #### ▼ sha256sumとは
 
-入力内容をハッシュ値に変換する。SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+入力内容をハッシュ値に変換する。
+
+SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。
+
+これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。
+
+これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。
+
+そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+
+
 
 > ℹ️ 参考：
 >

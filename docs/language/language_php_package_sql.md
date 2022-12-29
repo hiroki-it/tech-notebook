@@ -88,16 +88,12 @@ $stmt->execute(); // 実行。
 
 
 // 全てのレコードを取得する。
-
-
 $data = $stmt->fetchAll();
 
 // 出力
 print_r($data);
 
 // カラム名と値の連想配列として取得できる。
-
-
 // Array
 // (
 //     [0] => Array
@@ -133,8 +129,6 @@ $stmt = $dbh->prepare($sql); // プリペアードステートメントを定義
 $stmt->execute(); // 実行。
 
 // レコードを取得する。
-
-
 $data = $stmt->fetchColumn();
 
 // 出力
@@ -153,8 +147,6 @@ print_r($data);
 <?php
     
 // $_POSTを使用して、送信されたpostメソッドのリクエストを受け取り、属性から各値を取得する。
-
-
 $staff_name = $_POST["name"];
 $staff_pass = $_POST["pass"];
 

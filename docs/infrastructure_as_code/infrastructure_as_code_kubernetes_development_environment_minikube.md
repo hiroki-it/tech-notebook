@@ -52,7 +52,11 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーとは
 
-ゲスト（Node）側のOSを設定する。ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
+ゲスト（Node）側のOSを設定する。
+
+ホスト側のOS（Linux、MacOS、Windows）や、これらOSのバージョンによって、使用できるドライバーが異なる。
+
+
 
 > ℹ️ 参考：https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
 
@@ -88,13 +92,7 @@ $ minikube ip
 
 #### ▼ LoadBalancer Service経由
 
-LoadBalancer Serviceを作成しておく。
-
-```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。
-
-このIPアドレスからPodにアクセスできる。
-
-
+LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
 
 > ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 
@@ -104,7 +102,13 @@ $ minikube tunnel
 
 #### ▼ Ingress経由
 
-ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
+ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。
+
+```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。
+
+```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
+
+
 
 > ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
 

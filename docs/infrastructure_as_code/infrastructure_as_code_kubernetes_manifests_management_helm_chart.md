@@ -37,7 +37,11 @@ $ sudo apt-get install helm
 
 ### index.```.yaml```ファイルとは
 
-チャートリポジトリ内の各チャートアーカイブ（```.tgz```形式ファイル）のメタデータを設定する。```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
+チャートリポジトリ内の各チャートアーカイブ（```.tgz```形式ファイル）のメタデータを設定する。
+
+```helm repo index```コマンドによって、```Chart.yaml```ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#the-index-file
 
@@ -79,11 +83,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 #### ▼ apiVersionとは
 
-Helm-APIのバージョンを設定する。
-
-```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
-
-
+Helm-APIのバージョンを設定する。```apiVersion```キーの```v1```はHelmの```v2```に対応しており、```v2```は```v3```に対応している。
 
 ```yaml
 apiVersion: v2
@@ -205,7 +205,11 @@ type: application
 
 #### ▼ versionとは
 
-チャートアーカイブ（```.tgz```形式ファイル）のリリースバージョンを設定する。```template```ディレクトリ配下のファイルを変更した場合に更新する。
+チャートアーカイブ（```.tgz```形式ファイル）のリリースバージョンを設定する。
+
+```template```ディレクトリ配下のファイルを変更した場合に更新する。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/topics/charts/#charts-and-versioning
 
@@ -220,7 +224,11 @@ version: <バージョンタグ>
 
 ### ```_helpers.tpl```ファイルとは
 
-あらゆる場所から使用できるテンプレートを設定する。汎用的なテンプレート（```metadata.labels```キーなど）の出力で使用する。
+あらゆる場所から使用できるテンプレートを設定する。
+
+汎用的なテンプレート（```metadata.labels```キーなど）の出力で使用する。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/builtin_objects/
 

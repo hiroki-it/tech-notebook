@@ -39,6 +39,8 @@ description: テレメトリー間の紐付け＠Datadog
 
 統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、テレメトリー間を紐付けられる。
 
+
+
 > ℹ️ 参考：https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes
 
 <br>
@@ -238,6 +240,8 @@ FluentBitの設定ファイルからタグ付けする。
 
 スパンと構造化ログの統合タグ（```service```、```env```、```version```）に同じ値を割り当てると、分散トレース全体と構造化ログ間を紐付けられる。
 
+
+
 > ℹ️ 参考：https://docs.datadoghq.com/tracing/connect_logs_and_traces/
 
 <br>
@@ -261,6 +265,8 @@ FluentBitの設定ファイルからタグ付けする。
 ### 仮想環境のメトリクスとの紐付け
 
 スパンとコンテナのDockerラベルの統合タグ（```service```、```env```、```version```）に、同じ値を割り当てると、分散トレースと仮想環境のOSに関するメトリクスを紐付けられる。
+
+
 
 <br>
 

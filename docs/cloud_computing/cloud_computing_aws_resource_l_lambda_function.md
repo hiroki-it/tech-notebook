@@ -31,7 +31,15 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 #### ▼ 非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。```return```または```throw```を使用して、Lambdaのコール元にレスポンスを送信する。レスポンスとして、Promiseオブジェクトを送信もできる。
+Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。
+
+ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。
+
+```return```または```throw```を使用して、Lambdaのコール元にレスポンスを送信する。
+
+レスポンスとして、Promiseオブジェクトを送信もできる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
@@ -53,8 +61,6 @@ exports.handler = async (event) => {
     response.body = "Hello World!"
 
     // もしくはthrowを使用して、レスポンスを送信する。
-
-
     return response;
 }
 ```
@@ -66,8 +72,6 @@ const s3 = new aws.S3();
 exports.handler = async function(event) {
     
     // Promiseオブジェクトをレスポンスとして送信する。
-
-
     return s3.listBuckets().promise();
 }
 ```
@@ -76,8 +80,6 @@ exports.handler = async function(event) {
 exports.handler = async (event) => {
     
     // Promiseオブジェクトをレスポンスとして送信する。
-
-
     return new Promise((resolve, reject) => {
         // 何らかの処理
     })
@@ -86,7 +88,15 @@ exports.handler = async (event) => {
 
 #### ▼ 同期ハンドラ関数（Non-async handlers）
 
-Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。このオブジェクトにはメソッドとプロパティを持つ。ハンドラ関数の初期名は```handler```であるが別名でも良い。```callback```メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
+Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。
+
+このオブジェクトにはメソッドとプロパティを持つ。
+
+ハンドラ関数の初期名は```handler```であるが別名でも良い。
+
+```callback```メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -134,8 +144,6 @@ exports.handler = (event, context, callback) => {
     // なんらかの処理
     
     // callback以前の処理を待機する。
-
-
     callback(null, /*レスポンス*/);
     
     // 処理を終える場合
@@ -169,8 +177,6 @@ Lambdaで関数を作成すると、CloudWatchログのロググループに、�
 
 Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
 
-
-
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
 
 #### ▼ ```Start```関数
@@ -199,16 +205,12 @@ type MyEvent struct {
 }
 
 // HandleRequest リクエストをハンドリングします。
-
-
 func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
 	return fmt.Sprintf("Hello %s!", name.Name), nil
 }
 
 func main() {
 	// Lambda関数を実行します。
-
-
 	lambda.Start(HandleRequest)
 }
 ```
@@ -477,11 +479,7 @@ exports.handler = async (event) => {
 
 **＊実装例＊**
 
-AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。
-
-Lambdaでは、メッセージを構成し、Slack-APIに送信する。
-
-
+AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 > ℹ️ 参考：
 >
@@ -515,8 +513,6 @@ exports.handler = async (event) => {
   try {
 
     // Amplifyのブランチ情報を取得します。
-
-
     const app = await amplify.getBranch(option).promise();
 
     console.log(JSON.stringify({app}, null, 2));
@@ -639,8 +635,6 @@ const buildMessage = (event, app) => {
 const postMessageToSlack = (message) => {
 
   // 非同期処理を持つ関数をコンストラクタに渡し、非同期処理を管理します。
-
-
   return new Promise((resolve, reject) => {
 
     const options = {
@@ -662,25 +656,17 @@ const postMessageToSlack = (message) => {
       let tmp;
 
       // 正常なレスポンスからデータを取り出します。
-
-
       response.on("data", (data) => {
         tmp = data;
       });
 
       // 異常なレスポンスからエラーを取り出します。
-
-
       response.on("error", (error) => {
         tmp = error;
       });
 
       //  data、error、end、の間でawaitの効力は横断できない。
-
-
       // そのため、できるだけendで事後処理を実装し、awaitを使用するようにする。
-
-
       response.on("end", async () => {
         tmp = param.toString(tmp);
         const body = JSON.parse(tmp);
@@ -701,8 +687,6 @@ const postMessageToSlack = (message) => {
 
 
     // メッセージボディを設定して、リクエストを送信します。
-
-
     request.write(message);
 
     request.end();
@@ -734,8 +718,6 @@ const s3 = new aws.S3();
 exports.handler = (event, context, callback) => {
 
   // API Gatewayとのプロキシ統合を意識したJSON構造にする。
-
-
   // レスポンスの初期値
   const response = {
     "statusCode": null,
@@ -797,8 +779,6 @@ exports.handler = (event, context, callback) => {
 
     const request = event.Records[0].cf.request;
     // ログストリームに変数を出力する。
-
-
     console.log(JSON.stringify({request}, null, 2));
 
     const headers = request.headers;
@@ -807,8 +787,6 @@ exports.handler = (event, context, callback) => {
     request.origin.s3.domainName = s3Backet
     request.headers.host[0].value = s3Backet
     // ログストリームに変数を出力する。
-
-
     console.log(JSON.stringify({request}, null, 2));
 
     return callback(null, request);

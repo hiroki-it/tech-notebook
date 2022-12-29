@@ -56,6 +56,8 @@ description: 暗号化プロトコル＠通信データの暗号化技術の知�
 
 暗号化ダイジェスト（デジタル署名）を含むデジタル証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。
 
+
+
 ![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/S_MIME.png)
 
 #### ▼ S/MIMEにおけるデジタル証明書
@@ -177,7 +179,11 @@ SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をよ�
 
 #### ▼ 他の暗号化プロトコルとの組み合わせ
 
-ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体への通信でも暗号化プロトコル（例：VPN）を使用した方がよい。例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
+ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体への通信でも暗号化プロトコル（例：VPN）を使用した方がよい。
+
+例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。
+
+
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
 
@@ -204,6 +210,8 @@ SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定�
 **＊例＊**
 
 Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある（例：オレオレ証明書を使用している）と、以下のような警告が表示される。
+
+
 
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSL接続に不備がある場合の警告.jpg)
 

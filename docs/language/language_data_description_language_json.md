@@ -37,7 +37,13 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ### バックエンドとフロントエンド間
 
-フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
+フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。
+
+データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。
+
+一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
+
+
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
@@ -45,7 +51,13 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ### バックエンドとDB間
 
-バックエンドにPHPを使用しているとする。データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
+バックエンドにPHPを使用しているとする。
+
+データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。
+
+一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
+
+
 
 <br>
 
@@ -99,13 +111,7 @@ json.prefecture = "Tokyo";
 // もしくは、
 json["prefecture"] = "Tokyo";
 
-// 以下は。
-
-undefined になる。
-
-二段階の定義はできない。
-
-
+// 以下は。undefined になる。二段階の定義はできない。
 //// json.prefecture.area = "Shibuya";
 ```
 
@@ -280,8 +286,6 @@ class StaffParser {
     // ID
     if (criteria.id) {
       // JSONが作成される。
-
-
       json.id = _.trim(criteria.id);
     }
 

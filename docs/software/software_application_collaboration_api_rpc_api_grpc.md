@@ -84,7 +84,11 @@ service Notification {
 
 #### ▼ Client Streaming RPC（クライアントストリーミングRPC）
 
-クライアントが複数個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。クライアントからのリクエストのデータサイズが大きくなる場合（例：アップロードサービス）に使用する。
+クライアントが複数個のリクエストを送信すると、サーバーは```1```個のレスポンスを返信する。
+
+クライアントからのリクエストのデータサイズが大きくなる場合（例：アップロードサービス）に使用する。
+
+
 
 > ℹ️ 参考：https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
 
@@ -98,7 +102,13 @@ service Upload {
 
 #### ▼ Bidirectional Streaming RPC（双方向ストリーミングRPC）
 
-クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。また、双方向にリクエストを送信できる。クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
+クライアントが複数個のリクエストを送信すると、サーバーは複数個のレスポンスを返信する。
+
+また、双方向にリクエストを送信できる。
+
+クライアントとサーバーが互いにリクエストを送信する場合（例：チャット、オンラインゲーム）に使用する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -111,22 +121,16 @@ service Chat {
   rpc Chat (stream ChatRequest) returns (stream ChatResponse) {
     
     // クライアントからのリクエストを受信する。
-
-
     in, err := stream.Recv()
         
     ...
     
     // クライアントにリクエストを送信する。
-
-
     stream.Send(message);
     
     ...
 
     // リクエストを終了する。
-
-
     err = stream.CloseSend()
   }
 }
@@ -139,8 +143,6 @@ service Chat {
 ### アプリとプロトコルバッファーを異なるリポジトリで管理（推奨）
 
 各マイクロサービスの```.proto```ファイル、RPC-API仕様書、```.pb.*```ファイル、を同じリポジトリで管理する。
-
-
 
 > ℹ️ 参考：
 >
@@ -348,11 +350,7 @@ $ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
 
 ### RPC-API仕様書
 
-gRPCにおけるAPI仕様書である。
-
-仕様の実装である```.proto```ファイルを使用して、RPC-API仕様書を作成できる。
-
-
+gRPCにおけるAPI仕様書である。仕様の実装である```.proto```ファイルを使用して、RPC-API仕様書を作成できる。
 
 ```bash
 $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
@@ -386,8 +384,6 @@ import (
 
 	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
 
-
-
 	"google.golang.org/grpc"
 )
 
@@ -404,8 +400,6 @@ func (s *Server) SayHello (ctx context.Context, in *pb.Message) (*Message, error
 func main() {
 
 	// goサーバーで待ち受けるポート番号を設定する。
-
-
 	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
@@ -413,21 +407,13 @@ func main() {
 	}
 
 	// gRPCサーバーを作成する。
-
-
 	grpcServer := grpc.NewServer()
 
 	// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。
-
-
 	// goサーバーがリモートプロシージャーコールを受信できるようになる。
-
-
 	pb.RegisterFooServiceServer(grpcServer, &Server{})
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
-
-
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
@@ -456,15 +442,11 @@ import (
 	"google.golang.org/grpc"
 
 	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
-
-
 )
 
 func main() {
 
 	// gRPCコネクションを作成する。
-
-
 	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
 
 	if err != nil {
@@ -474,13 +456,9 @@ func main() {
 	defer conn.Close()
 
 	// gRPCサーバーとして、goサーバーを作成する。
-
-
 	c := pb.NewFooServiceClient(conn)
 
 	// goサーバーをリモートプロシージャーコールする。
-
-
 	response, err := c.SayHello(context.Background(), &pb.Message{Body: "Hello From Client!"})
 
 	if err != nil {
@@ -488,8 +466,6 @@ func main() {
 	}
 
 	// goサーバーからの返却を確認する。
-
-
 	log.Printf("Response from server: %s", response.Body)
 }
 ```
@@ -512,8 +488,6 @@ func main() {
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
-
-
 syntax = "proto3";
 
 import "google/api/annotations.proto";
@@ -522,21 +496,13 @@ import "google/api/annotations.proto";
 package foo;
 
 // クライアント側からのリモートプロシージャーコール時に渡す引数を定義する。
-
-
-// フィールドのタグを1としている。
-
-メッセージ内でユニークにする必要があり、フィールドが増えれば別の数字を割り当てる。
-
-
+// フィールドのタグを1としている。メッセージ内でユニークにする必要があり、フィールドが増えれば別の数字を割り当てる。
 message Message {
   string body = 1;
 }
 
 // 単項RPC
 // クライアント側からリモートプロシージャーコールされる関数を定義する。
-
-
 service FooService {
   rpc SayHello(Message) returns (Message) {
     // エンドポイント

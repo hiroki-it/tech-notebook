@@ -114,14 +114,10 @@ const asyncFunc = (param, callback) => {
   setTimeout(() => {
     
     // getDataメソッドは、数値を渡すとdataを取得してくれると仮定します。
-
-
     const  data = getData(param);
     const  err = data.getError();
       
     // 第二引数のコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行される。
-
-
     callback(err, data);
   }, 0);
 }
@@ -129,8 +125,6 @@ const asyncFunc = (param, callback) => {
 const test = 1
 
 // asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。
-
-
 // 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる
 asyncFunc(test, (err, data) => {
   if (err) {
@@ -289,14 +283,10 @@ console.log(foo); // ERROR
 
 また、```try-catch```構文では変数への代入が保証されていないため、```let```を使用して、あらかじめ初期化しておく必要がある。
 
-
-
 ```javascript
 const asyncFunc = async () => {
     
     // 初期化するとundefinedになる。
-
-
     let response;
     
     try {
@@ -330,8 +320,6 @@ if (true) {
 }
 
 // ブロック内のvarにアクセスできる。
-
-
 console.log(foo); // foo
 ```
 
@@ -567,6 +555,8 @@ console.log(...array);
 
 配列/オブジェクト（連想配列）を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。
 
+
+
 #### ▼ 配列の場合
 
 ```javascript
@@ -617,8 +607,6 @@ const array = ["foo", "bar", "baz"];
 for (const [key, value] of array.entries()) {
 
     // キー名が偶数の組をスキップする。
-
-
     if(!(key % 2 == 0)){
         continue;
     }
@@ -642,6 +630,8 @@ for (const [key, value] of array.entries()) {
 
 PHPにも、```forEach```関数と同様に配列に対してコールバック関数を適用する関数（```find```、```fliter```、```map```、```reduce```、```some```）があり、用途に合わせて使い分ける。
 
+
+
 > ℹ️ 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
 ちなみにPHPにも、```forEach```関数と同じような使い方をする```array_walk```関数がある。
@@ -656,8 +646,6 @@ const array = ["foo", "bar", "baz"];
 array.forEach((value, key) => {
     
     // キーが偶数の組をスキップする。
-
-
     if(!(key % 2 == 0)){
         return;
     }

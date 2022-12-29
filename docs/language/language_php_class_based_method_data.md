@@ -18,6 +18,8 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 
 本資料の以降では、大きく、操作（メソッド）とデータ（プロパティ）に分けて、説明していく。
 
+
+
 ### メソッド
 
 #### ▼ メソッドとは
@@ -36,8 +38,6 @@ title: 【IT技術の知見】メソッド/データ＠PHP
 class Foo
 {
     // オブジェクトはデータを保持する。
-
-
     private $data;
   
     public function data()
@@ -270,7 +270,13 @@ foo($data);
 
 #### ▼ ```static```とは
 
-別ファイルでのメソッドの呼び出しにはインスタンス化が必要である。しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。データ値は使用せず（静的）、引数の値のみを使用して処理を行うメソッドに対して使用する。
+別ファイルでのメソッドの呼び出しにはインスタンス化が必要である。
+
+しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。
+
+データ値は使用せず（静的）、引数の値のみを使用して処理を行うメソッドに対して使用する。
+
+
 
 **＊実装例＊**
 
@@ -280,8 +286,6 @@ foo($data);
 class Foo
 {
     // 受け取ったOrderエンティティから値を取り出すのみで、データ値は呼び出していない。
-
-
     public static function computeFooFee(Entity $order): Money
     {
         return new Money($order->fooFee);
@@ -341,8 +345,6 @@ class ABC {
     public function property()
     {
         // 単なるGetterではなく、例外処理も加える。
-
-
         if(!isset($this->property)){
             throw new ErrorException("データに値がセットされていません。");
         }
@@ -458,7 +460,15 @@ ValueObjectは、イミュータブルのため、```__construct```メソッド�
 
 ### マジックメソッド（Getter系）
 
-オブジェクトに対して特定の操作が行われた時に自動的にコールされる特殊なメソッドのこと。自動的に呼び出される仕組みは謎。共通の処理を行うGetter（例：値を取得するだけのGetterなど）を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。
+オブジェクトに対して特定の操作が行われた時に自動的にコールされる特殊なメソッドのこと。
+
+自動的に呼び出される仕組みは謎。
+
+共通の処理を行うGetter（例：値を取得するだけのGetterなど）を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。
+
+PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。
+
+
 
 #### ▼ ```__get```メソッド
 
@@ -486,15 +496,11 @@ class Foo
 }
 
 // 存在しないデータを取得。
-
-
 $foo = new Foo();
 $foo->foo;
 
 // 結果
 // fooデータは存在しないため、値を呼び出せません。
-
-
 ```
 
 #### ▼ ```__call```メソッド
@@ -511,7 +517,15 @@ $foo->foo;
 
 ### マジックメソッド（Setter系）
 
-定義されていない静的メソッドや、アクセス権のない静的メソッドを取得しようとした時に、代わりに呼び出される。自動的にコールされる仕組みは謎。共通の処理を行うSetter（例：値を設定するだけのSetterなど）を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。
+定義されていない静的メソッドや、アクセス権のない静的メソッドを取得しようとした時に、代わりに呼び出される。
+
+自動的にコールされる仕組みは謎。
+
+共通の処理を行うSetter（例：値を設定するだけのSetterなど）を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。
+
+PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。
+
+
 
 #### ▼ ```__set```メソッド
 
@@ -549,15 +563,11 @@ class Foo {
 }
 
 // 存在しないデータに値をセット。
-
-
 $foo = new Foo();
 $foo->bar = "bar";
 
 // 結果
 // barデータは存在しないため、barを設定できません。
-
-
 ```
 
 #### ▼ マジックメソッドの```__construct```メソッド
@@ -805,8 +815,6 @@ $ObjD = $ObjC->objD();
 $D = objB()->objC()->objC();
 
 // $D には ObjD が格納されている。
-
-
 ```
 
 #### ▼ Recursive call：再帰的プログラム
@@ -856,15 +864,11 @@ class Foo
     public function quickSort(array $array): array
     {
         // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
-
-
         if (count($array) <= 1) {
             return $array;
         }
 
         // 一番最初の値をPivotとする。
-
-
         $pivot = array_shift($array);
 
         // グループを定義
@@ -885,38 +889,26 @@ class Foo
         }
 
         // 処理の周回ごとに、結果の配列を結合。
-
-
         return array_merge
         (
         // 左のグループを再帰的にクイックソート。
-
-
             quickSort($left),
 
             // Pivotを結果に組み込む。
-
-
             [$pivot],
 
             // 左のグループを再帰的にクイックソート。
-
-
             quickSort($right)
         );
     }
 }
 
 // 実際に使用してみる。
-
-
 $array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
 $result = quickSort($array);
 var_dump($result);
 
 // 昇順に並び替えられている。
-
-
 // 1, 2, 3, 4, 5, 6, 7, 8 
 ```
 
@@ -957,8 +949,6 @@ class Foo
 $foo = new Foo();
 $foo->returnMethod(); // returnMethod()です。
 // 処理は続く。
-
-
 ```
 
 #### ▼ ```exit;```
@@ -981,8 +971,6 @@ class Foo
 $foo = new Foo();
 $foo->exitMethod(); // exitMethod()です。
 // ここで、ソフトウェア全体の処理が完了する。
-
-
 ```
 
 <br>
@@ -1017,8 +1005,6 @@ class Foo
     {
         for ($i = 1; $i <= 3; $i++) {
             // yield を返却した後、$i の値が維持される。
-
-
             yield $i;
         }
     }
@@ -1059,8 +1045,6 @@ $dispatcher = new Dispatcher;
 $name = "foo";
 
 // 名前に紐付ける関数を定義。
-
-
 $listener = function() use ($param){
     // 何らかの処理
 };
@@ -1068,11 +1052,7 @@ $listener = function() use ($param){
 // 名前と関数の登録.
 $dispatcher->addListener($name, $listener);
 
-// 文字列からメソッドをコール。
-
-ついでに、引数を渡す。
-
-
+// 文字列からメソッドをコール。ついでに、引数を渡す。
 $dispatcher->dispatch("foo", "test");
 ```
 
@@ -1157,14 +1137,10 @@ class ResultCacher
         if (!isset($this->resultCollection[$funcName])) {
 
             // メソッドの返却値をCollectionに設定。
-
-
             $this->resultCollection[$funcName] = $this->dispatch($funcName);
         }
 
         // 返却値が設定されていた場合,そのまま使用する。
-
-
         return $this->resultCollection[$funcName];
     }
 
@@ -1216,16 +1192,12 @@ class Item
 $item = new Item;
 
 // 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。
-
-
 // use()に、親メソッド（$optionName）のスコープの$itemを渡す。
 $optionName = function () use ($item) {
     $item->optionName();
 };
 
 // function()には引数が設定されていないため、コール時に引数は不要。
-
-
 echo $optionName;
 
 // 出力結果
@@ -1246,19 +1218,13 @@ class Item
 $item = new Item;
 
 // 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。
-
-
 // 親メソッド（$optionName）のスコープの$itemを、use()に渡す。
 // $paramは、コール時に使用する変数。
-
-
 $optionName = function ($para) use ($item) {
     $item->optionName() . $para;
 };
 
 // コール時に、$paramをfunction()に渡す。
-
-
 echo $optionName("BC");
 
 // 出力結果
@@ -1285,26 +1251,16 @@ class Option
 $item = new Item;
 
 // 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。
-
-
 // use()に、親メソッドのスコープの$itemを渡す。
-
-
 // $paramは、コール時に使用する変数。
-
-
 $option = new Option;
 
 // データの値に無名関数を格納する。
-
-
 $option->name = function ($para) use ($item) {
     $item->optionName() . $para;
 };
 
 // コール時に、$paramをfunction()に渡す。
-
-
 echo $option->name("BC");
 
 // 出力結果
@@ -1335,24 +1291,14 @@ $item = new Item;
 $param = "BC";
 
 // use()に、親メソッドのスコープの$itemを渡す。
-
-
 // 無名関数を定義し、同時にcall_user_func()で即コールする。
-
-
 // $paramは、コール時に使用する変数。
-
-
 $optionName = call_user_func(function ($param) use ($item) {
     $item->optionName() . $param;
 });
 
 // $paramはすでに即コール時に渡されている。
-
-
 // これはコールではなく、即コール時に格納された返却値の出力。
-
-
 echo $optionName;
 
 // 出力結果
@@ -1407,8 +1353,6 @@ $foo->test("callbackMethod");
 
 // 出力結果
 // 出力に成功しました。
-
-
 ```
 
 ```php
@@ -1449,8 +1393,6 @@ $foo->higherOrder("第一引数", "callbackMethod");
 
 // 出力結果
 // 第一引数の出力に成功しました。
-
-
 ```
 
 #### ▼ 無名関数を使用する場合
@@ -1480,14 +1422,8 @@ class Foo
 
 $foo = new Foo;
 
-// 第二引数の無名関数。
-
-関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。
-
-
+// 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。
 // コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。
-
-
 // 親メソッドのスコープで定義されている変数を引数として渡す。（普段よくやっている値渡しと同じ）
 $foo->higherOrder($parentVar, function () use ($parentVar) {
     return $parentVar . "の出力に成功しました。";
@@ -1495,8 +1431,6 @@ $foo->higherOrder($parentVar, function () use ($parentVar) {
 
 // 出力結果
 // 親メソッドのスコープの変数の出力に成功しました。
-
-
 ```
 
 <br>
@@ -1531,30 +1465,20 @@ class Foo
         }
 
         // 自身が持つ配列型のデータを加工し、再格納する。
-
-
         $properties = [];
         foreach ($this->properties as $property) {
 
             // 引数の無名関数によって、データに対する加工方法が異なる。
-
-
             // 例えば、判定でtrueのもののみを返すメソッドを渡すと、自データを絞り込むような処理を行える。
-
-
             $returned = call_user_func($property, $callback);
             if ($returned) {
 
                 // 再格納。
-
-
                 $properties[] = $returned;
             }
         }
 
         // 他のデータは静的に扱ったうえで、自身を返す。
-
-
         return new static($properties);
     }
 }
@@ -1764,7 +1688,9 @@ echo 'これは{$fruit}です。'; // これは、{$fruit}です。
 
 #### ▼ ダブルクオーテーションによる変数展開
 
-変数の前後に半角スペースを置いた場合にのみ、変数は展開される。（※半角スペースがないとエラーになる）
+変数の前後に半角スペースを置いた場合にのみ、変数は展開される。
+
+（※半角スペースがないとエラーになる）
 
 ```php
 <?php
@@ -1800,6 +1726,8 @@ echo "これは{$fruit}です。"; // これは、リンゴです。
 #### ▼ 参照渡し
 
 『参照渡し』とは、変数に代入した値の参照先（メモリアドレス）を渡すこと。
+
+
 
 ```php
 <?php
@@ -1870,7 +1798,11 @@ echo $b; // 2
 
 #### ▼ php://stdin
 
-stdin：standard in（標準入力）を意味する。PHPのプロセスが、標準入力に対して、読み出し処理を送信できるようになる。
+stdin：standard in（標準入力）を意味する。
+
+PHPのプロセスが、標準入力に対して、読み出し処理を送信できるようになる。
+
+
 
 ```php
 <?php
@@ -1881,7 +1813,11 @@ $stdin = fopen("php://stdin", "r");
 
 #### ▼ php://stdout
 
-stdout：standard out（標準出力）を意味する。PHPのプロセスが、標準出力に対して、書き込み処理を送信できるようになる。
+stdout：standard out（標準出力）を意味する。
+
+PHPのプロセスが、標準出力に対して、書き込み処理を送信できるようになる。
+
+
 
 ```php
 <?php
@@ -1893,7 +1829,11 @@ fwrite($stderr, "ログです。");
 
 #### ▼ php://stderr
 
-stderr：standard error（標準出力エラー）を意味する。PHPのプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。
+stderr：standard error（標準出力エラー）を意味する。
+
+PHPのプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。
+
+
 
 ```php
 <?php
@@ -1926,8 +1866,6 @@ $array = [];
 $json = json_encode($array);
 
 // fopen()、fwrite()、fclose()を実行できる。
-
-
 file_put_contents(
     "data.json",
     $json

@@ -299,8 +299,6 @@ $ docker inspect <起動中コンテナ名> | grep IPAddress
 
 json-fileドライバーを使用している時に、ログファイルの出力先を確認する。
 
-
-
 ```bash
  $ docker inspect <起動中コンテナ名> | grep LogPath
  
@@ -323,11 +321,7 @@ $ docker logs -f <コンテナ名>
 
 **＊例＊**
 
-指定した行数だけ、ログを取得する。
-
-ロギングドライバーが```json-file```の場合のみ有効。
-
-
+指定した行数だけ、ログを取得する。ロギングドライバーが```json-file```の場合のみ有効。
 
 ```bash
 $ docker logs --follow=true --tail=500 <コンテナ名>

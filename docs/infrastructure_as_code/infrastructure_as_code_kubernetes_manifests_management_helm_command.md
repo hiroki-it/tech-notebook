@@ -249,7 +249,15 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブ（```.tgz```形式ファイル）を作成する。または、すでにアーカイブが存在する場合は更新する。アーカイブ名にはバージョンが設定される。複数のチャートを指定できる。
+チャートからチャートアーカイブ（```.tgz```形式ファイル）を作成する。
+
+または、すでにアーカイブが存在する場合は更新する。
+
+アーカイブ名にはバージョンが設定される。
+
+複数のチャートを指定できる。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/helm/helm_package/
 
@@ -262,6 +270,8 @@ Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 #### ▼ -d
 
 チャートアーカイブ（```.tgz```形式ファイル）の作成先のディレクトリを指定しつつ、```helm package```コマンドを実行する。
+
+
 
 ```bash
 $ helm package <チャートへのパス> -d <作成するチャートアーカイブのパス>
@@ -311,7 +321,11 @@ $ helm plugin uninstall secrets
 
 #### ▼ pullとは
 
-指定したチャートリポジトリからチャートをチャートアーカイブ（```.tgz```形式ファイル）でプルする。チャートアーカイブは、チャートに解凍した上で使用した方がよい。
+指定したチャートリポジトリからチャートをチャートアーカイブ（```.tgz```形式ファイル）でプルする。
+
+チャートアーカイブは、チャートに解凍した上で使用した方がよい。
+
+
 
 #### ▼ -d
 
@@ -350,7 +364,11 @@ $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 
 #### ▼ pushとは
 
-チャートリポジトリにチャートをプッシュする。プッシュする前にチャートをチャートアーカイブ（```.tgz```形式ファイル）に圧縮しておく必要がある。
+チャートリポジトリにチャートをプッシュする。
+
+プッシュする前にチャートをチャートアーカイブ（```.tgz```形式ファイル）に圧縮しておく必要がある。
+
+
 
 ```bash
 $ helm push <チャートアーカイブへのパス> <チャートリポジトリURL>
@@ -759,6 +777,8 @@ $ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
 
 ```helm```コマンドで確認できる情報（例：インストールされているHelmチャート、リビジョン履歴、など）をダッシュボードで表示する。
 
+
+
 > ℹ️ 参考：https://github.com/komodorio/helm-dashboard
 
 <br>
@@ -788,7 +808,11 @@ $ helm dashboard
 
 ### helm-diffとは
 
-```helm get```コマンドによる最新のリリースによるマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。etcd上のマニフェストと比較しているわけでないため、他の方法（例：```kubectl apply```コマンド）で送信されたマニフェストを検知できないことに注意する。
+```helm get```コマンドによる最新のリリースによるマニフェストと、```helm template```コマンドによる現在のチャートによるマニフェストを比較する。
+
+etcd上のマニフェストと比較しているわけでないため、他の方法（例：```kubectl apply```コマンド）で送信されたマニフェストを検知できないことに注意する。
+
+
 
 ```bash
 $ helm diff
@@ -834,8 +858,6 @@ $ helm plugin install https://github.com/jkroepke/helm-secrets --version 1.0.0
 
 helm-secretsの内部で使用する暗号化ツールのこと。
 
-
-
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
 
 #### ▼ 使用可能なバックエンド例
@@ -868,8 +890,6 @@ helm-secretsには、zendesk製（2022/11/29時点でメンテナンスされて
 
 sopsの```secrets```ファイルを指定する時に```secrets://```を使用すると、サブコマンドの```secrets```が不要になる。
 
-
-
 > ℹ️ 参考：https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
 ```bash
@@ -882,7 +902,13 @@ $ helm template ./foo-chart -f secrets://secrets.yaml
 
 #### ▼ -f
 
-暗号化された```values```ファイル（```secrets```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。 なおこの時、```values```ファイル側には```secrets```ファイルの値を設定しておく必要はない。
+暗号化された```values```ファイル（```secrets```ファイル）と、平文の```values```ファイルを使用して、```helm```コマンドを実行する。
+
+これにより、暗号化された値を```helm```コマンドの実行時のみ復号化し、マニフェストに出力できる。
+
+ なおこの時、```values```ファイル側には```secrets```ファイルの値を設定しておく必要はない。
+
+
 
 > ℹ️ 参考：https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/
 
@@ -927,7 +953,13 @@ data:
   foo: {{ .Values.foo | b64enc }}
 ```
 
-この時、```helm secrets```コマンドで```secrets```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。結果的に、base64方式でエンコードされ、マニフェストが作成される。
+この時、```helm secrets```コマンドで```secrets```ファイルを指定すると、復号化した上で```.Values```に出力してくれる。
+
+ArgoCDが使用するsopsのバージョンは、暗号化時に使用したsopsのバージョン（```sops```キーの値）に合わせた方が良い。
+
+結果的に、base64方式でエンコードされ、マニフェストが作成される。
+
+
 
 ```bash
 $ helm secrets template ./foo-chart -f secrets.yaml -f values.yaml

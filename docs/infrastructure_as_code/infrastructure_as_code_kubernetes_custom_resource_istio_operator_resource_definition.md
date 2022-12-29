@@ -90,8 +90,6 @@ $ helm install istio-operator manifests/charts/istio-operator -n istio-operator 
 
 リソース名は```istio-operator```とする必要がある。
 
-
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -120,7 +118,13 @@ IstioOperator管理でIstioリソースを作成する。
 
 #### ▼ <component名>.k8s
 
-各componentが共通して持つ設定項目である。各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+各componentが共通して持つ設定項目である。
+
+各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
+
+ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -178,8 +182,6 @@ spec:
 #### ▼ cni
 
 istio-cniコンポーネントのオプションを設定する。
-
-
 
 > ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
@@ -265,6 +267,8 @@ spec:
 ```
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
+
+
 
 > ℹ️ 参考：
 >
@@ -417,11 +421,7 @@ spec:
 
 #### ▼ meshConfigとは
 
-全ての```istio-proxy```コンテナに共通する値を設定する。
-
-ここではEnvoyを使用した場合を説明する。
-
-
+全ての```istio-proxy```コンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
@@ -446,8 +446,6 @@ spec:
 
 全ての```istio-proxy```コンテナに関して、アクセスログの出力先を設定する。
 
-
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -461,11 +459,7 @@ spec:
 
 #### ▼ defaultConfig
 
-```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。
-
-これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
-
-
+```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
@@ -487,8 +481,6 @@ spec:
 
 全ての```istio-proxy```コンテナに関して、分散トレースの収集を有効化するか否かを設定する。
 
-
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -504,8 +496,6 @@ spec:
 
 istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するか否かを設定する。
 
-
-
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 
 ```yaml
@@ -520,8 +510,6 @@ spec:
 ```
 
 オプションを有効化すると、```istio-proxy```コンテナの```postStart```キーに、```pilot-agent -wait```コマンドが挿入される。
-
-
 
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
 
@@ -545,11 +533,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全ての```istio-proxy```コンテナに関して、使用するGatewayの```metadata.labels.istio```キーの値を設定する。
-
-IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
-
-
+全ての```istio-proxy```コンテナに関して、使用するGatewayの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -564,11 +548,7 @@ spec:
 
 #### ▼ ingressService
 
-全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キーの値を設定する。
-
-IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
-
-
+全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -599,8 +579,6 @@ spec:
 #### ▼ proxyListenPort
 
 全ての```istio-proxy```コンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
-
-
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -746,8 +724,6 @@ spec:
 
 ```values```ファイルの```istio-egressgateway```の項目を上書きする。
 
-
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -774,8 +750,6 @@ spec:
 #### ▼ gateways.istio-ingressgateway
 
 ```values```ファイルの```istio-ingressgateway```の項目を上書きする。
-
-
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -859,8 +833,6 @@ spec:
 #### ▼ sidecarInjectorWebhook
 
 ```istio-proxy```コンテナごとのオプション値を設定する。
-
-
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 

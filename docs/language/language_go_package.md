@@ -217,11 +217,7 @@ PHPにおける```composer.lock```ファイルに相当する。
 
 ### client-goとは
 
-Kubernetesのkube-apiserverと通信できるパッケージ。
-
-使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
-
-
+Kubernetesのkube-apiserverと通信できるパッケージ。使用できるAPIの型を拡張するために、```k8s.io/api```パッケージや```k8s.io/apimachinery```パッケージも必要になる。
 
 > ℹ️ 参考：https://zenn.dev/castaneai/articles/k8s-go-client-first-step
 
@@ -231,21 +227,13 @@ Kubernetesのkube-apiserverと通信できるパッケージ。
 
 kube-apiserverの認証/認可を通過するために、```~/.kube/config```ファイルをコンテナにマウントする必要がある。
 
-
-
 > ℹ️ 参考：https://nishipy.com/archives/1363
 
 <br>
 
 ### client-goパッケージとkube-apiserverのバージョン整合性
 
-```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。
-
-例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。
-
-kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
-
-
+```kubectl```コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。例えば、client-goパッケージの```0.20.4```は、kube-apiserverの```v1.20.4```に対応している。kube-apiserverとクライアント側のバージョン差は、前方/後方の```1```個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。
 
 > ℹ️ 参考：https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 
@@ -270,11 +258,7 @@ Go製のORMである。
 ```go
 func NewDB() (*gorm.DB, error) {
     
-    // 接続情報。
-
-sprintfメソッドを使用すると、可読性が高い。
-
-
+    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("DB_USER"),
@@ -285,8 +269,6 @@ sprintfメソッドを使用すると、可読性が高い。
 	)
 
     // DBに接続します。
-
-
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
@@ -305,8 +287,6 @@ func Close(db *gorm.DB) error {
 	}
 
     // DBとの接続を切断します。
-
-
 	err = sqlDb.Close()
 
 	if err != nil {
@@ -360,8 +340,6 @@ type User struct {
 ```go
 type User struct {
 	ID   string // プライマリーキーとして使用される。
-
-
 	Name string
 }
 ```
@@ -369,8 +347,6 @@ type User struct {
 ```go
 type User struct {
 	UserID string `gorm:"primaryKey"` // プライマリーキーとして使用される。
-
-
 	Name   string
 }
 ```
@@ -422,8 +398,6 @@ db.Where("age = 20").Find(&user)
 
 ```go
 // テーブル名はデフォルトでは『users』になる。
-
-
 type User struct {
 	ID      int
 	Deleted gorm.DeletedAt
@@ -431,8 +405,6 @@ type User struct {
 }
 
 // テーブル名を『foo』になる。
-
-
 func (User) TableName() string {
 	return "foo"
 }
@@ -755,8 +727,6 @@ type FooSuite struct {
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
 	// モックを作成する。
-
-
 	suite.fooMock = &FooMock{}
 }
 
@@ -787,8 +757,6 @@ func (suite *FooSuite) TestMethod() {
 	suite.T().Helper()
 
 	// 前処理で作成したモックを使用する。
-
-
 	fooMock := suite.fooMock
 
 	// 以降にテスト処理
@@ -827,8 +795,6 @@ func NewValidator() *Validator {
 }
 
 // Validate バリデーションを実行します。
-
-
 func (v *FoobarbazValidator) Validate() map[string]string {
 
 	err := validator.New().Struct(v)
@@ -839,8 +805,6 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Field() {
 			// フィールドごとにマップ形式でバリデーションメッセージを構成します。
-
-
 			case "foo":
 				errorMessages["foo"] = v.stringValidation(err)
 				errorMessages["foo"] = v.requiredValidation(err)
@@ -857,15 +821,11 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 }
 
 // stringValidation string型指定のメッセージを返却します。
-
-
 func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }
 
 // requiredValidation 必須メッセージを返却します。
-
-
 func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は必須です", err.Field())
 }
@@ -886,8 +846,6 @@ func main() {
 	v := NewFoobarbazValidator()
 
 	// JSONを構造体にマッピングします。
-
-
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
@@ -897,21 +855,15 @@ func main() {
 	}
 
 	// バリデーションを実行します。
-
-
 	errorMessages := v.Validate()
 
 	if len(errorMessages) > 0 {
 		// マップをJSONに変換します。
-
-
 		byteJson, _ := json.Marshal(errorMessages)
 		fmt.Printf("%#v\n", byteJson)
 	}
 
 	// エンコード結果を出力します。
-
-
 	fmt.Println("データに問題はありません。
 
 ")

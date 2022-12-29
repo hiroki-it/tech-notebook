@@ -132,11 +132,7 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 
 #### ▼ 開発環境用```php.ini```ファイル例
 
-あらかじめ用意されている```php.ini-development```ファイルを参考に設定する。
-
-元の値をコメントアウトで示す。
-
-
+あらかじめ用意されている```php.ini-development```ファイルを参考に設定する。元の値をコメントアウトで示す。
 
 > ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
@@ -187,11 +183,7 @@ mbstring.language = Japanese
 
 #### ▼ 本番環境用```php.ini```ファイル例
 
-あらかじめ用意されている```php.ini-production```ファイルを参考に設定する。
-
-元の値をコメントアウトで示す。
-
-
+あらかじめ用意されている```php.ini-production```ファイルを参考に設定する。元の値をコメントアウトで示す。
 
 > ℹ️ 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 

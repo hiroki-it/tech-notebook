@@ -165,7 +165,11 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 #### ▼ UNIX系OS
 
-UNIXを源流として派生したOS。現在では主に、Linux系統（緑色）、BSD系統（黄色）、SystemV系統（青色）の```3```個に分けられる。
+UNIXを源流として派生したOS。
+
+現在では主に、Linux系統（緑色）、BSD系統（黄色）、SystemV系統（青色）の```3```個に分けられる。
+
+
 
 ※ちなみに、MacOSはBSD系統
 
@@ -173,11 +177,7 @@ UNIXを源流として派生したOS。現在では主に、Linux系統（緑色
 
 #### ▼ WindowsOS
 
-MS-DOSを源流として派生したOS。
-
-今では、全ての派生がWindows 10に集約された。
-
-
+MS-DOSを源流として派生したOS。今では、全ての派生がWindows 10に集約された。
 
 ![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/os_windows_history.png)
 
@@ -198,6 +198,8 @@ MS-DOSを源流として派生したOS。
 #### ▼ Linux系統とは
 
 UNIXから分岐したLinuxは、加えて3系統（Debian、RedHat、Slackware）に分岐する。
+
+
 
 > ℹ️ 参考：http://officemiyajima.com/index.php?What%20is%20Linux
 
@@ -242,6 +244,8 @@ Slackwareなど
 
 UNIXから分岐したBSDは、加えて複数の系統（例：MacOSなど）に分岐する。
 
+
+
 <br>
 
 ## 05. デバイスドライバー
@@ -256,7 +260,11 @@ UNIXから分岐したBSDは、加えて複数の系統（例：MacOSなど）�
 
 ### Firmwareとは
 
-ソフトウェア（ミドルウェア+基本ソフトウェア）とハードウェアの間の段階にあるソフトウェア。ROMに組み込まれている。
+ソフトウェア（ミドルウェア+基本ソフトウェア）とハードウェアの間の段階にあるソフトウェア。
+
+ROMに組み込まれている。
+
+
 
 ### BIOS：Basic Input/Output System
 
