@@ -9,6 +9,8 @@ description: ツール＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,7 +27,11 @@ description: ツール＠AWSの知見を記録しています。
 
 #### ▼ 分散ロードテストとは
 
-ロードテストを実施できる。CloudFormationで作成でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
+ロードテストを実施できる。
+
+CloudFormationで作成でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
+
+
 
 > ℹ️ 参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 

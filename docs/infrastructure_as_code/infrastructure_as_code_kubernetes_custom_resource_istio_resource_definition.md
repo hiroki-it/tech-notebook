@@ -9,6 +9,8 @@ description: リソース定義＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,11 @@ description: リソース定義＠Istioの知見を記録しています。
 
 #### ▼ GCRから（設定済み）
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。
+
+チャートは、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
 
@@ -34,6 +40,8 @@ $ istioctl install --manifests=foo-chart
 #### ▼ GCRから（ユーザー定義）
 
 プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
@@ -79,6 +87,8 @@ $ helm install -n istio-system istiod istio/istiod
 
 IngressGatewayのインストールは必須ではない。
 
+
+
 ```bash
 # IngressGatewayのみ
 # gatewayチャート
@@ -92,6 +102,8 @@ $ helm install -n istio-system istio-ingressgateway istio/gateway
 ### Minikubeのセットアップ
 
 Istioによる種々のコンテナが稼働するために、MinikubeのNodeのCPUとメモリを最低サイズを以下の通りにする必要がある。
+
+
 
 ```bash
 $ minikube start --cpus=4 --memory=16384
@@ -187,6 +199,8 @@ apiVersion: networking.istio.io/v1beta1
 
 作成するIstioリソースを設定する。
 
+
+
 - DestinationRule
 - Gateway
 - VirtualService
@@ -196,6 +210,8 @@ apiVersion: networking.istio.io/v1beta1
 ### metadata
 
 Istioリソースの一意に識別するための情報を設定する。
+
+
 
 <br>
 
@@ -234,6 +250,8 @@ metadata:
 ```
 
 アプリケーション以外のNamespaceでは```disabled```値を設定することが多い。
+
+
 
 
 ```yaml
@@ -296,7 +314,11 @@ Deploymentの```spec.template```キーや、Podの```metadata```キーにて、`
 
 #### ▼ istio.io/rev
 
-IstoOperatorの```spec.revision```キーと同じ。特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+IstoOperatorの```spec.revision```キーと同じ。
+
+特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+
+
 
 **＊実装例＊**
 
@@ -342,6 +364,8 @@ spec:
 #### ▼ sidecar.istio.io/inject
 
 特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -441,11 +465,15 @@ spec:
 
 そのDestinationRuleを使用できるNamespaceを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
 全てのNamespaceで使用できるようにする。
+
+
 
 **＊実装例＊**
 
@@ -462,7 +490,11 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+
+DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+
+
 
 **＊実装例＊**
 
@@ -481,7 +513,11 @@ spec:
 
 ### spec.host
 
-インバウンド通信のルーティング元とするServiceの名前を設定する。これにより、Envoyは特定のServiceからのルーティングのみ受信するようになる。
+インバウンド通信のルーティング元とするServiceの名前を設定する。
+
+これにより、Envoyは特定のServiceからのルーティングのみ受信するようになる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
@@ -515,7 +551,11 @@ spec:
 
 **＊実装例＊**
 
-サブセットv1に対するインバウンド通信では、```version```キーの値が```v1```であるPodにルーティングする。```v2```も同様である。
+サブセットv1に対するインバウンド通信では、```version```キーの値が```v1```であるPodにルーティングする。
+
+```v2```も同様である。
+
+
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -539,7 +579,11 @@ spec:
 
 #### ▼ connectionPool
 
-Podの同時接続数の制限数を設定する。制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
+Podの同時接続数の制限数を設定する。
+
+制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する（サーキットブレイカー）。
+
+
 
 > ℹ️ 参考：
 >
@@ -568,6 +612,8 @@ spec:
 
 サーキットブレイカーを設定する。
 
+
+
 > ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=25
 
 **＊実装例＊**
@@ -591,6 +637,8 @@ spec:
 
 Podへのルーティング時に使用するロードバランシングアルゴリズムを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
 
 **＊実装例＊**
@@ -610,6 +658,8 @@ spec:
 #### ▼ portLevelSettings.loadBalancer
 
 Podのポート番号別のルーティングのロードバランシングアルゴリズムを設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
@@ -632,6 +682,8 @@ spec:
 
 Podのポート番号別ルーティングで使用するポート番号を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
 
 **＊実装例＊**
@@ -652,6 +704,8 @@ spec:
 #### ▼ tls.mode
 
 Podへのルーティング時に使用するHTTPSプロトコルのタイプを設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
@@ -691,6 +745,8 @@ spec:
 
 上書きしたい```envoy.yaml```ファイルの項目を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
 
 **＊実装例＊**
@@ -710,6 +766,8 @@ spec:
 
 上書きしたい```envoy.yaml```ファイルのCluster項目を設定する。
 
+
+
 **＊実装例＊**
 
 ```yaml
@@ -728,6 +786,8 @@ spec:
 #### ▼ listener
 
 上書きしたい```envoy.yaml```ファイルのListener項目を設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
 
@@ -752,6 +812,8 @@ spec:
 
 上書きしたい```envoy.yaml```ファイルの通信の方向を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 
 **＊実装例＊**
@@ -771,6 +833,8 @@ spec:
 #### ▼ patch
 
 ```envoy.yaml```ファイルの上書き方法と上書き内容を設定する。
+
+
 
 **＊実装例＊**
 
@@ -857,6 +921,8 @@ spec:
 
 Gatewayの適用対象のIngressGatewayに付与された```metadata.labels```キーを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
 **＊実装例＊**
@@ -880,6 +946,8 @@ spec:
 
 ポート名を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
@@ -898,7 +966,13 @@ spec:
 
 #### ▼ port.number
 
-インバウンド通信を待ち受けるポート番号を設定する。IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて```30000```番ポートとする。一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
+インバウンド通信を待ち受けるポート番号を設定する。
+
+IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて```30000```番ポートとする。
+
+一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -920,6 +994,8 @@ spec:
 
 受信するインバウンド通信のプロトコルを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
@@ -940,6 +1016,8 @@ spec:
 
 ServiceEntryで追加したサービスディスカバリーの宛先のポート番号を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 **＊実装例＊**
@@ -959,7 +1037,11 @@ spec:
 
 #### ▼ hosts
 
-Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。ワイルドカードを使用できる。
+Gatewayに紐づけれたVirtualServiceのドメイン名を設定する。
+
+ワイルドカードを使用できる。
+
+
 
 **＊実装例＊**
 
@@ -997,6 +1079,8 @@ spec:
 
 受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合、SSL/TLS証明書を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 **＊実装例＊**
@@ -1027,6 +1111,8 @@ spec:
 
 相互TLSのタイプを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
 | 項目       | 説明             |
@@ -1052,6 +1138,8 @@ spec:
 
 相互TLSを使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになる。
 
+
+
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
 ```
@@ -1065,6 +1153,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 #### ▼ hostsとは
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
+
+
 
 **＊実装例＊**
 
@@ -1085,6 +1175,8 @@ spec:
 #### ▼ portsとは
 
 コンフィグストレージに登録する宛先のポート番号を設定する。
+
+
 
 **＊実装例＊**
 
@@ -1111,6 +1203,8 @@ spec:
 
 コンフィグストレージに登録する宛先のIPアドレスの設定する。
 
+
+
 **＊実装例＊**
 
 ```yaml
@@ -1132,11 +1226,15 @@ spec:
 
 そのVirtualServiceを使用できるNamespaceを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```*```（アスタリスク）
 
 全てのNamespaceでのみ使用できるようにする。
+
+
 
 **＊実装例＊**
 
@@ -1153,7 +1251,11 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
+全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+
+VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
+
+
 
 **＊実装例＊**
 
@@ -1176,11 +1278,17 @@ spec:
 
 インバウンド通信をいずれのGatewayから受信するかを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ ```<Namespace名>/<Gateway名>```
 
-Gateway名とこれのNamespaceを設定する。VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
+Gateway名とこれのNamespaceを設定する。
+
+VirtualServiceとGatewayが同じNamespaceに属する場合は、Namespaceを省略できる。
+
+
 
 **＊実装例＊**
 
@@ -1198,6 +1306,8 @@ spec:
 #### ▼ mesh
 
 マイクロサービス間の通信を有効化するか否かを設定する。
+
+
 
 **＊実装例＊**
 
@@ -1218,7 +1328,11 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+
+ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -1228,6 +1342,8 @@ HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信�
 #### ▼ fault
 
 発生させるフォールトインジェクションを設定する。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/nutslove/istioru-men?slide=19
 
@@ -1252,6 +1368,8 @@ spec:
 
 受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
+
+
 **＊実装例＊**
 
 受信したインバウンド通信のうち、```x-foo```ヘッダーに```bar```が割り当てられたものだけにルールを適用する。
@@ -1271,6 +1389,8 @@ spec:
 ```
 
 受信したインバウンド通信のうち、URLの接頭辞が```/foo```のものだけにルールを適用する。
+
+
 
 > ℹ️ 参考：https://istiobyexample.dev/path-based-routing/
 
@@ -1333,6 +1453,8 @@ spec:
 
 受信したインバウンド通信でルーティング先のServiceのドメイン名（あるいはService名）を設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 **＊実装例＊**
@@ -1350,6 +1472,8 @@ spec:
 #### ▼ route.destination.port
 
 受信するインバウンド通信でルーティング先のポート番号を設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -1374,7 +1498,11 @@ spec:
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
 
-紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐づけたDestinationRuleのサブセットにルーティングされる。
+紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
+
+IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐づけたDestinationRuleのサブセットにルーティングされる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -1407,6 +1535,8 @@ spec:
 #### ▼ route.weight
 
 重み付けルーティングの割合を設定する。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
@@ -1443,6 +1573,8 @@ spec:
 
 TCP/IPのプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
 #### ▼ match
@@ -1465,6 +1597,8 @@ spec:
 
 ```spec.http```キーと同じ機能である。
 
+
+
 **＊実装例＊**
 
 ```yaml
@@ -1483,6 +1617,8 @@ spec:
 #### ▼ route.destination.port
 
 ```spec.http```キーと同じ機能である。
+
+
 
 **＊実装例＊**
 
@@ -1504,6 +1640,8 @@ spec:
 #### ▼ route.destination.subset
 
 ```spec.http```キーと同じ機能である。
+
+
 
 **＊実装例＊**
 

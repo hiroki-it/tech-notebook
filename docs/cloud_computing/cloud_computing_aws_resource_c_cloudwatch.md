@@ -9,6 +9,8 @@ description: CloudWatch＠Cで始まるAWSリソースの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 
@@ -21,6 +23,8 @@ description: CloudWatch＠Cで始まるAWSリソースの知見を記録して�
 AWSリソースで発生したメトリクスのデータポイントを収集する。
 
 
+
+
 <br>
 
 ### メトリクスの集約
@@ -30,6 +34,8 @@ AWSリソースで発生したメトリクスのデータポイントを収集�
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 
 CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ（例：ディメンション、名前空間）に集約できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -53,6 +59,8 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 CloudWatchメトリクス上では、各集約を以下の様に確認できる。
 
+
+
 > ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
@@ -65,9 +73,19 @@ CloudWatchメトリクス上では、各集約を以下の様に確認できる�
 
 異なるメトリクスを再集計し、パフォーマンスに関するメトリクスとして提供する。
 
+
+
 #### ▼ パフォーマンスインサイト
 
-RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスのデータポイントを収集する。特定の集約（例：個別のクエリ）で監視できるようになる。パラメーターグループの```performance_schema```を有効化する必要がある。対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
+RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスのデータポイントを収集する。
+
+特定の集約（例：個別のクエリ）で監視できるようになる。
+
+パラメーターグループの```performance_schema```を有効化する必要がある。
+
+対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：
 >
@@ -76,11 +94,21 @@ RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクス�
 
 #### ▼ Containerインサイト
 
-コンテナに関するAWSリソース（例：ECSクラスター/EKS Cluster、ECSサービス、ECSタスク、ECSコンテナ）のパフォーマンスに関するメトリクスのデータポイントを収集する。作成したメトリクスを特定の集約（例：個別のコンテナ）で扱えるになる。また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
+コンテナに関するAWSリソース（例：ECSクラスター/EKS Cluster、ECSサービス、ECSタスク、ECSコンテナ）のパフォーマンスに関するメトリクスのデータポイントを収集する。
+
+作成したメトリクスを特定の集約（例：個別のコンテナ）で扱えるになる。
+
+また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。
+
+ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
+
+
 
 #### ▼ Lambdaインサイト
 
 Lambdaのパフォーマンスに関するメトリクスのデータポイントを収集する。
+
+
 
 <br>
 
@@ -88,7 +116,11 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 ### CloudWatchログとは
 
-クラウドログサーバーとして働く。AWSリソースで作成されたログを収集できる。
+クラウドログサーバーとして働く。
+
+AWSリソースで作成されたログを収集できる。
+
+
 
 <br>
 
@@ -108,7 +140,11 @@ Lambdaのパフォーマンスに関するメトリクスのデータポイン�
 
 #### ▼ フィルターパターンとは
 
-ログ内で検知する文字列を設定する。大文字と小文字を区別するため、網羅的に設定する必要がある。
+ログ内で検知する文字列を設定する。
+
+大文字と小文字を区別するため、網羅的に設定する必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -137,7 +173,13 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 **＊例＊**
 
-『```ERROR:```』が含まれ、かつ『```MethodNotAllowedHttpException```』が含まれないログを検知する。OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。そのため、ここではOR条件を使用していない。
+『```ERROR:```』が含まれ、かつ『```MethodNotAllowedHttpException```』が含まれないログを検知する。
+
+OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。
+
+そのため、ここではOR条件を使用していない。
+
+
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
@@ -151,11 +193,21 @@ OR条件で大文字小文字を考慮し、『```<ログレベル> message```�
 
 #### ▼ CloudWatchログエージェントとは
 
-インスタンス内で稼働するデーモンのこと。インスタンス内のデータを収集し、CloudWatchログに対して送信する。執筆時点（2020/10/05）では非推奨で、cloudwatchエージェントへの設定の移行が推奨されている。
+インスタンス内で稼働するデーモンのこと。
+
+インスタンス内のデータを収集し、CloudWatchログに対して送信する。
+
+執筆時点（2020/10/05）では非推奨で、cloudwatchエージェントへの設定の移行が推奨されている。
+
+
 
 #### ▼ ```/var/awslogs/etc/awslogs.conf```ファイル
 
-CloudWatchログエージェントを設定する。OS、ミドルウェア、アプリケーションに分類して設定すると良い。
+CloudWatchログエージェントを設定する。
+
+OS、ミドルウェア、アプリケーションに分類して設定すると良い。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
@@ -216,6 +268,8 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 設定後、```awslogs```コマンドでプロセスを起動する。
 
+
+
 **＊例＊**
 
 ```bash
@@ -238,15 +292,21 @@ $ service awslogs start
 
 クエリを使用してログを抽出する。
 
+
+
 #### ▼ クエリ例
 
 汎用的なクエリを示す。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
 
 **＊例＊**
 
 小文字と大文字を区別せずに、Errorを含むログを検索する。
+
+
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -258,6 +318,8 @@ fields @timestamp, @message, @logStream
 **＊例＊**
 
 小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
+
+
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -273,7 +335,15 @@ fields @timestamp, @message, @logStream
 
 ### cloudwatchエージェントとは
 
-インスタンス系AWSリソース（EC2、ECS、EKS、Lambda）内で稼働するデーモンのこと。インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。多くの場合、インスタンス系リソースは基本的なメトリクスを収集するが、一部のメトリクス（例：EC2のメモリ使用率やディスク使用率）やログそのものを収集しない。cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。
+インスタンス系AWSリソース（EC2、ECS、EKS、Lambda）内で稼働するデーモンのこと。
+
+インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。
+
+多くの場合、インスタンス系リソースは基本的なメトリクスを収集するが、一部のメトリクス（例：EC2のメモリ使用率やディスク使用率）やログそのものを収集しない。
+
+cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -282,6 +352,8 @@ fields @timestamp, @message, @logStream
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/
 
 プロセスは、デーモン化しておくと良い。
+
+
 
 ```bash
 $ systemctl list-unit-files --type=service | grep amazon-cloudwatch-agent
@@ -354,6 +426,8 @@ cloudwatchエージェントのオプションを設定する。セットアッ�
 
 設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。
 
+
+
 ```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -a fetch-config \
@@ -363,6 +437,8 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 ```
 
 cloudwatchエージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。
+
+
 
 ```ini
 [Unit]
@@ -384,6 +460,8 @@ WantedBy=multi-user.target
 
 プロセスのステータスを確認する。
 
+
+
 ```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -m ec2 \
@@ -392,7 +470,13 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 
 #### ▼ ```agent```セクション
 
-cloudwatchエージェント全体を設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、デフォルト値が適用される。
+cloudwatchエージェント全体を設定する。
+
+ウィザードを使用した場合、このセクションの設定はスキップされる。
+
+実装しなかった場合、デフォルト値が適用される。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection
 
@@ -410,7 +494,13 @@ cloudwatchエージェント全体を設定する。ウィザードを使用し�
 
 #### ▼ ```metrics```セクション
 
-AWSリソースが標準で収集しないカスタムメトリクスのデータポイントの収集について設定する。ウィザードを使用した場合、このセクションの設定はスキップされる。実装しなかった場合、何も設定されない。
+AWSリソースが標準で収集しないカスタムメトリクスのデータポイントの収集について設定する。
+
+ウィザードを使用した場合、このセクションの設定はスキップされる。
+
+実装しなかった場合、何も設定されない。
+
+
 
 > ℹ️ 参考：
 >
@@ -479,6 +569,8 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 ログの収集について設定する。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection
 
 **＊実装例＊**
@@ -523,6 +615,8 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 
 cloudwatchエージェントのプロセスに関するログを出力する。
 
+
+
 ```bash
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 ```
@@ -530,6 +624,8 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 #### ▼ ```configuration-validation.log```ファイル
 
 cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。
+
+
 
 ```bash
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
@@ -543,11 +639,15 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
 EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐づける必要がある。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
 #### ▼ AWS外のサーバーの場合
 
 AWS外（オンプレミス、他のクラウドプロバイダー）のサーバーでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐づける必要がある。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 
@@ -584,5 +684,7 @@ AWS外（オンプレミス、他のクラウドプロバイダー）のサー�
 ### CloudWatchシンセティックとは
 
 合成監視を行えるようになる。
+
+
 
 <br>

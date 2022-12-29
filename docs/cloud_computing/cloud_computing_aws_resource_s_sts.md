@@ -9,6 +9,8 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,15 +20,27 @@ description: STS＠Sで始まるAWSリソースの知見を記録しています
 
 認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的なクレデンシャル情報（アクセスキーID、シークレットアクセスキー、セッショントークン）を発行する。
 
+
+
 ![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
 
-STSに対するリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+STSに対するリクエストの結果、別の認証情報と認可スコープを持つ新しいIAMユーザーを取得できる。
+
+このIAMユーザーには、そのAWSアカウント内でのみ使用できるロールが紐付けられている。
+
+この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
+
+秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
+
+
 
 > ℹ️ 参考：https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
 
 IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
+
+
 
 > ℹ️ 参考：https://garafu.blogspot.com/2020/11/how-to-switch-role.html
 
@@ -41,6 +55,8 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
 
+
+
 > ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
@@ -51,19 +67,31 @@ IAMユーザー、AWSリソース、フェデレーテッドユーザー、が�
 
 #### ▼ IAMユーザー
 
-IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。IAMユーザーの場合、外部IDが必要になる。
+IAMロールと同じ/異なるAWSアカウントのIAMユーザーに委譲できる。
+
+IAMユーザーの場合、外部IDが必要になる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
 #### ▼ AWSリソース
 
-IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。IAMリソースの場合、外部IDが必要になる。
+IAMロールと同じ/異なるAWSアカウントのAWSリソースに委譲できる。
+
+IAMリソースの場合、外部IDが必要になる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
 
 #### ▼ フェデレーテッドユーザー
 
-OIDC、SAML、によって発行されたユーザーに委譲できる。OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
+OIDC、SAML、によって発行されたユーザーに委譲できる。
+
+OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。
+
+
 
 > ℹ️ 参考：
 >
@@ -77,6 +105,8 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。OIDC�
 #### ▼ AWS OIDC
 
 IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
@@ -107,6 +137,8 @@ IAMロールの信頼されたエンティティに、AWS OIDCで発行された
 IAMロールの信頼されたエンティティに、外部OIDCサービスで発行されたユーザーを設定する。
 
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
 ```yaml
@@ -133,6 +165,8 @@ IAMロールの信頼されたエンティティに、外部OIDCサービスで�
 #### ▼ AWS SAML
 
 IAMロールの信頼されたエンティティに、AWS SAMLで発行されたユーザーを設定する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 
@@ -162,7 +196,15 @@ IAMロールの信頼されたエンティティに、AWS SAMLで発行された
 
 ### 1. IAMロールに信頼ポリシーを紐付け
 
-必要なポリシーが設定されたIAMロールを作成する。その時信頼ポリシーでは、IAMユーザーの```ARN```を信頼されたエンティティとして設定しておく。これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
+必要なポリシーが設定されたIAMロールを作成する。
+
+その時信頼ポリシーでは、IAMユーザーの```ARN```を信頼されたエンティティとして設定しておく。
+
+これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。
+
+この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
+
+
 
 ```yaml
 {
@@ -243,7 +285,13 @@ aws_sts_credentials="$(aws sts assume-role \
 
 ### 3. 返信されたレスポンスからクレデンシャル情報を取得
 
-STSのエンドポイントから一時的なクレデンシャル情報が発行される。また同時に、このクレデンシャル情報は、ローカルマシンの```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。クレデンシャルの失効時間に合わせて、STSはこの```.json```ファイルを定期的に更新する。
+STSのエンドポイントから一時的なクレデンシャル情報が発行される。
+
+また同時に、このクレデンシャル情報は、ローカルマシンの```~/.aws/cli/cache```ディレクトリ配下にも```.json```ファイルで保管される。
+
+クレデンシャルの失効時間に合わせて、STSはこの```.json```ファイルを定期的に更新する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
@@ -280,7 +328,15 @@ STSのエンドポイントから一時的なクレデンシャル情報が発�
 
 ### 4. クレデンシャル情報を取得（１）
 
-レスポンスされたデータからクレデンシャル情報を抽出する。この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。代わりとして、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。クレデンシャル情報を環境変数として出力し、使用できるようにする。
+レスポンスされたデータからクレデンシャル情報を抽出する。
+
+この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。
+
+代わりとして、```~/.aws/cli/cache```ディレクトリ配下の```.json```ファイルから取得しても良い。
+
+クレデンシャル情報を環境変数として出力し、使用できるようにする。
+
+
 
 > ℹ️ 参考：https://stedolan.github.io/jq/
 
@@ -299,6 +355,8 @@ EOF
 
 環境変数に登録する代わりとして、AWSの```credentials```ファイルを作成しても良い。
 
+
+
 ```bash
 #!/bin/bash
 
@@ -316,7 +374,11 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ### 5. 接続確認
 
-ロールを引き受けた新しいアカウントを使用して、AWSリソースに通信できるか否かを確認する。クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
+ロールを引き受けた新しいアカウントを使用して、AWSリソースに通信できるか否かを確認する。
+
+クレデンシャル情報の取得方法として```credentials```ファイルの作成を選択した場合、```profile```オプションが必要である。
+
+
 
 ```bash
 #!/bin/bash

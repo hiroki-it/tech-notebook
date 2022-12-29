@@ -9,6 +9,8 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,7 +27,11 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 #### ▼ Date型
 
-厳密にはデータ型ではないが、便宜上、データ型とする。タイムスタンプとは、協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの。
+厳密にはデータ型ではないが、便宜上、データ型とする。
+
+タイムスタンプとは、協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの。
+
+
 
 | フォーマット      | 実装方法            | 備考                                                    |
 |-------------|---------------------|-------------------------------------------------------|
@@ -42,6 +48,8 @@ description: その他パッケージ＠PHPの知見を記録しています。
 
 DateTimeインスタンスを引数として、Carbonインスタンスを作成する。
 
+
+
 ```php
 <?php
     
@@ -56,6 +64,8 @@ echo $carbon; // 2019-07-07 19:07:07
 #### ▼ ```create```メソッド
 
 日時の文字列からCarbonインスタンスを作成する。
+
+
 
 **＊実装例＊**
 
@@ -73,9 +83,13 @@ echo $carbon; // 2019-07-07 19:07:07
 
 指定の文字列から、Carbonインスタンスを作成する。
 
+
+
 **＊実装例＊**
 
 日時数字からCarbonインスタンスを作成する。
+
+
 
 ```php
 <?php
@@ -88,6 +102,8 @@ echo $carbonFromeDate; // 2019-07-07
 
 時間数字からCarbonインスタンスを作成する。
 
+
+
 ```php
 <?php
     
@@ -97,7 +113,11 @@ $carbonFromTime = Carbon::createFromTime(19, 07, 07);
 echo $carbonFromTime; // 19:07:07
 ```
 
-日付、時間、日時フォーマットからCarbonインスタンスを作成する。第一引数でフォーマットを指定する必要がある。
+日付、時間、日時フォーマットからCarbonインスタンスを作成する。
+
+第一引数でフォーマットを指定する必要がある。
+
+
 
 ```php
 <?php
@@ -110,6 +130,8 @@ echo $carbonFromFormat; // 2019-07-07 19:07:07
 ```
 
 タイムスタンプフォーマットからCarbonインスタンスを作成する。
+
+
 
 ```php
 <?php
@@ -124,7 +146,11 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 #### ▼ ```parse```メソッド
 
-日付、時間、日時フォーマットから、Carbonインスタンスを作成する。```createFromFormat```メソッドとは異なり、フォーマットを指定する必要がない。
+日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
+
+```createFromFormat```メソッドとは異なり、フォーマットを指定する必要がない。
+
+
 
 **＊実装例＊**
 
@@ -140,7 +166,11 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 ### Pinqとは
 
-配列データやオブジェクトデータに対して、クエリを実行できるようになる。他の同様パッケージとして、Linqがある。
+配列データやオブジェクトデータに対して、クエリを実行できるようになる。
+
+他の同様パッケージとして、Linqがある。
+
+
 
 > ℹ️ 参考：https://github.com/TimeToogo/Pinq/
 
@@ -149,6 +179,8 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 ### ```Traversable::from```メソッド
 
 SQLの```SELECT```や```WHERE```といった単語を使用して、```foreach```のように、配列データやオブジェクトデータの各要素に対して、処理を行える。
+
+
 
 **＊実装例＊**
 
@@ -183,7 +215,11 @@ class Foo
 
 ### Guzzleパッケージとは
 
-通常、リクエストの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ（例：外部のAPIなど）に対して、リクエストの送受信できる。
+通常、リクエストの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。
+
+しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ（例：外部のAPIなど）に対して、リクエストの送受信できる。
+
+
 
 > ℹ️ 参考：https://github.com/guzzle/guzzle
 
@@ -294,6 +330,8 @@ $body = json_decode($response->getBody(), true);
 
 ローカルまたは指定したURLの```.html```ファイルから、PDFや画像のファイルを作成するパッケージ。
 
+
+
 > ℹ️ 参考：https://github.com/KnpLabs/snappy
 
 <br>
@@ -303,6 +341,8 @@ $body = json_decode($response->getBody(), true);
 #### ▼ ```generateFromHtml```メソッド
 
 ローカルディレクトリ配下に、```.html```ファイルを基にしたPDFファイルを作成する。
+
+
 
 **＊実装例＊**
 
@@ -320,7 +360,11 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ### Respect/Validationとは
 
-リクエストされたデータが正しいかを、サーバサイド側で検証する。フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。
+リクエストされたデータが正しいかを、サーバサイド側で検証する。
+
+フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。
+
+
 
 > ℹ️ 参考：https://github.com/Respect/Validation
 
@@ -339,6 +383,8 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 ![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/line_messaging-api.png)
 
 ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。
+
+
 
 > ℹ️ 参考：
 >

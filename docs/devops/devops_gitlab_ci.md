@@ -9,6 +9,8 @@ description: GitLab CI＠DevOpsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -50,7 +52,13 @@ repository/
 
 ### include
 
-参照する別リポジトリと設定ファイルを設定する。GitLab CIのJobの設定ファイルを、特定のリポジトリで一括管理しておき、これを他のリポジトリで参照できるようになる。ポリリポジトリ構成ポリシーと相性がよい。
+参照する別リポジトリと設定ファイルを設定する。
+
+GitLab CIのJobの設定ファイルを、特定のリポジトリで一括管理しておき、これを他のリポジトリで参照できるようになる。
+
+ポリリポジトリ構成ポリシーと相性がよい。
+
+
 
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
@@ -70,7 +78,11 @@ include:
 
 ### cache
 
-指定したディレクトリのキャッシュを作成する。これにより、他のパイプラインでこのディレクトリを再利用し、CIの時間を短縮できる。
+指定したディレクトリのキャッシュを作成する。
+
+これにより、他のパイプラインでこのディレクトリを再利用し、CIの時間を短縮できる。
+
+
 
 > ℹ️ 参考：https://www.serversus.work/topics/927zjvmew2491o2n1oob/
 
@@ -87,6 +99,8 @@ bar_job:
 
 先に実行するJobを設定する。
 
+
+
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
 
 ```yaml
@@ -101,6 +115,8 @@ bar_job:
 
 Jobの実行環境を設定する。
 
+
+
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#image
 
 ```yaml
@@ -114,7 +130,11 @@ foo_job:
 
 ### stage
 
-Jobが属するステージを設定する。同じステージに属するJobは、並行的に実行される。
+Jobが属するステージを設定する。
+
+同じステージに属するJobは、並行的に実行される。
+
+
 
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#stage
 
@@ -129,6 +149,8 @@ foo_job:
 
 Jobで実行する処理を設定する。
 
+
+
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#script
 
 ```yaml
@@ -142,6 +164,8 @@ foo_job:
 ### variables
 
 Job内で使用する変数を設定する。
+
+
 
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 

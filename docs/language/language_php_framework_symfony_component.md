@@ -9,6 +9,8 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -183,6 +185,8 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 シェルスクリプト（```.sh```）、またはバッチファイル（```.bat```）におけるコマンドの処理内容を定義できる。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -247,6 +251,8 @@ done
 
 10秒ごとに、コマンドを自動実行する。
 
+
+
 ```bash
 #!/bin/bash
 
@@ -283,6 +289,8 @@ done
 （３）カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
    このカーネルを、特別に『HTTPカーネル』と呼ぶ。
 
+
+
 **【app.phpの実装例】**
 
 ```php
@@ -306,7 +314,11 @@ $response->send(); //（３）
 $kernel->terminate($request, $response);
 ```
 
-上記の```handle```メソッドが定義されているファイル。ここで定義された```handle```メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+上記の```handle```メソッドが定義されているファイル。
+
+ここで定義された```handle```メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+
+
 
 ```php
 <?php
@@ -421,6 +433,8 @@ $request->get('foo');
 
 Symfonyから提供されるDIコンテナのこと。
 
+
+
 <br>
 
 ## 03-05. Routing
@@ -430,6 +444,8 @@ Symfonyから提供されるDIコンテナのこと。
 #### ▼ RoutingConfiguratorとは
 
 コントローラーに対するルーティングを設定する。
+
+
 
 ```php
 <?php
@@ -457,7 +473,11 @@ return function (RoutingConfigurator $routes) {
 
 #### ▼ FilesystemAdapterとは
 
-データをキャッシングできる。オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
+データをキャッシングできる。
+
+オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
+
+
 
 ```php
 <?php

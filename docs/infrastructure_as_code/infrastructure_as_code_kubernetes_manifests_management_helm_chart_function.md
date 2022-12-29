@@ -9,6 +9,8 @@ description: アクション＠チャートの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,6 +21,8 @@ description: アクション＠チャートの知見を記録しています。
 
 ```template```ディレクトリ配下のテンプレートを展開する。
 
+
+
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 <br>
@@ -27,7 +31,11 @@ description: アクション＠チャートの知見を記録しています。
 
 #### ▼ includeとは
 
-```define```関数で定義したテンプレートを加工して出力する。加工内容はパラメーターで設定できる。
+```define```関数で定義したテンプレートを加工して出力する。
+
+加工内容はパラメーターで設定できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -41,6 +49,8 @@ description: アクション＠チャートの知見を記録しています。
 #### ▼ printfとは
 
 変数を出力する。
+
+
 
 #### ▼ エスケープ
 
@@ -87,15 +97,21 @@ receivers:
 
 同じ階層にある他の```.yaml```ファイルのキーとその値を格納し、foreach関数のように出力する。
 
+
+
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 #### ▼ マップ型を扱う場合
 
 マップ型を入力値として使用できる。
 
+
+
 **＊実装例＊**
 
 もし、以下のような平文ファイルがあるとする。
+
+
 
 ```yaml
 # plane.yamlファイル
@@ -105,12 +121,18 @@ bar: bar
 
 これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
 
+
+
 ```yaml
 # valuesファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。その後、```range```アクションでキーと値を取得し、Secretのデータとして割り当てる。
+```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。
+
+その後、```range```アクションでキーと値を取得し、Secretのデータとして割り当てる。
+
+
 
 ```yaml
 {{ $decoded := .Values.config | b64dec | fromYaml }}
@@ -128,6 +150,8 @@ data:
 #### ▼ 配列型を扱う場合
 
 配列型を入力値として使用できる。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -168,7 +192,11 @@ data:
 
 #### ▼ templateとは
 
-```define```関数で定義したテンプレートをそのまま出力する。```template```関数では出力内容を変数に格納できないため、これが可能な```include```関数が推奨されている。
+```define```関数で定義したテンプレートをそのまま出力する。
+
+```template```関数では出力内容を変数に格納できないため、これが可能な```include```関数が推奨されている。
+
+
 
 > ℹ️ 参考：
 >
@@ -183,7 +211,11 @@ data:
 
 #### ▼ Valuesとは
 
-```values```ファイルの特定のキー値を出力する。特定の条件下で、```values```ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
+```values```ファイルの特定のキー値を出力する。
+
+特定の条件下で、```values```ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
+
+
 
 > ℹ️ 参考：https://github.com/helm/helm/issues/8026
 
@@ -205,7 +237,15 @@ metadata:
 
 #### ▼ metadataキーで使用する場合の注意点
 
-マニフェストの```metadata```キーの値には文字列しか設定できない。```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。そのため、metadataキーの値にint型を出力しようとしてエラーになる。int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うと良い。
+マニフェストの```metadata```キーの値には文字列しか設定できない。
+
+```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。
+
+そのため、metadataキーの値にint型を出力しようとしてエラーになる。
+
+int型にならないように、```values```ファイルの出力先をダブルクオーテーションで囲うと良い。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
 
@@ -233,7 +273,11 @@ metadata:
 
 #### ▼ toYamlとは
 
-```.yaml```形式でテンプレートを出力する。```values```ファイルの複数のキー値を出力する場合に使用する。
+```.yaml```形式でテンプレートを出力する。
+
+```values```ファイルの複数のキー値を出力する場合に使用する。
+
+
 
 > ℹ️ 参考：https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
@@ -261,6 +305,8 @@ data:
 
 テンプレートや```values```ファイルを展開する時に、特定の位置にアクセスする。
 
+
+
 <br>
 
 ### ```.```（ドット）
@@ -268,6 +314,8 @@ data:
 #### ▼ ドットとは
 
 テンプレートの内容をルートから出力する。
+
+
 
 ```yaml
 {* tplファイル *}
@@ -298,13 +346,21 @@ baz:
 
 #### ▼ ドルとは
 
-出力時に、```.yaml```ファイルのルートを明示的に出力する。アクションの中でアクションで、```.yaml```ファイルのルートにアクセスしたい場合に役立つ。
+出力時に、```.yaml```ファイルのルートを明示的に出力する。
+
+アクションの中でアクションで、```.yaml```ファイルのルートにアクセスしたい場合に役立つ。
+
+
 
 > ℹ️ 参考：https://helm.sh/docs/chart_template_guide/control_structures/
 
 **＊実装例＊**
 
-```range```アクションを使用すると、```.yaml```ファイルへのアクセスのルートが変わってしまう。ルートを明示することにより、```range```アクション内でも```.yaml```ファイルの正しいルートにアクセスできるようなる。
+```range```アクションを使用すると、```.yaml```ファイルへのアクセスのルートが変わってしまう。
+
+ルートを明示することにより、```range```アクション内でも```.yaml```ファイルの正しいルートにアクセスできるようなる。
+
+
 
 ```yaml
 {{- range $.Values.foo.namespaces }}
@@ -368,6 +424,8 @@ baz:
 
 改行せずに、そのままスペースを挿入した上で、内容を出力する。
 
+
+
 > ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#28
 
 **＊実装例＊**
@@ -403,6 +461,8 @@ baz:
 #### ▼ nindentとは
 
 改行しつつ、スペースを挿入した上で、内容を出力する。
+
+
 
 > ℹ️ 参考：https://www.skyarch.net/blog/?p=16660#29
 
@@ -443,7 +503,11 @@ baz:
 
 #### ▼ b64encとは
 
-```base64```方式でエンコードする。Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
+```base64```方式でエンコードする。
+
+Secretの```data```キーでは、他のKubernetesリソースへの出力時に自動的に```base64```方式でデコードするようになっており、相性が良い。
+
+
 
 **＊実装例＊**
 
@@ -471,7 +535,17 @@ data:
 
 #### ▼ sha256sumとは
 
-入力内容をハッシュ値に変換する。SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+入力内容をハッシュ値に変換する。
+
+SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。
+
+これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。
+
+これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。
+
+そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -517,6 +591,8 @@ spec:
 
 テキスト形式を```.yaml```形式に変換する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
@@ -526,6 +602,8 @@ spec:
 
 もし、以下のような平文ファイルあるとする。
 
+
+
 ```yaml
 # plane.yamlファイル
 foo: FOO
@@ -534,12 +612,16 @@ bar: bar
 
 これを```base64```方式で変換し、```values```ファイルの```config```キー配下に定義したとする。
 
+
+
 ```yaml
 # valuesファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
 ```fromYaml```アクションを使用して、テキスト形式を```.yaml```形式に変換する。
+
+
 
 ```yaml
 {{ $decoded := .Values.config | b64dec | fromYaml }}
@@ -562,6 +644,8 @@ data:
 
 ```and```演算子と```()```記号を使用する。
 
+
+
 > ℹ️ 参考：https://stackoverflow.com/a/49819239
 
 ```yaml
@@ -573,6 +657,8 @@ data:
 ### OR条件
 
 ```or```演算子と```()```記号を使用する。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/a/49819239
 

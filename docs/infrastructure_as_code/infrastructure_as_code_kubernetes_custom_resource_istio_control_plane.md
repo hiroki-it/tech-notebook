@@ -8,6 +8,8 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -41,6 +43,8 @@ description: コントロールプレーン＠Istioの知見を記録してい�
 #### ▼ istiod-deploymentとは
 
 コントロールプレーンのPodの可用性を高めるため、これを冗長化する。
+
+
 
 #### ▼ Pod
 
@@ -321,7 +325,11 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 ### ```8080```番
 
-```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+```discovery```コンテナの```8080```番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+
+```discovery```コンテナの```15014```番ポートにポートフォワーディングしながら、別に``` go tool pprof```コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+
+
 
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
@@ -344,7 +352,11 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ### ```9876```番
 
-```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+```discovery```コンテナの```9876```番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。
+
+ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -364,7 +376,11 @@ $ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
 
 ![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-registry.png)
 
-Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、Node）の宛先情報を取得する。```discovery```コンテナは、取得した宛先情報を自身に保管する。
+Istiodコントロールプレーンは、サービスレジストリ（例：etcd、ZooKeeper、consul catalog、nocos、cloud foundry）に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言（ServiceEntry、WorkloadEntry）から、他のサービス（Pod、Node）の宛先情報を取得する。
+
+```discovery```コンテナは、取得した宛先情報を自身に保管する。
+
+
 
 > ℹ️ 参考：
 >
@@ -390,7 +406,11 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 ### ```15014```番
 
-コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+コンテナの```15014```番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。
+
+リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
+
+
 
 ```bash
 # ポートフォワーディングを実行する。

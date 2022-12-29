@@ -9,6 +9,8 @@ description: 静的解析ツール＠Kubernetesの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -103,6 +105,8 @@ foo-chart  foo-namespace   CronJob                   batch/v1beta1         batch
 #### ▼ list-versions
 
 Plutoが非推奨と見なしているバージョンの一覧を取得する。
+
+
 
 ```bash
 $ pluto list-versions

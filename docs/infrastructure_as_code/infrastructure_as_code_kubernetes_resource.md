@@ -8,6 +8,8 @@ description: Kubernetesリソース＠Kubernetesの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,11 +20,15 @@ description: Kubernetesリソース＠Kubernetesの知見を記録していま�
 
 Kubernetes上でアプリケーションを稼働させる概念のこと。
 
+
+
 <br>
 
 ### Kubernetesオブジェクト
 
 マニフェストによって量産されたKubernetesリソースのインスタンスのこと。
+
+
 
 > ℹ️ 参考：https://qiita.com/cvusk/items/773e222e0971a5391a51
 
@@ -33,6 +39,8 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 ### Workloadリソースとは
 
 コンテナの実行に関する機能を提供する。
+
+
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
 
@@ -51,7 +59,11 @@ Node上のPodの個数を維持管理する。Podの負荷に合わせてPodの�
 
 #### ▼ Pod数の固定
 
-DaemonSetは、Node内でPodを1つだけ維持管理する。そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
+DaemonSetは、Node内でPodを1つだけ維持管理する。
+
+そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
+
+
 
 <br>
 
@@ -59,7 +71,13 @@ DaemonSetは、Node内でPodを1つだけ維持管理する。そのため、例
 
 #### ▼ Deploymentとは
 
-ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを冗長化することに適する。
+ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を維持管理する。
+
+Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。
+
+ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを冗長化することに適する。
+
+
 
 > ℹ️ 参考：
 >
@@ -68,7 +86,11 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 #### ▼ ReplicaSetの置き換え
 
-PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
+
+レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+
+
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a
 
@@ -76,13 +98,19 @@ PodTemplate（```spec.template```キー）を変更した場合、Deploymentは�
 
 #### ▼ Podのレプリカ数の維持
 
-Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
+Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維持する。
+
+そのため、例えばCluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数を増やす。
+
+
 
 > ℹ️ 参考：https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
 #### ▼ PersistentVolumeとの関係性
 
 DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。
+
+
 
 > ℹ️ 参考：https://www.amazon.com/dp/1617297615
 
@@ -94,7 +122,13 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 #### ▼ Jobとは
 
-複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に削除（SuccessfulDelete）させる。デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+複数のPodを作成（SuccessfulCreate）し、指定された数のPodを正常に削除（SuccessfulDelete）させる。
+
+デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。
+
+```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -108,7 +142,11 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 #### ▼ Podとは
 
-コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動/停止や水平スケールアウト/スケールインを実行する。
+コンテナの最小グループ単位のこと。
+
+Podを単位として、コンテナ起動/停止や水平スケールアウト/スケールインを実行する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/
 
@@ -136,7 +174,11 @@ $ kubectl describe node <ワーカーNode名> | grep -i taint
 Taints: <none>
 ```
 
-ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。コントロールプレーンNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングすることがある。
+ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。
+
+コントロールプレーンNodeがマネージドではない環境（オンプレミス環境、ベアメタル環境、など）では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングすることがある。
+
+
 
 ```bash
 $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
@@ -145,6 +187,8 @@ $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
 #### ▼ Podのライフサイクルフェーズ
 
 Podのライフサイクルにはフェーズがある。
+
+
 
 > ℹ️ 参考：
 >
@@ -172,7 +216,13 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ Podのコンディション
 
-各フェーズには詳細なコンディションがある。例えば```Running```フェーズであっても、```Ready```コンディションになっていない可能性がある。そのため、Podが正常であると見なすためには、『```Running```フェーズ』かつ『```Ready```コンディション』である必要がある。
+各フェーズには詳細なコンディションがある。
+
+例えば```Running```フェーズであっても、```Ready```コンディションになっていない可能性がある。
+
+そのため、Podが正常であると見なすためには、『```Running```フェーズ』かつ『```Ready```コンディション』である必要がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -210,6 +260,8 @@ Podのライフサイクルにはフェーズがある。
 
 そのPodに割り当てられたCPUとメモリを、Pod内のコンテナが分け合って使用する。
 
+
+
 > ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
 
@@ -232,6 +284,8 @@ Podのライフサイクルにはフェーズがある。
 
 補足として、DaemonSetとして稼働するFluentdは、Nodeの```/var/log```ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
+
+
 > ℹ️ 参考：https://note.com/shift_tech/n/n503b32e5cd35
 
 <br>
@@ -240,7 +294,15 @@ Podのライフサイクルにはフェーズがある。
 
 #### ▼ ReplicaSetとは
 
-Node上のPod数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。DaemonSetとは異なり、Podを指定した個数に維持管理できる。ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
+Node上のPod数を維持管理する。
+
+Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。
+
+DaemonSetとは異なり、Podを指定した個数に維持管理できる。
+
+ReplicaSetを直接的に操作するのではなく、Deployment使用してこれを行うことが推奨される。
+
+
 
 > ℹ️ 参考：
 >
@@ -249,7 +311,11 @@ Node上のPod数を維持管理する。Podの負荷に合わせてPodの自動�
 
 #### ▼ PodTemplate
 
-Podの鋳型として動作する。ReplicaSetは、PodTemplateを用いてPodのレプリカを作成する。
+Podの鋳型として動作する。
+
+ReplicaSetは、PodTemplateを用いてPodのレプリカを作成する。
+
+
 
 <br>
 
@@ -257,7 +323,17 @@ Podの鋳型として動作する。ReplicaSetは、PodTemplateを用いてPod�
 
 #### ▼ StatefulSetとは
 
-ReplicaSetを操作し、Podの個数を維持管理する。Podの負荷に合わせてPodを自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。Deploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
+ReplicaSetを操作し、Podの個数を維持管理する。
+
+Podの負荷に合わせてPodを自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。
+
+Deploymentとは異なり、ストレートフルなコンテナ（例：dbコンテナ）を含むPodを扱える。
+
+Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。
+
+その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
+
+
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -270,7 +346,13 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 #### ▼ ライフサイクル
 
-StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成しない。作成中のPodがReady状態になってから、次のPodを作成し始める。そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
+StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成しない。
+
+作成中のPodがReady状態になってから、次のPodを作成し始める。
+
+そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
+
+
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13611
 
@@ -281,6 +363,8 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 ### Discovery&LBリソースとは
 
 Node上のコンテナをNode外に公開する機能を提供する。
+
+
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
 
@@ -304,7 +388,13 @@ Node上のコンテナをNode外に公開する機能を提供する。
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-IngressコントローラーによってNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+IngressコントローラーによってNode外からインバウンド通信を受信し、単一/複数のServiceにルーティングする。
+
+Ingressを使用する場合、ルーティング先のIngressは、Cluster IP Serviceとする。
+
+NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+
+
 
 > ℹ️ 参考：
 >
@@ -315,6 +405,8 @@ IngressコントローラーによってNode外からインバウンド通信を
 #### ▼ ルーティング方法
 
 ルーティング方法として、以下がある。
+
+
 
 
 | ルーティング方法   | 説明                                                                                                                                                                                                                                                                                 |
@@ -330,7 +422,11 @@ IngressコントローラーによってNode外からインバウンド通信を
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller.png)
 
-Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+Ingressコントローラーは、Ingressの設定に基づいてNode外からのインバウンド通信を受信し、単一/複数のIngressにルーティングする。
+
+Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -343,6 +439,8 @@ Ingressコントローラーは、Ingressの設定に基づいてNode外から�
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress-controller_certificate.png)
 
 Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
+
+
 
 > ℹ️ 参考：
 >
@@ -423,11 +521,17 @@ Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛�
 
 Serviceに対するインバウンド通信をCNAMEレコードを介してPodにルーティングする。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/13739
 
 #### ▼ Headless Service
 
-Serviceに対するインバウンド通信を、そのままPodにルーティングする。Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
+Serviceに対するインバウンド通信を、そのままPodにルーティングする。
+
+Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。
+
+
 
 > ℹ️ 参考：
 >
@@ -447,6 +551,8 @@ $ dig <Serviceの完全修飾ドメイン名>
 ```
 
 また、Headless ServiceからStatefulSetにルーティングする場合は、唯一、Podで直接的に名前解決できるようになる。
+
+
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13739
 
@@ -468,6 +574,8 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 Kubernetesリソースの設定データ、機密データ、ボリュームに関する機能を提供する。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
@@ -476,7 +584,11 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 #### ▼ ConfigMapとは
 
-データをマップ型で保持できる。改行することにより、設定ファイルも値に格納できる。
+データをマップ型で保持できる。
+
+改行することにより、設定ファイルも値に格納できる。
+
+
 
 <br>
 
@@ -486,25 +598,37 @@ Kubernetesリソースの設定データ、機密データ、ボリュームに�
 
 設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
+
+
 <br>
 
 ### Secret
 
 #### ▼ Secretとは
 
-変数やファイルをキーバリュー型で永続化する。永続化されている間は```base64```方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
+変数やファイルをキーバリュー型で永続化する。
+
+永続化されている間は```base64```方式でエンコードされており、デコードした上で、変数やファイルとして対象のPodに出力する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets
 
 #### ▼ コンテナイメージプルのパラメーターとして
 
-Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。Secretに永続化された値を復号化し、```kubectl```コマンドにパラメーターとして出力できる。
+Podの起動時に、kubectlコマンドが実行され、コンテナイメージをプルする。
+
+Secretに永続化された値を復号化し、```kubectl```コマンドにパラメーターとして出力できる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets
 
 #### ▼ コンテナの環境変数として
 
 永続化された値を復号化し、Pod内のコンテナに環境変数として出力できる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
@@ -516,6 +640,8 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 セキュリティやクォーターに関する機能を提供する。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
 
 <br>
@@ -524,7 +650,11 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 #### ▼ CertificateSigningRequestとは
 
-認証局に対するSSL証明書の要求（```openssl x509```コマンド）を宣言的に設定する。別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
+認証局に対するSSL証明書の要求（```openssl x509```コマンド）を宣言的に設定する。
+
+別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。
+
+
 
 > ℹ️ 参考：https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 
@@ -536,6 +666,8 @@ Podの起動時に、kubectlコマンドが実行され、コンテナイメー�
 
 Pod間通信でのインバウンド/アウトバウンド通信の送受信ルールを設定する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
@@ -543,11 +675,17 @@ Pod間通信でのインバウンド/アウトバウンド通信の送受信ル�
 
 #### ▼ Ingress
 
-他のPodからの受信するインバウンド通信のルールを設定する。Ingressとは関係がないことに注意する。
+他のPodからの受信するインバウンド通信のルールを設定する。
+
+Ingressとは関係がないことに注意する。
+
+
 
 #### ▼ Egress
 
 他のPodに送信するアウトバウンド通信のルールを設定する。
+
+
 
 <br>
 
@@ -555,7 +693,15 @@ Pod間通信でのインバウンド/アウトバウンド通信の送受信ル�
 
 #### ▼ PersistentVolumeとは
 
-新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。Node上のPod間でボリュームを共有できる。PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
+新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにボリュームマウントする。
+
+Node上のPod間でボリュームを共有できる。
+
+PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。
+
+アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
+
+
 
 > ℹ️ 参考：
 >
@@ -563,12 +709,20 @@ Pod間通信でのインバウンド/アウトバウンド通信の送受信ル�
 
 Dockerのボリュームとは独立した機能であることに注意する。
 
+
+
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
 
 #### ▼ HostPath（本番環境で非推奨）
 
-Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。機能としては、Volumeの一種であるHostPathと同じである。マルチNodeには対応していないため、本番環境では非推奨である。
+Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
+
+機能としては、Volumeの一種であるHostPathと同じである。
+
+マルチNodeには対応していないため、本番環境では非推奨である。
+
+
 
 > ℹ️ 参考：
 >
@@ -577,7 +731,11 @@ Node上に新しく作成したストレージ領域をボリュームとし、�
 
 #### ▼ Local（本番環境で推奨）
 
-Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。マルチNodeに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
+Node上に新しく作成したストレージ領域をボリュームとし、これをコンテナにバインドマウントする。
+
+マルチNodeに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
+
+
 
 > ℹ️ 参考：
 >
@@ -609,6 +767,8 @@ kube-apiserverが、認証されたKubernetesリソースからのリクエス�
 
 Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <br>
@@ -618,6 +778,8 @@ Role、ClusterRole、を使用して認可スコープを制御する仕組み�
 #### ▼ RoleBinding、ClusterRoleBindingとは
 
 RoleやClusterRoleを、UserAccountやServiceAccountに紐づける。
+
+
 
 > ℹ️ 参考：
 >
@@ -660,9 +822,13 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 既存（Node、NFS、iSCSI、Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する。
 
+
+
 > ℹ️ 参考：https://thinkit.co.jp/article/14195
 
 Dockerのボリュームとは独立した機能であることに注意する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -690,11 +856,17 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ▼ HostPath（本番環境で非推奨）
 
-Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
+Node上の既存のストレージ領域をボリュームとし、コンテナにバインドマウントする。
+
+バインドマウントは、NodeとPod内のコンテナ間で実行され、同一Node上のPod間でこのボリュームを共有できる。
+
+
 
 > ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 HostPathは非推奨である。
+
+
 
 > ℹ️ 参考：https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
 
@@ -739,13 +911,21 @@ $ docker inspect <コンテナID>
 
 #### ▼ EmptyDir
 
-Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。Node上のPod間でボリュームを共有できない。
+Podの既存のストレージ領域をボリュームとし、コンテナにボリュームマウントする。
+
+そのため、Podが削除されると、このボリュームも同時に削除される。
+
+Node上のPod間でボリュームを共有できない。
+
+
 
 > ℹ️ 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ▼ 外部ボリューム
 
 クラウドプロバイダーやNFSから提供されるストレージ領域を使用したボリュームとし、コンテナにマウントする。
+
+
 
 > ℹ️ 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 

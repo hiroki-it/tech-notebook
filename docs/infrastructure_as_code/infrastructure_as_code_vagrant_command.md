@@ -9,6 +9,8 @@ description: コマンド＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,6 +20,8 @@ description: コマンド＠Vagrantの知見を記録しています。
 ### box add
 
 ボックスをインストールする。
+
+
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-add
 
@@ -31,6 +35,8 @@ $ vagrant box add <ボックス名> <URL>
 
 インストールできるボックス名の一覧を取得する。
 
+
+
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-list
 
 ```bash
@@ -42,6 +48,8 @@ $ vagrant box list
 ### global-status
 
 起動中の仮想環境の一覧を取得する。
+
+
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/global-status
 
@@ -55,6 +63,8 @@ $ vagrant global-status
 
 仮想環境を停止する。
 
+
+
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/halt
 
 ```bash
@@ -67,6 +77,8 @@ $ vagrant halt
 
 仮想環境を再起動する。
 
+
+
 ```bash
 $ vagrant reload
 ```
@@ -76,6 +88,8 @@ $ vagrant reload
 ### ssh
 
 仮想環境にSSH接続を行う。
+
+
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/ssh
 
@@ -88,6 +102,8 @@ $ vagrant ssh
 ### up
 
 仮想環境を起動する。
+
+
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/cli/up
 

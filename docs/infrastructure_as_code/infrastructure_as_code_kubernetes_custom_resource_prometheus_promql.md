@@ -9,6 +9,8 @@ description: PromQL＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +23,15 @@ description: PromQL＠Prometheus
 
 特定の時点の時系列データのこと。
 
+
+
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間の時系列データのこと。
+
+
 
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -33,11 +39,15 @@ description: PromQL＠Prometheus
 
 浮動小数点の数値型データのこと。
 
+
+
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ String
 
 文字列型データのこと。
+
+
 
 > ℹ️ 参考：https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
@@ -48,6 +58,8 @@ description: PromQL＠Prometheus
 #### ▼ by
 
 同じ種類のデータポイントをラベル単位で集約する。
+
+
 
 > ℹ️ 参考：https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
 
@@ -60,11 +72,15 @@ sum(rate(istio_requests_total{destination_app=~".*-gateway"}[1h])) by (destinati
 
 期間内の合計数を算出する。
 
+
+
 > ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
 #### ▼ increase
 
 rate関数のラッパーであり、rate関数の結果（平均増加率）に、期間を自動的に掛けた数値（期間あたりの増加数）を算出する。
+
+
 
 > ℹ️ 参考：https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
 
@@ -77,7 +93,11 @@ increase(foo_metrics[5m])
 
 #### ▼ rate
 
-平均増加率（%/秒）を算出する。常に同じ割合で増加していく場合、横一直線のグラフになる。
+平均増加率（%/秒）を算出する。
+
+常に同じ割合で増加していく場合、横一直線のグラフになる。
+
+
 
 > ℹ️ 参考：https://www.opsramp.com/prometheus-monitoring/promql/
 
@@ -89,6 +109,8 @@ rate(foo_metrics[1h])
 #### ▼ ```[]```
 
 直近、何時間（分、秒）のデータポイントを集計するかを設定する。
+
+
 
 ```bash
 # 直近5分に関して、foo_metricsの平均増加率（%/秒）を集計する。
@@ -113,6 +135,8 @@ rate(foo_metrics[5m])
 
 各メトリクスに共通するディメンションを示す。
 
+
+
 | 名前      | 説明                                          |
 |-----------|----------------------------------------------|
 | container | コンテナ名                                        |
@@ -131,6 +155,8 @@ rate(foo_metrics[5m])
 
 Prometheusが収集したデータポイントの合計数を表す。
 
+
+
 > ℹ️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
@@ -141,6 +167,8 @@ Prometheusが収集したデータポイントの合計数を表す。
 
 Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 
+
+
 > ℹ️ 参考：
 >
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
@@ -149,6 +177,8 @@ Prometheusが作成したチャンクの合計サイズ（KB）を表す。
 #### ▼ prometheus_tsdb_compaction_chunk_samples_sum
 
 Prometheusが作成したチャンクの合計数を表す。
+
+
 
 > ℹ️ 参考：
 >
@@ -165,6 +195,8 @@ Prometheusが作成したチャンクの合計数を表す。
 
 Prometheusで収集されたデータポイントの平均サイズ（KB/秒）の増加率を分析する。
 
+
+
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
 rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
@@ -174,13 +206,19 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 Prometheusで収集されたデータポイントの合計数（個/秒）の増加率を分析する。
 
+
+
 ```bash
 rate(prometheus_tsdb_head_samples_appended_total[1h])
 ```
 
 #### ▼ データポイントの合計サイズ（KB/秒）の増加率
 
-Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
+Prometheusで収集されたデータポイントの合計サイズ（KB/秒）の増加率を分析する。
+
+計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
+
+
 
 > ℹ️ 参考：https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
 
@@ -193,6 +231,8 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 #### ▼ データポイントの合計サイズ（KB/日）の推移
 
 Prometheusで収集されたデータポイントの合計サイズ（KB/日）の推移を分析する。
+
+
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -207,7 +247,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ ローカルストレージの必要サイズ（KB/日）
 
-データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。ローカルストレージの部品ファイル分で、```20```%のサイズが必要になる。この結果から、ローカルストレージの必要サイズを推測できる。
+データポイントの合計サイズ（KB/日）とローカルストレージの部品ファイルの合計を分析する。
+
+ローカルストレージの部品ファイル分で、```20```%のサイズが必要になる。
+
+この結果から、ローカルストレージの必要サイズを推測できる。
+
+
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -226,7 +272,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ リモートストレージの必要サイズ（KB/日）
 
-Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ（KB/日）を分析する。この結果から、リモートストレージの必要サイズを推測できる。なお、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
+Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ（KB/日）を分析する。
+
+この結果から、リモートストレージの必要サイズを推測できる。
+
+なお、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
+
+
 
 ```bash
 rate(prometheus_remote_storage_bytes_total[1h]) *
@@ -267,6 +319,8 @@ go_gc_duration_seconds_sum 29.83657924
 
 NodeのCPU使用率を取得する。
 
+
+
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 ```bash
@@ -276,6 +330,8 @@ rate(node_cpu_seconds_total{mode!="idle"}[1m])
 #### ▼ メモリ使用率
 
 Nodeのメモリ使用率を取得する。
+
+
 
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
 
@@ -287,6 +343,8 @@ node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 
 Nodeのディスク使用率を取得する。
 
+
+
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
 
 ```bash
@@ -294,6 +352,8 @@ Nodeのディスク使用率を取得する。
 ```
 
 ```mountpoint```ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
+
+
 A
 ```bash
 100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
@@ -301,13 +361,19 @@ A
 
 ```job```ディメンションを使用して、収集対象別にのディスク使用率を取得する。
 
+
+
 ```bash
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
 ```
 
 #### ▼ ディスクのI/OによるCPU使用率
 
-ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。```iostat```コマンドの```%util```指標と同じである。
+ディスクのI/OによるCPU使用率（ディスクのI/OがNodeのCPUをどの程度使用しているか）を取得する。
+
+```iostat```コマンドの```%util```指標と同じである。
+
+
 
 ```bash
 rate(node_disk_io_time_seconds_total[1m])
@@ -323,6 +389,8 @@ rate(node_disk_io_time_seconds_total[1m])
 
 Nodeのパケットの受信サイズを取得する。
 
+
+
 > ℹ️ 参考：https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
 
 ```bash
@@ -330,6 +398,8 @@ node_network_receive_packets_total
 ```
 
 これを使用して、DDOS攻撃のアラートを作成することもできる。
+
+
 
 ```bash
 (rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10

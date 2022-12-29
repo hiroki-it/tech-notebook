@@ -9,6 +9,8 @@ description: Lambda＠Lで始まるAWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,7 +20,11 @@ description: Lambda＠Lで始まるAWSリソース
 
 ### Lambdaとは
 
-他のAWSリソースのイベントによって駆動する関数を管理できる。ユースケースについては、以下のリンクを参考にせよ。
+他のAWSリソースのイベントによって駆動する関数を管理できる。
+
+ユースケースについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
@@ -63,13 +69,21 @@ description: Lambda＠Lで始まるAWSリソース
 
 コンソール画面のLambdaに相当する。
 
+
+
 #### ▼ 関数の実行環境
 
-Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境から構成されている。
+
+関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
 
 実行環境には、```3```個のフェーズがある。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
 
@@ -77,15 +91,27 @@ Lambdaは、API（ランタイムAPI、ログAPI、拡張API）と実行環境�
 
 #### ▼ Initフェーズ
 
-Lambdaが発火する。実行環境が作成され、関数を実行するための準備が行われる。
+Lambdaが発火する。
+
+実行環境が作成され、関数を実行するための準備が行われる。
+
+
 
 #### ▼ Invokeフェーズ
 
-Lambdaは関数を実行する。実行環境側のランタイムは、APIを介してLambdaから関数に引数を渡す。また関数の実行後に、APIを介して返却値をLambdaに渡す。
+Lambdaは関数を実行する。
+
+実行環境側のランタイムは、APIを介してLambdaから関数に引数を渡す。
+
+また関数の実行後に、APIを介して返却値をLambdaに渡す。
+
+
 
 #### ▼ Shutdownフェーズ
 
 一定期間、Invokeフェーズにおける関数実行が行われなかった場合、Lambdaはランタイムを完了し、実行環境を削除する。
+
+
 
 <br>
 
@@ -97,17 +123,27 @@ Lambdaは関数を実行する。実行環境側のランタイムは、APIを�
 
 #### ▼ RIC：Runtime Interface Clients
 
-通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりにRICを使用してコンテナ内関数と通信を行う。言語別にRICパッケージが用意されている。
+通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりにRICを使用してコンテナ内関数と通信を行う。
+
+言語別にRICパッケージが用意されている。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client
 
 #### ▼ RIE：Runtime Interface Emulator
 
-開発環境のコンテナで、擬似的にLambda関数を再現する。全ての言語で共通のRIEパッケージが用意されている。
+開発環境のコンテナで、擬似的にLambda関数を再現する。
+
+全ての言語で共通のRIEパッケージが用意されている。
+
+
 
 > ℹ️ 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
 
 RIEであっても、稼働させるためにAWSのクレデンシャル情報（アクセスキーID、シークレットアクセスキー、リージョン）が必要なため、環境変数や```credentials```ファイルを使用して、Lambdaにこれらの値を出力する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env
 
@@ -170,7 +206,17 @@ $ curl \
 
 #### ▼ 同時実行の予約
 
-Lambdaは、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。そして、各関数インスタンスを使用して、同時並行的にリクエストに応じる。デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
+Lambdaは、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。
+
+そして、各関数インスタンスを使用して、同時並行的にリクエストに応じる。
+
+デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。
+
+関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。
+
+同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 
@@ -182,11 +228,21 @@ Lambdaは、関数の実行中に再びリクエストを受信すると、関�
 
 #### ▼ VPC外への配置
 
-LambdaはデフォルトではVPC外に配置される。この場合、LambdaにENIが紐付けられ、ENIに割り当てられたIPアドレスがLambdaに適用される。Lambdaの実行時にENIは再作成されるため、実行ごとにIPアドレスは変化するが、一定時間内の再実行であればENIは再利用されるため、前回の実行時と同じIPアドレスになることもある。
+LambdaはデフォルトではVPC外に配置される。
+
+この場合、LambdaにENIが紐付けられ、ENIに割り当てられたIPアドレスがLambdaに適用される。
+
+Lambdaの実行時にENIは再作成されるため、実行ごとにIPアドレスは変化するが、一定時間内の再実行であればENIは再利用されるため、前回の実行時と同じIPアドレスになることもある。
+
+
 
 #### ▼ VPC内への配置
 
-LambdaをVPC内に配置するように設定する。VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため、アウトバウンド通信を行うためには、NAT Gatewayを設置する必要がある。
+LambdaをVPC内に配置するように設定する。
+
+VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため、アウトバウンド通信を行うためには、NAT Gatewayを設置する必要がある。
+
+
 
 <br>
 
@@ -194,7 +250,11 @@ LambdaをVPC内に配置するように設定する。VPC内に配置したLambd
 
 #### ▼ 実行のための最低限のポリシー
 
-Lambdaを実行するためには、デプロイされた関数を使用する認可スコープが必要である。そのため、関数を取得するためのステートメントを設定する。
+Lambdaを実行するためには、デプロイされた関数を使用する認可スコープが必要である。
+
+そのため、関数を取得するためのステートメントを設定する。
+
+
 
 ```yaml
 {
@@ -217,15 +277,27 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。
 
+
+
 #### ▼ S3における```.zip```ファイル
 
-ビルド後のコードを```.zip```ファイルにしてアップロードする。ローカルマシンまたはS3からアップロードできる。
+ビルド後のコードを```.zip```ファイルにしてアップロードする。
+
+ローカルマシンまたはS3からアップロードできる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
 
 #### ▼ ECRにおけるイメージ
 
-コンテナイメージの関数でのみ有効である。ビルド後のコードをコンテナイメージしてアップロードする。ECRからアップロードできる。
+コンテナイメージの関数でのみ有効である。
+
+ビルド後のコードをコンテナイメージしてアップロードする。
+
+ECRからアップロードできる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
 
@@ -237,6 +309,8 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 CloudFrontに統合されたLambdaを、特別にLambda@Edgeという。
 
+
+
 <br>
 
 ### セットアップ
@@ -245,7 +319,11 @@ CloudFrontに統合されたLambdaを、特別にLambda@Edgeという。
 
 ![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-edge.png)
 
-CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンス、をトリガーとする。エッジロケーションのCloudFrontに、Lambdaのレプリカが作成される。
+CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンス、をトリガーとする。
+
+エッジロケーションのCloudFrontに、Lambdaのレプリカが作成される。
+
+
 
 | トリガーの種類  | 発火のタイミング                                           |
 |------------|----------------------------------------------------|
@@ -258,6 +336,8 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
 <br>
@@ -267,6 +347,8 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 #### ▼ 実行のための最低限のポリシー
 
 Lambda@Edgeを実行するためには、最低限、以下の認可スコープが必要である。
+
+
 
 ```yaml
 {

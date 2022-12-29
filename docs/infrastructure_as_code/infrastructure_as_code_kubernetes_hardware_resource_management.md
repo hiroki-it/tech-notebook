@@ -9,6 +9,8 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -16,6 +18,8 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 ## 01. リソース管理とは
 
 種々のKubernetesリソースの状態を管理する。
+
+
 
 <br>
 
@@ -34,6 +38,8 @@ Nodeの自動水平スケーリングを実行する。metrics-serverから取�
 ### cluster-autoscalerの仕組み
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
+
+
 
 （１）Podが、Nodeの```70```%にあたるリソースを要求する。 このPodがスケーリングする時、Nodeが```1```台では足りない。
 
@@ -61,6 +67,8 @@ AWSの場合、cluster-autoscalerの代わりにKarpenterを使用できる。Ka
 ### karpenterの仕組み
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングを実行する。
+
+
 
 （１）Podが、Nodeの```70```%にあたるリソースを要求する。 しかし、Nodeが```1```台では足りない。```70 + 70 = 140%```になるため、既存のNodeの少なくとも```1.4```倍のスペックが必要となる。
 
@@ -93,11 +101,15 @@ deschedulerは、Podを再スケジューリングする。類似するkube-sche
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
 
+
+
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler#policy-and-strategies
 
 #### ▼ LowNodeUtilization
 
 Nodeのリソース（例：CPU、メモリ、など）が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
 
@@ -123,6 +135,8 @@ strategies:
 #### ▼ RemoveDuplicates
 
 Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 
@@ -157,6 +171,8 @@ strategies:
 #### ▼ RemovePodsViolatingNodeAffinity
 
 ```spec.nodeAffinity```キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。
+
+
 
 > ℹ️ 参考：https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
 
@@ -214,6 +230,8 @@ strategies:
 
 PodとNodeのメトリクスを収集し、Podの負荷状態に合わせて、Podの自動水平スケーリングを実行する。
 
+
+
 <br>
 
 ### metrics-serverの仕組み
@@ -233,7 +251,11 @@ metrics-serverは、拡張apiserverのmetrics-apiserver、ローカルストレ�
 
 #### ▼ metrics-apiserverとは
 
-ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。データポイントはローカルストレージに保管している。
+ServiceとAPIServiceを介して、クライアント（```kubectl```コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler）からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
+
+データポイントはローカルストレージに保管している。
+
+
 
 > ℹ️ 参考：
 >
@@ -243,6 +265,8 @@ ServiceとAPIServiceを介して、クライアント（```kubectl```コマン�
 #### ▼ metrics-apiserverへのリクエスト
 
 クライアントが```kubectl```コマンド実行者の場合は、```kubectl top```コマンドを実行する。
+
+
 
 ```bash
 # Nodeのメトリクスを取得
@@ -264,11 +288,17 @@ $ kubectl top pod -n <任意のNamespace>
 
 メトリクスのデータポイントを保存する。
 
+
+
 <br>
 
 ### スクレイパー
 
-対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+対象からメトリクスのデータポイントを収集し、ローカルストレージに保存する。
+
+収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+
+
 
 <br>
 
@@ -287,7 +317,11 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 
 #### ▼ 最大Pod数の求め方
 
-オートスケーリング時の現在のPod数は、次の計算式で算出される。算出結果に基づいて、スケールアウト/スケールインが実行される。
+オートスケーリング時の現在のPod数は、次の計算式で算出される。
+
+算出結果に基づいて、スケールアウト/スケールインが実行される。
+
+
 
 > ℹ️ 参考：https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14
 
@@ -296,7 +330,11 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 = (現在のPod数) x (現在のPodのCPU平均使用率) ÷ (現在のPodのCPU使用率のターゲット値)
 ```
 
-例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+例えば、『```現在のPod数 = 5```』『```現在のPodのCPU平均使用率 = 90```』『```現在のPodのCPU使用率のターゲット値 = 70```』だとすると、『```必要な最大Pod数 = 7```』となる。
+
+算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。
+
+
 
 <br>
 
@@ -305,6 +343,8 @@ Podの自動水平スケーリングを実行する。metrics-serverから取得
 #### ▼ VerticalPodAutoscalerとは
 
 Podの垂直スケーリングを実行する。
+
+
 
 > ℹ️ 参考：
 >

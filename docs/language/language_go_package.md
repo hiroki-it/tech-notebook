@@ -8,6 +8,8 @@ title: 【IT技術の知見】パッケージ@Go
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -15,6 +17,8 @@ title: 【IT技術の知見】パッケージ@Go
 ## 01. ビルトインパッケージ
 
 以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_go_logic_method_data.html
 
@@ -28,11 +32,15 @@ title: 【IT技術の知見】パッケージ@Go
 
 インポートされているパッケージに合わせて、```go.mod```ファイルと```go.sum```ファイルを更新する。
 
+
+
 ```bash
 $ go mod tidy
 ```
 
 もし```go.sum```ファイルがあるのにも関わらず、以下のようなエラーが出る時は、```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある。
+
+
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
@@ -45,7 +53,13 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 #### ▼ ```go.mod```ファイルとは
 
-PHPにおける```composer.json```ファイルに相当する。インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。インストールしたい外部パッケージも定義できる。
+PHPにおける```composer.json```ファイルに相当する。
+
+インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。
+
+インストールしたい外部パッケージも定義できる。
+
+
 
 ```
 module github.com/hiroki-hasegawa/foo-repository
@@ -55,7 +69,15 @@ go 1.16
 
 #### ▼ インターネットからインポート
 
-パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。注意点として、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
+パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。
+
+```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。
+
+これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。
+
+注意点として、パッケージ名は、使用したいパッケージの```go.mod```ファイルを参照すること。
+
+
 
 > ℹ️ 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
@@ -82,7 +104,13 @@ func main() {
 
 #### ▼ ローカルマシンからインポート
 
-ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
+ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を使用してインポートする必要がある。
+
+独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
+
+パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
+
+
 
 > ℹ️ 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
@@ -95,6 +123,8 @@ replace github.com/hiroki-hasegawa/foo-repository => /
 ```
 
 また、ルートディレクトリのみでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
+
+
 
 ```yaml
 repository/
@@ -116,6 +146,8 @@ go 1.16
 
 これらにより、ローカルマシンのパッケージをインポートできるようになる。
 
+
+
 ```go
 import "local.packages/local-pkg"
 
@@ -130,7 +162,13 @@ func main() {
 
 #### ▼ ```go.sum```ファイルとは
 
-PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
+PHPにおける```composer.lock```ファイルに相当する。
+
+```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。
+
+パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。
+
+
 
 <br>
 
@@ -146,9 +184,13 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 
 汎用的な関数が同梱されている。
 
+
+
 > ℹ️ 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
 ポインタ型からstring型に変換する```ToString```関数や、反対にstring型からポインタ型に変換する```String```関数をよく使用する。
+
+
 
 > ℹ️ 参考：
 >
@@ -164,6 +206,8 @@ PHPにおける```composer.lock```ファイルに相当する。```go.mod```フ�
 ## 04. aws-lambda-go
 
 以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_l_lambda_function.html
 
@@ -200,6 +244,8 @@ kube-apiserverの認証/認可を通過するために、```~/.kube/config```フ
 ### gormとは
 
 Go製のORMである。
+
+
 
 <br>
 
@@ -257,7 +303,11 @@ func Close(db *gorm.DB) error {
 
 #### ▼ Gormモデル埋め込み
 
-構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
+構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
+
+構造体をマッピングしたテーブルに、```id```カラム、```created_at```カラム、```updated_at```カラム、```deleted_at```カラムが追加される。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/models.html#embedded_struct
 
@@ -299,7 +349,11 @@ type User struct {
 
 #### ▼ SoftDelete
 
-構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
+構造体が、```gorm.DeleteAt```をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。
+
+Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/delete.html#Soft-Delete
 
@@ -330,7 +384,11 @@ db.Where("age = 20").Find(&user)
 
 #### ▼ ```TableName```メソッド
 
-デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
+デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
+
+```TableName```メソッドにより、独自のテーブル名をつけられる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/conventions.html#TableName
 
@@ -354,7 +412,11 @@ func (User) TableName() string {
 
 ### Create
 
-Gormモデルのフィールドに設定された値を元に、カラムを作成する。作成したカラムのプライマリーキーを、構造体から取得できる。
+Gormモデルのフィールドに設定された値を元に、カラムを作成する。
+
+作成したカラムのプライマリーキーを、構造体から取得できる。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/create.html#Create-Record
 
@@ -391,6 +453,8 @@ result.Error        // returns error
 
 Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
 
+
+
 > ℹ️ 参考：https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
 
 ```go
@@ -414,6 +478,8 @@ db.Find(&users, []int{1,2,3})
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
+
+
 > ℹ️ 参考：https://gorm.io/docs/update.html#Update-single-column
 
 ```go
@@ -434,7 +500,13 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 
 #### ▼ 複数カラム更新（暗黙的）
 
-Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
+
+または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。
+
+Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Updates-multiple-columns
 
@@ -452,7 +524,11 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 
 #### ▼ 複数カラム更新（明示的）
 
-Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。フィールド値がゼロ値であっても、スキップされない。
+Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
+
+フィールド値がゼロ値であっても、スキップされない。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Update-Selected-Fields
 
@@ -471,6 +547,8 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 #### ▼ 全カラム更新
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
+
+
 
 > ℹ️ 参考：https://gorm.io/docs/update.html#Save-All-Fields
 
@@ -491,7 +569,13 @@ db.Save(&user)
 
 ### testifyとは
 
-モック、スタブ、アサーションメソッドを提供するパッケージ。Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。モックとスタブについては、以下のリンクを参考にせよ。
+モック、スタブ、アサーションメソッドを提供するパッケージ。
+
+Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。
+
+モックとスタブについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
@@ -509,6 +593,8 @@ db.Save(&user)
 
 AWSクライアントをモック化する。
 
+
+
 ```go
 package amplify
 
@@ -518,6 +604,8 @@ import (
 
 /**
  * AWSクライアントをモック化します。
+
+
  */
 type MockedAwsClient struct {
 	mock.Mock
@@ -538,6 +626,8 @@ type MockedAwsClient struct {
 
 関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。
 
+
+
 ```go
 package amplify
 
@@ -552,6 +642,8 @@ type MockedAmplifyAPI struct {
 
 /**
  * AmplifyのGetBranch関数の処理をスタブ化します。
+
+
  */
 func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
 	arguments := mock.Called(ctx, params, optFns)
@@ -575,11 +667,19 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ▼ 前処理と後処理
 
-テスト関数を実行する直前に、前処理を実行する。モックの作成のために使用すると良い。PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
+テスト関数を実行する直前に、前処理を実行する。
+
+モックの作成のために使用すると良い。
+
+PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 
 前処理と後処理については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
@@ -596,6 +696,8 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 事前にモックを作成するために、```BeforeTest```関数を使用する。
 
+
+
 ```go
 package foo
 
@@ -605,6 +707,8 @@ import (
 
 /**
  * 単体テストのテストスイートを構成する。
+
+
  */
 type FooSuite struct {
 	suite.Suite
@@ -613,6 +717,8 @@ type FooSuite struct {
 
 /**
  * 単体テストの直前の前処理を実行する。
+
+
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
@@ -622,6 +728,8 @@ func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
 /**
  * 単体テストのテストスイートを実行する。
+
+
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})
@@ -637,6 +745,8 @@ import (
 
 /**
  * Methodメソッドが成功することを検証する。
+
+
  */
 func (suite *FooSuite) TestMethod() {
 

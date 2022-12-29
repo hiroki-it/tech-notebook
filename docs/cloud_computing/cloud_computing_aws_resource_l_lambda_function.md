@@ -9,6 +9,8 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,6 +21,8 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 自身から起動することはなく、外部から要求されて実行される関数のこと。
 
+
+
 > ℹ️ 参考：https://garop.com/36/
 
 <br>
@@ -27,13 +31,23 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 #### ▼ 非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。```return```または```throw```を使用して、Lambdaのコール元にレスポンスを送信する。レスポンスとして、Promiseオブジェクトを送信もできる。
+Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト（event）に値をわたす。
+
+ハンドラ関数の初期名は```handler```メソッドであるが別名でも良い。
+
+```return```または```throw```を使用して、Lambdaのコール元にレスポンスを送信する。
+
+レスポンスとして、Promiseオブジェクトを送信もできる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
 **＊実装例＊**
 
 Node.jsの場合を示す。
+
+
 
 ```javascript
 exports.handler = async (event) => {
@@ -74,7 +88,15 @@ exports.handler = async (event) => {
 
 #### ▼ 同期ハンドラ関数（Non-async handlers）
 
-Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。このオブジェクトにはメソッドとプロパティを持つ。ハンドラ関数の初期名は```handler```であるが別名でも良い。```callback```メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
+Lambdaはハンドラ関数を同期関数としてコールし、引数（eventオブジェクト、contextオブジェクト、callback関数）に値をわたす。
+
+このオブジェクトにはメソッドとプロパティを持つ。
+
+ハンドラ関数の初期名は```handler```であるが別名でも良い。
+
+```callback```メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -82,7 +104,13 @@ Lambdaはハンドラ関数を同期関数としてコールし、引数（event
 
 **＊実装例＊**
 
-Node.jsの場合を示す。レスポンスを返信するには、```done```メソッド、```succeed```メソッド、```callback```メソッドが必要である。また、処理を終える場合は```return```で返却する必要がある。
+Node.jsの場合を示す。
+
+レスポンスを返信するには、```done```メソッド、```succeed```メソッド、```callback```メソッドが必要である。
+
+また、処理を終える場合は```return```で返却する必要がある。
+
+
 
 ```javascript
 exports.handler = (event, context, callback) => {
@@ -153,7 +181,13 @@ Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリ�
 
 #### ▼ ```Start```関数
 
-Lamda関数を実行するための関数。```Start```関数に渡すパラメーターには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。もし含まれていない場合は、Lambdaで内部エラーが起こる。
+Lamda関数を実行するための関数。
+
+```Start```関数に渡すパラメーターには、必ず1つでもerrorインターフェースの実装が含まれている必要がある。
+
+もし含まれていない場合は、Lambdaで内部エラーが起こる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
 
@@ -184,6 +218,8 @@ func main() {
 #### ▼ パラメータ
 
 contextオブジェクトとeventオブジェクトをパラメーターとして使用できる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
 
@@ -278,9 +314,15 @@ func main() {
 
 正常系レスポンスの構成要素については以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
-文字列を返却すると、Lambdaはその文字列をそのまま返信する。また、JSONをレスポンスもできる。
+文字列を返却すると、Lambdaはその文字列をそのまま返信する。
+
+また、JSONをレスポンスもできる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
@@ -288,9 +330,13 @@ func main() {
 
 Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
 エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
@@ -302,6 +348,8 @@ Lambdaのエラーレスポンスのステータスコードについては以�
 ```
 
 errorsパッケージの```New```関数を使用すると、内部で発生したエラーメッセージをオーバーライドできる。
+
+
 
 ```go
 package main
@@ -343,7 +391,11 @@ func main() {
 
 #### ▼ ログの出力方法
 
-標準パッケージの```fmt```、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。CloudWatchログにてこれを確認する。
+標準パッケージの```fmt```、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。
+
+CloudWatchログにてこれを確認する。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 
@@ -363,7 +415,13 @@ func main() {
 
 > ℹ️ 参考：https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
-以下のパッケージでは、npmを使用する必要はない。パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。
+以下のパッケージでは、npmを使用する必要はない。
+
+パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。
+
+もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。
+
+
 
 | パッケージ名           | 説明                                                       | 補足                                                                      |
 |-------------------|----------------------------------------------------------|-------------------------------------------------------------------------|
@@ -378,7 +436,11 @@ func main() {
 
 #### ▼ aws-sdk.jsの場合
 
-各AWSオブジェクトのメソッドの後に、```promise```メソッドをチェーンできる。これにより、各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる。
+各AWSオブジェクトのメソッドの後に、```promise```メソッドをチェーンできる。
+
+これにより、各メソッドの非同期処理の状態をPromiseオブジェクトで管理できるようになる。
+
+
 
 > ℹ️ 参考：https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
 
@@ -474,6 +536,8 @@ exports.handler = async (event) => {
 
 /**
  * メッセージを作成します。
+
+
  *
  * @param event
  * @param app
@@ -562,6 +626,8 @@ const buildMessage = (event, app) => {
 
 /**
  * メッセージを送信します。
+
+
  *
  * @param message
  * @returns Promise<json>
@@ -636,7 +702,11 @@ const postMessageToSlack = (message) => {
 
 **＊実装例＊**
 
-API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『```AWSLambdaExecute```』が紐付けられたロールをLambdaに紐付けしておく必要がある。
+API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。
+
+LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『```AWSLambdaExecute```』が紐付けられたロールをLambdaに紐付けしておく必要がある。
+
+
 
 ```javascript
 "use strict";
@@ -694,7 +764,13 @@ exports.handler = (event, context, callback) => {
 
 **＊実装例＊**
 
-eventオブジェクトの```domainName```と```host.value```に代入されたバケットのドメイン名によって、転送先のバケットが決まる。そのため、この値を切り替えれば動的オリジンを実現できる。注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。
+eventオブジェクトの```domainName```と```host.value```に代入されたバケットのドメイン名によって、転送先のバケットが決まる。
+
+そのため、この値を切り替えれば動的オリジンを実現できる。
+
+注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。
+
+
 
 ```javascript
 "use strict";
@@ -718,6 +794,8 @@ exports.handler = (event, context, callback) => {
 
 /**
  * デバイスタイプを基に、オリジンを切り替える。
+
+
  *
  * @param   {Object} headers
  * @param   {string} env
@@ -747,7 +825,11 @@ const getBacketBasedOnDeviceType = (headers) => {
 };
 ```
 
-オリジンリクエストは、以下のeventオブジェクトのJSON型データにマッピングされている。注意点として、一部のキーは省略している。
+オリジンリクエストは、以下のeventオブジェクトのJSON型データにマッピングされている。
+
+注意点として、一部のキーは省略している。
+
+
 
 ```yaml
 {

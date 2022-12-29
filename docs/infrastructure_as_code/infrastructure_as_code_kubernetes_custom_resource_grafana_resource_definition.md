@@ -9,6 +9,8 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,6 +22,8 @@ description: リソース定義＠Grafanaの知見を記録しています。
 #### ▼ GitHubリポジトリから
 
 GitHubリポジトリからgrafanaチャートをインストールし、リソースを作成する。
+
+
 
 > ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
@@ -49,7 +53,11 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 ### ドキュメントから
 
-Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。これを作成する。
+Grafanaのドキュメントから```.yaml```ファイルをコピーし、```grafana.yaml```ファイルを作成する。
+
+これを作成する。
+
+
 
 > ℹ️ 参考：https://grafana.com/docs/grafana/latest/installation/kubernetes/
 
@@ -64,6 +72,8 @@ $ kubectl apply -f grafana.yaml
 ### 独自ダッシュボード
 
 ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを作成できる。
+
+
 
 > 参考：https://grafana.com/grafana/dashboards/
 
@@ -117,7 +127,11 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 
 #### ▼ grafanaチャートの場合
 
-grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
+grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。
+
+これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
+
+
 
 > ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 

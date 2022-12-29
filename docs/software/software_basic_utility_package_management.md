@@ -9,6 +9,8 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,6 +20,8 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 ### 様々な管理ユーティリティ
 
 様々な粒度のプログラムを対象にした管理ユーティリティがある。
+
+
 
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
 
@@ -38,7 +42,11 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 #### ▼ search
 
-指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
+指定したファイルを持つパッケージを検索する。
+
+拡張子も指定しても、ファイル名までしか絞れない。
+
+
 
 > ℹ️ 参考：
 >
@@ -75,7 +83,13 @@ zlib1g-dev: /usr/include/zlib.h
 
 #### ▼ -ivh
 
-パッケージをインストールまたは更新する。一度に複数のオプションを組み合わせて記述する。インストール時にパッケージ間の依存関係を解決できないので注意。
+パッケージをインストールまたは更新する。
+
+一度に複数のオプションを組み合わせて記述する。
+
+インストール時にパッケージ間の依存関係を解決できないので注意。
+
+
 
 ```bash
 # パッケージをインストール
@@ -93,6 +107,8 @@ $ rpm -Uvh <パッケージ名>
 
 インストールされた全てのパッケージの中で、指定した文字を名前に含むものを取得する。
 
+
+
 ```bash
 # -qa：
 $ rpm -qa | grep <検索文字>
@@ -102,6 +118,8 @@ $ rpm -qa | grep <検索文字>
 
 指定したパッケージ名で、関連する全てのファイルの場所を取得する。
 
+
+
 ```bash
 # -ql：
 $ rpm -ql <パッケージ名>
@@ -110,6 +128,8 @@ $ rpm -ql <パッケージ名>
 #### ▼ -qi
 
 指定したパッケージ名で、インストール日などの情報を取得する。
+
+
 
 ```bash
 # -qi：
@@ -122,7 +142,11 @@ $ rpm -qi <パッケージ名>
 
 #### ▼ install、reinstall
 
-rpmと同様に使用できる。また、インストール時にパッケージ間の依存関係を解決できる。
+rpmと同様に使用できる。
+
+また、インストール時にパッケージ間の依存関係を解決できる。
+
+
 
 ```bash
 # パッケージをインストール
@@ -136,6 +160,8 @@ $ yum reinstall -y <パッケージ名>
 
 インストールされたパッケージの一覧を取得する。
 
+
+
 ```bash
 # 指定した文字を名前に含むものを表示。
 $ yum list | grep <検索文字>
@@ -144,6 +170,8 @@ $ yum list | grep <検索文字>
 #### ▼ repolist
 
 リポジトリか有効か否かの一覧を取得する。
+
+
 
 > ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
@@ -283,7 +311,11 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ▼ brewとは
 
-Linuxで使用できるパッケージを管理する。最新バージョンしか管理できず、以前のバージョンを管理できない。
+Linuxで使用できるパッケージを管理する。
+
+最新バージョンしか管理できず、以前のバージョンを管理できない。
+
+
 
 > ℹ️ 参考：
 >
@@ -306,6 +338,8 @@ $ brew autoremove
 
 パッケージの旧バージョンのキャッシュを削除する。
 
+
+
 > ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
@@ -315,6 +349,8 @@ $ brew cleanup
 #### ▼ doctor
 
 brewの設定に不備がないかを検証する。
+
+
 
 ```bash
 $ brew doctor 
@@ -333,6 +369,8 @@ those kegs to fail to run properly once built. Run `brew link` on these:
 
 パッケージをインストールする。
 
+
+
 ```bash
 # Intel Macの場合
 $ brew install <パッケージ名>
@@ -344,6 +382,8 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
+
+
 > ℹ️ 参考：https://hacknote.jp/archives/23816/
 
 ```bash
@@ -354,6 +394,8 @@ $ brew link <パッケージ名>
 
 brew本体をアップグレードする。
 
+
+
 > ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
@@ -363,6 +405,8 @@ $ brew update
 #### ▼ upgrade
 
 brew本体とパッケージの両方をアップグレードする。
+
+
 
 > ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
@@ -376,7 +420,13 @@ $ brew upgrade
 
 #### ▼ asdfとは
 
-Linuxで使用できるパッケージを管理する。また、異なるバージョンを同時に管理できる。ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
+Linuxで使用できるパッケージを管理する。
+
+また、異なるバージョンを同時に管理できる。
+
+ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
+
+
 
 #### ▼ ```.tool-version```ファイル
 
@@ -403,6 +453,8 @@ sops <バージョン>
 
 ```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
 
+
+
 > ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 ```bash
@@ -426,6 +478,8 @@ bar 1.0.0
 #### ▼ list
 
 インストールされているパッケージで使用できるバージョンの一覧を取得する。
+
+
 
 ```bash
 $ asdf list all <プラグイン名>

@@ -9,6 +9,8 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +23,15 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 ```base```ディレクトリ配下にあるファイルの処理方法を設定する。
 
+
+
 > ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 #### ▼ resources
 
 使用するリソース定義ファイルを設定する。
+
+
 
 **＊実装例＊**
 
@@ -44,11 +50,17 @@ resources:
 
 後の```overlays```ディレクトリの元になるリソース定義を設定する。
 
+
+
 > ℹ️ 参考：https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
 **＊実装例＊**
 
-元になるリソース定義を設定する。ここでは、Deploymentを設定する。
+元になるリソース定義を設定する。
+
+ここでは、Deploymentを設定する。
+
+
 
 ```yaml
 apiVersion: apps/v1
@@ -86,6 +98,8 @@ spec:
 
 ```overlays```ディレクトリ配下にあるファイルの処理方法を設定する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
@@ -95,6 +109,8 @@ spec:
 #### ▼ resources
 
 使用するリソース定義ファイルを設定する。
+
+
 
 **＊実装例＊**
 
@@ -116,9 +132,15 @@ patches:
 
 ```base```ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
 
+
+
 **＊実装例＊**
 
-ここでは、Deploymentの差分を設定する。```spec.replicas```キー以下は```base```ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+ここでは、Deploymentの差分を設定する。
+
+```spec.replicas```キー以下は```base```ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+
+
 
 ```yaml
 apiVersion: apps/v1
@@ -129,7 +151,11 @@ spec:
   replicas: 3
 ```
 
-ここでは、Deploymentの差分を設定する。```spec.template.spec.containers.resources```キー以下はbaseディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+ここでは、Deploymentの差分を設定する。
+
+```spec.template.spec.containers.resources```キー以下はbaseディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+
+
 
 ```yaml
 apiVersion: apps/v1

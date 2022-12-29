@@ -9,6 +9,8 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,6 +27,8 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 要件とするパッケージのバージョンを指定する。
 
+
+
 ```
 flask==2.0.2
 ```
@@ -39,6 +43,8 @@ flask==2.0.2
 
 インストールされているパッケージ間の依存関係を正しく解決できるか否かを確認する。
 
+
+
 ```bash
 $ pip3 check
 
@@ -46,6 +52,8 @@ No broken requirements found.
 ```
 
 解決できなかった場合は、以下のようなエラーが出力される。
+
+
 
 ```bash
 $ pip3 check
@@ -61,6 +69,8 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 指定したパッケージをインストールする。
 
+
+
 > ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
 
 ```bash
@@ -69,7 +79,11 @@ $ pip3 install <パッケージ名>
 
 #### ▼ --upgrade
 
-pip自身を含む、指定したパッケージをアップグレードする。アップグレード後は、```pip3 check```コマンドで依存関係が正しいかを確認し、```pip3 freeze```コマンドで要件ファイルも更新する必要がある。
+pip自身を含む、指定したパッケージをアップグレードする。
+
+アップグレード後は、```pip3 check```コマンドで依存関係が正しいかを確認し、```pip3 freeze```コマンドで要件ファイルも更新する必要がある。
+
+
 
 ```bash
 $ pip3 install --upgrade <パッケージ名>
@@ -83,6 +97,8 @@ $ pip3 freeze > requirements.txt
 
 アップグレードできるパッケージを一括でアップグレードする場合は、パイプラインと組み合わせる必要がある。
 
+
+
 > ℹ️ 参考：https://gist.github.com/e8l/c20ab194091dd02fafe7
 
 ```bash
@@ -93,6 +109,8 @@ $ pip3 freeze --local \
 ```
 
 pip自身をアップグレードする。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/56499418/what-is-the-use-of-upgrading-pip
 
@@ -110,10 +128,14 @@ $ pip3 install --user <パッケージ名>
 
 バージョン管理とrequirements.txtファイルを元にパッケージをインストールする。
 
+
+
 ```bash
 $ pip3 install -r requirements.txt
 ```
 指定したディレクトリにパッケージをインストールもできる。
+
+
 
 ```bash
 $ pip3 install -r requirements.txt --prefix=/usr/local
@@ -126,6 +148,8 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 #### ▼ freezeとは
 
 pipでインストールされたパッケージを元に、要件ファイルを作成する。
+
+
 
 > ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
 
@@ -150,6 +174,8 @@ $ pip3 freeze > uninstall.txt
 
 現在インストールされているパッケージの一覧を取得する。
 
+
+
 ```bash
 $ pip3 list
 
@@ -167,6 +193,8 @@ zipp                       3.7.0
 ・-o
 
 アップグレードできるパッケージの一覧を取得する。
+
+
 
 ```bash
 $ pip3 list -o
@@ -189,6 +217,8 @@ setuptools         60.5.0  60.9.3 wheel
 #### ▼ showとは
 
 pipでインストールしたパッケージ情報を取得する。
+
+
 
 > ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
 
@@ -218,6 +248,8 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 指定したパッケージをインストールする。
 
+
+
 > ℹ️ 参考：https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
 
 ```bash
@@ -225,6 +257,8 @@ $ pip3 uninstall -y <パッケージ名>
 ```
 
 uninstall.txt を元にパッケージをアンインストールもできる。
+
+
 
 ```bash
 $ pip3 uninstall -y -r uninstall.txt

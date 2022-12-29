@@ -9,6 +9,8 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -25,13 +27,21 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 #### ▼ ステージの種類
 
-CI/CDパイプラインのステップをステージと呼ぶ。build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。ただし、Skaffoldは、基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
+CI/CDパイプラインのステップをステージと呼ぶ。
+
+build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。
+
+ただし、Skaffoldは、基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
+
+
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
 #### ▼ 各ステージのツールの選択
 
 Skaffoldの各ステージでは、それ専用のツールをコールできる。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
@@ -45,6 +55,8 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 
 コンテナイメージのビルド方法を定義する。
 
+
+
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
@@ -54,6 +66,8 @@ Skaffoldの各ステージでは、それ専用のツールをコールできる
 #### ▼ image
 
 ビルドされるイメージの名前を設定する。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-image
 
@@ -69,6 +83,8 @@ build:
 #### ▼ context
 
 マイクロサービスのルートまでのパスを設定する。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/references/yaml/#build-artifacts-context
 
@@ -123,7 +139,11 @@ build:
 
 #### ▼ push
 
-ビルドしたコンテナイメージをリポジトリにプッシュするか否かを設定する。Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
+ビルドしたコンテナイメージをリポジトリにプッシュするか否かを設定する。
+
+Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
+
+
 
 ```yaml
 build:
@@ -133,7 +153,11 @@ build:
 
 #### ▼ useBuildkit
 
-BuildKit機能の有効化を設定する。BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
+BuildKit機能の有効化を設定する。
+
+BuildKitではイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
+
+
 
 > ℹ️ 参考：https://genzouw.com/entry/2021/07/17/100615/2724/
 
@@ -151,6 +175,8 @@ build:
 
 コミットIDをバージョンタグとして設定する。
 
+
+
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
 
 ```yaml
@@ -162,6 +188,8 @@ build:
 #### ▼ sha256
 
 sha256ハッシュ値と```latest```タグをバージョンタグとして設定する。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
 
@@ -175,7 +203,11 @@ build:
 
 ## 03. portForwardステージ
 
-```skaffold run```コマンド時に、同時にポートフォワーディングを実行する。すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
+```skaffold run```コマンド時に、同時にポートフォワーディングを実行する。
+
+すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
+
+
 
 ```yaml
 portForward:
@@ -197,6 +229,8 @@ portForward:
 
 Kubernetesリソースのテスト方法を定義する。
 
+
+
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
@@ -204,6 +238,8 @@ Kubernetesリソースのテスト方法を定義する。
 ### structureTests
 
 ファイルを指定し、コンテナ構造テストを実施する。
+
+
 
 > ℹ️ 参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
 
@@ -232,6 +268,8 @@ fileExistenceTests:
 
 Kubernetesリソースのデプロイ手法を定義する。
 
+
+
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
 <br>
@@ -240,7 +278,11 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 #### ▼ kubectlとは
 
-```kubectl```コマンドを使用して、Kubernetesリソースをデプロイする。ワイルドカードを使用できる。
+```kubectl```コマンドを使用して、Kubernetesリソースをデプロイする。
+
+ワイルドカードを使用できる。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
@@ -259,6 +301,8 @@ deploy:
 #### ▼ helm
 
 Helmを使用して、Kubernetesリソースをデプロイする。
+
+
 
 > ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
 

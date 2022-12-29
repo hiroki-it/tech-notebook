@@ -9,6 +9,8 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,7 +21,15 @@ description: アドオン＠Kubernetesネットワークの知見を記録して
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-plugin.png)
 
-cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。cniアドオンは、kubeletによるPodの起動時に有効化される。
+cniアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。
+
+また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。
+
+これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。
+
+cniアドオンは、kubeletによるPodの起動時に有効化される。
+
+
 
 > ℹ️ 参考：
 >
@@ -34,7 +44,11 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode.png)
 
-オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
+オーバーレイモードは、Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外のcniアドオンはiptables、CiliumアドオンはCilium）、Nodeのネットワークインターフェース（```eth```）、から構成される。
+
+オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
+
+
 
 > ℹ️ 参考：
 >
@@ -61,6 +75,8 @@ cniアドオンで選べるモードごとに異なる仕組みによって、Cl
 
 Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、を使用して、同じNode上のPod間でパケットを送受信する。
 
+
+
 > ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
 
 #### ▼ 同一Node上のPod間通信
@@ -68,6 +84,8 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
 Podのネットワークインターフェース（```eth```）、Nodeの仮想ネットワークインターフェース（```veth```）、Nodeのブリッジ（```cni```）、NATルーター（Cilium以外はiptables、Cilium）、Nodeのネットワークインターフェース（```eth```）を使用して、異なるNode上のPod間でパケットを送受信する。
+
+
 
 > ℹ️ 参考：https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
 
@@ -78,6 +96,8 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 #### ▼ ルーティングモードとは
 
 ルーティングテーブル（```L3```）を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
+
+
 
 > ℹ️ 参考：
 >
@@ -100,6 +120,8 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
+
+
 > ℹ️ 参考：https://www.netstars.co.jp/kubestarblog/k8s-3/
 
 #### ▼ アドオン例
@@ -115,7 +137,15 @@ Podのネットワークインターフェース（```eth```）、Nodeの仮想�
 
 ![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cni-addon_aws-mode.png)
 
-AWSの独自モードは、Podの仮想ネットワークインターフェース（```veth```）、Nodeのネットワークインターフェース（```eth```）、から構成される。AWSでは、Node（EC2、Fargate）上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり```1```個しかPodをスケジューリングできない）。
+AWSの独自モードは、Podの仮想ネットワークインターフェース（```veth```）、Nodeのネットワークインターフェース（```eth```）、から構成される。
+
+AWSでは、Node（EC2、Fargate）上でスケジューリングするPodの数だけNodeにENIを紐づけ、さらにこのENIにVPC由来のプライマリーIPアドレスとセカンダリーIPアドレスの```2```つを付与できる。
+
+NodeのENIとPodを紐づけることにより、PodをVPCのネットワークに参加させ、異なるNode上のPod間を接続する。
+
+Nodeのインスタンスタイプごとに、紐づけられるENI数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する（2022/09/24時点で、Fargateではインスタンスタイプに限らず、Node当たり```1```個しかPodをスケジューリングできない）。
+
+
 
 > ℹ️ 参考：
 >
@@ -150,6 +180,8 @@ CoreDNSのService、CoreDNSのPod、coredns-configmap、から構成される。
 
 CoreDNSはNode内にPodとして稼働しており、これはCoreDNSのServiceによって管理されている。
 
+
+
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-dns/#toc6
 
 ```bash
@@ -179,7 +211,11 @@ coredns-558bd4d5db-ltbxt    1/1     Running   0          1m0s
 
 #### ▼ coredns-configmapとは
 
-ConfigMapに```Corefile```ファイルを配置する。```Corefile```ファイルは、CoreDNSを設定する。
+ConfigMapに```Corefile```ファイルを配置する。
+
+```Corefile```ファイルは、CoreDNSを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
 
@@ -231,7 +267,13 @@ data:
 
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/coredns_service-discovery.png)
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（CoreDNSのService）のIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに 権威DNSサーバー（CoreDNSのService）のIPアドレスを設定する。
+
+Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。
+
+このServiceのIPアドレスを指定し、Podにアウトバウンド通信を送信する。
+
+
 
 > ℹ️ 参考：
 >
@@ -264,7 +306,11 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 #### ▼ レコードタイプ別の完全修飾ドメイン名とは
 
-Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。レコードタイプごとに、完全修飾ドメイン名が異なる。
+Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が割り当てられている。
+
+レコードタイプごとに、完全修飾ドメイン名が異なる。
+
+
 
 #### ▼ ```A/AAAA```レコードの場合
 
@@ -292,7 +338,13 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ Pod内からServiceに対する正引き名前解決
 
-Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。
+
+Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。
+
+完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+
+
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -309,6 +361,8 @@ Address:  10.105.157.184
 ```
 
 ちなみに、異なるNamespaceに属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+
+
 
 ```bash
 # Pod内のコンテナから正引きの名前解決を行う。
@@ -377,7 +431,11 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 #### ▼ Serviceを介したアウトバウンド通信の送信
 
-Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。完全修飾ドメイン名またはIPアドレスを指定できる。
+Serviceを介して、宛先のPodにHTTPSプロトコルでアウトバウンド通信を送信する。
+
+完全修飾ドメイン名またはIPアドレスを指定できる。
+
+
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -393,6 +451,8 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 ### Podの直接的な名前解決の仕組み
 
 Serviceの名前解決を介さずに、特定のPodのインスタンスに対して直接的に名前解決することもできる。
+
+
 
 <br>
 

@@ -8,6 +8,8 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -34,6 +36,8 @@ $ yum install -y nodejs
 
 パッケージの作成者名を設定する。
 
+
+
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
 
 ```yaml
@@ -49,6 +53,8 @@ $ yum install -y nodejs
 #### ▼ bug
 
 不具合の報告先のURLを設定する。
+
+
 
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
 
@@ -109,6 +115,8 @@ $ yum install -y nodejs
 
 パッケージのディレクトリ構造を設定する。
 
+
+
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
 
 ```yaml
@@ -122,7 +130,11 @@ $ yum install -y nodejs
 
 #### ▼ engines
 
-```npm```コマンドのバージョンを設定する。使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗させるようにする。
+```npm```コマンドのバージョンを設定する。
+
+使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗させるようにする。
+
+
 
 > ℹ️ 参考：https://qiita.com/suin/items/994458418c737cc9c3e8
 
@@ -139,6 +151,8 @@ $ yum install -y nodejs
 
 パッケージを説明するWebサイトのリンクを設定する。
 
+
+
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
 
 ```yaml
@@ -151,6 +165,8 @@ $ yum install -y nodejs
 
 エントリポイントとなるファイルを設定する。
 
+
+
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
 
 ```yaml
@@ -161,7 +177,11 @@ $ yum install -y nodejs
 
 #### ▼ name
 
-npmパッケージ名を設定する。全てのnpmパッケージの中で、一意の名前でなければならない。
+npmパッケージ名を設定する。
+
+全てのnpmパッケージの中で、一意の名前でなければならない。
+
+
 
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
 
@@ -203,6 +223,8 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 
 パッケージのバージョンを設定する。
 
+
+
 > ℹ️ 参考：https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
 
 
@@ -218,6 +240,8 @@ npmパッケージ名を設定する。全てのnpmパッケージの中で、�
 
 Composerの```composer.lock```ファイルに相当する。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_management.html
 
 <br>
@@ -230,6 +254,8 @@ Composerの```composer.lock```ファイルに相当する。
 
 プロジェクトの```package.json```ファイルを作成する。
 
+
+
 ```bash
 $ npm init
 ```
@@ -240,7 +266,11 @@ $ npm init
 
 #### ▼ installとは
 
-アプリケーションにて、```package.lock```ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。```package.lock```ファイルのおかげで、リポジトリの利用者が、```npm install```の実行時に、共通のバージョンのパッケージをインストールできる。
+アプリケーションにて、```package.lock```ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。
+
+```package.lock```ファイルのおかげで、リポジトリの利用者が、```npm install```の実行時に、共通のバージョンのパッケージをインストールできる。
+
+
 
 ```bash
 $ npm install
@@ -248,13 +278,19 @@ $ npm install
 
 指定したパッケージをインストールもできる。
 
+
+
 ```bash
 $ npm install <パッケージ名>
 ```
 
 #### ▼ --force
 
-パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止する場合がある。これを無視してインストールを行う。
+パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止する場合がある。
+
+これを無視してインストールを行う。
+
+
 
 ```bash
 $ npm install --force
@@ -262,7 +298,11 @@ $ npm install --force
 
 #### ▼ --save
 
-デフォルトで有効化されている。パッケージのインストール時に、依存するパッケージとして、```dependencies```キーにパッケージ名とバージョンを書き込む。
+デフォルトで有効化されている。
+
+パッケージのインストール時に、依存するパッケージとして、```dependencies```キーにパッケージ名とバージョンを書き込む。
+
+
 
 ```bash
 $ npm install --save
@@ -276,6 +316,8 @@ $ npm install --save
 
 全てのパッケージのバージョンを、```package.json```ファイルの範囲内でアップグレードする。
 
+
+
 ```bash
 $ npm update
 ```
@@ -288,11 +330,19 @@ $ npm update
 
 ユーザーが定義したエイリアス名のコマンドを実行する。
 
+
+
 ```bash
 $ npm run <エイリアス名>
 ```
 
-あらかじめ、任意のエイリアス名を```scripts```キー下に定義する。エイリアスの中で、実行するコマンドのセットを定義する。ちなみに、実行するコマンドの中で、再び```npm run```コマンドも定義できる。
+あらかじめ、任意のエイリアス名を```scripts```キー下に定義する。
+
+エイリアスの中で、実行するコマンドのセットを定義する。
+
+ちなみに、実行するコマンドの中で、再び```npm run```コマンドも定義できる。
+
+
 
 ```yaml
 {
@@ -314,6 +364,8 @@ $ npm run <エイリアス名>
 ### NODE_OPTIONS
 
 メモリ上限を設定する。
+
+
 
 ```bash
 $ export NODE_OPTIONS="--max-old-space-size=2048"
@@ -347,11 +399,15 @@ $ npm install --global yarn
 
 Npmと同じ。
 
+
+
 <br>
 
 ### ```yarn.lock```ファイル
 
 Composerの```composer.lock```ファイルに相当する。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_package_management.html
 
@@ -363,11 +419,15 @@ Composerの```composer.lock```ファイルに相当する。
 
 指定したパッケージのバージョンを、```package.json```ファイルを無視してインストールする。
 
+
+
 ```bash
 $ yarn add <パッケージ名>@<バージョンタグ>
 ```
 
 特定のパッケージのバージョンを検証する場合は、```yarn remove```コマンドと```yarn add```コマンドを使用する。
+
+
 
 ```bash
 $ yarn remove foo && yarn add foo@<バージョンタグ>
@@ -381,6 +441,8 @@ $ yarn remove foo && yarn add foo@<バージョンタグ>
 
 指定したバージョンのパッケージを、```package.json```ファイルの範囲内でインストールする。
 
+
+
 ```bash
 $ yarn add <パッケージ名>@<バージョンタグ>
 ```
@@ -388,6 +450,8 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 #### ▼ --check-files
 
 必要なパッケージが```node_modules```ディレクトリ内にインストールされているかを確認しつつ、不足があれば```install```コマンドを実行する。
+
+
 
 > ℹ️ 参考：https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
@@ -401,6 +465,8 @@ $ yarn install --check-files
 
 指定したパッケージのバージョンを取得する。
 
+
+
 ```bash
 $ yarn list --depth=0 | grep <パッケージ名>
 ```
@@ -410,6 +476,8 @@ $ yarn list --depth=0 | grep <パッケージ名>
 ### remove
 
 指定したパッケージをアンインストールする。
+
+
 
 ```bash
 $ yarn remove <パッケージ名>
@@ -423,6 +491,8 @@ $ yarn remove <パッケージ名>
 
 指定したパッケージを```package.json```ファイルの範囲内でアップグレードする。
 
+
+
 > ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
 ```bash
@@ -432,6 +502,8 @@ $ yarn upgrade <パッケージ名>@<バージョンタグ>
 #### ▼ latest
 
 全てのパッケージを、```package.json```ファイルを無視して最新までアップグレードする。
+
+
 
 > ℹ️ 参考：https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
 
@@ -447,13 +519,19 @@ $ yarn upgrade --latest
 
 #### ▼ 読み込むパッケージをまとめる
 
-JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.html```ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
+JavaScriptファイルを読み込むscriptタグを1つにまとめる。
+
+```.html```ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
+
+
 
 > ℹ️ 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 
 以下のような```.html```ファイルがあるとする。
+
+
 
 ```html
 <!DOCTYPE html>
@@ -470,6 +548,8 @@ JavaScriptファイルを読み込むscriptタグを1つにまとめる。```.ht
 ```
 
 モジュールバンドルは、scriptタグでのパッケージの読み出しをまとめる。
+
+
 
 ```html
 <!DOCTYPE html>

@@ -9,13 +9,19 @@ description: ansible.cfg＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. ```ansible.cfg```ファイル
 
-Ansible自体を設定する。代わりに、環境変数を使用しても良い。
+Ansible自体を設定する。
+
+代わりに、環境変数を使用しても良い。
+
+
 
 > ℹ️ 参考：
 > 
@@ -47,6 +53,8 @@ hostfile = /etc/ansible/inventories
 
 タスクの実行ユーザーを設定する。
 
+
+
 > ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ```ini
@@ -62,6 +70,8 @@ remote_user = ansible
 
 管理対象ノードへのSSH接続に使用する秘密鍵を設定する。
 
+
+
 > ℹ️ 参考：https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
 ```ini
@@ -76,6 +86,8 @@ private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 #### ▼ host_key_checkingとは
 
 管理対象ノードに関するフィンガープリント値が作成されているか否かを検証する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -96,6 +108,8 @@ host_key_checking = False
 #### ▼ host_pattern_mismatchとは
 
 管理対象ノードがinventoryファイルに見つからない場合の返却値を設定する。
+
+
 
 > ℹ️ 参考：
 > 

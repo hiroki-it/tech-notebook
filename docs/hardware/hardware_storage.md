@@ -9,6 +9,8 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,7 +20,11 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 
 ### ストレージ（ディスク）とは
 
-『ディスク』ともいう。データを永続化できる不揮発的な記憶装置のこと。
+『ディスク』ともいう。
+
+データを永続化できる不揮発的な記憶装置のこと。
+
+
 
 <br>
 
@@ -26,11 +32,21 @@ description: ストレージ＠ハードウェアの知見を記録していま�
 
 HDDとSSDがある。
 
+
+
 <br>
 
 ### 仮想ドライブ
 
-ストレージ上に作成される仮想的なストレージのこと。単に『ドライブ』ともいう。Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
+ストレージ上に作成される仮想的なストレージのこと。
+
+単に『ドライブ』ともいう。
+
+Google Driveのストリーミング機能では、仮想ドライブをローカルマシン上に作成する。
+
+仮想ドライブ上のファイルを変更すると、Google Driveにその状態が同期される。
+
+
 
 > ℹ️ 参考：
 >
@@ -47,6 +63,8 @@ HDDとSSDがある。
 
 断片化されたデータ領域を整理整頓する。
 
+
+
 > ℹ️ 参考：https://www.amazon.co.jp/dp/4297124513
 
 ![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p184-1.png)
@@ -56,6 +74,8 @@ HDDとSSDがある。
 #### ▼ RAID：Redundant Arrays of Inexpensive Disks
 
 複数のHDDを仮想的に統合し、1つのHDDであるかのように見せかける。
+
+
 
 > ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 

@@ -9,6 +9,8 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -17,7 +19,11 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 ### アーキテクチャ
 
-Grafanaは、ダッシュボードとストレージから構成されている。PromQLに基づいて、収集されたメトリクスを可視化する。
+Grafanaは、ダッシュボードとストレージから構成されている。
+
+PromQLに基づいて、収集されたメトリクスを可視化する。
+
+
 
 > ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 

@@ -9,6 +9,8 @@ description: カスタムリソース@Kubernetesの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -18,6 +20,8 @@ description: カスタムリソース@Kubernetesの知見を記録していま�
 ### カスタムリソースとは
 
 Kubernetesに標準で備わっていないKubernetesリソースを提供する。
+
+
 
 > ℹ️ 参考：
 >
@@ -29,6 +33,8 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 ### カスタムリソース固有の問題
 
 メモ程度に、カスタムリソースで起こった固有の問題を記載しておく。
+
+
 
 | 問題                                                                                                                         | 解決策                                                                                                                                              | 該当のカスタムリソース |
 |----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
@@ -52,6 +58,8 @@ the server could not find the requested resource
 
 カスタムリソース定義とカスタムリソースを含むチャートをインストールする。
 
+
+
 <br>
 
 ### カスタムコントローラーによる管理
@@ -60,9 +68,13 @@ the server could not find the requested resource
 
 カスタムコントローラーのマニフェストを送信し、後はカスタムコントローラーにカスタムリソースを作成させる。
 
+
+
 #### ▼ チャートとして
 
 カスタムコントローラーのチャートをインストールし、後はカスタムコントローラーにカスタムリソースを作成させる。
+
+
 
 <br>
 
@@ -80,6 +92,8 @@ the server could not find the requested resource
 ### apiVersion
 
 カスタムリソース定義自体のAPIグループの名前を設定する。
+
+
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -106,7 +120,13 @@ metadata:
 
 #### ▼ groupとは
 
-カスタムリソースが属するAPIグループの名前を設定する。例えば『```example.com```』というグループに定義とすると、```example.com/v1```というAPIからコールできるようになる。カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
+カスタムリソースが属するAPIグループの名前を設定する。
+
+例えば『```example.com```』というグループに定義とすると、```example.com/v1```というAPIからコールできるようになる。
+
+カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。
+
+
 
 > ℹ️ 参考：
 >
@@ -127,6 +147,8 @@ spec:
 #### ▼ scopeとは
 
 カスタムリソースがNamespaceあるいはClusterのいずれかに属するかを設定する。
+
+
 
 > ℹ️ 参考：
 >
@@ -150,9 +172,15 @@ spec:
 
 カスタムリソースの様々な場面での名前を設定する。
 
+
+
 #### ▼ kind
 
-カスタムリソースの```kind```キー名を設定する。例えば『```Foo```』という宣言名にすると、マニフェストの```kind```キーで、```Foo```というカスタムリソース名で使用できるようになる。
+カスタムリソースの```kind```キー名を設定する。
+
+例えば『```Foo```』という宣言名にすると、マニフェストの```kind```キーで、```Foo```というカスタムリソース名で使用できるようになる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -178,6 +206,8 @@ spec:
 
 カスタムリソースをAPIからコールする時のURLで使用するリソースの複数形名を設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
 ```yaml
@@ -193,6 +223,8 @@ spec:
 #### ▼ singular
 
 ```kubectl```コマンドで使用するカスタムリソースの単数形名を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -213,6 +245,8 @@ $ kubectl get foo
 #### ▼ shortNames
 
 ```kubectl```コマンドで使用するカスタムリソースの省略名を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -237,7 +271,11 @@ $ kubectl get fo
 
 #### ▼ name
 
-APIのバージョン名を設定する。例えば『```v1```』というstring型のキーを設定すると、マニフェストの```apiVersion```で、```/v1```を最後につけてコールすることになる。
+APIのバージョン名を設定する。
+
+例えば『```v1```』というstring型のキーを設定すると、マニフェストの```apiVersion```で、```/v1```を最後につけてコールすることになる。
+
+
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
@@ -253,7 +291,11 @@ spec:
 
 #### ▼ served
 
-APIのバージョンを有効化するかを設定する。もしカスタムリソースに複数のバージョンが存在する場合、旧バージョンを無効化し、マニフェストで使用できないようにできる。
+APIのバージョンを有効化するかを設定する。
+
+もしカスタムリソースに複数のバージョンが存在する場合、旧バージョンを無効化し、マニフェストで使用できないようにできる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 
@@ -269,7 +311,13 @@ spec:
 
 #### ▼ schema
 
-カスタムリソースの```spec```キー以下に設定できるキーを設定する。例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```spec.message```キーに任意の文字列を設定できるようになる。カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
+カスタムリソースの```spec```キー以下に設定できるキーを設定する。
+
+例えば『```message```』というstring型のキーを設定すると、カスタムリソースの```spec.message```キーに任意の文字列を設定できるようになる。
+
+カスタムリソース内部のPodのデプロイ戦略は、Deployment、StatefulSet、DaemonSet、の設定値によって決まることになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -297,6 +345,8 @@ spec:
 #### ▼ storage
 
 APIのバージョンをetcdのストレージに保存してもよいどうかを設定する。
+
+
 
 > ℹ️ 参考：
 >
@@ -335,6 +385,8 @@ spec:
 
 カスタムコントローラーを自前で実装する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
@@ -347,6 +399,8 @@ spec:
 ### Operatorパターンとは
 
 カスタムコントローラーを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
+
+
 
 > ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/
 
@@ -413,7 +467,11 @@ operator-controllerがkube-apiserverにリクエストを送信できるよう�
 
 #### ▼ OperatorFrameworkとは
 
-Operatorを開発するためのフレームワークのこと。OperatorHubで公開されている。
+Operatorを開発するためのフレームワークのこと。
+
+OperatorHubで公開されている。
+
+
 
 > ℹ️ 参考：
 > 
@@ -424,9 +482,13 @@ Operatorを開発するためのフレームワークのこと。OperatorHubで�
 
 Operatorを、開発、テスト、リリース、ために必要なツールを提供する。
 
+
+
 #### ▼ Operator Lifecycle Manager
 
 Operatorの、作成、削除、を管理する。
+
+
 
 #### ▼ Operator Metering
 

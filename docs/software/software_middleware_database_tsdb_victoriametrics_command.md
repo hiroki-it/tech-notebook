@@ -9,6 +9,8 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -17,7 +19,11 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 ### -downsampling.period
 
-特定の日数以前のデータポイントをダウンサンプリングすることにより、指定日以前のタイプスタンプのデータポイントを数学的に集約し、単一の値に変換する。データポイント数が少なくなるため、ストレージ容量を節約できる。
+特定の日数以前のデータポイントをダウンサンプリングすることにより、指定日以前のタイプスタンプのデータポイントを数学的に集約し、単一の値に変換する。
+
+データポイント数が少なくなるため、ストレージ容量を節約できる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -29,6 +35,8 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 ```30```日以前のデータを```5```分ごとダウンサンプリングにする。
 
+
+
 ```bash
 $ victoria-metrics-prod -downsampling.period=30d:5m
 ```
@@ -37,7 +45,15 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 
 ### -dedup.minScrapeInterval
 
-データポイントを重複排除することにより、特定の期間の中で最新のデータポイントを残す。重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。冗長化されたメトリクス収集ツールのインスタンスが単一のVictoriaMetricsにメトリクスを送信する場合、特定の期間には冗長化されたインスタンスが送信した同じデータポイントが存在することになる。この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。
+データポイントを重複排除することにより、特定の期間の中で最新のデータポイントを残す。
+
+重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。
+
+冗長化されたメトリクス収集ツールのインスタンスが単一のVictoriaMetricsにメトリクスを送信する場合、特定の期間には冗長化されたインスタンスが送信した同じデータポイントが存在することになる。
+
+この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。
+
+
 
 > ℹ️ 参考：
 > 
@@ -57,6 +73,8 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 
 インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。
 
+
+
 **＊例＊**
 
 ```bash
@@ -67,7 +85,11 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 ### -storageDataPath
 
-メトリクスを保管するディレクトリを設定する。設定したディレクトリ配下に```data```ディレクトリを作成し、これの配下にメトリクスを保管する。
+メトリクスを保管するディレクトリを設定する。
+
+設定したディレクトリ配下に```data```ディレクトリを作成し、これの配下にメトリクスを保管する。
+
+
 
 > ℹ️ 参考：https://docs.victoriametrics.com/#storage
 
@@ -81,7 +103,11 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 ### -retentionPeriod
 
-メトリクスの保管期間を設定する。```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし（```month```）で期間の単位を指定できる。
+メトリクスの保管期間を設定する。
+
+```h(ours)```、```d(ays)```、```w(eeks)```、```y(ears)```、単位なし（```month```）で期間の単位を指定できる。
+
+
 
 > ℹ️ 参考：
 > 
@@ -99,7 +125,11 @@ $ victoria-metrics-prod -retentionPeriod=90d
 
 ### -storage.cacheSizeIndexDBDataBlocks
 
-転置インデックスのデータブロックの上限キャッシュサイズを設定する。デフォルトでは、キャッシュを作成しない。
+転置インデックスのデータブロックの上限キャッシュサイズを設定する。
+
+デフォルトでは、キャッシュを作成しない。
+
+
 
 **＊例＊**
 
@@ -111,7 +141,11 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBDataBlocks=0
 
 ### -storage.cacheSizeIndexDBIndexBlocks
 
-転置インデックスのインデックスブロックの上限キャッシュサイズを設定する。デフォルトでは、キャッシュを作成しない。
+転置インデックスのインデックスブロックの上限キャッシュサイズを設定する。
+
+デフォルトでは、キャッシュを作成しない。
+
+
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0
@@ -121,7 +155,11 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0
 
 ### -storage.cacheSizeIndexDBTagFilters
 
-転置インデックスのタグフィルターの上限キャッシュサイズを設定する。デフォルトでは、キャッシュを作成しない。
+転置インデックスのタグフィルターの上限キャッシュサイズを設定する。
+
+デフォルトでは、キャッシュを作成しない。
+
+
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0

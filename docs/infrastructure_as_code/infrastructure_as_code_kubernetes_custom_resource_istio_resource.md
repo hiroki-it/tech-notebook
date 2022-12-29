@@ -9,6 +9,8 @@ description: リソース＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,11 +22,15 @@ description: リソース＠Istioの知見を記録しています。
 
 Istioの各コンポーネントのことにより、Kubernetesのカスタムリソースとして定義されている。
 
+
+
 <br>
 
 ### Istioオブジェクト
 
 マニフェストによって量産されたIstioリソースのインスタンスのこと。
+
+
 
 <br>
 
@@ -34,7 +40,11 @@ Istioの各コンポーネントのことにより、Kubernetesのカスタム�
 
 #### ▼ IngressGatewayとは
 
-Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。KubernetesリソースのIngressの代わりとして使用できる。
+Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。
+
+KubernetesリソースのIngressの代わりとして使用できる。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 
@@ -51,6 +61,8 @@ IngressGatewayは、```istio-ingressgateway```というService（NodePort Servic
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
 Serviceは、おおよそGatewayの設定で決まる。
+
+
 
 ```yaml
 apiVersion: v1
@@ -88,6 +100,8 @@ spec:
 ```
 
 Podは、おおよそVirtualServiceの設定で決まる。
+
+
 
 ```yaml
 apiVersion: v1
@@ -134,6 +148,8 @@ spec:
 
 IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
+
+
 > ℹ️ 参考：
 >
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
@@ -147,7 +163,13 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway_virtual-service.png)
 
-IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする能力を担う。ルーティング先のServiceは、Istioのコンポーネントではないに注意する。ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
+IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする能力を担う。
+
+ルーティング先のServiceは、Istioのコンポーネントではないに注意する。
+
+ルーティング先のServiceが見つからないと、```404```ステータスを返信する。
+
+
 
 > ℹ️ 参考：
 >
@@ -158,6 +180,8 @@ IngressGatewayの能力のうち、IngressGatewayで受信したインバウン�
 #### ▼ Envoyの設定値として
 
 VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioリソースに適用される。
+
+
 
 > ℹ️ 参考：
 >
@@ -184,6 +208,8 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
 
+
+
 > ℹ️ 参考：https://knowledge.sakura.ad.jp/20489/
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
@@ -195,6 +221,8 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 #### ▼ ServiceEntryとは
 
 コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
+
+
 
 > ℹ️ 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 

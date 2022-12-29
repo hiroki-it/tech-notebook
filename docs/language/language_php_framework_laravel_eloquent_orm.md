@@ -9,13 +9,21 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. Eloquent ORMとは
 
-Laravelに組み込まれているORM。Active Recordパターンで実装されている。内部にはPDOが使用されており、Laravelクエリビルダよりも隠蔽度が高い。
+Laravelに組み込まれているORM。
+
+Active Recordパターンで実装されている。
+
+内部にはPDOが使用されており、Laravelクエリビルダよりも隠蔽度が高い。
+
+
 
 > ℹ️ 参考：
 >
@@ -28,7 +36,15 @@ Laravelに組み込まれているORM。Active Recordパターンで実装され
 
 ### Active Recordパターンとは
 
-テーブルとモデルが一対一の関係になるデザインパターンのこと。加えて、テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される。ビジネスロジックが複雑でないアプリケーションの開発に適している。オブジェクト間の依存関係については、以下のリンクを参考せよ。
+テーブルとモデルが一対一の関係になるデザインパターンのこと。
+
+加えて、テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される。
+
+ビジネスロジックが複雑でないアプリケーションの開発に適している。
+
+オブジェクト間の依存関係については、以下のリンクを参考せよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
@@ -54,6 +70,8 @@ Laravelに組み込まれているORM。Active Recordパターンで実装され
 
 Eloquentモデルを継承したクラスは、```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -72,7 +90,15 @@ class Foo extends Model
 
 #### ▼ テーブルの定義
 
-テーブルを定義するため、```table```プロパティにテーブル名を割り当てる。ただし、```table```プロパティにテーブル名を代入する必要はない。Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を```table```プロパティに自動的に代入する。また、テーブル名を独自で命名したい場合は、代入によるOverrideを行っても良い。
+テーブルを定義するため、```table```プロパティにテーブル名を割り当てる。
+
+ただし、```table```プロパティにテーブル名を代入する必要はない。
+
+Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を```table```プロパティに自動的に代入する。
+
+また、テーブル名を独自で命名したい場合は、代入によるOverrideを行っても良い。
+
+
 
 **＊実装例＊**
 
@@ -94,7 +120,11 @@ class Foo extends Model
 
 #### ▼ テーブル間リレーションシップの定義
 
-ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。```hasOne```メソッド、```hasMany```メソッド、```belongsTo```メソッドを使用して表す。
+ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。
+
+```hasOne```メソッド、```hasMany```メソッド、```belongsTo```メソッドを使用して表す。
+
+
 
 > ℹ️ 参考：
 >
@@ -104,11 +134,15 @@ ER図における各テーブルのリレーションシップを元に、モデ
 
 ER図については、以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_analysis_and_design.html
 
 **＊実装例＊**
 
 Departmentモデルで、```hasMany```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
+
+
 
 ```php
 <?php
@@ -138,6 +172,8 @@ class Department extends Model
 
 また、Employeesモデルでは、```belongsTo```メソッドを使用して、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
 
+
+
 ```php
 <?php
 
@@ -164,7 +200,11 @@ class Employee extends Model
 }
 ```
 
-リレーションを基にJOIN句のSQLを発行するために、Departmentモデル（親）の```hasMany```メソッドを実行する。これにより、DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる。
+リレーションを基にJOIN句のSQLを発行するために、Departmentモデル（親）の```hasMany```メソッドを実行する。
+
+これにより、DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる。
+
+
 
 ```php
 <?php
@@ -178,7 +218,11 @@ $employees = $department->employees()
 
 #### ▼ 主キーカラムの定義
 
-Eloquentは、```primaryKey```プロパティの値を主キーのカラム名と見なす。```keyType```プロパティで主キーのデータ型、また```incrementing```プロパティで主キーの自動増分を有効化するか否か、を設定できる。
+Eloquentは、```primaryKey```プロパティの値を主キーのカラム名と見なす。
+
+```keyType```プロパティで主キーのデータ型、また```incrementing```プロパティで主キーの自動増分を有効化するか否か、を設定できる。
+
+
 
 **＊実装例＊**
 
@@ -210,7 +254,11 @@ class Foo extends Model
 
 #### ▼ TIMESTAMP型カラムの定義
 
-Eloquentは、```timestamps```プロパティの値が```true```の時に、Eloquentモデルに紐付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する。また、TIMESTAMP型カラム名を独自で命名したい場合は、代入によるOverideを行っても良い。
+Eloquentは、```timestamps```プロパティの値が```true```の時に、Eloquentモデルに紐付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する。
+
+また、TIMESTAMP型カラム名を独自で命名したい場合は、代入によるOverideを行っても良い。
+
+
 
 **＊実装例＊**
 
@@ -237,6 +285,8 @@ class Foo extends Model
 #### ▼ TIMESTAMP型カラム読み出し時のデータ型変換
 
 DBからタイムスタンプ型カラムを読み出すと同時に、CarbonのDateTimeクラスに変換したい場合、```data```プロパティにて、カラム名を設定する。
+
+
 
 **＊実装例＊**
 
@@ -268,6 +318,8 @@ class User extends Model
 
 特定のカラムのデフォルト値を設定したい場合、```attributes```プロパティにて、カラム名と値を定義する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -292,7 +344,11 @@ class Foo extends Model
 
 #### ▼ 変更できる/できないカラムの定義
 
-変更できるカラム名を```fillable```プロパティを使用して定義する。カラムが増えるたびに、実装する必要がある。
+変更できるカラム名を```fillable```プロパティを使用して定義する。
+
+カラムが増えるたびに、実装する必要がある。
+
+
 
 **＊実装例＊**
 
@@ -316,7 +372,11 @@ class Foo extends Model
 }
 ```
 
-もしくは、変更できないカラム名を```guarded```プロパティで定義する。これらのいずれかの設定は、Eloquentモデルで必須である。
+もしくは、変更できないカラム名を```guarded```プロパティで定義する。
+
+これらのいずれかの設定は、Eloquentモデルで必須である。
+
+
 
 ```php
 <?php
@@ -344,7 +404,13 @@ class Foo extends Model
 
 #### ▼ セッター
 
-Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。そのため、こを使用せずに、```constructor```メソッドを使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
+Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。
+
+しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。
+
+そのため、こを使用せずに、```constructor```メソッドを使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
+
+
 
 **＊実装例＊**
 
@@ -364,6 +430,8 @@ class Foo extends Model
 
     /**
      * 名前を取得します。
+
+
      *
      * @return string
      */
@@ -376,7 +444,11 @@ class Foo extends Model
 
 #### ▼ ゲッター
 
-Laravelでは、```getFooBarAttribute```という名前のメソッドを、```foo_bar```という名前でコールできる。一見、プロパティをコールしているように見えるため、注意が必要である。
+Laravelでは、```getFooBarAttribute```という名前のメソッドを、```foo_bar```という名前でコールできる。
+
+一見、プロパティをコールしているように見えるため、注意が必要である。
+
+
 
 **＊実装例＊**
 
@@ -396,6 +468,8 @@ class Foo extends Model
 
     /**
      * 名前を取得します。
+
+
      *
      * @return string
      */
@@ -422,6 +496,8 @@ $fooName = $foo->name;
 #### ▼ シリアライズ
 
 フロントエンドとバックエンド間、またバックエンドとDB間のデータ送信のために、配列型オブジェクトをJSONに変換する処理はシリアライズである。
+
+
 
 **＊実装例＊**
 
@@ -456,6 +532,8 @@ return $users->toArray();
 
 フロントエンドとバックエンド間、またバックエンドとDB間のデータ送信のために、JSONを配列型オブジェクトに変換する処理はデシリアライズである。
 
+
+
 <br>
 
 ### フィルタリング
@@ -463,6 +541,8 @@ return $users->toArray();
 #### ▼ ```filter```メソッド
 
 コールバック関数の返却値が```true```であった要素を全て抽出する。
+
+
 
 **＊実装例＊**
 
@@ -480,6 +560,8 @@ $filtered->all();
 ```
 
 ちなみに、複数の条件を設定したい時は、早期リターンを使用する必要がある。
+
+
 
 **＊実装例＊**
 
@@ -506,6 +588,8 @@ $filtered->all();
 
 コールバック関数の返却値が```true```であった最初の要素のみを抽出する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -527,7 +611,13 @@ $filtered = $collection->first(function ($value, $key) {
 
 #### ▼ CRUDメソッドを持つクラス
 
-Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。どちらの方法でコールしても同じである。
+Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。
+
+Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ、より上位クラスのメソッドをコールできる。
+
+どちらの方法でコールしても同じである。
+
+
 
 > ℹ️ 参考：
 >
@@ -543,7 +633,11 @@ Eloquentモデルを継承すると、以下のクラスからメソッドをコ
 
 #### ▼ Eloquentビルダー
 
-Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。その他のメソッドについては、以下のリンクを参考にせよ。
+Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。
+
+その他のメソッドについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
@@ -556,7 +650,11 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 #### ▼ Eloquentモデル
 
-Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。その他のメソッドについては、以下のリンクを参考にせよ。
+Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。
+
+その他のメソッドについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
@@ -572,7 +670,21 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 #### ▼ ```create```メソッド
 
-INSERT文を実行する。Eloquentモデルには```create```メソッドがないため、代わりにEloquentビルダーが持つ```create```メソッドがコールされる。```create```メソッドに挿入先のカラムと値を渡し、これを実行する。別の方法として、Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行しても良い。```save```メソッドはUPDATE処理も実行できるが、```fill```メソッドでID値を割り当てない場合は、CREATE処理が実行される。```create```メソッドまたは```save```メソッドによるCREATE処理では、レコードの挿入後に、```lastInsertId```メソッドに相当する処理が実行される。これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。
+INSERT文を実行する。
+
+Eloquentモデルには```create```メソッドがないため、代わりにEloquentビルダーが持つ```create```メソッドがコールされる。
+
+```create```メソッドに挿入先のカラムと値を渡し、これを実行する。
+
+別の方法として、Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行しても良い。
+
+```save```メソッドはUPDATE処理も実行できるが、```fill```メソッドでID値を割り当てない場合は、CREATE処理が実行される。
+
+```create```メソッドまたは```save```メソッドによるCREATE処理では、レコードの挿入後に、```lastInsertId```メソッドに相当する処理が実行される。
+
+これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。
+
+
 
 > ℹ️ 参考：
 >
@@ -616,6 +728,8 @@ class FooController extends Controller
 
 Eloquentモデルには```fillable```プロパティを設定しておく。
 
+
+
 ```php
 <?php
 
@@ -639,7 +753,17 @@ class FooDTO extends Model
 
 #### ▼ ```all```メソッド
 
-レコードを全て取得するSELECT句を発行する。MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、```orderBy```メソッドを使用して、明示的に並び替えるようにする。Eloquentモデルには```all```メソッドがないため、代わりにEloquentビルダーが持つ```all```メソッドがコールされる。全てのプライマリーキーのCollection型を配列型として返却する。```toArray```メソッドで配列型に再帰的に変換できる。
+レコードを全て取得するSELECT句を発行する。
+
+MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、```orderBy```メソッドを使用して、明示的に並び替えるようにする。
+
+Eloquentモデルには```all```メソッドがないため、代わりにEloquentビルダーが持つ```all```メソッドがコールされる。
+
+全てのプライマリーキーのCollection型を配列型として返却する。
+
+```toArray```メソッドで配列型に再帰的に変換できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -674,7 +798,15 @@ class FooController extends Controller
 
 #### ▼ ```find```メソッド
 
-レコードを1つ取得するSELECT句を発行する。Eloquentモデルには```find```メソッドがないため、代わりにEloquentビルダーが持つ```find```メソッドがコールされる。引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。```toArray```メソッドで配列型に変換できる。
+レコードを1つ取得するSELECT句を発行する。
+
+Eloquentモデルには```find```メソッドがないため、代わりにEloquentビルダーが持つ```find```メソッドがコールされる。
+
+引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。
+
+```toArray```メソッドで配列型に変換できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -709,7 +841,15 @@ class FooController extends Controller
 
 #### ▼ ```first```メソッド
 
-取得されたコレクション型データの1つ目の要素の値を取得する。ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。foreachを使用してコレクションからEloquentモデルを取り出してもよいが、無駄が多い。そこで、```first```メソッドを使用して、Eloquentモデルを直接的に取得する。
+取得されたコレクション型データの1つ目の要素の値を取得する。
+
+ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。
+
+foreachを使用してコレクションからEloquentモデルを取り出してもよいが、無駄が多い。
+
+そこで、```first```メソッドを使用して、Eloquentモデルを直接的に取得する。
+
+
 
 **＊実装例＊**
 
@@ -740,7 +880,13 @@ class FooController extends Controller
 
 #### ▼ ```limit```メソッド、```offset```メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。これらのパラメーターはクエリパラメーターとして渡すと良い。
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。
+
+これにより、ページネーションで、1ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。
+
+これらのパラメーターはクエリパラメーターとして渡すと良い。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -775,7 +921,13 @@ class FooController extends Controller
 
 #### ▼ ```orderBy```メソッド
 
-指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを使用する。プライマリーキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを使用して、プライマリーキーの昇順を明示的に設定する。
+指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。
+
+並び替えた結果を取得するためには、```get```メソッドを使用する。
+
+プライマリーキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを使用して、プライマリーキーの昇順を明示的に設定する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -820,6 +972,8 @@ class FooController extends Controller
 
 指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
 **＊実装例＊**
@@ -851,6 +1005,8 @@ class FooController extends Controller
 
 指定したカラムの降順でレコードを並び替えるSELECT句を発行する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
 ```php
@@ -878,17 +1034,33 @@ class FooController extends Controller
 
 #### ▼ ```with```メソッド
 
-親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。この仕組みをEagerロードという。Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。テーブル間に一対多（親子）のリレーションシップがある場合に使用する。N+1問題を防げる。
+親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。
+
+この仕組みをEagerロードという。
+
+Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。
+
+テーブル間に一対多（親子）のリレーションシップがある場合に使用する。
+
+N+1問題を防げる。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
 ただし、```with```メソッドに他のメソッドをチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。
 
+
+
 > ℹ️ 参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
 
 **＊実装例＊**
 
-コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
+コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。
+
+これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
+
+
 
 ```php
 <?php
@@ -920,6 +1092,8 @@ class EmployeeController
 
 Department（親）に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。
 
+
+
 ```php
 <?php
 
@@ -939,6 +1113,8 @@ class Department extends Model
 
     /**
      * 一対多の関係を定義します。
+
+
      * （デフォルトではemployee_idに紐付けます）
      *
      * @return HasMany
@@ -951,6 +1127,8 @@ class Department extends Model
 ```
 
 また、Employee（子）に、反対の多対一の関係を定義する。
+
+
 
 ```php
 <?php
@@ -971,6 +1149,8 @@ class Employee extends Model
 
     /**
      * 多対一の関係を定義します。
+
+
      * （デフォルトではdepartment_idに紐付けます）
      * 
      * @return BelongsTo
@@ -988,7 +1168,13 @@ class Employee extends Model
 
 #### ▼ ```save```メソッド
 
-UPDATE文を実行する。Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行する。```save```メソッドはCREATE処理も実行できるが、```fill```メソッドでID値を割り当てた場合は、UPDATE処理が実行される。
+UPDATE文を実行する。
+
+Eloquentビルダーの```fill```メソッドで挿入先のカラムと値を設定し、```save```メソッドを実行する。
+
+```save```メソッドはCREATE処理も実行できるが、```fill```メソッドでID値を割り当てた場合は、UPDATE処理が実行される。
+
+
 
 > ℹ️ 参考：
 >
@@ -1025,6 +1211,8 @@ class FooController extends Controller
 
 Eloquentモデルには```fillable```プロパティを設定しておく。
 
+
+
 ```php
 <?php
 
@@ -1048,11 +1236,27 @@ class FooDTO extends Model
 
 #### ▼ ```destroy```/```delete```メソッド（物理削除）
 
-DELETE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを使用する。手順として、Eloquentビルダーの```find```メソッドで削除先のModelを検索する。返却されたEloquentビルダーの```destroy```/```delete```メソッドをコールし、自身を削除する。
+DELETE文を実行する。
+
+Eloquentモデルの```destroy```/```delete```メソッドを使用する。
+
+手順として、Eloquentビルダーの```find```メソッドで削除先のModelを検索する。
+
+返却されたEloquentビルダーの```destroy```/```delete```メソッドをコールし、自身を削除する。
+
+
 
 #### ▼ SoftDeletesの有効化（論理削除）
 
-削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを使用する。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。DBマイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+削除フラグを更新するUPDATE文を実行する。
+
+Eloquentモデルの```destroy```/```delete```メソッドを使用する。
+
+手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。
+
+DBマイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+
+
 
 **＊実装例＊**
 
@@ -1082,7 +1286,11 @@ class FooDTO extends Model
 }
 ```
 
-DBマイグレーションファイルにて```softDeletes```メソッドを使用すると、削除フラグとして```deleted_at```カラムが追加されるようになる。```deleted_at```カラムのデフォルト値は```NULL```である。
+DBマイグレーションファイルにて```softDeletes```メソッドを使用すると、削除フラグとして```deleted_at```カラムが追加されるようになる。
+
+```deleted_at```カラムのデフォルト値は```NULL```である。
+
+
 
 ```php
 <?php
@@ -1124,7 +1332,13 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で、同様に```destroy```/```delete```メソッドを使用して、自身を削除する。物理削除ではなく、```deleled_at```カラムが更新されるようになる。```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
+上記の状態で、同様に```destroy```/```delete```メソッドを使用して、自身を削除する。
+
+物理削除ではなく、```deleled_at```カラムが更新されるようになる。
+
+```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
+
+
 
 <br>
 
@@ -1134,9 +1348,15 @@ class CreateFooTable extends Migration
 
 親テーブルを経由して子テーブルにアクセスする時に、親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと。
 
+
+
 #### ▼ 問題が起こる実装
 
-反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。
+反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。
+
+内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。
+
+
 
 ```php
 <?php
@@ -1161,7 +1381,15 @@ select * from `employees` where `department_id` = 3
 
 #### ▼ 解決方法
 
-反復処理の前に小テーブルにアクセスしておく。データアクセス時に```with```メソッドを使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。そのため、反復処理ではプロパティからデータを取り出すだけになる。内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。
+反復処理の前に小テーブルにアクセスしておく。
+
+データアクセス時に```with```メソッドを使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。
+
+そのため、反復処理ではプロパティからデータを取り出すだけになる。
+
+内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。
+
+
 
 ```php
 <?php
@@ -1185,7 +1413,15 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。リポジトリパターンについては、以下のリンクを参考にせよ。
+LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。
+
+ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。
+
+その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。
+
+リポジトリパターンについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
@@ -1195,7 +1431,15 @@ LaravelはActive Recordパターンを採用しており、これはビジネス
 
 #### ▼ DTOクラスの導入
 
-ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する。詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを仲介し、これらを疎結合にしてくれる。そのため、Repositoryパターンを実現できる。
+ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する。
+
+詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。
+
+ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを仲介し、これらを疎結合にしてくれる。
+
+そのため、Repositoryパターンを実現できる。
+
+
 
 ```php
 <?php

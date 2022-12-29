@@ -9,6 +9,8 @@ description: Anthos＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,6 +23,8 @@ description: Anthos＠GCPの知見を記録しています。
 #### ▼ 構造
 
 Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management、から構成される。
+
+
 
 > ℹ️ 参考：
 >
@@ -35,11 +39,17 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 GKE Cluster（コントロールプレーンNode、ワーカーNode、を含む）から構成される。
 
+
+
 #### ▼ アタッチCluster
 
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_attached_cluster.png)
 
-AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS EKS、Azure AKS、RKE、K3s）のClusterに委譲する。AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
+AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS EKS、Azure AKS、RKE、K3s）のClusterに委譲する。
+
+AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。
+
+
 
 > ℹ️ 参考：
 >
@@ -60,6 +70,8 @@ AnthosのGKE Cluster部分の能力を、Kubernetesの他の実行環境（AWS E
 #### ▼ Anthos Service Meshとは
 
 Istioから構成される。
+
+
 
 > ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 
@@ -110,13 +122,19 @@ GCP上で```kubectl```コマンドを実行して各クラウドプロバイダ�
 
 #### ▼ fleet-workload-identity
 
-GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
+GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐づける。
+
+これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
+
+
 
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#fleet-workload-identity
 
 #### ▼ anetd
 
 cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 
@@ -166,7 +184,13 @@ on-オンプレミスは、各Clusterを作成するワークステーション�
 
 #### ▼ ワークステーションとは
 
-Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。Kindがコンテナを構築するために、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
+Anthos Clusterの作成時やアップグレード時に、```bmctl```コマンドはワークステーション（仮想サーバー）を構築し、ワークステーション上でKindを起動する。
+
+Kindはコンテナを構築し、そのコンテナ内でブートストラップクラスターを作成できるか否かを検証することにより、Anthos Clusterの事前検証する。
+
+Kindがコンテナを構築するために、Anthos Clusterの構築前に、```docker```プロセスを起動しておく必要がある。
+
+
 
 ```bash
 $ systemctl start docker
@@ -190,13 +214,19 @@ $ kubectl get pod \
 
 GCP環境上にAnthos GKE Clusterを作成する。
 
+
+
 <br>
 
 ## 02-04. on-クラウドプロバイダー
 
 ### on-クラウドプロバイダーの仕組み
 
-GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure）のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：EKS、AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure）のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
+
+ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境（例：EKS、AKS）を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+
+
 
 ![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_cloud-provider.png)
 
@@ -209,6 +239,8 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 #### ▼ check preflightとは
 
 ```bmctl upgrade```コマンドの実行時に実施されるプリフライトチェックのみを実施する。
+
+
 
 ```bash
 $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
@@ -234,6 +266,8 @@ $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 
 AnthosのKubernetesのバージョンをプリフライトチェックで検証し、成功すればアップグレードする。
 
+
+
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace 
 ```
@@ -241,6 +275,8 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace
 #### ▼ --reuse-bootstrap-cluster
 
 既存のブートストラップクラスターを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
+
+
 
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster
@@ -274,6 +310,8 @@ spec:
 ```
 
 また、Anthos GKE ClusterのバージョンとKubernetesのバージョンの対応関係を確認する。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
@@ -358,6 +396,8 @@ $ ./asmcli install \
 #### ▼ 共通の事後処理
 
 データプレーンが新バージョンのIstiodコントロールプレーンに紐づくようにする。
+
+
 
 > ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#switch_to_the_new_control_plane
 

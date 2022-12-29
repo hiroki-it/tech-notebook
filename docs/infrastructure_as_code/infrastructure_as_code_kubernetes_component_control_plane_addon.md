@@ -9,6 +9,8 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -98,7 +100,11 @@ MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionス�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
+MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。
+
+webhookサーバーは、Cluster内部に設置することが多い。
+
+
 
 > ℹ️ 参考：
 >
@@ -161,7 +167,11 @@ ValidatingAdmissionWebhookアドオンを使用すると、validating-admission�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。webhookサーバーは、Cluster内部に設置することが多い。
+ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。
+
+webhookサーバーは、Cluster内部に設置することが多い。
+
+
 
 > ℹ️ 参考：
 >
@@ -285,7 +295,11 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 
 #### ▼ mutating-admissionステップのAdmissionResponse
 
-webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。
+webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。
+
+マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。
+
+
 
 > ℹ️ 参考：
 >
@@ -336,6 +350,8 @@ kube-apiserverは、mutating-admissionステップと同じAdmissionReview内の
 #### ▼ validating-admissionステップのAdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
+
+
 
 > ℹ️ 参考：
 >

@@ -9,6 +9,8 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,6 +22,8 @@ description: 認証/認可＠Laravelの知見を記録しています。
 ![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/laravel-lifecycle.png)
 
 大まかな処理フローは以下の通りである。
+
+
 
 > ℹ️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
@@ -45,7 +49,13 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 ### コンポーネントのコード
 
-Laravelの各コンポーネントには、似たような名前のメソッドが多く内蔵されている。そのため、同様の能力を実現するために、各々が異なるメソッドを使用しがちになる。その時、各メソッドがブラックボックスにならないように、処理の違いをコードから確認する必要がある。
+Laravelの各コンポーネントには、似たような名前のメソッドが多く内蔵されている。
+
+そのため、同様の能力を実現するために、各々が異なるメソッドを使用しがちになる。
+
+その時、各メソッドがブラックボックスにならないように、処理の違いをコードから確認する必要がある。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate.html
 
@@ -124,6 +134,8 @@ return [
 
 artisanコマンドで実行できるコマンド処理を定義する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
 
 ```php
@@ -167,6 +179,8 @@ class FooCommand extends Command
 
 定義したCommandクラスは、以下の様に実行できる。
 
+
+
 ```bash
 $ php artisan command:do-foo
 ```
@@ -179,7 +193,11 @@ $ php artisan command:do-foo
 
 #### ▼ 設定方法
 
-環境変数を```.env```ファイルに実装する。```database.php```ファイルから、指定された設定が選択される。
+環境変数を```.env```ファイルに実装する。
+
+```database.php```ファイルから、指定された設定が選択される。
+
+
 
 ```bash
 DB_CONNECTION=<RDB名>
@@ -241,6 +259,8 @@ return [
 
 単一のエンドポイントしかない場合、```DB_HOST```を1つだけ設定する。
 
+
+
 ```php
 <?php
 
@@ -282,7 +302,13 @@ return [
 
 #### ▼ 複数のエンドポイント
 
-複数のエンドポイントがある場合、書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする。例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。この場合、環境変数に```2```個のインスタンスのエンドポイントを実装する必要がある。
+複数のエンドポイントがある場合、書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする。
+
+例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。
+
+この場合、環境変数に```2```個のインスタンスのエンドポイントを実装する必要がある。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
@@ -291,7 +317,11 @@ DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
 DB_HOST_READ=<リードレプリカのエンドポイント>
 ```
 
-注意点として、```sticky```キーを有効化しておくと良い。プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
+注意点として、```sticky```キーを有効化しておくと良い。
+
+プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
+
+
 
 > ℹ️ 参考：https://imanengineer.net/laravel-how-to-configure-master-slave-db/
 
@@ -345,6 +375,8 @@ return [
 
 環境変数を```.env```ファイルに実装する必要がある。
 
+
+
 ```bash
 CACHE_DRIVER=redis
 REDIS_HOST=<Redisのホスト>
@@ -364,9 +396,13 @@ REDIS_PORT=<Redisのポート>
 
 ビジネスの出来事がモデリングされたイベントオブジェクトとして動作する。
 
+
+
 #### ▼ 構成
 
 イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
@@ -398,6 +434,8 @@ final class UserCreatedEvent
 
 任意の場所でイベントを発行できる。
 
+
+
 ```php
 <?php
     
@@ -406,13 +444,19 @@ event(new UserCreatedEvent($user));
 
 #### ▼ EloquentモデルのCRUDイベント
 
-Eloquentモデルでは、DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる。紐付けるために、プロパティで定義するか、あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある。
+Eloquentモデルでは、DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる。
+
+紐付けるために、プロパティで定義するか、あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
 プロパティにて、CREATE処理とDELETE処理に独自イベントクラスに紐付ける。
+
+
 
 ```php
 <?php
@@ -441,6 +485,8 @@ class User extends Authenticatable
 **＊実装例＊**
 
 クロージャーにて、CREATE処理に独自イベントクラスに紐付ける。
+
+
 
 
 ```php
@@ -472,13 +518,19 @@ class User extends Model
 
 イベントが発生した時に、これに紐付いてコールされるオブジェクトのこと。
 
+
+
 #### ▼ 構成
 
 Listenerクラスがコールされた時に実行する処理を```handle```関数に定義する。
 
+
+
 **＊実装例＊**
 
 ユーザーが作成された時に、メールアドレスにメッセージを送信する。
+
+
 
 ```php
 <?php
@@ -505,6 +557,8 @@ final class UserCreatedEventListener
 
 任意の場所でイベントを発行すると、リスナーが自動的にコールされる。
 
+
+
 ```php
 <?php
     
@@ -514,6 +568,8 @@ event(new UserCreatedEvent($user));
 #### ▼ イベントとリスナーの紐付け
 
 EventServiceProviderクラスにて、Eventクラスに紐付ける1つ以上のListenerクラスを設定する。
+
+
 
 **＊実装例＊**
 
@@ -559,7 +615,11 @@ Laravelの多くのコンポーネントに、```boot```メソッドが定義さ
 
 **＊実装例＊**
 
-あらかじめTraitを定義する。```saved```メソッドにEloquentモデルの更新イベントを登録できるようにする。
+あらかじめTraitを定義する。
+
+```saved```メソッドにEloquentモデルの更新イベントを登録できるようにする。
+
+
 
 ```php
 <?php
@@ -591,6 +651,8 @@ trait UpdatedModelTrait
     
     /**
      * イベントを発火させずにModelを保存します。
+
+
      *
      * @return void
      */
@@ -607,6 +669,8 @@ trait UpdatedModelTrait
 ```
 
 イベントを定義する。
+
+
 
 ```php
 <?php
@@ -630,7 +694,13 @@ class UpdatedModelEvent
 }
 ```
 
-Model更新イベントが発火してコールされるリスナーを定義する。```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする。注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。
+Model更新イベントが発火してコールされるリスナーを定義する。
+
+```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする。
+
+注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。
+
+
 
 ```php
 <?php
@@ -662,6 +732,8 @@ class UpdatedModelListener
     
     /**
      * 更新処理の実行者を取得します。
+
+
      *
      * @return string
      */
@@ -683,6 +755,8 @@ class UpdatedModelListener
 ```
 
 実行者名は、定数として管理しておくと良い。
+
+
 
 ```php
 <?php
@@ -717,7 +791,15 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは```4```個のステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動的に返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+エラーハンドリングは```4```個のステップからなる。
+
+LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。
+
+また加えて、異常系レスポンスを自動的に返信してくれる。
+
+エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_error_and_error_handling.html
 
@@ -729,11 +811,23 @@ class ExecutorConstant
 
 ドキュメントとしてまとめられていないが、デフォルトで様々な例外が備わっている。
 
+
+
 > ℹ️ 参考：https://laravel.com/api/8.x/search.html?search=exception
 
 #### ▼ スタックトレース
 
-Laravelはスローされる例外のメッセージをスタックトレースで作成する。また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、```[previous exception]```によって例外が結合される。スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。ちなみに、ログの詳細度は```APP_DEBUG```環境変数で制御できる。
+Laravelはスローされる例外のメッセージをスタックトレースで作成する。
+
+また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、```[previous exception]```によって例外が結合される。
+
+スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。
+
+エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。
+
+ちなみに、ログの詳細度は```APP_DEBUG```環境変数で制御できる。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
@@ -786,6 +880,8 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #### ▼ ```report```メソッド
 
 Laravel内部でキャッチされた例外を基に、ロギングを実行する。
+
+
 
 > ℹ️ 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -850,11 +946,17 @@ class Handler extends ExceptionHandler
 
 #### ▼ Facadeとは
 
-Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。メソッドをコールできるようになる。
+Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。
+
+メソッドをコールできるようになる。
+
+
 
 #### ▼ Facadeを使用しない場合
 
 new演算子でインスタンスを作成する。
+
+
 
 **＊実装例＊**
 
@@ -881,11 +983,19 @@ $foo->method();
 
 #### ▼ Facadeの静的プロキシを使用する場合
 
-静的メソッドの記法でコールできる。ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+静的メソッドの記法でコールできる。
+
+ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。
+
+例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+
+
 
 **＊実装例＊**
 
 Facadeとして使用したいクラスを定義する。
+
+
 
 ```php
 <?php
@@ -903,6 +1013,8 @@ class Foo
 
 エイリアス名とクラスの名前空間を```config/app.php```ファイルを```aliases```キーに登録すると、そのエイリアス名でインスタンス化とメソッドコールを行えるようになる。
 
+
+
 ```php
 <?php
   
@@ -912,6 +1024,8 @@ class Foo
 ```
 
 インスタンス化とメソッドコールを行う。
+
+
 
 ```php
 <?php
@@ -926,13 +1040,19 @@ $result = Foo::method();
 
 Facadeがトレイトの代わりになる場合、Facadeを使用することにより、責務がドメインモデルに集中せずにすむ。
 
+
+
 **＊例＊**
 
 NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。
 
+
+
 #### ▼ 標準登録されたFacadeクラスの種類
 
 以下のクラスは、デフォルトで登録されているFacadeである。
+
+
 
 | エイリアス名              | クラス名                                                                                                                               | サービスコンテナ結合キー         |
 |:---------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|
@@ -988,7 +1108,11 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ▼ Authファサードとは
 
-認証に関する処理を提供する。Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを使用して、認証ロジックを実装できる。
+認証に関する処理を提供する。
+
+Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを使用して、認証ロジックを実装できる。
+
+
 
 <br>
 
@@ -996,11 +1120,29 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ▼ DBファサードとは
 
-DBの操作処理を提供する。Eloquentの代わりとして、DBファサードを使用しても良い。Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。
+DBの操作処理を提供する。
+
+Eloquentの代わりとして、DBファサードを使用しても良い。
+
+Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。
+
+
 
 #### ▼ ```transaction```メソッド
 
-一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。加えて```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
+一連のトランザクション処理を実行する。
+
+引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。
+
+例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。
+
+加えて```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。
+
+ちなみに、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。
+
+参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
+
+
 
 > ℹ️ 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -1059,7 +1201,11 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ▼ ```beginTransaction```メソッド、```commit```メソッド、```rollback```メソッド、
 
-トランザクション処理の各操作を分割して実行する。基本的には、```transaction```メソッドを使用してトランザクション処理を実行すれば良い。
+トランザクション処理の各操作を分割して実行する。
+
+基本的には、```transaction```メソッドを使用してトランザクション処理を実行すれば良い。
+
+
 
 **＊実装例＊**
 
@@ -1086,6 +1232,8 @@ class FooRepository extends Repository implements DomainFooRepository
     
     /**
      * Fooを更新します。
+
+
      *
      * @param Foo $foo
      */
@@ -1124,9 +1272,17 @@ class FooRepository extends Repository implements DomainFooRepository
 
 ルーティング処理を提供する。
 
+
+
 #### ▼ ヘルスチェックへの対応
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で、```200```ステータスを含むレスポンスを返信する。Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。RouteServiceProviderも参照せよ。
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で、```200```ステータスを含むレスポンスを返信する。
+
+Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。
+
+RouteServiceProviderも参照せよ。
+
+
 
 **＊実装例＊**
 
@@ -1141,11 +1297,17 @@ Route::get("/healthcheck", function () {
 
 #### ▼ ```middleware```メソッド
 
-コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。引数として、```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
+コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。
+
+引数として、```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
+
+
 
 **＊実装例＊**
 
 認証方法としてWebガードを使用する場合、```auth```エイリアスを設定する。
+
+
 
 ```php
 <?php
@@ -1164,6 +1326,8 @@ Route::middleware("auth")->group(function () {
 ```
 
 デフォルトでは、```App\Http\Kernel.php```ファイルにて、```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが紐付けられている。
+
+
 
 
 ```php
@@ -1192,6 +1356,8 @@ class Kernel extends HttpKernel
 
 一方で、認証方法としてAPIガードを使用する場合、```auth:api```エイリアスを設定する。
 
+
+
 ```php
 <?php
 
@@ -1205,9 +1371,13 @@ Route::middleware("auth:api")->group(function () {
 
 エンドポイントが共通として持つ最初のパスを、接頭辞として定義する。
 
+
+
 **＊実装例＊**
 
 各エンドポイントの最初の『```foos```』を接頭辞として定義する。
+
+
 
 ```php
 <?php
@@ -1225,11 +1395,17 @@ Route::prefix("foos")->group(function () {
 
 #### ▼ ```where```メソッド、```pattern```メソッド
 
-パスパラメーターに対するバリデーションルールを正規表現で定義し、加えて実行する。RouteServiceProviderの```boot```メソッドにて、```pattern```メソッドで制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。
+パスパラメーターに対するバリデーションルールを正規表現で定義し、加えて実行する。
+
+RouteServiceProviderの```boot```メソッドにて、```pattern```メソッドで制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。
+
+
 
 **＊実装例＊**
 
 userIdの形式を『0〜9が1つ以上』に設定している。
+
+
 
 ```php
 <?php
@@ -1251,6 +1427,8 @@ Route::prefix("foos")->group(function () {
 
 または、RouteServiceProviderクラスに```pattern```メソッドを定義すると、各エンドポイントに対する正規表現を一括で実行できる。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
@@ -1269,6 +1447,8 @@ class RouteServiceProvider extends ServiceProvider
 {
     /**
      * ルーティングの設定ファイルをコールします。
+
+
      *
      * @return void
      */
@@ -1286,9 +1466,13 @@ class RouteServiceProvider extends ServiceProvider
 
 複数のグループを組み合わせる場合、```group```メソッドを使用する。
 
+
+
 **＊実装例＊**
 
 エンドポイントの接頭辞とミドルウェアの指定を定義する。
+
+
 
 ```php
 <?php
@@ -1310,9 +1494,17 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 ファイルの入出力処理を提供する。
 
+
+
 #### ▼ ローカルストレージ（非公開）の場合
 
-ファイルを```/storage/app```ディレクトリ配下に保存する。このファイルは非公開であり、リクエストによってアクセスできない。事前に、シンボリックリンクを作成する、また、```filesystems.php```ファイルに設定が必要である。
+ファイルを```/storage/app```ディレクトリ配下に保存する。
+
+このファイルは非公開であり、リクエストによってアクセスできない。
+
+事前に、シンボリックリンクを作成する、また、```filesystems.php```ファイルに設定が必要である。
+
+
 
 ```bash
 $ php artisan storage:link
@@ -1345,7 +1537,11 @@ return [
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してlocalディスクを指定する。```file.txt```ファイルを```storage/app/file.txt```として保存する。
+Storageファサードの```disk```メソッドを使用してlocalディスクを指定する。
+
+```file.txt```ファイルを```storage/app/file.txt```として保存する。
+
+
 
 ```php
 Storage::disk("local")->put("file.txt", "file.txt");
@@ -1353,13 +1549,21 @@ Storage::disk("local")->put("file.txt", "file.txt");
 
 ただし、```filesytems.php```ファイルでデフォルトディスクは```local```になっているため、```put```メソッドを直接的に使用できる。
 
+
+
 ```php
 Storage::put("file.txt", "file.txt");
 ```
 
 #### ▼ ローカルストレージ（公開）の場合
 
-ファイルを```storage/app/public```ディレクトリ配下に保存する。このファイルは公開であり、リクエストによってアクセスできる。事前に、```filesystems.php```ファイルに設定が必要である。
+ファイルを```storage/app/public```ディレクトリ配下に保存する。
+
+このファイルは公開であり、リクエストによってアクセスできる。
+
+事前に、```filesystems.php```ファイルに設定が必要である。
+
+
 
 ```php
 return [
@@ -1387,13 +1591,19 @@ return [
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してpublicディスクを指定する。また、```file.txt```ファイルを```storage/app/public/file.txt```として保存する。
+Storageファサードの```disk```メソッドを使用してpublicディスクを指定する。
+
+また、```file.txt```ファイルを```storage/app/public/file.txt```として保存する。
+
+
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
 ただし、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接的に使用できる。
+
+
 
 ```php
 FILESYSTEM_DRIVER=s3
@@ -1439,7 +1649,17 @@ class FileSystemPublicController extends Controller
 
 #### ▼ クラウドストレージの場合
 
-ファイルをS3バケット内のディレクトリ配下に保存する。環境変数を```.env```ファイルに実装する必要がある。```filesystems.php```ファイルから、指定された設定が選択される。AWSアカウントの認証情報を環境変数として設定するか、またはS3アクセスポリシーをEC2やECSタスクに付与することにより、S3にアクセスできるようになる。事前に、```filesystems.php```ファイルに設定が必要である。
+ファイルをS3バケット内のディレクトリ配下に保存する。
+
+環境変数を```.env```ファイルに実装する必要がある。
+
+```filesystems.php```ファイルから、指定された設定が選択される。
+
+AWSアカウントの認証情報を環境変数として設定するか、またはS3アクセスポリシーをEC2やECSタスクに付与することにより、S3にアクセスできるようになる。
+
+事前に、```filesystems.php```ファイルに設定が必要である。
+
+
 
 ```bash
 # S3アクセスポリシーをEC2やECSタスクに付与してもよい
@@ -1477,13 +1697,19 @@ return [
 
 **＊実装例＊**
 
-Storageファサードの```disk```メソッドを使用してs3ディスクを指定する。また、```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する。
+Storageファサードの```disk```メソッドを使用してs3ディスクを指定する。
+
+また、```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する。
+
+
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
 他の実装方法として、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接的に使用できる。
+
+
 
 ```bash
 FILESYSTEM_DRIVER=s3
@@ -1499,11 +1725,23 @@ Storage::put("file.txt", "file.txt");
 
 #### ▼ Validatorファサードとは
 
-バリデーション処理を提供する。FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりとして、Validatorファサードを使用しても良い。
+バリデーション処理を提供する。
+
+FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりとして、Validatorファサードを使用しても良い。
+
+
 
 #### ▼ Validatorクラス、```fails```メソッド
 
-Validateファサードの```make```メソッドを使用して、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
+Validateファサードの```make```メソッドを使用して、ルールを定義する。
+
+この時、第一引数で、バリデーションを行うリクエストデータを渡す。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+次に、```fails```メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。
+
+
 
 **＊実装例＊**
 
@@ -1546,7 +1784,11 @@ class FooController extends Controller
 
 #### ▼ ```validate```メソッド
 
-Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。
+
+バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+
+
 
 ```php
 <?php
@@ -1594,13 +1836,21 @@ class FooController extends Controller
 
 #### ▼ ヘルパー関数とは
 
-グローバルにコールできるLaravel専用のメソッドのこと。基本的には、ヘルパー関数で実行される処理は、Facadeの内部で実行されるものと同じである。どちらを使用するかは好みである。
+グローバルにコールできるLaravel専用のメソッドのこと。
+
+基本的には、ヘルパー関数で実行される処理は、Facadeの内部で実行されるものと同じである。
+
+どちらを使用するかは好みである。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
 #### ▼ 一覧
 
 以下リンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
@@ -1611,6 +1861,8 @@ class FooController extends Controller
 #### ▼ AuthManagerインスタンスの返却
 
 認証処理を持つAuthManagerクラスのインスタンスを返却する。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
@@ -1629,9 +1881,13 @@ $auth = auth();
 
 環境変数ファイル名とキー名をドットで指定し、事前に設定された値を出力する。
 
+
+
 **＊実装例＊**
 
 デフォルトで搭載されている```app.php```ファイルの```timezone```キーの値を出力する。
+
+
 
 ```php
 <?php
@@ -1641,7 +1897,11 @@ $value = config("app.timezone");
 
 #### ▼ 独自環境変数ファイルの作成と読み出し
 
-任意の名前のphp形式ファイルを```config```ディレクトリ配下に作成しておく。これは、configヘルパーで読み込める。
+任意の名前のphp形式ファイルを```config```ディレクトリ配下に作成しておく。
+
+これは、configヘルパーで読み込める。
+
+
 
 **＊実装例＊**
 
@@ -1692,7 +1952,11 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 #### ▼ JSON型データを含むレスポンス
 
-返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSON型データを設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSON型データを設定する。
+
+```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+
+
 
 > ℹ️ 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
@@ -1723,7 +1987,13 @@ class FooController extends Controller
 
 #### ▼ Viewテンプレートのレスポンス
 
-返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。
+
+また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。
+
+```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定しても良い。
+
+
 
 **＊実装例＊**
 
@@ -1781,7 +2051,11 @@ class FooController extends Controller
 
 #### ▼ ルートエイリアスを基にURL作成
 
-ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。ドメインは自動的に補完される。
+ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。
+
+ドメインは自動的に補完される。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
 
@@ -1800,7 +2074,11 @@ $url = route('foos_index');
 
 #### ▼ ```base_path```ヘルパー
 
-引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。また、projectルートディレクトリからの相対パスを引数として、絶対パスを作成する。
+引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。
+
+また、projectルートディレクトリからの相対パスを引数として、絶対パスを作成する。
+
+
 
 ```php
 <?php
@@ -1814,7 +2092,11 @@ $path = base_path("vendor/bin");
 
 #### ▼ ```public_path```ヘルパー
 
-引数を設定しない場合、publicディレクトリの絶対パスを作成する。また、publicディレクトリからの相対パスを引数として、絶対パスを作成する。
+引数を設定しない場合、publicディレクトリの絶対パスを作成する。
+
+また、publicディレクトリからの相対パスを引数として、絶対パスを作成する。
+
+
 
 ```php
 <?php
@@ -1828,7 +2110,11 @@ $path = public_path("css/app.css");
 
 #### ▼ ```storage_path```ヘルパー
 
-引数を設定しない場合、storageディレクトリの絶対パスを作成する。まあ、storageディレクトリからの相対パスを引数として、絶対パスを作成する。
+引数を設定しない場合、storageディレクトリの絶対パスを作成する。
+
+まあ、storageディレクトリからの相対パスを引数として、絶対パスを作成する。
+
+
 
 ```php
 <?php
@@ -1846,7 +2132,11 @@ $path = storage_path("app/file.txt");
 
 #### ▼ パスを基にURL作成
 
-指定したパスに応じてURLを作成する。ドメインは自動的に補完される。
+指定したパスに応じてURLを作成する。
+
+ドメインは自動的に補完される。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/5.7/ja/urls.html
 
@@ -1867,7 +2157,13 @@ $url = url('/foo');
 
 #### ▼ Fakerによるランダム値作成
 
-Fakerはレコードの値をランダムに作成するためのパッケージである。Farkerクラスは、プロパティにランダムなデータを保持している。このプロパティを特に、Formattersという。
+Fakerはレコードの値をランダムに作成するためのパッケージである。
+
+Farkerクラスは、プロパティにランダムなデータを保持している。
+
+このプロパティを特に、Formattersという。
+
+
 
 > ℹ️ 参考：https://fwhy.github.io/faker-docs/
 
@@ -1910,6 +2206,8 @@ class FooFactory extends Factory
 
 Factoryに対応するEloquentモデルで使用する必要がある。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 ```php
@@ -1927,9 +2225,13 @@ class Foo
 
 Factoryにおける定義を基にして、指定した数だけダミーデータを量産する。
 
+
+
 **＊実装例＊**
 
 FooSeederを定義し、```50```個のダミーユーザーデータを量産する。
+
+
 
 ```php
 <?php
@@ -1953,6 +2255,8 @@ class FooSeeder extends Seeder
 
 また、BarSeederを定義し、```50```個のダミーユーザーデータを量産する。
 
+
+
 ```php
 <?php
 
@@ -1974,6 +2278,8 @@ class BarSeeder extends Seeder
 ```
 
 DatabaseSeederにて、全てのSeederをまとめて実行する。
+
+
 
 ```php
 <?php
@@ -2032,7 +2338,15 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、加えてバリデーションを実行する。
+
+```validated```メソッドと間違わないように注意する。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+
+
 
 > ℹ️ 参考：
 >
@@ -2085,6 +2399,8 @@ class FooController extends Controller
 
 注意点として、ルールによっては、配列を使用せずとも定義できる。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -2116,7 +2432,17 @@ class FooController extends Controller
 
 #### ▼ ルール定義 & バリデーション自動実行
 
-Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりとして、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。
+
+そのため、コントローラーの中ではバリデーションを実行する必要はない。
+
+代わりとして、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。
+
+FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。
+
+バリデーションでエラーが発生した場合、Handlerクラスの```invalid```メソッドがコールされ、元のWebページにリダイレクトされる。
+
+
 
 **＊実装例＊**
 
@@ -2155,7 +2481,11 @@ class FooController extends Controller
 }
 ```
 
-FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。
+
+ルールに反すると、1つ目のルール名（例：```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+
+
 
 **＊実装例＊**
 
@@ -2170,6 +2500,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
+
+
      *
      * @return array
      */
@@ -2195,13 +2527,23 @@ class FooRequest extends FormRequest
 
 Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する。
 
+
+
 <br>
 
 ### エラーメッセージ
 
 #### ▼ 標準のエラーメッセージ
 
-標準のバリデーションメッセージは、```resources/lang/ja/validation.php```ファイルで定義できる。バリデーションルールの組み合わせによって、```validation.php```ファイルから自動的にメッセージが選択される。例えばルールとして最大値を設定した場合は、データ型に合わせてメッセージが選択される。日本語翻訳```validation.php```ファイルについては、以下のリンクを参考にせよ。
+標準のバリデーションメッセージは、```resources/lang/ja/validation.php```ファイルで定義できる。
+
+バリデーションルールの組み合わせによって、```validation.php```ファイルから自動的にメッセージが選択される。
+
+例えばルールとして最大値を設定した場合は、データ型に合わせてメッセージが選択される。
+
+日本語翻訳```validation.php```ファイルについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
@@ -2238,6 +2580,8 @@ return [
 
 注意点として、言語設定を行わない場合、デフォルトでは```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため、```app.php```ファイルで言語を変更することと、日本語翻訳```validation.php```ファイルが必要である。
 
+
+
 ```php
 <?php
 
@@ -2254,7 +2598,11 @@ return [
 
 #### ▼ 画面上でのエラーメッセージ出力
 
-バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。
+バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。
+
+選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。
+
+
 
 > ℹ️ 参考：
 >
@@ -2290,6 +2638,8 @@ return [
 
 指定されたテーブルのカラムに値が存在しているかを検証する。
 
+
+
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
 
 ```php
@@ -2303,6 +2653,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
+
+
      *
      * @return array
      */
@@ -2319,6 +2671,8 @@ class FooRequest extends FormRequest
 
 テーブルにカラム数が多い場合は、Where句をつけることにより、特定のカラムのみ検証もできる。
 
+
+
 ```php
 <?php
 
@@ -2330,6 +2684,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
+
+
      *
      * @return array
      */
@@ -2348,6 +2704,8 @@ class FooRequest extends FormRequest
 
 決められた複数の値に合致する値であるか否かを検証する。
 
+
+
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
 
 ```php
@@ -2361,6 +2719,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
+
+
      *
      * @return array
      */
@@ -2376,7 +2736,15 @@ class FooRequest extends FormRequest
 
 #### ▼ 独自ルール/メッセージ
 
-独自ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、```rule```メソッドの中でインスタンスを作成する。独自Ruleクラスでは、```passes```メソッドでルールを定義する。また、```messages```メソッドでバリデーションメッセージを定義する。```validation.php```ファイルでメッセージを定義し、これを参照しても良い。
+独自ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、```rule```メソッドの中でインスタンスを作成する。
+
+独自Ruleクラスでは、```passes```メソッドでルールを定義する。
+
+また、```messages```メソッドでバリデーションメッセージを定義する。
+
+```validation.php```ファイルでメッセージを定義し、これを参照しても良い。
+
+
 
 > ℹ️ 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
@@ -2427,6 +2795,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
+
+
      *
      * @return array
      */
@@ -2447,6 +2817,8 @@ class FooRequest extends FormRequest
 #### ▼ セッション変数の取得
 
 FormRequestクラスの```session```メソッドを使用して、セッション変数を取得する。
+
+
 
 **＊実装例＊**
 
@@ -2473,6 +2845,8 @@ class FooController extends Controller
 
 全てのセッション変数を取得もできる。
 
+
+
 ```php
 $session = $request->session()->all();
 ```
@@ -2480,6 +2854,8 @@ $session = $request->session()->all();
 #### ▼ フラッシュデータの設定
 
 現在のセッションで、今回と次回のリクエストのみで有効な一時データを設定できる。
+
+
 
 ```php
 $request->session()
@@ -2493,6 +2869,8 @@ $request->session()
 #### ▼ ```authorize```メソッド
 
 ユーザーがリソースに対してCRUDを行う権限を持っているかを、コントローラーのメソッドを実行する前に、判定する。
+
+
 
 **＊実装例＊**
 
@@ -2528,7 +2906,13 @@ public function authorize()
 
 #### ▼ BeforeMiddleware
 
-ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。
+
+一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
+
+これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+
+
 
 **＊実装例＊**
 
@@ -2557,7 +2941,13 @@ class FooBeforeMiddleware
 
 #### ▼ AfterMiddleware
 
-コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。
+
+あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
+
+これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+
+
 
 **＊実装例＊**
 
@@ -2593,7 +2983,11 @@ class FooAfterMiddleware
 
 #### ▼ EncryptCookies
 
-レスポンス時に、```Cookie```ヘッダーの全ての値を暗号化する。暗号化したくない場合は、```Cookie```ヘッダーのキー名を```except```プロパティに設定する。
+レスポンス時に、```Cookie```ヘッダーの全ての値を暗号化する。
+
+暗号化したくない場合は、```Cookie```ヘッダーのキー名を```except```プロパティに設定する。
+
+
 
 > ℹ️ 参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
 
@@ -2601,15 +2995,27 @@ class FooAfterMiddleware
 
 セッションの開始の開始点になる。
 
+
+
 > ℹ️ 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
-また、同一セッションで一意なCSRFトークンを作成する。CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
+また、同一セッションで一意なCSRFトークンを作成する。
+
+CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/security/security_cyber_attacks.html
 
 #### ▼ VerifyCsrfToken
 
-セッションデータに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。セッションデータは```storage/framework/sessions```ディレクトリ配下に配置されている。一般的に、CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
+セッションデータに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。
+
+セッションデータは```storage/framework/sessions```ディレクトリ配下に配置されている。
+
+一般的に、CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
@@ -2620,6 +3026,8 @@ class FooAfterMiddleware
 #### ▼ Kernel
 
 Middlewareクラスをコールする時の方法をカスタマイズできる。
+
+
 
 **＊実装例＊**
 
@@ -2634,6 +3042,8 @@ class Kernel extends HttpKernel
 {
     /**
      * 全てのHTTPリクエストに適用するミドルウェアを定義します。
+
+
      *
      * @var array
      */
@@ -2647,6 +3057,8 @@ class Kernel extends HttpKernel
 
     /**
      * エイリアス名とミドルウェアグループを定義します。
+
+
      *
      * @var array
      */
@@ -2662,6 +3074,8 @@ class Kernel extends HttpKernel
 
     /**
      * エイリアス名と個別のミドルウェアを定義します。
+
+
      *
      * @var array
      */
@@ -2683,6 +3097,8 @@ class Kernel extends HttpKernel
 
     /**
      * ミドルウェアをコールする順番を定義します。
+
+
      *
      * @var string[]
      */
@@ -2707,6 +3123,8 @@ class Kernel extends HttpKernel
 #### ▼ クエリパラメーター/メッセージボディ
 
 クエリパラメーターとメッセージボディの両方を取得する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
@@ -2747,6 +3165,8 @@ class FooController extends Controller
 
 クエリパラメーターを取得する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
@@ -2775,6 +3195,8 @@ class FooController extends Controller
 #### ▼ パスパラメータ
 
 パスパラメーターを取得する。
+
+
 
 > ℹ️ 参考：
 >
@@ -2809,6 +3231,8 @@ class FooController extends Controller
 
 代わりとして、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -2836,6 +3260,8 @@ class FooController extends Controller
 ### バリデーション
 
 Requestではなく、FormRequestを使用した方がバリデーションがおすすめである。
+
+
 
 > ℹ️ 参考：https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
 
@@ -2867,7 +3293,11 @@ class FooController extends Controller
 
 #### ▼ 設定方法
 
-環境変数を```.env```ファイルに実装する。```logging.php```ファイルから、指定された設定が選択される。
+環境変数を```.env```ファイルに実装する。
+
+```logging.php```ファイルから、指定された設定が選択される。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
 
@@ -2875,7 +3305,11 @@ class FooController extends Controller
 LOG_CHANNEL=<オプション名>
 ```
 
-注意点として、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たないため、アクセスできるようにする必要がある。権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
+注意点として、```storage```ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たないため、アクセスできるようにする必要がある。
+
+権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。
+
+
 
 ```bash
 # Failed to open stream: Permission denied
@@ -2891,6 +3325,8 @@ LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Larave
 #### ▼ ```stack```キー
 
 他の単一/複数のチャンネルを利用するチャンネル。
+
+
 
 ```php
 <?php
@@ -2917,6 +3353,8 @@ return [
 #### ▼ ```single```キー
 
 全てのログを```/storage/logs/laravel.log```ファイルに対して出力する。
+
+
 
 ```php
 <?php
@@ -2968,7 +3406,13 @@ return [
 
 #### ▼ ```stderr```キー
 
-全てのログを標準エラー出力に対して出力する。Docker上でLaravelを稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。注意点として、独自カスタマイズとして、```stream```キーをstdout変更すれば、標準出力にログを出力もできる。
+全てのログを標準エラー出力に対して出力する。
+
+Docker上でLaravelを稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。
+
+注意点として、独自カスタマイズとして、```stream```キーをstdout変更すれば、標準出力にログを出力もできる。
+
+
 
 ```php
 return [
@@ -3000,9 +3444,17 @@ return [
 
 エラーメッセージを定義する時、```sprintf```メソッドを使用すると便利である。
 
+
+
 **＊実装例＊**
 
-外部のAPIに対してリクエストを送信し、データを取得する。取得したJSON型データを、クライアントにレスポンスする。この時、リクエスト処理のために、Guzzleパッケージを使用している。
+外部のAPIに対してリクエストを送信し、データを取得する。
+
+取得したJSON型データを、クライアントにレスポンスする。
+
+この時、リクエスト処理のために、Guzzleパッケージを使用している。
+
+
 
 ```php
 <?php
@@ -3083,7 +3535,13 @@ return [
 
 #### ▼ ```up```メソッド、```down```メソッド
 
-コマンドによるDBマイグレーション時にコールされる。```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。```down```メソッドで```up```メソッドの結果をロールバックする。
+コマンドによるDBマイグレーション時にコールされる。
+
+```up```メソッドでテーブル、カラム、インデックスのCREATEを実行する。
+
+```down```メソッドで```up```メソッドの結果をロールバックする。
+
+
 
 **＊実装例＊**
 
@@ -3132,15 +3590,21 @@ class CreateFooTable extends Migration
 
 指定したカラムを追加する。
 
+
+
 **＊実装例＊**
 
 カラムを追加するためだけにDBマイグレーションファイルを作成する。
+
+
 
 ```bash
 $ php artisan make:migration add_column --table=foos
 ```
 
 追加したいカラムのみを定義する。
+
+
 
 ```php
 <?php
@@ -3163,7 +3627,11 @@ class AddColumn extends Migration
 }
 ```
 
-DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したDBマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。
+
+実行後は、作成したDBマイグレーションファイルを削除する。
+
+
 
 ```bash
 $ php artisan migrate
@@ -3173,15 +3641,23 @@ $ php artisan migrate
 
 指定したカラムの名前を変更する。
 
+
+
 **＊実装例＊**
 
 カラム名を変更するためだけにDBマイグレーションファイルを作成する。
+
+
 
 ```bash
 $ php artisan make:migration rename_column --table=foos
 ```
 
-テーブルのカラム名を定義し、```renameColumn```メソッドをコールする。変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+テーブルのカラム名を定義し、```renameColumn```メソッドをコールする。
+
+変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+
+
 
 ```php
 <?php
@@ -3215,7 +3691,11 @@ class RenameColumn extends Migration
 }
 ```
 
-DBマイグレーションを実行すると、指定したテーブルのカラム名が変更される。実行後は、作成したDBマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラム名が変更される。
+
+実行後は、作成したDBマイグレーションファイルを削除する。
+
+
 
 ```bash
 $ php artisan migrate
@@ -3225,15 +3705,23 @@ $ php artisan migrate
 
 指定したカラムのデータ型を変更する。
 
+
+
 **＊実装例＊**
 
 データ型を変更するためだけにDBマイグレーションファイルを作成する。
+
+
 
 ```bash
 $ php artisan make:migration change_column_data_type --table=foos
 ```
 
-テーブルのカラムのデータ型を定義し、```change```メソッドをコールする。変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+テーブルのカラムのデータ型を定義し、```change```メソッドをコールする。
+
+変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+
+
 
 ```php
 <?php
@@ -3267,7 +3755,11 @@ class ChangeColumnDataType extends Migration
 }
 ```
 
-DBマイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。実行後は、作成したDBマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。
+
+実行後は、作成したDBマイグレーションファイルを削除する。
+
+
 
 ```bash
 $ php artisan migrate
@@ -3277,15 +3769,23 @@ $ php artisan migrate
 
 指定したカラムを削除する。
 
+
+
 **＊実装例＊**
 
 カラムを削除するためだけにDBマイグレーションファイルを作成する。
+
+
 
 ```bash
 $ php artisan make:migration drop_column --table=foos
 ```
 
-削除するカラムを```dropColumn```メソッドで指定する。変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+削除するカラムを```dropColumn```メソッドで指定する。
+
+変更後でも、ロールバックできるように、```down```メソッドも定義しておく。
+
+
 
 ```php
 <?php
@@ -3318,7 +3818,11 @@ class DropColumn extends Migration
 }
 ```
 
-DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。実行後は、作成したDBマイグレーションファイルを削除する。
+DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。
+
+実行後は、作成したDBマイグレーションファイルを削除する。
+
+
 
 ```bash
 $ php artisan migrate
@@ -3330,7 +3834,13 @@ $ php artisan migrate
 
 #### ▼ ```bigIncrements```メソッド
 
-自動増分ありのinteger型カラムを作成する。プライマリーキーとするIDカラムのために使用する。自動増分のカラムは```1```個のテーブルに1つしか定義できず、他のIDカラムは```unsignedBigInteger```メソッドを使用して定義する。
+自動増分ありのinteger型カラムを作成する。
+
+プライマリーキーとするIDカラムのために使用する。
+
+自動増分のカラムは```1```個のテーブルに1つしか定義できず、他のIDカラムは```unsignedBigInteger```メソッドを使用して定義する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
 
@@ -3350,7 +3860,11 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ▼ ```unsignedBigInteger```メソッド
 
-自動増分なしのinteger型カラムを作成する。プライマリーキーではないIDカラムのために使用する。
+自動増分なしのinteger型カラムを作成する。
+
+プライマリーキーではないIDカラムのために使用する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
@@ -3371,6 +3885,8 @@ Schema::create("foos", function (Blueprint $table) {
 
 VARCHAR型カラムを作成する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -3388,6 +3904,8 @@ Schema::create("foos", function (Blueprint $table) {
 #### ▼ ```timestamp```メソッド
 
 TIMESTAMP型カラムを作成する。
+
+
 
 **＊実装例＊**
 
@@ -3418,7 +3936,17 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ▼ Notification
 
-通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+通知内容を定義する。
+
+```via```メソッドで受信チャンネルを定義する。
+
+この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。
+
+複数の値を設定した場合は、それぞれに通信が送信される。
+
+```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+
+
 
 **＊実装例＊**
 
@@ -3475,7 +4003,11 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Eメール通知内容の定義
 
-MailMessageクラスのメソッドを使用して、Eメール通知の内容を作成する。```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
+MailMessageクラスのメソッドを使用して、Eメール通知の内容を作成する。
+
+```markdown```メソッドを使用することにより、マークダウン形式で定義できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -3528,7 +4060,11 @@ class TfaTokenNotification extends Notification
 認証コード『{ $tfa_token }}』を入力して下さい。<br>
 
 +++++++++++++++++++++++++++++++++++++<br>
-本アドレスは送信専用です。ご返信頂いてもお答えできませんので、ご了承ください。
+本アドレスは送信専用です。
+
+ご返信頂いてもお答えできませんので、ご了承ください。
+
+
 
 @endcomponent
 ```
@@ -3584,6 +4120,8 @@ class TfaTokenNotification extends Notification
 
 配列でDBに保存する内容を定義する。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
 ```php
@@ -3630,11 +4168,19 @@ class TfaTokenNotification extends Notification
 
 #### ▼ Channel
 
-Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで使用される。
+Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。
+
+これは、Notificationクラスの```via```メソッドで使用される。
+
+
 
 **＊実装例＊**
 
-AWS SNSを受信チャンネルとする。AWSから配布されているパッケージが必要である。
+AWS SNSを受信チャンネルとする。
+
+AWSから配布されているパッケージが必要である。
+
+
 
 ```bash
 $ composer require aws/aws-sdk-php-laravel
@@ -3707,7 +4253,13 @@ class AwsSnsChannel
 
 #### ▼ Notifiableトレイトの```notify```メソッド
 
-通知対象となるモデルを定義する。Notifiableトレイトを継承する。これにより、```notify```メソッドを使用できるようになる。
+通知対象となるモデルを定義する。
+
+Notifiableトレイトを継承する。
+
+これにより、```notify```メソッドを使用できるようになる。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
@@ -3725,7 +4277,11 @@ class User extends Authenticatable
 }
 ```
 
-通知先のクラスから```notify```メソッドをコールし、任意のNotificationクラスを渡す。これにより、通知処理が実行される。
+通知先のクラスから```notify```メソッドをコールし、任意のNotificationクラスを渡す。
+
+これにより、通知処理が実行される。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
@@ -3737,7 +4293,11 @@ $user->notify(new FooNotification());
 
 #### ▼ Notificationファサード
 
-通知対象となるモデルを定義する。Notifiableトレイトを継承する。
+通知対象となるモデルを定義する。
+
+Notifiableトレイトを継承する。
+
+
 
 ```php
 <?php
@@ -3755,6 +4315,8 @@ class User extends Authenticatable
 
 Notificationファサードに通知先のモデルと通知クラスを渡す。
 
+
+
 ```php
 <?php
 
@@ -3764,6 +4326,8 @@ Notification::send($users, new FooNotification());
 #### ▼ オンデマンド通知
 
 オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -3789,13 +4353,27 @@ Notification::route('mail', $user->email_address)
 
 EloquentモデルをJSON型データとしてレスポンスする時に、一旦、配列データに変換する必要がある。
 
+
+
 #### ▼ 単一のEloquentモデルの配列化
 
-単一のEloquentモデルを配列に変換する。Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。LaravelはレスポンスのJSON型データを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSON型データに変換する。
+単一のEloquentモデルを配列に変換する。
+
+Resourceクラスの```toArray```メソッドにて、```this```変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。
+
+また、```this```変数からゲッターを経由せずに直接的にプロパティにアクセスできる。
+
+Controllerにて、ResouceクラスにEloquentモデルを渡すようにする。
+
+LaravelはレスポンスのJSON型データを作成するために、まず```toArray```メソッドにより配列化し、加えてこれをJSON型データに変換する。
+
+
 
 **＊実装例＊**
 
 Fooクラスからデータを取り出し、配列化する。
+
+
 
 ```php
 <?php
@@ -3808,6 +4386,8 @@ class FooJsonResource extends JsonResource
 {
     /**
      * オブジェクトを配列に変換します。
+
+
      *
      * @param  Request
      * @return array
@@ -3820,6 +4400,8 @@ class FooJsonResource extends JsonResource
         ];
     }
 }。
+
+
 ```
 
 ```php
@@ -3833,6 +4415,8 @@ class FooController extends Controller
 {
     /**
      * クライアントにデータを返却します。
+
+
      *
      * @param  Request  $request
      * @return Response
@@ -3851,6 +4435,8 @@ class FooController extends Controller
 
 複数のEloquentモデル（Collection型）を配列に変換する。
 
+
+
 ```php
 // ここに実装例
 ```
@@ -3863,7 +4449,13 @@ class FooController extends Controller
 
 #### ▼ Middlewareの適用
 
-APIのエンドポイントとして働くルーティング処理を実装する。実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```api```キーで設定したミドルウェアが実行される。APIのエンドポイントは外部公開する必要があるため、```web```キーと比較して、セキュリティのためのミドルウェアが設定されていない。
+APIのエンドポイントとして働くルーティング処理を実装する。
+
+実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```api```キーで設定したミドルウェアが実行される。
+
+APIのエンドポイントは外部公開する必要があるため、```web```キーと比較して、セキュリティのためのミドルウェアが設定されていない。
+
+
 
 ```php
 <?php
@@ -3902,7 +4494,15 @@ class Kernel extends HttpKernel
 
 #### ▼ Middlewareの適用
 
-API以外のルーティング処理を実装する。実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```web```キーで設定したミドルウェアが実行される。API以外のルーティングは外部公開する必要がないため、```api```キーと比較して、セキュリティのためのミドルウェアが多く設定されている。例えば、CSRF対策のためのVerifyCsrfTokenクラスがある。
+API以外のルーティング処理を実装する。
+
+実装したルーティング処理時には、Kernelクラスの```middlewareGroups```プロパティの```web```キーで設定したミドルウェアが実行される。
+
+API以外のルーティングは外部公開する必要がないため、```api```キーと比較して、セキュリティのためのミドルウェアが多く設定されている。
+
+例えば、CSRF対策のためのVerifyCsrfTokenクラスがある。
+
+
 
 ```php
 <?php
@@ -3944,6 +4544,8 @@ class Kernel extends HttpKernel
 
 ヘルスチェックなど、API認証が不要なルーティング処理を実装する。
 
+
+
 <br>
 
 ### 暗黙のモデル結合
@@ -3952,11 +4554,15 @@ class Kernel extends HttpKernel
 
 ルーティング時に使用するパラメーター名とコントローラーのメソッドの引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
 
+
+
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
 **＊実装例＊**
 
 ルーティング時に、パスパラメーター名を```user```としておく。
+
+
 
 ```php
 <?php
@@ -3964,7 +4570,13 @@ class Kernel extends HttpKernel
 Route::get('/users/{user}', 'UserController@index');
 ```
 
-かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストを送信すると、ユーザーIDが```1```のユーザーがDBから読み出され、コントローラーにインジェクションされる。
+かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。
+
+または。
+
+この時、『```/users/1```』に対してリクエストを送信すると、ユーザーIDが```1```のユーザーがDBから読み出され、コントローラーにインジェクションされる。
+
+
 
 ```php
 <?php
@@ -3994,7 +4606,11 @@ class UserController extends Controller
 
 #### ▼ アプリケーション側の対応
 
-セッション開始時にCSRFトークンが作成される。Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
+セッション開始時にCSRFトークンが作成される。
+
+Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
@@ -4016,6 +4632,8 @@ Bladeを使用しない場合、セッション開始時のレスポンスの```
 #### ▼ HTTPクライアントツール側の対応
 
 PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
+
+
 
 ```javascript
 if (pm.request.method == 'GET') {
@@ -4059,6 +4677,8 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 DBファサードを使用して、初期データを定義する。
 
+
+
 ```php
 <?php
 
@@ -4069,6 +4689,8 @@ class ProductsSeeder extends Seeder
 {
     /**
      * Seederを実行します。
+
+
      *
      * @return void
      */
@@ -4114,6 +4736,8 @@ class ProductsSeeder extends Seeder
 
 実行者名は、定数として管理しておくと良い。
 
+
+
 ```php
 <?php
 
@@ -4143,7 +4767,15 @@ class ExecutorConstant
 
 #### ▼ CSVファイルによる定義
 
-CSVファイルを使用して、初期データを定義する。DBファサードを使用するよりも。大サイズのデータを定義しやすい。この時、```LOAD DATA LOCAL INFILE```文を使用すると、高速で処理できる。
+CSVファイルを使用して、初期データを定義する。
+
+DBファサードを使用するよりも。
+
+大サイズのデータを定義しやすい。
+
+この時、```LOAD DATA LOCAL INFILE```文を使用すると、高速で処理できる。
+
+
 
 > ℹ️ 参考：https://i-407.com/blog/tech/n3/
 
@@ -4157,6 +4789,8 @@ class ProductsSeeder extends Seeder
 {
     /**
      * Seederを実行します。
+
+
      *
      * @return void
      */
@@ -4171,6 +4805,8 @@ class ProductsSeeder extends Seeder
 
     /**
      * CSVを読み込んでDBにデータを保存します。
+
+
      */
     private function importCsv(): void
     {
@@ -4203,6 +4839,8 @@ class ProductsSeeder extends Seeder
 
 DatabaseSeederにて、全てのSeederをまとめて実行する。
 
+
+
 ```php
 <?php
 
@@ -4212,6 +4850,8 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seederを実行します。
+
+
      *
      * @return void
      */
@@ -4269,6 +4909,8 @@ class DatabaseSeeder extends Seeder
 
 クラスの名前空間を、```config/app.php```ファイルの```providers```配列に登録すると、アプリケーションの起動時にServiceProviderをコールできるため、ServiceContainerへのクラスのバインドが自動的に完了する。
 
+
+
 **＊実装例＊**
 
 ```php
@@ -4290,6 +4932,8 @@ class DatabaseSeeder extends Seeder
 
 ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_class_based.html
 
 ```php
@@ -4304,6 +4948,8 @@ interface Container extends ContainerInterface
 {
     /**
      * 通常のバインディングとして、自身にバインドする。
+
+
      * 第二引数は、クロージャー、もしくはクラス名前空間
      *
      * @param  string  $abstract
@@ -4315,6 +4961,8 @@ interface Container extends ContainerInterface
     
     /**
      * singletonとして、自身にバインドする。
+
+
      *
      * @param  string  $abstract
      * @param  \Closure|string|null  $concrete
@@ -4330,13 +4978,25 @@ interface Container extends ContainerInterface
 
 #### ▼ 単一のクラスをバインド/リゾルブ
 
-AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスが作成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
+AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。
+
+これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
+
+Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスが作成されるため、以下の実装を実行する必要はない。
+
+ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
 **＊実装例＊**
 
-バインドする。注意点として、Laravelでは不要である。
+バインドする。
+
+注意点として、Laravelでは不要である。
+
+
 
 ```php
 <?php
@@ -4366,6 +5026,8 @@ class FooServiceProvider extends ServiceProvider
 
 引数の型を元に、クラスのインスタンスがリゾルブされる。
 
+
+
 ```php
 <?php
 
@@ -4383,6 +5045,8 @@ class Qux
 ```
 
 引数の型を指定しない場合は、手動で渡す必要がある。
+
+
 
 ```php
 <?php
@@ -4406,6 +5070,8 @@ $qux = new Qux($foo); // 手動で渡す
 ```
 
 混合型の場合は、引数の型を指定できないため、リゾルブを実行できない。
+
+
 
 ```php
 <?php
@@ -4436,6 +5102,8 @@ $qux = new Qux($foo1);
 #### ▼ 複数のクラスをバインド/リゾルブ
 
 メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
+
+
 
 **＊実装例＊**
 
@@ -4497,7 +5165,13 @@ class FoosServiceProvider extends ServiceProvider
 
 #### ▼ インターフェースをバインドし、実装クラスをリゾルブ
 
-Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。
+
+これを使用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。
+
+この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+
+
 
 **＊実装例＊**
 
@@ -4549,7 +5223,11 @@ class Interactor
 
 #### ▼ ```make```メソッド
 
-引数の型でリゾルブを実行する以外に、```make```メソッドも使用できる。```make```メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
+引数の型でリゾルブを実行する以外に、```make```メソッドも使用できる。
+
+```make```メソッドの引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 
@@ -4577,13 +5255,19 @@ $result = $foo->method();
 
 #### ▼ ```register```メソッドと```boot```メソッドの違い
 
-Laravelのライフサイクルで、ServiceContainerへのクラスのバインドの時には、まずServiceProviderの```register```メソッドが実行され、その後に```boot```メソッドが実行される。そのため、ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき、これは```boot```メソッドに実装することが適している。
+Laravelのライフサイクルで、ServiceContainerへのクラスのバインドの時には、まずServiceProviderの```register```メソッドが実行され、その後に```boot```メソッドが実行される。
+
+そのため、ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき、これは```boot```メソッドに実装することが適している。
+
+
 
 <br>
 
 ### MigrationMacroServiceProvider
 
 複数のテーブルに共通のカラムを作成するDBマイグレーション処理を提供する。
+
+
 
 ```php
 <?php
@@ -4602,6 +5286,8 @@ class MigrationMacroServiceProvider extends ServiceProvider
 {
     /**
      * サービスコンテナにDBマイグレーションメソッドをバインドします。
+
+
      *
      * @return void
      */
@@ -4639,6 +5325,8 @@ class MigrationMacroServiceProvider extends ServiceProvider
 ```
 
 DBマイグレーションファイルにて、定義した```systemColumn```メソッドをコールする。
+
+
 
 ```php
 <?php
@@ -4684,6 +5372,8 @@ class CreateFooTable extends Migration
 
 最後に、```app.php```ファイルにて、MigrationMacroServiceProviderを新しく読み込む。
 
+
+
 ```php
 <?php
 
@@ -4709,7 +5399,11 @@ return [
 
 #### ▼ 全てのルーティングへの処理
 
-ルーティングの設定ファイルをコールする。また、全てのルーティングに適用する処理を定義する。
+ルーティングの設定ファイルをコールする。
+
+また、全てのルーティングに適用する処理を定義する。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
@@ -4729,6 +5423,8 @@ class RouteServiceProvider extends ServiceProvider
 {
     /**
      * ルーティングの設定ファイルをコールします。
+
+
      *
      * @return void
      */
@@ -4751,7 +5447,11 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ▼ リクエスト数制限
 
-```1```分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する。加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、```configureRateLimiting```メソッドによって、```429```ステータスでレスポンスが返信される。
+```1```分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する。
+
+加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、```configureRateLimiting```メソッドによって、```429```ステータスでレスポンスが返信される。
+
+
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
@@ -4807,7 +5507,11 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ▼ EventとListenerの登録
 
-EventとListenerの対応関係を定義する。注意点として、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参考にせよ。
+EventとListenerの対応関係を定義する。
+
+注意点として、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参考にせよ。
+
+
 
 ```php
 <?php
@@ -4822,6 +5526,8 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * イベントとリスナーの対応関係を配列で定義します。
+
+
      * [イベント => リスナー]
      *
      * @var array
@@ -4898,7 +5604,11 @@ return [
 
 #### ▼ よく使用する操作メソッド
 
-FormRequestクラスの```session```メソッドはStoreクラスを返却する。このクラスのメソッドを使用して、セッションを操作できる。
+FormRequestクラスの```session```メソッドはStoreクラスを返却する。
+
+このクラスのメソッドを使用して、セッションを操作できる。
+
+
 
 | メソッド名       | 説明                                                                   |
 |--------------|----------------------------------------------------------------------|
@@ -4956,7 +5666,19 @@ class FooController extends Controller
 
 #### ▼ セッションデータがStoreクラスに至るまで
 
-全てを追うことは難しいため、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。```read```メソッドは、```storage/framework/sessions```にあるセッションデータに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。Sessionクラスのメソッドは、```attribute```プロパティを使用して、セッションを操作する。最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションデータに新しい値が書き込まれる。
+全てを追うことは難しいため、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。
+
+ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。
+
+これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。
+
+```read```メソッドは、```storage/framework/sessions```にあるセッションデータに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。
+
+Sessionクラスのメソッドは、```attribute```プロパティを使用して、セッションを操作する。
+
+最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションデータに新しい値が書き込まれる。
+
+
 
 > ℹ️ 参考：
 >
@@ -4979,7 +5701,9 @@ class FooController extends Controller
 
 #### ▼ データの出力
 
-Controllerクラスから返却されたデータは、```{{ 変数名 }}```で取得できる。`
+Controllerクラスから返却されたデータは、```{{ 変数名 }}```で取得できる。
+
+`
 
 **＊実装例＊**
 
@@ -4993,13 +5717,19 @@ Controllerクラスから返却されたデータは、```{{ 変数名 }}```で�
 
 #### ▼ バリデーションメッセージの出力
 
-バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。MessageBagクラスは、Blade上で```errors```変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
+バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの```invalid```メソッドがコールされ、MessageBagクラスがViewに渡される。
+
+MessageBagクラスは、Blade上で```errors```変数に格納されており、各メソッドをコールしてエラーメッセージを出力できる。
+
+
 
 > ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 **＊実装例＊**
 
 MessageBagクラスの```all```メソッドで、全てのエラーメッセージを出力する。
+
+
 
 ```html
 <!-- /resources/views/foo/create.blade.php -->
@@ -5039,7 +5769,15 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ▼ ```@include```（サブビュー）
 
-読み込んだファイル全体を出力する。読み込むファイルに対して、変数を渡すこともできる。```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み出し）の関係に近い。
+読み込んだファイル全体を出力する。
+
+読み込むファイルに対して、変数を渡すこともできる。
+
+```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。
+
+両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み出し）の関係に近い。
+
+
 
 **＊実装例＊**
 
@@ -5093,6 +5831,8 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 ちなみに、子テンプレートは、レンダリング時に以下の様に出力される。
 
+
+
 **＊実装例＊**
 
 ```html
@@ -5135,7 +5875,11 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 </html>
 ```
 
-子テンプレートの```@section```にて、```@parent```を使用する。親テンプレートと子テンプレートそれぞれの要素が出力される。
+子テンプレートの```@section```にて、```@parent```を使用する。
+
+親テンプレートと子テンプレートそれぞれの要素が出力される。
+
+
 
 **＊実装例＊**
 
@@ -5151,6 +5895,8 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 ```
 
 ちなみに、子テンプレートは、レンダリング時に以下の様に出力される。
+
+
 
 **＊実装例＊**
 
