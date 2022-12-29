@@ -9,8 +9,6 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -19,13 +17,7 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 ![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
 
-マウントターゲットと接続された片方のEC2インスタンスから、ファイルを読み出し、これをもう一方に出力する。
-
-ファイルの実体はいずれかのEC2に存在しているため、接続を切断している間、片方のEC2インスタンス内のファイルは無くなる。
-
-再接続すると、切断直前のファイルが再び表示されようになる。
-
-
+マウントターゲットと接続された片方のEC2インスタンスから、ファイルを読み出し、これをもう一方に出力する。ファイルの実体はいずれかのEC2に存在しているため、接続を切断している間、片方のEC2インスタンス内のファイルは無くなる。再接続すると、切断直前のファイルが再び表示されようになる。
 
 <br>
 
@@ -48,35 +40,23 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 
 #### ▼ バーストモードの仕組み
 
-スループット性能の自動スケーリングに残高があり、ベースラインを超過した分だけ自動スケーリング残高が減っていく。
-
-また、ベースライン未満の分は残高として蓄積されていく。
-
-
+スループット性能の自動スケーリングに残高があり、ベースラインを超過した分だけ自動スケーリング残高が減っていく。また、ベースライン未満の分は残高として蓄積されていく。
 
 ![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
-
-
 > ℹ️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
 
-残高は、```BurstCreditBalance```メトリクスから確認できる。
-
-このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
-
-
+残高は、```BurstCreditBalance```メトリクスから確認できる。このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 
 #### ▼ プロビジョニングモードの仕組み
 
 スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
-
-
 
 > ℹ️ 参考：https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
 
@@ -89,8 +69,6 @@ description: EFS＠Eで始まるAWSリソースの知見を記録しています
 #### ▼ マウントポイントの登録と解除とは
 
 ```mount```コマンドと```unmount```コマンドで、EFSに対してマウントポイントの登録と解除を実行できる。
-
-
 
 > ℹ️ 参考：https://qiita.com/tandfy/items/829f9fcc68c4caabc660
 
@@ -105,8 +83,6 @@ $ mount -t efs -o tls fs-*****:/ /var/www/foo
 #### ▼ 解除
 
 ```df```コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、```unmount```コマンドを実行する。
-
-
 
 ```bash
 $ df

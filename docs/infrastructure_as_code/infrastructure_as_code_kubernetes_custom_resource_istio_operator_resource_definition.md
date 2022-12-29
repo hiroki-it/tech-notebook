@@ -9,8 +9,6 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +19,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 #### ▼ GCRから
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。
-
-プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
-
-
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
@@ -67,11 +61,7 @@ istiooperator.install.istio.io/istio-operator created
 
 #### ▼ チャートリポジトリから
 
-IstioOperatorのチャートをインストールし、リソースを作成する。
-
-チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
-
-
+IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
 
 > ℹ️ 参考：
 >
@@ -109,8 +99,6 @@ metadata:
 
 IstioOperator管理でIstioリソースを作成する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
@@ -118,13 +106,7 @@ IstioOperator管理でIstioリソースを作成する。
 
 #### ▼ <component名>.k8s
 
-各componentが共通して持つ設定項目である。
-
-各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
-
-ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
-
-
+各componentが共通して持つ設定項目である。各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -156,11 +138,7 @@ spec:
 
 #### ▼ base
 
-baseコンポーネントのオプションを設定する。
-
-baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
-
-
+baseコンポーネントのオプションを設定する。baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
 
 > ℹ️ 参考：
 >
@@ -200,11 +178,7 @@ spec:
 
 #### ▼ egressGateways
 
-egressGatewaysコンポーネントのオプションを設定する。
-
-EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
-
-
+egressGatewaysコンポーネントのオプションを設定する。EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -221,11 +195,7 @@ spec:
 
 #### ▼ ingressGateways
 
-ingressGatewaysコンポーネントのオプションを設定する。
-
-IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
-
-
+ingressGatewaysコンポーネントのオプションを設定する。IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -241,8 +211,6 @@ spec:
 ```
 
 ```spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
-
-
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -268,16 +236,12 @@ spec:
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
-
-
 > ℹ️ 参考：
 >
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
 
 最終的な設定値は、```kubectl get```コマンドで確認できる。
-
-
 
 ```bash
 $ kubectl -n istio-system get service istio-ingressgateway -o yaml
@@ -344,8 +308,6 @@ status:
 
 istiodコンポーネントのオプションを設定する。
 
-
-
 > ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
 ```yaml
@@ -403,8 +365,6 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのレジストリを設定する。
 
-
-
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -428,8 +388,6 @@ spec:
 #### ▼ accessLogEncoding
 
 アクセスログのファイル形式を設定する。
-
-
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -599,8 +557,6 @@ spec:
 
 IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
 
-
-
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
@@ -619,11 +575,7 @@ spec:
 
 #### ▼ profileとは
 
-プロファイルを設定する。
-
-実際には設定済みのIstioOperatorである。
-
-
+プロファイルを設定する。実際には設定済みのIstioOperatorである。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -643,11 +595,7 @@ spec:
 
 #### ▼ revisionとは
 
-Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。
-
-バージョンの表記方法がハイフン繋ぎであることに注意する。
-
-
+Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
 
 > ℹ️ 参考：
 >
@@ -672,8 +620,6 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://hub.docker.com/r/istio/proxyv2/tags
@@ -697,15 +643,11 @@ spec:
 
 ```manifests/charts/global.yaml```ファイルの設定値を上書きする。
 
-
-
 > ℹ️ 参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 
 ```values```ファイルの```base```の項目を上書きする。
-
-
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -779,8 +721,6 @@ spec:
 #### ▼ pilot
 
 ```values```ファイルの```pilot```の項目を上書きする。
-
-
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

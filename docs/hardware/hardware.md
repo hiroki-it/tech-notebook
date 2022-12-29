@@ -9,8 +9,6 @@ description: ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,8 +18,6 @@ description: ハードウェアの知見を記録しています。
 ### ハードウェアとは
 
 システムのうちで、ソフトウェア（OS、ミドルウェア、アプリケーション）以外の要素を合わせたグループのこと。
-
-
 
 > ℹ️ 参考：https://thinkit.co.jp/article/11526
 

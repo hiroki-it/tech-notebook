@@ -9,8 +9,6 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -37,13 +35,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ### バックエンドとフロントエンド間
 
-フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。
-
-データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。
-
-一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
-
-
+フロントエンドにJavaScript、バックエンドにPHPを使用しているとする。データ送信のためにオブジェクト（JS型、PHP型）をJSONに変換する処理はシリアライズである。一方で、送信のためにJSONをオブジェクト（JS型、PHP型）に変換する処理はデシリアライズである。
 
 ![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
@@ -51,13 +43,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ### バックエンドとDB間
 
-バックエンドにPHPを使用しているとする。
-
-データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。
-
-一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
-
-
+バックエンドにPHPを使用しているとする。データ格納のためにオブジェクト（PHP型）をDBレコードに変換する処理はシリアライズである。一方で、データ取得のためにJSONをオブジェクト（PHP型）に変換する処理はデシリアライズである。
 
 <br>
 
@@ -68,8 +54,6 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 #### ▼ 定義方法
 
 キーを、シングルクオーテーションではなく、クオーテーションで囲う必要がある。
-
-
 
 **＊実装例＊**
 
@@ -133,11 +117,7 @@ json["prefecture"] = "Tokyo";
 
 #### ▼ キーの並び順
 
-キーはアルファベット順に並べると良い。
-
-以下のサイトで並び替えられる。
-
-
+キーはアルファベット順に並べると良い。以下のサイトで並び替えられる。
 
 > ℹ️ 参考：https://r37r0m0d3l.github.io/json_sort/
 
@@ -148,8 +128,6 @@ json["prefecture"] = "Tokyo";
 #### ▼ 定義方法
 
 キーはクオーテーションで囲う必要が無い。
-
-
 
 **＊実装例＊**
 
@@ -206,8 +184,6 @@ class Foo
 
 JS型オブジェクトからJSONへの変換には、```JSON.stringfy```メソッドを使用する。
 
-
-
 **＊実装例＊**
 
 ```javascript
@@ -225,11 +201,7 @@ console.log(json);
 
 #### ▼ デシリアライズ：JSONからJS型
 
-JSONからJS型オブジェクトへの変換には、```JSON.parse```メソッドを使用する。
-
-レスポンスされたJSONはエスケープされていることに注意する。
-
-
+JSONからJS型オブジェクトへの変換には、```JSON.parse```メソッドを使用する。レスポンスされたJSONはエスケープされていることに注意する。
 
 **＊実装例＊**
 
@@ -250,8 +222,6 @@ console.log(object);
 **＊実装例＊**
 
 シリアライズとデシリアライズを行うクラスを以下に示す。
-
-
 
 ```javascript
 class StaffParser {
@@ -303,15 +273,7 @@ class StaffParser {
 
 #### ▼ デシリアライズ：JSONからPHP型
 
-JSONからPHP型オブジェクトの変換には。
-
-```json_decode```メソッドを使用する。
-
-第二引数が```false```の場合、object形式オブジェクトに変換する。
-
-リクエストで送信するJSONはエスケープする必要があることに注意する。
-
-
+JSONからPHP型オブジェクトの変換には。```json_decode```メソッドを使用する。第二引数が```false```の場合、object形式オブジェクトに変換する。リクエストで送信するJSONはエスケープする必要があることに注意する。
 
 ```php
 <?php
@@ -337,8 +299,6 @@ var_dump($object);
 ```
 
 第二引数が```true```の場合、連想配列形式に変換する。
-
-
 
 ```php
 <?php

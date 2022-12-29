@@ -9,8 +9,6 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +19,7 @@ description: 設定ファイル＠Prometheus
 
 #### ▼ ```prometheus.yml```ファイルとは
 
-Prometheusを設定する。
-
-```/etc/prometheus```ディレクトリ配下におく。
-
-
+Prometheusを設定する。```/etc/prometheus```ディレクトリ配下におく。
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
@@ -34,8 +28,6 @@ Prometheusを設定する。
 ### globalセクション
 
 全てのメトリクス収集からアラートまでを共通で設定する。
-
-
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
@@ -50,8 +42,6 @@ global:
 ### alertingセクション
 
 使用するAlertmanagerを設定する。
-
-
 
 > ℹ️ 参考：
 > 
@@ -71,8 +61,6 @@ alerting:
 ### rule_filesセクション
 
 Prometheusのアラートルールを設定する。
-
-
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/alertmanager-docker-compose/
 
@@ -125,15 +113,11 @@ groups:
 
 Retrievalのルールを設定する。
 
-
-
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
 #### ▼ static_configs
 
 IPアドレスやポート番号の変わらない対象を監視する。
-
-
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
@@ -153,11 +137,7 @@ scrape_configs:
 
 #### ▼ sd_configs
 
-IPアドレスやポート番号が動的に変化する対象を監視する。
-
-監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
-
-
+IPアドレスやポート番号が動的に変化する対象を監視する。監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
 
 
 > ℹ️ 参考：
@@ -196,8 +176,6 @@ scrape_configs:
 
 全てのアラートを共通で設定する。
 
-
-
 > ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
 
 ```yaml
@@ -211,8 +189,6 @@ global:
 ### routeセクション
 
 条件に応じて、受信したアラートを特定の通知先にルーティングする。
-
-
 
 > ℹ️ 参考：https://prometheus.io/docs/alerting/latest/configuration/#route
 
@@ -233,8 +209,6 @@ route:
 ### receiversセクション
 
 アラートの通知先をレシーバーとして設定する。
-
-
 
 > ℹ️ 参考：
 > 
@@ -306,8 +280,6 @@ $ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-e
 #### ▼ node-exporterの場合
 
 バイナリに直接的にパラメーターを渡す。
-
-
 
 > ℹ️ 参考：https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
 

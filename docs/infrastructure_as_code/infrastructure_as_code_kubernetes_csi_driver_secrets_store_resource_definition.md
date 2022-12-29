@@ -9,8 +9,6 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -36,11 +34,7 @@ $ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driv
 
 ## 02. Pod＠Kubernetesでの設定
 
-SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。
-
-別途、Podに紐づくServiceAccountに、プロバイダーのSecretへの認可スコープを付与する必要がある。
-
-
+SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。別途、Podに紐づくServiceAccountに、プロバイダーのSecretへの認可スコープを付与する必要がある。
 
 > ℹ️ 参考：
 > 
@@ -83,11 +77,7 @@ spec:
 
 #### ▼ namespace
 
-Namespaceを設定する。
-
-Secretのマウント対象となるPodと同じNamespaceにする必要がある。
-
-
+Namespaceを設定する。Secretのマウント対象となるPodと同じNamespaceにする必要がある。
 
 > ℹ️ 参考：https://www.bigtreetc.com/column/eks-secrets/
 
@@ -105,8 +95,6 @@ metadata:
 #### ▼ providerとは
 
 Secretのプロバイダーを設定する。
-
-
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
@@ -127,15 +115,11 @@ spec:
 
 プロバイダーに応じて、参照するSecretのデータを設定する。
 
-
-
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects（AWSプロバイダーの場合）
 
 AWSプロバイダー上のSecret（AWS Secrets Manager、AWS Systems Manager）を識別する情報を設定する。
-
-
 
 > ℹ️ 参考：
 > 
@@ -182,8 +166,6 @@ spec:
 #### ▼ objects（GCPプロバイダーの場合）
 
 GCPプロバイダー上のSecret（GCP Secret Manager）を識別する情報を設定する。
-
-
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

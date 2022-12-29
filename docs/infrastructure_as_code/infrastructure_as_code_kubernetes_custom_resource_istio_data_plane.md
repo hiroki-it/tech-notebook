@@ -8,8 +8,6 @@ description: データプレーン＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -222,8 +220,6 @@ func (a *ADSC) Run() error {
 > - https://github.com/istio/istio/blob/
 
 ```handleRecv```メソッド内で、Envoyの各処理コンポーネントを整理し、最後に```XDSUpdates```チャンネルに値を送信している。
-
-
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/pkg/adsc/adsc.go#L544-L587
 

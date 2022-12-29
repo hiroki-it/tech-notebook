@@ -9,8 +9,6 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -53,8 +51,6 @@ GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
 ここでは、Query処理を受信するためのスキーマを定義したとする。
 
-
-
 > ℹ️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
 ```graphql
@@ -77,15 +73,11 @@ type User {
 
 データ読出のクエリを定義する。
 
-
-
 > ℹ️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E3%82%AF%E3%82%A8%E3%83%AA
 
 **＊例＊**
 
 ここでは、前述のQuery処理のスキーマで定義した```GetUser```メソッドを使用するとする。
-
-
 
 > ℹ️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
@@ -125,8 +117,6 @@ $ curl \
 
 ここでは、Mutation処理を受信するためのスキーマを定義したとする。
 
-
-
 > ℹ️ 参考：https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
 
 ```graphql
@@ -156,15 +146,11 @@ input UserCreateInput {
 
 データ作成/更新/削除のクエリを定義する。
 
-
-
 > ℹ️ 参考：https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%83%9F%E3%83%A5%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 **＊例＊**
 
 ここでは、前述のMutation処理のスキーマで定義した```createUser```メソッドを使用するとする。
-
-
 
 > ℹ️ 参考：
 > 

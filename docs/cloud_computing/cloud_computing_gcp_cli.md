@@ -9,8 +9,6 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -23,21 +21,11 @@ description: GCP CLI＠GCPの知見を記録しています。
 
 GCPアカウントの認証を行う。
 
-
-
 > ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/auth
 
 #### ▼ application-default login
 
-GCP CLIによるGCPリソースへのアクセスを認証するために使用する。
-
-```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、クレデンシャル情報を定義する。
-
-また、これ使用してGCPにログインする。
-
-```~/.config/gcloud/application_default_credentials.json```ファイルは```1```個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
-
-
+GCP CLIによるGCPリソースへのアクセスを認証するために使用する。```~/.config/gcloud/application_default_credentials.json```ファイルを作成し、クレデンシャル情報を定義する。また、これ使用してGCPにログインする。```~/.config/gcloud/application_default_credentials.json```ファイルは```1```個のアカウントのクレデンシャル情報しか持てないため、アカウントを切り替える場合はファイルを再作成する必要がある。
 
 > ℹ️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
@@ -59,8 +47,6 @@ $ gcloud auth application-default login
 #### ▼ login
 
 GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
-
-
 
 > ℹ️ 参考：https://christina04.hatenablog.com/entry/gcp-auth
 
@@ -86,13 +72,9 @@ $ gcloud auth login --update-adc
 
 ```gcloud```コマンドのコンポーネントを管理する。
 
-
-
 #### ▼ update
 
 ```gcloud```コマンドのコンポーネントをアップグレードする。
-
-
 
 ```bash
 $ gcloud components update
@@ -101,8 +83,6 @@ $ gcloud components update
 #### ▼ list
 
 ```gcloud```コマンドのコンポーネントの一覧を取得する。
-
-
 
 > ℹ️ 参考：https://cloud.google.com/sdk/docs/components?hl=ja
 
@@ -136,13 +116,9 @@ The latest available version is: 400.0.0
 
 認証時のデフォルト値を設定する。
 
-
-
 #### ▼ list
 
 認証情報を取得する。
-
-
 
 **＊実行例＊**
 
@@ -159,8 +135,6 @@ Your active configuration is: [default]
 #### ▼ set
 
 認証の特定の項目のデフォルト値を設定する。
-
-
 
 **＊実行例＊**
 
@@ -188,8 +162,6 @@ Updated property [compute/region].
 
 GKE Clusterの一覧を取得する。
 
-
-
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters?hl=ja#viewing_your_clusters
 
 **＊実行例＊**
@@ -211,11 +183,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 
 #### ▼ describe
 
-GKE Node Poolの情報を取得する。
-
-アップグレードの手法を確認することもできる。
-
-
+GKE Node Poolの情報を取得する。アップグレードの手法を確認することもできる。
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies?hl=ja#inspect-upgrade-settings
 
@@ -239,16 +207,12 @@ upgradeSettings:
 
 GKE Node Poolの設定を変更する。
 
-
-
 **＊実行例＊**
 
 > ℹ️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
 
 
 ローリング方式（サージ方式）のアップグレードを有効化する。
-
-
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \
@@ -257,8 +221,6 @@ $ gcloud container node-pools update foo-node-pool \
 ```
 
 ローリング方式時に新しく追加できる最大インスタンス数と、削除できる最大インスタンス数を設定する。
-
-
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \
@@ -274,8 +236,6 @@ $ gcloud container node-pools update foo-node-pool \
 #### ▼ initとは
 
 認証時のデフォルト値を対話方式で設定する。
-
-
 
 **＊実行例＊**
 
@@ -327,8 +287,6 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 #### ▼ projectとは
 
 認可スコープの範囲内になるプロジェクトの一覧を取得する。
-
-
 
 **＊実行例＊**
 

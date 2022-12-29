@@ -9,8 +9,6 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -31,13 +29,7 @@ $ brew install sops
 
 #### ▼ ```secrets```ファイル
 
-sopsによって暗号化されたファイルであり、キーバリュー型ストレージを持つ。
-
-```sops```キー以下に暗号化の設定値が記載される。
-
-他のキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドキーバリュー型ストレージ（例：AWS パラメーターストア、など）よりも簡単に変数を管理できる。
-
-
+sopsによって暗号化されたファイルであり、キーバリュー型ストレージを持つ。```sops```キー以下に暗号化の設定値が記載される。他のキーバリュー型ストア（例：Hashicorp Vaultなど）よりも安全で、またクラウドキーバリュー型ストレージ（例：AWS パラメーターストア、など）よりも簡単に変数を管理できる。
 
 > ℹ️ 参考：https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
@@ -87,11 +79,7 @@ sops:
 
 #### ▼ ```.sops.yaml```ファイル
 
-```sops```コマンドのパラメーターを定義する。
-
-コマンドを実行するディレクトリに配置しておく必要がある。
-
-
+```sops```コマンドのパラメーターを定義する。コマンドを実行するディレクトリに配置しておく必要がある。
 
 > ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
 
@@ -118,8 +106,6 @@ $ sops -e ./values/foo-values.yaml
 
 ```.sops.yaml```ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 
-
-
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
@@ -132,8 +118,6 @@ $ sops -e ./values/foo-values.yaml
 
 ```EnvVar```キーの定義された項目を参照せよ。
 
-
-
 > ℹ️ 参考：https://github.com/mozilla/sops/blob/e1edc059487ddd14236dfe47267b05052f6c20b4/cmd/sops/main.go#L542-L701
 
 <br>
@@ -142,11 +126,7 @@ $ sops -e ./values/foo-values.yaml
 
 #### ▼ -d
 
-```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。
-
-標準出力に出力されるため、ファイルに書き出すようにすると良い。
-
-
+```.yaml```ファイルや```.json```ファイルの値の部分を復号化する。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号化された.yamlファイル/.jsonファイル>
@@ -160,13 +140,7 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。
-
-環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。
-
-標準出力に出力されるため、ファイルに書き出すようにすると良い。
-
-
+外部の暗号化キー（例；AWS KMS、GCP KMS、など）に基づいて、```.yaml```ファイルや```.json```ファイルの値の部分を暗号化する。環境変数や```.sops.yaml```ファイルで暗号化ルールを定義しておく必要がある。標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
 ```bash
 # AWS KMSを暗号化キーとして使用する。
@@ -176,8 +150,6 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 ```
 
 外部の暗号化キーを使用する場合、そのサービスの認証を済ませておく必要がある。
-
-
 
 ```bash
 # AWS KMSを暗号化キーとして使用する場合

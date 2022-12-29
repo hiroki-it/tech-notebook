@@ -9,8 +9,6 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -41,8 +39,6 @@ $ serverless print --FOO foo
 
 クラウドインフラを作成する。
 
-
-
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
 
 
@@ -54,8 +50,6 @@ $ serverless deploy
 
 パラメーターを```serverless.yml```ファイルに渡し、```serverless deploy```コマンドを実行する。
 
-
-
 ```bash
 $ serverless deploy --FOO foo
 ```
@@ -63,8 +57,6 @@ $ serverless deploy --FOO foo
 #### ▼ -v
 
 実行ログを表示しつつ、```serverless deploy```コマンドを実行する。
-
-
 
 ```bash
 $ serverless deploy -v

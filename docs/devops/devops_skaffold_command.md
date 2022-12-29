@@ -9,8 +9,6 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,11 +19,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 #### ▼ --verbosity
 
-ログレベルを指定し、```skaffold```コマンドを実行する。
-
-デフォルトは```warn```である。
-
-
+ログレベルを指定し、```skaffold```コマンドを実行する。デフォルトは```warn```である。
 
 > ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold
 
@@ -41,8 +35,6 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 全てのコンテナイメージをビルドする。
 
-
-
 > ℹ️ 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
 ```bash
@@ -52,8 +44,6 @@ $ skaffold build
 #### ▼ --cache-artifacts
 
 キャッシュを無効化し、```build```コマンドを実行する。
-
-
 
 ```bash
 $ skaffold build --cache-artifacts=false
@@ -65,11 +55,7 @@ $ skaffold build --cache-artifacts=false
 
 #### ▼ dev
 
-アプリケーションのコードを監視し、変更が検出された時に、コンテナイメージの再ビルド/プッシュ/デプロイを実行する。
-
-また、ポートフォワーディングを実行する。
-
-
+アプリケーションのコードを監視し、変更が検出された時に、コンテナイメージの再ビルド/プッシュ/デプロイを実行する。また、ポートフォワーディングを実行する。
 
 ```bash
 $ skaffold dev
@@ -79,8 +65,6 @@ $ skaffold dev
 
 一定間隔でコードの変更を監視しつつ、```dev```コマンドを実行する。
 
-
-
 ```bash
 $ skaffold dev --trigger=polling
 ```
@@ -89,8 +73,6 @@ $ skaffold dev --trigger=polling
 
 イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```dev```コマンドを実行する。
 
-
-
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
 ```
@@ -98,8 +80,6 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 #### ▼ --port-forward
 
 ポートフォワードを実行しつつ、```dev```コマンドを実行する。
-
-
 
 ```bash
 $ skaffold dev --port-forward
@@ -113,8 +93,6 @@ $ skaffold dev --port-forward
 
 バックグラウンドで、コンテナイメージのビルド/デプロイを実行する。
 
-
-
 ```bash
 $ skaffold run
 ```
@@ -122,8 +100,6 @@ $ skaffold run
 #### ▼ force
 
 リソースを強制的にデプロイしつつ、```skaffold run```コマンドを実行する。
-
-
 
 ```bash
 $ skaffold run --force
@@ -133,8 +109,6 @@ $ skaffold run --force
 
 イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、```skaffold run```コマンドを実行する。
 
-
-
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
 ```
@@ -143,8 +117,6 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 フォアグラウンドで```skaffold run```コマンドを実行する。
 
-
-
 ```bash
 $ skaffold run --tail
 ```
@@ -152,8 +124,6 @@ $ skaffold run --tail
 #### ▼ --port-forward
 
 ポートフォワードを実行しつつ、```skaffold run```コマンドを実行する。
-
-
 
 ```bash
 $ skaffold run --port-forward

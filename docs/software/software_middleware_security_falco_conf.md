@@ -9,8 +9,6 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -44,8 +42,6 @@ $ helm install falco falcosecurity/falco
 
 切り分けて定義したFalcoの設定ファイルを設定する。
 
-
-
 > ℹ️ 参考：
 > 
 > - https://github.com/falcosecurity/falco/tree/master/rules
@@ -65,8 +61,6 @@ rules_file:
 ### plugins
 
 Falcoの拡張プラグインを設定する。
-
-
 
 ```yaml
 plugins:

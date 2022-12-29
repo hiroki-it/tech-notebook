@@ -9,11 +9,7 @@ description: 専用パッケージ＠Laravelの知見を記録しています。
 
 ### Laravel Mixパッケージとは
 
-WebpackをLaravelを介して操作できるパッケージのこと。
-
-Breezeパッケージにも同梱されている。
-
-
+WebpackをLaravelを介して操作できるパッケージのこと。Breezeパッケージにも同梱されている。
 
 > ℹ️ 参考：https://readouble.com/laravel/8.x/ja/mix.html
 
@@ -25,8 +21,6 @@ Breezeパッケージにも同梱されている。
 
 アセットのコンパイルを実行する。
 
-
-
 ```bash
 $ npm run dev
 ```
@@ -34,8 +28,6 @@ $ npm run dev
 #### ▼ アセットの自動再コンパイル
 
 アセットのコードが変更された時に、これと検知し、自動的に再コンパイルを実行する。
-
-
 
 ```bash
 $ npm run watch
@@ -61,8 +53,6 @@ $ npm run watch
 
 BenSampoのEnumクラスを継承し、区分値と判定メソッドを実装する。
 
-
-
 **＊実装例＊**
 
 ```php
@@ -82,8 +72,6 @@ class RoleType extends Enum
     
     /**
      * コールセンター職の区分値を持つか否かを判定します。
-
-
      */    
     public function isCallRole()
     {
@@ -92,8 +80,6 @@ class RoleType extends Enum
     
     /**
      * 開発職の区分値を持つかを判定します。
-
-
      */       
     public function isDevelopmentRole()
     {
@@ -102,8 +88,6 @@ class RoleType extends Enum
     
     /**
      * 経理職の区分値を持つか否かを判定します。
-
-
      */       
     public function isFinanceRole()
     {
@@ -112,8 +96,6 @@ class RoleType extends Enum
     
     /**
      * 企画職の区分値を持つか否かを判定します。
-
-
      */       
     public function isPlanRole()
     {
@@ -122,8 +104,6 @@ class RoleType extends Enum
     
     /**
      * 営業職の区分値を持つか否かを判定します。
-
-
      */       
     public function isSalesRole()
     {
@@ -137,8 +117,6 @@ class RoleType extends Enum
 **＊実装例＊**
 
 DBから区分値をSELECTした後、これを元にEnumクラスを作成する。
-
-
 
 ```php
 <?php
@@ -164,16 +142,12 @@ $staff->roleType->isSalesRole(); // false
 
 PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 > - https://pleiades.io/help/phpstorm/laravel.html
 
 プロバイダーを```app.php```ファイルに登録する必要がある。
-
-
 
 ```php
 <?php
@@ -199,8 +173,6 @@ return [
 
 PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを作成する。
 
-
-
 > ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
 ```bash
@@ -211,8 +183,6 @@ $ php artisan ide-helper:generate
 
 PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
 
-
-
 > ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
@@ -222,8 +192,6 @@ $ php artisan ide-helper:models
 #### ▼ 予測表示
 
 PHPStromで、Laravelのメソッドを予測表示できるように、```phpstorm.meta.php```ファイルを作成する。
-
-
 
 > ℹ️ 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

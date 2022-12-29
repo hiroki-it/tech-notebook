@@ -9,8 +9,6 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -31,8 +29,6 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 
 全てのインベントリーを指定し、また暗号化済みファイルを復号化し、プロビジョニングを実行する。
 
-
-
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
@@ -41,13 +37,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 
 ### -i
 
-inventoryファイルを指定する。
-
-これにより、プロビジョニングの実行先の管理対象ノードを指定できる。
-
-基本的には、ディレクトリを指定した方が良い。
-
-
+inventoryファイルを指定する。これにより、プロビジョニングの実行先の管理対象ノードを指定できる。基本的には、ディレクトリを指定した方が良い。
 
 > ℹ️ 参考：https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
 
@@ -59,8 +49,6 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 
 fooインベントリのみを指定して、プロビジョニングを実行する。
 
-
-
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
@@ -68,8 +56,6 @@ $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 **＊例＊**
 
 全てのインベントリーを指定して、プロビジョニングを実行する。
-
-
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories
@@ -82,8 +68,6 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 ### decrypt
 
 指定した暗号化済みファイルを復号化する。
-
-
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
@@ -126,8 +110,6 @@ $ANSIBLE_VAULT;1.1;AES256
 
 ```inventory```ファイルを指定し、```json```形式に変換する。
 
-
-
 > ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
 
 ```bash
@@ -143,8 +125,6 @@ $ ansible-inventory -i ./inventories/inventory --list
 #### ▼ -y
 
 ```inventory```ファイルを指定し、```yml```形式に変換する。
-
-
 
 > ℹ️ 参考：https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
 

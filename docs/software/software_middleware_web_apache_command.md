@@ -9,8 +9,6 @@ description: コマンド＠Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,8 +18,6 @@ description: コマンド＠Apacheの知見を記録しています。
 ### configtest
 
 設定ファイルのバリデーションを実行する。
-
-
 
 > ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
@@ -33,11 +29,7 @@ $ apachectl configtest
 
 ### graceful
 
-Apacheを段階的に再起動する。
-
-安全に再起動できる。
-
-
+Apacheを段階的に再起動する。安全に再起動できる。
 
 > ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
@@ -51,8 +43,6 @@ $ apachectl graceful
 
 設定ファイルのバリデーションを実行する。
 
-
-
 > ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 ```bash
@@ -65,11 +55,7 @@ $ apachectl -t
 
 ### -D
 
-読み込まれた```conf```ファイルの一覧を取得する。
-
-この結果から、使われていない```conf```ファイルもを検出できる。
-
-
+読み込まれた```conf```ファイルの一覧を取得する。この結果から、使われていない```conf```ファイルもを検出できる。
 
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -81,11 +67,7 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 
 ### -l
 
-コンパイル済みのモジュールの一覧を取得する。
-
-表示されているからといって、読み込まれているとは限らない。
-
-
+コンパイル済みのモジュールの一覧を取得する。表示されているからといって、読み込まれているとは限らない。
 
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -99,8 +81,6 @@ $ httpd -l
 
 特定のディレクティブを実装するべき設定ファイルの一覧を取得する。
 
-
-
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
@@ -113,8 +93,6 @@ $ httpd -L
 
 コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを取得する。
 
-
-
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
@@ -126,8 +104,6 @@ $ httpd -M
 ### -S
 
 実際に読み込まれたVirtualHostの設定を取得する。
-
-
 
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
@@ -142,8 +118,6 @@ $ httpd -S
 ### httpd configtest
 
 Apacheの設定ファイルのバリデーションを実行する。
-
-
 
 > ℹ️ 参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 

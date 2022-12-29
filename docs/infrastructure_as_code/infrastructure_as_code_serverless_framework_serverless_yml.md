@@ -9,8 +9,6 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -20,8 +18,6 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 ### configValidationModeとは
 
 設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
-
-
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
@@ -39,8 +35,6 @@ configValidationMode: warn
 
 スコープが```serverless.yml```ファイル内のみの変数を設定する。
 
-
-
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
 
 **＊実装例＊**
@@ -57,8 +51,6 @@ custom:
 ### frameworkVersionとは
 
 Serverless Frameworkのバージョンを設定する。
-
-
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
@@ -82,8 +74,6 @@ frameworkVersion: '2'
 
 Lambda関数の説明文を設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -97,8 +87,6 @@ functions:
 ### environment
 
 Lambda関数の変数を設定する。
-
-
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 
@@ -121,8 +109,6 @@ functions:
 
 Lambda関数に紐づけて作成するEventBridgeを設定する。
 
-
-
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
 
 **＊実装例＊**
@@ -139,11 +125,7 @@ functions:
 
 #### ▼ sqs
 
-Lambda関数に紐づけるSQSを設定する。
-
-新しくSQSを作成できず、既存のSQSと紐づける動作しかないことに注意する。
-
-
+Lambda関数に紐づけるSQSを設定する。新しくSQSを作成できず、既存のSQSと紐づける動作しかないことに注意する。
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
 
@@ -164,8 +146,6 @@ functions:
 
 Lambda関数で使用するイメージのエイリアスを設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -180,8 +160,6 @@ functions:
 ### maximumRetryAttempts
 
 Lambda関数の再試行回数を設定する。
-
-
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
@@ -199,8 +177,6 @@ functions:
 
 Lambda関数のメモリサイズを設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -214,8 +190,6 @@ functions:
 ### name
 
 Lambda関数の名前を設定する。
-
-
 
 **＊実装例＊**
 
@@ -231,13 +205,9 @@ functions:
 
 Lambda関数に紐づけるIAMロールを設定する。
 
-
-
 **＊実装例＊**
 
 別に```resources.Resources```を使用して作成したIAMロールを設定する。
-
-
 
 ```yaml
 functions:
@@ -250,8 +220,6 @@ functions:
 ### runtime
 
 Lambda関数で使用する言語とバージョンを設定する。
-
-
 
 **＊実装例＊**
 
@@ -268,8 +236,6 @@ functions:
 ### packageとは
 
 作成されるアーティファクトのパスを設定する。
-
-
 
 > ℹ️ 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 
@@ -291,11 +257,7 @@ package:
 
 ### providerとは
 
-Serverless Frameworkで操作するクラウドインフラベンダーを設定する。
-
-ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
-
-
+Serverless Frameworkで操作するクラウドインフラベンダーを設定する。ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
 
 <br>
 
@@ -313,11 +275,7 @@ provider:
 
 #### ▼ images
 
-Lambda関数のベースイメージを指定し、エイリアス名を付ける。
-
-名前は全て小文字である必要がある。
-
-
+Lambda関数のベースイメージを指定し、エイリアス名を付ける。名前は全て小文字である必要がある。
 
 **＊実装例＊**
 
@@ -337,8 +295,6 @@ provider:
 
 EventBridgeをCloudFormationで作成するか否かを設定する。
 
-
-
 ```yaml
 provider:
   eventBridge:
@@ -350,8 +306,6 @@ provider:
 ### lambdaHashingVersion
 
 Lambda関数のハッシュバージョンを設定する。
-
-
 
 **＊実装例＊**
 
@@ -366,8 +320,6 @@ provider:
 
 クラウドインフラベンダー名を設定する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -381,8 +333,6 @@ provider:
 
 クラウドインフラを作成するリージョンを設定する。
 
-
-
 ```yaml
 provider:
   region: ap-northeast-1
@@ -393,8 +343,6 @@ provider:
 ### stackName
 
 CloudFormationのスタック名を設定する。
-
-
 
 **＊実装例＊**
 
@@ -407,11 +355,7 @@ provider:
 
 ### stage
 
-ステージ名を設定する。
-
-クラウドインフラの実行環境名と考えて良い。
-
-
+ステージ名を設定する。クラウドインフラの実行環境名と考えて良い。
 
 **＊実装例＊**
 
@@ -434,13 +378,9 @@ provider:
 
 IAMロールを作成する。
 
-
-
 **＊実装例＊**
 
 IAMロールに紐づけるIAMポリシーは、```.json```ファイルで切り分けておいた方が良い。
-
-
 
 ```yaml
 resources:

@@ -9,8 +9,6 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -57,8 +55,6 @@ PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ
 #### ▼ -t
 
 設定ファイルを検証する。
-
-
 
 ```bash
 $ php-fpm -t

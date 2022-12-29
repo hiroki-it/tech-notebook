@@ -9,8 +9,6 @@ description: apache.conf@Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -31,11 +29,7 @@ $ apt install apache2
 
 ### ```httpd.conf```ファイル
 
-Apacheの主要な設定ファイル。
-
-Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
-
-
+Apacheの主要な設定ファイル。Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
 
 > ℹ️ 参考：https://httpd.apache.org/docs/2.4/ja/configuring.html#main
 
@@ -45,11 +39,7 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 #### ▼ ```.htaccess```ファイルとは
 
-基本的に、```httpd.conf```ファイルで全ての能力を設定できる。
-
-ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、```.htaccess```ファイルを使用する。
-
-
+基本的に、```httpd.conf```ファイルで全ての能力を設定できる。ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、```.htaccess```ファイルを使用する。
 
 > ℹ️ 参考：
 >
@@ -60,8 +50,6 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 全てのファイルに対して、ディレクティブが適用される。
 
-
-
 > ℹ️ 参考：https://htaccess.cman.jp/attention/
 
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
@@ -69,8 +57,6 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 #### ▼ それ以外のディレクトリに置いた場合
 
 設置したディレクトリ配下の階層のファイルに対して適用される。
-
-
 
 > ℹ️ 参考：https://htaccess.cman.jp/attention/
 
@@ -84,25 +70,17 @@ Includeディレクティブを使用すれば、任意の名前で設定ファ�
 
 #### ▼ ServerRootとは
 
-他の設定ディレクティブで、相対パスが設定されている場合に適用される。
-
-そのルートディレクトリを設定する。
-
-
+他の設定ディレクティブで、相対パスが設定されている場合に適用される。そのルートディレクトリを設定する。
 
 **＊実装例＊**
 
 通常であれば、etcディレクトリ配下にconfファイルが配置される。
-
-
 
 ```apacheconf
 ServerRoot /etc/httpd
 ```
 
 CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが設置される。
-
-
 
 ```apacheconf
 ServerRoot /opt/rh/httpd24/root/etc/httpd
@@ -114,15 +92,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 #### ▼ VirtualHostとは
 
-ディレクティブを囲うディレクティブの一種。
-
-特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。
-
-VirtualHostという名前の通り、Apacheの稼働するサーバーが複数のドメインを仮想的に持つようにできる。
-
-複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの```Host```ヘッダー値がいずれのServerName値と一致するかで決まる。
-
-
+ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。VirtualHostという名前の通り、Apacheの稼働するサーバーが複数のドメインを仮想的に持つようにできる。複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの```Host```ヘッダー値がいずれのServerName値と一致するかで決まる。
 
 > ℹ️ 参考：https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
 
@@ -146,12 +116,8 @@ NameVirtualHost *:80
 
 各ドメインに異なるIPアドレスを割り振るバーチャルホスト。
 
-
-
 #### ▼ 名前ベースVirtualHost
 全てのドメインに同じIPアドレスを割り振るバーチャルホスト。
-
-
 
 <br>
 
@@ -159,11 +125,7 @@ NameVirtualHost *:80
 
 #### ▼ DocumentRootとは
 
-ドキュメントのルートディレクトリを設定する。
-
-ドキュメントルートに『```index.html```』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の```index.html```ファイルが、エントリーポイントとして自動的に認識されて表示される。
-
-
+ドキュメントのルートディレクトリを設定する。ドキュメントルートに『```index.html```』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の```index.html```ファイルが、エントリーポイントとして自動的に認識されて表示される。
 
 **＊実装例＊**
 
@@ -175,8 +137,6 @@ NameVirtualHost *:80
 ```
 
 index.html以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。
-
-
 
 **＊実装例＊**
 
@@ -193,11 +153,7 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 #### ▼ Directoryとは
 
-ディレクティブを囲うディレクティブの一種。
-
-指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する。
-
-
+ディレクティブを囲うディレクティブの一種。指定したディレクトリ内にリクエストがあった時に実行するディレクティブを設定する。
 
 **＊実装例＊**
 
@@ -214,11 +170,7 @@ index.html以外の名前をエントリーポイントにする場合、ファ�
 
 #### ▼ Userとは
 
-httpdプロセスのユーザー名を設定する。
-
-httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
-
-
+httpdプロセスのユーザー名を設定する。httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
 
 **＊実装例＊**
 
@@ -228,11 +180,7 @@ User apache
 
 #### ▼ Groupとは
 
-httpdプロセスのグループ名を設定する。
-
-httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
-
-
+httpdプロセスのグループ名を設定する。httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
 
 **＊実装例＊**
 
@@ -248,8 +196,6 @@ Group apache
 
 HTTPプロトコルのリクエストのクライアントとの接続時に、クライアントの状態に応じて、その接続をタイムアウトにするか否かを制御する。
 
-
-
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
 
 **＊実装例＊**
@@ -262,8 +208,6 @@ KeepAlive On
 
 セッションIDを付与中のクライアントで、再びリクエストを送信するまでに何秒間経過したら、セッションIDを破棄するか、を設定する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -274,8 +218,6 @@ KeepAliveTimeout 5
 #### ▼ MaxKeepAliveRequests
 
 セッションIDを付与中のクライアントで、リクエストのファイルの最大数を設定する。
-
-
 
 **＊実装例＊**
 
@@ -294,15 +236,9 @@ MaxKeepAliveRequests 1000
 
 モジュールを読み出し、設定ディレクティブを宣言できるようにする。
 
-
-
 **＊実装例＊**
 
-相対パスを指定し、ServerRootを適用させる。
-
-これにより、httpdディレクトリのmodulesディレクトリが参照される。
-
-
+相対パスを指定し、ServerRootを適用させる。これにより、httpdディレクトリのmodulesディレクトリが参照される。
 
 ```apacheconf
 # ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする。
@@ -318,8 +254,6 @@ LoadModule dir_module modules/mod_dir.so
 #### ▼ DirectoryIndexとは
 
 Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。
-
-
 
 **＊実装例＊**
 
@@ -345,8 +279,6 @@ Directoryディレクティブによってリクエストされたディレク�
 
 別に用意した```.htaccess```ファイルにて、有効化するディレクティブを設定する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -360,8 +292,6 @@ Directoryディレクティブによってリクエストされたディレク�
 
 別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て有効化する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -372,8 +302,6 @@ AllowOverride All
 
 別に用意した```.htaccess```ファイルにて、実装できるディレクティブを全て無効化する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -383,8 +311,6 @@ AllowOverride None
 #### ▼ Indexes
 
 別に用意した```.htaccess```ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。
-
-
 
 **＊実装例＊**
 
@@ -401,8 +327,6 @@ AllowOverride Indexes
 #### ▼ RewriteCondとは
 
 条件分岐と、それによる処理を設定する。
-
-
 
 **＊実装例＊**
 
@@ -424,15 +348,11 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 以下のリンクを参考にせよ。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_collaboration_api_restful.html
 
 #### ▼ RewriteRuleとは
 
 条件分岐による処理を設定する。
-
-
 
 ```apacheconf
 RewriteRule URL書換＆ルーティングの記述
@@ -441,8 +361,6 @@ RewriteRule URL書換＆ルーティングの記述
 **＊実装例＊**
 
 リクエストをHTTPSプロトコルに変換して、リダイレクトする。
-
-
 
 ```apacheconf
 RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
@@ -458,8 +376,6 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 条件分岐と環境変数の設定を設定する。
 
-
-
 ```apacheconf
 # クエリパラメーターが以下の拡張子の場合
 SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
@@ -468,8 +384,6 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 #### ▼ nolog
 
 ログを出力しない場合を設定できる。
-
-
 
 <br>
 
@@ -481,13 +395,9 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 アクセスログファイルの書式を設定する。
 
-
-
 #### ▼ アクセスログ形式と出力内容
 
 アクセスログの出力先ログファイルとフォーマットを合わせて設定する。
-
-
 
 **＊実装例＊**
 
@@ -502,8 +412,6 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 ```
 
 以下のようなログになる。
-
-
 
 ```log
 # common形式
@@ -536,13 +444,9 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 エラーログファイルの書式を設定する。
 
-
-
 #### ▼ エラーログ形式と出力内容
 
 エラーログの出力先を設定する。
-
-
 
 **＊実装例＊**
 
@@ -558,8 +462,6 @@ ErrorLog /var/log/httpd/error_log
 
 ログに出力する最低のレグレベルを設定する。
 
-
-
 ```apacheconf
 LogLevel warn
 ```
@@ -572,11 +474,7 @@ LogLevel warn
 
 #### ▼ SSLCertificateFileとは
 
-PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する。
-
-本番環境ではAWSのACMの証明書を使用することが多いため、基本的な用途としては、ローカル開発でのオレオレ証明書読み出しのために使用する。
-
-
+PKIにおける公開鍵の検証に必要なSSL証明書のディレクトリを設定する。本番環境ではAWSのACMの証明書を使用することが多いため、基本的な用途としては、ローカル開発でのオレオレ証明書読み出しのために使用する。
 
 **＊実装例＊**
 
@@ -592,8 +490,6 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 
 PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する。
 
-
-
 **＊実装例＊**
 
 ```apacheconf
@@ -608,21 +504,11 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 #### ▼ Headerとは
 
-レスポンスヘッダーを設定する。
-
-```set```、```append```、```add```、```unset```、```echo```オプションを設定できる。
-
-デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される。
-
-オプションとして、```always```を設定することにより、全てのステータスコードでヘッダーを設定する。
-
-
+レスポンスヘッダーを設定する。```set```、```append```、```add```、```unset```、```echo```オプションを設定できる。デフォルトでは```2xx```と```3xx```のステータスコードのみで設定が適用される。オプションとして、```always```を設定することにより、全てのステータスコードでヘッダーを設定する。
 
 #### ▼ set
 
 レスポンスヘッダーを追加する。
-
-
 
 **＊実装例＊**
 
@@ -641,8 +527,6 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 #### ▼ unset
 
 レスポンスヘッダーを削除する。
-
-
 
 **＊実装例＊**
 

@@ -9,8 +9,6 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -23,13 +21,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### ユースケース
 
-Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。
-
-Vagrantfile自体をプロビジョナーとして使用もできる。
-
-仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
-
-
+Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。Vagrantfile自体をプロビジョナーとして使用もできる。仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
 
 > ℹ️ 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -42,8 +34,6 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 #### ▼ プロバイダーとは
 
 仮想環境を提供する。
-
-
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/providers
 
@@ -62,11 +52,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーとは
 
-プロバイダーによって作成された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。
-
-具体的には、プログラミング言語やファイアウォールをインストールする。
-
-
+プロバイダーによって作成された仮想環境に、ソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/provisioning
 
@@ -85,13 +71,7 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 ### Vagrantfile
 
-プロバイダーとプロビジョナーの一連の操作内容を設定する。
-
-チームメンバーが別々に仮想環境を作成する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。
-
-Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを作成し、ソフトウェアをインストールできる。
-
-
+プロバイダーとプロビジョナーの一連の操作内容を設定する。チームメンバーが別々に仮想環境を作成する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを作成し、ソフトウェアをインストールできる。
 
 <br>
 
@@ -100,8 +80,6 @@ Vagrantfileにプロバイダーとプロビジョナーの操作を設定して
 ### Vagrant.configureとは
 
 Vagrantfileのバージョンを設定する。
-
-
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/version
 
@@ -121,8 +99,6 @@ end
 
 仮想環境の構成を設定する。
 
-
-
 <br>
 
 ### config.vm.box
@@ -130,8 +106,6 @@ end
 #### ▼ boxとは
 
 仮想環境のベースとするボックス名を設定する。
-
-
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
@@ -151,8 +125,6 @@ end
 
 仮想環境にホスト名を設定する。
 
-
-
 ```ruby
 Vagrant.configure("2") do |config|
 
@@ -168,8 +140,6 @@ end
 #### ▼ box_check_updateとは
 
 Vagrantの更新通知を設定する。
-
-
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -187,15 +157,11 @@ end
 
 仮想環境のネットワークを設定する。
 
-
-
 > ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
 
 #### ▼ forwarded_port
 
 ホストから仮想環境へポートフォワーディングを設定する。
-
-
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/networking/forwarded_ports
 
@@ -209,13 +175,7 @@ end
 
 #### ▼ private_network
 
-仮想環境にプライベートIPアドレスを設定する。
-
-同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。
-
-他の仮想環境とIPアドレスが重複しないようにする必要がある。
-
-
+仮想環境にプライベートIPアドレスを設定する。同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。他の仮想環境とIPアドレスが重複しないようにする必要がある。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/networking/private_network
 
@@ -234,8 +194,6 @@ end
 #### ▼ providerとは
 
 プロバイダー固有のオプションを設定する。
-
-
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
@@ -278,8 +236,6 @@ end
 
 仮想環境のプロビジョニングを設定する。
 
-
-
 > ℹ️ 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
 
 #### ▼ shell
@@ -305,11 +261,7 @@ end
 
 #### ▼ ansible
 
-ホスト側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。
-
-開発環境ではこのオプションを使用することは非推奨で、```ansible_local```オプションを使用することが推奨されている。
-
-
+ホスト側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。開発環境ではこのオプションを使用することは非推奨で、```ansible_local```オプションを使用することが推奨されている。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/provisioning/ansible
 
@@ -326,13 +278,7 @@ end
 
 #### ▼ ansible_local
 
-仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。
-
-注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分自身を指定してプロビジョニングを実行することになる。
-
-開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
-
-
+仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー（仮想環境）になるため、コントロールノードは自分自身を指定してプロビジョニングを実行することになる。開発環境ではこのオプションを使用することが推奨されており、```ansible```オプションを使用することが非推奨とされている。
 
 > ℹ️ 参考：
 >
@@ -350,11 +296,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ただし、Vagrantからではなく、Ansibleを直接的に操作したい場合は、shellオプションでAnsibleをインストールする必要がある。
-
-こちらが推奨である。
-
-
+ただし、Vagrantからではなく、Ansibleを直接的に操作したい場合は、shellオプションでAnsibleをインストールする必要がある。こちらが推奨である。
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -378,8 +320,6 @@ end
 
 ホストのディレクトリを仮想環境にマウントする。
 
-
-
 > ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage
 
 ```ruby
@@ -392,13 +332,7 @@ end
 
 #### ▼ type
 
-マウント方法を設定する。
-
-デフォルト値は、VirtualBox共有ディレクトリである。
-
-その他、NFS、RSync、SMBを設定できる。
-
-
+マウント方法を設定する。デフォルト値は、VirtualBox共有ディレクトリである。その他、NFS、RSync、SMBを設定できる。
 
 > ℹ️ 参考：https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
@@ -410,17 +344,11 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。
-
-以下のリンクで、ロードテストを実施したところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
-
-
+ホストと仮想環境間のファイルの入出力の速度差によって、パフォーマンスに差がある。以下のリンクで、ロードテストを実施したところ、『```RSync > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良かった。
 
 > ℹ️ 参考：http://tech.respect-pal.jp/vagrant-synced_folder-type/
 
 また、『```RSync > NFS```』『```NFS > SMB```』である。
-
-
 
 > ℹ️ 参考：
 >
@@ -428,7 +356,5 @@ end
 > - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
 
 これらから、おおよそ『```RSync > NFS > SMB > VirtualBox共有ディレクトリ```』の順でパフォーマンスが良くなると考えておけばよい。
-
-
 
 <br>

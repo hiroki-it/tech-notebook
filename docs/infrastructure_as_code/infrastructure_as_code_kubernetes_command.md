@@ -9,8 +9,6 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -26,8 +24,6 @@ description: コマンド＠Kubernetesの知見を記録しています。
 #### ▼ configシンボリックリンク、--kubeconfig
 
 ユーザーが、```config```ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成するか、あるいはコマンドの実行時に```config```ファイルを明示的に指定する必要がある。
-
-
 
 > ℹ️ 参考：https://blog.inductor.me/entry/2021/03/13/205452
 
@@ -48,11 +44,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 #### ▼ applyとは
 
-同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。
-
-全ての項目を更新できるわけでない。
-
-
+同じ識別子（名前）のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。全ての項目を更新できるわけでない。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
@@ -63,8 +55,6 @@ kube-apiserverに送信するマニフェストを指定する。```-R```オプ�
 **＊例＊**
 
 マニフェストを指定し、```kubectl apply```コマンドを実行する。
-
-
 
 ```bash
 # リソースを作成する。
@@ -95,8 +85,6 @@ pod/foo-pod configured
 
 コントロールプレーンNodeの情報を取得する。
 
-
-
 > ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
 
 ```bash
@@ -115,8 +103,6 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 ```kubectl```コマンドに関するパラメーターを操作する。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ▼ current-context
@@ -132,8 +118,6 @@ minikube
 #### ▼ get-contexts
 
 適用できるコンテキストの一覧と現在のコンテキストを取得する。
-
-
 
 ```bash
 $ kubectl config get-contexts
@@ -171,8 +155,6 @@ $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:clus
 #### ▼ view
 
 パラメーターのデフォルト値が設定された```~/.kude/config```ファイルを取得する。
-
-
 
 **＊例＊**
 
@@ -242,8 +224,6 @@ users:
 
 ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ▼ オプション無し
@@ -262,23 +242,13 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 #### ▼ createとは
 
-様々なリソースを作成する。
-
-```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。
-
-そのため、```f```オプションで、マニフェストを指定した方が良い。
-
-同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
-
-
+様々なリソースを作成する。```kubectl expose```コマンドと```kubectl run```コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。そのため、```f```オプションで、マニフェストを指定した方が良い。同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊例＊**
 
 マニフェストを指定し、```kubectl create```コマンドを実行する。
-
-
 
 ```bash
 $ kubectl create -f ./kubernetes/foo-pod.yaml
@@ -294,11 +264,7 @@ service/foo-service created
 
 #### ▼ deployment
 
-Pod数を維持管理するReplicaSetを作成する。
-
-Podを削除するためには、Deployment自体を削除しなければならない。
-
-
+Pod数を維持管理するReplicaSetを作成する。Podを削除するためには、Deployment自体を削除しなければならない。
 
 **＊例＊**
 
@@ -308,11 +274,7 @@ $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
 
 #### ▼ secret docker-registry
 
-イメージレジストリの認証情報を持つSecretを作成する。
-
-Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
-
-
+イメージレジストリの認証情報を持つSecretを作成する。Podと同じNamespaceに属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。
 
 > ℹ️ 参考：
 >
@@ -333,8 +295,6 @@ $ kubectl create secret docker-registry foo-secret \
 
 Secretを作成する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
@@ -344,8 +304,6 @@ Secretを作成する。
 
 指定した```.env```ファイルからSecretを作成する。
 
-
-
 ```bash
 $ kubectl create secret generic foo-secret --from-env-file=./foo/.env
 
@@ -354,8 +312,6 @@ secret/foo-secret created
 
 指定した```.env```ファイル以外からSecretを作成する。
 
-
-
 ```bash
 $ kubectl create secret generic foo-secret --from-file=./foo/values.txt
 
@@ -363,8 +319,6 @@ secret/foo-secret created
 ```
 
 キー名と値からSecretを作成する。
-
-
 
 ```bash
 $ kubectl create secret generic foo-secret --from-literal=username="bar" --from-literal=password="baz"
@@ -375,8 +329,6 @@ secret/foo-secret created
 #### ▼ secret tls
 
 SSL証明書を持つSecretを作成する。
-
-
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
 
@@ -392,19 +344,13 @@ $ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
 
 Kubernetesリソースを削除する。
 
-
-
 ```bash
 $ kubectl delete <Kubernetesリソース> <Kubernetesリソース名>
 ```
 
 **＊例＊**
 
-Podを削除する。
-
-Podの場合、オプションの無い```kubectl delete```コマンドが安全な削除となる。
-
-
+Podを削除する。Podの場合、オプションの無い```kubectl delete```コマンドが安全な削除となる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
 
@@ -431,11 +377,7 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 #### ▼ describeとは
 
-リソースの詳細な情報を参照する。
-
-簡易的な情報を参照する時は、```kubectl get```コマンドを使用する。
-
-
+リソースの詳細な情報を参照する。簡易的な情報を参照する時は、```kubectl get```コマンドを使用する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
@@ -446,8 +388,6 @@ $ kubectl describe node
 ```
 
 ```grep```コマンドを使用して、PodがスケジューリングされているNodeを取得する。
-
-
 
 ```bash
 $ kubectl describe pod <Pod名> | grep Node:
@@ -474,11 +414,7 @@ PolicyRule:
 
 **＊例＊**
 
-全てのNodeの詳細な情報を取得する。
-
-```grep```コマンドを使用し、必要な情報のみを確認する。
-
-
+全てのNodeの詳細な情報を取得する。```grep```コマンドを使用し、必要な情報のみを確認する。
 
 ```bash
 $ kubectl describe node -A | grep -e Name -e cpu
@@ -504,11 +440,7 @@ Name:               baz-node
 
 #### ▼ drainとは
 
-Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。
-
-Nodeが他に存在すれば、そのNode上でPodが再作成される。
-
-
+Nodeへの新しいPodのスケジューリングを無効化（```kubectl cordon```コマンドを実行）し、加えて既存のPodを退避させる。Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
 > ℹ️ 参考：
 >
@@ -525,11 +457,7 @@ $ kubectl drain <Node名>
 
 #### ▼ editとは
 
-マニフェストの設定値を直接的に変更する。
-
-ただし、Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
-
-
+マニフェストの設定値を直接的に変更する。ただし、Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。
 
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
@@ -554,8 +482,6 @@ $ kubectl edit statefulset foo-statefulset
 
 指定したPod内のコンテナでコマンドを実行する。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
 #### ▼ -it
@@ -564,19 +490,13 @@ $ kubectl edit statefulset foo-statefulset
 
 コンテナを指定して、デタッチモードで ```kubectl exec```コマンドを実行する。
 
-
-
 ```bash
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 [root@<Pod名>] $ ls -la 
 ```
 
-コンテナを指定しない場合は、デフォルトのコンテナが選択される。
-
-Podの```metadata.labels```キーではなく、Pod名であることに注意する。
-
-
+コンテナを指定しない場合は、デフォルトのコンテナが選択される。Podの```metadata.labels```キーではなく、Pod名であることに注意する。
 
 ```bash
 $ kubectl exec -it <Pod名> -- bash
@@ -592,8 +512,6 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 Serviceを作成する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
@@ -605,8 +523,6 @@ Serviceを作成する。
 
 ClusterIP Serviceを作成する。
 
-
-
 ```bash
 $ kubectl expose <Service名> \
     --type=ClusterIP \
@@ -616,8 +532,6 @@ $ kubectl expose <Service名> \
 
 NodePort Serviceを作成する。
 
-
-
 ```bash
 $ kubectl expose <Service名> \
     --type=NodePort \
@@ -626,8 +540,6 @@ $ kubectl expose <Service名> \
 ```
 
 LoadBalancer Serviceを作成する。
-
-
 
 ```bash
 $ kubectl expose <Service名> \
@@ -642,19 +554,13 @@ $ kubectl expose <Service名> \
 
 #### ▼ getとは
 
-リソースの簡易的な情報を参照する。
-
-詳細な情報を参照する時は、```kubectl describe```コマンドを使用する。
-
-
+リソースの簡易的な情報を参照する。詳細な情報を参照する時は、```kubectl describe```コマンドを使用する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 **＊例＊**
 
 特定のNamespaceの全てのKubernetesリソースを取得する。
-
-
 
 > ℹ️ 参考：https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
 
@@ -665,8 +571,6 @@ $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | 
 **＊例＊**
 
 全てのNodeの情報を取得する。
-
-
 
 ```bash
 $ kubectl get node 
@@ -682,8 +586,6 @@ baz-node  Ready    worker                 12h   v1.22.0 # 同上
 
 指定したPodの情報を取得する。
 
-
-
 ```bash
 $ kubectl get pod
 
@@ -695,8 +597,6 @@ bar-pod    2/2     Running            0          5m01s
 **＊例＊**
 
 指定したServiceの情報を取得する。
-
-
 
 ```bash
 $ kubectl get service
@@ -710,8 +610,6 @@ kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 
 ```grep```コマンドを使用して、```Running```フェーズのPodのみを取得する。
 
-
-
 ```bash
 $ kubectl get pod | grep -e NAME -e Running
 
@@ -721,11 +619,7 @@ bar-pod    2/2     Running            0          5m01s
 
 **＊例＊**
 
-```wc```コマンドで出力内容の行数を数える。
-
-これにより、Podの個数を確認できる。
-
-
+```wc```コマンドで出力内容の行数を数える。これにより、Podの個数を確認できる。
 
 > ℹ️ 参考：https://stackoverflow.com/a/61634879
 
@@ -739,15 +633,11 @@ $ kubectl get pod --no-headers | wc -l
 
 指定したKubernetesリソースをNamespaceに関係なく取得する。
 
-
-
 ```bash
 $ kubectl get pod -A
 ```
 
 ```grep```コマンドを使用して、特定のNodeのみを取得する。
-
-
 
 ```bash
 $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
@@ -757,15 +647,9 @@ $ kubectl get pod -A -o wide | grep -e NAMESPACE -e <Node名>
 
 指定したKubernetesリソースの設定を取得し、```.yaml```形式で出力する。
 
-
-
 **＊例＊**
 
-指定したSecretを```.yaml```形式で取得する。
-
-正規表現と同様に、一部の文字列ではエスケープする必要がある。
-
-
+指定したSecretを```.yaml```形式で取得する。正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
 ```bash
 $ kubectl get secret <Secret名> -o yaml
@@ -789,13 +673,9 @@ data:
 
 指定したKubernetesリソースの特定の設定を出力する。
 
-
-
 **＊例＊**
 
 ロードバランサーのIPアドレスを取得する。
-
-
 
 ```bash
 $ kubectl get service istio-ingressgateway \
@@ -806,8 +686,6 @@ $ kubectl get service istio-ingressgateway \
 **＊例＊**
 
 Pod内のコンテナを取得する。
-
-
 
 ```bash
 # 特定のPodを対象とする。
@@ -825,8 +703,6 @@ $ kubectl get pod \
 
 Podの現在のIPアドレスを取得する。
 
-
-
 ```bash
 $ kubectl get pods foo-pod \
     -n foo-namespace \
@@ -837,8 +713,6 @@ $ kubectl get pods foo-pod \
 
 IstioOperatorに定義されたIstioのバージョンを取得する。
 
-
-
 ```bash
 $ kubectl get istiooperator \
     -n istio-system \
@@ -847,17 +721,11 @@ $ kubectl get istiooperator \
 
 #### ▼ -o wide
 
-指定したリソースの詳細な情報を取得する。
-
-Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
-
-
+指定したリソースの詳細な情報を取得する。Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 **＊例＊**
 
 Podの詳細な情報を取得する。
-
-
 
 ```bash
 $ kubectl get pod -o wide
@@ -872,8 +740,6 @@ baz         baz-pod     2/2     Running       0          16d   *.*.*.*     bar-n
 
 ```grep```コマンドを使用して、特定のPodのみを取得する。
 
-
-
 ```bash
 $ kubectl get pod -o wide | grep -e NAMESPACE -e foo
 
@@ -882,8 +748,6 @@ foo         foo-pod     2/2     Running       0          16d   *.*.*.*     foo-n
 ```
 
 ```grep```コマンドを使用して、特定のServiceのみを取得する。
-
-
 
 
 ```bash
@@ -895,8 +759,6 @@ foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d
 **＊例＊**
 
 Nodeの詳細な情報を取得する。
-
-
 
 ```bash
 $ kubectl get node -o wide
@@ -912,23 +774,17 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 
 特定の```metadata.labels```キーの値を持つKubernetesリソースを取得する。
 
-
-
 ```bash
 $ kubectl get pod -l <キー>=<値>
 ```
 
 複数の```metadata.labels```キーをAND条件で指定することもできる。
 
-
-
 ```bash
 $ kubectl get pod -l <キー>=<値>,<キー>=<値>
 ```
 
 ```metadata.labels```キーの値をOR条件で指定することもできる。
-
-
 
 
 ```bash
@@ -959,8 +815,6 @@ $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 
 AWS EKSにて、Nodeグループの種類を確認するため、```eks.amazonaws.com/nodegroup```キーを取得する。
 
-
-
 ```bash
 $ kubectl get node -L eks.amazonaws.com/nodegroup
 
@@ -976,8 +830,6 @@ qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 
 Nodeが作成されたAWSリージョンを確認するため、```topology.kubernetes.io/zone```キーを取得する。
 
-
-
 ```bash
 $ kubectl get node -L topology.kubernetes.io/zone
 
@@ -992,8 +844,6 @@ baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 
 istioのコンテナ注入が有効されているNamespaceを確認するため、```istio.io/rev```キーを取得する。
 
-
-
 ```bash
 $ kubectl get namespace -L istio.io/rev
 
@@ -1005,11 +855,7 @@ baz-namespace          Active   145d           # 同上
 
 **＊例＊**
 
-特定のKubernetesリソースがどのように管理されているかを取得する。
-
-公式のHelmチャートでは、Deployment、Daemonset、StatefulSet、がタグを持つことが多い。
-
-
+特定のKubernetesリソースがどのように管理されているかを取得する。公式のHelmチャートでは、Deployment、Daemonset、StatefulSet、がタグを持つことが多い。
 
 ```bash
 # argocd.argoproj.io/instance：ArgoCDのApplication名
@@ -1028,8 +874,6 @@ $ kubectl get -A <Kubernetesリソース> \
 
 指定した```spec.selector```キーを持つDeploymentを取得する。
 
-
-
 ```bash
 $ kubectl get deployment --selector<キー>=<値>
 ```
@@ -1037,8 +881,6 @@ $ kubectl get deployment --selector<キー>=<値>
 #### ▼ --watch
 
 指定したPodの情報を継続的に取得する。
-
-
 
 > ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
@@ -1054,13 +896,9 @@ $ kubectl get pod --watch
 
 指定したリソースの```metadata.labels```キーを操作する。
 
-
-
 #### ▼ オプション無し（キーの追加）
 
 指定したリソースに```metadata.labels```キーを作成する。
-
-
 
 ```bash
 $ kubectl label <リソース名> foo=bar
@@ -1069,8 +907,6 @@ $ kubectl label <リソース名> foo=bar
 #### ▼ オプション無し（キーの削除）
 
 指定したリソースの```metadata.labels```キーを削除する。
-
-
 
 ```bash
 $ kubectl label <リソース名> foo-
@@ -1085,8 +921,6 @@ $ kubectl label namespace default istio.io/rev-
 #### ▼ --overwrite
 
 指定したリソースに```metadata.labels```キーを上書きする。
-
-
 
 ```bash
 $ kubectl label --overwrite <リソースの種類> <リソース名> foo=bar
@@ -1108,15 +942,11 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 指定したリソースのログを取得する。
 
-
-
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 
 #### ▼ -c
 
 Pod名とコンテナ名を指定し、コンテナのログを取得する。
-
-
 
 ```bash
 $ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名> | grep -i error
@@ -1136,8 +966,6 @@ $ kubectl logs -n kube-system <Pod名> -c kube-proxy | grep -i error
 
 ログを継続的に取得する。
 
-
-
 ```bash
 $ kubectl logs -f <Pod名> | grep -i error
 ```
@@ -1145,8 +973,6 @@ $ kubectl logs -f <Pod名> | grep -i error
 #### ▼  --timestamps
 
 タイムスタンプを取得する。
-
-
 
 ```bash
 $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名> | grep -i error
@@ -1162,8 +988,6 @@ $ kubectl logs -n <Namespace名>  --timestamps=true <Pod名> -c <コンテナ名
 
 Kubernetesリソースを一度削除し、別のマニフェストで再作成する。
 
-
-
 > ℹ️ 参考：https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace
 
 ```bash
@@ -1178,8 +1002,6 @@ $ kubectl replace -f foo.yaml
 
 Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
-
-
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
@@ -1187,11 +1009,7 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 #### ▼ restart
 
-レプリカのPodを再スケジューリングする。
-
-PodのVolume（例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim）の設定を変更した後に、Podに再び読み込ませるために役立つ。
-
-
+レプリカのPodを再スケジューリングする。PodのVolume（例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim）の設定を変更した後に、Podに再び読み込ませるために役立つ。
 
 > ℹ️ 参考：
 >
@@ -1217,11 +1035,7 @@ $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 
 #### ▼ patchとは
 
-JSON/```.yaml```形式を入力値として、リソースの設定値を変更する。
-
-ただし、マニフェストは変更されない。
-
-
+JSON/```.yaml```形式を入力値として、リソースの設定値を変更する。ただし、マニフェストは変更されない。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
 
@@ -1229,13 +1043,9 @@ JSON/```.yaml```形式を入力値として、リソースの設定値を変更�
 
 PersistentVolumeの設定値を変更する。
 
-
-
 **＊例＊**
 
 削除されないボリュームを削除する。
-
-
 
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
 
@@ -1252,15 +1062,7 @@ $ kubectl get pv \
 
 #### ▼ port-forwardとは
 
-ポートフォワーディングを実行し、ホストのポートからPodにアクセスできるようにする。
-
-Podを直接的に指定する場合と、他のKubernetesリソース（例：Service、Deployment）の情報を使用して、Podを指定する方法がある。
-
-この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。
-
-開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
-
-
+ポートフォワーディングを実行し、ホストのポートからPodにアクセスできるようにする。Podを直接的に指定する場合と、他のKubernetesリソース（例：Service、Deployment）の情報を使用して、Podを指定する方法がある。この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
 > ℹ️ 参考：
 >
@@ -1308,8 +1110,6 @@ Starting to serve on [::]:8001
 
 Deployment、Pod、Jobを作成する。
 
-
-
 > ℹ️ 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
 #### ▼ --restart、--image、--port
@@ -1319,23 +1119,17 @@ Deployment、Pod、Jobを作成する。
 もし```restart```オプションが```Always```なら、Deploymentを作成する。
 
 
-
-
 ```bash
 $ kubectl run <Deployment名> --restart=Always --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```Never```なら、Podを作成する。
 
-
-
 ```bash
 $ kubectl run <Pod名> --restart=Never --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```OnFailure```なら、Jobを作成する。
-
-
 
 ```bash
 $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>:<バージョンタグ> --port=<ポート番号>
@@ -1351,8 +1145,6 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 > - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
 ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがいくつかある。
-
-
 
 
 > ℹ️ 参考：
@@ -1408,11 +1200,7 @@ $ kubectl delete -n default node-debugger-*****
 
 #### ▼ taintとは
 
-NodeにTaintを付与する。
-
-エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
-
-
+NodeにTaintを付与する。エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。
 
 | エフェクト            | 説明                                                                                                                                    |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -1425,15 +1213,11 @@ NodeにTaintを付与する。
 
 NodeにTaint（```app=batch:NoSchedule```）を付与する。
 
-
-
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule
 ```
 
 これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
-
-
 
 > ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
@@ -1458,19 +1242,13 @@ spec:
 
 **＊例＊**
 
-コントロールプレーンNodeとして扱うTaintを付与する。
-
-キー名のみ指定し、値は指定していない。
-
-
+コントロールプレーンNodeとして扱うTaintを付与する。キー名のみ指定し、値は指定していない。
 
 ```bash
 $ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
 ```
 
 これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
-
-
 
 > ℹ️ 参考：https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
 
@@ -1496,8 +1274,6 @@ spec:
 
 指定したNodeからTaintを削除する。
 
-
-
 > ℹ️ 参考：https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
 
 **＊例＊**
@@ -1513,8 +1289,6 @@ $ kubectl taint node foo-node app=batch:NoSchedule-
 #### ▼ topとは
 
 NodeやPodに関して、ハードウェアリソースの消費量を取得する。
-
-
 
 ```bash
 $ kubectl top node
@@ -1532,11 +1306,7 @@ foo-pod   5m           104Mi
 
 #### ▼ --containers
 
-Podのコンテナに関して、ハードウェアリソースの消費量を取得する。
-
-コンテナのリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
-
-
+Podのコンテナに関して、ハードウェアリソースの消費量を取得する。コンテナのリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
 
 ```bash
 $ kubectl top pod --container -n foo-namespace
@@ -1551,11 +1321,7 @@ foo-pod   istio-proxy     5m           85Mi
 
 ### version
 
-kubectlとKubernetesのバージョンをそれぞれ取得する。
-
-両方のバージョンに差があっても、1つ以内のメジャーバージョンであれば許容範囲である。
-
-
+kubectlとKubernetesのバージョンをそれぞれ取得する。両方のバージョンに差があっても、1つ以内のメジャーバージョンであれば許容範囲である。
 
 > ℹ️ 参考：
 >

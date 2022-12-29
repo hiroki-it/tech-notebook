@@ -9,8 +9,6 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,8 +19,6 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを```1```個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。
 
-
-
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
 
 <br>
@@ -30,8 +26,6 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 ### 冗長化
 
 コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。
-
-
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
 
@@ -54,19 +48,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 #### ▼ NodePort Serviceを選ぶ
 
-IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。
-
-NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
-
-一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。
-
-LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
-
-なお、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
-
-NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
-
-
+IngressGatewayでは、内部的に作成されるServiceのタイプ（NodePort Service、LoadBalancer Service）を選べる。NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成されるため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。なお、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
 
 > ℹ️ 参考：
 > 
@@ -77,18 +59,12 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 
 単一障害点になることを防ぐために、一つのIngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
 
-
-
 <br>
 
 
 ### サブセット名を一つにする
 
-Istioリソースで設定するサブセット名は一つだけにする。
-
-これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
-
-
+Istioリソースで設定するサブセット名は一つだけにする。これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
 
@@ -111,11 +87,7 @@ spec:
 
 ### Istioリソースの使用可能範囲を限定する
 
-Istioリソースの```spec.exportTo```キーでは『```.```（ドット）』を設定する。
-
-これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
-
-
+Istioリソースの```spec.exportTo```キーでは『```.```（ドット）』を設定する。これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
 
@@ -139,15 +111,7 @@ spec:
 
 ### DestinationRuleを最初に更新する
 
-新しいサブセットを追加する場合、DestinationRuleを最初に更新する。
-
-これにより、ダウンタイムなしでサブセットを追加できる。
-
-DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。
-
-DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
-
-
+新しいサブセットを追加する場合、DestinationRuleを最初に更新する。これにより、ダウンタイムなしでサブセットを追加できる。DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
 

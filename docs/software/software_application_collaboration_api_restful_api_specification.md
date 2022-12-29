@@ -9,8 +9,6 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -51,8 +49,6 @@ externalDocs: # externalDocsフィールド
 
 ReDocを使用して、OpenAPI仕様から```.html```ファイルを作成する。
 
-
-
 > ℹ️ 参考：https://qiita.com/icck/items/97d00495ec324e1902d6
 
 ```bash
@@ -69,8 +65,6 @@ $ redoc-cli bundle openapi.yaml redoc.html
 
 API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.html
 
 <br>
@@ -80,8 +74,6 @@ API GatewayによるOpenAPI仕様のインポートについては、以下の�
 ### openapiフィールド（必須）
 
 OpenAPI仕様のバージョンを定義する。
-
-
 
 **＊実装例＊**
 
@@ -94,8 +86,6 @@ openapi: 3.0.0
 ### infoフィールド（必須）
 
 API名、作成者名、メールアドレス、ライセンス、などを定義する。
-
-
 
 **＊実装例＊**
 
@@ -120,8 +110,6 @@ info:
 
 API自体のURL、などを定義する。
 
-
-
 **＊実装例＊**
 
 ```yaml
@@ -142,8 +130,6 @@ servers:
 ### pathsフィールド（必須）
 
 APIのエンドポイント、HTTPメソッド、ステータスコード、などを定義する。
-
-
 
 ```yaml
 paths:
@@ -187,9 +173,7 @@ paths:
                 title: Bad Request
                 errors:
                 messages: [
-                    "不正なリクエストです。
-
-"
+                    "不正なリクエストです。"
                 ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -236,9 +220,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。
-
-"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # スキーマとして、異常系モデルを参照する。
@@ -290,9 +272,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。
-
-"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -307,9 +287,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザーが見つかりませんでした。
-
-"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -355,9 +333,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザーIDは必ず指定してください。
-
-"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -372,9 +348,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザーが見つかりませんでした。
-
-"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。                 
@@ -385,8 +359,6 @@ paths:
 ### componentsフィールド（必須）
 
 スキーマなど、他の項目で共通して利用するものを定義する。
-
-
 
 ```yaml
 components:
@@ -411,9 +383,7 @@ components:
             title: Unauthorized
             errors:
               messages: [
-                  "APIキーの認可に失敗しました。
-
-"
+                  "APIキーの認可に失敗しました。"
               ]
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する。              
@@ -469,11 +439,7 @@ components:
 
 ### securityフィールド
 
-componentsフィールドで定義した認証方法を宣言する。
-
-ルートで宣言すると、全てのパスに適用できる。
-
-
+componentsフィールドで定義した認証方法を宣言する。ルートで宣言すると、全てのパスに適用できる。
 
 **＊実装例＊**
 
@@ -486,11 +452,7 @@ security:
 
 ### tagsフィールド
 
-各項目に付けるタグを定義する。
-
-同名のタグをつけると、自動的にまとめられる。
-
-
+各項目に付けるタグを定義する。同名のタグをつけると、自動的にまとめられる。
 
 **＊実装例＊**
 
@@ -505,8 +467,6 @@ tags:
 ### externalDocsフィールド
 
 APIを説明するドキュメントのリンクを定義する。
-
-
 
 **＊実装例＊**
 
@@ -530,15 +490,11 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
 
 データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを行う。
 
-
-
 > ℹ️ 参考：https://spec.openapis.org/oas/v3.1.0#data-types
 
 **＊実装例＊**
 
 例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。
-
-
 
 ```yaml
 {
@@ -551,8 +507,6 @@ RESTful-APIが受信するCRUDのデータ型や必須データを定義した�
 ```
 
 ここで、スキーマを以下の様に定義しておき、APIからデータをレスポンスする時のバリデーションを行う。
-
-
 
 ```yaml
 {

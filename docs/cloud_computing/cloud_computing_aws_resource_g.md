@@ -9,8 +9,6 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -57,25 +55,15 @@ description: Gで始まるAWSリソース＠AWSの知見を記録しています
 
 ![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
 
-最初、クライアントPCからのリクエストはエッジロケーションで受信される。
-
-プライベートネットワーク内のエッジロケーションを経由して、ルーティング先のリージョンまで届く。
-
-パブリックネットワークを使用しないため、小さなレイテシーでトラフィックをルーティングできる。
-
-
+最初、クライアントPCからのリクエストはエッジロケーションで受信される。プライベートネットワーク内のエッジロケーションを経由して、ルーティング先のリージョンまで届く。パブリックネットワークを使用しないため、小さなレイテシーでトラフィックをルーティングできる。
 
 ![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
 
 Global Acceleratorを使用しない場合、クライアントPCのリージョンから指定したリージョンに至るまで、いくつもパブリックネットワークを経由する必要があり、時間がかかってしまう。
 
-
-
 ![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入前.png)
 
 以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
-
-
 
 > ℹ️ 参考：https://speedtest.globalaccelerator.aws/#/
 

@@ -8,8 +8,6 @@ title: 【IT技術の知見】メソッド/データ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -21,8 +19,6 @@ title: 【IT技術の知見】メソッド/データ＠JavaScript
 #### ▼ 関数オブジェクトとは
 
 オブジェクトでもあり、関数である。
-
-
 
 #### ▼ リテラル表記による関数オブジェクト
 
@@ -38,8 +34,6 @@ const object = {
 #### ▼ コンストラクタ関数
 
 関数宣言方式の```Function```コンストラクタを使用して、オブジェクトを定義する。
-
-
 
 ```javascript
 // 関数宣言による定義
@@ -61,8 +55,6 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 
 オブジェクトではない関数である。
 
-
-
 **＊実装例＊**
 
 ```javascript
@@ -79,11 +71,7 @@ methodA();
 
 #### ▼ 名前がドルマークのもの
 
-JavaScriptでよく見かけるドルマーク。
-
-これは、関数の名前としてドルマークを使用しているのみである。
-
-
+JavaScriptでよく見かけるドルマーク。これは、関数の名前としてドルマークを使用しているのみである。
 
 **＊実装例＊**
 
@@ -94,11 +82,7 @@ function $(){
 }
 ```
 
-jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。
-
-これと混乱しないように注意する。
-
-
+jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。これと混乱しないように注意する。
 
 **＊実装例＊**
 
@@ -138,13 +122,9 @@ asyncFunc(test, (err, data) => {
 
 関数の前で```export```を宣言する。
 
-
-
 **＊実装例＊**
 
 関数の定義と```export```の宣言を同時に行う。
-
-
 
 ```javascript
 export function foo(){
@@ -153,8 +133,6 @@ export function foo(){
 ```
 
 あるいは、別々に行う。
-
-
 
 ```javascript
 const foo = () => {
@@ -176,8 +154,6 @@ export default foo
 
 データを代入しない時に適用されるデータ型である。
 
-
-
 **＊実装例＊**
 
 
@@ -194,8 +170,6 @@ console.log(b);  // undefied
 
 nullは、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
 
-
-
 **＊実装例＊**
 
 ```javascript
@@ -208,8 +182,6 @@ console.log(a); // null
 #### ▼ undefinedの返却
 
 undefinedを返却する場合、```return```のみを記述する。
-
-
 
 **＊実装例＊**
 
@@ -261,8 +233,6 @@ console.log(foo); // ERROR
 #### ▼ ```let```
 
 繰り返し処理で再代入が必要であれば、```const```ではなく```let```を使用する。
-
-
 
 
 ```javascript
@@ -329,13 +299,7 @@ console.log(foo); // foo
 
 #### ▼ 巻き上げとは
 
-巻き上げは、```var```を使用して変数を宣言した時や、関数で発生し得る。
-
-確認のため```console.log```メソッドを実行した場合、```foo```を宣言していないため、『x is not defined 』エラーになりそうである。
-
-しかし実際は、宣言が既に済んでおり、```foo```に値が代入されていないことを示す『undefined』となる。
-
-
+巻き上げは、```var```を使用して変数を宣言した時や、関数で発生し得る。確認のため```console.log```メソッドを実行した場合、```foo```を宣言していないため、『x is not defined 』エラーになりそうである。しかし実際は、宣言が既に済んでおり、```foo```に値が代入されていないことを示す『undefined』となる。
 
 ```javascript
 console.log(foo); // undefined
@@ -344,8 +308,6 @@ var foo = "foo"; // 宣言と代入
 ```
 
 これは、スコープの範囲内で宣言と代入を実行した変数で、宣言処理がスコープの最初に行ったことになるという仕様のためである。
-
-
 
 ```javascript
 // 内部的には、最初に宣言処理したことになる
@@ -357,8 +319,6 @@ var foo = "foo"; // 宣言と代入により、実際は宣言処理を実装し
 ```
 
 これは関数の代入時にも起こる。
-
-
 
 > ℹ️ 参考：https://jsprimer.net/basic/function-scope/#function-declaration-hoisting
 
@@ -377,16 +337,12 @@ var foo = function(){
 
 意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に行うようにする。
 
-
-
 ```javascript
 var foo = "foo"; // スコープの最初に宣言する。
 
 console.log(foo); // foo
 ```
 これは関数の代入時も同じである。
-
-
 
 ```javascript
 var foo = function(){
@@ -399,8 +355,6 @@ foo(); // foo
 #### ▼ ```let```,```const```使用時の対策
 
 宣言に```let```、```const```を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。
-
-
 
 ```javascript
 console.log(foo); // foo is not defined
@@ -415,8 +369,6 @@ let foo = "foo";
 #### ▼ 配列
 
 配列の値を、任意の名前の変数に代入する。
-
-
 
 **＊実装例＊**
 
@@ -434,8 +386,6 @@ console.log(baz); // 3
 #### ▼ オブジェクト
 
 オブジェクトの値を、プロパティ名と同じ名前の変数に代入する。
-
-
 
 **＊実装例＊**
 
@@ -461,13 +411,7 @@ console.log(baz); // 3
 
 #### ▼ ```for  of```とは
 
-順序を保ったまま配列を走査し、値を取得する。
-
-オブジェクトに対して```entires```メソッドを使用して、一度配列に変換すれば、オブジェクトでも```for  of```を使用できる。
-
-```for  in```を使用するより、こちらを使用した方が良い。
-
-
+順序を保ったまま配列を走査し、値を取得する。オブジェクトに対して```entires```メソッドを使用して、一度配列に変換すれば、オブジェクトでも```for  of```を使用できる。```for  in```を使用するより、こちらを使用した方が良い。
 
 #### ▼ 配列の場合
 
@@ -485,8 +429,6 @@ for (const value of array) {
 
 配列の```entires```メソッドを使用すれば、インデックス番号を取得もできる。
 
-
-
 ```javascript
 const  array = ["foo", "bar", "baz"];
 
@@ -502,8 +444,6 @@ for (const [key, value] of array.entries()) {
 #### ▼ オブジェクトの場合
 
 オブジェクトに対して```entires```メソッドを実行し、一度連想配列に変換すれば、オブジェクトでも```for ... of```を使用できる。
-
-
 
 ```javascript
 const object = {
@@ -527,13 +467,7 @@ for (const [property, value] of Object.entries(object)) {
 
 #### ▼ スプレッド構文とは
 
-ドット```3```個で記載する。
-
-順序を保ったまま配列を走査し、値を取得する。
-
-オブジェクトは捜査できない。
-
-
+ドット```3```個で記載する。順序を保ったまま配列を走査し、値を取得する。オブジェクトは捜査できない。
 
 ```javascript
 const array = ["foo", "bar", "baz"];
@@ -554,8 +488,6 @@ console.log(...array);
 #### ▼ ```for  in```とは
 
 配列/オブジェクト（連想配列）を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。
-
-
 
 #### ▼ 配列の場合
 
@@ -599,8 +531,6 @@ for (const property in object) {
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
-
-
 ```php
 const array = ["foo", "bar", "baz"];
 
@@ -620,23 +550,15 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ ```forEach```関数を使用した代替法
 
-反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
-
-```continue```を使用するより、こちらの方が良い。
-
-
+反復処理のループを```continue```でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。```continue```を使用するより、こちらの方が良い。
 
 > ℹ️ 参考：https://www.deep-rain.com/programming/javascript/778#continue
 
 PHPにも、```forEach```関数と同様に配列に対してコールバック関数を適用する関数（```find```、```fliter```、```map```、```reduce```、```some```）があり、用途に合わせて使い分ける。
 
-
-
 > ℹ️ 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
 ちなみにPHPにも、```forEach```関数と同じような使い方をする```array_walk```関数がある。
-
-
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_iteration.html
 

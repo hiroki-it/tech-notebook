@@ -9,8 +9,6 @@ description: API＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -76,11 +74,7 @@ $ kubectl exec \
 
 ### version_info
 
-宛先情報のバージョンが表示される。
-
-宛先情報が変わった場合、コントロールプレーンは```version_info```キーの値が変更する。
-
-
+宛先情報のバージョンが表示される。宛先情報が変わった場合、コントロールプレーンは```version_info```キーの値が変更する。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane.html?highlight=dynamic_active_clusters#step-8-check-envoy-uses-the-updated-configuration
 
@@ -108,8 +102,6 @@ $ kubectl exec \
 
 静的な設定値（特に、クラスター）、サービスディスカバリーによって動的に登録された設定値（特に、クラスター）を、見やすい形式でレスポンスとして返信する。
 
-
-
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
 
 ```bash
@@ -124,8 +116,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
 #### ▼ Istioの場合
 
 Istioを使用している場合には、宛先のIPアドレスとポート番号が登録されている。
-
-
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -162,11 +152,7 @@ outbound|50001|v1|foo-servive.foo-namespace.svc.cluster.local::10.0.0.3:80::regi
 
 ### ```/config_dump```エンドポイントとは
 
-Envoyの現在の全ての設定値を、JSON形式でレスポンスとして返信する。
-
-Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
-
-
+Envoyの現在の全ての設定値を、JSON形式でレスポンスとして返信する。Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
 
@@ -208,8 +194,6 @@ $ kubectl exec \
 
 サービスディスカバリーによって動的に登録された設定値（特に、エンドポイント）を、JSON形式でレスポンスとして返信する。
 
-
-
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
 ```bash
@@ -248,11 +232,7 @@ $ kubectl exec \
 
 #### ▼ ```dynamic_endpoint_configs```キー
 
-準備済みのエンドポイント値が設定されている。
-
-```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
-
-
+準備済みのエンドポイント値が設定されている。```cluster_name```キーは、```/config_dump?resource={dynamic_active_clusters}```エンドポイントから取得できるJSONの```service_name```キーのエイリアスと紐づいている。
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
 
@@ -357,8 +337,6 @@ configs:
 
 ```config_dump```エンドポイントのJSON形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
 
-
-
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
 
 ```bash
@@ -368,13 +346,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 
 #### ▼ dynamic_active_clusters
 
-準備済みのクラスター値を、JSON形式でレスポンスとして返信する。
-
-クラスターに紐づく宛先に関して、```load_assignment```キーで宛先IPアドレスを直接的に設定する場合と、```service_name```キーでエイリアスを設定する場合がある。
-
-```service_name```キーに紐づく宛先情報は、```/config_dump?include_eds```エンドポイントのレスポンスの```dynamic_endpoint_configs```キー配下にある```cluster_name```キーで確認できる。
-
-
+準備済みのクラスター値を、JSON形式でレスポンスとして返信する。クラスターに紐づく宛先に関して、```load_assignment```キーで宛先IPアドレスを直接的に設定する場合と、```service_name```キーでエイリアスを設定する場合がある。```service_name```キーに紐づく宛先情報は、```/config_dump?include_eds```エンドポイントのレスポンスの```dynamic_endpoint_configs```キー配下にある```cluster_name```キーで確認できる。
 
 > ℹ️ 参考：
 >
@@ -430,11 +402,7 @@ $ kubectl exec \
 
 #### ▼ dynamic_warm_clusters
 
-準備が完了していない（ウォーミングアップ中の）クラスター値を、JSON形式でレスポンスとして返信する。
-
-もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
-
-
+準備が完了していない（ウォーミングアップ中の）クラスター値を、JSON形式でレスポンスとして返信する。もしウォーミングアップ中の宛先にルーティングしてしまった場合は、```404```ステータスや```503```ステータス（特に、Istio）になる。
 
 > ℹ️ 参考：
 >
@@ -474,8 +442,6 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 #### ▼ dynamic_listeners
 
 サービスディスカバリーによって動的に登録された設定値（特に、リスナー）を、JSON形式でレスポンスとして返信する。
-
-
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
 
@@ -539,8 +505,6 @@ $ kubectl exec \
 #### ▼ dynamic_route_configs
 
 サービスディスカバリーによって動的に登録された設定値（特に、ルート）を、JSON形式でレスポンスとして返信する。
-
-
 
 > ℹ️ 参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
 
@@ -613,8 +577,6 @@ configs:
 #### ▼ static_listeners
 
 静的なリスナー値を返信する。
-
-
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

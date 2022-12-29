@@ -9,8 +9,6 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
@@ -35,8 +33,6 @@ $ apt-get install pstree
 ### pstreeとは
 
 プロセスの親子関係をツリー状に取得する。
-
-
 
 ```bash
 # MacOSの場合
@@ -73,11 +69,7 @@ $ pip3 install supervisor
 
 #### ▼ supervisor
 
-Python製のユーティリティである。
-
-メモリ上のプロセスをデーモン化し、一括で管理する。
-
-
+Python製のユーティリティである。メモリ上のプロセスをデーモン化し、一括で管理する。
 
 > ℹ️ 参考：
 >
@@ -88,15 +80,11 @@ Python製のユーティリティである。
 
 supervisordを操作する。
 
-
-
 > ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
 supervisor自体のプロセスのこと。
-
-
 
 > ℹ️ 参考：http://supervisord.org/introduction.html#supervisor-components
 
@@ -107,8 +95,6 @@ supervisor自体のプロセスのこと。
 #### ▼ supervisordセクションとは
 
 supervisorの```supervisord```プロセスのプールを設定する。
-
-
 
 > ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-settings
 
@@ -122,8 +108,6 @@ supervisorの```supervisord```プロセスのプールを設定する。
 
 デーモン化されたプロセスの起動コマンドを実行する作業ディレクトリを設定する。
 
-
-
 ```ini
 [supervisord]
 directory=/var/www/foo
@@ -132,8 +116,6 @@ directory=/var/www/foo
 #### ▼ logfile
 
 supervisordのログファイルの場所を設定する。
-
-
 
 ```ini
 [supervisord]
@@ -144,8 +126,6 @@ logfile=/var/log/supervisor/supervisord.log
 
 supervisordのログレベルを設定する。
 
-
-
 ```ini
 [supervisord]
 loglevel=info
@@ -154,8 +134,6 @@ loglevel=info
 #### ▼ nodaemon
 
 supervisordをフォアグラウンドで起動するか否かを設定する。
-
-
 
 ```ini
 [supervisord]
@@ -166,8 +144,6 @@ nodaemon=true
 
 supervisordのpidが記載されるファイルを設定する。
 
-
-
 ```ini
 [supervisord]
 pidfile=/var/tmp/supervisor/supervisord.pid
@@ -177,8 +153,6 @@ pidfile=/var/tmp/supervisor/supervisord.pid
 
 標準出力への出力を標準エラー出力に転送する可動化を設定する。
 
-
-
 ```ini
 [supervisord]
 redirect_stderr=true
@@ -187,8 +161,6 @@ redirect_stderr=true
 #### ▼ user
 
 supervisordの実行ユーザーを設定する。
-
-
 
 ```ini
 [supervisord]
@@ -202,8 +174,6 @@ user=root
 #### ▼ programセクションとは
 
 デーモン化されたプロセスを設定する。
-
-
 
 > ℹ️ 参考：
 >
@@ -224,8 +194,6 @@ user=root
 
 デーモン化されたプロセスの異常停止時に自動的に起動させるか否かを設定する。
 
-
-
 ```ini
 [program:foo]
 autorestart=true
@@ -234,8 +202,6 @@ autorestart=true
 #### ▼ autostart
 
 supervisordの起動時に、デーモン化されたプロセスを自動的に起動させるか否か、を設定する。
-
-
 
 ```ini
 [program:foo]
@@ -246,8 +212,6 @@ autostart=true
 
 デーモン化されたプロセスの起動コマンドを設定する。
 
-
-
 ```ini
 [program:foo]
 command=/usr/sbin/crond -n
@@ -256,8 +220,6 @@ command=/usr/sbin/crond -n
 #### ▼ redirect_stderr
 
 デーモン化されたプロセスの標準出力への出力を標準エラー出力に転送するか否かを設定する。
-
-
 
 ```ini
 [program:foo]
@@ -268,8 +230,6 @@ redirect_stderr=true
 
 デーモン化されたプロセスの起動に失敗した場合、何回再試行するかを設定する。
 
-
-
 ```ini
 [program:foo]
 startretries=10
@@ -277,13 +237,7 @@ startretries=10
 
 #### ▼ stdout_logfile、stderr_logfile
 
-デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。
-
-デフォルト値は```/var/log/supervisor```ディレクトリである。
-
-もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
-
-
+デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
 > ℹ️ 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -303,8 +257,6 @@ stderr_logfile_maxbytes=0
 
 ログローテートによって作成されるバックアップの世代数。
 
-
-
 ```ini
 [program:foo]
 stdout_logfile_backups=10
@@ -312,13 +264,7 @@ stdout_logfile_backups=10
 
 #### ▼ stdout_logfile_maxbytes
 
-ログファイルの最大サイズ。
-
-設定値を超えると、ログローテートが実行される。
-
-これにより、ログファイルがバックアップとして保存され、新しいログファイルが作成される。
-
-
+ログファイルの最大サイズ。設定値を超えると、ログローテートが実行される。これにより、ログファイルがバックアップとして保存され、新しいログファイルが作成される。
 
 ```ini
 [program:foo]
@@ -328,8 +274,6 @@ stdout_logfile_maxbytes=50MB
 #### ▼ user
 
 デーモン化されたプロセスの実行ユーザーを設定する。
-
-
 
 ```ini
 [program:foo]
@@ -351,8 +295,6 @@ priority=999
 
 グループ化するデーモン名を設定する。
 
-
-
 ```ini
 [group]
 programs=bar,baz
@@ -364,11 +306,7 @@ programs=bar,baz
 
 #### ▼ restart
 
-指定したデーモンを再起動する。
-
-```all```とした場合は、全てを再起動する。
-
-
+指定したデーモンを再起動する。```all```とした場合は、全てを再起動する。
 
 > ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
@@ -379,8 +317,6 @@ $ supervisorctl restart <デーモン名>
 #### ▼ update
 
 もし```supervisord.conf```ファイルの設定を変更した場合、これを読み出し直す。
-
-
 
 > ℹ️ 参考：http://supervisord.org/running.html#supervisorctl-actions
 
@@ -398,8 +334,6 @@ $ supervisorctl update
 
 メモリ上のプロセスをデーモン化する機能を持つsystemdを制御するためのユーティリティ。
 
-
-
 > ℹ️ 参考：
 >
 > - https://cameong.hatenablog.com/entry/2016/10/18/121400
@@ -407,11 +341,7 @@ $ supervisorctl update
 
 #### ▼ systemd：system daemon
 
-ユニットファイルに基づいて、プロセスをユニット別に管理する。
-
-ユニットは拡張子の違いで判別する。
-
-
+ユニットファイルに基づいて、プロセスをユニット別に管理する。ユニットは拡張子の違いで判別する。
 
 > ℹ️ 参考：https://www.kabegiwablog.com/entry/2018/06/11/100000
 
@@ -441,13 +371,7 @@ $ apt-get install systemd
 
 #### ▼ ユニットファイルとは
 
-デーモンの起動/停止方法を定義したファイル。
-
-デフォルト値が定義されたファイルは```/usr/lib/systemd/system```ディレクトリ配下に配置され、これは変更できない。
-
-カスタムユニットファイルは、```/etc/sytemd/system```ディレクトリ配下に配置する。
-
-
+デーモンの起動/停止方法を定義したファイル。デフォルト値が定義されたファイルは```/usr/lib/systemd/system```ディレクトリ配下に配置され、これは変更できない。カスタムユニットファイルは、```/etc/sytemd/system```ディレクトリ配下に配置する。
 
 
 > ℹ️ 参考：
@@ -459,8 +383,6 @@ $ apt-get install systemd
 #### ▼ Unitセクション
 
 ユニットの種類に関係ない全般的なオプションを設定する。
-
-
 
 ```ini
 [Unit]
@@ -476,8 +398,6 @@ OnFailure=notify-email@%i.service
 #### ▼ Serviceセクション
 
 serviceユニットのオプションを設定する。
-
-
 
 > ℹ️ 参考：https://serverfault.com/a/806620
 
@@ -501,8 +421,6 @@ PrivateTmp=true
 
 環境変数ファイル（```EnvironmentFile```）は、```.env```ファイルと同じような形式のものを作成する。
 
-
-
 ```bash
 FOO=foo
 BAR=bar
@@ -512,8 +430,6 @@ BAZ=baz
 #### ▼ Installセクション
 
 ユニットのインストール（```systemctl enable```コマンドの実行）時のオプションを設定する。
-
-
 
 ```ini
 [Install]
@@ -527,13 +443,7 @@ WantedBy=multi-user.target
 
 #### ▼ daemon-reload
 
-サーバー内で```/etc/sytemd/system```ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。
-
-全てのデーモンのカスタムユニットファイルを再読み込みする。
-
-ただし、デーモンが既に稼働中の場合は、```systemctl restart```コマンドが別途必要になる。
-
-
+サーバー内で```/etc/sytemd/system```ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。全てのデーモンのカスタムユニットファイルを再読み込みする。ただし、デーモンが既に稼働中の場合は、```systemctl restart```コマンドが別途必要になる。
 
 > ℹ️ 参考：https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
@@ -544,8 +454,6 @@ $ systemctl daemon-reload
 #### ▼ disable
 
 OSの起動時に、デーモン化されたプロセスが自動起動しないように設定する。
-
-
 
 ```bash
 $ systemctl disable <ユニット名>
@@ -559,8 +467,6 @@ $ systemctl disable httpd.service
 
 OSの起動時に、デーモン化されたプロセスが自動起動するように設定する。
 
-
-
 ```bash
 $ systemctl enable <ユニット名>
 
@@ -571,11 +477,7 @@ $ systemctl enable httpd.service
 
 #### ▼ list-units
 
-デーモン化されたプロセスの稼働状態を一覧を取得する。
-
-```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
-
-
+デーモン化されたプロセスの稼働状態を一覧を取得する。```grep```と組み合わせて、起動中（```active```）、停止中（```inactive```）、起動失敗（```failed```）のデーモンのみを取得すると良い。
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
@@ -607,8 +509,6 @@ dev-mqueue.mount                  loaded active mounted POSIX Message Queue File
 
 デーモン化されたプロセスのUnitの一覧と、OS起動時にデーモンが自動起動するようになっているか否か、を取得する。
 
-
-
 ```bash
 $ systemctl list-unit-files --type=<ユニットの拡張子>
 ```
@@ -636,13 +536,9 @@ proc-sys-fs-binfmt_misc.mount static
 
 ```systemctl```コマンドにはログを取得するオプションがないため、代わりに```journalctl```コマンドを使用する。
 
-
-
 #### ▼ reload
 
 デーモン化されたプロセスを安全に再起動する。
-
-
 
 ```bash
 $ systemctl reload <ユニット名>
@@ -655,8 +551,6 @@ $ systemctl reload nginx.service
 #### ▼ restart
 
 デーモン化されたプロセスを強制的に再起動する。
-
-
 
 ```bash
 $ systemctl restart <ユニット名>
@@ -674,8 +568,6 @@ $ systemctl restart nginx.service
 
 デーモン化されたプロセスを起動する。
 
-
-
 ```bash
 $ systemctl start <ユニット名>
 ```
@@ -691,8 +583,6 @@ $ systemctl start nginx.service
 #### ▼ status
 
 デーモン化されたプロセスの状態を確認する。
-
-
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
@@ -715,8 +605,6 @@ mq959 /usr/sbin/rsyslogd -n
 
 デーモン化されたプロセスを停止する。
 
-
-
 ```bash
 $ systemctl stop <ユニット名>
 ```
@@ -735,11 +623,7 @@ $ systemctl stop nginx.service
 
 #### ▼ journalctlとは
 
-systemで管理する全てのユニットのログを取得する。
-
-```grep```コマンドで特定のエラーログレベルに絞る必要がある。
-
-
+systemで管理する全てのユニットのログを取得する。```grep```コマンドで特定のエラーログレベルに絞る必要がある。
 
 > ℹ️ 参考：https://qiita.com/aosho235/items/9fbff75e9cccf351345c
 
@@ -751,8 +635,6 @@ $ journalctl | grep error
 
 特定のユニットのみのログを取得する。
 
-
-
 ```bash
 $ journalctl -u foo.service | grep error
 ```
@@ -763,11 +645,7 @@ $ journalctl -u foo.service | grep error
 
 #### ▼ アラートを直接的に通知する場合
 
-デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。
-
-この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
-
-
+デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、```OnFailure```オプションを使用する。この時に指定するユニットファイル名には、「```@%i```』が必要である（実際のファイル名に```%i```は不要である）。
 
 > ℹ️ 参考：
 >
@@ -801,11 +679,7 @@ WantedBy=multi-user.target
 
 #### ▼ アラートを間接的に通知する場合
 
-デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、```StandardOutput```オプションや```StandardError```オプションを使用する。
-
-一度、ログとして出力し、このログをCloudWatchログなどに送信する。
-
-
+デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、```StandardOutput```オプションや```StandardError```オプションを使用する。一度、ログとして出力し、このログをCloudWatchログなどに送信する。
 
 > ℹ️ 参考：https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 
@@ -846,8 +720,6 @@ $ yum install -y xclip
 
 標準出力/標準エラー出力の内容をコピーし、メモリ上に保持する。
 
-
-
 > ℹ️ 参考：https://linux.die.net/man/1/xclip
 
 <br>
@@ -858,15 +730,11 @@ $ yum install -y xclip
 
 コピーした内容を保持する場所を選択する。
 
-
-
 > ℹ️ 参考：https://linuxfan.info/xclip
 
 **＊例＊**
 
 ファイルの内容を、メモリ上のクリップボードにコピーする。
-
-
 
 ```bash
 $ cat foo.txt | xclip -selection clipboard
@@ -876,8 +744,6 @@ $ cat foo.txt | xclip -selection clipboard
 
 コマンドの実行結果を、メモリ上のクリップボードにコピーする。
 
-
-
 ```bash
 $ ls -la | xclip -selection clipboard
 ```
@@ -886,15 +752,11 @@ $ ls -la | xclip -selection clipboard
 
 保持した内容をファイルに出力する。
 
-
-
 > ℹ️ 参考：https://linuxfan.info/xclip
 
 **＊例＊**
 
 クリップボードの内容をファイルに出力する。
-
-
 
 ```bash
 $ xclip -selection clipboard -o > foo.txt

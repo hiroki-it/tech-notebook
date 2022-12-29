@@ -9,21 +9,13 @@ description: Helmfile＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-
-
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. Helmfileの仕組み
 
-```helm```コマンドを宣言的に実行できる。
-
-ただし、ArgoCDのApplicationの```spec.source.helm```キーでも```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。
-
-そのため、できるだけArgoCDを使用した方が良い。
-
-
+```helm```コマンドを宣言的に実行できる。ただし、ArgoCDのApplicationの```spec.source.helm```キーでも```helm```コマンドを宣言的に実行しつつ、実行を自動化できる。そのため、できるだけArgoCDを使用した方が良い。
 
 <br>
 
@@ -33,11 +25,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 #### ▼ マイクロサービス別
 
-マイクロサービスをapplyの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
-
-各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
-
-
+マイクロサービスをapplyの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。各マイクロサービスのディレクトリには、```helmfile.d```ディレクトリを置き、ここにリリース単位の```helmfile.d```ファイルを置く。
 
 > ℹ️ 参考：https://speakerdeck.com/j5ik2o/helmfilenituite
 
@@ -55,8 +43,6 @@ repository/
 ```
 
 リリース単位は、Kubernetesリソースとすると良い。
-
-
 
 ```yaml
 repository/
@@ -81,8 +67,6 @@ repository/
 ### environments
 
 環境名のリストとして動作し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
-
-
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
 
@@ -112,8 +96,6 @@ $ helmfile -e dev apply
 
 リリース名を設定する。
 
-
-
 ```yaml
 releases:
   - name: foo
@@ -121,13 +103,7 @@ releases:
 
 #### ▼ namespace
 
-チャートをインストールするNamespaceを設定する。
-
-各マニフェストで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。
-
-ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。
-
-
+チャートをインストールするNamespaceを設定する。各マニフェストで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。
 
 ```yaml
 releases:
@@ -138,8 +114,6 @@ releases:
 
 リリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
-
-
 ```yaml
 releases:
   - createNamespace: true
@@ -149,8 +123,6 @@ releases:
 
 リリース対象のチャートへのパスを設定する。
 
-
-
 ```yaml
 releases:
   - chart: ./foo-chart
@@ -159,8 +131,6 @@ releases:
 #### ▼ version
 
 リリースのバージョンを設定する。
-
-
 
 ```yaml
 releases:
@@ -172,8 +142,6 @@ releases:
 Helmの実行時に複合化する```values```ファイルを設定する。
 
 
-
-
 ```yaml
 releases:
   - values:
@@ -183,8 +151,6 @@ releases:
 #### ▼ secrets
 
 Helmの実行時に複合化するSecretのファイルを設定する。
-
-
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#secrets
 
@@ -201,8 +167,6 @@ secrets:
 
 チャートリポジトリ名を設定する。
 
-
-
 ```yaml
 repositories:
   - name: foo-repository
@@ -211,8 +175,6 @@ repositories:
 #### ▼ url
 
 リリース対象のチャートリポジトリのURLを設定する。
-
-
 
 ```yaml
 repositories:
@@ -229,8 +191,6 @@ repositories:
 
 使用する```helmfile.d```ディレクトリ下にある```helm.yaml```ファイルを再帰的に使用する。
 
-
-
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
@@ -241,8 +201,6 @@ $ helmfile <サブコマンド>
 #### ▼ -e
 
 リリース対象の実行環境名を設定する。
-
-
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
@@ -264,8 +222,6 @@ $ helmfile -e prd apply
 
 使用する```helmfile.yaml```ファイルを指定する。
 
-
-
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#cli-reference
 
 ```bash
@@ -278,13 +234,7 @@ $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 
 #### ▼ apply
 
-まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。
-
-```helmfile sync```コマンドとは異なり、リリース間に差分がないと、リビジョン番号は更新されない。
-
-注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストを変更できない。
-
-
+まず```helmfile diff```コマンドを実行し、この時に差分があれば、```helmfile apply```コマンドを実行する。```helmfile sync```コマンドとは異なり、リリース間に差分がないと、リビジョン番号は更新されない。注意点として、Helmの使用と同様にして、カスタムリソース定義のマニフェストを変更できない。
 
 > ℹ️ 参考：
 >
@@ -319,8 +269,6 @@ foo-release         ./charts/foo         0.0.1
 
 インストール済みの全てのチャートをアンインストールする。
 
-
-
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#destroy
 
 ```bash
@@ -334,8 +282,6 @@ $ helmfile -e prd destroy
 #### ▼ list
 
 Helmfileでインストールしたチャートの一覧を取得する。
-
-
 
 ```bash
 $ helmfile list
@@ -365,11 +311,7 @@ $ helmfile -e prd diff
 
 #### ▼ grepとの組み合わせ
 
-マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。
-
-```grep```を使用して、差分のあるリソースやファイルを確認しておく。
-
-
+マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。```grep```を使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
 $ helmfile -e prd diff | grep kind
@@ -410,8 +352,6 @@ $ helmfile -e prd sync
 #### ▼ templateとは
 
 全てのリリースに関して、```helm template```コマンドを実行する。
-
-
 
 ```bash
 $ helmfile -e prd template
