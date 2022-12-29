@@ -1088,7 +1088,9 @@ asdf local terraform <バージョン>
 terraform <バージョンタグ>
 ```
 
-asdfパッケージを使用して、```terraform```コマンドをインストールする。```.tool-versions```ファイルに定義されたバージョンがインストールされる。
+asdfパッケージを使用して、```terraform```コマンドをインストールする。
+
+```.tool-versions```ファイルに定義されたバージョンがインストールされる。
 
 ```bash
 $ asdf plugin list all | grep terraform

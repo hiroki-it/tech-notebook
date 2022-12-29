@@ -28,10 +28,36 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 現状は、Istioのコンポーネントに依存している。
 
 
-
 > ℹ️ 参考：https://kiali.io/docs/architecture/architecture/
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
+
+<br>
+
+### ダッシュボードの基本的な使い方
+
+#### ▼ グラフタイプ
+
+アプリケーションコンテナ間（Pod間）の通信を表示するために、Appグラフを選択する。
+
+> ℹ️ 参考：
+> 
+> - https://kiali.io/docs/features/topology/#graph-types
+> - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
+
+#### ▼ 凡例ラベル
+
+- デフォルトでは、最新```1```分に発生した通信しか表示しないため、表示期間を延長する。
+- デフォルトでは、全てのNamespaceが表示されて見にくいため、アプリケーションコンテナのNamespaceのみをフィルタリングして表示する。
+- デフォルトでは、アプリコンテナ以外のコンポーネント（例：IstioのVirtual Service）が表示されて見にくいため、Appシェイプのみをフィルタリングして表示する。
+
+#### ▼ Istioのマニフェストの検証
+
+Kialiでは、Istioのマニフェストを検証できる。
+
+ダッシュボード（Serviceタブ、IStio Configタブ）のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
 
 <br>
 

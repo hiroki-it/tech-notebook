@@ -873,7 +873,11 @@ resource "aws_subnet" "public" {
 
 #### ▼ 冗長化されたAZにおける設定
 
-冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```引数を使用すると、少ない実装で作成できる。```for_each```引数で作成された```resource```ブロックは```terraform apply```コマンド実行中にmap構造として扱われ、```resource```ブロック名の下層にキー名で```resource```ブロックが並ぶ構造になっている。これを参照するために、『```<resourceタイプ>.<resourceブロック名>[each.key].<attribute>```』とする
+冗長化されたAZで共通のルートテーブルを作成する場合、そこで、```for_each```引数を使用すると、少ない実装で作成できる。
+
+```for_each```引数で作成された```resource```ブロックは```terraform apply```コマンド実行中にmap構造として扱われ、```resource```ブロック名の下層にキー名で```resource```ブロックが並ぶ構造になっている。
+
+これを参照するために、『```<resourceタイプ>.<resourceブロック名>[each.key].<attribute>```』とする。
 
 **＊実装例＊**
 
