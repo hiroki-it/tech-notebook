@@ -187,7 +187,9 @@ spec:
 
 ### apiVersion
 
-Istio-APIのバージョンを設定する。Kubernetesとは異なることに注意する。
+Istio-APIのバージョンを設定する。
+
+Kubernetesとは異なることに注意する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

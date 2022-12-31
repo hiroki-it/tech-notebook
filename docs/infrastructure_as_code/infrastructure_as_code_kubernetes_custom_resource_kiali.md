@@ -55,7 +55,7 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 Kialiでは、Istioのマニフェストを検証できる。
 
-ダッシュボード（Serviceタブ、IStio Configタブ）のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
+ダッシュボード（Serviceタブ、Istio Configタブ）のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
 

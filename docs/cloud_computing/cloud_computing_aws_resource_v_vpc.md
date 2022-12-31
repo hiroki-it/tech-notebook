@@ -422,6 +422,12 @@ VPCエンドポイントとは異なる能力なので注意。Interface型のVP
 
 VPC内のENIを通過するパケットをキャプチャできる。
 
+```log
+version account-id   interface-id  srcaddr         dstaddr        srcport         dstport       protocol    packets    bytes    start             end              action log-status
+2       <アカウントID> eni-<ENIのID> <送信元IPアドレス> <宛先IPアドレス> <送信元ポート番号> <宛先ポート番号> <プロトコル> <パケット数> <バイト数> <開始タイムスタンプ> <終了タイムスタンプ> ACCEPT OK
+...
+```
+
 
 
 > ℹ️ 参考：

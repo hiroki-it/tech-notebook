@@ -574,6 +574,8 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 ### マルチサービスメッシュとは
 
+複数のKubernetesクラスターのネットワークを横断的に管理するサービスメッシュ。
+
 > ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
 
 <br>

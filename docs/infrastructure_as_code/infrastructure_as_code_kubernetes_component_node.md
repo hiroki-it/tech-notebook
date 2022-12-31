@@ -218,7 +218,7 @@ $ kube-proxy \
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy.png)
 
-kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）や```L4```ロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるかどうかに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール（iptables）や```L4```ロードバランサー（ipvs）に、EndpointSliceで管理するPodの宛先情報を追加/削除する。Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。
 
 > ℹ️ 参考：
 > 

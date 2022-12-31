@@ -168,7 +168,9 @@ data:
 
 #### ▼ kube-prometheus-stackチャートの場合
 
-kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
+kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。
+
+kube-prometheus-stackチャートの```values```ファイルでは、```labelValue```に```1```が割り当てられている。
 
 > ℹ️ 参考：https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 

@@ -50,7 +50,15 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 #### ▼ DaemonSetとは
 
-Node上のPodの個数を維持管理する。Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。Nodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
+Node上のPodの個数を維持管理する。
+
+Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。
+
+ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。
+
+Nodeで1つだけ稼働させる必要のあるプロセス（例：kube-proxy、cni、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など）のために使用される。
+
+こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
 > ℹ️ 参考：
 >
@@ -256,11 +264,9 @@ Podのライフサイクルにはフェーズがある。
 > - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
 > - https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment
 
-#### ▼ CPUとメモリの割り当て
+#### ▼ ハードウェアリソースの割り当て
 
-そのPodに割り当てられたCPUとメモリを、Pod内のコンテナが分け合って使用する。
-
-
+そのPodに割り当てられたハードウェアリソース（CPU、メモリ）を、Pod内のコンテナが分け合って使用する。
 
 > ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu
 
@@ -374,7 +380,13 @@ Node上のコンテナをNode外に公開する機能を提供する。
 
 #### ▼ EndpointSliceとは
 
-各Service配下に存在する。Serviceでルーティング先のPodの宛先情報を分割して管理し、Podの増減に合わせて、Podの宛先情報を追加/削除する。kube-proxyによるサービスディスカバリーのために、Podの宛先情報を提供する。Kubernetesのv1.6より前はEndpointsが使用されていた。しかし、EndpointsではPodの宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpointsの代わりとしてEndpointSliceが導入された。
+各Service配下に存在する。Serviceでルーティング先のPodの宛先情報を分割して管理し、Podの増減に合わせて、Podの宛先情報を追加/削除する。
+
+kube-proxyによるサービスディスカバリーのために、Podの宛先情報を提供する。
+
+Kubernetesのv1.6より前はEndpointsが使用されていた。
+
+しかし、EndpointsではPodの宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpointsの代わりとしてEndpointSliceが導入された。
 
 > ℹ️ 参考：https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
 

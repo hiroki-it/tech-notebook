@@ -418,7 +418,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers.ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers[].ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
 # 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する

@@ -296,7 +296,7 @@ Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # �
 Email Address []:
 ```
 
-（３）認証局を『自分』として、秘密鍵と証明書署名要求から、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
+（３）認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
 
 ```bash
 $ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out server.crt

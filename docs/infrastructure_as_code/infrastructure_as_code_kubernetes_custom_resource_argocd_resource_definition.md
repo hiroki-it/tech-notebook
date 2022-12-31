@@ -1135,7 +1135,9 @@ spec:
 
 #### ▼ server
 
-kube-apiserverのURLを設定する。Kubernetesの実行環境としてEKSやGKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
+kube-apiserverのURLを設定する。
+
+Kubernetesの実行環境としてEKSやGKEを採用している場合、これのkube-apiserverのエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

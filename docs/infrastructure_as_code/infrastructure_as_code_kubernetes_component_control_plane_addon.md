@@ -54,7 +54,9 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 ### admissionアドオンとは
 
-admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
+admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。
+
+kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 

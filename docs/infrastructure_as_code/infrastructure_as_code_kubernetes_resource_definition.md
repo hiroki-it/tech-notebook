@@ -228,7 +228,7 @@ int型を割り当てようとするとエラーになり、これはHelmの```v
 $ kubectl get deployment foo-deployment -o yaml --show-managed-fields
 ```
 
-もし、特定のキーが管理下にあるかどうかを調べる場合、```grep```コマンドと組み合わせる。
+もし、特定のキーが管理下にあるか否かを調べる場合、```grep```コマンドと組み合わせる。
 
 
 
@@ -402,7 +402,11 @@ status:
 
 #### ▼ observedGenerationとは
 
-kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```metadata.generation```キーの値を設定する。Kubernetesが設定してくれるため、開発者が設定する必要はない。```metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```metadata.generation```キーの値を設定する。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+```metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
 
 > ℹ️ 参考：
 > 
@@ -1843,7 +1847,7 @@ Volumeの一種であるHostPathボリュームとは区別すること。
 
 Node側のマウント元のディレクトリを設定する。
 
-Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
+Podのマウントポイントは、Podの```spec.containers[].volumeMount```キーで設定する。
 
 
 
@@ -2478,7 +2482,7 @@ spec:
 
 コンテナが待ち受けるポート番号を、仕様として設定する。
 
-単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers.ports```キーは設定しなくとも問題ない。
+単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers[].ports```キーは設定しなくとも問題ない。
 
 
 
@@ -3334,7 +3338,7 @@ spec:
 
 #### ▼ secret
 
-```spec.containers.envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
+```spec.containers[].envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
 
 ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
 
@@ -3669,7 +3673,7 @@ data:
   # SSL証明書
   foo.crt: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
-  # SSL証明書と対になる公開鍵
+  # SSL証明書と対になる秘密鍵
   foo.key: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```

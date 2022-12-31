@@ -289,7 +289,7 @@ metadata:
 
 #### ▼ image.pullPolicy
 
-チャート内のDeploymentの```spec.template.spec.containers.imagePullPolicy```キーに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers[].imagePullPolicy```キーに値を設定する。
 
 
 
@@ -301,7 +301,7 @@ metadata:
 
 #### ▼ image.repository
 
-チャート内のDeploymentの```spec.template.spec.containers.image```キーに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers[].image```キーに値を設定する。
 
 
 
@@ -359,13 +359,13 @@ Ingressの作成を有効化する。
 
 #### ▼ resources
 
-チャート内のDeploymentの```spec.template.spec.containers.resources```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers[].resources```オプションに値を設定する。
 
 
 
 #### ▼ securityContext
 
-チャート内のDeploymentの```spec.template.spec.containers.securityContext```オプションに値を設定する。
+チャート内のDeploymentの```spec.template.spec.containers[].securityContext```オプションに値を設定する。
 
 
 

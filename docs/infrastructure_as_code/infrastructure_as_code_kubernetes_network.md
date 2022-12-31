@@ -188,7 +188,13 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 ### Serviceの完全修飾ドメイン名を指定する場合
 
-Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
+Kubernetesに採用できる権威DNSサーバー（kube-dns、CoreDNS、HashiCorp Consul、など）は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
+
+Podのスケジューリング時に、kubeletはPod内のコンテナの```/etc/resolv.conf```ファイルに権威DNSサーバーのIPアドレスを設定する。
+
+Pod内のコンテナは、自身の```/etc/resolv.conf```ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。
+
+レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにアウトバウンド通信を送信する。
 
 > ℹ️ 参考：
 >
