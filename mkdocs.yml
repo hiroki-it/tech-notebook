@@ -472,6 +472,8 @@ nav:
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                       - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
+                  - ■ CertManager:
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
                   - ■ Grafana:
                       - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
