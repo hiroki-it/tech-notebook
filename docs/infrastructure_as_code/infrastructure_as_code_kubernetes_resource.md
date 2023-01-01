@@ -294,6 +294,25 @@ Podのライフサイクルにはフェーズがある。
 
 > ℹ️ 参考：https://note.com/shift_tech/n/n503b32e5cd35
 
+
+#### ▼ 待ち受けるポート番号の確認
+
+Pod内のコンテナ内で```netstat```コマンドを実行すると、コンテナが待ち受けているポート番号を確認できる。
+
+```bash
+$ kubectl exec foo-istiod -n istio-system -- netstat -tulpn
+
+Active Internet connections (only servers)
+
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:9876          0.0.0.0:*               LISTEN      1/pilot-discovery   
+tcp6       0      0 :::15017                :::*                    LISTEN      1/pilot-discovery   
+tcp6       0      0 :::8080                 :::*                    LISTEN      1/pilot-discovery   
+tcp6       0      0 :::15010                :::*                    LISTEN      1/pilot-discovery   
+tcp6       0      0 :::15012                :::*                    LISTEN      1/pilot-discovery   
+tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery 
+```
+
 <br>
 
 ### ReplicaSet

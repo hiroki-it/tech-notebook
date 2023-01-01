@@ -83,7 +83,9 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 
 #### ▼ 公開ダッシュボードとは
 
-独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）を使用した方が良い。その場合、GitHubなどで公開されているJSONを、ConfigMapの```data```キーに貼り付ける。
+独自ダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード（例：kubernetes-mixins、Grafanaダッシュボードコミュニティ）を使用した方が良い。
+
+その場合、GitHubなどで公開されているJSONを、ConfigMapの```data```キーに貼り付ける。
 
 > ℹ️ 参考：
 > 
@@ -220,7 +222,9 @@ data:
 
 #### ▼ 接続
 
-Grafanaのダッシュボードに接続できる。ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
+Grafanaのダッシュボードに接続できる。
+
+ユーザ名は```admin```、パスワードは```prom-operator```がデフォルト値である。
 
 ```bash
 $ kubectl port-forward svc/grafana -n prometheus 8080:80

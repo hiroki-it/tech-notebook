@@ -15,7 +15,7 @@ description: リソース定義＠CertManagerの知見を記録しています�
 
 <br>
 
-## 02. Certificate
+## 01. Certificate
 
 ### Certificateとは
 
@@ -323,6 +323,8 @@ spec:
               # シークレットアクセスキー名
               key: foo-secret-access-key
 ```
+
+<br>
 
 ## 04. Issuer
 

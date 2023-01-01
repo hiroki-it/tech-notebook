@@ -994,7 +994,7 @@ $ aws configure
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-（３）```kubectl```コマンドの宛先を、EKSのkube-apiserverに変更する。
+（３）```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
@@ -1150,7 +1150,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-（２）```kubectl```コマンドの宛先を、EKSのkube-apiserverに変更する。
+（２）```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
 
 > ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 

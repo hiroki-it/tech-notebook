@@ -146,7 +146,7 @@ CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 
 #### ▼ use-context
 
-```kubectl```コマンドの宛先を、指定したKubernetesの実行環境のkube-apiserverに変更する。
+```kubectl```コマンドの向き先を、指定したKubernetesの実行環境のkube-apiserverに変更する。
 
 **＊例＊**
 

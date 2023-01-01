@@ -23,6 +23,7 @@ description: アドオン＠コントロールプレーンコンポーネント�
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
 有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmission-controllersアドオンのステップを実行できる。
+
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
@@ -102,7 +103,7 @@ MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionス�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。
+MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
 
@@ -169,7 +170,7 @@ ValidatingAdmissionWebhookアドオンを使用すると、validating-admission�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先を設定する。
+ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
 
