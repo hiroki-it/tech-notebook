@@ -56,7 +56,7 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 the server could not find the requested resource
 ```
 
-#### ▼ チャートとして
+#### ▼ チャート（マニフェストのセット）として
 
 カスタムリソース定義とカスタムリソースを含むチャートをインストールする。
 
@@ -72,7 +72,7 @@ the server could not find the requested resource
 
 
 
-#### ▼ チャートとして
+#### ▼ チャート（マニフェストのセット）として
 
 カスタムコントローラーのチャートをインストールし、後はカスタムコントローラーにカスタムリソースを作成させる。
 

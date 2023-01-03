@@ -397,7 +397,7 @@ $ kubectl exec \
     -c istio-proxy \
     -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
 
-"configs":
+configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
     version_info: 2022-11-24T12:13:05Z/468
     cluster:
@@ -495,7 +495,7 @@ $ kubectl exec \
     -c istio-proxy \
     -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_listeners}" | yq -P
 
-"configs":
+configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
     # リスナー名
     name: 0.0.0.0_50002

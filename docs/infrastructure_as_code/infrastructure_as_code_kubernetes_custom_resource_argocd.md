@@ -26,7 +26,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 > ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
 ```bash
-$ kubectl get pod -n argocd
+$ kubectl get pod -n argo
 
 NAME                                    READY   STATUS    RESTARTS   AGE
 argocd-server-*****                     1/1     Running   0          1d
@@ -103,7 +103,7 @@ spec:
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n argo \
     -- bash -c "ls -la /tmp"
 ```
 
@@ -122,7 +122,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n argo \
     -- bash -c "sops --version"
 ```
 
@@ -134,7 +134,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argocd \
+    -n argo \
     -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-charts && helm template foo-chart -f values-prd.yaml"
 ```
 

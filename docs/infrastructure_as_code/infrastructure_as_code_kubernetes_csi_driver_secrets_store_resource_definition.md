@@ -17,11 +17,11 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 ## 01. セットアップ
 
-### チャートとして
+### インストール
 
-#### ▼ GitHubリポジトリから
+#### ▼ チャートリポジトリから
 
-プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。GitHubリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
+プロバイダーが提供するCSIドライバーを、Kubernetes上にインストールする必要がある。チャートリポジトリからsecrets-store-csi-driverチャートをインストールし、リソースを作成する。
 
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 

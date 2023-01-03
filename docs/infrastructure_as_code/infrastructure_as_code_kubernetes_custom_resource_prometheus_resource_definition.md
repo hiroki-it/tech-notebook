@@ -17,9 +17,9 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 ## 01. セットアップ
 
-### マニフェストとして
+### インストール
 
-#### ▼ GitHubリポジトリから
+#### ▼ チャートリポジトリから
 
 GitHubリポジトリ上のマニフェストを送信し、リソースを作成する。
 
@@ -36,11 +36,11 @@ $ kubectl create -f bundle.yaml
 
 <br>
 
-### チャートとして
+### インストール
 
-#### ▼ GitHubリポジトリから
+#### ▼ チャートリポジトリから
 
-GitHubリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+チャートリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

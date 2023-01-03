@@ -17,9 +17,9 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ## 01. 全部入りセットアップ
 
-### チャートとして
+### インストール
 
-#### ▼ GCRから（設定済み）
+#### ▼ チャートリポジトリから
 
 ```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。
 
@@ -64,7 +64,7 @@ $ kubectl apply -f istio-operator.yaml
 
 ## 01-02. コンポーネント別セットアップ
 
-### チャートとして
+### インストール
 
 #### ▼ Google-APIsから
 
@@ -722,7 +722,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: DISABLE # HTTP通信
+      mode: DISABLE # HTTPプロトコル
 ```
 
 ```yaml
@@ -1215,7 +1215,7 @@ kind: ServiceEntry
 metadata:
   name: foo-app-service-entry
 spec:
-  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
+  resolution: DNS # DNSサーバーから返信されたIPアドレスを許可する。
 ```
 
 <br>

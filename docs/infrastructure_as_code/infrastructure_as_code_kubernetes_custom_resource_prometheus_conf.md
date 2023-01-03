@@ -259,9 +259,9 @@ receivers:
 
 ### セットアップ
 
-#### ▼ GitHubリポジトリから（バイナリとして）
+#### ▼ バイナリリポジトリから
 
-Node内でプロセスとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
+Node内でプロセスとしてnode-exporterを動かす場合、チャートリポジトリから直接インストールし、リソースを作成する。
 
 ```bash
 # node-exporterの場合
@@ -274,7 +274,7 @@ $ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
 $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
 ```
 
-#### ▼ GitHubリポジトリから（チャートとして）
+#### ▼ チャートリポジトリから
 
 Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 
