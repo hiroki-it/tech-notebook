@@ -33,9 +33,9 @@ $ sudo apt-get install helm
 
 <br>
 
-## 02. index.```.yaml```ファイル
+## 02. ```index.yaml```ファイル
 
-### index.```.yaml```ファイルとは
+### ```index.yaml```ファイルとは
 
 チャートリポジトリ内の各チャートアーカイブ（```.tgz```形式ファイル）のメタデータを設定する。
 

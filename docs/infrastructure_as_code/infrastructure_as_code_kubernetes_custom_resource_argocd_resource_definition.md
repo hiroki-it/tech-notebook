@@ -24,7 +24,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
-$ kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 <br>
@@ -93,11 +93,11 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ ```kubectl```コマンドを使用して
 
-（１）LoadBalancer Serviceを使用して、ArgoCDダッシュボードを公開する。
+（１）Serviceを使用して、ArgoCDダッシュボードを公開する。ここでは、LoadBalancer Serviceを使用するとする。
 
 ```bash
 $ kubectl patch service argocd-server \
-    -n argo \
+    -n argocd \
     -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
@@ -105,7 +105,7 @@ $ kubectl patch service argocd-server \
 
 ```bash
 $ kubectl get secret argocd-initial-admin-secret \
-    -n argo \
+    -n argocd \
     -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
@@ -114,7 +114,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 ```bash
 # Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
-$ kubectl port-forward svc/argocd-server -n argo 8080:443
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 # ホストポートを介してPodのポートにアクセスする。
 $ curl http://127.0.0.1:8080
 ```
@@ -242,6 +242,94 @@ stringData:
   # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+```
+
+<br>
+
+### Role、RoleBinding、ServiceAccount
+
+#### ▼ Role
+
+ArgoCDのコンポーネント（application-controller、argo-server、repo-server、dex-server）によっては、kube-apiserverにリクエストを送信する必要がある。
+
+そのため、コンポーネントに紐づけるためのRoleを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: argocd
+  name:  argocd-application-controller
+  labels:
+    app.kubernetes.io/part-of: argocd
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - applications
+      - appprojects
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - list
+```
+
+#### ▼ RoleBinding
+
+ServiceAccountとRoleを紐づけるために、RoleBindingを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: argocd
+  name: argocd-argocd-repo-server
+  labels:
+    app.kubernetes.io/part-of: argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argocd-application-controller
+subjects:
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: argocd
+```
+
+#### ▼ ServiceAccount
+
+ArgoCDのServiceAccountを作成する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argocd-application-controller
+  labels:
+    app.kubernetes.io/part-of: argocd
+automountServiceAccountToken: true
+secrets:
+  - name: argocd-application-controller-token-*****
 ```
 
 <br>
@@ -738,7 +826,7 @@ metadata:
 spec:
   source:
     # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
-    repoURL: https://github.com/hiroki.hasegawa/helm-charts
+    repoURL: https://github.com/hiroki.hasegawa/foo-repository
 ```
 
 #### ▼ targetRevision
@@ -1084,16 +1172,22 @@ spec:
 
 ### 専用ConfigMapとは
 
-- ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で使用する環境変数
-- ArgoCDのKubernetesリソースで使用するRBACの設定
-- リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書
-- リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_host```ファイル
+ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
+
+ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
+
+| Kubernetesリソース名                | 説明                                                                                                                    |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| ```argocd-cm```	               | ArgoCDの各コンポーネントで共通する値を設定する。                                                                                           |
+| ```argocd-cmd-params-cm```     | ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。                            |
+| ```argocd-rbac-cm```           | ArgoCDのKubernetesリソースで使用するRBACを設定する。                                                                                  |
+| ```argocd-tls-cets-cm```       | リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。                                                                |
+| ```argocd-ssh-nown-hosts-cm``` | リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。 |
 
 実装例は以下を参考にせよ。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
-```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
 
 <br>
 
@@ -1112,16 +1206,15 @@ metadata:
   namespace: argocd
   name: argocd-cm
   labels:
-    app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-        # spec.replicas（インスタンス数）の設定値の変化を無視する。
-        - /spec/replicas
+      # spec.replicas（インスタンス数）の設定値の変化を無視する。
+      - /spec/replicas
     jqPathExpressions:
-        # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
-        - /spec/metrics
+      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+      - /spec/metrics
 ```
 
 <br>
@@ -1133,6 +1226,34 @@ ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止�
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
 
 <br>
+
+### data.ssh_known_hosts
+
+#### ▼ ssh_known_hosts
+
+SSHプロトコルでリポジトリを監視する場合に、リポジトリの秘密鍵を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-ssh-known-hosts-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB ...
+    github.com ecdsa-sha2-nistp256 AAAAE ...
+    github.com ssh-ed25519 AAAAC ...
+    github.com ssh-rsa AAAAB ...
+    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
+    gitlab.com ssh-ed25519 AAAAC ...
+    gitlab.com ssh-rsa AAAAB ...
+    ssh.dev.azure.com ssh-rsa AAAAB ...
+    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
+```
+
 
 ## 06. 専用Job
 
@@ -1363,8 +1484,13 @@ spec:
 
 ### 専用Secret
 
-- リポジトリを監視する時に必要な認証情報
-- ArgoCDにログインするためのユーザ名とパスワード
+ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
+
+| Kubernetesリソース名    | 説明                                                   |
+|--------------------|------------------------------------------------------|
+| ```***-repo```、```***-creds``` | プライベートリポジトリを監視する時に必要な認証情報を設定する。パブリックリポジトリの場合は、不要である。 |
+| ```argocd-secret```                   | ArgoCDにログインするためのユーザ名とパスワードを設定する。                     |
+
 
 実装例は、以下を参考にせよ。
 
@@ -1406,8 +1532,6 @@ spec:
 Basic認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
 
 ```yaml
 # 他と異なるマニフェストリポジトリ
@@ -1573,7 +1697,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-kubernetes-repository # 任意のチャートリポジトリ名
-  url: https://storage.googleapis.com/foo-kubernetes # チャートリポジトリのURL
+  url: https://github.com/hiroki.hasegawa/kubernetes-charts # チャートリポジトリのURL
   type: helm
   username: foo
   password: bar
@@ -1588,7 +1712,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   name: foo-istio-repository # 任意のチャートリポジトリ名
-  url: https://storage.googleapis.com/foo-istio # チャートリポジトリのURL
+  url: https://github.com/hiroki.hasegawa/istio-charts # チャートリポジトリのURL
   type: helm
   username: baz
   password: qux
@@ -1682,6 +1806,7 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   entrypoint: foo-template
@@ -1705,6 +1830,7 @@ WorkflowTemplateとして切り分けても良い。
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   entrypoint: foo-template
@@ -1733,6 +1859,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   workflowTemplateRef:
@@ -1757,6 +1884,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
+  namespace: argocd
   name: hello-world-workflow-template
 spec:
   templates:
@@ -1779,6 +1907,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
+  namespace: argocd
   name: hello-world-workflow-template
 spec:
   templates:
@@ -1803,7 +1932,7 @@ spec:
 > ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
 
 ```bash
-$ kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 ```
 
 <br>
@@ -1822,7 +1951,10 @@ $ kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj-labs/argoc
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notification-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   trigger.on-sync-status-unknown: |
     - when: app.status.sync.status == 'Unknown'
@@ -1848,7 +1980,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   service.slack: |
     token: *****
@@ -1866,7 +2001,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   context: |
     env: prd

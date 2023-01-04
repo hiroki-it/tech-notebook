@@ -363,9 +363,10 @@ NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceに�
 
 また、ServiceのIPアドレスを返却する。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/service/
+> ℹ️ 参考：
+> 
+> - https://minikube.sigs.k8s.io/docs/commands/service/
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
 ```bash
 $ minikube service <NodePort Servie名/LoadBalancer Servie名>
@@ -443,10 +444,10 @@ $ minikube service list
 
 指定したServiceのIPアドレスを含むURLを取得する。
 
-
+> ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
 ```bash
- $ minikube service <Service名> --url
+$ minikube service <NodePort Servie名/LoadBalancer Servie名> --url
  
 http://*.*.*.*:57761
 ```

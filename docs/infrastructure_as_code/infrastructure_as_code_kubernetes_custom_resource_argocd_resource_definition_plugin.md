@@ -45,6 +45,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: foo-plugin
@@ -68,6 +70,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: foo-plugin
@@ -98,7 +102,7 @@ metadata:
   name: foo-application
 spec:
   repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-  targetRevision: master
+  targetRevision: main
   path: .
   plugin:
     name: foo-plugin
@@ -186,6 +190,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: helmfile
@@ -206,6 +212,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: helm-secrets
@@ -233,8 +241,8 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-  targetRevision: master
+  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+  targetRevision: main
   path: .
   plugin:
     name: helmfile
@@ -317,6 +325,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: helm-secrets
@@ -334,6 +344,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: helm-secrets
@@ -365,8 +377,8 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-  targetRevision: master
+  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+  targetRevision: main
   path: .
   plugin:
     name: helm-secrets
@@ -428,8 +440,8 @@ metadata:
   name: app
 spec:
   source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-    targetRevision: master
+    repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+    targetRevision: main
     path: .
     helm:
       valueFiles:
@@ -486,6 +498,8 @@ kind: ConfigMap
 metadata:
   namespace: argocd
   name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   configManagementPlugins: |
     - name: vault
@@ -521,8 +535,8 @@ metadata:
   namespace: argocd
   name: foo-application
 spec:
-  repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-  targetRevision: master
+  repoURL: https://github.com/hiroki-hasegawa/foo-charts.git
+  targetRevision: main
   path: .
   plugin:
     name: vault

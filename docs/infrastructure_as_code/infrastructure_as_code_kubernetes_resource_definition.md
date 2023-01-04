@@ -1346,7 +1346,38 @@ ports:
 
 <br>
 
-## 09. HorizontalPodAutoscaler
+## 09. HTTPRoute
+
+調査中...
+
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: http
+  namespace: foo
+spec:
+  parentRefs:
+    - name: gateway
+      namespace: istio-ingress
+      sectionName: default
+  hostnames:
+    - "foo.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /foo
+      backendRefs:
+        - name: foo
+          port: 80
+```
+
+<br>
+
+
+## 10. HorizontalPodAutoscaler
 
 ### spec.maxReplicas、spec.minReplicas
 
@@ -1438,7 +1469,7 @@ spec:
 
 <br>
 
-## 10. Ingress
+## 11. Ingress
 
 ### annotations
 
@@ -1517,7 +1548,7 @@ spec:
 
 <br>
 
-## 11. IngressClass
+## 12. IngressClass
 
 ### spec.controller
 
@@ -1607,7 +1638,38 @@ spec:
 
 <br>
 
-## 12. Job
+## 13. Gateway
+
+調査中...
+
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-ingress
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: default
+      hostname: "*.example.com"
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: self-signed-cert
+            namespace: istio-ingress
+      allowedRoutes:
+        namespaces:
+          from: All
+```
+
+<br>
+
+## 14. Job
 
 ### spec.activeDeadlineSeconds
 
@@ -1726,13 +1788,13 @@ spec:
 
 <br>
 
-## 13. Node
+## 15. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 
-## 14. PersistentVolume
+## 16. PersistentVolume
 
 ### spec.accessModes
 
@@ -2158,7 +2220,7 @@ spec:
 
 <br>
 
-## 15. PersistentVolumeClaim
+## 17. PersistentVolumeClaim
 
 ### spec.accessModes
 
@@ -2236,7 +2298,7 @@ spec:
 
 <br>
 
-## 16. Pod
+## 18. Pod
 
 ### spec.affinity
 
@@ -3375,7 +3437,7 @@ spec:
 
 <br>
 
-## 17. PodDisruptionBudget
+## 19. PodDisruptionBudget
 
 ### spec.maxUnavailable
 
@@ -3447,7 +3509,7 @@ spec:
 
 <br>
 
-## 18. ReplicaController
+## 20. ReplicaController
 
 旧Deployment。
 
@@ -3459,7 +3521,7 @@ spec:
 
 <br>
 
-## 19. Role、ClusterRole
+## 21. Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -3542,7 +3604,7 @@ rules:
 
 <br>
 
-## 20. RoleBinding、ClusterRoleBinding
+## 22. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -3612,7 +3674,7 @@ subjects:
 
 <br>
 
-## 21. Secret
+## 23. Secret
 
 ### data
 
@@ -3869,7 +3931,7 @@ stringData:
 
 <br>
 
-## 22. Service
+## 24. Service
 
 ### spec.ports
 
@@ -4163,6 +4225,12 @@ spec:
     app.kubernetes.io/app: foo-pod
 ```
 
+NodePortのポート番号は、```30000``` 〜 ```32767```番である必要がある。
+
+```bash
+spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid range. The range of valid ports is 30000-32767
+```
+
 #### ▼ LoadBalancerの場合
 
 LoadBalancer Serviceを設定する。クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。同時に、```status.loadBalancer```キーが自動的に追加される。```status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。```status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
@@ -4194,7 +4262,7 @@ status:
 
 <br>
 
-## 23. ServiceAccount
+## 25. ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -4241,7 +4309,7 @@ imagePullSecrets:
 
 <br>
 
-## 24. StatefulSet
+## 26. StatefulSet
 
 ### spec.serviceName
 

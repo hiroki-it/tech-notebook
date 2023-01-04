@@ -17,7 +17,15 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 ## 01. Istioの仕組み
 
-### サイドカープロキシメッシュのアーキテクチャ
+### サイドカープロキシメッシュ
+
+#### ▼ サイドカープロキシメッシュとは
+
+サイドカープロキシメッシュは、サイドカープロキシ型のサービスメッシュを実装したものである。
+
+> ℹ️ 参考：https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
+
+#### ▼ サイドカープロキシメッシュとは
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_sidecar-mesh_architecture.png)
 
@@ -39,11 +47,31 @@ description: Istio＠カスタムリソースの知見を記録しています�
 
 <br>
 
-### アンビエントメッシュのアーキテクチャ
+### アンビエントメッシュ
+
+#### ▼ アンビエントメッシュとは
+
+アンビエントメッシュは、NodeのServiceAccountごとの共有エージェント型のサービスメッシュを実装したものである。
+
+> ℹ️ 参考：
+> 
+> - https://blog.csdn.net/cr7258/article/details/126870859
+> - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
+
+#### ▼ 仕組み
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。ztunnel（実体はDaemonSet配下のPod）が```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）、またwaypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハードウェアリソースの消費量の少ない```L4```と多い```L7```のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、```L4```のプロトコルのみを処理する場合に、Nodeのリソース消費量を節約できる。サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+アンビエントメッシュは、データプレーン、コントロールプレーンNode、から構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
+
+
+ztunnel（実体はDaemonSet配下のPod）が```L4```（トランスポート層）のプロトコル（例：TCP、UDP、など）、またwaypoint-proxy（実体はDeployment配下のPod）が```L7```（アプリケーション層）のプロトコル（例：HTTP、HTTPS、など）を処理する責務を持つ。
+
+Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。
+
+ztunnelのPodを経由した段階でHTTPSプロトコルになる。ハードウェアリソースの消費量の少ない```L4```と多い```L7```のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、```L4```のプロトコルのみを処理する場合に、Nodeのリソース消費量を節約できる。
+
+サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
 
 インバウンド時の通信の経路は以下の通りである。
 

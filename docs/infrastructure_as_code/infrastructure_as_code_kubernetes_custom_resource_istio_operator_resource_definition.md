@@ -301,13 +301,11 @@ metadata:
     release: istio
   name: istio-ingressgateway
   namespace: istio-system
-  resourceVersion: "322999"
-  uid: 7c292753-6219-4e4b-bd81-9012fabb97b3
 spec:
   allocateLoadBalancerNodePorts: true
-  clusterIP: 10.108.30.158
+  clusterIP: *.*.*.*
   clusterIPs:
-  - 10.108.30.158
+  - *.*.*.*
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -337,7 +335,7 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - ip: 10.108.30.158
+    - ip: *.*.*.*
 ```
 
 #### ▼ istiodRemote

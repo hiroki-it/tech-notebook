@@ -26,7 +26,7 @@ argocd-server、repo-server、application-controller、redis-server、dex-server
 > ℹ️ 参考：https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
 
 ```bash
-$ kubectl get pod -n argo
+$ kubectl get pod -n argocd
 
 NAME                                    READY   STATUS    RESTARTS   AGE
 argocd-server-*****                     1/1     Running   0          1d
@@ -70,8 +70,8 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-  name: argocd-server-ingress
   namespace: argocd
+  name: argocd-server-ingress
 spec:
   rules:
     - host: argocd.foo.com
@@ -103,7 +103,7 @@ spec:
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argo \
+    -n argocd \
     -- bash -c "ls -la /tmp"
 ```
 
@@ -122,7 +122,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argo \
+    -n argocd \
     -- bash -c "sops --version"
 ```
 
@@ -134,8 +134,8 @@ $ kubectl -it exec foo-argocd-repo-server \
 ```bash
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
-    -n argo \
-    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-charts && helm template foo-chart -f values-prd.yaml"
+    -n argocd \
+    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
 
 <br>
@@ -179,7 +179,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 <br>
 
-## 01-02. ユースケース
+## 02. ユースケース
 
 ### 共通
 
