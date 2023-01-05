@@ -81,7 +81,152 @@ $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
 
 Alertmanagerのセットアップ方法を決める。
 
+> ℹ️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager
 
+### spec.version
+
+Alertmanagerのコンテナイメージのバージョンを設定する。
+
+使用するコンテナイメージは、```spec.baseImage```キーに設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  version: v1.0.0
+```
+
+<br>
+
+### spec.serviceAccountName
+
+AlertmanagerのPodに紐づけるServiceAccountの名前を設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  serviceAccountName: foo-serviceaccount
+```
+
+<br>
+
+### spec.baseImage
+
+Alertmanagerのコンテナイメージを設定する。
+
+コンテナイメージのバージョンは、```spec.version```キーに設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  baseImage: quay.io/prometheus/alertmanager
+```
+
+<br>
+
+### spec.externalUrl
+
+AlertmanagerのURLを設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  externalUrl: https://example.com
+```
+
+<br>
+
+### spec.replicas
+
+AlertmanagerのPodの冗長化数を設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  replicas: 2
+```
+
+<br>
+
+### spec.logLevel
+
+Alertmanagerのログレベルを設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  logLevel: warn
+```
+
+<br>
+
+### spec.resources
+
+Alertmanagerのハードウェアリソースの要求量を設定する。
+
+> ℹ️ 参考：https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: foo-alertmanager
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  storage:
+    volumeClaimTemplate:
+      spec:
+        selector:
+          matchLabels:
+            app: foo-app
+        storageClassName: gp2-encrypted
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 400Mi
+```
 
 <br>
 
@@ -251,6 +396,28 @@ spec:
 
 <br>
 
+### アラート内で使用できる予約変数
+
+| 変数名            | データ型    | デフォルトラベル例                                                                                  | 説明                                                                                                                                                       |
+|-------------------|---------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Receiver          | string型 | ```.Receiver```                                                                            | アラートの受信者が割り当てられている。                                                                                                                                      |
+| Status            | string型 | ```.Status```                                                                              | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                      |
+| Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                              |
+| GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| CommonLabels      | map型    | ```.CommonLabels.alertname```                                                              | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                               |
+| CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                  |
+| ExternalURL       | string型 | ```.ExternalURL```                                                                         | AlertmangerのURLが割り当てられている。                                                                                                                               |
+
+
+> ℹ️ 参考：
+> 
+> - https://www.amazon.co.jp/dp/4910313001
+> - https://prometheus.io/docs/alerting/latest/notifications/
+> - https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/
+
+
+<br>
+
 ### spec.groups
 
 #### ▼ groupsとは
@@ -290,8 +457,6 @@ spec:
 #### ▼ rules（アラートルールの場合）
 
 ```alert```キーを宣言し、アラートルールを設定する。
-
-
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
@@ -333,7 +498,6 @@ spec:
 #### ▼ rules（レコーディングルールの場合）
 
 ```record```キーを宣言し、レコーディングルールを設定する。
-
 
 
 > ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/

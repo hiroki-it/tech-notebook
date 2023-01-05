@@ -41,7 +41,7 @@ $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 $ git clone https://<ユーザー名>:<パスワード>@github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
-もう一つの方法として、```.netrc```ファイルに定義しておく。
+もう```1```個の方法として、```.netrc```ファイルに定義しておく。
 
 
 

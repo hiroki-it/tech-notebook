@@ -21,7 +21,7 @@ Envoyの設定値をレスポンスとして返信する。ただ、欲しい設
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/help
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/help
 ```
 
 ```bash
@@ -29,7 +29,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/help"
+    -- bash -c "curl http://127.0.0.1:15000/help"
 
 # 執筆時点（2022/11/13）でのエンドポイント
   /: Admin home page
@@ -114,7 +114,7 @@ $ kubectl exec \
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 ```
 
 <br>
@@ -129,7 +129,7 @@ Istioを使用している場合には、宛先のIPアドレスとポート番�
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/clusters
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 ```
 
 ```bash
@@ -137,7 +137,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/clusters"
+    -- bash -c "curl http://127.0.0.1:15000/clusters"
 
 # 冗長化された宛先インスタンスのIPアドレスとポート番号
 # IPアドレスは宛先ごとに異なる
@@ -172,7 +172,7 @@ Envoyの稼働するサーバー/コンテナからローカルホストにリ�
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
 ```bash
@@ -180,7 +180,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
+    -- bash -c "curl http://127.0.0.1:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
 
 - '@type'
 - '@type'
@@ -214,7 +214,7 @@ $ kubectl exec \
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?include_eds
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?include_eds
 ```
 
 ```bash
@@ -222,7 +222,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
 
 - '@type'
 - '@type'
@@ -266,7 +266,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?include_eds" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
 
 configs:
   dynamic_endpoint_configs:
@@ -363,7 +363,7 @@ configs:
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 ```
 
 #### ▼ dynamic_active_clusters
@@ -383,7 +383,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={}
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters} | grep ClustersConfigDump.DynamicCluster -A 120
 ```
 
 **＊例＊**
@@ -395,7 +395,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
 
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
@@ -442,7 +442,7 @@ configs:
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
 
 ```bash
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}
 
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
@@ -457,7 +457,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
 
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
@@ -468,7 +468,7 @@ $ kubectl exec \
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_active_secrets}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_secrets}
 ```
 
 #### ▼ dynamic_listeners
@@ -481,7 +481,7 @@ envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dyn
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_listeners}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}
 ```
 
 **＊例＊**
@@ -493,7 +493,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_listeners}" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
 
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
@@ -546,7 +546,7 @@ configs:
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={dynamic_route_configs}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}
 ```
 
 **＊例＊**
@@ -558,7 +558,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={dynamic_route_configs}" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
     
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
@@ -618,7 +618,7 @@ configs:
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
-envoy@<コンテナ名>: $ curl http://localhost:15000/config_dump?resource={static_listeners}
+envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={static_listeners}
 ```
 
 
@@ -631,7 +631,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
-    -- bash -c "curl http://localhost:15000/config_dump?resource={static_listeners}" | yq -P
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={static_listeners}" | yq -P
 
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener

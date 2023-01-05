@@ -471,8 +471,6 @@ Kubernetesの周辺ツール（Prometheus、AlertManager、Grafana、ArgoCD）�
 
 Ingressコントローラーは、Secretに設定されたSSL証明書を参照し、これを内部のロードバランサー（例：Nginx）に渡す。
 
-
-
 > ℹ️ 参考：
 >
 > - https://blog.sakamo.dev/post/ingress-nginx/

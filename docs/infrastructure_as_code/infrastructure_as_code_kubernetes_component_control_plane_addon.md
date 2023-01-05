@@ -22,7 +22,7 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers.png)
 
-有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmission-controllersアドオンのステップを実行できる。
+有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmissionプラグインを実行できる。
 
 > ℹ️ 参考：
 >
@@ -36,7 +36,9 @@ description: アドオン＠コントロールプレーンコンポーネント�
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_architecture.png)
 
-admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。クライアント（```kubectl```クライアント、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionアドオンによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
+admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、から構成されている。
+
+クライアント（```kubectl```クライアント、Kubernetesリソース）からのリクエスト（例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへの転送）時に、各ステップでadmissionプラグインによる処理（例：アドオンビルトイン処理、独自処理）を発火させられる。
 
 > ℹ️ 参考：
 >
@@ -51,13 +53,15 @@ admission-controllersアドオンは、mutating-admissionステップ、validati
 
 <br>
 
-## 01-02. admissionアドオン
+## 01-02. admissionプラグイン
 
-### admissionアドオンとは
+### admissionプラグイン
 
-admissionアドオンは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。
+#### ▼ admissionプラグインとは
 
-kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionアドオンの一覧を取得できる。
+admissionプラグインは、ビルトイン処理や独自処理を発火させられるアドオンから構成されている。
+
+kube-apiserverの起動時に実行される```kube-apiserver```コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
@@ -83,6 +87,20 @@ StorageObjectInUseProtection,
 TaintNodesByCondition,
 ValidatingAdmissionWebhook,
 ```
+
+#### ▼ Webhook系プラグインのSSL証明書
+
+Webhook系プラグイン（例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など）では、kube-apiserverからwebhookサーバーにHTTPSプロトコルで通信する時に、webhookサーバーのためにSL証明書が必要である。
+
+このSSL証明書は、SecretとConfiguration（例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など）で管理している。
+
+SSL証明書を含むSecretの作成は```kube-webhook-certgen```イメージで```create```コマンドを実行し、Configurationへの挿入は```patch```コマンドを実行することで実現している。
+
+> ℹ️ 参考：
+> 
+> - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
+> - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch
+> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
 
 <br>
 
@@ -216,9 +234,9 @@ webhooks:
 
 <br>
 
-### AdmissionReview
+## 01-03. AdmissionReviewとは
 
-#### ▼ AdmissionReviewとは
+### AdmissionReviewとは
 
 AdmissionReviewは、リクエストを定義するAdmissionRequestと、レスポンスを定義するAdmissionResponseからなる。admission-controllerアドオンとwebhookサーバーの間のリクエスト/レスポンスのデータである。
 
@@ -235,7 +253,11 @@ AdmissionReviewは、リクエストを定義するAdmissionRequestと、レス�
 }
 ```
 
-#### ▼ mutating-admissionステップのAdmissionRequest
+<br>
+
+### mutating-admissionステップの場合
+
+#### ▼ AdmissionRequest
 
 kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメーターを格納し、リクエストとして送信する。
 
@@ -296,7 +318,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
 }
 ```
 
-#### ▼ mutating-admissionステップのAdmissionResponse
+#### ▼ AdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。
 
@@ -344,13 +366,17 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
 ]
 ```
 
-#### ▼ validating-admissionステップのAdmissionRequest
+<br>
+
+### validating-admissionステップ
+
+#### ▼ AdmissionRequest
 
 kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。
 
 > ℹ️ 参考：https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 
-#### ▼ validating-admissionステップのAdmissionResponse
+#### ▼ AdmissionResponse
 
 webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。
 

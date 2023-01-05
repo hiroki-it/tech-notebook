@@ -246,7 +246,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-app-namespace
+  name: app-namespace
   labels:
     istio-injection: enabled
 ```
@@ -260,14 +260,14 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-observability-namespace
+  name: observability-namespace
   labels:
     istio-injection: disabled
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-chaos-mesh-namespace
+  name: chaos-mesh-namespace
   labels:
     istio-injection: disabled
 ```
@@ -283,21 +283,21 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-app-namespace
+  name: app-namespace
   labels:
     istio.io/rev: 1-0-0 # ハイフン繋ぎのバージョン表記
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-observability-namespace
+  name: observability-namespace
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-chaos-mesh-namespace
+  name: chaos-mesh-namespace
   labels:
     istio-injection: disabled
 ```

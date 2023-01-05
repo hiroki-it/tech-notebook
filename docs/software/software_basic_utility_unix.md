@@ -410,6 +410,27 @@ $ curl -X POST -H "Content-Type:application/json" -d '{}' https://example.com/fo
 
 <br>
 
+### -s（小文字）
+
+ダウンロードの進捗ログを表示しない。
+
+```bash
+$ curl -sL https://example.com/foo
+```
+
+<br>
+
+### -sS（小文字）
+
+ダウンロードの進捗ログを表示しないが、エラーは表示する。
+
+```bash
+$ curl -sSL https://example.com/foo
+```
+
+
+<br>
+
 ### -k
 
 SSL証明書のエラーを無視する。

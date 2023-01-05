@@ -36,7 +36,12 @@ repository/
 ├── app/ # アプリケーション
 ├── manifests/
 │   └── kubernetes/
-│       ├── foo.yaml
+│       ├── foo/
+│       │   ├── deployment.yaml
+│       │   ├── service.yaml
+│       │   ├── persistent-volume.yaml
+│       │   └── persistent-volume-claim.yaml
+│       │
 ...
 ```
 
@@ -49,6 +54,11 @@ repository/
 ```yaml
 repository/
 ├── foo/ # fooサービス
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── persistent-volume.yaml
+│   └── persistent-volume-claim.yaml
+│
 ├── bar/ # barサービス
 └── baz/ # bazサービス
 ```
@@ -57,19 +67,19 @@ repository/
 
 ```yaml
 repository/ # fooサービス
-├── foo.yaml
+├── deployment.yaml
 ...
 ```
 
 ```yaml
 repository/ # barサービス
-├── bar.yaml
+├── deployment.yaml
 ...
 ```
 
 ```yaml
 repository/ # bazサービス
-├── baz.yaml
+├── deployment.yaml
 ...
 ```
 
@@ -125,12 +135,14 @@ repository/
     ├── app/ # appコンポーネント
     │   ├── deployment.yaml
     │   ├── service.yaml
-    │   └── persistent-volume.yaml
+    │   ├── persistent-volume.yaml
+    │   └── persistent-volume-claim.yaml
     │
     └── db/ # dbコンポーネント
         ├── stateful-set.yaml
         ├── service.yaml
-        └── persistent-volume.yaml
+        ├── persistent-volume.yaml
+        └── persistent-volume-claim.yaml
 ```
 
 
@@ -155,7 +167,7 @@ repository/
 
 ### labelsキー
 
-#### ▼ app.kubernetes.io
+#### ▼ ```app.kubernetes.io```キー
 
 Kubernetesに関する```metadata.labels```キーを以下に示す。
 
@@ -192,35 +204,115 @@ Kubernetesに関する```metadata.labels```キーを以下に示す。
 
 ### リソース名
 
-ケバブケースで命名する。マイクロサービスの技術スタックがリプレイスされる場合にも対応できるように、```<マイクロサービス名>-<コンポーネント名>-<Kubernetesリソース名>```とすると良い。
+#### ▼ 冗長な名前が嫌いな場合
 
-| Kubernetesリソース   | キーの値の例                                                           |
-|------------------|--------------------------------------------------------------------|
-| Service          | ```foo-app-service```、```foo-db-service```                         |
-| Pod              | ```foo-app-pod```、```foo-db-pod```                                 |
-| PersistentVolume | ```foo-app-perisitent-volume```、```foo-db-pod-perisitent-volume``` |
+冗長な名前が嫌いな場合は```<マイクロサービス名>```とする。
 
-<br>
-
-### マニフェスト
-
-#### ▼ ファイル名
+基本はこれを使用する。
 
 ケバブケースとする。
 
-ファイル名は、ディレクトリ構成ポリシーによる。
+
+| Kubernetesリソース   | 例        |
+|------------------|-----------|
+| Service          | ```foo``` |
+| Deployment       | ```foo``` |
+| PersistentVolume | ```foo``` |
+| ...              | ...       |
 
 
+#### ▼ 冗長な名前が嫌いでない場合
 
-#### ▼ 拡張子
+嫌いでない場合は```<マイクロサービス名>-<Kubernetesリソース名>```とする。
+
+ケバブケースとする。
+
+
+| Kubernetesリソース   | 例                          |
+|------------------|-----------------------------|
+| Service          | ```foo-service```           |
+| Deployment       | ```foo-pod```               |
+| PersistentVolume | ```foo-perisitent-volume``` |
+| ...              | ...                         |
+
+
+<br>
+
+### マニフェストのファイル名
+
+#### ▼ 重複しない場合
+
+ファイル名は、Kubernetesリソースの名前（例：```deployment.yaml```ファイル）になるようにする。
+
+基本的にはこれを使用する。
+
+ケバブケースとする。
+
+
+```yaml
+repository/
+├── deployment.yaml
+├── service.yaml
+├── persistent-volume.yaml
+└── persistent-volume-claim.yaml
+```
+
+GitHubの公式チャートを見ると、
+
+#### ▼ ファイル名重複する場合
+
+```1```個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソースの名前をつけることができない。
+
+その場合、```app.kubernetes.io```キーの値（例：```<マイクロサービス名>```または```<マイクロサービス名>-<Kubernetesリソース名>```）と同じにする。
+
+```yaml
+# 全てApplication
+# 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。
+repository/
+├── foo.yaml
+├── bar.yaml
+└── baz.yaml
+```
+
+```yaml
+# 全てApplication
+# 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。
+repository/
+├── foo-application.yaml
+├── bar-application.yaml
+└── baz-application.yaml
+```
+
+<br>
+
+### 拡張子
 
 Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、```.yaml```ファイルの拡張子を```yml```ではなく```.yaml```でしている。
 
 そこで、Kubernetesや関連技術（Istio、Helm、Skaffold、Envoy、など）の```.yaml```ファイルの拡張子を```.yaml```で統一する。
 
 
+```yaml
+repository/
+├── foo/ # fooサービス
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── persistent-volume.yaml
+│   └── persistent-volume-claim.yaml
+│
+├── bar/ # barサービス
+└── baz/ # bazサービス
+```
 
 <br>
+
+### マニフェストの粒度
+
+```1```個のマニフェストに、```1```個のKubernetesリソースを定義する。
+
+<br>
+
+
 
 ## 03. 実行環境
 
@@ -450,10 +542,10 @@ Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNode
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
 
-| Node当たりの最大Pod数   | ワーカーNode当たりのCIDRブロック | IPアドレス数  |
-|----------------------|-----------------------|-----------|
-| ```1```              | ```/32```             | ```2```   |
-| ```8```              | ```/28```             | ```16```  |
+| Node当たりの最大Pod数 | ワーカーNode当たりのCIDRブロック | IPアドレス数  |
+|--------------------|-----------------------|-----------|
+| ```1```            | ```/32```             | ```2```   |
+| ```8```            | ```/28```             | ```16```  |
 | ```9```～```16```   | ```/27```             | ```32```  |
 | ```17```～```32```  | ```/26```             | ```64```  |
 | ```33```～```64```  | ```/25```             | ```128``` |

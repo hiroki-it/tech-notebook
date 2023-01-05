@@ -437,7 +437,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 ```bash
 # istio-proxyコンテナ内でローカルホストにリクエストを送信する。
-istio-proxy@<Pod名>: $ curl http://localhost:15000/config_dump
+istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
 > ℹ️ 参考：

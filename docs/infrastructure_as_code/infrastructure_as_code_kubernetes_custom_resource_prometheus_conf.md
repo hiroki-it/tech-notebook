@@ -158,8 +158,6 @@ IPアドレスやポート番号が動的に変化する対象を監視する。
 監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
 
 
-
-
 > ℹ️ 参考：
 > 
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
@@ -179,6 +177,7 @@ scrape_configs:
   - job_name: node-exporter
     kubernetes_sd_configs:
       # Service配下のPodを対象とする。
+      # ingress、node、pod（Serviceに関連づけない）、service、がある。
       - role: endpoints
       # 特定のPodのみを監視対象とする。
       - source_labels:

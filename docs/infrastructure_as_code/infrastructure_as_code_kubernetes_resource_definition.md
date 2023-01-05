@@ -2402,7 +2402,7 @@ spec:
 
 #### ▼ podAntiAffinity
 
-Node内のPodを、```metadata.labels```キーで指定することにより、そのワーカー内のPodとは異なるNode内に、新しいPodをスケジューリングする。
+```metadata.labels```キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
 
 
 

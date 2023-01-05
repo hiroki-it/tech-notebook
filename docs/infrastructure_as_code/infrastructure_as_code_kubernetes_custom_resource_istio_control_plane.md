@@ -360,7 +360,7 @@ Saved profile in /Users/hiroki-hasegawa/pprof/pprof.pilot-discovery.alloc_object
 Serving web UI on http://localhost:8080
 
 # どのパッケージでどのくらいハードウェアリソースを消費しているか
-$ curl http://localhost:8080/ui/flamegraph?si=alloc_objects
+$ curl http://127.0.0.1:8080/ui/flamegraph?si=alloc_objects
 ```
 
 

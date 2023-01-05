@@ -73,7 +73,9 @@ Kubernetesリソースに関するメトリクスのデータポイントを収�
 
 #### ▼ 設定ファイル
 
-設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
+設定ファイルは```.yaml```ファイルで定義する。セットアップ方法によって設定ファイルが配置されるディレクトリは異なる。
+
+例えば、prometheus-operatorを使用した場合は、prometheusコンテナの```/etc/prometheus/rules```ディレクトリ配下に配置される。
 
 > ℹ️ 参考：
 >
@@ -254,6 +256,15 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 > - https://amateur-engineer-blog.com/alertmanager-silence/
 
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
+
+
+### Storage
+
+Alertmanagerのデータを永続化する。
+
+```bash
+$ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/alertmanager-db/
+```
 
 <br>
 

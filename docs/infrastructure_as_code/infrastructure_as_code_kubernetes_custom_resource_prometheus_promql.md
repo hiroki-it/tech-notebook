@@ -106,11 +106,9 @@ increase(foo_metrics[5m])
 rate(foo_metrics[1h])
 ```
 
-#### ▼ ```[]```
+#### ▼ ```[]```（ウィンドウ）
 
-直近、何時間（分、秒）のデータポイントを集計するかを設定する。
-
-
+直近、何時間（分、秒）のデータポイントを集計するかを設定する。数値を大きくするほど、なだらかになる。
 
 ```bash
 # 直近5分に関して、foo_metricsの平均増加率（%/秒）を集計する。
@@ -120,6 +118,7 @@ rate(foo_metrics[5m])
 > ℹ️ 参考：
 > 
 > - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
+> - https://christina04.hatenablog.com/entry/prometheus-rate
 > - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector> 
 > - https://gavin-zhou.medium.com/victoriametrics%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%88%E3%82%8A%E3%82%88%E3%81%84prometheus-rate-%E9%96%A2%E6%95%B0-6a69c36cee8f
 
@@ -291,13 +290,13 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 ### node-exporterのメトリクス
 
-node-exporterの場合は、Nodeの```localhost::9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
+node-exporterの場合は、Nodeの```127.0.0.1:9100/metrics```』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 > ℹ️ 参考：https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
 
 ```bash
 # Node内でコールする。
-$ curl http://localhost:9100/metrics
+$ curl http://127.0.0.1:9100/metrics
 
 # HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.
 # TYPE go_gc_duration_seconds summary
@@ -324,7 +323,7 @@ NodeのCPU使用率を取得する。
 > ℹ️ 参考：https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
 
 ```bash
-rate(node_cpu_seconds_total{mode!="idle"}[1m])
+rate(node_cpu_seconds_total[1m])
 ```
 
 #### ▼ メモリ使用率
@@ -384,6 +383,21 @@ rate(node_disk_io_time_seconds_total[1m])
 > - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
 > - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
 > - https://www.qoosky.io/techs/42affa2c4b
+
+#### ▼ ディスクのI/Oレイテンシー
+
+```bash
+# 読み出しレイテンシー
+rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m])
+```
+
+```bash
+# 書き込みレイテンシー
+rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
+```
+
+> ℹ️ 参考：https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+
 
 #### ▼ パケットの受信サイズ
 

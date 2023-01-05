@@ -163,9 +163,9 @@ foo_job:
 
 ### variables
 
+#### ▼ variablesとは
+
 Job内で使用する変数を設定する。
-
-
 
 > ℹ️ 参考：https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
@@ -176,6 +176,18 @@ foo_job:
     BAZ: baz
     QUX: qux
 ```
+
+#### ▼ GIT_SUBMODULE_STRATEGY
+
+デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。
+
+```yaml
+foo_job:
+  variables:
+    GIT_SUBMODULE_STRATEGY: "recursive"
+```
+
+> ℹ️ 参考：https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
 
 <br>
 

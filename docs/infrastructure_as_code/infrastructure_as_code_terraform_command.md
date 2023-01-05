@@ -529,7 +529,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 <br>r
 ### output
 
-```tfstate```ファイルの```output```ブロックを表示する。
+```.tfstate```ファイルの```output```ブロックを表示する。
 
 
 
@@ -539,7 +539,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 > - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
 
 ```bash
-$ $ terraform output -json
+$ terraform output -json
 
 {
   "vpc_id": {
@@ -645,6 +645,7 @@ $ terraform plan \
     -target='foo.bar' \
     -target='foo.baz'
 ```
+
 ```bash
 # moduleブロックの指定方法を調べる。
 $ terraform plan | grep <moduleブロック名>

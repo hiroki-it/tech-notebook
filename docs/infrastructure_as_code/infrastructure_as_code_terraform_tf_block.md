@@ -234,6 +234,7 @@ repository/
 │   ├── foo-module/
 │   │   ├── main.tf
 │   │   ├── outputs.tf
+│   │   ├── variables.tf
 ...
 ```
 
