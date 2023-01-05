@@ -285,6 +285,7 @@ nav:
                   - コマンド: language/language_python_framework_flask_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
+      - R: language/language_r.md
 
   - 🧪 テスト:
       - testing/index.md
@@ -586,7 +587,3 @@ nav:
       - ■ Git:
           - コマンド: version_control/version_control_git_command.md
           - GitHub: version_control/version_control_git_github.md
-
-  - 📊 統計分析:
-      - statistic_analysis/index.md
-      - R: statistic_analysis/statistic_analysis_r.md
