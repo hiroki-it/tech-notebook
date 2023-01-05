@@ -430,11 +430,11 @@ nav:
               - ■ Kubernetes:
                   - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
                   - ■ コントロールプレーンコンポーネント:
-                      コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
-                      アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
+                      - コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
                   - ■ Nodeコンポーネント:
-                      Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
-                      アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
+                      - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
                   - クラウドプロバイダーアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon.md
               - ネットワーク:
                   - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
