@@ -169,6 +169,8 @@ drwxrwsr-x    3 1000     2000          4096 Jul  8 11:00 01BKTKF4VE33MYEEQF0M7YE
 
 TSDBのディレクトリはNodeにマウントされるため、Nodeのストレージサイズに注意する必要がある。
 
+ストレージサイズが大きすぎると、Prometheusのコンテナが起動できなくなることがあり、その場合はNode側でメトリクスのブロックを削除する必要がある。
+
 データポイント数を減らし、データポイント全体のデータサイズを小さくすると良い。
 
 
@@ -258,11 +260,13 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/alertmanager.png)
 
 
+
 ### Storage
 
 Alertmanagerのデータを永続化する。
 
 ```bash
+# Node内（EKS EC2 Nodeの場合）
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/alertmanager-db/
 ```
 
