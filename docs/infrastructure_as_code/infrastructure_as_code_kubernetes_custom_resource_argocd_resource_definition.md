@@ -62,7 +62,7 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 #### ▼ ```kubectl```コマンドを使用して
 
-（１）Serviceを使用して、ArgoCDダッシュボードを公開する。ここでは、LoadBalancer Serviceを使用するとする。
+（１）既存のServiceをLoadBalancer Serviceに変更する。
 
 ```bash
 $ kubectl patch service argocd-server \

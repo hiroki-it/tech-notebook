@@ -164,9 +164,9 @@ FROM centos:8
 RUN dnf upgrade -y \
   && dnf install -y \
       curl \
-  # メタデータ削除
+  `# メタデータ削除` \
   && dnf clean all \
-  # キャッシュ削除
+  `# キャッシュ削除` \
   && rm -rf /var/cache/dnf
 ```
 
@@ -190,7 +190,7 @@ RUN dnf upgrade -y \
       https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
       https://rpms.remirepo.net/enterprise/remi-release-8.rpm \
   && dnf module enable php:remi-7.4 \
-  # フレームワークの要件のPHP拡張機能をインストール
+  `# フレームワークの要件のPHP拡張機能をインストール` \
   && dnf install -y \
       php \
       php-bcmath \
@@ -267,7 +267,7 @@ RUN rm -Rf /var/cache/yum
 ```dockerfile
 # ベースイメージ上に、複数のソフトウェアをインストール
 RUN yum -y install httpd php php-mbstring php-pear \
-&& rm -Rf /var/cache/dnf
+  && rm -Rf /var/cache/dnf
 ```
 
 加えて、これは以下の様にも書ける。
@@ -350,7 +350,7 @@ RUN apt-get update -y \
   && apt-get install -y \
      curl \
      vim \
-  # キャッシュ削除
+  `# キャッシュ削除` \
   && apt-get clean
 
 #===================

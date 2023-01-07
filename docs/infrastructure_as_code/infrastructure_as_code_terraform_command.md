@@ -237,11 +237,11 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 $ terraform init \
     -backend=true \
     -reconfigure \
-    # バケット名
+    `# バケット名` \
     -backend-config="bucket=prd-foo-tfstate-bucket" \
-    # ```.tfstate```ファイル名
+    `# .tfstateファイル名` \
     -backend-config="key=terraform.tfstate" \
-    # credentialsファイルのプロファイル名
+    `# credentialsファイルのプロファイル名` \
     -backend-config="profile=bar" \
     -backend-config="encrypt=true"
 ```
@@ -704,7 +704,7 @@ $ terraform plan \
 ```bash
 $ terraform plan \
     -var-file=foo.tfvars \
-    # 実行プランファイル名
+    `# 実行プランファイル名` \
     -out=foo.tfplan
 ```
 
