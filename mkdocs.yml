@@ -375,8 +375,8 @@ nav:
                   - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
               - ■ Sで始まるAWSリソース:
                   - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
-                  - S3: cloud_computing/cloud_computing_aws_resource_s.md
-                  - STS: cloud_computing/cloud_computing_aws_resource_s.md
+                  - S3: cloud_computing/cloud_computing_aws_resource_s_s3.md
+                  - STS: cloud_computing/cloud_computing_aws_resource_s_sts.md
                   - Systems Manager: cloud_computing/cloud_computing_aws_resource_s_systems_manager.md
               - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
               - ■ Vで始まるAWSリソース:
