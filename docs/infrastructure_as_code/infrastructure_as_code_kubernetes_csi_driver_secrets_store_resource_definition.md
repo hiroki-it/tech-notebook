@@ -26,10 +26,11 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 > ℹ️ 参考：https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
 ```bash
-$ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+$ helm repo add <リポジトリ名> https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+
 $ helm repo update
 
-$ helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver -n kube-system 
+$ helm install <リリース名> <リポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
 <br>

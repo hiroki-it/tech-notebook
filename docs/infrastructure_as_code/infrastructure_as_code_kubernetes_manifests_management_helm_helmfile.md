@@ -78,10 +78,41 @@ repository/
 
 ## 03. helmfile.dファイル
 
+### ```helmfile.d```ファイルとは
+
+```helm```コマンドを宣言的に定義する。
+
+チャートをインストールする時、ほとんどのチャートで以下のコマンドを実行することになる。
+
+```bash
+$ helm repo add <リポジトリ名> <URL>
+
+$ helm repo update
+
+$ kubectl create namespace <Namespace名>
+
+$ helm install <リリース名> <リポジトリ名>/<チャート名> -n <Namespace名> --version <バージョンタグ>
+```
+
+これを```helmfile.d```ファイルで定義すると、以下のようになる。
+
+```yaml
+repositories:
+  - name: <リポジトリ名>
+    url: <URL>
+
+releases:
+  - name: <リリース名>
+    namespace: <Namespace名>
+    chart: <リポジトリ名>/<チャート名>
+    version: <バージョンタグ>
+```
+
+<br>
+
 ### environments
 
 環境名のリストとして動作し、```helmfile```コマンド時に```helmfile.d```ファイル内に環境名を渡せる。
-
 
 
 > ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#environment-values
@@ -143,6 +174,8 @@ releases:
 リリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
 デフォルトで```true```になっており、リリース前にNamespaceを自動的に作成するようになっている。
+
+ただし、Namespaceので出どころがわからなくなるため、Helmfileの機能に頼らずにNamespaceのマニフェストを定義しておく方が良い。
 
 ```yaml
 releases:

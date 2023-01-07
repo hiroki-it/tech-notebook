@@ -266,7 +266,7 @@ spec:
 ```
 
 ```bash
-$ kubectl get fo
+$ kubectl get foo
 ```
 
 <br>

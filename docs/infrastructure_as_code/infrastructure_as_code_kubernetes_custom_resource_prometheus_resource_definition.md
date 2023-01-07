@@ -39,10 +39,13 @@ $ kubectl create -f bundle.yaml
 チャートとしてkube-prometheus-stackをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
 ```bash
-$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo add <リポジトリ名> https://prometheus-community.github.io/helm-charts
+
 $ helm repo update
 
-$ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
+$ kubectl create namespace prometheus
+
+$ helm install <リリース名> <リポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > ℹ️ 参考：

@@ -484,7 +484,7 @@ Error: failed to download "<チャートリポジトリ名>"
 
 
 ```bash
- $ helm repo index <チャートへのパス>
+$ helm repo index <チャートへのパス>
 ```
 
 

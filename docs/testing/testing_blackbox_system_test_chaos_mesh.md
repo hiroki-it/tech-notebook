@@ -44,11 +44,13 @@ GitHubリポジトリからchaos-meshチャートをインストールし、リ�
 > - https://github.com/chaos-mesh/charts
 
 ```bash
-$ helm repo add chaos-mesh https://charts.chaos-mesh.org
+$ helm repo add <リポジトリ名> https://charts.chaos-mesh.org
+
 $ helm repo update
 
 $ kubectl create namespace chaos-testing
-$ helm install chaos-mesh chaos-mesh/chaos-mesh -n chaos-testing -f values.yaml
+
+$ helm install chaos-mesh <リポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
 ```
 
 <br>

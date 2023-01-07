@@ -27,10 +27,14 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 
 ```bash
-$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm repo add <リポジトリ名> https://grafana.github.io/helm-charts
+
 $ helm repo update
 
-$ helm install grafana grafana/grafana -n grafana -f values.yaml
+$ kubectl create namespace prometheus
+
+# Prometheusと連携するために、Prometheusと同じNamespaceにインストールする。
+$ helm install <リリース名> <リポジトリ名>/grafana -n prometheus --version <バージョンタグ>
 ```
 
 > ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
@@ -39,10 +43,13 @@ $ helm install grafana grafana/grafana -n grafana -f values.yaml
 Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
 ```bash
-$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo add <リポジトリ名> https://prometheus-community.github.io/helm-charts
+
 $ helm repo update
 
-$ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
+$ kubectl create namespace prometheus
+
+$ helm install <リリース名> <リポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
 > ℹ️ 参考：

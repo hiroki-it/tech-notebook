@@ -73,16 +73,19 @@ Google-APIsから、Istioのコンポーネント別にチャートをインス�
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/helm/#installation-steps
 
 ```bash
-$ helm repo add istio https://istio-release.storage.googleapis.com/charts
+$ helm repo add <リポジトリ名> https://istio-release.storage.googleapis.com/charts
+
 $ helm repo update
+
+$ kubectl create namespace istio-system
 
 # 共通部分（IstioBase）のみ
 # baseチャート
-$ helm install -n istio-system istio-base istio/base
+$ helm install <リリース名> <リポジトリ名>/base -n istio-system --version <バージョンタグ>
 
 # Istiodのみ
 # istiodチャート
-$ helm install -n istio-system istiod istio/istiod
+$ helm install <リリース名> <リポジトリ名>/istiod -n istio-system --version <バージョンタグ>
 ```
 
 IngressGatewayのインストールは必須ではない。
@@ -92,7 +95,7 @@ IngressGatewayのインストールは必須ではない。
 ```bash
 # IngressGatewayのみ
 # gatewayチャート
-$ helm install -n istio-system istio-ingressgateway istio/gateway
+$ helm install <リリース名> <リポジトリ名>/gateway -n istio-system --version <バージョンタグ>
 ```
 
 <br>

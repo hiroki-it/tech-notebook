@@ -15,7 +15,25 @@ description: リソース定義＠CertManagerの知見を記録しています�
 
 <br>
 
-## 01. Certificate
+## 01. セットアップ
+
+### チャートとして
+
+```bash
+$ helm repo add <リポジトリ名> https://charts.jetstack.io
+
+$ helm repo update
+
+$ kubectl create namespace cert-manager
+
+$ helm install <リリース名> <リポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
+```
+
+> ℹ️ 参考：https://cert-manager.io/docs/installation/helm/#steps
+
+<br>
+
+## 02. Certificate
 
 ### Certificateとは
 
@@ -119,7 +137,7 @@ spec:
 
 <br>
 
-## 02. CertificateRequest
+## 03. CertificateRequest
 
 ### CertificateRequestとは
 
@@ -234,7 +252,7 @@ spec:
 
 <br>
 
-## 03.ClusterIssuer
+## 04.ClusterIssuer
 
 ### ClusterIssuerとは
 
@@ -326,7 +344,7 @@ spec:
 
 <br>
 
-## 04. Issuer
+## 05. Issuer
 
 ### Issuerとは
 

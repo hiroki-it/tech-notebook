@@ -278,24 +278,27 @@ $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_expo
 Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 
 ```bash
-$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo add <リポジトリ名> https://prometheus-community.github.io/helm-charts
+
 $ helm repo update
+
+$ kubectl create namespace prometheus
 
 # 一括の場合
 # https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-$ helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
+$ helm install <リリース名> <リポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 
 # node-exporterの場合
 # https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
-$ helm install prometheus-node-exporter prometheus-community/prometheus-node-exporter -n prometheus -f values.yaml
+$ helm install <リリース名> <リポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 
 # kube-state-metricsの場合
 # https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
-$ helm install kube-state-metrics prometheus-community/kube-state-metrics -n prometheus -f values.yaml
+$ helm install <リリース名> <リポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
 
 # mysql-exporterの場合
 # https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
-$ helm install prometheus-mysql-exporter prometheus-community/prometheus-mysql-exporter -n prometheus -f values.yaml
+$ helm install <リリース名> <リポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
 <br>

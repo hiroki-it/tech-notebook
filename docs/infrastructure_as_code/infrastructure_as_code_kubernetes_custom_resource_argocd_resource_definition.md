@@ -21,13 +21,28 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 #### ▼ 非チャートとして
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
-
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+
+#### ▼ チャートとして
+
+```bash
+$ helm repo add <リポジトリ名> https://argoproj.github.io/argo-helm
+
+$ helm repo update
+
+$ kubectl create namespace argocd
+
+$ helm install <リリース名> <リポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
+```
+
+> ℹ️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
 
 <br>
+
 
 ### アンインストール
 
@@ -35,24 +50,28 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 
 ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDのApplication自体と、Application配下のリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
 
+```bash
+$ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
+```
+
+
 > ℹ️ 参考：
 >
 > - https://argo-cd.readthedocs.io/en/stable/faq/
 > - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
-```bash
-$ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
-```
 
 #### ▼ ```kubectl```コマンドを使用して
 
 ArgoCDのApplicationを削除する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 ```bash
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+
 
 <br>
 

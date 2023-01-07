@@ -79,7 +79,7 @@ IstioOperatorのチャートをインストールし、リソースを作成す�
 > - https://tech.griphone.co.jp/2020/12/12/istio-operator-101/
 
 ```bash
-$ helm install istio-operator manifests/charts/istio-operator -n istio-operator -f values.yaml
+$ helm install <リリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
 ```
 
 <br>

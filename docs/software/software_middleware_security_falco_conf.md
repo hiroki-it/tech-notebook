@@ -24,10 +24,13 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 > ℹ️ 参考：https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
 
 ```bash
-$ helm repo add falcosecurity https://falcosecurity.github.io/charts
+$ helm repo add <リポジトリ名> https://falcosecurity.github.io/charts
+
 $ helm repo update
 
-$ helm install falco falcosecurity/falco
+$ kubectl create namespace falco
+
+$ helm install <リリース名> <リポジトリ名>/falco -n falco --version <バージョンタグ>
 ```
 
 <br>

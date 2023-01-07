@@ -122,9 +122,8 @@ RUN make -C /usr/src/things all
 
 ```dockerfile
 RUN mkdir -p /usr/src/things \
-    && curl -SL http://example.com/big.tar.xz \
-    | tar -xJC /usr/src/things \
-    && make -C /usr/src/things all
+  && curl -SL http://example.com/big.tar.xz | tar -xJC /usr/src/things \
+  && make -C /usr/src/things all
 ```
 
 <br>
