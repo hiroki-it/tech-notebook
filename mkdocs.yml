@@ -285,6 +285,7 @@ nav:
                   - コマンド: language/language_python_framework_flask_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
+      - R: language/language_r.md
 
   - 🧪 テスト:
       - testing/index.md
@@ -374,8 +375,8 @@ nav:
                   - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
               - ■ Sで始まるAWSリソース:
                   - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
-                  - S3: cloud_computing/cloud_computing_aws_resource_s.md
-                  - STS: cloud_computing/cloud_computing_aws_resource_s.md
+                  - S3: cloud_computing/cloud_computing_aws_resource_s_s3.md
+                  - STS: cloud_computing/cloud_computing_aws_resource_s_sts.md
                   - Systems Manager: cloud_computing/cloud_computing_aws_resource_s_systems_manager.md
               - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
               - ■ Vで始まるAWSリソース:
@@ -429,13 +430,13 @@ nav:
               - ■ Kubernetes:
                   - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
                   - ■ コントロールプレーンコンポーネント:
-                      コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
-                      アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
+                      - コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
                   - ■ Nodeコンポーネント:
-                      Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
-                      アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
+                      - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
                   - クラウドプロバイダーアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon.md
-              - ネットワーク:
+              - ■ ネットワーク:
                   - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
                   - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
@@ -469,6 +470,7 @@ nav:
                   - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
                   - ■ ArgoCD:
                       - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
                       - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
@@ -586,7 +588,3 @@ nav:
       - ■ Git:
           - コマンド: version_control/version_control_git_command.md
           - GitHub: version_control/version_control_git_github.md
-
-  - 📊 統計分析:
-      - statistic_analysis/index.md
-      - R: statistic_analysis/statistic_analysis_r.md

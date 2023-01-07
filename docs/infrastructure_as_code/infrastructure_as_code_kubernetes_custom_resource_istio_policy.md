@@ -75,7 +75,7 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 
 #### ▼ マイクロサービスごとに作成する
 
-単一障害点になることを防ぐために、一つのIngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
+単一障害点になることを防ぐために、```1```個のIngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
 
 
 
@@ -143,7 +143,7 @@ spec:
 
 これにより、ダウンタイムなしでサブセットを追加できる。
 
-DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返却してしまう。
+DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、```503```ステータスを返信してしまう。
 
 DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。
 

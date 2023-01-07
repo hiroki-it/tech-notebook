@@ -91,12 +91,16 @@ environments:
   dev:
   prd:
 
+repositories:
+  - name: foo-repository
+    url: https://github.com/hiroki.hasegawa/foo-repository
+
 releases:
   - name: foo
-    chart: ./foo-chart
+    chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      - {{ .Environment.Name }}-values.yaml
+      - values-{{ .Environment.Name }}.yaml
 ```
 
 ```bash
@@ -138,7 +142,7 @@ releases:
 
 リリース時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
-
+デフォルトで```true```になっており、リリース前にNamespaceを自動的に作成するようになっている。
 
 ```yaml
 releases:
@@ -150,10 +154,9 @@ releases:
 リリース対象のチャートへのパスを設定する。
 
 
-
 ```yaml
 releases:
-  - chart: ./foo-chart
+  - chart: <リポジトリ名>/foo-chart
 ```
 
 #### ▼ version
@@ -190,7 +193,7 @@ Helmの実行時に複合化するSecretのファイルを設定する。
 
 ```yaml
 secrets:
-      - ./foo-secrets.yaml
+  - ./foo-secrets.yaml
 ```
 
 <br>
@@ -199,13 +202,20 @@ secrets:
 
 #### ▼ name
 
-チャートリポジトリ名を設定する。
+チャートリポジトリ名を設定する。ここで設定したリポジトリ名は、```releases[].chart```キーでも使用する。
 
 
 
 ```yaml
 repositories:
   - name: foo-repository
+
+releases:
+  - name: foo
+    chart: <リポジトリ名>/foo-chart
+    version: <バージョンタグ>
+    values:
+      - values.yaml
 ```
 
 #### ▼ url
@@ -217,6 +227,13 @@ repositories:
 ```yaml
 repositories:
   - url: https://kubernetes.github.io/ingress-nginx
+
+releases:
+  - name: foo
+    chart: ingress-nginx/foo-chart
+    version: <バージョンタグ>
+    values:
+      - values.yaml
 ```
 
 <br>

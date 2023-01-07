@@ -290,25 +290,37 @@ th, td {
  コードブロック
 ***************/
 
+/*
+ 参考: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_scheme.scss#L48-L65
+ */
 .md-typeset pre code {
+    /* インラインはそのままに、コードハイライト部分のみ色を変更する。*/
+    --md-code-fg-color:                hsla(232, 18%, 86%, 1);
+
     /* コードブロックの背景色 */
     /* 文字色はpygmentsで設定 */
-    --md-code-bg-color: #f5f5f5;
+    --md-code-bg-color:                hsla(232, 15%, 15%, 1);
 
-    /* インラインはそのままに、コードハイライト部分のみ色を変更する。*/
-    --md-code-fg-color: #313131;
-
-    /* コメントアウトの色 */
-    --md-code-hl-comment-color: #6495ed;
+    --md-hue: 232;
+    --md-code-hl-color:                hsla(#{hex2hsl($clr-blue-a200)}, 0.15);
+    --md-code-hl-number-color:         hsla(6, 100%, 63%, 1);
+    --md-code-hl-special-color:        hsla(340, 100%, 66%, 1);
+    --md-code-hl-function-color:       hsla(291, 100%, 65%, 1);
 
     /* bool値の色 */
-    --md-code-hl-constant-color: #800080;
-
-    /* string値の色 */
-    --md-code-hl-string-color: #b75d00;
+    --md-code-hl-constant-color:       hsla(250, 100%, 70%, 1);
 
     /* キーの色 */
-    --md-code-hl-keyword-color: #0033FFFF;
+    --md-code-hl-keyword-color: hsl(220, 97%, 72%);;
+
+    /* string値の色 */
+    --md-code-hl-string-color:         hsla(150, 100%, 44%, 1);
+    --md-code-hl-name-color:           hsla(232, 18%, 86%, 1);
+    --md-code-hl-operator-color:       hsla(232, 18%, 86%, 1);
+    --md-code-hl-punctuation-color:    hsla(232, 18%, 86%, 1);
+    --md-code-hl-comment-color:        hsla(232, 100%, 90%, 0.62);
+    --md-code-hl-generic-color:        hsla(232, 18%, 86%, 1);
+    --md-code-hl-variable-color:       hsla(232, 18%, 86%, 1);
 
     /* コードブロック枠線 */
     border: 0.1em solid black;
@@ -319,7 +331,7 @@ th, td {
 
 .md-typeset pre {
     /* コードブロックの文字サイズ */
-    font-size: 1.18em;
+    font-size: 1.25em;
 }
 
 /*

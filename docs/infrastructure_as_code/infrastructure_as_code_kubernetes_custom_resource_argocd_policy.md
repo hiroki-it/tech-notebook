@@ -68,6 +68,7 @@ k8s-repository/
 
 > ℹ️ 参考：
 > 
+> - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 

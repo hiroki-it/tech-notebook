@@ -17,9 +17,9 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 ## 01. セットアップ
 
-### チャートとして
+### インストール
 
-#### ▼ GCRから
+#### ▼ チャートとして
 
 ```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。
 
@@ -65,7 +65,7 @@ $ kubectl apply -f istio-operator.yaml
 istiooperator.install.istio.io/istio-operator created
 ```
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
 IstioOperatorのチャートをインストールし、リソースを作成する。
 
@@ -301,13 +301,11 @@ metadata:
     release: istio
   name: istio-ingressgateway
   namespace: istio-system
-  resourceVersion: "322999"
-  uid: 7c292753-6219-4e4b-bd81-9012fabb97b3
 spec:
   allocateLoadBalancerNodePorts: true
-  clusterIP: 10.108.30.158
+  clusterIP: *.*.*.*
   clusterIPs:
-  - 10.108.30.158
+  - *.*.*.*
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -337,7 +335,7 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - ip: 10.108.30.158
+    - ip: *.*.*.*
 ```
 
 #### ▼ istiodRemote

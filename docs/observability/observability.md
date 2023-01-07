@@ -420,6 +420,22 @@ JSON型で表すが、拡張子が```json```であるというわけでないこ
 
 <br>
 
+### 分散トレースの用途
+
+#### ▼ 通信速度の最適化
+
+分散トレースを収集すると、マイクロサービス間の通信速度を可視化できる。
+
+特定のマイクロサービス間で通信速度が低ければ、その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、パフォーマンスに問題がないかを調査する必要がある。
+
+![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_connection-time.png)
+
+> ℹ️ 参考：https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+
+
+
+<br>
+
 ### 分散トレースID
 
 #### ▼ IDの種類

@@ -19,13 +19,13 @@ description: コマンド＠Istioの知見を記録しています。
 
 ### インストール
 
-#### ▼ brewリポジトリから
+#### ▼ バイナリとして
 
 ```bash
 $ brew install istioctl
 ```
 
-#### ▼ GitHubリポジトリから
+#### ▼ チャートとして
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
@@ -35,7 +35,7 @@ $ brew install istioctl
 $ cd /Users/hiroki.hasegawa/projects
 ```
 
-（２）GitHubリポジトリから、```istioctl```コマンドインストールする。
+（２）```istioctl```コマンドをインストールする。
 
 ```bash
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
@@ -308,7 +308,7 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 
 
 ```bash
-# 返却されたYAMLから、1番目の項目だけ取得する。
+# 返信されたYAMLから、1番目の項目だけ取得する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o yaml | yq
 ```
 

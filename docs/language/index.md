@@ -93,3 +93,10 @@
   > * ##### 📖 [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_python_package_management.html)
 
 <br>
+
+### R
+
+* #### 📖 [︎R](https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_r.html)
+
+<br>
+

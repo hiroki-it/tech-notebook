@@ -499,14 +499,10 @@ KillSignal=SIGCONT
 PrivateTmp=true
 ```
 
-環境変数ファイル（```EnvironmentFile```）は、```.env```ファイルと同じような形式のものを作成する。
-
-
+```EnvironmentFile```として使用する```sysconfig```ファイルには、```.env```ファイルと同じような形式のものを作成する。
 
 ```bash
-FOO=foo
-BAR=bar
-BAZ=baz
+OPTIONS=foo
 ```
 
 #### ▼ Installセクション

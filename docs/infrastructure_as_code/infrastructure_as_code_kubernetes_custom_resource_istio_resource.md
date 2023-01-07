@@ -83,17 +83,17 @@ spec:
   # ルーティング先のPodのポート番号が設定される。
   ports:
     - name: http-foo
-      nodePort: 443
+      nodePort: 30001
       port: 443
       protocol: TCP
       targetPort: 443
     - name: http-bar
-      nodePort: 3000
+      nodePort: 30002
       port: 3000
       protocol: TCP
       targetPort: 3000
     - name: http-baz
-      nodePort: 9090
+      nodePort: 30003
       port: 9090
       protocol: TCP
       targetPort: 9090

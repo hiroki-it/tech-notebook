@@ -245,7 +245,7 @@ $ diskutil list
 
 ![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/logical-volume.png)
 
-異なる物理ボリュームにまたがる領域を組み合わせ、一つの仮想的なボリュームとした扱ったもの。
+異なる物理ボリュームにまたがる領域を組み合わせ、```1```個の仮想的なボリュームとした扱ったもの。
 
 
 

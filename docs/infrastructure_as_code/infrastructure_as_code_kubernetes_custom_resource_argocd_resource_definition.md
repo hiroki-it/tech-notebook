@@ -19,163 +19,13 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 ### インストール
 
-#### ▼ 共通の手順
-
-> ℹ️ 参考：
->
-（１）ローカルマシンから本番環境にArgoCDをインストールする場合、```kubectl```コマンドのコンテキストを間違える可能性がある。そのため、```kubectl```コマンド専用の踏み台サーバーを用意してもよい。EKSのコンテキストを作成し、```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
-
-```bash
-$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
-$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
-```
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
-> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
-> - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
-> - http://linuxcommand2007.seesaa.net/article/476794217.html
-
-（２）ArgoCDが稼働するNamespaceを作成する。
-
-```bash
-$ kubectl create namespace argocd
-```
-
-（３）マニフェストを指定し、kube-apiserverに送信する。
+#### ▼ 非チャートとして
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-# applyされたことを確認する。
-$ kubectl get all -n argocd
 ```
-
-（４）LoadBalancer Serviceを使用して、ArgoCDダッシュボードを公開する。
-
-```bash
-$ kubectl patch service argocd-server \
-    -n argocd \
-    -p '{"spec": {"type": "LoadBalancer"}}'
-```
-
-（５）Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
-
-```bash
-$ kubectl get secret argocd-initial-admin-secret \
-    -n argocd \
-    -o jsonpath="{.data.password}" | base64 -d; echo
-```
-
-（６）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
-
-
-```bash
-# Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
-# ホストポートを介してPodのポートにアクセスする。
-$ curl http://127.0.0.1:8080
-```
-
-#### ▼ ```argocd```コマンドを使用して
-
-（７）```argocd```コマンドをインストールする。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
-
-```bash
-$ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-$ chmod +x /usr/local/bin/argocd
-```
-
-（８）ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
-
-```bash
-$ argocd login 127.0.0.1:8080
-
-Username: admin
-Password: *****
-'admin:login' logged in successfully
-```
-
-（９）ArgoCDのアプリケーションを作成する。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
-
-```bash
-$ argocd app create guestbook \
-    --project default \
-    --repo https://github.com/hiroki-hasegawa/foo-manifests.git \
-    --revision main \
-    --dest-server https://kubernetes.default.svc \
-    --dest-namespace foo-namespace \
-    --auto-prune \
-    --self-heal \
-    --sync-option CreateNamespace=true
-```
-
-（１０）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象リポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのapplyにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがapplyを行なっていることに注意する。
-
-```bash
-$ argocd app sync guestbook --dry-run
-```
-
-（１１）自動Syncを有効化する。
-
-```bash
-$ argocd app set guestbook --sync-policy automated
-```
-
-（１２）クラウドプロバイダーのコンテナイメージレジストリやチャートレジストリを採用している場合は、ログインが必要になる。
-
-> ℹ️ 参考：
->
-> - https://medium.com/@Technorite
-> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-
-```bash
-# ECRのチャートをプルする場合
-$ argocd repo add oci://<チャートレジストリ名> \
-    --type helm \
-    --name <チャートリポジトリ名> \
-    --enable-oci \
-    --username AWS \
-    --password $(aws ecr get-login-password --region ap-northeast-1)
-```
-
-#### ▼ マニフェスト経由
-
-（７）```argocd```コマンドの代わりとして、マニフェストでArgoCDを操作しても良い。
-
-```bash
-$ kubectl apply -f application.yaml
-```
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  namespace: argocd
-  name: foo-application
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-    targetRevision: main
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: foo-namespace
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-```
-
 
 <br>
 
@@ -198,8 +48,6 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 
 ArgoCDのApplicationを削除する。
 
-
-
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 ```bash
@@ -208,329 +56,138 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
-### 開発環境での動作確認
+## 01-02. ダッシュボード
 
-#### ▼ 別のapplyツールを使用する
+### ネットワークに公開しない場合
 
-実装が複雑になることを避けるため、開発環境に対するapplyには、ArgoCD以外のツールを使用する。
+#### ▼ ```kubectl```コマンドを使用して
 
-
-
-（例）
-
-- Skaffold
-
-#### ▼ ローカルマシンを監視
-
-ローカルマシンのディレクトリをリポジトリとして監視する。
-
-あらかじめ、リポジトリの自動プルの設定を無効化しておく必要がある。
-
-
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+（１）既存のServiceをLoadBalancer Serviceに変更する。
 
 ```bash
- $ argocd app sync <ArgoCDのアプリケーション名> --local=<ディレクトリへのパス>
+$ kubectl patch service argocd-server \
+    -n argocd \
+    -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+（２）Kubernetes上のArgoCDダッシュボードのパスワードを取得する。
+
+```bash
+$ kubectl get secret argocd-initial-admin-secret \
+    -n argocd \
+    -o jsonpath="{.data.password}" | base64 -d; echo
+```
+
+（３）```443```番ポートにルーティングできるロードバランサーを作成する。この時、IngressとIngressコントローラーを作成するか、```kubectl port-forward```コマンドなど実行することにより、ダッシュボードにアクセスする。```minikube tunnel```ではポート番号を指定できないことに注意する。
+
+
+```bash
+# Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
+# ホストポートを介してPodのポートにアクセスする。
+$ curl http://127.0.0.1:8080
+```
+
+#### ▼ ```argocd```コマンドを使用して
+
+（１）```argocd```コマンドをインストールする。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/cli_installation/
+
+```bash
+$ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+$ chmod +x /usr/local/bin/argocd
+```
+
+（２）ArgoCDにログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
+
+```bash
+$ argocd login 127.0.0.1:8080
+
+Username: admin
+Password: *****
+'admin:login' logged in successfully
 ```
 
 <br>
 
-## 01-02. リポジトリの認証認可
+### ネットワークに公開する場合
 
-### Secret
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 
-#### ▼ argocd.argoproj.io/secret-type
+Nodeの外からArgoCDのダッシュボードをネットワークに公開する場合、Node外からargocd-serverにインバウンド通信が届くようにする必要がある。
 
-設定値は```repository```とする。
+> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 
-監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+**＊実装例＊**
 
+Ingressを作成する。
 
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  namespace: argocd
+  name: argocd-ingress
+spec:
+  rules:
+    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    - host: foo.argocd.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+IngressClassを作成する。
 
-<br>
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
+```
 
-### マニフェストリポジトリの場合
-
-#### ▼ 注意点
-
-マニフェストリポジトリの認証情報を設定する。
-
-マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
-
-ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
-
-
-
-> ℹ️ 参考：
-> 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
-> - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
-
-#### ▼ Basic認証の場合
-
-Basic認証に必要なユーザー名とパスワードを設定する。
-
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
+ClusterIP Serviceを作成する。
 
 
 ```yaml
-# 他と異なるマニフェストリポジトリ
 apiVersion: v1
-kind: Secret
+kind: Service
 metadata:
   namespace: argocd
-  name: foo-argocd-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
-  type: git
-  # Basic認証に必要なユーザー名とパスワードを設定する。
-  username: foo
-  password: bar
----
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # Basic認証に必要なユーザー名とパスワードを設定する。
-  username: foo
-  password: bar
+  name: foo-argocd-service
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http-foo
+      nodePort: 31000
+      port: 80
+      protocol: TCP
+    - name: https-foo
+      nodePort: 31001
+      port: 443
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: foo-argocd
+  sessionAffinity: None
+  type: ClusterIP
 ```
-
-#### ▼ SSHの場合
-
-SSHに必要な秘密鍵を設定する。
-
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-
-```yaml
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
-  type: git
-  # SSHに必要な秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
----
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # SSHに必要な秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
-```
-
-#### ▼ OIDCの場合
-
-OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppを作成すると発行される）を設定する。
-
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
-
-```yaml
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # OIDCに必要なIDやトークンを設定する。
-  oidc.config: |
-    name: keycloak
-    clientID: foo-oidc
-    clientSecret: *****
-    requestedScopes: ["openid", "profile", "email", "groups"]
-    requestedIDTokenClaims: {"groups": {"essential": true}}
----
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
-  type: git
-  # OIDCに必要なIDやトークンを設定する。
-  oidc.config: |
-    name: keycloak
-    clientID: foo-oidc
-    clientSecret: *****
-    requestedScopes: ["openid", "profile", "email", "groups"]
-    requestedIDTokenClaims: {"groups": {"essential": true}}
-```
-
-<br>
-
-### チャートリポジトリの場合
-
-#### ▼ 注意点
-
-チャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
-
-ただし、監視する複数のリポジトリが、全て```1```個のチャートレジストリ内にある場合は、Secretは```1```個でよい。
-
-
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-#### ▼ Basic認証の場合
-
-Basic認証に必要なユーザー名とパスワードを設定する。
-
-ここでは、チャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-
-```yaml
-# 他と異なるチャートリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-repository # 任意のチャートリポジトリ名
-  url: https://storage.googleapis.com/foo-kubernetes # チャートリポジトリのURL
-  type: helm
-  username: foo
-  password: bar
----
-# 他と異なるチャートリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-repository # 任意のチャートリポジトリ名
-  url: https://storage.googleapis.com/foo-istio # チャートリポジトリのURL
-  type: helm
-  username: baz
-  password: qux
-```
-
-<br>
-
-### OCIリポジトリの場合
-
-#### ▼ 注意点
-
-OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。
-
-チャートリポジトリと同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
-
-ただし、監視する複数のリポジトリが、全て```1```個のOCIレジストリ内にある場合は、Secretは```1```個でよい。
-
-
-
-> ℹ️ 参考：
->
-> - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
-
-#### ▼ Basic認証の場合
-
-Basic認証に必要なユーザー名とパスワードを設定する。
-
-ここでは、OCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-
-```yaml
-# 他と異なるOCIリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
-  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
-  type: helm
-  username: foo
-  password: bar
-  enableOCI: "true" # OCIリポジトリを有効化する。
----
-# 他と異なるOCIリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-istio-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-istio-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
-  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
-  type: helm
-  username: baz
-  password: qux
-  enableOCI: "true" # OCIリポジトリを有効化する。
-```
-
-AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
-
-> ℹ️ 参考：
->
-> - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
-> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-> - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
 
 <br>
 
@@ -545,9 +202,10 @@ Kubernetesのカスタムリソースから定義される。
 
 監視対象のKubernetesリソースやカスタムリソースを設定する。
 
-
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
+> ℹ️ 参考：
+> 
+> - https://github.com/argoproj/argo-cd/blob/master/manifests/crds/application-crd.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
 
 #### ▼ 自己監視
 
@@ -1026,7 +684,7 @@ metadata:
 spec:
   source:
     # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
-    repoURL: https://github.com/hiroki.hasegawa/helm-charts
+    repoURL: https://github.com/hiroki.hasegawa/foo-repository
 ```
 
 #### ▼ targetRevision
@@ -1296,7 +954,7 @@ spec:
 
 Applicationの責務境界をProjectとして管理する。
 
-
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
 
 ### sourceRepos
 
@@ -1368,136 +1026,8 @@ spec:
 
 <br>
 
-## 05. 専用ConfigMap
 
-### data.resource.customizations
-
-#### ▼ ignoreDifferences.all
-
-ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
-
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-cm
-  labels:
-    app.kubernetes.io/name: argocd-cm
-    app.kubernetes.io/part-of: argocd
-data:
-  resource.customizations.ignoreDifferences.all: |
-    jsonPointers:
-        # spec.replicas（インスタンス数）の設定値の変化を無視する。
-        - /spec/replicas
-    jqPathExpressions:
-        # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
-        - /spec/metrics
-```
-
-<br>
-
-## 06. 専用Job
-
-### metadata
-
-#### ▼ generateName
-
-```Sync```フェーズフック名を設定する。
-
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  generateName: foo-hook
-```
-
-<br>
-
-### metadata.annotations
-
-#### ▼ argocd.argoproj.io/hook
-
-フックを設定する```Sync```フェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
-
-
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail # Sync失敗時
-```
-
-#### ▼ argocd.argoproj.io/sync-wave
-
-同じ```Sync```フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。
-
-正負の数字を設定でき、数字が小さい方が優先される。
-
-優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
-
-
-
-> ℹ️ 参考：
->
-> - https://weseek.co.jp/tech/95/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される。）
-```
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
-```
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 1 # 優先度1
-```
-
-<br>
-
-## 07. Rollout
+## 05. Rollout
 
 ### spec.analysis
 
@@ -1625,7 +1155,7 @@ spec:
 
 <br>
 
-## 08. Workflow
+## 06 Workflow
 
 ### spec.entrypoint
 
@@ -1641,6 +1171,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   entrypoint: foo-template
@@ -1664,6 +1195,7 @@ WorkflowTemplateとして切り分けても良い。
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   entrypoint: foo-template
@@ -1692,6 +1224,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
+  namespace: argocd
   generateName: foo-workflow
 spec:
   workflowTemplateRef:
@@ -1700,7 +1233,7 @@ spec:
 
 <br>
 
-## 09. WorkflowTemplate
+## 07. WorkflowTemplate
 
 ### spec.templates
 
@@ -1716,6 +1249,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
+  namespace: argocd
   name: hello-world-workflow-template
 spec:
   templates:
@@ -1738,6 +1272,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
+  namespace: argocd
   name: hello-world-workflow-template
 spec:
   templates:
@@ -1755,7 +1290,7 @@ spec:
 
 <br>
 
-## 10. ArgoCD Notification
+## 08. ArgoCD Notification
 
 ### セットアップ
 
@@ -1781,7 +1316,10 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notification-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   trigger.on-sync-status-unknown: |
     - when: app.status.sync.status == 'Unknown'
@@ -1807,7 +1345,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   service.slack: |
     token: *****
@@ -1825,7 +1366,10 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: argocd
   name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
 data:
   context: |
     env: prd
@@ -1836,3 +1380,593 @@ data:
 
 <br>
 
+
+## 09. 専用ConfigMap
+
+### 専用ConfigMapとは
+
+ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
+
+ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
+
+| Kubernetesリソース名               | 説明                                                                                                                                |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ```argocd-cm```                | ArgoCDの各コンポーネントで共通する値を設定する。                                                                                                   |
+| ```argocd-cmd-params-cm```     | ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。                                  |
+| ```argocd-rbac-cm```           | ArgoCDのKubernetesリソースで使用するRBACを設定する。                                                                                            |
+| ```argocd-tls-cets-cm```       | リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。                                                                     |
+| ```argocd-ssh-nown-hosts-cm``` | リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。 |
+
+実装例は以下を参考にせよ。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+
+
+<br>
+
+### data.resource.customizations
+
+#### ▼ ignoreDifferences.all
+
+ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+      # spec.replicas（インスタンス数）の設定値の変化を無視する。
+      - /spec/replicas
+    jqPathExpressions:
+      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+      - /spec/metrics
+```
+
+<br>
+
+### data.repositories
+
+ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+
+<br>
+
+### data.ssh_known_hosts
+
+#### ▼ ssh_known_hosts
+
+SSHプロトコルでリポジトリを監視する場合に、リポジトリの秘密鍵を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-ssh-known-hosts-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB ...
+    github.com ecdsa-sha2-nistp256 AAAAE ...
+    github.com ssh-ed25519 AAAAC ...
+    github.com ssh-rsa AAAAB ...
+    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
+    gitlab.com ssh-ed25519 AAAAC ...
+    gitlab.com ssh-rsa AAAAB ...
+    ssh.dev.azure.com ssh-rsa AAAAB ...
+    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
+```
+
+<br>
+
+
+## 10. 専用Role
+
+ArgoCDのコンポーネント（application-controller、argocd-server、repo-server、dex-server）によっては、kube-apiserverにリクエストを送信する必要がある。
+
+そのため、コンポーネントに紐づけるためのRoleを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: argocd
+  name:  argocd-application-controller
+  labels:
+    app.kubernetes.io/part-of: argocd
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - applications
+      - appprojects
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - list
+```
+
+<br>
+
+
+## 11. 専用RoleBinding
+
+ServiceAccountとRoleを紐づけるために、RoleBindingを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: argocd
+  name: argocd-argocd-repo-server
+  labels:
+    app.kubernetes.io/part-of: argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argocd-application-controller
+subjects:
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: argocd
+```
+
+<br>
+
+
+## 12. 専用Job
+
+### metadata
+
+#### ▼ generateName
+
+```Sync```フェーズフック名を設定する。
+
+
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  generateName: foo-hook
+```
+
+<br>
+
+### metadata.annotations
+
+#### ▼ argocd.argoproj.io/hook
+
+フックを設定する```Sync```フェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail # Sync失敗時
+```
+
+#### ▼ argocd.argoproj.io/sync-wave
+
+同じ```Sync```フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。
+
+正負の数字を設定でき、数字が小さい方が優先される。
+
+優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+
+
+
+> ℹ️ 参考：
+>
+> - https://weseek.co.jp/tech/95/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 1 # 優先度1
+```
+
+<br>
+
+
+
+## 13. 専用Secret
+
+### 専用Secret
+
+ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
+
+| Kubernetesリソース名               | 説明                                                                |
+|--------------------------------|-------------------------------------------------------------------|
+| ```***-repo```、```***-creds``` | プライベートリポジトリを監視する時に必要な認証情報を設定する。パブリックリポジトリの場合は、不要である。 |
+| ```argocd-secret```            | ArgoCDにログインするためのユーザ名とパスワードを設定する。                                 |
+
+
+実装例は、以下を参考にせよ。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+
+<br>
+
+### metadata.labels
+
+#### ▼ argocd.argoproj.io/secret-type
+
+設定値は```repository```とする。
+
+監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+
+<br>
+
+### マニフェストリポジトリの場合
+
+#### ▼ 注意点
+
+マニフェストリポジトリの認証情報を設定する。
+
+マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
+
+ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> - https://speakerdeck.com/satokota/2-argocdniyorugitopstodeployguan-li?slide=42
+
+#### ▼ Basic認証の場合
+
+Basic認証に必要なユーザー名とパスワードを設定する。
+
+ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+```yaml
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  # Basic認証に必要なユーザー名とパスワードを設定する。
+  username: foo
+  password: bar
+---
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # Basic認証に必要なユーザー名とパスワードを設定する。
+  username: foo
+  password: bar
+```
+
+#### ▼ SSHの場合
+
+SSHに必要な秘密鍵を設定する。
+
+ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+
+```yaml
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  type: git
+  # SSHに必要な秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIC2 ...
+---
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # SSHに必要な秘密鍵を設定する。
+  sshPrivateKey: |
+    MIIEp ...
+```
+
+#### ▼ OIDCの場合
+
+OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppを作成すると発行される）を設定する。
+
+ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
+
+```yaml
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    name: keycloak
+    clientID: foo-oidc
+    clientSecret: *****
+    requestedScopes: ["openid", "profile", "email", "groups"]
+    requestedIDTokenClaims: {"groups": {"essential": true}}
+---
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    name: keycloak
+    clientID: foo-oidc
+    clientSecret: *****
+    requestedScopes: ["openid", "profile", "email", "groups"]
+    requestedIDTokenClaims: {"groups": {"essential": true}}
+```
+
+<br>
+
+### チャートリポジトリの場合
+
+#### ▼ 注意点
+
+チャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
+
+ただし、監視する複数のリポジトリが、全て```1```個のチャートレジストリ内にある場合は、Secretは```1```個でよい。
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+#### ▼ Basic認証の場合
+
+Basic認証に必要なユーザー名とパスワードを設定する。
+
+ここでは、チャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+
+```yaml
+# 他と異なるチャートリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-repository # 任意のチャートリポジトリ名
+  url: https://github.com/hiroki.hasegawa/kubernetes-charts # チャートリポジトリのURL
+  type: helm
+  username: foo
+  password: bar
+---
+# 他と異なるチャートリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-repository # 任意のチャートリポジトリ名
+  url: https://github.com/hiroki.hasegawa/istio-charts # チャートリポジトリのURL
+  type: helm
+  username: baz
+  password: qux
+```
+
+<br>
+
+### OCIリポジトリの場合
+
+#### ▼ 注意点
+
+OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。
+
+チャートリポジトリと同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
+
+ただし、監視する複数のリポジトリが、全て```1```個のOCIレジストリ内にある場合は、Secretは```1```個でよい。
+
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/util/helm/cmd.go#L262
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
+> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+
+#### ▼ Basic認証の場合
+
+Basic認証に必要なユーザー名とパスワードを設定する。
+
+ここでは、OCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+
+```yaml
+# 他と異なるOCIリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-kubernetes-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-kubernetes-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  type: helm
+  username: foo
+  password: bar
+  enableOCI: "true" # OCIリポジトリを有効化する。
+---
+# 他と異なるOCIリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-istio-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-istio-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
+  type: helm
+  username: baz
+  password: qux
+  enableOCI: "true" # OCIリポジトリを有効化する。
+```
+
+AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
+> - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
+
+<br>
+
+
+## 14. 専用ServiceAccount
+
+ArgoCDのServiceAccountを作成する。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: argocd-application-controller
+  labels:
+    app.kubernetes.io/part-of: argocd
+automountServiceAccountToken: true
+secrets:
+  - name: argocd-application-controller-token-*****
+```
+
+<br>

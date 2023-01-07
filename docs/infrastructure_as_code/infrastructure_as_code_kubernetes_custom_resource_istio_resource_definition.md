@@ -17,9 +17,9 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ## 01. 全部入りセットアップ
 
-### チャートとして
+### インストール
 
-#### ▼ GCRから（設定済み）
+#### ▼ チャートとして
 
 ```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。
 
@@ -64,7 +64,7 @@ $ kubectl apply -f istio-operator.yaml
 
 ## 01-02. コンポーネント別セットアップ
 
-### チャートとして
+### インストール
 
 #### ▼ Google-APIsから
 
@@ -246,7 +246,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-app-namespace
+  name: app-namespace
   labels:
     istio-injection: enabled
 ```
@@ -260,14 +260,14 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-observability-namespace
+  name: observability-namespace
   labels:
     istio-injection: disabled
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-chaos-mesh-namespace
+  name: chaos-mesh-namespace
   labels:
     istio-injection: disabled
 ```
@@ -283,21 +283,21 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-app-namespace
+  name: app-namespace
   labels:
     istio.io/rev: 1-0-0 # ハイフン繋ぎのバージョン表記
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-observability-namespace
+  name: observability-namespace
   labels:
     istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: foo-chaos-mesh-namespace
+  name: chaos-mesh-namespace
   labels:
     istio-injection: disabled
 ```
@@ -722,7 +722,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: DISABLE # HTTP通信
+      mode: DISABLE # HTTPプロトコル
 ```
 
 ```yaml
@@ -1215,7 +1215,7 @@ kind: ServiceEntry
 metadata:
   name: foo-app-service-entry
 spec:
-  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
+  resolution: DNS # DNSサーバーから返信されたIPアドレスを許可する。
 ```
 
 <br>

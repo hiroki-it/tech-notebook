@@ -50,10 +50,10 @@ ENV TZ Asia/Tokyo
 COPY ./requirements.txt /var/www/foo/requirements.txt
 
 RUN apt-get update -y \
-  # uwsgiの要件をインストール。
+  `# uwsgiの要件をインストール。` \
   && apt-get install -y \
     gcc \
-  # uESGIの起動時にFlaskが必要なため、パッケージを先にインストール。
+  `# uESGIの起動時にFlaskが必要なため、パッケージを先にインストール。` \
   && pip install \
     --upgrade pip \
     -r requirements.txt

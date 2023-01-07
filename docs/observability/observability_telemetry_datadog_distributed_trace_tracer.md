@@ -89,9 +89,9 @@ ENV DD_TRACE_VERSION=0.63.0
 
 # GitHubリポジトリからパッケージをダウンロードする。
 RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
-  # パッケージをインストールする。
+  `# パッケージをインストールする。` \
   && dpkg -i datadog-php-tracer.deb \
-  # 残骸ファイルを削除する。
+  `# 残骸ファイルを削除する。` \
   && rm datadog-php-tracer.deb
 ```
 

@@ -158,8 +158,6 @@ IPアドレスやポート番号が動的に変化する対象を監視する。
 監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
 
 
-
-
 > ℹ️ 参考：
 > 
 > - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
@@ -179,6 +177,7 @@ scrape_configs:
   - job_name: node-exporter
     kubernetes_sd_configs:
       # Service配下のPodを対象とする。
+      # ingress、node、pod（Serviceに関連づけない）、service、がある。
       - role: endpoints
       # 特定のPodのみを監視対象とする。
       - source_labels:
@@ -259,9 +258,9 @@ receivers:
 
 ### セットアップ
 
-#### ▼ GitHubリポジトリから（バイナリとして）
+#### ▼ バイナリとして
 
-Node内でプロセスとしてnode-exporterを動かす場合、GitHubリポジトリから直接インストールし、リソースを作成する。
+Node内でプロセスとしてnode-exporterを動かす場合、チャートリポジトリから直接インストールし、リソースを作成する。
 
 ```bash
 # node-exporterの場合
@@ -274,7 +273,7 @@ $ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
 $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
 ```
 
-#### ▼ GitHubリポジトリから（チャートとして）
+#### ▼ チャートとして
 
 Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 

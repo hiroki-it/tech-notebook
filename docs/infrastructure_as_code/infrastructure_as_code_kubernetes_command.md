@@ -1211,6 +1211,12 @@ $ kubectl rollout restart deployment foo-deployment -n foo-namespace
 $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 ```
 
+```bash
+# StatefulSet配下のPodを再スケジューリングする。
+$ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
+```
+
+
 <br>
 
 ### patch

@@ -33,6 +33,34 @@ $ helm create <チャートへのパス>
 
 <br>
 
+### destory
+
+#### ▼ destoryとは
+
+指定したリリースでインストールされたチャートを削除する。
+
+
+```bash
+$ helm destory <リリース名>
+```
+
+
+Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
+
+そのため、```helm destory```コマンド時にはカスタムリソース定義を削除しない仕様になっている。
+
+カスタムリソース定義は手動で削除する必要がある。
+
+> ℹ️ 参考：https://github.com/helm/helm/issues/7418#issuecomment-581849772
+
+```bash
+$ kubectl get crd
+
+$ kubectl delete crd <カスタムリソース定義名>
+```
+
+<br>
+
 ### dependency
 
 #### ▼ build
@@ -100,7 +128,6 @@ REVISION     UPDATED                    STATUS     CHART               APP VERSI
 チャートへのパスを指定する以外にも、指定方法には種類がある。
 
 
-
 > ℹ️ 参考：https://helm.sh/docs/helm/helm_install/
 
 ```bash
@@ -114,6 +141,12 @@ $ helm install <リリース名> <チャートへのパス>
 | チャートリポジトリURL                                     | ```https://example.com/foo-chart```                             |                                                                                                                                             |
 | ```<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>``` | ```https://example.com/foo-chart foo-registry/foo-repository``` |                                                                                                                                             |
 | チャートアーカイブへのパス                                    | ```./foo-chart-<バージョンタグ>.tgz```                                 | ```values```ファイルを使用する場合、```values```ファイルはチャートアーカイブ（```.tgz```形式ファイル）の外にある必要がある。<br>ℹ️ 参考：https://helm.sh/docs/helm/helm_install/ |
+
+カスタムリソース定義を先にインストールせずに、カスタムリソースをインストールしようとすると、以下のエラーになる。
+
+```bash
+Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
+```
 
 #### ▼ --dry-run
 
@@ -692,7 +725,9 @@ $ helm uninstall foo-release
 
 指定したバージョンのチャートを使用して、リリースをアップグレードする。
 
+Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
+そのため、```helm upgrade```コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。
 
 > ℹ️ 参考：https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
@@ -733,7 +768,7 @@ TEST SUITE: None
 
 #### ▼ --skip-crds
 
-Helmは、カスタムリソース定義を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。そのため、```helm upgrade```コマンド時にはカスタムリソース定義のインストールを実行する仕様になっている。```install```オプションを有効化した上で、```--skip-crds```オプションを有効化すると、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールする。
+```install```オプションを有効化した上で、```--skip-crds```オプションを有効化すると、```helm upgrade```コマンド時にカスタムリソース定義のインストールをスキップし、非カスタムリソース定義のみをインストールする。
 
 > ℹ️ 参考：
 >

@@ -139,20 +139,20 @@ Kubernetesに標準で組み込まれているが、別のOSSである。
 ```bash
 $ etcd \
     --advertise-client-urls=https://*.*.*.*:2379 \
-    # HTTPSリクエストを受信するためのSSL証明書
+    `# HTTPSリクエストを受信するためのSSL証明書` \
     --cert-file=/etc/kubernetes/pki/etcd/server.crt \
-    # HTTPSリクエストを送信するためのクライアント証明書
+    `# HTTPSリクエストを送信するためのクライアント証明書` \
     --client-cert-auth=true \
-    # マニフェストを保管するローカルストレージ
+    `# マニフェストを保管するローカルストレージ` \
     --data-dir=/var/lib/etcd \
     --initial-advertise-peer-urls=https://*.*.*.*:2380 \
     --initial-cluster=foo-node=https://*.*.*.*:2380 \
-    # SSL証明書と対になる秘密鍵
+    `# SSL証明書と対になる秘密鍵` \
     --key-file=/etc/kubernetes/pki/etcd/server.key \
     --listen-client-urls=https://127.0.0.1:2379,https://*.*.*.*:2379 \
     --listen-metrics-urls=http://127.0.0.1:2381 \
     --listen-peer-urls=https://*.*.*.*:2380 \
-    # etcdが稼働するコントロールプレーンNode
+    `# etcdが稼働するコントロールプレーンNode` \
     --name=foo-node \
     --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt \
     --peer-client-cert-auth=true \
@@ -199,34 +199,34 @@ $ kube-apiserver \
     --audit-webhook-config-file=/etc/kubernetes/audit-webhook.config \
     --audit-webhook-mode=batch \
     --audit-webhook-truncate-enabled=true \
-    # 認証フェーズの設定
+    `# 認証フェーズの設定` \
     --authentication-token-webhook-config-file=/etc/kubernetes/ais/authentication-webhook.yaml \
-    # 認可タイプ
+    `# 認可タイプ` \
     --authorization-mode=Node,RBAC \
-    # 他のコンポーネントにHTTPSリクエストを送信するためのクライアント証明書
+    `# 他のコンポーネントにHTTPSリクエストを送信するためのクライアント証明書` \
     --client-ca-file=/etc/kubernetes/pki/ca.crt \
-    # 有効化しているadmissionアドオン
+    `# 有効化しているadmissionアドオン` \
     --enable-admission-plugins=NodeRestriction,PodTolerationRestriction \
     --enable-bootstrap-token-auth=true \
     --encryption-provider-config=/etc/kubernetes/pki/encryption_config.yaml \
     --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt \
-    # etcdにHTTPSリクエストを送信するためのクライアント証明書
+    `# etcdにHTTPSリクエストを送信するためのクライアント証明書` \
     --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt \
-    # クライアント証明書と対になる秘密鍵
+    `# クライアント証明書と対になる秘密鍵` \
     --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key \
-    # etcdの宛先情報
+    `# etcdの宛先情報` \
     --etcd-servers=https://127.0.0.1:2379 \
     --feature-gates=ServiceAccountIssuerDiscovery=true,IPv6DualStack=false \
     --kubelet-certificate-authority=/etc/kubernetes/pki/ca.crt \
-    # kubeletにHTTPSリクエストを送信するためのクライアント証明書
+    `# kubeletにHTTPSリクエストを送信するためのクライアント証明書` \
     --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt \
-    # クライアント証明書と対になる秘密鍵
+    `# クライアント証明書と対になる秘密鍵` \
     --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key \
     --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname \
     --profiling=false \
-    # front-proxyにHTTPSリクエストを送信するためのクライアント証明書
+    `# front-proxyにHTTPSリクエストを送信するためのクライアント証明書` \
     --proxy-client-cert-file=/etc/kubernetes/pki/front-proxy-client.crt \
-    # クライアント証明書と対になる秘密鍵
+    `# クライアント証明書と対になる秘密鍵` \
     --proxy-client-key-file=/etc/kubernetes/pki/front-proxy-client.key \
     --requestheader-allowed-names=front-proxy-client \
     --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
@@ -235,7 +235,7 @@ $ kube-apiserver \
     --requestheader-username-headers=X-User \
     --secure-port=6444 \
     --service-account-issuer=https://kubernetes.default.svc.cluster.local \
-    # 他のKubernetesリソースが持つServiceAccountの秘密鍵と対になる公開鍵
+    `# 他のKubernetesリソースが持つServiceAccountの秘密鍵と対になる公開鍵` \
     --service-account-key-file=/etc/kubernetes/pki/sa.pub \
     --service-account-max-token-expiration=48h \
     --service-account-signing-key-file=/etc/kubernetes/pki/sa.key \
@@ -411,7 +411,7 @@ $ kube-controller-manager \
     --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf \
     --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf \
     --bind-address=127.0.0.1 \
-    # kube-apiserverにHTTPSリクエストを送信するためのクライアント証明書
+    `# kube-apiserverにHTTPSリクエストを送信するためのクライアント証明書` \
     --client-ca-file=/etc/kubernetes/pki/ca.crt \
     --cluster-cidr=*.*.*.*/* \
     --cluster-name=foo-cluster \
@@ -421,15 +421,15 @@ $ kube-controller-manager \
     --feature-gates=IPv6DualStack=false \
     --kubeconfig=/etc/kubernetes/controller-manager.conf \
     --leader-elect=true \
-    # コントロールプレーンNodeのサブネットマスク
+    `# コントロールプレーンNodeのサブネットマスク` \
     --node-cidr-mask-size=23 \
     --port=0 \
     --profiling=false \
     --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
-    # ルート認証局の証明書
+    `# ルート認証局の証明書` \
     --root-ca-file=/etc/kubernetes/pki/ca.crt \
-    # kube-apiserverの認証/認可を通過するために必要なServiceAccountの秘密鍵
-    # kube-apiserverには、これと対になる公開鍵が割り当てられている。
+    `# kube-apiserverの認証/認可を通過するために必要なServiceAccountの秘密鍵` \
+    `# kube-apiserverには、これと対になる公開鍵が割り当てられている。` \
     --service-account-private-key-file=/etc/kubernetes/pki/sa.key \
     --service-cluster-ip-range=*.*.*.*/* \
     --terminated-pod-gc-threshold=1000 \

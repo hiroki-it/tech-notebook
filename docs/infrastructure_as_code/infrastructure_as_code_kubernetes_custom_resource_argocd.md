@@ -50,42 +50,6 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
-#### ▼ ダッシュボードの公開
-
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
-
-Nodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
-
-> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
-
-**＊実装例＊**
-
-Ingress + Ingressコントローラー + ClusterIP Serviceがある。
-
-
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-  name: argocd-server-ingress
-  namespace: argocd
-spec:
-  rules:
-    - host: argocd.foo.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
-```
-
 <br>
 
 ### repo-server
@@ -135,7 +99,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n argocd \
-    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-charts && helm template foo-chart -f values-prd.yaml"
+    -- bash -c "cd /tmp/https___github.com_hiroki-hasegawa_foo-repository && helm template foo-chart -f values-prd.yaml"
 ```
 
 <br>
@@ -179,7 +143,7 @@ ArgoCDに認証機能を付与し、権限を持つユーザー以外のリク�
 
 <br>
 
-## 01-02. ユースケース
+## 02. ユースケース
 
 ### 共通
 
