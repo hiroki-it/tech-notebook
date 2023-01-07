@@ -1570,7 +1570,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-alb-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
@@ -1583,7 +1583,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-nginx-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
@@ -1598,7 +1598,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-istio-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
@@ -1628,12 +1628,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-alb-ingress-class
 spec:
   parameters:
     apiGroup: elbv2.k8s.aws
     kind: IngressClassParams
-    name: foo-ingress-class-params
+    name: foo-alb-ingress-class-params
 ```
 
 <br>
@@ -4023,7 +4023,7 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-    - name: tcp
+    - name: tcp-foo
       port: 9000
 ```
 

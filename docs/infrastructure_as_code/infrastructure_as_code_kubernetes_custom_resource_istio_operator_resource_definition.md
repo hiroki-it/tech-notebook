@@ -19,7 +19,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 ### インストール
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
 ```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。
 
@@ -65,7 +65,7 @@ $ kubectl apply -f istio-operator.yaml
 istiooperator.install.istio.io/istio-operator created
 ```
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
 IstioOperatorのチャートをインストールし、リソースを作成する。
 

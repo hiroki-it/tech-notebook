@@ -21,13 +21,12 @@ description: コマンド＠Vagrantの知見を記録しています。
 
 ボックスをインストールする。
 
-
-
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-add
-
 ```bash
 $ vagrant box add <ボックス名> <URL>
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-add
+
 
 <br>
 
@@ -37,11 +36,13 @@ $ vagrant box add <ボックス名> <URL>
 
 
 
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-list
 
 ```bash
 $ vagrant box list
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/box#box-list
+
 
 <br>
 
@@ -50,12 +51,12 @@ $ vagrant box list
 起動中の仮想環境の一覧を取得する。
 
 
-
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/global-status
-
 ```bash
 $ vagrant global-status
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/global-status
+
 
 <br>
 
@@ -63,13 +64,12 @@ $ vagrant global-status
 
 仮想環境を停止する。
 
-
-
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/halt
-
 ```bash
 $ vagrant halt
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/halt
+
 
 <br>
 
@@ -89,13 +89,12 @@ $ vagrant reload
 
 仮想環境にSSH接続を行う。
 
-
-
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/ssh
-
 ```bash
 $ vagrant ssh
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/ssh
+
 
 <br>
 
@@ -103,12 +102,11 @@ $ vagrant ssh
 
 仮想環境を起動する。
 
-
-
-> ℹ️ 参考：https://www.vagrantup.com/docs/cli/up
-
 ```bash
 $ vagrant up
 ```
+
+> ℹ️ 参考：https://www.vagrantup.com/docs/cli/up
+
 
 <br>

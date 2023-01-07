@@ -19,7 +19,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 ### インストール
 
-#### ▼ マニフェストリポジトリから
+#### ▼ 非チャートとして
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
 
@@ -28,8 +28,6 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 ```
 
 <br>
-
-
 
 ### アンインストール
 
@@ -50,8 +48,6 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 
 ArgoCDのApplicationを削除する。
 
-
-
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
 
 ```bash
@@ -60,36 +56,9 @@ $ kubectl delete app <ArgoCDのアプリケーション名>
 
 <br>
 
-### 開発環境での動作確認
+## 01-02. ダッシュボード
 
-#### ▼ 別のapplyツールを使用する
-
-実装が複雑になることを避けるため、開発環境に対するapplyには、ArgoCD以外のツールを使用する。
-
-
-（例）
-
-- Skaffold
-
-#### ▼ ローカルマシンを監視
-
-ローカルマシンのディレクトリをリポジトリとして監視する。
-
-あらかじめ、リポジトリの自動プルの設定を無効化しておく必要がある。
-
-
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
-
-```bash
- $ argocd app sync <ArgoCDのアプリケーション名> --local=<ディレクトリへのパス>
-```
-
-<br>
-
-## 01-02. Kubernetesリソース
-
-### ダッシュボードの公開
+### ネットワークに公開しない場合
 
 #### ▼ ```kubectl```コマンドを使用して
 
@@ -142,197 +111,86 @@ Password: *****
 
 <br>
 
-### Application
+### ネットワークに公開する場合
 
-#### ▼ ```argocd```コマンドを使用して
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
 
-（１）ArgoCDのアプリケーションを作成する。
+Nodeの外からArgoCDのダッシュボードをネットワークに公開する場合、Node外からargocd-serverにインバウンド通信が届くようにする必要がある。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
+> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
 
-```bash
-$ argocd app create guestbook \
-    --project default \
-    --repo https://github.com/hiroki-hasegawa/foo-manifests.git \
-    --revision main \
-    --dest-server https://kubernetes.default.svc \
-    --dest-namespace foo-namespace \
-    --auto-prune \
-    --self-heal \
-    --sync-option CreateNamespace=true
-```
+**＊実装例＊**
 
-（２）ArgoCD上でアプリケーションの監視を実行する。事前に```--dry-run```キーで監視対象のリソースを確認すると良い。監視対象リポジトリ（GitHub、Helm）の最新コミットが更新されると、これを自動的にプルしてくれる。アプリケーションのapplyにはCircleCIが関与しておらず、Kubernetes上に存在するArgoCDがapplyを行なっていることに注意する。
-
-```bash
-$ argocd app sync guestbook --dry-run
-```
-
-（３）自動Syncを有効化する。
-
-```bash
-$ argocd app set guestbook --sync-policy automated
-```
-
-（４）クラウドプロバイダーのコンテナイメージレジストリやチャートレジストリを採用している場合は、ログインが必要になる。
-
-> ℹ️ 参考：
->
-> - https://medium.com/@Technorite
-> - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-
-```bash
-# ECRのチャートをプルする場合
-$ argocd repo add oci://<チャートレジストリ名> \
-    --type helm \
-    --name <チャートリポジトリ名> \
-    --enable-oci \
-    --username AWS \
-    --password $(aws ecr get-login-password --region ap-northeast-1)
-```
-
-#### ▼ ```kubectl```コマンドを使用して
-
-（１）```argocd```コマンドの代わりとして、```kubectl```コマンドでArgoCDを操作しても良い。
-
-```bash
-$ kubectl apply -f application.yaml
-```
+Ingressを作成する。
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
   namespace: argocd
-  name: foo-application
+  name: argocd-ingress
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
-    targetRevision: main
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: foo-namespace
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  rules:
+    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    - host: foo.argocd.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
 ```
 
-（２）リポジトリがプライベートリポジトリの場合は、認証情報をSecretに設定する。
+IngressClassを作成する。
 
-```bash
-$ kubectl apply -f secret.yaml
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
 ```
+
+ClusterIP Serviceを作成する。
+
 
 ```yaml
 apiVersion: v1
-kind: Secret
+kind: Service
 metadata:
   namespace: argocd
-  name: foo-argocd-kubernetes-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
-  type: git
-  # SSHに必要な秘密鍵を設定する。
-  sshPrivateKey: |
-    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+  name: foo-argocd-service
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http-foo
+      nodePort: 31000
+      port: 80
+      protocol: TCP
+    - name: https-foo
+      nodePort: 31001
+      port: 443
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: foo-argocd
+  sessionAffinity: None
+  type: ClusterIP
 ```
 
 <br>
 
-### Role、RoleBinding、ServiceAccount
-
-#### ▼ Role
-
-ArgoCDのコンポーネント（application-controller、argo-server、repo-server、dex-server）によっては、kube-apiserverにリクエストを送信する必要がある。
-
-そのため、コンポーネントに紐づけるためのRoleを作成する。
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: argocd
-  name:  argocd-application-controller
-  labels:
-    app.kubernetes.io/part-of: argocd
-rules:
-  - apiGroups:
-      - ""
-    resources:
-      - secrets
-      - configmaps
-    verbs:
-      - get
-      - list
-      - watch
-  - apiGroups:
-      - argoproj.io
-    resources:
-      - applications
-      - appprojects
-    verbs:
-      - create
-      - get
-      - list
-      - watch
-      - update
-      - patch
-      - delete
-  - apiGroups:
-      - ""
-    resources:
-      - events
-    verbs:
-      - create
-      - list
-```
-
-#### ▼ RoleBinding
-
-ServiceAccountとRoleを紐づけるために、RoleBindingを作成する。
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  namespace: argocd
-  name: argocd-argocd-repo-server
-  labels:
-    app.kubernetes.io/part-of: argocd
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: argocd-application-controller
-subjects:
-  - kind: ServiceAccount
-    name: argocd-application-controller
-    namespace: argocd
-```
-
-#### ▼ ServiceAccount
-
-ArgoCDのServiceAccountを作成する。
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: argocd-application-controller
-  labels:
-    app.kubernetes.io/part-of: argocd
-automountServiceAccountToken: true
-secrets:
-  - name: argocd-application-controller-token-*****
-```
-
-<br>
 
 ## 02. Application
 
@@ -1168,190 +1026,8 @@ spec:
 
 <br>
 
-## 05. 専用ConfigMap
 
-### 専用ConfigMapとは
-
-ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
-
-ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
-
-| Kubernetesリソース名               | 説明                                                                                                                                |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| ```argocd-cm```                | ArgoCDの各コンポーネントで共通する値を設定する。                                                                                                   |
-| ```argocd-cmd-params-cm```     | ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。                                  |
-| ```argocd-rbac-cm```           | ArgoCDのKubernetesリソースで使用するRBACを設定する。                                                                                            |
-| ```argocd-tls-cets-cm```       | リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。                                                                     |
-| ```argocd-ssh-nown-hosts-cm``` | リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。 |
-
-実装例は以下を参考にせよ。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
-
-
-<br>
-
-### data.resource.customizations
-
-#### ▼ ignoreDifferences.all
-
-ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  resource.customizations.ignoreDifferences.all: |
-    jsonPointers:
-      # spec.replicas（インスタンス数）の設定値の変化を無視する。
-      - /spec/replicas
-    jqPathExpressions:
-      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
-      - /spec/metrics
-```
-
-<br>
-
-### data.repositories
-
-ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
-
-<br>
-
-### data.ssh_known_hosts
-
-#### ▼ ssh_known_hosts
-
-SSHプロトコルでリポジトリを監視する場合に、リポジトリの秘密鍵を設定する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-ssh-known-hosts-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  ssh_known_hosts: |
-    bitbucket.org ssh-rsa AAAAB ...
-    github.com ecdsa-sha2-nistp256 AAAAE ...
-    github.com ssh-ed25519 AAAAC ...
-    github.com ssh-rsa AAAAB ...
-    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
-    gitlab.com ssh-ed25519 AAAAC ...
-    gitlab.com ssh-rsa AAAAB ...
-    ssh.dev.azure.com ssh-rsa AAAAB ...
-    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
-```
-
-
-## 06. 専用Job
-
-### metadata
-
-#### ▼ generateName
-
-```Sync```フェーズフック名を設定する。
-
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  generateName: foo-hook
-```
-
-<br>
-
-### metadata.annotations
-
-#### ▼ argocd.argoproj.io/hook
-
-フックを設定する```Sync```フェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
-
-
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail # Sync失敗時
-```
-
-#### ▼ argocd.argoproj.io/sync-wave
-
-同じ```Sync```フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。
-
-正負の数字を設定でき、数字が小さい方が優先される。
-
-優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
-
-
-
-> ℹ️ 参考：
->
-> - https://weseek.co.jp/tech/95/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される。）
-```
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
-```
-
-```yaml
-apiVersion: batch/v1
-kind: Job
-metadata:
-  namespace: argocd
-  name: foo-job
-  annotations:
-    argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 1 # 優先度1
-```
-
-<br>
-
-## 07. Rollout
+## 05. Rollout
 
 ### spec.analysis
 
@@ -1479,8 +1155,494 @@ spec:
 
 <br>
 
+## 06 Workflow
 
-## 08. 専用Secret
+### spec.entrypoint
+
+#### ▼ entrypointとは
+
+一番最初に使用するテンプレート名を設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  namespace: argocd
+  generateName: foo-workflow
+spec:
+  entrypoint: foo-template
+```
+
+<br>
+
+### spec.templates
+
+#### ▼ templatesとは
+
+パイプラインの処理を設定する。
+
+WorkflowTemplateとして切り分けても良い。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  namespace: argocd
+  generateName: foo-workflow
+spec:
+  entrypoint: foo-template
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          command: ["/bin/bash", "-c"]
+          source: |
+            echo "Hello World"
+```
+
+<br>
+
+### spec.workflowTemplateRef
+
+#### ▼ workflowTemplateRefとは
+
+切り分けたWorkflowTemplateの名前を設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  namespace: argocd
+  generateName: foo-workflow
+spec:
+  workflowTemplateRef:
+    name: hello-world-workflow-template
+```
+
+<br>
+
+## 07. WorkflowTemplate
+
+### spec.templates
+
+#### ▼ templatesとは
+
+パイプラインの処理を設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: argocd
+  name: hello-world-workflow-template
+spec:
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          cource: |
+            echo "Hello World"
+```
+
+#### ▼ script
+
+コンテナをプルし、コンテナ内でスクリプトを実行する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  namespace: argocd
+  name: hello-world-workflow-template
+spec:
+  templates:
+    - name: foo-template
+      script:
+        - image: alpline:1.0.0
+          command: ["/bin/bash", "-c"]
+          source: |
+            echo "Hello World"
+```
+
+#### ▼ steps
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+
+<br>
+
+## 08. ArgoCD Notification
+
+### セットアップ
+
+> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
+
+```bash
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
+```
+
+<br>
+
+### ConfigMap
+
+#### ▼ data.trigger
+
+通知条件を設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-notification-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  trigger.on-sync-status-unknown: |
+    - when: app.status.sync.status == 'Unknown'
+      send: [app-sync-status, github-commit-status]
+  trigger.sync-operation-change: |
+    - when: app.status.operationState.phase in ['Error', 'Failed']
+      send: [app-sync-failed, github-commit-status]
+  trigger.on-deployed: |
+    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+    oncePer: app.status.sync.revision
+    send: [app-sync-succeeded]
+```
+
+#### ▼ data.service
+
+通知先のURLを設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  service.slack: |
+    token: *****
+```
+
+#### ▼ data.template
+
+通知内容を設定する。
+
+
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-notifications-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  context: |
+    env: prd
+
+  template.a-slack-template-with-context: |
+    message: "ArgoCD sync in {{ .context.env }}"
+```
+
+<br>
+
+
+## 09. 専用ConfigMap
+
+### 専用ConfigMapとは
+
+ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
+
+ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
+
+| Kubernetesリソース名               | 説明                                                                                                                                |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ```argocd-cm```                | ArgoCDの各コンポーネントで共通する値を設定する。                                                                                                   |
+| ```argocd-cmd-params-cm```     | ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。                                  |
+| ```argocd-rbac-cm```           | ArgoCDのKubernetesリソースで使用するRBACを設定する。                                                                                            |
+| ```argocd-tls-cets-cm```       | リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。                                                                     |
+| ```argocd-ssh-nown-hosts-cm``` | リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。 |
+
+実装例は以下を参考にせよ。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+
+
+<br>
+
+### data.resource.customizations
+
+#### ▼ ignoreDifferences.all
+
+ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+      # spec.replicas（インスタンス数）の設定値の変化を無視する。
+      - /spec/replicas
+    jqPathExpressions:
+      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+      - /spec/metrics
+```
+
+<br>
+
+### data.repositories
+
+ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+
+<br>
+
+### data.ssh_known_hosts
+
+#### ▼ ssh_known_hosts
+
+SSHプロトコルでリポジトリを監視する場合に、リポジトリの秘密鍵を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-ssh-known-hosts-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB ...
+    github.com ecdsa-sha2-nistp256 AAAAE ...
+    github.com ssh-ed25519 AAAAC ...
+    github.com ssh-rsa AAAAB ...
+    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
+    gitlab.com ssh-ed25519 AAAAC ...
+    gitlab.com ssh-rsa AAAAB ...
+    ssh.dev.azure.com ssh-rsa AAAAB ...
+    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
+```
+
+<br>
+
+
+## 10. 専用Role
+
+ArgoCDのコンポーネント（application-controller、argocd-server、repo-server、dex-server）によっては、kube-apiserverにリクエストを送信する必要がある。
+
+そのため、コンポーネントに紐づけるためのRoleを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: argocd
+  name:  argocd-application-controller
+  labels:
+    app.kubernetes.io/part-of: argocd
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - applications
+      - appprojects
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - list
+```
+
+<br>
+
+
+## 11. 専用RoleBinding
+
+ServiceAccountとRoleを紐づけるために、RoleBindingを作成する。
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: argocd
+  name: argocd-argocd-repo-server
+  labels:
+    app.kubernetes.io/part-of: argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argocd-application-controller
+subjects:
+  - kind: ServiceAccount
+    name: argocd-application-controller
+    namespace: argocd
+```
+
+<br>
+
+
+## 12. 専用Job
+
+### metadata
+
+#### ▼ generateName
+
+```Sync```フェーズフック名を設定する。
+
+
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  generateName: foo-hook
+```
+
+<br>
+
+### metadata.annotations
+
+#### ▼ argocd.argoproj.io/hook
+
+フックを設定する```Sync```フェーズ（Sync前、Sync時、Syncスキップ時、Sync後、Sync失敗時）を設定する。
+
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#usage
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail # Sync失敗時
+```
+
+#### ▼ argocd.argoproj.io/sync-wave
+
+同じ```Sync```フェーズに実行するように設定したフックが複数ある場合、これらの実行の優先度付けを設定する。
+
+正負の数字を設定でき、数字が小さい方が優先される。
+
+優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
+
+
+
+> ℹ️ 参考：
+>
+> - https://weseek.co.jp/tech/95/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: -1 # 優先度-1（3個の中で一番優先される。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 0 # 優先度0（デフォルトで0になる。）
+```
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: argocd
+  name: foo-job
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/sync-wave: 1 # 優先度1
+```
+
+<br>
+
+
+
+## 13. 専用Secret
 
 ### 専用Secret
 
@@ -1590,7 +1752,7 @@ stringData:
   type: git
   # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
-    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+    MIIC2 ...
 ---
 # 他と異なるマニフェストリポジトリ
 apiVersion: v1
@@ -1606,7 +1768,7 @@ stringData:
   type: git
   # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
-    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+    MIIEp ...
 ```
 
 #### ▼ OIDCの場合
@@ -1790,228 +1952,21 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
-## 09. Workflow
 
-### spec.entrypoint
+## 14. 専用ServiceAccount
 
-#### ▼ entrypointとは
-
-一番最初に使用するテンプレート名を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Workflow
-metadata:
-  namespace: argocd
-  generateName: foo-workflow
-spec:
-  entrypoint: foo-template
-```
-
-<br>
-
-### spec.templates
-
-#### ▼ templatesとは
-
-パイプラインの処理を設定する。
-
-WorkflowTemplateとして切り分けても良い。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Workflow
-metadata:
-  namespace: argocd
-  generateName: foo-workflow
-spec:
-  entrypoint: foo-template
-  templates:
-    - name: foo-template
-      script:
-        - image: alpline:1.0.0
-          command: ["/bin/bash", "-c"]
-          source: |
-            echo "Hello World"
-```
-
-<br>
-
-### spec.workflowTemplateRef
-
-#### ▼ workflowTemplateRefとは
-
-切り分けたWorkflowTemplateの名前を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Workflow
-metadata:
-  namespace: argocd
-  generateName: foo-workflow
-spec:
-  workflowTemplateRef:
-    name: hello-world-workflow-template
-```
-
-<br>
-
-## 10. WorkflowTemplate
-
-### spec.templates
-
-#### ▼ templatesとは
-
-パイプラインの処理を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  namespace: argocd
-  name: hello-world-workflow-template
-spec:
-  templates:
-    - name: foo-template
-      script:
-        - image: alpline:1.0.0
-          cource: |
-            echo "Hello World"
-```
-
-#### ▼ script
-
-コンテナをプルし、コンテナ内でスクリプトを実行する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  namespace: argocd
-  name: hello-world-workflow-template
-spec:
-  templates:
-    - name: foo-template
-      script:
-        - image: alpline:1.0.0
-          command: ["/bin/bash", "-c"]
-          source: |
-            echo "Hello World"
-```
-
-#### ▼ steps
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
-
-<br>
-
-## 11. ArgoCD Notification
-
-### セットアップ
-
-> ℹ️ 参考：https://argocd-notifications.readthedocs.io/en/stable/#getting-started
-
-```bash
-$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
-```
-
-<br>
-
-### ConfigMap
-
-#### ▼ data.trigger
-
-通知条件を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+ArgoCDのServiceAccountを作成する。
 
 ```yaml
 apiVersion: v1
-kind: ConfigMap
+kind: ServiceAccount
 metadata:
-  namespace: argocd
-  name: argocd-notification-cm
+  name: argocd-application-controller
   labels:
     app.kubernetes.io/part-of: argocd
-data:
-  trigger.on-sync-status-unknown: |
-    - when: app.status.sync.status == 'Unknown'
-      send: [app-sync-status, github-commit-status]
-  trigger.sync-operation-change: |
-    - when: app.status.operationState.phase in ['Error', 'Failed']
-      send: [app-sync-failed, github-commit-status]
-  trigger.on-deployed: |
-    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-    oncePer: app.status.sync.revision
-    send: [app-sync-succeeded]
-```
-
-#### ▼ data.service
-
-通知先のURLを設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-notifications-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  service.slack: |
-    token: *****
-```
-
-#### ▼ data.template
-
-通知内容を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-notifications-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  context: |
-    env: prd
-
-  template.a-slack-template-with-context: |
-    message: "ArgoCD sync in {{ .context.env }}"
+automountServiceAccountToken: true
+secrets:
+  - name: argocd-application-controller-token-*****
 ```
 
 <br>
-

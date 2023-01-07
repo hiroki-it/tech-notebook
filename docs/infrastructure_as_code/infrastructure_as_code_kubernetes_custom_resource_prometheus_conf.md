@@ -258,7 +258,7 @@ receivers:
 
 ### セットアップ
 
-#### ▼ バイナリリポジトリから
+#### ▼ バイナリとして
 
 Node内でプロセスとしてnode-exporterを動かす場合、チャートリポジトリから直接インストールし、リソースを作成する。
 
@@ -273,7 +273,7 @@ $ tar xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
 $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
 ```
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
 Node内でコンテナとしてnode-exporterを動かす場合、GitHubから目的に応じたチャートをインストールし、リソースを作成する。
 

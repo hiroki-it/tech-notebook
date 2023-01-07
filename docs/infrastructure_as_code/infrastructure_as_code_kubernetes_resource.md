@@ -197,13 +197,6 @@ $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
 Podのライフサイクルにはフェーズがある。
 
 
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase
-> - https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98
-
-
 | フェーズ名               | 説明                                                                            | 補足                                                                                                                                                             |
 |----------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Completed            | Pod内の全てのコンテナが正常に終了した。                                                     |                                                                                                                                                                  |
@@ -222,6 +215,13 @@ Podのライフサイクルにはフェーズがある。
 | Succeed              | Pod内の全てのコンテナの起動が完了し、その後に正常に停止した。                                     |                                                                                                                                                                  |
 | Unknown              | NodeとPodの間の通信に異常があり、NodeがPodから情報を取得できなかった。                             |                                                                                                                                                                  |
 
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase
+> - https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98
+
+
 #### ▼ Podのコンディション
 
 各フェーズには詳細なコンディションがある。
@@ -231,19 +231,25 @@ Podのライフサイクルにはフェーズがある。
 そのため、Podが正常であると見なすためには、『```Running```フェーズ』かつ『```Ready```コンディション』である必要がある。
 
 
-
-> ℹ️ 参考：
->
-> - https://stackoverflow.com/a/59354112
-> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions
-
-
 | 各フェーズのコンディション名 | 説明                                                          |
 |------------------|-------------------------------------------------------------|
 | PodScheduled     | NodeへのPodのスケジューリングが完了した。                                    |
 | ContainersReady  | 全てのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
 | Initialized      | 全ての```init```コンテナの起動が完了した。                               |
 | Ready            | Pod全体の準備が完了した。                                          |
+
+> ℹ️ 参考：
+>
+> - https://stackoverflow.com/a/59354112
+> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions
+
+#### ▼ CrashLoopBackOffのデバッグ
+
+PodがCrashLoopBackOffになっている場合、以下を確認すると良い。
+
+- ```kubectl logs```コマンドで、該当のコンテナのエラーログを確認する。
+- ```kubectl describe nodes```コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。
+- ```kubectl describe pods```コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。（Containersの項目で、```kubectl logs```コマンドと同じ内容も確認できる）
 
 #### ▼ Podが削除されるまでの流れ
 
@@ -546,9 +552,13 @@ options ndots:5
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_nodeport-service.png)
 
-Serviceに対するインバウンド通信を、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。
+Serviceに対するインバウンド通信を、NodeのNICの宛先情報（IPアドレス、ポート番号）、Cluster-IP、を介してPodにルーティングする。
 
-NodeのNICの宛先情報はNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
+NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
+
+ただし、NodePort Serviceは内部的にCluster-IPを使っているため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。（この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。）
+
+NodeのNICの宛先情報は、Nodeの作成方法（AWS EC2、GCP GCE、VMWare）に応じて、確認方法が異なる。
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
@@ -662,8 +672,6 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
-
-
 <br>
 
 ### Secret
@@ -770,18 +778,70 @@ PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPers
 
 アプリケーションのディレクトリ名を変更した場合は、PersistentVolumeを再作成しないと、アプリケーション内のディレクトリの読み出しでパスを解決できない場合がある。
 
+Dockerのボリュームとは独立した機能であることに注意する。
 
 
 > ℹ️ 参考：
 >
 > - https://thinkit.co.jp/article/14195
-
-Dockerのボリュームとは独立した機能であることに注意する。
-
-
-
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume
+
+#### ▼ PersistentVolumeの使用率の確認方法（CrashLoopBackOffでない場合）
+
+Pod内で```df```コマンドを実行すると、PersistentVolumeの使用率を確認できる。
+
+出力結果で、ファイルシステム全体の使用率を確認する。
+
+```bash
+$ kubectl exec -n prometheus foo-pod -- df -hT
+```
+
+ただし、CrashLoopBackOffなどが理由で、コンテナがそもそも起動しない場合、この方法で確認できない。
+
+> ℹ️ 参考：https://stackoverflow.com/questions/53200828/how-to-identify-the-storage-space-left-in-a-persistent-volume-claim
+
+また、Grafanaのkubernetes-mixinsには、起動中のPodのPersistentVolumeの使用率を可視化できるダッシュボードがある。
+
+> ℹ️ 参考：https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json
+
+#### ▼ PersistentVolumeの使用率の確認方法（CrashLoopBackOffの場合）
+
+ここでは、Prometheusを例に挙げる。
+
+（１）PrometheusのPodに紐づくPersistentVolumeは、最大200Giを要求していることがわかる。
+
+```bash
+$ kubectl get pvc foo-prometheus-pvc -n prometheus
+NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp2-encrypted   181d
+```
+
+（２）Node内（EKS EC2 Nodeの場合）で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
+
+```bash
+$ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
+
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:07 00004931
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:09 00004932
+-rw-r--r--  1 ec2-user 2000         0 Jun 24 17:12 00004933
+
+...
+
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
+drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
+```
+
+（３）```df```コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
+
+```bash
+$ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme8n1    197G  197G     0 100% /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****
+```
+
 
 #### ▼ HostPath（本番環境で非推奨）
 

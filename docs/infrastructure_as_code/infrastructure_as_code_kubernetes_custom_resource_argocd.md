@@ -50,42 +50,6 @@ argocd-dex-server-*****                 1/1     Running   0          1d
 
 > ℹ️ 参考：https://weseek.co.jp/tech/95/#i-7
 
-#### ▼ ダッシュボードの公開
-
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_argocd-server_dashboard.png)
-
-Nodeの外からArgoCDのダッシュボードにアクセスできるようにするために、argocd-serverを公開する必要がある。
-
-> ℹ️ 参考：https://techstep.hatenablog.com/entry/2020/11/15/121503
-
-**＊実装例＊**
-
-Ingress + Ingressコントローラー + ClusterIP Serviceがある。
-
-
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-  namespace: argocd
-  name: argocd-server-ingress
-spec:
-  rules:
-    - host: argocd.foo.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
-```
-
 <br>
 
 ### repo-server

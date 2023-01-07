@@ -207,6 +207,8 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 
 #### ▼ container node-poolsとは
 
+調査中...
+
 > ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
 
 #### ▼ describe
@@ -214,7 +216,6 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke  *.*.*.*         e2-medium     1.
 GKE Node Poolの情報を取得する。
 
 アップグレードの手法を確認することもできる。
-
 
 
 > ℹ️ 参考：https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies?hl=ja#inspect-upgrade-settings
@@ -243,12 +244,7 @@ GKE Node Poolの設定を変更する。
 
 **＊実行例＊**
 
-> ℹ️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
-
-
 ローリング方式（サージ方式）のアップグレードを有効化する。
-
-
 
 ```bash
 $ gcloud container node-pools update foo-node-pool \
@@ -266,6 +262,9 @@ $ gcloud container node-pools update foo-node-pool \
     --max-surge-upgrade=2 \
     --max-unavailable-upgrade=1
 ```
+
+> ℹ️ 参考：https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
+
 
 <br>
 
@@ -338,6 +337,28 @@ $ gcloud projects list
 PROJECT_ID   NAME      PROJECT_NUMBER
 foo-stg      foo-stg   *****
 foo-prd      foo-prd   *****
+```
+
+<br>
+
+## 02. GCPリソース別のプラクティス
+
+### GCS
+
+#### ▼ cp
+
+指定したパスにあるオブジェクトを、ローカルマシンにコピーする。
+
+```bash
+$ gcloud storage cp gs://<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
+```
+
+> ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/storage/cp
+
+ディレクトリごとコピーする場合は、```--recursive```オプションを使用する。
+
+```bash
+$ gcloud storage cp --recursive gs://<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
 <br>

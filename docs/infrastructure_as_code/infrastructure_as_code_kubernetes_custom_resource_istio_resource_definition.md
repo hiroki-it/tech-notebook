@@ -19,7 +19,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 ### インストール
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
 ```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、IstioOperatorにリソースを作成させる。
 

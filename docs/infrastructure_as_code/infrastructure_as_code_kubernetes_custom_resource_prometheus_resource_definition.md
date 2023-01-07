@@ -19,7 +19,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 ### インストール
 
-#### ▼ チャートリポジトリから
+#### ▼ 非チャートとして
 
 GitHubリポジトリ上のマニフェストを送信し、リソースを作成する。
 
@@ -34,13 +34,9 @@ $ git clone https://github.com/prometheus-operator/prometheus-operator.git
 $ kubectl create -f bundle.yaml
 ```
 
-<br>
+#### ▼ チャートとして
 
-### インストール
-
-#### ▼ チャートリポジトリから
-
-チャートリポジトリからkube-prometheus-stackチャートをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+チャートとしてkube-prometheus-stackをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -58,20 +54,169 @@ $ helm install prometheus prometheus-community/kube-prometheus-stack -n promethe
 
 <br>
 
-### 接続
+## 01-02. ダッシュボード
 
-#### ▼ Prometheus
+### ネットワークに公開しない場合
+
+#### ▼ Prometheusの場合
+
 
 ```bash
 $ kubectl port-forward svc/prometheus -n prometheus 9090:9090
 ```
 
-#### ▼ Alertmanager
+#### ▼ Alertmanagerの場合
 
 ```bash
 $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
 ```
 
+<br>
+
+### ネットワークに公開する場合
+
+#### ▼ Prometheusの場合
+
+Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。
+
+**＊実装例＊**
+
+Ingressを作成する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: foo-nginx-ingress-class
+  namespace: prometheus
+  name: foo-prometheus-ingress
+spec:
+  rules:
+    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    - host: foo.prometheus.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: foo-prometheus-service
+                port:
+                  number: 9090
+            path: /
+            pathType: Prefix
+```
+
+IngressClassを作成する。
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+ClusterIP Serviceを作成する。
+
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: prometheus
+  name: foo-prometheus-service
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: tcp-foo
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app.kubernetes.io/name: foo-prometheus
+  sessionAffinity: None
+  type: ClusterIP
+```
+
+
+#### ▼ Alertmanagerの場合
+
+Nodeの外からAlertmanagerのダッシュボードをネットワークに公開する場合、Node外からAlertmanagerにインバウンド通信が届くようにする必要がある。
+
+**＊実装例＊**
+
+Ingressを作成する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: foo-nginx-ingress-class
+  namespace: prometheus
+  name: foo-alertmanager-ingress
+spec:
+  rules:
+    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    - host: foo.alertmanager.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: foo-alertmanager-service
+                port:
+                  number: 9093
+            path: /
+            pathType: Prefix
+```
+
+IngressClassを作成する。
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+ClusterIP Serviceを作成する。
+
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: prometheus
+  name: foo-alertmanager-service
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: tcp-foo
+      port: 9093
+      protocol: TCP
+      targetPort: 9093
+  selector:
+    app.kubernetes.io/name: foo-alertmanager
+  sessionAffinity: None
+  type: ClusterIP
+```
 
 <br>
 

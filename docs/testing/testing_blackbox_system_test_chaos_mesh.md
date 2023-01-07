@@ -34,7 +34,7 @@ ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、か�
 
 ### マニフェストとして
 
-#### チャートリポジトリから
+#### チャートとして
 
 GitHubリポジトリからchaos-meshチャートをインストールし、リソースを作成する。
 

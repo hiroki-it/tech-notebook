@@ -19,13 +19,12 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 ### インストール
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
-チャートリポジトリからgrafanaチャートをインストールし、リソースを作成する。
+チャートとしてgrafanaをインストールし、リソースを作成する。
 
 
 
-> ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
 ```bash
 $ helm repo add grafana https://grafana.github.io/helm-charts
@@ -34,13 +33,10 @@ $ helm repo update
 $ helm install grafana grafana/grafana -n grafana -f values.yaml
 ```
 
-Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
+> ℹ️ 参考：https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
-> ℹ️ 参考：
->
-> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+
+Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
 
 ```bash
 $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -48,6 +44,13 @@ $ helm repo update
 
 $ helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus -f values.yaml
 ```
+
+> ℹ️ 参考：
+>
+> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
+> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+
 
 <br>
 
@@ -67,7 +70,79 @@ $ kubectl apply -f grafana.yaml
 
 <br>
 
-## 02. Dashboard
+## 02. ダッシュボード
+
+### ダッシュボードの公開
+
+Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。
+
+**＊実装例＊**
+
+Ingressを作成する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: foo-nginx-ingress-class
+  namespace: grafana
+  name: foo-grafana-ingress
+spec:
+  rules:
+    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    - host: foo.grafana.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: foo-grafana-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+```
+
+IngressClassを作成する。
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+ClusterIP Serviceを作成する。
+
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: grafana
+  name: foo-grafana-service
+spec:
+  clusterIP: *.*.*.*
+  clusterIPs:
+    - *.*.*.*
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: tcp-foo
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app.kubernetes.io/name: foo-grafana
+  sessionAffinity: None
+  type: ClusterIP
+```
+
 
 ### 独自ダッシュボード
 
