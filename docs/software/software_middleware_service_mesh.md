@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】サービスメッシュ＠ミドルウェア
-description: サービスメッシュ＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】サービスメッシュ＠サービスメッシュ系ミドルウェア
+description: サービスメッシュ＠サービスメッシュ系ミドルウェアの知見を記録しています。
 ---
 
-# サービスメッシュ＠ミドルウェア
+# サービスメッシュ＠サービスメッシュ系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,12 +21,12 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 
 #### ▼ 非メッシュとは
 
-マイクロサービスアーキテクチャで、マイクロサービス間で通信を直接的に送受信する。しかし、以下のようなアーキテクチャ固有の問題が起こるため、非推奨である。
+マイクロサービスアーキテクチャで、マイクロサービス間でパケットを直接的に送受信する。
 
-- マイクロサービス間通信の制御
-- マイクロサービス間通信のセキュリティ
-- テレメトリー収集
-- など
+しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題（例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー収集、など）があり、非推奨である。
+
+> ℹ️ 参考：https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+
 
 <br>
 
@@ -34,7 +36,11 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 
 ![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mesh.png)
 
-マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。マイクロサービス間で直接的に通信を送受信する（サービスメッシュを導入しない）場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
+マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。
+
+マイクロサービス間で直接的に通信を送受信する（サービスメッシュを導入しない）場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。
+
+
 
 > ℹ️ 参考：
 > 
@@ -49,25 +55,44 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 
 マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。
 
+
+
 <br>
 
 ### サービスメッシュの層
 
-マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。多くのサービスメッシュツールでは、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーを注入することで、アプリケーションエンジニアがこれらのロジックを意識せずに、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できるようになる。
+マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。
 
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+サービスメッシュの概念が考案される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
 ![service-mesh_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_layer.png)
 
+サービスメッシュの概念が考案され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーを注入するようになった。
+
+サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに（透過的に）、インフラストラクチャ層より上層（インターフェース層、ユースケース層、ドメイン層）の実装に注力できる。
+
+
+
+> ℹ️ 参考：
+>
+> - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+> - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+
+
+
 <br>
 
-### サイドカープロキシによるサービスメッシュ
+### サイドカープロキシメッシュ
 
-#### ▼ サイドカープロキシによるサービスメッシュとは
+#### ▼ サイドカープロキシメッシュとは
 
 ![service-mesh_sidecar-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy.png)
 
-マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。
+マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
+
+マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。
+
+
 
 > ℹ️ 参考：
 >
@@ -76,7 +101,11 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 
 #### ▼ 適するリバースプロキシ
 
-マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー（レスポンス速度）が重要である。Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
+マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー（レスポンス速度）が重要である。
+
+Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
+
+
 
 > ℹ️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
@@ -88,7 +117,13 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 
 ### サービスメッシュのコンポーネント
 
-概念としてのサービスメッシュを実装する必要がある。リバースプロキシとして機能するコンテナをサイドカーパターンで配置し、このコンテナを中央集権的に管理するように実装する。サイドカープロキシが稼働する領域を『データプレーン』、中央集権的に管理する領域を『コントロールプレーン』という。
+概念としてのサービスメッシュを実装する必要がある。
+
+リバースプロキシとして動作するコンテナをサイドカーパターンで配置し、このコンテナを中央集権的に管理するように実装する。
+
+サイドカープロキシが稼働する領域を『データプレーン』、中央集権的に管理する領域を『コントロールプレーン』という。
+
+
 
 > ℹ️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
@@ -101,14 +136,111 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 データプレーンとコントロールプレーンの組み合わせには様々ある。
 
 
-> ℹ️ 参考：https://www.amazon.co.jp/dp/1492043788
 
-| OSS名    | データプレーンの実装 | コントロールプレーンの実装 |
-|---------| --- | --- |
-| Istio   | Envoy | Istiod |
-| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity |
-| Consul  | ビルトインプロキシ、Envoy | Consul-control-plane |
-| ...     | ... | ... |
+| OSS名   | データプレーンの実装              | コントロールプレーンの実装                     | サポートしているXDS-API |
+|---------|---------------------------|-------------------------------------|-----------------|
+| Istio   | Envoy                     | Istiod                              | 全てのXDS-API     |
+| Linkerd | ビルトインプロキシ（Linkerd2-proxy） | Proxy Injector、Destination、Identity | 全てのXDS-API     |
+| Consul  | ビルトインプロキシ、Envoy           | Consul-control-plane                | 全てのXDS-API     |
+| SPIRE   | Envoy                     | SPIRE                               | SDSのみ           |
+| ...     | ...                       | ...                                 | ...             |
+
+
+
+> ℹ️ 参考：
+>
+> - https://www.amazon.co.jp/dp/1492043788
+> - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
+> - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
+
+
+<br>
+
+## 02-03. サービスディスカバリー
+
+### サービスディスカバリーとは
+
+マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所（IPアドレス、ポート番号、完全修飾ドメイン名、など）を動的に検出し、また同時に名前解決できるようにする仕組みのこと。
+
+
+
+<br>
+
+### サービスディスカバリーの要素
+
+![service-discovery-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern.png)
+
+サービスディスカバリーの仕組みは、次の要素からなる。
+
+
+
+> ℹ️ 参考：https://www.baeldung.com/cs/service-discovery-microservices
+
+- 送信元マイクロサービス
+- 宛先マイクロサービス
+- サービスレジストリ
+- ロードバランサー
+- 名前解決（DNSベースのサービスディスカバリーの場合のみ）
+
+<br>
+
+## 02-04. デザインパターン
+
+### クライアントサイドパターン
+
+#### ▼ クライアントサイドパターン
+
+![service-discovery-pattern_client-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_client-side.png)
+
+サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
+
+
+
+（１）送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。
+
+（２）送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。
+
+> ℹ️ 参考：
+>
+> - https://microservices.io/patterns/client-side-discovery.html
+> - https://www.baeldung.com/cs/service-discovery-microservices
+> - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+
+#### ▼ 実装方法
+
+- NetflixのEureka
+
+<br>
+
+### サーバーサイドパターン
+
+#### ▼ サーバーサイドパターンとは
+
+![service-discovery-pattern_server-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-discovery-pattern_server-side.png)
+
+サービスレジストリ（例：etcd）に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
+
+
+
+（１）送信元マイクロサービスは、ロードバランサーにリクエストを送信する。
+
+（２）ロードバランサーは、宛先マイクロサービスの場所をサービスディスカバリーに問い合わせ、宛先情報を取得する。
+
+（２）ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
+
+> ℹ️ 参考：
+>
+> - https://microservices.io/patterns/server-side-discovery.html
+> - https://www.baeldung.com/cs/service-discovery-microservices
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
+> - https://www.north-47.com/knowledge-base/service-discovery-in-a-microservices-architecture-client-vs-service-side-discovery/
+
+#### ▼ 実装方法
+
+- KubernetesのServiceとkube-proxy + CoreDNS（DNSベースのサービスディスカバリー）
+- サイドカープロキシ（例：Istioの```istio-proxy```、Nginx、など）を使用したサービスディスカバリー
 
 <br>
 
@@ -117,6 +249,8 @@ description: サービスメッシュ＠ミドルウェアの知見を記録し�
 ### イベントメッシュとは
 
 マイクロサービス間の通信方式でイベント駆動方式を採用した場合に使用するメッシュ。
+
+
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 

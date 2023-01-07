@@ -9,7 +9,9 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,6 +21,8 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 Dockerは、ホストOS、ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー、から構成される。
 
+
+
 > ℹ️ 参考：https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
 ![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_architecture.png)
@@ -27,7 +31,11 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ### ベースイメージ
 
-ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。各イメージレジストリ（例：DockerHub、ECR、など）には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
+
+各イメージレジストリ（例：DockerHub、ECR、など）には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+
+
 
 <br>
 
@@ -35,7 +43,13 @@ Dockerは、ホストOS、ベースイメージ、コンテナイメージレイ
 
 ![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージのビルド.png)
 
-イメージレイヤーの実体は、```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。
+イメージレイヤーの実体は、```/var/lib/docker/overlay2```ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。
+
+Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。
+
+1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。
+
+
 
 > ℹ️ 参考：
 >
@@ -59,6 +73,8 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
+
+
 > ℹ️ 参考：https://blog.codecamp.jp/programming-docker-image-container
 
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
@@ -71,9 +87,11 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 #### ▼ dockerクライアントとは
 
-dockerクライアントは、dockerコマンドを使用してdockerデーモンAPIをコールできる。
+dockerクライアントは、```docker```コマンドを使用してdockerデーモンAPIをコールできる。
 
-> ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
+
+
+> ℹ️ 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png)
 
@@ -83,289 +101,27 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 #### ▼ dockerデーモンとは
 
-ホスト側で稼働し、コンテナの操作を担う常駐プログラム。dockerクライアントにdockerデーモンAPIを公開する。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+ホスト側に常駐し、コンテナの操作を担うデーモン。
+
+dockerクライアントにdockerデーモンAPIを公開する。
+
+クライアントが```docker```コマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+
+
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
 
 <br>
 
-## 03. Dockerマウント
-
-### Dockerマウントとは
-
-コンテナのファイルデータをホスト上のストレージに一時化/非永続化/永続化するための方法である。
-
-> ℹ️ 参考：
->
-> - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
-> - https://maku77.github.io/docker/mount/
-
-![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_storage.png)
-
-<br>
-
-### バインドマウント
-
-#### ▼ バインドマウントとは
-
-![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png)
-
-ホスト側のストレージ上のディレクトリを、コンテナ側にマウントすることにより、データを永続化する。ホストで作成されるデータが継続的に変化する場合に適しており、例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である。しかし、ホスト側のデータを永続化する方法としては不適である。
-
-> ℹ️ 参考：
->
-> - https://docs.docker.com/storage/bind-mounts/
-> - https://www.takapy.work/entry/2019/02/24/110932
-
-#### ▼ 使用方法
-
-Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
-
-**＊実行例＊**
-
-```bash
-# ホストをコンテナ側にバインドマウント
-$ docker run -d -it --name <コンテナ名> /bin/bash \
-    --mount type=bind, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
-```
-
-#### ▼ マウント元として指定できるディレクトリ
-
-以下の通り、ホスト側のマウント元のディレクトリにはいくつか選択肢がある。Docker for Desktopの設定画面で変更する。
-
-![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mount_host-directory.png)
-
-マウント元の詳細なディレクトリ名は、```/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json```ファイルから確認できる。
-
-```yaml
-$ cat settings.json
-
-{
-
-  # 〜 中略 〜
-
-  "dataFolder": "/Users/<ユーザー名>/Library/Containers/com.docker.docker/Data/vms/0/data",
-  
-  # 〜 中略 〜
-  
-  "filesharingDirectories": [
-      "/tmp",
-      "/Users",
-      "/Volumes",
-      "/private"
-  ],
-
-  # 〜 中略 〜
-
-}
-```
-
-<br>
-
-### ボリュームマウント
-
-#### ▼ ボリュームマウントとは
-
-![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png)
-
-ホスト側のストレージ上にあるdockerエリア（```/var/lib/docker/volumes```ディレクトリ）のマウントポイント（```/var/lib/docker/volumes/<ボリューム名>/_data```）を、コンテナ側にマウントすることより、データを永続化する。ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
-
-> ℹ️ 参考：
->
-> - https://docs.docker.com/storage/volumes/
-> - https://www.takapy.work/entry/2019/02/24/110932
-
-#### ▼ ボリューム、マウントポイントとは
-
-dockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データをボリュームという。また、デバイスファイルに紐づくディレクトリ（```/var/lib/docker/volumes/<ボリューム名>/_data```）をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
-
-> ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
-
-#### ▼ 使用方法
-
-Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
-
-**＊実行例＊**
-
-```bash
-# ホストをコンテナ側にバインドマウント
-$ docker run -d -it --name <コンテナ名> /bin/bash \
-    --mount type=volume, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
-```
-
-#### ▼ Data Volumeコンテナによる永続化データの提供
-
-ボリュームを使用する場合のコンテナ配置手法の一種。dockerエリアのボリュームをData Volumeをコンテナのディレクトリにマウントしておく。ボリュームを使用する時は、dockerエリアを参照するのではなく、Data Volumeコンテナを参照する。
-
-![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
-
-<br>
-
-### tmpfsマウント
-
-#### ▼ tmpfsマウントとは
-
-Docker on Linuxでのみ使用できる。ホスト側のメモリ上にあるディレクトリを、コンテナ側にマウントすることにより、データを非永続化する。コンテナが停止すると、tmpfsマウントは終了し、ディレクトリは削除される。
-
-> ℹ️ 参考：https://docs.docker.com/storage/tmpfs/
-
-<br>
-
-### バインドマウント、ボリュームマウント、```COPY```、NFS
-
-#### ▼ 脆弱性の比較
-
-本番環境で、ホストからコンテナにバインドマウントを実行できる。しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう（例：```cd```コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう）。一方でボリュームマウントでは、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。これにより、マウントに関係のないファイルへはアクセスできないようになっている。そのため、バインドマウントより安全である。
-
-> ℹ️ 参考：
->
-> - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
-> - https://blog.logrocket.com/docker-volumes-vs-bind-mounts/
-> - https://devops4solutions.com/storage-options-in-docker/
-> - https://www.takapy.work/entry/2019/02/24/110932
-
-#### ▼ 本番環境での使いやすさの比較
-
-脆弱性の観点から、本番環境ではボリュームマウント（```VOLUME```）や```COPY```を使用して、アプリケーションをコンテナイメージに組み込むようにする。
-
-> ℹ️ 参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
-
-その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する（例：ディレクトリの実行権限を変更するなど）場合は```COPY```の方が便利である。方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に```COPY```しておく。これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。
-
-> ℹ️ 参考：
->
-> - https://www.nyamucoro.com/entry/2018/03/15/200412
-> - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
-
-#### ▼ パフォーマンスの比較
-
-アプリケーションが処理を実行する時、多くのパッケージが読み出される。この時、ホスト上で稼働するコンテナのパフォーマンスは、『```COPY、NFS > ボリュームマウント > バインドマウント```』の順で高い。
-
-| コンテナへのコードの組み込み方 | パフォーマンスに関する説明                                   | 補足                                                         |
-| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| バインドマウント               | バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナのパフォーマンスは悪い。 | ℹ️ 参考：<br>・https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison<br>・https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163 |
-| ボリュームマウント             | ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナのパフォーマンスが良い。 | ℹ️ 参考：https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163  |
-| ```COPY```                     | ```COPY```では、コンテナイメージのビルド時にコードを組み込むだけで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナのパフォーマンスが良い。このことは、DockerだけでなくKubernetesでも同様である。 |                                                              |
-| NFS                            | NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナのパフォーマンスが良い。 | ℹ️ 参考：https://qiita.com/kunit/items/36d9e5fa710ad26f8010     |
-
-<br>
-
-## 04. Dockerネットワーク
-
-### bridgeネットワーク
-
-#### ▼ bridgeネットワークとは
-
-複数のコンテナ間に対して、仮想ネットワークで接続させる。また、仮想ネットワークを物理ネットワークの間を、仮想ブリッジを使用してbridge接続する。ほとんどの場合、この方法を使用する。
-
-> ℹ️ 参考：https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html
-
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
-
-サーバーへのリクエストメッセージがコンテナに届くまでを以下に示す。サーバーの```8080```番ポートと、WWWコンテナの```80```番ポートのアプリケーションの間で、ポートフォワーディングを行う。これにより、『```http://<サーバーのプライベートIPアドレス（localhost）>:8080```』にリクエストを送信すると、WWWコンテナのポート番号に転送されるようになる。
-
-| 処理場所            | リクエストメッセージの流れ              | プライベートIPアドレス例                                                  | ポート番号例 |
-| :----------------- | :--------------------------------- |:---------------------------------------------------------------| ------------ |
-| コンテナ内プロセス    | インバウンド通信を待ち受けるポート        |                                                                | ```:80```    |
-|                    | ↑                                  |                                                                |              |
-| コンテナ            | コンテナポート                        | ・```http://127.0.0.1```<br>・```http://<Dockerのhostnameの設定値>``` | ```:80```    |
-|                    | ↑                                  |                                                                |              |
-| ホスト              | 仮想ネットワーク                      | ```http://172.*.*.*```                                         |              |
-|                    | ↑                                  |                                                                |              |
-| ホスト              | 仮想ブリッジ                         |                                                                |              |
-|                    | ↑                                  |                                                                |              |
-| ホストハードウェア    | サーバーのNIC（Ethernetカード）       | ```http://127.0.0.1```                                         | ```:8080```  |
-
-<br>
-
-### noneネットワーク
-
-#### ▼ noneネットワークとは
-
-特定のコンテナを、ホストや他のコンテナとは、ネットワーク接続させない。
-
-
-```bash
-$ docker network list
-
-NETWORK ID          NAME                    DRIVER              SCOPE
-7edf2be856d7        none                    null                local
-```
-
-<br>
-
-
-### hostネットワーク
-
-#### ▼ hostネットワークとは
-
-特定のコンテナに対して、ホストと同じネットワーク情報をもたせる。
-
-```bash
-$ docker network list
-
-NETWORK ID          NAME                    DRIVER              SCOPE
-ac017dda93d6        host                    host                local
-```
-
-<br>
-
-## 04-02. ホストコンテナ間の接続方法
-
-### ホストから
-
-#### ▼ 『ホスト』から『コンテナ（```localhost```）』にリクエスト
-
-あらかじめコンテナに対してポートフォワーディングを実行しておき、『ホスト』から『コンテナ』に対して、インバウンド通信を送信する。ここでのコンテナ側のホスト名は、『```localhost```』となる。ホストとコンテナの間のネットワーク接続の成否を確認できる。
-
-**＊実行例＊**
-
-『ホスト』から『コンテナ』に対してアウトバウンド通信を送信し、ホストとappコンテナの間の成否を確認する。
-
-```bash
-# ホストで実行
-$ curl --fail http://127.0.0.1:8080
-```
-
-<br>
-
-### コンテナから
-
-#### ▼ 『コンテナ』から『コンテナ』にリクエスト
-
-『コンテナ』から『コンテナ』に対して、アウトバウンド通信を送信する。ここでのコンテナのホスト名は、コンテナ内の『```/etc/hosts```』に定義されたものとなる。リクエストはホストを経由せず、そのままコンテナに送信される。コンテナ間のネットワーク接続の成否を確認できる。コンテナのホスト名の定義方法については、以下のリンクを参考にせよ。
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
-
-**＊実行例＊**
-
-『appコンテナ』から『webコンテナ』に対して、アウトバウンド通信を送信し、appコンテナとwebコンテナの間の成否を確認する。
-
-```bash
-# コンテナ内で実行
-$ curl --fail http://<webコンテナに割り当てたホスト名>:80/
-```
-
-#### ▼ 『コンテナ』から『ホスト（```host.docker.internal```）』にリクエスト
-
-『コンテナ』から『ホスト』に対して、アウトバウンド通信を送信する。ここでのホスト側のホスト名は、『```host.docker.internal```』になる。リクエストは、ホストを経由して、ポートフォワーディングされたコンテナに転送される。ホストとコンテナの間のネットワーク接続の成否を確認できる。
-
-**＊実行例＊**
-
-```bash
-# コンテナ内で実行
-$ curl --fail http://host.docker.internal:8080
-```
-
-<br>
-
-## 05. ロギング
+## 03. ロギング
 
 ### ロギングドライバー
 
 #### ▼ ロギングドライバーとは
 
 コンテナ内の標準出力（```/dev/stdout```）と標準エラー出力（```/dev/stderr```）に出力されたログを、ファイルやAPIに対して転送する。
+
+
 
 ```bash
 $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -387,7 +143,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ fluentd
 
-構造化ログに変換し、サイドカーとして稼働するFluentdコンテナに送信する。ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。
+構造化ログに変換し、サイドカーとして稼働するFluentdコンテナに送信する。
+
+ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。
+
+
 
 > ℹ️ 参考：
 >
@@ -405,7 +165,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ none
 
-標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。 ファイルに出力しないことにより、開発環境のアプリケーションサイズの肥大化を防ぐ。
+標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。
+
+ ファイルに出力しないことにより、開発環境のアプリケーションサイズの肥大化を防ぐ。
+
+
 
 #### ▼ awslogs
 
@@ -425,6 +189,8 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 #### ▼ gcplogs
 
 標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
+
+
 
 > ℹ️ 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
@@ -470,7 +236,13 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ▼ nginxイメージ
 
-公式のnginxイメージは、```/dev/stdout```というシンボリックリンクを、```/var/log/nginx/access.log```ファイルに作成している。また、```/dev/stderr```というシンボリックリンクを、```/var/log/nginx/error.log```ファイルに作成している。これにより、これらのファイルに対するログの出力は、```/dev/stdout```と```/dev/stderr```に転送される。
+公式のnginxイメージは、```/dev/stdout```というシンボリックリンクを、```/var/log/nginx/access.log```ファイルに作成している。
+
+また、```/dev/stderr```というシンボリックリンクを、```/var/log/nginx/error.log```ファイルに作成している。
+
+これにより、これらのファイルに対するログの出力は、```/dev/stdout```と```/dev/stderr```に転送される。
+
+
 
 > ℹ️ 参考：https://docs.docker.com/config/containers/logging/
 

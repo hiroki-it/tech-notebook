@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】Nginx＠ミドルウェア
-description: Nginx＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Nginx＠Web系ミドルウェア
+description: Nginx＠Web系ミドルウェアの知見を記録しています。
 ---
 
-# Nginx＠ミドルウェア
+# Nginx＠Web系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +21,17 @@ description: Nginx＠ミドルウェアの知見を記録しています。
 
 ![nginx_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/nginx_architecture.png)
 
-Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し、加えて一方で保存されたキャッシュを取得する。キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
+Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、から構成される。
+
+Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。
+
+また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。
+
+ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し、加えて一方で保存されたキャッシュを取得する。
+
+キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。
+
+
 
 > ℹ️ 参考：
 >
@@ -32,9 +44,23 @@ Nginxは、マスタープロセス、ワーカープロセス、プロキシキ
 
 ### リバースプロキシのミドルウェアとして
 
-#### ▼ HTTP/HTTPSプロトコルでルーティング
+#### ▼ 構成
 
-Nginxは、インバウンド通信をappサーバーにルーティングする。また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保存されたキャッシュを取得し、レスポンスとして返信する。
+サーバーサイドにNginxを配置し、リクエストをアプリケーションにプロキシする。
+
+ リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のアプリケーションにアクセスできるようになる。
+
+
+
+#### ▼ HTTP/HTTPSプロトコルの場合
+
+Nginxは、インバウンド通信をappサーバーにルーティングする。
+
+また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。
+
+以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保存されたキャッシュを取得し、レスポンスとして返信する。
+
+
 
 ![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
 
@@ -66,9 +92,7 @@ server {
 }
 ```
 
-<br>
-
-#### ▼ FastCGIプロトコルでルーティング
+#### ▼ FastCGIプロトコルの場合
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
@@ -119,13 +143,79 @@ server {
 
 <br>
 
-### ロードバランサ－のミドルウェアとして
 
-#### ▼ HTTP/HTTPSプロトコルでルーティング
+### フォワードプロキシのミドルウェアとして
 
-Nginxは、インバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
+#### ▼ 構成
 
-> ℹ️ 参考：http://nginx.org/en/docs/http/load_balancing.html
+フォワードプロキシのミドルウェアとして使用できる。
+
+クライアントサイドにNginxを配置し、リクエストを外部ネットワークにプロキシする。
+
+
+
+#### ▼ HTTP/HTTPSプロトコルの場合
+
+```nginx
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+     server {
+         listen                         3128;
+
+         resolver                       8.8.8.8;
+
+         proxy_connect;
+         proxy_connect_allow            443 563;
+         proxy_connect_connect_timeout  10s;
+         proxy_connect_read_timeout     10s;
+         proxy_connect_send_timeout     10s;
+
+         # 受信したリクエストを外部ネットワークにプロキシする。
+         location / {
+             proxy_pass $scheme://$http_host$request_uri;
+             proxy_set_header Host $host;
+             proxy_set_header X-Forwarded-Proto $scheme;
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+             proxy_set_header X-Forwarded-Port $remote_port;
+         }
+     }
+}
+```
+
+<br>
+
+### ```L4```/```L7```ロードバランサ－のミドルウェアとして
+
+#### ▼ ```L7```ロードバランサーの場合
+
+```L7```ロードバランサーとして使用できる。
+
+Nginxは、HTTPプロトコルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。
+
+受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSプロトコルにリダイレクトすると良い。
+
+また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。
+
+ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
+
+
+
+> ℹ️ 参考：
+> 
+> - http://nginx.org/en/docs/http/load_balancing.html
+> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
 **＊実装例＊**
 
@@ -169,6 +259,41 @@ server {
         server srv1.example.com;
         server srv2.example.com;
         server srv3.example.com;
+    }
+}
+```
+
+#### ▼ ```L4```ロードバランサーの場合
+
+Nginxは、TCPプロトコルのインバウンド通信を複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。
+
+```L4```ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
+> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
+
+**＊実装例＊**
+
+```nginx
+#-------------------------------------
+# TCPリクエスト
+#-------------------------------------
+stream {
+    error_log /var/log/nginx/stream.log info;
+    proxy_protocol on;
+    
+    upstream grpc_servers {
+        server 192.168.0.1:50051;
+        server 192.168.0.2:50051;
+    }
+    
+    server {
+        listen 50051;
+        proxy_pass grpc_servers;
     }
 }
 ```

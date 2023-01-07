@@ -1,0 +1,624 @@
+---
+title: 【IT技術の知見】EC2＠Eで始まるAWSリソース
+description: EC2＠Eで始まるAWSリソースの知見を記録しています。
+---
+
+# EC2＠Eで始まるAWSリソース
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+
+<br>
+
+
+## 01. EC2：Elastic Computer Cloud
+
+### EC2とは
+
+クラウドサーバーとして働く。
+
+注意点があるものだけまとめる。
+
+ベストプラクティスについては、以下のリンクを参考にせよ。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html
+
+<br>
+
+### セットアップ
+
+#### ▼ コンソール画面
+
+| 設定項目          | 説明                                                | 補足                                                                                                                                                                                |
+|-------------------|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AMI：Amazonマシンイメージ | AMIを選択する。                                         |                                                                                                                                                                                     |
+| インスタンスタイプ         |                                                     |                                                                                                                                                                                     |
+| EC2インスタンス数       |                                                     |                                                                                                                                                                                     |
+| ネットワーク            |                                                     |                                                                                                                                                                                     |
+| サブネット             | EC2を配置するサブネットを設定する。                             |                                                                                                                                                                                     |
+| 自動割り当てIPアドレス  | EC2へのパブリックIPアドレスの割り当てを有効化する。                   | EC2インスタンス作成後に有効にできない。                                                                                                                                                          |
+| キャパシティの予約       |                                                     |                                                                                                                                                                                     |
+| ドメイン結合ディレクトリ    |                                                     |                                                                                                                                                                                     |
+| IAMロール            | EC2に付与するIAMロールを設定する。                            |                                                                                                                                                                                     |
+| シャットダウン動作       |                                                     |                                                                                                                                                                                     |
+| 終了保護          | EC2インスタンスの削除を防ぐ。                                 | 必ず有効にすること。                                                                                                                                                                       |
+| モニタリング            |                                                     |                                                                                                                                                                                     |
+| テナンシー             |                                                     |                                                                                                                                                                                     |
+| Elastic Inference |                                                     |                                                                                                                                                                                     |
+| クレジット仕様         |                                                     |                                                                                                                                                                                     |
+| ストレージ             | EC2インスタンスのストレージを設定する。                             |                                                                                                                                                                                     |
+| キーペア              | SSH接続のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。 | ・セッションマネージャーを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。 |
+
+<br>
+
+### ダウンタイム
+
+#### ▼ ダウンタイムの発生条件
+
+以下の条件の時にEC2にダウンタイムが発生する。
+
+EC2を冗長化している場合は、ユーザーに影響を与えずに対処できる。
+
+ダウンタイムが発生する方のインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。
+
+
+
+| 変更する項目          | ダウンタイムの有無 | 補足                                                                                                                                                      |
+|---------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| インスタンスタイプ           | あり          | インスタンスタイプを変更するためにはEC2を停止する必要がある。そのため、ダウンタイムが発生する。                                                                                                 |
+| ホスト物理サーバーのリタイアメント | あり          | AWSから定期的にリタイアメントに関する警告メールが届く。ルートデバイスタイプが『EBS』の場合、ホスト物理サーバーの引っ越しを行うためにEC2の停止と起動が必要である。そのため、ダウンタイムが発生する。注意点として、再起動では引っ越しできない。 |
+
+<br>
+
+### インスタンスタイプ
+
+#### ▼ 世代と大きさ
+
+『世代』と『大きさ』からなる名前で構成される。
+
+世代の数字が上がるにつれて、より小さな世代と同じ大きさであっても、パフォーマンスが上がり、金銭的コストが下がる。
+
+AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。
+
+例えば、CentOS 6系のAMIでは、```t3.small```を選択できない。
+
+
+
+> ℹ️ 参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
+
+|      | 機能名                                                                     |
+|------|----------------------------------------------------------------------------|
+| 世代 | ```t2```、```t3```、```t3a```、```t4g```、```a1```                             |
+| 大きさ | ```nano```、```small```、```medium```、```large```、```xlarge```、```2xlarge``` |
+
+#### ▼ CPUバーストモード
+
+バーストモードのインスタンスタイプの場合、一定水準のベースラインCPU使用率を提供しつつ、これを超過できる。
+
+CPU使用率がベースラインを超えたとき、超過した分だけEC2はCPUクレジットを消費する。
+
+CPUクレジットは一定の割合で回復する。
+
+蓄積できる最大CPUクレジット、クレジットの回復率、ベースラインCPU使用率は、インスタンスタイプによって異なる。
+
+詳しくは以下のリンクを参考にせよ。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+
+<br>
+
+### ルートデバイスボリューム
+
+#### ▼ ルートデバイスボリュームとは
+
+EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームが紐づいている。
+
+複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐づけることもできる。
+
+加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。
+
+つまりEC2インスタンスが作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを介して、マウントポイントのディレクトリ内に作成される。
+
+また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保管される。
+
+複数のルートボリュームを紐づける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+
+#### ▼ EBSボリューム
+
+![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_ebs-backed-instance.png)
+
+名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。
+
+EBSで保管されているルートデバイスボリュームで、推奨の方法である。
+
+インスタンスストアボリュームとは異なり、コンピューティングとして動作するEC2インスタンスと、ストレージとして動作するルートデバイスボリュームが分離されている。
+
+そのため、EC2インスタンスが誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。
+
+また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+
+#### ▼ インスタンスストアボリューム
+
+![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
+
+名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。
+
+インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。
+
+EBSボリュームとは異なり、コンピューティングとして動作するEC2インスタンス内にルートデバイスボリュームが存在している。
+
+そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+<br>
+
+### EC2インスタンスのライフサイクルフェーズ
+
+![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_ec2_lifecycle_phase.png)
+
+EC2インスタンスのライフサイクルにはフェーズがある。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+
+| フェーズ名        | 説明                                       |
+|---------------|------------------------------------------|
+| pending       | インスタンスを開始する前に必要な準備があり、これが完了していない。 |
+| running       | インスタンスの起動が完了し、実行中である。               |
+| stopping      | インスタンスを停止している途中である。                    |
+| stopped       | インスタンスの停止が完了した。                        |
+| shutting-down | インスタンスを削除している途中である。                    |
+| terminated    | インスタンスの削除が完了した。                        |
+
+<br>
+
+### キーペア
+
+#### ▼ フィンガープリント値
+
+ローカルマシンに配置されている秘密鍵が、該当するEC2に配置されている公開鍵とペアなのか否か、フィンガープリント値を照合して確認する方法
+
+```bash
+$ openssl pkcs8 \
+    -in <秘密鍵名>.pem \
+    -inform PEM \
+    -outform DER \
+    -topk8 \
+    -nocrypt \
+      | openssl sha1 -c
+```
+
+<br>
+
+## 02. EC2 based on AMI：Amazon Machine Image
+
+### AMIとは
+
+EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームの両方が内蔵されたコピーのこと。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+> - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
+
+<br>
+
+### AMIタイプ
+
+#### ▼ EBS-backed AMI
+
+EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+#### ▼ instance store-backed AMI
+
+インスタンスストアボリュームを持つEC2インスタンスを作成するAMIのこと。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+<br>
+
+### AMIの共有
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
+
+| 共有先             | 説明 |
+|------------------|------|
+| 特定のリージョン間       | ⭕️   |
+| 特定のアカウント間       | ⭕️   |
+| 全てのアカウント間（パブリック） | ⭕️   |
+
+<br>
+
+### AMI OS
+
+#### ▼ AMI OSとは
+
+Linuxディストリビューション別にAMI OSを配布している。
+
+
+
+> ℹ️ 参考：https://aws.amazon.com/jp/mp/linux/
+
+#### ▼ Amazon Linux
+
+EC2インスタンスを作成するために最適化されたLinuxのこと。
+
+
+
+> ℹ️ 参考：https://www.acrovision.jp/service/aws/?p=609
+
+#### ▼ CentOS
+
+ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
+
+
+
+> ℹ️ 参考：https://wiki.centos.org/Cloud/AWS
+
+<br>
+
+## 03. EC2 with EBS：Elastic Block Storage
+
+### EBSとは
+
+EC2インスタンスのクラウド内蔵ストレージとして働く。
+
+
+
+<br>
+
+### セットアップ
+
+#### ▼ コンソール画面
+
+| 設定項目             | 説明                                                | 補足                                                                                                                     |
+|----------------------|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| ボリュームタイプ             | EBSボリュームの種類を設定する。                               |                                                                                                                          |
+| サイズ                  | 選択したボリュームタイプでのサイズを設定する。                         |                                                                                                                          |
+| IOPS（I/O per second） | EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数（個/秒）を設定する。 | ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>ℹ️ 参考：https://www.idcf.jp/words/io.html |
+| AZ                   | EBSボリュームを作成するAZ。                                  | EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。                                                                           |
+| 暗号化               | EC2インスタンスとEBSボリューム間のI/O処理を暗号化するか否かを設定する。   | ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                           |
+
+<br>
+
+### EBSボリュームタイプとサイズ
+
+#### ▼ EBSボリュームの種類
+
+| EBSボリュームタイプ                 | 対応する物理ストレージ | IOPS（読み書き処理の毎秒リクエスト数） | スループット                   |
+|-----------------------------|-----------------|----------------------------|--------------------------|
+| 汎用SSD（```gp2```）          | SSD             | サイズに応じて、自動的に設定される。     | 設定できない。                |
+| 汎用SSD（```gp3```）          | 同上            | サイズに関係なく、設定できる。          | サイズに関係なく、設定できる。      |
+| プロビジョンド IOPS SSD（```io1```） | 同上            | サイズに関係なく、設定できる。          | 設定できない。                |
+| プロビジョンド IOPS SSD（```io2```） | 同上            | サイズに関係なく、設定できる。          | 設定できない。                |
+| Cold HDD                    | HDD             | サイズに応じて、自動的に設定される。     | サイズに応じて、自動的に設定される。 |
+| スループット最適化 HDD            | 同上            | 設定できない。                    | サイズに応じて、自動的に設定される。 |
+| マグネティック                     | 同上            | 設定できない。                    | 設定できない。                |
+
+#### ▼ 下限のサイズ
+
+一般的なアプリケーションであれば、最低限```20```～```30```GiBのサイズがあると良い。
+
+しかし、踏み台サーバーの場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなサイズのEBSボリュームを組み込む必要がない。
+
+そこでできるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。
+
+OSによって下限ボリュームサイズが異なることに注意する。
+
+
+
+| OS           | 仮想メモリ        | 下限EBSボリュームサイズ |
+|--------------|----------------|-----------------|
+| Amazon Linux | ```t2.micro``` | ```8```         |
+| CentOS       | ```t2.micro``` | ```10```        |
+
+#### ▼ 現在の空き容量の確認
+
+EBSボリュームの現在の空き容量を確認するためには、```df```コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html
+
+```bash
+[ec2-user ~]$ df -hT /dev/xvda1
+
+# パーティションの使用率が15%であることから、EBSボリュームの使用率がわかる。
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/xvda1     xfs       8.0G  1.2G  6.9G  15% /
+```
+
+<br>
+
+### EBSボリュームの拡張
+
+#### ▼ サイズの拡張
+
+サイズを拡張するためには、実際のストレージ（EBSボリューム）、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して作業が必要にある。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
+
+**＊例＊**
+
+（１）任意で、バックアップのために拡張対象のEC2インスタンスのAMIを作成しておく。
+
+（２）EC2インスタンスのEBSボリュームを```8```GiBから```16```GiBに拡張する例を考える。```lsblk```コマンドで現在のボリュームのサイズを確認すると、EBSボリュームが```8```GiBである。この時、EBSボリューム内にパーティションがある。```df```コマンドでパーティションのサイズを確認すると、同じく```8```GiBである。
+
+```bash
+$ lsblk
+
+NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
+xvda      202:0    0     8G    0   disk              # ストレージ（EBSボリューム）
+└─xvda1   202:1    0     8G    0   part   /          # パーティション
+nvme1n1   259:1    0   200G    0   disk   /var/lib
+...
+```
+
+```bash
+$ df -h
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
+...
+```
+
+（３）コンソール画面から、EBSボリュームを```16```GiBに拡張する。この時、ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが拡張されたことを確認できる。ただ```df```コマンドで確認すると、パーティションはまだ拡張されていない。
+
+```bash
+$ lsblk
+
+NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
+xvda          202:0    0    16G   0  disk             # ストレージ（EBSボリューム）
+└─xvda1       202:1    0     8G   0  part  /          # パーティション
+nvme1n1       259:1    0   200G   0  disk  /var/lib
+...
+```
+
+```bash
+$ df -h
+
+Filesystem     Size   Used  Avail  Use%   Mounted on
+/dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
+/dev/nvme1n1   200G   161G    40G   81%   /var/lib
+...
+```
+
+（４）パーティションに紐づくファイルシステムのタイプを確認する。今回は```ext4```タイプである。
+
+```bash
+$ df -hT
+
+Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+/dev/xvda1     ext4    8G  1.9G    14G   12%  /           # ext4タイプ
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib
+...
+```
+
+#### ▼ EBSボリュームが複数のパーティションで区切られている場合
+
+（５）```lsblk```コマンドの結果、EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。今回、EBSボリュームがパーティションに区切られている。そのため、```growpart```コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。
+
+```bash
+# growpart <パーティションのデバイスファイル名> <パーティションの番号>
+$ growpart /dev/xvda 1
+```
+
+（６）改めて```lsblk```コマンドを実行すると、パーティションのサイズが拡張されていることを確認できる。
+
+```bash
+$ lsblk
+
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  16G  0 disk            # ストレージ（EBSボリューム）
+└─xvda1 202:1    0  16G  0 part /          # パーティション
+...
+```
+
+#### ▼ ```ext4```タイプの場合
+
+（５）ファイルシステムのサイズを拡張していく。もし、パーティションに紐づくファイルシステムのタイプが```ext4```タイプであった場合、```resize2fs```コマンドでパーティションのデバイスファイル名を指定し、これに紐づくファイルシステムのサイズを拡張する。
+
+```bash
+# 空きサイズの100%を使用して拡張する。
+# sudo resize2fs <パーティションのデバイスファイル名>
+$ sudo resize2fs /dev/xvda1
+```
+
+（６）改めて```df```コマンドを実行すると、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
+
+```bash
+$ df -hT
+
+Filesystem  Type  Size  Used  Avail  Use%  Mounted on
+/dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # パーティション
+...
+```
+
+#### ▼ ```xfs```タイプの場合
+
+（５）ファイルシステムのサイズを拡張していく。もし、パーティションに紐づくファイルシステムのタイプが```xfs```タイプであった場合、```xfs_growfs```コマンドでファイルシステムのマウントポイントを指定し、ファイルシステムのサイズを拡張する。もし、```xfs_growfs```コマンドがない場合は、インストールする。
+
+```bash
+# xfs_growfs -d <ファイルシステムのマウントポイント名>
+$ xfs_growfs -d /var/lib
+
+# もし、xfs_growfsコマンドがない場合は、インストールする。
+# yum install xfsprogs
+```
+
+（６）改めて```df```コマンドを実行すると、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
+
+```bash
+$ df -hT
+
+Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # パーティション
+...
+```
+
+<br>
+
+### EBSボリュームの永続化
+
+#### ▼ EBSボリュームの永続化とは
+
+EC2インスタンスの初期作成時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。
+
+これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+
+#### ▼ EC2インスタンスの作成後に永続化する
+
+EC2インスタンスの作成後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。
+
+
+
+```bash
+$ aws ec2 modify-instance-attribute \
+    --instance-id <インスタンスID> 
+    --block-device-mappings \
+    file://example.json
+```
+
+```bash
+# example.jsonファイル
+[
+  {
+    "DeviceName": "/dev/sda1",
+    "Ebs": {
+      "DeleteOnTermination": false
+    }
+  }
+]
+```
+
+#### ▼ 注意点
+
+EC2インスタンスにオートスケーリングを適用している場合は、EBSボリュームを永続化しない方が良いかもしれない。
+
+オートスケーリングのスケールイン時に、削除されたEC2インスタンスのEBSボリュームが削除されないため、未使用のEBSボリュームがどんどん溜まっていく問題が起こる。
+
+
+
+> ℹ️ 参考：https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
+
+<br>
+
+### スナップショット
+
+#### ▼ スナップショットとは
+
+EBSボリュームのコピーのこと。
+
+ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
+
+
+
+> ℹ️ 参考：https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
+
+#### ▼ セットアップ
+
+| 設定項目         | 説明                                                             |
+|------------------|----------------------------------------------------------------|
+| リソースタイプ          | 単一のボリュームのスナップショット、複数のボリュームを含むスナップショット、のいずれを作成するか、を設定する。 |
+| ボリュームID/インスタンスID | スナップショットの元になるボリューム/EC2インスタンスを設定する。                            |
+
+<br>
+
+
+## 04. EC2インスタンスへの接続
+
+### キーペアを使用したSSH接続
+
+キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つEC2インスタンスにSSH接続でアクセスできる。
+
+クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。
+
+その後、Route53、ALBを経由せず、そのままEC2へ向かう。
+
+
+
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+
+<br>
+
+### セッションマネージャーを使用したログインシェル
+
+#### ▼ セッションマネージャーを使用したログインシェル
+
+セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
+> - https://dev.classmethod.jp/articles/ssh-through-session-manager/
+
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
+
+#### ▼ systems-managerエージェント
+
+Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/ami-preinstalled-agent.html
+
+#### ▼ VPCエンドポイントの作成
+
+| VPCエンドポイントの接続先 | プライベートDNS名                                    | 説明                                         |
+|-------------------|------------------------------------------------|--------------------------------------------|
+| EC2               | ```ec2messages.ap-northeast-1.amazonaws.com``` | ローカルマシンからEC2インスタンスにコマンドを送信するため。            |
+| Systems Manager   | ```ssm.ap-northeast-1.amazonaws.com```         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager   | ```ssmmessage.ap-northeast-1.amazonaws.com```  | Secrets Managerを使用するため。                    |
+
+
+> ℹ️ 参考：
+>
+> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
+
+<br>

@@ -30,13 +30,15 @@ theme:
   palette:
     scheme: dark
   features:
-    - navigation.expand
+    - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
+    - navigation.indexes
     - search.highlight
     - search.suggest
+    - toc.follow
 
 # URL形式
 use_directory_urls: false
@@ -60,19 +62,30 @@ extra_css:
   - assets/css/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 
+# highlight.jsを使用する場合は、以下のコメントアウトを外す。
+#  # VSCodeのダークテーマを使用する
+#  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css"
+#extra_javascript:
+#  # highlight.jsを読み込む
+#  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"
+#  - javascripts/config.js
+
 # 標準プラグイン
 markdown_extensions:
   # コードブロックのハイライト化
   - pymdownx.highlight:
-      pygments_style: monokai
-      linenums: true
+      # highlight.jsを使用する場合は、falseにする。
+      use_pygments: true
+      # pygmentsのテーマ名は以下で選択できるが、機能しない...
+      # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
   - pymdownx.superfences
+  - pymdownx.inlinehilite
   # URLテキストのリンク化
   - pymdownx.magiclink
   # 目次の設定
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=conten#table-of-contents
   - toc:
-      title: 'このページ内容'
+      title: 'このページの内容'
       permalink: true
       toc_depth: 4
   # メタタグの有効化
@@ -97,34 +110,42 @@ plugins:
 
 # ナビゲーション
 nav:
-  - 目次: index.md
+  - 当サイトについて: index.md
 
-  - 当サイトについて: about.md
-
-  - 自己紹介: self_introduction.md
+  - 自己紹介: about.md
 
   - 🌳 システム:
+      - system/index.md
       - システム: system/system.md
       - システム品質特性: system/system_quality_attributes.md
 
   - 🧬 ソフトウェア:
+      - software/index.md
       - ソフトウェア: software/software.md
+      - 設計ポリシー: software/software_policy.md
       - ■ 基本ソフトウェア（OS）:
-          - ■ カーネル:
-              - カーネル: software/software_basic_kernel.md
-              - メモリ管理: software/software_basic_kernel_memory_management.md
-              - ストレージ管理: software/software_basic_kernel_storage_management.md
+          - ■ Linuxカーネル:
+              - Linuxカーネル: software/software_basic_linux_kernel.md
+              - プロセス管理: software/software_basic_linux_kernel_process_management.md
+              - メモリ管理: software/software_basic_linux_kernel_memory_management.md
+              - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
+              - I/O（入出力）管理: software/software_basic_linux_kernel_io_management.md
+              - ジョブ管理: software/software_basic_linux_kernel_job_management.md
           - ■ ユーティリティ:
               - ユーティリティ: software/software_basic_utility.md
-              - パッケージ: software/software_basic_utility_package.md
+              - UNIX系標準ユーティリティ: software/software_basic_utility_unix.md
               - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
               - シェル: software/software_basic_utility_shell.md
               - スクリプト: software/software_basic_utility_script.md
+              - ■ パッケージ:
+                  - メモリ系: software/software_basic_utility_package_memory.md
+                  - ネットワーク系: software/software_basic_utility_package_network.md
+                  - セキュリティ系: software/software_basic_utility_package_security.md
+                  - ストレージ系: software/software_basic_utility_package_storage.md
           - ■ 言語プロセッサ:
               - 言語プロセッサ: software/software_basic_language_processor.md
               - 機械語と進数: software/software_basic_language_processor_machine_language_and_radix.md
       - ■ ミドルウェア:
-          - Linux系: software/software_middleware_linux.md
           - ■ Web系:
               - ■ Nginx:
                   - Nginx: software/software_middleware_web_nginx.md
@@ -147,18 +168,34 @@ nav:
               - ■ ASGI:
                   - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
           - ■ データベース系:
-              - ■ データベース:
+              - ■ RDB:
                   - ■ RDBMS:
-                      - RDBMS: software/software_middleware_database_rdbms.md
-                      - ACID: software/software_middleware_database_rdbms_acid.md
-              - ■ My︎SQL:
-                  - MySQL: software/software_middleware_database_mysql.md
-                  - クエリロジック: software/software_middleware_database_mysql_query.md
+                      - RDBMS: software/software_middleware_database_rdb_rdbms.md
+                      - 設計ポリシー: software/software_middleware_database_rdb_rdbms_policy.md
+                      - ACID: software/software_middleware_database_rdb_rdbms_acid.md
+                  - ■ My︎SQL:
+                      - MySQL: software/software_middleware_database_rdb_mysql.md
+                      - SQL: software/software_middleware_database_rdb_mysql_sql.md
+                      - 設定ファイル: software/software_middleware_database_rdb_mysql_conf.md
+              - ■ TSDB:
+                  - ■ VictoriaMetrics:
+                      - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
+                      - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
+          - ■ ログ系:
+              - ■ FluentBit/Fluentd:
+                  - FluentBit/Fluentd: software/software_middleware_log_fluentbit_fluentd.md
+                  - FluentBit: software/software_middleware_log_fluentbit.md
+          - ■ セキュリティ系:
+              - Linux標準: software/software_middleware_security_linux.md
+              - ■ Falco:
+                  - Falco: software/software_middleware_security_falco.md
+                  - 設定ファイル: software/software_middleware_security_falco_conf.md
           - ■ サービスメッシュ系:
               - サービスメッシュ: software/software_middleware_service_mesh.md
               - ■ Envoy:
                   - Envoy: software/software_middleware_service_mesh_envoy.md
                   - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
+                  - API: software/software_middleware_service_mesh_envoy_api.md
       - ■ アプリケーションソフトウェア:
           - ■ アーキテクチャ:
               - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
@@ -174,75 +211,84 @@ nav:
               - ■ RESTful-API:
                   - RESTful-API: software/software_application_collaboration_api_restful.md
                   - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
-              - RPC-API: software/software_application_collaboration_api_rpc.md
-          - ■ 言語:
-              - 言語の種類: software/software_application_language_type.md
-              - 言語別の処理方式: software/software_application_language_process_mode.md
-              - ■ データ記述言語:
-                  - データ記述言語: software/software_application_language_data_description_language.md
-                  - ■ クエリロジック:
-                      - JSONクエリ: software/software_application_language_data_description_language_query_json.md
-              - ■ PHP:
-                  - PHP: software/software_application_language_php.md
-                  - コマンド: software/software_application_language_php_command.md
-                  - ■ クラスベース:
-                      - クラス: software/software_application_language_php_class_based.md
-                      - メソッド/データ: software/software_application_language_php_class_based_method_data.md
-                      - データ構造: software/software_application_language_php_class_based_data_structure.md
-                  - ■ ロジック:
-                      - 検証ロジック: software/software_application_language_php_logic_validation.md
-                      - エラーとエラーハンドリング: software/software_application_language_php_logic_error_and_error_handling.md
-                      - 反復ロジック: software/software_application_language_php_logic_iteration.md
-                      - アルゴリズム: software/software_application_language_php_logic_algorithm.md
-                      - デバッグ: software/software_application_language_php_logic_debug.md
-                  - ■ フレームワーク:
-                      - ■ Laravel:
-                          - コンポーネント: software/software_application_language_php_framework_laravel_component.md
-                          - ︎Eloquent ORM: software/software_application_language_php_framework_laravel_eloquent_orm.md
-                          - 専用パッケージ: software/software_application_language_php_framework_laravel_package.md
-                          - 認証/認可系パッケージ: software/software_application_language_php_framework_laravel_package_auth.md
-                          - コマンド: software/software_application_language_php_framework_laravel_command.md
-                      - ■ Symfony:
-                          - コンポーネント: software/software_application_language_php_framework_symfony_component.md
-                          - Doctrine ORM: software/software_application_language_php_framework_symfony_doctrine_orm.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_php_package_management.md
-                      - SQLパッケージ: software/software_application_language_php_package_sql.md
-                      - その他パッケージ: software/software_application_language_php_package_others.md
-              - ■ JavaScript:
-                  - ■ プロトタイプベース:
-                      - プロトタイプ: software/software_application_language_js_prototype_based.md
-                      - メソッド/データ: software/software_application_language_js_prototype_based_method_data.md
-                  - ■ ロジック:
-                      - 検証ロジック: software/software_application_language_js_logic_validation.md
-                      - 非同期処理ロジック: software/software_application_language_js_logic_asynchronous_process.md
-                      - デバッグ: software/software_application_language_js_logic_debug.md
-                  - ■ フレームワーク:
-                      - Vue.js: software/software_application_language_js_framework_vuejs.md
-                      - Nuxt.js: software/software_application_language_js_framework_nuxtjs.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_js_package_management.md
-                  - ■ ブラウザ:
-                      - ブラウザレンダリング: software/software_application_language_js_browser_rendering.md
-              - ■ Go:
-                  - Go: software/software_application_language_go.md
-                  - コマンド: software/software_application_language_go_command.md
-                  - ■ ロジック:
-                      - メソッド/データ: software/software_application_language_go_logic_method_data.md
-                  - ■ フレームワーク:
-                      - Gin: software/software_application_language_go_framework_gin.md
-                  - ■ パッケージ:
-                      - パッケージ: software/software_application_language_go_package.md
-              - ■ Python:
-                  - Python: software/software_application_language_python.md
-                  - ■ フレームワーク:
-                      - ■ Flask:
-                          - コンポーネント: software/software_application_language_python_framework_flask_component.md
-                          - コマンド: software/software_application_language_python_framework_flask_command.md
-                  - ■ パッケージ:
-                      - パッケージ管理: software/software_application_language_python_package_management.md
+              - ■ RPC-API:
+                  - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
+              - ■ GraphQL-API:
+                  - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
+
+  - 🔠 言語:
+      - language/index.md
+      - 言語の種類: language/language_type.md
+      - 言語別の処理方式: language/language_process_mode.md
+      - ■ データ記述言語:
+          - ■ JSON:
+              - JSON: language/language_data_description_language_json.md
+              - JSONクエリ: language/language_data_description_language_json_query.md
+          - ■ YAML:
+              - YAML: language/language_data_description_language_yaml.md
+      - ■ PHP:
+          - PHP: language/language_php.md
+          - コマンド: language/language_php_command.md
+          - ■ クラスベース:
+              - クラス: language/language_php_class_based.md
+              - メソッド/データ: language/language_php_class_based_method_data.md
+              - データ構造: language/language_php_class_based_data_structure.md
+          - ■ ロジック:
+              - 検証ロジック: language/language_php_logic_validation.md
+              - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
+              - 反復ロジック: language/language_php_logic_iteration.md
+              - アルゴリズム: language/language_php_logic_algorithm.md
+              - デバッグ: language/language_php_logic_debug.md
+          - ■ フレームワーク:
+              - ■ Laravel:
+                  - コンポーネント: language/language_php_framework_laravel_component.md
+                  - ︎Eloquent ORM: language/language_php_framework_laravel_eloquent_orm.md
+                  - 専用パッケージ: language/language_php_framework_laravel_package.md
+                  - 認証/認可系パッケージ: language/language_php_framework_laravel_package_auth.md
+                  - コマンド: language/language_php_framework_laravel_command.md
+              - ■ Symfony:
+                  - コンポーネント: language/language_php_framework_symfony_component.md
+                  - Doctrine ORM: language/language_php_framework_symfony_doctrine_orm.md
+          - ■ パッケージ:
+              - パッケージ管理: language/language_php_package_management.md
+              - SQLパッケージ: language/language_php_package_sql.md
+              - その他パッケージ: language/language_php_package_others.md
+      - ■ JavaScript:
+          - ■ プロトタイプベース:
+              - プロトタイプ: language/language_js_prototype_based.md
+              - メソッド/データ: language/language_js_prototype_based_method_data.md
+          - ■ ロジック:
+              - 検証ロジック: language/language_js_logic_validation.md
+              - 非同期処理ロジック: language/language_js_logic_asynchronous_process.md
+              - デバッグ: language/language_js_logic_debug.md
+          - ■ フレームワーク:
+              - Vue.js: language/language_js_framework_vuejs.md
+              - Nuxt.js: language/language_js_framework_nuxtjs.md
+          - ■ パッケージ:
+              - パッケージ管理: language/language_js_package_management.md
+          - ■ ブラウザ:
+              - ブラウザレンダリング: language/language_js_browser_rendering.md
+      - ■ Go:
+          - Go: language/language_go.md
+          - コマンド: language/language_go_command.md
+          - ■ ロジック:
+              - メソッド/データ: language/language_go_logic_method_data.md
+          - ■ フレームワーク:
+              - Gin: language/language_go_framework_gin.md
+          - ■ パッケージ:
+              - パッケージ: language/language_go_package.md
+      - ■ Python:
+          - Python: language/language_python.md
+          - ■ フレームワーク:
+              - ■ Flask:
+                  - コンポーネント: language/language_python_framework_flask_component.md
+                  - コマンド: language/language_python_framework_flask_command.md
+          - ■ パッケージ:
+              - パッケージ管理: language/language_python_package_management.md
+      - R: language/language_r.md
 
   - 🧪 テスト:
+      - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
           - PHP: testing/testing_whitebox_php.md
@@ -252,144 +298,251 @@ nav:
           - ■ 総合テスト:
               - 総合テスト: testing/testing_blackbox_system_test.md
               - JMeter: testing/testing_blackbox_system_test_jmeter.md
+              - ChaosMesh: testing/testing_blackbox_system_test_chaos_mesh.md
 
   - 💻 ハードウェア:
+      - hardware/index.md
       - ハードウェア: hardware/hardware.md
+      - CPU: hardware/hardware_cpu.md
+      - メモリ: hardware/hardware_memory.md
+      - ストレージ: hardware/hardware_storage.md
       - 組み込み機器: hardware/hardware_embedded_system.md
 
   - 🌏 ネットワーク:
-      - ネットワーク: network/network.md
-      - TCP階層モデル: network/network_model_tcp.md
-      - OSI参照モデル: network/network_model_osi.md
+      - network/index.md
+      - ■ ネットワーク:
+          - ネットワーク: network/network.md
+          - IPアドレス: network/network_ip_address.md
+          - ポート: network/network_port.md
+          - ルーター: network/network_router.md
+      - ■ モデル:
+          - TCP階層モデル: network/network_model_tcp.md
+          - OSI参照モデル: network/network_model_osi.md
 
   - 🔐 セキュリティ:
-      - サイバー攻撃: security/security_cyber_attacks.md
-      - 通信データの暗号化技術: security/security_encryption_technology.md
+      - security/index.md
+      - ■ サイバー攻撃:
+          - サイバー攻撃: security/security_cyber_attacks.md
+          - マルウェア: security/security_cyber_attacks_malware.md
+      - ■ 対策:
+          - 対策: security/security_measures.md
+          - ■ 通信データの暗号化技術:
+              - 通信データの暗号化技術: security/security_measures_encryption_technology.md
+              - 暗号方式: security/security_measures_encryption_technology_encryption_method.md
+              - 暗号化プロトコル: security/security_measures_encryption_technology_encryption_protocol.md
       - ■ 認証/認可:
-          - 認証: security/security_auth_authentication.md
-          - 認可: security/security_auth_authorization.md
+          - ■ 認証:
+              - 認証: security/security_auth_authentication.md
+              - HTTP認証: security/security_auth_authentication_http.md
+              - トークン: security/security_auth_authentication_token.md
+          - ■ 認可:
+              - 認可: security/security_auth_authorization.md
+              - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
 
   - ⛅️ クラウドコンピューティング:
+      - cloud_computing/index.md
       - クラウドコンピューティング: cloud_computing/cloud_computing.md
       - ■ AWS:
-          - AWSリソース: cloud_computing/cloud_computing_aws.md
-          - A〜D: cloud_computing/cloud_computing_aws_1.md
-          - E: cloud_computing/cloud_computing_aws_2.md
-          - F〜K: cloud_computing/cloud_computing_aws_3.md
-          - L〜R: cloud_computing/cloud_computing_aws_4.md
-          - S〜U: cloud_computing/cloud_computing_aws_5.md
-          - V〜Z: cloud_computing/cloud_computing_aws_6.md
+          - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
+          - ■ AWSリソース:
+              - ■ Aで始まるAWSリソース:
+                  - Aで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_a.md
+                  - ︎API Gateway: cloud_computing/cloud_computing_aws_resource_a_api_gateway.md
+                  - ︎API Gatewayに対するymlインポート: cloud_computing/cloud_computing_aws_resource_a_api_gateway_import.md
+              - Bで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_b.md
+              - ■ Cで始まるAWSリソース:
+                  - Cで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_c.md
+                  - CloudFront: cloud_computing/cloud_computing_aws_resource_c_cloudfront.md
+                  - CloudWatch: cloud_computing/cloud_computing_aws_resource_c_cloudwatch.md
+                  - Code系: cloud_computing/cloud_computing_aws_resource_c_code.md
+              - Dで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_d.md
+              - ■ Eで始まるAWSリソース:
+                  - Eで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_e.md
+                  - EC2: cloud_computing/cloud_computing_aws_resource_e_ec2.md
+                  - ECS、EKS: cloud_computing/cloud_computing_aws_resource_e_ecs_eks.md
+                  - EFS: cloud_computing/cloud_computing_aws_resource_e_efs.md
+                  - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
+              - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
+              - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
+              - Iで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_i.md
+              - Kで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_k.md
+              - ■ Lで始まるAWSリソース:
+                  - Lで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_l.md
+                  - Lambda: cloud_computing/cloud_computing_aws_resource_l_lambda.md
+                  - Lambda関数: cloud_computing/cloud_computing_aws_resource_l_lambda_function.md
+              - ■ Rで始まるAWSリソース:
+                  - Rで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_r.md
+                  - RDS: cloud_computing/cloud_computing_aws_resource_r_rds.md
+              - ■ Sで始まるAWSリソース:
+                  - Sで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_s.md
+                  - S3: cloud_computing/cloud_computing_aws_resource_s_s3.md
+                  - STS: cloud_computing/cloud_computing_aws_resource_s_sts.md
+                  - Systems Manager: cloud_computing/cloud_computing_aws_resource_s_systems_manager.md
+              - Tで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_t.md
+              - ■ Vで始まるAWSリソース:
+                  - ■ Vで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_v.md
+                  - ■ VPC: cloud_computing/cloud_computing_aws_resource_v_vpc.md
+              - ■ Wで始まるAWSリソース:
+                  - Wで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_w.md
+                  - WAF: cloud_computing/cloud_computing_aws_resource_w_waf.md
           - ■ 設計ポリシー:
               - 可用性: cloud_computing/cloud_computing_aws_policy_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_policy_reliability.md
               - 安全性: cloud_computing/cloud_computing_aws_policy_security.md
               - コスト最適化: cloud_computing/cloud_computing_aws_policy_cost_optimization.md
-          - ■ その他:
-              - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
-              - API Gatewayへのymlインポート: cloud_computing/cloud_computing_aws_api_gateway_import.md
-              - Lambda関数の実装: cloud_computing/cloud_computing_aws_lambda_function.md
-              - FireLensコンテナ: cloud_computing/cloud_computing_aws_firelens.md
+          - ツール: cloud_computing/cloud_computing_aws_tools.md
       - ■ GCP:
-          - コマンド: cloud_computing/cloud_computing_gcp_command.md
-          - Anthos: cloud_computing/cloud_computing_gcp_anthos.md
+          - GCP CLI: cloud_computing/cloud_computing_gcp_cli.md
+          - ■ GCPリソース:
+              - ■ Aで始まるGCPリソース:
+                  - Anthos: cloud_computing/cloud_computing_gcp_resource_a_anthos.md
   - 📦 仮想化:
+      - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ型仮想化:
-          - Docker: virtualization/virtualization_container_docker.md
+          - ■ Docker:
+              - Docker: virtualization/virtualization_container_docker.md
+              - ストレージ: virtualization/virtualization_container_docker_storage.md
+              - ネットワーク: virtualization/virtualization_container_docker_network.md
+              - コマンド: virtualization/virtualization_container_docker_command.md
+          - ■ Containerd:
+              - コマンド: virtualization/virtualization_container_containerd_command.md
 
   - ⚙️ IaC:
+      - infrastructure_as_code/index.md
       - IaC: infrastructure_as_code/infrastructure_as_code.md
       - ■ 手続き型:
           - ■ Ansible:
               - Ansible: infrastructure_as_code/infrastructure_as_code_ansible.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_ansible_command.md
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_conf.md
+              - Playbook: infrastructure_as_code/infrastructure_as_code_ansible_playbook.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_ansible_cfg.md
+              - Ansible Galaxy: infrastructure_as_code/infrastructure_as_code_ansible_galaxy.md
           - ■ Docker:
               - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_command.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_docker_policy.md
       - ■ 宣言型:
           - ■ Docker Compose:
-              - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
+              - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
           - ■ Kubernetes:
-              - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+              - ■ Kubernetes:
+                  - Kubernetes: infrastructure_as_code/infrastructure_as_code_kubernetes.md
+                  - ■ コントロールプレーンコンポーネント:
+                      - コントロールプレーンコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane_addon.md
+                  - ■ Nodeコンポーネント:
+                      - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
+                      - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.md
+                  - クラウドプロバイダーアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon.md
+              - ■ ネットワーク:
+                  - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
+                  - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
+              - ハードウェアリソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
-              - アドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon.md
-              - ■ Helm:
-                  - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_helm.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_command.md
-                  - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_policy.md
-                  - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_helm_helmfile.md
-              - ■ Minikube:
-                  - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_minikube.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_minikube_command.md
+              - 静的解析ツール: infrastructure_as_code/infrastructure_as_code_kubernetes_linter.md
+              - ■ Kubernetesリソース:
+                  - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
+                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+              - ■ CSIドライバー:
+                  - ■ SecretsストアCSIドライバー:
+                      - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.md
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.md
+              - ■ 開発環境:
+                  - ■ Minikube:
+                      - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
+              - ■ マニフェスト管理:
+                  - ■ Helm:
+                      - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
+                      - ■ チャート:
+                          - チャート: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.md
+                          - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
+                      - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
+                      - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
+                  - ■ Kustomize:
+                      - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
+                      - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
               - ■ カスタムリソース:
                   - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
                   - ■ ArgoCD:
                       - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.md
+                      - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.md
+                      - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.md
-                  - ■ FluentBit/Fluentd:
-                      - FluentBit vs. Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit_vs_fluentd.md
-                      - FluentBit: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_fluentbit.md
+                  - ■ CertManager:
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.md
                   - ■ Grafana:
                       - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.md
+                  - ■ Kyverno:
+                      - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.md
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.md
                   - ■ Istio:
-                      - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
-                      - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
-                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
+                      - ■ Istio:
+                          - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.md
+                          - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.md
+                          - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.md
+                      - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.md
+                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.md
+                      - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.md
                   - ■ Jaeger:
                       - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.md
                   - ■ Kiali:
                       - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.md
-                  - ■ OpenTelemetry:
-                      - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_telemetry.md
+                  - ■ OpenPolicyAgent:
+                      - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.md
                   - ■ Prometheus:
                       - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.md
+                      - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.md
                       - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.md
                       - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.md
-                  - ■ SecretProviderClass:
-                      - SecretProviderClass: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class.md
-                      - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_secret_provider_class_resource_definition.md
-                  - ■ VictoriaMetrics:
-                      - VictoriaMetrics: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_victoria_metrics.md
           - ■ Packer:
+              - Packer: infrastructure_as_code/infrastructure_as_code_packer.md
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
           - ■ Serverless Framework:
               - serverless.yml: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md
           - ■ Terraform:
               - コマンド: infrastructure_as_code/infrastructure_as_code_terraform_command.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_terraform_conf.md
+              - ■ tfファイル:
+                  - ブロック: infrastructure_as_code/infrastructure_as_code_terraform_tf_block.md
+                  - モジュール: infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md
+              - ■ プロバイダー:
+                  - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
               - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_terraform_policy.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
-              - ■ tfファイル:
-                  - tfファイル: infrastructure_as_code/infrastructure_as_code_terraform_tf.md
-                  - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_tf_aws_provider.md
           - ■ Vagrant:
               - Vagrantfile: infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_vagrant_command.md
+
   - ♾️ DevOps:
+      - devops/index.md
       - DevOps: devops/devops.md
-      - GitHub Actions: devops/devops_github_actions.md
-      - GitLab CI: devops/devops_gitlab_ci.md
-      - Capistrano: devops/devops_capistrano.md
-      - ArgoCD: devops/devops_argocd.md
-      - ■ CircleCI:
-          - CircleCI: devops/devops_circleci.md
-          - config.yml: devops/devops_circleci_config_yml.md
-          - orbs: devops/devops_circleci_orbs.md
-          - 設計ポリシー: devops/devops_circleci_policy.md
-      - ■ Skaffold:
-          - skaffold.yaml: devops/devops_skaffold_yaml.md
-          - コマンド: devops/devops_skaffold_command.md
+      - ■ CiOps:
+          - GitHub Actions: devops/devops_github_actions.md
+          - GitLab CI: devops/devops_gitlab_ci.md
+          - Capistrano: devops/devops_capistrano.md
+          - ■ CircleCI:
+              - CircleCI: devops/devops_circleci.md
+              - config.yml: devops/devops_circleci_config_yml.md
+              - orbs: devops/devops_circleci_orbs.md
+              - 設計ポリシー: devops/devops_circleci_policy.md
+          - ■ Skaffold:
+              - skaffold.yaml: devops/devops_skaffold_yaml.md
+              - コマンド: devops/devops_skaffold_command.md
+      - ■ GitOps:
+          - ArgoCD: devops/devops_argocd.md
 
   - 🔎 可観測性:
+      - observability/index.md
       - 可観測性: observability/observability.md
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
@@ -397,9 +550,13 @@ nav:
           - サービスレベル: observability/observability_monitoring_service_level.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry.md
-          - ■ Googleアプリ:
-              - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
-              - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
+          - FluentBit/Fluentd: observability/observability_telemetry_fluentbit_fluentd.md
+          - Grafana: observability/observability_telemetry_grafana.md
+          - Jaeger: observability/observability_telemetry_jaeger.md
+          - Prometheus: observability/observability_telemetry_prometheus.md
+          - ■ OpenTelemetry:
+              - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
+              - トレーサー: observability/observability_telemetry_open_telemetry_tracer.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
@@ -407,9 +564,18 @@ nav:
               - ■ テレメトリー収集:
                   - メトリクス収集: observability/observability_telemetry_datadog_metrics.md
                   - ログ収集: observability/observability_telemetry_datadog_log.md
-                  - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
+                  - ■ 分散トレース収集:
+                      - 分散トレース収集: observability/observability_telemetry_datadog_distributed_trace.md
+                      - トレーサー: observability/observability_telemetry_datadog_distributed_trace_tracer.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_datadog_telemetry_association.md
-  - 👥 ソフトウェア開発手法論/SREing:
+          - ■ Googleアプリ:
+              - Googleアナリティクス: observability/observability_telemetry_google_analytics.md
+              - Googleサーチコンソール: observability/observability_telemetry_google_search_console.md
+      - ■ インシデント管理ツール:
+          - PagerDuty: observability/observability_incident_management_pagerduty.md
+
+  - 👥 ソフトウェア開発手法論:
+      - software_development_methodology/index.md
       - ソフトウェア開発手法論: software_development_methodology/software_development_methodology.md
       - プロジェクト管理: software_development_methodology/software_development_methodology_project_management.md
       - ■ SREing:
@@ -418,12 +584,7 @@ nav:
           - ドキュメンテーション: software_development_methodology/software_development_methodology_site_reliability_engineering_documentation.md
 
   - 🦶 バージョン管理:
+      - version_control/index.md
       - ■ Git:
           - コマンド: version_control/version_control_git_command.md
           - GitHub: version_control/version_control_git_github.md
-
-  - 📊 統計分析:
-      - R: statistic_analysis/statistic_analysis_r.md
-
-  - 📢 過去の技術系プレゼン:
-      - 一覧: presentation.md

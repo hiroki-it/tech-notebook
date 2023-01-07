@@ -9,7 +9,9 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,7 +21,13 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 #### ▼ クローラーとは
 
-インターネット上を巡回し、サイトの情報を収集する。検索エンジンシステムは、収集されたデータのインデックスをDBに作成する。ユーザーが検索エンジンを使用する時は、このDBインデックスを基に検索結果が表示される。
+インターネット上を巡回し、サイトの情報を収集する。
+
+検索エンジンシステムは、収集されたデータのインデックスをDBに作成する。
+
+ユーザーが検索エンジンを使用する時は、このDBインデックスを基に検索結果が表示される。
+
+
 
 > ℹ️ 参考：https://smakoma.com/understand-search-engine.html
 
@@ -27,17 +35,21 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 クローラーには以下の種類がいる。
 
+
+
 > ℹ️ 参考：https://technical-seo.jp/crawler/
 
-| クローラー名 | 検索エンジン |
-| :----------- | :----------- |
-| Googlebot    | Google       |
-| Bingbot      | Bing検索     |
-| YandexBot    | YANDEX       |
-| Baiduspider  | Baidu        |
-| Mail.RU_Bot  | Mail.ru      |
+| クローラー名     | 検索エンジン |
+|:------------|:---------|
+| Googlebot   | Google   |
+| Bingbot     | Bing検索 |
+| YandexBot   | YANDEX   |
+| Baiduspider | Baidu    |
+| Mail.RU_Bot | Mail.ru  |
 
 例えば、Googlebotであれば、ユーザーエージェントは以下の様になっている。
+
+
 
 **例**
 
@@ -71,7 +83,11 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 #### ▼ サイトマップとは
 
-サイトを構成するURLの一覧を示したファイルのこと。Googleサーチコンソールに登録でき、検索クローラーがサイトの情報を収集するのを助ける。
+サイトを構成するURLの一覧を示したファイルのこと。
+
+Googleサーチコンソールに登録でき、検索クローラーがサイトの情報を収集するのを助ける。
+
+
 
 > ℹ️ 参考：https://www.allegro-inc.com/seo/xml-sitemap/
 
@@ -107,20 +123,24 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 Webサイトの全ページのうち、どのくらいが検索エンジンのDBインデックスの登録されたかを表す指標のこと。
 
+
+
 > ℹ️ 参考：https://www.sakurasaku-labo.jp/blogs/index-coverage-report
 
 #### ▼ ステータスの種類
 
 各ステータスの詳しい情報は以下のリンクを参考にせよ。
 
+
+
 > ℹ️ 参考：https://support.google.com/webmasters/answer/7440203#status_type
 
 | ステータス名 | DBインデックスへの登録の有無 |
-| ------------ | ---------------------------- |
-| 有効         | 登録された                   |
-| 警告         | 登録された                   |
-| エラー       | 登録されなかった             |
-| 除外         | 登録されなかった           |
+|---------|-------------------|
+| 有効    | 登録された             |
+| 警告    | 登録された             |
+| エラー     | 登録されなかった          |
+| 除外    | 登録されなかった          |
 
 <br>
 

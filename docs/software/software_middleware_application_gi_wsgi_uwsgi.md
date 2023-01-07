@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】uWSGI＠ミドルウェア
-description: uWSGI＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】uWSGI＠アプリケーション系ミドルウェア
+description: uWSGI＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# uWSGI＠ミドルウェア
+# uWSGI＠アプリケーション系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -24,6 +26,15 @@ description: uWSGI＠ミドルウェアの知見を記録しています。
 ## 01-02. ユースケース
 
 ### リバースプロキシのミドルウェアとして
+
+#### ▼ 構成
+
+リバースプロキシのミドルウェアとして使用できる。
+
+この場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを介して、後段のアプリケーションにアクセスできるようになる。
+
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 

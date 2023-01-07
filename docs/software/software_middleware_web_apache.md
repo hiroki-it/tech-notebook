@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】Apache＠ミドルウェア
-description: Apache＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Apache＠Web系ミドルウェア
+description: Apache＠Web系ミドルウェアの知見を記録しています。
 ---
 
-# Apache＠ミドルウェア
+# Apache＠Web系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -17,7 +19,15 @@ description: Apache＠ミドルウェアの知見を記録しています。
 
 ### アーキテクチャ
 
-Apacheは、Apacheコアとモジュールから構成される。モジュールには、静的/動的モジュールがある。静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている。一方で、動的モジュールは```mod_so```を使用して拡張機能的に組み込め、また取り外しできる。
+Apacheは、Apacheコアとモジュールから構成される。
+
+モジュールには、静的/動的モジュールがある。
+
+静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている。
+
+一方で、動的モジュールは```mod_so```を使用して拡張機能的に組み込め、また取り外しできる。
+
+
 
 > ℹ️ 参考：https://thinkit.co.jp/article/120/1
 
@@ -31,9 +41,13 @@ Apacheは、Apacheコアとモジュールから構成される。モジュー�
 
 #### ▼ HTTP/HTTPSプロトコルでルーティング
 
+調査中...
+
 #### ▼ FastCGIプロトコルでルーティング
 
 ```mod_fcgid```モジュールを読み込むことによって、FastCGIプロトコルでルーティングできるようになる。
+
+
 
 > ℹ️ 参考：https://httpd.apache.org/mod_fcgid/
 
@@ -42,5 +56,7 @@ Apacheは、Apacheコアとモジュールから構成される。モジュー�
 ### appサーバーのミドルウェアとして
 
 ```mod_php```モジュールを読み込むことによって、appサーバーのミドルウェアとしても機能させられる。
+
+
 
 <br>

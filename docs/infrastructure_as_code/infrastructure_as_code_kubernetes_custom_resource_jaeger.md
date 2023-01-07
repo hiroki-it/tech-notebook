@@ -9,7 +9,9 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -17,7 +19,9 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 ### アーキテクチャ
 
-Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTelクライアントパッケージの使用が推奨）、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード（UI）、から構成されている。
+Jaegerは、jaegerクライアントパッケージ（執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨）、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード（UI）、から構成されている。
+
+
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/
 
@@ -27,7 +31,15 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 ### jaegerクライアントパッケージ（非推奨）
 
-2022/07/16時点で、OTelクライアントパッケージを使用することが推奨されている。参考程度に、jaegerクライアントパッケージの仕組みを記載する。アプリケーションにて、jaegerクライアントパッケージはスパンを作成し、加えてリクエストメッセージにコンテキスト情報（トレースID、スパンID、OpenTracingバゲージ）を付与する。jaegerクライアントパッケージは、コンテナ内でデーモンとして稼働するjaegerエージェントにスパンを渡す。
+執筆時点（2022/07/16）で、OTelクライアントパッケージを使用することが推奨されている。
+
+参考程度に、jaegerクライアントパッケージの仕組みを記載する。
+
+アプリケーションにて、jaegerクライアントパッケージはスパンを作成し、加えてリクエストにコンテキスト情報（トレースID、スパンID、OpenTracingバゲージ）を付与する。
+
+jaegerクライアントパッケージは、コンテナ内でデーモンとして常駐するjaegerエージェントにスパンを渡す。
+
+
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#jaeger-client-libraries-deprecated
 
@@ -35,7 +47,9 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 ### jaegerエージェント
 
-コンテナにて、デーモンとして稼働し、スパンの受信をリッスンする。
+コンテナ内でデーモンとして常駐し、スパンの受信をリッスンする。
+
+
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#agent
 
@@ -45,6 +59,8 @@ Jaegerは、jaegerクライアントパッケージ（2022/07/16時点で、OTel
 
 jaegerコレクターは、プッシュ型でjaegerエージェントからコンテキスト情報を収集し、ローカルストレージに保存する。
 
+
+
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#collector
 
 <br>
@@ -53,12 +69,16 @@ jaegerコレクターは、プッシュ型でjaegerエージェントからコ�
 
 リモートストレージとして、Cassandra、Elasticsearch、Kafka、を使用できる。
 
+
+
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/#query
 
 <br>
 
-### ダッシュボード（UI）
+### ダッシュボード
 
-ダッシュボード（UI）は、jaegerクエリを使用して、ストレージ内のコンテキスト情報を分散トレースとして可視化する。
+ダッシュボードは、jaegerクエリを使用して、ストレージ内のコンテキスト情報を分散トレースとして可視化する。
+
+
 
 <br>

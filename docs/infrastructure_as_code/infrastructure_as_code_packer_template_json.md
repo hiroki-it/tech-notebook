@@ -1,7 +1,6 @@
 ---
 title: 【IT技術の知見】template.json＠Packer
 description: template.json＠Packerの知見を記録しています。
-
 ---
 
 # template.json＠Packer
@@ -10,31 +9,13 @@ description: template.json＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
-## 01. Packerの仕組み
-
-### アーキテクチャ
-
-調査中...
-
-<br>
-
-### ユースケース
-
-#### ▼ AWSの場合
-
-プロビジョナーを使用してEC2インスタンスをプロビジョニングし、そのEC2インスタンスからAMIを作成する。AMIの作成後、EC2を削除する。例えば、AnsibleでAMIの作成まで行い、TerraformでAMIからEC2インスタンスを作成するように区別する。これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
-
-> ℹ️ 参考：https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
-
-![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/packer_aws.png)
-
-<br>
-
-## 02. セットアップ
+## 01. セットアップ
 
 ### インストール
 
@@ -43,18 +24,20 @@ description: template.json＠Packerの知見を記録しています。
 > ℹ️ 参考：https://www.packer.io/downloads
 
 ```bash
-$ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+$ curl -L https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 $ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 $ sudo apt-get update && sudo apt-get install packer
 ```
 
 <br>
 
-## 03. builders
+## 02. builders
 
 ### buildersとは
 
 作成するマシンイメージやコンテナイメージの内容を設定する。
+
+
 
 <br>
 
@@ -63,6 +46,8 @@ $ sudo apt-get update && sudo apt-get install packer
 #### ▼ region
 
 AMIを作成するリージョンを設定する。
+
+
 
 ```yaml
 }
@@ -79,6 +64,8 @@ AMIを作成するリージョンを設定する。
 
 AMIの基とするAMIを設定する。
 
+
+
 ```yaml
 }
   "builders": [
@@ -93,6 +80,8 @@ AMIの基とするAMIを設定する。
 #### ▼ ami_name
 
 AMIの名前を設定する。
+
+
 
 ```yaml
 }
@@ -150,6 +139,8 @@ AMIの名前を設定する。
 
 EC2インスタンスへのSSH接続時に使用するユーザー名を設定する。
 
+
+
 ```yaml
 }
   "builders": [
@@ -189,9 +180,36 @@ EC2インスタンスへのSSH接続時に使用するユーザー名を設定�
 }
 ```
 
+#### ▼ force_deregister
+
+同じ名前のマシンイメージが存在する場合に、既存のマシンイメージを登録解除してからこれを作成するようにするか否か、を設定する。
+
+Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。
+
+マシンイメージの名前の重複を許可しないプロバイダー（例：AWS）では、```1```個の名前のマシンイメージを一回しか作成できないことになってしまう。
+
+そういった場合に必要になる。
+
+
+
+
+```yaml
+}
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "force_deregister": true,
+    }
+  ]
+}
+```
+
+
 #### ▼ launch_block_device_mappings
 
 EC2インスタンスに紐づけるルートデバイスボリュームを設定する。
+
+
 
 ```yaml
 }
@@ -213,13 +231,15 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 
 <br>
 
-## 04. provisioners
+## 03. provisioners
 
 ### type
 
 #### ▼ typeとは
 
-サーバーやコンテナのプロビジョナーを設定する。
+サーバー/コンテナのプロビジョナーを設定する。
+
+
 
 <br>
 
@@ -272,11 +292,13 @@ EC2インスタンスに紐づけるルートデバイスボリュームを設�
 
 <br>
 
-## 05. variables
+## 04. variables
 
 ### variablesとは
 
 ファイル内で使用する変数を設定する。
+
+
 
 ```yaml
 {

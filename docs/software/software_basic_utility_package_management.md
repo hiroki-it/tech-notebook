@@ -9,7 +9,9 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,14 +21,16 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 様々な粒度のプログラムを対象にした管理ユーティリティがある。
 
+
+
 ![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
 
 <br>
 
 ## 02. パッケージ管理ユーティリティ
 
-| OS系統   | ユーティリティ         |
-| -------- | ---------------------- |
+| OS系統   | ユーティリティ              |
+|---------|----------------------|
 | Debian系 | apt、apt-get、apt-file |
 | RedHat系 | rpm、yum、dnf          |
 
@@ -38,7 +42,11 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 #### ▼ search
 
-指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
+指定したファイルを持つパッケージを検索する。
+
+拡張子も指定しても、ファイル名までしか絞れない。
+
+
 
 > ℹ️ 参考：
 >
@@ -59,7 +67,7 @@ cc65: /usr/share/cc65/include/zlib.h
 dovecot-dev: /usr/include/dovecot/istream-zlib.h
 dovecot-dev: /usr/include/dovecot/ostream-zlib.h
 
-# ～ 中略 ～
+...
 
 tcllib: /usr/share/doc/tcllib/html/tcllib_zlib.html
 texlive-plain-generic: /usr/share/texlive/texmf-dist/tex4ht/ht-fonts/alias/arabi/nazlib.htf
@@ -75,7 +83,13 @@ zlib1g-dev: /usr/include/zlib.h
 
 #### ▼ -ivh
 
-パッケージをインストールまたは更新する。一度に複数のオプションを組み合わせて記述する。インストール時にパッケージ間の依存関係を解決できないので注意。
+パッケージをインストールまたは更新する。
+
+一度に複数のオプションを組み合わせて記述する。
+
+インストール時にパッケージ間の依存関係を解決できないので注意。
+
+
 
 ```bash
 # パッケージをインストール
@@ -93,6 +107,8 @@ $ rpm -Uvh <パッケージ名>
 
 インストールされた全てのパッケージの中で、指定した文字を名前に含むものを取得する。
 
+
+
 ```bash
 # -qa：
 $ rpm -qa | grep <検索文字>
@@ -102,6 +118,8 @@ $ rpm -qa | grep <検索文字>
 
 指定したパッケージ名で、関連する全てのファイルの場所を取得する。
 
+
+
 ```bash
 # -ql：
 $ rpm -ql <パッケージ名>
@@ -110,6 +128,8 @@ $ rpm -ql <パッケージ名>
 #### ▼ -qi
 
 指定したパッケージ名で、インストール日などの情報を取得する。
+
+
 
 ```bash
 # -qi：
@@ -122,7 +142,11 @@ $ rpm -qi <パッケージ名>
 
 #### ▼ install、reinstall
 
-rpmと同様に使用できる。また、インストール時にパッケージ間の依存関係を解決できる。
+rpmと同様に使用できる。
+
+また、インストール時にパッケージ間の依存関係を解決できる。
+
+
 
 ```bash
 # パッケージをインストール
@@ -136,6 +160,8 @@ $ yum reinstall -y <パッケージ名>
 
 インストールされたパッケージの一覧を取得する。
 
+
+
 ```bash
 # 指定した文字を名前に含むものを表示。
 $ yum list | grep <検索文字>
@@ -144,6 +170,8 @@ $ yum list | grep <検索文字>
 #### ▼ repolist
 
 リポジトリか有効か否かの一覧を取得する。
+
+
 
 > ℹ️ 参考：https://kazmax.zpp.jp/linux_beginner/yum_repository_enable_disable.html
 
@@ -162,7 +190,7 @@ C7.0.1406-base/x86_64            CentOS-7.0.1406 - Base          disabled
 C7.0.1406-centosplus/x86_64      CentOS-7.0.1406 - CentOSPlus    disabled
 C7.0.1406-extras/x86_64          CentOS-7.0.1406 - Extras        disabled
 
-# ～ 中略 ～
+...
 
 remi-test-debuginfo/x86_64       Remi's test RPM repository for  disabled
 !updates/7/x86_64                CentOS-7 - Updates              enabled:  3,323
@@ -176,7 +204,7 @@ repolist: 34,344
 
 #### ▼ リポジトリとは
 
-CentOS公式リポジトリはパッケージのバージョンが旧いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（RPM、EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（RPM、EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 #### ▼ リポジトリ自体のインストール
 
@@ -258,7 +286,7 @@ $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
 # CentOS8の場合
-# リポジトリの認識に失敗する場合があるので、enablerepoオプションは有効化しない。
+# リポジトリの認識に失敗する場合があるため、enablerepoオプションは有効化しない。
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
@@ -283,12 +311,16 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ▼ brewとは
 
-Linuxで使用できるパッケージを管理する。異なるバージョンを同時に管理できない。M1 Macを採用している場合は、コマンドの前に```arch -arm64```をつける。
+Linuxで使用できるパッケージを管理する。
 
-```bash
-# M1 Macの場合
-$ arch -arm64 brew install <パッケージ名>
-```
+最新バージョンしか管理できず、以前のバージョンを管理できない。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
+> - https://christina04.hatenablog.com/entry/install-old-version-with-homebrew
 
 #### ▼ autoremove
 
@@ -306,6 +338,8 @@ $ brew autoremove
 
 パッケージの旧バージョンのキャッシュを削除する。
 
+
+
 > ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
@@ -315,6 +349,8 @@ $ brew cleanup
 #### ▼ doctor
 
 brewの設定に不備がないかを検証する。
+
+
 
 ```bash
 $ brew doctor 
@@ -333,6 +369,8 @@ those kegs to fail to run properly once built. Run `brew link` on these:
 
 パッケージをインストールする。
 
+
+
 ```bash
 # Intel Macの場合
 $ brew install <パッケージ名>
@@ -344,6 +382,8 @@ $ brew install <パッケージ名>@<バージョンタグ>
 
 brewによって```~/usr/local/Cellar ```ディレクトリにインストールされたパッケージと、```~/usr/local/bin```ディレクトリに作成されたパッケージへのエイリアスを紐づける。
 
+
+
 > ℹ️ 参考：https://hacknote.jp/archives/23816/
 
 ```bash
@@ -354,6 +394,8 @@ $ brew link <パッケージ名>
 
 brew本体をアップグレードする。
 
+
+
 > ℹ️ 参考：https://qiita.com/akameco/items/9e5026e892661b75e7b3	
 
 ```bash
@@ -363,6 +405,8 @@ $ brew update
 #### ▼ upgrade
 
 brew本体とパッケージの両方をアップグレードする。
+
+
 
 > ℹ️ 参考：https://www.curict.com/item/bc/bcc0607.html
 
@@ -376,7 +420,13 @@ $ brew upgrade
 
 #### ▼ asdfとは
 
-Linuxで使用できるパッケージを管理する。また、異なるバージョンを同時に管理できる。ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
+Linuxで使用できるパッケージを管理する。
+
+また、異なるバージョンを同時に管理できる。
+
+ただ基本的には、開発時に複数のバージョンが並行して必要になるようなパッケージしか提供していない。
+
+
 
 #### ▼ ```.tool-version```ファイル
 
@@ -403,6 +453,8 @@ sops <バージョン>
 
 ```brew```コマンドを使用してインストールする場合、```~/.zshrc```ファイルを編集する必要がある。
 
+
+
 > ℹ️ 参考：https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 ```bash
@@ -415,11 +467,19 @@ $ brew install asdf
 
 ```bash
 $ asdf global <プラグイン名> 1.0.0
+
+# ファイルが作成されたことを確認する。
+$ cat ~/.tool-versions 
+
+foo 1.0.0
+bar 1.0.0
 ```
 
 #### ▼ list
 
 インストールされているパッケージで使用できるバージョンの一覧を取得する。
+
+
 
 ```bash
 $ asdf list all <プラグイン名>
@@ -431,6 +491,12 @@ $ asdf list all <プラグイン名>
 
 ```bash
 $ asdf local <プラグイン名> 1.0.0
+
+# ファイルが作成されたことを確認する。
+$ cat .tool-versions 
+
+foo 1.0.0
+bar 1.0.0
 ```
 
 #### ▼ plugin
@@ -438,11 +504,16 @@ $ asdf local <プラグイン名> 1.0.0
 ```bash
 # 現在インストールされているプラグインを取得する。
 $ asdf plugin list
+
+
+# 登録しているプラグインを削除する。
+$ asdf plugin remove <プラグイン名>
 ```
 
 ```bash
 # プラグインのURLを調べる。
 $ asdf plugin list all | grep <プラグイン名>
+
  
 # プラグインをローカルマシンに登録する。（まだインストールされていない）
 $ asdf plugin add <プラグイン名> <URL>
@@ -451,10 +522,18 @@ $ asdf plugin add <プラグイン名> <URL>
 #### ▼ install
 
 ```bash
+# プラグインをローカルマシンに登録する。（まだインストールされていない）
+$ asdf plugin add <プラグイン名> <URL>
+
+
 # 登録済みのプラグインをインストールする。
 $ asdf install <プラグイン名> 1.0.0
 
 Downloading <プラグイン名> from <URL>
+
+
+# インストールされたことを確認できる。
+$ asdf plugin list
 ```
 
 もし、```.tool-version```ファイルを作成してある場合には、プラグイン名とバージョンが不要になる。

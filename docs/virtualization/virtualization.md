@@ -9,15 +9,32 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
-## 01. 仮想化
+## 01. 仮想化とは
 
-### 仮想化とは
+1つの物理サーバー上で、仮想的なシステム（ハードウェア、ソフトウェア）を稼働させる技術のこと。
 
-1つの物理サーバー上で仮想的なハードウェアを稼働させる技術のこと。仮想的あハードウェアの作成方法にはいくつか種類がある。
+
+
+<br>
+
+## 02. ハードウェア仮想化
+
+### ハードウェア仮想化とは
+
+物理サーバー上で、物理サーバーのハードウェアとソフトウェアの要素を完全に仮想化する。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization
+> - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
 
 <br>
 
@@ -27,11 +44,15 @@ description: 仮想化の知見を記録しています。
 
 ![ホスト型仮想化](https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png)
 
-物理サーバーのホスト上で、仮想サーバー（仮想マシン）を作成する。
+物理サーバーのホスト上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー（マシン）を作成する。
+
+
 
 #### ▼ Provider例
 
-Oracle VM VirtualBox、VMware Workstation、など
+- Oracle VM VirtualBox
+- VMware Workstation
+
 
 <br>
 
@@ -41,11 +62,33 @@ Oracle VM VirtualBox、VMware Workstation、など
 
 ![ハイパーバイザー型仮想化](https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png)
 
-物理サーバーのBIOSから起動したハイパーバイザー上で、仮想サーバー（仮想マシン）を作成する。この時、ホストは使用しない。
+物理サーバーのBIOSから起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー（マシン）を作成する。
+
+この時、ホストは使用しない。
+
+
 
 #### ▼ Provider例
 
-VMware vSphere Hypervisor、Xen、KVM、など
+- VMware vSphere Hypervisor
+- Xen
+- KVM
+
+
+<br>
+
+## 02-02. OS仮想化
+
+### OS仮想化とは
+
+物理サーバー上で、ソフトウェアであるOSを部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization\
+> - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
 
 <br>
 
@@ -55,11 +98,20 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 
-物理サーバーのホスト上で、仮想サーバーと同様の機能を持つコンテナを作成する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを使用して、単一のOS上に独立したコンテナを作成する。
+物理サーバーのホスト上で、OSのユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。
+
+
+
+> ℹ️ 参考：https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89
 
 #### ▼ Provider例
 
-Docker、Containerd、Podman、LXC、OpenVZ、など
+- Docker
+- Containerd
+- Podman
+- LXC
+- OpenVZ
+
 
 > ℹ️ 参考：
 >
@@ -68,11 +120,15 @@ Docker、Containerd、Podman、LXC、OpenVZ、など
 
 <br>
 
-## 01-02. 各仮想化のパフォーマンスの比較
+## 03. 各仮想化のパフォーマンスの比較
 
-### 起動速度の違い
+### セットアップの速さの違い
 
-ホスト型とハイパーバイザ型では、ハードウェア（CPU、メモリ、ストレージ）とゲストOSを仮想化することが必要である。一方で、コンテナ型では、ハードウェアとゲストOSの仮想化は行わず、namespaceを使用してコンテナを構成するため、その分起動が速い。
+ホスト型とハイパーバイザ型では、ハードウェア要素（例：CPU、メモリ、ストレージ）とソフトウェア（例：ゲストOS）を仮想化する必要がある。
+
+一方で、コンテナ型では、OSのユーザー空間を分割するだけのため、仮想化のセットアップが速い。
+
+
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
@@ -82,13 +138,21 @@ Docker、Containerd、Podman、LXC、OpenVZ、など
 
 #### ▼ オーバーヘッドの小ささ
 
-ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。この分だけ、時間（オーバーヘッド）を要する。一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。
+ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。
+
+この分だけ、時間（オーバーヘッド）を要する。
+
+一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。
+
+
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/仮想化の比較.png)
 
 #### ▼ オーバーヘッドの比較
 
 sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化（Docker）・ホスト型仮想化（VirtualBox）のパフォーマンスを比較すると、コンテナ型であるDockerは最もオーバーヘッドが小さい。
+
+
 
 > ℹ️ 参考：https://codezine.jp/article/detail/7894
 

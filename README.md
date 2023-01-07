@@ -2,15 +2,15 @@
 
 『俺の技術ノート』というサイトを運用しています。
 
-詳しくは、こちらまで！！
+[旧・俺の技術ノート](https://github.com/hiroki-it/tech-notebook)から、本サイトに移行しました。
 
-▶ https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+新サイトは、[こちら](https://hiroki-it.github.io/tech-notebook-mkdocs) まで！！
 
 以下のツールを使用しております。
 
-| 役割                     | ツール名       |
-| ------------------------ | -------------- |
+| 役割           | ツール名          |
+|----------------|----------------|
 | サイトジェネレーター     | MkDocs         |
-| デプロイ                 | GitHub Actions |
+| デプロイ           | GitHub Actions |
 | パッケージバージョン更新 | Renovate       |
 

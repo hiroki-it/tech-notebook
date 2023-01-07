@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
-description: PHP-FPM：PHP FastCGI Process Manager＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア
+description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# PHP-FPM：PHP FastCGI Process Manager＠ミドルウェア
+# PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,7 +29,11 @@ PHP-FPMは、Server API、Zend Engine、から構成される。
 
 ### プロセスプール
 
-PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。そして、リクエストを受信するたびに、プロセスを割り当てている。あらかじめ準備されたプロセス群を『プール』という。
+PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを起動している。
+
+そして、リクエストを受信するたびに、プロセスを割り当てている。
+
+あらかじめ準備されたプロセス群を『プール』という。
 
 > ℹ️ 参考：https://hackers-high.com/linux/php-fpm-config/#php-fpm
 
@@ -44,7 +50,7 @@ PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ
 > ℹ️ 参考：
 >
 > - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_php_framework_laravel_component.html
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_framework_laravel_component.html
 
 <br>
 
@@ -55,6 +61,8 @@ PHP-FPMは、FastCGIとしてwebサーバーとPHPファイルの間でデータ
 #### ▼ -t
 
 設定ファイルを検証する。
+
+
 
 ```bash
 $ php-fpm -t
@@ -112,5 +120,5 @@ $ systemctl status php-fpm.service
 Fatal error: Allowed memory size of ***** bytes exhausted (tried to allocate 16 bytes)
 ```
 
-
+<br>
 

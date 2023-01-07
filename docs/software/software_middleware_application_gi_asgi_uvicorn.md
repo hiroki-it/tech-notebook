@@ -1,15 +1,17 @@
 ---
-title: 【IT技術の知見】Uvicorn＠ミドルウェア
-description: Uvicorn＠ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Uvicorn＠アプリケーション系ミドルウェア
+description: Uvicorn＠アプリケーション系ミドルウェアの知見を記録しています。
 ---
 
-# Uvicorn＠ミドルウェア
+# Uvicorn＠アプリケーション系ミドルウェア
 
 ## はじめに
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -27,16 +29,20 @@ description: Uvicorn＠ミドルウェアの知見を記録しています。
 
 #### ▼ uvicornコマンドを使用する場合
 
-アプリケーションのエントリーポイントを```uvicorn```コマンドで指定する。開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に```reload```オプションを使用した方が良い。
+アプリケーションのエントリーポイントを```uvicorn```コマンドで指定する。
+
+開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に```reload```オプションを使用した方が良い。
+
+
 
 > ℹ️ 参考：https://www.uvicorn.org/deployment/#running-from-the-command-line
 
 ```dockerfile
 FROM python:3.10-slim
 
-# 〜 中略 〜
+...
 
-CMD ["uvicorn", "main:app", "--reload", "--port" "8000"]
+CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 ```
 
 #### ▼ uvicornパッケージの```run```関数を使用する場合
@@ -70,7 +76,11 @@ if __name__ == "__main__":
 
 ![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/uvicorn_with-gunicorn.png)
 
-パフォーマンス上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。```w```オプションを使用して、プロセスの並列数を設定できる。
+パフォーマンス上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
+
+```w```オプションを使用して、プロセスの並列数を設定できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -81,12 +91,14 @@ if __name__ == "__main__":
 ```dockerfile
 FROM python:3.10-slim
 
-# 〜 中略 〜
+...
 
 CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000" ]
 ```
 
-なお、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
+注意点として、Gunicornを使用する場合には、standardタイプのUvicornをインストールする必要がある。
+
+
 
 > ℹ️ 参考：https://www.uvicorn.org/#quickstart
 
@@ -120,6 +132,8 @@ $ uvicorn src.main:app
 
 ソースコードが変更された場合、再読み出しする。
 
+
+
 ```bash
 $ uvicorn main:app --reload
 ```
@@ -131,6 +145,8 @@ $ uvicorn main:app --reload
 #### ▼ --portとは
 
 インバウンド通信を受け付けるポート番号を設定する。
+
+
 
 ```bash
 $ uvicorn main:app --port 8000

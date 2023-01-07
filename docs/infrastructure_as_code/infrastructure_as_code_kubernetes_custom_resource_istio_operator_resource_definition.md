@@ -9,17 +9,23 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. セットアップ
 
-### チャートとして
+### インストール
 
-#### ▼ GCRから
+#### ▼ チャートとして
 
-```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+```istioctl```コマンドを使用して、IstioOperatorのチャートをインストールし、リソースを作成する。
+
+プロファイルは、設定済みのIstioOperatorのチャートであり、```istioctl```コマンドインストール時に```manifests```ディレクトリ以下に同梱される。
+
+
 
 （１）```istioctl```コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルトで```istio-system```にIstioリソースを作成するようになっている。
 
@@ -28,13 +34,13 @@ description: IstioOperator＠Istioの知見を記録しています。
 ```bash
 $ istioctl operator init
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン番号>
 Operator controller will watch namespaces: istio-system
 ✔ Istio operator installed
 ✔ Installation complete
 ```
 
-（２）IstioOperatorが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
+（２）IstioOperatorが定義されたマニフェストを、```istioctl```コマンドまたは```kubectl```コマンドを使用して、Istioリソースを作成する。その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。```kubectl apply```コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
 > ℹ️ 参考：
 >
@@ -59,9 +65,13 @@ $ kubectl apply -f istio-operator.yaml
 istiooperator.install.istio.io/istio-operator created
 ```
 
-#### ▼ チャートリポジトリから
+#### ▼ チャートとして
 
-IstioOperatorのチャートをインストールし、リソースを作成する。チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+IstioOperatorのチャートをインストールし、リソースを作成する。
+
+チャートは、```istioctl```コマンドインストール時の```manifests```ディレクトリ以下に同梱されている。
+
+
 
 > ℹ️ 参考：
 >
@@ -88,6 +98,7 @@ metadata:
   name: istio-operator
 ```
 
+
 <br>
 
 ## 03. spec
@@ -98,6 +109,8 @@ metadata:
 
 IstioOperator管理でIstioリソースを作成する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
@@ -105,7 +118,13 @@ IstioOperator管理でIstioリソースを作成する。
 
 #### ▼ <component名>.k8s
 
-各componentが共通して持つ設定項目である。各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+各componentが共通して持つ設定項目である。
+
+各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
+
+ただし、執筆時点（2022/06/04）では、これを使用することは非推奨である。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -137,7 +156,11 @@ spec:
 
 #### ▼ base
 
-baseコンポーネントのオプションを設定する。baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
+baseコンポーネントのオプションを設定する。
+
+baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
+
+
 
 > ℹ️ 参考：
 >
@@ -177,7 +200,11 @@ spec:
 
 #### ▼ egressGateways
 
-egressGatewaysコンポーネントのオプションを設定する。EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+egressGatewaysコンポーネントのオプションを設定する。
+
+EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -194,7 +221,11 @@ spec:
 
 #### ▼ ingressGateways
 
-ingressGatewaysコンポーネントのオプションを設定する。IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
+ingressGatewaysコンポーネントのオプションを設定する。
+
+IngressGatewaysを直接的に作成するのではなく、IstioOperatorに作成させる。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -210,6 +241,8 @@ spec:
 ```
 
 ```spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
+
+
 
 > ℹ️ 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -235,12 +268,16 @@ spec:
 
 ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
+
+
 > ℹ️ 参考：
 >
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
 
 最終的な設定値は、```kubectl get```コマンドで確認できる。
+
+
 
 ```bash
 $ kubectl -n istio-system get service istio-ingressgateway -o yaml
@@ -264,13 +301,11 @@ metadata:
     release: istio
   name: istio-ingressgateway
   namespace: istio-system
-  resourceVersion: "322999"
-  uid: 7c292753-6219-4e4b-bd81-9012fabb97b3
 spec:
   allocateLoadBalancerNodePorts: true
-  clusterIP: 10.108.30.158
+  clusterIP: *.*.*.*
   clusterIPs:
-  - 10.108.30.158
+  - *.*.*.*
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -300,12 +335,14 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - ip: 10.108.30.158
+    - ip: *.*.*.*
 ```
 
 #### ▼ istiodRemote
 
 istiodコンポーネントのオプションを設定する。
+
+
 
 > ℹ️ 参考：https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 
@@ -364,6 +401,8 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのレジストリを設定する。
 
+
+
 ```yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
@@ -387,6 +426,8 @@ spec:
 #### ▼ accessLogEncoding
 
 アクセスログのファイル形式を設定する。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -451,7 +492,9 @@ spec:
 
 #### ▼ holdApplicationUntilProxyStarts
 
-```istio-proxy```コンテナの起動後にアプリコンテナを起動するか否か、を設定する。
+istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するか否かを設定する。
+
+> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -462,6 +505,28 @@ metadata:
 spec:
   meshConfig:
     holdApplicationUntilProxyStarts: true
+```
+
+オプションを有効化すると、```istio-proxy```コンテナの```postStart```キーに、```pilot-agent -wait```コマンドが挿入される。
+
+> ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
+
+```yaml
+...
+
+spec:
+  containers:
+    - name: istio-proxy
+      
+      ...
+      
+      lifecycle:
+        postStart:
+          exec:
+            command: |
+              pilot-agent wait
+
+...
 ```
 
 #### ▼ ingressSelector
@@ -532,6 +597,8 @@ spec:
 
 IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
 
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
 ```yaml
@@ -541,7 +608,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  namespace: foo
+  namespace: foo-namespace
 ```
 
 <br>
@@ -550,7 +617,11 @@ spec:
 
 #### ▼ profileとは
 
-プロファイルを設定する。実際には設定済みのIstioOperatorである。
+プロファイルを設定する。
+
+実際には設定済みのIstioOperatorである。
+
+
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -570,7 +641,11 @@ spec:
 
 #### ▼ revisionとは
 
-Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。バージョンの表記方法がハイフン繋ぎであることに注意する。
+Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。
+
+バージョンの表記方法がハイフン繋ぎであることに注意する。
+
+
 
 > ℹ️ 参考：
 >
@@ -595,6 +670,8 @@ spec:
 
 Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
 
+
+
 > ℹ️ 参考：
 >
 > - https://hub.docker.com/r/istio/proxyv2/tags
@@ -618,11 +695,15 @@ spec:
 
 ```manifests/charts/global.yaml```ファイルの設定値を上書きする。
 
+
+
 > ℹ️ 参考：https://github.com/istio/istio/blob/5fe406f88e83e14a2ddafb6c9dd47362c00a87f6/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 
 ```values```ファイルの```base```の項目を上書きする。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -696,6 +777,8 @@ spec:
 #### ▼ pilot
 
 ```values```ファイルの```pilot```の項目を上書きする。
+
+
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

@@ -9,13 +9,27 @@ description: Ansible＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. Ansibleの仕組み
 
-コントロールノードと管理対象ノードから構成される。コントロールノードに相当するデプロイサーバーにはAnsibleがインストールされている。もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。デプロイサーバー上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
+Ansibleは、コントロールノード（デプロイサーバー）と管理対象ノード（デプロイ先サーバー）から構成される。
+
+コントロールノードと管理対象ノードに当たるサーバー（例：物理サーバー、仮想サーバー）をセットアップしておき、コントロールノードにAnsibleをインストールする。
+
+もし、ローカルマシンでansibleコマンドを実行する場合は、ローカルマシンがコントロールノードに相当する。
+
+また、管理対象ノードとしてサーバーには実際のアプリケーションもデプロイされる。
+
+コントロールノード上のAnsibleは、管理対象ノードのサーバーにSSH接続を実行し、設定ファイルに基づいたプロビジョニングを実行する。
+
+設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
+
+
 
 > ℹ️ 参考：https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
@@ -39,13 +53,15 @@ $ pip3 install ansible
 
 <br>
 
-## 04. 設計ポリシー
+## 03. 設計ポリシー
 
 ### ディレクトリ構成ポリシー
 
+#### ▼ ```group_vars```ディレクトリの構成
+
 > ℹ️ 参考：
 >
-> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
@@ -59,10 +75,34 @@ repository/
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
 │
+...
+```
+
+#### ▼ ```host_vars```ディレクトリの構成
+
+> ℹ️ 参考：
+>
+> - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
+> - https://thinkit.co.jp/article/9871
+
+```yaml
+repository/
+├── playbook.yml
 ├── host_vars/
 │   ├── bar_host.yml
 │   └── baz_host.yml
 │   
+...
+```
+
+#### ▼ ```inventories```ディレクトリの構成
+
+> ℹ️ 参考：https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
+
+```yaml
+repository/
+├── playbook.yml
 ├── inventories/
 │   ├── tes/ # テスト環境
 │   │   ├── hosts_a.yml # 冗長化されたサーバーa
@@ -71,18 +111,45 @@ repository/
 │   │
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
-│      
-└── roles/
-    ├── app/ # appサーバー
-    ├── common/ # 共通
-    │   ├── handlers/
-    │   │   └── main.yml
-    │   │   
-    │   ├── tasks/
-    │   └── templates/
-    │    
-    ├── db/ # dbサーバー
-    └── web/ # webサーバー
+│ 
+...
+```
+
+#### ▼ ```roles```ディレクトリの構成
+
+> ℹ️ 参考：https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-directory-structure
+
+```yaml
+repository/
+├── playbook.yml
+├── roles/
+│   ├── app/ # appサーバー
+│   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
+│   │   │   └── foo.yml
+│   │   │  
+│   │   ├── files/ # 管理対象ノードにコピーするファイルを配置する。
+│   │   │   └── foo.conf
+│   │   │
+│   │   ├── handlers/
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── meta/
+│   │   │   └── main.yml
+│   │   │  
+│   │   ├── tasks/ # プロビジョニング時に実行するコマンドを配置する。
+│   │   │   └── main.yml
+│   │   │
+│   │   ├── templates/ # テンプレートを配置する。
+│   │   │   └── foo.conf.j2
+│   │   │
+│   │   └── vars/ # rolesディレクトリ内で使用する上書き変数を配置する。
+│   │       └── main.yml
+│   │
+│   ├── shared/ # 共通
+│   ├── db/ # dbサーバー
+│   └── web/ # webサーバー
+│
+...
 ```
 
 <br>
@@ -90,5 +157,23 @@ repository/
 ### 命名規則
 
 > ℹ️ 参考：http://tdoc.info/blog/2014/10/09/ansible_coding.html
+
+<br>
+
+## 04. 連携
+
+### Vault
+
+Ansibleの設定値を暗号化し、キーバリュー型ストアとして管理する。
+
+Ansibleの実行時にパスワードを要求し、これが正しければ復号化し、設定値として出力する。
+
+パスワード自体をファイル上でバージョン管理したい場合、sopsで暗号化することもできる。
+
+
+
+> ℹ️ 参考：https://redj.hatenablog.com/entry/2020/05/02/044527
+
+![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ansible_ansible-vault.png)
 
 <br>

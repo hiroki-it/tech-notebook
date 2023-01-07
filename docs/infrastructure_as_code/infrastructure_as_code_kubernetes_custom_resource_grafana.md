@@ -9,7 +9,9 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -17,7 +19,11 @@ description: Grafana＠カスタムリソースの知見を記録しています
 
 ### アーキテクチャ
 
-Grafanaは、ダッシュボードとストレージから構成されている。PromQLに基づいて、収集されたメトリクスを可視化する。
+Grafanaは、ダッシュボードとストレージから構成されている。
+
+PromQLに基づいて、収集されたメトリクスを可視化する。
+
+
 
 > ℹ️ 参考：https://community.grafana.com/t/architecture-of-grafana/50090
 
@@ -29,14 +35,10 @@ Grafanaは、ダッシュボードとストレージから構成されている�
 
 > ℹ️ 参考：https://qiita.com/MetricFire/items/15e024aea40785be622c
 
-| データソース名       | 例                                             |
-| -------------------- | ---------------------------------------------- |
-| 時系列データベース   | Prometheus、VictriaMetrics、Graphite、InfluxDB |
-| RDB                  | MySQL、PostgreSQL                              |
-| クラウドデータソース | AWS CloudWatch、Google Stackdriver             |
+| データソース名   | 例                                                  |
+|------------|-----------------------------------------------------|
+| TSDB       | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB |
+| RDB        | MySQL、PostgreSQL                                    |
+| クラウドデータソース | AWS CloudWatch、Google Stackdriver                   |
 
 <br>
-
-### ダッシュボード
-
-PromQLによるデータポイントの抽出をメトリクスとし、複数のメトリクスのセットをダッシュボードとして定義できる。

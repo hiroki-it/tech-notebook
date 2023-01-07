@@ -9,7 +9,9 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -19,29 +21,29 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 #### ▼ 環境
 
-| env  | 説明                                                         |
-| ---- | ------------------------------------------------------------ |
-| tes  | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
-| stg  | ステージング環境                                             |
-| prd  | 本番環境                                                     |
+| env | 説明                                       |
+|-----|------------------------------------------|
+| tes | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
+| stg | ステージング環境                                 |
+| prd | 本番環境                                   |
 
 #### ▼ Job
 
-| jobs     | 説明                                                                        |
-|----------|---------------------------------------------------------------------------|
-| plan     | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。               |
-| 承認Job    |                                                                           |
-| apply    | ステージング環境または本番環境に対して、```terraform apply```コマンドを実行する。                       |
+| jobs       | 説明                                                                              |
+|------------|-----------------------------------------------------------------------------------|
+| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。                 |
+| 承認Job    |                                                                                   |
+| apply      | ステージング環境または本番環境に対して、```terraform apply```コマンドを実行する。                      |
 | plan（任意） | ```terraform apply```によって差分が無くなったかを、```terraform plan```コマンドを改めて実行し、確認する。 |
 
 
 #### ▼ Workflow
 
-| workflows | 説明                         |
-| --------- |----------------------------|
+| workflows | 説明                               |
+|-----------|----------------------------------|
 | feature   | ```feature```ブランチからテスト環境にデプロイ    |
 | develop   | ```develop```ブランチからステージング環境にデプロイ |
-| main      | ```main```ブランチから本番環境にデプロイ        |
+| main      | ```main```ブランチから本番環境にデプロイ      |
 
 <br>
 
@@ -256,16 +258,17 @@ workflows:
 
 Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
+
+
 **＊実装例＊**
 
 ```bash
 #!/bin/bash
 
 set -xeuo pipefail
-set -u
 
 # 事前に環境変数に実行環境名を代入する。
-case $ENV in
+case "$ENV" in
     "tes")
         aws_account_id="<テスト環境アカウントID>"
         aws_access_key_id="<テスト環境アクセスキーID>"
@@ -285,7 +288,7 @@ case $ENV in
         aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
     ;;
     *)
-        echo "The parameter ${ENV} is invalid."
+        echo "The parameter "$ENV" is invalid."
         exit 1
     ;;
 esac
@@ -297,7 +300,7 @@ aws configure set aws_default_region "ap-northeast-1"
 
 # https://sts.amazonaws.com に、ロールの紐付けをリクエストする。
 aws_sts_credentials="$(aws sts assume-role \
-  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<紐付けしたいIAMロール名>" \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/"$ENV"-<紐付けしたいIAMロール名>" \
   --role-session-name "<任意のセッション名>" \
   --external-id "$aws_iam_role_external_id" \
   --duration-seconds "<セッションの有効秒数>" \
@@ -320,6 +323,8 @@ EOT
 
 特定のAWSアカウントに対して```terraform apply```コマンドを実行する。
 
+
+
 **＊実装例＊**
 
 ```bash
@@ -330,9 +335,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} apply \
+terraform -chdir=./"$ENV" apply \
   -parallelism=30 \
-  ${ENV}.tfplan
+  "$ENV".tfplan
 ```
 
 <br>
@@ -340,6 +345,8 @@ terraform -chdir=./${ENV} apply \
 #### ▼ ```terraform_fmt.sh```ファイル
 
 GitHubリポジトリにプッシュされたコードに対して```terraform fmt```コマンドを実行する。
+
+
 
 **＊実装例＊**
 
@@ -359,6 +366,8 @@ terraform fmt \
 
 GitHubリポジトリにプッシュされたコードに対して```terraform init```コマンドを実行する。
 
+
+
 **＊実装例＊**
 
 ```bash
@@ -369,11 +378,11 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} init \
+terraform -chdir=./"$ENV" init \
   -upgrade \
   -reconfigure \
   -backend=true \
-  -backend-config="bucket=${ENV}-tfstate-bucket" \
+  -backend-config="bucket="$ENV"-tfstate-bucket" \
   -backend-config="key=terraform.tfstate" \
   -backend-config="encrypt=true"
 ```
@@ -384,6 +393,8 @@ terraform -chdir=./${ENV} init \
 
 特定のAWSアカウントに対して```terraform plan```コマンドを実行する。
 
+
+
 **＊実装例＊**
 
 ```bash
@@ -394,9 +405,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} plan \
-  -var-file=./${ENV}/foo.tfvars \
-  -out=${ENV}.tfplan \
+terraform -chdir=./"$ENV" plan \
+  -var-file=./"$ENV"/foo.tfvars \
+  -out="$ENV".tfplan \
   -parallelism=30
 ```
 
@@ -406,6 +417,8 @@ terraform -chdir=./${ENV} plan \
 
 GitHubリポジトリにプッシュされたコードに対して```terraform validate```コマンドを実行する。
 
+
+
 **＊実装例＊**
 
 ```bash
@@ -413,7 +426,7 @@ GitHubリポジトリにプッシュされたコードに対して```terraform v
 
 set -xeuo pipefail
 
-terraform -chdir=./${ENV} validate
+terraform -chdir=./"$ENV" validate
 ```
 
 <br>
@@ -422,7 +435,15 @@ terraform -chdir=./${ENV} validate
 
 ### tfnotifyとは
 
-Terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくと良い。
+Terraformの```terraform plan```コマンドまたは```terraform apply```コマンドの処理結果を、POSTで送信するバイナリファイルのこと。
+
+URLや送信内容を設定ファイルで定義する。
+
+CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。
+
+環境別にtfnotifyを配置しておくと良い。
+
+
 
 > ℹ️ 参考：https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
@@ -434,6 +455,8 @@ Terraformの```terraform plan```コマンドまたは```terraform apply```コマ
 
 設定ファイルを使用して、tfnotifyを実行する。
 
+
+
 **＊実装例＊**
 
 ```bash
@@ -441,9 +464,9 @@ Terraformの```terraform plan```コマンドまたは```terraform apply```コマ
 
 set -xeuo pipefail
 
-terraform -chdir=./${ENV} plan \
-  -out=${ENV}.tfplan \
-  -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
+terraform -chdir=./"$ENV" plan \
+  -out="$ENV".tfplan \
+  -parallelism=30 | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml plan
 ```
 
 ```bash
@@ -454,9 +477,9 @@ set -xeuo pipefail
 # credentialsの情報を出力します。
 source ./aws_envs.sh
 
-terraform -chdir=./${ENV} apply \
+terraform -chdir=./"$ENV" apply \
   -parallelism=30 \
-  ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
+  "$ENV".tfplan | ./ops/tfnotify --config ./"$ENV"/tfnotify.yml apply
 ```
 
 <br>
@@ -466,6 +489,8 @@ terraform -chdir=./${ENV} apply \
 #### ▼ ci
 
 使用するCIツールを設定する。
+
+
 
 ```yaml
 # https://github.com/mercari/tfnotify
@@ -477,6 +502,8 @@ ci: circleci
 
 リポジトリに通知をPOST送信できるように、認証情報を設定する。
 
+
+
 ```yaml
 # https://github.com/mercari/tfnotify
 ---
@@ -485,7 +512,7 @@ notifier:
     # 環境変数に登録したパーソナルアクセストークン
     token: $GITHUB_TOKEN
     repository:
-      # 送信先のユーザー名もしくは組織名
+      # 宛先のユーザー名もしくは組織名
       owner: "foo-company"
       name: "foo-repository"
 ```
@@ -493,6 +520,8 @@ notifier:
 #### ▼ terraform
 
 通知内容を設定する。
+
+
 
 ```yaml
 # https://github.com/mercari/tfnotify

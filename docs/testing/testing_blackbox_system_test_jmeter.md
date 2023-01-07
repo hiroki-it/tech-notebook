@@ -9,7 +9,9 @@ description: JMeter＠総合テストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -17,17 +19,53 @@ description: JMeter＠総合テストの知見を記録しています。
 
 JMeterをインストールし、環境を作成する。
 
+
+
 > ℹ️ 参考：https://jmeter.apache.org/download_jmeter.cgi
 
 <br>
 
 ## 02. JMeterの仕組み
 
+### アーキテクチャ
+
 JMeterは、以下のコンポーネントから構成されている。
+
+
 
 > ℹ️ 参考：https://www.guru99.com/jmeter-element-reference.html
 
 ![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jmeter_architecuture.png)
+
+<br>
+
+### パラメーター
+
+#### ▼ 全体像
+
+![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stress-test_parameter.png)
+
+> ℹ️ 参考：https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+
+#### ▼ スレッド数
+
+リクエストのユーザー数に相当する。
+
+
+
+#### ▼ ループ数
+
+ユーザー当たりのリクエスト送信数に相当する。
+
+
+
+#### ▼ ランプアップ秒
+
+リクエストを送信する期間に相当する。
+
+長くし過ぎすると、全てのリクエスト数を送信するまでに時間がかかるようになるため、負荷が小さくなる。
+
+
 
 <br>
 
@@ -36,6 +74,8 @@ JMeterは、以下のコンポーネントから構成されている。
 ### ロードテスト
 
 以下の手順で、JMeterを使用したロードテストを実施する。
+
+
 
 （１）URLのアクセスランキングを元に、リクエストを送信するためのURLリストを```csv```ファイルで作成する。Googleを参考にしたが、ALBアクセスログを参考にした方が、より正確かもしれない。
 
@@ -50,12 +90,15 @@ JMeterは、以下のコンポーネントから構成されている。
 
 ```bash
 $ jmeter -n \
-  -t <JMXファイルへのパス> \
-  -l <Resultファイルへのパス> \
-  -e \
-  -o <レポートファイルへのパス>
+    -t <JMXファイルへのパス> \
+    -l <Resultファイルへのパス> \
+    -e \
+    -o <レポートファイルへのパス>
 ```
+
 ここで、GUI版を使用しない理由は、コマンドの結果に表示される説明より、GUI版では正しい結果を得られないとのこと、のためである。
+
+
 
 ```bash
 # コマンドの結果
@@ -69,3 +112,11 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 （７）JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。これらの画面で、```jtl```ファイルを読み込むと、```jtl```ファイルを元にした集計データを得られる。
 
 （８）各種のCloudWatchメトリクスにて、テスト時間帯に着目し、プロットから、数値を読み取る。
+
+<br>
+
+### ストレステスト
+
+調査中...
+
+<br>

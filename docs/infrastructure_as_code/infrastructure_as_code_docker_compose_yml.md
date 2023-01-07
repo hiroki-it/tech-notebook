@@ -9,13 +9,19 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. docker-compose.ymlとは
 
-コンテナを宣言的に定義し、コンテナのプロビジョニングを行う。プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
+コンテナを宣言的に定義し、コンテナのプロビジョニングを行う。
+
+プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html
 
@@ -25,7 +31,17 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ### ```services```とは
 
-コンテナオーケストレーションにおける1つのコンテナを定義する。サービス名には役割名（```app```、```web```、```db```）を名付けると良い。コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。```docker-compose```コマンドの引数として指定するため、できるだけ簡潔にする。オプション一覧は以下のリンクを参考にせよ。
+コンテナオーケストレーションにおける1つのコンテナを定義する。
+
+サービス名には役割名（```app```、```web```、```db```）を名付けると良い。
+
+コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。
+
+```docker compose```コマンドの引数として指定するため、できるだけ簡潔にする。
+
+オプション一覧は以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://docs.docker.jp/compose/compose-file.html
 
@@ -33,7 +49,13 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ### ```args```
 
-Dockerfileの```ARGS```に展開する変数を定義する。Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、```docker-compose.yml```ファイルにおける定義は変更しやすい。そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。他に、マルチステージビルドを使用しており、全てのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。
+Dockerfileの```ARGS```に展開する変数を定義する。
+
+Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、```docker-compose.yml```ファイルにおける定義は変更しやすい。
+
+そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。
+
+他に、マルチステージビルドを使用しており、全てのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。
 
 **＊実装例＊**
 
@@ -62,7 +84,9 @@ ENV PARAM=${PARAM}
 
 #### ▼ ```context```
 
-指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。 
+指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。
+
+ 
 
 **＊実装例＊**
 
@@ -77,6 +101,8 @@ services:
 
 Dockerfileまでのパスを設定する。
 
+
+
 **＊実装例＊**
 
 ```yaml
@@ -88,7 +114,13 @@ services:
 
 #### ▼ ```target```
 
-ビルドするステージ名を設定する。マルチステージビルドの時に使用する。ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
+ビルドするステージ名を設定する。
+
+マルチステージビルドの時に使用する。
+
+ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
+
+
 
 **＊実装例＊**
 
@@ -103,23 +135,36 @@ services:
 
 ### ```command```
 
-コンテナの起動時に最初に実行するコマンドを設定する。Dockerfileを必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。
+コンテナの起動時に最初に実行するコマンドを設定する。
+
+Dockerfileを必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。
+
+
 
 **＊実装例＊**
 
 mysqlイメージを使用してコンテナを作成する時に、最初に文字コードを設定するコマンドを実行する。
 
+
+
 ```yaml
 services:
   db:
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: |
+      mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
 ```
 
 <br>
 
 ### ```container_name```
 
-コンテナ名を命名する。サービス名とは異なり、コンテナ名は他のプロジェクトと重複しないようにする必要があるため、接頭辞にプロジェクト名をつけると良い。また、接尾辞をベンダー名とすると良い。
+コンテナ名を命名する。
+
+サービス名とは異なり、コンテナ名は他のプロジェクトと重複しないようにする必要があるため、接頭辞にプロジェクト名をつけると良い。
+
+また、接尾辞をベンダー名とすると良い。
+
+
 
 **＊実装例＊**
 
@@ -135,9 +180,13 @@ services:
 
 サービスを実行する順番を設定する。
 
+
+
 **＊実装例＊**
 
 DBサービスの起動後に、該当するコンテナを起動する。
+
+
 
 ```yaml
 services:
@@ -150,11 +199,21 @@ services:
 
 ### ```env_file```、```environment```
 
-コンテナで展開する環境変数を定義する。Dockerfile内での環境変数とは異なり、マルチステージビルドの全ステージで使用できる。dotenv系パッケージを使用しなくてもよくなる。
+コンテナで展開する環境変数を定義する。
+
+Dockerfile内での環境変数とは異なり、マルチステージビルドの全ステージで使用できる。
+
+dotenv系パッケージを使用しなくてもよくなる。
+
+
 
 **＊実装例＊**
 
-mysqlイメージを使用した場合、DBの環境変数の設定が必要である。DBの環境変数は、バックエンドコンテナでも必要なため、```environment```キーに直接的に環境変数を設定せずに、```env```ファイルに定義した環境変数を```environment```キーで参照すると良い。
+mysqlイメージを使用した場合、DBの環境変数の設定が必要である。
+
+DBの環境変数は、バックエンドコンテナでも必要なため、```environment```キーに直接的に環境変数を設定せずに、```env```ファイルに定義した環境変数を```environment```キーで参照すると良い。
+
+
 
 ```yaml
 services:
@@ -177,11 +236,17 @@ MYSQL_USER=baz # 一般ユーザー名
 MYSQL_PASSWORD=qux # 一般ユーザーのパス
 ```
 
-mysqlイメージでは、環境変数の設定に応じて、コンテナ起動時にSQLが実行されるようになっている。DB名の環境変数が設定されている場合は『```CREATE DATABASE```』、またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される。
+mysqlイメージでは、環境変数の設定に応じて、コンテナ起動時にSQLが実行されるようになっている。
+
+DB名の環境変数が設定されている場合は『```CREATE DATABASE```』、またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される。
+
+
 
 > ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
 
 ルートユーザー名は定義できず、『```root```』となる。
+
+
 
 > ℹ️ 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
 
@@ -189,7 +254,11 @@ mysqlイメージでは、環境変数の設定に応じて、コンテナ起動
 
 ### ```expose```
 
-他のコンテナに対してコンテナポートを開放する。ホスト側からはアクセスできないことに注意する。
+他のコンテナに対してコンテナポートを開放する。
+
+ホスト側からはアクセスできないことに注意する。
+
+
 
 > ℹ️ 参考：https://docs.docker.com/compose/compose-file/compose-file-v3/#expose
 
@@ -204,7 +273,13 @@ services:
 
 ### ```extra_host```
 
-コンテナに、ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。マッピングは、```/etc/hosts```ファイルに書き込まれる。もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
+コンテナに、ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。
+
+マッピングは、```/etc/hosts```ファイルに書き込まれる。
+
+もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
+
+
 
 ```yaml
 services:
@@ -233,7 +308,13 @@ ff02::2 ip6-allrouters
 
 **＊実装例＊**
 
-コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。マッピングは、```/etc/hosts```ファイルに書き込まれる。もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
+コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。
+
+マッピングは、```/etc/hosts```ファイルに書き込まれる。
+
+もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
+
+
 
 **＊実装例＊**
 
@@ -260,7 +341,11 @@ ff02::2 ip6-allrouters
 
 ### ```image```
 
-イメージに名前をつける。デフォルトでは、『```プロジェクト名_サービス名```』となる。
+イメージに名前をつける。
+
+デフォルトでは、『```プロジェクト名_サービス名```』となる。
+
+
 
 **＊実装例＊**
 
@@ -276,7 +361,11 @@ services:
 
 #### ▼ ```fluentd```
 
-コンテナで作成されたログをFluentdコンテナに転送する。ログの転送元よりも先に起動するようにしておく必要がある。
+コンテナで作成されたログをFluentdコンテナに転送する。
+
+ログの転送元よりも先に起動するようにしておく必要がある。
+
+
 
 > ℹ️ 参考：https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
 
@@ -306,7 +395,11 @@ services:
 
 ![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
-コンテナを接続する内/外ネットワークのエイリアス名を設定する。ネットワーク名ではなく、エイリアス名を指定することに注意する。
+コンテナを接続する内/外ネットワークのエイリアス名を設定する。
+
+ネットワーク名ではなく、エイリアス名を指定することに注意する。
+
+
 
 **＊実装例＊**
 
@@ -318,6 +411,8 @@ networks:
 
 ネットワークに接続されているコンテナはコマンドで確認できる。
 
+
+
 ```bash
 # 指定したネットワークに接続するコンテナを確認する。
 $ docker network inspect foo-network
@@ -326,25 +421,25 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""            
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -355,7 +450,7 @@ $ docker network inspect foo-network
 ]
 ```
 
-なお、接続するネットワークは明示的に指定しなくても良い。その場合、『```<プロジェクト名>_default```』というネットワークが、『default』というエイリアス名で作成される。
+注意点として、接続するネットワークは明示的に指定しなくても良い。その場合、『```<プロジェクト名>_default```』というネットワークが、『default』というエイリアス名で作成される。
 
 ```yaml
 services:
@@ -372,25 +467,25 @@ $ docker network inspect <プロジェクト名>_default
     {
         "Name": "<プロジェクト名>_default",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""            
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "default",
@@ -407,6 +502,8 @@ $ docker network inspect <プロジェクト名>_default
 
 コンテナのCPUアーキテクチャを設定する。
 
+
+
 **＊実装例＊**
 
 ```yaml
@@ -419,7 +516,11 @@ services:
 
 ### ```ports```
 
-ホストとコンテナの間のポートフォワーディングを設定する。コンテナのみポート番号を指定した場合、ホスト側のポート番号はランダムになる。
+ホストとコンテナの間のポートフォワーディングを設定する。
+
+コンテナのみポート番号を指定した場合、ホスト側のポート番号はランダムになる。
+
+
 
 **＊実装例＊**
 
@@ -434,7 +535,9 @@ services:
 
 ### ```stdin_open```
 
-docker-composeコマンドの裏側で実行される```docker run```コマンドで、```i```オプションを有効化するか否かを設定する。
+```docker compose```コマンドの裏側で実行される```docker run```コマンドで、```i```オプションを有効化するか否かを設定する。
+
+
 
 **＊実装例＊**
 
@@ -448,7 +551,11 @@ services:
 
 ### ```tty```
 
-docker-composeコマンドの裏側で実行される```docker run```コマンドで、```t```オプションを有効化するか否かを設定する。疑似ターミナルを割り当てるによって、```exit```の後もバックグラウンドでコンテナを起動させ続けられる。
+```docker compose```コマンドの裏側で実行される```docker run```コマンドで、```t```オプションを有効化するか否かを設定する。
+
+疑似ターミナルを割り当てるによって、```exit```の後もバックグラウンドでコンテナを起動させ続けられる。
+
+
 
 **＊実装例＊**
 
@@ -462,7 +569,11 @@ services:
 
 ### ```volumes```（バインドマウント）
 
-最上層と```service```内で、異なるボリューム名を記述した場合、バインドマウントを定義する。ホスト側の```/Users```ディレクトリをコンテナ側にマウントする。
+最上層と```service```内で、異なるボリューム名を記述した場合、バインドマウントを定義する。
+
+ホスト側の```/Users```ディレクトリをコンテナ側にマウントする。
+
+
 
 **＊実装例＊**
 
@@ -478,15 +589,23 @@ services:
 
 ### ```volumes```（ボリュームマウント）
 
-最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。dockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
+最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。
+
+dockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
+
+
 
 > ℹ️ 参考：https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
 
 **＊実装例＊**
 
-MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。datadirディレクトリについては、以下のリンクを参考にせよ。
+MySQLコンテナのdatadirディレクトリ（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_mysql.html
+datadirディレクトリについては、以下のリンクを参考にせよ。
+
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_middleware_database_rdb_mysql_conf.html
 
 ```yaml
 service:
@@ -503,6 +622,8 @@ volumes:
 ```
 
 権限、バインドマウントで```datadir```ディレクトリにマウントしようとすると、権限エラーになる。
+
+
 
 ```bash
 mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
@@ -541,6 +662,8 @@ services:
 
 ネットワーク名をユーザー定義名にする。
 
+
+
 ```yaml
 networks:
   default:    
@@ -548,7 +671,9 @@ networks:
     name: foo-network
 ```
 
-なお、このネットワークを明示的に設定する場合は、エイリアス名（default）で設定する。
+注意点として、このネットワークを明示的に設定する場合は、エイリアス名（default）で設定する。
+
+
 
 ```yaml
 services:
@@ -572,25 +697,25 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        # ～ 中略 ～
+        ...
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
                 "MacAddress": "**:**:**:**:**:**",
-                "IPv4Address": "*.*.*.*/n",
+                "IPv4Address": "*.*.*.*/*",
                 "IPv6Address": ""            
             }
         },
         
-        # ～ 中略 ～
+        ...
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -627,7 +752,7 @@ services:
       # 接続したい外部ネットワーク名
       - shared-network
 
-# ～ 中略 ～
+...
     
 networks:
   # 公開したい外部ネットワーク名
@@ -636,6 +761,8 @@ networks:
 ```
 
 フロントエンドコンテナにて、同じ名前の外部ネットワークを作成し、公開する。
+
+
 
 ```yaml
 # フロントエンドのDocker-compose
@@ -646,7 +773,7 @@ services:
       # 接続したい外部ネットワーク名
       - shared-network
 
-# ～ 中略 ～
+...
 
 networks:
   # 公開したい外部ネットワーク名
@@ -664,6 +791,8 @@ networks:
 
 NFSプラグインを使用することにより、永続化データを```/var/lib/docker/volumes```ディレクトリではなく、NFSストレージに保存する。
 
+
+
 **＊実装例＊**
 
 以下にdocker-composeを使用した場合を示す。
@@ -673,9 +802,9 @@ version: "3.7"
 
 services:
   app:
-    build: # ～ 中略 ～
-    ports: # ～ 中略 ～
-    depends_on: # ～ 中略 ～
+    build: ...
+    ports: ...
+    depends_on: ...
     volumes:
       - example:/data # 下方のオプションが適用される。
       
@@ -723,7 +852,8 @@ services:
       MYSQL_USER: foo
       MYSQL_PASSWORD: foo
       TZ: "Asia/Tokyo"
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    command: |
+      mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     networks:
       - default
       
@@ -740,6 +870,8 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 ```
 
 PHPUnitで接続するDBを指定する方法については、以下のリンクを参考にせよ。
+
+
 
 > ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/testing/testing_whitebox_php.html
 

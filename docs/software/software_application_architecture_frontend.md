@@ -9,7 +9,9 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
@@ -17,14 +19,26 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 ### SPAとは
 
-| ブラウザレンダリングのステップ | 実行者   |
-| ------------------------------ | -------- |
-| Loading                        | ブラウザ |
-| Scripting                      | ブラウザ |
-| Rendering                      | ブラウザ |
-| Paiting                        | ブラウザ |
+| ブラウザレンダリングのステップ | 実行者 |
+|-----------------|--------|
+| Loading         | ブラウザ   |
+| Scripting       | ブラウザ   |
+| Rendering       | ブラウザ   |
+| Paiting         | ブラウザ   |
 
-1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを作成する。クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。非同期通信は、Ajaxの手法を使用して実現される。また、静的ファイルの部分的な作成は、MVVMアーキテクチャによって実現する。SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。
+1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを作成する。
+
+クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。
+
+非同期通信は、Ajaxの手法を使用して実現される。
+
+また、静的ファイルの部分的な作成は、MVVMアーキテクチャによって実現する。
+
+SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。
+
+２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。
+
+
 
 > ℹ️ 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 
@@ -36,9 +50,15 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 #### ▼ MVVMアーキテクチャ
 
-View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって、View層とModel層の間を疎結合にするための設計手法の一種。Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。詳しくは、以下のリンクを参考にせよ。
+View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって、View層とModel層の間を疎結合にするための設計手法の一種。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_language_js_framework_vuejs.html
+Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
+
+詳しくは、以下のリンクを参考にせよ。
+
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_js_framework_vuejs.html
 
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
 
@@ -48,9 +68,21 @@ View層とModel層の間にViewModel層を配置し、View層とViewModel層の�
 
 #### ▼ 処理速度
 
-MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータだけを通信すればよく、レンダリングが速い。
+MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。
+
+
+
+> ℹ️ 参考：https://www.switchitmaker2.com/seo/spa/
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
+
+#### ▼ SEO
+
+SPAは、Googleのクローラーがページを認識しにくく、Webページがインデックスされない可能性がある。
+
+
+
+> ℹ️ 参考：https://www.switchitmaker2.com/seo/spa/
 
 <br>
 
@@ -58,25 +90,35 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### 広義のSSRとは
 
-ブラウザ側ではなくサーバー側で静的ファイルを作成する。フレームワークのテンプレートエンジンやCGIを使用して、サーバー側で静的ファイルを作成すること、も含まれる。
+ブラウザ側ではなくサーバー側で静的ファイルを作成する。
+
+フレームワークのテンプレートエンジンやCGIを使用して、サーバー側で静的ファイルを作成すること、も含まれる。
+
+
 
 > ℹ️ 参考：
 >
 > - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
-| ブラウザレンダリングのステップ | 実行者   |
-| ------------------------------ | -------- |
-| Loading                        | サーバー   |
-| Scripting                      | サーバー   |
-| Rendering                      | サーバー   |
-| Paiting                        | ブラウザ |
+| ブラウザレンダリングのステップ | 実行者 |
+|-----------------|--------|
+| Loading         | サーバー   |
+| Scripting       | サーバー   |
+| Rendering       | サーバー   |
+| Paiting         | ブラウザ   |
 
 <br>
 
 ### 狭義のSSRとは
 
-広義のSSRにSPAを取り入れた方法のこと。ブラウザ側ではなくサーバー側で静的ファイルを作成する。広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。
+広義のSSRにSPAを取り入れた方法のこと。
+
+ブラウザ側ではなくサーバー側で静的ファイルを作成する。
+
+広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。
+
+
 
 > ℹ️ 参考：
 >
@@ -89,7 +131,13 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### SSGとは
 
-事前にビルドを行って静的ファイルを作成しておく。そして、これをレンダリングし、静的サイトとして稼働させる。動的な要素（例：ランダム表示）を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。
+事前にビルドを行って静的ファイルを作成しておく。
+
+そして、これをレンダリングし、静的サイトとして稼働させる。
+
+動的な要素（例：ランダム表示）を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。
+
+
 
 <br>
 
@@ -97,7 +145,15 @@ MPAと比較して、データを非同期的に通信できるため、1つのW
 
 ### ISRとは
 
-SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファイルを作成しない。その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、レンダリングされる。クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。
+SSGの発展型。
+
+SSGとは異なり、事前にビルドせず、静的ファイルを作成しない。
+
+その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、レンダリングされる。
+
+クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。
+
+
 
 > ℹ️ 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
@@ -109,6 +165,8 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 フロントエンドを構成する要素を、5つのレイヤー（Atoms、Molecules、Organisms、Templates、Pages）に分ける設計方法のこと。
 
+
+
 > ℹ️ 参考：https://atomicdesign.bradfrost.com/
 
 <br>
@@ -117,13 +175,15 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
+
+
 > ℹ️ 参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
-| Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
-| --------------------- | --------------------------- |
-| components            | Atoms、Molecules、Organisms |
-| pages                 | Pages                       |
-| layouts               | Templates                   |
+| Nuxt.jsのディレクトリ | Atomic Designのレイヤー        |
+|----------------|---------------------------|
+| components     | Atoms、Molecules、Organisms |
+| pages          | Pages                     |
+| layouts        | Templates                 |
 
 <br>
 
@@ -134,6 +194,8 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 #### ▼ UI部品合成とは
 
 フロントエンドのコンポーネントを、各マイクロサービスに対応するように分割する設計方法。
+
+
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
 

@@ -15,3 +15,6 @@ jobs:
           fetch-depth: 0
       - name: Pip install
         uses: ./.github/workflows/composite/pip-install
+      - name: Build MkDocs
+        run: |
+          mkdocs build

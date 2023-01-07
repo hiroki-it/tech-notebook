@@ -9,11 +9,13 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
-## 01. docker-composeコマンド
+## 01. ```docker compose```コマンド
 
 ### config
 
@@ -22,7 +24,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 バリデーションとして、```docker-compose.yml```ファイルを展開する。ファイル内で、相対パスや変数を使用している場合、これらが正しく設定されているかを確認できる。
 
 ```bash
-$ docker-compose config
+$ docker compose config
 ```
 
 <br>
@@ -33,12 +35,16 @@ $ docker-compose config
 
 イメージをビルドする。
 
+
+
 #### ▼ --no-cache
 
 キャッシュを使用せずにコンテナイメージをビルドする。
 
+
+
 ```bash
-$ docker-compose build --no-cache
+$ docker compose build --no-cache
 ```
 
 <br>
@@ -47,32 +53,50 @@ $ docker-compose build --no-cache
 
 #### ▼ upとは
 
-指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。コンテナ作成までが完了していて停止中が存在する場合、これをコンテナを起動する。また起動中コンテナがあれば、これを再起動する。オプションにより起動モードが異なる。
+指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。
+
+コンテナ作成までが完了していて停止中が存在する場合、これをコンテナを起動する。
+
+また起動中コンテナがあれば、これを再起動する。
+
+オプションにより起動モードが異なる。
+
+
 
 #### ▼ オプション無し
 
-指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。アタッチモードでコンテナを起動する。
+指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。
+
+アタッチモードでコンテナを起動する。
+
+
 
 ```bash
 # アタッチモード
-$ docker-compose up <サービス名>
+$ docker compose up <サービス名>
 ```
 
 #### ▼ -d
 
-指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。デタッチドモードでコンテナを起動する。
+指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナ起動を行う。
+
+デタッチドモードでコンテナを起動する。
+
+
 
 ```bash
 # デタッチモード
-$ docker-compose up -d <サービス名>
+$ docker compose up -d <サービス名>
 ```
 
 #### ▼ --build
 
 イメージをビルドし、コンテナを作成する。
 
+
+
 ```bash
-$ docker-compose up --build -d <サービス名>
+$ docker compose up --build -d <サービス名>
 ```
 
 #### ▼ -f
@@ -80,7 +104,7 @@ $ docker-compose up --build -d <サービス名>
 ファイルを指定して、docker-composeを実行する。
 
 ```bash
-$ docker-compose up -f foo-docker-compose.yml
+$ docker compose up -f foo-docker-compose.yml
 ```
 
 <br>
@@ -93,20 +117,28 @@ $ docker-compose up -f foo-docker-compose.yml
 
 #### ▼ --service-ports
 
-既存コンテナを残して、指定したサービスの新しいコンテナをアタッチモードで起動する。また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
+既存コンテナを残して、指定したサービスの新しいコンテナをアタッチモードで起動する。
+
+また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
+
+
 
 ```bash
 # アタッチモード
-$ docker-compose run --rm --service-ports <サービス名>
+$ docker compose run --rm --service-ports <サービス名>
 ```
 
 #### ▼ -d --service-ports
 
-既存コンテナを残して、指定したサービスの新しいコンテナをデタッチドモードで起動する。また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
+既存コンテナを残して、指定したサービスの新しいコンテナをデタッチドモードで起動する。
+
+また、ホストとコンテナ間のポートフォワーディングを有効化するか否かを設定する。
+
+
 
 ```bash
 # デタッチモード
-$ docker-compose run --rm -d --service-ports <サービス名>
+$ docker compose run --rm -d --service-ports <サービス名>
 ```
 
 <br>
@@ -117,8 +149,10 @@ $ docker-compose run --rm -d --service-ports <サービス名>
 
 指定したサービスの起動中コンテナを全て停止する。
 
+
+
 ```bash
-$ docker-compose stop <サービス名>
+$ docker compose stop <サービス名>
 ```
 
 <br>
@@ -129,12 +163,16 @@ $ docker-compose stop <サービス名>
 
 指定したリソースを削除する。
 
+
+
 #### ▼ --rmi --volumes --remove-orphans
 
 全てのリソース（イメージ、コンテナ、ボリューム、ネットワーク）を削除する。
 
+
+
 ```bash
-$ docker-compose down --rmi all --volumes --remove-orphans
+$ docker compose down --rmi all --volumes --remove-orphans
 ```
 
 <br>
@@ -143,22 +181,30 @@ $ docker-compose down --rmi all --volumes --remove-orphans
 
 #### ▼ logsとは
 
-コンテナ内に入ることなく、起動プロセスから出力されるログを確認できる。オプションごとに、ログの表示タイプが異なる。
+コンテナ内に入ることなく、起動プロセスから出力されるログを確認できる。
+
+オプションごとに、ログの表示タイプが異なる。
+
+
 
 #### ▼ オプション無し
 
 バックグラウンドでログを取得する。
 
+
+
 ```bash
-$ docker-compose logs <サービス名>
+$ docker compose logs <サービス名>
 ```
 
 #### ▼ -f
 
 フォアグラウンドでログを取得する。
 
+
+
 ```bash
-$ docker-compose logs -f <サービス名>
+$ docker compose logs -f <サービス名>
 ```
 
 <br>
@@ -167,7 +213,11 @@ $ docker-compose logs -f <サービス名>
 
 ### down
 
-クラウドインフラストラクチャの削除をプロビジョニングする。コンテキストがAWSの場合は、ECSクラスターとその中身を削除する。
+クラウドインフラストラクチャの削除をプロビジョニングする。
+
+コンテキストがAWSの場合は、ECSクラスターとその中身を削除する。
+
+
 
 > ℹ️ 参考：https://github.com/docker/compose-cli
 
@@ -175,7 +225,11 @@ $ docker-compose logs -f <サービス名>
 
 ### up
 
-クラウドインフラストラクチャの作成をプロビジョニングする。コンテキストがAWSの場合は、ECSクラスターとその中身を作成する。
+クラウドインフラストラクチャの作成をプロビジョニングする。
+
+コンテキストがAWSの場合は、ECSクラスターとその中身を作成する。
+
+
 
 > ℹ️ 参考：https://github.com/docker/compose-cli
 

@@ -9,13 +9,17 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/about.html
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
 
 <br>
 
 ## 01. apiVersion
 
 APIグループのバージョンを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
@@ -29,6 +33,8 @@ apiVersion: v1
 
 作成されるKubernetesリソースの種類を設定する。
 
+
+
 <br>
 
 ## 01-03. metadata
@@ -37,19 +43,47 @@ apiVersion: v1
 
 #### ▼ annotationとは
 
-任意のキーと値を設定する。```metadata.labels```キーとは異なり、設定できる情報に制約がない。
+任意のキーと値を設定する。
 
-> ℹ️ 参考：https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
+```metadata.labels```キーとは異なり、設定できる情報に制約がない。
 
-#### ▼ kubernetes.io/ingress.class
 
-現在、非推奨である。代わりに、```spec.ingressClassname```キーを指定する。
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+> - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
+
+#### ▼ kubectl.kubernetes.io/last-applied-configuration
+
+kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。```kubectl edit```コマンドでマニフェストを変更してしまうと、```kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"extensions/v1beta1","kind":"Deployment" ....
+```
+
+<br>
+
+#### ▼ kubernetes.io/ingress.class
+
+現在、非推奨である。
+
+代わりとして、```spec.ingressClassname```キーを指定する。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   annotations: 
     kubernetes.io/ingress.class: foo-class
@@ -58,7 +92,13 @@ metadata:
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。複数のIngressClassをデフォルトに設定しないようにする。
+IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。
+
+Ingressが新しくapplyされた場合、このIngressClassの設定値が使用されるようになる。
+
+複数のIngressClassをデフォルトに設定しないようにする。
+
+
 
 > ℹ️ 参考：
 >
@@ -66,11 +106,59 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
 
 ```yaml
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   annotations: 
     ingressclass.kubernetes.io/is-default-class: "true"
+...
+```
+
+<br>
+
+### finalizers
+
+#### ▼ finalizersとは
+
+Kubernetesリソースに親子関係がある場合に、親リソースよりも先に子リソースを削除できるようにするため、親リソースの削除を防ぐ。
+
+関連する子リソースが削除されると、```finalizers```キーが削除され、親リソースも削除されるようになる。
+
+
+
+> ℹ️ 参考：https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  finalizers:
+    - foo-finalizer
+  deletionTimestamp: "2022-01-01T12:00:00Z"
+...
+```
+
+<br>
+
+### generation
+
+#### ▼ generation
+
+Kubernetesリソースが最初に作成されてから何回変更されたかの回数（世代数）を設定する。
+
+マニフェストのどこかの設定値を変更すると、世代数が増える。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 3
 ...
 ```
 
@@ -82,34 +170,40 @@ metadata:
 
 Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。
 
+
+
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels: 
-    app: foo-gin
+  labels:
+    app.kubernetes.io/app: foo-deployment
 ...
 ```
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
 #### ▼ 予約Label
 
 キー名のプレフィクスとして、```kubernetes.io/```と```k8s.io/```は予約されている。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/reference/labels-annotations-taints/
 
 #### ▼ データ型
 
-string型である必要がある。int型を割り当てようとするとエラーになり、これはHelmの```values```ファイル経由で『数字』を出力しようとする場合に起こる。
+string型である必要がある。
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_helm.html
+int型を割り当てようとするとエラーになり、これはHelmの```values```ファイル経由で『数字』を出力しようとする場合に起こる。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <br>
 
@@ -117,15 +211,34 @@ string型である必要がある。int型を割り当てようとするとエ�
 
 #### ▼ managedFieldsとは
 
-```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に追加される。マニフェストファイルで、クライアントが管理している部分とkube-controllerが管理している部分を区別できる。登録されていないマネージャーはマニフェストファイルを変更できない。マネージャーを```managedFields```キーに追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerは常に```--force-conflicts```オプションを実行するようになっている。
+特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。```kubectl apply```コマンドで```--server-side```オプションを有効化した場合に作成される。```manager```キーで、クライアント（```kubectl```クライアント、Kubernetesリソース）が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。```manager```キーにないマネージャーはマニフェストを変更できない。```managedFields```キー配下にマネージャーを新しく追加するためには、基本的には```--force-conflicts```オプションを使用する必要がある（他にも方法はあるが）。ただし、kube-controllerやOperatorでは常に```--force-conflicts```オプションを実行するようになっている。
 
 > ℹ️ 参考：
 >
 > - https://qiita.com/superbrothers/items/aeba9406691388b6a19e
-> - https://www.slideshare.net/pfi/metadatamanagedfields-kubernetes-meetup-tokyo-48-251269647
+> - https://speakerdeck.com/superbrothers/wakaru-metadata-dot-managedfields?slide=21
+> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management
+> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller
+
+#### ▼ 確認方法
+
+```managedFields```キーを確認する場合、```kubectl get```コマンドで```-o```オプションと```--show-managed-fields ```オプションを有効化する必要がある。
+
+```bash
+$ kubectl get deployment foo-deployment -o yaml --show-managed-fields
+```
+
+もし、特定のキーが管理下にあるか否かを調べる場合、```grep```コマンドと組み合わせる。
+
+
+
+```bash
+$ kubectl get deployment foo-deployment -o yaml --show-managed-fields | grep -e manager -e f:<マニフェストのキー>
+```
+
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   managedFields:
@@ -134,7 +247,7 @@ metadata:
       apiVersion: apps/v1
       # kube-apiserverに対するリクエスト内容
       operation: Apply
-      # マネージャーが変更したマニフェスト部分
+      # kubectlコマンドが管理するマニフェストのキー部分
       fields:
         ...
     # kube-controller-managerによる管理（後からの変更）
@@ -143,7 +256,16 @@ metadata:
       # kube-apiserverに対するリクエスト内容
       operation: Update
       time: '2022-01-01T16:00:00.000Z'
-      # マネージャーが変更したマニフェスト部分
+      # kube-controller-managerが管理するマニフェストのキー部分
+      fields:
+        ...
+    # operatorによる管理（後からの変更）
+    - manager: operator
+      apiVersion: apps/v1
+      # kube-apiserverに対するリクエスト内容
+      operation: Update
+      time: '2022-01-01T16:00:00.000Z'
+      # operatorが管理するマニフェストのキー部分
       fields:
         ...
 ```
@@ -156,12 +278,151 @@ metadata:
 
 Kubernetesリソースを一意に識別するための名前を設定する。
 
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
 ...
+```
+
+#### ▼ 名前は変更不可
+
+Kubernetesにとって```metadata.name```キーはIDであり、後から変更できない。
+
+もし別の名前に変更したい場合は、再作成する必要がある。
+
+
+
+> ℹ️ 参考：https://stackoverflow.com/questions/39428409/rename-deployment-in-kubernetes
+
+<br>
+
+### namespace
+
+#### ▼ namespaceとは
+
+Kubernetesリソースを作成するNamespaceを設定する。
+
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: foo-namespace
+...
+```
+
+<br>
+
+### uid
+
+#### ▼ uid
+
+そのKubernetesリソースを識別するユニークIDを設定する。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  uid: *****
+...
+```
+
+<br>
+
+## 01-04. status
+
+### status
+
+#### ▼ statusとは
+
+Kubernetesリソースの現在の状態を設定する。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+Kubernetesリソースごとに、```status```キー配下の構造は異なっており、
+
+<br>
+
+### conditions
+
+#### ▼ conditionsとは
+
+```status```キーの履歴を設定する。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+
+
+> ℹ️ 参考：https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  ...
+
+status:
+  conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T06:24:02Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T07:01:45Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T07:01:45Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-01-01T06:24:02Z"
+      status: "True"
+      type: PodScheduled
+```
+
+<br>
+
+### observedGeneration
+
+#### ▼ observedGenerationとは
+
+kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```metadata.generation```キーの値を設定する。
+
+Kubernetesが設定してくれるため、開発者が設定する必要はない。
+
+```metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+> - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  ...
+
+status:
+  observedGeneration: 3
+  conditions:
+    ...
 ```
 
 <br>
@@ -170,7 +431,11 @@ metadata:
 
 ### spec.group
 
+#### ▼ groupとは
+
 拡張apiserverが受信するAPIグループ名を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
@@ -187,7 +452,11 @@ spec:
 
 ### spec.groupPriorityMinimum
 
+#### ▼ groupPriorityMinimumとは
+
 同じAPIグループがある場合に、優先度を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
@@ -205,8 +474,9 @@ spec:
 
 ### spec.insecureSkipTLSVerify
 
-> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
+#### ▼ insecureSkipTLSVerifyとは
 
+> ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -221,6 +491,8 @@ spec:
 
 
 ### spec.service
+
+#### ▼ serviceとは
 
 拡張apiserverは、kube-apiserverからリクエストを直接的に受信するのではなく、専用のServiceを介してリクエストを受信する。この時、どのServiceからリクエストを受信するかを設定する。
 
@@ -243,7 +515,11 @@ spec:
 
 ### spec.version
 
+#### ▼ versionとは
+
 拡張apiserverが受信するAPIグループのバージョンを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
@@ -260,7 +536,11 @@ spec:
 
 ### spec.versionPriority
 
+#### ▼ versionPriorityとは
+
 同じAPIグループがある場合に、バージョンの優先度を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/#APIServiceSpec
 
@@ -275,7 +555,53 @@ spec:
 
 <br>
 
-## 02. Config
+## 03. CertificateSigningRequest
+
+### spec.request
+
+#### ▼ requestとは
+
+base64方式でエンコードした証明書署名要求（```.csr```ファイル）を設定する。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
+> - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
+
+```yaml
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: foo-csr
+spec:
+  groups:
+    - system:authenticated
+  # base64方式でエンコードした証明書署名要求ファイル
+  request: LS0tL...
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+    - digital signature
+    - key encipherment
+    - client auth
+```
+
+定義したCertificateSigningRequestを承認し、SSL証明書（```.crt```）を作成するためには、```kubectl certificate approve```コマンドを使用する。
+
+
+
+```bash
+# 承認
+$ kubectl certificate approve foo-csr
+
+# SSL証明書を取得する。
+$ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.crt
+```
+
+<br>
+
+## 04. Config
 
 ### clusters
 
@@ -283,11 +609,15 @@ spec:
 
 ```kubectl```コマンドの向き先となるClusterを設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
 Cluster名を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -295,15 +625,15 @@ kind: Config
 clusters:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
     
-    # 〜 中略 〜
+    ...
   
   - name: docker-desktop
   
-    # 〜 中略 〜  
+    ...  
   
   - name: minikube
   
-    # 〜 中略 〜  
+    ...  
 ```
 
 #### ▼ cluster
@@ -320,13 +650,13 @@ clusters:
       # kube-apiserverのURL
       server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
       
-    # 〜 中略 〜  
+    ...  
     
   - cluster:
       certificate-authority-data: LS0tLS1 ...
       server: https://kubernetes.docker.internal:6443
       
-    # 〜 中略 〜  
+    ...  
     
   - cluster:
       certificate-authority: /Users/hiroki-hasegawa/.minikube/ca.crt
@@ -338,7 +668,7 @@ clusters:
           name: cluster_info
       server: https://127.0.0.1:52192
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
@@ -349,11 +679,15 @@ clusters:
 
 ```kubectl```コマンドの向き先の候補を設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
 向き先の名前を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -361,20 +695,22 @@ kind: Config
 contexts:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
   
-    # 〜 中略 〜
+    ...
   
   - name: docker-desktop
   
-    # 〜 中略 〜
+    ...
   
   - name: minikube
   
-    # 〜 中略 〜 
+    ... 
 ```
 
 #### ▼ context
 
 実際に使用するCluster名とユーザー名を、```clusters```キーと```users```キーから選んで設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -384,13 +720,13 @@ contexts:
       cluster: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
       user: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
       
-    # 〜 中略 〜  
+    ...  
     
   - context:
       cluster: docker-desktop
       user: docker-desktop
       
-    # 〜 中略 〜  
+    ...  
     
   - context:
       cluster: minikube
@@ -403,7 +739,7 @@ contexts:
       namespace: default
       user: minikube
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
@@ -413,6 +749,8 @@ contexts:
 #### ▼ current-contextとは
 
 ```kubectl```コマンドの現在の向き先の名前を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -442,13 +780,15 @@ preferences: {}
 
 #### ▼ usersとは
 
-```kubectl```コマンドのクライアントの認証情報を設定する。
+kube-apiserverのクライアント（特に```kubectl```コマン実行者）のUserAccountの情報を設定する。
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
 #### ▼ name
 
 ユーザー名を設定する。
+
+
 
 ```yaml
 
@@ -457,18 +797,22 @@ kind: Config
 users:
   - name: arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/prd-foo-eks-cluster
   
-    # 〜 中略 〜
+    ...
     
   - name: docker-desktop
   
-    # 〜 中略 〜
+    ...
   
   - name: minikube
 ```
 
 #### ▼ user
 
-ユーザーの認証情報を設定する。AWS EKSのように、認証情報を動的に取得するようにしても良い。
+ユーザーの認証情報を設定する。
+
+AWS EKSのように、認証情報を動的に取得するようにしても良い。
+
+
 
 ```yaml
 
@@ -485,26 +829,26 @@ users:
           - get-token
           - --cluster-name
           - prd-foo-eks-cluster
-        command: aws
+        command: "aws"
         
-    # 〜 中略 〜  
+    ...  
     
   - user:
       client-certificate-data: LS0tLS1 ...
       client-key-data: LS0tLS1 ...
       
-    # 〜 中略 〜  
+    ...  
       
   - user:
       client-certificate: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.crt
       client-key: /Users/hiroki-hasegawa/.minikube/profiles/minikube/client.key
       
-    # 〜 中略 〜  
+    ...  
 ```
 
 <br>
 
-## 03. ConfigMap
+## 05. ConfigMap
 
 ### data
 
@@ -512,9 +856,13 @@ users:
 
 Kubernetesリソースに渡す機密でない変数を設定する。
 
-#### ▼ string型変数
 
-ConfigMapに設定するstring型変数を設定する。
+
+#### ▼ 変数の管理
+
+ConfigMapに設定する変数を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -526,6 +874,8 @@ data:
 ```
 
 string型しか設定できないため、デコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -539,7 +889,9 @@ data:
   number: "1"
 ```
 
-パイプ（``` |```）を使用すれば、設定ファイルをstring型変数として設定できる。
+#### ▼ ファイルに管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
 
 ```yaml
 apiVersion: v1
@@ -563,13 +915,15 @@ data:
 
 <br>
 
-## 04. CronJob
+## 06. CronJob
 
 ### spec.jobTemplate
 
 #### ▼ jobTemplateとは
 
 CronJobで、定期的に実行するJobを設定する。
+
+
 
 ```yaml
 apiVersion: batch/v1
@@ -586,10 +940,8 @@ spec:
             - name: foo-alpine
               image: alpine:latest
               # 定期的に実行するコマンドを設定する。
-              command:
-                - /bin/sh
-                - -c
-                - echo Hello World
+              command: |
+                bin/sh -c "echo Hello World"
           restartPolicy: OnFailure
 ```
 
@@ -600,6 +952,8 @@ spec:
 #### ▼ failedJobsHistoryLimitとは
 
 実行に失敗したJobに関して、上限の履歴数を設定する。
+
+
 
 ```yaml
 apiVersion: io.k8s.api.batch.v1
@@ -618,6 +972,8 @@ spec:
 
 Cronのルールを設定する。
 
+
+
 ```yaml
 apiVersion: io.k8s.api.batch.v1
 kind: CronJob
@@ -635,6 +991,8 @@ spec:
 
 実行に成功したJobに関して、上限の履歴数を設定する。
 
+
+
 ```yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -646,13 +1004,17 @@ spec:
 
 <br>
 
-## 05. Deployment
+## 07. Deployment
 
 ### spec.replicas
 
 #### ▼ replicasとは
 
-Cluster内で維持するPodのレプリカ数を設定する。Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
+Cluster内で維持するPodのレプリカ数を設定する。
+
+Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
+
+
 
 > ℹ️ 参考：
 >
@@ -668,12 +1030,12 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -683,7 +1045,11 @@ spec:
 
 #### ▼ revisionHistoryLimitとは
 
-保存されるリビジョン番号の履歴数を設定する。もし依存のリビジョン番号にロールバックする場合があるのであれば、必要数を設定しておく。
+保存されるリビジョン番号の履歴数を設定する。
+
+もし依存のリビジョン番号にロールバックする場合があるのであれば、必要数を設定しておく。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
@@ -696,12 +1062,12 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -713,9 +1079,15 @@ spec:
 
 Deploymentで管理するPodを明示的に設定する。
 
+
+
 #### ▼ matchLabels
 
-Podの```metadata.labels```キーを指定する。Podに複数の```metadata.labels```キーが付与されている時は、これらを全て指定する必要がある。
+Podの```metadata.labels```キーを指定する。
+
+Podに複数の```metadata.labels```キーが付与されている時は、これらを全て指定する必要がある。
+
+
 
 > ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -727,12 +1099,12 @@ metadata:
 spec:
   selector:
     matchLabels: # Deploymentに紐づけるPodのmetadata.labelsキー
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels: # Podのmetadata.labelsキー
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
@@ -744,9 +1116,13 @@ spec:
 
 デプロイメントの方法を設定する。
 
+
+
 #### ▼ Recreate
 
 インプレースデプロイメントを使用して、新しいPodを作成する。
+
+
 
 > ℹ️ 参考：https://amateur-engineer-blog.com/kubernetes-recreate/
 
@@ -760,18 +1136,20 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
 #### ▼ RollingUpdate
 
 ローリングアップデートを使用して、新しいPodを作成する。
+
+
 
 > ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -788,24 +1166,34 @@ spec:
       maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: app
 ```
 
-もし```maxSurge```キーを```100```%、また```maxUnavailable```キーを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。また、Podの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```キーを```100```%、また```maxUnavailable```キーを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+
+また、Podの停止数がレプリカ数を下回らないようになる。
+
+
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 
 <br>
 
-### spec.template（設定項目はPodと同じ）
+### spec.template
 
-Deploymentで維持管理するPodのテンプレートを設定する。設定項目はPodと同じである。
+#### ▼ templateとは（設定項目はPodと同じ）
+
+Deploymentで維持管理するPodのテンプレートを設定する。
+
+設定項目はPodと同じである。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
@@ -819,12 +1207,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
     spec:
       containers:
         - name: foo-gin
@@ -835,14 +1223,169 @@ spec:
 
 <br>
 
-## 06. HorizontalPodAutoscaler
+## 08. EndpointSlice
 
+### spec.endpoints
+
+#### ▼ endpointsとは
+
+Serviceでルーティング先のPodに関して、『現在の』 宛先情報を設定する。
+
+Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
+
+
+
+#### ▼ addresses
+
+Podの現在のIPアドレスを設定する。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - addresses:
+      - *.*.*.*
+```
+
+#### ▼ condition
+
+Podの現在のライフサイクルフェーズを設定する。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - conditions:
+      ready: true
+      serving: true
+      terminating: false
+```
+
+#### ▼ nodeName
+
+Podが現在スケジューリングされているNode名を設定する。
+
+これにより、Serviceとそのルーティング先のPodが異なるNode上に存在していたとしても、ServiceはPodにルーティングできる。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - nodeName: foo-node
+```
+
+
+#### ▼ targetRef
+
+Podの識別子を設定する。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - targetRef:
+      kind: Pod
+      name: foo-pod
+      namespace: foo-namespace
+```
+
+
+#### ▼ zone
+
+Podが現在スケジューリングされているAZを設定する。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+endpoints:
+  - zone: ap-northeast-1a
+```
+
+<br>
+
+### spec.ports
+
+#### ▼ portsとは
+
+Podが待ち受けるポート番号を設定する。
+
+Kubernetesが自動的に更新するため、ユーザーが管理する必要はない。
+
+
+
+```yaml
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: foo-endpoint-slice
+ports:
+  - name: http-foo
+    port: 443
+    protocol: TCP
+```
+
+<br>
+
+## 09. HTTPRoute
+
+調査中...
+
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: http
+  namespace: foo
+spec:
+  parentRefs:
+    - name: gateway
+      namespace: istio-ingress
+      sectionName: default
+  hostnames:
+    - "foo.example.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /foo
+      backendRefs:
+        - name: foo
+          port: 80
+```
+
+<br>
+
+
+## 10. HorizontalPodAutoscaler
 
 ### spec.maxReplicas、spec.minReplicas
 
 #### ▼ maxReplicas、minReplicas、とは
 
-水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
+自動水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
+
+
 
 > ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
@@ -862,18 +1405,24 @@ spec:
 
 #### ▼ metricsとは
 
-水平スケーリングのトリガーとするメトリクスと、維持されるターゲット値を設定する。
+自動水平スケーリングのトリガーとするメトリクスと、維持されるターゲット値を設定する。
+
+
 
 #### ▼ type
 
-| タイプ名       | 説明                                            | メトリクス例                                     |
-| -------------- | ----------------------------------------------- | ------------------------------------------------ |
-| ```Resource``` | リソースメトリクス                              | CPU使用率、メモリ使用率、など                    |
-| ```Pods```     | Podのカスタムメトリクス                         | Queries Per Second、message broker’s queue、など |
+| タイプ名          | 説明                             | メトリクス例                                      |
+|----------------|----------------------------------|----------------------------------------------|
+| ```Resource``` | リソースメトリクス                        | CPU使用率、メモリ使用率、など                       |
+| ```Pods```     | Podのカスタムメトリクス                    | Queries Per Second、message broker’s queue、など |
 | ```Object```   | Pod以外のKubernetesリソースのカスタムメトリクス | Ingressに関するメトリクスなど                          |
-| ```External``` | Kubernetes以外の任意のメトリクス                | AWS、GCP、Azureに固有のメトリクス                |
+| ```External``` | Kubernetes以外の任意のメトリクス        | AWS、GCP、Azureに固有のメトリクス                     |
 
-メトリクスの種類を設定する。以下のタイプを設定できる。
+メトリクスの種類を設定する。
+
+以下のタイプを設定できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -900,7 +1449,9 @@ spec:
 
 #### ▼ scaleTargetRefとは
 
-水平スケーリングを紐づけるKubernetesリソースを設定する。
+自動水平スケーリングを実行するKubernetesリソースを設定する。
+
+
 
 > ℹ️ 参考：https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
@@ -912,13 +1463,13 @@ metadata:
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
-    kind: Deployment # Deploymentに水平スケーリングを紐づける。
+    kind: Deployment # Deploymentで自動水平スケーリングを実行する。
     name: foo-deployment
 ```
 
 <br>
 
-## 07. Ingress
+## 11. Ingress
 
 ### annotations
 
@@ -926,7 +1477,7 @@ spec:
 
 外部Ingressを使用する場合、オプションを設定する。
 
-#### ▼ AWS固有のキ
+
 
 <br>
 
@@ -935,6 +1486,8 @@ spec:
 #### ▼ ingressClassNameとは
 
 標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キーの値を設定する。
+
+
 
 > ℹ️ 参考：
 >
@@ -956,7 +1509,13 @@ spec:
 
 #### ▼ rulesとは
 
-Serviceへのルーティングルールを設定する。複数のServiceにインバウンド通信を振り分けられる。Ingressを使用する場合、ルーティング対象のServiceは、ClusterIP Serviceとする。
+Serviceへのルーティングルールを設定する。
+
+複数のServiceにインバウンド通信を振り分けられる。
+
+Ingressを使用する場合、ルーティング先のServiceは、ClusterIP Serviceとする。
+
+
 
 > ℹ️ 参考：https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
@@ -989,29 +1548,61 @@ spec:
 
 <br>
 
-## 08. IngressClass
+## 12. IngressClass
 
 ### spec.controller
 
 #### ▼ controllerとは
 
-標準のIngressの代わりに、外部Ingressを使用する場合、そのIngressのマニフェストのAPIを設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、外部のIngressとIngressコントローラーを紐づけられるように、コントローラーのAPIグループを設定する。
+
+
 
 > ℹ️ 参考：
 >
+> - https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-class-v1/#IngressClassSpec
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/ingress_class/#deprecated-kubernetesioingressclass-annotation
 > - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
+
+#### ▼ ALB Ingressの場合
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-alb-ingress-class
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: ingress.k8s.aws/alb
-  # Nginxコントローラーの場合は、k8s.io/ingress-nginx
+```
+
+#### ▼ Nginx Ingressの場合
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-nginx-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+#### ▼ Istio Ingressの場合
+
+> ℹ️ 参考：https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: foo-istio-ingress-class
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: istio.io/ingress-controller
 ```
 
 <br>
@@ -1020,7 +1611,13 @@ spec:
 
 #### ▼ parametersとは
 
-外部Ingressに応じたパラメーターを設定する。代わりに、IngressClassParamsを使用しても良い。
+外部Ingressに応じたパラメーターを設定する。
+
+代わりとして、IngressClassParamsを使用しても良い。
+
+
+
+#### ▼ ALB Ingressの場合
 
 > ℹ️ 参考：
 >
@@ -1031,24 +1628,60 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: foo-ingress-class
+  name: foo-alb-ingress-class
 spec:
-  # AWS ALB Ingressの場合
   parameters:
     apiGroup: elbv2.k8s.aws
     kind: IngressClassParams
-    name: foo-ingress-class-params
+    name: foo-alb-ingress-class-params
 ```
 
 <br>
 
-## 09. Job
+## 13. Gateway
+
+調査中...
+
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-ingress
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: default
+      hostname: "*.example.com"
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: self-signed-cert
+            namespace: istio-ingress
+      allowedRoutes:
+        namespaces:
+          from: All
+```
+
+<br>
+
+## 14. Job
 
 ### spec.activeDeadlineSeconds
 
 #### ▼ activeDeadlineSecondsとは
 
-Jobの試行の上限実行時間を設定する。設定された時間を超過すると、エラーが返却される。```spec.backoffLimit```キーよりも優先される。
+Jobの試行の上限実行時間を設定する。
+
+設定された時間を超過すると、エラーが返却される。
+
+```spec.backoffLimit```キーよりも優先される。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#job-termination-and-cleanup
 
@@ -1069,6 +1702,8 @@ spec:
 
 Jobの試行の上限数を設定する。
 
+
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -1085,6 +1720,10 @@ spec:
 #### ▼ parallelismとは
 
 並列的に起動できるPod数を設定する。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism
 
 ```yaml
 apiVersion: batch/v1
@@ -1103,6 +1742,10 @@ spec:
 
 起動するPodを設定する。
 
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -1114,22 +1757,44 @@ spec:
       containers:
         - name: foo-alpine
           image: alpine:latest
-          command:
-            - /bin/sh
-            - -c
-            - echo Hello World
+          command: |
+            echo Hello World
       restartPolicy: OnFailure
 ```
 
 <br>
 
-## 10. Node
+### spec.ttlSecondsAfterFinished
+
+#### ▼ ttlSecondsAfterFinishedとは
+
+Jobが成功/失敗した後にJob自体を削除する場合に、その秒数を設定する。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/workloads/controllers/job/#clean-up-finished-jobs-automatically
+> - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: foo-job
+spec:
+  ttlSecondsAfterFinished: 30
+```
+
+<br>
+
+## 15. Node
 
 Kubernetesの実行時に自動的に作成される。もし手動で作成する場合は、```kubectl```コマンドを実行し、その時に```--register-node```キーを```false```とする必要がある。
 
 <br>
 
-## 11. PersistentVolume
+## 16. PersistentVolume
 
 ### spec.accessModes
 
@@ -1137,12 +1802,18 @@ Kubernetesの実行時に自動的に作成される。もし手動で作成す�
 
 ボリュームへの認可スコープを設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 
 
 #### ▼ ReadWriteMany
 
-ボリュームに対して、複数Nodeから読み出し/書き込みできるようにする。Node間でDBを共有したい場合に使用する。
+ボリュームに対して、複数のNodeから読み出し/書き込みできるようにする。
+
+Node間でDBを共有したい場合に使用する。
+
+
 
 **＊実装例＊**
 
@@ -1158,7 +1829,11 @@ spec:
 
 #### ▼ ReadOnlyMany
 
-ボリュームに対して、複数Nodeから読み出しでき、また単一Nodeのみから書き込みできるようにする。Node間で読み出し処理のみDBを共有したい場合に使用する。
+ボリュームに対して、複数のNodeから読み出しでき、また単一のNodeのみから書き込みできるようにする。
+
+Node間で読み出し処理のみDBを共有したい場合に使用する。
+
+
 
 **＊実装例＊**
 
@@ -1174,7 +1849,11 @@ spec:
 
 #### ▼ ReadWriteOnce
 
-ボリュームに対して、単一Nodeからのみ読み出し/書き込みできるようにする。NodeごとにDBを分割したい場合に使用する。
+ボリュームに対して、単一のNodeからのみ読み出し/書き込みできるようにする。
+
+NodeごとにDBを分割したい場合に使用する。
+
+
 
 **＊実装例＊**
 
@@ -1196,6 +1875,8 @@ spec:
 
 ストレージの最大サイズを設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
 
 **＊実装例＊**
@@ -1216,13 +1897,21 @@ spec:
 
 #### ▼ hostPathとは
 
-PersistentVolumeの一種であるHostPathボリュームを作成する。Volumeの一種であるHostPathボリュームとは区別すること。
+PersistentVolumeの一種であるHostPathボリュームを作成する。
+
+Volumeの一種であるHostPathボリュームとは区別すること。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 #### ▼ path
 
-Node側のマウント元のディレクトリを設定する。Podのマウントポイントは、Podの```spec.containers.volumeMount```キーで設定する。
+Node側のマウント元のディレクトリを設定する。
+
+Podのマウントポイントは、Podの```spec.containers[].volumeMount```キーで設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -1237,6 +1926,8 @@ spec:
 #### ▼ type
 
 マウント方法を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -1254,6 +1945,8 @@ spec:
 ### spec.initContainers
 
 ```spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
+
+
 
 > ℹ️ 参考：https://memo.koya-it.com/software_service/kubernetes.html#initcontainers-pod%E8%B5%B7%E5%8B%95%E5%89%8D%E3%81%AB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E5%87%A6%E7%90%86%E3%82%92%E6%9B%B8%E3%81%8F
 
@@ -1276,11 +1969,10 @@ spec:
       image: busybox:1.28
       # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのfoo-ginコンテナの起動を待機する。
       # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
-      command: [
-        'sh',
-        '-c',
-        'until nc -z db 3306 ; do sleep 1; done;'
-      ]
+      command: ["/bin/bash", "-c"]
+      args:
+        - |
+          until nc -z db 3306; do sleep 1; done
 ```
 
 
@@ -1290,7 +1982,11 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ領域を新しく作成し、これをボリュームとする。```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
+Node上にストレージ領域を新しく作成し、これをボリュームとする。
+
+```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -1341,7 +2037,13 @@ spec:
 
 #### ▼ nfsとは
 
-ホスト上であらかじめNFSサーバーを起動しておく。NFSサーバーにストレージ領域を作成し、これをボリュームとする。ワーカーNode内のPodを、ホスト上のNFSサーバーにマウントする。
+ホスト上であらかじめNFSサーバーを起動しておく。
+
+NFSサーバーにストレージ領域を作成し、これをボリュームとする。
+
+Node内のPodを、ホスト上のNFSサーバーにマウントする。
+
+
 
 > ℹ️ 参考：
 >
@@ -1368,13 +2070,17 @@ spec:
 
 #### ▼ nodeAffinityとは
 
-PersistentVolumeの作成先とするワーカーNodeを設定する。
+PersistentVolumeの作成先とするNodeを設定する。
+
+
 
 > ℹ️ 参考：https://qiita.com/ysakashita/items/67a452e76260b1211920
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のワーカーNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
 
@@ -1408,11 +2114,17 @@ spec:
 
 PersistentVolumeのライフサイクルを設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
 
 #### ▼ Delete
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolumeも自動的に削除する。クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolumeも自動的に削除する。
+
+クラウドプロバイダーのPersistentVolumeの動的プロビジョニングのために使用することが多い。
+
+
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -1429,7 +2141,11 @@ spec:
 
 #### ▼ Recycle（非推奨）
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。将来的に廃止予定のため、非推奨。
+PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。
+
+将来的に廃止予定のため、非推奨。
+
+
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -1446,7 +2162,13 @@ spec:
 
 #### ▼ Retain
 
-PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても、PersistentVolumeは削除しない。割り当てから解除されたPersistentVolumeはReleasedステータスになる。一度、Releasedステータスになると、他のPerisistentVolumeClaimからは指定できなくなる。
+PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても、PersistentVolumeは削除しない。
+
+割り当てから解除されたPersistentVolumeはReleasedステータスになる。
+
+一度、Releasedステータスになると、他のPerisistentVolumeClaimからは指定できなくなる。
+
+
 
 > ℹ️ 参考：https://www.amazon.co.jp/dp/B07HFS7TDT
 
@@ -1467,7 +2189,11 @@ spec:
 
 #### ▼ storageClassNameとは
 
-ストレージクラス名を設定する。これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。
+ストレージクラス名を設定する。
+
+これは、PersistentVolumeClaimが特定のPersistentVolumeを要求する時に必要になる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 
@@ -1484,21 +2210,25 @@ spec:
 
 名前の例として以下がある。
 
-| クラス名 | 説明                                | 補足                                                         |
-| -------- | ----------------------------------- | ------------------------------------------------------------ |
-| standard | デフォルト値である。                |                                                              |
+
+
+| クラス名    | 説明                           | 補足                                                                                                                                                                                                         |
+|----------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| standard | デフォルト値である。                    |                                                                                                                                                                                                              |
 | fast     | SSDをPersistentVolumeとして使用する。 | ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 | slow     | HDをPersistentVolumeとして使用する。  | ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B |
 
 <br>
 
-## 12. PersistentVolumeClaim
+## 17. PersistentVolumeClaim
 
 ### spec.accessModes
 
 #### ▼ accessModesとは
 
 要求対象のPerisitentVolumeのaccessModeを設定する。
+
+
 
 **＊実装例＊**
 
@@ -1520,9 +2250,13 @@ spec:
 
 要求する仮想ハードウェアのKubernetesリソースを設定する。
 
+
+
 #### ▼ requests
 
 要求対象のPerisitentVolumeのrequestsを設定する。
+
+
 
 **＊実装例＊**
 
@@ -1543,7 +2277,11 @@ spec:
 
 #### ▼ storageClassNameとは
 
-要求対象のPersistentVolumeのストレージクラス名を設定する。これを設定しない場合は、ストレージクラス名が```standard```のPerisitentVolumeを要求する。
+要求対象のPersistentVolumeのストレージクラス名を設定する。
+
+これを設定しない場合は、ストレージクラス名が```standard```のPerisitentVolumeを要求する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 
@@ -1560,31 +2298,41 @@ spec:
 
 <br>
 
-## 13. Pod
+## 18. Pod
 
 ### spec.affinity
 
 #### ▼ affinityとは
 
-kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
+kube-schedulerがPodをスケジューリングするNodeを設定する。```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
 > ℹ️ 参考：
 >
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
-アフィニティにはタイプがある。共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。Podが削除された後にワーカーNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+アフィニティにはタイプがある。
 
-| アフィニティタイプ                                       | 別名  | 説明                                       |
-|-------------------------------------------------|-----|------------------------------------------|
-| requiredDuringSchedulingIgnoredDuringExecution  | ハード | もし条件に合致するワーカーNodeがない場合、Podをスケジューリングしない。  |
-| preferredDuringSchedulingIgnoredDuringExecution | ソフト | もし条件に合致するワーカーNodeがない場合でも、Podをスケジューリングする。 |
+共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。
+
+Podが削除された後にNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+
+
+
+| アフィニティタイプ                                       | 別名 | 説明                                       |
+|-------------------------------------------------|------|------------------------------------------|
+| requiredDuringSchedulingIgnoredDuringExecution  | ハード  | もし条件に合致するNodeがない場合、Podをスケジューリングしない。  |
+| preferredDuringSchedulingIgnoredDuringExecution | ソフト  | もし条件に合致するNodeがない場合でも、Podをスケジューリングする。 |
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 
 #### ▼ nodeAffinity
 
-ワーカーNodeの```metadata.labels```キーを指定することにより、そのワーカーNode内に新しいPodをスケジューリングする。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、Nodeグループ単位でPodをスケジューリングできる。
+Nodeの```metadata.labels```キーを指定することにより、そのNode内に新しいPodをスケジューリングする。
+
+複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
+
+
 
 > ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
@@ -1609,14 +2357,16 @@ spec:
               # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。
               - key: app.kubernetes.io/nodegroup
                 operator: In
-                # 指定した値をキーに持つワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つNodeに、Podをスケジューリングする。
                 values:
                   - ingress
 ```
 
 #### ▼ podAffinity
 
-ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じワーカーNode内に、新しいPodをスケジューリングする。
+Node内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
+
+
 
 > ℹ️ 参考：
 >
@@ -1638,21 +2388,23 @@ spec:
     podAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたいワーカーNodeのmetadata.labelsキー
+        # PodをスケジューリングしたいNodeのmetadata.labelsキー
         - topologyKey: kubernetes.io/hostname
           labelSelector:
             - matchExpressions:
               # Podのmetadata.labelsキー
               - key: app.kubernetes.io/app
                 operator: In
-                # 指定した値をキーに持つPodと同じワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングする。
                 values: 
                   - bar-pod
 ```
 
 #### ▼ podAntiAffinity
 
-ワーカーNode内のPodを、```metadata.labels```キーで指定することにより、そのワーカー内のPodとは異なるワーカーNode内に、新しいPodをスケジューリングする。
+```metadata.labels```キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
+
+
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
@@ -1671,19 +2423,21 @@ spec:
     podAntiAffinity:
       # ハードアフィニティー
       requiredDuringSchedulingIgnoredDuringExecution:
-        # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+        # PodをスケジューリングしたくないNodeのmetadata.labelsキー
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
               # Podのmetadata.labelsキー
               - key: app.kubernetes.io/app
                 operator: In
-                # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                 values:
                   - bar-pod
 ```
 
-もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じワーカーNodeにスケジューリングされることを避け、結果として全てのワーカーNodeにPodが```1```個ずつスケジューリングされるようになる。
+もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが```1```個ずつスケジューリングされるようになる。
+
+
 
 > ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
@@ -1712,14 +2466,14 @@ spec:
         podAntiAffinity:
           # ハードアフィニティー
           requiredDuringSchedulingIgnoredDuringExecution:
-            # PodをスケジューリングしたくないワーカーNodeのmetadata.labelsキー
+            # PodをスケジューリングしたくないNodeのmetadata.labelsキー
             - topologyKey: topology.kubernetes.io/zone
               labelSelector:
                 - matchExpressions:
                    # Podのmetadata.labelsキー
                    - key: app.kubernetes.io/app
                      operator: In
-                     # 指定した値をキーに持つPodとは異なるワーカーNodeに、Podをスケジューリングする。
+                     # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
                      values:
                        # 自身が複製するPodの名前
                        - foo-pod
@@ -1731,13 +2485,19 @@ spec:
 
 #### ▼ containersとは
 
-Pod内で起動するコンテナを設定する。PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
+Pod内で起動するコンテナを設定する。
+
+PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
-#### ▼ name、image、port
+#### ▼ name、image
 
-Podを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
+Podを構成するコンテナの名前、ベースイメージ、を設定する。
+
+
 
 **＊実装例＊**
 
@@ -1754,17 +2514,69 @@ spec:
         - containerPort: 8080
 ```
 
+#### ▼ envFrom
+
+```spec.volumes.secret```キー（ファイルとしてコンテナにマウントする）とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+
+
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      ports:
+        - containerPort: 8080
+      envFrom:
+        - secretRef:
+            name: foo-secret # 環境変数としてコンテナに出力するSecret
+        - configMapRef:
+            name: foo-config-map # 環境変数としてコンテナに出力するConfigMap
+```
+
+#### ▼ ports
+
+コンテナが待ち受けるポート番号を、仕様として設定する。
+
+単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers[].ports```キーは設定しなくとも問題ない。
+
+
+
+> ℹ️ 参考：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      # 待ち受けるポート番号の仕様
+      ports:
+        - containerPort: 8080
+```
+
 #### ▼ imagePullPolicy
 
 イメージのプルのルールを設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
 
-| オプション   | 説明                                              |
-| ------------ |-------------------------------------------------|
+| オプション        | 説明                                                    |
+|--------------|---------------------------------------------------------|
 | IfNotPresent | 仮想環境上にビルドされたイメージがあればこれを使用して、なければイメージリポジトリからぷるする。 |
-| Always       | イメージリポジトリからコンテナイメージをプルする。                           |
-| Never        | イメージをプルせず、仮想環境上にビルドされたイメージを使用する。                |
+| Always       | イメージリポジトリからコンテナイメージをプルする。                               |
+| Never        | イメージをプルせず、仮想環境上にビルドされたイメージを使用する。                 |
 
 **＊実装例＊**
 
@@ -1784,16 +2596,18 @@ spec:
 
 #### ▼ resources
 
-Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNodeのPodをスケーリングする。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのワーカーNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 > ℹ️ 参考：https://newrelic.com/jp/blog/best-practices/set-requests-and-limits-for-your-clustercapacity-management
 
-| キー名         | 説明                                             | 補足                                                         |
-| -------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。 |
-| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>ℹ️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/<br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>ℹ️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+| キー名           | 説明                           | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|----------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```requests``` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>ℹ️ 参考：https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、パフォーマンスが低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                           |
+| ```limits```   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナのパフォーマンスが常時悪くなる。<br>・もし、コンテナが上限値以上のリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング（起動と停止を繰り返す）が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>ℹ️ 参考：https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>ℹ️ 参考： <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
 ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
+
+
 
 > ℹ️ 参考：
 >
@@ -1803,7 +2617,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 ```bash
 $ kubectl describe node <Node名>
 
-# 〜 中略 〜
+...
 
 Capacity:
   attachable-volumes-aws-ebs:  20
@@ -1822,13 +2636,13 @@ Allocatable:
   memory:                      1234567Ki    # 実際に使用可能なメモリ
   pods:                        10
 
-# 〜 中略 〜
+...
 ```
 
-| ハードウェアリソース名 | 単位                                                         |
-| ---------------------- | ------------------------------------------------------------ |
-| ```cpu```              | m：millicores（```1```m = ```1``` ユニット = ```0.001```コア） |
-| ```memory```           | Mi：mebibyte（```1```Mi = ```1.04858```MB）                  |
+| ハードウェアリソース名 | 単位                                                  |
+|--------------|-------------------------------------------------------|
+| ```cpu```    | m：millicores（```1```m = ```1``` ユニット = ```0.001```コア） |
+| ```memory``` | Mi：mebibyte（```1```Mi = ```1.04858```MB）              |
 
 **＊実装例＊**
 
@@ -1850,11 +2664,36 @@ spec:
         limits:
           cpu: 500m
           memory: 128Mi
+    - name: istio-proxy
+      ...
 ```
+
+各コンテナの実際のハードウェアリソース消費量を確認する場合は、```kubectl top```コマンドを使用する。
+
+『```(実際の値) ÷ (メモリ上限値) × 100```』で計算できる。
+
+
+
+```bash
+$ kubectl top pod --container -n foo-namespace
+
+POD       NAME            CPU(cores)   MEMORY(bytes)   
+foo-pod   foo-gin         1m           19Mi          # 19Mi ÷ 128Mi × 100 = 14%          
+foo-pod   istio-proxy     5m           85Mi          
+```
+
 
 #### ▼ volumeMount
 
-Pod内コンテナのマウントポイントを設定する。```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+Pod内のコンテナのマウントポイントを設定する。
+
+```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+
+Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。
+
+volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
@@ -1882,7 +2721,11 @@ spec:
 
 #### ▼ workingDir
 
-コンテナの作業ディレクトリを設定する。ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義した方が良い。
+コンテナの作業ディレクトリを設定する。
+
+ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義した方が良い。
+
+
 
 ```yaml
 apiVersion: v1
@@ -1900,11 +2743,39 @@ spec:
 
 <br>
 
+### spec.enableServiceLinks
+
+#### ▼ enableServiceLinks
+
+Serviceの宛先情報（IPアドレス、プロトコル、ポート番号）に関する環境変数をPod内に出力するかどうかを設定する。
+
+
+
+> ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2022/05/31/093116
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+  enableServiceLinks: false
+```
+
+<br>
+
 ### spec.hostname
 
 #### ▼ hostnameとは
 
-Podのホスト名を設定する。また、```spec.hostname```キーが設定されていない時は、```metadata.name```がホスト名として使用される。
+Podのホスト名を設定する。
+
+また、```spec.hostname```キーが設定されていない時は、```metadata.name```がホスト名として使用される。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
@@ -1924,11 +2795,39 @@ spec:
 
 <br>
 
+### spec.hostNetwork
+
+#### ▼ hostNetworkとは
+
+Podが、自身の稼働するNodeのネットワークにアクセスできるかどうかを設定する。ユーザーが使用するうユースケースは少なく、例えばnode-exporterのPodで使用される。
+
+> ℹ️ 参考：https://stackoverflow.com/a/64793701
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-node-exporter
+spec:
+  containers:
+    - name: foo-node-exporter
+      image: prom/node-exporter:1.0.0
+  hostNetwork: true
+```
+
+<br>
+
 ### spec.imagePullSecrets
 
 #### ▼ imagePullSecretsとは
 
-Podに適用するSecretを設定する。
+プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
+
+別途、ServiceAccountの```imagePullSecrets```キーでも同じSecretを指定しておき、このServiceAccountをPodに紐づける。
+
+これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
+
+
 
 > ℹ️ 参考：
 >
@@ -1944,9 +2843,9 @@ metadata:
 spec:
   containers:
     - name: foo-gin
-      image: foo-gin:1.0.0
+      image: private-foo-gin:1.0.0 # プライベートリポジトリ
   imagePullSecrets:
-    - name: foo-secret
+    - name: foo-repository-credentials-secret # プライベートリポジトリのクレデンシャル情報を持つSecret
 ```
 
 <br>
@@ -1955,18 +2854,26 @@ spec:
 
 #### ▼ livenessProbeとは
 
-コンテナが起動しているか否かのヘルスチェックを設定する。
+kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。
+
+```spec.livenessProbe```では、コンテナがヘルスチェックを待ち受けられるように設定する。
+
+
 
 > ℹ️ 参考：https://www.ianlewis.org/jp/kubernetes-health-check
 
 #### ▼ httpGet
 
-ヘルスチェックのエンドポイントを設定する。 自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
+ヘルスチェックのエンドポイントを設定する。
+
+ 自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
+
+
 
 | ツール          | エンドポイント              |
 |--------------|----------------------|
 | Alertmaanger | ```/-/healthy```     |
-| Grafana      | ```/-/healthy```     |
+| Grafana      | ```/healthz```       |
 | Kiali        | ```/kiali/healthz``` |
 | Prometheus   | ```/-/healthy```     |
 | ...          | ...                  |
@@ -1990,6 +2897,8 @@ spec:
 
 ヘルスチェックが失敗したとみなす試行回数を設定する。
 
+
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2006,6 +2915,8 @@ spec:
 #### ▼ periodSeconds
 
 ヘルスチェックの試行当たりの間隔を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2024,7 +2935,7 @@ spec:
 
 ### spec.nodeSelector
 
-kube-schedulerがPodをスケジューリングするワーカーNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。特定のNodeにPodを作成するだけでなく、複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeグループにPodを作成できる。
+kube-schedulerがPodをスケジューリングするNodeを設定する。```spec.affinity```キーと比較して、より単純に条件を設定できる。複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
@@ -2047,7 +2958,13 @@ spec:
 
 #### ▼ readinessProbeとは
 
-すで起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを設定する。何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
+kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを行う。
+
+```spec.readinessProbe```では、コンテナが準備済みチェックを待ち受けられるように設定する。
+
+何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
+
+
 
 > ℹ️ 参考：
 >
@@ -2057,6 +2974,8 @@ spec:
 #### ▼ httpGet
 
 準備済みチェックのエンドポイントを設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2077,6 +2996,8 @@ spec:
 
 準備済みチェックが失敗したとみなす試行回数を設定する。
 
+
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2093,6 +3014,8 @@ spec:
 #### ▼ periodSeconds
 
 準備済みチェックの試行当たりの間隔を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2113,11 +3036,15 @@ spec:
 
 #### ▼ restartPolicyとは
 
-Pod内コンテナのライフサイクルの再起動ポリシーを設定する。
+Pod内のコンテナのライフサイクルの再起動ポリシーを設定する。
+
+
 
 #### ▼ Always
 
 コンテナが停止した場合、これが正常（終了ステータス```0```）か異常（終了ステータス```1```）か否かに関わらず、常にコンテナを再起動する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2135,6 +3062,8 @@ spec:
 
 コンテナが停止した場合、コンテナを再起動しない。
 
+
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2150,6 +3079,8 @@ spec:
 #### ▼ OnFailure
 
 コンテナが停止した場合、これが異常（終了ステータス```1```）の場合にのみ、常にコンテナを再起動する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2169,7 +3100,11 @@ spec:
 
 #### ▼ serviceAccountNameとは
 
-PodにServiceAccountを紐づける。Podのプロセスに認証済みのIDが付与され、Kubernetesと通信できるようになる。
+PodにServiceAccountを紐づける。
+
+Podのプロセスに認証済みのIDが付与され、Kubernetesと通信できるようになる。
+
+
 
 **＊実装例＊**
 
@@ -2193,12 +3128,9 @@ spec:
 
 Podを削除する時の待機時間を設定する。
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
-> ℹ️ 参考：
->
-> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
-> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pod_terminating_process.png)
 
 ```yaml
 apiVersion: v1
@@ -2212,6 +3144,12 @@ spec:
   terminationGracePeriodSeconds: 300
 ```
 
+> ℹ️ 参考：
+>
+> - https://qiita.com/superbrothers/items/3ac78daba3560ea406b2
+> - https://speakerdeck.com/masayaaoyama/jkd1812-prd-manifests?slide=16
+
+
 <br>
 
 ### spec.volumes
@@ -2220,9 +3158,15 @@ spec:
 
 Pod内で使用するボリュームを設定する。
 
+
+
 #### ▼ configMap
 
-ConfigMapの変数をコンテナのディレクトリにマウントする。
+ConfigMapをコンテナのディレクトリにファイルとしてマウントする。
+
+Secretは、別の```spec.volumes.secret```キーで設定することに注意する。
+
+
 
 **＊実装例＊**
 
@@ -2237,11 +3181,12 @@ spec:
       image: fluent/fluent-bit:1.0.0
       volumeMounts:
         - name: foo-fluent-bit-conf-volume
-          mountPath: /fluent-bit/etc/
+          mountPath: /fluent-bit/etc/ # ConfigMapをファイルとしてマウントするディレクトリ
   volumes:
     - name: foo-fluent-bit-conf-volume
       configMap:
-        name: foo-fluent-bit-conf-config-map
+        name: foo-fluent-bit-conf-config-map # ファイルとしてコンテナにマウントするConfigMap
+        defaultMode: 420 # ファイルの実行権限
 ```
 
 ```yaml
@@ -2266,14 +3211,22 @@ data:
 
 #### ▼ emptyDir
 
-Volumeの一種であるEmptyDirボリュームを作成する。EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。
+Volumeの一種であるEmptyDirボリュームを作成する。
+
+EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。
+
+
 
 > ℹ️ 参考：
->
+
 > - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 **＊実装例＊**
+
+オンディスクストレージを設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2292,9 +3245,49 @@ spec:
       emptyDir: {}
 ```
 
+**＊実装例＊**
+
+インメモリストレージを設定する。
+
+注意点として、Podが使用できる上限メモリサイズを設定しない場合、PodはスケジューリングされたNodeのメモリ領域を最大限に使ってしまう。
+
+
+
+> ℹ️ 参考：
+> 
+> - https://www.linkedin.com/pulse/planning-use-memory-backed-volumes-kubernetes-read-once-banerjee/?trk=articles_directory
+> - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      image: foo-gin:1.0.0
+      volumeMounts:
+        - name: foo-gin-volume
+          mountPath: /go/src
+  volumes:
+    - name: foo-gin-volume
+      emptyDir:
+        medium: Memory
+        sizeLimit: 1Gi
+```
+
 #### ▼ hostPath
 
-Volumeの一種であるHostPathボリュームを作成する。PersistentVolumeの一種であるHostPathボリュームとは区別すること。HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。HostPathボリューム自体は本番環境で非推奨である。
+Volumeの一種であるHostPathボリュームを作成する。
+
+PersistentVolumeの一種であるHostPathボリュームとは区別すること。
+
+HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。
+
+HostPathボリューム自体は本番環境で非推奨である。
+
+
 
 > ℹ️ 参考：
 >
@@ -2316,15 +3309,17 @@ spec:
         - name: foo-gin-volume
           mountPath: /go/src
   volumes:
-  - name: foo-gin-volume
-    hostPath:
-      path: /data/src/foo
-      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
+    - name: foo-gin-volume
+      hostPath:
+        path: /data/src/foo
+        type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
 #### ▼ name
 
 要求によって作成するボリューム名を設定する。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2344,6 +3339,8 @@ spec:
 #### ▼ persistentVolumeClaim
 
 PersistentVolumeを使用する場合、PersistentVolumeClaimを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -2367,6 +3364,8 @@ spec:
 ```
 
 PersistentVolumeClaimとPersistentVolumeはあらかじめ作成しておく必要がある。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2399,13 +3398,52 @@ spec:
     type: DirectoryOrCreate
 ```
 
+#### ▼ secret
+
+```spec.containers[].envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
+
+ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: foo-gin
+      volumeMounts:
+        - name: foo-secret-volume
+          mountPath: /etc/secrets # Secretをファイルとしてマウントするディレクトリ
+        - name: foo-config-map-volume
+          mountPath: /etc/config-maps # ConfigMapをファイルとしてマウントするディレクトリ
+  volumes:
+    - name: foo-secret-volume
+      secret:
+        secretName: foo-secret # ファイルとしてコンテナにマウントするSecret
+        defaultMode: 420 # ファイルの実行権限
+    - name: foo-config-map-volume
+      configMap:
+        name: foo-config-map # ファイルとしてコンテナにマウントするConfigMap
+        defaultMode: 420 # ファイルの実行権限
+```
+
+
 <br>
 
-## 14. PodDisruptionBudget
+## 19. PodDisruptionBudget
 
 ### spec.maxUnavailable
 
-対象のPodを新しいワーカーNodeでスケジューリングする時に、既存のワーカーNodeで削除できるPodの最大数を設定する。
+対象のPodを新しいNodeでスケジューリングする時に、既存のNodeで削除できるPodの最大数を設定する。
+
+
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/946b0f31931d21a78058#poddisruptionbudget-%E3%81%AB%E3%82%88%E3%82%8B%E5%AE%89%E5%85%A8%E3%81%AA-drain
 
@@ -2418,14 +3456,18 @@ spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app: foo-gin
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
 
 ### spec.minAvailable
 
-対象のPodを新しいワーカーNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。このスケジューリングを待機するPodの最低限数を設定する。
+対象のPodを新しいNodeでスケジューリングする時に、新しいPodのスケジューリングの完了を待機してから、既存のPodを削除するようにできる。
+
+このスケジューリングを待機するPodの最低限数を設定する。
+
+
 
 > ℹ️ 参考：
 > 
@@ -2438,10 +3480,10 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  minAvailable: 3 # 新しいワーカーNodeで、3個のPodのスケジューリングが完了するまで待機する。
+  minAvailable: 3 # 新しいNodeで、3個のPodのスケジューリングが完了するまで待機する。
   selector:
     matchLabels:
-      app: foo-gin # 対象のPod
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
@@ -2449,6 +3491,8 @@ spec:
 ### spec.selector
 
 対象のPodを設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
 
@@ -2460,34 +3504,42 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: foo-gin # 対象のPod
+      app.kubernetes.io/app: foo-pod # 対象のPod
 ```
 
 <br>
 
-## 15. ReplicaController
+## 20. ReplicaController
 
-旧Deployment。非推奨である。
+旧Deployment。
+
+非推奨である。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes
 
 <br>
 
-## 16. Role、ClusterRole
+## 21. Role、ClusterRole
 
 ### rules.apiGroups
 
 #### ▼ apiGroupsとは
 
-resourceキーで指定するKubernetesリソースのAPIグループの名前を設定する。空文字はコアグループを表す。
+resourceキーで指定するKubernetesリソースのAPIグループの名前を設定する。
+
+空文字はコアグループを表す。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/using-api/#api-groups
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: foo-cluster-role
+  name: foo-role
 rules:
   - apiGroups: [""]
 ```
@@ -2498,15 +3550,18 @@ rules:
 
 #### ▼ resourcesとは
 
-操作対象のKubernetesリソースの認可スコープを設定する。
+アクション可能なKubernetesリソースの範囲（認可スコープ）を設定する。
+
+
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: foo-cluster-role
+  name: foo-role
 rules:
   - apiGroups: ["", "apps"]
+    # Namespace、Deployment、に対してアクションを可能にする。
     resources: ["namespaces", "deployments"]
 ```
 
@@ -2516,26 +3571,31 @@ rules:
 
 #### ▼ verbsとは
 
-Kubernetesリソースの操作内容の認可スコープを設定する。
+実行可能なアクション範囲（認可スコープ）を設定する。
+
+
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: foo-cluster-role
+  name: foo-role
 rules:
   - apiGroups: [""]
     resources: ["pods"]
+    # Get、Watch、List、のアクションを実行可能にする。
     verbs: ["get", "watch", "list"]
 ```
 
-全Kubernetesリソースへの全操作を許可する認可スコープの場合、以下の通りとなる。
+全Kubernetesリソースへの全アクションを許可する認可スコープの場合、以下の通りとなる。
+
+
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: foo-cluster-role
+  name: foo-role
 rules:
   - apiGroups: ["*"]
     resources: ["*"]
@@ -2544,13 +3604,15 @@ rules:
 
 <br>
 
-## 17. RoleBinding、ClusterRoleBinding
+## 22. RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
 #### ▼ roleRef.nameとは
 
 RoleBindingを使用して紐づけるRoleの名前を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
@@ -2567,12 +3629,12 @@ roleRef:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: foo-cluster-role-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: foo-cluster-role
 ```
 
@@ -2584,6 +3646,8 @@ roleRef:
 
 Roleの紐付け先のAccountの名前を設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
 
 ```yaml
@@ -2593,7 +3657,7 @@ metadata:
   name: foo-role-binding
 subjects:
   - apiGroup: ""
-    kind: ServiceAccount
+    kind: ServiceAccount # ServiceAccountに紐づける。
     name: foo-service-account
 ```
 
@@ -2604,13 +3668,13 @@ metadata:
   name: foo-cluster-role-binding
 subjects:
   - apiGroup: rbac.authorization.k8s.io
-    kind: Group
-    name: foo-group
+    kind: User # UserAccountに紐づける。
+    name: foo-user
 ```
 
 <br>
 
-## 18. Secret
+## 23. Secret
 
 ### data
 
@@ -2618,9 +3682,15 @@ subjects:
 
 Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型変数
 
-Secretで保持するstring型変数を設定する。使用時に```base64```方式で自動的にデコードされるため、あらかじめ```base64```方式でエンコードしておく必要がある。
+
+#### ▼ 変数の管理
+
+Secretで保持するstring型変数を設定する。
+
+使用時に```base64```方式で自動的にデコードされるため、あらかじめ```base64```方式でエンコードしておく必要がある。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -2634,7 +3704,9 @@ data:
   password: *****
 ```
 
-string型しか設定できないため、```base64```方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型の変数しか設定できないため、```base64```方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -2648,6 +3720,26 @@ data:
   number: "*****"
 ```
 
+#### ▼ 機密なファイルの管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  # SSL証明書
+  foo.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+  # SSL証明書と対になる秘密鍵
+  foo.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+```
+
 <br>
 
 ### stringData
@@ -2656,9 +3748,15 @@ data:
 
 Kubernetesリソースに渡す機密な変数を設定する。
 
-#### ▼ string型変数
 
-Secretで保持するstring型変数を設定する。平文で設定しておく必要がある。
+
+#### ▼ 機密な変数の管理
+
+Secretで保持するstring型の変数を設定する。
+
+平文で設定しておく必要がある。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
@@ -2672,7 +3770,9 @@ data:
   password: baz
 ```
 
-string型しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型の変数しか設定できないため、そのままだとinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+
+
 
 > ℹ️ 参考：https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap
 
@@ -2686,6 +3786,25 @@ stringData:
   number: "1"
 ```
 
+#### ▼ 機密なファイルの管理
+
+パイプ（``` |```）を使用すれば、ファイルを変数として設定できる。
+
+> ℹ️ 参考：https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/#specify-unencoded-data-when-creating-a-secret
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+stringData:
+  config.yaml: |
+    apiUrl: "https://my.api.com/api/v1"
+    username: bar
+    password: baz
+```
+
+
 <br>
 
 ### type
@@ -2694,11 +3813,15 @@ stringData:
 
 Secretの種類を設定する。
 
+
+
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
 
 #### ▼ kubernetes.io/basic-auth
 
 Basic認証のための変数を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret
 
@@ -2716,6 +3839,8 @@ stringData:
 #### ▼ kubernetes.io/dockerconfigjson
 
 イメージレジストリの認証情報を設定する。
+
+
 
 > ℹ️ 参考：
 >
@@ -2736,7 +3861,11 @@ data:
 
 #### ▼ kubernetes.io/service-account-token
 
-ServiceAccountのための変数を設定する。ただし、自動的に作成されるため、ユーザーが設定する必要はない。
+ServiceAccountのための変数を設定する。
+
+ただし、自動的に作成されるため、ユーザーが設定する必要はない。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
 
@@ -2754,7 +3883,13 @@ stringData:
 
 #### ▼ kubernetes.io/tls
 
-SSL/TLSを使用するための変数を設定する。SSL証明書と秘密鍵の文字列が必要である。ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSで通信する例がある。
+SSL/TLSを使用するための変数を設定する。
+
+SSL証明書と秘密鍵の文字列が必要である。
+
+ユースケースとしては、変数をIngressに割り当て、IngressとServiceの間をHTTPSでパケットを送受信する例がある。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
 
@@ -2775,7 +3910,11 @@ data:
 
 #### ▼ Opaque
 
-任意の変数を設定する。ほとんどのユースケースに適する。
+任意の変数を設定する。
+
+ほとんどのユースケースに適する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
 
@@ -2792,7 +3931,7 @@ stringData:
 
 <br>
 
-## 19. Service
+## 24. Service
 
 ### spec.ports
 
@@ -2800,9 +3939,15 @@ stringData:
 
 受信するインバウンド通信を設定する。
 
+
+
 #### ▼ appProtocol
 
-受信するインバウンド通信のプロトコルを設定する。```spec.ports.protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+受信するインバウンド通信のプロトコルを設定する。
+
+```spec.ports.protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+
+
 
 ```yaml
 apiVersion: v1
@@ -2858,6 +4003,8 @@ spec:
 
 プロトコルのポート名を設定する。
 
+
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -2876,13 +4023,15 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-    - name: tcp
+    - name: tcp-foo
       port: 9000
 ```
 
 #### ▼ protocol
 
 受信するインバウンド通信のプロトコルを設定する。
+
+
 
 **＊実装例＊**
 
@@ -2921,6 +4070,8 @@ spec:
 
 ちなみに、FastCGIプロトコルには変換できず、別にNginxを使用してプロトコルを変換する必要がある。
 
+
+
 > ℹ️ 参考：
 >
 > - https://github.com/search?q=php-fpm+kubernetes
@@ -2929,6 +4080,8 @@ spec:
 #### ▼ port
 
 インバウンド通信を待ち受けるポート番号を設定する。
+
+
 
 **＊実装例＊**
 
@@ -2954,7 +4107,15 @@ spec:
 
 #### ▼ targetPort
 
-受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するか否かを設定する。Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するか否かを設定する。
+
+Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+
+デフォルトでは、```spec.ports.port```キーと同じに値になる。
+
+
+
+> ℹ️ 参考：https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
 
 **＊実装例＊**
 
@@ -2965,8 +4126,8 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-  - targetPort: 8080
-    port: 80
+    - port: 8080
+      targetPort: 8080 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
 
 ```yaml
@@ -2976,8 +4137,8 @@ metadata:
   name: foo-app-service
 spec:
   ports:
-    - targetPort: 9000
-      port: 9000
+    - port: 9000
+      targetPort: 9000 # デフォルトでは、spec.ports.portキーと同じ値になる。
 ```
 
 <br>
@@ -2985,6 +4146,8 @@ spec:
 ### spec.selector
 
 インバウンド通信の転送先とするPodの```metadata.labels```キー名と値を設定する。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 
@@ -3004,28 +4167,112 @@ spec:
 
 ### spec.type
 
+#### ▼ typeとは
+
 Serviceのタイプを設定する。
 
-> ℹ️ 参考：
->
-> - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
-| 値                        | IPアドレスの公開範囲 |
-| ------------------------- | ----------------- |
-| ClusterIP（デフォルト値） | Clusterネットワーク内からのみ |
-| NodePort                  | Clusterネットワーク外/内 |
-| LoadBalancer              | Clusterネットワーク外/内 |
+
+#### ▼ ClusterIPの場合
+
+ClusterIP Serviceを設定する。```spec.clusterIP```キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
+
+> ℹ️ 参考：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-clusterip-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-foo
+      protocol: TCP
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
+  selector:
+    app.kubernetes.io/app: foo-pod
+  # clusterIP: *.*.*.*
+```
+
+#### ▼ NodePortの場合
+
+NodePort Serviceを設定する。
+
+Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受けるポート番号（```30000``` 〜 ```32767```）を指定する。
+
+これを指定しない場合、コントロールプレーンNodeがランダムでポート番号を決める。
+
+
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#nodeport
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-nodeip-service
+spec:
+  type: NodePort
+  ports:
+    - name: http-foo
+      protocol: TCP
+      nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
+  selector:
+    app.kubernetes.io/app: foo-pod
+```
+
+NodePortのポート番号は、```30000``` 〜 ```32767```番である必要がある。
+
+```bash
+spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid range. The range of valid ports is 30000-32767
+```
+
+#### ▼ LoadBalancerの場合
+
+LoadBalancer Serviceを設定する。クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。同時に、```status.loadBalancer```キーが自動的に追加される。```status.loadBalancer.ingress```キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『```ingress```』である。```status.loadBalancer.ingress.ip```キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
+
+> ℹ️ 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#loadbalancer
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-loadbalancer-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http-foo
+      protocol: TCP
+      port: 8080 # Serviceが待ち受けるポート番号
+      targetPort: 8080 # ルーティング先のポート番号
+  selector:
+    app.kubernetes.io/app: foo-pod
+# Kubernetesが自動的に追加するキー
+status:
+  loadBalancer:
+    # インバウンドの意味のingressである
+    ingress:
+      # External-IP
+      - ip: 192.0.2.127 
+```
 
 <br>
 
-## 20. ServiceAccount
+## 25. ServiceAccount
 
 ### automountServiceAccountToken
 
 #### ▼ automountServiceAccountTokenとは
 
-ServiceAccountのPodへの自動紐付けの有効化する。デフォルトで有効化されている。
+ServiceAccountのPodへの自動紐付けの有効化する。
+
+デフォルトで有効化されている。
+
+
 
 > ℹ️ 参考：https://kakakakakku.hatenablog.com/entry/2021/07/12/095208
 
@@ -3043,7 +4290,11 @@ automountServiceAccountToken: false
 
 #### ▼ imagePullSecretsとは
 
-新しく作成されたPod内コンテナに自動挿入する```imagePullSecrets```キーを設定する。
+プライベートリポジトリのクレデンシャル情報を持つSecretを設定する。
+
+これにより、ServiceAccountが紐づけられたPodは、プライベートリポジトリのクレデンシャル情報を使用できるようになる。
+
+
 
 > ℹ️ 参考：https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-image-pull-secret-to-service-account
 
@@ -3053,18 +4304,20 @@ kind: ServiceAccount
 metadata:
   name: foo-service-account
 imagePullSecrets:
-  - name: foo-secret
+  - name: foo-repository-credentials-secret
 ```
 
 <br>
 
-## 21. StatefulSet
+## 26. StatefulSet
 
 ### spec.serviceName
 
 #### ▼ serviceNameとは
 
 StatefulSetによって管理されるPodにルーティングするServiceを設定する。
+
+
 
 **＊実装例＊**
 
@@ -3074,7 +4327,7 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
@@ -3113,7 +4366,11 @@ spec:
 
 #### ▼ templateとは
 
-StatefulSetで維持管理するPodを設定する。設定項目はPodと同じである。
+StatefulSetで維持管理するPodを設定する。
+
+設定項目はPodと同じである。
+
+
 
 **＊実装例＊**
 
@@ -3123,13 +4380,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
@@ -3170,7 +4427,13 @@ spec:
 
 #### ▼ volumeClaimTemplatesとは
 
-PersistentVolumeClaimを作成する。設定の項目は```kind: PersistentVolumeClaim```の場合と同じである。StatefulSetが削除されても、これは削除されない。
+PersistentVolumeClaimを作成する。
+
+設定の項目は```kind: PersistentVolumeClaim```の場合と同じである。
+
+StatefulSetが削除されても、これは削除されない。
+
+
 
 **＊実装例＊**
 
@@ -3180,13 +4443,13 @@ kind: StatefulSet
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/app: foo
+      app.kubernetes.io/app: foo-pod
       app.kubernetes.io/component: db
   serviceName: foo-db-service
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: foo
+        app.kubernetes.io/app: foo-pod
         app.kubernetes.io/component: db
     spec:
       containers:
