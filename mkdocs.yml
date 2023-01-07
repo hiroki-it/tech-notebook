@@ -462,7 +462,9 @@ nav:
                           - 関数: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.md
                       - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.md
-                      - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
+                      - ■ Helmfile:
+                          - Helmfile: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.md
+                          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.md
                   - ■ Kustomize:
                       - Kustomize: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.md
                       - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.md
