@@ -631,7 +631,7 @@ ArgoCDは暗号化された```values```ファイルを復号化し、チャー�
 
 
 ```yaml
-# values.yamlファイルの暗号化された値を展開するテンプレートファイル
+# values.yamlファイルの暗号化された値を出力するテンプレートファイル
 apiVersion: v1
 kind: Secret
 metadata:
@@ -951,7 +951,7 @@ spec:
             url: https://kubernetes.default.svc
   template:
     metadata:
-      # Cluster名を展開する。
+      # Cluster名を出力する。
       name: '{{cluster}}'
     spec:
       project: default
@@ -960,7 +960,7 @@ spec:
         targetRevision: HEAD
         path: .
       destination:
-        # ClusterのURLを展開する。
+        # ClusterのURLを出力する。
         server: '{{url}}'
         namespace: foo-namespace
 ```
@@ -1402,24 +1402,49 @@ data:
 
 ## 09. 専用ConfigMap
 
-### 専用ConfigMapとは
+### 専用ConfigMap
+
+#### ▼ 専用ConfigMapとは
 
 ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
 
 ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
 
-| Kubernetesリソース名               | 説明                                                                                                                                |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| ```argocd-cm```                | ArgoCDの各コンポーネントで共通する値を設定する。                                                                                                   |
-| ```argocd-cmd-params-cm```     | ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。                                  |
-| ```argocd-rbac-cm```           | ArgoCDのKubernetesリソースで使用するRBACを設定する。                                                                                            |
-| ```argocd-tls-cets-cm```       | リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。                                                                     |
-| ```argocd-ssh-nown-hosts-cm``` | リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。 |
-
-実装例は以下を参考にせよ。
-
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
+
+#### ▼ ```argocd-cm```（必須）
+
+ArgoCDの各コンポーネントで共通する値を設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+
+#### ▼ ```argocd-cmd-params-cm```
+
+ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。
+
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+
+#### ▼ ```argocd-rbac-cm```
+
+ArgoCDのKubernetesリソースで使用するRBACを設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
+
+#### ▼ ```argocd-tls-cets-cm```
+
+リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
+
+#### ▼ ```argocd-ssh-nown-hosts-cm```
+
+リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。
+
+```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
 <br>
 
@@ -1665,17 +1690,51 @@ metadata:
 
 ### 専用Secret
 
+#### ▼ 専用Secretとは
+
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
-| Kubernetesリソース名               | 説明                                                                |
-|--------------------------------|-------------------------------------------------------------------|
-| ```***-repo```、```***-creds``` | プライベートリポジトリを監視する時に必要な認証情報を設定する。パブリックリポジトリの場合は、不要である。 |
-| ```argocd-secret```            | ArgoCDにログインするためのユーザ名とパスワードを設定する。                                 |
-
-
-実装例は、以下を参考にせよ。
-
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+
+#### ▼ ```repo```
+
+ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
+
+```repo-creds```とは異なり、```1```個の認証情報で```1```個のリポジトリにアクセスできるようにする。
+
+
+パブリックリポジトリの場合は、不要である。
+
+
+> ℹ️ 参考：
+> 
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+
+
+#### ▼ ```repo-creds```
+
+ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
+
+```repo```とは異なり、```1```個の認証情報で複数にリポジトリにアクセスできるようにする。
+
+パブリックリポジトリの場合は、不要である。
+
+
+> ℹ️ 参考：
+> 
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+
+#### ▼ ```argocd-secret```（必須）
+
+以下の認証情報やSSL証明書を設定する。
+
+- クライアントがArgoCDにログインするためのユーザ名とパスワード
+- ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
+- Webhookでリクエストを送信するためのSSL証明書
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
 
 <br>
 
@@ -1685,7 +1744,7 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 設定値は```repository```とする。
 
-監視対象のマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
+監視対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
 
@@ -1695,9 +1754,9 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 #### ▼ 注意点
 
-マニフェストリポジトリの認証情報を設定する。
+プライベートなマニフェストリポジトリの認証情報を設定する。
 
-マニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
+プライベートなマニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
 
 ただし、監視する複数のリポジトリが、全て```1```個のマニフェストレジストリ内にある場合は、Secretは```1```個でよい。
 
@@ -1712,7 +1771,7 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 Basic認証に必要なユーザー名とパスワードを設定する。
 
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
 # 他と異なるマニフェストリポジトリ
@@ -1720,39 +1779,39 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-kubernetes-secret
+  name: foo-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  name: foo-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
   # Basic認証に必要なユーザー名とパスワードを設定する。
-  username: foo
-  password: bar
+  username: hiroki-it
+  password: *****
 ---
 # 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-istio-secret
+  name: bar-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  name: bar-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # Basic認証に必要なユーザー名とパスワードを設定する。
-  username: foo
-  password: bar
+  username: hiroki-it
+  password: *****
 ```
 
 #### ▼ SSHの場合
 
 SSHに必要な秘密鍵を設定する。
 
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
 
@@ -1762,12 +1821,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-kubernetes-secret
+  name: foo-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-kubernetes-manifest.git
+  name: foo-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
   # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
@@ -1778,12 +1837,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-istio-secret
+  name: bar-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: git@github.com:hiroki-hasegawa/foo-istio-manifest.git
+  name: bar-repository # 任意のマニフェストリポジトリ名
+  url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # SSHに必要な秘密鍵を設定する。
   sshPrivateKey: |
@@ -1792,9 +1851,9 @@ stringData:
 
 #### ▼ OIDCの場合
 
-OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppを作成すると発行される）を設定する。
+OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
 
-ここでは、マニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
 
@@ -1806,12 +1865,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-kubernetes-secret
+  name: foo-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  name: foo-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
@@ -1826,12 +1885,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-istio-secret
+  name: bar-argocd-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/foo-istio-manifest.git
+  name: bar-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
@@ -1848,9 +1907,9 @@ stringData:
 
 #### ▼ 注意点
 
-チャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
+プライベートなチャートリポジトリごとに、異なるSecretで認証情報を設定する必要がある。
 
-ただし、監視する複数のリポジトリが、全て```1```個のチャートレジストリ内にある場合は、Secretは```1```個でよい。
+ただし、監視する複数のプライベートなチャートリポジトリが、全て```1```個のチャートレジストリ内にある場合は、Secretは```1```個でよい。
 
 
 
@@ -1863,7 +1922,7 @@ stringData:
 
 Basic認証に必要なユーザー名とパスワードを設定する。
 
-ここでは、チャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなチャートリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
 
@@ -1873,12 +1932,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-kubernetes-secret
+  name: foo-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-repository # 任意のチャートリポジトリ名
-  url: https://github.com/hiroki.hasegawa/kubernetes-charts # チャートリポジトリのURL
+  name: foo-repository # 任意のチャートリポジトリ名
+  url: https://github.com/hiroki.hasegawa/foo-charts # チャートリポジトリのURL
   type: helm
   username: foo
   password: bar
@@ -1888,12 +1947,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-istio-secret
+  name: bar-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-repository # 任意のチャートリポジトリ名
-  url: https://github.com/hiroki.hasegawa/istio-charts # チャートリポジトリのURL
+  name: bar-repository # 任意のチャートリポジトリ名
+  url: https://github.com/hiroki.hasegawa/bar-charts # チャートリポジトリのURL
   type: helm
   username: baz
   password: qux
@@ -1907,7 +1966,7 @@ stringData:
 
 OCIプロトコルの有効化（```enableOCI```キー）が必要であるが、内部的にOCIプロトコルが```repoURL```キーの最初に追記されるため、プロトコルの設定は不要である。
 
-チャートリポジトリと同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
+プライベートなチャートリポジトリの場合と同様にして、OCIリポジトリごとに異なるSecretで認証情報を設定する必要がある。
 
 ただし、監視する複数のリポジトリが、全て```1```個のOCIレジストリ内にある場合は、Secretは```1```個でよい。
 
@@ -1923,7 +1982,7 @@ OCIプロトコルの有効化（```enableOCI```キー）が必要であるが�
 
 Basic認証に必要なユーザー名とパスワードを設定する。
 
-ここでは、OCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+ここでは、プライベートなOCIリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
 
@@ -1933,11 +1992,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-kubernetes-secret
+  name: foo-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-kubernetes-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  name: foo-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: foo
@@ -1949,11 +2008,11 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-istio-secret
+  name: bar-secret
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-istio-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  name: bar-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: baz

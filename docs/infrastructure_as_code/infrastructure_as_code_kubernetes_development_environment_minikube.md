@@ -21,9 +21,9 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ 仮想サーバー系のドライバーの場合
 
-ホストマシン上に仮想サーバーを作成する。
+ホストマシン上にMinikube仮想サーバーを作成する。
 
-この仮想サーバー内にNodeを持つClusterを作成する。
+このMinikube仮想サーバー内にNodeを持つClusterを作成する。
 
 
 
@@ -38,7 +38,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホストマシン上にコンテナを作成する。
 
-このコンテナ内に仮想サーバーを作成し、Nodeを持つClusterを作成する。
+このコンテナ内にMinikube仮想サーバーを作成し、Nodeを持つClusterを作成する。
 
 
 
@@ -72,57 +72,8 @@ description: Minikube＠開発環境の知見を記録しています。
 
 <br>
 
-### Podへの接続
 
-#### ▼ NodePort Service経由
-
-NodePort Serviceを作成しておく。
-
-```minikube ip```コマンドを実行することにより、NodeのIPアドレスが返却される。
-
-このIPアドレスからPodにアクセスできる。
-
-
-
-> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
-
-```bash
-$ minikube ip
-```
-
-#### ▼ LoadBalancer Service経由
-
-LoadBalancer Serviceを作成しておく。```minikube tunnel```コマンドを実行することにより、LoadBalancer Serviceに```EXTERNAL-IP```が割り当てられる。このIPアドレスからPodにアクセスできる。
-
-> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
-
-```bash
-$ minikube tunnel
-```
-
-#### ▼ Ingress経由
-
-ClusterIP ServiceとIngress（Minikubeアドオン製）を作成しておく。
-
-```kubectl get ingress```コマンドを実行することにより、Ingressに割り当てられたIPアドレスを取得できる。
-
-```minikube ssh```コマンドで仮想環境内に接続した後、このIPアドレスからPodにアクセスできる。
-
-
-
-> ℹ️ 参考：https://future-architect.github.io/articles/20220112a/
-
-```bash
-$ minikube ssh
-
-Last login: Wed May 18 10:14:50 2022 from 192.168.49.1
-
-docker@minikube:~$ curl -X GET http://<IPアドレス>
-```
-
-<br>
-
-## 01-02. マウント
+## 02. マウント
 
 ### ホストとNode間マウント
 
@@ -248,7 +199,7 @@ spec:
 
 <br>
 
-## 01-03. ネットワーク
+## 03. ネットワーク
 
 ### KubernetesリソースのCIDRブロック
 
@@ -328,3 +279,98 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 <br>
 
+
+## 03-02. Podへの接続
+
+### Minikubeの制約
+
+Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube仮想サーバー内にNodeが稼働している。
+
+そのため、ホストからMinikube仮想サーバーに接続するための操作が必要である。
+
+> ℹ️ 参考：https://unicorn.limited/jp/rd/kubernetes/20180521-minikube-access.html
+
+<br>
+
+### NodePort Serviceの場合
+
+NodePort Serviceの場合、```minikube service```コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
+
+```bash
+$ minikube service <NodePort Serviceのポート番号 > --url
+
+$ curl http://<NodeのIPアドレス>:<NodePort Serviceのポート番号>
+```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+
+<br>
+
+#### LoadBalancer Serviceの場合
+
+LoadBalancer Serviceの場合、```minikube tunnel```コマンドでLoadBalancer Serviceに```EXTERNAL-IP```が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
+
+```bash
+$ minikube tunnel
+
+$ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当てられるIPアドレス>:<LoadBalancer Serviceが待ち受けるポート番号>
+```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+
+
+### ClusterIP Serviceの場合
+
+#### ▼ ClusterIP Serviceで頑張る
+
+ClusterIP Serviceの場合、やや難易度が高くなる。
+
+クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。
+
+minikubeのingressアドオン（Nginxコントローラー）を有効化し、Ingressとnginxを指定したIngressClassを作成する。
+
+```bash
+$ minikube addons enable ingress
+```
+
+Nginxコントローラーを含むIngressコントローラーは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。
+
+これをMinikube上で再現するために名前解決するために、ingress-dnsアドオンを有効化する。
+
+```bash
+$ minikube addons enable ingress-dns
+```
+
+また、```/etc/resolver/minikube-test ```ファイルを以下の通りに編集する。
+
+```bash
+$ vim /etc/resolver/minikube-test
+
+domain minikube
+nameserver $(minikube ip)
+search_order 1
+timeout 5
+```
+
+あとは、```minikube```というドメインで、Minikube仮想サーバー内のNodeに接続できる。
+
+```bash
+$ curl http://foo.minikube
+```
+
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
+
+
+#### ▼ NodePort Serviceを別途作成する場合
+
+妥協策として、ローカルマシンでのみ専用のNodePort Serviceを作成する。      
+
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
+
+<br>

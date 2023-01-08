@@ -141,6 +141,21 @@ $ helmfile -e dev apply
 
 <br>
 
+### helmfiles
+
+```helmfile```コマンド時に```-f```オプションを省略できるように、```helmfile```ファイルを宣言的に指定する。
+
+```yaml
+helmfiles:
+  - path: ./helmfile.d/foo.yaml
+  - path: ./helmfile.d/bar.yaml
+  - path: ./helmfile.d/baz.yaml
+```
+
+> ℹ️ 参考：https://helmfile.readthedocs.io/en/latest/#selectors
+
+<br>
+
 ### releases
 
 #### ▼ name
@@ -268,5 +283,35 @@ releases:
     values:
       - values.yaml
 ```
+
+<br>
+
+## 04. .gotmplファイル
+
+Helmでは```values```ファイルをテンプレート化できないが、Helmfileではこれが可能である。
+
+```values```ファイルに、Helmfileの変数や他の```values```ファイルの値を出力する。
+
+特に、実行環境ごとに```values```ファイルに実行環境名を渡したい場合に役立つ。
+
+
+もし、```gotmpl```ファイルを使用して、実行環境別に```values```ファイルを上書きするような構成の場合、以下の通りとする。
+
+```yaml
+repositories:
+  - name: foo-repository
+    url: https://github.com/hiroki.hasegawa/foo-repository
+
+releases:
+  - name: foo
+    chart: foo-repository/foo-chart
+    version: <バージョンタグ>
+    values:
+      - values.yaml.gotmpl
+      - values-{{ .Environment.Name }}.yaml
+```
+
+
+> ℹ️ 参考：https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
 
 <br>

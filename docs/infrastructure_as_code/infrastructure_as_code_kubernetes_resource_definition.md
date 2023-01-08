@@ -1505,6 +1505,26 @@ spec:
 
 <br>
 
+### spec.hosts
+
+#### ▼ hosts
+
+ルーティング条件とするHostヘッダーの値を設定する。
+
+```spec.hosts```キーを設定しなければ、全てのHostヘッダー値が対象になる。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  hosts: foo.example.com
+```
+
+<br>
+
+
 ### spec.rules
 
 #### ▼ rulesとは
@@ -4190,7 +4210,7 @@ spec:
     - name: http-foo
       protocol: TCP
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号
+      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
   selector:
     app.kubernetes.io/app: foo-pod
   # clusterIP: *.*.*.*
@@ -4220,7 +4240,7 @@ spec:
       protocol: TCP
       nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号
+      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
   selector:
     app.kubernetes.io/app: foo-pod
 ```
@@ -4248,7 +4268,7 @@ spec:
     - name: http-foo
       protocol: TCP
       port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号
+      targetPort: 8080 # ルーティング先のポート番号（containerPort名でもよい）
   selector:
     app.kubernetes.io/app: foo-pod
 # Kubernetesが自動的に追加するキー

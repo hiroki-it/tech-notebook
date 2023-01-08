@@ -292,7 +292,9 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 nameserver 10.96.0.10 # 権威DNSサーバーのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
+```
 
+```bash
 # CoreDNSを権威DNSサーバーとして使用している場合
 $ kubectl get service -n kube-system
 

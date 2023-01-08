@@ -46,8 +46,10 @@ Minikubeのアドオンを操作する。
 ```bash
 $ minikube addons enable ingress
 
+
 # IngressClassがNginxのIngressが作成されている。
 $ kubectl get ingress
+
 NAME          CLASS   HOSTS   ADDRESS        PORTS   AGE
 foo-ingress   nginx   *       <IPアドレス>    80      12m
 ```
@@ -359,9 +361,7 @@ $ minikube update-context
 
 #### ▼ serviceとは
 
-NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceにポートフォワーディングを実行する。
-
-また、ServiceのIPアドレスを返却する。
+NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。
 
 > ℹ️ 参考：
 > 
@@ -369,7 +369,7 @@ NodePort ServiceやLoadBalancer Serviceを指定し、ホストからServiceに�
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
 ```bash
-$ minikube service <NodePort Servie名/LoadBalancer Servie名>
+$ minikube service <NodePort Servie名>
 
 🏃  Starting tunnel for service <Service名>.
 |-----------|--------------|-------------|------------------------|
@@ -442,15 +442,22 @@ $ minikube service list
 
 #### ▼ --url
 
-指定したServiceのIPアドレスを含むURLを取得する。
+Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceのポート番号を取得する。
 
-> ℹ️ 参考：https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
+```--url```オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
 
 ```bash
-$ minikube service <NodePort Servie名/LoadBalancer Servie名> --url
+$ minikube service <NodePort Servie名> --url
  
-http://*.*.*.*:57761
+http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Serviceのポート番号>
 ```
+
+
+> ℹ️ 参考：
+> 
+> - https://minikube.sigs.k8s.io/docs/handbook/accessing/
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
+
 
 <br>
 
@@ -783,7 +790,7 @@ $ minikube tunnel
 
 <br>
 
-## 03. デバッグ
+## 02. デバッグ
 
 ### --alsologtostderr
 
@@ -798,4 +805,4 @@ $ minikube start --alsologtostderr
 ```
 
 
-
+<br>
