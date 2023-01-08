@@ -30,13 +30,13 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
 #### ▼ チャートとして
 
 ```bash
-$ helm repo add <リポジトリ名> https://argoproj.github.io/argo-helm
+$ helm repo add <チャートリポジトリ名> https://argoproj.github.io/argo-helm
 
 $ helm repo update
 
 $ kubectl create namespace argocd
 
-$ helm install <リリース名> <リポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
 ```
 
 > ℹ️ 参考：https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart

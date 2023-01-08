@@ -128,11 +128,12 @@ $ eksctl get iamserviceaccount \
 2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
 NAMESPACE       NAME                            ROLE ARN
 kube-system     aws-load-balancer-controller    arn:aws:iam::<アカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+```
 
-
-# 作成されたServiceAccount
+```bash
 $ kubectl get serviceaccount -n kube-system aws-load-balancer-controller -o yaml
 
+# 作成されたServiceAccount
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -184,8 +185,9 @@ $ helm list -n kube-system
 
 NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
 aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
+```
 
-
+```bash
 $ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE

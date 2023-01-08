@@ -20,13 +20,13 @@ description: リソース定義＠CertManagerの知見を記録しています�
 ### チャートとして
 
 ```bash
-$ helm repo add <リポジトリ名> https://charts.jetstack.io
+$ helm repo add <チャートリポジトリ名> https://charts.jetstack.io
 
 $ helm repo update
 
 $ kubectl create namespace cert-manager
 
-$ helm install <リリース名> <リポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
 ```
 
 > ℹ️ 参考：https://cert-manager.io/docs/installation/helm/#steps

@@ -726,7 +726,7 @@ git push origin HEAD
 
 ![revert.png](https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png)
 
-#### ▼ <コミットID> --no-edit
+#### ▼ ```<コミットID>``` --no-edit
 
 指定したコミットのみを打ち消す新しいコミットを作成する。
 
@@ -740,7 +740,7 @@ git push origin HEAD
 $ git revert <コミットID> --no-edit
 ```
 
-#### ▼ <コミットID> --edit
+#### ▼ ```<コミットID>``` --edit
 
 指定したコミットのみを打ち消す新しいコミットを作成する。
 

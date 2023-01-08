@@ -28,13 +28,13 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 > ℹ️ 参考：https://kyverno.github.io/kyverno/
 
 ```bash
-$ helm repo add <リポジトリ名> https://kyverno.github.io/kyverno/
+$ helm repo add <チャートリポジトリ名> https://kyverno.github.io/kyverno/
 
 $ helm repo update
 
 $ kubectl create namespace kyverno
 
-$ helm install <リリース名> <リポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
+$ helm install <リリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
 
 <br>

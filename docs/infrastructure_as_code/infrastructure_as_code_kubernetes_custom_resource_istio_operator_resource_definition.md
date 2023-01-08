@@ -116,7 +116,7 @@ IstioOperator管理でIstioリソースを作成する。
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
-#### ▼ <component名>.k8s
+#### ▼ ```<component名>```.k8s
 
 各componentが共通して持つ設定項目である。
 
