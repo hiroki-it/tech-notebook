@@ -908,6 +908,10 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体>
 $ istioctl tag set prd-blue --revision 1-0-0
 ```
 
+```bash
+$ istioctl tag set stable --revision 1-0-0
+```
+
 <br>
 
 ## proxy-status

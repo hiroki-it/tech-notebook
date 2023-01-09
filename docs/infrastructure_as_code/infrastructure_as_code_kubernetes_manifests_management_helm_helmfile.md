@@ -286,16 +286,13 @@ releases:
 
 <br>
 
-## 04. .gotmplファイル
+## 04. values.gotmplファイル
 
 Helmでは```values```ファイルをテンプレート化できないが、Helmfileではこれが可能である。
 
 ```values```ファイルに、Helmfileの変数や他の```values```ファイルの値を出力する。
 
-特に、実行環境ごとに```values```ファイルに実行環境名を渡したい場合に役立つ。
-
-
-もし、```gotmpl```ファイルを使用して、実行環境別に```values```ファイルを上書きするような構成の場合、以下の通りとする。
+特に、公式チャートに実行環境別の```values```ファイルを渡したい場合に役立つ。
 
 ```yaml
 repositories:
@@ -307,8 +304,29 @@ releases:
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      - values.yaml.gotmpl
-      - values-{{ .Environment.Name }}.yaml
+      - values-{{ .Environment.Name }}.yaml # 実行環境別のvaluesファイル
+      - values.yaml.gotmpl # 実行環境間で共有するvaluesファイル
+
+environments:
+  dev:
+  prd:
+```
+
+```yaml
+├── charts
+│   ├── argocd
+│   │   ├── values-dev.yaml 
+│   │   ├── values-prd.yaml
+│   │   └── values.yaml.gotmpl
+│   │
+│   └── argocd-apps
+│       ├── values-dev.yaml
+│       ├── values-prd.yaml
+│       └── values.yaml.gotmpl 
+│
+└── helmfile.d
+    ├── argocd-apps.yaml
+    └── argocd.yaml 
 ```
 
 

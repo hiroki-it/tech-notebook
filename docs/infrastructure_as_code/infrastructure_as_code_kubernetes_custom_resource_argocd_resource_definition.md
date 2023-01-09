@@ -336,7 +336,7 @@ spec:
 
 プロジェクト名は『```default```』は必ず作成する必要がある。
 
-```default```以外のプロジェクトは、実行環境別に作成すると良い。
+```default```以外のプロジェクトは、コンポーネント別や実行環境別に作成すると良い。
 
 
 
@@ -347,9 +347,25 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: foo-application
+  name: root-application
 spec:
-  project: default # その他、dev、stg、prd、などを作成する。
+  project: root # アプリケーションコンポーネント。その他、実行環境（dev、stg、prd）がよい。
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-infra-application
+spec:
+  project: infra # インフラコンポーネント。その他、実行環境（dev、stg、prd）がよい。
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: foo-app-application
+spec:
+  project: app # アプリケーションコンポーネント。その他、実行環境（dev、stg、prd）がよい。
 ```
 
 <br>
@@ -510,7 +526,7 @@ spec:
 
 監視対象のチャートレジストリ内のリポジトリにあるチャート名を設定する。
 
-
+バージョンタグは、```Chart.yaml```ファイルの```name```キーから確認する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
@@ -708,10 +724,9 @@ spec:
 
 #### ▼ targetRevision
 
-監視対象のチャートレジストリ内のリポジトリのブランチ（GitHubをチャートリポジトリとしている場合のみ）やバージョンタグを設定する。
+監視対象のチャートレジストリ内のリポジトリにあるチャートのバージョンタグを設定する。
 
-チャートリポジトリとして、GitHubやArtifactHubを指定できる。
-
+バージョンタグは、```Chart.yaml```ファイルの```version```キーから確認する。
 
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
@@ -973,7 +988,7 @@ spec:
 
 Applicationの責務境界をProjectとして管理する。
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
 
 ### sourceRepos
 

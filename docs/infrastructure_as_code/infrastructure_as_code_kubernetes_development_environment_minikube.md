@@ -248,7 +248,7 @@ CIDRブロックは、```10.85.0.0/16```である。
 ```bash
 $ minikube ssh
 
-# Nodeの中
+# 仮想環境の中
 docker@minikube:~$ ls -la /etc/cni/net.d
 -rw-r--r-- 1 root root  438 Nov 11  2021 100-crio-bridge.conf
 -rw-r--r-- 1 root root   54 Nov 11  2021 200-loopback.conf

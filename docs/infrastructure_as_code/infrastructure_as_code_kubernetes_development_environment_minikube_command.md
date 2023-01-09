@@ -531,14 +531,14 @@ yes
 zcat
 ```
 
-Nodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
+仮想環境の中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
 
 
 
 ```bash
 $ minikube ssh  
 
-# Nodeの中
+# 仮想環境の中
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 
 # コンテナの中

@@ -5,8 +5,8 @@
 長谷川広樹と申します。<br>
 <span style="font-size: 90%;">( I'm Hiroki Hasegawa. )</span>
 
-大学院にて **生物情報学** の分野で研究を行い、理学修士を習得しました。<br>
-<span style="font-size: 90%;">( I studied **Bioinformatics** at the graduate school, and obtained a Master of Science. )</span>
+大学院にて **データサイエンス** の分野で研究を行い、理学修士を習得しました。<br>
+<span style="font-size: 90%;">( I studied **Data Science** at the graduate school, and obtained a Master of Science. )</span>
 
 その後、Webアプリケーションの **SWE** としてキャリアをスタートしました。<br>
 <span style="font-size: 90%;">( After that, I started my career as a **SWE** in web applications. )</span>
