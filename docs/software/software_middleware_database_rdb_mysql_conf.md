@@ -360,7 +360,7 @@ socket = /var/lib/mysql/mysql.sock
 
 ### user
 
-プロセスの実行ユーザ名を設定する。
+プロセスの実行ユーザー名を設定する。
 
 
 

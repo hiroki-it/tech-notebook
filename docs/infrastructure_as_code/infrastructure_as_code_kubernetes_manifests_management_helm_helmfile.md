@@ -313,6 +313,7 @@ environments:
 ```
 
 ```yaml
+repository/
 ├── charts
 │   ├── argocd
 │   │   ├── values-dev.yaml 

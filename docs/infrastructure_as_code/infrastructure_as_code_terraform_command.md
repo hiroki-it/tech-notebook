@@ -415,118 +415,6 @@ your Terraform state and will henceforth be managed by Terraform.
 
 <br>
 
-### importのプラクティス
-
-#### ▼ importの手順
-
-（１）Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。執筆時点（2022/07/19）で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを```1```個ずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
-
-> ℹ️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
-
-（２）```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
-
-> ℹ️ 参考：
->
-> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
-> - https://dev.classmethod.jp/articles/terraform_import_for_each/
-
-```bash
-# 関数を使用せずに定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
-```
-
-```bash
-# moduleブロックを使用して定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
-```
-
-```bash
-# for_each関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
-    
-# その他のキー名もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
-```
-
-```bash
-# count関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前、など>
-    
-# その他のインデックス番号もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前、など>
-```
-
-```bash
-# moduleブロックを使用して、for_each関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
-
-# その他のキー名もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
-```
-
-そして、ローカルマシンの```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドを繰り返す。
-
-
-
-```bash
-$ terraform plan -var-file=foo.tfvars
-
-No changes. Infrastructure is up-to-date.
-```
-
-何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
-
-
-
-> ℹ️ 参考：https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
-
-#### ▼ importできない```resource```タイプ
-
-```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。
-
-その場合、```.tfstate```ファイルと実インフラの差分を解消できない。
-
-ただし、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。
-
-そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
-
-
-
-#### ▼ importを行わなかった場合のエラー
-
-もし```terraform import```コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになる。
-
-
-
-（エラー例1）
-
-```bash
-Error: InvalidParameterException: Creation of service was not idempotent.
-```
-
-（エラー例2）
-
-```bash
-Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
-```
-
-<br>r
 ### output
 
 ```.tfstate```ファイルの```output```ブロックを表示する。
@@ -1030,5 +918,155 @@ Success! The configuration is valid.
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate
 ```
+
+<br>
+
+## 02. importコマンドのプラクティス
+
+### ```import```コマンドが必要になる時
+
+Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。
+
+執筆時点（2022/07/19）で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを```1```個ずつ指定して、```.tfstate```ファイルに書き込んでいく必要がある。
+
+> ℹ️ 参考：https://dtan4.hatenablog.com/entry/2016/08/18/010652
+
+<br>
+
+### 手順
+
+（１）バックエンドがリモートの場合、ローカルマシンに```.tfstate```ファイルをダウンロードする。
+
+```bash
+# バックエンドがS3バケットの場合
+$ aws s3 cp <ローカルマシンのパス> s3://<S3バケット名>/<tfstateファイルへのパス>
+
+# バックエンドがGCSの場合
+$ gsutil cp gs://<GCS名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+```
+
+（２）ダウンロードした```.tfstate```ファイルを```local```バックエンドで指定する。
+
+```terraform
+terraform {
+
+  # ローカルマシンで管理するように設定
+  backend "local" {
+    path = "./terraform.tfstate"
+  }
+}
+```
+
+
+（２）```resource```タイプと```resource```ブロック名を指定し、```.tfstate```ファイルに実インフラの状態を書き込む。パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、```terraform plan```コマンドの結果が参考になる。また『ARN、ID、名前、など』は、```resource```タイプによって異なるため、リファレンスの『Import』の項目を確認すること。何らかの理由で```terraform import```コマンドを実行し直したい場合は、```terraform state rm```コマンドで```resource```ブロックを削除し、改めて書き込む。
+
+```bash
+# 関数を使用せずに定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+```
+
+```bash
+# moduleブロックを使用して定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+```
+
+```bash
+# for_each関数で定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+    
+# その他のキー名もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+```
+
+```bash
+# count関数で定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前、など>
+    
+# その他のインデックス番号もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前、など>
+```
+
+```bash
+# moduleブロックを使用して、for_each関数で定義されている場合
+$ terraform import \
+    -var-file=foo.tfvars \
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+
+# その他のキー名もimportが必要になる
+$ terraform import \
+    -var-file=foo.tfvars \
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+```
+
+> ℹ️ 参考：
+>
+> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
+> - https://dev.classmethod.jp/articles/terraform_import_for_each/
+> - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
+
+
+（３）```.tfstate```ファイルの変更を参考にして、```.tf```ファイルで```resource```ブロックを定義する。
+
+
+> ℹ️ 参考：https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
+
+
+（４）```.tfstate```ファイルと実インフラの差分が無くなるまで、```terraform import```コマンドの実行と```.tf```ファイルの変更を繰り返す。
+
+
+```bash
+$ terraform plan -var-file=foo.tfvars
+
+No changes. Infrastructure is up-to-date.
+```
+
+
+
+<br>
+
+### importできない```resource```タイプ
+
+```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。
+
+その場合、```.tfstate```ファイルと実インフラの差分を解消できない。
+
+ただし、こういった非対応の```resource```ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の```resource```ブロックであることが多い。
+
+そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+
+
+<br>
+
+### importを行わなかった場合のエラー
+
+もし```terraform import```コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになる。
+
+
+
+（エラー例1）
+
+```bash
+Error: InvalidParameterException: Creation of service was not idempotent.
+```
+
+（エラー例2）
+
+```bash
+Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
+```
+
+
 
 <br>

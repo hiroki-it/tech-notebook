@@ -350,7 +350,7 @@ foo-prd      foo-prd   *****
 指定したパスにあるオブジェクトを、ローカルマシンにコピーする。
 
 ```bash
-$ gcloud storage cp gs://<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
+$ gcloud storage cp gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
 > ℹ️ 参考：https://cloud.google.com/sdk/gcloud/reference/storage/cp
@@ -358,7 +358,7 @@ $ gcloud storage cp gs://<オブジェクトのファイルパス> <ローカル
 ディレクトリごとコピーする場合は、```--recursive```オプションを使用する。
 
 ```bash
-$ gcloud storage cp --recursive gs://<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
+$ gcloud storage cp --recursive gs://<GCS名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
 <br>

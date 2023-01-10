@@ -430,7 +430,7 @@ $ helm push <チャートアーカイブへのパス> oci://<アカウントID>.
 
 ```bash
 $ <チャートリポジトリのプロバイダーによる> | helm registry login \
-    --username <ユーザ名> \
+    --username <ユーザー名> \
     --password-stdin \
     <チャートリポジトリ名>
 ```

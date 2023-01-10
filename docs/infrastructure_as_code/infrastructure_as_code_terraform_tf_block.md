@@ -193,30 +193,30 @@ output "alb_zone_id" {
 # Data
 # ---------------------------------------------
 data "terraform_remote_state" "alb" {
-    backend = "s3"
-    config = {
-        bucket = "bucket"
-        key = "alb.tfstate"
-    }
+  backend = "s3"
+  config = {
+    bucket = "bucket"
+    key = "alb.tfstate"
+  }
 }
 
 data "terraform_remote_state" "ec2" {
-    backend = "s3"
-    config = {
-        bucket = "bucket"
-        key = "ec2.tfstate"
-    }
+  backend = "s3"
+  config = {
+    bucket = "bucket"
+    key = "ec2.tfstate"
+  }
 }
 
 # ---------------------------------------------
 # Resource
 # ---------------------------------------------
 resource "foo" "this" {
-    foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
+  foo_id = data.terraform_remote_state.alb.outputs.alb_zone_id
 }
 
 resource "bar" "this" {
-    bar_id = data.terraform_remote_state.ec2.outputs.bastion_ec2_instance_id
+  bar_id = data.terraform_remote_state.ec2.outputs.bastion_ec2_instance_id
 }
 ```
 
@@ -442,12 +442,6 @@ output "private_datastore_subnet_ids" {
 ルートモジュールとローカル/リモートモジュールが異なるリポジトリで管理されている場合に有効であり、これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
 
 
-
-> ℹ️ 参考：
->
-> - https://www.terraform.io/language/values/locals
-> - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
-
 ```terraform
 locals {
   foo = "FOO"
@@ -457,6 +451,14 @@ resource "aws_instance" "example" {
   foo = local.foo
 }
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://www.terraform.io/language/values/locals
+> - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+
 
 <br>
 

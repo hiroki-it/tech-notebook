@@ -1438,14 +1438,75 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。
 
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  controller.log.format: text
+  controller.log.level: warn
+  controller.operation.processors: "10"
+  controller.repo.server.timeout.seconds: "60"
+  controller.self.heal.timeout.seconds: "5"
+  controller.status.processors: "20"
+  otlp.address: ""
+  redis.server: argocd-redis:6379
+  repo.server: argocd-repo-server:8081
+  reposerver.log.format: text
+  reposerver.log.level: warn
+  reposerver.parallelism.limit: "0"
+  server.basehref: /
+  server.dex.server: https://argocd-dex-server:5556
+  server.dex.server.strict.tls: "false"
+  server.disable.auth: "false"
+  server.enable.gzip: "false"
+  server.insecure: "false"
+  server.log.format: text
+  server.log.level: warn
+  server.repo.server.strict.tls: "false"
+  server.rootpath: ""
+  server.staticassets: /shared/app
+  server.x.frame.options: sameorigin
+```
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+> ℹ️ 参考：
+> 
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
 #### ▼ ```argocd-rbac-cm```
 
-ArgoCDのKubernetesリソースで使用するRBACを設定する。
+ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを設定する。
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
+Casbinの記法を使用して、```.csv```形式で定義する。
+
+ダッシュボードやCLIでArgoCDを操作する時に使用する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可ポリシーを設定する。
+    p, role:admin, applications, *, */*, allow
+    # グループにロールを紐づける。
+    g, foo-group, role:admin
+```
+
+> ℹ️ 参考：
+> 
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
+> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
+> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://weseek.co.jp/tech/95/#SSO_RBAC
 
 #### ▼ ```argocd-tls-cets-cm```
 
@@ -1458,6 +1519,28 @@ ArgoCDのKubernetesリソースで使用するRBACを設定する。
 リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。
 
 ```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-ssh-known-hosts-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  ssh_known_hosts: |
+    bitbucket.org ssh-rsa AAAAB ...
+    github.com ecdsa-sha2-nistp256 AAAAE ...
+    github.com ssh-ed25519 AAAAC ...
+    github.com ssh-rsa AAAAB ...
+    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
+    gitlab.com ssh-ed25519 AAAAC ...
+    gitlab.com ssh-rsa AAAAB ...
+    ssh.dev.azure.com ssh-rsa AAAAB ...
+    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
+```
+
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
 
@@ -1745,7 +1828,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 以下の認証情報やSSL証明書を設定する。
 
-- クライアントがArgoCDにログインするためのユーザ名とパスワード
+- クライアントがArgoCDにログインするためのユーザー名とパスワード
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookでリクエストを送信するためのSSL証明書
 
@@ -1864,7 +1947,7 @@ stringData:
     MIIEp ...
 ```
 
-#### ▼ OIDCの場合
+#### ▼ OIDCの場合（ArgoCDで処理する場合）
 
 OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
 
@@ -1916,6 +1999,62 @@ stringData:
     requestedIDTokenClaims: {"groups": {"essential": true}}
 ```
 
+#### ▼ OIDCの場合（Dexに委譲する場合）
+
+ArgoCDでOIDCを実施するのではなく、Dexでこれを実施する。
+
+委譲先のDexは```argcd-dex-server```コンテナとして稼働させる。
+
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
+> - https://dexidp.io/docs/connectors/oidc/
+
+```yaml
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: foo-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/bar-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+---
+# 他と異なるマニフェストリポジトリ
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: bar-argocd-secret
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: bar-repository # 任意のマニフェストリポジトリ名
+  url: https://github.com:hiroki-hasegawa/bar-manifest.git
+  type: git
+  # OIDCに必要なIDやトークンを設定する。
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+```
 <br>
 
 ### チャートリポジトリの場合
