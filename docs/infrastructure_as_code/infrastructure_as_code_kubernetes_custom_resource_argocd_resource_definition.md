@@ -1947,7 +1947,7 @@ stringData:
     MIIEp ...
 ```
 
-#### ▼ OIDCの場合（ArgoCDで処理する場合）
+#### ▼ OIDCの場合（ArgoCDから直接的に送信する場合）
 
 OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
 
@@ -1999,11 +1999,11 @@ stringData:
     requestedIDTokenClaims: {"groups": {"essential": true}}
 ```
 
-#### ▼ OIDCの場合（Dexに委譲する場合）
+#### ▼ OIDCの場合（ArgoCDから間接的に送信する場合）
 
-ArgoCDでOIDCを実施するのではなく、Dexでこれを実施する。
+ArgoCDから委譲先のWebサイトに情報を直接的に送信するのではなく、ハブとしてのDexを使用する。
 
-委譲先のDexは```argcd-dex-server```コンテナとして稼働させる。
+Dexは```dex-server```コンテナとして稼働させる。
 
 > ℹ️ 参考：
 > 

@@ -21,8 +21,6 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 リポジトリを分割することにより、以下のメリットがある。
 
-
-
 - 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
 
 <br>
@@ -44,18 +42,28 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 ```yaml
 argocd-repository/
 ├── tes/
-│   ├── foo-application.yaml # foo-k8sリポジトリのdevディレクトリを監視
-│   ├── bar-application.yaml # bar-k8sリポジトリのdevディレクトリを監視
-│   └── baz-application.yaml # baz-k8sリポジトリのdevディレクトリを監視
+│   ├── app-application.yaml
+│   └── infra-application.yaml
 │
 ├── stg/
 └── prd/
 ```
 
 ```yaml
-k8s-repository/
+app-manifest-repository/ # マニフェストリポジトリまたはチャートリポジトリ
 ├── tes/
-│   ├── deployment.yaml # あるいはhelmチャート
+│   ├── deployment.yaml
+│   ....
+│
+├── stg/
+└── prd/
+```
+
+
+```yaml
+infra-manifest-repository/ # マニフェストリポジトリまたはチャートリポジトリ
+├── tes/
+│   ├── deployment.yaml
 │   ....
 │
 ├── stg/
@@ -64,7 +72,9 @@ k8s-repository/
 
 #### ▼ App-Of-Appsパターン
 
-監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。この時、全てのApplicationを管理する親Applicationを作成する。これにより、親Applicationで子Applicationをグループ化したように構成できる（App-Of-Appsパターン）。親Applicationを使用して、ArgoCDが自身をアップグレードできるようになる。ここでは、子Applicationが監視するKubernetesリソースやhelmチャートのリポジトリは『ポリリポジトリ』としているが、『モノリポジトリ』でも良い。注意点として、Sync時の操作手順として、親Applicationの画面で子ApplicationのSyncを実行し、その後子Applicationの画面でSyncを実行することになる。
+![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
+
+親Applicationで子Applicationをグループ化したように構成する。
 
 > ℹ️ 参考：
 > 
@@ -72,61 +82,79 @@ k8s-repository/
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 
+- 全てのApplicationを監視する最上位Application（root-application）
+
 ```yaml
-# 親Application
-parent-argocd-repository/
-├── tes/ # 子Applicationを管理する。
-│   └── root-application.yaml # child-argocd-manifestリポジトリの/tesディレクトリを監視
+# 最上位Application
+root-argocd-repository/
+├── tes/
+│   └── root-application.yaml
 │
 ├── stg/
 └── prd/
 ```
+
+- 各AppProjectの子Applicationを監視する親Application（app-parent-application、infra-parent-application）
+
+
+```yaml
+# 親Application
+parent-argocd-repository/
+├── tes/ 
+│   ├── app-parent-application.yaml # appプロジェクトを監視するapplication
+│   └── infra-parent-application.yaml # infraプロジェクトを監視するapplication
+│
+├── stg/
+└── prd/
+```
+
+- 各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplication
+
 
 ```yaml
 # 子Application
 child-argocd-repository/
-├── tes/ # 孫Applicationを管理する。
-│   ├── app-application.yaml   # grandchild-argocd-manifestリポジトリの/tes/appディレクトリを監視
-│   └── infra-application.yaml # grandchild-argocd-manifestリポジトリの/tes/infraディレクトリを監視
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-# 孫Application
-grandchild-argocd-repository/
-├── tes/ # マニフェストやチャートを監視する。
-│   ├── app
-│   │   ├── account-application.yaml      # k8sリポジトリの/tes/app/accountディレクトリを監視
-│   │   ├── customer-application.yaml     # k8sリポジトリの/tes/app/customerディレクトリを監視
-│   │   ├── orchestrator-application.yaml # k8sリポジトリの/tes/app/orchestratorディレクトリを監視
-│   │   └── order-application.yaml        # k8sリポジトリの/tes/app/orderディレクトリを監視
-│   │
-│   └── infra
-│       ├── fluentd-application.yaml           # k8sリポジトリの/tes/infra/fluentdディレクトリを監視
-│       ├── grafana-application.yaml           # k8sリポジトリの/tes/infra/grafanaディレクトリを監視
-│       ├── kiali-application.yaml             # k8sリポジトリの/tes/infra/kialiディレクトリを監視
-│       ├── prometheus-application.yaml        # k8sリポジトリの/tes/infra/prometheusディレクトリを監視
-│       └── victoria-metrics-application.yaml  # k8sリポジトリの/tes/infra/vicotoria-metricsディレクトリを監視
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-k8s-repository/
 ├── tes/
 │   ├── app
-│   │   ├── account
-│   │   │   ├── deployment.yaml  # あるいはhelmチャート
-│   │   ...
+│   │   ├── account-application.yaml      
+│   │   ├── customer-application.yaml
+│   │   ├── orchestrator-application.yaml
+│   │   ├── order-application.yaml 
+│   │   └── shared-application.yaml        
 │   │
 │   └── infra
-│       ├── fluentd
-│       │   ├── deployment.yaml # あるいはhelmチャート
-│       ...
-│ 
+│       ├── fluentd-application.yaml           
+│       ├── grafana-application.yaml
+│       ├── istio-application.yaml
+│       ├── kiali-application.yaml             
+│       ├── prometheus-application.yaml
+│       ├── shared-application.yaml
+│       └── victoria-metrics-application.yaml  
+│
+├── stg/
+└── prd/
+```
+
+- アプリ領域やインフラ領域のマニフェスト
+
+```yaml
+# アプリ領域のマニフェスト
+app-manifest-repository/
+├── tes/
+│   ├── deployment.yaml
+│   ....
+│
+├── stg/
+└── prd/
+```
+
+```yaml
+# インフラ領域のマニフェスト
+infra-manifest-repository/
+├── tes/
+│   ├── deployment.yaml
+│   ....
+│
 ├── stg/
 └── prd/
 ```

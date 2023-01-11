@@ -789,10 +789,12 @@ Successfully removed 1 resource instance(s).
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
-#### ▼ show
+#### ▼ show list
+
+```.tfstate```ファイルを表示する。
 
 ```bash
-$ terraform state show
+$ terraform state
 
 {
   "version": 4,
@@ -857,7 +859,7 @@ $ terraform state show
 
 
 ```bash
-$ terraform state show aws_instance.bastion
+$ terraform state show 'aws_instance.bastion'
 ```
 
 <br>
@@ -921,9 +923,9 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 <br>
 
-## 02. importコマンドのプラクティス
+## 02. importコマンド
 
-### ```import```コマンドが必要になる時
+### なぜ```import```コマンドが必要なのか
 
 Terraformによる作成ではない方法ですでにクラウド上にインフラリソースが作成されている場合、これの設定値を```resource```ブロックの設定値として```.tfstate```ファイルに書き込み、Terraformの管理下におく必要がある（```.tfstate```ファイル上では、```resource```ブロックは```managed```モードという表記になる）。
 
@@ -1036,7 +1038,9 @@ No changes. Infrastructure is up-to-date.
 
 <br>
 
-### importできない```resource```タイプ
+### Tips
+
+#### ▼ importできない```resource```タイプ
 
 ```resource```ブロック間の紐付けに特化したような```resource```ブロックは、```terraform import```コマンドに対応していないものが多い（AWSであれば、```aws_acm_certificate_validation```、```aws_lb_target_group_attachment```、など）。
 
@@ -1047,9 +1051,8 @@ No changes. Infrastructure is up-to-date.
 そのため、実際に```terraform apply```コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
 
 
-<br>
 
-### importを行わなかった場合のエラー
+#### ▼ importを行わなかった場合のエラー
 
 もし```terraform import```コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになる。
 
