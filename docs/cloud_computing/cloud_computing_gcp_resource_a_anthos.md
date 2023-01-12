@@ -71,11 +71,11 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 Istioから構成される。
 
+![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
 
 > ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
 
-![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
 <br>
 
@@ -85,9 +85,11 @@ Istioから構成される。
 
 一連のacm-operator（cluster-operator、など）から構成される。
 
+![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
+
+
 > ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
 
-![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_config-management.png)
 
 #### ▼ acm-operatorの仕組み
 

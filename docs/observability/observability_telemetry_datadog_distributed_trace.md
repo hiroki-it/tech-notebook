@@ -23,11 +23,11 @@ description: 分散トレース収集＠Datadogの知見を記録しています
 
 アプリケーションから分散トレースを収集し、Datadogに転送する。
 
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 
 > ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 <br>
 

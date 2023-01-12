@@ -59,11 +59,11 @@ I/O自体が文脈によって意味合いが異なるが、IOPSはストレー�
 
 プロセスごとに存在する。
 
+![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
 
 
 > ℹ️ 参考：http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
 
-![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.png)
 
 <br>
 

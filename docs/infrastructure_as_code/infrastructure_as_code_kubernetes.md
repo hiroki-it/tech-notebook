@@ -21,11 +21,11 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 Kubernetesは、コントロールコンポーネント、Nodeコンポーネント、から構成される。
 
+![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
 
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/components/
 
-![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_architecture.png)
 
 <br>
 

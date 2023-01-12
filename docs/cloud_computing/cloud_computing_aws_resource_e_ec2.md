@@ -593,6 +593,7 @@ EBSボリュームのコピーのこと。
 
 セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。
 
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
 
 
 > ℹ️ 参考：
@@ -600,7 +601,6 @@ EBSボリュームのコピーのこと。
 > - https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
 > - https://dev.classmethod.jp/articles/ssh-through-session-manager/
 
-![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_session-manager.png)
 
 #### ▼ systems-managerエージェント
 

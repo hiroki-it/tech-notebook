@@ -449,11 +449,11 @@ jobを実行する仮想環境を選択できる。
 
 また、DockerfileのCOPYコマンドが動作しなくなる。
 
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
 
 > ℹ️ 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
-![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
 **＊実装例＊**
 

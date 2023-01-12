@@ -1062,6 +1062,31 @@ spec:
         - "*" 
 ```
 
+#### ▼ tls.credentialName
+
+
+GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。
+
+SSL証明書のファイルを指定する場合は、```spec.servers[].tls.serverCertificate```キーを設定する。
+
+Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
+
+> ℹ️ 参考：https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
+spec:
+  servers:
+    - tls:
+        credentialName: istio-gateway-certificate-secret
+```
+
 #### ▼ tls.privateKey
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
@@ -1082,9 +1107,9 @@ spec:
 
 #### ▼ tls.serverCertificate
 
-受信するインバウンド通信がHTTPS、またはVirtualServiceへのルーティングでHTTPからHTTPSにリダイレクトする場合、SSL/TLS証明書を設定する。
+GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。
 
-
+SSL証明書を保持するSecretを指定する場合は、```spec.servers[].tls.credentialName```キーを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 

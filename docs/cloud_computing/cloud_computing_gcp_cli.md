@@ -362,3 +362,19 @@ $ gcloud storage cp --recursive gs://<GCS名>/<オブジェクトのファイル
 ```
 
 <br>
+
+### kms
+
+#### ▼ describeとは
+
+KMSの暗号化キーを取得する。
+
+```bash
+$ gcloud kms keys describe <KMSのリソースID>
+```
+
+```bash
+$ gcloud kms keys describe projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key
+```
+
+<br>

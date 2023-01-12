@@ -37,11 +37,11 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 単一のプロセスしか読み込めず、物理メモリの余ったアドレス空間は利用できない。
 
+![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単一区画方式.png)
 
 
 > ℹ️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
-![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単一区画方式.png)
 
 #### ▼ 多重区画方式とは
 
@@ -65,11 +65,11 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 固定区画方式とは異なり、物理メモリのアドレス空間を有効に利用できる。
 
+![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/可変区画方式.png)
 
 
 > ℹ️ 参考：https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
 
-![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/可変区画方式.png)
 
 <br>
 

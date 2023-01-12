@@ -271,7 +271,37 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 > - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
 > - https://weblabo.oscasierra.net/openssl-gencert-1/
 
-（１）秘密鍵（```.key```ファイル）を作成する。
+
+（１）SSL証明書の有効期限が切れてしまい、HTTPSプロトコルで通信できなくなってしまったとする。
+
+```bash
+$ curl https://foo.example.com -v
+
+*   Trying *.*.*.*...
+* TCP_NODELAY set
+* Connected to foo.example.com (*.*.*.*) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (OUT), TLS alert, certificate expired (557):
+* SSL certificate problem: certificate has expired
+* Closing connection 0
+curl: (60) SSL certificate problem: certificate has expired
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+```
+
+（２）秘密鍵（```.key```ファイル）を作成する。
 
 ```bash
 $ openssl genrsa 2048 -keyout server.key
@@ -282,7 +312,7 @@ Generating RSA private key, 2048 bit long modulus
 e is 65537 (0x10001)
 ```
 
-（２）秘密鍵から、証明書署名要求（```.csr```ファイル）を作成する。対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
+（３）秘密鍵から、証明書署名要求（```.csr```ファイル）を作成する。対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
 
 ```bash
 $ openssl req -new -key server.key -out server.csr
@@ -296,13 +326,13 @@ Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # �
 Email Address []:
 ```
 
-（３）認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
+（４）認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
 
 ```bash
 $ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out server.crt
 ```
 
-（４）秘密鍵（```.key```ファイル）、SSL証明書（```.crt```ファイル）、を該当の箇所に設定する。例えば、Nginxの設定ファイルなら、以下の通りとなる。
+（５）秘密鍵（```.key```ファイル）、SSL証明書（```.crt```ファイル）、を該当の箇所に設定する。例えば、Nginxの設定ファイルなら、以下の通りとなる。
 
 ```nginx
 #-------------------------------------
@@ -312,12 +342,67 @@ server {
     # 443番ポートで待ち受けるようにし、SSL証明書を使用する。
     # listen 80;
     listen 443 ssl;
+    
+    # Hostヘッダー
+    server_name foo.example.com;
 
     # SSL証明書を設定する。
     ssl_certificate     /etc/nginx/ssl/server.crt;
     # 秘密鍵を設定する。
     ssl_certificate_key /etc/nginx/ssl/server.key;
 }
+```
+
+（６）SSL証明書の開始日と失効日が新しくなっており、HTTPSプロと凍ることがわかる。
+
+```bash
+$ curl https://foo.example.com -v
+*   Trying *.*.*.*...
+* TCP_NODELAY set
+* Connected to foo.example.com (*.*.*.*) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / *-*-*-*-*
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=JP; ST=Tokyo; L=***; O=***; CN=*.example.com
+*  start date: Dec 21 02:08:29 2022 GMT # SSL証明書の開始日
+*  expire date: Jan 22 02:08:28 2024 GMT # SSL証明書の失効日
+*  subjectAltName: host "foo.example.com" matched cert's "*.example.com"
+*  issuer: C=BE; O=* nv-sa; CN=* RSA OV SSL CA 2018
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle *****)
+> GET /v1/health HTTP/2
+> Host: foo.example.com
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+* Connection state changed (MAX_CONCURRENT_STREAMS == 2147483647)!
+< HTTP/2 200
+< content-type: application/json; charset=utf-8
+< date: Thu, 12 Jan 2023 02:07:12 GMT
+< content-length: 2
+< server: nginx
+<
+* Connection #0 to host foo.example.com left intact
 ```
 
 

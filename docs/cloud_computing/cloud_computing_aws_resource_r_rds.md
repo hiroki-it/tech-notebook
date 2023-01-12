@@ -142,11 +142,11 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 ちなみに保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
+![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
 
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
 
-![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
 
 #### ▼ 保留中のメンテナンスの状態
 

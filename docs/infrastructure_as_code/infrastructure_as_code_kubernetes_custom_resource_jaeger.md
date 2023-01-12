@@ -21,11 +21,11 @@ description: Jaeger＠カスタムリソースの知見を記録しています�
 
 Jaegerは、jaegerクライアントパッケージ（執筆時点2022/07/16で、OTelクライアントパッケージの使用が推奨）、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード（UI）、から構成されている。
 
+![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
 
 > ℹ️ 参考：https://www.jaegertracing.io/docs/latest/architecture/
 
-![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/jaeger_architecture.png)
 
 <br>
 

@@ -27,10 +27,11 @@ Kialiは、フロントエンドアプリケーションとバックエンドア
 
 現状は、Istioのコンポーネントに依存している。
 
+![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
+
 
 > ℹ️ 参考：https://kiali.io/docs/architecture/architecture/
 
-![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kiali_architecture.png)
 
 <br>
 

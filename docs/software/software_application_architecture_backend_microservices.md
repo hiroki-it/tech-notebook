@@ -549,11 +549,11 @@ Kubernetes内で管理できるメリットがある。
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを```1```個だけ作成する。
 
+![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
 
 > ℹ️ 参考：https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 
-![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/apigateway_public-api-pattern.png)
 
 #### ▼ BFF：Backends For Frontends
 

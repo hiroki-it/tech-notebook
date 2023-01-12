@@ -321,9 +321,11 @@ $ kubectl top pod -n <任意のNamespace>
 
 また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、metrics-apiserverからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
 
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
+
+
 > ℹ️ 参考：https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/horizontal-pod-autoscaler.png)
 
 <br>
 

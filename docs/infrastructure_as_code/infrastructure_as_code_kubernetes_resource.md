@@ -672,6 +672,81 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 設定された条件に基づいて、作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
+> ℹ️ 参考：https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
+
+#### ▼ 削除できない
+
+PersistentVolumeClaimを削除しようとすると、```finalizers```キー配下に```kubernetes.io/pvc-protection```値が設定され、削除できなくなることがある。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers:
+    - kubernetes.io/pvc-protection
+  name: foo-persistent-volume-claim
+spec:
+  ...
+```
+
+この場合、```kubectl edit```コマンドなどで```finalizers```キーを空配列に編集と、削除できるようになる。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  finalizers: []
+  name: foo-persistent-volume-claim
+spec:
+  ...
+```
+
+> ℹ️ 参考：https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff
+
+#### ▼ NodeAffinityによるエラー
+
+PersistentVolumeClaimは、```annotation```キー配下の```volume.kubernetes.io/selected-node```キーで紐づくPersistentVolumeが配置されているNode名を指定している。
+
+PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
+
+しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
+
+```bash
+N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
+```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict
+
+
+（１）PersistentVolumeClaimで指定するPersistentVolumeが、いずれのNodeにあるかを確認する。
+
+```bash
+$ kubectl describe pvc <PersistentVolumeClaim名>
+
+...
+
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs
+               volume.kubernetes.io/selected-node: ip-*-*-*-*.ap-northeast-1.compute.internal
+               
+...
+```
+
+（２）PodがいずれのNodeでスケジューリングされているのかを確認する。
+
+```bash
+$ kubectl get pod <Pod名> -o wide
+```
+
+（３）Nodeが異なる場合、PersistentVolumeClaimがPersistentVolumeを特定できないでいる。そのため、PersistentVolumeClaimを削除し、その後StatefulSet自体を再作成する。
+
+
+（４）StatefulSetがPersistentVolumeClaimを新しく作成し、PersistentVolumeがPodに紐づく。
+
+> ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847
+
+
 <br>
 
 ### Secret
@@ -1065,5 +1140,110 @@ Node上のPod間でボリュームを共有できない。
 ### Metadataリソースとは
 
 > ℹ️ 参考：https://thinkit.co.jp/article/13542
+
+
+<br>
+
+## 07. 共通キー
+
+### annotationsキー
+
+
+#### ▼ ```kubernetes.io```キー
+
+Kubernetesリソースに関する情報を設定する。
+
+```annotations```キー配下にも同じキーがあることに注意する。
+
+
+| キー               | 値の例                             | 説明                           |
+|------------------|-----------------------------------|------------------------------|
+| ```/createdby``` | ```aws-ebs-dynamic-provisioner``` | Kubernetesリソースを作成したツールを設定する。 |
+
+
+#### ▼ ```pv.kubernetes.io```キー
+
+PersistentVolumeに関する情報を設定する。
+
+| キー                         | 値の例                                              | 説明                            |
+|----------------------------|--------------------------------------------------|-------------------------------|
+| ```/bound-by-controller``` | ```yes```                                        |                               |
+| ```/provisioned-by```       | ```kubernetes.io/aws-ebs``` | そのPersistVolumeを作成したツールを設定する。 |
+
+
+
+#### ▼ ```volume.kubernetes.io```キー
+
+PersistentVolumeClaimに関する情報を設定する。
+
+| キー                         | 値の例                                            | 説明                                                                                                                                                                                           |
+|----------------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```/storage-provisioner``` | ```kubernetes.io/aws-ebs```                      | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                      |
+| ```/selected-node```       | ```ip-*-*-*-*.ap-northeast-1.compute.internal``` | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、```N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector```というエラーになる。 |
+
+<br>
+
+### labelsキー
+
+#### ▼ ```app.kubernetes.io```キー
+
+Kubernetes上で稼働するコンテナの情報を設定する。
+
+| キー                | 値の例                         | 説明                             |
+|-------------------|-------------------------------|---------------------------------|
+| ```/app```        | ```foo```、```foo-service```   | マイクロサービス名                       |
+| ```/component```  | ```database```                | コンテナの役割名                      |
+| ```/created-by``` | ```kube-controller-manager``` | このKubernetesリソースを作成したリソースやユーザー |
+| ```/env```        | ```prd```、```stg```、```dev``` | アプリケーションの実行環境名              |
+| ```/instance```   | ```mysql-12345```             | マイクロサービスコンテナのインスタンス名            |
+| ```/managed-by``` | ```helm```、```foo-operator``` | アプリケーションの管理ツール名               |
+| ```/name```       | ```mysql```                   | マイクロサービスを構成するコンテナのベンダー名       |
+| ```/part-of```    | ```bar```                     | マイクロサービス全体のアプリケーション名          |
+| ```/type```       | ```host```（PVのマウント対象）       | リソースの設定方法の種類名             |
+| ```/version```    | ```5.7.21```                  | マイクロサービスのリリースバージョン名             |
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+
+
+#### ▼ ```argocd.argoproj.io```キー
+
+ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
+
+| キー              | 値の例                 | 説明                                      |
+|-----------------|-----------------------|-----------------------------------------|
+| ```/instance``` | ```foo-application``` | Kubernetesリソースを管理するArgoCDのApplication名 |
+
+#### ▼ ```helm.sh```キー
+
+Helmを使用している場合に、Helmの情報を設定する。
+
+| キー           | 値の例           | 説明           |
+|--------------|-----------------|--------------|
+| ```/chart``` | ```foo-chart``` | 使用しているチャート名 |
+
+
+#### ▼ ```kubernetes.io```キー
+
+Kubernetesリソースに関する情報を設定する。
+
+```annotations```キー配下にも同じキーがあることに注意する。
+
+| キー              | 値の例                                                      | 説明            |
+|-----------------|------------------------------------------------------------|-----------------|
+| ```/arch```     | ```amd64```                                                | NodeのCPUアーキテクチャ |
+| ```/hostname``` | ```ip-*-*-*-*.ap-northeast-1.compute.internal```（AWSの場合） | Nodeのホスト名      |
+| ```/os```       | ```linux```                                                | NodeのOS         |
+
+
+#### ▼ ```topology.kubernetes.io```キー
+
+Nodeに関する情報を設定する。
+
+
+| キー            | 値の例                           | 説明               |
+|---------------|-------------------------------|------------------|
+| ```/region``` | ```ap-northeast-1```（AWSの場合）  | Nodeが稼働しているリージョン |
+| ```/zone```   | ```ap-northeast-1a```（AWSの場合） | Nodeが稼働しているAZ    |
+
 
 <br>

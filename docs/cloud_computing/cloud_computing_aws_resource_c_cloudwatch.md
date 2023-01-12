@@ -59,11 +59,11 @@ CloudWatchは、データポイントからメトリクスを作成しつつ、�
 
 CloudWatchメトリクス上では、各集約を以下の様に確認できる。
 
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
 
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
 
-![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
 
 <br>
 

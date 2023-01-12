@@ -61,21 +61,21 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
+![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
 
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
 
-![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
 
 #### ▼ EKSの場合
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
 
+![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_control-plane.png)
 
 
 > ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
-![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_control-plane.png)
 
 <br>
 
@@ -97,11 +97,11 @@ FargateをワーカーNodeとして、コンテナを作成する。
 
 Fargateの実体はEC2インスタンスである（ドキュメントに記載がないが、AWSサポートに確認済み）。
 
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
-![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
 <br>
 
@@ -463,16 +463,17 @@ ECSクラスターが複数のECSサービスから構成される。
 
 ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
 
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
 
 
 > ℹ️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
 
 #### ▼ ECSサービスディスカバリー
 
 Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信できるようにする。
 
+![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
 
 
 > ℹ️ 参考：
@@ -481,7 +482,6 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
 > - https://dev.classmethod.jp/articles/ecs-service-discovery/
 
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
 
 <br>
 

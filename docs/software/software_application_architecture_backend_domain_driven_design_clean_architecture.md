@@ -165,11 +165,11 @@ class FormatValidator
 
 インターフェース層からユースケース層までの処理の流れを以下に示す。
 
+![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
 
 
 > ℹ️ 参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
-![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
 
 <br>
 

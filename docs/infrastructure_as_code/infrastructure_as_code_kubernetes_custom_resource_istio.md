@@ -541,9 +541,11 @@ Istioは、分散トレースのためのメタデータを作成するが、こ
 
 仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に属している場合に、この仮想サーバーに```istio-proxy```コンテナを注入することにより、データプレーン内で仮想サーバーを管理できるようになる。この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
 
+![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_same-network.png)
+
+
 > ℹ️ 参考：https://istio.io/latest/docs/ops/deployment/vm-architecture/
 
-![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_multi-service-mesh_vm_same-network.png)
 
 #### ▼ 異なるプライベートネットワーク内の場合
 

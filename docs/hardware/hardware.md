@@ -21,19 +21,21 @@ description: ハードウェアの知見を記録しています。
 
 システムのうちで、ソフトウェア（OS、ミドルウェア、アプリケーション）以外の要素を合わせたグループのこと。
 
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
 
 > ℹ️ 参考：https://thinkit.co.jp/article/11526
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
 
 <br>
 
 ### ハードウェアの種類
 
+![hardware_computer_five-parts](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hardware_computer_five-parts.png)
+
+
 > ℹ️ 参考：https://living-maou.com/computer-composition/
 
-![hardware_computer_five-parts](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hardware_computer_five-parts.png)
 
 <br>
 

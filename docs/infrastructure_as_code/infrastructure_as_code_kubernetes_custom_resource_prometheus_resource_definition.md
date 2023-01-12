@@ -464,6 +464,27 @@ spec:
 
 <br>
 
+
+### spec.retention
+
+Prometheusのローカルストレージの保持期間を設定する。
+
+> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/app: foo
+spec:
+  retention: 31d
+```
+
+<br>
+
 ### spec.remoteWrite
 
 リモート書き込み先を設定する。
@@ -546,15 +567,15 @@ spec:
 
 ### アラート内で使用できる予約変数
 
-| 変数名            | データ型    | デフォルトラベル例                                                                                  | 説明                                                                                                                                                       |
-|-------------------|---------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Receiver          | string型 | ```.Receiver```                                                                            | アラートの受信者が割り当てられている。                                                                                                                                      |
-| Status            | string型 | ```.Status```                                                                              | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                      |
-| Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                              |
+| 変数名            | データ型    | デフォルトラベル例                                                                                 | 説明                                                                                                                                                                   |
+|-------------------|---------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Receiver          | string型 | ```.Receiver```                                                                            | アラートの受信者が割り当てられている。                                                                                                                                               |
+| Status            | string型 | ```.Status```                                                                              | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                              |
+| Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                      |
 | GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
-| CommonLabels      | map型    | ```.CommonLabels.alertname```                                                              | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                               |
-| CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                  |
-| ExternalURL       | string型 | ```.ExternalURL```                                                                         | AlertmangerのURLが割り当てられている。                                                                                                                               |
+| CommonLabels      | map型    | ```.CommonLabels.alertname```                                                              | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                        |
+| CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                    |
+| ExternalURL       | string型 | ```.ExternalURL```                                                                         | AlertmangerのURLが割り当てられている。                                                                                                                                           |
 
 
 > ℹ️ 参考：

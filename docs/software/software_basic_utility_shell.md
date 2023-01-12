@@ -131,9 +131,11 @@ echo $0 # foo.sh
 
 #### ▼ 系譜
 
+![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
+
+
 > ℹ️ 参考：https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
 
-![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/shell_history.png)
 
 #### ▼ 設定ファイル
 

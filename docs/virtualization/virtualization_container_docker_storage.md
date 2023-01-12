@@ -81,7 +81,7 @@ Docker for Desktopの設定画面で変更する。
 
 マウント元の詳細なディレクトリ名は、```/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json```ファイルから確認できる。
 
-```yaml
+```bash
 $ cat settings.json
 
 {

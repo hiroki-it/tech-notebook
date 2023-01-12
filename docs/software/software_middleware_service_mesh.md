@@ -105,11 +105,11 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短い（レスポンス速度が速い）との結果が出ている。
 
+![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
 
 > ℹ️ 参考：https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
-![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 
 <br>
 
@@ -123,11 +123,11 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 サイドカープロキシが稼働する領域を『データプレーン』、中央集権的に管理する領域を『コントロールプレーン』という。
 
+![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_control-plane.png)
 
 
 > ℹ️ 参考：https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
-![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh_control-plane.png)
 
 <br>
 

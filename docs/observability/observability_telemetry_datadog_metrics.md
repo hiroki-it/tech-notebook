@@ -22,11 +22,11 @@ title: 【IT技術の知見】メトリクス収集＠Datadog
 
 アプリケーションからメトリクスのデータポイントを収集し、Datadogに転送する。
 
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 
 > ℹ️ 参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 <br>
 

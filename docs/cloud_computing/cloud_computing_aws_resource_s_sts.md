@@ -55,11 +55,11 @@ IAMユーザーを一括で管理しておき、特定のAWSアカウントで�
 
 IAMユーザー、AWSリソース、フェデレーテッドユーザー、がある。
 
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
 
 > ℹ️ 参考：https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
 
-![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aws_sts_assumed-user.png)
 
 <br>
 

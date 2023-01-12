@@ -35,12 +35,13 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 vm-agent、vm-storage、vm-alert、から構成されている。また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。VictoriaMetricsを監視ツールとして使用する場合はPrometheusは不要になる。
 
+![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
+
 > ℹ️ 参考：
 >
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
 > - https://www.sobyte.net/post/2022-05/vmalert/
 
-![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/victoria-metrics_monitoring_architecture.png)
 
 <br>
 

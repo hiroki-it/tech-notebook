@@ -284,11 +284,11 @@ VPN接続されると、自宅PCからのTCPプロトコルのリクエストが
 
 接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。
 
+![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
 
 
 > ℹ️ 参考：https://www.n-study.com/internet-vpn/ssl-vpn-overview/
 
-![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SSLによるインターネットVPN.jpg)
 
 
 <br>

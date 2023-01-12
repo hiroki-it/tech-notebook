@@ -171,11 +171,11 @@ try{
 
 これにより、書き込み後にすぐ読み出しが必要な場合、読み出しが速くなる。
 
+![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
 
 > ℹ️ 参考：https://www.kimullaa.com/posts/201910271500/
 
-![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
 #### ▼ WAL：Write ahead log（ログ先行書き込み）
 

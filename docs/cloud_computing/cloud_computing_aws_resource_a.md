@@ -305,11 +305,11 @@ ALBを使用して、起動テンプレートを基にしたEC2インスタン�
 
 言い換えると、オートスケーリングにターゲットグループを紐づけて初めて、ターゲットにルーティングできるようになる。
 
+![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Auto-scaling.png)
 
 
 > ℹ️ 参考：https://www.a-frontier.jp/technology/aws10/
 
-![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Auto-scaling.png)
 
 <br>
 

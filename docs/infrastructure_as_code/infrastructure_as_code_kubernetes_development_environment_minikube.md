@@ -25,6 +25,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 このMinikube仮想サーバー内にNodeを持つClusterを作成する。
 
+![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine_driver.png)
 
 
 > ℹ️ 参考：
@@ -32,7 +33,6 @@ description: Minikube＠開発環境の知見を記録しています。
 > - https://minikube.sigs.k8s.io/docs/commands/
 > - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
-![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/minikube_architecture_virtual_machine_driver.png)
 
 #### ▼ Dockerドライバーの場合
 

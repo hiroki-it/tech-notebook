@@ -24,11 +24,11 @@ description: ブラックボックステストの知見を記録しています�
 
 単体テストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
+![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_black-box-test.png)
 
 
 > ℹ️ 参考：https://service.shiftinc.jp/column/4801/
 
-![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/testing_black-box-test.png)
 
 <br>
 

@@ -184,21 +184,21 @@ CPUのコアと紐付くプロセスの実行単位を『スレッド』とい�
 
 CPUのコアが単一のスレッドが紐付くようなマルチスレッドのこと。
 
+![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
 
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
-![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
 
 #### ▼ 同時マルチスレッド
 
 CPUのコアが複数のスレッドが紐付くようなマルチスレッドのこと。
 
+![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
 
 
 > ℹ️ 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
-![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
 
 <br>
 
