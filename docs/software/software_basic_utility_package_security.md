@@ -91,10 +91,6 @@ sops:
 
 コマンドを実行するディレクトリに配置しておく必要がある。
 
-
-
-> ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
-
 ```yaml
 creation_rules:
     # 特定の平文ファイル名を設定する。
@@ -125,6 +121,9 @@ $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<アカウントID>:key/*****"
 
 $ sops -e ./values/foo-values.yaml
 ```
+
+> ℹ️ 参考：https://github.com/mozilla/sops#211using-sopsyaml-conf-to-select-kmspgp-for-new-files
+
 
 <br>
 

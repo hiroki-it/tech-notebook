@@ -358,7 +358,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 ## 06. アップグレード
 
-ArgoCDが自分自身をアップグレードできるように、親Applicationを子Applicationで管理する。
+ArgoCDが自分で自分をアップグレードできるように、親Applicationを子Applicationで管理する。
 
 
 

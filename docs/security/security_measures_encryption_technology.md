@@ -189,7 +189,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 #### ▼ 認証局の例
 
-自前中間認証局あるいはクラウドプロバイダーが中間認証局を利用し、デジタル証明書を認証する。
+自前の中間認証局あるいはクラウドプロバイダーが中間認証局を利用し、デジタル証明書を認証する。
 
 
 
@@ -205,23 +205,61 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 <br>
 
-### SSL証明書
+### 証明書の種類
 
-#### ▼ SSL証明書とは
+#### ▼ ルート証明書
+
+ルート認証局が、自身の信頼性を担保するために発行する証明書のこと。
+
+ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、ルート証明書を使用して自分で自分を証明できる。
+
+> ℹ️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+
+#### ▼ 中間CA証明書
+
+中間認証局が、自身の信頼性を担保するために発行する証明書のこと。
+
+ただし、中間認証局は中間CA証明書を使用して自分で自分を証明できないため、代わりにルート認証局がこれを担保する。
+
+> ℹ️ 参考：https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+
+#### ▼ SSL証明書
 
 デジタル証明書をSSLに使用する場合、特にSSL証明書という。
 
-対になる秘密鍵と組み合わせて、ドメインの認証に使用される。
+Webサイトのドメインの購入者が、対になる秘密鍵と組み合わせることにより、ドメインの所有者であることを証明する。
 
+ただし、ドメインの購入者は自分で自分を証明できないため、代わりにルート認証局がこれを担保する。
 
+中間CA証明書を使用してSSL証明書を証明する場合、SSL証明書の内容と中間CA証明書と連結する。
+
+より下位の証明書から順番に連結していく。
+
+```text
+-----BEGIN CERTIFICATE-----
+SSL証明書の内容
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+最下位の中間CA証明書の内容
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+より上位の中間CA証明書の内容
+-----END CERTIFICATE-----
+```
+
+> ℹ️ 参考：
+> 
+> - https://www.mtioutput.com/entry/2019/01/02/090000
+> - https://portal.kitcloud.net/documents/1356
+> - https://diary.bis5.net/2013/12/10/450.html
 
 #### ▼ 証明書バンドル
+
+
 
 認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。
 
 ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。
-
-
 
 > ℹ️ 参考：https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
@@ -241,7 +279,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 <br>
 
-### オレオレSSL証明書の作成
+### 自己署名SSL証明書の作成
 
 #### ▼ SSL証明書の作成に必要なもの
 
@@ -326,7 +364,7 @@ Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # �
 Email Address []:
 ```
 
-（４）認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
+（４）中間認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書（```.crt```ファイル）を作成する。有効期限は```10```年（```3650```日）とする。
 
 ```bash
 $ openssl x509 -days 3650 -req -sha256 -signkey server.key -in server.csr -out server.crt
@@ -429,6 +467,8 @@ $ curl https://foo.example.com -v
 <br>
 
 ### 生体認証
+
+調査中...
 
 ![生体認証-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/生体認証-1.png)
 

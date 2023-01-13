@@ -139,7 +139,7 @@ IPアドレスやポート番号の変わらない対象を監視する。
 
 ```yaml
 scrape_configs:
-  # 自分自身を監視する。
+  # 自分で自分を監視する。
   - job_name: prometheus
     static_configs:
       - targets:

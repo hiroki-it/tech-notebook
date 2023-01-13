@@ -1417,9 +1417,7 @@ data:
 
 ## 09. 専用ConfigMap
 
-### 専用ConfigMap
-
-#### ▼ 専用ConfigMapとは
+### 専用ConfigMapとは
 
 ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
 
@@ -1427,14 +1425,55 @@ ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
+<br>
 
-#### ▼ ```argocd-cm```（必須）
+### argocd-cm（必須）
+
+#### ▼ argocd-cmとは
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
 
-#### ▼ ```argocd-cmd-params-cm```
+
+#### ▼ resource.customizations.ignoreDifferences.all
+
+ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+      # spec.replicas（インスタンス数）の設定値の変化を無視する。
+      - /spec/replicas
+    jqPathExpressions:
+      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
+      - /spec/metrics
+```
+
+
+#### ▼ repositories
+
+ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+
+
+<br>
+
+
+### argocd-cmd-params-cm
+
+#### ▼ argocd-cmd-params-cmとは
 
 ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。
 
@@ -1476,49 +1515,33 @@ data:
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cmd-params-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
 
-#### ▼ ```argocd-rbac-cm```
+<br>
+
+### argocd-rbac-cm
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを設定する。
 
-Casbinの記法を使用して、```.csv```形式で定義する。
-
-ダッシュボードやCLIでArgoCDを操作する時に使用する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
-data:
-  policy.default: role:readonly
-  policy.csv: |
-    # ユーザーに認可ポリシーを設定する。
-    p, role:admin, applications, *, */*, allow
-    # グループにロールを紐づける。
-    g, foo-group, role:admin
-```
-
 > ℹ️ 参考：
-> 
+>
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
-> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
-> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
-> - https://weseek.co.jp/tech/95/#SSO_RBAC
 
-#### ▼ ```argocd-tls-cets-cm```
+
+
+### argocd-tls-cets-cm
 
 リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
-#### ▼ ```argocd-ssh-nown-hosts-cm```
+<br>
 
-リポジトリをSSHプロコトルで監視するために、argocd-serverで必要な```known_hosts```ファイルを設定する。
+### argocd-ssh-nown-hosts-cm
+
+SSHプロトコルでリポジトリを監視する場合に、argocd-serverで必要な```known_hosts```ファイルを設定する。
 
 ```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
+
 
 ```yaml
 apiVersion: v1
@@ -1546,71 +1569,59 @@ data:
 
 <br>
 
-### data.resource.customizations
 
-#### ▼ ignoreDifferences.all
+## 09-02. argocd-rbac-cm
 
-ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
+### 認可スコープの設定
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+Casbinの記法を使用して、```.csv```形式で認可スコープを定義する。
 
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: argocd
-  name: argocd-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
-data:
-  resource.customizations.ignoreDifferences.all: |
-    jsonPointers:
-      # spec.replicas（インスタンス数）の設定値の変化を無視する。
-      - /spec/replicas
-    jqPathExpressions:
-      # .spec.metrics（ターゲット対象のメトリクス）の自動整形を無視する。
-      - /spec/metrics
-```
-
-<br>
-
-### data.repositories
-
-ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
-
-<br>
-
-### data.ssh_known_hosts
-
-#### ▼ ssh_known_hosts
-
-SSHプロトコルでリポジトリを監視する場合に、リポジトリの秘密鍵を設定する。
+ダッシュボードやCLIでArgoCDを操作する時に使用する。
 
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: argocd-rbac-cm
   namespace: argocd
-  name: argocd-ssh-known-hosts-cm
-  labels:
-    app.kubernetes.io/part-of: argocd
 data:
-  ssh_known_hosts: |
-    bitbucket.org ssh-rsa AAAAB ...
-    github.com ecdsa-sha2-nistp256 AAAAE ...
-    github.com ssh-ed25519 AAAAC ...
-    github.com ssh-rsa AAAAB ...
-    gitlab.com ecdsa-sha2-nistp256 AAAAE ...
-    gitlab.com ssh-ed25519 AAAAC ...
-    gitlab.com ssh-rsa AAAAB ...
-    ssh.dev.azure.com ssh-rsa AAAAB ...
-    vs-ssh.visualstudio.com ssh-rsa AAAAB ...
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可ポリシーを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, foo-group, role:admin
 ```
+
+> ℹ️ 参考：
+> 
+> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
+> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://weseek.co.jp/tech/95/#SSO_RBAC
 
 <br>
 
+### SSO
+
+#### ▼ アカウントに紐づける場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可ポリシーを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, [email], role:org-admin
+```
+
+<br>
 
 ## 10. 専用Role
 
@@ -1786,15 +1797,27 @@ metadata:
 
 ## 13. 専用Secret
 
-### 専用Secret
-
-#### ▼ 専用Secretとは
+### 専用Secretとは
 
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
-#### ▼ ```repo```
+<br>
+
+### argocd-secret（必須）
+
+以下の認証情報やSSL証明書を設定する。
+
+- クライアントがArgoCDにログインするためのユーザー名とパスワード
+- ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
+- Webhookでリクエストを送信するためのSSL証明書
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+
+<br>
+
+### repo
 
 ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
 
@@ -1809,8 +1832,10 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
+<br>
 
-#### ▼ ```repo-creds```
+
+### repo-creds
 
 ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
 
@@ -1824,17 +1849,9 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
 
-#### ▼ ```argocd-secret```（必須）
-
-以下の認証情報やSSL証明書を設定する。
-
-- クライアントがArgoCDにログインするためのユーザー名とパスワード
-- ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
-- Webhookでリクエストを送信するためのSSL証明書
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
-
 <br>
+
+## 13-02. argocd-secretについて
 
 ### metadata.labels
 

@@ -563,3 +563,7 @@ $ pyenv which python
 <br>
 
 ### rbenv（Ruby）
+
+調査中...
+
+<br>

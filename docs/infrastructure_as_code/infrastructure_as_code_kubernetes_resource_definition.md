@@ -56,7 +56,11 @@ apiVersion: v1
 
 #### ▼ kubectl.kubernetes.io/last-applied-configuration
 
-kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。```kubectl edit```コマンドでマニフェストを変更してしまうと、```kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
+kube-apiserverが、前回の```kubectl apply```コマンドで適用したマニフェストの設定値をJSONで割り当てる。
+
+```kubectl apply```コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと```kubectl.kubernetes.io/last-applied-configuration```キーを比較し、削除すべき部分を決定する。
+
+```kubectl edit```コマンドでマニフェストを変更してしまうと、```kubectl.kubernetes.io/last-applied-configuration```キーが変更されないため、次回の```kubectl apply```コマンドが失敗することがある。
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
 

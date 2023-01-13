@@ -691,6 +691,10 @@ spec:
 
 この場合、```kubectl edit```コマンドなどで```finalizers```キーを空配列に編集と、削除できるようになる。
 
+```bash
+$ kubectl edit pvc <PersistentVolumeClaim名>
+```
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
