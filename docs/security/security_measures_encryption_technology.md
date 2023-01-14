@@ -452,7 +452,14 @@ $ curl https://foo.example.com -v
 
 #### ▼ OP25B（Outbound Port 25 Blocking）
 
+
+調査中...
+
 #### ▼ SPF（Sender Policy Framework）
+
+
+調査中...
+
 
 <br>
 

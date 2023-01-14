@@ -108,31 +108,23 @@ repository/
 
 #### ▼ 方法
 
-```backend```オプションの```key```オプションで、下層のディレクトリ名に分割名を設定する。
+前提として、```terraform```ブロックから```backend```オプションを切り分け、```backend.tfvars```ファイルを作成する。
+
+ここに、```.tfstate```ファイルのあるバックエンドを定義するとする。
+
+1と2は必須であるが、3は状況（例：プロダクトのフェーズ、システムの規模）によって読み手が選ぶようにする。
 
 
+（１）最上層をクラウドプロバイダーで切る（リポジトリとディレクトリのいずれで区切ってもOK）。
 
-```terraform
-# @ルートモジュール
-terraform {
+（２）最下層を実行環境別で切る。 
 
-  ...
-  
-  backend "s3" {
-    
-    ...
-    
-    bucket     = "prd-foo-tfstate-bucket"
-    key        = "<クラウドプロバイダー名>/<コンポーネント名>/terraform.tfstate"
-    
-    ...
-    
-  }
-  
-  ...
-  
-}
-```
+（３）中間層を以下のいずれかで切る。プロジェクトによっては、特に中間層ディレクトリで複数の設計ポリシーを組み合わせている場合があり、一つだけ採用されているとは限らないことに注意する。
+
+- クラウドインフラのリソースの変更頻度 
+- 運用チームの責務範囲 
+- blast radius（影響範囲、障害範囲） 
+- システムコンポーネント
 
 <br>
 
@@ -153,19 +145,23 @@ tfstateファイルのコメントアウトは、バックエンド内のディ�
 ```yaml
 repository/
 ├── aws/ # AWS
-│   ├── providers.tf # /aws/terraform.tfstate
+│   ├── backend.tf # aws/terraform.tfstate
+│   ├── provider.tf
 │   ...
 │
 ├── datadog/ # Datadog
-│   ├── providers.tf # /datadog/terraform.tfstate
+│   ├── backend.tf # datadog/terraform.tfstate
+│   ├── provider.tf
 │   ...
 │
 ├── healthchecks/ # Healthchecks 
-│   ├── providers.tf # /healthchecks/terraform.tfstate
+│   ├── backend.tf # healthchecks/terraform.tfstate
+│   ├── provider.tf
 │   ...
 │ 
-└── pagerduty/ # PagerDuty
-    ├── providers.tf # /pagerduty/terraform.tfstate
+└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
+    ├── backend.tf
+    ├── provider.tf
     ...
 ```
 
@@ -193,29 +189,31 @@ tfstateファイルのコメントアウトは、バックエンド内のディ�
 ```yaml
 repository/
 ├── aws/ # AWS
+│   ├── provider.tf    
 │   ├── tes/ # テスト環境
-│   │   ├── tes.tfvars
-│   │   ├── main.tf
-│   │   ├── providers.tf # /aws/terraform.tfstate
-│   │   └── variables.tf
+│   │   ├── backend.tfvars # aws/terraform.tfstate
+│   │   ...
 │   │
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
 │
 ├── datadog/ # Datadog
-│   ├── tes/
-│   ├── stg/
-│   └── prd/
+│   ├── provider.tf
+│   ├── tes/ # テスト環境
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環境
 │
 ├── healthchecks/ # Healthchecks 
-│   ├── tes/
-│   ├── stg/
-│   └── prd/
+│   ├── provider.tf
+│   ├── tes/ # テスト環境
+│   ├── stg/ # ステージング環境
+│   └── prd/ # 本番環
 │ 
-└── pagerduty/ # PagerDuty
-    ├── tes/
-    ├── stg/
-    └── prd/
+└── pagerduty/ # PagerDuty # pagerduty/terraform.tfstate
+    ├── provider.tf
+    ├── tes/ # テスト環境
+    ├── stg/ # ステージング環境
+    └── prd/ # 本番環境
 ```
 
 <br>
@@ -250,43 +248,44 @@ tfstateファイルのコメントアウトは、バックエンド内のディ�
 ```yaml
 repository/
 ├── aws/ # AWS
+│   ├── provider.tf
 │   ├── high-freq # 高頻度リソース（サーバー系、コンテナ系、セキュリティ系、監視系など）
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # /aws/high-freq/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/high-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # /aws/low-freq/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/low-freq/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # /aws/middle-freq/terraform.tfstate
+│   │       ├── backend.tfvars # /aws/middle-freq/terraform.tfstate
 │   │       ...
 │   │
 │   ├── low-freq # 低頻度リソース（ネットワーク系、ストレージ系、など）
 │   │   ├── tes
-│   │   │   ├── providers.tf
+│   │   │   ├── backend.tfvars 
 │   │   │   ...
 │   │   │
 │   │   ├── stg
-│   │   │   ├── providers.tf
+│   │   │   ├── backend.tfvars 
 │   │   │   ...
 │   │   │
 │   │   └── prd
-│   │       ├── providers.tf
+│   │       ├── backend.tfvars 
 │   │       ...
 │   │
 │   └── middle-freq # 中頻度リソース（高頻度とも低頻度とも言えないリソース）
 │       ├── tes
-│       │   ├── providers.tf
+│       │   ├── backend.tfvars 
 │       │   ...
 │       │
 │       ├── stg
-│       │   ├── providers.tf
+│       │   ├── backend.tfvars 
 │       │   ...
 │       │
 │       └── prd
-│           ├── providers.tf
+│           ├── backend.tfvars 
 │           ...
 │    
 ├── datadog/ # Datadog
@@ -309,43 +308,44 @@ tfstateファイルのコメントアウトは、バックエンド内のディ�
 ```yaml
 repository/
 ├── aws/ # AWS
+│   ├── provider.tf
 │   ├── foo-team # fooチーム
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # /aws/foo-team/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/foo-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # /aws/bar-team/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/bar-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # /aws/baz-team/terraform.tfstate
+│   │       ├── backend.tfvars # /aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
 │   ├── bar-team # barチーム
 │   │   ├── tes
-│   │   │   ├── providers.tf
+│   │   │   ├── backend.tf
 │   │   │   ...
 │   │   │
 │   │   ├── stg
-│   │   │   ├── providers.tf
+│   │   │   ├── backend.tf
 │   │   │   ...
 │   │   │
 │   │   └── prd
-│   │       ├── providers.tf
+│   │       ├── backend.tf
 │   │       ...
 │   │
 │   └── baz-team # bazチーム
 │       ├── tes
-│       │   ├── providers.tf
+│       │   ├── backend.tf
 │       │   ...
 │       │
 │       ├── stg
-│       │   ├── providers.tf
+│       │   ├── backend.tf
 │       │   ...
 │       │
 │       └── prd
-│           ├── providers.tf
+│           ├── backend.tf
 │           ...
 │    
 ├── datadog/ # Datadog
@@ -372,17 +372,18 @@ tfstateファイルのコメントアウトは、バックエンド内のディ�
 ```yaml
 repository/
 ├── aws/ # AWS
+│   ├── provider.tf
 │   ├── 01-foo/
 │   │   ├── tes # テスト環境
-│   │   │   ├── providers.tf # /aws/foo-team/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/foo-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   ├── stg # ステージング環境
-│   │   │   ├── providers.tf # /aws/bar-team/terraform.tfstate
+│   │   │   ├── backend.tfvars # /aws/bar-team/terraform.tfstate
 │   │   │   ...
 │   │   │
 │   │   └── prd # 本番環境
-│   │       ├── providers.tf # /aws/baz-team/terraform.tfstate
+│   │       ├── backend.tfvars # /aws/baz-team/terraform.tfstate
 │   │       ...
 │   │
 │   ├── 02-bar/

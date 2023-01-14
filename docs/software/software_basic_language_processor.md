@@ -195,7 +195,7 @@ exeファイルとなる。
 
 ### 中間言語方式とは
 
-
+調査中...
 
 ### 仕組み
 
@@ -218,6 +218,8 @@ exeファイルとなる。
 <br>
 
 ### C言語とJavaのOSへの依存度比較
+
+調査中...
 
 ![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
 
