@@ -57,13 +57,13 @@ password <パスワード>
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
 
 
-#### ▼ SSH接続
+#### ▼ SSH公開鍵認証
 
-SSH接続でGitHubにログインし、クローンする。
+SSH公開鍵認証でGitHubにログインし、クローンする。
 
 GitHubの自身の公開鍵を登録する必要がある。
 
-サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。
+サーバー接続名は、SSH公開鍵認証の設定ファイル（```~/.ssh/config```）に記載されている。
 
 デフォルトでは、GitHubの接続名は、『```github.com```』になっている。
 
@@ -224,7 +224,7 @@ remote.origin.url=https://github.com/hiroki.hasegawa/example.git
 ```bash
 $ git init
 
-# SSH接続
+# SSH公開鍵認証
 $ git remote add origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
 # 登録されたGitHubリポジトリ
@@ -236,7 +236,7 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 プライベートリポジトリのURLを変更し、プッシュ/プルできるようにする。```config```ファイルに記述されたユーザー名と接続名を設定する。```1```個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。プロジェクトをクローンした時、SSH URLはデフォルトで『```git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git```』となっている。使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で設定し直す。
 
 ```bash
-# SSH接続
+# SSH公開鍵認証
 # 使用頻度の高いアカウントで所有するリポジトリ
 $ git remote set-url origin git@github.com:<組織名またはgitユーザー名>/<GitHubリポジトリ名>.git
 
@@ -341,7 +341,7 @@ $ git submodule update --remote <.gitmodulesに定義されたサブモジュー
 
 ### GitHubへの公開鍵の登録方法
 
-GitHubとSSH接続を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
+GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
 
 

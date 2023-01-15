@@ -104,13 +104,13 @@ SSL証明書を含むSecretの作成は```kube-webhook-certgen```イメージで
 
 <br>
 
-### MutatingAdmissionWebhookアドオン
+### MutatingAdmissionWebhookプラグイン
 
-#### ▼ MutatingAdmissionWebhookアドオン
+#### ▼ MutatingAdmissionWebhookプラグイン
 
 ![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_admission-review.png)
 
-MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
+MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。
 
 > ℹ️ 参考：
 >
@@ -121,7 +121,7 @@ MutatingAdmissionWebhookアドオンを使用すると、mutating-admissionス�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-MutatingWebhookConfigurationで、MutatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先情報を設定する。
+MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
 
@@ -176,11 +176,11 @@ webhooks:
 
 <br>
 
-### ValidatingAdmissionWebhookアドオン
+### ValidatingAdmissionWebhookプラグイン
 
-#### ▼ ValidatingAdmissionWebhookアドオン
+#### ▼ ValidatingAdmissionWebhookプラグイン
 
-ValidatingAdmissionWebhookアドオンを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
+ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時に、webhookサーバーにAdmissionReviewのリクエストが送信され、独自処理を発火させられる。独自処理が定義されたwebhookサーバーを別途用意しておく必要がある。
 
 > ℹ️ 参考：https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
 
@@ -188,7 +188,7 @@ ValidatingAdmissionWebhookアドオンを使用すると、validating-admission�
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_admission-controllers_webhook.png)
 
-ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookアドオンの発火条件やwebhookサーバーの宛先情報を設定する。
+ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。
 
 webhookサーバーは、Cluster内部に設置することが多い。
 

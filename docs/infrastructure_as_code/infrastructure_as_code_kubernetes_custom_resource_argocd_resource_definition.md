@@ -48,7 +48,7 @@ $ helm install <リリース名> <チャートリポジトリ名>/argo-cd -n arg
 
 #### ▼ argocdコマンドを使用して
 
-ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDのApplication自体と、Application配下のリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
+ArgoCDのApplicationを削除する。```--cascade```キーを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。反対に無効化すると、Applicationのみを単体で削除する。
 
 ```bash
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
@@ -883,7 +883,7 @@ GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間
 | 設定項目         | 説明                                                                                                                                                                                | 補足                                                                                                                                                                                                                           |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```prune```      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GtiHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。 | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                       |
-| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetes側のリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。                                                    | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                  |
+| ```selfHeal```   | Kubernetes側に変更があった場合、リポジトリ（GitHub、Helm）の状態に戻すようにする。デフォルトでは、Kubernetesリソースを変更しても、リポジトリの状態に戻すための自動Syncは実行されない。                                                       | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                                  |
 | ```allowEmpty``` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空（配下にリソースがない）状態を許可するか否かを設定する。                                                                  | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
 
 ```yaml
@@ -915,8 +915,8 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合、これを有効化しておいた方が良い。 |                                                                                                                                                                                                                             |
 | ```Validate```               |                                                                                                                                    |                                                                                                                                                                                                                             |
-| ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、Kubernetesでのリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。             | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。                | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                        |
+| ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。   | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。      | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                        |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1538,7 +1538,7 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 
 ### argocd-ssh-nown-hosts-cm
 
-SSHプロトコルでリポジトリを監視する場合に、argocd-serverで必要な```known_hosts```ファイルを設定する。
+SSH公開鍵認証でリポジトリに接続して監視する場合に、argocd-serverで必要な```known_hosts```ファイルを設定する。
 
 ```known_hosts```ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
 
@@ -1604,6 +1604,30 @@ data:
 
 ### SSO
 
+#### ▼ チームに紐づける場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可ポリシーを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, [github-org]:[github-team], role:org-admin
+  scopes: '[groups]'
+```
+
+> ℹ️ 参考：
+> 
+> - https://hatappi.blog/entry/2020/08/23/025033
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
+
+
 #### ▼ アカウントに紐づける場合
 
 ```yaml
@@ -1619,7 +1643,10 @@ data:
     p, role:admin, *, *, */*, allow
     # グループにロールを紐づける。
     g, [email], role:org-admin
+  scopes: '[email]'
 ```
+
+> ℹ️ 参考：https://hatappi.blog/entry/2020/08/23/025033
 
 <br>
 
@@ -1809,11 +1836,13 @@ ArgoCDの各種コンポーネントの機密な変数やファイルを管理�
 
 以下の認証情報やSSL証明書を設定する。
 
-- クライアントがArgoCDにログインするためのユーザー名とパスワード
+- クライアントが、任意の認証認可方法でArgoCDにログインするためのユーザー名とパスワード
 - ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
 - Webhookでリクエストを送信するためのSSL証明書
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+
+
 
 <br>
 
@@ -1851,17 +1880,17 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 
 <br>
 
-## 13-02. argocd-secretについて
+## 13-02. 認証別のargocd-repo
 
-### metadata.labels
+### ```metadata.labels```キー
 
-#### ▼ argocd.argoproj.io/secret-type
+#### ▼ ```argocd.argoproj.io/secret-type```キー（必須）
 
-設定値は```repository```とする。
+Secretタイプは```repository```とする。
 
 監視対象のプライベートなマニフェストリポジトリ、チャートレジストリ、OCIレジストリの認証情報を設定する。
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/bea379b036708bc5035b2a25d70418350bf7dba9/util/db/repository_secrets.go#L60
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
 
@@ -1889,15 +1918,15 @@ Basic認証に必要なユーザー名とパスワードを設定する。
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 ```yaml
-# 他と異なるマニフェストリポジトリ
+# foo-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-secret
+  name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+data:
   name: foo-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
@@ -1905,15 +1934,15 @@ stringData:
   username: hiroki-it
   password: *****
 ---
-# 他と異なるマニフェストリポジトリ
+# bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: bar-argocd-secret
+  name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+data:
   name: bar-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
@@ -1922,101 +1951,93 @@ stringData:
   password: *****
 ```
 
-#### ▼ SSHの場合
+#### ▼ SSH公開鍵認証の場合
 
-SSHに必要な秘密鍵を設定する。
+SSH公開鍵認証に必要な秘密鍵を設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
 
 ```yaml
-# 他と異なるマニフェストリポジトリ
+# foo-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-argocd-secret
+  name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+data:
   name: foo-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
-  # SSHに必要な秘密鍵を設定する。
+  # SSH公開鍵認証に必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIC2 ...
 ---
-# 他と異なるマニフェストリポジトリ
+# bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: bar-argocd-secret
+  name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-stringData:
+data:
   name: bar-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
-  # SSHに必要な秘密鍵を設定する。
+  # SSH公開鍵認証に必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIEp ...
 ```
 
-#### ▼ OIDCの場合（ArgoCDから直接的に送信する場合）
+<br>
+
+## 13-03. 認証認可別のargo-secret
+
+### Basic認証の場合
+
+<br>
+
+### OIDCの場合
+
+#### ▼ Issuerに直接的に接続する場合
 
 OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
 
 
-
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
 
+
 ```yaml
-# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
   name: foo-argocd-secret
   labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: foo-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/bar-manifest.git
-  type: git
+    app.kubernetes.io/name: foo-argocd-secret
+    app.kubernetes.io/part-of: argocd
+data:
+  # ArgoCDのダッシュボードのURLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
-    name: keycloak
-    clientID: foo-oidc
-    clientSecret: *****
-    requestedScopes: ["openid", "profile", "email", "groups"]
-    requestedIDTokenClaims: {"groups": {"essential": true}}
----
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: bar-argocd-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: bar-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/bar-manifest.git
-  type: git
-  # OIDCに必要なIDやトークンを設定する。
-  oidc.config: |
-    name: keycloak
-    clientID: foo-oidc
-    clientSecret: *****
-    requestedScopes: ["openid", "profile", "email", "groups"]
-    requestedIDTokenClaims: {"groups": {"essential": true}}
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
 ```
 
-#### ▼ OIDCの場合（ArgoCDから間接的に送信する場合）
+#### ▼ Dexを介してIssuerに接続する場合
 
 ArgoCDから委譲先のWebサイトに情報を直接的に送信するのではなく、ハブとしてのDexを使用する。
 
@@ -2028,40 +2049,18 @@ Dexは```dex-server```コンテナとして稼働させる。
 > - https://dexidp.io/docs/connectors/oidc/
 
 ```yaml
-# 他と異なるマニフェストリポジトリ
 apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
   name: foo-argocd-secret
   labels:
-    argocd.argoproj.io/secret-type: repository
+    app.kubernetes.io/name: foo-argocd-secret
+    app.kubernetes.io/part-of: argocd
 stringData:
-  name: foo-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/bar-manifest.git
-  type: git
-  # OIDCに必要なIDやトークンを設定する。
-  dex.config: |
-    connectors:
-      - type: github
-        id: github
-        name: GitHub SSO
-        config:
-          clientID: *****
-          clientSecret: *****
----
-# 他と異なるマニフェストリポジトリ
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: bar-argocd-secret
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  name: bar-repository # 任意のマニフェストリポジトリ名
-  url: https://github.com:hiroki-hasegawa/bar-manifest.git
-  type: git
+  # ArgoCDのダッシュボードのURLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
   # OIDCに必要なIDやトークンを設定する。
   dex.config: |
     connectors:

@@ -68,7 +68,7 @@ remote_user = ansible
 
 #### ▼ private_key_fileとは
 
-管理対象ノードへのSSH接続に使用する秘密鍵を設定する。
+管理対象ノードへのSSH公開鍵認証に使用する秘密鍵を設定する。
 
 
 

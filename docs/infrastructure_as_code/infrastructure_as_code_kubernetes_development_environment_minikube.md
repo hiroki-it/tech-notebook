@@ -280,7 +280,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 <br>
 
 
-## 03-02. Podへの接続
+## 04-02. Podへの接続
 
 ### Minikubeの制約
 
@@ -364,9 +364,21 @@ $ curl http://foo.minikube
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
 
+#### ▼ ```kubectl port-forward```コマンドを使用する場合
+
+妥協策として、Ingressを介さずに、Podに直接的に接続する。
+
+```bash
+# Podに直接的に指定する場合
+$ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート番号>
+
+# Serviceの情報を使用して、Podを指定する場合
+$ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポート番号>
+```
+
 #### ▼ NodePort Serviceを別途作成する場合
 
-妥協策として、ローカルマシンでのみ専用のNodePort Serviceを作成する。      
+妥協策として、開発環境のみで使用するNodePort Serviceを作成する。      
 
 > ℹ️ 参考：
 >

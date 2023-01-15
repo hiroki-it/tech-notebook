@@ -359,7 +359,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
             ansible_user: ubuntu
             # 管理対象ノードにログインするためのパスワード
             ansible_password: ubuntu
-            # 管理対象ノードへのSSH接続に使用する秘密鍵
+            # 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
           # webサーバー
           web:
@@ -406,7 +406,7 @@ ansible_host=192.168.100.101
 ansible_user=ubuntu
 # 管理対象ノードにログインするためのパスワード
 ansible_password=ubuntu
-# 管理対象ノードへのSSH接続に使用する秘密鍵
+# 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 # webサーバー

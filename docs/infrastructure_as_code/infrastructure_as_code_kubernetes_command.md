@@ -268,7 +268,7 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 そのため、```f```オプションで、マニフェストを指定した方が良い。
 
-同じ識別子（リソース名）のリソースが存在する場合は重複エラーになる。
+同じ識別子（リソース名）のKubernetesリソースが存在する場合は重複エラーになる。
 
 
 
@@ -534,7 +534,7 @@ $ kubectl drain <Node名>
 > ℹ️ 参考：https://github.com/kubernetes/kubernetes/issues/24913
 
 ```bash
-$ kubectl edit <リソースの種類> <Pod以外のリソース名>
+$ kubectl edit <リソースの種類> <Pod以外のKubernetesリソース名>
 ```
 
 ```bash
@@ -1542,7 +1542,7 @@ foo-pod   5m           104Mi
 
 Podのコンテナに関して、ハードウェアリソースの消費量を取得する。
 
-コンテナのリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
+コンテナのKubernetesリソース使用量を足した値が、Pod内で使用するリソース消費量になる。
 
 
 

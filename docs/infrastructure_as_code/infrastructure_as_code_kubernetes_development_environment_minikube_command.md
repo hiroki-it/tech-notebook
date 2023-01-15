@@ -310,6 +310,45 @@ Server Version: version.Info{
 
 <br>
 
+### node
+
+#### ▼ add
+
+Nodeを```1```個だけ追加する。
+
+#### ▼ --control-plane
+
+コントロールプレーンNodeを追加する。
+
+```bash
+$ minikube node add --control-plane
+```
+
+#### ▼ --worker
+
+ワーカーNodeを追加する。
+
+
+```bash
+$ minikube node add --worker
+```
+
+
+追加したワーカーNodeに```metadata.labeles```キーを追加すれば、node affinityやnode selectorを検証できる。
+
+```bash
+# ArgoCDを作成するワーカーNodeの場合
+$ kubectl label node minikube-m02 node-type=deploy
+
+# IngressやIngressGatewayを作成するワーカーNodeの場合
+$ kubectl label node minikube-m02 node-type=ingress
+```
+
+> ℹ️ 参考：https://qiita.com/zaburo/items/efd7315161281d9822ed
+
+
+<br>
+
 ### mount
 
 #### ▼ mountとは
@@ -406,7 +445,7 @@ $ minikube ip
 *.*.*.*
 ```
 
-ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できる。
+ちなみに、```minikube service```コマンドを使用せずに、```ssh```コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
 
 
 
@@ -415,7 +454,7 @@ $ minikube ip
 ```bash
 $ minikube ssh
 
-# 仮想環境の中
+# Nodeの中
 $ curl -X GET http://*.*.*.*:57761
 ```
 
@@ -465,7 +504,7 @@ http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Service
 
 #### ▼ sshとは
 
-仮想環境にSSH接続を行う。
+仮想環境内のNodeにSSH公開鍵認証で接続する。
 
 
 
@@ -475,7 +514,7 @@ http://<Minikube仮想サーバー内のNodeのIPアドレス>:<NodePort Service
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
 ```bash
-# Dockerドライバーによる仮想環境の場合
+# DockerドライバーによるNodeの場合
 $ minikube ssh  
 
 # ワーキングディレクトリ
@@ -487,7 +526,7 @@ docker@minikube:~$ sudo apt update -y && apt --help
 ```
 
 ```bash
-# VirtualBoxドライバーによる仮想環境の場合
+# VirtualBoxドライバーによるNodeの場合
 $ minikube ssh
                          _             _            
             _         _ ( )           ( )           
@@ -503,7 +542,7 @@ $ pwd
 ```
 
 ```bash
-# HyperKitドライバーによる仮想環境の場合
+# HyperKitドライバーによるNodeの場合
 $ minikube ssh   
                          _             _            
             _         _ ( )           ( )           
@@ -531,14 +570,14 @@ yes
 zcat
 ```
 
-仮想環境の中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
+Nodeの中では```docker```コマンドを実行でき、コンテナイメージもデバッグできる。
 
 
 
 ```bash
 $ minikube ssh  
 
-# 仮想環境の中
+# Nodeの中
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
 
 # コンテナの中
@@ -547,7 +586,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 
 #### ▼ ``--``（ハイフン2つ）
 
-仮想環境にSSH接続を実行し、任意のコマンドを実行する。
+NodeにSSH公開鍵認証で接続し、任意のコマンドを実行する。
 
 
 
@@ -767,7 +806,11 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikub
 
 #### ▼ tunnelとは
 
-LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐づける。
+
+紐付けられたLoadBalancer Serviceには『External Endpoints（```http://127.0.0.1:80```）』が割り当てられ、ここからLoadBalancer Serviceにアクセスできるようになる。
+
+Node外からPodに通信できるようになる。```minikube ssh```コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 > ℹ️ 参考：
 >
