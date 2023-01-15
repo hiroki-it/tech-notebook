@@ -3732,6 +3732,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
+type: Opaque
 data:
   username: ***** # base64方式でエンコードされた値
   password: *****
@@ -3748,6 +3749,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
+type: Opaque
 data:
   enableFoo: "*****"
   number: "*****"
@@ -3764,6 +3766,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
+type: Opaque
 data:
   # SSL証明書
   foo.crt: |
@@ -3830,6 +3833,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: foo-secret
+type: Opaque
 data:
   config.yaml: |
     apiUrl: "https://my.api.com/api/v1"

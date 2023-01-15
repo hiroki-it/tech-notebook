@@ -1587,7 +1587,7 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可ポリシーを設定する。
+    # ユーザーに認可スコープを設定する。
     p, role:admin, *, *, */*, allow
     # グループにロールを紐づける。
     g, foo-group, role:admin
@@ -1615,7 +1615,7 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可ポリシーを設定する。
+    # ユーザーに認可スコープを設定する。
     p, role:admin, *, *, */*, allow
     # グループにロールを紐づける。
     g, [github-org]:[github-team], role:org-admin
@@ -1639,7 +1639,7 @@ metadata:
 data:
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可ポリシーを設定する。
+    # ユーザーに認可スコープを設定する。
     p, role:admin, *, *, */*, allow
     # グループにロールを紐づける。
     g, [email], role:org-admin
@@ -1926,7 +1926,7 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-data:
+stringData:
   name: foo-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
@@ -1942,7 +1942,7 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-data:
+stringData:
   name: bar-repository # 任意のマニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
@@ -1968,7 +1968,7 @@ metadata:
   name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-data:
+stringData:
   name: foo-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
@@ -1984,7 +1984,7 @@ metadata:
   name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
-data:
+stringData:
   name: bar-repository # 任意のマニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
@@ -1993,84 +1993,6 @@ data:
     MIIEp ...
 ```
 
-<br>
-
-## 13-03. 認証認可別のargo-secret
-
-### Basic認証の場合
-
-<br>
-
-### OIDCの場合
-
-#### ▼ Issuerに直接的に接続する場合
-
-OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
-
-ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
-
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-secret
-  labels:
-    app.kubernetes.io/name: foo-argocd-secret
-    app.kubernetes.io/part-of: argocd
-data:
-  # ArgoCDのダッシュボードのURLを設定する。
-  # 開発環境では、https://localhost:8080
-  url: <URL>
-  # OIDCに必要なIDやトークンを設定する。
-  oidc.config: |
-    connectors:
-      - type: github
-        id: github
-        name: GitHub SSO
-        config:
-          clientID: *****
-          clientSecret: *****
-```
-
-#### ▼ Dexを介してIssuerに接続する場合
-
-ArgoCDから委譲先のWebサイトに情報を直接的に送信するのではなく、ハブとしてのDexを使用する。
-
-Dexは```dex-server```コンテナとして稼働させる。
-
-> ℹ️ 参考：
-> 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
-> - https://dexidp.io/docs/connectors/oidc/
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-secret
-  labels:
-    app.kubernetes.io/name: foo-argocd-secret
-    app.kubernetes.io/part-of: argocd
-stringData:
-  # ArgoCDのダッシュボードのURLを設定する。
-  # 開発環境では、https://localhost:8080
-  url: <URL>
-  # OIDCに必要なIDやトークンを設定する。
-  dex.config: |
-    connectors:
-      - type: github
-        id: github
-        name: GitHub SSO
-        config:
-          clientID: *****
-          clientSecret: *****
-```
 <br>
 
 ### チャートリポジトリの場合
@@ -2102,7 +2024,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-secret
+  name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
@@ -2117,7 +2039,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: bar-secret
+  name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
@@ -2162,7 +2084,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: foo-secret
+  name: foo-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
@@ -2178,7 +2100,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   namespace: argocd
-  name: bar-secret
+  name: bar-argocd-repo
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
@@ -2200,6 +2122,103 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 
 <br>
 
+
+## 13-03. 認証認可別のargo-secret
+
+### Basic認証の場合
+
+Basic認証の場合、ArgoCDが```argocd-initial-admin-secret```というSecretを自動的に作成してくれる。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: argocd-initial-admin-secret
+type: Opaque
+data:
+  password: *****
+```
+
+<br>
+
+### OIDCの場合
+
+#### ▼ Issuerに直接的に接続する場合
+
+OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
+
+ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-secret
+  labels:
+    app.kubernetes.io/name: foo-argocd-secret
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+```
+
+#### ▼ Dexを介してIssuerに接続する場合
+
+ArgoCDから委譲先のWebサイトに情報を直接的に送信するのではなく、ハブとしてのDexを使用する。
+
+Dexは```dex-server```コンテナとして稼働させる。
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
+> - https://dexidp.io/docs/connectors/oidc/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-secret
+  labels:
+    app.kubernetes.io/name: foo-argocd-secret
+    app.kubernetes.io/part-of: argocd
+type: Opaque
+data:
+  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
+  # OIDCに必要なIDやトークンを設定する。
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+```
+<br>
 
 ## 14. 専用ServiceAccount
 
