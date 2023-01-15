@@ -1417,8 +1417,6 @@ data:
 
 ## 09. 専用ConfigMap
 
-### 専用ConfigMapとは
-
 ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
 
 ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
@@ -1427,14 +1425,17 @@ ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes
 
 <br>
 
-### argocd-cm（必須）
+## 09-02. argocd-cm（必須）
 
-#### ▼ argocd-cmとは
+### argocd-cmとは
 
 ArgoCDの各コンポーネントで共通する値を設定する。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
 
+<br>
+
+### カスタムリソースの設定
 
 #### ▼ resource.customizations.ignoreDifferences.all
 
@@ -1460,7 +1461,6 @@ data:
       - /spec/metrics
 ```
 
-
 #### ▼ repositories
 
 ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。
@@ -1470,12 +1470,92 @@ ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止�
 
 <br>
 
+### OIDCの設定
 
-### argocd-cmd-params-cm
+#### ▼ 委譲先Webサイトに直接的に接続する場合
 
-#### ▼ argocd-cmd-params-cmとは
+ArgoCDから認証の委譲先のWebサイトに情報を直接的に接続する。
+
+OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
+
+ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+data:
+  admin.enabled: "true"
+  # OIDCに必要なIDやトークンを設定する。
+  oidc.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
+```
+
+
+#### ▼ Dexを介して委譲先Webサイトに接続する場合
+
+ArgoCDから認証の委譲先のWebサイトに直接的に接続するのではなく、ハブとしてのDexを使用する。
+
+Dexは```dex-server```コンテナとして稼働させる。
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
+> - https://dexidp.io/docs/connectors/oidc/
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: argocd
+  name: argocd-cm
+data:
+  admin.enabled: "true"
+  # OIDCに必要なIDやトークンを設定する。
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub SSO
+        config:
+          clientID: *****
+          clientSecret: *****
+  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # 開発環境では、https://localhost:8080
+  url: <URL>
+```
+
+<br>
+
+
+## 09-03. argocd-cmd-params-cm
+
+### argocd-cmd-params-cmとは
 
 ArgoCDの各コンポーネント（application-controller、dex-server、redis-server、repo-server）で個別に使用する値を設定する。
+
+<br>
+
+### 設定
 
 ```yaml
 apiVersion: v1
@@ -1517,7 +1597,7 @@ data:
 
 <br>
 
-### argocd-rbac-cm
+## 09-04. argocd-rbac-cm
 
 ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを設定する。
 
@@ -1526,17 +1606,101 @@ ArgoCDを構成するKubernetesリソースにアクセスするための認可�
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
 
+<br>
+
+### 認可スコープの設定
+
+Casbinの記法を使用して、```.csv```形式で認可スコープを定義する。
+
+ダッシュボードやCLIでArgoCDを操作する時に使用する。
+
+<br>
+
+### ArgoCDで認証する場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可スコープを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, foo-group, role:admin
+```
+
+> ℹ️ 参考：
+>
+> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
+> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+> - https://weseek.co.jp/tech/95/#SSO_RBAC
+
+<br>
+
+### ArgoCDの認証を外部に委譲する場合（SSOの場合）
+
+#### ▼ チームに紐づける場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可スコープを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, [github-org]:[github-team], role:org-admin
+  scopes: '[groups]'
+```
+
+> ℹ️ 参考：
+>
+> - https://hatappi.blog/entry/2020/08/23/025033
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 
 
-### argocd-tls-cets-cm
+#### ▼ アカウントに紐づける場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # ユーザーに認可スコープを設定する。
+    p, role:admin, *, *, */*, allow
+    # グループにロールを紐づける。
+    g, [email], role:org-admin
+  scopes: '[email]'
+```
+
+> ℹ️ 参考：https://hatappi.blog/entry/2020/08/23/025033
+
+<br>
+
+## 09-05. argocd-tls-cets-cm
 
 リポジトリをHTTPSプロコトルで監視するために、argocd-serverで必要なSSL証明書を設定する。
 
 > ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-tls-certs-cm.yaml
 
+
+
 <br>
 
-### argocd-ssh-nown-hosts-cm
+## 09-06. argocd-ssh-nown-hosts-cm
 
 SSH公開鍵認証でリポジトリに接続して監視する場合に、argocd-serverで必要な```known_hosts```ファイルを設定する。
 
@@ -1569,86 +1733,6 @@ data:
 
 <br>
 
-
-## 09-02. argocd-rbac-cm
-
-### 認可スコープの設定
-
-Casbinの記法を使用して、```.csv```形式で認可スコープを定義する。
-
-ダッシュボードやCLIでArgoCDを操作する時に使用する。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
-data:
-  policy.default: role:readonly
-  policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
-    # グループにロールを紐づける。
-    g, foo-group, role:admin
-```
-
-> ℹ️ 参考：
-> 
-> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
-> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
-> - https://weseek.co.jp/tech/95/#SSO_RBAC
-
-<br>
-
-### SSO
-
-#### ▼ チームに紐づける場合
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
-data:
-  policy.default: role:readonly
-  policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
-    # グループにロールを紐づける。
-    g, [github-org]:[github-team], role:org-admin
-  scopes: '[groups]'
-```
-
-> ℹ️ 参考：
-> 
-> - https://hatappi.blog/entry/2020/08/23/025033
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
-
-
-#### ▼ アカウントに紐づける場合
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-rbac-cm
-  namespace: argocd
-data:
-  policy.default: role:readonly
-  policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
-    # グループにロールを紐づける。
-    g, [email], role:org-admin
-  scopes: '[email]'
-```
-
-> ℹ️ 参考：https://hatappi.blog/entry/2020/08/23/025033
-
-<br>
 
 ## 10. 専用Role
 
@@ -1824,63 +1908,33 @@ metadata:
 
 ## 13. 専用Secret
 
-### 専用Secretとは
-
 ArgoCDの各種コンポーネントの機密な変数やファイルを管理する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
 <br>
 
-### argocd-secret（必須）
 
-以下の認証情報やSSL証明書を設定する。
-
-- クライアントが、任意の認証認可方法でArgoCDにログインするためのユーザー名とパスワード
-- ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
-- Webhookでリクエストを送信するためのSSL証明書
-
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+## 13-02. argocd-repo
 
 
-
-<br>
-
-### repo
+### argocd-repoとは
 
 ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
 
-```repo-creds```とは異なり、```1```個の認証情報で```1```個のリポジトリにアクセスできるようにする。
+```argocd-repo-creds```とは異なり、```1```個の認証情報で```1```個のリポジトリにアクセスできるようにする。
 
 
 パブリックリポジトリの場合は、不要である。
 
 
 > ℹ️ 参考：
-> 
+>
 > - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repositories.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
 
 <br>
 
-
-### repo-creds
-
-ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
-
-```repo```とは異なり、```1```個の認証情報で複数にリポジトリにアクセスできるようにする。
-
-パブリックリポジトリの場合は、不要である。
-
-
-> ℹ️ 参考：
-> 
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
-
-<br>
-
-## 13-02. 認証別のargocd-repo
 
 ### ```metadata.labels```キー
 
@@ -1927,7 +1981,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-repository # 任意のマニフェストリポジトリ名
+  name: foo-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/foo-manifest.git
   type: git
   # Basic認証に必要なユーザー名とパスワードを設定する。
@@ -1943,7 +1997,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: bar-repository # 任意のマニフェストリポジトリ名
+  name: bar-repository # マニフェストリポジトリ名
   url: https://github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # Basic認証に必要なユーザー名とパスワードを設定する。
@@ -1969,7 +2023,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-repository # 任意のマニフェストリポジトリ名
+  name: foo-repository # マニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
   # SSH公開鍵認証に必要な秘密鍵を設定する。
@@ -1985,7 +2039,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: bar-repository # 任意のマニフェストリポジトリ名
+  name: bar-repository # マニフェストリポジトリ名
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
   # SSH公開鍵認証に必要な秘密鍵を設定する。
@@ -2019,7 +2073,7 @@ Basic認証に必要なユーザー名とパスワードを設定する。
 
 
 ```yaml
-# 他と異なるチャートリポジトリ
+# foo-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -2028,13 +2082,13 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-repository # 任意のチャートリポジトリ名
+  name: foo-repository # チャートリポジトリ名
   url: https://github.com/hiroki.hasegawa/foo-charts # チャートリポジトリのURL
   type: helm
   username: foo
   password: bar
 ---
-# 他と異なるチャートリポジトリ
+# bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -2043,7 +2097,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: bar-repository # 任意のチャートリポジトリ名
+  name: bar-repository # チャートリポジトリ名
   url: https://github.com/hiroki.hasegawa/bar-charts # チャートリポジトリのURL
   type: helm
   username: baz
@@ -2079,7 +2133,7 @@ Basic認証に必要なユーザー名とパスワードを設定する。
 
 
 ```yaml
-# 他と異なるOCIリポジトリ
+# foo-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -2088,14 +2142,14 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: foo-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  name: foo-oci-repository # OCIリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: foo
   password: bar
   enableOCI: "true" # OCIリポジトリを有効化する。
 ---
-# 他と異なるOCIリポジトリ
+# bar-repositoryを監視するためのargocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -2104,7 +2158,7 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:
-  name: bar-oci-repository # 他とは異なるOCIレジストリ内のリポジトリ名
+  name: bar-oci-repository # OCIリポジトリ名
   url: <アカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com # OCIリポジトリのURL
   type: helm
   username: baz
@@ -2123,11 +2177,45 @@ AWS ECRのように認証情報に有効期限がある場合は、認証情報�
 <br>
 
 
-## 13-03. 認証認可別のargo-secret
 
-### Basic認証の場合
+## 13-03. argocd-repo-creds
 
-Basic認証の場合、ArgoCDが```argocd-initial-admin-secret```というSecretを自動的に作成してくれる。
+### argocd-repo-credsとは
+
+ArgoCDがプライベートリポジトリを監視する時に必要な認証情報を設定する。
+
+```argocd-repo```とは異なり、```1```個の認証情報で複数にリポジトリにアクセスできるようにする。
+
+パブリックリポジトリの場合は、不要である。
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+
+<br>
+
+## 13-04. argo-secret（必須）
+
+
+### argocd-secretとは
+
+以下の認証情報やSSL証明書を設定する。
+
+- クライアントが、任意の認証認可方法でArgoCDにログインするためのユーザー名とパスワード
+- ArgoCDがapiserverにリクエストを送信するためのSSL証明書と秘密鍵
+- Webhookでリクエストを送信するためのSSL証明書
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-secret.yaml
+
+<br>
+
+### 初期パスワードの設定
+
+ArgoCDが```argocd-initial-admin-secret```というSecretを自動的に作成してくれる。
+
+これに、初期パスワードが設定されている。
 
 ```yaml
 apiVersion: v1
@@ -2142,83 +2230,6 @@ data:
 
 <br>
 
-### OIDCの場合
-
-#### ▼ Issuerに直接的に接続する場合
-
-OIDCに必要なクライアントIDやクライアントシークレット（例：KeyCloakで発行されるもの、GitHubでOAuthAppsを作成すると発行される）を設定する。
-
-ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。
-
-
-> ℹ️ 参考：
-> 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
-
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-secret
-  labels:
-    app.kubernetes.io/name: foo-argocd-secret
-    app.kubernetes.io/part-of: argocd
-type: Opaque
-data:
-  # ArgoCDのダッシュボードのNode外公開URLを設定する。
-  # 開発環境では、https://localhost:8080
-  url: <URL>
-  # OIDCに必要なIDやトークンを設定する。
-  oidc.config: |
-    connectors:
-      - type: github
-        id: github
-        name: GitHub SSO
-        config:
-          clientID: *****
-          clientSecret: *****
-```
-
-#### ▼ Dexを介してIssuerに接続する場合
-
-ArgoCDから委譲先のWebサイトに情報を直接的に送信するのではなく、ハブとしてのDexを使用する。
-
-Dexは```dex-server```コンテナとして稼働させる。
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
-> - https://dexidp.io/docs/connectors/oidc/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: argocd
-  name: foo-argocd-secret
-  labels:
-    app.kubernetes.io/name: foo-argocd-secret
-    app.kubernetes.io/part-of: argocd
-type: Opaque
-data:
-  # ArgoCDのダッシュボードのNode外公開URLを設定する。
-  # 開発環境では、https://localhost:8080
-  url: <URL>
-  # OIDCに必要なIDやトークンを設定する。
-  dex.config: |
-    connectors:
-      - type: github
-        id: github
-        name: GitHub SSO
-        config:
-          clientID: *****
-          clientSecret: *****
-```
-<br>
 
 ## 14. 専用ServiceAccount
 
