@@ -1362,9 +1362,9 @@ data:
     - when: app.status.operationState.phase in ['Error', 'Failed']
       send: [app-sync-failed, github-commit-status]
   trigger.on-deployed: |
-    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-    oncePer: app.status.sync.revision
-    send: [app-sync-succeeded]
+    - when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+      oncePer: app.status.sync.revision
+      send: [app-sync-succeeded]
 ```
 
 #### ▼ data.service
@@ -1504,6 +1504,8 @@ data:
         config:
           clientID: *****
           clientSecret: *****
+        # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
+        redirectURI: https://example.com/api/dex
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080
   url: <URL>
@@ -1539,6 +1541,8 @@ data:
         config:
           clientID: *****
           clientSecret: *****
+        # 委譲先のWebサイトがOIDCのリクエストを待ち受けるURLを設定する。
+        redirectURI: https://example.com/api/dex
   # ArgoCDのダッシュボードのNode外公開URLを設定する。
   # 開発環境では、https://localhost:8080
   url: <URL>
@@ -1599,7 +1603,7 @@ data:
 
 ## 09-04. argocd-rbac-cm
 
-ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを設定する。
+ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐づける。
 
 > ℹ️ 参考：
 >
@@ -1614,9 +1618,26 @@ Casbinの記法を使用して、```.csv```形式で認可スコープを定義�
 
 ダッシュボードやCLIでArgoCDを操作する時に使用する。
 
+| 記号    | 説明                 |
+|---------|--------------------|
+| ```p``` | ロールに認可スコープを紐付ける。 |
+| ```g``` | グループにロールを紐付ける。     |
+
+
+> ℹ️ 参考：
+> 
+> - https://stackoverflow.com/a/73784100
+> - https://github.com/argoproj/argo-cd/blob/master/assets/model.conf
+
 <br>
 
 ### ArgoCDで認証する場合
+
+以下のように、ロールと認可スコープを紐づける。
+
+- ```admin```ロールに全ての認可スコープ
+- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -1625,12 +1646,19 @@ metadata:
   name: argocd-rbac-cm
   namespace: argocd
 data:
+  # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
+    # ロールに認可スコープを紐づける。
+    p, role:admin, *, *, *, allow
+    p, role:app, *, *, app/*, allow
+    p, role:infra, *, *, infra/*, allow
+    
     # グループにロールを紐づける。
-    g, foo-group, role:admin
+    g, admin, role:admin
+    g, app-team, role:app
+    g, infra-team, role:infra
+  scopes: '[groups]'
 ```
 
 > ℹ️ 参考：
@@ -1642,9 +1670,15 @@ data:
 
 <br>
 
-### ArgoCDの認証を外部に委譲する場合（SSOの場合）
+### ArgoCDの認証を外部Webサイトに委譲する場合（SSOの場合）
 
-#### ▼ チームに紐づける場合
+#### ▼ 外部Webサイトのチームに紐づける場合
+
+以下のように、ロールと認可スコープを紐づける。
+
+- ```admin```ロールに全ての認可スコープ
+- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -1653,12 +1687,18 @@ metadata:
   name: argocd-rbac-cm
   namespace: argocd
 data:
+  # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
+    # ロールに認可スコープを紐づける。
+    p, role:admin, *, *, *, allow
+    p, role:app, *, *, app/*, allow
+    p, role:infra, *, *, infra/*, allow
+    
     # グループにロールを紐づける。
-    g, [github-org]:[github-team], role:org-admin
+    g, example-org.github.com:admin, role:admin
+    g, example-org.github.com:app-team, role:app
+    g, example-org.github.com:infra-team, role:infra
   scopes: '[groups]'
 ```
 
@@ -1666,9 +1706,16 @@ data:
 >
 > - https://hatappi.blog/entry/2020/08/23/025033
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
 
-#### ▼ アカウントに紐づける場合
+#### ▼ 外部Webサイトのメールアドレスに紐づける場合
+
+以下のように、ロールと認可スコープを紐づける。
+
+- ```admin```ロールに全ての認可スコープ
+- ```app```ロールに```app```プロジェクト配下の全ての認可スコープ
+- ```infra```ロールに```infra```プロジェクト配下の全ての認可スコープ
 
 ```yaml
 apiVersion: v1
@@ -1677,16 +1724,25 @@ metadata:
   name: argocd-rbac-cm
   namespace: argocd
 data:
+  # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ユーザーに認可スコープを設定する。
-    p, role:admin, *, *, */*, allow
+    # ロールに認可スコープを紐づける。
+    p, role:admin, *, *, *, allow
+    p, role:app, *, *, app/*, allow
+    p, role:infra, *, *, infra/*, allow
+    
     # グループにロールを紐づける。
-    g, [email], role:org-admin
+    g, admin@gmail.com, role:admin
+    g, app-team@gmail.com, role:app
+    g, infra-team@gmail.com, role:infra
   scopes: '[email]'
 ```
 
-> ℹ️ 参考：https://hatappi.blog/entry/2020/08/23/025033
+> ℹ️ 参考：
+> 
+> - https://hatappi.blog/entry/2020/08/23/025033
+> - https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
 
 <br>
 
