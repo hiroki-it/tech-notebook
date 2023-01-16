@@ -1162,7 +1162,7 @@ Kubernetesリソースに関する情報を設定する。
 
 | キー               | 値の例                             | 説明                             |
 |------------------|-----------------------------------|--------------------------------|
-| ```/createdby``` | ```aws-ebs-dynamic-provisioner``` | Kubernetesリソースを作成したツールを設定する。 |
+| ```kubernetes.io/createdby``` | ```aws-ebs-dynamic-provisioner``` | Kubernetesリソースを作成したツールを設定する。 |
 
 
 #### ▼ ```pv.kubernetes.io```キー
@@ -1171,8 +1171,8 @@ PersistentVolumeに関する情報を設定する。
 
 | キー                         | 値の例                       | 説明                              |
 |----------------------------|-----------------------------|-----------------------------------|
-| ```/bound-by-controller``` | ```yes```                   |                                   |
-| ```/provisioned-by```      | ```kubernetes.io/aws-ebs``` | そのPersistVolumeを作成したツールを設定する。 |
+| ```pv.kubernetes.io/bound-by-controller``` | ```yes```                   |                                   |
+| ```pv.kubernetes.io/provisioned-by```      | ```kubernetes.io/aws-ebs``` | そのPersistVolumeを作成したツールを設定する。 |
 
 
 
@@ -1182,8 +1182,8 @@ PersistentVolumeClaimに関する情報を設定する。
 
 | キー                         | 値の例                                            | 説明                                                                                                                                                                                                   |
 |----------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```/storage-provisioner``` | ```kubernetes.io/aws-ebs```                      | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                           |
-| ```/selected-node```       | ```ip-*-*-*-*.ap-northeast-1.compute.internal``` | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、```N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector```というエラーになる。 |
+| ```volume.kubernetes.io/storage-provisioner``` | ```kubernetes.io/aws-ebs```                      | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                           |
+| ```volume.kubernetes.io/selected-node```       | ```ip-*-*-*-*.ap-northeast-1.compute.internal``` | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、```N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector```というエラーになる。 |
 
 <br>
 
@@ -1195,17 +1195,17 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 
 | キー                | 値の例                                | 説明                              |
 |-------------------|--------------------------------------|----------------------------------|
-| ```/app```        | ```foo```、```foo-service```          | マイクロサービス名                        |
-| ```/component```  | ```database```                       | コンテナの役割名                       |
-| ```/created-by``` | ```kube-controller-manager```        | このKubernetesリソースを作成したリソースやユーザー  |
-| ```/env```        | ```prd```、```stg```、```dev```        | アプリケーションの実行環境名               |
-| ```/instance```   | ```mysql-12345```                    | マイクロサービスコンテナのインスタンス名             |
-| ```/managed-by``` | ```helm```、```foo-operator```        | アプリケーションの管理ツール名                |
-| ```/name```       | ```mysql```                          | マイクロサービスを構成するコンテナのベンダー名        |
-| ```/nodegrop```   | ```batch```、```ingress```、```mesh``` | コンテナを持つPodのスケジューリング先とするNodeグループ |
-| ```/part-of```    | ```bar```                            | マイクロサービス全体のアプリケーション名           |
-| ```/type```       | ```host```（PVのマウント対象）              | リソースの設定方法の種類名              |
-| ```/version```    | ```5.7.21```                         | マイクロサービスのリリースバージョン名              |
+| ```app.kubernetes.io/app```        | ```foo```、```foo-service```          | マイクロサービス名を設定する。                        |
+| ```app.kubernetes.io/component```  | ```database```                       | コンテナの役割名を設定する。                       |
+| ```app.kubernetes.io/created-by``` | ```kube-controller-manager```        | このKubernetesリソースを作成したリソースやユーザーを設定する。  |
+| ```app.kubernetes.io/env```        | ```prd```、```stg```、```dev```        | アプリケーションの実行環境名を設定する。               |
+| ```app.kubernetes.io/instance```   | ```mysql-12345```                    | マイクロサービスコンテナのインスタンス名を設定する。             |
+| ```app.kubernetes.io/managed-by``` | ```helm```、```foo-operator```        | アプリケーションの管理ツール名を設定する。                |
+| ```app.kubernetes.io/name```       | ```mysql```                          | マイクロサービスを構成するコンテナのベンダー名を設定する。        |
+| ```app.kubernetes.io/nodegrop```   | ```batch```、```ingress```、```mesh``` | コンテナを持つPodのスケジューリング先とするNodeグループを設定する。 |
+| ```app.kubernetes.io/part-of```    | ```bar```                            | マイクロサービス全体のアプリケーション名を設定する。           |
+| ```app.kubernetes.io/type```       | ```host```（PVのマウント対象）              | リソースの設定方法の種類名を設定する。              |
+| ```app.kubernetes.io/version```    | ```5.7.21```                         | マイクロサービスのリリースバージョン名を設定する。              |
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
@@ -1216,7 +1216,7 @@ ArgoCDを使用している場合に、ArgoCDの情報をを設定する。
 
 | キー              | 値の例                 | 説明                                      |
 |-----------------|-----------------------|-----------------------------------------|
-| ```/instance``` | ```foo-application``` | Kubernetesリソースを管理するArgoCDのApplication名 |
+| ```argocd.argoproj.io/instance``` | ```foo-application``` | Kubernetesリソースを管理するArgoCDのApplication名を設定する。 |
 
 #### ▼ ```helm.sh```キー
 
@@ -1224,7 +1224,7 @@ Helmを使用している場合に、Helmの情報を設定する。
 
 | キー           | 値の例           | 説明           |
 |--------------|-----------------|--------------|
-| ```/chart``` | ```foo-chart``` | 使用しているチャート名 |
+| ```helm.sh/chart``` | ```foo-chart``` | 使用しているチャート名を設定する。 |
 
 
 #### ▼ ```kubernetes.io```キー
@@ -1235,9 +1235,18 @@ Kubernetesリソースに関する情報を設定する。
 
 | キー              | 値の例                                                      | 説明            |
 |-----------------|------------------------------------------------------------|-----------------|
-| ```/arch```     | ```amd64```                                                | NodeのCPUアーキテクチャ |
-| ```/hostname``` | ```ip-*-*-*-*.ap-northeast-1.compute.internal```（AWSの場合） | Nodeのホスト名      |
-| ```/os```       | ```linux```                                                | NodeのOS         |
+| ```kubernetes.io/arch```     | ```amd64```                                                | NodeのCPUアーキテクチャを設定する。 |
+| ```kubernetes.io/hostname``` | ```ip-*-*-*-*.ap-northeast-1.compute.internal```（AWSの場合） | Nodeのホスト名を設定する。      |
+| ```kubernetes.io/os```       | ```linux```                                                | NodeのOSを設定する。         |
+
+
+#### ▼ ```node-role.kubernetes.io```キー
+
+Nodeのtaintを設定する。
+
+| キー            | 値の例                     | 説明                     |
+|---------------|-------------------------|------------------------|
+| ```node-role.kubernetes.io/master``` | ```NoSchedule```、```PreferNoSchedule``` | Podのスケジューリングのルールを設定する。 |
 
 
 #### ▼ ```topology.kubernetes.io```キー
@@ -1245,10 +1254,10 @@ Kubernetesリソースに関する情報を設定する。
 Nodeに関する情報を設定する。
 
 
-| キー            | 値の例                           | 説明               |
-|---------------|-------------------------------|------------------|
-| ```/region``` | ```ap-northeast-1```（AWSの場合）  | Nodeが稼働しているリージョン |
-| ```/zone```   | ```ap-northeast-1a```（AWSの場合） | Nodeが稼働しているAZ    |
+| キー            | 値の例                           | 説明                   |
+|---------------|-------------------------------|----------------------|
+| ```topology.kubernetes.io/region``` | ```ap-northeast-1```（AWSの場合）  | Nodeが稼働しているリージョンを設定する。 |
+| ```topology.kubernetes.io/zone```   | ```ap-northeast-1a```（AWSの場合） | Nodeが稼働しているAZを設定する。        |
 
 
 <br>

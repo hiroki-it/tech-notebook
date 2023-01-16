@@ -37,13 +37,16 @@ $ istioctl install --set profile=demo
 $ istioctl install --manifests=foo-chart
 ```
 
+執筆時点（2023/01/16）でIstioOperatorは非推奨になっている。
+
+> ℹ️ 参考：https://www.solo.io/blog/3-most-common-ways-install-istio/
+
 #### ▼ GCRから（ユーザー定義）
 
 プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 ```yaml
 # istio-operator.yamlファイル
@@ -59,6 +62,9 @@ spec:
 ```bash
 $ kubectl apply -f istio-operator.yaml
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+
 
 <br>
 

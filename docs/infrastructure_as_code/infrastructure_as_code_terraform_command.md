@@ -742,6 +742,7 @@ $ terraform state pull > <tfstateファイル名>
 
 ```bash
 # 関数を使用せずに定義されている場合
+$ terraform state rm --dry-run aws_instance.bastion
 $ terraform state rm aws_instance.bastion
 
 Removed aws_instance.bastion
@@ -750,6 +751,7 @@ Successfully removed 1 resource instance(s).
 
 ```bash
 # moduleブロックを使用して定義されている場合
+$ terraform state rm --dry-run module.ec2.aws_instance.bastion
 $ terraform state rm module.ec2.aws_instance.bastion
 
 Removed module.ec2.aws_instance.bastion
@@ -758,34 +760,43 @@ Successfully removed 1 resource instance(s).
 
 ```bash
 # for_each関数で定義されている場合
+$ terraform state rm --dry-run 'aws_instance.bastion["<キー名1>"]'
 $ terraform state rm 'aws_instance.bastion["<キー名1>"]'
 
 Removed aws_instance.bastion["<キー名1>"]
 Successfully removed 1 resource instance(s).
 
+
 # その他のキー名も削除が必要になる。
+$ terraform state rm --dry-run 'aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'aws_instance.bastion["<キー名2>"]'
 ```
 
 ```bash
 # count関数で定義されている場合
+$ terraform state rm --dry-run 'aws_instance.bastion[0]'
 $ terraform state rm 'aws_instance.bastion[0]'
 
 Removed aws_instance.bastion[0]
 Successfully removed 1 resource instance(s).
 
+
 # その他のインデックス番号も削除が必要になる。
+$ terraform state rm --dry-run 'aws_instance.bastion[1]'
 $ terraform state rm 'aws_instance.bastion[1]'
 ```
 
 ```bash
 # moduleブロックを使用して、for_each関数で定義されている場合
+$ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名1>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名1>"]'
 
 Removed module.ec2.aws_instance.bastion["<キー名1>"]
 Successfully removed 1 resource instance(s).
 
+
 # その他のキー名も削除が必要になる。
+$ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
@@ -981,6 +992,7 @@ $ terraform import \
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>'
 $ terraform state rm '<resourceタイプ>.<resourceブロック名>'
 ```
 
@@ -990,7 +1002,9 @@ $ terraform import \
     -var-file=foo.tfvars \
     'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前、など>
     
+    
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
@@ -1000,12 +1014,17 @@ $ terraform import \
     -var-file=foo.tfvars \
     '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
     
+    
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
     '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
 
+
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+$ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
 $ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
 ```
 
@@ -1015,12 +1034,17 @@ $ terraform import \
     -var-file=foo.tfvars \
     '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前、など>
     
+    
 # その他のインデックス番号もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
     '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前、など>
 
+
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[0]'
+$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[1]'
+$ terraform state rm '<resourceタイプ>.<resourceブロック名>[0]'
 $ terraform state rm '<resourceタイプ>.<resourceブロック名>[1]'
 ```
 
@@ -1030,12 +1054,17 @@ $ terraform import \
     -var-file=foo.tfvars \
     'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
 
+
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
     'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
     
+    
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+$ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
 $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
 ```
 
