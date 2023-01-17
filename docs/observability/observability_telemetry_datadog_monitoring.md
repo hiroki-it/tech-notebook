@@ -170,13 +170,14 @@ Datadogで、ブラウザのエラーは以下に分類される。
 
 
 
-> ℹ️ 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
 | エラーのソース     | エラーの例                                                                                      |
 |-------------|--------------------------------------------------------------------------------------------|
 | コード上       | ・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示されたPromiseオブジェクトの```reject```メソッドの結果 |
 | ブラウザコンソール上 | ```console.error```メソッドによって、コンソール上に出力されたテキスト                                             |
 | カスタム        | ```@datadog/browser-rum```パッケージの```addError```メソッドによって、datadog-APIに送信されたテキスト              |
+
+> ℹ️ 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
 <br>
 
@@ -198,10 +199,6 @@ Datadog社の物理サーバーがリクエストを送信する。
 
 #### ▼ ヘッダー
 
-> ℹ️ 参考：
->
-> - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
-> - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
 
 | ヘッダー                              | 値                                                                                          |
 |-----------------------------------|--------------------------------------------------------------------------------------------|
@@ -211,6 +208,12 @@ Datadog社の物理サーバーがリクエストを送信する。
 | ```x-datadog-parent-id```         | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、```0```が割り当てられる。                           |
 | ```x-datadog-origin```            | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースがAPMクオータに影響しないように、```synthetics-browser```が割り当てられる。 |
 | ```x-datadog-sampling-priority``` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、```1```が割り当てれる。                     |
+
+
+> ℹ️ 参考：
+>
+> - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
+> - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
 
 <br>
 

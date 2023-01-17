@@ -25,12 +25,13 @@ description: 認証/認可系パッケージ＠Laravelの知見を記録して�
 
 
 
-> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 | ガードの種類 | 説明                                     |
 |----------|----------------------------------------|
 | Webガード   | セッションIDを使用したForm認証のために使用する。        |
 | APIガード   | Bearer認証、APIキー認証、OAuth、などのために使用する。 |
+
+> ℹ️ 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 #### ▼ カスタムガード
 

@@ -254,7 +254,6 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ ヘルスステータスの種類
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
 | ステータス名     | 説明                                                                                                            |
 |-------------|---------------------------------------------------------------------------------------------------------------|
@@ -264,6 +263,8 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 | Suspended   | 一部のKubernetesリソースは、イベント（例：CronJobなど）が実行されることを待機している。                                                     |
 | Missing     | 調査中...                                                                                                       |
 | Unknown     | 調査中...                                                                                                       |
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
 <br>
 
@@ -378,13 +379,14 @@ spec:
 
 
 
-> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 | リポジトリの種類                                      | 管理方法                      | マニフェストのapply方法                                                                                    |
 |-----------------------------------------------|-------------------------------|---------------------------------------------------------------------------------------------------|
 | マニフェストリポジトリ（例：GitHub内のリポジトリ）                  | マニフェストそのまま                    | ArgoCDで直接的に```kubectl apply```コマンドを実行する。                                                       |
 | チャートリポジトリ（例：ArtifactHub、GitHub Pages、内のリポジトリ） | チャートアーカイブ（```.tgz```形式ファイル） | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
 | OCIリポジトリ（例：ECR内のリポジトリ）                        | チャートアーカイブ（```.tgz```形式ファイル） | Helmを使用して、ArgoCDで間接的に```kubectl apply```コマンドを実行する。パラメーターに応じて、内部的に```helm```コマンドが実行される。 |
+
+> ℹ️ 参考：https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 
 <br>
 
@@ -396,12 +398,6 @@ spec:
 
 また、リポジトリにチャートを配置しているがチャートリポジトリとして扱っていない場合、マニフェストリポジトリ内のローカルのチャートとして、監視することもできる。
 
-
-
-> ℹ️ 参考：
->
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
 
 | 設定項目      | 説明                                                                                                           |
 |---------------|--------------------------------------------------------------------------------------------------------------|
@@ -421,6 +417,14 @@ spec:
     directory:
       recurse: true
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L78
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+
 
 #### ▼ path
 
@@ -549,18 +553,19 @@ helmfileと同じように```helm```コマンドを宣言的に実行しつつ�
 
 
 
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
-> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
-> - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
-
 | 設定項目          | 説明                                                                                                                               | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```releaseName``` | 作成するリリース名を設定する。                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ```values```      | ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。                                                                                 | 執筆時点（2022/10/31）では、```values```ファイルは、同じチャートリポジトリ内にある必要がある。チャートと```values```ファイルが異なるリポジトリにある場合（例：チャートはOSSを参照し、```values```ファイルは独自で定義する）、```valueFiles```オプションの代わりに```values```オプションを使用する。<br>ℹ️ 参考：<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936  <br>・https://github.com/argoproj/argo-cd/blob/428bf48734153fa1bcc340a975be8c7e3f34c163/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに```values```ファイルをハードコーディングした場合に、共有```values```ファイルと差分```values```ファイルに切り分けて定義できなくなってしまう。そこで、```values```オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの```values```ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに```values```ファイルがあっても```valueFiles```オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>ℹ️ 参考：<br>・https://github.com/argoproj/argo-cd/pull/10432 |
 | ```valueFiles```  | ```helm```コマンドに渡す```values```ファイルを設定する。                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ```version```     | ```helm```コマンドのバージョンを設定する。デフォルトでは、```v3```になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できるため、このオプションを使用する必要はない。 | ℹ️ 参考：<br>・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version <br>・https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml#L720-L733                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
+> - https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L25
+> - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
 
 
 ```helm```コマンドに渡す```values```ファイルの値をハードコーディングする。
@@ -878,7 +883,6 @@ GitOpsでのリポジトリ（例：GitHub、Helm、など）とKubernetesの間
 
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 
 | 設定項目         | 説明                                                                                                                                                                                | 補足                                                                                                                                                                                                                           |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -900,16 +904,14 @@ spec:
       selfHeal: true
 ```
 
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+
+
 #### ▼ syncOptions
 
 GitOpsでのマニフェストのSync処理の詳細を設定する。
 
 
-
-> ℹ️ 参考：
->
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
-> - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 
 | 設定項目                     | 説明                                                                                                                               | 補足                                                                                                                                                                                                                        |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -930,6 +932,13 @@ spec:
       - CreateNamespace=true
       - PrunePropagationPolicy=background
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
+> - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
+
 
 <br>
 
@@ -1121,12 +1130,6 @@ ArgoCDのstrategyオプションを使用することにより、これらのKub
 
 
 
-> ℹ️ 参考：
->
-> - https://argoproj.github.io/argo-rollouts/features/bluegreen/
-> - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
-> - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
-
 | 設定項目                    | 説明                                                                                                           |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------|
 | ```activeService```         | 旧環境へのルーティングに使用するServiceを設定する。                                                                           |
@@ -1153,6 +1156,14 @@ spec:
       scaleDownDelaySeconds: 30
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://argoproj.github.io/argo-rollouts/features/bluegreen/
+> - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
+> - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
+
+
 #### ▼ canary
 
 ![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/argocd_canary-release.png)
@@ -1160,12 +1171,6 @@ spec:
 カナリアリリースを使用して、新しいPodをリリースする。
 
 
-
-> ℹ️ 参考：
->
-> - https://argoproj.github.io/argo-rollouts/features/canary/
-> - https://argoproj.github.io/argo-rollouts/concepts/#canary
-> - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
 | キー         | 説明                                                                                                                      |
 |------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -1186,6 +1191,14 @@ spec:
         - pause:
             duration: 10
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://argoproj.github.io/argo-rollouts/features/canary/
+> - https://argoproj.github.io/argo-rollouts/concepts/#canary
+> - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
+
 
 <br>
 

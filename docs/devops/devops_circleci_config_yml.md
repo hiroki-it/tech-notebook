@@ -1050,15 +1050,17 @@ workflows:
 
 
 
-> ℹ️ 参考：
->
-> - https://www.engilaboo.com/circleci-working-directory/
-> - https://nju33.com/notes/circleci/articles
 
 | レベル          | 説明                                                                                                           |
 |--------------|--------------------------------------------------------------------------------------------------------------|
 | job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executorまたはjobでworking_directoryを宣言できる。両方で宣言していた場合は、executorの値が優先される。 |
 | steps        | 指定したディレクトリーに移動する。                                                                                          |
+
+
+> ℹ️ 参考：
+>
+> - https://www.engilaboo.com/circleci-working-directory/
+> - https://nju33.com/notes/circleci/articles
 
 <br>
 

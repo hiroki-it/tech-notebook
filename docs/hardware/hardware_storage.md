@@ -77,7 +77,6 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 
 
 
-> ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 
 | 種類  | 説明                                            |
 |-------|:----------------------------------------------|
@@ -86,6 +85,9 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 | RAID5 | データとパリティ（誤り訂正符号）を```3```個以上のHDDに書き込む。 |
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RAIDの種類.png)
+
+> ℹ️ 参考：https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
+
 
 <br>
 

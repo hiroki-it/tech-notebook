@@ -294,13 +294,15 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
 
 | ツール名                          | ベンダー   |
 |--------------------------------|--------|
 | Docker Swarm                   | Docker |
 | Kubernetes                     | Google |
 | EKS：Elastic Kubernetes Service | Amazon |
+
+> ℹ️ 参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+
 
 <br>
 

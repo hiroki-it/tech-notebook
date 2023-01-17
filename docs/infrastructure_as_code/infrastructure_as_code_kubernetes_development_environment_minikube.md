@@ -62,13 +62,14 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーの種類
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 | ホスト側のOS | ゲスト（Node）側のOS                 |
 |----------|--------------------------------|
 | Linux    | VirtualBox、Docker、KVM2、...     |
 | MacOS    | VirtualBox、Docker、HyperKit、... |
 | Windows  | VirtualBox、Docker、Hyper-V、...  |
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 <br>
 

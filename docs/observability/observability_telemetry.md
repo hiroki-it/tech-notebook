@@ -71,11 +71,6 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 
 
-> ℹ️ 参考：
->
-> - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
-> - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
-
 | アクション                        | OpenTelemetry |    Jaeger     | Zipkin | Pinpoint | Datadog | AWS X-Ray |
 |------------------------------|:-------------:|:-------------:|:------:|:--------:|:-------:|:---------:|
 | 分散トレースの収集（プル型またはプッシュ型） |       ✅       |       ✅       |   ✅    |    ✅     |    ✅    |     ✅     |
@@ -86,6 +81,12 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | レポートの作成                    |               |               |        |          |         |           |
 | ↓                            |       ↓       |       ↓       |   ↓    |    ↓     |    ↓    |     ↓     |
 | アラート                         |               |               |        |          |         |           |
+
+
+> ℹ️ 参考：
+>
+> - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
+> - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
 
 <br>
 

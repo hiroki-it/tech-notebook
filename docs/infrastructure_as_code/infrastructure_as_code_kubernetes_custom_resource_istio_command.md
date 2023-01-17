@@ -64,18 +64,19 @@ Istioの機能のセットを提供する。
 
 #### ▼ プロファイルの種類
 
-> ℹ️ 参考：
->
-> - https://github.com/istio/istio/tree/master/manifests/profiles
-> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
-> - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
-
 | ユースケース               | default  |   demo   |         empty          | external |     minimal      | openshift | preview | remote |
 |:---------------------|:--------:|:--------:|:----------------------:|:--------:|:----------------:|:---------:|:-------:|:------:|
 | 概要                 | 本番環境 | 開発環境 | Istioリソースを全てカスタマイズしたい |    なし    | 最小限の機能が欲しい |     ？     |   なし    |   ？    |
 | istio-egressgateway  |    なし    |    ✅     |           なし           |    なし    |        なし        |     ？     |   なし    |   ？    |
 | istio-ingressgateway |    ✅     |    ✅     |           なし           |    なし    |        なし        |     ？     |    ✅    |   ？    |
 | istiod               |    ✅     |    ✅     |           なし           |    なし    |        ✅         |     ？     |    ✅    |   ？    |
+
+
+> ℹ️ 参考：
+>
+> - https://github.com/istio/istio/tree/master/manifests/profiles
+> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
+> - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 
 
 <br>
@@ -170,13 +171,15 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
 | オプション例                                    | 説明                                                                                          | 補足                                                                     |
 |--------------------------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | ```meshConfig.accessLogFile=/dev/stdout``` | アクセスログの出力先を標準出力に変更する。                                                                |                                                                          |
 | ```profile=default```                      | 指定したプロファイルをインストールする。                                                                        |                                                                          |
 | ```revision=1-0-0```                       | 既存のIstioのコントロールプレーンを稼働させつつ、指定したバージョンのコントロールプレーンをカナリアリリースする。バージョンは、ケバブケースで設定する必要がある。 | ℹ️ 参考：https://istio.io/latest/docs/setup/upgrade/canary/#control-plane |
+
+> ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+
 
 <br>
 

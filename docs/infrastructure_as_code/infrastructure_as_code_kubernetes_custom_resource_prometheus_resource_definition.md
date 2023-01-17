@@ -627,7 +627,6 @@ spec:
 
 ```alert```キーを宣言し、アラートルールを設定する。
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
 
 | 項目              | 説明                                                                                               |
 |-------------------|--------------------------------------------------------------------------------------------------|
@@ -664,12 +663,14 @@ spec:
              source: gin
 ```
 
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+
+
 #### ▼ rules（レコーディングルールの場合）
 
 ```record```キーを宣言し、レコーディングルールを設定する。
 
 
-> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 
 | 項目         | 説明                                      |
 |--------------|-----------------------------------------|
@@ -691,6 +692,9 @@ spec:
            # PromQL
            expr: ...
 ```
+
+> ℹ️ 参考：https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+
 
 <br>
 

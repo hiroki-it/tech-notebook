@@ -98,12 +98,13 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ▼ ルールの種類
 
-> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
 | ルール名  | 説明                                                |
 |--------|---------------------------------------------------|
 | レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する。 |
 | レギュラー  | リクエスト数は制限しない。                                    |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/classic-web-acl-rules-creating.html
 
 #### ▼ ルールの粒度のコツ
 
@@ -129,7 +130,6 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
 
 | マネージドルールの元のアクション | Countモード | 上書きオプション | 結果                                                                             |
 |-------------------|----------|------------|--------------------------------------------------------------------------------|
@@ -137,6 +137,8 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Block             | ON       | OFF        | Countのみが実行される。そのため、その後のルールも検証する。                                            |
 | Block             | OFF      | ON         | そもそもCountモードが無効なため、上書きオプションは能力せずに、Blockが実行される。                           |
 | Block             | OFF      | OFF        | そもそもCountモードが無効なため、マネージドルールのBlockが実行される（と思っていたが、結果としてCountとして動作する模様）。 |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
 
 #### ▼ セキュリティグループとの関係
 

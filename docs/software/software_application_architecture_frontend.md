@@ -96,10 +96,6 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 
 
 
-> ℹ️ 参考：
->
-> - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
-> - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
 | ブラウザレンダリングのステップ | 実行者 |
 |-----------------|--------|
@@ -107,6 +103,12 @@ SPAは、Googleのクローラーがページを認識しにくく、Webペー�
 | Scripting       | サーバー   |
 | Rendering       | サーバー   |
 | Paiting         | ブラウザ   |
+
+
+> ℹ️ 参考：
+>
+> - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
+> - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
 <br>
 

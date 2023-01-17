@@ -20,11 +20,6 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 
 ### 外部Ingressコントローラーの種類
 
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
-> - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
-
 | コントローラー名                                       | 開発環境 | 本番環境 |
 |-------------------------------------------------|----------|----------|
 | minikubeのingressアドオン（実体はNginx Ingressコントローラー） | ✅        |          |
@@ -34,6 +29,12 @@ description: アドオン＠Nodeコンポーネントの知見を記録してい
 | Istio Ingress                                   | ✅        | ✅        |
 | Istio Gateway                                   | ✅        | ✅        |
 | ...                                             | ...      | ...      |
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+> - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
 
 <br>

@@ -23,7 +23,47 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 <br>
 
-## 02. cluster-autoscaler
+## 02. addon-resizer
+
+### addon-resizer
+
+サイドカーコンテナとして稼働し、指定したコンテナのハードウェアリソースの要求量を動的に垂直スケーリングする。
+
+マイクロサービスのコンテナのためというよりは、インフラ領域のコンテナのために使用する。
+
+特に、NodeでDaemonSetとして稼働するテレメトリー収集系のコンテナ（例：metrics-server、kube-state-metrics、heaper）では、Node内のコンテナが増えるほどハードウェアリソースの要求量が増える。
+
+コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer
+> - https://qiita.com/superbrothers/items/650d6591aa6531bdbd08
+
+<br>
+
+### ConfigMap
+
+#### ▼ metrics-serverの場合
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metrics-server-config
+  namespace: kube-system
+data:
+  NannyConfiguration: |
+    apiVersion: nannyconfig/v1alpha1
+    kind: NannyConfiguration
+    baseMemory: 100Mi
+    memoryPerNode: 20Mi
+    cpuPerNode: 1m
+```
+
+<br>
+
+## 03. cluster-autoscaler
 
 ### cluster-autoscalerとは
 
@@ -71,7 +111,7 @@ Kubernetes標準のリソースではなく、クラウドプロバイダーを�
 
 <br>
 
-## 02-02. karpenter
+## 03-02. karpenter
 
 ### karpenterとは
 
@@ -108,7 +148,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 <br>
 
-## 03. descheduler
+## 04. descheduler
 
 ### deschedulerとは
 
@@ -259,7 +299,7 @@ strategies:
 
 <br>
 
-## 04. metrics-server
+## 05. metrics-server
 
 ### metrics-server
 

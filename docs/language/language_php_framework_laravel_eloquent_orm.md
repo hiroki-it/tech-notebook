@@ -639,7 +639,6 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
 | CRUDメソッドの種類 |         返却値型         |             返却値              | 返却値の説明  |
 |:-------------:|:------------------------:|:-------------------------------:|:-----------|
@@ -647,6 +646,8 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 |     find      | collection/Builder/Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
 |    update     |          mixed           | ```0```、```1```、```2```、```3``` | 変更したレコード数 |
 |    delete     |          mixed           | ```0```、```1```、```2```、```3``` | 変更したレコード数 |
+
+> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
 #### ▼ Eloquentモデル
 
@@ -656,13 +657,14 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 
 
-> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
 | CRUDメソッドの種類 | 返却値型 |         返却値         | 返却値の説明 |
 |:-------------:|:--------:|:----------------------:|:---------|
 |    update     |   bool   | ```true```、```false``` | 結果のbool値 |
 |     save      |   bool   | ```true```、```false``` | 結果のbool値 |
 |    delete     |   bool   | ```true```、```false``` | 結果のbool値 |
+
+> ℹ️ 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
 <br>
 

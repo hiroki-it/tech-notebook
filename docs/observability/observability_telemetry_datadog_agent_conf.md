@@ -443,7 +443,6 @@ datadogコンテナの環境変数として設定する。
 
 #### ▼ PHPトレーサーの場合
 
-> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 
 | 変数名                               | 説明                                                                                                                 | 画面                                   |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -451,5 +450,7 @@ datadogコンテナの環境変数として設定する。
 | ```DD_SERVICE_NAME```                | 分散トレースにマイクロサービス名を設定する。```DD_SERVICE_MAPPING```がnullの場合、この環境変数の値が代わりにマイクロサービス名になる（仕組みがよくわからん）。        |                                        |
 | ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する。デフォルトで全てのインテグレーションが有効化されているため、設定は不要である。Datadogのインテグレーションを無効化する場合は            |                                        |
 | ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する。                                                                                          |                                        |
+
+> ℹ️ 参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 
 <br>

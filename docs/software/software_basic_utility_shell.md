@@ -145,12 +145,6 @@ echo $0 # foo.sh
 
 
 
-> ℹ️ 参考：
->
-> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
-> - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
-> - https://suwaru.tokyo/zshenv/
-
 | bashの場合                 | zshの場合              | 読み込まれるタイミング                                             |
 |---------------------------|-----------------------|----------------------------------------------------------|
 | なし                        | ```~/.zshenv```ファイル   | ログインシェル、インタラクティブシェルの起動時                                |
@@ -158,6 +152,14 @@ echo $0 # foo.sh
 | ```~/.bashrc```ファイル       | ```~/.zshrc```ファイル    | ログインシェルの起動時。ただし、zshではインタラクティブシェルの起動時も含む。           |
 | ```~/.bash_login```ファイル   | ```~/.zlogin```ファイル   | ログインシェルの起動時。profileファイルと機能が重複するため、個人的には使用しない。 |
 | ```~/.bash_logout```ファイル  | ```~/.zlogout```ファイル  | ```exit```コマンド時                                          |
+
+
+> ℹ️ 参考：
+>
+> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
+> - https://suwaru.tokyo/zshenv/
+
 
 #### ▼ 確認方法
 
@@ -274,11 +276,6 @@ $ apk add bash
 
 ### 終了ステータスの種類
 
-> ℹ️ 参考：
->
-> - https://tldp.org/LDP/abs/html/exitcodes.html
-> - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
-
 | 値            | 意味                            | エラーの原因                                                                              | 発生例                                              |
 |---------------|-------------------------------|---------------------------------------------------------------------------------------|-----------------------------------------------------|
 | ```0```       | 正常な完了                       | -                                                                                     | -                                                   |
@@ -290,3 +287,11 @@ $ apk add bash
 | ```128 + n``` | シグナル ```n```で致命的なエラー         | killがシグナル```n```で実行された可能性がある。                                                    | ```$ kill -9 $PPID```<br>（```128 + 9 = 137```で終了） |
 | ```128 + 2``` | スクリプトが ```Ctrl+C```で終了        | ```Ctrl+C```はシグナル```2```で終了するため、```Ctrl+C```が実行された可能性がある。（```128 + 2 = 130```） | Ctrl+C                                              |
 | ```255```     | 範囲外の終了ステータス                | ```exit```コマンドに0〜255以外の整数を渡している可能性がある。                                        | ```$ exit -1```                                     |
+
+
+> ℹ️ 参考：
+>
+> - https://tldp.org/LDP/abs/html/exitcodes.html
+> - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
+
+<br>

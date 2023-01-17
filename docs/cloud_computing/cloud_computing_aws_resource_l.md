@@ -17,18 +17,20 @@ description: Lで始まるAWSリソース＠AWSの知見を記録しています
 
 ## 01. LB
 
-> ℹ️ 参考：
->
-> - https://aws.amazon.com/jp/elasticloadbalancing/features/
-> - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
-> - https://www.infraexpert.com/study/tcpip8.html
-
 | LB名                          | OSI階層モデルのレイヤー             | リスナーが処理できるプロトコル      | ターゲット                | リクエストヘッダー（```L7```） | パケットヘッダーのフィールド（```L4```） | セキュリティグループ |
 |-------------------------------|-----------------------------|------------------------|----------------------|---------------------|--------------------------|------------|
 | ALB：Application Load Balancer | ```L7```（アプリケーション層）        | HTTP、HTTPS、gRPC        | IPアドレス、インスタンス、Lambda | URL、HTTPヘッダー        | ポート番号フィールド             | 可         |
 | NLB：Network Load Balancer     | ```L4```（トランスポート層）         | TCP、UDP、TLS            | IPアドレス、インスタンス、ALB    | 不可                | IPアドレスフィールド、ポート番号フィールド | 不可       |
 | GLB：Gateway Load Balancer     | ```L3```（ネットワーク層）、```L4``` | IP                     | IPアドレス、インスタンス        | 不可                | IPアドレスフィールド、ポート番号フィールド | 不可       |
 | CLB：Classic Load Balancer     | ```L4```、```L7```           | HTTP、HTTPS、TCP、SSL/TLS | なし                   | URL、HTTPヘッダー        | IPアドレスフィールド、ポート番号フィールド | 可         |
+
+
+
+> ℹ️ 参考：
+>
+> - https://aws.amazon.com/jp/elasticloadbalancing/features/
+> - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
+> - https://www.infraexpert.com/study/tcpip8.html
 
 <br>
 

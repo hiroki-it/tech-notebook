@@ -533,17 +533,18 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
 
-> ℹ️ 参考：
->
-> - https://docs.docker.com/config/containers/logging/awslogs/
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
-
 | 設定項目                      | 説明                                                   | 補足                                                                                                                                                                                                       |
 |-------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```awslogs-group```           | ログ宛先のCloudWatchログのロググループを設定する。                     |                                                                                                                                                                                                            |
 | ```awslogs-datetime-format``` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『```\```』を『```\\```』にエスケープしなければならない。例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる。<br>ℹ️ 参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ宛先のCloudWatchログのリージョンを設定する。                      |                                                                                                                                                                                                            |
 | ```awslogs-stream-prefix```   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。          | ログストリームには、『```<プレフィックス名>/<コンテナ名>/<タスクID>```』の形式で送信される。                                                                                                                                               |
+
+
+> ℹ️ 参考：
+>
+> - https://docs.docker.com/config/containers/logging/awslogs/
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
 
 <br>
 
@@ -557,7 +558,6 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 
 | AMI名                          | 説明                                                                                                                                 | 特に相性の良いアプリ                                    |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
@@ -567,6 +567,8 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 | ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。                                                                                    |                                                   |
 | ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                                                                                                        | GPUが必要なアプリケーション（計算処理系、機械学習系のアプリケーション） |
 | ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                                                                                                       |                                                   |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 
 <br>
 
@@ -631,7 +633,6 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
 | 設定項目                        | 対応する```docker```コマンドオプション       | 説明                                                                                                                                                                            | 補足                                                                                                                                                                                                  |
 |---------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -651,6 +652,8 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | memoryReservation               | ```--memory-reservation```        | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                              | ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                       |
 | mountPoints                     |                                   | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性とパフォーマンスの観点で、バインドマウントに対応していない。                                                                                           | ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/virtualization/virtualization_container_docker.html                                                                                          |
 | ulimit                          | Linuxコマンドの<br>```--ulimit```に相当 |                                                                                                                                                                                 |                                                                                                                                                                                                       |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
 <br>
 
@@ -1030,18 +1033,19 @@ VPC外からNLBへの```443```番ポートに対するアクセスはデフォ�
 この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
 
 
+| 接続元パターン           | 接続方法パターン    |
+|----------------------|-----------------|
+| ローカルマシン              | セッションマネージャー     |
+| VPC内の踏み台EC2インスタンス | セッションマネージャー、SSH |
+| VPC内のCloud9         | セッションマネージャー、SSH |
+
+
 
 > ℹ️ 参考：
 >
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 > - https://note.com/tyrwzl/n/nf28cd4372b18
 > - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
-
-| 接続元パターン           | 接続方法パターン    |
-|----------------------|-----------------|
-| ローカルマシン              | セッションマネージャー     |
-| VPC内の踏み台EC2インスタンス | セッションマネージャー、SSH |
-| VPC内のCloud9         | セッションマネージャー、SSH |
 
 <br>
 
@@ -1356,7 +1360,6 @@ EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプ�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
 | AMI名                       | 説明                                                | 特に相性の良いPod                                           | 補足                                                                                                                                                                 |
 |----------------------------|---------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1364,6 +1367,9 @@ EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプ�
 | EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |                                                                                                                                                                      |
 | EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。             |                                                          |                                                                                                                                                                      |
 | EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+
 
 <br>
 
@@ -1530,20 +1536,22 @@ done
 
 #### ▼ マネージドNodeグループ
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
 
 | タグ         | 値               | 説明                                                                                                                                                       |
 |------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ```Name``` | EC2ワーカーNodeの名前 | Nodeグループで指定する起動テンプレートのリソースタグに、```Name```タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。 |
 
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
+
 #### ▼ セルフマネージドNodeグループ
 
-> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/worker.html
 
 | タグ                                    | 値               | 説明                                                                                                    |
 |---------------------------------------|------------------|-------------------------------------------------------------------------------------------------------|
 | ```Name```                            | EC2ワーカーNodeの名前 | EC2インスタンスの名前は```Name```タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの```Name```タグに、ワーカーNode名を設定しておく。 |
 | ```kubernetes.io/cluster/<クラスター名>``` | ```owned```      | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。                     |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/worker.html
 
 #### ▼ その他
 

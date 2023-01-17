@@ -399,12 +399,14 @@ $ yum install collectd -y
 
 手動で設定ファイル（```amazon-cloudwatch-agent.json```ファイル）をセットアップする場合、```amazon-cloudwatch-agent.json```ファイルを指定されたディレクトリに配置する必要がある。
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
 
 | OS      | 配置先のパス                                           |
 |---------|-----------------------------------------------------|
 | Linux   | ```/opt/aws/amazon-cloudwatch-agent/etc```          |
 | Windows | ```$Env:ProgramData\Amazon\AmazonCloudWatchAgent``` |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
+
 
 <br>
 

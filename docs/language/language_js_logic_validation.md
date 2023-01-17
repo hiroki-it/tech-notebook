@@ -43,11 +43,6 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 
 空欄：```FALSE```
 
-以下のリンクを参考にせよ。
-
-
-
-> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/language/language_php_logic_validation.html
 
 |                      | ```typeof $var``` | ```if($var)``` |
 |:---------------------|:-----------------:|:--------------:|
@@ -59,3 +54,5 @@ DBからの値を直接的に表示する場合と異なり、新しく作られ
 | **```NaN```**        |   ```number```    |                |
 | **```undefined```**  |  ```undefined```  |                |
 
+
+<br>

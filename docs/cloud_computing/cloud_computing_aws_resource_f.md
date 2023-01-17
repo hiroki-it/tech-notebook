@@ -206,7 +206,6 @@ log_routerという名前以外を設定できないことに注意する。
 
 #### ▼ ```logConfiguration```キーの詳細
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
 | 項目                                        | 説明                                                                                                                                                                                                                                                                                                                                                                                                         |
 |---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -216,6 +215,8 @@ log_routerという名前以外を設定できないことに注意する。
 | ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>ℹ️ 参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```、```secrets```             | コンテナ内の```fluent-bit.conf```ファイルに変数をアウトプットできるように、コンテナの環境変数に値を設定する。                                                                                                                                                                                                                                                                                                                                  |
 | ```options```                               | FluentBitの設定ファイルでOUTPUTセクションを定義する代わりとして、```options```キーからも設定できる。                                                                                                                                                                                                                                                                                                                                      |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
 <br>
 

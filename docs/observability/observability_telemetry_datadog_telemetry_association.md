@@ -19,11 +19,6 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### タグの種類
 
-> ℹ️ 参考：
->
-> - https://docs.datadoghq.com/getting_started/tagging/
-> - https://www.datadoghq.com/ja/blog/tagging-best-practices/
-
 | タグ名          | 説明                                                                         |
 |---------------|------------------------------------------------------------------------------|
 | ```host```    | メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。 |
@@ -32,6 +27,13 @@ description: テレメトリー間の紐付け＠Datadog
 | ```service``` | メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。                                     |
 | ```env```     | メトリクス、ログ、分散トレースの作成元の実行環境名を示す。                                     |
 | ```version``` | メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。                                      |
+
+
+> ℹ️ 参考：
+>
+> - https://docs.datadoghq.com/getting_started/tagging/
+> - https://www.datadoghq.com/ja/blog/tagging-best-practices/
+
 
 <br>
 

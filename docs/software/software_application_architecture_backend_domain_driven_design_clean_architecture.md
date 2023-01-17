@@ -2399,12 +2399,6 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 
 
-> ℹ️ 参考：
->
-> - https://codewithshadman.com/repository-pattern-csharp/
-> - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
-> - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
-
 | メソッド名            | 引数型              | 返却値型          | 処理内容                                                                                                                                                                                                                                                    |
 |-------------------|---------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | findById          | Id型                | ドメインモデル型         | ルートエンティティののドメインモデルを取得する。                                                                                                                                                                                                                                  |
@@ -2414,6 +2408,14 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 | update            | ルートエンティティのドメインモデル型 | void型            | ルートエンティティのドメインモデルを更新する。                                                                                                                                                                                                                                   |
 | save（upsert）      | ルートエンティティのドメインモデル型 | void型            | ルートエンティティのドメインモデルを作成/更新する。SELECT文のIN句を使用して、同じ識別子のエンティティをDBから取得できるか否かを確認する。取得できない場合は、更新処理を実行する。<br>ℹ️ 参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/241<br>・https://github.com/little-hands/ddd-q-and-a/issues/129 |
 | delete            | Id型                | void型            | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                   |
+
+
+
+> ℹ️ 参考：
+>
+> - https://codewithshadman.com/repository-pattern-csharp/
+> - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
+> - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
 
 #### ▼ 他の類似するデザインパターンとの比較
 

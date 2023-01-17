@@ -165,7 +165,6 @@ $ skaffold run --port-forward
 
 ### コマンド別
 
-> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
 
 | コマンド                                  | ポートフォワーディングの可否    |
 |---------------------------------------|-------------------|
@@ -174,5 +173,8 @@ $ skaffold run --port-forward
 | ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
 | ```skaffold run```                    | ポートフォワーディングを実行しない |
 | ```skaffold run --port-forward```     | ユーザー定義を参照       |
+
+> ℹ️ 参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
+
 
 <br>

@@ -349,12 +349,13 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 #### ▼ 排他制御の種類
 
-> ℹ️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 | ロック名            | 説明                     |
 |-----------------|------------------------|
 | 共有/占有ロック     | DBによるロック機能。            |
 | 楽観的/悲観的ロック | アプリケーションまたはDBによるロック機能。 |
+
+> ℹ️ 参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
 
 #### ▼ UPDATE処理競合問題の許容
 

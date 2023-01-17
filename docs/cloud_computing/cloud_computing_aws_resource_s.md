@@ -282,13 +282,14 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ 注意が必要な項目
 
-> ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 |          | 設定値         | 補足                   |
 |----------|----------------|------------------------|
 | HTTPメソッド | POST           | GETメソッドでは動作しない。      |
 | アクション    | StartExecution |                        |
 | 実行ロール  | IAMロールのARN     | StartExecutionを許可する。 |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 
 ```yaml
 {

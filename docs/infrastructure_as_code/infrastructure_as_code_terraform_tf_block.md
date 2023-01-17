@@ -1492,7 +1492,6 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ path式
 
-> ℹ️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 | 変数                      | 値                                             | 例                         |
 |---------------------------|------------------------------------------------|----------------------------|
@@ -1500,6 +1499,8 @@ resource "aws_s3_bucket_policy" "alb" {
 | ```path.root```           | ```terraform```コマンドの作業ディレクトリのパス              | ```/var/www/```            |
 | ```path.root```           | ```module```ディレクトリのルートパス                       | ```/project/module/```     |
 | ```terraform.workplace``` | 現在使用しているワークスペース名                          | ```prd```                  |
+
+> ℹ️ 参考：https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 
 <br>
 

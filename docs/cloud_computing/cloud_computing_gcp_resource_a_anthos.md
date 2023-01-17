@@ -69,13 +69,30 @@ AnthosのKubernetesのバージョンは、各実行環境のClusterが対応す
 
 #### ▼ Anthos Service Meshとは
 
-Istioから構成される。
+Traffic Director、Mesh CA、Managed backends、から構成される。
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
 
-> ℹ️ 参考：https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
+> ℹ️ 参考：
+> 
+> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
+> - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
 
+#### ▼ Traffic Director
+
+サービスディスカバリーとして、```istio-proxy```コンテナに他の宛先の情報を提供する。
+
+> ℹ️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
+
+
+#### ▼ Mesh CA
+
+中間認証局として、相互TLSのためのSSL証明書を```istio-proxy```コンテナに提供する。
+
+また、SSL証明書が失効すれば更新する。
+
+> ℹ️ 参考：https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=27
 
 <br>
 
@@ -306,13 +323,25 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reu
 
 ### Kubernetesのアップグレード
 
+#### ▼ 共通の手順
+
+
+（１）```bmctl```コマンドをインストールする。Anthos GKE Clusterと```bmctl```コマンドのバージョンには対応関係がある。
+
+```bash
+$ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
+$ chmod a+x bmctl
+```
+
 #### ▼ オンプレミス環境の場合
 
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/upgrading
 
 #### ▼ ベアメタル環境の場合
 
-（１）Anthos GKE Clusterの現在のバージョンを確認する。
+（１）共通の手順を参照。
+
+（２）Anthos GKE Clusterの現在のバージョンを確認する。
 
 ```bash
 $ kubectl get cluster -A -o yaml
@@ -331,7 +360,6 @@ spec:
 
 
 
-> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 | Anthos GKE Clusterのバージョン | Kubernetesのバージョン  |
 |--------------------------|-------------------|
@@ -339,25 +367,25 @@ spec:
 | ```1.12```系             | ```v1.23.5-gke``` |
 | ...                      | ...               |
 
-（２）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを```tail```コマンドで確認する。
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
-> ℹ️ 参考：
-> 
-> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
-> - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
+
+
+（３）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを```tail```コマンドで確認する。
+
 
 ```bash
-# コマンドをインストールする。
-$ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
-$ chmod a+x bmctl
-
-# アップグレードする。
 $ ~/baremetal/bmctl upgrade cluster \
     -c <Cluster名> \
     --kubeconfig <kubeconfigファイルへのパス>
 ```
 
-（３）Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
+> - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
+
+（４）Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
 ```bash
 $ kubectl get cluster -A -o yaml
@@ -376,11 +404,22 @@ spec:
 
 ### Istioのアップグレード
 
+#### ▼ 共通の手順
+
+（１）```asmcli```コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
+
+```bash
+$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_<バージョン系> > asmcli
+```
+
 #### ▼ GCP環境の場合
 
-（１）```asmcli```コマンドを使用して、新バージョンのIstiodコントロールプレーンをインストールする。
 
-> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+（１）共通の手順を参照。
+
+
+（２）```asmcli```コマンドを使用して、新バージョンのIstiodコントロールプレーンをインストールする。
+
 
 ```bash
 $ ./asmcli install \
@@ -389,10 +428,16 @@ $ ./asmcli install \
     --cluster_location <リージョン> \
     --fleet_id <フリートのグループID> \
     --output_dir ./tmp \
+    `# オプションを全て有効化する。` \
     --enable_all \
+    `# Mesh CAを有効化する。` \
     --ca mesh_ca \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
+
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+
+
 
 #### ▼ GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
 
@@ -403,10 +448,13 @@ $ ./asmcli install \
 ```bash
 $ ./asmcli install \
     --kubeconfig <kubeconfigファイルへのパス> \
+    `# GCP以外（オンプレ、AWS、Azure、など）で稼働させることを宣言する。` \
     --platform multicloud \
     --fleet_id <フリートのグループID> \
     --output_dir ./tmp \
+    `# オプションを全て有効化する。` \
     --enable_all \
+    `# Mesh CAを有効化する。` \
     --ca mesh_ca \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```

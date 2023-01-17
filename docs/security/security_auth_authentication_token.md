@@ -146,16 +146,17 @@ const signature = HMACSHA256(
 
 #### ▼ 保持方法と安全度の比較
 
-> ℹ️ 参考：
->
-> - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
-> - https://blog.flatt.tech/entry/auth0_access_token_poc
-
 | クライアント保持方法                              | 組み合わせ     | おすすめ度 | コメント                                                    |
 |---------------------------------------------|-------------|:------:|---------------------------------------------------------|
 | インメモリ、```Cookie```ヘッダー、ローカルストレージ、セッションストレージ | なし          | △ 〜 ×  | いずれの方法でも、XSSによってJWTが盗まれる可能性がある。                   |
 | ```Cookie```ヘッダー                            | プリフライトリクエスト |   △    | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある。 |
 | ```Cookie```ヘッダー                            | CSRFトークン    |   ⭕    |                                                         |
 | SameSiteCookie                              |             |   ⭕    | SPAとAPIが同一オリジンの必要がある。                               |
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
+> - https://blog.flatt.tech/entry/auth0_access_token_poc
 
 <br>

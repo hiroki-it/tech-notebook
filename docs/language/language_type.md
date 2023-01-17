@@ -39,12 +39,6 @@ description: 言語の種類＠言語を記録しています。
 
 
 
-> ℹ️ 参考：
->
-> - https://web-camp.io/magazine/archives/61816
-> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
-> - https://style.potepan.com/articles/12941.html
-
 |            | 手続き型 | 構造化 | オブジェクト指向型 | 命令型 | 宣言型 | 関数型 | 論理型 |
 |------------|:-------:|:------:|:------------:|:------:|:------:|:------:|:------:|
 | C          |    ✅    |        |              |        |        |        |        |
@@ -63,6 +57,14 @@ description: 言語の種類＠言語を記録しています。
 | Ruby       |         |        |      ✅       |   ✅    |        |        |        |
 | Scala      |         |        |      ✅       |        |   ✅    |   ✅    |        |
 | SQL        |         |        |              |        |   ✅    |        |        |
+
+
+> ℹ️ 参考：
+>
+> - https://web-camp.io/magazine/archives/61816
+> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
+> - https://style.potepan.com/articles/12941.html
+
 
 <br>
 

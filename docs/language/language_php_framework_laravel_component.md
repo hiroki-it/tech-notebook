@@ -25,7 +25,6 @@ description: 認証/認可＠Laravelの知見を記録しています。
 
 
 
-> ℹ️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
 |    | 用語                                                  | 説明                                                                                                |
 |----|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -44,6 +43,9 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 13 | Terminate Middleware                                  | AfterMiddlewareが実行される。                                                                            |
 | 14 | View                                                  | ```blade.php```ファイルを基に静的ファイルが作成される。                                                            |
 | 15 | レスポンスを返信する。                                         |                                                                                                     |
+
+> ℹ️ 参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
+
 
 <br>
 

@@ -29,16 +29,18 @@ RFC1918では、以下のCIDRブロックが推奨されている。
 
 
 
-> ℹ️ 参考：
->
-> - https://note.com/takashi_sakurada/n/n502fb0299938
-> - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
-
 | RFC1918推奨のCIDRブロック | IPアドレス                                  | 個数           |
 |----------------------|-----------------------------------------|----------------|
 | ```10.0.0.0/8```     | ```10.0.0.0```～```10.255.255.255```     | ```16777216``` |
 | ```172.16.0.0/12```  | ```172.16.0.0```～```172.31.255.255```   | ```1048576```  |
 | ```192.168.0.0/16``` | ```192.168.0.0```～```192.168.255.255``` | ```65536```    |
+
+
+
+> ℹ️ 参考：
+>
+> - https://note.com/takashi_sakurada/n/n502fb0299938
+> - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
 
 <br>
 
@@ -84,11 +86,6 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 
 
-> ℹ️ 参考：
->
-> - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
-> - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
-
 | AWSリソース    | 最低限のIPアドレス数                      |
 |------------|------------------------------------|
 | ALB        | ALB1つ当たり、```8```個                  |
@@ -97,6 +94,13 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 | ECS、EKS    | Elastic Network Interface 数と同じ個数 |
 | Lambda     | Elastic Network Interface 数と同じ個数 |
 
+
+> ℹ️ 参考：
+>
+> - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
+> - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
+
+
 #### ▼ アクセスタイプ別の命名
 
 ![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet_accsess-type.png)
@@ -104,14 +108,14 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 パブリックネットワークとの通信の遮断具合から名前をつける。
 
 
-
-> ℹ️ 参考：https://mihono-bourbon.com/aws-network-1/
-
 | 名前           | 種類   | 役割                                                                                                                        | 配置例          |
 |----------------|--------|---------------------------------------------------------------------------------------------------------------------------|-----------------|
 | publicサブネット    | パブリック  | 非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのインバウンド通信を待ち受ける。                                                 | ALB、NAT Gateway |
 | protectedサブネット | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのインバウンド通信のみを待ち受ける。また、publicサブネットのNAT Gatewayを介してアウトバウンド通信を送信する。 | EC2、Fargate     |
 | privateサブネット   | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのインバウンド通信のみを待ち受ける。また、アウトバウンド通信を送信しない。               | RDS、Redis       |
+
+> ℹ️ 参考：https://mihono-bourbon.com/aws-network-1/
+
 
 #### ▼ コンポーネントタイプ別の命名
 
@@ -121,13 +125,15 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 
 
-> ℹ️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
 
 | 名前             | 種類   | 役割                                                 | 配置例          |
 |------------------|--------|----------------------------------------------------|-----------------|
 | frontendサブネット    | パブリック  | 非武装地帯として動作する。ロードバランサー、ルーター、踏み台サーバー、を配置する。 | ALB、NAT Gateway |
 | applicationサブネット | プライベート | 内部ネットワークとして動作する。appサーバー、リバースプロキシサーバー、を配置する。    | EC2、Fargate     |
 | datastoreサブネット   | プライベート | 内部ネットワークとして動作する。dbサーバーを配置する。                   | RDS、Redis       |
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/create_nat_gateway/
+
 
 <br>
 
@@ -170,11 +176,13 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 
 
-> ℹ️ 参考：https://koejima.com/archives/1950/
 
 |    Destination（プライベートCIDRブロック）     | Target |
 |:----------------------------------:|:------:|
 | ```10.0.0.0/24```（サブネット1のCIDRブロック） | local  |
+
+> ℹ️ 参考：https://koejima.com/archives/1950/
+
 
 <br>
 
@@ -183,11 +191,6 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 OSI層とAWSリソースの対応関係を以下に示す。
 
 
-
-> ℹ️ 参考：
->
-> - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
-> - https://aws.amazon.com/jp/elasticloadbalancing/features/
 
 | OSI層       | OSI層の番号 | 対応するAWSリソース                                |
 |------------|------------|----------------------------------------------|
@@ -198,6 +201,13 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | ネットワーク層    | ```L3```   | Internet Gateway、NAT Gateway、Transit Gateway |
 | データリンク層    | ```L2```   | VPC                                          |
 | 物理層      | ```L1```   | 仮想化のため、意識しなくても良い。                      |
+
+
+> ℹ️ 参考：
+>
+> - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
+> - https://aws.amazon.com/jp/elasticloadbalancing/features/
+
 
 <br>
 
@@ -221,7 +231,6 @@ OSI層とAWSリソースの対応関係を以下に示す。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
 | メトリクス名                              | 単位 | 説明                                                     | アラート条件例（合致したら発火）                                            |
 |--------------------------------------|------|--------------------------------------------------------|--------------------------------------------------------------------|
@@ -234,6 +243,8 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | ```RejectedConnectionCount```        | カウント | ターゲットグループ内のターゲットから接続拒否された数をデータポイントとする。             |                                                                    |
 | ```TargetConnectionErrorCount```     | カウント | ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。      |                                                                    |
 | ```TargetTLSNegotiationErrorCount``` | カウント | ターゲットグループ内のターゲットへのHTTPSプロトコルでエラーが発生した数をデータポイントとする。   |                                                                    |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
 #### ▼ API Gateway
 
@@ -273,7 +284,6 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 
 | メトリクス名                 | 単位 | 説明                                           | アラート条件例（合致したら発火）                                              | 補足                                     |
 |-------------------------|------|----------------------------------------------|----------------------------------------------------------------------|------------------------------------------|
@@ -281,13 +291,14 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | ```MemoryUtilization``` | %    | ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |                                          |
 | ```RunningTaskCount```  | カウント | 稼働中のECSタスク数をデータポイントとする。                    |                                                                      | ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。 |
 
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
+
 #### ▼ ElastiCache Redis
 
 名前空間をRedisとしたメトリクスの監視ポリシーは以下の通りである。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
 
 | メトリクス名                 | 単位  | 説明                                          | アラート条件例（合致したら発火）                                              | 補足                                                                                                           |
 |-------------------------|-------|---------------------------------------------|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
@@ -296,13 +307,14 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | ```Evictions```         | カウント  | 空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1```      |                                                                                                                |
 | ```SwapUsage```         | バイト数 | ストレージ上のスワップ領域の使用サイズをデータポイントとする。          | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 50```GB  | 使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>ℹ️ 参考：https://zenn.dev/dehio3/scraps/710a9714ce9496 |
 
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
+
 #### ▼ RDS（Aurora）
 
 名前空間をRDS（Aurora）としたメトリクスの監視ポリシーは以下の通りである。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
 | メトリクス名                   | 単位  | 説明                                                                                 | アラート条件例（合致したら発火）                                              | 補足                                                         |
 |---------------------------|-------|------------------------------------------------------------------------------------|----------------------------------------------------------------------|--------------------------------------------------------------|
@@ -314,6 +326,9 @@ ClusterNameディメンションとServiceNameディメンションを使用し�
 | ```FreeableMemory```      | バイト数 | Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。                                    | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 2```GB   |                                                              |
 | ```FreeLocalStorage```    | バイト数 | Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。                              | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 10```GB  | DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。                |
 | ```LoginFailures```       | カウント  | Aurora DBへのログインの失敗回数をデータポイントとする。                                                 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1```      |                                                              |
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
 #### ▼ RDS（非Aurora）
 

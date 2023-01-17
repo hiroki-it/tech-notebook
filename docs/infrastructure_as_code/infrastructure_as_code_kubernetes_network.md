@@ -107,12 +107,14 @@ Pod内のコンテナから宛先のPodにアウトバウンド通信を送信�
 
 
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 | 条件          | 経由するネットワーク                               |
 |-------------|--------------------------------------------|
 | Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
 | Nodeが同じ場合  | Clusterネットワーク + Serviceネットワーク              |
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
 
 <br>
 

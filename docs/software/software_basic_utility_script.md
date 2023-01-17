@@ -57,6 +57,7 @@ EOF
 
 ```bash
 #!/bin/bash
+
 echo foo
 echo bar
 ```
@@ -400,6 +401,7 @@ foo:
 # パッケージを公式からインストールと解答
 $ wget <パッケージのリンク>
 $ tar <パッケージのディレクトリ名>
+
 
 # ビルド用ディレクトリの作成。
 $ mkdir build

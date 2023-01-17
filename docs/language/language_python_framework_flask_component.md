@@ -117,7 +117,6 @@ app.run()
 
 
 
-> ℹ️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 | ```FLASK_APP```の値      | 説明                             |
 |-------------------------|--------------------------------|
@@ -125,6 +124,8 @@ app.run()
 | ```module:function()``` | モジュール名（ファイル名）と関数名を設定する。   |
 | ```module```            | モジュール名（ファイル名）を設定する。          |
 | ```file.py```           | ファイル名を設定する。                   |
+
+> ℹ️ 参考：https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 
 <br>
 

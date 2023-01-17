@@ -23,17 +23,19 @@ I/Oは、文脈によって意味合いが異なる。
 
 
 
-> ℹ️ 参考：
-> 
-> - https://www.idcf.jp/words/io.html
-> - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
-
 | 文脈          | 意味合い                       |
 |-------------|-----------------------------|
 | シェルの場合      | 標準入力、標準出力、標準エラー出力 |
 | ファイルシステムの場合 | ファイルへの読み書き                  |
 | ストレージの場合    | ストレージへの読み書き                 |
 | ネットワークの場合   | インバウンド通信、アウトバウンド通信        |
+
+
+> ℹ️ 参考：
+>
+> - https://www.idcf.jp/words/io.html
+> - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
+
 
 <br>
 
@@ -373,9 +375,6 @@ $ sudo pgrep \
 ファイルの行数が多い場合に役立つ。
 
 
-
-> ℹ️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
-
 | キー             | 説明                     |
 |----------------|------------------------|
 | ```Enter```    | 一行送り                  |
@@ -383,6 +382,9 @@ $ sudo pgrep \
 | ```Ctrl + f``` | 一ページ送り                 |
 | ```Ctrl + b``` | 一ページ戻り                 |
 | ```/文字列```  | 以降の文字を検索し、ハイライトする。 |
+
+> ℹ️ 参考：https://tech.pjin.jp/blog/infra_engneer/more-less/
+
 
 **＊例＊**
 

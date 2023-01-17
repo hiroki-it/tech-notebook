@@ -191,12 +191,13 @@ VirtualServiceの設定値は、Envoyのフロントプロキシの設定値と�
 
 #### ▼ VirtualService数
 
-> ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
 | 場合                          | VirtualService数                                                                         |
 |-----------------------------|-----------------------------------------------------------------------------------------|
 | API GatewayをIstioで管理する場合  | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。                    |
 | API GatewayをIstioで管理しない場合 | API Gatewayから全てのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある。 |
+
+> ℹ️ 参考：https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
 <br>
 

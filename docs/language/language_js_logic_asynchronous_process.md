@@ -78,13 +78,15 @@ Promiseオブジェクトの実装の仕様は取り決められており、以�
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
 | リリース日 | 提供                      | 種類            | 説明                                                                                    | 補足                                                                                             |
 |--------|---------------------------|-----------------|---------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 | 2012   | JQueryパッケージのDeferredモジュール | Promiseオブジェクト   | バージョン1.5でPromiseオブジェクトが導入された。<br>ℹ️ 参考：https://api.jquery.com/category/version/1.5/ | ℹ️ 参考：https://api.jquery.com/category/deferred-object/                                         |
 | 2015   | ビルトインオブジェクト               | Promiseオブジェクト   | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                                 | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
 | 2017   | ビルトインオブジェクト               | async/await宣言 | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。                     | ℹ️ 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+
+> ℹ️ 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
+
 
 <br>
 

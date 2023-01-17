@@ -657,17 +657,18 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ▼ アサーションメソッドによる検証
 
-> ℹ️ 参考：
->
-> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-> - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
 
 | よく使用するメソッド                      | 説明                                                                  |
 |-----------------------------------|---------------------------------------------------------------------|
 | ```Mock.On```メソッド                 | 関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。   |
 | ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。               |
 | ```assert.Exactly```メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。 |
+
+
+> ℹ️ 参考：
+>
+> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+> - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
 
 #### ▼ 前処理と後処理
 

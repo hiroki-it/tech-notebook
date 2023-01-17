@@ -73,12 +73,13 @@ helmクライアントは、リポジトリからインストールしたチャ�
 
 
 
-> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
 
 |      | URL                                            |
 |------|------------------------------------------------|
 | 形式 | ```https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>``` |
 | 例   | ```https://example.com/foo-chart```            |
+
+> ℹ️ 参考：https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
 
 #### ▼ OCIリポジトリ
 

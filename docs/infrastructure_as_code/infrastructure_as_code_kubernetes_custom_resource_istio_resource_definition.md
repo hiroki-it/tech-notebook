@@ -1149,14 +1149,15 @@ spec:
 
 
 
-> ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
-| 項目       | 説明             |
-|------------|----------------|
-| UNSET      | 調査中...        |
-| DISABLE    | 相互TLSを使用しない。 |
-| PERMISSIVE | 調査中...        |
-| STRICT     | 相互TLSを使用する。  |
+| 項目       | 説明                                    |
+|------------|---------------------------------------|
+| UNSET      | 調査中...                                |
+| DISABLE    | 相互TLSを使用しない。                          |
+| PERMISSIVE | 相互TLSの時、プロトコルはHTTPSとHTTPの両方を許可する。     |
+| STRICT     | 相互TLSの時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
+
+> ℹ️ 参考：https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
 **＊実装例＊**
 

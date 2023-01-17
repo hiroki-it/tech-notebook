@@ -70,12 +70,6 @@ ENTRYPOINT ["/app"]
 
 #### ▼ ベースイメージの種類
 
-> ℹ️ 参考：
->
-> - https://prograshi.com/platform/docker/docker-image-tags-difference/
-> - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
-> - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
-
 | ベースイメージの種類名 | 接尾辞                                                 | 説明                                           | OSの有無      | ユーティリティの有無  | パッケージマネージャー系統の有無       |
 |----------------|--------------------------------------------------------|-----------------------------------------------|--------------|--------------|----------------------------|
 | distribution型 | ```scratch```                                          | パッケージを何もインストールしていない。                          | 無           | 無            | 無                         |
@@ -84,6 +78,13 @@ ENTRYPOINT ["/app"]
 |                | ```slim```                                             | 最もオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。 | イメージによる      | 有            | イメージによる                    |
 |                | 接尾辞なし                                               | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。   | イメージによる      | 有            | イメージによる                    |
 | distroless型   | 接尾辞なし                                               | 最小限のパッケージのみをインストールしている。                     | イメージによる      | 有（非常に少ない） | イメージによる                    |
+
+
+> ℹ️ 参考：
+>
+> - https://prograshi.com/platform/docker/docker-image-tags-difference/
+> - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
+> - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
 
 #### ▼ 対応できるCPUアーキテクチャの種類
 
@@ -118,7 +119,6 @@ $ docker inspect <コンテナ名>
 
 
 
-> ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 | バージョン例      | 追跡できるバージョンアップ                                |
 |--------------|----------------------------------------------|
@@ -126,6 +126,8 @@ $ docker inspect <コンテナ名>
 | ```2.0```    | 『```2.0.X```』のマイナーアップデートのみを追跡する。             |
 | ```2```      | 『```2.X```』と『```2.0.X```』のマイナーアップデートのみを追跡する。 |
 | ```latest``` | メジャーアップデートとマイナーアップデートを追跡する。                  |
+
+> ℹ️ 参考：https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
 
 <br>
 

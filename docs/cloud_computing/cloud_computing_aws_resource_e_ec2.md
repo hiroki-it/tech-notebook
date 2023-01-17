@@ -91,12 +91,13 @@ AMIのOSのバージョンによっては、新しく登場したインスタン
 
 
 
-> ℹ️ 参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
 |      | 機能名                                                                     |
 |------|----------------------------------------------------------------------------|
 | 世代 | ```t2```、```t3```、```t3a```、```t4g```、```a1```                             |
 | 大きさ | ```nano```、```small```、```medium```、```large```、```xlarge```、```2xlarge``` |
+
+> ℹ️ 参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
 #### ▼ CPUバーストモード
 
@@ -190,7 +191,6 @@ EC2インスタンスのライフサイクルにはフェーズがある。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 | フェーズ名        | 説明                                       |
 |---------------|------------------------------------------|
@@ -200,6 +200,8 @@ EC2インスタンスのライフサイクルにはフェーズがある。
 | stopped       | インスタンスの停止が完了した。                        |
 | shutting-down | インスタンスを削除している途中である。                    |
 | terminated    | インスタンスの削除が完了した。                        |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 
 <br>
 
@@ -258,13 +260,14 @@ EBSボリュームを持つEC2インスタンスを作成するAMIのこと。
 
 ### AMIの共有
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
 
 | 共有先             | 説明 |
 |------------------|------|
 | 特定のリージョン間       | ⭕️   |
 | 特定のアカウント間       | ⭕️   |
 | 全てのアカウント間（パブリック） | ⭕️   |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
 
 <br>
 
