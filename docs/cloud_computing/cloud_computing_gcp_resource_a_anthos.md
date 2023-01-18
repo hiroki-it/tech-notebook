@@ -73,7 +73,6 @@ Traffic Director、Mesh CA、Managed backends、から構成される。
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_service_mesh.png)
 
-
 > ℹ️ 参考：
 > 
 > - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
@@ -473,8 +472,8 @@ $ ./asmcli install \
 $ kubectl get pod -n istio-system -l istio.io/rev
 
 NAME                       READY   STATUS    RESTARTS   AGE   REV
-istiod-asm-1137-1-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
-istiod-asm-1137-1-*****    1/1     Running   0          68m   asm-1137-0
+istiod-asm-1137-0-*****    1/1     Running   0          68m   asm-1137-0 # 旧バージョンのリビジョン番号
+istiod-asm-1137-0-*****    1/1     Running   0          68m   asm-1137-0
 istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1 # 新バージョンのリビジョン番号
 istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
 ```
@@ -483,13 +482,16 @@ istiod-asm-1141-1-*****    1/1     Running   0          27s   asm-1143-1
 
 ```bash
 $ kubectl get namespace -L istio.io/rev
+
+NAME   STATUS    AGE     REV
+app    Active    2d18h   stable
 ```
 
 （３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
-$ kubectl label namespace foo-namespace istio.io/rev=<新バージョンのリビジョン番号> istio-injection- --overwrite
+$ kubectl label namespace foo-namespace istio.io/rev=asm-1143-1 istio-injection- --overwrite
 ```
 
 （４）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的に注入する。
@@ -506,10 +508,11 @@ $ kubectl get pod \
     -n foo-namespace \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
 
-gcr.io/gke-release/asm/proxyv2:<新バージョンのリビジョン番号>-asm.1
+
+gcr.io/gke-release/asm/proxyv2:1.14.3-asm.1
 ```
 
-（６）webhookサーバーにポートフォワーディングするためのServiceの設定を更新する。
+（６）webhookサーバーにポートフォワーディングするためのServiceを更新する。ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
 ```bash
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
@@ -523,7 +526,7 @@ metadata:
   labels:
     app: istiod
     istio: pilot
-    istio.io/rev: asm-1143-1
+    istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
     release: istio
 spec:
   ports:
@@ -545,19 +548,21 @@ spec:
       targetPort: 15014
   selector:
     app: istiod
-    istio.io/rev: asm-1143-1
+    istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
 ```
+
+> ℹ️ 参考：https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml
 
 （７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。
 
 
 ```bash
-# 新バージョンのリビジョン番号：asm-1143-1
-$ ./tmp/istioctl tag set default --revision <新バージョンのリビジョン番号>
+# 新バージョンのリビジョン番号の例：asm-1143-1
+$ ./tmp/istioctl tag set default --revision asm-1143-1
 
 $ ./tmp/istioctl tag list
 
-TAG     REVISION   NAMESPACES
+TAG     REVISION    NAMESPACES
 default asm-1143-1 
 ```
 
@@ -566,17 +571,23 @@ default asm-1143-1
 
 ```bash
 # 旧バージョンのリビジョン番号：asm-1137-0
-$ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-<旧バージョンのリビジョン番号> -n istio-system --ignore-not-found=true
+$ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget istiod-asm-1137-0 -n istio-system --ignore-not-found=true
 ```
 
-（９）旧バージョンのIstioOperatorを削除する。
+（９）旧バージョンのValidatingWebhookConfigurationを削除する。
+
+```bash
+$ kubectl delete validatingwebhookconfiguration istio-validator-asm-1143-1-istio-system -n istio-system --ignore-not-found=true
+```
+
+（１０）旧バージョンのIstioOperatorを削除する。
 
 ```bash
 # 旧バージョンのリビジョン番号：asm-1137-0
-$ kubectl delete IstioOperator installed-state-<旧バージョンのリビジョン番号> -n istio-system
+$ kubectl delete IstioOperator installed-state-asm-1137-0 -n istio-system
 ```
 
-（１０）全てのPodが正常に稼働していることを確認する。
+（１１）全てのPodが正常に稼働していることを確認する。
 
 ```bash
 $ kubectl get pod -A -o wide

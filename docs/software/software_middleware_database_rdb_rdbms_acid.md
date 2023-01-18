@@ -515,5 +515,18 @@ SQLの種類に合わせてツールが用意されている。
 | PostgreSQL | Barman               | ℹ️ 参考：https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
 | MariaDB    | Xpand                | ℹ️ 参考：https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
 
+```bash
+# 例えば、一週間分の保管期間を設定した場合
+$ barman list-backup <バックアップ名>
+
+<バックアップ名> 20230118T012202 - Wed Jan 18 03:35:34 2023 - Size: 10.0 GiB - WAL Size: 0 B
+<バックアップ名> 20230117T012201 - Tue Jan 17 03:30:45 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230116T012202 - Mon Jan 16 03:27:16 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230115T012201 - Sun Jan 15 03:34:05 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230114T012202 - Sat Jan 14 03:31:13 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230113T012201 - Fri Jan 13 03:27:51 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230112T012202 - Thu Jan 12 03:35:14 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+<バックアップ名> 20230111T012202 - Wed Jan 11 03:32:00 2023 - Size: 10.0 GiB - WAL Size: 10.0 MiB
+```
 
 <br>

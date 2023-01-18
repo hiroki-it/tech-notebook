@@ -46,10 +46,16 @@ description: ハードウェアリソース管理＠Kubernetesの知見を記録
 
 #### ▼ metrics-serverの場合
 
+以下のようなConfigMapを作成する。
+
+```addonmanager.kubernetes.io/mode```キーに```EnsureExists```を設定しないと、addon-managerがデフォルト値に上書きしてしまう。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
   name: metrics-server-config
   namespace: kube-system
 data:
@@ -60,6 +66,8 @@ data:
     memoryPerNode: 20Mi
     cpuPerNode: 1m
 ```
+
+> ℹ️ 参考：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager
 
 <br>
 
