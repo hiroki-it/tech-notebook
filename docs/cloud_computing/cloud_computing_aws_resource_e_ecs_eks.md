@@ -17,27 +17,6 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 ## 01. ECS、EKS：Elastic Container/Kubernetes Service
 
-### EKSとKubernetesの対応
-
-> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
-
-![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
-
-| Kubernetes上でのリソース名       | EKS上でのリソース名               | 補足                                                                                                                                                                                                                                                                     |
-|----------------------------|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cluster                    | EKS Cluster                 | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                   |
-| Ingress                    | ALB Ingress                 | IngressはALB Ingressに置き換える必要がある。AWS LBコントローラーを作成すると、ALB Ingressは自動的に作成される。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| Ingressコントローラー             | AWS LBコントローラー               | ALB Ingressを自動的に作成する。ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                          |
-|                            | API Gateway+NLB             | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                               |
-| コントロールプレーン                 | EKSコントロールプレーン               | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                                          |
-| ワーカーNode                   | FargateワーカーNode、EC2ワーカーNode | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                |
-| PersistentVolume           | EBS、EFS                     | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                    |
-| Secret                     | Secrets Manager             | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                             |
-| ServiceAccount、UserAccount | IAMユーザー                     | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
-| Role、ClusterRole           | IAMロール                      | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
-
-<br>
-
 ### コントロールプレーンとデータプレーンの対応関係
 
 | コントロールプレーン（コンテナオーケストレーション環境） | データプレーン（コンテナ実行環境） | 説明                                                                                          |
@@ -47,17 +26,19 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 <br>
 
-### コントロールプレーン
+## 01-02. コントロールプレーン
 
-#### ▼ コントロールプレーンとは
+### コントロールプレーンとは
 
 コンテナオーケストレーションを実行する環境を提供する。
 
 データプレーンのVPC外に存在している。
 
+<br>
 
+### ECSの場合
 
-#### ▼ ECSの場合
+#### ▼ 仕組み
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
@@ -66,8 +47,11 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 > ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
 
+<br>
 
-#### ▼ EKSの場合
+### EKSの場合
+
+#### ▼ 仕組み
 
 開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
 
@@ -76,14 +60,23 @@ description: ECS、EKS＠Eで始まるAWSリソースの知見を記録してい
 
 > ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
+#### ▼ パブリックアクセス/プライベートアクセス
+
+kube-apiserverのインターネットへの公開範囲を設定できる。
+
+プライベートアクセスの場合、VPC内部からのみアクセスできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
 
 <br>
 
-### データプレーン
+## 01-03. データプレーン
 
-#### ▼ データプレーンとは
+### データプレーンとは
 
 コンテナの実行環境のこと。『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがECSの実行環境（```execution environment```）の意味合いを持つからである。
+
+<br>
 
 #### ▼ EC2ワーカーNodeの場合
 
@@ -937,6 +930,26 @@ aws ecs execute-command \
 
 ## 03. EKSデータプレーン
 
+### EKSとKubernetesの対応
+
+> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+
+![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
+
+| Kubernetes上でのリソース名       | EKS上でのリソース名                 | 補足                                                                                                                                                                                                                                                                     |
+|----------------------------|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Cluster                    | EKS Cluster                 | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                   |
+| Ingress                    | ALB Ingress                 | IngressはALB Ingressに置き換える必要がある。AWS LBコントローラーを作成すると、ALB Ingressは自動的に作成される。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| Ingressコントローラー             | AWS LBコントローラー               | ALB Ingressを自動的に作成する。ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                          |
+|                            | API Gateway + NLB           | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                               |
+| コントロールプレーン                 | EKSコントロールプレーン               | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                                          |
+| ワーカーNode                   | FargateワーカーNode、EC2ワーカーNode | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                |
+| PersistentVolume           | EBS、EFS                     | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                    |
+| Secret                     | Secrets Manager             | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                             |
+| ServiceAccount、UserAccount | IAMユーザー                     | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
+| Role、ClusterRole           | IAMロール                      | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
+
+
 ### EKS Cluster
 
 #### ▼ EKS Clusterとは
@@ -1179,7 +1192,7 @@ $ kubectl apply -f service-account.yml
 （５）トークンの文字列を取得する。
 
 ```bash
-$ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+$ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')
 ```
 
 （６）ローカルマシンからEKSにポートフォワーディングを実行する。
@@ -1525,7 +1538,7 @@ for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
   echo $ns
   kubectl get pods -n $ns -o json \
     | jq -r '.items[] | select(.status.phase == "Failed") | select(.status.reason == "Shutdown" or .status.reason == "NodeShutdown" or .status.reason == "Terminated") | .metadata.name' \
-    | xargs --no-run-if-empty --max-args=100 --verbose kubectl -n $ns delete pods
+    | xargs --no-run-if-empty --max-args=100 --verbose kubectl delete pods -n $ns 
 done
 ```
 

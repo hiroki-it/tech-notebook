@@ -245,7 +245,7 @@ metadata:
 
 #### ▼ istio-injection
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。```istio.io/rev```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio-injection```キーを使用する場合、Istioのアップグレードがインプレース方式になる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
 
@@ -284,7 +284,7 @@ metadata:
 
 #### ▼ istio.io/rev
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的に注入するか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 **＊実装例＊**
 
@@ -345,7 +345,7 @@ spec:
   template:
     metadata:
       annotations:
-        istio.io/rev: 1-12-1
+        istio.io/rev: 1-0-0
 ```
 
 #### ▼ proxy.istio.io/config.configPath

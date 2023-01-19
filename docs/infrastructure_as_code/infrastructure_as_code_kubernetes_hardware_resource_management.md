@@ -170,8 +170,11 @@ deschedulerは、Podを再スケジューリングする。
 
 deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
 
+このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
+
 > ℹ️ 参考：
 >
+> - https://sreake.com/blog/kubernetes-descheduler/
 > - https://torumakabe.github.io/post/k8s_descheduler/
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
 

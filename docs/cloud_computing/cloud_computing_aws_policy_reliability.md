@@ -252,7 +252,6 @@ OSI層とAWSリソースの対応関係を以下に示す。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
 
 | メトリクス名                  | 単位   | 説明                                                                         | アラート条件例（合致したら発火）                                            |
 |--------------------------|--------|----------------------------------------------------------------------------|--------------------------------------------------------------------|
@@ -261,13 +260,14 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | ```4XXError```           | カウント   | ```400```系ステータスコードの数をデータポイントとする。                                           | ・統計 : 期間内合計数<br>・期間 : ```24```時間<br>・閾値 : ```>= 1``` |
 | ```5XXError```           | カウント   | ```500```系ステータスコードの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 1```    |
 
+> ℹ️ 参考：https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
+
 #### ▼ EC2
 
 名前空間をEC2としたメトリクスの監視ポリシーは以下の通りである。
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
 
 | メトリクス名                          | 単位 | 説明                                                                                                                                                                                                                                                                                 | アラート条件例（合致したら発火）                                              |
 |----------------------------------|------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
@@ -275,6 +275,15 @@ OSI層とAWSリソースの対応関係を以下に示す。
 | ```MemoryUtilization```          | %    | EC2インスタンスで使用されているメモリ使用率をデータポイントとする。                                                                                                                                                                                                                                             | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |
 | ```StatusCheckFailed_Instance``` | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                                      |
 | ```StatusCheckFailed_System```   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks                                                                          |                                                                      |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
+
+
+似たメトリクスに```StatusCheckFailed_System```や```StatusCheckFailed_Instance```がある。
+
+これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。
+
+> ℹ️ 参考：https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html
 
 #### ▼ ECS
 
@@ -338,13 +347,14 @@ RDSのコンソール画面にも同じメトリクスが表示されるが、�
 
 
 
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
 
 | メトリクス名                   | 単位  | 説明                                                                          | アラート条件例（合致したら発火）                                              | 補足                                                         |
 |---------------------------|-------|-----------------------------------------------------------------------------|---------------------------------------------------------------|--------------------------------------------------------------|
 | ```CPUUtilization```      | %     | DBインスタンスのCPU使用率をデータポイントとする。                                                | ・統計 : 期間内平均使用率<br>・期間 : ```5```分<br>・閾値 : ```>= 80``` |                                                              |
 | ```DatabaseConnections``` | カウント  | DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br>・期間 : ```5```分<br>・閾値 : ```>= 400```    | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
 | ```FreeableMemory```      | バイト数 | DBインスタンスの使用できるメモリサイズをデータポイントとする。                                            | ・統計 : 期間内最大サイズ<br>・期間 : ```5```分<br>・閾値 : ```>= 2```GB   |                                                              |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
 
 <br>
 

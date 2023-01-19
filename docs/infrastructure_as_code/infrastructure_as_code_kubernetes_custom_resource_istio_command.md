@@ -187,7 +187,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 ### kube-injectとは
 
-```istio-proxy```コンテナを手動で注入する。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+```istio-proxy```コンテナを手動でインジェクションする。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
 > ℹ️ 参考：
 >
@@ -201,7 +201,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 #### ▼ -f
 
-指定したマニフェストのPodに```istio-proxy```コンテナを注入する。
+指定したマニフェストのPodに```istio-proxy```コンテナをインジェクションする。
 
 ```bash
 $ istioctl kube-inject -f pod.yaml

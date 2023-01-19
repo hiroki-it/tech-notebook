@@ -990,7 +990,7 @@ baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 
 **＊例＊**
 
-istioのコンテナ注入が有効されているNamespaceを確認するため、```istio.io/rev```キーを取得する。
+istioのコンテナインジェクションが有効されているNamespaceを確認するため、```istio.io/rev```キーを取得する。
 
 
 

@@ -203,7 +203,7 @@ spec:
 
 ### istio-sidecar-injector-configuration
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。そのため、Istioが起動に失敗し続けると、サイドカーコンテナの注入を有効しているPodがいつまでも作成されないことになる。
+Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。```webhooks.failurePolicy```キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -351,7 +351,7 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 
 ```bash
 # ポートフォワーディングを実行する。
-$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+$ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system 
 
 $ go tool pprof -http=:8080 localhost:15014/debug/pprof/heap
 
@@ -430,7 +430,7 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 ```bash
 # ポートフォワーディングを実行する。
-$ kubectl -n istio-system port-forward svc/istiod-<リビジョン番号> 15014
+$ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system 
 
 # デバッグダッシュボードにアクセスする。
 $ curl http://127.0.0.1:15014/debug

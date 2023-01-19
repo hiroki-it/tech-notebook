@@ -266,7 +266,7 @@ GCPのAPIを介して、他のクラウドプロバイダー（例：AWS、Azure
 
 <br>
 
-## bmctlコマンド
+## 03. bmctlコマンド
 
 ### check preflight
 
@@ -328,8 +328,8 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reu
 （１）```bmctl```コマンドをインストールする。Anthos GKE Clusterと```bmctl```コマンドのバージョンには対応関係がある。
 
 ```bash
-$ gsutil cp gs://anthos-baremetal-release/bmctl/1.12.1/linux-amd64/bmctl bmctl
-$ chmod a+x bmctl
+$ gsutil cp gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl bmctl-1.12.0
+$ chmod a+x bmctl-1.12.0
 ```
 
 #### ▼ オンプレミス環境の場合
@@ -369,11 +369,20 @@ spec:
 > ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 
+（３）```docker```プロセスが起動しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。 ワークステーション（仮想サーバー）上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
 
-（３）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを```tail```コマンドで確認する。
+```bash
+$ systemctl status docker
+```
+
+（４）```bmctl```コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。また、ログの出力先が表示されるため、このログを```tail```コマンドで確認する。
 
 
 ```bash
+# カレントディレクトリは、baremetalである必要がある。
+$ pwd
+baremetal
+
 $ ~/baremetal/bmctl upgrade cluster \
     -c <Cluster名> \
     --kubeconfig <kubeconfigファイルへのパス>
@@ -384,7 +393,15 @@ $ ~/baremetal/bmctl upgrade cluster \
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
 > - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
 
-（４）Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
+（５）ログの出力先が表示されるので、```tail```コマンドで確認する。
+
+```bash
+$ tail -f ~/baremetal/<ログの出力先>
+```
+
+（６）アップグレードが始まる。コントロールプレーンコンポーネントやNodeコンポーネントからエラーが発生するため、アラートで確認する。
+
+（７）アップグレードが終了する。Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
 ```bash
 $ kubectl get cluster -A -o yaml
@@ -399,6 +416,20 @@ spec:
 ...
 ```
 
+（８）各NodeのKubernetesのバージョンが新しくなったことを確認する
+
+```bash
+$ kubectl get node -o wide
+```
+
+> ℹ️ 参考：https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
+
+（９）Crash、Terminating、Error、などのPodがいないかを確認する。
+
+```bash
+$ kubectlget pod -A -o wide
+```
+
 <br>
 
 ### Istioのアップグレード
@@ -408,8 +439,10 @@ spec:
 （１）```asmcli```コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
 
 ```bash
-$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_<バージョン系> > asmcli
+$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.15 > asmcli-1.15.2
 ```
+
+> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
 
 #### ▼ GCP環境の場合
 
@@ -419,6 +452,7 @@ $ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_<バージョン�
 
 （２）```asmcli```コマンドを使用して、新バージョンのIstiodコントロールプレーンをインストールする。
 
+参考：https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
 
 ```bash
 $ ./asmcli install \
@@ -434,9 +468,17 @@ $ ./asmcli install \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
 ```
 
-> ℹ️ 参考：https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+（２）Istiodコントロールプレーンがデプロイされたことを確認する。
+
+```bash
+$ kubectl get all -n istio-system
+```
 
 
+> ℹ️ 参考：
+> 
+> - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja
 
 #### ▼ GCP環境以外（オンプレミス環境、ベアメタル環境、他のクラウドプロバイダー環境）の場合
 
@@ -456,6 +498,12 @@ $ ./asmcli install \
     `# Mesh CAを有効化する。` \
     --ca mesh_ca \
     --custom_overlay ./foo/<IstioOperatorのマニフェスト>
+```
+
+（２）Istiodコントロールプレーンがデプロイされたことを確認する。
+
+```bash
+$ kubectl get all -n istio-system
 ```
 
 #### ▼ 共通の事後処理
@@ -487,20 +535,20 @@ NAME   STATUS    AGE     REV
 app    Active    2d18h   stable
 ```
 
-（３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナを注入するために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
+（３）Istioの```istio.io/rev```キーを使用して```istio-proxy```コンテナをインジェクションするために、Namespaceの既存の```istio-injection```キーを上書きする。これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは```istio.io/rev```キーを推奨している。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
 $ kubectl label namespace foo-namespace istio.io/rev=asm-1143-1 istio-injection- --overwrite
 ```
 
-（４）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的に注入する。
+（４）Podを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。
 
 ```bash
 $ kubectl rollout restart deployment foo-deployment -n foo-namespace
 ```
 
-（５）新バージョンの```istio-proxy```コンテナが注入されたことを、イメージタグから確認する。
+（５）新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
 
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
