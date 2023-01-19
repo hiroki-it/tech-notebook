@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Anthos＠GCP
-description: Anthos＠GCPの知見を記録しています。
+title: 【IT技術の知見】アップグレード＠Anthos
+description: アップグレード＠Anthosの知見を記録しています。
 ---
 
-# Anthos＠GCP
+# アップグレード＠Anthos
 
 ## はじめに
 
@@ -174,7 +174,35 @@ $ ./asmcli install \
 
 ```bash
 $ kubectl get all -n istio-system
+
+# Deployment
+NAME                  READY   STATUS    RESTARTS   AGE
+istiod                1/1     Running   0          1m
+istiod-canary         1/1     Running   0          1m  # 新しい方
+
+# Service
+NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+istiod          ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+istiod-canary   ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+
 ```
+
+```bash
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
+
+NAME                            WEBHOOKS   AGE
+istio-sidecar-injector          1          7m56s
+istio-sidecar-injector-canary   1          3m18s # 新しい方
+```
+
+
+> ℹ️ 参考：
+>
+> - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
+> - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja
+> - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
+
 
 （３）共通の事後手順を参照。
 
@@ -208,12 +236,30 @@ $ ./asmcli install \
 
 （２）Istiodコントロールプレーンがデプロイされたことを確認する。
 
+
 ```bash
 $ kubectl get all -n istio-system
+
+# Deployment
+NAME                  READY   STATUS    RESTARTS   AGE
+istiod                1/1     Running   0          1m
+istiod-canary         1/1     Running   0          1m  # 新しい方
+
+# Service
+NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+istiod          ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+istiod-canary   ClusterIP   10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+
 ```
 
-（３）共通の事後手順を参照。
+```bash
+# MutatingWebhookConfiguration
+$ kubectl get mutatingwebhookconfigurations
 
+NAME                            WEBHOOKS   AGE
+istio-sidecar-injector          1          7m56s
+istio-sidecar-injector-canary   1          3m18s # 新しい方
+```
 
 
 > ℹ️ 参考：
@@ -221,6 +267,12 @@ $ kubectl get all -n istio-system
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview?hl=ja#transitioning_from_install_asm
 > - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade?hl=ja#about_canary_upgrades
 > - https://istio.io/latest/docs/setup/upgrade/canary/
+
+
+（３）共通の事後手順を参照。
+
+
+
 
 <br>
 
@@ -255,7 +307,7 @@ $ kubectl get namespace app -o yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ingress
+  name: istio-ingress
   labels:
     istio.io/rev: <リビジョン番号>
 ```
@@ -303,7 +355,7 @@ $ kubectl get namespace -L istio.io/rev
 （４）IngressGatewayのPodを再スケジューリングし、新バージョンの```istio-proxy```コンテナを自動的にインジェクションする。カナリア方式のため、webhook-serviceがそのままで新しい```istio-proxy```コンテナをインジェクションできる。
 
 ```bash
-$ kubectl rollout restart deployment istio-ingressgateway -n ingress
+$ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 ```
 
 （５）新バージョンの```istio-proxy```コンテナがインジェクションされたことを、イメージタグから確認する。
@@ -311,7 +363,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n ingress
 ```bash
 # 新バージョンのリビジョン番号：asm-1143-1
 $ kubectl get pod \
-    -n ingress \
+    -n istio-ingress \
     -o jsonpath={.items[*].spec.containers[*].image} | sed 's/ /\n/g' && echo
 
 
@@ -346,16 +398,18 @@ gcr.io/gke-release/asm/proxyv2:1.14.3-asm.1
 > - https://istio.io/latest/docs/setup/upgrade/canary/#data-plane
 
 
-#### ▼ 新しいIstiodでwebhookを受信できるように変更する。
+#### ▼ webhookの向き先を新しいIstiodに完全に変更
 
-（６）新しいIstiodでwebhookを受信できるように、webhook-serviceを更新する。ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
+（６）Istioのvalidating-admission時を経由するService更新する。ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
 ```bash
 $ kubectl diff -f ./asm/istio/istiod-service.yaml
 
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
 ```
+
 ```yaml
+# https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -389,9 +443,7 @@ spec:
     istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
 ```
 
-> ℹ️ 参考：https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml
-
-（７）MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+（７）Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 
 ```bash
