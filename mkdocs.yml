@@ -359,8 +359,9 @@ nav:
               - ■ Eで始まるAWSリソース:
                   - Eで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_e.md
                   - EC2: cloud_computing/cloud_computing_aws_resource_e_ec2.md
-                  - ECS、EKS: cloud_computing/cloud_computing_aws_resource_e_ecs_eks.md
+                  - ECS: cloud_computing/cloud_computing_aws_resource_e_ecs.md
                   - EFS: cloud_computing/cloud_computing_aws_resource_e_efs.md
+                  - EKS: cloud_computing/cloud_computing_aws_resource_e_eks.md
                   - ︎ElastiCache: cloud_computing/cloud_computing_aws_resource_e_elasticache.md
               - Fで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_f.md
               - Gで始まるAWSリソース: cloud_computing/cloud_computing_aws_resource_g.md
