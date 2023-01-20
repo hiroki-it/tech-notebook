@@ -27,7 +27,7 @@ description: ECS＠Eで始まるAWSリソースの知見を記録しています
 
 #### ▼ 仕組み
 
-開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
+ECSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。
 
 ![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane.png)
 
@@ -140,6 +140,132 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 | Stopped         | ECSタスク全体が停止した。                                          | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html          |
 
 <br>
+
+
+### マルチECSサービス
+
+#### ▼ マルチECSサービスとは
+
+ECSクラスターが複数のECSサービスから構成される。
+
+マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。
+
+ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
+
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
+
+
+> ℹ️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+
+
+#### ▼ ECSサービスディスカバリー
+
+Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信できるようにする。
+
+![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
+
+
+> ℹ️ 参考：
+>
+> - https://practical-aws.dev/p/ecs-service-discovery/
+> - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
+> - https://dev.classmethod.jp/articles/ecs-service-discovery/
+
+
+<br>
+
+## 03-02. ネットワーク
+
+
+### ネットワークモードとコンテナ間通信
+
+#### ▼ noneモード
+
+外部ネットワークが無く、タスクと外と通信できない。
+
+
+
+#### ▼ hostモード
+
+EC2でのみ使用できる。
+
+Dockerのhostネットワークに相当する。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ▼ bridgeモード
+
+EC2でのみ使用できる。
+
+Dockerのbridgeネットワークに相当する。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ▼ awsvpcモード
+
+FargateとEC2の両方で使用できる。awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナ間でパケットを送受信する時（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、加えてコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
+
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
+
+<br>
+
+### プライベートサブネット内からのアウトバウンド通信
+
+#### ▼ プライベートサブネット内へのデータプレーンの配置
+
+プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。
+
+パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
+
+
+
+#### ▼ パブリックネットワークに対する通信
+
+データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。
+
+
+
+#### ▼ VPC外のAWSリソースに対する通信
+
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+
+もしNAT Gatewayを設置したとする。
+
+この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+
+
+
+> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
+
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
+
+代わりとして、VPCエンドポイントを設置する。
+
+より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
+
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
+
+<br>
+
+## 03-03. セキュリティ
+
 
 ### ロール
 
@@ -295,126 +421,11 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 
 <br>
 
-### ネットワークモードとコンテナ間通信
-
-#### ▼ noneモード
-
-外部ネットワークが無く、タスクと外と通信できない。
-
-
-
-#### ▼ hostモード
-
-EC2でのみ使用できる。
-
-Dockerのhostネットワークに相当する。
-
-
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
-
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
-
-#### ▼ bridgeモード
-
-EC2でのみ使用できる。
-
-Dockerのbridgeネットワークに相当する。
-
-
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
-
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
-
-#### ▼ awsvpcモード
-
-FargateとEC2の両方で使用できる。awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナ間でパケットを送受信する時（例：NginxコンテナからPHP-FPMコンテナへのルーティング）は、通信元コンテナにて、通信先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが```9000```番ポートでインバウンド通信を受信し、加えてコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
-
-> ℹ️ 参考：
->
-> - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
-> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
-
-![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
-
 <br>
 
-### マルチECSサービス
+## 03-04. 監視
 
-#### ▼ マルチECSサービスとは
-
-ECSクラスターが複数のECSサービスから構成される。
-
-マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。
-
-ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
-
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
-
-
-> ℹ️ 参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
-
-
-#### ▼ ECSサービスディスカバリー
-
-Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信できるようにする。
-
-![ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_service-discovery.png)
-
-
-> ℹ️ 参考：
->
-> - https://practical-aws.dev/p/ecs-service-discovery/
-> - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
-> - https://dev.classmethod.jp/articles/ecs-service-discovery/
-
-
-<br>
-
-### プライベートサブネット内からのアウトバウンド通信
-
-#### ▼ プライベートサブネット内へのデータプレーンの配置
-
-プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。
-
-パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
-
-
-
-#### ▼ パブリックネットワークに対する通信
-
-データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。
-
-
-
-#### ▼ VPC外のAWSリソースに対する通信
-
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース（例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
-
-もしNAT Gatewayを設置したとする。
-
-この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
-
-
-
-> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
-
-![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
-
-代わりとして、VPCエンドポイントを設置する。
-
-より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。
-
-
-
-> ℹ️ 参考：https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
-
-![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_control-plane_vpc-endpoint.png)
-
-<br>
-
-### ログ転送
+### ログ
 
 #### ▼ awslogsドライバー
 
@@ -435,7 +446,7 @@ Route53にECSタスクの宛先情報を動的に追加削除することによ�
 
 <br>
 
-## 03-02. on-EC2
+## 04. on-EC2
 
 ### on-EC2とは
 
@@ -479,7 +490,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 03-03. on-Fargate
+## 05. on-Fargate
 
 ### on-Fargateとは
 
