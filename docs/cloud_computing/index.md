@@ -24,8 +24,9 @@
   > * ##### <u>︎Eで始まるAWSリソース</u>
   > > * ##### 📖 [︎Eで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e.html)
   > > * ##### 📖 [︎EC2](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_ec2.html)
-  > > * ##### 📖 [︎ECS、EKS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_ecs_eks.html)
+  > > * ##### 📖 [︎ECS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_ecs.html)
   > > * ##### 📖 [︎EFS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_efs.html)
+  > > * ##### 📖 [︎EKS](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_eks.html)
   > > * ##### 📖 [︎ElastiCache](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_e_elasticache.html)
   > * ##### 📖 [︎Fで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_f.html)
   > * ##### 📖 [︎Gで始まるAWSリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/cloud_computing/cloud_computing_aws_resource_g.html)

@@ -1,0 +1,856 @@
+---
+title: 【IT技術の知見】EKS＠Eで始まるAWSリソース
+description: EKS＠Eで始まるAWSリソースの知見を記録しています。
+---
+
+# EKS＠```E```で始まるAWSリソース
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+
+
+> ℹ️ 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/
+
+<br>
+
+## 01. EKS：Elastic Kubernetes Service
+
+### コントロールプレーン
+
+コンテナオーケストレーションを実行する環境を提供する。
+
+データプレーンのVPC外に存在している。
+
+> ℹ️ 参考：https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
+
+
+<br>
+
+### データプレーン
+
+#### ▼ データプレーン
+
+複数のホスト（EC2、Fargate）のOS上でコンテナオーケストレーションを実行する。
+
+
+『```on-EC2```』『```on-Fargate```』という呼び方は、データプレーンがEKSの実行環境（```on environment```）の意味合いを持つからである。
+
+
+データプレーンのVPC外に存在している。
+
+#### ▼ 仕組み
+
+開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
+
+![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_control-plane.png)
+
+> ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
+
+
+<br>
+
+
+### データプレーン
+
+#### ▼ データプレーンとは
+
+コンテナの実行環境（ホスト）のこと。
+
+
+<br>
+
+## 02. コントロールプレーンのコンポーネント
+
+### 対応関係
+
+| コントロールプレーン上のAWSリソース | Kubernetesリソース         | 補足                                                                                                                                                                                                                                                                     |
+|---------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EKSコントロールプレーン       | コントロールプレーンNode             | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                                          |
+
+<br>
+
+### kube-apiserver
+
+#### ▼ RBAC
+
+認証認可に関するKubernetesリソースと、AWSのIAMユーザーを紐づける仕組み。
+
+![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_auth_architecture.png)
+
+（１）IAMユーザーと紐づいた```kubectl```クライアントが、コントロールプレーンにリクエストを送信する。kube-apiserverは、aws-iam-authenticator-serverにWebhookを送信する。admission-controllersアドオンのWebhookではないことに注意する。
+
+（２）aws-iam-authenticator-serverは、IAM APIを使用してIAMユーザーを認証する。
+
+（３）もし認証に成功していた場合に、aws-iam-authenticator-serverは、ConfigMap（aws-auth）から、IAMユーザーに紐づくUserAccountを取得する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapAccounts: []
+  mapUsers: []
+  mapRoles: |
+    - rolearn: arn:aws:iam::<アカウントID>:role/foo-role # IAMロール名
+      username: foo-iam-user # IAMユーザー名
+      groups:
+        - system:masters # ClusterRoleBindingに定義されたGroup名
+    - rolearn: arn:aws:iam::<アカウントID>:role/bar-role # ワーカーNodeに紐づけたロール名
+      username: system:node:{{EC2PrivateDNSName}} # ワーカーNodeの識別子
+      groups:
+        - system:bootstrappers
+        - system:nodes
+```
+
+（４）aws-iam-authenticator-serverは、kube-apiserverにUserAccountを含むレスポンスを返信する。
+
+（５）あとは、Kubernetesの標準の認可の仕組みである。kube-apiserverは、認可ステップでUserAccountに紐づくClusterRoleを取得する。```kubectl```クライアントは、Kubernetesリソースを操作できる。
+
+
+> ℹ️ 参考：
+>
+> - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
+> - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
+> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
+> - https://dev.to/aws-builders/eks-auth-deep-dive-4fib
+
+#### ▼ IRSA：IAM Roles for Service Accounts
+
+KubernetesのServiceAccountにAWSのIAMロールを紐づける仕組み。
+
+IRSAが登場するまでは、EKS上でのワーカーNode（例：EC2、Fargate）にしかIAMロールを紐づけることができず、KubernetesリソースにIAMロールを直接的に紐づけることはできなかった。
+
+
+
+> ℹ️ 参考：
+>
+> - https://www.bigtreetc.com/column/eks-irsa/
+> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
+
+
+#### ▼ パブリックアクセス/プライベートアクセス
+
+kube-apiserverのインターネットへの公開範囲を設定できる。
+
+プライベートアクセスの場合、VPC内部からのみアクセスできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。
+
+> ℹ️ 参考：https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
+
+
+<br>
+
+## 03. データプレーンのコンポーネント
+
+### 対応関係
+
+> ℹ️ 参考：https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+
+![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks.png)
+
+| データプレーン上のAWSリソース            | Kubernetesリソース         | 補足                                                                                                                                                                                                                                                                     |
+|-----------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| FargateワーカーNode、EC2ワーカーNode | ワーカーNode               | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                |
+| EKS Cluster                 | Cluster                | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                   |
+| ALB Ingress                 | Ingress                | IngressはALB Ingressに置き換える必要がある。AWS LBコントローラーを作成すると、ALB Ingressは自動的に作成される。<br>ℹ️ 参考：<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| AWS LBコントローラー               | Ingressコントローラー         | ALB Ingressを自動的に作成する。ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                          |
+| API Gateway + NLB           |                        | ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                               |
+| EBS、EFS                     | PersistentVolume       | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                    |
+| Secrets Manager             | Secret                 | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                             |
+| IAMユーザー                     | ServiceAccount、UserAccount | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
+| IAMロール                      | Role、ClusterRole       | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                              |
+
+<br>
+
+### セットアップ
+
+#### ▼ コンソール画面
+
+| 設定項目         | 説明                                                   | 補足                                                                                                                                                                                                                                  |
+|------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 名前             | クラスターの名前を設定する。                                     |                                                                                                                                                                                                                                       |
+| Kubernetesバージョン  | EKS上で稼働するKubernetesのバージョンを設定する。                   | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                          |
+| クラスターサービスロール     | EKS Clusterのサービスリンクロールを設定する。                         | ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                        |
+| シークレット           | Secretに保持するデータをAWS KMSの暗号化キーで暗号化するか否かを設定する。 |                                                                                                                                                                                                                                       |
+| VPC、サブネット        | ENIを配置するサブネットを設定する。                                | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                               |
+| クラスターセキュリティグループ  | EKS Clusterのセキュリティグループを設定する。                         | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって```eks-cluster-sg-<EKS Cluster名>```というセキュリティグループも自動設定される。<br>ℹ️ 参考：https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー |                                                        |                                                                                                                                                                                                                                       |
+| CIDRブロック         |                                                        |                                                                                                                                                                                                                                       |
+| クラスターエンドポイントアクセス |                                                        |                                                                                                                                                                                                                                       |
+| ネットワークアドオン       |                                                        |                                                                                                                                                                                                                                       |
+| コントロールプレーンのログ    |                                                        |                                                                                                                                                                                                                                       |
+
+#### ▼ VPC、サブネット
+
+EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBからインバウンド通信を受信すると良い。
+
+この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。
+
+そのために、パブリックサブネットにNAT Gatewayを置く。
+
+
+
+> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+
+#### ▼ kubectlクライアント
+
+（１）AWS CLIにクレデンシャル情報を設定する。
+
+```bash
+$ aws configure
+```
+
+（２）EKSのコンテキストを作成する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+
+```bash
+$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+```
+
+（３）```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+
+```bash
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
+```
+
+
+
+### EKS Cluster
+
+#### ▼ EKS Clusterとは
+
+FargateワーカーNodeやEC2ワーカーNodeの管理グループ単位のこと。
+
+KubernetesのClusterに相当する。
+
+
+
+> ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
+
+<br>
+
+### マルチワーカーNode
+
+#### ▼ マルチワーカーNodeとは
+
+マルチワーカーNodeを作成する場合、AZごとにNodeを作成する。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
+
+![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_multi-node.png)
+
+#### ▼ ワーカーNode間のファイル共有
+
+EFSを使用して、ワーカーNode間でファイルを共有する。
+
+PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合（例：PrometheusのローカルストレージをPod間で共有したい）に役立つ。
+
+ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにするべきであり、PodのファイルはワーカーNodeの外で管理するべきである。
+
+
+
+> ℹ️ 参考：https://blog.linkode.co.jp/entry/2020/07/01/142155
+
+<br>
+
+### デバッグ
+
+#### ▼ ダッシュボード
+
+（１）EKSのコンテキストを作成する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+
+```bash
+$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+```
+
+（２）```kubectl```コマンドの向き先を、EKSのkube-apiserverに変更する。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+
+```bash
+$ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
+```
+
+（３）マニフェストを使用して、ダッシュボードのKubernetesリソースをEKSにデプロイする。
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
+```
+
+（４）ダッシュボードに安全に接続するために、ServiceAccountをEKSにデプロイする
+
+```bash
+$ kubectl apply -f service-account.yml
+```
+
+（５）トークンの文字列を取得する。
+
+```bash
+$ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')
+```
+
+（６）ローカルマシンからEKSにポートフォワーディングを実行する。
+
+```bash
+$ kubectl proxy
+```
+
+（７）ダッシュボードに接続する。
+
+```yaml
+GET http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
+```
+
+<br>
+
+## 03-02. on-Fargate（FargateワーカーNode）
+
+### セットアップ
+
+#### ▼ 制約
+
+EC2にはない制約については、以下のリンクを参考にせよ。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
+> - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
+
+#### ▼ メトリクス収集
+
+FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして設置する必要がある。
+
+収集ツールとして、OpenTelemetryをサポートしている。
+
+
+
+> ℹ️ 参考：https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
+
+#### ▼ ログルーティング
+
+FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして設置する必要がある。
+
+ロググーティングツールとして、FluentBitをサポートしている。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
+
+（１）ログ転送コンテナのためのNamespaceを作成する。名前は、必ず```aws-observability```とする。
+
+> ℹ️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: aws-observability
+  labels:
+    aws-observability: enabled
+```
+
+（２）```aws-observability```内で```aws-logging```という名前のConfigMapを作成することにより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。名前は、必ず```aws-logging```とする。
+
+> ℹ️ 参考：https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+```bash
+$ kubectl apply -f config-map.yaml
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-logging
+  namespace: aws-observability
+data:
+  output.conf: |
+    [OUTPUT]
+        Name cloudwatch
+        Match *
+        region ap-northeast-1
+        log_group_name fluent-bit-cloudwatch
+        log_stream_prefix from-fluent-bit-
+        auto_create_group true
+```
+
+（３）FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。一方で、Pod内のコンテナには認可スコープが付与されないため、Podが作成された後に必要な認可スコープ（例：コンテナがRDSにアクセスする認可スコープなど）に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+
+> ℹ️ 参考：
+>
+> - https://nishipy.com/archives/1122
+> - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
+> - https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html
+> - https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
+> - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+<br>
+
+### FargateワーカーNode
+
+#### ▼ FargateワーカーNodeとは
+
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_fargate.png)
+
+Fargate上で稼働するKubernetesのホストのこと。
+
+KubernetesのワーカーNodeに相当する。
+
+EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。
+
+一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。
+
+以下の場合は、EC2ワーカーNodeを使用するようにする。
+
+
+
+- DaemonSetが必要
+- Fargateで設定可能な最大スペックを超えたスペックが必要
+- emptyDirボリューム以外が必要
+
+> ℹ️ 参考：
+>
+> - https://www.sunnycloud.jp/column/20210315-01/
+> - https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/
+> - https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
+
+#### ▼ Fargateプロファイル
+
+Fargateを設定する。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
+
+| コンポーネント名          | 説明                                                                     | 補足                                                                                                                                                                                                                                       |
+|--------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pod実行ロール         | kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。                               | ・実行ポリシー（AmazonEKSFargatePodExecutionRolePolicy）には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、```eks-fargate-pods.amazonaws.com```を設定する必要がある。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| サブネット              | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                 |
+| ポッドセレクタ（Namespace） | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。    | ・```kube-system```や```default```を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                                          |
+| ポッドセレクタ（Label）     | EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                            |
+
+<br>
+
+## 03-03. on-EC2（EC2ワーカーNode）
+
+### EC2ワーカーNode
+
+#### ▼ EC2ワーカーNodeとは
+
+![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_on_ec2.png)
+
+EC2で稼働するKubernetesのホストのこと。
+
+Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。
+
+一方で、各EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。
+
+
+
+> ℹ️ 参考：https://www.sunnycloud.jp/column/20210315-01/
+
+<br>
+
+### EC2ワーカーNodeの最適化AMI
+
+#### ▼ EC2ワーカーNodeの最適化AMIとは
+
+任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
+
+このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。
+
+必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。
+
+EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする（例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす）といった方法でもよい。
+
+
+
+
+| AMI名                       | 説明                                                | 特に相性の良いPod                                           | 補足                                                                                                                                                                 |
+|----------------------------|---------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EKS 最適化 Amazon Linux     | EKSのための標準的なEC2インスタンスを作成できる。最も推奨。            |                                                          | ℹ️ 参考：https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami.html                                                                                |
+| EKS 最適化高速 Amazon Linux | GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。 | GPUが必要なアプリケーションの含むPod（計算処理系、機械学習系のアプリケーション） |                                                                                                                                                                      |
+| EKS 最適化 Arm Amazon Linux | Armベースのプロセッサーが搭載されたEC2インスタンスを作成できる。             |                                                          |                                                                                                                                                                      |
+| EKS 最適化 Bottlerocket AMI | コンテナに特化したEC2インスタンスを作成できる。                       |                                                          | ℹ️ 参考：<br>・https://dev.classmethod.jp/articles/bottlerocket/#toc-1 <br>・https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eks-optimized-ami-bottlerocket.html |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+
+
+<br>
+
+### EC2ワーカーNodeのカスタムAMI
+
+#### ▼ EC2ワーカーNodeのカスタムAMIとは
+
+EC2ワーカーNodeの最適化AMIではないAMIのこと。
+
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、```bootstrap.sh```ファイルに決められたパラメーターを渡す必要がある。
+
+注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+
+
+
+> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+# 主要なパラメーターは以下の通り。
+# その他のパラメーター：https://github.com/awslabs/amazon-eks-ami/blob/584f9a56c76fc9e7e8632f6ea45e29d45f2eab63/files/bootstrap.sh#L14-L35
+#
+# --b64-cluster-ca：kube-apiserverのSSL証明書の値を設定する。
+# --apiserver-endpoint：kube-apiserverのエンドポイントを設定する。
+# --container-runtime：コンテナランタイムとしてcontainerdを使用する。代わりとして、dockerも使用できる。
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca ***** \
+  --apiserver-endpoint https://*****.gr7.ap-northeast-1.eks.amazonaws.com \
+  --container-runtime containerd
+```
+
+ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
+
+パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。
+
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
+> - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
+
+# ClusterのSSL証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。
+for parameter in $(echo ${PARAMETERS} | jq -r '.Parameters[] | .Name + "=" + .Value'); do
+  echo "export ${parameter##*/}"
+done >> "${EXPORT_ENVS}"
+
+# 出力する。
+source "${EXPORT_ENVS}"
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
+```
+
+#### ▼ EC2ワーカーNodeのイメージキャッシュ削除
+
+kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。```--image-gc-high-threshold```オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。```--image-gc-low-threshold```オプションで解放しようとするディスク使用率を設定する。
+
+> ℹ️ 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/
+
+**＊実装例＊**
+
+ディスク使用率が```70```%を超過した場合に、ディスク使用率```50```%分を解放する。
+
+
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+# --image-gc-high-thresholdオプションに値が既に設定されていなければ、設定を挿入する。
+if ! grep -q imageGCHighThresholdPercent /etc/kubernetes/kubelet/kubelet-config.json;
+then 
+    sed -i '/"apiVersion*/a \ \ "imageGCHighThresholdPercent": 70,' /etc/kubernetes/kubelet/kubelet-config.json
+fi
+
+# --image-gc-low-thresholdオプションに値が既に設定されていなければ、設定を挿入する。
+if ! grep -q imageGCLowThresholdPercent /etc/kubernetes/kubelet/kubelet-config.json;
+then 
+    sed -i '/"imageGCHigh*/a \ \ "imageGCLowThresholdPercent": 50,' /etc/kubernetes/kubelet/kubelet-config.json
+fi
+
+/etc/eks/bootstrap.sh your-cluster-name
+```
+
+
+#### ▼ 安全なEC2ワーカーNodeシャットダウン
+
+kubeletを使用してワーカーNodeの停止を待機し、Podが終了する（ワーカーNodeを退避する）までの時間を稼ぐ。待機中に終了できたPodは```Failed```ステータスとなる。```--shutdown-grace-period```オプションで、ワーカーNodeの停止を待機する期間を設定する。```--shutdown-grace-period-critical-pods```オプションで、特に重要なPodの終了のために待機する時間を設定する。
+
+> ℹ️ 参考：
+>
+> - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
+> - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
+
+**＊実装例＊**
+
+
+ワーカーNodeの停止を```6```分だけ待機し、その後に停止を始める。
+
+```6```分のうち後半```2```分を重要なPodのために停止に割り当てる。
+
+
+
+```bash
+#!/bin/bash
+
+set -o xtrace
+
+# --shutdown-grace-periodオプションに値が既に設定されていなければ、設定を挿入する。
+if ! grep -q shutdownGracePeriod /etc/kubernetes/kubelet/kubelet-config.json;
+then 
+    sed -i '/"apiVersion*/a \ \ "shutdownGracePeriod": "6m",' /etc/kubernetes/kubelet/kubelet-config.json
+fi
+
+# --shutdown-grace-period-critical-podsオプションに値が既に設定されていなければ、設定を挿入する。
+if ! grep -q shutdownGracePeriodCriticalPods /etc/kubernetes/kubelet/kubelet-config.json;
+then 
+    sed -i '/"shutdownGracePeriod*/a \ \ "shutdownGracePeriodCriticalPods": "2m",' /etc/kubernetes/kubelet/kubelet-config.json
+fi
+
+mkdir -p /etc/systemd/logind.conf.d
+cat << EOF > /etc/systemd/logind.conf.d/50-max-delay.conf
+[Login]
+InhibitDelayMaxSec=360
+EOF
+
+sudo systemctl restart systemd-logind
+```
+
+```Failed```ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。
+
+
+
+> ℹ️ 参考：https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
+
+```bash
+for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
+  echo $ns
+  kubectl get pods -n $ns -o json \
+    | jq -r '.items[] | select(.status.phase == "Failed") | select(.status.reason == "Shutdown" or .status.reason == "NodeShutdown" or .status.reason == "Terminated") | .metadata.name' \
+    | xargs --no-run-if-empty --max-args=100 --verbose kubectl delete pods -n $ns 
+done
+```
+
+<br>
+
+
+### EC2へのタグ付けの例
+
+#### ▼ マネージドNodeグループ
+
+
+| タグ         | 値               | 説明                                                                                                                                                       |
+|------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```Name``` | EC2ワーカーNodeの名前 | Nodeグループで指定する起動テンプレートのリソースタグに、```Name```タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は```Name```タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。 |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
+
+#### ▼ セルフマネージドNodeグループ
+
+
+| タグ                                    | 値               | 説明                                                                                                    |
+|---------------------------------------|------------------|-------------------------------------------------------------------------------------------------------|
+| ```Name```                            | EC2ワーカーNodeの名前 | EC2インスタンスの名前は```Name```タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの```Name```タグに、ワーカーNode名を設定しておく。 |
+| ```kubernetes.io/cluster/<クラスター名>``` | ```owned```      | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。                     |
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+
+#### ▼ その他
+
+| アドオン名             | タグ                                        | 値          | 説明                                                                                                                                                        |
+|--------------------|-------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| cluster-autoscaler | ```k8s.io/cluster-autoscaler/<クラスター名>``` | ```owned``` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
+| 同上               | ```k8s.io/cluster-autoscaler/enabled```   | ```true```  | 同上                                                                                                                                                        |
+
+<br>
+
+## 03-04. ネットワーク
+
+### プライベートサブネット内のデータプレーンへのVPC外からのインバウンド通信
+
+#### ▼ Podへのインバウンド通信
+
+EKSでは、Podをプライベートサブネットに配置する必要がある。
+
+そのため、パブリックネットワークからのインバウンド通信をAWS LBコントローラーで受信し、ALB Ingressを使用してPodにルーティングする。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
+
+![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/eks_architecture.png)
+
+#### ▼ コントロールプレーンへのインバウンド通信
+
+コントロールプレーンでは、```kubectl```コマンドのエンドポイントとしてNLBが配置されている。
+
+VPC外からNLBへの```443```番ポートに対するアクセスはデフォルトでは許可されているが、拒否するように設定できる。
+
+もし拒否した場合、このNLBは閉じられ、VPC内からしか```443```番ポートでコントロールプレーンにアクセスできなくなる。
+
+この状態でコントロールプレーンにアクセスできるようにする方法としては、以下のパターンがある。
+
+
+| 接続元パターン           | 接続方法パターン    |
+|----------------------|-----------------|
+| ローカルマシン              | セッションマネージャー     |
+| VPC内の踏み台EC2インスタンス | セッションマネージャー、SSH |
+| VPC内のCloud9         | セッションマネージャー、SSH |
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
+> - https://note.com/tyrwzl/n/nf28cd4372b18
+> - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
+
+<br>
+
+### プライベートサブネット内のデータプレーンからのアウトバウンド通信
+
+#### ▼ 宛先情報の管理方法
+
+アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントするようにする。
+
+
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  # RDS（Aurora）の宛先情報
+  DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
+  DB_HOST_READ: <リードレプリカのエンドポイント>
+  DB_USER: bar
+  DB_PASSWORD: baz
+  # SQSの宛先情報
+  SQS_QUEUE_NAME: foo-queue.fifo
+  SQS_REGION: ap-northeast-1
+```
+
+#### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
+
+EKSでは、Podをプライベートサブネットに配置する必要がある。
+
+プライベートサブネットにを配置した場合、VPC外にあるAWSリソース（ECR、S3、Systems Manager、CloudWatch、DynamoDB、など）に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+
+
+
+> ℹ️ 参考：https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
+
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
+
+また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
+
+
+
+```log
+Pod provisioning timed out (will retry) for pod
+```
+
+#### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
+
+EKS Clusterを作成すると、ENIも作成する。
+
+これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
+
+執筆時点（2022/05/27）では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+
+
+
+> ℹ️ 参考：
+>
+> - https://dev.classmethod.jp/articles/eks_basic/
+> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+
+#### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
+
+VPC内にあるAWSリソース（RDSなど）の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
+
+
+
+<br>
+
+<br>
+
+## 04. Nodeグループ on-EC2
+
+### マネージド
+
+#### ▼ マネージドNodeグループ
+
+Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、自動的にセットアップする。
+
+オートスケーリングは、EC2ワーカーNodeが配置される全てのプライベートサブネットに適用される。
+
+
+
+#### ▼ Nodeのセットアップ方法
+
+起動テンプレートを使用し、EC2ワーカーNodeを作成する。
+
+EC2にタグ付けする場合は、起動テンプレートのタグ付け機能を使用する。
+
+
+
+#### ▼ タグ付けを使用した
+
+同じNodeグループのEC2ワーカーNodeの定期アクションを設定する。
+
+EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に```0```個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
+
+
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
+> - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
+
+<br>
+
+### セルフマネージド
+
+#### ▼ セルフマネージドNodeグループ
+
+Nodeグループ内の各EC2ワーカーNodeと、Nodeグループごとのオートスケーリングの設定を、手動でセットアップする。
+
+
+
+#### ▼ Nodeのセットアップ方法
+
+任意のオートスケーリングでEC2ワーカーNodeを作成する。オートスケーリングのタグ付け機能で、```kubernetes.io/cluster/<クラスター名>```タグをつけ、Nodeグループに参加させる。
+
+> ℹ️ 参考：
+>
+> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
+
+<br>
+
+
+## 05. Nodeグループ on-Fargate
+
+調査中...
+
+
+<br>
