@@ -17,8 +17,6 @@ description: EKS＠Eで始まるAWSリソースの知見を記録しています
 
 ## 01. EKS：Elastic Kubernetes Service
 
-<br>
-
 ### コントロールプレーン
 
 #### ▼ コントロールプレーンとは
@@ -210,7 +208,7 @@ $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 $ kubectl config use-context arn:aws:eks:ap-northeast-1:<アカウントID>:cluster/<Cluster名>
 ```
 
-
+<br>
 
 ### EKS Cluster
 

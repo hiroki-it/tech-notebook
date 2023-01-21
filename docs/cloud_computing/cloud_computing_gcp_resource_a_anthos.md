@@ -142,9 +142,10 @@ Anthos GKE Clusterが、GCP以外（オンプレミス、ベアメタル、他�
 
 GCP上で```kubectl```コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
+![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
+
 > ℹ️ 参考：https://www.topgate.co.jp/anthos-gke#connect-gateway
 
-![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_connect-gateway.png)
 
 #### ▼ fleet-workload-identity
 
@@ -205,7 +206,11 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
-スタンドアローンClusterタイプ（ハイブリッドタイプ）のon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+スタンドアローンClusterタイプ（ハイブリッドタイプ）のon-ベアメタルは、ワークステーション（仮想サーバー）、コントロールプレーンNodeとワーカーNodeの両方が属するベアメタルCluster、から構成される。
+
+ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+
+Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 > ℹ️ 参考：
 >

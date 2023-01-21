@@ -33,7 +33,7 @@ $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 
 ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。
 
- 後者の場合、一つ目にURLに設定する方法がある。
+ 後者の場合、```1```個目にURLに設定する方法がある。
 
 
 
@@ -192,14 +192,13 @@ $ git init
 
 ```~/.config/git/ignore```ファイルに設定されたファイルは、グローバルに無視される。
 
-
-
-> ℹ️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
-
-```
+```ignore
 .DS_Store
 .idea/
 ```
+
+> ℹ️ 参考：https://zenn.dev/phi/articles/gitignore-global-ds-store
+
 
 <br>
 

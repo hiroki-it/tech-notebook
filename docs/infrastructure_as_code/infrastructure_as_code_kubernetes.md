@@ -36,7 +36,9 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_certificates.png)
 
-コンポーネント間でHTTPSプロトコルを使用するためにはクライアント証明書やSSL証明書が必須であり、必須ではないが、通信をさらに安全にするためにクライアント証明書が使用されているところがある。
+コンポーネント間でHTTPSプロトコルを使用するためにはクライアント証明書やSSL証明書が必須である。
+
+一方で必須ではないが、通信をさらに安全にするためにクライアント証明書が使用されているところがある。
 
 クライアント証明書の場合、これを使用するクライアント側には、クライアント証明書と秘密鍵の両方を配置することになる。
 

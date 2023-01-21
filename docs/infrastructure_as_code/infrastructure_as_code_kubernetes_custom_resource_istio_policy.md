@@ -82,15 +82,12 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 <br>
 
 
-### サブセット名を一つにする
+### サブセット名を```1```個にする
 
-Istioリソースで設定するサブセット名は一つだけにする。
+Istioリソースで設定するサブセット名は```1```個だけにする。
 
 これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
 
-
-
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -107,6 +104,9 @@ spec:
           subset: v1
 ```
 
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
+
+
 <br>
 
 ### Istioリソースの使用可能範囲を限定する
@@ -114,10 +114,6 @@ spec:
 Istioリソースの```spec.exportTo```キーでは『```.```（ドット）』を設定する。
 
 これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
-
-
-
-> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -134,6 +130,9 @@ spec:
       - destination:
           host: myservice
 ```
+
+> ℹ️ 参考：https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
+
 
 <br>
 
@@ -193,6 +192,21 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 <br>
 
 ### カナリア方式
+
+#### ▼ カナリア方式とは
+
+サイドカーをインジェクションしているNamespaceが複数あるという前提で、特定のNamespaceのラベルを書き換える。
+
+すると、そのNamespace上で新サイドカーが、それ以外のNamespaceでは旧サイドカーが動くことになる。
+
+新サイドカーが正しく動作すれば、残りのNamespaceにも新サイドカーをインジェクションする。
+
+Istioでは、この状況をカナリア方式（一部のユーザーを新サイドカーにルーティングして実地的に検証する）と呼称している。
+
+ただし、サイドカーをインジェクションしているNamespaceが```1```個しかない場合、全ての通信が新サイドカーにルーティングされるため、カナリアにはならない。
+
+
+#### ▼ 手順
 
 （１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。
 

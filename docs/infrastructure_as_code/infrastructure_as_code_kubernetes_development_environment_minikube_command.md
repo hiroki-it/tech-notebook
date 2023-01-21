@@ -787,7 +787,7 @@ host: Running
 kubelet: Running
 ```
 
-ちなみに、コントロールプレーンNodeも単なるNodeの一つなため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
+ちなみに、コントロールプレーンNodeも単なるNodeの```1```個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
 
 
 

@@ -284,7 +284,13 @@ metadata:
 
 #### ▼ istio.io/rev
 
-指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。IstoOperatorの```spec.revision```キーと同じである。```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
+
+IstoOperatorの```spec.revision```キーと同じである。
+
+```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。
+
+```istio.io/rev```キーを使用する場合、Istioのアップグレードがカナリア方式になる。
 
 **＊実装例＊**
 

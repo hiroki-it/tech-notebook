@@ -143,7 +143,7 @@ $ docker inspect <コンテナ名>
 
 
 
-```bash
+```ignore
 .env.example
 .gitignore
 README.md

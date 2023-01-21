@@ -176,8 +176,6 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 
 #### ▼ kubernetes-mixinsのGrafanaダッシュボード
 
-> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
-
 | 種類              | コンポーネント                 | ダッシュボード名                                                    | メトリクスの例                                                                                                                                                         |
 |-------------------|-------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alertmanager      | AlertmanagerのPod        | ```Alertmanager / Overview```                                |                                                                                                                                                                  |
@@ -205,6 +203,9 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 | Prometheus        | PrometheusのPod          | ```Prometheus / Remote Write```                              |                                                                                                                                                                  |
 |                   |                         | ```Prometheus / Overview```                                  |                                                                                                                                                                  |
 
+> ℹ️ 参考：https://github.com/monitoring-mixins/website/tree/master/assets
+
+
 <br>
 
 ### セットアップ
@@ -214,10 +215,6 @@ ConfigMapの```data```キーにJSONを設定すると、ダッシュボードを
 grafanaチャートでは、```values```ファイルの```label```キーや```labelValue```キーを使用して、ダッシュボードのマニフェスト化を制御しており、デフォルト値として```label```キーに```grafana_dashboard```が設定されている。
 
 これにより、```label```キーに```grafana_dashboard```キーを持つConfigMapのみがダッシュボードの設定として読み込まれる。
-
-
-
-> ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 ```yaml
 # valuesファイル
@@ -249,6 +246,8 @@ data:
   data.json: |
     # ダッシュボードを定義するか、公開されたダッシュボードを貼り付ける。
 ```
+
+> ℹ️ 参考：https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
 #### ▼ kube-prometheus-stackチャートの場合
 
