@@ -469,11 +469,12 @@ nav:
           - ハードウェアリソース管理: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.md
           - 設計ポリシー: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
       - ■ 開発:
-          - 静的解析ツール: infrastructure_as_code/infrastructure_as_code_kubernetes_linter.md
           - ■ 開発環境:
               - ■ Minikube:
                   - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
+          - ■ 開発ツール:
+              - 静的解析ツール: infrastructure_as_code/infrastructure_as_code_kubernetes_linter.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
