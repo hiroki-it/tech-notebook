@@ -327,7 +327,7 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 #### ▼ ```SRV```レコードの場合
 
-対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。Serviceの```spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
+対応する完全修飾ドメイン名は、『```_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local```』である。Serviceの```.spec.ports.name```キー数だけ、完全修飾ドメイン名が作成される。
 
 > ℹ️ 参考：
 >
@@ -342,9 +342,9 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 Pod内のコンテナから宛先のServiceに対して、```nslookup```コマンドの正引きする。
 
-Serviceに```metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```metadata.name```キーの値になる。
+Serviceに```.metadata.name```キーが設定されている場合、Serviceの完全修飾ドメイン名は、```.metadata.name```キーの値になる。
 
-完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
+完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、```.metadata.name```キーの値よりも完全修飾ドメイン名の方が推奨である。
 
 
 
@@ -420,7 +420,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 $ kubectl get service <Service名> -o yaml | grep targetPort:
 ```
 
-（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```spec.containers[].ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+（２）Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、```.spec.containers[].ports```キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
 # 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する

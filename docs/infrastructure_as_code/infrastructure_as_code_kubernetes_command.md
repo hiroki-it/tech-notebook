@@ -574,7 +574,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 コンテナを指定しない場合は、デフォルトのコンテナが選択される。
 
-Podの```metadata.labels```キーではなく、Pod名であることに注意する。
+Podの```.metadata.labels```キーではなく、Pod名であることに注意する。
 
 
 
@@ -910,7 +910,7 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 
 #### ▼ -l
 
-特定の```metadata.labels```キーの値を持つKubernetesリソースを取得する。
+特定の```.metadata.labels```キーの値を持つKubernetesリソースを取得する。
 
 **＊例＊**
 
@@ -919,7 +919,7 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 $ kubectl get pod -l <キー>=<値>
 ```
 
-複数の```metadata.labels```キーをAND条件で指定することもできる。
+複数の```.metadata.labels```キーをAND条件で指定することもできる。
 
 
 
@@ -927,7 +927,7 @@ $ kubectl get pod -l <キー>=<値>
 $ kubectl get pod -l <キー>=<値>,<キー>=<値>
 ```
 
-```metadata.labels```キーの値をOR条件で指定することもできる。
+```.metadata.labels```キーの値をOR条件で指定することもできる。
 
 
 
@@ -942,7 +942,7 @@ $ kubectl get pod -l '<キー> in (<値>,<値>)'
 
 **＊例＊**
 
-```metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
+```.metadata.labels.topology.kubernetes.io/zone```キーの値が```ap-northeast-1a```であるNodeを取得する。
 
 ```bash
 $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
@@ -950,7 +950,7 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 
 #### ▼ -L
 
-特定の```metadata.labels```キーを持つKubernetesリソースを取得する。小文字の```-l```オプションもあるが、こちらは値まで絞り込みたい時に使用する。該当のキーがない場合は、空欄で表示される。
+特定の```.metadata.labels```キーを持つKubernetesリソースを取得する。小文字の```-l```オプションもあるが、こちらは値まで絞り込みたい時に使用する。該当のキーがない場合は、空欄で表示される。
 
 ```bash
 $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
@@ -1027,7 +1027,7 @@ $ kubectl get -A <Kubernetesリソース> \
 
 #### ▼ --selector
 
-指定した```spec.selector```キーを持つDeploymentを取得する。
+指定した```.spec.selector```キーを持つDeploymentを取得する。
 
 **＊例＊**
 
@@ -1038,11 +1038,11 @@ $ kubectl get deployment --selector<キー>=<値>
 
 #### ▼ --show-labels
 
-指定したKubernetesリソースの```metadata.labels```キーの値を表示する。
+指定したKubernetesリソースの```.metadata.labels```キーの値を表示する。
 
 **＊例＊**
 
-全てのKubernetesリソースの```metadata.labels```キーの値を表示する。
+全てのKubernetesリソースの```.metadata.labels```キーの値を表示する。
 
 ```bash
 $ kubectl get all -A --show-labels
@@ -1050,7 +1050,7 @@ $ kubectl get all -A --show-labels
 
 **＊例＊**
 
-全てのKubernetesリソースの中から、ArgoCDで管理していないものの```metadata.labels```キーの値を表示する。
+全てのKubernetesリソースの中から、ArgoCDで管理していないものの```.metadata.labels```キーの値を表示する。
 
 ```bash
 $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
@@ -1078,13 +1078,13 @@ $ kubectl get pod --watch
 
 #### ▼ labelとは
 
-指定したリソースの```metadata.labels```キーを操作する。
+指定したリソースの```.metadata.labels```キーを操作する。
 
 
 
 #### ▼ オプション無し（キーの追加）
 
-指定したリソースに```metadata.labels```キーを作成する。
+指定したリソースに```.metadata.labels```キーを作成する。
 
 **＊例＊**
 
@@ -1095,7 +1095,7 @@ $ kubectl label <リソース名> foo=bar
 
 #### ▼ オプション無し（キーの削除）
 
-指定したリソースの```metadata.labels```キーを削除する。
+指定したリソースの```.metadata.labels```キーを削除する。
 
 
 
@@ -1111,7 +1111,7 @@ $ kubectl label namespace default istio.io/rev-
 
 #### ▼ --overwrite
 
-指定したリソースに```metadata.labels```キーを上書きする。
+指定したリソースに```.metadata.labels```キーを上書きする。
 
 
 
@@ -1467,7 +1467,7 @@ NodeにTaint（```app=batch:NoSchedule```）を付与する。
 $ kubectl taint node foo-node app=batch:NoSchedule
 ```
 
-これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
+これにより、以下の```.spec.tolerations```キーが付与されたPodしかスケジューリングできない。
 
 
 
@@ -1504,7 +1504,7 @@ spec:
 $ kubectl taint node foo-node node-role.kubernetes.io/master:NoSchedule
 ```
 
-これにより、以下の```spec.tolerations```キーが付与されたPodしかスケジューリングできない。
+これにより、以下の```.spec.tolerations```キーが付与されたPodしかスケジューリングできない。
 
 
 

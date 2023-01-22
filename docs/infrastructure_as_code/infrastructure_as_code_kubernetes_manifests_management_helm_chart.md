@@ -226,7 +226,7 @@ version: <バージョンタグ>
 
 あらゆる場所から使用できるテンプレートを設定する。
 
-汎用的なテンプレート（```metadata.labels```キーなど）の出力で使用する。
+汎用的なテンプレート（```.metadata.labels```キーなど）の出力で使用する。
 
 
 
@@ -234,9 +234,9 @@ version: <バージョンタグ>
 
 <br>
 
-### ```metadata.labels```キーの出力
+### ```.metadata.labels```キーの出力
 
-```_helpers.tpl```ファイルで```metadata.labels```キーのセットをテンプレートとして定義しておく。
+```_helpers.tpl```ファイルで```.metadata.labels```キーのセットをテンプレートとして定義しておく。
 
 マニフェストで、これらをまとめて出力する。
 
@@ -279,7 +279,7 @@ metadata:
 
 #### ▼ affinity
 
-チャート内のDeploymentの```spec.template.spec.affinity```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.affinity```キーに値を設定する。
 
 
 
@@ -289,19 +289,19 @@ metadata:
 
 #### ▼ image.pullPolicy
 
-チャート内のDeploymentの```spec.template.spec.containers[].imagePullPolicy```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.containers[].imagePullPolicy```キーに値を設定する。
 
 
 
 #### ▼ imagePullSecrets
 
-チャート内のDeploymentの```spec.template.spec.imagePullSecrets```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.imagePullSecrets```キーに値を設定する。
 
 
 
 #### ▼ image.repository
 
-チャート内のDeploymentの```spec.template.spec.containers[].image```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.containers[].image```キーに値を設定する。
 
 
 
@@ -313,7 +313,7 @@ metadata:
 
 #### ▼ ingress.annotations
 
-チャート内のIngressの```metadata.annotations```オプションに値を設定する。
+チャート内のIngressの```.metadata.annotations```オプションに値を設定する。
 
 
 
@@ -325,13 +325,13 @@ Ingressの作成を有効化する。
 
 #### ▼ ingress.hosts
 
-チャート内のIngressの```spec.rules```キーに値を設定する。
+チャート内のIngressの```.spec.rules```キーに値を設定する。
 
 
 
 #### ▼ ingress.tls
 
-チャート内のIngressの```spec.tls```キーに値を設定する。
+チャート内のIngressの```.spec.tls```キーに値を設定する。
 
 
 
@@ -341,31 +341,31 @@ Ingressの作成を有効化する。
 
 #### ▼ nodeSelector
 
-チャート内のDeploymentの```spec.template.spec.nodeSelector```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.nodeSelector```キーに値を設定する。
 
 
 
 #### ▼ podSecurityContext
 
-チャート内のDeploymentの```spec.template.spec.securityContext```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.securityContext```キーに値を設定する。
 
 
 
 #### ▼ replicaCount
 
-チャート内のDeploymentの```spec.replicas```キーに値を設定する。
+チャート内のDeploymentの```.spec.replicas```キーに値を設定する。
 
 
 
 #### ▼ resources
 
-チャート内のDeploymentの```spec.template.spec.containers[].resources```オプションに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.containers[].resources```オプションに値を設定する。
 
 
 
 #### ▼ securityContext
 
-チャート内のDeploymentの```spec.template.spec.containers[].securityContext```オプションに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.containers[].securityContext```オプションに値を設定する。
 
 
 
@@ -377,25 +377,25 @@ ServiceAccountの作成を有効化する。
 
 #### ▼ serviceAccount.annotations
 
-チャート内のServiceAccountの```metadata.annotations```オプションに値を設定する。
+チャート内のServiceAccountの```.metadata.annotations```オプションに値を設定する。
 
 
 
 #### ▼ service.type
 
-チャート内のServiceの```spec.type```キーに値を設定する。
+チャート内のServiceの```.spec.type```キーに値を設定する。
 
 
 
 #### ▼ service.port
 
-チャート内のServiceの```spec.ports.port```キーに値を設定する。
+チャート内のServiceの```.spec.ports.port```キーに値を設定する。
 
 
 
 #### ▼ tolerations
 
-チャート内のDeploymentの```spec.template.spec.tolerations```キーに値を設定する。
+チャート内のDeploymentの```.spec.template.spec.tolerations```キーに値を設定する。
 
 
 

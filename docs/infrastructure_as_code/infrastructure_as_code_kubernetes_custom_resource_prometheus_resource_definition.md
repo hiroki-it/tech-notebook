@@ -280,7 +280,7 @@ Alertmanagerのセットアップ方法を決める。
 
 Alertmanagerのコンテナイメージのバージョンを設定する。
 
-使用するコンテナイメージは、```spec.baseImage```キーに設定する。
+使用するコンテナイメージは、```.spec.baseImage```キーに設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -318,7 +318,7 @@ spec:
 
 Alertmanagerのコンテナイメージを設定する。
 
-コンテナイメージのバージョンは、```spec.version```キーに設定する。
+コンテナイメージのバージョンは、```.spec.version```キーに設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -617,9 +617,9 @@ spec:
 | Receiver          | string型 | ```.Receiver```                                                                            | アラートの受信者が割り当てられている。                                                                                                                                               |
 | Status            | string型 | ```.Status```                                                                              | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                              |
 | Alerts            | map型    | ```.Alerts.Labels.SortedPairs```                                                           | アラートの情報が割り当てられている。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                      |
-| GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| GroupLabels       | map型    | ・```.GroupLabels.alertname``` <br>・```.GroupLabels.instance``` <br>・```.GroupLabels.job``` | 特定のアラートグループに関するラベルが割り当てられている。```.spec.groups[].rules[].labels```キー配下で設定した独自のラベルも含む。<br>ℹ️ 参考：https://prometheus.io/docs/alerting/latest/notifications/#kv |
 | CommonLabels      | map型    | ```.CommonLabels.alertname```                                                              | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                        |
-| CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                    |
+| CommonAnnotations | map型    | ```.CommonAnnotations.summary```                                                           | 全てのアラートに共通するアノテーションが割り当てられている。```.spec.groups[].rules[].labels```キー配下で設定した独自のアノテーションも含む。                                                                    |
 | ExternalURL       | string型 | ```.ExternalURL```                                                                         | AlertmangerのURLが割り当てられている。                                                                                                                                           |
 
 
@@ -676,7 +676,7 @@ spec:
 | 項目              | 説明                                                                                               |
 |-------------------|--------------------------------------------------------------------------------------------------|
 | ```alert```       | アラートルール名を設定する                                                                                   |
-| ```annotations``` | アラートルールによるアラートの通知内容を設定する。```metadata.labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
+| ```annotations``` | アラートルールによるアラートの通知内容を設定する。```.metadata.labels```キーや発火値（```$value```）を通知内容に変数で出力できる。 |
 | ```expr```        | アラートルールで監視するメトリクスに関するPromQLを設定する。                                                             |
 | ```for```         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                                      |
 | ```labels```      | アラートの通知内容に付与するラベルを設定する                                                                     |
@@ -921,7 +921,7 @@ metadata:
 
 ![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/prometheus-operator_service-monitor_match-labels.png)
 
-収集の対象とするServiceに付与された```metadata.labels```キーを設定する。
+収集の対象とするServiceに付与された```.metadata.labels```キーを設定する。
 
 
 

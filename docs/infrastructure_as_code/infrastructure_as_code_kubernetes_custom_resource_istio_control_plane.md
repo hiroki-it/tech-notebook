@@ -386,7 +386,9 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_service-discovery.png)
 
-```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。コールの内容に応じて、他のサービス（Pod、Node)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
+```discovery```コンテナの```15010```番ポートでは、```istio-proxy```コンテナからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、```discovery```コンテナ内のプロセスに渡す。
+
+コールの内容に応じて、他のサービス（Pod、Node)の宛先情報を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する（サービスディスカバリー）。
 
 > ℹ️ 参考：https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
@@ -413,7 +415,13 @@ Istiodコントロールプレーンは、サービスレジストリ（例：et
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_control-plane_certificate.png)
 
-```discovery```コンテナの```15012```番ポートでは、マイクロサービス間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。```istio-proxy```コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐づける。また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
+```discovery```コンテナの```15012```番ポートでは、アプリコンテナ間で相互TLSによるHTTPSプロトコルを使用する場合に、```istio-proxy```コンテナからのSSL証明書に関するリクエストを待ち受け、```discovery```コンテナ内のプロセスに渡す。
+
+リクエストの内容に応じて、SSL証明書と秘密鍵を含むレスポンスを返信する。
+
+```istio-proxy```コンテナはこれを受信し、pilot-agentはEnvoyにこれらを紐づける。
+
+また、SSL証明書の期限が切れれば、```istio-proxy```コンテナからのリクエストに応じて、新しいSSL証明書と秘密鍵を作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/concepts/security/#pki
 

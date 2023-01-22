@@ -104,13 +104,20 @@ $ minikube addons list
 
 使用するcniアドオンを設定する。
 
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+```bash
+$ minikube start --cni=auto
+```
 
 ```bash
 $ minikube start --cni=bridge
 ```
+
+```bash
+$ minikube start --cni=cilium
+```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/start/
+
 
 <br>
 
@@ -125,10 +132,6 @@ $ minikube start --cni=bridge
 #### ▼ set
 
 ```kubectl```コマンド実行時のデフォルト値を設定する。
-
-
-
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/config/
 
 **＊例＊**
 
@@ -160,11 +163,16 @@ Kubernetesのバージョンのデフォルト値を設定する。
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
 
 ```bash
 $ minikube config set kubernetes-version=v1.23.0
 ```
+
+> ℹ️ 参考：
+> 
+> - https://minikube.sigs.k8s.io/docs/commands/config/
+> - https://stackoverflow.com/questions/45181585/how-to-use-new-release-of-kubernetes-as-default-in-minikube
+
 
 <br>
 
@@ -185,6 +193,22 @@ $ minikube dashboard
 🚀  Launching proxy ...
 🤔  Verifying proxy health ...
 🎉  Opening http://127.0.0.1:55712/*****/ in your default browser...
+```
+
+<br>
+
+### delete
+
+#### ▼ deleteとは
+
+Minikubeのコンポーネントを削除する。
+
+#### ▼ all --purge
+
+全てのコンポーネントを削除する。
+
+```bash
+$ minikube delete --all --purge
 ```
 
 <br>
@@ -273,11 +297,6 @@ $ minikube ip
 
 Minikubeのkube-apiserverをコンテキストとする```kubectl```コマンドを実行する。ローカルマシンに```kubectl```コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
-> ℹ️ 参考：
->
-> - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
-> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
-
 ```bash
 $ minikube kubectl -- version
 
@@ -308,6 +327,13 @@ Server Version: version.Info{
 }
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://minikube.sigs.k8s.io/docs/handbook/kubectl/
+> - https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html
+
+
 <br>
 
 ### node
@@ -334,7 +360,7 @@ $ minikube node add --worker
 ```
 
 
-追加したワーカーNodeに```metadata.labeles```キーを追加すれば、node affinityやnode selectorを検証できる。
+追加したワーカーNodeに```.metadata.labeles```キーを追加すれば、node affinityやnode selectorを検証できる。
 
 ```bash
 # ArgoCDを作成するワーカーNodeの場合
@@ -385,7 +411,6 @@ Minikubeのコンテキスト情報が誤っている場合、正しく修正す
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
 
 ```bash
 $ minikube update-context
@@ -393,6 +418,9 @@ $ minikube update-context
 🎉  "minikube" context has been updated to point to 192.168.64.16:8443
 💗  Current context is "minikube"
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/commands/update-context/
+
 
 <br>
 
@@ -648,6 +676,31 @@ NAME       STATUS   ROLES                  AGE   VERSION
 minikube   Ready    control-plane,master   14m   v1.22.3
 ```
 
+#### ▼ --container-runtime
+
+コンテナランタイムを指定する。
+
+コンテナランタイムごとに他にもオプションが必要になる。
+
+```bash
+$ minikube start --container-runtime=auto
+```
+
+```bash
+$ minikube start --container-runtime=docker
+```
+
+```bash
+$ minikube start --container-runtime=containerd
+```
+
+```bash
+$ minikube start --container-runtime=cri-o
+```
+
+> ℹ️ 参考：https://github.com/kubernetes/minikube/issues/11101#issuecomment-819917618
+
+
 #### ▼ --cpus、--memory
 
 MinikubeのNodeのスペックを設定する。
@@ -715,7 +768,6 @@ $ minikube start --docker-env
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
 
 **＊例＊**
 
@@ -723,6 +775,8 @@ $ minikube start --docker-env
 # 事前にVirtualBoxのダウンロードが必要。
 $ minikube start --driver=virtualbox
 ```
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/drivers/
+
 
 #### ▼ --kubernetes-vsersion
 
@@ -730,11 +784,13 @@ Minikubeで稼働させるKubernetesのバージョンを指定しつつ、```st
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
 
 ```bash
 $ minikube start --kubernetes-version=v1.23.0
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/config/#kubernetes-configuration
+
 
 #### ▼ --mount、--mount--string
 
@@ -756,7 +812,6 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
 
 **＊例＊**
 
@@ -800,6 +855,9 @@ nginx-deployment-*****   1/1     Running   0          16m   10.244.1.3   minikub
 nginx-deployment-*****   1/1     Running   0          16m   10.244.1.2   minikube-m02   <none>           <none>
 ```
 
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+
+
 <br>
 
 ### tunnel
@@ -841,11 +899,12 @@ $ minikube tunnel
 
 
 
-> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 ```bash
 $ minikube start --alsologtostderr
 ```
+
+> ℹ️ 参考：https://minikube.sigs.k8s.io/docs/handbook/troubleshooting/
 
 
 <br>

@@ -237,7 +237,7 @@ metadata:
 
 #### ▼ metadataキーで使用する場合の注意点
 
-マニフェストの```metadata```キーの値には文字列しか設定できない。
+マニフェストの```.metadata.``キーの値には文字列しか設定できない。
 
 ```values```ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。
 
@@ -539,7 +539,7 @@ data:
 
 SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース（例：Deployment、StatefulSet、DaemonSet）では、Podを再作成する必要がある。
 
-これらのKubernetesリソースのPodTemplateの```metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。
+これらのKubernetesリソースのPodTemplateの```.metadata.annotations```キーにて、テンプレートの出力を```sha256sum```に入力する。
 
 これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。
 

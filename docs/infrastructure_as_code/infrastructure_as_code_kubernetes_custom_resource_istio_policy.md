@@ -19,7 +19,7 @@ description: 設計ポリシー＠Istioの知見を記録しています。
 
 ### 少ないコントロールプレーン
 
-クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを```1```個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。
+クラウドプロバイダー環境でIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを```1```個だけセットアップし、できるだけ多くのアプリコンテナのサービスメッシュとなるようにする。
 
 
 
@@ -73,9 +73,9 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/bd9ae57cc00a44810496989ec3fa34649d6c8516/manifests/charts/gateway/values.yaml#L39
 
-#### ▼ マイクロサービスごとに作成する
+#### ▼ アプリコンテナごとに作成する
 
-単一障害点になることを防ぐために、```1```個のIngressGatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
+単一障害点になることを防ぐために、```1```個のIngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。
 
 
 
@@ -111,7 +111,7 @@ spec:
 
 ### Istioリソースの使用可能範囲を限定する
 
-Istioリソースの```spec.exportTo```キーでは『```.```（ドット）』を設定する。
+Istioリソースの```.spec.exportTo```キーでは『```.```（ドット）』を設定する。
 
 これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -171,7 +171,7 @@ Istioの開発プロジェクトでは、マイナーバージョンを```1```�
 
 Istiodでダウンタイムが発生すると、```istio-proxy```コンテナ内のpilot-agentが最新の宛先情報を取得できなくなる。
 
-そのため、古いバージョンのマイクロサービスの宛先情報を使用してしまう。
+そのため、古いバージョンのアプリコンテナの宛先情報を使用してしまう。
 
 > ℹ️ 参考：https://thenewstack.io/upgrading-istio-without-downtime/
 
@@ -210,15 +210,15 @@ Istioでは、この状況をカナリア方式（一部のユーザーを新サ
 
 （１）旧コントロールプレーンNodeを残したまま、新コントロールプレーンNodeを作成する。
 
-（２）特定のNamespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
+（２）特定のNamespaceの```.metadata.labels.istio.io/rev```キーのリビジョン値を新バージョンに変更する。これにより、コントロールプレーンNodeはNamespace内の```istio-proxy```コンテナをアップグレードする。
 
 ![istio_canary-upgrade_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_1.png)
 
-（３）新バージョンの```istio-proxy```コンテナの動作が問題なければ、Namespaceの```metadata.labels.istio.io/rev```キーのリビジョン値を順番に変更していく。
+（３）新バージョンの```istio-proxy```コンテナの動作が問題なければ、Namespaceの```.metadata.labels.istio.io/rev```キーのリビジョン値を順番に変更していく。
 
 ![istio_canary-upgrade_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_canary-upgrade_2.png)
 
-（４）もし途中で問題が起これば、```metadata.labels.istio.io/rev```キーのリビジョン値順番に元に戻していく。
+（４）もし途中で問題が起これば、```.metadata.labels.istio.io/rev```キーのリビジョン値順番に元に戻していく。
 
 （５）全てのNamespaceの```istio-proxy```コンテナのアップグレードが完了し、動作に問題がなければ、旧コントロールプレーンNodeを削除する。
 

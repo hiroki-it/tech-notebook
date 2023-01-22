@@ -143,9 +143,9 @@ num  target     prot  opt  source     destination
 
 #### ▼ Pod外からのインバウンド通信の場合
 
-Pod外からアプリケーションコンテナへのインバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
+Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
 
-```istio-proxy```コンテナはこれを受信し、ローカルホスト（```http://localhost:<アプリケーションコンテナのポート番号>```）のアプリケーションコンテナにルーティングする。
+```istio-proxy```コンテナはこれを受信し、ローカルホスト（```http://localhost:<アプリコンテナのポート番号>```）のアプリコンテナにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_iptables_inbound.png)
 
@@ -156,7 +156,7 @@ Pod外からアプリケーションコンテナへのインバウンド通信�
 
 #### ▼ Pod外へのアウトバウンド通信の場合
 
-アプリケーションコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+アプリコンテナからPod外へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 サービスディスカバリーによってPod等の宛先情報が、```istio-proxy```コンテナ内のEnvoyに登録されており、```istio-proxy```コンテナはアウトバウンド通信をPodに向けてルーティングする。
 
@@ -169,7 +169,7 @@ Pod外からアプリケーションコンテナへのインバウンド通信�
 
 #### ▼ ローカスホスト通信の場合
 
-アプリケーションコンテナからローカルホスト（```http://localhost:<ポート番号>```）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+アプリコンテナからローカルホスト（```http://localhost:<ポート番号>```）へのアウトバウンド通信は、istio-iptablesにより、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
@@ -201,7 +201,7 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-```istio-proxy```コンテナは、アプリケーションコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。一方で、アプリケーションコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
+```istio-proxy```コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の```istio-proxy```コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。一方で、アプリコンテナを持つPod間の通信では、Pod内の```istio-proxy```コンテナに登録されたものに基づいて、Pod間で直接的に通信している。 仕様上、NginxやApacheを必須とする言語（例：PHP）では、Pod内にリバースプロキシが```2```個ある構成になってしまうことに注意する。
 
 > ℹ️ 参考：
 >
@@ -450,9 +450,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### ```15001```番
 
-```istio-proxy```コンテナの```15001```番ポートでは、アプリケーションコンテナからのアウトバウンド通信を待ち受ける。
+```istio-proxy```コンテナの```15001```番ポートでは、アプリコンテナからのアウトバウンド通信を待ち受ける。
 
-アプリケーションコンテナからのアウトバウンド通信は、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
+アプリコンテナからのアウトバウンド通信は、一度、```istio-proxy```コンテナの```15001```番ポートにリダイレクトされる。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 
@@ -470,9 +470,9 @@ istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 
 ### ```15006```番
 
-```istio-proxy```コンテナの```15006```番ポートでは、アプリケーションコンテナへのインバウンド通信を待ち受ける。
+```istio-proxy```コンテナの```15006```番ポートでは、アプリコンテナへのインバウンド通信を待ち受ける。
 
-アプリケーションコンテナへのインバウンド通信は、一度、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
+アプリコンテナへのインバウンド通信は、一度、```istio-proxy```コンテナの```15006```番ポートにリダイレクトされる。
 
 > ℹ️ 参考：https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 

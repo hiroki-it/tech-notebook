@@ -45,7 +45,7 @@ apiVersion: v1
 
 任意のキーと値を設定する。
 
-```metadata.labels```キーとは異なり、設定できる情報に制約がない。
+```.metadata.labels```キーとは異なり、設定できる情報に制約がない。
 
 
 
@@ -79,7 +79,7 @@ metadata:
 
 現在、非推奨である。
 
-代わりとして、```spec.ingressClassname```キーを指定する。
+代わりとして、```.spec.ingressClassname```キーを指定する。
 
 
 
@@ -296,7 +296,7 @@ metadata:
 
 #### ▼ 名前は変更不可
 
-Kubernetesにとって```metadata.name```キーはIDであり、後から変更できない。
+Kubernetesにとって```.metadata.name```キーはIDであり、後から変更できない。
 
 もし別の名前に変更したい場合は、再作成する必要がある。
 
@@ -406,11 +406,11 @@ status:
 
 #### ▼ observedGenerationとは
 
-kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```metadata.generation```キーの値を設定する。
+kube-controllerやカスタムコントローラーがKubernetesリソースの状態を管理している場合に、これらが検知した```.metadata.generation```キーの値を設定する。
 
 Kubernetesが設定してくれるため、開発者が設定する必要はない。
 
-```metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
+```.metadata.generation```キーよりも```status.observedGeneration```キーの方が世代数が小さい場合、kube-controllerやカスタムコントローラーがKubernetesリソースを検出できていない不具合を表す。
 
 > ℹ️ 参考：
 > 
@@ -1087,9 +1087,9 @@ Deploymentで管理するPodを明示的に設定する。
 
 #### ▼ matchLabels
 
-Podの```metadata.labels```キーを指定する。
+Podの```.metadata.labels```キーを指定する。
 
-Podに複数の```metadata.labels```キーが付与されている時は、これらを全て指定する必要がある。
+Podに複数の```.metadata.labels```キーが付与されている時は、これらを全て指定する必要がある。
 
 
 
@@ -1489,7 +1489,7 @@ spec:
 
 #### ▼ ingressClassNameとは
 
-標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```metadata.name```キーの値を設定する。
+標準のIngressの代わりに外部Ingressを使用する場合、IngressClassの```.metadata.name```キーの値を設定する。
 
 
 
@@ -1515,7 +1515,7 @@ spec:
 
 ルーティング条件とするHostヘッダーの値を設定する。
 
-```spec.hosts```キーを設定しなければ、全てのHostヘッダー値が対象になる。
+```.spec.hosts```キーを設定しなければ、全てのHostヘッダー値が対象になる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1539,9 +1539,91 @@ Serviceへのルーティングルールを設定する。
 
 Ingressを使用する場合、ルーティング先のServiceは、ClusterIP Serviceとする。
 
-
-
 > ℹ️ 参考：https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
+
+#### ▼ spec.rules[].host
+
+
+ホストベースルーティングの判定に使用するパス名を設定する。
+
+本番環境では、ドメインを指定した各種ダッシュボードにアクセスできるようにする必要がある。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  rules:
+    - host:
+        - prd.monitoring.com
+      http:
+        paths:
+          - path: /
+```
+
+
+#### ▼ spec.rules[].http.paths[].path
+
+パスベースルーティングの判定に使用するパス名を設定する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /foo
+
+    - http:
+        paths:
+          - path: /bar
+
+```
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
+
+
+#### ▼ spec.rules[].http.paths[].pathType
+
+パスベースルーティング判定時のルールの厳しさを設定する。
+
+| 厳しさ             | タイプ    |                                                   |
+|-----------------|--------|---------------------------------------------------|
+| パス名の一致          | Prefix | 最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。 |
+| パス名の完全一致        | Exact  | 指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。               |
+| IngressClassによる | ImplementationSpecific | IngressClass（例：Nginx）の設定に応じてルールを自動的に設定する。         |
+
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /foo
+            pathType: Prefix
+
+    - http:
+        paths:
+          - path: /bar
+            pathType: Prefix
+
+```
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
+
+
+#### ▼ spec.rules[].http.paths[].backend
+
+
+ルーティング先のServiceを設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1569,6 +1651,8 @@ spec:
                 port:
                   number: 80
 ```
+
+
 
 <br>
 
@@ -1703,7 +1787,7 @@ Jobの試行の上限実行時間を設定する。
 
 設定された時間を超過すると、エラーが返却される。
 
-```spec.backoffLimit```キーよりも優先される。
+```.spec.backoffLimit```キーよりも優先される。
 
 
 
@@ -1933,7 +2017,7 @@ Volumeの一種であるHostPathボリュームとは区別すること。
 
 Node側のマウント元のディレクトリを設定する。
 
-Podのマウントポイントは、Podの```spec.containers[].volumeMount```キーで設定する。
+Podのマウントポイントは、Podの```.spec.containers[].volumeMount```キーで設定する。
 
 
 
@@ -1968,7 +2052,7 @@ spec:
 
 ### spec.initContainers
 
-```spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
+```.spec.containers```キーで設定したコンテナよりも先に起動するコンテナ（InitContainer）を設定する。
 
 
 
@@ -2008,7 +2092,7 @@ spec:
 
 Node上にストレージ領域を新しく作成し、これをボリュームとする。
 
-```spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
+```.spec.nodeAffinity```キーの設定が必須であり、Nodeを明示的に指定できる。
 
 
 
@@ -2102,7 +2186,7 @@ PersistentVolumeの作成先とするNodeを設定する。
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のNodeの```metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
+作成先のNodeの```.metadata.labels```キーを指定するための条件（```In```、```NotIn```、```Exists```）を設定する。
 
 
 
@@ -2330,7 +2414,7 @@ spec:
 
 kube-schedulerがPodをスケジューリングするNodeを設定する。
 
-```spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。
+```.spec.nodeSelector```キーと比較して、より複雑に条件を設定できる。
 
 DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
 
@@ -2340,11 +2424,18 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
+#### ▼ nodeAffinity
+
+Nodeの```.metadata.labels```キーを指定することにより、そのNode内に新しいPodをスケジューリングする。
+
+複数のNodeに同じ```.metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
+
+
 アフィニティには種類がある。
 
-共通する```SchedulingIgnoredDuringExecution```の名前の通り、```spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。
+共通する```SchedulingIgnoredDuringExecution```の名前の通り、```.spec.affinity```キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できない。
 
-Podが削除された後にNodeの```metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```spec.affinity```キーの設定で再スケジューリングされることはない。
+Podが削除された後にNodeの```.metadata.labels```キーの値が変更されたとしても、一度スケジューリングされたPodが```.spec.affinity```キーの設定で再スケジューリングされることはない。
 
 
 
@@ -2353,17 +2444,8 @@ Podが削除された後にNodeの```metadata.labels```キーの値が変更さ�
 | requiredDuringSchedulingIgnoredDuringExecution  | ハード  | もし条件に合致するNodeがない場合、Podをスケジューリングしない。  |
 | preferredDuringSchedulingIgnoredDuringExecution | ソフト  | もし条件に合致するNodeがない場合でも、Podをスケジューリングする。 |
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
-
-#### ▼ nodeAffinity
-
-Nodeの```metadata.labels```キーを指定することにより、そのNode内に新しいPodをスケジューリングする。
-
-複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
 
 
-
-> ℹ️ 参考：https://zenn.dev/geek/articles/c74d204b00ba1a
 
 ```yaml
 apiVersion: v1
@@ -2388,19 +2470,19 @@ spec:
                 operator: In
                 # 指定した値をキーに持つNodeに、Podをスケジューリングする。
                 values:
-                  - ingress
+                  - app
 ```
+
+> ℹ️ 参考：
+> 
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
+> - https://zenn.dev/geek/articles/c74d204b00ba1a
+
 
 #### ▼ podAffinity
 
-Node内のPodを、```metadata.labels```キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
+Node内のPodを、```.metadata.labels```キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
 
-
-
-> ℹ️ 参考：
->
-> - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
-> - https://zenn.dev/geek/articles/c74d204b00ba1a
 
 ```yaml
 apiVersion: v1
@@ -2429,13 +2511,20 @@ spec:
                   - bar-pod
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
+> - https://zenn.dev/geek/articles/c74d204b00ba1a
+
+
 #### ▼ podAntiAffinity
 
-```metadata.labels```キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
+```.metadata.labels```キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
 
 
 
-> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
 ```yaml
 apiVersion: v1
@@ -2464,11 +2553,13 @@ spec:
                   - bar-pod
 ```
 
+> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
+
+
 もし、複製するPodの名前を設定すれば、Podのレプリカ同志が同じNodeにスケジューリングされることを避け、結果として全てのNodeにPodが```1```個ずつスケジューリングされるようになる。
 
 
 
-> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
 
 
 ```yaml
@@ -2508,6 +2599,9 @@ spec:
                        - foo-pod
 ```
 
+> ℹ️ 参考：https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html#%E7%95%B0%E3%81%AA%E3%82%8B-namespace-%E9%96%93%E3%81%A7-podantiaffinity-%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
+
+
 <br>
 
 ### spec.containers
@@ -2545,7 +2639,7 @@ spec:
 
 #### ▼ envFrom
 
-```spec.volumes.secret```キー（ファイルとしてコンテナにマウントする）とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+```.spec.volumes.secret```キー（ファイルとしてコンテナにマウントする）とは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
 
 
 
@@ -2573,11 +2667,10 @@ spec:
 
 コンテナが待ち受けるポート番号を、仕様として設定する。
 
-単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```spec.containers[].ports```キーは設定しなくとも問題ない。
+単なる仕様であるため、コンテナがポート番号を公開してさえいれば、```.spec.containers[].ports```キーは設定しなくとも問題ない。
 
 
 
-> ℹ️ 参考：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
 
 ```yaml
 apiVersion: v1
@@ -2593,6 +2686,9 @@ spec:
         - containerPort: 8080
 ```
 
+> ℹ️ 参考：https://qiita.com/masahata/items/f3792d4ee06b42376cbc
+
+
 #### ▼ imagePullPolicy
 
 イメージのプルのルールを設定する。
@@ -2606,7 +2702,6 @@ spec:
 | Always       | イメージリポジトリからコンテナイメージをプルする。                               |
 | Never        | イメージをプルせず、仮想環境上にビルドされたイメージを使用する。                 |
 
-> ℹ️ 参考：https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
 
 **＊実装例＊**
 
@@ -2624,6 +2719,9 @@ spec:
         - containerPort: 8080
 ```
 
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
+
+
 #### ▼ resources
 
 Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。各Podは、Node内のハードウェアリソースを奪い合っており、Nodeが複数ある場合、kube-schedulerはリソースの空いているNode上のPodのスケーリングを実行する。この時kube-schedulerは、コンテナの```resource```キーの値に基づいて、どのNodeにPodを作成するかを決めている。同じPod内に```resources```キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
@@ -2638,12 +2736,6 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 ちなみに、Node全体のハードウェアリソースは、```kubectl describe```コマンドから確認できる。
 
-
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
-> - https://smallit.co.jp/blog/667/
 
 ```bash
 $ kubectl describe node <Node名>
@@ -2669,6 +2761,14 @@ Allocatable:
 
 ...
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/architecture/nodes/#capacity
+> - https://smallit.co.jp/blog/667/
+
 
 | ハードウェアリソース名 | 単位                                                  |
 |--------------|-------------------------------------------------------|
@@ -2718,15 +2818,14 @@ foo-pod   istio-proxy     5m           85Mi
 
 Pod内のコンテナのマウントポイントを設定する。
 
-```spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+```.spec.volumes```キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
 
-Node側のマウント元のディレクトリは、PersistentVolumeの```spec.hostPath```キーで設定する。
+Node側のマウント元のディレクトリは、PersistentVolumeの```.spec.hostPath```キーで設定する。
 
 volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPerisitentVolumeで設定された任意のマウントを実行できることに注意する。
 
 
 
-> ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
 **＊実装例＊**
 
@@ -2749,6 +2848,9 @@ spec:
       persistentVolumeClaim:
         claimName: foo-persistent-volume-claim
 ```
+
+> ℹ️ 参考：https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+
 
 #### ▼ workingDir
 
@@ -2804,7 +2906,7 @@ spec:
 
 Podのホスト名を設定する。
 
-また、```spec.hostname```キーが設定されていない時は、```metadata.name```がホスト名として使用される。
+また、```.spec.hostname```キーが設定されていない時は、```.metadata.name```がホスト名として使用される。
 
 
 
@@ -2859,13 +2961,6 @@ spec:
 これにより、PodはSecretにあるプライベートリポジトリのクレデンシャル情報を使用できるようになる。
 
 
-
-> ℹ️ 参考：
->
-> - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-> - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
-> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2879,6 +2974,15 @@ spec:
     - name: foo-repository-credentials-secret # プライベートリポジトリのクレデンシャル情報を持つSecret
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+> - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret
+> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+
+
 <br>
 
 ### spec.livenessProbe
@@ -2887,7 +2991,7 @@ spec:
 
 kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。
 
-```spec.livenessProbe```では、コンテナがヘルスチェックを待ち受けられるように設定する。
+```.spec.livenessProbe```では、コンテナがヘルスチェックを待ち受けられるように設定する。
 
 
 
@@ -2968,9 +3072,9 @@ spec:
 
 kube-schedulerがPodをスケジューリングするNodeを設定する。
 
-```spec.affinity```キーと比較して、より単純に条件を設定できる。
+```.spec.affinity```キーと比較して、より単純に条件を設定できる。
 
-複数のNodeに同じ```metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
+複数のNodeに同じ```.metadata.labels```キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
 
 > ℹ️ 参考：https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
 
@@ -2995,7 +3099,7 @@ spec:
 
 kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かの準備済みチェックを行う。
 
-```spec.readinessProbe```キーでは、コンテナが準備済みチェックを待ち受けられるように設定する。
+```.spec.readinessProbe```キーでは、コンテナが準備済みチェックを待ち受けられるように設定する。
 
 何らかの仕様でコンテナの起動に時間がかかる場合、などで使用する。
 
@@ -3199,7 +3303,7 @@ Pod内で使用するボリュームを設定する。
 
 ConfigMapをコンテナのディレクトリにファイルとしてマウントする。
 
-Secretは、別の```spec.volumes.secret```キーで設定することに注意する。
+Secretは、別の```.spec.volumes.secret```キーで設定することに注意する。
 
 
 
@@ -3435,9 +3539,9 @@ spec:
 
 #### ▼ secret
 
-```spec.containers[].envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
+```.spec.containers[].envFrom```キー（環境変数としてコンテナに出力する）とは異なり、ファイルとしてコンテナにマウントするSecretを設定する。
 
-ConfigMapは、別の```spec.volumes.configMap```キーで設定することに注意する。
+ConfigMapは、別の```.spec.volumes.configMap```キーで設定することに注意する。
 
 
 
@@ -3984,7 +4088,7 @@ data:
 
 受信するインバウンド通信のプロトコルを設定する。
 
-```spec.ports.protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+```.spec.ports.protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
 
 
 
@@ -4010,7 +4114,7 @@ spec:
       port: 9000
 ```
 
-もしIstio VirtualServiceからインバウンド通信を受信する場合、```spec.ports.appProtocol```キーが使用しなければ、```spec.ports.name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
+もしIstio VirtualServiceからインバウンド通信を受信する場合、```.spec.ports.appProtocol```キーが使用しなければ、```.spec.ports.name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
 
 > ℹ️ 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 
@@ -4150,7 +4254,7 @@ spec:
 
 Pod内で最初にインバウンド通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
 
-デフォルトでは、```spec.ports.port```キーと同じに値になる。
+デフォルトでは、```.spec.ports.port```キーと同じに値になる。
 
 
 
@@ -4184,7 +4288,7 @@ spec:
 
 ### spec.selector
 
-インバウンド通信の転送先とするPodの```metadata.labels```キー名と値を設定する。
+インバウンド通信の転送先とするPodの```.metadata.labels```キー名と値を設定する。
 
 
 
@@ -4214,7 +4318,7 @@ Serviceのタイプを設定する。
 
 #### ▼ ClusterIPの場合
 
-ClusterIP Serviceを設定する。```spec.clusterIP```キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
+ClusterIP Serviceを設定する。```.spec.clusterIP```キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
 
 > ℹ️ 参考：https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 

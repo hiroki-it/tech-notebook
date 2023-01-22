@@ -19,12 +19,12 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 ### アーキテクチャ
 
-![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_architecture.png)
 
 OpenTelemetryは、サードパーティパッケージ、OTelクライアントパッケージ、OTelコレクター、から構成されている。
 
 OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール（テレメトリーを収集できる状態にするツール）を使用せずに、一括してインスツルメント化できるようになる。
 
+![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_architecture.png)
 
 
 > ℹ️ 参考：
@@ -52,9 +52,10 @@ OpenTelemetry用パッケージからのテレメトリーデータを、APIパ�
 
 
 
-> ℹ️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_client-package.png)
+
+> ℹ️ 参考：https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
 
 
 <br>
@@ -67,7 +68,9 @@ OTelクライアントパッケージからのテレメトリーデータを、�
 
 
 
-> ℹ️ 参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/open-telemetry_collector.png)
 
+> ℹ️ 参考：https://www.logicmonitor.com/blog/what-is-an-otel-collector
+
+<br>

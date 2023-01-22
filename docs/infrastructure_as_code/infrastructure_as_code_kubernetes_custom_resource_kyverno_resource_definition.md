@@ -132,7 +132,7 @@ spec:
 
 **＊実装例＊**
 
-Podのマニフェストの```spec.containers```キー以下に、```resources```キーがあるか否かを検証する。
+Podのマニフェストの```.spec.containers```キー以下に、```resources```キーがあるか否かを検証する。
 
 
 

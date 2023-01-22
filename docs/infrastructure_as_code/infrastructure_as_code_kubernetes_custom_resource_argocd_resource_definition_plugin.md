@@ -25,7 +25,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 ArgoCDと任意のツールを連携するためには、```argocd-repo-server```コンテナが連携先ツールを使用できるように、以下の方法でツールをインストールする必要がある。なお、執筆時点（2022/10/31）では、いくつかのツール（例：Helm、Kustomize、Ks、Jsonnet、など）が```argocd-repo-server```コンテナのイメージにあらかじめインストールされている。
 
 - 連携先ツールがすでにインストールされた```argocd-repo-server```コンテナのイメージを使用する。
-- Podの```spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
+- Podの```.spec.initContainers.args```キーでInitContainerに連携先ツールをインストールし、```.spec.initContainers.volumeMounts```キーでコンテナのボリュームに連携先ツールを配置する。これにより、Podのストレージに連携先ツールを配置できるため、```argocd-repo-server```コンテナでは自身のボリュームを介して、Podのストレージ上の連携先ツールを使用できる。
 
 > ℹ️ 参考：
 >
@@ -91,7 +91,7 @@ data:
 
 #### ▼ プラグイン名の指定
 
-Applicationの```spec.plugin.name```キーで、```data.configManagementPlugins```キーで設定した独自のプラグイン名を設定する。
+Applicationの```.spec.plugin.name```キーで、```data.configManagementPlugins```キーで設定した独自のプラグイン名を設定する。
 
 
 
@@ -132,7 +132,7 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 ArgoCDとHelmfileを連携すれば、```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能（例：複数の```values```ファイルを参照する、など）も活用できる。
+```helm```コマンドを宣言的に実行するのであれば、```.spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能（例：複数の```values```ファイルを参照する、など）も活用できる。
 
 **＊実装例＊**
 
@@ -318,7 +318,7 @@ spec:
 
 <br>
 
-## 03-02. ```spec.plugin```キー配下で使用する場合
+## 03-02. ```.spec.plugin```キー配下で使用する場合
 
 ### セットアップ
 
@@ -401,7 +401,7 @@ spec:
 
 <br>
 
-## 03-03. ```spec.source.helm```キー配下で使用する場合
+## 03-03. ```.spec.source.helm```キー配下で使用する場合
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
@@ -438,7 +438,7 @@ creation_rules:
     encrypted_regex: "^secureJsonData$"
 ```
 
-helm-secretsプラグインを使用するために、```spec.source.helm.valueFiles```キー配下で```secrets://<secretsファイル>```を設定する。
+helm-secretsプラグインを使用するために、```.spec.source.helm.valueFiles```キー配下で```secrets://<secretsファイル>```を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

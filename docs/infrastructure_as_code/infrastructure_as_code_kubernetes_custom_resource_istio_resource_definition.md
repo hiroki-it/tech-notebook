@@ -140,7 +140,7 @@ VirtualServiceとDestinationRuleの設定値は、```istio-proxy```コンテナ�
 
 #### ▼ annotationsの定義
 
-DeploymentやPodの```metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```metadata```キーを使用することに注意する。
+DeploymentやPodの```.metadata.anontations```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの場合は、```template```キーよりも下層の```.metadata.``キーを使用することに注意する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -172,7 +172,7 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-               # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも後に終了するようにする。
+               # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
                # envoyプロセスとpilot-agentプロセスの終了を待機する。
                command:
                  - "/bin/bash"
@@ -183,7 +183,7 @@ spec:
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するようにする。
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
                 # pilot-agentの起動完了を待機する。
                 command:
                  - |
@@ -286,7 +286,7 @@ metadata:
 
 指定したNamespaceに属するPod内に```istio-proxy```コンテナを自動的にインジェクションするか否かを設定する。
 
-IstoOperatorの```spec.revision```キーと同じである。
+IstoOperatorの```.spec.revision```キーと同じである。
 
 ```istio-injection```キーとはコンフリクトを発生させるため、どちらかしか使えない（```istio-injection```キーの値が```disabled```の場合は共存できる）。
 
@@ -325,13 +325,13 @@ metadata:
 
 #### ▼ annotationsとは
 
-Deploymentの```spec.template```キーや、Podの```metadata```キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```.spec.template```キーや、Podの```.metadata.``キーにて、```istio-proxy```コンテナごとのオプション値を設定する。Deploymentの```.metadata.``キーで定義しないように注意する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ▼ istio.io/rev
 
-IstoOperatorの```spec.revision```キーと同じ。
+IstoOperatorの```.spec.revision```キーと同じ。
 
 特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
 
@@ -356,7 +356,7 @@ spec:
 
 #### ▼ proxy.istio.io/config.configPath
 
-```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+```istio-proxy```コンテナのプロセスの設定値をファイルとして作成するために、これの作成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリ配下にファイルが作成される。IstioOperatorの```.spec.meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
@@ -507,7 +507,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
 
 DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -558,7 +558,7 @@ spec:
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service_destination-rule_subset.png)
 
-ルーティング先のPodの```metadata.labels```キーを設定する
+ルーティング先のPodの```.metadata.labels```キーを設定する
 
 > ℹ️ 参考：
 >
@@ -936,7 +936,7 @@ spec:
 
 #### ▼ selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与された```metadata.labels```キーを設定する。
+Gatewayの適用対象のIngressGatewayに付与された```.metadata.labels```キーを設定する。
 
 
 
@@ -1079,7 +1079,7 @@ spec:
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。
 
-SSL証明書のファイルを指定する場合は、```spec.servers[].tls.serverCertificate```キーを設定する。
+SSL証明書のファイルを指定する場合は、```.spec.servers[].tls.serverCertificate```キーを設定する。
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
@@ -1121,7 +1121,7 @@ spec:
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。
 
-SSL証明書を保持するSecretを指定する場合は、```spec.servers[].tls.credentialName```キーを設定する。
+SSL証明書を保持するSecretを指定する場合は、```.spec.servers[].tls.credentialName```キーを設定する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
@@ -1294,7 +1294,7 @@ spec:
 
 #### ▼ ```.```（ドット）
 
-全てのNamespaceのうちで、```metadata.namespace```キーのNamespaceでのみ使用できるようにする。
+全てのNamespaceのうちで、```.metadata.namespace```キーのNamespaceでのみ使用できるようにする。
 
 VirtualServiceを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -1348,7 +1348,7 @@ spec:
 
 #### ▼ mesh
 
-マイクロサービス間の通信を有効化するか否かを設定する。
+アプリコンテナ間の通信を有効化するか否かを設定する。
 
 
 
@@ -1373,7 +1373,7 @@ spec:
 
 HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
-ルーティング先のServiceを厳格に指定するために、Serviceの```spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+ルーティング先のServiceを厳格に指定するために、Serviceの```.spec.ports.appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 
 
@@ -1638,7 +1638,7 @@ spec:
 
 #### ▼ route.destination.host
 
-```spec.http```キーと同じ機能である。
+```.spec.http```キーと同じ機能である。
 
 
 
@@ -1659,7 +1659,7 @@ spec:
 
 #### ▼ route.destination.port
 
-```spec.http```キーと同じ機能である。
+```.spec.http```キーと同じ機能である。
 
 
 
@@ -1682,7 +1682,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-```spec.http```キーと同じ機能である。
+```.spec.http```キーと同じ機能である。
 
 
 

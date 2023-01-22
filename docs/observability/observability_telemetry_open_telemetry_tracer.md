@@ -27,14 +27,6 @@ description: トレーサー＠OpenTelemetryの知見を記録しています。
 
 
 
-
-> ℹ️ 参考：
-> 
-> - https://opentelemetry.io/docs/instrumentation/go/manual/
-> - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
-> - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
-
 ```go
 package tracer
 
@@ -168,18 +160,22 @@ func main() {
 }
 ```
 
+
+
+> ℹ️ 参考：
+>
+> - https://opentelemetry.io/docs/instrumentation/go/manual/
+> - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
+> - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
+> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
+
+
 #### ▼ 後続のマイクロサービス
 
 後続のマイクロサービスでは、受信したインバウンド通信からメタデータを取得する。
 
 また、子スパンを作成し、後続のマイクロサービスに子スパンのメタデータを伝播する。
 
-
-
-> ℹ️ 参考：
-> 
-> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 
 ```go
 package main
@@ -259,6 +255,13 @@ func main() {
 	}
 }
 ```
+
+
+
+> ℹ️ 参考：
+>
+> - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
+> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 
 
 

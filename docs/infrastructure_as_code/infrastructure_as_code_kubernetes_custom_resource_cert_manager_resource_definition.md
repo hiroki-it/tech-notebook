@@ -68,7 +68,7 @@ spec:
 
 #### ▼ SSL証明書を使用する
 
-Ingressの```spec.tls[].secretName```キーにて、Secretを設定する。
+Ingressの```.spec.tls[].secretName```キーにて、Secretを設定する。
 
 これにより、IngressにSSL証明書を割り当てられる。
 

@@ -19,15 +19,18 @@
   > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.html)
 * #### 📖 [︎ハードウェアリソース管理](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.html)
 * #### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
-* #### 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_linter.html)
 
 <br>
 
-### 開発環境
+### 開発
 
-* #### <u>Minikube</u>
-  > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
-  > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
+* #### <u>開発環境</u>
+  > * ##### <u>Minikube</u>
+  > > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
+  > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
+* #### <u>開発ツール</u>
+  > * 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_linter.html)
+
 
 <br>
 

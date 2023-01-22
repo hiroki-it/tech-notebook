@@ -240,7 +240,7 @@ spec:
         enabled: true
 ```
 
-```spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
+```.spec.ingressGateways.k8s```キーでIngressGatewayを設定できるが、これは非推奨である。
 
 
 
@@ -457,7 +457,7 @@ spec:
 
 #### ▼ defaultConfig
 
-```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
+```istio-proxy```コンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```.metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
 
 > ℹ️ 参考：https://github.com/istio/istio/blob/master/manifests/profiles/preview.yaml
 
@@ -492,7 +492,7 @@ spec:
 
 #### ▼ holdApplicationUntilProxyStarts
 
-istio-proxyコンテナが、必ずマイクロサービスコンテナよりも先に起動するか否かを設定する。
+istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するか否かを設定する。
 
 > ℹ️ 参考：https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 
@@ -531,7 +531,7 @@ spec:
 
 #### ▼ ingressSelector
 
-全ての```istio-proxy```コンテナに関して、使用するGatewayの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するGatewayの```.metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -546,7 +546,7 @@ spec:
 
 #### ▼ ingressService
 
-全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
+全ての```istio-proxy```コンテナに関して、使用するIngressコントローラーの```.metadata.labels.istio```キーの値を設定する。IngressGatewayをIngressとして使用でき、デフォルトでは```ingressgateway```が設定される。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -576,7 +576,7 @@ spec:
 
 #### ▼ proxyListenPort
 
-全ての```istio-proxy```コンテナに関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
+全ての```istio-proxy```コンテナに関して、他アプリコンテナからのインバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

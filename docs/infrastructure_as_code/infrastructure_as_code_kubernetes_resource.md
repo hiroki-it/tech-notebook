@@ -83,7 +83,7 @@ ReplicaSetを操作し、Clusterネットワーク内のPodのレプリカ数を
 
 Podの負荷に合わせてPodの自動水平スケーリングを実行しない（HorizontalPodAutoscalerが必要である）。
 
-ただしStatefulSetとは異なり、ストレートレス（例：マイクロサービスコンテナ）なコンテナを含むPodを冗長化することに適する。
+ただしStatefulSetとは異なり、ストレートレス（例：アプリコンテナ）なコンテナを含むPodを冗長化することに適する。
 
 
 
@@ -94,9 +94,9 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 
 #### ▼ ReplicaSetの置き換え
 
-PodTemplate（```spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
+PodTemplate（```.spec.template```キー）を変更した場合、Deploymentは新しいReplicaSetを作成し、これを古いReplicaSetと置き換える。
 
-レプリカ数（```spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
+レプリカ数（```.spec.replicas```キー）の変更の場合は、Deploymentは既存のReplicaSetをそのままにし、Podのレプリカ数のみを変更する。
 
 
 
@@ -134,7 +134,7 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。
 
-```spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
+```.spec.ttlSecondsAfterFinished```キーを使用すると、Podのみを自動削除できるようになる。
 
 
 
@@ -259,9 +259,9 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 
 （２）Podが、削除を開始する。
 
-（３）preStopフックが起動し、```spec.preStop```キーの設定がコンテナで実行される。
+（３）preStopフックが起動し、```.spec.preStop```キーの設定がコンテナで実行される。
 
-（４）kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
+（４）kubeletは、コンテナランタイムを介して、Pod内のコンテナにSIGTERMシグナルを送信する。これにより、コンテナは停止する。この時、```.spec.terminationGracePeriodSeconds```キーの設定値を過ぎてもコンテナが停止していない場合は、コンテナにSIGKILLシグナルが送信され、削除プロセスは強制完了する。
 
 （５）他のKubernetesリソース（Deployment、Service、ReplicaSets、など）の管理対象から、該当のPodが削除される。
 
@@ -439,17 +439,26 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 > - https://thinkit.co.jp/article/18263
 > - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
-#### ▼ ルーティング方法
+#### ▼ パスベースルーティング
 
-ルーティング方法として、以下がある。
+パスの値に基づいて、Serviceにルーティングする。
+
+![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png)
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
+
+#### ▼ ホストベースルーティング
+
+```Host```ヘッダーの値に基づいて、Serviceにルーティングする。
+
+本番環境では、ドメインを指定した各種ダッシュボードにアクセスできるようにする必要がある。
 
 
+![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png)
+
+> ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
 
 
-| ルーティング方法   | 説明                                                                                                                                                                                                                                                                                 |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| パスベースルーティング  | パスの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout <br>![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_path.png)                          |
-| ホストベースルーティング | ```Host```ヘッダーの値に基づいて、Serviceにルーティングする。<br>ℹ️ 参考：https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting <br>![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress_host.png) |
 
 <br>
 
@@ -524,7 +533,7 @@ Serviceは、kube-proxyが更新したNode上で稼働するiptablesを使用し
 
 Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
 
-Cluster-IPはServiceの```spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。
+Cluster-IPはServiceの```.spec.clusterIP```キーで指定しない限りランダムで決まり、Podの```/etc/resolv.conf ```ファイルに記載されている。
 
 Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
 
@@ -713,7 +722,7 @@ PersistentVolumeClaimは、```annotation```キー配下の```volume.kubernetes.i
 
 PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。
 
-しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
+しかし、PersistentVolumeClaimが指定するNodeと、PersistentVolumeが```.spec.nodeAffinity```キーで指定するNodeが合致しないと、PersistentVolumeClaimが条件に合致するPersistentVolumeを以下のようなエラーになる。
 
 ```bash
 N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector
@@ -1030,7 +1039,7 @@ kube-apiserverが、リクエストの送信元を認証できるようにする
 
 既存（Node、NFS、iSCSI、Cephなど）のボリュームをそのままKubernetesのボリュームとして使用する。
 
-
+Podの```.spec.volumes```キーで指定する。
 
 > ℹ️ 参考：https://thinkit.co.jp/article/14195
 
@@ -1133,9 +1142,11 @@ Node上のPod間でボリュームを共有できない。
 
 クラウドプロバイダーやNFSから提供されるストレージ領域を使用したボリュームとし、コンテナにマウントする。
 
-
-
 > ℹ️ 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
+
+#### ▼ Volumeの代わりにPersistentVolumeを使用する
+
+Podの```.spec.volumes```キーでPersistentVolumeClaimを宣言すれば、Volumeの代わりにPersistentVolumeを使用できる。
 
 <br>
 
@@ -1199,7 +1210,7 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | ```app.kubernetes.io/component```  | ```database```                       | コンテナの役割名を設定する。                       |
 | ```app.kubernetes.io/created-by``` | ```kube-controller-manager```        | このKubernetesリソースを作成したリソースやユーザーを設定する。  |
 | ```app.kubernetes.io/env```        | ```prd```、```stg```、```dev```        | アプリケーションの実行環境名を設定する。               |
-| ```app.kubernetes.io/instance```   | ```mysql-12345```                    | マイクロサービスコンテナのインスタンス名を設定する。             |
+| ```app.kubernetes.io/instance```   | ```mysql-12345```                    | アプリコンテナのインスタンス名を設定する。             |
 | ```app.kubernetes.io/managed-by``` | ```helm```、```foo-operator```        | アプリケーションの管理ツール名を設定する。                |
 | ```app.kubernetes.io/name```       | ```mysql```                          | マイクロサービスを構成するコンテナのベンダー名を設定する。        |
 | ```app.kubernetes.io/nodegrop```   | ```batch```、```ingress```、```mesh``` | コンテナを持つPodのスケジューリング先とするNodeグループを設定する。 |

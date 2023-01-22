@@ -136,7 +136,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ▼ ```container_definition.json```ファイル
 
-ECSタスクのコンテナ定義にて、アプリケーションコンテナと```log_router```コンテナを設定する。
+ECSタスクのコンテナ定義にて、アプリコンテナと```log_router```コンテナを設定する。
 
 log_routerという名前以外を設定できないことに注意する。
 

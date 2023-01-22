@@ -308,7 +308,7 @@ Grafanaのダッシュボードに接続できる。
 ユーザー名は```admin```、パスワードは```prom-operator```がデフォルト値である。
 
 ```bash
-$ kubectl port-forward svc/grafana -n prometheus 8080:80
+$ kubectl port-forward svc/grafana -n prometheus 8000:80
 ```
 
 <br>

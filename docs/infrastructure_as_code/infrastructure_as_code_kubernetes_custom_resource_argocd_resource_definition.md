@@ -1121,7 +1121,7 @@ spec:
 
 デプロイ手法を設定する。
 
-大前提として、そもそもArgoCDは```kubectl apply```コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの```spec.strategy```キーや、DaemonSetとStatefulSetの```spec.updateStrategy```キーの設定値に依存する。
+大前提として、そもそもArgoCDは```kubectl apply```コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの```.spec.strategy```キーや、DaemonSetとStatefulSetの```.spec.updateStrategy```キーの設定値に依存する。
 
 ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
 
@@ -1437,7 +1437,7 @@ data:
 
 ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
 
-ConfigMapでは、```metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
+ConfigMapでは、```.metadata.labels```キー配下に、必ず```app.kubernetes.io/part-of: argocd```キーを割り当てる必要がある。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
@@ -1457,7 +1457,7 @@ ArgoCDの各コンポーネントで共通する値を設定する。
 
 #### ▼ resource.customizations.ignoreDifferences.all
 
-ArgoCD全体で```spec.ignoreDifferences```キーと同じ機能を有効化する。
+ArgoCD全体で```.spec.ignoreDifferences```キーと同じ機能を有効化する。
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
 
@@ -2018,7 +2018,7 @@ ArgoCDがプライベートリポジトリを監視する時に必要な認証�
 <br>
 
 
-### ```metadata.labels```キー
+### ```.metadata.labels```キー
 
 #### ▼ ```argocd.argoproj.io/secret-type```キー（必須）
 

@@ -278,7 +278,7 @@ istio-sidecar-injector-canary   1          3m18s # 新しい方
 
 ### 共通の事後手順
 
-#### ▼ Namespaceの```metadata.labels```キーを付け替える。
+#### ▼ Namespaceの```.metadata.labels```キーを付け替える。
 
 
 
@@ -443,7 +443,7 @@ spec:
     istio.io/rev: asm-1143-1 # リビジョン番号を更新する。
 ```
 
-（７）Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
+（７）Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアスの実体が旧バージョンのままなため、新バージョンに変更する。```istioctl```コマンドは、```asmcli```コマンドの```output_dir```オプションで指定したディレクトリにある。
 
 
 ```bash
@@ -451,7 +451,7 @@ spec:
 $ ./tmp/asm-1.14.3/istioctl tag set default --revision asm-1143-1
 ```
 
-（８）```metadata.labels```キーの値を変更できたことを確認する。
+（８）```.metadata.labels```キーの値を変更できたことを確認する。
 
 ```bash
 $ ./tmp/asm-1.14.3/istioctl tag list

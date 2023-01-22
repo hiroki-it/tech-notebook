@@ -187,7 +187,7 @@ $ istioctl install -y -f <IstioOperatorのマニフェストへのパス>
 
 ### kube-injectとは
 
-```istio-proxy```コンテナを手動でインジェクションする。代わりに、```enabled```値が割り当てられた```metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
+```istio-proxy```コンテナを手動でインジェクションする。代わりに、```enabled```値が割り当てられた```.metadata.labels,istio-injection```キーをNamespaceに付与しても良い。
 
 > ℹ️ 参考：
 >
@@ -823,7 +823,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 ### tagとは
 
-MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
+MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を操作する。
 
 
 
@@ -838,7 +838,7 @@ MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリア�
 
 #### ▼ generateとは
 
-MutatingWebhookConfigurationの```metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
+MutatingWebhookConfigurationの```.metadata.labels```キーに、エイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を作成する。
 
 
 
@@ -868,7 +868,7 @@ $ istioctl tag generate tes-green --revision 1-0-1
 
 #### ▼ listとは
 
-MutatingWebhookConfigurationの```metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
+MutatingWebhookConfigurationの```.metadata.labels```キーにあるエイリアス（```istio.io/tag```キーの値）と、エイリアスの実体（```istio.io/rev```キーの値）を取得する。
 
 
 
@@ -895,7 +895,7 @@ tes-green  1-0-1      istioinaction
 
 #### ▼ setとは
 
-MutatingWebhookConfigurationの```metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
+MutatingWebhookConfigurationの```.metadata.labels```キーにある既存のエイリアス（```istio.io/tag```キーの値）に実体（```istio.io/rev```キーの値）を設定する。
 
 
 
