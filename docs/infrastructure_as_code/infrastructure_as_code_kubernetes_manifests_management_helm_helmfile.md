@@ -190,11 +190,11 @@ releases:
 
 デフォルトで```true```になっており、リリース前にNamespaceを自動的に作成するようになっている。
 
-ただし、Namespaceので出どころがわからなくなるため、Helmfileの機能に頼らずにNamespaceのマニフェストを定義しておく方が良い。
+ただし、Namespaceので出どころがわからなくなるため、Helmfileの```createNamespace```オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
 
 ```yaml
 releases:
-  - createNamespace: true
+  - createNamespace: false
 ```
 
 #### ▼ chart

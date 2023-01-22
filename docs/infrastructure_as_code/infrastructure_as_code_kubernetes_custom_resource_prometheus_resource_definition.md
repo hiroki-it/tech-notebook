@@ -19,24 +19,40 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 ### インストール
 
-#### ▼ 非チャートとして
+#### ▼ 非チャートとして（prometheus-operator）
 
-GitHubリポジトリ上のマニフェストを送信し、リソースを作成する。
-
-PrometheusOperatorの基になるKubernetesリソースが含まれている。
-
-
-
-> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+非チャートとして、prometheus-operatorのマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/prometheus-operator.git
+
 $ kubectl create -f bundle.yaml
 ```
 
-#### ▼ チャートとして
+> ℹ️ 参考：https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
 
-チャートとしてkube-prometheus-stackをインストールし、リソースを作成する。PrometheusOperatorの基になるKubernetesリソースが含まれている。
+#### ▼ 非チャートとして（kube-prometheus）
+
+非チャートとして、kube-prometheusリポジトリのマニフェストを送信し、Kubernetesリソースを作成する。
+
+```bash
+$ git clone https://github.com/prometheus-operator/kube-prometheus.git
+
+$ kubectl apply --server-side -f manifests/setup
+
+$ kubectl wait --for condition=Established --all CustomResourceDefinition --namespace=monitoring
+
+$ kubectl apply -f manifests/
+```
+
+> ℹ️ 参考：https://github.com/prometheus-operator/kube-prometheus
+
+
+#### ▼ チャートとして（kube-prometheus-stack）
+
+チャートとしてkube-prometheus-stackをインストールし、Kubernetesリソースを作成する。
+
+Prometheusだけでなく、様々な関連ツール（Alertmanager、Node exporter、Grafana、など）のKubernetesリソースも合わせて作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -48,12 +64,41 @@ $ kubectl create namespace prometheus
 $ helm install <リリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
+
 > ℹ️ 参考：
 >
-> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 > - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
 > - https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
+
+
+他のインストール方法と名前が似ていることに注意する。
+
+> ℹ️ 参考：
+> 
+> - https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart
+> - https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe
+
+#### ▼ チャートとして（prometheus）
+
+チャートとしてprometheusをインストールし、リソースを作成する。
+
+kube-prometheus-stackとは異なり、最低限の関連ツール（Alertmanager、Node exporter、など）のKubernetesリソースも合わせて作成する。
+
+ただ、
+
+```bash
+helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+$ kubectl create namespace prometheus
+
+$ helm install <リリース名> <チャートリポジトリ名>/prometheus -n prometheus --version <バージョンタグ>
+```
+
+
+> ℹ️ 参考：https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
 
 <br>
 

@@ -1089,7 +1089,7 @@ validate: init fmt
 バージョンを統一するために、```.tool-versions```ファイルを作成する。
 
 ```bash
-asdf local terraform <バージョン>
+$ asdf local terraform <バージョン>
 ```
 
 ```bash

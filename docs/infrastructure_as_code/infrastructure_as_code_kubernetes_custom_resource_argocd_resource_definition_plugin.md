@@ -62,7 +62,6 @@ ConfigMapの```data.configManagementPlugins```キーでそれらの処理を定�
 
 
 
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp
 
 ```yaml
 apiVersion: v1
@@ -86,6 +85,8 @@ data:
           - |
             # 必要なマニフェストを作成する。
 ```
+
+> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/#installing-a-cmp
 
 
 #### ▼ プラグイン名の指定
@@ -127,13 +128,11 @@ ArgoCDと連携したツールでは、コマンドで以下の環境変数を�
 
 #### ▼ Helmfileのインストール
 
-```argocd-repo-server```コンテナがHelmfileを使用できるように、Helmfileをインストールする。ArgoCDとHelmfileを連携すれば、```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能（例：複数の```values```ファイルを参照する、など）も活用できる。
+```argocd-repo-server```コンテナがHelmfileを使用できるように、Helmfileをインストールする。
 
-> ℹ️ 参考：
-> 
-> - https://github.com/travisghansen/argo-cd-helmfile#installation
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
-> - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
+ArgoCDとHelmfileを連携すれば、```helmfile```コマンドを宣言的に実行しつつ、実行を自動化できる。
+
+```helm```コマンドを宣言的に実行するのであれば、```spec.source.helm```キーを使用すれば十分ではあるが、```helmfile```を使用すればHelmfileの機能（例：複数の```values```ファイルを参照する、など）も活用できる。
 
 **＊実装例＊**
 
@@ -177,6 +176,13 @@ spec:
 ```
 
 
+> ℹ️ 参考：
+>
+> - https://github.com/travisghansen/argo-cd-helmfile#installation
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
+
+
 #### ▼ プラグイン名の指定
 
 プラグイン名は```helmfile```でなくとも問題ない。
@@ -202,10 +208,6 @@ data:
 
 ```helmfile template```コマンドを実行し、マニフェストファイルを作成する。
 
-
-
-> ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#installation
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -224,6 +226,9 @@ data:
             set -euo pipefail
             helmfile -f $HELMFILE -e "$ENV" template"
 ```
+
+> ℹ️ 参考：https://github.com/travisghansen/argo-cd-helmfile#installation
+
 
 
 #### ▼ プラグイン名の指定
@@ -264,10 +269,6 @@ spec:
 
 ```argocd-repo-server```コンテナがhelm-secretsを使用できるように、helm-secretsをインストールする。
 
-> ℹ️ 参考：
->
-> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
 **＊実装例＊**
 
@@ -309,6 +310,12 @@ spec:
           name: custom-tools
 ```
 
+
+> ℹ️ 参考：
+>
+> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+
 <br>
 
 ## 03-02. ```spec.plugin```キー配下で使用する場合
@@ -336,8 +343,6 @@ data:
 
 ```helm secrets template```コマンドを実行し、マニフェストファイルを作成する。ちなみに、zendesk製のhelm-secretsでは、文末にdecryptedの文字が出力されるため、```sed '$d'```が必要になる。
 
-> ℹ️ 参考：https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -361,6 +366,9 @@ data:
               helm secrets template $HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $SOPS_SECRETS_FILE -f $VALUES_FILE
             fi
 ```
+
+> ℹ️ 参考：https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
+
 
 #### ▼ プラグイン名の指定
 
@@ -401,8 +409,6 @@ spec:
 
 ```argocd-repo-server```コンテを持つPodに紐づけるServiceAccountを作成する。
 
-> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
-
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -414,6 +420,9 @@ metadata:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
 automountServiceAccountToken: true
 ```
+
+> ℹ️ 参考：https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+
 
 #### ▼ helm-secretsの使用
 
@@ -431,8 +440,6 @@ creation_rules:
 
 helm-secretsプラグインを使用するために、```spec.source.helm.valueFiles```キー配下で```secrets://<secretsファイル>```を設定する。
 
-> ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
-
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -448,6 +455,8 @@ spec:
         - values.yaml
         - secrets://secrets.yaml
 ```
+
+> ℹ️ 参考：https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323
 
 
 <br>
@@ -488,10 +497,6 @@ data:
 
 ```helm template```コマンドを実行し、マニフェストファイルを作成する。
 
-
-
-> ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -517,16 +522,14 @@ data:
             helm template $HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
+> ℹ️ 参考：https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
+
 
 #### ▼ プラグイン名の指定
 
 Applicationでプラグイン名を指定する。
 
 また、必要な環境変数を設定する。
-
-
-
-> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -544,5 +547,8 @@ spec:
       - name: HELM_RELEASE_NAME
         value: foo
 ```
+
+> ℹ️ 参考：https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+
 
 <br>

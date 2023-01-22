@@ -27,7 +27,45 @@ description: 設計ポリシー＠ArgoCDの知見を記録しています。
 
 ### 各Applicationを同じリポジトリで管理（推奨）
 
-#### ▼ Appパターン（通常パターン）
+
+### 各Applicationを異なるリポジトリで管理
+
+監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。
+
+
+
+```yaml
+repository/
+├── tes/
+│   └── foo-application.yaml # fooリポジトリを監視する。
+│
+├── stg/
+└── prd/
+```
+
+```yaml
+repository/
+├── tes/
+│   └── bar-application.yaml # barリポジトリを監視する。
+│
+├── stg/
+└── prd/
+```
+
+```yaml
+repository/
+├── tes/
+│   └── baz-application.yaml # bazリポジトリを監視する。
+│
+├── stg/
+└── prd/
+```
+
+<br>
+
+## 03. デザインパターン
+
+### Appパターン（通常パターン）
 
 監視対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。
 
@@ -70,19 +108,25 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 └── prd/
 ```
 
-#### ▼ App-Of-Appsパターン
+<br>
+
+### App-Of-Appsパターン
+
+#### ▼ App-Of-Appsパターンとは
 
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
 親Applicationで子Applicationをグループ化したように構成する。
 
 > ℹ️ 参考：
-> 
+>
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
 > - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
 
-- 全てのApplicationを監視する最上位Application（root-application）
+#### ▼ root-application
+
+全てのApplicationを監視する最上位Applicationのこと。
 
 ```yaml
 # 最上位Application
@@ -94,7 +138,12 @@ root-argocd-repository/
 └── prd/
 ```
 
-- 各AppProjectの子Applicationを監視する親Application（app-parent-application、infra-parent-application）
+#### ▼ parent-application
+
+
+各AppProjectの子Applicationを監視する親Applicationのこと。
+
+管理チームごとにApplication（app-parent-application、infra-parent-application）を作成すると良い。
 
 
 ```yaml
@@ -108,8 +157,12 @@ parent-argocd-repository/
 └── prd/
 ```
 
-- 各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplication
+#### ▼ child-application
 
+
+各AppProjectで、マニフェストリポジトリやチャートリポジトリを監視するApplicationのこと。
+
+マイクロサービス単位のマニフェストやチャートごとに作成すると良い。
 
 ```yaml
 # 子Application
@@ -135,7 +188,7 @@ child-argocd-repository/
 └── prd/
 ```
 
-- アプリ領域やインフラ領域のマニフェスト
+アプリ領域やインフラ領域のマニフェストやチャートは以下の通りになっているとする。
 
 ```yaml
 # アプリ領域のマニフェスト
@@ -159,44 +212,13 @@ infra-manifest-repository/
 └── prd/
 ```
 
-<br>
-
-### 各Applicationを異なるリポジトリで管理
-
-監視対象リポジトリごとにApplicationを作成し、これらを異なるリポジトリで管理する。
+#### ▼ grand-parent-application
 
 
 
-```yaml
-repository/
-├── tes/
-│   └── foo-application.yaml # fooリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-repository/
-├── tes/
-│   └── bar-application.yaml # barリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
-
-```yaml
-repository/
-├── tes/
-│   └── baz-application.yaml # bazリポジトリを監視する。
-│
-├── stg/
-└── prd/
-```
+> ℹ️ 参考：https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
 
 <br>
-
-
 
 ## 02. ディレクトリ構成ポリシー
 

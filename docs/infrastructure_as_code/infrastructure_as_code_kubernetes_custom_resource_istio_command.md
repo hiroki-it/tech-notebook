@@ -157,7 +157,7 @@ $ istioctl x uninstall --purge
 
 #### ▼ -f
 
-IstioOperatorのマニフェストをkube-apiserverに送信し、リソースを作成する。
+IstioOperatorのマニフェストを送信し、Kubernetesリソースを作成する。
 
 > ℹ️ 参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
 

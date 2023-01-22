@@ -214,6 +214,9 @@ artifacts:
 
 （８）元の旧環境（Prodブルー）は削除される。
 
+
+> ℹ️ 参考：https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
+
 #### ▼ ```appspec.yml```ファイル
 
 ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。ECSタスク定義名を```<TASK_DEFINITION>```とすると、```taskdef.json```ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
@@ -249,11 +252,6 @@ Resources:
 #### ▼ ```taskdef.json```ファイル
 
 デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。CodeDeployは、CodeBuildから渡された```imageDetail.json```ファイルを検知し、ECRからコンテナイメージを取得する。この時、```taskdef.json```ファイルのコンテナイメージ名を```<IMAGE1_NAME>```としておくと、```imageDetail.json```ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
-
-> ℹ️ 参考：
->
-> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
 
 ```yaml
 {
@@ -322,6 +320,13 @@ Resources:
   ]
 }
 ```
+
+
+> ℹ️ 参考：
+>
+> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
+> - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
+
 
 <br>
 

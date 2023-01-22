@@ -32,7 +32,7 @@ $ argocd app create foo-application \
     --dest-namespace foo-namespace \
     --auto-prune \
     --self-heal \
-    --sync-option CreateNamespace=true
+    --sync-option CreateNamespace=false
 ```
 
 > ℹ️ 参考：https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/

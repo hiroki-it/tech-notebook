@@ -20,59 +20,66 @@
 * #### 📖 [︎ハードウェアリソース管理](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management.html)
 * #### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
 * #### 📖 [静的解析ツール](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_linter.html)
-* #### <u>開発環境</u>
-  > * ##### <u>Minikube</u>
-  > > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
-  > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
 
 <br>
 
-### リソース
+### 開発環境
 
-* #### <u>Kubernetesリソース</u>
-  > * ##### 📖 [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
-  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
-  > * ##### <u>CSIドライバー</u>
-  > > * ##### <u>SecretsストアCSIドライバー</u>
-  > > > * ##### 📖 [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.html)
-  > > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.html)
-* #### <u>カスタムリソース</u>
-  > * ##### 📖 [カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)
-  > * ##### <u>ArgoCD</u>
-  > > * ##### 📖 [︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html)
-  > > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.html)
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
-  > > * ##### 📖 [プラグイン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.html)
-  > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
-  > * ##### <u>CertManager</u>
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.html)
-  > * ##### <u>Grafana</u>
-  > > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
-  > * ##### <u>Kyverno</u>
-  > > * ##### 📖 [Kyverno](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.html)
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.html)
+* #### <u>Minikube</u>
+  > * ##### 📖 [Minikube](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html)
+  > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
+
+<br>
+
+### Kubernetesリソース
+
+* #### 📖 [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
+* #### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
+* #### <u>CSIドライバー</u>
+  > * ##### <u>SecretsストアCSIドライバー</u>
+  > > * ##### 📖 [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store.html)
+  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_csi_driver_secrets_store_resource_definition.html)
+
+<br>
+
+### カスタムリソース
+
+* #### 📖 [カスタムリソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)
+* #### <u>ArgoCD</u>
+  > * ##### 📖 [︎ArgoCD](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd.html)
+  > * ##### 📖 [コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_command.html)
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition.html)
+  > * ##### 📖 [プラグイン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_resource_definition_plugin.html)
+  > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_argocd_policy.html)
+* #### <u>CertManager</u>
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_cert_manager_resource_definition.html)
+* #### <u>Grafana</u>
+  > * ##### 📖 [︎Grafana](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana.html)
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_grafana_resource_definition.html)
+* #### <u>Kyverno</u>
+  > * ##### 📖 [Kyverno](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno.html)
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kyverno_resource_definition.html)
+* #### <u>Istio</u>
   > * ##### <u>Istio</u>
-  > > * ##### <u>Istio</u>
-  > > > * ##### 📖 [︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html)
-  > > > * ##### 📖 [コントロールプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.html)
-  > > > * ##### 📖 [データプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.html)
-  > > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.html)
-  > > * ##### 📖 [︎リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.html)
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)
-  > > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.html)
-  > > * ##### 📖 [︎IstioOperator](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.html)
-  > * ##### <u>Jaeger</u>
-  > > * ##### 📖 [︎Jaeger](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.html)
-  > * ##### <u>Kiali</u>
-  > > * ##### 📖 [︎Kiali](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.html)
-  > * ##### <u>OpenPolicyAgent</u>
-  > > * ##### 📖 [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.html)
-  > * ##### <u>Prometheus</u>
-  > > * ##### 📖 [︎Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html)
-  > > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.html)
-  > > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.html)
-  > > * ##### 📖 [︎PromQL](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.html)
+  > > * ##### 📖 [︎Istio](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio.html)
+  > > * ##### 📖 [コントロールプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_control_plane.html)
+  > > * ##### 📖 [データプレーン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_data_plane.html)
+  > * ##### 📖 [︎コマンド](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_command.html)
+  > * ##### 📖 [︎リソース](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource.html)
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_resource_definition.html)
+  > * ##### 📖 [︎設計ポリシー](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_policy.html)
+  > * ##### 📖 [︎IstioOperator](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_istio_operator_resource_definition.html)
+* #### <u>Jaeger</u>
+  > * ##### 📖 [︎Jaeger](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_jaeger.html)
+* #### <u>Kiali</u>
+  > * ##### 📖 [︎Kiali](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_kiali.html)
+* #### <u>OpenPolicyAgent</u>
+  > * ##### 📖 [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_open_policy_agent.html)
+* #### <u>Prometheus</u>
+  > * ##### 📖 [︎Prometheus](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus.html)
+  > * ##### 📖 [設定ファイル](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_conf.html)
+  > * ##### 📖 [︎リソース定義](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_resource_definition.html)
+  > * ##### 📖 [︎PromQL](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_prometheus_promql.html)
 
 <br>
 

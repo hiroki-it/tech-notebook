@@ -912,6 +912,7 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 
 特定の```metadata.labels```キーの値を持つKubernetesリソースを取得する。
 
+**＊例＊**
 
 
 ```bash
@@ -1028,23 +1029,48 @@ $ kubectl get -A <Kubernetesリソース> \
 
 指定した```spec.selector```キーを持つDeploymentを取得する。
 
+**＊例＊**
 
 
 ```bash
 $ kubectl get deployment --selector<キー>=<値>
 ```
 
+#### ▼ --show-labels
+
+指定したKubernetesリソースの```metadata.labels```キーの値を表示する。
+
+**＊例＊**
+
+全てのKubernetesリソースの```metadata.labels```キーの値を表示する。
+
+```bash
+$ kubectl get all -A --show-labels
+```
+
+**＊例＊**
+
+全てのKubernetesリソースの中から、ArgoCDで管理していないものの```metadata.labels```キーの値を表示する。
+
+```bash
+$ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
+```
+
+
 #### ▼ --watch
 
 指定したPodの情報を継続的に取得する。
 
 
+**＊例＊**
 
-> ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
 
 ```bash
 $ kubectl get pod --watch
 ```
+
+> ℹ️ 参考：https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+
 
 <br>
 
@@ -1060,6 +1086,7 @@ $ kubectl get pod --watch
 
 指定したリソースに```metadata.labels```キーを作成する。
 
+**＊例＊**
 
 
 ```bash
@@ -1116,6 +1143,7 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 Pod名とコンテナ名を指定し、コンテナのログを取得する。
 
+**＊例＊**
 
 
 ```bash

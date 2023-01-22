@@ -21,10 +21,15 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 #### ▼ 非チャートとして
 
+非チャートとして、argo-cdリポジトリのマニフェストを送信し、リソースを作成する。
+
 ```bash
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
-> ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/getting_started/
+> ℹ️ 参考：
+> 
+> - https://argo-cd.readthedocs.io/en/stable/getting_started/
+> - https://github.com/argoproj/argo-cd/blob/master/manifests/install.yaml
 
 
 #### ▼ チャートとして
@@ -914,9 +919,9 @@ GitOpsでのマニフェストのSync処理の詳細を設定する。
 
 
 | 設定項目                     | 説明                                                                                                                               | 補足                                                                                                                                                                                                                        |
-|------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。ArgoCDがインストールされるNamespaceと、Applicationを作成するNamespaceが異なる場合、これを有効化しておいた方が良い。 |                                                                                                                                                                                                                             |
-| ```Validate```               |                                                                                                                                    |                                                                                                                                                                                                                             |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```CreateNamespace```        | Applicationの作成対象のNamespaceを自動的に作成する。 | Namespaceので出どころがわからなくなるため、ArgoCDの```createNamespace```オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。                                                                                                                                  |
+| ```Validate```               |                                                                                                                                    |                                                                                                                                                                                                                           |
 | ```PrunePropagationPolicy``` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファン、がある。   | ℹ️ 参考：<br>・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
 | ```PruneLast```              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。      | ℹ️ 参考：https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                        |
 
@@ -929,7 +934,7 @@ metadata:
 spec:
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false
       - PrunePropagationPolicy=background
 ```
 
@@ -1645,6 +1650,14 @@ Casbinの記法を使用して、```.csv```形式で認可スコープを定義�
 <br>
 
 ### ArgoCDで認証する場合
+
+ロールに付与するポリシーの認可スコープは、プロジェクト単位にするとよい。
+
+管理チーム単位でプロジェクトを作成した上で、プロジェクト配下のみ認可スコープを持つロールを定義する。
+
+これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
+
+**＊実装例＊**
 
 以下のように、ロールと認可スコープを紐づける。
 
