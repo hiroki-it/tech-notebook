@@ -13,7 +13,8 @@
   > * ##### <u>Nodeコンポーネント</u>
   > > * ##### 📖 [Nodeコンポーネント](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
   > > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node_addon.html)
-  > * ##### 📖 [︎クラウドプロバイダーアドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon.html)
+  > * ##### <u>︎クラウドプロバイダーアドオン</u>
+  > > * ##### 📖 [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_component_cloud_provider_addon_aws_eks.html)
 * #### <u>ネットワーク</u>
   > * ##### 📖 [ネットワーク](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
   > * ##### 📖 [アドオン](https://hiroki-it.github.io/tech-notebook-mkdocs/infrastructure_as_code/infrastructure_as_code_kubernetes_network_addon.html)

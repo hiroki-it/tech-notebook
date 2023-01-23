@@ -277,7 +277,7 @@ releases:
 environments:
   {{ .Environment.Name }}:
     values:
-      - values-{{ .Environment.Name }}/yaml
+      - values-{{ .Environment.Name }}.yaml
 
 releases:
   ...
